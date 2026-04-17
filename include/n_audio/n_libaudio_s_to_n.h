@@ -19,7 +19,7 @@
 #define alSynSetVol( a, b, c, d)      n_alSynSetVol( b, c, d)
 #define alSynStartVoice( a, b, c)     n_alSynStartVoice( b, c)
 #define alSynStartVoiceParams( a, b, c, d, e, f, g, h) \
-                                      n_alSynStartVoiceParams( b, c, d, e, f, g, h)
+									  n_alSynStartVoiceParams( b, c, d, e, f, g, h)
 #define alSynStopVoice( a, b)         n_alSynStopVoice( b)
 #define alSynNew( a, b)               n_alSynNew( b)
 

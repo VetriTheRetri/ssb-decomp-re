@@ -8,201 +8,201 @@
 
 struct LBFileNode
 {
-    u32 id;
-    void *addr;
+	u32 id;
+	void *addr;
 };
 
 union LBRelocDesc
 {
-    struct lbRelocInfo
-    {
-        u16 reloc;
-        u16 words_num;
+	struct lbRelocInfo
+	{
+		u16 reloc;
+		u16 words_num;
 
-    } info;
+	} info;
 
-    void *p;
+	void *p;
 };
 
 struct LBRelocSetup
 {
-    uintptr_t table_addr;        // ROM address
-    u32 table_files_num;         // Total number of files in table?
-    void *file_heap;         
-    size_t file_heap_size;
-    LBFileNode *status_buffer;
-    size_t status_buffer_size;
-    LBFileNode *force_status_buffer;
-    size_t force_status_buffer_size;
+	uintptr_t table_addr;        // ROM address
+	u32 table_files_num;         // Total number of files in table?
+	void *file_heap;         
+	size_t file_heap_size;
+	LBFileNode *status_buffer;
+	size_t status_buffer_size;
+	LBFileNode *force_status_buffer;
+	size_t force_status_buffer_size;
 };
 
 struct LBTableEntry
 {
-    ub32 is_compressed : 1;
-    u32 data_offset : 31;
-    u16 reloc_intern_offset;    // in words
-    u16 compressed_size;        // in words
-    u16 reloc_extern_offset;    // in words
-    u16 decompressed_size;      // in words
+	ub32 is_compressed : 1;
+	u32 data_offset : 31;
+	u16 reloc_intern_offset;    // in words
+	u16 compressed_size;        // in words
+	u16 reloc_extern_offset;    // in words
+	u16 decompressed_size;      // in words
 };
 
 struct LBInternBuffer
 {
-    uintptr_t rom_table_lo; // Start of file table
-    u32 total_files_num;
-    uintptr_t rom_table_hi; // End of file table
-    void *heap_start;
-    void *heap_ptr;
-    void *heap_end;
+	uintptr_t rom_table_lo; // Start of file table
+	u32 total_files_num;
+	uintptr_t rom_table_hi; // End of file table
+	void *heap_start;
+	void *heap_ptr;
+	void *heap_end;
 
-    // "status buffer"
-    s32 status_buffer_num;
-    s32 status_buffer_max;
-    LBFileNode *status_buffer;
+	// "status buffer"
+	s32 status_buffer_num;
+	s32 status_buffer_max;
+	LBFileNode *status_buffer;
 
-    // "force status buffer"
-    s32 force_status_buffer_num;
-    s32 force_status_buffer_max;
-    LBFileNode *force_status_buffer;
+	// "force status buffer"
+	s32 force_status_buffer_num;
+	s32 force_status_buffer_max;
+	LBFileNode *force_status_buffer;
 };
 
 struct LBScriptDesc
 {
-    s32 scripts_num;        // Number of scripts in array?
-    LBScript *scripts[1];   // Dynamic array
+	s32 scripts_num;        // Number of scripts in array?
+	LBScript *scripts[1];   // Dynamic array
 };
 
 struct LBScript
 {
-    u16 kind;               // Generator kind
+	u16 kind;               // Generator kind
 	u16 texture_id;         // Texture ID?
-    u16 generator_lifetime; // Total frames?
-    u16 particle_lifetime;  // Particle lifetime?
-    u32 flags;              // Flags?
+	u16 generator_lifetime; // Total frames?
+	u16 particle_lifetime;  // Particle lifetime?
+	u32 flags;              // Flags?
 	f32 gravity;
-    f32 friction;
-    Vec3f vel;
-    f32 unk_script_0x20;
-    f32 unk_script_0x24;
-    f32 update_rate;
-    f32 size;
-    u8 bytecode[1];         // Particle bytecode
+	f32 friction;
+	Vec3f vel;
+	f32 unk_script_0x20;
+	f32 unk_script_0x24;
+	f32 update_rate;
+	f32 size;
+	u8 bytecode[1];         // Particle bytecode
 };
 
 struct LBTextureDesc
 {
-    s32 textures_num;
-    LBTexture *textures[1];
+	s32 textures_num;
+	LBTexture *textures[1];
 };
 
 struct LBTexture
 {
-    u32 count;
-    s32 fmt, siz;
-    s32 width, height;
-    u32 flags;              // Palette flags; if (this value & 1), there is only one palette; otherwise each image has its own palette
-    void *data[1];          // Offsets to image, then palette data
+	u32 count;
+	s32 fmt, siz;
+	s32 width, height;
+	u32 flags;              // Palette flags; if (this value & 1), there is only one palette; otherwise each image has its own palette
+	void *data[1];          // Offsets to image, then palette data
 };
 
 struct LBGenerator
 {
-    LBGenerator *next;
+	LBGenerator *next;
 	u16 generator_id;
 	u16 flags;
 	u8 kind;
-    u8 bank_id;
-    u16 texture_id;
-    u16 particle_lifetime;
+	u8 bank_id;
+	u16 texture_id;
+	u16 particle_lifetime;
 	u16 generator_lifetime;
 	u8 *bytecode;
-    Vec3f pos;
-    Vec3f vel;
-    f32 gravity;
-    f32 friction;
-    f32 size;
-    f32 unk_gn_0x38;
-    f32 unk_gn_0x3C;
-    f32 update_rate;
-    f32 frame;
-    DObj *dobj;
-    LBTransform *xf;
+	Vec3f pos;
+	Vec3f vel;
+	f32 gravity;
+	f32 friction;
+	f32 size;
+	f32 unk_gn_0x38;
+	f32 unk_gn_0x3C;
+	f32 update_rate;
+	f32 frame;
+	DObj *dobj;
+	LBTransform *xf;
 
-    union LBGeneratorVars
-    {
-        struct LBGeneratorRotate
-        {
-            f32 base, target;
+	union LBGeneratorVars
+	{
+		struct LBGeneratorRotate
+		{
+			f32 base, target;
 
-        } rotate;
+		} rotate;
 
-        Vec3f move;
+		Vec3f move;
 
-        struct LBGeneratorVortex
-        {
-            f32 f;
-            u16 lifetime;
+		struct LBGeneratorVortex
+		{
+			f32 f;
+			u16 lifetime;
 
-        } vortex;
+		} vortex;
 
-    } generator_vars;
+	} generator_vars;
 };
 
 struct LBTransform
 {
-    LBTransform *next;
-    Vec3f translate;
-    Vec3f rotate;
-    Vec3f scale;
-    u8 transform_status;        // 0 = ???, 1 = prepare matrix for transformation, 2 = finished transformation
-    u8 transform_id;
-    u16 users_num;              // Number of other structs using this particular LBTransform struct?
-    Mtx44f affine;              // Translate + rotate + scale matrix
-    Mtx44f projection;          // Projection matrix
-    f32 pc0_magnitude;          // Projection matrix column 0 magnitude
-    f32 pc1_magnitude;          // Projection matrix column 1 magnitude
-    void (*proc_dead)(LBTransform*);
-    u16 generator_id;
-    GObj *effect_gobj;
+	LBTransform *next;
+	Vec3f translate;
+	Vec3f rotate;
+	Vec3f scale;
+	u8 transform_status;        // 0 = ???, 1 = prepare matrix for transformation, 2 = finished transformation
+	u8 transform_id;
+	u16 users_num;              // Number of other structs using this particular LBTransform struct?
+	Mtx44f affine;              // Translate + rotate + scale matrix
+	Mtx44f projection;          // Projection matrix
+	f32 pc0_magnitude;          // Projection matrix column 0 magnitude
+	f32 pc1_magnitude;          // Projection matrix column 1 magnitude
+	void (*proc_dead)(LBTransform*);
+	u16 generator_id;
+	GObj *effect_gobj;
 };
 
 struct LBParticle
 {
-    LBParticle *next;
-    u16 generator_id;
-    u16 flags;
-    u8 bank_id;
-    u8 loop_count;              // How many times to loop specific segment of bytecode
-    u8 texture_id;              // Texture series ID
-    u8 frame_id;                // Animation frame of texture series
-    ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
-    u16 size_target_length;     // Time to LERP size_target variable
-    u16 primcolor_target_length;// Time to LERP target primitive color
-    u16 envcolor_target_length; // Time to LERP target environment color
-    u8 *bytecode;               // Bytecode base
-    u16 bytecode_csr;           // Bytecode cursor
-    u16 return_ptr;             // Return to bytecode start + return_ptr on command
-    u16 loop_ptr;               // Loop from bytecode start + loop_ptr
-    u16 lifetime;               // Particle's duration; ends at 1, not 0, for some reason
-    Vec3f pos;                  // Position
-    Vec3f vel;                  // Velocity
-    f32 gravity;                // Gravity?
-    f32 friction;               // Friction?
-    f32 size;
-    f32 size_target;
-    SYColorRGBA primcolor;
-    SYColorRGBA target_primcolor;
-    SYColorRGBA envcolor;
-    SYColorRGBA target_envcolor;
-    LBGenerator *gn;
-    LBTransform *xf;
+	LBParticle *next;
+	u16 generator_id;
+	u16 flags;
+	u8 bank_id;
+	u8 loop_count;              // How many times to loop specific segment of bytecode
+	u8 texture_id;              // Texture series ID
+	u8 frame_id;                // Animation frame of texture series
+	ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
+	u16 size_target_length;     // Time to LERP size_target variable
+	u16 primcolor_target_length;// Time to LERP target primitive color
+	u16 envcolor_target_length; // Time to LERP target environment color
+	u8 *bytecode;               // Bytecode base
+	u16 bytecode_csr;           // Bytecode cursor
+	u16 return_ptr;             // Return to bytecode start + return_ptr on command
+	u16 loop_ptr;               // Loop from bytecode start + loop_ptr
+	u16 lifetime;               // Particle's duration; ends at 1, not 0, for some reason
+	Vec3f pos;                  // Position
+	Vec3f vel;                  // Velocity
+	f32 gravity;                // Gravity?
+	f32 friction;               // Friction?
+	f32 size;
+	f32 size_target;
+	SYColorRGBA primcolor;
+	SYColorRGBA target_primcolor;
+	SYColorRGBA envcolor;
+	SYColorRGBA target_envcolor;
+	LBGenerator *gn;
+	LBTransform *xf;
 };
 
 struct LBTransitionDesc
 {
-    u32 file_id;
-    intptr_t o_dobjdesc;
-    intptr_t o_anim_joint;
-    s32 unk_lbtransition_0xC;
+	u32 file_id;
+	intptr_t o_dobjdesc;
+	intptr_t o_anim_joint;
+	s32 unk_lbtransition_0xC;
 };
 
 struct LBBackupVSRecord

@@ -8,16 +8,16 @@
 
 extern void mnScreenAdjustFuncLights(Gfx **dls);
 extern void mnScreenAdjustFrameProcDisplay(GObj *gobj);
-extern void mnScreenAdjustMakeFrame(void);
-extern void mnScreenAdjustMakeGuide(void);
-extern void mnScreenAdjustMakeInstruction(void);
-extern void mnScreenAdjustMakeFrameCamera(void);
-extern void mnScreenAdjustMakeSpriteCamera(void);
+extern void mnScreenAdjustMakeFrame();
+extern void mnScreenAdjustMakeGuide();
+extern void mnScreenAdjustMakeInstruction();
+extern void mnScreenAdjustMakeFrameCamera();
+extern void mnScreenAdjustMakeSpriteCamera();
 extern void mnScreenAdjustApplyCenterOffsets(s16 h, s16 v);
-extern void mnScreenAdjustInitVars(void);
-extern void mnScreenAdjustBackupOffsets(void);
+extern void mnScreenAdjustInitVars();
+extern void mnScreenAdjustBackupOffsets();
 extern void mnScreenAdjustFuncRun(GObj *gobj);
-extern void mnScreenAdjustFuncStart(void);
-extern void mnScreenAdjustStartScene(void);
+extern void mnScreenAdjustFuncStart();
+extern void mnScreenAdjustStartScene();
 
 #endif

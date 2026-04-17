@@ -8,7 +8,7 @@
 
 extern s32 ftParamGetItemMusicLength(u32 bgm_id);
 extern void ftParamTryPlayItemMusic(u32 bgm_id);
-extern void ftParamTryUpdateItemMusic(void);
+extern void ftParamTryUpdateItemMusic();
 extern void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj);
 extern GObj* ftParamGetPlayerNumGObj(s32 player_num);
 extern void ftParamLockPlayerControl(GObj *fighter_gobj);
@@ -77,10 +77,10 @@ extern void ftParamSetHealDamage(FTStruct *fp, s32 heal);
 extern s32 ftParamGetCapturedDamage(FTStruct *fp, s32 damage);
 extern f32 ftParamGetStale(s32 player, s32 attack_id, u16 motion_count);
 extern s32 ftParamGetStaledDamage(s32 player, s32 damage, s32 attack_id, u16 motion_count);
-extern u16 ftParamGetMotionCount(void);
+extern u16 ftParamGetMotionCount();
 extern void ftParamSetMotionID(FTStruct *fp, s32 attack_id);
 extern void ftParamUpdateStaleQueue(s32 attack_player, s32 defend_player, s32 attack_id, u16 motion_count);
-extern u16 ftParamGetStatUpdateCount(void);
+extern u16 ftParamGetStatUpdateCount();
 extern void ftParamSetStatUpdate(FTStruct *fp, u16 flags);
 extern void ftParamUpdate1PGameAttackStats(FTStruct *fp, u16 flags);
 extern void ftParamSetStarHitStatusInvincible(FTStruct *fp, s32 star_invincible_tics);
@@ -103,6 +103,6 @@ extern void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3);
 extern s32 ftParamGetCostumeCommonID(s32 fkind, s32 color);
 extern s32 ftParamGetCostumeTeamID(s32 fkind, s32 color);
 extern s32 ftParamGetCostumeDebug(s32 fkind);
-extern void ftParamInitGame(void);
+extern void ftParamInitGame();
 
 #endif

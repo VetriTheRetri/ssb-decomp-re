@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <wp/wpdef.h>
 
-extern void func_ovl3_8016C9A0(void);
+extern void func_ovl3_8016C9A0();
 extern sb32 wpLinkSpinAttackProcDead(GObj *weapon_gobj);
 extern sb32 wpLinkSpinAttackProcUpdate(GObj *weapon_gobj);
 extern sb32 wpLinkSpinAttackProcMap(GObj *weapon_gobj);

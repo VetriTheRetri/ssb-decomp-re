@@ -25,7 +25,7 @@
 #define FTLINK_SPINATTACK_LANDING_LAG 0.75F            // Divide landing animation length by this value
 #endif
 
-extern FTStatusDesc dFTLinkSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTLinkSpecialStatusDescs[];
 
 extern void *gFTDataLinkMain;
 extern void *gFTDataLinkMainMotion;
@@ -37,70 +37,70 @@ extern s32 gFTDataLinkParticleBankID;
 
 typedef enum ftLinkMotion
 {
-    nFTLinkMotionAttack13 = nFTCommonMotionSpecialStart,
-    nFTLinkMotionAttack100Start,
-    nFTLinkMotionAttack100Loop,
-    nFTLinkMotionAttack100End,
-    nFTLinkMotionAppearR,
-    nFTLinkMotionAppearL,
-    nFTLinkMotionSpecialHi,
-    nFTLinkMotionSpecialHiEnd,
-    nFTLinkMotionSpecialAirHi,
-    nFTLinkMotionSpecialN,
-    nFTLinkMotionSpecialNGet,
-    nFTLinkMotionSpecialNEmpty,
-    nFTLinkMotionSpecialAirN,
-    nFTLinkMotionSpecialAirNReturn,
-    nFTLinkMotionSpecialAirNEmpty,
-    nFTLinkMotionSpecialLw,
-    nFTLinkMotionSpecialAirLw
+	nFTLinkMotionAttack13 = nFTCommonMotionSpecialStart,
+	nFTLinkMotionAttack100Start,
+	nFTLinkMotionAttack100Loop,
+	nFTLinkMotionAttack100End,
+	nFTLinkMotionAppearR,
+	nFTLinkMotionAppearL,
+	nFTLinkMotionSpecialHi,
+	nFTLinkMotionSpecialHiEnd,
+	nFTLinkMotionSpecialAirHi,
+	nFTLinkMotionSpecialN,
+	nFTLinkMotionSpecialNGet,
+	nFTLinkMotionSpecialNEmpty,
+	nFTLinkMotionSpecialAirN,
+	nFTLinkMotionSpecialAirNReturn,
+	nFTLinkMotionSpecialAirNEmpty,
+	nFTLinkMotionSpecialLw,
+	nFTLinkMotionSpecialAirLw
 
 } ftLinkMotion;
 
 typedef enum ftLinkStatus
 {
-    nFTLinkStatusAttack13 = nFTCommonStatusSpecialStart,
-    nFTLinkStatusAttack100Start,
-    nFTLinkStatusAttack100Loop,
-    nFTLinkStatusAttack100End,
-    nFTLinkStatusAppearR,
-    nFTLinkStatusAppearL,
-    nFTLinkStatusSpecialHi,
-    nFTLinkStatusSpecialHiEnd,
-    nFTLinkStatusSpecialAirHi,
-    nFTLinkStatusSpecialN,
-    nFTLinkStatusSpecialNGet,
-    nFTLinkStatusSpecialNEmpty,
-    nFTLinkStatusSpecialAirN,
-    nFTLinkStatusSpecialAirNReturn,
-    nFTLinkStatusSpecialAirNEmpty,
-    nFTLinkStatusSpecialLw,
-    nFTLinkStatusSpecialAirLw
+	nFTLinkStatusAttack13 = nFTCommonStatusSpecialStart,
+	nFTLinkStatusAttack100Start,
+	nFTLinkStatusAttack100Loop,
+	nFTLinkStatusAttack100End,
+	nFTLinkStatusAppearR,
+	nFTLinkStatusAppearL,
+	nFTLinkStatusSpecialHi,
+	nFTLinkStatusSpecialHiEnd,
+	nFTLinkStatusSpecialAirHi,
+	nFTLinkStatusSpecialN,
+	nFTLinkStatusSpecialNGet,
+	nFTLinkStatusSpecialNEmpty,
+	nFTLinkStatusSpecialAirN,
+	nFTLinkStatusSpecialAirNReturn,
+	nFTLinkStatusSpecialAirNEmpty,
+	nFTLinkStatusSpecialLw,
+	nFTLinkStatusSpecialAirLw
 
 } ftLinkStatus;
 
 typedef struct FTLinkPassiveVars
 {
-    GObj *boomerang_gobj;
+	GObj *boomerang_gobj;
 
 } FTLinkPassiveVars;
 
 typedef struct ftLinkSpecialNStatusVars
 {
-    sb32 is_smash;
+	sb32 is_smash;
 
 } ftLinkSpecialNStatusVars;
 
 typedef struct ftLinkSpecialHiStatusVars
 {
-    GObj *spin_attack_gobj;
+	GObj *spin_attack_gobj;
 
 } ftLinkSpecialHiStatusVars;
 
 typedef union FTLinkStatusVars
 {
-    ftLinkSpecialNStatusVars specialn;
-    ftLinkSpecialHiStatusVars specialhi;
+	ftLinkSpecialNStatusVars specialn;
+	ftLinkSpecialHiStatusVars specialhi;
 
 } FTLinkStatusVars;
 

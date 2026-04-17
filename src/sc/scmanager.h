@@ -7,7 +7,7 @@
 #include <sc/scdef.h>
 #include <lb/lbdef.h>
 
-extern char dSCManagerBuildDate[/* */];
+extern char dSCManagerBuildDate[];
 
 extern s32 gSCManagerUnkown0x800A50F0;
 extern u32 gSCManagerCIC;
@@ -24,12 +24,12 @@ extern LBBackupData gSCManagerBackupData, dSCManagerDefaultBackupData;
 
 extern void scManagerRunLoop(sb32 arg);
 extern void scManagerFuncUpdate(SYTaskmanSetup *arg);
-extern void scManagerFuncDraw(void);
+extern void scManagerFuncDraw();
 extern void scManagerMeterProcDisplay(GObj *gobj);
 extern GObj* scManagerMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority);
 extern void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority);
 extern void scManagerInspectGObj(GObj *gobj);
-extern void scManagerFuncPrint(void);
-extern void scManagerRunPrintGObjStatus(void);
+extern void scManagerFuncPrint();
+extern void scManagerRunPrintGObjStatus();
 
 #endif

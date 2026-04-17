@@ -673,13 +673,13 @@ typedef struct ftCommonCaptureYoshiStatusVars
 
 typedef struct ftCommonYoshiEggDesc
 {
-    f32 effect_size;
-    Vec3f offset;
-    Vec3f size;
+	f32 effect_size;
+	Vec3f offset;
+	Vec3f size;
 
 } ftCommonYoshiEggDesc;
 
-extern ftCommonYoshiEggDesc dFTCommonYoshiEggDamageCollDescs[/* */];
+extern ftCommonYoshiEggDesc dFTCommonYoshiEggDamageCollDescs[];
 
 typedef struct ftCommonCaptureCaptainStatusVars
 {

@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-// 0x801313E0 
+// 801313E0
 GObj *gGRCommonLayerGObjs[4];
 
-// 0x801313F0
+// 801313F0
 GRStruct gGRCommonStruct;
 
 // // // // // // // // // // // //
@@ -19,17 +19,17 @@ GRStruct gGRCommonStruct;
 //                               //
 // // // // // // // // // // // //
 
-// 0x80105600
-void grCommonSetupInitAll(void)
+// 80105600
+void grCommonSetupInitAll()
 {
-    gGRCommonLayerGObjs[0] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[0], 0, NULL);
-    gGRCommonLayerGObjs[1] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[1], 1, gMPCollisionYakumonoDObjs->dobjs);
-    gGRCommonLayerGObjs[2] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[2], 2, NULL);
-    gGRCommonLayerGObjs[3] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[3], 3, NULL);
+	gGRCommonLayerGObjs[0] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[0], 0, NULL);
+	gGRCommonLayerGObjs[1] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[1], 1, gMPCollisionYakumonoDObjs->dobjs);
+	gGRCommonLayerGObjs[2] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[2], 2, NULL);
+	gGRCommonLayerGObjs[3] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[3], 3, NULL);
 
-    mpCollisionClearYakumonoAll();
-    grMainSetupMakeGround();
-    mpCollisionInitYakumonoAll();
-    itManagerMakeAppearActor();
-    efGroundMakeAppearActor();
+	mpCollisionClearYakumonoAll();
+	grMainSetupMakeGround();
+	mpCollisionInitYakumonoAll();
+	itManagerMakeAppearActor();
+	efGroundMakeAppearActor();
 }

@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E480
+// 8018E480
 LBFileNode sSCVSBattleStatusBuffer[100];
 
-// 0x8018E7A0
+// 8018E7A0
 LBFileNode sSCVSBattleForceStatusBuffer[7];
 
 // // // // // // // // // // // //
@@ -19,8 +19,8 @@ LBFileNode sSCVSBattleForceStatusBuffer[7];
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E330
-void scVSBattleSetupFiles(void)
+// 8018E330
+void scVSBattleSetupFiles()
 {
 	LBRelocSetup rl_setup;
 

@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <sc/scdef.h>
 
-// 0x80130D60
+// 80130D60
 extern u8 sSC1PManagerScenePrev;
 
 // 0x80130D64 - Total time (in frames) taken to complete 1P Game
@@ -26,15 +26,15 @@ extern u8 sSC1PManagerLevelGuard;
 // 0x80130D75 - Copy ability of final Kirby on Kirby Team in 1P Game
 extern u8 gSC1PManagerKirbyTeamFinalCopy;
 
-// 0x80130D76
+// 80130D76
 extern u8 gSC1PManagerKirbyTeamModelPartID;
 
 extern s32 sc1PManagerGetFighterKindsNum(u16 flag);
 extern s32 sc1PManagerGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random);
 extern s32 sc1PManagerGetShuffledKirbyCopy(u16 flags, s32 random);
-extern void sc1PManagerTrySetChallengers(void);
-extern sb32 sc1PManagerCheckUnlockSoundTest(void);
+extern void sc1PManagerTrySetChallengers();
+extern sb32 sc1PManagerCheckUnlockSoundTest();
 extern void sc1PManagerTrySaveBackup(sb32 is_complete_spgame);
-extern void sc1PManagerUpdateScene(void);
+extern void sc1PManagerUpdateScene();
 
 #endif

@@ -7,19 +7,19 @@
 
 extern void mvOpeningSectorFuncLights(Gfx **dls);
 extern void mvOpeningSectorWallpaperProcUpdate(GObj* wallpaper_gobj);
-extern void mvOpeningSectorMakeWallpaper(void);
-extern void mvOpeningSectorMakeGreatFox(void);
+extern void mvOpeningSectorMakeWallpaper();
+extern void mvOpeningSectorMakeGreatFox();
 extern void mvOpeningSectorCockpitProcDisplay(GObj *cockpit_gobj);
 extern void mvOpeningSectorCockpitProcUpdate(GObj* cockpit_gobj);
-extern void mvOpeningSectorMakeCockpit(void);
-extern void mvOpeningSectorMakeArwings(void);
+extern void mvOpeningSectorMakeCockpit();
+extern void mvOpeningSectorMakeArwings();
 extern void mvOpeningSectorCameraProcUpdate(GObj* camera_gobj);
-extern void mvOpeningSectorMakeMainCamera(void);
-extern void mvOpeningSectorMakeWallpaperCamera(void);
-extern void mvOpeningSectorMakeCockpitCamera(void);
-extern void mvOpeningSectorInitTotalTimeTics(void);
+extern void mvOpeningSectorMakeMainCamera();
+extern void mvOpeningSectorMakeWallpaperCamera();
+extern void mvOpeningSectorMakeCockpitCamera();
+extern void mvOpeningSectorInitTotalTimeTics();
 extern void mvOpeningSectorFuncRun(GObj *gobj);
-extern void mvOpeningSectorFuncStart(void);
-extern void mvOpeningSectorStartScene(void);
+extern void mvOpeningSectorFuncStart();
+extern void mvOpeningSectorStartScene();
 
 #endif

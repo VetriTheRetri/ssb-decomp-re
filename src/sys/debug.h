@@ -26,15 +26,15 @@ extern void syDebugFramebufferPrintFloatReg(s32 x, s32 y, s32 reg_id, f32 *fp_re
 extern void syDebugFramebufferPrintFCSR(u32 fcsr);
 extern s32 syDebugWaitFramebufferOrController(u32 buttons, void *framebuf);
 extern void syDebugFramebufferPrintThreadStatus(OSThread *t, sb32 is_show_summary);
-extern OSThread* syDebugGetFaultThread(void);
+extern OSThread* syDebugGetFaultThread();
 extern void syDebugSetFuncPrint(void (*func_print)(void));
 extern void syDebugResetMesgCursor(s32 x, s32 y);
 extern void syDebugFramebufferVPrintfNewLine(const char *fmt, va_list args);
 extern void syDebugDebugPrintf(const char *fmt, ...);
 extern void syDebugReportCPUBreakFault(void *arg);
-extern void syDebugStartRmonThread8(void);
+extern void syDebugStartRmonThread8();
 extern void syDebugFileLoaderThread8(void *arg);
-extern void syDebugStartRmonThread5Hang(void);
+extern void syDebugStartRmonThread5Hang();
 extern void syDebugPrintf(const char *fmt, ...);
 extern void syDebugRunFuncPrint(void (*func_print)(void));
 

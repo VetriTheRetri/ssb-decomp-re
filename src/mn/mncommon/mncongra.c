@@ -14,8 +14,8 @@ extern void* func_800269C0_275C0(u16);
 //                               //
 // // // // // // // // // // // //
 
-// 0x80132100
-MNCongraPicture dMNCongraPictures[/* */] =
+// 80132100
+MNCongraPicture dMNCongraPictures[] =
 {
 	// Mario
 	{ 
@@ -90,24 +90,24 @@ MNCongraPicture dMNCongraPictures[/* */] =
 	}
 };
 
-// 0x801321C0
+// 801321C0
 SYColorRGBA dMNCongraFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
-// 0x801321C4
+// 801321C4
 SYColorRGBA D_ovl57_801321C4 = { 0x00, 0x00, 0x00, 0x00 };
 
-// 0x801321C8
+// 801321C8
 Lights1 dMNCongraLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
-// 0x801321E0
-Gfx dMNCongraDisplayList[/* */] =
+// 801321E0
+Gfx dMNCongraDisplayList[] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNCongraLights1),
 	gsSPEndDisplayList()
 };
 
-// 0x80132208
+// 80132208
 SYVideoSetup dMNCongraVideoSetup =
 {
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0),
@@ -118,52 +118,52 @@ SYVideoSetup dMNCongraVideoSetup =
 	240, 
 	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER |
 	0x800                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA     |
-    SYVIDEO_FLAG_COLORDEPTH32 | SYVIDEO_FLAG_NOSERRATE    | 0x1
+	SYVIDEO_FLAG_COLORDEPTH32 | SYVIDEO_FLAG_NOSERRATE    | 0x1
 };
 
-// 0x80132224
+// 80132224
 SYTaskmanSetup dMNCongraTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                          // ???
-        gcRunAll,              		// Update function
-        mnCongraFuncDraw,           // Frame draw function
-        &ovl57_BSS_END,             // Allocatable memory pool start
-        0,                          // Allocatable memory pool size
-        1,                          // ???
-        2,                          // Number of contexts?
-        sizeof(Gfx) * 1280,         // Display List Buffer 0 Size
-        sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
-        0,                          // Display List Buffer 2 Size
-        0,                          // Display List Buffer 3 Size
-        0x2800,                     // Graphics Heap Size
-        2,                          // ???
-        0xC000,                     // RDP Output Buffer Size
-        mnCongraFuncLights,         // Pre-render function
-        syControllerFuncRead,       // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                          // ???
+		gcRunAll,              		// Update function
+		mnCongraFuncDraw,           // Frame draw function
+		&ovl57_BSS_END,             // Allocatable memory pool start
+		0,                          // Allocatable memory pool size
+		1,                          // ???
+		2,                          // Number of contexts?
+		sizeof(Gfx) * 1280,         // Display List Buffer 0 Size
+		sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
+		0,                          // Display List Buffer 2 Size
+		0,                          // Display List Buffer 3 Size
+		0x2800,                     // Graphics Heap Size
+		2,                          // ???
+		0xC000,                     // RDP Output Buffer Size
+		mnCongraFuncLights,         // Pre-render function
+		syControllerFuncRead,       // Controller I/O function
+	},
 
-    0,                              // Number of GObjThreads
-    sizeof(u64) * 192,              // Thread stack size
-    0,                              // Number of thread stacks
-    0,                              // ???
-    0,                              // Number of GObjProcesses
-    0,                              // Number of GObjs
-    sizeof(GObj),                   // GObj size
-    0,                              // Number of XObjs
-    NULL,                           // Matrix function list
-    NULL,                           // DObjVec eject function
-    0,                              // Number of AObjs
-    0,                              // Number of MObjs
-    0,                              // Number of DObjs
-    sizeof(DObj),                   // DObj size
-    0,                              // Number of SObjs
-    sizeof(SObj),                   // SObj size
-    0,                              // Number of CObjs
-    sizeof(CObj),                 	// Camera size
-    
-    mnCongraFuncStart               // Task start function
+	0,                              // Number of GObjThreads
+	sizeof(u64) * 192,              // Thread stack size
+	0,                              // Number of thread stacks
+	0,                              // ???
+	0,                              // Number of GObjProcesses
+	0,                              // Number of GObjs
+	sizeof(GObj),                   // GObj size
+	0,                              // Number of XObjs
+	NULL,                           // Matrix function list
+	NULL,                           // DObjVec eject function
+	0,                              // Number of AObjs
+	0,                              // Number of MObjs
+	0,                              // Number of DObjs
+	sizeof(DObj),                   // DObj size
+	0,                              // Number of SObjs
+	sizeof(SObj),                   // SObj size
+	0,                              // Number of CObjs
+	sizeof(CObj),                 	// Camera size
+	
+	mnCongraFuncStart               // Task start function
 };
 
 // // // // // // // // // // // //
@@ -172,25 +172,25 @@ SYTaskmanSetup dMNCongraTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 0x801322B0
+// 801322B0
 s32 sMNCongraPad0x801322B0[2];
 
-// 0x801322B8
+// 801322B8
 LBFileNode sMNCongraStatusBuffer[5];
 
-// 0x801322E0
+// 801322E0
 s32 sMNCongraFighterKind;
 
-// 0x801322E4
+// 801322E4
 s32 sMNCongraSkipWait;
 
-// 0x801322E8
+// 801322E8
 s32 sMNCongraSceneChangeWait;
 
-// 0x801322EC
+// 801322EC
 sb32 sMNCongraIsProceed;
 
-// 0x801322F0
+// 801322F0
 sb32 sMNCongraIsProceedScene;
 
 // // // // // // // // // // // //
@@ -199,7 +199,7 @@ sb32 sMNCongraIsProceedScene;
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131B00
+// 80131B00
 sb32 mnCongraCheckPlayerControllerConnected(s32 player)
 {
 	s32 i;
@@ -214,7 +214,7 @@ sb32 mnCongraCheckPlayerControllerConnected(s32 player)
 	return FALSE;
 }
 
-// 0x80131B6C
+// 80131B6C
 s32 mnCongraGetPlayerTapButtons(u32 buttons)
 {
 	s32 player;
@@ -233,7 +233,7 @@ s32 mnCongraGetPlayerTapButtons(u32 buttons)
 	return 0;
 }
 
-// 0x80131C04
+// 80131C04
 void mnCongraActorFuncRun(GObj *gobj)
 {
 	SYColorRGBA color;
@@ -255,8 +255,8 @@ void mnCongraActorFuncRun(GObj *gobj)
 	}
 }
 
-// 0x80131CA4
-void mnCongraFuncStart(void)
+// 80131CA4
+void mnCongraFuncStart()
 {
 	LBRelocSetup rl_setup;
 	CObj *cobj;
@@ -365,8 +365,8 @@ void mnCongraFuncStart(void)
 	);
 }
 
-// 0x80131F60
-void mnCongraFuncDraw(void)
+// 80131F60
+void mnCongraFuncDraw()
 {
 	gcDrawAll();
 
@@ -392,14 +392,14 @@ void mnCongraFuncDraw(void)
 	}
 }
 
-// 0x80131FE8
+// 80131FE8
 void mnCongraFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNCongraDisplayList);
 }
 
-// 0x8013200C
-void mnCongraStartScene(void)
+// 8013200C
+void mnCongraStartScene()
 {
 	u16 *fb16;
 	u32 *fb32;

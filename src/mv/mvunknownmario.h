@@ -5,10 +5,10 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvUnknownMarioSetupFiles(void);
+extern void mvUnknownMarioSetupFiles();
 extern void mvUnknownMarioFuncRun(GObj *gobj);
-extern void mvUnknownMarioFuncStart(void);
+extern void mvUnknownMarioFuncStart();
 extern void mvUnknownMarioFuncLights(Gfx **dls);
-extern void mvUnknownMarioStartScene(void);
+extern void mvUnknownMarioStartScene();
 
 #endif

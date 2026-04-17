@@ -47,7 +47,7 @@
 #define FTNESS_PSYCHICMAGNET_COLANIM_ID 0x3F
 #define FTNESS_PSYCHICMAGNET_COLANIM_LENGTH 0
 
-extern FTStatusDesc dFTNessSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTNessSpecialStatusDescs[];
 
 extern void *gFTNessFileMain;
 extern void *gFTNessFileMainMotion;
@@ -60,101 +60,101 @@ extern s32 gFTNessParticleBankID;
 // Moveset script IDs
 typedef enum ftNessMotion
 {
-    nFTNessMotionAttack13 = nFTCommonMotionSpecialStart,
-    nFTNessMotionAppearRStart,
-    nFTNessMotionAppearLStart,
-    nFTNessMotionAppearWait,
-    nFTNessMotionAppearREnd,
-    nFTNessMotionAppearLEnd,
-    nFTNessMotionSpecialN,
-    nFTNessMotionSpecialAirN,
-    nFTNessMotionSpecialHiStart,
-    nFTNessMotionSpecialHiHold,
-    nFTNessMotionSpecialHiEnd,
-    nFTNessMotionSpecialHiJibaku,
-    nFTNessMotionSpecialAirHiStart,
-    nFTNessMotionSpecialAirHiHold,
-    nFTNessMotionSpecialAirHiEnd,
-    nFTNessMotionSpecialAirHiBound,
-    nFTNessMotionSpecialAirHiJibaku,
-    nFTNessMotionSpecialLwStart,
-    nFTNessMotionSpecialLwHold,
-    nFTNessMotionSpecialLwHit,
-    nFTNessMotionSpecialLwEnd,
-    nFTNessMotionSpecialAirLwStart,
-    nFTNessMotionSpecialAirLwHold,
-    nFTNessMotionSpecialAirLwHit,
-    nFTNessMotionSpecialAirLwEnd
+	nFTNessMotionAttack13 = nFTCommonMotionSpecialStart,
+	nFTNessMotionAppearRStart,
+	nFTNessMotionAppearLStart,
+	nFTNessMotionAppearWait,
+	nFTNessMotionAppearREnd,
+	nFTNessMotionAppearLEnd,
+	nFTNessMotionSpecialN,
+	nFTNessMotionSpecialAirN,
+	nFTNessMotionSpecialHiStart,
+	nFTNessMotionSpecialHiHold,
+	nFTNessMotionSpecialHiEnd,
+	nFTNessMotionSpecialHiJibaku,
+	nFTNessMotionSpecialAirHiStart,
+	nFTNessMotionSpecialAirHiHold,
+	nFTNessMotionSpecialAirHiEnd,
+	nFTNessMotionSpecialAirHiBound,
+	nFTNessMotionSpecialAirHiJibaku,
+	nFTNessMotionSpecialLwStart,
+	nFTNessMotionSpecialLwHold,
+	nFTNessMotionSpecialLwHit,
+	nFTNessMotionSpecialLwEnd,
+	nFTNessMotionSpecialAirLwStart,
+	nFTNessMotionSpecialAirLwHold,
+	nFTNessMotionSpecialAirLwHit,
+	nFTNessMotionSpecialAirLwEnd
 
 } ftNessMotion;
 
 // Status IDs
 typedef enum ftNessStatus
 {
-    nFTNessStatusAttack13 = nFTCommonStatusSpecialStart,
-    nFTNessStatusAppearRStart,
-    nFTNessStatusAppearLStart,
-    nFTNessStatusAppearWait,
-    nFTNessStatusAppearREnd,
-    nFTNessStatusAppearLEnd,
-    nFTNessStatusSpecialN,
-    nFTNessStatusSpecialAirN,
-    nFTNessStatusSpecialHiStart,
-    nFTNessStatusSpecialHiHold,
-    nFTNessStatusSpecialHiEnd,
-    nFTNessStatusSpecialHiJibaku,
-    nFTNessStatusSpecialAirHiStart,
-    nFTNessStatusSpecialAirHiHold,
-    nFTNessStatusSpecialAirHiEnd,
-    nFTNessStatusSpecialAirHiBound,
-    nFTNessStatusSpecialAirHiJibaku,
+	nFTNessStatusAttack13 = nFTCommonStatusSpecialStart,
+	nFTNessStatusAppearRStart,
+	nFTNessStatusAppearLStart,
+	nFTNessStatusAppearWait,
+	nFTNessStatusAppearREnd,
+	nFTNessStatusAppearLEnd,
+	nFTNessStatusSpecialN,
+	nFTNessStatusSpecialAirN,
+	nFTNessStatusSpecialHiStart,
+	nFTNessStatusSpecialHiHold,
+	nFTNessStatusSpecialHiEnd,
+	nFTNessStatusSpecialHiJibaku,
+	nFTNessStatusSpecialAirHiStart,
+	nFTNessStatusSpecialAirHiHold,
+	nFTNessStatusSpecialAirHiEnd,
+	nFTNessStatusSpecialAirHiBound,
+	nFTNessStatusSpecialAirHiJibaku,
 
-    nFTNessStatusSpecialLwScopeStart,                                  // Start of SpecialLw actions
-    nFTNessStatusSpecialLwStart = nFTNessStatusSpecialLwScopeStart,
-    nFTNessStatusSpecialLwHold,
-    nFTNessStatusSpecialLwHit,
-    nFTNessStatusSpecialLwEnd,
-    nFTNessStatusSpecialAirLwStart,
-    nFTNessStatusSpecialAirLwHold,
-    nFTNessStatusSpecialAirLwHit,
-    nFTNessStatusSpecialAirLwEnd,
-    nFTNessStatusSpecialLwScopeEnd = nFTNessStatusSpecialAirLwEnd     // End of SpecialLw actions
+	nFTNessStatusSpecialLwScopeStart,                                  // Start of SpecialLw actions
+	nFTNessStatusSpecialLwStart = nFTNessStatusSpecialLwScopeStart,
+	nFTNessStatusSpecialLwHold,
+	nFTNessStatusSpecialLwHit,
+	nFTNessStatusSpecialLwEnd,
+	nFTNessStatusSpecialAirLwStart,
+	nFTNessStatusSpecialAirLwHold,
+	nFTNessStatusSpecialAirLwHit,
+	nFTNessStatusSpecialAirLwEnd,
+	nFTNessStatusSpecialLwScopeEnd = nFTNessStatusSpecialAirLwEnd     // End of SpecialLw actions
 
 } ftNessStatus;
 
 typedef struct FTNessPassiveVars
 {
-    sb32 is_thunder_destroy;      // Bool to check if PK Thunder exists
-    s32 pkthunder_trail_id;
-    s16 pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
-    s16 pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
+	sb32 is_thunder_destroy;      // Bool to check if PK Thunder exists
+	s32 pkthunder_trail_id;
+	s16 pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
+	s16 pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
 
 } FTNessPassiveVars;
 
 typedef struct ftNessSpecialHiStatusVars
 {
-    s32 pkjibaku_delay;            // Frames before PK Thunder Blast can be initiated (PK Thunder will go through Ness while this timer is greater than 0)
-    s32 pkthunder_end_delay;       // Frames before PK Thunder transitions to its ending animation after the projectile despawns 
-    s32 pkthunder_gravity_delay;   // Frames before Ness is affected by gravity while performing PK Thunder
-    GObj *pkthunder_gobj;          // Pointer to the PK Thunder object
-    s32 pkjibaku_anim_length;      // Number of frames PK Thunder Blast will loop
-    f32 pkjibaku_angle;            // Angle of PK Thunder Blast (converted to 2D velocity vector with sin(angle) and cos(angle))
-    Vec3f pkthunder_pos;           // Might be PK Thunder's collision detection when checking if Ness is hitting himself with it?
+	s32 pkjibaku_delay;            // Frames before PK Thunder Blast can be initiated (PK Thunder will go through Ness while this timer is greater than 0)
+	s32 pkthunder_end_delay;       // Frames before PK Thunder transitions to its ending animation after the projectile despawns 
+	s32 pkthunder_gravity_delay;   // Frames before Ness is affected by gravity while performing PK Thunder
+	GObj *pkthunder_gobj;          // Pointer to the PK Thunder object
+	s32 pkjibaku_anim_length;      // Number of frames PK Thunder Blast will loop
+	f32 pkjibaku_angle;            // Angle of PK Thunder Blast (converted to 2D velocity vector with sin(angle) and cos(angle))
+	Vec3f pkthunder_pos;           // Might be PK Thunder's collision detection when checking if Ness is hitting himself with it?
 
 } ftNessSpecialHiStatusVars;
 
 typedef struct ftNessSpecialLwStatusVars
 {
-    s32 release_lag;               // Frames PSI Magnet automatically stays in the hold animation after initiating the move
-    sb32 is_release;               // Bool to check if PSI Magnet should be dropped (alas the B button is no longer being held)
-    s32 gravity_delay;             // Frames before Ness is affected by gravity after initiating PSI Magnet
+	s32 release_lag;               // Frames PSI Magnet automatically stays in the hold animation after initiating the move
+	sb32 is_release;               // Bool to check if PSI Magnet should be dropped (alas the B button is no longer being held)
+	s32 gravity_delay;             // Frames before Ness is affected by gravity after initiating PSI Magnet
 
 } ftNessSpecialLwStatusVars;
 
 typedef union FTNessStatusVars
 {
-    ftNessSpecialHiStatusVars specialhi;
-    ftNessSpecialLwStatusVars speciallw;
+	ftNessSpecialHiStatusVars specialhi;
+	ftNessSpecialLwStatusVars speciallw;
 
 } FTNessStatusVars;
 

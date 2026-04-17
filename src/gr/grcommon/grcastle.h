@@ -6,7 +6,7 @@
 #include <gr/grdef.h>
 
 extern void grCastleBumperProcUpdate(GObj *ground_gobj);
-extern void grCastleInitAll(void);
-extern GObj* grCastleMakeGround(void);
+extern void grCastleInitAll();
+extern GObj* grCastleMakeGround();
 
 #endif

@@ -8,49 +8,49 @@
 // Can't actually use this in a matching build, newline memes :(
 #define rdManagerSetupCommonFiles(status_buffer, force_status_buffer)                                   \
 {                                                                                                       \
-    LBRelocSetup rl_setup;                                                                              \
-    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;                                                \
-    rl_setup.table_files_num = (u32)&llRelocFileCount;                                                  \
-    rl_setup.file_heap = NULL;                                                                          \
-    rl_setup.file_heap_size = 0;                                                                        \
-    rl_setup.status_buffer = status_buffer;                                                             \
-    rl_setup.status_buffer_size = (status_buffer) ? ARRAY_COUNT(status_buffer) : 0;                     \
-    rl_setup.force_status_buffer = force_status_buffer;                                                 \
-    rl_setup.force_status_buffer_size = (force_status_buffer) ? ARRAY_COUNT(force_status_buffer) : 0;   \
-    lbRelocInitSetup(&rl_setup);                                                                        \
-    lbRelocLoadFilesExtern                                                                              \
-    (                                                                                                   \
-        dGMCommonFileIDs,                                                                               \
-        ARRAY_COUNT(dGMCommonFileIDs),                                                                  \
-        gGMCommonFiles,                                                                                 \
-        syTaskmanMalloc                                                                                 \
-        (                                                                                               \
-            lbRelocGetAllocSize                                                                         \
-            (                                                                                           \
-                dGMCommonFileIDs,                                                                       \
-                ARRAY_COUNT(dGMCommonFileIDs)                                                           \
-            ),                                                                                          \
-            0x10                                                                                        \
-        )                                                                                               \
-    );                                                                                                  \
+	LBRelocSetup rl_setup;                                                                              \
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;                                                \
+	rl_setup.table_files_num = (u32)&llRelocFileCount;                                                  \
+	rl_setup.file_heap = NULL;                                                                          \
+	rl_setup.file_heap_size = 0;                                                                        \
+	rl_setup.status_buffer = status_buffer;                                                             \
+	rl_setup.status_buffer_size = (status_buffer) ? ARRAY_COUNT(status_buffer) : 0;                     \
+	rl_setup.force_status_buffer = force_status_buffer;                                                 \
+	rl_setup.force_status_buffer_size = (force_status_buffer) ? ARRAY_COUNT(force_status_buffer) : 0;   \
+	lbRelocInitSetup(&rl_setup);                                                                        \
+	lbRelocLoadFilesExtern                                                                              \
+	(                                                                                                   \
+		dGMCommonFileIDs,                                                                               \
+		ARRAY_COUNT(dGMCommonFileIDs),                                                                  \
+		gGMCommonFiles,                                                                                 \
+		syTaskmanMalloc                                                                                 \
+		(                                                                                               \
+			lbRelocGetAllocSize                                                                         \
+			(                                                                                           \
+				dGMCommonFileIDs,                                                                       \
+				ARRAY_COUNT(dGMCommonFileIDs)                                                           \
+			),                                                                                          \
+			0x10                                                                                        \
+		)                                                                                               \
+	);                                                                                                  \
 }
 */
 
 #define lbRelocLoadFilesListed(file_ids, out_ptrs)  \
 lbRelocLoadFilesExtern                              \
 (                                                   \
-    file_ids,                                       \
-    ARRAY_COUNT(file_ids),                          \
-    out_ptrs,                                       \
-    syTaskmanMalloc                                 \
-    (                                               \
-        lbRelocGetAllocSize                         \
-        (                                           \
-            file_ids,                               \
-            ARRAY_COUNT(file_ids)                   \
-        ),                                          \
-        0x10                                        \
-    )                                               \
+	file_ids,                                       \
+	ARRAY_COUNT(file_ids),                          \
+	out_ptrs,                                       \
+	syTaskmanMalloc                                 \
+	(                                               \
+		lbRelocGetAllocSize                         \
+		(                                           \
+			file_ids,                               \
+			ARRAY_COUNT(file_ids)                   \
+		),                                          \
+		0x10                                        \
+	)                                               \
 )
 
 extern uintptr_t lLBRelocTableAddr;         // 0x001AC870

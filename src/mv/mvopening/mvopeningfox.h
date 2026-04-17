@@ -5,23 +5,23 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvOpeningFoxSetupFiles(void);
+extern void mvOpeningFoxSetupFiles();
 extern void mvOpeningFoxInitName(SObj *sobj);
-extern void mvOpeningFoxMakeName(void);
+extern void mvOpeningFoxMakeName();
 extern void mvOpeningFoxMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningFoxMakeMotionCamera(Vec3f move);
-extern void mvOpeningFoxMakeMotionWindow(void);
+extern void mvOpeningFoxMakeMotionWindow();
 extern void mvOpeningFoxPosedWallpaperProcDisplay(GObj *gobj);
-extern void mvOpeningFoxMakePosedWallpaper(void);
+extern void mvOpeningFoxMakePosedWallpaper();
 extern void mvOpeningFoxPosedFighterProcUpdate(GObj *fighter_gobj);
-extern void mvOpeningFoxMakePosedFighter(void);
-extern void mvOpeningFoxMakeNameCamera(void);
-extern void mvOpeningFoxMakePosedFighterCamera(void);
-extern void mvOpeningFoxMakePosedWallpaperCamera(void);
+extern void mvOpeningFoxMakePosedFighter();
+extern void mvOpeningFoxMakeNameCamera();
+extern void mvOpeningFoxMakePosedFighterCamera();
+extern void mvOpeningFoxMakePosedWallpaperCamera();
 extern void mvOpeningFoxFuncRun(GObj *gobj);
-extern void mvOpeningFoxInitVars(void);
-extern void mvOpeningFoxFuncStart(void);
+extern void mvOpeningFoxInitVars();
+extern void mvOpeningFoxFuncStart();
 extern void mvOpeningFoxFuncLights(Gfx **dls);
-extern void mvOpeningFoxStartScene(void);
+extern void mvOpeningFoxStartScene();
 
 #endif

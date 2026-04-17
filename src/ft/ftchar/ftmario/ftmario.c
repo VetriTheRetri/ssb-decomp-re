@@ -18,25 +18,25 @@ extern intptr_t lFTMarioMotionWaitScript;           // 0x00000024
 //                               //
 // // // // // // // // // // // //
 
-// 0x80130E30
+// 80130E30
 void *gFTMarioFileMain;
 
-// 0x80130E34
+// 80130E34
 void *gFTMarioFileMainMotion;
 
-// 0x80130E38
+// 80130E38
 void *gFTMarioFileModel;
 
-// 0x80130E3C
+// 80130E3C
 void *gFTMarioFileSpecial1;
 
-// 0x80130E40
+// 80130E40
 void *gFTMarioFileSpecial2;
 
-// 0x80130E44
+// 80130E44
 void *gFTMarioFileSpecial3;
 
-// 0x80130E48
+// 80130E48
 s32 gFTMarioParticleBankID;
 
 // // // // // // // // // // // //
@@ -48,39 +48,39 @@ s32 gFTMarioParticleBankID;
 /*
 FTMotionDesc dFTMarioMotionDescs[] =
 {
-    // EntryNull?
-    {
-        &lFTMarioAnimWaitFileID,            // Animation file ID 
-        FTMOTION_SCRIPT_NULL,               // Script offset
-        FTANIM_FLAG_NONE                     // Animation flags
-    },
+	// EntryNull?
+	{
+		&lFTMarioAnimWaitFileID,            // Animation file ID 
+		FTMOTION_SCRIPT_NULL,               // Script offset
+		FTANIM_FLAG_NONE                     // Animation flags
+	},
 
-    // RebirthDown
-    {
-        &lFTMarioAnimDownBounceDFileID,     // Animation file ID 
-        FTMOTION_SCRIPT_NULL,               // Script offset
-        FTANIM_FLAG_NONE                     // Animation flags
-    },
+	// RebirthDown
+	{
+		&lFTMarioAnimDownBounceDFileID,     // Animation file ID 
+		FTMOTION_SCRIPT_NULL,               // Script offset
+		FTANIM_FLAG_NONE                     // Animation flags
+	},
 
-    // RebirthStand
-    {
-        &lFTMarioAnimDownStandDFileID,      // Animation file ID 
-        FTMOTION_SCRIPT_NULL,               // Script offset
-        FTANIM_FLAG_NONE                     // Animation flags
-    },
+	// RebirthStand
+	{
+		&lFTMarioAnimDownStandDFileID,      // Animation file ID 
+		FTMOTION_SCRIPT_NULL,               // Script offset
+		FTANIM_FLAG_NONE                     // Animation flags
+	},
 
-    // RebirthWait
-    {
-        &lFTMarioAnimWaitFileID,            // Animation file ID 
-        &lFTMarioMotionWaitScript,               // Script offset
-        FTANIM_FLAG_NONE                     // Animation flags
-    },
+	// RebirthWait
+	{
+		&lFTMarioAnimWaitFileID,            // Animation file ID 
+		&lFTMarioMotionWaitScript,               // Script offset
+		FTANIM_FLAG_NONE                     // Animation flags
+	},
 
-    // Wait
-    {
-        &lFTMarioAnimWaitFileID,            // Animation file ID 
-        &lFTMarioMotionWaitScript,          // Script offset
-        FTANIM_FLAG_NONE                     // Animation flags
-    },
+	// Wait
+	{
+		&lFTMarioAnimWaitFileID,            // Animation file ID 
+		&lFTMarioMotionWaitScript,          // Script offset
+		FTANIM_FLAG_NONE                     // Animation flags
+	},
 };
 */

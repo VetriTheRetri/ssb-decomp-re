@@ -84,22 +84,18 @@
 
 #define syGetSinCosUShort(sin, cos, angle, id) 	\
 {                                               \
-    id = SINTABLE_RAD_TO_ID(angle) & 0xFFF;     \
-                                                \
-    sin = gSYSinTable[id & 0x7FF];     			\
-                                                \
-    if (id & 0x800)                             \
-    {                                           \
-        sin = -sin;                             \
-    }                                          	\
-    id += 0x400;                               	\
-                                    			\
-    cos = gSYSinTable[id & 0x7FF];     			\
-                                                \
-    if (id & 0x800)                             \
-    {                                           \
-        cos = -cos;                             \
-    }                                           \
+	id = SINTABLE_RAD_TO_ID(angle) & 0xFFF;     \
+	sin = gSYSinTable[id & 0x7FF];     			\
+	if (id & 0x800)                             \
+	{                                           \
+		sin = -sin;                             \
+	}                                          	\
+	id += 0x400;                               	\
+	cos = gSYSinTable[id & 0x7FF];     			\
+	if (id & 0x800)                             \
+	{                                           \
+		cos = -cos;                             \
+	}                                           \
 }
 
 #define LBBACKUP_MASK_FIGHTER(kind) (1 << (kind))
@@ -178,9 +174,9 @@ typedef enum LBParticleKind
 
 typedef enum LBFileLocation
 {
-    nLBFileLocationExtern,
-    nLBFileLocationDefault,
-    nLBFileLocationForce,
+	nLBFileLocationExtern,
+	nLBFileLocationDefault,
+	nLBFileLocationForce,
 	nLBFileLocationEnumCount
 
 } LBFileLocation;

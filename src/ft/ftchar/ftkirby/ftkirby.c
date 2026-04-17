@@ -1,16 +1,16 @@
 #include <ft/fighter.h>
 
-// 0x80131070
+// 80131070
 void *gFTDataKirbyMain;
 
-// 0x80131074
+// 80131074
 void *gFTDataKirbyMainMotion;
 
-// 0x80131078
+// 80131078
 void *gFTDataKirbyModel;
 
-// 0x8013107C
+// 8013107C
 void *gFTDataKirbySpecial2;
 
-// 0x80131080
+// 80131080
 s32 gFTDataKirbyParticleBankID;

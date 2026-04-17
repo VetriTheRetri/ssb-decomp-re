@@ -75,7 +75,7 @@ typedef enum gmMusicID
 	nSYAudioBGMData,						// Character Data / VS Records
 	nSYAudioBGMModeSelect,					// Main Menu
 	nSYAudioBGMHammer,            			// Hammer
-    nSYAudioBGMStar,                   		// Star
+	nSYAudioBGMStar,                   		// Star
 	nSYAudioBGMEnd
 
 } gmMusicID;
@@ -373,8 +373,8 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMGamePause,
 	nSYAudioFGMInishiePowerBlock, 			// POW Block
 	nSYAudioFGMBonus1TargetBreak, 			// Break Bonus 1 target
-    nSYAudioFGMJungleTaruCannShoot,
-    nSYAudioFGMJungleTaruCannEnter,
+	nSYAudioFGMJungleTaruCannShoot,
+	nSYAudioFGMJungleTaruCannEnter,
 	nSYAudioFGMHyruleTwisterAppear,
 	nSYAudioFGMHyruleTwisterTrapped,
 	nSYAudioFGMPupupuWhispyWind, 			// Despawn?

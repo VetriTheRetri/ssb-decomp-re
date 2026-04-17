@@ -15,21 +15,21 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E070
+// 8018E070
 CObjDesc dMVOpeningLinkCObjDescStart = { { -800.0F, 180.0F, 800.0F }, { 0.0F, 180.0F, 0.0F }, 0.0F };
 
-// 0x8018E08C
+// 8018E08C
 CObjDesc dMVOpeningLinkCObjDescEnd = { { 200.0F, 0.0F, 400.0F }, { 0.0F, 240.0F, 0.0F }, 0.4F };
 
-// 0x8018E0A8
-FTKeyEvent dMVOpeningLinkKeyEvents[/* */] =
+// 8018E0A8
+FTKeyEvent dMVOpeningLinkKeyEvents[] =
 {
-    FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
-    FTKEY_EVENT_END()               // 0x0000
+	FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
+	FTKEY_EVENT_END()               // 0x0000
 };
 
-// 0x8018E0B0
-u32 dMVOpeningLinkFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+// 8018E0B0
+u32 dMVOpeningLinkFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -37,49 +37,49 @@ u32 dMVOpeningLinkFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeni
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E1C0
+// 8018E1C0
 s32 sMVOpeningLinkPad0x8018E1C0[2];
 
-// 0x8018E1C8
+// 8018E1C8
 s32 sMVOpeningLinkTotalTimeTics;
 
-// 0x8018E1CC
+// 8018E1CC
 GObj *sMVOpeningLinkNameGObj;
 
-// 0x8018E1D0
+// 8018E1D0
 GObj *sMVOpeningLinkFighterGObj;
 
-// 0x8018E1D4
+// 8018E1D4
 s32 sMVOpeningLinkPad0x8018E1D4;
 
-// 0x8018E1D8
+// 8018E1D8
 GObj *sMVOpeningLinkStageCameraGObj;
 
-// 0x8018E1DC
+// 8018E1DC
 void *sMVOpeningLinkFigatreeHeap;
 
-// 0x8018E1E0
+// 8018E1E0
 f32 sMVOpeningLinkPosedFighterSpeed;
 
-// 0x8018E1E4
+// 8018E1E4
 s32 sMVOpeningLinkPad0x8018E1E4;
 
-// 0x8018E1E8
+// 8018E1E8
 CObjDesc sMVOpeningLinkAdjustedStartCObjDesc;
 
-// 0x8018E208
+// 8018E208
 CObjDesc sMVOpeningLinkAdjustedEndCObjDesc;
 
-// 0x8018E228
+// 8018E228
 LBFileNode sMVOpeningLinkStatusBuffer[48];
 
-// 0x8018E3A8
+// 8018E3A8
 LBFileNode sMVOpeningLinkForceStatusBuffer[7];
 
-// 0x8018E3E0
+// 8018E3E0
 void *sMVOpeningLinkFiles[ARRAY_COUNT(dMVOpeningLinkFileIDs)];
 
-// 0x8018E3E8
+// 8018E3E8
 SCBattleState sMVOpeningLinkBattleState;
 
 // // // // // // // // // // // //
@@ -88,8 +88,8 @@ SCBattleState sMVOpeningLinkBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018D0C0
-void mvOpeningLinkSetupFiles(void)
+// 8018D0C0
+void mvOpeningLinkSetupFiles()
 {
 	LBRelocSetup rl_setup;
 
@@ -106,7 +106,7 @@ void mvOpeningLinkSetupFiles(void)
 	lbRelocLoadFilesListed(dMVOpeningLinkFileIDs, sMVOpeningLinkFiles);
 }
 
-// 0x8018D160
+// 8018D160
 void mvOpeningLinkInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -121,13 +121,13 @@ void mvOpeningLinkInitName(SObj *sobj)
 	sobj->sprite.blue = 0xFF;
 }
 
-// 0x8018D194
-void mvOpeningLinkMakeName(void)
+// 8018D194
+void mvOpeningLinkMakeName()
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonAnnounceCommonLetterLSprite,
 		&llIFCommonAnnounceCommonLetterISprite,
@@ -135,7 +135,7 @@ void mvOpeningLinkMakeName(void)
 		&llIFCommonAnnounceCommonLetterKSprite,
 		0x0
 	};
-	f32 pos_x[/* */] =
+	f32 pos_x[] =
 	{
 		0.0F, 30.0F, 45.0F, 80.0F
 	};
@@ -158,7 +158,7 @@ void mvOpeningLinkMakeName(void)
 	}
 }
 
-// 0x8018D2F4
+// 8018D2F4
 void mvOpeningLinkMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -175,7 +175,7 @@ void mvOpeningLinkMotionCameraProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x8018D3EC
+// 8018D3EC
 void mvOpeningLinkMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
@@ -216,8 +216,8 @@ void mvOpeningLinkMakeMotionCamera(Vec3f move)
 	cobj->vec.up.x = sMVOpeningLinkAdjustedStartCObjDesc.upx;
 }
 
-// 0x8018D5FC
-void mvOpeningLinkMakeMotionWindow(void)
+// 8018D5FC
+void mvOpeningLinkMakeMotionWindow()
 {
 	GObj *fighter_gobj;
 	s32 i;
@@ -275,7 +275,7 @@ void mvOpeningLinkMakeMotionWindow(void)
 	}
 }
 
-// 0x8018D824
+// 8018D824
 void mvOpeningLinkPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -288,8 +288,8 @@ void mvOpeningLinkPosedWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x8018D924
-void mvOpeningLinkMakePosedWallpaper(void)
+// 8018D924
+void mvOpeningLinkMakePosedWallpaper()
 {
 	gcAddGObjDisplay
 	(
@@ -307,7 +307,7 @@ void mvOpeningLinkMakePosedWallpaper(void)
 	);
 }
 
-// 0x8018D970
+// 8018D970
 void mvOpeningLinkPosedFighterProcUpdate(GObj *fighter_gobj)
 {
 	switch (sMVOpeningLinkTotalTimeTics)
@@ -338,8 +338,8 @@ void mvOpeningLinkPosedFighterProcUpdate(GObj *fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= sMVOpeningLinkPosedFighterSpeed;
 }
 
-// 0x8018DA40
-void mvOpeningLinkMakePosedFighter(void)
+// 8018DA40
+void mvOpeningLinkMakePosedFighter()
 {
 	GObj *fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -361,8 +361,8 @@ void mvOpeningLinkMakePosedFighter(void)
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 0x8018DB40
-void mvOpeningLinkMakeNameCamera(void)
+// 8018DB40
+void mvOpeningLinkMakeNameCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -385,8 +385,8 @@ void mvOpeningLinkMakeNameCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x8018DBE0
-void mvOpeningLinkMakePosedFighterCamera(void)
+// 8018DBE0
+void mvOpeningLinkMakePosedFighterCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -414,8 +414,8 @@ void mvOpeningLinkMakePosedFighterCamera(void)
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x8018DCD0
-void mvOpeningLinkMakePosedWallpaperCamera(void)
+// 8018DCD0
+void mvOpeningLinkMakePosedWallpaperCamera()
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -440,7 +440,7 @@ void mvOpeningLinkMakePosedWallpaperCamera(void)
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 0x8018DD80
+// 8018DD80
 void mvOpeningLinkFuncRun(GObj *gobj)
 {
 	sMVOpeningLinkTotalTimeTics++;
@@ -468,14 +468,14 @@ void mvOpeningLinkFuncRun(GObj *gobj)
 	}
 }
 
-// 0x8018DE3C
-void mvOpeningLinkInitVars(void)
+// 8018DE3C
+void mvOpeningLinkInitVars()
 {
 	sMVOpeningLinkTotalTimeTics = 0;
 }
 
-// 0x8018DE48
-void mvOpeningLinkFuncStart(void)
+// 8018DE48
+void mvOpeningLinkFuncStart()
 {
 	sMVOpeningLinkBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningLinkBattleState;
@@ -516,63 +516,63 @@ void mvOpeningLinkFuncStart(void)
 	}
 }
 
-// 0x8018DFCC
+// 8018DFCC
 void mvOpeningLinkFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E0DC
+// 8018E0DC
 SYVideoSetup dMVOpeningLinkVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E0F8
+// 8018E0F8
 SYTaskmanSetup dMVOpeningLinkTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                              // ???
-        gcRunAll,                 	 	// Update function
-        scManagerFuncDraw,              // Frame draw function
-        &ovl40_BSS_END,                 // Allocatable memory pool start
-        0,                              // Allocatable memory pool size
-        1,                              // ???
-        2,                              // Number of contexts?
-        sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
-        sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
-        0,                              // Display List Buffer 2 Size
-        0,                              // Display List Buffer 3 Size
-        0x8000,                         // Graphics Heap Size
-        2,                              // ???
-        0xC000,                         // RDP Output Buffer Size
-        mvOpeningLinkFuncLights,    	// Pre-render function
-        syControllerFuncRead,           // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                              // ???
+		gcRunAll,                 	 	// Update function
+		scManagerFuncDraw,              // Frame draw function
+		&ovl40_BSS_END,                 // Allocatable memory pool start
+		0,                              // Allocatable memory pool size
+		1,                              // ???
+		2,                              // Number of contexts?
+		sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
+		sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
+		0,                              // Display List Buffer 2 Size
+		0,                              // Display List Buffer 3 Size
+		0x8000,                         // Graphics Heap Size
+		2,                              // ???
+		0xC000,                         // RDP Output Buffer Size
+		mvOpeningLinkFuncLights,    	// Pre-render function
+		syControllerFuncRead,           // Controller I/O function
+	},
 
-    0,                                  // Number of GObjThreads
-    sizeof(u64) * 192,                  // Thread stack size
-    0,                                  // Number of thread stacks
-    0,                                  // ???
-    0,                                  // Number of GObjProcesses
-    0,                                  // Number of GObjs
-    sizeof(GObj),                       // GObj size
-    0,                                  // Number of XObjs
-    dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // DObjVec eject function
-    0,                                  // Number of AObjs
-    0,                                  // Number of MObjs
-    0,                                  // Number of DObjs
-    sizeof(DObj),                       // DObj size
-    0,                                  // Number of SObjs
-    sizeof(SObj),                       // SObj size
-    0,                                  // Number of CObjs
-    sizeof(CObj),                       // Camera size
-    
-    mvOpeningLinkFuncStart          	// Task start function
+	0,                                  // Number of GObjThreads
+	sizeof(u64) * 192,                  // Thread stack size
+	0,                                  // Number of thread stacks
+	0,                                  // ???
+	0,                                  // Number of GObjProcesses
+	0,                                  // Number of GObjs
+	sizeof(GObj),                       // GObj size
+	0,                                  // Number of XObjs
+	dLBCommonFuncMatrixList,            // Matrix function list
+	NULL,                               // DObjVec eject function
+	0,                                  // Number of AObjs
+	0,                                  // Number of MObjs
+	0,                                  // Number of DObjs
+	sizeof(DObj),                       // DObj size
+	0,                                  // Number of SObjs
+	sizeof(SObj),                       // SObj size
+	0,                                  // Number of CObjs
+	sizeof(CObj),                       // Camera size
+	
+	mvOpeningLinkFuncStart          	// Task start function
 };
 
-// 0x8018E018
-void mvOpeningLinkStartScene(void)
+// 8018E018
+void mvOpeningLinkStartScene()
 {
 	dMVOpeningLinkVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningLinkVideoSetup);

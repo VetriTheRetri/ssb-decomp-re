@@ -110,7 +110,7 @@
 
 extern intptr_t lFTKirbySpecialNCopyData;
 
-extern FTStatusDesc dFTKirbySpecialStatusDescs[/* */];
+extern FTStatusDesc dFTKirbySpecialStatusDescs[];
 
 extern void *gFTDataKirbyMain;
 extern void *gFTDataKirbyMainMotion;
@@ -120,255 +120,255 @@ extern s32 gFTDataKirbyParticleBankID;
 
 typedef enum ftKirbyMotion
 {
-    nFTKirbyMotionAttack100Start = nFTCommonMotionSpecialStart,
-    nFTKirbyMotionAttack100Loop,
-    nFTKirbyMotionAttack100End,
-    nFTKirbyMotionJumpAerialF1,
-    nFTKirbyMotionJumpAerialF2,
-    nFTKirbyMotionJumpAerialF3,
-    nFTKirbyMotionJumpAerialF4,
-    nFTKirbyMotionJumpAerialF5,
-    nFTKirbyMotionThrowF,
-    nFTKirbyMotionThrowFFall,
-    nFTKirbyMotionThrowFLanding,
-    nFTKirbyMotionCopyMarioSpecialN,
-    nFTKirbyMotionCopyMarioSpecialAirN,
-    nFTKirbyMotionCopyLuigiSpecialN,
-    nFTKirbyMotionCopyLuigiSpecialAirN,
-    nFTKirbyMotionCopyFoxSpecialN,
-    nFTKirbyMotionCopyFoxSpecialAirN,
-    nFTKirbyMotionCopySamusSpecialNStart,
-    nFTKirbyMotionCopySamusSpecialNLoop,
-    nFTKirbyMotionCopySamusSpecialNEnd,
-    nFTKirbyMotionCopySamusSpecialAirNStart,
-    nFTKirbyMotionCopySamusSpecialAirNEnd,
-    nFTKirbyMotionCopyDonkeySpecialNStart,
-    nFTKirbyMotionCopyDonkeySpecialAirNStart,
-    nFTKirbyMotionCopyDonkeySpecialNLoop,
-    nFTKirbyMotionCopyDonkeySpecialAirNLoop,
-    nFTKirbyMotionCopyDonkeySpecialNEnd,
-    nFTKirbyMotionCopyDonkeySpecialAirNEnd,
-    nFTKirbyMotionCopyDonkeySpecialNFull,
-    nFTKirbyMotionCopyDonkeySpecialAirNFull,
-    nFTKirbyMotionAppearR,
-    nFTKirbyMotionAppearL,
-    nFTKirbyMotionCopyPikachuSpecialN,
-    nFTKirbyMotionCopyPikachuSpecialAirN,
-    nFTKirbyMotionCopyNessSpecialN,
-    nFTKirbyMotionCopyNessSpecialAirN,
-    nFTKirbyMotionSpecialHi,
-    nFTKirbyMotionSpecialHiLanding,
-    nFTKirbyMotionSpecialAirHi,
-    nFTKirbyMotionSpecialAirHiFall,
-    nFTKirbyMotionSpecialLwStart,
-    nFTKirbyMotionSpecialLwUnk,
-    nFTKirbyMotionSpecialLwHold,
-    nFTKirbyMotionSpecialLwEnd,
-    nFTKirbyMotionSpecialAirLwStart,
-    nFTKirbyMotionSpecialAirLwHold,
-    nFTKirbyMotionSpecialAirLwLanding,
-    nFTKirbyMotionSpecialAirLwFall,
-    nFTKirbyMotionSpecialAirLwEnd,
-    nFTKirbyMotionSpecialNStart,
-    nFTKirbyMotionSpecialNLoop,
-    nFTKirbyMotionSpecialNEnd,
-    nFTKirbyMotionSpecialNEat,
-    nFTKirbyMotionSpecialNThrow,
-    nFTKirbyMotionSpecialNWait,
-    nFTKirbyMotionSpecialNTurn,
-    nFTKirbyMotionSpecialNCopy,
-    nFTKirbyMotionSpecialAirNStart,
-    nFTKirbyMotionSpecialAirNLoop,
-    nFTKirbyMotionSpecialAirNEnd,
-    nFTKirbyMotionSpecialAirNEat,
-    nFTKirbyMotionSpecialAirNThrow,
-    nFTKirbyMotionSpecialAirNWait,
-    nFTKirbyMotionSpecialAirNTurn,
-    nFTKirbyMotionSpecialAirNCopy,
-    nFTKirbyMotionCopyLinkSpecialN,
-    nFTKirbyMotionCopyLinkSpecialNGet,
-    nFTKirbyMotionCopyLinkSpecialNEmpty,
-    nFTKirbyMotionCopyLinkSpecialAirN,
-    nFTKirbyMotionCopyLinkSpecialAirNReturn,
-    nFTKirbyMotionCopyLinkSpecialAirNEmpty,
-    nFTKirbyMotionCopyPurinSpecialN,
-    nFTKirbyMotionCopyPurinSpecialAirN,
-    nFTKirbyMotionCopyCaptainSpecialN,
-    nFTKirbyMotionCopyCaptainSpecialAirN,
-    nFTKirbyMotionCopyYoshiSpecialN,
-    nFTKirbyMotionCopyYoshiSpecialNCatch,
-    nFTKirbyMotionCopyYoshiSpecialNRelease,
-    nFTKirbyMotionCopyYoshiSpecialAirN,
-    nFTKirbyMotionCopyYoshiSpecialAirNCatch,
-    nFTKirbyMotionCopyYoshiSpecialAirNRelease
+	nFTKirbyMotionAttack100Start = nFTCommonMotionSpecialStart,
+	nFTKirbyMotionAttack100Loop,
+	nFTKirbyMotionAttack100End,
+	nFTKirbyMotionJumpAerialF1,
+	nFTKirbyMotionJumpAerialF2,
+	nFTKirbyMotionJumpAerialF3,
+	nFTKirbyMotionJumpAerialF4,
+	nFTKirbyMotionJumpAerialF5,
+	nFTKirbyMotionThrowF,
+	nFTKirbyMotionThrowFFall,
+	nFTKirbyMotionThrowFLanding,
+	nFTKirbyMotionCopyMarioSpecialN,
+	nFTKirbyMotionCopyMarioSpecialAirN,
+	nFTKirbyMotionCopyLuigiSpecialN,
+	nFTKirbyMotionCopyLuigiSpecialAirN,
+	nFTKirbyMotionCopyFoxSpecialN,
+	nFTKirbyMotionCopyFoxSpecialAirN,
+	nFTKirbyMotionCopySamusSpecialNStart,
+	nFTKirbyMotionCopySamusSpecialNLoop,
+	nFTKirbyMotionCopySamusSpecialNEnd,
+	nFTKirbyMotionCopySamusSpecialAirNStart,
+	nFTKirbyMotionCopySamusSpecialAirNEnd,
+	nFTKirbyMotionCopyDonkeySpecialNStart,
+	nFTKirbyMotionCopyDonkeySpecialAirNStart,
+	nFTKirbyMotionCopyDonkeySpecialNLoop,
+	nFTKirbyMotionCopyDonkeySpecialAirNLoop,
+	nFTKirbyMotionCopyDonkeySpecialNEnd,
+	nFTKirbyMotionCopyDonkeySpecialAirNEnd,
+	nFTKirbyMotionCopyDonkeySpecialNFull,
+	nFTKirbyMotionCopyDonkeySpecialAirNFull,
+	nFTKirbyMotionAppearR,
+	nFTKirbyMotionAppearL,
+	nFTKirbyMotionCopyPikachuSpecialN,
+	nFTKirbyMotionCopyPikachuSpecialAirN,
+	nFTKirbyMotionCopyNessSpecialN,
+	nFTKirbyMotionCopyNessSpecialAirN,
+	nFTKirbyMotionSpecialHi,
+	nFTKirbyMotionSpecialHiLanding,
+	nFTKirbyMotionSpecialAirHi,
+	nFTKirbyMotionSpecialAirHiFall,
+	nFTKirbyMotionSpecialLwStart,
+	nFTKirbyMotionSpecialLwUnk,
+	nFTKirbyMotionSpecialLwHold,
+	nFTKirbyMotionSpecialLwEnd,
+	nFTKirbyMotionSpecialAirLwStart,
+	nFTKirbyMotionSpecialAirLwHold,
+	nFTKirbyMotionSpecialAirLwLanding,
+	nFTKirbyMotionSpecialAirLwFall,
+	nFTKirbyMotionSpecialAirLwEnd,
+	nFTKirbyMotionSpecialNStart,
+	nFTKirbyMotionSpecialNLoop,
+	nFTKirbyMotionSpecialNEnd,
+	nFTKirbyMotionSpecialNEat,
+	nFTKirbyMotionSpecialNThrow,
+	nFTKirbyMotionSpecialNWait,
+	nFTKirbyMotionSpecialNTurn,
+	nFTKirbyMotionSpecialNCopy,
+	nFTKirbyMotionSpecialAirNStart,
+	nFTKirbyMotionSpecialAirNLoop,
+	nFTKirbyMotionSpecialAirNEnd,
+	nFTKirbyMotionSpecialAirNEat,
+	nFTKirbyMotionSpecialAirNThrow,
+	nFTKirbyMotionSpecialAirNWait,
+	nFTKirbyMotionSpecialAirNTurn,
+	nFTKirbyMotionSpecialAirNCopy,
+	nFTKirbyMotionCopyLinkSpecialN,
+	nFTKirbyMotionCopyLinkSpecialNGet,
+	nFTKirbyMotionCopyLinkSpecialNEmpty,
+	nFTKirbyMotionCopyLinkSpecialAirN,
+	nFTKirbyMotionCopyLinkSpecialAirNReturn,
+	nFTKirbyMotionCopyLinkSpecialAirNEmpty,
+	nFTKirbyMotionCopyPurinSpecialN,
+	nFTKirbyMotionCopyPurinSpecialAirN,
+	nFTKirbyMotionCopyCaptainSpecialN,
+	nFTKirbyMotionCopyCaptainSpecialAirN,
+	nFTKirbyMotionCopyYoshiSpecialN,
+	nFTKirbyMotionCopyYoshiSpecialNCatch,
+	nFTKirbyMotionCopyYoshiSpecialNRelease,
+	nFTKirbyMotionCopyYoshiSpecialAirN,
+	nFTKirbyMotionCopyYoshiSpecialAirNCatch,
+	nFTKirbyMotionCopyYoshiSpecialAirNRelease
 
 } ftKirbyMotion;
 
 typedef enum ftKirbyStatus
 {
-    nFTKirbyStatusAttack100Start = nFTCommonStatusSpecialStart,
-    nFTKirbyStatusAttack100Loop,
-    nFTKirbyStatusAttack100End,
-    nFTKirbyStatusJumpAerialF1,
-    nFTKirbyStatusJumpAerialF2,
-    nFTKirbyStatusJumpAerialF3,
-    nFTKirbyStatusJumpAerialF4,
-    nFTKirbyStatusJumpAerialF5,
-    nFTKirbyStatusThrowF,
-    nFTKirbyStatusThrowFFall,
-    nFTKirbyStatusThrowFLanding,
-    nFTKirbyStatusCopyMarioSpecialN,
-    nFTKirbyStatusCopyMarioSpecialAirN,
-    nFTKirbyStatusCopyLuigiSpecialN,
-    nFTKirbyStatusCopyLuigiSpecialAirN,
-    nFTKirbyStatusCopyFoxSpecialN,
-    nFTKirbyStatusCopyFoxSpecialAirN,
-    nFTKirbyStatusCopySamusSpecialNStart,
-    nFTKirbyStatusCopySamusSpecialNLoop,
-    nFTKirbyStatusCopySamusSpecialNEnd,
-    nFTKirbyStatusCopySamusSpecialAirNStart,
-    nFTKirbyStatusCopySamusSpecialAirNEnd,
-    nFTKirbyStatusCopyDonkeySpecialNStart,
-    nFTKirbyStatusCopyDonkeySpecialAirNStart,
-    nFTKirbyStatusCopyDonkeySpecialNLoop,
-    nFTKirbyStatusCopyDonkeySpecialAirNLoop,
-    nFTKirbyStatusCopyDonkeySpecialNEnd,
-    nFTKirbyStatusCopyDonkeySpecialAirNEnd,
-    nFTKirbyStatusCopyDonkeySpecialNFull,
-    nFTKirbyStatusCopyDonkeySpecialAirNFull,
-    nFTKirbyStatusAppearR,
-    nFTKirbyStatusAppearL,
-    nFTKirbyStatusCopyPikachuSpecialN,
-    nFTKirbyStatusCopyPikachuSpecialAirN,
-    nFTKirbyStatusCopyNessSpecialN,
-    nFTKirbyStatusCopyNessSpecialAirN,
-    nFTKirbyStatusSpecialHi,
-    nFTKirbyStatusSpecialHiLanding,
-    nFTKirbyStatusSpecialAirHi,
-    nFTKirbyStatusSpecialAirHiFall,
-    nFTKirbyStatusSpecialLwStart,
-    nFTKirbyStatusSpecialLwUnk,
-    nFTKirbyStatusSpecialLwHold,
-    nFTKirbyStatusSpecialLwEnd,
-    nFTKirbyStatusSpecialAirLwStart,
-    nFTKirbyStatusSpecialAirLwHold,
-    nFTKirbyStatusSpecialAirLwLanding,
-    nFTKirbyStatusSpecialAirLwFall,
-    nFTKirbyStatusSpecialAirLwEnd,
-    nFTKirbyStatusSpecialNStart,
-    nFTKirbyStatusSpecialNLoop,
-    nFTKirbyStatusSpecialNEnd,
-    nFTKirbyStatusSpecialNCatch,
-    nFTKirbyStatusSpecialNEat,
-    nFTKirbyStatusSpecialNThrow,
-    nFTKirbyStatusSpecialNWait,
-    nFTKirbyStatusSpecialNTurn,
-    nFTKirbyStatusSpecialNCopy,
-    nFTKirbyStatusSpecialAirNStart,
-    nFTKirbyStatusSpecialAirNLoop,
-    nFTKirbyStatusSpecialAirNEnd,
-    nFTKirbyStatusSpecialAirNCatch,
-    nFTKirbyStatusSpecialAirNEat,
-    nFTKirbyStatusSpecialAirNThrow,
-    nFTKirbyStatusSpecialAirNWait,
-    nFTKirbyStatusSpecialAirNTurn,
-    nFTKirbyStatusSpecialAirNCopy,
-    nFTKirbyStatusCopyLinkSpecialN,
-    nFTKirbyStatusCopyLinkSpecialNGet,
-    nFTKirbyStatusCopyLinkSpecialNEmpty,
-    nFTKirbyStatusCopyLinkSpecialAirN,
-    nFTKirbyStatusCopyLinkSpecialAirNReturn,
-    nFTKirbyStatusCopyLinkSpecialAirNEmpty,
-    nFTKirbyStatusCopyPurinSpecialN,
-    nFTKirbyStatusCopyPurinSpecialAirN,
-    nFTKirbyStatusCopyCaptainSpecialN,
-    nFTKirbyStatusCopyCaptainSpecialAirN,
-    nFTKirbyStatusCopyYoshiSpecialN,
-    nFTKirbyStatusCopyYoshiSpecialNCatch,
-    nFTKirbyStatusCopyYoshiSpecialNRelease,
-    nFTKirbyStatusCopyYoshiSpecialAirN,
-    nFTKirbyStatusCopyYoshiSpecialAirNCatch,
-    nFTKirbyStatusCopyYoshiSpecialAirNRelease
+	nFTKirbyStatusAttack100Start = nFTCommonStatusSpecialStart,
+	nFTKirbyStatusAttack100Loop,
+	nFTKirbyStatusAttack100End,
+	nFTKirbyStatusJumpAerialF1,
+	nFTKirbyStatusJumpAerialF2,
+	nFTKirbyStatusJumpAerialF3,
+	nFTKirbyStatusJumpAerialF4,
+	nFTKirbyStatusJumpAerialF5,
+	nFTKirbyStatusThrowF,
+	nFTKirbyStatusThrowFFall,
+	nFTKirbyStatusThrowFLanding,
+	nFTKirbyStatusCopyMarioSpecialN,
+	nFTKirbyStatusCopyMarioSpecialAirN,
+	nFTKirbyStatusCopyLuigiSpecialN,
+	nFTKirbyStatusCopyLuigiSpecialAirN,
+	nFTKirbyStatusCopyFoxSpecialN,
+	nFTKirbyStatusCopyFoxSpecialAirN,
+	nFTKirbyStatusCopySamusSpecialNStart,
+	nFTKirbyStatusCopySamusSpecialNLoop,
+	nFTKirbyStatusCopySamusSpecialNEnd,
+	nFTKirbyStatusCopySamusSpecialAirNStart,
+	nFTKirbyStatusCopySamusSpecialAirNEnd,
+	nFTKirbyStatusCopyDonkeySpecialNStart,
+	nFTKirbyStatusCopyDonkeySpecialAirNStart,
+	nFTKirbyStatusCopyDonkeySpecialNLoop,
+	nFTKirbyStatusCopyDonkeySpecialAirNLoop,
+	nFTKirbyStatusCopyDonkeySpecialNEnd,
+	nFTKirbyStatusCopyDonkeySpecialAirNEnd,
+	nFTKirbyStatusCopyDonkeySpecialNFull,
+	nFTKirbyStatusCopyDonkeySpecialAirNFull,
+	nFTKirbyStatusAppearR,
+	nFTKirbyStatusAppearL,
+	nFTKirbyStatusCopyPikachuSpecialN,
+	nFTKirbyStatusCopyPikachuSpecialAirN,
+	nFTKirbyStatusCopyNessSpecialN,
+	nFTKirbyStatusCopyNessSpecialAirN,
+	nFTKirbyStatusSpecialHi,
+	nFTKirbyStatusSpecialHiLanding,
+	nFTKirbyStatusSpecialAirHi,
+	nFTKirbyStatusSpecialAirHiFall,
+	nFTKirbyStatusSpecialLwStart,
+	nFTKirbyStatusSpecialLwUnk,
+	nFTKirbyStatusSpecialLwHold,
+	nFTKirbyStatusSpecialLwEnd,
+	nFTKirbyStatusSpecialAirLwStart,
+	nFTKirbyStatusSpecialAirLwHold,
+	nFTKirbyStatusSpecialAirLwLanding,
+	nFTKirbyStatusSpecialAirLwFall,
+	nFTKirbyStatusSpecialAirLwEnd,
+	nFTKirbyStatusSpecialNStart,
+	nFTKirbyStatusSpecialNLoop,
+	nFTKirbyStatusSpecialNEnd,
+	nFTKirbyStatusSpecialNCatch,
+	nFTKirbyStatusSpecialNEat,
+	nFTKirbyStatusSpecialNThrow,
+	nFTKirbyStatusSpecialNWait,
+	nFTKirbyStatusSpecialNTurn,
+	nFTKirbyStatusSpecialNCopy,
+	nFTKirbyStatusSpecialAirNStart,
+	nFTKirbyStatusSpecialAirNLoop,
+	nFTKirbyStatusSpecialAirNEnd,
+	nFTKirbyStatusSpecialAirNCatch,
+	nFTKirbyStatusSpecialAirNEat,
+	nFTKirbyStatusSpecialAirNThrow,
+	nFTKirbyStatusSpecialAirNWait,
+	nFTKirbyStatusSpecialAirNTurn,
+	nFTKirbyStatusSpecialAirNCopy,
+	nFTKirbyStatusCopyLinkSpecialN,
+	nFTKirbyStatusCopyLinkSpecialNGet,
+	nFTKirbyStatusCopyLinkSpecialNEmpty,
+	nFTKirbyStatusCopyLinkSpecialAirN,
+	nFTKirbyStatusCopyLinkSpecialAirNReturn,
+	nFTKirbyStatusCopyLinkSpecialAirNEmpty,
+	nFTKirbyStatusCopyPurinSpecialN,
+	nFTKirbyStatusCopyPurinSpecialAirN,
+	nFTKirbyStatusCopyCaptainSpecialN,
+	nFTKirbyStatusCopyCaptainSpecialAirN,
+	nFTKirbyStatusCopyYoshiSpecialN,
+	nFTKirbyStatusCopyYoshiSpecialNCatch,
+	nFTKirbyStatusCopyYoshiSpecialNRelease,
+	nFTKirbyStatusCopyYoshiSpecialAirN,
+	nFTKirbyStatusCopyYoshiSpecialAirNCatch,
+	nFTKirbyStatusCopyYoshiSpecialAirNRelease
 
 } ftKirbyStatus;
 
 typedef struct FTKirbyCopy
 {
-    u16 copy_id;
-    s16 copy_modelpart_id;
-    f32 effect_scale; // Random position offset used for blue sparkle effect?
-    s32 star_damage;
+	u16 copy_id;
+	s16 copy_modelpart_id;
+	f32 effect_scale; // Random position offset used for blue sparkle effect?
+	s32 star_damage;
 
 } FTKirbyCopy;
 
 typedef struct ftKirbyAttack100Effect
 {
-    Vec3f offset;
-    f32 rotate;
-    f32 vel;
-    f32 add;
+	Vec3f offset;
+	f32 rotate;
+	f32 vel;
+	f32 add;
 
 } ftKirbyAttack100Effect;
 
 typedef struct FTKirbyPassiveVars
 {
-    s32 copy_id;
-    s32 copysamus_charge_level;
-    s32 copysamus_charge_recoil;
-    s32 copydonkey_charge_level;
-    s32 copycaptain_falcon_punch_unk;
-    s32 copypurin_unk;
-    sb32 is_ignore_losecopy;
-    GObj *copylink_boomerang_gobj;
+	s32 copy_id;
+	s32 copysamus_charge_level;
+	s32 copysamus_charge_recoil;
+	s32 copydonkey_charge_level;
+	s32 copycaptain_falcon_punch_unk;
+	s32 copypurin_unk;
+	sb32 is_ignore_losecopy;
+	GObj *copylink_boomerang_gobj;
 
 } FTKirbyPassiveVars;
 
 typedef struct ftKirbySpecialNStatusVars
 {
-    s16 copy_id;
-    s16 release_lag;
-    Vec3f dist;
+	s16 copy_id;
+	s16 release_lag;
+	Vec3f dist;
 
 } ftKirbySpecialNStatusVars;
 
 typedef struct ftKirbySpecialLwStatusVars
 {
-    s16 duration;
-    s16 unk_0x2;
-    s16 colanim_id;
+	s16 duration;
+	s16 unk_0x2;
+	s16 colanim_id;
 
 } ftKirbySpecialLwStatusVars;
 
 typedef struct FTKirbyCopyDonkeySpecialNStatusVars
 {
-    sb32 is_release;
-    s32 charge_level;
-    sb32 is_charging;
-    sb32 is_cancel;
+	sb32 is_release;
+	s32 charge_level;
+	sb32 is_charging;
+	sb32 is_cancel;
 
 } ftKirbyCopyDonkeySpecialNStatusVars;
 
 typedef struct FTKirbyCopySamusSpecialNStatusVars
 {
-    sb32 is_release;
-    s32 charge_int;
-    GObj *charge_gobj;
+	sb32 is_release;
+	s32 charge_int;
+	GObj *charge_gobj;
 
 } ftKirbyCopySamusSpecialNStatusVars;
 
 typedef struct FTKirbyCopyLinkSpecialNStatusVars
 {
-    sb32 is_smash;
+	sb32 is_smash;
 
 } ftKirbyCopyLinkSpecialNStatusVars;
 
 typedef union FTKirbyStatusVars
 {
-    ftKirbySpecialNStatusVars specialn;
-    ftKirbySpecialLwStatusVars speciallw;
-    ftKirbyCopyDonkeySpecialNStatusVars copydonkey_specialn;
-    ftKirbyCopySamusSpecialNStatusVars copysamus_specialn;
-    ftKirbyCopyLinkSpecialNStatusVars copylink_specialn;
+	ftKirbySpecialNStatusVars specialn;
+	ftKirbySpecialLwStatusVars speciallw;
+	ftKirbyCopyDonkeySpecialNStatusVars copydonkey_specialn;
+	ftKirbyCopySamusSpecialNStatusVars copysamus_specialn;
+	ftKirbyCopyLinkSpecialNStatusVars copylink_specialn;
 
 } FTKirbyStatusVars;
 

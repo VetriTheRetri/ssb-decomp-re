@@ -4,12 +4,12 @@
 #include "mptypes.h"
 #include "mpfunctions.h"
 
-extern f32 dMPCollisionMaterialFrictions[/* */];
+extern f32 dMPCollisionMaterialFrictions[];
 
 extern MPGroundData *gMPCollisionGroundData;
 extern MPAllBounds gMPCollisionBounds;
 extern MPYakumonoDObj *gMPCollisionYakumonoDObjs;
-extern MPLineGroup gMPCollisionLineGroups[/* */];
+extern MPLineGroup gMPCollisionLineGroups[];
 extern MPGeometryData *gMPCollisionGeometry;
 extern MPVertexInfoContainer *gMPCollisionVertexInfo;
 extern MPVertexArray *gMPCollisionVertexIDs;

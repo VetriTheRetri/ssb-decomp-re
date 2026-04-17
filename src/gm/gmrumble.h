@@ -17,8 +17,8 @@ extern GMRumbleScript* gmRumbleGetEventPriorityRelink(GMRumblePlayer *rplayer, s
 extern void gmRumbleSetPlayerRumbleParams(s32 player, s32 index, s32 rumble_timer);
 extern void func_ovl2_801155C4(s32 player);
 extern void gmRumbleStopRumbleID(s32 player, s32 index);
-extern void gmRumbleMakeActor(void);
-extern void gmRumbleInitPlayers(void);
-extern void gmRumbleResumeProcessAll(void);
+extern void gmRumbleMakeActor();
+extern void gmRumbleInitPlayers();
+extern void gmRumbleResumeProcessAll();
 
 #endif

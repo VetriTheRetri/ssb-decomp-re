@@ -7,7 +7,7 @@
 
 // #include "ftmariofunctions.h"
 
-extern FTStatusDesc dFTLuigiSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTLuigiSpecialStatusDescs[];
 
 extern void *gFTDataLuigiMain;
 extern void *gFTDataLuigiMainMotion;
@@ -19,29 +19,29 @@ extern s32 gFTDataLuigiParticleBankID;
 
 typedef enum ftLuigiMotion
 {
-    nFTLuigiMotionAttack13 = nFTCommonMotionSpecialStart,
-    nFTLuigiMotionAppearR,
-    nFTLuigiMotionAppearL,
-    nFTLuigiMotionSpecialN,
-    nFTLuigiMotionSpecialAirN,
-    nFTLuigiMotionSpecialHi,
-    nFTLuigiMotionSpecialAirHi,
-    nFTLuigiMotionSpecialLw,
-    nFTLuigiMotionSpecialAirLw
+	nFTLuigiMotionAttack13 = nFTCommonMotionSpecialStart,
+	nFTLuigiMotionAppearR,
+	nFTLuigiMotionAppearL,
+	nFTLuigiMotionSpecialN,
+	nFTLuigiMotionSpecialAirN,
+	nFTLuigiMotionSpecialHi,
+	nFTLuigiMotionSpecialAirHi,
+	nFTLuigiMotionSpecialLw,
+	nFTLuigiMotionSpecialAirLw
 
 } ftLuigiMotion;
 
 typedef enum ftLuigiStatus
 {
-    nFTLuigiStatusAttack13 = nFTCommonStatusSpecialStart,
-    nFTLuigiStatusAppearR,
-    nFTLuigiStatusAppearL,
-    nFTLuigiStatusSpecialN,
-    nFTLuigiStatusSpecialAirN,
-    nFTLuigiStatusSpecialHi,
-    nFTLuigiStatusSpecialAirHi,
-    nFTLuigiStatusSpecialLw,
-    nFTLuigiStatusSpecialAirLw
+	nFTLuigiStatusAttack13 = nFTCommonStatusSpecialStart,
+	nFTLuigiStatusAppearR,
+	nFTLuigiStatusAppearL,
+	nFTLuigiStatusSpecialN,
+	nFTLuigiStatusSpecialAirN,
+	nFTLuigiStatusSpecialHi,
+	nFTLuigiStatusSpecialAirHi,
+	nFTLuigiStatusSpecialLw,
+	nFTLuigiStatusSpecialAirLw
 
 } ftLuigiStatus;
 

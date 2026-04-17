@@ -6,16 +6,16 @@
 #include <lb/lbdef.h>
 
 extern s32 lbBackupCreateChecksum(LBBackupData *backup);
-extern sb32 lbBackupIsChecksumValid(void);
-extern void lbBackupWrite(void);
-extern sb32 lbBackupIsSramValid(void);
-extern void lbBackupApplyOptions(void);
-extern void lbBackupCorrectErrors(void);
-extern void lbBackupClearNewcomers(void);
-extern void lbBackupClear1PHighScore(void);
-extern void lbBackupClearVSRecord(void);
-extern void lbBackupClearBonusStageTime(void);
-extern void lbBackupClearPrize(void);
-extern void lbBackupClearAllData(void);
+extern sb32 lbBackupIsChecksumValid();
+extern void lbBackupWrite();
+extern sb32 lbBackupIsSramValid();
+extern void lbBackupApplyOptions();
+extern void lbBackupCorrectErrors();
+extern void lbBackupClearNewcomers();
+extern void lbBackupClear1PHighScore();
+extern void lbBackupClearVSRecord();
+extern void lbBackupClearBonusStageTime();
+extern void lbBackupClearPrize();
+extern void lbBackupClearAllData();
 
 #endif

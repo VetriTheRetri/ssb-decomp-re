@@ -32,21 +32,21 @@ extern "C"
 
 	/* Routines to get/fetch coprocessor 0 registers */
 
-	extern u32 __osGetCause(void);
+	extern u32 __osGetCause();
 	extern void __osSetCause(u32);
-	extern u32 __osGetCompare(void);
+	extern u32 __osGetCompare();
 	extern void __osSetCompare(u32);
-	extern u32 __osGetConfig(void);
+	extern u32 __osGetConfig();
 	extern void __osSetConfig(u32);
 	extern void __osSetCount(u32);
-	extern u32 __osGetSR(void);
+	extern u32 __osGetSR();
 	extern void __osSetSR(u32);
-	extern u32 __osDisableInt(void);
+	extern u32 __osDisableInt();
 	extern void __osRestoreInt(u32);
 
 	/* Routines to get/set floating-point control and status register */
 	extern u32 __osSetFpcCsr(u32);
-	extern u32 __osGetFpcCsr(void);
+	extern u32 __osGetFpcCsr();
 
 	/* Routine for HW interrupt "handler" */
 	extern void __osSetHWIntrRoutine(OSHWIntr, s32 (*handler)(void));
@@ -56,11 +56,11 @@ extern "C"
 	extern void __osResetGlobalIntMask(OSHWIntr);
 
 	/* Routine for global interrupt mask */
-	extern s32 __osLeoInterrupt(void);
+	extern s32 __osLeoInterrupt();
 
 	/* Routines for fetch TLB info */
 
-	extern u32 __osGetTLBASID(void);
+	extern u32 __osGetTLBASID();
 	extern u32 __osGetTLBPageMask(s32);
 	extern u32 __osGetTLBHi(s32);
 	extern u32 __osGetTLBLo0(s32);
@@ -68,14 +68,14 @@ extern "C"
 
 	/* Serial interface (Si) */
 
-	extern u32 __osSiGetStatus(void);
+	extern u32 __osSiGetStatus();
 	extern s32 __osSiRawWriteIo(u32, u32);
 	extern s32 __osSiRawReadIo(u32, u32*);
 	extern s32 __osSiRawStartDma(s32, void*);
 
 	/* Signal processor interface (Sp) */
 
-	extern u32 __osSpGetStatus(void);
+	extern u32 __osSpGetStatus();
 	extern void __osSpSetStatus(u32);
 	extern s32 __osSpSetPc(u32);
 	extern s32 __osSpRawWriteIo(u32, u32);
@@ -85,7 +85,7 @@ extern "C"
 	/* Error handling */
 
 	extern void __osError(s16, s16, ...);
-	extern OSThread* __osGetCurrFaultedThread(void);
+	extern OSThread* __osGetCurrFaultedThread();
 	extern OSThread* __osGetNextFaultedThread(OSThread*);
 
 	/* Development board functions */
@@ -96,7 +96,7 @@ extern "C"
 
 	/* For debugger use */
 
-	extern OSThread* __osGetActiveQueue(void);
+	extern OSThread* __osGetActiveQueue();
 
 	/* Debug port */
 	extern void __osSyncPutChars(int, int, const char*);

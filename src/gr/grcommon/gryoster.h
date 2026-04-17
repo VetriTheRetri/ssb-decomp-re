@@ -17,7 +17,7 @@ extern void grYosterUpdateCloudSolid(s32 cloud_id);
 extern void grYosterUpdateCloudEvaporate(s32 cloud_id);
 extern void grYosterUpdateCloudAnim(s32 cloud_id);
 extern void grYosterProcUpdate(GObj *ground_gobj);
-extern void grYosterInitAll(void);
-extern GObj* grYosterMakeGround(void);
+extern void grYosterInitAll();
+extern GObj* grYosterMakeGround();
 
 #endif

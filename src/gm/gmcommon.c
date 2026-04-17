@@ -8,16 +8,16 @@
 // // // // // // // // // // // //
 
 // 0x80116BD0 - These will be linker variables in the future
-u32 dGMCommonFileIDs[/* */] = 
+u32 dGMCommonFileIDs[] = 
 { 
-    &llIFCommonPlayerFileID,
-    &llIFCommonGameStatusFileID,
-    &llIFCommonPlayerDamageFileID,
-    &llIFCommonTimerFileID,
-    &llIFCommonDigitsFileID,
-    &llIFCommonBattlePauseFileID,
-    &llIFCommonPlayerTagsFileID,
-    &llIFCommonAnnounceCommonFileID
+	&llIFCommonPlayerFileID,
+	&llIFCommonGameStatusFileID,
+	&llIFCommonPlayerDamageFileID,
+	&llIFCommonTimerFileID,
+	&llIFCommonDigitsFileID,
+	&llIFCommonBattlePauseFileID,
+	&llIFCommonPlayerTagsFileID,
+	&llIFCommonAnnounceCommonFileID
 };
 
 // // // // // // // // // // // //
@@ -26,5 +26,5 @@ u32 dGMCommonFileIDs[/* */] =
 //                               //
 // // // // // // // // // // // //
 
-// 0x80130D40
+// 80130D40
 void *gGMCommonFiles[ARRAY_COUNT(dGMCommonFileIDs)];

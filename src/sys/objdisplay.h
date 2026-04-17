@@ -17,8 +17,8 @@ syMatrixAdvance(mtx, mtx_heap, Mtx44f)
 // should be a concrete pointer type
 typedef struct syMtxProcess
 {
-    sb32 (*proc_diff)();    // If GObj's last frame drawn is not the same as... something?
-    sb32 (*proc_same)();    // If it's the same ^
+	sb32 (*proc_diff)();    // If GObj's last frame drawn is not the same as... something?
+	sb32 (*proc_same)();    // If it's the same ^
 
 } syMtxProcess;
 
@@ -30,7 +30,7 @@ extern syMtxProcess *sGCMatrixFuncList;
 
 extern void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right);
 extern void gcSetMatrixFuncList(syMtxProcess *proc_mtx);
-extern void unref_80010740(void);
+extern void unref_80010740();
 extern void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
@@ -46,7 +46,7 @@ extern void gcDrawDObjTree(DObj *this_dobj);
 extern void gcDrawDObjTreeForGObj(GObj *gobj);
 extern void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link);
 extern void gcDrawDObjDLLinksForGObj(GObj *gobj);
-extern void gcInitDLs(void);
+extern void gcInitDLs();
 extern void gcDrawDObjTreeDLLinks(DObj *dobj);
 extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
 extern f32 gcGetDObjDistFromEye(DObj *dobj);
@@ -81,9 +81,9 @@ extern void func_80017DBC(GObj *gobj);
 extern void unref_80017DE4(GObj *gobj);
 extern void unref_80017E0C(GObj *gobj);
 extern void unref_80017E34(GObj *gobj);
-extern void unref_80017E5C(void);
+extern void unref_80017E5C();
 extern void func_80017EC0(GObj *gobj);
-extern void unref_8001810C(void);
+extern void unref_8001810C();
 extern void func_80018300(GObj *gobj);
 
 #endif

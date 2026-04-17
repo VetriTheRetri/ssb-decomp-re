@@ -94,12 +94,12 @@ extern s32 gSYTaskmanTaskID;
 extern void syTaskmanSetFuncSwapBuffer(SYTaskGfxCallback arg0);
 extern void syTaskmanInitSegmentF(Gfx **dl);
 extern void* syTaskmanMalloc(size_t size, u32 align);
-extern void func_80004F78(void);
+extern void func_80004F78();
 extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
-extern void func_800053CC(void);
-extern void syTaskmanUpdateDLBuffers(void);
-extern void syTaskmanSetLoadScene(void);
+extern void func_800053CC();
+extern void syTaskmanUpdateDLBuffers();
+extern void syTaskmanSetLoadScene();
 extern void syTaskmanStartTask(SYTaskmanSetup *arg);
-extern void func_80006B80(void);
+extern void func_80006B80();
 
 #endif

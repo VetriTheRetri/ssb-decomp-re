@@ -17,14 +17,14 @@ extern void __osEnqueueAndYield(OSThread**);
 extern void __osDequeueThread(OSThread**, OSThread*);
 extern void __osEnqueueThread(OSThread**, OSThread*);
 extern OSThread* __osPopThread(OSThread**);
-extern void __osDispatchThread(void);
-extern void __osCleanupThread(void);
+extern void __osDispatchThread();
+extern void __osCleanupThread();
 
 extern void __osSetTimerIntr(OSTime);
 extern OSTime __osInsertTimer(OSTimer*);
-extern void __osTimerInterrupt(void);
+extern void __osTimerInterrupt();
 extern u32 __osProbeTLB(void*);
-extern int __osSpDeviceBusy(void);
+extern int __osSpDeviceBusy();
 
 extern OSThread* __osRunningThread;
 extern OSThread* __osActiveQueue;
@@ -46,9 +46,9 @@ extern u32 __osProfileOverflowBin;
 
 extern __OSEventState __osEventStateTab[];
 
-extern void __osTimerServicesInit(void);
-extern s32 __osAiDeviceBusy(void);
-extern int __osDpDeviceBusy(void);
+extern void __osTimerServicesInit();
+extern s32 __osAiDeviceBusy();
+extern int __osDpDeviceBusy();
 
 #ifndef _FINALROM
 extern void* __printfunc;

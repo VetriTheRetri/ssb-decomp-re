@@ -66,12 +66,12 @@
 #define FTCATCHKIND_MASK_NONE (0)
 #define FTCATCHKIND_MASK_ALL            \
 (                                       \
-    FTCATCHKIND_MASK_CAPTAINSPECIALHI | \
-    FTCATCHKIND_MASK_COMMON           | \
-    FTCATCHKIND_MASK_TWISTER          | \
-    FTCATCHKIND_MASK_TARUCANN         | \
-    FTCATCHKIND_MASK_KIRBYSPECIALN    | \
-    FTCATCHKIND_MASK_YOSHISPECIALN      \
+	FTCATCHKIND_MASK_CAPTAINSPECIALHI | \
+	FTCATCHKIND_MASK_COMMON           | \
+	FTCATCHKIND_MASK_TWISTER          | \
+	FTCATCHKIND_MASK_TARUCANN         | \
+	FTCATCHKIND_MASK_KIRBYSPECIALN    | \
+	FTCATCHKIND_MASK_YOSHISPECIALN      \
 )
 
 #define FTSLOPECONTOUR_FLAG_LFOOT   (1 << nFTSlopeContourLFoot)
@@ -257,666 +257,666 @@ ftMotionCommandMakeAttackCollScaledS1(aid, gid, jid, dmg, reb, elem), ftMotionCo
 // Enums
 typedef enum FTStatusUpdateFlags
 {
-    nFTStatusPreserveHit,               // Preserve hitboxes between action states
-    nFTStatusPreserveColAnim,           // Preserve color animation between action states
-    nFTStatusPreserveEffect,            // Preserve GFX between action states
-    nFTStatusPreserveFastFall,          // Preserve fastfall between action states
-    nFTStatusPreserveHitStatus,         // Preserve hurtbox collision state between action states
-    nFTStatusPreserveModelPart,         // Preserve modified model part display state between action states
-    nFTStatusPreserveSlopeContour,      // Preserve inverse kinematics mode between action states
-    nFTStatusPreserveTexturePart,       // Preserve modified texture part display state between action states
-    nFTStatusPreservePlayerTag,         // Preserve player indicator wait timer
-    nFTStatusPreserveThrowPointer,      // Preserve thrower's GObj pointer between action states; used to tell the game not to check thrower's collateral hitbox on thrown victim?  
-    nFTStatusPreserveShuffleTime,       // Preserve model vibration frames from hitlag between action states
-    nFTStatusPreserveLoopSFX,           // Preserve looping SFX
-    nFTStatusPreserveDamagePlayer,      // Preserve damaging player's port ID if grounded?
-    nFTStatusPreserveAfterImage,        // Preserve sword trail display state
-    nFTStatusPreserveRumble             // Preserve rumble
+	nFTStatusPreserveHit,               // Preserve hitboxes between action states
+	nFTStatusPreserveColAnim,           // Preserve color animation between action states
+	nFTStatusPreserveEffect,            // Preserve GFX between action states
+	nFTStatusPreserveFastFall,          // Preserve fastfall between action states
+	nFTStatusPreserveHitStatus,         // Preserve hurtbox collision state between action states
+	nFTStatusPreserveModelPart,         // Preserve modified model part display state between action states
+	nFTStatusPreserveSlopeContour,      // Preserve inverse kinematics mode between action states
+	nFTStatusPreserveTexturePart,       // Preserve modified texture part display state between action states
+	nFTStatusPreservePlayerTag,         // Preserve player indicator wait timer
+	nFTStatusPreserveThrowPointer,      // Preserve thrower's GObj pointer between action states; used to tell the game not to check thrower's collateral hitbox on thrown victim?  
+	nFTStatusPreserveShuffleTime,       // Preserve model vibration frames from hitlag between action states
+	nFTStatusPreserveLoopSFX,           // Preserve looping SFX
+	nFTStatusPreserveDamagePlayer,      // Preserve damaging player's port ID if grounded?
+	nFTStatusPreserveAfterImage,        // Preserve sword trail display state
+	nFTStatusPreserveRumble             // Preserve rumble
 
 } FTStatusUpdateFlags;
 
 typedef enum FTCommonMotion
 {
-    nFTCommonMotionNull = -1,
-    nFTCommonMotionEntryNull,
-    nFTCommonMotionRebirthDown,
-    nFTCommonMotionRebirthStand,
-    nFTCommonMotionRebirthWait,
-    nFTCommonMotionWait,
-    nFTCommonMotionWalkSlow,
-    nFTCommonMotionWalkMiddle,
-    nFTCommonMotionWalkFast,
-    nFTCommonMotionWalkEnd,
-    nFTCommonMotionDash,
-    nFTCommonMotionRun,
-    nFTCommonMotionRunBrake,
-    nFTCommonMotionTurn,
-    nFTCommonMotionTurnRun,
-    nFTCommonMotionKneeBend,
-    nFTCommonMotionGuardKneeBend,
-    nFTCommonMotionJumpF,
-    nFTCommonMotionJumpB,
-    nFTCommonMotionJumpAerialF,
-    nFTCommonMotionJumpAerialB,
-    nFTCommonMotionFall,
-    nFTCommonMotionFallAerial,
-    nFTCommonMotionSquat,
-    nFTCommonMotionSquatWait,
-    nFTCommonMotionSquatRv,
-    nFTCommonMotionLandingLight,
-    nFTCommonMotionLandingHeavy,
-    nFTCommonMotionPass,
-    nFTCommonMotionGuardPass,
-    nFTCommonMotionOttottoWait,
-    nFTCommonMotionOttotto,
-    nFTCommonMotionDamageHi1,
-    nFTCommonMotionDamageHi2,
-    nFTCommonMotionDamageHi3,
-    nFTCommonMotionDamageN1,
-    nFTCommonMotionDamageN2,
-    nFTCommonMotionDamageN3,
-    nFTCommonMotionDamageLw1,
-    nFTCommonMotionDamageLw2,
-    nFTCommonMotionDamageLw3,
-    nFTCommonMotionDamageAir1,
-    nFTCommonMotionDamageAir2,
-    nFTCommonMotionDamageAir3,
-    nFTCommonMotionDamageE,
-    nFTCommonMotionDamageFlyHi,
-    nFTCommonMotionDamageFlyN,
-    nFTCommonMotionDamageFlyLw,
-    nFTCommonMotionDamageFlyTop,
-    nFTCommonMotionDamageFlyRoll,
-    nFTCommonMotionWallDamage,
-    nFTCommonMotionDamageFall,
-    nFTCommonMotionFallSpecial,
-    nFTCommonMotionLandingFallSpecial,
-    nFTCommonMotionTwister,
-    nFTCommonMotionDokanStart,
-    nFTCommonMotionDokanEnd,
-    nFTCommonMotionDokanWalk,
-    nFTCommonMotionStopCeil,
-    nFTCommonMotionDownBounceD,
-    nFTCommonMotionDownBounceU,
-    nFTCommonMotionDownStandD,
-    nFTCommonMotionDownStandU,
-    nFTCommonMotionPassiveStandF,
-    nFTCommonMotionPassiveStandB,
-    nFTCommonMotionDownForwardD,
-    nFTCommonMotionDownForwardU,
-    nFTCommonMotionDownBackD,
-    nFTCommonMotionDownBackU,
-    nFTCommonMotionDownAttackD,
-    nFTCommonMotionDownAttackU,
-    nFTCommonMotionPassive,
-    nFTCommonMotionRebound,
-    nFTCommonMotionCliffCatch,
-    nFTCommonMotionCliffWait,
-    nFTCommonMotionCliffQuick,
-    nFTCommonMotionCliffClimbQuick1,
-    nFTCommonMotionCliffClimbQuick2,
-    nFTCommonMotionCliffSlow,
-    nFTCommonMotionCliffClimbSlow1,
-    nFTCommonMotionCliffClimbSlow2,
-    nFTCommonMotionCliffAttackQuick1,
-    nFTCommonMotionCliffAttackQuick2,
-    nFTCommonMotionCliffAttackSlow1,
-    nFTCommonMotionCliffAttackSlow2,
-    nFTCommonMotionCliffEscapeQuick1,
-    nFTCommonMotionCliffEscapeQuick2,
-    nFTCommonMotionCliffEscapeSlow1,
-    nFTCommonMotionCliffEscapeSlow2,
-    nFTCommonMotionLightGet,
-    nFTCommonMotionHeavyGet,
-    nFTCommonMotionLightThrowDrop,
-    nFTCommonMotionLightThrowDash,
-    nFTCommonMotionLightThrowF,
-    nFTCommonMotionLightThrowB,
-    nFTCommonMotionLightThrowHi,
-    nFTCommonMotionLightThrowLw,
-    nFTCommonMotionLightThrowF4,
-    nFTCommonMotionLightThrowB4,
-    nFTCommonMotionLightThrowHi4,
-    nFTCommonMotionLightThrowLw4,
-    nFTCommonMotionLightThrowAirF,
-    nFTCommonMotionLightThrowAirB,
-    nFTCommonMotionLightThrowAirHi,
-    nFTCommonMotionLightThrowAirLw,
-    nFTCommonMotionLightThrowAirF4,
-    nFTCommonMotionLightThrowAirB4,
-    nFTCommonMotionLightThrowAirHi4,
-    nFTCommonMotionLightThrowAirLw4,
-    nFTCommonMotionHeavyThrowF,
-    nFTCommonMotionHeavyThrowB,
-    nFTCommonMotionHeavyThrowF4,
-    nFTCommonMotionHeavyThrowB4,
-    nFTCommonMotionSwordSwing1,
-    nFTCommonMotionSwordSwing3,
-    nFTCommonMotionSwordSwing4,
-    nFTCommonMotionSwordSwingDash,
-    nFTCommonMotionBatSwing1,
-    nFTCommonMotionBatSwing3,
-    nFTCommonMotionBatSwing4,
-    nFTCommonMotionBatSwingDash,
-    nFTCommonMotionHarisenSwing1,
-    nFTCommonMotionHarisenSwing3,
-    nFTCommonMotionHarisenSwing4,
-    nFTCommonMotionHarisenSwingDash,
-    nFTCommonMotionStarRodSwing1,
-    nFTCommonMotionStarRodSwing3,
-    nFTCommonMotionStarRodSwing4,
-    nFTCommonMotionStarRodSwingDash,
-    nFTCommonMotionLGunShoot,
-    nFTCommonMotionLGunShootAir,
-    nFTCommonMotionFireFlowerShoot,
-    nFTCommonMotionFireFlowerShootAir,
-    nFTCommonMotionHammerWait,
-    nFTCommonMotionHammerWalk,
-    nFTCommonMotionGuardOn,
-    nFTCommonMotionGuardOff,
-    nFTCommonMotionEscapeF,
-    nFTCommonMotionEscapeB,
-    nFTCommonMotionShieldBreakFly,
-    nFTCommonMotionShieldBreakFall,
-    nFTCommonMotionShieldBreakDownD,
-    nFTCommonMotionShieldBreakDownU,
-    nFTCommonMotionShieldBreakStandD,
-    nFTCommonMotionShieldBreakStandU,
-    nFTCommonMotionFuraFura,
-    nFTCommonMotionFuraSleep,
-    nFTCommonMotionCatch,
-    nFTCommonMotionCatchPull,
-    nFTCommonMotionThrowF,
-    nFTCommonMotionThrowB,
-    nFTCommonMotionCapturePulled,
-    nFTCommonMotionThrownKirbyStar,
-    nFTCommonMotionThrownCopyStar,
-    nFTCommonMotionYoshiEgg,
-    nFTCommonMotionCaptureCaptain,
-    nFTCommonMotionThrownDonkeyUnk,
-    nFTCommonMotionThrownDonkeyF,
-    nFTCommonMotionThrownMarioB1,
-    nFTCommonMotionThrownUnk1,
-    nFTCommonMotionShouldered,
-    nFTCommonMotionThrownMarioB2,
-    nFTCommonMotionThrownCommon,
-    nFTCommonMotionThrownUnk2,
-    nFTCommonMotionThrownUnk3,
-    nFTCommonMotionAppeal,
-    nFTCommonMotionAttack11,
-    nFTCommonMotionAttack12,
-    nFTCommonMotionAttackDash,
-    nFTCommonMotionAttackS3Hi,
-    nFTCommonMotionAttackS3HiS,
-    nFTCommonMotionAttackS3,
-    nFTCommonMotionAttackS3LwS,
-    nFTCommonMotionAttackS3Lw,
-    nFTCommonMotionAttackHi3F, // Forward-angled up tilt???
-    nFTCommonMotionAttackHi3,
-    nFTCommonMotionAttackHi3B, // Backward-angled up tilt???
-    nFTCommonMotionAttackLw3,
-    nFTCommonMotionAttackS4Hi,
-    nFTCommonMotionAttackS4HiS,
-    nFTCommonMotionAttackS4,
-    nFTCommonMotionAttackS4LwS,
-    nFTCommonMotionAttackS4Lw,
-    nFTCommonMotionAttackHi4,
-    nFTCommonMotionAttackLw4,
+	nFTCommonMotionNull = -1,
+	nFTCommonMotionEntryNull,
+	nFTCommonMotionRebirthDown,
+	nFTCommonMotionRebirthStand,
+	nFTCommonMotionRebirthWait,
+	nFTCommonMotionWait,
+	nFTCommonMotionWalkSlow,
+	nFTCommonMotionWalkMiddle,
+	nFTCommonMotionWalkFast,
+	nFTCommonMotionWalkEnd,
+	nFTCommonMotionDash,
+	nFTCommonMotionRun,
+	nFTCommonMotionRunBrake,
+	nFTCommonMotionTurn,
+	nFTCommonMotionTurnRun,
+	nFTCommonMotionKneeBend,
+	nFTCommonMotionGuardKneeBend,
+	nFTCommonMotionJumpF,
+	nFTCommonMotionJumpB,
+	nFTCommonMotionJumpAerialF,
+	nFTCommonMotionJumpAerialB,
+	nFTCommonMotionFall,
+	nFTCommonMotionFallAerial,
+	nFTCommonMotionSquat,
+	nFTCommonMotionSquatWait,
+	nFTCommonMotionSquatRv,
+	nFTCommonMotionLandingLight,
+	nFTCommonMotionLandingHeavy,
+	nFTCommonMotionPass,
+	nFTCommonMotionGuardPass,
+	nFTCommonMotionOttottoWait,
+	nFTCommonMotionOttotto,
+	nFTCommonMotionDamageHi1,
+	nFTCommonMotionDamageHi2,
+	nFTCommonMotionDamageHi3,
+	nFTCommonMotionDamageN1,
+	nFTCommonMotionDamageN2,
+	nFTCommonMotionDamageN3,
+	nFTCommonMotionDamageLw1,
+	nFTCommonMotionDamageLw2,
+	nFTCommonMotionDamageLw3,
+	nFTCommonMotionDamageAir1,
+	nFTCommonMotionDamageAir2,
+	nFTCommonMotionDamageAir3,
+	nFTCommonMotionDamageE,
+	nFTCommonMotionDamageFlyHi,
+	nFTCommonMotionDamageFlyN,
+	nFTCommonMotionDamageFlyLw,
+	nFTCommonMotionDamageFlyTop,
+	nFTCommonMotionDamageFlyRoll,
+	nFTCommonMotionWallDamage,
+	nFTCommonMotionDamageFall,
+	nFTCommonMotionFallSpecial,
+	nFTCommonMotionLandingFallSpecial,
+	nFTCommonMotionTwister,
+	nFTCommonMotionDokanStart,
+	nFTCommonMotionDokanEnd,
+	nFTCommonMotionDokanWalk,
+	nFTCommonMotionStopCeil,
+	nFTCommonMotionDownBounceD,
+	nFTCommonMotionDownBounceU,
+	nFTCommonMotionDownStandD,
+	nFTCommonMotionDownStandU,
+	nFTCommonMotionPassiveStandF,
+	nFTCommonMotionPassiveStandB,
+	nFTCommonMotionDownForwardD,
+	nFTCommonMotionDownForwardU,
+	nFTCommonMotionDownBackD,
+	nFTCommonMotionDownBackU,
+	nFTCommonMotionDownAttackD,
+	nFTCommonMotionDownAttackU,
+	nFTCommonMotionPassive,
+	nFTCommonMotionRebound,
+	nFTCommonMotionCliffCatch,
+	nFTCommonMotionCliffWait,
+	nFTCommonMotionCliffQuick,
+	nFTCommonMotionCliffClimbQuick1,
+	nFTCommonMotionCliffClimbQuick2,
+	nFTCommonMotionCliffSlow,
+	nFTCommonMotionCliffClimbSlow1,
+	nFTCommonMotionCliffClimbSlow2,
+	nFTCommonMotionCliffAttackQuick1,
+	nFTCommonMotionCliffAttackQuick2,
+	nFTCommonMotionCliffAttackSlow1,
+	nFTCommonMotionCliffAttackSlow2,
+	nFTCommonMotionCliffEscapeQuick1,
+	nFTCommonMotionCliffEscapeQuick2,
+	nFTCommonMotionCliffEscapeSlow1,
+	nFTCommonMotionCliffEscapeSlow2,
+	nFTCommonMotionLightGet,
+	nFTCommonMotionHeavyGet,
+	nFTCommonMotionLightThrowDrop,
+	nFTCommonMotionLightThrowDash,
+	nFTCommonMotionLightThrowF,
+	nFTCommonMotionLightThrowB,
+	nFTCommonMotionLightThrowHi,
+	nFTCommonMotionLightThrowLw,
+	nFTCommonMotionLightThrowF4,
+	nFTCommonMotionLightThrowB4,
+	nFTCommonMotionLightThrowHi4,
+	nFTCommonMotionLightThrowLw4,
+	nFTCommonMotionLightThrowAirF,
+	nFTCommonMotionLightThrowAirB,
+	nFTCommonMotionLightThrowAirHi,
+	nFTCommonMotionLightThrowAirLw,
+	nFTCommonMotionLightThrowAirF4,
+	nFTCommonMotionLightThrowAirB4,
+	nFTCommonMotionLightThrowAirHi4,
+	nFTCommonMotionLightThrowAirLw4,
+	nFTCommonMotionHeavyThrowF,
+	nFTCommonMotionHeavyThrowB,
+	nFTCommonMotionHeavyThrowF4,
+	nFTCommonMotionHeavyThrowB4,
+	nFTCommonMotionSwordSwing1,
+	nFTCommonMotionSwordSwing3,
+	nFTCommonMotionSwordSwing4,
+	nFTCommonMotionSwordSwingDash,
+	nFTCommonMotionBatSwing1,
+	nFTCommonMotionBatSwing3,
+	nFTCommonMotionBatSwing4,
+	nFTCommonMotionBatSwingDash,
+	nFTCommonMotionHarisenSwing1,
+	nFTCommonMotionHarisenSwing3,
+	nFTCommonMotionHarisenSwing4,
+	nFTCommonMotionHarisenSwingDash,
+	nFTCommonMotionStarRodSwing1,
+	nFTCommonMotionStarRodSwing3,
+	nFTCommonMotionStarRodSwing4,
+	nFTCommonMotionStarRodSwingDash,
+	nFTCommonMotionLGunShoot,
+	nFTCommonMotionLGunShootAir,
+	nFTCommonMotionFireFlowerShoot,
+	nFTCommonMotionFireFlowerShootAir,
+	nFTCommonMotionHammerWait,
+	nFTCommonMotionHammerWalk,
+	nFTCommonMotionGuardOn,
+	nFTCommonMotionGuardOff,
+	nFTCommonMotionEscapeF,
+	nFTCommonMotionEscapeB,
+	nFTCommonMotionShieldBreakFly,
+	nFTCommonMotionShieldBreakFall,
+	nFTCommonMotionShieldBreakDownD,
+	nFTCommonMotionShieldBreakDownU,
+	nFTCommonMotionShieldBreakStandD,
+	nFTCommonMotionShieldBreakStandU,
+	nFTCommonMotionFuraFura,
+	nFTCommonMotionFuraSleep,
+	nFTCommonMotionCatch,
+	nFTCommonMotionCatchPull,
+	nFTCommonMotionThrowF,
+	nFTCommonMotionThrowB,
+	nFTCommonMotionCapturePulled,
+	nFTCommonMotionThrownKirbyStar,
+	nFTCommonMotionThrownCopyStar,
+	nFTCommonMotionYoshiEgg,
+	nFTCommonMotionCaptureCaptain,
+	nFTCommonMotionThrownDonkeyUnk,
+	nFTCommonMotionThrownDonkeyF,
+	nFTCommonMotionThrownMarioB1,
+	nFTCommonMotionThrownUnk1,
+	nFTCommonMotionShouldered,
+	nFTCommonMotionThrownMarioB2,
+	nFTCommonMotionThrownCommon,
+	nFTCommonMotionThrownUnk2,
+	nFTCommonMotionThrownUnk3,
+	nFTCommonMotionAppeal,
+	nFTCommonMotionAttack11,
+	nFTCommonMotionAttack12,
+	nFTCommonMotionAttackDash,
+	nFTCommonMotionAttackS3Hi,
+	nFTCommonMotionAttackS3HiS,
+	nFTCommonMotionAttackS3,
+	nFTCommonMotionAttackS3LwS,
+	nFTCommonMotionAttackS3Lw,
+	nFTCommonMotionAttackHi3F, // Forward-angled up tilt???
+	nFTCommonMotionAttackHi3,
+	nFTCommonMotionAttackHi3B, // Backward-angled up tilt???
+	nFTCommonMotionAttackLw3,
+	nFTCommonMotionAttackS4Hi,
+	nFTCommonMotionAttackS4HiS,
+	nFTCommonMotionAttackS4,
+	nFTCommonMotionAttackS4LwS,
+	nFTCommonMotionAttackS4Lw,
+	nFTCommonMotionAttackHi4,
+	nFTCommonMotionAttackLw4,
 
-    nFTCommonMotionAttackAirStart,
-    nFTCommonMotionAttackAirN = nFTCommonMotionAttackAirStart,
-    nFTCommonMotionAttackAirF,
-    nFTCommonMotionAttackAirB,
-    nFTCommonMotionAttackAirHi,
-    nFTCommonMotionAttackAirLw,
-    nFTCommonMotionAttackAirEnd = nFTCommonMotionAttackAirLw,
+	nFTCommonMotionAttackAirStart,
+	nFTCommonMotionAttackAirN = nFTCommonMotionAttackAirStart,
+	nFTCommonMotionAttackAirF,
+	nFTCommonMotionAttackAirB,
+	nFTCommonMotionAttackAirHi,
+	nFTCommonMotionAttackAirLw,
+	nFTCommonMotionAttackAirEnd = nFTCommonMotionAttackAirLw,
 
-    nFTCommonMotionLandingAirStart,
-    nFTCommonMotionLandingAirN = nFTCommonMotionLandingAirStart,
-    nFTCommonMotionLandingAirF,
-    nFTCommonMotionLandingAirB,
-    nFTCommonMotionLandingAirHi,
-    nFTCommonMotionLandingAirLw,
-    nFTCommonMotionLandingAirEnd = nFTCommonMotionLandingAirLw,
+	nFTCommonMotionLandingAirStart,
+	nFTCommonMotionLandingAirN = nFTCommonMotionLandingAirStart,
+	nFTCommonMotionLandingAirF,
+	nFTCommonMotionLandingAirB,
+	nFTCommonMotionLandingAirHi,
+	nFTCommonMotionLandingAirLw,
+	nFTCommonMotionLandingAirEnd = nFTCommonMotionLandingAirLw,
 
-    nFTCommonMotionLandingAirNull,
-    nFTCommonMotionSpecialStart
+	nFTCommonMotionLandingAirNull,
+	nFTCommonMotionSpecialStart
 
 } FTCommonMotion;
 
 typedef enum FTCommonStatus
 {
-    nFTCommonStatusDeadDown,
-    nFTCommonStatusDeadLeftRight,
-    nFTCommonStatusDeadUpStar,
-    nFTCommonStatusDeadUpFall,
-    nFTCommonStatusSleep,
-    nFTCommonStatusEntry,
+	nFTCommonStatusDeadDown,
+	nFTCommonStatusDeadLeftRight,
+	nFTCommonStatusDeadUpStar,
+	nFTCommonStatusDeadUpFall,
+	nFTCommonStatusSleep,
+	nFTCommonStatusEntry,
 
-    nFTCommonStatusActionStart,    // Start of uh... I don't know a better name for this.
-    nFTCommonStatusEntryNull = nFTCommonStatusActionStart,
-    nFTCommonStatusRebirthDown,
-    nFTCommonStatusRebirthStand,
-    nFTCommonStatusRebirthWait,
+	nFTCommonStatusActionStart,    // Start of uh... I don't know a better name for this.
+	nFTCommonStatusEntryNull = nFTCommonStatusActionStart,
+	nFTCommonStatusRebirthDown,
+	nFTCommonStatusRebirthStand,
+	nFTCommonStatusRebirthWait,
 
-    nFTCommonStatusControlStart,    // Start of (mostly) actionable (or rather player-influenced) moves
-    nFTCommonStatusWait = nFTCommonStatusControlStart,
-    nFTCommonStatusWalkSlow,
-    nFTCommonStatusWalkMiddle,
-    nFTCommonStatusWalkFast,
-    nFTCommonStatusWalkEnd,
-    nFTCommonStatusDash,
-    nFTCommonStatusRun,
-    nFTCommonStatusRunBrake,
-    nFTCommonStatusTurn,
-    nFTCommonStatusTurnRun,
-    nFTCommonStatusKneeBend,
-    nFTCommonStatusGuardKneeBend,
-    nFTCommonStatusJumpF,
-    nFTCommonStatusJumpB,
-    nFTCommonStatusJumpAerialF,
-    nFTCommonStatusJumpAerialB,
-    nFTCommonStatusFall,
-    nFTCommonStatusFallAerial,
-    nFTCommonStatusSquat,
-    nFTCommonStatusSquatWait,
-    nFTCommonStatusSquatRv,
-    nFTCommonStatusLandingLight,
-    nFTCommonStatusLandingHeavy,
-    nFTCommonStatusPass,
-    nFTCommonStatusGuardPass,
-    nFTCommonStatusOttottoWait,
-    nFTCommonStatusOttotto,
+	nFTCommonStatusControlStart,    // Start of (mostly) actionable (or rather player-influenced) moves
+	nFTCommonStatusWait = nFTCommonStatusControlStart,
+	nFTCommonStatusWalkSlow,
+	nFTCommonStatusWalkMiddle,
+	nFTCommonStatusWalkFast,
+	nFTCommonStatusWalkEnd,
+	nFTCommonStatusDash,
+	nFTCommonStatusRun,
+	nFTCommonStatusRunBrake,
+	nFTCommonStatusTurn,
+	nFTCommonStatusTurnRun,
+	nFTCommonStatusKneeBend,
+	nFTCommonStatusGuardKneeBend,
+	nFTCommonStatusJumpF,
+	nFTCommonStatusJumpB,
+	nFTCommonStatusJumpAerialF,
+	nFTCommonStatusJumpAerialB,
+	nFTCommonStatusFall,
+	nFTCommonStatusFallAerial,
+	nFTCommonStatusSquat,
+	nFTCommonStatusSquatWait,
+	nFTCommonStatusSquatRv,
+	nFTCommonStatusLandingLight,
+	nFTCommonStatusLandingHeavy,
+	nFTCommonStatusPass,
+	nFTCommonStatusGuardPass,
+	nFTCommonStatusOttottoWait,
+	nFTCommonStatusOttotto,
 
-    nFTCommonStatusDamageStart,
-    nFTCommonStatusDamageHi1 = nFTCommonStatusDamageStart,
-    nFTCommonStatusDamageHi2,
-    nFTCommonStatusDamageHi3,
-    nFTCommonStatusDamageN1,
-    nFTCommonStatusDamageN2,
-    nFTCommonStatusDamageN3,
-    nFTCommonStatusDamageLw1,
-    nFTCommonStatusDamageLw2,
-    nFTCommonStatusDamageLw3,
-    nFTCommonStatusDamageAir1,
-    nFTCommonStatusDamageAir2,
-    nFTCommonStatusDamageAir3,
-    nFTCommonStatusDamageE1,       // Eletric damage weak
-    nFTCommonStatusDamageE2,       // Eletric damage strong
-    nFTCommonStatusDamageFlyHi,
-    nFTCommonStatusDamageFlyN,
-    nFTCommonStatusDamageFlyLw,
-    nFTCommonStatusDamageFlyTop,
-    nFTCommonStatusDamageFlyRoll,
-    nFTCommonStatusWallDamage,
-    nFTCommonStatusDamageEnd = nFTCommonStatusWallDamage,
+	nFTCommonStatusDamageStart,
+	nFTCommonStatusDamageHi1 = nFTCommonStatusDamageStart,
+	nFTCommonStatusDamageHi2,
+	nFTCommonStatusDamageHi3,
+	nFTCommonStatusDamageN1,
+	nFTCommonStatusDamageN2,
+	nFTCommonStatusDamageN3,
+	nFTCommonStatusDamageLw1,
+	nFTCommonStatusDamageLw2,
+	nFTCommonStatusDamageLw3,
+	nFTCommonStatusDamageAir1,
+	nFTCommonStatusDamageAir2,
+	nFTCommonStatusDamageAir3,
+	nFTCommonStatusDamageE1,       // Eletric damage weak
+	nFTCommonStatusDamageE2,       // Eletric damage strong
+	nFTCommonStatusDamageFlyHi,
+	nFTCommonStatusDamageFlyN,
+	nFTCommonStatusDamageFlyLw,
+	nFTCommonStatusDamageFlyTop,
+	nFTCommonStatusDamageFlyRoll,
+	nFTCommonStatusWallDamage,
+	nFTCommonStatusDamageEnd = nFTCommonStatusWallDamage,
 
-    nFTCommonStatusDamageFall,
-    nFTCommonStatusFallSpecial,
-    nFTCommonStatusLandingFallSpecial,
-    nFTCommonStatusTwister,        // Hyrule Tornado
-    nFTCommonStatusTaruCann,       // DK Barrel
-    nFTCommonStatusDokanStart,     // Enter pipe
-    nFTCommonStatusDokanWait,      // In pipe
-    nFTCommonStatusDokanEnd,       // Exit pipe
-    nFTCommonStatusDokanWalk,      // Exit horizontal pipe
-    nFTCommonStatusStopCeil,       // Bump head into ceiling
-    nFTCommonStatusDownBounceD,
-    nFTCommonStatusDownBounceU,
-    nFTCommonStatusDownWaitD,
-    nFTCommonStatusDownWaitU,
-    nFTCommonStatusDownStandD,
-    nFTCommonStatusDownStandU,
-    nFTCommonStatusPassiveStandF,
-    nFTCommonStatusPassiveStandB,
-    nFTCommonStatusDownForwardD,
-    nFTCommonStatusDownForwardU,
-    nFTCommonStatusDownBackD,
-    nFTCommonStatusDownBackU,
-    nFTCommonStatusDownAttackD,
-    nFTCommonStatusDownAttackU,
-    nFTCommonStatusPassive,
-    nFTCommonStatusReboundWait,
-    nFTCommonStatusRebound,
-    nFTCommonStatusCliffCatch,
-    nFTCommonStatusCliffWait,
-    nFTCommonStatusCliffQuick,
-    nFTCommonStatusCliffClimbQuick1,
-    nFTCommonStatusCliffClimbQuick2,
-    nFTCommonStatusCliffSlow,
-    nFTCommonStatusCliffClimbSlow1,
-    nFTCommonStatusCliffClimbSlow2,
-    nFTCommonStatusCliffAttackQuick1,
-    nFTCommonStatusCliffAttackQuick2,
-    nFTCommonStatusCliffAttackSlow1,
-    nFTCommonStatusCliffAttackSlow2,
-    nFTCommonStatusCliffEscapeQuick1,
-    nFTCommonStatusCliffEscapeQuick2,
-    nFTCommonStatusCliffEscapeSlow1,
-    nFTCommonStatusCliffEscapeSlow2,
-    nFTCommonStatusLightGet,
-    nFTCommonStatusHeavyGet,
-    nFTCommonStatusLiftWait,
-    nFTCommonStatusLiftTurn,
+	nFTCommonStatusDamageFall,
+	nFTCommonStatusFallSpecial,
+	nFTCommonStatusLandingFallSpecial,
+	nFTCommonStatusTwister,        // Hyrule Tornado
+	nFTCommonStatusTaruCann,       // DK Barrel
+	nFTCommonStatusDokanStart,     // Enter pipe
+	nFTCommonStatusDokanWait,      // In pipe
+	nFTCommonStatusDokanEnd,       // Exit pipe
+	nFTCommonStatusDokanWalk,      // Exit horizontal pipe
+	nFTCommonStatusStopCeil,       // Bump head into ceiling
+	nFTCommonStatusDownBounceD,
+	nFTCommonStatusDownBounceU,
+	nFTCommonStatusDownWaitD,
+	nFTCommonStatusDownWaitU,
+	nFTCommonStatusDownStandD,
+	nFTCommonStatusDownStandU,
+	nFTCommonStatusPassiveStandF,
+	nFTCommonStatusPassiveStandB,
+	nFTCommonStatusDownForwardD,
+	nFTCommonStatusDownForwardU,
+	nFTCommonStatusDownBackD,
+	nFTCommonStatusDownBackU,
+	nFTCommonStatusDownAttackD,
+	nFTCommonStatusDownAttackU,
+	nFTCommonStatusPassive,
+	nFTCommonStatusReboundWait,
+	nFTCommonStatusRebound,
+	nFTCommonStatusCliffCatch,
+	nFTCommonStatusCliffWait,
+	nFTCommonStatusCliffQuick,
+	nFTCommonStatusCliffClimbQuick1,
+	nFTCommonStatusCliffClimbQuick2,
+	nFTCommonStatusCliffSlow,
+	nFTCommonStatusCliffClimbSlow1,
+	nFTCommonStatusCliffClimbSlow2,
+	nFTCommonStatusCliffAttackQuick1,
+	nFTCommonStatusCliffAttackQuick2,
+	nFTCommonStatusCliffAttackSlow1,
+	nFTCommonStatusCliffAttackSlow2,
+	nFTCommonStatusCliffEscapeQuick1,
+	nFTCommonStatusCliffEscapeQuick2,
+	nFTCommonStatusCliffEscapeSlow1,
+	nFTCommonStatusCliffEscapeSlow2,
+	nFTCommonStatusLightGet,
+	nFTCommonStatusHeavyGet,
+	nFTCommonStatusLiftWait,
+	nFTCommonStatusLiftTurn,
 
-    nFTCommonStatusLightThrowStart,                                    // Start of Light Throw action states
-    nFTCommonStatusLightThrowDrop = nFTCommonStatusLightThrowStart,
-    nFTCommonStatusLightThrowDash,
-    nFTCommonStatusLightThrowF,
-    nFTCommonStatusLightThrowB,
-    nFTCommonStatusLightThrowHi,
-    nFTCommonStatusLightThrowLw,
-    nFTCommonStatusLightThrowF4,
-    nFTCommonStatusLightThrowB4,
-    nFTCommonStatusLightThrowHi4,
-    nFTCommonStatusLightThrowLw4,
-    nFTCommonStatusLightThrowAirF,
-    nFTCommonStatusLightThrowAirB,
-    nFTCommonStatusLightThrowAirHi,
-    nFTCommonStatusLightThrowAirLw,
-    nFTCommonStatusLightThrowAirF4,
-    nFTCommonStatusLightThrowAirB4,
-    nFTCommonStatusLightThrowAirHi4,
-    nFTCommonStatusLightThrowAirLw4,
-    nFTCommonStatusLightThrowEnd = nFTCommonStatusLightThrowAirLw4,   // End of Light Throw action states
+	nFTCommonStatusLightThrowStart,                                    // Start of Light Throw action states
+	nFTCommonStatusLightThrowDrop = nFTCommonStatusLightThrowStart,
+	nFTCommonStatusLightThrowDash,
+	nFTCommonStatusLightThrowF,
+	nFTCommonStatusLightThrowB,
+	nFTCommonStatusLightThrowHi,
+	nFTCommonStatusLightThrowLw,
+	nFTCommonStatusLightThrowF4,
+	nFTCommonStatusLightThrowB4,
+	nFTCommonStatusLightThrowHi4,
+	nFTCommonStatusLightThrowLw4,
+	nFTCommonStatusLightThrowAirF,
+	nFTCommonStatusLightThrowAirB,
+	nFTCommonStatusLightThrowAirHi,
+	nFTCommonStatusLightThrowAirLw,
+	nFTCommonStatusLightThrowAirF4,
+	nFTCommonStatusLightThrowAirB4,
+	nFTCommonStatusLightThrowAirHi4,
+	nFTCommonStatusLightThrowAirLw4,
+	nFTCommonStatusLightThrowEnd = nFTCommonStatusLightThrowAirLw4,   // End of Light Throw action states
 
-    nFTCommonStatusHeavyThrowStart,                                    // Start of Heavy Throw action states
-    nFTCommonStatusHeavyThrowF = nFTCommonStatusHeavyThrowStart,
-    nFTCommonStatusHeavyThrowB,
-    nFTCommonStatusHeavyThrow4Start,                                   // Start of Heavy Throw Smash action states
-    nFTCommonStatusHeavyThrowF4 = nFTCommonStatusHeavyThrow4Start, 
-    nFTCommonStatusHeavyThrowB4,
-    nFTCommonStatusHeavyThrow4End = nFTCommonStatusHeavyThrowB4,      // End of Heavy Throw Smash action states
-    nFTCommonStatusHeavyThrowEnd = nFTCommonStatusHeavyThrow4End,     // End of Heavy Throw action states
+	nFTCommonStatusHeavyThrowStart,                                    // Start of Heavy Throw action states
+	nFTCommonStatusHeavyThrowF = nFTCommonStatusHeavyThrowStart,
+	nFTCommonStatusHeavyThrowB,
+	nFTCommonStatusHeavyThrow4Start,                                   // Start of Heavy Throw Smash action states
+	nFTCommonStatusHeavyThrowF4 = nFTCommonStatusHeavyThrow4Start, 
+	nFTCommonStatusHeavyThrowB4,
+	nFTCommonStatusHeavyThrow4End = nFTCommonStatusHeavyThrowB4,      // End of Heavy Throw Smash action states
+	nFTCommonStatusHeavyThrowEnd = nFTCommonStatusHeavyThrow4End,     // End of Heavy Throw action states
 
-    nFTCommonStatusItemSwingStart,                                     // Start of Item Swing action states
-    nFTCommonStatusSwordSwing1 = nFTCommonStatusItemSwingStart,
-    nFTCommonStatusSwordSwing3,
-    nFTCommonStatusSwordSwing4,
-    nFTCommonStatusSwordSwingDash,
-    nFTCommonStatusBatSwing1,
-    nFTCommonStatusBatSwing3,
-    nFTCommonStatusBatSwing4,
-    nFTCommonStatusBatSwingDash,
-    nFTCommonStatusHarisenSwing1,
-    nFTCommonStatusHarisenSwing3,
-    nFTCommonStatusHarisenSwing4,
-    nFTCommonStatusHarisenSwingDash,
-    nFTCommonStatusStarRodSwing1,
-    nFTCommonStatusStarRodSwing3,
-    nFTCommonStatusStarRodSwing4,
-    nFTCommonStatusStarRodSwingDash,
-    nFTCommonStatusItemSwingEnd = nFTCommonStatusStarRodSwingDash,    // End of Item Swing action states
+	nFTCommonStatusItemSwingStart,                                     // Start of Item Swing action states
+	nFTCommonStatusSwordSwing1 = nFTCommonStatusItemSwingStart,
+	nFTCommonStatusSwordSwing3,
+	nFTCommonStatusSwordSwing4,
+	nFTCommonStatusSwordSwingDash,
+	nFTCommonStatusBatSwing1,
+	nFTCommonStatusBatSwing3,
+	nFTCommonStatusBatSwing4,
+	nFTCommonStatusBatSwingDash,
+	nFTCommonStatusHarisenSwing1,
+	nFTCommonStatusHarisenSwing3,
+	nFTCommonStatusHarisenSwing4,
+	nFTCommonStatusHarisenSwingDash,
+	nFTCommonStatusStarRodSwing1,
+	nFTCommonStatusStarRodSwing3,
+	nFTCommonStatusStarRodSwing4,
+	nFTCommonStatusStarRodSwingDash,
+	nFTCommonStatusItemSwingEnd = nFTCommonStatusStarRodSwingDash,    // End of Item Swing action states
 
-    nFTCommonStatusLGunShoot,
-    nFTCommonStatusLGunShootAir,
-    nFTCommonStatusFireFlowerShoot,
-    nFTCommonStatusFireFlowerShootAir,
+	nFTCommonStatusLGunShoot,
+	nFTCommonStatusLGunShootAir,
+	nFTCommonStatusFireFlowerShoot,
+	nFTCommonStatusFireFlowerShootAir,
 
-    nFTCommonStatusHammerStart,                                        // Start of Hammer action states
-    nFTCommonStatusHammerWait = nFTCommonStatusHammerStart,
-    nFTCommonStatusHammerWalk,
-    nFTCommonStatusHammerTurn,
-    nFTCommonStatusHammerKneeBend,
-    nFTCommonStatusHammerFall,                                         // Pretty much any aerial Hammer state
-    nFTCommonStatusHammerLanding,
-    nFTCommonStatusHammerEnd = nFTCommonStatusHammerLanding,          // End of Hammer action states
+	nFTCommonStatusHammerStart,                                        // Start of Hammer action states
+	nFTCommonStatusHammerWait = nFTCommonStatusHammerStart,
+	nFTCommonStatusHammerWalk,
+	nFTCommonStatusHammerTurn,
+	nFTCommonStatusHammerKneeBend,
+	nFTCommonStatusHammerFall,                                         // Pretty much any aerial Hammer state
+	nFTCommonStatusHammerLanding,
+	nFTCommonStatusHammerEnd = nFTCommonStatusHammerLanding,          // End of Hammer action states
 
-    nFTCommonStatusGuardStart,                                         // Start of Shield action states
-    nFTCommonStatusGuardOn = nFTCommonStatusGuardStart,
-    nFTCommonStatusGuard,
-    nFTCommonStatusGuardOff,
-    nFTCommonStatusGuardSetOff,
-    nFTCommonStatusGuardEnd = nFTCommonStatusGuardSetOff,             // End of Shield action states  
+	nFTCommonStatusGuardStart,                                         // Start of Shield action states
+	nFTCommonStatusGuardOn = nFTCommonStatusGuardStart,
+	nFTCommonStatusGuard,
+	nFTCommonStatusGuardOff,
+	nFTCommonStatusGuardSetOff,
+	nFTCommonStatusGuardEnd = nFTCommonStatusGuardSetOff,             // End of Shield action states  
 
-    nFTCommonStatusEscapeF,
-    nFTCommonStatusEscapeB,
-    nFTCommonStatusShieldBreakFly,
-    nFTCommonStatusShieldBreakFall,
-    nFTCommonStatusShieldBreakDownD,
-    nFTCommonStatusShieldBreakDownU,
-    nFTCommonStatusShieldBreakStandD,
-    nFTCommonStatusShieldBreakStandU,
-    nFTCommonStatusFuraFura,
-    nFTCommonStatusFuraSleep,
-    nFTCommonStatusCatch,
-    nFTCommonStatusCatchPull,
-    nFTCommonStatusCatchWait,
-    nFTCommonStatusThrowF,
-    nFTCommonStatusThrowB,
-    nFTCommonStatusCapturePulled,
-    nFTCommonStatusCaptureWait,
-    nFTCommonStatusCaptureKirby,
-    nFTCommonStatusCaptureWaitKirby,
-    nFTCommonStatusThrownKirbyStar,
-    nFTCommonStatusThrownCopyStar,
-    nFTCommonStatusCaptureYoshi,
-    nFTCommonStatusYoshiEgg,
-    nFTCommonStatusCaptureCaptain,
-    nFTCommonStatusThrownDonkeyUnk, // Related to DK throws?
+	nFTCommonStatusEscapeF,
+	nFTCommonStatusEscapeB,
+	nFTCommonStatusShieldBreakFly,
+	nFTCommonStatusShieldBreakFall,
+	nFTCommonStatusShieldBreakDownD,
+	nFTCommonStatusShieldBreakDownU,
+	nFTCommonStatusShieldBreakStandD,
+	nFTCommonStatusShieldBreakStandU,
+	nFTCommonStatusFuraFura,
+	nFTCommonStatusFuraSleep,
+	nFTCommonStatusCatch,
+	nFTCommonStatusCatchPull,
+	nFTCommonStatusCatchWait,
+	nFTCommonStatusThrowF,
+	nFTCommonStatusThrowB,
+	nFTCommonStatusCapturePulled,
+	nFTCommonStatusCaptureWait,
+	nFTCommonStatusCaptureKirby,
+	nFTCommonStatusCaptureWaitKirby,
+	nFTCommonStatusThrownKirbyStar,
+	nFTCommonStatusThrownCopyStar,
+	nFTCommonStatusCaptureYoshi,
+	nFTCommonStatusYoshiEgg,
+	nFTCommonStatusCaptureCaptain,
+	nFTCommonStatusThrownDonkeyUnk, // Related to DK throws?
 
-    nFTCommonStatusThrownStart,
-    nFTCommonStatusThrownDonkeyF = nFTCommonStatusThrownStart,
-    nFTCommonStatusThrownMarioBStart,
-    nFTCommonStatusThrownFoxFStart,
-    nFTCommonStatusShouldered,
-    nFTCommonStatusThrownMarioB,
-    nFTCommonStatusThrownCommon,
-    nFTCommonStatusThrownFoxF,
-    nFTCommonStatusThrownFoxB,
-    nFTCommonStatusThrownEnd = nFTCommonStatusThrownFoxB,
+	nFTCommonStatusThrownStart,
+	nFTCommonStatusThrownDonkeyF = nFTCommonStatusThrownStart,
+	nFTCommonStatusThrownMarioBStart,
+	nFTCommonStatusThrownFoxFStart,
+	nFTCommonStatusShouldered,
+	nFTCommonStatusThrownMarioB,
+	nFTCommonStatusThrownCommon,
+	nFTCommonStatusThrownFoxF,
+	nFTCommonStatusThrownFoxB,
+	nFTCommonStatusThrownEnd = nFTCommonStatusThrownFoxB,
 
-    nFTCommonStatusAppeal,
-    nFTCommonStatusAttack11,
-    nFTCommonStatusAttack12,
-    nFTCommonStatusAttackDash,
-    nFTCommonStatusAttackS3Hi,
-    nFTCommonStatusAttackS3HiS,
-    nFTCommonStatusAttackS3,
-    nFTCommonStatusAttackS3LwS,
-    nFTCommonStatusAttackS3Lw,
-    nFTCommonStatusAttackHi3F, // Forward-angled up tilt???
-    nFTCommonStatusAttackHi3,
-    nFTCommonStatusAttackHi3B, // Backward-angled up tilt???
-    nFTCommonStatusAttackLw3,
-    nFTCommonStatusAttackS4Hi,
-    nFTCommonStatusAttackS4HiS,
-    nFTCommonStatusAttackS4,
-    nFTCommonStatusAttackS4LwS,
-    nFTCommonStatusAttackS4Lw,
-    nFTCommonStatusAttackHi4,
-    nFTCommonStatusAttackLw4,
+	nFTCommonStatusAppeal,
+	nFTCommonStatusAttack11,
+	nFTCommonStatusAttack12,
+	nFTCommonStatusAttackDash,
+	nFTCommonStatusAttackS3Hi,
+	nFTCommonStatusAttackS3HiS,
+	nFTCommonStatusAttackS3,
+	nFTCommonStatusAttackS3LwS,
+	nFTCommonStatusAttackS3Lw,
+	nFTCommonStatusAttackHi3F, // Forward-angled up tilt???
+	nFTCommonStatusAttackHi3,
+	nFTCommonStatusAttackHi3B, // Backward-angled up tilt???
+	nFTCommonStatusAttackLw3,
+	nFTCommonStatusAttackS4Hi,
+	nFTCommonStatusAttackS4HiS,
+	nFTCommonStatusAttackS4,
+	nFTCommonStatusAttackS4LwS,
+	nFTCommonStatusAttackS4Lw,
+	nFTCommonStatusAttackHi4,
+	nFTCommonStatusAttackLw4,
 
-    nFTCommonStatusAttackAirStart,
-    nFTCommonStatusAttackAirN = nFTCommonStatusAttackAirStart,
-    nFTCommonStatusAttackAirF,
-    nFTCommonStatusAttackAirB,
-    nFTCommonStatusAttackAirHi,
-    nFTCommonStatusAttackAirLw,
-    nFTCommonStatusAttackAirEnd = nFTCommonStatusAttackAirLw,
+	nFTCommonStatusAttackAirStart,
+	nFTCommonStatusAttackAirN = nFTCommonStatusAttackAirStart,
+	nFTCommonStatusAttackAirF,
+	nFTCommonStatusAttackAirB,
+	nFTCommonStatusAttackAirHi,
+	nFTCommonStatusAttackAirLw,
+	nFTCommonStatusAttackAirEnd = nFTCommonStatusAttackAirLw,
 
-    nFTCommonStatusLandingAirStart,
-    nFTCommonStatusLandingAirN = nFTCommonStatusLandingAirStart,
-    nFTCommonStatusLandingAirF,
-    nFTCommonStatusLandingAirB,
-    nFTCommonStatusLandingAirHi,
-    nFTCommonStatusLandingAirLw,
-    nFTCommonStatusLandingAirNull,
-    nFTCommonStatusLandingAirEnd = nFTCommonStatusLandingAirNull,
+	nFTCommonStatusLandingAirStart,
+	nFTCommonStatusLandingAirN = nFTCommonStatusLandingAirStart,
+	nFTCommonStatusLandingAirF,
+	nFTCommonStatusLandingAirB,
+	nFTCommonStatusLandingAirHi,
+	nFTCommonStatusLandingAirLw,
+	nFTCommonStatusLandingAirNull,
+	nFTCommonStatusLandingAirEnd = nFTCommonStatusLandingAirNull,
 
-    nFTCommonStatusSpecialStart // Start of special move table
+	nFTCommonStatusSpecialStart // Start of special move table
 
 } FTCommonStatus;
 
 typedef enum FTDemoStatus
 {
-    nFTDemoStatusNull = 0x10000,
-    nFTDemoStatusWin1,          // Win / selected 1
-    nFTDemoStatusWin2,          // Win / selected 2
-    nFTDemoStatusWin3,          // Win / selected 3
-    nFTDemoStatusWin4,          // Win / selected 4
-    nFTDemoStatusLose,          // Lose (results screen)
-    nFTDemoStatusRun,           // Common status ID for opening movie running scene
-    nFTDemoStatusJump,          // Link jump status ID for opening movie running scene
-    nFTDemoStatusFigurePulled,  // Fighter plucked by Master Hand during opening movie
-    nFTDemoStatusFigureDropped, // Fighter dropped in opening movie / ending movie / game over
-    nFTDemoStatusFigureStand,   // Fighter standing up in opening movie / game over continue
-    nFTDemoStatusClash,         // Common status ID for opening movie clashing scene
-    nFTDemoStatusStance,        // Common status ID for opening movie sliding fighter poses
-    nFTDemoStatusIntroL,        // Common status ID for 1P Game Stage Cards (Player / Allies)
-    nFTDemoStatusIntroR,        // Common status ID for 1P Game Stage Cards (Enemies)
-    nFTDemoStatusSpecialStart   // Start of opening movie character-specific statuses
+	nFTDemoStatusNull = 0x10000,
+	nFTDemoStatusWin1,          // Win / selected 1
+	nFTDemoStatusWin2,          // Win / selected 2
+	nFTDemoStatusWin3,          // Win / selected 3
+	nFTDemoStatusWin4,          // Win / selected 4
+	nFTDemoStatusLose,          // Lose (results screen)
+	nFTDemoStatusRun,           // Common status ID for opening movie running scene
+	nFTDemoStatusJump,          // Link jump status ID for opening movie running scene
+	nFTDemoStatusFigurePulled,  // Fighter plucked by Master Hand during opening movie
+	nFTDemoStatusFigureDropped, // Fighter dropped in opening movie / ending movie / game over
+	nFTDemoStatusFigureStand,   // Fighter standing up in opening movie / game over continue
+	nFTDemoStatusClash,         // Common status ID for opening movie clashing scene
+	nFTDemoStatusStance,        // Common status ID for opening movie sliding fighter poses
+	nFTDemoStatusIntroL,        // Common status ID for 1P Game Stage Cards (Player / Allies)
+	nFTDemoStatusIntroR,        // Common status ID for 1P Game Stage Cards (Enemies)
+	nFTDemoStatusSpecialStart   // Start of opening movie character-specific statuses
 
 } FTDemoStatus;
 
 typedef enum FTMotionAttackIndex
 {
-    nFTMotionAttackIDNone,
+	nFTMotionAttackIDNone,
 
-    nFTMotionAttackIDBaseStart,                                 // Start of moves that are part of the character's base moveset
-    nFTMotionAttackIDAttack11 = nFTMotionAttackIDBaseStart,
-    nFTMotionAttackIDAttack12,
-    nFTMotionAttackIDAttack13,
-    nFTMotionAttackIDAttack100,
-    nFTMotionAttackIDAttackDash,
-    nFTMotionAttackIDAttackS3,
-    nFTMotionAttackIDAttackHi3,
-    nFTMotionAttackIDAttackLw3,
-    nFTMotionAttackIDAttackS4,
-    nFTMotionAttackIDAttackHi4,
-    nFTMotionAttackIDAttackLw4,
-    nFTMotionAttackIDAttackAirN,
-    nFTMotionAttackIDAttackAirF,
-    nFTMotionAttackIDAttackAirB,
-    nFTMotionAttackIDAttackAirHi,
-    nFTMotionAttackIDAttackAirLw,
-    nFTMotionAttackIDSpecialHi,
-    nFTMotionAttackIDSpecialN,
-    nFTMotionAttackIDSpecialNCopyMario,
-    nFTMotionAttackIDSpecialNCopyLuigi,
-    nFTMotionAttackIDSpecialNCopyFox,
-    nFTMotionAttackIDSpecialNCopySamus,
-    nFTMotionAttackIDSpecialNCopyDonkey,
-    nFTMotionAttackIDSpecialNCopyPikachu,
-    nFTMotionAttackIDSpecialNCopyNess,
-    nFTMotionAttackIDSpecialNCopyLink,
-    nFTMotionAttackIDSpecialNCopyPurin,
-    nFTMotionAttackIDSpecialNCopyCaptain,
-    nFTMotionAttackIDSpecialNCopyYoshi,
-    nFTMotionAttackIDSpecialLw,
-    nFTMotionAttackIDDownAttackD,
-    nFTMotionAttackIDDownAttackU,
-    nFTMotionAttackIDCliffAttackQuick,
-    nFTMotionAttackIDCliffAttackSlow,
-    nFTMotionAttackIDThrowF,
-    nFTMotionAttackIDThrowB,
-    nFTMotionAttackIDBaseEnd = nFTMotionAttackIDThrowB,
+	nFTMotionAttackIDBaseStart,                                 // Start of moves that are part of the character's base moveset
+	nFTMotionAttackIDAttack11 = nFTMotionAttackIDBaseStart,
+	nFTMotionAttackIDAttack12,
+	nFTMotionAttackIDAttack13,
+	nFTMotionAttackIDAttack100,
+	nFTMotionAttackIDAttackDash,
+	nFTMotionAttackIDAttackS3,
+	nFTMotionAttackIDAttackHi3,
+	nFTMotionAttackIDAttackLw3,
+	nFTMotionAttackIDAttackS4,
+	nFTMotionAttackIDAttackHi4,
+	nFTMotionAttackIDAttackLw4,
+	nFTMotionAttackIDAttackAirN,
+	nFTMotionAttackIDAttackAirF,
+	nFTMotionAttackIDAttackAirB,
+	nFTMotionAttackIDAttackAirHi,
+	nFTMotionAttackIDAttackAirLw,
+	nFTMotionAttackIDSpecialHi,
+	nFTMotionAttackIDSpecialN,
+	nFTMotionAttackIDSpecialNCopyMario,
+	nFTMotionAttackIDSpecialNCopyLuigi,
+	nFTMotionAttackIDSpecialNCopyFox,
+	nFTMotionAttackIDSpecialNCopySamus,
+	nFTMotionAttackIDSpecialNCopyDonkey,
+	nFTMotionAttackIDSpecialNCopyPikachu,
+	nFTMotionAttackIDSpecialNCopyNess,
+	nFTMotionAttackIDSpecialNCopyLink,
+	nFTMotionAttackIDSpecialNCopyPurin,
+	nFTMotionAttackIDSpecialNCopyCaptain,
+	nFTMotionAttackIDSpecialNCopyYoshi,
+	nFTMotionAttackIDSpecialLw,
+	nFTMotionAttackIDDownAttackD,
+	nFTMotionAttackIDDownAttackU,
+	nFTMotionAttackIDCliffAttackQuick,
+	nFTMotionAttackIDCliffAttackSlow,
+	nFTMotionAttackIDThrowF,
+	nFTMotionAttackIDThrowB,
+	nFTMotionAttackIDBaseEnd = nFTMotionAttackIDThrowB,
 
-    nFTMotionAttackIDItemStart,
-    nFTMotionAttackIDSwordSwing1 = nFTMotionAttackIDItemStart,
-    nFTMotionAttackIDSwordSwing3,
-    nFTMotionAttackIDSwordSwing4,
-    nFTMotionAttackIDSwordSwingDash,
-    nFTMotionAttackIDBatSwing1,
-    nFTMotionAttackIDBatSwing3,
-    nFTMotionAttackIDBatSwing4,
-    nFTMotionAttackIDBatSwingDash,
-    nFTMotionAttackIDHarisenSwing1,
-    nFTMotionAttackIDHarisenSwing3,
-    nFTMotionAttackIDHarisenSwing4,
-    nFTMotionAttackIDHarisenSwingDash,
-    nFTMotionAttackIDStarRodSwing1,
-    nFTMotionAttackIDStarRodSwing3,
-    nFTMotionAttackIDStarRodSwing4,
-    nFTMotionAttackIDStarRodSwingDash,
-    nFTMotionAttackIDLGunShoot,
-    nFTMotionAttackIDFireFlowerShoot,
-    nFTMotionAttackIDHammer,
-    nFTMotionAttackIDItemThrow,
-    nFTMotionAttackIDItemEnd = nFTMotionAttackIDItemThrow,
+	nFTMotionAttackIDItemStart,
+	nFTMotionAttackIDSwordSwing1 = nFTMotionAttackIDItemStart,
+	nFTMotionAttackIDSwordSwing3,
+	nFTMotionAttackIDSwordSwing4,
+	nFTMotionAttackIDSwordSwingDash,
+	nFTMotionAttackIDBatSwing1,
+	nFTMotionAttackIDBatSwing3,
+	nFTMotionAttackIDBatSwing4,
+	nFTMotionAttackIDBatSwingDash,
+	nFTMotionAttackIDHarisenSwing1,
+	nFTMotionAttackIDHarisenSwing3,
+	nFTMotionAttackIDHarisenSwing4,
+	nFTMotionAttackIDHarisenSwingDash,
+	nFTMotionAttackIDStarRodSwing1,
+	nFTMotionAttackIDStarRodSwing3,
+	nFTMotionAttackIDStarRodSwing4,
+	nFTMotionAttackIDStarRodSwingDash,
+	nFTMotionAttackIDLGunShoot,
+	nFTMotionAttackIDFireFlowerShoot,
+	nFTMotionAttackIDHammer,
+	nFTMotionAttackIDItemThrow,
+	nFTMotionAttackIDItemEnd = nFTMotionAttackIDItemThrow,
 
-    nFTMotionAttackIDNull,
-    nFTMotionAttackIDEnumCount
+	nFTMotionAttackIDNull,
+	nFTMotionAttackIDEnumCount
 
 } FTMotionAttackIndex;
 
 typedef enum FTStatusAttackIndex
 {
-    nFTStatusAttackIDNone,
+	nFTStatusAttackIDNone,
 
-    nFTStatusAttackIDAttackStart,
+	nFTStatusAttackIDAttackStart,
 
-    nFTStatusAttackIDNormalStart = nFTStatusAttackIDAttackStart,
-    nFTStatusAttackIDAttack11 = nFTStatusAttackIDNormalStart,
-    nFTStatusAttackIDAttackDash,
-    nFTStatusAttackIDAttackS3,
-    nFTStatusAttackIDAttackHi3,
-    nFTStatusAttackIDAttackLw3,
-    nFTStatusAttackIDAttackS4,
-    nFTStatusAttackIDAttackHi4,
-    nFTStatusAttackIDAttackLw4,
-    nFTStatusAttackIDAttackAirN,
-    nFTStatusAttackIDAttackAirF,
-    nFTStatusAttackIDAttackAirB,
-    nFTStatusAttackIDAttackAirHi,
-    nFTStatusAttackIDAttackAirLw,
-    nFTStatusAttackIDNormalEnd = nFTStatusAttackIDAttackAirLw,
+	nFTStatusAttackIDNormalStart = nFTStatusAttackIDAttackStart,
+	nFTStatusAttackIDAttack11 = nFTStatusAttackIDNormalStart,
+	nFTStatusAttackIDAttackDash,
+	nFTStatusAttackIDAttackS3,
+	nFTStatusAttackIDAttackHi3,
+	nFTStatusAttackIDAttackLw3,
+	nFTStatusAttackIDAttackS4,
+	nFTStatusAttackIDAttackHi4,
+	nFTStatusAttackIDAttackLw4,
+	nFTStatusAttackIDAttackAirN,
+	nFTStatusAttackIDAttackAirF,
+	nFTStatusAttackIDAttackAirB,
+	nFTStatusAttackIDAttackAirHi,
+	nFTStatusAttackIDAttackAirLw,
+	nFTStatusAttackIDNormalEnd = nFTStatusAttackIDAttackAirLw,
 
-    nFTStatusAttackIDJabStart,
-    nFTStatusAttackIDAttack12 = nFTStatusAttackIDJabStart,
-    nFTStatusAttackIDAttack13,
-    nFTStatusAttackIDAttack100,
-    nFTStatusAttackIDJabEnd = nFTStatusAttackIDAttack100,
+	nFTStatusAttackIDJabStart,
+	nFTStatusAttackIDAttack12 = nFTStatusAttackIDJabStart,
+	nFTStatusAttackIDAttack13,
+	nFTStatusAttackIDAttack100,
+	nFTStatusAttackIDJabEnd = nFTStatusAttackIDAttack100,
 
-    nFTStatusAttackIDSpecialStart,
-    nFTStatusAttackIDSpecialHi = nFTStatusAttackIDSpecialStart,
-    nFTStatusAttackIDSpecialN,
-    nFTStatusAttackIDSpecialNCopyMario,
-    nFTStatusAttackIDSpecialNCopyLuigi,
-    nFTStatusAttackIDSpecialNCopyFox,
-    nFTStatusAttackIDSpecialNCopySamus,
-    nFTStatusAttackIDSpecialNCopyDonkey,
-    nFTStatusAttackIDSpecialNCopyPikachu,
-    nFTStatusAttackIDSpecialNCopyNess,
-    nFTStatusAttackIDSpecialNCopyLink,
-    nFTStatusAttackIDSpecialNCopyPurin,
-    nFTStatusAttackIDSpecialNCopyCaptain,
-    nFTStatusAttackIDSpecialNCopyYoshi,
-    nFTStatusAttackIDSpecialLw,
-    nFTStatusAttackIDSpecialEnd = nFTStatusAttackIDSpecialLw,
+	nFTStatusAttackIDSpecialStart,
+	nFTStatusAttackIDSpecialHi = nFTStatusAttackIDSpecialStart,
+	nFTStatusAttackIDSpecialN,
+	nFTStatusAttackIDSpecialNCopyMario,
+	nFTStatusAttackIDSpecialNCopyLuigi,
+	nFTStatusAttackIDSpecialNCopyFox,
+	nFTStatusAttackIDSpecialNCopySamus,
+	nFTStatusAttackIDSpecialNCopyDonkey,
+	nFTStatusAttackIDSpecialNCopyPikachu,
+	nFTStatusAttackIDSpecialNCopyNess,
+	nFTStatusAttackIDSpecialNCopyLink,
+	nFTStatusAttackIDSpecialNCopyPurin,
+	nFTStatusAttackIDSpecialNCopyCaptain,
+	nFTStatusAttackIDSpecialNCopyYoshi,
+	nFTStatusAttackIDSpecialLw,
+	nFTStatusAttackIDSpecialEnd = nFTStatusAttackIDSpecialLw,
 
-    nFTStatusAttackIDDownAttackD,
-    nFTStatusAttackIDDownAttackU,
-    nFTStatusAttackIDCliffAttackQuick,
-    nFTStatusAttackIDCliffAttackSlow,
-    nFTStatusAttackIDThrowF,
-    nFTStatusAttackIDThrowB,
+	nFTStatusAttackIDDownAttackD,
+	nFTStatusAttackIDDownAttackU,
+	nFTStatusAttackIDCliffAttackQuick,
+	nFTStatusAttackIDCliffAttackSlow,
+	nFTStatusAttackIDThrowF,
+	nFTStatusAttackIDThrowB,
 
-    nFTStatusAttackIDItemStart,
-    nFTStatusAttackIDSwordSwing1 = nFTStatusAttackIDItemStart,
-    nFTStatusAttackIDSwordSwing3,
-    nFTStatusAttackIDSwordSwing4,
-    nFTStatusAttackIDSwordSwingDash,
-    nFTStatusAttackIDBatSwing1,
-    nFTStatusAttackIDBatSwing3,
-    nFTStatusAttackIDBatSwing4,
-    nFTStatusAttackIDBatSwingDash,
-    nFTStatusAttackIDHarisenSwing1,
-    nFTStatusAttackIDHarisenSwing3,
-    nFTStatusAttackIDHarisenSwing4,
-    nFTStatusAttackIDHarisenSwingDash,
-    nFTStatusAttackIDStarRodSwing1,
-    nFTStatusAttackIDStarRodSwing3,
-    nFTStatusAttackIDStarRodSwing4,
-    nFTStatusAttackIDStarRodSwingDash,
-    nFTStatusAttackIDLGunShoot,
-    nFTStatusAttackIDFireFlowerShoot,
-    nFTStatusAttackIDHammer,
-    nFTStatusAttackIDItemThrow,
-    nFTStatusAttackIDItemEnd = nFTStatusAttackIDItemThrow,
+	nFTStatusAttackIDItemStart,
+	nFTStatusAttackIDSwordSwing1 = nFTStatusAttackIDItemStart,
+	nFTStatusAttackIDSwordSwing3,
+	nFTStatusAttackIDSwordSwing4,
+	nFTStatusAttackIDSwordSwingDash,
+	nFTStatusAttackIDBatSwing1,
+	nFTStatusAttackIDBatSwing3,
+	nFTStatusAttackIDBatSwing4,
+	nFTStatusAttackIDBatSwingDash,
+	nFTStatusAttackIDHarisenSwing1,
+	nFTStatusAttackIDHarisenSwing3,
+	nFTStatusAttackIDHarisenSwing4,
+	nFTStatusAttackIDHarisenSwingDash,
+	nFTStatusAttackIDStarRodSwing1,
+	nFTStatusAttackIDStarRodSwing3,
+	nFTStatusAttackIDStarRodSwing4,
+	nFTStatusAttackIDStarRodSwingDash,
+	nFTStatusAttackIDLGunShoot,
+	nFTStatusAttackIDFireFlowerShoot,
+	nFTStatusAttackIDHammer,
+	nFTStatusAttackIDItemThrow,
+	nFTStatusAttackIDItemEnd = nFTStatusAttackIDItemThrow,
 
-    nFTStatusAttackIDNull,
-    nFTStatusAttackIDEnumCount
+	nFTStatusAttackIDNull,
+	nFTStatusAttackIDEnumCount
 
 } FTStatusAttackIndex;
 
@@ -979,19 +979,19 @@ typedef enum FTMotionEvent
 
 typedef enum FTCameraModes
 {
-    nFTCameraModeDefault,
-    nFTCameraModeGhost,
-    nFTCameraModeDeadUp,
-    nFTCameraModeEntry,
-    nFTCameraModeExplain
+	nFTCameraModeDefault,
+	nFTCameraModeGhost,
+	nFTCameraModeDeadUp,
+	nFTCameraModeEntry,
+	nFTCameraModeExplain
 
 } FTCameraModes;
 
 typedef enum FTSlopeContours
 {
-    nFTSlopeContourLFoot,
-    nFTSlopeContourRFoot,
-    nFTSlopeContourFull
+	nFTSlopeContourLFoot,
+	nFTSlopeContourRFoot,
+	nFTSlopeContourFull
 
 } FTSlopeContours;
 
@@ -1007,271 +1007,271 @@ typedef enum FTHitLogObjectKind
 
 typedef enum FTItemSwingKind
 {
-    nFTItemSwingKindSword,
-    nFTItemSwingKindBat,
-    nFTItemSwingKindHarisen,
-    nFTItemSwingKindStarRod,
-    nFTItemSwingKindEnumCount
+	nFTItemSwingKindSword,
+	nFTItemSwingKindBat,
+	nFTItemSwingKindHarisen,
+	nFTItemSwingKindStarRod,
+	nFTItemSwingKindEnumCount
 
 } FTItemSwingKind;
 
 typedef enum FTItemSwingType
 {
-    nFTItemSwingTypeAttack1,
-    nFTItemSwingTypeAttack3,
-    nFTItemSwingTypeAttack4,
-    nFTItemSwingTypeAttackDash,
-    nFTItemSwingTypeEnumCount
+	nFTItemSwingTypeAttack1,
+	nFTItemSwingTypeAttack3,
+	nFTItemSwingTypeAttack4,
+	nFTItemSwingTypeAttackDash,
+	nFTItemSwingTypeEnumCount
 	
 } FTItemSwingType;
 
 typedef enum FTSpecialCollKind
 {
-    nFTSpecialCollKindFoxReflector,
-    nFTSpecialCollKindNessAbsorb,
-    nFTSpecialCollKindNessReflector
+	nFTSpecialCollKindFoxReflector,
+	nFTSpecialCollKindNessAbsorb,
+	nFTSpecialCollKindNessReflector
 
 } FTSpecialCollKind;
 
 typedef enum FTCatchKind
 {
-    nFTCatchKindYoshiSpecialN,              // Yoshi's Egg Lay, also used for Kirby's copy ability version of it
-    nFTCatchKindKirbySpecialN,              // Kirby's Inhale
-    nFTCatchKindTaruCann,                   // Barrel Cannon
-    nFTCatchKindTwister,                    // Tornado
-    nFTCatchKindCommon,                     // Common grab
-    nFTCatchKindCaptainSpecialHi            // Captain Falcon's Falcon Dive
+	nFTCatchKindYoshiSpecialN,              // Yoshi's Egg Lay, also used for Kirby's copy ability version of it
+	nFTCatchKindKirbySpecialN,              // Kirby's Inhale
+	nFTCatchKindTaruCann,                   // Barrel Cannon
+	nFTCatchKindTwister,                    // Tornado
+	nFTCatchKindCommon,                     // Common grab
+	nFTCatchKindCaptainSpecialHi            // Captain Falcon's Falcon Dive
 
 } FTCatchKind;
 
 typedef enum FTPartsPlacement
 {
-    nFTPartsPlacementLow,
-    nFTPartsPlacementMiddle,
-    nFTPartsPlacementHigh
+	nFTPartsPlacementLow,
+	nFTPartsPlacementMiddle,
+	nFTPartsPlacementHigh
 
 } FTPartsPlacement;
 
 typedef enum FTDamageKind
 {
-    nFTDamageKindDefault,                   // Default damage procedure
-    nFTDamageKindStatus,                    // Set damage status
-    nFTDamageKindColAnim,                   // Set damage ColAnim
-    nFTDamageKindCatch,                     // Something with grabs?
-    nFTDamageKindNone                       // No procedure
+	nFTDamageKindDefault,                   // Default damage procedure
+	nFTDamageKindStatus,                    // Set damage status
+	nFTDamageKindColAnim,                   // Set damage ColAnim
+	nFTDamageKindCatch,                     // Something with grabs?
+	nFTDamageKindNone                       // No procedure
 
 } FTDamageKind;
 
 typedef enum FTPartsJointLabels
 {
-    nFTPartsJointTopN,
-    nFTPartsJointTransN,
-    nFTPartsJointXRotN,
-    nFTPartsJointYRotN,
-    nFTPartsJointCommonStart
+	nFTPartsJointTopN,
+	nFTPartsJointTransN,
+	nFTPartsJointXRotN,
+	nFTPartsJointYRotN,
+	nFTPartsJointCommonStart
 
 } FTPartsJointLabels;
 
 typedef enum FTPartsLevelDetail
 {
-    nFTPartsDetailNone,                         // Unused?
-    nFTPartsDetailStart,                        // Start of actual detail values
-    nFTPartsDetailHigh = nFTPartsDetailStart,   // Hi-poly
-    nFTPartsDetailLow                           // Lo-poly
-        
+	nFTPartsDetailNone,                         // Unused?
+	nFTPartsDetailStart,                        // Start of actual detail values
+	nFTPartsDetailHigh = nFTPartsDetailStart,   // Hi-poly
+	nFTPartsDetailLow                           // Lo-poly
+		
 } FTPartsLevelDetail;
 
 typedef enum FTKind
 {
-    nFTKindPlayableStart,
-    nFTKindMario = nFTKindPlayableStart,
-    nFTKindFox,
-    nFTKindDonkey,
-    nFTKindSamus,
-    nFTKindLuigi,
-    nFTKindLink,
-    nFTKindYoshi,
-    nFTKindCaptain,
-    nFTKindKirby,
-    nFTKindPikachu,
-    nFTKindPurin,
-    nFTKindNess,
-    nFTKindPlayableEnd = nFTKindNess,
+	nFTKindPlayableStart,
+	nFTKindMario = nFTKindPlayableStart,
+	nFTKindFox,
+	nFTKindDonkey,
+	nFTKindSamus,
+	nFTKindLuigi,
+	nFTKindLink,
+	nFTKindYoshi,
+	nFTKindCaptain,
+	nFTKindKirby,
+	nFTKindPikachu,
+	nFTKindPurin,
+	nFTKindNess,
+	nFTKindPlayableEnd = nFTKindNess,
 
-    nFTKindBoss,
-    nFTKindMMario,
+	nFTKindBoss,
+	nFTKindMMario,
 
-    nFTKindNStart,
-    nFTKindNMario = nFTKindNStart,
-    nFTKindNFox,
-    nFTKindNDonkey,
-    nFTKindNSamus,
-    nFTKindNLuigi,
-    nFTKindNLink,
-    nFTKindNYoshi,
-    nFTKindNCaptain,
-    nFTKindNKirby,
-    nFTKindNPikachu,
-    nFTKindNPurin,
-    nFTKindNNess,
-    nFTKindNEnd = nFTKindNNess,
+	nFTKindNStart,
+	nFTKindNMario = nFTKindNStart,
+	nFTKindNFox,
+	nFTKindNDonkey,
+	nFTKindNSamus,
+	nFTKindNLuigi,
+	nFTKindNLink,
+	nFTKindNYoshi,
+	nFTKindNCaptain,
+	nFTKindNKirby,
+	nFTKindNPikachu,
+	nFTKindNPurin,
+	nFTKindNNess,
+	nFTKindNEnd = nFTKindNNess,
 
-    nFTKindGDonkey,
-    nFTKindEnumCount,
-    nFTKindNull        // NONE
+	nFTKindGDonkey,
+	nFTKindEnumCount,
+	nFTKindNull        // NONE
 
 } FTKind;
 
 typedef enum FTPlayerKind
 {
-    nFTPlayerKindMan,        // Player-controlled
-    nFTPlayerKindCom,        // CPU-controlled
-    nFTPlayerKindNot,        // N/A
-    nFTPlayerKindDemo,       // Results Screen / Character Select Screen?
-    nFTPlayerKindKey,        // Intro movie?
-    nFTPlayerKindGameKey     // How to Play?
+	nFTPlayerKindMan,        // Player-controlled
+	nFTPlayerKindCom,        // CPU-controlled
+	nFTPlayerKindNot,        // N/A
+	nFTPlayerKindDemo,       // Results Screen / Character Select Screen?
+	nFTPlayerKindKey,        // Intro movie?
+	nFTPlayerKindGameKey     // How to Play?
 
 } FTPlayerKind;
 
 typedef enum FTComputerCommandKind
 {
-    nFTComputerCommandButtonAPress,
-    nFTComputerCommandButtonARelease,
-    nFTComputerCommandButtonBPress,
-    nFTComputerCommandButtonBRelease,
-    nFTComputerCommandButtonZPress,
-    nFTComputerCommandButtonZRelease,
-    nFTComputerCommandButtonLPress,
-    nFTComputerCommandButtonLRelease,
-    nFTComputerCommandButtonStartPress,
-    nFTComputerCommandButtonStartRelease,
-    nFTComputerCommandStickX,
-    nFTComputerCommandStickY,
-    nFTComputerCommandMoveAuto,
-    nFTComputerCommandStickXVar,
-    nFTComputerCommandStickYVar,
-    nFTComputerCommandEnumCount
+	nFTComputerCommandButtonAPress,
+	nFTComputerCommandButtonARelease,
+	nFTComputerCommandButtonBPress,
+	nFTComputerCommandButtonBRelease,
+	nFTComputerCommandButtonZPress,
+	nFTComputerCommandButtonZRelease,
+	nFTComputerCommandButtonLPress,
+	nFTComputerCommandButtonLRelease,
+	nFTComputerCommandButtonStartPress,
+	nFTComputerCommandButtonStartRelease,
+	nFTComputerCommandStickX,
+	nFTComputerCommandStickY,
+	nFTComputerCommandMoveAuto,
+	nFTComputerCommandStickXVar,
+	nFTComputerCommandStickYVar,
+	nFTComputerCommandEnumCount
 
 } FTComputerCommandKind;
 
 typedef enum FTComputerInputKind
 {
-    nFTComputerInputStickN,                                                // Reset stick to neutral
-    nFTComputerInputMoveAuto,                                              // Move towards target (all directions)
-    nFTComputerInputStickTiltAutoX,                                        // Move towards target (horizontally)
-    nFTComputerInputStickNMoveAuto,                                        // Reset stick to neutral for one frame, then more towards target (all directions)
-    nFTComputerInputMoveAutoStickTiltHiReleaseZ,                           // Used for many moves that involve slightly tilting the stick?
-    nFTComputerInputStickTiltAutoXButtonA,                                 // Used for Forward Tilt
-    nFTComputerInputStickTiltAutoXD5NButtonA,                              // Move towards target (horiztonally) for a duration of 5 frames then reset stick to neutral and press A
-    nFTComputerInputMoveAutoButtonA,                                       // Move towards target (all directions) and press A
-    nFTComputerInputStickSmashAutoXButtonA,                                // Move towards target's direction and press A (no Stick Y-Axis change)
-    nFTComputerInputStickSmashAutoXButtonB,                                // Use Neutral Special in target's direction
-    nFTComputerInputStickTiltAutoXNYD5SmashAutoXButtonB,                   // Move towards target for a duration of 5 frames then smash stick in target's direction and press B
-    nFTComputerInputStickTiltAutoXNYD1ButtonB,                             // Move towards target for a duration of 1 frame then reset X-Axis to neutral and press B
-    nFTComputerInputButtonZ1,                                              // Used for ledge roll (and more I suppose)
-    nFTComputerInputStickSmashHiButtonB,                                   // Used for Up Special
-    nFTComputerInputStickTiltAutoXD5SmashSButtonB,                         // Move towards target for a duration of 5 frames at half range, then do full range + B button
-    nFTComputerInputStickNButtonL,                                         // Used for taunt
-    nFTComputerInputButtonZ2,                                              // Why is this here again?
-    nFTComputerInputStickTiltAutoXD5,                                      // Move towards target for a duration of 5 frames then end script 
-    nFTComputerInputStickTiltAutoXD1,                                      // Move towards target for a duration of 1 frame then end script
-    nFTComputerInputStickNButtonA,                                         // Used for Jab and Neutral Aerial
-    nFTComputerInputStickTiltAutoXD5ButtonA,                               // Move towards target for a duration of 5 frames then press A
-    nFTComputerInputStickSmashAutoXNYButtonA,                              // Used for Forward Smash, Forward Aerial and Back Aerial
-    nFTComputerInputStickTiltAutoXD1SmashSButtonA,                         // Move towards target at half stick range for a duration of 1 frame, then do full range + A button and end script
-    nFTComputerInputStickTiltHiButtonA,                                    // Used for Up Tilt
-    nFTComputerInputStickTiltAutoXD5TiltAutoYButtonA,                      // Move towards target for a duration of 5 frames then do tilt attack in their Y direction
-    nFTComputerInputStickSmashHiButtonA,                                   // Used for Up Smash and Up Aerial
-    nFTComputerInputStickTiltAutoXD5SmashAutoYButtonA,                     // Move towards target for a duration of 5 frames then do smash attack in their Y direction
-    nFTComputerInputStickSmashLwButtonB,                                   // Used for Down Special
-    nFTComputerInputStickNButtonZButtonA,                                  // Used for grab
-    nFTComputerInputStickTiltAutoXD5ButtonZButtonA,                        // Move towards target for a duration of 5 frames then use grab
-    nFTComputerInputStickSmashL,                                           // Used for Throws
-    nFTComputerInputStickSmashR,                                           // Used for Throws
-    nFTComputerInputStickTiltLwButtonA,                                    // Used for Down Tilt
-    nFTComputerInputStickTiltAutoXD5TiltLwButtonA,                         // Move towards target for a duration of 5 frames then use Down Tilt
-    nFTComputerInputStickSmashLwButtonA,                                   // Used for Down Smash and Down Aerial
-    nFTComputerInputStickNButtonZHold,                                     // Used to shield
-    nFTComputerInputButtonZRelease,                                        // Used to let go of shield
-    nFTComputerInputStickNXSmashLwButtonBReleaseBHold,                     // Used to repeatedly tap Down Special, is this Donkey Kong's Hand Slap move?
-    nFTComputerInputStickNButtonBRelease,                                  // Let go of B button
-    nFTComputerInputStickND1MoveAutoSmashLw,                               // Let go of control stick for a duration of 1 frame then do full range down; fast fall?
-    nFTComputerInputStickNButtonBZReleaseAPress,                           // Used for ledge attack?
-    nFTComputerInputStickTiltAutoXButtonBZReleaseAPress,                   // ???
-    nFTComputerInputThrowItemImmediate,                                    // Throw item after a short wait?
-    nFTComputerInputThrowItemWait,                                         // Throw item after a long wait?
-    nFTComputerInputWiggle,                                                // Wiggle out of grab type moves (Cargo Throw, Inhale, Egg Lay)
-    nFTComputerInputEscapeL,                                               // Roll left
-    nFTComputerInputEscapeR,                                               // Roll right
-    nFTComputerInputYoshiSpecialHiAim,                                     // Yoshi Up Special
-    nFTComputerInputNessSpecialHiAim                                       // Ness Up Special
+	nFTComputerInputStickN,                                                // Reset stick to neutral
+	nFTComputerInputMoveAuto,                                              // Move towards target (all directions)
+	nFTComputerInputStickTiltAutoX,                                        // Move towards target (horizontally)
+	nFTComputerInputStickNMoveAuto,                                        // Reset stick to neutral for one frame, then more towards target (all directions)
+	nFTComputerInputMoveAutoStickTiltHiReleaseZ,                           // Used for many moves that involve slightly tilting the stick?
+	nFTComputerInputStickTiltAutoXButtonA,                                 // Used for Forward Tilt
+	nFTComputerInputStickTiltAutoXD5NButtonA,                              // Move towards target (horiztonally) for a duration of 5 frames then reset stick to neutral and press A
+	nFTComputerInputMoveAutoButtonA,                                       // Move towards target (all directions) and press A
+	nFTComputerInputStickSmashAutoXButtonA,                                // Move towards target's direction and press A (no Stick Y-Axis change)
+	nFTComputerInputStickSmashAutoXButtonB,                                // Use Neutral Special in target's direction
+	nFTComputerInputStickTiltAutoXNYD5SmashAutoXButtonB,                   // Move towards target for a duration of 5 frames then smash stick in target's direction and press B
+	nFTComputerInputStickTiltAutoXNYD1ButtonB,                             // Move towards target for a duration of 1 frame then reset X-Axis to neutral and press B
+	nFTComputerInputButtonZ1,                                              // Used for ledge roll (and more I suppose)
+	nFTComputerInputStickSmashHiButtonB,                                   // Used for Up Special
+	nFTComputerInputStickTiltAutoXD5SmashSButtonB,                         // Move towards target for a duration of 5 frames at half range, then do full range + B button
+	nFTComputerInputStickNButtonL,                                         // Used for taunt
+	nFTComputerInputButtonZ2,                                              // Why is this here again?
+	nFTComputerInputStickTiltAutoXD5,                                      // Move towards target for a duration of 5 frames then end script 
+	nFTComputerInputStickTiltAutoXD1,                                      // Move towards target for a duration of 1 frame then end script
+	nFTComputerInputStickNButtonA,                                         // Used for Jab and Neutral Aerial
+	nFTComputerInputStickTiltAutoXD5ButtonA,                               // Move towards target for a duration of 5 frames then press A
+	nFTComputerInputStickSmashAutoXNYButtonA,                              // Used for Forward Smash, Forward Aerial and Back Aerial
+	nFTComputerInputStickTiltAutoXD1SmashSButtonA,                         // Move towards target at half stick range for a duration of 1 frame, then do full range + A button and end script
+	nFTComputerInputStickTiltHiButtonA,                                    // Used for Up Tilt
+	nFTComputerInputStickTiltAutoXD5TiltAutoYButtonA,                      // Move towards target for a duration of 5 frames then do tilt attack in their Y direction
+	nFTComputerInputStickSmashHiButtonA,                                   // Used for Up Smash and Up Aerial
+	nFTComputerInputStickTiltAutoXD5SmashAutoYButtonA,                     // Move towards target for a duration of 5 frames then do smash attack in their Y direction
+	nFTComputerInputStickSmashLwButtonB,                                   // Used for Down Special
+	nFTComputerInputStickNButtonZButtonA,                                  // Used for grab
+	nFTComputerInputStickTiltAutoXD5ButtonZButtonA,                        // Move towards target for a duration of 5 frames then use grab
+	nFTComputerInputStickSmashL,                                           // Used for Throws
+	nFTComputerInputStickSmashR,                                           // Used for Throws
+	nFTComputerInputStickTiltLwButtonA,                                    // Used for Down Tilt
+	nFTComputerInputStickTiltAutoXD5TiltLwButtonA,                         // Move towards target for a duration of 5 frames then use Down Tilt
+	nFTComputerInputStickSmashLwButtonA,                                   // Used for Down Smash and Down Aerial
+	nFTComputerInputStickNButtonZHold,                                     // Used to shield
+	nFTComputerInputButtonZRelease,                                        // Used to let go of shield
+	nFTComputerInputStickNXSmashLwButtonBReleaseBHold,                     // Used to repeatedly tap Down Special, is this Donkey Kong's Hand Slap move?
+	nFTComputerInputStickNButtonBRelease,                                  // Let go of B button
+	nFTComputerInputStickND1MoveAutoSmashLw,                               // Let go of control stick for a duration of 1 frame then do full range down; fast fall?
+	nFTComputerInputStickNButtonBZReleaseAPress,                           // Used for ledge attack?
+	nFTComputerInputStickTiltAutoXButtonBZReleaseAPress,                   // ???
+	nFTComputerInputThrowItemImmediate,                                    // Throw item after a short wait?
+	nFTComputerInputThrowItemWait,                                         // Throw item after a long wait?
+	nFTComputerInputWiggle,                                                // Wiggle out of grab type moves (Cargo Throw, Inhale, Egg Lay)
+	nFTComputerInputEscapeL,                                               // Roll left
+	nFTComputerInputEscapeR,                                               // Roll right
+	nFTComputerInputYoshiSpecialHiAim,                                     // Yoshi Up Special
+	nFTComputerInputNessSpecialHiAim                                       // Ness Up Special
 
 } FTComputerInputKind;
 
 // The CPUs' "personality traits," overriding behavior if present (mostly 1P Game?)
 typedef enum FTComputerTraitKind
 {
-    nFTComputerTraitDefault,           // "? Used in VS and for some 1P Game characters"
-    nFTComputerTraitLink,              // Wait around for a while (1P Game Link)
-    nFTComputerTraitYoshiTeam,         // Yoshi Team
-    nFTComputerTraitKirbyTeam,         // Kirby (Is this specifically 1P Game Kirby Team?)
-    nFTComputerTraitPolyTeam,          // Fighting Polygon Team (1P Game)
-    nFTComputerTraitMarioBros,         // Mario & Luigi (1P Game)
-    nFTComputerTraitGDonkey,       // Giant Donkey Kong (1P Game)
-    nFTComputerTraitUnk1,              // Unknown
-    nFTComputerTraitBonus3,            // Race to the Finish Fighting Polygons
-    nFTComputerTraitAlly,              // Ally fighter in 1P Game
-    nFTComputerTraitNone               // No overriding behavior (Training Mode)
+	nFTComputerTraitDefault,           // "? Used in VS and for some 1P Game characters"
+	nFTComputerTraitLink,              // Wait around for a while (1P Game Link)
+	nFTComputerTraitYoshiTeam,         // Yoshi Team
+	nFTComputerTraitKirbyTeam,         // Kirby (Is this specifically 1P Game Kirby Team?)
+	nFTComputerTraitPolyTeam,          // Fighting Polygon Team (1P Game)
+	nFTComputerTraitMarioBros,         // Mario & Luigi (1P Game)
+	nFTComputerTraitGDonkey,       // Giant Donkey Kong (1P Game)
+	nFTComputerTraitUnk1,              // Unknown
+	nFTComputerTraitBonus3,            // Race to the Finish Fighting Polygons
+	nFTComputerTraitAlly,              // Ally fighter in 1P Game
+	nFTComputerTraitNone               // No overriding behavior (Training Mode)
 
 } FTComputerTraitKind;
 
 typedef enum FTComputerBehaviorKind
 {
-    nFTComputerBehaviorDefault,
-    nFTComputerBehaviorUnk1,
-    nFTComputerBehaviorUnk2,
-    nFTComputerBehaviorAlly,
-    nFTComputerBehaviorCaptain,
-    nFTComputerBehaviorUnk3,
-    nFTComputerBehaviorUnk4,
-    nFTComputerBehaviorYoshiTeam,
-    nFTComputerBehaviorKirbyTeam,
-    nFTComputerBehaviorPolyTeam,
-    nFTComputerBehaviorUnused1,
-    nFTComputerBehaviorUnused2,
-    nFTComputerBehaviorUnused3,
-    nFTComputerBehaviorBonus3,
-    nFTComputerBehaviorUnused4,
-    nFTComputerBehaviorStand,
-    nFTComputerBehaviorWalk,
-    nFTComputerBehaviorEvade,
-    nFTComputerBehaviorJump,
-    nFTComputerBehaviorUnk5
+	nFTComputerBehaviorDefault,
+	nFTComputerBehaviorUnk1,
+	nFTComputerBehaviorUnk2,
+	nFTComputerBehaviorAlly,
+	nFTComputerBehaviorCaptain,
+	nFTComputerBehaviorUnk3,
+	nFTComputerBehaviorUnk4,
+	nFTComputerBehaviorYoshiTeam,
+	nFTComputerBehaviorKirbyTeam,
+	nFTComputerBehaviorPolyTeam,
+	nFTComputerBehaviorUnused1,
+	nFTComputerBehaviorUnused2,
+	nFTComputerBehaviorUnused3,
+	nFTComputerBehaviorBonus3,
+	nFTComputerBehaviorUnused4,
+	nFTComputerBehaviorStand,
+	nFTComputerBehaviorWalk,
+	nFTComputerBehaviorEvade,
+	nFTComputerBehaviorJump,
+	nFTComputerBehaviorUnk5
 
 } FTComputerBehaviorKind;
 
 typedef enum FTComputerObjectiveKind
 {
-    nFTComputerObjectiveStand,         // CPU player will idle (?)
-    nFTComputerObjectiveWalk,          // CPU player will walk around (?)
-    nFTComputerObjectiveAttack,        // CPU player will try to attack its target position
-    nFTComputerObjectiveEvade,         // CPU player will try to avoid contact with its target
-    nFTComputerObjectiveRecover,       // CPU player will try to recover when offstage
-    nFTComputerObjectiveTrackItem,     // CPU player will try to navigate to its target item and pick it up
-    nFTComputerObjectiveUseItem,       // CPU player will try to use shootable, throwable or ground (?) item
-    nFTComputerObjectiveCounterAttack, // CPU player will try to act just before landing from DamageFall? According to Smash Remix, this causes them to spam shield?
-    nFTComputerObjectiveUnknown1,      // ???
-    nFTComputerObjectiveAlly,          // ???
-    nFTComputerObjectivePatrol,        // CPU player will walk around and attack opposing bystanders (not ally behavior, used in Kirby Team)
-    nFTComputerObjectiveRush           // CPU player will try to relentlessly target opponents (Race to the Finish)
+	nFTComputerObjectiveStand,         // CPU player will idle (?)
+	nFTComputerObjectiveWalk,          // CPU player will walk around (?)
+	nFTComputerObjectiveAttack,        // CPU player will try to attack its target position
+	nFTComputerObjectiveEvade,         // CPU player will try to avoid contact with its target
+	nFTComputerObjectiveRecover,       // CPU player will try to recover when offstage
+	nFTComputerObjectiveTrackItem,     // CPU player will try to navigate to its target item and pick it up
+	nFTComputerObjectiveUseItem,       // CPU player will try to use shootable, throwable or ground (?) item
+	nFTComputerObjectiveCounterAttack, // CPU player will try to act just before landing from DamageFall? According to Smash Remix, this causes them to spam shield?
+	nFTComputerObjectiveUnknown1,      // ???
+	nFTComputerObjectiveAlly,          // ???
+	nFTComputerObjectivePatrol,        // CPU player will walk around and attack opposing bystanders (not ally behavior, used in Kirby Team)
+	nFTComputerObjectiveRush           // CPU player will try to relentlessly target opponents (Race to the Finish)
 
 } FTComputerObjectiveKind;
 
 typedef enum FTKeyEventKind
 {
-    nFTKeyEventEnd,
-    nFTKeyEventButton,
-    nFTKeyEventStick
+	nFTKeyEventEnd,
+	nFTKeyEventButton,
+	nFTKeyEventStick
 
 } FTKeyEventKind;
 

@@ -6,30 +6,30 @@
 
 // Global variables declared here as extern for easy access
 
-// 0x8018D040
+// 8018D040
 extern void *gITManagerCommonData;
 
-// 0x8018D044
+// 8018D044
 extern s32 gITManagerParticleBankID;
 
-// 0x8018D048
+// 8018D048
 extern ITRandomWeights gITManagerRandomWeights;
 
-// 0x8018D060
+// 8018D060
 extern ITMonsterData gITManagerMonsterData;
 
-// 0x8018D090
+// 8018D090
 extern s32 gITManagerDisplayMode;
 
-// 0x8018D094
+// 8018D094
 extern ITStruct* gITManagerStructsAllocFree;
 
-// 0x8018D098
+// 8018D098
 extern ITAppearActor gITManagerAppearActor;
 
 // Global data
 
-// 0x80189450
+// 80189450
 extern s32 dITManagerForceMonsterKind;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624

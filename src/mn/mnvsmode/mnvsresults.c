@@ -16,8 +16,8 @@ extern void* func_800269C0_275C0(u16);
 //                               //
 // // // // // // // // // // // //
 
-// 0x80138EF0
-s32 dMNVSResultsUnused0x80138EF0[/* */] =
+// 80138EF0
+s32 dMNVSResultsUnused0x80138EF0[] =
 {
 	0x8B179319,
 	0x935B9B5B,
@@ -29,8 +29,8 @@ s32 dMNVSResultsUnused0x80138EF0[/* */] =
 	0x00000000
 };
 
-// 0x80138F10
-s32 dMNVSResultsUnused0x80138F10[/* */] =
+// 80138F10
+s32 dMNVSResultsUnused0x80138F10[] =
 {
 	0x639B6BDD,
 	0x741F5B99,
@@ -42,8 +42,8 @@ s32 dMNVSResultsUnused0x80138F10[/* */] =
 	0x00000000
 };
 
-// 0x80138F30
-s32 dMNVSResultsUnused0x80138F30[/* */] =
+// 80138F30
+s32 dMNVSResultsUnused0x80138F30[] =
 {
 	0x73B17BF3,
 	0x84338435,
@@ -55,8 +55,8 @@ s32 dMNVSResultsUnused0x80138F30[/* */] =
 	0x00000000
 };
 
-// 0x80138F50
-s32 dMNVSResultsUnused0x80138F50[/* */] =
+// 80138F50
+s32 dMNVSResultsUnused0x80138F50[] =
 {
 	0x94199C5B,
 	0x8BD783D5,
@@ -68,8 +68,8 @@ s32 dMNVSResultsUnused0x80138F50[/* */] =
 	0x00000000
 };
 
-// 0x80138F70
-u32 dMNVSResultsFileIDs[/* */] =
+// 80138F70
+u32 dMNVSResultsFileIDs[] =
 {
 	&llMNVSResultsFileID,
 	&llIFCommonPlayerTagsFileID,
@@ -81,8 +81,8 @@ u32 dMNVSResultsFileIDs[/* */] =
 	&llFTStocksZakoFileID
 };
 
-// 0x80138F90
-s32 dMNVSResultsUnused0x80138F90[/* */] =
+// 80138F90
+s32 dMNVSResultsUnused0x80138F90[] =
 {
 	0x00000000,
 	0x00000000,
@@ -98,82 +98,82 @@ s32 dMNVSResultsUnused0x80138F90[/* */] =
 //                               //
 // // // // // // // // // // // //
 
-// 0x801398A0
+// 801398A0
 s32 sMNVSResultsPad0x801398A0[182];
 
 // 0x80139B78 - frames elapsed on Results screen
 s32 sMNVSResultsTotalTimeTics;
 
-// 0x80139B7C
+// 80139B7C
 s32 sMNVSResultsBarWidth;
 
-// 0x80139B80
+// 80139B80
 s32 sMNVSResultsKOs[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139B90
+// 80139B90
 s32 sMNVSResultsTKO[GMCOMMON_PLAYERS_MAX];
 
 // 0x80139BA0;
 s32 sMNVSResultsPoints[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139BB0
+// 80139BB0
 s32 sMNVSResultsPlaces[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139BC0
+// 80139BC0
 u32 sMNVSResultsTintAlpha;
 
-// 0x80139BC4
+// 80139BC4
 s32 sMNVSResultsWallpaperTintAlpha;
 
-// 0x80139BC8
+// 80139BC8
 s32 sMNVSResultsWallpaperTint2Alpha;
 
-// 0x80139BD0
+// 80139BD0
 sb32 sMNVSResultsIsPresent[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139BE0
+// 80139BE0
 GObj *sMNVSResultsFighterGObjs[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139BF0
+// 80139BF0
 s32 sMNVSResultsFighterKinds[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139C00
+// 80139C00
 void *sMNVSResultsFigatreeHeaps[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139C10
+// 80139C10
 s32 sMNVSResultsKind;
 
-// 0x80139C14
+// 80139C14
 ub8 sMNVSResultsIsTeamBattle;
 
 // 0x80139C18 - frames to wait until pressing start will exit the Results screen
 s32 sMNVSResultsAllowExitWait;
 
-// 0x80139C20
+// 80139C20
 sb32 sMNVSResultsIsSharedWinner[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139C30
+// 80139C30
 sb32 sMNVSResultsPad0x80139C30[GMCOMMON_PLAYERS_MAX];
 
-// 0x80139C40
+// 80139C40
 s32 sMNVSResultsCharacterAlpha;
 
-// 0x80139C44
+// 80139C44
 s32 sMNVSResultsDrawWallpaperTic;
 
-// 0x80139C48
+// 80139C48
 s32 sMNVSResultsMakeResultsTic;
 
-// 0x80139C4C
+// 80139C4C
 s32 sMNVSResultsInitFightersAllTic;
 
-// 0x80139C50
+// 80139C50
 LBFileNode sMNVSResultsStatusBuffer[120];
 
-// 0x8013A010
+// 8013A010
 LBFileNode sMNVSResultsForceStatusBuffer[7];
 
-// 0x8013A048
+// 8013A048
 void *sMNVSResultsFiles[ARRAY_COUNT(dMNVSResultsFileIDs)];
 
 // // // // // // // // // // // //
@@ -182,21 +182,21 @@ void *sMNVSResultsFiles[ARRAY_COUNT(dMNVSResultsFileIDs)];
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131B20
+// 80131B20
 void mnVSResultsFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 0x80131B78
-s32 mnVSResultsGetPlayerCount(void)
+// 80131B78
+s32 mnVSResultsGetPlayerCount()
 {
 	return gSCManagerTransferBattleState.pl_count + gSCManagerTransferBattleState.cp_count;
 }
 
-// 0x80131B90
-void mnVSResultsSaveBackup(void)
+// 80131B90
+void mnVSResultsSaveBackup()
 {
 	s32 i, j;
 	s32 unused;
@@ -262,8 +262,8 @@ void mnVSResultsSaveBackup(void)
 	lbBackupWrite();
 }
 
-// 0x80131E18
-sb32 mnVSResultsCheckExit(void)
+// 80131E18
+sb32 mnVSResultsCheckExit()
 {
 	s32 i;
 
@@ -280,10 +280,10 @@ sb32 mnVSResultsCheckExit(void)
 	return FALSE;
 }
 
-// 0x80131EB0
-void mnVSResultsAnnounceWinner(void)
+// 80131EB0
+void mnVSResultsAnnounceWinner()
 {
-	u32 announce_names[/* */] =
+	u32 announce_names[] =
 	{
 		nSYAudioVoiceAnnounceMario,
 		nSYAudioVoiceAnnounceFox,
@@ -298,7 +298,7 @@ void mnVSResultsAnnounceWinner(void)
 		nSYAudioVoiceAnnouncePurin,
 		nSYAudioVoiceAnnounceNess
 	};
-	u32 announcer_teams[/* */] =
+	u32 announcer_teams[] =
 	{
 		nSYAudioVoiceAnnounceRedTeam,
 		nSYAudioVoiceAnnounceBlueTeam,
@@ -357,8 +357,8 @@ void mnVSResultsAnnounceWinner(void)
 	}
 }
 
-// 0x8013205C
-s32 mnVSResultsGetPresentCount(void)
+// 8013205C
+s32 mnVSResultsGetPresentCount()
 {
 	s32 i, sum = 0;
 
@@ -372,7 +372,7 @@ s32 mnVSResultsGetPresentCount(void)
 	return sum;
 }
 
-// 0x801320B8
+// 801320B8
 s32 mnVSResultsGetPresentLowerCount(s32 player)
 {
 	s32 i, sum = 0;
@@ -391,7 +391,7 @@ s32 mnVSResultsGetPresentLowerCount(s32 player)
 	return sum;
 }
 
-// 0x80132100
+// 80132100
 s32 mnVSResultsGetPlacePlayer(s32 place)
 {
 	s32 i;
@@ -406,7 +406,7 @@ s32 mnVSResultsGetPlacePlayer(s32 place)
 	return -1;
 }
 
-// 0x801321AC
+// 801321AC
 s32 mnVSResultsGetPlayerDistanceID(s32 player)
 {
 	s32 foes = mnVSResultsGetPresentLowerCount(player);
@@ -475,8 +475,8 @@ s32 mnVSResultsGetPlayerDistanceID(s32 player)
 	return foes;
 }
 
-// 0x8013234C
-s32 mnVSResultsGetWinPlayer(void)
+// 8013234C
+s32 mnVSResultsGetWinPlayer()
 {
 	s32 i;
 	sb32 winners_possible[GMCOMMON_PLAYERS_MAX];
@@ -573,13 +573,13 @@ s32 mnVSResultsGetWinPlayer(void)
 	}
 }
 
-// 0x80132A2C
-u8 mnVSResultsGetWinTeam(void)
+// 80132A2C
+u8 mnVSResultsGetWinTeam()
 {
 	return gSCManagerTransferBattleState.players[mnVSResultsGetWinPlayer()].team;
 }
 
-// 0x80132A68
+// 80132A68
 void mnVSResultsEmblemProcUpdate(GObj *gobj)
 {
 	f32 new_scale;
@@ -611,15 +611,15 @@ void mnVSResultsEmblemProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x80132B20
-void mnVSResultsMakeEmblem(void)
+// 80132B20
+void mnVSResultsMakeEmblem()
 {
 	GObj *gobj;
 	s32 win_player;
 	s32 win_fkind;
 	s32 color;
 
-	intptr_t dobjdescs[/* */] =
+	intptr_t dobjdescs[] =
 	{
 		&llFTEmblemModelsMarioDObjDesc,     &llFTEmblemModelsFoxDObjDesc,
 		&llFTEmblemModelsDonkeyDObjDesc,    &llFTEmblemModelsMetroidDObjDesc,
@@ -628,7 +628,7 @@ void mnVSResultsMakeEmblem(void)
 		&llFTEmblemModelsKirbyDObjDesc,     &llFTEmblemModelsPMonstersDObjDesc,
 		&llFTEmblemModelsPMonstersDObjDesc, &llFTEmblemModelsMotherDObjDesc
 	};
-	intptr_t mobjsubs[/* */] =
+	intptr_t mobjsubs[] =
 	{
 		&llFTEmblemModelsMarioMObjSub,     &llFTEmblemModelsFoxMObjSub,
 		&llFTEmblemModelsDonkeyMObjSub,    &llFTEmblemModelsMetroidMObjSub,
@@ -637,7 +637,7 @@ void mnVSResultsMakeEmblem(void)
 		&llFTEmblemModelsKirbyMObjSub,     &llFTEmblemModelsPMonstersMObjSub,
 		&llFTEmblemModelsPMonstersMObjSub, &llFTEmblemModelsMotherMObjSub
 	};
-	intptr_t matanim_joints[/* */] =
+	intptr_t matanim_joints[] =
 	{
 		&llFTEmblemModelsMarioMatAnimJoint,     &llFTEmblemModelsFoxMatAnimJoint,
 		&llFTEmblemModelsDonkeyMatAnimJoint,    &llFTEmblemModelsMetroidMatAnimJoint,
@@ -646,7 +646,7 @@ void mnVSResultsMakeEmblem(void)
 		&llFTEmblemModelsKirbyMatAnimJoint,     &llFTEmblemModelsPMonstersMatAnimJoint,
 		&llFTEmblemModelsPMonstersMatAnimJoint, &llFTEmblemModelsMotherMatAnimJoint
 	};
-	s32 colors[/* */] = { 0, 1, 3 };
+	s32 colors[] = { 0, 1, 3 };
 
 	if (sMNVSResultsIsTeamBattle == FALSE)
 	{
@@ -675,7 +675,7 @@ void mnVSResultsMakeEmblem(void)
 	DObjGetStruct(gobj)->scale.vec.f.y = 25.0F;
 }
 
-// 0x80132D84
+// 80132D84
 void mnVSResultsWallpaperProcDisplay(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
@@ -690,8 +690,8 @@ void mnVSResultsWallpaperProcDisplay(GObj *gobj)
 	lbCommonDrawSObjNoAttr(gobj);
 }
 
-// 0x80132EA8
-void mnVSResultsMakeWallpaper(void)
+// 80132EA8
+void mnVSResultsMakeWallpaper()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -699,23 +699,23 @@ void mnVSResultsMakeWallpaper(void)
 	s32 unused[2];
 	s32 win_player;
 
-	SYColorRGBPair unused_colors[/* */] =
+	SYColorRGBPair unused_colors[] =
 	{
 		{ { 0xAB, 0x31, 0x25 }, { 0xAF, 0x56, 0x4E } },
 		{ { 0x00, 0x3F, 0xFF }, { 0x39, 0x6A, 0xFF } },
 		{ { 0xDE, 0xB2, 0x00 }, { 0xFF, 0xD7, 0x33 } },
 		{ { 0x17, 0x7E, 0x43 }, { 0x2A, 0x98, 0x45 } }
 	};
-	s32 *unused_array_pointers[/* */] =
+	s32 *unused_array_pointers[] =
 	{
 		dMNVSResultsUnused0x80138EF0,
 		dMNVSResultsUnused0x80138F30,
 		dMNVSResultsUnused0x80138F50,
 		dMNVSResultsUnused0x80138F10
 	};
-	s32 team_colors[/* */] = { 0, 1, 3 };
+	s32 team_colors[] = { 0, 1, 3 };
 
-	SYColorRGBPair colors[/* */] =
+	SYColorRGBPair colors[] =
 	{
 		{ { 0x5C, 0x2B, 0x27 }, { 0x98, 0x6F, 0x6C } },
 		{ { 0x39, 0x39, 0x99 }, { 0x86, 0x86, 0xD1 } },
@@ -773,20 +773,20 @@ void mnVSResultsMakeWallpaper(void)
 	sobj->sprite.blue = colors[win_player].env.b;
 }
 
-// 0x80133134
+// 80133134
 s32 mnVSResultsGetPlace(s32 player)
 {
 	return sMNVSResultsPlaces[player];
 }
 
-// 0x80133148
+// 80133148
 s32 mnVSResultsGetFighterKind(s32 player)
 {
 	return sMNVSResultsFighterKinds[player];
 }
 
-// 0x8013315C
-void mnVSResultsSetFighterKindAll(void)
+// 8013315C
+void mnVSResultsSetFighterKindAll()
 {
 	s32 i;
 
@@ -799,28 +799,28 @@ void mnVSResultsSetFighterKindAll(void)
 	}
 }
 
-// 0x801331DC
+// 801331DC
 void mnVSResultsSetFighterPosition(GObj* fighter_gobj, s32 player, s32 place)
 {
-	f32 pos_x_2p[/* */][4] =
+	f32 pos_x_2p[][4] =
 	{
 		-150.0F, -350.0F, -700.0F, -1000.0F,
 		 100.0F,  250.0F,  600.0F,  1000.0F
 	};
-	f32 pos_x_3p[/* */][4] =
+	f32 pos_x_3p[][4] =
 	{
 		-450.0F, -900.0F, -2000.0F, -3000.0F,
 		   0.0F,    0.0F,     0.0F,     0.0F,
 		 400.0F,  800.0F,  1800.0F,  2800.0F
 	};
-	f32 pos_x_4p[/* */][4] =
+	f32 pos_x_4p[][4] =
 	{
 		-450.0F, -900.0F, -2000.0F, -3000.0F,
 		-150.0F, -350.0F,  -700.0F, -1000.0F,
 		 150.0F,  300.0F,   700.0F,  1000.0F,
 		 400.0F,  800.0F,  1800.0F,  2800.0F
 	};
-	f32 pos_yz[/* */][2] =
+	f32 pos_yz[][2] =
 	{
 		{ -350.0F, 	   0.0F },
 		{ -450.0F, -2000.0F },
@@ -847,7 +847,7 @@ void mnVSResultsSetFighterPosition(GObj* fighter_gobj, s32 player, s32 place)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos_yz[place][1];
 }
 
-// 0x801333E4
+// 801333E4
 void mnVSResultsFaceWinner(GObj *fighter_gobj, s32 player, s32 place)
 {
 	s32 win_player = mnVSResultsGetWinPlayer();
@@ -865,10 +865,10 @@ void mnVSResultsFaceWinner(GObj *fighter_gobj, s32 player, s32 place)
 	}
 }
 
-// 0x8013345C
+// 8013345C
 s32 mnVSResultsGetStatusWin(s32 fkind)
 {
-	s32 status_ids[/* */] =
+	s32 status_ids[] =
 	{
 		nFTDemoStatusWin1,
 		nFTDemoStatusWin2,
@@ -888,7 +888,7 @@ s32 mnVSResultsGetStatusLose(s32 fkind)
 	return nFTDemoStatusLose;
 }
 
-// 0x801334DC
+// 801334DC
 void mnVSResultsSetFighterStatus(GObj *fighter_gobj, s32 player)
 {
 	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
@@ -929,7 +929,7 @@ void mnVSResultsSetFighterStatus(GObj *fighter_gobj, s32 player)
 	}
 }
 
-// 0x80133684
+// 80133684
 s32 mnVSResultsGetPlayerCountPlace(s32 place)
 {
 	s32 num = 0;
@@ -945,7 +945,7 @@ s32 mnVSResultsGetPlayerCountPlace(s32 place)
 	return num;
 }
 
-// 0x80133718
+// 80133718
 s32 mnVSResultsGetPlayerCountAhead(s32 player)
 {
 	s32 num = 0;
@@ -961,16 +961,16 @@ s32 mnVSResultsGetPlayerCountAhead(s32 player)
 	return num;
 }
 
-// 0x80133810
+// 80133810
 s32 mnVSResultsGetSpot(s32 player)
 {
-	sb32 aheads[/* */] = { 0, 0, 1, 1 };
-	sb32 places[/* */] = { 0, 0, 1, 1, 1 };
+	sb32 aheads[] = { 0, 0, 1, 1 };
+	sb32 places[] = { 0, 0, 1, 1, 1 };
 
 	return sMNVSResultsPlaces[player] + aheads[sMNVSResultsPlaces[player] - mnVSResultsGetPlayerCountAhead(player)] + places[mnVSResultsGetPlayerCountPlace(sMNVSResultsPlaces[player])];
 }
 
-// 0x801338EC
+// 801338EC
 void mnVSResultsSetFighterScale(GObj *fighter_gobj, s32 player, s32 fkind, s32 place)
 {
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
@@ -978,7 +978,7 @@ void mnVSResultsSetFighterScale(GObj *fighter_gobj, s32 player, s32 fkind, s32 p
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 }
 
-// 0x8013392C
+// 8013392C
 void mnVSResultsMakeFighter(s32 player)
 {
 	s32 unused[3];
@@ -991,30 +991,30 @@ void mnVSResultsMakeFighter(s32 player)
 	sMNVSResultsFighterGObjs[player] = ftManagerMakeFighter(&desc);
 }
 
-// 0x801339F4
+// 801339F4
 void mnVSResultsSetPlayerTagPosition(GObj *gobj, s32 player)
 {
 	s32 spot, dist;
 
-	Vec2f pos_xy_2p[/* */][4] =
+	Vec2f pos_xy_2p[][4] =
 	{
 		{ { 115.0F, 50.0F }, { 112.0F, 75.0F }, { 115.0F, 96.0F }, { 115.0F, 103.0F } },
 		{ { 173.0F, 50.0F }, { 177.0F, 75.0F }, { 183.0F, 96.0F }, { 186.0F, 103.0F } }
 	};
-	Vec2f pos_xy_3p[/* */][4] =
+	Vec2f pos_xy_3p[][4] =
 	{
 		{ {  38.0F, 50.0F }, { 50.0F,  75.0F }, {  38.0F, 96.0F }, { 38.0F,  103.0F } },
 		{ { 150.0F, 50.0F }, { 150.0F, 75.0F }, { 150.0F, 96.0F }, { 150.0F, 103.0F } },
 		{ { 245.0F, 50.0F }, { 237.0F, 75.0F }, { 254.0F, 96.0F }, { 258.0F, 103.0F } }
 	};
-	Vec2f pos_xy_4p[/* */][4] =
+	Vec2f pos_xy_4p[][4] =
 	{
 		{ {  38.0F, 50.0F }, {  50.0F, 75.0F }, {  35.0F, 96.0F }, {  35.0F, 103.0F } },
 		{ { 115.0F, 50.0F }, { 112.0F, 75.0F }, { 115.0F, 96.0F }, { 115.0F, 103.0F } },
 		{ { 173.0F, 50.0F }, { 177.0F, 75.0F }, { 188.0F, 96.0F }, { 186.0F, 103.0F } },
 		{ { 245.0F, 50.0F }, { 237.0F, 75.0F }, { 258.0F, 96.0F }, { 258.0F, 103.0F } }
 	};
-	f32 pos_y_kinds[/* */][4] =
+	f32 pos_y_kinds[][4] =
 	{
 		{ 0.0F, 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F, 0.0F },
 		{ 0.0F, 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F, 0.0F },
@@ -1044,20 +1044,20 @@ void mnVSResultsSetPlayerTagPosition(GObj *gobj, s32 player)
 	}
 }
 
-// 0x80133C58
+// 80133C58
 void mnVSResultsMakePlayerTag(s32 player, s32 color_id)
 {
 	GObj *gobj;
 	SObj *sobj;
 	
-	SYColorRGBPair colors[/* */] =
+	SYColorRGBPair colors[] =
 	{
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0x4E, 0xE9 } },
 		{ { 0x00, 0x00, 0x00 }, { 0xFF, 0xDF, 0x1A } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0xB9, 0x4E } }
 	};
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonPlayerTags1PSprite, &llIFCommonPlayerTags2PSprite,
 		&llIFCommonPlayerTags3PSprite, &llIFCommonPlayerTags4PSprite
@@ -1094,8 +1094,8 @@ void mnVSResultsMakePlayerTag(s32 player, s32 color_id)
 	mnVSResultsSetPlayerTagPosition(gobj, player);
 }
 
-// 0x80133E7C
-void mnVSResultsMakePlayerTagCamera(void)
+// 80133E7C
+void mnVSResultsMakePlayerTagCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1119,7 +1119,7 @@ void mnVSResultsMakePlayerTagCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80133F1C
+// 80133F1C
 s32 mnVSResultsGetCharacterID(char c)
 {
 	switch (c)
@@ -1138,7 +1138,7 @@ s32 mnVSResultsGetCharacterID(char c)
 	}
 }
 
-// 0x80133F6C
+// 80133F6C
 void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scale)
 {
 	GObj *gobj;
@@ -1147,12 +1147,12 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 	f32 current_x;
 	s32 char_id;
 
-	f32 widths[/* */] =
+	f32 widths[] =
 	{
 		35.0F, 24.0F, 24.0F, 28.0F, 22.0F, 20.0F, 31.0F, 27.0F, 9.0F, 20.0F, 27.0F, 20.0F, 37.0F, 29.0F,
 		34.0F, 24.0F, 37.0F, 27.0F, 24.0F, 24.0F, 26.0F, 28.0F, 39.0F, 31.0F, 29.0F, 30.0F, 10.0F, 8.0F
 	};
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonAnnounceCommonLetterASprite, &llIFCommonAnnounceCommonLetterBSprite,
 		&llIFCommonAnnounceCommonLetterCSprite, &llIFCommonAnnounceCommonLetterDSprite,
@@ -1171,7 +1171,7 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 		&llIFCommonAnnounceCommonSymbolExclaimSprite,
 		&llIFCommonAnnounceCommonSymbolPeriodSprite
 	};
-	SYColorRGBPair colors[/* */] =
+	SYColorRGBPair colors[] =
 	{
 		{ { 0xFF, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } },
 		{ { 0x12, 0x00, 0xD9 }, { 0xFF, 0xFF, 0xFF } },
@@ -1225,13 +1225,13 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 	}
 }
 
-// 0x8013423C
+// 8013423C
 void mnVSResultsMakeWinnerText(s32 winner)
 {
-	char win[/* */] = "W1I1N1!";
-	char wins[/* */] = "W1I1N1S1!";
+	char win[] = "W1I1N1!";
+	char wins[] = "W1I1N1S1!";
 	
-	f32 x_fkinds[/* */] =
+	f32 x_fkinds[] =
 	{
 #if defined(REGION_US)
 		175.0F, 
@@ -1261,7 +1261,7 @@ void mnVSResultsMakeWinnerText(s32 winner)
 		160.0F
 #endif
 	};
-	f32 x_teams[/* */] =
+	f32 x_teams[] =
 	{
 		160.0F,
 		170.0F,
@@ -1282,18 +1282,18 @@ void mnVSResultsMakeWinnerText(s32 winner)
 	}
 }
 
-// 0x80134364
-s32 mnVSResultGetWinFighterKind(void)
+// 80134364
+s32 mnVSResultGetWinFighterKind()
 {
 	return mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer());
 }
 
-// 0x8013438C
-void mnVSResultMakeFighterName(void)
+// 8013438C
+void mnVSResultMakeFighterName()
 {
 	s32 fkind;
 
-	char *names[/* */] =
+	char *names[] =
 	{
 		"MARIO",
 		"FOX",
@@ -1316,7 +1316,7 @@ void mnVSResultMakeFighterName(void)
 #endif
 		"N2E2S2S"
 	};
-	f32 pos_x[/* */] =
+	f32 pos_x[] =
 	{
 #if defined(REGION_US)
 		30.0F, 
@@ -1346,7 +1346,7 @@ void mnVSResultMakeFighterName(void)
 		50.0F
 #endif
 	};
-	f32 scales[/* */] = {
+	f32 scales[] = {
 
 		1.0F, 
 		1.0F, 
@@ -1372,12 +1372,12 @@ void mnVSResultMakeFighterName(void)
 	mnVSResultsMakeWinnerText(fkind);
 }
 
-// 0x80134480
-void mnVSResultMakeTeamName(void)
+// 80134480
+void mnVSResultMakeTeamName()
 {
 	u32 team;
 
-	char *names[/* */] =
+	char *names[] =
 	{
 		"RED",
 		"BLUE",
@@ -1389,7 +1389,7 @@ void mnVSResultMakeTeamName(void)
 		NULL,
 		NULL
 	};
-	f32 pos_x[/* */] =
+	f32 pos_x[] =
 	{
 		70.0F, 60.0F, 30.0F,
 		 0.0F,  0.0F,  0.0F,
@@ -1402,14 +1402,14 @@ void mnVSResultMakeTeamName(void)
 	mnVSResultsMakeWinnerText(team);
 }
 
-// 0x80134540
-void mnVSResultMakeNoContestText(void)
+// 80134540
+void mnVSResultMakeNoContestText()
 {
 	mnVSResultsMakeString("NO CONTEST", 30.0F, 180.0F, 4, 1.0F);
 }
 
-// 0x8013457C
-void mnVSResultsMakeResultsText(void)
+// 8013457C
+void mnVSResultsMakeResultsText()
 {
 	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
@@ -1428,8 +1428,8 @@ void mnVSResultsMakeResultsText(void)
 	}
 }
 
-// 0x801345E8
-void mnVSResultsMakeResultsTextCamera(void)
+// 801345E8
+void mnVSResultsMakeResultsTextCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1453,7 +1453,7 @@ void mnVSResultsMakeResultsTextCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80134688
+// 80134688
 s32 mnVSResultsGetHundredsDigit(s32 number)
 {
 	if (number < 0)
@@ -1463,7 +1463,7 @@ s32 mnVSResultsGetHundredsDigit(s32 number)
 	else return number / 100;
 }
 
-// 0x801346C0
+// 801346C0
 s32 mnVSResultsGetTensDigit(s32 number)
 {
 	if (number < 0)
@@ -1473,7 +1473,7 @@ s32 mnVSResultsGetTensDigit(s32 number)
 	else return (number % 100) / 10;
 }
 
-// 0x80134718
+// 80134718
 s32 mnVSResultsGetOnesDigit(s32 number)
 {
 	if (number < 0)
@@ -1483,10 +1483,10 @@ s32 mnVSResultsGetOnesDigit(s32 number)
 	else return (number % 100) % 10;
 }
 
-// 0x80134770
+// 80134770
 void mnVSResultsSetNumberColor(SObj *sobj, s32 color_id)
 {
-	SYColorRGBPair colors[/* */] = 
+	SYColorRGBPair colors[] = 
 	{
 		{ { 0x00, 0x00, 0x00 }, { 0xFF, 0x82, 0x82 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x91, 0xC0, 0xFF } },
@@ -1503,12 +1503,12 @@ void mnVSResultsSetNumberColor(SObj *sobj, s32 color_id)
 	sobj->sprite.blue = colors[color_id].env.b;
 }
 
-// 0x80134808
+// 80134808
 SObj* mnVSResultsMakeDigit(GObj *gobj, s32 digit, s32 color_id)
 {
 	SObj *sobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonDigits0Sprite, &llIFCommonDigits1Sprite,
 		&llIFCommonDigits2Sprite, &llIFCommonDigits3Sprite,
@@ -1516,7 +1516,7 @@ SObj* mnVSResultsMakeDigit(GObj *gobj, s32 digit, s32 color_id)
 		&llIFCommonDigits6Sprite, &llIFCommonDigits7Sprite,
 		&llIFCommonDigits8Sprite, &llIFCommonDigits9Sprite
 	};
-	SYColorRGBPair unused_colors[/* */] =
+	SYColorRGBPair unused_colors[] =
 	{
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0x4E, 0xE9 } },
@@ -1533,12 +1533,12 @@ SObj* mnVSResultsMakeDigit(GObj *gobj, s32 digit, s32 color_id)
 	return sobj;
 }
 
-// 0x801348F8
+// 801348F8
 SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id)
 {
 	SObj *sobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonPlayerDamageDigit0Sprite, &llIFCommonPlayerDamageDigit1Sprite,
 		&llIFCommonPlayerDamageDigit2Sprite, &llIFCommonPlayerDamageDigit3Sprite,
@@ -1546,7 +1546,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 		&llIFCommonPlayerDamageDigit6Sprite, &llIFCommonPlayerDamageDigit7Sprite,
 		&llIFCommonPlayerDamageDigit8Sprite, &llIFCommonPlayerDamageDigit9Sprite
 	};
-	SYColorRGBPair unused_colors[/* */] =
+	SYColorRGBPair unused_colors[] =
 	{
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0x4E, 0xE9 } },
@@ -1589,7 +1589,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 	return sobj;
 }
 
-// 0x80134AC4
+// 80134AC4
 SObj* mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
 {
 	SObj *sobj;
@@ -1639,7 +1639,7 @@ SObj* mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
 	return sobj;
 }
 
-// 0x80134C5C
+// 80134C5C
 void mnVSResultsTintProcDisplay(GObj *gobj)
 {
 	if (sMNVSResultsTintAlpha < 0x80)
@@ -1663,15 +1663,15 @@ void mnVSResultsTintProcDisplay(GObj *gobj)
 	lbCommonClearExternSpriteParams();
 }
 
-// 0x80134DA0
-void mnVSResultsMakeTint(void)
+// 80134DA0
+void mnVSResultsMakeTint()
 {
 	sMNVSResultsTintAlpha = 0x00;
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT), mnVSResultsTintProcDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80134DF4
-void mnVSResultsMakeTintCamera(void)
+// 80134DF4
+void mnVSResultsMakeTintCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1695,7 +1695,7 @@ void mnVSResultsMakeTintCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80134E94
+// 80134E94
 void mnVSResultsWallpaperTintProcDisplay(GObj *gobj)
 {
 	if (sMNVSResultsWallpaperTintAlpha > 0x00)
@@ -1717,15 +1717,15 @@ void mnVSResultsWallpaperTintProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80134FD0
-void mnVSResultsMakeWallpaperTint(void)
+// 80134FD0
+void mnVSResultsMakeWallpaperTint()
 {
 	sMNVSResultsWallpaperTintAlpha = 0xFF;
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 25, GOBJ_PRIORITY_DEFAULT), mnVSResultsWallpaperTintProcDisplay, 35, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80135028
-void mnVSResultsMakeWallpaperTintCamera(void)
+// 80135028
+void mnVSResultsMakeWallpaperTintCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1749,7 +1749,7 @@ void mnVSResultsMakeWallpaperTintCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x801350C8
+// 801350C8
 void mnVSResultsWallpaperTint2ProcDisplay(GObj *gobj)
 {
 	if (sMNVSResultsWallpaperTint2Alpha > 0x00)
@@ -1771,15 +1771,15 @@ void mnVSResultsWallpaperTint2ProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80135204
-void mnVSResultsMakeWallpaperTint2(void)
+// 80135204
+void mnVSResultsMakeWallpaperTint2()
 {
 	sMNVSResultsWallpaperTint2Alpha = 0xFF;
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 24, GOBJ_PRIORITY_DEFAULT), mnVSResultsWallpaperTint2ProcDisplay, 34, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x8013525C
-void mnVSResultsMakeWallpaperTint2Camera(void)
+// 8013525C
+void mnVSResultsMakeWallpaperTint2Camera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1803,12 +1803,12 @@ void mnVSResultsMakeWallpaperTint2Camera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x801352FC
+// 801352FC
 f32 mnVSResultsGetColumnX(s32 player)
 {
-	f32 column_x_2p[/* */] = { 135.0F, 215.0F };
-	f32 column_x_3p[/* */] = { 125.0F, 175.0F, 225.0F };
-	f32 column_x_4p[/* */] = { 115.0F, 155.0F, 195.0F, 235.0F };
+	f32 column_x_2p[] = { 135.0F, 215.0F };
+	f32 column_x_3p[] = { 125.0F, 175.0F, 225.0F };
+	f32 column_x_4p[] = { 115.0F, 155.0F, 195.0F, 235.0F };
 
 	switch (mnVSResultsGetPresentCount())
 	{
@@ -1824,10 +1824,10 @@ f32 mnVSResultsGetColumnX(s32 player)
 	}
 }
 
-// 0x801353F4
+// 801353F4
 s32 mnVSResultsGetNumberColorID(s32 player)
 {
-	s32 color_ids[/* */] = { 0, 1, 3 };
+	s32 color_ids[] = { 0, 1, 3 };
 
 	if (sMNVSResultsIsTeamBattle != TRUE)
 	{
@@ -1836,7 +1836,7 @@ s32 mnVSResultsGetNumberColorID(s32 player)
 	return color_ids[gSCManagerTransferBattleState.players[player].team];
 }
 
-// 0x80135468
+// 80135468
 void mnVSResultsSetPlayerArrowColors(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1849,14 +1849,14 @@ void mnVSResultsSetPlayerArrowColors(SObj *sobj)
 	sobj->sprite.blue = 0xFF;
 }
 
-// 0x8013549C
-void mnVSResultsMakeHeader(void)
+// 8013549C
+void mnVSResultsMakeHeader()
 {
 	SObj *stock_sobj;
 	SObj *arrow_sobj;
 	GObj *gobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llMNVSResults1PArrowSprite, &llMNVSResults2PArrowSprite,
 		&llMNVSResults3PArrowSprite, &llMNVSResults4PArrowSprite
@@ -1888,7 +1888,7 @@ void mnVSResultsMakeHeader(void)
 	}
 }
 
-// 0x80135670
+// 80135670
 s32 mnVSResultsGetKOs(s32 player)
 {
 	if (sMNVSResultsKOs[player] > 999)
@@ -1898,7 +1898,7 @@ s32 mnVSResultsGetKOs(s32 player)
 	else return sMNVSResultsKOs[player];
 }
 
-// 0x8013569C
+// 8013569C
 void mnVSResultsMakeKOs(s32 y)
 {
 	GObj *gobj = lbCommonMakeSpriteGObj
@@ -1950,7 +1950,7 @@ void mnVSResultsMakeKOs(s32 y)
 	}
 }
 
-// 0x801358C4
+// 801358C4
 s32 mnVSResultsGetTKO(s32 player)
 {
 	if (sMNVSResultsTKO[player] > 999)
@@ -1960,7 +1960,7 @@ s32 mnVSResultsGetTKO(s32 player)
 	else return sMNVSResultsTKO[player];
 }
 
-// 0x801358F0
+// 801358F0
 void mnVSResultsMakeTKO(s32 y)
 {
 	GObj *gobj = lbCommonMakeSpriteGObj
@@ -2020,7 +2020,7 @@ void mnVSResultsMakeTKO(s32 y)
 	}
 }
 
-// 0x80135B78
+// 80135B78
 void mnVSResultsBarProcDisplay(GObj *gobj)
 {
 	f32 y = gobj->user_data.s;
@@ -2042,7 +2042,7 @@ void mnVSResultsBarProcDisplay(GObj *gobj)
 	lbCommonClearExternSpriteParams();
 }
 
-// 0x80135D58
+// 80135D58
 void mnVSResultsMakeBar(s32 y)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
@@ -2050,14 +2050,14 @@ void mnVSResultsMakeBar(s32 y)
 	gobj->user_data.s = y;
 }
 
-// 0x80135DB8
+// 80135DB8
 s32 mnVSResultsGetPoints(s32 player)
 {
 	return sMNVSResultsPoints[player];
 }
 
-// 0x80135DCC
-void mnVSResultsMakePointsRow(void)
+// 80135DCC
+void mnVSResultsMakePointsRow()
 {
 	GObj *gobj = lbCommonMakeSpriteGObj
 	(
@@ -2109,12 +2109,12 @@ void mnVSResultsMakePointsRow(void)
 }
 
 // 0x80135FE8 - Unused?
-void func_ovl31_80135FE8(void)
+void func_ovl31_80135FE8()
 {
 	return;
 }
 
-// 0x80135FF0
+// 80135FF0
 void mnVSResultsSetPlacePosition(SObj *sobj, s32 player, s32 place, f32 y)
 {
 	if ((place == 1) && (sobj->user_data.s != 0))
@@ -2129,7 +2129,7 @@ void mnVSResultsSetPlacePosition(SObj *sobj, s32 player, s32 place, f32 y)
 	}
 }
 
-// 0x8013607C
+// 8013607C
 s32 mnVSResultsGetDisplayPlace(s32 player)
 {
 	if
@@ -2145,7 +2145,7 @@ s32 mnVSResultsGetDisplayPlace(s32 player)
 	else return sMNVSResultsPlaces[player] + 1;
 }
 
-// 0x80136100
+// 80136100
 void mnVSResultsMakePlaceRow(s32 y)
 {
 	GObj *gobj;
@@ -2203,7 +2203,7 @@ void mnVSResultsMakePlaceRow(s32 y)
 	}
 }
 
-// 0x80136290
+// 80136290
 void mnVSResultsDrawResultsTimeRoyal(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
@@ -2233,7 +2233,7 @@ void mnVSResultsDrawResultsTimeRoyal(GObj *gobj)
 	}
 }
 
-// 0x80136358
+// 80136358
 void mnVSResultsDrawResultsStockRoyal(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
@@ -2255,7 +2255,7 @@ void mnVSResultsDrawResultsStockRoyal(GObj *gobj)
 	}
 }
 
-// 0x801363E8
+// 801363E8
 void mnVSResultsDrawResultsTimeTeam(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
@@ -2285,7 +2285,7 @@ void mnVSResultsDrawResultsTimeTeam(GObj *gobj)
 	}
 }
 
-// 0x801364B0
+// 801364B0
 void mnVSResultsDrawResultsStockTeam(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
@@ -2307,7 +2307,7 @@ void mnVSResultsDrawResultsStockTeam(GObj *gobj)
 	}
 }
 
-// 0x80136540
+// 80136540
 void mnVSResultsDrawResultsNoContest(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 30)
@@ -2325,13 +2325,13 @@ void mnVSResultsDrawResultsNoContest(GObj *gobj)
 	}
 }
 
-// 0x801365B4
-u8 mnVSResultsCheckTeamBattle(void)
+// 801365B4
+u8 mnVSResultsCheckTeamBattle()
 {
 	return sMNVSResultsIsTeamBattle;
 }
 
-// 0x801365C0
+// 801365C0
 void mnVSResultsLabelProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -2348,19 +2348,19 @@ void mnVSResultsLabelProcDisplay(GObj *gobj)
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 }
 
-// 0x801396B8
-f32 dMNVSResultsUnused0x801396B8[/* */] = { 140.0F, 180.0F, 120.0F, 160.0F, 200.0F, 100.0F, 140.0F, 180.0F, 220.0F };
+// 801396B8
+f32 dMNVSResultsUnused0x801396B8[] = { 140.0F, 180.0F, 120.0F, 160.0F, 200.0F, 100.0F, 140.0F, 180.0F, 220.0F };
 
-// 0x801366F0
-void mnVSResultsMakeLabel(void)
+// 801366F0
+void mnVSResultsMakeLabel()
 {
 	GObj *gobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llMNPlayersGameModesFreeForAllTextSprite, &llMNPlayersGameModesTeamBattleTextSprite
 	};
-	void (*procs[/* */])(GObj*) =
+	void (*procs[])(GObj*) =
 	{
 		mnVSResultsDrawResultsTimeRoyal,
 		mnVSResultsDrawResultsStockRoyal,
@@ -2398,8 +2398,8 @@ void mnVSResultsMakeLabel(void)
 	SObjGetStruct(gobj)->sprite.blue = 0xFF;
 }
 
-// 0x80136830
-void mnVSResultsMakeHeaderCamera(void)
+// 80136830
+void mnVSResultsMakeHeaderCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -2423,8 +2423,8 @@ void mnVSResultsMakeHeaderCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x801368D0
-void mnVSResultsMakeEmblemCamera(void)
+// 801368D0
+void mnVSResultsMakeEmblemCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -2458,8 +2458,8 @@ void mnVSResultsMakeEmblemCamera(void)
 	cobj->vec.up.z = 0.0F;
 }
 
-// 0x801369B4
-void mnVSResultsMakeFighterCamera(void)
+// 801369B4
+void mnVSResultsMakeFighterCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -2496,8 +2496,8 @@ void mnVSResultsMakeFighterCamera(void)
 	cobj->vec.up.z = 0.0F;
 }
 
-// 0x80136A9C
-void mnVSResultsSetKOs(void)
+// 80136A9C
+void mnVSResultsSetKOs()
 {
 	s32 i;
 
@@ -2510,8 +2510,8 @@ void mnVSResultsSetKOs(void)
 	}
 }
 
-// 0x80136B1C
-void mnVSResultsSetTKO(void)
+// 80136B1C
+void mnVSResultsSetTKO()
 {
 	s32 i;
 
@@ -2524,8 +2524,8 @@ void mnVSResultsSetTKO(void)
 	}
 }
 
-// 0x80136B9C
-void mnVSResultsSetPoints(void)
+// 80136B9C
+void mnVSResultsSetPoints()
 {
 	s32 i;
 
@@ -2535,13 +2535,13 @@ void mnVSResultsSetPoints(void)
 	}
 }
 
-// 0x80136C08
+// 80136C08
 s32 mnVSResultsGetPointsDirect(s32 player)
 {
 	return sMNVSResultsKOs[player] - sMNVSResultsTKO[player];
 }
 
-// 0x80136C2C
+// 80136C2C
 void mnVSResultsOrderResults(MNVSResultsScore *results, s32 players_num)
 {
 	MNVSResultsScore temp;
@@ -2569,8 +2569,8 @@ void mnVSResultsOrderResults(MNVSResultsScore *results, s32 players_num)
 	}
 }
 
-// 0x80136D28
-void mnVSResultsSetRoyalPlace(void)
+// 80136D28
+void mnVSResultsSetRoyalPlace()
 {
 	MNVSResultsScore results[GMCOMMON_PLAYERS_MAX];
 	s32 place;
@@ -2603,7 +2603,7 @@ void mnVSResultsSetRoyalPlace(void)
 	}
 }
 
-// 0x80136FB8
+// 80136FB8
 s32 mnVSResultsGetTeamTotalPoints(s32 team)
 {
 	s32 i;
@@ -2619,7 +2619,7 @@ s32 mnVSResultsGetTeamTotalPoints(s32 team)
 	return total;
 }
 
-// 0x80137068
+// 80137068
 void mnVSResultsSetTeamPlace(s32 team, s32 place)
 {
 	s32 i;
@@ -2633,7 +2633,7 @@ void mnVSResultsSetTeamPlace(s32 team, s32 place)
 	}
 }
 
-// 0x80137108
+// 80137108
 s32 mnVSResultsGetTeamFirstPlayer(s32 team)
 {
 	s32 i;
@@ -2649,7 +2649,7 @@ s32 mnVSResultsGetTeamFirstPlayer(s32 team)
 }
 
 // 0x801371B8 - order team placements
-void mnVSResultsSetTeamPlaceAll(void)
+void mnVSResultsSetTeamPlaceAll()
 {
 	MNVSResultsScore results[GMCOMMON_PLAYERS_MAX];
 	s32 place;
@@ -2685,7 +2685,7 @@ void mnVSResultsSetTeamPlaceAll(void)
 }
 
 // 0x801372F4 - set place by time
-void mnVSResultsSetPlaceTime(void)
+void mnVSResultsSetPlaceTime()
 {
 	if (sMNVSResultsIsTeamBattle == FALSE)
 	{
@@ -2695,7 +2695,7 @@ void mnVSResultsSetPlaceTime(void)
 }
 
 // 0x80137334 - set place by stock
-void mnVSResultsSetPlaceStock(void)
+void mnVSResultsSetPlaceStock()
 {
 	s32 i;
 
@@ -2708,8 +2708,8 @@ void mnVSResultsSetPlaceStock(void)
 	}
 }
 
-// 0x801373B4
-void mnVSResultsInitRankings(void)
+// 801373B4
+void mnVSResultsInitRankings()
 {
 	if (gSCManagerTransferBattleState.game_rules == SCBATTLE_GAMERULE_STOCK)
 	{
@@ -2737,8 +2737,8 @@ void mnVSResultsInitRankings(void)
 	mnVSResultsSetFighterKindAll();
 }
 
-// 0x80137454
-void mnVSResultsSetIsPresent(void)
+// 80137454
+void mnVSResultsSetIsPresent()
 {
 	s32 i;
 
@@ -2752,7 +2752,7 @@ void mnVSResultsSetIsPresent(void)
 	}
 }
 
-// 0x801374F4
+// 801374F4
 void mnVSResultsInitFighter(s32 player)
 {
 	mnVSResultsMakeFighter(player);
@@ -2762,8 +2762,8 @@ void mnVSResultsInitFighter(s32 player)
 	mnVSResultsSetFighterStatus(sMNVSResultsFighterGObjs[player], player);
 }
 
-// 0x801375AC
-void mnVSResultsInitFightersAll(void)
+// 801375AC
+void mnVSResultsInitFightersAll()
 {
 	s32 i;
 
@@ -2795,8 +2795,8 @@ void mnVSResultsInitFightersAll(void)
 	}
 }
 
-// 0x80137698
-void mnVSResultsInitVars(void)
+// 80137698
+void mnVSResultsInitVars()
 {
 	s32 i;
 
@@ -2846,7 +2846,7 @@ void mnVSResultsInitVars(void)
 	}
 }
 
-// 0x801377C0
+// 801377C0
 void mnVSResultsAudioThreadUpdate(GObj *gobj)
 {
 	while (gSYAudioCSPlayers[0]->state == AL_STOPPED)
@@ -2864,13 +2864,13 @@ void mnVSResultsAudioThreadUpdate(GObj *gobj)
 	}
 }
 
-// 0x80137854
-void mnVSResultsMakeAudioThread(void)
+// 80137854
+void mnVSResultsMakeAudioThread()
 {
 	gcAddGObjProcess(gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT), mnVSResultsAudioThreadUpdate, nGCProcessKindThread, 1);
 }
 
-// 0x80137898
+// 80137898
 void func_ovl31_80137898(GObj *gobj)
 {
 	u32 tic = 0;
@@ -2898,14 +2898,14 @@ void func_ovl31_80137898(GObj *gobj)
 	}
 }
 
-// 0x80137938
-void func_ovl31_80137938(void)
+// 80137938
+void func_ovl31_80137938()
 {
 	gcAddGObjProcess(gcMakeGObjSPAfter(0, NULL, 15, GOBJ_PRIORITY_DEFAULT), func_ovl31_80137898, nGCProcessKindThread, 1);
 }
 
-// 0x8013797C
-void func_ovl31_8013797C(void)
+// 8013797C
+void func_ovl31_8013797C()
 {
 	s32 i;
 
@@ -2916,8 +2916,8 @@ void func_ovl31_8013797C(void)
 	}
 }
 
-// 0x801379C4
-s32 mnVSResultsGetManCount(void)
+// 801379C4
+s32 mnVSResultsGetManCount()
 {
 	s32 i, total = 0;
 
@@ -2931,8 +2931,8 @@ s32 mnVSResultsGetManCount(void)
 	return total;
 }
 
-// 0x80137A1C
-s32 mnVSResultsGetBestMan(void)
+// 80137A1C
+s32 mnVSResultsGetBestMan()
 {
 	s32 i;
 	sb32 is_human[GMCOMMON_PLAYERS_MAX];
@@ -2991,7 +2991,7 @@ s32 mnVSResultsGetBestMan(void)
 	return first_man;
 }
 
-// 0x80137E34
+// 80137E34
 s32 mnVSResultsGetBestManExcept(s32 player)
 {
 	s32 i;
@@ -3040,8 +3040,8 @@ s32 mnVSResultsGetBestManExcept(s32 player)
 	return found;
 }
 
-// 0x80138130
-s32 mnVSResultsGetWorstMan(void)
+// 80138130
+s32 mnVSResultsGetWorstMan()
 {
 	s32 i;
 	sb32 is_human[GMCOMMON_PLAYERS_MAX];
@@ -3098,7 +3098,7 @@ s32 mnVSResultsGetWorstMan(void)
 	return first_man;
 }
 
-// 0x80138548
+// 80138548
 void mnVSResultsSetAutoHandicaps(s32 best, s32 worst)
 {
 	s32 handicap_best = gSCManagerTransferBattleState.players[best].handicap;
@@ -3144,8 +3144,8 @@ void mnVSResultsSetAutoHandicaps(s32 best, s32 worst)
 	}
 }
 
-// 0x801386BC
-void mnVSResultsUpdateAutoHandicap(void)
+// 801386BC
+void mnVSResultsUpdateAutoHandicap()
 {
 	if ((sMNVSResultsKind != nMNVSResultsKindNoContest) && (mnVSResultsGetManCount() >= 2))
 	{
@@ -3153,8 +3153,8 @@ void mnVSResultsUpdateAutoHandicap(void)
 	}
 }
 
-// 0x80138714
-void mnVSResultsPlayWinBGM(void)
+// 80138714
+void mnVSResultsPlayWinBGM()
 {
 	switch (mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer()))
 	{
@@ -3206,8 +3206,8 @@ void mnVSResultsPlayWinBGM(void)
 	}
 }
 
-// 0x80138830
-void mnVSResultsMakeConfetti(void)
+// 80138830
+void mnVSResultsMakeConfetti()
 {
 	Vec3f pos1 = { 0.0F, 1000.0F,  -400.0F };
 	Vec3f pos0 = { 0.0F, 1000.0F, -1000.0F };
@@ -3218,12 +3218,12 @@ void mnVSResultsMakeConfetti(void)
 }
 
 // 0x801388A4 - Unused?
-void func_ovl31_801388A4(void)
+void func_ovl31_801388A4()
 {
 	return;
 }
 
-// 0x801388AC
+// 801388AC
 void mnVSResultsFuncRun(GObj *gobj)
 {
 	s32 unlocks_num;
@@ -3317,8 +3317,8 @@ void mnVSResultsFuncRun(GObj *gobj)
 	}
 }
 
-// 0x80138B70
-void mnVSResultsFuncStart(void)
+// 80138B70
+void mnVSResultsFuncStart()
 {
 	LBRelocSetup rl_setup;
 	s32 i;
@@ -3391,56 +3391,56 @@ void mnVSResultsFuncStart(void)
 	}
 }
 
-// 0x80139710
+// 80139710
 SYVideoSetup dMNVSResultsVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8013972C
+// 8013972C
 SYTaskmanSetup dMNVSResultsTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                          // ???
-        gcRunAll,              		// Update function
-        scManagerFuncDraw,        	// Frame draw function
-        &ovl31_BSS_END,             // Allocatable memory pool start
-        0,                          // Allocatable memory pool size
-        1,                          // ???
-        2,                          // Number of contexts?
-        sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
-        sizeof(Gfx) * 128,          // Display List Buffer 1 Size
-        0,                          // Display List Buffer 2 Size
-        0,                          // Display List Buffer 3 Size
-        0x8000,                     // Graphics Heap Size
-        2,                          // ???
-        0xC000,                     // RDP Output Buffer Size
-        mnVSResultsFuncLights,   	// Pre-render function
-        syControllerFuncRead,       // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                          // ???
+		gcRunAll,              		// Update function
+		scManagerFuncDraw,        	// Frame draw function
+		&ovl31_BSS_END,             // Allocatable memory pool start
+		0,                          // Allocatable memory pool size
+		1,                          // ???
+		2,                          // Number of contexts?
+		sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
+		sizeof(Gfx) * 128,          // Display List Buffer 1 Size
+		0,                          // Display List Buffer 2 Size
+		0,                          // Display List Buffer 3 Size
+		0x8000,                     // Graphics Heap Size
+		2,                          // ???
+		0xC000,                     // RDP Output Buffer Size
+		mnVSResultsFuncLights,   	// Pre-render function
+		syControllerFuncRead,       // Controller I/O function
+	},
 
-    0,                              // Number of GObjThreads
-    sizeof(u64) * 192,              // Thread stack size
-    0,                              // Number of thread stacks
-    0,                              // ???
-    0,                              // Number of GObjProcesses
-    0,                              // Number of GObjs
-    sizeof(GObj),                   // GObj size
-    0,                              // Number of XObjs
-    dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // DObjVec eject function
-    0,                              // Number of AObjs
-    0,                              // Number of MObjs
-    0,                              // Number of DObjs
-    sizeof(DObj),                   // DObj size
-    0,                              // Number of SObjs
-    sizeof(SObj),                   // SObj size
-    0,                              // Number of CObjs
-    sizeof(CObj),                 	// CObj size
-    
-    mnVSResultsFuncStart         	// Task start function
+	0,                              // Number of GObjThreads
+	sizeof(u64) * 192,              // Thread stack size
+	0,                              // Number of thread stacks
+	0,                              // ???
+	0,                              // Number of GObjProcesses
+	0,                              // Number of GObjs
+	sizeof(GObj),                   // GObj size
+	0,                              // Number of XObjs
+	dLBCommonFuncMatrixList,        // Matrix function list
+	NULL,                           // DObjVec eject function
+	0,                              // Number of AObjs
+	0,                              // Number of MObjs
+	0,                              // Number of DObjs
+	sizeof(DObj),                   // DObj size
+	0,                              // Number of SObjs
+	sizeof(SObj),                   // SObj size
+	0,                              // Number of CObjs
+	sizeof(CObj),                 	// CObj size
+	
+	mnVSResultsFuncStart         	// Task start function
 };
 
-// 0x80138E64
-void mnVSResultsStartScene(void)
+// 80138E64
+void mnVSResultsStartScene()
 {
 	s32 i;
 

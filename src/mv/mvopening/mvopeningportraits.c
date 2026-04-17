@@ -13,13 +13,13 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 0x801328A0
-u32 dMVOpeningPortraitsFileIDs[/* */] = { &llMVOpeningPortraitsSet1FileID, &llMVOpeningPortraitsSet2FileID };
+// 801328A0
+u32 dMVOpeningPortraitsFileIDs[] = { &llMVOpeningPortraitsSet1FileID, &llMVOpeningPortraitsSet2FileID };
 
-// 0x801328A8
+// 801328A8
 Lights1 dMVOpeningPortraitsLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
 
-// 0x801328C0
+// 801328C0
 Lights1 dMVOpeningPortraitsLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // // // // // // // // // // // //
@@ -28,28 +28,28 @@ Lights1 dMVOpeningPortraitsLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xF
 //                               //
 // // // // // // // // // // // //
 
-// 0x801329E0
+// 801329E0
 s32 sMVOpeningPortraitsPad0x801329E0[2];
 
-// 0x801329E8
+// 801329E8
 s32 sMVOpeningPortraitsTotalTimeTics;
 
-// 0x801329EC
+// 801329EC
 s32 sMVOpeningPortraitsRow;
 
-// 0x801329F0
+// 801329F0
 GObj *sMVOpeningPortraitsGObj;
 
-// 0x801329F4
+// 801329F4
 s32 sMVOpeningPortraitsUnused0x801329F4;
 
-// 0x801329F8
+// 801329F8
 LBFileNode sMVOpeningPortraitsStatusBuffer[48];
 
-// 0x80132B78
+// 80132B78
 LBFileNode sMVOpeningPortraitsForceStatusBuffer[7];
 
-// 0x80132BB0
+// 80132BB0
 void *sMVOpeningPortraitsFiles[ARRAY_COUNT(dMVOpeningPortraitsFileIDs)];
 
 // // // // // // // // // // // //
@@ -58,28 +58,28 @@ void *sMVOpeningPortraitsFiles[ARRAY_COUNT(dMVOpeningPortraitsFileIDs)];
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131B00
+// 80131B00
 void mvOpeningPortraitsFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 0x80131B58
-void mvOpeningPortraitsMakeSet1(void)
+// 80131B58
+void mvOpeningPortraitsMakeSet1()
 {
 	GObj *gobj;
 	SObj *sobj;
 	s32 i;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llMVOpeningPortraitsSet1SamusSprite,
 		&llMVOpeningPortraitsSet1MarioSprite,
 		&llMVOpeningPortraitsSet1FoxSprite,
 		&llMVOpeningPortraitsSet1PikachuSprite
 	};
-	Vec2f pos[/* */] =
+	Vec2f pos[] =
 	{
 		{ 10.0F,  10.0F },
 		{ 10.0F,  65.0F },
@@ -101,21 +101,21 @@ void mvOpeningPortraitsMakeSet1(void)
 	}
 }
 
-// 0x80131CAC
-void mvOpeningPortraitsMakeSet2(void)
+// 80131CAC
+void mvOpeningPortraitsMakeSet2()
 {
 	GObj *gobj;
 	SObj *sobj;
 	s32 i;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llMVOpeningPortraitsSet2LinkSprite,
 		&llMVOpeningPortraitsSet2KirbySprite,
 		&llMVOpeningPortraitsSet2DonkeySprite,
 		&llMVOpeningPortraitsSet2YoshiSprite
 	};
-	Vec2f pos[/* */] =
+	Vec2f pos[] =
 	{
 		{ 10.0F,  10.0F },
 		{ 10.0F,  65.0F },
@@ -137,31 +137,31 @@ void mvOpeningPortraitsMakeSet2(void)
 	}
 }
 
-// 0x80131E00
-void mvOpeningPortraitsBlockRow0(void)
+// 80131E00
+void mvOpeningPortraitsBlockRow0()
 {
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 65);
 }
 
-// 0x80131E30
-void mvOpeningPortraitsBlockRow1(void)
+// 80131E30
+void mvOpeningPortraitsBlockRow1()
 {
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 65, 310, 120);
 }
 
-// 0x80131E60
-void mvOpeningPortraitsBlockRow2(void)
+// 80131E60
+void mvOpeningPortraitsBlockRow2()
 {
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 120, 310, 175);
 }
 
-// 0x80131E90
-void mvOpeningPortraitsBlockRow3(void)
+// 80131E90
+void mvOpeningPortraitsBlockRow3()
 {
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 175, 310, 230);
 }
 
-// 0x80131EC0
+// 80131EC0
 void mvOpeningPortraitsBlockPartialRow(s32 row, s32 pos_x)
 {
 	s32 uly = 10 + row * 55;
@@ -181,7 +181,7 @@ void mvOpeningPortraitsBlockPartialRow(s32 row, s32 pos_x)
 	}
 }
 
-// 0x80131FC4
+// 80131FC4
 void mvOpeningPortraitsCoverProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -227,7 +227,7 @@ void mvOpeningPortraitsCoverProcDisplay(GObj *gobj)
 	lbCommonDrawSObjAttr(gobj);
 }
 
-// 0x801321FC
+// 801321FC
 void mvOpeningPortraitsCoverProcUpdate(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
@@ -309,8 +309,8 @@ void mvOpeningPortraitsCoverProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x80132414
-void mvOpeningPortraitsMakeCover(void)
+// 80132414
+void mvOpeningPortraitsMakeCover()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -333,8 +333,8 @@ void mvOpeningPortraitsMakeCover(void)
 	gcAddGObjProcess(gobj, mvOpeningPortraitsCoverProcUpdate, nGCProcessKindFunc, 1);
 }
 
-// 0x801324D0
-void mvOpeningPortraitsMakePortraitsCamera(void)
+// 801324D0
+void mvOpeningPortraitsMakePortraitsCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -358,8 +358,8 @@ void mvOpeningPortraitsMakePortraitsCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80132570
-void mvOpeningPortraitsMakeCoverCamera(void)
+// 80132570
+void mvOpeningPortraitsMakeCoverCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -383,14 +383,14 @@ void mvOpeningPortraitsMakeCoverCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80132610
-void mvOpeningPortraitsInitVars(void)
+// 80132610
+void mvOpeningPortraitsInitVars()
 {
 	sMVOpeningPortraitsTotalTimeTics = 0;
 	sMVOpeningPortraitsRow = 0;
 }
 
-// 0x80132624
+// 80132624
 void mvOpeningPortraitsFuncRun(GObj *gobj)
 {
 	sMVOpeningPortraitsTotalTimeTics++;
@@ -429,8 +429,8 @@ void mvOpeningPortraitsFuncRun(GObj *gobj)
 	}
 }
 
-// 0x80132718
-void mvOpeningPortraitsFuncStart(void)
+// 80132718
+void mvOpeningPortraitsFuncStart()
 {
 	s32 unused;
 	LBRelocSetup rl_setup;
@@ -460,56 +460,56 @@ void mvOpeningPortraitsFuncStart(void)
 	}
 }
 
-// 0x80132938
+// 80132938
 SYVideoSetup dMVOpeningPortraitsVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x80132954
+// 80132954
 SYTaskmanSetup dMVOpeningPortraitsTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                              // ???
-        gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
-        &ovl35_BSS_END,                 // Allocatable memory pool start
-        0,                              // Allocatable memory pool size
-        1,                              // ???
-        2,                              // Number of contexts?
-        sizeof(Gfx) * 5000,             // Display List Buffer 0 Size
-        sizeof(Gfx) * 512,              // Display List Buffer 1 Size
-        0,                              // Display List Buffer 2 Size
-        0,                              // Display List Buffer 3 Size
-        0x8000,                         // Graphics Heap Size
-        2,                              // ???
-        0xC000,                         // RDP Output Buffer Size
-        mvOpeningPortraitsFuncLights,   // Pre-render function
-        syControllerFuncRead,           // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                              // ???
+		gcRunAll,                       // Update function
+		gcDrawAll,                  // Frame draw function
+		&ovl35_BSS_END,                 // Allocatable memory pool start
+		0,                              // Allocatable memory pool size
+		1,                              // ???
+		2,                              // Number of contexts?
+		sizeof(Gfx) * 5000,             // Display List Buffer 0 Size
+		sizeof(Gfx) * 512,              // Display List Buffer 1 Size
+		0,                              // Display List Buffer 2 Size
+		0,                              // Display List Buffer 3 Size
+		0x8000,                         // Graphics Heap Size
+		2,                              // ???
+		0xC000,                         // RDP Output Buffer Size
+		mvOpeningPortraitsFuncLights,   // Pre-render function
+		syControllerFuncRead,           // Controller I/O function
+	},
 
-    8,                                  // Number of GObjThreads
-    sizeof(u64) * 192,                  // Thread stack size
-    8,                                  // Number of thread stacks
-    0,                                  // ???
-    128,                                // Number of GObjProcesses
-    128,                                // Number of GObjs
-    sizeof(GObj),                       // GObj size
-    256,                                // Number of XObjs
-    dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // DObjVec eject function
-    512,                                // Number of AObjs
-    160,                                // Number of MObjs
-    256,                                // Number of DObjs
-    sizeof(DObj),                       // DObj size
-    128,                                // Number of SObjs
-    sizeof(SObj),                       // SObj size
-    16,                                 // Number of CObjs
-    sizeof(CObj),                       // Camera size
-    
-    mvOpeningPortraitsFuncStart         // Task start function
+	8,                                  // Number of GObjThreads
+	sizeof(u64) * 192,                  // Thread stack size
+	8,                                  // Number of thread stacks
+	0,                                  // ???
+	128,                                // Number of GObjProcesses
+	128,                                // Number of GObjs
+	sizeof(GObj),                       // GObj size
+	256,                                // Number of XObjs
+	dLBCommonFuncMatrixList,            // Matrix function list
+	NULL,                               // DObjVec eject function
+	512,                                // Number of AObjs
+	160,                                // Number of MObjs
+	256,                                // Number of DObjs
+	sizeof(DObj),                       // DObj size
+	128,                                // Number of SObjs
+	sizeof(SObj),                       // SObj size
+	16,                                 // Number of CObjs
+	sizeof(CObj),                       // Camera size
+	
+	mvOpeningPortraitsFuncStart         // Task start function
 };
 
-// 0x8013283C
-void mvOpeningPortraitsStartScene(void)
+// 8013283C
+void mvOpeningPortraitsStartScene()
 {
 	dMVOpeningPortraitsVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningPortraitsVideoSetup);

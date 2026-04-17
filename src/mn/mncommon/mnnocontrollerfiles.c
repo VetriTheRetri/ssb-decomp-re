@@ -9,8 +9,8 @@
 //                               //
 // // // // // // // // // // // //
 
-// 0x800D67B0
-u32 dMNNoControllerFileIDs[/* */] = { &llMNNoControllerFileID };
+// 800D67B0
+u32 dMNNoControllerFileIDs[] = { &llMNNoControllerFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -18,13 +18,13 @@ u32 dMNNoControllerFileIDs[/* */] = { &llMNNoControllerFileID };
 //                               //
 // // // // // // // // // // // //
 
-// 0x800D67D0
+// 800D67D0
 void *gMNNoControllerFiles[ARRAY_COUNT(dMNNoControllerFileIDs)];
 
-// 0x800D67D8
+// 800D67D8
 LBFileNode sMNNoControllerStatusBuffer[100];
 
-// 0x800D6AF8
+// 800D6AF8
 LBFileNode sMNNoControllerForceStatusBuffer[7];
 
 // // // // // // // // // // // //
@@ -33,8 +33,8 @@ LBFileNode sMNNoControllerForceStatusBuffer[7];
 //                               //
 // // // // // // // // // // // //
 
-// 0x800D6660
-void mnNoControllerSetupFiles(void)
+// 800D6660
+void mnNoControllerSetupFiles()
 {
 	LBRelocSetup rl_setup;
 

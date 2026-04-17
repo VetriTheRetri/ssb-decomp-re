@@ -6,15 +6,15 @@
 #include <PR/gbi.h>
 
 extern void mvOpeningYosterFuncLights(Gfx **dls);
-extern void mvOpeningYosterMakeNest(void);
-extern void mvOpeningYosterMakeFighters(void);
-extern void mvOpeningYosterMakeWallpaper(void);
-extern void mvOpeningYosterMakeGround(void);
-extern void mvOpeningYosterMakeMainCamera(void);
-extern void mvOpeningYosterMakeWallpaperCamera(void);
-extern void mvOpeningYosterInitTotalTimeTics(void);
+extern void mvOpeningYosterMakeNest();
+extern void mvOpeningYosterMakeFighters();
+extern void mvOpeningYosterMakeWallpaper();
+extern void mvOpeningYosterMakeGround();
+extern void mvOpeningYosterMakeMainCamera();
+extern void mvOpeningYosterMakeWallpaperCamera();
+extern void mvOpeningYosterInitTotalTimeTics();
 extern void mvOpeningYosterMainProc(GObj *gobj);
-extern void mvOpeningYosterFuncStart(void);
-extern void mvOpeningYosterStartScene(void);
+extern void mvOpeningYosterFuncStart();
+extern void mvOpeningYosterStartScene();
 
 #endif

@@ -6,16 +6,16 @@
 #include <PR/gbi.h>
 
 extern void mvOpeningYamabukiFuncLights(Gfx **dls);
-extern void mvOpeningYamabukiMakeWallpaper(void);
-extern void mvOpeningYamabukiMakeFighter(void);
-extern void mvOpeningYamabukiMakeLegs(void);
-extern void mvOpeningYamabukiMakeLegsShadow(void);
-extern void mvOpeningYamabukiMakeMBall(void);
-extern void mvOpeningYamabukiMakeMainCamera(void);
-extern void mvOpeningYamabukiMakeWallpaperCamera(void);
-extern void mvOpeningYamabukiInitTotalTimeTics(void);
+extern void mvOpeningYamabukiMakeWallpaper();
+extern void mvOpeningYamabukiMakeFighter();
+extern void mvOpeningYamabukiMakeLegs();
+extern void mvOpeningYamabukiMakeLegsShadow();
+extern void mvOpeningYamabukiMakeMBall();
+extern void mvOpeningYamabukiMakeMainCamera();
+extern void mvOpeningYamabukiMakeWallpaperCamera();
+extern void mvOpeningYamabukiInitTotalTimeTics();
 extern void mvOpeningYamabukiFuncRun(GObj *gobj);
-extern void mvOpeningYamabukiFuncStart(void);
-extern void mvOpeningYamabukiStartScene(void);
+extern void mvOpeningYamabukiFuncStart();
+extern void mvOpeningYamabukiStartScene();
 
 #endif

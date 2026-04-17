@@ -137,10 +137,10 @@ gmColCommandEffectItemHoldS1(joint, effect_id, flag), gmColCommandEffectItemHold
 
 typedef enum GMCameraBounds
 {
-    nGMCameraBoundLeft,
-    nGMCameraBoundRight,
-    nGMCameraBoundBottom,
-    nGMCameraBoundTop
+	nGMCameraBoundLeft,
+	nGMCameraBoundRight,
+	nGMCameraBoundBottom,
+	nGMCameraBoundTop
 } 
 GMCameraBounds;
 

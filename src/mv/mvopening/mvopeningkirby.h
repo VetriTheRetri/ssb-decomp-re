@@ -5,23 +5,23 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvOpeningKirbySetupFiles(void);
+extern void mvOpeningKirbySetupFiles();
 extern void mvOpeningKirbyInitName(SObj *sobj);
-extern void mvOpeningKirbyMakeName(void);
+extern void mvOpeningKirbyMakeName();
 extern void mvOpeningKirbyMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningKirbyMakeMotionCamera(Vec3f move);
-extern void mvOpeningKirbyMakeMotionWindow(void);
+extern void mvOpeningKirbyMakeMotionWindow();
 extern void mvOpeningKirbyPosedWallpaperProcDisplay(GObj *gobj);
-extern void mvOpeningKirbyMakePosedWallpaper(void);
+extern void mvOpeningKirbyMakePosedWallpaper();
 extern void mvOpeningKirbyPosedFighterProcUpdate(GObj *fighter_gobj);
-extern void mvOpeningKirbyMakePosedFighter(void);
-extern void mvOpeningKirbyMakeNameCamera(void);
-extern void mvOpeningKirbyMakePosedFighterCamera(void);
-extern void mvOpeningKirbyMakePosedWallpaperCamera(void);
+extern void mvOpeningKirbyMakePosedFighter();
+extern void mvOpeningKirbyMakeNameCamera();
+extern void mvOpeningKirbyMakePosedFighterCamera();
+extern void mvOpeningKirbyMakePosedWallpaperCamera();
 extern void mvOpeningKirbyFuncRun(GObj *gobj);
-extern void mvOpeningKirbyInitVars(void);
-extern void mvOpeningKirbyFuncStart(void);
+extern void mvOpeningKirbyInitVars();
+extern void mvOpeningKirbyFuncStart();
 extern void mvOpeningKirbyFuncLights(Gfx **dls);
-extern void mvOpeningKirbyStartScene(void);
+extern void mvOpeningKirbyStartScene();
 
 #endif

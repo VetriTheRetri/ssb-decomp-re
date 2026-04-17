@@ -28,26 +28,26 @@
 
 #define SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(width, height, w_border, h_border, type, id)   \
 (                                                                                   \
-    (0x80400000 - (((width) * (height) * sizeof(type)) * (3 - (id)))) -             \
-    (                                                                               \
-        SYVIDEO_BORDER_SIZE(height, w_border, type) +                               \
-        SYVIDEO_BORDER_SIZE(width, h_border, type)                                  \
-    )                                                                               \
+	(0x80400000 - (((width) * (height) * sizeof(type)) * (3 - (id)))) -             \
+	(                                                                               \
+		SYVIDEO_BORDER_SIZE(height, w_border, type) +                               \
+		SYVIDEO_BORDER_SIZE(width, h_border, type)                                  \
+	)                                                                               \
 )
 
 #define SYVIDEO_SETUP_DEFAULT()                                 \
 {                                                               \
-    &gSYFramebufferSets[0],                                     \
-    &gSYFramebufferSets[1],                                     \
-    &gSYFramebufferSets[2],                                     \
-    NULL,                                                       \
-    320,                                                        \
-    240,                                                        \
-    SYVIDEO_FLAG_DIVOT          | SYVIDEO_FLAG_DITHERFILTER |   \
-    SYVIDEO_FLAG_NOGAMMADITHER  | 0x800                     |   \
-    SYVIDEO_FLAG_NOBLACKOUT     | SYVIDEO_FLAG_NOGAMMA      |   \
-    SYVIDEO_FLAG_COLORDEPTH16   | SYVIDEO_FLAG_NOSERRATE    |   \
-    SYVIDEO_FLAG_ANTIALIAS                                      \
+	&gSYFramebufferSets[0],                                     \
+	&gSYFramebufferSets[1],                                     \
+	&gSYFramebufferSets[2],                                     \
+	NULL,                                                       \
+	320,                                                        \
+	240,                                                        \
+	SYVIDEO_FLAG_DIVOT          | SYVIDEO_FLAG_DITHERFILTER |   \
+	SYVIDEO_FLAG_NOGAMMADITHER  | 0x800                     |   \
+	SYVIDEO_FLAG_NOBLACKOUT     | SYVIDEO_FLAG_NOGAMMA      |   \
+	SYVIDEO_FLAG_COLORDEPTH16   | SYVIDEO_FLAG_NOSERRATE    |   \
+	SYVIDEO_FLAG_ANTIALIAS                                      \
 }
 
 #define SYVIDEO_ZBUFFER_START(width, height, w_border, h_border, type) \
@@ -58,11 +58,11 @@
  */
 typedef struct SYVideoSetup
 {
-    void *framebuffers[3];
-    u16 *zbuffer;
-    u32 width;
-    u32 height;
-    u32 flags;
+	void *framebuffers[3];
+	u16 *zbuffer;
+	u32 width;
+	u32 height;
+	u32 flags;
 
 } SYVideoSetup; // size >= 0x18
 

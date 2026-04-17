@@ -61,10 +61,10 @@ typedef struct
 	/* 0x24 */ __OSViScale y;
 } __OSViContext; // 0x30 bytes
 
-void __osViSwapContext(void);
+void __osViSwapContext();
 extern __OSViContext* __osViCurr;
 extern __OSViContext* __osViNext;
 extern u32 __additional_scanline;
-__OSViContext* __osViGetCurrentContext(void);
-void __osViInit(void);
+__OSViContext* __osViGetCurrentContext();
+void __osViInit();
 #endif

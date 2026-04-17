@@ -31,53 +31,53 @@ extern DObj* gcAddDObjSiblingRpyR(DObj *dobj, void *dvar);
 extern DObj* gcAddDObjChildRpyR(DObj *dobj, void *dvar);
 extern void gcRemoveDObjAll(GObj *gobj);
 extern void gcRemoveSObjAll(GObj *gobj);
-extern void gcEjectAll(void);
+extern void gcEjectAll();
 extern GObj* gcMakeModelGObj
 (
-    u32 id,
-    void (*func_run)(GObj*),
-    s32 link,
-    u32 link_priority,
-    void (*proc_display)(GObj*),
-    u8 dl_link,
-    u32 dl_link_priority,
-    u32 camera_tag,
-    void *dvar,
-    sb32 is_add_default_xobj,
-    u8 gobjproc_kind,
-    void (*proc)(GObj*),
-    u32 gobjproc_priority
+	u32 id,
+	void (*func_run)(GObj*),
+	s32 link,
+	u32 link_priority,
+	void (*proc_display)(GObj*),
+	u8 dl_link,
+	u32 dl_link_priority,
+	u32 camera_tag,
+	void *dvar,
+	sb32 is_add_default_xobj,
+	u8 gobjproc_kind,
+	void (*proc)(GObj*),
+	u32 gobjproc_priority
 );
 extern GObj* gcMakeSpriteGObj
 (
-    u32 id,
-    void (*func_run)(GObj*),
-    s32 link,
-    u32 link_priority,
-    void (*proc_display)(GObj*),
-    s32 dl_link,
-    u32 dl_link_priority,
-    u32 camera_tag,
-    Sprite *sprite,
-    u8 gobjproc_kind,
-    void (*proc)(GObj*),
-    u32 gobjproc_priority
+	u32 id,
+	void (*func_run)(GObj*),
+	s32 link,
+	u32 link_priority,
+	void (*proc_display)(GObj*),
+	s32 dl_link,
+	u32 dl_link_priority,
+	u32 camera_tag,
+	Sprite *sprite,
+	u8 gobjproc_kind,
+	void (*proc)(GObj*),
+	u32 gobjproc_priority
 );
 GObj* gcMakeCameraGObj
 (
-    u32 id,
-    void (*func_run)(GObj*),
-    s32 link,
-    u32 link_priority,
-    void (*proc_display)(GObj*),
-    u32 dl_link_priority,
-    u64 camera_mask,
-    u32 camera_tag,
-    sb32 is_add_default_xobj,
-    u8 gobjproc_kind,
-    void (*proc)(GObj*),
-    u32 gobjproc_priority,
-    sb32 argD
+	u32 id,
+	void (*func_run)(GObj*),
+	s32 link,
+	u32 link_priority,
+	void (*proc_display)(GObj*),
+	u32 dl_link_priority,
+	u64 camera_mask,
+	u32 camera_tag,
+	sb32 is_add_default_xobj,
+	u8 gobjproc_kind,
+	void (*proc)(GObj*),
+	u32 gobjproc_priority,
+	sb32 argD
 );
 extern GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_priority, u32 dl_link_priority, u32 flags, u32 color);
 

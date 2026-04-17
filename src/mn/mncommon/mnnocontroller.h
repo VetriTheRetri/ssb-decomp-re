@@ -5,12 +5,12 @@
 #include <sys/objdef.h>
 #include <mn/mndef.h>
 
-extern void *gMNNoControllerFiles[/* */];
+extern void *gMNNoControllerFiles[];
 
-extern GObj* mnNoControllerMakeCamera(void);
-extern void mnNoControllerMakeImage(void);
-extern void mnNoControllerFuncStart(void);
-extern void mnNoControllerStartScene(void);
-extern void mnNoControllerSetupFiles(void);
+extern GObj* mnNoControllerMakeCamera();
+extern void mnNoControllerMakeImage();
+extern void mnNoControllerFuncStart();
+extern void mnNoControllerStartScene();
+extern void mnNoControllerSetupFiles();
 
 #endif

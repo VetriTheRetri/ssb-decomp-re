@@ -20,8 +20,8 @@ extern void *gSYSchedulerCurrentFramebuffer;
 //                               //
 // // // // // // // // // // // //
 
-// 0x80134EE0
-u32 dSC1PStageClearFileIDs[/* */] = 
+// 80134EE0
+u32 dSC1PStageClearFileIDs[] = 
 {
 	&llSC1PStageClear1FileID,
 	&llSC1PStageClear2FileID,
@@ -32,8 +32,8 @@ u32 dSC1PStageClearFileIDs[/* */] =
 	&llGRWallpaperTrainingBlackFileID
 };
 
-// 0x80134EFC
-SC1PStageClearScore dSC1PStageClearBonusData[/* */] =
+// 80134EFC
+SC1PStageClearScore dSC1PStageClearBonusData[] =
 {
 	// Cheap Shot
 	{ &llSC1PStageClear1CheapShotTextSprite, -99 },
@@ -414,10 +414,10 @@ SC1PStageClearScore dSC1PStageClearBonusData[/* */] =
 #endif
 };
 
-// 0x801350D0
+// 801350D0
 Lights1 dSC1PStageClearLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
 
-// 0x801350E8
+// 801350E8
 Lights1 dSC1PStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // // // // // // // // // // // //
@@ -426,10 +426,10 @@ Lights1 dSC1PStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 //                               //
 // // // // // // // // // // // //
 
-// 0x801352C0
+// 801352C0
 u32 sSC1PStageClearPad0x801352C0[3];
 
-// 0x801352CC
+// 801352CC
 u32 sSC1PStageClearTotalTimeTics;
 
 // 0x801352D0 - Set once, never used
@@ -441,37 +441,37 @@ s32 sSC1PStageClearKind;
 // 0x801352D8 - Whether player earned any special bonuses
 sb32 sSC1PStageClearIsHaveBonusStats;
 
-// 0x801352DC
+// 801352DC
 s32 sSC1PStageClearSecondsRemain;
 
-// 0x801352E0
+// 801352E0
 s32 sSC1PStageClearDamageDealt;
 
-// 0x801352E4
+// 801352E4
 s32 sSC1PStageClearDifficulty;
 
-// 0x801352E8
+// 801352E8
 s32 sSC1PStageClearScoreTotal;
 
 // 0x801352EC - Stage that the player just cleared / failed
 s32 sSC1PStageClear1PGameStage;
 
-// 0x801352F0
+// 801352F0
 s32 sSC1PStageClearPad0x801352F0[2];
 
 // 0x801352F8 - GObj of "Timer" and "Damage" scores
 GObj *sSC1PStageClearTimerTextGObj;
 
-// 0x801352FC
+// 801352FC
 GObj *sSC1PStageClearTimerMultiplierGObj;
 
-// 0x80135300
+// 80135300
 GObj *sSC1PStageClearDamageTextGObj;
 
-// 0x80135304
+// 80135304
 GObj *sSC1PStageClearDamageMultiplierGObj;
 
-// 0x80135308
+// 80135308
 s32 sSC1PStageClearPad0x80135308[2];
 
 // 0x80135310 - GObj of "SCORE" text
@@ -480,85 +480,85 @@ GObj *sSC1PStageClearScoreTextGObj;
 // 0x80135314 - GObj of "- BONUS -" text
 GObj *sSC1PStageClearBonusTextGObj;
 
-// 0x80135318
+// 80135318
 GObj *sSC1PStageClearTargetGObj;
 
-// 0x8013531C
+// 8013531C
 s32 sSC1PStageClearPad0x8013531C;
 
-// 0x80135320
+// 80135320
 u32 sSC1PStageClearBonusFlags[3];
 
-// 0x8013532C
+// 8013532C
 s32 sSC1PStageClearBonusID;
 
-// 0x80135330
+// 80135330
 s32 sSC1PStageClearBonusNum;
 
-// 0x80135334
+// 80135334
 s32 sSC1PStageClearIsSetCommonAdvanceTic;
 
-// 0x80135338
+// 80135338
 sb32 sSC1PStageClearIsAdvance;
 
-// 0x8013533C
+// 8013533C
 s32 sSC1PStageClearIsAllowProceedNext;
 
-// 0x80135340
+// 80135340
 u32 sSC1PStageClearCommonAdvanceTic;
 
-// 0x80135344
+// 80135344
 u32 sSC1PStageClearBonusShowNextTic;
 
-// 0x80135348
+// 80135348
 u32 sSC1PStageClearBonusAdvanceTic;
 
-// 0x80135350
+// 80135350
 GObj *sSC1PStageClearBonusStatGObjs[10];
 
 // 0x80135378 - GObjs of target or platform sprites?
 GObj *sSC1PStageClearBonusObjectiveGObjs[10];
 
-// 0x801353A0
+// 801353A0
 u32 sSC1PStageClearBaseIntervalTic;
 
-// 0x801353A4
+// 801353A4
 s32 sSC1PStageClearBonusObjectivesCleared;
 
-// 0x801353A8
+// 801353A8
 s32 sSC1PStageClearTimerTextTic;
 
-// 0x801353AC
+// 801353AC
 s32 sSC1PStageClearTimerDigitTic;
 
-// 0x801353B0
+// 801353B0
 s32 sSC1PStageClearTimerMultiplierTic;
 
-// 0x801353B4
+// 801353B4
 s32 sSC1PStageClearTimerEjectTic;
 
-// 0x801353B8
+// 801353B8
 s32 sSC1PStageClearDamageTextTic;
 
-// 0x801353BC
+// 801353BC
 s32 sSC1PStageClearDamageDigitTic;
 
-// 0x801353C0
+// 801353C0
 s32 sSC1PStageClearDamageMultiplierTic;
 
-// 0x801353C4
+// 801353C4
 s32 sSC1PStageClearDamageEjectTic;
 
-// 0x801353C8
+// 801353C8
 s32 sSC1PStageClearPad0x801353C8[2];
 
-// 0x801353D0
+// 801353D0
 LBFileNode sSC1PStageClearStatusBuffer[48];
 
-// 0x80135550
+// 80135550
 LBFileNode sSC1PStageClearForceStatusBuffer[7];
 
-// 0x80135588
+// 80135588
 void *sSC1PStageClearFiles[ARRAY_COUNT(dSC1PStageClearFileIDs)];
 
 // // // // // // // // // // // //
@@ -567,14 +567,14 @@ void *sSC1PStageClearFiles[ARRAY_COUNT(dSC1PStageClearFileIDs)];
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131B00
+// 80131B00
 void sc1PStageClearFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 0x80131B58
+// 80131B58
 s32 sc1PStageClearGetPowerOf(s32 base, s32 exp)
 {
 	s32 raised = base;
@@ -594,11 +594,11 @@ s32 sc1PStageClearGetPowerOf(s32 base, s32 exp)
 	return raised;
 }
 
-// 0x80131BF8
+// 80131BF8
 void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, SYColorRGBPair *colors_base)
 {
-	// 0x80135100
-	SYColorRGBPair colors_all[/* */] =
+// 80135100
+	SYColorRGBPair colors_all[] =
 	{
 		// Damage / Timer digits
 		{
@@ -643,7 +643,7 @@ void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, SYColorRGBPa
 	}
 }
 
-// 0x80131CC4
+// 80131CC4
 s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
 	s32 digit_count_curr = digit_count_max;
@@ -661,14 +661,14 @@ s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 	return 0;
 }
 
-// 0x80131D70
+// 80131D70
 Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit)
 {
-	// 0x80135114
-	s32 file_array_ids[/* */] = { 0, 4, 2 };
+// 80135114
+	s32 file_array_ids[] = { 0, 4, 2 };
 
-	// 0x80135120
-	intptr_t offsets[/* */][3] =
+// 80135120
+	intptr_t offsets[][3] =
 	{
 		{ &llSC1PStageClear1TimerDamageDigit0Sprite, &llIFCommonDigits0Sprite, &llIFCommonPlayerDamageDigit0Sprite },
 		{ &llSC1PStageClear1TimerDamageDigit1Sprite, &llIFCommonDigits1Sprite, &llIFCommonPlayerDamageDigit1Sprite },
@@ -690,7 +690,7 @@ Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit)
 	);
 }
 
-// 0x80131E10
+// 80131E10
 void sc1PStageClearMakeScoreDigits
 (
 	GObj *gobj,
@@ -762,7 +762,7 @@ void sc1PStageClearMakeScoreDigits
 	}
 }
 
-// 0x801320E0
+// 801320E0
 void sc1PStageClearTextProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -770,8 +770,8 @@ void sc1PStageClearTextProcDisplay(GObj *gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
-// 0x8013213C
-void sc1PStageClearMakeTextSObjs(void)
+// 8013213C
+void sc1PStageClearMakeTextSObjs()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -862,8 +862,8 @@ void sc1PStageClearMakeTextSObjs(void)
 	sobj->pos.y = 67.0F;
 }
 
-// 0x801323F8
-void sc1PStageClearMakeScoreSObjs(void)
+// 801323F8
+void sc1PStageClearMakeScoreSObjs()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -890,7 +890,7 @@ void sc1PStageClearMakeScoreSObjs(void)
 	sc1PStageClearMakeScoreDigits(gobj, sSC1PStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
 }
 
-// 0x801324FC
+// 801324FC
 void sc1PStageClearMakeTimerTextSObjs(f32 y)
 {
 	GObj *gobj;
@@ -934,7 +934,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 }
 
-// 0x8013263C
+// 8013263C
 void sc1PStageClearMakeTimerDigits(f32 y)
 {
 	GObj *gobj;
@@ -988,7 +988,7 @@ void sc1PStageClearMakeTimerDigits(f32 y)
 	sc1PStageClearMakeScoreDigits(gobj, sSC1PStageClearSecondsRemain, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
 }
 
-// 0x801327D4
+// 801327D4
 s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 {
 	GObj *gobj;
@@ -1026,7 +1026,7 @@ s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 	return time_score_total;
 }
 
-// 0x801328CC
+// 801328CC
 void sc1PStageClearMakeDamageTextSObjs(f32 y)
 {
 	GObj *gobj;
@@ -1071,7 +1071,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 }
 
-// 0x80132A20
+// 80132A20
 void sc1PStageClearMakeDamageDigits(f32 y)
 {
 	GObj *gobj;
@@ -1105,7 +1105,7 @@ void sc1PStageClearMakeDamageDigits(f32 y)
 	sc1PStageClearMakeScoreDigits(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
 }
 
-// 0x80132BB4
+// 80132BB4
 s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 {
 	GObj *gobj;
@@ -1123,8 +1123,8 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 	return damage_score_total;
 }
 
-// 0x80132C80
-void sc1PStageClearMakeTargetTextSObjs(void)
+// 80132C80
+void sc1PStageClearMakeTargetTextSObjs()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1168,7 +1168,7 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 	func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 }
 
-// 0x80132DC0
+// 80132DC0
 void func_ovl56_80132DC0(GObj *gobj)
 {
 	gobj->flags = (gobj->user_data.u < sSC1PStageClearTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
@@ -1182,7 +1182,7 @@ void func_ovl56_80132DC0(GObj *gobj)
 	}
 }
 
-// 0x80132E40
+// 80132E40
 void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 {
 	GObj *gobj;
@@ -1212,8 +1212,8 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	sobj->pos.y = y;
 }
 
-// 0x80132F78
-void func_ovl56_80132F78(void)
+// 80132F78
+void func_ovl56_80132F78()
 {
 	s32 i = 0;
 
@@ -1230,7 +1230,7 @@ void func_ovl56_80132F78(void)
 	}
 }
 
-// 0x80132FF8
+// 80132FF8
 SC1PStageClearStats* sc1PStageClearSetupBonusStats(SC1PStageClearStats *bonus_setup, s32 bonus_id)
 {
 	SC1PStageClearStats bonus;
@@ -1255,8 +1255,8 @@ SC1PStageClearStats* sc1PStageClearSetupBonusStats(SC1PStageClearStats *bonus_se
 	return bonus_setup;
 }
 
-// 0x8013305C
-sb32 sc1PStageClearCheckHaveBonusStats(void)
+// 8013305C
+sb32 sc1PStageClearCheckHaveBonusStats()
 {
 	s32 unused[3];
 	SC1PStageClearStats bonus;
@@ -1277,7 +1277,7 @@ sb32 sc1PStageClearCheckHaveBonusStats(void)
 	}
 }
 
-// 0x801330F0
+// 801330F0
 sb32 sc1PStageClearCheckGameClearBonus(s32 bonus_id)
 {
 	switch (bonus_id)
@@ -1294,16 +1294,16 @@ sb32 sc1PStageClearCheckGameClearBonus(s32 bonus_id)
 	}
 }
 
-// 0x80133128
+// 80133128
 s32 sc1PStageClearGetNoMissMultiplier(s32 stage)
 {
 	// 0x80135198 - "No Miss" bonus multiplier
-	s32 nomiss[/* */] = { 1, 2, 3, 0, 4, 5, 6, 0, 7, 8, 9, 0, 10, 11 };
+	s32 nomiss[] = { 1, 2, 3, 0, 4, 5, 6, 0, 7, 8, 9, 0, 10, 11 };
 
 	return nomiss[stage];
 }
 
-// 0x80133188
+// 80133188
 void sc1PStageClearCommonProcUpdate(GObj *gobj)
 {
 	if (gobj->user_data.u == sSC1PStageClearTotalTimeTics)
@@ -1313,15 +1313,15 @@ void sc1PStageClearCommonProcUpdate(GObj *gobj)
 	gobj->flags = (gobj->user_data.u < sSC1PStageClearTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
-// 0x801331EC
+// 801331EC
 s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
 	s32 points;
 
-	// 0x801351D0
-	intptr_t offsets[/* */] =
+// 801351D0
+	intptr_t offsets[] =
 	{
 		&llSC1PStageClear1VeryEasyClearTextSprite,
 		&llSC1PStageClear1EasyClearTextSprite,
@@ -1330,7 +1330,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 		&llSC1PStageClear1VeryHardClearTextSprite
 	};
 
-	// 0x801351E4
+// 801351E4
 	SYColorRGBPair colors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
 
 	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
@@ -1410,8 +1410,8 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	return points;
 }
 
-// 0x801335A0
-void sc1PStageClearMakeBonusPageArrow(void)
+// 801335A0
+void sc1PStageClearMakeBonusPageArrow()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1432,7 +1432,7 @@ void sc1PStageClearMakeBonusPageArrow(void)
 	sobj->pos.y = 176.0F;
 }
 
-// 0x80133668
+// 80133668
 sb32 sc1PStageClearCheckHaveBonusStatID(s32 bonus_id)
 {
 	SC1PStageClearStats bonus;
@@ -1451,8 +1451,8 @@ sb32 sc1PStageClearCheckHaveBonusStatID(s32 bonus_id)
 	return FALSE;
 }
 
-// 0x801336F8
-s32 sc1PStageClearGetUpdateBonusStatPointsAll(void)
+// 801336F8
+s32 sc1PStageClearGetUpdateBonusStatPointsAll()
 {
 	s32 unused[2];
 	s32 i;
@@ -1496,8 +1496,8 @@ s32 sc1PStageClearGetUpdateBonusStatPointsAll(void)
 	}
 }
 
-// 0x801338A0
-void sc1PStageClearMakeBonusTable(void)
+// 801338A0
+void sc1PStageClearMakeBonusTable()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1538,7 +1538,7 @@ void sc1PStageClearMakeBonusTable(void)
 	sobj->pos.y = 72.0F;
 }
 
-// 0x801339C0
+// 801339C0
 void sc1PStageClearWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1553,8 +1553,8 @@ void sc1PStageClearWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80133AC0
-void sc1PStageClearMakeWallpaper(void)
+// 80133AC0
+void sc1PStageClearMakeWallpaper()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1578,8 +1578,8 @@ void sc1PStageClearMakeWallpaper(void)
 	sobj->pos.y = 10.0F;
 }
 
-// 0x80133B48
-void sc1PStageClearMakeTextCamera(void)
+// 80133B48
+void sc1PStageClearMakeTextCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1603,8 +1603,8 @@ void sc1PStageClearMakeTextCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80133BE8
-void sc1PStageClearMakeWallpaperCamera(void)
+// 80133BE8
+void sc1PStageClearMakeWallpaperCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1628,8 +1628,8 @@ void sc1PStageClearMakeWallpaperCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80133C88
-void sc1PStageClearInitVars(void)
+// 80133C88
+void sc1PStageClearInitVars()
 {
 	s32 i;
 
@@ -1708,21 +1708,21 @@ void sc1PStageClearInitVars(void)
 	}
 }
 
-// 0x80133EEC
-void sc1PStageClearUpdateTotal1PGameScore(void)
+// 80133EEC
+void sc1PStageClearUpdateTotal1PGameScore()
 {
 	gSCManagerSceneData.spgame_score = sSC1PStageClearScoreTotal;
 }
 
-// 0x80133F00
-void sc1PStageClearUpdateBonusScore(void)
+// 80133F00
+void sc1PStageClearUpdateBonusScore()
 {
 	sc1PStageClearMakeScoreSObjs();
 	func_800269C0_275C0(nSYAudioFGMScoreDisplayBonus);
 }
 
-// 0x80133F28
-sb32 sc1PStageClearCheckNoTimer(void)
+// 80133F28
+sb32 sc1PStageClearCheckNoTimer()
 {
 	if (gSCManagerSceneData.spgame_time_limit == SCBATTLE_TIMELIMIT_INFINITE)
 	{
@@ -1731,8 +1731,8 @@ sb32 sc1PStageClearCheckNoTimer(void)
 	else return FALSE;
 }
 
-// 0x80133F50
-void sc1PStageUpdateBonusStatAll(void)
+// 80133F50
+void sc1PStageUpdateBonusStatAll()
 {
 	s32 i;
 
@@ -1771,8 +1771,8 @@ void sc1PStageUpdateBonusStatAll(void)
 	}
 }
 
-// 0x8013407C
-void sc1PStageClearUpdateGameClearScore(void)
+// 8013407C
+void sc1PStageClearUpdateGameClearScore()
 {
 	s32 unused;
 	f32 y;
@@ -1859,7 +1859,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 }
 
 // 0x80134340 - ??? Exactly the same as the function above ???
-void sc1PStageClearUpdateStageClearScore(void)
+void sc1PStageClearUpdateStageClearScore()
 {
 	s32 unused;
 	f32 y;
@@ -1943,8 +1943,8 @@ void sc1PStageClearUpdateStageClearScore(void)
 	}
 }
 
-// 0x80134604
-void sc1PStageClearUpdateResultScore(void)
+// 80134604
+void sc1PStageClearUpdateResultScore()
 {
 	s32 i;
 
@@ -2075,7 +2075,7 @@ void sc1PStageClearUpdateResultScore(void)
 	}
 }
 
-// 0x801349F0
+// 801349F0
 void sc1PStageClearFuncRun(GObj *gobj)
 {
 	sSC1PStageClearTotalTimeTics++;
@@ -2115,8 +2115,8 @@ void sc1PStageClearFuncRun(GObj *gobj)
 	}
 }
 
-// 0x80134AF4
-void sc1PStageClearCopyFramebufToWallpaper(void)
+// 80134AF4
+void sc1PStageClearCopyFramebufToWallpaper()
 {
 	s32 i, j;
 	u32 *framebuffer_pixels;
@@ -2161,8 +2161,8 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 	}
 }
 
-// 0x80134CC4
-void sc1PStageClearFuncStart(void)
+// 80134CC4
+void sc1PStageClearFuncStart()
 {
 	s32 unused;
 	LBRelocSetup rl_setup;
@@ -2217,56 +2217,56 @@ void sc1PStageClearFuncStart(void)
 	}
 }
 
-// 0x801351EC
+// 801351EC
 SYVideoSetup dGM1PStageClearVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x80135208
+// 80135208
 SYTaskmanSetup dGM1PStageClearTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                          // ???
-        gcRunAll,              		// Update function
-        gcDrawAll,                  // Frame draw function
-        &ovl56_BSS_END,             // Allocatable memory pool start
-        0,                          // Allocatable memory pool size
-        1,                          // ???
-        2,                          // Number of contexts?
-        sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
-        sizeof(Gfx) * 512,          // Display List Buffer 1 Size
-        0,                          // Display List Buffer 2 Size
-        0,                          // Display List Buffer 3 Size
-        0x8000,                     // Graphics Heap Size
-        2,                          // ???
-        0xC000,                     // RDP Output Buffer Size
-        sc1PStageClearFuncLights,   // Pre-render function
-        syControllerFuncRead,       // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                          // ???
+		gcRunAll,              		// Update function
+		gcDrawAll,                  // Frame draw function
+		&ovl56_BSS_END,             // Allocatable memory pool start
+		0,                          // Allocatable memory pool size
+		1,                          // ???
+		2,                          // Number of contexts?
+		sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
+		sizeof(Gfx) * 512,          // Display List Buffer 1 Size
+		0,                          // Display List Buffer 2 Size
+		0,                          // Display List Buffer 3 Size
+		0x8000,                     // Graphics Heap Size
+		2,                          // ???
+		0xC000,                     // RDP Output Buffer Size
+		sc1PStageClearFuncLights,   // Pre-render function
+		syControllerFuncRead,       // Controller I/O function
+	},
 
-    0,                              // Number of GObjThreads
-    sizeof(u64) * 192,              // Thread stack size
-    0,                              // Number of thread stacks
-    0,                              // ???
-    0,                              // Number of GObjProcesses
-    0,                              // Number of GObjs
-    sizeof(GObj),                   // GObj size
-    0,                              // Number of XObjs
-    dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // DObjVec eject function
-    0,                              // Number of AObjs
-    0,                              // Number of MObjs
-    0,                              // Number of DObjs
-    sizeof(DObj),                   // DObj size
-    0,                              // Number of SObjs
-    sizeof(SObj),                   // SObj size
-    0,                              // Number of CObjs
-    sizeof(CObj),                 	// CObj size
-    
-    sc1PStageClearFuncStart         // Task start function
+	0,                              // Number of GObjThreads
+	sizeof(u64) * 192,              // Thread stack size
+	0,                              // Number of thread stacks
+	0,                              // ???
+	0,                              // Number of GObjProcesses
+	0,                              // Number of GObjs
+	sizeof(GObj),                   // GObj size
+	0,                              // Number of XObjs
+	dLBCommonFuncMatrixList,        // Matrix function list
+	NULL,                           // DObjVec eject function
+	0,                              // Number of AObjs
+	0,                              // Number of MObjs
+	0,                              // Number of DObjs
+	sizeof(DObj),                   // DObj size
+	0,                              // Number of SObjs
+	sizeof(SObj),                   // SObj size
+	0,                              // Number of CObjs
+	sizeof(CObj),                 	// CObj size
+	
+	sc1PStageClearFuncStart         // Task start function
 };
 
-// 0x80134E84
-void sc1PStageClearStartScene(void)
+// 80134E84
+void sc1PStageClearStartScene()
 {
 	dGM1PStageClearVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dGM1PStageClearVideoSetup);

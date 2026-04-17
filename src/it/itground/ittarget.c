@@ -1,7 +1,7 @@
 #include <it/item.h>
 #include <sc/scene.h>
 
-// 0x8018F130
+// 8018F130
 ITDesc dITTargetItemDesc =
 {
 	nITKindTarget,						// Item Kind
@@ -26,7 +26,7 @@ ITDesc dITTargetItemDesc =
 	itTargetCommonProcDamage			// Proc Damage
 };
 
-// 0x8018EE10
+// 8018EE10
 sb32 itTargetCommonProcDamage(GObj* item_gobj)
 {
 	efManagerShieldBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
@@ -39,7 +39,7 @@ sb32 itTargetCommonProcDamage(GObj* item_gobj)
 	return TRUE;
 }
 
-// 0x8018EE5C
+// 8018EE5C
 GObj* itTargetMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
 	GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITTargetItemDesc, pos, vel, flags);

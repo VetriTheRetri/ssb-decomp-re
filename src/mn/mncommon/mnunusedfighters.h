@@ -9,7 +9,7 @@
 extern void mnUnusedFightersFuncLights(Gfx **dls);
 extern void mnUnusedFightersTimeProcUpdate(GObj *gobj);
 extern void mnUnusedFightersFuncRun(GObj *gobj);
-extern void mnUnusedFightersFuncStart(void);
-extern void mnUnusedFightersStartScene(void);
+extern void mnUnusedFightersFuncStart();
+extern void mnUnusedFightersStartScene();
 
 #endif

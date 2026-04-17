@@ -26,7 +26,7 @@
 #define FTDONKEY_SPINNINGKONG_FALLSPECIAL_DRIFT 1.0F
 #define FTDONKEY_SPINNINGKONG_LANDING_LAG 0.3F
 
-extern FTStatusDesc dFTDonkeySpecialStatusDescs[/* */];
+extern FTStatusDesc dFTDonkeySpecialStatusDescs[];
 
 extern void *gFTDataDonkeyMain;
 extern void *gFTDataDonkeyMainMotion;

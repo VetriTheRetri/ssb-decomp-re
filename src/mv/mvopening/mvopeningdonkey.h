@@ -5,23 +5,23 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvOpeningDonkeySetupFiles(void);
+extern void mvOpeningDonkeySetupFiles();
 extern void mvOpeningDonkeyInitName(SObj *sobj);
-extern void mvOpeningDonkeyMakeName(void);
+extern void mvOpeningDonkeyMakeName();
 extern void mvOpeningDonkeyMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningDonkeyMakeMotionCamera(Vec3f move);
-extern void mvOpeningDonkeyMakeMotionWindow(void);
+extern void mvOpeningDonkeyMakeMotionWindow();
 extern void mvOpeningDonkeyPosedWallpaperProcDisplay(GObj *gobj);
-extern void mvOpeningDonkeyMakePosedWallpaper(void);
+extern void mvOpeningDonkeyMakePosedWallpaper();
 extern void mvOpeningDonkeyPosedFighterProcUpdate(GObj *fighter_gobj);
-extern void mvOpeningDonkeyMakePosedFighter(void);
-extern void mvOpeningDonkeyMakeNameCamera(void);
-extern void mvOpeningDonkeyMakePosedFighterCamera(void);
-extern void mvOpeningDonkeyMakePosedWallpaperCamera(void);
+extern void mvOpeningDonkeyMakePosedFighter();
+extern void mvOpeningDonkeyMakeNameCamera();
+extern void mvOpeningDonkeyMakePosedFighterCamera();
+extern void mvOpeningDonkeyMakePosedWallpaperCamera();
 extern void mvOpeningDonkeyFuncRun(GObj *gobj);
-extern void mvOpeningDonkeyInitVars(void);
-extern void mvOpeningDonkeyFuncStart(void);
+extern void mvOpeningDonkeyInitVars();
+extern void mvOpeningDonkeyFuncStart();
 extern void mvOpeningDonkeyFuncLights(Gfx **dls);
-extern void mvOpeningDonkeyStartScene(void);
+extern void mvOpeningDonkeyStartScene();
 
 #endif

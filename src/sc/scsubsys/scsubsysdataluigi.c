@@ -71,20 +71,20 @@ s32 D_ovl1_803917B4[] =
 
 FTMotionDesc dFTLuigiSubMotionDescs[] =
 {
-    &llFTLuigiAnimEggLayFileID, D_ovl1_80391724, 0x00000000,
-    &llFTLuigiAnimSelectedFileID,  D_ovl1_80391754, 0x00000004,
-    &llFTLuigiAnimWin1FileID,  D_ovl1_80391798, 0x00000004,
-    &llFTLuigiAnimWin2FileID,  0x80000000,       0x00000004,
-    &llFTLuigiAnimWin2FileID,  D_ovl1_803917A0,  0x00000004,
-    &llFTMarioAnimClapsFileID,  0x80000000,       0x00000000,
-    0x00000000,      0x80000000,       0x00000000,
-    0x00000000,      0x80000000,       0x00000000,
-    0x00000000,      0x80000000,       0x00000000,
-    &llFTLuigiAnimDollFallFileID,  0x80000000,       0x40000004,
-    &llFTLuigiAnimDollRevivalFileID,  0x80000000,       0x40000004,
-    0x00000000,      0x80000000,       0x00000000,
-    0x00000000,      0x80000000,       0x00000000,
-    &llFTLuigiAnimPosePlayerFileID,  0x80000000,       0x00000004,
-    &llFTLuigiAnimPoseEnemyFileID,  D_ovl1_803917B4,  0x00000004
+	&llFTLuigiAnimEggLayFileID, D_ovl1_80391724, 0x00000000,
+	&llFTLuigiAnimSelectedFileID,  D_ovl1_80391754, 0x00000004,
+	&llFTLuigiAnimWin1FileID,  D_ovl1_80391798, 0x00000004,
+	&llFTLuigiAnimWin2FileID,  0x80000000,       0x00000004,
+	&llFTLuigiAnimWin2FileID,  D_ovl1_803917A0,  0x00000004,
+	&llFTMarioAnimClapsFileID,  0x80000000,       0x00000000,
+	0x00000000,      0x80000000,       0x00000000,
+	0x00000000,      0x80000000,       0x00000000,
+	0x00000000,      0x80000000,       0x00000000,
+	&llFTLuigiAnimDollFallFileID,  0x80000000,       0x40000004,
+	&llFTLuigiAnimDollRevivalFileID,  0x80000000,       0x40000004,
+	0x00000000,      0x80000000,       0x00000000,
+	0x00000000,      0x80000000,       0x00000000,
+	&llFTLuigiAnimPosePlayerFileID,  0x80000000,       0x00000004,
+	&llFTLuigiAnimPoseEnemyFileID,  D_ovl1_803917B4,  0x00000004
 };
 s32 dFTLuigiSubMotionDescsCount = sizeof(dFTLuigiSubMotionDescs)/sizeof(FTMotionDesc); // 0x0000000F

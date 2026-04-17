@@ -17,14 +17,14 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E090
+// 8018E090
 CObjDesc dMVOpeningFoxCObjDescStart = { { -400.0F, 320.0F, 100.0F }, { 0.0F, 320.0F, 0.0F }, 0.0F };
 
-// 0x8018E0AC
+// 8018E0AC
 CObjDesc dMVOpeningFoxCObjDescEnd = { { -3000.0F, 300.0F, 250.0F }, { 0.0F, 300.0F,-200.0F }, 0.7F };
 
-// 0x8018E0C8
-FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
+// 8018E0C8
+FTKeyEvent dMVOpeningFoxKeyEvents[] =
 {
 	FTKEY_EVENT_STICK(-50, 0, 1),     // 2001, CE00
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
@@ -34,8 +34,8 @@ FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
 	FTKEY_EVENT_END()                 // 0000
 };
 
-// 0x8018E0E0
-u32 dMVOpeningFoxFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+// 8018E0E0
+u32 dMVOpeningFoxFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -43,49 +43,49 @@ u32 dMVOpeningFoxFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpenin
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E1F0
+// 8018E1F0
 s32 sMVOpeningFoxPad0x8018E1F0[2];
 
-// 0x8018E1F8
+// 8018E1F8
 s32 sMVOpeningFoxTotalTimeTics;
 
-// 0x8018E1FC
+// 8018E1FC
 GObj *sMVOpeningFoxNameGObj;
 
-// 0x8018E200
+// 8018E200
 GObj *sMVOpeningFoxFighterGObj;
 
-// 0x8018E204
+// 8018E204
 s32 sMVOpeningFoxPad0x8018E204;
 
-// 0x8018E208
+// 8018E208
 GObj *sMVOpeningFoxStageCameraGObj;
 
-// 0x8018E20C
+// 8018E20C
 void *sMVOpeningFoxFigatreeHeap;
 
-// 0x8018E210
+// 8018E210
 f32 sMVOpeningFoxPosedFighterSpeed;
 
-// 0x8018E214
+// 8018E214
 s32 sMVOpeningFoxPad0x8018E214;
 
-// 0x8018E218
+// 8018E218
 CObjDesc sMVOpeningFoxAdjustedStartCObjDesc;
 
-// 0x8018E238
+// 8018E238
 CObjDesc sMVOpeningFoxAdjustedEndCObjDesc;
 
-// 0x8018E258
+// 8018E258
 LBFileNode sMVOpeningFoxStatusBuffer[48];
 
-// 0x8018E3D8
+// 8018E3D8
 LBFileNode sMVOpeningFoxForceStatusBuffer[7];
 
-// 0x8018E410
+// 8018E410
 void *sMVOpeningFoxFiles[ARRAY_COUNT(dMVOpeningFoxFileIDs)];
 
-// 0x8018E418
+// 8018E418
 SCBattleState sMVOpeningFoxBattleState;
 
 // // // // // // // // // // // //
@@ -94,8 +94,8 @@ SCBattleState sMVOpeningFoxBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018D0C0
-void mvOpeningFoxSetupFiles(void)
+// 8018D0C0
+void mvOpeningFoxSetupFiles()
 {
 	LBRelocSetup rl_setup;
 
@@ -112,7 +112,7 @@ void mvOpeningFoxSetupFiles(void)
 	lbRelocLoadFilesListed(dMVOpeningFoxFileIDs, sMVOpeningFoxFiles);
 }
 
-// 0x8018D160
+// 8018D160
 void mvOpeningFoxInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -127,20 +127,20 @@ void mvOpeningFoxInitName(SObj *sobj)
 	sobj->sprite.blue = 0xFF;
 }
 
-// 0x8018D194
-void mvOpeningFoxMakeName(void)
+// 8018D194
+void mvOpeningFoxMakeName()
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonAnnounceCommonLetterFSprite,
 		&llIFCommonAnnounceCommonLetterOSprite,
 		&llIFCommonAnnounceCommonLetterXSprite,
 		0x0
 	};
-	Vec2f pos[/* */] =
+	Vec2f pos[] =
 	{
 		{  0.0F, 0.0F },
 		{ 30.0F, 0.0F },
@@ -165,7 +165,7 @@ void mvOpeningFoxMakeName(void)
 	}
 }
 
-// 0x8018D314
+// 8018D314
 void mvOpeningFoxMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -182,7 +182,7 @@ void mvOpeningFoxMotionCameraProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x8018D40C
+// 8018D40C
 void mvOpeningFoxMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
@@ -223,8 +223,8 @@ void mvOpeningFoxMakeMotionCamera(Vec3f move)
 	cobj->vec.up.x = sMVOpeningFoxAdjustedStartCObjDesc.upx;
 }
 
-// 0x8018D61C
-void mvOpeningFoxMakeMotionWindow(void)
+// 8018D61C
+void mvOpeningFoxMakeMotionWindow()
 {
 	GObj *fighter_gobj;
 	s32 i;
@@ -282,7 +282,7 @@ void mvOpeningFoxMakeMotionWindow(void)
 	}
 }
 
-// 0x8018D84C
+// 8018D84C
 void mvOpeningFoxPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -295,8 +295,8 @@ void mvOpeningFoxPosedWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x8018D94C
-void mvOpeningFoxMakePosedWallpaper(void)
+// 8018D94C
+void mvOpeningFoxMakePosedWallpaper()
 {
 	gcAddGObjDisplay
 	(
@@ -314,7 +314,7 @@ void mvOpeningFoxMakePosedWallpaper(void)
 	);
 }
 
-// 0x8018D998
+// 8018D998
 void mvOpeningFoxPosedFighterProcUpdate(GObj *fighter_gobj)
 {
 	switch (sMVOpeningFoxTotalTimeTics)
@@ -345,8 +345,8 @@ void mvOpeningFoxPosedFighterProcUpdate(GObj *fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningFoxPosedFighterSpeed;
 }
 
-// 0x8018DA68
-void mvOpeningFoxMakePosedFighter(void)
+// 8018DA68
+void mvOpeningFoxMakePosedFighter()
 {
 	GObj *fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -368,8 +368,8 @@ void mvOpeningFoxMakePosedFighter(void)
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 0x8018DB68
-void mvOpeningFoxMakeNameCamera(void)
+// 8018DB68
+void mvOpeningFoxMakeNameCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -392,8 +392,8 @@ void mvOpeningFoxMakeNameCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x8018DC08
-void mvOpeningFoxMakePosedFighterCamera(void)
+// 8018DC08
+void mvOpeningFoxMakePosedFighterCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -421,8 +421,8 @@ void mvOpeningFoxMakePosedFighterCamera(void)
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x8018DCF0
-void mvOpeningFoxMakePosedWallpaperCamera(void)
+// 8018DCF0
+void mvOpeningFoxMakePosedWallpaperCamera()
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -447,7 +447,7 @@ void mvOpeningFoxMakePosedWallpaperCamera(void)
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 0x8018DD98
+// 8018DD98
 void mvOpeningFoxFuncRun(GObj *gobj)
 {
 	sMVOpeningFoxTotalTimeTics++;
@@ -474,14 +474,14 @@ void mvOpeningFoxFuncRun(GObj *gobj)
 	}
 }
 
-// 0x8018DE54
-void mvOpeningFoxInitVars(void)
+// 8018DE54
+void mvOpeningFoxInitVars()
 {
 	sMVOpeningFoxTotalTimeTics = 0;
 }
 
-// 0x8018DE60
-void mvOpeningFoxFuncStart(void)
+// 8018DE60
+void mvOpeningFoxFuncStart()
 {
 	sMVOpeningFoxBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningFoxBattleState;
@@ -522,63 +522,63 @@ void mvOpeningFoxFuncStart(void)
 	}
 }
 
-// 0x8018DFE0
+// 8018DFE0
 void mvOpeningFoxFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E110
+// 8018E110
 SYVideoSetup dMVOpeningFoxVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E12C
+// 8018E12C
 SYTaskmanSetup dMVOpeningFoxTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                              // ???
-        gcRunAll,                 	 	// Update function
-        scManagerFuncDraw,              // Frame draw function
-        &ovl39_BSS_END,                 // Allocatable memory pool start
-        0,                              // Allocatable memory pool size
-        1,                              // ???
-        2,                              // Number of contexts?
-        sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
-        sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
-        0,                              // Display List Buffer 2 Size
-        0,                              // Display List Buffer 3 Size
-        0x8000,                         // Graphics Heap Size
-        2,                              // ???
-        0xC000,                         // RDP Output Buffer Size
-        mvOpeningFoxFuncLights,    		// Pre-render function
-        syControllerFuncRead,           // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                              // ???
+		gcRunAll,                 	 	// Update function
+		scManagerFuncDraw,              // Frame draw function
+		&ovl39_BSS_END,                 // Allocatable memory pool start
+		0,                              // Allocatable memory pool size
+		1,                              // ???
+		2,                              // Number of contexts?
+		sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
+		sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
+		0,                              // Display List Buffer 2 Size
+		0,                              // Display List Buffer 3 Size
+		0x8000,                         // Graphics Heap Size
+		2,                              // ???
+		0xC000,                         // RDP Output Buffer Size
+		mvOpeningFoxFuncLights,    		// Pre-render function
+		syControllerFuncRead,           // Controller I/O function
+	},
 
-    0,                                  // Number of GObjThreads
-    sizeof(u64) * 192,                  // Thread stack size
-    0,                                  // Number of thread stacks
-    0,                                  // ???
-    0,                                  // Number of GObjProcesses
-    0,                                  // Number of GObjs
-    sizeof(GObj),                       // GObj size
-    0,                                  // Number of XObjs
-    dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // DObjVec eject function
-    0,                                  // Number of AObjs
-    0,                                  // Number of MObjs
-    0,                                  // Number of DObjs
-    sizeof(DObj),                       // DObj size
-    0,                                  // Number of SObjs
-    sizeof(SObj),                       // SObj size
-    0,                                  // Number of CObjs
-    sizeof(CObj),                       // Camera size
-    
-    mvOpeningFoxFuncStart          		// Task start function
+	0,                                  // Number of GObjThreads
+	sizeof(u64) * 192,                  // Thread stack size
+	0,                                  // Number of thread stacks
+	0,                                  // ???
+	0,                                  // Number of GObjProcesses
+	0,                                  // Number of GObjs
+	sizeof(GObj),                       // GObj size
+	0,                                  // Number of XObjs
+	dLBCommonFuncMatrixList,            // Matrix function list
+	NULL,                               // DObjVec eject function
+	0,                                  // Number of AObjs
+	0,                                  // Number of MObjs
+	0,                                  // Number of DObjs
+	sizeof(DObj),                       // DObj size
+	0,                                  // Number of SObjs
+	sizeof(SObj),                       // SObj size
+	0,                                  // Number of CObjs
+	sizeof(CObj),                       // Camera size
+	
+	mvOpeningFoxFuncStart          		// Task start function
 };
 
-// 0x8018E02C
-void mvOpeningFoxStartScene(void)
+// 8018E02C
+void mvOpeningFoxStartScene()
 {
 	dMVOpeningFoxVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningFoxVideoSetup);

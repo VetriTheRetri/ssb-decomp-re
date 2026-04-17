@@ -8,14 +8,14 @@
 extern sb32 gFTMainIsDamageDetect[4];
 extern sb32 gFTMainIsAttackDetect[4];
 
-extern Gfx dFTDisplayMainHurtCollisionCuboidDL[/* */];
-extern Gfx dFTDisplayMainHitCollisionEdgeDL[/* */];
-extern Gfx dFTDisplayMainHitCollisionBlendDL[/* */];
-extern Gfx dFTDisplayMainHitCollisionCubeDL[/* */];
-extern Gfx dFTDisplayMainMapCollisionBottomDL[/* */];
-extern Gfx dFTDisplayMainMapCollisionTopDL[/* */];
+extern Gfx dFTDisplayMainHurtCollisionCuboidDL[];
+extern Gfx dFTDisplayMainHitCollisionEdgeDL[];
+extern Gfx dFTDisplayMainHitCollisionBlendDL[];
+extern Gfx dFTDisplayMainHitCollisionCubeDL[];
+extern Gfx dFTDisplayMainMapCollisionBottomDL[];
+extern Gfx dFTDisplayMainMapCollisionTopDL[];
 
-extern FTOpeningDesc *D_ovl1_80390D20[/* */];
+extern FTOpeningDesc *D_ovl1_80390D20[];
 extern FTOpeningDesc D_ovl1_80390BE8;
 
 #define ftGetStruct(fighter_gobj) 	((FTStruct*)(fighter_gobj)->user_data.p)

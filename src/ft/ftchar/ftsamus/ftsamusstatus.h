@@ -3,8 +3,8 @@
 
 #include <ft/fighter.h>
 
-// 0x8012A41C
-FTStatusDesc dFTSamusSpecialStatusDescs[/* */] = 
+// 8012A41C
+FTStatusDesc dFTSamusSpecialStatusDescs[] = 
 {
 	// Status 220 (0xDC): AppearR
 	{

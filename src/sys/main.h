@@ -8,6 +8,6 @@ extern OSMesgQueue gSYMainThreadingMesgQueue;
 extern u64 gSYMainRspBootCode[0x20];
 extern OSThread gSYMainThread5;
 
-extern void syMainVerifyStackProbes(void);
+extern void syMainVerifyStackProbes();
 
 #endif /* SYS_MAIN_H */

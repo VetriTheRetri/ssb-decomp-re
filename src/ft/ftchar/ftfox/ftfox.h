@@ -24,7 +24,7 @@
 #define FTFOX_REFLECTOR_GRAVITY_DELAY 4                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
-extern FTStatusDesc dFTFoxSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTFoxSpecialStatusDescs[];
 
 extern void *gFTDataFoxMain;
 extern void *gFTDataFoxMainMotion;
@@ -37,92 +37,92 @@ extern s32 gFTDataFoxParticleBankID;
 
 typedef enum ftFoxMotion
 {
-    nFTFoxMotionAttack100Start = nFTCommonMotionSpecialStart,
-    nFTFoxMotionAttack100Loop,
-    nFTFoxMotionAttack100End,
-    nFTFoxMotionAppearR,
-    nFTFoxMotionAppearL,
-    nFTFoxMotionSpecialN,
-    nFTFoxMotionSpecialAirN,
-    nFTFoxMotionSpecialHiStart,
-    nFTFoxMotionSpecialAirHiStart,
-    nFTFoxMotionSpecialHiHold,
-    nFTFoxMotionSpecialAirHiHold,
-    nFTFoxMotionSpecialHi,
-    nFTFoxMotionSpecialAirHi,
-    nFTFoxMotionSpecialHiEnd,
-    nFTFoxMotionSpecialAirHiEnd,
-    nFTFoxMotionSpecialAirHiBound,
-    nFTFoxMotionSpecialLwStart,
-    nFTFoxMotionSpecialLwLoop,
-    nFTFoxMotionSpecialLwHit,
-    nFTFoxMotionSpecialLwEnd,
-    nFTFoxMotionSpecialAirLwStart,
-    nFTFoxMotionSpecialAirLwLoop,
-    nFTFoxMotionSpecialAirLwHit,
-    nFTFoxMotionSpecialAirLwEnd
+	nFTFoxMotionAttack100Start = nFTCommonMotionSpecialStart,
+	nFTFoxMotionAttack100Loop,
+	nFTFoxMotionAttack100End,
+	nFTFoxMotionAppearR,
+	nFTFoxMotionAppearL,
+	nFTFoxMotionSpecialN,
+	nFTFoxMotionSpecialAirN,
+	nFTFoxMotionSpecialHiStart,
+	nFTFoxMotionSpecialAirHiStart,
+	nFTFoxMotionSpecialHiHold,
+	nFTFoxMotionSpecialAirHiHold,
+	nFTFoxMotionSpecialHi,
+	nFTFoxMotionSpecialAirHi,
+	nFTFoxMotionSpecialHiEnd,
+	nFTFoxMotionSpecialAirHiEnd,
+	nFTFoxMotionSpecialAirHiBound,
+	nFTFoxMotionSpecialLwStart,
+	nFTFoxMotionSpecialLwLoop,
+	nFTFoxMotionSpecialLwHit,
+	nFTFoxMotionSpecialLwEnd,
+	nFTFoxMotionSpecialAirLwStart,
+	nFTFoxMotionSpecialAirLwLoop,
+	nFTFoxMotionSpecialAirLwHit,
+	nFTFoxMotionSpecialAirLwEnd
 
 } ftFoxMotion;
 
 typedef enum ftFoxStatus
 {
-    nFTFoxStatusAttack100Start = nFTCommonStatusSpecialStart,
-    nFTFoxStatusAttack100Loop,
-    nFTFoxStatusAttack100End,
-    nFTFoxStatusAppearR,
-    nFTFoxStatusAppearL,
-    nFTFoxStatusSpecialN,
-    nFTFoxStatusSpecialAirN,
-    nFTFoxStatusSpecialHiStart,
-    nFTFoxStatusSpecialAirHiStart,
-    nFTFoxStatusSpecialHiHold,
-    nFTFoxStatusSpecialAirHiHold,
-    nFTFoxStatusSpecialHi,
-    nFTFoxStatusSpecialAirHi,
-    nFTFoxStatusSpecialHiEnd,
-    nFTFoxStatusSpecialAirHiEnd,
-    nFTFoxStatusSpecialAirHiBound,
+	nFTFoxStatusAttack100Start = nFTCommonStatusSpecialStart,
+	nFTFoxStatusAttack100Loop,
+	nFTFoxStatusAttack100End,
+	nFTFoxStatusAppearR,
+	nFTFoxStatusAppearL,
+	nFTFoxStatusSpecialN,
+	nFTFoxStatusSpecialAirN,
+	nFTFoxStatusSpecialHiStart,
+	nFTFoxStatusSpecialAirHiStart,
+	nFTFoxStatusSpecialHiHold,
+	nFTFoxStatusSpecialAirHiHold,
+	nFTFoxStatusSpecialHi,
+	nFTFoxStatusSpecialAirHi,
+	nFTFoxStatusSpecialHiEnd,
+	nFTFoxStatusSpecialAirHiEnd,
+	nFTFoxStatusSpecialAirHiBound,
 
-    nFTFoxStatusSpecialLwScopeStart,                               // Start of SpecialLw actions
-    nFTFoxStatusSpecialLwStart = nFTFoxStatusSpecialLwScopeStart,
-    nFTFoxStatusSpecialLwHit,
-    nFTFoxStatusSpecialLwEnd,
-    nFTFoxStatusSpecialLwLoop,
-    nFTFoxStatusSpecialLwTurn,
-    nFTFoxStatusSpecialAirLwStart,
-    nFTFoxStatusSpecialAirLwHit,
-    nFTFoxStatusSpecialAirLwEnd,
-    nFTFoxStatusSpecialAirLwLoop,
-    nFTFoxStatusSpecialAirLwTurn,
-    nFTFoxStatusSpecialLwScopeEnd = nFTFoxStatusSpecialAirLwTurn  // End of SpecialLw actions
+	nFTFoxStatusSpecialLwScopeStart,                               // Start of SpecialLw actions
+	nFTFoxStatusSpecialLwStart = nFTFoxStatusSpecialLwScopeStart,
+	nFTFoxStatusSpecialLwHit,
+	nFTFoxStatusSpecialLwEnd,
+	nFTFoxStatusSpecialLwLoop,
+	nFTFoxStatusSpecialLwTurn,
+	nFTFoxStatusSpecialAirLwStart,
+	nFTFoxStatusSpecialAirLwHit,
+	nFTFoxStatusSpecialAirLwEnd,
+	nFTFoxStatusSpecialAirLwLoop,
+	nFTFoxStatusSpecialAirLwTurn,
+	nFTFoxStatusSpecialLwScopeEnd = nFTFoxStatusSpecialAirLwTurn  // End of SpecialLw actions
 
 } ftFoxStatus;
 
 typedef struct ftFoxSpecialHiStatusVars
 {
-    s32 launch_delay;
-    s32 gravity_delay;
-    f32 angle;
-    s32 anim_frames;
-    s32 decelerate_wait;
-    s32 pass_timer;
+	s32 launch_delay;
+	s32 gravity_delay;
+	f32 angle;
+	s32 anim_frames;
+	s32 decelerate_wait;
+	s32 pass_timer;
 
 } ftFoxSpecialHiStatusVars;
 
 typedef struct ftFoxSpecialLwStatusVars
 {
-    s32 release_lag;
-    s32 turn_tics;
-    sb32 is_release;
-    GObj *effect_gobj;
-    s32 gravity_delay;
+	s32 release_lag;
+	s32 turn_tics;
+	sb32 is_release;
+	GObj *effect_gobj;
+	s32 gravity_delay;
 
 } ftFoxSpecialLwStatusVars;
 
 typedef union FTFoxStatusVars
 {
-    ftFoxSpecialHiStatusVars specialhi;
-    ftFoxSpecialLwStatusVars speciallw;
+	ftFoxSpecialHiStatusVars specialhi;
+	ftFoxSpecialLwStatusVars speciallw;
 
 } FTFoxStatusVars;
 

@@ -11,58 +11,58 @@
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E3D0
+// 8018E3D0
 SYColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 0x8018E3D4
+// 8018E3D4
 SYColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 0x8018E3D8
+// 8018E3D8
 SYVideoSetup dSCVSBattleVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E3F4
+// 8018E3F4
 SYTaskmanSetup dSCVSBattleTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                              // ???
-        scVSBattleFuncUpdate,           // Update function
-        scManagerFuncDraw,              // Frame draw function
-        &ovl4_BSS_END,                 	// Allocatable memory pool start
-        0,                              // Allocatable memory pool size
-        1,                              // ???
-        2,                              // Number of contexts?
-        sizeof(Gfx) * 7680,             // Display List Buffer 0 Size
-        sizeof(Gfx) * 2560,             // Display List Buffer 1 Size
-        0,                              // Display List Buffer 2 Size
-        0,                              // Display List Buffer 3 Size
-        0xD000,                         // Graphics Heap Size
-        2,                              // ???
-        0xC000,                         // RDP Output Buffer Size
-        scVSBattleFuncLights,       	// Pre-render function
-        syControllerFuncRead,           // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                              // ???
+		scVSBattleFuncUpdate,           // Update function
+		scManagerFuncDraw,              // Frame draw function
+		&ovl4_BSS_END,                 	// Allocatable memory pool start
+		0,                              // Allocatable memory pool size
+		1,                              // ???
+		2,                              // Number of contexts?
+		sizeof(Gfx) * 7680,             // Display List Buffer 0 Size
+		sizeof(Gfx) * 2560,             // Display List Buffer 1 Size
+		0,                              // Display List Buffer 2 Size
+		0,                              // Display List Buffer 3 Size
+		0xD000,                         // Graphics Heap Size
+		2,                              // ???
+		0xC000,                         // RDP Output Buffer Size
+		scVSBattleFuncLights,       	// Pre-render function
+		syControllerFuncRead,           // Controller I/O function
+	},
 
-    0,                                  // Number of GObjThreads
-    sizeof(u64) * 192,                  // Thread stack size
-    0,                                  // Number of thread stacks
-    0,                                  // ???
-    0,                                  // Number of GObjProcesses
-    0,                                  // Number of GObjs
-    sizeof(GObj),                       // GObj size
-    0,                                  // Number of XObjs
-    dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // DObjVec eject function
-    0,                                  // Number of AObjs
-    0,                                  // Number of MObjs
-    0,                                  // Number of DObjs
-    sizeof(DObj),                       // DObj size
-    0,                                  // Number of SObjs
-    sizeof(SObj),                       // SObj size
-    0,                                  // Number of CObjs
-    sizeof(CObj),                       // Camera size
-    
-    scVSBattleStartBattle             	// Task start function
+	0,                                  // Number of GObjThreads
+	sizeof(u64) * 192,                  // Thread stack size
+	0,                                  // Number of thread stacks
+	0,                                  // ???
+	0,                                  // Number of GObjProcesses
+	0,                                  // Number of GObjs
+	sizeof(GObj),                       // GObj size
+	0,                                  // Number of XObjs
+	dLBCommonFuncMatrixList,            // Matrix function list
+	NULL,                               // DObjVec eject function
+	0,                                  // Number of AObjs
+	0,                                  // Number of MObjs
+	0,                                  // Number of DObjs
+	sizeof(DObj),                       // DObj size
+	0,                                  // Number of SObjs
+	sizeof(SObj),                       // SObj size
+	0,                                  // Number of CObjs
+	sizeof(CObj),                       // Camera size
+	
+	scVSBattleStartBattle             	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -71,8 +71,8 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018D0C0
-void scVSBattleFuncUpdate(void)
+// 8018D0C0
+void scVSBattleFuncUpdate()
 {
 	ifCommonBattleUpdateInterfaceAll();
 }
@@ -121,8 +121,8 @@ s32 scVSBattleGetStartPlayerLR(s32 this_player)
 	return lr;
 }
 
-// 0x8018D228
-void scVSBattleStartBattle(void)
+// 8018D228
+void scVSBattleStartBattle()
 {
 	s32 unused[4];
 	s32 player;
@@ -225,7 +225,7 @@ void scVSBattleStartBattle(void)
 }
 
 // 0x8018D5E0 - Sort time battle winners and check for sudden death
-sb32 scVSBattleSetScoreCheckSuddenDeath(void)
+sb32 scVSBattleSetScoreCheckSuddenDeath()
 {
 	s32 result_count;
 	s32 tied_players;
@@ -410,7 +410,7 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 }
 
 // 0x8018DE20 - Start sudden death
-void scVSBattleStartSuddenDeath(void)
+void scVSBattleStartSuddenDeath()
 {
 	s32 unused[3];
 	GObj *fighter_gobj;
@@ -501,7 +501,7 @@ void scVSBattleStartSuddenDeath(void)
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
-// 0x8018E144
+// 8018E144
 void scVSBattleFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
@@ -509,8 +509,8 @@ void scVSBattleFuncLights(Gfx **dls)
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E190
-void scVSBattleStartScene(void)
+// 8018E190
+void scVSBattleStartScene()
 {
 	gSCManagerBattleState = &gSCManagerTransferBattleState;
 	gSCManagerBattleState->game_type = nSCBattleGameTypeRoyal;

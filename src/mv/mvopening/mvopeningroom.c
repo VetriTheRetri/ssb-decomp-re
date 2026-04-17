@@ -13,8 +13,8 @@
 //                               //
 // // // // // // // // // // // //
 
-// 0x80134A20
-u32 dMVOpeningRoomFileIDs[/* */] =
+// 80134A20
+u32 dMVOpeningRoomFileIDs[] =
 {
 	&llMVCommonFileID,
 	&llMVOpeningRoomTransitionFileID,
@@ -26,10 +26,10 @@ u32 dMVOpeningRoomFileIDs[/* */] =
 	&llMVOpeningRoomWallpaperFileID
 };
 
-// 0x80134A40
+// 80134A40
 Lights1 dMVOpeningRoomLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
 
-// 0x80134A58
+// 80134A58
 Lights1 dMVOpeningRoomLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // // // // // // // // // // // //
@@ -38,112 +38,112 @@ Lights1 dMVOpeningRoomLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0x
 //                               //
 // // // // // // // // // // // //
 
-// 0x80134CD0
+// 80134CD0
 s32 sMVOpeningRoomPad0x80134CD0[2];
 
-// 0x80134CD8
+// 80134CD8
 void *sMVOpeningRoomBossFigatreeHeap;
 
-// 0x80134CDC
+// 80134CDC
 void *sMVOpeningRoomPluckedFigatreeHeap;
 
-// 0x80134CE0
+// 80134CE0
 void *sMVOpeningRoomDroppedFigatreeHeap;
 
-// 0x80134CE4
+// 80134CE4
 s32 sMVOpeningRoomTotalTimeTics;
 
-// 0x80134CE8
+// 80134CE8
 GObj *sMVOpeningRoomMainCameraGObj;
 
-// 0x80134CEC
+// 80134CEC
 GObj *sMVOpeningRoomFighterCameraGObj;
 
-// 0x80134CF0
+// 80134CF0
 GObj *sMVOpeningRoomLogoCameraGObj;
 
-// 0x80134CF4
+// 80134CF4
 GObj *sMVOpeningRoomBossGObj;
 
-// 0x80134CF8
+// 80134CF8
 s32 sMVOpeningRoomPulledFighterKind;
 
-// 0x80134CFC
+// 80134CFC
 GObj *sMVOpeningRoomDroppedFighterKind;
 
-// 0x80134D00
+// 80134D00
 GObj *sMVOpeningRoomLogoGObj;
 
-// 0x80134D04
+// 80134D04
 GObj *sMVOpeningRoomPulledFighterGObj;
 
-// 0x80134D08
+// 80134D08
 GObj *sMVOpeningRoomDroppedFighterGObj;
 
-// 0x80134D0C
+// 80134D0C
 GObj *sMVOpeningRoomGObj;
 
-// 0x80134D10
+// 80134D10
 GObj *sMVOpeningRoomSunlightGObj;
 
-// 0x80134D14
+// 80134D14
 GObj *sMVOpeningRoomDeskGObj;
 
-// 0x80134D18
+// 80134D18
 GObj *sMVOpeningRoomOutsideGObj;
 
-// 0x80134D1C
+// 80134D1C
 GObj *sMVOpeningRoomOutsideHazeGObj;
 
-// 0x80134D20
+// 80134D20
 GObj *sMVOpeningRoomBooksGObj;
 
-// 0x80134D24
+// 80134D24
 GObj *sMVOpeningRoomPencilsGObj;
 
-// 0x80134D28
+// 80134D28
 GObj *sMVOpeningRoomLampGObj;
 
-// 0x80134D2C
+// 80134D2C
 GObj *sMVOpeningRoomTissuesGObj;
 
-// 0x80134D30
+// 80134D30
 GObj *sMVOpeningRoomBossShadowGObj;
 
-// 0x80134D34
+// 80134D34
 s32 sMVOpeningRoomPad0x80134D34;
 
-// 0x80134D38
+// 80134D38
 s32 sMVOpeningRoomOverlayAlpha;
 
-// 0x80134D3C
+// 80134D3C
 GObj *sMVOpeningRoomOverlayGObj;
 
-// 0x80134D40
+// 80134D40
 GObj *sMVOpeningRoomSpotlightGObj;
 
-// 0x80134D44
+// 80134D44
 GObj *sMVOpeningRoomBackgroundGObj;
 
-// 0x80134D48
+// 80134D48
 GObj *sMVOpeningTransitionOutlineGObj;
 
-// 0x80134D4C
+// 80134D4C
 GObj *sMVOpeningTransitionOverlayGObj;
 
-// 0x80134D50
+// 80134D50
 GObj *sMVOpeningRoomCameraGObj;
 
-// 0x80134D54
+// 80134D54
 s32 sMVOpeningRoomUnused0x80134D54;
 
-// 0x80134D58
+// 80134D58
 LBFileNode sMVOpeningRoomStatusBuffer[100];
 
-// 0x80135078
+// 80135078
 LBFileNode sMVOpeningRoomForceStatusBuffer[7];
 
-// 0x801350B0
+// 801350B0
 void *sMVOpeningRoomFiles[ARRAY_COUNT(dMVOpeningRoomFileIDs)];
 
 // // // // // // // // // // // //
@@ -152,14 +152,14 @@ void *sMVOpeningRoomFiles[ARRAY_COUNT(dMVOpeningRoomFileIDs)];
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131B00
+// 80131B00
 void mvOpeningRoomFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 0x80131B58
+// 80131B58
 void mvOpeningRoomBackgroundProcUpdate(GObj *gobj)
 {
 	if (sMVOpeningRoomTotalTimeTics > I_SEC_TO_TICS(18))
@@ -172,8 +172,8 @@ void mvOpeningRoomBackgroundProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x80131BA8
-void mvOpeningRoomMakeBackground(void)
+// 80131BA8
+void mvOpeningRoomMakeBackground()
 {
 	GObj *gobj;
 
@@ -186,8 +186,8 @@ void mvOpeningRoomMakeBackground(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x80131C84
-void mvOpeningRoomMakeSunlight(void)
+// 80131C84
+void mvOpeningRoomMakeSunlight()
 {
 	GObj *gobj;
 
@@ -196,8 +196,8 @@ void mvOpeningRoomMakeSunlight(void)
 	gcAddGObjDisplay(gobj, gcDrawDObjDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80131D08
-void mvOpeningRoomMakeDesk(void)
+// 80131D08
+void mvOpeningRoomMakeDesk()
 {
 	GObj *gobj;
 
@@ -206,8 +206,8 @@ void mvOpeningRoomMakeDesk(void)
 	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80131D80
-void mvOpeningRoomMakeOutside(void)
+// 80131D80
+void mvOpeningRoomMakeOutside()
 {
 	GObj *gobj;
 
@@ -216,8 +216,8 @@ void mvOpeningRoomMakeOutside(void)
 	gcAddGObjDisplay(gobj, gcDrawDObjDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80131E04
-void mvOpeningRoomMakeHaze(void)
+// 80131E04
+void mvOpeningRoomMakeHaze()
 {
 	GObj *gobj;
 
@@ -226,7 +226,7 @@ void mvOpeningRoomMakeHaze(void)
 	gcAddGObjDisplay(gobj, gcDrawDObjDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80131E88
+// 80131E88
 void mvOpeningRoomCommonProcUpdate(GObj *gobj)
 {
 	if (sMVOpeningRoomTotalTimeTics >= 560)
@@ -235,8 +235,8 @@ void mvOpeningRoomCommonProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x80131EBC
-void mvOpeningRoomMakeBooks(void)
+// 80131EBC
+void mvOpeningRoomMakeBooks()
 {
 	GObj *gobj;
 
@@ -248,8 +248,8 @@ void mvOpeningRoomMakeBooks(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x80131F7C
-void mvOpeningRoomMakePencils(void)
+// 80131F7C
+void mvOpeningRoomMakePencils()
 {
 	GObj *gobj;
 
@@ -261,8 +261,8 @@ void mvOpeningRoomMakePencils(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x8013203C
-void mvOpeningRoomMakeLamp(void)
+// 8013203C
+void mvOpeningRoomMakeLamp()
 {
 	GObj *gobj;
 
@@ -274,7 +274,7 @@ void mvOpeningRoomMakeLamp(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x801320FC
+// 801320FC
 void mvOpeningRoomTissuesProcUpdate(GObj *gobj)
 {
 	if (sMVOpeningRoomTotalTimeTics >= 560)
@@ -283,8 +283,8 @@ void mvOpeningRoomTissuesProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x80132130
-void mvOpeningRoomMakeTissues(void)
+// 80132130
+void mvOpeningRoomMakeTissues()
 {
 	GObj *gobj;
 	DObj *dobj;
@@ -298,8 +298,8 @@ void mvOpeningRoomMakeTissues(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x801321F8
-void mvOpeningRoomMakeBoss(void)
+// 801321F8
+void mvOpeningRoomMakeBoss()
 {
 	GObj *fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -337,18 +337,18 @@ void func_ovl34_801322C8(GObj *fighter_gobj)
 }
 
 // 0x80132320 - Unused?
-void func_ovl34_80132320(void)
+void func_ovl34_80132320()
 {
 	return;
 }
 
 // 0x80132328 - Unused?
-void func_ovl34_80132328(void)
+void func_ovl34_80132328()
 {
 	return;
 }
 
-// 0x80132330
+// 80132330
 void mvOpeningRoomMakePulledFighter(s32 fkind)
 {
 	GObj *fighter_gobj;
@@ -371,7 +371,7 @@ void mvOpeningRoomMakePulledFighter(s32 fkind)
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
 
-// 0x80132404
+// 80132404
 void mvOpeningRoomLogoWallpaperProcDisplay(GObj *gobj)
 {
 	if (sMVOpeningRoomTotalTimeTics >= 60)
@@ -396,8 +396,8 @@ void mvOpeningRoomLogoWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80132544
-void mvOpeningRoomMakeLogoWallpaper(void)
+// 80132544
+void mvOpeningRoomMakeLogoWallpaper()
 {
 	GObj *gobj;
 
@@ -406,8 +406,8 @@ void mvOpeningRoomMakeLogoWallpaper(void)
 	gcAddGObjDisplay(gobj, mvOpeningRoomLogoWallpaperProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x801325A4
-void mvOpeningRoomMakeLogo(void)
+// 801325A4
+void mvOpeningRoomMakeLogo()
 {
 	GObj *gobj;
 
@@ -420,8 +420,8 @@ void mvOpeningRoomMakeLogo(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x80132680
-void mvOpeningRoomMakeSnap(void)
+// 80132680
+void mvOpeningRoomMakeSnap()
 {
 	GObj *gobj;
 
@@ -433,8 +433,8 @@ void mvOpeningRoomMakeSnap(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x80132738
-void mvOpeningRoomMakeCloseUpEffect(void)
+// 80132738
+void mvOpeningRoomMakeCloseUpEffect()
 {
 	GObj *gobj;
 
@@ -469,7 +469,7 @@ void mvOpeningRoomMakeCloseUpEffect(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x80132928
+// 80132928
 void mvOpeningRoomMakeDroppedFighter(s32 fkind)
 {
 	GObj *fighter_gobj;
@@ -487,8 +487,8 @@ void mvOpeningRoomMakeDroppedFighter(s32 fkind)
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
 
-// 0x801329F0
-void mvOpeningRoomMakeBossShadow(void)
+// 801329F0
+void mvOpeningRoomMakeBossShadow()
 {
 	GObj *gobj;
 	DObj *dobj;
@@ -501,7 +501,7 @@ void mvOpeningRoomMakeBossShadow(void)
 	gcAddGObjProcess(gobj,gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
-// 0x80132AB0
+// 80132AB0
 void mvOpeningRoomDeskGroundProcUpdate(GObj *gobj)
 {
 	if (sMVOpeningRoomTotalTimeTics > 1060)
@@ -510,8 +510,8 @@ void mvOpeningRoomDeskGroundProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x80132AE4
-void mvOpeningRoomMakeDeskGround(void)
+// 80132AE4
+void mvOpeningRoomMakeDeskGround()
 {
 	GObj *gobj;
 
@@ -524,7 +524,7 @@ void mvOpeningRoomMakeDeskGround(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x80132BB8
+// 80132BB8
 void mvOpeningRoomCloseUpOverlayProcDisplay(GObj *gobj)
 {
 	if (sMVOpeningRoomOverlayAlpha < 0xA0)
@@ -546,8 +546,8 @@ void mvOpeningRoomCloseUpOverlayProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80132CEC
-void mvOpeningRoomMakeCloseUpOverlay(void)
+// 80132CEC
+void mvOpeningRoomMakeCloseUpOverlay()
 {
 	GObj *gobj;
 
@@ -557,8 +557,8 @@ void mvOpeningRoomMakeCloseUpOverlay(void)
 	gcAddGObjDisplay(gobj, mvOpeningRoomCloseUpOverlayProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 0x80132D48
-void mvOpeningRoomMakeCloseUpOverlayCamera(void)
+// 80132D48
+void mvOpeningRoomMakeCloseUpOverlayCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -582,7 +582,7 @@ void mvOpeningRoomMakeCloseUpOverlayCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80132DE8
+// 80132DE8
 void mvOpeningRoomWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -607,8 +607,8 @@ void mvOpeningRoomWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80132F44
-void mvOpeningRoomMakeWallpaper(void)
+// 80132F44
+void mvOpeningRoomMakeWallpaper()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -622,10 +622,10 @@ void mvOpeningRoomMakeWallpaper(void)
 	sobj->pos.y = 10.0F;
 }
 
-// 0x80132FCC
+// 80132FCC
 void mvOpeningRoomSetSpotlightPosition(GObj *gobj, s32 fkind)
 {
-	Vec3f translates[/* */] =
+	Vec3f translates[] =
 	{
 		{ -38.310F,   74.904F, -122.733F },
 		{ -38.870F,   74.904F, -121.776F },
@@ -640,7 +640,7 @@ void mvOpeningRoomSetSpotlightPosition(GObj *gobj, s32 fkind)
 		{   0.000F,    0.000F,    0.000F },
 		{   0.000F,    0.000F,    0.000F }
 	};
-	Vec3f scales[/* */] =
+	Vec3f scales[] =
 	{
 		{ 1.00F, 1.00F, 1.00F },
 		{ 1.10F, 1.00F, 1.10F },
@@ -664,8 +664,8 @@ void mvOpeningRoomSetSpotlightPosition(GObj *gobj, s32 fkind)
 	DObjGetStruct(gobj)->scale.vec.f.z = scales[fkind].z;
 }
 
-// 0x801330B8
-void mvOpeningRoomMakeSpotlight(void)
+// 801330B8
+void mvOpeningRoomMakeSpotlight()
 {
 	GObj *gobj;
 
@@ -681,8 +681,8 @@ void mvOpeningRoomMakeSpotlight(void)
 	mvOpeningRoomSetSpotlightPosition(gobj, sMVOpeningRoomPulledFighterKind);
 }
 
-// 0x801331B0
-void mvOpeningRoomEjectRoomGObjs(void)
+// 801331B0
+void mvOpeningRoomEjectRoomGObjs()
 {
 	gcEjectGObj(sMVOpeningRoomOutsideGObj);
 	gcEjectGObj(sMVOpeningRoomOutsideHazeGObj);
@@ -692,7 +692,7 @@ void mvOpeningRoomEjectRoomGObjs(void)
 	gcEjectGObj(sMVOpeningRoomTissuesGObj);
 }
 
-// 0x80133210
+// 80133210
 void mvOpeningRoomInitScene1Cameras(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -708,8 +708,8 @@ void mvOpeningRoomInitScene1Cameras(GObj *gobj)
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
 }
 
-// 0x801332BC
-void mvOpeningRoomMakeScene1Cameras(void)
+// 801332BC
+void mvOpeningRoomMakeScene1Cameras()
 {
 	GObj *gobj;
 
@@ -752,7 +752,7 @@ void mvOpeningRoomMakeScene1Cameras(void)
 	mvOpeningRoomInitScene1Cameras(gobj);
 }
 
-// 0x801333DC
+// 801333DC
 void mvOpeningRoomInitScene2Cameras(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -764,8 +764,8 @@ void mvOpeningRoomInitScene2Cameras(GObj *gobj)
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
 }
 
-// 0x80133470
-void mvOpeningRoomMakeScene2Cameras(void)
+// 80133470
+void mvOpeningRoomMakeScene2Cameras()
 {
 	GObj *gobj;
 
@@ -808,7 +808,7 @@ void mvOpeningRoomMakeScene2Cameras(void)
 	mvOpeningRoomInitScene2Cameras(gobj);
 }
 
-// 0x80133590
+// 80133590
 void mvOpeningRoomInitScene3Cameras(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -833,8 +833,8 @@ void mvOpeningRoomInitScene3Cameras(GObj *gobj)
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
 }
 
-// 0x801336A8
-void mvOpeningRoomMakeScene3Cameras(void)
+// 801336A8
+void mvOpeningRoomMakeScene3Cameras()
 {
 	GObj *main_camera_gobj;
 	GObj *fighter_camera_gobj;
@@ -878,7 +878,7 @@ void mvOpeningRoomMakeScene3Cameras(void)
 	mvOpeningRoomInitScene3Cameras(fighter_camera_gobj);
 }
 
-// 0x801337C8
+// 801337C8
 void mvOpeningRoomInitScene4Cameras(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -903,8 +903,8 @@ void mvOpeningRoomInitScene4Cameras(GObj *gobj)
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x801338D4
-void mvOpeningRoomMakeScene4Cameras(void)
+// 801338D4
+void mvOpeningRoomMakeScene4Cameras()
 {
 	GObj *main_camera_gobj;
 	GObj *fighter_camera_gobj;
@@ -946,8 +946,8 @@ void mvOpeningRoomMakeScene4Cameras(void)
 	mvOpeningRoomInitScene4Cameras(fighter_camera_gobj);
 }
 
-// 0x801339CC
-void mvOpeningRoomMakeWallpaperCamera(void)
+// 801339CC
+void mvOpeningRoomMakeWallpaperCamera()
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -971,8 +971,8 @@ void mvOpeningRoomMakeWallpaperCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x80133A6C
-void mvOpeningRoomMakeLogoCamera(void)
+// 80133A6C
+void mvOpeningRoomMakeLogoCamera()
 {
 	GObj *gobj;
 	CObj *cobj;
@@ -1000,7 +1000,7 @@ void mvOpeningRoomMakeLogoCamera(void)
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x80133B58
+// 80133B58
 void mvOpeningRoomTransitionOverlayProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1018,7 +1018,7 @@ void mvOpeningRoomTransitionOverlayProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80133CEC
+// 80133CEC
 void mvOpeningRoomTransitionOutlineProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1040,8 +1040,8 @@ void mvOpeningRoomTransitionOutlineProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x80133EFC
-void mvOpeningRoomMakeTransition(void)
+// 80133EFC
+void mvOpeningRoomMakeTransition()
 {
 	GObj *gobj;
 	DObj *dobj;
@@ -1063,8 +1063,8 @@ void mvOpeningRoomMakeTransition(void)
 	gcPlayAnimAll(gobj);
 }
 
-// 0x8013407C
-void mvOpeningRoomMakeTransitionCamera(void)
+// 8013407C
+void mvOpeningRoomMakeTransitionCamera()
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1101,17 +1101,17 @@ void mvOpeningRoomMakeTransitionCamera(void)
 	cobj->projection.persp.far = 16384.0F;
 }
 
-// 0x80134184
-void mvOpeningRoomEjectCameraGObjs(void)
+// 80134184
+void mvOpeningRoomEjectCameraGObjs()
 {
 	gcEjectGObj(sMVOpeningRoomMainCameraGObj);
 	gcEjectGObj(sMVOpeningRoomFighterCameraGObj);
 }
 
-// 0x801341B4
-s32 mvOpeningRoomGetDroppedFighterKind(void)
+// 801341B4
+s32 mvOpeningRoomGetDroppedFighterKind()
 {
-	s32 fkinds[/* */] =
+	s32 fkinds[] =
 	{
 		nFTKindMario,
 		nFTKindFox,
@@ -1130,10 +1130,10 @@ s32 mvOpeningRoomGetDroppedFighterKind(void)
 	return fkind;
 }
 
-// 0x80134270
-s32 mvOpeningRoomGetPulledFighterKind(void)
+// 80134270
+s32 mvOpeningRoomGetPulledFighterKind()
 {
-	s32 fkinds[/* */] =
+	s32 fkinds[] =
 	{
 		nFTKindMario,
 		nFTKindFox,
@@ -1148,15 +1148,15 @@ s32 mvOpeningRoomGetPulledFighterKind(void)
 	return fkinds[syUtilsRandTimeUCharRange(ARRAY_COUNT(fkinds))];
 }
 
-// 0x801342E4
-void mvOpeningRoomInitVars(void)
+// 801342E4
+void mvOpeningRoomInitVars()
 {
 	sMVOpeningRoomTotalTimeTics = 0;
 	sMVOpeningRoomPulledFighterKind = mvOpeningRoomGetPulledFighterKind();
 	sMVOpeningRoomDroppedFighterKind = mvOpeningRoomGetDroppedFighterKind();
 }
 
-// 0x80134318
+// 80134318
 sb32 mvOpeningRoomCheckSetFramebuffer(SYTaskGfx *arg)
 {
 	s32 i;
@@ -1194,7 +1194,7 @@ sb32 mvOpeningRoomCheckSetFramebuffer(SYTaskGfx *arg)
 	else return FALSE;
 }
 
-// 0x80134400
+// 80134400
 void mvOpeningRoomFuncRun(GObj *gobj)
 {
 	sMVOpeningRoomTotalTimeTics++;
@@ -1303,8 +1303,8 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 	}
 }
 
-// 0x80134788
-void mvOpeningRoomFuncStart(void)
+// 80134788
+void mvOpeningRoomFuncStart()
 {
 	s32 unused;
 	LBRelocSetup rl_setup;
@@ -1360,56 +1360,56 @@ void mvOpeningRoomFuncStart(void)
 	gSCManagerUnkown0x800A50F0 = 0;
 }
 
-// 0x80134BD0
+// 80134BD0
 SYVideoSetup dMVOpeningRoomVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x80134BEC
+// 80134BEC
 SYTaskmanSetup dMVOpeningRoomTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                              // ???
-        gcRunAll,                       // Update function
-        scManagerFuncDraw,              // Frame draw function
-        &ovl34_BSS_END,                 // Allocatable memory pool start
-        0,                              // Allocatable memory pool size
-        1,                              // ???
-        2,                              // Number of contexts?
-        sizeof(Gfx) * 1500,             // Display List Buffer 0 Size
-        sizeof(Gfx) * 512,             	// Display List Buffer 1 Size
-        0,                              // Display List Buffer 2 Size
-        0,                              // Display List Buffer 3 Size
-        0x8000,                         // Graphics Heap Size
-        2,                              // ???
-        0xC000,                         // RDP Output Buffer Size
-        mvOpeningRoomFuncLights,      	// Pre-render function
-        syControllerFuncRead,           // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                              // ???
+		gcRunAll,                       // Update function
+		scManagerFuncDraw,              // Frame draw function
+		&ovl34_BSS_END,                 // Allocatable memory pool start
+		0,                              // Allocatable memory pool size
+		1,                              // ???
+		2,                              // Number of contexts?
+		sizeof(Gfx) * 1500,             // Display List Buffer 0 Size
+		sizeof(Gfx) * 512,             	// Display List Buffer 1 Size
+		0,                              // Display List Buffer 2 Size
+		0,                              // Display List Buffer 3 Size
+		0x8000,                         // Graphics Heap Size
+		2,                              // ???
+		0xC000,                         // RDP Output Buffer Size
+		mvOpeningRoomFuncLights,      	// Pre-render function
+		syControllerFuncRead,           // Controller I/O function
+	},
 
-    0,                                  // Number of GObjThreads
-    sizeof(u64) * 192,                  // Thread stack size
-    0,                                  // Number of thread stacks
-    0,                                  // ???
-    0,                                  // Number of GObjProcesses
-    0,                                  // Number of GObjs
-    sizeof(GObj),                       // GObj size
-    0,                                  // Number of XObjs
-    dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // DObjVec eject function
-    0,                                  // Number of AObjs
-    0,                                  // Number of MObjs
-    0,                                  // Number of DObjs
-    sizeof(DObj),                       // DObj size
-    0,                                  // Number of SObjs
-    sizeof(SObj),                       // SObj size
-    0,                                  // Number of CObjs
-    sizeof(CObj),                       // Camera size
-    
-    mvOpeningRoomFuncStart            	// Task start function
+	0,                                  // Number of GObjThreads
+	sizeof(u64) * 192,                  // Thread stack size
+	0,                                  // Number of thread stacks
+	0,                                  // ???
+	0,                                  // Number of GObjProcesses
+	0,                                  // Number of GObjs
+	sizeof(GObj),                       // GObj size
+	0,                                  // Number of XObjs
+	dLBCommonFuncMatrixList,            // Matrix function list
+	NULL,                               // DObjVec eject function
+	0,                                  // Number of AObjs
+	0,                                  // Number of MObjs
+	0,                                  // Number of DObjs
+	sizeof(DObj),                       // DObj size
+	0,                                  // Number of SObjs
+	sizeof(SObj),                       // SObj size
+	0,                                  // Number of CObjs
+	sizeof(CObj),                       // Camera size
+	
+	mvOpeningRoomFuncStart            	// Task start function
 };
 
-// 0x801349BC
-void mvOpeningRoomStartScene(void)
+// 801349BC
+void mvOpeningRoomStartScene()
 {
 	dMVOpeningRoomVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningRoomVideoSetup);

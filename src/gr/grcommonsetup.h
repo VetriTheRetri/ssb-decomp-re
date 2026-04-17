@@ -5,8 +5,8 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
-extern GObj *gGRCommonLayerGObjs[/* */];
+extern GObj *gGRCommonLayerGObjs[];
 
-extern void grCommonSetupInitAll(void);
+extern void grCommonSetupInitAll();
 
 #endif

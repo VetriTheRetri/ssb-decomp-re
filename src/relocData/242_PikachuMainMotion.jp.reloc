@@ -1,2 +1,71 @@
-# Relocation metadata for file 242 (JP variant)
-# JP build compiles PikachuMainMotion as a single raw u8 blob.
+# Relocation metadata for file 242 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/242_PikachuMainMotion.reloc .o symbol table
+
+intern dPikachuMainMotion_0x0010+0x4 dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0010+0x10 dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0010+0x1C dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0010+0x28 dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0010+0x34 dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0010+0x40 dPikachuMainMotion_0x0010
+intern dPikachuMainMotion_0x0080+0x3C dPikachuMainMotion_0x0080
+intern dPikachuMainMotion_0x01D8+0x4 dPikachuMainMotion_0x01CC
+intern dPikachuMainMotion_0x01E4+0x4 dPikachuMainMotion_0x01CC
+intern dPikachuMainMotion_0x0210+0x4 dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0228+0x4 dPikachuMainMotion_0x0000
+intern dPikachuMainMotion_0x0288+0x4 dPikachuMainMotion_0x0240
+intern dPikachuMainMotion_0x02C8+0x4 dPikachuMainMotion_0x02B0
+intern dPikachuMainMotion_0x02D0+0x8 dPikachuMainMotion_0x0290
+intern dPikachuMainMotion_0x02E0+0x4 dPikachuMainMotion_0x02D0
+intern dPikachuMainMotion_0x02E0+0xC dPikachuMainMotion_0x02D0
+intern dPikachuMainMotion_0x02E0+0x14 dPikachuMainMotion_0x02D0
+intern dPikachuMainMotion_0x042C+0x4 dPikachuMainMotion_0x03EC
+intern dPikachuMainMotion_0x0690+0x8 dPikachuMainMotion_0x0674
+intern dPikachuMainMotion_0x06F4+0x8 dPikachuMainMotion_0x06D4
+intern dPikachuMainMotion_0x075C+0x8 dPikachuMainMotion_0x0740
+intern dPikachuMainMotion_0x07C0+0x8 dPikachuMainMotion_0x07A0
+intern dPikachuMainMotion_0x0818+0x8 dPikachuMainMotion_0x080C
+intern dPikachuMainMotion_0x0830+0x8 dPikachuMainMotion_0x0824
+intern dPikachuMainMotion_0x0B10+0x1C dPikachuMainMotion_0x0B10
+intern dPikachuMainMotion_0x0B30+0x38 dPikachuMainMotion_0x0B30
+intern dPikachuMainMotion_0x0B30+0x58 dPikachuMainMotion_0x0B30
+intern dPikachuMainMotion_0x0B30+0x60 dPikachuMainMotion_0x0B30
+intern dPikachuMainMotion_0x0BC0+0x2C dPikachuMainMotion_0x0BC0
+intern dPikachuMainMotion_0x0BF0+0x24 dPikachuMainMotion_0x0BF0
+intern dPikachuMainMotion_0x0C50+0x4 dPikachuMainMotion_0x0C18
+intern dPikachuMainMotion_0x0CC0+0x8 dPikachuMainMotion_0x0C88
+intern dPikachuMainMotion_0x0D54+0x8 dPikachuMainMotion_0x0D1C
+intern dPikachuMainMotion_0x0DF4+0x4 dPikachuMainMotion_0x01CC
+intern dPikachuMainMotion_0x0E08+0x4 dPikachuMainMotion_0x01CC
+intern dPikachuMainMotion_0x10B0+0x4 dPikachuMainMotion_0x108C
+intern dPikachuMainMotion_0x158C+0x8 dPikachuMainMotion_0x1574+0x4
+intern dPikachuMainMotion_0x1668+0x78 dPikachuMainMotion_0x15F0+0x28
+intern dPikachuMainMotion_0x16E4+0x4 dPikachuMainMotion_0x162C+0x4
+intern dPikachuMainMotion_0x16F0 dPikachuMainMotion_0x1644+0x10
+intern dPikachuMainMotion_0x16F0+0x8 dPikachuMainMotion_0x1668+0x68
+intern dPikachuMainMotion_0x1730+0xC dPikachuMainMotion_0x16F0+0xC
+intern dPikachuMainMotion_0x1730+0x14 dPikachuMainMotion_0x1710+0x8
+
+extern dPikachuMainMotion_0x01E4+0xC 0x758
+extern dPikachuMainMotion_0x0830+0x20 0x0
+extern dPikachuMainMotion_0x0870+0x14 0x64
+extern dPikachuMainMotion_0x08A4+0x18 0xC8
+extern dPikachuMainMotion_0x08DC+0x14 0x12C
+extern dPikachuMainMotion_0x0910+0xC 0x1A0
+extern dPikachuMainMotion_0x0934+0xC 0x1F4
+extern dPikachuMainMotion_0x0958+0x18 0x248
+extern dPikachuMainMotion_0x0988+0xC 0x2B0
+extern dPikachuMainMotion_0x09AC+0xC 0x324
+extern dPikachuMainMotion_0x09D0+0xC 0x378
+extern dPikachuMainMotion_0x09F4+0xC 0x3CC
+extern dPikachuMainMotion_0x0A18+0xC 0x430
+extern dPikachuMainMotion_0x0A3C+0x10 0x494
+extern dPikachuMainMotion_0x0A64+0x10 0x4F8
+extern dPikachuMainMotion_0x0A94+0x14 0x55C
+extern dPikachuMainMotion_0x0AC8+0x10 0x5C0
+extern dPikachuMainMotion_0x0B10+0xC 0x634
+extern dPikachuMainMotion_0x0DD0+0x4 0x6AC
+extern dPikachuMainMotion_0x0DDC+0x4 0x6C4
+extern dPikachuMainMotion_0x0DE8+0x4 0x6CC
+extern dPikachuMainMotion_0x0DF4+0xC 0x6F0
+extern dPikachuMainMotion_0x0E08+0xC 0x70C

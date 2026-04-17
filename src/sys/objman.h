@@ -21,44 +21,44 @@ extern GObjProcess *gGCCurrentProcess;
 extern OSMesgQueue gGCMesgQueue;
 extern GCGfxLink gGCFrameQueueGfxLinks[64];
 
-// 0x8003B878
+// 8003B878
 extern GCPersp dGCPerspDefault;
 
-// 0x8003B984
+// 8003B984
 extern GCOrtho dGCOrthoDefault;
 
-// 0x8003B8B4
+// 8003B8B4
 extern CObjVec dGCCObjVecDefault;
 
-// 0x8003B8DC
+// 8003B8DC
 extern GCTranslate dGCTranslateDefault;
 
-// 0x8003B8EC
+// 8003B8EC
 extern GCRotate dGCRotateDefaultAXYZ;
 
-// 0x8003B900
+// 8003B900
 extern GCRotate dGCRotateDefaultRpy;
 
-// 0x8003B914
+// 8003B914
 extern GCScale dGCScaleDefault;
 
-extern s32 gcGetGObjsActiveNum(void);
-extern GObjThread* gcGetGObjThread(void);
+extern s32 gcGetGObjsActiveNum();
+extern GObjThread* gcGetGObjThread();
 extern void gcSetGObjThreadPrevAlloc(GObjThread *gobjthread);
 extern GObjStack* gcGetGObjStackOfSize(size_t size);
-extern GObjStack* gcGetDefaultGObjStack(void);
+extern GObjStack* gcGetDefaultGObjStack();
 extern void gcEjectGObjStack(GObjStack *node);
-extern GObjProcess* gcGetGObjProcess(void);
+extern GObjProcess* gcGetGObjProcess();
 extern void gcLinkGObjProcess(GObjProcess *gobjproc);
 extern void gcSetGObjProcessPrevAlloc(GObjProcess *gobjproc);
 extern void func_80007784(GObjProcess *gobjproc);
 extern void func_800077D0(GObjProcess *gobjproc);
-extern GObjProcess *unref_80007840(void);
+extern GObjProcess *unref_80007840();
 extern u64* gcGetGObjProcessThreadStack(GObjProcess *gobjproc);
 extern u32 unref_80007884(GObjProcess *gobjproc);
 extern void unref_800078BC(void (*proc)(GObjProcess *));
-extern s32 gcGetGObjsActiveNum(void);
-extern GObj* gcGetGObjSetNextAlloc(void);
+extern s32 gcGetGObjsActiveNum();
+extern GObj* gcGetGObjSetNextAlloc();
 extern void gcSetGObjPrevAlloc(GObj *gobj);
 extern void gcLinkGObjAfter(GObj *this_gobj, GObj *link_gobj);
 extern void gcLinkGObjSPAfter(GObj *this_gobj);
@@ -68,20 +68,20 @@ extern void gcAppendGObjToDLLinkedList(GObj *this_gobj, GObj *dl_link_gobj);
 extern void gcDLLinkGObjTail(GObj *this_gobj);
 extern void gcDLLinkGObjHead(GObj *this_gobj);
 extern void gcRemoveGObjFromDLLinkedList(GObj *this_gobj);
-extern XObj* gcGetXObjSetNextAlloc(void);
+extern XObj* gcGetXObjSetNextAlloc();
 extern void gcSetXObjPrevAlloc(XObj *xobj);
-extern AObj* gcGetAObjSetNextAlloc(void);
+extern AObj* gcGetAObjSetNextAlloc();
 extern void gcAppendAObjToDObj(DObj *dobj, AObj *aobj);
 extern void gcAppendAObjToMObj(MObj *mobj, AObj *aobj);
 extern void gcAppendAObjToCamera(CObj *cobj, AObj *aobj);
 extern void gcSetAObjPrevAlloc(AObj *aobj);
-extern MObj* gcGetMObjSetNextAlloc(void);
+extern MObj* gcGetMObjSetNextAlloc();
 extern void gcSetMObjPrevAlloc(MObj *mobj);
-extern DObj* gcGetDObjSetNextAlloc(void);
+extern DObj* gcGetDObjSetNextAlloc();
 extern void gcSetDObjPrevAlloc(DObj *dobj);
-extern SObj* gcGetSObjSetNextAlloc(void);
+extern SObj* gcGetSObjSetNextAlloc();
 extern void gcSetSObjPrevAlloc(SObj *sobj);
-extern CObj* gcGetCObjSetNextAlloc(void);
+extern CObj* gcGetCObjSetNextAlloc();
 extern void gcSetCObjPrevAlloc(CObj *cobj);
 extern GObjProcess* gcAddGObjProcess(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 pri);
 extern GObjProcess *unref_80008304(GObj *gobj, void (*proc)(GObj*), u32 pri, s32 thread_id, u32 stack_size);
@@ -136,11 +136,11 @@ extern void unref_8000A280(GObj *gobj, u32 priority);
 extern void func_8000A2B4(GObj *this_gobj, GObj *other_gobj);
 extern void unref_8000A2EC(GObj *this_gobj, GObj *other_gobj);
 extern void gcSetMaxNumGObj(s32 num);
-extern s16 gcGetMaxNumGObj(void);
-extern void gcDrawAll(void);
+extern s16 gcGetMaxNumGObj();
+extern void gcDrawAll();
 extern GObj *gcRunGObj(GObj *gobj);
 extern GObjProcess *gcRunGObjProcess(GObjProcess *gobjproc);
-extern void gcRunAll(void);
+extern void gcRunAll();
 extern void gcSetupObjman(GCSetup *setup);
 
 #endif

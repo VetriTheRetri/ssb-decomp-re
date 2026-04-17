@@ -15,7 +15,7 @@
 #define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F     // Not sure how this takes effect
 #define FTYOSHI_YOSHIBOMB_VEL_Y_CLAMP -150.0F   // Constant downward velocity during ground pound
 
-extern FTStatusDesc dFTYoshiSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTYoshiSpecialStatusDescs[];
 
 extern void *gFTDataYoshiMain;
 extern void *gFTDataYoshiMainMotion;
@@ -26,61 +26,61 @@ extern s32 gFTDataYoshiParticleBankID;
 
 typedef enum ftYoshiMotion
 {
-    // ID for SpecialAirLwLoop not required?
+	// ID for SpecialAirLwLoop not required?
 
-    nFTYoshiMotionAppearR = nFTCommonMotionSpecialStart,
-    nFTYoshiMotionAppearL,
-    nFTYoshiMotionSpecialHi,
-    nFTYoshiMotionSpecialAirHi,
-    nFTYoshiMotionSpecialLwStart,
-    nFTYoshiMotionSpecialLwLanding,
-    nFTYoshiMotionSpecialAirLwStart,
-    nFTYoshiMotionSpecialN,
-    nFTYoshiMotionSpecialNCatch,
-    nFTYoshiMotionSpecialNRelease,
-    nFTYoshiMotionSpecialAirN,
-    nFTYoshiMotionSpecialAirNCatch,
-    nFTYoshiMotionSpecialAirNRelease
+	nFTYoshiMotionAppearR = nFTCommonMotionSpecialStart,
+	nFTYoshiMotionAppearL,
+	nFTYoshiMotionSpecialHi,
+	nFTYoshiMotionSpecialAirHi,
+	nFTYoshiMotionSpecialLwStart,
+	nFTYoshiMotionSpecialLwLanding,
+	nFTYoshiMotionSpecialAirLwStart,
+	nFTYoshiMotionSpecialN,
+	nFTYoshiMotionSpecialNCatch,
+	nFTYoshiMotionSpecialNRelease,
+	nFTYoshiMotionSpecialAirN,
+	nFTYoshiMotionSpecialAirNCatch,
+	nFTYoshiMotionSpecialAirNRelease
 
 } ftYoshiMotion;
 
 typedef enum ftYoshiStatus
 {
-    nFTYoshiStatusAppearR = nFTCommonStatusSpecialStart,
-    nFTYoshiStatusAppearL,
-    nFTYoshiStatusSpecialHi,
-    nFTYoshiStatusSpecialAirHi,
-    nFTYoshiStatusSpecialLwStart,
-    nFTYoshiStatusSpecialLwLanding,
-    nFTYoshiStatusSpecialAirLwStart,
-    nFTYoshiStatusSpecialAirLwLoop,
-    nFTYoshiStatusSpecialN,
-    nFTYoshiStatusSpecialNCatch,
-    nFTYoshiStatusSpecialNRelease,
-    nFTYoshiStatusSpecialAirN,
-    nFTYoshiStatusSpecialAirNCatch,
-    nFTYoshiStatusSpecialAirNRelease
+	nFTYoshiStatusAppearR = nFTCommonStatusSpecialStart,
+	nFTYoshiStatusAppearL,
+	nFTYoshiStatusSpecialHi,
+	nFTYoshiStatusSpecialAirHi,
+	nFTYoshiStatusSpecialLwStart,
+	nFTYoshiStatusSpecialLwLanding,
+	nFTYoshiStatusSpecialAirLwStart,
+	nFTYoshiStatusSpecialAirLwLoop,
+	nFTYoshiStatusSpecialN,
+	nFTYoshiStatusSpecialNCatch,
+	nFTYoshiStatusSpecialNRelease,
+	nFTYoshiStatusSpecialAirN,
+	nFTYoshiStatusSpecialAirNCatch,
+	nFTYoshiStatusSpecialAirNRelease
 
 } ftYoshiStatus;
 
 typedef struct ftYoshiSpecialNStatusVars
 {
-    u32 unk_0x0;
-    u16 unk_0x4;
+	u32 unk_0x0;
+	u16 unk_0x4;
 
 } ftYoshiSpecialNStatusVars;
 
 typedef struct ftYoshiSpecialHiStatusVars
 {
-    GObj *egg_gobj;
-    s16 throw_force;
+	GObj *egg_gobj;
+	s16 throw_force;
 
 } ftYoshiSpecialHiStatusVars;
 
 typedef union FTYoshiStatusVars
 {
-    // ftYoshiSpecialNStatusVars specialn;
-    ftYoshiSpecialHiStatusVars specialhi;
+	// ftYoshiSpecialNStatusVars specialn;
+	ftYoshiSpecialHiStatusVars specialhi;
 
 } FTYoshiStatusVars;
 

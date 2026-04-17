@@ -55,51 +55,51 @@ struct SC1PGameStats
 
 struct SC1PGameBossPlan
 {
-    s32 unk_sc1pbossplan_0x0;
-    u8 dl_link;
-    u32 camera_tag;
-    Vec3f pos;
+	s32 unk_sc1pbossplan_0x0;
+	u8 dl_link;
+	u32 camera_tag;
+	Vec3f pos;
 };
 
 struct SC1PGameBossAnim
 {
-    intptr_t o_anim_joint;
-    intptr_t o_matanim_joint;
-    f32 anim_speed;
+	intptr_t o_anim_joint;
+	intptr_t o_matanim_joint;
+	f32 anim_speed;
 };
 
 struct SC1PGameBossEffect
 {
-    void (*proc_update)(GObj*);
-    void (*proc_display)(GObj*);
-    intptr_t o_dobjdesc;
-    intptr_t o_mobjsub;
+	void (*proc_update)(GObj*);
+	void (*proc_display)(GObj*);
+	intptr_t o_dobjdesc;
+	intptr_t o_mobjsub;
 };
 
 struct SC1PGameBossWallpaper
 {
-    s32 loop_count;
-    s32 effect_count;
-    s32 anim_count;
-    s32 plan_count;
-    s32 dobj_color_id;
-    s32 color_id;
-    s32 change_wait_base;
-    s32 change_damage_min;
-    sb32 is_random_wallpaper;
-    SC1PGameBossEffect *bosseffect;
-    SC1PGameBossAnim *bossanim;
-    SC1PGameBossPlan *bossplan;
+	s32 loop_count;
+	s32 effect_count;
+	s32 anim_count;
+	s32 plan_count;
+	s32 dobj_color_id;
+	s32 color_id;
+	s32 change_wait_base;
+	s32 change_damage_min;
+	sb32 is_random_wallpaper;
+	SC1PGameBossEffect *bosseffect;
+	SC1PGameBossAnim *bossanim;
+	SC1PGameBossPlan *bossplan;
 };
 
 struct SC1PGameBossMain
 {
-    sb32 is_skip_wallpaper_change;
-    s32 wallpaper_id;
-    s32 change_wait;
-    void *file_head;
-    SC1PGameBossWallpaper *bosswallpaper;
-    s32 bossplayer;
+	sb32 is_skip_wallpaper_change;
+	s32 wallpaper_id;
+	s32 change_wait;
+	void *file_head;
+	SC1PGameBossWallpaper *bosswallpaper;
+	s32 bossplayer;
 };
 
 struct SC1PStageClearStats
@@ -255,44 +255,44 @@ struct SCStaffrollProjection
 
 struct SCExplainMain
 {
-    SObj *textbox_sobj;
-    GObj *stick_gobj;
-    GObj *spark_gobj;
-    GObj *rgb_gobj;
-    SObj *phase_sobj0;
-    SObj *phase_sobj1;
-    SObj *phase_sobj2;
-    SObj *phase_sobj3;
-    SObj *phase_sobj4;
-    SObj *phase_sobj5;
-    s32 phase_advance_wait;
-    s32 phase;
-    u8 unk_scexplainif_0x30;
-    u8 stick_status;
+	SObj *textbox_sobj;
+	GObj *stick_gobj;
+	GObj *spark_gobj;
+	GObj *rgb_gobj;
+	SObj *phase_sobj0;
+	SObj *phase_sobj1;
+	SObj *phase_sobj2;
+	SObj *phase_sobj3;
+	SObj *phase_sobj4;
+	SObj *phase_sobj5;
+	s32 phase_advance_wait;
+	s32 phase;
+	u8 unk_scexplainif_0x30;
+	u8 stick_status;
 };
 
 struct SCExplainArgs
 {
-    u16 sprite_pos_x;
-    u8 sprite_pos_y;
-    u8 sprite_status;
+	u16 sprite_pos_x;
+	u8 sprite_pos_y;
+	u8 sprite_status;
 };
 
 struct SCExplainPhase
 {
-    u16 phase_time;                     // Time the given explanation phase of the How to Play tutorial should last
-    u16 unused;
-    u8 textbox_pos_x;
-    u8 textbox_pos_y;
-    Sprite *sprite;
-    SCExplainArgs control_stick_args;
-    SCExplainArgs phase_args0;
-    SCExplainArgs phase_args1;
-    SCExplainArgs phase_args2;
-    SCExplainArgs phase_args3;
-    SCExplainArgs phase_args4;
-    SCExplainArgs rgb_overlay_args;
-    SCExplainArgs phase_args5;
+	u16 phase_time;                     // Time the given explanation phase of the How to Play tutorial should last
+	u16 unused;
+	u8 textbox_pos_x;
+	u8 textbox_pos_y;
+	Sprite *sprite;
+	SCExplainArgs control_stick_args;
+	SCExplainArgs phase_args0;
+	SCExplainArgs phase_args1;
+	SCExplainArgs phase_args2;
+	SCExplainArgs phase_args3;
+	SCExplainArgs phase_args4;
+	SCExplainArgs rgb_overlay_args;
+	SCExplainArgs phase_args5;
 };
 
 struct SCAutoDemoProc

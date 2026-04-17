@@ -138,7 +138,7 @@ void guPosLight(PositionalLight* pl, Light* l, float xOb, float yOb, float zOb);
 void guPosLightHilite(PositionalLight* pl1, PositionalLight* pl2, Light* l1, Light* l2, LookAt* l, Hilite* h,
 					  float xEye, float yEye, float zEye, float xOb, float yOb, float zOb, float xUp, float yUp,
 					  float zUp, int twidth, int theight);
-extern int guRandom(void);
+extern int guRandom();
 
 /*
  *  Math functions

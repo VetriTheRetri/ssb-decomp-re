@@ -1,22 +1,22 @@
 #include <ft/fighter.h>
 
-// 0x80130F70
+// 80130F70
 void *gFTDataLuigiMain;
 
-// 0x80130F74
+// 80130F74
 void *gFTDataLuigiMainMotion;
 
-// 0x80130F78
+// 80130F78
 void *gFTDataLuigiModel;
 
-// 0x80130F7C
+// 80130F7C
 void *gFTDataLuigiSpecial1;
 
-// 0x80130F80
+// 80130F80
 void *gFTDataLuigiSpecial2;
 
-// 0x80130F84
+// 80130F84
 void *gFTDataLuigiSpecial3;
 
-// 0x80130F88
+// 80130F88
 s32 gFTDataLuigiParticleBankID;

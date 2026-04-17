@@ -6,14 +6,14 @@
 
 typedef enum syVectorAxisFlags 
 {
-    nSYVectorAxisX, 
-    nSYVectorAxisY,
-    nSYVectorAxisZ,
-    nSYVectorInvX,
-    nSYVectorInvY,
-    nSYVectorInvZ,
-    nSYVectorInvSwap
-    
+	nSYVectorAxisX, 
+	nSYVectorAxisY,
+	nSYVectorAxisZ,
+	nSYVectorInvX,
+	nSYVectorInvY,
+	nSYVectorInvZ,
+	nSYVectorInvSwap
+	
 } syVectorAxisFlags;
 
 #define SYVECTOR_AXIS_X     (1 << nSYVectorAxisX)

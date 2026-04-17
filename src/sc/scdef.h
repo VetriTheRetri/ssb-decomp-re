@@ -213,11 +213,11 @@ typedef enum SCBattlePlayerColor
 typedef enum SCBattleTeamID
 {
 	nSCBattleTeamIDBattleStart,		// Start of Team Battle Team IDs
-    nSCBattleTeamIDRed = nSCBattleTeamIDBattleStart,
-    nSCBattleTeamIDBlue,
-    nSCBattleTeamIDGreen,
+	nSCBattleTeamIDRed = nSCBattleTeamIDBattleStart,
+	nSCBattleTeamIDBlue,
+	nSCBattleTeamIDGreen,
 	nSCBattleTeamIDBattleEnd = nSCBattleTeamIDGreen, // End of Team Battle Team IDs
-    nSCBattleTeamIDCom,				// Computer Team ID (1P Game / Training Mode / Free for All)
+	nSCBattleTeamIDCom,				// Computer Team ID (1P Game / Training Mode / Free for All)
 	nSCBattleTeamIDEnumCount
 
 } SCBattleTeamID;
@@ -382,9 +382,9 @@ typedef enum SC1PGameBonus
 
 typedef enum MN1PContinueOption
 {
-    nMN1PContinueOptionYes,
-    nMN1PContinueOptionNo,
-    nMN1PContinueOptionEnumCount
+	nMN1PContinueOptionYes,
+	nMN1PContinueOptionNo,
+	nMN1PContinueOptionEnumCount
 
 } MN1PContinueOption;
 

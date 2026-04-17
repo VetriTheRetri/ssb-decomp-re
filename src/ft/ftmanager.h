@@ -12,7 +12,7 @@ extern void *gFTManagerCommonFile;
 extern size_t gFTManagerFigatreeHeapSize;
 
 extern FTDesc dFTManagerDefaultFighterDesc;
-extern FTData *dFTManagerDataFiles[/* */];
+extern FTData *dFTManagerDataFiles[];
 
 extern void ftManagerSetupFileSize();
 extern void ftManagerAllocFighter(u32 data_flags, s32 allocs_num);

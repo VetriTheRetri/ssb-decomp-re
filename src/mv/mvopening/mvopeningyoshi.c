@@ -15,14 +15,14 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E0C0
+// 8018E0C0
 CObjDesc dMVOpeningYoshiCObjDescStart = { { 1200.0F, 150.0F, 1000.0F }, { 100.0F, 200.0F, 0.0F }, 0.0F };
 
-// 0x8018E0DC
+// 8018E0DC
 CObjDesc dMVOpeningYoshiCObjDescEnd = { { 2000.0F, 100.0F, 600.0F }, { 1300.0F, 100.0F,-100.0F }, 0.0F };
 
-// 0x8018E0F8
-FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
+// 8018E0F8
+FTKeyEvent dMVOpeningYoshiKeyEvents[] =
 {
 	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
 	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
@@ -30,8 +30,8 @@ FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
 	FTKEY_EVENT_END()                                   // 0000
 };
 
-// 0x8018E108
-u32 dMVOpeningYoshiFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+// 8018E108
+u32 dMVOpeningYoshiFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -39,49 +39,49 @@ u32 dMVOpeningYoshiFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpen
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E220
+// 8018E220
 s32 sMVOpeningYoshiPad0x8018E220[2];
 
-// 0x8018E228
+// 8018E228
 s32 sMVOpeningYoshiTotalTimeTics;
 
-// 0x8018E22C
+// 8018E22C
 GObj *sMVOpeningYoshiNameGObj;
 
-// 0x8018E230
+// 8018E230
 GObj *sMVOpeningYoshiFighterGObj;
 
-// 0x8018E234
+// 8018E234
 s32 sMVOpeningYoshiPad0x8018E234;
 
-// 0x8018E238
+// 8018E238
 GObj *sMVOpeningYoshiStageCameraGObj;
 
-// 0x8018E23C
+// 8018E23C
 void *sMVOpeningYoshiFigatreeHeap;
 
-// 0x8018E240
+// 8018E240
 f32 sMVOpeningYoshiPosedFighterSpeed;
 
-// 0x8018E244
+// 8018E244
 s32 sMVOpeningYoshiPad0x8018E244;
 
-// 0x8018E248
+// 8018E248
 CObjDesc sMVOpeningYoshiAdjustedStartCObjDesc;
 
-// 0x8018E268
+// 8018E268
 CObjDesc sMVOpeningYoshiAdjustedEndCObjDesc;
 
-// 0x8018E288
+// 8018E288
 LBFileNode sMVOpeningYoshiStatusBuffer[48];
 
-// 0x8018E408
+// 8018E408
 LBFileNode sMVOpeningYoshiForceStatusBuffer[7];
 
-// 0x8018E440
+// 8018E440
 void *sMVOpeningYoshiFiles[ARRAY_COUNT(dMVOpeningYoshiFileIDs)];
 
-// 0x8018E448
+// 8018E448
 SCBattleState sMVOpeningYoshiBattleState;
 
 // // // // // // // // // // // //
@@ -90,8 +90,8 @@ SCBattleState sMVOpeningYoshiBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018D0C0
-void mvOpeningYoshiSetupFiles(void)
+// 8018D0C0
+void mvOpeningYoshiSetupFiles()
 {
 	LBRelocSetup rl_setup;
 
@@ -108,7 +108,7 @@ void mvOpeningYoshiSetupFiles(void)
 	lbRelocLoadFilesListed(dMVOpeningYoshiFileIDs, sMVOpeningYoshiFiles);
 }
 
-// 0x8018D160
+// 8018D160
 void mvOpeningYoshiInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -123,13 +123,13 @@ void mvOpeningYoshiInitName(SObj *sobj)
 	sobj->sprite.blue = 0xFF;
 }
 
-// 0x8018D194
-void mvOpeningYoshiMakeName(void)
+// 8018D194
+void mvOpeningYoshiMakeName()
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	intptr_t offsets[/* */] =
+	intptr_t offsets[] =
 	{
 		&llIFCommonAnnounceCommonLetterYSprite,
 		&llIFCommonAnnounceCommonLetterOSprite,
@@ -138,7 +138,7 @@ void mvOpeningYoshiMakeName(void)
 		&llIFCommonAnnounceCommonLetterISprite,
 		0x0
 	};
-	f32 pos_x[/* */] =
+	f32 pos_x[] =
 	{
 		0.0F, 30.0F, 65.0F, 95.0F, 128.0F
 	};
@@ -161,7 +161,7 @@ void mvOpeningYoshiMakeName(void)
 	}
 }
 
-// 0x8018D314
+// 8018D314
 void mvOpeningYoshiMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -178,7 +178,7 @@ void mvOpeningYoshiMotionCameraProcUpdate(GObj *gobj)
 	}
 }
 
-// 0x8018D40C
+// 8018D40C
 void mvOpeningYoshiMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
@@ -219,8 +219,8 @@ void mvOpeningYoshiMakeMotionCamera(Vec3f move)
 	cobj->vec.up.x = sMVOpeningYoshiAdjustedStartCObjDesc.upx;
 }
 
-// 0x8018D61C
-void mvOpeningYoshiMakeMotionWindow(void)
+// 8018D61C
+void mvOpeningYoshiMakeMotionWindow()
 {
 	GObj *fighter_gobj;
 	s32 i;
@@ -282,7 +282,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 	}
 }
 
-// 0x8018D874
+// 8018D874
 void mvOpeningYoshiPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -295,8 +295,8 @@ void mvOpeningYoshiPosedWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x8018D974
-void mvOpeningYoshiMakePosedWallpaper(void)
+// 8018D974
+void mvOpeningYoshiMakePosedWallpaper()
 {
 	gcAddGObjDisplay
 	(
@@ -314,7 +314,7 @@ void mvOpeningYoshiMakePosedWallpaper(void)
 	);
 }
 
-// 0x8018D9C0
+// 8018D9C0
 void mvOpeningYoshiPosedFighterProcUpdate(GObj *fighter_gobj)
 {
 	switch (sMVOpeningYoshiTotalTimeTics)
@@ -345,8 +345,8 @@ void mvOpeningYoshiPosedFighterProcUpdate(GObj *fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.x += sMVOpeningYoshiPosedFighterSpeed;
 }
 
-// 0x8018DA90
-void mvOpeningYoshiMakePosedFighter(void)
+// 8018DA90
+void mvOpeningYoshiMakePosedFighter()
 {
 	GObj *fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -368,8 +368,8 @@ void mvOpeningYoshiMakePosedFighter(void)
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 0x8018DB90
-void mvOpeningYoshiMakeNameCamera(void)
+// 8018DB90
+void mvOpeningYoshiMakeNameCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -392,8 +392,8 @@ void mvOpeningYoshiMakeNameCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x8018DC30
-void mvOpeningYoshiMakePosedFighterCamera(void)
+// 8018DC30
+void mvOpeningYoshiMakePosedFighterCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -421,8 +421,8 @@ void mvOpeningYoshiMakePosedFighterCamera(void)
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x8018DD18
-void mvOpeningYoshiMakePosedWallpaperCamera(void)
+// 8018DD18
+void mvOpeningYoshiMakePosedWallpaperCamera()
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -447,7 +447,7 @@ void mvOpeningYoshiMakePosedWallpaperCamera(void)
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 0x8018DDC0
+// 8018DDC0
 void mvOpeningYoshiFuncRun(GObj *gobj)
 {
 	sMVOpeningYoshiTotalTimeTics++;
@@ -474,14 +474,14 @@ void mvOpeningYoshiFuncRun(GObj *gobj)
 	}
 }
 
-// 0x8018DE7C
-void mvOpeningYoshiInitVars(void)
+// 8018DE7C
+void mvOpeningYoshiInitVars()
 {
 	sMVOpeningYoshiTotalTimeTics = 0;
 }
 
-// 0x8018DE88
-void mvOpeningYoshiFuncStart(void)
+// 8018DE88
+void mvOpeningYoshiFuncStart()
 {
 	sMVOpeningYoshiBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningYoshiBattleState;
@@ -522,63 +522,63 @@ void mvOpeningYoshiFuncStart(void)
 	}
 }
 
-// 0x8018E010
+// 8018E010
 void mvOpeningYoshiFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E13C
+// 8018E13C
 SYVideoSetup dMVOpeningYoshiVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E158
+// 8018E158
 SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
 {
-    // Task Manager Buffer Setup
-    {
-        0,                              // ???
-        gcRunAll,                 	 	// Update function
-        scManagerFuncDraw,              // Frame draw function
-        &ovl41_BSS_END,                 // Allocatable memory pool start
-        0,                              // Allocatable memory pool size
-        1,                              // ???
-        2,                              // Number of contexts?
-        sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
-        sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
-        0,                              // Display List Buffer 2 Size
-        0,                              // Display List Buffer 3 Size
-        0x8000,                         // Graphics Heap Size
-        2,                              // ???
-        0xC000,                         // RDP Output Buffer Size
-        mvOpeningYoshiFuncLights,    	// Pre-render function
-        syControllerFuncRead,           // Controller I/O function
-    },
+	// Task Manager Buffer Setup
+	{
+		0,                              // ???
+		gcRunAll,                 	 	// Update function
+		scManagerFuncDraw,              // Frame draw function
+		&ovl41_BSS_END,                 // Allocatable memory pool start
+		0,                              // Allocatable memory pool size
+		1,                              // ???
+		2,                              // Number of contexts?
+		sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
+		sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
+		0,                              // Display List Buffer 2 Size
+		0,                              // Display List Buffer 3 Size
+		0x8000,                         // Graphics Heap Size
+		2,                              // ???
+		0xC000,                         // RDP Output Buffer Size
+		mvOpeningYoshiFuncLights,    	// Pre-render function
+		syControllerFuncRead,           // Controller I/O function
+	},
 
-    0,                                  // Number of GObjThreads
-    sizeof(u64) * 192,                  // Thread stack size
-    0,                                  // Number of thread stacks
-    0,                                  // ???
-    0,                                  // Number of GObjProcesses
-    0,                                  // Number of GObjs
-    sizeof(GObj),                       // GObj size
-    0,                                  // Number of XObjs
-    dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // DObjVec eject function
-    0,                                  // Number of AObjs
-    0,                                  // Number of MObjs
-    0,                                  // Number of DObjs
-    sizeof(DObj),                       // DObj size
-    0,                                  // Number of SObjs
-    sizeof(SObj),                       // SObj size
-    0,                                  // Number of CObjs
-    sizeof(CObj),                       // Camera size
-    
-    mvOpeningYoshiFuncStart          	// Task start function
+	0,                                  // Number of GObjThreads
+	sizeof(u64) * 192,                  // Thread stack size
+	0,                                  // Number of thread stacks
+	0,                                  // ???
+	0,                                  // Number of GObjProcesses
+	0,                                  // Number of GObjs
+	sizeof(GObj),                       // GObj size
+	0,                                  // Number of XObjs
+	dLBCommonFuncMatrixList,            // Matrix function list
+	NULL,                               // DObjVec eject function
+	0,                                  // Number of AObjs
+	0,                                  // Number of MObjs
+	0,                                  // Number of DObjs
+	sizeof(DObj),                       // DObj size
+	0,                                  // Number of SObjs
+	sizeof(SObj),                       // SObj size
+	0,                                  // Number of CObjs
+	sizeof(CObj),                       // Camera size
+	
+	mvOpeningYoshiFuncStart          	// Task start function
 };
 
-// 0x8018E05C
-void mvOpeningYoshiStartScene(void)
+// 8018E05C
+void mvOpeningYoshiStartScene()
 {
 	dMVOpeningYoshiVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningYoshiVideoSetup);

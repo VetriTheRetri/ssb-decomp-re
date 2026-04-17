@@ -7,18 +7,18 @@
 
 extern void mvOpeningNewcomersFuncLights(Gfx **dls);
 extern sb32 mvOpeningNewcomersCheckLocked(s32 fkind);
-extern void mvOpeningNewcomersMakePurin(void);
-extern void mvOpeningNewcomersMakeCaptain(void);
-extern void mvOpeningNewcomersMakeLuigi(void);
-extern void mvOpeningNewcomersMakeNess(void);
-extern void mvOpeningNewcomersMakeAll(void);
+extern void mvOpeningNewcomersMakePurin();
+extern void mvOpeningNewcomersMakeCaptain();
+extern void mvOpeningNewcomersMakeLuigi();
+extern void mvOpeningNewcomersMakeNess();
+extern void mvOpeningNewcomersMakeAll();
 extern void mvOpeningNewcomersHideProcDisplay(GObj *gobj);
-extern void mvOpeningNewcomersMakeHide(void);
-extern void mvOpeningNewcomersMakeNewcomersCamera(void);
-extern void mvOpeningNewcomersMakeHideCamera(void);
-extern void mvOpeningNewcomersInitVars(void);
+extern void mvOpeningNewcomersMakeHide();
+extern void mvOpeningNewcomersMakeNewcomersCamera();
+extern void mvOpeningNewcomersMakeHideCamera();
+extern void mvOpeningNewcomersInitVars();
 extern void mvOpeningNewcomersFuncRun(GObj *gobj);
-extern void mvOpeningNewcomersFuncStart(void);
-extern void mvOpeningNewcomersStartScene(void);
+extern void mvOpeningNewcomersFuncStart();
+extern void mvOpeningNewcomersStartScene();
 
 #endif

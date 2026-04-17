@@ -5,23 +5,23 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvOpeningMarioSetupFiles(void);
+extern void mvOpeningMarioSetupFiles();
 extern void mvOpeningMarioInitName(SObj *sobj);
-extern void mvOpeningMarioMakeName(void);
+extern void mvOpeningMarioMakeName();
 extern void mvOpeningMarioMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningMarioMakeMotionCamera(Vec3f move);
-extern void mvOpeningMarioMakeMotionWindow(void);
+extern void mvOpeningMarioMakeMotionWindow();
 extern void mvOpeningMarioPosedWallpaperProcDisplay(GObj *gobj);
-extern void mvOpeningMarioMakePosedWallpaper(void);
+extern void mvOpeningMarioMakePosedWallpaper();
 extern void mvOpeningMarioPosedFighterProcUpdate(GObj *fighter_gobj);
-extern void mvOpeningMarioMakePosedFighter(void);
-extern void mvOpeningMarioMakeNameCamera(void);
-extern void mvOpeningMarioMakePosedFighterCamera(void);
-extern void mvOpeningMarioMakePosedWallpaperCamera(void);
+extern void mvOpeningMarioMakePosedFighter();
+extern void mvOpeningMarioMakeNameCamera();
+extern void mvOpeningMarioMakePosedFighterCamera();
+extern void mvOpeningMarioMakePosedWallpaperCamera();
 extern void mvOpeningMarioFuncRun(GObj *gobj);
-extern void mvOpeningMarioInitVars(void);
-extern void mvOpeningMarioFuncStart(void);
+extern void mvOpeningMarioInitVars();
+extern void mvOpeningMarioFuncStart();
 extern void mvOpeningMarioFuncLights(Gfx **dls);
-extern void mvOpeningMarioStartScene(void);
+extern void mvOpeningMarioStartScene();
 
 #endif

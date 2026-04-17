@@ -6,7 +6,7 @@
 extern void syInterpCubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
 
-extern u16 gSYSinTable[/* */];
+extern u16 gSYSinTable[];
 
 // // // // // // // // // // // //
 //                               //
@@ -14,8 +14,8 @@ extern u16 gSYSinTable[/* */];
 //                               //
 // // // // // // // // // // // //
 
-// 0x800D4CA0
-f32 dLBCommonSinLookup[/* */] =
+// 800D4CA0
+f32 dLBCommonSinLookup[] =
 {
 	0.000000000000000, 0.001534000039101, 0.003068000078201, 0.004602000117302,
 	0.006136000156403, 0.007670000195503, 0.009204000234604, 0.010738000273705,
@@ -281,34 +281,34 @@ f32 dLBCommonSinLookup[/* */] =
 //                               //
 // // // // // // // // // // // //
 
-// 0x800D62B0
+// 800D62B0
 u16 sLBCommonExternSpriteAttr;
 
-// 0x800D62B2
+// 800D62B2
 u16 sLBCommonExternBitmapFmt;
 
-// 0x800D62B4
+// 800D62B4
 void *sLBCommonPrevBitmapBuf;
 
-// 0x800D62B8
+// 800D62B8
 void *sLBCommonPrevSpriteLUT;
 
-// 0x800D62BC
+// 800D62BC
 s32 sLBCommonScissorXMax;
 
-// 0x800D62C0
+// 800D62C0
 s32 sLBCommonScissorYMax;
 
-// 0x800D62C4
+// 800D62C4
 s32 sLBCommonScissorXMin;
 
-// 0x800D62C8
+// 800D62C8
 s32 sLBCommonScissorYMin;
 
-// 0x800D62CC
+// 800D62CC
 s32 sLBCommonPad0x800D62CC;
 
-// 0x800D62D0
+// 800D62D0
 Vec3f gLBCommonScale;
 
 // // // // // // // // // // // //
@@ -317,76 +317,76 @@ Vec3f gLBCommonScale;
 //                               //
 // // // // // // // // // // // //
 
-// 0x800C7840
+// 800C7840
 f32 lbCommonSin(f32 angle)
 {
 	u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
-    f32 sin;
-    
-    if (index & 0x400)
-    {
-        sin = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
-    }
-    else sin = dLBCommonSinLookup[index & 0x3FF];
-    
-    if (index & 0x800)
-    {
-        return -sin;
-    }
-    else return sin;
+	f32 sin;
+	
+	if (index & 0x400)
+	{
+		sin = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
+	}
+	else sin = dLBCommonSinLookup[index & 0x3FF];
+	
+	if (index & 0x800)
+	{
+		return -sin;
+	}
+	else return sin;
 }
 
-// 0x800C78B8
+// 800C78B8
 f32 lbCommonCos(f32 angle)
 {
-    u16 index = ((s32) ((angle + F_CST_DTOR32(90.0F)) * 651.8986206F)) & 0xFFF;
-    f32 cos;
-    
-    if (index & 0x400)
-    {
-        cos = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
-    }
-    else cos = dLBCommonSinLookup[index & 0x3FF];
-    
-    if (index & 0x800)
-    {
-        return -cos;
-    }
-    else return cos;
+	u16 index = ((s32) ((angle + F_CST_DTOR32(90.0F)) * 651.8986206F)) & 0xFFF;
+	f32 cos;
+	
+	if (index & 0x400)
+	{
+		cos = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
+	}
+	else cos = dLBCommonSinLookup[index & 0x3FF];
+	
+	if (index & 0x800)
+	{
+		return -cos;
+	}
+	else return cos;
 }
 
-// 0x800C793C
+// 800C793C
 f32 lbCommonTan(f32 angle)
 {
-    u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
-    f32 sin, cos;
-    
-    if (index & 0x400)
-    {
-        sin = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
-    }
-    else sin = dLBCommonSinLookup[index & 0x3FF];
-    
-    if (index & 0x800)
-    {
-        sin = -sin;
-    }
-    index = (index + 0x400) & 0xFFF;
-    
-    if (index & 0x400)
-    {
-        cos = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
-    }
-    else cos = dLBCommonSinLookup[index & 0x3FF];
-    
-    if (index & 0x800)
-    {
-        cos = -cos;
-    }
-    return sin / cos;
+	u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
+	f32 sin, cos;
+	
+	if (index & 0x400)
+	{
+		sin = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
+	}
+	else sin = dLBCommonSinLookup[index & 0x3FF];
+	
+	if (index & 0x800)
+	{
+		sin = -sin;
+	}
+	index = (index + 0x400) & 0xFFF;
+	
+	if (index & 0x400)
+	{
+		cos = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
+	}
+	else cos = dLBCommonSinLookup[index & 0x3FF];
+	
+	if (index & 0x800)
+	{
+		cos = -cos;
+	}
+	return sin / cos;
 }
 
-// 0x800C7A00
+// 800C7A00
 f32 lbCommonNormDist2D(Vec3f *vec)
 {
 	f32 magnitude;
@@ -406,13 +406,13 @@ f32 lbCommonNormDist2D(Vec3f *vec)
 	return magnitude;
 }
 
-// 0x800C7A84
+// 800C7A84
 f32 lbCommonMag2D(Vec3f *vec)
 {
 	return sqrtf(SQUARE(vec->x) + SQUARE(vec->y));
 }
 
-// 0x800C7AB8
+// 800C7AB8
 Vec3f* lbCommonAdd2D(Vec3f *a, Vec3f *b)
 {
 	a->x = a->x + b->x;
@@ -421,7 +421,7 @@ Vec3f* lbCommonAdd2D(Vec3f *a, Vec3f *b)
 	return a;
 }
 
-// 0x800C7AE0
+// 800C7AE0
 Vec3f* lbCommonScale2D(Vec3f *vec, f32 factor)
 {
 	vec->x = vec->x * factor;
@@ -430,7 +430,7 @@ Vec3f* lbCommonScale2D(Vec3f *vec, f32 factor)
 	return vec;
 }
 
-// 0x800C7B08
+// 800C7B08
 Vec3f* lbCommonReflect2D(Vec3f *a, Vec3f *b)
 {
 	f32 negative_two_dot_product = (b->x * a->x + b->y * a->y) * -2.0F;
@@ -441,7 +441,7 @@ Vec3f* lbCommonReflect2D(Vec3f *a, Vec3f *b)
 	return a;
 }
 
-// 0x800C7B58
+// 800C7B58
 f32 lbCommonSim3D(Vec3f *a, Vec3f *b)
 {
 	f32 magnitude_a = sqrtf(SQUARE(a->x) + SQUARE(a->y) + SQUARE(a->z));
@@ -450,7 +450,7 @@ f32 lbCommonSim3D(Vec3f *a, Vec3f *b)
 	return (a->x * b->x + a->y * b->y + a->z * b->z) / (magnitude_b + magnitude_a);
 }
 
-// 0x800C7C0C
+// 800C7C0C
 f32 lbCommonSim2D(Vec3f *a, Vec3f *b)
 {
 	f32 magnitude_a = sqrtf(SQUARE(a->x) + SQUARE(a->y));
@@ -459,772 +459,772 @@ f32 lbCommonSim2D(Vec3f *a, Vec3f *b)
 	return (a->x * b->x + a->y * b->y) / (magnitude_b + magnitude_a);
 }
 
-// 0x800C7C98
+// 800C7C98
 sb32 lbCommonCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle)
 {
-    f32 similarity;
-    f32 orientation;
-    f32 magnitude;
-    
-    similarity = lbCommonSim2D(b, a);
+	f32 similarity;
+	f32 orientation;
+	f32 magnitude;
+	
+	similarity = lbCommonSim2D(b, a);
 
-    if (similarity <= 0.0F)
-    {
-        if (similarity >= cosf(angle + F_CST_DTOR32(90.0F)))
-        {
-            orientation = b->x * a->y - b->y * a->x;
-            
-            orientation = (orientation < 0.0F) ? -1.0F : 1.0F;
-            
-            magnitude = lbCommonMag2D(a) * orientation;
-            
-            a->x = -b->y * magnitude;
-            a->y = b->x * magnitude;
-            
-            return TRUE;
-        }
-    }
-    return FALSE;
+	if (similarity <= 0.0F)
+	{
+		if (similarity >= cosf(angle + F_CST_DTOR32(90.0F)))
+		{
+			orientation = b->x * a->y - b->y * a->x;
+			
+			orientation = (orientation < 0.0F) ? -1.0F : 1.0F;
+			
+			magnitude = lbCommonMag2D(a) * orientation;
+			
+			a->x = -b->y * magnitude;
+			a->y = b->x * magnitude;
+			
+			return TRUE;
+		}
+	}
+	return FALSE;
 }
 
-// 0x800C7DB4
+// 800C7DB4
 void lbCommonMatrixTraRotScaInv
 (
-    Mtx *mtx,
-    f32 trax,
-    f32 tray,
-    f32 traz,
-    f32 rotx,
-    f32 roty,
-    f32 rotz,
-    f32 scax_inv,
-    f32 scay_inv,
-    f32 scaz_inv,
-    f32 scax,
-    f32 scay,
-    f32 scaz
+	Mtx *mtx,
+	f32 trax,
+	f32 tray,
+	f32 traz,
+	f32 rotx,
+	f32 roty,
+	f32 rotz,
+	f32 scax_inv,
+	f32 scay_inv,
+	f32 scaz_inv,
+	f32 scax,
+	f32 scay,
+	f32 scaz
 )
 {    
-    u32 e1, e2;
-    s32 sinx, cosx;
-    s32 siny, cosy;
-    s32 sinz, cosz;
-    s32 scay_l, scax_l, scaz_l;
-    s32 scax_inv_l, scay_inv_l, scaz_inv_l;
-    u16 idx, idy, idz;
+	u32 e1, e2;
+	s32 sinx, cosx;
+	s32 siny, cosy;
+	s32 sinz, cosz;
+	s32 scay_l, scax_l, scaz_l;
+	s32 scax_inv_l, scay_inv_l, scaz_inv_l;
+	u16 idx, idy, idz;
 
-    idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
-    
-    sinx = gSYSinTable[idx & 0x7FF];
-    
-    if (idx & 0x800)
-    {
-        sinx = -sinx;
-    }
-    idx += 0x400;
-    
-    cosx = gSYSinTable[idx & 0x7FF];
-    
-    if (idx & 0x800)
-    {
-        cosx = -cosx;
-    }
-    idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
-    
-    siny = gSYSinTable[idy & 0x7FF];
-    
-    if (idy & 0x800)
-    {
-        siny = -siny;
-    }
-    idy += 0x400;
-    
-    cosy = gSYSinTable[idy & 0x7FF];
-    
-    if (idy & 0x800)
-    {
-        cosy = -cosy;
-    }
-    idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
-    
-    sinz = gSYSinTable[idz & 0x7FF];
-    
-    if (idz & 0x800)
-    {
-        sinz = -sinz;
-    }
-    idz += 0x400;
-    
-    cosz = gSYSinTable[idz & 0x7FF];
-    
-    if (idz & 0x800)
-    {
-        cosz = -cosz;
-    }
-    scax_l = (scax * 256.0F);
-    scay_l = (scay * 256.0F);
-    scaz_l = (scaz * 256.0F);
-    
-    scax_inv_l = ((1.0F / scax_inv) * 256.0F);
-    scay_inv_l = ((1.0F / scay_inv) * 256.0F);
-    scaz_inv_l = ((1.0F / scaz_inv) * 256.0F);
+	idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
+	
+	sinx = gSYSinTable[idx & 0x7FF];
+	
+	if (idx & 0x800)
+	{
+		sinx = -sinx;
+	}
+	idx += 0x400;
+	
+	cosx = gSYSinTable[idx & 0x7FF];
+	
+	if (idx & 0x800)
+	{
+		cosx = -cosx;
+	}
+	idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
+	
+	siny = gSYSinTable[idy & 0x7FF];
+	
+	if (idy & 0x800)
+	{
+		siny = -siny;
+	}
+	idy += 0x400;
+	
+	cosy = gSYSinTable[idy & 0x7FF];
+	
+	if (idy & 0x800)
+	{
+		cosy = -cosy;
+	}
+	idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
+	
+	sinz = gSYSinTable[idz & 0x7FF];
+	
+	if (idz & 0x800)
+	{
+		sinz = -sinz;
+	}
+	idz += 0x400;
+	
+	cosz = gSYSinTable[idz & 0x7FF];
+	
+	if (idz & 0x800)
+	{
+		cosz = -cosz;
+	}
+	scax_l = (scax * 256.0F);
+	scay_l = (scay * 256.0F);
+	scaz_l = (scaz * 256.0F);
+	
+	scax_inv_l = ((1.0F / scax_inv) * 256.0F);
+	scay_inv_l = ((1.0F / scay_inv) * 256.0F);
+	scaz_inv_l = ((1.0F / scaz_inv) * 256.0F);
 
-    e1 = (((((cosy * cosz) >> 14) * scax_l) >> 8) * scax_inv_l) >> 8;
-    e2 = (((((cosy * sinz) >> 14) * scax_l) >> 8) * scay_inv_l) >> 8;
+	e1 = (((((cosy * cosz) >> 14) * scax_l) >> 8) * scax_inv_l) >> 8;
+	e2 = (((((cosy * sinz) >> 14) * scax_l) >> 8) * scay_inv_l) >> 8;
 
-    mtx->m[0][0] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
-    
-    e1 = (((-siny * scax_l) >> 7) * scaz_inv_l) >> 8;
-    
-    mtx->m[0][1] = COMBINE_INTEGRAL(e1, 0);
-    mtx->m[2][1] = COMBINE_FRACTIONAL(e1, 0);
-    
-    e1 = ((((((((sinx * siny) >> 15) * cosz) >> 14) - ((cosx * sinz) >> 14)) * scay_l) >> 8) * scax_inv_l) >> 8;
-    e2 = ((((((((sinx * siny) >> 15) * sinz) >> 14) + ((cosx * cosz) >> 14)) * scay_l) >> 8) * scay_inv_l) >> 8;
+	mtx->m[0][0] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
+	
+	e1 = (((-siny * scax_l) >> 7) * scaz_inv_l) >> 8;
+	
+	mtx->m[0][1] = COMBINE_INTEGRAL(e1, 0);
+	mtx->m[2][1] = COMBINE_FRACTIONAL(e1, 0);
+	
+	e1 = ((((((((sinx * siny) >> 15) * cosz) >> 14) - ((cosx * sinz) >> 14)) * scay_l) >> 8) * scax_inv_l) >> 8;
+	e2 = ((((((((sinx * siny) >> 15) * sinz) >> 14) + ((cosx * cosz) >> 14)) * scay_l) >> 8) * scay_inv_l) >> 8;
 
-    mtx->m[0][2] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
-    
-    e1 = (((((sinx * cosy) >> 14) * scay_l) >> 8) * scaz_inv_l) >> 8;
+	mtx->m[0][2] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
+	
+	e1 = (((((sinx * cosy) >> 14) * scay_l) >> 8) * scaz_inv_l) >> 8;
 
-    mtx->m[0][3] = COMBINE_INTEGRAL(e1, 0);
-    mtx->m[2][3] = COMBINE_FRACTIONAL(e1, 0);
+	mtx->m[0][3] = COMBINE_INTEGRAL(e1, 0);
+	mtx->m[2][3] = COMBINE_FRACTIONAL(e1, 0);
 
-    e1 = ((((((((cosx * siny) >> 15) * cosz) >> 14) + ((sinx * sinz) >> 14)) * scaz_l) >> 8) * scax_inv_l) >> 8;
-    e2 = ((((((((cosx * siny) >> 15) * sinz) >> 14) - ((sinx * cosz) >> 14)) * scaz_l) >> 8) * scay_inv_l) >> 8;
-    
-    mtx->m[1][0] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
-    
-    e1 = (((((cosx * cosy) >> 14) * scaz_l) >> 8) * scaz_inv_l) >> 8;
+	e1 = ((((((((cosx * siny) >> 15) * cosz) >> 14) + ((sinx * sinz) >> 14)) * scaz_l) >> 8) * scax_inv_l) >> 8;
+	e2 = ((((((((cosx * siny) >> 15) * sinz) >> 14) - ((sinx * cosz) >> 14)) * scaz_l) >> 8) * scay_inv_l) >> 8;
+	
+	mtx->m[1][0] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
+	
+	e1 = (((((cosx * cosy) >> 14) * scaz_l) >> 8) * scaz_inv_l) >> 8;
 
-    mtx->m[1][1] = COMBINE_INTEGRAL(e1, 0);
-    mtx->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
+	mtx->m[1][1] = COMBINE_INTEGRAL(e1, 0);
+	mtx->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
 
-    e1 = (s32) (trax * 65536.0F);
-    e2 = (s32) (tray * 65536.0F);
+	e1 = (s32) (trax * 65536.0F);
+	e2 = (s32) (tray * 65536.0F);
 
-    mtx->m[1][2] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
+	mtx->m[1][2] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
 
-    e1 = (s32) (traz * 65536.0F);
-    
-    mtx->m[1][3] = COMBINE_INTEGRAL(e1, 0x10000);
-    mtx->m[3][3] = COMBINE_FRACTIONAL(e1, 0);
+	e1 = (s32) (traz * 65536.0F);
+	
+	mtx->m[1][3] = COMBINE_INTEGRAL(e1, 0x10000);
+	mtx->m[3][3] = COMBINE_FRACTIONAL(e1, 0);
 }
 
-// 0x800C82AC
+// 800C82AC
 void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 scay, f32 scaz)
 {
-    u32 e1, e2;
-    s32 sinx, cosx;
-    s32 siny, cosy;
-    s32 sinz, cosz;
-    s32 scay_l, scax_l, scaz_l;
-    u16 idx, idy, idz;
+	u32 e1, e2;
+	s32 sinx, cosx;
+	s32 siny, cosy;
+	s32 sinz, cosz;
+	s32 scay_l, scax_l, scaz_l;
+	u16 idx, idy, idz;
 
-    idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
-    
-    sinx = gSYSinTable[idx & 0x7FF];
-    
-    if (idx & 0x800)
-    {
-        sinx = -sinx;
-    }
-    idx += 0x400;
-    
-    cosx = gSYSinTable[idx & 0x7FF];
-    
-    if (idx & 0x800)
-    {
-        cosx = -cosx;
-    }
-    idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
-    
-    siny = gSYSinTable[idy & 0x7FF];
-    
-    if (idy & 0x800)
-    {
-        siny = -siny;
-    }
-    idy += 0x400;
-    
-    cosy = gSYSinTable[idy & 0x7FF];
-    
-    if (idy & 0x800)
-    {
-        cosy = -cosy;
-    }
-    idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
-    
-    sinz = gSYSinTable[idz & 0x7FF];
-    
-    if (idz & 0x800)
-    {
-        sinz = -sinz;
-    }
-    idz += 0x400;
-    
-    cosz = gSYSinTable[idz & 0x7FF];
-    
-    if (idz & 0x800)
-    {
-        cosz = -cosz;
-    }
-    scax_l = (scax * 256.0F);
-    scay_l = (scay * 256.0F);
-    scaz_l = (scaz * 256.0F);
+	idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
+	
+	sinx = gSYSinTable[idx & 0x7FF];
+	
+	if (idx & 0x800)
+	{
+		sinx = -sinx;
+	}
+	idx += 0x400;
+	
+	cosx = gSYSinTable[idx & 0x7FF];
+	
+	if (idx & 0x800)
+	{
+		cosx = -cosx;
+	}
+	idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
+	
+	siny = gSYSinTable[idy & 0x7FF];
+	
+	if (idy & 0x800)
+	{
+		siny = -siny;
+	}
+	idy += 0x400;
+	
+	cosy = gSYSinTable[idy & 0x7FF];
+	
+	if (idy & 0x800)
+	{
+		cosy = -cosy;
+	}
+	idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
+	
+	sinz = gSYSinTable[idz & 0x7FF];
+	
+	if (idz & 0x800)
+	{
+		sinz = -sinz;
+	}
+	idz += 0x400;
+	
+	cosz = gSYSinTable[idz & 0x7FF];
+	
+	if (idz & 0x800)
+	{
+		cosz = -cosz;
+	}
+	scax_l = (scax * 256.0F);
+	scay_l = (scay * 256.0F);
+	scaz_l = (scaz * 256.0F);
 
-    e1 = ((((cosy * cosz) >> 14) * scax_l) >> 8);
-    e2 = ((((cosy * sinz) >> 14) * scax_l) >> 8);
+	e1 = ((((cosy * cosz) >> 14) * scax_l) >> 8);
+	e2 = ((((cosy * sinz) >> 14) * scax_l) >> 8);
 
-    mtx->m[0][0] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
-    
-    e1 = ((-siny * scax_l) >> 7);
-    
-    mtx->m[0][1] = COMBINE_INTEGRAL(e1, 0);
-    mtx->m[2][1] = COMBINE_FRACTIONAL(e1, 0);
-    
-    e1 = (((((((sinx * siny) >> 15) * cosz) >> 14) - ((cosx * sinz) >> 14)) * scay_l) >> 8);
-    e2 = (((((((sinx * siny) >> 15) * sinz) >> 14) + ((cosx * cosz) >> 14)) * scay_l) >> 8);
+	mtx->m[0][0] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
+	
+	e1 = ((-siny * scax_l) >> 7);
+	
+	mtx->m[0][1] = COMBINE_INTEGRAL(e1, 0);
+	mtx->m[2][1] = COMBINE_FRACTIONAL(e1, 0);
+	
+	e1 = (((((((sinx * siny) >> 15) * cosz) >> 14) - ((cosx * sinz) >> 14)) * scay_l) >> 8);
+	e2 = (((((((sinx * siny) >> 15) * sinz) >> 14) + ((cosx * cosz) >> 14)) * scay_l) >> 8);
 
-    mtx->m[0][2] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
-    
-    e1 = ((((sinx * cosy) >> 14) * scay_l) >> 8);
+	mtx->m[0][2] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
+	
+	e1 = ((((sinx * cosy) >> 14) * scay_l) >> 8);
 
-    mtx->m[0][3] = COMBINE_INTEGRAL(e1, 0);
-    mtx->m[2][3] = COMBINE_FRACTIONAL(e1, 0);
+	mtx->m[0][3] = COMBINE_INTEGRAL(e1, 0);
+	mtx->m[2][3] = COMBINE_FRACTIONAL(e1, 0);
 
-    e1 = (((((((cosx * siny) >> 15) * cosz) >> 14) + ((sinx * sinz) >> 14)) * scaz_l) >> 8);
-    e2 = (((((((cosx * siny) >> 15) * sinz) >> 14) - ((sinx * cosz) >> 14)) * scaz_l) >> 8);
-    
-    mtx->m[1][0] = COMBINE_INTEGRAL(e1, e2);
-    mtx->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
-    
-    e1 = ((((cosx * cosy) >> 14) * scaz_l) >> 8);
+	e1 = (((((((cosx * siny) >> 15) * cosz) >> 14) + ((sinx * sinz) >> 14)) * scaz_l) >> 8);
+	e2 = (((((((cosx * siny) >> 15) * sinz) >> 14) - ((sinx * cosz) >> 14)) * scaz_l) >> 8);
+	
+	mtx->m[1][0] = COMBINE_INTEGRAL(e1, e2);
+	mtx->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
+	
+	e1 = ((((cosx * cosy) >> 14) * scaz_l) >> 8);
 
-    mtx->m[1][1] = COMBINE_INTEGRAL(e1, 0);
-    mtx->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
+	mtx->m[1][1] = COMBINE_INTEGRAL(e1, 0);
+	mtx->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
 
-    mtx->m[1][2] = COMBINE_INTEGRAL(0, 0);
-    mtx->m[3][2] = COMBINE_FRACTIONAL(0, 0);
-    mtx->m[1][3] = COMBINE_INTEGRAL(0, 0x10000);
-    mtx->m[3][3] = COMBINE_FRACTIONAL(0, 0);
+	mtx->m[1][2] = COMBINE_INTEGRAL(0, 0);
+	mtx->m[3][2] = COMBINE_FRACTIONAL(0, 0);
+	mtx->m[1][3] = COMBINE_INTEGRAL(0, 0x10000);
+	mtx->m[3][3] = COMBINE_FRACTIONAL(0, 0);
 }
 
-// 0x800C8634
-void lbCommonFuncUpdate(void)
+// 800C8634
+void lbCommonFuncUpdate()
 {
 	gcRunAll();
 }
 
-// 0x800C8654
+// 800C8654
 alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos)
 {
-    alSoundEffect *snd = func_80026A10_27610(fgm);
-    
-    if (snd != NULL)
-    {
-        s32 balance = ((pos / 8000.0F) * 60.0F);
-        
-        if (balance > 60)
-        {
-            balance = 60;
-        }
-        if (balance < -60)
-        {
-            balance = -60;
-        }
-        balance = 64 - balance;
-        
-        snd->balance = balance;
+	alSoundEffect *snd = func_80026A10_27610(fgm);
+	
+	if (snd != NULL)
+	{
+		s32 balance = ((pos / 8000.0F) * 60.0F);
+		
+		if (balance > 60)
+		{
+			balance = 60;
+		}
+		if (balance < -60)
+		{
+			balance = -60;
+		}
+		balance = 64 - balance;
+		
+		snd->balance = balance;
 
-        func_800267F4_273F4(snd);
-    }
-    return snd;
+		func_800267F4_273F4(snd);
+	}
+	return snd;
 }
 
-// 0x800C86E8
+// 800C86E8
 DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b)
 {
-    if (a->child != NULL)
-    {
-        a = a->child;
-    }
-    else if (a == b)
-    {
-        a = NULL;
-    }
-    else if (a->sib_next != NULL)
-    {
-        a = a->sib_next;
-    }
-    else while (TRUE)
-    {
-        if (a->parent == b)
-        {
-            a = NULL;
+	if (a->child != NULL)
+	{
+		a = a->child;
+	}
+	else if (a == b)
+	{
+		a = NULL;
+	}
+	else if (a->sib_next != NULL)
+	{
+		a = a->sib_next;
+	}
+	else while (TRUE)
+	{
+		if (a->parent == b)
+		{
+			a = NULL;
 
-            break;
-        }
-        else if (a->parent->sib_next != NULL)
-        {
-            a = a->parent->sib_next;
+			break;
+		}
+		else if (a->parent->sib_next != NULL)
+		{
+			a = a->parent->sib_next;
 
-            break;
-        }
-        else a = a->parent;
-    }
-    return a;
+			break;
+		}
+		else a = a->parent;
+	}
+	return a;
 }
 
-// 0x800C8758
+// 800C8758
 void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame)
 {
-    DObj *current_dobj = root_dobj;
-    
-    root_dobj->parent_gobj->anim_frame = anim_frame;
+	DObj *current_dobj = root_dobj;
+	
+	root_dobj->parent_gobj->anim_frame = anim_frame;
 
-    while (current_dobj != NULL)
-    {
-        AObjEvent32 *anim_joint = *anim_joints;
-        
-        if (anim_joint != NULL)
-        {
-            gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
-        }
-        else current_dobj->anim_wait = AOBJ_ANIM_NULL;
-        
-        anim_joints++;
-        
-        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
-    }
+	while (current_dobj != NULL)
+	{
+		AObjEvent32 *anim_joint = *anim_joints;
+		
+		if (anim_joint != NULL)
+		{
+			gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
+		}
+		else current_dobj->anim_wait = AOBJ_ANIM_NULL;
+		
+		anim_joints++;
+		
+		current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
+	}
 }
 
-// 0x800C87F4
+// 800C87F4
 void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatree, f32 anim_frame)
 {
-    DObj *current_dobj = root_dobj;
-    
-    root_dobj->parent_gobj->anim_frame = anim_frame;
+	DObj *current_dobj = root_dobj;
+	
+	root_dobj->parent_gobj->anim_frame = anim_frame;
 
-    while (current_dobj != NULL)
-    {
-        void *anim = *figatree;
-        FTParts *parts = current_dobj->user_data.p;
-        
-        if (anim != NULL)
-        {
-            gcAddDObjAnimJoint(current_dobj, anim, anim_frame);
+	while (current_dobj != NULL)
+	{
+		void *anim = *figatree;
+		FTParts *parts = current_dobj->user_data.p;
+		
+		if (anim != NULL)
+		{
+			gcAddDObjAnimJoint(current_dobj, anim, anim_frame);
 
-            parts->is_have_anim = TRUE;
-        }
-        else
-        {
-            current_dobj->anim_wait = AOBJ_ANIM_NULL;
+			parts->is_have_anim = TRUE;
+		}
+		else
+		{
+			current_dobj->anim_wait = AOBJ_ANIM_NULL;
 
-            parts->is_have_anim = FALSE;
-        }
-        figatree++;
-        
-        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
-    }
+			parts->is_have_anim = FALSE;
+		}
+		figatree++;
+		
+		current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
+	}
 }
 
-// 0x800C88AC
+// 800C88AC
 void lbCommonAddTreeDObjsAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame)
 {
-    DObj *current_dobj = root_dobj;
-    
-    root_dobj->parent_gobj->anim_frame = anim_frame;
+	DObj *current_dobj = root_dobj;
+	
+	root_dobj->parent_gobj->anim_frame = anim_frame;
 
-    while (current_dobj != NULL)
-    {
-        if (anim_joints != NULL)
-        {
-            AObjEvent32 *anim_joint = *anim_joints;
+	while (current_dobj != NULL)
+	{
+		if (anim_joints != NULL)
+		{
+			AObjEvent32 *anim_joint = *anim_joints;
 
-            if (anim_joint != NULL)
-            {
-                gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
-            }
-            else current_dobj->anim_wait = AOBJ_ANIM_NULL;
+			if (anim_joint != NULL)
+			{
+				gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
+			}
+			else current_dobj->anim_wait = AOBJ_ANIM_NULL;
 
-            anim_joints++;
-        }
-        if (p_matanim_joints != NULL)
-        {
-            if (*p_matanim_joints != NULL)
-            {
-                MObj *mobj = current_dobj->mobj;
-                AObjEvent32 **matanim_joints = *p_matanim_joints;
+			anim_joints++;
+		}
+		if (p_matanim_joints != NULL)
+		{
+			if (*p_matanim_joints != NULL)
+			{
+				MObj *mobj = current_dobj->mobj;
+				AObjEvent32 **matanim_joints = *p_matanim_joints;
 
-                while (mobj != NULL)
-                {
-                    AObjEvent32 *matanim_joint = *matanim_joints;
+				while (mobj != NULL)
+				{
+					AObjEvent32 *matanim_joint = *matanim_joints;
 
-                    if (matanim_joint != NULL)
-                    {
-                        gcAddMObjMatAnimJoint(mobj, matanim_joint, anim_frame);
-                    }
-                    mobj = mobj->next;
-                    matanim_joints++;
-                }
-            }
-            p_matanim_joints++;
-        }
-        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
-    }
+					if (matanim_joint != NULL)
+					{
+						gcAddMObjMatAnimJoint(mobj, matanim_joint, anim_frame);
+					}
+					mobj = mobj->next;
+					matanim_joints++;
+				}
+			}
+			p_matanim_joints++;
+		}
+		current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
+	}
 }
 
-// 0x800C89BC
+// 800C89BC
 void lbCommonInitDObj3Transforms(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
-    gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
-    
-    dobj->translate.vec = dGCTranslateDefault.vec;
-    dobj->rotate.vec = dGCRotateDefaultRpy.vec;
-    dobj->scale.vec = dGCScaleDefault.vec;
+	gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
+	
+	dobj->translate.vec = dGCTranslateDefault.vec;
+	dobj->rotate.vec = dGCRotateDefaultRpy.vec;
+	dobj->scale.vec = dGCScaleDefault.vec;
 }
 
-// 0x800C8A58
+// 800C8A58
 void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
 {
-    if (tk1 != nGCMatrixKindNull)
-    {
-        gcAddXObjForDObjFixed(dobj, tk1, arg4);
-    }
-    if (tk2 != nGCMatrixKindNull)
-    {
-        gcAddXObjForDObjFixed(dobj, tk2, arg4);
-    }
-    if (tk3 != nGCMatrixKindNull)
-    {
-        gcAddXObjForDObjFixed(dobj, tk3, arg4);
-    }
-    dobj->translate.vec = dGCTranslateDefault.vec;
-    dobj->rotate.vec = dGCRotateDefaultRpy.vec;
-    dobj->scale.vec = dGCScaleDefault.vec;
+	if (tk1 != nGCMatrixKindNull)
+	{
+		gcAddXObjForDObjFixed(dobj, tk1, arg4);
+	}
+	if (tk2 != nGCMatrixKindNull)
+	{
+		gcAddXObjForDObjFixed(dobj, tk2, arg4);
+	}
+	if (tk3 != nGCMatrixKindNull)
+	{
+		gcAddXObjForDObjFixed(dobj, tk3, arg4);
+	}
+	dobj->translate.vec = dGCTranslateDefault.vec;
+	dobj->rotate.vec = dGCRotateDefaultRpy.vec;
+	dobj->scale.vec = dGCScaleDefault.vec;
 }
 
-// 0x800C8B28
+// 800C8B28
 void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
 {
-    s32 i;
-    DObj *current_dobj;
-    s32 unused;
-    s32 id;
-    DObj *array_dobjs[DOBJ_ARRAY_MAX];
+	s32 i;
+	DObj *current_dobj;
+	s32 unused;
+	s32 id;
+	DObj *array_dobjs[DOBJ_ARRAY_MAX];
 
-    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
-    {
-        array_dobjs[i] = NULL;
-    }
-    while (dobjdesc->id != ARRAY_COUNT(array_dobjs))
-    {
-        id = dobjdesc->id & 0xFFF;
+	for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+	{
+		array_dobjs[i] = NULL;
+	}
+	while (dobjdesc->id != ARRAY_COUNT(array_dobjs))
+	{
+		id = dobjdesc->id & 0xFFF;
 
-        if (id != 0)
-        {
-            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
-        } 
-        else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->dl);
-        
-        if (dobjdesc->id & 0xF000) 
-        {
-            gcDecideDObj3TransformsKind(current_dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
-        } 
-        else gcAddDObj3TransformsKind(current_dobj, tk1, tk2, tk3);
-        
-        current_dobj->translate.vec.f = dobjdesc->translate;
-        current_dobj->rotate.vec.f = dobjdesc->rotate;
-        current_dobj->scale.vec.f = dobjdesc->scale;
+		if (id != 0)
+		{
+			current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
+		} 
+		else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->dl);
+		
+		if (dobjdesc->id & 0xF000) 
+		{
+			gcDecideDObj3TransformsKind(current_dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
+		} 
+		else gcAddDObj3TransformsKind(current_dobj, tk1, tk2, tk3);
+		
+		current_dobj->translate.vec.f = dobjdesc->translate;
+		current_dobj->rotate.vec.f = dobjdesc->rotate;
+		current_dobj->scale.vec.f = dobjdesc->scale;
 
-        if (dobjs != NULL) 
-        {
-            *dobjs++ = current_dobj;
-        }
-        dobjdesc++;
-    }
+		if (dobjs != NULL) 
+		{
+			*dobjs++ = current_dobj;
+		}
+		dobjdesc++;
+	}
 }
 
-// 0x800C8CB8
+// 800C8CB8
 void lbCommonAddMObjForFighterPartsDObj
 (
-    DObj *dobj,
-    MObjSub **mobjsubs,
-    AObjEvent32 **costume_matanim_joints,
-    AObjEvent32 **main_matanim_joints,
-    f32 anim_frame
+	DObj *dobj,
+	MObjSub **mobjsubs,
+	AObjEvent32 **costume_matanim_joints,
+	AObjEvent32 **main_matanim_joints,
+	f32 anim_frame
 )
 {
-    if (mobjsubs != NULL)
-    {
-        MObjSub *mobjsub = *mobjsubs;
+	if (mobjsubs != NULL)
+	{
+		MObjSub *mobjsub = *mobjsubs;
 
-        while (mobjsub != NULL)
-        {
-            MObj *mobj = gcAddMObjForDObj(dobj, mobjsub);
+		while (mobjsub != NULL)
+		{
+			MObj *mobj = gcAddMObjForDObj(dobj, mobjsub);
 
-            if (costume_matanim_joints != NULL)
-            {
-                AObjEvent32 *costume_matanim_joint = *costume_matanim_joints;
+			if (costume_matanim_joints != NULL)
+			{
+				AObjEvent32 *costume_matanim_joint = *costume_matanim_joints;
 
-                if (costume_matanim_joint != NULL)
-                {
-                    gcAddMObjMatAnimJoint(mobj, costume_matanim_joint, anim_frame);
-                    gcParseMObjMatAnimJoint(mobj);
-                    gcPlayMObjMatAnim(mobj);
-                    gcRemoveAObjFromMObj(mobj);
-                }
-                costume_matanim_joints++;
-            }
-            if (main_matanim_joints != NULL)
-            {
-                AObjEvent32 *main_matanim_joint = *main_matanim_joints;
+				if (costume_matanim_joint != NULL)
+				{
+					gcAddMObjMatAnimJoint(mobj, costume_matanim_joint, anim_frame);
+					gcParseMObjMatAnimJoint(mobj);
+					gcPlayMObjMatAnim(mobj);
+					gcRemoveAObjFromMObj(mobj);
+				}
+				costume_matanim_joints++;
+			}
+			if (main_matanim_joints != NULL)
+			{
+				AObjEvent32 *main_matanim_joint = *main_matanim_joints;
 
-                if (main_matanim_joint != NULL)
-                {
-                    gcAddMObjMatAnimJoint(mobj, main_matanim_joint, 0.0F);
-                    gcParseMObjMatAnimJoint(mobj);
-                    gcPlayMObjMatAnim(mobj);
-                }
-                main_matanim_joints++;
-            }
-            mobjsubs++;
-            mobjsub = *mobjsubs;
-        }
-    }
+				if (main_matanim_joint != NULL)
+				{
+					gcAddMObjMatAnimJoint(mobj, main_matanim_joint, 0.0F);
+					gcParseMObjMatAnimJoint(mobj);
+					gcPlayMObjMatAnim(mobj);
+				}
+				main_matanim_joints++;
+			}
+			mobjsubs++;
+			mobjsub = *mobjsubs;
+		}
+	}
 }
 
-// 0x800C8DB4
+// 800C8DB4
 void lbCommonSetupFighterPartsDObjs
 (
-    DObj *root_dobj,
-    FTCommonPartContainer *commonparts_container,
-    s32 detail_curr,
-    DObj **dobjs,
-    u32 *setup_parts,
-    u8 tk1,
-    u8 tk2,
-    u8 tk3,
-    f32 anim_frame,
-    u8 arg9
+	DObj *root_dobj,
+	FTCommonPartContainer *commonparts_container,
+	s32 detail_curr,
+	DObj **dobjs,
+	u32 *setup_parts,
+	u8 tk1,
+	u8 tk2,
+	u8 tk3,
+	f32 anim_frame,
+	u8 arg9
 )
 {
-    s32 id;
-    s32 i;
-    u32 flags0;
-    u32 flags1;
-    u32 current_flags;
-    DObj *array_dobjs[DOBJ_ARRAY_MAX];
-    s32 detail_id;
-    DObjDesc *dobjdesc;
-    DObj *current_dobj;
+	s32 id;
+	s32 i;
+	u32 flags0;
+	u32 flags1;
+	u32 current_flags;
+	DObj *array_dobjs[DOBJ_ARRAY_MAX];
+	s32 detail_id;
+	DObjDesc *dobjdesc;
+	DObj *current_dobj;
 
-    dobjdesc = commonparts_container->commonparts[detail_curr - 1].dobjdesc;
+	dobjdesc = commonparts_container->commonparts[detail_curr - 1].dobjdesc;
 
-    flags0 = setup_parts[0], flags1 = setup_parts[1];
+	flags0 = setup_parts[0], flags1 = setup_parts[1];
 
-    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
-    {
-        array_dobjs[i] = NULL;
-    }
-    for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobjdesc->id != ARRAY_COUNT(array_dobjs)); i++)
-    {
-        current_flags = (i < NBITS(u32)) ? flags0 : flags1;
+	for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+	{
+		array_dobjs[i] = NULL;
+	}
+	for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobjdesc->id != ARRAY_COUNT(array_dobjs)); i++)
+	{
+		current_flags = (i < NBITS(u32)) ? flags0 : flags1;
 
-        if (current_flags & (1 << 31))
-        {
-            id = dobjdesc->id & 0xFFF;
-            
-            if
-            (
-                (detail_curr == nFTPartsDetailHigh) ||
-                (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobjdesc[i].dl == NULL)
-            )
-            {
-                detail_id = 0;
-            }
-            else detail_id = 1;
+		if (current_flags & (1 << 31))
+		{
+			id = dobjdesc->id & 0xFFF;
+			
+			if
+			(
+				(detail_curr == nFTPartsDetailHigh) ||
+				(commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobjdesc[i].dl == NULL)
+			)
+			{
+				detail_id = 0;
+			}
+			else detail_id = 1;
 
-            if (id != 0)
-            {
-                current_dobj = array_dobjs[id] = gcAddChildForDObj
-                (
-                    array_dobjs[id - 1],
-                    commonparts_container->commonparts[detail_id].dobjdesc[i].dl
-                );
-            }
-            else current_dobj = array_dobjs[0] = gcAddChildForDObj
-            (
-                root_dobj,
-                commonparts_container->commonparts[detail_id].dobjdesc[i].dl
-            );
-            if (dobjdesc->id & 0x8000)
-            {
-                gcDecideDObj3TransformsKind(current_dobj, tk1, tk2, tk3, 0x8000);
-            }
-            else lbCommonInitDObj(current_dobj, tk1, tk2, tk3, arg9);
+			if (id != 0)
+			{
+				current_dobj = array_dobjs[id] = gcAddChildForDObj
+				(
+					array_dobjs[id - 1],
+					commonparts_container->commonparts[detail_id].dobjdesc[i].dl
+				);
+			}
+			else current_dobj = array_dobjs[0] = gcAddChildForDObj
+			(
+				root_dobj,
+				commonparts_container->commonparts[detail_id].dobjdesc[i].dl
+			);
+			if (dobjdesc->id & 0x8000)
+			{
+				gcDecideDObj3TransformsKind(current_dobj, tk1, tk2, tk3, 0x8000);
+			}
+			else lbCommonInitDObj(current_dobj, tk1, tk2, tk3, arg9);
 
-            current_dobj->translate.vec.f = dobjdesc->translate;
-            current_dobj->rotate.vec.f = dobjdesc->rotate;
-            current_dobj->scale.vec.f = dobjdesc->scale;
+			current_dobj->translate.vec.f = dobjdesc->translate;
+			current_dobj->rotate.vec.f = dobjdesc->rotate;
+			current_dobj->scale.vec.f = dobjdesc->scale;
 
-            lbCommonAddMObjForFighterPartsDObj
-            (
-                current_dobj,
-                (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL) ?
-                commonparts_container->commonparts[detail_id].p_mobjsubs[i] : NULL,
-                (commonparts_container->commonparts[detail_id].p_costume_matanim_joints != NULL) ?
-                commonparts_container->commonparts[detail_id].p_costume_matanim_joints[i] : NULL,
-                NULL,
-                anim_frame
-            );
-            if (dobjs != NULL)
-            {
-                *dobjs = current_dobj;
-            }
-        }
-        dobjs++;
-        dobjdesc++;
+			lbCommonAddMObjForFighterPartsDObj
+			(
+				current_dobj,
+				(commonparts_container->commonparts[detail_id].p_mobjsubs != NULL) ?
+				commonparts_container->commonparts[detail_id].p_mobjsubs[i] : NULL,
+				(commonparts_container->commonparts[detail_id].p_costume_matanim_joints != NULL) ?
+				commonparts_container->commonparts[detail_id].p_costume_matanim_joints[i] : NULL,
+				NULL,
+				anim_frame
+			);
+			if (dobjs != NULL)
+			{
+				*dobjs = current_dobj;
+			}
+		}
+		dobjs++;
+		dobjdesc++;
 
-        if (i < NBITS(u32))
-        {
-            flags0 <<= 1;
-        }
-        else flags1 <<= 1;
-    }
+		if (i < NBITS(u32))
+		{
+			flags0 <<= 1;
+		}
+		else flags1 <<= 1;
+	}
 }
 
-// 0x800C9050
+// 800C9050
 void lbCommonSetupCustomTreeDObjsWithMObj
 (
-    DObj *root_dobj,
-    DObjDesc *dobjdesc,
-    MObjSub ***p_mobjsubs,
-    DObj **dobjs,
-    u8 tk1,
-    u8 tk2,
-    u8 tk3
+	DObj *root_dobj,
+	DObjDesc *dobjdesc,
+	MObjSub ***p_mobjsubs,
+	DObj **dobjs,
+	u8 tk1,
+	u8 tk2,
+	u8 tk3
 )
 {
-    s32 i;
-    DObj *dobj;
-    s32 id;
-    DObj *array_dobjs[DOBJ_ARRAY_MAX];
+	s32 i;
+	DObj *dobj;
+	s32 id;
+	DObj *array_dobjs[DOBJ_ARRAY_MAX];
 
-    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
-    {
-        array_dobjs[i] = NULL;
-    }
-    while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
-    {
-        id = dobjdesc->id & 0xFFF;
+	for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+	{
+		array_dobjs[i] = NULL;
+	}
+	while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
+	{
+		id = dobjdesc->id & 0xFFF;
 
-        if (id != 0)
-        {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
-        } 
-        else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->dl);
-        
-        if (dobjdesc->id & 0x8000) 
-        {
-            gcDecideDObj3TransformsKind(dobj, tk1, tk2, tk3, 0x8000);
-        } 
-        else gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
-        
-        dobj->translate.vec.f = dobjdesc->translate;
-        dobj->rotate.vec.f = dobjdesc->rotate;
-        dobj->scale.vec.f = dobjdesc->scale;
+		if (id != 0)
+		{
+			dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
+		} 
+		else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->dl);
+		
+		if (dobjdesc->id & 0x8000) 
+		{
+			gcDecideDObj3TransformsKind(dobj, tk1, tk2, tk3, 0x8000);
+		} 
+		else gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
+		
+		dobj->translate.vec.f = dobjdesc->translate;
+		dobj->rotate.vec.f = dobjdesc->rotate;
+		dobj->scale.vec.f = dobjdesc->scale;
 
-        if (p_mobjsubs != NULL)
-        {
-            if (*p_mobjsubs != NULL)
-            {
-                MObjSub **mobjsubs = *p_mobjsubs;
-                MObjSub *mobjsub = *mobjsubs;
+		if (p_mobjsubs != NULL)
+		{
+			if (*p_mobjsubs != NULL)
+			{
+				MObjSub **mobjsubs = *p_mobjsubs;
+				MObjSub *mobjsub = *mobjsubs;
 
-                while (mobjsub != NULL)
-                {
-                    gcAddMObjForDObj(dobj, mobjsub);
+				while (mobjsub != NULL)
+				{
+					gcAddMObjForDObj(dobj, mobjsub);
 
-                    mobjsubs++;
+					mobjsubs++;
 
-                    mobjsub = *mobjsubs;
-                }
-            }
-            p_mobjsubs++;
-        }
-        if (dobjs != NULL)
-        {
-            *dobjs++ = dobj;
-        }
-        dobjdesc++;
-    }
+					mobjsub = *mobjsubs;
+				}
+			}
+			p_mobjsubs++;
+		}
+		if (dobjs != NULL)
+		{
+			*dobjs++ = dobj;
+		}
+		dobjdesc++;
+	}
 }
 
-// 0x800C9228
+// 800C9228
 void lbCommonAddMObjForTreeDObjs(DObj *root_dobj, MObjSub ***p_mobjsubs)
 {
-    DObj *current_dobj = root_dobj;
-    
-    while (current_dobj != NULL)
-    {
-        if (p_mobjsubs != NULL)
-        {
-            if (*p_mobjsubs != NULL)
-            {
-                MObjSub **mobjsubs = *p_mobjsubs;
-                MObjSub *mobjsub = *mobjsubs;
-                    
-                while (mobjsub != NULL)
-                {
-                    gcAddMObjForDObj(current_dobj, mobjsub);
-                        
-                    mobjsubs++;
-                    mobjsub = *mobjsubs;
-                }
-            }
-            p_mobjsubs++;
-        }
-        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
-    }
+	DObj *current_dobj = root_dobj;
+	
+	while (current_dobj != NULL)
+	{
+		if (p_mobjsubs != NULL)
+		{
+			if (*p_mobjsubs != NULL)
+			{
+				MObjSub **mobjsubs = *p_mobjsubs;
+				MObjSub *mobjsub = *mobjsubs;
+					
+				while (mobjsub != NULL)
+				{
+					gcAddMObjForDObj(current_dobj, mobjsub);
+						
+					mobjsubs++;
+					mobjsub = *mobjsubs;
+				}
+			}
+			p_mobjsubs++;
+		}
+		current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
+	}
 }
 
-// 0x800C92C8
+// 800C92C8
 void lbCommonPlayTreeDObjsAnim(DObj *root_dobj)
 {
-    DObj *current_dobj = root_dobj;
-    
-    while (current_dobj != NULL)
-    {
-        gcPlayDObjAnimJoint(current_dobj);
-        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
-    }
+	DObj *current_dobj = root_dobj;
+	
+	while (current_dobj != NULL)
+	{
+		gcPlayDObjAnimJoint(current_dobj);
+		current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
+	}
 }
 
-// 0x800C9314
+// 800C9314
 void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc)
 {
-    DObj *current_dobj = root_dobj;
-    
-    while ((current_dobj != NULL) && (dobjdesc->id != DOBJ_ARRAY_MAX))
-    {
-        current_dobj->translate.vec.f = dobjdesc->translate;
-        current_dobj->rotate.vec.f = dobjdesc->rotate;
-        current_dobj->scale.vec.f = dobjdesc->scale;
+	DObj *current_dobj = root_dobj;
+	
+	while ((current_dobj != NULL) && (dobjdesc->id != DOBJ_ARRAY_MAX))
+	{
+		current_dobj->translate.vec.f = dobjdesc->translate;
+		current_dobj->rotate.vec.f = dobjdesc->rotate;
+		current_dobj->scale.vec.f = dobjdesc->scale;
 
-        dobjdesc++;
-        
-        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
-    }
+		dobjdesc++;
+		
+		current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
+	}
 }
 
-// 0x800C93D4
+// 800C93D4
 void lbCommonInsertTreeDObjChild(DObj *root_dobj, void *dvar)
 {
 	DObj *dobj = gcAddDObjForGObj(root_dobj->parent_gobj, dvar);
@@ -1237,119 +1237,119 @@ void lbCommonInsertTreeDObjChild(DObj *root_dobj, void *dvar)
 	dobj->parent = root_dobj;
 }
 
-// 0x800C9424
+// 800C9424
 void lbCommonEjectTreeDObj(DObj *dobj)
 {
-    DObj *child_dobj = dobj->child;
-    DObj *parent_dobj = dobj->parent;
+	DObj *child_dobj = dobj->child;
+	DObj *parent_dobj = dobj->parent;
 
-    dobj->child = NULL;
-    
-    gcEjectDObj(dobj);
-    
-    if (parent_dobj == DOBJ_PARENT_NULL)
-    {
-        child_dobj->parent_gobj->obj = child_dobj;
-        child_dobj->parent_gobj->obj_kind = nGCCommonAppendDObj;
-    } 
-    else parent_dobj->child = child_dobj;
-    
-    child_dobj->parent = parent_dobj;
+	dobj->child = NULL;
+	
+	gcEjectDObj(dobj);
+	
+	if (parent_dobj == DOBJ_PARENT_NULL)
+	{
+		child_dobj->parent_gobj->obj = child_dobj;
+		child_dobj->parent_gobj->obj_kind = nGCCommonAppendDObj;
+	} 
+	else parent_dobj->child = child_dobj;
+	
+	child_dobj->parent = parent_dobj;
 }
 
-// 0x800C9488
+// 800C9488
 void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
 {
-    f32 interp;
+	f32 interp;
 
-    if (dobj->anim_wait != AOBJ_ANIM_NULL)
-    {
-        AObj *aobj = dobj->aobj;
+	if (dobj->anim_wait != AOBJ_ANIM_NULL)
+	{
+		AObj *aobj = dobj->aobj;
 
-        while (aobj != NULL)
-        {
-            if (aobj->kind != nGCAnimKindNone)
-            {
-                if (dobj->anim_wait != AOBJ_ANIM_END)
-                {
-                    aobj->length += dobj->anim_speed;
-                }
-                if (!(dobj->parent_gobj->flags & GOBJ_FLAG_NOANIM))
-                {
-                    switch (aobj->track)
-                    {
-                    case nGCAnimTrackRotX:
-                        dobj->rotate.vec.f.x = gcGetAObjValue(aobj);
-                        break;
+		while (aobj != NULL)
+		{
+			if (aobj->kind != nGCAnimKindNone)
+			{
+				if (dobj->anim_wait != AOBJ_ANIM_END)
+				{
+					aobj->length += dobj->anim_speed;
+				}
+				if (!(dobj->parent_gobj->flags & GOBJ_FLAG_NOANIM))
+				{
+					switch (aobj->track)
+					{
+					case nGCAnimTrackRotX:
+						dobj->rotate.vec.f.x = gcGetAObjValue(aobj);
+						break;
 
-                    case nGCAnimTrackRotY:
-                        dobj->rotate.vec.f.y = gcGetAObjValue(aobj);
-                        break;
+					case nGCAnimTrackRotY:
+						dobj->rotate.vec.f.y = gcGetAObjValue(aobj);
+						break;
 
-                    case nGCAnimTrackRotZ:
-                        dobj->rotate.vec.f.z = gcGetAObjValue(aobj);
-                        break;
+					case nGCAnimTrackRotZ:
+						dobj->rotate.vec.f.z = gcGetAObjValue(aobj);
+						break;
 
-                    case nGCAnimTrackTraI:
-                        interp = gcGetAObjValue(aobj);
+					case nGCAnimTrackTraI:
+						interp = gcGetAObjValue(aobj);
 
-                        if (interp < 0.0F)
-                        {
-                            interp = 0.0F;
-                        }
-                        else if (interp > 1.0F)
-                        {
-                            interp = 1.0F;
-                        }
-                        syInterpCubic(&dobj->translate.vec.f, aobj->interpolate, interp);
+						if (interp < 0.0F)
+						{
+							interp = 0.0F;
+						}
+						else if (interp > 1.0F)
+						{
+							interp = 1.0F;
+						}
+						syInterpCubic(&dobj->translate.vec.f, aobj->interpolate, interp);
 
-                        dobj->translate.vec.f.x *= scale->x;
-                        dobj->translate.vec.f.y *= scale->y;
-                        dobj->translate.vec.f.z *= scale->z;
-                        break;
+						dobj->translate.vec.f.x *= scale->x;
+						dobj->translate.vec.f.y *= scale->y;
+						dobj->translate.vec.f.z *= scale->z;
+						break;
 
-                    case nGCAnimTrackTraX:
-                        dobj->translate.vec.f.x = gcGetAObjValue(aobj) * scale->x;
-                        break;
+					case nGCAnimTrackTraX:
+						dobj->translate.vec.f.x = gcGetAObjValue(aobj) * scale->x;
+						break;
 
-                    case nGCAnimTrackTraY:
-                        dobj->translate.vec.f.y = gcGetAObjValue(aobj) * scale->y;
-                        break;
+					case nGCAnimTrackTraY:
+						dobj->translate.vec.f.y = gcGetAObjValue(aobj) * scale->y;
+						break;
 
-                    case nGCAnimTrackTraZ:
-                        dobj->translate.vec.f.z = gcGetAObjValue(aobj) * scale->z;
-                        break;
+					case nGCAnimTrackTraZ:
+						dobj->translate.vec.f.z = gcGetAObjValue(aobj) * scale->z;
+						break;
 
-                    case nGCAnimTrackScaX:
-                        dobj->scale.vec.f.x = gcGetAObjValue(aobj);
-                        break;
+					case nGCAnimTrackScaX:
+						dobj->scale.vec.f.x = gcGetAObjValue(aobj);
+						break;
 
-                    case nGCAnimTrackScaY:
-                        dobj->scale.vec.f.y = gcGetAObjValue(aobj);
-                        break;
+					case nGCAnimTrackScaY:
+						dobj->scale.vec.f.y = gcGetAObjValue(aobj);
+						break;
 
-                    case nGCAnimTrackScaZ:
-                        dobj->scale.vec.f.z = gcGetAObjValue(aobj);
-                        break;
-                    }
-                }
-            }
-            aobj = aobj->next;
-        }
-        if (dobj->anim_wait == AOBJ_ANIM_END)
-        {
-            dobj->anim_wait = AOBJ_ANIM_NULL;
-        }
-    }
+					case nGCAnimTrackScaZ:
+						dobj->scale.vec.f.z = gcGetAObjValue(aobj);
+						break;
+					}
+				}
+			}
+			aobj = aobj->next;
+		}
+		if (dobj->anim_wait == AOBJ_ANIM_END)
+		{
+			dobj->anim_wait = AOBJ_ANIM_NULL;
+		}
+	}
 }
 
-// 0x800C96DC
+// 800C96DC
 void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    return;
+	return;
 }
 
-// 0x800C96EC
+// 800C96EC
 sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 0);
@@ -1357,7 +1357,7 @@ sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
 	return 0;
 }
 
-// 0x800C9714
+// 800C9714
 sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 1);
@@ -1365,762 +1365,762 @@ sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 	return 0;
 }
 
-// 0x800C973C
+// 800C973C
 sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
-    FTParts *parts = ftGetParts(dobj);
-    
-    if (!(flag))
-    {
-        if (parts->transform_update_mode != 0)
-        {
-            syMatrixF2LFixedW(&parts->unk_dobjtrans_0x10, mtx);
-        }
-        else
-        {
-            if ((dobj->scale.vec.f.x != 1.0F) || (dobj->scale.vec.f.y != 1.0F) || (dobj->scale.vec.f.z != 1.0F))
-            {
-                syMatrixTraRotRpyRSca
-                (
-                    mtx,
-                    dobj->translate.vec.f.x,
-                    dobj->translate.vec.f.y,
-                    dobj->translate.vec.f.z,
-                    dobj->rotate.vec.f.x,
-                    dobj->rotate.vec.f.y,
-                    dobj->rotate.vec.f.z,
-                    dobj->scale.vec.f.x,
-                    dobj->scale.vec.f.y,
-                    dobj->scale.vec.f.z
-                );
-            }
-            else syMatrixTraRotRpyR
-            (
-                mtx,
-                dobj->translate.vec.f.x,
-                dobj->translate.vec.f.y,
-                dobj->translate.vec.f.z,
-                dobj->rotate.vec.f.x,
-                dobj->rotate.vec.f.y,
-                dobj->rotate.vec.f.z
-            );
-        }
-    }
-    else
-    {
-        if (parts->transform_update_mode != 0)
-        {
-            syMatrixF2LFixedW(&parts->unk_dobjtrans_0x10, mtx);
-        }
-        else
-        {
-            parts->vec_scale.x = dobj->scale.vec.f.x * gLBCommonScale.x;
-            parts->vec_scale.y = dobj->scale.vec.f.y * gLBCommonScale.y;
-            parts->vec_scale.z = dobj->scale.vec.f.z * gLBCommonScale.z;
+	ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
+	FTParts *parts = ftGetParts(dobj);
+	
+	if (!(flag))
+	{
+		if (parts->transform_update_mode != 0)
+		{
+			syMatrixF2LFixedW(&parts->unk_dobjtrans_0x10, mtx);
+		}
+		else
+		{
+			if ((dobj->scale.vec.f.x != 1.0F) || (dobj->scale.vec.f.y != 1.0F) || (dobj->scale.vec.f.z != 1.0F))
+			{
+				syMatrixTraRotRpyRSca
+				(
+					mtx,
+					dobj->translate.vec.f.x,
+					dobj->translate.vec.f.y,
+					dobj->translate.vec.f.z,
+					dobj->rotate.vec.f.x,
+					dobj->rotate.vec.f.y,
+					dobj->rotate.vec.f.z,
+					dobj->scale.vec.f.x,
+					dobj->scale.vec.f.y,
+					dobj->scale.vec.f.z
+				);
+			}
+			else syMatrixTraRotRpyR
+			(
+				mtx,
+				dobj->translate.vec.f.x,
+				dobj->translate.vec.f.y,
+				dobj->translate.vec.f.z,
+				dobj->rotate.vec.f.x,
+				dobj->rotate.vec.f.y,
+				dobj->rotate.vec.f.z
+			);
+		}
+	}
+	else
+	{
+		if (parts->transform_update_mode != 0)
+		{
+			syMatrixF2LFixedW(&parts->unk_dobjtrans_0x10, mtx);
+		}
+		else
+		{
+			parts->vec_scale.x = dobj->scale.vec.f.x * gLBCommonScale.x;
+			parts->vec_scale.y = dobj->scale.vec.f.y * gLBCommonScale.y;
+			parts->vec_scale.z = dobj->scale.vec.f.z * gLBCommonScale.z;
 
-            lbCommonMatrixTraRotScaInv
-            (
-                mtx,
-                dobj->translate.vec.f.x,
-                dobj->translate.vec.f.y,
-                dobj->translate.vec.f.z,
-                dobj->rotate.vec.f.x,
-                dobj->rotate.vec.f.y,
-                dobj->rotate.vec.f.z,
-                gLBCommonScale.x,
-                gLBCommonScale.y,
-                gLBCommonScale.z,
-                parts->vec_scale.x,
-                parts->vec_scale.y,
-                parts->vec_scale.z
-            );
-        }
-        gLBCommonScale = parts->vec_scale;
-    }
-    return 0;
+			lbCommonMatrixTraRotScaInv
+			(
+				mtx,
+				dobj->translate.vec.f.x,
+				dobj->translate.vec.f.y,
+				dobj->translate.vec.f.z,
+				dobj->rotate.vec.f.x,
+				dobj->rotate.vec.f.y,
+				dobj->rotate.vec.f.z,
+				gLBCommonScale.x,
+				gLBCommonScale.y,
+				gLBCommonScale.z,
+				parts->vec_scale.x,
+				parts->vec_scale.y,
+				parts->vec_scale.z
+			);
+		}
+		gLBCommonScale = parts->vec_scale;
+	}
+	return 0;
 }
 
-// 0x800C994C
+// 800C994C
 sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    s32 unused;
-    DObj *attach_dobj = dobj->user_data.p;
-    FTParts *parts = attach_dobj->user_data.p;
-    Mtx44f f;
-    
-    func_ovl2_800EDBA4(attach_dobj);
-    gmCollisionCopyMatrix(f, parts->mtx_translate);
-    gGCScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
-    syMatrixF2LFixedW(&f, mtx);
-    
-    return 0;
+	s32 unused;
+	DObj *attach_dobj = dobj->user_data.p;
+	FTParts *parts = attach_dobj->user_data.p;
+	Mtx44f f;
+	
+	func_ovl2_800EDBA4(attach_dobj);
+	gmCollisionCopyMatrix(f, parts->mtx_translate);
+	gGCScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
+	syMatrixF2LFixedW(&f, mtx);
+	
+	return 0;
 }
 
-// 0x800C99CC
+// 800C99CC
 sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    s32 unused[2];
-    DObj *attach_dobj = dobj->user_data.p;
-    
-    // 0x800D5CA0
-    Vec3f translate_base = { 0.0F, 0.0F, 0.0F };
+	s32 unused[2];
+	DObj *attach_dobj = dobj->user_data.p;
+	
+// 800D5CA0
+	Vec3f translate_base = { 0.0F, 0.0F, 0.0F };
 
-    gmCollisionGetFighterPartsWorldPosition(attach_dobj, &translate_base);
-    
-    syMatrixTra(mtx, translate_base.x, translate_base.y, translate_base.z);
-    
-    return 0;
+	gmCollisionGetFighterPartsWorldPosition(attach_dobj, &translate_base);
+	
+	syMatrixTra(mtx, translate_base.x, translate_base.y, translate_base.z);
+	
+	return 0;
 }
 
-// 0x800C9A38
+// 800C9A38
 void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
 {
-    FTParts *parts = ftGetParts(dobj);
-    FTStruct *fp = ftGetStruct(dobj->parent_gobj);
-    Mtx44f *p;
-    f32 scale;
-    DObj *parent_dobj;
-    Mtx44f f;
-    
-    if ((fp->is_use_animlocks) || (dobj->parent == DOBJ_PARENT_NULL))
-    {
-        func_ovl2_800EDBA4(dobj);
+	FTParts *parts = ftGetParts(dobj);
+	FTStruct *fp = ftGetStruct(dobj->parent_gobj);
+	Mtx44f *p;
+	f32 scale;
+	DObj *parent_dobj;
+	Mtx44f f;
+	
+	if ((fp->is_use_animlocks) || (dobj->parent == DOBJ_PARENT_NULL))
+	{
+		func_ovl2_800EDBA4(dobj);
 
-        p = &parts->mtx_translate;
-        
-        scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
+		p = &parts->mtx_translate;
+		
+		scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        mtx[0][0] = (*p)[0][0] * scale;
-        mtx[0][1] = (*p)[0][1] * scale;
-        mtx[0][2] = (*p)[0][2] * scale;
-        
-        scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		mtx[0][0] = (*p)[0][0] * scale;
+		mtx[0][1] = (*p)[0][1] * scale;
+		mtx[0][2] = (*p)[0][2] * scale;
+		
+		scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        mtx[1][0] = (*p)[1][0] * scale;
-        mtx[1][1] = (*p)[1][1] * scale;
-        mtx[1][2] = (*p)[1][2] * scale;
-        
-        scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		mtx[1][0] = (*p)[1][0] * scale;
+		mtx[1][1] = (*p)[1][1] * scale;
+		mtx[1][2] = (*p)[1][2] * scale;
+		
+		scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        mtx[2][0] = (*p)[2][0] * scale;
-        mtx[2][1] = (*p)[2][1] * scale;
-        mtx[2][2] = (*p)[2][2] * scale;
-        
-        mtx[3][0] = (*p)[3][0];
-        mtx[3][1] = (*p)[3][1];
-        mtx[3][2] = (*p)[3][2];
-    }
-    else
-    {
-        parent_dobj = dobj->parent;
-        
-        gmCollisionTransformMatrixAll(dobj, parts, parts->unk_dobjtrans_0x10);
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		mtx[2][0] = (*p)[2][0] * scale;
+		mtx[2][1] = (*p)[2][1] * scale;
+		mtx[2][2] = (*p)[2][2] * scale;
+		
+		mtx[3][0] = (*p)[3][0];
+		mtx[3][1] = (*p)[3][1];
+		mtx[3][2] = (*p)[3][2];
+	}
+	else
+	{
+		parent_dobj = dobj->parent;
+		
+		gmCollisionTransformMatrixAll(dobj, parts, parts->unk_dobjtrans_0x10);
 
-        p = &parts->unk_dobjtrans_0x10;
+		p = &parts->unk_dobjtrans_0x10;
 
-        scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
+		scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        f[0][0] = (*p)[0][0] * scale;
-        f[0][1] = (*p)[0][1] * scale;
-        f[0][2] = (*p)[0][2] * scale;
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		f[0][0] = (*p)[0][0] * scale;
+		f[0][1] = (*p)[0][1] * scale;
+		f[0][2] = (*p)[0][2] * scale;
 
-        scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
+		scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        f[1][0] = (*p)[1][0] * scale;
-        f[1][1] = (*p)[1][1] * scale;
-        f[1][2] = (*p)[1][2] * scale;
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		f[1][0] = (*p)[1][0] * scale;
+		f[1][1] = (*p)[1][1] * scale;
+		f[1][2] = (*p)[1][2] * scale;
 
-        scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
+		scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        f[2][0] = (*p)[2][0] * scale;
-        f[2][1] = (*p)[2][1] * scale;
-        f[2][2] = (*p)[2][2] * scale;
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		f[2][0] = (*p)[2][0] * scale;
+		f[2][1] = (*p)[2][1] * scale;
+		f[2][2] = (*p)[2][2] * scale;
 
-        f[3][0] = (*p)[3][0];
-        f[3][1] = (*p)[3][1];
-        f[3][2] = (*p)[3][2];
+		f[3][0] = (*p)[3][0];
+		f[3][1] = (*p)[3][1];
+		f[3][2] = (*p)[3][2];
 
-        func_ovl2_800EDBA4(parent_dobj);
+		func_ovl2_800EDBA4(parent_dobj);
 
-        p = &ftGetParts(parent_dobj)->mtx_translate;
+		p = &ftGetParts(parent_dobj)->mtx_translate;
 
-        scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
+		scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        f[0][0] *= scale;
-        f[1][0] *= scale;
-        f[2][0] *= scale;
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		f[0][0] *= scale;
+		f[1][0] *= scale;
+		f[2][0] *= scale;
 
-        scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
+		scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        f[0][1] *= scale;
-        f[1][1] *= scale;
-        f[2][1] *= scale;
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		f[0][1] *= scale;
+		f[1][1] *= scale;
+		f[2][1] *= scale;
 
-        scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
+		scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
 
-        if (scale != 0.0F)
-        {
-            scale = 1.0F / scale;
-        }
-        f[0][2] *= scale;
-        f[1][2] *= scale;
-        f[2][2] *= scale;
+		if (scale != 0.0F)
+		{
+			scale = 1.0F / scale;
+		}
+		f[0][2] *= scale;
+		f[1][2] *= scale;
+		f[2][2] *= scale;
 
-        func_ovl2_800ED490(mtx, *p, f);
-    }
+		func_ovl2_800ED490(mtx, *p, f);
+	}
 }
 
-// 0x800C9F30
+// 800C9F30
 sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    Mtx44f f;
+	Mtx44f f;
 
-    func_ovl0_800C9A38(f, dobj->user_data.p);
-    syMatrixF2LFixedW(&f, mtx);
-    
-    return 0;
+	func_ovl0_800C9A38(f, dobj->user_data.p);
+	syMatrixF2LFixedW(&f, mtx);
+	
+	return 0;
 }
 
 #if defined(REGION_US)
-// 0x800C9F70
+// 800C9F70
 sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    DObj *attach_dobj = dobj->user_data.p;
-    FTStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
-    Mtx44f f;
-    
-    func_ovl0_800C9A38(f, attach_dobj);
-    
-    if (fp->shuffle_tics != 0)
-    {
-        f[3][0] += dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x;
-        f[3][1] += dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y;
-    }
-    syMatrixF2LFixedW(&f, mtx);
-    
-    return 0;
+	DObj *attach_dobj = dobj->user_data.p;
+	FTStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
+	Mtx44f f;
+	
+	func_ovl0_800C9A38(f, attach_dobj);
+	
+	if (fp->shuffle_tics != 0)
+	{
+		f[3][0] += dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x;
+		f[3][1] += dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y;
+	}
+	syMatrixF2LFixedW(&f, mtx);
+	
+	return 0;
 }
 #endif
 
-// 0x800CA024
+// 800CA024
 sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    s32 e1, e2;
+	s32 e1, e2;
 
-    e1 = FTOFIX32(dobj->scale.vec.f.x);
-    e2 = 0;
+	e1 = FTOFIX32(dobj->scale.vec.f.x);
+	e2 = 0;
 
-    mtx->m[0][0] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    mtx->m[2][0] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	mtx->m[0][0] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	mtx->m[2][0] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    mtx->m[0][1] = 0;
-    mtx->m[2][1] = 0;
-    
-    e1 = 0;
-    e2 = FTOFIX32(dobj->scale.vec.f.y);
-    
-    mtx->m[0][2] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    mtx->m[2][2] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	mtx->m[0][1] = 0;
+	mtx->m[2][1] = 0;
+	
+	e1 = 0;
+	e2 = FTOFIX32(dobj->scale.vec.f.y);
+	
+	mtx->m[0][2] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	mtx->m[2][2] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    mtx->m[0][3] = 0;
-    mtx->m[2][3] = 0;
-    
-    mtx->m[1][0] = 0;
-    mtx->m[3][0] = 0;
-    
-    e1 = FTOFIX32(dobj->scale.vec.f.z);
-    e2 = 0;
+	mtx->m[0][3] = 0;
+	mtx->m[2][3] = 0;
+	
+	mtx->m[1][0] = 0;
+	mtx->m[3][0] = 0;
+	
+	e1 = FTOFIX32(dobj->scale.vec.f.z);
+	e2 = 0;
 
-    mtx->m[1][1] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    mtx->m[3][1] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);  
-    
-    e1 = FTOFIX32(dobj->translate.vec.f.x);
-    e2 = FTOFIX32(dobj->translate.vec.f.y);
-    
-    mtx->m[1][2] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    mtx->m[3][2] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-    
-    e1 = FTOFIX32(dobj->translate.vec.f.z);
-    e2 = 0x10000;
+	mtx->m[1][1] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	mtx->m[3][1] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);  
+	
+	e1 = FTOFIX32(dobj->translate.vec.f.x);
+	e2 = FTOFIX32(dobj->translate.vec.f.y);
+	
+	mtx->m[1][2] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	mtx->m[3][2] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	
+	e1 = FTOFIX32(dobj->translate.vec.f.z);
+	e2 = 0x10000;
 
-    mtx->m[1][3] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    mtx->m[3][3] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-    
-    return 0;
+	mtx->m[1][3] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	mtx->m[3][3] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	
+	return 0;
 }
 
-// 0x800CA144
+// 800CA144
 sb32 lbCommonRotScaFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    lbCommonMatrixRotSca
-    (
-        mtx,
-        dobj->rotate.vec.f.x,
-        dobj->rotate.vec.f.y,
-        dobj->rotate.vec.f.z,
-        dobj->scale.vec.f.x,
-        dobj->scale.vec.f.y,
-        dobj->scale.vec.f.z
-    );
-    return 0;
+	lbCommonMatrixRotSca
+	(
+		mtx,
+		dobj->rotate.vec.f.x,
+		dobj->rotate.vec.f.y,
+		dobj->rotate.vec.f.z,
+		dobj->scale.vec.f.x,
+		dobj->scale.vec.f.y,
+		dobj->scale.vec.f.z
+	);
+	return 0;
 }
 
-// 0x800CA194
+// 800CA194
 sb32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    s32 unused;
-    int e1, e2;
-    int *ai, *af;
-    f32 sinz, cosz;
-    Gfx *dl;
+	s32 unused;
+	int e1, e2;
+	int *ai, *af;
+	f32 sinz, cosz;
+	Gfx *dl;
 
-    dl = dls[0];
+	dl = dls[0];
 
-    ai = (int*)&mtx->m[0][0];
-    af = (int*)&mtx->m[2][0];
-    
-    sinz = __sinf(dobj->rotate.vec.f.z);
-    cosz = __cosf(dobj->rotate.vec.f.z);
+	ai = (int*)&mtx->m[0][0];
+	af = (int*)&mtx->m[2][0];
+	
+	sinz = __sinf(dobj->rotate.vec.f.z);
+	cosz = __cosf(dobj->rotate.vec.f.z);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosz + gGCMatrixPerspF[1][0] * sinz);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosz + gGCMatrixPerspF[1][1] * sinz);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosz + gGCMatrixPerspF[1][0] * sinz);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosz + gGCMatrixPerspF[1][1] * sinz);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosz + gGCMatrixPerspF[1][2] * sinz);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosz + gGCMatrixPerspF[1][3] * sinz);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosz + gGCMatrixPerspF[1][2] * sinz);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosz + gGCMatrixPerspF[1][3] * sinz);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * -sinz + gGCMatrixPerspF[1][0] * cosz);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * -sinz + gGCMatrixPerspF[1][1] * cosz);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][0] * -sinz + gGCMatrixPerspF[1][0] * cosz);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][1] * -sinz + gGCMatrixPerspF[1][1] * cosz);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * -sinz + gGCMatrixPerspF[1][2] * cosz);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * -sinz + gGCMatrixPerspF[1][3] * cosz);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][2] * -sinz + gGCMatrixPerspF[1][2] * cosz);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][3] * -sinz + gGCMatrixPerspF[1][3] * cosz);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[2][0]);
-    e2 = FTOFIX32(gGCMatrixPerspF[2][1]);
-    
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-    
-    e1 = FTOFIX32(gGCMatrixPerspF[2][2]);
-    e2 = FTOFIX32(gGCMatrixPerspF[2][3]);
-    
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-    
-    gSPMvpRecalc(dl++);
-    
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
-    
-    dls[0] = dl;
-    
-    return 1;
+	e1 = FTOFIX32(gGCMatrixPerspF[2][0]);
+	e2 = FTOFIX32(gGCMatrixPerspF[2][1]);
+	
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	
+	e1 = FTOFIX32(gGCMatrixPerspF[2][2]);
+	e2 = FTOFIX32(gGCMatrixPerspF[2][3]);
+	
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	
+	gSPMvpRecalc(dl++);
+	
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
+	
+	dls[0] = dl;
+	
+	return 1;
 }
 
-// 0x800CA5C8
+// 800CA5C8
 sb32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    s32 unused;
-    int e1, e2;
-    int *ai, *af;
-    f32 sinx, siny;
-    f32 cosx, cosy;
-    Gfx *dl;
+	s32 unused;
+	int e1, e2;
+	int *ai, *af;
+	f32 sinx, siny;
+	f32 cosx, cosy;
+	Gfx *dl;
 
-    dl = dls[0];
+	dl = dls[0];
 
-    ai = (int*)&mtx->m[0][0];
-    af = (int*)&mtx->m[2][0];
-    
-    sinx = __sinf(dobj->rotate.vec.f.x);
-    cosx = __cosf(dobj->rotate.vec.f.x);
-    
-    siny = __sinf(dobj->rotate.vec.f.y);
-    cosy = __cosf(dobj->rotate.vec.f.y);
+	ai = (int*)&mtx->m[0][0];
+	af = (int*)&mtx->m[2][0];
+	
+	sinx = __sinf(dobj->rotate.vec.f.x);
+	cosx = __cosf(dobj->rotate.vec.f.x);
+	
+	siny = __sinf(dobj->rotate.vec.f.y);
+	cosy = __cosf(dobj->rotate.vec.f.y);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosy + gGCMatrixPerspF[2][0] * -siny);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosy + gGCMatrixPerspF[2][1] * -siny);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosy + gGCMatrixPerspF[2][0] * -siny);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosy + gGCMatrixPerspF[2][1] * -siny);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosy + gGCMatrixPerspF[2][2] * -siny);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosy + gGCMatrixPerspF[2][3] * -siny);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosy + gGCMatrixPerspF[2][2] * -siny);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosy + gGCMatrixPerspF[2][3] * -siny);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * sinx * siny + gGCMatrixPerspF[1][0] * cosx + gGCMatrixPerspF[2][0] * sinx * cosy);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * sinx * siny + gGCMatrixPerspF[1][1] * cosx + gGCMatrixPerspF[2][1] * sinx * cosy);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][0] * sinx * siny + gGCMatrixPerspF[1][0] * cosx + gGCMatrixPerspF[2][0] * sinx * cosy);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][1] * sinx * siny + gGCMatrixPerspF[1][1] * cosx + gGCMatrixPerspF[2][1] * sinx * cosy);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * sinx * siny + gGCMatrixPerspF[1][2] * cosx + gGCMatrixPerspF[2][2] * sinx * cosy);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * sinx * siny + gGCMatrixPerspF[1][3] * cosx + gGCMatrixPerspF[2][3] * sinx * cosy);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][2] * sinx * siny + gGCMatrixPerspF[1][2] * cosx + gGCMatrixPerspF[2][2] * sinx * cosy);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][3] * sinx * siny + gGCMatrixPerspF[1][3] * cosx + gGCMatrixPerspF[2][3] * sinx * cosy);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosx * siny + gGCMatrixPerspF[1][0] * -sinx + gGCMatrixPerspF[2][0] * cosx * cosy);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosx * siny + gGCMatrixPerspF[1][1] * -sinx + gGCMatrixPerspF[2][1] * cosx * cosy);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosx * siny + gGCMatrixPerspF[1][0] * -sinx + gGCMatrixPerspF[2][0] * cosx * cosy);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosx * siny + gGCMatrixPerspF[1][1] * -sinx + gGCMatrixPerspF[2][1] * cosx * cosy);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosx * siny + gGCMatrixPerspF[1][2] * -sinx + gGCMatrixPerspF[2][2] * cosx * cosy);
-    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosx * siny + gGCMatrixPerspF[1][3] * -sinx + gGCMatrixPerspF[2][3] * cosx * cosy);
+	e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosx * siny + gGCMatrixPerspF[1][2] * -sinx + gGCMatrixPerspF[2][2] * cosx * cosy);
+	e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosx * siny + gGCMatrixPerspF[1][3] * -sinx + gGCMatrixPerspF[2][3] * cosx * cosy);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-    
-    gSPMvpRecalc(dl++);
-    
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
-    
-    dls[0] = dl;
-    
-    return 1;
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	
+	gSPMvpRecalc(dl++);
+	
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
+	
+	dls[0] = dl;
+	
+	return 1;
 }
 
-// 0x800CAB48
+// 800CAB48
 sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    f32 scaley;
-    int e1, e2;
-    int *ai, *af;
-    f32 sinx, siny;
-    f32 cosx, cosy;
-    f32 *p;
-    f32 scalex;
-    Gfx *dl;
+	f32 scaley;
+	int e1, e2;
+	int *ai, *af;
+	f32 sinx, siny;
+	f32 cosx, cosy;
+	f32 *p;
+	f32 scalex;
+	Gfx *dl;
 
-    dl = dls[0];
+	dl = dls[0];
 
-    ai = (int*)&mtx->m[0][0];
-    af = (int*)&mtx->m[2][0];
+	ai = (int*)&mtx->m[0][0];
+	af = (int*)&mtx->m[2][0];
 
-    sinx = __sinf(dobj->rotate.vec.f.x);
-    cosx = __cosf(dobj->rotate.vec.f.x);
+	sinx = __sinf(dobj->rotate.vec.f.x);
+	cosx = __cosf(dobj->rotate.vec.f.x);
 
-    p = &dobj->scale.vec.f.x;
-    
-    siny = __sinf(dobj->rotate.vec.f.y);
-    cosy = __cosf(dobj->rotate.vec.f.y);
+	p = &dobj->scale.vec.f.x;
+	
+	siny = __sinf(dobj->rotate.vec.f.y);
+	cosy = __cosf(dobj->rotate.vec.f.y);
 
-    scaley = (dobj->scale.vec.f.y * gGCScaleX);
-    scalex = gGCScaleX *= *p;
+	scaley = (dobj->scale.vec.f.y * gGCScaleX);
+	scalex = gGCScaleX *= *p;
 
-    e1 = FTOFIX32((gGCMatrixPerspF[0][0] * cosy + gGCMatrixPerspF[2][0] * -siny) * scalex);
-    e2 = FTOFIX32((gGCMatrixPerspF[0][1] * cosy + gGCMatrixPerspF[2][1] * -siny) * scalex);
+	e1 = FTOFIX32((gGCMatrixPerspF[0][0] * cosy + gGCMatrixPerspF[2][0] * -siny) * scalex);
+	e2 = FTOFIX32((gGCMatrixPerspF[0][1] * cosy + gGCMatrixPerspF[2][1] * -siny) * scalex);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gGCMatrixPerspF[0][2] * cosy + gGCMatrixPerspF[2][2] * -siny) * scalex);
-    e2 = FTOFIX32((gGCMatrixPerspF[0][3] * cosy + gGCMatrixPerspF[2][3] * -siny) * scalex);
+	e1 = FTOFIX32((gGCMatrixPerspF[0][2] * cosy + gGCMatrixPerspF[2][2] * -siny) * scalex);
+	e2 = FTOFIX32((gGCMatrixPerspF[0][3] * cosy + gGCMatrixPerspF[2][3] * -siny) * scalex);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gGCMatrixPerspF[0][0] * sinx * siny + gGCMatrixPerspF[1][0] * cosx + gGCMatrixPerspF[2][0] * sinx * cosy) * scaley);
-    e2 = FTOFIX32((gGCMatrixPerspF[0][1] * sinx * siny + gGCMatrixPerspF[1][1] * cosx + gGCMatrixPerspF[2][1] * sinx * cosy) * scaley);
+	e1 = FTOFIX32((gGCMatrixPerspF[0][0] * sinx * siny + gGCMatrixPerspF[1][0] * cosx + gGCMatrixPerspF[2][0] * sinx * cosy) * scaley);
+	e2 = FTOFIX32((gGCMatrixPerspF[0][1] * sinx * siny + gGCMatrixPerspF[1][1] * cosx + gGCMatrixPerspF[2][1] * sinx * cosy) * scaley);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gGCMatrixPerspF[0][2] * sinx * siny + gGCMatrixPerspF[1][2] * cosx + gGCMatrixPerspF[2][2] * sinx * cosy) * scaley);
-    e2 = FTOFIX32((gGCMatrixPerspF[0][3] * sinx * siny + gGCMatrixPerspF[1][3] * cosx + gGCMatrixPerspF[2][3] * sinx * cosy) * scaley);
+	e1 = FTOFIX32((gGCMatrixPerspF[0][2] * sinx * siny + gGCMatrixPerspF[1][2] * cosx + gGCMatrixPerspF[2][2] * sinx * cosy) * scaley);
+	e2 = FTOFIX32((gGCMatrixPerspF[0][3] * sinx * siny + gGCMatrixPerspF[1][3] * cosx + gGCMatrixPerspF[2][3] * sinx * cosy) * scaley);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gGCMatrixPerspF[0][0] * cosx * siny + gGCMatrixPerspF[1][0] * -sinx + gGCMatrixPerspF[2][0] * cosx * cosy) * scalex);
-    e2 = FTOFIX32((gGCMatrixPerspF[0][1] * cosx * siny + gGCMatrixPerspF[1][1] * -sinx + gGCMatrixPerspF[2][1] * cosx * cosy) * scalex);
+	e1 = FTOFIX32((gGCMatrixPerspF[0][0] * cosx * siny + gGCMatrixPerspF[1][0] * -sinx + gGCMatrixPerspF[2][0] * cosx * cosy) * scalex);
+	e2 = FTOFIX32((gGCMatrixPerspF[0][1] * cosx * siny + gGCMatrixPerspF[1][1] * -sinx + gGCMatrixPerspF[2][1] * cosx * cosy) * scalex);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gGCMatrixPerspF[0][2] * cosx * siny + gGCMatrixPerspF[1][2] * -sinx + gGCMatrixPerspF[2][2] * cosx * cosy) * scalex);
-    e2 = FTOFIX32((gGCMatrixPerspF[0][3] * cosx * siny + gGCMatrixPerspF[1][3] * -sinx + gGCMatrixPerspF[2][3] * cosx * cosy) * scalex);
+	e1 = FTOFIX32((gGCMatrixPerspF[0][2] * cosx * siny + gGCMatrixPerspF[1][2] * -sinx + gGCMatrixPerspF[2][2] * cosx * cosy) * scalex);
+	e2 = FTOFIX32((gGCMatrixPerspF[0][3] * cosx * siny + gGCMatrixPerspF[1][3] * -sinx + gGCMatrixPerspF[2][3] * cosx * cosy) * scalex);
 
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-    
-    gSPMvpRecalc(dl++);
-    
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
-    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
-    
-    dls[0] = dl;
-    
-    return 1;
+	*(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+	*(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+	
+	gSPMvpRecalc(dl++);
+	
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
+	gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
+	
+	dls[0] = dl;
+	
+	return 1;
 }
 
-// 0x800CB140
+// 800CB140
 sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    CObj *cobj;
-    DObj *attach_dobj;
-    FTParts *parts;
-    Mtx44f f;
-    Vec3f sp50;
-    Vec3f dist;
-    Vec3f sp38;
-    f32 magnitude;
-    f32 temp;
+	CObj *cobj;
+	DObj *attach_dobj;
+	FTParts *parts;
+	Mtx44f f;
+	Vec3f sp50;
+	Vec3f dist;
+	Vec3f sp38;
+	f32 magnitude;
+	f32 temp;
 
-    attach_dobj = dobj->user_data.p;
-    parts = attach_dobj->user_data.p;
-    
-    func_ovl2_800EDBA4(attach_dobj);
-    
-    magnitude = sqrtf
-    (
-        SQUARE(parts->mtx_translate[0][0]) +
-        SQUARE(parts->mtx_translate[0][1]) +
-        SQUARE(parts->mtx_translate[0][2])
-    );
-    
-    if (magnitude == 0.0F)
-    {
-        while (TRUE)
-        {
-            syDebugPrintf("FPE : 0 div (adfDMatrixDirecXBillboardSca) \n");
-            scManagerRunPrintGObjStatus();
-        }
-    }
-    else 
-    {
-        magnitude = 1.0F / magnitude;
-    
-        sp50.x = f[1][0] = parts->mtx_translate[0][0] * magnitude;
-        sp50.y = f[1][1] = parts->mtx_translate[0][1] * magnitude;
-        sp50.z = f[1][2] = parts->mtx_translate[0][2] * magnitude;
-    
-        cobj = CObjGetStruct(gGCCurrentCamera);
-    
-        syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
-    
-        if (lbCommonSim3D(&sp50, &dist) < 0.999F)
-        {
-            syVectorNormCross3D(&sp50, &dist, &sp38);
-            lbCommonCross3D(&sp50, &sp38, &dist);
-        }
-        else
-        {
-            dist.x = dist.y = dist.z = 0.0F;
-            sp38 = dist;
-        }
+	attach_dobj = dobj->user_data.p;
+	parts = attach_dobj->user_data.p;
+	
+	func_ovl2_800EDBA4(attach_dobj);
+	
+	magnitude = sqrtf
+	(
+		SQUARE(parts->mtx_translate[0][0]) +
+		SQUARE(parts->mtx_translate[0][1]) +
+		SQUARE(parts->mtx_translate[0][2])
+	);
+	
+	if (magnitude == 0.0F)
+	{
+		while (TRUE)
+		{
+			syDebugPrintf("FPE : 0 div (adfDMatrixDirecXBillboardSca) \n");
+			scManagerRunPrintGObjStatus();
+		}
+	}
+	else 
+	{
+		magnitude = 1.0F / magnitude;
+	
+		sp50.x = f[1][0] = parts->mtx_translate[0][0] * magnitude;
+		sp50.y = f[1][1] = parts->mtx_translate[0][1] * magnitude;
+		sp50.z = f[1][2] = parts->mtx_translate[0][2] * magnitude;
+	
+		cobj = CObjGetStruct(gGCCurrentCamera);
+	
+		syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
+	
+		if (lbCommonSim3D(&sp50, &dist) < 0.999F)
+		{
+			syVectorNormCross3D(&sp50, &dist, &sp38);
+			lbCommonCross3D(&sp50, &sp38, &dist);
+		}
+		else
+		{
+			dist.x = dist.y = dist.z = 0.0F;
+			sp38 = dist;
+		}
 
-        f[0][0] = sp38.x; 
-        f[0][1] = sp38.y;
-        f[0][2] = sp38.z;
+		f[0][0] = sp38.x; 
+		f[0][1] = sp38.y;
+		f[0][2] = sp38.z;
 
-        // FAKE
-        temp = SQUARE(f[2][2]) + SQUARE(f[2][2]);
-        if (temp > 0.0f) {}
-        f[2][0] = dist.x;
-        f[2][1] = dist.y;
-        f[2][2] = dist.z;
+		// FAKE
+		temp = SQUARE(f[2][2]) + SQUARE(f[2][2]);
+		if (temp > 0.0f) {}
+		f[2][0] = dist.x;
+		f[2][1] = dist.y;
+		f[2][2] = dist.z;
 
-        f[3][1] = f[3][2] = (0.0F);
-        f[3][0] = 0.0f;
-    
-        syMatrixF2LFixedW(&f, mtx);
-    }
-    return 0;
+		f[3][1] = f[3][2] = (0.0F);
+		f[3][0] = 0.0f;
+	
+		syMatrixF2LFixedW(&f, mtx);
+	}
+	return 0;
 }
 
-// 0x800CB2F0
+// 800CB2F0
 sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    s32 unused;
-    DObj *attach_dobj = dobj->user_data.p;
-    
-    func_ovl2_800EDBA4(attach_dobj);
-    
-    dobj->rotate.vec.f.z = (ftGetParts(attach_dobj)->mtx_translate[0][2] > 0.0F) ?
-    attach_dobj->rotate.vec.f.x : -attach_dobj->rotate.vec.f.x;
+	s32 unused;
+	DObj *attach_dobj = dobj->user_data.p;
+	
+	func_ovl2_800EDBA4(attach_dobj);
+	
+	dobj->rotate.vec.f.z = (ftGetParts(attach_dobj)->mtx_translate[0][2] > 0.0F) ?
+	attach_dobj->rotate.vec.f.x : -attach_dobj->rotate.vec.f.x;
 
-    return 1;
+	return 1;
 }
 
-// 0x800CB360
+// 800CB360
 void lbCommonDrawDObjScaleX(DObj *dobj)
 {
-    s32 unused[2];
-    
-    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
-    {
-        f32 bak = gGCScaleX;
-        s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[1], dobj);
-        
-        if ((dobj->dv != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
-        {
-            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[1]);
-            
-            gSPDisplayList(gSYTaskmanDLHeads[1]++, dobj->dl);
-        }        
-        if (dobj->child != NULL)
-        {
-            lbCommonDrawDObjScaleX(dobj->child);
-        }
-        if (status != 0)
-        {
-            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
-            {
-                gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
-            }
-        }
-        gGCScaleX = bak;
-    }
-    if (dobj->sib_prev == NULL)
-    {
-        DObj *sibling_dobj = dobj->sib_next;
-        
-        while (sibling_dobj != NULL)
-        {
-            lbCommonDrawDObjScaleX(sibling_dobj);
+	s32 unused[2];
+	
+	if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
+	{
+		f32 bak = gGCScaleX;
+		s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[1], dobj);
+		
+		if ((dobj->dv != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+		{
+			gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[1]);
+			
+			gSPDisplayList(gSYTaskmanDLHeads[1]++, dobj->dl);
+		}        
+		if (dobj->child != NULL)
+		{
+			lbCommonDrawDObjScaleX(dobj->child);
+		}
+		if (status != 0)
+		{
+			if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+			{
+				gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
+			}
+		}
+		gGCScaleX = bak;
+	}
+	if (dobj->sib_prev == NULL)
+	{
+		DObj *sibling_dobj = dobj->sib_next;
+		
+		while (sibling_dobj != NULL)
+		{
+			lbCommonDrawDObjScaleX(sibling_dobj);
 
-            sibling_dobj = sibling_dobj->sib_next;
-        }
-    }
+			sibling_dobj = sibling_dobj->sib_next;
+		}
+	}
 }
 
-// 0x800CB4B0
+// 800CB4B0
 void lbCommonDObjScaleXProcDisplay(GObj *gobj)
 {
-    gGCScaleX = 1.0F;
-    
-    lbCommonDrawDObjScaleX(DObjGetStruct(gobj));
+	gGCScaleX = 1.0F;
+	
+	lbCommonDrawDObjScaleX(DObjGetStruct(gobj));
 }
 
-// 0x800CB4E0
+// 800CB4E0
 void lbCommonDrawDObjDefault(DObj *dobj)
 {
-    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
-    {
-        s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[0], dobj);
-        
-        if ((dobj->dv != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
-        {
-            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[0]);
-            
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dobj->dl);
-        }        
-        if (dobj->child != NULL)
-        {
-            lbCommonDrawDObjDefault(dobj->child);
-        }
-        if (status != 0)
-        {
-            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
-            {
-                gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
-            }
-        }
-    }
-    if (dobj->sib_prev == NULL)
-    {
-        DObj *sibling_dobj = dobj->sib_next;
-        
-        while (sibling_dobj != NULL)
-        {
-            lbCommonDrawDObjDefault(sibling_dobj);
+	if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
+	{
+		s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[0], dobj);
+		
+		if ((dobj->dv != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+		{
+			gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[0]);
+			
+			gSPDisplayList(gSYTaskmanDLHeads[0]++, dobj->dl);
+		}        
+		if (dobj->child != NULL)
+		{
+			lbCommonDrawDObjDefault(dobj->child);
+		}
+		if (status != 0)
+		{
+			if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+			{
+				gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
+			}
+		}
+	}
+	if (dobj->sib_prev == NULL)
+	{
+		DObj *sibling_dobj = dobj->sib_next;
+		
+		while (sibling_dobj != NULL)
+		{
+			lbCommonDrawDObjDefault(sibling_dobj);
 
-            sibling_dobj = sibling_dobj->sib_next;
-        }
-    }
+			sibling_dobj = sibling_dobj->sib_next;
+		}
+	}
 }
 
-// 0x800CB608
+// 800CB608
 void lbCommonEjectGObjLinkedList(GObj *gobj)
 {
-    if (gobj->link_next != NULL)
-    {
-        lbCommonEjectGObjLinkedList(gobj->link_next);
-    }
-    gcEjectGObj(gobj);
+	if (gobj->link_next != NULL)
+	{
+		lbCommonEjectGObjLinkedList(gobj->link_next);
+	}
+	gcEjectGObj(gobj);
 }
 
-// 0x800D5CAC
-sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
+// 800D5CAC
+sb32 (*dLBCommonFuncMatrixList[])(/* */) =
 {
 	func_ovl0_800C96EC,
 	func_ovl0_800C96EC,
@@ -2156,7 +2156,7 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	func_ovl0_800C9F30,
 	func_ovl0_800C9F30,
 #endif
-    func_ovl0_800C9F70,
+	func_ovl0_800C9F70,
 	func_ovl0_800C9F70,
 	grSectorArwingLaser3DFuncMatrix,
 	grSectorArwingLaser3DFuncMatrix,
@@ -2164,847 +2164,847 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	gmCameraPrepProjectionFuncMatrix
 };
 
-// 0x800CB644
+// 800CB644
 u8 lbCommonGetBitmapDecodeNibble(u8 index)
 {
-	u8 array[/* */] = { 0x00, 0x05, 0x0A, 0x0F };
+	u8 array[] = { 0x00, 0x05, 0x0A, 0x0F };
 
 	return array[index];
 }
 
-// 0x800CB674
+// 800CB674
 void lbCommonDecodeBitmapSiz4b(u8 *bitmap_csr, u8 *bitmap_buf, u8 *bitmap_start)
 {
-    while (bitmap_csr >= bitmap_start)
-    {
-        u8 temp;
-        
-        bitmap_buf[0] = lbCommonGetBitmapDecodeNibble(*bitmap_csr & 3);
-        bitmap_buf[0] |= lbCommonGetBitmapDecodeNibble((*bitmap_csr & 12) >> 2) << 4;
+	while (bitmap_csr >= bitmap_start)
+	{
+		u8 temp;
+		
+		bitmap_buf[0] = lbCommonGetBitmapDecodeNibble(*bitmap_csr & 3);
+		bitmap_buf[0] |= lbCommonGetBitmapDecodeNibble((*bitmap_csr & 12) >> 2) << 4;
 
-        bitmap_buf[-1] = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 48) >> 4);
+		bitmap_buf[-1] = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 48) >> 4);
 
-        temp = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 192) >> 6);
-        
-        bitmap_csr--;
+		temp = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 192) >> 6);
+		
+		bitmap_csr--;
 
-        bitmap_buf -= 2;
+		bitmap_buf -= 2;
 
-        bitmap_buf[1] |= temp << 4;
-    }
+		bitmap_buf[1] |= temp << 4;
+	}
 }
 
-// 0x800CB738
+// 800CB738
 void lbCommonDecodeSpriteBitmapsSiz4b(Sprite *sprite)
 {
-    s32 n;
-    Bitmap *bitmap;
-    
-    for (n = sprite->nbitmaps, bitmap = sprite->bitmap; n > 0; n--)
-    {
-        s32 res = (bitmap[n - 1].width_img / 2) * bitmap[n - 1].actualHeight;
-            
-        lbCommonDecodeBitmapSiz4b
-        (
-            (u8*) ((u8*)bitmap[n - 1].buf + (res / 2) - 1), 
-            (u8*) ((u8*)bitmap[n - 1].buf + (res - 1)),
-            (u8*) ((u8*)bitmap[n - 1].buf)
-        );
-    }
-    sprite->bmsiz = G_IM_SIZ_4b;
+	s32 n;
+	Bitmap *bitmap;
+	
+	for (n = sprite->nbitmaps, bitmap = sprite->bitmap; n > 0; n--)
+	{
+		s32 res = (bitmap[n - 1].width_img / 2) * bitmap[n - 1].actualHeight;
+			
+		lbCommonDecodeBitmapSiz4b
+		(
+			(u8*) ((u8*)bitmap[n - 1].buf + (res / 2) - 1), 
+			(u8*) ((u8*)bitmap[n - 1].buf + (res - 1)),
+			(u8*) ((u8*)bitmap[n - 1].buf)
+		);
+	}
+	sprite->bmsiz = G_IM_SIZ_4b;
 }
 
-// 0x800CB7D4
+// 800CB7D4
 void lbCommonDrawSObjBitmap
 (
-    Gfx **dls,
-    SObj *sobj,
-    Sprite *sprite,
-    Bitmap *bitmap,
-    s32 x, s32 y,
-    s32 xx, s32 yy,
-    s32 fs, s32 ft,
-    s32 sx, s32 sy
+	Gfx **dls,
+	SObj *sobj,
+	Sprite *sprite,
+	Bitmap *bitmap,
+	s32 x, s32 y,
+	s32 xx, s32 yy,
+	s32 fs, s32 ft,
+	s32 sx, s32 sy
 )
 {
-    s32 rs, rt;
-    s32 rxh, ryh;
-    s32 rxl, ryl;
-    Gfx *dl;
-    s32 tex_width, tex_height;
-    void *buf;
+	s32 rs, rt;
+	s32 rxh, ryh;
+	s32 rxl, ryl;
+	Gfx *dl;
+	s32 tex_width, tex_height;
+	void *buf;
 
-    if (bitmap->buf == NULL)
-    {
-        while (TRUE)
-        {
-            syDebugPrintf("drawBitMap: no bitmap data!\n");
-            scManagerRunPrintGObjStatus();
-        }
-    }
-    if (yy >= sLBCommonScissorYMin)
-    {
-        if (sprite->attr & SP_FASTCOPY)
-        {
-            yy--;
-        }
-        dl = dls[0];
-        
-        if (sprite->attr & SP_TEXSHIFT)
-        {
-            fs += 16;
-            ft += 16;
-        }
-        tex_width = bitmap->width;
-        tex_height = bitmap->actualHeight;
-        
-        if (x < sLBCommonScissorXMin)
-        {
-            rxh = sLBCommonScissorXMin * 4;
-            rs = fs + (((sLBCommonScissorXMin - x) * sx) >> 5);
-        }
-        else
-        {
-            rxh = x * 4;
-            rs = fs;
-        }
-        if (y < sLBCommonScissorYMin)
-        {
-            ryh = sLBCommonScissorYMin * 4;
-            rt = ft + (((sLBCommonScissorYMin - y) * sy) >> 5);
-        }
-        else
-        {
-            ryh = y * 4;
-            rt = ft;
-        }
-        if (xx >= sLBCommonScissorXMax)
-        {
-            rxl = sLBCommonScissorXMax * 4;
-        }
-        else rxl = xx * 4;
-    
-        if (yy >= sLBCommonScissorYMax)
-        {
-            ryl = sLBCommonScissorYMax * 4;
-        }
-        else ryl = yy * 4;
-        
-        if (bitmap->buf != sLBCommonPrevBitmapBuf)
-        {
-            switch (sprite->bmsiz)
-            {
-            case G_IM_SIZ_4b:
-                gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_16b, 1, bitmap->buf);
-                gDPSetTile
-                (
-                    dl++,
-                    sprite->bmfmt,
-                    G_IM_SIZ_16b,
-                    0,
-                    0,
-                    G_TX_LOADTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPLoadSync(dl++);
-                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 3) >> 2) - 1, 0);
-                gDPPipeSync(dl++);
-                gDPSetTile
-                (
-                    dl++,
-                    sprite->bmfmt,
-                    G_IM_SIZ_4b, 
-                    (((tex_width) >> 1) + 7) >> 3,
-                    0,
-                    G_TX_RENDERTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPSetTileSize
-                (
-                    dl++,
-                    G_TX_RENDERTILE,
-                    0,
-                    0,
-                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
-                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
-                );
-                break;
-                
-            case G_IM_SIZ_8b:
-                gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_8b_LOAD_BLOCK, 1, bitmap->buf);
-                gDPSetTile
-                (
-                    dl++,
-                    sprite->bmfmt,
-                    G_IM_SIZ_8b_LOAD_BLOCK,
-                    0,
-                    0,
-                    G_TX_LOADTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPLoadSync(dl++);
-                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_8b_SHIFT) - 1, 0);
-                gDPPipeSync(dl++);
-                gDPSetTile
-                (
-                    dl++,
-                    sprite->bmfmt,
-                    G_IM_SIZ_8b, 
-                    ((tex_width * G_IM_SIZ_8b_LINE_BYTES) + 7) >> 3,
-                    0,
-                    G_TX_RENDERTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPSetTileSize
-                (
-                    dl++,
-                    G_TX_RENDERTILE,
-                    0,
-                    0,
-                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
-                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
-                );
-                break;
-                
-            case G_IM_SIZ_16b:
-                gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_16b_LOAD_BLOCK, 1, bitmap->buf);
-                gDPSetTile
-                (
-                    dl++,
-                    sprite->bmfmt,
-                    G_IM_SIZ_16b_LOAD_BLOCK,
-                    0,
-                    0,
-                    G_TX_LOADTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPLoadSync(dl++);
-                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_16b_SHIFT) - 2, 0);
-                gDPPipeSync(dl++);
-                gDPSetTile
-                (
-                    dl++,
-                    sprite->bmfmt,
-                    G_IM_SIZ_16b, 
-                    ((tex_width * G_IM_SIZ_16b_LINE_BYTES) + 7) >> 3,
-                    0,
-                    G_TX_RENDERTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPSetTileSize
-                (
-                    dl++,
-                    G_TX_RENDERTILE,
-                    0,
-                    0,
-                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
-                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
-                );
-                break;
-                
-            case G_IM_SIZ_32b:
-                gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, bitmap->buf);
-                gDPSetTile
-                (
-                    dl++,
-                    G_IM_FMT_RGBA,
-                    G_IM_SIZ_32b_LOAD_BLOCK,
-                    0,
-                    0,
-                    G_TX_LOADTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPLoadSync(dl++);
-                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_32b_SHIFT) - 2, 0);
-                gDPPipeSync(dl++);
-                gDPSetTile
-                (
-                    dl++,
-                    G_IM_FMT_RGBA,
-                    G_IM_SIZ_32b, 
-                    ((tex_width * G_IM_SIZ_32b_LINE_BYTES) + 7) >> 3,
-                    0,
-                    G_TX_RENDERTILE,
-                    NULL,
-                    sobj->cmt,
-                    sobj->maskt,
-                    G_TX_NOLOD,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD
-                );
-                gDPSetTileSize
-                (
-                    dl++,
-                    G_TX_RENDERTILE,
-                    0,
-                    0,
-                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
-                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
-                );
-                break;
-            }
-            sLBCommonPrevBitmapBuf = bitmap->buf;
-        }        
-        gSPTextureRectangle(dl++, rxh, ryh, rxl, ryl, 0, rs, rt, sx, sy);
-        gDPPipeSync(dl++);
-        
-        dls[0] = dl;
-    }
+	if (bitmap->buf == NULL)
+	{
+		while (TRUE)
+		{
+			syDebugPrintf("drawBitMap: no bitmap data!\n");
+			scManagerRunPrintGObjStatus();
+		}
+	}
+	if (yy >= sLBCommonScissorYMin)
+	{
+		if (sprite->attr & SP_FASTCOPY)
+		{
+			yy--;
+		}
+		dl = dls[0];
+		
+		if (sprite->attr & SP_TEXSHIFT)
+		{
+			fs += 16;
+			ft += 16;
+		}
+		tex_width = bitmap->width;
+		tex_height = bitmap->actualHeight;
+		
+		if (x < sLBCommonScissorXMin)
+		{
+			rxh = sLBCommonScissorXMin * 4;
+			rs = fs + (((sLBCommonScissorXMin - x) * sx) >> 5);
+		}
+		else
+		{
+			rxh = x * 4;
+			rs = fs;
+		}
+		if (y < sLBCommonScissorYMin)
+		{
+			ryh = sLBCommonScissorYMin * 4;
+			rt = ft + (((sLBCommonScissorYMin - y) * sy) >> 5);
+		}
+		else
+		{
+			ryh = y * 4;
+			rt = ft;
+		}
+		if (xx >= sLBCommonScissorXMax)
+		{
+			rxl = sLBCommonScissorXMax * 4;
+		}
+		else rxl = xx * 4;
+	
+		if (yy >= sLBCommonScissorYMax)
+		{
+			ryl = sLBCommonScissorYMax * 4;
+		}
+		else ryl = yy * 4;
+		
+		if (bitmap->buf != sLBCommonPrevBitmapBuf)
+		{
+			switch (sprite->bmsiz)
+			{
+			case G_IM_SIZ_4b:
+				gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_16b, 1, bitmap->buf);
+				gDPSetTile
+				(
+					dl++,
+					sprite->bmfmt,
+					G_IM_SIZ_16b,
+					0,
+					0,
+					G_TX_LOADTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPLoadSync(dl++);
+				gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 3) >> 2) - 1, 0);
+				gDPPipeSync(dl++);
+				gDPSetTile
+				(
+					dl++,
+					sprite->bmfmt,
+					G_IM_SIZ_4b, 
+					(((tex_width) >> 1) + 7) >> 3,
+					0,
+					G_TX_RENDERTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPSetTileSize
+				(
+					dl++,
+					G_TX_RENDERTILE,
+					0,
+					0,
+					((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+					((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+				);
+				break;
+				
+			case G_IM_SIZ_8b:
+				gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_8b_LOAD_BLOCK, 1, bitmap->buf);
+				gDPSetTile
+				(
+					dl++,
+					sprite->bmfmt,
+					G_IM_SIZ_8b_LOAD_BLOCK,
+					0,
+					0,
+					G_TX_LOADTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPLoadSync(dl++);
+				gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_8b_SHIFT) - 1, 0);
+				gDPPipeSync(dl++);
+				gDPSetTile
+				(
+					dl++,
+					sprite->bmfmt,
+					G_IM_SIZ_8b, 
+					((tex_width * G_IM_SIZ_8b_LINE_BYTES) + 7) >> 3,
+					0,
+					G_TX_RENDERTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPSetTileSize
+				(
+					dl++,
+					G_TX_RENDERTILE,
+					0,
+					0,
+					((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+					((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+				);
+				break;
+				
+			case G_IM_SIZ_16b:
+				gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_16b_LOAD_BLOCK, 1, bitmap->buf);
+				gDPSetTile
+				(
+					dl++,
+					sprite->bmfmt,
+					G_IM_SIZ_16b_LOAD_BLOCK,
+					0,
+					0,
+					G_TX_LOADTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPLoadSync(dl++);
+				gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_16b_SHIFT) - 2, 0);
+				gDPPipeSync(dl++);
+				gDPSetTile
+				(
+					dl++,
+					sprite->bmfmt,
+					G_IM_SIZ_16b, 
+					((tex_width * G_IM_SIZ_16b_LINE_BYTES) + 7) >> 3,
+					0,
+					G_TX_RENDERTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPSetTileSize
+				(
+					dl++,
+					G_TX_RENDERTILE,
+					0,
+					0,
+					((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+					((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+				);
+				break;
+				
+			case G_IM_SIZ_32b:
+				gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, bitmap->buf);
+				gDPSetTile
+				(
+					dl++,
+					G_IM_FMT_RGBA,
+					G_IM_SIZ_32b_LOAD_BLOCK,
+					0,
+					0,
+					G_TX_LOADTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPLoadSync(dl++);
+				gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_32b_SHIFT) - 2, 0);
+				gDPPipeSync(dl++);
+				gDPSetTile
+				(
+					dl++,
+					G_IM_FMT_RGBA,
+					G_IM_SIZ_32b, 
+					((tex_width * G_IM_SIZ_32b_LINE_BYTES) + 7) >> 3,
+					0,
+					G_TX_RENDERTILE,
+					NULL,
+					sobj->cmt,
+					sobj->maskt,
+					G_TX_NOLOD,
+					sobj->cms,
+					sobj->masks,
+					G_TX_NOLOD
+				);
+				gDPSetTileSize
+				(
+					dl++,
+					G_TX_RENDERTILE,
+					0,
+					0,
+					((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+					((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+				);
+				break;
+			}
+			sLBCommonPrevBitmapBuf = bitmap->buf;
+		}        
+		gSPTextureRectangle(dl++, rxh, ryh, rxl, ryl, 0, rs, rt, sx, sy);
+		gDPPipeSync(dl++);
+		
+		dls[0] = dl;
+	}
 }
 
-// 0x800CC118
+// 800CC118
 void lbCommonPrepSObjAttr(Gfx **dls, SObj *sobj)
 {
-    Gfx *dl = dls[0];
-    Sprite *sprite = &sobj->sprite;
-    
-    if (sLBCommonExternSpriteAttr & SP_ARGUMENT)
-    {
-        gDPPipeSync(dl++);
-        
-        if (sprite->attr & SP_FASTCOPY)
-        {
-            gDPSetCycleType(dl++, G_CYC_COPY);
-        }
-        else gDPSetCycleType(dl++, G_CYC_1CYCLE);
-        
-        if (sprite->attr & SP_TRANSPARENT)
-        {
-            gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-        }
-        else if (sprite->attr & SP_TRANSPARENT)
-        {
-            gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-        } 
-        else gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-        
-        if (sprite->attr & SP_TEXSHIFT)
-        {
-            gDPSetTextureFilter(dl++, G_TF_AVERAGE);
-        }
-        else gDPSetTextureFilter(dl++, G_TF_BILERP);
-        
-        if (sprite->bmfmt != G_IM_FMT_CI)
-        {
-            gDPSetTextureLUT(dl++, G_TT_NONE);
-        }
-    }
-    else
-    {
-        if (sLBCommonExternSpriteAttr & SP_EXTERN)
-        {
-            sLBCommonExternSpriteAttr = ~sprite->attr;
-        }
-        if (sprite->attr & SP_EXTERN)
-        {
-            sLBCommonExternSpriteAttr = sprite->attr;
-        }
-        if (sprite->attr != sLBCommonExternSpriteAttr)
-        {
-            if (sprite->attr & SP_FASTCOPY)
-            {
-                if (!(sLBCommonExternSpriteAttr & SP_FASTCOPY))
-                {
-                    gDPSetCycleType(dl++, G_CYC_COPY);
-                }
-            }
-            else if (sLBCommonExternSpriteAttr & SP_FASTCOPY)
-            {
-                gDPSetCycleType(dl++, G_CYC_1CYCLE);
-            }
-            if (sprite->attr & SP_TRANSPARENT)
-            {
-                if (!(sLBCommonExternSpriteAttr & SP_TRANSPARENT))
-                {
-                    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-                }
-            }
-            else if (sprite->attr & SP_CLOUD)
-            {
-                if (!(sLBCommonExternSpriteAttr & SP_CLOUD))
-                {
-                    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-                }
-            }
-            else if (sLBCommonExternSpriteAttr & (SP_CLOUD | SP_TRANSPARENT))
-            {
-                gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-            }
-            if (sprite->attr & SP_TEXSHIFT)
-            {
-                if (!(sLBCommonExternSpriteAttr & SP_TEXSHIFT))
-                {
-                    gDPSetTextureFilter(dl++, G_TF_AVERAGE);
-                }
-            }
-            else if (sLBCommonExternSpriteAttr & SP_TEXSHIFT)
-            {
-                gDPSetTextureFilter(dl++, G_TF_BILERP);
-            }
-        }
-    }
-    if (sprite->bmfmt != sLBCommonExternBitmapFmt)
-    {
-        switch (sprite->bmfmt)
-        {
-        case G_IM_FMT_I:
-            gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
-            gDPSetCombineLERP(dl++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
-            break;
-            
-        case G_IM_FMT_IA:
-            gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
-            gDPSetEnvColor(dl++, sobj->envcolor.r, sobj->envcolor.g, sobj->envcolor.b, sobj->envcolor.a);
-            gDPSetCombineLERP(dl++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
-            break;
+	Gfx *dl = dls[0];
+	Sprite *sprite = &sobj->sprite;
+	
+	if (sLBCommonExternSpriteAttr & SP_ARGUMENT)
+	{
+		gDPPipeSync(dl++);
+		
+		if (sprite->attr & SP_FASTCOPY)
+		{
+			gDPSetCycleType(dl++, G_CYC_COPY);
+		}
+		else gDPSetCycleType(dl++, G_CYC_1CYCLE);
+		
+		if (sprite->attr & SP_TRANSPARENT)
+		{
+			gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+		}
+		else if (sprite->attr & SP_TRANSPARENT)
+		{
+			gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+		} 
+		else gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+		
+		if (sprite->attr & SP_TEXSHIFT)
+		{
+			gDPSetTextureFilter(dl++, G_TF_AVERAGE);
+		}
+		else gDPSetTextureFilter(dl++, G_TF_BILERP);
+		
+		if (sprite->bmfmt != G_IM_FMT_CI)
+		{
+			gDPSetTextureLUT(dl++, G_TT_NONE);
+		}
+	}
+	else
+	{
+		if (sLBCommonExternSpriteAttr & SP_EXTERN)
+		{
+			sLBCommonExternSpriteAttr = ~sprite->attr;
+		}
+		if (sprite->attr & SP_EXTERN)
+		{
+			sLBCommonExternSpriteAttr = sprite->attr;
+		}
+		if (sprite->attr != sLBCommonExternSpriteAttr)
+		{
+			if (sprite->attr & SP_FASTCOPY)
+			{
+				if (!(sLBCommonExternSpriteAttr & SP_FASTCOPY))
+				{
+					gDPSetCycleType(dl++, G_CYC_COPY);
+				}
+			}
+			else if (sLBCommonExternSpriteAttr & SP_FASTCOPY)
+			{
+				gDPSetCycleType(dl++, G_CYC_1CYCLE);
+			}
+			if (sprite->attr & SP_TRANSPARENT)
+			{
+				if (!(sLBCommonExternSpriteAttr & SP_TRANSPARENT))
+				{
+					gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+				}
+			}
+			else if (sprite->attr & SP_CLOUD)
+			{
+				if (!(sLBCommonExternSpriteAttr & SP_CLOUD))
+				{
+					gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+				}
+			}
+			else if (sLBCommonExternSpriteAttr & (SP_CLOUD | SP_TRANSPARENT))
+			{
+				gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+			}
+			if (sprite->attr & SP_TEXSHIFT)
+			{
+				if (!(sLBCommonExternSpriteAttr & SP_TEXSHIFT))
+				{
+					gDPSetTextureFilter(dl++, G_TF_AVERAGE);
+				}
+			}
+			else if (sLBCommonExternSpriteAttr & SP_TEXSHIFT)
+			{
+				gDPSetTextureFilter(dl++, G_TF_BILERP);
+			}
+		}
+	}
+	if (sprite->bmfmt != sLBCommonExternBitmapFmt)
+	{
+		switch (sprite->bmfmt)
+		{
+		case G_IM_FMT_I:
+			gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+			gDPSetCombineLERP(dl++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
+			break;
+			
+		case G_IM_FMT_IA:
+			gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+			gDPSetEnvColor(dl++, sobj->envcolor.r, sobj->envcolor.g, sobj->envcolor.b, sobj->envcolor.a);
+			gDPSetCombineLERP(dl++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
+			break;
 
-        case G_IM_FMT_CI:
-            gDPSetTextureLUT(dl++, G_TT_RGBA16);
-            gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
-            gDPLoadSync(dl++);
+		case G_IM_FMT_CI:
+			gDPSetTextureLUT(dl++, G_TT_RGBA16);
+			gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
+			gDPLoadSync(dl++);
 
-            /* fallthrough */
+			/* fallthrough */
 
-        default:
-            gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-            break;
-        }
-        if (sprite->bmfmt != G_IM_FMT_CI)
-        {
-            if (sLBCommonExternBitmapFmt == G_IM_FMT_CI)
-            {
-                gDPSetTextureLUT(dl++, G_TT_NONE);
-            }
-        }
-    }
-    else switch (sprite->bmfmt)
-    {
-    case G_IM_FMT_I:
-        gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
-        break;
-        
-    case G_IM_FMT_IA:
-        gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
-        gDPSetEnvColor(dl++, sobj->envcolor.r, sobj->envcolor.g, sobj->envcolor.b, sobj->envcolor.a);
-        break;
+		default:
+			gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+			break;
+		}
+		if (sprite->bmfmt != G_IM_FMT_CI)
+		{
+			if (sLBCommonExternBitmapFmt == G_IM_FMT_CI)
+			{
+				gDPSetTextureLUT(dl++, G_TT_NONE);
+			}
+		}
+	}
+	else switch (sprite->bmfmt)
+	{
+	case G_IM_FMT_I:
+		gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+		break;
+		
+	case G_IM_FMT_IA:
+		gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+		gDPSetEnvColor(dl++, sobj->envcolor.r, sobj->envcolor.g, sobj->envcolor.b, sobj->envcolor.a);
+		break;
 
-    case G_IM_FMT_CI:
-        if (sprite->LUT != sLBCommonPrevSpriteLUT)
-        {
-            gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
-            gDPLoadSync(dl++);
-        }
-        break; 
-    }
-    dls[0] = dl;
+	case G_IM_FMT_CI:
+		if (sprite->LUT != sLBCommonPrevSpriteLUT)
+		{
+			gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
+			gDPLoadSync(dl++);
+		}
+		break; 
+	}
+	dls[0] = dl;
 }
 
 #ifdef NON_MATCHING
 // 0x800CC818 - NONMATCHING: many regswaps, but appears to be equivalent
 void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
 {
-    Sprite *sprite;
-    Bitmap *bitmap;
-    f32 fheight;
-    f32 fy;
-    s32 fs = 0;
-    s32 yy;
-    s32 ft = 0;
-    s32 sx = 0x1000;
-    s32 sy = 0x400;
-    s32 x;
-    s32 xx;
-    s32 n;
-    s32 unused2;
-    s32 y;
-    s32 tempy;
-    s32 tempft;
-    s32 unused[3];
-    f32 scaley;
-    f32 pos_x, pos_y;
-    
-    sprite = &sobj->sprite;
-    
-    if (sprite->scalex < 0.0001F)
-    {
-        return;
-    }
-    if (sprite->scaley < 0.0001F)
-    {
-        return;
-    }
-    bitmap = sprite->bitmap;
-    
-    if (bitmap != NULL)
-    {
-        pos_x = sobj->pos.x;
-        x = (pos_x < 0.0F) ? (pos_x - 0.9999F) : (pos_x);
+	Sprite *sprite;
+	Bitmap *bitmap;
+	f32 fheight;
+	f32 fy;
+	s32 fs = 0;
+	s32 yy;
+	s32 ft = 0;
+	s32 sx = 0x1000;
+	s32 sy = 0x400;
+	s32 x;
+	s32 xx;
+	s32 n;
+	s32 unused2;
+	s32 y;
+	s32 tempy;
+	s32 tempft;
+	s32 unused[3];
+	f32 scaley;
+	f32 pos_x, pos_y;
+	
+	sprite = &sobj->sprite;
+	
+	if (sprite->scalex < 0.0001F)
+	{
+		return;
+	}
+	if (sprite->scaley < 0.0001F)
+	{
+		return;
+	}
+	bitmap = sprite->bitmap;
+	
+	if (bitmap != NULL)
+	{
+		pos_x = sobj->pos.x;
+		x = (pos_x < 0.0F) ? (pos_x - 0.9999F) : (pos_x);
 
-        pos_y = sobj->pos.y;
-        tempy = (sobj->pos.y < 0.0F) ? (sobj->pos.y - 0.9999F) : (sobj->pos.y);
-        
-        if ((x < sLBCommonScissorXMax) && (tempy < sLBCommonScissorYMax))
-        {
-            s32 tempxx = (sobj->cms == 2) ? (sprite->width) : (sobj->lrs);
-            yy = (sobj->cmt == 2) ? (sprite->bmheight) : (sobj->lrt);
-            
-            if (sprite->attr & SP_FASTCOPY)
-            {
-                xx = pos_x + tempxx;
-                
-                y = tempy;
-                
-                if (xx >= sLBCommonScissorXMin)
-                {
-                    xx--;
+		pos_y = sobj->pos.y;
+		tempy = (sobj->pos.y < 0.0F) ? (sobj->pos.y - 0.9999F) : (sobj->pos.y);
+		
+		if ((x < sLBCommonScissorXMax) && (tempy < sLBCommonScissorYMax))
+		{
+			s32 tempxx = (sobj->cms == 2) ? (sprite->width) : (sobj->lrs);
+			yy = (sobj->cmt == 2) ? (sprite->bmheight) : (sobj->lrt);
+			
+			if (sprite->attr & SP_FASTCOPY)
+			{
+				xx = pos_x + tempxx;
+				
+				y = tempy;
+				
+				if (xx >= sLBCommonScissorXMin)
+				{
+					xx--;
 
-                    if (sprite->nbitmaps == 1)
-                    {
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, tempy + yy, (s16)-fs, (s16)-ft, sx, sy);
-                    }
-                    else
-                    {
-                        for (n = 0; n < sprite->nbitmaps; n++, bitmap++)
-                        {
-                            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, y + yy, (s16)-fs, (s16)-ft, sx, sy);
-                            y += yy;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                s32 n;
-                f32 scalex = sprite->scalex;
-                
-                xx = (pos_x + (tempxx * scalex)) + 0.9999F;
-                
-                if (xx >= sLBCommonScissorXMin)
-                {
-                    f32 fpos_x = pos_x - x;
-                    f32 fpos_y = sobj->pos.y - tempy;
-                    
-                    scaley = sprite->scaley;
-                    
-                    if (sprite->nbitmaps == 1)
-                    {
-                        sx = (1024.0F / scalex) + 0.5F;
-                        fs = ((sx * fpos_x) + 16) / 32;
-                        
-                        sy = (1024.0F / scaley) + 0.5F;
-                        ft = ((sy * fpos_y) + 16) / 32;
-                        
-                        y = (sobj->pos.y + (yy * scaley)) + 0.9999F;
-                        
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                    }
-                    else
-                    {
-                        fheight = sprite->bmHreal * scaley;
-                        y = fy = sobj->pos.y + (yy * scaley);
-                        
-                        sx = (1024.0F / scalex) + 0.5F;
-                        sy = (1024.0F / scaley) + 0.5F;
-                        
-                        fs = ((sx * fpos_x) + 16) / 32;
-                        ft = ((sy * fpos_y) + 16) / 32;
-                        
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                        
-                        bitmap++;
-                        
-                        for (n = 1; n < (sprite->nbitmaps - 1); n++, bitmap++)
-                        {
-                            tempft = (sy * (fy - y));
-                            ft = (tempft + 16) / 32;
-                            
-                            tempy = y;
-                            y = fy + fheight;
-                            
-                            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                            
-                            fy += yy * scaley;
-                        }
-                        tempft = (sy * (fy - y));
-                        ft = (tempft + 16) / 32;
-                        
-                        tempy = y;
-                        y = ((bitmap->actualHeight * scaley) + fy) + 0.9999F;
-                        
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                    }
-                }
-            }
-        }
-    }
+					if (sprite->nbitmaps == 1)
+					{
+						lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, tempy + yy, (s16)-fs, (s16)-ft, sx, sy);
+					}
+					else
+					{
+						for (n = 0; n < sprite->nbitmaps; n++, bitmap++)
+						{
+							lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, y + yy, (s16)-fs, (s16)-ft, sx, sy);
+							y += yy;
+						}
+					}
+				}
+			}
+			else
+			{
+				s32 n;
+				f32 scalex = sprite->scalex;
+				
+				xx = (pos_x + (tempxx * scalex)) + 0.9999F;
+				
+				if (xx >= sLBCommonScissorXMin)
+				{
+					f32 fpos_x = pos_x - x;
+					f32 fpos_y = sobj->pos.y - tempy;
+					
+					scaley = sprite->scaley;
+					
+					if (sprite->nbitmaps == 1)
+					{
+						sx = (1024.0F / scalex) + 0.5F;
+						fs = ((sx * fpos_x) + 16) / 32;
+						
+						sy = (1024.0F / scaley) + 0.5F;
+						ft = ((sy * fpos_y) + 16) / 32;
+						
+						y = (sobj->pos.y + (yy * scaley)) + 0.9999F;
+						
+						lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+					}
+					else
+					{
+						fheight = sprite->bmHreal * scaley;
+						y = fy = sobj->pos.y + (yy * scaley);
+						
+						sx = (1024.0F / scalex) + 0.5F;
+						sy = (1024.0F / scaley) + 0.5F;
+						
+						fs = ((sx * fpos_x) + 16) / 32;
+						ft = ((sy * fpos_y) + 16) / 32;
+						
+						lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+						
+						bitmap++;
+						
+						for (n = 1; n < (sprite->nbitmaps - 1); n++, bitmap++)
+						{
+							tempft = (sy * (fy - y));
+							ft = (tempft + 16) / 32;
+							
+							tempy = y;
+							y = fy + fheight;
+							
+							lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+							
+							fy += yy * scaley;
+						}
+						tempft = (sy * (fy - y));
+						ft = (tempft + 16) / 32;
+						
+						tempy = y;
+						y = ((bitmap->actualHeight * scaley) + fy) + 0.9999F;
+						
+						lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+					}
+				}
+			}
+		}
+	}
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/lbCommonPrepSObjDraw.s")
 #endif /* NON_MATCHING */
 
-// 0x800CCEAC
-void lbCommonClearExternSpriteParams(void)
+// 800CCEAC
+void lbCommonClearExternSpriteParams()
 {
-    sLBCommonExternSpriteAttr = SP_ARGUMENT;
-    sLBCommonExternBitmapFmt = -1;
-    
-    sLBCommonPrevBitmapBuf = NULL;
-    sLBCommonPrevSpriteLUT = NULL;
+	sLBCommonExternSpriteAttr = SP_ARGUMENT;
+	sLBCommonExternBitmapFmt = -1;
+	
+	sLBCommonPrevBitmapBuf = NULL;
+	sLBCommonPrevSpriteLUT = NULL;
 }
 
-// 0x800CCED8
+// 800CCED8
 void lbCommonSetExternSpriteParams(Sprite *sprite)
 {
-    sLBCommonExternSpriteAttr = sprite->attr;
-    sLBCommonExternBitmapFmt = sprite->bmfmt;
-    sLBCommonPrevSpriteLUT = sprite->LUT;
+	sLBCommonExternSpriteAttr = sprite->attr;
+	sLBCommonExternBitmapFmt = sprite->bmfmt;
+	sLBCommonPrevSpriteLUT = sprite->LUT;
 }
 
-// 0x800CCF00
+// 800CCF00
 void lbCommonDrawSObjAttr(GObj *gobj)
 {
-    SObj *sobj = SObjGetStruct(gobj);
-    
-    while (sobj != NULL)
-    {
-        if (!(sobj->sprite.attr & SP_HIDDEN))
-        {
-            lbCommonPrepSObjAttr(gSYTaskmanDLHeads, sobj);
-            lbCommonPrepSObjDraw(gSYTaskmanDLHeads, sobj);
-            lbCommonSetExternSpriteParams(&sobj->sprite);
-        }
-        sobj = sobj->next;
-    }
+	SObj *sobj = SObjGetStruct(gobj);
+	
+	while (sobj != NULL)
+	{
+		if (!(sobj->sprite.attr & SP_HIDDEN))
+		{
+			lbCommonPrepSObjAttr(gSYTaskmanDLHeads, sobj);
+			lbCommonPrepSObjDraw(gSYTaskmanDLHeads, sobj);
+			lbCommonSetExternSpriteParams(&sobj->sprite);
+		}
+		sobj = sobj->next;
+	}
 }
 
-// 0x800CCF74
+// 800CCF74
 void lbCommonDrawSObjNoAttr(GObj *gobj)
 {
-    SObj *sobj = SObjGetStruct(gobj);
-    
-    while (sobj != NULL)
-    {
-        if (!(sobj->sprite.attr & SP_HIDDEN))
-        {
-            lbCommonPrepSObjDraw(gSYTaskmanDLHeads, sobj);
-            lbCommonClearExternSpriteParams();
-        }
-        sobj = sobj->next;
-    }
+	SObj *sobj = SObjGetStruct(gobj);
+	
+	while (sobj != NULL)
+	{
+		if (!(sobj->sprite.attr & SP_HIDDEN))
+		{
+			lbCommonPrepSObjDraw(gSYTaskmanDLHeads, sobj);
+			lbCommonClearExternSpriteParams();
+		}
+		sobj = sobj->next;
+	}
 }
 
-// 0x800CCFDC
+// 800CCFDC
 SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
 {
-    SObj *sobj;
+	SObj *sobj;
 
-    if (sprite->bmsiz == G_IM_SIZ_4c)
-    {
-        lbCommonDecodeSpriteBitmapsSiz4b(sprite);
-    }
-    sobj = gcAddSObjForGObj(gobj, sprite);
-    
-    sobj->envcolor.r =
-    sobj->envcolor.g =
-    sobj->envcolor.b =
-    sobj->envcolor.a = 0x00;
-    
-    sobj->maskt = sobj->masks = 0;
-    
-    sobj->cmt = sobj->cms = 2;
-    
-    sobj->pos.x = sobj->pos.y = 0.0F;
+	if (sprite->bmsiz == G_IM_SIZ_4c)
+	{
+		lbCommonDecodeSpriteBitmapsSiz4b(sprite);
+	}
+	sobj = gcAddSObjForGObj(gobj, sprite);
+	
+	sobj->envcolor.r =
+	sobj->envcolor.g =
+	sobj->envcolor.b =
+	sobj->envcolor.a = 0x00;
+	
+	sobj->maskt = sobj->masks = 0;
+	
+	sobj->cmt = sobj->cms = 2;
+	
+	sobj->pos.x = sobj->pos.y = 0.0F;
 }
 
-// 0x800CD050
+// 800CD050
 GObj* lbCommonMakeSpriteGObj
 (
-    u32 id,
-    void (*func_run)(GObj*),
-    s32 link,
-    u32 link_priority,
-    void (*proc_display)(GObj*),
-    s32 dl_link,
-    u32 dl_link_priority,
-    u32 camera_tag,
-    Sprite *sprite,
-    u8 gobjproc_kind,
-    void (*proc)(GObj*),
-    u32 gobjproc_priority
+	u32 id,
+	void (*func_run)(GObj*),
+	s32 link,
+	u32 link_priority,
+	void (*proc_display)(GObj*),
+	s32 dl_link,
+	u32 dl_link_priority,
+	u32 camera_tag,
+	Sprite *sprite,
+	u8 gobjproc_kind,
+	void (*proc)(GObj*),
+	u32 gobjproc_priority
 )
 {
-    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
-        
-    if (gobj == NULL)
-    {
-        return NULL;
-    }
-    gcAddGObjDisplay(gobj, proc_display, dl_link, dl_link_priority, camera_tag);
-    
-    lbCommonMakeSObjForGObj(gobj, sprite);
-        
-    if (proc != NULL)
-    {
-        gcAddGObjProcess(gobj, proc, gobjproc_kind, gobjproc_priority);
-    }
-    return gobj;
+	GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
+		
+	if (gobj == NULL)
+	{
+		return NULL;
+	}
+	gcAddGObjDisplay(gobj, proc_display, dl_link, dl_link_priority, camera_tag);
+	
+	lbCommonMakeSObjForGObj(gobj, sprite);
+		
+	if (proc != NULL)
+	{
+		gcAddGObjProcess(gobj, proc, gobjproc_kind, gobjproc_priority);
+	}
+	return gobj;
 }
 
-// 0x800CD0D0
+// 800CD0D0
 void lbCommonStartSprite(Gfx **dls)
 {
-    Gfx *dl = dls[0];
-    
-    lbCommonClearExternSpriteParams();
-    
-    gDPPipeSync(dl++);
-    gDPSetCycleType(dl++, G_CYC_1CYCLE);
-    gDPSetBlendColor(dl++, 0x00, 0x00, 0x00, 0x08);
-    gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
-    gDPSetTexturePersp(dl++, G_TP_NONE);
-    gDPSetTextureFilter(dl++, G_TF_BILERP);
-    gDPSetTextureConvert(dl++, G_TC_FILT);
-    gDPSetTextureDetail(dl++, G_TD_CLAMP);
-    gDPSetTextureLOD(dl++, G_TL_TILE);
-    gDPSetTextureLUT(dl++, G_TT_NONE);
-    gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-    
-    dls[0] = dl;
+	Gfx *dl = dls[0];
+	
+	lbCommonClearExternSpriteParams();
+	
+	gDPPipeSync(dl++);
+	gDPSetCycleType(dl++, G_CYC_1CYCLE);
+	gDPSetBlendColor(dl++, 0x00, 0x00, 0x00, 0x08);
+	gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
+	gDPSetTexturePersp(dl++, G_TP_NONE);
+	gDPSetTextureFilter(dl++, G_TF_BILERP);
+	gDPSetTextureConvert(dl++, G_TC_FILT);
+	gDPSetTextureDetail(dl++, G_TD_CLAMP);
+	gDPSetTextureLOD(dl++, G_TL_TILE);
+	gDPSetTextureLUT(dl++, G_TT_NONE);
+	gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+	
+	dls[0] = dl;
 }
 
-// 0x800CD1F0
+// 800CD1F0
 void lbCommonSetSpriteScissor(s32 xmin, s32 xmax, s32 ymin, s32 ymax)
 {
-    sLBCommonScissorXMin = xmin;
-    sLBCommonScissorYMin = ymin;
-    sLBCommonScissorXMax = xmax;
-    sLBCommonScissorYMax = ymax;
+	sLBCommonScissorXMin = xmin;
+	sLBCommonScissorYMin = ymin;
+	sLBCommonScissorXMax = xmax;
+	sLBCommonScissorYMax = ymax;
 }
 
-// 0x800CD214
+// 800CD214
 void lbCommonFinishSprite(Gfx **dls)
 {
-    Gfx *dl = dls[0];
-    
-    gDPSetCombineMode(dl++, G_CC_SHADE, G_CC_SHADE);
-    gDPSetAlphaCompare(dl++, G_AC_NONE);
-    gDPSetTexturePersp(dl++, G_TP_PERSP);
+	Gfx *dl = dls[0];
+	
+	gDPSetCombineMode(dl++, G_CC_SHADE, G_CC_SHADE);
+	gDPSetAlphaCompare(dl++, G_AC_NONE);
+	gDPSetTexturePersp(dl++, G_TP_PERSP);
 
-    if (sLBCommonExternSpriteAttr & SP_TRANSPARENT)
-    {
-        gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-    }
-    if (sLBCommonExternBitmapFmt == G_IM_FMT_CI)
-    {
-        gDPSetTextureLUT(dl++, G_TT_NONE);
-    }
-    dls[0] = dl;
+	if (sLBCommonExternSpriteAttr & SP_TRANSPARENT)
+	{
+		gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+	}
+	if (sLBCommonExternBitmapFmt == G_IM_FMT_CI)
+	{
+		gDPSetTextureLUT(dl++, G_TT_NONE);
+	}
+	dls[0] = dl;
 }
 
-// 0x800CD2CC
+// 800CD2CC
 void lbCommonDrawSprite(GObj *camera_gobj)
 {
-    CObj *cobj = CObjGetStruct(camera_gobj);
-    Vp_t *viewport = &cobj->viewport.vp;
-    s32 ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
-    s32 uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
-    s32 lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
-    s32 lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
-    
-    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10)
-    {
-        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10;
-    }
-    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10)
-    {
-        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10;
-    }
-    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10))
-    {
-        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10);
-    }
-    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10))
-    {
-        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10);
-    }
-    lbCommonStartSprite(gSYTaskmanDLHeads);
-    lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	Vp_t *viewport = &cobj->viewport.vp;
+	s32 ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+	s32 uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+	s32 lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+	s32 lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+	
+	if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10)
+	{
+		ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10;
+	}
+	if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10)
+	{
+		uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10;
+	}
+	if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10))
+	{
+		lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10);
+	}
+	if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10))
+	{
+		lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10);
+	}
+	lbCommonStartSprite(gSYTaskmanDLHeads);
+	lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
-    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
-    lbCommonFinishSprite(gSYTaskmanDLHeads);
+	gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+	lbCommonFinishSprite(gSYTaskmanDLHeads);
 }
 
-// 0x800CD440
+// 800CD440
 void lbCommonInitCameraOrtho(CObj *cobj, u8 tk, u8 arg2)
 {
-    XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
-    
-    cobj->projection.ortho = dGCOrthoDefault;
-    cobj->projection.ortho.xobj = xobj;
+	XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
+	
+	cobj->projection.ortho = dGCOrthoDefault;
+	cobj->projection.ortho.xobj = xobj;
 }
 
-// 0x800CD4C0
+// 800CD4C0
 void lbCommonInitCameraPersp(CObj *cobj, u8 tk, u8 arg2)
 {
-    XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
-    
-    cobj->projection.persp = dGCPerspDefault;
-    cobj->projection.persp.xobj = xobj;
+	XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
+	
+	cobj->projection.persp = dGCPerspDefault;
+	cobj->projection.persp.xobj = xobj;
 }
 
-// 0x800CD538
+// 800CD538
 void lbCommonInitCameraVec(CObj *cobj, u8 tk, u8 arg2)
 {
-    XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
-    
-    cobj->vec = dGCCObjVecDefault;
-    cobj->vec.xobj = xobj;
+	XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
+	
+	cobj->vec = dGCCObjVecDefault;
+	cobj->vec.xobj = xobj;
 }
 
-// 0x800CD5AC
+// 800CD5AC
 void lbCommonCross3D(Vec3f *a, Vec3f *b, Vec3f *out)
 {
 	out->x = a->y * b->z - a->z * b->y;

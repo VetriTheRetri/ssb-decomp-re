@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E500
+// 8018E500
 LBFileNode sSCAutoDemoStatusBuffer[100];
 
-// 0x8018E820
+// 8018E820
 LBFileNode sSCAutoDemoForceStatusBuffer[7];
 
 // // // // // // // // // // // //
@@ -19,8 +19,8 @@ LBFileNode sSCAutoDemoForceStatusBuffer[7];
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E0C0
-void scAutoDemoSetupFiles(void)
+// 8018E0C0
+void scAutoDemoSetupFiles()
 {
 	LBRelocSetup rl_setup;
 

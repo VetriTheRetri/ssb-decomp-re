@@ -18,14 +18,14 @@ struct GMCamera
 	void (*func_camera)(GObj*);
 	f32 target_dist;
 	Vec3f vel_at;
-    s32 viewport_ulx;
-    s32 viewport_uly;
-    s32 viewport_lrx;
-    s32 viewport_lry;
-    s32 viewport_center_x;
-    s32 viewport_center_y;
-    s32 viewport_width;
-    s32 viewport_height;
+	s32 viewport_ulx;
+	s32 viewport_uly;
+	s32 viewport_lrx;
+	s32 viewport_lry;
+	s32 viewport_center_x;
+	s32 viewport_center_y;
+	s32 viewport_width;
+	s32 viewport_height;
 	f32 fovy;
 	GObj *pzoom_fighter_gobj; // Guess: this is a struct from here...
 	f32 pzoom_eye_x;
@@ -291,7 +291,7 @@ struct GMRumbleLink
 {
 	GMRumbleScript *p_script;
 	GMRumbleLink *rnext;
-    GMRumbleLink *rprev;
+	GMRumbleLink *rprev;
 };
 
 struct GMRumblePlayer

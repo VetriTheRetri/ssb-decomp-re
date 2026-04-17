@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNPurinModel[10336] = {
+	#include <NPurinModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -202,3 +209,4 @@ DObjDesc dNPurinModel_JointTree[] = {
 
 PAD(4);
 
+#endif  /* REGION_US */

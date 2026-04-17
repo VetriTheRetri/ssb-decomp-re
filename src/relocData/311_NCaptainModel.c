@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNCaptainModel[12832] = {
+	#include <NCaptainModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -262,3 +269,4 @@ DObjDesc dNCaptainModel_JointTree[] = {
 
 PAD(12);
 
+#endif  /* REGION_US */

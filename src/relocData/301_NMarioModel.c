@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNMarioModel[11952] = {
+	#include <NMarioModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -241,3 +248,4 @@ DObjDesc dNMarioModel_JointTree[] = {
 
 PAD(8);
 
+#endif  /* REGION_US */

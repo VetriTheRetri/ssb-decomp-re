@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNNessModel[13792] = {
+	#include <NNessModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -272,3 +279,4 @@ u8 dNNessModel_gap_0x3210_sub_0x2B0[288] = {
 	#include <NNessModel/gap_0x3210_sub_0x2B0.data.inc.c>
 };
 
+#endif  /* REGION_US */

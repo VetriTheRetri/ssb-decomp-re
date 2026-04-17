@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dBossModel[11584] = {
+	#include <BossModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (32 vertices) */
 Vtx dBossModel_JointVerts_Vtx[32] = {
@@ -522,3 +529,4 @@ u8 dBossModel_gap_0x2850_sub_0x350[416] = {
 	#include <BossModel/gap_0x2850_sub_0x350.data.inc.c>
 };
 
+#endif  /* REGION_US */

@@ -114,12 +114,15 @@ Recent round of structural work:
   the same 12 LUT and 12 Tex offsets). Tex sizes 128 / 512 / 1024 /
   2048 bytes (CI4 32×8 / 32×32 / 64×32 / 64×64).
 - `StagePupupuBeta1` (fid 101, 6,560 B) and `StagePupupuBeta2`
-  (fid 102, 10,496 B) — Pupupu Beta stage geometry. Each split into
-  three structural regions discovered by walking gsSPEndDisplayList
-  markers and the intern + extern reloc chains: a Vtx/DObjDesc pool,
-  a contiguous Gfx section (8 DLs in Beta1, 13 in Beta2), and a
-  trailing DObjDesc-shaped block. Held as named u8 sub-blocks for
-  now — DL-by-DL Gfx[] typing is still pending.
+  (fid 102, 10,496 B) — Pupupu Beta stage geometry, now **fully typed**:
+  12 `Vtx[]` arrays in the data pool (1 of size 5/7 + 11 of size 4),
+  one `Gfx[]` array per DL (8 DLs in Beta1, 13 in Beta2, sizes from
+  13 to 482 cmds), and a `DObjDesc[3]` / `DObjDesc[4]` block in the
+  trailer. The two chain-encoded `p_dobjs` values in each trailer
+  remain inline-hex placeholders (no `.reloc` for these fids yet) —
+  fixRelocChain leaves them alone since both files have empty `.reloc`,
+  and the runtime patches them via the `gMPCollisionGroundData`-based
+  load path.
 - Earlier rounds: all `*MainMotion`, `MV opening / ending`,
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.

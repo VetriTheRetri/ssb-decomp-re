@@ -7,25 +7,13 @@
 #include "relocdata_types.h"
 
 
-#if defined(REGION_JP)
-
-/* JP binary has a different layout; fold in its chain-encoded
- * bytes as a single raw u8 block. extractRelocInc regenerates
- * the inc.c below from the JP binary whenever JP assets are
- * extracted, and the companion .jp.reloc is empty so
- * fixRelocChain leaves the pre-baked chain bytes alone. */
-u8 dMNTitle[123680] = {
-	#include <MNTitle/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Sprite: LogoAnimCutout */
 
 Gfx dMNTitle_LogoAnimCutout_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: LogoAnimCutout (300(304)x239 i4, 20 tiles) */
-u8 dMNTitle_LogoAnimCutout_tex[] = {
+u8 dMNTitle_LogoAnimCutout_tex[36480] = {
     #include <MNTitle/LogoAnimCutout.i4.inc.c>
 };
 
@@ -80,7 +68,7 @@ PAD(4);
 Gfx dMNTitle_LogoAnimStrikeV_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: LogoAnimStrikeV (30(32)x124 i4c) */
-u8 dMNTitle_LogoAnimStrikeV_tex[] = {
+u8 dMNTitle_LogoAnimStrikeV_tex[1984] = {
     #include <MNTitle/LogoAnimStrikeV.i4c.inc.c>
 };
 
@@ -116,7 +104,7 @@ PAD(4);
 Gfx dMNTitle_LogoAnimStrikeH_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: LogoAnimStrikeH (128x12 i4c) */
-u8 dMNTitle_LogoAnimStrikeH_tex[] = {
+u8 dMNTitle_LogoAnimStrikeH_tex[768] = {
     #include <MNTitle/LogoAnimStrikeH.i4c.inc.c>
 };
 
@@ -152,7 +140,7 @@ PAD(4);
 Gfx dMNTitle_LogoAnimFull_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: LogoAnimFull (128x127 i4, 4 tiles) */
-u8 dMNTitle_LogoAnimFull_tex[] = {
+u8 dMNTitle_LogoAnimFull_tex[8152] = {
     #include <MNTitle/LogoAnimFull.i4.inc.c>
 };
 
@@ -191,7 +179,7 @@ PAD(12);
 Gfx dMNTitle_BorderUpper_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: BorderUpper (300(304)x10 i4) */
-u8 dMNTitle_BorderUpper_tex[] = {
+u8 dMNTitle_BorderUpper_tex[1520] = {
     #include <MNTitle/BorderUpper.i4.inc.c>
 };
 
@@ -227,7 +215,7 @@ PAD(4);
 Gfx dMNTitle_Gradient_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Gradient (300(304)x80 i4, 7 tiles) */
-u8 dMNTitle_Gradient_tex[] = {
+u8 dMNTitle_Gradient_tex[12208] = {
     #include <MNTitle/Gradient.i4.inc.c>
 };
 
@@ -269,7 +257,7 @@ PAD(4);
 Gfx dMNTitle_TM_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TM (32x12 i4) */
-u8 dMNTitle_TM_tex[] = {
+u8 dMNTitle_TM_tex[192] = {
     #include <MNTitle/TM.i4.inc.c>
 };
 
@@ -305,7 +293,7 @@ PAD(4);
 Gfx dMNTitle_Cutout_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Cutout (208x92 i4, 3 tiles) */
-u8 dMNTitle_Cutout_tex[] = {
+u8 dMNTitle_Cutout_tex[9584] = {
     #include <MNTitle/Cutout.i4.inc.c>
 };
 
@@ -343,7 +331,7 @@ PAD(4);
 Gfx dMNTitle_TMUnk_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TMUnk (32x12 i4) */
-u8 dMNTitle_TMUnk_tex[] = {
+u8 dMNTitle_TMUnk_tex[192] = {
     #include <MNTitle/TMUnk.i4.inc.c>
 };
 
@@ -379,7 +367,7 @@ PAD(4);
 Gfx dMNTitle_Copyright_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Copyright (300(304)x47 ia8, 4 tiles) */
-u8 dMNTitle_Copyright_tex[] = {
+u8 dMNTitle_Copyright_tex[14312] = {
     #include <MNTitle/Copyright.ia8.inc.c>
 };
 
@@ -418,7 +406,7 @@ PAD(12);
 Gfx dMNTitle_PressStart_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: PressStart (96x18 ia8) */
-u8 dMNTitle_PressStart_tex[] = {
+u8 dMNTitle_PressStart_tex[1728] = {
     #include <MNTitle/PressStart.ia8.inc.c>
 };
 
@@ -454,7 +442,7 @@ PAD(4);
 Gfx dMNTitle_Super_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Super (64x50 ia8) */
-u8 dMNTitle_Super_tex[] = {
+u8 dMNTitle_Super_tex[3200] = {
     #include <MNTitle/Super.ia8.inc.c>
 };
 
@@ -490,7 +478,7 @@ PAD(4);
 Gfx dMNTitle_Smash_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Smash (172x82 rgba32, 21 tiles) */
-u8 dMNTitle_Smash_tex[] = {
+u8 dMNTitle_Smash_tex[56576] = {
     #include <MNTitle/Smash.rgba32.inc.c>
 };
 
@@ -546,7 +534,7 @@ PAD(4);
 Gfx dMNTitle_Bros_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Bros (56x52 ia8) */
-u8 dMNTitle_Bros_tex[] = {
+u8 dMNTitle_Bros_tex[2912] = {
     #include <MNTitle/Bros.ia8.inc.c>
 };
 

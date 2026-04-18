@@ -7,18 +7,6 @@
 #include "relocdata_types.h"
 
 
-#if defined(REGION_JP)
-
-/* JP binary has a different layout; fold in its chain-encoded
- * bytes as a single raw u8 block. extractRelocInc regenerates
- * the inc.c below from the JP binary whenever JP assets are
- * extracted, and the companion .jp.reloc is empty so
- * fixRelocChain leaves the pre-baked chain bytes alone. */
-u8 dSCExplainGraphics[126176] = {
-	#include <SCExplainGraphics/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x5028 (20520 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -228,7 +216,7 @@ u8 dSCExplainGraphics_SpecialMoveRGB_post[24] = {
 Gfx dSCExplainGraphics_Damage1_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Damage1 (200(208)x32 i4) */
-u8 dSCExplainGraphics_Damage1_tex[] = {
+u8 dSCExplainGraphics_Damage1_tex[3328] = {
     #include <SCExplainGraphics/Damage1.i4.inc.c>
 };
 
@@ -264,7 +252,7 @@ PAD(4);
 Gfx dSCExplainGraphics_Damage2_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Damage2 (102(112)x28 i4) */
-u8 dSCExplainGraphics_Damage2_tex[] = {
+u8 dSCExplainGraphics_Damage2_tex[1568] = {
     #include <SCExplainGraphics/Damage2.i4.inc.c>
 };
 
@@ -300,7 +288,7 @@ PAD(4);
 Gfx dSCExplainGraphics_Damage3_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Damage3 (144x32 i4) */
-u8 dSCExplainGraphics_Damage3_tex[] = {
+u8 dSCExplainGraphics_Damage3_tex[2304] = {
     #include <SCExplainGraphics/Damage3.i4.inc.c>
 };
 
@@ -336,7 +324,7 @@ PAD(4);
 Gfx dSCExplainGraphics_Shield_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Shield (164(176)x16 i4) */
-u8 dSCExplainGraphics_Shield_tex[] = {
+u8 dSCExplainGraphics_Shield_tex[1408] = {
     #include <SCExplainGraphics/Shield.i4.inc.c>
 };
 
@@ -372,7 +360,7 @@ PAD(4);
 Gfx dSCExplainGraphics_StartFighting_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: StartFighting (154(160)x32 i4) */
-u8 dSCExplainGraphics_StartFighting_tex[] = {
+u8 dSCExplainGraphics_StartFighting_tex[2560] = {
     #include <SCExplainGraphics/StartFighting.i4.inc.c>
 };
 
@@ -408,7 +396,7 @@ PAD(4);
 Gfx dSCExplainGraphics_PlayerCount_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: PlayerCount (170(176)x14 i4) */
-u8 dSCExplainGraphics_PlayerCount_tex[] = {
+u8 dSCExplainGraphics_PlayerCount_tex[1232] = {
     #include <SCExplainGraphics/PlayerCount.i4.inc.c>
 };
 
@@ -444,7 +432,7 @@ PAD(4);
 Gfx dSCExplainGraphics_HereText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: HereText (42(44)x12 rgba16) */
-u8 dSCExplainGraphics_HereText_tex[] = {
+u8 dSCExplainGraphics_HereText_tex[1056] = {
     #include <SCExplainGraphics/HereText.rgba16.inc.c>
 };
 
@@ -480,7 +468,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Banner (300(304)x88 ci8, 15 tiles) */
-u8 dSCExplainGraphics_Banner_tex[] = {
+u8 dSCExplainGraphics_Banner_tex[26872] = {
     #include <SCExplainGraphics/Banner.ci8.inc.c>
 };
 
@@ -543,7 +531,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: TapTheStick (264(272)x53 ci4, 4 tiles) */
-u8 dSCExplainGraphics_TapTheStick_tex[] = {
+u8 dSCExplainGraphics_TapTheStick_tex[7240] = {
     #include <SCExplainGraphics/TapTheStick.ci4.inc.c>
 };
 
@@ -590,7 +578,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Jump (170(176)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_Jump_tex[] = {
+u8 dSCExplainGraphics_Jump_tex[2920] = {
     #include <SCExplainGraphics/Jump.ci4.inc.c>
 };
 
@@ -635,7 +623,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: MidairJump (156(160)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_MidairJump_tex[] = {
+u8 dSCExplainGraphics_MidairJump_tex[2656] = {
     #include <SCExplainGraphics/MidairJump.ci4.inc.c>
 };
 
@@ -680,7 +668,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Attack (100(112)x14 ci4) */
-u8 dSCExplainGraphics_Attack_tex[] = {
+u8 dSCExplainGraphics_Attack_tex[792] = {
     #include <SCExplainGraphics/Attack.ci4.inc.c>
 };
 
@@ -724,7 +712,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: PowerAttack (160x31 ci4, 2 tiles) */
-u8 dSCExplainGraphics_PowerAttack_tex[] = {
+u8 dSCExplainGraphics_PowerAttack_tex[2496] = {
     #include <SCExplainGraphics/PowerAttack.ci4.inc.c>
 };
 
@@ -769,7 +757,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: SmashAttack (132(144)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_SmashAttack_tex[] = {
+u8 dSCExplainGraphics_SmashAttack_tex[2392] = {
     #include <SCExplainGraphics/SmashAttack.ci4.inc.c>
 };
 
@@ -814,7 +802,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: KnockThemOff (200(208)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_KnockThemOff_tex[] = {
+u8 dSCExplainGraphics_KnockThemOff_tex[3448] = {
     #include <SCExplainGraphics/KnockThemOff.ci4.inc.c>
 };
 
@@ -859,7 +847,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BUpGetBack (162(168)x50 ci8, 5 tiles) */
-u8 dSCExplainGraphics_BUpGetBack_tex[] = {
+u8 dSCExplainGraphics_BUpGetBack_tex[8440] = {
     #include <SCExplainGraphics/BUpGetBack.ci8.inc.c>
 };
 
@@ -912,7 +900,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: SpecialMoves (168x51 ci8, 6 tiles) */
-u8 dSCExplainGraphics_SpecialMoves_tex[] = {
+u8 dSCExplainGraphics_SpecialMoves_tex[8616] = {
     #include <SCExplainGraphics/SpecialMoves.ci8.inc.c>
 };
 
@@ -966,7 +954,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Dodge (182(192)x14 ci4) */
-u8 dSCExplainGraphics_Dodge_tex[] = {
+u8 dSCExplainGraphics_Dodge_tex[1352] = {
     #include <SCExplainGraphics/Dodge.ci4.inc.c>
 };
 
@@ -1010,7 +998,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: ThrowEnemy (146(160)x31 ci4, 2 tiles) */
-u8 dSCExplainGraphics_ThrowEnemy_tex[] = {
+u8 dSCExplainGraphics_ThrowEnemy_tex[2496] = {
     #include <SCExplainGraphics/ThrowEnemy.ci4.inc.c>
 };
 
@@ -1055,7 +1043,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: GrabItems (148(160)x14 ci4) */
-u8 dSCExplainGraphics_GrabItems_tex[] = {
+u8 dSCExplainGraphics_GrabItems_tex[1128] = {
     #include <SCExplainGraphics/GrabItems.ci4.inc.c>
 };
 
@@ -1099,7 +1087,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: UseItems (162(176)x14 ci4) */
-u8 dSCExplainGraphics_UseItems_tex[] = {
+u8 dSCExplainGraphics_UseItems_tex[1240] = {
     #include <SCExplainGraphics/UseItems.ci4.inc.c>
 };
 
@@ -1143,7 +1131,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: ThrowItems (130(144)x49 ci4, 2 tiles) */
-u8 dSCExplainGraphics_ThrowItems_tex[] = {
+u8 dSCExplainGraphics_ThrowItems_tex[3544] = {
     #include <SCExplainGraphics/ThrowItems.ci4.inc.c>
 };
 
@@ -1188,7 +1176,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: AButton (24x39 ci8) */
-u8 dSCExplainGraphics_AButton_tex[] = {
+u8 dSCExplainGraphics_AButton_tex[944] = {
     #include <SCExplainGraphics/AButton.ci8.inc.c>
 };
 
@@ -1237,7 +1225,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BButton (24x39 ci8) */
-u8 dSCExplainGraphics_BButton_tex[] = {
+u8 dSCExplainGraphics_BButton_tex[944] = {
     #include <SCExplainGraphics/BButton.ci8.inc.c>
 };
 
@@ -1286,7 +1274,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: ZButton (24x39 ci8) */
-u8 dSCExplainGraphics_ZButton_tex[] = {
+u8 dSCExplainGraphics_ZButton_tex[944] = {
     #include <SCExplainGraphics/ZButton.ci8.inc.c>
 };
 
@@ -1335,7 +1323,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: PlusSymbol (8(16)x7 ci4) */
-u8 dSCExplainGraphics_PlusSymbol_tex[] = {
+u8 dSCExplainGraphics_PlusSymbol_tex[64] = {
     #include <SCExplainGraphics/PlusSymbol.ci4.inc.c>
 };
 

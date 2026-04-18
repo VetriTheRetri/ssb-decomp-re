@@ -1,5 +1,27 @@
-# Relocation metadata for file 252 (JP variant)
+# Relocation metadata for file 252 (JP binary walk)
 # Format: <type> <ptr_label> <target_label>
-# JP build compiles SCExplainMain as a single chain-encoded raw u32
-# blob — the chain bytes are already baked into the .c source, so
-# fixRelocChain has no per-symbol patches to apply here.
+# Labels resolved via src/relocData/252_SCExplainMain.reloc .o symbol table
+
+
+extern dSCExplainMain_ExplainPhase_0x1404+0x8 0x10670
+extern dSCExplainMain_ExplainPhase_0x1404+0x34 0x12260
+extern dSCExplainMain_ExplainPhase_0x1404+0x60 0x13070
+extern dSCExplainMain_ExplainPhase_0x1404+0x8C 0x13B68
+extern dSCExplainMain_ExplainPhase_0x1404+0xB8 0x140C0
+extern dSCExplainMain_ExplainPhase_0x1404+0xE4 0x14F30
+extern dSCExplainMain_ExplainPhase_0x1404+0x110 0x15DA0
+extern dSCExplainMain_ExplainPhase_0x1404+0x13C 0x7048
+extern dSCExplainMain_ExplainPhase_0x1404+0x168 0x79A8
+extern dSCExplainMain_ExplainPhase_0x1404+0x194 0x8508
+extern dSCExplainMain_ExplainPhase_0x1404+0x1C0 0x168F0
+extern dSCExplainMain_ExplainPhase_0x1404+0x1EC 0x18DE0
+extern dSCExplainMain_ExplainPhase_0x1404+0x218 0x18DE0
+extern dSCExplainMain_ExplainPhase_0x1404+0x244 0x1B470
+extern dSCExplainMain_ExplainPhase_0x1404+0x270 0x8A48
+extern dSCExplainMain_ExplainPhase_0x1404+0x29C 0x1BAB0
+extern dSCExplainMain_ExplainPhase_0x1404+0x2C8 0x1C4A0
+extern dSCExplainMain_ExplainPhase_0x1404+0x2F4 0x1C990
+extern dSCExplainMain_ExplainPhase_0x1404+0x320 0x1CDA0
+extern dSCExplainMain_ExplainPhase_0x1404+0x34C 0x1D9A0
+extern dSCExplainMain_ExplainPhase_0x1404+0x378 0x9268
+extern dSCExplainMain_ExplainPhase_0x1404+0x3A4 0x9808

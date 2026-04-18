@@ -1168,3 +1168,4 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0x7AA0[8] = {
 };
 
 #endif  /* REGION_US */
+

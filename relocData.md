@@ -25,7 +25,6 @@ bytes — every file compiles from C source.
 |---|---:|---|
 | Inline typed `.c` masters | **2,026** | Self-contained `.c` file with typed struct initializers (`FTAttributes` / `MPGroundData` / `ftMotionCommand` / `aobjEvent32` / `ftAnim` / `Sprite` / `DObjDesc` / `MObjSub` / `WPAttributes` / `Vtx` / `Gfx` DL / `LUT` palette / `Tex` / raw-byte wrappers). Any referenced `.inc.c` blobs live under `build/` and are regenerated from the ROM at `make extract` time. |
 | Auto-extracted sprite files | **94** | A committed `.spritelist` marker drives `tools/extractSpriteFile.py`, which walks the ROM binary's reloc chain, auto-discovers every Sprite + Bitmap + pixel block, and emits a full master `.c` + `.reloc` + `.inc.c` set under `build/`. |
-| Raw-blob inline `.c` files | **1** | `StageBattlefieldFile2` — builds and matches but isn't structurally typed yet. |
 | **Total** | **2,132** | |
 
 ### Per-region divergence (JP build)
@@ -42,12 +41,6 @@ build uses one of three override mechanisms, in priority order:
 
 `.jp.c` raw blobs are no longer used — every previously-blob-overridden
 file has been migrated to one of the structural mechanisms above.
-
-### Remaining raw-blob inline files (1 file, ~17 KB)
-
-| File | Bytes | Notes |
-|---|---:|---|
-| `StageBattlefieldFile2` | 17,328 | Split into 3 named u8 regions plus a 43-entry intern chain that crosses the existing block boundaries; needs careful re-split before further typing |
 
 Recent round of structural work:
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
@@ -347,14 +340,7 @@ more structural representation instead.
 
 The remaining work splits into four buckets:
 
-1. **Promote the 1 remaining raw-blob inline file** (~17 KB):
-   `StageBattlefieldFile2`. Recent rounds removed `ITCommonObject`,
-   `KirbySpecial1`, `FoxUnknown`, `NCommonTexture`, `ITBonus1Object`,
-   `SYKseg1Validate`, `SYSignValidate`, `SC1PTrainingMode`,
-   `StagePupupuBetaImages`, `StagePupupuBeta1`, and `StagePupupuBeta2`
-   from this list.
-
-2. **Carve `gap_*` bytes inside typed inline masters** (~73 KB
+1. **Carve `gap_*` bytes inside typed inline masters** (~73 KB
    remaining). These are vertex pools, textures, and palettes
    referenced through segmented addresses the DL walker can't follow
    yet. Worst offenders are the character model files and the Opening /
@@ -362,7 +348,7 @@ The remaining work splits into four buckets:
    have already been split via `tools/splitGapFull.py`; the remaining
    bytes mostly live in self-contained internal regions.
 
-3. **Graduate the 9 remaining JP raw-blob overrides**. CaptainMainMotion
+2. **Graduate the 9 remaining JP raw-blob overrides**. CaptainMainMotion
    and BossMainMotion need their `ftMotionPlayVoice` / `ftMotionPlayFGMStoreInfo`
    / `ftMotionCommandPlayLoopSFXStoreInfo` arguments replaced with
    `nSYAudio*` enum names, plus `#if REGION_JP` guards for hitbox
@@ -371,7 +357,7 @@ The remaining work splits into four buckets:
    of their JP divergences. StageYamabukiFile2 is specifically blocked
    by an `extractRelocInc` parse overshoot (2144 bytes).
 
-4. **Finish typing struct bitfield tails**. The `WPAttributes` 52-byte
+3. **Finish typing struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon
    files and 11 promoted ITCommonData blobs). `ITAttributes` 72-byte
    layout has the visible fields (size, angle, ks, dmg, elem) verified

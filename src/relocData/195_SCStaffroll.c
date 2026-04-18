@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dSCStaffroll[30656] = {
-	#include <SCStaffroll/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 
 
 /* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
@@ -295,16 +287,18 @@ u8 dSCStaffroll_NameAndJobApostrophe_Image[96] = {
 	#include <SCStaffroll/NameAndJobApostrophe_Image.data.inc.c>
 };
 
+#if !defined(REGION_JP)
 /* Raw data from file offset 0x3118 to 0x31D8 (192 bytes) */
 u8 dSCStaffroll_NameAndJob4_Image[192] = {
 	#include <SCStaffroll/NameAndJob4_Image.data.inc.c>
 };
+#endif
 
 /* Sprite: TextBoxAUpper */
 
 /* Texture: TextBoxAUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxAUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxAUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxAUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxAUpper_bitmaps[] = {
@@ -341,7 +335,7 @@ u8 dSCStaffroll_gap_0x329C[12] = {
 
 /* Texture: TextBoxALower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxALower_tex[88] = {
-    #include <SCStaffroll/TextBoxALower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxALower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxALower_bitmaps[] = {
@@ -378,7 +372,7 @@ u8 dSCStaffroll_gap_0x3354[20] = {
 
 /* Texture: TextBoxBUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxBUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxBUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxBUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxBUpper_bitmaps[] = {
@@ -415,7 +409,7 @@ u8 dSCStaffroll_gap_0x342C[12] = {
 
 /* Texture: TextBoxBLower (10(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxBLower_tex[104] = {
-    #include <SCStaffroll/TextBoxBLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxBLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxBLower_bitmaps[] = {
@@ -452,7 +446,7 @@ u8 dSCStaffroll_gap_0x34F4[20] = {
 
 /* Texture: TextBoxCUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxCUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxCUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxCUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxCUpper_bitmaps[] = {
@@ -489,7 +483,7 @@ u8 dSCStaffroll_gap_0x35CC[12] = {
 
 /* Texture: TextBoxCLower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxCLower_tex[88] = {
-    #include <SCStaffroll/TextBoxCLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxCLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxCLower_bitmaps[] = {
@@ -526,7 +520,7 @@ u8 dSCStaffroll_gap_0x3684[20] = {
 
 /* Texture: TextBoxDUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxDUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxDUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxDUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxDUpper_bitmaps[] = {
@@ -563,7 +557,7 @@ u8 dSCStaffroll_gap_0x375C[12] = {
 
 /* Texture: TextBoxDLower (10(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxDLower_tex[104] = {
-    #include <SCStaffroll/TextBoxDLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxDLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxDLower_bitmaps[] = {
@@ -600,7 +594,7 @@ u8 dSCStaffroll_gap_0x3824[20] = {
 
 /* Texture: TextBoxEUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxEUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxEUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxEUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxEUpper_bitmaps[] = {
@@ -637,7 +631,7 @@ u8 dSCStaffroll_gap_0x38FC[12] = {
 
 /* Texture: TextBoxELower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxELower_tex[88] = {
-    #include <SCStaffroll/TextBoxELower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxELower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxELower_bitmaps[] = {
@@ -674,7 +668,7 @@ u8 dSCStaffroll_gap_0x39B4[20] = {
 
 /* Texture: TextBoxFUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxFUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxFUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxFUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxFUpper_bitmaps[] = {
@@ -711,7 +705,7 @@ u8 dSCStaffroll_gap_0x3A8C[12] = {
 
 /* Texture: TextBoxFLower (9(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxFLower_tex[104] = {
-    #include <SCStaffroll/TextBoxFLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxFLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxFLower_bitmaps[] = {
@@ -748,7 +742,7 @@ u8 dSCStaffroll_gap_0x3B54[20] = {
 
 /* Texture: TextBoxGUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxGUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxGUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxGUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxGUpper_bitmaps[] = {
@@ -785,7 +779,7 @@ u8 dSCStaffroll_gap_0x3C2C[12] = {
 
 /* Texture: TextBoxGLower (10(16)x12 i4c) */
 u8 dSCStaffroll_TextBoxGLower_tex[96] = {
-    #include <SCStaffroll/TextBoxGLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxGLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxGLower_bitmaps[] = {
@@ -822,7 +816,7 @@ u8 dSCStaffroll_gap_0x3CEC[12] = {
 
 /* Texture: TextBoxHUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxHUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxHUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxHUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxHUpper_bitmaps[] = {
@@ -859,7 +853,7 @@ u8 dSCStaffroll_gap_0x3DBC[12] = {
 
 /* Texture: TextBoxHLower (10(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxHLower_tex[104] = {
-    #include <SCStaffroll/TextBoxHLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxHLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxHLower_bitmaps[] = {
@@ -896,7 +890,7 @@ u8 dSCStaffroll_gap_0x3E84[20] = {
 
 /* Texture: TextBoxIUpper (5(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxIUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxIUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxIUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxIUpper_bitmaps[] = {
@@ -933,7 +927,7 @@ u8 dSCStaffroll_gap_0x3F5C[12] = {
 
 /* Texture: TextBoxILower (4(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxILower_tex[104] = {
-    #include <SCStaffroll/TextBoxILower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxILower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxILower_bitmaps[] = {
@@ -970,7 +964,7 @@ u8 dSCStaffroll_gap_0x4024[20] = {
 
 /* Texture: TextBoxJUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxJUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxJUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxJUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxJUpper_bitmaps[] = {
@@ -1007,7 +1001,7 @@ u8 dSCStaffroll_gap_0x40FC[12] = {
 
 /* Texture: TextBoxJLower (6(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxJLower_tex[112] = {
-    #include <SCStaffroll/TextBoxJLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxJLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxJLower_bitmaps[] = {
@@ -1044,7 +1038,7 @@ u8 dSCStaffroll_gap_0x41CC[12] = {
 
 /* Texture: TextBoxKUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxKUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxKUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxKUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxKUpper_bitmaps[] = {
@@ -1081,7 +1075,7 @@ u8 dSCStaffroll_gap_0x429C[12] = {
 
 /* Texture: TextBoxKLower (10(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxKLower_tex[104] = {
-    #include <SCStaffroll/TextBoxKLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxKLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxKLower_bitmaps[] = {
@@ -1118,7 +1112,7 @@ u8 dSCStaffroll_gap_0x4364[20] = {
 
 /* Texture: TextBoxLUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxLUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxLUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxLUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxLUpper_bitmaps[] = {
@@ -1155,7 +1149,7 @@ u8 dSCStaffroll_gap_0x443C[12] = {
 
 /* Texture: TextBoxLLower (4(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxLLower_tex[104] = {
-    #include <SCStaffroll/TextBoxLLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxLLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxLLower_bitmaps[] = {
@@ -1192,7 +1186,7 @@ u8 dSCStaffroll_gap_0x4504[20] = {
 
 /* Texture: TextBoxMUpper (14(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxMUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxMUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxMUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxMUpper_bitmaps[] = {
@@ -1229,7 +1223,7 @@ u8 dSCStaffroll_gap_0x45DC[12] = {
 
 /* Texture: TextBoxMLower (12(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxMLower_tex[88] = {
-    #include <SCStaffroll/TextBoxMLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxMLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxMLower_bitmaps[] = {
@@ -1266,7 +1260,7 @@ u8 dSCStaffroll_gap_0x4694[20] = {
 
 /* Texture: TextBoxNUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxNUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxNUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxNUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxNUpper_bitmaps[] = {
@@ -1303,7 +1297,7 @@ u8 dSCStaffroll_gap_0x476C[12] = {
 
 /* Texture: TextBoxNLower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxNLower_tex[88] = {
-    #include <SCStaffroll/TextBoxNLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxNLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxNLower_bitmaps[] = {
@@ -1340,7 +1334,7 @@ u8 dSCStaffroll_gap_0x4824[20] = {
 
 /* Texture: TextBoxOUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxOUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxOUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxOUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxOUpper_bitmaps[] = {
@@ -1377,7 +1371,7 @@ u8 dSCStaffroll_gap_0x48FC[12] = {
 
 /* Texture: TextBoxOLower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxOLower_tex[88] = {
-    #include <SCStaffroll/TextBoxOLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxOLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxOLower_bitmaps[] = {
@@ -1414,7 +1408,7 @@ u8 dSCStaffroll_gap_0x49B4[20] = {
 
 /* Texture: TextBoxPUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxPUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxPUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxPUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxPUpper_bitmaps[] = {
@@ -1451,7 +1445,7 @@ u8 dSCStaffroll_gap_0x4A8C[12] = {
 
 /* Texture: TextBoxPLower (10(16)x12 i4c) */
 u8 dSCStaffroll_TextBoxPLower_tex[96] = {
-    #include <SCStaffroll/TextBoxPLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxPLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxPLower_bitmaps[] = {
@@ -1488,7 +1482,7 @@ u8 dSCStaffroll_gap_0x4B4C[12] = {
 
 /* Texture: TextBoxQUpper (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxQUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxQUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxQUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxQUpper_bitmaps[] = {
@@ -1525,7 +1519,7 @@ u8 dSCStaffroll_gap_0x4C1C[12] = {
 
 /* Texture: TextBoxQLower (10(16)x12 i4c) */
 u8 dSCStaffroll_TextBoxQLower_tex[96] = {
-    #include <SCStaffroll/TextBoxQLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxQLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxQLower_bitmaps[] = {
@@ -1562,7 +1556,7 @@ u8 dSCStaffroll_gap_0x4CDC[12] = {
 
 /* Texture: TextBoxRUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxRUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxRUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxRUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxRUpper_bitmaps[] = {
@@ -1599,7 +1593,7 @@ u8 dSCStaffroll_gap_0x4DAC[12] = {
 
 /* Texture: TextBoxRLower (9(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxRLower_tex[88] = {
-    #include <SCStaffroll/TextBoxRLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxRLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxRLower_bitmaps[] = {
@@ -1636,7 +1630,7 @@ u8 dSCStaffroll_gap_0x4E64[20] = {
 
 /* Texture: TextBoxSUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxSUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxSUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxSUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxSUpper_bitmaps[] = {
@@ -1673,7 +1667,7 @@ u8 dSCStaffroll_gap_0x4F3C[12] = {
 
 /* Texture: TextBoxSLower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxSLower_tex[88] = {
-    #include <SCStaffroll/TextBoxSLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxSLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxSLower_bitmaps[] = {
@@ -1710,7 +1704,7 @@ u8 dSCStaffroll_gap_0x4FF4[20] = {
 
 /* Texture: TextBoxTUpper (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxTUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxTUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxTUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxTUpper_bitmaps[] = {
@@ -1747,7 +1741,7 @@ u8 dSCStaffroll_gap_0x50CC[12] = {
 
 /* Texture: TextBoxTLower (9(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxTLower_tex[104] = {
-    #include <SCStaffroll/TextBoxTLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxTLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxTLower_bitmaps[] = {
@@ -1784,7 +1778,7 @@ u8 dSCStaffroll_gap_0x5194[20] = {
 
 /* Texture: TextBoxUUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxUUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxUUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxUUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxUUpper_bitmaps[] = {
@@ -1821,7 +1815,7 @@ u8 dSCStaffroll_gap_0x526C[12] = {
 
 /* Texture: TextBoxULower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxULower_tex[88] = {
-    #include <SCStaffroll/TextBoxULower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxULower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxULower_bitmaps[] = {
@@ -1858,7 +1852,7 @@ u8 dSCStaffroll_gap_0x5324[20] = {
 
 /* Texture: TextBoxVUpper (14(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxVUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxVUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxVUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxVUpper_bitmaps[] = {
@@ -1895,7 +1889,7 @@ u8 dSCStaffroll_gap_0x53FC[12] = {
 
 /* Texture: TextBoxVLower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxVLower_tex[88] = {
-    #include <SCStaffroll/TextBoxVLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxVLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxVLower_bitmaps[] = {
@@ -1932,7 +1926,7 @@ u8 dSCStaffroll_gap_0x54B4[20] = {
 
 /* Texture: TextBoxWUpper (14(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxWUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxWUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxWUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxWUpper_bitmaps[] = {
@@ -1969,7 +1963,7 @@ u8 dSCStaffroll_gap_0x558C[12] = {
 
 /* Texture: TextBoxWLower (12(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxWLower_tex[88] = {
-    #include <SCStaffroll/TextBoxWLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxWLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxWLower_bitmaps[] = {
@@ -2006,7 +2000,7 @@ u8 dSCStaffroll_gap_0x5644[20] = {
 
 /* Texture: TextBoxXUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxXUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxXUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxXUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxXUpper_bitmaps[] = {
@@ -2043,7 +2037,7 @@ u8 dSCStaffroll_gap_0x571C[12] = {
 
 /* Texture: TextBoxXLower (12(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxXLower_tex[88] = {
-    #include <SCStaffroll/TextBoxXLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxXLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxXLower_bitmaps[] = {
@@ -2080,7 +2074,7 @@ u8 dSCStaffroll_gap_0x57D4[20] = {
 
 /* Texture: TextBoxYUpper (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxYUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxYUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxYUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxYUpper_bitmaps[] = {
@@ -2117,7 +2111,7 @@ u8 dSCStaffroll_gap_0x58AC[12] = {
 
 /* Texture: TextBoxYLower (10(16)x12 i4c) */
 u8 dSCStaffroll_TextBoxYLower_tex[96] = {
-    #include <SCStaffroll/TextBoxYLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxYLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxYLower_bitmaps[] = {
@@ -2154,7 +2148,7 @@ u8 dSCStaffroll_gap_0x596C[12] = {
 
 /* Texture: TextBoxZUpper (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxZUpper_tex[112] = {
-    #include <SCStaffroll/TextBoxZUpper.i4c.inc.c>
+	#include <SCStaffroll/TextBoxZUpper.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxZUpper_bitmaps[] = {
@@ -2191,7 +2185,7 @@ u8 dSCStaffroll_gap_0x5A3C[12] = {
 
 /* Texture: TextBoxZLower (10(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxZLower_tex[88] = {
-    #include <SCStaffroll/TextBoxZLower.i4c.inc.c>
+	#include <SCStaffroll/TextBoxZLower.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxZLower_bitmaps[] = {
@@ -2228,7 +2222,7 @@ u8 dSCStaffroll_gap_0x5AF4[20] = {
 
 /* Texture: TextBoxColon (5(16)x11 i4c) */
 u8 dSCStaffroll_TextBoxColon_tex[88] = {
-    #include <SCStaffroll/TextBoxColon.i4c.inc.c>
+	#include <SCStaffroll/TextBoxColon.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxColon_bitmaps[] = {
@@ -2265,7 +2259,7 @@ u8 dSCStaffroll_gap_0x5BB4[20] = {
 
 /* Texture: TextBoxComma (5(16)x5 i4c) */
 u8 dSCStaffroll_TextBoxComma_tex[40] = {
-    #include <SCStaffroll/TextBoxComma.i4c.inc.c>
+	#include <SCStaffroll/TextBoxComma.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxComma_bitmaps[] = {
@@ -2302,7 +2296,7 @@ u8 dSCStaffroll_gap_0x5C44[20] = {
 
 /* Texture: TextBoxPeriod (5(16)x5 i4c) */
 u8 dSCStaffroll_TextBoxPeriod_tex[40] = {
-    #include <SCStaffroll/TextBoxPeriod.i4c.inc.c>
+	#include <SCStaffroll/TextBoxPeriod.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxPeriod_bitmaps[] = {
@@ -2339,7 +2333,7 @@ u8 dSCStaffroll_gap_0x5CD4[20] = {
 
 /* Texture: TextBoxDash (9(16)x4 i4c) */
 u8 dSCStaffroll_TextBoxDash_tex[32] = {
-    #include <SCStaffroll/TextBoxDash.i4c.inc.c>
+	#include <SCStaffroll/TextBoxDash.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxDash_bitmaps[] = {
@@ -2376,7 +2370,7 @@ u8 dSCStaffroll_gap_0x5D5C[12] = {
 
 /* Texture: TextBox1 (9(16)x14 i4c) */
 u8 dSCStaffroll_TextBox1_tex[112] = {
-    #include <SCStaffroll/TextBox1.i4c.inc.c>
+	#include <SCStaffroll/TextBox1.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox1_bitmaps[] = {
@@ -2413,7 +2407,7 @@ u8 dSCStaffroll_gap_0x5E2C[12] = {
 
 /* Texture: TextBox2 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox2_tex[112] = {
-    #include <SCStaffroll/TextBox2.i4c.inc.c>
+	#include <SCStaffroll/TextBox2.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox2_bitmaps[] = {
@@ -2450,7 +2444,7 @@ u8 dSCStaffroll_gap_0x5EFC[12] = {
 
 /* Texture: TextBox3 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox3_tex[112] = {
-    #include <SCStaffroll/TextBox3.i4c.inc.c>
+	#include <SCStaffroll/TextBox3.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox3_bitmaps[] = {
@@ -2487,7 +2481,7 @@ u8 dSCStaffroll_gap_0x5FCC[12] = {
 
 /* Texture: TextBox4 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox4_tex[112] = {
-    #include <SCStaffroll/TextBox4.i4c.inc.c>
+	#include <SCStaffroll/TextBox4.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox4_bitmaps[] = {
@@ -2524,7 +2518,7 @@ u8 dSCStaffroll_gap_0x609C[12] = {
 
 /* Texture: TextBox5 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox5_tex[112] = {
-    #include <SCStaffroll/TextBox5.i4c.inc.c>
+	#include <SCStaffroll/TextBox5.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox5_bitmaps[] = {
@@ -2561,7 +2555,7 @@ u8 dSCStaffroll_gap_0x616C[12] = {
 
 /* Texture: TextBox6 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox6_tex[112] = {
-    #include <SCStaffroll/TextBox6.i4c.inc.c>
+	#include <SCStaffroll/TextBox6.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox6_bitmaps[] = {
@@ -2598,7 +2592,7 @@ u8 dSCStaffroll_gap_0x623C[12] = {
 
 /* Texture: TextBox7 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox7_tex[112] = {
-    #include <SCStaffroll/TextBox7.i4c.inc.c>
+	#include <SCStaffroll/TextBox7.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox7_bitmaps[] = {
@@ -2635,7 +2629,7 @@ u8 dSCStaffroll_gap_0x630C[12] = {
 
 /* Texture: TextBox8 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox8_tex[112] = {
-    #include <SCStaffroll/TextBox8.i4c.inc.c>
+	#include <SCStaffroll/TextBox8.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox8_bitmaps[] = {
@@ -2672,7 +2666,7 @@ u8 dSCStaffroll_gap_0x63DC[12] = {
 
 /* Texture: TextBox9 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox9_tex[112] = {
-    #include <SCStaffroll/TextBox9.i4c.inc.c>
+	#include <SCStaffroll/TextBox9.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox9_bitmaps[] = {
@@ -2709,7 +2703,7 @@ u8 dSCStaffroll_gap_0x64AC[12] = {
 
 /* Texture: TextBox0 (13(16)x14 i4c) */
 u8 dSCStaffroll_TextBox0_tex[112] = {
-    #include <SCStaffroll/TextBox0.i4c.inc.c>
+	#include <SCStaffroll/TextBox0.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBox0_bitmaps[] = {
@@ -2746,7 +2740,7 @@ u8 dSCStaffroll_gap_0x657C[12] = {
 
 /* Texture: TextBoxQuote (5(16)x5 i4c) */
 u8 dSCStaffroll_TextBoxQuote_tex[40] = {
-    #include <SCStaffroll/TextBoxQuote.i4c.inc.c>
+	#include <SCStaffroll/TextBoxQuote.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxQuote_bitmaps[] = {
@@ -2783,7 +2777,7 @@ u8 dSCStaffroll_gap_0x6604[20] = {
 
 /* Texture: TextBoxAmpers (16x14 i4c) */
 u8 dSCStaffroll_TextBoxAmpers_tex[112] = {
-    #include <SCStaffroll/TextBoxAmpers.i4c.inc.c>
+	#include <SCStaffroll/TextBoxAmpers.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxAmpers_bitmaps[] = {
@@ -2819,7 +2813,7 @@ Gfx dSCStaffroll_TextBoxSlash_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TextBoxSlash (6(16)x12 i4c) */
 u8 dSCStaffroll_TextBoxSlash_tex[96] = {
-    #include <SCStaffroll/TextBoxSlash.i4c.inc.c>
+	#include <SCStaffroll/TextBoxSlash.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxSlash_bitmaps[] = {
@@ -2855,7 +2849,7 @@ Gfx dSCStaffroll_TextBoxApostrophe_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TextBoxApostrophe (5(16)x5 i4c) */
 u8 dSCStaffroll_TextBoxApostrophe_tex[40] = {
-    #include <SCStaffroll/TextBoxApostrophe.i4c.inc.c>
+	#include <SCStaffroll/TextBoxApostrophe.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxApostrophe_bitmaps[] = {
@@ -2891,7 +2885,7 @@ Gfx dSCStaffroll_TextBoxQuestion_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TextBoxQuestion (12(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxQuestion_tex[112] = {
-    #include <SCStaffroll/TextBoxQuestion.i4c.inc.c>
+	#include <SCStaffroll/TextBoxQuestion.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxQuestion_bitmaps[] = {
@@ -2927,7 +2921,7 @@ Gfx dSCStaffroll_TextBoxBracketOpen_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TextBoxBracketOpen (7(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxBracketOpen_tex[112] = {
-    #include <SCStaffroll/TextBoxBracketOpen.i4c.inc.c>
+	#include <SCStaffroll/TextBoxBracketOpen.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxBracketOpen_bitmaps[] = {
@@ -2963,7 +2957,7 @@ Gfx dSCStaffroll_TextBoxBracketClose_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TextBoxBracketClose (7(16)x14 i4c) */
 u8 dSCStaffroll_TextBoxBracketClose_tex[112] = {
-    #include <SCStaffroll/TextBoxBracketClose.i4c.inc.c>
+	#include <SCStaffroll/TextBoxBracketClose.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxBracketClose_bitmaps[] = {
@@ -2993,13 +2987,19 @@ Sprite dSCStaffroll_TextBoxBracketClose = {
 
 PAD(4);
 
+#if defined(REGION_JP)
+/* JP: EAccent section absent; 8-byte gap replaces EAccent + gap_0x6B64 */
+u8 dSCStaffroll_gap_EAccent_jp[8] = {
+	0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
+#else
 /* Sprite: TextBoxEAccent */
 
 Gfx dSCStaffroll_TextBoxEAccent_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: TextBoxEAccent (10(16)x13 i4c) */
 u8 dSCStaffroll_TextBoxEAccent_tex[104] = {
-    #include <SCStaffroll/TextBoxEAccent.i4c.inc.c>
+	#include <SCStaffroll/TextBoxEAccent.i4c.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxEAccent_bitmaps[] = {
@@ -3031,12 +3031,13 @@ Sprite dSCStaffroll_TextBoxEAccent = {
 u8 dSCStaffroll_gap_0x6B64[20] = {
 	#include <SCStaffroll/gap_0x6B64.data.inc.c>
 };
+#endif
 
 /* Sprite: Crosshair */
 
 /* Texture: Crosshair (29(32)x29 i4) */
 u8 dSCStaffroll_Crosshair_tex[464] = {
-    #include <SCStaffroll/Crosshair.i4.inc.c>
+	#include <SCStaffroll/Crosshair.i4.inc.c>
 };
 
 Bitmap dSCStaffroll_Crosshair_bitmaps[] = {
@@ -3073,7 +3074,7 @@ u8 dSCStaffroll_gap_0x6D9C[12] = {
 
 /* Texture: TextBoxBracketLeft (9(16)x60 i4) */
 u8 dSCStaffroll_TextBoxBracketLeft_tex[480] = {
-    #include <SCStaffroll/TextBoxBracketLeft.i4.inc.c>
+	#include <SCStaffroll/TextBoxBracketLeft.i4.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxBracketLeft_bitmaps[] = {
@@ -3110,7 +3111,7 @@ u8 dSCStaffroll_gap_0x6FDC[12] = {
 
 /* Texture: TextBoxBracketRight (9(16)x60 i4) */
 u8 dSCStaffroll_TextBoxBracketRight_tex[480] = {
-    #include <SCStaffroll/TextBoxBracketRight.i4.inc.c>
+	#include <SCStaffroll/TextBoxBracketRight.i4.inc.c>
 };
 
 Bitmap dSCStaffroll_TextBoxBracketRight_bitmaps[] = {
@@ -3177,5 +3178,3 @@ DObjDesc dSCStaffroll_DObjDesc_0x78C0[] = {
 };
 
 PAD(12);
-
-#endif  /* REGION_US */

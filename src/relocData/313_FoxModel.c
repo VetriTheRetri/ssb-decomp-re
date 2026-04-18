@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dFoxModel[32336] = {
-	#include <FoxModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dFoxModel_gap_0x2E60_sub_0x2B0[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x284[];
@@ -1346,8 +1338,8 @@ u8 dFoxModel_Tex_0x7AE0[72] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dFoxModel_Stock_tex[] = {
-    #include <FoxModel/Stock.ci4.inc.c>
+u8 dFoxModel_Stock_tex[88] = {
+	#include <FoxModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0x7B80 (16 colors RGBA5551) */
@@ -1411,8 +1403,8 @@ PAD(4);
 Gfx dFoxModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (30(32)x24 i4) */
-u8 dFoxModel_FTEmblem_tex[] = {
-    #include <FoxModel/FTEmblem.i4.inc.c>
+u8 dFoxModel_FTEmblem_tex[384] = {
+	#include <FoxModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dFoxModel_FTEmblem_bitmaps[] = {
@@ -1442,4 +1434,3 @@ Sprite dFoxModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

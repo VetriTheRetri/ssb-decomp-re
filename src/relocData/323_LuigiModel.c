@@ -1339,7 +1339,7 @@ u8 dLuigiModel_Tex_0x73C0[2072] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dLuigiModel_Stock_tex[] = {
+u8 dLuigiModel_Stock_tex[88] = {
     #include <LuigiModel/Stock.ci4.inc.c>
 };
 
@@ -1419,7 +1419,7 @@ PAD(4);
 Gfx dLuigiModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (27(32)x25 i4) */
-u8 dLuigiModel_FTEmblem_tex[] = {
+u8 dLuigiModel_FTEmblem_tex[400] = {
     #include <LuigiModel/FTEmblem.i4.inc.c>
 };
 

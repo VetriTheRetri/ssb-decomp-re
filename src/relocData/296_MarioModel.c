@@ -1096,7 +1096,7 @@ u8 dMarioModel_gap_0x6F90_sub_0x8[528] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dMarioModel_Stock_tex[] = {
+u8 dMarioModel_Stock_tex[88] = {
     #include <MarioModel/Stock.ci4.inc.c>
 };
 
@@ -1166,7 +1166,7 @@ PAD(12);
 Gfx dMarioModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (27(32)x25 i4) */
-u8 dMarioModel_FTEmblem_tex[] = {
+u8 dMarioModel_FTEmblem_tex[400] = {
     #include <MarioModel/FTEmblem.i4.inc.c>
 };
 

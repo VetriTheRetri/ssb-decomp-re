@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dMMarioModel[12096] = {
-	#include <MMarioModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Vtx: JointVerts @ 0x0 (20 vertices) */
 Vtx dMMarioModel_JointVerts_Vtx[20] = {
 	#include <MMarioModel/JointVerts.vtx.inc.c>
@@ -260,8 +252,8 @@ u8 dMMarioModel_Tex_0x2490[2024] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dMMarioModel_Stock_tex[] = {
-    #include <MMarioModel/Stock.ci4.inc.c>
+u8 dMMarioModel_Stock_tex[88] = {
+	#include <MMarioModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0x2CD0 (16 colors RGBA5551) */
@@ -304,8 +296,8 @@ PAD(12);
 Gfx dMMarioModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (27(32)x25 i4) */
-u8 dMMarioModel_FTEmblem_tex[] = {
-    #include <MMarioModel/FTEmblem.i4.inc.c>
+u8 dMMarioModel_FTEmblem_tex[400] = {
+	#include <MMarioModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dMMarioModel_FTEmblem_bitmaps[] = {
@@ -335,4 +327,3 @@ Sprite dMMarioModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

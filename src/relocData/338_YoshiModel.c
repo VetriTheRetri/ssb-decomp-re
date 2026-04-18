@@ -1758,7 +1758,7 @@ u8 dYoshiModel_gap_0xA860[248] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dYoshiModel_Stock_tex[] = {
+u8 dYoshiModel_Stock_tex[88] = {
     #include <YoshiModel/Stock.ci4.inc.c>
 };
 
@@ -1833,7 +1833,7 @@ PAD(4);
 Gfx dYoshiModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (22(32)x25 i4) */
-u8 dYoshiModel_FTEmblem_tex[] = {
+u8 dYoshiModel_FTEmblem_tex[400] = {
     #include <YoshiModel/FTEmblem.i4.inc.c>
 };
 

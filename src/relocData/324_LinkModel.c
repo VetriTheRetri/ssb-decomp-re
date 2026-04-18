@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dLinkModel[73584] = {
-	#include <LinkModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dLinkModel_gap_0x40EC_sub_0x234[];
 extern u8 dLinkModel_gap_0x7AE0_sub_0x214[];
@@ -1807,8 +1799,8 @@ u8 dLinkModel_Tex_0xE338[14608] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dLinkModel_Stock_tex[] = {
-    #include <LinkModel/Stock.ci4.inc.c>
+u8 dLinkModel_Stock_tex[88] = {
+	#include <LinkModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0x11CA0 (16 colors RGBA5551) */
@@ -1872,8 +1864,8 @@ PAD(4);
 Gfx dLinkModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (29(32)x24 i4) */
-u8 dLinkModel_FTEmblem_tex[] = {
-    #include <LinkModel/FTEmblem.i4.inc.c>
+u8 dLinkModel_FTEmblem_tex[384] = {
+	#include <LinkModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dLinkModel_FTEmblem_bitmaps[] = {
@@ -1903,4 +1895,3 @@ Sprite dLinkModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

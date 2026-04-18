@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dNessModel[50112] = {
-	#include <NessModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dNessModel_gap_0x553C_sub_0x1FC[];
 
@@ -1405,8 +1397,8 @@ PAD(8);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dNessModel_Stock_tex[] = {
-    #include <NessModel/Stock.ci4.inc.c>
+u8 dNessModel_Stock_tex[88] = {
+	#include <NessModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0xC0E0 (16 colors RGBA5551) */
@@ -1470,8 +1462,8 @@ PAD(4);
 Gfx dNessModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (25(32)x25 i4) */
-u8 dNessModel_FTEmblem_tex[] = {
-    #include <NessModel/FTEmblem.i4.inc.c>
+u8 dNessModel_FTEmblem_tex[400] = {
+	#include <NessModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dNessModel_FTEmblem_bitmaps[] = {
@@ -1501,4 +1493,3 @@ Sprite dNessModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

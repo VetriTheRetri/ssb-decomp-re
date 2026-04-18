@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dPurinModel[32224] = {
-	#include <PurinModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dPurinModel_JointVerts_Vtx[2] = {
 	#include <PurinModel/JointVerts.vtx.inc.c>
@@ -1278,8 +1270,8 @@ u8 dPurinModel_Tex_0x7650[1080] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dPurinModel_Stock_tex[] = {
-    #include <PurinModel/Stock.ci4.inc.c>
+u8 dPurinModel_Stock_tex[88] = {
+	#include <PurinModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0x7AE0 (16 colors RGBA5551) */
@@ -1348,8 +1340,8 @@ PAD(12);
 Gfx dPurinModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (24(32)x24 i4) */
-u8 dPurinModel_FTEmblem_tex[] = {
-    #include <PurinModel/FTEmblem.i4.inc.c>
+u8 dPurinModel_FTEmblem_tex[384] = {
+	#include <PurinModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dPurinModel_FTEmblem_bitmaps[] = {
@@ -1379,4 +1371,3 @@ Sprite dPurinModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dKirbyModel[120864] = {
-	#include <KirbyModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dKirbyModel_JointVerts_Vtx[2] = {
 	#include <KirbyModel/JointVerts.vtx.inc.c>
@@ -3760,8 +3752,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x311C[160] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dKirbyModel_Stock_tex[] = {
-    #include <KirbyModel/Stock.ci4.inc.c>
+u8 dKirbyModel_Stock_tex[88] = {
+	#include <KirbyModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0x1D510 (16 colors RGBA5551) */
@@ -3830,8 +3822,8 @@ PAD(12);
 Gfx dKirbyModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (27(32)x25 i4) */
-u8 dKirbyModel_FTEmblem_tex[] = {
-    #include <KirbyModel/FTEmblem.i4.inc.c>
+u8 dKirbyModel_FTEmblem_tex[400] = {
+	#include <KirbyModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dKirbyModel_FTEmblem_bitmaps[] = {
@@ -3861,4 +3853,3 @@ Sprite dKirbyModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

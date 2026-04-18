@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dPikachuModel[39984] = {
-	#include <PikachuModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dPikachuModel_gap_0x2B78_sub_0x864[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x83C[];
@@ -1350,8 +1342,8 @@ u8 dPikachuModel_gap_0x9634_sub_0x1D4[208] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dPikachuModel_Stock_tex[] = {
-    #include <PikachuModel/Stock.ci4.inc.c>
+u8 dPikachuModel_Stock_tex[88] = {
+	#include <PikachuModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0x9930 (16 colors RGBA5551) */
@@ -1420,8 +1412,8 @@ PAD(12);
 Gfx dPikachuModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (24(32)x24 i4) */
-u8 dPikachuModel_FTEmblem_tex[] = {
-    #include <PikachuModel/FTEmblem.i4.inc.c>
+u8 dPikachuModel_FTEmblem_tex[384] = {
+	#include <PikachuModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dPikachuModel_FTEmblem_bitmaps[] = {
@@ -1451,4 +1443,3 @@ Sprite dPikachuModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

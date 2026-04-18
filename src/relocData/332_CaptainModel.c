@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dCaptainModel[51344] = {
-	#include <CaptainModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dCaptainModel_gap_0x0000[8] = {
@@ -2016,8 +2008,8 @@ u8 dCaptainModel_Tex_0xC508[80] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dCaptainModel_Stock_tex[] = {
-    #include <CaptainModel/Stock.ci4.inc.c>
+u8 dCaptainModel_Stock_tex[88] = {
+	#include <CaptainModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0xC5B0 (16 colors RGBA5551) */
@@ -2091,8 +2083,8 @@ PAD(4);
 Gfx dCaptainModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (30(32)x20 i4) */
-u8 dCaptainModel_FTEmblem_tex[] = {
-    #include <CaptainModel/FTEmblem.i4.inc.c>
+u8 dCaptainModel_FTEmblem_tex[320] = {
+	#include <CaptainModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dCaptainModel_FTEmblem_bitmaps[] = {
@@ -2122,4 +2114,3 @@ Sprite dCaptainModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

@@ -5,14 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dSamusModel[58704] = {
-	#include <SamusModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 u8 dSamusModel_gap_0x0000[32] = {
 	#include <SamusModel/gap_0x0000.data.inc.c>
@@ -1959,8 +1951,8 @@ u8 dSamusModel_Tex_0xD618[2992] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Stock (8(16)x10 ci4) */
-u8 dSamusModel_Stock_tex[] = {
-    #include <SamusModel/Stock.ci4.inc.c>
+u8 dSamusModel_Stock_tex[88] = {
+	#include <SamusModel/Stock.ci4.inc.c>
 };
 
 /* Palette: @ 0xE220 (16 colors RGBA5551) */
@@ -2029,8 +2021,8 @@ PAD(12);
 Gfx dSamusModel_FTEmblem_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FTEmblem (27(32)x27 i4) */
-u8 dSamusModel_FTEmblem_tex[] = {
-    #include <SamusModel/FTEmblem.i4.inc.c>
+u8 dSamusModel_FTEmblem_tex[432] = {
+	#include <SamusModel/FTEmblem.i4.inc.c>
 };
 
 Bitmap dSamusModel_FTEmblem_bitmaps[] = {
@@ -2060,4 +2052,3 @@ Sprite dSamusModel_FTEmblem = {
 
 PAD(4);
 
-#endif  /* REGION_US */

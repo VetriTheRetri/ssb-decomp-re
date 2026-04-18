@@ -8,25 +8,13 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 
-#if defined(REGION_JP)
-
-/* JP binary has a different layout; fold in its chain-encoded
- * bytes as a single raw u8 block. extractRelocInc regenerates
- * the inc.c below from the JP binary whenever JP assets are
- * extracted, and the companion .jp.reloc is empty so
- * fixRelocChain leaves the pre-baked chain bytes alone. */
-u8 dSC1PIntro[84976] = {
-	#include <SC1PIntro/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Sprite: VSDecal */
 
 Gfx dSC1PIntro_VSDecal_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: VSDecal (52x38 rgba32, 2 tiles) */
-u8 dSC1PIntro_VSDecal_tex[] = {
+u8 dSC1PIntro_VSDecal_tex[7912] = {
     #include <SC1PIntro/VSDecal.rgba32.inc.c>
 };
 
@@ -63,7 +51,7 @@ PAD(12);
 Gfx dSC1PIntro_Number1_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number1 (11(16)x20 i4) */
-u8 dSC1PIntro_Number1_tex[] = {
+u8 dSC1PIntro_Number1_tex[160] = {
     #include <SC1PIntro/Number1.i4.inc.c>
 };
 
@@ -99,7 +87,7 @@ PAD(4);
 Gfx dSC1PIntro_Number2_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number2 (12(16)x20 i4) */
-u8 dSC1PIntro_Number2_tex[] = {
+u8 dSC1PIntro_Number2_tex[160] = {
     #include <SC1PIntro/Number2.i4.inc.c>
 };
 
@@ -135,7 +123,7 @@ PAD(4);
 Gfx dSC1PIntro_Number3_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number3 (12(16)x20 i4) */
-u8 dSC1PIntro_Number3_tex[] = {
+u8 dSC1PIntro_Number3_tex[160] = {
     #include <SC1PIntro/Number3.i4.inc.c>
 };
 
@@ -171,7 +159,7 @@ PAD(4);
 Gfx dSC1PIntro_Number4_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number4 (12(16)x20 i4) */
-u8 dSC1PIntro_Number4_tex[] = {
+u8 dSC1PIntro_Number4_tex[160] = {
     #include <SC1PIntro/Number4.i4.inc.c>
 };
 
@@ -207,7 +195,7 @@ PAD(4);
 Gfx dSC1PIntro_Number5_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number5 (13(16)x20 i4) */
-u8 dSC1PIntro_Number5_tex[] = {
+u8 dSC1PIntro_Number5_tex[160] = {
     #include <SC1PIntro/Number5.i4.inc.c>
 };
 
@@ -243,7 +231,7 @@ PAD(4);
 Gfx dSC1PIntro_Number6_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number6 (13(16)x20 i4) */
-u8 dSC1PIntro_Number6_tex[] = {
+u8 dSC1PIntro_Number6_tex[160] = {
     #include <SC1PIntro/Number6.i4.inc.c>
 };
 
@@ -279,7 +267,7 @@ PAD(4);
 Gfx dSC1PIntro_Number7_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number7 (12(16)x20 i4) */
-u8 dSC1PIntro_Number7_tex[] = {
+u8 dSC1PIntro_Number7_tex[160] = {
     #include <SC1PIntro/Number7.i4.inc.c>
 };
 
@@ -315,7 +303,7 @@ PAD(4);
 Gfx dSC1PIntro_Number8_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number8 (15(16)x20 i4) */
-u8 dSC1PIntro_Number8_tex[] = {
+u8 dSC1PIntro_Number8_tex[160] = {
     #include <SC1PIntro/Number8.i4.inc.c>
 };
 
@@ -351,7 +339,7 @@ PAD(4);
 Gfx dSC1PIntro_Number9_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number9 (13(16)x20 i4) */
-u8 dSC1PIntro_Number9_tex[] = {
+u8 dSC1PIntro_Number9_tex[160] = {
     #include <SC1PIntro/Number9.i4.inc.c>
 };
 
@@ -387,7 +375,7 @@ PAD(4);
 Gfx dSC1PIntro_Number10_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Number10 (18(32)x20 i4) */
-u8 dSC1PIntro_Number10_tex[] = {
+u8 dSC1PIntro_Number10_tex[320] = {
     #include <SC1PIntro/Number10.i4.inc.c>
 };
 
@@ -423,7 +411,7 @@ PAD(4);
 Gfx dSC1PIntro_Cross_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Cross (17(32)x20 i4) */
-u8 dSC1PIntro_Cross_tex[] = {
+u8 dSC1PIntro_Cross_tex[320] = {
     #include <SC1PIntro/Cross.i4.inc.c>
 };
 
@@ -459,7 +447,7 @@ PAD(4);
 Gfx dSC1PIntro_StageText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: StageText (57(64)x20 i4) */
-u8 dSC1PIntro_StageText_tex[] = {
+u8 dSC1PIntro_StageText_tex[640] = {
     #include <SC1PIntro/StageText.i4.inc.c>
 };
 
@@ -495,7 +483,7 @@ PAD(4);
 Gfx dSC1PIntro_BonusText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: BonusText (62(64)x19 i4) */
-u8 dSC1PIntro_BonusText_tex[] = {
+u8 dSC1PIntro_BonusText_tex[608] = {
     #include <SC1PIntro/BonusText.i4.inc.c>
 };
 
@@ -531,7 +519,11 @@ PAD(4);
 Gfx dSC1PIntro_FinalText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FinalText (48x19 i4) */
-u8 dSC1PIntro_FinalText_tex[] = {
+#if defined(REGION_JP)
+u8 dSC1PIntro_FinalText_tex[376] = {
+#else
+u8 dSC1PIntro_FinalText_tex[456] = {
+#endif
     #include <SC1PIntro/FinalText.i4.inc.c>
 };
 
@@ -567,7 +559,7 @@ PAD(12);
 Gfx dSC1PIntro_BreakTheTargetsText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: BreakTheTargetsText (178(192)x20 i4) */
-u8 dSC1PIntro_BreakTheTargetsText_tex[] = {
+u8 dSC1PIntro_BreakTheTargetsText_tex[1920] = {
     #include <SC1PIntro/BreakTheTargetsText.i4.inc.c>
 };
 
@@ -603,7 +595,7 @@ PAD(4);
 Gfx dSC1PIntro_BoardThePlatformsText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: BoardThePlatformsText (194(208)x20 i4) */
-u8 dSC1PIntro_BoardThePlatformsText_tex[] = {
+u8 dSC1PIntro_BoardThePlatformsText_tex[2080] = {
     #include <SC1PIntro/BoardThePlatformsText.i4.inc.c>
 };
 
@@ -639,7 +631,7 @@ PAD(4);
 Gfx dSC1PIntro_RaceToTheFinishText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: RaceToTheFinishText (173(176)x20 i4) */
-u8 dSC1PIntro_RaceToTheFinishText_tex[] = {
+u8 dSC1PIntro_RaceToTheFinishText_tex[1760] = {
     #include <SC1PIntro/RaceToTheFinishText.i4.inc.c>
 };
 
@@ -675,7 +667,7 @@ PAD(4);
 Gfx dSC1PIntro_0x5028_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: 0x5028 (152(160)x16 i4) */
-u8 dSC1PIntro_0x5028_tex[] = {
+u8 dSC1PIntro_0x5028_tex[1280] = {
     #include <SC1PIntro/0x5028.i4.inc.c>
 };
 
@@ -711,7 +703,7 @@ PAD(4);
 Gfx dSC1PIntro_Dash_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: Dash (12(16)x12 i4) */
-u8 dSC1PIntro_Dash_tex[] = {
+u8 dSC1PIntro_Dash_tex[96] = {
     #include <SC1PIntro/Dash.i4.inc.c>
 };
 
@@ -747,7 +739,7 @@ PAD(4);
 Gfx dSC1PIntro_MetalMarioText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: MetalMarioText (72(80)x12 i4) */
-u8 dSC1PIntro_MetalMarioText_tex[] = {
+u8 dSC1PIntro_MetalMarioText_tex[480] = {
     #include <SC1PIntro/MetalMarioText.i4.inc.c>
 };
 
@@ -783,7 +775,7 @@ PAD(4);
 Gfx dSC1PIntro_MasterHandText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: MasterHandText (79(80)x12 i4) */
-u8 dSC1PIntro_MasterHandText_tex[] = {
+u8 dSC1PIntro_MasterHandText_tex[480] = {
     #include <SC1PIntro/MasterHandText.i4.inc.c>
 };
 
@@ -819,7 +811,7 @@ PAD(4);
 Gfx dSC1PIntro_GiantDKText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: GiantDKText (55(64)x12 i4) */
-u8 dSC1PIntro_GiantDKText_tex[] = {
+u8 dSC1PIntro_GiantDKText_tex[384] = {
     #include <SC1PIntro/GiantDKText.i4.inc.c>
 };
 
@@ -855,7 +847,7 @@ PAD(4);
 Gfx dSC1PIntro_FoxMcCloudText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FoxMcCloudText (77(80)x12 i4) */
-u8 dSC1PIntro_FoxMcCloudText_tex[] = {
+u8 dSC1PIntro_FoxMcCloudText_tex[480] = {
     #include <SC1PIntro/FoxMcCloudText.i4.inc.c>
 };
 
@@ -891,7 +883,7 @@ PAD(4);
 Gfx dSC1PIntro_KirbyTeamVS8Text_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: KirbyTeamVS8Text (112x12 i4) */
-u8 dSC1PIntro_KirbyTeamVS8Text_tex[] = {
+u8 dSC1PIntro_KirbyTeamVS8Text_tex[672] = {
     #include <SC1PIntro/KirbyTeamVS8Text.i4.inc.c>
 };
 
@@ -927,7 +919,7 @@ PAD(4);
 Gfx dSC1PIntro_MarioBrosText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: MarioBrosText (67(80)x12 i4) */
-u8 dSC1PIntro_MarioBrosText_tex[] = {
+u8 dSC1PIntro_MarioBrosText_tex[480] = {
     #include <SC1PIntro/MarioBrosText.i4.inc.c>
 };
 
@@ -963,7 +955,7 @@ PAD(4);
 Gfx dSC1PIntro_FightingPolygonTeamVS30Text_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FightingPolygonTeamVS30Text (100(112)x22 i4) */
-u8 dSC1PIntro_FightingPolygonTeamVS30Text_tex[] = {
+u8 dSC1PIntro_FightingPolygonTeamVS30Text_tex[1232] = {
     #include <SC1PIntro/FightingPolygonTeamVS30Text.i4.inc.c>
 };
 
@@ -999,7 +991,7 @@ PAD(4);
 Gfx dSC1PIntro_SamusAranText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: SamusAranText (76(80)x12 i4) */
-u8 dSC1PIntro_SamusAranText_tex[] = {
+u8 dSC1PIntro_SamusAranText_tex[480] = {
     #include <SC1PIntro/SamusAranText.i4.inc.c>
 };
 
@@ -1035,7 +1027,7 @@ PAD(4);
 Gfx dSC1PIntro_YoshiTeamVS18Text_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: YoshiTeamVS18Text (112x12 i4) */
-u8 dSC1PIntro_YoshiTeamVS18Text_tex[] = {
+u8 dSC1PIntro_YoshiTeamVS18Text_tex[672] = {
     #include <SC1PIntro/YoshiTeamVS18Text.i4.inc.c>
 };
 
@@ -1071,7 +1063,7 @@ PAD(4);
 Gfx dSC1PIntro_VSText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: VSText (16x12 i4) */
-u8 dSC1PIntro_VSText_tex[] = {
+u8 dSC1PIntro_VSText_tex[96] = {
     #include <SC1PIntro/VSText.i4.inc.c>
 };
 
@@ -1107,7 +1099,7 @@ PAD(4);
 Gfx dSC1PIntro_AllyText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: AllyText (32x12 i4) */
-u8 dSC1PIntro_AllyText_tex[] = {
+u8 dSC1PIntro_AllyText_tex[192] = {
     #include <SC1PIntro/AllyText.i4.inc.c>
 };
 
@@ -1143,7 +1135,7 @@ PAD(4);
 Gfx dSC1PIntro_AllyText2_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: AllyText2 (32x12 i4) */
-u8 dSC1PIntro_AllyText2_tex[] = {
+u8 dSC1PIntro_AllyText2_tex[192] = {
     #include <SC1PIntro/AllyText2.i4.inc.c>
 };
 
@@ -1549,7 +1541,7 @@ u32 dSC1PIntro_StageZakoCam_AnimJoint[14] = {
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: LinkMarker (16x24 ci4) */
-u8 dSC1PIntro_LinkMarker_tex[] = {
+u8 dSC1PIntro_LinkMarker_tex[200] = {
     #include <SC1PIntro/LinkMarker.ci4.inc.c>
 };
 
@@ -1593,7 +1585,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: YoshiMarker (16x24 ci4) */
-u8 dSC1PIntro_YoshiMarker_tex[] = {
+u8 dSC1PIntro_YoshiMarker_tex[200] = {
     #include <SC1PIntro/YoshiMarker.ci4.inc.c>
 };
 
@@ -1637,7 +1629,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: FoxMarker (16x24 ci4) */
-u8 dSC1PIntro_FoxMarker_tex[] = {
+u8 dSC1PIntro_FoxMarker_tex[200] = {
     #include <SC1PIntro/FoxMarker.ci4.inc.c>
 };
 
@@ -1681,7 +1673,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: MarioBrosMarker (16x24 ci4) */
-u8 dSC1PIntro_MarioBrosMarker_tex[] = {
+u8 dSC1PIntro_MarioBrosMarker_tex[200] = {
     #include <SC1PIntro/MarioBrosMarker.ci4.inc.c>
 };
 
@@ -1725,7 +1717,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: PikachuMarker (16x24 ci4) */
-u8 dSC1PIntro_PikachuMarker_tex[] = {
+u8 dSC1PIntro_PikachuMarker_tex[200] = {
     #include <SC1PIntro/PikachuMarker.ci4.inc.c>
 };
 
@@ -1769,7 +1761,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: DKMarker (16x24 ci4) */
-u8 dSC1PIntro_DKMarker_tex[] = {
+u8 dSC1PIntro_DKMarker_tex[200] = {
     #include <SC1PIntro/DKMarker.ci4.inc.c>
 };
 
@@ -1813,7 +1805,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: KirbyMarker (16x24 ci4) */
-u8 dSC1PIntro_KirbyMarker_tex[] = {
+u8 dSC1PIntro_KirbyMarker_tex[200] = {
     #include <SC1PIntro/KirbyMarker.ci4.inc.c>
 };
 
@@ -1857,7 +1849,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: SamusMarker (16x24 ci4) */
-u8 dSC1PIntro_SamusMarker_tex[] = {
+u8 dSC1PIntro_SamusMarker_tex[200] = {
     #include <SC1PIntro/SamusMarker.ci4.inc.c>
 };
 
@@ -1901,7 +1893,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: MarioMarker (16x24 ci4) */
-u8 dSC1PIntro_MarioMarker_tex[] = {
+u8 dSC1PIntro_MarioMarker_tex[200] = {
     #include <SC1PIntro/MarioMarker.ci4.inc.c>
 };
 
@@ -1945,7 +1937,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: ExclamationMark (8(16)x16 ci4) */
-u8 dSC1PIntro_ExclamationMark_tex[] = {
+u8 dSC1PIntro_ExclamationMark_tex[136] = {
     #include <SC1PIntro/ExclamationMark.ci4.inc.c>
 };
 
@@ -1989,7 +1981,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BossMarker (16x16 ci4) */
-u8 dSC1PIntro_BossMarker_tex[] = {
+u8 dSC1PIntro_BossMarker_tex[136] = {
     #include <SC1PIntro/BossMarker.ci4.inc.c>
 };
 
@@ -2033,7 +2025,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BonusMarker (8(16)x8 ci4) */
-u8 dSC1PIntro_BonusMarker_tex[] = {
+u8 dSC1PIntro_BonusMarker_tex[72] = {
     #include <SC1PIntro/BonusMarker.ci4.inc.c>
 };
 
@@ -2077,7 +2069,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BannerTop (300(304)x59 ci8, 10 tiles) */
-u8 dSC1PIntro_BannerTop_tex[] = {
+u8 dSC1PIntro_BannerTop_tex[18016] = {
     #include <SC1PIntro/BannerTop.ci8.inc.c>
 };
 
@@ -2135,7 +2127,7 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BannerBottom (300(304)x59 ci4, 10 tiles) */
-u8 dSC1PIntro_BannerBottom_tex[] = {
+u8 dSC1PIntro_BannerBottom_tex[9048] = {
     #include <SC1PIntro/BannerBottom.ci4.inc.c>
 };
 
@@ -2188,7 +2180,7 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Sky (300(304)x155 ci4, 26 tiles) */
-u8 dSC1PIntro_Sky_tex[] = {
+u8 dSC1PIntro_Sky_tex[23768] = {
     #include <SC1PIntro/Sky.ci4.inc.c>
 };
 
@@ -2251,5 +2243,3 @@ Sprite dSC1PIntro_Sky = {
 };
 
 PAD(12);
-
-#endif

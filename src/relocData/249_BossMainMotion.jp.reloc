@@ -1,2 +1,13 @@
-# Relocation metadata for file 249 (JP variant)
-# JP build compiles BossMainMotion as a single raw u8 blob.
+# Relocation metadata for file 249 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/249_BossMainMotion.reloc .o symbol table
+
+intern dBossMainMotion_0x01B8+0xE4 dBossMainMotion_0x01B8
+intern dBossMainMotion_0x0378+0x1C dBossMainMotion_0x0378
+intern dBossMainMotion_0x04D0+0x18 dBossMainMotion_0x04D0
+intern dBossMainMotion_0x072C+0x44 dBossMainMotion_0x072C
+intern dBossMainMotion_0x0924+0x28 dBossMainMotion_0x0924
+intern dBossMainMotion_0x0950+0x1C dBossMainMotion_0x0950
+
+extern dBossMainMotion_0x072C+0x48 0x2CB8
+extern dBossMainMotion_0x07A8 0x2CB8

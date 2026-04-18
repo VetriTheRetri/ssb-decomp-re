@@ -5,14 +5,7 @@
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
 #include <gm/gmdef.h>
-#if defined(REGION_JP)
-
-u8 dBossMainMotion[2480] = {
-	#include <BossMainMotion/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
+#include <gm/gmsound.h>
 u32 dBossMainMotion_0x0000[] = {
 	ftMotionCommandEnd(),
 };
@@ -228,7 +221,7 @@ u32 dBossMainMotion_0x04D0[] = {
 u32 dBossMainMotion_0x05EC[] = {
 	ftMotionCommandWaitAsync(29),
 	ftMotionCommandEffect(0, 22, 0, 0, 0, -180, 0, 0, 0),
-	ftMotionPlayFGM(19),
+	ftMotionPlayFGM(nSYAudioFGMCatch),
 	ftMotionCommandWaitAsync(62),
 	ftMotionCommandMakeAttackColl(0, 1, 20, 20, 1, 0, 600, 0, 300, -105, 361, 100, 0, 3, 20, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 1, 20, 20, 1, 0, 600, 0, -100, -105, 361, 100, 0, 3, 20, 2, 1, 0),
@@ -426,7 +419,7 @@ u32 dBossMainMotion_0x0950[] = {
 	ftMotionCommandWait(1),
 	ftMotionCommandGoto(dBossMainMotion_0x0950),
 	ftMotionCommandWaitAsync(120),
-	ftMotionPlayFGM(493),
+	ftMotionPlayFGM(nSYAudioVoiceBossAppear),
 	ftMotionCommandWaitAsync(410),
 	ftMotionCommandWait(118),
 	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
@@ -437,4 +430,3 @@ u32 dBossMainMotion_0x0950[] = {
 	ftMotionCommandEnd(),
 };
 
-#endif  /* REGION_US */

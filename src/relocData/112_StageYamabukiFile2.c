@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dStageYamabukiFile2[64016] = {
-	#include <StageYamabukiFile2/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 PAD(8);
 
@@ -27,17 +20,19 @@ u8 dStageYamabukiFile2_Tex_0x0030[1032] = {
 	#include <StageYamabukiFile2/Tex_0x0030.tex.inc.c>
 };
 
-/* Palette: Lut_0x0438 @ 0x438 (16 colors RGBA5551) */
+#if !defined(REGION_JP)
+/* Palette: Lut_0x0438 @ 0x438 (16 colors RGBA5551) — US position (pair02) */
 u16 dStageYamabukiFile2_Lut_0x0438_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x0438.palette.inc.c>
 };
 
 PAD(8);
 
-/* Texture data @ 0x0460 (2104 bytes) */
+/* Texture data @ 0x0460 (US=2104 bytes) — US position (pair02) */
 u8 dStageYamabukiFile2_Tex_0x0460[2104] = {
 	#include <StageYamabukiFile2/Tex_0x0460.tex.inc.c>
 };
+#endif
 
 /* Palette: Lut_0x0C98 @ 0xC98 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x0C98_palette[16] = {
@@ -171,6 +166,20 @@ u8 dStageYamabukiFile2_Tex_0x1420[1032] = {
 	#include <StageYamabukiFile2/Tex_0x1420.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* Palette: Lut_0x0438 (16 colors RGBA5551) — JP position (pair02, after pair17) */
+u16 dStageYamabukiFile2_Lut_0x0438_palette[16] = {
+	#include <StageYamabukiFile2/Lut_0x0438.palette.inc.c>
+};
+
+PAD(8);
+
+/* Texture data @ 0x0460 (JP=1032 bytes) — JP position (pair02, after pair17) */
+u8 dStageYamabukiFile2_Tex_0x0460[1032] = {
+	#include <StageYamabukiFile2/Tex_0x0460.tex.inc.c>
+};
+#endif
+
 /* Palette: Lut_0x1828 @ 0x1828 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1828_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x1828.palette.inc.c>
@@ -214,8 +223,14 @@ u16 dStageYamabukiFile2_Lut_0x1B78_palette[16] = {
 
 PAD(8);
 
-/* Texture data @ 0x1BA0 (1592 bytes) */
-u8 dStageYamabukiFile2_Tex_0x1BA0[1592] = {
+/* Texture data @ 0x1BA0 (US=1592, JP=520 bytes) */
+u8 dStageYamabukiFile2_Tex_0x1BA0[
+#if defined(REGION_JP)
+	520
+#else
+	1592
+#endif
+] = {
 	#include <StageYamabukiFile2/Tex_0x1BA0.tex.inc.c>
 };
 
@@ -1167,5 +1182,4 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0x7AA0[8] = {
 	#include <StageYamabukiFile2/gap_0x87C8_sub_0x7AA0.data.inc.c>
 };
 
-#endif  /* REGION_US */
 

@@ -2,6 +2,11 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+typedef union {
+    s64 i;
+    f32 f;
+} S64F32;
+
 extern s32 D_803903D0_1ACC20;
 extern dbUnknown5* D_803903D4_1ACC24;
 
@@ -9,6 +14,8 @@ extern s32 D_ovl8_80387F40;
 extern s32 D_ovl8_80388298;
 dbUnknown5* func_ovl8_803867E8(void* arg0, DBMenu* arg1);
 dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1);
+u32 stringFromNumber(char* string, s64 number);
+s32 func_ovl8_80387540(u8*, f32, s32);
 
 extern void func_ovl8_803718FC();
 extern void func_ovl8_80371930();
@@ -208,10 +215,10 @@ dbUnknown5* func_ovl8_803867E8(void* arg0, DBMenu* arg1)
             {
                 sp34 = &temp_v0->unk_dbunk5_0xB0;\
                 sp30 = &temp_v0->unk_dbunk5_0x10C;
-                #line 209
+                #line 216
                 func_ovl8_803717E0(sp34);
                 func_ovl8_8037C2D0(sp30);
-                #line 215
+                #line 222
             }
             
             func_ovl8_80376010(temp_v0, sp34, sp30, arg1, 1);
@@ -247,9 +254,9 @@ void func_ovl8_803868EC(dbUnknownS38* arg0, s32 arg1)
         arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_8038E7B8;
         arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_8038E7E0;
 
-        #line 247
+        #line 254
         func_ovl8_803761F4(arg0, 0);
-        #line 253
+        #line 260
 
         if (arg1 != 0)
         {
@@ -289,10 +296,10 @@ dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1)
             {
                 sp3C = &temp_v0->unk_dbunk5_0xBC;\
                 sp38 = &temp_v0->unk_dbunk5_0xB0;
-                #line 289
+                #line 296
                 func_ovl8_803717E0(sp3C);
                 func_ovl8_8037C2D0(sp38);
-                #line 296
+                #line 303
             }
             
             var_s1 = temp_v0;
@@ -305,10 +312,10 @@ dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1)
                 {
                     sp30 = &var_s1->unk_dbunk5_0xB0;\
                     sp2C = &var_s1->unk_dbunk5_0x10C;
-                    #line 306
+                    #line 313
                     func_ovl8_803717E0(sp30);
                     func_ovl8_8037C2D0(sp2C);
-                    #line 312
+                    #line 319
                 }
                 
                 func_ovl8_80376010(var_s1, sp30, sp2C, arg1, 1);
@@ -656,7 +663,85 @@ s32 func_ovl8_80386FE0(char* out, char* src, sb32 leftAlign, s32 width, s32 maxL
 }
 
 // 0x80387154
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387154.s")
+s32 func_ovl8_80387154(u8* output_str, s64 value, sb32 is_float, s32 align_left, sb32 show_sign, s32 width, s32 precision)
+{
+    u8* read_ptr;
+    s32 total_length;
+    sb32 force_sign;
+    s32 pad_char;
+    s32 num_string_length;
+    s32 is_negative;
+    s32 i;
+    u8 number_buffer[64];
+    S64F32 u;
+    u8 pad1;
+    u8 pad2;
+    u8 pad3;
+    u8 right_pad_char;
+    u8* write_ptr;
+
+    is_negative = 0;
+    force_sign = (show_sign != 0);
+
+    right_pad_char = force_sign ? '0' : ' ';
+    pad_char = right_pad_char;
+    if (is_float == 1 && align_left != 0 && force_sign != 0) {
+        right_pad_char = '0';
+    } else {
+        right_pad_char = ' ';
+    }
+
+    total_length = 0;
+    if (is_float == 0) {
+        if (value < 0) {
+            is_negative = 1;
+            value = -value;
+            total_length = 1;
+        }
+        num_string_length = stringFromNumber(number_buffer, value);
+    } else {
+        u.i = value;
+        if (u.f < 0.0f) {
+            is_negative = 1;
+            u.f = -u.f;
+            total_length = 1;
+        }
+        num_string_length = func_ovl8_80387540(number_buffer, u.f, precision);
+    }
+
+    total_length += num_string_length;
+
+    if (is_negative && force_sign) {
+        write_ptr = output_str++, *write_ptr = '-';
+    }
+
+
+    if (align_left == 0) {
+        for (i = 0; i < width - total_length; i++) {
+            write_ptr = output_str++, *write_ptr = pad_char;
+        }
+    }
+
+    if (is_negative && !force_sign) {
+        write_ptr = output_str++, *write_ptr = '-';
+    }
+
+    read_ptr = number_buffer;
+    while (num_string_length > 0) {
+        *output_str++ = *read_ptr++;
+        num_string_length--;
+    }
+
+    pad_char = right_pad_char;
+    if (align_left != 0) {
+        for (i = 0; i < width - total_length; i++) {
+            write_ptr = output_str++, *write_ptr = pad_char;
+        }
+    }
+
+    force_sign = (width < total_length) ? total_length : width;
+    return force_sign;
+}
 
 // 0x80387420
 void stringCopyPartial(char* target, char* source, s32 count)
@@ -709,6 +794,7 @@ u32 stringFromNumber(char* string, s64 number)
 
 // 0x80387540
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387540.s")
+
 dbFunction D_ovl8_8038E5A0[] = {
 	{0, NULL},
 	{0, func_ovl8_803868EC},

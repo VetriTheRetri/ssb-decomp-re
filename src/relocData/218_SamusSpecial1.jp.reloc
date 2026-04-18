@@ -1,2 +1,6 @@
-# Relocation metadata for file 218 (JP variant)
-# JP build compiles SamusSpecial1 as a single raw u8 blob.
+# Relocation metadata for file 218 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/218_SamusSpecial1.reloc .o symbol table
+
+
+extern dSamusSpecial1_ChargeShot_WeaponAttributes 0x270

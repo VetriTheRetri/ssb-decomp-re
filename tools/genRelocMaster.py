@@ -338,11 +338,14 @@ def compute_dobjdesc_c_size(dobjdesc_c_path):
     # Strip block comments
     content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
     # Find the array body; count the number of top-level {...} groups
-    m = re.search(r'DObjDesc\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
+    m = re.search(r'DObjDesc\s+\w+\[\s*(\d*)\s*\]\s*=\s*\{(.*)\};', content, re.DOTALL)
     if not m:
         print(f"Error: can't parse {dobjdesc_c_path}", file=sys.stderr)
         sys.exit(1)
-    body = m.group(1)
+    explicit_n = m.group(1)
+    if explicit_n:
+        return int(explicit_n) * 44
+    body = m.group(2)
     # Each entry starts with `{` at depth 1 (from the array's outer braces).
     # Count top-level { after stripping nested ones by tracking depth.
     depth = 0

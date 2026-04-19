@@ -1778,8 +1778,8 @@ u8 dCaptainModel_gap_0x7DD0_sub_0x2330[96] = {
 };
 
 /* gap sub-block @ 0xA160 (was gap+0x2390, 224 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x2390[224] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x2390.data.inc.c>
+Gfx dCaptainModel_DL_0xA160[28] = {
+	#include <CaptainModel/DL_0xA160.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA240 (was gap+0x2470, 160 bytes) */
@@ -1873,8 +1873,8 @@ u8 dCaptainModel_gap_0x7DD0_sub_0x2ED0[112] = {
 };
 
 /* gap sub-block @ 0xAD10 (was gap+0x2F40, 112 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x2F40[112] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x2F40.data.inc.c>
+Gfx dCaptainModel_DL_0xAD10[14] = {
+	#include <CaptainModel/DL_0xAD10.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAD80 (was gap+0x2FB0, 232 bytes) */

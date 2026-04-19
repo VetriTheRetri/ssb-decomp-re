@@ -90,8 +90,8 @@ u8 dEFCommonEffects2_gap_0x14A0_sub_0x20[64] = {
 };
 
 /* Raw data from file offset 0x1500 to 0x1570 (112 bytes) */
-u8 dEFCommonEffects2_gap_0x1500[112] = {
-	#include <EFCommonEffects2/gap_0x1500.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x1500[14] = {
+	#include <EFCommonEffects2/DL_0x1500.dl.inc.c>
 };
 
 /* Raw data from file offset 0x1570 to 0x1EA0 (2352 bytes) */
@@ -259,23 +259,23 @@ u8 dEFCommonEffects2_gap_0x2310_sub_0x1C0[48] = {
 };
 
 /* gap sub-block @ 0x2500 (was gap+0x1F0, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x1F0[136] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x1F0.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x2500[17] = {
+	#include <EFCommonEffects2/DL_0x2500.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2588 (was gap+0x278, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x278[136] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x278.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x2588[17] = {
+	#include <EFCommonEffects2/DL_0x2588.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2610 (was gap+0x300, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x300[136] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x300.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x2610[17] = {
+	#include <EFCommonEffects2/DL_0x2610.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2698 (was gap+0x388, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x388[136] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x388.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x2698[17] = {
+	#include <EFCommonEffects2/DL_0x2698.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2720 (was gap+0x410, 16 bytes) */
@@ -394,18 +394,18 @@ u8 dEFCommonEffects2_gap_0x2FD0_sub_0x1C0[64] = {
 };
 
 /* gap sub-block @ 0x31D0 (was gap+0x200, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x200[136] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x200.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x31D0[17] = {
+	#include <EFCommonEffects2/DL_0x31D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3258 (was gap+0x288, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x288[136] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x288.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x3258[17] = {
+	#include <EFCommonEffects2/DL_0x3258.dl.inc.c>
 };
 
 /* gap sub-block @ 0x32E0 (was gap+0x310, 136 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x310[136] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x310.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x32E0[17] = {
+	#include <EFCommonEffects2/DL_0x32E0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3368 (was gap+0x398, 16 bytes) */
@@ -523,23 +523,23 @@ u8 dEFCommonEffects2_gap_0x4F34_sub_0x1E4[256] = {
 };
 
 /* gap sub-block @ 0x5218 (was gap+0x2E4, 40 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x2E4[40] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x2E4.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x5218[5] = {
+	#include <EFCommonEffects2/DL_0x5218.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5240 (was gap+0x30C, 112 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x30C[112] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x30C.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x5240[14] = {
+	#include <EFCommonEffects2/DL_0x5240.dl.inc.c>
 };
 
 /* gap sub-block @ 0x52B0 (was gap+0x37C, 96 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x37C[96] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x37C.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x52B0[12] = {
+	#include <EFCommonEffects2/DL_0x52B0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5310 (was gap+0x3DC, 168 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x3DC[168] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x3DC.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x5310[21] = {
+	#include <EFCommonEffects2/DL_0x5310.dl.inc.c>
 };
 
 /* gap sub-block @ 0x53B8 (was gap+0x484, 16 bytes) */
@@ -637,8 +637,8 @@ u8 dEFCommonEffects2_gap_0x6B6C_sub_0x7C[64] = {
 };
 
 /* gap sub-block @ 0x6C28 (was gap+0xBC, 216 bytes) */
-u8 dEFCommonEffects2_gap_0x6B6C_sub_0xBC[216] = {
-	#include <EFCommonEffects2/gap_0x6B6C_sub_0xBC.data.inc.c>
+Gfx dEFCommonEffects2_DL_0x6C28[27] = {
+	#include <EFCommonEffects2/DL_0x6C28.dl.inc.c>
 };
 
 /* MObjSub: NessPKFlashMObjSub @ 0x6D00 */

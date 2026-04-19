@@ -127,18 +127,18 @@ u8 dBonus2Common_gap_0x3798_sub_0x298[48] = {
 };
 
 /* gap sub-block @ 0x3A60 (was gap+0x2C8, 432 bytes) */
-u8 dBonus2Common_gap_0x3798_sub_0x2C8[432] = {
-	#include <Bonus2Common/gap_0x3798_sub_0x2C8.data.inc.c>
+Gfx dBonus2Common_DL_0x3A60[54] = {
+	#include <Bonus2Common/DL_0x3A60.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3C10 (was gap+0x478, 176 bytes) */
-u8 dBonus2Common_gap_0x3798_sub_0x478[176] = {
-	#include <Bonus2Common/gap_0x3798_sub_0x478.data.inc.c>
+Gfx dBonus2Common_DL_0x3C10[22] = {
+	#include <Bonus2Common/DL_0x3C10.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3CC0 (was gap+0x528, 184 bytes) */
-u8 dBonus2Common_gap_0x3798_sub_0x528[184] = {
-	#include <Bonus2Common/gap_0x3798_sub_0x528.data.inc.c>
+Gfx dBonus2Common_DL_0x3CC0[23] = {
+	#include <Bonus2Common/DL_0x3CC0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3D78 (was gap+0x5E0, 16 bytes) */
@@ -256,18 +256,18 @@ u8 dBonus2Common_gap_0x3FE8_sub_0x298[48] = {
 };
 
 /* gap sub-block @ 0x42B0 (was gap+0x2C8, 400 bytes) */
-u8 dBonus2Common_gap_0x3FE8_sub_0x2C8[400] = {
-	#include <Bonus2Common/gap_0x3FE8_sub_0x2C8.data.inc.c>
+Gfx dBonus2Common_DL_0x42B0[50] = {
+	#include <Bonus2Common/DL_0x42B0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4440 (was gap+0x458, 176 bytes) */
-u8 dBonus2Common_gap_0x3FE8_sub_0x458[176] = {
-	#include <Bonus2Common/gap_0x3FE8_sub_0x458.data.inc.c>
+Gfx dBonus2Common_DL_0x4440[22] = {
+	#include <Bonus2Common/DL_0x4440.dl.inc.c>
 };
 
 /* gap sub-block @ 0x44F0 (was gap+0x508, 184 bytes) */
-u8 dBonus2Common_gap_0x3FE8_sub_0x508[184] = {
-	#include <Bonus2Common/gap_0x3FE8_sub_0x508.data.inc.c>
+Gfx dBonus2Common_DL_0x44F0[23] = {
+	#include <Bonus2Common/DL_0x44F0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x45A8 (was gap+0x5C0, 16 bytes) */
@@ -385,18 +385,18 @@ u8 dBonus2Common_gap_0x4818_sub_0x298[48] = {
 };
 
 /* gap sub-block @ 0x4AE0 (was gap+0x2C8, 400 bytes) */
-u8 dBonus2Common_gap_0x4818_sub_0x2C8[400] = {
-	#include <Bonus2Common/gap_0x4818_sub_0x2C8.data.inc.c>
+Gfx dBonus2Common_DL_0x4AE0[50] = {
+	#include <Bonus2Common/DL_0x4AE0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4C70 (was gap+0x458, 176 bytes) */
-u8 dBonus2Common_gap_0x4818_sub_0x458[176] = {
-	#include <Bonus2Common/gap_0x4818_sub_0x458.data.inc.c>
+Gfx dBonus2Common_DL_0x4C70[22] = {
+	#include <Bonus2Common/DL_0x4C70.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4D20 (was gap+0x508, 184 bytes) */
-u8 dBonus2Common_gap_0x4818_sub_0x508[184] = {
-	#include <Bonus2Common/gap_0x4818_sub_0x508.data.inc.c>
+Gfx dBonus2Common_DL_0x4D20[23] = {
+	#include <Bonus2Common/DL_0x4D20.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4DD8 (was gap+0x5C0, 16 bytes) */

@@ -65,8 +65,8 @@ u8 dMNPlayersSpotlight_gap_0x0480_sub_0x10[64] = {
 };
 
 /* gap sub-block @ 0x04D0 (was gap+0x50, 136 bytes) */
-u8 dMNPlayersSpotlight_gap_0x0480_sub_0x50[136] = {
-	#include <MNPlayersSpotlight/gap_0x0480_sub_0x50.data.inc.c>
+Gfx dMNPlayersSpotlight_DL_0x04D0[17] = {
+	#include <MNPlayersSpotlight/DL_0x04D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0558 (was gap+0xD8, 16 bytes) */

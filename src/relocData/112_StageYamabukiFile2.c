@@ -521,45 +521,45 @@ Vtx dStageYamabukiFile2_Vtx_0x4598_Vtx[4] = {
 
 /* Raw data from file offset 0x45D8 to 0x5058 (2688 bytes) */
 /* gap sub-block @ 0x45D8 (was gap+0x0, 72 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8[72] = {
-	#include <StageYamabukiFile2/gap_0x45D8.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x45D8[9] = {
+	#include <StageYamabukiFile2/DL_0x45D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4620 (was gap+0x48, 496 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8_sub_0x48[496] = {
-	#include <StageYamabukiFile2/gap_0x45D8_sub_0x48.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x4620[62] = {
+	#include <StageYamabukiFile2/DL_0x4620.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4810 (was gap+0x238, 296 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8_sub_0x238[296] = {
-	#include <StageYamabukiFile2/gap_0x45D8_sub_0x238.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x4810[37] = {
+	#include <StageYamabukiFile2/DL_0x4810.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4938 (was gap+0x360, 136 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8_sub_0x360[136] = {
-	#include <StageYamabukiFile2/gap_0x45D8_sub_0x360.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x4938[17] = {
+	#include <StageYamabukiFile2/DL_0x4938.dl.inc.c>
 };
 
 /* gap sub-block @ 0x49C0 (was gap+0x3E8, 504 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8_sub_0x3E8[504] = {
-	#include <StageYamabukiFile2/gap_0x45D8_sub_0x3E8.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x49C0[63] = {
+	#include <StageYamabukiFile2/DL_0x49C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4BB8 (was gap+0x5E0, 152 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8_sub_0x5E0[152] = {
-	#include <StageYamabukiFile2/gap_0x45D8_sub_0x5E0.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x4BB8[19] = {
+	#include <StageYamabukiFile2/DL_0x4BB8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4C50 (was gap+0x678, 1032 bytes) */
-u8 dStageYamabukiFile2_gap_0x45D8_sub_0x678[1032] = {
-	#include <StageYamabukiFile2/gap_0x45D8_sub_0x678.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x4C50[129] = {
+	#include <StageYamabukiFile2/DL_0x4C50.dl.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x5058 (3 entries) */
 DObjDesc dStageYamabukiFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dStageYamabukiFile2_gap_0x45D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dStageYamabukiFile2_gap_0x45D8 + 0x238), { -3002.714599609375f, 115.08750915527344f, -3241.796630859375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYamabukiFile2_DL_0x45D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)((u8*)dStageYamabukiFile2_DL_0x45D8 + 0x238), { -3002.714599609375f, 115.08750915527344f, -3241.796630859375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x50DC to 0x51C0 (228 bytes) */
@@ -752,58 +752,58 @@ u8 dStageYamabukiFile2_gap_0x52D8_sub_0xB18[64] = {
 };
 
 /* gap sub-block @ 0x5E30 (was gap+0xB58, 72 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0xB58[72] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0xB58.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x5E30[9] = {
+	#include <StageYamabukiFile2/DL_0x5E30.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5E78 (was gap+0xBA0, 1528 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0xBA0[1528] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0xBA0.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x5E78[191] = {
+	#include <StageYamabukiFile2/DL_0x5E78.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6470 (was gap+0x1198, 152 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1198[152] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1198.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x6470[19] = {
+	#include <StageYamabukiFile2/DL_0x6470.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6508 (was gap+0x1230, 328 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1230[328] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1230.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x6508[41] = {
+	#include <StageYamabukiFile2/DL_0x6508.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6650 (was gap+0x1378, 128 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1378[128] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1378.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x6650[16] = {
+	#include <StageYamabukiFile2/DL_0x6650.dl.inc.c>
 };
 
 /* gap sub-block @ 0x66D0 (was gap+0x13F8, 312 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x13F8[312] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x13F8.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x66D0[39] = {
+	#include <StageYamabukiFile2/DL_0x66D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6808 (was gap+0x1530, 176 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1530[176] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1530.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x6808[22] = {
+	#include <StageYamabukiFile2/DL_0x6808.dl.inc.c>
 };
 
 /* gap sub-block @ 0x68B8 (was gap+0x15E0, 56 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x15E0[56] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x15E0.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x68B8[7] = {
+	#include <StageYamabukiFile2/DL_0x68B8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x68F0 (was gap+0x1618, 48 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1618[48] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1618.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x68F0[6] = {
+	#include <StageYamabukiFile2/DL_0x68F0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6920 (was gap+0x1648, 96 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1648[96] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1648.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x6920[12] = {
+	#include <StageYamabukiFile2/DL_0x6920.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6980 (was gap+0x16A8, 112 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x16A8[112] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x16A8.data.inc.c>
+Gfx dStageYamabukiFile2_DL_0x6980[14] = {
+	#include <StageYamabukiFile2/DL_0x6980.dl.inc.c>
 };
 
 /* gap sub-block @ 0x69F0 (was gap+0x1718, 16 bytes) */

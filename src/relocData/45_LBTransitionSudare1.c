@@ -2028,61 +2028,61 @@ Vtx dLBTransitionSudare1_Vtx_0x1930_Vtx[2] = {
 
 /* Raw data from file offset 0x1950 to 0x74A8 (23384 bytes) */
 /* gap sub-block @ 0x1950 (was gap+0x0, 72 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950[72] = {
-	#include <LBTransitionSudare1/gap_0x1950.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x1950[9] = {
+	#include <LBTransitionSudare1/DL_0x1950.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1998 (was gap+0x48, 2480 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x48[2480] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x48.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x1998[310] = {
+	#include <LBTransitionSudare1/DL_0x1998.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2348 (was gap+0x9F8, 2480 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x9F8[2480] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x9F8.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x2348[310] = {
+	#include <LBTransitionSudare1/DL_0x2348.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2CF8 (was gap+0x13A8, 2480 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x13A8[2480] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x13A8.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x2CF8[310] = {
+	#include <LBTransitionSudare1/DL_0x2CF8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x36A8 (was gap+0x1D58, 2480 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x1D58[2480] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x1D58.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x36A8[310] = {
+	#include <LBTransitionSudare1/DL_0x36A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4058 (was gap+0x2708, 3512 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x2708[3512] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x2708.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x4058[439] = {
+	#include <LBTransitionSudare1/DL_0x4058.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4E10 (was gap+0x34C0, 3168 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x34C0[3168] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x34C0.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x4E10[396] = {
+	#include <LBTransitionSudare1/DL_0x4E10.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5A70 (was gap+0x4120, 3520 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x4120[3520] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x4120.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x5A70[440] = {
+	#include <LBTransitionSudare1/DL_0x5A70.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6830 (was gap+0x4EE0, 3192 bytes) */
-u8 dLBTransitionSudare1_gap_0x1950_sub_0x4EE0[3192] = {
-	#include <LBTransitionSudare1/gap_0x1950_sub_0x4EE0.data.inc.c>
+Gfx dLBTransitionSudare1_DL_0x6830[399] = {
+	#include <LBTransitionSudare1/DL_0x6830.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0x74A8 (10 entries) */
 DObjDesc dLBTransitionSudare1_DObjDesc_0x74A8[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dLBTransitionSudare1_gap_0x1950, { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x9F8), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x13A8), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x1D58), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x2708), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x34C0), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x4120), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionSudare1_gap_0x1950 + 0x4EE0), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLBTransitionSudare1_DL_0x1950, { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x9F8), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x13A8), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x1D58), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x2708), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x34C0), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x4120), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionSudare1_DL_0x1950 + 0x4EE0), { 0.0f, -2600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

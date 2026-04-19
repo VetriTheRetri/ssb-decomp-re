@@ -243,33 +243,33 @@ u8 dMVOpeningStandoff_gap_0x61B8_sub_0x378[64] = {
 };
 
 /* gap sub-block @ 0x6570 (was gap+0x3B8, 152 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x3B8[152] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x3B8.data.inc.c>
+Gfx dMVOpeningStandoff_DL_0x6570[19] = {
+	#include <MVOpeningStandoff/DL_0x6570.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6608 (was gap+0x450, 152 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x450[152] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x450.data.inc.c>
+Gfx dMVOpeningStandoff_DL_0x6608[19] = {
+	#include <MVOpeningStandoff/DL_0x6608.dl.inc.c>
 };
 
 /* gap sub-block @ 0x66A0 (was gap+0x4E8, 152 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x4E8[152] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x4E8.data.inc.c>
+Gfx dMVOpeningStandoff_DL_0x66A0[19] = {
+	#include <MVOpeningStandoff/DL_0x66A0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6738 (was gap+0x580, 152 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x580[152] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x580.data.inc.c>
+Gfx dMVOpeningStandoff_DL_0x6738[19] = {
+	#include <MVOpeningStandoff/DL_0x6738.dl.inc.c>
 };
 
 /* gap sub-block @ 0x67D0 (was gap+0x618, 136 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x618[136] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x618.data.inc.c>
+Gfx dMVOpeningStandoff_DL_0x67D0[17] = {
+	#include <MVOpeningStandoff/DL_0x67D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6858 (was gap+0x6A0, 152 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x6A0[152] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x6A0.data.inc.c>
+Gfx dMVOpeningStandoff_DL_0x6858[19] = {
+	#include <MVOpeningStandoff/DL_0x6858.dl.inc.c>
 };
 
 /* gap sub-block @ 0x68F0 (was gap+0x738, 16 bytes) */

@@ -13,8 +13,8 @@ u8 dStageExplainFile2_gap_0x0000[64] = {
 };
 
 /* gap sub-block @ 0x0040 (was gap+0x40, 200 bytes) */
-u8 dStageExplainFile2_gap_0x0000_sub_0x40[200] = {
-	#include <StageExplainFile2/gap_0x0000_sub_0x40.data.inc.c>
+Gfx dStageExplainFile2_DL_0x0040[25] = {
+	#include <StageExplainFile2/DL_0x0040.dl.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x108 (3 entries) */
@@ -86,8 +86,8 @@ u8 dStageExplainFile2_gap_0x018C_sub_0x38C[40] = {
 };
 
 /* gap sub-block @ 0x0540 (was gap+0x3B4, 480 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x3B4[480] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x3B4.data.inc.c>
+Gfx dStageExplainFile2_DL_0x0540[60] = {
+	#include <StageExplainFile2/DL_0x0540.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x720 (3 entries) */
@@ -152,8 +152,8 @@ u8 dStageExplainFile2_gap_0x0A3C_sub_0x104[224] = {
 };
 
 /* gap sub-block @ 0x0C20 (was gap+0x1E4, 432 bytes) */
-u8 dStageExplainFile2_gap_0x0A3C_sub_0x1E4[432] = {
-	#include <StageExplainFile2/gap_0x0A3C_sub_0x1E4.data.inc.c>
+Gfx dStageExplainFile2_DL_0x0C20[54] = {
+	#include <StageExplainFile2/DL_0x0C20.dl.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0xDD0 (3 entries) */

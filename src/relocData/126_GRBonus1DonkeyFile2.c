@@ -128,8 +128,8 @@ u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x4E8[40] = {
 };
 
 /* gap sub-block @ 0x0510 (was gap+0x510, 112 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x510[112] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x510.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x0510[14] = {
+	#include <GRBonus1DonkeyFile2/DL_0x0510.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0580 (was gap+0x580, 24 bytes) */
@@ -143,13 +143,13 @@ u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x598[16] = {
 };
 
 /* gap sub-block @ 0x05A8 (was gap+0x5A8, 216 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x5A8[216] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x5A8.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x05A8[27] = {
+	#include <GRBonus1DonkeyFile2/DL_0x05A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 400 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x680[400] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x680.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x0680[50] = {
+	#include <GRBonus1DonkeyFile2/DL_0x0680.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0810 (was gap+0x810, 16 bytes) */
@@ -258,23 +258,23 @@ u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xF14[320] = {
 };
 
 /* gap sub-block @ 0x1970 (was gap+0x1054, 88 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x1054[88] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x1054.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x1970[11] = {
+	#include <GRBonus1DonkeyFile2/DL_0x1970.dl.inc.c>
 };
 
 /* gap sub-block @ 0x19C8 (was gap+0x10AC, 1016 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC[1016] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x10AC.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x19C8[127] = {
+	#include <GRBonus1DonkeyFile2/DL_0x19C8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1DC0 (was gap+0x14A4, 168 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4[168] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x14A4.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x1DC0[21] = {
+	#include <GRBonus1DonkeyFile2/DL_0x1DC0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1E68 (was gap+0x154C, 184 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x154C[184] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x154C.data.inc.c>
+Gfx dGRBonus1DonkeyFile2_DL_0x1E68[23] = {
+	#include <GRBonus1DonkeyFile2/DL_0x1E68.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x1F20 (5 entries) */

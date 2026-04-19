@@ -185,25 +185,25 @@ Vtx dMVOpeningCliff_Vtx_0x3000_Vtx[7] = {
 
 /* Raw data from file offset 0x3070 to 0x37A0 (1840 bytes) */
 /* gap sub-block @ 0x3070 (was gap+0x0, 72 bytes) */
-u8 dMVOpeningCliff_gap_0x3070[72] = {
-	#include <MVOpeningCliff/gap_0x3070.data.inc.c>
+Gfx dMVOpeningCliff_DL_0x3070[9] = {
+	#include <MVOpeningCliff/DL_0x3070.dl.inc.c>
 };
 
 /* gap sub-block @ 0x30B8 (was gap+0x48, 896 bytes) */
-u8 dMVOpeningCliff_gap_0x3070_sub_0x48[896] = {
-	#include <MVOpeningCliff/gap_0x3070_sub_0x48.data.inc.c>
+Gfx dMVOpeningCliff_DL_0x30B8[112] = {
+	#include <MVOpeningCliff/DL_0x30B8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3438 (was gap+0x3C8, 872 bytes) */
-u8 dMVOpeningCliff_gap_0x3070_sub_0x3C8[872] = {
-	#include <MVOpeningCliff/gap_0x3070_sub_0x3C8.data.inc.c>
+Gfx dMVOpeningCliff_DL_0x3438[109] = {
+	#include <MVOpeningCliff/DL_0x3438.dl.inc.c>
 };
 
 /* DObjDesc: Hills @ 0x37A0 (4 entries) */
 DObjDesc dMVOpeningCliff_Hills[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dMVOpeningCliff_gap_0x3070, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningCliff_gap_0x3070 + 0x3C8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningCliff_DL_0x3070, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningCliff_DL_0x3070 + 0x3C8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -284,8 +284,8 @@ u8 dMVOpeningCliff_gap_0x3850_sub_0x2D58[192] = {
 };
 
 /* gap sub-block @ 0x6668 (was gap+0x2E18, 312 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x2E18[312] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x2E18.data.inc.c>
+Gfx dMVOpeningCliff_DL_0x6668[39] = {
+	#include <MVOpeningCliff/DL_0x6668.dl.inc.c>
 };
 
 /* DObjDesc: OcarinaDObjDesc @ 0x67A0 (4 entries) */

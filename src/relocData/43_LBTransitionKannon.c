@@ -453,25 +453,25 @@ Vtx dLBTransitionKannon_Vtx_0x0B00_Vtx[4] = {
 
 /* Raw data from file offset 0x0B40 to 0x1F00 (5056 bytes) */
 /* gap sub-block @ 0x0B40 (was gap+0x0, 72 bytes) */
-u8 dLBTransitionKannon_gap_0x0B40[72] = {
-	#include <LBTransitionKannon/gap_0x0B40.data.inc.c>
+Gfx dLBTransitionKannon_DL_0x0B40[9] = {
+	#include <LBTransitionKannon/DL_0x0B40.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0B88 (was gap+0x48, 2480 bytes) */
-u8 dLBTransitionKannon_gap_0x0B40_sub_0x48[2480] = {
-	#include <LBTransitionKannon/gap_0x0B40_sub_0x48.data.inc.c>
+Gfx dLBTransitionKannon_DL_0x0B88[310] = {
+	#include <LBTransitionKannon/DL_0x0B88.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1538 (was gap+0x9F8, 2504 bytes) */
-u8 dLBTransitionKannon_gap_0x0B40_sub_0x9F8[2504] = {
-	#include <LBTransitionKannon/gap_0x0B40_sub_0x9F8.data.inc.c>
+Gfx dLBTransitionKannon_DL_0x1538[313] = {
+	#include <LBTransitionKannon/DL_0x1538.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0x1F00 (4 entries) */
 DObjDesc dLBTransitionKannon_DObjDesc_0x1F00[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dLBTransitionKannon_gap_0x0B40, { -1500.0f, 0.0f, 0.0f }, { 0.0f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionKannon_gap_0x0B40 + 0x9F8), { 1500.0f, 0.0f, 0.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLBTransitionKannon_DL_0x0B40, { -1500.0f, 0.0f, 0.0f }, { 0.0f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionKannon_DL_0x0B40 + 0x9F8), { 1500.0f, 0.0f, 0.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

@@ -1889,8 +1889,8 @@ u8 dDonkeyModel_gap_0x7390_sub_0x4650[176] = {
 };
 
 /* gap sub-block @ 0xBA90 (was gap+0x4700, 144 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x4700[144] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x4700.data.inc.c>
+Gfx dDonkeyModel_DL_0xBA90[18] = {
+	#include <DonkeyModel/DL_0xBA90.dl.inc.c>
 };
 
 /* gap sub-block @ 0xBB20 (was gap+0x4790, 176 bytes) */
@@ -1899,8 +1899,8 @@ u8 dDonkeyModel_gap_0x7390_sub_0x4790[176] = {
 };
 
 /* gap sub-block @ 0xBBD0 (was gap+0x4840, 144 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x4840[144] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x4840.data.inc.c>
+Gfx dDonkeyModel_DL_0xBBD0[18] = {
+	#include <DonkeyModel/DL_0xBBD0.dl.inc.c>
 };
 
 /* gap sub-block @ 0xBC60 (was gap+0x48D0, 160 bytes) */
@@ -1929,8 +1929,8 @@ u8 dDonkeyModel_gap_0x7390_sub_0x4AF0[144] = {
 };
 
 /* gap sub-block @ 0xBF10 (was gap+0x4B80, 128 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x4B80[128] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x4B80.data.inc.c>
+Gfx dDonkeyModel_DL_0xBF10[16] = {
+	#include <DonkeyModel/DL_0xBF10.dl.inc.c>
 };
 
 /* gap sub-block @ 0xBF90 (was gap+0x4C00, 280 bytes) */

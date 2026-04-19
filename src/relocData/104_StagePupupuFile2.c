@@ -188,18 +188,18 @@ u8 dStagePupupuFile2_gap_0x0000_sub_0x690[48] = {
 };
 
 /* gap sub-block @ 0x06C0 (was gap+0x6C0, 72 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x6C0[72] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x6C0.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x06C0[9] = {
+	#include <StagePupupuFile2/DL_0x06C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0708 (was gap+0x708, 144 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x708[144] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x708.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x0708[18] = {
+	#include <StagePupupuFile2/DL_0x0708.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0798 (was gap+0x798, 136 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x798[136] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x798.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x0798[17] = {
+	#include <StagePupupuFile2/DL_0x0798.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0820 (was gap+0x820, 120 bytes) */
@@ -214,18 +214,18 @@ u8 dStagePupupuFile2_gap_0x0898[16] = {
 };
 
 /* gap sub-block @ 0x08A8 (was gap+0x10, 128 bytes) */
-u8 dStagePupupuFile2_gap_0x0898_sub_0x10[128] = {
-	#include <StagePupupuFile2/gap_0x0898_sub_0x10.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x08A8[16] = {
+	#include <StagePupupuFile2/DL_0x08A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0928 (was gap+0x90, 40 bytes) */
-u8 dStagePupupuFile2_gap_0x0898_sub_0x90[40] = {
-	#include <StagePupupuFile2/gap_0x0898_sub_0x90.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x0928[5] = {
+	#include <StagePupupuFile2/DL_0x0928.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0950 (was gap+0xB8, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0898_sub_0xB8[48] = {
-	#include <StagePupupuFile2/gap_0x0898_sub_0xB8.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x0950[6] = {
+	#include <StagePupupuFile2/DL_0x0950.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0980 (was gap+0xE8, 80 bytes) */
@@ -336,13 +336,13 @@ u32 dStagePupupuFile2_Layer1Anim_AnimJoint[136] = {
 
 /* Raw data from file offset 0x22D0 to 0x2810 (1344 bytes) */
 /* gap sub-block @ 0x22D0 (was gap+0x0, 176 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0[176] = {
-	#include <StagePupupuFile2/gap_0x22D0.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x22D0[22] = {
+	#include <StagePupupuFile2/DL_0x22D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2380 (was gap+0xB0, 208 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0xB0[208] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0xB0.data.inc.c>
+Gfx dStagePupupuFile2_DL_0x2380[26] = {
+	#include <StagePupupuFile2/DL_0x2380.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2450 (was gap+0x180, 224 bytes) */

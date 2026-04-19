@@ -297,58 +297,58 @@ Vtx dStageSectorFile2_Vtx_0x3EA0_Vtx[4] = {
 
 /* Raw data from file offset 0x3EE0 to 0x44C8 (1512 bytes) */
 /* gap sub-block @ 0x3EE0 (was gap+0x0, 80 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0[80] = {
-	#include <StageSectorFile2/gap_0x3EE0.data.inc.c>
+Gfx dStageSectorFile2_DL_0x3EE0[10] = {
+	#include <StageSectorFile2/DL_0x3EE0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3F30 (was gap+0x50, 136 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x50[136] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x50.data.inc.c>
+Gfx dStageSectorFile2_DL_0x3F30[17] = {
+	#include <StageSectorFile2/DL_0x3F30.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3FB8 (was gap+0xD8, 96 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0xD8[96] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0xD8.data.inc.c>
+Gfx dStageSectorFile2_DL_0x3FB8[12] = {
+	#include <StageSectorFile2/DL_0x3FB8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4018 (was gap+0x138, 96 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x138[96] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x138.data.inc.c>
+Gfx dStageSectorFile2_DL_0x4018[12] = {
+	#include <StageSectorFile2/DL_0x4018.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4078 (was gap+0x198, 96 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x198[96] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x198.data.inc.c>
+Gfx dStageSectorFile2_DL_0x4078[12] = {
+	#include <StageSectorFile2/DL_0x4078.dl.inc.c>
 };
 
 /* gap sub-block @ 0x40D8 (was gap+0x1F8, 200 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x1F8[200] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x1F8.data.inc.c>
+Gfx dStageSectorFile2_DL_0x40D8[25] = {
+	#include <StageSectorFile2/DL_0x40D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x41A0 (was gap+0x2C0, 352 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x2C0[352] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x2C0.data.inc.c>
+Gfx dStageSectorFile2_DL_0x41A0[44] = {
+	#include <StageSectorFile2/DL_0x41A0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4300 (was gap+0x420, 56 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x420[56] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x420.data.inc.c>
+Gfx dStageSectorFile2_DL_0x4300[7] = {
+	#include <StageSectorFile2/DL_0x4300.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4338 (was gap+0x458, 96 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x458[96] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x458.data.inc.c>
+Gfx dStageSectorFile2_DL_0x4338[12] = {
+	#include <StageSectorFile2/DL_0x4338.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4398 (was gap+0x4B8, 96 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x4B8[96] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x4B8.data.inc.c>
+Gfx dStageSectorFile2_DL_0x4398[12] = {
+	#include <StageSectorFile2/DL_0x4398.dl.inc.c>
 };
 
 /* gap sub-block @ 0x43F8 (was gap+0x518, 64 bytes) */
-u8 dStageSectorFile2_gap_0x3EE0_sub_0x518[64] = {
-	#include <StageSectorFile2/gap_0x3EE0_sub_0x518.data.inc.c>
+Gfx dStageSectorFile2_DL_0x43F8[8] = {
+	#include <StageSectorFile2/DL_0x43F8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4438 (was gap+0x558, 16 bytes) */
@@ -400,10 +400,10 @@ u8 dStageSectorFile2_gap_0x3EE0_sub_0x5D8[16] = {
 DObjDesc dStageSectorFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dStageSectorFile2_gap_0x3EE0 + 0x558), { 5883.34423828125f, 328.1048583984375f, -16087.58203125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dStageSectorFile2_gap_0x3EE0 + 0x568), { -6894.74853515625f, 2436.8427734375f, -14467.5478515625f }, { 0.0f, 0.0f, 0.2967059910297394f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dStageSectorFile2_gap_0x3EE0 + 0x578), { 12801.2529296875f, 1800.0f, -12407.8408203125f }, { 0.0f, 0.0f, -0.13962599635124207f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dStageSectorFile2_gap_0x3EE0 + 0x588), { -282.9080505371094f, 4200.0f, -8149.56640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)((u8*)dStageSectorFile2_DL_0x3EE0 + 0x558), { 5883.34423828125f, 328.1048583984375f, -16087.58203125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)((u8*)dStageSectorFile2_DL_0x3EE0 + 0x568), { -6894.74853515625f, 2436.8427734375f, -14467.5478515625f }, { 0.0f, 0.0f, 0.2967059910297394f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)((u8*)dStageSectorFile2_DL_0x3EE0 + 0x578), { 12801.2529296875f, 1800.0f, -12407.8408203125f }, { 0.0f, 0.0f, -0.13962599635124207f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)((u8*)dStageSectorFile2_DL_0x3EE0 + 0x588), { -282.9080505371094f, 4200.0f, -8149.56640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x45D0 to 0x4710 (320 bytes) */

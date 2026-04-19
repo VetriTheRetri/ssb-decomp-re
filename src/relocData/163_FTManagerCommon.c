@@ -23,8 +23,8 @@ u8 dFTManagerCommon_gap_0x0000_sub_0x208[64] = {
 };
 
 /* gap sub-block @ 0x0248 (was gap+0x248, 168 bytes) */
-u8 dFTManagerCommon_gap_0x0000_sub_0x248[168] = {
-	#include <FTManagerCommon/gap_0x0000_sub_0x248.data.inc.c>
+Gfx dFTManagerCommon_DL_0x0248[21] = {
+	#include <FTManagerCommon/DL_0x0248.dl.inc.c>
 };
 
 /* gap sub-block @ 0x02F0 (was gap+0x2F0, 16 bytes) */

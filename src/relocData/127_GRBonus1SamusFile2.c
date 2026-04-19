@@ -118,8 +118,8 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x440[64] = {
 };
 
 /* gap sub-block @ 0x0480 (was gap+0x480, 256 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x480[256] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x480.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x0480[32] = {
+	#include <GRBonus1SamusFile2/DL_0x0480.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
@@ -143,8 +143,8 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x630[40] = {
 };
 
 /* gap sub-block @ 0x0658 (was gap+0x658, 40 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x658[40] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x658.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x0658[5] = {
+	#include <GRBonus1SamusFile2/DL_0x0658.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 96 bytes) */
@@ -158,13 +158,13 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x6E0[16] = {
 };
 
 /* gap sub-block @ 0x06F0 (was gap+0x6F0, 144 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x6F0[144] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x6F0.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x06F0[18] = {
+	#include <GRBonus1SamusFile2/DL_0x06F0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0780 (was gap+0x780, 400 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x780[400] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x780.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x0780[50] = {
+	#include <GRBonus1SamusFile2/DL_0x0780.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0910 (was gap+0x910, 16 bytes) */
@@ -264,18 +264,18 @@ u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x9C8[64] = {
 };
 
 /* gap sub-block @ 0x1460 (was gap+0xA08, 96 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0xA08[96] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0xA08.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x1460[12] = {
+	#include <GRBonus1SamusFile2/DL_0x1460.dl.inc.c>
 };
 
 /* gap sub-block @ 0x14C0 (was gap+0xA68, 152 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68[152] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0xA68.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x14C0[19] = {
+	#include <GRBonus1SamusFile2/DL_0x14C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1558 (was gap+0xB00, 784 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00[784] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0xB00.data.inc.c>
+Gfx dGRBonus1SamusFile2_DL_0x1558[98] = {
+	#include <GRBonus1SamusFile2/DL_0x1558.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x1868 (4 entries) */

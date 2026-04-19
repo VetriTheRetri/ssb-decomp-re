@@ -268,6 +268,6 @@ u8 dNNessModel_gap_0x3210_sub_0x1F0[192] = {
 };
 
 /* gap sub-block @ 0x34C0 (was gap+0x2B0, 288 bytes) */
-u8 dNNessModel_gap_0x3210_sub_0x2B0[288] = {
-	#include <NNessModel/gap_0x3210_sub_0x2B0.data.inc.c>
+Gfx dNNessModel_DL_0x34C0[36] = {
+	#include <NNessModel/DL_0x34C0.dl.inc.c>
 };

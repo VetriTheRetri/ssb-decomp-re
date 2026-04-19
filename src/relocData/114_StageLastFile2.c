@@ -505,38 +505,38 @@ u8 dStageLastFile2_gap_0x20F0_sub_0x1F08[128] = {
 };
 
 /* gap sub-block @ 0x4078 (was gap+0x1F88, 48 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x1F88[48] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x1F88.data.inc.c>
+Gfx dStageLastFile2_DL_0x4078[6] = {
+	#include <StageLastFile2/DL_0x4078.dl.inc.c>
 };
 
 /* gap sub-block @ 0x40A8 (was gap+0x1FB8, 392 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x1FB8[392] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x1FB8.data.inc.c>
+Gfx dStageLastFile2_DL_0x40A8[49] = {
+	#include <StageLastFile2/DL_0x40A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4230 (was gap+0x2140, 936 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x2140[936] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x2140.data.inc.c>
+Gfx dStageLastFile2_DL_0x4230[117] = {
+	#include <StageLastFile2/DL_0x4230.dl.inc.c>
 };
 
 /* gap sub-block @ 0x45D8 (was gap+0x24E8, 936 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x24E8[936] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x24E8.data.inc.c>
+Gfx dStageLastFile2_DL_0x45D8[117] = {
+	#include <StageLastFile2/DL_0x45D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4980 (was gap+0x2890, 568 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x2890[568] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x2890.data.inc.c>
+Gfx dStageLastFile2_DL_0x4980[71] = {
+	#include <StageLastFile2/DL_0x4980.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4BB8 (was gap+0x2AC8, 352 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x2AC8[352] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x2AC8.data.inc.c>
+Gfx dStageLastFile2_DL_0x4BB8[44] = {
+	#include <StageLastFile2/DL_0x4BB8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4D18 (was gap+0x2C28, 48 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x2C28[48] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x2C28.data.inc.c>
+Gfx dStageLastFile2_DL_0x4D18[6] = {
+	#include <StageLastFile2/DL_0x4D18.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x4D48 (6 entries) */

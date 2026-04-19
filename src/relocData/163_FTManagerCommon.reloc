@@ -1,7 +1,7 @@
 # Relocation metadata for file 163
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dFTManagerCommon_gap_0x0000_sub_0x248+0x54 dFTManagerCommon_gap_0x0000_sub_0x8
-intern dFTManagerCommon_gap_0x0000_sub_0x248+0x74 dFTManagerCommon_gap_0x0000_sub_0x208
-intern dFTManagerCommon_gap_0x0000_sub_0x2F0+0x4 dFTManagerCommon_gap_0x0000_sub_0x248
+intern dFTManagerCommon_DL_0x0248+0x54 dFTManagerCommon_gap_0x0000_sub_0x8
+intern dFTManagerCommon_DL_0x0248+0x74 dFTManagerCommon_gap_0x0000_sub_0x208
+intern dFTManagerCommon_gap_0x0000_sub_0x2F0+0x4 dFTManagerCommon_DL_0x0248
 intern dFTManagerCommon_Shield+0x30 dFTManagerCommon_gap_0x0000_sub_0x2F0

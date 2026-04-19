@@ -118,8 +118,8 @@ u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x440[64] = {
 };
 
 /* gap sub-block @ 0x0480 (was gap+0x480, 256 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x480[256] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x480.data.inc.c>
+Gfx dGRBonus1CaptainFile2_DL_0x0480[32] = {
+	#include <GRBonus1CaptainFile2/DL_0x0480.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
@@ -143,8 +143,8 @@ u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x630[40] = {
 };
 
 /* gap sub-block @ 0x0658 (was gap+0x658, 40 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x658[40] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x658.data.inc.c>
+Gfx dGRBonus1CaptainFile2_DL_0x0658[5] = {
+	#include <GRBonus1CaptainFile2/DL_0x0658.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 96 bytes) */
@@ -158,8 +158,8 @@ u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x6E0[16] = {
 };
 
 /* gap sub-block @ 0x06F0 (was gap+0x6F0, 288 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x6F0[288] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x6F0.data.inc.c>
+Gfx dGRBonus1CaptainFile2_DL_0x06F0[36] = {
+	#include <GRBonus1CaptainFile2/DL_0x06F0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0810 (was gap+0x810, 16 bytes) */
@@ -248,18 +248,18 @@ u8 dGRBonus1CaptainFile2_gap_0x091C_sub_0xA64[64] = {
 };
 
 /* gap sub-block @ 0x13C0 (was gap+0xAA4, 96 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x091C_sub_0xAA4[96] = {
-	#include <GRBonus1CaptainFile2/gap_0x091C_sub_0xAA4.data.inc.c>
+Gfx dGRBonus1CaptainFile2_DL_0x13C0[12] = {
+	#include <GRBonus1CaptainFile2/DL_0x13C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1420 (was gap+0xB04, 800 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x091C_sub_0xB04[800] = {
-	#include <GRBonus1CaptainFile2/gap_0x091C_sub_0xB04.data.inc.c>
+Gfx dGRBonus1CaptainFile2_DL_0x1420[100] = {
+	#include <GRBonus1CaptainFile2/DL_0x1420.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1740 (was gap+0xE24, 328 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x091C_sub_0xE24[328] = {
-	#include <GRBonus1CaptainFile2/gap_0x091C_sub_0xE24.data.inc.c>
+Gfx dGRBonus1CaptainFile2_DL_0x1740[41] = {
+	#include <GRBonus1CaptainFile2/DL_0x1740.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x1888 (4 entries) */

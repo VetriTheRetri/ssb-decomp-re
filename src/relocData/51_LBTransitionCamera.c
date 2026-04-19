@@ -928,61 +928,61 @@ Vtx dLBTransitionCamera_Vtx_0x17A0_Vtx[4] = {
 
 /* Raw data from file offset 0x17E0 to 0x3F90 (10160 bytes) */
 /* gap sub-block @ 0x17E0 (was gap+0x0, 72 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0[72] = {
-	#include <LBTransitionCamera/gap_0x17E0.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x17E0[9] = {
+	#include <LBTransitionCamera/DL_0x17E0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1828 (was gap+0x48, 1328 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0x48[1328] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0x48.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x1828[166] = {
+	#include <LBTransitionCamera/DL_0x1828.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1D58 (was gap+0x578, 1248 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0x578[1248] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0x578.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x1D58[156] = {
+	#include <LBTransitionCamera/DL_0x1D58.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2238 (was gap+0xA58, 1248 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0xA58[1248] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0xA58.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x2238[156] = {
+	#include <LBTransitionCamera/DL_0x2238.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2718 (was gap+0xF38, 1248 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0xF38[1248] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0xF38.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x2718[156] = {
+	#include <LBTransitionCamera/DL_0x2718.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2BF8 (was gap+0x1418, 1248 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0x1418[1248] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0x1418.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x2BF8[156] = {
+	#include <LBTransitionCamera/DL_0x2BF8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x30D8 (was gap+0x18F8, 1248 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0x18F8[1248] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0x18F8.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x30D8[156] = {
+	#include <LBTransitionCamera/DL_0x30D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x35B8 (was gap+0x1DD8, 1248 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0x1DD8[1248] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0x1DD8.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x35B8[156] = {
+	#include <LBTransitionCamera/DL_0x35B8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3A98 (was gap+0x22B8, 1272 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0_sub_0x22B8[1272] = {
-	#include <LBTransitionCamera/gap_0x17E0_sub_0x22B8.data.inc.c>
+Gfx dLBTransitionCamera_DL_0x3A98[159] = {
+	#include <LBTransitionCamera/DL_0x3A98.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0x3F90 (10 entries) */
 DObjDesc dLBTransitionCamera_DObjDesc_0x3F90[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dLBTransitionCamera_gap_0x17E0, { 0.0f, 1550.0f, 0.0f }, { 0.0f, 0.0f, -1.9635159969329834f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0x578), { 1100.0f, 1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9641530513763428f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0xA58), { 1550.0f, -9.999999974752427e-07f, 0.0f }, { 0.0f, 0.0f, -1.9641530513763428f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0xF38), { 1100.0f, -1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9624079465866089f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0x1418), { -9.999999974752427e-07f, -1550.0f, 0.0f }, { 0.0f, 0.0f, -1.960955023765564f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0x18F8), { -1100.0f, -1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9627519845962524f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0x1DD8), { -1550.0f, -3.000000106112566e-06f, 0.0f }, { 0.0f, 0.0f, -1.959609031677246f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionCamera_gap_0x17E0 + 0x22B8), { -1100.0f, 1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9610869884490967f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLBTransitionCamera_DL_0x17E0, { 0.0f, 1550.0f, 0.0f }, { 0.0f, 0.0f, -1.9635159969329834f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0x578), { 1100.0f, 1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9641530513763428f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0xA58), { 1550.0f, -9.999999974752427e-07f, 0.0f }, { 0.0f, 0.0f, -1.9641530513763428f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0xF38), { 1100.0f, -1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9624079465866089f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0x1418), { -9.999999974752427e-07f, -1550.0f, 0.0f }, { 0.0f, 0.0f, -1.960955023765564f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0x18F8), { -1100.0f, -1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9627519845962524f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0x1DD8), { -1550.0f, -3.000000106112566e-06f, 0.0f }, { 0.0f, 0.0f, -1.959609031677246f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionCamera_DL_0x17E0 + 0x22B8), { -1100.0f, 1100.0f, 0.0f }, { 0.0f, 0.0f, -1.9610869884490967f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

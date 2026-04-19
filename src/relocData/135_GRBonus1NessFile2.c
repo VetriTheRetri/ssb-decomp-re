@@ -108,8 +108,8 @@ u8 dGRBonus1NessFile2_gap_0x0000_sub_0x458[40] = {
 };
 
 /* gap sub-block @ 0x0480 (was gap+0x480, 256 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x480[256] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x480.data.inc.c>
+Gfx dGRBonus1NessFile2_DL_0x0480[32] = {
+	#include <GRBonus1NessFile2/DL_0x0480.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
@@ -128,8 +128,8 @@ u8 dGRBonus1NessFile2_gap_0x0000_sub_0x5B0[208] = {
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 256 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x680[256] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x680.data.inc.c>
+Gfx dGRBonus1NessFile2_DL_0x0680[32] = {
+	#include <GRBonus1NessFile2/DL_0x0680.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0780 (was gap+0x780, 56 bytes) */
@@ -143,8 +143,8 @@ u8 dGRBonus1NessFile2_gap_0x0000_sub_0x7B8[40] = {
 };
 
 /* gap sub-block @ 0x07E0 (was gap+0x7E0, 304 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x7E0[304] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x7E0.data.inc.c>
+Gfx dGRBonus1NessFile2_DL_0x07E0[38] = {
+	#include <GRBonus1NessFile2/DL_0x07E0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0910 (was gap+0x910, 16 bytes) */
@@ -330,18 +330,18 @@ u8 dGRBonus1NessFile2_gap_0x0A84_sub_0x163C[128] = {
 };
 
 /* gap sub-block @ 0x2140 (was gap+0x16BC, 80 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0A84_sub_0x16BC[80] = {
-	#include <GRBonus1NessFile2/gap_0x0A84_sub_0x16BC.data.inc.c>
+Gfx dGRBonus1NessFile2_DL_0x2140[10] = {
+	#include <GRBonus1NessFile2/DL_0x2140.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2190 (was gap+0x170C, 1728 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0A84_sub_0x170C[1728] = {
-	#include <GRBonus1NessFile2/gap_0x0A84_sub_0x170C.data.inc.c>
+Gfx dGRBonus1NessFile2_DL_0x2190[216] = {
+	#include <GRBonus1NessFile2/DL_0x2190.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2850 (was gap+0x1DCC, 240 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0A84_sub_0x1DCC[240] = {
-	#include <GRBonus1NessFile2/gap_0x0A84_sub_0x1DCC.data.inc.c>
+Gfx dGRBonus1NessFile2_DL_0x2850[30] = {
+	#include <GRBonus1NessFile2/DL_0x2850.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x2940 (4 entries) */

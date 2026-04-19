@@ -1076,8 +1076,8 @@ u8 dFoxModel_gap_0x5A38_sub_0x2C8[208] = {
 };
 
 /* gap sub-block @ 0x5DD0 (was gap+0x398, 128 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x398[128] = {
-	#include <FoxModel/gap_0x5A38_sub_0x398.data.inc.c>
+Gfx dFoxModel_DL_0x5DD0[16] = {
+	#include <FoxModel/DL_0x5DD0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5E50 (was gap+0x418, 144 bytes) */
@@ -1096,8 +1096,8 @@ u8 dFoxModel_gap_0x5A38_sub_0x528[208] = {
 };
 
 /* gap sub-block @ 0x6030 (was gap+0x5F8, 128 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x5F8[128] = {
-	#include <FoxModel/gap_0x5A38_sub_0x5F8.data.inc.c>
+Gfx dFoxModel_DL_0x6030[16] = {
+	#include <FoxModel/DL_0x6030.dl.inc.c>
 };
 
 /* gap sub-block @ 0x60B0 (was gap+0x678, 144 bytes) */
@@ -1141,8 +1141,8 @@ u8 dFoxModel_gap_0x5A38_sub_0xAF8[384] = {
 };
 
 /* gap sub-block @ 0x66B0 (was gap+0xC78, 448 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0xC78[448] = {
-	#include <FoxModel/gap_0x5A38_sub_0xC78.data.inc.c>
+Gfx dFoxModel_DL_0x66B0[56] = {
+	#include <FoxModel/DL_0x66B0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6870 (was gap+0xE38, 160 bytes) */
@@ -1211,8 +1211,8 @@ u8 dFoxModel_gap_0x5A38_sub_0x1408[80] = {
 };
 
 /* gap sub-block @ 0x6E90 (was gap+0x1458, 96 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x1458[96] = {
-	#include <FoxModel/gap_0x5A38_sub_0x1458.data.inc.c>
+Gfx dFoxModel_DL_0x6E90[12] = {
+	#include <FoxModel/DL_0x6E90.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6EF0 (was gap+0x14B8, 176 bytes) */

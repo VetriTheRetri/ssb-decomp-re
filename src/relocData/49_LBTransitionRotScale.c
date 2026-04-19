@@ -223,8 +223,8 @@ u8 dLBTransitionRotScale_gap_0x0000_sub_0x560[64] = {
 };
 
 /* gap sub-block @ 0x05A0 (was gap+0x5A0, 2552 bytes) */
-u8 dLBTransitionRotScale_gap_0x0000_sub_0x5A0[2552] = {
-	#include <LBTransitionRotScale/gap_0x0000_sub_0x5A0.data.inc.c>
+Gfx dLBTransitionRotScale_DL_0x05A0[319] = {
+	#include <LBTransitionRotScale/DL_0x05A0.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0xF98 (3 entries) */

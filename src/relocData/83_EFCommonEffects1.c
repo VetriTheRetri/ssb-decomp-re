@@ -246,13 +246,13 @@ u8 dEFCommonEffects1_gap_0x7458_sub_0x108[64] = {
 };
 
 /* gap sub-block @ 0x75A0 (was gap+0x148, 200 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0x148[200] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0x148.data.inc.c>
+Gfx dEFCommonEffects1_DL_0x75A0[25] = {
+	#include <EFCommonEffects1/DL_0x75A0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x7668 (was gap+0x210, 200 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0x210[200] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0x210.data.inc.c>
+Gfx dEFCommonEffects1_DL_0x7668[25] = {
+	#include <EFCommonEffects1/DL_0x7668.dl.inc.c>
 };
 
 /* gap sub-block @ 0x7730 (was gap+0x2D8, 16 bytes) */
@@ -351,8 +351,8 @@ u8 dEFCommonEffects1_gap_0x7AF8_sub_0x10[288] = {
 };
 
 /* Raw data from file offset 0x7C28 to 0x7D40 (280 bytes) */
-u8 dEFCommonEffects1_gap_0x7C28[280] = {
-	#include <EFCommonEffects1/gap_0x7C28.data.inc.c>
+Gfx dEFCommonEffects1_DL_0x7C28[35] = {
+	#include <EFCommonEffects1/DL_0x7C28.dl.inc.c>
 };
 
 /* Raw data from file offset 0x7D40 to 0x7DA0 (96 bytes) */
@@ -389,8 +389,8 @@ u32 dEFCommonEffects1_ImpactWave_MatAnimJoint[56] = {
 };
 
 /* Raw data from file offset 0x7E80 to 0x7F40 (192 bytes) */
-u8 dEFCommonEffects1_gap_0x7E80[192] = {
-	#include <EFCommonEffects1/gap_0x7E80.data.inc.c>
+Gfx dEFCommonEffects1_DL_0x7E80[24] = {
+	#include <EFCommonEffects1/DL_0x7E80.dl.inc.c>
 };
 
 /* Raw data from file offset 0x7F40 to 0x8EC0 (3968 bytes) */
@@ -443,8 +443,8 @@ u8 dEFCommonEffects1_gap_0x8F38_sub_0x28[64] = {
 };
 
 /* Raw data from file offset 0x8FA0 to 0x9050 (176 bytes) */
-u8 dEFCommonEffects1_gap_0x8FA0[176] = {
-	#include <EFCommonEffects1/gap_0x8FA0.data.inc.c>
+Gfx dEFCommonEffects1_DL_0x8FA0[22] = {
+	#include <EFCommonEffects1/DL_0x8FA0.dl.inc.c>
 };
 
 /* Raw data from file offset 0x9050 to 0x90C0 (112 bytes) */

@@ -102,13 +102,13 @@ u8 dEFCommonEffects3_gap_0x0180_sub_0x270[80] = {
 };
 
 /* gap sub-block @ 0x0440 (was gap+0x2C0, 216 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x2C0[216] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x2C0.data.inc.c>
+Gfx dEFCommonEffects3_DL_0x0440[27] = {
+	#include <EFCommonEffects3/DL_0x0440.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0518 (was gap+0x398, 240 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x398[240] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x398.data.inc.c>
+Gfx dEFCommonEffects3_DL_0x0518[30] = {
+	#include <EFCommonEffects3/DL_0x0518.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0608 (was gap+0x488, 16 bytes) */
@@ -230,23 +230,23 @@ u8 dEFCommonEffects3_gap_0x2D20_sub_0x1A0[48] = {
 };
 
 /* gap sub-block @ 0x2EF0 (was gap+0x1D0, 144 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x1D0[144] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x1D0.data.inc.c>
+Gfx dEFCommonEffects3_DL_0x2EF0[18] = {
+	#include <EFCommonEffects3/DL_0x2EF0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2F80 (was gap+0x260, 144 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x260[144] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x260.data.inc.c>
+Gfx dEFCommonEffects3_DL_0x2F80[18] = {
+	#include <EFCommonEffects3/DL_0x2F80.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3010 (was gap+0x2F0, 144 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x2F0[144] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x2F0.data.inc.c>
+Gfx dEFCommonEffects3_DL_0x3010[18] = {
+	#include <EFCommonEffects3/DL_0x3010.dl.inc.c>
 };
 
 /* gap sub-block @ 0x30A0 (was gap+0x380, 144 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x380[144] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x380.data.inc.c>
+Gfx dEFCommonEffects3_DL_0x30A0[18] = {
+	#include <EFCommonEffects3/DL_0x30A0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3130 (was gap+0x410, 16 bytes) */

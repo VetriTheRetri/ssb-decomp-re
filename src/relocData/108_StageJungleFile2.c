@@ -445,100 +445,100 @@ Vtx dStageJungleFile2_Vtx_0x7E50_Vtx[4] = {
 
 /* Raw data from file offset 0x7E90 to 0x8B18 (3208 bytes) */
 /* gap sub-block @ 0x7E90 (was gap+0x0, 72 bytes) */
-u8 dStageJungleFile2_gap_0x7E90[72] = {
-	#include <StageJungleFile2/gap_0x7E90.data.inc.c>
+Gfx dStageJungleFile2_DL_0x7E90[9] = {
+	#include <StageJungleFile2/DL_0x7E90.dl.inc.c>
 };
 
 /* gap sub-block @ 0x7ED8 (was gap+0x48, 512 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x48[512] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x48.data.inc.c>
+Gfx dStageJungleFile2_DL_0x7ED8[64] = {
+	#include <StageJungleFile2/DL_0x7ED8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x80D8 (was gap+0x248, 336 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x248[336] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x248.data.inc.c>
+Gfx dStageJungleFile2_DL_0x80D8[42] = {
+	#include <StageJungleFile2/DL_0x80D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8228 (was gap+0x398, 144 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x398[144] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x398.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8228[18] = {
+	#include <StageJungleFile2/DL_0x8228.dl.inc.c>
 };
 
 /* gap sub-block @ 0x82B8 (was gap+0x428, 32 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x428[32] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x428.data.inc.c>
+Gfx dStageJungleFile2_DL_0x82B8[4] = {
+	#include <StageJungleFile2/DL_0x82B8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x82D8 (was gap+0x448, 96 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x448[96] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x448.data.inc.c>
+Gfx dStageJungleFile2_DL_0x82D8[12] = {
+	#include <StageJungleFile2/DL_0x82D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8338 (was gap+0x4A8, 112 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x4A8[112] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x4A8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8338[14] = {
+	#include <StageJungleFile2/DL_0x8338.dl.inc.c>
 };
 
 /* gap sub-block @ 0x83A8 (was gap+0x518, 112 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x518[112] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x518.data.inc.c>
+Gfx dStageJungleFile2_DL_0x83A8[14] = {
+	#include <StageJungleFile2/DL_0x83A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8418 (was gap+0x588, 160 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x588[160] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x588.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8418[20] = {
+	#include <StageJungleFile2/DL_0x8418.dl.inc.c>
 };
 
 /* gap sub-block @ 0x84B8 (was gap+0x628, 144 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x628[144] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x628.data.inc.c>
+Gfx dStageJungleFile2_DL_0x84B8[18] = {
+	#include <StageJungleFile2/DL_0x84B8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8548 (was gap+0x6B8, 32 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x6B8[32] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x6B8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8548[4] = {
+	#include <StageJungleFile2/DL_0x8548.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8568 (was gap+0x6D8, 152 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x6D8[152] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x6D8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8568[19] = {
+	#include <StageJungleFile2/DL_0x8568.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8600 (was gap+0x770, 56 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x770[56] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x770.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8600[7] = {
+	#include <StageJungleFile2/DL_0x8600.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8638 (was gap+0x7A8, 424 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x7A8[424] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x7A8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8638[53] = {
+	#include <StageJungleFile2/DL_0x8638.dl.inc.c>
 };
 
 /* gap sub-block @ 0x87E0 (was gap+0x950, 384 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0x950[384] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0x950.data.inc.c>
+Gfx dStageJungleFile2_DL_0x87E0[48] = {
+	#include <StageJungleFile2/DL_0x87E0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8960 (was gap+0xAD0, 168 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0xAD0[168] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0xAD0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8960[21] = {
+	#include <StageJungleFile2/DL_0x8960.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8A08 (was gap+0xB78, 72 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0xB78[72] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0xB78.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8A08[9] = {
+	#include <StageJungleFile2/DL_0x8A08.dl.inc.c>
 };
 
 /* gap sub-block @ 0x8A50 (was gap+0xBC0, 200 bytes) */
-u8 dStageJungleFile2_gap_0x7E90_sub_0xBC0[200] = {
-	#include <StageJungleFile2/gap_0x7E90_sub_0xBC0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8A50[25] = {
+	#include <StageJungleFile2/DL_0x8A50.dl.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x8B18 (3 entries) */
 DObjDesc dStageJungleFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dStageJungleFile2_gap_0x7E90, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_gap_0x7E90 + 0x248), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x7E90, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dStageJungleFile2_DL_0x7E90 + 0x248), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x8B9C to 0x9878 (3292 bytes) */
@@ -598,23 +598,23 @@ u8 dStageJungleFile2_gap_0x8B9C_sub_0x704[192] = {
 };
 
 /* gap sub-block @ 0x9360 (was gap+0x7C4, 80 bytes) */
-u8 dStageJungleFile2_gap_0x8B9C_sub_0x7C4[80] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0x7C4.data.inc.c>
+Gfx dStageJungleFile2_DL_0x9360[10] = {
+	#include <StageJungleFile2/DL_0x9360.dl.inc.c>
 };
 
 /* gap sub-block @ 0x93B0 (was gap+0x814, 280 bytes) */
-u8 dStageJungleFile2_gap_0x8B9C_sub_0x814[280] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0x814.data.inc.c>
+Gfx dStageJungleFile2_DL_0x93B0[35] = {
+	#include <StageJungleFile2/DL_0x93B0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x94C8 (was gap+0x92C, 272 bytes) */
-u8 dStageJungleFile2_gap_0x8B9C_sub_0x92C[272] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0x92C.data.inc.c>
+Gfx dStageJungleFile2_DL_0x94C8[34] = {
+	#include <StageJungleFile2/DL_0x94C8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x95D8 (was gap+0xA3C, 672 bytes) */
-u8 dStageJungleFile2_gap_0x8B9C_sub_0xA3C[672] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0xA3C.data.inc.c>
+Gfx dStageJungleFile2_DL_0x95D8[84] = {
+	#include <StageJungleFile2/DL_0x95D8.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x9878 (5 entries) */
@@ -747,48 +747,48 @@ u8 dStageJungleFile2_gap_0xC888_sub_0x348[192] = {
 };
 
 /* gap sub-block @ 0xCC90 (was gap+0x408, 88 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x408[88] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x408.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCC90[11] = {
+	#include <StageJungleFile2/DL_0xCC90.dl.inc.c>
 };
 
 /* gap sub-block @ 0xCCE8 (was gap+0x460, 128 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x460[128] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x460.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCCE8[16] = {
+	#include <StageJungleFile2/DL_0xCCE8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xCD68 (was gap+0x4E0, 112 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x4E0[112] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x4E0.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCD68[14] = {
+	#include <StageJungleFile2/DL_0xCD68.dl.inc.c>
 };
 
 /* gap sub-block @ 0xCDD8 (was gap+0x550, 248 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x550[248] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x550.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCDD8[31] = {
+	#include <StageJungleFile2/DL_0xCDD8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xCED0 (was gap+0x648, 128 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x648[128] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x648.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCED0[16] = {
+	#include <StageJungleFile2/DL_0xCED0.dl.inc.c>
 };
 
 /* gap sub-block @ 0xCF50 (was gap+0x6C8, 112 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x6C8[112] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x6C8.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCF50[14] = {
+	#include <StageJungleFile2/DL_0xCF50.dl.inc.c>
 };
 
 /* gap sub-block @ 0xCFC0 (was gap+0x738, 96 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x738[96] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x738.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCFC0[12] = {
+	#include <StageJungleFile2/DL_0xCFC0.dl.inc.c>
 };
 
 /* gap sub-block @ 0xD020 (was gap+0x798, 96 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x798[96] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x798.data.inc.c>
+Gfx dStageJungleFile2_DL_0xD020[12] = {
+	#include <StageJungleFile2/DL_0xD020.dl.inc.c>
 };
 
 /* gap sub-block @ 0xD080 (was gap+0x7F8, 264 bytes) */
-u8 dStageJungleFile2_gap_0xC888_sub_0x7F8[264] = {
-	#include <StageJungleFile2/gap_0xC888_sub_0x7F8.data.inc.c>
+Gfx dStageJungleFile2_DL_0xD080[33] = {
+	#include <StageJungleFile2/DL_0xD080.dl.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0xD188 (1 entries) */

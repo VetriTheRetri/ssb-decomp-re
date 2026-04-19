@@ -143,38 +143,38 @@ u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x510[64] = {
 };
 
 /* gap sub-block @ 0x0550 (was gap+0x550, 256 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x550[256] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x550.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0550[32] = {
+	#include <GRBonus2PikachuFile2/DL_0x0550.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0650 (was gap+0x650, 256 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x650[256] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x650.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0650[32] = {
+	#include <GRBonus2PikachuFile2/DL_0x0650.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0750 (was gap+0x750, 256 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x750[256] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x750.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0750[32] = {
+	#include <GRBonus2PikachuFile2/DL_0x0750.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0850 (was gap+0x850, 264 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x850[264] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x850.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0850[33] = {
+	#include <GRBonus2PikachuFile2/DL_0x0850.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0958 (was gap+0x958, 256 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x958[256] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x958.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0958[32] = {
+	#include <GRBonus2PikachuFile2/DL_0x0958.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0A58 (was gap+0xA58, 256 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0xA58[256] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0xA58.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0A58[32] = {
+	#include <GRBonus2PikachuFile2/DL_0x0A58.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0B58 (was gap+0xB58, 400 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0xB58[400] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0xB58.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x0B58[50] = {
+	#include <GRBonus2PikachuFile2/DL_0x0B58.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0CE8 (was gap+0xCE8, 16 bytes) */
@@ -343,73 +343,73 @@ u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1DB0[320] = {
 };
 
 /* gap sub-block @ 0x2E00 (was gap+0x1EF0, 80 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1EF0[80] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x1EF0.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x2E00[10] = {
+	#include <GRBonus2PikachuFile2/DL_0x2E00.dl.inc.c>
 };
 
 /* gap sub-block @ 0x2E50 (was gap+0x1F40, 1016 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40[1016] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x1F40.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x2E50[127] = {
+	#include <GRBonus2PikachuFile2/DL_0x2E50.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3248 (was gap+0x2338, 128 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2338[128] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2338.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3248[16] = {
+	#include <GRBonus2PikachuFile2/DL_0x3248.dl.inc.c>
 };
 
 /* gap sub-block @ 0x32C8 (was gap+0x23B8, 72 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x23B8[72] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x23B8.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x32C8[9] = {
+	#include <GRBonus2PikachuFile2/DL_0x32C8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3310 (was gap+0x2400, 72 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2400[72] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2400.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3310[9] = {
+	#include <GRBonus2PikachuFile2/DL_0x3310.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3358 (was gap+0x2448, 72 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2448[72] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2448.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3358[9] = {
+	#include <GRBonus2PikachuFile2/DL_0x3358.dl.inc.c>
 };
 
 /* gap sub-block @ 0x33A0 (was gap+0x2490, 72 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2490[72] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2490.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x33A0[9] = {
+	#include <GRBonus2PikachuFile2/DL_0x33A0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x33E8 (was gap+0x24D8, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x24D8[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x24D8.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x33E8[8] = {
+	#include <GRBonus2PikachuFile2/DL_0x33E8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3428 (was gap+0x2518, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2518[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2518.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3428[8] = {
+	#include <GRBonus2PikachuFile2/DL_0x3428.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3468 (was gap+0x2558, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2558[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2558.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3468[8] = {
+	#include <GRBonus2PikachuFile2/DL_0x3468.dl.inc.c>
 };
 
 /* gap sub-block @ 0x34A8 (was gap+0x2598, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2598[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2598.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x34A8[8] = {
+	#include <GRBonus2PikachuFile2/DL_0x34A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x34E8 (was gap+0x25D8, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x25D8[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x25D8.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x34E8[8] = {
+	#include <GRBonus2PikachuFile2/DL_0x34E8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3528 (was gap+0x2618, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2618[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2618.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3528[8] = {
+	#include <GRBonus2PikachuFile2/DL_0x3528.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3568 (was gap+0x2658, 88 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x2658[88] = {
-	#include <GRBonus2PikachuFile2/gap_0x0F10_sub_0x2658.data.inc.c>
+Gfx dGRBonus2PikachuFile2_DL_0x3568[11] = {
+	#include <GRBonus2PikachuFile2/DL_0x3568.dl.inc.c>
 };
 
 /* gap sub-block @ 0x35C0 (was gap+0x26B0, 16 bytes) */

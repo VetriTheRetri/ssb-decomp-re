@@ -961,8 +961,8 @@ u8 dMarioModel_gap_0x4A60_sub_0x1040[96] = {
 };
 
 /* gap sub-block @ 0x5B00 (was gap+0x10A0, 544 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x10A0[544] = {
-	#include <MarioModel/gap_0x4A60_sub_0x10A0.data.inc.c>
+Gfx dMarioModel_DL_0x5B00[68] = {
+	#include <MarioModel/DL_0x5B00.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5D20 (was gap+0x12C0, 160 bytes) */
@@ -1031,8 +1031,8 @@ u8 dMarioModel_gap_0x4A60_sub_0x1900[112] = {
 };
 
 /* gap sub-block @ 0x63D0 (was gap+0x1970, 112 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1970[112] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1970.data.inc.c>
+Gfx dMarioModel_DL_0x63D0[14] = {
+	#include <MarioModel/DL_0x63D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6440 (was gap+0x19E0, 232 bytes) */

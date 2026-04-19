@@ -77,8 +77,8 @@ u8 dCaptainSpecial3_gap_0x0708_sub_0x18[64] = {
 };
 
 /* Raw data from file offset 0x0760 to 0x0830 (208 bytes) */
-u8 dCaptainSpecial3_gap_0x0760[208] = {
-	#include <CaptainSpecial3/gap_0x0760.data.inc.c>
+Gfx dCaptainSpecial3_DL_0x0760[26] = {
+	#include <CaptainSpecial3/DL_0x0760.dl.inc.c>
 };
 
 /* Raw data from file offset 0x0830 to 0x0870 (64 bytes) */

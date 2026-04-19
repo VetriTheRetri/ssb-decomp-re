@@ -1151,8 +1151,8 @@ u8 dPikachuModel_gap_0x59B8_sub_0xCA8[224] = {
 };
 
 /* gap sub-block @ 0x6740 (was gap+0xD88, 288 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0xD88[288] = {
-	#include <PikachuModel/gap_0x59B8_sub_0xD88.data.inc.c>
+Gfx dPikachuModel_DL_0x6740[36] = {
+	#include <PikachuModel/DL_0x6740.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6860 (was gap+0xEA8, 208 bytes) */
@@ -1166,8 +1166,8 @@ u8 dPikachuModel_gap_0x59B8_sub_0xF78[432] = {
 };
 
 /* gap sub-block @ 0x6AE0 (was gap+0x1128, 448 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x1128[448] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x1128.data.inc.c>
+Gfx dPikachuModel_DL_0x6AE0[56] = {
+	#include <PikachuModel/DL_0x6AE0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6CA0 (was gap+0x12E8, 80 bytes) */
@@ -1216,8 +1216,8 @@ u8 dPikachuModel_gap_0x59B8_sub_0x16C8[80] = {
 };
 
 /* gap sub-block @ 0x70D0 (was gap+0x1718, 96 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x1718[96] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x1718.data.inc.c>
+Gfx dPikachuModel_DL_0x70D0[12] = {
+	#include <PikachuModel/DL_0x70D0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x7130 (was gap+0x1778, 176 bytes) */
@@ -1310,8 +1310,8 @@ u8 dPikachuModel_gap_0x9498_sub_0x20[64] = {
 };
 
 /* gap sub-block @ 0x94F8 (was gap+0x60, 184 bytes) */
-u8 dPikachuModel_gap_0x9498_sub_0x60[184] = {
-	#include <PikachuModel/gap_0x9498_sub_0x60.data.inc.c>
+Gfx dPikachuModel_DL_0x94F8[23] = {
+	#include <PikachuModel/DL_0x94F8.dl.inc.c>
 };
 
 /* DObjDesc: ThunderTrailDObjDesc @ 0x95B0 (3 entries) */

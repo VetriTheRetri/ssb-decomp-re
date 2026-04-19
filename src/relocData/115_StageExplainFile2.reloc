@@ -1,10 +1,10 @@
 # Relocation metadata for file 115
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dStageExplainFile2_gap_0x0000_sub_0x40+0x44 0x1858  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x0000_sub_0x40+0x74 0x1880  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x0000_sub_0x40+0x94 dStageExplainFile2_gap_0x0000
-intern dStageExplainFile2_Layer0DObj+0x30 dStageExplainFile2_gap_0x0000_sub_0x40
+extern dStageExplainFile2_DL_0x0040+0x44 0x1858  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0040+0x74 0x1880  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x0040+0x94 dStageExplainFile2_gap_0x0000
+intern dStageExplainFile2_Layer0DObj+0x30 dStageExplainFile2_DL_0x0040
 extern dStageExplainFile2_gap_0x018C_sub_0x274+0x4C 0x518  # -> file 103 (StagePupupuImages)
 extern dStageExplainFile2_gap_0x018C_sub_0x2DC+0x14 0x540  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x304+0xC dStageExplainFile2_gap_0x018C_sub_0x4
@@ -12,16 +12,16 @@ extern dStageExplainFile2_gap_0x018C_sub_0x304+0x2C 0x468  # -> file 103 (StageP
 extern dStageExplainFile2_gap_0x018C_sub_0x304+0x4C 0x490  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x304+0x6C dStageExplainFile2_gap_0x018C_sub_0x34
 intern dStageExplainFile2_gap_0x018C_sub_0x304+0x74 dStageExplainFile2_gap_0x018C_sub_0x84
-extern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x4C 0x2248  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x74 0x2270  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x94 dStageExplainFile2_gap_0x018C_sub_0x144
-extern dStageExplainFile2_gap_0x018C_sub_0x3B4+0xE4 0x28A8  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x10C 0x28D0  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x12C dStageExplainFile2_gap_0x018C_sub_0x1C4
-extern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x15C 0x1A88  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x184 0x1AB0  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x1A4 dStageExplainFile2_gap_0x018C_sub_0x224
-intern dStageExplainFile2_gap_0x018C_sub_0x3B4+0x1AC dStageExplainFile2_gap_0x018C_sub_0x244
+extern dStageExplainFile2_DL_0x0540+0x4C 0x2248  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0540+0x74 0x2270  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x0540+0x94 dStageExplainFile2_gap_0x018C_sub_0x144
+extern dStageExplainFile2_DL_0x0540+0xE4 0x28A8  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0540+0x10C 0x28D0  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x0540+0x12C dStageExplainFile2_gap_0x018C_sub_0x1C4
+extern dStageExplainFile2_DL_0x0540+0x15C 0x1A88  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0540+0x184 0x1AB0  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x0540+0x1A4 dStageExplainFile2_gap_0x018C_sub_0x224
+intern dStageExplainFile2_DL_0x0540+0x1AC dStageExplainFile2_gap_0x018C_sub_0x244
 intern dStageExplainFile2_Layer1DObj+0x30 dStageExplainFile2_gap_0x018C_sub_0x274
 intern dStageExplainFile2_MPGeometryData_0x0854+0x4 dStageExplainFile2_gap_0x07A4
 intern dStageExplainFile2_MPGeometryData_0x0854+0x8 dStageExplainFile2_gap_0x07A4_sub_0x50
@@ -32,10 +32,10 @@ extern dStageExplainFile2_MPGeometryData_0x0854+0xD0 0x1858  # -> file 103 (Stag
 extern dStageExplainFile2_MPGeometryData_0x0854+0x100 0x1880  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_MPGeometryData_0x0854+0x120 dStageExplainFile2_MPGeometryData_0x0854+0x1C
 intern dStageExplainFile2_Layer2DObj+0x30 dStageExplainFile2_MPGeometryData_0x0854+0x8C
-extern dStageExplainFile2_gap_0x0A3C_sub_0x1E4+0x44 0x2678  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x0A3C_sub_0x1E4+0x74 0x26A0  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x0A3C_sub_0x1E4+0x94 dStageExplainFile2_gap_0x0A3C_sub_0x4
-extern dStageExplainFile2_gap_0x0A3C_sub_0x1E4+0xFC 0x2248  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x0A3C_sub_0x1E4+0x124 0x2270  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x0A3C_sub_0x1E4+0x144 dStageExplainFile2_gap_0x0A3C_sub_0x104
-intern dStageExplainFile2_Layer3DObj+0x30 dStageExplainFile2_gap_0x0A3C_sub_0x1E4
+extern dStageExplainFile2_DL_0x0C20+0x44 0x2678  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0C20+0x74 0x26A0  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x0C20+0x94 dStageExplainFile2_gap_0x0A3C_sub_0x4
+extern dStageExplainFile2_DL_0x0C20+0xFC 0x2248  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0C20+0x124 0x2270  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x0C20+0x144 dStageExplainFile2_gap_0x0A3C_sub_0x104
+intern dStageExplainFile2_Layer3DObj+0x30 dStageExplainFile2_DL_0x0C20

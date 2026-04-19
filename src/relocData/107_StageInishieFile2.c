@@ -336,73 +336,73 @@ u8 dStageInishieFile2_gap_0x37A8_sub_0x748[64] = {
 };
 
 /* gap sub-block @ 0x3F30 (was gap+0x788, 72 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x788[72] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x788.data.inc.c>
+Gfx dStageInishieFile2_DL_0x3F30[9] = {
+	#include <StageInishieFile2/DL_0x3F30.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3F78 (was gap+0x7D0, 400 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x7D0[400] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x7D0.data.inc.c>
+Gfx dStageInishieFile2_DL_0x3F78[50] = {
+	#include <StageInishieFile2/DL_0x3F78.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4108 (was gap+0x960, 128 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x960[128] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x960.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4108[16] = {
+	#include <StageInishieFile2/DL_0x4108.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4188 (was gap+0x9E0, 128 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x9E0[128] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x9E0.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4188[16] = {
+	#include <StageInishieFile2/DL_0x4188.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4208 (was gap+0xA60, 128 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xA60[128] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xA60.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4208[16] = {
+	#include <StageInishieFile2/DL_0x4208.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4288 (was gap+0xAE0, 96 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xAE0[96] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xAE0.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4288[12] = {
+	#include <StageInishieFile2/DL_0x4288.dl.inc.c>
 };
 
 /* gap sub-block @ 0x42E8 (was gap+0xB40, 96 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xB40[96] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xB40.data.inc.c>
+Gfx dStageInishieFile2_DL_0x42E8[12] = {
+	#include <StageInishieFile2/DL_0x42E8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4348 (was gap+0xBA0, 96 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xBA0[96] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xBA0.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4348[12] = {
+	#include <StageInishieFile2/DL_0x4348.dl.inc.c>
 };
 
 /* gap sub-block @ 0x43A8 (was gap+0xC00, 536 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xC00[536] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xC00.data.inc.c>
+Gfx dStageInishieFile2_DL_0x43A8[67] = {
+	#include <StageInishieFile2/DL_0x43A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x45C0 (was gap+0xE18, 200 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xE18[200] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xE18.data.inc.c>
+Gfx dStageInishieFile2_DL_0x45C0[25] = {
+	#include <StageInishieFile2/DL_0x45C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4688 (was gap+0xEE0, 88 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xEE0[88] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xEE0.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4688[11] = {
+	#include <StageInishieFile2/DL_0x4688.dl.inc.c>
 };
 
 /* gap sub-block @ 0x46E0 (was gap+0xF38, 120 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xF38[120] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xF38.data.inc.c>
+Gfx dStageInishieFile2_DL_0x46E0[15] = {
+	#include <StageInishieFile2/DL_0x46E0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4758 (was gap+0xFB0, 424 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0xFB0[424] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0xFB0.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4758[53] = {
+	#include <StageInishieFile2/DL_0x4758.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4900 (was gap+0x1158, 160 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1158[160] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1158.data.inc.c>
+Gfx dStageInishieFile2_DL_0x4900[20] = {
+	#include <StageInishieFile2/DL_0x4900.dl.inc.c>
 };
 
 /* gap sub-block @ 0x49A0 (was gap+0x11F8, 24 bytes) */
@@ -560,8 +560,8 @@ u8 dStageInishieFile2_gap_0x68D0_sub_0x120[64] = {
 };
 
 /* gap sub-block @ 0x6A30 (was gap+0x160, 464 bytes) */
-u8 dStageInishieFile2_gap_0x68D0_sub_0x160[464] = {
-	#include <StageInishieFile2/gap_0x68D0_sub_0x160.data.inc.c>
+Gfx dStageInishieFile2_DL_0x6A30[58] = {
+	#include <StageInishieFile2/DL_0x6A30.dl.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0x6C00 (3 entries) */

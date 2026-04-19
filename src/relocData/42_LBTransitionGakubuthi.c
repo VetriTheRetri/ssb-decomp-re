@@ -233,8 +233,8 @@ u8 dLBTransitionGakubuthi_gap_0x0000_sub_0x560[64] = {
 };
 
 /* gap sub-block @ 0x05A0 (was gap+0x5A0, 2552 bytes) */
-u8 dLBTransitionGakubuthi_gap_0x0000_sub_0x5A0[2552] = {
-	#include <LBTransitionGakubuthi/gap_0x0000_sub_0x5A0.data.inc.c>
+Gfx dLBTransitionGakubuthi_DL_0x05A0[319] = {
+	#include <LBTransitionGakubuthi/DL_0x05A0.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0xF98 (3 entries) */

@@ -192,33 +192,33 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1460[48] = {
 };
 
 /* gap sub-block @ 0x1490 (was gap+0x1490, 152 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1490[152] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1490.data.inc.c>
+Gfx dPikachuSpecial3_DL_0x1490[19] = {
+	#include <PikachuSpecial3/DL_0x1490.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1528 (was gap+0x1528, 152 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1528[152] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1528.data.inc.c>
+Gfx dPikachuSpecial3_DL_0x1528[19] = {
+	#include <PikachuSpecial3/DL_0x1528.dl.inc.c>
 };
 
 /* gap sub-block @ 0x15C0 (was gap+0x15C0, 160 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x15C0[160] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x15C0.data.inc.c>
+Gfx dPikachuSpecial3_DL_0x15C0[20] = {
+	#include <PikachuSpecial3/DL_0x15C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1660 (was gap+0x1660, 152 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1660[152] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1660.data.inc.c>
+Gfx dPikachuSpecial3_DL_0x1660[19] = {
+	#include <PikachuSpecial3/DL_0x1660.dl.inc.c>
 };
 
 /* gap sub-block @ 0x16F8 (was gap+0x16F8, 152 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x16F8[152] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x16F8.data.inc.c>
+Gfx dPikachuSpecial3_DL_0x16F8[19] = {
+	#include <PikachuSpecial3/DL_0x16F8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1790 (was gap+0x1790, 152 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1790[152] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1790.data.inc.c>
+Gfx dPikachuSpecial3_DL_0x1790[19] = {
+	#include <PikachuSpecial3/DL_0x1790.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1828 (was gap+0x1828, 16 bytes) */

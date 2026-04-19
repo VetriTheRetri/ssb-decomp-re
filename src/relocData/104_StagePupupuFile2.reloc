@@ -1,21 +1,21 @@
 # Relocation metadata for file 104
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dStagePupupuFile2_gap_0x0000_sub_0x6C0+0x3C dStagePupupuFile2_gap_0x0000_sub_0x708
-extern dStagePupupuFile2_gap_0x0000_sub_0x708+0x34 0x238  # -> file 103 (StagePupupuImages)
-extern dStagePupupuFile2_gap_0x0000_sub_0x708+0x5C 0x260  # -> file 103 (StagePupupuImages)
-intern dStagePupupuFile2_gap_0x0000_sub_0x708+0x7C dStagePupupuFile2_gap_0x0000
-extern dStagePupupuFile2_gap_0x0000_sub_0x798+0x2C 0xDF8  # -> file 103 (StagePupupuImages)
-extern dStagePupupuFile2_gap_0x0000_sub_0x798+0x54 0xE20  # -> file 103 (StagePupupuImages)
-intern dStagePupupuFile2_gap_0x0000_sub_0x798+0x74 dStagePupupuFile2_gap_0x0000_sub_0x40
+intern dStagePupupuFile2_DL_0x06C0+0x3C dStagePupupuFile2_DL_0x0708
+extern dStagePupupuFile2_DL_0x0708+0x34 0x238  # -> file 103 (StagePupupuImages)
+extern dStagePupupuFile2_DL_0x0708+0x5C 0x260  # -> file 103 (StagePupupuImages)
+intern dStagePupupuFile2_DL_0x0708+0x7C dStagePupupuFile2_gap_0x0000
+extern dStagePupupuFile2_DL_0x0798+0x2C 0xDF8  # -> file 103 (StagePupupuImages)
+extern dStagePupupuFile2_DL_0x0798+0x54 0xE20  # -> file 103 (StagePupupuImages)
+intern dStagePupupuFile2_DL_0x0798+0x74 dStagePupupuFile2_gap_0x0000_sub_0x40
 extern dStagePupupuFile2_gap_0x0000_sub_0x820+0x24 0x5C8  # -> file 103 (StagePupupuImages)
 extern dStagePupupuFile2_gap_0x0000_sub_0x820+0x4C 0x5F0  # -> file 103 (StagePupupuImages)
 intern dStagePupupuFile2_gap_0x0000_sub_0x820+0x6C dStagePupupuFile2_gap_0x0000_sub_0x80
-extern dStagePupupuFile2_gap_0x0898_sub_0x10+0x1C 0x2B88  # -> file 103 (StagePupupuImages)
-extern dStagePupupuFile2_gap_0x0898_sub_0x10+0x44 0x2BB0  # -> file 103 (StagePupupuImages)
-intern dStagePupupuFile2_gap_0x0898_sub_0x10+0x64 dStagePupupuFile2_gap_0x0000_sub_0xD0
-intern dStagePupupuFile2_gap_0x0898_sub_0x90+0xC dStagePupupuFile2_gap_0x0000_sub_0x120
-intern dStagePupupuFile2_gap_0x0898_sub_0xB8+0xC dStagePupupuFile2_gap_0x0000_sub_0x170
+extern dStagePupupuFile2_DL_0x08A8+0x1C 0x2B88  # -> file 103 (StagePupupuImages)
+extern dStagePupupuFile2_DL_0x08A8+0x44 0x2BB0  # -> file 103 (StagePupupuImages)
+intern dStagePupupuFile2_DL_0x08A8+0x64 dStagePupupuFile2_gap_0x0000_sub_0xD0
+intern dStagePupupuFile2_DL_0x0928+0xC dStagePupupuFile2_gap_0x0000_sub_0x120
+intern dStagePupupuFile2_DL_0x0950+0xC dStagePupupuFile2_gap_0x0000_sub_0x170
 extern dStagePupupuFile2_gap_0x0898_sub_0xE8+0x3C 0x2AD8  # -> file 103 (StagePupupuImages)
 extern dStagePupupuFile2_Layer0Anim_AnimJoint+0x14 0x2B00  # -> file 103 (StagePupupuImages)
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x34 dStagePupupuFile2_gap_0x0000_sub_0x1E0
@@ -58,12 +58,12 @@ extern dStagePupupuFile2_Layer0Anim_AnimJoint+0x594 0x2248  # -> file 103 (Stage
 extern dStagePupupuFile2_Layer0Anim_AnimJoint+0x5BC 0x2270  # -> file 103 (StagePupupuImages)
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x5DC dStagePupupuFile2_gap_0x0000_sub_0x660
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x5F4 dStagePupupuFile2_gap_0x0000_sub_0x690
-intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x63C dStagePupupuFile2_gap_0x0000_sub_0x6C0
-intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x668 dStagePupupuFile2_gap_0x0000_sub_0x798
+intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x63C dStagePupupuFile2_DL_0x06C0
+intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x668 dStagePupupuFile2_DL_0x0798
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x694 dStagePupupuFile2_gap_0x0000_sub_0x820
-intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x6C0 dStagePupupuFile2_gap_0x0898_sub_0x10
-intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x6EC dStagePupupuFile2_gap_0x0898_sub_0x90
-intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x744 dStagePupupuFile2_gap_0x0898_sub_0xB8
+intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x6C0 dStagePupupuFile2_DL_0x08A8
+intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x6EC dStagePupupuFile2_DL_0x0928
+intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x744 dStagePupupuFile2_DL_0x0950
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x770 dStagePupupuFile2_gap_0x0898_sub_0xE8
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x79C dStagePupupuFile2_Layer0Anim_AnimJoint+0x48
 intern dStagePupupuFile2_Layer0Anim_AnimJoint+0x7C8 dStagePupupuFile2_Layer0Anim_AnimJoint+0x68
@@ -122,13 +122,13 @@ intern dStagePupupuFile2_Layer1Anim_AnimJoint+0x17C dStagePupupuFile2_Layer1Anim
 extern dStagePupupuFile2_Layer1Anim_AnimJoint+0x1AC 0x1858  # -> file 103 (StagePupupuImages)
 extern dStagePupupuFile2_Layer1Anim_AnimJoint+0x1D4 0x1880  # -> file 103 (StagePupupuImages)
 intern dStagePupupuFile2_Layer1Anim_AnimJoint+0x1F4 dStagePupupuFile2_gap_0x1D00_sub_0x378
-extern dStagePupupuFile2_gap_0x22D0+0x44 0x1BB8  # -> file 103 (StagePupupuImages)
-intern dStagePupupuFile2_gap_0x22D0+0x8C dStagePupupuFile2_Layer1Anim_AnimJoint+0x38
-extern dStagePupupuFile2_gap_0x22D0_sub_0xB0+0x2C 0x1BB8  # -> file 103 (StagePupupuImages)
-intern dStagePupupuFile2_gap_0x22D0_sub_0xB0+0x74 dStagePupupuFile2_Layer1Anim_AnimJoint+0xB8
+extern dStagePupupuFile2_DL_0x22D0+0x44 0x1BB8  # -> file 103 (StagePupupuImages)
+intern dStagePupupuFile2_DL_0x22D0+0x8C dStagePupupuFile2_Layer1Anim_AnimJoint+0x38
+extern dStagePupupuFile2_DL_0x2380+0x2C 0x1BB8  # -> file 103 (StagePupupuImages)
+intern dStagePupupuFile2_DL_0x2380+0x74 dStagePupupuFile2_Layer1Anim_AnimJoint+0xB8
 intern dStagePupupuFile2_gap_0x22D0_sub_0x180+0x30 dStagePupupuFile2_Layer1Anim_AnimJoint+0x138
 intern dStagePupupuFile2_gap_0x22D0_sub_0x180+0x5C dStagePupupuFile2_Layer1Anim_AnimJoint+0x218
-intern dStagePupupuFile2_gap_0x22D0_sub_0x180+0x88 dStagePupupuFile2_gap_0x22D0_sub_0xB0
+intern dStagePupupuFile2_gap_0x22D0_sub_0x180+0x88 dStagePupupuFile2_DL_0x2380
 intern dStagePupupuFile2_gap_0x22D0_sub_0x260+0x8 dStagePupupuFile2_gap_0x22D0_sub_0x430
 intern dStagePupupuFile2_gap_0x22D0_sub_0x260+0xC dStagePupupuFile2_gap_0x22D0_sub_0x434
 intern dStagePupupuFile2_gap_0x22D0_sub_0x270+0xDC dStagePupupuFile2_gap_0x22D0_sub_0x270

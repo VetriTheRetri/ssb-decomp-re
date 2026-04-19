@@ -314,8 +314,8 @@ u8 dNSamusModel_gap_0x2FE8_sub_0xB78[144] = {
 };
 
 /* gap sub-block @ 0x3BF0 (was gap+0xC08, 624 bytes) */
-u8 dNSamusModel_gap_0x2FE8_sub_0xC08[624] = {
-	#include <NSamusModel/gap_0x2FE8_sub_0xC08.data.inc.c>
+Gfx dNSamusModel_DL_0x3BF0[78] = {
+	#include <NSamusModel/DL_0x3BF0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3E60 (was gap+0xE78, 32 bytes) */

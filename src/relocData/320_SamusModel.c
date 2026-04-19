@@ -1651,83 +1651,83 @@ u8 dSamusModel_gap_0x6FD4_sub_0x343C[144] = {
 };
 
 /* gap sub-block @ 0xA4A0 (was gap+0x34CC, 112 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x34CC[112] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x34CC.data.inc.c>
+Gfx dSamusModel_DL_0xA4A0[14] = {
+	#include <SamusModel/DL_0xA4A0.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA510 (was gap+0x353C, 304 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x353C[304] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x353C.data.inc.c>
+Gfx dSamusModel_DL_0xA510[38] = {
+	#include <SamusModel/DL_0xA510.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA640 (was gap+0x366C, 152 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x366C[152] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x366C.data.inc.c>
+Gfx dSamusModel_DL_0xA640[19] = {
+	#include <SamusModel/DL_0xA640.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA6D8 (was gap+0x3704, 144 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3704[144] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3704.data.inc.c>
+Gfx dSamusModel_DL_0xA6D8[18] = {
+	#include <SamusModel/DL_0xA6D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA768 (was gap+0x3794, 96 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3794[96] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3794.data.inc.c>
+Gfx dSamusModel_DL_0xA768[12] = {
+	#include <SamusModel/DL_0xA768.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA7C8 (was gap+0x37F4, 136 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x37F4[136] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x37F4.data.inc.c>
+Gfx dSamusModel_DL_0xA7C8[17] = {
+	#include <SamusModel/DL_0xA7C8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA850 (was gap+0x387C, 152 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x387C[152] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x387C.data.inc.c>
+Gfx dSamusModel_DL_0xA850[19] = {
+	#include <SamusModel/DL_0xA850.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA8E8 (was gap+0x3914, 176 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3914[176] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3914.data.inc.c>
+Gfx dSamusModel_DL_0xA8E8[22] = {
+	#include <SamusModel/DL_0xA8E8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xA998 (was gap+0x39C4, 128 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x39C4[128] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x39C4.data.inc.c>
+Gfx dSamusModel_DL_0xA998[16] = {
+	#include <SamusModel/DL_0xA998.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAA18 (was gap+0x3A44, 176 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3A44[176] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3A44.data.inc.c>
+Gfx dSamusModel_DL_0xAA18[22] = {
+	#include <SamusModel/DL_0xAA18.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAAC8 (was gap+0x3AF4, 96 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3AF4[96] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3AF4.data.inc.c>
+Gfx dSamusModel_DL_0xAAC8[12] = {
+	#include <SamusModel/DL_0xAAC8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAB28 (was gap+0x3B54, 128 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3B54[128] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3B54.data.inc.c>
+Gfx dSamusModel_DL_0xAB28[16] = {
+	#include <SamusModel/DL_0xAB28.dl.inc.c>
 };
 
 /* gap sub-block @ 0xABA8 (was gap+0x3BD4, 184 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3BD4[184] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3BD4.data.inc.c>
+Gfx dSamusModel_DL_0xABA8[23] = {
+	#include <SamusModel/DL_0xABA8.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAC60 (was gap+0x3C8C, 96 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3C8C[96] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3C8C.data.inc.c>
+Gfx dSamusModel_DL_0xAC60[12] = {
+	#include <SamusModel/DL_0xAC60.dl.inc.c>
 };
 
 /* gap sub-block @ 0xACC0 (was gap+0x3CEC, 80 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3CEC[80] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3CEC.data.inc.c>
+Gfx dSamusModel_DL_0xACC0[10] = {
+	#include <SamusModel/DL_0xACC0.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAD10 (was gap+0x3D3C, 72 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x3D3C[72] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x3D3C.data.inc.c>
+Gfx dSamusModel_DL_0xAD10[9] = {
+	#include <SamusModel/DL_0xAD10.dl.inc.c>
 };
 
 /* gap sub-block @ 0xAD58 (was gap+0x3D84, 8 bytes) */

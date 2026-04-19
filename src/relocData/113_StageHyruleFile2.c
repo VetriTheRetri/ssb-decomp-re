@@ -311,28 +311,28 @@ u8 dStageHyruleFile2_gap_0x3990_sub_0x80[64] = {
 };
 
 /* gap sub-block @ 0x3A50 (was gap+0xC0, 80 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0xC0[80] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0xC0.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x3A50[10] = {
+	#include <StageHyruleFile2/DL_0x3A50.dl.inc.c>
 };
 
 /* gap sub-block @ 0x3AA0 (was gap+0x110, 1624 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0x110[1624] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0x110.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x3AA0[203] = {
+	#include <StageHyruleFile2/DL_0x3AA0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x40F8 (was gap+0x768, 136 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0x768[136] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0x768.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x40F8[17] = {
+	#include <StageHyruleFile2/DL_0x40F8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4180 (was gap+0x7F0, 840 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0x7F0[840] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0x7F0.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x4180[105] = {
+	#include <StageHyruleFile2/DL_0x4180.dl.inc.c>
 };
 
 /* gap sub-block @ 0x44C8 (was gap+0xB38, 136 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0xB38[136] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0xB38.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x44C8[17] = {
+	#include <StageHyruleFile2/DL_0x44C8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x4550 (was gap+0xBC0, 16 bytes) */
@@ -466,18 +466,18 @@ u8 dStageHyruleFile2_gap_0x4664_sub_0x93C[128] = {
 };
 
 /* gap sub-block @ 0x5020 (was gap+0x9BC, 80 bytes) */
-u8 dStageHyruleFile2_gap_0x4664_sub_0x9BC[80] = {
-	#include <StageHyruleFile2/gap_0x4664_sub_0x9BC.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x5020[10] = {
+	#include <StageHyruleFile2/DL_0x5020.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5070 (was gap+0xA0C, 1360 bytes) */
-u8 dStageHyruleFile2_gap_0x4664_sub_0xA0C[1360] = {
-	#include <StageHyruleFile2/gap_0x4664_sub_0xA0C.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x5070[170] = {
+	#include <StageHyruleFile2/DL_0x5070.dl.inc.c>
 };
 
 /* gap sub-block @ 0x55C0 (was gap+0xF5C, 320 bytes) */
-u8 dStageHyruleFile2_gap_0x4664_sub_0xF5C[320] = {
-	#include <StageHyruleFile2/gap_0x4664_sub_0xF5C.data.inc.c>
+Gfx dStageHyruleFile2_DL_0x55C0[40] = {
+	#include <StageHyruleFile2/DL_0x55C0.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x5700 (5 entries) */

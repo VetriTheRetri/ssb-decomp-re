@@ -128,8 +128,8 @@ u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x4E8[40] = {
 };
 
 /* gap sub-block @ 0x0510 (was gap+0x510, 112 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x510[112] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0x510.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x0510[14] = {
+	#include <GRBonus1MarioFile2/DL_0x0510.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0580 (was gap+0x580, 24 bytes) */
@@ -143,23 +143,23 @@ u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x598[16] = {
 };
 
 /* gap sub-block @ 0x05A8 (was gap+0x5A8, 216 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x5A8[216] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0x5A8.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x05A8[27] = {
+	#include <GRBonus1MarioFile2/DL_0x05A8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 256 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x680[256] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0x680.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x0680[32] = {
+	#include <GRBonus1MarioFile2/DL_0x0680.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0780 (was gap+0x780, 256 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x780[256] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0x780.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x0780[32] = {
+	#include <GRBonus1MarioFile2/DL_0x0780.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0880 (was gap+0x880, 400 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0x880[400] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0x880.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x0880[50] = {
+	#include <GRBonus1MarioFile2/DL_0x0880.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0A10 (was gap+0xA10, 16 bytes) */
@@ -310,18 +310,18 @@ u8 dGRBonus1MarioFile2_gap_0x0B94_sub_0xC8C[320] = {
 };
 
 /* gap sub-block @ 0x1960 (was gap+0xDCC, 120 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0B94_sub_0xDCC[120] = {
-	#include <GRBonus1MarioFile2/gap_0x0B94_sub_0xDCC.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x1960[15] = {
+	#include <GRBonus1MarioFile2/DL_0x1960.dl.inc.c>
 };
 
 /* gap sub-block @ 0x19D8 (was gap+0xE44, 1136 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0B94_sub_0xE44[1136] = {
-	#include <GRBonus1MarioFile2/gap_0x0B94_sub_0xE44.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x19D8[142] = {
+	#include <GRBonus1MarioFile2/DL_0x19D8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1E48 (was gap+0x12B4, 104 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0B94_sub_0x12B4[104] = {
-	#include <GRBonus1MarioFile2/gap_0x0B94_sub_0x12B4.data.inc.c>
+Gfx dGRBonus1MarioFile2_DL_0x1E48[13] = {
+	#include <GRBonus1MarioFile2/DL_0x1E48.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x1EB0 (4 entries) */

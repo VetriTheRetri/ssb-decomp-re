@@ -108,8 +108,8 @@ u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x458[40] = {
 };
 
 /* gap sub-block @ 0x0480 (was gap+0x480, 256 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x480[256] = {
-	#include <GRBonus1KirbyFile2/gap_0x0000_sub_0x480.data.inc.c>
+Gfx dGRBonus1KirbyFile2_DL_0x0480[32] = {
+	#include <GRBonus1KirbyFile2/DL_0x0480.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
@@ -128,8 +128,8 @@ u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x5B0[208] = {
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 256 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x680[256] = {
-	#include <GRBonus1KirbyFile2/gap_0x0000_sub_0x680.data.inc.c>
+Gfx dGRBonus1KirbyFile2_DL_0x0680[32] = {
+	#include <GRBonus1KirbyFile2/DL_0x0680.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0780 (was gap+0x780, 56 bytes) */
@@ -148,8 +148,8 @@ u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x7E0[160] = {
 };
 
 /* gap sub-block @ 0x0880 (was gap+0x880, 400 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x880[400] = {
-	#include <GRBonus1KirbyFile2/gap_0x0000_sub_0x880.data.inc.c>
+Gfx dGRBonus1KirbyFile2_DL_0x0880[50] = {
+	#include <GRBonus1KirbyFile2/DL_0x0880.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0A10 (was gap+0xA10, 16 bytes) */
@@ -310,18 +310,18 @@ u8 dGRBonus1KirbyFile2_gap_0x0B94_sub_0xE2C[64] = {
 };
 
 /* gap sub-block @ 0x1A00 (was gap+0xE6C, 80 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0B94_sub_0xE6C[80] = {
-	#include <GRBonus1KirbyFile2/gap_0x0B94_sub_0xE6C.data.inc.c>
+Gfx dGRBonus1KirbyFile2_DL_0x1A00[10] = {
+	#include <GRBonus1KirbyFile2/DL_0x1A00.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1A50 (was gap+0xEBC, 1376 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0B94_sub_0xEBC[1376] = {
-	#include <GRBonus1KirbyFile2/gap_0x0B94_sub_0xEBC.data.inc.c>
+Gfx dGRBonus1KirbyFile2_DL_0x1A50[172] = {
+	#include <GRBonus1KirbyFile2/DL_0x1A50.dl.inc.c>
 };
 
 /* gap sub-block @ 0x1FB0 (was gap+0x141C, 416 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0B94_sub_0x141C[416] = {
-	#include <GRBonus1KirbyFile2/gap_0x0B94_sub_0x141C.data.inc.c>
+Gfx dGRBonus1KirbyFile2_DL_0x1FB0[52] = {
+	#include <GRBonus1KirbyFile2/DL_0x1FB0.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x2150 (4 entries) */

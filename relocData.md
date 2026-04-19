@@ -137,17 +137,27 @@ C source for both US and JP. Down from 56 blobs via: chain-only
 decoding with FGM/ColAnim enums, targeted struct value guards,
 KeyEvent/Sprite size guards, and block reordering guards.
 
-### Gap bytes inside typed inline masters (~73 KB)
+### Gap bytes inside typed inline masters (~43 KB)
 
-Typed files often still have `u8 d<Prefix>_gap_0xNNNN[N]` or `u8
-d<Prefix>_data_0xNNNN[N]` raw-byte blocks for regions we haven't
-classified — usually vertex pools / textures / palettes referenced
-through segmented addresses the DL walker can't follow. They aren't
-"raw" in the blob sense (the file has structural typing around them)
-but they're the next big pool of bytes to break up.
+Typed files still have `u8 d<Prefix>_gap_0xNNNN[N]` or `u8
+d<Prefix>_data_0xNNNN[N]` raw-byte blocks for regions not yet
+classified — typically joint hierarchy descriptors, stage collision
+data, animation metadata, and sub-blocks split by `splitGapFull.py`
+that haven't been promoted to typed structs.
 
-Roughly 73 KB of `gap_*` / `data_*` raw-byte array bytes remain
-across the typed inline masters. The biggest offenders are the
+688 gap/data arrays remain across 118 files totaling ~43 KB, down
+from ~58 KB after bulk DL gap conversion (830 arrays → `Gfx DL[]`)
+and transition file typing.
+
+| Category | Arrays | Bytes | Typical content |
+|---|---:|---:|---|
+| Bonus stage File2 | 79 | 12,700 | Stage collision/geometry descriptors |
+| Model files | 177 | 9,860 | Joint hierarchy `_post` data |
+| Other (MN/SC/FT) | 135 | 6,696 | Spotlight/credits/manager data |
+| Stage File2 | 64 | 6,644 | Stage-specific collision/anim |
+| LBTransition | 189 | 3,568 | Small data blocks between Vtx |
+| MVOpening | 25 | 3,144 | Camera/animation descriptors |
+| EFCommon | 19 | 1,048 | Effect parameter data | The biggest offenders are the
 character model files and the Opening / Yamabuki stage assets. Many
 gaps that DO have inbound chain references (extern from other files,
 or intern within the same file) have already been split into named
@@ -327,13 +337,12 @@ more structural representation instead.
 
 The remaining work splits into four buckets:
 
-1. **Carve `gap_*` bytes inside typed inline masters** (~73 KB
-   remaining). These are vertex pools, textures, and palettes
-   referenced through segmented addresses the DL walker can't follow
-   yet. Worst offenders are the character model files and the Opening /
-   Yamabuki stage assets. Many gaps that have inbound chain references
-   have already been split via `tools/splitGapFull.py`; the remaining
-   bytes mostly live in self-contained internal regions.
+1. **Promote remaining `gap_*` / `data_*` raw arrays** (~43 KB across
+   688 arrays in 118 files). Biggest categories: Bonus stage collision
+   descriptors (12.7 KB), Model joint hierarchy `_post` data (9.9 KB),
+   and LBTransition small data blocks (3.6 KB). Many are sub-blocks
+   from `splitGapFull.py` that need struct identification. The Gfx DL
+   gaps were already bulk-converted via `tools/typeDLGaps.py`.
 
 2. **Finish typing struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon

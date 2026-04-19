@@ -43,7 +43,7 @@ ITAttributes dITCommonData_Capsule_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -55,9 +55,9 @@ ITAttributes dITCommonData_Capsule_ItemAttributes[1] = {{
 	1,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	80,  /* vel_scale */
 	120,  /* spin_speed */
 }};
@@ -88,7 +88,7 @@ ITAttributes dITCommonData_Tomato_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	40,  /* hit_sfx */
+	nSYAudioFGMPunchS,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -100,9 +100,9 @@ ITAttributes dITCommonData_Tomato_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	100,  /* spin_speed */
 }};
@@ -128,7 +128,7 @@ ITAttributes dITCommonData_Heart_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	40,  /* hit_sfx */
+	nSYAudioFGMPunchS,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -140,9 +140,9 @@ ITAttributes dITCommonData_Heart_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -168,7 +168,7 @@ ITAttributes dITCommonData_Star_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -180,9 +180,9 @@ ITAttributes dITCommonData_Star_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -208,7 +208,7 @@ ITAttributes dITCommonData_Sword_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	261,  /* hit_sfx */
+	nSYAudioFGMSlashL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -220,9 +220,9 @@ ITAttributes dITCommonData_Sword_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	100,  /* spin_speed */
 }};
@@ -248,7 +248,7 @@ ITAttributes dITCommonData_Bat_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -260,9 +260,9 @@ ITAttributes dITCommonData_Bat_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	110,  /* vel_scale */
 	100,  /* spin_speed */
 }};
@@ -288,7 +288,7 @@ ITAttributes dITCommonData_Harisen_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	51,  /* hit_sfx */
+	nSYAudioFGMHarisenHit,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -300,9 +300,9 @@ ITAttributes dITCommonData_Harisen_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	70,  /* vel_scale */
 	50,  /* spin_speed */
 }};
@@ -328,7 +328,7 @@ ITAttributes dITCommonData_LGun_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	32,  /* hit_sfx */
+	nSYAudioFGMKickM,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -340,9 +340,9 @@ ITAttributes dITCommonData_LGun_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	140,  /* spin_speed */
 }};
@@ -398,7 +398,7 @@ ITAttributes dITCommonData_FFlower_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	27,  /* hit_sfx */
+	nSYAudioFGMBurnM,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -410,9 +410,9 @@ ITAttributes dITCommonData_FFlower_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	80,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -473,7 +473,7 @@ ITAttributes dITCommonData_Hammer_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	40,  /* hit_sfx */
+	nSYAudioFGMPunchS,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -485,9 +485,9 @@ ITAttributes dITCommonData_Hammer_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -513,7 +513,7 @@ ITAttributes dITCommonData_MSBomb_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	40,  /* hit_sfx */
+	nSYAudioFGMPunchS,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -525,9 +525,9 @@ ITAttributes dITCommonData_MSBomb_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	90,  /* vel_scale */
 	120,  /* spin_speed */
 }};
@@ -558,7 +558,7 @@ ITAttributes dITCommonData_BombHei_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	1,  /* hit_sfx */
+	nSYAudioFGMExplodeL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -570,9 +570,9 @@ ITAttributes dITCommonData_BombHei_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -603,7 +603,7 @@ ITAttributes dITCommonData_StarRod_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -615,9 +615,9 @@ ITAttributes dITCommonData_StarRod_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	110,  /* spin_speed */
 }};
@@ -639,11 +639,7 @@ WPAttributes dITCommonData_StarRod_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
-#if defined(REGION_JP)
-    35,  /* sfx              : 10 */
-#else
-    38,  /* sfx              : 10 */
-#endif
+    nSYAudioFGMPunchM,  /* sfx              : 10 */
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -673,11 +669,7 @@ WPAttributes dITCommonData_StarRodSmash_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
-#if defined(REGION_JP)
-    34,  /* sfx              : 10 */
-#else
-    37,  /* sfx              : 10 */
-#endif
+    nSYAudioFGMPunchL,  /* sfx              : 10 */
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -711,7 +703,7 @@ ITAttributes dITCommonData_GShell_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	56,  /* hit_sfx */
+	nSYAudioFGMShellHit,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -723,9 +715,9 @@ ITAttributes dITCommonData_GShell_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -751,7 +743,7 @@ ITAttributes dITCommonData_RShell_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	56,  /* hit_sfx */
+	nSYAudioFGMShellHit,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -763,9 +755,9 @@ ITAttributes dITCommonData_RShell_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -791,7 +783,7 @@ ITAttributes dITCommonData_Box_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -803,9 +795,9 @@ ITAttributes dITCommonData_Box_ItemAttributes[1] = {{
 	1,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	40,  /* spin_speed */
 }};
@@ -836,7 +828,7 @@ ITAttributes dITCommonData_Taru_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -848,9 +840,9 @@ ITAttributes dITCommonData_Taru_ItemAttributes[1] = {{
 	1,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -881,7 +873,7 @@ ITAttributes dITCommonData_NBumper_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	47,  /* hit_sfx */
+	nSYAudioFGMBumperHit,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -893,9 +885,9 @@ ITAttributes dITCommonData_NBumper_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	70,  /* spin_speed */
 }};
@@ -921,7 +913,7 @@ ITAttributes dITCommonData_MBall_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -933,9 +925,9 @@ ITAttributes dITCommonData_MBall_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	80,  /* vel_scale */
 	20,  /* spin_speed */
 }};
@@ -961,7 +953,7 @@ ITAttributes dITCommonData_Wark_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -973,9 +965,9 @@ ITAttributes dITCommonData_Wark_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1031,7 +1023,7 @@ ITAttributes dITCommonData_Kabigon_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	1,  /* hit_sfx */
+	nSYAudioFGMExplodeL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -1043,9 +1035,9 @@ ITAttributes dITCommonData_Kabigon_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1071,7 +1063,7 @@ ITAttributes dITCommonData_Tosakinto_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1083,9 +1075,9 @@ ITAttributes dITCommonData_Tosakinto_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1111,7 +1103,7 @@ ITAttributes dITCommonData_Mew_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1123,9 +1115,9 @@ ITAttributes dITCommonData_Mew_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1151,7 +1143,7 @@ ITAttributes dITCommonData_Nyars_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1163,9 +1155,9 @@ ITAttributes dITCommonData_Nyars_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1187,11 +1179,7 @@ WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
     2,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
-#if defined(REGION_JP)
-    206,  /* sfx              : 10 */
-#else
-    216,  /* sfx              : 10 */
-#endif
+    nSYAudioFGMMarioSpecialHiCoin,  /* sfx              : 10 */
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -1225,7 +1213,7 @@ ITAttributes dITCommonData_Lizardon_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1237,9 +1225,9 @@ ITAttributes dITCommonData_Lizardon_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1303,7 +1291,7 @@ ITAttributes dITCommonData_Spear_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -1315,9 +1303,9 @@ ITAttributes dITCommonData_Spear_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1373,7 +1361,7 @@ ITAttributes dITCommonData_Kamex_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1385,9 +1373,9 @@ ITAttributes dITCommonData_Kamex_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1457,7 +1445,7 @@ ITAttributes dITCommonData_MLucky_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1469,9 +1457,9 @@ ITAttributes dITCommonData_MLucky_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1497,7 +1485,7 @@ ITAttributes dITCommonData_Egg_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	0,  /* can_rehit_item */
 	0,  /* can_rehit_fighter */
@@ -1509,9 +1497,9 @@ ITAttributes dITCommonData_Egg_ItemAttributes[1] = {{
 	1,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	100,  /* spin_speed */
 }};
@@ -1542,7 +1530,7 @@ ITAttributes dITCommonData_Starmie_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1554,9 +1542,9 @@ ITAttributes dITCommonData_Starmie_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1578,11 +1566,7 @@ WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
-#if defined(REGION_JP)
-    31,  /* sfx              : 10 */
-#else
-    32,  /* sfx              : 10 */
-#endif
+    nSYAudioFGMKickM,  /* sfx              : 10 */
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -1596,9 +1580,27 @@ WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x0BB0 — Sawamura */
-/* NOTE: kept as u8 blob because shield_damage=30 in ROM but IDO s32:8
- * in the second bitfield run always compiles to 0, making a typed
- * ITAttributes initializer unable to reproduce the original byte. */
+/* NOTE: kept as u8 blob because shield_damage=30 but IDO s32:8 in the
+ * second bitfield run always compiles to 0 in static initializers.
+ * Changing s32 to u32 fixes the initializer but breaks runtime codegen.
+ * The typed form would be:
+ *
+ * ITAttributes dITCommonData_Sawamura_ItemAttributes[1] = {{
+ *     (void *)0x02FE47D0, NULL, NULL, NULL,
+ *     0, 0, 0, 1, 1,
+ *     0, 0, 0, 0, 0, 0,
+ *     { 0, 0, 0 }, { 150, 150, 150 },
+ *     317, 0, -317, 195,
+ *     300,
+ *     90, 100, 24, 0,
+ *     0, 30, 1, 0,
+ *     nSYAudioFGMPunchL, 1, 1, 0,
+ *     0, 0, 1,
+ *     20, 6, 0, 0, 0,
+ *     nSYAudioFGMItemMapCollide, nSYAudioFGMItemMapCollide, nSYAudioFGMItemMapCollide,
+ *     100, 0,
+ * }};
+ */
 u8 dITCommonData_Sawamura_ItemAttributes[72] = {
 	#include <ITCommonData/Sawamura_ItemAttributes.data.inc.c>
 };
@@ -1624,7 +1626,7 @@ ITAttributes dITCommonData_Dogas_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	0,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1636,9 +1638,9 @@ ITAttributes dITCommonData_Dogas_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
@@ -1694,7 +1696,7 @@ ITAttributes dITCommonData_Pippi_ItemAttributes[1] = {{
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */
 	1,  /* can_setoff */
-	37,  /* hit_sfx */
+	nSYAudioFGMPunchL,  /* hit_sfx */
 	1,  /* priority */
 	1,  /* can_rehit_item */
 	1,  /* can_rehit_fighter */
@@ -1706,9 +1708,9 @@ ITAttributes dITCommonData_Pippi_ItemAttributes[1] = {{
 	0,  /* hitstatus */
 	0,  /* unk_atca_0x3C_b6 */
 	0,  /* unk_atca_0x3C_b7 */
-	57,  /* drop_sfx */
-	57,  /* throw_sfx */
-	57,  /* smash_sfx */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};

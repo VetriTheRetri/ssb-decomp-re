@@ -31,9 +31,9 @@ Vtx dLBTransitionCamera_Vtx_0x0070_Vtx[1] = {
 	#include <LBTransitionCamera/Vtx_0x0070.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0080 to 0x0090 (16 bytes) */
-u8 dLBTransitionCamera_gap_0x0080[16] = {
-	#include <LBTransitionCamera/gap_0x0080.data.inc.c>
+/* Vtx: Vtx_0x0080 @ 0x0080 (1 vertices) */
+Vtx dLBTransitionCamera_Vtx_0x0080_Vtx[1] = {
+	#include <LBTransitionCamera/Vtx_0x0080.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0090 @ 0x90 (3 vertices) */
@@ -351,9 +351,9 @@ Vtx dLBTransitionCamera_Vtx_0x0920_Vtx[1] = {
 	#include <LBTransitionCamera/Vtx_0x0920.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0930 to 0x0940 (16 bytes) */
-u8 dLBTransitionCamera_gap_0x0930[16] = {
-	#include <LBTransitionCamera/gap_0x0930.data.inc.c>
+/* Vtx: Vtx_0x0930 @ 0x0930 (1 vertices) */
+Vtx dLBTransitionCamera_Vtx_0x0930_Vtx[1] = {
+	#include <LBTransitionCamera/Vtx_0x0930.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0940 @ 0x940 (1 vertices) */
@@ -471,9 +471,9 @@ Vtx dLBTransitionCamera_Vtx_0x0C00_Vtx[1] = {
 	#include <LBTransitionCamera/Vtx_0x0C00.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0C10 to 0x0C20 (16 bytes) */
-u8 dLBTransitionCamera_gap_0x0C10[16] = {
-	#include <LBTransitionCamera/gap_0x0C10.data.inc.c>
+/* Vtx: Vtx_0x0C10 @ 0x0C10 (1 vertices) */
+Vtx dLBTransitionCamera_Vtx_0x0C10_Vtx[1] = {
+	#include <LBTransitionCamera/Vtx_0x0C10.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0C20 @ 0xC20 (1 vertices) */
@@ -696,9 +696,9 @@ Vtx dLBTransitionCamera_Vtx_0x11A0_Vtx[1] = {
 	#include <LBTransitionCamera/Vtx_0x11A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x11B0 to 0x11C0 (16 bytes) */
-u8 dLBTransitionCamera_gap_0x11B0[16] = {
-	#include <LBTransitionCamera/gap_0x11B0.data.inc.c>
+/* Vtx: Vtx_0x11B0 @ 0x11B0 (1 vertices) */
+Vtx dLBTransitionCamera_Vtx_0x11B0_Vtx[1] = {
+	#include <LBTransitionCamera/Vtx_0x11B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x11C0 @ 0x11C0 (1 vertices) */
@@ -816,9 +816,9 @@ Vtx dLBTransitionCamera_Vtx_0x1480_Vtx[1] = {
 	#include <LBTransitionCamera/Vtx_0x1480.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1490 to 0x14A0 (16 bytes) */
-u8 dLBTransitionCamera_gap_0x1490[16] = {
-	#include <LBTransitionCamera/gap_0x1490.data.inc.c>
+/* Vtx: Vtx_0x1490 @ 0x1490 (1 vertices) */
+Vtx dLBTransitionCamera_Vtx_0x1490_Vtx[1] = {
+	#include <LBTransitionCamera/Vtx_0x1490.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x14A0 @ 0x14A0 (1 vertices) */

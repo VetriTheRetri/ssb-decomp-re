@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0010 (16 bytes) */
-u8 dLBTransitionKannon_gap_0x0000[16] = {
-	#include <LBTransitionKannon/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0000 (1 vertices) */
+Vtx dLBTransitionKannon_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionKannon/Vtx_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0010 @ 0x10 (1 vertices) */
@@ -16,9 +16,9 @@ Vtx dLBTransitionKannon_Vtx_0x0010_Vtx[1] = {
 	#include <LBTransitionKannon/Vtx_0x0010.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0020 to 0x0030 (16 bytes) */
-u8 dLBTransitionKannon_gap_0x0020[16] = {
-	#include <LBTransitionKannon/gap_0x0020.data.inc.c>
+/* Vtx: Vtx_0x0020 @ 0x0020 (1 vertices) */
+Vtx dLBTransitionKannon_Vtx_0x0020_Vtx[1] = {
+	#include <LBTransitionKannon/Vtx_0x0020.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0030 @ 0x30 (1 vertices) */

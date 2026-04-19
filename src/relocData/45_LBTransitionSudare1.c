@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0010 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0000[16] = {
-	#include <LBTransitionSudare1/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0000 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0010 @ 0x10 (1 vertices) */
@@ -16,9 +16,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0010_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0010.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0020 to 0x0030 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0020[16] = {
-	#include <LBTransitionSudare1/gap_0x0020.data.inc.c>
+/* Vtx: Vtx_0x0020 @ 0x0020 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0020_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0020.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0030 @ 0x30 (1 vertices) */
@@ -31,9 +31,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0040_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0040.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0050 to 0x0060 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0050[16] = {
-	#include <LBTransitionSudare1/gap_0x0050.data.inc.c>
+/* Vtx: Vtx_0x0050 @ 0x0050 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0050_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0050.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0060 @ 0x60 (1 vertices) */
@@ -41,9 +41,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0060_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0060.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0070 to 0x0080 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0070[16] = {
-	#include <LBTransitionSudare1/gap_0x0070.data.inc.c>
+/* Vtx: Vtx_0x0070 @ 0x0070 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0070_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0070.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0080 @ 0x80 (1 vertices) */
@@ -51,9 +51,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0080_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0080.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0090 to 0x00A0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0090[16] = {
-	#include <LBTransitionSudare1/gap_0x0090.data.inc.c>
+/* Vtx: Vtx_0x0090 @ 0x0090 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0090_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0090.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x00A0 @ 0xA0 (1 vertices) */
@@ -61,9 +61,9 @@ Vtx dLBTransitionSudare1_Vtx_0x00A0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x00A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x00B0 to 0x00C0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x00B0[16] = {
-	#include <LBTransitionSudare1/gap_0x00B0.data.inc.c>
+/* Vtx: Vtx_0x00B0 @ 0x00B0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x00B0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x00B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x00C0 @ 0xC0 (1 vertices) */
@@ -71,9 +71,9 @@ Vtx dLBTransitionSudare1_Vtx_0x00C0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x00C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x00D0 to 0x00E0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x00D0[16] = {
-	#include <LBTransitionSudare1/gap_0x00D0.data.inc.c>
+/* Vtx: Vtx_0x00D0 @ 0x00D0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x00D0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x00D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x00E0 @ 0xE0 (1 vertices) */
@@ -81,9 +81,9 @@ Vtx dLBTransitionSudare1_Vtx_0x00E0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x00E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x00F0 to 0x0100 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x00F0[16] = {
-	#include <LBTransitionSudare1/gap_0x00F0.data.inc.c>
+/* Vtx: Vtx_0x00F0 @ 0x00F0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x00F0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x00F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0100 @ 0x100 (1 vertices) */
@@ -91,9 +91,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0100_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0100.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0110 to 0x0120 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0110[16] = {
-	#include <LBTransitionSudare1/gap_0x0110.data.inc.c>
+/* Vtx: Vtx_0x0110 @ 0x0110 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0110_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0110.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0120 @ 0x120 (1 vertices) */
@@ -101,9 +101,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0120_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0120.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0130 to 0x0140 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0130[16] = {
-	#include <LBTransitionSudare1/gap_0x0130.data.inc.c>
+/* Vtx: Vtx_0x0130 @ 0x0130 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0130_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0130.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0140 @ 0x140 (1 vertices) */
@@ -111,9 +111,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0140_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0140.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0150 to 0x0160 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0150[16] = {
-	#include <LBTransitionSudare1/gap_0x0150.data.inc.c>
+/* Vtx: Vtx_0x0150 @ 0x0150 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0150_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0150.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0160 @ 0x160 (1 vertices) */
@@ -121,9 +121,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0160_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0160.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0170 to 0x0180 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0170[16] = {
-	#include <LBTransitionSudare1/gap_0x0170.data.inc.c>
+/* Vtx: Vtx_0x0170 @ 0x0170 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0170_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0170.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0180 @ 0x180 (1 vertices) */
@@ -131,9 +131,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0180_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0180.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0190 to 0x01A0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0190[16] = {
-	#include <LBTransitionSudare1/gap_0x0190.data.inc.c>
+/* Vtx: Vtx_0x0190 @ 0x0190 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0190_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0190.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01A0 @ 0x1A0 (1 vertices) */
@@ -141,9 +141,9 @@ Vtx dLBTransitionSudare1_Vtx_0x01A0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x01A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x01B0 to 0x01C0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x01B0[16] = {
-	#include <LBTransitionSudare1/gap_0x01B0.data.inc.c>
+/* Vtx: Vtx_0x01B0 @ 0x01B0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x01B0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x01B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01C0 @ 0x1C0 (1 vertices) */
@@ -151,9 +151,9 @@ Vtx dLBTransitionSudare1_Vtx_0x01C0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x01C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x01D0 to 0x01E0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x01D0[16] = {
-	#include <LBTransitionSudare1/gap_0x01D0.data.inc.c>
+/* Vtx: Vtx_0x01D0 @ 0x01D0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x01D0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x01D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01E0 @ 0x1E0 (1 vertices) */
@@ -161,9 +161,9 @@ Vtx dLBTransitionSudare1_Vtx_0x01E0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x01E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x01F0 to 0x0200 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x01F0[16] = {
-	#include <LBTransitionSudare1/gap_0x01F0.data.inc.c>
+/* Vtx: Vtx_0x01F0 @ 0x01F0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x01F0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x01F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0200 @ 0x200 (1 vertices) */
@@ -171,9 +171,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0200_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0200.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0210 to 0x0220 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0210[16] = {
-	#include <LBTransitionSudare1/gap_0x0210.data.inc.c>
+/* Vtx: Vtx_0x0210 @ 0x0210 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0210_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0210.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0220 @ 0x220 (1 vertices) */
@@ -181,9 +181,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0220_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0220.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0230 to 0x0240 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0230[16] = {
-	#include <LBTransitionSudare1/gap_0x0230.data.inc.c>
+/* Vtx: Vtx_0x0230 @ 0x0230 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0230_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0230.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0240 @ 0x240 (1 vertices) */
@@ -191,9 +191,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0240_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0240.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0250 to 0x0260 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0250[16] = {
-	#include <LBTransitionSudare1/gap_0x0250.data.inc.c>
+/* Vtx: Vtx_0x0250 @ 0x0250 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0250_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0250.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0260 @ 0x260 (1 vertices) */
@@ -201,9 +201,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0260_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0260.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0270 to 0x0280 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0270[16] = {
-	#include <LBTransitionSudare1/gap_0x0270.data.inc.c>
+/* Vtx: Vtx_0x0270 @ 0x0270 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0270_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0270.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0280 @ 0x280 (1 vertices) */
@@ -211,9 +211,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0280_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0280.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0290 to 0x02A0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0290[16] = {
-	#include <LBTransitionSudare1/gap_0x0290.data.inc.c>
+/* Vtx: Vtx_0x0290 @ 0x0290 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0290_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0290.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x02A0 @ 0x2A0 (1 vertices) */
@@ -221,9 +221,9 @@ Vtx dLBTransitionSudare1_Vtx_0x02A0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x02A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x02B0 to 0x02C0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x02B0[16] = {
-	#include <LBTransitionSudare1/gap_0x02B0.data.inc.c>
+/* Vtx: Vtx_0x02B0 @ 0x02B0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x02B0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x02B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x02C0 @ 0x2C0 (1 vertices) */
@@ -231,9 +231,9 @@ Vtx dLBTransitionSudare1_Vtx_0x02C0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x02C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x02D0 to 0x02E0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x02D0[16] = {
-	#include <LBTransitionSudare1/gap_0x02D0.data.inc.c>
+/* Vtx: Vtx_0x02D0 @ 0x02D0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x02D0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x02D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x02E0 @ 0x2E0 (1 vertices) */
@@ -241,9 +241,9 @@ Vtx dLBTransitionSudare1_Vtx_0x02E0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x02E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x02F0 to 0x0300 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x02F0[16] = {
-	#include <LBTransitionSudare1/gap_0x02F0.data.inc.c>
+/* Vtx: Vtx_0x02F0 @ 0x02F0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x02F0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x02F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0300 @ 0x300 (1 vertices) */
@@ -251,9 +251,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0300_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0300.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0310 to 0x0320 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0310[16] = {
-	#include <LBTransitionSudare1/gap_0x0310.data.inc.c>
+/* Vtx: Vtx_0x0310 @ 0x0310 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0310_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0310.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0320 @ 0x320 (1 vertices) */
@@ -261,9 +261,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0320_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0320.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0330 to 0x0340 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0330[16] = {
-	#include <LBTransitionSudare1/gap_0x0330.data.inc.c>
+/* Vtx: Vtx_0x0330 @ 0x0330 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0330_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0330.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0340 @ 0x340 (1 vertices) */
@@ -271,9 +271,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0340_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0340.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0350 to 0x0360 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0350[16] = {
-	#include <LBTransitionSudare1/gap_0x0350.data.inc.c>
+/* Vtx: Vtx_0x0350 @ 0x0350 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0350_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0350.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0360 @ 0x360 (1 vertices) */
@@ -281,9 +281,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0360_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0360.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0370 to 0x0380 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0370[16] = {
-	#include <LBTransitionSudare1/gap_0x0370.data.inc.c>
+/* Vtx: Vtx_0x0370 @ 0x0370 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0370_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0370.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0380 @ 0x380 (1 vertices) */
@@ -291,9 +291,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0380_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0380.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0390 to 0x03A0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0390[16] = {
-	#include <LBTransitionSudare1/gap_0x0390.data.inc.c>
+/* Vtx: Vtx_0x0390 @ 0x0390 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0390_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0390.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x03A0 @ 0x3A0 (1 vertices) */
@@ -301,9 +301,9 @@ Vtx dLBTransitionSudare1_Vtx_0x03A0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x03A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x03B0 to 0x03C0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x03B0[16] = {
-	#include <LBTransitionSudare1/gap_0x03B0.data.inc.c>
+/* Vtx: Vtx_0x03B0 @ 0x03B0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x03B0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x03B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x03C0 @ 0x3C0 (1 vertices) */
@@ -311,9 +311,9 @@ Vtx dLBTransitionSudare1_Vtx_0x03C0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x03C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x03D0 to 0x03E0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x03D0[16] = {
-	#include <LBTransitionSudare1/gap_0x03D0.data.inc.c>
+/* Vtx: Vtx_0x03D0 @ 0x03D0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x03D0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x03D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x03E0 @ 0x3E0 (1 vertices) */
@@ -321,9 +321,9 @@ Vtx dLBTransitionSudare1_Vtx_0x03E0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x03E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x03F0 to 0x0400 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x03F0[16] = {
-	#include <LBTransitionSudare1/gap_0x03F0.data.inc.c>
+/* Vtx: Vtx_0x03F0 @ 0x03F0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x03F0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x03F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0400 @ 0x400 (1 vertices) */
@@ -331,9 +331,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0400_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0400.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0410 to 0x0420 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0410[16] = {
-	#include <LBTransitionSudare1/gap_0x0410.data.inc.c>
+/* Vtx: Vtx_0x0410 @ 0x0410 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0410_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0410.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0420 @ 0x420 (1 vertices) */
@@ -341,9 +341,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0420_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0420.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0430 to 0x0440 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0430[16] = {
-	#include <LBTransitionSudare1/gap_0x0430.data.inc.c>
+/* Vtx: Vtx_0x0430 @ 0x0430 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0430_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0430.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0440 @ 0x440 (1 vertices) */
@@ -351,9 +351,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0440_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0440.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0450 to 0x0460 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0450[16] = {
-	#include <LBTransitionSudare1/gap_0x0450.data.inc.c>
+/* Vtx: Vtx_0x0450 @ 0x0450 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0450_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0450.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0460 @ 0x460 (1 vertices) */
@@ -361,9 +361,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0460_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0460.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0470 to 0x0480 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0470[16] = {
-	#include <LBTransitionSudare1/gap_0x0470.data.inc.c>
+/* Vtx: Vtx_0x0470 @ 0x0470 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0470_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0470.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0480 @ 0x480 (1 vertices) */
@@ -371,9 +371,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0480_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0480.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0490 to 0x04A0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0490[16] = {
-	#include <LBTransitionSudare1/gap_0x0490.data.inc.c>
+/* Vtx: Vtx_0x0490 @ 0x0490 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0490_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0490.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x04A0 @ 0x4A0 (1 vertices) */
@@ -381,9 +381,9 @@ Vtx dLBTransitionSudare1_Vtx_0x04A0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x04A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x04B0 to 0x04C0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x04B0[16] = {
-	#include <LBTransitionSudare1/gap_0x04B0.data.inc.c>
+/* Vtx: Vtx_0x04B0 @ 0x04B0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x04B0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x04B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x04C0 @ 0x4C0 (1 vertices) */
@@ -391,9 +391,9 @@ Vtx dLBTransitionSudare1_Vtx_0x04C0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x04C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x04D0 to 0x04E0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x04D0[16] = {
-	#include <LBTransitionSudare1/gap_0x04D0.data.inc.c>
+/* Vtx: Vtx_0x04D0 @ 0x04D0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x04D0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x04D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x04E0 @ 0x4E0 (1 vertices) */
@@ -401,9 +401,9 @@ Vtx dLBTransitionSudare1_Vtx_0x04E0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x04E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x04F0 to 0x0500 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x04F0[16] = {
-	#include <LBTransitionSudare1/gap_0x04F0.data.inc.c>
+/* Vtx: Vtx_0x04F0 @ 0x04F0 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x04F0_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x04F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0500 @ 0x500 (1 vertices) */
@@ -411,9 +411,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0500_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0500.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0510 to 0x0520 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0510[16] = {
-	#include <LBTransitionSudare1/gap_0x0510.data.inc.c>
+/* Vtx: Vtx_0x0510 @ 0x0510 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0510_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0510.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0520 @ 0x520 (1 vertices) */
@@ -421,9 +421,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0520_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0520.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0530 to 0x0540 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0530[16] = {
-	#include <LBTransitionSudare1/gap_0x0530.data.inc.c>
+/* Vtx: Vtx_0x0530 @ 0x0530 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0530_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0530.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0540 @ 0x540 (1 vertices) */
@@ -431,9 +431,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0540_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0540.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0550 to 0x0560 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0550[16] = {
-	#include <LBTransitionSudare1/gap_0x0550.data.inc.c>
+/* Vtx: Vtx_0x0550 @ 0x0550 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0550_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0550.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0560 @ 0x560 (1 vertices) */
@@ -441,9 +441,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0560_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0560.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0570 to 0x0580 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0570[16] = {
-	#include <LBTransitionSudare1/gap_0x0570.data.inc.c>
+/* Vtx: Vtx_0x0570 @ 0x0570 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0570_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0570.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0580 @ 0x580 (1 vertices) */
@@ -451,9 +451,9 @@ Vtx dLBTransitionSudare1_Vtx_0x0580_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x0580.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0590 to 0x05A0 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x0590[16] = {
-	#include <LBTransitionSudare1/gap_0x0590.data.inc.c>
+/* Vtx: Vtx_0x0590 @ 0x0590 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x0590_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x0590.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x05A0 @ 0x5A0 (1 vertices) */
@@ -1366,9 +1366,9 @@ Vtx dLBTransitionSudare1_Vtx_0x10F0_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x10F0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1100 to 0x1110 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x1100[16] = {
-	#include <LBTransitionSudare1/gap_0x1100.data.inc.c>
+/* Vtx: Vtx_0x1100 @ 0x1100 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x1100_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x1100.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1110 @ 0x1110 (1 vertices) */
@@ -1796,9 +1796,9 @@ Vtx dLBTransitionSudare1_Vtx_0x1650_Vtx[1] = {
 	#include <LBTransitionSudare1/Vtx_0x1650.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1660 to 0x1670 (16 bytes) */
-u8 dLBTransitionSudare1_gap_0x1660[16] = {
-	#include <LBTransitionSudare1/gap_0x1660.data.inc.c>
+/* Vtx: Vtx_0x1660 @ 0x1660 (1 vertices) */
+Vtx dLBTransitionSudare1_Vtx_0x1660_Vtx[1] = {
+	#include <LBTransitionSudare1/Vtx_0x1660.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1670 @ 0x1670 (1 vertices) */

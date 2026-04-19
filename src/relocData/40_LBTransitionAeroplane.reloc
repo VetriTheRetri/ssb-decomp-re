@@ -2,8 +2,8 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dLBTransitionAeroplane_DL_0x3CE0+0x54 dLBTransitionAeroplane_DL_0x3D40
-intern dLBTransitionAeroplane_DL_0x3D40+0x2C dLBTransitionAeroplane_gap_0x0000
-intern dLBTransitionAeroplane_DL_0x3D40+0x64 dLBTransitionAeroplane_gap_0x0000
+intern dLBTransitionAeroplane_DL_0x3D40+0x2C dLBTransitionAeroplane_Vtx_0x0000_Vtx
+intern dLBTransitionAeroplane_DL_0x3D40+0x64 dLBTransitionAeroplane_Vtx_0x0000_Vtx
 intern dLBTransitionAeroplane_DL_0x3D40+0x6C dLBTransitionAeroplane_Vtx_0x0020_Vtx
 intern dLBTransitionAeroplane_DL_0x3D40+0xA4 dLBTransitionAeroplane_Vtx_0x0030_Vtx
 intern dLBTransitionAeroplane_DL_0x3D40+0xDC dLBTransitionAeroplane_Vtx_0x0050_Vtx

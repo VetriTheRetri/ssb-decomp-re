@@ -272,34 +272,34 @@ Gfx dMVOpeningStandoff_DL_0x6858[19] = {
 	#include <MVOpeningStandoff/DL_0x6858.dl.inc.c>
 };
 
-/* gap sub-block @ 0x68F0 (was gap+0x738, 16 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x738[16] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x738.data.inc.c>
+/* Vtx: Vtx_0x68F0 @ 0x68F0 (1 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x68F0_Vtx[1] = {
+	#include <MVOpeningStandoff/Vtx_0x68F0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6900 (was gap+0x748, 16 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x748[16] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x748.data.inc.c>
+/* Vtx: Vtx_0x6900 @ 0x6900 (1 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x6900_Vtx[1] = {
+	#include <MVOpeningStandoff/Vtx_0x6900.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6910 (was gap+0x758, 16 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x758[16] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x758.data.inc.c>
+/* Vtx: Vtx_0x6910 @ 0x6910 (1 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x6910_Vtx[1] = {
+	#include <MVOpeningStandoff/Vtx_0x6910.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6920 (was gap+0x768, 16 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x768[16] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x768.data.inc.c>
+/* Vtx: Vtx_0x6920 @ 0x6920 (1 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x6920_Vtx[1] = {
+	#include <MVOpeningStandoff/Vtx_0x6920.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6930 (was gap+0x778, 16 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x778[16] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x778.data.inc.c>
+/* Vtx: Vtx_0x6930 @ 0x6930 (1 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x6930_Vtx[1] = {
+	#include <MVOpeningStandoff/Vtx_0x6930.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6940 (was gap+0x788, 16 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x788[16] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x788.data.inc.c>
+/* Vtx: Vtx_0x6940 @ 0x6940 (1 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x6940_Vtx[1] = {
+	#include <MVOpeningStandoff/Vtx_0x6940.vtx.inc.c>
 };
 
 /* DObjDesc: LightningDObjDesc @ 0x6950 (14 entries) */

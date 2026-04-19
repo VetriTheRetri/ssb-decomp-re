@@ -2,7 +2,7 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dLBTransitionKannon_DL_0x0B40+0x3C dLBTransitionKannon_DL_0x0B88
-intern dLBTransitionKannon_DL_0x0B88+0x2C dLBTransitionKannon_gap_0x0000
+intern dLBTransitionKannon_DL_0x0B88+0x2C dLBTransitionKannon_Vtx_0x0000_Vtx
 intern dLBTransitionKannon_DL_0x0B88+0x64 dLBTransitionKannon_Vtx_0x0010_Vtx
 intern dLBTransitionKannon_DL_0x0B88+0x6C dLBTransitionKannon_Vtx_0x0030_Vtx
 intern dLBTransitionKannon_DL_0x0B88+0xA4 dLBTransitionKannon_Vtx_0x0040_Vtx

@@ -7,9 +7,9 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0F98 (3992 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 16 bytes) */
-u8 dLBTransitionGakubuthi_gap_0x0000[16] = {
-	#include <LBTransitionGakubuthi/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0000 (1 vertices) */
+Vtx dLBTransitionGakubuthi_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionGakubuthi/Vtx_0x0000.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0010 (was gap+0x10, 32 bytes) */
@@ -17,9 +17,9 @@ u8 dLBTransitionGakubuthi_gap_0x0000_sub_0x10[32] = {
 	#include <LBTransitionGakubuthi/gap_0x0000_sub_0x10.data.inc.c>
 };
 
-/* gap sub-block @ 0x0030 (was gap+0x30, 16 bytes) */
-u8 dLBTransitionGakubuthi_gap_0x0000_sub_0x30[16] = {
-	#include <LBTransitionGakubuthi/gap_0x0000_sub_0x30.data.inc.c>
+/* Vtx: Vtx_0x0030 @ 0x0030 (1 vertices) */
+Vtx dLBTransitionGakubuthi_Vtx_0x0030_Vtx[1] = {
+	#include <LBTransitionGakubuthi/Vtx_0x0030.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0040 (was gap+0x40, 32 bytes) */
@@ -240,7 +240,7 @@ Gfx dLBTransitionGakubuthi_DL_0x05A0[319] = {
 /* DObjDesc: - @ 0xF98 (3 entries) */
 DObjDesc dLBTransitionGakubuthi_DObjDesc_0x0F98[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionGakubuthi_gap_0x0000 + 0x5A0), { 1500.0f, -1500.0f, 0.0f }, { 0.0f, 0.0f, 0.8744099736213684f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dLBTransitionGakubuthi_Vtx_0x0000_Vtx + 0x5A0), { 1500.0f, -1500.0f, 0.0f }, { 0.0f, 0.0f, 0.8744099736213684f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

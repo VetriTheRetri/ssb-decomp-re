@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0010 (16 bytes) */
-u8 dLBTransitionCheck_gap_0x0000[16] = {
-	#include <LBTransitionCheck/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0000 (1 vertices) */
+Vtx dLBTransitionCheck_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionCheck/Vtx_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0010 @ 0x10 (1 vertices) */
@@ -151,9 +151,9 @@ Vtx dLBTransitionCheck_Vtx_0x0310_Vtx[1] = {
 	#include <LBTransitionCheck/Vtx_0x0310.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0320 to 0x0330 (16 bytes) */
-u8 dLBTransitionCheck_gap_0x0320[16] = {
-	#include <LBTransitionCheck/gap_0x0320.data.inc.c>
+/* Vtx: Vtx_0x0320 @ 0x0320 (1 vertices) */
+Vtx dLBTransitionCheck_Vtx_0x0320_Vtx[1] = {
+	#include <LBTransitionCheck/Vtx_0x0320.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0330 @ 0x330 (1 vertices) */
@@ -426,9 +426,9 @@ Vtx dLBTransitionCheck_Vtx_0x0910_Vtx[1] = {
 	#include <LBTransitionCheck/Vtx_0x0910.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0920 to 0x0930 (16 bytes) */
-u8 dLBTransitionCheck_gap_0x0920[16] = {
-	#include <LBTransitionCheck/gap_0x0920.data.inc.c>
+/* Vtx: Vtx_0x0920 @ 0x0920 (1 vertices) */
+Vtx dLBTransitionCheck_Vtx_0x0920_Vtx[1] = {
+	#include <LBTransitionCheck/Vtx_0x0920.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0930 @ 0x930 (1 vertices) */
@@ -666,9 +666,9 @@ Vtx dLBTransitionCheck_Vtx_0x0EB0_Vtx[1] = {
 	#include <LBTransitionCheck/Vtx_0x0EB0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0EC0 to 0x0ED0 (16 bytes) */
-u8 dLBTransitionCheck_gap_0x0EC0[16] = {
-	#include <LBTransitionCheck/gap_0x0EC0.data.inc.c>
+/* Vtx: Vtx_0x0EC0 @ 0x0EC0 (1 vertices) */
+Vtx dLBTransitionCheck_Vtx_0x0EC0_Vtx[1] = {
+	#include <LBTransitionCheck/Vtx_0x0EC0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0ED0 @ 0xED0 (1 vertices) */
@@ -881,9 +881,9 @@ Vtx dLBTransitionCheck_Vtx_0x13F0_Vtx[1] = {
 	#include <LBTransitionCheck/Vtx_0x13F0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1400 to 0x1410 (16 bytes) */
-u8 dLBTransitionCheck_gap_0x1400[16] = {
-	#include <LBTransitionCheck/gap_0x1400.data.inc.c>
+/* Vtx: Vtx_0x1400 @ 0x1400 (1 vertices) */
+Vtx dLBTransitionCheck_Vtx_0x1400_Vtx[1] = {
+	#include <LBTransitionCheck/Vtx_0x1400.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1410 @ 0x1410 (1 vertices) */

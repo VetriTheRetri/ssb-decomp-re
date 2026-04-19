@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0010 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0000[16] = {
-	#include <LBTransitionAeroplane/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0000 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0010 @ 0x10 (1 vertices) */
@@ -26,9 +26,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0030_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0030.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0040 to 0x0050 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0040[16] = {
-	#include <LBTransitionAeroplane/gap_0x0040.data.inc.c>
+/* Vtx: Vtx_0x0040 @ 0x0040 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0040_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0040.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0050 @ 0x50 (1 vertices) */
@@ -36,9 +36,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0050_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0050.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0060 to 0x0070 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0060[16] = {
-	#include <LBTransitionAeroplane/gap_0x0060.data.inc.c>
+/* Vtx: Vtx_0x0060 @ 0x0060 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0060_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0060.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0070 @ 0x70 (1 vertices) */
@@ -281,9 +281,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0370_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0370.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0380 to 0x0390 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0380[16] = {
-	#include <LBTransitionAeroplane/gap_0x0380.data.inc.c>
+/* Vtx: Vtx_0x0380 @ 0x0380 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0380_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0380.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0390 @ 0x390 (1 vertices) */
@@ -291,9 +291,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0390_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0390.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x03A0 to 0x03B0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x03A0[16] = {
-	#include <LBTransitionAeroplane/gap_0x03A0.data.inc.c>
+/* Vtx: Vtx_0x03A0 @ 0x03A0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x03A0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x03A0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x03B0 @ 0x3B0 (1 vertices) */
@@ -396,9 +396,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x04E0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x04E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x04F0 to 0x0500 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x04F0[16] = {
-	#include <LBTransitionAeroplane/gap_0x04F0.data.inc.c>
+/* Vtx: Vtx_0x04F0 @ 0x04F0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x04F0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x04F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0500 @ 0x500 (1 vertices) */
@@ -406,9 +406,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0500_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0500.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0510 to 0x0520 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0510[16] = {
-	#include <LBTransitionAeroplane/gap_0x0510.data.inc.c>
+/* Vtx: Vtx_0x0510 @ 0x0510 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0510_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0510.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0520 @ 0x520 (1 vertices) */
@@ -451,9 +451,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0590_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0590.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x05A0 to 0x05B0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x05A0[16] = {
-	#include <LBTransitionAeroplane/gap_0x05A0.data.inc.c>
+/* Vtx: Vtx_0x05A0 @ 0x05A0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x05A0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x05A0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x05B0 @ 0x5B0 (1 vertices) */
@@ -481,9 +481,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0600_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0600.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0610 to 0x0620 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0610[16] = {
-	#include <LBTransitionAeroplane/gap_0x0610.data.inc.c>
+/* Vtx: Vtx_0x0610 @ 0x0610 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0610_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0610.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0620 @ 0x620 (1 vertices) */
@@ -496,9 +496,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0630_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0630.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0640 to 0x0650 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0640[16] = {
-	#include <LBTransitionAeroplane/gap_0x0640.data.inc.c>
+/* Vtx: Vtx_0x0640 @ 0x0640 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0640_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0640.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0650 @ 0x650 (1 vertices) */
@@ -736,9 +736,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0930_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0930.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0940 to 0x0950 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0940[16] = {
-	#include <LBTransitionAeroplane/gap_0x0940.data.inc.c>
+/* Vtx: Vtx_0x0940 @ 0x0940 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0940_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0940.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0950 @ 0x950 (1 vertices) */
@@ -751,9 +751,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0960_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0960.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0970 to 0x0980 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0970[16] = {
-	#include <LBTransitionAeroplane/gap_0x0970.data.inc.c>
+/* Vtx: Vtx_0x0970 @ 0x0970 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0970_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0970.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0980 @ 0x980 (1 vertices) */
@@ -851,9 +851,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0AA0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0AA0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0AB0 to 0x0AC0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0AB0[16] = {
-	#include <LBTransitionAeroplane/gap_0x0AB0.data.inc.c>
+/* Vtx: Vtx_0x0AB0 @ 0x0AB0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0AB0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0AB0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0AC0 @ 0xAC0 (1 vertices) */
@@ -866,9 +866,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0AD0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0AD0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0AE0 to 0x0AF0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0AE0[16] = {
-	#include <LBTransitionAeroplane/gap_0x0AE0.data.inc.c>
+/* Vtx: Vtx_0x0AE0 @ 0x0AE0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0AE0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0AE0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0AF0 @ 0xAF0 (1 vertices) */
@@ -906,9 +906,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0B50_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0B50.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0B60 to 0x0B70 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0B60[16] = {
-	#include <LBTransitionAeroplane/gap_0x0B60.data.inc.c>
+/* Vtx: Vtx_0x0B60 @ 0x0B60 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0B60_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0B60.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0B70 @ 0xB70 (1 vertices) */
@@ -936,9 +936,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0BD0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0BD0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0BE0 to 0x0BF0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0BE0[16] = {
-	#include <LBTransitionAeroplane/gap_0x0BE0.data.inc.c>
+/* Vtx: Vtx_0x0BE0 @ 0x0BE0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0BE0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0BE0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0BF0 @ 0xBF0 (2 vertices) */
@@ -1071,9 +1071,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x0F00_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x0F00.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0F10 to 0x0F20 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x0F10[16] = {
-	#include <LBTransitionAeroplane/gap_0x0F10.data.inc.c>
+/* Vtx: Vtx_0x0F10 @ 0x0F10 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x0F10_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0F10.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0F20 @ 0xF20 (2 vertices) */
@@ -1136,9 +1136,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x1070_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x1070.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1080 to 0x1090 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x1080[16] = {
-	#include <LBTransitionAeroplane/gap_0x1080.data.inc.c>
+/* Vtx: Vtx_0x1080 @ 0x1080 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x1080_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x1080.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1090 @ 0x1090 (2 vertices) */
@@ -1186,9 +1186,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x1190_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x1190.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x11A0 to 0x11B0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x11A0[16] = {
-	#include <LBTransitionAeroplane/gap_0x11A0.data.inc.c>
+/* Vtx: Vtx_0x11A0 @ 0x11A0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x11A0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x11A0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x11B0 @ 0x11B0 (3 vertices) */
@@ -1316,9 +1316,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x14C0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x14C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x14D0 to 0x14E0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x14D0[16] = {
-	#include <LBTransitionAeroplane/gap_0x14D0.data.inc.c>
+/* Vtx: Vtx_0x14D0 @ 0x14D0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x14D0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x14D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x14E0 @ 0x14E0 (3 vertices) */
@@ -1376,9 +1376,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x1630_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x1630.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1640 to 0x1650 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x1640[16] = {
-	#include <LBTransitionAeroplane/gap_0x1640.data.inc.c>
+/* Vtx: Vtx_0x1640 @ 0x1640 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x1640_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x1640.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1650 @ 0x1650 (3 vertices) */
@@ -2296,9 +2296,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x2870_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x2870.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2880 to 0x2890 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x2880[16] = {
-	#include <LBTransitionAeroplane/gap_0x2880.data.inc.c>
+/* Vtx: Vtx_0x2880 @ 0x2880 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x2880_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x2880.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2890 @ 0x2890 (3 vertices) */
@@ -2331,9 +2331,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x2960_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x2960.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2970 to 0x2980 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x2970[16] = {
-	#include <LBTransitionAeroplane/gap_0x2970.data.inc.c>
+/* Vtx: Vtx_0x2970 @ 0x2970 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x2970_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x2970.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2980 @ 0x2980 (1 vertices) */
@@ -2531,9 +2531,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x2E60_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x2E60.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2E70 to 0x2E80 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x2E70[16] = {
-	#include <LBTransitionAeroplane/gap_0x2E70.data.inc.c>
+/* Vtx: Vtx_0x2E70 @ 0x2E70 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x2E70_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x2E70.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2E80 @ 0x2E80 (1 vertices) */
@@ -2546,9 +2546,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x2E90_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x2E90.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2EA0 to 0x2EB0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x2EA0[16] = {
-	#include <LBTransitionAeroplane/gap_0x2EA0.data.inc.c>
+/* Vtx: Vtx_0x2EA0 @ 0x2EA0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x2EA0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x2EA0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2EB0 @ 0x2EB0 (1 vertices) */
@@ -2561,9 +2561,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x2EC0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x2EC0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2ED0 to 0x2EE0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x2ED0[16] = {
-	#include <LBTransitionAeroplane/gap_0x2ED0.data.inc.c>
+/* Vtx: Vtx_0x2ED0 @ 0x2ED0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x2ED0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x2ED0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2EE0 @ 0x2EE0 (1 vertices) */
@@ -2576,9 +2576,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x2EF0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x2EF0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2F00 to 0x2F10 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x2F00[16] = {
-	#include <LBTransitionAeroplane/gap_0x2F00.data.inc.c>
+/* Vtx: Vtx_0x2F00 @ 0x2F00 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x2F00_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x2F00.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2F10 @ 0x2F10 (3 vertices) */
@@ -2756,9 +2756,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x3380_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x3380.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x3390 to 0x33A0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x3390[16] = {
-	#include <LBTransitionAeroplane/gap_0x3390.data.inc.c>
+/* Vtx: Vtx_0x3390 @ 0x3390 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x3390_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x3390.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x33A0 @ 0x33A0 (1 vertices) */
@@ -2801,9 +2801,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x3480_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x3480.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x3490 to 0x34A0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x3490[16] = {
-	#include <LBTransitionAeroplane/gap_0x3490.data.inc.c>
+/* Vtx: Vtx_0x3490 @ 0x3490 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x3490_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x3490.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x34A0 @ 0x34A0 (1 vertices) */
@@ -2816,9 +2816,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x34B0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x34B0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x34C0 to 0x34D0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x34C0[16] = {
-	#include <LBTransitionAeroplane/gap_0x34C0.data.inc.c>
+/* Vtx: Vtx_0x34C0 @ 0x34C0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x34C0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x34C0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x34D0 @ 0x34D0 (1 vertices) */
@@ -2831,9 +2831,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x34E0_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x34E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x34F0 to 0x3500 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x34F0[16] = {
-	#include <LBTransitionAeroplane/gap_0x34F0.data.inc.c>
+/* Vtx: Vtx_0x34F0 @ 0x34F0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x34F0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x34F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x3500 @ 0x3500 (1 vertices) */
@@ -2846,9 +2846,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x3510_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x3510.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x3520 to 0x3530 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x3520[16] = {
-	#include <LBTransitionAeroplane/gap_0x3520.data.inc.c>
+/* Vtx: Vtx_0x3520 @ 0x3520 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x3520_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x3520.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x3530 @ 0x3530 (3 vertices) */
@@ -2946,9 +2946,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x3790_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x3790.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x37A0 to 0x37B0 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x37A0[16] = {
-	#include <LBTransitionAeroplane/gap_0x37A0.data.inc.c>
+/* Vtx: Vtx_0x37A0 @ 0x37A0 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x37A0_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x37A0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x37B0 @ 0x37B0 (1 vertices) */
@@ -3011,9 +3011,9 @@ Vtx dLBTransitionAeroplane_Vtx_0x3940_Vtx[1] = {
 	#include <LBTransitionAeroplane/Vtx_0x3940.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x3950 to 0x3960 (16 bytes) */
-u8 dLBTransitionAeroplane_gap_0x3950[16] = {
-	#include <LBTransitionAeroplane/gap_0x3950.data.inc.c>
+/* Vtx: Vtx_0x3950 @ 0x3950 (1 vertices) */
+Vtx dLBTransitionAeroplane_Vtx_0x3950_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x3950.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x3960 @ 0x3960 (1 vertices) */

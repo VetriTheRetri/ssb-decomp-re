@@ -88,9 +88,9 @@ Vtx dMVOpeningCliff_Vtx_0x2660_Vtx[1] = {
 	#include <MVOpeningCliff/Vtx_0x2660.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x2670 to 0x2680 (16 bytes) */
-u8 dMVOpeningCliff_gap_0x2670[16] = {
-	#include <MVOpeningCliff/gap_0x2670.data.inc.c>
+/* Vtx: Vtx_0x2670 @ 0x2670 (1 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x2670_Vtx[1] = {
+	#include <MVOpeningCliff/Vtx_0x2670.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x2680 @ 0x2680 (2 vertices) */
@@ -103,9 +103,9 @@ Vtx dMVOpeningCliff_Vtx_0x26A0_Vtx[1] = {
 	#include <MVOpeningCliff/Vtx_0x26A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x26B0 to 0x26C0 (16 bytes) */
-u8 dMVOpeningCliff_gap_0x26B0[16] = {
-	#include <MVOpeningCliff/gap_0x26B0.data.inc.c>
+/* Vtx: Vtx_0x26B0 @ 0x26B0 (1 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x26B0_Vtx[1] = {
+	#include <MVOpeningCliff/Vtx_0x26B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x26C0 @ 0x26C0 (1 vertices) */

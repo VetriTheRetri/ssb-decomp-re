@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0010 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0000[16] = {
-	#include <LBTransitionBlock/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0000 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0010 @ 0x10 (1 vertices) */
@@ -16,9 +16,9 @@ Vtx dLBTransitionBlock_Vtx_0x0010_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0010.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0020 to 0x0030 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0020[16] = {
-	#include <LBTransitionBlock/gap_0x0020.data.inc.c>
+/* Vtx: Vtx_0x0020 @ 0x0020 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0020_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0020.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0030 @ 0x30 (1 vertices) */
@@ -161,9 +161,9 @@ Vtx dLBTransitionBlock_Vtx_0x02B0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x02B0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x02C0 to 0x02D0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x02C0[16] = {
-	#include <LBTransitionBlock/gap_0x02C0.data.inc.c>
+/* Vtx: Vtx_0x02C0 @ 0x02C0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x02C0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x02C0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x02D0 @ 0x2D0 (1 vertices) */
@@ -201,9 +201,9 @@ Vtx dLBTransitionBlock_Vtx_0x0390_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0390.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x03A0 to 0x03B0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x03A0[16] = {
-	#include <LBTransitionBlock/gap_0x03A0.data.inc.c>
+/* Vtx: Vtx_0x03A0 @ 0x03A0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x03A0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x03A0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x03B0 @ 0x3B0 (1 vertices) */
@@ -301,9 +301,9 @@ Vtx dLBTransitionBlock_Vtx_0x0550_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0550.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0560 to 0x0570 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0560[16] = {
-	#include <LBTransitionBlock/gap_0x0560.data.inc.c>
+/* Vtx: Vtx_0x0560 @ 0x0560 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0560_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0560.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0570 @ 0x570 (1 vertices) */
@@ -316,9 +316,9 @@ Vtx dLBTransitionBlock_Vtx_0x0580_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0580.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0590 to 0x05A0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0590[16] = {
-	#include <LBTransitionBlock/gap_0x0590.data.inc.c>
+/* Vtx: Vtx_0x0590 @ 0x0590 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0590_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0590.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x05A0 @ 0x5A0 (1 vertices) */
@@ -326,9 +326,9 @@ Vtx dLBTransitionBlock_Vtx_0x05A0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x05A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x05B0 to 0x05C0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x05B0[16] = {
-	#include <LBTransitionBlock/gap_0x05B0.data.inc.c>
+/* Vtx: Vtx_0x05B0 @ 0x05B0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x05B0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x05B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x05C0 @ 0x5C0 (1 vertices) */
@@ -336,9 +336,9 @@ Vtx dLBTransitionBlock_Vtx_0x05C0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x05C0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x05D0 to 0x05E0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x05D0[16] = {
-	#include <LBTransitionBlock/gap_0x05D0.data.inc.c>
+/* Vtx: Vtx_0x05D0 @ 0x05D0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x05D0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x05D0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x05E0 @ 0x5E0 (1 vertices) */
@@ -346,9 +346,9 @@ Vtx dLBTransitionBlock_Vtx_0x05E0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x05E0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x05F0 to 0x0600 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x05F0[16] = {
-	#include <LBTransitionBlock/gap_0x05F0.data.inc.c>
+/* Vtx: Vtx_0x05F0 @ 0x05F0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x05F0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x05F0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0600 @ 0x600 (1 vertices) */
@@ -356,9 +356,9 @@ Vtx dLBTransitionBlock_Vtx_0x0600_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0600.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0610 to 0x0620 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0610[16] = {
-	#include <LBTransitionBlock/gap_0x0610.data.inc.c>
+/* Vtx: Vtx_0x0610 @ 0x0610 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0610_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0610.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0620 @ 0x620 (1 vertices) */
@@ -401,9 +401,9 @@ Vtx dLBTransitionBlock_Vtx_0x06A0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x06A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x06B0 to 0x06C0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x06B0[16] = {
-	#include <LBTransitionBlock/gap_0x06B0.data.inc.c>
+/* Vtx: Vtx_0x06B0 @ 0x06B0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x06B0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x06B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x06C0 @ 0x6C0 (1 vertices) */
@@ -416,9 +416,9 @@ Vtx dLBTransitionBlock_Vtx_0x06D0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x06D0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x06E0 to 0x06F0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x06E0[16] = {
-	#include <LBTransitionBlock/gap_0x06E0.data.inc.c>
+/* Vtx: Vtx_0x06E0 @ 0x06E0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x06E0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x06E0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x06F0 @ 0x6F0 (1 vertices) */
@@ -426,9 +426,9 @@ Vtx dLBTransitionBlock_Vtx_0x06F0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x06F0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0700 to 0x0710 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0700[16] = {
-	#include <LBTransitionBlock/gap_0x0700.data.inc.c>
+/* Vtx: Vtx_0x0700 @ 0x0700 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0700_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0700.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0710 @ 0x710 (1 vertices) */
@@ -436,9 +436,9 @@ Vtx dLBTransitionBlock_Vtx_0x0710_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0710.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0720 to 0x0730 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0720[16] = {
-	#include <LBTransitionBlock/gap_0x0720.data.inc.c>
+/* Vtx: Vtx_0x0720 @ 0x0720 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0720_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0720.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0730 @ 0x730 (1 vertices) */
@@ -446,9 +446,9 @@ Vtx dLBTransitionBlock_Vtx_0x0730_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0730.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0740 to 0x0750 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0740[16] = {
-	#include <LBTransitionBlock/gap_0x0740.data.inc.c>
+/* Vtx: Vtx_0x0740 @ 0x0740 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0740_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0740.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0750 @ 0x750 (1 vertices) */
@@ -456,9 +456,9 @@ Vtx dLBTransitionBlock_Vtx_0x0750_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0750.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0760 to 0x0770 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0760[16] = {
-	#include <LBTransitionBlock/gap_0x0760.data.inc.c>
+/* Vtx: Vtx_0x0760 @ 0x0760 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0760_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0760.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0770 @ 0x770 (1 vertices) */
@@ -501,9 +501,9 @@ Vtx dLBTransitionBlock_Vtx_0x07F0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x07F0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0800 to 0x0810 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0800[16] = {
-	#include <LBTransitionBlock/gap_0x0800.data.inc.c>
+/* Vtx: Vtx_0x0800 @ 0x0800 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0800_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0800.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0810 @ 0x810 (1 vertices) */
@@ -571,9 +571,9 @@ Vtx dLBTransitionBlock_Vtx_0x09A0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x09A0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x09B0 to 0x09C0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x09B0[16] = {
-	#include <LBTransitionBlock/gap_0x09B0.data.inc.c>
+/* Vtx: Vtx_0x09B0 @ 0x09B0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x09B0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x09B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x09C0 @ 0x9C0 (1 vertices) */
@@ -611,9 +611,9 @@ Vtx dLBTransitionBlock_Vtx_0x0A80_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0A80.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0A90 to 0x0AA0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0A90[16] = {
-	#include <LBTransitionBlock/gap_0x0A90.data.inc.c>
+/* Vtx: Vtx_0x0A90 @ 0x0A90 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0A90_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0A90.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0AA0 @ 0xAA0 (1 vertices) */
@@ -706,9 +706,9 @@ Vtx dLBTransitionBlock_Vtx_0x0C10_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0C10.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0C20 to 0x0C30 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0C20[16] = {
-	#include <LBTransitionBlock/gap_0x0C20.data.inc.c>
+/* Vtx: Vtx_0x0C20 @ 0x0C20 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0C20_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0C20.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0C30 @ 0xC30 (1 vertices) */
@@ -721,9 +721,9 @@ Vtx dLBTransitionBlock_Vtx_0x0C40_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0C40.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0C50 to 0x0C60 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0C50[16] = {
-	#include <LBTransitionBlock/gap_0x0C50.data.inc.c>
+/* Vtx: Vtx_0x0C50 @ 0x0C50 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0C50_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0C50.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0C60 @ 0xC60 (1 vertices) */
@@ -736,9 +736,9 @@ Vtx dLBTransitionBlock_Vtx_0x0C70_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0C70.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0C80 to 0x0C90 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0C80[16] = {
-	#include <LBTransitionBlock/gap_0x0C80.data.inc.c>
+/* Vtx: Vtx_0x0C80 @ 0x0C80 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0C80_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0C80.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0C90 @ 0xC90 (1 vertices) */
@@ -746,9 +746,9 @@ Vtx dLBTransitionBlock_Vtx_0x0C90_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0C90.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0CA0 to 0x0CB0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0CA0[16] = {
-	#include <LBTransitionBlock/gap_0x0CA0.data.inc.c>
+/* Vtx: Vtx_0x0CA0 @ 0x0CA0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0CA0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0CA0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0CB0 @ 0xCB0 (1 vertices) */
@@ -756,9 +756,9 @@ Vtx dLBTransitionBlock_Vtx_0x0CB0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0CB0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0CC0 to 0x0CD0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0CC0[16] = {
-	#include <LBTransitionBlock/gap_0x0CC0.data.inc.c>
+/* Vtx: Vtx_0x0CC0 @ 0x0CC0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0CC0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0CC0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0CD0 @ 0xCD0 (1 vertices) */
@@ -766,9 +766,9 @@ Vtx dLBTransitionBlock_Vtx_0x0CD0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0CD0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0CE0 to 0x0CF0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0CE0[16] = {
-	#include <LBTransitionBlock/gap_0x0CE0.data.inc.c>
+/* Vtx: Vtx_0x0CE0 @ 0x0CE0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0CE0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0CE0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0CF0 @ 0xCF0 (1 vertices) */
@@ -776,9 +776,9 @@ Vtx dLBTransitionBlock_Vtx_0x0CF0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0CF0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0D00 to 0x0D10 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0D00[16] = {
-	#include <LBTransitionBlock/gap_0x0D00.data.inc.c>
+/* Vtx: Vtx_0x0D00 @ 0x0D00 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0D00_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0D00.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0D10 @ 0xD10 (1 vertices) */
@@ -851,9 +851,9 @@ Vtx dLBTransitionBlock_Vtx_0x0E00_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0E00.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0E10 to 0x0E20 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0E10[16] = {
-	#include <LBTransitionBlock/gap_0x0E10.data.inc.c>
+/* Vtx: Vtx_0x0E10 @ 0x0E10 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0E10_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0E10.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0E20 @ 0xE20 (1 vertices) */
@@ -921,9 +921,9 @@ Vtx dLBTransitionBlock_Vtx_0x0FA0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x0FA0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0FB0 to 0x0FC0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x0FB0[16] = {
-	#include <LBTransitionBlock/gap_0x0FB0.data.inc.c>
+/* Vtx: Vtx_0x0FB0 @ 0x0FB0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x0FB0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x0FB0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0FC0 @ 0xFC0 (1 vertices) */
@@ -986,9 +986,9 @@ Vtx dLBTransitionBlock_Vtx_0x1160_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x1160.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1170 to 0x1180 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x1170[16] = {
-	#include <LBTransitionBlock/gap_0x1170.data.inc.c>
+/* Vtx: Vtx_0x1170 @ 0x1170 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x1170_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x1170.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1180 @ 0x1180 (1 vertices) */
@@ -1021,9 +1021,9 @@ Vtx dLBTransitionBlock_Vtx_0x1210_Vtx[2] = {
 	#include <LBTransitionBlock/Vtx_0x1210.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1230 to 0x1240 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x1230[16] = {
-	#include <LBTransitionBlock/gap_0x1230.data.inc.c>
+/* Vtx: Vtx_0x1230 @ 0x1230 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x1230_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x1230.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1240 @ 0x1240 (2 vertices) */
@@ -1111,9 +1111,9 @@ Vtx dLBTransitionBlock_Vtx_0x13B0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x13B0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x13C0 to 0x13D0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x13C0[16] = {
-	#include <LBTransitionBlock/gap_0x13C0.data.inc.c>
+/* Vtx: Vtx_0x13C0 @ 0x13C0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x13C0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x13C0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x13D0 @ 0x13D0 (1 vertices) */
@@ -1156,9 +1156,9 @@ Vtx dLBTransitionBlock_Vtx_0x1450_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x1450.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1460 to 0x1470 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x1460[16] = {
-	#include <LBTransitionBlock/gap_0x1460.data.inc.c>
+/* Vtx: Vtx_0x1460 @ 0x1460 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x1460_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x1460.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1470 @ 0x1470 (1 vertices) */
@@ -1191,9 +1191,9 @@ Vtx dLBTransitionBlock_Vtx_0x14D0_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x14D0.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x14E0 to 0x14F0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x14E0[16] = {
-	#include <LBTransitionBlock/gap_0x14E0.data.inc.c>
+/* Vtx: Vtx_0x14E0 @ 0x14E0 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x14E0_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x14E0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x14F0 @ 0x14F0 (1 vertices) */
@@ -1266,9 +1266,9 @@ Vtx dLBTransitionBlock_Vtx_0x1680_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x1680.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1690 to 0x16A0 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x1690[16] = {
-	#include <LBTransitionBlock/gap_0x1690.data.inc.c>
+/* Vtx: Vtx_0x1690 @ 0x1690 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x1690_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x1690.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x16A0 @ 0x16A0 (1 vertices) */
@@ -1306,9 +1306,9 @@ Vtx dLBTransitionBlock_Vtx_0x1760_Vtx[1] = {
 	#include <LBTransitionBlock/Vtx_0x1760.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1770 to 0x1780 (16 bytes) */
-u8 dLBTransitionBlock_gap_0x1770[16] = {
-	#include <LBTransitionBlock/gap_0x1770.data.inc.c>
+/* Vtx: Vtx_0x1770 @ 0x1770 (1 vertices) */
+Vtx dLBTransitionBlock_Vtx_0x1770_Vtx[1] = {
+	#include <LBTransitionBlock/Vtx_0x1770.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1780 @ 0x1780 (1 vertices) */

@@ -14,6 +14,7 @@
  * from the baserom by tools/extractRelocInc.py at extract time. */
 
 #include "relocdata_types.h"
+#include <it/ittypes.h>
 #include <wp/wptypes.h>
 
 /* Raw data from file offset 0x0000 to 0x0050 (80 bytes) */
@@ -22,17 +23,44 @@ u8 dITCommonData_Container_VelocitiesY[80] = {
 };
 
 /* ItemAttributes @ 0x0050 — Capsule */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=120 center=0 bottom=-100 width=60
- *   size: 200
- *   bitfield_tail u32s: 0x5A450050, 0x0000184A, 0x27050C40, 0x0E4390E4, 0x28000078
- */
-u8 dITCommonData_Capsule_ItemAttributes[72] = {
-	#include <ITCommonData/Capsule_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Capsule_ItemAttributes[1] = {{
+	(void *)0x002E019C,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	120, 0, -100, 60,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	5,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	20,  /* knockback_base */
+	3,  /* type */
+	1,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	80,  /* vel_scale */
+	120,  /* spin_speed */
+}};
 
 /* Raw data from file offset 0x0098 to 0x00B8 (32 bytes) */
 u32 dITCommonData_Capsule_AttackEvents[8] = {
@@ -40,95 +68,284 @@ u32 dITCommonData_Capsule_AttackEvents[8] = {
 };
 
 /* ItemAttributes @ 0x00B8 — Tomato */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=180 center=0 bottom=-180 width=180
- *   size: 200
- *   bitfield_tail u32s: 0x5A464010, 0x00001850, 0x37001400, 0x0E4390E4, 0x32000064
- */
-u8 dITCommonData_Tomato_ItemAttributes[72] = {
-	#include <ITCommonData/Tomato_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Tomato_ItemAttributes[1] = {{
+	(void *)0x004002AC,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	180, 0, -180, 180,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	40,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	0,  /* knockback_base */
+	5,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	100,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0100 — Heart */
-/* Decoded (visible fields):
- *   flags: is_display_xlu, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=165 center=0 bottom=-165 width=180
- *   size: 200
- *   bitfield_tail u32s: 0x5A464010, 0x00001850, 0x37001400, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Heart_ItemAttributes[72] = {
-	#include <ITCommonData/Heart_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Heart_ItemAttributes[1] = {{
+	(void *)0x00520456,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	1, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	165, 0, -165, 180,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	40,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	0,  /* knockback_base */
+	5,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0148 — Star */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=30 center=0 bottom=-30 width=30
- *   size: 200
- *   bitfield_tail u32s: 0x5A464010, 0x0000104A, 0x30001000, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Star_ItemAttributes[72] = {
-	#include <ITCommonData/Star_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Star_ItemAttributes[1] = {{
+	(void *)0x00530558,  /* data (chain) */
+	(MObjSub ***)0x005504AE,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	(AObjEvent32 ***)0x0064057C,  /* p_matanim_joints (chain) */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	30, 0, -30, 30,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	0,  /* can_shield */
+	0,  /* knockback_base */
+	4,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0190 — Sword */
-/* Decoded (visible fields):
- *   flags: is_display_xlu, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 700, 150}
- *   map_coll: top=422 center=0 bottom=-422 width=72
- *   size: 300
- *   bitfield_tail u32s: 0x5A4500A3, 0x00001A0A, 0x270F0400, 0x0E4390E4, 0x32000064
- */
-u8 dITCommonData_Sword_ItemAttributes[72] = {
-	#include <ITCommonData/Sword_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Sword_ItemAttributes[1] = {{
+	(void *)0x00760646,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	1, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 700, 150 },  /* damage_coll_size */
+	422, 0, -422, 72,  /* map_coll top/center/bottom/width */
+	300,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	10,  /* damage */
+	3,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	261,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	1,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	100,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x01D8 — Bat */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=240 center=0 bottom=-240 width=27
- *   size: 200
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000184A, 0x270F0400, 0x0E4390E4, 0x37000064
- */
-u8 dITCommonData_Bat_ItemAttributes[72] = {
-	#include <ITCommonData/Bat_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Bat_ItemAttributes[1] = {{
+	(void *)0x00880780,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	240, 0, -240, 27,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	1,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	110,  /* vel_scale */
+	100,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0220 — Harisen */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=210 center=0 bottom=-210 width=90
- *   size: 200
- *   bitfield_tail u32s: 0x18064010, 0x00001866, 0x27118400, 0x0E4390E4, 0x23000032
- */
-u8 dITCommonData_Harisen_ItemAttributes[72] = {
-	#include <ITCommonData/Harisen_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Harisen_ItemAttributes[1] = {{
+	(void *)0x009A0866,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	210, 0, -210, 90,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	96,  /* angle */
+	100,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	51,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	70,  /* knockback_base */
+	1,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	70,  /* vel_scale */
+	50,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0268 — LGun */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {60, 60, 60}
- *   map_coll: top=100 center=0 bottom=-100 width=100
- *   size: 200
- *   bitfield_tail u32s: 0x5A46E020, 0x00001840, 0x27028800, 0x0E4390E4, 0x3200008C
- */
-u8 dITCommonData_LGun_ItemAttributes[72] = {
-	#include <ITCommonData/LGun_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_LGun_ItemAttributes[1] = {{
+	(void *)0x00AC0FD4,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 60, 60, 60 },  /* damage_coll_size */
+	100, 0, -100, 100,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	110,  /* knockback_scale */
+	2,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	32,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	10,  /* knockback_base */
+	2,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	140,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x02B0 */
 WPAttributes dITCommonData_LGunAmmo_WeaponAttributes = {
@@ -161,17 +378,44 @@ WPAttributes dITCommonData_LGunAmmo_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x02E4 — FFlower */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {60, 60, 60}
- *   map_coll: top=127 center=0 bottom=-107 width=107
- *   size: 200
- *   bitfield_tail u32s: 0x5A464021, 0x00001836, 0x27078800, 0x0E4390E4, 0x28000000
- */
-u8 dITCommonData_FFlower_ItemAttributes[72] = {
-	#include <ITCommonData/FFlower_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_FFlower_ItemAttributes[1] = {{
+	(void *)0x00BA11AC,  /* data (chain) */
+	(MObjSub ***)0x00BC10E2,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	(AObjEvent32 ***)0x00DD11D8,  /* p_matanim_joints (chain) */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 60, 60, 60 },  /* damage_coll_size */
+	127, 0, -107, 107,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	2,  /* damage */
+	1,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	27,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	30,  /* knockback_base */
+	2,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	80,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x032C */
 WPAttributes dITCommonData_FFlowerFlame_WeaponAttributes = {
@@ -209,30 +453,84 @@ u8 dITCommonData_FFlowerFlame_Angles[20] = {
 };
 
 /* ItemAttributes @ 0x0374 — Hammer */
-/* Decoded (visible fields):
- *   flags: is_display_colanim, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=258 center=0 bottom=-249 width=105
- *   size: 200
- *   bitfield_tail u32s: 0x5A4640A0, 0x00001850, 0x25079400, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Hammer_ItemAttributes[72] = {
-	#include <ITCommonData/Hammer_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Hammer_ItemAttributes[1] = {{
+	(void *)0x00EF09D4,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 1, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	258, 0, -249, 105,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	10,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	40,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	30,  /* knockback_base */
+	5,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x03BC — MSBomb */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=60 center=0 bottom=-60 width=60
- *   size: 200
- *   bitfield_tail u32s: 0x5A464050, 0x00001850, 0x27028C00, 0x0E4390E4, 0x2D000078
- */
-u8 dITCommonData_MSBomb_ItemAttributes[72] = {
-	#include <ITCommonData/MSBomb_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_MSBomb_ItemAttributes[1] = {{
+	(void *)0x01090E68,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	60, 0, -60, 60,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	5,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	40,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	10,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	90,  /* vel_scale */
+	120,  /* spin_speed */
+}};
 
 /* Raw data from file offset 0x0404 to 0x0424 (32 bytes) */
 u32 dITCommonData_MSBomb_AttackEvents[8] = {
@@ -240,17 +538,44 @@ u32 dITCommonData_MSBomb_AttackEvents[8] = {
 };
 
 /* ItemAttributes @ 0x0424 — BombHei */
-/* Decoded (visible fields):
- *   flags: is_display_colanim, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=150 center=0 bottom=-150 width=150
- *   size: 200
- *   bitfield_tail u32s: 0x5A464010, 0x00001802, 0x27078C00, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_BombHei_ItemAttributes[72] = {
-	#include <ITCommonData/BombHei_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_BombHei_ItemAttributes[1] = {{
+	(void *)0x010A0CFE,  /* data (chain) */
+	(MObjSub ***)0x01230C8C,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 1, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	150, 0, -150, 150,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	1,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	30,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* Raw data from file offset 0x046C to 0x048C (32 bytes) */
 u32 dITCommonData_BombHei_AttackEvents[8] = {
@@ -258,17 +583,44 @@ u32 dITCommonData_BombHei_AttackEvents[8] = {
 };
 
 /* ItemAttributes @ 0x048C — StarRod */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {60, 60, 60}
- *   map_coll: top=195 center=0 bottom=-195 width=90
- *   size: 200
- *   bitfield_tail u32s: 0x00046060, 0x0000184A, 0x27050400, 0x0E4390E4, 0x3200006E
- */
-u8 dITCommonData_StarRod_ItemAttributes[72] = {
-	#include <ITCommonData/StarRod_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_StarRod_ItemAttributes[1] = {{
+	(void *)0x013512D8,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 60, 60, 60 },  /* damage_coll_size */
+	195, 0, -195, 90,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	0,  /* angle */
+	70,  /* knockback_scale */
+	6,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	20,  /* knockback_base */
+	1,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	110,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x04D4 */
 WPAttributes dITCommonData_StarRod_WeaponAttributes = {
@@ -339,43 +691,124 @@ WPAttributes dITCommonData_StarRodSmash_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x053C — GShell */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=150 center=0 bottom=-150 width=150
- *   size: 200
- *   bitfield_tail u32s: 0x5A450120, 0x00001070, 0x270F0C00, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_GShell_ItemAttributes[72] = {
-	#include <ITCommonData/GShell_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_GShell_ItemAttributes[1] = {{
+	(void *)0x015017E2,  /* data (chain) */
+	(MObjSub ***)0x01611778,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	150, 0, -150, 150,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	18,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	56,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0584 — RShell */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=150 center=0 bottom=-150 width=150
- *   size: 200
- *   bitfield_tail u32s: 0x5A4500A0, 0x16801070, 0x2F0F0C00, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_RShell_ItemAttributes[72] = {
-	#include <ITCommonData/RShell_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_RShell_ItemAttributes[1] = {{
+	(void *)0x016217E2,  /* data (chain) */
+	(MObjSub ***)0x01731778,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	150, 0, -150, 150,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	10,  /* damage */
+	0,  /* element */
+	90,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	56,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x05CC — Box */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {450, 450, 450}
- *   map_coll: top=225 center=0 bottom=-225 width=225
- *   size: 200
- *   bitfield_tail u32s: 0x5A4640F0, 0x0000184A, 0x230A0040, 0x0E4390E4, 0x32000028
- */
-u8 dITCommonData_Box_ItemAttributes[72] = {
-	#include <ITCommonData/Box_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Box_ItemAttributes[1] = {{
+	(void *)0x018D19DE,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 0,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 450, 450, 450 },  /* damage_coll_size */
+	225, 0, -225, 225,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	15,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	40,  /* knockback_base */
+	0,  /* type */
+	1,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	40,  /* spin_speed */
+}};
 
 /* Raw data from file offset 0x0614 to 0x0634 (32 bytes) */
 u32 dITCommonData_Box_AttackEvents[8] = {
@@ -383,17 +816,44 @@ u32 dITCommonData_Box_AttackEvents[8] = {
 };
 
 /* ItemAttributes @ 0x0634 — Taru */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {294, 316, 294}
- *   map_coll: top=236 center=0 bottom=-236 width=221
- *   size: 290
- *   bitfield_tail u32s: 0x5A4640C0, 0x0000184A, 0x230A0040, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Taru_ItemAttributes[72] = {
-	#include <ITCommonData/Taru_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Taru_ItemAttributes[1] = {{
+	(void *)0x01A71C6A,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 0,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 294, 316, 294 },  /* damage_coll_size */
+	236, 0, -236, 221,  /* map_coll top/center/bottom/width */
+	290,  /* size */
+	361,  /* angle */
+	100,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	40,  /* knockback_base */
+	0,  /* type */
+	1,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* Raw data from file offset 0x067C to 0x069C (32 bytes) */
 u32 dITCommonData_Taru_AttackEvents[8] = {
@@ -401,43 +861,124 @@ u32 dITCommonData_Taru_AttackEvents[8] = {
 };
 
 /* ItemAttributes @ 0x069C — NBumper */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=180 center=0 bottom=-180 width=180
- *   size: 200
- *   bitfield_tail u32s: 0x5A832010, 0x3E80105E, 0x2F000C00, 0x0E4390E4, 0x32000046
- */
-u8 dITCommonData_NBumper_ItemAttributes[72] = {
-	#include <ITCommonData/NBumper_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_NBumper_ItemAttributes[1] = {{
+	(void *)0x01A81D92,  /* data (chain) */
+	(MObjSub ***)0x01B91D22,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	180, 0, -180, 180,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	362,  /* angle */
+	50,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	250,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	47,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	0,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	70,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x06E4 — MBall */
-/* Decoded (visible fields):
- *   flags: is_item_dobjs, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=109 center=0 bottom=-109 width=164
- *   size: 200
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000184A, 0x270F0C00, 0x0E4390E4, 0x28000014
- */
-u8 dITCommonData_MBall_ItemAttributes[72] = {
-	#include <ITCommonData/MBall_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_MBall_ItemAttributes[1] = {{
+	(void *)0x01BA250C,  /* data (chain) */
+	(MObjSub ***)0x01CB2448,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	109, 0, -109, 164,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	80,  /* vel_scale */
+	20,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x072C — Wark */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=324 center=0 bottom=-324 width=459
- *   size: 600
- *   bitfield_tail u32s: 0x16864150, 0x0000104A, 0x310F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Wark_ItemAttributes[72] = {
-	#include <ITCommonData/Wark_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Wark_ItemAttributes[1] = {{
+	(void *)0x01DD2850,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	324, 0, -324, 459,  /* map_coll top/center/bottom/width */
+	600,  /* size */
+	90,  /* angle */
+	100,  /* knockback_scale */
+	21,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x0774 */
 WPAttributes dITCommonData_WarkRock_WeaponAttributes = {
@@ -470,56 +1011,164 @@ WPAttributes dITCommonData_WarkRock_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x07A8 — Kabigon */
-/* Decoded (visible fields):
- *   flags: is_item_dobjs, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {580, 580, 780}
- *   map_coll: top=585 center=0 bottom=-585 width=780
- *   size: 800
- *   bitfield_tail u32s: 0x5A446160, 0x00001002, 0x310F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Kabigon_ItemAttributes[72] = {
-	#include <ITCommonData/Kabigon_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Kabigon_ItemAttributes[1] = {{
+	(void *)0x01FC2C56,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 580, 580, 780 },  /* damage_coll_size */
+	585, 0, -585, 780,  /* map_coll top/center/bottom/width */
+	800,  /* size */
+	361,  /* angle */
+	70,  /* knockback_scale */
+	22,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	1,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x07F0 — Tosakinto */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=135 center=0 bottom=-135 width=195
- *   size: 200
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000184A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Tosakinto_ItemAttributes[72] = {
-	#include <ITCommonData/Tosakinto_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Tosakinto_ItemAttributes[1] = {{
+	(void *)0x01FD2DC2,  /* data (chain) */
+	(MObjSub ***)0x020E2D50,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	135, 0, -135, 195,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0838 — Mew */
-/* Decoded (visible fields):
- *   flags: is_item_dobjs, is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=218 center=0 bottom=-218 width=218
- *   size: 300
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000184A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Mew_ItemAttributes[72] = {
-	#include <ITCommonData/Mew_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Mew_ItemAttributes[1] = {{
+	(void *)0x02202F30,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	218, 0, -218, 218,  /* map_coll top/center/bottom/width */
+	300,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0880 — Nyars */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=244 center=0 bottom=-244 width=244
- *   size: 300
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000104A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Nyars_ItemAttributes[72] = {
-	#include <ITCommonData/Nyars_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Nyars_ItemAttributes[1] = {{
+	(void *)0x0232304C,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	244, 0, -244, 244,  /* map_coll top/center/bottom/width */
+	300,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x08C8 */
 WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
@@ -556,17 +1205,44 @@ WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x08FC — Lizardon */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=400 center=0 bottom=-390 width=420
- *   size: 600
- *   bitfield_tail u32s: 0x5A450120, 0x0000104A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Lizardon_ItemAttributes[72] = {
-	#include <ITCommonData/Lizardon_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Lizardon_ItemAttributes[1] = {{
+	(void *)0x02403570,  /* data (chain) */
+	(MObjSub ***)0x02633504,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	400, 0, -390, 420,  /* map_coll top/center/bottom/width */
+	600,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	18,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x0944 — LizardonFlame (52 bytes) + 20 trailing bytes
  * holding a 5-float radian-angle spread pattern (-15°, -7.5°, 0°, 7.5°, 15°)
@@ -607,17 +1283,44 @@ f32 dITCommonData_LizardonFlame_AngleSpread[5] = {
 };
 
 /* ItemAttributes @ 0x098C — Spear */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=244 center=0 bottom=-244 width=244
- *   size: 300
- *   bitfield_tail u32s: 0x16864120, 0x0000104A, 0x310F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Spear_ItemAttributes[72] = {
-	#include <ITCommonData/Spear_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Spear_ItemAttributes[1] = {{
+	(void *)0x026437CE,  /* data (chain) */
+	(MObjSub ***)0x0275375C,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	244, 0, -244, 244,  /* map_coll top/center/bottom/width */
+	300,  /* size */
+	90,  /* angle */
+	100,  /* knockback_scale */
+	18,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x09D4 */
 WPAttributes dITCommonData_SpearSwarm_WeaponAttributes = {
@@ -650,17 +1353,44 @@ WPAttributes dITCommonData_SpearSwarm_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x0A08 — Kamex */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=317 center=0 bottom=-300 width=300
- *   size: 400
- *   bitfield_tail u32s: 0x2083C0D0, 0x0000104A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Kamex_ItemAttributes[72] = {
-	#include <ITCommonData/Kamex_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Kamex_ItemAttributes[1] = {{
+	(void *)0x02943A98,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	317, 0, -300, 300,  /* map_coll top/center/bottom/width */
+	400,  /* size */
+	130,  /* angle */
+	60,  /* knockback_scale */
+	13,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x0A50 */
 WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
@@ -707,30 +1437,84 @@ WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x0A84 — MLucky */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {250, 250, 250}
- *   map_coll: top=300 center=0 bottom=-200 width=240
- *   size: 500
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000184A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_MLucky_ItemAttributes[72] = {
-	#include <ITCommonData/MLucky_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_MLucky_ItemAttributes[1] = {{
+	(void *)0x02B34000,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 250, 250, 250 },  /* damage_coll_size */
+	300, 0, -200, 240,  /* map_coll top/center/bottom/width */
+	500,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0ACC — Egg */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=200 center=0 bottom=-140 width=280
- *   size: 200
- *   bitfield_tail u32s: 0x5A450030, 0x0000184A, 0x270F0C40, 0x0E4390E4, 0x32000064
- */
-u8 dITCommonData_Egg_ItemAttributes[72] = {
-	#include <ITCommonData/Egg_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Egg_ItemAttributes[1] = {{
+	(void *)0x02B54128,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	(AObjEvent32 **)0x02CD4154,  /* anim_joints (chain) */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	200, 0, -140, 280,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	3,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	1,  /* can_hop */
+	1,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	3,  /* type */
+	1,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	100,  /* spin_speed */
+}};
 
 /* Raw data from file offset 0x0B14 to 0x0B34 (32 bytes) */
 u32 dITCommonData_Egg_AttackEvents[8] = {
@@ -738,17 +1522,44 @@ u32 dITCommonData_Egg_AttackEvents[8] = {
 };
 
 /* ItemAttributes @ 0x0B34 — Starmie */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=300 center=0 bottom=-220 width=300
- *   size: 400
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000104A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Starmie_ItemAttributes[72] = {
-	#include <ITCommonData/Starmie_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Starmie_ItemAttributes[1] = {{
+	(void *)0x02CE44A8,  /* data (chain) */
+	(MObjSub ***)0x02DF4438,  /* p_mobjsubs (chain) */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	300, 0, -220, 300,  /* map_coll top/center/bottom/width */
+	400,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x0B7C */
 WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
@@ -785,30 +1596,52 @@ WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x0BB0 — Sawamura */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=317 center=0 bottom=-317 width=195
- *   size: 300
- *   bitfield_tail u32s: 0x16864180, 0x0007904A, 0x31051800, 0x0E4390E4, 0x32000000
- */
+/* NOTE: kept as u8 blob because shield_damage=30 in ROM but IDO s32:8
+ * in the second bitfield run always compiles to 0, making a typed
+ * ITAttributes initializer unable to reproduce the original byte. */
 u8 dITCommonData_Sawamura_ItemAttributes[72] = {
 	#include <ITCommonData/Sawamura_ItemAttributes.data.inc.c>
 };
 
 /* ItemAttributes @ 0x0BF8 — Dogas */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=240 center=0 bottom=-240 width=240
- *   size: 50
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000104A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Dogas_ItemAttributes[72] = {
-	#include <ITCommonData/Dogas_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Dogas_ItemAttributes[1] = {{
+	(void *)0x03104A08,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	240, 0, -240, 240,  /* map_coll top/center/bottom/width */
+	50,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x0C40 */
 WPAttributes dITCommonData_DogasSmog_WeaponAttributes = {
@@ -841,17 +1674,44 @@ WPAttributes dITCommonData_DogasSmog_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x0C74 — Pippi */
-/* Decoded (visible fields):
- *   flags: is_give_hitlag, weight
- *   damage_coll_offset: {0, 0, 0}
- *   damage_coll_size:   {150, 150, 150}
- *   map_coll: top=192 center=0 bottom=-192 width=192
- *   size: 300
- *   bitfield_tail u32s: 0x5A4500C0, 0x0000184A, 0x390F1800, 0x0E4390E4, 0x32000000
- */
-u8 dITCommonData_Pippi_ItemAttributes[72] = {
-	#include <ITCommonData/Pippi_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Pippi_ItemAttributes[1] = {{
+	(void *)0x032F4D66,  /* data (chain) */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	192, 0, -192, 192,  /* map_coll top/center/bottom/width */
+	300,  /* size */
+	361,  /* angle */
+	80,  /* knockback_scale */
+	12,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	0,  /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	1,  /* can_setoff */
+	37,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	60,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	57,  /* drop_sfx */
+	57,  /* throw_sfx */
+	57,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* WPAttributes @ 0x0CBC */
 WPAttributes dITCommonData_PippiSwarm_WeaponAttributes = {

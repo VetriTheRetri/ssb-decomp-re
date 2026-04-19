@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0010 (16 bytes) */
-u8 dLBTransitionPaperAirplane_gap_0x0000[16] = {
-	#include <LBTransitionPaperAirplane/gap_0x0000.data.inc.c>
+/* Vtx: Vtx_0x0000 @ 0x0 (1 vertices) */
+Vtx dLBTransitionPaperAirplane_Vtx_0x0000_Vtx[1] = {
+	#include <LBTransitionPaperAirplane/Vtx_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0010 @ 0x10 (1 vertices) */
@@ -16,9 +16,9 @@ Vtx dLBTransitionPaperAirplane_Vtx_0x0010_Vtx[1] = {
 	#include <LBTransitionPaperAirplane/Vtx_0x0010.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0020 to 0x0030 (16 bytes) */
-u8 dLBTransitionPaperAirplane_gap_0x0020[16] = {
-	#include <LBTransitionPaperAirplane/gap_0x0020.data.inc.c>
+/* Vtx: Vtx_0x0020 @ 0x20 (1 vertices) */
+Vtx dLBTransitionPaperAirplane_Vtx_0x0020_Vtx[1] = {
+	#include <LBTransitionPaperAirplane/Vtx_0x0020.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0030 @ 0x30 (1 vertices) */
@@ -236,15 +236,15 @@ Vtx dLBTransitionPaperAirplane_Vtx_0x0560_Vtx[4] = {
 	#include <LBTransitionPaperAirplane/Vtx_0x0560.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x05A0 to 0x0F98 (2552 bytes) */
-u8 dLBTransitionPaperAirplane_gap_0x05A0[2552] = {
-	#include <LBTransitionPaperAirplane/gap_0x05A0.data.inc.c>
+/* @ 0x05A0, 2552 bytes — Gfx[319] DL */
+Gfx dLBTransitionPaperAirplane_DL_0x05A0[319] = {
+	#include <LBTransitionPaperAirplane/DL_0x05A0.data.inc.c>
 };
 
 /* DObjDesc: - @ 0xF98 (3 entries) */
 DObjDesc dLBTransitionPaperAirplane_DObjDesc_0x0F98[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dLBTransitionPaperAirplane_gap_0x05A0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLBTransitionPaperAirplane_DL_0x05A0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

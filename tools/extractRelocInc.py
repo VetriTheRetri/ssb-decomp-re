@@ -39,11 +39,58 @@ except ImportError:
     _HAS_N64IMG = False
 
 
+def _resolve_fid_for_version(fid):
+    """When the extracted assets are from a different version (e.g. JP),
+    the same file may live at a different fid. Resolve *either* a US-era
+    or JP-era fid to the fid whose binary is currently extracted.
+
+    The same numeric fid can mean different things in US and JP (e.g.
+    US 299 = MarioSecondaryImage, JP 299 = LinkModel). We resolve by
+    checking: if the fid already names a file in the current version
+    AND an inline master .c exists for that name, the fid is native.
+    Otherwise, remap via the US name table."""
+    version = _detect_version()
+    if not version or version == "us":
+        return fid  # US assets — fid is already correct
+    # Check if the fid names a file in the current version AND we can
+    # find its inline master — that confirms this is a native JP fid.
+    cur_name = _name_for_fid(fid, version)
+    if cur_name:
+        import glob
+        cands = [p for p in glob.glob(
+            os.path.join(SRC_RELOC, f"*_{cur_name}.c"))
+            if not p.endswith(".jp.c") and not p.endswith(".us.c")]
+        if cands:
+            return fid  # Native JP fid with a matching source file
+    # Remap from US fid → name → current-version fid
+    us_name = _name_for_fid(fid, "us")
+    if us_name:
+        jp_path = os.path.join(SCRIPT_DIR,
+                                f"relocFileDescriptions.{version}.txt")
+        if os.path.exists(jp_path):
+            with open(jp_path) as f:
+                for line in f:
+                    s = line.strip()
+                    if not s.startswith("-"):
+                        continue
+                    parts = s.split(":", 1)
+                    if len(parts) == 2 and parts[1].strip() == us_name:
+                        return int(parts[0].lstrip("-"))
+    return fid
+
+
 def bin_path(fid):
+    resolved = _resolve_fid_for_version(fid)
     for ext in (".vpk0.bin", ".bin"):
-        p = os.path.join(ASSET_DIR, f"{fid}{ext}")
+        p = os.path.join(ASSET_DIR, f"{resolved}{ext}")
         if os.path.exists(p):
             return p
+    # Fallback to original fid in case the resolved one doesn't exist
+    if resolved != fid:
+        for ext in (".vpk0.bin", ".bin"):
+            p = os.path.join(ASSET_DIR, f"{fid}{ext}")
+            if os.path.exists(p):
+                return p
     return None
 
 
@@ -753,9 +800,16 @@ def emit_dl(data, start, size, path):
         pygfxd.gfxd_macro_fn(macro_fn)
         pygfxd.gfxd_execute()
         body = pygfxd.gfxd_buffer_to_string(out_buf)
-        with open(path, 'w') as f:
-            f.write(body)
-        return
+        # pygfxd stops at the first gsSPEndDisplayList(), but blocks may
+        # contain multiple concatenated DLs.  Count how many 8-byte
+        # commands the decoded body covers; if it's fewer than size//8
+        # then fall through to the raw emitter.
+        decoded_cmds = body.count(',\n')
+        expected_cmds = size // 8
+        if decoded_cmds >= expected_cmds:
+            with open(path, 'w') as f:
+                f.write(body)
+            return
 
     _emit_dl_raw(data, start, size, path)
 

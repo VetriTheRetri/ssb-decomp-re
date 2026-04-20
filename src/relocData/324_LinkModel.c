@@ -311,7 +311,13 @@ Gfx dLinkModel_Joint_0x2998_DisplayList[60] = {
 };
 
 /* DisplayList: Joint_0x2B78 @ 0x2B78 (272 bytes, 34 cmds) */
-Gfx dLinkModel_Joint_0x2B78_DisplayList[34] = {
+Gfx dLinkModel_Joint_0x2B78_DisplayList[
+#if defined(REGION_JP)
+36
+#else
+34
+#endif
+] = {
 	#include <LinkModel/Joint_0x2B78.dl.inc.c>
 };
 
@@ -321,7 +327,13 @@ Gfx dLinkModel_Joint_0x2C88_DisplayList[48] = {
 };
 
 /* DisplayList: Joint_0x2E08 @ 0x2E08 (232 bytes, 29 cmds) */
-Gfx dLinkModel_Joint_0x2E08_DisplayList[29] = {
+Gfx dLinkModel_Joint_0x2E08_DisplayList[
+#if defined(REGION_JP)
+25
+#else
+29
+#endif
+] = {
 	#include <LinkModel/Joint_0x2E08.dl.inc.c>
 };
 
@@ -923,7 +935,13 @@ Gfx dLinkModel_Joint_0x66C8_DisplayList[47] = {
 };
 
 /* DisplayList: Joint_0x6840 @ 0x6840 (272 bytes, 34 cmds) */
-Gfx dLinkModel_Joint_0x6840_DisplayList[34] = {
+Gfx dLinkModel_Joint_0x6840_DisplayList[
+#if defined(REGION_JP)
+36
+#else
+34
+#endif
+] = {
 	#include <LinkModel/Joint_0x6840.dl.inc.c>
 };
 
@@ -1590,7 +1608,11 @@ u16 dLinkModel_Lut_0xB188_palette[16] = {
 	#include <LinkModel/Lut_0xB188.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xB1A8[8] = { 0x00, 0x00, 0x00, 0x26, 0x88, 0x00, 0x00, 0x00 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xB1B0 (72 bytes) */
 u8 dLinkModel_Tex_0xB1B0[72] = {
@@ -1607,7 +1629,11 @@ u16 dLinkModel_Lut_0xB280_palette[16] = {
 	#include <LinkModel/Lut_0xB280.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xB2A0[8] = { 0x77, 0x63, 0x20, 0x00, 0x00, 0x07, 0x52, 0x00 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xB2A8 (392 bytes) */
 u8 dLinkModel_Tex_0xB2A8[392] = {
@@ -1624,7 +1650,11 @@ u16 dLinkModel_Lut_0xB4B8_palette[16] = {
 	#include <LinkModel/Lut_0xB4B8.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xB4D8[8] = { 0xA3, 0x77, 0x66, 0x66, 0x66, 0x7A, 0x77, 0x77 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xB4E0 (264 bytes) */
 u8 dLinkModel_Tex_0xB4E0[264] = {
@@ -1636,7 +1666,11 @@ u16 dLinkModel_Lut_0xB5E8_palette[16] = {
 	#include <LinkModel/Lut_0xB5E8.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xB608[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0x22, 0xA5, 0x2D, 0xDD };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xB610 (4272 bytes) */
 u8 dLinkModel_Tex_0xB610[4272] = {
@@ -1679,7 +1713,11 @@ u16 dLinkModel_Lut_0xCA48_palette[16] = {
 	#include <LinkModel/Lut_0xCA48.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xCA68[8] = { 0x55, 0x5A, 0xC5, 0xAC, 0x15, 0xA1, 0xC5, 0xA5 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xCA70 (136 bytes) */
 u8 dLinkModel_Tex_0xCA70[136] = {
@@ -1736,7 +1774,11 @@ u16 dLinkModel_Lut_0xD870_palette[16] = {
 	#include <LinkModel/Lut_0xD870.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xD890[8] = { 0x66, 0x66, 0x66, 0x66, 0x66, 0x44, 0x8B, 0x9B };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xD898 (136 bytes) */
 u8 dLinkModel_Tex_0xD898[136] = {
@@ -1748,7 +1790,11 @@ u16 dLinkModel_Lut_0xD920_palette[16] = {
 	#include <LinkModel/Lut_0xD920.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xD940[8] = { 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xD948 (136 bytes) */
 u8 dLinkModel_Tex_0xD948[136] = {
@@ -1760,7 +1806,11 @@ u16 dLinkModel_Lut_0xD9D0_palette[16] = {
 	#include <LinkModel/Lut_0xD9D0.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xD9F0[8] = { 0x00, 0x00, 0x09, 0xFE, 0x11, 0xBE, 0xF9, 0x00 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xD9F8 (520 bytes) */
 u8 dLinkModel_Tex_0xD9F8[520] = {
@@ -1772,7 +1822,11 @@ u16 dLinkModel_Lut_0xDC00_palette[16] = {
 	#include <LinkModel/Lut_0xDC00.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xDC20[8] = { 0x77, 0x44, 0xC9, 0x93, 0x33, 0x3B, 0x8D, 0x6F };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xDC28 (264 bytes) */
 u8 dLinkModel_Tex_0xDC28[264] = {
@@ -1784,14 +1838,22 @@ u16 dLinkModel_Lut_0xDD30_palette[16] = {
 	#include <LinkModel/Lut_0xDD30.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xDD50[8] = { 0x44, 0xDB, 0x75, 0xB5, 0x85, 0x95, 0xB7, 0x78 };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xDD58 @ 0xDD58 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDD58_palette[16] = {
 	#include <LinkModel/Lut_0xDD58.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xDD78[8] = { 0x44, 0xE4, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xDD80 (264 bytes) */
 u8 dLinkModel_Tex_0xDD80[264] = {
@@ -1803,7 +1865,11 @@ u16 dLinkModel_Lut_0xDE88_palette[16] = {
 	#include <LinkModel/Lut_0xDE88.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0xDEA8[8] = { 0x71, 0x1C, 0xCC, 0xCC, 0xC1, 0x17, 0xC1, 0x1A };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0xDEB0 (1160 bytes) */
 u8 dLinkModel_Tex_0xDEB0[1160] = {

@@ -519,11 +519,7 @@ PAD(4);
 Gfx dSC1PIntro_FinalText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FinalText (48x19 i4) */
-#if defined(REGION_JP)
-u8 dSC1PIntro_FinalText_tex[376] = {
-#else
 u8 dSC1PIntro_FinalText_tex[456] = {
-#endif
     #include <SC1PIntro/FinalText.i4.inc.c>
 };
 
@@ -559,18 +555,30 @@ PAD(12);
 Gfx dSC1PIntro_BreakTheTargetsText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: BreakTheTargetsText (178(192)x20 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_BreakTheTargetsText_tex[1280] = {
+#else
 u8 dSC1PIntro_BreakTheTargetsText_tex[1920] = {
+#endif
     #include <SC1PIntro/BreakTheTargetsText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_BreakTheTargetsText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 147, 160, 0, 0, dSC1PIntro_BreakTheTargetsText_tex, 16, 0 },
+#else
 	{ 178, 192, 0, 0, dSC1PIntro_BreakTheTargetsText_tex, 20, 0 },
+#endif
 };
 
 /* Sprite: BreakTheTargetsText (178x20 i4) */
 Sprite dSC1PIntro_BreakTheTargetsText = {
 	0, 0,
+#if defined(REGION_JP)
+	147, 16,
+#else
 	178, 20,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -580,7 +588,11 @@ Sprite dSC1PIntro_BreakTheTargetsText = {
 	(int*)0x00000000,
 	0, 1,
 	1, 36,
+#if defined(REGION_JP)
+	16, 16,
+#else
 	20, 20,
+#endif
 	4, 0,
 	(Bitmap*)dSC1PIntro_BreakTheTargetsText_bitmaps,
 	(Gfx*)0x00000000,
@@ -595,18 +607,30 @@ PAD(4);
 Gfx dSC1PIntro_BoardThePlatformsText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: BoardThePlatformsText (194(208)x20 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_BoardThePlatformsText_tex[1280] = {
+#else
 u8 dSC1PIntro_BoardThePlatformsText_tex[2080] = {
+#endif
     #include <SC1PIntro/BoardThePlatformsText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_BoardThePlatformsText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 147, 160, 0, 0, dSC1PIntro_BoardThePlatformsText_tex, 16, 0 },
+#else
 	{ 194, 208, 0, 0, dSC1PIntro_BoardThePlatformsText_tex, 20, 0 },
+#endif
 };
 
 /* Sprite: BoardThePlatformsText (194x20 i4) */
 Sprite dSC1PIntro_BoardThePlatformsText = {
 	0, 0,
+#if defined(REGION_JP)
+	147, 16,
+#else
 	194, 20,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -616,7 +640,11 @@ Sprite dSC1PIntro_BoardThePlatformsText = {
 	(int*)0x00000000,
 	0, 1,
 	1, 36,
+#if defined(REGION_JP)
+	16, 16,
+#else
 	20, 20,
+#endif
 	4, 0,
 	(Bitmap*)dSC1PIntro_BoardThePlatformsText_bitmaps,
 	(Gfx*)0x00000000,
@@ -631,18 +659,30 @@ PAD(4);
 Gfx dSC1PIntro_RaceToTheFinishText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: RaceToTheFinishText (173(176)x20 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_RaceToTheFinishText_tex[1664] = {
+#else
 u8 dSC1PIntro_RaceToTheFinishText_tex[1760] = {
+#endif
     #include <SC1PIntro/RaceToTheFinishText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_RaceToTheFinishText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 208, 208, 0, 0, dSC1PIntro_RaceToTheFinishText_tex, 16, 0 },
+#else
 	{ 173, 176, 0, 0, dSC1PIntro_RaceToTheFinishText_tex, 20, 0 },
+#endif
 };
 
 /* Sprite: RaceToTheFinishText (173x20 i4) */
 Sprite dSC1PIntro_RaceToTheFinishText = {
 	0, 0,
+#if defined(REGION_JP)
+	208, 16,
+#else
 	173, 20,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -652,7 +692,11 @@ Sprite dSC1PIntro_RaceToTheFinishText = {
 	(int*)0x00000000,
 	0, 1,
 	1, 36,
+#if defined(REGION_JP)
+	16, 16,
+#else
 	20, 20,
+#endif
 	4, 0,
 	(Bitmap*)dSC1PIntro_RaceToTheFinishText_bitmaps,
 	(Gfx*)0x00000000,
@@ -775,18 +819,30 @@ PAD(4);
 Gfx dSC1PIntro_MasterHandText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: MasterHandText (79(80)x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_MasterHandText_tex[576] = {
+#else
 u8 dSC1PIntro_MasterHandText_tex[480] = {
+#endif
     #include <SC1PIntro/MasterHandText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_MasterHandText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 83, 96, 0, 0, dSC1PIntro_MasterHandText_tex, 12, 0 },
+#else
 	{ 79, 80, 0, 0, dSC1PIntro_MasterHandText_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: MasterHandText (79x12 i4) */
 Sprite dSC1PIntro_MasterHandText = {
 	0, 0,
+#if defined(REGION_JP)
+	83, 12,
+#else
 	79, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -811,18 +867,30 @@ PAD(4);
 Gfx dSC1PIntro_GiantDKText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: GiantDKText (55(64)x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_GiantDKText_tex[1248] = {
+#else
 u8 dSC1PIntro_GiantDKText_tex[384] = {
+#endif
     #include <SC1PIntro/GiantDKText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_GiantDKText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 83, 96, 0, 0, dSC1PIntro_GiantDKText_tex, 26, 0 },
+#else
 	{ 55, 64, 0, 0, dSC1PIntro_GiantDKText_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: GiantDKText (55x12 i4) */
 Sprite dSC1PIntro_GiantDKText = {
 	0, 0,
+#if defined(REGION_JP)
+	83, 26,
+#else
 	55, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -832,7 +900,11 @@ Sprite dSC1PIntro_GiantDKText = {
 	(int*)0x00000000,
 	0, 1,
 	1, 36,
+#if defined(REGION_JP)
+	26, 26,
+#else
 	12, 12,
+#endif
 	4, 0,
 	(Bitmap*)dSC1PIntro_GiantDKText_bitmaps,
 	(Gfx*)0x00000000,
@@ -847,18 +919,30 @@ PAD(4);
 Gfx dSC1PIntro_FoxMcCloudText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FoxMcCloudText (77(80)x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_FoxMcCloudText_tex[864] = {
+#else
 u8 dSC1PIntro_FoxMcCloudText_tex[480] = {
+#endif
     #include <SC1PIntro/FoxMcCloudText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_FoxMcCloudText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 132, 144, 0, 0, dSC1PIntro_FoxMcCloudText_tex, 12, 0 },
+#else
 	{ 77, 80, 0, 0, dSC1PIntro_FoxMcCloudText_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: FoxMcCloudText (77x12 i4) */
 Sprite dSC1PIntro_FoxMcCloudText = {
 	0, 0,
+#if defined(REGION_JP)
+	132, 12,
+#else
 	77, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -888,13 +972,21 @@ u8 dSC1PIntro_KirbyTeamVS8Text_tex[672] = {
 };
 
 Bitmap dSC1PIntro_KirbyTeamVS8Text_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 106, 112, 0, 0, dSC1PIntro_KirbyTeamVS8Text_tex, 12, 0 },
+#else
 	{ 112, 112, 0, 0, dSC1PIntro_KirbyTeamVS8Text_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: KirbyTeamVS8Text (112x12 i4) */
 Sprite dSC1PIntro_KirbyTeamVS8Text = {
 	0, 0,
+#if defined(REGION_JP)
+	106, 12,
+#else
 	112, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -919,18 +1011,30 @@ PAD(4);
 Gfx dSC1PIntro_MarioBrosText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: MarioBrosText (67(80)x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_MarioBrosText_tex[576] = {
+#else
 u8 dSC1PIntro_MarioBrosText_tex[480] = {
+#endif
     #include <SC1PIntro/MarioBrosText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_MarioBrosText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 96, 96, 0, 0, dSC1PIntro_MarioBrosText_tex, 12, 0 },
+#else
 	{ 67, 80, 0, 0, dSC1PIntro_MarioBrosText_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: MarioBrosText (67x12 i4) */
 Sprite dSC1PIntro_MarioBrosText = {
 	0, 0,
+#if defined(REGION_JP)
+	96, 12,
+#else
 	67, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -955,18 +1059,30 @@ PAD(4);
 Gfx dSC1PIntro_FightingPolygonTeamVS30Text_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: FightingPolygonTeamVS30Text (100(112)x22 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_FightingPolygonTeamVS30Text_tex[768] = {
+#else
 u8 dSC1PIntro_FightingPolygonTeamVS30Text_tex[1232] = {
+#endif
     #include <SC1PIntro/FightingPolygonTeamVS30Text.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_FightingPolygonTeamVS30Text_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 125, 128, 0, 0, dSC1PIntro_FightingPolygonTeamVS30Text_tex, 12, 0 },
+#else
 	{ 100, 112, 0, 0, dSC1PIntro_FightingPolygonTeamVS30Text_tex, 22, 0 },
+#endif
 };
 
 /* Sprite: FightingPolygonTeamVS30Text (100x22 i4) */
 Sprite dSC1PIntro_FightingPolygonTeamVS30Text = {
 	0, 0,
+#if defined(REGION_JP)
+	125, 12,
+#else
 	100, 22,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -976,7 +1092,11 @@ Sprite dSC1PIntro_FightingPolygonTeamVS30Text = {
 	(int*)0x00000000,
 	0, 1,
 	1, 36,
+#if defined(REGION_JP)
+	12, 12,
+#else
 	22, 22,
+#endif
 	4, 0,
 	(Bitmap*)dSC1PIntro_FightingPolygonTeamVS30Text_bitmaps,
 	(Gfx*)0x00000000,
@@ -991,18 +1111,30 @@ PAD(4);
 Gfx dSC1PIntro_SamusAranText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: SamusAranText (76(80)x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_SamusAranText_tex[576] = {
+#else
 u8 dSC1PIntro_SamusAranText_tex[480] = {
+#endif
     #include <SC1PIntro/SamusAranText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_SamusAranText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 84, 96, 0, 0, dSC1PIntro_SamusAranText_tex, 12, 0 },
+#else
 	{ 76, 80, 0, 0, dSC1PIntro_SamusAranText_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: SamusAranText (76x12 i4) */
 Sprite dSC1PIntro_SamusAranText = {
 	0, 0,
+#if defined(REGION_JP)
+	84, 12,
+#else
 	76, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -1027,18 +1159,30 @@ PAD(4);
 Gfx dSC1PIntro_YoshiTeamVS18Text_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: YoshiTeamVS18Text (112x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_YoshiTeamVS18Text_tex[768] = {
+#else
 u8 dSC1PIntro_YoshiTeamVS18Text_tex[672] = {
+#endif
     #include <SC1PIntro/YoshiTeamVS18Text.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_YoshiTeamVS18Text_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 124, 128, 0, 0, dSC1PIntro_YoshiTeamVS18Text_tex, 12, 0 },
+#else
 	{ 112, 112, 0, 0, dSC1PIntro_YoshiTeamVS18Text_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: YoshiTeamVS18Text (112x12 i4) */
 Sprite dSC1PIntro_YoshiTeamVS18Text = {
 	0, 0,
+#if defined(REGION_JP)
+	124, 12,
+#else
 	112, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -1099,18 +1243,30 @@ PAD(4);
 Gfx dSC1PIntro_AllyText_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: AllyText (32x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_AllyText_tex[288] = {
+#else
 u8 dSC1PIntro_AllyText_tex[192] = {
+#endif
     #include <SC1PIntro/AllyText.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_AllyText_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 40, 48, 0, 0, dSC1PIntro_AllyText_tex, 12, 0 },
+#else
 	{ 32, 32, 0, 0, dSC1PIntro_AllyText_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: AllyText (32x12 i4) */
 Sprite dSC1PIntro_AllyText = {
 	0, 0,
+#if defined(REGION_JP)
+	40, 12,
+#else
 	32, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,
@@ -1135,18 +1291,30 @@ PAD(4);
 Gfx dSC1PIntro_AllyText2_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: AllyText2 (32x12 i4) */
+#if defined(REGION_JP)
+u8 dSC1PIntro_AllyText2_tex[384] = {
+#else
 u8 dSC1PIntro_AllyText2_tex[192] = {
+#endif
     #include <SC1PIntro/AllyText2.i4.inc.c>
 };
 
 Bitmap dSC1PIntro_AllyText2_bitmaps[] = {
+#if defined(REGION_JP)
+	{ 51, 64, 0, 0, dSC1PIntro_AllyText2_tex, 12, 0 },
+#else
 	{ 32, 32, 0, 0, dSC1PIntro_AllyText2_tex, 12, 0 },
+#endif
 };
 
 /* Sprite: AllyText2 (32x12 i4) */
 Sprite dSC1PIntro_AllyText2 = {
 	0, 0,
+#if defined(REGION_JP)
+	51, 12,
+#else
 	32, 12,
+#endif
 	1.0f, 1.0f,
 	0, 0,
 	SP_FASTCOPY | SP_TEXSHUF,

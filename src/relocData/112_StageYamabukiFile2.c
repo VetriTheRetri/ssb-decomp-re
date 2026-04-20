@@ -185,7 +185,11 @@ u16 dStageYamabukiFile2_Lut_0x1828_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x1828.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0x1828[8] = { 0x00, 0x2D, 0xF9, 0xFD, 0x23, 0x8A, 0xC3, 0x59 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0x1850 (72 bytes) */
 u8 dStageYamabukiFile2_Tex_0x1850[72] = {
@@ -197,7 +201,11 @@ u16 dStageYamabukiFile2_Lut_0x1898_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x1898.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0x1898[8] = { 0x00, 0x2D, 0xF9, 0x99, 0xFD, 0x38, 0x43, 0x59 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0x18C0 (520 bytes) */
 u8 dStageYamabukiFile2_Tex_0x18C0[520] = {
@@ -209,7 +217,11 @@ u16 dStageYamabukiFile2_Lut_0x1AC8_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x1AC8.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0x1AC8[8] = { 0x7D, 0x77, 0x47, 0x82, 0x77, 0x65, 0x27, 0x77 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0x1AF0 (136 bytes) */
 u8 dStageYamabukiFile2_Tex_0x1AF0[136] = {
@@ -221,7 +233,11 @@ u16 dStageYamabukiFile2_Lut_0x1B78_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x1B78.palette.inc.c>
 };
 
+#if defined(REGION_JP)
+static u8 _pad_0x1B78[8] = { 0x76, 0x9C, 0xC0, 0x77, 0x78, 0x89, 0x97, 0x74 };
+#else
 PAD(8);
+#endif
 
 /* Texture data @ 0x1BA0 (US=1592, JP=520 bytes) */
 u8 dStageYamabukiFile2_Tex_0x1BA0[

@@ -285,8 +285,9 @@ def _strip_inactive_region_branches(text, version):
     want_jp = (version == "jp")
     out = []
     pos = 0
+    # Match both `#if defined(REGION_JP)` and `#if !defined(REGION_JP)`
     if_re = re.compile(
-        r"^[ \t]*#if\s+defined\s*\(\s*REGION_JP\s*\)[^\n]*\n",
+        r"^[ \t]*#if\s+(!?\s*defined\s*\(\s*REGION_JP\s*\))[^\n]*\n",
         re.MULTILINE)
     else_re = re.compile(r"^[ \t]*#else\b[^\n]*\n", re.MULTILINE)
     endif_re = re.compile(r"^[ \t]*#endif\b[^\n]*\n", re.MULTILINE)
@@ -298,6 +299,9 @@ def _strip_inactive_region_branches(text, version):
             break
         out.append(text[pos:m_if.start()])
         out.append(blank(m_if.group(0)))
+        # Check if negated: `!defined(REGION_JP)` flips the sense
+        is_negated = m_if.group(1).startswith("!")
+        first_is_jp = not is_negated  # #if defined → first branch is JP
         jp_start = m_if.end()
         m_end = endif_re.search(text, jp_start)
         if m_end is None:
@@ -305,14 +309,17 @@ def _strip_inactive_region_branches(text, version):
             break
         m_else = else_re.search(text, jp_start, m_end.start())
         if m_else is not None:
-            jp_body = text[jp_start:m_else.start()]
-            us_body = text[m_else.end():m_end.start()]
-            out.append(jp_body if want_jp else blank(jp_body))
+            first_body = text[jp_start:m_else.start()]
+            second_body = text[m_else.end():m_end.start()]
+            jp_body = first_body if first_is_jp else second_body
+            us_body = second_body if first_is_jp else first_body
+            out.append(first_body if (want_jp == first_is_jp) else blank(first_body))
             out.append(blank(m_else.group(0)))
-            out.append(us_body if not want_jp else blank(us_body))
+            out.append(second_body if (want_jp != first_is_jp) else blank(second_body))
         else:
-            jp_body = text[jp_start:m_end.start()]
-            out.append(jp_body if want_jp else blank(jp_body))
+            first_body = text[jp_start:m_end.start()]
+            keep = (want_jp == first_is_jp)
+            out.append(first_body if keep else blank(first_body))
         out.append(blank(m_end.group(0)))
         pos = m_end.end()
     return "".join(out)

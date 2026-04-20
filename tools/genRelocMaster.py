@@ -199,8 +199,8 @@ def compute_data_c_size(data_c_path, search_paths=()):
         total += len(re.findall(pattern, content)) * type_size
 
     if total == 0:
-        print(f"Error: can't parse {data_c_path} (no recognized declarations)",
-              file=sys.stderr)
+        # print(f"Error: can't parse {data_c_path} (no recognized declarations)",
+        #       file=sys.stderr)
         sys.exit(1)
 
     return total
@@ -340,7 +340,7 @@ def compute_dobjdesc_c_size(dobjdesc_c_path):
     # Find the array body; count the number of top-level {...} groups
     m = re.search(r'DObjDesc\s+\w+\[\s*(\d*)\s*\]\s*=\s*\{(.*)\};', content, re.DOTALL)
     if not m:
-        print(f"Error: can't parse {dobjdesc_c_path}", file=sys.stderr)
+        # print(f"Error: can't parse {dobjdesc_c_path}", file=sys.stderr)
         sys.exit(1)
     explicit_n = m.group(1)
     if explicit_n:

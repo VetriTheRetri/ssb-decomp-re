@@ -1414,11 +1414,11 @@ ITAttributes dITCommonData_Kamex_ItemAttributes[1] = {{
 	{ 0, 0, 0 },  /* damage_coll_offset */
 	{ 150, 150, 150 },  /* damage_coll_size */
 	317, 0, -300, 300,  /* map_coll top/center/bottom/width */
-	400,  /* size */
-	130,  /* angle */
-	60,  /* knockback_scale */
-	13,  /* damage */
-	0,  /* element */
+#if defined(REGION_JP)
+	400, 361, 60, 13, 0,  /* size, angle(JP), ks, dmg, elem */
+#else
+	400, 130, 60, 13, 0,  /* size, angle(US), ks, dmg, elem */
+#endif
 	0,  /* knockback_weight */
 	0,  /* shield_damage (IDO bug: always 0 in static init) */
 	1,  /* attack_count */

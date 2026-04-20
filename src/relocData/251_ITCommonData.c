@@ -1,19 +1,13 @@
 /* relocData file 251: ITCommonData
  *
- * Common-item attribute + weapon-attribute pool. Every `*_ItemAttributes`
- * block is a 72-byte ITAttributes (see src/it/ittypes.h) and every
- * `*_WeaponAttributes` block is a 52-byte WPAttributes (see src/wp/wptypes.h).
- * Both struct definitions now use `u32 size : 16` (not `u16 size`) so that
- * future work can promote any of these u8 blobs to typed initializers —
- * see the comment above struct ITAttributes for the verified IDO bitfield
- * layout (Vec3h damage_coll_* at 0x1E/0x24, map_coll at 0x2A, size :16 at
- * 0x32, then packed bitfield tail at 0x34+).
+ * Common-item attribute + weapon-attribute pool.
  *
  * Inlined block layout - edit this file directly. The .inc.c files
  * referenced below live under build/src/relocData/ and are regenerated
  * from the baserom by tools/extractRelocInc.py at extract time. */
 
 #include "relocdata_types.h"
+#include <macros.h>
 #include <it/ittypes.h>
 #include <wp/wptypes.h>
 
@@ -56,6 +50,7 @@ extern u8 dITCommonObject_Mew_Item_data_DObjDesc[];
 extern u8 dITCommonObject_NBumper_Item_data_DObjDesc[];
 extern u8 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488[];
 extern u8 dITCommonObject_NyarsCoin_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_Sawamura_Item_data_DObjDesc[];
 extern u8 dITCommonObject_Nyars_Item_data_DObjDesc[];
 extern u8 dITCommonObject_Pippi_Item_data_DObjDesc[];
 extern u8 dITCommonObject_SpearSwarm_Weapon_data_DObjDesc[];
@@ -79,9 +74,11 @@ extern u8 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540[];
 extern u8 dITCommonObject_WarkRock_Weapon_data_DObjDesc[];
 extern u8 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0[];
 extern u8 dITCommonObject_Wark_Item_data_DObjDesc[];
-/* Raw data from file offset 0x0000 to 0x0050 (80 bytes) */
-u8 dITCommonData_Container_VelocitiesY[80] = {
-	#include <ITCommonData/Container_VelocitiesY.data.inc.c>
+
+f32 dITCommonData_Container_VelocitiesY[20] = {
+	26.0f, 26.0f, 26.0f, 26.0f, 26.0f, 26.0f, 26.0f, 40.0f,
+	26.0f, 26.0f, 26.0f, 26.0f, 26.0f, 26.0f, 26.0f, 26.0f,
+	26.0f, 26.0f, 26.0f, 26.0f,
 };
 
 /* ItemAttributes @ 0x0050 — Capsule */
@@ -125,8 +122,11 @@ ITAttributes dITCommonData_Capsule_ItemAttributes[1] = {{
 }};
 
 /* Raw data from file offset 0x0098 to 0x00B8 (32 bytes) */
-u32 dITCommonData_Capsule_AttackEvents[8] = {
-	#include <ITCommonData/Capsule_AttackEvents.data.inc.c>
+ITAttackEvent dITCommonData_Capsule_AttackEvents[4] = {
+	{ 0, 361, 30, 350 },
+	{ 2, 361, 30, 250 },
+	{ 4, 361, 20, 150 },
+	{ 6, 361, 1, 0 },
 };
 
 /* ItemAttributes @ 0x00B8 — Tomato */
@@ -509,9 +509,12 @@ WPAttributes dITCommonData_FFlowerFlame_WeaponAttributes = {
     0,  /* knockback_base   : 10 */
 };
 
-/* Raw data from file offset 0x0360 to 0x0374 (20 bytes) */
-u8 dITCommonData_FFlowerFlame_Angles[20] = {
-	#include <ITCommonData/FFlowerFlame_Angles.data.inc.c>
+f32 dITCommonData_FFlowerFlame_Angles[5] = {
+	F_CST_DTOR32(-15.0F),
+	F_CST_DTOR32(-7.5F),
+	F_CST_DTOR32(0.0F),
+	F_CST_DTOR32(7.5F),
+	F_CST_DTOR32(15.0F),
 };
 
 /* ItemAttributes @ 0x0374 — Hammer */
@@ -595,8 +598,11 @@ ITAttributes dITCommonData_MSBomb_ItemAttributes[1] = {{
 }};
 
 /* Raw data from file offset 0x0404 to 0x0424 (32 bytes) */
-u32 dITCommonData_MSBomb_AttackEvents[8] = {
-	#include <ITCommonData/MSBomb_AttackEvents.data.inc.c>
+ITAttackEvent dITCommonData_MSBomb_AttackEvents[4] = {
+	{ 0, 361, 30, 360 },
+	{ 4, 361, 30, 300 },
+	{ 8, 361, 20, 200 },
+	{ 16, 361, 1, 0 },
 };
 
 /* ItemAttributes @ 0x0424 — BombHei */
@@ -640,8 +646,11 @@ ITAttributes dITCommonData_BombHei_ItemAttributes[1] = {{
 }};
 
 /* Raw data from file offset 0x046C to 0x048C (32 bytes) */
-u32 dITCommonData_BombHei_AttackEvents[8] = {
-	#include <ITCommonData/BombHei_AttackEvents.data.inc.c>
+ITAttackEvent dITCommonData_BombHei_AttackEvents[4] = {
+	{ 0, 361, 30, 350 },
+	{ 2, 361, 30, 250 },
+	{ 4, 361, 20, 150 },
+	{ 6, 361, 1, 0 },
 };
 
 /* ItemAttributes @ 0x048C — StarRod */
@@ -865,8 +874,11 @@ ITAttributes dITCommonData_Box_ItemAttributes[1] = {{
 }};
 
 /* Raw data from file offset 0x0614 to 0x0634 (32 bytes) */
-u32 dITCommonData_Box_AttackEvents[8] = {
-	#include <ITCommonData/Box_AttackEvents.data.inc.c>
+ITAttackEvent dITCommonData_Box_AttackEvents[4] = {
+	{ 0, 361, 20, 350 },
+	{ 4, 361, 15, 250 },
+	{ 6, 361, 10, 150 },
+	{ 8, 361, 1, 0 },
 };
 
 /* ItemAttributes @ 0x0634 — Taru */
@@ -910,8 +922,11 @@ ITAttributes dITCommonData_Taru_ItemAttributes[1] = {{
 }};
 
 /* Raw data from file offset 0x067C to 0x069C (32 bytes) */
-u32 dITCommonData_Taru_AttackEvents[8] = {
-	#include <ITCommonData/Taru_AttackEvents.data.inc.c>
+ITAttackEvent dITCommonData_Taru_AttackEvents[4] = {
+	{ 0, 361, 20, 350 },
+	{ 4, 361, 15, 250 },
+	{ 6, 361, 10, 150 },
+	{ 8, 361, 1, 0 },
 };
 
 /* ItemAttributes @ 0x069C — NBumper */
@@ -1567,8 +1582,11 @@ ITAttributes dITCommonData_Egg_ItemAttributes[1] = {{
 }};
 
 /* Raw data from file offset 0x0B14 to 0x0B34 (32 bytes) */
-u32 dITCommonData_Egg_AttackEvents[8] = {
-	#include <ITCommonData/Egg_AttackEvents.data.inc.c>
+ITAttackEvent dITCommonData_Egg_AttackEvents[4] = {
+	{ 0, 361, 30, 350 },
+	{ 4, 361, 30, 250 },
+	{ 6, 361, 20, 150 },
+	{ 8, 361, 1, 0 },
 };
 
 /* ItemAttributes @ 0x0B34 — Starmie */
@@ -1642,30 +1660,44 @@ WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
 };
 
 /* ItemAttributes @ 0x0BB0 — Sawamura */
-/* NOTE: kept as u8 blob because shield_damage=30 but IDO s32:8 in the
- * second bitfield run always compiles to 0 in static initializers.
- * Changing s32 to u32 fixes the initializer but breaks runtime codegen.
- * The typed form would be:
- *
- * ITAttributes dITCommonData_Sawamura_ItemAttributes[1] = {{
- *     (void *)0x02FE47D0, NULL, NULL, NULL,
- *     0, 0, 0, 1, 1,
- *     0, 0, 0, 0, 0, 0,
- *     { 0, 0, 0 }, { 150, 150, 150 },
- *     317, 0, -317, 195,
- *     300,
- *     90, 100, 24, 0,
- *     0, 30, 1, 0,
- *     nSYAudioFGMPunchL, 1, 1, 0,
- *     0, 0, 1,
- *     20, 6, 0, 0, 0,
- *     nSYAudioFGMItemMapCollide, nSYAudioFGMItemMapCollide, nSYAudioFGMItemMapCollide,
- *     100, 0,
- * }};
- */
-u8 dITCommonData_Sawamura_ItemAttributes[72] = {
-	#include <ITCommonData/Sawamura_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_Sawamura_ItemAttributes[1] = {{
+	(void *)dITCommonObject_Sawamura_Item_data_DObjDesc,  /* data */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	317, 0, -317, 195,  /* map_coll top/center/bottom/width */
+	300, /* size */
+	90,  /* angle */
+	100, /* knockback_scale */
+	24,  /* damage */
+	0,  /* element */
+	0,  /* knockback_weight */
+	30, /* shield_damage (IDO bug: always 0 in static init) */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* priority */
+	1,  /* can_rehit_item */
+	0,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	20,  /* knockback_base */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
 
 /* ItemAttributes @ 0x0BF8 — Dogas */
 ITAttributes dITCommonData_Dogas_ItemAttributes[1] = {{
@@ -1807,8 +1839,44 @@ WPAttributes dITCommonData_PippiSwarm_WeaponAttributes = {
     40,  /* knockback_base   : 10 */
 };
 
-/* Raw data from file offset 0x0CF0 to 0x0D40 (80 bytes) */
-u8 dITCommonData_GBumper_ItemAttributes[80] = {
-	#include <ITCommonData/GBumper_ItemAttributes.data.inc.c>
-};
+ITAttributes dITCommonData_GBumper_ItemAttributes[1] = {{
+	(void *)dITCommonObject_NBumper_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 150, 150, 150 },  /* damage_coll_size */
+	180, 0, -180, 180,  /* map_coll top/center/bottom/width */
+	250,  /* size */
+	362,  /* angle */
+	50,  /* knockback_scale */
+	1,  /* damage */
+	0,  /* element */
+	200,  /* knockback_weight */
+	0,  /* shield_damage */
+	1,  /* attack_count */
+	0,  /* can_setoff */
+	nSYAudioFGMBumperHit,  /* hit_sfx */
+	1,  /* priority */
+	0,  /* can_rehit_item */
+	1,  /* can_rehit_fighter */
+	0,  /* can_hop */
+	0,  /* can_reflect */
+	1,  /* can_shield */
+	0,  /* knockback_base */
+	3,  /* type */
+	0,  /* hitstatus */
+	0,  /* unk_atca_0x3C_b6 */
+	0,  /* unk_atca_0x3C_b7 */
+	nSYAudioFGMItemThrow,  /* drop_sfx */
+	nSYAudioFGMItemThrow,  /* throw_sfx */
+	nSYAudioFGMItemThrow,  /* smash_sfx */
+	100,  /* vel_scale */
+	0,  /* spin_speed */
+}};
+
+PAD(8);
 

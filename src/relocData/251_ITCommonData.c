@@ -17,6 +17,68 @@
 #include <it/ittypes.h>
 #include <wp/wptypes.h>
 
+/* External symbols from ITCommonObject (file 86) */
+extern u8 dITCommonObject_Bat_Item_data_DObjDesc[];
+extern u8 dITCommonObject_BombHei_Item_data_DObjDesc[];
+extern u8 dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230[];
+extern u8 dITCommonObject_Box_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Capsule_Item_data_DObjDesc[];
+extern u8 dITCommonObject_DogasSmog_Weapon_animjoints[];
+extern u8 dITCommonObject_DogasSmog_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_DogasSmog_Weapon_matanimjoints[];
+extern u8 dITCommonObject_DogasSmog_Weapon_mobjsubs[];
+extern u8 dITCommonObject_Dogas_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Egg_Item_animjoints[];
+extern u8 dITCommonObject_Egg_Item_data_DObjDesc[];
+extern u8 dITCommonObject_FFlower_Item_data_DObjDesc[];
+extern u8 dITCommonObject_FFlower_Item_matanimjoints[];
+extern u8 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388[];
+extern u8 dITCommonObject_GShell_Item_data_DObjDesc[];
+extern u8 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0[];
+extern u8 dITCommonObject_Hammer_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Harisen_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Heart_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Kabigon_Item_data_DObjDesc[];
+extern u8 dITCommonObject_KamexHydro_Weapon_animjoints[];
+extern u8 dITCommonObject_KamexHydro_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_KamexHydro_Weapon_matanimjoints[];
+extern u8 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0[];
+extern u8 dITCommonObject_Kamex_Item_data_DObjDesc[];
+extern u8 dITCommonObject_LGunAmmo_Weapon_data[];
+extern u8 dITCommonObject_LGun_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Lizardon_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410[];
+extern u8 dITCommonObject_MBall_Item_data_DObjDesc[];
+extern u8 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120[];
+extern u8 dITCommonObject_MLucky_Item_data_DObjDesc[];
+extern u8 dITCommonObject_MSBomb_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Mew_Item_data_DObjDesc[];
+extern u8 dITCommonObject_NBumper_Item_data_DObjDesc[];
+extern u8 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488[];
+extern u8 dITCommonObject_NyarsCoin_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_Nyars_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Pippi_Item_data_DObjDesc[];
+extern u8 dITCommonObject_SpearSwarm_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_SpearSwarm_Weapon_matanimjoints[];
+extern u8 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0[];
+extern u8 dITCommonObject_Spear_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70[];
+extern u8 dITCommonObject_StarRod_Item_data_DObjDesc[];
+extern u8 dITCommonObject_StarRod_Weapon_data[];
+extern u8 dITCommonObject_Star_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Star_Item_matanimjoints[];
+extern u8 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8[];
+extern u8 dITCommonObject_StarmieSwift_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_Starmie_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0[];
+extern u8 dITCommonObject_Sword_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Taru_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Tomato_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Tosakinto_Item_data_DObjDesc[];
+extern u8 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540[];
+extern u8 dITCommonObject_WarkRock_Weapon_data_DObjDesc[];
+extern u8 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0[];
+extern u8 dITCommonObject_Wark_Item_data_DObjDesc[];
 /* Raw data from file offset 0x0000 to 0x0050 (80 bytes) */
 u8 dITCommonData_Container_VelocitiesY[80] = {
 	#include <ITCommonData/Container_VelocitiesY.data.inc.c>
@@ -24,7 +86,7 @@ u8 dITCommonData_Container_VelocitiesY[80] = {
 
 /* ItemAttributes @ 0x0050 — Capsule */
 ITAttributes dITCommonData_Capsule_ItemAttributes[1] = {{
-	(void *)0x002E019C,  /* data (chain) */
+	(void *)dITCommonObject_Capsule_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -69,7 +131,7 @@ u32 dITCommonData_Capsule_AttackEvents[8] = {
 
 /* ItemAttributes @ 0x00B8 — Tomato */
 ITAttributes dITCommonData_Tomato_ItemAttributes[1] = {{
-	(void *)0x004002AC,  /* data (chain) */
+	(void *)dITCommonObject_Tomato_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -109,7 +171,7 @@ ITAttributes dITCommonData_Tomato_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0100 — Heart */
 ITAttributes dITCommonData_Heart_ItemAttributes[1] = {{
-	(void *)0x00520456,  /* data (chain) */
+	(void *)dITCommonObject_Heart_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -149,10 +211,10 @@ ITAttributes dITCommonData_Heart_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0148 — Star */
 ITAttributes dITCommonData_Star_ItemAttributes[1] = {{
-	(void *)0x00530558,  /* data (chain) */
-	(MObjSub ***)0x005504AE,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_Star_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_Star_Item_mobjsubs_gap_0x12B8,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
-	(AObjEvent32 ***)0x0064057C,  /* p_matanim_joints (chain) */
+	(AObjEvent32 ***)dITCommonObject_Star_Item_matanimjoints,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
 	0, 0, 0,  /* attack_offset1 x/y/z */
@@ -189,7 +251,7 @@ ITAttributes dITCommonData_Star_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0190 — Sword */
 ITAttributes dITCommonData_Sword_ItemAttributes[1] = {{
-	(void *)0x00760646,  /* data (chain) */
+	(void *)dITCommonObject_Sword_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -229,7 +291,7 @@ ITAttributes dITCommonData_Sword_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x01D8 — Bat */
 ITAttributes dITCommonData_Bat_ItemAttributes[1] = {{
-	(void *)0x00880780,  /* data (chain) */
+	(void *)dITCommonObject_Bat_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -269,7 +331,7 @@ ITAttributes dITCommonData_Bat_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0220 — Harisen */
 ITAttributes dITCommonData_Harisen_ItemAttributes[1] = {{
-	(void *)0x009A0866,  /* data (chain) */
+	(void *)dITCommonObject_Harisen_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -309,7 +371,7 @@ ITAttributes dITCommonData_Harisen_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0268 — LGun */
 ITAttributes dITCommonData_LGun_ItemAttributes[1] = {{
-	(void *)0x00AC0FD4,  /* data (chain) */
+	(void *)dITCommonObject_LGun_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -349,7 +411,7 @@ ITAttributes dITCommonData_LGun_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x02B0 */
 WPAttributes dITCommonData_LGunAmmo_WeaponAttributes = {
-    (void *)0x00B9102A,  /* data (chain) */
+    (void *)dITCommonObject_LGunAmmo_Weapon_data,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
@@ -379,10 +441,10 @@ WPAttributes dITCommonData_LGunAmmo_WeaponAttributes = {
 
 /* ItemAttributes @ 0x02E4 — FFlower */
 ITAttributes dITCommonData_FFlower_ItemAttributes[1] = {{
-	(void *)0x00BA11AC,  /* data (chain) */
-	(MObjSub ***)0x00BC10E2,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_FFlower_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
-	(AObjEvent32 ***)0x00DD11D8,  /* p_matanim_joints (chain) */
+	(AObjEvent32 ***)dITCommonObject_FFlower_Item_matanimjoints,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
 	0, 0, 0,  /* attack_offset1 x/y/z */
@@ -454,7 +516,7 @@ u8 dITCommonData_FFlowerFlame_Angles[20] = {
 
 /* ItemAttributes @ 0x0374 — Hammer */
 ITAttributes dITCommonData_Hammer_ItemAttributes[1] = {{
-	(void *)0x00EF09D4,  /* data (chain) */
+	(void *)dITCommonObject_Hammer_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -494,7 +556,7 @@ ITAttributes dITCommonData_Hammer_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x03BC — MSBomb */
 ITAttributes dITCommonData_MSBomb_ItemAttributes[1] = {{
-	(void *)0x01090E68,  /* data (chain) */
+	(void *)dITCommonObject_MSBomb_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -539,8 +601,8 @@ u32 dITCommonData_MSBomb_AttackEvents[8] = {
 
 /* ItemAttributes @ 0x0424 — BombHei */
 ITAttributes dITCommonData_BombHei_ItemAttributes[1] = {{
-	(void *)0x010A0CFE,  /* data (chain) */
-	(MObjSub ***)0x01230C8C,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_BombHei_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 1, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -584,7 +646,7 @@ u32 dITCommonData_BombHei_AttackEvents[8] = {
 
 /* ItemAttributes @ 0x048C — StarRod */
 ITAttributes dITCommonData_StarRod_ItemAttributes[1] = {{
-	(void *)0x013512D8,  /* data (chain) */
+	(void *)dITCommonObject_StarRod_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -624,7 +686,7 @@ ITAttributes dITCommonData_StarRod_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x04D4 */
 WPAttributes dITCommonData_StarRod_WeaponAttributes = {
-    (void *)0x01421516,  /* data (chain) */
+    (void *)dITCommonObject_StarRod_Weapon_data,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
@@ -654,7 +716,7 @@ WPAttributes dITCommonData_StarRod_WeaponAttributes = {
 
 /* WPAttributes @ 0x0508 */
 WPAttributes dITCommonData_StarRodSmash_WeaponAttributes = {
-    (void *)0x014F1516,  /* data (chain) */
+    (void *)dITCommonObject_StarRod_Weapon_data,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
@@ -684,8 +746,8 @@ WPAttributes dITCommonData_StarRodSmash_WeaponAttributes = {
 
 /* ItemAttributes @ 0x053C — GShell */
 ITAttributes dITCommonData_GShell_ItemAttributes[1] = {{
-	(void *)0x015017E2,  /* data (chain) */
-	(MObjSub ***)0x01611778,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_GShell_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -724,8 +786,8 @@ ITAttributes dITCommonData_GShell_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0584 — RShell */
 ITAttributes dITCommonData_RShell_ItemAttributes[1] = {{
-	(void *)0x016217E2,  /* data (chain) */
-	(MObjSub ***)0x01731778,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_GShell_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -764,7 +826,7 @@ ITAttributes dITCommonData_RShell_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x05CC — Box */
 ITAttributes dITCommonData_Box_ItemAttributes[1] = {{
-	(void *)0x018D19DE,  /* data (chain) */
+	(void *)dITCommonObject_Box_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -809,7 +871,7 @@ u32 dITCommonData_Box_AttackEvents[8] = {
 
 /* ItemAttributes @ 0x0634 — Taru */
 ITAttributes dITCommonData_Taru_ItemAttributes[1] = {{
-	(void *)0x01A71C6A,  /* data (chain) */
+	(void *)dITCommonObject_Taru_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -854,8 +916,8 @@ u32 dITCommonData_Taru_AttackEvents[8] = {
 
 /* ItemAttributes @ 0x069C — NBumper */
 ITAttributes dITCommonData_NBumper_ItemAttributes[1] = {{
-	(void *)0x01A81D92,  /* data (chain) */
-	(MObjSub ***)0x01B91D22,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_NBumper_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -894,8 +956,8 @@ ITAttributes dITCommonData_NBumper_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x06E4 — MBall */
 ITAttributes dITCommonData_MBall_ItemAttributes[1] = {{
-	(void *)0x01BA250C,  /* data (chain) */
-	(MObjSub ***)0x01CB2448,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_MBall_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_MBall_Item_mobjsubs_gap_0x9120,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 1, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -934,7 +996,7 @@ ITAttributes dITCommonData_MBall_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x072C — Wark */
 ITAttributes dITCommonData_Wark_ItemAttributes[1] = {{
-	(void *)0x01DD2850,  /* data (chain) */
+	(void *)dITCommonObject_Wark_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -974,8 +1036,8 @@ ITAttributes dITCommonData_Wark_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x0774 */
 WPAttributes dITCommonData_WarkRock_WeaponAttributes = {
-    (void *)0x01DE2AE6,  /* data (chain) */
-    (MObjSub ***)0x01EA2A74,  /* p_mobjsubs (chain) */
+    (void *)dITCommonObject_WarkRock_Weapon_data_DObjDesc,  /* data */
+    (MObjSub ***)dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
@@ -1004,7 +1066,7 @@ WPAttributes dITCommonData_WarkRock_WeaponAttributes = {
 
 /* ItemAttributes @ 0x07A8 — Kabigon */
 ITAttributes dITCommonData_Kabigon_ItemAttributes[1] = {{
-	(void *)0x01FC2C56,  /* data (chain) */
+	(void *)dITCommonObject_Kabigon_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1044,8 +1106,8 @@ ITAttributes dITCommonData_Kabigon_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x07F0 — Tosakinto */
 ITAttributes dITCommonData_Tosakinto_ItemAttributes[1] = {{
-	(void *)0x01FD2DC2,  /* data (chain) */
-	(MObjSub ***)0x020E2D50,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_Tosakinto_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -1084,7 +1146,7 @@ ITAttributes dITCommonData_Tosakinto_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0838 — Mew */
 ITAttributes dITCommonData_Mew_ItemAttributes[1] = {{
-	(void *)0x02202F30,  /* data (chain) */
+	(void *)dITCommonObject_Mew_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1124,7 +1186,7 @@ ITAttributes dITCommonData_Mew_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0880 — Nyars */
 ITAttributes dITCommonData_Nyars_ItemAttributes[1] = {{
-	(void *)0x0232304C,  /* data (chain) */
+	(void *)dITCommonObject_Nyars_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1164,7 +1226,7 @@ ITAttributes dITCommonData_Nyars_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x08C8 */
 WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
-    (void *)0x023F3148,  /* data (chain) */
+    (void *)dITCommonObject_NyarsCoin_Weapon_data_DObjDesc,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
@@ -1194,8 +1256,8 @@ WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
 
 /* ItemAttributes @ 0x08FC — Lizardon */
 ITAttributes dITCommonData_Lizardon_ItemAttributes[1] = {{
-	(void *)0x02403570,  /* data (chain) */
-	(MObjSub ***)0x02633504,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_Lizardon_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -1272,8 +1334,8 @@ f32 dITCommonData_LizardonFlame_AngleSpread[5] = {
 
 /* ItemAttributes @ 0x098C — Spear */
 ITAttributes dITCommonData_Spear_ItemAttributes[1] = {{
-	(void *)0x026437CE,  /* data (chain) */
-	(MObjSub ***)0x0275375C,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_Spear_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -1312,10 +1374,10 @@ ITAttributes dITCommonData_Spear_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x09D4 */
 WPAttributes dITCommonData_SpearSwarm_WeaponAttributes = {
-    (void *)0x0276392A,  /* data (chain) */
-    (MObjSub ***)0x027838B8,  /* p_mobjsubs (chain) */
+    (void *)dITCommonObject_SpearSwarm_Weapon_data_DObjDesc,  /* data */
+    (MObjSub ***)dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0,  /* p_mobjsubs */
     NULL,  /* anim_joints */
-    (AObjEvent32 ***)0x02823958,  /* p_matanim_joints (chain) */
+    (AObjEvent32 ***)dITCommonObject_SpearSwarm_Weapon_matanimjoints,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     244, 0, -244, 244,  /* map_coll top/center/bottom/width */
     300,  /* size */
@@ -1342,7 +1404,7 @@ WPAttributes dITCommonData_SpearSwarm_WeaponAttributes = {
 
 /* ItemAttributes @ 0x0A08 — Kamex */
 ITAttributes dITCommonData_Kamex_ItemAttributes[1] = {{
-	(void *)0x02943A98,  /* data (chain) */
+	(void *)dITCommonObject_Kamex_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1382,10 +1444,10 @@ ITAttributes dITCommonData_Kamex_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x0A50 */
 WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
-    (void *)0x02953E76,  /* data (chain) */
-    (MObjSub ***)0x02963DB0,  /* p_mobjsubs (chain) */
-    (AObjEvent32 **)0x02973EA4,  /* anim_joints (chain) */
-    (AObjEvent32 ***)0x02A13EDC,  /* p_matanim_joints (chain) */
+    (void *)dITCommonObject_KamexHydro_Weapon_data_DObjDesc,  /* data */
+    (MObjSub ***)dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0,  /* p_mobjsubs */
+    (AObjEvent32 **)dITCommonObject_KamexHydro_Weapon_animjoints,  /* anim_joints */
+    (AObjEvent32 ***)dITCommonObject_KamexHydro_Weapon_matanimjoints,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     213, 0, -213, 180,  /* map_coll top/center/bottom/width */
 #if defined(REGION_JP)
@@ -1426,7 +1488,7 @@ WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
 
 /* ItemAttributes @ 0x0A84 — MLucky */
 ITAttributes dITCommonData_MLucky_ItemAttributes[1] = {{
-	(void *)0x02B34000,  /* data (chain) */
+	(void *)dITCommonObject_MLucky_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1466,9 +1528,9 @@ ITAttributes dITCommonData_MLucky_ItemAttributes[1] = {{
 
 /* ItemAttributes @ 0x0ACC — Egg */
 ITAttributes dITCommonData_Egg_ItemAttributes[1] = {{
-	(void *)0x02B54128,  /* data (chain) */
+	(void *)dITCommonObject_Egg_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
-	(AObjEvent32 **)0x02CD4154,  /* anim_joints (chain) */
+	(AObjEvent32 **)dITCommonObject_Egg_Item_animjoints,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -1511,8 +1573,8 @@ u32 dITCommonData_Egg_AttackEvents[8] = {
 
 /* ItemAttributes @ 0x0B34 — Starmie */
 ITAttributes dITCommonData_Starmie_ItemAttributes[1] = {{
-	(void *)0x02CE44A8,  /* data (chain) */
-	(MObjSub ***)0x02DF4438,  /* p_mobjsubs (chain) */
+	(void *)dITCommonObject_Starmie_Item_data_DObjDesc,  /* data */
+	(MObjSub ***)dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu, dobjs, colanim, hitlag, weight */
@@ -1551,7 +1613,7 @@ ITAttributes dITCommonData_Starmie_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x0B7C */
 WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
-    (void *)0x02EC4676,  /* data (chain) */
+    (void *)dITCommonObject_StarmieSwift_Weapon_data_DObjDesc,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
@@ -1607,7 +1669,7 @@ u8 dITCommonData_Sawamura_ItemAttributes[72] = {
 
 /* ItemAttributes @ 0x0BF8 — Dogas */
 ITAttributes dITCommonData_Dogas_ItemAttributes[1] = {{
-	(void *)0x03104A08,  /* data (chain) */
+	(void *)dITCommonObject_Dogas_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1647,10 +1709,10 @@ ITAttributes dITCommonData_Dogas_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x0C40 */
 WPAttributes dITCommonData_DogasSmog_WeaponAttributes = {
-    (void *)0x03114C40,  /* data (chain) */
-    (MObjSub ***)0x03124BDE,  /* p_mobjsubs (chain) */
-    (AObjEvent32 **)0x03134C64,  /* anim_joints (chain) */
-    (AObjEvent32 ***)0x031D4C78,  /* p_matanim_joints (chain) */
+    (void *)dITCommonObject_DogasSmog_Weapon_data_DObjDesc,  /* data */
+    (MObjSub ***)dITCommonObject_DogasSmog_Weapon_mobjsubs,  /* p_mobjsubs */
+    (AObjEvent32 **)dITCommonObject_DogasSmog_Weapon_animjoints,  /* anim_joints */
+    (AObjEvent32 ***)dITCommonObject_DogasSmog_Weapon_matanimjoints,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     75, 0, -75, 75,  /* map_coll top/center/bottom/width */
     50,  /* size */
@@ -1677,7 +1739,7 @@ WPAttributes dITCommonData_DogasSmog_WeaponAttributes = {
 
 /* ItemAttributes @ 0x0C74 — Pippi */
 ITAttributes dITCommonData_Pippi_ItemAttributes[1] = {{
-	(void *)0x032F4D66,  /* data (chain) */
+	(void *)dITCommonObject_Pippi_Item_data_DObjDesc,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
@@ -1717,7 +1779,7 @@ ITAttributes dITCommonData_Pippi_ItemAttributes[1] = {{
 
 /* WPAttributes @ 0x0CBC */
 WPAttributes dITCommonData_PippiSwarm_WeaponAttributes = {
-    (void *)0x033C4D66,  /* data (chain) */
+    (void *)dITCommonObject_Pippi_Item_data_DObjDesc,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */

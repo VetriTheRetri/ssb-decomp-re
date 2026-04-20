@@ -211,6 +211,1173 @@ u8 dSCExplainGraphics_SpecialMoveRGB_post[24] = {
 	#include <SCExplainGraphics/SpecialMoveRGB_post.data.inc.c>
 };
 
+
+#if defined(REGION_JP)
+
+/* JP text sprites — different dimensions and textures from US */
+
+/* Sprite: JPText1 */
+
+Gfx dSCExplainGraphics_JPText1_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText1 (167(176)x49 i4, 2 tiles) */
+u8 dSCExplainGraphics_JPText1_tex[4320] = {
+    #include <SCExplainGraphics/JPText1.i4.inc.c>
+};
+
+/* Sprite: JPText1 (167x48 i4) */
+
+Bitmap dSCExplainGraphics_JPText1_bitmaps[] = {
+	{ 167, 176, 0, 0, dSCExplainGraphics_JPText1_tex, 46, 0 },
+	{ 167, 176, 0, 0, dSCExplainGraphics_JPText1_tex + 0xFD8, 3, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText1 = {
+	0, 0,
+	167, 48,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	2, 48,
+	45, 46,
+	4, 0,
+	(Bitmap*)dSCExplainGraphics_JPText1_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+/* Sprite: JPText2 */
+
+Gfx dSCExplainGraphics_JPText2_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText2 (136(144)x32 i4) */
+u8 dSCExplainGraphics_JPText2_tex[2304] = {
+    #include <SCExplainGraphics/JPText2.i4.inc.c>
+};
+
+/* Sprite: JPText2 (136x32 i4) */
+
+Bitmap dSCExplainGraphics_JPText2_bitmaps[] = {
+	{ 136, 144, 0, 0, dSCExplainGraphics_JPText2_tex, 32, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText2 = {
+	0, 0,
+	136, 32,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	32, 32,
+	4, 0,
+	(Bitmap*)dSCExplainGraphics_JPText2_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+/* Sprite: JPText3 */
+
+Gfx dSCExplainGraphics_JPText3_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText3 (168(176)x32 i4) */
+u8 dSCExplainGraphics_JPText3_tex[2816] = {
+    #include <SCExplainGraphics/JPText3.i4.inc.c>
+};
+
+/* Sprite: JPText3 (168x32 i4) */
+
+Bitmap dSCExplainGraphics_JPText3_bitmaps[] = {
+	{ 168, 176, 0, 0, dSCExplainGraphics_JPText3_tex, 32, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText3 = {
+	0, 0,
+	168, 32,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	32, 32,
+	4, 0,
+	(Bitmap*)dSCExplainGraphics_JPText3_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+/* Sprite: JPText4 */
+
+Gfx dSCExplainGraphics_JPText4_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText4 (189(192)x13 i4) */
+u8 dSCExplainGraphics_JPText4_tex[1248] = {
+    #include <SCExplainGraphics/JPText4.i4.inc.c>
+};
+
+/* Sprite: JPText4 (189x13 i4) */
+
+Bitmap dSCExplainGraphics_JPText4_bitmaps[] = {
+	{ 189, 192, 0, 0, dSCExplainGraphics_JPText4_tex, 13, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText4 = {
+	0, 0,
+	189, 13,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	13, 13,
+	4, 0,
+	(Bitmap*)dSCExplainGraphics_JPText4_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+/* Sprite: JPText5 */
+
+Gfx dSCExplainGraphics_JPText5_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText5 (118(128)x31 i4) */
+u8 dSCExplainGraphics_JPText5_tex[1984] = {
+    #include <SCExplainGraphics/JPText5.i4.inc.c>
+};
+
+/* Sprite: JPText5 (118x31 i4) */
+
+Bitmap dSCExplainGraphics_JPText5_bitmaps[] = {
+	{ 118, 128, 0, 0, dSCExplainGraphics_JPText5_tex, 31, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText5 = {
+	0, 0,
+	118, 31,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	31, 31,
+	4, 0,
+	(Bitmap*)dSCExplainGraphics_JPText5_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+/* Sprite: JPText6 */
+
+Gfx dSCExplainGraphics_JPText6_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText6 (185(192)x14 i4) */
+u8 dSCExplainGraphics_JPText6_tex[1344] = {
+    #include <SCExplainGraphics/JPText6.i4.inc.c>
+};
+
+/* Sprite: JPText6 (185x14 i4) */
+
+Bitmap dSCExplainGraphics_JPText6_bitmaps[] = {
+	{ 185, 192, 0, 0, dSCExplainGraphics_JPText6_tex, 14, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText6 = {
+	0, 0,
+	185, 14,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	14, 14,
+	4, 0,
+	(Bitmap*)dSCExplainGraphics_JPText6_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+/* Sprite: JPText7 */
+
+Gfx dSCExplainGraphics_JPText7_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: JPText7 (30(32)x12 rgba16) */
+u8 dSCExplainGraphics_JPText7_tex[768] = {
+    #include <SCExplainGraphics/JPText7.rgba16.inc.c>
+};
+
+/* Sprite: JPText7 (30x12 rgba16) */
+
+Bitmap dSCExplainGraphics_JPText7_bitmaps[] = {
+	{ 30, 32, 0, 0, dSCExplainGraphics_JPText7_tex, 12, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText7 = {
+	0, 0,
+	30, 12,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	12, 12,
+	0, 2,
+	(Bitmap*)dSCExplainGraphics_JPText7_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+/* Texture data for sprite JPText8 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText8 (300(304)x87 ci8, 15 tiles) */
+u8 dSCExplainGraphics_JPText8_tex[26568] = {
+    #include <SCExplainGraphics/JPText8.ci8.inc.c>
+};
+
+/* Palette: @ 0x10380 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText8_palette[16] = {
+	#include <SCExplainGraphics/JPText8.palette.inc.c>
+};
+
+/* Raw data from file offset 0x103A0 to 0x10580 (480 bytes) */
+u8 dSCExplainGraphics_JPText8_gap[480] = {
+	#include <SCExplainGraphics/JPText8_gap.data.inc.c>
+};
+
+/* Sprite: JPText8 */
+
+/* Sprite: JPText8 (300x73 ci8) */
+
+Bitmap dSCExplainGraphics_JPText8_bitmaps[] = {
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x728, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0xE50, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x1578, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x1CA0, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x23C8, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x2AF0, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x3218, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x3940, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x4068, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x4790, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x4EB8, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x55E0, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x5D08, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x6430, 3, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText8 = {
+	0, 0,
+	300, 73,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText8_palette,
+	0, 1,
+	15, 204,
+	5, 6,
+	2, 1,
+	(Bitmap*)dSCExplainGraphics_JPText8_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText9 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText9 (260(272)x51 ci4, 4 tiles) */
+u8 dSCExplainGraphics_JPText9_tex[6968] = {
+    #include <SCExplainGraphics/JPText9.ci4.inc.c>
+};
+
+/* Palette: @ 0x12200 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText9_palette[16] = {
+	#include <SCExplainGraphics/JPText9.palette.inc.c>
+};
+
+/* Sprite: JPText9 */
+
+/* Sprite: JPText9 (260x48 ci4) */
+
+Bitmap dSCExplainGraphics_JPText9_bitmaps[] = {
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex, 15, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex + 0x800, 15, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex + 0x1000, 15, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex + 0x1800, 6, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText9 = {
+	0, 0,
+	260, 48,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText9_palette,
+	0, 1,
+	4, 72,
+	14, 15,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText9_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText10 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText10 (204(208)x33 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText10_tex[3448] = {
+    #include <SCExplainGraphics/JPText10.ci4.inc.c>
+};
+
+/* Palette: @ 0x13030 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText10_palette[16] = {
+	#include <SCExplainGraphics/JPText10.palette.inc.c>
+};
+
+/* Sprite: JPText10 */
+
+/* Sprite: JPText10 (204x32 ci4) */
+
+Bitmap dSCExplainGraphics_JPText10_bitmaps[] = {
+	{ 204, 208, 0, 0, dSCExplainGraphics_JPText10_tex, 19, 0 },
+	{ 204, 208, 0, 0, dSCExplainGraphics_JPText10_tex + 0x7C0, 14, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText10 = {
+	0, 0,
+	204, 32,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText10_palette,
+	0, 1,
+	2, 48,
+	18, 19,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText10_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText11 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText11 (160x33 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText11_tex[2656] = {
+    #include <SCExplainGraphics/JPText11.ci4.inc.c>
+};
+
+/* Palette: @ 0x13B28 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText11_palette[16] = {
+	#include <SCExplainGraphics/JPText11.palette.inc.c>
+};
+
+/* Sprite: JPText11 */
+
+/* Sprite: JPText11 (160x32 ci4) */
+
+Bitmap dSCExplainGraphics_JPText11_bitmaps[] = {
+	{ 160, 160, 0, 0, dSCExplainGraphics_JPText11_tex, 25, 0 },
+	{ 160, 160, 0, 0, dSCExplainGraphics_JPText11_tex + 0x7D8, 8, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText11 = {
+	0, 0,
+	160, 32,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText11_palette,
+	0, 1,
+	2, 48,
+	24, 25,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText11_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+/* Texture data for sprite JPText12 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText12 (162(176)x14 ci4) */
+u8 dSCExplainGraphics_JPText12_tex[1240] = {
+    #include <SCExplainGraphics/JPText12.ci4.inc.c>
+};
+
+/* Palette: @ 0x14090 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText12_palette[16] = {
+	#include <SCExplainGraphics/JPText12.palette.inc.c>
+};
+
+/* Sprite: JPText12 */
+
+/* Sprite: JPText12 (162x14 ci4) */
+
+Bitmap dSCExplainGraphics_JPText12_bitmaps[] = {
+	{ 162, 176, 0, 0, dSCExplainGraphics_JPText12_tex, 14, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText12 = {
+	0, 0,
+	162, 14,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText12_palette,
+	0, 1,
+	1, 36,
+	14, 14,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText12_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText13 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText13 (134(144)x49 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText13_tex[3544] = {
+    #include <SCExplainGraphics/JPText13.ci4.inc.c>
+};
+
+/* Palette: @ 0x14EF0 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText13_palette[16] = {
+	#include <SCExplainGraphics/JPText13.palette.inc.c>
+};
+
+/* Sprite: JPText13 */
+
+/* Sprite: JPText13 (134x48 ci4) */
+
+Bitmap dSCExplainGraphics_JPText13_bitmaps[] = {
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText13_tex, 28, 0 },
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText13_tex + 0x7E8, 21, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText13 = {
+	0, 0,
+	134, 48,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText13_palette,
+	0, 1,
+	2, 48,
+	27, 28,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText13_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText14 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText14 (140(144)x49 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText14_tex[3544] = {
+    #include <SCExplainGraphics/JPText14.ci4.inc.c>
+};
+
+/* Palette: @ 0x15D60 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText14_palette[16] = {
+	#include <SCExplainGraphics/JPText14.palette.inc.c>
+};
+
+/* Sprite: JPText14 */
+
+/* Sprite: JPText14 (140x48 ci4) */
+
+Bitmap dSCExplainGraphics_JPText14_bitmaps[] = {
+	{ 140, 144, 0, 0, dSCExplainGraphics_JPText14_tex, 28, 0 },
+	{ 140, 144, 0, 0, dSCExplainGraphics_JPText14_tex + 0x7E8, 21, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText14 = {
+	0, 0,
+	140, 48,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText14_palette,
+	0, 1,
+	2, 48,
+	27, 28,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText14_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText15 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText15 (176x31 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText15_tex[2744] = {
+    #include <SCExplainGraphics/JPText15.ci4.inc.c>
+};
+
+/* Palette: @ 0x168B0 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText15_palette[16] = {
+	#include <SCExplainGraphics/JPText15.palette.inc.c>
+};
+
+/* Sprite: JPText15 */
+
+/* Sprite: JPText15 (176x30 ci4) */
+
+Bitmap dSCExplainGraphics_JPText15_bitmaps[] = {
+	{ 176, 176, 0, 0, dSCExplainGraphics_JPText15_tex, 23, 0 },
+	{ 176, 176, 0, 0, dSCExplainGraphics_JPText15_tex + 0x7F0, 8, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText15 = {
+	0, 0,
+	176, 30,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText15_palette,
+	0, 1,
+	2, 48,
+	22, 23,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText15_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText16 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText16 (162(168)x52 ci8, 5 tiles) */
+u8 dSCExplainGraphics_JPText16_tex[8776] = {
+    #include <SCExplainGraphics/JPText16.ci8.inc.c>
+};
+
+/* Palette: @ 0x18B90 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText16_palette[16] = {
+	#include <SCExplainGraphics/JPText16.palette.inc.c>
+};
+
+/* Raw data from file offset 0x18BB0 to 0x18D90 (480 bytes) */
+u8 dSCExplainGraphics_JPText16_gap[480] = {
+	#include <SCExplainGraphics/JPText16_gap.data.inc.c>
+};
+
+/* Sprite: JPText16 */
+
+/* Sprite: JPText16 (162x48 ci8) */
+
+Bitmap dSCExplainGraphics_JPText16_bitmaps[] = {
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0x7E8, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0xFD0, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0x17B8, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0x1FA0, 4, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText16 = {
+	0, 0,
+	162, 48,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText16_palette,
+	0, 1,
+	5, 84,
+	11, 12,
+	2, 1,
+	(Bitmap*)dSCExplainGraphics_JPText16_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText17 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText17 (174(176)x52 ci8, 5 tiles) */
+u8 dSCExplainGraphics_JPText17_tex[9192] = {
+    #include <SCExplainGraphics/JPText17.ci8.inc.c>
+};
+
+/* Palette: @ 0x1B220 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText17_palette[16] = {
+	#include <SCExplainGraphics/JPText17.palette.inc.c>
+};
+
+/* Raw data from file offset 0x1B240 to 0x1B420 (480 bytes) */
+u8 dSCExplainGraphics_JPText17_gap[480] = {
+	#include <SCExplainGraphics/JPText17_gap.data.inc.c>
+};
+
+/* Sprite: JPText17 */
+
+/* Sprite: JPText17 (174x48 ci8) */
+
+Bitmap dSCExplainGraphics_JPText17_bitmaps[] = {
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0x798, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0xF30, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0x16C8, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0x1E60, 8, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText17 = {
+	0, 0,
+	174, 48,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText17_palette,
+	0, 1,
+	5, 84,
+	10, 11,
+	2, 1,
+	(Bitmap*)dSCExplainGraphics_JPText17_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText18 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText18 (198(208)x14 ci4) */
+u8 dSCExplainGraphics_JPText18_tex[1464] = {
+    #include <SCExplainGraphics/JPText18.ci4.inc.c>
+};
+
+/* Palette: @ 0x1BA80 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText18_palette[16] = {
+	#include <SCExplainGraphics/JPText18.palette.inc.c>
+};
+
+/* Sprite: JPText18 */
+
+/* Sprite: JPText18 (198x14 ci4) */
+
+Bitmap dSCExplainGraphics_JPText18_bitmaps[] = {
+	{ 198, 208, 0, 0, dSCExplainGraphics_JPText18_tex, 14, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText18 = {
+	0, 0,
+	198, 14,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText18_palette,
+	0, 1,
+	1, 36,
+	14, 14,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText18_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText19 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText19 (134(144)x33 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText19_tex[2392] = {
+    #include <SCExplainGraphics/JPText19.ci4.inc.c>
+};
+
+/* Palette: @ 0x1C460 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText19_palette[16] = {
+	#include <SCExplainGraphics/JPText19.palette.inc.c>
+};
+
+/* Sprite: JPText19 */
+
+/* Sprite: JPText19 (134x32 ci4) */
+
+Bitmap dSCExplainGraphics_JPText19_bitmaps[] = {
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText19_tex, 28, 0 },
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText19_tex + 0x7E8, 5, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText19 = {
+	0, 0,
+	134, 32,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText19_palette,
+	0, 1,
+	2, 48,
+	27, 28,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText19_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText20 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText20 (148(160)x14 ci4) */
+u8 dSCExplainGraphics_JPText20_tex[1128] = {
+    #include <SCExplainGraphics/JPText20.ci4.inc.c>
+};
+
+/* Palette: @ 0x1C960 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText20_palette[16] = {
+	#include <SCExplainGraphics/JPText20.palette.inc.c>
+};
+
+/* Sprite: JPText20 */
+
+/* Sprite: JPText20 (148x14 ci4) */
+
+Bitmap dSCExplainGraphics_JPText20_bitmaps[] = {
+	{ 148, 160, 0, 0, dSCExplainGraphics_JPText20_tex, 14, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText20 = {
+	0, 0,
+	148, 14,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText20_palette,
+	0, 1,
+	1, 36,
+	14, 14,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText20_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText21 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText21 (122(128)x14 ci4) */
+u8 dSCExplainGraphics_JPText21_tex[904] = {
+    #include <SCExplainGraphics/JPText21.ci4.inc.c>
+};
+
+/* Palette: @ 0x1CD70 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText21_palette[16] = {
+	#include <SCExplainGraphics/JPText21.palette.inc.c>
+};
+
+/* Sprite: JPText21 */
+
+/* Sprite: JPText21 (122x14 ci4) */
+
+Bitmap dSCExplainGraphics_JPText21_bitmaps[] = {
+	{ 122, 128, 0, 0, dSCExplainGraphics_JPText21_tex, 14, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText21 = {
+	0, 0,
+	122, 14,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText21_palette,
+	0, 1,
+	1, 36,
+	14, 14,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText21_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite JPText22 */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: JPText22 (162(176)x33 ci4, 2 tiles) */
+u8 dSCExplainGraphics_JPText22_tex[2920] = {
+    #include <SCExplainGraphics/JPText22.ci4.inc.c>
+};
+
+/* Palette: @ 0x1D960 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_JPText22_palette[16] = {
+	#include <SCExplainGraphics/JPText22.palette.inc.c>
+};
+
+/* Sprite: JPText22 */
+
+/* Sprite: JPText22 (162x32 ci4) */
+
+Bitmap dSCExplainGraphics_JPText22_bitmaps[] = {
+	{ 162, 176, 0, 0, dSCExplainGraphics_JPText22_tex, 23, 0 },
+	{ 162, 176, 0, 0, dSCExplainGraphics_JPText22_tex + 0x7F0, 10, 0 },
+};
+
+Sprite dSCExplainGraphics_JPText22 = {
+	0, 0,
+	162, 32,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_OVERLAP,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_JPText22_palette,
+	0, 1,
+	2, 48,
+	22, 23,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_JPText22_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(20);
+
+/* Texture data for sprite AButton */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: AButton (24x39 ci8) */
+u8 dSCExplainGraphics_AButton_tex[944] = {
+    #include <SCExplainGraphics/AButton.ci8.inc.c>
+};
+
+/* Palette: @ 0x1DDA8 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_AButton_palette[16] = {
+	#include <SCExplainGraphics/AButton.palette.inc.c>
+};
+
+/* Raw data from file offset 0x1DDC8 to 0x1DFA8 (480 bytes) */
+u8 dSCExplainGraphics_AButton_gap[480] = {
+	#include <SCExplainGraphics/AButton_gap.data.inc.c>
+};
+
+/* Sprite: AButton */
+
+/* Sprite: AButton (24x39 ci8) */
+
+Bitmap dSCExplainGraphics_AButton_bitmaps[] = {
+	{ 24, 24, 0, 0, dSCExplainGraphics_AButton_tex, 39, 0 },
+};
+
+Sprite dSCExplainGraphics_AButton = {
+	0, 0,
+	24, 39,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_AButton_palette,
+	0, 1,
+	1, 36,
+	39, 39,
+	2, 1,
+	(Bitmap*)dSCExplainGraphics_AButton_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+/* Texture data for sprite BButton */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: BButton (24x39 ci8) */
+u8 dSCExplainGraphics_BButton_tex[944] = {
+    #include <SCExplainGraphics/BButton.ci8.inc.c>
+};
+
+/* Palette: @ 0x1E3B8 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_BButton_palette[16] = {
+	#include <SCExplainGraphics/BButton.palette.inc.c>
+};
+
+/* Raw data from file offset 0x1E3D8 to 0x1E5B8 (480 bytes) */
+u8 dSCExplainGraphics_BButton_gap[480] = {
+	#include <SCExplainGraphics/BButton_gap.data.inc.c>
+};
+
+/* Sprite: BButton */
+
+/* Sprite: BButton (24x39 ci8) */
+
+Bitmap dSCExplainGraphics_BButton_bitmaps[] = {
+	{ 24, 24, 0, 0, dSCExplainGraphics_BButton_tex, 39, 0 },
+};
+
+Sprite dSCExplainGraphics_BButton = {
+	0, 0,
+	24, 39,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_BButton_palette,
+	0, 1,
+	1, 36,
+	39, 39,
+	2, 1,
+	(Bitmap*)dSCExplainGraphics_BButton_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+/* Texture data for sprite ZButton */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: ZButton (24x39 ci8) */
+u8 dSCExplainGraphics_ZButton_tex[944] = {
+    #include <SCExplainGraphics/ZButton.ci8.inc.c>
+};
+
+/* Palette: @ 0x1E9C8 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_ZButton_palette[16] = {
+	#include <SCExplainGraphics/ZButton.palette.inc.c>
+};
+
+/* Raw data from file offset 0x1E9E8 to 0x1EBC8 (480 bytes) */
+u8 dSCExplainGraphics_ZButton_gap[480] = {
+	#include <SCExplainGraphics/ZButton_gap.data.inc.c>
+};
+
+/* Sprite: ZButton */
+
+/* Sprite: ZButton (24x39 ci8) */
+
+Bitmap dSCExplainGraphics_ZButton_bitmaps[] = {
+	{ 24, 24, 0, 0, dSCExplainGraphics_ZButton_tex, 39, 0 },
+};
+
+Sprite dSCExplainGraphics_ZButton = {
+	0, 0,
+	24, 39,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_ZButton_palette,
+	0, 1,
+	1, 36,
+	39, 39,
+	2, 1,
+	(Bitmap*)dSCExplainGraphics_ZButton_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+/* Texture data for sprite PlusSymbol */
+/* Split out from .sprite.c so the palette blocks can sit at
+   their original physical position between the texture and
+   the bitmap array. */
+/* Texture: PlusSymbol (8(16)x7 ci4) */
+u8 dSCExplainGraphics_PlusSymbol_tex[64] = {
+    #include <SCExplainGraphics/PlusSymbol.ci4.inc.c>
+};
+
+/* Palette: @ 0x1EC68 (16 colors RGBA5551) */
+u16 dSCExplainGraphics_PlusSymbol_palette[16] = {
+	#include <SCExplainGraphics/PlusSymbol.palette.inc.c>
+};
+
+/* Sprite: PlusSymbol */
+
+/* Sprite: PlusSymbol (8x7 ci4) */
+
+Bitmap dSCExplainGraphics_PlusSymbol_bitmaps[] = {
+	{ 8, 16, 0, 0, dSCExplainGraphics_PlusSymbol_tex, 7, 0 },
+};
+
+Sprite dSCExplainGraphics_PlusSymbol = {
+	0, 0,
+	8, 7,
+	1.0f, 1.0f,
+	0, 0,
+	SP_TEXSHUF | SP_FASTCOPY,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSCExplainGraphics_PlusSymbol_palette,
+	0, 1,
+	1, 36,
+	7, 7,
+	2, 0,
+	(Bitmap*)dSCExplainGraphics_PlusSymbol_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+
+
+#else /* US */
+
 /* Sprite: Damage1 */
 
 Gfx dSCExplainGraphics_Damage1_dl[] = { gsSPEndDisplayList() };

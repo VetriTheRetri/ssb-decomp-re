@@ -288,6 +288,498 @@ Sprite dMNTitle_TM = {
 
 PAD(4);
 
+#if defined(REGION_JP)
+
+/* JP title text sprites — different from US (Japanese text vs English) */
+
+Gfx dMNTitle_Cutout_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_Cutout_tex[4472] = {
+    #include <MNTitle/Cutout.data.inc.c>
+};
+
+Bitmap dMNTitle_Cutout_bitmaps[] = {
+	{ 48, 48, 0, 0, dMNTitle_Cutout_tex, 85, 0 },
+	{ 48, 48, 0, 0, dMNTitle_Cutout_tex + 0xFF8, 8, 0 },
+};
+
+Sprite dMNTitle_Cutout = {
+	0, 0,
+	48, 92,
+	1.0f, 1.0f,
+	0, 0,
+	SP_OVERLAP | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	2, 48,
+	84, 85,
+	3, 1,
+	(Bitmap*)dMNTitle_Cutout_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+Gfx dMNTitle_JPChar2_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar2_tex[1728] = {
+    #include <MNTitle/JPChar2.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar2_bitmaps[] = {
+	{ 48, 48, 0, 0, dMNTitle_JPChar2_tex, 36, 0 },
+};
+
+Sprite dMNTitle_JPChar2 = {
+	0, 0,
+	48, 36,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	36, 36,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar2_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar3_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar3_tex[1728] = {
+    #include <MNTitle/JPChar3.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar3_bitmaps[] = {
+	{ 32, 32, 0, 0, dMNTitle_JPChar3_tex, 54, 0 },
+};
+
+Sprite dMNTitle_JPChar3 = {
+	0, 0,
+	32, 54,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	54, 54,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar3_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar4_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar4_tex[4936] = {
+    #include <MNTitle/JPChar4.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar4_bitmaps[] = {
+	{ 64, 64, 0, 0, dMNTitle_JPChar4_tex, 64, 0 },
+	{ 64, 64, 0, 0, dMNTitle_JPChar4_tex + 0x1008, 13, 0 },
+};
+
+Sprite dMNTitle_JPChar4 = {
+	0, 0,
+	64, 76,
+	1.0f, 1.0f,
+	0, 0,
+	SP_OVERLAP | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	2, 48,
+	63, 64,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar4_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+Gfx dMNTitle_JPChar5_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar5_tex[1728] = {
+    #include <MNTitle/JPChar5.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar5_bitmaps[] = {
+	{ 32, 32, 0, 0, dMNTitle_JPChar5_tex, 54, 0 },
+};
+
+Sprite dMNTitle_JPChar5 = {
+	0, 0,
+	32, 54,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	54, 54,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar5_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar6_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar6_tex[624] = {
+    #include <MNTitle/JPChar6.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar6_bitmaps[] = {
+	{ 24, 24, 0, 0, dMNTitle_JPChar6_tex, 26, 0 },
+};
+
+Sprite dMNTitle_JPChar6 = {
+	0, 0,
+	24, 26,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	26, 26,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar6_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar7_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar7_tex[1520] = {
+    #include <MNTitle/JPChar7.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar7_bitmaps[] = {
+	{ 40, 40, 0, 0, dMNTitle_JPChar7_tex, 38, 0 },
+};
+
+Sprite dMNTitle_JPChar7 = {
+	0, 0,
+	40, 38,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	38, 38,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar7_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar8_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar8_tex[384] = {
+    #include <MNTitle/JPChar8.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar8_bitmaps[] = {
+	{ 24, 24, 0, 0, dMNTitle_JPChar8_tex, 16, 0 },
+};
+
+Sprite dMNTitle_JPChar8 = {
+	0, 0,
+	24, 16,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	16, 16,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar8_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar9_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar9_tex[2304] = {
+    #include <MNTitle/JPChar9.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar9_bitmaps[] = {
+	{ 32, 32, 0, 0, dMNTitle_JPChar9_tex, 72, 0 },
+};
+
+Sprite dMNTitle_JPChar9 = {
+	0, 0,
+	32, 72,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	72, 72,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar9_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar10_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar10_tex[960] = {
+    #include <MNTitle/JPChar10.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar10_bitmaps[] = {
+	{ 24, 24, 0, 0, dMNTitle_JPChar10_tex, 40, 0 },
+};
+
+Sprite dMNTitle_JPChar10 = {
+	0, 0,
+	24, 40,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	40, 40,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar10_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_JPChar11_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_JPChar11_tex[1920] = {
+    #include <MNTitle/JPChar11.data.inc.c>
+};
+
+Bitmap dMNTitle_JPChar11_bitmaps[] = {
+	{ 32, 32, 0, 0, dMNTitle_JPChar11_tex, 60, 0 },
+};
+
+Sprite dMNTitle_JPChar11 = {
+	0, 0,
+	32, 60,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	60, 60,
+	3, 1,
+	(Bitmap*)dMNTitle_JPChar11_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_TMUnk_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_TMUnk_tex[160] = {
+    #include <MNTitle/TMUnk.data.inc.c>
+};
+
+Bitmap dMNTitle_TMUnk_bitmaps[] = {
+	{ 16, 16, 0, 0, dMNTitle_TMUnk_tex, 10, 0 },
+};
+
+Sprite dMNTitle_TMUnk = {
+	0, 0,
+	16, 10,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	10, 10,
+	3, 1,
+	(Bitmap*)dMNTitle_TMUnk_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_Super_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_Super_tex[5104] = {
+    #include <MNTitle/Super.data.inc.c>
+};
+
+Bitmap dMNTitle_Super_bitmaps[] = {
+	{ 56, 56, 0, 0, dMNTitle_Super_tex, 73, 0 },
+	{ 56, 56, 0, 0, dMNTitle_Super_tex + 0x1000, 18, 0 },
+};
+
+Sprite dMNTitle_Super = {
+	0, 0,
+	56, 90,
+	1.0f, 1.0f,
+	0, 0,
+	SP_OVERLAP | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	2, 48,
+	72, 73,
+	3, 1,
+	(Bitmap*)dMNTitle_Super_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+Gfx dMNTitle_Copyright_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_Copyright_tex[14312] = {
+    #include <MNTitle/Copyright.data.inc.c>
+};
+
+Bitmap dMNTitle_Copyright_bitmaps[] = {
+	{ 300, 304, 0, 0, dMNTitle_Copyright_tex, 13, 0 },
+	{ 300, 304, 0, 0, dMNTitle_Copyright_tex + 0xF78, 13, 0 },
+	{ 300, 304, 0, 0, dMNTitle_Copyright_tex + 0x1EF0, 13, 0 },
+	{ 300, 304, 0, 0, dMNTitle_Copyright_tex + 0x2E68, 8, 0 },
+};
+
+Sprite dMNTitle_Copyright = {
+	0, 0,
+	300, 44,
+	1.0f, 1.0f,
+	0, 0,
+	SP_OVERLAP | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	4, 72,
+	12, 13,
+	3, 1,
+	(Bitmap*)dMNTitle_Copyright_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(12);
+
+Gfx dMNTitle_PressStart_dl[] = { gsSPEndDisplayList() };
+
+u8 dMNTitle_PressStart_tex[1728] = {
+    #include <MNTitle/PressStart.ia8.inc.c>
+};
+
+Bitmap dMNTitle_PressStart_bitmaps[] = {
+	{ 96, 96, 0, 0, dMNTitle_PressStart_tex, 18, 0 },
+};
+
+Sprite dMNTitle_PressStart = {
+	0, 0,
+	96, 18,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	18, 18,
+	3, 1,
+	(Bitmap*)dMNTitle_PressStart_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};
+
+PAD(4);
+
+#else /* US */
+
 /* Sprite: Cutout */
 
 Gfx dMNTitle_Cutout_dl[] = { gsSPEndDisplayList() };
@@ -565,15 +1057,23 @@ Sprite dMNTitle_Bros = {
 
 PAD(4);
 
+#endif
+
 /* Raw data from file offset 0x251D0 to 0x25350 (384 bytes) */
 u32 dMNTitle_LogoAnimJoint_AnimJoint[96] = {
 	#include <MNTitle/LogoAnimJoint_AnimJoint.data.inc.c>
 };
 
+#if defined(REGION_JP)
+u32 dMNTitle_LabelsAnimJoint_AnimJoint[264] = {
+	#include <MNTitle/LabelsAnimJoint_AnimJoint.data.inc.c>
+};
+#else
 /* Raw data from file offset 0x25350 to 0x258D0 (1408 bytes) */
 u32 dMNTitle_LabelsAnimJoint_AnimJoint[352] = {
 	#include <MNTitle/LabelsAnimJoint_AnimJoint.data.inc.c>
 };
+#endif
 
 /* Raw data from file offset 0x258D0 to 0x25E70 (1440 bytes) */
 u32 dMNTitle_PressStartAnimJoint_AnimJoint[360] = {
@@ -602,6 +1102,28 @@ DObjDesc dMNTitle_LogoDObjDesc[] = {
 
 PAD(8);
 
+#if defined(REGION_JP)
+/* DObjDesc: LabelsDObjDesc (17 entries in JP vs 9 in US) */
+DObjDesc dMNTitle_LabelsDObjDesc[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -24.0f, 56.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 12.0f, 55.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 43.0f, 50.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -81.0f, -1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -50.0f, -8.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -28.0f, -27.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -16.0f, 3.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 2.0f, -9.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 17.0f, -3.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 31.000001907348633f, -25.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 52.000003814697266f, -4.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 65.0f, -8.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 86.0f, 5.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 0.0f, -88.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 0.0f, 105.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+#else
 /* DObjDesc: LabelsDObjDesc @ 0x26130 (9 entries) */
 DObjDesc dMNTitle_LabelsDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -614,6 +1136,7 @@ DObjDesc dMNTitle_LabelsDObjDesc[] = {
 	{ 1, (void*)0x00000000, { 0.0f, 105.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+#endif
 
 PAD(4);
 
@@ -831,5 +1354,3 @@ DObjDesc dMNTitle_FireDObjDesc[] = {
 u32 dMNTitle_FireAnimJoint_AnimJoint[36] = {
 	#include <MNTitle/FireAnimJoint_AnimJoint.data.inc.c>
 };
-
-#endif

@@ -104,20 +104,11 @@ dbFunction D_ovl8_8038BC8C[] = {
 	{0, NULL},
 };
 
-s32 D_ovl8_8038BCE4[2] = {0, 0};
-
-s32 D_ovl8_8038BCEC = 0x000000FF;
-
-s32 D_ovl8_8038BCF0 = 0x000000FF;
-
-s16 D_ovl8_8038BCF4[] = {
-	0x0001, 0x0000,
-	0x504F, 0x504D,
-	0x0000, 0x0000,
-	0x0000, 0x0000,
-	0x0000, 0x0000,
-	0x0000, 0x0000,
-	0x0000, 0x0000,
+DBMenu D_ovl8_8038BCE4 = {
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0xff },
+	{ 0, 0, 0, 0xff },
+	1, 0, 0x504F504D, 0, 0, 0, 0
 };
 
 // 80381130
@@ -196,6 +187,7 @@ void func_ovl8_803812BC(dbUnknown17* arg0, s32* arg1)
 }
 
 // 80381308
+// TODO: when this function is matched, remove D_ovl8_8038BCEC, D_ovl8_8038BCF0, and D_ovl8_8038BCF4 from not_found.txt
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_80381308.s")
 
 // 80381710

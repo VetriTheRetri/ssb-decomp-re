@@ -144,7 +144,11 @@ endif
 C_FILES := $(filter-out $(wildcard src/relocData/*.c src/relocData/**/*.c),$(C_FILES))
 
 # relocData C-to-binary conversion - per-version manifest of converted files.
+# Only load the file list when RELOC_DATA=1; otherwise the extract-stamp
+# dependencies pull in the full extraction pipeline on every plain `make`.
+ifeq ($(RELOC_DATA),1)
 -include src/relocData/converted_files.$(VERSION).mk
+endif
 RELOC_C_FILES ?=
 
 # Generate an id->name map for the active version so we can find manifests by

@@ -23,7 +23,7 @@ bytes — every file compiles from C source.
 
 | Source type | Files | Description |
 |---|---:|---|
-| Inline typed `.c` masters | **2,038** | Self-contained `.c` file with typed struct initializers (`FTAttributes` / `MPGroundData` / `ftMotionCommand` / `aobjEvent32` / `ftAnim` / `Sprite` / `DObjDesc` / `MObjSub` / `WPAttributes` / `ITAttributes` / `Vtx` / `Gfx` DL / `LUT` palette / `Tex` / raw-byte wrappers). Any referenced `.inc.c` blobs live under `build/` and are regenerated from the ROM at `make extract` time. Of these, **205** contain typed struct declarations (Sprite, DObjDesc, FTAttributes, etc.); the remaining **1,833** use only raw-byte `u8`/`u32` wrappers around `.inc.c` includes. |
+| Inline typed `.c` masters | **2,038** | Self-contained `.c` file with typed struct initializers (`FTAttributes` / `MPGroundData` / `ftMotionCommand` / `aobjEvent32` / `ftAnim` / `Sprite` / `DObjDesc` / `MObjSub` / `WPAttributes` / `ITAttributes` / `ITAttackEvent` / `Vtx` / `Gfx` DL / `LUT` palette / `Tex` / raw-byte wrappers). Any referenced `.inc.c` blobs live under `build/` and are regenerated from the ROM at `make extract` time. Of these, **205** contain typed struct declarations (Sprite, DObjDesc, FTAttributes, etc.); the remaining **1,833** use only raw-byte `u8`/`u32` wrappers around `.inc.c` includes. |
 | Auto-extracted sprite files | **96** | A committed `.spritelist` marker drives `tools/extractSpriteFile.py`, which walks the ROM binary's reloc chain, auto-discovers every Sprite + Bitmap + pixel block, and emits a full master `.c` + `.reloc` + `.inc.c` set under `build/`. |
 | **Total** | **2,134** | |
 
@@ -106,6 +106,15 @@ Recent round of structural work:
   fixRelocChain leaves them alone since both files have empty `.reloc`,
   and the runtime patches them via the `gMPCollisionGroundData`-based
   load path.
+- `ITCommonData` (fid 251, 3,392 B) — item attribute + weapon attribute
+  pool, now **fully typed**: 34 `ITAttributes` struct initializers (33
+  matching + 1 Sawamura with IDO bitfield bug comment), 6
+  `ITAttackEvent[4]` explosion/hitbox event tables with decoded
+  timer/angle/damage/size fields, 2 `f32[]` gameplay data arrays
+  (`Container_VelocitiesY[20]`, `FFlowerFlame_Angles[5]` using
+  `F_CST_DTOR32()` degree-to-radian macros), and all 68 extern
+  chain pointers resolved to symbolic `dITCommonObject_*` references.
+  Zero `u8`/`u32` raw-byte data arrays remain.
 - **JP RELOC_DATA=1 fully operational** (2107/2107 = 100%). All
   previously-excluded JP fids now compile from C source.
   Key work across sessions:
@@ -377,15 +386,17 @@ The remaining work splits into four buckets:
    and Stage File2 collision/anim (6.6 KB). Many are sub-blocks from
    `splitGapFull.py` that need struct identification.
 
-3. **Finish typing struct bitfield tails**. The `WPAttributes` 52-byte
+3. **Finish typing remaining struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon
    files and 11 promoted ITCommonData blobs). `ITAttributes` 72-byte
    layout has the visible fields (size, angle, ks, dmg, elem) verified
    via empirical IDO test fixtures, but the bitfield tail at 0x38+
    doesn't reduce to a clean MSB-first packing — see the comment block
-   above `struct ITAttributes` in `src/it/ittypes.h`. Decoding the rest
-   would unlock typed promotion of the 33 remaining `ITCommonData`
-   `*_ItemAttributes` blobs.
+   above `struct ITAttributes` in `src/it/ittypes.h`. All 33 promotable
+   ITAttributes blobs in `ITCommonData` (fid 251) are now typed; only
+   Sawamura's `shield_damage=30` remains as a commented-out struct due
+   to the IDO `s32:8` second-bitfield-run static-init bug. All 6
+   `ITAttackEvent[4]` arrays are also typed with decoded fields.
 
 ### Quick reference
 

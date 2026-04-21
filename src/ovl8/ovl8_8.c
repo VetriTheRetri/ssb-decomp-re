@@ -5,14 +5,6 @@
 s32 func_ovl8_8037A6D4(db4Shorts *rect1, db4Shorts *rect2, db4Shorts *intersection);
 void func_ovl8_8037AA88(s32 arg0, s32 arg1, s32 arg2, s32 arg3, dbUnknown7* arg4);
 
-typedef struct dbUnknown8_SC {
-    s16 x0;
-    s16 y0;
-    s16 x1;
-    s16 y1;
-    s32 dbUnknown8_SC_0x8;
-} dbUnknown8_SC;
-
 typedef struct UiLineStepper {
     s32 startX;                 // dbUnknown8_8_0x0
     s32 startY;                 // dbUnknown8_8_0x4

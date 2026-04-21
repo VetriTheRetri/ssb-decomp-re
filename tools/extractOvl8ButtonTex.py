@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Extract the 16x16 RGBA16 button texture from ovl8_30's .data section.
+"""Extract the 16x16 RGBA5551 debug-menu button texture from ovl8_30's
+.data section (`D_ovl8_8038E308`).
 
-Reads the baserom at the ovl8 data offset, extracts the 512-byte texture,
-writes:
+Reads the baserom at the version-specific ROM offset, extracts the
+512-byte texture, and writes:
   - assets/ovl8/ovl8_30_button.rgba16.bin  (raw N64 pixels)
-  - assets/ovl8/ovl8_30_button.rgba16.png  (preview)
+  - assets/ovl8/ovl8_30_button.rgba16.png  (RGBA preview)
   - build/src/ovl8/ovl8_30_button.rgba16.inc.c  (u16 hex for #include)
 
-The .inc.c uses u16 values (RGBA5551) like the dbkirby texture.
+The ROM offset differs between US and JP because the ovl8 segment sits
+at a different address on each version.
 """
 
 import argparse
@@ -15,62 +17,97 @@ import os
 import struct
 import sys
 
-PROJECT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEX_WIDTH = 16
+TEX_HEIGHT = 16
+TEX_BYTE_SIZE = TEX_WIDTH * TEX_HEIGHT * 2  # RGBA5551 = 2 bytes/pixel
 
-# Texture lives at offset 0x128 within ovl8_30's .data section.
-# ovl8_30 .data starts at ROM 0x1AAA30.
-TEX_ROM_OFFSET = 0x1AAA30 + 0x128  # D_ovl8_8038E308 = 0x8038E1E0 + 0x128
-TEX_SIZE = 512  # 16x16 RGBA16
-TEX_W, TEX_H = 16, 16
+# ROM offsets: ovl8_30 .data start (from splat yaml) + 0x128 (offset of
+# D_ovl8_8038E308 within the .data section).
+ROM_OFFSETS = {
+    "us": 0x1AAA30 + 0x128,  # 0x1AAB58
+    "jp": 0x1AACB0 + 0x128,  # 0x1AADD8
+}
+
+
+def read_texture(baserom_path, rom_offset):
+    with open(baserom_path, "rb") as f:
+        f.seek(rom_offset)
+        data = f.read(TEX_BYTE_SIZE)
+    if len(data) != TEX_BYTE_SIZE:
+        sys.exit(f"Error: only read {len(data)} of {TEX_BYTE_SIZE} bytes "
+                 f"from {baserom_path} at 0x{rom_offset:X}")
+    return data
+
+
+def write_bin(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "wb") as f:
+        f.write(data)
+
+
+def write_inc_c(path, data):
+    """Emit u16 hex values for #include in a u16[] array initializer."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    pixels = struct.unpack(f">{TEX_WIDTH * TEX_HEIGHT}H", data)
+    with open(path, "w") as f:
+        for row in range(TEX_HEIGHT):
+            row_vals = pixels[row * TEX_WIDTH:(row + 1) * TEX_WIDTH]
+            f.write("\t" + ", ".join(f"0x{v:04X}" for v in row_vals) + ",\n")
+
+
+def rgba5551_to_rgba8888(data):
+    """Decode RGBA5551 big-endian pixels into an (R,G,B,A) byte sequence."""
+    out = bytearray()
+    for i in range(0, len(data), 2):
+        pixel = (data[i] << 8) | data[i + 1]
+        r5 = (pixel >> 11) & 0x1F
+        g5 = (pixel >> 6) & 0x1F
+        b5 = (pixel >> 1) & 0x1F
+        a1 = pixel & 1
+        out.append((r5 << 3) | (r5 >> 2))
+        out.append((g5 << 3) | (g5 >> 2))
+        out.append((b5 << 3) | (b5 >> 2))
+        out.append(0xFF if a1 else 0x00)
+    return bytes(out)
+
+
+def write_png(path, data):
+    """Write an RGBA PNG preview."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    rgba = rgba5551_to_rgba8888(data)
+    try:
+        from PIL import Image
+        img = Image.frombytes("RGBA", (TEX_WIDTH, TEX_HEIGHT), rgba)
+        img.save(path)
+        return
+    except ImportError:
+        pass
+    try:
+        import n64img.image as n64img
+        img = n64img.RGBA16(data=data, width=TEX_WIDTH, height=TEX_HEIGHT)
+        img.write(path)
+        return
+    except ImportError:
+        pass
+    # No PNG library available — skip silently
+    return
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--version", default="us")
-    ap.add_argument("--baserom", default=None)
-    ap.add_argument("--bin", default=os.path.join(PROJECT, "assets/ovl8/ovl8_30_button.rgba16.bin"))
-    ap.add_argument("--inc", default=os.path.join(PROJECT, "build/src/ovl8/ovl8_30_button.rgba16.inc.c"))
-    ap.add_argument("--png", default=os.path.join(PROJECT, "assets/ovl8/ovl8_30_button.rgba16.png"))
+    ap.add_argument("--version", default="us", choices=sorted(ROM_OFFSETS))
+    ap.add_argument("--baserom", default=None,
+                    help="Path to baserom.<version>.z64")
+    ap.add_argument("--bin", required=True, help="Output .bin path")
+    ap.add_argument("--inc", required=True, help="Output .inc.c path")
+    ap.add_argument("--png", required=True, help="Output .png preview path")
     args = ap.parse_args()
 
-    baserom = args.baserom or os.path.join(PROJECT, f"baserom.{args.version}.z64")
-
-    # Extract from baserom if it exists
-    if os.path.exists(baserom):
-        with open(baserom, "rb") as f:
-            f.seek(TEX_ROM_OFFSET)
-            data = f.read(TEX_SIZE)
-
-        os.makedirs(os.path.dirname(args.bin), exist_ok=True)
-        with open(args.bin, "wb") as f:
-            f.write(data)
-
-    # Read from .bin (may already exist from a previous extract)
-    if not os.path.exists(args.bin):
-        print(f"No texture data at {args.bin}", file=sys.stderr)
-        return
-
-    with open(args.bin, "rb") as f:
-        data = f.read()
-
-    # Write .inc.c (u16 hex values, 8 per line)
-    os.makedirs(os.path.dirname(args.inc), exist_ok=True)
-    pixels = struct.unpack(f">{len(data)//2}H", data)
-    lines = []
-    for i in range(0, len(pixels), 8):
-        row = ", ".join(f"0x{p:04X}" for p in pixels[i:i+8])
-        lines.append(f"\t{row},")
-    with open(args.inc, "w") as f:
-        f.write("\n".join(lines) + "\n")
-
-    # Write PNG preview
-    try:
-        import n64img.image as n64img
-        img = n64img.RGBA16(data=data, width=TEX_W, height=TEX_H)
-        os.makedirs(os.path.dirname(args.png), exist_ok=True)
-        img.write(args.png)
-    except ImportError:
-        pass
+    baserom = args.baserom or f"baserom.{args.version}.z64"
+    data = read_texture(baserom, ROM_OFFSETS[args.version])
+    write_bin(args.bin, data)
+    write_inc_c(args.inc, data)
+    write_png(args.png, data)
 
 
 if __name__ == "__main__":

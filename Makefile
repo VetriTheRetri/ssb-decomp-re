@@ -562,7 +562,10 @@ assets/ovl8/ovl8_30_button.rgba16.bin assets/ovl8/ovl8_30_button.rgba16.png &: $
 		--png assets/ovl8/ovl8_30_button.rgba16.png
 
 $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/ovl8/ovl8_30_button.rgba16.bin
+	@# The grouped rule above wrote this file too — touch it so make
+	@# doesn't re-run the generator on every incremental build.
 	@test -f $@ || $(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
+		--baserom $(BASEROM) \
 		--bin assets/ovl8/ovl8_30_button.rgba16.bin \
 		--inc $@ \
 		--png assets/ovl8/ovl8_30_button.rgba16.png

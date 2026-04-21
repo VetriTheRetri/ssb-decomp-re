@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSB64 Decomp — Remaining Functions</title>
+<style>
+@font-face {
+	font-family: 'Kabel';
+	src: url('fonts/ITC%20Kabel%20Bold.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+:root {
+	--bg: #0a0a0e;
+	--card: #14141c;
+	--card-hover: #1c1c28;
+	--border: #2a2a3a;
+	--accent: #e8423f;
+	--accent-glow: rgba(232, 66, 63, 0.3);
+	--text: #e0e0e8;
+	--text-dim: #888898;
+	--text-comment: #b8a840;
+	--ovl8: #6898e8;
+	--ovl0: #58c868;
+	--libultra: #d080e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+	font-family: 'Consolas', 'Monaco', monospace;
+	background: var(--bg);
+	color: var(--text);
+	min-height: 100vh;
+}
+
+.hero {
+	text-align: center;
+	padding: 3rem 1rem 2rem;
+	background: linear-gradient(180deg, #12121a 0%, var(--bg) 100%);
+	border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+	font-family: 'Kabel', 'Impact', sans-serif;
+	font-size: 3rem;
+	letter-spacing: 0.05em;
+	color: #fff;
+	text-shadow: 0 0 30px var(--accent-glow), 0 2px 0 #000;
+	margin-bottom: 0.3rem;
+}
+
+.hero .subtitle {
+	font-size: 0.95rem;
+	color: var(--text-dim);
+}
+
+.hero .subtitle a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+.stats {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin-top: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.stat {
+	text-align: center;
+}
+
+.stat-value {
+	font-family: 'Kabel', 'Impact', sans-serif;
+	font-size: 2.2rem;
+	color: #fff;
+}
+
+.stat-label {
+	font-size: 0.75rem;
+	color: var(--text-dim);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.progress-bar {
+	max-width: 500px;
+	margin: 1.5rem auto 0;
+	height: 12px;
+	background: var(--border);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.progress-fill {
+	height: 100%;
+	background: linear-gradient(90deg, var(--accent), #f06040);
+	border-radius: 6px;
+	transition: width 0.6s ease;
+}
+
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 2rem 1rem;
+}
+
+.section-label {
+	font-family: 'Kabel', 'Impact', sans-serif;
+	font-size: 1.1rem;
+	color: var(--text-dim);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin-bottom: 1rem;
+	padding-left: 0.5rem;
+	border-left: 3px solid var(--accent);
+}
+
+.func-card {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+	margin-bottom: 0.6rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	transition: background 0.15s, border-color 0.15s;
+}
+
+.func-card:hover {
+	background: var(--card-hover);
+	border-color: #3a3a50;
+}
+
+.func-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.func-name {
+	font-family: 'Consolas', 'Monaco', monospace;
+	font-size: 0.95rem;
+	font-weight: bold;
+	color: #fff;
+	word-break: break-all;
+}
+
+.func-meta {
+	font-size: 0.78rem;
+	color: var(--text-dim);
+	margin-top: 0.25rem;
+}
+
+.func-meta .tu {
+	color: var(--ovl8);
+}
+
+.func-meta .tu.ovl0 { color: var(--ovl0); }
+.func-meta .tu.libultra { color: var(--libultra); }
+
+.func-comment {
+	font-size: 0.82rem;
+	color: var(--text-comment);
+	margin-top: 0.3rem;
+	font-style: italic;
+}
+
+.scratch-btn {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.45rem 1rem;
+	background: var(--accent);
+	color: #fff;
+	font-family: 'Kabel', 'Impact', sans-serif;
+	font-size: 0.85rem;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	border-radius: 6px;
+	transition: background 0.15s, box-shadow 0.15s;
+	white-space: nowrap;
+}
+
+.scratch-btn:hover {
+	background: #f05050;
+	box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.scratch-btn svg {
+	width: 14px;
+	height: 14px;
+	fill: currentColor;
+}
+
+.footer {
+	text-align: center;
+	padding: 2rem 1rem;
+	color: var(--text-dim);
+	font-size: 0.75rem;
+	border-top: 1px solid var(--border);
+}
+
+.footer a { color: var(--accent); text-decoration: none; }
+
+.updated {
+	font-size: 0.7rem;
+	color: var(--text-dim);
+	margin-top: 0.5rem;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+	.hero h1 { font-size: 2rem; }
+	.stat-value { font-size: 1.6rem; }
+	.func-card { flex-direction: column; align-items: flex-start; }
+	.scratch-btn { align-self: flex-end; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+	<h1>SUPER SMASH BROS.</h1>
+	<div class="subtitle">
+		N64 Decompilation Progress — <a href="https://github.com/jtl3d/ssb-decomp-re">github</a>
+	</div>
+	<div class="stats">
+		<div class="stat">
+			<div class="stat-value" id="matched-count">—</div>
+			<div class="stat-label">Functions Matched</div>
+		</div>
+		<div class="stat">
+			<div class="stat-value" id="remaining-count">—</div>
+			<div class="stat-label">Remaining</div>
+		</div>
+		<div class="stat">
+			<div class="stat-value" id="pct">—</div>
+			<div class="stat-label">Complete</div>
+		</div>
+	</div>
+	<div class="progress-bar">
+		<div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="section-label">Remaining Nonmatching Functions</div>
+	<div id="func-list">
+		<!-- populated by update_progress.py -->
+	</div>
+	<div class="updated" id="updated"></div>
+</div>
+
+<div class="footer">
+	Super Smash Bros. © 1999 Nintendo / HAL Laboratory<br>
+	This is a fan decomp project for educational purposes.<br>
+	<a href="https://decomp.me">decomp.me</a> scratches welcome — pick a function and help match it!
+</div>
+
+<script>
+/* Data injected by update_progress.py — do not edit below this line */
+const PROGRESS_DATA = {
+  "total_functions": 7167,
+  "functions": [
+    {
+      "name": "func_ovl8_803762B4",
+      "tu": "ovl8_6_1",
+      "file_size": "8748",
+      "comment": "score: 3400",
+      "scratch": "https://decomp.me/scratch/8GZim"
+    },
+    {
+      "name": "func_ovl8_803773CC",
+      "tu": "ovl8_8",
+      "file_size": "29302",
+      "comment": "jumptable with only 4 cases",
+      "scratch": "https://decomp.me/scratch/kkpvd"
+    },
+    {
+      "name": "func_ovl8_803781A4",
+      "tu": "ovl8_8",
+      "file_size": "24569",
+      "comment": "jumptable with only 4 cases",
+      "scratch": "https://decomp.me/scratch/2YLDV"
+    },
+    {
+      "name": "func_ovl8_803787C0",
+      "tu": "ovl8_8",
+      "file_size": "34908",
+      "comment": "score: 727",
+      "scratch": "https://decomp.me/scratch/ZDXm0"
+    },
+    {
+      "name": "func_ovl8_80379070",
+      "tu": "ovl8_8",
+      "file_size": "33650",
+      "comment": "jumptable with only 4 cases",
+      "scratch": "https://decomp.me/scratch/vSVqq"
+    },
+    {
+      "name": "func_ovl8_80379D74",
+      "tu": "ovl8_8",
+      "file_size": "14777",
+      "comment": "jumptable with only 4 cases",
+      "scratch": "https://decomp.me/scratch/gHDne"
+    },
+    {
+      "name": "func_ovl8_8037B760",
+      "tu": "ovl8_8",
+      "file_size": "2368",
+      "comment": "v1 and a3 loading into flipped registers a1 a2 twice",
+      "scratch": "https://decomp.me/scratch/uTQV2"
+    },
+    {
+      "name": "func_ovl8_8037C7D4",
+      "tu": "ovl8_11",
+      "file_size": "5881",
+      "comment": "swtich case order issue",
+      "scratch": "https://decomp.me/scratch/6zYiu"
+    },
+    {
+      "name": "func_ovl8_8037CBA0",
+      "tu": "ovl8_11_1",
+      "file_size": "5057",
+      "comment": "swtich case order issue",
+      "scratch": "https://decomp.me/scratch/KN4UB"
+    },
+    {
+      "name": "func_ovl8_8037DFF8",
+      "tu": "ovl8_13_2",
+      "file_size": "27586",
+      "comment": "move issue score: 200",
+      "scratch": "https://decomp.me/scratch/PsCha"
+    },
+    {
+      "name": "func_ovl8_8037E97C",
+      "tu": "ovl8_13_2",
+      "file_size": "6504",
+      "comment": "swtich case order issue",
+      "scratch": "https://decomp.me/scratch/YbFSV"
+    },
+    {
+      "name": "func_ovl8_8037EF0C",
+      "tu": "ovl8_14",
+      "file_size": "4977",
+      "comment": "swtich case order issue",
+      "scratch": "https://decomp.me/scratch/Qd2mg"
+    },
+    {
+      "name": "func_ovl8_80381308",
+      "tu": "ovl8_17",
+      "file_size": "16526",
+      "comment": "swtich case order issue",
+      "scratch": "https://decomp.me/scratch/R8wz9"
+    },
+    {
+      "name": "func_ovl8_80386BE0",
+      "tu": "ovl8_31",
+      "file_size": "15730",
+      "comment": "swtich case order issue",
+      "scratch": "https://decomp.me/scratch/iUemX"
+    },
+    {
+      "name": "func_ovl8_80387540",
+      "tu": "ovl8_31",
+      "file_size": "16831",
+      "comment": "score: 225",
+      "scratch": "https://decomp.me/scratch/n77Mw"
+    },
+    {
+      "name": "func_ovl0_800CC818",
+      "tu": "lbcommon",
+      "file_size": "",
+      "comment": "regswaps score: 100",
+      "scratch": "https://decomp.me/scratch/TY6Vu"
+    },
+    {
+      "name": "func_ovl0_800CEF4C",
+      "tu": "lbparticle",
+      "file_size": "",
+      "comment": "score: 3228",
+      "scratch": "https://decomp.me/scratch/vJPFM"
+    },
+    {
+      "name": "func_ovl0_800D0D34",
+      "tu": "lbparticle",
+      "file_size": "",
+      "comment": "score: 435",
+      "scratch": "https://decomp.me/scratch/mhNRe"
+    },
+    {
+      "name": "func_ovl0_800D2C4C",
+      "tu": "lbparticle",
+      "file_size": "",
+      "comment": "regswap score: 20",
+      "scratch": "https://decomp.me/scratch/dHhzN"
+    },
+    {
+      "name": "drawbitmap",
+      "tu": "sprite",
+      "file_size": "",
+      "comment": "",
+      "scratch": "https://decomp.me/scratch/jaIrC"
+    },
+    {
+      "name": "unref_800036B4",
+      "tu": "dma",
+      "file_size": "",
+      "comment": "score: 290 (fake)",
+      "scratch": "https://decomp.me/scratch/maIEE"
+    },
+    {
+      "name": "func_80010D70",
+      "tu": "objdisplay",
+      "file_size": "",
+      "comment": "",
+      "scratch": "https://decomp.me/scratch/X7YA9"
+    }
+  ],
+  "updated": "2026-04-21 13:40 UTC"
+};
+
+function render(data) {
+	if (!data) return;
+
+	const total = data.total_functions;
+	const remaining = data.functions.length;
+	const matched = total - remaining;
+	const pct = ((matched / total) * 100).toFixed(1);
+
+	document.getElementById('matched-count').textContent = matched.toLocaleString();
+	document.getElementById('remaining-count').textContent = remaining;
+	document.getElementById('pct').textContent = pct + '%';
+	document.getElementById('progress-fill').style.width = pct + '%';
+	document.getElementById('updated').textContent = 'Last updated: ' + data.updated;
+
+	const list = document.getElementById('func-list');
+	list.innerHTML = '';
+
+	for (const fn of data.functions) {
+		const card = document.createElement('div');
+		card.className = 'func-card';
+
+		let tuClass = 'tu';
+		if (fn.tu.startsWith('ovl8')) tuClass += '';
+		else if (fn.tu.startsWith('ovl0') || fn.tu.startsWith('lb')) tuClass += ' ovl0';
+		else tuClass += ' libultra';
+
+		let html = '<div class="func-info">';
+		html += '<div class="func-name">' + escHtml(fn.name) + '</div>';
+		html += '<div class="func-meta"><span class="' + tuClass + '">' + escHtml(fn.tu) + '</span>';
+		if (fn.file_size) html += ' · ' + Number(fn.file_size).toLocaleString() + ' bytes';
+		html += '</div>';
+		if (fn.comment) {
+			html += '<div class="func-comment">' + escHtml(fn.comment) + '</div>';
+		}
+		html += '</div>';
+
+		if (fn.scratch) {
+			html += '<a class="scratch-btn" href="' + escHtml(fn.scratch) + '" target="_blank" rel="noopener">';
+			html += '<svg viewBox="0 0 16 16"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.5 3h1v4.5L11 10l-.5.86-3-1.75V4z"/></svg>';
+			html += 'SCRATCH</a>';
+		}
+
+		card.innerHTML = html;
+		list.appendChild(card);
+	}
+}
+
+function escHtml(s) {
+	const d = document.createElement('div');
+	d.textContent = s;
+	return d.innerHTML;
+}
+
+render(PROGRESS_DATA);
+</script>
+</body>
+</html>

@@ -1,5 +1,8 @@
 # Super Smash Bros. 64 Decompilation
 
+Want to help? Here's a list of remaining functions: https://VetriTheRetri.github.io/ssb-decomp-re/
+
+## Setup
 - SHA1: `e2929e10fccc0aa84e5776227e798abc07cedabf`
 - MD5: `f7c52568a31aadf26e14dc2b6416b2ed`
 

@@ -20,4 +20,4 @@ intern dFTDonkeyAnimCatch_joints+0x4C dFTDonkeyAnimCatch_joint21
 intern dFTDonkeyAnimCatch_joints+0x54 dFTDonkeyAnimCatch_joint22
 intern dFTDonkeyAnimCatch_joints+0x58 dFTDonkeyAnimCatch_joint24
 intern dFTDonkeyAnimCatch_joints+0x60 dFTDonkeyAnimCatch_joint25
-intern dFTDonkeyAnimCatch_joints+0x64 dFTDonkeyAnimCatch_joint25+0x6C
+intern dFTDonkeyAnimCatch_joints+0x64 dFTDonkeyAnimCatch_joint26

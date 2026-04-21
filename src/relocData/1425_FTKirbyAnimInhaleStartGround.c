@@ -20,7 +20,8 @@ extern u16 dFTKirbyAnimInhaleStartGround_joint18[14];
 extern u16 dFTKirbyAnimInhaleStartGround_joint20[48];
 extern u16 dFTKirbyAnimInhaleStartGround_joint21[28];
 extern u16 dFTKirbyAnimInhaleStartGround_joint23[14];
-extern u16 dFTKirbyAnimInhaleStartGround_joint24[68];
+extern u16 dFTKirbyAnimInhaleStartGround_joint24[48];
+extern u16 dFTKirbyAnimInhaleStartGround_joint25[20];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTKirbyAnimInhaleStartGround_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTKirbyAnimInhaleStartGround_joints[] = {
 	(u32)dFTKirbyAnimInhaleStartGround_joint23, /* [21] joint 23 */
 	0x00000000, /* [22] NULL */
 	(u32)dFTKirbyAnimInhaleStartGround_joint24, /* [23] joint 24 */
-	0xFFFF016A, /* [24] END */
+	(u32)dFTKirbyAnimInhaleStartGround_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -280,7 +281,7 @@ u16 dFTKirbyAnimInhaleStartGround_joint23[14] = {
 };
 
 /* Joint 24 */
-u16 dFTKirbyAnimInhaleStartGround_joint24[68] = {
+u16 dFTKirbyAnimInhaleStartGround_joint24[48] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 309, 0, 176, 0, -99, 3,
 	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 15), 152, -7,
@@ -292,5 +293,14 @@ u16 dFTKirbyAnimInhaleStartGround_joint24[68] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 3), 33, -20,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 291, -2, 22, -10, 148, 21,
 	ftAnimEnd(),
-	0x4080, 0x0000, 0x486E, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x3881, 0x0012, 0x0000, 0x3881, 0x0002, 0x0708, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 25 */
+u16 dFTKirbyAnimInhaleStartGround_joint25[20] = {
+	ftAnimSetVal0Rate(FT_ANIM_TRAZ), 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY), 0, 0, 0, 0, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 18), 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 2), 1800,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

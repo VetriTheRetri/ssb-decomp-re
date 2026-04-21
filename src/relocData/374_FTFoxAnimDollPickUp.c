@@ -20,7 +20,8 @@ extern u16 dFTFoxAnimDollPickUp_joint19[38];
 extern u16 dFTFoxAnimDollPickUp_joint21[34];
 extern u16 dFTFoxAnimDollPickUp_joint22[54];
 extern u16 dFTFoxAnimDollPickUp_joint24[30];
-extern u16 dFTFoxAnimDollPickUp_joint25[54];
+extern u16 dFTFoxAnimDollPickUp_joint25[38];
+extern u16 dFTFoxAnimDollPickUp_joint26[16];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimDollPickUp_joints[] = {
@@ -49,7 +50,7 @@ u32 dFTFoxAnimDollPickUp_joints[] = {
 	(u32)dFTFoxAnimDollPickUp_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTFoxAnimDollPickUp_joint25, /* [24] joint 25 */
-	0xFFFF015C, /* [25] END */
+	(u32)dFTFoxAnimDollPickUp_joint26, /* [25] joint 26 */
 };
 
 /* 4-byte alignment padding */
@@ -287,7 +288,7 @@ u16 dFTFoxAnimDollPickUp_joint24[30] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimDollPickUp_joint25[54] = {
+u16 dFTFoxAnimDollPickUp_joint25[38] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -55, 0, 12, 0, 401, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 99), -213, -1, 590, 1,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 79), -372, -6,
@@ -296,5 +297,13 @@ u16 dFTFoxAnimDollPickUp_joint25[54] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -336, 1,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -338, -1, -215, -1, 591, 1,
 	ftAnimEnd(),
-	0x1802, 0x0000, 0x50EC, 0x0000, 0x0000, 0x0000, 0xFF82, 0xFFA0, 0x1003, 0x0064, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimDollPickUp_joint26[16] = {
+	ftAnimSetVal(FT_ANIM_ROTX), 0,
+	ftAnimSetValAfter(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0, -126, -96,
+	ftAnimSetValBlockT(FT_ANIM_ROTX, 100), 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

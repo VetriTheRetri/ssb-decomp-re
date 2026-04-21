@@ -21,7 +21,8 @@ extern u16 dFTPikachuAnimThrown1_joint20[16];
 extern u16 dFTPikachuAnimThrown1_joint22[28];
 extern u16 dFTPikachuAnimThrown1_joint23[26];
 extern u16 dFTPikachuAnimThrown1_joint25[16];
-extern u16 dFTPikachuAnimThrown1_joint26[58];
+extern u16 dFTPikachuAnimThrown1_joint26[26];
+extern u16 dFTPikachuAnimThrown1_joint27[32];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTPikachuAnimThrown1_joints[] = {
@@ -51,7 +52,7 @@ u32 dFTPikachuAnimThrown1_joints[] = {
 	(u32)dFTPikachuAnimThrown1_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTPikachuAnimThrown1_joint26, /* [25] joint 26 */
-	0xFFFF01A8, /* [26] END */
+	(u32)dFTPikachuAnimThrown1_joint27, /* [26] joint 27 */
 };
 
 /* Joint 2 */
@@ -308,11 +309,22 @@ u16 dFTPikachuAnimThrown1_joint25[16] = {
 };
 
 /* Joint 26 */
-u16 dFTPikachuAnimThrown1_joint26[58] = {
+u16 dFTPikachuAnimThrown1_joint26[26] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1487, -4, -1654, 1, 1281, -8,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 23), 1486, 0, -1654, 0, 1281, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1487, 0, -1654, 0, 1281, 0,
 	ftAnimLoop(0x6800, -48),
 	ftAnimEnd(),
-	0x280E, 0x008F, 0xFFEC, 0x0000, 0xFFF2, 0x0000, 0x0016, 0x48E0, 0xFFFF, 0xFF4C, 0xFE9E, 0x380F, 0x000C, 0x0022, 0x007F, 0x007B, 0x2803, 0x000C, 0x008F, 0x0016, 0x380D, 0x000C, 0x0000, 0x0000, 0x6800, 0xFFCE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 27 */
+u16 dFTPikachuAnimThrown1_joint27[32] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 143, -20, 0, -14, 0, 22,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1, -180, -354,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 12), 34, 127, 123,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 12), 143, 22,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 12), 0, 0,
+	ftAnimLoop(0x6800, -50),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

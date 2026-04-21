@@ -15,4 +15,4 @@ intern dFTMarioAnimPose2_joints+0x40 dFTMarioAnimPose2_joint18
 intern dFTMarioAnimPose2_joints+0x48 dFTMarioAnimPose2_joint20
 intern dFTMarioAnimPose2_joints+0x50 dFTMarioAnimPose2_joint21
 intern dFTMarioAnimPose2_joints+0x54 dFTMarioAnimPose2_joint23
-intern dFTMarioAnimPose2_joints+0x5C dFTMarioAnimPose2_joint23+0x10
+intern dFTMarioAnimPose2_joints+0x5C dFTMarioAnimPose2_joint24

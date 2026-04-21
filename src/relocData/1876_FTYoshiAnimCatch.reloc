@@ -21,4 +21,4 @@ intern dFTYoshiAnimCatch_joints+0x54 dFTYoshiAnimCatch_joint23
 intern dFTYoshiAnimCatch_joints+0x5C dFTYoshiAnimCatch_joint24
 intern dFTYoshiAnimCatch_joints+0x60 dFTYoshiAnimCatch_joint26
 intern dFTYoshiAnimCatch_joints+0x68 dFTYoshiAnimCatch_joint27
-intern dFTYoshiAnimCatch_joints+0x6C dFTYoshiAnimCatch_joint27+0x18C
+intern dFTYoshiAnimCatch_joints+0x6C dFTYoshiAnimCatch_joint28

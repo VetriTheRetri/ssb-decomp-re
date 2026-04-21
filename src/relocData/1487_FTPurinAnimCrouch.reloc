@@ -17,4 +17,4 @@ intern dFTPurinAnimCrouch_joints+0x3C dFTPurinAnimCrouch_joint17
 intern dFTPurinAnimCrouch_joints+0x44 dFTPurinAnimCrouch_joint19
 intern dFTPurinAnimCrouch_joints+0x4C dFTPurinAnimCrouch_joint20
 intern dFTPurinAnimCrouch_joints+0x50 dFTPurinAnimCrouch_joint22
-intern dFTPurinAnimCrouch_joints+0x58 dFTPurinAnimCrouch_joint22+0x1C
+intern dFTPurinAnimCrouch_joints+0x58 dFTPurinAnimCrouch_joint23

@@ -17,4 +17,4 @@ intern dFTMarioAnimDamage_joints+0x40 dFTMarioAnimDamage_joint18
 intern dFTMarioAnimDamage_joints+0x48 dFTMarioAnimDamage_joint20
 intern dFTMarioAnimDamage_joints+0x50 dFTMarioAnimDamage_joint21
 intern dFTMarioAnimDamage_joints+0x54 dFTMarioAnimDamage_joint23
-intern dFTMarioAnimDamage_joints+0x5C dFTMarioAnimDamage_joint23+0x10
+intern dFTMarioAnimDamage_joints+0x5C dFTMarioAnimDamage_joint24

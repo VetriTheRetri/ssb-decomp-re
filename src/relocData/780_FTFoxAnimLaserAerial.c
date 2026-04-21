@@ -21,7 +21,8 @@ extern u16 dFTFoxAnimLaserAerial_joint20[82];
 extern u16 dFTFoxAnimLaserAerial_joint21[96];
 extern u16 dFTFoxAnimLaserAerial_joint23[54];
 extern u16 dFTFoxAnimLaserAerial_joint24[112];
-extern u16 dFTFoxAnimLaserAerial_joint25[62];
+extern u16 dFTFoxAnimLaserAerial_joint25[30];
+extern u16 dFTFoxAnimLaserAerial_joint26[32];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimLaserAerial_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTFoxAnimLaserAerial_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimLaserAerial_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimLaserAerial_joint25, /* [24] joint 25 */
-	0xFFFF02E4, /* [25] END */
+	(u32)dFTFoxAnimLaserAerial_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -472,7 +473,7 @@ u16 dFTFoxAnimLaserAerial_joint24[112] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimLaserAerial_joint25[62] = {
+u16 dFTFoxAnimLaserAerial_joint25[30] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTZ), 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 14), 261, 7, 0, 1,
@@ -480,5 +481,16 @@ u16 dFTFoxAnimLaserAerial_joint25[62] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 3), 643, -11, 70, -2,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 15), 0, -44, 0, 7,
 	ftAnimEnd(),
-	0x4006, 0x0192, 0x0000, 0x4808, 0x0000, 0x2007, 0x000E, 0x0000, 0xFFF0, 0x0000, 0xFFFF, 0x2007, 0x000D, 0xFFD6, 0x0016, 0xFFE3, 0xFFFE, 0x2007, 0x0005, 0x0192, 0x0018, 0xFFD1, 0x0001, 0x2007, 0x000D, 0x0192, 0x0001, 0x0000, 0xFFFD, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimLaserAerial_joint26[32] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY), 402, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTZ), 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 14), 0, -16, 0, -1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 13), -42, 22, -29, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 5), 402, 24, -47, 1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 13), 402, 1, 0, -3,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

@@ -20,4 +20,4 @@ intern dFTNessAnimDamage2_joints+0x4C dFTNessAnimDamage2_joint21
 intern dFTNessAnimDamage2_joints+0x54 dFTNessAnimDamage2_joint22
 intern dFTNessAnimDamage2_joints+0x58 dFTNessAnimDamage2_joint24
 intern dFTNessAnimDamage2_joints+0x60 dFTNessAnimDamage2_joint25
-intern dFTNessAnimDamage2_joints+0x64 dFTNessAnimDamage2_joint25+0xC0
+intern dFTNessAnimDamage2_joints+0x64 dFTNessAnimDamage2_joint26

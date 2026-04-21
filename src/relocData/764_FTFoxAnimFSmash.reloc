@@ -21,4 +21,4 @@ intern dFTFoxAnimFSmash_joints+0x54 dFTFoxAnimFSmash_joint22
 intern dFTFoxAnimFSmash_joints+0x58 dFTFoxAnimFSmash_joint24
 intern dFTFoxAnimFSmash_joints+0x60 dFTFoxAnimFSmash_joint25
 intern dFTFoxAnimFSmash_joints+0x64 dFTFoxAnimFSmash_joint26
-intern dFTFoxAnimFSmash_joints+0x68 dFTFoxAnimFSmash_joint26+0xAC
+intern dFTFoxAnimFSmash_joints+0x68 dFTFoxAnimFSmash_joint27

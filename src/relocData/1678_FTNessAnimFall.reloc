@@ -20,4 +20,4 @@ intern dFTNessAnimFall_joints+0x4C dFTNessAnimFall_joint21
 intern dFTNessAnimFall_joints+0x54 dFTNessAnimFall_joint22
 intern dFTNessAnimFall_joints+0x58 dFTNessAnimFall_joint24
 intern dFTNessAnimFall_joints+0x60 dFTNessAnimFall_joint25
-intern dFTNessAnimFall_joints+0x64 dFTNessAnimFall_joint25+0x58
+intern dFTNessAnimFall_joints+0x64 dFTNessAnimFall_joint26

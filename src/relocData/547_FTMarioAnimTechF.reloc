@@ -19,4 +19,4 @@ intern dFTMarioAnimTechF_joints+0x44 dFTMarioAnimTechF_joint19
 intern dFTMarioAnimTechF_joints+0x4C dFTMarioAnimTechF_joint21
 intern dFTMarioAnimTechF_joints+0x54 dFTMarioAnimTechF_joint22
 intern dFTMarioAnimTechF_joints+0x58 dFTMarioAnimTechF_joint24
-intern dFTMarioAnimTechF_joints+0x60 dFTMarioAnimTechF_joint24+0x50
+intern dFTMarioAnimTechF_joints+0x60 dFTMarioAnimTechF_joint25

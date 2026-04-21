@@ -18,4 +18,4 @@ intern dFTDonkeyAnimSleep_joints+0x44 dFTDonkeyAnimSleep_joint19
 intern dFTDonkeyAnimSleep_joints+0x4C dFTDonkeyAnimSleep_joint21
 intern dFTDonkeyAnimSleep_joints+0x54 dFTDonkeyAnimSleep_joint22
 intern dFTDonkeyAnimSleep_joints+0x58 dFTDonkeyAnimSleep_joint24
-intern dFTDonkeyAnimSleep_joints+0x60 dFTDonkeyAnimSleep_joint24+0x40
+intern dFTDonkeyAnimSleep_joints+0x60 dFTDonkeyAnimSleep_joint25

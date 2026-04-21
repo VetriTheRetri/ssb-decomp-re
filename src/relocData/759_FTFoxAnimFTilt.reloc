@@ -20,4 +20,4 @@ intern dFTFoxAnimFTilt_joints+0x50 dFTFoxAnimFTilt_joint21
 intern dFTFoxAnimFTilt_joints+0x54 dFTFoxAnimFTilt_joint23
 intern dFTFoxAnimFTilt_joints+0x5C dFTFoxAnimFTilt_joint24
 intern dFTFoxAnimFTilt_joints+0x60 dFTFoxAnimFTilt_joint25
-intern dFTFoxAnimFTilt_joints+0x64 dFTFoxAnimFTilt_joint25+0x78
+intern dFTFoxAnimFTilt_joints+0x64 dFTFoxAnimFTilt_joint26

@@ -20,4 +20,4 @@ intern dFTNessAnimWin1_joints+0x4C dFTNessAnimWin1_joint21
 intern dFTNessAnimWin1_joints+0x54 dFTNessAnimWin1_joint22
 intern dFTNessAnimWin1_joints+0x58 dFTNessAnimWin1_joint24
 intern dFTNessAnimWin1_joints+0x60 dFTNessAnimWin1_joint25
-intern dFTNessAnimWin1_joints+0x64 dFTNessAnimWin1_joint25+0x304
+intern dFTNessAnimWin1_joints+0x64 dFTNessAnimWin1_joint26

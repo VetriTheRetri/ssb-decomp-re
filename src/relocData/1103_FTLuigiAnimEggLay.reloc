@@ -18,4 +18,4 @@ intern dFTLuigiAnimEggLay_joints+0x40 dFTLuigiAnimEggLay_joint18
 intern dFTLuigiAnimEggLay_joints+0x48 dFTLuigiAnimEggLay_joint20
 intern dFTLuigiAnimEggLay_joints+0x50 dFTLuigiAnimEggLay_joint21
 intern dFTLuigiAnimEggLay_joints+0x54 dFTLuigiAnimEggLay_joint23
-intern dFTLuigiAnimEggLay_joints+0x5C dFTLuigiAnimEggLay_joint23+0x30
+intern dFTLuigiAnimEggLay_joints+0x5C dFTLuigiAnimEggLay_joint24

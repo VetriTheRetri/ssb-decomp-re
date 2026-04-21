@@ -16,4 +16,4 @@ intern dFTKirbyAnimTeeter_joints+0x38 dFTKirbyAnimTeeter_joint16
 intern dFTKirbyAnimTeeter_joints+0x40 dFTKirbyAnimTeeter_joint18
 intern dFTKirbyAnimTeeter_joints+0x48 dFTKirbyAnimTeeter_joint19
 intern dFTKirbyAnimTeeter_joints+0x4C dFTKirbyAnimTeeter_joint21
-intern dFTKirbyAnimTeeter_joints+0x54 dFTKirbyAnimTeeter_joint21+0x20
+intern dFTKirbyAnimTeeter_joints+0x54 dFTKirbyAnimTeeter_joint22

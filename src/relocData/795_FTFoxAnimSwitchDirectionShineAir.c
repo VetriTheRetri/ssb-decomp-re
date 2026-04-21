@@ -20,7 +20,8 @@ extern u16 dFTFoxAnimSwitchDirectionShineAir_joint20[22];
 extern u16 dFTFoxAnimSwitchDirectionShineAir_joint21[8];
 extern u16 dFTFoxAnimSwitchDirectionShineAir_joint23[8];
 extern u16 dFTFoxAnimSwitchDirectionShineAir_joint24[8];
-extern u16 dFTFoxAnimSwitchDirectionShineAir_joint25[34];
+extern u16 dFTFoxAnimSwitchDirectionShineAir_joint25[14];
+extern u16 dFTFoxAnimSwitchDirectionShineAir_joint26[20];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimSwitchDirectionShineAir_joints[] = {
@@ -49,7 +50,7 @@ u32 dFTFoxAnimSwitchDirectionShineAir_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimSwitchDirectionShineAir_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimSwitchDirectionShineAir_joint25, /* [24] joint 25 */
-	0xFFFF008A, /* [25] END */
+	(u32)dFTFoxAnimSwitchDirectionShineAir_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -189,11 +190,15 @@ u16 dFTFoxAnimSwitchDirectionShineAir_joint24[8] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimSwitchDirectionShineAir_joint25[34] = {
+u16 dFTFoxAnimSwitchDirectionShineAir_joint25[14] = {
 	ftAnimSetValRate(FT_ANIM_ROTX), 442, 49,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0, -126, -96,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 5), 442,
 	ftAnimLoop(0x6800, -26),
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimSwitchDirectionShineAir_joint26[20] = {
 	ftAnimSetValRate(FT_ANIM_ROTX), 0, -44,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0, 64, -450,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 5), 0,

@@ -20,7 +20,8 @@ extern u16 dFTFoxAnimPosePostBlaster_joint20[8];
 extern u16 dFTFoxAnimPosePostBlaster_joint21[16];
 extern u16 dFTFoxAnimPosePostBlaster_joint23[12];
 extern u16 dFTFoxAnimPosePostBlaster_joint24[16];
-extern u16 dFTFoxAnimPosePostBlaster_joint25[20];
+extern u16 dFTFoxAnimPosePostBlaster_joint25[10];
+extern u16 dFTFoxAnimPosePostBlaster_joint26[10];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimPosePostBlaster_joints[] = {
@@ -49,7 +50,7 @@ u32 dFTFoxAnimPosePostBlaster_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimPosePostBlaster_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimPosePostBlaster_joint25, /* [24] joint 25 */
-	0xFFFF006F, /* [25] END */
+	(u32)dFTFoxAnimPosePostBlaster_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -186,9 +187,16 @@ u16 dFTFoxAnimPosePostBlaster_joint24[16] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimPosePostBlaster_joint25[20] = {
+u16 dFTFoxAnimPosePostBlaster_joint25[10] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 169, -35, -792, 0, -126, -96,
 	ftAnimBlock(0, 1),
 	ftAnimEnd(),
-	0x500E, 0x010C, 0x0165, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimPosePostBlaster_joint26[10] = {
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 268, 357, 0,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000,
 };

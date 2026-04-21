@@ -21,7 +21,8 @@ extern u16 dFTBossAnimUnknown2_joint20[34];
 extern u16 dFTBossAnimUnknown2_joint21[24];
 extern u16 dFTBossAnimUnknown2_joint23[24];
 extern u16 dFTBossAnimUnknown2_joint24[42];
-extern u16 dFTBossAnimUnknown2_joint25[50];
+extern u16 dFTBossAnimUnknown2_joint25[24];
+extern u16 dFTBossAnimUnknown2_joint26[26];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTBossAnimUnknown2_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTBossAnimUnknown2_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTBossAnimUnknown2_joint24, /* [23] joint 24 */
 	(u32)dFTBossAnimUnknown2_joint25, /* [24] joint 25 */
-	0xFFFF013B, /* [25] END */
+	(u32)dFTBossAnimUnknown2_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -285,7 +286,7 @@ u16 dFTBossAnimUnknown2_joint24[42] = {
 };
 
 /* Joint 25 */
-u16 dFTBossAnimUnknown2_joint25[50] = {
+u16 dFTBossAnimUnknown2_joint25[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), -196, 2,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 20), -99, 0,
@@ -293,5 +294,17 @@ u16 dFTBossAnimUnknown2_joint25[50] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 28), -99, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -99, 0,
 	ftAnimEnd(),
-	0x0000, 0x2808, 0xFF1D, 0x0003, 0x4806, 0x0000, 0x0000, 0x2009, 0x0011, 0xFFB0, 0xFFFE, 0x2009, 0x0001, 0xFFAE, 0xFFFF, 0x2009, 0x001F, 0xFFAC, 0x0000, 0x2009, 0x0001, 0xFFAC, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTBossAnimUnknown2_joint26[26] = {
+	ftAnimSetValRate(FT_ANIM_ROTZ), -227, 3,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 17), -80, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -82, -1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 31), -84, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -84, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000,
 };

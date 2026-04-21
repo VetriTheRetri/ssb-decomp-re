@@ -16,4 +16,4 @@ intern dFTLuigiAnimWin1_joints+0x40 dFTLuigiAnimWin1_joint18
 intern dFTLuigiAnimWin1_joints+0x48 dFTLuigiAnimWin1_joint20
 intern dFTLuigiAnimWin1_joints+0x50 dFTLuigiAnimWin1_joint21
 intern dFTLuigiAnimWin1_joints+0x54 dFTLuigiAnimWin1_joint23
-intern dFTLuigiAnimWin1_joints+0x5C dFTLuigiAnimWin1_joint23+0x140
+intern dFTLuigiAnimWin1_joints+0x5C dFTLuigiAnimWin1_joint24

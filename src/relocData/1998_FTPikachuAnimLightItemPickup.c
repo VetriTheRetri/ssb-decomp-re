@@ -21,7 +21,8 @@ extern u16 dFTPikachuAnimLightItemPickup_joint19[32];
 extern u16 dFTPikachuAnimLightItemPickup_joint21[60];
 extern u16 dFTPikachuAnimLightItemPickup_joint22[56];
 extern u16 dFTPikachuAnimLightItemPickup_joint24[32];
-extern u16 dFTPikachuAnimLightItemPickup_joint25[80];
+extern u16 dFTPikachuAnimLightItemPickup_joint25[60];
+extern u16 dFTPikachuAnimLightItemPickup_joint26[20];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTPikachuAnimLightItemPickup_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTPikachuAnimLightItemPickup_joints[] = {
 	(u32)dFTPikachuAnimLightItemPickup_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTPikachuAnimLightItemPickup_joint25, /* [24] joint 25 */
-	0xFFFF018A, /* [25] END */
+	(u32)dFTPikachuAnimLightItemPickup_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -282,7 +283,7 @@ u16 dFTPikachuAnimLightItemPickup_joint24[32] = {
 };
 
 /* Joint 25 */
-u16 dFTPikachuAnimLightItemPickup_joint25[80] = {
+u16 dFTPikachuAnimLightItemPickup_joint25[60] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1601, -134, -1893, 230, 1124, 97,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 3), -1474, 10,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1467, -77, 1221, -16,
@@ -295,5 +296,14 @@ u16 dFTPikachuAnimLightItemPickup_joint25[80] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 2), 1488, 119, 1169, -74,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1601, 113, -1893, -158, 1124, -45,
 	ftAnimEnd(),
-	0x400E, 0xFFF2, 0x0000, 0xFFFD, 0x48E0, 0xFFFF, 0xFF4C, 0xFE9E, 0x380F, 0x0002, 0xFB40, 0xFF15, 0xFE91, 0x380F, 0x0006, 0xFFF2, 0x0000, 0xFFFD, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTPikachuAnimLightItemPickup_joint26[20] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -14, 0, -3,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1, -180, -354,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), -1216, -235, -367,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 6), -14, 0, -3,
+	ftAnimEnd(),
+	0x0000,
 };

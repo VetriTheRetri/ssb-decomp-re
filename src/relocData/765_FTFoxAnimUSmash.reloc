@@ -18,4 +18,4 @@ intern dFTFoxAnimUSmash_joints+0x50 dFTFoxAnimUSmash_joint21
 intern dFTFoxAnimUSmash_joints+0x54 dFTFoxAnimUSmash_joint23
 intern dFTFoxAnimUSmash_joints+0x5C dFTFoxAnimUSmash_joint24
 intern dFTFoxAnimUSmash_joints+0x60 dFTFoxAnimUSmash_joint25
-intern dFTFoxAnimUSmash_joints+0x64 dFTFoxAnimUSmash_joint25+0x40
+intern dFTFoxAnimUSmash_joints+0x64 dFTFoxAnimUSmash_joint26

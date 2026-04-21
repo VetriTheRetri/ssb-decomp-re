@@ -22,7 +22,8 @@ extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint21[48];
 extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint23[84];
 extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint24[136];
 extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint26[48];
-extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint27[106];
+extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint27[90];
+extern u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint28[16];
 
 /* Joint pointer table (28 entries, 112 bytes) */
 u32 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joints[] = {
@@ -53,7 +54,7 @@ u32 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joints[] = {
 	(u32)dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint26, /* [24] joint 26 */
 	0x00000000, /* [25] NULL */
 	(u32)dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint27, /* [26] joint 27 */
-	0xFFFF0380, /* [27] END */
+	(u32)dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint28, /* [27] joint 28 */
 };
 
 /* Joint 1 */
@@ -536,7 +537,7 @@ u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint26[48] = {
 };
 
 /* Joint 27 */
-u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint27[106] = {
+u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint27[90] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1608, 0, 0, 0, -558, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 16), -56, -29,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 20), 1409, -46,
@@ -560,5 +561,13 @@ u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint27[106] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), -218, -14,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1609, 0, -89, 0, -228, -10,
 	ftAnimEnd(),
-	0x2880, 0x0C6C, 0x0000, 0x486E, 0x0000, 0x0648, 0x0000, 0x0000, 0x0017, 0x3881, 0x0005, 0x04C0, 0x1081, 0x001E, 0x04C0, 0x0000,
+};
+
+/* Joint 28 */
+u16 dFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowing_joint28[16] = {
+	ftAnimSetValRate(FT_ANIM_TRAZ), 3180, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY), 0, 1608, 0, 0, 23,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 5), 1216,
+	ftAnimSetValBlockT(FT_ANIM_TRAZ, 30), 1216,
+	ftAnimEnd(),
 };

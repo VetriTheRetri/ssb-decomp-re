@@ -18,4 +18,4 @@ intern dFTCaptainAnimRun_joints+0x44 dFTCaptainAnimRun_joint19
 intern dFTCaptainAnimRun_joints+0x4C dFTCaptainAnimRun_joint21
 intern dFTCaptainAnimRun_joints+0x54 dFTCaptainAnimRun_joint22
 intern dFTCaptainAnimRun_joints+0x58 dFTCaptainAnimRun_joint24
-intern dFTCaptainAnimRun_joints+0x60 dFTCaptainAnimRun_joint24+0x60
+intern dFTCaptainAnimRun_joints+0x60 dFTCaptainAnimRun_joint25

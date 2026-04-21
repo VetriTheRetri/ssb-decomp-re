@@ -20,4 +20,4 @@ intern dFTLinkAnimDamaged_joints+0x54 dFTLinkAnimDamaged_joint23
 intern dFTLinkAnimDamaged_joints+0x5C dFTLinkAnimDamaged_joint25
 intern dFTLinkAnimDamaged_joints+0x64 dFTLinkAnimDamaged_joint26
 intern dFTLinkAnimDamaged_joints+0x68 dFTLinkAnimDamaged_joint28
-intern dFTLinkAnimDamaged_joints+0x70 dFTLinkAnimDamaged_joint28+0x50
+intern dFTLinkAnimDamaged_joints+0x70 dFTLinkAnimDamaged_joint29

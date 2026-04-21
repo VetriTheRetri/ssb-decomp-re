@@ -20,4 +20,4 @@ intern dFTLinkAnimEggLay_joints+0x54 dFTLinkAnimEggLay_joint23
 intern dFTLinkAnimEggLay_joints+0x5C dFTLinkAnimEggLay_joint25
 intern dFTLinkAnimEggLay_joints+0x64 dFTLinkAnimEggLay_joint26
 intern dFTLinkAnimEggLay_joints+0x68 dFTLinkAnimEggLay_joint28
-intern dFTLinkAnimEggLay_joints+0x70 dFTLinkAnimEggLay_joint28+0x30
+intern dFTLinkAnimEggLay_joints+0x70 dFTLinkAnimEggLay_joint29

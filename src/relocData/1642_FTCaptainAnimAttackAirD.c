@@ -19,7 +19,8 @@ extern u16 dFTCaptainAnimAttackAirD_joint17[198];
 extern u16 dFTCaptainAnimAttackAirD_joint19[88];
 extern u16 dFTCaptainAnimAttackAirD_joint21[154];
 extern u16 dFTCaptainAnimAttackAirD_joint22[192];
-extern u16 dFTCaptainAnimAttackAirD_joint24[218];
+extern u16 dFTCaptainAnimAttackAirD_joint24[86];
+extern u16 dFTCaptainAnimAttackAirD_joint25[132];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTCaptainAnimAttackAirD_joints[] = {
@@ -47,7 +48,7 @@ u32 dFTCaptainAnimAttackAirD_joints[] = {
 	(u32)dFTCaptainAnimAttackAirD_joint22, /* [21] joint 22 */
 	(u32)dFTCaptainAnimAttackAirD_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
-	0xFFFF036A, /* [24] END */
+	(u32)dFTCaptainAnimAttackAirD_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -468,7 +469,7 @@ u16 dFTCaptainAnimAttackAirD_joint22[192] = {
 };
 
 /* Joint 24 */
-u16 dFTCaptainAnimAttackAirD_joint24[218] = {
+u16 dFTCaptainAnimAttackAirD_joint24[86] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 875, 201,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1076, 111,
@@ -492,5 +493,43 @@ u16 dFTCaptainAnimAttackAirD_joint24[218] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 893, -32,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 875, -18,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0xFFFE, 0x0006, 0xFFC7, 0x0001, 0xFF66, 0xFFFE, 0x2809, 0x0005, 0xFF4B, 0xFFFC, 0x2805, 0x0018, 0xFFDE, 0x0003, 0x2003, 0x0003, 0x0025, 0xFFEB, 0x2003, 0x0001, 0xFFFE, 0xFFE6, 0x2803, 0x0003, 0x002F, 0x0008, 0x0801, 0x0001, 0x2009, 0x0001, 0xFF47, 0x0049, 0x2009, 0x0001, 0xFFDE, 0x0021, 0x200B, 0x0001, 0x002C, 0x0018, 0xFF8B, 0xFFB4, 0x2809, 0x0006, 0xFF54, 0x0003, 0x2003, 0x0001, 0x0060, 0x0014, 0x2003, 0x0001, 0x0056, 0xFFFB, 0x2803, 0x000F, 0x000D, 0xFFEC, 0x0801, 0x0004, 0x2009, 0x0001, 0xFF57, 0x0002, 0x2009, 0x0009, 0xFF45, 0xFFEE, 0x200D, 0x0001, 0xFFE4, 0x0008, 0xFF2A, 0xFFD7, 0x2809, 0x0005, 0xFDED, 0xFFF3, 0x2805, 0x0009, 0x0001, 0xFFF3, 0x2003, 0x0001, 0xFFFB, 0xFFF6, 0x2803, 0x000B, 0xFFD7, 0x0019, 0x0801, 0x0004, 0x2009, 0x0001, 0xFDF1, 0x000E, 0x2809, 0x0008, 0xFF5C, 0x0012, 0x0801, 0x0003, 0x2005, 0x0001, 0xFFF4, 0xFFF2, 0x2805, 0x0004, 0xFFC9, 0xFFFC, 0x0801, 0x0002, 0x2003, 0x0001, 0xFFEF, 0x0011, 0x2003, 0x0001, 0xFFFB, 0x0007, 0x200F, 0x0001, 0xFFFE, 0x0003, 0xFFC7, 0xFFFE, 0xFF66, 0x0009, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 25 */
+u16 dFTCaptainAnimAttackAirD_joint25[132] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -2, 6, -57, 1, -154, -2,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 5), -181, -4,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 24), -34, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 3), 37, -21,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -2, -26,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 3), 47, 8,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -185, 73,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -34, 33,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 44, 24, -117, -76,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 6), -172, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 96, 20,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 86, -5,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 15), 13, -20,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -169, 2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 9), -187, -18,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -28, 8, -214, -41,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 5), -531, -13,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 9), 1, -13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -5, -10,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 11), -41, 25,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -527, 14,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 8), -164, 18,
+	ftAnimBlock(0, 3),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -12, -14,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 4), -55, -4,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -17, 17,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -5, 7,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -2, 3, -57, -2, -154, 9,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

@@ -20,4 +20,4 @@ intern dFTLinkAnimCrouch_joints+0x54 dFTLinkAnimCrouch_joint23
 intern dFTLinkAnimCrouch_joints+0x5C dFTLinkAnimCrouch_joint25
 intern dFTLinkAnimCrouch_joints+0x64 dFTLinkAnimCrouch_joint26
 intern dFTLinkAnimCrouch_joints+0x68 dFTLinkAnimCrouch_joint28
-intern dFTLinkAnimCrouch_joints+0x70 dFTLinkAnimCrouch_joint28+0x20
+intern dFTLinkAnimCrouch_joints+0x70 dFTLinkAnimCrouch_joint29

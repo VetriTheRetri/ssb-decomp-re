@@ -20,7 +20,8 @@ extern u16 dFTCaptainAnimStunStartU_joint17[108];
 extern u16 dFTCaptainAnimStunStartU_joint19[56];
 extern u16 dFTCaptainAnimStunStartU_joint21[110];
 extern u16 dFTCaptainAnimStunStartU_joint22[154];
-extern u16 dFTCaptainAnimStunStartU_joint24[194];
+extern u16 dFTCaptainAnimStunStartU_joint24[64];
+extern u16 dFTCaptainAnimStunStartU_joint25[130];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTCaptainAnimStunStartU_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTCaptainAnimStunStartU_joints[] = {
 	(u32)dFTCaptainAnimStunStartU_joint22, /* [21] joint 22 */
 	(u32)dFTCaptainAnimStunStartU_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
-	0xFFFF0253, /* [24] END */
+	(u32)dFTCaptainAnimStunStartU_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -388,7 +389,7 @@ u16 dFTCaptainAnimStunStartU_joint22[154] = {
 };
 
 /* Joint 24 */
-u16 dFTCaptainAnimStunStartU_joint24[194] = {
+u16 dFTCaptainAnimStunStartU_joint24[64] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 964, 81,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), 1085, 13,
@@ -406,5 +407,42 @@ u16 dFTCaptainAnimStunStartU_joint24[194] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), 547, -11,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 541, -5,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0xFAAD, 0x0049, 0xF8F4, 0x0017, 0xFABC, 0xFFF6, 0x2805, 0x0002, 0xF94F, 0x0055, 0x2809, 0x0003, 0xFA5E, 0xFFC2, 0x2003, 0x0001, 0xFAF6, 0x001F, 0x2003, 0x0001, 0xFAEC, 0xFFE6, 0x2803, 0x0002, 0xFABC, 0x000F, 0x2005, 0x0001, 0xF9B6, 0x0069, 0x2805, 0x0002, 0xFA54, 0x0006, 0x2009, 0x0001, 0xFA15, 0xFFB4, 0x2809, 0x0006, 0xF875, 0xFFE5, 0x2003, 0x0001, 0xFAE2, 0x0032, 0x2803, 0x0002, 0xFB46, 0x0011, 0x2005, 0x0001, 0xFA2D, 0xFFBA, 0x2805, 0x0003, 0xF8EA, 0xFFB6, 0x0801, 0x0001, 0x2003, 0x0001, 0xFB46, 0xFFED, 0x2803, 0x0002, 0xFAE6, 0xFFA7, 0x0801, 0x0001, 0x2005, 0x0001, 0xF8B7, 0xFFDA, 0x2805, 0x0005, 0xF875, 0xFFFB, 0x200B, 0x0001, 0xFA6C, 0xFF9C, 0xF860, 0xFFEE, 0x2809, 0x0012, 0xF89E, 0x0004, 0x2003, 0x0002, 0xFA0D, 0x000A, 0x2003, 0x0001, 0xFA32, 0x001F, 0x2803, 0x0005, 0xFA25, 0xFFFD, 0x0801, 0x0001, 0x2005, 0x0001, 0xF870, 0xFFFC, 0x2805, 0x000D, 0xF84A, 0x0000, 0x0801, 0x0003, 0x2003, 0x0001, 0xFA23, 0x0000, 0x2003, 0x0009, 0xFA58, 0x0003, 0x200F, 0x0001, 0xFA59, 0x0001, 0xF84B, 0x0000, 0xF8A0, 0x0002, 0x0000,
+	0x0000,
+};
+
+/* Joint 25 */
+u16 dFTCaptainAnimStunStartU_joint25[130] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1363, 73, -1804, 23, -1348, -10,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 2), -1713, 85,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 3), -1442, -62,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1290, 31,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1300, -26,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 2), -1348, 15,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -1610, 105,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 2), -1452, 6,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -1515, -76,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 6), -1931, -27,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1310, 50,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 2), -1210, 17,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -1491, -70,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 3), -1814, -74,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1210, -19,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 2), -1306, -89,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -1865, -38,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 5), -1931, -5,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -1428, -100, -1952, -18,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 18), -1890, 4,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 2), -1523, 10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1486, 31,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 5), -1499, -3,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -1936, -4,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 13), -1974, 0,
+	ftAnimBlock(0, 3),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1501, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 9), -1448, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1447, 1, -1973, 0, -1888, 2,
+	ftAnimEnd(),
 };

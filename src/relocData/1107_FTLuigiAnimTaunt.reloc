@@ -17,4 +17,4 @@ intern dFTLuigiAnimTaunt_joints+0x40 dFTLuigiAnimTaunt_joint18
 intern dFTLuigiAnimTaunt_joints+0x48 dFTLuigiAnimTaunt_joint20
 intern dFTLuigiAnimTaunt_joints+0x50 dFTLuigiAnimTaunt_joint21
 intern dFTLuigiAnimTaunt_joints+0x54 dFTLuigiAnimTaunt_joint23
-intern dFTLuigiAnimTaunt_joints+0x5C dFTLuigiAnimTaunt_joint23+0xB0
+intern dFTLuigiAnimTaunt_joints+0x5C dFTLuigiAnimTaunt_joint24

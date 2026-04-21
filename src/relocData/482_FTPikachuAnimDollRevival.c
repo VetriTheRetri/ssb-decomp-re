@@ -20,7 +20,8 @@ extern u16 dFTPikachuAnimDollRevival_joint20[238];
 extern u16 dFTPikachuAnimDollRevival_joint22[460];
 extern u16 dFTPikachuAnimDollRevival_joint23[566];
 extern u16 dFTPikachuAnimDollRevival_joint25[236];
-extern u16 dFTPikachuAnimDollRevival_joint26[536];
+extern u16 dFTPikachuAnimDollRevival_joint26[416];
+extern u16 dFTPikachuAnimDollRevival_joint27[120];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTPikachuAnimDollRevival_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTPikachuAnimDollRevival_joints[] = {
 	(u32)dFTPikachuAnimDollRevival_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTPikachuAnimDollRevival_joint26, /* [25] joint 26 */
-	0xFFFF091C, /* [26] END */
+	(u32)dFTPikachuAnimDollRevival_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -1124,7 +1125,7 @@ u16 dFTPikachuAnimDollRevival_joint25[236] = {
 };
 
 /* Joint 26 */
-u16 dFTPikachuAnimDollRevival_joint26[536] = {
+u16 dFTPikachuAnimDollRevival_joint26[416] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 125, 0, 170, 0, 106, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 88), 170, -2, 106, -1,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 40), 125, -7,
@@ -1235,5 +1236,25 @@ u16 dFTPikachuAnimDollRevival_joint26[536] = {
 	ftAnimBlock(0, 2),
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -317, 340,
 	ftAnimEnd(),
-	0x400E, 0x007E, 0xFED5, 0xFBCB, 0x10E0, 0x0000, 0xFF4C, 0xFE98, 0x18E1, 0x00A0, 0x0000, 0xFF4C, 0xFE98, 0x200F, 0x0058, 0x007E, 0x0001, 0xFED5, 0x0000, 0xFBCB, 0x0001, 0x200F, 0x0004, 0x0107, 0x0000, 0xFE90, 0x001D, 0xFC5B, 0xFFF1, 0x200F, 0x0012, 0x0082, 0xFFF1, 0x0162, 0x001F, 0xFA6F, 0xFFE4, 0x200F, 0x0005, 0xFFA5, 0x0048, 0x016C, 0x0000, 0xF9D5, 0x003A, 0x200F, 0x0005, 0x0357, 0x005E, 0x0163, 0x0000, 0xFCB8, 0x0049, 0x200F, 0x0005, 0x0357, 0x005C, 0x0163, 0xFFFD, 0xFCB8, 0x004F, 0x200F, 0x000F, 0x0A96, 0x0004, 0x0113, 0xFFFF, 0x02E4, 0x0001, 0x200F, 0x0009, 0x0A96, 0x0002, 0x0113, 0x0000, 0x02E4, 0x0000, 0x200F, 0x0001, 0x0FCC, 0x0079, 0x01EF, 0x0013, 0x0918, 0x0015, 0x200F, 0x000A, 0x0FCC, 0xFFE6, 0x01EF, 0x0031, 0x0918, 0x0014, 0x30E0, 0x0004, 0xFFFD, 0xFFFC, 0x20EF, 0x000A, 0x0DBB, 0xFFE6, 0x05CA, 0x0031, 0x0AB8, 0x0014, 0x0069, 0x002A, 0xFEFD, 0xFFE1, 0xFE3C, 0xFFDC, 0x10EF, 0x000A, 0x0DBB, 0x05CA, 0x0AB8, 0x0069, 0xFEFD, 0xFE3C, 0x0000,
+};
+
+/* Joint 27 */
+u16 dFTPikachuAnimDollRevival_joint27[120] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 126, -299, -1077,
+	ftAnimSetValBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -180, -360,
+	ftAnimSetValT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 160), 0, -180, -360,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 88), 126, 1, -299, 0, -1077, 1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 4), 263, 0, -368, 29, -933, -15,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 18), 130, -15, 354, 31, -1425, -28,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), -91, 72, 364, 0, -1579, 58,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 855, 94, 355, 0, -840, 73,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 855, 92, 355, -3, -840, 79,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 15), 2710, 4, 275, -1, 740, 1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 9), 2710, 2, 275, 0, 740, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 4044, 121, 495, 19, 2328, 21,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 10), 4044, -26, 495, 49, 2328, 20,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 4, -3, -4,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 10), 3515, -26, 1482, 49, 2744, 20, 105, 42, -259, -31, -452, -36,
+	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 10), 3515, 1482, 2744, 105, -259, -452,
+	ftAnimEnd(),
 };

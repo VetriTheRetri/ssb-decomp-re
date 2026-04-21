@@ -21,7 +21,8 @@ extern u16 dFTNessAnimAppearStart2_joint20[58];
 extern u16 dFTNessAnimAppearStart2_joint22[32];
 extern u16 dFTNessAnimAppearStart2_joint23[58];
 extern u16 dFTNessAnimAppearStart2_joint25[32];
-extern u16 dFTNessAnimAppearStart2_joint26[96];
+extern u16 dFTNessAnimAppearStart2_joint26[58];
+extern u16 dFTNessAnimAppearStart2_joint27[38];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTNessAnimAppearStart2_joints[] = {
@@ -51,7 +52,7 @@ u32 dFTNessAnimAppearStart2_joints[] = {
 	(u32)dFTNessAnimAppearStart2_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTNessAnimAppearStart2_joint26, /* [25] joint 26 */
-	0xFFFF0181, /* [26] END */
+	(u32)dFTNessAnimAppearStart2_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -222,7 +223,7 @@ u16 dFTNessAnimAppearStart2_joint25[32] = {
 };
 
 /* Joint 26 */
-u16 dFTNessAnimAppearStart2_joint26[96] = {
+u16 dFTNessAnimAppearStart2_joint26[58] = {
 	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
 	ftAnimSetVal0Rate(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAY), -29007, 14482, 21522,
 	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAX), 18726, -18501, -22427,
@@ -238,5 +239,11 @@ u16 dFTNessAnimAppearStart2_joint26[96] = {
 	0x9919, /* unknown opcode 19 */
 	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ), 709, -16331, -25561, -16627, -17252,
 	ftAnimEnd(),
-	0x0000, 0x0603, 0x8000, 0xBDE1, 0xCAFA, 0xBED0, 0x59DE, 0xBDF7, 0x45B1, 0x0603, 0x8027, 0xBDE1, 0xCAFA, 0xBED0, 0x59DE, 0xBDF7, 0x45B1, 0x0A03, 0x8001, 0xBD80, 0x58CE, 0x397E, 0x04D2, 0xBD49, 0x98C9, 0xB901, 0x0FFE, 0xBE70, 0xA25D, 0xB920, 0xD47B, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 27 */
+u16 dFTNessAnimAppearStart2_joint27[38] = {
+	0x0603, /* End */
+	0x8000, 0xBDE1, 0xCAFA, 0xBED0, 0x59DE, 0xBDF7, 0x45B1, 0x0603, 0x8027, 0xBDE1, 0xCAFA, 0xBED0, 0x59DE, 0xBDF7, 0x45B1, 0x0A03, 0x8001, 0xBD80, 0x58CE, 0x397E, 0x04D2, 0xBD49, 0x98C9, 0xB901, 0x0FFE, 0xBE70, 0xA25D, 0xB920, 0xD47B, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

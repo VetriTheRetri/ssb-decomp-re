@@ -16,4 +16,4 @@ intern dFTSamusAnimWalk1_joints+0x3C dFTSamusAnimWalk1_joint17
 intern dFTSamusAnimWalk1_joints+0x44 dFTSamusAnimWalk1_joint19
 intern dFTSamusAnimWalk1_joints+0x4C dFTSamusAnimWalk1_joint20
 intern dFTSamusAnimWalk1_joints+0x50 dFTSamusAnimWalk1_joint22
-intern dFTSamusAnimWalk1_joints+0x58 dFTSamusAnimWalk1_joint22+0x40
+intern dFTSamusAnimWalk1_joints+0x58 dFTSamusAnimWalk1_joint23

@@ -22,7 +22,8 @@ extern u16 dFTPikachuAnimCatch_joint21[116];
 extern u16 dFTPikachuAnimCatch_joint22[92];
 extern u16 dFTPikachuAnimCatch_joint24[52];
 extern u16 dFTPikachuAnimCatch_joint25[114];
-extern u16 dFTPikachuAnimCatch_joint26[62];
+extern u16 dFTPikachuAnimCatch_joint26[38];
+extern u16 dFTPikachuAnimCatch_joint27[24];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTPikachuAnimCatch_joints[] = {
@@ -52,7 +53,7 @@ u32 dFTPikachuAnimCatch_joints[] = {
 	0x00000000, /* [23] NULL */
 	(u32)dFTPikachuAnimCatch_joint25, /* [24] joint 25 */
 	(u32)dFTPikachuAnimCatch_joint26, /* [25] joint 26 */
-	0xFFFF026C, /* [26] END */
+	(u32)dFTPikachuAnimCatch_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -385,7 +386,7 @@ u16 dFTPikachuAnimCatch_joint25[114] = {
 };
 
 /* Joint 26 */
-u16 dFTPikachuAnimCatch_joint26[62] = {
+u16 dFTPikachuAnimCatch_joint26[38] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -14, 0, -3,
 	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1, -180, -354,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), 110, -58, 115, 71, 182, -40,
@@ -393,5 +394,14 @@ u16 dFTPikachuAnimCatch_joint26[62] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), -416, 34, 75, -42, -521, 24,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), -14, 0, -3,
 	ftAnimEnd(),
-	0x40E0, 0xFFC7, 0x0000, 0x0350, 0x480E, 0xFFE7, 0xF995, 0x001B, 0x38E1, 0x0006, 0xFFCD, 0xFFDF, 0x0318, 0x10E1, 0x000A, 0xFFCD, 0xFFDF, 0x0318, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 27 */
+u16 dFTPikachuAnimCatch_joint27[24] = {
+	ftAnimSetVal0Rate(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -57, 0, 848,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -25, -1643, 27,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 6), -51, -33, 792,
+	ftAnimSetValBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 10), -51, -33, 792,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

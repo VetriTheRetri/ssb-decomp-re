@@ -16,4 +16,4 @@ intern dFTKirbyAnimJump3_joints+0x38 dFTKirbyAnimJump3_joint16
 intern dFTKirbyAnimJump3_joints+0x40 dFTKirbyAnimJump3_joint18
 intern dFTKirbyAnimJump3_joints+0x48 dFTKirbyAnimJump3_joint19
 intern dFTKirbyAnimJump3_joints+0x4C dFTKirbyAnimJump3_joint21
-intern dFTKirbyAnimJump3_joints+0x54 dFTKirbyAnimJump3_joint21+0x1C
+intern dFTKirbyAnimJump3_joints+0x54 dFTKirbyAnimJump3_joint22

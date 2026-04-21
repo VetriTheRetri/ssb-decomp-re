@@ -18,7 +18,8 @@ extern u16 dFTPurinAnimHeavyItemPickup_joint16[60];
 extern u16 dFTPurinAnimHeavyItemPickup_joint18[180];
 extern u16 dFTPurinAnimHeavyItemPickup_joint19[194];
 extern u16 dFTPurinAnimHeavyItemPickup_joint21[52];
-extern u16 dFTPurinAnimHeavyItemPickup_joint22[340];
+extern u16 dFTPurinAnimHeavyItemPickup_joint22[224];
+extern u16 dFTPurinAnimHeavyItemPickup_joint23[116];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTPurinAnimHeavyItemPickup_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTPurinAnimHeavyItemPickup_joints[] = {
 	(u32)dFTPurinAnimHeavyItemPickup_joint21, /* [19] joint 21 */
 	0x00000000, /* [20] NULL */
 	(u32)dFTPurinAnimHeavyItemPickup_joint22, /* [21] joint 22 */
-	0xFFFF0456, /* [22] END */
+	(u32)dFTPurinAnimHeavyItemPickup_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -557,7 +558,7 @@ u16 dFTPurinAnimHeavyItemPickup_joint21[52] = {
 };
 
 /* Joint 22 */
-u16 dFTPurinAnimHeavyItemPickup_joint22[340] = {
+u16 dFTPurinAnimHeavyItemPickup_joint22[224] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1279, -7, -1758, -46, 1527, -39,
 	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 2), 1470, 27,
@@ -611,5 +612,44 @@ u16 dFTPurinAnimHeavyItemPickup_joint22[340] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 13), -1272, 0, 1511, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1272, 0, -1729, 0, 1511, 0,
 	ftAnimEnd(),
-	0x4022, 0x0000, 0x0000, 0x28C0, 0x012C, 0x0177, 0x0384, 0xFFC2, 0x480C, 0x0000, 0x0000, 0x2881, 0x0005, 0x0358, 0xFF98, 0x2841, 0x0009, 0x0296, 0x00FD, 0x2821, 0x0020, 0x0000, 0x0002, 0x3803, 0x0004, 0x0000, 0x2803, 0x000D, 0x0047, 0x000F, 0x0801, 0x0001, 0x2881, 0x000C, 0x02FA, 0x0004, 0x0801, 0x0004, 0x2841, 0x0010, 0x035E, 0x0028, 0x0801, 0x0008, 0x2083, 0x0008, 0x00B3, 0x000C, 0x02FF, 0xFE7D, 0x3040, 0x001D, 0x3002, 0xFFBB, 0x2803, 0x000F, 0xFCDB, 0xFFDF, 0x20C1, 0x0007, 0x036F, 0x0000, 0x00D5, 0xFF6F, 0x2881, 0x000C, 0x0000, 0x0004, 0x2821, 0x000D, 0x0001, 0xFFE9, 0x3841, 0x0007, 0x036F, 0x3040, 0xFF8A, 0x2841, 0x0005, 0x0324, 0xFF66, 0x0801, 0x0001, 0x3002, 0x0000, 0x2803, 0x0005, 0xFCDB, 0x0000, 0x0801, 0x0004, 0x2881, 0x0004, 0x0000, 0x0000, 0x2841, 0x0010, 0x02D0, 0xFFFF, 0x0801, 0x0001, 0x4003, 0x000F, 0xFCDC, 0x4021, 0x0019, 0x007A, 0x0801, 0x0003, 0x3080, 0x0000, 0x2081, 0x000C, 0x0000, 0xFFFE, 0x0000,
+};
+
+/* Joint 23 */
+u16 dFTPurinAnimHeavyItemPickup_joint23[116] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_TRAX), 0, 0,
+	ftAnimSetValRate(FT_ANIM_TRAY | FT_ANIM_TRAZ), 300, 375, 900, -62,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 5), 856, -104,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 9), 662, 253,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 32), 0, 2,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 4), 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 13), 71, 15,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 12), 762, 4,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateT(FT_ANIM_TRAY, 16), 862, 40,
+	ftAnimBlock(0, 8),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAZ, 8), 179, 12, 767, -387,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), 29,
+	ftAnimSetTargetRateBlock(FT_ANIM_ROTX), -69,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 15), -805, -33,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAY | FT_ANIM_TRAZ, 7), 879, 0, 213, -145,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 12), 0, 4,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 13), 1, -23,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAY, 7), 879,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), -118,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 5), 804, -154,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_ROTX), 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 5), -805, 0,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 4), 0, 0,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 16), 720, -1,
+	ftAnimBlock(0, 1),
+	ftAnimSetVal0RateT(FT_ANIM_ROTX, 15), -804,
+	ftAnimSetVal0RateT(FT_ANIM_TRAX, 25), 122,
+	ftAnimBlock(0, 3),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), 0,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAZ, 12), 0, -2,
+	ftAnimEnd(),
 };

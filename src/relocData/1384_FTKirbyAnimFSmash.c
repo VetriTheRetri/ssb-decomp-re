@@ -18,7 +18,8 @@ extern u16 dFTKirbyAnimFSmash_joint15[150];
 extern u16 dFTKirbyAnimFSmash_joint17[16];
 extern u16 dFTKirbyAnimFSmash_joint19[184];
 extern u16 dFTKirbyAnimFSmash_joint20[118];
-extern u16 dFTKirbyAnimFSmash_joint22[152];
+extern u16 dFTKirbyAnimFSmash_joint22[14];
+extern u16 dFTKirbyAnimFSmash_joint23[138];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimFSmash_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTKirbyAnimFSmash_joints[] = {
 	(u32)dFTKirbyAnimFSmash_joint20, /* [19] joint 20 */
 	(u32)dFTKirbyAnimFSmash_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF0243, /* [22] END */
+	(u32)dFTKirbyAnimFSmash_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -387,11 +388,48 @@ u16 dFTKirbyAnimFSmash_joint20[118] = {
 };
 
 /* Joint 22 */
-u16 dFTKirbyAnimFSmash_joint22[152] = {
+u16 dFTKirbyAnimFSmash_joint22[14] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTZ), 7,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 39), 0, -3,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 1), 0,
 	ftAnimEnd(),
-	0x0000, 0x280E, 0x077E, 0xFFFD, 0x0597, 0x001F, 0x05E4, 0x0001, 0x4F00, 0x1000, 0x1000, 0x1000, 0x2803, 0x0008, 0x07EA, 0x0034, 0x2809, 0x0009, 0x0641, 0x0015, 0x2005, 0x0006, 0x0639, 0xFFE7, 0x2005, 0x0001, 0x061B, 0xFFE3, 0x2805, 0x0012, 0x05D7, 0xFFEA, 0x0801, 0x0001, 0x2003, 0x0001, 0x080F, 0xFF5F, 0x200B, 0x0001, 0x06A7, 0xFF26, 0x066F, 0x00AA, 0x200B, 0x0001, 0x065A, 0xFFE4, 0x0796, 0x00D8, 0x4003, 0x0007, 0x066E, 0x2009, 0x0001, 0x0820, 0x0043, 0x3809, 0x0004, 0x0820, 0x3809, 0x0001, 0x0820, 0x2809, 0x0008, 0x081C, 0xFFED, 0x0801, 0x0001, 0x3803, 0x0001, 0x066E, 0x2003, 0x0006, 0x0766, 0x0082, 0x200F, 0x0001, 0x07F7, 0x0045, 0x05AB, 0xFFD6, 0x07F5, 0xFF84, 0x280B, 0x0003, 0x07BB, 0x000D, 0x0590, 0xFFA0, 0x2005, 0x0002, 0x05F3, 0x0075, 0x2005, 0x0001, 0x066E, 0x005B, 0x2805, 0x0008, 0x05A4, 0xFFEF, 0x200B, 0x0001, 0x07CC, 0x0006, 0x055D, 0xFFE0, 0x2803, 0x0008, 0x0772, 0x0009, 0x2809, 0x0009, 0x05E2, 0x000B, 0x0801, 0x0007, 0x2005, 0x0001, 0x0599, 0xFFFA, 0x2007, 0x0001, 0x077B, 0x0005, 0x0597, 0xFFFF, 0x200F, 0x0001, 0x077E, 0x0003, 0x0597, 0x0000, 0x05E8, 0x0005, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTKirbyAnimFSmash_joint23[138] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1918, -3, 1431, 31, 1508, 1,
+	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 8), 2026, 52,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 9), 1601, 21,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 6), 1593, -25,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 1563, -29,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 18), 1495, -22,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 2063, -161,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1703, -218, 1647, 170,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1626, -28, 1942, 216,
+	ftAnimSetVal0RateT(FT_ANIM_ROTX, 7), 1646,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 2080, 67,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 4), 2080,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 1), 2080,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 8), 2076, -19,
+	ftAnimBlock(0, 1),
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 1), 1646,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 6), 1894, 130,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 2039, 69, 1451, -42, 2037, -124,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 3), 1979, 13, 1424, -96,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 2), 1523, 117,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 1646, 91,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 8), 1444, -17,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1996, 6, 1373, -32,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 8), 1906, 9,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 9), 1506, 11,
+	ftAnimBlock(0, 7),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 1433, -6,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 1), 1915, 5, 1431, -1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1918, 3, 1431, 0, 1512, 5,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

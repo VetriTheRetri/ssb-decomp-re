@@ -16,4 +16,4 @@ intern dFTKirbyAnimEggLay_joints+0x38 dFTKirbyAnimEggLay_joint16
 intern dFTKirbyAnimEggLay_joints+0x40 dFTKirbyAnimEggLay_joint18
 intern dFTKirbyAnimEggLay_joints+0x48 dFTKirbyAnimEggLay_joint19
 intern dFTKirbyAnimEggLay_joints+0x4C dFTKirbyAnimEggLay_joint21
-intern dFTKirbyAnimEggLay_joints+0x54 dFTKirbyAnimEggLay_joint21+0x30
+intern dFTKirbyAnimEggLay_joints+0x54 dFTKirbyAnimEggLay_joint22

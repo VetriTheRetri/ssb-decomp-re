@@ -17,7 +17,8 @@ extern u16 dFTSamusAnimHammerLanding_joint15[68];
 extern u16 dFTSamusAnimHammerLanding_joint17[36];
 extern u16 dFTSamusAnimHammerLanding_joint19[70];
 extern u16 dFTSamusAnimHammerLanding_joint20[78];
-extern u16 dFTSamusAnimHammerLanding_joint22[122];
+extern u16 dFTSamusAnimHammerLanding_joint22[40];
+extern u16 dFTSamusAnimHammerLanding_joint23[82];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTSamusAnimHammerLanding_joints[] = {
@@ -43,7 +44,7 @@ u32 dFTSamusAnimHammerLanding_joints[] = {
 	(u32)dFTSamusAnimHammerLanding_joint20, /* [19] joint 20 */
 	(u32)dFTSamusAnimHammerLanding_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF01AB, /* [22] END */
+	(u32)dFTSamusAnimHammerLanding_joint23, /* [22] joint 23 */
 };
 
 /* 4-byte alignment padding */
@@ -274,7 +275,7 @@ u16 dFTSamusAnimHammerLanding_joint20[78] = {
 };
 
 /* Joint 22 */
-u16 dFTSamusAnimHammerLanding_joint22[122] = {
+u16 dFTSamusAnimHammerLanding_joint22[40] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 591, -123,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), 548, 154,
@@ -286,6 +287,10 @@ u16 dFTSamusAnimHammerLanding_joint22[122] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 3), 636, -35,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 591, -44,
 	ftAnimLoop(0x6800, -78),
+};
+
+/* Joint 23 */
+u16 dFTSamusAnimHammerLanding_joint23[82] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1753, 114, -1939, 180, 1069, 167,
 	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTY, 7), -1568, 9, -1656, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), 1347, -48,

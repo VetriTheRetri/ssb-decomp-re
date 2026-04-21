@@ -16,4 +16,4 @@ intern dFTSamusAnimCrouch_joints+0x3C dFTSamusAnimCrouch_joint17
 intern dFTSamusAnimCrouch_joints+0x44 dFTSamusAnimCrouch_joint19
 intern dFTSamusAnimCrouch_joints+0x4C dFTSamusAnimCrouch_joint20
 intern dFTSamusAnimCrouch_joints+0x50 dFTSamusAnimCrouch_joint22
-intern dFTSamusAnimCrouch_joints+0x58 dFTSamusAnimCrouch_joint22+0x38
+intern dFTSamusAnimCrouch_joints+0x58 dFTSamusAnimCrouch_joint23

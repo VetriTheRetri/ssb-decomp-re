@@ -20,4 +20,4 @@ intern dFTLinkAnimRun_joints+0x54 dFTLinkAnimRun_joint23
 intern dFTLinkAnimRun_joints+0x5C dFTLinkAnimRun_joint25
 intern dFTLinkAnimRun_joints+0x64 dFTLinkAnimRun_joint26
 intern dFTLinkAnimRun_joints+0x68 dFTLinkAnimRun_joint28
-intern dFTLinkAnimRun_joints+0x70 dFTLinkAnimRun_joint28+0x60
+intern dFTLinkAnimRun_joints+0x70 dFTLinkAnimRun_joint29

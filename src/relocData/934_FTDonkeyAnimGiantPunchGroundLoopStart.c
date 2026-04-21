@@ -20,7 +20,8 @@ extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint17[38];
 extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint19[20];
 extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint21[38];
 extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint22[34];
-extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint24[42];
+extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint24[16];
+extern u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint25[26];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTDonkeyAnimGiantPunchGroundLoopStart_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTDonkeyAnimGiantPunchGroundLoopStart_joints[] = {
 	(u32)dFTDonkeyAnimGiantPunchGroundLoopStart_joint22, /* [21] joint 22 */
 	(u32)dFTDonkeyAnimGiantPunchGroundLoopStart_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
-	0xFFFF00EB, /* [24] END */
+	(u32)dFTDonkeyAnimGiantPunchGroundLoopStart_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -225,11 +226,20 @@ u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint22[34] = {
 };
 
 /* Joint 24 */
-u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint24[42] = {
+u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint24[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 994, 5,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), 1020, -14,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1006, -13,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0x0007, 0xFFFD, 0x0067, 0xFFF4, 0xFE7D, 0x0001, 0x200F, 0x0007, 0x0005, 0xFFE5, 0xFF17, 0xFFC2, 0xFF31, 0x0032, 0x200F, 0x0001, 0xFFE3, 0xFFDD, 0xFEE0, 0xFFCA, 0xFF61, 0x002F, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 25 */
+u16 dFTDonkeyAnimGiantPunchGroundLoopStart_joint25[26] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 7, -3, 103, -12, -387, 1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), 5, -27, -233, -62, -207, 50,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -29, -35, -288, -54, -159, 47,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

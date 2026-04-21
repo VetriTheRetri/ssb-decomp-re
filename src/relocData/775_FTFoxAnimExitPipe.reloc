@@ -20,4 +20,4 @@ intern dFTFoxAnimExitPipe_joints+0x50 dFTFoxAnimExitPipe_joint21
 intern dFTFoxAnimExitPipe_joints+0x54 dFTFoxAnimExitPipe_joint23
 intern dFTFoxAnimExitPipe_joints+0x5C dFTFoxAnimExitPipe_joint24
 intern dFTFoxAnimExitPipe_joints+0x60 dFTFoxAnimExitPipe_joint25
-intern dFTFoxAnimExitPipe_joints+0x64 dFTFoxAnimExitPipe_joint25+0x3C
+intern dFTFoxAnimExitPipe_joints+0x64 dFTFoxAnimExitPipe_joint26

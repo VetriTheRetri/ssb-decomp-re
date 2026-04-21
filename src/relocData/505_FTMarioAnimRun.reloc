@@ -18,4 +18,4 @@ intern dFTMarioAnimRun_joints+0x40 dFTMarioAnimRun_joint18
 intern dFTMarioAnimRun_joints+0x48 dFTMarioAnimRun_joint20
 intern dFTMarioAnimRun_joints+0x50 dFTMarioAnimRun_joint21
 intern dFTMarioAnimRun_joints+0x54 dFTMarioAnimRun_joint23
-intern dFTMarioAnimRun_joints+0x5C dFTMarioAnimRun_joint23+0x80
+intern dFTMarioAnimRun_joints+0x5C dFTMarioAnimRun_joint24

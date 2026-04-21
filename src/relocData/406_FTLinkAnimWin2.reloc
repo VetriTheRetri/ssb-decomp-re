@@ -21,4 +21,4 @@ intern dFTLinkAnimWin2_joints+0x54 dFTLinkAnimWin2_joint23
 intern dFTLinkAnimWin2_joints+0x5C dFTLinkAnimWin2_joint25
 intern dFTLinkAnimWin2_joints+0x64 dFTLinkAnimWin2_joint26
 intern dFTLinkAnimWin2_joints+0x68 dFTLinkAnimWin2_joint28
-intern dFTLinkAnimWin2_joints+0x70 dFTLinkAnimWin2_joint28+0xD0
+intern dFTLinkAnimWin2_joints+0x70 dFTLinkAnimWin2_joint29

@@ -14,4 +14,4 @@ intern dFTSamusAnimDamage_joints+0x3C dFTSamusAnimDamage_joint17
 intern dFTSamusAnimDamage_joints+0x44 dFTSamusAnimDamage_joint19
 intern dFTSamusAnimDamage_joints+0x4C dFTSamusAnimDamage_joint20
 intern dFTSamusAnimDamage_joints+0x50 dFTSamusAnimDamage_joint22
-intern dFTSamusAnimDamage_joints+0x58 dFTSamusAnimDamage_joint22+0x10
+intern dFTSamusAnimDamage_joints+0x58 dFTSamusAnimDamage_joint23

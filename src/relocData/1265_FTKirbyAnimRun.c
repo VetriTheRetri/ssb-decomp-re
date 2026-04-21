@@ -17,7 +17,8 @@ extern u16 dFTKirbyAnimRun_joint14[84];
 extern u16 dFTKirbyAnimRun_joint16[16];
 extern u16 dFTKirbyAnimRun_joint18[86];
 extern u16 dFTKirbyAnimRun_joint19[90];
-extern u16 dFTKirbyAnimRun_joint21[98];
+extern u16 dFTKirbyAnimRun_joint21[16];
+extern u16 dFTKirbyAnimRun_joint22[82];
 
 /* Joint pointer table (22 entries, 88 bytes) */
 u32 dFTKirbyAnimRun_joints[] = {
@@ -42,7 +43,7 @@ u32 dFTKirbyAnimRun_joints[] = {
 	(u32)dFTKirbyAnimRun_joint19, /* [18] joint 19 */
 	(u32)dFTKirbyAnimRun_joint21, /* [19] joint 21 */
 	0x00000000, /* [20] NULL */
-	0xFFFF012B, /* [21] END */
+	(u32)dFTKirbyAnimRun_joint22, /* [21] joint 22 */
 };
 
 /* Joint 1 */
@@ -243,12 +244,16 @@ u16 dFTKirbyAnimRun_joint19[90] = {
 };
 
 /* Joint 21 */
-u16 dFTKirbyAnimRun_joint21[98] = {
+u16 dFTKirbyAnimRun_joint21[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 7, -7,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 19), 7, -3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, -7,
 	ftAnimLoop(0x6800, -30),
+};
+
+/* Joint 22 */
+u16 dFTKirbyAnimRun_joint22[82] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1407, 20, -1678, -8, 1860, -16,
 	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
 	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 8), -1748, 44, 1382, 4,

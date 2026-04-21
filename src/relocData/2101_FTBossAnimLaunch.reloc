@@ -20,4 +20,4 @@ intern dFTBossAnimLaunch_joints+0x50 dFTBossAnimLaunch_joint21
 intern dFTBossAnimLaunch_joints+0x54 dFTBossAnimLaunch_joint23
 intern dFTBossAnimLaunch_joints+0x5C dFTBossAnimLaunch_joint24
 intern dFTBossAnimLaunch_joints+0x60 dFTBossAnimLaunch_joint25
-intern dFTBossAnimLaunch_joints+0x64 dFTBossAnimLaunch_joint25+0x74
+intern dFTBossAnimLaunch_joints+0x64 dFTBossAnimLaunch_joint26

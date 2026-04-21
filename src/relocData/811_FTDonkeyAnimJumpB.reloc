@@ -19,4 +19,4 @@ intern dFTDonkeyAnimJumpB_joints+0x44 dFTDonkeyAnimJumpB_joint19
 intern dFTDonkeyAnimJumpB_joints+0x4C dFTDonkeyAnimJumpB_joint21
 intern dFTDonkeyAnimJumpB_joints+0x54 dFTDonkeyAnimJumpB_joint22
 intern dFTDonkeyAnimJumpB_joints+0x58 dFTDonkeyAnimJumpB_joint24
-intern dFTDonkeyAnimJumpB_joints+0x60 dFTDonkeyAnimJumpB_joint24+0x30
+intern dFTDonkeyAnimJumpB_joints+0x60 dFTDonkeyAnimJumpB_joint25

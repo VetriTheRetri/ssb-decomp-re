@@ -18,4 +18,4 @@ intern dFTSamusAnimFSmash_joints+0x44 dFTSamusAnimFSmash_joint19
 intern dFTSamusAnimFSmash_joints+0x4C dFTSamusAnimFSmash_joint21
 intern dFTSamusAnimFSmash_joints+0x54 dFTSamusAnimFSmash_joint22
 intern dFTSamusAnimFSmash_joints+0x58 dFTSamusAnimFSmash_joint24
-intern dFTSamusAnimFSmash_joints+0x60 dFTSamusAnimFSmash_joint24+0x80
+intern dFTSamusAnimFSmash_joints+0x60 dFTSamusAnimFSmash_joint25

@@ -21,4 +21,4 @@ intern dFTNessAnimJumpB_joints+0x4C dFTNessAnimJumpB_joint21
 intern dFTNessAnimJumpB_joints+0x54 dFTNessAnimJumpB_joint22
 intern dFTNessAnimJumpB_joints+0x58 dFTNessAnimJumpB_joint24
 intern dFTNessAnimJumpB_joints+0x60 dFTNessAnimJumpB_joint25
-intern dFTNessAnimJumpB_joints+0x64 dFTNessAnimJumpB_joint25+0xC4
+intern dFTNessAnimJumpB_joints+0x64 dFTNessAnimJumpB_joint26

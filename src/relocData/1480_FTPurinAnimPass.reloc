@@ -17,4 +17,4 @@ intern dFTPurinAnimPass_joints+0x3C dFTPurinAnimPass_joint17
 intern dFTPurinAnimPass_joints+0x44 dFTPurinAnimPass_joint19
 intern dFTPurinAnimPass_joints+0x4C dFTPurinAnimPass_joint20
 intern dFTPurinAnimPass_joints+0x50 dFTPurinAnimPass_joint22
-intern dFTPurinAnimPass_joints+0x58 dFTPurinAnimPass_joint22+0x1C
+intern dFTPurinAnimPass_joints+0x58 dFTPurinAnimPass_joint23

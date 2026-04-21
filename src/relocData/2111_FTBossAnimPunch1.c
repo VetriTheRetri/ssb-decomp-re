@@ -21,7 +21,8 @@ extern u16 dFTBossAnimPunch1_joint20[8];
 extern u16 dFTBossAnimPunch1_joint21[8];
 extern u16 dFTBossAnimPunch1_joint23[8];
 extern u16 dFTBossAnimPunch1_joint24[8];
-extern u16 dFTBossAnimPunch1_joint25[22];
+extern u16 dFTBossAnimPunch1_joint25[8];
+extern u16 dFTBossAnimPunch1_joint26[14];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTBossAnimPunch1_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTBossAnimPunch1_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTBossAnimPunch1_joint24, /* [23] joint 24 */
 	(u32)dFTBossAnimPunch1_joint25, /* [24] joint 25 */
-	0xFFFF0075, /* [25] END */
+	(u32)dFTBossAnimPunch1_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -180,10 +181,14 @@ u16 dFTBossAnimPunch1_joint24[8] = {
 };
 
 /* Joint 25 */
-u16 dFTBossAnimPunch1_joint25[22] = {
+u16 dFTBossAnimPunch1_joint25[8] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, -529,
 	ftAnimBlock(0, 10),
 	ftAnimLoop(0x6800, -14),
+};
+
+/* Joint 26 */
+u16 dFTBossAnimPunch1_joint26[14] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, -866,
 	ftAnimBlock(0, 10),
 	ftAnimLoop(0x6800, -14),

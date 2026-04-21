@@ -21,7 +21,8 @@ extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint19[40];
 extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint21[74];
 extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint22[86];
 extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint24[40];
-extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint25[146];
+extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint25[84];
+extern u16 dFTCaptainAnimHeavyItemThrowSmashB_joint26[62];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTCaptainAnimHeavyItemThrowSmashB_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTCaptainAnimHeavyItemThrowSmashB_joints[] = {
 	(u32)dFTCaptainAnimHeavyItemThrowSmashB_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTCaptainAnimHeavyItemThrowSmashB_joint25, /* [24] joint 25 */
-	0xFFFF0269, /* [25] END */
+	(u32)dFTCaptainAnimHeavyItemThrowSmashB_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -396,7 +397,7 @@ u16 dFTCaptainAnimHeavyItemThrowSmashB_joint24[40] = {
 };
 
 /* Joint 25 */
-u16 dFTCaptainAnimHeavyItemThrowSmashB_joint25[146] = {
+u16 dFTCaptainAnimHeavyItemThrowSmashB_joint25[84] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 10, 8, 301, 0, -463, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 12), 19, 22,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 31), 325, 7,
@@ -419,5 +420,20 @@ u16 dFTCaptainAnimHeavyItemThrowSmashB_joint25[146] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), -281, 2,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 161, 0, 365, 0, -279, 1,
 	ftAnimEnd(),
-	0x28C2, 0xFCDC, 0x0000, 0x01E0, 0x0001, 0xFF9D, 0xFFB3, 0x482C, 0x0000, 0x0000, 0x0000, 0x2883, 0x0004, 0xFC7A, 0xFFD2, 0xFF59, 0xFF9E, 0x3841, 0x0004, 0x01DF, 0x20C3, 0x0006, 0xFB06, 0xFFEB, 0x0258, 0x008D, 0xFE54, 0xFEEB, 0x20C3, 0x0005, 0xFAF1, 0x0004, 0x02C1, 0x009E, 0xFDB5, 0xFFFD, 0x3002, 0x007F, 0x20C3, 0x0005, 0xFF88, 0x0010, 0x031D, 0xFF13, 0x040C, 0x073A, 0x2843, 0x0014, 0x0000, 0xFFFF, 0xFD3C, 0xFBF7, 0x3881, 0x0014, 0x0B35, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTCaptainAnimHeavyItemThrowSmashB_joint26[62] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -804, 0, 480, 1, -99, -77,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX), 0, 0, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_TRAZ, 4), -902, -46, -167, -98,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAY, 4), 479,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 6), -1274, -21, 600, 141, -428, -277,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 5), -1295, 4, 705, 158, -587, -3,
+	ftAnimSetTargetRateBlock(FT_ANIM_ROTX), 127,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 5), -120, 16, 797, -237, 1036, 1850,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_TRAY, 20), 0, -1, -708, -1033,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 20), 2869,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

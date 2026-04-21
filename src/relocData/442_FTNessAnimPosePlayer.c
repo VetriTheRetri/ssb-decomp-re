@@ -21,7 +21,8 @@ extern u16 dFTNessAnimPosePlayer_joint19[8];
 extern u16 dFTNessAnimPosePlayer_joint21[10];
 extern u16 dFTNessAnimPosePlayer_joint22[8];
 extern u16 dFTNessAnimPosePlayer_joint24[8];
-extern u16 dFTNessAnimPosePlayer_joint25[24];
+extern u16 dFTNessAnimPosePlayer_joint25[8];
+extern u16 dFTNessAnimPosePlayer_joint26[16];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimPosePlayer_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTNessAnimPosePlayer_joints[] = {
 	(u32)dFTNessAnimPosePlayer_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimPosePlayer_joint25, /* [24] joint 25 */
-	0xFFFF0080, /* [25] END */
+	(u32)dFTNessAnimPosePlayer_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -196,9 +197,17 @@ u16 dFTNessAnimPosePlayer_joint24[8] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimPosePlayer_joint25[24] = {
+u16 dFTNessAnimPosePlayer_joint25[8] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 238, 94, -130,
 	ftAnimBlock(0, 1),
 	ftAnimEnd(),
-	0x0000, 0x50EE, 0xFF40, 0x0000, 0x0000, 0xFF82, 0xFFAE, 0xFFF4, 0x0801, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimPosePlayer_joint26[16] = {
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -192, 0, 0, -126, -82, -12,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

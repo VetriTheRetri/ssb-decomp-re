@@ -19,7 +19,8 @@ extern u16 dFTKirbyAnimCliffEscapeQuick1_joint16[28];
 extern u16 dFTKirbyAnimCliffEscapeQuick1_joint18[16];
 extern u16 dFTKirbyAnimCliffEscapeQuick1_joint20[28];
 extern u16 dFTKirbyAnimCliffEscapeQuick1_joint21[28];
-extern u16 dFTKirbyAnimCliffEscapeQuick1_joint23[46];
+extern u16 dFTKirbyAnimCliffEscapeQuick1_joint23[14];
+extern u16 dFTKirbyAnimCliffEscapeQuick1_joint24[32];
 
 /* Joint pointer table (24 entries, 96 bytes) */
 u32 dFTKirbyAnimCliffEscapeQuick1_joints[] = {
@@ -46,7 +47,7 @@ u32 dFTKirbyAnimCliffEscapeQuick1_joints[] = {
 	(u32)dFTKirbyAnimCliffEscapeQuick1_joint21, /* [20] joint 21 */
 	(u32)dFTKirbyAnimCliffEscapeQuick1_joint23, /* [21] joint 23 */
 	0x00000000, /* [22] NULL */
-	0xFFFF00EC, /* [23] END */
+	(u32)dFTKirbyAnimCliffEscapeQuick1_joint24, /* [23] joint 24 */
 };
 
 /* Joint 1 */
@@ -219,11 +220,21 @@ u16 dFTKirbyAnimCliffEscapeQuick1_joint21[28] = {
 };
 
 /* Joint 23 */
-u16 dFTKirbyAnimCliffEscapeQuick1_joint23[46] = {
+u16 dFTKirbyAnimCliffEscapeQuick1_joint23[14] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTZ), 7,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), 0, -3,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 1), 0,
 	ftAnimEnd(),
-	0x0000, 0x280E, 0xFA30, 0x0030, 0x070E, 0x0000, 0xFC4F, 0xFFD6, 0x4F00, 0x1000, 0x1000, 0x1000, 0x200F, 0x0007, 0xFB45, 0x0013, 0x062B, 0xFFCD, 0xFB24, 0xFFC6, 0x200F, 0x0001, 0xFB4E, 0x0009, 0x05F7, 0xFFCD, 0xFAED, 0xFFCA, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 24 */
+u16 dFTKirbyAnimCliffEscapeQuick1_joint24[32] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1488, 48, 1806, 0, -945, -42,
+	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), -1211, 19, 1579, -51, -1244, -58,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1202, 9, 1527, -51, -1299, -54,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

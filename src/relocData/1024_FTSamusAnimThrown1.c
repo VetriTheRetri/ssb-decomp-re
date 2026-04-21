@@ -17,7 +17,8 @@ extern u16 dFTSamusAnimThrown1_joint16[26];
 extern u16 dFTSamusAnimThrown1_joint18[16];
 extern u16 dFTSamusAnimThrown1_joint20[26];
 extern u16 dFTSamusAnimThrown1_joint21[26];
-extern u16 dFTSamusAnimThrown1_joint23[46];
+extern u16 dFTSamusAnimThrown1_joint23[16];
+extern u16 dFTSamusAnimThrown1_joint24[30];
 
 /* Joint pointer table (24 entries, 96 bytes) */
 u32 dFTSamusAnimThrown1_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTSamusAnimThrown1_joints[] = {
 	(u32)dFTSamusAnimThrown1_joint21, /* [20] joint 21 */
 	(u32)dFTSamusAnimThrown1_joint23, /* [21] joint 23 */
 	0x00000000, /* [22] NULL */
-	0xFFFF00FD, /* [23] END */
+	(u32)dFTSamusAnimThrown1_joint24, /* [23] joint 24 */
 };
 
 /* Joint 2 */
@@ -204,12 +205,16 @@ u16 dFTSamusAnimThrown1_joint21[26] = {
 };
 
 /* Joint 23 */
-u16 dFTSamusAnimThrown1_joint23[46] = {
+u16 dFTSamusAnimThrown1_joint23[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 295, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 19), 295, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 295, 0,
 	ftAnimLoop(0x6800, -30),
+};
+
+/* Joint 24 */
+u16 dFTSamusAnimThrown1_joint24[30] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1590, 0, 1579, 0, -1677, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 19), -1590, 0, 1579, 0, -1677, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1590, 0, 1579, 0, -1677, 0,

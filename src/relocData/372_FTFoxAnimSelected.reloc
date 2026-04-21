@@ -18,4 +18,4 @@ intern dFTFoxAnimSelected_joints+0x50 dFTFoxAnimSelected_joint21
 intern dFTFoxAnimSelected_joints+0x54 dFTFoxAnimSelected_joint23
 intern dFTFoxAnimSelected_joints+0x5C dFTFoxAnimSelected_joint24
 intern dFTFoxAnimSelected_joints+0x60 dFTFoxAnimSelected_joint25
-intern dFTFoxAnimSelected_joints+0x64 dFTFoxAnimSelected_joint25+0x34
+intern dFTFoxAnimSelected_joints+0x64 dFTFoxAnimSelected_joint26

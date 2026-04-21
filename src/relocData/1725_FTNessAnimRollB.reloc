@@ -21,4 +21,4 @@ intern dFTNessAnimRollB_joints+0x50 dFTNessAnimRollB_joint22
 intern dFTNessAnimRollB_joints+0x58 dFTNessAnimRollB_joint23
 intern dFTNessAnimRollB_joints+0x5C dFTNessAnimRollB_joint25
 intern dFTNessAnimRollB_joints+0x64 dFTNessAnimRollB_joint26
-intern dFTNessAnimRollB_joints+0x68 dFTNessAnimRollB_joint26+0x128
+intern dFTNessAnimRollB_joints+0x68 dFTNessAnimRollB_joint27

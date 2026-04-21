@@ -17,4 +17,4 @@ intern dFTKirbyAnimCrouch_joints+0x3C dFTKirbyAnimCrouch_joint17
 intern dFTKirbyAnimCrouch_joints+0x44 dFTKirbyAnimCrouch_joint19
 intern dFTKirbyAnimCrouch_joints+0x4C dFTKirbyAnimCrouch_joint20
 intern dFTKirbyAnimCrouch_joints+0x50 dFTKirbyAnimCrouch_joint22
-intern dFTKirbyAnimCrouch_joints+0x58 dFTKirbyAnimCrouch_joint22+0x1C
+intern dFTKirbyAnimCrouch_joints+0x58 dFTKirbyAnimCrouch_joint23

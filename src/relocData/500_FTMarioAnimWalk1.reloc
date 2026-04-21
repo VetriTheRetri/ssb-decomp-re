@@ -17,4 +17,4 @@ intern dFTMarioAnimWalk1_joints+0x40 dFTMarioAnimWalk1_joint18
 intern dFTMarioAnimWalk1_joints+0x48 dFTMarioAnimWalk1_joint20
 intern dFTMarioAnimWalk1_joints+0x50 dFTMarioAnimWalk1_joint21
 intern dFTMarioAnimWalk1_joints+0x54 dFTMarioAnimWalk1_joint23
-intern dFTMarioAnimWalk1_joints+0x5C dFTMarioAnimWalk1_joint23+0x50
+intern dFTMarioAnimWalk1_joints+0x5C dFTMarioAnimWalk1_joint24

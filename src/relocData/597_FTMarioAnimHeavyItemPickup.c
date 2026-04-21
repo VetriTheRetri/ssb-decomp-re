@@ -20,7 +20,8 @@ extern u16 dFTMarioAnimHeavyItemPickup_joint18[68];
 extern u16 dFTMarioAnimHeavyItemPickup_joint20[148];
 extern u16 dFTMarioAnimHeavyItemPickup_joint21[170];
 extern u16 dFTMarioAnimHeavyItemPickup_joint23[60];
-extern u16 dFTMarioAnimHeavyItemPickup_joint24[268];
+extern u16 dFTMarioAnimHeavyItemPickup_joint24[146];
+extern u16 dFTMarioAnimHeavyItemPickup_joint25[122];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTMarioAnimHeavyItemPickup_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTMarioAnimHeavyItemPickup_joints[] = {
 	(u32)dFTMarioAnimHeavyItemPickup_joint23, /* [21] joint 23 */
 	0x00000000, /* [22] NULL */
 	(u32)dFTMarioAnimHeavyItemPickup_joint24, /* [23] joint 24 */
-	0xFFFF032F, /* [24] END */
+	(u32)dFTMarioAnimHeavyItemPickup_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -468,7 +469,7 @@ u16 dFTMarioAnimHeavyItemPickup_joint23[60] = {
 };
 
 /* Joint 24 */
-u16 dFTMarioAnimHeavyItemPickup_joint24[268] = {
+u16 dFTMarioAnimHeavyItemPickup_joint24[146] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1519, -69, 1702, 58, -1821, 13,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 6), -1956, -34,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 2), -1612, 76, 1794, -96,
@@ -500,5 +501,33 @@ u16 dFTMarioAnimHeavyItemPickup_joint24[268] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1435, 3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1441, -6, 1633, -54, -1752, -12,
 	ftAnimEnd(),
-	0x5008, 0x0000, 0x40E2, 0x0000, 0xFE67, 0x016F, 0x036D, 0x1004, 0xFF21, 0x28E1, 0x0004, 0x0000, 0x01D3, 0x0171, 0x0001, 0x03D8, 0x006E, 0x4003, 0x0007, 0x0000, 0x1005, 0x0004, 0x0000, 0x4041, 0x0003, 0x0171, 0x28A1, 0x0003, 0x0000, 0x0000, 0x03CE, 0xFFF4, 0x1005, 0x0003, 0x0000, 0x28E1, 0x0003, 0x0000, 0x0000, 0x0171, 0x008B, 0x03CE, 0xFE9A, 0x4005, 0x0021, 0x0000, 0x1003, 0x0003, 0x0000, 0x3002, 0xFFEA, 0x20E3, 0x0008, 0xFF0A, 0xFFE1, 0x0000, 0x0000, 0x0230, 0x009F, 0x01E1, 0xFE54, 0x20E3, 0x0004, 0xFE89, 0xFFE0, 0x0000, 0x0000, 0x025F, 0x0124, 0x014B, 0xFE4D, 0x2803, 0x000D, 0xFCDC, 0xFFE9, 0x20E1, 0x0004, 0x0000, 0x0000, 0x0354, 0x027F, 0x002D, 0xFEA8, 0x20E1, 0x0006, 0x0000, 0x0000, 0x057F, 0xFDEB, 0xFF9D, 0xFF1E, 0x20E1, 0x0003, 0x0000, 0x0000, 0x00FB, 0xF668, 0xFF2F, 0xFF2D, 0x2821, 0x0002, 0x0000, 0x0000, 0x4003, 0x0005, 0xFCDC, 0x38C1, 0x0002, 0xFF81, 0xFF19, 0x38E1, 0x0003, 0x0000, 0x00FB, 0xFF2F, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 25 */
+u16 dFTMarioAnimHeavyItemPickup_joint25[122] = {
+	ftAnimSetValAfter(FT_ANIM_ROTZ), 0,
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -409, 367, 877,
+	ftAnimSetValBlock(FT_ANIM_ROTY), -223,
+	ftAnimSetValRateT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 4), 0, 467, 369, 1, 984, 110,
+	ftAnimSetVal0RateT(FT_ANIM_ROTX, 7), 0,
+	ftAnimSetValBlockT(FT_ANIM_ROTY, 4), 0,
+	ftAnimSetVal0RateT(FT_ANIM_TRAY, 3), 369,
+	ftAnimSetValRateT(FT_ANIM_TRAX | FT_ANIM_TRAZ, 3), 0, 0, 974, -12,
+	ftAnimSetValBlockT(FT_ANIM_ROTY, 3), 0,
+	ftAnimSetValRateT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 3), 0, 0, 369, 139, 974, -358,
+	ftAnimSetVal0RateT(FT_ANIM_ROTY, 33), 0,
+	ftAnimSetValBlockT(FT_ANIM_ROTX, 3), 0,
+	ftAnimSetTargetRateBlock(FT_ANIM_ROTX), -22,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 8), -246, -31, 0, 0, 560, 159, 481, -428,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 4), -375, -32, 0, 0, 607, 292, 331, -435,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 13), -804, -23,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 4), 0, 0, 852, 639, 45, -344,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 6), 0, 0, 1407, -533, -99, -226,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 3), 0, 0, 251, -2456, -209, -211,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 2), 0, 0,
+	ftAnimSetVal0RateT(FT_ANIM_ROTX, 5), -804,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAY | FT_ANIM_TRAZ, 2), -127, -231,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 3), 0, 251, -209,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

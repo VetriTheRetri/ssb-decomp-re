@@ -16,4 +16,4 @@ intern dFTSamusAnimSleep_joints+0x3C dFTSamusAnimSleep_joint17
 intern dFTSamusAnimSleep_joints+0x44 dFTSamusAnimSleep_joint19
 intern dFTSamusAnimSleep_joints+0x4C dFTSamusAnimSleep_joint20
 intern dFTSamusAnimSleep_joints+0x50 dFTSamusAnimSleep_joint22
-intern dFTSamusAnimSleep_joints+0x58 dFTSamusAnimSleep_joint22+0x144
+intern dFTSamusAnimSleep_joints+0x58 dFTSamusAnimSleep_joint23

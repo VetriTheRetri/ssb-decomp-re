@@ -21,7 +21,8 @@ extern u16 dFTNessAnimPKThunderEnd_joint19[42];
 extern u16 dFTNessAnimPKThunderEnd_joint21[26];
 extern u16 dFTNessAnimPKThunderEnd_joint22[40];
 extern u16 dFTNessAnimPKThunderEnd_joint24[24];
-extern u16 dFTNessAnimPKThunderEnd_joint25[80];
+extern u16 dFTNessAnimPKThunderEnd_joint25[54];
+extern u16 dFTNessAnimPKThunderEnd_joint26[26];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimPKThunderEnd_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTNessAnimPKThunderEnd_joints[] = {
 	(u32)dFTNessAnimPKThunderEnd_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimPKThunderEnd_joint25, /* [24] joint 25 */
-	0xFFFF0157, /* [25] END */
+	(u32)dFTNessAnimPKThunderEnd_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -280,7 +281,7 @@ u16 dFTNessAnimPKThunderEnd_joint24[24] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimPKThunderEnd_joint25[80] = {
+u16 dFTNessAnimPKThunderEnd_joint25[54] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 23, 0, -11, 0, -10, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 9), -34, -21,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 15), 19, 10,
@@ -294,5 +295,14 @@ u16 dFTNessAnimPKThunderEnd_joint25[80] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 86, -17,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 76, -10, 25, 6, -202, 2,
 	ftAnimEnd(),
-	0x48E0, 0xFF82, 0xFFAE, 0xFFF4, 0x200E, 0xFE5D, 0xFFFE, 0xFF67, 0x0004, 0xFF77, 0x0003, 0x200F, 0x0008, 0xFE2E, 0x001D, 0xFFBD, 0x0009, 0xFFBC, 0x0008, 0x380F, 0x0008, 0x0038, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimPKThunderEnd_joint26[26] = {
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -126, -82, -12,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -419, -2, -153, 4, -137, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 8), -466, 29, -67, 9, -68, 8,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 8), 56, 0, 0,
+	ftAnimEnd(),
+	0x0000,
 };

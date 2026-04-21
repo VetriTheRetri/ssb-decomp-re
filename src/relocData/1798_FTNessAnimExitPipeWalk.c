@@ -20,7 +20,8 @@ extern u16 dFTNessAnimExitPipeWalk_joint19[136];
 extern u16 dFTNessAnimExitPipeWalk_joint21[18];
 extern u16 dFTNessAnimExitPipeWalk_joint22[106];
 extern u16 dFTNessAnimExitPipeWalk_joint24[54];
-extern u16 dFTNessAnimExitPipeWalk_joint25[170];
+extern u16 dFTNessAnimExitPipeWalk_joint25[140];
+extern u16 dFTNessAnimExitPipeWalk_joint26[30];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimExitPipeWalk_joints[] = {
@@ -49,7 +50,7 @@ u32 dFTNessAnimExitPipeWalk_joints[] = {
 	(u32)dFTNessAnimExitPipeWalk_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimExitPipeWalk_joint25, /* [24] joint 25 */
-	0xFFFF02D1, /* [25] END */
+	(u32)dFTNessAnimExitPipeWalk_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -422,7 +423,7 @@ u16 dFTNessAnimExitPipeWalk_joint24[54] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimExitPipeWalk_joint25[170] = {
+u16 dFTNessAnimExitPipeWalk_joint25[140] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -106, -8, -50, 2, -181, -5,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 10), -230, -6,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 20), -26, 1,
@@ -456,5 +457,14 @@ u16 dFTNessAnimExitPipeWalk_joint25[170] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -108, 19,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -66, -18, -27, -9, -90, 17,
 	ftAnimEnd(),
-	0x200E, 0x01A3, 0x0000, 0xFFFD, 0x0000, 0x006C, 0x0000, 0x200F, 0x000D, 0x00B7, 0xFFEE, 0xFFE6, 0x0000, 0x0018, 0xFFFD, 0x200F, 0x0007, 0x003B, 0x0008, 0xFFEA, 0x0000, 0x0026, 0x0003, 0x380F, 0x0014, 0x01A3, 0xFFFD, 0x006C, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimExitPipeWalk_joint26[30] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 419, 0, -3, 0, 108, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 13), 183, -18, -26, 0, 24, -3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), 59, 8, -22, 0, 38, 3,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 20), 419, -3, 108,
+	ftAnimEnd(),
+	0x0000,
 };

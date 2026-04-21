@@ -16,4 +16,4 @@ intern dFTKirbyAnimWalk2_joints+0x38 dFTKirbyAnimWalk2_joint16
 intern dFTKirbyAnimWalk2_joints+0x40 dFTKirbyAnimWalk2_joint18
 intern dFTKirbyAnimWalk2_joints+0x48 dFTKirbyAnimWalk2_joint19
 intern dFTKirbyAnimWalk2_joints+0x4C dFTKirbyAnimWalk2_joint21
-intern dFTKirbyAnimWalk2_joints+0x54 dFTKirbyAnimWalk2_joint21+0x1C
+intern dFTKirbyAnimWalk2_joints+0x54 dFTKirbyAnimWalk2_joint22

@@ -20,4 +20,4 @@ intern dFTBossAnimPunch2_joints+0x50 dFTBossAnimPunch2_joint21
 intern dFTBossAnimPunch2_joints+0x54 dFTBossAnimPunch2_joint23
 intern dFTBossAnimPunch2_joints+0x5C dFTBossAnimPunch2_joint24
 intern dFTBossAnimPunch2_joints+0x60 dFTBossAnimPunch2_joint25
-intern dFTBossAnimPunch2_joints+0x64 dFTBossAnimPunch2_joint25+0x64
+intern dFTBossAnimPunch2_joints+0x64 dFTBossAnimPunch2_joint26

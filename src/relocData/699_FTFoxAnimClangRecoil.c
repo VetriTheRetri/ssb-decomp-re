@@ -19,7 +19,8 @@ extern u16 dFTFoxAnimClangRecoil_joint20[84];
 extern u16 dFTFoxAnimClangRecoil_joint21[74];
 extern u16 dFTFoxAnimClangRecoil_joint23[40];
 extern u16 dFTFoxAnimClangRecoil_joint24[56];
-extern u16 dFTFoxAnimClangRecoil_joint25[68];
+extern u16 dFTFoxAnimClangRecoil_joint25[38];
+extern u16 dFTFoxAnimClangRecoil_joint26[30];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimClangRecoil_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTFoxAnimClangRecoil_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimClangRecoil_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimClangRecoil_joint25, /* [24] joint 25 */
-	0xFFFF0199, /* [25] END */
+	(u32)dFTFoxAnimClangRecoil_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -293,7 +294,7 @@ u16 dFTFoxAnimClangRecoil_joint24[56] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimClangRecoil_joint25[68] = {
+u16 dFTFoxAnimClangRecoil_joint25[38] = {
 	ftAnimSetValAfter(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -126, -96,
 	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, -568,
 	ftAnimSetValBlock(FT_ANIM_ROTZ), 0,
@@ -306,5 +307,15 @@ u16 dFTFoxAnimClangRecoil_joint25[68] = {
 	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTY, 9), 0, 219,
 	ftAnimSetValBlockT(FT_ANIM_ROTZ, 9), 0,
 	ftAnimEnd(),
-	0x0000, 0x380E, 0xFF60, 0xFDD2, 0x0151, 0x200F, 0x0004, 0xFF60, 0xFFFF, 0xFDD2, 0x0047, 0x0151, 0xFFDD, 0x200F, 0x0008, 0xFF4A, 0xFFFF, 0x0130, 0x0024, 0xFFAB, 0xFFE4, 0x380F, 0x0004, 0xFF4E, 0xFF86, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimClangRecoil_joint26[30] = {
+	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -160, -558, 337,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 4), -160, -1, -558, 71, 337, -35,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 8), -182, -1, 304, 36, -85, -28,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 4), -178, -122, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

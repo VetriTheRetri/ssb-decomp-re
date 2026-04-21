@@ -18,7 +18,8 @@ extern u16 dFTKirbyAnimCliffAttackQuick1_joint15[28];
 extern u16 dFTKirbyAnimCliffAttackQuick1_joint17[14];
 extern u16 dFTKirbyAnimCliffAttackQuick1_joint19[36];
 extern u16 dFTKirbyAnimCliffAttackQuick1_joint20[28];
-extern u16 dFTKirbyAnimCliffAttackQuick1_joint22[46];
+extern u16 dFTKirbyAnimCliffAttackQuick1_joint22[8];
+extern u16 dFTKirbyAnimCliffAttackQuick1_joint23[38];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimCliffAttackQuick1_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTKirbyAnimCliffAttackQuick1_joints[] = {
 	(u32)dFTKirbyAnimCliffAttackQuick1_joint20, /* [19] joint 20 */
 	(u32)dFTKirbyAnimCliffAttackQuick1_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF00D1, /* [22] END */
+	(u32)dFTKirbyAnimCliffAttackQuick1_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -198,9 +199,21 @@ u16 dFTKirbyAnimCliffAttackQuick1_joint20[28] = {
 };
 
 /* Joint 22 */
-u16 dFTKirbyAnimCliffAttackQuick1_joint22[46] = {
+u16 dFTKirbyAnimCliffAttackQuick1_joint22[8] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 0,
 	ftAnimBlock(0, 3),
 	ftAnimEnd(),
-	0x0000, 0x4100, 0x1000, 0x280E, 0x0078, 0x0031, 0xFF3B, 0x0027, 0x029A, 0xFFA3, 0x4E00, 0x1000, 0x1000, 0x4101, 0x0004, 0x1800, 0x200F, 0x0002, 0x00E8, 0x0023, 0xFFC0, 0x0052, 0x0188, 0xFF71, 0x200F, 0x0001, 0x00F0, 0x0008, 0x0006, 0x0047, 0x011D, 0xFF96, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTKirbyAnimCliffAttackQuick1_joint23[38] = {
+	ftAnimSetVal0Rate(FT_ANIM_SCAX), 4096,
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 120, 49, -197, 39, 666, -93,
+	ftAnimSetValAfterBlock(FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096,
+	ftAnimSetVal0RateT(FT_ANIM_SCAX, 4), 6144,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), 232, 35, -64, 82, 392, -143,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 240, 8, 6, 71, 285, -106,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

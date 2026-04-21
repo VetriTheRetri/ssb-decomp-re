@@ -21,4 +21,4 @@ intern dFTLinkAnimRollB_joints+0x58 dFTLinkAnimRollB_joint24
 intern dFTLinkAnimRollB_joints+0x60 dFTLinkAnimRollB_joint26
 intern dFTLinkAnimRollB_joints+0x68 dFTLinkAnimRollB_joint27
 intern dFTLinkAnimRollB_joints+0x6C dFTLinkAnimRollB_joint29
-intern dFTLinkAnimRollB_joints+0x74 dFTLinkAnimRollB_joint29+0x80
+intern dFTLinkAnimRollB_joints+0x74 dFTLinkAnimRollB_joint30

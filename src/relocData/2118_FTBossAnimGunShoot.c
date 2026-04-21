@@ -21,7 +21,8 @@ extern u16 dFTBossAnimGunShoot_joint20[68];
 extern u16 dFTBossAnimGunShoot_joint21[30];
 extern u16 dFTBossAnimGunShoot_joint23[30];
 extern u16 dFTBossAnimGunShoot_joint24[64];
-extern u16 dFTBossAnimGunShoot_joint25[62];
+extern u16 dFTBossAnimGunShoot_joint25[30];
+extern u16 dFTBossAnimGunShoot_joint26[32];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTBossAnimGunShoot_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTBossAnimGunShoot_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTBossAnimGunShoot_joint24, /* [23] joint 24 */
 	(u32)dFTBossAnimGunShoot_joint25, /* [24] joint 25 */
-	0xFFFF01A4, /* [25] END */
+	(u32)dFTBossAnimGunShoot_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -339,7 +340,7 @@ u16 dFTBossAnimGunShoot_joint24[64] = {
 };
 
 /* Joint 25 */
-u16 dFTBossAnimGunShoot_joint25[62] = {
+u16 dFTBossAnimGunShoot_joint25[30] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), -529, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 58), -529,
@@ -349,5 +350,18 @@ u16 dFTBossAnimGunShoot_joint25[62] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 6), -191, -8,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -196, -4,
 	ftAnimEnd(),
-	0x2808, 0xFC9E, 0x0000, 0x4806, 0x0000, 0x0000, 0x3809, 0x003A, 0xFC9E, 0x2009, 0x0001, 0xFC9E, 0x000C, 0x2009, 0x000A, 0x0000, 0x0009, 0x2009, 0x0001, 0x0006, 0xFFFA, 0x2009, 0x0008, 0xFF24, 0xFFF4, 0x2009, 0x0001, 0xFF1D, 0xFFF9, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTBossAnimGunShoot_joint26[32] = {
+	ftAnimSetValRate(FT_ANIM_ROTZ), -866, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 58), -866,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -866, 12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 10), 0, 9,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 6, -6,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 8), -220, -12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -227, -7,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

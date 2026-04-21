@@ -22,7 +22,8 @@ extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint21[56];
 extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint23[96];
 extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint24[76];
 extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint26[56];
-extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint27[138];
+extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint27[98];
+extern u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint28[40];
 
 /* Joint pointer table (28 entries, 112 bytes) */
 u32 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joints[] = {
@@ -53,7 +54,7 @@ u32 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joints[] = {
 	(u32)dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint26, /* [24] joint 26 */
 	0x00000000, /* [25] NULL */
 	(u32)dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint27, /* [26] joint 27 */
-	0xFFFF02EC, /* [27] END */
+	(u32)dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint28, /* [27] joint 28 */
 };
 
 /* Joint 1 */
@@ -456,7 +457,7 @@ u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint26[56] = {
 };
 
 /* Joint 27 */
-u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint27[138] = {
+u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint27[98] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1609, -3, -89, -3, -228, 11,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 15), 1509, 7,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 18), 0, 14,
@@ -482,5 +483,20 @@ u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint27[138] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 3), -232, 13,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1609, 0, -89, 0, -228, 3,
 	ftAnimEnd(),
-	0x18C0, 0x000C, 0x04C0, 0x502E, 0x0000, 0x0648, 0x0000, 0x0000, 0x10C1, 0x0012, 0x000C, 0x04C0, 0x2881, 0x0005, 0x0C6C, 0x0000, 0x3841, 0x0005, 0x0017, 0x4041, 0x0007, 0x000C, 0x3881, 0x0005, 0x04C0, 0x1881, 0x000A, 0x04C0, 0x0801, 0x0002, 0x1041, 0x0008, 0x000C, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 28 */
+u16 dFTYoshiAnimEggLayGrabbedSomeoneStillGoingOut_joint28[40] = {
+	ftAnimSetVal(FT_ANIM_TRAY | FT_ANIM_TRAZ), 12, 1216,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX), 0, 1608, 0, 0,
+	ftAnimSetValBlockT(FT_ANIM_TRAY | FT_ANIM_TRAZ, 18), 12, 1216,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 5), 3180, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAY, 5), 23,
+	ftAnimSetVal0RateT(FT_ANIM_TRAY, 7), 12,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 5), 1216,
+	ftAnimSetValT(FT_ANIM_TRAZ, 10), 1216,
+	ftAnimBlock(0, 2),
+	ftAnimSetValBlockT(FT_ANIM_TRAY, 8), 12,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

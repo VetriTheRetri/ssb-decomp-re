@@ -20,4 +20,4 @@ intern dFTFoxAnimShieldOn_joints+0x54 dFTFoxAnimShieldOn_joint22
 intern dFTFoxAnimShieldOn_joints+0x58 dFTFoxAnimShieldOn_joint24
 intern dFTFoxAnimShieldOn_joints+0x60 dFTFoxAnimShieldOn_joint25
 intern dFTFoxAnimShieldOn_joints+0x64 dFTFoxAnimShieldOn_joint26
-intern dFTFoxAnimShieldOn_joints+0x68 dFTFoxAnimShieldOn_joint26+0x20
+intern dFTFoxAnimShieldOn_joints+0x68 dFTFoxAnimShieldOn_joint27

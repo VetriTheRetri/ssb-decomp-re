@@ -21,7 +21,8 @@ extern u16 dFTFoxAnimLightItemPickup_joint20[54];
 extern u16 dFTFoxAnimLightItemPickup_joint21[50];
 extern u16 dFTFoxAnimLightItemPickup_joint23[24];
 extern u16 dFTFoxAnimLightItemPickup_joint24[48];
-extern u16 dFTFoxAnimLightItemPickup_joint25[44];
+extern u16 dFTFoxAnimLightItemPickup_joint25[16];
+extern u16 dFTFoxAnimLightItemPickup_joint26[28];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimLightItemPickup_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTFoxAnimLightItemPickup_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimLightItemPickup_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimLightItemPickup_joint25, /* [24] joint 25 */
-	0xFFFF016A, /* [25] END */
+	(u32)dFTFoxAnimLightItemPickup_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -279,11 +280,23 @@ u16 dFTFoxAnimLightItemPickup_joint24[48] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimLightItemPickup_joint25[44] = {
+u16 dFTFoxAnimLightItemPickup_joint25[16] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTX), 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 219, 0, 0, -126, -96,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 4), -593,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 4), 0,
 	ftAnimEnd(),
-	0x0000, 0x4002, 0xFF4E, 0x48EC, 0xFF86, 0x0000, 0x0000, 0x0040, 0xFE3E, 0x2003, 0x0002, 0x0136, 0x0055, 0x2003, 0x0002, 0x00A4, 0xFF7A, 0x2003, 0x0002, 0xFF1D, 0xFFAB, 0x3803, 0x0002, 0xFF4E, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimLightItemPickup_joint26[28] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX), -178,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -122, 0, 0, 64, -450,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 2), 310, 85,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 2), 164, -134,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 2), -227, -85,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 2), -178,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -22,7 +22,8 @@ extern u16 dFTNessAnimCliffAttackSlow2_joint20[92];
 extern u16 dFTNessAnimCliffAttackSlow2_joint22[68];
 extern u16 dFTNessAnimCliffAttackSlow2_joint23[130];
 extern u16 dFTNessAnimCliffAttackSlow2_joint25[70];
-extern u16 dFTNessAnimCliffAttackSlow2_joint26[186];
+extern u16 dFTNessAnimCliffAttackSlow2_joint26[118];
+extern u16 dFTNessAnimCliffAttackSlow2_joint27[68];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTNessAnimCliffAttackSlow2_joints[] = {
@@ -52,7 +53,7 @@ u32 dFTNessAnimCliffAttackSlow2_joints[] = {
 	(u32)dFTNessAnimCliffAttackSlow2_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTNessAnimCliffAttackSlow2_joint26, /* [25] joint 26 */
-	0xFFFF02AE, /* [26] END */
+	(u32)dFTNessAnimCliffAttackSlow2_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -402,7 +403,7 @@ u16 dFTNessAnimCliffAttackSlow2_joint25[70] = {
 };
 
 /* Joint 26 */
-u16 dFTNessAnimCliffAttackSlow2_joint26[186] = {
+u16 dFTNessAnimCliffAttackSlow2_joint26[118] = {
 	ftAnimSetValAfter(FT_ANIM_SCAX | FT_ANIM_SCAY), 4096, 4096,
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 107, -188, 211, 169, 525, -259,
 	ftAnimSetValBlock(FT_ANIM_SCAZ), 4096,
@@ -435,5 +436,20 @@ u16 dFTNessAnimCliffAttackSlow2_joint26[186] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 7), 79, 5,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 76, -3, 25, 2, -202, -7,
 	ftAnimEnd(),
-	0x0000, 0x48E0, 0xFF82, 0xFFAE, 0xFFF4, 0x200E, 0x00B7, 0xFFF5, 0x0017, 0x0007, 0xFFD1, 0xFFCE, 0x200F, 0x0003, 0x003D, 0xFFE4, 0x0083, 0x0019, 0xFD38, 0xFF63, 0x200F, 0x0002, 0x0029, 0xFFEE, 0x0095, 0xFFFE, 0xFCBE, 0xFFF0, 0x200F, 0x0005, 0xFFB9, 0x000E, 0x0074, 0xFFF7, 0xFCC4, 0x000B, 0x200F, 0x0005, 0x00BC, 0x0010, 0x0034, 0xFFFA, 0xFD2F, 0x001A, 0x200F, 0x0005, 0x005B, 0xFFF8, 0x0032, 0xFFFE, 0xFDC9, 0x0030, 0x4005, 0x0014, 0x0000, 0x200B, 0x000A, 0x0038, 0xFFFF, 0x0000, 0x001C, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 27 */
+u16 dFTNessAnimCliffAttackSlow2_joint27[68] = {
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -126, -82, -12,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 183, -11, 23, 7, -47, -50,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), 61, -28, 131, 25, -712, -157,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), 41, -18, 149, -2, -834, -16,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), -71, 14, 116, -9, -828, 11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 188, 16, 52, -6, -721, 26,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 91, -8, 50, -2, -567, 48,
+	ftAnimSetVal0RateT(FT_ANIM_ROTY, 20), 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 10), 56, -1, 0, 28,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

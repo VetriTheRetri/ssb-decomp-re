@@ -19,7 +19,8 @@ extern u16 dFTNLinkAnimPose1P_joint23[24];
 extern u16 dFTNLinkAnimPose1P_joint25[14];
 extern u16 dFTNLinkAnimPose1P_joint27[24];
 extern u16 dFTNLinkAnimPose1P_joint28[24];
-extern u16 dFTNLinkAnimPose1P_joint30[38];
+extern u16 dFTNLinkAnimPose1P_joint30[8];
+extern u16 dFTNLinkAnimPose1P_joint31[30];
 
 /* Joint pointer table (31 entries, 124 bytes) */
 u32 dFTNLinkAnimPose1P_joints[] = {
@@ -53,7 +54,7 @@ u32 dFTNLinkAnimPose1P_joints[] = {
 	(u32)dFTNLinkAnimPose1P_joint28, /* [27] joint 28 */
 	(u32)dFTNLinkAnimPose1P_joint30, /* [28] joint 30 */
 	0x00000000, /* [29] NULL */
-	0xFFFF00AD, /* [30] END */
+	(u32)dFTNLinkAnimPose1P_joint31, /* [30] joint 31 */
 };
 
 /* 4-byte alignment padding */
@@ -196,9 +197,18 @@ u16 dFTNLinkAnimPose1P_joint28[24] = {
 };
 
 /* Joint 30 */
-u16 dFTNLinkAnimPose1P_joint30[38] = {
+u16 dFTNLinkAnimPose1P_joint30[8] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 0,
 	ftAnimBlock(0, 2),
 	ftAnimEnd(),
-	0x0000, 0x200E, 0xFF31, 0x0000, 0x005B, 0x0000, 0x00F6, 0x0000, 0x200F, 0x0001, 0xFF31, 0x01D2, 0x005B, 0x0030, 0x00F6, 0x0016, 0x200F, 0x0001, 0x02D5, 0x03A4, 0x00BB, 0x0060, 0x0124, 0x002D, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 31 */
+u16 dFTNLinkAnimPose1P_joint31[30] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -207, 0, 91, 0, 246, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -207, 466, 91, 48, 246, 22,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 725, 932, 187, 96, 292, 45,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

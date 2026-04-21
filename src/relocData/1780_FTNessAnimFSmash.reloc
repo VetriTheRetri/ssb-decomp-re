@@ -22,4 +22,4 @@ intern dFTNessAnimFSmash_joints+0x4C dFTNessAnimFSmash_joint21
 intern dFTNessAnimFSmash_joints+0x54 dFTNessAnimFSmash_joint22
 intern dFTNessAnimFSmash_joints+0x58 dFTNessAnimFSmash_joint24
 intern dFTNessAnimFSmash_joints+0x60 dFTNessAnimFSmash_joint25
-intern dFTNessAnimFSmash_joints+0x64 dFTNessAnimFSmash_joint25+0x1F4
+intern dFTNessAnimFSmash_joints+0x64 dFTNessAnimFSmash_joint26

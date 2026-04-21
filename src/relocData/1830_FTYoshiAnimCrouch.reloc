@@ -18,4 +18,4 @@ intern dFTYoshiAnimCrouch_joints+0x48 dFTYoshiAnimCrouch_joint20
 intern dFTYoshiAnimCrouch_joints+0x50 dFTYoshiAnimCrouch_joint22
 intern dFTYoshiAnimCrouch_joints+0x58 dFTYoshiAnimCrouch_joint23
 intern dFTYoshiAnimCrouch_joints+0x5C dFTYoshiAnimCrouch_joint25
-intern dFTYoshiAnimCrouch_joints+0x64 dFTYoshiAnimCrouch_joint25+0x20
+intern dFTYoshiAnimCrouch_joints+0x64 dFTYoshiAnimCrouch_joint26

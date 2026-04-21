@@ -19,7 +19,8 @@ extern u16 dFTCaptainAnimDamage_joint17[8];
 extern u16 dFTCaptainAnimDamage_joint19[8];
 extern u16 dFTCaptainAnimDamage_joint21[8];
 extern u16 dFTCaptainAnimDamage_joint22[20];
-extern u16 dFTCaptainAnimDamage_joint24[46];
+extern u16 dFTCaptainAnimDamage_joint24[16];
+extern u16 dFTCaptainAnimDamage_joint25[30];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTCaptainAnimDamage_joints[] = {
@@ -47,7 +48,7 @@ u32 dFTCaptainAnimDamage_joints[] = {
 	(u32)dFTCaptainAnimDamage_joint22, /* [21] joint 22 */
 	(u32)dFTCaptainAnimDamage_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
-	0xFFFF0071, /* [24] END */
+	(u32)dFTCaptainAnimDamage_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -174,11 +175,21 @@ u16 dFTCaptainAnimDamage_joint22[20] = {
 };
 
 /* Joint 24 */
-u16 dFTCaptainAnimDamage_joint24[46] = {
+u16 dFTCaptainAnimDamage_joint24[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 153, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 3), 153, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 153, 0,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0x0523, 0x0000, 0xFB41, 0x0000, 0xFC23, 0x0000, 0x2807, 0x0003, 0x0523, 0x0000, 0xFB41, 0x0000, 0x3809, 0x0003, 0xFC23, 0x200F, 0x0001, 0x0523, 0x0000, 0xFB41, 0x0000, 0xFC23, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 25 */
+u16 dFTCaptainAnimDamage_joint25[30] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1315, 0, -1215, 0, -989, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTY, 3), 1315, 0, -1215, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 3), -989,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1315, 0, -1215, 0, -989, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

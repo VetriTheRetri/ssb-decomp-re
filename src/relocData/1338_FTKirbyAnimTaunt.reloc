@@ -16,4 +16,4 @@ intern dFTKirbyAnimTaunt_joints+0x38 dFTKirbyAnimTaunt_joint16
 intern dFTKirbyAnimTaunt_joints+0x40 dFTKirbyAnimTaunt_joint18
 intern dFTKirbyAnimTaunt_joints+0x48 dFTKirbyAnimTaunt_joint19
 intern dFTKirbyAnimTaunt_joints+0x4C dFTKirbyAnimTaunt_joint21
-intern dFTKirbyAnimTaunt_joints+0x54 dFTKirbyAnimTaunt_joint21+0x28
+intern dFTKirbyAnimTaunt_joints+0x54 dFTKirbyAnimTaunt_joint22

@@ -21,4 +21,4 @@ intern dFTFoxAnimCatch_joints+0x54 dFTFoxAnimCatch_joint23
 intern dFTFoxAnimCatch_joints+0x5C dFTFoxAnimCatch_joint24
 intern dFTFoxAnimCatch_joints+0x60 dFTFoxAnimCatch_joint25
 intern dFTFoxAnimCatch_joints+0x64 dFTFoxAnimCatch_joint26
-intern dFTFoxAnimCatch_joints+0x68 dFTFoxAnimCatch_joint26+0x38
+intern dFTFoxAnimCatch_joints+0x68 dFTFoxAnimCatch_joint27

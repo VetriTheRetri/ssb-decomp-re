@@ -22,7 +22,8 @@ extern u16 dFTPikachuAnimCliffCatch_joint20[14];
 extern u16 dFTPikachuAnimCliffCatch_joint22[22];
 extern u16 dFTPikachuAnimCliffCatch_joint23[22];
 extern u16 dFTPikachuAnimCliffCatch_joint25[14];
-extern u16 dFTPikachuAnimCliffCatch_joint26[58];
+extern u16 dFTPikachuAnimCliffCatch_joint26[22];
+extern u16 dFTPikachuAnimCliffCatch_joint27[36];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTPikachuAnimCliffCatch_joints[] = {
@@ -52,7 +53,7 @@ u32 dFTPikachuAnimCliffCatch_joints[] = {
 	(u32)dFTPikachuAnimCliffCatch_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTPikachuAnimCliffCatch_joint26, /* [25] joint 26 */
-	0xFFFF00DE, /* [26] END */
+	(u32)dFTPikachuAnimCliffCatch_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -226,10 +227,21 @@ u16 dFTPikachuAnimCliffCatch_joint25[14] = {
 };
 
 /* Joint 26 */
-u16 dFTPikachuAnimCliffCatch_joint26[58] = {
+u16 dFTPikachuAnimCliffCatch_joint26[22] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1962, -18, -1433, -7, 1888, 38,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), -2017, -18, -1455, -7, 2003, 38,
 	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -2017, -1455, 2003,
 	ftAnimEnd(),
-	0x0000, 0x400E, 0xFE15, 0x00F4, 0xFD0C, 0x48E0, 0xFFFF, 0xFF4C, 0xFE9E, 0x200F, 0x0002, 0xFEDF, 0x0013, 0x012A, 0x000D, 0xFDC2, 0x001C, 0x200F, 0x0001, 0xFE4E, 0xFFA3, 0x011D, 0xFEFE, 0xFD61, 0xFFA2, 0x200F, 0x0001, 0xFE23, 0x0002, 0xFF25, 0xFFF7, 0xFD05, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 27 */
+u16 dFTPikachuAnimCliffCatch_joint27[36] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -491, 244, -756,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1, -180, -354,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), -289, 19, 298, 13, -574, 28,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -434, -93, 285, -258, -671, -94,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -477, 2, -219, -9, -763, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000,
 };

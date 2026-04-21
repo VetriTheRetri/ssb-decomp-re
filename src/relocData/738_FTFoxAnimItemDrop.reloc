@@ -20,4 +20,4 @@ intern dFTFoxAnimItemDrop_joints+0x50 dFTFoxAnimItemDrop_joint21
 intern dFTFoxAnimItemDrop_joints+0x54 dFTFoxAnimItemDrop_joint23
 intern dFTFoxAnimItemDrop_joints+0x5C dFTFoxAnimItemDrop_joint24
 intern dFTFoxAnimItemDrop_joints+0x60 dFTFoxAnimItemDrop_joint25
-intern dFTFoxAnimItemDrop_joints+0x64 dFTFoxAnimItemDrop_joint25+0x28
+intern dFTFoxAnimItemDrop_joints+0x64 dFTFoxAnimItemDrop_joint26

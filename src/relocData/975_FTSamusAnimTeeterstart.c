@@ -17,7 +17,8 @@ extern u16 dFTSamusAnimTeeterstart_joint15[24];
 extern u16 dFTSamusAnimTeeterstart_joint17[16];
 extern u16 dFTSamusAnimTeeterstart_joint19[24];
 extern u16 dFTSamusAnimTeeterstart_joint20[24];
-extern u16 dFTSamusAnimTeeterstart_joint22[54];
+extern u16 dFTSamusAnimTeeterstart_joint22[16];
+extern u16 dFTSamusAnimTeeterstart_joint23[38];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTSamusAnimTeeterstart_joints[] = {
@@ -43,7 +44,7 @@ u32 dFTSamusAnimTeeterstart_joints[] = {
 	(u32)dFTSamusAnimTeeterstart_joint20, /* [19] joint 20 */
 	(u32)dFTSamusAnimTeeterstart_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF00A9, /* [22] END */
+	(u32)dFTSamusAnimTeeterstart_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -184,11 +185,23 @@ u16 dFTSamusAnimTeeterstart_joint20[24] = {
 };
 
 /* Joint 22 */
-u16 dFTSamusAnimTeeterstart_joint22[54] = {
+u16 dFTSamusAnimTeeterstart_joint22[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 442, -1,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), 240, -66,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 169, -70,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0x008E, 0xFFFD, 0x00C1, 0x0015, 0xFF2B, 0x0000, 0x280B, 0x0007, 0x002B, 0xFFF8, 0xFF95, 0x0020, 0x2005, 0x0005, 0x00C0, 0xFFC8, 0x2005, 0x0001, 0x0083, 0xFFC9, 0x2005, 0x0001, 0x0051, 0xFFDD, 0x200F, 0x0001, 0x0025, 0xFFFB, 0x003C, 0xFFEB, 0xFFB7, 0x0021, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTSamusAnimTeeterstart_joint23[38] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 142, -3, 193, 21, -213, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 7), 43, -8, -107, 32,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 5), 192, -56,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 131, -55,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 81, -35,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 37, -5, 60, -21, -73, 33,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -22,4 +22,4 @@ intern dFTFoxAnimThrowB_joints+0x58 dFTFoxAnimThrowB_joint24
 intern dFTFoxAnimThrowB_joints+0x60 dFTFoxAnimThrowB_joint25
 intern dFTFoxAnimThrowB_joints+0x64 dFTFoxAnimThrowB_joint26
 intern dFTFoxAnimThrowB_joints+0x68 dFTFoxAnimThrowB_joint27
-intern dFTFoxAnimThrowB_joints+0x6C dFTFoxAnimThrowB_joint27+0x34
+intern dFTFoxAnimThrowB_joints+0x6C dFTFoxAnimThrowB_joint28

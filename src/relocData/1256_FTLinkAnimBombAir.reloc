@@ -20,4 +20,4 @@ intern dFTLinkAnimBombAir_joints+0x54 dFTLinkAnimBombAir_joint23
 intern dFTLinkAnimBombAir_joints+0x5C dFTLinkAnimBombAir_joint25
 intern dFTLinkAnimBombAir_joints+0x64 dFTLinkAnimBombAir_joint26
 intern dFTLinkAnimBombAir_joints+0x68 dFTLinkAnimBombAir_joint28
-intern dFTLinkAnimBombAir_joints+0x70 dFTLinkAnimBombAir_joint28+0x50
+intern dFTLinkAnimBombAir_joints+0x70 dFTLinkAnimBombAir_joint29

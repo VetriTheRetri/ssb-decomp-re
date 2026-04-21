@@ -21,7 +21,8 @@ extern u16 dFTFoxAnimTurn_joint20[76];
 extern u16 dFTFoxAnimTurn_joint21[68];
 extern u16 dFTFoxAnimTurn_joint23[36];
 extern u16 dFTFoxAnimTurn_joint24[62];
-extern u16 dFTFoxAnimTurn_joint25[46];
+extern u16 dFTFoxAnimTurn_joint25[26];
+extern u16 dFTFoxAnimTurn_joint26[20];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimTurn_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTFoxAnimTurn_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimTurn_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimTurn_joint25, /* [24] joint 25 */
-	0xFFFF015E, /* [25] END */
+	(u32)dFTFoxAnimTurn_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -283,7 +284,7 @@ u16 dFTFoxAnimTurn_joint24[62] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimTurn_joint25[46] = {
+u16 dFTFoxAnimTurn_joint25[26] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTY), 219,
 	ftAnimSetValRate(FT_ANIM_ROTX), 0, -104,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, -126, -96,
@@ -293,5 +294,13 @@ u16 dFTFoxAnimTurn_joint25[46] = {
 	ftAnimBlock(0, 2),
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 4), 0, 117,
 	ftAnimEnd(),
-	0x380E, 0xFF4E, 0xFF86, 0x0000, 0x380F, 0x0008, 0xFEE8, 0x01C2, 0xFEF3, 0x380F, 0x0004, 0xFF4E, 0xFF86, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimTurn_joint26[20] = {
+	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -178, -122, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 8), -280, 450, -269,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 4), -178, -122, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -21,7 +21,8 @@ extern u16 dFTNessAnimHealingDownB_joint19[40];
 extern u16 dFTNessAnimHealingDownB_joint21[20];
 extern u16 dFTNessAnimHealingDownB_joint22[42];
 extern u16 dFTNessAnimHealingDownB_joint24[24];
-extern u16 dFTNessAnimHealingDownB_joint25[60];
+extern u16 dFTNessAnimHealingDownB_joint25[34];
+extern u16 dFTNessAnimHealingDownB_joint26[26];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimHealingDownB_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTNessAnimHealingDownB_joints[] = {
 	(u32)dFTNessAnimHealingDownB_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimHealingDownB_joint25, /* [24] joint 25 */
-	0xFFFF00FF, /* [25] END */
+	(u32)dFTNessAnimHealingDownB_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -237,7 +238,7 @@ u16 dFTNessAnimHealingDownB_joint24[24] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimHealingDownB_joint25[60] = {
+u16 dFTNessAnimHealingDownB_joint25[34] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1705, 42, -1599, -8, -1795, -21,
 	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), -1607, 12, -1817, 4,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 1747, 62,
@@ -245,6 +246,10 @@ u16 dFTNessAnimHealingDownB_joint25[60] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 1747, -62,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1705, -42, -1599, 8, -1795, 21,
 	ftAnimLoop(0x6800, -66),
+};
+
+/* Joint 26 */
+u16 dFTNessAnimHealingDownB_joint26[26] = {
 	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -126, -82, -12,
 	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -72, 11, -388,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), -72, -14, -575,

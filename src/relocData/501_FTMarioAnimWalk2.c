@@ -18,7 +18,8 @@ extern u16 dFTMarioAnimWalk2_joint16[130];
 extern u16 dFTMarioAnimWalk2_joint18[64];
 extern u16 dFTMarioAnimWalk2_joint20[120];
 extern u16 dFTMarioAnimWalk2_joint21[126];
-extern u16 dFTMarioAnimWalk2_joint23[152];
+extern u16 dFTMarioAnimWalk2_joint23[56];
+extern u16 dFTMarioAnimWalk2_joint24[96];
 
 /* Joint pointer table (24 entries, 96 bytes) */
 u32 dFTMarioAnimWalk2_joints[] = {
@@ -45,7 +46,7 @@ u32 dFTMarioAnimWalk2_joints[] = {
 	(u32)dFTMarioAnimWalk2_joint21, /* [20] joint 21 */
 	(u32)dFTMarioAnimWalk2_joint23, /* [21] joint 23 */
 	0x00000000, /* [22] NULL */
-	0xFFFF0230, /* [23] END */
+	(u32)dFTMarioAnimWalk2_joint24, /* [23] joint 24 */
 };
 
 /* Joint 1 */
@@ -362,7 +363,7 @@ u16 dFTMarioAnimWalk2_joint21[126] = {
 };
 
 /* Joint 23 */
-u16 dFTMarioAnimWalk2_joint23[152] = {
+u16 dFTMarioAnimWalk2_joint23[56] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 91, -8,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), 229, 144,
@@ -378,6 +379,10 @@ u16 dFTMarioAnimWalk2_joint23[152] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 5), 116, -47,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 91, -25,
 	ftAnimLoop(0x6800, -110),
+};
+
+/* Joint 24 */
+u16 dFTMarioAnimWalk2_joint24[96] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 55, -36, -27, 2, -90, -3,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 27), 0, 18,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 59), -23, -3,

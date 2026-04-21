@@ -16,4 +16,4 @@ intern dFTNFoxAnimPose1P_joints+0x48 dFTNFoxAnimPose1P_joint20
 intern dFTNFoxAnimPose1P_joints+0x50 dFTNFoxAnimPose1P_joint21
 intern dFTNFoxAnimPose1P_joints+0x54 dFTNFoxAnimPose1P_joint23
 intern dFTNFoxAnimPose1P_joints+0x5C dFTNFoxAnimPose1P_joint25
-intern dFTNFoxAnimPose1P_joints+0x64 dFTNFoxAnimPose1P_joint25+0x30
+intern dFTNFoxAnimPose1P_joints+0x64 dFTNFoxAnimPose1P_joint26

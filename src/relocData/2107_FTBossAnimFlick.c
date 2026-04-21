@@ -21,7 +21,8 @@ extern u16 dFTBossAnimFlick_joint20[80];
 extern u16 dFTBossAnimFlick_joint21[46];
 extern u16 dFTBossAnimFlick_joint23[38];
 extern u16 dFTBossAnimFlick_joint24[94];
-extern u16 dFTBossAnimFlick_joint25[78];
+extern u16 dFTBossAnimFlick_joint25[38];
+extern u16 dFTBossAnimFlick_joint26[40];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTBossAnimFlick_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTBossAnimFlick_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTBossAnimFlick_joint24, /* [23] joint 24 */
 	(u32)dFTBossAnimFlick_joint25, /* [24] joint 25 */
-	0xFFFF025C, /* [25] END */
+	(u32)dFTBossAnimFlick_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -438,7 +439,7 @@ u16 dFTBossAnimFlick_joint24[94] = {
 };
 
 /* Joint 25 */
-u16 dFTBossAnimFlick_joint25[78] = {
+u16 dFTBossAnimFlick_joint25[38] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), -573, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 39), -576, 0,
@@ -450,5 +451,21 @@ u16 dFTBossAnimFlick_joint25[78] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 8), -175, -5,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -178, -3,
 	ftAnimEnd(),
-	0x0000, 0x2808, 0xFC29, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0027, 0xFC21, 0x0000, 0x2009, 0x0001, 0xFC21, 0x001E, 0x2009, 0x0004, 0xFF03, 0x00F2, 0x2009, 0x0001, 0xFFDB, 0x007E, 0x3809, 0x0003, 0x0000, 0x3809, 0x0001, 0x0000, 0x2009, 0x000A, 0xFF3C, 0xFFF7, 0x2009, 0x0001, 0xFF37, 0xFFFC, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTBossAnimFlick_joint26[40] = {
+	ftAnimSetValRate(FT_ANIM_ROTZ), -983, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 39), -991, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -991, 30,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), -253, 242,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -37, 126,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 3), 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 1), 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 10), -196, -9,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -201, -4,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000,
 };

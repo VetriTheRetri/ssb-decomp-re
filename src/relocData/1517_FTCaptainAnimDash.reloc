@@ -19,4 +19,4 @@ intern dFTCaptainAnimDash_joints+0x44 dFTCaptainAnimDash_joint19
 intern dFTCaptainAnimDash_joints+0x4C dFTCaptainAnimDash_joint21
 intern dFTCaptainAnimDash_joints+0x54 dFTCaptainAnimDash_joint22
 intern dFTCaptainAnimDash_joints+0x58 dFTCaptainAnimDash_joint24
-intern dFTCaptainAnimDash_joints+0x60 dFTCaptainAnimDash_joint24+0x98
+intern dFTCaptainAnimDash_joints+0x60 dFTCaptainAnimDash_joint25

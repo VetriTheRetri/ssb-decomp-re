@@ -19,4 +19,4 @@ intern dFTDonkeyAnimTech_joints+0x44 dFTDonkeyAnimTech_joint19
 intern dFTDonkeyAnimTech_joints+0x4C dFTDonkeyAnimTech_joint21
 intern dFTDonkeyAnimTech_joints+0x54 dFTDonkeyAnimTech_joint22
 intern dFTDonkeyAnimTech_joints+0x58 dFTDonkeyAnimTech_joint24
-intern dFTDonkeyAnimTech_joints+0x60 dFTDonkeyAnimTech_joint24+0x60
+intern dFTDonkeyAnimTech_joints+0x60 dFTDonkeyAnimTech_joint25

@@ -19,4 +19,4 @@ intern dFTYoshiAnimUSmash_joints+0x48 dFTYoshiAnimUSmash_joint20
 intern dFTYoshiAnimUSmash_joints+0x50 dFTYoshiAnimUSmash_joint22
 intern dFTYoshiAnimUSmash_joints+0x58 dFTYoshiAnimUSmash_joint23
 intern dFTYoshiAnimUSmash_joints+0x5C dFTYoshiAnimUSmash_joint25
-intern dFTYoshiAnimUSmash_joints+0x64 dFTYoshiAnimUSmash_joint25+0xB0
+intern dFTYoshiAnimUSmash_joints+0x64 dFTYoshiAnimUSmash_joint26

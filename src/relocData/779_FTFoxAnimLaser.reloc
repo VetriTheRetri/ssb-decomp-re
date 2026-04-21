@@ -20,4 +20,4 @@ intern dFTFoxAnimLaser_joints+0x50 dFTFoxAnimLaser_joint21
 intern dFTFoxAnimLaser_joints+0x54 dFTFoxAnimLaser_joint23
 intern dFTFoxAnimLaser_joints+0x5C dFTFoxAnimLaser_joint24
 intern dFTFoxAnimLaser_joints+0x60 dFTFoxAnimLaser_joint25
-intern dFTFoxAnimLaser_joints+0x64 dFTFoxAnimLaser_joint25+0x4C
+intern dFTFoxAnimLaser_joints+0x64 dFTFoxAnimLaser_joint26

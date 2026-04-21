@@ -19,7 +19,8 @@ extern u16 dFTYoshiAnimSleep_joint18[56];
 extern u16 dFTYoshiAnimSleep_joint20[32];
 extern u16 dFTYoshiAnimSleep_joint22[78];
 extern u16 dFTYoshiAnimSleep_joint23[58];
-extern u16 dFTYoshiAnimSleep_joint25[94];
+extern u16 dFTYoshiAnimSleep_joint25[24];
+extern u16 dFTYoshiAnimSleep_joint26[70];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTYoshiAnimSleep_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTYoshiAnimSleep_joints[] = {
 	(u32)dFTYoshiAnimSleep_joint23, /* [22] joint 23 */
 	(u32)dFTYoshiAnimSleep_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
-	0xFFFF0185, /* [25] END */
+	(u32)dFTYoshiAnimSleep_joint26, /* [25] joint 26 */
 };
 
 /* Joint 2 */
@@ -325,7 +326,7 @@ u16 dFTYoshiAnimSleep_joint23[58] = {
 };
 
 /* Joint 25 */
-u16 dFTYoshiAnimSleep_joint25[94] = {
+u16 dFTYoshiAnimSleep_joint25[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 739, 5,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 82), 692, 0,
@@ -333,6 +334,10 @@ u16 dFTYoshiAnimSleep_joint25[94] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 16), 734, 3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 739, 4,
 	ftAnimLoop(0x6800, -46),
+};
+
+/* Joint 26 */
+u16 dFTYoshiAnimSleep_joint26[70] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1603, -11, 361, -11, -602, -1,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 55), 1566, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 56), -612, 0,

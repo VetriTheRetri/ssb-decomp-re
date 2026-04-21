@@ -20,7 +20,8 @@ extern u16 dFTDonkeyAnimTeeterstart_joint17[32];
 extern u16 dFTDonkeyAnimTeeterstart_joint19[16];
 extern u16 dFTDonkeyAnimTeeterstart_joint21[38];
 extern u16 dFTDonkeyAnimTeeterstart_joint22[38];
-extern u16 dFTDonkeyAnimTeeterstart_joint24[60];
+extern u16 dFTDonkeyAnimTeeterstart_joint24[16];
+extern u16 dFTDonkeyAnimTeeterstart_joint25[44];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTDonkeyAnimTeeterstart_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTDonkeyAnimTeeterstart_joints[] = {
 	(u32)dFTDonkeyAnimTeeterstart_joint22, /* [21] joint 22 */
 	(u32)dFTDonkeyAnimTeeterstart_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
-	0xFFFF00D6, /* [24] END */
+	(u32)dFTDonkeyAnimTeeterstart_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */
@@ -209,11 +210,23 @@ u16 dFTDonkeyAnimTeeterstart_joint22[38] = {
 };
 
 /* Joint 24 */
-u16 dFTDonkeyAnimTeeterstart_joint24[60] = {
+u16 dFTDonkeyAnimTeeterstart_joint24[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 770, 9,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 9), 865, -15,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 851, -14,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0x05D8, 0xFFF7, 0xFA1F, 0x0013, 0xF919, 0x0000, 0x2809, 0x0009, 0xF8BB, 0xFFCA, 0x2007, 0x0007, 0x05D0, 0x0022, 0xFBD9, 0x001D, 0x2007, 0x0001, 0x05DF, 0x0004, 0xFBE3, 0xFFDF, 0x2007, 0x0001, 0x05D8, 0x003E, 0xFB96, 0xFF40, 0x200F, 0x0001, 0x065C, 0x0083, 0xFA62, 0xFECD, 0xF880, 0xFFC5, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 25 */
+u16 dFTDonkeyAnimTeeterstart_joint25[44] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1496, -9, -1505, 19, -1767, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 9), -1861, -54,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 7), 1488, 34, -1063, 29,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 1), 1503, 4, -1053, -33,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 1), 1496, 62, -1130, -192,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1628, 131, -1438, -307, -1920, -59,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

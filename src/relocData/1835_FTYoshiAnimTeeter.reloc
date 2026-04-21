@@ -19,4 +19,4 @@ intern dFTYoshiAnimTeeter_joints+0x48 dFTYoshiAnimTeeter_joint20
 intern dFTYoshiAnimTeeter_joints+0x50 dFTYoshiAnimTeeter_joint22
 intern dFTYoshiAnimTeeter_joints+0x58 dFTYoshiAnimTeeter_joint23
 intern dFTYoshiAnimTeeter_joints+0x5C dFTYoshiAnimTeeter_joint25
-intern dFTYoshiAnimTeeter_joints+0x64 dFTYoshiAnimTeeter_joint25+0x60
+intern dFTYoshiAnimTeeter_joints+0x64 dFTYoshiAnimTeeter_joint26

@@ -18,4 +18,4 @@ intern dFTNLinkAnimPose1P_joints+0x5C dFTNLinkAnimPose1P_joint25
 intern dFTNLinkAnimPose1P_joints+0x64 dFTNLinkAnimPose1P_joint27
 intern dFTNLinkAnimPose1P_joints+0x6C dFTNLinkAnimPose1P_joint28
 intern dFTNLinkAnimPose1P_joints+0x70 dFTNLinkAnimPose1P_joint30
-intern dFTNLinkAnimPose1P_joints+0x78 dFTNLinkAnimPose1P_joint30+0x10
+intern dFTNLinkAnimPose1P_joints+0x78 dFTNLinkAnimPose1P_joint31

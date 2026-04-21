@@ -19,7 +19,8 @@ extern u16 dFTLuigiAnimEggLay_joint16[48];
 extern u16 dFTLuigiAnimEggLay_joint18[24];
 extern u16 dFTLuigiAnimEggLay_joint20[44];
 extern u16 dFTLuigiAnimEggLay_joint21[58];
-extern u16 dFTLuigiAnimEggLay_joint23[74];
+extern u16 dFTLuigiAnimEggLay_joint23[24];
+extern u16 dFTLuigiAnimEggLay_joint24[50];
 
 /* Joint pointer table (24 entries, 96 bytes) */
 u32 dFTLuigiAnimEggLay_joints[] = {
@@ -46,7 +47,7 @@ u32 dFTLuigiAnimEggLay_joints[] = {
 	(u32)dFTLuigiAnimEggLay_joint21, /* [20] joint 21 */
 	(u32)dFTLuigiAnimEggLay_joint23, /* [21] joint 23 */
 	0x00000000, /* [22] NULL */
-	0xFFFF0137, /* [23] END */
+	(u32)dFTLuigiAnimEggLay_joint24, /* [23] joint 24 */
 };
 
 /* Joint 1 */
@@ -259,7 +260,7 @@ u16 dFTLuigiAnimEggLay_joint21[58] = {
 };
 
 /* Joint 23 */
-u16 dFTLuigiAnimEggLay_joint23[74] = {
+u16 dFTLuigiAnimEggLay_joint23[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 435, -4,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 39), 710, -11,
@@ -267,6 +268,10 @@ u16 dFTLuigiAnimEggLay_joint23[74] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 19), 437, -3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 435, -2,
 	ftAnimLoop(0x6800, -46),
+};
+
+/* Joint 24 */
+u16 dFTLuigiAnimEggLay_joint24[50] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1700, 3, -1517, -3, 1397, 2,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 49), -1494, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 59), 1697, 3,

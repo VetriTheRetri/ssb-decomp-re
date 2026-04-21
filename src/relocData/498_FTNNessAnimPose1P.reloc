@@ -17,4 +17,4 @@ intern dFTNNessAnimPose1P_joints+0x40 dFTNNessAnimPose1P_joint18
 intern dFTNNessAnimPose1P_joints+0x48 dFTNNessAnimPose1P_joint21
 intern dFTNNessAnimPose1P_joints+0x54 dFTNNessAnimPose1P_joint22
 intern dFTNNessAnimPose1P_joints+0x58 dFTNNessAnimPose1P_joint24
-intern dFTNNessAnimPose1P_joints+0x60 dFTNNessAnimPose1P_joint24+0x10
+intern dFTNNessAnimPose1P_joints+0x60 dFTNNessAnimPose1P_joint25

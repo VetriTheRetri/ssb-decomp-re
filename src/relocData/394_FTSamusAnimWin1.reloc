@@ -15,4 +15,4 @@ intern dFTSamusAnimWin1_joints+0x3C dFTSamusAnimWin1_joint17
 intern dFTSamusAnimWin1_joints+0x44 dFTSamusAnimWin1_joint19
 intern dFTSamusAnimWin1_joints+0x4C dFTSamusAnimWin1_joint20
 intern dFTSamusAnimWin1_joints+0x50 dFTSamusAnimWin1_joint22
-intern dFTSamusAnimWin1_joints+0x58 dFTSamusAnimWin1_joint22+0x80
+intern dFTSamusAnimWin1_joints+0x58 dFTSamusAnimWin1_joint23

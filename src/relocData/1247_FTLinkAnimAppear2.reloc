@@ -22,4 +22,4 @@ intern dFTLinkAnimAppear2_joints+0x5C dFTLinkAnimAppear2_joint25
 intern dFTLinkAnimAppear2_joints+0x64 dFTLinkAnimAppear2_joint27
 intern dFTLinkAnimAppear2_joints+0x6C dFTLinkAnimAppear2_joint28
 intern dFTLinkAnimAppear2_joints+0x70 dFTLinkAnimAppear2_joint30
-intern dFTLinkAnimAppear2_joints+0x78 dFTLinkAnimAppear2_joint30+0xF4
+intern dFTLinkAnimAppear2_joints+0x78 dFTLinkAnimAppear2_joint31

@@ -20,4 +20,4 @@ intern dFTBossAnimPoint_joints+0x50 dFTBossAnimPoint_joint21
 intern dFTBossAnimPoint_joints+0x54 dFTBossAnimPoint_joint23
 intern dFTBossAnimPoint_joints+0x5C dFTBossAnimPoint_joint24
 intern dFTBossAnimPoint_joints+0x60 dFTBossAnimPoint_joint25
-intern dFTBossAnimPoint_joints+0x64 dFTBossAnimPoint_joint25+0x10
+intern dFTBossAnimPoint_joints+0x64 dFTBossAnimPoint_joint26

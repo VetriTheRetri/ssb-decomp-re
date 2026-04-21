@@ -17,4 +17,4 @@ intern dFTFoxAnimEggLay_joints+0x50 dFTFoxAnimEggLay_joint21
 intern dFTFoxAnimEggLay_joints+0x54 dFTFoxAnimEggLay_joint23
 intern dFTFoxAnimEggLay_joints+0x5C dFTFoxAnimEggLay_joint24
 intern dFTFoxAnimEggLay_joints+0x60 dFTFoxAnimEggLay_joint25
-intern dFTFoxAnimEggLay_joints+0x64 dFTFoxAnimEggLay_joint25+0x70
+intern dFTFoxAnimEggLay_joints+0x64 dFTFoxAnimEggLay_joint26

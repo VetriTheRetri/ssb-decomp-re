@@ -15,4 +15,4 @@ intern dFTMarioAnimFall_joints+0x40 dFTMarioAnimFall_joint18
 intern dFTMarioAnimFall_joints+0x48 dFTMarioAnimFall_joint20
 intern dFTMarioAnimFall_joints+0x50 dFTMarioAnimFall_joint21
 intern dFTMarioAnimFall_joints+0x54 dFTMarioAnimFall_joint23
-intern dFTMarioAnimFall_joints+0x5C dFTMarioAnimFall_joint23+0x20
+intern dFTMarioAnimFall_joints+0x5C dFTMarioAnimFall_joint24

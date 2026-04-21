@@ -20,4 +20,4 @@ intern dFTLinkAnimClaps2_joints+0x54 dFTLinkAnimClaps2_joint23
 intern dFTLinkAnimClaps2_joints+0x5C dFTLinkAnimClaps2_joint25
 intern dFTLinkAnimClaps2_joints+0x64 dFTLinkAnimClaps2_joint26
 intern dFTLinkAnimClaps2_joints+0x68 dFTLinkAnimClaps2_joint28
-intern dFTLinkAnimClaps2_joints+0x70 dFTLinkAnimClaps2_joint28+0x60
+intern dFTLinkAnimClaps2_joints+0x70 dFTLinkAnimClaps2_joint29

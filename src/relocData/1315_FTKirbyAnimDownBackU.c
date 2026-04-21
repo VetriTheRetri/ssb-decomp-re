@@ -18,7 +18,8 @@ extern u16 dFTKirbyAnimDownBackU_joint15[60];
 extern u16 dFTKirbyAnimDownBackU_joint17[16];
 extern u16 dFTKirbyAnimDownBackU_joint19[136];
 extern u16 dFTKirbyAnimDownBackU_joint20[72];
-extern u16 dFTKirbyAnimDownBackU_joint22[154];
+extern u16 dFTKirbyAnimDownBackU_joint22[24];
+extern u16 dFTKirbyAnimDownBackU_joint23[130];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimDownBackU_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTKirbyAnimDownBackU_joints[] = {
 	(u32)dFTKirbyAnimDownBackU_joint20, /* [19] joint 20 */
 	(u32)dFTKirbyAnimDownBackU_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF01DF, /* [22] END */
+	(u32)dFTKirbyAnimDownBackU_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -346,7 +347,7 @@ u16 dFTKirbyAnimDownBackU_joint20[72] = {
 };
 
 /* Joint 22 */
-u16 dFTKirbyAnimDownBackU_joint22[154] = {
+u16 dFTKirbyAnimDownBackU_joint22[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 7, -7,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 30), 0, -3,
@@ -354,5 +355,43 @@ u16 dFTKirbyAnimDownBackU_joint22[154] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), 7, -3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, -7,
 	ftAnimEnd(),
-	0x0000, 0x4100, 0x1000, 0x280E, 0x0638, 0x0010, 0xFA07, 0x0005, 0xFBC6, 0xFFE7, 0x4E00, 0x0FFF, 0x0FFF, 0x280D, 0x0008, 0xF99F, 0xFFD1, 0xFA9A, 0xFFD1, 0x4101, 0x000B, 0x1000, 0x2003, 0x0007, 0x0789, 0x0042, 0x2003, 0x0001, 0x07BF, 0x002A, 0x2803, 0x0006, 0x0934, 0x005B, 0x200D, 0x0001, 0xF974, 0xFFD3, 0xFA7B, 0xFFF3, 0x2809, 0x0006, 0xFBA9, 0x002F, 0x2805, 0x0008, 0xF82F, 0x0030, 0x0801, 0x0002, 0x2901, 0x0006, 0x0C70, 0x01AE, 0x0801, 0x0003, 0x2003, 0x0001, 0x0985, 0x0035, 0x2803, 0x0008, 0x0852, 0xFFD7, 0x2009, 0x0001, 0xFBBE, 0xFFFD, 0x2809, 0x0006, 0xFA99, 0xFFDB, 0x0801, 0x0001, 0x2901, 0x0007, 0x0EAC, 0xFE9C, 0x2005, 0x0001, 0xF868, 0x003B, 0x2805, 0x000A, 0xF84D, 0xFFDA, 0x0801, 0x0004, 0x2009, 0x0001, 0xFA76, 0xFFD8, 0x2809, 0x000C, 0xF94D, 0x0005, 0x2003, 0x0001, 0x0826, 0xFFD6, 0x2803, 0x000B, 0x0779, 0x0003, 0x3901, 0x0004, 0x1000, 0x4101, 0x0008, 0x1000, 0x2005, 0x0001, 0xF82E, 0xFFED, 0x2005, 0x0006, 0xF8E2, 0x0027, 0x200F, 0x0001, 0x077C, 0x0003, 0xF907, 0x0024, 0xF954, 0x0006, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTKirbyAnimDownBackU_joint23[130] = {
+	ftAnimSetVal0Rate(FT_ANIM_SCAX), 4096,
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1592, 16, -1529, 5, -1082, -25,
+	ftAnimSetValAfterBlock(FT_ANIM_SCAY | FT_ANIM_SCAZ), 4095, 4095,
+	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 8), -1633, -47, -1382, -47,
+	ftAnimSetVal0RateT(FT_ANIM_SCAX, 11), 4096,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 7), 1929, 66,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 1983, 42,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 6), 2356, 91,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1676, -45, -1413, -13,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 6), -1111, 47,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 8), -2001, 48,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateT(FT_ANIM_SCAX, 6), 3184, 430,
+	ftAnimBlock(0, 3),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 2437, 53,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 8), 2130, -41,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -1090, -3,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 6), -1383, -37,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateT(FT_ANIM_SCAX, 7), 3756, -356,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -1944, 59,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 10), -1971, -38,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -1418, -40,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 12), -1715, 5,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 2086, -42,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 11), 1913, 3,
+	ftAnimSetVal0RateBlockT(FT_ANIM_SCAX, 4), 4096,
+	ftAnimSetVal0RateT(FT_ANIM_SCAX, 8), 4096,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -2002, -19,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 6), -1822, 39,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1916, 3, -1785, 36, -1708, 6,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -21,4 +21,4 @@ intern dFTLinkAnimThrowF_joints+0x5C dFTLinkAnimThrowF_joint25
 intern dFTLinkAnimThrowF_joints+0x64 dFTLinkAnimThrowF_joint26
 intern dFTLinkAnimThrowF_joints+0x68 dFTLinkAnimThrowF_joint28
 intern dFTLinkAnimThrowF_joints+0x70 dFTLinkAnimThrowF_joint29
-intern dFTLinkAnimThrowF_joints+0x74 dFTLinkAnimThrowF_joint29+0x138
+intern dFTLinkAnimThrowF_joints+0x74 dFTLinkAnimThrowF_joint30

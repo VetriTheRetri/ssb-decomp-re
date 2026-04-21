@@ -16,4 +16,4 @@ intern dFTPurinAnimWin2_joints+0x38 dFTPurinAnimWin2_joint16
 intern dFTPurinAnimWin2_joints+0x40 dFTPurinAnimWin2_joint18
 intern dFTPurinAnimWin2_joints+0x48 dFTPurinAnimWin2_joint19
 intern dFTPurinAnimWin2_joints+0x4C dFTPurinAnimWin2_joint21
-intern dFTPurinAnimWin2_joints+0x54 dFTPurinAnimWin2_joint21+0x1C
+intern dFTPurinAnimWin2_joints+0x54 dFTPurinAnimWin2_joint22

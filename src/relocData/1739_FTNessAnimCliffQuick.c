@@ -22,7 +22,8 @@ extern u16 dFTNessAnimCliffQuick_joint20[38];
 extern u16 dFTNessAnimCliffQuick_joint22[26];
 extern u16 dFTNessAnimCliffQuick_joint23[64];
 extern u16 dFTNessAnimCliffQuick_joint25[14];
-extern u16 dFTNessAnimCliffQuick_joint26[82];
+extern u16 dFTNessAnimCliffQuick_joint26[50];
+extern u16 dFTNessAnimCliffQuick_joint27[32];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTNessAnimCliffQuick_joints[] = {
@@ -52,7 +53,7 @@ u32 dFTNessAnimCliffQuick_joints[] = {
 	(u32)dFTNessAnimCliffQuick_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTNessAnimCliffQuick_joint26, /* [25] joint 26 */
-	0xFFFF01B4, /* [26] END */
+	(u32)dFTNessAnimCliffQuick_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -324,7 +325,7 @@ u16 dFTNessAnimCliffQuick_joint25[14] = {
 };
 
 /* Joint 26 */
-u16 dFTNessAnimCliffQuick_joint26[82] = {
+u16 dFTNessAnimCliffQuick_joint26[50] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1824, -2, -1795, -4, 2097, 1,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 12), -1953, 27,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 13), 2170, 0,
@@ -335,5 +336,14 @@ u16 dFTNessAnimCliffQuick_joint26[82] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1855, -129, -1855, 45, 2165, -18,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1807, -48, -1819, 36, 2134, -30,
 	ftAnimEnd(),
-	0x400E, 0x0000, 0x0000, 0x0000, 0x48E0, 0xFF82, 0xFFAE, 0xFFF4, 0x200F, 0x000A, 0x019F, 0x0003, 0x0007, 0x0001, 0xFFF1, 0xFFFE, 0x200F, 0x0005, 0x0034, 0xFFF2, 0x000F, 0x0015, 0xFFE2, 0xFFE0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 27 */
+u16 dFTNessAnimCliffQuick_joint27[32] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -126, -82, -12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 10), 415, 3, 7, 1, -15, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 52, -14, 15, 21, -30, -32,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -23,7 +23,8 @@ extern u16 dFTYoshiAnimEggLayAirGrabIn_joint21[48];
 extern u16 dFTYoshiAnimEggLayAirGrabIn_joint23[108];
 extern u16 dFTYoshiAnimEggLayAirGrabIn_joint24[142];
 extern u16 dFTYoshiAnimEggLayAirGrabIn_joint26[48];
-extern u16 dFTYoshiAnimEggLayAirGrabIn_joint27[134];
+extern u16 dFTYoshiAnimEggLayAirGrabIn_joint27[106];
+extern u16 dFTYoshiAnimEggLayAirGrabIn_joint28[28];
 
 /* Joint pointer table (28 entries, 112 bytes) */
 u32 dFTYoshiAnimEggLayAirGrabIn_joints[] = {
@@ -54,7 +55,7 @@ u32 dFTYoshiAnimEggLayAirGrabIn_joints[] = {
 	(u32)dFTYoshiAnimEggLayAirGrabIn_joint26, /* [24] joint 26 */
 	0x00000000, /* [25] NULL */
 	(u32)dFTYoshiAnimEggLayAirGrabIn_joint27, /* [26] joint 27 */
-	0xFFFF03CE, /* [27] END */
+	(u32)dFTYoshiAnimEggLayAirGrabIn_joint28, /* [27] joint 28 */
 };
 
 /* Joint 1 */
@@ -573,7 +574,7 @@ u16 dFTYoshiAnimEggLayAirGrabIn_joint26[48] = {
 };
 
 /* Joint 27 */
-u16 dFTYoshiAnimEggLayAirGrabIn_joint27[134] = {
+u16 dFTYoshiAnimEggLayAirGrabIn_joint27[106] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 192, 5, -1623, 2, -2234, -2,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 16), -1540, 3,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 18), 14, -39,
@@ -600,5 +601,14 @@ u16 dFTYoshiAnimEggLayAirGrabIn_joint27[134] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -34, -114, -1444, 10, -1975, 50,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -156, -122, -1447, -2, -1929, 46,
 	ftAnimEnd(),
-	0x28E0, 0x0000, 0x0000, 0x0017, 0xFFF6, 0x0C6C, 0xFF8E, 0x480E, 0x0000, 0x0648, 0x0000, 0x38E1, 0x0005, 0x0000, 0x0000, 0x0431, 0x10E1, 0x001E, 0x0000, 0x0000, 0x0431, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 28 */
+u16 dFTYoshiAnimEggLayAirGrabIn_joint28[28] = {
+	ftAnimSetValRate(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 23, -10, 3180, -114,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 1608, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 5), 0, 0, 1073,
+	ftAnimSetValBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 30), 0, 0, 1073,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

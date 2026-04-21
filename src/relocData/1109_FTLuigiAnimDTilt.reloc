@@ -18,4 +18,4 @@ intern dFTLuigiAnimDTilt_joints+0x40 dFTLuigiAnimDTilt_joint18
 intern dFTLuigiAnimDTilt_joints+0x48 dFTLuigiAnimDTilt_joint20
 intern dFTLuigiAnimDTilt_joints+0x50 dFTLuigiAnimDTilt_joint21
 intern dFTLuigiAnimDTilt_joints+0x54 dFTLuigiAnimDTilt_joint23
-intern dFTLuigiAnimDTilt_joints+0x5C dFTLuigiAnimDTilt_joint23+0x2C
+intern dFTLuigiAnimDTilt_joints+0x5C dFTLuigiAnimDTilt_joint24

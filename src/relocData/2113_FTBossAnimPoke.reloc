@@ -20,4 +20,4 @@ intern dFTBossAnimPoke_joints+0x50 dFTBossAnimPoke_joint21
 intern dFTBossAnimPoke_joints+0x54 dFTBossAnimPoke_joint23
 intern dFTBossAnimPoke_joints+0x5C dFTBossAnimPoke_joint24
 intern dFTBossAnimPoke_joints+0x60 dFTBossAnimPoke_joint25
-intern dFTBossAnimPoke_joints+0x64 dFTBossAnimPoke_joint25+0x30
+intern dFTBossAnimPoke_joints+0x64 dFTBossAnimPoke_joint26

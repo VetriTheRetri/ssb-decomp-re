@@ -21,7 +21,8 @@ extern u16 dFTNessAnimAppearStart1_joint20[72];
 extern u16 dFTNessAnimAppearStart1_joint22[32];
 extern u16 dFTNessAnimAppearStart1_joint23[58];
 extern u16 dFTNessAnimAppearStart1_joint25[32];
-extern u16 dFTNessAnimAppearStart1_joint26[96];
+extern u16 dFTNessAnimAppearStart1_joint26[58];
+extern u16 dFTNessAnimAppearStart1_joint27[38];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTNessAnimAppearStart1_joints[] = {
@@ -51,7 +52,7 @@ u32 dFTNessAnimAppearStart1_joints[] = {
 	(u32)dFTNessAnimAppearStart1_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTNessAnimAppearStart1_joint26, /* [25] joint 26 */
-	0xFFFF01A5, /* [26] END */
+	(u32)dFTNessAnimAppearStart1_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -232,7 +233,7 @@ u16 dFTNessAnimAppearStart1_joint25[32] = {
 };
 
 /* Joint 26 */
-u16 dFTNessAnimAppearStart1_joint26[96] = {
+u16 dFTNessAnimAppearStart1_joint26[58] = {
 	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
 	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), -7268, -18646, 4252, 16115,
 	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -18570, -9216, 16206, -22006, -18519,
@@ -251,5 +252,11 @@ u16 dFTNessAnimAppearStart1_joint26[96] = {
 	0xBF00, /* unknown opcode 23 */
 	0xDA40, /* unknown opcode 27 */
 	ftAnimEnd(),
-	0x0000, 0x0603, 0x8000, 0x3C12, 0x8630, 0xBC99, 0xAF6F, 0x3D0C, 0x629B, 0x0603, 0x8027, 0x3C12, 0x8630, 0xBC99, 0xAF6F, 0x3D0C, 0x629B, 0x0A03, 0x8001, 0xBD80, 0x58CE, 0x397E, 0x04D2, 0xBD49, 0x98C9, 0xB901, 0x0FFE, 0xBE70, 0xA25D, 0x38AF, 0x5FB3, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 27 */
+u16 dFTNessAnimAppearStart1_joint27[38] = {
+	0x0603, /* End */
+	0x8000, 0x3C12, 0x8630, 0xBC99, 0xAF6F, 0x3D0C, 0x629B, 0x0603, 0x8027, 0x3C12, 0x8630, 0xBC99, 0xAF6F, 0x3D0C, 0x629B, 0x0A03, 0x8001, 0xBD80, 0x58CE, 0x397E, 0x04D2, 0xBD49, 0x98C9, 0xB901, 0x0FFE, 0xBE70, 0xA25D, 0x38AF, 0x5FB3, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -18,4 +18,4 @@ intern dFTFoxAnimJabLoop_joints+0x50 dFTFoxAnimJabLoop_joint21
 intern dFTFoxAnimJabLoop_joints+0x54 dFTFoxAnimJabLoop_joint23
 intern dFTFoxAnimJabLoop_joints+0x5C dFTFoxAnimJabLoop_joint24
 intern dFTFoxAnimJabLoop_joints+0x60 dFTFoxAnimJabLoop_joint25
-intern dFTFoxAnimJabLoop_joints+0x64 dFTFoxAnimJabLoop_joint25+0x98
+intern dFTFoxAnimJabLoop_joints+0x64 dFTFoxAnimJabLoop_joint26

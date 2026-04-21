@@ -20,4 +20,4 @@ intern dFTBossAnimPose1P_joints+0x50 dFTBossAnimPose1P_joint21
 intern dFTBossAnimPose1P_joints+0x54 dFTBossAnimPose1P_joint23
 intern dFTBossAnimPose1P_joints+0x5C dFTBossAnimPose1P_joint24
 intern dFTBossAnimPose1P_joints+0x60 dFTBossAnimPose1P_joint25
-intern dFTBossAnimPose1P_joints+0x64 dFTBossAnimPose1P_joint25+0x10
+intern dFTBossAnimPose1P_joints+0x64 dFTBossAnimPose1P_joint26

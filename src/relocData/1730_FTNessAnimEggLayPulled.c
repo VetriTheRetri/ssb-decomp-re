@@ -18,7 +18,8 @@ extern u16 dFTNessAnimEggLayPulled_joint20[24];
 extern u16 dFTNessAnimEggLayPulled_joint22[8];
 extern u16 dFTNessAnimEggLayPulled_joint23[24];
 extern u16 dFTNessAnimEggLayPulled_joint25[16];
-extern u16 dFTNessAnimEggLayPulled_joint26[34];
+extern u16 dFTNessAnimEggLayPulled_joint26[24];
+extern u16 dFTNessAnimEggLayPulled_joint27[10];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTNessAnimEggLayPulled_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTNessAnimEggLayPulled_joints[] = {
 	(u32)dFTNessAnimEggLayPulled_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTNessAnimEggLayPulled_joint26, /* [25] joint 26 */
-	0xFFFF00AF, /* [26] END */
+	(u32)dFTNessAnimEggLayPulled_joint27, /* [26] joint 27 */
 };
 
 /* Joint 3 */
@@ -189,10 +190,18 @@ u16 dFTNessAnimEggLayPulled_joint25[16] = {
 };
 
 /* Joint 26 */
-u16 dFTNessAnimEggLayPulled_joint26[34] = {
+u16 dFTNessAnimEggLayPulled_joint26[24] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 76, 35, 25, -26, -202, -5,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), 122, 11, 19, 21, -193, 14,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 135, 13, 42, 22, -178, 14,
 	ftAnimEnd(),
-	0x4002, 0x0038, 0x480C, 0x0000, 0x0000, 0x3803, 0x0003, 0x00B3, 0x0000, 0x0000,
+};
+
+/* Joint 27 */
+u16 dFTNessAnimEggLayPulled_joint27[10] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX), 56,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 3), 179,
+	ftAnimEnd(),
+	0x0000,
 };

@@ -20,4 +20,4 @@ intern dFTSamusAnimCatch_joints+0x68 dFTSamusAnimCatch_joint28
 intern dFTSamusAnimCatch_joints+0x70 dFTSamusAnimCatch_joint29
 intern dFTSamusAnimCatch_joints+0x74 dFTSamusAnimCatch_joint31
 intern dFTSamusAnimCatch_joints+0x7C dFTSamusAnimCatch_joint32
-intern dFTSamusAnimCatch_joints+0x80 dFTSamusAnimCatch_joint32+0x180
+intern dFTSamusAnimCatch_joints+0x80 dFTSamusAnimCatch_joint33

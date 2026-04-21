@@ -21,7 +21,8 @@ extern u16 dFTNessAnimHammerIdle_joint19[112];
 extern u16 dFTNessAnimHammerIdle_joint21[36];
 extern u16 dFTNessAnimHammerIdle_joint22[88];
 extern u16 dFTNessAnimHammerIdle_joint24[52];
-extern u16 dFTNessAnimHammerIdle_joint25[138];
+extern u16 dFTNessAnimHammerIdle_joint25[108];
+extern u16 dFTNessAnimHammerIdle_joint26[30];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimHammerIdle_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTNessAnimHammerIdle_joints[] = {
 	(u32)dFTNessAnimHammerIdle_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimHammerIdle_joint25, /* [24] joint 25 */
-	0xFFFF0199, /* [25] END */
+	(u32)dFTNessAnimHammerIdle_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -292,7 +293,7 @@ u16 dFTNessAnimHammerIdle_joint24[52] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimHammerIdle_joint25[138] = {
+u16 dFTNessAnimHammerIdle_joint25[108] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 12, -4, -21, -8, -113, -24,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 5), -3, 7,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), -70, -66, -47, 290,
@@ -318,5 +319,17 @@ u16 dFTNessAnimHammerIdle_joint25[138] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 20, -1, 72, 4, 49, 8,
 	ftAnimLoop(0x6800, -212),
 	ftAnimEnd(),
-	0x4002, 0x0038, 0x48EC, 0x0000, 0x0000, 0xFF82, 0xFFAE, 0xFFF4, 0x2003, 0x0003, 0xFD2F, 0xFFC0, 0x2003, 0x0005, 0xFE39, 0x000D, 0x2003, 0x0004, 0xFDA8, 0x0040, 0x3803, 0x0004, 0x0038, 0x6800, 0xFFD0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimHammerIdle_joint26[30] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX), 56,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, -126, -82, -12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 3), -721, -64,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 5), -455, 13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 4), -600, 64,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 4), 56,
+	ftAnimLoop(0x6800, -48),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

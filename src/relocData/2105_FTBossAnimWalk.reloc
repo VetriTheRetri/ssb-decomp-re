@@ -20,4 +20,4 @@ intern dFTBossAnimWalk_joints+0x50 dFTBossAnimWalk_joint21
 intern dFTBossAnimWalk_joints+0x54 dFTBossAnimWalk_joint23
 intern dFTBossAnimWalk_joints+0x5C dFTBossAnimWalk_joint24
 intern dFTBossAnimWalk_joints+0x60 dFTBossAnimWalk_joint25
-intern dFTBossAnimWalk_joints+0x64 dFTBossAnimWalk_joint25+0x20
+intern dFTBossAnimWalk_joints+0x64 dFTBossAnimWalk_joint26

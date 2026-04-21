@@ -19,4 +19,4 @@ intern dFTFoxAnimWin1_joints+0x50 dFTFoxAnimWin1_joint21
 intern dFTFoxAnimWin1_joints+0x54 dFTFoxAnimWin1_joint23
 intern dFTFoxAnimWin1_joints+0x5C dFTFoxAnimWin1_joint24
 intern dFTFoxAnimWin1_joints+0x60 dFTFoxAnimWin1_joint25
-intern dFTFoxAnimWin1_joints+0x64 dFTFoxAnimWin1_joint25+0x74
+intern dFTFoxAnimWin1_joints+0x64 dFTFoxAnimWin1_joint26

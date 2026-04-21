@@ -18,7 +18,8 @@ extern u16 dFTKirbyAnimFinalCutterImpact_joint15[40];
 extern u16 dFTKirbyAnimFinalCutterImpact_joint17[14];
 extern u16 dFTKirbyAnimFinalCutterImpact_joint19[104];
 extern u16 dFTKirbyAnimFinalCutterImpact_joint20[40];
-extern u16 dFTKirbyAnimFinalCutterImpact_joint22[116];
+extern u16 dFTKirbyAnimFinalCutterImpact_joint22[14];
+extern u16 dFTKirbyAnimFinalCutterImpact_joint23[102];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimFinalCutterImpact_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTKirbyAnimFinalCutterImpact_joints[] = {
 	(u32)dFTKirbyAnimFinalCutterImpact_joint20, /* [19] joint 20 */
 	(u32)dFTKirbyAnimFinalCutterImpact_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF0191, /* [22] END */
+	(u32)dFTKirbyAnimFinalCutterImpact_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -283,12 +284,16 @@ u16 dFTKirbyAnimFinalCutterImpact_joint20[40] = {
 };
 
 /* Joint 22 */
-u16 dFTKirbyAnimFinalCutterImpact_joint22[116] = {
+u16 dFTKirbyAnimFinalCutterImpact_joint22[14] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTZ), 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 19), 7,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, -7,
 	ftAnimLoop(0x6800, -26),
+};
+
+/* Joint 23 */
+u16 dFTKirbyAnimFinalCutterImpact_joint23[102] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1485, -18, 1451, 43, 1750, 29,
 	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
 	ftAnimSetVal0RateT(FT_ANIM_ROTX, 6), -1526,

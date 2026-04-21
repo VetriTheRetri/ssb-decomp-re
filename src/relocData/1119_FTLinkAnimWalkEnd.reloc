@@ -20,4 +20,4 @@ intern dFTLinkAnimWalkEnd_joints+0x54 dFTLinkAnimWalkEnd_joint23
 intern dFTLinkAnimWalkEnd_joints+0x5C dFTLinkAnimWalkEnd_joint25
 intern dFTLinkAnimWalkEnd_joints+0x64 dFTLinkAnimWalkEnd_joint26
 intern dFTLinkAnimWalkEnd_joints+0x68 dFTLinkAnimWalkEnd_joint28
-intern dFTLinkAnimWalkEnd_joints+0x70 dFTLinkAnimWalkEnd_joint28+0x20
+intern dFTLinkAnimWalkEnd_joints+0x70 dFTLinkAnimWalkEnd_joint29

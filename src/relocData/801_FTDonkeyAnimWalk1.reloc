@@ -19,4 +19,4 @@ intern dFTDonkeyAnimWalk1_joints+0x44 dFTDonkeyAnimWalk1_joint19
 intern dFTDonkeyAnimWalk1_joints+0x4C dFTDonkeyAnimWalk1_joint21
 intern dFTDonkeyAnimWalk1_joints+0x54 dFTDonkeyAnimWalk1_joint22
 intern dFTDonkeyAnimWalk1_joints+0x58 dFTDonkeyAnimWalk1_joint24
-intern dFTDonkeyAnimWalk1_joints+0x60 dFTDonkeyAnimWalk1_joint24+0x50
+intern dFTDonkeyAnimWalk1_joints+0x60 dFTDonkeyAnimWalk1_joint25

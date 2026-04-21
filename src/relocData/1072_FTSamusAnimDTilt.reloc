@@ -17,4 +17,4 @@ intern dFTSamusAnimDTilt_joints+0x3C dFTSamusAnimDTilt_joint17
 intern dFTSamusAnimDTilt_joints+0x44 dFTSamusAnimDTilt_joint19
 intern dFTSamusAnimDTilt_joints+0x4C dFTSamusAnimDTilt_joint20
 intern dFTSamusAnimDTilt_joints+0x50 dFTSamusAnimDTilt_joint22
-intern dFTSamusAnimDTilt_joints+0x58 dFTSamusAnimDTilt_joint22+0xE0
+intern dFTSamusAnimDTilt_joints+0x58 dFTSamusAnimDTilt_joint23

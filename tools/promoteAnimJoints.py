@@ -58,7 +58,7 @@ def parse_anim_joint(data):
     """Parse an AnimJoint binary.
 
     Returns:
-        entries: list of dicts with 'type' ('JOINT'/'NULL'/'END'), 'index',
+        entries: list of dicts with 'type' ('JOINT'/'NULL'), 'index',
                  and for JOINT: 'joint_id', 'data_off', 'data_size'
         header_size: bytes consumed by the joint table
     """
@@ -69,7 +69,22 @@ def parse_anim_joint(data):
         jid = struct.unpack_from('>H', data, pos)[0]
         woff = struct.unpack_from('>H', data, pos + 2)[0]
         if jid == 0xFFFF:
-            entries.append({'type': 'END', 'index': idx, 'end_word': woff})
+            # This is the LAST joint pointer, not an end sentinel.
+            # In the original binary the reloc chain encodes 0xFFFF as
+            # the "next" field (end of chain) and woff as the target.
+            # After fixRelocChain patches it, it becomes a normal pointer.
+            # The target (woff * 4) points to animation data — usually
+            # inside the last preceding joint's array, which we split
+            # into its own block below.
+            #
+            # Assign a synthetic joint_id = idx + 1 (1-based, next after
+            # the previous joint's id, or table-index-based).
+            # We derive the "real" joint number from the table index.
+            joint_id = idx + 1
+            entries.append({
+                'type': 'JOINT', 'index': idx,
+                'joint_id': joint_id, 'data_off': woff * 4,
+            })
             pos += 4
             break
         elif jid == 0 and woff == 0:
@@ -151,34 +166,10 @@ def generate(fid, name, data, entries, header_size, pad_after_header=0):
             c_lines.append(f"\t0x00000000, /* [{e['index']}] NULL */")
         elif e['type'] == 'JOINT':
             jid = e['joint_id']
-            # Emit the ORIGINAL u32 value (joint_id << 16 | word_offset)
-            # fixRelocChain.py will overwrite this with the chain link.
-            orig_word = (jid << 16) | (e['data_off'] // 4)
             c_lines.append(f"\t(u32){prefix}_joint{jid}, "
                           f"/* [{e['index']}] joint {jid} */")
             reloc_lines.append(
                 f"intern {table_var}+0x{byte_off:X} {prefix}_joint{jid}")
-        elif e['type'] == 'END':
-            # The END entry is part of the reloc chain: it's the last
-            # link with next=0xFFFF. Its target points past the last
-            # joint's data. fixRelocChain.py will overwrite this word.
-            end_word = e['end_word']
-            c_lines.append(f"\t0xFFFF{end_word:04X}, "
-                          f"/* [{e['index']}] END */")
-            # The END target is the word offset from the original binary.
-            # Express as an offset into the last-ordered joint's array
-            # so fixRelocChain resolves it from the compiled symbol table.
-            # end_word points somewhere inside (or just past) the last
-            # joint's data — it's the "next chain entry would be here"
-            # value, not necessarily the end of the data.
-            if data_joints:
-                last_j = data_joints[-1]
-                last_var = f"{prefix}_joint{last_j['joint_id']}"
-                target_byte = end_word * 4
-                offset_into_last = target_byte - last_j['data_off']
-                reloc_lines.append(
-                    f"intern {table_var}+0x{byte_off:X} "
-                    f"{last_var}+0x{offset_into_last:X}")
     c_lines.append("};")
     c_lines.append("")
 
@@ -386,9 +377,6 @@ def process_file(fid, name, dry_run=False):
         return False, f"size {len(data)} not word-aligned"
 
     entries, header_size, pad_after_header = parse_anim_joint(data)
-    end_entries = [e for e in entries if e['type'] == 'END']
-    if not end_entries:
-        return False, "no END marker"
 
     data_joints = [e for e in entries if e['type'] == 'JOINT']
     if not data_joints:

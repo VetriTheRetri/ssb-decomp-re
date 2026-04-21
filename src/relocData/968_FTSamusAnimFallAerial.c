@@ -17,7 +17,8 @@ extern u16 dFTSamusAnimFallAerial_joint15[36];
 extern u16 dFTSamusAnimFallAerial_joint17[24];
 extern u16 dFTSamusAnimFallAerial_joint19[36];
 extern u16 dFTSamusAnimFallAerial_joint20[26];
-extern u16 dFTSamusAnimFallAerial_joint22[60];
+extern u16 dFTSamusAnimFallAerial_joint22[24];
+extern u16 dFTSamusAnimFallAerial_joint23[36];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTSamusAnimFallAerial_joints[] = {
@@ -43,7 +44,7 @@ u32 dFTSamusAnimFallAerial_joints[] = {
 	(u32)dFTSamusAnimFallAerial_joint20, /* [19] joint 20 */
 	(u32)dFTSamusAnimFallAerial_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF00BE, /* [22] END */
+	(u32)dFTSamusAnimFallAerial_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -185,7 +186,7 @@ u16 dFTSamusAnimFallAerial_joint20[26] = {
 };
 
 /* Joint 22 */
-u16 dFTSamusAnimFallAerial_joint22[60] = {
+u16 dFTSamusAnimFallAerial_joint22[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 1100, 25,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 5), 1103, -38,
@@ -193,6 +194,10 @@ u16 dFTSamusAnimFallAerial_joint22[60] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1083, 18,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1100, 17,
 	ftAnimLoop(0x6800, -46),
+};
+
+/* Joint 23 */
+u16 dFTSamusAnimFallAerial_joint23[36] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -70, 2, 64, -1, 59, -25,
 	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTY, 7), -74, 3, 66, -1,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), 30, 47,

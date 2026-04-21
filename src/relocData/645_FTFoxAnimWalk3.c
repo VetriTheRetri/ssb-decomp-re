@@ -19,7 +19,8 @@ extern u16 dFTFoxAnimWalk3_joint20[74];
 extern u16 dFTFoxAnimWalk3_joint21[78];
 extern u16 dFTFoxAnimWalk3_joint23[40];
 extern u16 dFTFoxAnimWalk3_joint24[94];
-extern u16 dFTFoxAnimWalk3_joint25[116];
+extern u16 dFTFoxAnimWalk3_joint25[60];
+extern u16 dFTFoxAnimWalk3_joint26[56];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimWalk3_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTFoxAnimWalk3_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimWalk3_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimWalk3_joint25, /* [24] joint 25 */
-	0xFFFF01A8, /* [25] END */
+	(u32)dFTFoxAnimWalk3_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -321,7 +322,7 @@ u16 dFTFoxAnimWalk3_joint24[94] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimWalk3_joint25[116] = {
+u16 dFTFoxAnimWalk3_joint25[60] = {
 	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -126, -96,
 	ftAnimSetVal0Rate(FT_ANIM_ROTY), 219,
 	ftAnimSetValRate(FT_ANIM_ROTX), -45, 10,
@@ -342,6 +343,10 @@ u16 dFTFoxAnimWalk3_joint25[116] = {
 	ftAnimBlock(0, 5),
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 10), -45, 9,
 	ftAnimLoop(0x6800, -118),
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimWalk3_joint26[56] = {
 	ftAnimSetValAfterBlock(FT_ANIM_ROTZ), 0,
 	ftAnimSetValRateBlock(FT_ANIM_ROTX), -125, -11,
 	ftAnimSetVal0RateT(FT_ANIM_ROTX, 16), 268,

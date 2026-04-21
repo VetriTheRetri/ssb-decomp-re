@@ -20,4 +20,4 @@ intern dFTPikachuAnimWin1_joints+0x4C dFTPikachuAnimWin1_joint21
 intern dFTPikachuAnimWin1_joints+0x54 dFTPikachuAnimWin1_joint22
 intern dFTPikachuAnimWin1_joints+0x58 dFTPikachuAnimWin1_joint24
 intern dFTPikachuAnimWin1_joints+0x60 dFTPikachuAnimWin1_joint25
-intern dFTPikachuAnimWin1_joints+0x64 dFTPikachuAnimWin1_joint25+0x80
+intern dFTPikachuAnimWin1_joints+0x64 dFTPikachuAnimWin1_joint26

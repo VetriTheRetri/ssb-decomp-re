@@ -13,4 +13,4 @@ intern dFTPurinAnimDamage_joints+0x38 dFTPurinAnimDamage_joint16
 intern dFTPurinAnimDamage_joints+0x40 dFTPurinAnimDamage_joint18
 intern dFTPurinAnimDamage_joints+0x48 dFTPurinAnimDamage_joint19
 intern dFTPurinAnimDamage_joints+0x4C dFTPurinAnimDamage_joint21
-intern dFTPurinAnimDamage_joints+0x54 dFTPurinAnimDamage_joint21+0x10
+intern dFTPurinAnimDamage_joints+0x54 dFTPurinAnimDamage_joint22

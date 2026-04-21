@@ -17,7 +17,8 @@ extern u16 dFTPurinAnimJump2_joint14[100];
 extern u16 dFTPurinAnimJump2_joint16[22];
 extern u16 dFTPurinAnimJump2_joint18[128];
 extern u16 dFTPurinAnimJump2_joint19[98];
-extern u16 dFTPurinAnimJump2_joint21[164];
+extern u16 dFTPurinAnimJump2_joint21[24];
+extern u16 dFTPurinAnimJump2_joint22[140];
 
 /* Joint pointer table (22 entries, 88 bytes) */
 u32 dFTPurinAnimJump2_joints[] = {
@@ -42,7 +43,7 @@ u32 dFTPurinAnimJump2_joints[] = {
 	(u32)dFTPurinAnimJump2_joint19, /* [18] joint 19 */
 	(u32)dFTPurinAnimJump2_joint21, /* [19] joint 21 */
 	0x00000000, /* [20] NULL */
-	0xFFFF019E, /* [21] END */
+	(u32)dFTPurinAnimJump2_joint22, /* [21] joint 22 */
 };
 
 /* Joint 1 */
@@ -308,7 +309,7 @@ u16 dFTPurinAnimJump2_joint19[98] = {
 };
 
 /* Joint 21 */
-u16 dFTPurinAnimJump2_joint21[164] = {
+u16 dFTPurinAnimJump2_joint21[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 7, -7,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 32), 0, 0,
@@ -316,5 +317,45 @@ u16 dFTPurinAnimJump2_joint21[164] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 16), 7, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 7, 0,
 	ftAnimEnd(),
-	0x0000, 0x280E, 0xF3B3, 0x0000, 0x01CB, 0xFFF7, 0xFFFF, 0x0007, 0x3F00, 0x0999, 0x0999, 0x0999, 0x2803, 0x0012, 0xF411, 0x0001, 0x2F01, 0x0014, 0x0999, 0x0000, 0x0999, 0x0000, 0x0999, 0x0001, 0x2809, 0x0022, 0x008B, 0x0024, 0x2005, 0x000A, 0x0111, 0xFFF0, 0x2005, 0x0001, 0x00FD, 0xFFE9, 0x2805, 0x000B, 0x001A, 0x0036, 0x0801, 0x0007, 0x2003, 0x0001, 0xF412, 0x000D, 0x2803, 0x0012, 0xF489, 0x001B, 0x0801, 0x0001, 0x4701, 0x001E, 0x0E66, 0x0E66, 0x0E66, 0x0801, 0x0002, 0x2005, 0x0001, 0x0054, 0x003A, 0x2805, 0x0011, 0x0285, 0xFFFA, 0x0801, 0x000B, 0x2009, 0x0001, 0x00B5, 0x002D, 0x2809, 0x0006, 0x00ED, 0xFFD7, 0x0801, 0x0002, 0x2003, 0x0001, 0xF49F, 0x000B, 0x2803, 0x0006, 0xF445, 0x0014, 0x0801, 0x0002, 0x2005, 0x0001, 0x0271, 0xFFD2, 0x2805, 0x0005, 0x009C, 0xFFCD, 0x2009, 0x0001, 0x00C8, 0xFFE2, 0x2809, 0x0007, 0x00B6, 0xFFFF, 0x0801, 0x0002, 0x2003, 0x0001, 0xF45D, 0x0015, 0x2803, 0x0004, 0xF491, 0x0004, 0x0801, 0x0001, 0x2005, 0x0001, 0x0074, 0xFFE1, 0x2005, 0x0002, 0x0051, 0xFFF9, 0x200F, 0x0001, 0xF493, 0x0002, 0x004E, 0xFFFD, 0x00B5, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 22 */
+u16 dFTPurinAnimJump2_joint22[140] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -3149, 0, 459, -9, -1, 7,
+	ftAnimSetVal0RateBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 2457, 2457, 2457,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 18), -3055, 1,
+	ftAnimSetValRateT(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 20), 2457, 0, 2457, 0, 2457, 1,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 34), 139, 36,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 10), 273, -16,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 253, -23,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 11), 26, 54,
+	ftAnimBlock(0, 7),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -3054, 13,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 18), -2935, 27,
+	ftAnimBlock(0, 1),
+	ftAnimSetVal0RateT(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 30), 3686, 3686, 3686,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 84, 58,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 17), 645, -6,
+	ftAnimBlock(0, 11),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 181, 45,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 6), 237, -41,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -2913, 11,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 6), -3003, 20,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 625, -46,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 5), 156, -51,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 200, -30,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 7), 182, -1,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -2979, 21,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 4), -2927, 4,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 116, -31,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 2), 81, -7,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -2925, 2, 78, -3, 181, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

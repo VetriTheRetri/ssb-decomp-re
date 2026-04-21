@@ -16,4 +16,4 @@ intern dFTPurinAnimDSmash_joints+0x38 dFTPurinAnimDSmash_joint16
 intern dFTPurinAnimDSmash_joints+0x40 dFTPurinAnimDSmash_joint18
 intern dFTPurinAnimDSmash_joints+0x48 dFTPurinAnimDSmash_joint19
 intern dFTPurinAnimDSmash_joints+0x4C dFTPurinAnimDSmash_joint21
-intern dFTPurinAnimDSmash_joints+0x54 dFTPurinAnimDSmash_joint21+0xA0
+intern dFTPurinAnimDSmash_joints+0x54 dFTPurinAnimDSmash_joint22

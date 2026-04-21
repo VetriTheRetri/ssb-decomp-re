@@ -18,7 +18,8 @@ extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint19[16];
 extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint21[22];
 extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint22[24];
 extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[16];
-extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[44];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[36];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint26[8];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTCaptainAnimCatchingEnemyWhileDiving_joints[] = {
@@ -47,7 +48,7 @@ u32 dFTCaptainAnimCatchingEnemyWhileDiving_joints[] = {
 	(u32)dFTCaptainAnimCatchingEnemyWhileDiving_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTCaptainAnimCatchingEnemyWhileDiving_joint25, /* [24] joint 25 */
-	0xFFFF00B4, /* [25] END */
+	(u32)dFTCaptainAnimCatchingEnemyWhileDiving_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -193,7 +194,7 @@ u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[16] = {
 };
 
 /* Joint 25 */
-u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[44] = {
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[36] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -103, 14, 227, 0, -424, 0,
 	ftAnimSetVal0RateT(FT_ANIM_ROTZ, 15), -424,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 15), 227, 0,
@@ -202,5 +203,13 @@ u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[44] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 5), -101, -3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -103, -1, 227, 0, -424, 0,
 	ftAnimEnd(),
-	0x0000, 0x50E0, 0x0065, 0xFC8B, 0x01CA, 0x0801, 0x0010, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint26[8] = {
+	ftAnimSetValAfter(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 101, -885, 458,
+	ftAnimBlock(0, 16),
+	ftAnimEnd(),
+	0x0000,
 };

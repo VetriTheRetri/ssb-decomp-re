@@ -21,7 +21,8 @@ extern u16 dFTKirbyAnimEggThrowGround_joint19[8];
 extern u16 dFTKirbyAnimEggThrowGround_joint21[110];
 extern u16 dFTKirbyAnimEggThrowGround_joint22[120];
 extern u16 dFTKirbyAnimEggThrowGround_joint24[14];
-extern u16 dFTKirbyAnimEggThrowGround_joint25[128];
+extern u16 dFTKirbyAnimEggThrowGround_joint25[112];
+extern u16 dFTKirbyAnimEggThrowGround_joint26[16];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTKirbyAnimEggThrowGround_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTKirbyAnimEggThrowGround_joints[] = {
 	(u32)dFTKirbyAnimEggThrowGround_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTKirbyAnimEggThrowGround_joint25, /* [24] joint 25 */
-	0xFFFF02FC, /* [25] END */
+	(u32)dFTKirbyAnimEggThrowGround_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -462,7 +463,7 @@ u16 dFTKirbyAnimEggThrowGround_joint24[14] = {
 };
 
 /* Joint 25 */
-u16 dFTKirbyAnimEggThrowGround_joint25[128] = {
+u16 dFTKirbyAnimEggThrowGround_joint25[112] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 272, -1, 176, 3, -171, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 7), 362, 34,
@@ -492,5 +493,14 @@ u16 dFTKirbyAnimEggThrowGround_joint25[128] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -96, -10,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 309, 1, 176, 2, -99, -3,
 	ftAnimEnd(),
-	0x4080, 0x07F8, 0x486E, 0x0000, 0x0648, 0x0000, 0x0000, 0x003C, 0x3881, 0x0006, 0x0000, 0x3881, 0x001D, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTKirbyAnimEggThrowGround_joint26[16] = {
+	ftAnimSetVal0Rate(FT_ANIM_TRAZ), 2040,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY), 0, 1608, 0, 0, 60,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 6), 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 29), 0,
+	ftAnimEnd(),
+	0x0000,
 };

@@ -20,4 +20,4 @@ intern dFTDonkeyAnimRollF_joints+0x48 dFTDonkeyAnimRollF_joint20
 intern dFTDonkeyAnimRollF_joints+0x50 dFTDonkeyAnimRollF_joint22
 intern dFTDonkeyAnimRollF_joints+0x58 dFTDonkeyAnimRollF_joint23
 intern dFTDonkeyAnimRollF_joints+0x5C dFTDonkeyAnimRollF_joint25
-intern dFTDonkeyAnimRollF_joints+0x64 dFTDonkeyAnimRollF_joint25+0xA0
+intern dFTDonkeyAnimRollF_joints+0x64 dFTDonkeyAnimRollF_joint26

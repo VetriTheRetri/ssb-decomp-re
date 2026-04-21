@@ -18,4 +18,4 @@ intern dFTFoxAnimWalk3_joints+0x50 dFTFoxAnimWalk3_joint21
 intern dFTFoxAnimWalk3_joints+0x54 dFTFoxAnimWalk3_joint23
 intern dFTFoxAnimWalk3_joints+0x5C dFTFoxAnimWalk3_joint24
 intern dFTFoxAnimWalk3_joints+0x60 dFTFoxAnimWalk3_joint25
-intern dFTFoxAnimWalk3_joints+0x64 dFTFoxAnimWalk3_joint25+0x78
+intern dFTFoxAnimWalk3_joints+0x64 dFTFoxAnimWalk3_joint26

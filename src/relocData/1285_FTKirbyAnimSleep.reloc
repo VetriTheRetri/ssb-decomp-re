@@ -16,4 +16,4 @@ intern dFTKirbyAnimSleep_joints+0x38 dFTKirbyAnimSleep_joint16
 intern dFTKirbyAnimSleep_joints+0x40 dFTKirbyAnimSleep_joint18
 intern dFTKirbyAnimSleep_joints+0x48 dFTKirbyAnimSleep_joint19
 intern dFTKirbyAnimSleep_joints+0x4C dFTKirbyAnimSleep_joint21
-intern dFTKirbyAnimSleep_joints+0x54 dFTKirbyAnimSleep_joint21+0x60
+intern dFTKirbyAnimSleep_joints+0x54 dFTKirbyAnimSleep_joint22

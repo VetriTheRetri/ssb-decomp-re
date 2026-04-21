@@ -20,4 +20,4 @@ intern dFTFoxAnimDamageX2_joints+0x50 dFTFoxAnimDamageX2_joint21
 intern dFTFoxAnimDamageX2_joints+0x54 dFTFoxAnimDamageX2_joint23
 intern dFTFoxAnimDamageX2_joints+0x5C dFTFoxAnimDamageX2_joint24
 intern dFTFoxAnimDamageX2_joints+0x60 dFTFoxAnimDamageX2_joint25
-intern dFTFoxAnimDamageX2_joints+0x64 dFTFoxAnimDamageX2_joint25+0x98
+intern dFTFoxAnimDamageX2_joints+0x64 dFTFoxAnimDamageX2_joint26

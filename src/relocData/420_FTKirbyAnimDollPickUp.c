@@ -17,7 +17,8 @@ extern u16 dFTKirbyAnimDollPickUp_joint15[24];
 extern u16 dFTKirbyAnimDollPickUp_joint17[24];
 extern u16 dFTKirbyAnimDollPickUp_joint19[24];
 extern u16 dFTKirbyAnimDollPickUp_joint20[56];
-extern u16 dFTKirbyAnimDollPickUp_joint22[116];
+extern u16 dFTKirbyAnimDollPickUp_joint22[22];
+extern u16 dFTKirbyAnimDollPickUp_joint23[94];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimDollPickUp_joints[] = {
@@ -43,7 +44,7 @@ u32 dFTKirbyAnimDollPickUp_joints[] = {
 	(u32)dFTKirbyAnimDollPickUp_joint20, /* [19] joint 20 */
 	(u32)dFTKirbyAnimDollPickUp_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF0125, /* [22] END */
+	(u32)dFTKirbyAnimDollPickUp_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -233,7 +234,7 @@ u16 dFTKirbyAnimDollPickUp_joint20[56] = {
 };
 
 /* Joint 22 */
-u16 dFTKirbyAnimDollPickUp_joint22[116] = {
+u16 dFTKirbyAnimDollPickUp_joint22[22] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 7, 0,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 75), 7, 0,
@@ -241,5 +242,33 @@ u16 dFTKirbyAnimDollPickUp_joint22[116] = {
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 23), 7,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 7, 0,
 	ftAnimEnd(),
-	0x200E, 0x01C9, 0x0008, 0x00CE, 0x0007, 0x01E6, 0x0001, 0x2803, 0x000E, 0x02B3, 0xFFFB, 0x2809, 0x0014, 0x0211, 0xFFF9, 0x2005, 0x000D, 0x0247, 0x0003, 0x2005, 0x0001, 0x024B, 0x0003, 0x2805, 0x003B, 0x01B8, 0xFFF5, 0x2003, 0x0001, 0x02AD, 0xFFFA, 0x2803, 0x0040, 0x009B, 0x0000, 0x0801, 0x0005, 0x2009, 0x0001, 0x0209, 0xFFF9, 0x2809, 0x003D, 0x008F, 0x0003, 0x0801, 0x0034, 0x2005, 0x0001, 0x01AC, 0xFFF3, 0x2805, 0x0014, 0x00CE, 0x0000, 0x0801, 0x0005, 0x2003, 0x0001, 0x009A, 0xFFFF, 0x2803, 0x0013, 0x0067, 0x0007, 0x0801, 0x0002, 0x2009, 0x0001, 0x0092, 0x0002, 0x2809, 0x0010, 0x0037, 0x0018, 0x0801, 0x000B, 0x2005, 0x0001, 0x00CE, 0x0000, 0x2005, 0x0004, 0x00C4, 0xFFFB, 0x200F, 0x0001, 0x006F, 0x0008, 0x00BD, 0xFFF9, 0x0054, 0x001D, 0x0000,
+};
+
+/* Joint 23 */
+u16 dFTKirbyAnimDollPickUp_joint23[94] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 457, 8, 206, 7, 486, 1,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 14), 691, -5,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 20), 529, -7,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 13), 583, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 587, 3,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 59), 440, -11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 685, -6,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 64), 155, 0,
+	ftAnimBlock(0, 5),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 521, -7,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 61), 143, 3,
+	ftAnimBlock(0, 52),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 428, -13,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 20), 206, 0,
+	ftAnimBlock(0, 5),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 154, -1,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 19), 103, 7,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 146, 2,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 16), 55, 24,
+	ftAnimBlock(0, 11),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 206, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 4), 196, -5,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 111, 8, 189, -7, 84, 29,
+	ftAnimEnd(),
 };

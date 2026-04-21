@@ -23,4 +23,4 @@ intern dFTLinkAnimCatch_joints+0x64 dFTLinkAnimCatch_joint27
 intern dFTLinkAnimCatch_joints+0x6C dFTLinkAnimCatch_joint28
 intern dFTLinkAnimCatch_joints+0x70 dFTLinkAnimCatch_joint30
 intern dFTLinkAnimCatch_joints+0x78 dFTLinkAnimCatch_joint31
-intern dFTLinkAnimCatch_joints+0x7C dFTLinkAnimCatch_joint31+0x24C
+intern dFTLinkAnimCatch_joints+0x7C dFTLinkAnimCatch_joint32

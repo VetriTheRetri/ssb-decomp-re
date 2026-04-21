@@ -18,4 +18,4 @@ intern dFTMarioAnimSleep_joints+0x40 dFTMarioAnimSleep_joint18
 intern dFTMarioAnimSleep_joints+0x48 dFTMarioAnimSleep_joint20
 intern dFTMarioAnimSleep_joints+0x50 dFTMarioAnimSleep_joint21
 intern dFTMarioAnimSleep_joints+0x54 dFTMarioAnimSleep_joint23
-intern dFTMarioAnimSleep_joints+0x5C dFTMarioAnimSleep_joint23+0x50
+intern dFTMarioAnimSleep_joints+0x5C dFTMarioAnimSleep_joint24

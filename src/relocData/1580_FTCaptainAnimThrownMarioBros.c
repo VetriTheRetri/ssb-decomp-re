@@ -19,7 +19,8 @@ extern u16 dFTCaptainAnimThrownMarioBros_joint18[34];
 extern u16 dFTCaptainAnimThrownMarioBros_joint20[24];
 extern u16 dFTCaptainAnimThrownMarioBros_joint22[24];
 extern u16 dFTCaptainAnimThrownMarioBros_joint23[24];
-extern u16 dFTCaptainAnimThrownMarioBros_joint25[52];
+extern u16 dFTCaptainAnimThrownMarioBros_joint25[20];
+extern u16 dFTCaptainAnimThrownMarioBros_joint26[32];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTCaptainAnimThrownMarioBros_joints[] = {
@@ -48,7 +49,7 @@ u32 dFTCaptainAnimThrownMarioBros_joints[] = {
 	(u32)dFTCaptainAnimThrownMarioBros_joint23, /* [22] joint 23 */
 	(u32)dFTCaptainAnimThrownMarioBros_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
-	0xFFFF00D8, /* [25] END */
+	(u32)dFTCaptainAnimThrownMarioBros_joint26, /* [25] joint 26 */
 };
 
 /* Joint 2 */
@@ -212,12 +213,23 @@ u16 dFTCaptainAnimThrownMarioBros_joint23[24] = {
 };
 
 /* Joint 25 */
-u16 dFTCaptainAnimThrownMarioBros_joint25[52] = {
+u16 dFTCaptainAnimThrownMarioBros_joint25[20] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 924, -17,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 8), 411, -88,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 331, -58,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 295, -35,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0x00F3, 0x0011, 0x016D, 0xFFF4, 0xFEFF, 0x000F, 0x280D, 0x0009, 0x0025, 0xFFF0, 0xFFB8, 0x0006, 0x2003, 0x0008, 0x00A7, 0xFFAC, 0x2003, 0x0001, 0x004F, 0xFFB6, 0x200F, 0x0001, 0x0012, 0xFFC4, 0x001C, 0xFFF8, 0xFFBC, 0x0003, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTCaptainAnimThrownMarioBros_joint26[32] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 243, 17, 365, -12, -257, 15,
+	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 9), 37, -16, -72, 6,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 8), 167, -84,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 79, -74,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 18, -60, 28, -8, -68, 3,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

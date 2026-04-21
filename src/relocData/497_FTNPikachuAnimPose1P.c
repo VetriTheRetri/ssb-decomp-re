@@ -18,7 +18,8 @@ extern u16 dFTNPikachuAnimPose1P_joint19[14];
 extern u16 dFTNPikachuAnimPose1P_joint21[24];
 extern u16 dFTNPikachuAnimPose1P_joint22[24];
 extern u16 dFTNPikachuAnimPose1P_joint24[16];
-extern u16 dFTNPikachuAnimPose1P_joint25[52];
+extern u16 dFTNPikachuAnimPose1P_joint25[26];
+extern u16 dFTNPikachuAnimPose1P_joint26[26];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNPikachuAnimPose1P_joints[] = {
@@ -47,7 +48,7 @@ u32 dFTNPikachuAnimPose1P_joints[] = {
 	(u32)dFTNPikachuAnimPose1P_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNPikachuAnimPose1P_joint25, /* [24] joint 25 */
-	0xFFFF00B3, /* [25] END */
+	(u32)dFTNPikachuAnimPose1P_joint26, /* [25] joint 26 */
 };
 
 /* 4-byte alignment padding */
@@ -180,11 +181,20 @@ u16 dFTNPikachuAnimPose1P_joint24[16] = {
 };
 
 /* Joint 25 */
-u16 dFTNPikachuAnimPose1P_joint25[52] = {
+u16 dFTNPikachuAnimPose1P_joint25[26] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 2012, -548, -1776, -28, 1211, 254,
 	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1804, 0, 1465, 0,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 1), 1463,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 2012, 548, -1776, 28, 1211, -254,
 	ftAnimEnd(),
-	0x0000, 0x38EE, 0x00A7, 0x011E, 0x0002, 0xFF5B, 0xFF95, 0xFE67, 0x38EF, 0x0001, 0x0000, 0x0000, 0x0000, 0x0009, 0xFF47, 0xFE84, 0x38EF, 0x0001, 0x00A7, 0x011E, 0x0002, 0xFF5B, 0xFF95, 0xFE67, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNPikachuAnimPose1P_joint26[26] = {
+	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 167, 286, 2, -165, -107, -409,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), 0, 0, 0, 9, -185, -380,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), 167, 286, 2, -165, -107, -409,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

@@ -22,7 +22,8 @@ extern u16 dFTPikachuAnimCliffClimbQuick1_joint20[18];
 extern u16 dFTPikachuAnimCliffClimbQuick1_joint22[30];
 extern u16 dFTPikachuAnimCliffClimbQuick1_joint23[30];
 extern u16 dFTPikachuAnimCliffClimbQuick1_joint25[18];
-extern u16 dFTPikachuAnimCliffClimbQuick1_joint26[48];
+extern u16 dFTPikachuAnimCliffClimbQuick1_joint26[30];
+extern u16 dFTPikachuAnimCliffClimbQuick1_joint27[18];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTPikachuAnimCliffClimbQuick1_joints[] = {
@@ -52,7 +53,7 @@ u32 dFTPikachuAnimCliffClimbQuick1_joints[] = {
 	(u32)dFTPikachuAnimCliffClimbQuick1_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
 	(u32)dFTPikachuAnimCliffClimbQuick1_joint26, /* [25] joint 26 */
-	0xFFFF0113, /* [26] END */
+	(u32)dFTPikachuAnimCliffClimbQuick1_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -237,11 +238,20 @@ u16 dFTPikachuAnimCliffClimbQuick1_joint25[18] = {
 };
 
 /* Joint 26 */
-u16 dFTPikachuAnimCliffClimbQuick1_joint26[48] = {
+u16 dFTPikachuAnimCliffClimbQuick1_joint26[30] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1698, 109, -1523, -43, 1916, -285,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), -1371, -20, -1653, -33, 1059, 3,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), -1819, -149, -1726, -24, 1939, 293,
 	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1819, -1726, 1939,
 	ftAnimEnd(),
-	0x0000, 0x280E, 0xFE0B, 0xFFE3, 0xFE33, 0xFFF7, 0xFFE8, 0x0028, 0x48E0, 0xFFFF, 0xFF4C, 0xFE9E, 0x380F, 0x0007, 0xFC25, 0xFE8B, 0xFFAF, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 27 */
+u16 dFTPikachuAnimCliffClimbQuick1_joint27[18] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -501, -29, -461, -9, -24, 40,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1, -180, -354,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), -987, -373, -81,
+	ftAnimEnd(),
+	0x0000,
 };

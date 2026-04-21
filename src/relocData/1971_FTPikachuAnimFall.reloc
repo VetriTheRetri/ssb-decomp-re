@@ -20,4 +20,4 @@ intern dFTPikachuAnimFall_joints+0x4C dFTPikachuAnimFall_joint21
 intern dFTPikachuAnimFall_joints+0x54 dFTPikachuAnimFall_joint22
 intern dFTPikachuAnimFall_joints+0x58 dFTPikachuAnimFall_joint24
 intern dFTPikachuAnimFall_joints+0x60 dFTPikachuAnimFall_joint25
-intern dFTPikachuAnimFall_joints+0x64 dFTPikachuAnimFall_joint25+0x3C
+intern dFTPikachuAnimFall_joints+0x64 dFTPikachuAnimFall_joint26

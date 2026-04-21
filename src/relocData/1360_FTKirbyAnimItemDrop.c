@@ -17,7 +17,8 @@ extern u16 dFTKirbyAnimItemDrop_joint14[48];
 extern u16 dFTKirbyAnimItemDrop_joint16[12];
 extern u16 dFTKirbyAnimItemDrop_joint18[58];
 extern u16 dFTKirbyAnimItemDrop_joint19[38];
-extern u16 dFTKirbyAnimItemDrop_joint21[68];
+extern u16 dFTKirbyAnimItemDrop_joint21[16];
+extern u16 dFTKirbyAnimItemDrop_joint22[52];
 
 /* Joint pointer table (22 entries, 88 bytes) */
 u32 dFTKirbyAnimItemDrop_joints[] = {
@@ -42,7 +43,7 @@ u32 dFTKirbyAnimItemDrop_joints[] = {
 	(u32)dFTKirbyAnimItemDrop_joint19, /* [18] joint 19 */
 	(u32)dFTKirbyAnimItemDrop_joint21, /* [19] joint 21 */
 	0x00000000, /* [20] NULL */
-	0xFFFF01EE, /* [21] END */
+	(u32)dFTKirbyAnimItemDrop_joint22, /* [21] joint 22 */
 };
 
 /* Joint 1 */
@@ -313,11 +314,28 @@ u16 dFTKirbyAnimItemDrop_joint19[38] = {
 };
 
 /* Joint 21 */
-u16 dFTKirbyAnimItemDrop_joint21[68] = {
+u16 dFTKirbyAnimItemDrop_joint21[16] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 0, 7,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 23), 7, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 7, 0,
 	ftAnimEnd(),
-	0x0000, 0x280E, 0xFAEE, 0x0000, 0xF907, 0x0000, 0xF958, 0xFFFD, 0x4F00, 0x1000, 0x1000, 0x1000, 0x2809, 0x000F, 0xF99A, 0xFFF3, 0x2803, 0x0017, 0xFAEE, 0x0000, 0x2005, 0x0006, 0xF8A7, 0xFFCF, 0x2005, 0x0001, 0xF879, 0xFFD8, 0x2805, 0x0010, 0xF909, 0xFFFD, 0x0801, 0x0008, 0x2009, 0x0001, 0xF98B, 0xFFF2, 0x2009, 0x0007, 0xF952, 0x0002, 0x200F, 0x0001, 0xFAEE, 0x0000, 0xF907, 0xFFFE, 0xF954, 0x0001, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 22 */
+u16 dFTKirbyAnimItemDrop_joint22[52] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1298, 0, -1785, 0, -1704, -3,
+	ftAnimSetValAfterBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 4096, 4096, 4096,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 15), -1638, -13,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 23), -1298, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 6), -1881, -49,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -1927, -40,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 16), -1783, -3,
+	ftAnimBlock(0, 8),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -1653, -14,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), -1710, 2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1298, 0, -1785, -2, -1708, 1,
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

@@ -17,4 +17,4 @@ intern dFTMarioAnimWin3_joints+0x40 dFTMarioAnimWin3_joint18
 intern dFTMarioAnimWin3_joints+0x48 dFTMarioAnimWin3_joint20
 intern dFTMarioAnimWin3_joints+0x50 dFTMarioAnimWin3_joint21
 intern dFTMarioAnimWin3_joints+0x54 dFTMarioAnimWin3_joint23
-intern dFTMarioAnimWin3_joints+0x5C dFTMarioAnimWin3_joint23+0x158
+intern dFTMarioAnimWin3_joints+0x5C dFTMarioAnimWin3_joint24

@@ -20,4 +20,4 @@ intern dFTBossAnimDrill_joints+0x50 dFTBossAnimDrill_joint21
 intern dFTBossAnimDrill_joints+0x54 dFTBossAnimDrill_joint23
 intern dFTBossAnimDrill_joints+0x5C dFTBossAnimDrill_joint24
 intern dFTBossAnimDrill_joints+0x60 dFTBossAnimDrill_joint25
-intern dFTBossAnimDrill_joints+0x64 dFTBossAnimDrill_joint25+0xD4
+intern dFTBossAnimDrill_joints+0x64 dFTBossAnimDrill_joint26

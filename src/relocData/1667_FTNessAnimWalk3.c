@@ -20,7 +20,8 @@ extern u16 dFTNessAnimWalk3_joint19[136];
 extern u16 dFTNessAnimWalk3_joint21[20];
 extern u16 dFTNessAnimWalk3_joint22[102];
 extern u16 dFTNessAnimWalk3_joint24[56];
-extern u16 dFTNessAnimWalk3_joint25[184];
+extern u16 dFTNessAnimWalk3_joint25[148];
+extern u16 dFTNessAnimWalk3_joint26[36];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimWalk3_joints[] = {
@@ -49,7 +50,7 @@ u32 dFTNessAnimWalk3_joints[] = {
 	(u32)dFTNessAnimWalk3_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimWalk3_joint25, /* [24] joint 25 */
-	0xFFFF02D6, /* [25] END */
+	(u32)dFTNessAnimWalk3_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -437,7 +438,7 @@ u16 dFTNessAnimWalk3_joint24[56] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimWalk3_joint25[184] = {
+u16 dFTNessAnimWalk3_joint25[148] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -81, -7, -27, 3, -90, -5,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 14), -126, 18,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 19), -2, -2,
@@ -477,5 +478,15 @@ u16 dFTNessAnimWalk3_joint25[184] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -81, -17, -27, -9, -90, 17,
 	ftAnimLoop(0x6800, -292),
 	ftAnimEnd(),
-	0x200E, 0x01A3, 0x0000, 0xFFFD, 0x0000, 0x006C, 0x0000, 0x200F, 0x000D, 0x00B7, 0xFFEE, 0xFFE6, 0x0000, 0x0018, 0xFFFD, 0x200F, 0x0007, 0x003B, 0x0008, 0xFFEA, 0x0000, 0x0026, 0x0003, 0x380F, 0x0014, 0x01A3, 0xFFFD, 0x006C, 0x6800, 0xFFC6, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimWalk3_joint26[36] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 419, 0, -3, 0, 108, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 13), 183, -18, -26, 0, 24, -3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), 59, 8, -22, 0, 38, 3,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 20), 419, -3, 108,
+	ftAnimLoop(0x6800, -58),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -18,7 +18,8 @@ extern u16 dFTKirbyAnimFalconPunchAir_joint16[52];
 extern u16 dFTKirbyAnimFalconPunchAir_joint18[348];
 extern u16 dFTKirbyAnimFalconPunchAir_joint19[268];
 extern u16 dFTKirbyAnimFalconPunchAir_joint21[70];
-extern u16 dFTKirbyAnimFalconPunchAir_joint22[720];
+extern u16 dFTKirbyAnimFalconPunchAir_joint22[340];
+extern u16 dFTKirbyAnimFalconPunchAir_joint23[380];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimFalconPunchAir_joints[] = {
@@ -44,7 +45,7 @@ u32 dFTKirbyAnimFalconPunchAir_joints[] = {
 	(u32)dFTKirbyAnimFalconPunchAir_joint21, /* [19] joint 21 */
 	0x00000000, /* [20] NULL */
 	(u32)dFTKirbyAnimFalconPunchAir_joint22, /* [21] joint 22 */
-	0xFFFF052E, /* [22] END */
+	(u32)dFTKirbyAnimFalconPunchAir_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -641,7 +642,7 @@ u16 dFTKirbyAnimFalconPunchAir_joint21[70] = {
 };
 
 /* Joint 22 */
-u16 dFTKirbyAnimFalconPunchAir_joint22[720] = {
+u16 dFTKirbyAnimFalconPunchAir_joint22[340] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1286, -98, -1766, 20, -1259, -14,
 	ftAnimSetVal0RateBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 3686, 3686, 3686,
 	ftAnimSetValRateT(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 5), 4096, 22, 4096, 22, 4096, 22,
@@ -713,5 +714,120 @@ u16 dFTKirbyAnimFalconPunchAir_joint22[720] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 2), -1767, 1,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1286, -1, -1766, 0, -1259, -4,
 	ftAnimEnd(),
-	0x0000, 0x20E0, 0xFE21, 0x0081, 0x01C8, 0x0093, 0xFFE4, 0xFFE9, 0x20E1, 0x0002, 0xFE69, 0x0257, 0x0208, 0x016B, 0xFFC5, 0xFE8F, 0x3060, 0x0257, 0x016B, 0x3080, 0xFE8F, 0x2881, 0x0003, 0xFF0E, 0xFF38, 0x2061, 0x0002, 0xFF26, 0x0236, 0x0241, 0x0018, 0x3020, 0x0236, 0x2821, 0x0002, 0xFF60, 0x0049, 0x3040, 0x0018, 0x2841, 0x0010, 0x022B, 0x0003, 0x0801, 0x0001, 0x3080, 0xFF38, 0x2881, 0x0006, 0xFEEB, 0xFFE6, 0x0801, 0x0001, 0x3020, 0x0049, 0x2821, 0x001D, 0xFF55, 0xFFFC, 0x0801, 0x0005, 0x3080, 0xFFE6, 0x2881, 0x0018, 0xFF0C, 0x000E, 0x0801, 0x0009, 0x3040, 0x0003, 0x2041, 0x000F, 0x0239, 0x000C, 0x3080, 0x000E, 0x3060, 0xFFFC, 0x000C, 0x2861, 0x0002, 0xFF63, 0x0117, 0x021A, 0xFDE6, 0x2081, 0x0001, 0xFF0E, 0xFEF5, 0x3080, 0xFEF5, 0x2881, 0x0003, 0xFDE9, 0xFE07, 0x0801, 0x0001, 0x3060, 0x0117, 0xFDE6, 0x2061, 0x0001, 0xFF9B, 0x0241, 0x01B4, 0xFC73, 0x3020, 0x0241, 0x3040, 0xFC73, 0x2841, 0x0002, 0x00FF, 0x00E4, 0x2021, 0x0001, 0xFFF3, 0x0223, 0x30A0, 0x0223, 0xFE07, 0x20A1, 0x0001, 0x0023, 0xFCC1, 0xFDC7, 0x0047, 0x30E0, 0xFCC1, 0x00E4, 0x0047, 0x20E1, 0x0001, 0xFF23, 0xF4C6, 0x0170, 0x00D0, 0xFDFB, 0x08AE, 0x30E0, 0xF4C6, 0x00D0, 0x08AE, 0x20E1, 0x0001, 0xFD55, 0xFBC4, 0x0133, 0xFC2C, 0xFFF2, 0x11B0, 0x30E0, 0xFBC4, 0xFC2C, 0x11B0, 0x20E1, 0x0001, 0xFE14, 0x07D8, 0x007B, 0xFE30, 0x03CE, 0x0C2C, 0x30E0, 0x07D8, 0xFE30, 0x0C2C, 0x20E1, 0x0001, 0xFF4B, 0x063C, 0x00BF, 0x0192, 0x0465, 0x0275, 0x3020, 0x063C, 0x3080, 0x0275, 0x2881, 0x0002, 0x046C, 0x0000, 0x3040, 0x0192, 0x2841, 0x0006, 0x00BF, 0xFFE9, 0x2021, 0x0001, 0xFFA3, 0x01C4, 0x3020, 0x01C4, 0x2821, 0x0004, 0xFF5D, 0xFF20, 0x0801, 0x0001, 0x3080, 0x0000, 0x2881, 0x0012, 0x0421, 0xFFE3, 0x0801, 0x0003, 0x3020, 0xFF20, 0x2821, 0x0004, 0xFF58, 0x003B, 0x0801, 0x0001, 0x3040, 0xFFE9, 0x2841, 0x000E, 0x00BE, 0xFFC9, 0x0801, 0x0003, 0x3020, 0x003B, 0x2021, 0x000B, 0xFF69, 0xFF7B, 0x3020, 0xFF7B, 0x3040, 0xFFC9, 0x2841, 0x0002, 0x00CB, 0x0287, 0x3080, 0xFFE3, 0x2881, 0x0003, 0x01E0, 0xF7D5, 0x2021, 0x0001, 0xFF55, 0xFE5C, 0x3020, 0xFE5C, 0x2021, 0x0001, 0xFF00, 0xFC47, 0x3060, 0xFC47, 0x0287, 0x2061, 0x0001, 0xFE67, 0xFC67, 0x0157, 0x046F, 0x30E0, 0xFC67, 0x046F, 0xF7D5, 0x20E1, 0x0001, 0xFE19, 0x0031, 0x01E7, 0x01F1, 0x0080, 0xF48C, 0x30E0, 0x0031, 0x01F1, 0xF48C, 0x20E1, 0x0001, 0xFE73, 0x0325, 0x01D4, 0xFE10, 0xFF04, 0xF728, 0x3060, 0x0325, 0xFE10, 0x3080, 0xF728, 0x2881, 0x0002, 0xFE14, 0xFEFF, 0x2061, 0x0001, 0xFEE3, 0x0273, 0x016B, 0xFD6A, 0x3020, 0x0273, 0x2821, 0x0004, 0xFEED, 0xFF76, 0x3040, 0xFD6A, 0x2841, 0x0005, 0x016B, 0x010A, 0x0801, 0x0001, 0x3080, 0xFEFF, 0x2081, 0x0003, 0xFE32, 0x00CA, 0x3080, 0x00CA, 0x2881, 0x0004, 0xFE95, 0x00F9, 0x3020, 0xFF76, 0x2821, 0x0008, 0xFEEB, 0xFF8A, 0x0801, 0x0001, 0x3040, 0x010A, 0x2841, 0x000B, 0x0202, 0xFF8C, 0x0801, 0x0003, 0x3080, 0x00F9, 0x2881, 0x000C, 0xFFE5, 0x0030, 0x0801, 0x0004, 0x3020, 0xFF8A, 0x2821, 0x0006, 0xFE3E, 0xFF33, 0x0801, 0x0004, 0x3040, 0xFF8C, 0x2841, 0x0004, 0x01C9, 0xFFCA, 0x0801, 0x0002, 0x3020, 0xFF33, 0x2021, 0x0002, 0xFE22, 0xFFC2, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTKirbyAnimFalconPunchAir_joint23[380] = {
+	ftAnimSetValRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -479, 129, 456, 147, -28, -23,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 2), -407, 599, 520, 363, -59, -369,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY), 599, 363,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -369,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 3), -242, -200,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY, 2), -218, 566, 577, 24,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 566,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 2), -160, 73,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), 24,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 16), 555, 3,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -200,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 6), -277, -26,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 73,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 29), -171, -4,
+	ftAnimBlock(0, 5),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -26,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 24), -244, 14,
+	ftAnimBlock(0, 9),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), 3,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAY, 15), 569, 12,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), 14,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY), -4, 12,
+	ftAnimSetValRateT(FT_ANIM_TRAX | FT_ANIM_TRAY, 2), -157, 279, 538, -538,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAZ, 1), -242, -267,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -267,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 3), -535, -505,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY), 279, -538,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY, 1), -101, 577, 436, -909,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 577,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), -909,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 2), 255, 228,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX, 1), -13, 547,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAZ), 547, -505,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAZ, 1), 35, -831, -569, 71,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -831, 228, 71,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), -221, -2874, 368, 208, -517, 2222,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -2874, 208, 2222,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), -683, -1084, 307, -980, -14, 4528,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1084, -980, 4528,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), -492, 2008, 123, -464, 974, 3116,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 2008, -464, 3116,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), -181, 1596, 191, 402, 1125, 629,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 1596,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), 629,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 2), 1132, 0,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), 402,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 6), 191, -23,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX, 1), -93, 452,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 452,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 4), -163, -224,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), 0,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 18), 1057, -29,
+	ftAnimBlock(0, 3),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), -224,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 4), -168, 59,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), -23,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 14), 190, -55,
+	ftAnimBlock(0, 3),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 59,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX, 11), -151, -133,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), -133,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), -55,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 2), 203, 647,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -29,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 3), 480, -2091,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX, 1), -171, -420,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), -420,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX, 1), -256, -953,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY), -953, 647,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY, 1), -409, -921, 343, 1135,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -921, 1135, -2091,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), -487, 49, 487, 497, 128, -2932,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 49, 497, -2932,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), -397, 805, 468, -496, -252, -2264,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX | FT_ANIM_TRAY), 805, -496,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -2264,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 2), -492, -257,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY, 1), -285, 627, 363, -662,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), 627,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 4), -275, -138,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), -662,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 5), 363, 266,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), -257,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAZ, 3), -462, 202,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), 202,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 4), -363, 249,
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), -138,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 8), -277, -118,
+	ftAnimBlock(0, 1),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), 266,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 11), 514, -116,
+	ftAnimBlock(0, 3),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAZ), 249,
+	ftAnimSetValRateT(FT_ANIM_TRAZ, 12), -27, 48,
+	ftAnimBlock(0, 4),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), -118,
+	ftAnimSetValRateT(FT_ANIM_TRAX, 6), -450, -205,
+	ftAnimBlock(0, 4),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAY), -116,
+	ftAnimSetValRateT(FT_ANIM_TRAY, 4), 457, -54,
+	ftAnimBlock(0, 2),
+	ftAnimSetTargetRateBlock(FT_ANIM_TRAX), -205,
+	ftAnimSetValRateBlockT(FT_ANIM_TRAX, 2), -478, -62,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

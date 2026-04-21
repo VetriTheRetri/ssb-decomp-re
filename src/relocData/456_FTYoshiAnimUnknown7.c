@@ -21,7 +21,8 @@ extern u16 dFTYoshiAnimUnknown7_joint18[8];
 extern u16 dFTYoshiAnimUnknown7_joint20[8];
 extern u16 dFTYoshiAnimUnknown7_joint22[8];
 extern u16 dFTYoshiAnimUnknown7_joint23[8];
-extern u16 dFTYoshiAnimUnknown7_joint25[16];
+extern u16 dFTYoshiAnimUnknown7_joint25[8];
+extern u16 dFTYoshiAnimUnknown7_joint26[8];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTYoshiAnimUnknown7_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTYoshiAnimUnknown7_joints[] = {
 	(u32)dFTYoshiAnimUnknown7_joint23, /* [22] joint 23 */
 	(u32)dFTYoshiAnimUnknown7_joint25, /* [23] joint 25 */
 	0x00000000, /* [24] NULL */
-	0xFFFF0070, /* [25] END */
+	(u32)dFTYoshiAnimUnknown7_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -188,9 +189,17 @@ u16 dFTYoshiAnimUnknown7_joint23[8] = {
 };
 
 /* Joint 25 */
-u16 dFTYoshiAnimUnknown7_joint25[16] = {
+u16 dFTYoshiAnimUnknown7_joint25[8] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 550,
 	ftAnimBlock(0, 1),
 	ftAnimEnd(),
-	0x0000, 0x500E, 0x007B, 0x056C, 0x05FD, 0x0801, 0x0001, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTYoshiAnimUnknown7_joint26[8] = {
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 123, 1388, 1533,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000,
 };

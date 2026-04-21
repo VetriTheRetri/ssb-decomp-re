@@ -16,4 +16,4 @@ intern dFTPurinAnimWalk2_joints+0x38 dFTPurinAnimWalk2_joint16
 intern dFTPurinAnimWalk2_joints+0x40 dFTPurinAnimWalk2_joint18
 intern dFTPurinAnimWalk2_joints+0x48 dFTPurinAnimWalk2_joint19
 intern dFTPurinAnimWalk2_joints+0x4C dFTPurinAnimWalk2_joint21
-intern dFTPurinAnimWalk2_joints+0x54 dFTPurinAnimWalk2_joint21+0x38
+intern dFTPurinAnimWalk2_joints+0x54 dFTPurinAnimWalk2_joint22

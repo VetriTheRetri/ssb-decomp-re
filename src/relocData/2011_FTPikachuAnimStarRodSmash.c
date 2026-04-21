@@ -21,7 +21,8 @@ extern u16 dFTPikachuAnimStarRodSmash_joint19[86];
 extern u16 dFTPikachuAnimStarRodSmash_joint21[202];
 extern u16 dFTPikachuAnimStarRodSmash_joint22[194];
 extern u16 dFTPikachuAnimStarRodSmash_joint24[72];
-extern u16 dFTPikachuAnimStarRodSmash_joint25[196];
+extern u16 dFTPikachuAnimStarRodSmash_joint25[170];
+extern u16 dFTPikachuAnimStarRodSmash_joint26[26];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTPikachuAnimStarRodSmash_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTPikachuAnimStarRodSmash_joints[] = {
 	(u32)dFTPikachuAnimStarRodSmash_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTPikachuAnimStarRodSmash_joint25, /* [24] joint 25 */
-	0xFFFF0403, /* [25] END */
+	(u32)dFTPikachuAnimStarRodSmash_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -545,7 +546,7 @@ u16 dFTPikachuAnimStarRodSmash_joint24[72] = {
 };
 
 /* Joint 25 */
-u16 dFTPikachuAnimStarRodSmash_joint25[196] = {
+u16 dFTPikachuAnimStarRodSmash_joint25[170] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1615, 16, 1323, 4, 1124, 19,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 8), 1535, 10,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 11), 1737, 2,
@@ -587,5 +588,16 @@ u16 dFTPikachuAnimStarRodSmash_joint25[196] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 4), 1321, 4,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1615, -2, 1323, 2, 1124, 0,
 	ftAnimEnd(),
-	0x4002, 0xFFF2, 0x48EC, 0x0000, 0xFFFD, 0xFFFF, 0xFF4C, 0xFE9E, 0x3803, 0x0015, 0xFD2A, 0x2003, 0x0013, 0xFFF2, 0x000D, 0x3803, 0x000D, 0xFEE0, 0x3803, 0x0007, 0xFFF2, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTPikachuAnimStarRodSmash_joint26[26] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX), -14,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -3, -1, -180, -354,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 21), -726,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 19), -14, 13,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 13), -288,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 7), -14,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

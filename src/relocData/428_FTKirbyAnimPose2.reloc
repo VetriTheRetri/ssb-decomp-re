@@ -16,4 +16,4 @@ intern dFTKirbyAnimPose2_joints+0x38 dFTKirbyAnimPose2_joint16
 intern dFTKirbyAnimPose2_joints+0x40 dFTKirbyAnimPose2_joint18
 intern dFTKirbyAnimPose2_joints+0x48 dFTKirbyAnimPose2_joint19
 intern dFTKirbyAnimPose2_joints+0x4C dFTKirbyAnimPose2_joint21
-intern dFTKirbyAnimPose2_joints+0x54 dFTKirbyAnimPose2_joint21+0x24
+intern dFTKirbyAnimPose2_joints+0x54 dFTKirbyAnimPose2_joint22

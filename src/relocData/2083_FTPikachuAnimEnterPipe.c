@@ -21,7 +21,8 @@ extern u16 dFTPikachuAnimEnterPipe_joint19[14];
 extern u16 dFTPikachuAnimEnterPipe_joint21[26];
 extern u16 dFTPikachuAnimEnterPipe_joint22[22];
 extern u16 dFTPikachuAnimEnterPipe_joint24[14];
-extern u16 dFTPikachuAnimEnterPipe_joint25[44];
+extern u16 dFTPikachuAnimEnterPipe_joint25[24];
+extern u16 dFTPikachuAnimEnterPipe_joint26[20];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTPikachuAnimEnterPipe_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTPikachuAnimEnterPipe_joints[] = {
 	(u32)dFTPikachuAnimEnterPipe_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTPikachuAnimEnterPipe_joint25, /* [24] joint 25 */
-	0xFFFF00B6, /* [25] END */
+	(u32)dFTPikachuAnimEnterPipe_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -213,12 +214,20 @@ u16 dFTPikachuAnimEnterPipe_joint24[14] = {
 };
 
 /* Joint 25 */
-u16 dFTPikachuAnimEnterPipe_joint25[44] = {
+u16 dFTPikachuAnimEnterPipe_joint25[24] = {
 	ftAnimSetValRate(FT_ANIM_ROTX), -6, 0,
 	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ), 284, -484,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 31), -6, 0, 284, 0, -484, 0,
 	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -6, 0, -484, 0,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY, 1), 284,
 	ftAnimEnd(),
-	0x400E, 0xFFF2, 0x0000, 0xFFFD, 0x48E0, 0xFFFF, 0xFF4C, 0xFE9E, 0x380F, 0x0020, 0x0014, 0x0000, 0x00E1, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTPikachuAnimEnterPipe_joint26[20] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -14, 0, -3,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -1, -180, -354,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 32), 20, 0, 225,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

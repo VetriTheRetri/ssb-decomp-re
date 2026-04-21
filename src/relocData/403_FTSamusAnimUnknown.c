@@ -16,7 +16,8 @@ extern u16 dFTSamusAnimUnknown_joint15[8];
 extern u16 dFTSamusAnimUnknown_joint17[8];
 extern u16 dFTSamusAnimUnknown_joint19[8];
 extern u16 dFTSamusAnimUnknown_joint20[8];
-extern u16 dFTSamusAnimUnknown_joint22[20];
+extern u16 dFTSamusAnimUnknown_joint22[8];
+extern u16 dFTSamusAnimUnknown_joint23[12];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTSamusAnimUnknown_joints[] = {
@@ -42,7 +43,7 @@ u32 dFTSamusAnimUnknown_joints[] = {
 	(u32)dFTSamusAnimUnknown_joint20, /* [19] joint 20 */
 	(u32)dFTSamusAnimUnknown_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF0052, /* [22] END */
+	(u32)dFTSamusAnimUnknown_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -147,9 +148,17 @@ u16 dFTSamusAnimUnknown_joint20[8] = {
 };
 
 /* Joint 22 */
-u16 dFTSamusAnimUnknown_joint22[20] = {
+u16 dFTSamusAnimUnknown_joint22[8] = {
 	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 0,
 	ftAnimBlock(0, 1),
 	ftAnimEnd(),
-	0x0000, 0x500E, 0x00EF, 0x00E6, 0xFFFC, 0x0801, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTSamusAnimUnknown_joint23[12] = {
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 239, 230, -4,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

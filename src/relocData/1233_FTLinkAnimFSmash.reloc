@@ -21,4 +21,4 @@ intern dFTLinkAnimFSmash_joints+0x54 dFTLinkAnimFSmash_joint23
 intern dFTLinkAnimFSmash_joints+0x5C dFTLinkAnimFSmash_joint25
 intern dFTLinkAnimFSmash_joints+0x64 dFTLinkAnimFSmash_joint26
 intern dFTLinkAnimFSmash_joints+0x68 dFTLinkAnimFSmash_joint28
-intern dFTLinkAnimFSmash_joints+0x70 dFTLinkAnimFSmash_joint28+0x70
+intern dFTLinkAnimFSmash_joints+0x70 dFTLinkAnimFSmash_joint29

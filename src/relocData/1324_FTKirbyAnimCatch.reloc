@@ -17,4 +17,4 @@ intern dFTKirbyAnimCatch_joints+0x40 dFTKirbyAnimCatch_joint18
 intern dFTKirbyAnimCatch_joints+0x48 dFTKirbyAnimCatch_joint19
 intern dFTKirbyAnimCatch_joints+0x4C dFTKirbyAnimCatch_joint21
 intern dFTKirbyAnimCatch_joints+0x54 dFTKirbyAnimCatch_joint22
-intern dFTKirbyAnimCatch_joints+0x58 dFTKirbyAnimCatch_joint22+0xC0
+intern dFTKirbyAnimCatch_joints+0x58 dFTKirbyAnimCatch_joint23

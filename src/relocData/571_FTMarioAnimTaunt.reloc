@@ -17,4 +17,4 @@ intern dFTMarioAnimTaunt_joints+0x40 dFTMarioAnimTaunt_joint18
 intern dFTMarioAnimTaunt_joints+0x48 dFTMarioAnimTaunt_joint20
 intern dFTMarioAnimTaunt_joints+0x50 dFTMarioAnimTaunt_joint21
 intern dFTMarioAnimTaunt_joints+0x54 dFTMarioAnimTaunt_joint23
-intern dFTMarioAnimTaunt_joints+0x5C dFTMarioAnimTaunt_joint23+0x40
+intern dFTMarioAnimTaunt_joints+0x5C dFTMarioAnimTaunt_joint24

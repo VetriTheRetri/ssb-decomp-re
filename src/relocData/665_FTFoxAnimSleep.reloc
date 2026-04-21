@@ -18,4 +18,4 @@ intern dFTFoxAnimSleep_joints+0x50 dFTFoxAnimSleep_joint21
 intern dFTFoxAnimSleep_joints+0x54 dFTFoxAnimSleep_joint23
 intern dFTFoxAnimSleep_joints+0x5C dFTFoxAnimSleep_joint24
 intern dFTFoxAnimSleep_joints+0x60 dFTFoxAnimSleep_joint25
-intern dFTFoxAnimSleep_joints+0x64 dFTFoxAnimSleep_joint25+0xAC
+intern dFTFoxAnimSleep_joints+0x64 dFTFoxAnimSleep_joint26

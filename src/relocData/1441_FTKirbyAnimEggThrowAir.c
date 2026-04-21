@@ -21,7 +21,8 @@ extern u16 dFTKirbyAnimEggThrowAir_joint19[14];
 extern u16 dFTKirbyAnimEggThrowAir_joint21[186];
 extern u16 dFTKirbyAnimEggThrowAir_joint22[148];
 extern u16 dFTKirbyAnimEggThrowAir_joint24[14];
-extern u16 dFTKirbyAnimEggThrowAir_joint25[216];
+extern u16 dFTKirbyAnimEggThrowAir_joint25[182];
+extern u16 dFTKirbyAnimEggThrowAir_joint26[34];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTKirbyAnimEggThrowAir_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTKirbyAnimEggThrowAir_joints[] = {
 	(u32)dFTKirbyAnimEggThrowAir_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTKirbyAnimEggThrowAir_joint25, /* [24] joint 25 */
-	0xFFFF0343, /* [25] END */
+	(u32)dFTKirbyAnimEggThrowAir_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -473,7 +474,7 @@ u16 dFTKirbyAnimEggThrowAir_joint24[14] = {
 };
 
 /* Joint 25 */
-u16 dFTKirbyAnimEggThrowAir_joint25[216] = {
+u16 dFTKirbyAnimEggThrowAir_joint25[182] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1930, -2, 1450, -5, 1957, 0,
 	ftAnimSetVal0RateBlock(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 3686, 3686, 3686,
 	ftAnimSetValRateT(FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 10), 4096, 58, 4096, 58, 4096, 58,
@@ -514,5 +515,21 @@ u16 dFTKirbyAnimEggThrowAir_joint25[216] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1956, -2,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1930, 10, 1450, -9, 1957, 0,
 	ftAnimEnd(),
-	0x0000, 0x40C0, 0x0000, 0x0000, 0x482E, 0x0000, 0x0648, 0x0000, 0x0000, 0x4081, 0x0010, 0x0000, 0x3841, 0x000A, 0x003C, 0x4041, 0x0017, 0x003C, 0x0801, 0x0006, 0x3881, 0x0007, 0x07F8, 0x3881, 0x0006, 0x0000, 0x4081, 0x0009, 0x0000, 0x0801, 0x0004, 0x3841, 0x0005, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 26 */
+u16 dFTKirbyAnimEggThrowAir_joint26[34] = {
+	ftAnimSetVal0Rate(FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX), 0, 1608, 0, 0,
+	ftAnimSetVal0RateT(FT_ANIM_TRAZ, 16), 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAY, 10), 60,
+	ftAnimSetVal0RateT(FT_ANIM_TRAY, 23), 60,
+	ftAnimBlock(0, 6),
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 7), 2040,
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAZ, 6), 0,
+	ftAnimSetVal0RateT(FT_ANIM_TRAZ, 9), 0,
+	ftAnimBlock(0, 4),
+	ftAnimSetVal0RateBlockT(FT_ANIM_TRAY, 5), 0,
+	ftAnimEnd(),
 };

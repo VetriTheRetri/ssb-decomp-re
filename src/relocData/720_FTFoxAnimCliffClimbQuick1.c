@@ -22,7 +22,8 @@ extern u16 dFTFoxAnimCliffClimbQuick1_joint21[24];
 extern u16 dFTFoxAnimCliffClimbQuick1_joint22[24];
 extern u16 dFTFoxAnimCliffClimbQuick1_joint24[14];
 extern u16 dFTFoxAnimCliffClimbQuick1_joint25[24];
-extern u16 dFTFoxAnimCliffClimbQuick1_joint26[40];
+extern u16 dFTFoxAnimCliffClimbQuick1_joint26[20];
+extern u16 dFTFoxAnimCliffClimbQuick1_joint27[20];
 
 /* Joint pointer table (27 entries, 108 bytes) */
 u32 dFTFoxAnimCliffClimbQuick1_joints[] = {
@@ -52,7 +53,7 @@ u32 dFTFoxAnimCliffClimbQuick1_joints[] = {
 	0x00000000, /* [23] NULL */
 	(u32)dFTFoxAnimCliffClimbQuick1_joint25, /* [24] joint 25 */
 	(u32)dFTFoxAnimCliffClimbQuick1_joint26, /* [25] joint 26 */
-	0xFFFF00E2, /* [26] END */
+	(u32)dFTFoxAnimCliffClimbQuick1_joint27, /* [26] joint 27 */
 };
 
 /* Joint 1 */
@@ -230,10 +231,18 @@ u16 dFTFoxAnimCliffClimbQuick1_joint25[24] = {
 };
 
 /* Joint 26 */
-u16 dFTFoxAnimCliffClimbQuick1_joint26[40] = {
+u16 dFTFoxAnimCliffClimbQuick1_joint26[20] = {
 	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -504, -46, 279, 22, -421, -14,
 	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -126, -96,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), -648, -17, 280, -104, -349, 201,
 	ftAnimEnd(),
-	0x2806, 0x0149, 0xFFF7, 0xFEF2, 0xFFD3, 0x48E8, 0x0000, 0x0000, 0x0040, 0xFE3E, 0x2007, 0x0003, 0x011E, 0x0000, 0xFE65, 0xFFE2, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 27 */
+u16 dFTFoxAnimCliffClimbQuick1_joint27[20] = {
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY), 329, -9, -270, -45,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 64, -450,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 3), 286, 0, -411, -30,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000,
 };

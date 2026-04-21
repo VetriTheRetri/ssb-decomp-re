@@ -16,4 +16,4 @@ intern dFTSamusAnimEggLay_joints+0x3C dFTSamusAnimEggLay_joint17
 intern dFTSamusAnimEggLay_joints+0x44 dFTSamusAnimEggLay_joint19
 intern dFTSamusAnimEggLay_joints+0x4C dFTSamusAnimEggLay_joint20
 intern dFTSamusAnimEggLay_joints+0x50 dFTSamusAnimEggLay_joint22
-intern dFTSamusAnimEggLay_joints+0x58 dFTSamusAnimEggLay_joint22+0x30
+intern dFTSamusAnimEggLay_joints+0x58 dFTSamusAnimEggLay_joint23

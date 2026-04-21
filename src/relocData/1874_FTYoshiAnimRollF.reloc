@@ -21,4 +21,4 @@ intern dFTYoshiAnimRollF_joints+0x4C dFTYoshiAnimRollF_joint21
 intern dFTYoshiAnimRollF_joints+0x54 dFTYoshiAnimRollF_joint23
 intern dFTYoshiAnimRollF_joints+0x5C dFTYoshiAnimRollF_joint24
 intern dFTYoshiAnimRollF_joints+0x60 dFTYoshiAnimRollF_joint26
-intern dFTYoshiAnimRollF_joints+0x68 dFTYoshiAnimRollF_joint26+0x20
+intern dFTYoshiAnimRollF_joints+0x68 dFTYoshiAnimRollF_joint27

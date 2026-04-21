@@ -21,7 +21,8 @@ extern u16 dFTDonkeyAnimCargoTurn_joint19[32];
 extern u16 dFTDonkeyAnimCargoTurn_joint21[70];
 extern u16 dFTDonkeyAnimCargoTurn_joint22[62];
 extern u16 dFTDonkeyAnimCargoTurn_joint24[32];
-extern u16 dFTDonkeyAnimCargoTurn_joint25[78];
+extern u16 dFTDonkeyAnimCargoTurn_joint25[68];
+extern u16 dFTDonkeyAnimCargoTurn_joint26[10];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTDonkeyAnimCargoTurn_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTDonkeyAnimCargoTurn_joints[] = {
 	(u32)dFTDonkeyAnimCargoTurn_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTDonkeyAnimCargoTurn_joint25, /* [24] joint 25 */
-	0xFFFF0127, /* [25] END */
+	(u32)dFTDonkeyAnimCargoTurn_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -259,7 +260,7 @@ u16 dFTDonkeyAnimCargoTurn_joint24[32] = {
 };
 
 /* Joint 25 */
-u16 dFTDonkeyAnimCargoTurn_joint25[78] = {
+u16 dFTDonkeyAnimCargoTurn_joint25[68] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -143, 35, 39, 62, -248, -1,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 7), -494, -111,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 4), 265, -85, -443, -156,
@@ -275,5 +276,11 @@ u16 dFTDonkeyAnimCargoTurn_joint25[78] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -290, 192,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -148, 141, 23, 39, -252, -56,
 	ftAnimEnd(),
-	0x50EE, 0xFCDC, 0x0000, 0x0000, 0x001D, 0x01F7, 0x0367, 0x0801, 0x000C, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTDonkeyAnimCargoTurn_joint26[10] = {
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -804, 0, 0, 29, 503, 871,
+	ftAnimBlock(0, 12),
+	ftAnimEnd(),
 };

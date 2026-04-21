@@ -20,4 +20,4 @@ intern dFTBossAnimGunDraw_joints+0x50 dFTBossAnimGunDraw_joint21
 intern dFTBossAnimGunDraw_joints+0x54 dFTBossAnimGunDraw_joint23
 intern dFTBossAnimGunDraw_joints+0x5C dFTBossAnimGunDraw_joint24
 intern dFTBossAnimGunDraw_joints+0x60 dFTBossAnimGunDraw_joint25
-intern dFTBossAnimGunDraw_joints+0x64 dFTBossAnimGunDraw_joint25+0x2C
+intern dFTBossAnimGunDraw_joints+0x64 dFTBossAnimGunDraw_joint26

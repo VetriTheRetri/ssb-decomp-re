@@ -21,7 +21,8 @@ extern u16 dFTFoxAnimDamage2_joint20[100];
 extern u16 dFTFoxAnimDamage2_joint21[138];
 extern u16 dFTFoxAnimDamage2_joint23[64];
 extern u16 dFTFoxAnimDamage2_joint24[92];
-extern u16 dFTFoxAnimDamage2_joint25[88];
+extern u16 dFTFoxAnimDamage2_joint25[56];
+extern u16 dFTFoxAnimDamage2_joint26[32];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimDamage2_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTFoxAnimDamage2_joints[] = {
 	0x00000000, /* [22] NULL */
 	(u32)dFTFoxAnimDamage2_joint24, /* [23] joint 24 */
 	(u32)dFTFoxAnimDamage2_joint25, /* [24] joint 25 */
-	0xFFFF02E4, /* [25] END */
+	(u32)dFTFoxAnimDamage2_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -438,7 +439,7 @@ u16 dFTFoxAnimDamage2_joint24[92] = {
 };
 
 /* Joint 25 */
-u16 dFTFoxAnimDamage2_joint25[88] = {
+u16 dFTFoxAnimDamage2_joint25[56] = {
 	ftAnimSetVal0Rate(FT_ANIM_ROTY | FT_ANIM_ROTZ), 219, 0,
 	ftAnimSetValRate(FT_ANIM_ROTX), 0, 1,
 	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -126, -96,
@@ -450,5 +451,16 @@ u16 dFTFoxAnimDamage2_joint25[88] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 4), -251, 11, 209, 1, -31, 5,
 	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), 0, 219, 0,
 	ftAnimEnd(),
-	0x4006, 0xFF4E, 0xFF86, 0x48E8, 0x0000, 0x0000, 0x0040, 0xFE3E, 0x2007, 0x0001, 0x0000, 0xFFED, 0x0000, 0x000B, 0x2803, 0x000B, 0xFE69, 0xFFF5, 0x3805, 0x000B, 0x000D, 0x2007, 0x000A, 0xFF05, 0x0032, 0x0000, 0x0000, 0x3807, 0x0007, 0x01BE, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTFoxAnimDamage2_joint26[32] = {
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY), -178, -122,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 64, -450,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 1), 0, -19, 0, 11,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 11), -407, -11,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY, 11), 13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 10), -251, 50, 0, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 7), 446, 0,
+	ftAnimEnd(),
 };

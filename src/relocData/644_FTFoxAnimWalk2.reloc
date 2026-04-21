@@ -17,4 +17,4 @@ intern dFTFoxAnimWalk2_joints+0x50 dFTFoxAnimWalk2_joint21
 intern dFTFoxAnimWalk2_joints+0x54 dFTFoxAnimWalk2_joint23
 intern dFTFoxAnimWalk2_joints+0x5C dFTFoxAnimWalk2_joint24
 intern dFTFoxAnimWalk2_joints+0x60 dFTFoxAnimWalk2_joint25
-intern dFTFoxAnimWalk2_joints+0x64 dFTFoxAnimWalk2_joint25+0x70
+intern dFTFoxAnimWalk2_joints+0x64 dFTFoxAnimWalk2_joint26

@@ -18,4 +18,4 @@ intern dFTMarioAnimFSmash_joints+0x40 dFTMarioAnimFSmash_joint18
 intern dFTMarioAnimFSmash_joints+0x48 dFTMarioAnimFSmash_joint20
 intern dFTMarioAnimFSmash_joints+0x50 dFTMarioAnimFSmash_joint21
 intern dFTMarioAnimFSmash_joints+0x54 dFTMarioAnimFSmash_joint23
-intern dFTMarioAnimFSmash_joints+0x5C dFTMarioAnimFSmash_joint23+0x7C
+intern dFTMarioAnimFSmash_joints+0x5C dFTMarioAnimFSmash_joint24

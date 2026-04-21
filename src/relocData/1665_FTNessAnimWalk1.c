@@ -20,7 +20,8 @@ extern u16 dFTNessAnimWalk1_joint19[106];
 extern u16 dFTNessAnimWalk1_joint21[30];
 extern u16 dFTNessAnimWalk1_joint22[106];
 extern u16 dFTNessAnimWalk1_joint24[48];
-extern u16 dFTNessAnimWalk1_joint25[132];
+extern u16 dFTNessAnimWalk1_joint25[96];
+extern u16 dFTNessAnimWalk1_joint26[36];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimWalk1_joints[] = {
@@ -49,7 +50,7 @@ u32 dFTNessAnimWalk1_joints[] = {
 	(u32)dFTNessAnimWalk1_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimWalk1_joint25, /* [24] joint 25 */
-	0xFFFF024A, /* [25] END */
+	(u32)dFTNessAnimWalk1_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -373,7 +374,7 @@ u16 dFTNessAnimWalk1_joint24[48] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimWalk1_joint25[132] = {
+u16 dFTNessAnimWalk1_joint25[96] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -33, -3, 11, 0, -278, 5,
 	ftAnimSetValRateT(FT_ANIM_ROTY, 29), 49, 5,
 	ftAnimSetValRateT(FT_ANIM_ROTZ, 30), -127, 0,
@@ -400,5 +401,15 @@ u16 dFTNessAnimWalk1_joint25[132] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -33, -3, 11, 4, -278, -5,
 	ftAnimLoop(0x6800, -188),
 	ftAnimEnd(),
-	0x200E, 0x0132, 0x0000, 0xFFEF, 0x0000, 0x0019, 0x0000, 0x200F, 0x0018, 0x0057, 0xFFFB, 0xFFEE, 0x0000, 0x001A, 0x0001, 0x200F, 0x000C, 0x0071, 0x0003, 0xFFCB, 0x0000, 0x003F, 0x0000, 0x380F, 0x0036, 0x0132, 0xFFEF, 0x0019, 0x6800, 0xFFC6, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimWalk1_joint26[36] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 306, 0, -17, 0, 25, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 24), 87, -5, -18, 0, 26, 1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 12), 113, 3, -53, 0, 63, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 54), 306, -17, 25,
+	ftAnimLoop(0x6800, -58),
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

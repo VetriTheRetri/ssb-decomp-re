@@ -20,4 +20,4 @@ intern dFTYoshiAnimDamage_joints+0x48 dFTYoshiAnimDamage_joint20
 intern dFTYoshiAnimDamage_joints+0x50 dFTYoshiAnimDamage_joint22
 intern dFTYoshiAnimDamage_joints+0x58 dFTYoshiAnimDamage_joint23
 intern dFTYoshiAnimDamage_joints+0x5C dFTYoshiAnimDamage_joint25
-intern dFTYoshiAnimDamage_joints+0x64 dFTYoshiAnimDamage_joint25+0x10
+intern dFTYoshiAnimDamage_joints+0x64 dFTYoshiAnimDamage_joint26

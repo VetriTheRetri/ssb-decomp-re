@@ -21,7 +21,8 @@ extern u16 dFTNessAnimLightItemPickup_joint19[66];
 extern u16 dFTNessAnimLightItemPickup_joint21[38];
 extern u16 dFTNessAnimLightItemPickup_joint22[44];
 extern u16 dFTNessAnimLightItemPickup_joint24[24];
-extern u16 dFTNessAnimLightItemPickup_joint25[58];
+extern u16 dFTNessAnimLightItemPickup_joint25[46];
+extern u16 dFTNessAnimLightItemPickup_joint26[12];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimLightItemPickup_joints[] = {
@@ -50,7 +51,7 @@ u32 dFTNessAnimLightItemPickup_joints[] = {
 	(u32)dFTNessAnimLightItemPickup_joint24, /* [22] joint 24 */
 	0x00000000, /* [23] NULL */
 	(u32)dFTNessAnimLightItemPickup_joint25, /* [24] joint 25 */
-	0xFFFF016A, /* [25] END */
+	(u32)dFTNessAnimLightItemPickup_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */
@@ -271,7 +272,7 @@ u16 dFTNessAnimLightItemPickup_joint24[24] = {
 };
 
 /* Joint 25 */
-u16 dFTNessAnimLightItemPickup_joint25[58] = {
+u16 dFTNessAnimLightItemPickup_joint25[46] = {
 	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 107, -52, 28, 188, -172, -208,
 	ftAnimSetValRateT(FT_ANIM_ROTX, 3), 13, 50,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), 410, 84, -593, -86,
@@ -281,5 +282,12 @@ u16 dFTNessAnimLightItemPickup_joint25[58] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 3), 103, 7,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 107, 3, 28, -35, -172, 46,
 	ftAnimEnd(),
-	0x50EE, 0x0038, 0x0000, 0x0000, 0xFF82, 0xFFAE, 0xFFF4, 0x0801, 0x0008, 0x0000, 0x0000, 0x0000,
+};
+
+/* Joint 26 */
+u16 dFTNessAnimLightItemPickup_joint26[12] = {
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 56, 0, 0, -126, -82, -12,
+	ftAnimBlock(0, 8),
+	ftAnimEnd(),
+	0x0000, 0x0000,
 };

@@ -20,4 +20,4 @@ intern dFTLinkAnimSleep_joints+0x54 dFTLinkAnimSleep_joint23
 intern dFTLinkAnimSleep_joints+0x5C dFTLinkAnimSleep_joint25
 intern dFTLinkAnimSleep_joints+0x64 dFTLinkAnimSleep_joint26
 intern dFTLinkAnimSleep_joints+0x68 dFTLinkAnimSleep_joint28
-intern dFTLinkAnimSleep_joints+0x70 dFTLinkAnimSleep_joint28+0x30
+intern dFTLinkAnimSleep_joints+0x70 dFTLinkAnimSleep_joint29

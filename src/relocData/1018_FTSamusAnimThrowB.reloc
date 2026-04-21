@@ -25,4 +25,4 @@ intern dFTSamusAnimThrowB_joints+0x68 dFTSamusAnimThrowB_joint28
 intern dFTSamusAnimThrowB_joints+0x70 dFTSamusAnimThrowB_joint29
 intern dFTSamusAnimThrowB_joints+0x74 dFTSamusAnimThrowB_joint31
 intern dFTSamusAnimThrowB_joints+0x7C dFTSamusAnimThrowB_joint32
-intern dFTSamusAnimThrowB_joints+0x80 dFTSamusAnimThrowB_joint32+0xA4
+intern dFTSamusAnimThrowB_joints+0x80 dFTSamusAnimThrowB_joint33

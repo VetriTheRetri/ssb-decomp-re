@@ -17,7 +17,8 @@ extern u16 dFTSamusAnimAttackAirD_joint15[74];
 extern u16 dFTSamusAnimAttackAirD_joint17[24];
 extern u16 dFTSamusAnimAttackAirD_joint19[34];
 extern u16 dFTSamusAnimAttackAirD_joint20[58];
-extern u16 dFTSamusAnimAttackAirD_joint22[72];
+extern u16 dFTSamusAnimAttackAirD_joint22[32];
+extern u16 dFTSamusAnimAttackAirD_joint23[40];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTSamusAnimAttackAirD_joints[] = {
@@ -43,7 +44,7 @@ u32 dFTSamusAnimAttackAirD_joints[] = {
 	(u32)dFTSamusAnimAttackAirD_joint20, /* [19] joint 20 */
 	(u32)dFTSamusAnimAttackAirD_joint22, /* [20] joint 22 */
 	0x00000000, /* [21] NULL */
-	0xFFFF018C, /* [22] END */
+	(u32)dFTSamusAnimAttackAirD_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */
@@ -275,7 +276,7 @@ u16 dFTSamusAnimAttackAirD_joint20[58] = {
 };
 
 /* Joint 22 */
-u16 dFTSamusAnimAttackAirD_joint22[72] = {
+u16 dFTSamusAnimAttackAirD_joint22[32] = {
 	ftAnimSetValRate(FT_ANIM_ROTZ), 1100, -10,
 	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 8), 727, -22,
@@ -285,5 +286,17 @@ u16 dFTSamusAnimAttackAirD_joint22[72] = {
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 24), 1111, -10,
 	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1100, -10,
 	ftAnimEnd(),
-	0x0000, 0x200E, 0xFFBA, 0x000B, 0x0040, 0x0000, 0x003B, 0x0000, 0x280D, 0x0027, 0x0040, 0x0000, 0x003B, 0x0000, 0x2003, 0x000B, 0x0061, 0xFFFB, 0x2003, 0x0001, 0x004C, 0xFFDC, 0x2003, 0x001B, 0xFFBF, 0xFFFB, 0x200F, 0x0001, 0xFFBA, 0xFFFB, 0x0040, 0x0000, 0x003B, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000,
+};
+
+/* Joint 23 */
+u16 dFTSamusAnimAttackAirD_joint23[40] = {
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -70, 11, 64, 0, 59, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 39), 64, 0, 59, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 11), 97, -5,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 76, -36,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 27), -65, -5,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -70, -5, 64, 0, 59, 0,
+	ftAnimEnd(),
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

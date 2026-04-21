@@ -1840,7 +1840,7 @@ segments:
       - [0x1AA1B0, .data, ovl8/ovl8_27]
       - [0x1AA450, .data, ovl8/ovl8_28]
       - [0x1AA710, .data, ovl8/ovl8_29]
-      - [0x1AAA30, data, ovl8/ovl8_30]
+      - [0x1AAA30, .data, ovl8/ovl8_30]
       - [0x1AADF0, .data, ovl8/ovl8_31]
       - [0x1AB330, .data, ovl8/ovl8_32]
       - [0x1AB650, .rodata, ovl8/ovl8_8]

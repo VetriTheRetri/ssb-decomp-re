@@ -551,6 +551,24 @@ $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c: assets/db/dbkirby.rgba16.bin
 # extraction step to finish.
 $(BUILD_DIR)/src/db/dbcube.o: $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c
 
+# ovl8_30 debug menu button icon — 16x16 RGBA5551.
+.PRECIOUS: assets/ovl8/ovl8_30_button.rgba16.bin assets/ovl8/ovl8_30_button.rgba16.png
+assets/ovl8/ovl8_30_button.rgba16.bin assets/ovl8/ovl8_30_button.rgba16.png &: $(BASEROM) tools/extractOvl8ButtonTex.py
+	$(call print_3,Extracting ovl8_30 button texture:,$<,$@)
+	$(V)$(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
+		--baserom $(BASEROM) \
+		--bin assets/ovl8/ovl8_30_button.rgba16.bin \
+		--inc $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c \
+		--png assets/ovl8/ovl8_30_button.rgba16.png
+
+$(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/ovl8/ovl8_30_button.rgba16.bin
+	@test -f $@ || $(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
+		--bin assets/ovl8/ovl8_30_button.rgba16.bin \
+		--inc $@ \
+		--png assets/ovl8/ovl8_30_button.rgba16.png
+
+$(BUILD_DIR)/src/ovl8/ovl8_30.o: $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c
+
 ifeq ($(RELOC_DATA),1)
 # Compiled relocData files go in build/assets/relocData/ as overrides.
 # Compressed files (those that have a .vpk0.bin in assets/) go through

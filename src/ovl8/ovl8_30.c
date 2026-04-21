@@ -4,12 +4,6 @@
 
 extern DBMenuPosition D_ovl8_80389F48;
 extern db4Bytes D_ovl8_80389F4C;
-extern DBMenu D_ovl8_8038E1E0[3];
-extern DBMenu D_ovl8_8038E2D4;
-extern DBMenu D_ovl8_8038E564;
-extern s32 D_ovl8_8038E58C;
-extern s32* D_ovl8_8038E590;
-extern s32* D_ovl8_8038E594;
 extern s32 D_803903C0_1ACC10;
 extern s32 D_803903C4_1ACC14;
 extern s32 D_803903C8_1ACC18;
@@ -22,6 +16,109 @@ void func_ovl8_803863A4(s32, s32, const char*);
 s32 func_ovl8_80386488(s32, s32);
 void func_ovl8_8038649C();
 void func_ovl8_803864CC(s32, DBMenu*);
+
+/* ************************************************************************** */
+/*                                DATA                                        */
+/* ************************************************************************** */
+
+// 0x8038E1E0
+DBMenu D_ovl8_8038E1E0[3] = {
+	{
+		{ -10000, 0, 0, 0 },
+		{ 0, 0, 0, 0xFF },
+		{ 0xFF, 0xFF, 0xFF, 0xFF },
+		1, 0, 'BFWN', 0, 0, 0, 0
+	},
+	{
+		{ 0, 0, 0, 0 },
+		{ 0, 0, 0, 0 },
+		{ 0, 0, 0, 0 },
+		0, 0, 0, 0, 0, 0, 0
+	},
+	{
+		{ 0, 0, 0, 0 },
+		{ 0, 0, 0, 0 },
+		{ 0, 0, 0, 0 },
+		0, 0, 0, 0, 0, 0, 0
+	}
+};
+
+// 0x8038E258
+s32 D_ovl8_8038E258[30] = { 0 };
+
+// 0x8038E2D0
+char D_ovl8_8038E2D0[2] = "OK";
+
+// 0x8038E2D4
+DBMenu D_ovl8_8038E2D4 = {
+	{ 0x44, 4, 0x30, 0x10 },
+	{ 0, 0, 0, 0xFF },
+	{ 0xFF, 0xFF, 0xFF, 0xFF },
+	2, 0, 'BTXB', 1, 0, 0, D_ovl8_8038E2D0
+};
+
+// 0x8038E2FC
+s32 D_ovl8_8038E2FC = 0x00000000;
+
+// 0x8038E300
+s32 D_ovl8_8038E300[2] = { 0xDF000000, 0x00000000 };
+
+// 0x8038E308 - 16x16 RGBA16 bitmap pixel data (debug menu button icon)
+// Raw bytes in assets/ovl8/ovl8_30_button.rgba16.bin; PNG preview alongside.
+// Regenerated at extract time by tools/extractOvl8ButtonTex.py.
+u16 D_ovl8_8038E308[16 * 16] = {
+	#include <ovl8/ovl8_30_button.rgba16.inc.c>
+};
+
+// 0x8038E508
+Bitmap D_ovl8_8038E508 = {
+	16, 16,
+	0, 0,
+	D_ovl8_8038E308,
+	16, 0
+};
+
+// 0x8038E518
+Sprite D_ovl8_8038E518 = {
+	0, 0,
+	16, 16,
+	1.0, 1.0,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	0x1234,
+	0xFF, 0xFF, 0xFF, 0xFF,
+	0, 0,
+	NULL,
+	0, 1,
+	1, 36,
+	16, 16,
+	G_IM_FMT_RGBA,
+	G_IM_SIZ_16b,
+	&D_ovl8_8038E508,
+	NULL,
+	NULL,
+	0, 0
+};
+
+// 0x8038E55C
+s32 D_ovl8_8038E55C[] = { &D_ovl8_8038E518, 0 };
+
+// 0x8038E564
+DBMenu D_ovl8_8038E564 = {
+	{ 4, 4, 0x10, 0x10 },
+	{ 0, 0, 0, 0xFF },
+	{ 0xFF, 0xFF, 0xFF, 0xFF },
+	2, 0, 'BBTN', 0, 0, 0, D_ovl8_8038E55C
+};
+
+// 0x8038E58C
+char D_ovl8_8038E58C[2] = "OK";
+
+// 0x8038E590
+char D_ovl8_8038E590[3] = "YES";
+
+// 0x8038E594
+char D_ovl8_8038E594[3] = "N O";
 
 // 0x80385E10
 void func_ovl8_80385E10(s32 arg0, ...)

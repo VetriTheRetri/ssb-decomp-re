@@ -603,6 +603,7 @@ $(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.vpk0.bin
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
+	$(V)$(PYTHON) tools/expandRelocFile.py $* 2>/dev/null || true
 	@touch $@
 
 $(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.bin
@@ -610,6 +611,7 @@ $(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.bin
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
+	$(V)$(PYTHON) tools/expandRelocFile.py $* 2>/dev/null || true
 	@touch $@
 
 # User PNG override: if src/relocData/<Name>/<sprite>.<fmt>.png exists, use it

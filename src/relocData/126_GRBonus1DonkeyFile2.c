@@ -152,27 +152,30 @@ Gfx dGRBonus1DonkeyFile2_DL_0x0680[50] = {
 	#include <GRBonus1DonkeyFile2/DL_0x0680.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0810 (was gap+0x810, 16 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x810[16] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x810.data.inc.c>
+/* DObjDLLink @ 0x810 (2 entries) */
+DObjDLLink dGRBonus1DonkeyFile2_DLLink_0x0810[] = {
+	{ 0, (Gfx*)dGRBonus1DonkeyFile2_gap_0x0000_sub_0x480 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0820 (was gap+0x820, 16 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x820[16] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x820.data.inc.c>
+/* DObjDLLink @ 0x820 (2 entries) */
+DObjDLLink dGRBonus1DonkeyFile2_DLLink_0x0820[] = {
+	{ 0, (Gfx*)dGRBonus1DonkeyFile2_gap_0x0000_sub_0x580 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0830 (was gap+0x830, 16 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x830[16] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x830.data.inc.c>
+/* DObjDLLink @ 0x830 (2 entries) */
+DObjDLLink dGRBonus1DonkeyFile2_DLLink_0x0830[] = {
+	{ 1, dGRBonus1DonkeyFile2_DL_0x0680 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer0DObj @ 0x840 (5 entries) */
 DObjDesc dGRBonus1DonkeyFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1DonkeyFile2_gap_0x0000 + 0x810), { 3750.0f, 4050.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1DonkeyFile2_gap_0x0000 + 0x820), { -2250.0f, 7050.0f, -600.0f }, { 0.0f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1DonkeyFile2_gap_0x0000 + 0x830), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1DonkeyFile2_DLLink_0x0810, { 3750.0f, 4050.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1DonkeyFile2_DLLink_0x0820, { -2250.0f, 7050.0f, -600.0f }, { 0.0f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1DonkeyFile2_DLLink_0x0830, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

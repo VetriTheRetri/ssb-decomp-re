@@ -152,39 +152,44 @@ Gfx dGRBonus1PikachuFile2_DL_0x0880[50] = {
 	#include <GRBonus1PikachuFile2/DL_0x0880.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0A10 (was gap+0xA10, 16 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0000_sub_0xA10[16] = {
-	#include <GRBonus1PikachuFile2/gap_0x0000_sub_0xA10.data.inc.c>
+/* DObjDLLink @ 0xA10 (2 entries) */
+DObjDLLink dGRBonus1PikachuFile2_DLLink_0x0A10[] = {
+	{ 0, dGRBonus1PikachuFile2_DL_0x0480 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A20 (was gap+0xA20, 16 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0000_sub_0xA20[16] = {
-	#include <GRBonus1PikachuFile2/gap_0x0000_sub_0xA20.data.inc.c>
+/* DObjDLLink @ 0xA20 (2 entries) */
+DObjDLLink dGRBonus1PikachuFile2_DLLink_0x0A20[] = {
+	{ 0, dGRBonus1PikachuFile2_DL_0x0580 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A30 (was gap+0xA30, 16 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0000_sub_0xA30[16] = {
-	#include <GRBonus1PikachuFile2/gap_0x0000_sub_0xA30.data.inc.c>
+/* DObjDLLink @ 0xA30 (2 entries) */
+DObjDLLink dGRBonus1PikachuFile2_DLLink_0x0A30[] = {
+	{ 0, dGRBonus1PikachuFile2_DL_0x0680 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A40 (was gap+0xA40, 16 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0000_sub_0xA40[16] = {
-	#include <GRBonus1PikachuFile2/gap_0x0000_sub_0xA40.data.inc.c>
+/* DObjDLLink @ 0xA40 (2 entries) */
+DObjDLLink dGRBonus1PikachuFile2_DLLink_0x0A40[] = {
+	{ 0, dGRBonus1PikachuFile2_DL_0x0780 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A50 (was gap+0xA50, 16 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0000_sub_0xA50[16] = {
-	#include <GRBonus1PikachuFile2/gap_0x0000_sub_0xA50.data.inc.c>
+/* DObjDLLink @ 0xA50 (2 entries) */
+DObjDLLink dGRBonus1PikachuFile2_DLLink_0x0A50[] = {
+	{ 1, dGRBonus1PikachuFile2_DL_0x0880 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer0DObj @ 0xA60 (8 entries) */
 DObjDesc dGRBonus1PikachuFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0000 + 0xA10), { 2550.0f, -4800.0f, -600.0f }, { 0.0f, 0.0f, -3.9269909858703613f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0000 + 0xA20), { -3900.0f, -749.9999389648438f, -600.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0000 + 0xA30), { 3300.0f, 0.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0000 + 0xA40), { -2700.0f, 2400.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0000 + 0xA50), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A10, { 2550.0f, -4800.0f, -600.0f }, { 0.0f, 0.0f, -3.9269909858703613f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A20, { -3900.0f, -749.9999389648438f, -600.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A30, { 3300.0f, 0.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A40, { -2700.0f, 2400.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 0.0f, 1.5872873164046699e-37f, 1.5869173736100881e-37f }, { 1.4990767215349695e-36f, 1.1663108012064884e-38f, 3.160065924821352e-38f }, { 1.5869173736100881e-37f, 3.747691803837424e-37f, 1.1663108012064884e-38f } },
 };

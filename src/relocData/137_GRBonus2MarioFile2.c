@@ -182,33 +182,37 @@ Gfx dGRBonus2MarioFile2_DL_0x0800[50] = {
 	#include <GRBonus2MarioFile2/DL_0x0800.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0990 (was gap+0x990, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0000_sub_0x990[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0000_sub_0x990.data.inc.c>
+/* DObjDLLink @ 0x990 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x0990[] = {
+	{ 0, (Gfx*)dGRBonus2MarioFile2_gap_0x0000_sub_0x500 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x09A0 (was gap+0x9A0, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0000_sub_0x9A0[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0000_sub_0x9A0.data.inc.c>
+/* DObjDLLink @ 0x9A0 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x09A0[] = {
+	{ 0, dGRBonus2MarioFile2_DL_0x0600 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x09B0 (was gap+0x9B0, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0000_sub_0x9B0[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0000_sub_0x9B0.data.inc.c>
+/* DObjDLLink @ 0x9B0 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x09B0[] = {
+	{ 0, (Gfx*)dGRBonus2MarioFile2_gap_0x0000_sub_0x700 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x09C0 (was gap+0x9C0, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0000_sub_0x9C0[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0000_sub_0x9C0.data.inc.c>
+/* DObjDLLink @ 0x9C0 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x09C0[] = {
+	{ 1, dGRBonus2MarioFile2_DL_0x0800 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer0DObj @ 0x9D0 (6 entries) */
 DObjDesc dGRBonus2MarioFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0000 + 0x990), { -1800.0f, -5850.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0000 + 0x9A0), { -3000.0f, -2700.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0000 + 0x9B0), { 6300.0f, -1650.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0000 + 0x9C0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x0990, { -1800.0f, -5850.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x09A0, { -3000.0f, -2700.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x09B0, { 6300.0f, -1650.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x09C0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -373,19 +377,22 @@ u8 dGRBonus2MarioFile2_gap_0x0AD8_sub_0x27D0[24] = {
 	#include <GRBonus2MarioFile2/gap_0x0AD8_sub_0x27D0.data.inc.c>
 };
 
-/* gap sub-block @ 0x32C0 (was gap+0x27E8, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0AD8_sub_0x27E8[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0AD8_sub_0x27E8.data.inc.c>
+/* DObjDLLink @ 0x27E8 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x32C0[] = {
+	{ 0, dGRBonus2MarioFile2_DL_0x3088 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x32D0 (was gap+0x27F8, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0AD8_sub_0x27F8[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0AD8_sub_0x27F8.data.inc.c>
+/* DObjDLLink @ 0x27F8 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x32D0[] = {
+	{ 0, dGRBonus2MarioFile2_DL_0x3140 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x32E0 (was gap+0x2808, 16 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0AD8_sub_0x2808[16] = {
-	#include <GRBonus2MarioFile2/gap_0x0AD8_sub_0x2808.data.inc.c>
+/* DObjDLLink @ 0x2808 (2 entries) */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x32E0[] = {
+	{ 0, dGRBonus2MarioFile2_DL_0x3180 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer1DObj @ 0x32F0 (16 entries) */
@@ -402,9 +409,9 @@ DObjDesc dGRBonus2MarioFile2_Layer1DObj[] = {
 	{ 1, (void*)0x00000000, { -1800.0f, -6600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 5400.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0AD8 + 0x27D0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0AD8 + 0x27E8), { 0.0f, -528.0000610351562f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0AD8 + 0x27F8), { 2400.0f, -1344.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0AD8 + 0x2808), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32C0, { 0.0f, -528.0000610351562f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32D0, { 2400.0f, -1344.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32E0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

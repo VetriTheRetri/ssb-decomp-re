@@ -147,33 +147,37 @@ Gfx dGRBonus1NessFile2_DL_0x07E0[38] = {
 	#include <GRBonus1NessFile2/DL_0x07E0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0910 (was gap+0x910, 16 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x910[16] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x910.data.inc.c>
+/* DObjDLLink @ 0x910 (2 entries) */
+DObjDLLink dGRBonus1NessFile2_DLLink_0x0910[] = {
+	{ 0, dGRBonus1NessFile2_DL_0x0480 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0920 (was gap+0x920, 16 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x920[16] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x920.data.inc.c>
+/* DObjDLLink @ 0x920 (2 entries) */
+DObjDLLink dGRBonus1NessFile2_DLLink_0x0920[] = {
+	{ 0, (Gfx*)dGRBonus1NessFile2_gap_0x0000_sub_0x580 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0930 (was gap+0x930, 16 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x930[16] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x930.data.inc.c>
+/* DObjDLLink @ 0x930 (2 entries) */
+DObjDLLink dGRBonus1NessFile2_DLLink_0x0930[] = {
+	{ 0, dGRBonus1NessFile2_DL_0x0680 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0940 (was gap+0x940, 16 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x940[16] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x940.data.inc.c>
+/* DObjDLLink @ 0x940 (2 entries) */
+DObjDLLink dGRBonus1NessFile2_DLLink_0x0940[] = {
+	{ 1, (Gfx*)dGRBonus1NessFile2_gap_0x0000_sub_0x780 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer0DObj @ 0x950 (7 entries) */
 DObjDesc dGRBonus1NessFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1NessFile2_gap_0x0000 + 0x910), { 315.6907653808594f, 2244.0f, -569.5111083984375f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1NessFile2_gap_0x0000 + 0x920), { 5397.69287109375f, 2579.4716796875f, -569.5111083984375f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1NessFile2_gap_0x0000 + 0x930), { -3752.30712890625f, 29.47173309326172f, -569.5111083984375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1NessFile2_gap_0x0000 + 0x940), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0910, { 315.6907653808594f, 2244.0f, -569.5111083984375f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0920, { 5397.69287109375f, 2579.4716796875f, -569.5111083984375f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0930, { -3752.30712890625f, 29.47173309326172f, -569.5111083984375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0940, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 2.6964396753863672e-33f, 1.5869173736100881e-37f, 0.0f }, { 1.1754943508222875e-38f, 3.5130725427149415e-31f, 1.5869173736100881e-37f }, { 2.407412430484045e-35f, 1.1754943508222875e-38f, 3.5130725427149415e-31f } },
 };

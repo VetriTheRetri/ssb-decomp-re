@@ -822,9 +822,10 @@ Gfx dStageYamabukiFile2_DL_0x6980[14] = {
 	#include <StageYamabukiFile2/DL_0x6980.dl.inc.c>
 };
 
-/* gap sub-block @ 0x69F0 (was gap+0x1718, 16 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1718[16] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0x1718.data.inc.c>
+/* DObjDLLink @ 0x1718 (2 entries) */
+DObjDLLink dStageYamabukiFile2_DLLink_0x69F0[] = {
+	{ 0, dStageYamabukiFile2_DL_0x5E30 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x6A00 (was gap+0x1728, 16 bytes) */
@@ -860,7 +861,7 @@ u8 dStageYamabukiFile2_gap_0x52D8_sub_0x1788[16] = {
 /* DObjDesc: Layer1DObj @ 0x6A70 (2 entries) */
 DObjDesc dStageYamabukiFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYamabukiFile2_gap_0x52D8 + 0x1718), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYamabukiFile2_DLLink_0x69F0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x6AC8 to 0x6E8C (964 bytes) */

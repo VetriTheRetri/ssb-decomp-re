@@ -162,39 +162,44 @@ Gfx dGRBonus1MarioFile2_DL_0x0880[50] = {
 	#include <GRBonus1MarioFile2/DL_0x0880.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0A10 (was gap+0xA10, 16 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0xA10[16] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0xA10.data.inc.c>
+/* DObjDLLink @ 0x0A10 (2 entries) */
+DObjDLLink dGRBonus1MarioFile2_DLLink_0x0A10[] = {
+	{ 0, (Gfx*)dGRBonus1MarioFile2_gap_0x0000_sub_0x480 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A20 (was gap+0xA20, 16 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0xA20[16] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0xA20.data.inc.c>
+/* DObjDLLink @ 0x0A20 (2 entries) */
+DObjDLLink dGRBonus1MarioFile2_DLLink_0x0A20[] = {
+	{ 0, (Gfx*)dGRBonus1MarioFile2_gap_0x0000_sub_0x580 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A30 (was gap+0xA30, 16 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0xA30[16] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0xA30.data.inc.c>
+/* DObjDLLink @ 0x0A30 (2 entries) */
+DObjDLLink dGRBonus1MarioFile2_DLLink_0x0A30[] = {
+	{ 0, dGRBonus1MarioFile2_DL_0x0680 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A40 (was gap+0xA40, 16 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0xA40[16] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0xA40.data.inc.c>
+/* DObjDLLink @ 0x0A40 (2 entries) */
+DObjDLLink dGRBonus1MarioFile2_DLLink_0x0A40[] = {
+	{ 0, dGRBonus1MarioFile2_DL_0x0780 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0A50 (was gap+0xA50, 16 bytes) */
-u8 dGRBonus1MarioFile2_gap_0x0000_sub_0xA50[16] = {
-	#include <GRBonus1MarioFile2/gap_0x0000_sub_0xA50.data.inc.c>
+/* DObjDLLink @ 0x0A50 (2 entries) */
+DObjDLLink dGRBonus1MarioFile2_DLLink_0x0A50[] = {
+	{ 1, dGRBonus1MarioFile2_DL_0x0880 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer0DObj @ 0xA60 (7 entries) */
 DObjDesc dGRBonus1MarioFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1MarioFile2_gap_0x0000 + 0xA10), { 1350.0f, 3300.0f, -600.0f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1MarioFile2_gap_0x0000 + 0xA20), { -3300.0f, 1950.0f, -600.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1MarioFile2_gap_0x0000 + 0xA30), { 2700.0f, 750.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1MarioFile2_gap_0x0000 + 0xA40), { -1.9999999494757503e-05f, -1650.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1MarioFile2_gap_0x0000 + 0xA50), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1MarioFile2_DLLink_0x0A10, { 1350.0f, 3300.0f, -600.0f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1MarioFile2_DLLink_0x0A20, { -3300.0f, 1950.0f, -600.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1MarioFile2_DLLink_0x0A30, { 2700.0f, 750.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1MarioFile2_DLLink_0x0A40, { -1.9999999494757503e-05f, -1650.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1MarioFile2_DLLink_0x0A50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

@@ -1315,16 +1315,17 @@ Gfx dNessModel_DL_0x9948[23] = {
 	#include <NessModel/DL_0x9948.dl.inc.c>
 };
 
-/* gap sub-block @ 0x9A00 (was gap+0x118, 16 bytes) */
-u8 dNessModel_gap_0x98E8_sub_0x118[16] = {
-	#include <NessModel/gap_0x98E8_sub_0x118.data.inc.c>
+/* DObjDLLink @ 0x118 (2 entries) */
+DObjDLLink dNessModel_DLLink_0x9A00[] = {
+	{ 1, dNessModel_DL_0x9948 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: PKThunderWaveDObjDesc @ 0x9A10 (4 entries) */
 DObjDesc dNessModel_PKThunderWaveDObjDesc[] = {
 	{ 0, (void*)0x00000000, { -1.2421729564666748f, 109.17940521240234f, -6.0317840576171875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -127.5f, 180.0f, 87.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dNessModel_gap_0x98E8 + 0x118), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dNessModel_DLLink_0x9A00, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

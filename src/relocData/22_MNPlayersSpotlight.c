@@ -69,15 +69,16 @@ Gfx dMNPlayersSpotlight_DL_0x04D0[17] = {
 	#include <MNPlayersSpotlight/DL_0x04D0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0558 (was gap+0xD8, 16 bytes) */
-u8 dMNPlayersSpotlight_gap_0x0480_sub_0xD8[16] = {
-	#include <MNPlayersSpotlight/gap_0x0480_sub_0xD8.data.inc.c>
+/* DObjDLLink @ 0xD8 (2 entries) */
+DObjDLLink dMNPlayersSpotlight_DLLink_0x0558[] = {
+	{ 1, dMNPlayersSpotlight_DL_0x04D0 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: - @ 0x568 (3 entries) */
 DObjDesc dMNPlayersSpotlight_DObjDesc_0x0568[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMNPlayersSpotlight_gap_0x0480 + 0xD8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMNPlayersSpotlight_DLLink_0x0558, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

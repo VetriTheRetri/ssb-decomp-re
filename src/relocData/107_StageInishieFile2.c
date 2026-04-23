@@ -410,34 +410,40 @@ u8 dStageInishieFile2_gap_0x37A8_sub_0x11F8[24] = {
 	#include <StageInishieFile2/gap_0x37A8_sub_0x11F8.data.inc.c>
 };
 
-/* gap sub-block @ 0x49B8 (was gap+0x1210, 16 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1210[16] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1210.data.inc.c>
+/* DObjDLLink @ 0x1210 (2 entries) */
+DObjDLLink dStageInishieFile2_DLLink_0x49B8[] = {
+	{ 0, dStageInishieFile2_DL_0x4108 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x49C8 (was gap+0x1220, 16 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1220[16] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1220.data.inc.c>
+/* DObjDLLink @ 0x1220 (2 entries) */
+DObjDLLink dStageInishieFile2_DLLink_0x49C8[] = {
+	{ 0, dStageInishieFile2_DL_0x4188 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x49D8 (was gap+0x1230, 16 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1230[16] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1230.data.inc.c>
+/* DObjDLLink @ 0x1230 (2 entries) */
+DObjDLLink dStageInishieFile2_DLLink_0x49D8[] = {
+	{ 0, dStageInishieFile2_DL_0x4208 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x49E8 (was gap+0x1240, 16 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1240[16] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1240.data.inc.c>
+/* DObjDLLink @ 0x1240 (2 entries) */
+DObjDLLink dStageInishieFile2_DLLink_0x49E8[] = {
+	{ 0, dStageInishieFile2_DL_0x4288 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x49F8 (was gap+0x1250, 16 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1250[16] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1250.data.inc.c>
+/* DObjDLLink @ 0x1250 (2 entries) */
+DObjDLLink dStageInishieFile2_DLLink_0x49F8[] = {
+	{ 0, dStageInishieFile2_DL_0x42E8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x4A08 (was gap+0x1260, 16 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1260[16] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1260.data.inc.c>
+/* DObjDLLink @ 0x1260 (2 entries) */
+DObjDLLink dStageInishieFile2_DLLink_0x4A08[] = {
+	{ 0, dStageInishieFile2_DL_0x4348 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x4A18 (was gap+0x1270, 24 bytes) */
@@ -454,12 +460,12 @@ u8 dStageInishieFile2_gap_0x37A8_sub_0x1288[24] = {
 DObjDesc dStageInishieFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x11F8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1210), { -2775.0f, 1245.0f, -6600.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1220), { -2775.0f, 3369.33203125f, -6600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1230), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1240), { 873.5250244140625f, 345.0f, -5730.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1250), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1260), { 3483.224853515625f, 2490.0f, -4950.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DLLink_0x49B8, { -2775.0f, 1245.0f, -6600.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DLLink_0x49C8, { -2775.0f, 3369.33203125f, -6600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DLLink_0x49D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DLLink_0x49E8, { 873.5250244140625f, 345.0f, -5730.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DLLink_0x49F8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DLLink_0x4A08, { 3483.224853515625f, 2490.0f, -4950.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1270), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x37A8 + 0x1288), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },

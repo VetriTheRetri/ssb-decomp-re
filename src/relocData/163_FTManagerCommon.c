@@ -27,15 +27,16 @@ Gfx dFTManagerCommon_DL_0x0248[21] = {
 	#include <FTManagerCommon/DL_0x0248.dl.inc.c>
 };
 
-/* gap sub-block @ 0x02F0 (was gap+0x2F0, 16 bytes) */
-u8 dFTManagerCommon_gap_0x0000_sub_0x2F0[16] = {
-	#include <FTManagerCommon/gap_0x0000_sub_0x2F0.data.inc.c>
+/* DObjDLLink @ 0x2F0 (2 entries) */
+DObjDLLink dFTManagerCommon_DLLink_0x02F0[] = {
+	{ 1, dFTManagerCommon_DL_0x0248 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Shield @ 0x300 (3 entries) */
 DObjDesc dFTManagerCommon_Shield[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dFTManagerCommon_gap_0x0000 + 0x2F0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dFTManagerCommon_DLLink_0x02F0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

@@ -335,14 +335,16 @@ Gfx dStageHyruleFile2_DL_0x44C8[17] = {
 	#include <StageHyruleFile2/DL_0x44C8.dl.inc.c>
 };
 
-/* gap sub-block @ 0x4550 (was gap+0xBC0, 16 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0xBC0[16] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0xBC0.data.inc.c>
+/* DObjDLLink @ 0xBC0 (2 entries) */
+DObjDLLink dStageHyruleFile2_DLLink_0x4550[] = {
+	{ 0, dStageHyruleFile2_DL_0x3A50 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x4560 (was gap+0xBD0, 16 bytes) */
-u8 dStageHyruleFile2_gap_0x3990_sub_0xBD0[16] = {
-	#include <StageHyruleFile2/gap_0x3990_sub_0xBD0.data.inc.c>
+/* DObjDLLink @ 0xBD0 (2 entries) */
+DObjDLLink dStageHyruleFile2_DLLink_0x4560[] = {
+	{ 0, dStageHyruleFile2_DL_0x40F8 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x4570 (was gap+0xBE0, 24 bytes) */
@@ -353,8 +355,8 @@ u8 dStageHyruleFile2_gap_0x3990_sub_0xBE0[24] = {
 /* DObjDesc: Layer0DObj @ 0x4588 (5 entries) */
 DObjDesc dStageHyruleFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageHyruleFile2_gap_0x3990 + 0xBC0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dStageHyruleFile2_gap_0x3990 + 0xBD0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageHyruleFile2_DLLink_0x4550, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dStageHyruleFile2_DLLink_0x4560, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageHyruleFile2_gap_0x3990 + 0xBE0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };

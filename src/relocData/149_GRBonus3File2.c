@@ -637,24 +637,28 @@ Gfx dGRBonus3File2_DL_0x6020[8] = {
 	#include <GRBonus3File2/DL_0x6020.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6060 (was gap+0x2948, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x2948[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x2948.data.inc.c>
+/* DObjDLLink @ 0x2948 (2 entries) */
+DObjDLLink dGRBonus3File2_DLLink_0x6060[] = {
+	{ 0, dGRBonus3File2_DL_0x53D0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x6070 (was gap+0x2958, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x2958[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x2958.data.inc.c>
+/* DObjDLLink @ 0x2958 (2 entries) */
+DObjDLLink dGRBonus3File2_DLLink_0x6070[] = {
+	{ 0, dGRBonus3File2_DL_0x55B0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x6080 (was gap+0x2968, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x2968[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x2968.data.inc.c>
+/* DObjDLLink @ 0x2968 (2 entries) */
+DObjDLLink dGRBonus3File2_DLLink_0x6080[] = {
+	{ 0, dGRBonus3File2_DL_0x56C0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x6090 (was gap+0x2978, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x2978[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x2978.data.inc.c>
+/* DObjDLLink @ 0x2978 (2 entries) */
+DObjDLLink dGRBonus3File2_DLLink_0x6090[] = {
+	{ 0, dGRBonus3File2_DL_0x5820 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x60A0 (was gap+0x2988, 24 bytes) */
@@ -691,10 +695,10 @@ u8 dGRBonus3File2_gap_0x3718_sub_0x29F8[16] = {
 DObjDesc dGRBonus3File2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x3718 + 0x2948), { -450.0f, 4500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x3718 + 0x2958), { 1650.0f, 1650.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x3718 + 0x2968), { 1500.0f, -4050.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x3718 + 0x2978), { -150.0f, -1350.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus3File2_DLLink_0x6060, { -450.0f, 4500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus3File2_DLLink_0x6070, { 1650.0f, 1650.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus3File2_DLLink_0x6080, { 1500.0f, -4050.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus3File2_DLLink_0x6090, { -150.0f, -1350.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x6228 to 0x65A8 (896 bytes) */

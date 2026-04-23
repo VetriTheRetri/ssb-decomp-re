@@ -98,20 +98,22 @@ Gfx dSCExplainGraphics_DL_0x5268[15] = {
 	#include <SCExplainGraphics/DL_0x5268.dl.inc.c>
 };
 
-/* gap sub-block @ 0x52E0 (was gap+0x240, 16 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0_sub_0x240[16] = {
-	#include <SCExplainGraphics/gap_0x50A0_sub_0x240.data.inc.c>
+/* DObjDLLink @ 0x240 (2 entries) */
+DObjDLLink dSCExplainGraphics_DLLink_0x52E0[] = {
+	{ 1, dSCExplainGraphics_DL_0x51C8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x52F0 (was gap+0x250, 16 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0_sub_0x250[16] = {
-	#include <SCExplainGraphics/gap_0x50A0_sub_0x250.data.inc.c>
+/* DObjDLLink @ 0x250 (2 entries) */
+DObjDLLink dSCExplainGraphics_DLLink_0x52F0[] = {
+	{ 1, dSCExplainGraphics_DL_0x5268 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: StickDObjDesc @ 0x5300 (3 entries) */
 DObjDesc dSCExplainGraphics_StickDObjDesc[] = {
-	{ 0, (void*)((u8*)dSCExplainGraphics_gap_0x50A0 + 0x240), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dSCExplainGraphics_gap_0x50A0 + 0x250), { 0.0f, 0.0f, 0.30000001192092896f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0, (void*)dSCExplainGraphics_DLLink_0x52E0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dSCExplainGraphics_DLLink_0x52F0, { 0.0f, 0.0f, 0.30000001192092896f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

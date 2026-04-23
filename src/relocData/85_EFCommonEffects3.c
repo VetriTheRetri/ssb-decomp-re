@@ -111,22 +111,24 @@ Gfx dEFCommonEffects3_DL_0x0518[30] = {
 	#include <EFCommonEffects3/DL_0x0518.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0608 (was gap+0x488, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x488[16] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x488.data.inc.c>
+/* DObjDLLink @ 0x488 (2 entries) */
+DObjDLLink dEFCommonEffects3_DLLink_0x0608[] = {
+	{ 1, dEFCommonEffects3_DL_0x0440 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x0618 (was gap+0x498, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x498[16] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x498.data.inc.c>
+/* DObjDLLink @ 0x498 (2 entries) */
+DObjDLLink dEFCommonEffects3_DLLink_0x0618[] = {
+	{ 1, dEFCommonEffects3_DL_0x0518 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: MBallRays @ 0x628 (5 entries) */
 DObjDesc dEFCommonEffects3_MBallRays[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 3.0f, 3.0f, 3.0f } },
-	{ 2, (void*)((u8*)dEFCommonEffects3_gap_0x0180 + 0x488), { -9.0f, -4.5f, 0.0f }, { 0.0f, -31.38558006286621f, 0.0f }, { 36.41071701049805f, 2.9694700241088867f, 36.40849304199219f } },
-	{ 2, (void*)((u8*)dEFCommonEffects3_gap_0x0180 + 0x498), { -9.0f, -4.5f, 0.0f }, { 0.0f, 31.72962188720703f, 0.0f }, { 36.41071701049805f, 2.829946994781494f, 36.40849304199219f } },
+	{ 2, (void*)dEFCommonEffects3_DLLink_0x0608, { -9.0f, -4.5f, 0.0f }, { 0.0f, -31.38558006286621f, 0.0f }, { 36.41071701049805f, 2.9694700241088867f, 36.40849304199219f } },
+	{ 2, (void*)dEFCommonEffects3_DLLink_0x0618, { -9.0f, -4.5f, 0.0f }, { 0.0f, 31.72962188720703f, 0.0f }, { 36.41071701049805f, 2.829946994781494f, 36.40849304199219f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -249,34 +251,38 @@ Gfx dEFCommonEffects3_DL_0x30A0[18] = {
 	#include <EFCommonEffects3/DL_0x30A0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x3130 (was gap+0x410, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x410[16] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x410.data.inc.c>
+/* DObjDLLink @ 0x410 (2 entries) */
+DObjDLLink dEFCommonEffects3_DLLink_0x3130[] = {
+	{ 1, dEFCommonEffects3_DL_0x2EF0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x3140 (was gap+0x420, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x420[16] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x420.data.inc.c>
+/* DObjDLLink @ 0x420 (2 entries) */
+DObjDLLink dEFCommonEffects3_DLLink_0x3140[] = {
+	{ 1, dEFCommonEffects3_DL_0x2F80 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x3150 (was gap+0x430, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x430[16] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x430.data.inc.c>
+/* DObjDLLink @ 0x430 (2 entries) */
+DObjDLLink dEFCommonEffects3_DLLink_0x3150[] = {
+	{ 1, dEFCommonEffects3_DL_0x3010 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x3160 (was gap+0x440, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x440[16] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x440.data.inc.c>
+/* DObjDLLink @ 0x440 (2 entries) */
+DObjDLLink dEFCommonEffects3_DLLink_0x3160[] = {
+	{ 1, dEFCommonEffects3_DL_0x30A0 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: ItemGetSwirl @ 0x3170 (7 entries) */
 DObjDesc dEFCommonEffects3_ItemGetSwirl[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { -0.8541679978370667f, 1.570796012878418f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dEFCommonEffects3_gap_0x2D20 + 0x410), { 0.24000099301338196f, -2.7028450965881348f, -233.6550750732422f }, { -0.27849701046943665f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
-	{ 2, (void*)((u8*)dEFCommonEffects3_gap_0x2D20 + 0x420), { 0.24000099301338196f, 233.6550750732422f, -2.70284104347229f }, { 1.2919600009918213f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
-	{ 2, (void*)((u8*)dEFCommonEffects3_gap_0x2D20 + 0x430), { 0.24000099301338196f, 2.702807903289795f, 233.65505981445312f }, { 2.8615520000457764f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
-	{ 2, (void*)((u8*)dEFCommonEffects3_gap_0x2D20 + 0x440), { 0.24000099301338196f, -233.6550750732422f, 2.7028489112854004f }, { -1.8504990339279175f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
+	{ 2, (void*)dEFCommonEffects3_DLLink_0x3130, { 0.24000099301338196f, -2.7028450965881348f, -233.6550750732422f }, { -0.27849701046943665f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
+	{ 2, (void*)dEFCommonEffects3_DLLink_0x3140, { 0.24000099301338196f, 233.6550750732422f, -2.70284104347229f }, { 1.2919600009918213f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
+	{ 2, (void*)dEFCommonEffects3_DLLink_0x3150, { 0.24000099301338196f, 2.702807903289795f, 233.65505981445312f }, { 2.8615520000457764f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
+	{ 2, (void*)dEFCommonEffects3_DLLink_0x3160, { 0.24000099301338196f, -233.6550750732422f, 2.7028489112854004f }, { -1.8504990339279175f, 0.0f, 0.0f }, { 0.9855470061302185f, 0.5486469864845276f, 0.5575129985809326f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

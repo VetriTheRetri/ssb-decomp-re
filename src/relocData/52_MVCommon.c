@@ -750,74 +750,88 @@ Gfx dMVCommon_DL_0x7B60[29] = {
 	#include <MVCommon/DL_0x7B60.dl.inc.c>
 };
 
-/* gap sub-block @ 0x7C48 (was gap+0x38D8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x38D8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x38D8.data.inc.c>
+/* DObjDLLink @ 0x38D8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7C48[] = {
+	{ 0, dMVCommon_DL_0x5A18 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7C58 (was gap+0x38E8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x38E8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x38E8.data.inc.c>
+/* DObjDLLink @ 0x38E8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7C58[] = {
+	{ 0, dMVCommon_DL_0x5AC8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7C68 (was gap+0x38F8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x38F8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x38F8.data.inc.c>
+/* DObjDLLink @ 0x38F8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7C68[] = {
+	{ 0, dMVCommon_DL_0x5BB0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7C78 (was gap+0x3908, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3908[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3908.data.inc.c>
+/* DObjDLLink @ 0x3908 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7C78[] = {
+	{ 0, dMVCommon_DL_0x5CA0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7C88 (was gap+0x3918, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3918[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3918.data.inc.c>
+/* DObjDLLink @ 0x3918 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7C88[] = {
+	{ 0, dMVCommon_DL_0x5D68 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7C98 (was gap+0x3928, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3928[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3928.data.inc.c>
+/* DObjDLLink @ 0x3928 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7C98[] = {
+	{ 0, dMVCommon_DL_0x5DE8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7CA8 (was gap+0x3938, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3938[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3938.data.inc.c>
+/* DObjDLLink @ 0x3938 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7CA8[] = {
+	{ 0, dMVCommon_DL_0x5EA8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7CB8 (was gap+0x3948, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3948[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3948.data.inc.c>
+/* DObjDLLink @ 0x3948 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7CB8[] = {
+	{ 0, dMVCommon_DL_0x5F70 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7CC8 (was gap+0x3958, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3958[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3958.data.inc.c>
+/* DObjDLLink @ 0x3958 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7CC8[] = {
+	{ 0, dMVCommon_DL_0x6058 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7CD8 (was gap+0x3968, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3968[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3968.data.inc.c>
+/* DObjDLLink @ 0x3968 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7CD8[] = {
+	{ 0, dMVCommon_DL_0x6130 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7CE8 (was gap+0x3978, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3978[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3978.data.inc.c>
+/* DObjDLLink @ 0x3978 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7CE8[] = {
+	{ 0, dMVCommon_DL_0x6210 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7CF8 (was gap+0x3988, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3988[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3988.data.inc.c>
+/* DObjDLLink @ 0x3988 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7CF8[] = {
+	{ 0, dMVCommon_DL_0x62D8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D08 (was gap+0x3998, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3998[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3998.data.inc.c>
+/* DObjDLLink @ 0x3998 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D08[] = {
+	{ 0, dMVCommon_DL_0x63F8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D18 (was gap+0x39A8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x39A8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x39A8.data.inc.c>
+/* DObjDLLink @ 0x39A8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D18[] = {
+	{ 1, dMVCommon_DL_0x7398 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x7D28 (was gap+0x39B8, 24 bytes) */
@@ -825,59 +839,70 @@ u8 dMVCommon_gap_0x4370_sub_0x39B8[24] = {
 	#include <MVCommon/gap_0x4370_sub_0x39B8.data.inc.c>
 };
 
-/* gap sub-block @ 0x7D40 (was gap+0x39D0, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x39D0[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x39D0.data.inc.c>
+/* DObjDLLink @ 0x39D0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D40[] = {
+	{ 1, dMVCommon_DL_0x75A0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D50 (was gap+0x39E0, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x39E0[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x39E0.data.inc.c>
+/* DObjDLLink @ 0x39E0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D50[] = {
+	{ 1, dMVCommon_DL_0x76D8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D60 (was gap+0x39F0, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x39F0[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x39F0.data.inc.c>
+/* DObjDLLink @ 0x39F0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D60[] = {
+	{ 0, dMVCommon_DL_0x6590 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D70 (was gap+0x3A00, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A00[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A00.data.inc.c>
+/* DObjDLLink @ 0x3A00 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D70[] = {
+	{ 0, dMVCommon_DL_0x6680 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D80 (was gap+0x3A10, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A10[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A10.data.inc.c>
+/* DObjDLLink @ 0x3A10 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D80[] = {
+	{ 0, dMVCommon_DL_0x6708 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7D90 (was gap+0x3A20, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A20[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A20.data.inc.c>
+/* DObjDLLink @ 0x3A20 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7D90[] = {
+	{ 0, dMVCommon_DL_0x67E8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7DA0 (was gap+0x3A30, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A30[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A30.data.inc.c>
+/* DObjDLLink @ 0x3A30 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7DA0[] = {
+	{ 0, dMVCommon_DL_0x68B8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7DB0 (was gap+0x3A40, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A40[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A40.data.inc.c>
+/* DObjDLLink @ 0x3A40 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7DB0[] = {
+	{ 1, dMVCommon_DL_0x77C0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7DC0 (was gap+0x3A50, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A50[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A50.data.inc.c>
+/* DObjDLLink @ 0x3A50 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7DC0[] = {
+	{ 0, dMVCommon_DL_0x69C0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7DD0 (was gap+0x3A60, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A60[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A60.data.inc.c>
+/* DObjDLLink @ 0x3A60 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7DD0[] = {
+	{ 0, dMVCommon_DL_0x6AB0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7DE0 (was gap+0x3A70, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A70[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A70.data.inc.c>
+/* DObjDLLink @ 0x3A70 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7DE0[] = {
+	{ 0, dMVCommon_DL_0x6CE0 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x7DF0 (was gap+0x3A80, 24 bytes) */
@@ -885,103 +910,112 @@ u8 dMVCommon_gap_0x4370_sub_0x3A80[24] = {
 	#include <MVCommon/gap_0x4370_sub_0x3A80.data.inc.c>
 };
 
-/* gap sub-block @ 0x7E08 (was gap+0x3A98, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A98[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A98.data.inc.c>
+/* DObjDLLink @ 0x3A98 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E08[] = {
+	{ 0, dMVCommon_DL_0x6EC0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E18 (was gap+0x3AA8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3AA8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3AA8.data.inc.c>
+/* DObjDLLink @ 0x3AA8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E18[] = {
+	{ 1, dMVCommon_DL_0x7928 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E28 (was gap+0x3AB8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3AB8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3AB8.data.inc.c>
+/* DObjDLLink @ 0x3AB8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E28[] = {
+	{ 1, dMVCommon_DL_0x79D0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E38 (was gap+0x3AC8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3AC8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3AC8.data.inc.c>
+/* DObjDLLink @ 0x3AC8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E38[] = {
+	{ 1, dMVCommon_DL_0x7A78 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E48 (was gap+0x3AD8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3AD8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3AD8.data.inc.c>
+/* DObjDLLink @ 0x3AD8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E48[] = {
+	{ 1, dMVCommon_DL_0x7B60 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E58 (was gap+0x3AE8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3AE8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3AE8.data.inc.c>
+/* DObjDLLink @ 0x3AE8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E58[] = {
+	{ 0, dMVCommon_DL_0x6FD8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E68 (was gap+0x3AF8, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3AF8[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3AF8.data.inc.c>
+/* DObjDLLink @ 0x3AF8 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E68[] = {
+	{ 0, dMVCommon_DL_0x70C8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E78 (was gap+0x3B08, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3B08[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3B08.data.inc.c>
+/* DObjDLLink @ 0x3B08 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E78[] = {
+	{ 0, dMVCommon_DL_0x71B8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7E88 (was gap+0x3B18, 16 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3B18[16] = {
-	#include <MVCommon/gap_0x4370_sub_0x3B18.data.inc.c>
+/* DObjDLLink @ 0x3B18 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x7E88[] = {
+	{ 0, dMVCommon_DL_0x72A8 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: RoomBackgroundDObjDesc @ 0x7E98 (52 entries) */
 DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -2310.923095703125f, 0.0f, 3478.20654296875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x38D8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x38E8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x38F8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3908), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3918), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3928), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3938), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7C48, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7C58, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7C68, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7C78, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7C88, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7C98, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7CA8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -5860.73779296875f, 0.0f, -858.4176025390625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -5.847014904022217f, 0.0f, 95.79534912109375f }, { 0.9100019931793213f, 0.9379990100860596f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3948), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3958), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3968), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3978), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7CB8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7CC8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7CD8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7CE8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -6605.94873046875f, 5282.9013671875f, -2908.06591796875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3988), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3998), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7CF8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_DLLink_0x7D08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x39A8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7D18, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x39B8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x39D0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7D40, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 2818.4521484375f, 3203.845947265625f, 5498.3056640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x39E0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x39F0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A00), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A10), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A20), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A30), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7D50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7D60, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7D70, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7D80, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7D90, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7DA0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A40), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7DB0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -3958.59228515625f, 0.0f, -4247.1357421875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -54.76043701171875f, 1105.5435791015625f, -133.63265991210938f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A50), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A60), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7DC0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7DD0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 645.5726318359375f, 1136.498779296875f, 1044.5704345703125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A70), { -32.4151611328125f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7DE0, { -32.4151611328125f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A80), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A98), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7E08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3AA8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3AB8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7E18, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7E28, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3AC8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3AD8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3AE8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3AF8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3B08), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3B18), { 0.0f, -23.366546630859375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7E38, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVCommon_DLLink_0x7E48, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7E58, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7E68, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7E78, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_DLLink_0x7E88, { 0.0f, -23.366546630859375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
@@ -1239,20 +1273,22 @@ Gfx dMVCommon_DL_0x1C358[38] = {
 	#include <MVCommon/DL_0x1C358.dl.inc.c>
 };
 
-/* gap sub-block @ 0x1C488 (was gap+0x7B0, 16 bytes) */
-u8 dMVCommon_gap_0x1BCD8_sub_0x7B0[16] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x7B0.data.inc.c>
+/* DObjDLLink @ 0x7B0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x1C488[] = {
+	{ 1, dMVCommon_DL_0x1BFC8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x1C498 (was gap+0x7C0, 16 bytes) */
-u8 dMVCommon_gap_0x1BCD8_sub_0x7C0[16] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x7C0.data.inc.c>
+/* DObjDLLink @ 0x7C0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x1C498[] = {
+	{ 1, dMVCommon_DL_0x1C358 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: RoomLogoDObjDesc @ 0x1C4A8 (3 entries) */
 DObjDesc dMVCommon_RoomLogoDObjDesc[] = {
-	{ 0, (void*)((u8*)dMVCommon_gap_0x1BCD8 + 0x7B0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x1BCD8 + 0x7C0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0, (void*)dMVCommon_DLLink_0x1C488, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_DLLink_0x1C498, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1334,21 +1370,23 @@ Gfx dMVCommon_DL_0x1DE60[21] = {
 	#include <MVCommon/DL_0x1DE60.dl.inc.c>
 };
 
-/* gap sub-block @ 0x1DF08 (was gap+0x1F0, 16 bytes) */
-u8 dMVCommon_gap_0x1DD18_sub_0x1F0[16] = {
-	#include <MVCommon/gap_0x1DD18_sub_0x1F0.data.inc.c>
+/* DObjDLLink @ 0x1F0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x1DF08[] = {
+	{ 1, dMVCommon_DL_0x1DDB0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x1DF18 (was gap+0x200, 16 bytes) */
-u8 dMVCommon_gap_0x1DD18_sub_0x200[16] = {
-	#include <MVCommon/gap_0x1DD18_sub_0x200.data.inc.c>
+/* DObjDLLink @ 0x200 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x1DF18[] = {
+	{ 1, dMVCommon_DL_0x1DE60 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: RoomCloseUpEffectAirDObjDesc @ 0x1DF28 (4 entries) */
 DObjDesc dMVCommon_RoomCloseUpEffectAirDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x1DD18 + 0x1F0), { -1152.406005859375f, 3164.57861328125f, -3420.151611328125f }, { 0.0f, 0.0f, 0.0f }, { 1.2208930253982544f, 1.2189329862594604f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x1DD18 + 0x200), { -1152.406005859375f, 3164.57861328125f, -3420.151611328125f }, { 0.0f, 0.0f, 0.0f }, { 1.8028620481491089f, 1.8027759790420532f, 1.0f } },
+	{ 1, (void*)dMVCommon_DLLink_0x1DF08, { -1152.406005859375f, 3164.57861328125f, -3420.151611328125f }, { 0.0f, 0.0f, 0.0f }, { 1.2208930253982544f, 1.2189329862594604f, 1.0f } },
+	{ 1, (void*)dMVCommon_DLLink_0x1DF18, { -1152.406005859375f, 3164.57861328125f, -3420.151611328125f }, { 0.0f, 0.0f, 0.0f }, { 1.8028620481491089f, 1.8027759790420532f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1411,15 +1449,16 @@ Gfx dMVCommon_DL_0x1F1C0[20] = {
 	#include <MVCommon/DL_0x1F1C0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x1F260 (was gap+0xF0, 16 bytes) */
-u8 dMVCommon_gap_0x1F170_sub_0xF0[16] = {
-	#include <MVCommon/gap_0x1F170_sub_0xF0.data.inc.c>
+/* DObjDLLink @ 0xF0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x1F260[] = {
+	{ 1, dMVCommon_DL_0x1F1C0 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: RoomCloseUpEffectGroundDObjDesc @ 0x1F270 (3 entries) */
 DObjDesc dMVCommon_RoomCloseUpEffectGroundDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x1F170 + 0xF0), { -1088.539794921875f, 2116.986328125f, -3612.323974609375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_DLLink_0x1F260, { -1088.539794921875f, 2116.986328125f, -3612.323974609375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1747,14 +1786,16 @@ Gfx dMVCommon_DL_0x222F0[25] = {
 	#include <MVCommon/DL_0x222F0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x223B8 (was gap+0x1EC0, 16 bytes) */
-u8 dMVCommon_gap_0x204F8_sub_0x1EC0[16] = {
-	#include <MVCommon/gap_0x204F8_sub_0x1EC0.data.inc.c>
+/* DObjDLLink @ 0x1EC0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x223B8[] = {
+	{ 1, dMVCommon_DL_0x22108 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x223C8 (was gap+0x1ED0, 16 bytes) */
-u8 dMVCommon_gap_0x204F8_sub_0x1ED0[16] = {
-	#include <MVCommon/gap_0x204F8_sub_0x1ED0.data.inc.c>
+/* DObjDLLink @ 0x1ED0 (2 entries) */
+DObjDLLink dMVCommon_DLLink_0x223C8[] = {
+	{ 0, dMVCommon_DL_0x216E8 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x223D8 (was gap+0x1EE0, 24 bytes) */
@@ -1789,8 +1830,8 @@ u8 dMVCommon_gap_0x204F8_sub_0x1F38[16] = {
 
 /* DObjDesc: RoomDeskGroundDObjDesc @ 0x22440 (3 entries) */
 DObjDesc dMVCommon_RoomDeskGroundDObjDesc[] = {
-	{ 0, (void*)((u8*)dMVCommon_gap_0x204F8 + 0x1EC0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x204F8 + 0x1ED0), { 371.76104736328125f, 2151.7734375f, -4845.66650390625f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0, (void*)dMVCommon_DLLink_0x223B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_DLLink_0x223C8, { 371.76104736328125f, 2151.7734375f, -4845.66650390625f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dMVCommon_gap_0x204F8 + 0x1EE0), { 524.3055419921875f, 1936.9608154296875f, -4229.2109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 

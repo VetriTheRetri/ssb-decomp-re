@@ -255,21 +255,23 @@ Gfx dEFCommonEffects1_DL_0x7668[25] = {
 	#include <EFCommonEffects1/DL_0x7668.dl.inc.c>
 };
 
-/* gap sub-block @ 0x7730 (was gap+0x2D8, 16 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0x2D8[16] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0x2D8.data.inc.c>
+/* DObjDLLink @ 0x2D8 (2 entries) */
+DObjDLLink dEFCommonEffects1_DLLink_0x7730[] = {
+	{ 1, dEFCommonEffects1_DL_0x75A0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x7740 (was gap+0x2E8, 16 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0x2E8[16] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0x2E8.data.inc.c>
+/* DObjDLLink @ 0x2E8 (2 entries) */
+DObjDLLink dEFCommonEffects1_DLLink_0x7740[] = {
+	{ 1, dEFCommonEffects1_DL_0x7668 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: DamageSlash @ 0x7750 (4 entries) */
 DObjDesc dEFCommonEffects1_DamageSlash[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dEFCommonEffects1_gap_0x7458 + 0x2D8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dEFCommonEffects1_gap_0x7458 + 0x2E8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dEFCommonEffects1_DLLink_0x7730, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dEFCommonEffects1_DLLink_0x7740, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

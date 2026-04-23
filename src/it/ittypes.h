@@ -163,7 +163,7 @@ struct ITAttributes
 	s16 map_coll_center;				// Map Collision Box center
 	s16 map_coll_bottom;				// Map Collision Box bottom
 	s16 map_coll_width;					// Map Collision Box width
-	u32 size;						// Hitbox size (see WPAttributes: u32:16 forces clean packing with the following bitfield run)
+	u16 size;						    // Hitbox size (see WPAttributes: u32:16 forces clean packing with the following bitfield run)
 	s32 angle : 10;						// Hitbox launch angle
 	u32 knockback_scale : 10;			// Hitbox knockback scale
 	u32 damage : 8;						// Hitbox damage

@@ -3,8 +3,8 @@
 
 #include <ft/fighter.h>
 
-// 8012B178
-FTStatusDesc dFTPurinSpecialStatusDescs[] =
+// 0x8012B178
+FTStatusDesc dFTPurinSpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): Attack100Start
 	{

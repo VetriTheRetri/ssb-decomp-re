@@ -3,7 +3,7 @@
 
 #include <PR/ultratypes.h>
 
-s32 osAfterPreNMI(); // this function is in 2.0J, but where?
+s32 osAfterPreNMI(void); // this function is in 2.0J, but where?
 
 // libultra internal and not decomped (need to get some J headers...)
 extern s32 __osMotorAccess(OSPfs* pfs, s32 start);

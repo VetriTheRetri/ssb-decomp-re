@@ -8,8 +8,8 @@
 
 extern void mnStartupLogoThreadUpdate(GObj *gobj);
 extern void mnStartupActorFuncRun(GObj *gobj);
-extern void mnStartupFuncStart();
+extern void mnStartupFuncStart(void);
 extern void mnStartupFuncLights(Gfx **dls);
-extern void mnStartupStartScene();
+extern void mnStartupStartScene(void);
 
 #endif

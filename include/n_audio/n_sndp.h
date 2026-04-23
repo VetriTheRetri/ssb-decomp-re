@@ -34,61 +34,61 @@
 #define MIN_RATIO	0.0001
 
 typedef enum {
-	AL_SNDP_PLAY_EVT,
-	AL_SNDP_STOP_EVT,
-	AL_SNDP_PAN_EVT,
-	AL_SNDP_VOL_EVT,
-	AL_SNDP_PITCH_EVT,
-	AL_SNDP_API_EVT,
-	AL_SNDP_DECAY_EVT,
-	AL_SNDP_END_EVT,
-	AL_SNDP_FX_EVT
+    AL_SNDP_PLAY_EVT,
+    AL_SNDP_STOP_EVT,
+    AL_SNDP_PAN_EVT,
+    AL_SNDP_VOL_EVT,
+    AL_SNDP_PITCH_EVT,
+    AL_SNDP_API_EVT,
+    AL_SNDP_DECAY_EVT,
+    AL_SNDP_END_EVT,
+    AL_SNDP_FX_EVT
 } ALSndpMsgType;
 
 typedef struct {
-	N_ALVoice     voice;     
-	ALSound     *sound;         /* sound referenced here */
-	s16         priority;
-	f32         pitch;          /* current playback pitch                    */
-	s32         state;          /* play state for this sound                 */
-	s16         vol;            /* volume - combined with volume from bank   */
-	ALPan       pan;            /* pan - 0 = left, 127 = right               */
-	u8          fxMix;          /* wet/dry mix - 0 = dry, 127 = wet          */
+    N_ALVoice     voice;     
+    ALSound     *sound;         /* sound referenced here */
+    s16         priority;
+    f32         pitch;          /* current playback pitch                    */
+    s32         state;          /* play state for this sound                 */
+    s16         vol;            /* volume - combined with volume from bank   */
+    ALPan       pan;            /* pan - 0 = left, 127 = right               */
+    u8          fxMix;          /* wet/dry mix - 0 = dry, 127 = wet          */
 } N_ALSoundState;
 
 typedef union {
 
-	N_ALEvent             msg;
+    N_ALEvent             msg;
 
-	struct {
-		s16              type;
-		N_ALSoundState  *state;
-	} common;
-	
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		s16             vol;
-	} vol;
-	
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		f32             pitch;
-	} pitch;
-	
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		ALPan           pan;
-	} pan;
-	
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		u8              mix;
-	} fx;
-	
+    struct {
+        s16              type;
+        N_ALSoundState  *state;
+    } common;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        s16             vol;
+    } vol;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        f32             pitch;
+    } pitch;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        ALPan           pan;
+    } pan;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        u8              mix;
+    } fx;
+    
 } N_ALSndpEvent;
 
 #endif /* __N_SNDP__ */

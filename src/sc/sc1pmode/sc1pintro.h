@@ -8,10 +8,10 @@
 #include <ft/ftdef.h>
 
 extern void sc1PIntroFuncLights(Gfx **dls);
-extern void sc1PIntroMakeSky();
-extern void sc1PIntroMakeBanners();
+extern void sc1PIntroMakeSky(void);
+extern void sc1PIntroMakeBanners(void);
 extern void func_ovl24_80131C58(GObj *gobj);
-extern void sc1PIntroMakeVSDecal();
+extern void sc1PIntroMakeVSDecal(void);
 extern sb32 sc1PIntroCheckNotBonusStage(s32 stage);
 extern void sc1PIntroMakeLabels(s32 stage);
 extern void sc1PIntroMakeFigures(s32 stage);
@@ -45,15 +45,15 @@ extern void sc1PIntroInitVSFighters(s32 stage);
 extern CObjDesc* sc1PIntroGetFighterCObjDesc(CObjDesc *cobj_desc, s32 fkind, s32 cobj_id);
 extern void sc1PIntroMakeFighterCamera(s32 fkind, s32 cobj_id);
 extern void sc1PIntroInitFighters(s32 stage);
-extern void sc1PIntroMakeBannersCamera();
-extern void sc1PIntroMakeDecalsCamera();
-extern void sc1PIntroMakePicturesCamera();
+extern void sc1PIntroMakeBannersCamera(void);
+extern void sc1PIntroMakeDecalsCamera(void);
+extern void sc1PIntroMakePicturesCamera(void);
 extern s32 sc1PIntroGetFighterAllocsNum(s32 stage);
-extern void sc1PIntroUpdateAnnounce();
-extern void sc1PIntroInitVars();
+extern void sc1PIntroUpdateAnnounce(void);
+extern void sc1PIntroInitVars(void);
 extern void sc1PIntroFuncRun(GObj *gobj);
 extern void sc1PIntroSetupFighterFiles(s32 stage);
-extern void sc1PIntroFuncStart();
-extern void sc1PIntroStartScene();
+extern void sc1PIntroFuncStart(void);
+extern void sc1PIntroStartScene(void);
 
 #endif

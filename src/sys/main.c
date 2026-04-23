@@ -67,15 +67,15 @@ extern uintptr_t scmanager_BSS_END;
 
 SYOverlay dSYMainSceneManagerOverlay =
 {
-	(uintptr_t)&scmanager_ROM_START,
-	(uintptr_t)&scmanager_ROM_END,
-	(uintptr_t)&scmanager_VRAM,
-	(uintptr_t)&scmanager_TEXT_START,
-	(uintptr_t)&scmanager_TEXT_END,
-	(uintptr_t)&scmanager_DATA_START,
-	(uintptr_t)&scmanager_RODATA_END,
-	(uintptr_t)&scmanager_BSS_START,
-	(uintptr_t)&scmanager_BSS_END
+    (uintptr_t)&scmanager_ROM_START,
+    (uintptr_t)&scmanager_ROM_END,
+    (uintptr_t)&scmanager_VRAM,
+    (uintptr_t)&scmanager_TEXT_START,
+    (uintptr_t)&scmanager_TEXT_END,
+    (uintptr_t)&scmanager_DATA_START,
+    (uintptr_t)&scmanager_RODATA_END,
+    (uintptr_t)&scmanager_BSS_START,
+    (uintptr_t)&scmanager_BSS_END
 };
 
 sb32 dSYMainNoThread5 = FALSE;
@@ -112,124 +112,124 @@ u8 sSYMainThreadArgBuf[0x80];
 //                               //
 // // // // // // // // // // // //
 
-u64* syMainGetThread4StackStart() 
+u64* syMainGetThread4StackStart(void) 
 {
-	return sSYMainThread4Stack + ARRAY_COUNT(sSYMainThread4Stack);
+    return sSYMainThread4Stack + ARRAY_COUNT(sSYMainThread4Stack);
 }
 
-u64* unref_8000046C()
+u64* unref_8000046C(void)
 {
-	return &sSYMainThread5Stack[0];
+    return &sSYMainThread5Stack[0];
 }
 
-void* unref_80000478() 
+void* unref_80000478(void) 
 {
-	#if defined(REGION_US)
-	return (void*)(0x00003400);
-	#else
-	return (void*)(0x00003000);
-	#endif
+    #if defined(REGION_US)
+    return (void*)(0x00003400);
+    #else
+    return (void*)(0x00003000);
+    #endif
 }
 
-void syMainSetImemStatus()
+void syMainSetImemStatus(void)
 {
-	if (IO_READ(SP_IMEM_START) == 6103)
-	{
-		gSYMainImemOK = TRUE;
-	}
-	else gSYMainImemOK = FALSE;
+    if (IO_READ(SP_IMEM_START) == 6103)
+    {
+        gSYMainImemOK = TRUE;
+    }
+    else gSYMainImemOK = FALSE;
 }
 
-void syMainSetDmemStatus()
+void syMainSetDmemStatus(void)
 {
-	if (IO_READ(SP_DMEM_START) == -1)
-	{
-		gSYMainDmemOK = TRUE;
-	} 
-	else gSYMainDmemOK = FALSE;
+    if (IO_READ(SP_DMEM_START) == -1)
+    {
+        gSYMainDmemOK = TRUE;
+    } 
+    else gSYMainDmemOK = FALSE;
 }
 
 void syMainThreadStackOverflow(s32 tid)
 {
-	syDebugPrintf("thread stack overflow  id = %d\n", tid);
+    syDebugPrintf("thread stack overflow  id = %d\n", tid);
 
-	while (TRUE);
+    while (TRUE);
 }
 
-void syMainVerifyStackProbes() 
+void syMainVerifyStackProbes(void) 
 {
-	if (gSYMainThread0Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
-	{
-		syMainThreadStackOverflow(0);
-	}
-	if (sSYMainThread1Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
-	{
-		syMainThreadStackOverflow(1);
-	}
-	if (sSYMainThread3Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
-	{
-		syMainThreadStackOverflow(3);
-	}
-	if (sSYMainThread5Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
-	{
-		syMainThreadStackOverflow(5);
-	}
+    if (gSYMainThread0Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
+    {
+        syMainThreadStackOverflow(0);
+    }
+    if (sSYMainThread1Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
+    {
+        syMainThreadStackOverflow(1);
+    }
+    if (sSYMainThread3Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
+    {
+        syMainThreadStackOverflow(3);
+    }
+    if (sSYMainThread5Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
+    {
+        syMainThreadStackOverflow(5);
+    }
 }
 
-// 800005D8
+// 0x800005D8
 void syMainThread5(void *arg)
 {
-	osCreateViManager(OS_PRIORITY_VIMGR);
-	gSYDmaRomPiHandle = osCartRomInit();
-	syDmaSramPiInit();
-	osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
-	syDmaCreateMesgQueue();
+    osCreateViManager(OS_PRIORITY_VIMGR);
+    gSYDmaRomPiHandle = osCartRomInit();
+    syDmaSramPiInit();
+    osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
+    syDmaCreateMesgQueue();
 
-	syDmaReadRom(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
-	syMainSetImemStatus();
-	syMainSetDmemStatus();
-	osCreateMesgQueue(&gSYMainThreadingMesgQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
+    syDmaReadRom(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
+    syMainSetImemStatus();
+    syMainSetDmemStatus();
+    osCreateMesgQueue(&gSYMainThreadingMesgQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
 
-	osCreateThread(&sSYMainThread3, 3, sySchedulerThreadMain, NULL, &sSYMainThread3Stack[THREAD3_STACK_SIZE], THREAD3_PRI);
-	sSYMainThread3Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread3);
-	osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
+    osCreateThread(&sSYMainThread3, 3, sySchedulerThreadMain, NULL, &sSYMainThread3Stack[THREAD3_STACK_SIZE], THREAD3_PRI);
+    sSYMainThread3Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread3);
+    osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 
-	osCreateThread(&sSYMainThread4, 4, syAudioThreadMain, NULL, &sSYMainThread4Stack[THREAD4_STACK_SIZE], THREAD4_PRI);
-	sSYMainThread4Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread4);
-	osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
+    osCreateThread(&sSYMainThread4, 4, syAudioThreadMain, NULL, &sSYMainThread4Stack[THREAD4_STACK_SIZE], THREAD4_PRI);
+    sSYMainThread4Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread4);
+    osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 
-	osCreateThread(&gSYMainThread6, 6, syControllerThreadMain, NULL, &sSYMainThread6Stack[THREAD6_STACK_SIZE], THREAD6_PRI);
-	sSYMainThread6Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&gSYMainThread6);
-	osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
+    osCreateThread(&gSYMainThread6, 6, syControllerThreadMain, NULL, &sSYMainThread6Stack[THREAD6_STACK_SIZE], THREAD6_PRI);
+    sSYMainThread6Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&gSYMainThread6);
+    osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 
-	func_80006B80();
-	syDmaLoadOverlay(&dSYMainSceneManagerOverlay);
-	scManagerRunLoop(0);
+    func_80006B80();
+    syDmaLoadOverlay(&dSYMainSceneManagerOverlay);
+    scManagerRunLoop(0);
 }
 
 void syMainThread1Idle(void *arg) 
 {
-	syDebugStartRmonThread8();
-	osCreateThread(&gSYMainThread5, 5, syMainThread5, arg, &sSYMainThread5Stack[THREAD5_STACK_SIZE], THREAD5_PRI);
-	sSYMainThread5Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
+    syDebugStartRmonThread8();
+    osCreateThread(&gSYMainThread5, 5, syMainThread5, arg, &sSYMainThread5Stack[THREAD5_STACK_SIZE], THREAD5_PRI);
+    sSYMainThread5Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
 
-	if (dSYMainNoThread5 == FALSE)
-	{ 
-		osStartThread(&gSYMainThread5);
-	}
-	osSetThreadPri(NULL, OS_PRIORITY_IDLE);
+    if (dSYMainNoThread5 == FALSE)
+    { 
+        osStartThread(&gSYMainThread5);
+    }
+    osSetThreadPri(NULL, OS_PRIORITY_IDLE);
 
-	while (TRUE);
+    while (TRUE);
 }
 
-void syMainLoop()
+void syMainLoop(void)
 {
-	gSYMainThread0Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
-	#if defined(REGION_US)
-	__osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
-	#endif
-	osInitialize();
-	osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, &sSYMainThread1Stack[THREAD1_STACK_SIZE], OS_PRIORITY_APPMAX);
+    gSYMainThread0Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
+    #if defined(REGION_US)
+    __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
+    #endif
+    osInitialize();
+    osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, &sSYMainThread1Stack[THREAD1_STACK_SIZE], OS_PRIORITY_APPMAX);
 
-	sSYMainThread1Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread1);
+    sSYMainThread1Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread1);
 }

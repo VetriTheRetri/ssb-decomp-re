@@ -6,17 +6,17 @@
 #include <PR/gbi.h>
 
 extern void mvOpeningClashFuncLights(Gfx **dls);
-extern void mvOpeningClashMakeFighters();
+extern void mvOpeningClashMakeFighters(void);
 extern void mvOpeningClashVoidProcDisplay(GObj *gobj);
-extern void mvOpeningClashMakeVoid();
-extern void mvOpeningClashMakeWallpaper();
-extern void mvOpeningClashMakeFightersCamera();
-extern void mvOpeningClashMakeVoidCamera();
+extern void mvOpeningClashMakeVoid(void);
+extern void mvOpeningClashMakeWallpaper(void);
+extern void mvOpeningClashMakeFightersCamera(void);
+extern void mvOpeningClashMakeVoidCamera(void);
 extern void mvOpeningClashWallpaperProcDisplay(GObj*);
-extern void mvOpeningClashMakeWallpaperCamera();
-extern void mvOpeningClashInitTotalTimeTics();
+extern void mvOpeningClashMakeWallpaperCamera(void);
+extern void mvOpeningClashInitTotalTimeTics(void);
 extern void mvOpeningClashFuncRun(GObj *gobj);
-extern void mvOpeningClashFuncStart();
-extern void mvOpeningClashStartScene();
+extern void mvOpeningClashFuncStart(void);
+extern void mvOpeningClashStartScene(void);
 
 #endif

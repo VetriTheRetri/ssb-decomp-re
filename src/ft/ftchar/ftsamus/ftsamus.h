@@ -27,7 +27,7 @@
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-extern FTStatusDesc dFTSamusSpecialStatusDescs[];
+extern FTStatusDesc dFTSamusSpecialStatusDescs[/* */];
 
 extern void *gFTDataSamusMain;
 extern void *gFTDataSamusMainMotion;
@@ -39,61 +39,61 @@ extern s32 gFTDataSamusParticleBankID;
 
 typedef enum ftSamusMotion
 {
-	nFTSamusMotionAppearR = nFTCommonMotionSpecialStart,
-	nFTSamusMotionAppearL,
-	nFTSamusMotionSpecialNStart,
-	nFTSamusMotionSpecialNLoop,
-	nFTSamusMotionSpecialNEnd,
-	nFTSamusMotionSpecialAirNStart,
-	nFTSamusMotionSpecialAirNEnd,
-	nFTSamusMotionSpecialHi,
-	nFTSamusMotionSpecialAirHi,
-	nFTSamusMotionSpecialLw,
-	nFTSamusMotionSpecialAirLw
+    nFTSamusMotionAppearR = nFTCommonMotionSpecialStart,
+    nFTSamusMotionAppearL,
+    nFTSamusMotionSpecialNStart,
+    nFTSamusMotionSpecialNLoop,
+    nFTSamusMotionSpecialNEnd,
+    nFTSamusMotionSpecialAirNStart,
+    nFTSamusMotionSpecialAirNEnd,
+    nFTSamusMotionSpecialHi,
+    nFTSamusMotionSpecialAirHi,
+    nFTSamusMotionSpecialLw,
+    nFTSamusMotionSpecialAirLw
 
 } ftSamusMotion;
 
 typedef enum ftSamusStatus
 {
-	nFTSamusStatusAppearR = nFTCommonStatusSpecialStart,
-	nFTSamusStatusAppearL,
-	nFTSamusStatusSpecialNStart,
-	nFTSamusStatusSpecialNLoop,
-	nFTSamusStatusSpecialNEnd,
-	nFTSamusStatusSpecialAirNStart,
-	nFTSamusStatusSpecialAirNEnd,
-	nFTSamusStatusSpecialHi,
-	nFTSamusStatusSpecialAirHi,
-	nFTSamusStatusSpecialLw,
-	nFTSamusStatusSpecialAirLw
+    nFTSamusStatusAppearR = nFTCommonStatusSpecialStart,
+    nFTSamusStatusAppearL,
+    nFTSamusStatusSpecialNStart,
+    nFTSamusStatusSpecialNLoop,
+    nFTSamusStatusSpecialNEnd,
+    nFTSamusStatusSpecialAirNStart,
+    nFTSamusStatusSpecialAirNEnd,
+    nFTSamusStatusSpecialHi,
+    nFTSamusStatusSpecialAirHi,
+    nFTSamusStatusSpecialLw,
+    nFTSamusStatusSpecialAirLw
 
 } ftSamusStatus;
 
 typedef struct FTSamusPassiveVars
 {
-	s32 charge_level;
-	s32 charge_recoil;
+    s32 charge_level;
+    s32 charge_recoil;
 
 } FTSamusPassiveVars;
 
 typedef struct ftSamusSpecialNStatusVars
 {
-	sb32 is_release;
-	s32 charge_int;
-	GObj *charge_gobj;
+    sb32 is_release;
+    s32 charge_int;
+    GObj *charge_gobj;
 
 } ftSamusSpecialNStatusVars;
 
 typedef struct ftSamusSpecialLwStatusVars
 {
-	sb32 unused;
+    sb32 unused;
 
 } ftSamusSpecialLwStatusVars;
 
 typedef union FTSamusStatusVars
 {
-	ftSamusSpecialNStatusVars specialn;
-	ftSamusSpecialLwStatusVars speciallw;
+    ftSamusSpecialNStatusVars specialn;
+    ftSamusSpecialLwStatusVars speciallw;
 
 } FTSamusStatusVars;
 

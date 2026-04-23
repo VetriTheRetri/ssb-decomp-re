@@ -16,14 +16,14 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 8018E070
+// 0x8018E070
 CObjDesc dMVOpeningDonkeyCObjDescStart = { { -1100.0F, 150.0F, 400.0F }, { 0.0F, 150.0F, 0.0F }, 0.0F };
 
-// 8018E08C
+// 0x8018E08C
 CObjDesc dMVOpeningDonkeyCObjDescEnd = { { -900.0F, 500.0F, 1800.0F }, { 0.0F, 500.0F, 0.0F }, 0.0F };
 
-// 8018E0A8
-FTKeyEvent dMVOpeningDonkeyKeyEvents[] =
+// 0x8018E0A8
+FTKeyEvent dMVOpeningDonkeyKeyEvents[/* */] =
 {
 	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
@@ -32,8 +32,8 @@ FTKeyEvent dMVOpeningDonkeyKeyEvents[] =
 	FTKEY_EVENT_END()                                 // 0x0000
 };
 
-// 8018E0BC
-u32 dMVOpeningDonkeyFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+// 0x8018E0BC
+u32 dMVOpeningDonkeyFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -41,49 +41,49 @@ u32 dMVOpeningDonkeyFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningC
 //                               //
 // // // // // // // // // // // //
 
-// 8018E1C0
+// 0x8018E1C0
 s32 sMVOpeningDonkeyPad0x8018E1C0[2];
 
-// 8018E1C8
+// 0x8018E1C8
 s32 sMVOpeningDonkeyTotalTimeTics;
 
-// 8018E1CC
+// 0x8018E1CC
 GObj *sMVOpeningDonkeyNameGObj;
 
-// 8018E1D0
+// 0x8018E1D0
 GObj *sMVOpeningDonkeyFighterGObj;
 
-// 8018E1D4
+// 0x8018E1D4
 s32 sMVOpeningDonkeyPad0x8018E1D4;
 
-// 8018E1D8
+// 0x8018E1D8
 GObj *sMVOpeningDonkeyStageCameraGObj;
 
-// 8018E1DC
+// 0x8018E1DC
 void *sMVOpeningDonkeyFigatreeHeap;
 
-// 8018E1E0
+// 0x8018E1E0
 f32 sMVOpeningDonkeyPosedFighterSpeed;
 
-// 8018E1E4
+// 0x8018E1E4
 s32 sMVOpeningDonkeyPad0x8018E1E4;
 
-// 8018E1E8
+// 0x8018E1E8
 CObjDesc sMVOpeningDonkeyAdjustedStartCObjDesc;
 
-// 8018E208
+// 0x8018E208
 CObjDesc sMVOpeningDonkeyAdjustedEndCObjDesc;
 
-// 8018E228
+// 0x8018E228
 LBFileNode sMVOpeningDonkeyStatusBuffer[48];
 
-// 8018E3A8
+// 0x8018E3A8
 LBFileNode sMVOpeningDonkeyForceStatusBuffer[7];
 
-// 8018E3E0
+// 0x8018E3E0
 void *sMVOpeningDonkeyFiles[ARRAY_COUNT(dMVOpeningDonkeyFileIDs)];
 
-// 8018E3E8
+// 0x8018E3E8
 SCBattleState sMVOpeningDonkeyBattleState;
 
 // // // // // // // // // // // //
@@ -92,8 +92,8 @@ SCBattleState sMVOpeningDonkeyBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 8018D0C0
-void mvOpeningDonkeySetupFiles()
+// 0x8018D0C0
+void mvOpeningDonkeySetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -110,7 +110,7 @@ void mvOpeningDonkeySetupFiles()
 	lbRelocLoadFilesListed(dMVOpeningDonkeyFileIDs, sMVOpeningDonkeyFiles);
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningDonkeyInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -125,25 +125,25 @@ void mvOpeningDonkeyInitName(SObj *sobj)
 	sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
-void mvOpeningDonkeyMakeName()
+// 0x8018D194
+void mvOpeningDonkeyMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 #if defined (REGION_US)
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llIFCommonAnnounceCommonLetterDSprite,
 		&llIFCommonAnnounceCommonLetterKSprite,
 		0x0
 	};
-	Vec2f pos[] =
+	Vec2f pos[/* */] =
 	{
 		{  0.0F, 0.0F },
 		{ 40.0F, 0.0F }
 	};
 #else
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llIFCommonAnnounceCommonLetterDSprite,
 		&llIFCommonAnnounceCommonLetterOSprite,
@@ -158,7 +158,7 @@ void mvOpeningDonkeyMakeName()
 		0x0
 	};
 
-	Vec2f pos[] =
+	Vec2f pos[/* */] =
 	{
 		{   0.0F,  0.0F },
 		{  30.0F,  0.0F },
@@ -196,7 +196,7 @@ void mvOpeningDonkeyMakeName()
 	}
 }
 
-// 8018D2FC
+// 0x8018D2FC
 void mvOpeningDonkeyMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -213,7 +213,7 @@ void mvOpeningDonkeyMotionCameraProcUpdate(GObj *gobj)
 	}
 }
 
-// 8018D3F4
+// 0x8018D3F4
 void mvOpeningDonkeyMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
@@ -254,8 +254,8 @@ void mvOpeningDonkeyMakeMotionCamera(Vec3f move)
 	cobj->vec.up.x = sMVOpeningDonkeyAdjustedStartCObjDesc.upx;
 }
 
-// 8018D604
-void mvOpeningDonkeyMakeMotionWindow()
+// 0x8018D604
+void mvOpeningDonkeyMakeMotionWindow(void)
 {
 	GObj *fighter_gobj;
 	s32 i;
@@ -313,7 +313,7 @@ void mvOpeningDonkeyMakeMotionWindow()
 	}
 }
 
-// 8018D834
+// 0x8018D834
 void mvOpeningDonkeyPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -326,8 +326,8 @@ void mvOpeningDonkeyPosedWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D934
-void mvOpeningDonkeyMakePosedWallpaper()
+// 0x8018D934
+void mvOpeningDonkeyMakePosedWallpaper(void)
 {
 	gcAddGObjDisplay
 	(
@@ -345,7 +345,7 @@ void mvOpeningDonkeyMakePosedWallpaper()
 	);
 }
 
-// 8018D980
+// 0x8018D980
 void mvOpeningDonkeyPosedFighterProcUpdate(GObj *fighter_gobj)
 {
 	switch (sMVOpeningDonkeyTotalTimeTics)
@@ -376,8 +376,8 @@ void mvOpeningDonkeyPosedFighterProcUpdate(GObj *fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningDonkeyPosedFighterSpeed;
 }
 
-// 8018DA50
-void mvOpeningDonkeyMakePosedFighter()
+// 0x8018DA50
+void mvOpeningDonkeyMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -399,8 +399,8 @@ void mvOpeningDonkeyMakePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 8018DB50
-void mvOpeningDonkeyMakeNameCamera()
+// 0x8018DB50
+void mvOpeningDonkeyMakeNameCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -423,8 +423,8 @@ void mvOpeningDonkeyMakeNameCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DBF0
-void mvOpeningDonkeyMakePosedFighterCamera()
+// 0x8018DBF0
+void mvOpeningDonkeyMakePosedFighterCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -452,8 +452,8 @@ void mvOpeningDonkeyMakePosedFighterCamera()
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 8018DCD8
-void mvOpeningDonkeyMakePosedWallpaperCamera()
+// 0x8018DCD8
+void mvOpeningDonkeyMakePosedWallpaperCamera(void)
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -478,7 +478,7 @@ void mvOpeningDonkeyMakePosedWallpaperCamera()
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 8018DD80
+// 0x8018DD80
 void mvOpeningDonkeyFuncRun(GObj *gobj)
 {
 	sMVOpeningDonkeyTotalTimeTics++;
@@ -505,14 +505,14 @@ void mvOpeningDonkeyFuncRun(GObj *gobj)
 	}
 }
 
-// 8018DE3C
-void mvOpeningDonkeyInitVars()
+// 0x8018DE3C
+void mvOpeningDonkeyInitVars(void)
 {
 	sMVOpeningDonkeyTotalTimeTics = 0;
 }
 
-// 8018DE48
-void mvOpeningDonkeyFuncStart()
+// 0x8018DE48
+void mvOpeningDonkeyFuncStart(void)
 {
 	sMVOpeningDonkeyBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningDonkeyBattleState;
@@ -553,63 +553,63 @@ void mvOpeningDonkeyFuncStart()
 	}
 }
 
-// 8018DFCC
+// 0x8018DFCC
 void mvOpeningDonkeyFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E0E0
+// 0x8018E0E0
 SYVideoSetup dMVOpeningDonkeyVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 8018E0FC
+// 0x8018E0FC
 SYTaskmanSetup dMVOpeningDonkeyTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                              // ???
-		gcRunAll,                 	 	// Update function
-		scManagerFuncDraw,              // Frame draw function
-		&ovl37_BSS_END,                 // Allocatable memory pool start
-		0,                              // Allocatable memory pool size
-		1,                              // ???
-		2,                              // Number of contexts?
-		sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
-		sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
-		0,                              // Display List Buffer 2 Size
-		0,                              // Display List Buffer 3 Size
-		0x8000,                         // Graphics Heap Size
-		2,                              // ???
-		0xC000,                         // RDP Output Buffer Size
-		mvOpeningDonkeyFuncLights,    	// Pre-render function
-		syControllerFuncRead,           // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                              // ???
+        gcRunAll,                 	 	// Update function
+        scManagerFuncDraw,              // Frame draw function
+        &ovl37_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mvOpeningDonkeyFuncLights,    	// Pre-render function
+        syControllerFuncRead,           // Controller I/O function
+    },
 
-	0,                                  // Number of GObjThreads
-	sizeof(u64) * 192,                  // Thread stack size
-	0,                                  // Number of thread stacks
-	0,                                  // ???
-	0,                                  // Number of GObjProcesses
-	0,                                  // Number of GObjs
-	sizeof(GObj),                       // GObj size
-	0,                                  // Number of XObjs
-	dLBCommonFuncMatrixList,            // Matrix function list
-	NULL,                               // DObjVec eject function
-	0,                                  // Number of AObjs
-	0,                                  // Number of MObjs
-	0,                                  // Number of DObjs
-	sizeof(DObj),                       // DObj size
-	0,                                  // Number of SObjs
-	sizeof(SObj),                       // SObj size
-	0,                                  // Number of CObjs
-	sizeof(CObj),                       // Camera size
-	
-	mvOpeningDonkeyFuncStart          	// Task start function
+    0,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of XObjs
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // DObjVec eject function
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of CObjs
+    sizeof(CObj),                       // Camera size
+    
+    mvOpeningDonkeyFuncStart          	// Task start function
 };
 
-// 8018E018
-void mvOpeningDonkeyStartScene()
+// 0x8018E018
+void mvOpeningDonkeyStartScene(void)
 {
 	dMVOpeningDonkeyVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningDonkeyVideoSetup);

@@ -3,8 +3,8 @@
 
 #include <ft/fighter.h>
 
-// 8012B4AC
-FTStatusDesc dFTBossSpecialStatusDescs[] =
+// 0x8012B4AC
+FTStatusDesc dFTBossSpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): Unk
 	{

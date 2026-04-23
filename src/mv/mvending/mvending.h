@@ -6,25 +6,25 @@
 #include <PR/gbi.h>
 
 extern void mvEndingFuncLights(Gfx **dls);
-extern void mvEndingMakeRoomBackground();
-extern void mvEndingMakeRoomDesk();
-extern void mvEndingMakeRoomBooks();
-extern void mvEndingMakeRoomPencils();
-extern void mvEndingMakeRoomLamp();
-extern void mvEndingMakeRoomTissues();
+extern void mvEndingMakeRoomBackground(void);
+extern void mvEndingMakeRoomDesk(void);
+extern void mvEndingMakeRoomBooks(void);
+extern void mvEndingMakeRoomPencils(void);
+extern void mvEndingMakeRoomLamp(void);
+extern void mvEndingMakeRoomTissues(void);
 extern void mvEndingMakeFighter(s32 fkind);
 extern void mvEndingRoomFadeInProcDisplay(GObj *gobj);
-extern void mvEndingMakeRoomFadeIn();
-extern void mvEndingMakeRoomFadeInCamera();
+extern void mvEndingMakeRoomFadeIn(void);
+extern void mvEndingMakeRoomFadeInCamera(void);
 extern void mvEndingRoomLightProcDisplay(GObj *gobj);
-extern void mvEndingMakeRoomLight();
-extern void mvEndingMakeRoomLightCamera();
-extern void mvEndingEjectRoomGObjs();
+extern void mvEndingMakeRoomLight(void);
+extern void mvEndingMakeRoomLightCamera(void);
+extern void mvEndingEjectRoomGObjs(void);
 extern void mvEndingSetupOperatorCamera(GObj *gobj);
-extern void mvEndingMakeMainCameras();
-extern void mvEndingInitVars();
+extern void mvEndingMakeMainCameras(void);
+extern void mvEndingInitVars(void);
 extern void mvEndingFuncRun(GObj *gobj);
-extern void mvEndingFuncStart();
-extern void mvEndingStartScene();
+extern void mvEndingFuncStart(void);
+extern void mvEndingStartScene(void);
 
 #endif

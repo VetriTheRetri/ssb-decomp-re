@@ -13,17 +13,17 @@
 //                               //
 // // // // // // // // // // // //
 
-// 801497A0
+// 0x801497A0
 void ftCommonShieldBreakStandProcUpdate(GObj *fighter_gobj)
 {
-	ftAnimEndCheckSetStatus(fighter_gobj, ftCommonFuraFuraSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonFuraFuraSetStatus);
 }
 
-// 801497C4
+// 0x801497C4
 void ftCommonShieldBreakStandSetStatus(GObj *fighter_gobj)
 {
-	FTStruct *fp = ftGetStruct(fighter_gobj);
-	s32 status_id = (fp->status_id == nFTCommonStatusShieldBreakDownD) ? nFTCommonStatusShieldBreakStandD : nFTCommonStatusShieldBreakStandU;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    s32 status_id = (fp->status_id == nFTCommonStatusShieldBreakDownD) ? nFTCommonStatusShieldBreakStandD : nFTCommonStatusShieldBreakStandU;
 
-	ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUS_FLAGS);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUS_FLAGS);
 }

@@ -15,8 +15,8 @@
 //                               //
 // // // // // // // // // // // //
 
-// 801344D0
-u32 dMNMapsFileIDs[] =
+// 0x801344D0
+u32 dMNMapsFileIDs[/* */] =
 {
 	&llFTEmblemSpritesFileID,
 	&llMNSelectCommonFileID,
@@ -25,8 +25,8 @@ u32 dMNMapsFileIDs[] =
 	&llGRWallpaperTrainingBlackFileID
 };
 
-// 801344E4
-GRFileInfo dMNMapsFileInfos[] =
+// 0x801344E4
+GRFileInfo dMNMapsFileInfos[/* */] =
 {
 	{ &llGRCastleMapFileID,   &llGRCastleMapMapHeader },
 	{ &llGRSectorMapFileID,   &llGRSectorMapMapHeader },
@@ -39,30 +39,30 @@ GRFileInfo dMNMapsFileInfos[] =
 	{ &llGRInishieMapFileID,  &llGRInishieMapMapHeader }
 };
 
-// 8013452C
-intptr_t dMNMapsWallpaperOffsets[] =
+// 0x8013452C
+intptr_t dMNMapsWallpaperOffsets[/* */] =
 {
 	0x00026C88, 0x00026C88, 0x00026C88,
 	0x00026C88, 0x00026C88, 0x00026C88,
 	0x00026C88, 0x00026C88, 0x00026C88
 };
 
-// 80134550
-GRFileInfo dMNMapsTrainingModeFileInfos[] =
+// 0x80134550
+GRFileInfo dMNMapsTrainingModeFileInfos[/* */] =
 {
 	{ &llGRWallpaperTrainingBlackFileID, 0x00000000 },
 	{ &llGRWallpaperTrainingYellowFileID,0xEE9E0600 },
 	{ &llGRWallpaperTrainingBlueFileID, 	0xAFF5FF00 }
 };
 
-// 80134568
-s32 dMNMapsTrainingModeWallpaperIDs[] = { 2, 0, 0, 0, 2, 1, 2, 2, 2, 0 };
+// 0x80134568
+s32 dMNMapsTrainingModeWallpaperIDs[/* */] = { 2, 0, 0, 0, 2, 1, 2, 2, 2, 0 };
 
-// 80134590
+// 0x80134590
 Lights1 dMNMapsLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
 
-// 801345A8
-Gfx dMNMapsDisplayList[] =
+// 0x801345A8
+Gfx dMNMapsDisplayList[/* */] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNMapsLights1),
@@ -75,43 +75,43 @@ Gfx dMNMapsDisplayList[] =
 //                               //
 // // // // // // // // // // // //
 
-// 80134BD0
+// 0x80134BD0
 s32 sMNMapsPad0x80134BD0[2];
 
-// 80134BD8
+// 0x80134BD8
 s32 sMNMapsCursorSlot;
 
-// 80134BDC
+// 0x80134BDC
 GObj *sMNMapsCursorGObj;
 
-// 80134BE0
+// 0x80134BE0
 GObj *sMNMapsNameLogoGObj;
 
-// 80134BE4
+// 0x80134BE4
 GObj *sMNMapsHeap0WallpaperGObj;
 
-// 80134BE8
+// 0x80134BE8
 GObj *sMNMapsHeap1WallpaperGObj;
 
-// 80134BF0
+// 0x80134BF0
 GObj *sMNMapsHeap0LayerGObjs[4];
 
-// 80134C00
+// 0x80134C00
 GObj *sMNMapsHeap1LayerGObjs[4];
 
-// 80134C10
+// 0x80134C10
 MPGroundData *sMNMapsGroundInfo;
 
 // 0x80134C14;
 CObj *sMNMapsPreviewCObj;
 
-// 80134C18
+// 0x80134C18
 sb32 sMNMapsIsTrainingMode;
 
 // 0x80134C1C - // flag indicating which bonus features are available
 u8 sMNMapsUnlockedMask;
 
-// 80134C20
+// 0x80134C20
 s32 sMNMapsHeapID;
 
 // 0x80134C24 - Frames elapsed on SSS
@@ -123,19 +123,19 @@ s32 sMNMapsScrollWait;
 // 0x80134C2C - Frames to wait until exiting Stage Select
 s32 sMNMapsReturnTic;
 
-// 80134C30
+// 0x80134C30
 LBFileNode sMNMapsStatusBuffer[30];
 
-// 80134D20
+// 0x80134D20
 LBFileNode sMNMapsForceStatusBuffer[30];
 
-// 80134E10
+// 0x80134E10
 void *sMNMapsFiles[ARRAY_COUNT(dMNMapsFileIDs)];
 
-// 80134E24
+// 0x80134E24
 void *sMNMapsModelHeap0;
 
-// 80134E28
+// 0x80134E28
 void *sMNMapsModelHeap1;
 
 // // // // // // // // // // // //
@@ -144,8 +144,8 @@ void *sMNMapsModelHeap1;
 //                               //
 // // // // // // // // // // // //
 
-// 80131B00
-void mnMapsAllocModelHeaps()
+// 0x80131B00
+void mnMapsAllocModelHeaps(void)
 {
 	size_t size, max = 0;
 	s32 i;
@@ -163,13 +163,13 @@ void mnMapsAllocModelHeaps()
 	sMNMapsModelHeap1 = syTaskmanMalloc(max, 0x10);
 }
 
-// 80131B88
+// 0x80131B88
 void mnMapsFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNMapsDisplayList);
 }
 
-// 80131BAC
+// 0x80131BAC
 sb32 mnMapsCheckLocked(s32 gkind)
 {
 	if (gkind == nGRKindInishie)
@@ -183,7 +183,7 @@ sb32 mnMapsCheckLocked(s32 gkind)
 	else return FALSE;
 }
 
-// 80131BE4
+// 0x80131BE4
 s32 mnMapsGetCharacterID(const char c)
 {
 	switch (c)
@@ -209,7 +209,7 @@ s32 mnMapsGetCharacterID(const char c)
 	}
 }
 
-// 80131C5C
+// 0x80131C5C
 f32 mnMapsGetCharacterSpacing(const char *str, s32 c)
 {
 	switch (str[c])
@@ -279,7 +279,7 @@ f32 mnMapsGetCharacterSpacing(const char *str, s32 c)
 // 0x80131D80 - Unused?
 void mnMapsMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
-	intptr_t chars[] =
+	intptr_t chars[/* */] =
 	{
 		&llMNCommonFontsLetterASprite, &llMNCommonFontsLetterBSprite,
 		&llMNCommonFontsLetterCSprite, &llMNCommonFontsLetterDSprite,
@@ -344,8 +344,8 @@ void mnMapsMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 	}
 }
 
-// 80131FA4
-void mnMapsMakeWallpaper()
+// 0x80131FA4
+void mnMapsMakeWallpaper(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -368,8 +368,8 @@ void mnMapsMakeWallpaper()
 	sobj->pos.y = 10.0F;
 }
 
-// 80132048
-void mnMapsMakePlaque()
+// 0x80132048
+void mnMapsMakePlaque(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -385,7 +385,7 @@ void mnMapsMakePlaque()
 	sobj->pos.y = 124.0F;
 }
 
-// 801320E0
+// 0x801320E0
 void mnMapsLabelsProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -405,8 +405,8 @@ void mnMapsLabelsProcDisplay(GObj *gobj)
 	lbCommonDrawSObjAttr(gobj);
 }
 
-// 80132288
-void mnMapsMakeLabels()
+// 0x80132288
+void mnMapsMakeLabels(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -451,10 +451,10 @@ void mnMapsMakeLabels()
 	sobj->pos.y = 191.0F;
 }
 
-// 80132430
+// 0x80132430
 s32 mnMapsGetGroundKind(s32 slot)
 {
-	s32 gkinds[] =
+	s32 gkinds[/* */] =
 	{
 		nGRKindCastle, nGRKindJungle, nGRKindHyrule, nGRKindZebes, nGRKindInishie,
 		nGRKindYoster, nGRKindPupupu, nGRKindSector, nGRKindYamabuki, 0xDE
@@ -467,7 +467,7 @@ s32 mnMapsGetGroundKind(s32 slot)
 	return gkinds[slot];
 }
 
-// 80132498
+// 0x80132498
 s32 mnMapsGetSlot(s32 gkind)
 {
 	switch (gkind)
@@ -504,13 +504,13 @@ s32 mnMapsGetSlot(s32 gkind)
 	}
 }
 
-// 80132528
-void mnMapsMakeIcons()
+// 0x80132528
+void mnMapsMakeIcons(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNMapsPeachsCastleSprite, 	&llMNMapsSectorZSprite,
 		&llMNMapsCongoJungleSprite, 	&llMNMapsPlanetZebesSprite,
@@ -550,10 +550,10 @@ void mnMapsMakeIcons()
 	}
 }
 
-// 801326DC
+// 0x801326DC
 void mnMapsSetNamePosition(SObj *sobj, s32 gkind)
 {
-	Vec2f positions[] =
+	Vec2f positions[/* */] =
 	{
 		{ 195.0F, 196.0F },
 		{ 202.0F, 196.0F },
@@ -574,11 +574,11 @@ void mnMapsSetNamePosition(SObj *sobj, s32 gkind)
 #endif
 }
 
-// 80132738
+// 0x80132738
 void mnMapsMakeName(GObj *gobj, s32 gkind)
 {
 	SObj* sobj;
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNMapsPeachsCastleTextSprite,
 		&llMNMapsSectorZTextSprite,
@@ -603,8 +603,8 @@ void mnMapsMakeName(GObj *gobj, s32 gkind)
 }
 
 #if defined(REGION_US)
-// 80134700
-char *dMNMapsSubtitles[] =
+// 0x80134700
+char *dMNMapsSubtitles[/* */] =
 {
 	"IN THE SKY OF",
 	"SECTOR Z",
@@ -616,7 +616,7 @@ char *dMNMapsSubtitles[] =
 	"YAMABUKI CITY",
 	"CLASSIC MUSHROOM"
 };
-char *dMNMapsSubtitles2[] =
+char *dMNMapsSubtitles2[/* */] =
 {
 	"CASTLE PEACH",
 	"ABOARD A GREAT FOX",
@@ -629,8 +629,8 @@ char *dMNMapsSubtitles2[] =
 	"KINGDOM"
 };
 
-// 80134748
-Vec2f dMNMapsSubtitlePositions[] =
+// 0x80134748
+Vec2f dMNMapsSubtitlePositions[/* */] =
 {
 	{ 192.0F, 167.0F },
 	{ 214.0F, 167.0F },
@@ -642,7 +642,7 @@ Vec2f dMNMapsSubtitlePositions[] =
 	{ 199.0F, 169.0F },
 	{ 191.0F, 167.0F }
 };
-Vec2f dMNMapsSubtitlePositions2[] =
+Vec2f dMNMapsSubtitlePositions2[/* */] =
 {
 	{ 209.0F, 174.0F },
 	{ 188.0F, 174.0F },
@@ -655,17 +655,17 @@ Vec2f dMNMapsSubtitlePositions2[] =
 	{ 213.0F, 174.0 }
 };
 
-// 801347D8
-u32 dMNMapsSubtitleColors[] = { 255, 255, 255 };
+// 0x801347D8
+u32 dMNMapsSubtitleColors[/* */] = { 255, 255, 255 };
 
 // 0x801327E0 - Unused?
-void mnMapsSubtitleHasExtraLine()
+void mnMapsSubtitleHasExtraLine(void)
 {
 	return;
 }
 
 // 0x801327E8 - Unused?
-void mnMapsMakeSubtitle()
+void mnMapsMakeSubtitle(void)
 {
 	return;
 }
@@ -686,71 +686,71 @@ sb32 mnMapsSubtitleHasExtraLine(s32 gkind)
 
 // 0x801327E8 - Unused?
 void mnMapsMakeSubtitle(GObj *gobj, s32 gkind) {
-	char *dMNMapsSubtitles[] =
-	{
-		"IN THE SKY OF",
-		"SECTOR Z",
-		"CONGO JUNGLE",
-		"PLANET ZEBES",
-		"CASTLE OF HYRULE",
-		"YOSHI'S ISLAND",
-		"PUPUPU LAND",
-		"YAMABUKI CITY",
-		"CLASSIC MUSHROOM"
-	};
-	char *dMNMapsSubtitles2[] =
-	{
-		"CASTLE PEACH",
-		"ABOARD A GREAT FOX",
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		"KINGDOM"
-	};
+    char *dMNMapsSubtitles[/* */] =
+    {
+    	"IN THE SKY OF",
+    	"SECTOR Z",
+    	"CONGO JUNGLE",
+    	"PLANET ZEBES",
+    	"CASTLE OF HYRULE",
+    	"YOSHI'S ISLAND",
+    	"PUPUPU LAND",
+    	"YAMABUKI CITY",
+    	"CLASSIC MUSHROOM"
+    };
+    char *dMNMapsSubtitles2[/* */] =
+    {
+    	"CASTLE PEACH",
+    	"ABOARD A GREAT FOX",
+    	NULL,
+    	NULL,
+    	NULL,
+    	NULL,
+    	NULL,
+    	NULL,
+    	"KINGDOM"
+    };
 
-	Vec2f dMNMapsSubtitlePositions[] =
-	{
-		{ 192.0F, 167.0F },
-		{ 214.0F, 167.0F },
-		{ 202.0F, 169.0F },
-		{ 202.0F, 169.0F },
-		{ 193.0F, 169.0F },
-		{ 198.0F, 169.0F },
-		{ 205.0F, 169.0F },
-		{ 199.0F, 169.0F },
-		{ 191.0F, 167.0F }
-	};
-	Vec2f dMNMapsSubtitlePositions2[] =
-	{
-		{ 209.0F, 174.0F },
-		{ 188.0F, 174.0F },
-		{   0.0F,   0.0F },
-		{   0.0F,   0.0F },
-		{   0.0F,   0.0F },
-		{   0.0F,   0.0F },
-		{   0.0F,   0.0F },
-		{ 203.0F, 174.0F }, 
-		{ 213.0F, 174.0 }
-	};
+    Vec2f dMNMapsSubtitlePositions[/* */] =
+    {
+        { 192.0F, 167.0F },
+        { 214.0F, 167.0F },
+        { 202.0F, 169.0F },
+        { 202.0F, 169.0F },
+        { 193.0F, 169.0F },
+        { 198.0F, 169.0F },
+        { 205.0F, 169.0F },
+        { 199.0F, 169.0F },
+        { 191.0F, 167.0F }
+    };
+    Vec2f dMNMapsSubtitlePositions2[/* */] =
+    {
+        { 209.0F, 174.0F },
+        { 188.0F, 174.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        { 203.0F, 174.0F }, 
+        { 213.0F, 174.0 }
+    };
 
-	u32 dMNMapsSubtitleColors[] = { 255, 255, 255 };
+    u32 dMNMapsSubtitleColors[/* */] = { 255, 255, 255 };
 
-	mnMapsMakeString(gobj, dMNMapsSubtitles[gkind], dMNMapsSubtitlePositions[gkind].x, dMNMapsSubtitlePositions[gkind].y, dMNMapsSubtitleColors);
-	
-	if (mnMapsSubtitleHasExtraLine(gkind) != FALSE) 
-	{
-		mnMapsMakeString(gobj, dMNMapsSubtitles2[gkind], dMNMapsSubtitlePositions2[gkind].x, dMNMapsSubtitlePositions2[gkind].y, dMNMapsSubtitleColors);
-	}
+    mnMapsMakeString(gobj, dMNMapsSubtitles[gkind], dMNMapsSubtitlePositions[gkind].x, dMNMapsSubtitlePositions[gkind].y, dMNMapsSubtitleColors);
+    
+    if (mnMapsSubtitleHasExtraLine(gkind) != FALSE) 
+    {
+        mnMapsMakeString(gobj, dMNMapsSubtitles2[gkind], dMNMapsSubtitlePositions2[gkind].x, dMNMapsSubtitlePositions2[gkind].y, dMNMapsSubtitleColors);
+    }
 }
 #endif
 
-// 801327F0
+// 0x801327F0
 void mnMapsSetLogoPosition(GObj *gobj, s32 gkind)
 {
-	Vec2f positions[] =
+	Vec2f positions[/* */] =
 	{
 		{ 3.0F, 19.0F },
 		{ 3.0F, 19.0F },
@@ -776,12 +776,12 @@ void mnMapsSetLogoPosition(GObj *gobj, s32 gkind)
 	}
 }
 
-// 801328A8
+// 0x801328A8
 void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 {
 	SObj *sobj;
 
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llFTEmblemSpritesMarioSprite,	&llFTEmblemSpritesFoxSprite,
 		&llFTEmblemSpritesDonkeySprite, 	&llFTEmblemSpritesMetroidSprite,
@@ -814,7 +814,7 @@ void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 	mnMapsSetLogoPosition(gobj, gkind);
 }
 
-// 801329AC
+// 0x801329AC
 void mnMapsMakeNameAndEmblem(s32 slot)
 {
 	GObj *gobj;
@@ -837,7 +837,7 @@ void mnMapsMakeNameAndEmblem(s32 slot)
 	}
 }
 
-// 80132A58
+// 0x80132A58
 void mnMapsSetCursorPosition(GObj *gobj, s32 slot)
 {
 	if (slot < 5)
@@ -852,8 +852,8 @@ void mnMapsSetCursorPosition(GObj *gobj, s32 slot)
 	}
 }
 
-// 80132ADC
-void mnMapsMakeCursor()
+// 0x80132ADC
+void mnMapsMakeCursor(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -872,7 +872,7 @@ void mnMapsMakeCursor()
 	mnMapsSetCursorPosition(gobj, sMNMapsCursorSlot);
 }
 
-// 80132B84
+// 0x80132B84
 void mnMapsLoadMapFile(s32 gkind, void *heap)
 {
 	sMNMapsGroundInfo = lbRelocGetFileData
@@ -887,7 +887,7 @@ void mnMapsLoadMapFile(s32 gkind, void *heap)
 	);
 }
 
-// 80132BC8
+// 0x80132BC8
 void mnMapsPreviewWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -905,7 +905,7 @@ void mnMapsPreviewWallpaperProcDisplay(GObj *gobj)
 	lbCommonDrawSObjAttr(gobj);
 }
 
-// 80132D2C
+// 0x80132D2C
 GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 {
 	GObj *gobj;
@@ -966,7 +966,7 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 	return gobj;
 }
 
-// 80132EF0
+// 0x80132EF0
 void mnMapsModelPriProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -976,7 +976,7 @@ void mnMapsModelPriProcDisplay(GObj *gobj)
 	gcDrawDObjTreeForGObj(gobj);
 }
 
-// 80132F70
+// 0x80132F70
 void mnMapsModelSecProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -989,11 +989,11 @@ void mnMapsModelSecProcDisplay(GObj *gobj)
 	gcDrawDObjTreeDLLinksForGObj(gobj);
 }
 
-// 8013303C
+// 0x8013303C
 GObj* mnMapsMakeLayer(s32 gkind, MPGroundData *ground_data, MPGroundDesc *ground_desc, s32 id)
 {
 	GObj *gobj;
-	f32 scales[] =
+	f32 scales[/* */] =
 	{
 		0.5F, 0.2F, 0.6F,
 		0.5F, 0.3F, 0.6F,
@@ -1024,7 +1024,7 @@ GObj* mnMapsMakeLayer(s32 gkind, MPGroundData *ground_data, MPGroundDesc *ground
 	return gobj;
 }
 
-// 801331AC
+// 0x801331AC
 void mnMapsMakeModel(s32 gkind, MPGroundData *ground_data, s32 heap_id)
 {
 	DObj *root_dobj, *next_dobj;
@@ -1057,7 +1057,7 @@ void mnMapsMakeModel(s32 gkind, MPGroundData *ground_data, s32 heap_id)
 	}
 }
 
-// 801332DC
+// 0x801332DC
 void mnMapsDestroyPreview(s32 heap_id)
 {
 	s32 i;
@@ -1096,7 +1096,7 @@ void mnMapsDestroyPreview(s32 heap_id)
 	}
 }
 
-// 801333B4
+// 0x801333B4
 void mnMapsMakePreview(s32 gkind)
 {
 	if (gkind != 0xDE)
@@ -1123,8 +1123,8 @@ void mnMapsMakePreview(s32 gkind)
 	sMNMapsHeapID = (sMNMapsHeapID == 0) ? 1 : 0;
 }
 
-// 801334AC
-void mnMapsMakeWallpaperCamera()
+// 0x801334AC
+void mnMapsMakeWallpaperCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1146,8 +1146,8 @@ void mnMapsMakeWallpaperCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8013354C
-void mnMapsMakePlaqueCamera()
+// 0x8013354C
+void mnMapsMakePlaqueCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1169,8 +1169,8 @@ void mnMapsMakePlaqueCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 801335EC
-void mnMapsMakePreviewWallpaperCamera()
+// 0x801335EC
+void mnMapsMakePreviewWallpaperCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1192,8 +1192,8 @@ void mnMapsMakePreviewWallpaperCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8013368C
-void mnMapsMakeLabelsViewport()
+// 0x8013368C
+void mnMapsMakeLabelsViewport(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1215,8 +1215,8 @@ void mnMapsMakeLabelsViewport()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8013372C
-void mnMapsMakeIconsCamera()
+// 0x8013372C
+void mnMapsMakeIconsCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1238,8 +1238,8 @@ void mnMapsMakeIconsCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 801337CC
-void mnMapsMakeNameAndEmblemCamera()
+// 0x801337CC
+void mnMapsMakeNameAndEmblemCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1261,8 +1261,8 @@ void mnMapsMakeNameAndEmblemCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8013386C
-void mnMapsMakeCursorCamera()
+// 0x8013386C
+void mnMapsMakeCursorCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1284,10 +1284,10 @@ void mnMapsMakeCursorCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8013390C
+// 0x8013390C
 void mnMapsSetPreviewCameraPosition(CObj *cobj, s32 gkind)
 {
-	Vec3f positions[] =
+	Vec3f positions[/* */] =
 	{
 		{ 1700.0F, 1800.0F, 0.0F },
 		{ 1600.0F, 1600.0F, 0.0F },
@@ -1315,7 +1315,7 @@ void mnMapsSetPreviewCameraPosition(CObj *cobj, s32 gkind)
 	cobj->vec.at.z = positions[gkind].z;
 }
 
-// 801339C4
+// 0x801339C4
 void mnMapsPreviewCameraThreadUpdate(GObj *gobj)
 {
 	CObj* cobj = CObjGetStruct(gobj);
@@ -1332,8 +1332,8 @@ void mnMapsPreviewCameraThreadUpdate(GObj *gobj)
 	}
 }
 
-// 80133A88
-void mnMapsMakePreviewCamera()
+// 0x80133A88
+void mnMapsMakePreviewCamera(void)
 {
 	s32 unused;
 	GObj *gobj = gcMakeCameraGObj
@@ -1365,10 +1365,10 @@ void mnMapsMakePreviewCamera()
 	gcAddGObjProcess(gobj, mnMapsPreviewCameraThreadUpdate, nGCProcessKindThread, 1);
 }
 
-// 80133B78
-void mnMapsSaveSceneData()
+// 0x80133B78
+void mnMapsSaveSceneData(void)
 {
-	s32 unused[] =
+	s32 unused[/* */] =
 	{
 		nGRKindPupupu, 	nGRKindZebes,	nGRKindCastle,
 		nGRKindInishie,	nGRKindJungle, 	nGRKindSector,
@@ -1398,8 +1398,8 @@ void mnMapsSaveSceneData()
 	}
 }
 
-// 80133C6C
-void mnMapsInitVars()
+// 0x80133C6C
+void mnMapsInitVars(void)
 {
 	s32 i;
 
@@ -1430,13 +1430,13 @@ void mnMapsInitVars()
 	sMNMapsReturnTic = sMNMapsTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
-// 80133D60
-void mnMapsSaveSceneData2()
+// 0x80133D60
+void mnMapsSaveSceneData2(void)
 {
 	mnMapsSaveSceneData();
 }
 
-// 80133D80
+// 0x80133D80
 void mnMapsFuncRun(GObj *gobj)
 {
 	s32 unused;
@@ -1620,8 +1620,8 @@ void mnMapsFuncRun(GObj *gobj)
 	}
 }
 
-// 80134304
-void mnMapsFuncStart()
+// 0x80134304
+void mnMapsFuncStart(void)
 {
 	s32 unused1[2];
 	LBRelocSetup rl_setup;
@@ -1660,56 +1660,56 @@ void mnMapsFuncStart()
 	mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlot));
 }
 
-// 8013490C
+// 0x8013490C
 SYVideoSetup dMNMapsVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 80134928
+// 0x80134928
 SYTaskmanSetup dMNMapsTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		gcRunAll,              		// Update function
-		scManagerFuncDraw,        	// Frame draw function
-		&ovl30_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 2125,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 512,          // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x8000,                     // Graphics Heap Size
-		2,                          // ???
-		0x8000,                     // RDP Output Buffer Size
-		mnMapsFuncLights,   		// Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        scManagerFuncDraw,        	// Frame draw function
+        &ovl30_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2125,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 512,          // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0x8000,                     // RDP Output Buffer Size
+        mnMapsFuncLights,   		// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 64,              	// Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	NULL,        					// Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	mnMapsFuncStart         		// Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 64,              	// Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,        					// Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    mnMapsFuncStart         		// Task start function
 };
 
-// 8013446C
-void mnMapsStartScene()
+// 0x8013446C
+void mnMapsStartScene(void)
 {
 	dMNMapsVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNMapsVideoSetup);

@@ -1,13 +1,13 @@
 #include <ft/fighter.h>
 
-// 80131170
+// 0x80131170
 void *gFTDataBossMain;
 
-// 80131174
+// 0x80131174
 void *gFTDataBossMainMotion;
 
-// 80131178
+// 0x80131178
 void *gFTDataBossModel;
 
-// 8013117C
+// 0x8013117C
 s32 gFTDataBossParticleBankID;

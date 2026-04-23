@@ -5,23 +5,23 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvOpeningPikachuSetupFiles();
+extern void mvOpeningPikachuSetupFiles(void);
 extern void mvOpeningPikachuInitName(SObj *sobj);
-extern void mvOpeningPikachuMakeName();
+extern void mvOpeningPikachuMakeName(void);
 extern void mvOpeningPikachuMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningPikachuMakeMotionCamera(Vec3f move);
-extern void mvOpeningPikachuMakeMotionWindow();
+extern void mvOpeningPikachuMakeMotionWindow(void);
 extern void mvOpeningPikachuPosedWallpaperProcDisplay(GObj *gobj);
-extern void mvOpeningPikachuMakePosedWallpaper();
+extern void mvOpeningPikachuMakePosedWallpaper(void);
 extern void mvOpeningPikachuPosedFighterProcUpdate(GObj *fighter_gobj);
-extern void mvOpeningPikachuMakePosedFighter();
-extern void mvOpeningPikachuMakeNameCamera();
-extern void mvOpeningPikachuMakePosedFighterCamera();
-extern void mvOpeningPikachuMakePosedWallpaperCamera();
+extern void mvOpeningPikachuMakePosedFighter(void);
+extern void mvOpeningPikachuMakeNameCamera(void);
+extern void mvOpeningPikachuMakePosedFighterCamera(void);
+extern void mvOpeningPikachuMakePosedWallpaperCamera(void);
 extern void mvOpeningPikachuFuncRun(GObj *gobj);
-extern void mvOpeningPikachuInitVars();
-extern void mvOpeningPikachuFuncStart();
+extern void mvOpeningPikachuInitVars(void);
+extern void mvOpeningPikachuFuncStart(void);
 extern void mvOpeningPikachuFuncLights(Gfx **dls);
-extern void mvOpeningPikachuStartScene();
+extern void mvOpeningPikachuStartScene(void);
 
 #endif

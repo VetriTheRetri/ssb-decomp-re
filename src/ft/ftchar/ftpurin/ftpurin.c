@@ -1,16 +1,16 @@
 #include <ft/fighter.h>
 
-// 801310F0
+// 0x801310F0
 void *gFTDataPurinMain;
 
-// 801310F4
+// 0x801310F4
 void *gFTDataPurinMainMotion;
 
-// 801310F8
+// 0x801310F8
 void *gFTDataPurinModel;
 
-// 801310FC
+// 0x801310FC
 void *gFTDataPurinSpecial2;
 
-// 80131100
+// 0x80131100
 s32 gFTDataPurinParticleBankID;

@@ -5,6 +5,6 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
-extern void grMainSetupMakeGround();
+extern void grMainSetupMakeGround(void);
 
 #endif

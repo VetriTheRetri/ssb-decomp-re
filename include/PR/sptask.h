@@ -188,7 +188,7 @@ extern "C"
 	extern void osSpTaskLoad(OSTask* tp);
 	extern void osSpTaskStartGo(OSTask* tp);
 
-	extern void osSpTaskYield();
+	extern void osSpTaskYield(void);
 	extern OSYieldResult osSpTaskYielded(OSTask* tp);
 
 #endif /* _LANGUAGE_C */

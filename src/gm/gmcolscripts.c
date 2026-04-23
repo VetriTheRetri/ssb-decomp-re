@@ -7,23 +7,23 @@
 //                               //
 // // // // // // // // // // // //
 
-// 8012CA90
-u32 dGMColScriptsFighterComPlayer[] =
+// 0x8012CA90
+u32 dGMColScriptsFighterComPlayer[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x30),
 	gmColCommandWait(65535),
 	gmColCommandGoto(dGMColScriptsFighterComPlayer)
 };
 
-// 8012CAA4
-u32 dGMColScriptsFighterHitStatusNormal[] =
+// 0x8012CAA4
+u32 dGMColScriptsFighterHitStatusNormal[/* */] =
 {
 	gmColCommandClearColorAll(),
 	gmColCommandEnd()
 };
 
-// 8012CAAC
-u32 dGMColScriptsFighterHitStatusIntangible[] =
+// 0x8012CAAC
+u32 dGMColScriptsFighterHitStatusIntangible[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x82),
 	gmColCommandBlendColor1(3, 0xFF, 0xFF, 0xFF, 0x32),
@@ -33,8 +33,8 @@ u32 dGMColScriptsFighterHitStatusIntangible[] =
 	gmColCommandGoto(dGMColScriptsFighterHitStatusIntangible)
 };
 
-// 8012CAD0
-u32 dGMColScriptsFighterHitStatusInvincible[] =
+// 0x8012CAD0
+u32 dGMColScriptsFighterHitStatusInvincible[/* */] =
 {
 	gmColCommandSetColor1(0x80, 0xFF, 0x80, 0x50),
 	gmColCommandBlendColor1(3, 0x80, 0xFF, 0x80, 0x14),
@@ -44,8 +44,8 @@ u32 dGMColScriptsFighterHitStatusInvincible[] =
 	gmColCommandGoto(dGMColScriptsFighterHitStatusInvincible)
 };
 
-// 8012CAF4
-u32 dGMColScriptsFighterDamageCommon[] =
+// 0x8012CAF4
+u32 dGMColScriptsFighterDamageCommon[/* */] =
 {
 	gmColCommandSetLight(90, 0),
 	gmColCommandClearColorAll(),
@@ -58,8 +58,8 @@ u32 dGMColScriptsFighterDamageCommon[] =
 	gmColCommandEnd()
 };
 
-// 8012CB20
-u32 dGMColScriptsFighterCommonSpecialNCharge[] =
+// 0x8012CB20
+u32 dGMColScriptsFighterCommonSpecialNCharge[/* */] =
 {
 	gmColCommandEffect(0, nEFKindChargeSparkle, 0, 0, 0, 0, 0, 0, 0),
 	gmColCommandLoopBegin(2),
@@ -73,8 +73,8 @@ u32 dGMColScriptsFighterCommonSpecialNCharge[] =
 	gmColCommandGoto(dGMColScriptsFighterCommonSpecialNCharge)
 };
 
-// 8012CB60
-u32 dGMColScriptsFighterFallSpecial[] =
+// 0x8012CB60
+u32 dGMColScriptsFighterFallSpecial[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0x5A),
 	gmColCommandWait(2),
@@ -83,8 +83,8 @@ u32 dGMColScriptsFighterFallSpecial[] =
 	gmColCommandGoto(dGMColScriptsFighterFallSpecial)
 };
 
-// 8012CB7C
-u32 dGMColScriptsFighterFastFall[] =
+// 0x8012CB7C
+u32 dGMColScriptsFighterFastFall[/* */] =
 {
 	gmColCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0x80),
@@ -92,8 +92,8 @@ u32 dGMColScriptsFighterFastFall[] =
 	gmColCommandEnd()
 };
 
-// 8012CB9C
-u32 dGMColScriptsFighterHeal[] =
+// 0x8012CB9C
+u32 dGMColScriptsFighterHeal[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x40, 0x96),
 	gmColCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 300, 300, 300),
@@ -104,8 +104,8 @@ u32 dGMColScriptsFighterHeal[] =
 	gmColCommandGoto(dGMColScriptsFighterHeal)
 };
 
-// 8012CBDC
-u32 dGMColScriptsFighterNoDamage[] =
+// 0x8012CBDC
+u32 dGMColScriptsFighterNoDamage[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x80),
 	gmColCommandWait(1),
@@ -118,8 +118,8 @@ u32 dGMColScriptsFighterNoDamage[] =
 	gmColCommandGoto(dGMColScriptsFighterNoDamage)
 };
 
-// 8012CC10
-u32 dGMColScriptsFighterRebirth[] =
+// 0x8012CC10
+u32 dGMColScriptsFighterRebirth[/* */] =
 {
 	gmColCommandSetLight(0, -70),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0xFF),
@@ -131,8 +131,8 @@ u32 dGMColScriptsFighterRebirth[] =
 	gmColCommandGoto(dGMColScriptsFighterRebirth)
 };
 
-// 8012CC40
-u32 dGMColScriptsFighterDamageFireSub1[] =
+// 0x8012CC40
+u32 dGMColScriptsFighterDamageFireSub1[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xF0, 0x78, 0xAA),
 	gmColCommandWait(1),
@@ -141,8 +141,8 @@ u32 dGMColScriptsFighterDamageFireSub1[] =
 	gmColCommandReturn()
 };
 
-// 8012CC5C
-u32 dGMColScriptsFighterDamageFireSub2[] =
+// 0x8012CC5C
+u32 dGMColScriptsFighterDamageFireSub2[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandSetColor1(0xB4, 0x64, 0x00, 0x64),
@@ -153,8 +153,8 @@ u32 dGMColScriptsFighterDamageFireSub2[] =
 	gmColCommandReturn()
 };
 
-// 8012CC80
-u32 dGMColScriptsFighterDamageFireWeak[] =
+// 0x8012CC80
+u32 dGMColScriptsFighterDamageFireWeak[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
@@ -167,8 +167,8 @@ u32 dGMColScriptsFighterDamageFireWeak[] =
 	gmColCommandEnd()
 };
 
-// 8012CCC4
-u32 dGMColScriptsFighterDamageFireMid[] =
+// 0x8012CCC4
+u32 dGMColScriptsFighterDamageFireMid[/* */] =
 {
 	gmColCommandLoopBegin(8),
 	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
@@ -181,8 +181,8 @@ u32 dGMColScriptsFighterDamageFireMid[] =
 	gmColCommandEnd()
 };
 
-// 8012CD08
-u32 dGMColScriptsFighterDamageFireStrong[] =
+// 0x8012CD08
+u32 dGMColScriptsFighterDamageFireStrong[/* */] =
 {
 	gmColCommandLoopBegin(16),
 	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
@@ -195,8 +195,8 @@ u32 dGMColScriptsFighterDamageFireStrong[] =
 	gmColCommandEnd()
 };
 
-// 8012CD4C
-u32 dGMColScriptsFighterDamageFireFly[] =
+// 0x8012CD4C
+u32 dGMColScriptsFighterDamageFireFly[/* */] =
 {
 	gmColCommandLoopBegin(24),
 	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
@@ -209,8 +209,8 @@ u32 dGMColScriptsFighterDamageFireFly[] =
 	gmColCommandEnd()
 };
 
-// 8012CD90
-u32 dGMColScriptsFighterDamageElectricCommonSub[] =
+// 0x8012CD90
+u32 dGMColScriptsFighterDamageElectricCommonSub[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandSetColor1(0x00, 0x00, 0x94, 0x5A),
@@ -221,8 +221,8 @@ u32 dGMColScriptsFighterDamageElectricCommonSub[] =
 	gmColCommandReturn()
 };
 
-// 8012CDB4
-u32 dGMColScriptsFighterDamageElectricCommonWeak[] =
+// 0x8012CDB4
+u32 dGMColScriptsFighterDamageElectricCommonWeak[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -231,8 +231,8 @@ u32 dGMColScriptsFighterDamageElectricCommonWeak[] =
 	gmColCommandEnd()
 };
 
-// 8012CDD8
-u32 dGMColScriptsFighterDamageElectricCommonMid[] =
+// 0x8012CDD8
+u32 dGMColScriptsFighterDamageElectricCommonMid[/* */] =
 {
 	gmColCommandLoopBegin(8),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -241,8 +241,8 @@ u32 dGMColScriptsFighterDamageElectricCommonMid[] =
 	gmColCommandEnd()
 };
 
-// 8012CDFC
-u32 dGMColScriptsFighterDamageElectricCommonStrong[] =
+// 0x8012CDFC
+u32 dGMColScriptsFighterDamageElectricCommonStrong[/* */] =
 {
 	gmColCommandLoopBegin(12),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -251,8 +251,8 @@ u32 dGMColScriptsFighterDamageElectricCommonStrong[] =
 	gmColCommandEnd()
 };
 
-// 8012CE20
-u32 dGMColScriptsFighterDamageElectricCommonFly[] =
+// 0x8012CE20
+u32 dGMColScriptsFighterDamageElectricCommonFly[/* */] =
 {
 	gmColCommandLoopBegin(16),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -261,8 +261,8 @@ u32 dGMColScriptsFighterDamageElectricCommonFly[] =
 	gmColCommandEnd()
 };
 
-// 8012CE44
-u32 dGMColScriptsFighterDamageElectricSkeletonSub[] =
+// 0x8012CE44
+u32 dGMColScriptsFighterDamageElectricSkeletonSub[/* */] =
 {
 	gmColCommandLoopBegin(1),
 	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
@@ -276,8 +276,8 @@ u32 dGMColScriptsFighterDamageElectricSkeletonSub[] =
 	gmColCommandReturn()
 };
 
-// 8012CE70
-u32 dGMColScriptsFighterDamageElectricSkeletonWeak[] =
+// 0x8012CE70
+u32 dGMColScriptsFighterDamageElectricSkeletonWeak[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -290,8 +290,8 @@ u32 dGMColScriptsFighterDamageElectricSkeletonWeak[] =
 	gmColCommandEnd()
 };
 
-// 8012CEB4
-u32 dGMColScriptsFighterDamageElectricSkeletonMid[] =
+// 0x8012CEB4
+u32 dGMColScriptsFighterDamageElectricSkeletonMid[/* */] =
 {
 	gmColCommandLoopBegin(3),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -304,8 +304,8 @@ u32 dGMColScriptsFighterDamageElectricSkeletonMid[] =
 	gmColCommandEnd()
 };
 
-// 8012CEF8
-u32 dGMColScriptsFighterDamageElectricSkeletonStrong[] =
+// 0x8012CEF8
+u32 dGMColScriptsFighterDamageElectricSkeletonStrong[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -318,8 +318,8 @@ u32 dGMColScriptsFighterDamageElectricSkeletonStrong[] =
 	gmColCommandEnd()
 };
 
-// 8012CF3C
-u32 dGMColScriptsFighterDamageElectricSkeletonFly[] =
+// 0x8012CF3C
+u32 dGMColScriptsFighterDamageElectricSkeletonFly[/* */] =
 {
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -332,8 +332,8 @@ u32 dGMColScriptsFighterDamageElectricSkeletonFly[] =
 	gmColCommandEnd()
 };
 
-// 8012CF80
-u32 dGMColScriptsFighterDamageElectricBalloonSub[] =
+// 0x8012CF80
+u32 dGMColScriptsFighterDamageElectricBalloonSub[/* */] =
 {
 	gmColCommandLoopBegin(1),
 	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
@@ -347,8 +347,8 @@ u32 dGMColScriptsFighterDamageElectricBalloonSub[] =
 	gmColCommandReturn()
 };
 
-// 8012CFAC
-u32 dGMColScriptsFighterDamageElectricBalloonWeak[] =
+// 0x8012CFAC
+u32 dGMColScriptsFighterDamageElectricBalloonWeak[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -361,8 +361,8 @@ u32 dGMColScriptsFighterDamageElectricBalloonWeak[] =
 	gmColCommandEnd()
 };
 
-// 8012CFF0
-u32 dGMColScriptsFighterDamageElectricBalloonMid[] =
+// 0x8012CFF0
+u32 dGMColScriptsFighterDamageElectricBalloonMid[/* */] =
 {
 	gmColCommandLoopBegin(3),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -375,8 +375,8 @@ u32 dGMColScriptsFighterDamageElectricBalloonMid[] =
 	gmColCommandEnd()
 };
 
-// 8012D034
-u32 dGMColScriptsFighterDamageElectricBalloonStrong[] =
+// 0x8012D034
+u32 dGMColScriptsFighterDamageElectricBalloonStrong[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -389,8 +389,8 @@ u32 dGMColScriptsFighterDamageElectricBalloonStrong[] =
 	gmColCommandEnd()
 };
 
-// 8012D078
-u32 dGMColScriptsFighterDamageElectricBalloonFly[] =
+// 0x8012D078
+u32 dGMColScriptsFighterDamageElectricBalloonFly[/* */] =
 {
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -403,8 +403,8 @@ u32 dGMColScriptsFighterDamageElectricBalloonFly[] =
 	gmColCommandEnd()
 };
 
-// 8012D0BC
-u32 dGMColScriptsFighterDamageElectricSamusSub[] =
+// 0x8012D0BC
+u32 dGMColScriptsFighterDamageElectricSamusSub[/* */] =
 {
 	gmColCommandLoopBegin(1),
 	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
@@ -419,8 +419,8 @@ u32 dGMColScriptsFighterDamageElectricSamusSub[] =
 	gmColCommandReturn()
 };
 
-// 8012D0EC
-u32 dGMColScriptsFighterDamageElectricSamusWeak[] =
+// 0x8012D0EC
+u32 dGMColScriptsFighterDamageElectricSamusWeak[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -433,8 +433,8 @@ u32 dGMColScriptsFighterDamageElectricSamusWeak[] =
 	gmColCommandEnd()
 };
 
-// 8012D130
-u32 dGMColScriptsFighterDamageElectricSamusMid[] =
+// 0x8012D130
+u32 dGMColScriptsFighterDamageElectricSamusMid[/* */] =
 {
 	gmColCommandLoopBegin(3),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -447,8 +447,8 @@ u32 dGMColScriptsFighterDamageElectricSamusMid[] =
 	gmColCommandEnd()
 };
 
-// 8012D174
-u32 dGMColScriptsFighterDamageElectricSamusStrong[] =
+// 0x8012D174
+u32 dGMColScriptsFighterDamageElectricSamusStrong[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -461,8 +461,8 @@ u32 dGMColScriptsFighterDamageElectricSamusStrong[] =
 	gmColCommandEnd()
 };
 
-// 8012D1B8
-u32 dGMColScriptsFighterDamageElectricSamusFly[] =
+// 0x8012D1B8
+u32 dGMColScriptsFighterDamageElectricSamusFly[/* */] =
 {
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -475,8 +475,8 @@ u32 dGMColScriptsFighterDamageElectricSamusFly[] =
 	gmColCommandEnd()
 };
 
-// 8012D1FC
-u32 dGMColScriptsFighterDamageIceWeak[] =
+// 0x8012D1FC
+u32 dGMColScriptsFighterDamageIceWeak[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0xFF, 0x80),
 	gmColCommandWait(1),
@@ -485,26 +485,26 @@ u32 dGMColScriptsFighterDamageIceWeak[] =
 	gmColCommandEnd()
 };
 
-// 8012D1FC
-u32 dGMColScriptsFighterDamageIceMid[] =
+// 0x8012D1FC
+u32 dGMColScriptsFighterDamageIceMid[/* */] =
 {
 	gmColCommandEnd()
 };
 
-// 8012D1FC
-u32 dGMColScriptsFighterDamageIceStrong[] =
+// 0x8012D1FC
+u32 dGMColScriptsFighterDamageIceStrong[/* */] =
 {
 	gmColCommandEnd()
 };
 
-// 8012D1FC
-u32 dGMColScriptsFighterDamageIceFly[] =
+// 0x8012D1FC
+u32 dGMColScriptsFighterDamageIceFly[/* */] =
 {
 	gmColCommandEnd()
 };
 
-// 8012D224
-u32 dGMColScriptsFighterShieldBreakFly[] =
+// 0x8012D224
+u32 dGMColScriptsFighterShieldBreakFly[/* */] =
 {
 	gmColCommandSetColor1(0x80, 0x00, 0x00, 0x80),
 	gmColCommandWait(2),
@@ -515,8 +515,8 @@ u32 dGMColScriptsFighterShieldBreakFly[] =
 	gmColCommandGoto(dGMColScriptsFighterShieldBreakFly)
 };
 
-// 8012D24C
-u32 dGMColScriptsFighterFuraFura[] =
+// 0x8012D24C
+u32 dGMColScriptsFighterFuraFura[/* */] =
 {
 	gmColCommandSetColor1(0x80, 0x00, 0x00, 0x80),
 	gmColCommandWait(2),
@@ -527,8 +527,8 @@ u32 dGMColScriptsFighterFuraFura[] =
 	gmColCommandGoto(dGMColScriptsFighterFuraFura)
 };
 
-// 8012D278
-u32 dGMColScriptsFighterFuraSleep[] =
+// 0x8012D278
+u32 dGMColScriptsFighterFuraSleep[/* */] =
 {
 	gmColCommandSetColor1(0x80, 0x50, 0x64, 0x46),
 	gmColCommandBlendColor1(12, 0xF0, 0x3C, 0x8C, 0x82),
@@ -540,8 +540,8 @@ u32 dGMColScriptsFighterFuraSleep[] =
 	gmColCommandGoto(dGMColScriptsFighterFuraSleep)
 };
 
-// 8012D2A8
-u32 dGMColScriptsFighterMarioSpecialN[] =
+// 0x8012D2A8
+u32 dGMColScriptsFighterMarioSpecialN[/* */] =
 {
 	gmColCommandSetLight(75, -10),
 	gmColCommandSetColor1(0xFF, 0x00, 0x00, 0xFF),
@@ -554,8 +554,8 @@ u32 dGMColScriptsFighterMarioSpecialN[] =
 	gmColCommandEnd()
 };
 
-// 8012D2D4
-u32 dGMColScriptsFighterMarioAppeal[] =
+// 0x8012D2D4
+u32 dGMColScriptsFighterMarioAppeal[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x80, 0xAA),
 	gmColCommandWait(1),
@@ -569,8 +569,8 @@ u32 dGMColScriptsFighterMarioAppeal[] =
 	gmColCommandEnd()
 };
 
-// 8012D310
-u32 dGMColScriptsFighterDonkeySpecialNLoop[] =
+// 0x8012D310
+u32 dGMColScriptsFighterDonkeySpecialNLoop[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x80, 0x46),
 	gmColCommandWait(2),
@@ -581,8 +581,8 @@ u32 dGMColScriptsFighterDonkeySpecialNLoop[] =
 	gmColCommandEnd()
 };
 
-// 8012D338
-u32 dGMColScriptsFighterDonkeySpecialNEnd[] =
+// 0x8012D338
+u32 dGMColScriptsFighterDonkeySpecialNEnd[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x80, 0xB4),
 	gmColCommandWait(1),
@@ -593,14 +593,14 @@ u32 dGMColScriptsFighterDonkeySpecialNEnd[] =
 	gmColCommandEnd()
 };
 
-// 8012D35C
-u32 dGMColScriptsFighterUnknown1[] =
+// 0x8012D35C
+u32 dGMColScriptsFighterUnknown1[/* */] =
 {
 	gmColCommandEnd()
 };
 
-// 8012D360
-u32 dGMColScriptsFighterSamusSpecialNEnd[] =
+// 0x8012D360
+u32 dGMColScriptsFighterSamusSpecialNEnd[/* */] =
 {
 	gmColCommandSetLight(75, 0),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x80),
@@ -611,8 +611,8 @@ u32 dGMColScriptsFighterSamusSpecialNEnd[] =
 	gmColCommandEnd()
 };
 
-// 8012D380
-u32 dGMColScriptsFighterSamusSpecialHi[] =
+// 0x8012D380
+u32 dGMColScriptsFighterSamusSpecialHi[/* */] =
 {
 	gmColCommandSetColor1(0x80, 0xFF, 0xAA, 0xBE),
 	gmColCommandWait(1),
@@ -626,8 +626,8 @@ u32 dGMColScriptsFighterSamusSpecialHi[] =
 	gmColCommandEnd()
 };
 
-// 8012D3B8
-u32 dGMColScriptsFighterFoxSpecialLw[] =
+// 0x8012D3B8
+u32 dGMColScriptsFighterFoxSpecialLw[/* */] =
 {
 	gmColCommandSetLight(0, -80),
 	gmColCommandSetColor1(0x00, 0xFF, 0xFF, 0x50),
@@ -637,8 +637,8 @@ u32 dGMColScriptsFighterFoxSpecialLw[] =
 	gmColCommandGoto(dGMColScriptsFighterFoxSpecialLw)
 };
 
-// 8012D3D8
-u32 dGMColScriptsFighterFoxSpecialHiStart[] =
+// 0x8012D3D8
+u32 dGMColScriptsFighterFoxSpecialHiStart[/* */] =
 {
 	gmColCommandSetLight(0, -80),
 	gmColCommandLoopBegin(4),
@@ -660,7 +660,7 @@ u32 dGMColScriptsFighterFoxSpecialHiStart[] =
 };
 
 // 0x8012D42C - part of FoxSpecialHiStart, as that script does not have an End command
-u32 dGMColScriptsFighterFoxSpecialHiHold[] =
+u32 dGMColScriptsFighterFoxSpecialHiHold[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0xB4),
 	gmColCommandWait(1),
@@ -671,8 +671,8 @@ u32 dGMColScriptsFighterFoxSpecialHiHold[] =
 	gmColCommandGoto(dGMColScriptsFighterFoxSpecialHiHold)
 };
 
-// 8012D454
-u32 dGMColScriptsFighterFoxSpecialHi[] =
+// 0x8012D454
+u32 dGMColScriptsFighterFoxSpecialHi[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x00, 0xDC),
 	gmColCommandWait(1),
@@ -684,8 +684,8 @@ u32 dGMColScriptsFighterFoxSpecialHi[] =
 	gmColCommandEnd()
 };
 
-// 8012D480
-u32 dGMColScriptsFighterLinkSpecialHi[] =
+// 0x8012D480
+u32 dGMColScriptsFighterLinkSpecialHi[/* */] =
 {
 	gmColCommandSetLight(0, -80),
 	gmColCommandSetColor1(0xFF, 0xAA, 0x00, 0x46),
@@ -696,8 +696,8 @@ u32 dGMColScriptsFighterLinkSpecialHi[] =
 	gmColCommandGoto(dGMColScriptsFighterLinkSpecialHi)
 };
 
-// 8012D4B4
-u32 dGMColScriptsFighterCaptainSpecialN[] =
+// 0x8012D4B4
+u32 dGMColScriptsFighterCaptainSpecialN[/* */] =
 {
 	gmColCommandSetLight(0, -80),
 	gmColCommandLoopBegin(20),
@@ -716,8 +716,8 @@ u32 dGMColScriptsFighterCaptainSpecialN[] =
 	gmColCommandEnd()
 };
 
-// 8012D504
-u32 dGMColScriptsFighterKirbySpecialLwHigh[] =
+// 0x8012D504
+u32 dGMColScriptsFighterKirbySpecialLwHigh[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x28),
 	gmColCommandBlendColor1(8, 0xFF, 0xFF, 0xFF, 0x00),
@@ -727,8 +727,8 @@ u32 dGMColScriptsFighterKirbySpecialLwHigh[] =
 	gmColCommandGoto(dGMColScriptsFighterKirbySpecialLwHigh)
 };
 
-// 8012D52C
-u32 dGMColScriptsFighterKirbySpecialLwMid[] =
+// 0x8012D52C
+u32 dGMColScriptsFighterKirbySpecialLwMid[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x3C),
 	gmColCommandBlendColor1(6, 0xFF, 0xFF, 0xFF, 0x0A),
@@ -738,8 +738,8 @@ u32 dGMColScriptsFighterKirbySpecialLwMid[] =
 	gmColCommandGoto(dGMColScriptsFighterKirbySpecialLwMid)
 };
 
-// 8012D554
-u32 dGMColScriptsFighterKirbySpecialLwLow[] =
+// 0x8012D554
+u32 dGMColScriptsFighterKirbySpecialLwLow[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x5A),
 	gmColCommandBlendColor1(4, 0xFF, 0xFF, 0xFF, 0x0A),
@@ -749,8 +749,8 @@ u32 dGMColScriptsFighterKirbySpecialLwLow[] =
 	gmColCommandGoto(dGMColScriptsFighterKirbySpecialLwLow)
 };
 
-// 8012D57C
-u32 dGMColScriptsFighterKirbySpecialLwStart[] =
+// 0x8012D57C
+u32 dGMColScriptsFighterKirbySpecialLwStart[/* */] =
 {
 	gmColCommandWait(2),
 	gmColCommandSetColor1(0xB4, 0x80, 0x64, 0x0A),
@@ -775,8 +775,8 @@ u32 dGMColScriptsFighterKirbySpecialLwStart[] =
 	gmColCommandEnd()
 };
 
-// 8012D5F8
-u32 dGMColScriptsFighterKirbySpecialLwEnd[] =
+// 0x8012D5F8
+u32 dGMColScriptsFighterKirbySpecialLwEnd[/* */] =
 {
 	gmColCommandWait(2),
 	gmColCommandSetColor1(0xB4, 0x80, 0x64, 0xB4),
@@ -801,8 +801,8 @@ u32 dGMColScriptsFighterKirbySpecialLwEnd[] =
 	gmColCommandEnd()
 };
 
-// 8012D674
-u32 dGMColScriptsFighterPikachuAttackS4[] =
+// 0x8012D674
+u32 dGMColScriptsFighterPikachuAttackS4[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x64),
@@ -814,14 +814,14 @@ u32 dGMColScriptsFighterPikachuAttackS4[] =
 	gmColCommandGoto(dGMColScriptsFighterPikachuAttackS4)
 };
 
-// 8012D6AC
-u32 dGMColScriptsFighterPikachuSpecialHiStart[] =
+// 0x8012D6AC
+u32 dGMColScriptsFighterPikachuSpecialHiStart[/* */] =
 {
 	gmColCommandPlayFGM(nSYAudioFGMPikachuSpecialHiStart)
 };
 
 // 0x8012D6B0 - part of PikachuSpecialHiStart, as that script does not have an End command
-u32 dGMColScriptsFighterPikachuSpecialHiStartLoop[] =
+u32 dGMColScriptsFighterPikachuSpecialHiStartLoop[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x40),
 	gmColCommandWait(1),
@@ -831,8 +831,8 @@ u32 dGMColScriptsFighterPikachuSpecialHiStartLoop[] =
 };
 
 #if defined(REGION_US)
-// 8012D6D0
-u32 dGMColScriptsFighterPikachuSpecialHi[] =
+// 0x8012D6D0
+u32 dGMColScriptsFighterPikachuSpecialHi[/* */] =
 {
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 150, 150, 150),
 	gmColCommandWait(2),
@@ -840,8 +840,8 @@ u32 dGMColScriptsFighterPikachuSpecialHi[] =
 };
 #endif
 
-// 8012D6EC
-u32 dGMColScriptsFighterPikachuSpecialN[] =
+// 0x8012D6EC
+u32 dGMColScriptsFighterPikachuSpecialN[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandLoopBegin(3),
@@ -857,8 +857,8 @@ u32 dGMColScriptsFighterPikachuSpecialN[] =
 	gmColCommandGoto(dGMColScriptsFighterPikachuSpecialN)
 };
 
-// 8012D734
-u32 dGMColScriptsFighterPikachuSpecialLwHit[] =
+// 0x8012D734
+u32 dGMColScriptsFighterPikachuSpecialLwHit[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandLoopBegin(2),
@@ -875,8 +875,8 @@ u32 dGMColScriptsFighterPikachuSpecialLwHit[] =
 	gmColCommandGoto(dGMColScriptsFighterPikachuSpecialLwHit)
 };
 
-// 8012D78C
-u32 dGMColScriptsFighterPikachuSpecialLwEnd[] =
+// 0x8012D78C
+u32 dGMColScriptsFighterPikachuSpecialLwEnd[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x50),
 	gmColCommandWait(1),
@@ -887,8 +887,8 @@ u32 dGMColScriptsFighterPikachuSpecialLwEnd[] =
 	gmColCommandGoto(dGMColScriptsFighterPikachuSpecialLwEnd)
 };
 
-// 8012D7B4
-u32 dGMColScriptsFighterCaptainSpecialHi[] =
+// 0x8012D7B4
+u32 dGMColScriptsFighterCaptainSpecialHi[/* */] =
 {
 	gmColCommandLoopBegin(11),
 	gmColCommandSetColor1(0xFF, 0xFF, 0x64, 0x64),
@@ -901,8 +901,8 @@ u32 dGMColScriptsFighterCaptainSpecialHi[] =
 	gmColCommandEnd()
 };
 
-// 8012D7E0
-u32 dGMColScriptsFighterNessSpecialLwHold[] =
+// 0x8012D7E0
+u32 dGMColScriptsFighterNessSpecialLwHold[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x8C),
 	gmColCommandWait(1),
@@ -911,8 +911,8 @@ u32 dGMColScriptsFighterNessSpecialLwHold[] =
 	gmColCommandGoto(dGMColScriptsFighterNessSpecialLwHold)
 };
 
-// 8012D800
-u32 dGMColScriptsFighterNessSpecialLwHit[] =
+// 0x8012D800
+u32 dGMColScriptsFighterNessSpecialLwHit[/* */] =
 {
 	gmColCommandSetLight(90, 0),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0xFF),
@@ -926,8 +926,8 @@ u32 dGMColScriptsFighterNessSpecialLwHit[] =
 	gmColCommandEnd()
 };
 
-// 8012D834
-u32 dGMColScriptsFighterNessSpecialHiHold[] =
+// 0x8012D834
+u32 dGMColScriptsFighterNessSpecialHiHold[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x30),
@@ -939,8 +939,8 @@ u32 dGMColScriptsFighterNessSpecialHiHold[] =
 	gmColCommandGoto(dGMColScriptsFighterNessSpecialHiHold)
 };
 
-// 8012D86C
-u32 dGMColScriptsFighterNessSpecialHiJibaku[] =
+// 0x8012D86C
+u32 dGMColScriptsFighterNessSpecialHiJibaku[/* */] =
 {
 	gmColCommandSetColor1(0x7F, 0x7F, 0x7F, 0x50),
 	gmColCommandWait(2),
@@ -953,8 +953,8 @@ u32 dGMColScriptsFighterNessSpecialHiJibaku[] =
 	gmColCommandGoto(dGMColScriptsFighterNessSpecialHiJibaku)
 };
 
-// 8012D8CC
-u32 dGMColScriptsFighterNessAppear[] =
+// 0x8012D8CC
+u32 dGMColScriptsFighterNessAppear[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0xFF),
 	gmColCommandWait(30),
@@ -964,8 +964,8 @@ u32 dGMColScriptsFighterNessAppear[] =
 	gmColCommandEnd()
 };
 
-// 8012D8EC
-u32 dGMColScriptsFighterBossDeskArrange[] =
+// 0x8012D8EC
+u32 dGMColScriptsFighterBossDeskArrange[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0x96),
 	gmColCommandWait(1),
@@ -973,16 +973,16 @@ u32 dGMColScriptsFighterBossDeskArrange[] =
 	gmColCommandEnd()
 };
 
-// 8012D904
-u32 dGMColScriptsFighterBossOkuhikouki[] =
+// 0x8012D904
+u32 dGMColScriptsFighterBossOkuhikouki[/* */] =
 {
 	gmColCommandEffect(0, nEFKindSparkleWhite, 0, 0, 0, 0, 180, 180, 180),
 	gmColCommandWait(2),
 	gmColCommandGoto(dGMColScriptsFighterBossOkuhikouki)
 };
 
-// 8012D920
-u32 dGMColScriptsFighterBossOkupunch[] =
+// 0x8012D920
+u32 dGMColScriptsFighterBossOkupunch[/* */] =
 {
 	gmColCommandEffect(0, nEFKindDustExpandLarge, 0, 0, 400, 0, 0, 0, 0),
 	gmColCommandWait(1),
@@ -990,8 +990,8 @@ u32 dGMColScriptsFighterBossOkupunch[] =
 	gmColCommandEnd()
 };
 
-// 8012D940
-u32 dGMColScriptsFighterBossYubideppou2[] =
+// 0x8012D940
+u32 dGMColScriptsFighterBossYubideppou2[/* */] =
 {
 	gmColCommandSetLight(90, 0),
 	gmColCommandSetColor1(0x5A, 0x00, 0x00, 0x14),
@@ -1002,8 +1002,8 @@ u32 dGMColScriptsFighterBossYubideppou2[] =
 	gmColCommandEnd()
 };
 
-// 8012D968
-u32 dGMColScriptsFighterBossYubideppou3[] =
+// 0x8012D968
+u32 dGMColScriptsFighterBossYubideppou3[/* */] =
 {
 	gmColCommandSetLight(90, 0),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x28),
@@ -1017,8 +1017,8 @@ u32 dGMColScriptsFighterBossYubideppou3[] =
 	gmColCommandEnd()
 };
 
-// 8012D9A0
-u32 dGMColScriptsFighterChallenger[] =
+// 0x8012D9A0
+u32 dGMColScriptsFighterChallenger[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0xFF),
 	gmColCommandWait(1),
@@ -1027,7 +1027,7 @@ u32 dGMColScriptsFighterChallenger[] =
 };
 
 // 0x8012D9B8 - Hammer
-u32 dGMColScriptsFighterHammer[] =
+u32 dGMColScriptsFighterHammer[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0x00, 0x00, 0x80),
 	gmColCommandWait(2),
@@ -1039,7 +1039,7 @@ u32 dGMColScriptsFighterHammer[] =
 };
 
 // 0x8012D9E0 - Star
-u32 dGMColScriptsFighterStar[] =
+u32 dGMColScriptsFighterStar[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x64),
 	gmColCommandWait(1),
@@ -1060,7 +1060,7 @@ u32 dGMColScriptsFighterStar[] =
 };
 
 // 0x8012DA70 - Star Rod
-u32 dGMColScriptsFighterStarRod[] =
+u32 dGMColScriptsFighterStarRod[/* */] =
 {
 	gmColCommandEffectItemHold(-2, nEFKindStarRodSpark, 0, 0, 250, 0, 100, 100, 100),
 	gmColCommandWait(2),
@@ -1068,7 +1068,7 @@ u32 dGMColScriptsFighterStarRod[] =
 };
 
 // 0x8012DA8C - Home Run Bat
-u32 dGMColScriptsFighterBat[] =
+u32 dGMColScriptsFighterBat[/* */] =
 {
 	gmColCommandSetLight(75, -10),
 	gmColCommandEffectItemHold(-2, nEFKindSparkleWhiteScale, 0, 0, 200, 0, 90, 90, 90),
@@ -1081,8 +1081,8 @@ u32 dGMColScriptsFighterBat[] =
 	gmColCommandGoto(dGMColScriptsFighterBat)
 };
 
-// 8012DAC8
-u32 dGMColScriptsItemBombHeiCritical[] =
+// 0x8012DAC8
+u32 dGMColScriptsItemBombHeiCritical[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x00, 0x8C),
 	gmColCommandBlendColor1(8, 0x80, 0x00, 0x00, 0x8C),
@@ -1093,8 +1093,8 @@ u32 dGMColScriptsItemBombHeiCritical[] =
 	gmColCommandGoto(dGMColScriptsItemBombHeiCritical)
 };
 
-// 8012DAF8
-u32 dGMColScriptsItemHammerEnd[] =
+// 0x8012DAF8
+u32 dGMColScriptsItemHammerEnd[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x00, 0x8C),
 	gmColCommandWait(1),
@@ -1103,8 +1103,8 @@ u32 dGMColScriptsItemHammerEnd[] =
 	gmColCommandGoto(dGMColScriptsItemHammerEnd)
 };
 
-// 8012DB18
-u32 dGMColScriptsItemLinkBombCritical[] =
+// 0x8012DB18
+u32 dGMColScriptsItemLinkBombCritical[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0x00, 0x8C),
 	gmColCommandBlendColor1(4, 0x80, 0x00, 0x00, 0x8C),
@@ -1115,8 +1115,8 @@ u32 dGMColScriptsItemLinkBombCritical[] =
 	gmColCommandGoto(dGMColScriptsItemLinkBombCritical)
 };
 
-// 8012DB48
-u32 dGMColScriptsScreenFlashDeadExplode[] =
+// 0x8012DB48
+u32 dGMColScriptsScreenFlashDeadExplode[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x00),
 	gmColCommandBlendColor1(6, 0xFF, 0xFF, 0xFF, 0x6E),
@@ -1127,8 +1127,8 @@ u32 dGMColScriptsScreenFlashDeadExplode[] =
 	gmColCommandEnd()
 };
 
-// 8012DB70
-u32 dGMColScriptsScreenFlashDamageNormal[] =
+// 0x8012DB70
+u32 dGMColScriptsScreenFlashDamageNormal[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x46),
 	gmColCommandBlendColor1(6, 0xFF, 0xFF, 0xFF, 0x00),
@@ -1136,8 +1136,8 @@ u32 dGMColScriptsScreenFlashDamageNormal[] =
 	gmColCommandEnd()
 };
 
-// 8012DB88
-u32 dGMColScriptsScreenFlashDamageFire[] =
+// 0x8012DB88
+u32 dGMColScriptsScreenFlashDamageFire[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0x8C, 0x78, 0x50),
 	gmColCommandBlendColor1(8, 0xFF, 0x8C, 0x78, 0x00),
@@ -1145,8 +1145,8 @@ u32 dGMColScriptsScreenFlashDamageFire[] =
 	gmColCommandEnd()
 };
 
-// 8012DBA0
-u32 dGMColScriptsScreenFlashDamageElectric[] =
+// 0x8012DBA0
+u32 dGMColScriptsScreenFlashDamageElectric[/* */] =
 {
 	gmColCommandSetColor1(0x8C, 0x8C, 0xFF, 0x50),
 	gmColCommandBlendColor1(8, 0x8C, 0x8C, 0xFF, 0x00),
@@ -1154,8 +1154,8 @@ u32 dGMColScriptsScreenFlashDamageElectric[] =
 	gmColCommandEnd()
 };
 
-// 8012DBB8
-u32 dGMColScriptsScreenFlashDamageIce[] =
+// 0x8012DBB8
+u32 dGMColScriptsScreenFlashDamageIce[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x80, 0xFF, 0x8C),
 	gmColCommandBlendColor1(6, 0x00, 0x80, 0xFF, 0x00),
@@ -1163,8 +1163,8 @@ u32 dGMColScriptsScreenFlashDamageIce[] =
 	gmColCommandEnd()
 };
 
-// 8012DBD0
-GMColDesc dGMColScriptsDescs[] =
+// 0x8012DBD0
+GMColDesc dGMColScriptsDescs[/* */] =
 {
 	{ NULL, 			    					 	  	  0, FALSE },
 	{ dGMColScriptsFighterComPlayer,    		 	  	  1, FALSE },

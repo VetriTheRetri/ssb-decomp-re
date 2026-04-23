@@ -16,7 +16,7 @@ extern void ftComputerSetCommandWaitLong(FTStruct *fp, s32 index);
 extern sb32 ftComputerCheckFindTarget(FTStruct *this_fp);
 extern sb32 ftComputerCheckEvadeDistance(FTStruct *this_fp);
 extern FTStruct* ftComputerWaitGetTarget(FTStruct *this_fp);
-extern void func_ovl3_80132EC0();
+extern void func_ovl3_80132EC0(void);
 extern sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base);
 extern sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target);
 extern sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target);

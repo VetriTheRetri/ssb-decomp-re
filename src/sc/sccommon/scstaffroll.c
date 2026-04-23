@@ -12,20 +12,20 @@
 //                               //
 // // // // // // // // // // // //
 
-// 80135260
-s32 dSCStaffrollNameCharacters[] =
+// 0x80135260
+s32 dSCStaffrollNameCharacters[/* */] =
 {
 	#include "credits/staff.credits.encoded"
 };
 
-// 801364F4
-SCStaffrollText dSCStaffrollNameTextInfo[] =
+// 0x801364F4
+SCStaffrollText dSCStaffrollNameTextInfo[/* */] =
 {
 	#include "credits/staff.credits.metadata"
 };
 
-// 80136794
-s32 dSCStaffrollUnused0x80136794[] =
+// 0x80136794
+s32 dSCStaffrollUnused0x80136794[/* */] =
 {
 #if defined(REGION_US)
 	0x000004A5, 
@@ -35,8 +35,8 @@ s32 dSCStaffrollUnused0x80136794[] =
 	0x00000000
 };
 
-// 8013679C
-SCStaffrollJob dSCStaffrollJobDescriptions[] =
+// 0x8013679C
+SCStaffrollJob dSCStaffrollJobDescriptions[/* */] =
 {
 	// Director
 	{ 
@@ -181,51 +181,51 @@ SCStaffrollJob dSCStaffrollJobDescriptions[] =
 	}
 };
 
-// 8013685C
-s32 dSCStaffrollJobCharacters[] =
+// 0x8013685C
+s32 dSCStaffrollJobCharacters[/* */] =
 {
 	#include "credits/titles.credits.encoded"
 };
 
-// 80136B10
-SCStaffrollText dSCStaffrollJobTextInfo[] =
+// 0x80136B10
+SCStaffrollText dSCStaffrollJobTextInfo[/* */] =
 {
 	#include "credits/titles.credits.metadata"
 };
 
-// 80136BA0
-s32 dSCStaffrollStaffRoleCharacters[] =
+// 0x80136BA0
+s32 dSCStaffrollStaffRoleCharacters[/* */] =
 {
 	#include "credits/info.credits.encoded"
 };
 
-// 80139B68
-SCStaffrollText dSCStaffrollStaffRoleTextInfo[] =
+// 0x80139B68
+SCStaffrollText dSCStaffrollStaffRoleTextInfo[/* */] =
 {
 	#include "credits/info.credits.metadata"
 };
 
-// 80139E08
-s32 dSCStaffrollCompanyCharacters[] =
+// 0x80139E08
+s32 dSCStaffrollCompanyCharacters[/* */] =
 {
 	#include "credits/companies.credits.encoded"
 };
 
-// 80139FD4
-SCStaffrollText dSCStaffrollCompanyTextInfo[] =
+// 0x80139FD4
+SCStaffrollText dSCStaffrollCompanyTextInfo[/* */] =
 {
 	#include "credits/companies.credits.metadata"
 };
 
 // 0x8013A02C - Empty word in company text info
 #if defined(REGION_US)
-s32 dSCStaffrollUnused0x8013A02C[] = { 0x00000073, 0x00000000 };
+s32 dSCStaffrollUnused0x8013A02C[/* */] = { 0x00000073, 0x00000000 };
 #else
-s32 dSCStaffrollUnused0x8013A02C[] = { 0x0000006E, 0x00000000 };
+s32 dSCStaffrollUnused0x8013A02C[/* */] = { 0x0000006E, 0x00000000 };
 #endif
 
-// 8013A034
-s32 dSCStaffrollCompanyIDs[] =
+// 0x8013A034
+s32 dSCStaffrollCompanyIDs[/* */] =
 {
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyHAL,
@@ -325,11 +325,11 @@ s32 dSCStaffrollCompanyIDs[] =
 	nSCStaffrollCompanyNull
 };
 
-// 8013A184
-u32 dSCStaffrollFileIDs[] = { &llSCStaffrollFileID };
+// 0x8013A184
+u32 dSCStaffrollFileIDs[/* */] = { &llSCStaffrollFileID };
 
-// 8013A188
-SCStaffrollSprite dSCStaffrollNameAndJobSpriteInfo[] =
+// 0x8013A188
+SCStaffrollSprite dSCStaffrollNameAndJobSpriteInfo[/* */] =
 {
 	{ 20, 22, &llSCStaffrollNameAndJobAUpperImage },
 	{ 15, 22, &llSCStaffrollNameAndJobBUpperImage },
@@ -391,8 +391,8 @@ SCStaffrollSprite dSCStaffrollNameAndJobSpriteInfo[] =
 #endif
 };
 
-// 8013A348
-SCStaffrollSprite dSCStaffrollTextBoxSpriteInfo[] =
+// 0x8013A348
+SCStaffrollSprite dSCStaffrollTextBoxSpriteInfo[/* */] =
 {
 	{ 12, 14, &llSCStaffrollTextBoxAUpperSprite },
 	{ 12, 14, &llSCStaffrollTextBoxBUpperSprite },
@@ -472,8 +472,8 @@ SCStaffrollSprite dSCStaffrollTextBoxSpriteInfo[] =
 #endif
 };
 
-// 8013A598
-Gfx dSCStaffrollTextBoxDisplayList[] =
+// 0x8013A598
+Gfx dSCStaffrollTextBoxDisplayList[/* */] =
 {
 	gsDPPipeSync(),
 	gsDPSetCycleType(G_CYC_FILL),
@@ -492,86 +492,86 @@ Gfx dSCStaffrollTextBoxDisplayList[] =
 //                               //
 // // // // // // // // // // // //
 
-// 8013A7D0
+// 0x8013A7D0
 s32 sSCStaffrollPad0x8013A7D0[2];
 
-// 8013A7D8
+// 0x8013A7D8
 #if defined(REGION_US)
 Gfx *sSCStaffrollNameAndJobDisplayLists[56];
 #else
 Gfx *sSCStaffrollNameAndJobDisplayLists[55];
 #endif
 
-// 8013A8B8
+// 0x8013A8B8
 s32 sSCStaffrollNameID;
 
-// 8013A8BC
+// 0x8013A8BC
 f32 sSCStaffrollRollSpeed;
 
-// 8013A8C0
+// 0x8013A8C0
 s32 sSCStaffrollStatus;
 
-// 8013A8C4
+// 0x8013A8C4
 SCStaffrollName *sSCStaffrollNameAllocFree;
 
-// 8013A8C8
+// 0x8013A8C8
 GObj *sSCStaffrollScrollGObj;
 
-// 8013A8CC
+// 0x8013A8CC
 GObj *sSCStaffrollCrosshairGObj;
 
-// 8013A8D0
+// 0x8013A8D0
 sb32 sSCStaffrollIsPaused;
 
-// 8013A8D4
+// 0x8013A8D4
 f32 sSCStaffrollCrosshairPositionX;
 
-// 8013A8D8
+// 0x8013A8D8
 f32 sSCStaffrollCrosshairPositionY;
 
-// 8013A8DC
+// 0x8013A8DC
 AObjEvent32 *sSCStaffrollNameAnimJoint;
 
-// 8013A8E0
+// 0x8013A8E0
 SYInterpDesc *sSCStaffrollNameInterpolation;
 
-// 8013A8E4
+// 0x8013A8E4
 CObj *sSCStaffrollCamera;
 
-// 8013A8E8
+// 0x8013A8E8
 DObjDesc *sSCStaffrollDObjDesc;
 
-// 8013A8EC
+// 0x8013A8EC
 s32 sSCStaffrollHighlightSize;
 
-// 8013A8F0
+// 0x8013A8F0
 f32 sSCStaffrollHighlightPositionX;
 
-// 8013A8F4
+// 0x8013A8F4
 f32 sSCStaffrollHighlightPositionY;
 
-// 8013A8F8
+// 0x8013A8F8
 GObj *sSCStaffrollStaffRoleTextGObj;
 
-// 8013A8FC
+// 0x8013A8FC
 GObj *sSCStaffrollCompanyTextGObj;
 
-// 8013A900
+// 0x8013A900
 s32 sSCStaffrollRollBeginWait;
 
 // 0x8013A904 - controller port to use for credits sequence
 u8 sSCStaffrollPlayer;
 
-// 8013A908
+// 0x8013A908
 s32 sSCStaffrollRollEndWait;
 
-// 8013A910
+// 0x8013A910
 LBFileNode sSCStaffrollStatusBuffer[32];
 
-// 8013AA10
+// 0x8013AA10
 void *sSCStaffrollFiles[ARRAY_COUNT(dSCStaffrollFileIDs)];
 
-// 8013AA18
+// 0x8013AA18
 Mtx44f sSCStaffrollMatrix;
 
 // // // // // // // // // // // //
@@ -581,7 +581,7 @@ Mtx44f sSCStaffrollMatrix;
 // // // // // // // // // // // //
 
 // 0x80131B00 - Resume staff roll on button press, return bool for if paused or not
-sb32 scStaffrollGetPauseStatusResume()
+sb32 scStaffrollGetPauseStatusResume(void)
 {
 	sb32 is_paused = TRUE;
 	u16 button_tap = gSYControllerDevices[sSCStaffrollPlayer].button_tap;
@@ -616,7 +616,7 @@ sb32 scStaffrollGetPauseStatusResume()
 	return is_paused;
 }
 
-// 80131BB0
+// 0x80131BB0
 void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
 {
 	f32 x = vec->x;
@@ -633,7 +633,7 @@ void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
 	*height = h * i * 480.0F * 0.5F;
 }
 
-// 80131C88
+// 0x80131C88
 void func_ovl59_80131C88(CObj *cobj)
 {
 	Mtx44f m, n;
@@ -643,7 +643,7 @@ void func_ovl59_80131C88(CObj *cobj)
 	guMtxCatF(m, n, sSCStaffrollMatrix);
 }
 
-// 80131D30
+// 0x80131D30
 void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 {
 	Mtx44f m, r;
@@ -665,7 +665,7 @@ void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 	func_ovl59_80131BB0(r, vec, width, height);
 }
 
-// 80131DD0
+// 0x80131DD0
 void func_ovl59_80131DD0(GObj *gobj, SCStaffrollProjection *proj)
 {
 	SCStaffrollMatrix *credits = gobj->user_data.p;
@@ -679,7 +679,7 @@ void func_ovl59_80131DD0(GObj *gobj, SCStaffrollProjection *proj)
 	proj->pv2.x = proj->pv3.x = (ABS(credits->unk_gmcreditsmtx_0xC) * 2) + 18.0F;
 }
 
-// 80131E70
+// 0x80131E70
 void func_ovl59_80131E70(Vec3f *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4)
 {
 	arg0->x = arg2 - arg4;
@@ -687,7 +687,7 @@ void func_ovl59_80131E70(Vec3f *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4)
 	arg0->z = (arg1 * arg4) - (arg3 * arg2);
 }
 
-// 80131EB8
+// 0x80131EB8
 sb32 scStaffrollCheckCursorNameOverlap(Vec3f *vec)
 {
 	SObj *sobj = SObjGetStruct(sSCStaffrollCrosshairGObj);
@@ -703,7 +703,7 @@ sb32 scStaffrollCheckCursorNameOverlap(Vec3f *vec)
 	return ret;
 }
 
-// 80131F34
+// 0x80131F34
 void func_ovl59_80131F34(GObj *arg0)
 {
 	GObj *ugobj = arg0->user_data.p;
@@ -726,7 +726,7 @@ void func_ovl59_80131F34(GObj *arg0)
 	}
 }
 
-// 8013202C
+// 0x8013202C
 void func_ovl59_8013202C(GObj *arg0)
 {
 	GObj *gobj = gGCCommonLinks[nGCCommonLinkID02];
@@ -749,7 +749,7 @@ void func_ovl59_8013202C(GObj *arg0)
 	}
 }
 
-// 801320F4
+// 0x801320F4
 s32 scStaffrollGetLockOnPositionX(s32 pos_x)
 {
 	s32 bound_x = pos_x;
@@ -765,7 +765,7 @@ s32 scStaffrollGetLockOnPositionX(s32 pos_x)
 	return bound_x;
 }
 
-// 8013211C
+// 0x8013211C
 s32 scStaffrollGetLockOnPositionY(s32 pos_y)
 {
 	s32 bound_y = pos_y;
@@ -781,7 +781,7 @@ s32 scStaffrollGetLockOnPositionY(s32 pos_y)
 	return bound_y;
 }
 
-// 80132144
+// 0x80132144
 void scStaffrollHighlightProcDisplay(GObj *gobj)
 {
 	s32 unused;
@@ -824,7 +824,7 @@ void scStaffrollHighlightProcDisplay(GObj *gobj)
 	);
 }
 
-// 8013270C
+// 0x8013270C
 void scStaffrollHighlightThreadUpdate(GObj *gobj)
 {
 	s32 i;
@@ -843,7 +843,7 @@ void scStaffrollHighlightThreadUpdate(GObj *gobj)
 	gcSleepCurrentGObjThread(1);
 }
 
-// 801327A4
+// 0x801327A4
 void scStaffrollMakeHighlightGObj(GObj *gobj)
 {
 	GObj *highlight_gobj = gGCCommonLinks[nGCCommonLinkIDHighlight];
@@ -862,7 +862,7 @@ void scStaffrollMakeHighlightGObj(GObj *gobj)
 	}
 }
 
-// 80132860
+// 0x80132860
 void scStaffrollSetTextQuetions(s32 *characters, s32 character_count)
 {
 	s32 i, j, k;
@@ -899,13 +899,13 @@ void scStaffrollSetTextQuetions(s32 *characters, s32 character_count)
 	}
 }
 
-// 80132958
-void scStaffrollTryHideUnlocks()
+// 0x80132958
+void scStaffrollTryHideUnlocks(void)
 {
 	s32 unused[5];
 
-// 8013A5E0
-	s32 luigi[] =
+	// 0x8013A5E0
+	s32 luigi[/* */] =
 	{	
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('L'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('u'),
@@ -914,8 +914,8 @@ void scStaffrollTryHideUnlocks()
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('i')
 	};
 
-// 8013A5F4
-	s32 purin[] =
+	// 0x8013A5F4
+	s32 purin[/* */] =
 	{
 #if defined(REGION_US)
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('J'),
@@ -937,8 +937,8 @@ void scStaffrollTryHideUnlocks()
 #endif
 	};
 
-// 8013A61C
-	s32 captain[] =
+	// 0x8013A61C
+	s32 captain[/* */] =
 	{
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('C'),
 		GMSTAFFROLL_PERIOD_PARA_FONT_INDEX,
@@ -950,8 +950,8 @@ void scStaffrollTryHideUnlocks()
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('n')
 	};
 
-// 8013A63C
-	s32 ness[] =
+	// 0x8013A63C
+	s32 ness[/* */] =
 	{
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('N'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('e'),
@@ -959,8 +959,8 @@ void scStaffrollTryHideUnlocks()
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('s')
 	};
 
-// 8013A64C
-	s32 earthbound[] =
+	// 0x8013A64C
+	s32 earthbound[/* */] =
 	{
 #if defined(REGION_US)
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('E'),
@@ -984,8 +984,8 @@ void scStaffrollTryHideUnlocks()
 #endif
 	};
 
-// 8013A674
-	s32 fzero[] =
+	// 0x8013A674
+	s32 fzero[/* */] =
 	{
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('F'),
 		GMSTAFFROLL_DASH_PARA_FONT_INDEX,
@@ -997,8 +997,8 @@ void scStaffrollTryHideUnlocks()
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('X')
 	};
 
-// 8013A694
-	s32 classicmario[] =
+	// 0x8013A694
+	s32 classicmario[/* */] =
 	{
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('C'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('l'),
@@ -1038,7 +1038,7 @@ void scStaffrollTryHideUnlocks()
 	}
 }
 
-// 80132BB8
+// 0x80132BB8
 void scStaffrollMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 {
 	s32 character_id;
@@ -1142,7 +1142,7 @@ void scStaffrollMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 	}
 }
 
-// 80132E74
+// 0x80132E74
 void scStaffrollMakeStaffRoleTextGObj(GObj *staff_gobj)
 {
 	GObj *text_gobj;
@@ -1160,7 +1160,7 @@ void scStaffrollMakeStaffRoleTextGObj(GObj *staff_gobj)
 	scStaffrollMakeStaffRoleTextSObjs(text_gobj, staff_gobj);
 }
 
-// 80132EF0
+// 0x80132EF0
 void scStaffrollMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 {
 	SObj *sobj;
@@ -1246,7 +1246,7 @@ void scStaffrollMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 	if (text_gobj); // idk just take it
 }
 
-// 80133184
+// 0x80133184
 void scStaffrollMakeCompanyTextGObj(GObj *staff_gobj)
 {
 	GObj *text_gobj;
@@ -1264,7 +1264,7 @@ void scStaffrollMakeCompanyTextGObj(GObj *staff_gobj)
 	scStaffrollMakeCompanyTextSObjs(text_gobj, staff_gobj);
 }
 
-// 80133200
+// 0x80133200
 sb32 scStaffrollCheckCursorHighlightPrompt(GObj *gobj, SCStaffrollProjection *proj)
 {
 	sb32 b;
@@ -1301,8 +1301,8 @@ sb32 scStaffrollCheckCursorHighlightPrompt(GObj *gobj, SCStaffrollProjection *pr
 	return b;
 }
 
-// 8013330C
-void func_ovl59_8013330C()
+// 0x8013330C
+void func_ovl59_8013330C(void)
 {
 	GObj *gobj;
 	DObj *dobj;
@@ -1334,7 +1334,7 @@ void func_ovl59_8013330C()
 }
 
 // 0x8013341C - Highlight staff member if A is pressed and/or pause if B is pressed, get bool for if paused or not
-sb32 scStaffrollGetPauseStatusHighlight()
+sb32 scStaffrollGetPauseStatusHighlight(void)
 {
 	GObj *gobj;
 	u16 button_tap = gSYControllerDevices[sSCStaffrollPlayer].button_tap;
@@ -1372,7 +1372,7 @@ sb32 scStaffrollGetPauseStatusHighlight()
 	return is_paused;
 }
 
-// 801334E4
+// 0x801334E4
 void scStaffrollFuncRun(GObj *gobj)
 {
 	sb32 is_paused;
@@ -1418,7 +1418,7 @@ void scStaffrollFuncRun(GObj *gobj)
 	}
 }
 
-// 80133618
+// 0x80133618
 SCStaffrollName* SCStaffrollNameUpdateAlloc(GObj *gobj)
 {
 	SCStaffrollName *cn;
@@ -1439,14 +1439,14 @@ SCStaffrollName* SCStaffrollNameUpdateAlloc(GObj *gobj)
 	return cn;
 }
 
-// 80133684
+// 0x80133684
 void SCStaffrollNameSetPrevAlloc(SCStaffrollName *cn)
 {
 	cn->next = sSCStaffrollNameAllocFree;
 	sSCStaffrollNameAllocFree = cn;
 }
 
-// 8013369C
+// 0x8013369C
 void scStaffrollJobAndNameThreadUpdate(GObj *gobj)
 {
 	SCStaffrollName *cn;
@@ -1495,7 +1495,7 @@ void scStaffrollJobAndNameThreadUpdate(GObj *gobj)
 	gcSleepCurrentGObjThread(1);
 }
 
-// 80133854
+// 0x80133854
 void scStaffrollJobProcDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[4])
@@ -1509,7 +1509,7 @@ void scStaffrollJobProcDisplay(GObj *gobj)
 	gcDrawDObjTreeForGObj(gobj);
 }
 
-// 80133930
+// 0x80133930
 void scStaffrollNameProcDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[3])
@@ -1523,7 +1523,7 @@ void scStaffrollNameProcDisplay(GObj *gobj)
 	gcDrawDObjTreeForGObj(gobj);
 }
 
-// 80133A0C
+// 0x80133A0C
 void scStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
 {
 	SCStaffrollName *cn = SCStaffrollNameUpdateAlloc(gobj);
@@ -1536,7 +1536,7 @@ void scStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_
 	cn->job_or_name = job_or_name;
 }
 
-// 80133A78
+// 0x80133A78
 SCStaffrollSetup* scStaffrollMakeJobDObjs(SCStaffrollSetup *name_setup, DObj *dobj, s32 name_id, f32 wbase)
 {
 	SCStaffrollSetup local_setup;
@@ -1677,7 +1677,7 @@ SCStaffrollSetup* scStaffrollMakeJobDObjs(SCStaffrollSetup *name_setup, DObj *do
 	return name_setup;
 }
 
-// 80133E68
+// 0x80133E68
 GObj* scStaffrollMakeJobGObj(SCStaffrollJob *job)
 {
 	SCStaffrollSetup job_setup;
@@ -1708,8 +1708,8 @@ GObj* scStaffrollMakeJobGObj(SCStaffrollJob *job)
 	return gobj;
 }
 
-// 80133F68
-GObj* scStaffrollMakeNameGObjAndDObjs()
+// 0x80133F68
+GObj* scStaffrollMakeNameGObjAndDObjs(void)
 {
 	s32 unused;
 	GObj *gobj;
@@ -1864,7 +1864,7 @@ GObj* scStaffrollMakeNameGObjAndDObjs()
 	return gobj;
 }
 
-// 801343AC
+// 0x801343AC
 void scStaffrollCrosshairThreadUpdate(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
@@ -1904,8 +1904,8 @@ void scStaffrollCrosshairThreadUpdate(GObj *gobj)
 	}
 }
 
-// 801345FC
-void scStaffrollMakeCrosshairGObj()
+// 0x801345FC
+void scStaffrollMakeCrosshairGObj(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1928,8 +1928,8 @@ void scStaffrollMakeCrosshairGObj()
 	sobj->sprite.scaley = 2.0F;
 }
 
-// 801346B4
-void scStaffrollMakeTextBoxBracketSObjs()
+// 0x801346B4
+void scStaffrollMakeTextBoxBracketSObjs(void)
 {
 	GObj *gobj;
 	SObj *left_sobj;
@@ -1962,8 +1962,8 @@ void scStaffrollMakeTextBoxBracketSObjs()
 	right_sobj->pos.x = 588.0F;
 }
 
-// 801347F4
-void scStaffrollMakeTextBoxGObj()
+// 0x801347F4
+void scStaffrollMakeTextBoxGObj(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(4, NULL, 7, GOBJ_PRIORITY_DEFAULT);
 
@@ -1971,7 +1971,7 @@ void scStaffrollMakeTextBoxGObj()
 	gcAddDObjForGObj(gobj, dSCStaffrollTextBoxDisplayList);
 }
 
-// 80134854
+// 0x80134854
 void scStaffrollScrollThreadUpdate(GObj *gobj)
 {
 	GObj *name_gobj;
@@ -2021,8 +2021,8 @@ void scStaffrollScrollThreadUpdate(GObj *gobj)
 	gcSleepCurrentGObjThread(1);
 }
 
-// 8013498C
-void scStaffrollMakeScrollGObj()
+// 0x8013498C
+void scStaffrollMakeScrollGObj(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 1, GOBJ_PRIORITY_DEFAULT);
 
@@ -2031,8 +2031,8 @@ void scStaffrollMakeScrollGObj()
 	sSCStaffrollScrollGObj = gobj;
 }
 
-// 801349DC
-void scStaffrollSetupFiles()
+// 0x801349DC
+void scStaffrollSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -2049,8 +2049,8 @@ void scStaffrollSetupFiles()
 	lbRelocLoadFilesListed(dSCStaffrollFileIDs, sSCStaffrollFiles);
 }
 
-// 80134A70
-void scStaffrollInitNameAndJobDisplayLists()
+// 0x80134A70
+void scStaffrollInitNameAndJobDisplayLists(void)
 {
 	Gfx *dl;
 	Vtx *vtx_base, *vtx_curr;
@@ -2101,8 +2101,8 @@ void scStaffrollInitNameAndJobDisplayLists()
 	}
 }
 
-// 80134E08
-void scStaffrollInitVars()
+// 0x80134E08
+void scStaffrollInitVars(void)
 {
 	sSCStaffrollStatus = 2;
 	sSCStaffrollNameID = 0;
@@ -2117,7 +2117,7 @@ void scStaffrollInitVars()
 	sSCStaffrollRollEndWait = 60;
 }
 
-// 80134EA8
+// 0x80134EA8
 void scStaffrollUpdateCameraAt(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -2126,8 +2126,8 @@ void scStaffrollUpdateCameraAt(GObj *gobj)
 	cobj->vec.at.y -= (sSCStaffrollCrosshairPositionY * 0.25F);
 }
 
-// 80134EE8
-void scStaffrollMakeCamera()
+// 0x80134EE8
+void scStaffrollMakeCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -2182,8 +2182,8 @@ void scStaffrollMakeCamera()
 	cobj->projection.persp.fovy = 50.0F;
 }
 
-// 8013505C
-void scStaffrollFuncStart()
+// 0x8013505C
+void scStaffrollFuncStart(void)
 {
 	gcMakeGObjSPAfter(0, scStaffrollFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -2200,25 +2200,25 @@ void scStaffrollFuncStart()
 	syAudioPlayBGM(0, nSYAudioBGMStaffroll);
 }
 
-// 8013A6C8
+// 0x8013A6C8
 Lights1 dSCStaffrollLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
-// 8013A6E0
-Gfx dSCStaffrollDisplayList[] =
+// 0x8013A6E0
+Gfx dSCStaffrollDisplayList[/* */] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dSCStaffrollLights1),
 	gsSPEndDisplayList()
 };
 
-// 801350F4
+// 0x801350F4
 void scStaffrollFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dSCStaffrollDisplayList);
 }
 
-// 80135118
-void scStaffrollFuncDraw()
+// 0x80135118
+void scStaffrollFuncDraw(void)
 {
 	gcDrawAll();
 
@@ -2236,9 +2236,9 @@ void scStaffrollFuncDraw()
 	if (sSCStaffrollStatus == -1)
 	{
 #if defined(REGION_US)        
-		gSCManagerSceneData.scene_curr = nSCKindStartup;
+    	gSCManagerSceneData.scene_curr = nSCKindStartup;
 #else
-		gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+    	gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
 #endif
 
 		syAudioStopBGMAll();
@@ -2248,7 +2248,7 @@ void scStaffrollFuncDraw()
 	}
 }
 
-// 8013A708
+// 0x8013A708
 SYVideoSetup dSCStaffrollVideoSetup =
 {
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0),
@@ -2259,56 +2259,56 @@ SYVideoSetup dSCStaffrollVideoSetup =
 	480,
 	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER | 
 	0x400                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA     |
-	SYVIDEO_FLAG_COLORDEPTH16 | SYVIDEO_FLAG_SERRATE      | 0x2
+    SYVIDEO_FLAG_COLORDEPTH16 | SYVIDEO_FLAG_SERRATE      | 0x2
 };
 
-// 8013A724
+// 0x8013A724
 SYTaskmanSetup dSCStaffrollTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		gcRunAll,              		// Update function
-		scStaffrollFuncDraw,        // Frame draw function
-		&ovl59_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 2048,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 128,          // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x1000,                     // Graphics Heap Size
-		2,                          // ???
-		0x1000,                     // RDP Output Buffer Size
-		scStaffrollFuncLights,     	// Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        scStaffrollFuncDraw,        // Frame draw function
+        &ovl59_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2048,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 128,          // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x1000,                     // Graphics Heap Size
+        2,                          // ???
+        0x1000,                     // RDP Output Buffer Size
+        scStaffrollFuncLights,     	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	16,                             // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	16,                             // Number of thread stacks
-	0,                              // ???
-	64,                             // Number of GObjProcesses
-	64,                             // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	256,                            // Number of XObjs
-	NULL,                           // Matrix function list
-	NULL,                           // DObjVec eject function
-	32,                             // Number of AObjs
-	16,                             // Number of MObjs
-	1024,                           // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	256,                            // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	8,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	scStaffrollFuncStart            // Task start function
+    16,                             // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    16,                             // Number of thread stacks
+    0,                              // ???
+    64,                             // Number of GObjProcesses
+    64,                             // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    256,                            // Number of XObjs
+    NULL,                           // Matrix function list
+    NULL,                           // DObjVec eject function
+    32,                             // Number of AObjs
+    16,                             // Number of MObjs
+    1024,                           // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    256,                            // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    8,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    scStaffrollFuncStart            // Task start function
 };
 
-// 801351B8
-void scStaffrollStartScene()
+// 0x801351B8
+void scStaffrollStartScene(void)
 {
 	/* 
 	 * This is really weird. The function will only match if fb32 is assigned a hardcoded constant value.

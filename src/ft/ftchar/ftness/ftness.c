@@ -1,22 +1,22 @@
 #include <ft/fighter.h>
 
-// 80131130
+// 0x80131130
 void *gFTNessFileMain;
 
-// 80131134
+// 0x80131134
 void *gFTNessFileMainMotion;
 
-// 80131138
+// 0x80131138
 void *gFTNessFileModel;
 
-// 8013113C
+// 0x8013113C
 void *gFTNessFileSpecial1;
 
-// 80131140
+// 0x80131140
 void *gFTNessFileSpecial2;
 
-// 80131144
+// 0x80131144
 void *gFTNessFileSpecial3;
 
-// 80131148
+// 0x80131148
 s32 gFTNessParticleBankID;

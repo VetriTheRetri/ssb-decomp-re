@@ -841,7 +841,7 @@ extern "C"
 
 	extern void osCreateThread(OSThread*, OSId, void (*)(void*), void*, void*, OSPri);
 	extern void osDestroyThread(OSThread*);
-	extern void osYieldThread();
+	extern void osYieldThread(void);
 	extern void osStartThread(OSThread*);
 	extern void osStopThread(OSThread*);
 	extern OSId osGetThreadId(OSThread*);
@@ -861,7 +861,7 @@ extern "C"
 
 	/* Interrupt operations */
 
-	extern OSIntMask osGetIntMask();
+	extern OSIntMask osGetIntMask(void);
 	extern OSIntMask osSetIntMask(OSIntMask);
 
 	/* RDB port operations */
@@ -873,7 +873,7 @@ extern "C"
 	extern void osInvalDCache(void*, s32);
 	extern void osInvalICache(void*, s32);
 	extern void osWritebackDCache(void*, s32);
-	extern void osWritebackDCacheAll();
+	extern void osWritebackDCacheAll(void);
 
 #define OS_DCACHE_ROUNDUP_ADDR(x) (void*)(((((u32)(x) + 0xf) / 0x10) * 0x10))
 #define OS_DCACHE_ROUNDUP_SIZE(x) (u32)(((((u32)(x) + 0xf) / 0x10) * 0x10))
@@ -881,9 +881,9 @@ extern "C"
 	/* TLB management routines */
 
 	extern void osMapTLB(s32, OSPageMask, void*, u32, u32, s32);
-	extern void osMapTLBRdb();
+	extern void osMapTLBRdb(void);
 	extern void osUnmapTLB(s32);
-	extern void osUnmapTLBAll();
+	extern void osUnmapTLBAll(void);
 	extern void osSetTLBASID(s32);
 
 	/* Address translation routines and macros */
@@ -900,20 +900,20 @@ extern "C"
 	/* I/O operations */
 
 	/* Audio interface (Ai) */
-	extern u32 osAiGetStatus();
-	extern u32 osAiGetLength();
+	extern u32 osAiGetStatus(void);
+	extern u32 osAiGetLength(void);
 	extern s32 osAiSetFrequency(u32);
 	extern s32 osAiSetNextBuffer(void*, u32);
 
 	/* Display processor interface (Dp) */
-	extern u32 osDpGetStatus();
+	extern u32 osDpGetStatus(void);
 	extern void osDpSetStatus(u32);
 	extern void osDpGetCounters(u32*);
 	extern s32 osDpSetNextBuffer(void*, u64);
 
 	/* Peripheral interface (Pi) */
-	extern u32 osPiGetStatus();
-	extern s32 osPiGetDeviceType();
+	extern u32 osPiGetStatus(void);
+	extern s32 osPiGetDeviceType(void);
 	extern s32 osPiRawWriteIo(u32, u32);
 	extern s32 osPiRawReadIo(u32, u32*);
 	extern s32 osPiRawStartDma(s32, u32, void*, u32);
@@ -923,12 +923,12 @@ extern "C"
 	extern void osCreatePiManager(OSPri, OSMesgQueue*, OSMesg*, s32);
 
 	/* Video interface (Vi) */
-	extern u32 osViGetStatus();
-	extern u32 osViGetCurrentMode();
-	extern u32 osViGetCurrentLine();
-	extern u32 osViGetCurrentField();
-	extern void* osViGetCurrentFramebuffer();
-	extern void* osViGetNextFramebuffer();
+	extern u32 osViGetStatus(void);
+	extern u32 osViGetCurrentMode(void);
+	extern u32 osViGetCurrentLine(void);
+	extern u32 osViGetCurrentField(void);
+	extern void* osViGetCurrentFramebuffer(void);
+	extern void* osViGetNextFramebuffer(void);
 	extern void osViSetXScale(f32);
 	extern void osViSetYScale(f32);
 	extern void osViSetSpecialFeatures(u32);
@@ -942,7 +942,7 @@ extern "C"
 
 	/* Timer interface */
 
-	extern OSTime osGetTime();
+	extern OSTime osGetTime(void);
 	extern void osSetTime(OSTime);
 	extern int osSetTimer(OSTimer*, OSTime, OSTime, OSMesgQueue*, OSMesg);
 	extern int osStopTimer(OSTimer*);
@@ -993,9 +993,9 @@ extern "C"
 
 	/* Enhanced PI interface */
 
-	extern OSPiHandle* osCartRomInit();
-	extern OSPiHandle* osLeoDiskInit();
-	extern OSPiHandle* osDriveRgcInit();
+	extern OSPiHandle* osCartRomInit(void);
+	extern OSPiHandle* osLeoDiskInit(void);
+	extern OSPiHandle* osDriveRgcInit(void);
 
 	extern s32 osEPiDeviceType(OSPiHandle*, OSPiInfo*);
 	extern s32 osEPiRawWriteIo(OSPiHandle*, u32, u32);
@@ -1010,16 +1010,16 @@ extern "C"
 
 	extern void osProfileInit(OSProf*, u32 profcnt);
 	extern void osProfileStart(u32);
-	extern void osProfileFlush();
-	extern void osProfileStop();
+	extern void osProfileFlush(void);
+	extern void osProfileStop(void);
 
 	/* Game <> Host data transfer functions */
 
-	extern s32 osTestHost();
+	extern s32 osTestHost(void);
 	extern void osReadHost(void*, u32);
 	extern void osWriteHost(void*, u32);
-	extern void osAckRamromRead();
-	extern void osAckRamromWrite();
+	extern void osAckRamromRead(void);
+	extern void osAckRamromWrite(void);
 
 	/* byte string operations */
 
@@ -1029,10 +1029,10 @@ extern "C"
 
 	/* Miscellaneous operations */
 
-	extern void osInitialize();
-	extern u32 osGetCount();
-	extern void osExit();
-	extern u32 osGetMemSize();
+	extern void osInitialize(void);
+	extern u32 osGetCount(void);
+	extern void osExit(void);
+	extern u32 osGetMemSize(void);
 
 	/* Printf */
 

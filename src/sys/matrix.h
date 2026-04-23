@@ -8,9 +8,9 @@ extern u16 gSYSinTable[0x800];
 
 typedef union SYMatrixHub
 {
-	Mtx *gbi;
-	Mtx44f *f;
-	void **p;
+    Mtx *gbi;
+    Mtx44f *f;
+    void **p;
 
 } SYMatrixHub;
 
@@ -18,115 +18,115 @@ extern void syMatrixF2L(Mtx44f *src, Mtx *dst);
 extern void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst);
 extern void syMatrixLookAtF
 (
-	Mtx44f *mf,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx44f *mf,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixLookAt
 (
-	Mtx *m,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx *m,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixModLookAtF
 (
-	Mtx44f *mf,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 roll,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx44f *mf,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 roll,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixModLookAt
 (
-	Mtx *m,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 roll,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx *m,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 roll,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixLookAtReflectF
 (
-	Mtx44f *mf,
-	LookAt *l,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx44f *mf,
+    LookAt *l,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixLookAtReflect
 (
-	Mtx *m,
-	LookAt *l,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx *m,
+    LookAt *l,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixModLookAtReflectF
 (
-	Mtx44f *mf,
-	LookAt *l,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 roll,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx44f *mf,
+    LookAt *l,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 roll,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixModLookAtReflect
 (
-	Mtx *m,
-	LookAt *l,
-	f32 eye_x,
-	f32 eye_y,
-	f32 eye_z,
-	f32 at_x,
-	f32 at_y,
-	f32 at_z,
-	f32 roll,
-	f32 up_x,
-	f32 up_y,
-	f32 up_z
+    Mtx *m,
+    LookAt *l,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 roll,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
 );
 extern void syMatrixOrthoF(Mtx44f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
 extern void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);

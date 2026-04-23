@@ -18,8 +18,8 @@
 #define FTMARIO_TORNADO_VEL_Y_BASE 15.0F            // Subtract 0.0 or FTMARIO_TORNADO_VEL_Y_TAP based on whether tornado charge is empty or full, respectively
 #define FTMARIO_TORNADO_VEL_Y_TAP 22.0F             // Y-velocity added per B-tap during Mario Tornado
 
-extern FTStatusDesc dFTMarioSpecialStatusDescs[];
-extern FTMotionDesc dFTMarioMotionDescs[];
+extern FTStatusDesc dFTMarioSpecialStatusDescs[/* */];
+extern FTMotionDesc dFTMarioMotionDescs[/* */];
 
 extern void *gFTMarioFileMain;
 extern void *gFTMarioFileMainMotion;
@@ -31,55 +31,55 @@ extern s32 gFTMarioParticleBankID;
 
 typedef enum ftMarioMotion
 {
-	nFTMarioMotionAttack13 = nFTCommonMotionSpecialStart,
-	nFTMarioMotionAppearR,
-	nFTMarioMotionAppearL,
-	nFTMarioMotionSpecialN,
-	nFTMarioMotionSpecialAirN,
-	nFTMarioMotionSpecialHi,
-	nFTMarioMotionSpecialAirHi,
-	nFTMarioMotionSpecialLw,
-	nFTMarioMotionSpecialAirLw
+    nFTMarioMotionAttack13 = nFTCommonMotionSpecialStart,
+    nFTMarioMotionAppearR,
+    nFTMarioMotionAppearL,
+    nFTMarioMotionSpecialN,
+    nFTMarioMotionSpecialAirN,
+    nFTMarioMotionSpecialHi,
+    nFTMarioMotionSpecialAirHi,
+    nFTMarioMotionSpecialLw,
+    nFTMarioMotionSpecialAirLw
 
 } ftMarioMotion;
 
 typedef enum ftMarioStatus
 {
-	nFTMarioStatusAttack13 = nFTCommonStatusSpecialStart,
-	nFTMarioStatusAppearR,
-	nFTMarioStatusAppearL,
-	nFTMarioStatusSpecialN,
-	nFTMarioStatusSpecialAirN,
-	nFTMarioStatusSpecialHi,
-	nFTMarioStatusSpecialAirHi,
-	nFTMarioStatusSpecialLw,
-	nFTMarioStatusSpecialAirLw
+    nFTMarioStatusAttack13 = nFTCommonStatusSpecialStart,
+    nFTMarioStatusAppearR,
+    nFTMarioStatusAppearL,
+    nFTMarioStatusSpecialN,
+    nFTMarioStatusSpecialAirN,
+    nFTMarioStatusSpecialHi,
+    nFTMarioStatusSpecialAirHi,
+    nFTMarioStatusSpecialLw,
+    nFTMarioStatusSpecialAirLw
 
 } ftMarioStatus;
 
 typedef struct FTMarioPassiveVars
 {
-	sb32 is_expend_tornado;
+    sb32 is_expend_tornado;
 
 } FTMarioPassiveVars;
 
 typedef struct ftMarioSpecialHiStatusVars
 {
-	sb32 is_air_bool;
+    sb32 is_air_bool;
 
 } ftMarioSpecialHiStatusVars;
 
 typedef struct ftMarioSpecialLwStatusVars
 {
-	f32 friction; // Ground drift of Mario Tornado
-	s32 dust_effect_int;  // Interval between dust GFX kicked up during Mario Tornado
+    f32 friction; // Ground drift of Mario Tornado
+    s32 dust_effect_int;  // Interval between dust GFX kicked up during Mario Tornado
 
 } ftMarioSpecialLwStatusVars;
 
 typedef union FTMarioStatusVars
 {
-	ftMarioSpecialHiStatusVars specialhi;
-	ftMarioSpecialLwStatusVars speciallw;
+    ftMarioSpecialHiStatusVars specialhi;
+    ftMarioSpecialLwStatusVars speciallw;
 
 } FTMarioStatusVars;
 

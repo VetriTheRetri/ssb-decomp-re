@@ -11,14 +11,14 @@
 //                               //
 // // // // // // // // // // // //
 
-// 8018E160
+// 0x8018E160
 s32 D_ovl64_8018E160 = 0;
 
-// 8018E164
+// 0x8018E164
 s32 D_ovl64_8018E164 = 0;
 
-// 8018E168
-u8 dSCAutoDemoGroundOrder[] = 
+// 0x8018E168
+u8 dSCAutoDemoGroundOrder[/* */] = 
 {
 	nGRKindPupupu,
 	nGRKindZebes,
@@ -30,8 +30,8 @@ u8 dSCAutoDemoGroundOrder[] =
 	nGRKindHyrule
 };
 
-// 8018E170
-s16 dSCAutoDemoMapObjKindList[] = 
+// 0x8018E170
+s16 dSCAutoDemoMapObjKindList[/* */] = 
 {
 	nMPMapObjKindAutoDemoPlayer1,
 	nMPMapObjKindAutoDemoPlayer2,
@@ -43,8 +43,8 @@ s16 dSCAutoDemoMapObjKindList[] =
 	nMPMapObjKindAutoDemoPlayer8
 };
 
-// 8018E180
-SCAutoDemoProc dSCAutoDemoFuncList[] =
+// 0x8018E180
+SCAutoDemoProc dSCAutoDemoFuncList[/* */] =
 {
 	// Nothing?
 	{
@@ -96,14 +96,14 @@ SCAutoDemoProc dSCAutoDemoFuncList[] =
 	}
 };
 
-// 8018E1D4
-f32 dSCAutoDemoZoomEyeX[] = { -40.0F, -28.0F, -14.0F, 14.0F, 28.0F, 40.0F };
+// 0x8018E1D4
+f32 dSCAutoDemoZoomEyeX[/* */] = { -40.0F, -28.0F, -14.0F, 14.0F, 28.0F, 40.0F };
 
-// 8018E1EC
-f32 dSCAutoDemoZoomEyeY[] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
+// 0x8018E1EC
+f32 dSCAutoDemoZoomEyeY[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
 
-// 8018E200
-intptr_t dSCAutoDemoFighterNameSpriteOffsets[] =
+// 0x8018E200
+intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 {
 	&llCharacterNamesMarioSprite,      // Mario
 	&llCharacterNamesFoxSprite,        // Fox
@@ -119,55 +119,55 @@ intptr_t dSCAutoDemoFighterNameSpriteOffsets[] =
 	&llCharacterNamesNessSprite        // Ness
 };
 
-// 8018E230
+// 0x8018E230
 SYColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 8018E234
+// 0x8018E234
 SYVideoSetup dSCAutoDemoVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 8018E250
+// 0x8018E250
 SYTaskmanSetup dSCAutoDemoTaskmanSetup = 
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		scAutoDemoFuncUpdate,       // Update function
-		scManagerFuncDraw,          // Frame draw function
-		&ovl64_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 3072,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 1536,         // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x8000,                     // Graphics Heap Size
-		2,                          // ???
-		0xC000,                     // RDP Output Buffer Size
-		scAutoDemoFuncLights,    	// Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        scAutoDemoFuncUpdate,       // Update function
+        scManagerFuncDraw,          // Frame draw function
+        &ovl64_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 3072,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1536,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        scAutoDemoFuncLights,    	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	dLBCommonFuncMatrixList,        // Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	scAutoDemoFuncStart           	// Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    dLBCommonFuncMatrixList,        // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    scAutoDemoFuncStart           	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -176,22 +176,22 @@ SYTaskmanSetup dSCAutoDemoTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 8018E2F0
+// 0x8018E2F0
 SCBattleState sSCAutoDemoBattleState;
 
-// 8018E4E0
+// 0x8018E4E0
 s32 sSCAutoDemoFocusChangeWait;
 
-// 8018E4E4
+// 0x8018E4E4
 u16 sSCAutoDemoFighterMask;
 
-// 8018E4E8
+// 0x8018E4E8
 GObj *sSCAutoDemoFighterNameGObj;
 
-// 8018E4EC
+// 0x8018E4EC
 SCAutoDemoProc *sSCAutoDemoFunc;
 
-// 8018E4F0
+// 0x8018E4F0
 s16 sSCAutoDemoMapObjs[8];
 
 // // // // // // // // // // // //
@@ -200,14 +200,14 @@ s16 sSCAutoDemoMapObjs[8];
 //                               //
 // // // // // // // // // // // //
 
-// 8018D0C0
-void scAutoDemoFuncUpdate()
+// 0x8018D0C0
+void scAutoDemoFuncUpdate(void)
 {
 	gcRunAll();
 }
 
-// 8018D0E0
-void scAutoDemoStartBattle()
+// 0x8018D0E0
+void scAutoDemoStartBattle(void)
 {
 	GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -220,8 +220,8 @@ void scAutoDemoStartBattle()
 	gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 }
 
-// 8018D134
-void scAutoDemoDetectExit()
+// 0x8018D134
+void scAutoDemoDetectExit(void)
 {
 	s32 player;
 
@@ -240,15 +240,15 @@ void scAutoDemoDetectExit()
 	}
 }
 
-// 8018D19C
-void scAutoDemoMakeFade()
+// 0x8018D19C
+void scAutoDemoMakeFade(void)
 {
 	SYColorRGBA color = dSCAutoDemoFadeColor;
 
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 30, TRUE, NULL);
 }
 
-// 8018D1EC
+// 0x8018D1EC
 sb32 scAutoDemoCheckStopFocusPlayer(FTStruct *fp)
 {
 	switch (fp->status_id)
@@ -263,7 +263,7 @@ sb32 scAutoDemoCheckStopFocusPlayer(FTStruct *fp)
 	}
 }
 
-// 8018D220
+// 0x8018D220
 void scAutoDemoSetCameraPlayerZoom(GObj *fighter_gobj)
 {
 	gmCameraSetStatusPlayerZoom
@@ -277,8 +277,8 @@ void scAutoDemoSetCameraPlayerZoom(GObj *fighter_gobj)
 	);
 }
 
-// 8018D2CC
-void scAutoDemoSetFocusPlayer1()
+// 0x8018D2CC
+void scAutoDemoSetFocusPlayer1(void)
 {
 	GObj *fighter_gobj = gSCManagerBattleState->players[0].fighter_gobj;
 	FTStruct *fp = ftGetStruct(fighter_gobj);
@@ -304,8 +304,8 @@ void scAutoDemoSetFocusPlayer1()
 	}
 }
 
-// 8018D39C
-void SCAutoDemoProcFocusPlayer1()
+// 0x8018D39C
+void SCAutoDemoProcFocusPlayer1(void)
 {
 	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gSCManagerBattleState->players[0].fighter_gobj)) != FALSE)
 	{
@@ -313,8 +313,8 @@ void SCAutoDemoProcFocusPlayer1()
 	}
 }
 
-// 8018D3D4
-void scAutoDemoSetFocusPlayer2()
+// 0x8018D3D4
+void scAutoDemoSetFocusPlayer2(void)
 {
 	GObj *p2_gobj = gSCManagerBattleState->players[1].fighter_gobj;
 	GObj *p1_gobj = gSCManagerBattleState->players[0].fighter_gobj;
@@ -346,8 +346,8 @@ void scAutoDemoSetFocusPlayer2()
 	}
 }
 
-// 8018D4F0
-void SCAutoDemoProcFocusPlayer2()
+// 0x8018D4F0
+void SCAutoDemoProcFocusPlayer2(void)
 {
 	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gSCManagerBattleState->players[1].fighter_gobj)) != FALSE)
 	{
@@ -355,8 +355,8 @@ void SCAutoDemoProcFocusPlayer2()
 	}
 }
 
-// 8018D528
-void scAutoDemoResetFocusPlayerAll()
+// 0x8018D528
+void scAutoDemoResetFocusPlayerAll(void)
 {
 	GObj *p2_gobj = gSCManagerBattleState->players[1].fighter_gobj;
 
@@ -374,27 +374,27 @@ void scAutoDemoResetFocusPlayerAll()
 	SObjGetStruct(sSCAutoDemoFighterNameGObj)->next->sprite.attr |= SP_HIDDEN;
 }
 
-// 8018D5E0
-void scAutoDemoSetMagnifyDisplayOn()
+// 0x8018D5E0
+void scAutoDemoSetMagnifyDisplayOn(void)
 {
 	gIFCommonPlayerInterface.is_magnify_display = TRUE;
 }
 
-// 8018D5F0
-void scAutoDemoExit()
+// 0x8018D5F0
+void scAutoDemoExit(void)
 {
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 #if defined(REGION_US)        
-	gSCManagerSceneData.scene_curr = nSCKindStartup;
+    gSCManagerSceneData.scene_curr = nSCKindStartup;
 #else
-	gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+    gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
 #endif
 
 	syTaskmanSetLoadScene();
 }
 
-// 8018D624
-void scAutoDemoChangeFocus()
+// 0x8018D624
+void scAutoDemoChangeFocus(void)
 {
 	sSCAutoDemoFocusChangeWait = sSCAutoDemoFunc->focus_end_wait;
 
@@ -405,8 +405,8 @@ void scAutoDemoChangeFocus()
 	sSCAutoDemoFunc++;
 }
 
-// 8018D674
-void scAutoDemoUpdateFocus()
+// 0x8018D674
+void scAutoDemoUpdateFocus(void)
 {
 	if (sSCAutoDemoFunc->func_focus != NULL)
 	{
@@ -419,15 +419,15 @@ void scAutoDemoUpdateFocus()
 	sSCAutoDemoFocusChangeWait--;
 }
 
-// 8018D6DC
+// 0x8018D6DC
 void scAutoDemoFuncRun(GObj *gobj)
 {
 	scAutoDemoDetectExit();
 	scAutoDemoUpdateFocus();
 }
 
-// 8018D704
-GObj* scAutoDemoMakeFocusInterface()
+// 0x8018D704
+GObj* scAutoDemoMakeFocusInterface(void)
 {
 	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
 
@@ -439,7 +439,7 @@ GObj* scAutoDemoMakeFocusInterface()
 	return interface_gobj;
 }
 
-// 8018D758
+// 0x8018D758
 void scAutoDemoGetPlayerStartPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
 {
 	s32 i, j;
@@ -471,7 +471,7 @@ void scAutoDemoGetPlayerStartPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
 	}
 }
 
-// 8018D7FC
+// 0x8018D7FC
 s32 scAutoDemoGetFighterKindsNum(u16 flag)
 {
 	s32 i, j;
@@ -486,7 +486,7 @@ s32 scAutoDemoGetFighterKindsNum(u16 flag)
 	return j;
 }
 
-// 8018D874
+// 0x8018D874
 s32 scAutoDemoGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
 	s32 ret = -1;
@@ -507,7 +507,7 @@ s32 scAutoDemoGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 	return ret;
 }
 
-// 8018D8C0
+// 0x8018D8C0
 s32 scAutoDemoGetFighterKind(s32 player)
 {
 	u16 fighter_mask;
@@ -532,7 +532,7 @@ s32 scAutoDemoGetFighterKind(s32 player)
 	return fkind;
 }
 
-// 8018D954
+// 0x8018D954
 s32 scAutoDemoGetPlayerDamage(s32 player)
 {
 	if (player < 2)
@@ -542,8 +542,8 @@ s32 scAutoDemoGetPlayerDamage(s32 player)
 	else return syUtilsRandIntRange(60) + 40;
 }
 
-// 8018D990
-void scAutoDemoInitDemo()
+// 0x8018D990
+void scAutoDemoInitDemo(void)
 {
 	s32 i;
 
@@ -578,8 +578,8 @@ void scAutoDemoInitDemo()
 	}
 }
 
-// 8018DB18
-void scAutoDemoInitSObjs()
+// 0x8018DB18
+void scAutoDemoInitSObjs(void)
 {
 	GObj *interface_gobj;
 	s32 player;
@@ -618,8 +618,8 @@ void scAutoDemoInitSObjs()
 	}
 }
 
-// 8018DCC4
-void scAutoDemoFuncStart()
+// 0x8018DCC4
+void scAutoDemoFuncStart(void)
 {
 	GObj *fighter_gobj;
 	FTDesc desc;
@@ -699,7 +699,7 @@ void scAutoDemoFuncStart()
 	scAutoDemoMakeFocusInterface();
 }
 
-// 8018DFC8
+// 0x8018DFC8
 void scAutoDemoFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
@@ -707,8 +707,8 @@ void scAutoDemoFuncLights(Gfx **dls)
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E014
-void scAutoDemoStartScene()
+// 0x8018E014
+void scAutoDemoStartScene(void)
 {
 	dSCAutoDemoVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 

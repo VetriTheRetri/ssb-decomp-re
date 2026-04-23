@@ -1,16 +1,16 @@
 #include <ft/fighter.h>
 
-// 80130FD0
+// 0x80130FD0
 void *gFTDataNLinkMain;
 
-// 80130FD4
+// 0x80130FD4
 void *gFTDataNLinkSubMotion;
 
-// 80130FD8
+// 0x80130FD8
 void *gFTDataNLinkModel;
 
-// 80130FDC
+// 0x80130FDC
 s32 gFTDataNLinkParticleBankID;
 
-// 80130FE0
+// 0x80130FE0
 s32 gFTDataNLinkPad0x80130FE0;

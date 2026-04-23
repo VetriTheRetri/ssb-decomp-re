@@ -5,13 +5,13 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern void mvOpeningJungleSetupFiles();
+extern void mvOpeningJungleSetupFiles(void);
 extern void mvOpeningJungleMakeGroundViewport(Vec3f unused);
-extern void mvOpeningJungleMakeFighters();
+extern void mvOpeningJungleMakeFighters(void);
 extern void mvOpeningJungleFuncRun(GObj *gobj);
-extern void mvOpeningJungleFuncStart();
+extern void mvOpeningJungleFuncStart(void);
 extern void mvOpeningJungleFuncLights(Gfx **dls);
-extern void mvOpeningJungleFuncStart();
-extern void mvOpeningJungleStartScene();
+extern void mvOpeningJungleFuncStart(void);
+extern void mvOpeningJungleStartScene(void);
 
 #endif

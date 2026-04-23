@@ -7,8 +7,8 @@
 
 #define ftDonkeyThrowFTurnCheckInterrupt(fighter_gobj)                            \
 (                                                                           \
-	(ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||    \
-	(ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE)    \
+    (ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||    \
+    (ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE)    \
 )
 
 // // // // // // // // // // // //
@@ -17,50 +17,50 @@
 //                               //
 // // // // // // // // // // // //
 
-// 8014D740
+// 0x8014D740
 void ftDonkeyThrowFTurnProcUpdate(GObj *fighter_gobj)
 {
-	FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-	if (fp->motion_vars.flags.flag1 != 0)
-	{
-		fp->motion_vars.flags.flag1 = 0;
+    if (fp->motion_vars.flags.flag1 != 0)
+    {
+        fp->motion_vars.flags.flag1 = 0;
 
-		fp->lr = -fp->lr;
+        fp->lr = -fp->lr;
 
-		fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
-	}
-	ftAnimEndCheckSetStatus(fighter_gobj, ftDonkeyThrowFWaitSetStatus);
+        fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
+    }
+    ftAnimEndCheckSetStatus(fighter_gobj, ftDonkeyThrowFWaitSetStatus);
 }
 
-// 8014D790
+// 0x8014D790
 void ftDonkeyThrowFTurnProcInterrupt(GObj *fighter_gobj)
 {
-	if (!(ftDonkeyThrowFTurnCheckInterrupt(fighter_gobj)))
-	{
-		ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(fighter_gobj);
-	}
+    if (!(ftDonkeyThrowFTurnCheckInterrupt(fighter_gobj)))
+    {
+        ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(fighter_gobj);
+    }
 }
 
-// 8014D7D0
+// 0x8014D7D0
 void ftDonkeyThrowFTurnSetStatus(GObj *fighter_gobj)
 {
-	FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-	fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
-	ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFTurn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-	ftMainPlayAnimEventsAll(fighter_gobj);
+    ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFTurn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
-// 8014D810
+// 0x8014D810
 sb32 ftDonkeyThrowFTurnCheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
-	if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
-	{
-		ftDonkeyThrowFTurnSetStatus(fighter_gobj);
+    if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
+    {
+        ftDonkeyThrowFTurnSetStatus(fighter_gobj);
 
-		return TRUE;
-	}
-	else return FALSE;
+        return TRUE;
+    }
+    else return FALSE;
 }

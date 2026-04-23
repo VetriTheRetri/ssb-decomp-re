@@ -1,10 +1,10 @@
 
 /*---------------------------------------------------------------------*
-		Copyright (C) 1998 Nintendo.
-		
-		$RCSfile: os_version.h,v $
-		$Revision: 1.2 $
-		$Date: 1999/06/17 01:33:01 $
+        Copyright (C) 1998 Nintendo.
+        
+        $RCSfile: os_version.h,v $
+        $Revision: 1.2 $
+        $Date: 1999/06/17 01:33:01 $
  *---------------------------------------------------------------------*/
 
 #ifndef _OS_VERSION_H_

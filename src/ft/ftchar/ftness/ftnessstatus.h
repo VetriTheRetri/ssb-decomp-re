@@ -3,8 +3,8 @@
 
 #include <ft/fighter.h>
 
-// 8012B2B8
-FTStatusDesc dFTNessSpecialStatusDescs[] =
+// 0x8012B2B8
+FTStatusDesc dFTNessSpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): Attack13
 	{

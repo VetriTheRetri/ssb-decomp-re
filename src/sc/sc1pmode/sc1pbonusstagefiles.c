@@ -1,14 +1,14 @@
 #include <sc/scene.h>
 #include <reloc_data.h>
 
-// 8018F3B0
+// 0x8018F3B0
 LBFileNode sSC1PBonusStageStatusBuffer[100];
 
-// 8018F6D0
+// 0x8018F6D0
 LBFileNode sSC1PBonusStageForceStatusBuffer[7];
 
-// 8018ED70
-void sc1PBonusStageSetupFiles()
+// 0x8018ED70
+void sc1PBonusStageSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 

@@ -9,65 +9,65 @@
 
 ITDesc dITHeartItemDesc =
 {
-	nITKindHeart,                           // Item Kind
-	&gITManagerCommonData,                  // Pointer to item file data?
-	&llITCommonDataHeartItemAttributes,     // Offset of item attributes in file?
+    nITKindHeart,                           // Item Kind
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataHeartItemAttributes,     // Offset of item attributes in file?
 
-	// DObj transformation struct
-	{
-		nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-		nGCMatrixKindNull,                   // Secondary matrix transformations?
-		0                                   // ???
-	},
+    // DObj transformation struct
+    {
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        0                                   // ???
+    },
 
-	nGMAttackStateOff,                      // Hitbox Update State
-	itHeartFallProcUpdate,                  // Proc Update
-	itHeartFallProcMap,                     // Proc Map
-	NULL,                                   // Proc Hit
-	NULL,                                   // Proc Shield
-	NULL,                                   // Proc Hop
-	NULL,                                   // Proc Set-Off
-	NULL,                                   // Proc Reflector
-	NULL                                    // Proc Damage
+    nGMAttackStateOff,                      // Hitbox Update State
+    itHeartFallProcUpdate,                  // Proc Update
+    itHeartFallProcMap,                     // Proc Map
+    NULL,                                   // Proc Hit
+    NULL,                                   // Proc Shield
+    NULL,                                   // Proc Hop
+    NULL,                                   // Proc Set-Off
+    NULL,                                   // Proc Reflector
+    NULL                                    // Proc Damage
 };
 
-ITStatusDesc dITHeartStatusDescs[] =
+ITStatusDesc dITHeartStatusDescs[/* */] =
 {
-	// Status 0 (Ground Wait)
-	{
-		NULL,                               // Proc Update
-		itHeartWaitProcMap,                 // Proc Map
-		NULL,                               // Proc Hit
-		NULL,                               // Proc Shield
-		NULL,                               // Proc Hop
-		NULL,                               // Proc Set-Off
-		NULL,                               // Proc Reflector
-		NULL                                // Proc Damage
-	},
+    // Status 0 (Ground Wait)
+    {
+        NULL,                               // Proc Update
+        itHeartWaitProcMap,                 // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
 
-	// Status 1 (Air Wait Fall)
-	{
-		itHeartFallProcUpdate,              // Proc Update
-		itHeartFallProcMap,                 // Proc Map
-		NULL,                               // Proc Hit
-		NULL,                               // Proc Shield
-		NULL,                               // Proc Hop
-		NULL,                               // Proc Set-Off
-		NULL,                               // Proc Reflector
-		NULL                                // Proc Damage
-	},
+    // Status 1 (Air Wait Fall)
+    {
+        itHeartFallProcUpdate,              // Proc Update
+        itHeartFallProcMap,                 // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    },
 
-	// Status 2 (Fighter Drop)
-	{
-		itHeartFallProcUpdate,              // Proc Update
-		itHeartDroppedProcMap,              // Proc Map
-		NULL,                               // Proc Hit
-		NULL,                               // Proc Shield
-		NULL,                               // Proc Hop
-		NULL,                               // Proc Set-Off
-		NULL,                               // Proc Reflector
-		NULL                                // Proc Damage
-	}
+    // Status 2 (Fighter Drop)
+    {
+        itHeartFallProcUpdate,              // Proc Update
+        itHeartDroppedProcMap,              // Proc Map
+        NULL,                               // Proc Hit
+        NULL,                               // Proc Shield
+        NULL,                               // Proc Hop
+        NULL,                               // Proc Set-Off
+        NULL,                               // Proc Reflector
+        NULL                                // Proc Damage
+    }
 };
 
 // // // // // // // // // // // //
@@ -78,10 +78,10 @@ ITStatusDesc dITHeartStatusDescs[] =
 
 enum itHeartStatus
 {
-	nITHeartStatusWait,
-	nITHeartStatusFall,
-	nITHeartStatusDropped,
-	nITHeartStatusEnumCount
+    nITHeartStatusWait,
+    nITHeartStatusFall,
+    nITHeartStatusDropped,
+    nITHeartStatusEnumCount
 };
 
 // // // // // // // // // // // //
@@ -90,95 +90,95 @@ enum itHeartStatus
 //                               //
 // // // // // // // // // // // //
 
-// 801746F0
+// 0x801746F0
 sb32 itHeartFallProcUpdate(GObj *item_gobj)
 {
-	ITStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-	itMainApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_TVEL);
-	itVisualsUpdateSpin(item_gobj);
+    itMainApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_TVEL);
+    itVisualsUpdateSpin(item_gobj);
 
-	return FALSE;
+    return FALSE;
 }
 
-// 80174728
+// 0x80174728
 sb32 itHeartWaitProcMap(GObj *item_gobj)
 {
-	itMapCheckLRWallProcNoFloor(item_gobj, itHeartFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itHeartFallSetStatus);
 
-	return FALSE;
+    return FALSE;
 }
 
-// 80174750
+// 0x80174750
 sb32 itHeartFallProcMap(GObj *item_gobj)
 {
-	return itMapCheckDestroyDropped(item_gobj, ITHEART_MAP_REBOUND_COMMON, ITHEART_MAP_REBOUND_GROUND, itHeartWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHEART_MAP_REBOUND_COMMON, ITHEART_MAP_REBOUND_GROUND, itHeartWaitSetStatus);
 }
 
-// 80174780
+// 0x80174780
 void itHeartWaitSetStatus(GObj *item_gobj)
 {
-	itMainSetGroundAllowPickup(item_gobj);
-	itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusWait);
+    itMainSetGroundAllowPickup(item_gobj);
+    itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusWait);
 }
 
-// 801747B4
+// 0x801747B4
 void itHeartFallSetStatus(GObj *item_gobj)
 {
-	ITStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->is_allow_pickup = FALSE;
+    ip->is_allow_pickup = FALSE;
 
-	itMapSetAir(ip);
-	itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusFall);
+    itMapSetAir(ip);
+    itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusFall);
 }
 
-// 801747F8
+// 0x801747F8
 sb32 itHeartDroppedProcMap(GObj *item_gobj)
 {
-	return itMapCheckDestroyDropped(item_gobj, ITHEART_MAP_REBOUND_COMMON, ITHEART_MAP_REBOUND_GROUND, itHeartWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHEART_MAP_REBOUND_COMMON, ITHEART_MAP_REBOUND_GROUND, itHeartWaitSetStatus);
 }
 
-// 80174828
+// 0x80174828
 void itHeartDroppedSetStatus(GObj *item_gobj)
 {
-	itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusDropped);
+    itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusDropped);
 }
 
-// 80174850
+// 0x80174850
 GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-	GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHeartItemDesc, pos, vel, flags);
-	DObj *dobj;
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHeartItemDesc, pos, vel, flags);
+    DObj *dobj;
 #if defined(REGION_US)
-	Vec3f translate;
+    Vec3f translate;
 #endif
-	ITStruct *ip;
+    ITStruct *ip;
 
-	if (item_gobj != NULL)
-	{
+    if (item_gobj != NULL)
+    {
 #if defined(REGION_US)
-		dobj = DObjGetStruct(item_gobj);
-		ip = itGetStruct(item_gobj);
-		translate = dobj->translate.vec.f;
+        dobj = DObjGetStruct(item_gobj);
+        ip = itGetStruct(item_gobj);
+        translate = dobj->translate.vec.f;
 
-		gcAddXObjForDObjFixed(dobj, 0x2E, 0);
+        gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
-		dobj->translate.vec.f = translate;
+        dobj->translate.vec.f = translate;
 #else
-		ip = itGetStruct(item_gobj);
-		dobj = DObjGetStruct(item_gobj);
+        ip = itGetStruct(item_gobj);
+        dobj = DObjGetStruct(item_gobj);
 
-		gcAddXObjForDObjFixed(dobj, 0x2E, 0);
+        gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
-		dobj->translate.vec.f = *pos;
+        dobj->translate.vec.f = *pos;
 #endif
 
-		dobj->rotate.vec.f.z = 0.0F;
+        dobj->rotate.vec.f.z = 0.0F;
 
-		ip->is_unused_item_bool = TRUE;
+        ip->is_unused_item_bool = TRUE;
 
-		ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
-	}
-	return item_gobj;
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
+    }
+    return item_gobj;
 }

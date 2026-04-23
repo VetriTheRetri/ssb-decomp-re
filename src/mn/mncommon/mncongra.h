@@ -9,9 +9,9 @@
 extern sb32 mnCongraCheckPlayerControllerConnected(s32 player);
 extern s32 mnCongraGetPlayerTapButtons(u32 buttons);
 extern void mnCongraActorFuncRun(GObj *gobj);
-extern void mnCongraFuncStart();
-extern void mnCongraFuncDraw();
+extern void mnCongraFuncStart(void);
+extern void mnCongraFuncDraw(void);
 extern void mnCongraFuncLights(Gfx **dls);
-extern void mnCongraStartScene();
+extern void mnCongraStartScene(void);
 
 #endif

@@ -16,8 +16,8 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 801341E0
-intptr_t dMNTitleLogoAnimSprites[] =
+// 0x801341E0
+intptr_t dMNTitleLogoAnimSprites[/* */] =
 {
 	&llMNTitleLogoAnimCutoutSprite,  // Full circle cutout
 	&llMNTitleLogoAnimStrikeVSprite, // Vertical rectangle
@@ -25,8 +25,8 @@ intptr_t dMNTitleLogoAnimSprites[] =
 	&llMNTitleLogoAnimFullSprite     // Full sprite? Unused?
 };
 
-// 801341F0
-intptr_t dMNTitleFireSpriteOffsets[] =
+// 0x801341F0
+intptr_t dMNTitleFireSpriteOffsets[/* */] =
 {
 	&llMNTitleFireAnimFrame1Sprite,
 	&llMNTitleFireAnimFrame2Sprite,
@@ -60,8 +60,8 @@ intptr_t dMNTitleFireSpriteOffsets[] =
 	&llMNTitleFireAnimFrame30Sprite
 };
 
-// 80134268
-MNTitleSpriteDesc dMNTitleCommonSpriteDescs[] =
+// 0x80134268
+MNTitleSpriteDesc dMNTitleCommonSpriteDescs[/* */] =
 {
 #if defined(REGION_US)
 	{ { 157,  94 }, &llMNTitleCutoutSprite },
@@ -92,34 +92,34 @@ MNTitleSpriteDesc dMNTitleCommonSpriteDescs[] =
 	{ { 277, 157 }, &llMNTitleTMSprite }
 };
 
-// 801342E0
+// 0x801342E0
 #if defined(REGION_US)
-char *dMNTitleUnknown0x801342E0[] = { NULL, NULL, "English", NULL, NULL, NULL, NULL, NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
+char *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, "English", NULL, NULL, NULL, NULL, NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
 #else
-char *dMNTitleUnknown0x801342E0[] = { NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
+char *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
 #endif
 
-// 80134318
-u8 dMNTitleFireColorsR[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xE6, 0xFF, 0xFF };
+// 0x80134318
+u8 dMNTitleFireColorsR[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xE6, 0xFF, 0xFF };
 
-// 80134320
-u8 dMNTitleFireColorsG[] = { 0xFF, 0xF0, 0xFF, 0xD1, 0xFF, 0xE2, 0xD2 };
+// 0x80134320
+u8 dMNTitleFireColorsG[/* */] = { 0xFF, 0xF0, 0xFF, 0xD1, 0xFF, 0xE2, 0xD2 };
 
-// 80134328
-u8 dMNTitleFireColorsB[] = { 0xFF, 0x9B, 0x64, 0xD1, 0xE6, 0xB8, 0x94 };
+// 0x80134328
+u8 dMNTitleFireColorsB[/* */] = { 0xFF, 0x9B, 0x64, 0xD1, 0xE6, 0xB8, 0x94 };
 
-// 80134330
+// 0x80134330
 Lights1 dMNTitleLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
-// 80134348
-Gfx dMNTitleDisplayList[] =
+// 0x80134348
+Gfx dMNTitleDisplayList[/* */] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNTitleLights1),
 	gsSPEndDisplayList()
 };
 
-// 80134370
+// 0x80134370
 SYVideoSetup dMNTitleVideoSetup =
 {
 	&gSYFramebufferSets[0],
@@ -130,52 +130,52 @@ SYVideoSetup dMNTitleVideoSetup =
 	240,
 	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER |
 	0x800                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA     |
-	SYVIDEO_FLAG_COLORDEPTH16 | SYVIDEO_FLAG_NOSERRATE    | 0x1
+    SYVIDEO_FLAG_COLORDEPTH16 | SYVIDEO_FLAG_NOSERRATE    | 0x1
 };
 
-// 8013438C
+// 0x8013438C
 SYTaskmanSetup dMNTitleTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		mnTitleFuncUpdate,          // Update function
-		gcDrawAll,                  // Frame draw function
-		&ovl10_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 3584,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x1000,                     // Graphics Heap Size
-		2,                          // ???
-		0x1000,                     // RDP Output Buffer Size
-		mnTitleFuncLights,         	// Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        mnTitleFuncUpdate,          // Update function
+        gcDrawAll,                  // Frame draw function
+        &ovl10_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 3584,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x1000,                     // Graphics Heap Size
+        2,                          // ???
+        0x1000,                     // RDP Output Buffer Size
+        mnTitleFuncLights,         	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	NULL,                           // Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	mnTitleFuncStart               	// Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,                           // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    mnTitleFuncStart               	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -184,70 +184,70 @@ SYTaskmanSetup dMNTitleTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 80134440
+// 0x80134440
 s32 D_ovl10_80134440[2];
 
-// 80134448
+// 0x80134448
 GObj *sMNTitleFireCameraGObj;
 
-// 8013444C
+// 0x8013444C
 s32 sMNTitleParticleBankID;
 
-// 80134450
+// 0x80134450
 s32 sMNTitleLayout;
 
-// 80134454
+// 0x80134454
 GObj *sMNTitleTransitionsGObj;
 
-// 80134458
+// 0x80134458
 GObj *sMNTitleMainGObj;
 
-// 8013445C
+// 0x8013445C
 s32 sMNTitleTransitionTotalTimeTics;
 
-// 80134460
+// 0x80134460
 sb32 sMNTitleIsStartActorProcess;
 
-// 80134464
+// 0x80134464
 s32 sMNTitleFireAlpha;
 
-// 80134468
+// 0x80134468
 s32 sMNTitleFireAlphaUnused;
 
-// 8013446C
+// 0x8013446C
 s32 sMNTitleLogoAlpha;
 
-// 80134470
+// 0x80134470
 sb32 sMNTitleIsProceedScene;
 
-// 80134474
+// 0x80134474
 s32 sMNTitleProceedSceneWait;
 
-// 80134478
+// 0x80134478
 s32 sMNTitleFireTimer;
 
-// 8013447C
+// 0x8013447C
 f32 sMNTitleFireColorR;
 
-// 80134480
+// 0x80134480
 f32 sMNTitleFireColorG;
 
-// 80134484
+// 0x80134484
 f32 sMNTitleFireColorB;
 
-// 80134488
+// 0x80134488
 f32 sMNTitleFireColorDeltaR;
 
-// 8013448C
+// 0x8013448C
 f32 sMNTitleFireColorDeltaG;
 
-// 80134490
+// 0x80134490
 f32 sMNTitleFireColorDeltaB;
 
-// 80134494
+// 0x80134494
 s32 sMNTitleFireColorID;
 
-// 80134498
+// 0x80134498
 u32 sMNTitleAllowProceedWait;
 
 // // // // // // // // // // // //
@@ -256,7 +256,7 @@ u32 sMNTitleAllowProceedWait;
 //                               //
 // // // // // // // // // // // //
 
-// 80131B00
+// 0x80131B00
 s32 mnTitleGetFighterKindsNum(u16 mask)
 {
 	s32 i, j;
@@ -271,7 +271,7 @@ s32 mnTitleGetFighterKindsNum(u16 mask)
 	return j;
 }
 
-// 80131B78
+// 0x80131B78
 s32 mnTitleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
 	s32 fkind = -1;
@@ -292,8 +292,8 @@ s32 mnTitleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 	return fkind;
 }
 
-// 80131BC4
-s32 mnTitleSetDemoFighterKinds()
+// 0x80131BC4
+s32 mnTitleSetDemoFighterKinds(void)
 {
 	u16 unlocked_mask;
 	s32 unlocked_count;
@@ -336,8 +336,8 @@ s32 mnTitleSetDemoFighterKinds()
 	}
 }
 
-// 80131CF4
-void mnTitleInitVars()
+// 0x80131CF4
+void mnTitleInitVars(void)
 {
 	s32 color_id;
 
@@ -370,8 +370,8 @@ void mnTitleInitVars()
 	sMNTitleFireColorDeltaB = 0.0F;
 }
 
-// 80131E68
-void mnTitleSetEndLogoPosition()
+// 0x80131E68
+void mnTitleSetEndLogoPosition(void)
 {
 	GObj *smash_logo_gobj;
 	SObj *smash_logo_sobj;
@@ -393,8 +393,8 @@ void mnTitleSetEndLogoPosition()
 	smash_logo_sobj->sprite.scaley = 1.0F;
 }
 
-// 80131EE4
-void mnTitleSetEndLayout()
+// 0x80131EE4
+void mnTitleSetEndLayout(void)
 {
 	s32 i;
 	GObj *texture_gobj;
@@ -448,8 +448,8 @@ void mnTitleSetEndLayout()
 #endif
 }
 
-// 80131FD0
-void mnTitleProceedDemoNext()
+// 0x80131FD0
+void mnTitleProceedDemoNext(void)
 {
 	u8 scene_prev = gSCManagerSceneData.scene_prev;
 
@@ -472,9 +472,9 @@ void mnTitleProceedDemoNext()
 	case nSCKindModeSelect:
 	case nSCKindAutoDemo:
 #if defined(REGION_US)        
-		gSCManagerSceneData.scene_curr = nSCKindStartup;
+        gSCManagerSceneData.scene_curr = nSCKindStartup;
 #else
-		gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+        gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
 #endif
 		break;
 
@@ -486,8 +486,8 @@ void mnTitleProceedDemoNext()
 	sMNTitleIsProceedScene = TRUE;
 }
 
-// 80132090
-void mnTitleProceedModeSelect()
+// 0x80132090
+void mnTitleProceedModeSelect(void)
 {
 	gcMakeDefaultCameraGObj(2, GOBJ_PRIORITY_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 #if defined(REGION_JP)
@@ -503,7 +503,7 @@ void mnTitleProceedModeSelect()
 	sMNTitleIsProceedScene = TRUE;
 }
 
-// 801320F0
+// 0x801320F0
 void mnTitleFuncRun(GObj *gobj)
 {
 	s32 i;
@@ -553,8 +553,8 @@ void mnTitleFuncRun(GObj *gobj)
 	}
 }
 
-// 80132210
-void mnTitleUpdateFireVars()
+// 0x80132210
+void mnTitleUpdateFireVars(void)
 {
 	s32 kind = syUtilsRandTimeUCharRange(7);
 
@@ -567,8 +567,8 @@ void mnTitleUpdateFireVars()
 	sMNTitleFireColorDeltaB = (dMNTitleFireColorsB[kind] - sMNTitleFireColorB) / 80.0F;
 }
 
-// 80132320
-void mnTitleTransitionFromFireLogo()
+// 0x80132320
+void mnTitleTransitionFromFireLogo(void)
 {
 	GObj *current_gobj;
 	GObj *next_gobj;
@@ -597,7 +597,7 @@ void mnTitleTransitionFromFireLogo()
 	mnTitleUpdateFireVars();
 }
 
-// 801323AC
+// 0x801323AC
 void mnTitleShowGObjLinkID(s32 link_id)
 {
 	GObj *gobj = gGCCommonLinks[link_id];
@@ -610,8 +610,8 @@ void mnTitleShowGObjLinkID(s32 link_id)
 	}
 }
 
-// 801323DC
-void mnTitleAdvanceLayout()
+// 0x801323DC
+void mnTitleAdvanceLayout(void)
 {
 	if ((sMNTitleLayout == nMNTitleLayoutOpening) && (gSCManagerSceneData.scene_prev == nSCKindOpeningNewcomers))
 	{
@@ -620,8 +620,8 @@ void mnTitleAdvanceLayout()
 	sMNTitleLayout++;
 }
 
-// 80132414
-void mnTitleSetAllowProceedWait()
+// 0x80132414
+void mnTitleSetAllowProceedWait(void)
 {
 	if (sMNTitleLayout == nMNTitleLayoutFinal)
 	{
@@ -636,7 +636,7 @@ void mnTitleSetAllowProceedWait()
 #endif
 }
 
-// 80132448
+// 0x80132448
 void mnTitleTransitionsFuncRun(GObj *gobj)
 {
 	sMNTitleTransitionTotalTimeTics++;
@@ -725,7 +725,7 @@ void mnTitleTransitionsFuncRun(GObj *gobj)
 	}
 }
 
-// 801325D4
+// 0x801325D4
 void mnTitlePlayAnim(GObj *gobj)
 {
 	GObj *effect_gobj = gobj->user_data.p;
@@ -748,7 +748,7 @@ void mnTitlePlayAnim(GObj *gobj)
 	}
 }
 
-// 801326A4
+// 0x801326A4
 void mnTitlePressStartProcUpdate(GObj *gobj)
 {
 	if (gobj->flags != GOBJ_FLAG_HIDDEN)
@@ -758,7 +758,7 @@ void mnTitlePressStartProcUpdate(GObj *gobj)
 }
 
 #if defined(REGION_US)
-// 801326D4
+// 0x801326D4
 void mnTitleProcUpdate(GObj *gobj)
 {
 	if (gobj->flags != GOBJ_FLAG_HIDDEN)
@@ -768,7 +768,7 @@ void mnTitleProcUpdate(GObj *gobj)
 }
 #endif
 
-// 80132704
+// 0x80132704
 void mnTitleUpdateLabelsPosition(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
@@ -780,7 +780,7 @@ void mnTitleUpdateLabelsPosition(GObj *gobj)
 	}
 }
 
-// 80132764
+// 0x80132764
 void mnTitleSetPosition(DObj *dobj, SObj *sobj, s32 kind)
 {
 	MNTitleSpriteDesc *desc;
@@ -796,7 +796,7 @@ void mnTitleSetPosition(DObj *dobj, SObj *sobj, s32 kind)
 	sobj->pos.y = (desc->pos.y - (sobj->sprite.height * 0.5F));
 }
 
-// 8013282C
+// 0x8013282C
 void mnTitleSetColors(SObj *sobj, s32 kind)
 {
 	if (kind < nMNTitleSpriteKindFooter)
@@ -860,7 +860,7 @@ void mnTitleSetColors(SObj *sobj, s32 kind)
 	}
 }
 
-// 80132940
+// 0x80132940
 void mnTitleFireProcDisplay(GObj *fire_gobj)
 {
 	s32 i;
@@ -880,7 +880,7 @@ void mnTitleFireProcDisplay(GObj *fire_gobj)
 	}
 }
 
-// 80132A20
+// 0x80132A20
 void mnTitleFireFuncRun(GObj *gobj)
 {
 	if (gobj->flags != GOBJ_FLAG_HIDDEN)
@@ -894,7 +894,7 @@ void mnTitleFireFuncRun(GObj *gobj)
 	}
 }
 
-// 80132A58
+// 0x80132A58
 void mnTitleShowFire(GObj *gobj)
 {
 	sMNTitleFireAlpha = 0xFF;
@@ -902,7 +902,7 @@ void mnTitleShowFire(GObj *gobj)
 	gobj->flags = GOBJ_FLAG_NONE;
 }
 
-// 80132A6C
+// 0x80132A6C
 void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 {
 	Sprite *sprite = lbRelocGetFileData(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[sobj->user_data.s]);
@@ -921,7 +921,7 @@ void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 	}
 }
 
-// 80132B38
+// 0x80132B38
 void mnTitleFireProcUpdate(GObj *gobj)
 {
 	SObj *base_sobj = SObjGetStruct(gobj), *next_sobj = base_sobj->next;
@@ -930,8 +930,8 @@ void mnTitleFireProcUpdate(GObj *gobj)
 	mnTitleUpdateFireSprite(next_sobj, TRUE);
 }
 
-// 80132B70
-void mnTitleMakeFire()
+// 0x80132B70
+void mnTitleMakeFire(void)
 {
 	s32 i;
 	s32 target_texture;
@@ -994,7 +994,7 @@ void mnTitleMakeFire()
 	}
 }
 
-// 80132D5C
+// 0x80132D5C
 void mnTitleLogoProcUpdate(GObj *gobj)
 {
 	GObj *effect_gobj = gobj->user_data.p;
@@ -1007,7 +1007,7 @@ void mnTitleLogoProcUpdate(GObj *gobj)
 	logo_sobj->pos.y = ((120.0F - logo_dobj->translate.vec.f.y) - (logo_sobj->sprite.height * logo_sobj->sprite.scaley * 0.5F));
 }
 
-// 80132DFC
+// 0x80132DFC
 void mnTitleLogoProcDisplay(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
@@ -1027,7 +1027,7 @@ void mnTitleLogoProcDisplay(GObj *gobj)
 	}
 }
 
-// 80132EDC
+// 0x80132EDC
 void mnTitleFadeOutLogoFuncRun(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
@@ -1047,8 +1047,8 @@ void mnTitleFadeOutLogoFuncRun(GObj *gobj)
 	}
 }
 
-// 80132F3C
-void mnTitleMakeLogoNoOpening()
+// 0x80132F3C
+void mnTitleMakeLogoNoOpening(void)
 {
 	GObj *gobj = lbCommonMakeSpriteGObj
 	(
@@ -1076,8 +1076,8 @@ void mnTitleMakeLogoNoOpening()
 	mnTitleSetPosition(NULL, sobj, nMNTitleSpriteKindLogo);
 }
 
-// 80132FD8
-void mnTitleMakeLogo()
+// 0x80132FD8
+void mnTitleMakeLogo(void)
 {
 	s32 i;
 	GObj *animated_logo_gobj;
@@ -1157,7 +1157,7 @@ void mnTitleMakeLogo()
 }
 
 // 0x801331FC - Unused?
-void mnTitleMakeSprites()
+void mnTitleMakeSprites(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1176,8 +1176,8 @@ void mnTitleMakeSprites()
 	}
 }
 
-// 801332E4
-void mnTitleMakeLabels()
+// 0x801332E4
+void mnTitleMakeLabels(void)
 {
 	s32 i;
 	GObj *animation_gobj;
@@ -1231,8 +1231,8 @@ void mnTitleMakeLabels()
 	gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
-// 80133504
-void mnTitleMakePressStart()
+// 0x80133504
+void mnTitleMakePressStart(void)
 {
 	GObj *press_start_anim_gobj;
 	GObj *press_start_gobj;
@@ -1262,21 +1262,21 @@ void mnTitleMakePressStart()
 }
 
 // 0x80133634 - discarded language selection?
-void func_ovl10_80133634()
+void func_ovl10_80133634(void)
 {
 #if defined(REGION_US)
 	return;
 #else
-	GObj *gobj;
-	SObj *sobj;
-	
-	gobj = gcMakeGObjSPAfter(8, NULL, 11, GOBJ_PRIORITY_DEFAULT);
+    GObj *gobj;
+    SObj *sobj;
+    
+    gobj = gcMakeGObjSPAfter(8, NULL, 11, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[17].offset));
-	sobj->sprite.attr = SP_TRANSPARENT;
-	mnTitleSetPosition(NULL, sobj, 17);
-	mnTitleSetColors(sobj, 17);
-	gobj->flags = GOBJ_FLAG_HIDDEN;
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[17].offset));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    mnTitleSetPosition(NULL, sobj, 17);
+    mnTitleSetColors(sobj, 17);
+    gobj->flags = GOBJ_FLAG_HIDDEN;
 #endif
 }
 
@@ -1289,8 +1289,8 @@ void mnTitleSlashProcUpdate(GObj *gobj)
 	}
 }
 
-// 8013366C
-void mnTitleMakeSlash()
+// 0x8013366C
+void mnTitleMakeSlash(void)
 {
 	GObj *gobj;
 
@@ -1325,7 +1325,7 @@ void mnTitleMakeSlash()
 #endif
 }
 
-// 80133770
+// 0x80133770
 void mnTitleFireCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(sMNTitleFireCameraGObj);
@@ -1383,8 +1383,8 @@ void mnTitleFireCameraProcUpdate(GObj *gobj)
 	}
 }
 
-// 80133A94
-s32 mnTitleMakeCameras()
+// 0x80133A94
+s32 mnTitleMakeCameras(void)
 {
 	GObj *camera_gobj;
 	s32 unused;
@@ -1444,7 +1444,7 @@ s32 mnTitleMakeCameras()
 #endif
 }
 
-// 80133CFC
+// 0x80133CFC
 void mnTitleLogoFireProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1458,8 +1458,8 @@ void mnTitleLogoFireProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80133DDC
-void mnTitleMakeLogoFire()
+// 0x80133DDC
+void mnTitleMakeLogoFire(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mnTitleLogoFireProcDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
@@ -1469,8 +1469,8 @@ void mnTitleMakeLogoFire()
 	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleParticleScriptBankLo, &lMNTitleParticleScriptBankHi, &lMNTitleParticleTextureBankLo, &lMNTitleParticleTextureBankHi);
 }
 
-// 80133E68
-void mnTitleMakeLogoFireParticles()
+// 0x80133E68
+void mnTitleMakeLogoFireParticles(void)
 {
 	GObj *logo_fire_effect_gobj;
 	LBGenerator *gn;
@@ -1493,15 +1493,15 @@ void mnTitleMakeLogoFireParticles()
 	}
 }
 
-// 80133F3C
-void mnTitleMakeActors()
+// 0x80133F3C
+void mnTitleMakeActors(void)
 {
 	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
 	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
 }
 
-// 80133F90
-void mnTitleFuncStart()
+// 0x80133F90
+void mnTitleFuncStart(void)
 {
 	s32 i;
 
@@ -1532,20 +1532,20 @@ void mnTitleFuncStart()
 	}
 }
 
-// 80134074
+// 0x80134074
 void mnTitleFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNTitleDisplayList);
 }
 
-// 80134098
-void mnTitleFuncUpdate()
+// 0x80134098
+void mnTitleFuncUpdate(void)
 {
 	gcRunAll();
 }
 
-// 801340B8
-void mnTitleStartScene()
+// 0x801340B8
+void mnTitleStartScene(void)
 {
 	dMNTitleVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNTitleVideoSetup);

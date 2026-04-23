@@ -16,21 +16,21 @@
 // 0x80149680 - Probably its own file?
 void ftCommonShieldBreakDownProcUpdate(GObj *fighter_gobj)
 {
-	ftAnimEndCheckSetStatus(fighter_gobj, ftCommonShieldBreakStandSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonShieldBreakStandSetStatus);
 }
 
-// 801496A4
+// 0x801496A4
 void ftCommonShieldBreakDownSetStatus(GObj *fighter_gobj)
 {
-	FTStruct *fp = ftGetStruct(fighter_gobj);
-	s32 status_id;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    s32 status_id;
 
-	if (fp->ga == nMPKineticsAir)
-	{
-		mpCommonSetFighterGround(fp);
-	}
-	status_id = (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0) ? nFTCommonStatusShieldBreakDownD : nFTCommonStatusShieldBreakDownU;
+    if (fp->ga == nMPKineticsAir)
+    {
+        mpCommonSetFighterGround(fp);
+    }
+    status_id = (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0) ? nFTCommonStatusShieldBreakDownD : nFTCommonStatusShieldBreakDownU;
 
-	ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUS_FLAGS);
-	ftCommonDownBounceUpdateEffects(fighter_gobj);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUS_FLAGS);
+    ftCommonDownBounceUpdateEffects(fighter_gobj);
 }

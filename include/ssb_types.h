@@ -15,43 +15,43 @@ typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices an
 
 typedef struct Vec3h
 {
-	s16 x, y, z;
+    s16 x, y, z;
 
 } Vec3h;
 
 typedef struct Vec3i
 {
-	s32 x, y, z;
+    s32 x, y, z;
 
 } Vec3i;
 
 typedef struct Vec3f
 {
-	f32 x, y, z;
+    f32 x, y, z;
 
 } Vec3f;
 
 typedef struct Vec2b
 {
-	s8 x, y;
+    s8 x, y;
 
 } Vec2b;
 
 typedef struct Vec2f
 {
-	f32 x, y;
+    f32 x, y;
 
 } Vec2f;
 
 typedef struct Vec2h
 {
-	s16 x, y;
+    s16 x, y;
 
 } Vec2h;
 
 typedef struct Vec2i
 {
-	s32 x, y;
+    s32 x, y;
 
 } Vec2i;
 
@@ -69,42 +69,42 @@ typedef u32 ub32; // Unsigned 32-bit boolean
 
 enum nSYColorRGBAIndex
 {
-	nSYColorRGBAIndexR,
-	nSYColorRGBAIndexG,
-	nSYColorRGBAIndexB,
-	nSYColorRGBAIndexA
+    nSYColorRGBAIndexR,
+    nSYColorRGBAIndexG,
+    nSYColorRGBAIndexB,
+    nSYColorRGBAIndexA
 };
 
 typedef struct SYColorRGB
 {
-	u8 r, g, b;
+    u8 r, g, b;
 
 } SYColorRGB;
 
 typedef struct SYColorRGBA
 {
-	u8 r, g, b, a;
+    u8 r, g, b, a;
 
 } SYColorRGBA;
 
 typedef struct SYColorRGBPair
 {
-	SYColorRGB prim, env;
+    SYColorRGB prim, env;
 
 } SYColorRGBPair;
 
 // Like SYColorRGBA, but it includes a packed u32
 typedef union SYColorPack
 {
-	SYColorRGBA s;
-	u32 pack;
+    SYColorRGBA s;
+    u32 pack;
 
 } SYColorPack;
 
 typedef struct SYRectangle
 {
-	s32 ulx, uly;
-	s32 lrx, lry;
+    s32 ulx, uly;
+    s32 lrx, lry;
 
 } SYRectangle;
 

@@ -3,8 +3,8 @@
 
 #include <ft/fighter.h>
 
-// 80128DD8
-FTStatusDesc dFTCommonNullStatusDescs[] =
+// 0x80128DD8
+FTStatusDesc dFTCommonNullStatusDescs[/* */] =
 {
 	// Status 0 (0x0): DeadDown
 	{
@@ -127,8 +127,8 @@ FTStatusDesc dFTCommonNullStatusDescs[] =
 	}
 };
 
-// 80128E50
-FTStatusDesc dFTCommonActionStatusDescs[] =
+// 0x80128E50
+FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 {
 	// Status 6 (0x6): EntryNull
 	{

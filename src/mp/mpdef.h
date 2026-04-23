@@ -38,7 +38,7 @@ typedef enum MPKinetics
 {
 	nMPKineticsGround,
 	nMPKineticsAir,
-	nMPKineticsEnumCount
+    nMPKineticsEnumCount
 
 } MPKinetics;
 
@@ -76,69 +76,69 @@ typedef enum MPLineType
 
 typedef enum MPMapObjKind
 {
-	nMPMapObjKindBattlePlayerStart,
-	nMPMapObjKindBattlePlayer1 = nMPMapObjKindBattlePlayerStart,                    // 0x0
-	nMPMapObjKindBattlePlayer2,                                                     // 0x1
-	nMPMapObjKindBattlePlayer3,                                                     // 0x2
-	nMPMapObjKindBattlePlayer4,                                                     // 0x3
-	nMPMapObjKindBattlePlayerEnd = nMPMapObjKindBattlePlayer4,
-	nMPMapObjKindItem,                                                              // 0x4
-	nMPMapObjKindScaleL,                                                            // 0x5
-	nMPMapObjKindScaleR,                                                            // 0x6
-	nMPMapObjKindPakkunL,                                                           // 0x7
-	nMPMapObjKindPakkunR,                                                           // 0x8
-	nMPMapObjKindPowerBlock,                                                        // 0x9
-	nMPMapObjKindDokanL,                                                            // 0xA
-	nMPMapObjKindDokanR,                                                            // 0xB
-	nMPMapObjKindAcid,                                                              // 0xC
-	nMPMapObjKindTwister,                                                           // 0xD
-	nMPMapObjKindMonster,                                                           // 0xE
-	nMPMapObjKindMonsterUnused1,                                                    // 0xF
-	nMPMapObjKindMonsterUnused2,                                                    // 0x10
-	nMPMapObjKindMonsterUnused3,                                                    // 0x11
-	nMPMapObjKindMonsterUnused4,                                                    // 0x12
-	nMPMapObjKindBumper,                                                            // 0x13
-	nMPMapObjKindDokanWall,                                                         // 0x14
+    nMPMapObjKindBattlePlayerStart,
+    nMPMapObjKindBattlePlayer1 = nMPMapObjKindBattlePlayerStart,                    // 0x0
+    nMPMapObjKindBattlePlayer2,                                                     // 0x1
+    nMPMapObjKindBattlePlayer3,                                                     // 0x2
+    nMPMapObjKindBattlePlayer4,                                                     // 0x3
+    nMPMapObjKindBattlePlayerEnd = nMPMapObjKindBattlePlayer4,
+    nMPMapObjKindItem,                                                              // 0x4
+    nMPMapObjKindScaleL,                                                            // 0x5
+    nMPMapObjKindScaleR,                                                            // 0x6
+    nMPMapObjKindPakkunL,                                                           // 0x7
+    nMPMapObjKindPakkunR,                                                           // 0x8
+    nMPMapObjKindPowerBlock,                                                        // 0x9
+    nMPMapObjKindDokanL,                                                            // 0xA
+    nMPMapObjKindDokanR,                                                            // 0xB
+    nMPMapObjKindAcid,                                                              // 0xC
+    nMPMapObjKindTwister,                                                           // 0xD
+    nMPMapObjKindMonster,                                                           // 0xE
+    nMPMapObjKindMonsterUnused1,                                                    // 0xF
+    nMPMapObjKindMonsterUnused2,                                                    // 0x10
+    nMPMapObjKindMonsterUnused3,                                                    // 0x11
+    nMPMapObjKindMonsterUnused4,                                                    // 0x12
+    nMPMapObjKindBumper,                                                            // 0x13
+    nMPMapObjKindDokanWall,                                                         // 0x14
 
-	nMPMapObjKindMoviePlayer1,                                                      // 0x15
-	nMPMapObjKindMoviePlayer2,                                                      // 0x16
-	nMPMapObjKindMoviePlayer3,                                                      // 0x17
+    nMPMapObjKindMoviePlayer1,                                                      // 0x15
+    nMPMapObjKindMoviePlayer2,                                                      // 0x16
+    nMPMapObjKindMoviePlayer3,                                                      // 0x17
 
-	nMPMapObjKindAutoDemoPlayer1,                                                   // 0x18
-	nMPMapObjKindAutoDemoPlayer2,                                                   // 0x19
-	nMPMapObjKindAutoDemoPlayer3,                                                   // 0x1A
-	nMPMapObjKindAutoDemoPlayer4,                                                   // 0x1B
-	nMPMapObjKindAutoDemoPlayer5,                                                   // 0x1C
-	nMPMapObjKindAutoDemoPlayer6,                                                   // 0x1D
-	nMPMapObjKindAutoDemoPlayer7,                                                   // 0x1E
-	nMPMapObjKindAutoDemoPlayer8,                                                   // 0x1F
-	nMPMapObjKindRebirth,                                                           // 0x20
-	nMPMapObjKind1PGamePlayer,                                                      // 0x21
+    nMPMapObjKindAutoDemoPlayer1,                                                   // 0x18
+    nMPMapObjKindAutoDemoPlayer2,                                                   // 0x19
+    nMPMapObjKindAutoDemoPlayer3,                                                   // 0x1A
+    nMPMapObjKindAutoDemoPlayer4,                                                   // 0x1B
+    nMPMapObjKindAutoDemoPlayer5,                                                   // 0x1C
+    nMPMapObjKindAutoDemoPlayer6,                                                   // 0x1D
+    nMPMapObjKindAutoDemoPlayer7,                                                   // 0x1E
+    nMPMapObjKindAutoDemoPlayer8,                                                   // 0x1F
+    nMPMapObjKindRebirth,                                                           // 0x20
+    nMPMapObjKind1PGamePlayer,                                                      // 0x21
 
-	nMPMapObjKind1PGameAllyStart,                                                   // 0x22
-	nMPMapObjKind1PGameAlly1 = nMPMapObjKind1PGameAllyStart,                        // 0x22
-	nMPMapObjKind1PGameAlly2,                                                       // 0x23
-	nMPMapObjKind1PGameAlly3,                                                       // 0x24
-	nMPMapObjKind1PGameAllyEnd = nMPMapObjKind1PGameAlly3,                          // 0x24
+    nMPMapObjKind1PGameAllyStart,                                                   // 0x22
+    nMPMapObjKind1PGameAlly1 = nMPMapObjKind1PGameAllyStart,                        // 0x22
+    nMPMapObjKind1PGameAlly2,                                                       // 0x23
+    nMPMapObjKind1PGameAlly3,                                                       // 0x24
+    nMPMapObjKind1PGameAllyEnd = nMPMapObjKind1PGameAlly3,                          // 0x24
 
-	nMPMapObjKind1PGameEnemyStart,                                                  // 0x25
-	nMPMapObjKind1PGameEnemy1 = nMPMapObjKind1PGameEnemyStart,                      // 0x25
-	nMPMapObjKind1PGameEnemy2,                                                      // 0x26
-	nMPMapObjKind1PGameEnemy3,                                                      // 0x27
-	nMPMapObjKind1PGameEnemy4,                                                      // 0x28
-	nMPMapObjKind1PGameEnemyEnd = nMPMapObjKind1PGameEnemy4,                        // 0x28
+    nMPMapObjKind1PGameEnemyStart,                                                  // 0x25
+    nMPMapObjKind1PGameEnemy1 = nMPMapObjKind1PGameEnemyStart,                      // 0x25
+    nMPMapObjKind1PGameEnemy2,                                                      // 0x26
+    nMPMapObjKind1PGameEnemy3,                                                      // 0x27
+    nMPMapObjKind1PGameEnemy4,                                                      // 0x28
+    nMPMapObjKind1PGameEnemyEnd = nMPMapObjKind1PGameEnemy4,                        // 0x28
 
-	nMPMapObjKind1PGameBonus3TaruBomb,                                              // 0x29
-	nMPMapObjKind1PGameUnknown,                                                     // 0x2A
-	nMPMapObjKind1PGameEnemyTeam,                                                   // 0x2B
-	nMPMapObjKind1PGameChallengerPlayer,                                            // 0x2C
+    nMPMapObjKind1PGameBonus3TaruBomb,                                              // 0x29
+    nMPMapObjKind1PGameUnknown,                                                     // 0x2A
+    nMPMapObjKind1PGameEnemyTeam,                                                   // 0x2B
+    nMPMapObjKind1PGameChallengerPlayer,                                            // 0x2C
 
-	nMPMapObjKind1PGameChallengerEnemyStart,                                        // 0x2D
-	nMPMapObjKind1PGameChallengerEnemy1 = nMPMapObjKind1PGameChallengerEnemyStart,  // 0x2D
-	nMPMapObjKind1PGameChallengerEnemy2,                                            // 0x2E
-	nMPMapObjKind1PGameChallengerEnemy3,                                            // 0x2F
-	nMPMapObjKind1PGameChallengerEnemyEnd = nMPMapObjKind1PGameChallengerEnemy3     // 0x2F
-	
+    nMPMapObjKind1PGameChallengerEnemyStart,                                        // 0x2D
+    nMPMapObjKind1PGameChallengerEnemy1 = nMPMapObjKind1PGameChallengerEnemyStart,  // 0x2D
+    nMPMapObjKind1PGameChallengerEnemy2,                                            // 0x2E
+    nMPMapObjKind1PGameChallengerEnemy3,                                            // 0x2F
+    nMPMapObjKind1PGameChallengerEnemyEnd = nMPMapObjKind1PGameChallengerEnemy3     // 0x2F
+    
 } MPMapObjKind;
 
 typedef enum MPYakumonoStatus   // States of line collisions + stage elements
@@ -147,7 +147,7 @@ typedef enum MPYakumonoStatus   // States of line collisions + stage elements
 	nMPYakumonoStatusOn,        // Turned on
 	nMPYakumonoStatusShow,      // Previously off, recently turned on
 	nMPYakumonoStatusOff,       // Turned off
-	nMPYakumonoStatusHidden     // Previously on, recently turned off
+    nMPYakumonoStatusHidden     // Previously on, recently turned off
 
 } MPYakumonoStatus;
 

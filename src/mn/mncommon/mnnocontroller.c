@@ -12,52 +12,52 @@
 //                               //
 // // // // // // // // // // // //
 
-// 800D6700
+// 0x800D6700
 SYVideoSetup dMNNoControllerVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 800D671C
+// 0x800D671C
 SYTaskmanSetup dMNNoControllerTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		gcRunAll,          			// Update function
-		gcDrawAll,                  // Frame draw function
-		&ovl11_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 3584,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x1000,                     // Graphics Heap Size
-		2,                          // ???
-		0x1000,                     // RDP Output Buffer Size
-		NULL,         				// Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,          			// Update function
+        gcDrawAll,                  // Frame draw function
+        &ovl11_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 3584,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x1000,                     // Graphics Heap Size
+        2,                          // ???
+        0x1000,                     // RDP Output Buffer Size
+        NULL,         				// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	NULL,                           // Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	mnNoControllerFuncStart         // Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,                           // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    mnNoControllerFuncStart         // Task start function
 };
 
 // // // // // // // // // // // //
@@ -66,7 +66,7 @@ SYTaskmanSetup dMNNoControllerTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 800D67C0
+// 0x800D67C0
 s32 sMNNoControllerPad0x800D67C0;
 
 // // // // // // // // // // // //
@@ -75,8 +75,8 @@ s32 sMNNoControllerPad0x800D67C0;
 //                               //
 // // // // // // // // // // // //
 
-// 800D6490
-GObj* mnNoControllerMakeCamera()
+// 0x800D6490
+GObj* mnNoControllerMakeCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -101,8 +101,8 @@ GObj* mnNoControllerMakeCamera()
 	return gobj;
 }
 
-// 800D6538
-void mnNoControllerMakeImage()
+// 0x800D6538
+void mnNoControllerMakeImage(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -116,8 +116,8 @@ void mnNoControllerMakeImage()
 	sobj->pos.y = 10.0F;
 }
 
-// 800D65B8
-void mnNoControllerFuncStart()
+// 0x800D65B8
+void mnNoControllerFuncStart(void)
 {
 	mnNoControllerSetupFiles();
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_NONE, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -125,8 +125,8 @@ void mnNoControllerFuncStart()
 	mnNoControllerMakeImage();
 }
 
-// 800D6604
-void mnNoControllerStartScene()
+// 0x800D6604
+void mnNoControllerStartScene(void)
 {
 	dMNNoControllerVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNNoControllerVideoSetup);

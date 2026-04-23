@@ -21,50 +21,50 @@ extern s32 dGRYamabukiMonsterAttackKind;
 
 ITDesc dITFushigibanaItemDesc =
 {
-	nITKindFushigibana,                         // Item Kind
-	&gGRCommonStruct.yamabuki.item_head,        // Pointer to item file data?
-	&llGRYamabukiMapFushigibanaItemAttributes,  // Offset of item attributes in file?
+    nITKindFushigibana,                         // Item Kind
+    &gGRCommonStruct.yamabuki.item_head,        // Pointer to item file data?
+    &llGRYamabukiMapFushigibanaItemAttributes,  // Offset of item attributes in file?
 
-	// DObj transformation struct
-	{
-		nGCMatrixKindTraRotRpyR,                // Main matrix transformations
-		nGCMatrixKindNull,                      // Secondary matrix transformations?
-		0                                       // ???
-	},
+    // DObj transformation struct
+    {
+        nGCMatrixKindTraRotRpyR,                // Main matrix transformations
+        nGCMatrixKindNull,                      // Secondary matrix transformations?
+        0                                       // ???
+    },
 
-	nGMAttackStateNew,                          // Hitbox Update State
-	itFushigibanaCommonProcUpdate,              // Proc Update
-	NULL,                                       // Proc Map
-	NULL,                                       // Proc Hit
-	NULL,                                       // Proc Shield
-	NULL,                                       // Proc Hop
-	NULL,                                       // Proc Set-Off
-	NULL,                                       // Proc Reflector
-	NULL                                        // Proc Damage
+    nGMAttackStateNew,                          // Hitbox Update State
+    itFushigibanaCommonProcUpdate,              // Proc Update
+    NULL,                                       // Proc Map
+    NULL,                                       // Proc Hit
+    NULL,                                       // Proc Shield
+    NULL,                                       // Proc Hop
+    NULL,                                       // Proc Set-Off
+    NULL,                                       // Proc Reflector
+    NULL                                        // Proc Damage
 };
 
 WPDesc dITFushigibanaWeaponRazorWeaponDesc =
 {
-	0x03,                                       // Render flags?
-	nWPKindFushigibanaRazor,                    // Weapon Kind
-	&gGRCommonStruct.yamabuki.item_head,        // Pointer to item's loaded files?
-	&llGRYamabukiMapFushigibanaRazorWeaponAttributes, // Offset of weapon attributes in loaded files
+    0x03,                                       // Render flags?
+    nWPKindFushigibanaRazor,                    // Weapon Kind
+    &gGRCommonStruct.yamabuki.item_head,        // Pointer to item's loaded files?
+    &llGRYamabukiMapFushigibanaRazorWeaponAttributes, // Offset of weapon attributes in loaded files
 
-	// DObj transformation struct
-	{
-		nGCMatrixKindTraRotRpyRSca,             // Main matrix transformations
-		nGCMatrixKindNull,                      // Secondary matrix transformations?
-		0                                       // ???
-	},
+    // DObj transformation struct
+    {
+        nGCMatrixKindTraRotRpyRSca,             // Main matrix transformations
+        nGCMatrixKindNull,                      // Secondary matrix transformations?
+        0                                       // ???
+    },
 
-	itFushigibanaWeaponRazorProcUpdate,         // Proc Update
-	NULL,                                       // Proc Map
-	itFushigibanaWeaponRazorProcHit,            // Proc Hit
-	itFushigibanaWeaponRazorProcHit,            // Proc Shield
-	itFushigibanaWeaponRazorProcHop,            // Proc Hop
-	itFushigibanaWeaponRazorProcHit,            // Proc Set-Off
-	itFushigibanaWeaponRazorProcReflector,      // Proc Reflector
-	itFushigibanaWeaponRazorProcHit             // Proc Absorb
+    itFushigibanaWeaponRazorProcUpdate,         // Proc Update
+    NULL,                                       // Proc Map
+    itFushigibanaWeaponRazorProcHit,            // Proc Hit
+    itFushigibanaWeaponRazorProcHit,            // Proc Shield
+    itFushigibanaWeaponRazorProcHop,            // Proc Hop
+    itFushigibanaWeaponRazorProcHit,            // Proc Set-Off
+    itFushigibanaWeaponRazorProcReflector,      // Proc Reflector
+    itFushigibanaWeaponRazorProcHit             // Proc Absorb
 };
 
 // // // // // // // // // // // //
@@ -73,217 +73,217 @@ WPDesc dITFushigibanaWeaponRazorWeaponDesc =
 //                               //
 // // // // // // // // // // // //
 
-// 80184440
+// 0x80184440
 void itFushigibanaCommonUpdateMonsterEvent(GObj *item_gobj)
 {
-	ITStruct *ip = itGetStruct(item_gobj);
-	ITMonsterEvent *ev = itGetMonsterEvent(dITFushigibanaItemDesc, &llGRYamabukiMapFushigibanaHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event);
+    ITStruct *ip = itGetStruct(item_gobj);
+    ITMonsterEvent *ev = itGetMonsterEvent(dITFushigibanaItemDesc, &llGRYamabukiMapFushigibanaHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event);
 
-	if (ip->multi == ev[ip->event_id].timer)
-	{
-		ip->attack_coll.angle            = ev[ip->event_id].angle;
-		ip->attack_coll.damage           = ev[ip->event_id].damage;
-		ip->attack_coll.size             = ev[ip->event_id].size;
-		ip->attack_coll.knockback_scale  = ev[ip->event_id].knockback_scale;
-		ip->attack_coll.knockback_weight = ev[ip->event_id].knockback_weight;
-		ip->attack_coll.knockback_base   = ev[ip->event_id].knockback_base;
-		ip->attack_coll.element          = ev[ip->event_id].element;
-		ip->attack_coll.can_setoff       = ev[ip->event_id].can_setoff;
-		ip->attack_coll.shield_damage    = ev[ip->event_id].shield_damage;
-		ip->attack_coll.fgm_id          = ev[ip->event_id].fgm_id;
+    if (ip->multi == ev[ip->event_id].timer)
+    {
+        ip->attack_coll.angle            = ev[ip->event_id].angle;
+        ip->attack_coll.damage           = ev[ip->event_id].damage;
+        ip->attack_coll.size             = ev[ip->event_id].size;
+        ip->attack_coll.knockback_scale  = ev[ip->event_id].knockback_scale;
+        ip->attack_coll.knockback_weight = ev[ip->event_id].knockback_weight;
+        ip->attack_coll.knockback_base   = ev[ip->event_id].knockback_base;
+        ip->attack_coll.element          = ev[ip->event_id].element;
+        ip->attack_coll.can_setoff       = ev[ip->event_id].can_setoff;
+        ip->attack_coll.shield_damage    = ev[ip->event_id].shield_damage;
+        ip->attack_coll.fgm_id          = ev[ip->event_id].fgm_id;
 
-		ip->event_id++;
+        ip->event_id++;
 
-		if (ip->event_id == 2)
-		{
-			ip->event_id = 1;
-		}
-	}
-	ip->multi++;
+        if (ip->event_id == 2)
+        {
+            ip->event_id = 1;
+        }
+    }
+    ip->multi++;
 
-	if (ip->multi == ITFUSHIGIBANA_RETURN_WAIT)
-	{
-		Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
+    if (ip->multi == ITFUSHIGIBANA_RETURN_WAIT)
+    {
+        Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
 
-		pos.y = 0.0F;
+        pos.y = 0.0F;
 
-		efManagerDustLightMakeEffect(&pos, -1, 1.0F);
-	}
+        efManagerDustLightMakeEffect(&pos, -1, 1.0F);
+    }
 }
 
-// 801845B4
+// 0x801845B4
 sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj)
 {
-	ITStruct *ip = itGetStruct(item_gobj);
-	DObj *dobj = DObjGetStruct(item_gobj);
-	Vec3f pos;
+    ITStruct *ip = itGetStruct(item_gobj);
+    DObj *dobj = DObjGetStruct(item_gobj);
+    Vec3f pos;
 
-	dobj->translate.vec.f.x += ip->item_vars.fushigibana.offset.x;
-	dobj->translate.vec.f.y += ip->item_vars.fushigibana.offset.y;
+    dobj->translate.vec.f.x += ip->item_vars.fushigibana.offset.x;
+    dobj->translate.vec.f.y += ip->item_vars.fushigibana.offset.y;
 
-	itFushigibanaCommonUpdateMonsterEvent(item_gobj);
+    itFushigibanaCommonUpdateMonsterEvent(item_gobj);
 
-	pos = dobj->translate.vec.f;
+    pos = dobj->translate.vec.f;
 
-	pos.x += ITFUSHIGIBANA_RAZOR_SPAWN_OFF_X;
+    pos.x += ITFUSHIGIBANA_RAZOR_SPAWN_OFF_X;
 
-	if 
-	(
-		(ip->item_vars.fushigibana.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)                                                     || 
-		((ip->item_vars.fushigibana.flags & GRYAMABUKI_MONSTER_WEAPON_WAIT) && (dobj->anim_frame >= ITFUSHIGIBANA_RAZOR_SPAWN_BEGIN)) &&
-		(dobj->anim_frame <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
-	)
-	{
-		dobj->mobj->texture_id_curr = 1;
+    if 
+    (
+        (ip->item_vars.fushigibana.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)                                                     || 
+        ((ip->item_vars.fushigibana.flags & GRYAMABUKI_MONSTER_WEAPON_WAIT) && (dobj->anim_frame >= ITFUSHIGIBANA_RAZOR_SPAWN_BEGIN)) &&
+        (dobj->anim_frame <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
+    )
+    {
+        dobj->mobj->texture_id_curr = 1;
 
-		if (!ip->item_vars.fushigibana.razor_spawn_wait)
-		{
-			itFushigibanaWeaponRazorMakeWeapon(item_gobj, &pos);
+        if (!ip->item_vars.fushigibana.razor_spawn_wait)
+        {
+            itFushigibanaWeaponRazorMakeWeapon(item_gobj, &pos);
 
-			ip->item_vars.fushigibana.razor_spawn_wait = ITFUSHIGIBANA_RAZOR_SPAWN_WAIT;
+            ip->item_vars.fushigibana.razor_spawn_wait = ITFUSHIGIBANA_RAZOR_SPAWN_WAIT;
 
-			func_800269C0_275C0(nSYAudioFGMMonsterShoot);
+            func_800269C0_275C0(nSYAudioFGMMonsterShoot);
 
-			efManagerDustCollideMakeEffect(&pos);
-		}
-		if (ip->item_vars.fushigibana.razor_spawn_wait > 0)
-		{
-			ip->item_vars.fushigibana.razor_spawn_wait--;
-		}
-	}
-	else dobj->mobj->texture_id_curr = 0;
+            efManagerDustCollideMakeEffect(&pos);
+        }
+        if (ip->item_vars.fushigibana.razor_spawn_wait > 0)
+        {
+            ip->item_vars.fushigibana.razor_spawn_wait--;
+        }
+    }
+    else dobj->mobj->texture_id_curr = 0;
 
-	if (dobj->anim_wait == AOBJ_ANIM_NULL)
-	{
-		grYamabukiGateSetClosedWait();
+    if (dobj->anim_wait == AOBJ_ANIM_NULL)
+    {
+        grYamabukiGateSetClosedWait();
 
-		return TRUE;
-	}
-	return FALSE;
+        return TRUE;
+    }
+    return FALSE;
 }
 
-// 8018470C
+// 0x8018470C
 GObj* itFushigibanaMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-	GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITFushigibanaItemDesc, pos, vel, flags);
-	s32 unused;
-	DObj *dobj;
-	ITStruct *ip;
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITFushigibanaItemDesc, pos, vel, flags);
+    s32 unused;
+    DObj *dobj;
+    ITStruct *ip;
 
-	if (item_gobj != NULL)
-	{
-		ip = itGetStruct(item_gobj);
-		dobj = DObjGetStruct(item_gobj);
+    if (item_gobj != NULL)
+    {
+        ip = itGetStruct(item_gobj);
+        dobj = DObjGetStruct(item_gobj);
 
-		ip->event_id = 0;
+        ip->event_id = 0;
 
-		ip->multi = 0;
+        ip->multi = 0;
 
-		ip->item_vars.fushigibana.razor_spawn_wait = 0;
-		ip->item_vars.fushigibana.offset = *pos;
+        ip->item_vars.fushigibana.razor_spawn_wait = 0;
+        ip->item_vars.fushigibana.offset = *pos;
 
-		ip->is_allow_knockback = TRUE;
+        ip->is_allow_knockback = TRUE;
 
-		ip->item_vars.fushigibana.flags = syUtilsRandIntRange(GRYAMABUKI_MONSTER_WEAPON_MAX);
+        ip->item_vars.fushigibana.flags = syUtilsRandIntRange(GRYAMABUKI_MONSTER_WEAPON_MAX);
 
-		if ((dGRYamabukiMonsterAttackKind == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & dGRYamabukiMonsterAttackKind))
-		{
-			ip->item_vars.fushigibana.flags++;
+        if ((dGRYamabukiMonsterAttackKind == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & dGRYamabukiMonsterAttackKind))
+        {
+            ip->item_vars.fushigibana.flags++;
 
-			ip->item_vars.fushigibana.flags %= GRYAMABUKI_MONSTER_WEAPON_MAX;
-		}
-		if (ip->item_vars.fushigibana.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)
-		{
-			dobj->mobj->texture_id_curr = 1;
-		}
-		dGRYamabukiMonsterAttackKind = ip->item_vars.fushigibana.flags;
+            ip->item_vars.fushigibana.flags %= GRYAMABUKI_MONSTER_WEAPON_MAX;
+        }
+        if (ip->item_vars.fushigibana.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)
+        {
+            dobj->mobj->texture_id_curr = 1;
+        }
+        dGRYamabukiMonsterAttackKind = ip->item_vars.fushigibana.flags;
 
-		func_800269C0_275C0(nSYAudioVoiceYamabukiFushigibana);
-	}
-	return item_gobj;
+        func_800269C0_275C0(nSYAudioVoiceYamabukiFushigibana);
+    }
+    return item_gobj;
 }
 
-// 80184820
+// 0x80184820
 sb32 itFushigibanaWeaponRazorProcUpdate(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-	wp->physics.vel_air.x += ITFUSHIGIBANA_RAZOR_ADD_VEL_X * wp->lr;
+    wp->physics.vel_air.x += ITFUSHIGIBANA_RAZOR_ADD_VEL_X * wp->lr;
 
-	if (wpMainDecLifeCheckExpire(wp) != FALSE)
-	{
-		return TRUE;
-	}
-	else return FALSE;
+    if (wpMainDecLifeCheckExpire(wp) != FALSE)
+    {
+        return TRUE;
+    }
+    else return FALSE;
 }
 
-// 80184874
+// 0x80184874
 sb32 itFushigibanaWeaponRazorProcHit(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-	efManagerDamageSlashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->attack_coll.damage, wp->lr);
+    efManagerDamageSlashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->attack_coll.damage, wp->lr);
 
-	return TRUE;
+    return TRUE;
 }
 
-// 801848BC
+// 0x801848BC
 sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-	syVectorRotateAbout3D(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
+    syVectorRotateAbout3D(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
-	DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x) + F_CLC_DTOR32(180.0F);
-	DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x) + F_CLC_DTOR32(180.0F);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-	if (wp->physics.vel_air.x > 0.0F)
-	{
-		wp->lr = +1;
-	}
-	else wp->lr = -1;
+    if (wp->physics.vel_air.x > 0.0F)
+    {
+        wp->lr = +1;
+    }
+    else wp->lr = -1;
 
-	return FALSE;
+    return FALSE;
 }
 
-// 80184970
+// 0x80184970
 sb32 itFushigibanaWeaponRazorProcReflector(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
-	FTStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
-	wpMainReflectorSetLR(wp, fp);
+    wpMainReflectorSetLR(wp, fp);
 
-	DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x) + F_CLC_DTOR32(180.0F);
-	DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x) + F_CLC_DTOR32(180.0F);
+    DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-	wp->lr = -wp->lr;
+    wp->lr = -wp->lr;
 
-	return FALSE;
+    return FALSE;
 }
 
-// 801849EC
+// 0x801849EC
 GObj* itFushigibanaWeaponRazorMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
-	GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITFushigibanaWeaponRazorWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
-	DObj *dobj;
-	WPStruct *wp;
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITFushigibanaWeaponRazorWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
+    DObj *dobj;
+    WPStruct *wp;
 
-	if (weapon_gobj == NULL)
-	{
-		return NULL;
-	}
-	wp = wpGetStruct(weapon_gobj);
+    if (weapon_gobj == NULL)
+    {
+        return NULL;
+    }
+    wp = wpGetStruct(weapon_gobj);
 
-	wp->lr = -1;
+    wp->lr = -1;
 
-	wp->physics.vel_air.x = ITFUSHIGIBANA_RAZOR_VEL_X;
+    wp->physics.vel_air.x = ITFUSHIGIBANA_RAZOR_VEL_X;
 
-	dobj = DObjGetStruct(weapon_gobj);
+    dobj = DObjGetStruct(weapon_gobj);
 
-	dobj->translate.vec.f = *pos;
+    dobj->translate.vec.f = *pos;
 
-	wp->lifetime = ITFUSHIGIBANA_RAZOR_LIFETIME;
+    wp->lifetime = ITFUSHIGIBANA_RAZOR_LIFETIME;
 
-	return weapon_gobj;
+    return weapon_gobj;
 }

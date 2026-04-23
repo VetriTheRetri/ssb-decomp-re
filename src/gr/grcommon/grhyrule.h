@@ -13,18 +13,18 @@ extern intptr_t lGRHyruleParticleTextureBankHi;           // 0x00B22980
 
 extern LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id);
 extern GObj* grHyruleMakeTwister(Vec3f *pos);
-extern void grHyruleTwisterUpdateSleep();
-extern void grHyruleTwisterUpdateWait();
-extern void grHyruleTwisterUpdateSummon();
-extern sb32 grHyruleTwisterDecLifetimeCheckStop();
-extern s32 grHyruleTwisterGetLR();
-extern void grHyruleTwisterUpdateMove();
-extern void grHyruleTwisterUpdateTurn();
-extern void grHyruleTwisterUpdateStop();
-extern void grHyruleTwisterUpdateSubside();
+extern void grHyruleTwisterUpdateSleep(void);
+extern void grHyruleTwisterUpdateWait(void);
+extern void grHyruleTwisterUpdateSummon(void);
+extern sb32 grHyruleTwisterDecLifetimeCheckStop(void);
+extern s32 grHyruleTwisterGetLR(void);
+extern void grHyruleTwisterUpdateMove(void);
+extern void grHyruleTwisterUpdateTurn(void);
+extern void grHyruleTwisterUpdateStop(void);
+extern void grHyruleTwisterUpdateSubside(void);
 extern void grHyruleTwisterProcUpdate(GObj *ground_gobj);
-extern void grHyruleTwisterInitVars();
-extern GObj* grHyruleMakeGround();
+extern void grHyruleTwisterInitVars(void);
+extern GObj* grHyruleMakeGround(void);
 extern sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind);
 extern sb32 grHyruleTwisterCheckGetPosition(Vec3f *pos);
 

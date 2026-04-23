@@ -33,11 +33,11 @@ mnCommonSetOptionChangeWaitN(sMNVSRecordChangeWait, is_button, stick_range, div)
 //                               //
 // // // // // // // // // // // //
 
-// 80136630
-s32 dMNVSRecordRankingColumnWidths[] = { 33, 33, 33, 33, 46, 35, 34 };
+// 0x80136630
+s32 dMNVSRecordRankingColumnWidths[/* */] = { 33, 33, 33, 33, 46, 35, 34 };
 
-// 8013664C
-u32 dMNVSRecordFileIDs[] =
+// 0x8013664C
+u32 dMNVSRecordFileIDs[/* */] =
 {
 	&llMNVSRecordMainFileID,
 	&llMNDataCommonFileID,
@@ -45,11 +45,11 @@ u32 dMNVSRecordFileIDs[] =
 	&llMNCommonFontsFileID
 };
 
-// 80136660
+// 0x80136660
 Lights1 dMNVSRecordLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
 
-// 80136678
-Gfx dMNVSRecordDisplayList[] =
+// 0x80136678
+Gfx dMNVSRecordDisplayList[/* */] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNVSRecordLights1),
@@ -62,19 +62,19 @@ Gfx dMNVSRecordDisplayList[] =
 //                               //
 // // // // // // // // // // // //
 
-// 80136C10
+// 0x80136C10
 s32 sMNVSRecordPad0x80136C10[2];
 
-// 80136C18
+// 0x80136C18
 s32 sMNVSRecordStatsKind;
 
-// 80136C1C
+// 0x80136C1C
 sb32 sMNVSRecordIsChangeSubtitle;
 
-// 80136C20
+// 0x80136C20
 GObj *sMNVSRecordTableHeadersGObj;
 
-// 80136C24
+// 0x80136C24
 GObj *sMNVSRecordTableValuesGObj;
 
 // 0x80136C28 - VS Mode scores character order
@@ -86,22 +86,22 @@ s32 sMNVSRecordRankingFighterKindOrder[(nFTKindPlayableEnd - nFTKindPlayableStar
 // 0x80136C88 - Individual character order
 s32 sMNVSRecordIndivFighterKinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
 
-// 80136CB8
+// 0x80136CB8
 s32 sMNVSRecordCurrentIndex;
 
-// 80136CBC
+// 0x80136CBC
 u16 sMNVSRecordFighterMask;
 
-// 80136CC0
+// 0x80136CC0
 s32 sMNVSRecordFirstColumn;
 
-// 80136CC4
+// 0x80136CC4
 s32 sMNVSRecordChangeWait;
 
-// 80136CC8
+// 0x80136CC8
 LBFileNode sMNVSRecordStatusBuffer[24];
 
-// 80136D88
+// 0x80136D88
 void *sMNVSRecordFiles[ARRAY_COUNT(dMNVSRecordFileIDs)];
 
 // // // // // // // // // // // //
@@ -110,16 +110,16 @@ void *sMNVSRecordFiles[ARRAY_COUNT(dMNVSRecordFileIDs)];
 //                               //
 // // // // // // // // // // // //
 
-// 80131B00
+// 0x80131B00
 void mnVSRecordFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNVSRecordDisplayList);
 }
 
-// 80131B24
+// 0x80131B24
 s32 mnVSRecordGetFighterKindByIndex(s32 index)
 {
-	s32 fkinds[] =
+	s32 fkinds[/* */] =
 	{
 		nFTKindMario,
 		nFTKindDonkey,
@@ -137,7 +137,7 @@ s32 mnVSRecordGetFighterKindByIndex(s32 index)
 	return fkinds[index];
 }
 
-// 80131B74
+// 0x80131B74
 s32 mnVSRecordGetKOs(s32 fkind)
 {
 	s32 i;
@@ -153,7 +153,7 @@ s32 mnVSRecordGetKOs(s32 fkind)
 	return total_kos;
 }
 
-// 80131C0C
+// 0x80131C0C
 s32 mnVSRecordGetTKO(s32 fkind)
 {
 	s32 i;
@@ -173,8 +173,8 @@ s32 mnVSRecordGetTKO(s32 fkind)
 	else return gSCManagerBackupData.vs_records[fkind].selfdestructs + total_tkos;
 }
 
-// 80131CD4
-s32 mnVSRecordGetTotalTKO()
+// 0x80131CD4
+s32 mnVSRecordGetTotalTKO(void)
 {
 	s32 i;
 	s32 total_tkos = 0;
@@ -189,7 +189,7 @@ s32 mnVSRecordGetTotalTKO()
 	return total_tkos;
 }
 
-// 80131D38
+// 0x80131D38
 f32 mnVSRecordGetWinPercent(s32 fkind)
 {
 	f32 kos = mnVSRecordGetKOs(fkind);
@@ -198,7 +198,7 @@ f32 mnVSRecordGetWinPercent(s32 fkind)
 	return ((tko != 0.0F) ? kos / tko : 0.0F) * 100.0F;
 }
 
-// 80131DA0
+// 0x80131DA0
 s32 mnVSRecordGetPowerOf(s32 base, s32 exp)
 {
 	s32 raised = base;
@@ -218,7 +218,7 @@ s32 mnVSRecordGetPowerOf(s32 base, s32 exp)
 	return raised;
 }
 
-// 80131E40
+// 0x80131E40
 void mnVSRecordSetSpriteColors(SObj *sobj, u32 *colors)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -233,7 +233,7 @@ void mnVSRecordSetSpriteColors(SObj *sobj, u32 *colors)
 	sobj->sprite.blue = colors[5];
 }
 
-// 80131E88
+// 0x80131E88
 s32 mnVSRecordGetDigitCount(s32 number, s32 digit_count_max)
 {
 	s32 digit_count_curr = digit_count_max;
@@ -251,10 +251,10 @@ s32 mnVSRecordGetDigitCount(s32 number, s32 digit_count_max)
 	return 0;
 }
 
-// 80131F34
+// 0x80131F34
 void mnVSRecordMakeDigits(GObj *gobj, s32 number, f32 x, f32 y, u32 *colors, sb32 is_show_tenths, sb32 is_wide, s32 digit_count_max, sb32 is_fixed_digit_count)
 {
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNVSRecordMainDigit0Sprite, &llMNVSRecordMainDigit1Sprite,
 		&llMNVSRecordMainDigit2Sprite, &llMNVSRecordMainDigit3Sprite,
@@ -337,7 +337,7 @@ void mnVSRecordMakeDigits(GObj *gobj, s32 number, f32 x, f32 y, u32 *colors, sb3
 	}
 }
 
-// 8013232C
+// 0x8013232C
 s32 mnVSRecordGetCharacterID(const char c)
 {
 	switch (c)
@@ -363,7 +363,7 @@ s32 mnVSRecordGetCharacterID(const char c)
 	}
 }
 
-// 801323A4
+// 0x801323A4
 f32 mnVSRecordGetCharacterSpacing(const char *str, s32 c)
 {
 	switch (str[c])
@@ -430,10 +430,10 @@ f32 mnVSRecordGetCharacterSpacing(const char *str, s32 c)
 	}
 }
 
-// 801324C8
+// 0x801324C8
 void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNCommonFontsLetterASprite, &llMNCommonFontsLetterBSprite,
 		&llMNCommonFontsLetterCSprite, &llMNCommonFontsLetterDSprite,
@@ -498,7 +498,7 @@ void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 	}
 }
 
-// 801326EC
+// 0x801326EC
 sb32 mnVSRecordCheckHaveFighterKind(s32 fkind)
 {
 	switch (fkind)
@@ -520,8 +520,8 @@ sb32 mnVSRecordCheckHaveFighterKind(s32 fkind)
 	}
 }
 
-// 801327B8
-void mnVSRecordMakeLabels()
+// 0x801327B8
+void mnVSRecordMakeLabels(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -558,11 +558,11 @@ void mnVSRecordMakeLabels()
 	sobj->pos.y = 23.0F;
 }
 
-// 801328D4
+// 0x801328D4
 void mnVSRecordSubtitleProcUpdate(GObj *gobj)
 {
 	SObj *sobj;
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNVSRecordMainBattleScoreSprite,
 		0x1458,
@@ -588,8 +588,8 @@ void mnVSRecordSubtitleProcUpdate(GObj *gobj)
 	}
 }
 
-// 80132994
-void mnVSRecordMakeSubtitle()
+// 0x80132994
+void mnVSRecordMakeSubtitle(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -611,14 +611,14 @@ void mnVSRecordMakeSubtitle()
 	sobj->pos.y = 28.0F;
 }
 
-// 80132A50
+// 0x80132A50
 void mnVSRecordPortraitArrowsProcUpdate(GObj *gobj)
 {
 	gobj->flags = (sMNVSRecordStatsKind == nMNVSRecordKindIndiv) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
-// 80132A7C
-void mnVSRecordMakePortraitStatsArrows()
+// 0x80132A7C
+void mnVSRecordMakePortraitStatsArrows(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -652,7 +652,7 @@ void mnVSRecordMakePortraitStatsArrows()
 	sobj->pos.y = 78.0F;
 }
 
-// 80132BA4
+// 0x80132BA4
 void mnVSRecordResortArrowsProcUpdate(GObj *gobj)
 {
 	gobj->flags =
@@ -663,8 +663,8 @@ void mnVSRecordResortArrowsProcUpdate(GObj *gobj)
 	? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
-// 80132BD4
-void mnVSRecordMakeResortArrows()
+// 0x80132BD4
+void mnVSRecordMakeResortArrows(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -686,14 +686,14 @@ void mnVSRecordMakeResortArrows()
 	sobj->sprite.blue = 0xC;
 }
 
-// 80132C9C
+// 0x80132C9C
 void mnVSRecordColumnArrowsProcUpdate(GObj *gobj)
 {
 	gobj->flags = (sMNVSRecordStatsKind == nMNVSRecordKindRanking) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
-// 80132CC8
-void mnVSRecordMakeColumnArrows()
+// 0x80132CC8
+void mnVSRecordMakeColumnArrows(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -715,8 +715,8 @@ void mnVSRecordMakeColumnArrows()
 	sobj->pos.y = 47.0F;
 }
 
-// 80132D90
-void mnVSRecordDrawBattleScoreGrid()
+// 0x80132D90
+void mnVSRecordDrawBattleScoreGrid(void)
 {
 	s32 i;
 
@@ -736,7 +736,7 @@ void mnVSRecordDrawBattleScoreGrid()
 	}
 }
 
-// 80132EE4
+// 0x80132EE4
 void mnVSRecordDrawRankingGrid(s32 first_column)
 {
 	s32 x;
@@ -772,8 +772,8 @@ void mnVSRecordDrawRankingGrid(s32 first_column)
 	}
 }
 
-// 801330FC
-void mnVSRecordDrawIndivGrid()
+// 0x801330FC
+void mnVSRecordDrawIndivGrid(void)
 {
 	s32 i;
 
@@ -791,7 +791,7 @@ void mnVSRecordDrawIndivGrid()
 	}
 }
 
-// 8013328C
+// 0x8013328C
 void mnVSRecordTableGridProcDisplay(GObj *gobj)
 {
 	s32 unused;
@@ -822,21 +822,21 @@ void mnVSRecordTableGridProcDisplay(GObj *gobj)
 	lbCommonClearExternSpriteParams();
 }
 
-// 801333EC
-void mnVSRecordMakeStatsGrid()
+// 0x801333EC
+void mnVSRecordMakeStatsGrid(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mnVSRecordTableGridProcDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 80133438
+// 0x80133438
 void mnVSRecordSetIconPositionForColumn(SObj *sobj, s32 column)
 {
 	f32 x;
 	f32 y;
 	s32 fkind;
 	s32 col_width;
-	Vec2f offsets[] =
+	Vec2f offsets[/* */] =
 	{
 		{ 1.0F, -5.0F }, { 1.0F, -6.0F },
 		{ 0.0F, -6.0F }, { 0.0F, -4.0F },
@@ -874,7 +874,7 @@ void mnVSRecordSetIconPositionForColumn(SObj *sobj, s32 column)
 	}
 }
 
-// 801335A0
+// 0x801335A0
 SObj* mnVSRecordMakeLockedIcon(GObj *gobj)
 {
 	SObj *sobj;
@@ -891,10 +891,10 @@ SObj* mnVSRecordMakeLockedIcon(GObj *gobj)
 	return sobj;
 }
 
-// 801335FC
+// 0x801335FC
 void mnVSRecordMakeColumnIcons(GObj *gobj)
 {
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNVSRecordMainMarioIconBWSprite,  &llMNVSRecordMainFoxIconBWSprite,
 		&llMNVSRecordMainDonkeyIconBWSprite, &llMNVSRecordMainSamusIconBWSprite,
@@ -932,13 +932,13 @@ void mnVSRecordMakeColumnIcons(GObj *gobj)
 	}
 }
 
-// 80133740
+// 0x80133740
 void mnVSRecordSetRowIconPosition(SObj *sobj, s32 row)
 {
 	f32 x = 25.0F;
 	f32 y = 62.0F;
 	s32 fkind;
-	Vec2f offsets[] =
+	Vec2f offsets[/* */] =
 	{
 		{ 5.0F, 0.0F }, { 5.0F, 0.0F },
 		{ 0.0F, 0.0F }, { 0.0F, 0.0F },
@@ -970,10 +970,10 @@ void mnVSRecordSetRowIconPosition(SObj *sobj, s32 row)
 	}
 }
 
-// 8013388C
+// 0x8013388C
 void mnVSRecordMakeRowIcons(GObj *gobj)
 {
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNVSRecordMainMarioIconColorSprite,  &llMNVSRecordMainFoxIconColorSprite,
 		&llMNVSRecordMainDonkeyIconColorSprite, &llMNVSRecordMainSamusIconColorSprite,
@@ -1012,7 +1012,7 @@ void mnVSRecordMakeRowIcons(GObj *gobj)
 	}
 }
 
-// 801339D0
+// 0x801339D0
 s32 mnVSRecordGetRanking(s32 fkind)
 {
 	s32 fkinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
@@ -1064,11 +1064,11 @@ s32 mnVSRecordGetRanking(s32 fkind)
 	return rank[fkind];
 }
 
-// 80133C60
+// 0x80133C60
 void mnVSRecordMakePortraitStats(GObj *gobj, s32 fkind)
 {
 	SObj *sobj;
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNPlayersPortraitsMarioSprite,   &llMNPlayersPortraitsFoxSprite,
 		&llMNPlayersPortraitsDonkeySprite,  &llMNPlayersPortraitsSamusSprite,
@@ -1077,8 +1077,8 @@ void mnVSRecordMakePortraitStats(GObj *gobj, s32 fkind)
 		&llMNPlayersPortraitsKirbySprite,   &llMNPlayersPortraitsPikachuSprite,
 		&llMNPlayersPortraitsPurinSprite,   &llMNPlayersPortraitsNessSprite
 	};
-	u32 string_colors[] = { 0x8A, 0x88, 0x92 };
-	u32 digit_colors[] = { 0x00, 0x00, 0x00, 0x8A, 0x88, 0x92 };
+	u32 string_colors[/* */] = { 0x8A, 0x88, 0x92 };
+	u32 digit_colors[/* */] = { 0x00, 0x00, 0x00, 0x8A, 0x88, 0x92 };
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &llMNVSRecordMainPortraitWallpaperSprite));
 
@@ -1123,7 +1123,7 @@ void mnVSRecordMakePortraitStats(GObj *gobj, s32 fkind)
 	mnVSRecordMakeDigits(gobj, gSCManagerBackupData.vs_records[fkind].damage_taken, 265, 84, digit_colors, FALSE, TRUE, 6, FALSE);
 }
 
-// 80133FE8
+// 0x80133FE8
 void mnVSRecordSortData(s32 stats_kind)
 {
 	s32 fkinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
@@ -1234,11 +1234,11 @@ void mnVSRecordSortData(s32 stats_kind)
 	}
 }
 
-// 801343E0
-GObj* mnVSRecordMakeBattleScoreTableValues()
+// 0x801343E0
+GObj* mnVSRecordMakeBattleScoreTableValues(void)
 {
 	f32 x, y;
-	u32 colors[] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
+	u32 colors[/* */] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
 	GObj *gobj;
 	s32 i, j;
 
@@ -1276,8 +1276,8 @@ GObj* mnVSRecordMakeBattleScoreTableValues()
 	return gobj;
 }
 
-// 80134610
-GObj* mnVSRecordMakeBattleScoreTableHeaders()
+// 0x80134610
+GObj* mnVSRecordMakeBattleScoreTableHeaders(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1307,7 +1307,7 @@ GObj* mnVSRecordMakeBattleScoreTableHeaders()
 	return gobj;
 }
 
-// 801346D8
+// 0x801346D8
 void mnVSRecordRankingHighlightProcDisplay(GObj *gobj)
 {
 	if (sMNVSRecordStatsKind == nMNVSRecordKindRanking)
@@ -1326,13 +1326,13 @@ void mnVSRecordRankingHighlightProcDisplay(GObj *gobj)
 	}
 }
 
-// 80134868
-void mnVSRecordMakeRankingHighlight()
+// 0x80134868
+void mnVSRecordMakeRankingHighlight(void)
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT), mnVSRecordRankingHighlightProcDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
-// 801348B4
+// 0x801348B4
 f32 mnVSRecordGetAvg(s32 fkind)
 {
 	if (gSCManagerBackupData.vs_records[fkind].games_played != 0)
@@ -1342,8 +1342,8 @@ f32 mnVSRecordGetAvg(s32 fkind)
 	else return 0.0F;
 }
 
-// 80134934
-s32 mnVSRecordGetGamesPlayedSum()
+// 0x80134934
+s32 mnVSRecordGetGamesPlayedSum(void)
 {
 	s32 i;
 	s32 total = 0;
@@ -1355,7 +1355,7 @@ s32 mnVSRecordGetGamesPlayedSum()
 	return total;
 }
 
-// 80134978
+// 0x80134978
 f32 mnVSRecordGetUsePercent(s32 fkind)
 {
 	f32 use_percent;
@@ -1369,7 +1369,7 @@ f32 mnVSRecordGetUsePercent(s32 fkind)
 	return use_percent * 100.0F;
 }
 
-// 80134A1C
+// 0x80134A1C
 f32 mnVSRecordGetSDPercent(s32 fkind)
 {
 	f32 selfdestruct_percent;
@@ -1385,12 +1385,12 @@ f32 mnVSRecordGetSDPercent(s32 fkind)
 	return selfdestruct_percent * 100.0F;
 }
 
-// 80134AA8
+// 0x80134AA8
 GObj* mnVSRecordMakeRankingTableValues(s32 column)
 {
-	s32 col_widths[] = { 27, 30, 30, 23, 35, 27, 39 };
+	s32 col_widths[/* */] = { 27, 30, 30, 23, 35, 27, 39 };
 	GObj *gobj;
-	u32 colors[] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
+	u32 colors[/* */] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
 	s32 i;
 	s32 j;
 	s32 column_order[ARRAY_COUNT(col_widths)];
@@ -1551,12 +1551,12 @@ GObj* mnVSRecordMakeRankingTableValues(s32 column)
 	return gobj;
 }
 
-// 80135108
+// 0x80135108
 GObj* mnVSRecordMakeRankingTableHeaders(s32 column)
 {
 	GObj *gobj;
 	SObj *sobj;
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNVSRecordMainLabelWinPercentSprite,
 		&llMNVSRecordMainLabelKOsSprite,
@@ -1567,9 +1567,9 @@ GObj* mnVSRecordMakeRankingTableHeaders(s32 column)
 		&llMNVSRecordMainLabelAvgSprite
 	};
 #if defined(REGION_US)
-	s32 x_padding[] = { 2, 2, 2, 4, 4, 3, 1 };
+	s32 x_padding[/* */] = { 2, 2, 2, 4, 4, 3, 1 };
 #else
-	s32 x_padding[] = { 7, 2, 2, 4, 4, 3, 1 };
+	s32 x_padding[/* */] = { 7, 2, 2, 4, 4, 3, 1 };
 #endif
 	s32 column_order[(ARRAY_COUNT(offsets) + ARRAY_COUNT(x_padding)) / 2];
 	s32 i, j;
@@ -1611,7 +1611,7 @@ GObj* mnVSRecordMakeRankingTableHeaders(s32 column)
 	return gobj;
 }
 
-// 8013531C
+// 0x8013531C
 f32 mnVSRecordGetWinPercentAgainst(s32 this_fkind, s32 against_fkind)
 {
 	f32 kos_for = gSCManagerBackupData.vs_records[this_fkind].ko_count[against_fkind];
@@ -1627,7 +1627,7 @@ f32 mnVSRecordGetWinPercentAgainst(s32 this_fkind, s32 against_fkind)
 	return ko_percent * 100.0F;
 }
 
-// 801353F4
+// 0x801353F4
 f32 mnVSRecordGetAvgAgainst(s32 this_fkind, s32 against_fkind)
 {
 	if (gSCManagerBackupData.vs_records[this_fkind].played_against[against_fkind] != 0)
@@ -1639,17 +1639,17 @@ f32 mnVSRecordGetAvgAgainst(s32 this_fkind, s32 against_fkind)
 }
 
 // 0x8013547C - Unused?
-void func_ovl32_8013547C()
+void func_ovl32_8013547C(void)
 {
 	return;
 }
 
-// 80135484
-GObj* mnVSRecordMakeIndivTableValues()
+// 0x80135484
+GObj* mnVSRecordMakeIndivTableValues(void)
 {
 	GObj *gobj;
-	f32 y[] = { 160.0F, 172.0F, 184.0F, 196.0F };
-	u32 colors[] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
+	f32 y[/* */] = { 160.0F, 172.0F, 184.0F, 196.0F };
+	u32 colors[/* */] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
 	s32 i;
 	f32 x;
 	s32 unused[2];
@@ -1715,19 +1715,19 @@ GObj* mnVSRecordMakeIndivTableValues()
 	return gobj;
 }
 
-// 80135784
-GObj* mnVSRecordMakeIndivPortraitAll()
+// 0x80135784
+GObj* mnVSRecordMakeIndivPortraitAll(void)
 {
 	GObj *gobj;
 	SObj *sobj;
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llMNVSRecordMainLabelWinPercentSprite,
 		&llMNVSRecordMainLabelKOsSprite,
 		&llMNVSRecordMainLabelKOdSprite,
 		&llMNVSRecordMainLabelAvgSprite
 	};
-	Vec2f positions[] =
+	Vec2f positions[/* */] =
 	{
 #if defined(REGION_US)
 		{ 29.0F, 159.0F },
@@ -1767,7 +1767,7 @@ GObj* mnVSRecordMakeIndivPortraitAll()
 	return gobj;
 }
 
-// 80135934
+// 0x80135934
 void mnVSRecordMakeStats(s32 stats_kind)
 {
 	switch (stats_kind)
@@ -1795,8 +1795,8 @@ void mnVSRecordMakeStats(s32 stats_kind)
 	}
 }
 
-// 801359EC
-void mnVSRecordMakeTableValuesCamera()
+// 0x801359EC
+void mnVSRecordMakeTableValuesCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1820,8 +1820,8 @@ void mnVSRecordMakeTableValuesCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135A8C
-void mnVSRecordMakeTableHeadersCamera()
+// 0x80135A8C
+void mnVSRecordMakeTableHeadersCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1845,8 +1845,8 @@ void mnVSRecordMakeTableHeadersCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135B2C
-void mnVSRecordMakeTableGridCamera()
+// 0x80135B2C
+void mnVSRecordMakeTableGridCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1870,8 +1870,8 @@ void mnVSRecordMakeTableGridCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135BCC
-void mnVSRecordMakeRankingHighlightCamera()
+// 0x80135BCC
+void mnVSRecordMakeRankingHighlightCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1895,8 +1895,8 @@ void mnVSRecordMakeRankingHighlightCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135C6C
-void mnVSRecordMakeLabelsCamera()
+// 0x80135C6C
+void mnVSRecordMakeLabelsCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1920,8 +1920,8 @@ void mnVSRecordMakeLabelsCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135D0C
-void mnVSRecordInitVars()
+// 0x80135D0C
+void mnVSRecordInitVars(void)
 {
 	sMNVSRecordStatsKind = nMNVSRecordKindStart;
 	sMNVSRecordIsChangeSubtitle = FALSE;
@@ -1931,7 +1931,7 @@ void mnVSRecordInitVars()
 	sMNVSRecordFirstColumn = nMNVSRecordRankingKindStart;
 }
 
-// 80135D48
+// 0x80135D48
 void mnVSRecordRedrawStats(s32 stats_kind)
 {
 	if (sMNVSRecordTableHeadersGObj != NULL)
@@ -1945,7 +1945,7 @@ void mnVSRecordRedrawStats(s32 stats_kind)
 	mnVSRecordMakeStats(stats_kind);
 }
 
-// 80135D98
+// 0x80135D98
 void mnVSRecordFuncRun(GObj *gobj)
 {
 	s32 unused;
@@ -2164,8 +2164,8 @@ void mnVSRecordFuncRun(GObj *gobj)
 	}
 }
 
-// 80136488
-void mnVSRecordFuncStart()
+// 0x80136488
+void mnVSRecordFuncStart(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -2201,56 +2201,56 @@ void mnVSRecordFuncStart()
 	syAudioPlayBGM(0, nSYAudioBGMData);
 }
 
-// 801369CC
+// 0x801369CC
 SYVideoSetup dMNVSRecordVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 801369E8
+// 0x801369E8
 SYTaskmanSetup dMNVSRecordTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		gcRunAll,              		// Update function
-		gcDrawAll,          		// Frame draw function
-		&ovl32_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 7500,         // Display List Buffer 0 Size
-		0,          				// Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x8000,                     // Graphics Heap Size
-		2,                          // ???
-		0xC000,                     // RDP Output Buffer Size
-		mnVSRecordFuncLights,   	// Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        gcDrawAll,          		// Frame draw function
+        &ovl32_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 7500,         // Display List Buffer 0 Size
+        0,          				// Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mnVSRecordFuncLights,   	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	NULL,      						// Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	mnVSRecordFuncStart         	// Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,      						// Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    mnVSRecordFuncStart         	// Task start function
 };
 
-// 801365D0
-void mnVSRecordStartScene()
+// 0x801365D0
+void mnVSRecordStartScene(void)
 {
 	dMNVSRecordVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNVSRecordVideoSetup);

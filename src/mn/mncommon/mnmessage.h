@@ -7,19 +7,19 @@
 #include <mn/mndef.h>
 
 extern void mnMessageFuncLights(Gfx **dls);
-extern void mnMessageMakeWallpaper();
+extern void mnMessageMakeWallpaper(void);
 extern void mnMessageTintProcDisplay(GObj *gobj);
-extern void mnMessageMakeTint();
-extern void mnMessageMakeExclaim();
+extern void mnMessageMakeTint(void);
+extern void mnMessageMakeExclaim(void);
 extern void mnMessageMakeMessage(s32 message);
-extern void mnMessageMakeTintCamera();
-extern void mnMessageMakeMessageCamera();
-extern void mnMessageMakeWallpaperCamera();
-extern void mnMessageMakeExclaimCamera();
-extern void mnMessageInitVars();
-extern void mnMessageApplyUnlock();
+extern void mnMessageMakeTintCamera(void);
+extern void mnMessageMakeMessageCamera(void);
+extern void mnMessageMakeWallpaperCamera(void);
+extern void mnMessageMakeExclaimCamera(void);
+extern void mnMessageInitVars(void);
+extern void mnMessageApplyUnlock(void);
 extern void mnMessageFuncRun(GObj *gobj);
-extern void mnMessageFuncStart();
-extern void mnMessageStartScene();
+extern void mnMessageFuncStart(void);
+extern void mnMessageStartScene(void);
 
 #endif

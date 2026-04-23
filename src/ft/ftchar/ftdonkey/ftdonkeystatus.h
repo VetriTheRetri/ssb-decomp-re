@@ -3,8 +3,8 @@
 
 #include <ft/fighter.h>
 
-// 80129FBC
-FTStatusDesc dFTDonkeySpecialStatusDescs[] =
+// 0x80129FBC
+FTStatusDesc dFTDonkeySpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): AppearR
 	{

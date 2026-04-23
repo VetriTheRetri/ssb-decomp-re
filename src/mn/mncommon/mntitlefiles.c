@@ -7,8 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-// 80134420
-u32 dMNTitleFileIDs[] = { &llMNTitleFileID, &llMNTitleFireAnimFileID };
+// 0x80134420
+u32 dMNTitleFileIDs[/* */] = { &llMNTitleFileID, &llMNTitleFireAnimFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -16,10 +16,10 @@ u32 dMNTitleFileIDs[] = { &llMNTitleFileID, &llMNTitleFireAnimFileID };
 //                               //
 // // // // // // // // // // // //
 
-// 801344A0
+// 0x801344A0
 LBFileNode sMNTitleStatusBuffer[32];
 
-// 801345A0
+// 0x801345A0
 void *sMNTitleFiles[ARRAY_COUNT(dMNTitleFileIDs)];
 
 // // // // // // // // // // // //
@@ -28,8 +28,8 @@ void *sMNTitleFiles[ARRAY_COUNT(dMNTitleFileIDs)];
 //                               //
 // // // // // // // // // // // //
 
-// 80134140
-void mnTitleLoadFiles()
+// 0x80134140
+void mnTitleLoadFiles(void)
 {
 	LBRelocSetup rl_setup;
 

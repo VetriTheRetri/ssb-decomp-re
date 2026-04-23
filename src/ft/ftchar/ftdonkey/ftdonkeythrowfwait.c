@@ -8,11 +8,11 @@
 // Donkey Kong's Cargo Wait
 #define ftDonkeyThrowFWaitCheckInterupt(fighter_gobj)                             \
 (                                                                                  \
-	(ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||           \
-	(ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE) ||        \
-	(ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(fighter_gobj) != FALSE) || \
-	(ftDonkeyThrowFFallCheckInterruptPass(fighter_gobj) != FALSE) ||             \
-	(ftDonkeyThrowFTurnCheckInterruptThrowFCommon(fighter_gobj) != FALSE)        \
+    (ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||           \
+    (ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE) ||        \
+    (ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(fighter_gobj) != FALSE) || \
+    (ftDonkeyThrowFFallCheckInterruptPass(fighter_gobj) != FALSE) ||             \
+    (ftDonkeyThrowFTurnCheckInterruptThrowFCommon(fighter_gobj) != FALSE)        \
 )
 
 // // // // // // // // // // // //
@@ -21,41 +21,41 @@
 //                               //
 // // // // // // // // // // // //
 
-// 8014D400
+// 0x8014D400
 void ftDonkeyThrowFWaitProcInterrupt(GObj *fighter_gobj)
 {
-	if (!(ftDonkeyThrowFWaitCheckInterupt(fighter_gobj)))
-	{
-		ftDonkeyThrowFWalkCheckInterruptThrowFWait(fighter_gobj);
-	}
+    if (!(ftDonkeyThrowFWaitCheckInterupt(fighter_gobj)))
+    {
+        ftDonkeyThrowFWalkCheckInterruptThrowFWait(fighter_gobj);
+    }
 }
 
-// 8014D478
+// 0x8014D478
 void ftDonkeyThrowFCommonProcMap(GObj *fighter_gobj)
 {
-	mpCommonProcFighterOnFloor(fighter_gobj, ftDonkeyThrowFFallSetStatus);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftDonkeyThrowFFallSetStatus);
 }
 
-// 8014D49C
+// 0x8014D49C
 void ftDonkeyThrowFWaitSetStatus(GObj *fighter_gobj)
 {
-	FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-	if (fp->ga == nMPKineticsAir)
-	{
-		mpCommonSetFighterGround(fp);
-	}
-	ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    if (fp->ga == nMPKineticsAir)
+    {
+        mpCommonSetFighterGround(fp);
+    }
+    ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
-// 8014D4EC
+// 0x8014D4EC
 sb32 ftDonkeyThrowFWaitCheckInterruptThrowFWalk(GObj *fighter_gobj)
 {
-	if (ftCommonWaitCheckInputSuccess(fighter_gobj) != FALSE)
-	{
-		ftDonkeyThrowFWaitSetStatus(fighter_gobj);
+    if (ftCommonWaitCheckInputSuccess(fighter_gobj) != FALSE)
+    {
+        ftDonkeyThrowFWaitSetStatus(fighter_gobj);
 
-		return TRUE;
-	}
-	else return FALSE;
+        return TRUE;
+    }
+    else return FALSE;
 }

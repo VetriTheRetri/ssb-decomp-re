@@ -65,22 +65,22 @@ s32 D_ovl1_80392088[] =
 
 FTMotionDesc dFTKirbySubMotionDescs[] =
 {
-	&llFTKirbyAnimEggLayFileID, D_ovl1_80392020, 0x00000000,
-	&llFTKirbyAnimWin1FileID,  D_ovl1_8039205C, 0x80000000,
-	&llFTKirbyAnimWin2FileID,  D_ovl1_80392068, 0x80000000,
-	&llFTKirbyAnimSelectedFileID,  D_ovl1_80392074, 0x00000000,
-	&llFTKirbyAnimSelectedFileID,  D_ovl1_80392074, 0x00000000,
-	&llFTKirbyAnimClapsFileID,  D_ovl1_80392080, 0x00000000,
-	&llFTKirbyAnimUnknownFileID,  0x80000000,      0x00000000,
-	0x00000000,      0x80000000,      0x00000000,
-	&llFTKirbyAnimDollPickUpFileID,  0x80000000,      0x80000000,
-	&llFTKirbyAnimDollFallFileID,  0x80000000,      0x40000000,
-	&llFTKirbyAnimDollRevivalFileID,  0x80000000,      0x40000000,
-	&llFTKirbyAnimIntro2FileID,  0x80000000,      0x00000000,
-	&llFTKirbyAnimIntroPoseFileID,  0x80000000,      0x00000000,
-	&llFTKirbyAnimPoseFileID,  0x80000000,      0x00000000,
-	&llFTKirbyAnimPose2FileID,  0x80000000,      0x00000000,
-	&llFTKirbyAnimIntroFileID,  D_ovl1_80392088, 0x00000000
+    &llFTKirbyAnimEggLayFileID, D_ovl1_80392020, 0x00000000,
+    &llFTKirbyAnimWin1FileID,  D_ovl1_8039205C, 0x80000000,
+    &llFTKirbyAnimWin2FileID,  D_ovl1_80392068, 0x80000000,
+    &llFTKirbyAnimSelectedFileID,  D_ovl1_80392074, 0x00000000,
+    &llFTKirbyAnimSelectedFileID,  D_ovl1_80392074, 0x00000000,
+    &llFTKirbyAnimClapsFileID,  D_ovl1_80392080, 0x00000000,
+    &llFTKirbyAnimUnknownFileID,  0x80000000,      0x00000000,
+    0x00000000,      0x80000000,      0x00000000,
+    &llFTKirbyAnimDollPickUpFileID,  0x80000000,      0x80000000,
+    &llFTKirbyAnimDollFallFileID,  0x80000000,      0x40000000,
+    &llFTKirbyAnimDollRevivalFileID,  0x80000000,      0x40000000,
+    &llFTKirbyAnimIntro2FileID,  0x80000000,      0x00000000,
+    &llFTKirbyAnimIntroPoseFileID,  0x80000000,      0x00000000,
+    &llFTKirbyAnimPoseFileID,  0x80000000,      0x00000000,
+    &llFTKirbyAnimPose2FileID,  0x80000000,      0x00000000,
+    &llFTKirbyAnimIntroFileID,  D_ovl1_80392088, 0x00000000
 };
 
 s32 dFTKirbySubMotionDescsCount = sizeof(dFTKirbySubMotionDescs)/sizeof(FTMotionDesc); // 0x00000010

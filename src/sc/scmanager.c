@@ -20,37 +20,37 @@ extern void mnVSModeStartScene();
 //                               //
 // // // // // // // // // // // //
 
-// 800A44D0
+// 0x800A44D0
 u8 sSCManagerPad0x800A44D0[16];
 
-// 800A44E0
+// 0x800A44E0
 LBBackupData gSCManagerBackupData;
 
-// 800A4AD0
+// 0x800A4AD0
 SCCommonData gSCManagerSceneData;
 
-// 800A4B18
+// 0x800A4B18
 SCBattleState gSCManager1PGameBattleState;
 
-// 800A4D08
+// 0x800A4D08
 SCBattleState gSCManagerTransferBattleState;
 
-// 800A4EF8
+// 0x800A4EF8
 SCBattleState gSCManagerVSBattleState;
 
-// 800A50E8
+// 0x800A50E8
 SCBattleState *gSCManagerBattleState;
 
-// 800A50EC
+// 0x800A50EC
 u32 gSCManagerCIC;
 
-// 800A50F0
+// 0x800A50F0
 s32 gSCManagerUnkown0x800A50F0;
 
-// 800A50F8
+// 0x800A50F8
 FTFileSize gSCManagerFighterFileSizes[nFTKindEnumCount];
 
-// 800A523C
+// 0x800A523C
 s32 sSCManagerUnk0x800A523C;
 
 // // // // // // // // // // // //
@@ -60,7 +60,7 @@ s32 sSCManagerUnk0x800A523C;
 // // // // // // // // // // // //
 
 // 0x800A3070 (JP: 0x800A1090)
-SYOverlay dSCManagerOverlays[] =
+SYOverlay dSCManagerOverlays[/* */] =
 {
 	SCMANAGER_OVERLAY_DEFINE(0),
 	SCMANAGER_OVERLAY_DEFINE(1),
@@ -131,7 +131,7 @@ SYOverlay dSCManagerOverlays[] =
 	SCMANAGER_OVERLAY_DEFINE(64)
 };
 
-// 800A3994
+// 0x800A3994
 LBBackupData dSCManagerDefaultBackupData =
 { 
 	// VS Records
@@ -483,7 +483,7 @@ LBBackupData dSCManagerDefaultBackupData =
 	0												// Checksum of all previous save data struct members' values
 };
 
-// 800A3F80
+// 0x800A3F80
 SCCommonData dSCManagerDefaultSceneData =
 {
 #if defined(REGION_US)
@@ -560,7 +560,7 @@ SCCommonData dSCManagerDefaultSceneData =
 	FALSE											// Has the title screen animation been viewed?
 };
 
-// 800A3FC8
+// 0x800A3FC8
 SCBattleState dSCManagerDefaultBattleState =
 {
 	nSCBattleGameTypeDemo,							// Game type
@@ -797,13 +797,13 @@ SCBattleState dSCManagerDefaultBattleState =
 };
 
 #if defined(REGION_US)
-// 800A41B8
-s32 dSCManagerPad0x800A41B8[] = { 0, 0 };
+// 0x800A41B8
+s32 dSCManagerPad0x800A41B8[/* */] = { 0, 0 };
 
 // 0x800A41C0 (.rodata) - use { __DATE__ " " __TIME__ } in a real setting
-char dSCManagerBuildDate[] = { "Mar 16 1999 18:26:57" };
+char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
 #else
-char dSCManagerBuildDate[] = { "Dec 23 1998 18:06:24" };
+char dSCManagerBuildDate[/* */] = { "Dec 23 1998 18:06:24" };
 #endif
 
 // // // // // // // // // // // //
@@ -812,7 +812,7 @@ char dSCManagerBuildDate[] = { "Dec 23 1998 18:06:24" };
 //                               //
 // // // // // // // // // // // //
 
-// 800A1980
+// 0x800A1980
 void scManagerRunLoop(sb32 arg)
 {
 	u16 *framebuffer;
@@ -1282,19 +1282,19 @@ void scManagerRunLoop(sb32 arg)
 	}
 }
 
-// 800A2698
+// 0x800A2698
 void scManagerFuncUpdate(SYTaskmanSetup *arg)
 {
 	syTaskmanStartTask(arg);
 }
 
-// 800A26B8
-void scManagerFuncDraw()
+// 0x800A26B8
+void scManagerFuncDraw(void)
 {
 	gcDrawAll();
 }
 
-// 800A26D8
+// 0x800A26D8
 void scManagerMeterProcDisplay(GObj *gobj)
 {
 	s32 width;
@@ -1369,7 +1369,7 @@ void scManagerMeterProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 800A2B18
+// 0x800A2B18
 GObj* scManagerMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority)
 {
 	if (gcFindGObjByID(~0x10000000) != NULL)
@@ -1394,7 +1394,7 @@ GObj* scManagerMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority
 	);
 }
 
-// 800A2BA8
+// 0x800A2BA8
 void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority)
 {
 	GObj *gobj = gcFindGObjByID(~0x1);
@@ -1414,74 +1414,74 @@ void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority
 	else scManagerMakeMeterCamera(link, link_priority, dl_link_priority);
 }
 
-// 800A2C30
+// 0x800A2C30
 void scManagerInspectGObj(GObj *gobj)
 {
-	FTStruct *fp;
-	WPStruct *wp;
-	ITStruct *ip;
-	EFStruct *ep;
+    FTStruct *fp;
+    WPStruct *wp;
+    ITStruct *ip;
+    EFStruct *ep;
 
-	syDebugDebugPrintf("gobj id:%d:", gobj->id);
+    syDebugDebugPrintf("gobj id:%d:", gobj->id);
 
-	switch (gobj->id)
-	{
-	case nGCCommonKindFighter:
-		fp = ftGetStruct(gobj);
+    switch (gobj->id)
+    {
+    case nGCCommonKindFighter:
+        fp = ftGetStruct(gobj);
 
-		syDebugDebugPrintf("fighter\n");
-		syDebugDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->fkind, fp->player, fp->pkind);
-		syDebugDebugPrintf("stat:%d, mstat:%d\n", fp->status_id, fp->motion_id);
-		syDebugDebugPrintf("ga:%d\n", fp->ga);
-		break;
+        syDebugDebugPrintf("fighter\n");
+        syDebugDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->fkind, fp->player, fp->pkind);
+        syDebugDebugPrintf("stat:%d, mstat:%d\n", fp->status_id, fp->motion_id);
+        syDebugDebugPrintf("ga:%d\n", fp->ga);
+        break;
 
-	case nGCCommonKindWeapon:
-		wp = wpGetStruct(gobj);
+    case nGCCommonKindWeapon:
+        wp = wpGetStruct(gobj);
 
-		syDebugDebugPrintf("weapon\n");
-		syDebugDebugPrintf("kind:%d, player:%d\n", wp->kind, wp->player);
-		syDebugDebugPrintf("atk stat:%d\n", wp->attack_coll.attack_state);
-		syDebugDebugPrintf("ga:%d\n", wp->ga);
-		break;
+        syDebugDebugPrintf("weapon\n");
+        syDebugDebugPrintf("kind:%d, player:%d\n", wp->kind, wp->player);
+        syDebugDebugPrintf("atk stat:%d\n", wp->attack_coll.attack_state);
+        syDebugDebugPrintf("ga:%d\n", wp->ga);
+        break;
 
-	case nGCCommonKindItem:
-		ip = itGetStruct(gobj);
+    case nGCCommonKindItem:
+        ip = itGetStruct(gobj);
 
-		syDebugDebugPrintf("item\n");
-		syDebugDebugPrintf("kind:%d, player:%d\n", ip->kind, ip->player);
-		syDebugDebugPrintf("atk stat:%d\n", ip->attack_coll.attack_state);
-		syDebugDebugPrintf("ga:%d\n", ip->ga);
-		syDebugDebugPrintf("proc update:%x\n", ip->proc_update);
-		syDebugDebugPrintf("proc map:%x\n", ip->proc_map);
-		syDebugDebugPrintf("proc hit:%x\n", ip->proc_hit);
-		syDebugDebugPrintf("proc shield:%x\n", ip->proc_shield);
-		syDebugDebugPrintf("proc hop:%x\n", ip->proc_hop);
-		syDebugDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
-		syDebugDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
-		syDebugDebugPrintf("proc damage:%x\n", ip->proc_damage);
-		break;
+        syDebugDebugPrintf("item\n");
+        syDebugDebugPrintf("kind:%d, player:%d\n", ip->kind, ip->player);
+        syDebugDebugPrintf("atk stat:%d\n", ip->attack_coll.attack_state);
+        syDebugDebugPrintf("ga:%d\n", ip->ga);
+        syDebugDebugPrintf("proc update:%x\n", ip->proc_update);
+        syDebugDebugPrintf("proc map:%x\n", ip->proc_map);
+        syDebugDebugPrintf("proc hit:%x\n", ip->proc_hit);
+        syDebugDebugPrintf("proc shield:%x\n", ip->proc_shield);
+        syDebugDebugPrintf("proc hop:%x\n", ip->proc_hop);
+        syDebugDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
+        syDebugDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
+        syDebugDebugPrintf("proc damage:%x\n", ip->proc_damage);
+        break;
 
-	case nGCCommonKindEffect:
-		ep = efGetStruct(gobj);
+    case nGCCommonKindEffect:
+        ep = efGetStruct(gobj);
 
-		// Check if address is within base RDRAM + expansion pak bounds (why though!?)
-		if (((uintptr_t)ep >= 0x80000000) && ((uintptr_t)ep < 0x80800000))
-		{
-			syDebugDebugPrintf("effect\n");
-			syDebugDebugPrintf("fgobj:%x", ep->fighter_gobj);
-			syDebugDebugPrintf("proc func:%x\n", ep->proc_update);
-		}
-		else syDebugDebugPrintf("\n");
-		break;
+        // Check if address is within base RDRAM + expansion pak bounds (why though!?)
+        if (((uintptr_t)ep >= 0x80000000) && ((uintptr_t)ep < 0x80800000))
+        {
+            syDebugDebugPrintf("effect\n");
+            syDebugDebugPrintf("fgobj:%x", ep->fighter_gobj);
+            syDebugDebugPrintf("proc func:%x\n", ep->proc_update);
+        }
+        else syDebugDebugPrintf("\n");
+        break;
 
-	default:
-		syDebugDebugPrintf("\n");
-		break;
-	}
+    default:
+        syDebugDebugPrintf("\n");
+        break;
+    }
 }
 
-// 800A2E84
-void scManagerFuncPrint()
+// 0x800A2E84
+void scManagerFuncPrint(void)
 {
 	switch (dGCCurrentStatus)
 	{
@@ -1547,8 +1547,8 @@ void scManagerFuncPrint()
 	}
 }
 
-// 800A3040
-void scManagerRunPrintGObjStatus()
+// 0x800A3040
+void scManagerRunPrintGObjStatus(void)
 {
 	syDebugRunFuncPrint(scManagerFuncPrint);
 }

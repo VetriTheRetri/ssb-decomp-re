@@ -11,26 +11,26 @@
 
 WPDesc dWPNessPKFireWeaponDesc =
 {
-	0x00,                                   // Render flags?
-	nWPKindPKFire,                          // Weapon Kind
-	&gFTNessFileSpecial1,                   // Pointer to character's loaded files?
-	&llNessSpecial1PKFireWeaponAttributes,  // Offset of weapon attributes in loaded files
+    0x00,                                   // Render flags?
+    nWPKindPKFire,                          // Weapon Kind
+    &gFTNessFileSpecial1,                   // Pointer to character's loaded files?
+    &llNessSpecial1PKFireWeaponAttributes,  // Offset of weapon attributes in loaded files
 
-	// DObj transformation struct
-	{
-		nGCMatrixKindTra,                // Main matrix transformations
-		0x2E,                            // Secondary matrix transformations?
-		0                                // ???
-	},
+    // DObj transformation struct
+    {
+        nGCMatrixKindTra,                // Main matrix transformations
+        0x2E,                            // Secondary matrix transformations?
+        0                                // ???
+    },
 
-	wpNessPKFireProcUpdate,                 // Proc Update
-	wpNessPKFireProcMap,                    // Proc Map
-	wpNessPKFireProcHit,                    // Proc Hit
-	wpNessPKFireProcAbsorb,                 // Proc Shield
-	wpNessPKFireProcHop,                    // Proc Hop
-	wpNessPKFireProcHit,                    // Proc Set-Off
-	wpNessPKFireProcReflector,              // Proc Reflector
-	wpNessPKFireProcAbsorb                  // Proc Absorb
+    wpNessPKFireProcUpdate,                 // Proc Update
+    wpNessPKFireProcMap,                    // Proc Map
+    wpNessPKFireProcHit,                    // Proc Hit
+    wpNessPKFireProcAbsorb,                 // Proc Shield
+    wpNessPKFireProcHop,                    // Proc Hop
+    wpNessPKFireProcHit,                    // Proc Set-Off
+    wpNessPKFireProcReflector,              // Proc Reflector
+    wpNessPKFireProcAbsorb                  // Proc Absorb
 };
 
 // // // // // // // // // // // //
@@ -39,111 +39,111 @@ WPDesc dWPNessPKFireWeaponDesc =
 //                               //
 // // // // // // // // // // // //
 
-// 8016AA40
+// 0x8016AA40
 sb32 wpNessPKFireProcUpdate(GObj *weapon_gobj)
 {
-	if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
-	{
-		efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+    if (wpMainDecLifeCheckExpire(wpGetStruct(weapon_gobj)) != FALSE)
+    {
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
-		return TRUE;
-	}
-	else return FALSE;
+        return TRUE;
+    }
+    else return FALSE;
 }
 
-// 8016AA88
+// 0x8016AA88
 sb32 wpNessPKFireProcMap(GObj *weapon_gobj)
 {
-	if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
-	{
-		efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+    if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
+    {
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
-		return TRUE;
-	}
-	else return FALSE;
+        return TRUE;
+    }
+    else return FALSE;
 }
 
-// 8016AACC
+// 0x8016AACC
 sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
-	Vec3f pos;
-	Vec3f vel;
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    Vec3f pos;
+    Vec3f vel;
 
-	vel.x = 0.0F;
-	vel.y = 0.0F;
-	vel.z = 0.0F;
+    vel.x = 0.0F;
+    vel.y = 0.0F;
+    vel.z = 0.0F;
 
-	pos = wp->physics.vel_air;
+    pos = wp->physics.vel_air;
 
-	syVectorNorm3D(&pos);
+    syVectorNorm3D(&pos);
 
-	pos.x = (pos.x * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.x;
-	pos.y = (pos.y * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.y;
-	pos.z = (pos.z * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.z;
+    pos.x = (pos.x * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+    pos.y = (pos.y * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.y;
+    pos.z = (pos.z * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.z;
 
-	itNessPKFireMakeItem(weapon_gobj, &pos, &vel);
+    itNessPKFireMakeItem(weapon_gobj, &pos, &vel);
 
-	return TRUE;
+    return TRUE;
 }
 
-// 8016AB84
+// 0x8016AB84
 sb32 wpNessPKFireProcHop(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-	syVectorRotateAbout3D(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
-	wpMainVelSetLR(weapon_gobj);
+    syVectorRotateAbout3D(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
+    wpMainVelSetLR(weapon_gobj);
 
-	DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
 
-	return FALSE;
+    return FALSE;
 }
 
-// 8016ABF0
+// 0x8016ABF0
 sb32 wpNessPKFireProcReflector(GObj *weapon_gobj)
 {
-	WPStruct *wp = wpGetStruct(weapon_gobj);
-	FTStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
-	wp->lifetime = WPPKFIRE_LIFETIME;
+    wp->lifetime = WPPKFIRE_LIFETIME;
 
-	wpMainReflectorSetLR(wp, fp);
-	wpMainVelSetLR(weapon_gobj);
+    wpMainReflectorSetLR(wp, fp);
+    wpMainVelSetLR(weapon_gobj);
 
-	DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
 
-	return FALSE;
+    return FALSE;
 }
 
-// 8016AC4C
+// 0x8016AC4C
 sb32 wpNessPKFireProcAbsorb(GObj *weapon_gobj)
 {
-	efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+    efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
-	return TRUE;
+    return TRUE;
 }
 
-// 8016AC78
+// 0x8016AC78
 GObj* wpNessPKFireMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 angle)
 {
-	s32 unused;
-	GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPNessPKFireWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-	WPStruct *wp;
+    s32 unused;
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPNessPKFireWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
+    WPStruct *wp;
 
-	if (weapon_gobj == NULL)
-	{
-		return NULL;
-	}
-	wp = wpGetStruct(weapon_gobj);
+    if (weapon_gobj == NULL)
+    {
+        return NULL;
+    }
+    wp = wpGetStruct(weapon_gobj);
 
-	wp->lifetime = WPPKFIRE_LIFETIME;
+    wp->lifetime = WPPKFIRE_LIFETIME;
 
-	wp->physics.vel_air = *vel;
+    wp->physics.vel_air = *vel;
 
-	wpMainVelSetLR(weapon_gobj);
+    wpMainVelSetLR(weapon_gobj);
 
-	DObjGetStruct(weapon_gobj)->rotate.vec.f.z = (angle + F_CST_DTOR32(90.0F)) * wp->lr;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = (angle + F_CST_DTOR32(90.0F)) * wp->lr;
 
-	return weapon_gobj;
+    return weapon_gobj;
 }

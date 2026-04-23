@@ -70,28 +70,28 @@ typedef enum MNCharactersMotionKind
 
 typedef enum MNTitleLayout
 {
-	nMNTitleLayoutOpening,      // logo animation intro
-	nMNTitleLayoutAnimate,      // Super Smash Bros. animation
-	nMNTitleLayoutFinal         // final layout
+    nMNTitleLayoutOpening,      // logo animation intro
+    nMNTitleLayoutAnimate,      // Super Smash Bros. animation
+    nMNTitleLayoutFinal         // final layout
 
 } MNTitleLayout;
 
 typedef enum MNTitleSpriteKind
 {
-	nMNTitleSpriteKindDropShadow,
-	nMNTitleSpriteKindSmash,
-	nMNTitleSpriteKindSuper,
-	nMNTitleSpriteKindBros,
-	nMNTitleSpriteKindTM,
+    nMNTitleSpriteKindDropShadow,
+    nMNTitleSpriteKindSmash,
+    nMNTitleSpriteKindSuper,
+    nMNTitleSpriteKindBros,
+    nMNTitleSpriteKindTM,
 #if defined(REGION_US)
-	nMNTitleSpriteKindFooter,
+    nMNTitleSpriteKindFooter,
 #else
-	nMNTitleSpriteKindFooter = 13,
+    nMNTitleSpriteKindFooter = 13,
 #endif
-	nMNTitleSpriteKindHeader,
-	nMNTitleSpriteKindPressStart,
-	nMNTitleSpriteKindLogo,
-	nMNTitleSpriteKindTM2
+    nMNTitleSpriteKindHeader,
+    nMNTitleSpriteKindPressStart,
+    nMNTitleSpriteKindLogo,
+    nMNTitleSpriteKindTM2
 
 } MNTitleSpriteKind;
 
@@ -148,30 +148,30 @@ typedef enum MNBackupClearOptions
 
 typedef enum MNVSModeOptions
 {
-	nMNVSModeOptionStart,           // VS Start
-	nMNVSModeOptionRule,            // Rule
-	nMNVSModeOptionTimeStock,       // Time/Stock
-	nMNVSModeOptionOptions,         // VS Options
+    nMNVSModeOptionStart,           // VS Start
+    nMNVSModeOptionRule,            // Rule
+    nMNVSModeOptionTimeStock,       // Time/Stock
+    nMNVSModeOptionOptions,         // VS Options
 	nMNVSModeOptionEnumCount
 
 } MNVSModeOptions;
 
 typedef enum MNVSModeRule
 {
-	nMNVSModeRuleTime,            // Time
-	nMNVSModeRuleStock,           // Stock
-	nMNVSModeRuleTimeTeam,        // Time Team
-	nMNVSModeRuleStockTeam,       // Stock Team
+    nMNVSModeRuleTime,            // Time
+    nMNVSModeRuleStock,           // Stock
+    nMNVSModeRuleTimeTeam,        // Time Team
+    nMNVSModeRuleStockTeam,       // Stock Team
 
 } MNVSModeRule;
 
 typedef enum MNVSModeInputDirection
 {
-	nMNVSModeInputDirectionNone,  // None
-	nMNVSModeInputDirectionUp,    // Up
-	nMNVSModeInputDirectionDown,  // Down
-	nMNVSModeInputDirectionLeft,  // Left
-	nMNVSModeInputDirectionRight  // Right
+    nMNVSModeInputDirectionNone,  // None
+    nMNVSModeInputDirectionUp,    // Up
+    nMNVSModeInputDirectionDown,  // Down
+    nMNVSModeInputDirectionLeft,  // Left
+    nMNVSModeInputDirectionRight  // Right
 
 } MNVSModeInputDirection;
 

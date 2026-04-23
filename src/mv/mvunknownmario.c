@@ -10,8 +10,8 @@
 //                               //
 // // // // // // // // // // // //
 
-// 8018D580
-FTKeyEvent dMVUnknownMarioKeyEvents[] =
+// 0x8018D580
+FTKeyEvent dMVUnknownMarioKeyEvents[/* */] =
 {
 	FTKEY_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
 	FTKEY_EVENT_STICK(30, 0, 60),                                     // 0x203C, 0x1E00
@@ -29,55 +29,55 @@ FTKeyEvent dMVUnknownMarioKeyEvents[] =
 	FTKEY_EVENT_END()                                                 // 0x0000
 };
 
-// 8018D5B8
+// 0x8018D5B8
 SYColorRGBA dMVUnknownMarioFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 8018D5BC
+// 0x8018D5BC
 SYVideoSetup dMVUnknownMarioVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 8018D5D8
+// 0x8018D5D8
 SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		gcRunAll,              		// Update function
-		scManagerFuncDraw,          // Frame draw function
-		&ovl5_BSS_END,             	// Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 2048,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 1024,         // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x8000,                     // Graphics Heap Size
-		2,                          // ???
-		0xC000,                     // RDP Output Buffer Size
-		mvUnknownMarioFuncLights,   // Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        scManagerFuncDraw,          // Frame draw function
+        &ovl5_BSS_END,             	// Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2048,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1024,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mvUnknownMarioFuncLights,   // Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	dLBCommonFuncMatrixList,        // Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	mvUnknownMarioFuncStart         // Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    dLBCommonFuncMatrixList,        // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    mvUnknownMarioFuncStart         // Task start function
 };
 
 // // // // // // // // // // // //
@@ -86,19 +86,19 @@ SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 8018D670
+// 0x8018D670
 s32 sMVUnknownMarioPad0x8018D670[2];
 
-// 8018D678
+// 0x8018D678
 LBFileNode sMVUnkownMarioStatusBuffer[20];
 
-// 8018D718
+// 0x8018D718
 LBFileNode sMVUnkownMarioForceStatusBuffer[7];
 
-// 8018D750
+// 0x8018D750
 GObj *sMVUnkownMarioFighterGObj;
 
-// 8018D758
+// 0x8018D758
 SCBattleState sMVUnkownMarioBattleState;
 
 // // // // // // // // // // // //
@@ -107,8 +107,8 @@ SCBattleState sMVUnkownMarioBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 8018D0C0
-void mvUnknownMarioSetupFiles()
+// 0x8018D0C0
+void mvUnknownMarioSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -125,7 +125,7 @@ void mvUnknownMarioSetupFiles()
 	lbRelocLoadFilesListed(dGMCommonFileIDs, gGMCommonFiles);
 }
 
-// 8018D160
+// 0x8018D160
 void mvUnknownMarioFuncRun(GObj *gobj)
 {
 	if (ftParamCheckHaveKey(sMVUnkownMarioFighterGObj) == FALSE)
@@ -135,8 +135,8 @@ void mvUnknownMarioFuncRun(GObj *gobj)
 	}
 }
 
-// 8018D1A0
-void mvUnknownMarioFuncStart()
+// 0x8018D1A0
+void mvUnknownMarioFuncStart(void)
 {
 	s32 unused[3];
 	GObj *fighter_gobj;
@@ -210,15 +210,15 @@ void mvUnknownMarioFuncStart()
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
-// 8018D4BC
+// 0x8018D4BC
 void mvUnknownMarioFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018D508
-void mvUnknownMarioStartScene()
+// 0x8018D508
+void mvUnknownMarioStartScene(void)
 {
 	dMVUnknownMarioVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVUnknownMarioVideoSetup);

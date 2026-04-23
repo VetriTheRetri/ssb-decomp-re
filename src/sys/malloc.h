@@ -6,10 +6,10 @@
 // SYMallocRegion?
 typedef struct SYMallocRegion 
 {
-	u32 id;
-	void *start;
-	void *end;
-	void *ptr;
+    u32 id;
+    void *start;
+    void *end;
+    void *ptr;
 
 } SYMallocRegion;
 

@@ -7,22 +7,22 @@
 
 typedef struct SYInterpDesc
 {
-	u8 kind;
-	s16 points_num;
-	f32 unk04;          // CR scale? count?
-	Vec3f *points;
-	f32 length;
-	f32 *keyframes;     // maybe keyframes as fraction t?
-	f32 *quartics;      // quartic coef
+    u8 kind;
+    s16 points_num;
+    f32 unk04;          // CR scale? count?
+    Vec3f *points;
+    f32 length;
+    f32 *keyframes;     // maybe keyframes as fraction t?
+    f32 *quartics;      // quartic coef
 
 } SYInterpDesc;
 
 typedef enum SYInterpKind
 {
-	nSYInterpKindLinear,
-	nSYInterpKindBezierS3,
-	nSYInterpKindBezier,
-	nSYInterpKindCatrom
+    nSYInterpKindLinear,
+    nSYInterpKindBezierS3,
+    nSYInterpKindBezier,
+    nSYInterpKindCatrom
 
 } SYInterpKind;
 

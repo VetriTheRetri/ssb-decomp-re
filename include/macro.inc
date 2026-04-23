@@ -1,31 +1,31 @@
 .macro glabel label
-	.global \label
-	.type \label, @function
-	\label:
+    .global \label
+    .type \label, @function
+    \label:
 .endm
 
 .macro dlabel label
-	.global \label
-	\label:
+    .global \label
+    \label:
 .endm
 
 .macro jlabel label
-	.global \label
-	.type \label, @function
-	\label:
+    .global \label
+    .type \label, @function
+    \label:
 .endm
 
 # End of a data symbol.
 .macro enddlabel label
-	.size \label, . - \label
+    .size \label, . - \label
 .endm
 
 # Label to signal the symbol haven't been matched yet.
 .macro nonmatching label, size=1
-	.global \label\().NON_MATCHING
-	.type \label\().NON_MATCHING, @object
-	.size \label\().NON_MATCHING, \size
-	\label\().NON_MATCHING:
+    .global \label\().NON_MATCHING
+    .type \label\().NON_MATCHING, @object
+    .size \label\().NON_MATCHING, \size
+    \label\().NON_MATCHING:
 .endm
 
 # COP0 register aliases

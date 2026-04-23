@@ -48,18 +48,18 @@ typedef struct
 
 typedef struct
 {
-	/* 0x0 */ u8 dummy;
-	/* 0x1 */ u8 txsize;
-	/* 0x2 */ u8 rxsize;
-	/* 0x3 */ u8 cmd;
+    /* 0x0 */ u8 dummy;
+    /* 0x1 */ u8 txsize;
+    /* 0x2 */ u8 rxsize;
+    /* 0x3 */ u8 cmd;
 #if BUILD_VERSION >= VERSION_J
-	/* 0x4 */ u8 addrh;
-	/* 0x5 */ u8 addrl;
+    /* 0x4 */ u8 addrh;
+    /* 0x5 */ u8 addrl;
 #else
-	/* 0x4 */ u16 address;
+    /* 0x4 */ u16 address;
 #endif
-	/* 0x6 */ u8 data[BLOCKSIZE];
-	/* 0x26 */ u8 datacrc;
+    /* 0x6 */ u8 data[BLOCKSIZE];
+    /* 0x26 */ u8 datacrc;
 } __OSContRamReadFormat;
 
 typedef union
@@ -223,25 +223,25 @@ extern u8 __osMaxControllers;
 #if BUILD_VERSION >= VERSION_J
 
 #define SELECT_BANK(pfs, bank) \
-	__osPfsSelectBank((pfs), (bank))
+    __osPfsSelectBank((pfs), (bank))
 
 #define SET_ACTIVEBANK_TO_ZERO()          \
-	if (pfs->activebank != 0)             \
-	{                                     \
-		ERRCK(__osPfsSelectBank(pfs, 0)); \
-	} (void)0
+    if (pfs->activebank != 0)             \
+    {                                     \
+        ERRCK(__osPfsSelectBank(pfs, 0)); \
+    } (void)0
 
 #else
 
 #define SELECT_BANK(pfs, bank) \
-	(pfs->activebank = (bank), __osPfsSelectBank((pfs)))
+    (pfs->activebank = (bank), __osPfsSelectBank((pfs)))
 
 #define SET_ACTIVEBANK_TO_ZERO()       \
-	if (pfs->activebank != 0)          \
-	{                                  \
-		pfs->activebank = 0;           \
-		ERRCK(__osPfsSelectBank(pfs)); \
-	} (void)0
+    if (pfs->activebank != 0)          \
+    {                                  \
+        pfs->activebank = 0;           \
+        ERRCK(__osPfsSelectBank(pfs)); \
+    } (void)0
 
 #endif
 

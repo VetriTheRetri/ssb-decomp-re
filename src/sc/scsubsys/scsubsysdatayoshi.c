@@ -96,25 +96,25 @@ s32 D_ovl1_80391C64[] =
 
 FTMotionDesc dFTYoshiSubMotionDescs[] =
 {
-	&llFTYoshiAnimEggLayFileID, D_ovl1_80391BC4, 0x00000000,
-	&llFTYoshiAnimWin1FileID,  D_ovl1_80391BF0, 0x00000000,
-	&llFTYoshiAnimSelectedFileID,  D_ovl1_80391C08, 0x00000000,
-	&llFTYoshiAnimWin2FileID,  D_ovl1_80391C28, 0x00000000,
-	&llFTYoshiAnimWin2FileID,  D_ovl1_80391C28, 0x00000000,
-	&llFTYoshiAnimUnknown1FileID,  D_ovl1_80391C60, 0x00000000,
-	&llFTYoshiAnimRunFileID, 0x80000000,      0x00000000,
-	0x00000000,      0x80000000,      0x00000000,
-	&llFTYoshiAnimDollPickUpFileID,  0x80000000,      0x80000000,
-	&llFTYoshiAnimDollFallFileID,  0x80000000,      0x40000000,
-	&llFTYoshiAnimDollRevivalFileID,  0x80000000,      0x40000000,
-	&llFTYoshiAnimUnknown6FileID,  0x80000000,      0x00000000,
-	&llFTYoshiAnimIntroPoseFileID,  0x80000000,      0x00000000,
-	&llFTYoshiAnimUnknown7FileID,  0x80000000,      0x00000000,
-	&llFTYoshiAnimTeamPosesFileID,  0x80000000,      0x00000000,
-	&llFTYoshiAnimUnknown2FileID,  D_ovl1_80391C64, 0x00000000,
-	&llFTYoshiAnimUnknown3FileID,  0x80000000,      0x00000000,
-	&llFTYoshiAnimUnknown4FileID,  0x80000000,      0x00000000,
-	&llFTYoshiAnimUnknown5FileID,  0x80000000,      0x00000000
+    &llFTYoshiAnimEggLayFileID, D_ovl1_80391BC4, 0x00000000,
+    &llFTYoshiAnimWin1FileID,  D_ovl1_80391BF0, 0x00000000,
+    &llFTYoshiAnimSelectedFileID,  D_ovl1_80391C08, 0x00000000,
+    &llFTYoshiAnimWin2FileID,  D_ovl1_80391C28, 0x00000000,
+    &llFTYoshiAnimWin2FileID,  D_ovl1_80391C28, 0x00000000,
+    &llFTYoshiAnimUnknown1FileID,  D_ovl1_80391C60, 0x00000000,
+    &llFTYoshiAnimRunFileID, 0x80000000,      0x00000000,
+    0x00000000,      0x80000000,      0x00000000,
+    &llFTYoshiAnimDollPickUpFileID,  0x80000000,      0x80000000,
+    &llFTYoshiAnimDollFallFileID,  0x80000000,      0x40000000,
+    &llFTYoshiAnimDollRevivalFileID,  0x80000000,      0x40000000,
+    &llFTYoshiAnimUnknown6FileID,  0x80000000,      0x00000000,
+    &llFTYoshiAnimIntroPoseFileID,  0x80000000,      0x00000000,
+    &llFTYoshiAnimUnknown7FileID,  0x80000000,      0x00000000,
+    &llFTYoshiAnimTeamPosesFileID,  0x80000000,      0x00000000,
+    &llFTYoshiAnimUnknown2FileID,  D_ovl1_80391C64, 0x00000000,
+    &llFTYoshiAnimUnknown3FileID,  0x80000000,      0x00000000,
+    &llFTYoshiAnimUnknown4FileID,  0x80000000,      0x00000000,
+    &llFTYoshiAnimUnknown5FileID,  0x80000000,      0x00000000
 };
 
 s32 dFTYoshiSubMotionDescsCount = sizeof(dFTYoshiSubMotionDescs)/sizeof(FTMotionDesc); // 0x00000013

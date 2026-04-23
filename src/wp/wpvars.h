@@ -128,9 +128,9 @@ typedef enum wpPikachuThunderCollide
 
 typedef enum wpPikachuThunderJoltStatus
 {
-	nWPPikachuThunderJoltStatusNull,
-	nWPPikachuThunderJoltStatusActive,
-	nWPPikachuThunderJoltStatusDestroy
+    nWPPikachuThunderJoltStatusNull,
+    nWPPikachuThunderJoltStatusActive,
+    nWPPikachuThunderJoltStatusDestroy
 
 } wpPikachuThunderJoltStatus;
 

@@ -13,69 +13,69 @@
 //                               //
 // // // // // // // // // // // //
 
-// 80131F50
+// 0x80131F50
 SYColorRGBA dMNStartupEndFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
-// 80131F54
+// 0x80131F54
 SYColorRGBA dMNStartupStartFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 80131F58
+// 0x80131F58
 Lights1 dMNStartupLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
-// 80131F70
-Gfx dMNStartupDisplayList[] =
+// 0x80131F70
+Gfx dMNStartupDisplayList[/* */] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNStartupLights1),
 	gsSPEndDisplayList()
 };
 
-// 80131F98
+// 0x80131F98
 SYVideoSetup dMNStartupVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 80131FB4
+// 0x80131FB4
 SYTaskmanSetup dMNStartupTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                          // ???
-		gcRunAll,              		// Update function
-		gcDrawAll,                  // Frame draw function
-		&ovl58_BSS_END,             // Allocatable memory pool start
-		0,                          // Allocatable memory pool size
-		1,                          // ???
-		2,                          // Number of contexts?
-		sizeof(Gfx) * 1280,         // Display List Buffer 0 Size
-		sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
-		0,                          // Display List Buffer 2 Size
-		0,                          // Display List Buffer 3 Size
-		0x2800,                     // Graphics Heap Size
-		2,                          // ???
-		0xC000,                     // RDP Output Buffer Size
-		mnStartupFuncLights,        // Pre-render function
-		syControllerFuncRead,       // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
+        &ovl58_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 1280,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x2800,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mnStartupFuncLights,        // Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0,                              // Number of GObjThreads
-	sizeof(u64) * 192,              // Thread stack size
-	0,                              // Number of thread stacks
-	0,                              // ???
-	0,                              // Number of GObjProcesses
-	0,                              // Number of GObjs
-	sizeof(GObj),                   // GObj size
-	0,                              // Number of XObjs
-	NULL,                           // Matrix function list
-	NULL,                           // DObjVec eject function
-	0,                              // Number of AObjs
-	0,                              // Number of MObjs
-	0,                              // Number of DObjs
-	sizeof(DObj),                   // DObj size
-	0,                              // Number of SObjs
-	sizeof(SObj),                   // SObj size
-	0,                              // Number of CObjs
-	sizeof(CObj),                 	// CObj size
-	
-	mnStartupFuncStart              // Task start function
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,                           // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of CObjs
+    sizeof(CObj),                 	// CObj size
+    
+    mnStartupFuncStart              // Task start function
 };
 
 // // // // // // // // // // // //
@@ -84,10 +84,10 @@ SYTaskmanSetup dMNStartupTaskmanSetup =
 //                               //
 // // // // // // // // // // // //
 
-// 80132040
+// 0x80132040
 s32 sMNStartupPad0x80132040[2];
 
-// 80132048
+// 0x80132048
 LBFileNode sMNStartupStatusBuffer[5];
 
 // 0x80132070 - Delay frames before N64 logo can be skipped
@@ -102,7 +102,7 @@ sb32 sMNStartupIsProceedOpening;
 //                               //
 // // // // // // // // // // // //
 
-// 80131B00
+// 0x80131B00
 void mnStartupLogoThreadUpdate(GObj *gobj)
 {
 	f32 step;
@@ -151,7 +151,7 @@ void mnStartupLogoThreadUpdate(GObj *gobj)
 	}
 }
 
-// 80131C20
+// 0x80131C20
 void mnStartupActorFuncRun(GObj *gobj)
 {
 	if (sMNStartupSkipAllowWait != 0)
@@ -173,8 +173,8 @@ void mnStartupActorFuncRun(GObj *gobj)
 	}
 }
 
-// 80131CB8
-void mnStartupFuncStart()
+// 0x80131CB8
+void mnStartupFuncStart(void)
 {
 	LBRelocSetup rl_setup;
 	CObj *cobj;
@@ -255,14 +255,14 @@ void mnStartupFuncStart()
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
 }
 
-// 80131ECC
+// 0x80131ECC
 void mnStartupFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNStartupDisplayList);
 }
 
-// 80131EF0
-void mnStartupStartScene()
+// 0x80131EF0
+void mnStartupStartScene(void)
 {
 	syAudioStopBGMAll();
 	

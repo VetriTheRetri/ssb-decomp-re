@@ -15,20 +15,20 @@ extern u32 sySchedulerGetTicCount();
 //                               //
 // // // // // // // // // // // //
 
-// 8018E0C0
+// 0x8018E0C0
 CObjDesc dMVOpeningPikachuStartCObjDesc = { { 0.0F, 0.0F, 20000.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F };
 
-// 8018E0DC
+// 0x8018E0DC
 CObjDesc dMVOpeningPikachuEndCObjDesc = { { 50.0F, -1640.0F, 1000.0F }, { 50.0F, -1640.0F, 0.0F }, 0.0F };
 
 // 0x8018E0F8 - Bruh?
-FTKeyEvent dMVOpeningPikachuKeyEvents[] =
+FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
 {
 	FTKEY_EVENT_END()
 };
 
-// 8018E0FC
-u32 dMVOpeningPikachuFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+// 0x8018E0FC
+u32 dMVOpeningPikachuFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -36,49 +36,49 @@ u32 dMVOpeningPikachuFileIDs[] = { &llIFCommonAnnounceCommonFileID, &llMVOpening
 //                               //
 // // // // // // // // // // // //
 
-// 8018E220
+// 0x8018E220
 s32 sMVOpeningPikachuPad0x8018E220[2];
 
-// 8018E228
+// 0x8018E228
 s32 sMVOpeningPikachuTotalTimeTics;
 
-// 8018E22C
+// 0x8018E22C
 GObj *sMVOpeningPikachuNameGObj;
 
-// 8018E230
+// 0x8018E230
 GObj *sMVOpeningPikachuFighterGObj;
 
-// 8018E234
+// 0x8018E234
 s32 sMVOpeningPikachuPad0x8018E234;
 
-// 8018E238
+// 0x8018E238
 GObj *sMVOpeningPikachuMotionCameraGObj;
 
-// 8018E23C
+// 0x8018E23C
 void *sMVOpeningPikachuFigatreeHeap;
 
-// 8018E240
+// 0x8018E240
 f32 sMVOpeningPikachuPosedFighterSpeed;
 
-// 8018E244
+// 0x8018E244
 s32 sMVOpeningPikachuPad0x8018E244;
 
-// 8018E248
+// 0x8018E248
 CObjDesc sMVOpeningPikachuAdjustedStartCObjDesc;
 
-// 8018E268
+// 0x8018E268
 CObjDesc sMVOpeningPikachuAdjustedEndCObjDesc;
 
-// 8018E288
+// 0x8018E288
 LBFileNode sMVOpeningPikachuStatusBuffer[48];
 
-// 8018E408
+// 0x8018E408
 LBFileNode sMVOpeningPikachuForceStatusBuffer[7];
 
-// 8018E440
+// 0x8018E440
 void *sMVOpeningPikachuFiles[ARRAY_COUNT(dMVOpeningPikachuFileIDs)];
 
-// 8018E448
+// 0x8018E448
 SCBattleState sMVOpeningPikachuBattleState;
 
 // // // // // // // // // // // //
@@ -87,8 +87,8 @@ SCBattleState sMVOpeningPikachuBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 8018D0C0
-void mvOpeningPikachuSetupFiles()
+// 0x8018D0C0
+void mvOpeningPikachuSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -105,7 +105,7 @@ void mvOpeningPikachuSetupFiles()
 	lbRelocLoadFilesListed(dMVOpeningPikachuFileIDs, sMVOpeningPikachuFiles);
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningPikachuInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -120,13 +120,13 @@ void mvOpeningPikachuInitName(SObj *sobj)
 	sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
-void mvOpeningPikachuMakeName()
+// 0x8018D194
+void mvOpeningPikachuMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	intptr_t offsets[] =
+	intptr_t offsets[/* */] =
 	{
 		&llIFCommonAnnounceCommonLetterPSprite,
 		&llIFCommonAnnounceCommonLetterISprite,
@@ -137,7 +137,7 @@ void mvOpeningPikachuMakeName()
 		&llIFCommonAnnounceCommonLetterUSprite,
 		0x0
 	};
-	f32 pos_x[] =
+	f32 pos_x[/* */] =
 	{
 		0.0F, 30.0F, 45.0F, 75.0F, 110.0F, 140.0F, 170.0F
 	};
@@ -159,7 +159,7 @@ void mvOpeningPikachuMakeName()
 	}
 }
 
-// 8018D334
+// 0x8018D334
 void mvOpeningPikachuMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
@@ -176,7 +176,7 @@ void mvOpeningPikachuMotionCameraProcUpdate(GObj *gobj)
 	}
 }
 
-// 8018D42C
+// 0x8018D42C
 void mvOpeningPikachuMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
@@ -218,8 +218,8 @@ void mvOpeningPikachuMakeMotionCamera(Vec3f move)
 	cobj->vec.up.x = sMVOpeningPikachuAdjustedStartCObjDesc.upx;
 }
 
-// 8018D634
-void mvOpeningPikachuMakeMotionWindow()
+// 0x8018D634
+void mvOpeningPikachuMakeMotionWindow(void)
 {
 	GObj* fighter_gobj;
 	s32 i;
@@ -277,7 +277,7 @@ void mvOpeningPikachuMakeMotionWindow()
 	}
 }
 
-// 8018D864
+// 0x8018D864
 void mvOpeningPikachuPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -290,8 +290,8 @@ void mvOpeningPikachuPosedWallpaperProcDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D964
-void mvOpeningPikachuMakePosedWallpaper()
+// 0x8018D964
+void mvOpeningPikachuMakePosedWallpaper(void)
 {
 	gcAddGObjDisplay
 	(
@@ -309,7 +309,7 @@ void mvOpeningPikachuMakePosedWallpaper()
 	);
 }
 
-// 8018D9B0
+// 0x8018D9B0
 void mvOpeningPikachuPosedFighterProcUpdate(GObj *fighter_gobj)
 {
 	switch (sMVOpeningPikachuTotalTimeTics)
@@ -340,8 +340,8 @@ void mvOpeningPikachuPosedFighterProcUpdate(GObj *fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningPikachuPosedFighterSpeed;
 }
 
-// 8018DA80
-void mvOpeningPikachuMakePosedFighter()
+// 0x8018DA80
+void mvOpeningPikachuMakePosedFighter(void)
 {
 	GObj* fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -364,8 +364,8 @@ void mvOpeningPikachuMakePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 8018DB80
-void mvOpeningPikachuMakeNameCamera()
+// 0x8018DB80
+void mvOpeningPikachuMakeNameCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -388,8 +388,8 @@ void mvOpeningPikachuMakeNameCamera()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DC20
-void mvOpeningPikachuMakePosedFighterCamera()
+// 0x8018DC20
+void mvOpeningPikachuMakePosedFighterCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -417,8 +417,8 @@ void mvOpeningPikachuMakePosedFighterCamera()
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 8018DD10
-void mvOpeningPikachuMakePosedWallpaperCamera()
+// 0x8018DD10
+void mvOpeningPikachuMakePosedWallpaperCamera(void)
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -443,7 +443,7 @@ void mvOpeningPikachuMakePosedWallpaperCamera()
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 8018DDC0
+// 0x8018DDC0
 void mvOpeningPikachuFuncRun(GObj *gobj)
 {
 	sMVOpeningPikachuTotalTimeTics++;
@@ -470,14 +470,14 @@ void mvOpeningPikachuFuncRun(GObj *gobj)
 	}
 }
 
-// 8018DE7C
-void mvOpeningPikachuInitVars()
+// 0x8018DE7C
+void mvOpeningPikachuInitVars(void)
 {
 	sMVOpeningPikachuTotalTimeTics = 0;
 }
 
-// 8018DE88
-void mvOpeningPikachuFuncStart()
+// 0x8018DE88
+void mvOpeningPikachuFuncStart(void)
 {
 	sMVOpeningPikachuBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningPikachuBattleState;
@@ -518,63 +518,63 @@ void mvOpeningPikachuFuncStart()
 	}
 }
 
-// 8018E010
+// 0x8018E010
 void mvOpeningPikachuFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E140
+// 0x8018E140
 SYVideoSetup dMVOpeningPikachuVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 8018E15C
+// 0x8018E15C
 SYTaskmanSetup dMVOpeningPikachuTaskmanSetup =
 {
-	// Task Manager Buffer Setup
-	{
-		0,                              // ???
-		gcRunAll,                 	 	// Update function
-		scManagerFuncDraw,              // Frame draw function
-		&ovl42_BSS_END,                 // Allocatable memory pool start
-		0,                              // Allocatable memory pool size
-		1,                              // ???
-		2,                              // Number of contexts?
-		sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
-		sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
-		0,                              // Display List Buffer 2 Size
-		0,                              // Display List Buffer 3 Size
-		0x8000,                         // Graphics Heap Size
-		2,                              // ???
-		0xC000,                         // RDP Output Buffer Size
-		mvOpeningPikachuFuncLights,    	// Pre-render function
-		syControllerFuncRead,           // Controller I/O function
-	},
+    // Task Manager Buffer Setup
+    {
+        0,                              // ???
+        gcRunAll,                 	 	// Update function
+        scManagerFuncDraw,              // Frame draw function
+        &ovl42_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mvOpeningPikachuFuncLights,    	// Pre-render function
+        syControllerFuncRead,           // Controller I/O function
+    },
 
-	0,                                  // Number of GObjThreads
-	sizeof(u64) * 192,                  // Thread stack size
-	0,                                  // Number of thread stacks
-	0,                                  // ???
-	0,                                  // Number of GObjProcesses
-	0,                                  // Number of GObjs
-	sizeof(GObj),                       // GObj size
-	0,                                  // Number of XObjs
-	dLBCommonFuncMatrixList,            // Matrix function list
-	NULL,                               // DObjVec eject function
-	0,                                  // Number of AObjs
-	0,                                  // Number of MObjs
-	0,                                  // Number of DObjs
-	sizeof(DObj),                       // DObj size
-	0,                                  // Number of SObjs
-	sizeof(SObj),                       // SObj size
-	0,                                  // Number of CObjs
-	sizeof(CObj),                       // Camera size
-	
-	mvOpeningPikachuFuncStart          	// Task start function
+    0,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of XObjs
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // DObjVec eject function
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of CObjs
+    sizeof(CObj),                       // Camera size
+    
+    mvOpeningPikachuFuncStart          	// Task start function
 };
 
-// 8018E05C
-void mvOpeningPikachuStartScene()
+// 0x8018E05C
+void mvOpeningPikachuStartScene(void)
 {
 	dMVOpeningPikachuVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningPikachuVideoSetup);

@@ -66,16 +66,16 @@ extern f32 gcGetDObjDescAxisTrack(DObjDesc *dobjdesc, s32 track);
 // Check if DObj or DObjDesc axis value of corresponding track ID has been retreived
 extern sb32 gcCheckGetDObjNoAxisTrack
 (
-	sb32 is_desc_or_dobj,
-	DObj *dobj,
-	f32 *axis_value,
-	f32 *rate,
-	AObj *seek_aobj,
-	DObjDesc *dobjdesc,
-	s32 track,
-	sb32 rate_kind,
-	Vec3f *translate,
-	sb32 *is_axis_ready
+    sb32 is_desc_or_dobj,
+    DObj *dobj,
+    f32 *axis_value,
+    f32 *rate,
+    AObj *seek_aobj,
+    DObjDesc *dobjdesc,
+    s32 track,
+    sb32 rate_kind,
+    Vec3f *translate,
+    sb32 *is_axis_ready
 );
 
 // ???
@@ -84,30 +84,30 @@ extern void gcGetAObjTrackAnimTimeMax(s32 track, f32 translate, f32 rotate, f32 
 // ???
 extern f32 gcGetDObjTempAnimTimeMax
 (
-	DObj *dobj,
-	AObjEvent32 **anim_joints,
-	f32 anim_frame,
-	DObjDesc *dobjdesc,
-	s32 rate_kind,
-	f32 length,
-	f32 translate,
-	f32 rotate,
-	f32 scale
+    DObj *dobj,
+    AObjEvent32 **anim_joints,
+    f32 anim_frame,
+    DObjDesc *dobjdesc,
+    s32 rate_kind,
+    f32 length,
+    f32 translate,
+    f32 rotate,
+    f32 scale
 );
 
 // ???
 extern f32 func_8000EC64_F864
 (
-	GObj *gobj,
-	AObjEvent32 **anim_joints,
-	f32 anim_frame,
-	DObjDesc *dobjdesc,
-	s32 rate_kind,
-	f32 length_max,
-	f32 length_min,
-	f32 translate,
-	f32 rotate,
-	f32 scale
+    GObj *gobj,
+    AObjEvent32 **anim_joints,
+    f32 anim_frame,
+    DObjDesc *dobjdesc,
+    s32 rate_kind,
+    f32 length_max,
+    f32 length_min,
+    f32 translate,
+    f32 rotate,
+    f32 scale
 );
 
 // ???
@@ -140,13 +140,13 @@ extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 
 // Set up DObj node tree with MObj and custom XObj transformations for GObj
 extern void gcSetupCustomDObjsWithMObj
 (
-	GObj *gobj, 
-	DObjDesc *dobjdesc, 
-	MObjSub ***p_mobjsubs, 
-	DObj **dobjs, 
-	u8 tk1, 
-	u8 tk2, 
-	u8 tk3
+    GObj *gobj, 
+    DObjDesc *dobjdesc, 
+    MObjSub ***p_mobjsubs, 
+    DObj **dobjs, 
+    u8 tk1, 
+    u8 tk2, 
+    u8 tk3
 );
 
 // Add MObj for all DObjs on a GObj

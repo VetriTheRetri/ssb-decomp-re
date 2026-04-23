@@ -8,20 +8,20 @@
 
 extern void mnBackupClearFuncLights(Gfx **dls);
 extern void mnBackupClearMakeUnused(s32 option);
-extern void mnBackupClearMakeHeaderSObjs();
+extern void mnBackupClearMakeHeaderSObjs(void);
 extern void mnBackupClearUpdateOptionTabColors(GObj *gobj, s32 status);
-extern void mnBackupClearSetOptionSpriteColors();
-extern void mnBackupClearEjectOptionGObjs();
+extern void mnBackupClearSetOptionSpriteColors(void);
+extern void mnBackupClearEjectOptionGObjs(void);
 extern void mnBackupClearOptionConfirmProcDisplay(GObj *gobj);
-extern void mnBackupClearEjectOptionConfirmGObj();
+extern void mnBackupClearEjectOptionConfirmGObj(void);
 extern void mnBackupClearMakeOptionConfirm(sb32 confirm_kind, sb32 yes_or_no);
-extern void mnBackupClearMakeMainCamera();
-extern void mnBackupClearInitVars();
+extern void mnBackupClearMakeMainCamera(void);
+extern void mnBackupClearInitVars(void);
 extern void mnBackupClearApplyOptionID(s32 option);
-extern void mnBackupClearUpdateOptionMainMenu();
+extern void mnBackupClearUpdateOptionMainMenu(void);
 extern void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind);
 extern void mnBackupClearFuncRun(GObj *gobj);
-extern void mnBackupClearFuncStart();
-extern void mnBackupClearStartScene();
+extern void mnBackupClearFuncStart(void);
+extern void mnBackupClearStartScene(void);
 
 #endif

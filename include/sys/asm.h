@@ -1,7 +1,7 @@
 /************************************************************************
  Copyright (C) 1998,1999 NINTENDO Co,Ltd,
  Copyright (C) 1998,1999 MONEGI CORPORATION,
-	All Rights Reserved
+    All Rights Reserved
 This program is a trade secret of NINTENDO Co,Ltd and MONEGI Corp. 
 and it is not to be reproduced, published, disclosed to others, copied,
 adapted, distributed, or displayed without the prior authorization of 
@@ -29,7 +29,7 @@ extern "C" {
 
 #define _MIPS_SIM_ABI32     1   /* MIPS MSIG calling convention */
 #define _MIPS_SIM_NABI32    2   /* MIPS new 32-bit abi */
-		/* NABI32 is 64bit calling convention but 32bit type sizes) */
+        /* NABI32 is 64bit calling convention but 32bit type sizes) */
 #define _MIPS_SIM_ABI64     3   /* MIPS 64 calling convention */
 
 
@@ -41,77 +41,77 @@ extern "C" {
 #endif
 
 #define LEAF(x)             \
-	.globl  x              ;\
-	.align  2              ;\
-	ASM_TYPE_FUNC(x)       ;\
-	.ent    x,0            ;\
-	x:                     ;\
-	.frame  sp,0,ra
+    .globl  x              ;\
+    .align  2              ;\
+    ASM_TYPE_FUNC(x)       ;\
+    .ent    x,0            ;\
+    x:                     ;\
+    .frame  sp,0,ra
 
 #if defined(BBPLAYER) || defined(__sgi)
 #define XLEAF(x)    \
-	.globl  x      ;\
-	.aent   x,0    ;\
-	x:
+    .globl  x      ;\
+    .aent   x,0    ;\
+    x:
 #else
 #define XLEAF(x)    \
-	.globl  x
+    .globl  x
 #endif
 
 #ifdef BBPLAYER
 #define END(proc)           \
-	.end    proc           ;\
-	.size   proc, . - proc
+    .end    proc           ;\
+    .size   proc, . - proc
 #else
 #define END(proc)   \
-	.end    proc
+    .end    proc
 #endif
 
 #define ABS(x, y)   \
-	.globl  x      ;\
-	x   =   y
+    .globl  x      ;\
+    x   =   y
 
 #define EXPORT(x)   \
-	.globl  x      ;\
-	x:
+    .globl  x      ;\
+    x:
 
 #if defined(BBPLAYER) || defined(__sgi)
 #define WEAK(x, y)      \
-	.weakext    x,  y
+    .weakext    x,  y
 #else
 #define WEAK(x, y)
 #endif
 
 
 #define NOP         \
-	.set noreorder ;\
-		nop        ;\
-	.set reorder
+    .set noreorder ;\
+        nop        ;\
+    .set reorder
 
 #define CACHE(op, reg)  \
-	.set noreorder     ;\
-		cache op, reg  ;\
-	.set reorder
+    .set noreorder     ;\
+        cache op, reg  ;\
+    .set reorder
 
 #define MFC0(reg, op)  \
-	.set noreorder     ;\
-		mfc0 reg, op  ;\
-	.set reorder
+    .set noreorder     ;\
+        mfc0 reg, op  ;\
+    .set reorder
 
 #define MTC0(reg, op)  \
-	.set noreorder     ;\
-		mtc0 reg, op  ;\
-	.set reorder
+    .set noreorder     ;\
+        mtc0 reg, op  ;\
+    .set reorder
 
 #define CFC1(reg, op)  \
-	.set noreorder     ;\
-		cfc1 reg, op  ;\
-	.set reorder
+    .set noreorder     ;\
+        cfc1 reg, op  ;\
+    .set reorder
 
 #define CTC1(reg, op)  \
-	.set noreorder     ;\
-		ctc1 reg, op  ;\
-	.set reorder
+    .set noreorder     ;\
+        ctc1 reg, op  ;\
+    .set reorder
 
 
 #ifdef __cplusplus

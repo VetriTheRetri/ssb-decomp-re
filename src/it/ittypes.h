@@ -140,51 +140,6 @@ struct ITDamageColl						// DamageColl struct
 	Vec3f size;		  					// DamageColl size
 };
 
-/*
- * ITAttributes — 72-byte hitbox + hurtbox attribute pool used by items.
- *
- * Bit layout discovered by setting each positional initializer to a unique
- * value and tracking which u32 word/bit the value lands at. NOT every field
- * is fully decoded — some fields (notably shield_damage, priority,
- * drop_sfx, throw_sfx, vel_scale) only retain a subset of bits in isolated
- * compilations, which strongly suggests IDO 7.1 packs them in ways that
- * don't reduce to "a single contiguous bit range per field." See the test
- * harness in /tmp/itlayout.py for raw evidence.
- *
- *   0x00-0x0F  4 × pointer (data, p_mobjsubs, anim_joints, p_matanim_joints)
- *   0x10  u32: [31..27] 5×:1 flags  [26..11] attack_offset0_x:16  [10..0] pad
- *   0x14  u32: [31..16] attack_offset0_y:16  [15..0] attack_offset0_z:16
- *   0x18  u32: [31..16] attack_offset1_x:16  [15..0] attack_offset1_y:16
- *   0x1C  s16: attack_offset1_z (IDO collapses trailing :16 into half-word)
- *   0x1E  Vec3h damage_coll_offset (6 B)
- *   0x24  Vec3h damage_coll_size (6 B)
- *   0x2A  s16 map_coll_top
- *   0x2C  s16 map_coll_center
- *   0x2E  s16 map_coll_bottom
- *   0x30  s16 map_coll_width  (high half of u32 storage @ 0x30)
- *   0x32  u16 size  (low half of u32 storage @ 0x30)
- *   0x34  u32: [31..22] angle:10  [21..12] knockback_scale:10
- *              [11..4]  damage:8  [3..0]   element:4
- *   0x38  u32: [31..22] knockback_weight:10  [15..14] attack_count:2
- *              [13]     can_setoff:1         [12..3]  hit_sfx:10
- *              + ??? (shield_damage spans here, exact mapping unclear)
- *   0x3C  u32: [31] priority bit, [30] can_rehit_item, [29] can_rehit_fighter,
- *              [28] can_hop, [27] can_reflect, [26] can_shield,
- *              [25..16] knockback_base:10
- *              [15..12] type:4   [11..8] hitstatus:4
- *              [7] unk_atca_0x3C_b6   [6] unk_atca_0x3C_b7
- *   0x40  u32: drop_sfx, smash_sfx packed (smash_sfx :10 at bits 6..15 verified)
- *   0x44-0x47  vel_scale + spin_speed (spin_speed :16 at bits 0..15 verified)
- *
- * NOTE: The `u32 size : 16` declaration is critical — using plain `u16 size`
- * causes IDO to pack the subsequent bitfield run incorrectly. Same fix
- * applies to WPAttributes (where the layout IS fully verified — see
- * src/wp/wptypes.h and the 7 byte-identical Special1 files).
- *
- * For modder-friendly edits today, use tools/decodeItemAttrs.py to dump the
- * blob's raw u32 words plus the visible fields (pointers, flags, offsets,
- * Vec3h, map_coll, size); patch bytes by hand for the bitfield tail.
- */
 struct ITAttributes
 {
 	void *data; 						// Either DObjDesc or displaylist?
@@ -208,7 +163,7 @@ struct ITAttributes
 	s16 map_coll_center;				// Map Collision Box center
 	s16 map_coll_bottom;				// Map Collision Box bottom
 	s16 map_coll_width;					// Map Collision Box width
-	u32 size : 16;						// Hitbox size (see WPAttributes: u32:16 forces clean packing with the following bitfield run)
+	u32 size;						// Hitbox size (see WPAttributes: u32:16 forces clean packing with the following bitfield run)
 	s32 angle : 10;						// Hitbox launch angle
 	u32 knockback_scale : 10;			// Hitbox knockback scale
 	u32 damage : 8;						// Hitbox damage

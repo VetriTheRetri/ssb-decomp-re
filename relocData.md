@@ -43,6 +43,36 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **Display-list walk typing** (180 files covering every character
+  model, stage `*File2`, opening cutscene, character Special, effects
+  common, and all LB transitions). `tools/typeRelocBlocks.py` walks the
+  Gfx DLs inside each file and types untyped `u8` blocks accordingly:
+    1. u8 blocks starting with `0xE7000000` (gsDPPipeSync) and
+       containing `0xDF00000000000000` (gsSPEndDisplayList) split into
+       `Gfx[cmds] + u8[tail]`. Re-entrant peel handles the common case
+       of multiple consecutive DLs in a single block.
+    2. Every `gsSPVertex(ptr, count, v0)` span gets unioned (strict
+       overlap) so blocks whose declared size matches a span retype
+       u8→Vtx, and spans crossing block boundaries merge a contiguous
+       run of sub-blocks into a single Vtx[N] at the span start.
+       Absorbed sub-block targets in `.reloc` rewrite to
+       `<primary>+0x<offset>`.
+    3. u8 blocks loaded as `gsDPSetTextureImage` + `gsDPLoadTLUTCmd`
+       retype to `u16` palette with `.palette.inc.c`. The pass scans
+       every expanded view so cross-file palettes (e.g. a
+       Bonus1CommonImages block loaded as a TLUT from a character
+       file's Gfx) get caught too.
+  Iterated to fixpoint with rebuilds between passes. Net delta across
+  the 180 files: hundreds of new `Vtx[]` / `Gfx[]` arrays, dozens of
+  new palettes, ROM stays byte-identical.
+- **`tools/expandRelocFile.py` correctness fixes**. The Gfx-arg
+  resolver now gates on walked chain positions (so `0x0EXXXXXX`
+  segmented addresses don't falsely bind to in-file symbols whose
+  low 16 bits coincidentally match), and distinguishes intern vs.
+  extern chain positions — extern args now resolve via `.reloc`
+  `# -> file N (Name)` annotations into cross-file symbol references
+  (e.g. `dStageSectorFile2_Tex_0x19F8 /* was 0xFFFF067E */`) rather
+  than binding them to unrelated in-file symbols.
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
   typed (`FTHiddenPart`, `FTModelPart`, `FTModelPartDesc*[]`,
   `FTCommonPartContainer`, `FTTexturePartContainer`, `FTThrownStatus[]`,
@@ -146,52 +176,59 @@ Recent round of structural work:
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.
 
-### Remaining pure raw-blob files (10 files, ~50 KB)
+### Remaining pure raw-blob files (11 files, ~51 KB)
 
-Ten files contain only raw `u8` byte arrays with no typed structs:
+Files whose only declarations are `u8[]` wrappers (no structs, no u16/u32):
 
 | Fid | File | Size | Notes |
 |---:|---|---:|---|
 | 110 | StageYosterImages | 20.1 KB | Stage texture pool (LUT+Tex pairs) |
 | 103 | StagePupupuImages | 11.1 KB | Stage texture pool |
 | 100 | StagePupupuBetaImages | 9.4 KB | Beta stage texture pool (12 LUT+Tex pairs partially typed) |
-| 123 | Bonus1CommonImages4 | 2.6 KB | Bonus stage texture pool |
-| 120 | Bonus1CommonImages1 | 2.1 KB | Bonus stage texture pool |
+| 123 | Bonus1CommonImages4 | 2.6 KB | Bonus stage texture pool (1 cross-file palette typed) |
+| 120 | Bonus1CommonImages1 | 2.1 KB | Bonus stage texture pool (1 cross-file palette typed) |
 | 252 | SCExplainMain | 1.9 KB | How-to-play data/logic tables |
-| 121 | Bonus1CommonImages2 | 1.7 KB | Bonus stage texture pool |
-| 122 | Bonus1CommonImages3 | 0.8 KB | Bonus stage texture pool |
-| 299 | MarioSecondaryImage | 0.2 KB | Single LUT+Tex pair |
+| 121 | Bonus1CommonImages2 | 1.7 KB | Bonus stage texture pool (2 cross-file palettes typed) |
+| 122 | Bonus1CommonImages3 | 0.8 KB | Bonus stage texture pool (1 cross-file palette typed) |
+| 302 | NCommonTexture | 0.5 KB | Shared palette + 32×32 CI4 for N-variant fighters (partially typed: u16 palette only) |
+| 299 | MarioSecondaryImage | 0.1 KB | Single palette + tex (2 cross-file palettes typed) |
 | 72 | MVOpeningClashFighters | 8 B | Tiny cross-file pointer table |
 
-All other files have at least some typed struct declarations.
+All other files have at least some typed struct or palette/anim declaration.
 
-### Gap bytes inside typed inline masters (~40 KB)
+### Gap bytes inside typed inline masters (~67 KB)
 
 Typed files still have `u8 d<Prefix>_gap_0xNNNN[N]` or `u8
 d<Prefix>_data_0xNNNN[N]` raw-byte blocks for regions not yet
 classified — typically joint hierarchy descriptors, stage collision
-data, animation metadata, and sub-blocks split by `splitGapFull.py`
+data, animation metadata, DL tails left behind by the display-list
+walk, and sub-blocks split by `splitGapFull.py` / `typeRelocBlocks.py`
 that haven't been promoted to typed structs.
 
-521 gap/data arrays remain across ~100 files totaling ~40 KB, down
-from ~58 KB after bulk DL gap conversion (830 arrays → `Gfx DL[]`),
-transition file typing, and LBTransition gap reduction.
+393 gap/data arrays remain across ~100 files totaling ~67 KB. The
+array count is down from ~521 (consolidation by `typeRelocBlocks.py`
+merge pass), but total bytes went up because DL-split tails and
+per-item `_data_remainder` sub-blocks in `ITCommonObject` are now
+explicit `u8` regions rather than opaque larger blocks.
 
 | Category | Arrays | Bytes | Typical content |
 |---|---:|---:|---|
-| Bonus stage File2 | 75 | 12,644 | Stage collision/geometry descriptors |
-| Model files | 177 | 9,860 | Joint hierarchy `_post` data |
-| Stage File2 | 63 | 6,580 | Stage-specific collision/anim |
-| Other (MN/SC/FT) | 137 | 6,104 | Spotlight/credits/manager data |
-| MVOpening/Ending | 21 | 3,080 | Camera/animation descriptors |
+| Other (MN/SC/FT/IT/etc.) | 153 | 41,948 | Mostly `ITCommonObject` per-item `_data_remainder` / `_mobjsubs_gap` sub-blocks (~37 KB across 63 items) |
+| Bonus stage File2 | 51 | 11,644 | Stage collision/geometry descriptors |
+| Stage File2 | 53 | 6,124 | Stage-specific collision/anim |
+| MVOpening/Ending | 16 | 2,744 | Camera/animation descriptors |
+| Model files | 66 | 1,980 | Joint hierarchy `_post` data (DL-split tails) |
 | EFCommon | 19 | 1,048 | Effect parameter data |
-| LBTransition | 26 | 960 | Small data blocks between Vtx |
-| MNTitle/SC1PIntro | 3 | 712 | Animation/gap data | The biggest offenders are the
-character model files and the Opening / Yamabuki stage assets. Many
-gaps that DO have inbound chain references (extern from other files,
-or intern within the same file) have already been split into named
-sub-regions via `tools/splitGapFull.py`. Use this to regenerate the
-exact remaining breakdown:
+| Fighter Special | 27 | 980 | Specials' remaining _post / small gaps |
+| MNTitle/SC1PIntro | 3 | 712 | Animation/gap data |
+| GR stage Map | 5 | 100 | PAD / tail bytes |
+
+`ITCommonObject` (fid 86) alone accounts for ~37 KB of the "Other"
+bucket — 63 items with structured `_data_remainder` sub-blocks that
+are intentionally explicit but still `u8`. Removing them would require
+per-item struct identification, not blanket typing.
+
+Use this to regenerate the exact breakdown:
 
 ```python
 import os, re
@@ -337,6 +374,7 @@ from `assets/relocData/<fid>.vpk0.bin` on every `make extract`.
 | `tools/auditGapRefs.py` | Report `gap_0xNNNN` raw-byte regions that have inbound external references from other files. |
 | `tools/splitGapAtExternRefs.py` | Split such gap regions at the inbound offsets, naming each sub-region `gap_0xNNNN_sub_0xMM`. Skips gaps whose symbol is referenced anywhere in the local `.reloc` (would need label rewrites). |
 | `tools/splitGapFull.py` | Like `splitGapAtExternRefs.py` but ALSO rewrites local `.reloc` intern entries to use the new sub-region symbols, so it works on gaps with intra-file chain references too. |
+| `tools/typeRelocBlocks.py` | Display-list-driven bulk typer: three passes over a file's expanded Gfx bodies: (1) split u8 blocks whose bytes form a gsDPPipeSync-prefixed DL into `Gfx[cmds] + u8[tail]`; (2) walk every `gsSPVertex` span and retype / merge u8 blocks into `Vtx[N]` with strict-overlap span union and `.reloc` target rewrites; (3) retype `gsDPSetTextureImage → gsDPLoadTLUTCmd` targets as `u16 palette[N/2]`. Global palette hint map is derived from every expanded view so cross-file palettes (e.g. a Bonus1CommonImages block loaded as a TLUT from a character file) get caught. Idempotent — re-running against a fully-typed file produces zero changes. Applied across 180 files (every character model, stage File2, opening cutscene, Special, LBTransition, EFCommon, etc.) in the last typing pass. |
 
 ---
 
@@ -364,27 +402,38 @@ more structural representation instead.
 
 ## Contributing
 
-The remaining work splits into four buckets:
+The remaining work splits into three buckets:
 
-1. **Promote 10 remaining pure raw-blob files** (~50 KB). These are
-   files with NO typed structs — only `u8[]` wrappers. Ranked by
-   impact:
+1. **Promote 11 remaining pure raw-blob files** (~51 KB). These are
+   files whose only declarations are `u8[]` wrappers. Ranked by impact:
    - **StageYosterImages** (20.1 KB) — LUT+Tex pair decomposition
      using `typeImagesFile.py` req-list reverse lookup (same technique
      as StagePupupuImages / Bonus1CommonImages).
    - **StagePupupuImages** (11.1 KB) — same approach.
-   - **Bonus1CommonImages 1–4** (7.5 KB total) — same approach.
+   - **StagePupupuBetaImages** (9.4 KB) — partially typed; LUT+Tex
+     boundaries recovered, still contains u8 trailers.
+   - **Bonus1CommonImages 1–4** (7.2 KB total) — cross-file palette
+     retypes applied; remaining u8 blocks are likely textures awaiting
+     explicit `.tex.inc.c` promotion.
    - **SCExplainMain** (1.9 KB) — how-to-play data tables, needs
      struct identification from runtime code analysis.
-   - **MarioSecondaryImage** (160 B) — single LUT+Tex pair, trivial.
+   - **NCommonTexture** (0.5 KB) — partially typed; u16 palette split
+     out, remaining u8 texture awaits explicit Tex framing.
+   - **MarioSecondaryImage** (0.1 KB) — cross-file palettes typed;
+     remaining u8 trailers likely texture pixels.
    - **MVOpeningClashFighters** (8 B) — likely a `void*[2]` cross-file
      pointer table, needs extern chain analysis.
 
-2. **Promote remaining `gap_*` / `data_*` raw arrays** (~40 KB across
-   521 arrays in ~100 files). Biggest categories: Bonus stage collision
-   descriptors (12.6 KB), Model joint hierarchy `_post` data (9.9 KB),
-   and Stage File2 collision/anim (6.6 KB). Many are sub-blocks from
-   `splitGapFull.py` that need struct identification.
+2. **Promote remaining `gap_*` / `data_*` raw arrays** (~67 KB across
+   393 arrays in ~100 files). The biggest single contributor is
+   **ITCommonObject** (~37 KB / 63 per-item `_data_remainder` /
+   `_mobjsubs_gap` sub-blocks) — these need per-item struct
+   identification from runtime code analysis, not blanket typing.
+   Next largest are **Bonus stage File2** (11.6 KB, collision /
+   geometry descriptors) and **Stage File2** (6.1 KB, stage-specific
+   collision / anim). Model files' `_post` DL tails (~2 KB) carry
+   Joint / DObj / Anim structural data that `typeRelocBlocks.py`
+   can't classify via DL walking alone.
 
 3. **Finish typing remaining struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon

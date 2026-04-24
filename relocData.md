@@ -193,8 +193,19 @@ intent:
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
 | Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,738 | ~540 KB | 95 |
-| Semantically named but still wrapped as `u8 …data.inc.c` (Tex pools, AnimJoint scripts, image tile pools) | 253 | ~450 KB | 100 |
-| **Total u8 `.data.inc.c`** | 3,991 | ~990 KB | 121 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, misc tails) | 159 | ~127 KB | ~60 |
+| **Total u8 `.data.inc.c`** | 3,897 | ~668 KB | 120 |
+
+The semantic bucket dropped from ~450 KB to ~127 KB after one
+cleanup round: 74 `_tex` / `_Image` / `Wallpaper_tex_tiles` / `Tex_pool`
+blocks got their includes renamed `.data.inc.c` → `.tex.inc.c` (~300
+KB moved to proper texture classification), and 18 `AnimJoint` /
+`MatAnimJoint` / `CamAnimJoint` u8 blocks (MVOpeningYamabuki,
+SCStaffroll, 11 LBTransition* files) got retyped u8 → u32 (~23 KB
+moved to proper anim-array classification). What remains of the
+semantic bucket is mostly `*_post` DL-tail metadata and stage
+`MPGeometryData` arrays that need structural typing, not just
+renames.
 
 Top files in each bucket (bytes):
 
@@ -231,23 +242,30 @@ metadata). `ITCommonObject` alone has ~46 KB of per-item
 `_data_remainder` sub-blocks that need per-item struct identification
 from runtime code analysis.
 
-**Semantically named — mostly intentional**
+**Semantically named — structural analysis required**
 
 | Fid | File | Bytes | What |
 |---:|---|---:|---|
-| 71 | MVOpeningYamabuki | 252,696 | `Wallpaper_tex_tiles` (203 KB), `Tex_pool` (35 KB), Legs/Shadow/MBall/Cam `AnimJoint` — intentionally left as `u8 …data.inc.c` because bytes are ROM-regenerable and structure is documented in comments above each decl. |
-| 167 | MNTitle | 41,880 | Animation and sprite-layout data referenced by name. |
-| 61 | MVOpeningNewcomers1 | 34,656 | Opening cutscene texture pool. |
-| 62 | MVOpeningNewcomers2 | 25,184 | Opening cutscene texture pool. |
-| 69 | MVOpeningStandoff | 16,424 | Opening cutscene data. |
-| 195 | SCStaffroll | 14,220 | Per-name image sub-blocks named by role. |
-| 84 | EFCommonEffects2 | 5,280 | Effect parameter tables. |
-| (others) | — | 44,060 | Smaller entries across Model files, stage files, LB transitions, etc. |
+| 61 | MVOpeningNewcomers1 | 34,656 | Opening cutscene — `*_post` DL-tail metadata (Joint / DObj / Anim fragments) |
+| 62 | MVOpeningNewcomers2 | 25,184 | Same shape as Newcomers1. |
+| 69 | MVOpeningStandoff | 16,424 | Opening cutscene post-DL data. |
+| 332 | CaptainModel | 4,696 | Joint-hierarchy `_post` tails (metadata between DL + Vtx sections). |
+| 150 | ITBonus1Object | 4,248 | DObjDesc-shaped `dobj` block, exact field layout TBD. |
+| 338 | YoshiModel | 3,960 | Joint-hierarchy `_post` tails. |
+| 317 | DonkeyModel | 3,928 | Joint-hierarchy `_post` tails. |
+| 113 | StageHyruleFile2 | 3,340 | Stage collision geometry + `MPGeometryData`. |
+| 320 | SamusModel | 3,288 | Joint-hierarchy `_post` tails. |
+| 86 | ITCommonObject | 3,224 | Per-item `JointCmd` / `HitParties` / small structural tails. |
+| 198 | SCExplainGraphics | 2,928 | Post-DL metadata. |
+| 341 | PikachuModel | 2,872 | Joint-hierarchy `_post` tails. |
+| (50 more files) | — | 18,640 | Smaller entries. |
 
-Renaming these from `.data.inc.c` to `.tex.inc.c` (for texture pools)
-or retyping from `u8[]` to `u32 AnimJoint[]` would be a cosmetic
-improvement — the compiled bytes are byte-identical either way, so
-these aren't gating ROM matching.
+These blocks all have semantic names (`*_post`, `*MPGeometryData_*`,
+`*JointCmd_*`, `*HitParties_*`) but still `u8[]` with `.data.inc.c`.
+Unlike the earlier renames (which were straight texture/anim identity
+calls), these need structural typing — e.g. Joint hierarchy parsing,
+MPGeometryData struct layout, per-item HitParty format — rather than
+just a mechanical include rename.
 
 Scanner to regenerate the per-file breakdown above:
 

@@ -12,9 +12,9 @@ u8 dGRBonus2PikachuFile2_gap_0x0000[16] = {
 	#include <GRBonus2PikachuFile2/gap_0x0000.data.inc.c>
 };
 
-/* gap sub-block @ 0x0010 (was gap+0x10, 48 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x10[48] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x10.data.inc.c>
+/* Vtx @ 0x0010 (3 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x10[3] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x10.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0040 (was gap+0x40, 56 bytes) */
@@ -27,19 +27,19 @@ u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x78[8] = {
 	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x78.data.inc.c>
 };
 
-/* gap sub-block @ 0x0080 (was gap+0x80, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x80[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x80.data.inc.c>
+/* Vtx @ 0x0080 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x80[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x80.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x00C0 (was gap+0xC0, 16 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0xC0[16] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0xC0.data.inc.c>
+/* Vtx @ 0x00C0 (1 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0xC0[1] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0xC0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x00D0 (was gap+0xD0, 48 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0xD0[48] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0xD0.data.inc.c>
+/* Vtx @ 0x00D0 (3 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0xD0[3] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0xD0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0100 (was gap+0x100, 16 bytes) */
@@ -47,34 +47,34 @@ u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x100[16] = {
 	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x100.data.inc.c>
 };
 
-/* gap sub-block @ 0x0110 (was gap+0x110, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x110[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x110.data.inc.c>
+/* Vtx @ 0x0110 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x110[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x110.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0150 (was gap+0x150, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x150[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x150.data.inc.c>
+/* Vtx @ 0x0150 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x150[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x150.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0190 (was gap+0x190, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x190[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x190.data.inc.c>
+/* Vtx @ 0x0190 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x190[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x190.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x01D0 (was gap+0x1D0, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x1D0[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x1D0.data.inc.c>
+/* Vtx @ 0x01D0 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x1D0[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x1D0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0210 (was gap+0x210, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x210[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x210.data.inc.c>
+/* Vtx @ 0x0210 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x210[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x210.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0250 (was gap+0x250, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x250[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x250.data.inc.c>
+/* Vtx @ 0x0250 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x250[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x250.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0290 (was gap+0x290, 8 bytes) */
@@ -92,54 +92,54 @@ u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x2C0[16] = {
 	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x2C0.data.inc.c>
 };
 
-/* gap sub-block @ 0x02D0 (was gap+0x2D0, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x2D0[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x2D0.data.inc.c>
+/* Vtx @ 0x02D0 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x2D0[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x2D0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0310 (was gap+0x310, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x310[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x310.data.inc.c>
+/* Vtx @ 0x0310 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x310[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x310.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0350 (was gap+0x350, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x350[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x350.data.inc.c>
+/* Vtx @ 0x0350 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x350[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x350.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0390 (was gap+0x390, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x390[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x390.data.inc.c>
+/* Vtx @ 0x0390 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x390[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x390.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x03D0 (was gap+0x3D0, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x3D0[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x3D0.data.inc.c>
+/* Vtx @ 0x03D0 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x3D0[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x3D0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0410 (was gap+0x410, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x410[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x410.data.inc.c>
+/* Vtx @ 0x0410 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x410[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x410.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0450 (was gap+0x450, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x450[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x450.data.inc.c>
+/* Vtx @ 0x0450 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x450[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x450.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0490 (was gap+0x490, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x490[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x490.data.inc.c>
+/* Vtx @ 0x0490 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x490[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x490.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x04D0 (was gap+0x4D0, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x4D0[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x4D0.data.inc.c>
+/* Vtx @ 0x04D0 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x4D0[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x4D0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0510 (was gap+0x510, 64 bytes) */
-u8 dGRBonus2PikachuFile2_gap_0x0000_sub_0x510[64] = {
-	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x510.data.inc.c>
+/* Vtx @ 0x0510 (4 vertices) */
+Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x510[4] = {
+	#include <GRBonus2PikachuFile2/gap_0x0000_sub_0x510.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0550 (was gap+0x550, 256 bytes) */

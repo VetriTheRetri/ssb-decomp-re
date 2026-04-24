@@ -85,6 +85,45 @@ Build flags: `NON_MATCHING=1` allows building with non-matching C stubs instead 
 
 Uses IDO 7.1 (MIPS) via `tools/ido-recomp/`. Flags: `-O2 -mips2`. The compiler has specific codegen quirks that matter for matching — equivalent C logic may need specific patterns to match IDO's output.
 
+## relocData Pipeline
+
+relocData files are binary asset files (models, stages, effects) containing Gfx display lists, Vtx arrays, textures, palettes, DObjDesc arrays, animations, and other structures. They are decompiled into editable C source.
+
+### Source files (`src/relocData/`)
+
+- **`.c` files** — Hand-authored C source. These drive extraction and expansion. Each declaration's type (`Vtx`, `Gfx`, `u8`, `DObjDLLink`, etc.) tells the extraction tool what format to use for the `.inc.c` file. Only `.c`, `.reloc`, and `.spritelist` files belong here — no subdirectories or generated artifacts.
+- **`.reloc` files** — Relocation metadata mapping pointer locations to target symbols. Symbol names here must match the `.c` file exactly.
+- **`.spritelist` files** — Drive extraction for sprite-only files; expanded to `.c` files in `build/src/relocData/`.
+
+### Build outputs (`build/src/relocData/`)
+
+- **Expanded `.c` files** — Human-readable view with decoded Gfx macros, Vtx structs, etc. Inline data (Gfx, Vtx) is decoded directly; only textures, palettes, and untyped blobs use `#include`. Use these to identify what type untyped `u8[]` gap blocks actually are.
+- **`.inc.c` files** — Generated from the baserom binary during `make extract`. Format depends on the declared C type: `.vtx.inc.c` for `Vtx`, `.dl.inc.c` for `Gfx`, `.palette.inc.c` for `u16` palettes, `.data.inc.c` for raw `u8`/`u32`.
+- **`.png` previews** — Generated for texture blocks to help with annotation.
+
+### Typing workflow
+
+To convert an untyped `u8[]` gap block to its actual type:
+
+1. Look at the **expanded** `.c` file in `build/src/relocData/` to see how the data is used (e.g., `gsSPVertex(symbol, N, 0)` → Vtx, `gsDPSetTextureImage(...)` → texture).
+2. In the **source** `.c` file in `src/relocData/`, change the type and include path:
+   - `u8 dFoo_gap_0xNN[64]` with `.data.inc.c` → `Vtx dFoo_gap_0xNN[4]` with `.vtx.inc.c`
+   - Keep the **same symbol name** to preserve relocation chain order (renaming symbols changes the chain threading and breaks matching).
+3. Run `make extract` to regenerate the `.inc.c` files in the new format, then rebuild with `RELOC_DATA=1`.
+4. Only convert blocks whose size is exactly divisible by the element size (e.g., 16 bytes per Vtx). Blocks that straddle type boundaries (e.g., 56 bytes = 3 Vtx + 8 shared bytes) should stay as `u8`.
+
+### Key types in relocData files
+
+| Type | C type | Inc format | Usage |
+|------|--------|------------|-------|
+| Vertex data | `Vtx` | `.vtx.inc.c` | Referenced by `gsSPVertex()` |
+| Display list | `Gfx` | `.dl.inc.c` | Referenced by `gsSPDisplayList()` or DObjDLLink |
+| DL link array | `DObjDLLink` | inline C init | `{ list_id, Gfx* }` pairs, terminator `{ 4, NULL }` |
+| DObj descriptor | `DObjDesc` | inline C init | Scene graph entries |
+| Palette/TLUT | `u16` | `.palette.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadTLUT()` |
+| Texture | `u8` | `.data.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadBlock()` |
+| Animation | `u32` / `u16` | `.data.inc.c` | AnimJoint / AObjEvent16 data |
+
 ## Important Notes
 
 - This is a **matching decomp** — the compiled ROM must be byte-identical to the original

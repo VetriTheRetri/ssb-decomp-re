@@ -539,18 +539,22 @@ def expand(fid):
             raw = f.read()
     summary = chain_summary(fid, raw, syms) if raw else ""
 
-    # Byte positions in the file that are actual chain-encoded pointers.
-    # Used by `_render_gfx_entries` to distinguish real chain pointers (which
-    # encode `(next_word << 16) | target_word`) from literal segmented
-    # addresses like 0x0E000000 whose byte position isn't in the chain and
-    # whose u32 value must stay literal.
+    # Byte positions in the file that are INTERNAL chain-encoded pointers.
+    # Used by `_render_gfx_entries` to distinguish real intern-chain pointers
+    # (which encode `(next_word << 16) | target_word` with target_word*4 as a
+    # byte offset in THIS file) from literal segmented addresses like
+    # 0x0E000000 whose byte position isn't in the chain. External chain
+    # positions are EXCLUDED -- their target_word is a byte offset in a
+    # DIFFERENT file, so resolving them against this file's symbols would
+    # produce spurious "matches" (e.g., 0xFFFF067E at an extern position
+    # would wrongly bind to some internal symbol whose byte happens to be at
+    # 0x067E*4 = 0x19F8). Extern args stay as literal hex; the .reloc file
+    # is the authoritative extern resolution source.
     chain_positions = set()
     if raw:
-        intern_start, extern_start = csv_chain_starts(fid)
-        for start in (intern_start, extern_start):
-            if start is None or start == 0xFFFF:
-                continue
-            for ptr, _, _ in walk_chain(raw, start):
+        intern_start, _extern_start = csv_chain_starts(fid)
+        if intern_start is not None and intern_start != 0xFFFF:
+            for ptr, _, _ in walk_chain(raw, intern_start):
                 chain_positions.add(ptr)
 
     with open(c_path) as f:

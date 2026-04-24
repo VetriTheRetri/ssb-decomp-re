@@ -7,19 +7,9 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0898 (2200 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dStagePupupuFile2_gap_0x0000[8] = {
-	#include <StagePupupuFile2/gap_0x0000.data.inc.c>
-};
-
-/* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x8[40] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0030 (was gap+0x30, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x30[16] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x30.data.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+Vtx dStagePupupuFile2_gap_0x0000[4] = {
+	#include <StagePupupuFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0040 (was gap+0x40, 64 bytes) */
@@ -58,8 +48,8 @@ u8 dStagePupupuFile2_gap_0x0000_sub_0x210[40] = {
 };
 
 /* gap sub-block @ 0x0238 (was gap+0x238, 8 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x238[8] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x238.data.inc.c>
+u16 dStagePupupuFile2_gap_0x0000_sub_0x238[4] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x238.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0240 (was gap+0x240, 32 bytes) */

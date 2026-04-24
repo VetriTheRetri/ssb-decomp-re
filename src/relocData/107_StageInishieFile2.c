@@ -130,8 +130,8 @@ u8 dStageInishieFile2_gap_0x36B8[8] = {
 };
 
 /* gap sub-block @ 0x36C0 (was gap+0x8, 40 bytes) */
-u8 dStageInishieFile2_gap_0x36B8_sub_0x8[40] = {
-	#include <StageInishieFile2/gap_0x36B8_sub_0x8.data.inc.c>
+u16 dStageInishieFile2_gap_0x36B8_sub_0x8[20] = {
+	#include <StageInishieFile2/gap_0x36B8_sub_0x8.palette.inc.c>
 };
 
 /* Palette: Lut_0x36E8 @ 0x36E8 (16 colors RGBA5551) */
@@ -230,14 +230,9 @@ Vtx dStageInishieFile2_gap_0x37A8_sub_0x258[4] = {
 	#include <StageInishieFile2/gap_0x37A8_sub_0x258.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x3A40 (was gap+0x298, 32 bytes) */
-Vtx dStageInishieFile2_gap_0x37A8_sub_0x298[2] = {
+/* Vtx: gap_0x37A8_sub_0x298 @ 0x3A40 (4 vertices) */
+Vtx dStageInishieFile2_gap_0x37A8_sub_0x298[4] = {
 	#include <StageInishieFile2/gap_0x37A8_sub_0x298.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x3A60 (was gap+0x2B8, 32 bytes) */
-Vtx dStageInishieFile2_gap_0x37A8_sub_0x2B8[2] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x2B8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x3A80 (was gap+0x2D8, 48 bytes) */

@@ -7,8 +7,6 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
-
-
 /* Sprite: VSDecal */
 
 Gfx dSC1PIntro_VSDecal_dl[] = { gsSPEndDisplayList() };

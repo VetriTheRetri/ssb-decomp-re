@@ -53,39 +53,9 @@ Vtx dMVOpeningStandoff_Vtx_0x1290_Vtx[32] = {
 	#include <MVOpeningStandoff/Vtx_0x1290.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x1490 @ 0x1490 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x1490_Vtx[1] = {
+/* Vtx: Vtx_0x1490_Vtx @ 0x1490 (20 vertices) */
+Vtx dMVOpeningStandoff_Vtx_0x1490_Vtx[20] = {
 	#include <MVOpeningStandoff/Vtx_0x1490.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x14A0 @ 0x14A0 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x14A0_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x14A0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x14B0 @ 0x14B0 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x14B0_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x14B0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x14C0 @ 0x14C0 (3 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x14C0_Vtx[3] = {
-	#include <MVOpeningStandoff/Vtx_0x14C0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x14F0 @ 0x14F0 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x14F0_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x14F0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x1500 @ 0x1500 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x1500_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x1500.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1510 to 0x15D0 (192 bytes) */
-u8 dMVOpeningStandoff_gap_0x1510[192] = {
-	#include <MVOpeningStandoff/gap_0x1510.data.inc.c>
 };
 
 /* Vtx: Vtx_0x15D0 @ 0x15D0 (28 vertices) */
@@ -233,13 +203,13 @@ u8 dMVOpeningStandoff_gap_0x61B8_sub_0x330[8] = {
 };
 
 /* gap sub-block @ 0x64F0 (was gap+0x338, 64 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x338[64] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x338.data.inc.c>
+Vtx dMVOpeningStandoff_gap_0x61B8_sub_0x338[4] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x338.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6530 (was gap+0x378, 64 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x378[64] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x378.data.inc.c>
+Vtx dMVOpeningStandoff_gap_0x61B8_sub_0x378[4] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x378.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6570 (was gap+0x3B8, 152 bytes) */

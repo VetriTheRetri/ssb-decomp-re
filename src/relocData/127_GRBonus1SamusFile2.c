@@ -7,19 +7,9 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0950 (2384 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000[8] = {
-	#include <GRBonus1SamusFile2/gap_0x0000.data.inc.c>
-};
-
-/* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x8[40] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0030 (was gap+0x30, 16 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x30[16] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x30.data.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+Vtx dGRBonus1SamusFile2_gap_0x0000[4] = {
+	#include <GRBonus1SamusFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx @ 0x0040 (4 vertices) */
@@ -27,24 +17,14 @@ Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x40[4] = {
 	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x40.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0080 (was gap+0x80, 56 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x80[56] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x80.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x80 @ 0x80 (4 vertices) */
+Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x80[4] = {
+	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x80.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x00B8 (was gap+0xB8, 8 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0xB8[8] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0xB8.data.inc.c>
-};
-
-/* gap sub-block @ 0x00C0 (was gap+0xC0, 32 bytes) */
-Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0xC0[2] = {
+/* Vtx: gap_0x0000_sub_0xC0 @ 0xC0 (4 vertices) */
+Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0xC0[4] = {
 	#include <GRBonus1SamusFile2/gap_0x0000_sub_0xC0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x00E0 (was gap+0xE0, 32 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0xE0[32] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0xE0.data.inc.c>
 };
 
 /* Vtx @ 0x0100 (4 vertices) */
@@ -128,8 +108,8 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x580[8] = {
 };
 
 /* gap sub-block @ 0x0588 (was gap+0x588, 32 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x588[32] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x588.data.inc.c>
+u16 dGRBonus1SamusFile2_gap_0x0000_sub_0x588[16] = {
+	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x588.palette.inc.c>
 };
 
 /* gap sub-block @ 0x05A8 (was gap+0x5A8, 136 bytes) */
@@ -138,8 +118,8 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8[136] = {
 };
 
 /* gap sub-block @ 0x0630 (was gap+0x630, 40 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x630[40] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x630.data.inc.c>
+u16 dGRBonus1SamusFile2_gap_0x0000_sub_0x630[20] = {
+	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x630.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0658 (was gap+0x658, 40 bytes) */
@@ -153,8 +133,8 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x680[96] = {
 };
 
 /* gap sub-block @ 0x06E0 (was gap+0x6E0, 16 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x6E0[16] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x6E0.data.inc.c>
+u16 dGRBonus1SamusFile2_gap_0x0000_sub_0x6E0[8] = {
+	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x6E0.palette.inc.c>
 };
 
 /* gap sub-block @ 0x06F0 (was gap+0x6F0, 144 bytes) */

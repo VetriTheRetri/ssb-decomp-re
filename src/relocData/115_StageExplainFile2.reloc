@@ -20,7 +20,7 @@ extern dStageExplainFile2_DL_0x0540+0x10C 0x28D0  # -> file 103 (StagePupupuImag
 intern dStageExplainFile2_DL_0x0540+0x12C dStageExplainFile2_gap_0x018C_sub_0x1C4
 extern dStageExplainFile2_DL_0x0540+0x15C 0x1A88  # -> file 103 (StagePupupuImages)
 extern dStageExplainFile2_DL_0x0540+0x184 0x1AB0  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_DL_0x0540+0x1A4 dStageExplainFile2_gap_0x018C_sub_0x224
+intern dStageExplainFile2_DL_0x0540+0x1A4 dStageExplainFile2_gap_0x018C_sub_0x1C4+0x60
 intern dStageExplainFile2_DL_0x0540+0x1AC dStageExplainFile2_gap_0x018C_sub_0x244
 intern dStageExplainFile2_Layer1DObj+0x30 dStageExplainFile2_gap_0x018C_sub_0x274
 intern dStageExplainFile2_MPGeometryData_0x0854+0x4 dStageExplainFile2_gap_0x07A4

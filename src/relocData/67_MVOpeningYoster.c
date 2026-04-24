@@ -9,23 +9,23 @@
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0210 (520 bytes) */
-u8 dMVOpeningYoster_Lut255_0x0008[520] = {
-	#include <MVOpeningYoster/Lut255_0x0008.data.inc.c>
+u16 dMVOpeningYoster_Lut255_0x0008[260] = {
+	#include <MVOpeningYoster/Lut255_0x0008.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0210 to 0x0418 (520 bytes) */
-u8 dMVOpeningYoster_Lut255_0x0210[520] = {
-	#include <MVOpeningYoster/Lut255_0x0210.data.inc.c>
+u16 dMVOpeningYoster_Lut255_0x0210[260] = {
+	#include <MVOpeningYoster/Lut255_0x0210.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0418 to 0x0620 (520 bytes) */
-u8 dMVOpeningYoster_Lut255_0x0418[520] = {
-	#include <MVOpeningYoster/Lut255_0x0418.data.inc.c>
+u16 dMVOpeningYoster_Lut255_0x0418[260] = {
+	#include <MVOpeningYoster/Lut255_0x0418.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0620 to 0x0828 (520 bytes) */
-u8 dMVOpeningYoster_Lut255_0x0620[520] = {
-	#include <MVOpeningYoster/Lut255_0x0620.data.inc.c>
+u16 dMVOpeningYoster_Lut255_0x0620[260] = {
+	#include <MVOpeningYoster/Lut255_0x0620.palette.inc.c>
 };
 
 /* Texture data @ 0x0828 (4104 bytes) */
@@ -73,49 +73,9 @@ u8 dMVOpeningYoster_Tex_0x6868[4096] = {
 	#include <MVOpeningYoster/Tex_0x6868.tex.inc.c>
 };
 
-/* Vtx: Vtx_0x7868 @ 0x7868 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x7868_Vtx[1] = {
+/* Vtx: Vtx_0x7868_Vtx @ 0x7868 (10 vertices) */
+Vtx dMVOpeningYoster_Vtx_0x7868_Vtx[10] = {
 	#include <MVOpeningYoster/Vtx_0x7868.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x7878 @ 0x7878 (2 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x7878_Vtx[2] = {
-	#include <MVOpeningYoster/Vtx_0x7878.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x7898 @ 0x7898 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x7898_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x7898.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x78A8 @ 0x78A8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x78A8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x78A8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x78B8 @ 0x78B8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x78B8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x78B8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x78C8 @ 0x78C8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x78C8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x78C8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x78D8 @ 0x78D8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x78D8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x78D8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x78E8 @ 0x78E8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x78E8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x78E8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x78F8 @ 0x78F8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x78F8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x78F8.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x7908 @ 0x7908 (4 vertices) */
@@ -664,18 +624,18 @@ u8 dMVOpeningYoster_gap_0xA4C0[8] = {
 };
 
 /* gap sub-block @ 0xA4C8 (was gap+0x8, 40 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0x8[40] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0x8.data.inc.c>
+u16 dMVOpeningYoster_gap_0xA4C0_sub_0x8[20] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0x8.palette.inc.c>
 };
 
 /* gap sub-block @ 0xA4F0 (was gap+0x30, 40 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0x30[40] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0x30.data.inc.c>
+u16 dMVOpeningYoster_gap_0xA4C0_sub_0x30[20] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0x30.palette.inc.c>
 };
 
 /* gap sub-block @ 0xA518 (was gap+0x58, 40 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0x58[40] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0x58.data.inc.c>
+u16 dMVOpeningYoster_gap_0xA4C0_sub_0x58[20] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0x58.palette.inc.c>
 };
 
 /* gap sub-block @ 0xA540 (was gap+0x80, 40 bytes) */

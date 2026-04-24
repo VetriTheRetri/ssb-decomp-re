@@ -8,8 +8,8 @@
 
 /* Raw data from file offset 0x0000 to 0x0B70 (2928 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000[64] = {
-	#include <GRBonus2NessFile2/gap_0x0000.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0000[4] = {
+	#include <GRBonus2NessFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx @ 0x0040 (4 vertices) */
@@ -48,8 +48,8 @@ Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x1C0[1] = {
 };
 
 /* gap sub-block @ 0x01D0 (was gap+0x1D0, 48 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x1D0[48] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x1D0.data.inc.c>
+u16 dGRBonus2NessFile2_gap_0x0000_sub_0x1D0[24] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x1D0.palette.inc.c>
 };
 
 /* Vtx @ 0x0200 (4 vertices) */
@@ -97,14 +97,9 @@ Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x400[4] = {
 	#include <GRBonus2NessFile2/gap_0x0000_sub_0x400.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0440 (was gap+0x440, 24 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x440[24] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x440.data.inc.c>
-};
-
-/* gap sub-block @ 0x0458 (was gap+0x458, 40 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x458[40] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x458.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x440 @ 0x440 (4 vertices) */
+Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x440[4] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x440.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0480 (was gap+0x480, 256 bytes) */
@@ -118,8 +113,8 @@ u8 dGRBonus2NessFile2_gap_0x0000_sub_0x580[8] = {
 };
 
 /* gap sub-block @ 0x0588 (was gap+0x588, 40 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x588[40] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x588.data.inc.c>
+u16 dGRBonus2NessFile2_gap_0x0000_sub_0x588[20] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x588.palette.inc.c>
 };
 
 /* gap sub-block @ 0x05B0 (was gap+0x5B0, 208 bytes) */
@@ -138,8 +133,8 @@ u8 dGRBonus2NessFile2_gap_0x0000_sub_0x780[56] = {
 };
 
 /* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x7B8[40] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x7B8.data.inc.c>
+u16 dGRBonus2NessFile2_gap_0x0000_sub_0x7B8[20] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x7B8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x07E0 (was gap+0x7E0, 160 bytes) */
@@ -168,8 +163,8 @@ u8 dGRBonus2NessFile2_gap_0x0000_sub_0xA70[72] = {
 };
 
 /* gap sub-block @ 0x0AB8 (was gap+0xAB8, 16 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0xAB8[16] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0xAB8.data.inc.c>
+u16 dGRBonus2NessFile2_gap_0x0000_sub_0xAB8[8] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0xAB8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0AC8 (was gap+0xAC8, 72 bytes) */
@@ -227,178 +222,158 @@ DObjDesc dGRBonus2NessFile2_Layer0DObj[] = {
 
 /* Raw data from file offset 0x0CD0 to 0x34A0 (10192 bytes) */
 /* gap sub-block @ 0x0CD0 (was gap+0x0, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0D50 (was gap+0x80, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x80[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x80.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x80[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x80.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0DD0 (was gap+0x100, 64 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x100[64] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x100.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x100[4] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x100.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0E10 (was gap+0x140, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x140[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x140.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x140[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x140.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0E90 (was gap+0x1C0, 64 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1C0[64] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1C0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1C0[4] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0ED0 (was gap+0x200, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x200[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x200.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x200[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x200.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0F50 (was gap+0x280, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x280[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x280.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x280[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x280.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0FD0 (was gap+0x300, 352 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x300[352] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x300.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x300[22] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x300.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1130 (was gap+0x460, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x460[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x460.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x460[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x460.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11B0 (was gap+0x4E0, 192 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x4E0[192] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x4E0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x4E0[12] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x4E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1270 (was gap+0x5A0, 320 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x5A0[320] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x5A0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x5A0[20] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x5A0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x13B0 (was gap+0x6E0, 256 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x6E0[256] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x6E0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x6E0[16] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x6E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14B0 (was gap+0x7E0, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x7E0[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x7E0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x7E0[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x7E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1530 (was gap+0x860, 256 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x860[256] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x860.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x860[16] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x860.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1630 (was gap+0x960, 192 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x960[192] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x960.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x960[12] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x960.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x16F0 (was gap+0xA20, 384 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0xA20[384] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xA20.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xA20[24] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xA20.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1870 (was gap+0xBA0, 352 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0xBA0[352] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xBA0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xBA0[22] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xBA0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x19D0 (was gap+0xD00, 128 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0xD00[128] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xD00.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xD00[8] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xD00.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1A50 (was gap+0xD80, 480 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0xD80[480] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xD80.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xD80[30] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xD80.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1C30 (was gap+0xF60, 256 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0xF60[256] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xF60.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xF60[16] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0xF60.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1D30 (was gap+0x1060, 192 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1060[192] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1060.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1060[12] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1060.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1DF0 (was gap+0x1120, 160 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1120[160] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1120.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1120[10] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1120.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1E90 (was gap+0x11C0, 160 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x11C0[160] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x11C0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x11C0[10] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x11C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1F30 (was gap+0x1260, 96 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1260[96] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1260.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1260[6] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1260.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1F90 (was gap+0x12C0, 64 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x12C0[64] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x12C0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x12C0[4] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x12C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1FD0 (was gap+0x1300, 224 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1300[224] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1300.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1300[14] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1300.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x20B0 (was gap+0x13E0, 64 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x13E0[64] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x13E0.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x13E0[4] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x13E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x20F0 (was gap+0x1420, 64 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1420[64] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1420.data.inc.c>
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1420[4] = {
+	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1420.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2130 (was gap+0x1460, 32 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460[2] = {
+/* Vtx: gap_0x0CD0_sub_0x1460 @ 0x2130 (8 vertices) */
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460[8] = {
 	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1460.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2150 (was gap+0x1480, 64 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1480[4] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1480.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2190 (was gap+0x14C0, 32 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x14C0[2] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x14C0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x21B0 (was gap+0x14E0, 16 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0[1] = {
+/* Vtx: gap_0x0CD0_sub_0x14E0 @ 0x21B0 (4 vertices) */
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0[4] = {
 	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x14E0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x21C0 (was gap+0x14F0, 48 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x14F0[3] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x14F0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x21F0 (was gap+0x1520, 64 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520[4] = {
+/* Vtx: gap_0x0CD0_sub_0x1520 @ 0x21F0 (8 vertices) */
+Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520[8] = {
 	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1520.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2230 (was gap+0x1560, 64 bytes) */
-Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1560[4] = {
-	#include <GRBonus2NessFile2/gap_0x0CD0_sub_0x1560.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2270 (was gap+0x15A0, 128 bytes) */

@@ -239,29 +239,14 @@ u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x338[8] = {
 	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x338.data.inc.c>
 };
 
-/* gap sub-block @ 0x2E60 (was gap+0x340, 32 bytes) */
-Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x340[2] = {
+/* Vtx: gap_0x2B20_sub_0x340 @ 0x2E60 (4 vertices) */
+Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x340[4] = {
 	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x340.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2E80 (was gap+0x360, 32 bytes) */
-Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x360[2] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x360.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2EA0 (was gap+0x380, 32 bytes) */
-Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x380[2] = {
+/* Vtx: gap_0x2B20_sub_0x380 @ 0x2EA0 (8 vertices) */
+Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x380[8] = {
 	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x380.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2EC0 (was gap+0x3A0, 32 bytes) */
-Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x3A0[2] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x3A0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2EE0 (was gap+0x3C0, 64 bytes) */
-Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x3C0[4] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x3C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2F20 (was gap+0x400, 128 bytes) */

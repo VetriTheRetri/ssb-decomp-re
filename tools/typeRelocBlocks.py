@@ -112,24 +112,47 @@ def collapse_blank_runs(src):
 
 # ---- Pass 1: DL splits ----
 
-def do_splits(src, raw, decls, name_prefix):
+def _find_consecutive_dls(blob):
+    """Starting at blob offset 0, peel off consecutive DLs (gsDPPipeSync
+    prefix + gsSPEndDisplayList terminator). Returns (dl_sizes, tail_start)
+    where dl_sizes is a list of byte lengths and tail_start is the first
+    byte offset after all DLs (equal to len(blob) if no tail)."""
     END = b'\xDF\x00\x00\x00\x00\x00\x00\x00'
+    dl_sizes = []
+    pos = 0
+    while pos + 8 <= len(blob):
+        if blob[pos:pos + 4] != b'\xE7\x00\x00\x00':
+            break
+        end_pos = None
+        for i in range(pos, len(blob) - 8 + 1, 8):
+            if blob[i:i + 8] == END:
+                end_pos = i + 8
+                break
+        if end_pos is None:
+            break
+        dl_sizes.append(end_pos - pos)
+        pos = end_pos
+    return dl_sizes, pos
+
+
+def do_splits(src, raw, decls, name_prefix):
+    """For each u8 block that starts with a DL, peel every consecutive DL
+    in one pass (so re-runs are idempotent -- no _post_post_post chains
+    that grow one level per invocation)."""
     splits = []
     for off, (name, ctype, N, bs) in list(decls.items()):
         if ctype != 'u8' or bs % 8 != 0 or bs < 16:
             continue
         if raw[off:off + 4] != b'\xE7\x00\x00\x00':
             continue
-        blob = raw[off:off + bs]
-        for i in range(0, bs - 8 + 1, 8):
-            if blob[i:i + 8] == END:
-                dl_size = i + 8
-                tail = bs - dl_size
-                if tail > 0:
-                    splits.append((name, off, bs, dl_size, tail))
-                break
+        dl_sizes, tail_start = _find_consecutive_dls(raw[off:off + bs])
+        if not dl_sizes:
+            continue
+        tail_size = bs - tail_start
+        splits.append((name, off, bs, dl_sizes, tail_size))
 
-    for name, off, total, dls, ts in splits:
+    total_dls = 0
+    for name, off, total, dl_sizes, ts in splits:
         pat = re.compile(
             r'(?P<comment>/\*[^*]*\*/\n)?'
             rf'u8\s+{re.escape(name)}\[(?:\d+|0x[0-9A-Fa-f]+)\]\s*=\s*\{{\n'
@@ -142,19 +165,38 @@ def do_splits(src, raw, decls, name_prefix):
             continue
         inc = m.group('inc')
         indent = m.group('indent') or '\t'
-        tail_name = name + '_post'
-        tail_inc = inc + '_post'
-        dl_cmds = dls // 8
-        short = name.removeprefix(name_prefix)
-        block = (
-            f'/* Gfx DL: {short} @ 0x{off:X} ({dl_cmds} cmds) */\n'
-            f'Gfx {name}[{dl_cmds}] = {{\n{indent}#include <{inc}.dl.inc.c>\n}};\n\n'
-            f'/* Raw tail after DL @ 0x{off + dls:X} ({ts} bytes) */\n'
-            f'u8 {tail_name}[{ts}] = {{\n{indent}#include <{tail_inc}.data.inc.c>\n}};'
-        )
-        src = src[:m.start()] + block + src[m.end():]
-    print(f'  Pass 1 (DL splits): {len(splits)}')
-    return src, len(splits)
+        pieces = []
+        cur_off = off
+        # Keep the primary (first DL) using the original symbol name so the
+        # reloc chain still points at it. Subsequent DLs and any raw tail get
+        # _post suffixes (_post, _post_post, ...); this is ugly but matches the
+        # pre-existing convention in files already partially split.
+        for idx, dls in enumerate(dl_sizes):
+            if idx == 0:
+                cname = name
+                cinc = inc
+            else:
+                suffix = '_post' * idx
+                cname = name + suffix
+                cinc = inc + suffix
+            short = cname.removeprefix(name_prefix)
+            pieces.append(
+                f'/* Gfx DL: {short} @ 0x{cur_off:X} ({dls // 8} cmds) */\n'
+                f'Gfx {cname}[{dls // 8}] = {{\n{indent}#include <{cinc}.dl.inc.c>\n}};'
+            )
+            cur_off += dls
+        if ts > 0:
+            suffix = '_post' * len(dl_sizes)
+            tname = name + suffix
+            tinc = inc + suffix
+            pieces.append(
+                f'/* Raw tail after {len(dl_sizes)} DL(s) @ 0x{cur_off:X} ({ts} bytes) */\n'
+                f'u8 {tname}[{ts}] = {{\n{indent}#include <{tinc}.data.inc.c>\n}};'
+            )
+        total_dls += len(dl_sizes)
+        src = src[:m.start()] + '\n\n'.join(pieces) + src[m.end():]
+    print(f'  Pass 1 (DL splits): {total_dls} DLs peeled from {len(splits)} blocks')
+    return src, total_dls
 
 
 # ---- Pass 2: Vtx retypes + merges (with strict-overlap union) ----

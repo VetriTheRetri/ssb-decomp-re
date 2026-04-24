@@ -13,49 +13,9 @@ u8 dMVOpeningNewcomers1_Tex_0x0008[23328] = {
 	#include <MVOpeningNewcomers1/Tex_0x0008.tex.inc.c>
 };
 
-/* Vtx: Vtx_0x5B28 @ 0x5B28 (1 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5B28_Vtx[1] = {
+/* Vtx: Vtx_0x5B28_Vtx @ 0x5B28 (16 vertices) */
+Vtx dMVOpeningNewcomers1_Vtx_0x5B28_Vtx[16] = {
 	#include <MVOpeningNewcomers1/Vtx_0x5B28.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x5B38 @ 0x5B38 (1 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5B38_Vtx[1] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5B38.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x5B48 to 0x5B58 (16 bytes) */
-u8 dMVOpeningNewcomers1_gap_0x5B48[16] = {
-	#include <MVOpeningNewcomers1/gap_0x5B48.data.inc.c>
-};
-
-/* Vtx: Vtx_0x5B58 @ 0x5B58 (1 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5B58_Vtx[1] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5B58.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x5B68 @ 0x5B68 (2 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5B68_Vtx[2] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5B68.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x5B88 @ 0x5B88 (2 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5B88_Vtx[2] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5B88.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x5BA8 @ 0x5BA8 (2 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5BA8_Vtx[2] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5BA8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x5BC8 @ 0x5BC8 (2 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5BC8_Vtx[2] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5BC8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x5BE8 @ 0x5BE8 (4 vertices) */
-Vtx dMVOpeningNewcomers1_Vtx_0x5BE8_Vtx[4] = {
-	#include <MVOpeningNewcomers1/Vtx_0x5BE8.vtx.inc.c>
 };
 
 /* DisplayList: PurinShow @ 0x5C28 (520 bytes, 65 cmds) */

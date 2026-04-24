@@ -348,19 +348,9 @@ Vtx dStageJungleFile2_Vtx_0x7A00_Vtx[4] = {
 	#include <StageJungleFile2/Vtx_0x7A00.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x7A40 @ 0x7A40 (3 vertices) */
-Vtx dStageJungleFile2_Vtx_0x7A40_Vtx[3] = {
+/* Vtx: Vtx_0x7A40_Vtx @ 0x7A40 (7 vertices) */
+Vtx dStageJungleFile2_Vtx_0x7A40_Vtx[7] = {
 	#include <StageJungleFile2/Vtx_0x7A40.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x7A70 @ 0x7A70 (1 vertices) */
-Vtx dStageJungleFile2_Vtx_0x7A70_Vtx[1] = {
-	#include <StageJungleFile2/Vtx_0x7A70.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x7A80 to 0x7AB0 (48 bytes) */
-u8 dStageJungleFile2_gap_0x7A80[48] = {
-	#include <StageJungleFile2/gap_0x7A80.data.inc.c>
 };
 
 /* Vtx: Vtx_0x7AB0 @ 0x7AB0 (6 vertices) */
@@ -423,14 +413,9 @@ Vtx dStageJungleFile2_Vtx_0x7D90_Vtx[4] = {
 	#include <StageJungleFile2/Vtx_0x7D90.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x7DD0 @ 0x7DD0 (2 vertices) */
-Vtx dStageJungleFile2_Vtx_0x7DD0_Vtx[2] = {
+/* Vtx: Vtx_0x7DD0_Vtx @ 0x7DD0 (4 vertices) */
+Vtx dStageJungleFile2_Vtx_0x7DD0_Vtx[4] = {
 	#include <StageJungleFile2/Vtx_0x7DD0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x7DF0 to 0x7E10 (32 bytes) */
-u8 dStageJungleFile2_gap_0x7DF0[32] = {
-	#include <StageJungleFile2/gap_0x7DF0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x7E10 @ 0x7E10 (4 vertices) */
@@ -552,14 +537,9 @@ Vtx dStageJungleFile2_gap_0x8B9C_sub_0x2C4[8] = {
 	#include <StageJungleFile2/gap_0x8B9C_sub_0x2C4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8EE0 (was gap+0x344, 176 bytes) */
-Vtx dStageJungleFile2_gap_0x8B9C_sub_0x344[11] = {
+/* Vtx: gap_0x8B9C_sub_0x344 @ 0x8EE0 (23 vertices) */
+Vtx dStageJungleFile2_gap_0x8B9C_sub_0x344[23] = {
 	#include <StageJungleFile2/gap_0x8B9C_sub_0x344.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x8F90 (was gap+0x3F4, 192 bytes) */
-Vtx dStageJungleFile2_gap_0x8B9C_sub_0x3F4[12] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0x3F4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9050 (was gap+0x4B4, 128 bytes) */
@@ -567,19 +547,9 @@ Vtx dStageJungleFile2_gap_0x8B9C_sub_0x4B4[8] = {
 	#include <StageJungleFile2/gap_0x8B9C_sub_0x4B4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x90D0 (was gap+0x534, 48 bytes) */
-Vtx dStageJungleFile2_gap_0x8B9C_sub_0x534[3] = {
+/* Vtx: gap_0x8B9C_sub_0x534 @ 0x90D0 (16 vertices) */
+Vtx dStageJungleFile2_gap_0x8B9C_sub_0x534[16] = {
 	#include <StageJungleFile2/gap_0x8B9C_sub_0x534.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9100 (was gap+0x564, 112 bytes) */
-Vtx dStageJungleFile2_gap_0x8B9C_sub_0x564[7] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0x564.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9170 (was gap+0x5D4, 96 bytes) */
-Vtx dStageJungleFile2_gap_0x8B9C_sub_0x5D4[6] = {
-	#include <StageJungleFile2/gap_0x8B9C_sub_0x5D4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x91D0 (was gap+0x634, 80 bytes) */
@@ -803,8 +773,8 @@ u8 dStageJungleFile2_gap_0xD1B4[564] = {
 };
 
 /* gap sub-block @ 0xD3E8 (was gap+0x234, 40 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x234[40] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x234.data.inc.c>
+u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[20] = {
+	#include <StageJungleFile2/gap_0xD1B4_sub_0x234.palette.inc.c>
 };
 
 /* gap sub-block @ 0xD410 (was gap+0x25C, 1544 bytes) */
@@ -848,13 +818,18 @@ u8 dStageJungleFile2_gap_0xD1B4_sub_0x2114[8] = {
 };
 
 /* gap sub-block @ 0xF2D0 (was gap+0x211C, 64 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x211C[64] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x211C.data.inc.c>
+Vtx dStageJungleFile2_gap_0xD1B4_sub_0x211C[4] = {
+	#include <StageJungleFile2/gap_0xD1B4_sub_0x211C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xF310 (was gap+0x215C, 392 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x215C[392] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C.data.inc.c>
+/* Gfx DL: gap_0xD1B4_sub_0x215C @ 0xF310 (30 cmds) */
+Gfx dStageJungleFile2_gap_0xD1B4_sub_0x215C[30] = {
+	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0xF400 (152 bytes) */
+u8 dStageJungleFile2_gap_0xD1B4_sub_0x215C_post[152] = {
+	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xF498 (was gap+0x22E4, 128 bytes) */

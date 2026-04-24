@@ -50,14 +50,9 @@ Vtx dStageExplainFile2_gap_0x018C_sub_0x144[8] = {
 	#include <StageExplainFile2/gap_0x018C_sub_0x144.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0350 (was gap+0x1C4, 96 bytes) */
-Vtx dStageExplainFile2_gap_0x018C_sub_0x1C4[6] = {
+/* Vtx: gap_0x018C_sub_0x1C4 @ 0x350 (8 vertices) */
+Vtx dStageExplainFile2_gap_0x018C_sub_0x1C4[8] = {
 	#include <StageExplainFile2/gap_0x018C_sub_0x1C4.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x03B0 (was gap+0x224, 32 bytes) */
-Vtx dStageExplainFile2_gap_0x018C_sub_0x224[2] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x224.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03D0 (was gap+0x244, 48 bytes) */

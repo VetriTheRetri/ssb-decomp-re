@@ -148,9 +148,9 @@ Gfx dNYoshiModel_Joint_0x1A70_DisplayList[36] = {
 	#include <NYoshiModel/Joint_0x1A70.dl.inc.c>
 };
 
-/* Raw data from file offset 0x1B90 to 0x1CA0 (272 bytes) */
-u8 dNYoshiModel_Joint_0x1A70_post[272] = {
-	#include <NYoshiModel/Joint_0x1A70_post.data.inc.c>
+/* Gfx DL: Joint_0x1A70_post @ 0x1B90 (34 cmds) */
+Gfx dNYoshiModel_Joint_0x1A70_post[34] = {
+	#include <NYoshiModel/Joint_0x1A70_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x1CA0 @ 0x1CA0 (424 bytes, 53 cmds) */
@@ -193,9 +193,9 @@ Gfx dNYoshiModel_Joint_0x2418_DisplayList[31] = {
 	#include <NYoshiModel/Joint_0x2418.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2510 to 0x2618 (264 bytes) */
-u8 dNYoshiModel_Joint_0x2418_post[264] = {
-	#include <NYoshiModel/Joint_0x2418_post.data.inc.c>
+/* Gfx DL: Joint_0x2418_post @ 0x2510 (33 cmds) */
+Gfx dNYoshiModel_Joint_0x2418_post[33] = {
+	#include <NYoshiModel/Joint_0x2418_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x2618 @ 0x2618 (240 bytes, 30 cmds) */

@@ -28,33 +28,33 @@ u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[44] = {
 };
 
 /* gap sub-block @ 0x01A0 (was gap+0x1A0, 512 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x1A0[512] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x1A0.data.inc.c>
+Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x1A0[32] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x1A0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03A0 (was gap+0x3A0, 16 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x3A0[16] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3A0.data.inc.c>
+Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x3A0[1] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3A0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03B0 (was gap+0x3B0, 16 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x3B0[16] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3B0.data.inc.c>
+Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x3B0[1] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3B0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03C0 (was gap+0x3C0, 352 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x3C0[352] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3C0.data.inc.c>
+Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x3C0[22] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0520 (was gap+0x520, 48 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x520[48] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x520.data.inc.c>
+Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x520[3] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x520.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0550 (was gap+0x550, 80 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x550[80] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x550.data.inc.c>
+Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x550[5] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x550.vtx.inc.c>
 };
 
 /* DisplayList: Overlay @ 0x5A0 (360 bytes) */

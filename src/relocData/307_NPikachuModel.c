@@ -124,9 +124,9 @@ Gfx dNPikachuModel_Joint_0x16A0_DisplayList[39] = {
 	#include <NPikachuModel/Joint_0x16A0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x17D8 to 0x18F0 (280 bytes) */
-u8 dNPikachuModel_Joint_0x16A0_post[280] = {
-	#include <NPikachuModel/Joint_0x16A0_post.data.inc.c>
+/* Gfx DL: Joint_0x16A0_post @ 0x17D8 (35 cmds) */
+Gfx dNPikachuModel_Joint_0x16A0_post[35] = {
+	#include <NPikachuModel/Joint_0x16A0_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x18F0 @ 0x18F0 (256 bytes, 32 cmds) */

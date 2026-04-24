@@ -62,14 +62,9 @@ Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x280[4] = {
 	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x280.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x02C0 (was gap+0x2C0, 56 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x2C0[56] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x2C0.data.inc.c>
-};
-
-/* gap sub-block @ 0x02F8 (was gap+0x2F8, 8 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x2F8[8] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x2F8.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x2C0 @ 0x2C0 (4 vertices) */
+Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x2C0[4] = {
+	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x2C0.vtx.inc.c>
 };
 
 /* Vtx @ 0x0300 (4 vertices) */
@@ -82,34 +77,19 @@ Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x340[4] = {
 	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x340.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0380 (was gap+0x380, 40 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x380[40] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x380.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x380 @ 0x380 (4 vertices) */
+Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x380[4] = {
+	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x380.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x03A8 (was gap+0x3A8, 24 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x3A8[24] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x3A8.data.inc.c>
-};
-
-/* Vtx @ 0x03C0 (3 vertices) */
-Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x3C0[3] = {
+/* Vtx: gap_0x0000_sub_0x3C0 @ 0x3C0 (4 vertices) */
+Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x3C0[4] = {
 	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x3C0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x03F0 (was gap+0x3F0, 16 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x3F0[16] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x3F0.data.inc.c>
-};
-
-/* gap sub-block @ 0x0400 (was gap+0x400, 24 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x400[24] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x400.data.inc.c>
-};
-
-/* gap sub-block @ 0x0418 (was gap+0x418, 40 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x418[40] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x418.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x400 @ 0x400 (4 vertices) */
+Vtx dGRBonus1DonkeyFile2_gap_0x0000_sub_0x400[4] = {
+	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x400.vtx.inc.c>
 };
 
 /* Vtx @ 0x0440 (4 vertices) */
@@ -123,8 +103,8 @@ u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x480[104] = {
 };
 
 /* gap sub-block @ 0x04E8 (was gap+0x4E8, 40 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x4E8[40] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x4E8.data.inc.c>
+u16 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x4E8[20] = {
+	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x4E8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0510 (was gap+0x510, 112 bytes) */
@@ -138,8 +118,8 @@ u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x580[24] = {
 };
 
 /* gap sub-block @ 0x0598 (was gap+0x598, 16 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x598[16] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x598.data.inc.c>
+u16 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x598[8] = {
+	#include <GRBonus1DonkeyFile2/gap_0x0000_sub_0x598.palette.inc.c>
 };
 
 /* gap sub-block @ 0x05A8 (was gap+0x5A8, 216 bytes) */
@@ -186,73 +166,63 @@ u8 dGRBonus1DonkeyFile2_gap_0x091C[4] = {
 };
 
 /* gap sub-block @ 0x0920 (was gap+0x4, 512 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x4[512] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x4.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x4[32] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0B20 (was gap+0x204, 128 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x204[128] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x204.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x204[8] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x204.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0BA0 (was gap+0x284, 48 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x284[48] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x284.data.inc.c>
-};
-
-/* gap sub-block @ 0x0BD0 (was gap+0x2B4, 48 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x2B4[48] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x2B4.data.inc.c>
-};
-
-/* gap sub-block @ 0x0C00 (was gap+0x2E4, 224 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x2E4[224] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x2E4.data.inc.c>
+/* Vtx: gap_0x091C_sub_0x284 @ 0xBA0 (20 vertices) */
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x284[20] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x284.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0CE0 (was gap+0x3C4, 192 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x3C4[192] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x3C4.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x3C4[12] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x3C4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0DA0 (was gap+0x484, 512 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x484[512] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x484.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x484[32] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x484.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0FA0 (was gap+0x684, 272 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x684[272] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x684.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x684[17] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x684.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x10B0 (was gap+0x794, 192 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x794[192] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x794.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x794[12] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x794.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1170 (was gap+0x854, 512 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x854[512] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x854.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x854[32] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0x854.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1370 (was gap+0xA54, 512 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xA54[512] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xA54.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0xA54[32] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xA54.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1570 (was gap+0xC54, 192 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xC54[192] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xC54.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0xC54[12] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xC54.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1630 (was gap+0xD14, 192 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xD14[192] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xD14.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0xD14[12] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xD14.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x16F0 (was gap+0xDD4, 320 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xDD4[320] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xDD4.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0xDD4[20] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xDD4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1830 (was gap+0xF14, 320 bytes) */

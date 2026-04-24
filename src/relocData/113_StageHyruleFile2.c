@@ -417,14 +417,9 @@ Vtx dStageHyruleFile2_gap_0x4664_sub_0x3AC[4] = {
 	#include <StageHyruleFile2/gap_0x4664_sub_0x3AC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x4A50 (was gap+0x3EC, 32 bytes) */
-Vtx dStageHyruleFile2_gap_0x4664_sub_0x3EC[2] = {
+/* Vtx: gap_0x4664_sub_0x3EC @ 0x4A50 (3 vertices) */
+Vtx dStageHyruleFile2_gap_0x4664_sub_0x3EC[3] = {
 	#include <StageHyruleFile2/gap_0x4664_sub_0x3EC.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x4A70 (was gap+0x40C, 16 bytes) */
-Vtx dStageHyruleFile2_gap_0x4664_sub_0x40C[1] = {
-	#include <StageHyruleFile2/gap_0x4664_sub_0x40C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x4A80 (was gap+0x41C, 64 bytes) */

@@ -70,14 +70,9 @@ Vtx dYoshiModel_Vtx_0x1000_Vtx[2] = {
 	#include <YoshiModel/Vtx_0x1000.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x1020 @ 0x1020 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x1020_Vtx[1] = {
+/* Vtx: Vtx_0x1020_Vtx @ 0x1020 (3 vertices) */
+Vtx dYoshiModel_Vtx_0x1020_Vtx[3] = {
 	#include <YoshiModel/Vtx_0x1020.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x1030 @ 0x1030 (2 vertices) */
-Vtx dYoshiModel_Vtx_0x1030_Vtx[2] = {
-	#include <YoshiModel/Vtx_0x1030.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1050 @ 0x1050 (9 vertices) */
@@ -225,9 +220,9 @@ Gfx dYoshiModel_Joint_0x2050_DisplayList[63] = {
 	#include <YoshiModel/Joint_0x2050.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2248 to 0x2398 (336 bytes) */
-u8 dYoshiModel_Joint_0x2050_post[336] = {
-	#include <YoshiModel/Joint_0x2050_post.data.inc.c>
+/* Gfx DL: Joint_0x2050_post @ 0x2248 (42 cmds) */
+Gfx dYoshiModel_Joint_0x2050_post[42] = {
+	#include <YoshiModel/Joint_0x2050_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x2398 @ 0x2398 (896 bytes, 112 cmds) */
@@ -275,9 +270,9 @@ Gfx dYoshiModel_Joint_0x2BA8_DisplayList[21] = {
 	#include <YoshiModel/Joint_0x2BA8.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2C50 to 0x2D28 (216 bytes) */
-u8 dYoshiModel_Joint_0x2BA8_post[216] = {
-	#include <YoshiModel/Joint_0x2BA8_post.data.inc.c>
+/* Gfx DL: Joint_0x2BA8_post @ 0x2C50 (27 cmds) */
+Gfx dYoshiModel_Joint_0x2BA8_post[27] = {
+	#include <YoshiModel/Joint_0x2BA8_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x2D28 @ 0x2D28 (168 bytes, 21 cmds) */
@@ -841,14 +836,9 @@ Vtx dYoshiModel_Vtx_0x4E78_Vtx[1] = {
 	#include <YoshiModel/Vtx_0x4E78.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x4E88 @ 0x4E88 (2 vertices) */
-Vtx dYoshiModel_Vtx_0x4E88_Vtx[2] = {
+/* Vtx: Vtx_0x4E88_Vtx @ 0x4E88 (6 vertices) */
+Vtx dYoshiModel_Vtx_0x4E88_Vtx[6] = {
 	#include <YoshiModel/Vtx_0x4E88.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4EA8 @ 0x4EA8 (4 vertices) */
-Vtx dYoshiModel_Vtx_0x4EA8_Vtx[4] = {
-	#include <YoshiModel/Vtx_0x4EA8.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x4EE8 @ 0x4EE8 (3 vertices) */
@@ -981,9 +971,9 @@ Gfx dYoshiModel_Joint_0x5A88_DisplayList[40] = {
 	#include <YoshiModel/Joint_0x5A88.dl.inc.c>
 };
 
-/* Raw data from file offset 0x5BC8 to 0x5CF8 (304 bytes) */
-u8 dYoshiModel_Joint_0x5A88_post[304] = {
-	#include <YoshiModel/Joint_0x5A88_post.data.inc.c>
+/* Gfx DL: Joint_0x5A88_post @ 0x5BC8 (38 cmds) */
+Gfx dYoshiModel_Joint_0x5A88_post[38] = {
+	#include <YoshiModel/Joint_0x5A88_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x5CF8 @ 0x5CF8 (744 bytes, 93 cmds) */
@@ -1026,9 +1016,9 @@ Gfx dYoshiModel_Joint_0x62A0_DisplayList[13] = {
 	#include <YoshiModel/Joint_0x62A0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x6308 to 0x63C0 (184 bytes) */
-u8 dYoshiModel_Joint_0x62A0_post[184] = {
-	#include <YoshiModel/Joint_0x62A0_post.data.inc.c>
+/* Gfx DL: Joint_0x62A0_post @ 0x6308 (23 cmds) */
+Gfx dYoshiModel_Joint_0x62A0_post[23] = {
+	#include <YoshiModel/Joint_0x62A0_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x63C0 @ 0x63C0 (160 bytes, 20 cmds) */

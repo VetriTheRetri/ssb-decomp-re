@@ -31,8 +31,8 @@ u8 dMVCommon_gap_0x0050[8] = {
 };
 
 /* gap sub-block @ 0x0058 (was gap+0x8, 40 bytes) */
-u8 dMVCommon_gap_0x0050_sub_0x8[40] = {
-	#include <MVCommon/gap_0x0050_sub_0x8.data.inc.c>
+u16 dMVCommon_gap_0x0050_sub_0x8[20] = {
+	#include <MVCommon/gap_0x0050_sub_0x8.palette.inc.c>
 };
 
 /* Palette: Lut_0x0080 @ 0x80 (16 colors RGBA5551) */
@@ -99,13 +99,13 @@ u16 dMVCommon_Lut_0x01C0_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x01E8 to 0x03B8 (464 bytes) */
-u8 dMVCommon_Lut227_0x01E8[464] = {
-	#include <MVCommon/Lut227_0x01E8.data.inc.c>
+u16 dMVCommon_Lut227_0x01E8[232] = {
+	#include <MVCommon/Lut227_0x01E8.palette.inc.c>
 };
 
 /* Raw data from file offset 0x03B8 to 0x0598 (480 bytes) */
-u8 dMVCommon_Lut213_0x03B8[480] = {
-	#include <MVCommon/Lut213_0x03B8.data.inc.c>
+u16 dMVCommon_Lut213_0x03B8[240] = {
+	#include <MVCommon/Lut213_0x03B8.palette.inc.c>
 };
 
 /* Palette: Lut_0x0598 @ 0x598 (16 colors RGBA5551) */
@@ -380,14 +380,9 @@ Vtx dMVCommon_gap_0x4370_sub_0x7D8[20] = {
 	#include <MVCommon/gap_0x4370_sub_0x7D8.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x4C88 (was gap+0x918, 112 bytes) */
-Vtx dMVCommon_gap_0x4370_sub_0x918[7] = {
+/* Vtx: gap_0x4370_sub_0x918 @ 0x4C88 (12 vertices) */
+Vtx dMVCommon_gap_0x4370_sub_0x918[12] = {
 	#include <MVCommon/gap_0x4370_sub_0x918.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x4CF8 (was gap+0x988, 80 bytes) */
-Vtx dMVCommon_gap_0x4370_sub_0x988[5] = {
-	#include <MVCommon/gap_0x4370_sub_0x988.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x4D48 (was gap+0x9D8, 176 bytes) */
@@ -441,13 +436,13 @@ Vtx dMVCommon_gap_0x4370_sub_0xD08[8] = {
 };
 
 /* gap sub-block @ 0x50F8 (was gap+0xD88, 64 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0xD88[64] = {
-	#include <MVCommon/gap_0x4370_sub_0xD88.data.inc.c>
+Vtx dMVCommon_gap_0x4370_sub_0xD88[4] = {
+	#include <MVCommon/gap_0x4370_sub_0xD88.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5138 (was gap+0xDC8, 64 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0xDC8[64] = {
-	#include <MVCommon/gap_0x4370_sub_0xDC8.data.inc.c>
+Vtx dMVCommon_gap_0x4370_sub_0xDC8[4] = {
+	#include <MVCommon/gap_0x4370_sub_0xDC8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5178 (was gap+0xE08, 64 bytes) */
@@ -486,8 +481,8 @@ Vtx dMVCommon_gap_0x4370_sub_0x10A8[4] = {
 };
 
 /* gap sub-block @ 0x5458 (was gap+0x10E8, 128 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x10E8[128] = {
-	#include <MVCommon/gap_0x4370_sub_0x10E8.data.inc.c>
+Vtx dMVCommon_gap_0x4370_sub_0x10E8[8] = {
+	#include <MVCommon/gap_0x4370_sub_0x10E8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x54D8 (was gap+0x1168, 64 bytes) */
@@ -511,18 +506,18 @@ Vtx dMVCommon_gap_0x4370_sub_0x1228[4] = {
 };
 
 /* gap sub-block @ 0x55D8 (was gap+0x1268, 192 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x1268[192] = {
-	#include <MVCommon/gap_0x4370_sub_0x1268.data.inc.c>
+Vtx dMVCommon_gap_0x4370_sub_0x1268[12] = {
+	#include <MVCommon/gap_0x4370_sub_0x1268.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5698 (was gap+0x1328, 128 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x1328[128] = {
-	#include <MVCommon/gap_0x4370_sub_0x1328.data.inc.c>
+Vtx dMVCommon_gap_0x4370_sub_0x1328[8] = {
+	#include <MVCommon/gap_0x4370_sub_0x1328.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5718 (was gap+0x13A8, 272 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x13A8[272] = {
-	#include <MVCommon/gap_0x4370_sub_0x13A8.data.inc.c>
+Vtx dMVCommon_gap_0x4370_sub_0x13A8[17] = {
+	#include <MVCommon/gap_0x4370_sub_0x13A8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5828 (was gap+0x14B8, 64 bytes) */
@@ -1039,8 +1034,8 @@ u8 dMVCommon_gap_0x8E7C[12] = {
 };
 
 /* gap sub-block @ 0x8E88 (was gap+0xC, 40 bytes) */
-u8 dMVCommon_gap_0x8E7C_sub_0xC[40] = {
-	#include <MVCommon/gap_0x8E7C_sub_0xC.data.inc.c>
+u16 dMVCommon_gap_0x8E7C_sub_0xC[20] = {
+	#include <MVCommon/gap_0x8E7C_sub_0xC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x8EB0 (was gap+0x34, 2048 bytes) */
@@ -1049,8 +1044,8 @@ u8 dMVCommon_gap_0x8E7C_sub_0x34[2048] = {
 };
 
 /* gap sub-block @ 0x96B0 (was gap+0x834, 256 bytes) */
-u8 dMVCommon_gap_0x8E7C_sub_0x834[256] = {
-	#include <MVCommon/gap_0x8E7C_sub_0x834.data.inc.c>
+Vtx dMVCommon_gap_0x8E7C_sub_0x834[16] = {
+	#include <MVCommon/gap_0x8E7C_sub_0x834.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x97B0 (was gap+0x934, 328 bytes) */
@@ -1063,9 +1058,14 @@ Gfx dMVCommon_RoomHaze_DisplayList[359] = {
 	#include <MVCommon/RoomHaze.dl.inc.c>
 };
 
-/* Raw data from file offset 0xA430 to 0xA6F8 (712 bytes) */
-u8 dMVCommon_RoomHaze_post[712] = {
-	#include <MVCommon/RoomHaze_post.data.inc.c>
+/* Gfx DL: RoomHaze_post @ 0xA430 (55 cmds) */
+Gfx dMVCommon_RoomHaze_post[55] = {
+	#include <MVCommon/RoomHaze_post.dl.inc.c>
+};
+
+/* Gfx DL: RoomHaze_post_post @ 0xA5E8 (34 cmds) */
+Gfx dMVCommon_RoomHaze_post_post[34] = {
+	#include <MVCommon/RoomHaze_post_post.dl.inc.c>
 };
 
 /* DObjDesc: RoomBooksDObjDesc @ 0xA6F8 (4 entries) */
@@ -1173,69 +1173,9 @@ Vtx dMVCommon_gap_0x1BCD8_sub_0x10[4] = {
 	#include <MVCommon/gap_0x1BCD8_sub_0x10.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x1BD28 (was gap+0x50, 16 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x50[1] = {
+/* Vtx: gap_0x1BCD8_sub_0x50 @ 0x1BD28 (26 vertices) */
+Vtx dMVCommon_gap_0x1BCD8_sub_0x50[26] = {
 	#include <MVCommon/gap_0x1BCD8_sub_0x50.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BD38 (was gap+0x60, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x60[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x60.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BD58 (was gap+0x80, 16 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x80[1] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x80.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BD68 (was gap+0x90, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x90[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x90.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BD88 (was gap+0xB0, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0xB0[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0xB0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BDA8 (was gap+0xD0, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0xD0[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0xD0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BDC8 (was gap+0xF0, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0xF0[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0xF0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BDE8 (was gap+0x110, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x110[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x110.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BE08 (was gap+0x130, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x130[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x130.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BE28 (was gap+0x150, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x150[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x150.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BE48 (was gap+0x170, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x170[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x170.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BE68 (was gap+0x190, 32 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x190[2] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x190.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x1BE88 (was gap+0x1B0, 64 bytes) */
-Vtx dMVCommon_gap_0x1BCD8_sub_0x1B0[4] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x1B0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1BEC8 (was gap+0x1F0, 64 bytes) */
@@ -1351,13 +1291,13 @@ u8 dMVCommon_gap_0x1DD18_sub_0x10[8] = {
 };
 
 /* gap sub-block @ 0x1DD30 (was gap+0x18, 64 bytes) */
-u8 dMVCommon_gap_0x1DD18_sub_0x18[64] = {
-	#include <MVCommon/gap_0x1DD18_sub_0x18.data.inc.c>
+Vtx dMVCommon_gap_0x1DD18_sub_0x18[4] = {
+	#include <MVCommon/gap_0x1DD18_sub_0x18.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1DD70 (was gap+0x58, 64 bytes) */
-u8 dMVCommon_gap_0x1DD18_sub_0x58[64] = {
-	#include <MVCommon/gap_0x1DD18_sub_0x58.data.inc.c>
+Vtx dMVCommon_gap_0x1DD18_sub_0x58[4] = {
+	#include <MVCommon/gap_0x1DD18_sub_0x58.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1DDB0 (was gap+0x98, 176 bytes) */
@@ -1696,19 +1636,9 @@ Vtx dMVCommon_gap_0x204F8_sub_0xFD0[8] = {
 	#include <MVCommon/gap_0x204F8_sub_0xFD0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x21548 (was gap+0x1050, 32 bytes) */
-Vtx dMVCommon_gap_0x204F8_sub_0x1050[2] = {
+/* Vtx: gap_0x204F8_sub_0x1050 @ 0x21548 (8 vertices) */
+Vtx dMVCommon_gap_0x204F8_sub_0x1050[8] = {
 	#include <MVCommon/gap_0x204F8_sub_0x1050.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x21568 (was gap+0x1070, 48 bytes) */
-Vtx dMVCommon_gap_0x204F8_sub_0x1070[3] = {
-	#include <MVCommon/gap_0x204F8_sub_0x1070.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x21598 (was gap+0x10A0, 48 bytes) */
-Vtx dMVCommon_gap_0x204F8_sub_0x10A0[3] = {
-	#include <MVCommon/gap_0x204F8_sub_0x10A0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x215C8 (was gap+0x10D0, 32 bytes) */
@@ -1890,13 +1820,13 @@ u8 dMVCommon_gap_0x22D08_sub_0x80[16] = {
 };
 
 /* gap sub-block @ 0x22D98 (was gap+0x90, 64 bytes) */
-u8 dMVCommon_gap_0x22D08_sub_0x90[64] = {
-	#include <MVCommon/gap_0x22D08_sub_0x90.data.inc.c>
+Vtx dMVCommon_gap_0x22D08_sub_0x90[4] = {
+	#include <MVCommon/gap_0x22D08_sub_0x90.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x22DD8 (was gap+0xD0, 64 bytes) */
-u8 dMVCommon_gap_0x22D08_sub_0xD0[64] = {
-	#include <MVCommon/gap_0x22D08_sub_0xD0.data.inc.c>
+Vtx dMVCommon_gap_0x22D08_sub_0xD0[4] = {
+	#include <MVCommon/gap_0x22D08_sub_0xD0.vtx.inc.c>
 };
 
 /* DisplayList: RoomSpotlightDisplayList @ 0x22E18 (232 bytes, 29 cmds) */

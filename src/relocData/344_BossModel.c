@@ -92,82 +92,14 @@ Vtx dBossModel_Vtx_0x0A00_Vtx[13] = {
 	#include <BossModel/Vtx_0x0A00.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0AD0 @ 0xAD0 (2 vertices) */
-Vtx dBossModel_Vtx_0x0AD0_Vtx[2] = {
+/* Vtx: Vtx_0x0AD0_Vtx @ 0xAD0 (21 vertices) */
+Vtx dBossModel_Vtx_0x0AD0_Vtx[21] = {
 	#include <BossModel/Vtx_0x0AD0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0AF0 @ 0xAF0 (1 vertices) */
-Vtx dBossModel_Vtx_0x0AF0_Vtx[1] = {
-	#include <BossModel/Vtx_0x0AF0.vtx.inc.c>
-};
-
 /* Raw data from file offset 0x0B00 to 0x0B20 (32 bytes) */
-/* gap sub-block @ 0x0B00 (was gap+0x0, 16 bytes) */
-u8 dBossModel_gap_0x0B00[16] = {
-	#include <BossModel/gap_0x0B00.data.inc.c>
-};
-
-/* gap sub-block @ 0x0B10 (was gap+0x10, 16 bytes) */
-u8 dBossModel_gap_0x0B00_sub_0x10[16] = {
-	#include <BossModel/gap_0x0B00_sub_0x10.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B20 @ 0xB20 (1 vertices) */
-Vtx dBossModel_Vtx_0x0B20_Vtx[1] = {
-	#include <BossModel/Vtx_0x0B20.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B30 to 0x0B50 (32 bytes) */
-u8 dBossModel_gap_0x0B30[32] = {
-	#include <BossModel/gap_0x0B30.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B50 @ 0xB50 (1 vertices) */
-Vtx dBossModel_Vtx_0x0B50_Vtx[1] = {
-	#include <BossModel/Vtx_0x0B50.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B60 to 0x0B70 (16 bytes) */
-u8 dBossModel_gap_0x0B60[16] = {
-	#include <BossModel/gap_0x0B60.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B70 @ 0xB70 (1 vertices) */
-Vtx dBossModel_Vtx_0x0B70_Vtx[1] = {
-	#include <BossModel/Vtx_0x0B70.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B80 to 0x0B90 (16 bytes) */
-u8 dBossModel_gap_0x0B80[16] = {
-	#include <BossModel/gap_0x0B80.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B90 @ 0xB90 (1 vertices) */
-Vtx dBossModel_Vtx_0x0B90_Vtx[1] = {
-	#include <BossModel/Vtx_0x0B90.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0BA0 to 0x0BC0 (32 bytes) */
-u8 dBossModel_gap_0x0BA0[32] = {
-	#include <BossModel/gap_0x0BA0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0BC0 @ 0xBC0 (1 vertices) */
-Vtx dBossModel_Vtx_0x0BC0_Vtx[1] = {
-	#include <BossModel/Vtx_0x0BC0.vtx.inc.c>
-};
 
 /* Raw data from file offset 0x0BD0 to 0x0C20 (80 bytes) */
-/* gap sub-block @ 0x0BD0 (was gap+0x0, 64 bytes) */
-u8 dBossModel_gap_0x0BD0[64] = {
-	#include <BossModel/gap_0x0BD0.data.inc.c>
-};
-
-/* gap sub-block @ 0x0C10 (was gap+0x40, 16 bytes) */
-u8 dBossModel_gap_0x0BD0_sub_0x40[16] = {
-	#include <BossModel/gap_0x0BD0_sub_0x40.data.inc.c>
-};
 
 /* Vtx: Vtx_0x0C20 @ 0xC20 (1 vertices) */
 Vtx dBossModel_Vtx_0x0C20_Vtx[1] = {
@@ -244,9 +176,9 @@ Gfx dBossModel_Joint_0x11B0_DisplayList[35] = {
 	#include <BossModel/Joint_0x11B0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x12C8 to 0x13D0 (264 bytes) */
-u8 dBossModel_Joint_0x11B0_post[264] = {
-	#include <BossModel/Joint_0x11B0_post.data.inc.c>
+/* Gfx DL: Joint_0x11B0_post @ 0x12C8 (33 cmds) */
+Gfx dBossModel_Joint_0x11B0_post[33] = {
+	#include <BossModel/Joint_0x11B0_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x13D0 @ 0x13D0 (168 bytes, 21 cmds) */
@@ -289,9 +221,9 @@ Gfx dBossModel_Joint_0x18F8_DisplayList[30] = {
 	#include <BossModel/Joint_0x18F8.dl.inc.c>
 };
 
-/* Raw data from file offset 0x19E8 to 0x1BF8 (528 bytes) */
-u8 dBossModel_Joint_0x18F8_post[528] = {
-	#include <BossModel/Joint_0x18F8_post.data.inc.c>
+/* Gfx DL: Joint_0x18F8_post @ 0x19E8 (66 cmds) */
+Gfx dBossModel_Joint_0x18F8_post[66] = {
+	#include <BossModel/Joint_0x18F8_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x1BF8 @ 0x1BF8 (168 bytes, 21 cmds) */
@@ -349,9 +281,14 @@ Gfx dBossModel_Joint_0x1F88_post_post_post_post_post[13] = {
 	#include <BossModel/Joint_0x1F88_post_post_post_post_post.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x22C0 (280 bytes) */
-u8 dBossModel_Joint_0x1F88_post_post_post_post_post_post[280] = {
-	#include <BossModel/Joint_0x1F88_post_post_post_post_post_post.data.inc.c>
+/* Gfx DL: Joint_0x1F88_post_post_post_post_post_post @ 0x22C0 (12 cmds) */
+Gfx dBossModel_Joint_0x1F88_post_post_post_post_post_post[12] = {
+	#include <BossModel/Joint_0x1F88_post_post_post_post_post_post.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x2320 (184 bytes) */
+u8 dBossModel_Joint_0x1F88_post_post_post_post_post_post_post[184] = {
+	#include <BossModel/Joint_0x1F88_post_post_post_post_post_post_post.data.inc.c>
 };
 
 /* DObjDesc: JointTree @ 0x23D8 (26 entries) */

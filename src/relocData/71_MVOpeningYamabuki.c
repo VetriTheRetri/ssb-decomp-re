@@ -27,39 +27,39 @@ u8 dMVOpeningYamabuki_Tex_pool[0x8A90] = {
 	#include <MVOpeningYamabuki/Tex_pool.data.inc.c>
 };
 
-/* Display list 0 @ 0x08A90 (40 bytes). */
-u8 dMVOpeningYamabuki_DL_0x08A90[0x28] = {
-	#include <MVOpeningYamabuki/DL_0x08A90.data.inc.c>
+/* Gfx DL: DL_0x08A90 @ 0x8A90 (5 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x08A90[5] = {
+	#include <MVOpeningYamabuki/DL_0x08A90.dl.inc.c>
 };
 
-/* Display list 1 @ 0x08AB8 (240 bytes). */
-u8 dMVOpeningYamabuki_DL_0x08AB8[0xF0] = {
-	#include <MVOpeningYamabuki/DL_0x08AB8.data.inc.c>
+/* Gfx DL: DL_0x08AB8 @ 0x8AB8 (30 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x08AB8[30] = {
+	#include <MVOpeningYamabuki/DL_0x08AB8.dl.inc.c>
 };
 
-/* Display list 2 @ 0x08BA8 (320 bytes). */
-u8 dMVOpeningYamabuki_DL_0x08BA8[0x140] = {
-	#include <MVOpeningYamabuki/DL_0x08BA8.data.inc.c>
+/* Gfx DL: DL_0x08BA8 @ 0x8BA8 (40 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x08BA8[40] = {
+	#include <MVOpeningYamabuki/DL_0x08BA8.dl.inc.c>
 };
 
-/* Display list 3 @ 0x08CE8 (784 bytes). */
-u8 dMVOpeningYamabuki_DL_0x08CE8[0x310] = {
-	#include <MVOpeningYamabuki/DL_0x08CE8.data.inc.c>
+/* Gfx DL: DL_0x08CE8 @ 0x8CE8 (98 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x08CE8[98] = {
+	#include <MVOpeningYamabuki/DL_0x08CE8.dl.inc.c>
 };
 
-/* Display list 4 @ 0x08FF8 (272 bytes). */
-u8 dMVOpeningYamabuki_DL_0x08FF8[0x110] = {
-	#include <MVOpeningYamabuki/DL_0x08FF8.data.inc.c>
+/* Gfx DL: DL_0x08FF8 @ 0x8FF8 (34 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x08FF8[34] = {
+	#include <MVOpeningYamabuki/DL_0x08FF8.dl.inc.c>
 };
 
-/* Display list 5 @ 0x09108 (320 bytes). */
-u8 dMVOpeningYamabuki_DL_0x09108[0x140] = {
-	#include <MVOpeningYamabuki/DL_0x09108.data.inc.c>
+/* Gfx DL: DL_0x09108 @ 0x9108 (40 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x09108[40] = {
+	#include <MVOpeningYamabuki/DL_0x09108.dl.inc.c>
 };
 
-/* Display list 6 @ 0x09248 (768 bytes). */
-u8 dMVOpeningYamabuki_DL_0x09248[0x300] = {
-	#include <MVOpeningYamabuki/DL_0x09248.data.inc.c>
+/* Gfx DL: DL_0x09248 @ 0x9248 (96 cmds) */
+Gfx dMVOpeningYamabuki_DL_0x09248[96] = {
+	#include <MVOpeningYamabuki/DL_0x09248.dl.inc.c>
 };
 
 /* ──────────────── Pikachu legs joint hierarchy ─────────────────────────── */

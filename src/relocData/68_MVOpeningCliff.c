@@ -9,28 +9,28 @@
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0028 (32 bytes) */
-u8 dMVOpeningCliff_Lut12_0x0008[32] = {
-	#include <MVOpeningCliff/Lut12_0x0008.data.inc.c>
+u16 dMVOpeningCliff_Lut12_0x0008[16] = {
+	#include <MVOpeningCliff/Lut12_0x0008.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0028 to 0x0048 (32 bytes) */
-u8 dMVOpeningCliff_Lut12_0x0028[32] = {
-	#include <MVOpeningCliff/Lut12_0x0028.data.inc.c>
+u16 dMVOpeningCliff_Lut12_0x0028[16] = {
+	#include <MVOpeningCliff/Lut12_0x0028.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0048 to 0x0070 (40 bytes) */
-u8 dMVOpeningCliff_Lut13_0x0048[40] = {
-	#include <MVOpeningCliff/Lut13_0x0048.data.inc.c>
+u16 dMVOpeningCliff_Lut13_0x0048[20] = {
+	#include <MVOpeningCliff/Lut13_0x0048.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0070 to 0x0098 (40 bytes) */
-u8 dMVOpeningCliff_Lut15_0x0070[40] = {
-	#include <MVOpeningCliff/Lut15_0x0070.data.inc.c>
+u16 dMVOpeningCliff_Lut15_0x0070[20] = {
+	#include <MVOpeningCliff/Lut15_0x0070.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0098 to 0x00C0 (40 bytes) */
-u8 dMVOpeningCliff_Lut13_0x0098[40] = {
-	#include <MVOpeningCliff/Lut13_0x0098.data.inc.c>
+u16 dMVOpeningCliff_Lut13_0x0098[20] = {
+	#include <MVOpeningCliff/Lut13_0x0098.palette.inc.c>
 };
 
 /* Texture data @ 0x00C0 (2056 bytes) */
@@ -73,64 +73,14 @@ Vtx dMVOpeningCliff_Vtx_0x24F0_Vtx[19] = {
 	#include <MVOpeningCliff/Vtx_0x24F0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x2620 @ 0x2620 (3 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x2620_Vtx[3] = {
+/* Vtx: Vtx_0x2620_Vtx @ 0x2620 (13 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x2620_Vtx[13] = {
 	#include <MVOpeningCliff/Vtx_0x2620.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x2650 @ 0x2650 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x2650_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x2650.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x2660 @ 0x2660 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x2660_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x2660.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x2670 @ 0x2670 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x2670_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x2670.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x2680 @ 0x2680 (2 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x2680_Vtx[2] = {
-	#include <MVOpeningCliff/Vtx_0x2680.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x26A0 @ 0x26A0 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x26A0_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x26A0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x26B0 @ 0x26B0 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x26B0_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x26B0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x26C0 @ 0x26C0 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x26C0_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x26C0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x26D0 to 0x26F0 (32 bytes) */
-u8 dMVOpeningCliff_gap_0x26D0[32] = {
-	#include <MVOpeningCliff/gap_0x26D0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x26F0 @ 0x26F0 (3 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x26F0_Vtx[3] = {
+/* Vtx: Vtx_0x26F0_Vtx @ 0x26F0 (9 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x26F0_Vtx[9] = {
 	#include <MVOpeningCliff/Vtx_0x26F0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x2720 @ 0x2720 (1 vertices) */
-Vtx dMVOpeningCliff_Vtx_0x2720_Vtx[1] = {
-	#include <MVOpeningCliff/Vtx_0x2720.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x2730 to 0x2780 (80 bytes) */
-u8 dMVOpeningCliff_gap_0x2730[80] = {
-	#include <MVOpeningCliff/gap_0x2730.data.inc.c>
 };
 
 /* Vtx: Vtx_0x2780 @ 0x2780 (6 vertices) */
@@ -274,13 +224,13 @@ u8 dMVOpeningCliff_gap_0x3850_sub_0x2118[2816] = {
 };
 
 /* gap sub-block @ 0x6468 (was gap+0x2C18, 320 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x2C18[320] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x2C18.data.inc.c>
+Vtx dMVOpeningCliff_gap_0x3850_sub_0x2C18[20] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2C18.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x65A8 (was gap+0x2D58, 192 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x2D58[192] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x2D58.data.inc.c>
+Vtx dMVOpeningCliff_gap_0x3850_sub_0x2D58[12] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2D58.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6668 (was gap+0x2E18, 312 bytes) */

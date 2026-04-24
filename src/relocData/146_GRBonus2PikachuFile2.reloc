@@ -12,7 +12,7 @@ extern dGRBonus2PikachuFile2_DL_0x0750+0xA4 0x2D0  # -> file 122 (Bonus1CommonIm
 intern dGRBonus2PikachuFile2_DL_0x0750+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0x80
 extern dGRBonus2PikachuFile2_DL_0x0850+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
 extern dGRBonus2PikachuFile2_DL_0x0850+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
-intern dGRBonus2PikachuFile2_DL_0x0850+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0x10
+intern dGRBonus2PikachuFile2_DL_0x0850+0xC4 dGRBonus2PikachuFile2_gap_0x0000+0x10
 intern dGRBonus2PikachuFile2_DL_0x0850+0xCC dGRBonus2PikachuFile2_gap_0x0000_sub_0xC0
 extern dGRBonus2PikachuFile2_DL_0x0958+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
 extern dGRBonus2PikachuFile2_DL_0x0958+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)

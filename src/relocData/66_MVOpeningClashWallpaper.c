@@ -407,34 +407,9 @@ u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x118[8] = {
 	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x118.data.inc.c>
 };
 
-/* gap sub-block @ 0x31E8 (was gap+0x120, 16 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x120[16] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x120.data.inc.c>
-};
-
-/* gap sub-block @ 0x31F8 (was gap+0x130, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x130[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x130.data.inc.c>
-};
-
-/* gap sub-block @ 0x3218 (was gap+0x150, 16 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x150[16] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x150.data.inc.c>
-};
-
-/* gap sub-block @ 0x3228 (was gap+0x160, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x160[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x160.data.inc.c>
-};
-
-/* gap sub-block @ 0x3248 (was gap+0x180, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x180[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x180.data.inc.c>
-};
-
-/* gap sub-block @ 0x3268 (was gap+0x1A0, 64 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x1A0[64] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x1A0.data.inc.c>
+/* Vtx: gap_0x30C8_sub_0x120 @ 0x31E8 (12 vertices) */
+Vtx dMVOpeningClashWallpaper_gap_0x30C8_sub_0x120[12] = {
+	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x120.vtx.inc.c>
 };
 
 /* DisplayList: LLDisplayList @ 0x32A8 (432 bytes, 54 cmds) */
@@ -496,34 +471,9 @@ u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x118[8] = {
 	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x118.data.inc.c>
 };
 
-/* gap sub-block @ 0x3878 (was gap+0x120, 16 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x120[16] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x120.data.inc.c>
-};
-
-/* gap sub-block @ 0x3888 (was gap+0x130, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x130[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x130.data.inc.c>
-};
-
-/* gap sub-block @ 0x38A8 (was gap+0x150, 16 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x150[16] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x150.data.inc.c>
-};
-
-/* gap sub-block @ 0x38B8 (was gap+0x160, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x160[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x160.data.inc.c>
-};
-
-/* gap sub-block @ 0x38D8 (was gap+0x180, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x180[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x180.data.inc.c>
-};
-
-/* gap sub-block @ 0x38F8 (was gap+0x1A0, 64 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x1A0[64] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x1A0.data.inc.c>
+/* Vtx: gap_0x3758_sub_0x120 @ 0x3878 (12 vertices) */
+Vtx dMVOpeningClashWallpaper_gap_0x3758_sub_0x120[12] = {
+	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x120.vtx.inc.c>
 };
 
 /* DisplayList: LRDisplayList @ 0x3938 (432 bytes, 54 cmds) */
@@ -585,29 +535,14 @@ u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x118[8] = {
 	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x118.data.inc.c>
 };
 
-/* gap sub-block @ 0x3F08 (was gap+0x120, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x120[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x120.data.inc.c>
+/* Vtx: gap_0x3DE8_sub_0x120 @ 0x3F08 (4 vertices) */
+Vtx dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x120[4] = {
+	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x120.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x3F28 (was gap+0x140, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x140[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x140.data.inc.c>
-};
-
-/* gap sub-block @ 0x3F48 (was gap+0x160, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x160[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x160.data.inc.c>
-};
-
-/* gap sub-block @ 0x3F68 (was gap+0x180, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x180[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x180.data.inc.c>
-};
-
-/* gap sub-block @ 0x3F88 (was gap+0x1A0, 64 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x1A0[64] = {
-	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x1A0.data.inc.c>
+/* Vtx: gap_0x3DE8_sub_0x160 @ 0x3F48 (8 vertices) */
+Vtx dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x160[8] = {
+	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x160.vtx.inc.c>
 };
 
 /* DisplayList: ULDisplayList @ 0x3FC8 (440 bytes, 55 cmds) */
@@ -828,29 +763,14 @@ u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x118[8] = {
 	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x118.data.inc.c>
 };
 
-/* gap sub-block @ 0x45A8 (was gap+0x120, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x120[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x120.data.inc.c>
+/* Vtx: gap_0x4488_sub_0x120 @ 0x45A8 (4 vertices) */
+Vtx dMVOpeningClashWallpaper_gap_0x4488_sub_0x120[4] = {
+	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x120.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x45C8 (was gap+0x140, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x140[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x140.data.inc.c>
-};
-
-/* gap sub-block @ 0x45E8 (was gap+0x160, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x160[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x160.data.inc.c>
-};
-
-/* gap sub-block @ 0x4608 (was gap+0x180, 32 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x180[32] = {
-	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x180.data.inc.c>
-};
-
-/* gap sub-block @ 0x4628 (was gap+0x1A0, 64 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x1A0[64] = {
-	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x1A0.data.inc.c>
+/* Vtx: gap_0x4488_sub_0x160 @ 0x45E8 (8 vertices) */
+Vtx dMVOpeningClashWallpaper_gap_0x4488_sub_0x160[8] = {
+	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x160.vtx.inc.c>
 };
 
 /* DisplayList: URDisplayList @ 0x4668 (440 bytes, 55 cmds) */

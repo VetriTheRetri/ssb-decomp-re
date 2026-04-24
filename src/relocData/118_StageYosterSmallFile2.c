@@ -82,44 +82,14 @@ u8 dStageYosterSmallFile2_gap_0x01B0[16] = {
 	#include <StageYosterSmallFile2/gap_0x01B0.data.inc.c>
 };
 
-/* gap sub-block @ 0x01C0 (was gap+0x10, 8 bytes) */
-u8 dStageYosterSmallFile2_gap_0x01B0_sub_0x10[8] = {
-	#include <StageYosterSmallFile2/gap_0x01B0_sub_0x10.data.inc.c>
+/* Vtx: gap_0x01B0_sub_0x10 @ 0x1C0 (3 vertices) */
+Vtx dStageYosterSmallFile2_gap_0x01B0_sub_0x10[3] = {
+	#include <StageYosterSmallFile2/gap_0x01B0_sub_0x10.vtx.inc.c>
 };
 
-/* Palette: Lut_0x01C8 @ 0x1C8 (16 colors RGBA5551) */
-u16 dStageYosterSmallFile2_Lut_0x01C8_palette[16] = {
-	#include <StageYosterSmallFile2/Lut_0x01C8.palette.inc.c>
-};
-
-/* Raw data from file offset 0x01E8 to 0x01F0 (8 bytes) */
-u8 dStageYosterSmallFile2_gap_0x01E8[8] = {
-	#include <StageYosterSmallFile2/gap_0x01E8.data.inc.c>
-};
-
-/* Vtx: Vtx_0x01F0 @ 0x1F0 (2 vertices) */
-Vtx dStageYosterSmallFile2_Vtx_0x01F0_Vtx[2] = {
+/* Vtx: Vtx_0x01F0_Vtx @ 0x1F0 (6 vertices) */
+Vtx dStageYosterSmallFile2_Vtx_0x01F0_Vtx[6] = {
 	#include <StageYosterSmallFile2/Vtx_0x01F0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0210 to 0x0218 (8 bytes) */
-u8 dStageYosterSmallFile2_gap_0x0210[8] = {
-	#include <StageYosterSmallFile2/gap_0x0210.data.inc.c>
-};
-
-/* Palette: Lut_0x0218 @ 0x218 (16 colors RGBA5551) */
-u16 dStageYosterSmallFile2_Lut_0x0218_palette[16] = {
-	#include <StageYosterSmallFile2/Lut_0x0218.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0238 to 0x0240 (8 bytes) */
-u8 dStageYosterSmallFile2_gap_0x0238[8] = {
-	#include <StageYosterSmallFile2/gap_0x0238.data.inc.c>
-};
-
-/* Texture data @ 0x0240 (16 bytes) */
-u8 dStageYosterSmallFile2_Tex_0x0240[16] = {
-	#include <StageYosterSmallFile2/Tex_0x0240.tex.inc.c>
 };
 
 /* Vtx: Vtx_0x0250 @ 0x250 (4 vertices) */
@@ -127,19 +97,9 @@ Vtx dStageYosterSmallFile2_Vtx_0x0250_Vtx[4] = {
 	#include <StageYosterSmallFile2/Vtx_0x0250.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0290 @ 0x290 (3 vertices) */
-Vtx dStageYosterSmallFile2_Vtx_0x0290_Vtx[3] = {
+/* Vtx: Vtx_0x0290_Vtx @ 0x290 (4 vertices) */
+Vtx dStageYosterSmallFile2_Vtx_0x0290_Vtx[4] = {
 	#include <StageYosterSmallFile2/Vtx_0x0290.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x02C0 to 0x02C8 (8 bytes) */
-u8 dStageYosterSmallFile2_gap_0x02C0[8] = {
-	#include <StageYosterSmallFile2/gap_0x02C0.data.inc.c>
-};
-
-/* Texture data @ 0x02C8 (8 bytes) */
-u8 dStageYosterSmallFile2_Tex_0x02C8[8] = {
-	#include <StageYosterSmallFile2/Tex_0x02C8.tex.inc.c>
 };
 
 /* Vtx: Vtx_0x02D0 @ 0x2D0 (4 vertices) */

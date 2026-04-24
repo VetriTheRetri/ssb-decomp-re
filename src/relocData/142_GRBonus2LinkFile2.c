@@ -7,14 +7,9 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0938 (2360 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000[8] = {
-	#include <GRBonus2LinkFile2/gap_0x0000.data.inc.c>
-};
-
-/* gap sub-block @ 0x0008 (was gap+0x8, 56 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x8[56] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x8.data.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+Vtx dGRBonus2LinkFile2_gap_0x0000[4] = {
+	#include <GRBonus2LinkFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx @ 0x0040 (4 vertices) */
@@ -38,23 +33,13 @@ Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x100[13] = {
 };
 
 /* gap sub-block @ 0x01D0 (was gap+0x1D0, 304 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x1D0[304] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x1D0.data.inc.c>
+u16 dGRBonus2LinkFile2_gap_0x0000_sub_0x1D0[152] = {
+	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x1D0.palette.inc.c>
 };
 
-/* gap sub-block @ 0x0300 (was gap+0x300, 344 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x300[344] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x300.data.inc.c>
-};
-
-/* gap sub-block @ 0x0458 (was gap+0x458, 40 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x458[40] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x458.data.inc.c>
-};
-
-/* gap sub-block @ 0x0480 (was gap+0x480, 64 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x480[64] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x480.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x300 @ 0x300 (28 vertices) */
+Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x300[28] = {
+	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x300.vtx.inc.c>
 };
 
 /* Vtx @ 0x04C0 (8 vertices) */
@@ -68,8 +53,8 @@ u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x540[72] = {
 };
 
 /* gap sub-block @ 0x0588 (was gap+0x588, 40 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x588[40] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x588.data.inc.c>
+u16 dGRBonus2LinkFile2_gap_0x0000_sub_0x588[20] = {
+	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x588.palette.inc.c>
 };
 
 /* gap sub-block @ 0x05B0 (was gap+0x5B0, 96 bytes) */
@@ -133,8 +118,8 @@ u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x778[64] = {
 };
 
 /* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0000_sub_0x7B8[40] = {
-	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x7B8.data.inc.c>
+u16 dGRBonus2LinkFile2_gap_0x0000_sub_0x7B8[20] = {
+	#include <GRBonus2LinkFile2/gap_0x0000_sub_0x7B8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x07E0 (was gap+0x7E0, 168 bytes) */
@@ -382,19 +367,9 @@ Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2070[4] = {
 	#include <GRBonus2LinkFile2/gap_0x0BA0_sub_0x2070.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2C50 (was gap+0x20B0, 80 bytes) */
-Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x20B0[5] = {
+/* Vtx: gap_0x0BA0_sub_0x20B0 @ 0x2C50 (12 vertices) */
+Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x20B0[12] = {
 	#include <GRBonus2LinkFile2/gap_0x0BA0_sub_0x20B0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2CA0 (was gap+0x2100, 64 bytes) */
-Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2100[4] = {
-	#include <GRBonus2LinkFile2/gap_0x0BA0_sub_0x2100.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x2CE0 (was gap+0x2140, 48 bytes) */
-Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2140[3] = {
-	#include <GRBonus2LinkFile2/gap_0x0BA0_sub_0x2140.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2D10 (was gap+0x2170, 128 bytes) */

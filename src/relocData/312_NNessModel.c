@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNNessModel_gap_0x0000[8] = {
-	#include <NNessModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNNessModel_Lut_0x0008_palette[16] = {
-	#include <NNessModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNNessModel_gap_0x0028[8] = {
-	#include <NNessModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (448 bytes) */
-u8 dNNessModel_Tex_0x0030[448] = {
-	#include <NNessModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (31 vertices) */
+Vtx dNNessModel_gap_0x0000[31] = {
+	#include <NNessModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01F0 @ 0x1F0 (27 vertices) */
@@ -64,19 +49,9 @@ Vtx dNNessModel_Vtx_0x07E0_Vtx[30] = {
 	#include <NNessModel/Vtx_0x07E0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x09C0 @ 0x9C0 (2 vertices) */
-Vtx dNNessModel_Vtx_0x09C0_Vtx[2] = {
+/* Vtx: Vtx_0x09C0_Vtx @ 0x9C0 (32 vertices) */
+Vtx dNNessModel_Vtx_0x09C0_Vtx[32] = {
 	#include <NNessModel/Vtx_0x09C0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x09E0 @ 0x9E0 (1 vertices) */
-Vtx dNNessModel_Vtx_0x09E0_Vtx[1] = {
-	#include <NNessModel/Vtx_0x09E0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x09F0 to 0x0BC0 (464 bytes) */
-u8 dNNessModel_gap_0x09F0[464] = {
-	#include <NNessModel/gap_0x09F0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0BC0 @ 0xBC0 (30 vertices) */
@@ -248,23 +223,28 @@ DObjDesc dNNessModel_JointTree[] = {
 
 /* Raw data from file offset 0x3210 to 0x35E0 (976 bytes) */
 /* gap sub-block @ 0x3210 (was gap+0x0, 48 bytes) */
-u8 dNNessModel_gap_0x3210[48] = {
-	#include <NNessModel/gap_0x3210.data.inc.c>
+Vtx dNNessModel_gap_0x3210[3] = {
+	#include <NNessModel/gap_0x3210.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x3240 (was gap+0x30, 256 bytes) */
-u8 dNNessModel_gap_0x3210_sub_0x30[256] = {
-	#include <NNessModel/gap_0x3210_sub_0x30.data.inc.c>
+/* Gfx DL: gap_0x3210_sub_0x30 @ 0x3240 (31 cmds) */
+Gfx dNNessModel_gap_0x3210_sub_0x30[31] = {
+	#include <NNessModel/gap_0x3210_sub_0x30.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x3338 (8 bytes) */
+u8 dNNessModel_gap_0x3210_sub_0x30_post[8] = {
+	#include <NNessModel/gap_0x3210_sub_0x30_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x3340 (was gap+0x130, 192 bytes) */
-u8 dNNessModel_gap_0x3210_sub_0x130[192] = {
-	#include <NNessModel/gap_0x3210_sub_0x130.data.inc.c>
+Vtx dNNessModel_gap_0x3210_sub_0x130[12] = {
+	#include <NNessModel/gap_0x3210_sub_0x130.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x3400 (was gap+0x1F0, 192 bytes) */
-u8 dNNessModel_gap_0x3210_sub_0x1F0[192] = {
-	#include <NNessModel/gap_0x3210_sub_0x1F0.data.inc.c>
+Vtx dNNessModel_gap_0x3210_sub_0x1F0[12] = {
+	#include <NNessModel/gap_0x3210_sub_0x1F0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x34C0 (was gap+0x2B0, 288 bytes) */

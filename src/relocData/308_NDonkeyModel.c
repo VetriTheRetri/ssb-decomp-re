@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNDonkeyModel_gap_0x0000[8] = {
-	#include <NDonkeyModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNDonkeyModel_Lut_0x0008_palette[16] = {
-	#include <NDonkeyModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNDonkeyModel_gap_0x0028[8] = {
-	#include <NDonkeyModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (336 bytes) */
-u8 dNDonkeyModel_Tex_0x0030[336] = {
-	#include <NDonkeyModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (24 vertices) */
+Vtx dNDonkeyModel_gap_0x0000[24] = {
+	#include <NDonkeyModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0180 @ 0x180 (31 vertices) */

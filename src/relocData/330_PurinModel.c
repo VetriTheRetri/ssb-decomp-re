@@ -65,89 +65,9 @@ Vtx dPurinModel_Vtx_0x09B0_Vtx[5] = {
 	#include <PurinModel/Vtx_0x09B0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0A00 @ 0xA00 (15 vertices) */
-Vtx dPurinModel_Vtx_0x0A00_Vtx[15] = {
+/* Vtx: Vtx_0x0A00_Vtx @ 0xA00 (32 vertices) */
+Vtx dPurinModel_Vtx_0x0A00_Vtx[32] = {
 	#include <PurinModel/Vtx_0x0A00.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0AF0 @ 0xAF0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0AF0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0AF0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B00 to 0x0B20 (32 bytes) */
-u8 dPurinModel_gap_0x0B00[32] = {
-	#include <PurinModel/gap_0x0B00.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B20 @ 0xB20 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0B20_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0B20.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B30 to 0x0B40 (16 bytes) */
-u8 dPurinModel_gap_0x0B30[16] = {
-	#include <PurinModel/gap_0x0B30.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B40 @ 0xB40 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0B40_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0B40.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B50 to 0x0B60 (16 bytes) */
-u8 dPurinModel_gap_0x0B50[16] = {
-	#include <PurinModel/gap_0x0B50.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B60 @ 0xB60 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0B60_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0B60.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B70 to 0x0B80 (16 bytes) */
-u8 dPurinModel_gap_0x0B70[16] = {
-	#include <PurinModel/gap_0x0B70.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0B80 @ 0xB80 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0B80_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0B80.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0B90 to 0x0BA0 (16 bytes) */
-u8 dPurinModel_gap_0x0B90[16] = {
-	#include <PurinModel/gap_0x0B90.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0BA0 @ 0xBA0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0BA0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0BA0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0BB0 to 0x0BC0 (16 bytes) */
-u8 dPurinModel_gap_0x0BB0[16] = {
-	#include <PurinModel/gap_0x0BB0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0BC0 @ 0xBC0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0BC0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0BC0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0BD0 to 0x0BE0 (16 bytes) */
-u8 dPurinModel_gap_0x0BD0[16] = {
-	#include <PurinModel/gap_0x0BD0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0BE0 @ 0xBE0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x0BE0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x0BE0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0BF0 to 0x0C00 (16 bytes) */
-u8 dPurinModel_gap_0x0BF0[16] = {
-	#include <PurinModel/gap_0x0BF0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0C00 @ 0xC00 (5 vertices) */
@@ -613,34 +533,14 @@ Vtx dPurinModel_Vtx_0x3518_Vtx[13] = {
 	#include <PurinModel/Vtx_0x3518.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x35E8 @ 0x35E8 (1 vertices) */
-Vtx dPurinModel_Vtx_0x35E8_Vtx[1] = {
+/* Vtx: Vtx_0x35E8_Vtx @ 0x35E8 (9 vertices) */
+Vtx dPurinModel_Vtx_0x35E8_Vtx[9] = {
 	#include <PurinModel/Vtx_0x35E8.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x35F8 @ 0x35F8 (1 vertices) */
-Vtx dPurinModel_Vtx_0x35F8_Vtx[1] = {
-	#include <PurinModel/Vtx_0x35F8.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x3608 to 0x3668 (96 bytes) */
-u8 dPurinModel_gap_0x3608[96] = {
-	#include <PurinModel/gap_0x3608.data.inc.c>
-};
-
-/* Vtx: Vtx_0x3668 @ 0x3668 (1 vertices) */
-Vtx dPurinModel_Vtx_0x3668_Vtx[1] = {
-	#include <PurinModel/Vtx_0x3668.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x3678 @ 0x3678 (4 vertices) */
-Vtx dPurinModel_Vtx_0x3678_Vtx[4] = {
+/* Vtx: Vtx_0x3678_Vtx @ 0x3678 (6 vertices) */
+Vtx dPurinModel_Vtx_0x3678_Vtx[6] = {
 	#include <PurinModel/Vtx_0x3678.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x36B8 @ 0x36B8 (2 vertices) */
-Vtx dPurinModel_Vtx_0x36B8_Vtx[2] = {
-	#include <PurinModel/Vtx_0x36B8.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x36D8 @ 0x36D8 (1 vertices) */
@@ -907,124 +807,9 @@ Vtx dPurinModel_Vtx_0x4BF0_Vtx[6] = {
 	#include <PurinModel/Vtx_0x4BF0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x4C50 @ 0x4C50 (2 vertices) */
-Vtx dPurinModel_Vtx_0x4C50_Vtx[2] = {
+/* Vtx: Vtx_0x4C50_Vtx @ 0x4C50 (32 vertices) */
+Vtx dPurinModel_Vtx_0x4C50_Vtx[32] = {
 	#include <PurinModel/Vtx_0x4C50.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4C70 @ 0x4C70 (2 vertices) */
-Vtx dPurinModel_Vtx_0x4C70_Vtx[2] = {
-	#include <PurinModel/Vtx_0x4C70.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4C90 @ 0x4C90 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4C90_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4C90.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4CA0 @ 0x4CA0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4CA0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4CA0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4CB0 to 0x4CF0 (64 bytes) */
-u8 dPurinModel_gap_0x4CB0[64] = {
-	#include <PurinModel/gap_0x4CB0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4CF0 @ 0x4CF0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4CF0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4CF0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4D00 to 0x4D10 (16 bytes) */
-u8 dPurinModel_gap_0x4D00[16] = {
-	#include <PurinModel/gap_0x4D00.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4D10 @ 0x4D10 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4D10_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4D10.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4D20 to 0x4D30 (16 bytes) */
-u8 dPurinModel_gap_0x4D20[16] = {
-	#include <PurinModel/gap_0x4D20.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4D30 @ 0x4D30 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4D30_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4D30.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4D40 @ 0x4D40 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4D40_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4D40.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4D50 @ 0x4D50 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4D50_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4D50.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4D60 to 0x4D70 (16 bytes) */
-u8 dPurinModel_gap_0x4D60[16] = {
-	#include <PurinModel/gap_0x4D60.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4D70 @ 0x4D70 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4D70_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4D70.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4D80 to 0x4D90 (16 bytes) */
-u8 dPurinModel_gap_0x4D80[16] = {
-	#include <PurinModel/gap_0x4D80.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4D90 @ 0x4D90 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4D90_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4D90.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4DA0 @ 0x4DA0 (2 vertices) */
-Vtx dPurinModel_Vtx_0x4DA0_Vtx[2] = {
-	#include <PurinModel/Vtx_0x4DA0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4DC0 @ 0x4DC0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4DC0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4DC0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4DD0 to 0x4DE0 (16 bytes) */
-u8 dPurinModel_gap_0x4DD0[16] = {
-	#include <PurinModel/gap_0x4DD0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4DE0 @ 0x4DE0 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4DE0_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4DE0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4DF0 to 0x4E00 (16 bytes) */
-u8 dPurinModel_gap_0x4DF0[16] = {
-	#include <PurinModel/gap_0x4DF0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4E00 @ 0x4E00 (1 vertices) */
-Vtx dPurinModel_Vtx_0x4E00_Vtx[1] = {
-	#include <PurinModel/Vtx_0x4E00.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4E10 to 0x4E30 (32 bytes) */
-u8 dPurinModel_gap_0x4E10[32] = {
-	#include <PurinModel/gap_0x4E10.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4E30 @ 0x4E30 (2 vertices) */
-Vtx dPurinModel_Vtx_0x4E30_Vtx[2] = {
-	#include <PurinModel/Vtx_0x4E30.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x4E50 @ 0x4E50 (4 vertices) */
@@ -1164,48 +949,43 @@ u8 dPurinModel_gap_0x6028[8] = {
 };
 
 /* gap sub-block @ 0x6030 (was gap+0x8, 80 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x8[80] = {
-	#include <PurinModel/gap_0x6028_sub_0x8.data.inc.c>
+Vtx dPurinModel_gap_0x6028_sub_0x8[5] = {
+	#include <PurinModel/gap_0x6028_sub_0x8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6080 (was gap+0x58, 336 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x58[336] = {
-	#include <PurinModel/gap_0x6028_sub_0x58.data.inc.c>
+Vtx dPurinModel_gap_0x6028_sub_0x58[21] = {
+	#include <PurinModel/gap_0x6028_sub_0x58.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x61D0 (was gap+0x1A8, 144 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x1A8[144] = {
-	#include <PurinModel/gap_0x6028_sub_0x1A8.data.inc.c>
-};
-
-/* gap sub-block @ 0x6260 (was gap+0x238, 224 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x238[224] = {
-	#include <PurinModel/gap_0x6028_sub_0x238.data.inc.c>
-};
-
-/* gap sub-block @ 0x6340 (was gap+0x318, 144 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x318[144] = {
-	#include <PurinModel/gap_0x6028_sub_0x318.data.inc.c>
+/* Vtx: gap_0x6028_sub_0x1A8 @ 0x61D0 (32 vertices) */
+Vtx dPurinModel_gap_0x6028_sub_0x1A8[32] = {
+	#include <PurinModel/gap_0x6028_sub_0x1A8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x63D0 (was gap+0x3A8, 80 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x3A8[80] = {
-	#include <PurinModel/gap_0x6028_sub_0x3A8.data.inc.c>
+Vtx dPurinModel_gap_0x6028_sub_0x3A8[5] = {
+	#include <PurinModel/gap_0x6028_sub_0x3A8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6420 (was gap+0x3F8, 32 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x3F8[32] = {
-	#include <PurinModel/gap_0x6028_sub_0x3F8.data.inc.c>
+Vtx dPurinModel_gap_0x6028_sub_0x3F8[2] = {
+	#include <PurinModel/gap_0x6028_sub_0x3F8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6440 (was gap+0x418, 144 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x418[144] = {
-	#include <PurinModel/gap_0x6028_sub_0x418.data.inc.c>
+Vtx dPurinModel_gap_0x6028_sub_0x418[9] = {
+	#include <PurinModel/gap_0x6028_sub_0x418.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x64D0 (was gap+0x4A8, 728 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x4A8[728] = {
-	#include <PurinModel/gap_0x6028_sub_0x4A8.data.inc.c>
+/* Gfx DL: gap_0x6028_sub_0x4A8 @ 0x64D0 (90 cmds) */
+Gfx dPurinModel_gap_0x6028_sub_0x4A8[90] = {
+	#include <PurinModel/gap_0x6028_sub_0x4A8.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x67A0 (8 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x4A8_post[8] = {
+	#include <PurinModel/gap_0x6028_sub_0x4A8_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x67A8 (was gap+0x780, 40 bytes) */

@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNLinkModel_gap_0x0000[8] = {
-	#include <NLinkModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNLinkModel_Lut_0x0008_palette[16] = {
-	#include <NLinkModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNLinkModel_gap_0x0028[8] = {
-	#include <NLinkModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (464 bytes) */
-u8 dNLinkModel_Tex_0x0030[464] = {
-	#include <NLinkModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (32 vertices) */
+Vtx dNLinkModel_gap_0x0000[32] = {
+	#include <NLinkModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0200 @ 0x200 (4 vertices) */
@@ -54,19 +39,9 @@ Vtx dNLinkModel_Vtx_0x0610_Vtx[3] = {
 	#include <NLinkModel/Vtx_0x0610.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0640 @ 0x640 (2 vertices) */
-Vtx dNLinkModel_Vtx_0x0640_Vtx[2] = {
+/* Vtx: Vtx_0x0640_Vtx @ 0x640 (32 vertices) */
+Vtx dNLinkModel_Vtx_0x0640_Vtx[32] = {
 	#include <NLinkModel/Vtx_0x0640.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0660 @ 0x660 (1 vertices) */
-Vtx dNLinkModel_Vtx_0x0660_Vtx[1] = {
-	#include <NLinkModel/Vtx_0x0660.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0670 to 0x0840 (464 bytes) */
-u8 dNLinkModel_gap_0x0670[464] = {
-	#include <NLinkModel/gap_0x0670.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0840 @ 0x840 (4 vertices) */
@@ -94,19 +69,9 @@ Vtx dNLinkModel_Vtx_0x0C20_Vtx[4] = {
 	#include <NLinkModel/Vtx_0x0C20.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0C60 @ 0xC60 (2 vertices) */
-Vtx dNLinkModel_Vtx_0x0C60_Vtx[2] = {
+/* Vtx: Vtx_0x0C60_Vtx @ 0xC60 (32 vertices) */
+Vtx dNLinkModel_Vtx_0x0C60_Vtx[32] = {
 	#include <NLinkModel/Vtx_0x0C60.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0C80 @ 0xC80 (1 vertices) */
-Vtx dNLinkModel_Vtx_0x0C80_Vtx[1] = {
-	#include <NLinkModel/Vtx_0x0C80.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0C90 to 0x0E60 (464 bytes) */
-u8 dNLinkModel_gap_0x0C90[464] = {
-	#include <NLinkModel/gap_0x0C90.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0E60 @ 0xE60 (4 vertices) */

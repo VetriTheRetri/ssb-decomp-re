@@ -16,8 +16,8 @@ u8 dYoshiModel_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u8 dYoshiModel_gap_0x0000_sub_0x8[16] = {
-	#include <YoshiModel/gap_0x0000_sub_0x8.data.inc.c>
+u16 dYoshiModel_gap_0x0000_sub_0x8[8] = {
+	#include <YoshiModel/gap_0x0000_sub_0x8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
@@ -36,8 +36,8 @@ u8 dYoshiModel_Joint_0x0040_post[32] = {
 };
 
 /* Raw data from file offset 0x0060 to 0x0080 (32 bytes) */
-u8 dYoshiModel_Joint_0x0060_post[32] = {
-	#include <YoshiModel/Joint_0x0060_post.data.inc.c>
+u16 dYoshiModel_Joint_0x0060_post[16] = {
+	#include <YoshiModel/Joint_0x0060_post.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0080 to 0x0E90 (3600 bytes) */
@@ -55,64 +55,14 @@ Vtx dYoshiModel_Vtx_0x0EE0_Vtx[4] = {
 	#include <YoshiModel/Vtx_0x0EE0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0F20 @ 0xF20 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x0F20_Vtx[1] = {
+/* Vtx: Vtx_0x0F20_Vtx @ 0xF20 (6 vertices) */
+Vtx dYoshiModel_Vtx_0x0F20_Vtx[6] = {
 	#include <YoshiModel/Vtx_0x0F20.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0F30 @ 0xF30 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x0F30_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x0F30.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0F40 to 0x0F50 (16 bytes) */
-u8 dYoshiModel_gap_0x0F40[16] = {
-	#include <YoshiModel/gap_0x0F40.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0F50 @ 0xF50 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x0F50_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x0F50.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0F60 @ 0xF60 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x0F60_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x0F60.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0F70 to 0x0F80 (16 bytes) */
-u8 dYoshiModel_gap_0x0F70[16] = {
-	#include <YoshiModel/gap_0x0F70.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0F80 @ 0xF80 (2 vertices) */
-Vtx dYoshiModel_Vtx_0x0F80_Vtx[2] = {
+/* Vtx: Vtx_0x0F80_Vtx @ 0xF80 (8 vertices) */
+Vtx dYoshiModel_Vtx_0x0F80_Vtx[8] = {
 	#include <YoshiModel/Vtx_0x0F80.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0FA0 @ 0xFA0 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x0FA0_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x0FA0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0FB0 @ 0xFB0 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x0FB0_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x0FB0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0FC0 to 0x0FD0 (16 bytes) */
-u8 dYoshiModel_gap_0x0FC0[16] = {
-	#include <YoshiModel/gap_0x0FC0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0FD0 @ 0xFD0 (2 vertices) */
-Vtx dYoshiModel_Vtx_0x0FD0_Vtx[2] = {
-	#include <YoshiModel/Vtx_0x0FD0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0FF0 to 0x1000 (16 bytes) */
-u8 dYoshiModel_gap_0x0FF0[16] = {
-	#include <YoshiModel/gap_0x0FF0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x1000 @ 0x1000 (2 vertices) */
@@ -150,14 +100,9 @@ Vtx dYoshiModel_Vtx_0x1150_Vtx[14] = {
 	#include <YoshiModel/Vtx_0x1150.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x1230 @ 0x1230 (4 vertices) */
-Vtx dYoshiModel_Vtx_0x1230_Vtx[4] = {
+/* Vtx: Vtx_0x1230_Vtx @ 0x1230 (28 vertices) */
+Vtx dYoshiModel_Vtx_0x1230_Vtx[28] = {
 	#include <YoshiModel/Vtx_0x1230.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x1270 @ 0x1270 (24 vertices) */
-Vtx dYoshiModel_Vtx_0x1270_Vtx[24] = {
-	#include <YoshiModel/Vtx_0x1270.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x13F0 @ 0x13F0 (6 vertices) */
@@ -170,14 +115,9 @@ Vtx dYoshiModel_Vtx_0x1450_Vtx[6] = {
 	#include <YoshiModel/Vtx_0x1450.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x14B0 @ 0x14B0 (4 vertices) */
-Vtx dYoshiModel_Vtx_0x14B0_Vtx[4] = {
+/* Vtx: Vtx_0x14B0_Vtx @ 0x14B0 (24 vertices) */
+Vtx dYoshiModel_Vtx_0x14B0_Vtx[24] = {
 	#include <YoshiModel/Vtx_0x14B0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x14F0 to 0x1630 (320 bytes) */
-u8 dYoshiModel_gap_0x14F0[320] = {
-	#include <YoshiModel/gap_0x14F0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x1630 @ 0x1630 (4 vertices) */
@@ -375,9 +315,19 @@ Gfx dYoshiModel_Joint_0x3148_DisplayList[15] = {
 	#include <YoshiModel/Joint_0x3148.dl.inc.c>
 };
 
-/* Raw data from file offset 0x31C0 to 0x33A0 (480 bytes) */
-u8 dYoshiModel_Joint_0x3148_post[480] = {
-	#include <YoshiModel/Joint_0x3148_post.data.inc.c>
+/* Gfx DL: Joint_0x3148_post @ 0x31C0 (21 cmds) */
+Gfx dYoshiModel_Joint_0x3148_post[21] = {
+	#include <YoshiModel/Joint_0x3148_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x3148_post_post @ 0x3268 (20 cmds) */
+Gfx dYoshiModel_Joint_0x3148_post_post[20] = {
+	#include <YoshiModel/Joint_0x3148_post_post.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x3308 (152 bytes) */
+u8 dYoshiModel_Joint_0x3148_post_post_post[152] = {
+	#include <YoshiModel/Joint_0x3148_post_post_post.data.inc.c>
 };
 
 /* DObjDesc: JointTree @ 0x33A0 (31 entries) */
@@ -876,54 +826,14 @@ u8 dYoshiModel_gap_0x38F4_sub_0x1498[12] = {
 	#include <YoshiModel/gap_0x38F4_sub_0x1498.data.inc.c>
 };
 
-/* Vtx: Vtx_0x4D98 @ 0x4D98 (4 vertices) */
-Vtx dYoshiModel_Vtx_0x4D98_Vtx[4] = {
+/* Vtx: Vtx_0x4D98_Vtx @ 0x4D98 (6 vertices) */
+Vtx dYoshiModel_Vtx_0x4D98_Vtx[6] = {
 	#include <YoshiModel/Vtx_0x4D98.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x4DD8 @ 0x4DD8 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x4DD8_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x4DD8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4DE8 @ 0x4DE8 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x4DE8_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x4DE8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4DF8 @ 0x4DF8 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x4DF8_Vtx[1] = {
+/* Vtx: Vtx_0x4DF8_Vtx @ 0x4DF8 (8 vertices) */
+Vtx dYoshiModel_Vtx_0x4DF8_Vtx[8] = {
 	#include <YoshiModel/Vtx_0x4DF8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4E08 @ 0x4E08 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x4E08_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x4E08.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4E18 @ 0x4E18 (2 vertices) */
-Vtx dYoshiModel_Vtx_0x4E18_Vtx[2] = {
-	#include <YoshiModel/Vtx_0x4E18.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4E38 to 0x4E48 (16 bytes) */
-u8 dYoshiModel_gap_0x4E38[16] = {
-	#include <YoshiModel/gap_0x4E38.data.inc.c>
-};
-
-/* Vtx: Vtx_0x4E48 @ 0x4E48 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x4E48_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x4E48.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x4E58 @ 0x4E58 (1 vertices) */
-Vtx dYoshiModel_Vtx_0x4E58_Vtx[1] = {
-	#include <YoshiModel/Vtx_0x4E58.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x4E68 to 0x4E78 (16 bytes) */
-u8 dYoshiModel_gap_0x4E68[16] = {
-	#include <YoshiModel/gap_0x4E68.data.inc.c>
 };
 
 /* Vtx: Vtx_0x4E78 @ 0x4E78 (1 vertices) */
@@ -976,14 +886,9 @@ Vtx dYoshiModel_Vtx_0x51F8_Vtx[3] = {
 	#include <YoshiModel/Vtx_0x51F8.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x5228 @ 0x5228 (4 vertices) */
-Vtx dYoshiModel_Vtx_0x5228_Vtx[4] = {
+/* Vtx: Vtx_0x5228_Vtx @ 0x5228 (12 vertices) */
+Vtx dYoshiModel_Vtx_0x5228_Vtx[12] = {
 	#include <YoshiModel/Vtx_0x5228.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x5268 to 0x52E8 (128 bytes) */
-u8 dYoshiModel_gap_0x5268[128] = {
-	#include <YoshiModel/gap_0x5268.data.inc.c>
 };
 
 /* Vtx: Vtx_0x52E8 @ 0x52E8 (5 vertices) */
@@ -1161,9 +1066,19 @@ Gfx dYoshiModel_Joint_0x6738_DisplayList[9] = {
 	#include <YoshiModel/Joint_0x6738.dl.inc.c>
 };
 
-/* Raw data from file offset 0x6780 to 0x6948 (456 bytes) */
-u8 dYoshiModel_Joint_0x6738_post[456] = {
-	#include <YoshiModel/Joint_0x6738_post.data.inc.c>
+/* Gfx DL: Joint_0x6738_post @ 0x6780 (19 cmds) */
+Gfx dYoshiModel_Joint_0x6738_post[19] = {
+	#include <YoshiModel/Joint_0x6738_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x6738_post_post @ 0x6818 (20 cmds) */
+Gfx dYoshiModel_Joint_0x6738_post_post[20] = {
+	#include <YoshiModel/Joint_0x6738_post_post.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x68B8 (144 bytes) */
+u8 dYoshiModel_Joint_0x6738_post_post_post[144] = {
+	#include <YoshiModel/Joint_0x6738_post_post_post.data.inc.c>
 };
 
 /* DObjDesc: JointTree_0x6948 @ 0x6948 (30 entries) */
@@ -1557,63 +1472,83 @@ Gfx dYoshiModel_DL_0x8300[34] = {
 };
 
 /* gap sub-block @ 0x8410 (was gap+0x15A0, 80 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x15A0[80] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x15A0.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x15A0[5] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x15A0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8460 (was gap+0x15F0, 48 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x15F0[48] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x15F0.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x15F0[3] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x15F0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8490 (was gap+0x1620, 256 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1620[256] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1620.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x1620 @ 0x8490 (31 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x1620[31] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1620.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x8588 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x1620_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1620_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8590 (was gap+0x1720, 96 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1720[96] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1720.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1720[6] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1720.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x85F0 (was gap+0x1780, 240 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1780[240] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1780.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1780[15] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1780.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x86E0 (was gap+0x1870, 400 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1870[400] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1870.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1870[25] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1870.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8870 (was gap+0x1A00, 64 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1A00[64] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1A00.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1A00[4] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1A00.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x88B0 (was gap+0x1A40, 496 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1A40[496] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1A40.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x1A40 @ 0x88B0 (61 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x1A40[61] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1A40.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x8A98 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x1A40_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1A40_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8AA0 (was gap+0x1C30, 160 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1C30[160] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1C30.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1C30[10] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1C30.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8B40 (was gap+0x1CD0, 112 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1CD0[112] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1CD0.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x1CD0 @ 0x8B40 (13 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x1CD0[13] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1CD0.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x8BA8 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x1CD0_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1CD0_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8BB0 (was gap+0x1D40, 160 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1D40[160] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1D40.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1D40[10] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1D40.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8C50 (was gap+0x1DE0, 112 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1DE0[112] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1DE0.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x1DE0 @ 0x8C50 (13 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x1DE0[13] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1DE0.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x8CB8 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x1DE0_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1DE0_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8CC0 (was gap+0x1E50, 80 bytes) */
@@ -1637,23 +1572,33 @@ Gfx dYoshiModel_DL_0x8DC0[12] = {
 };
 
 /* gap sub-block @ 0x8E20 (was gap+0x1FB0, 160 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x1FB0[160] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x1FB0.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x1FB0[10] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x1FB0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8EC0 (was gap+0x2050, 112 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2050[112] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2050.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x2050 @ 0x8EC0 (13 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x2050[13] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2050.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x8F28 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x2050_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2050_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8F30 (was gap+0x20C0, 160 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x20C0[160] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x20C0.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x20C0[10] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x20C0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8FD0 (was gap+0x2160, 112 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2160[112] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2160.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x2160 @ 0x8FD0 (13 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x2160[13] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2160.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x9038 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x2160_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2160_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x9040 (was gap+0x21D0, 80 bytes) */
@@ -1682,13 +1627,18 @@ Gfx dYoshiModel_DL_0x9220[28] = {
 };
 
 /* gap sub-block @ 0x9300 (was gap+0x2490, 80 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2490[80] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2490.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x2490[5] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2490.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x9350 (was gap+0x24E0, 216 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x24E0[216] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x24E0.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0x24E0 @ 0x9350 (26 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0x24E0[26] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x24E0.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x9420 (8 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0x24E0_post[8] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x24E0_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x9428 (was gap+0x25B8, 40 bytes) */
@@ -1748,9 +1698,14 @@ u8 dYoshiModel_Tex_0x9EF0[2416] = {
 	#include <YoshiModel/Tex_0x9EF0.tex.inc.c>
 };
 
-/* Raw data from file offset 0xA860 to 0xA958 (248 bytes) */
-u8 dYoshiModel_gap_0xA860[248] = {
-	#include <YoshiModel/gap_0xA860.data.inc.c>
+/* Gfx DL: gap_0xA860 @ 0xA860 (29 cmds) */
+Gfx dYoshiModel_gap_0xA860[29] = {
+	#include <YoshiModel/gap_0xA860.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0xA948 (16 bytes) */
+u8 dYoshiModel_gap_0xA860_post[16] = {
+	#include <YoshiModel/gap_0xA860_post.data.inc.c>
 };
 
 /* Texture data for sprite Stock */

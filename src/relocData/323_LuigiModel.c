@@ -9,8 +9,6 @@
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dLuigiModel_gap_0x28E0_sub_0x37C[];
 
-
-
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dLuigiModel_gap_0x0000[8] = {
@@ -18,8 +16,8 @@ u8 dLuigiModel_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u8 dLuigiModel_gap_0x0000_sub_0x8[16] = {
-	#include <LuigiModel/gap_0x0000_sub_0x8.data.inc.c>
+u16 dLuigiModel_gap_0x0000_sub_0x8[8] = {
+	#include <LuigiModel/gap_0x0000_sub_0x8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
@@ -38,8 +36,8 @@ u8 dLuigiModel_Joint_0x0040_post[32] = {
 };
 
 /* Raw data from file offset 0x0060 to 0x0080 (32 bytes) */
-u8 dLuigiModel_Joint_0x0060_post[32] = {
-	#include <LuigiModel/Joint_0x0060_post.data.inc.c>
+u16 dLuigiModel_Joint_0x0060_post[16] = {
+	#include <LuigiModel/Joint_0x0060_post.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0080 to 0x00A0 (32 bytes) */
@@ -959,19 +957,19 @@ u8 dLuigiModel_gap_0x4E8C_sub_0x3B8[12] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0x3B8.data.inc.c>
 };
 
-/* gap sub-block @ 0x5250 (was gap+0x3C4, 336 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x3C4[336] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x3C4.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x3C4 @ 0x5250 (23 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x3C4[23] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3C4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x53A0 (was gap+0x514, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x514[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x514.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x534 @ 0x53C0 (20 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x534[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x534.dl.inc.c>
 };
 
-/* gap sub-block @ 0x53C0 (was gap+0x534, 168 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x534[168] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x534.data.inc.c>
+/* Raw tail after DL @ 0x5460 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x534_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x534_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x5468 (was gap+0x5DC, 88 bytes) */
@@ -1004,19 +1002,19 @@ u8 dLuigiModel_gap_0x4E8C_sub_0x6A0[4] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0x6A0.data.inc.c>
 };
 
-/* gap sub-block @ 0x5530 (was gap+0x6A4, 256 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x6A4[256] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x6A4.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x6A4 @ 0x5530 (18 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x6A4[18] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x6A4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5630 (was gap+0x7A4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x7A4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x7A4.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x7C4 @ 0x5650 (16 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x7C4[16] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x7C4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5650 (was gap+0x7C4, 136 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x7C4[136] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x7C4.data.inc.c>
+/* Raw tail after DL @ 0x56D0 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x7C4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x7C4_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x56D8 (was gap+0x84C, 88 bytes) */
@@ -1049,19 +1047,19 @@ u8 dLuigiModel_gap_0x4E8C_sub_0x910[4] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0x910.data.inc.c>
 };
 
-/* gap sub-block @ 0x57A0 (was gap+0x914, 336 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x914[336] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x914.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x914 @ 0x57A0 (23 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x914[23] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x914.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x58F0 (was gap+0xA64, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xA64[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xA64.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0xA84 @ 0x5910 (20 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0xA84[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xA84.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5910 (was gap+0xA84, 168 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xA84[168] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xA84.data.inc.c>
+/* Raw tail after DL @ 0x59B0 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xA84_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xA84_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x59B8 (was gap+0xB2C, 120 bytes) */
@@ -1089,19 +1087,19 @@ u8 dLuigiModel_gap_0x4E8C_sub_0xBF0[4] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0xBF0.data.inc.c>
 };
 
-/* gap sub-block @ 0x5A80 (was gap+0xBF4, 256 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xBF4[256] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xBF4.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0xBF4 @ 0x5A80 (18 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0xBF4[18] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xBF4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5B80 (was gap+0xCF4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xCF4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xCF4.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0xD14 @ 0x5BA0 (16 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0xD14[16] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xD14.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5BA0 (was gap+0xD14, 136 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xD14[136] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xD14.data.inc.c>
+/* Raw tail after DL @ 0x5C20 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xD14_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xD14_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x5C28 (was gap+0xD9C, 88 bytes) */
@@ -1134,34 +1132,34 @@ u8 dLuigiModel_gap_0x4E8C_sub_0xE60[4] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0xE60.data.inc.c>
 };
 
-/* gap sub-block @ 0x5CF0 (was gap+0xE64, 96 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xE64[96] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xE64.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0xE64 @ 0x5CF0 (8 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0xE64[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE64.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5D50 (was gap+0xEC4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xEC4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xEC4.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0xEE4 @ 0x5D70 (13 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0xEE4[13] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xEE4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5D70 (was gap+0xEE4, 112 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xEE4[112] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xEE4.data.inc.c>
+/* Raw tail after DL @ 0x5DD8 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xEE4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xEE4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x5DE0 (was gap+0xF54, 80 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xF54[80] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xF54.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0xF54 @ 0x5DE0 (7 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0xF54[7] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xF54.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5E30 (was gap+0xFA4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xFA4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xFA4.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0xFC4 @ 0x5E50 (29 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0xFC4[29] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xFC4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5E50 (was gap+0xFC4, 240 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xFC4[240] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xFC4.data.inc.c>
+/* Raw tail after DL @ 0x5F38 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xFC4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xFC4_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x5F40 (was gap+0x10B4, 96 bytes) */
@@ -1179,14 +1177,9 @@ Vtx dLuigiModel_gap_0x4E8C_sub_0x1314[7] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0x1314.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6210 (was gap+0x1384, 64 bytes) */
-Vtx dLuigiModel_gap_0x4E8C_sub_0x1384[4] = {
+/* Vtx: gap_0x4E8C_sub_0x1384 @ 0x6210 (6 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1384[6] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0x1384.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x6250 (was gap+0x13C4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x13C4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x13C4.data.inc.c>
 };
 
 /* gap sub-block @ 0x6270 (was gap+0x13E4, 544 bytes) */
@@ -1194,104 +1187,99 @@ Gfx dLuigiModel_DL_0x6270[68] = {
 	#include <LuigiModel/DL_0x6270.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6490 (was gap+0x1604, 128 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1604[128] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1604.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x1604 @ 0x6490 (10 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1604[10] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1604.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6510 (was gap+0x1684, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1684[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1684.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x16A4 @ 0x6530 (13 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x16A4[13] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x16A4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6530 (was gap+0x16A4, 112 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x16A4[112] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x16A4.data.inc.c>
+/* Raw tail after DL @ 0x6598 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x16A4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x16A4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x65A0 (was gap+0x1714, 128 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1714[128] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1714.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x1714 @ 0x65A0 (10 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1714[10] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1714.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6620 (was gap+0x1794, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1794[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1794.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x17B4 @ 0x6640 (13 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x17B4[13] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x17B4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6640 (was gap+0x17B4, 112 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x17B4[112] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x17B4.data.inc.c>
+/* Raw tail after DL @ 0x66A8 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x17B4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x17B4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x66B0 (was gap+0x1824, 96 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1824[96] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1824.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x1824 @ 0x66B0 (8 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1824[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1824.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6710 (was gap+0x1884, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1884[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1884.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x18A4 @ 0x6730 (15 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x18A4[15] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x18A4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6730 (was gap+0x18A4, 128 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x18A4[128] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x18A4.data.inc.c>
+/* Raw tail after DL @ 0x67A8 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x18A4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x18A4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x67B0 (was gap+0x1924, 96 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1924[96] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1924.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x1924 @ 0x67B0 (8 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1924[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1924.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6810 (was gap+0x1984, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1984[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1984.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x19A4 @ 0x6830 (15 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x19A4[15] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x19A4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6830 (was gap+0x19A4, 128 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x19A4[128] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x19A4.data.inc.c>
+/* Raw tail after DL @ 0x68A8 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x19A4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x19A4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x68B0 (was gap+0x1A24, 128 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1A24[128] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1A24.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x1A24 @ 0x68B0 (10 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1A24[10] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1A24.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6930 (was gap+0x1AA4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1AA4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1AA4.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x1AC4 @ 0x6950 (13 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x1AC4[13] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1AC4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6950 (was gap+0x1AC4, 112 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1AC4[112] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1AC4.data.inc.c>
+/* Raw tail after DL @ 0x69B8 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1AC4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1AC4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x69C0 (was gap+0x1B34, 128 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1B34[128] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1B34.data.inc.c>
+/* Vtx: gap_0x4E8C_sub_0x1B34 @ 0x69C0 (10 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1B34[10] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1B34.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6A40 (was gap+0x1BB4, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1BB4[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1BB4.data.inc.c>
+/* Gfx DL: gap_0x4E8C_sub_0x1BD4 @ 0x6A60 (13 cmds) */
+Gfx dLuigiModel_gap_0x4E8C_sub_0x1BD4[13] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1BD4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6A60 (was gap+0x1BD4, 112 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1BD4[112] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1BD4.data.inc.c>
+/* Raw tail after DL @ 0x6AC8 (8 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1BD4_post[8] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1BD4_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x6AD0 (was gap+0x1C44, 80 bytes) */
-Vtx dLuigiModel_gap_0x4E8C_sub_0x1C44[5] = {
+/* Vtx: gap_0x4E8C_sub_0x1C44 @ 0x6AD0 (7 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1C44[7] = {
 	#include <LuigiModel/gap_0x4E8C_sub_0x1C44.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x6B20 (was gap+0x1C94, 32 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x1C94[32] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1C94.data.inc.c>
 };
 
 /* gap sub-block @ 0x6B40 (was gap+0x1CB4, 112 bytes) */

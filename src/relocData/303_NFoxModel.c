@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNFoxModel_gap_0x0000[8] = {
-	#include <NFoxModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNFoxModel_Lut_0x0008_palette[16] = {
-	#include <NFoxModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNFoxModel_gap_0x0028[8] = {
-	#include <NFoxModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (272 bytes) */
-u8 dNFoxModel_Tex_0x0030[272] = {
-	#include <NFoxModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (20 vertices) */
+Vtx dNFoxModel_gap_0x0000[20] = {
+	#include <NFoxModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0140 @ 0x140 (32 vertices) */
@@ -69,19 +54,9 @@ Vtx dNFoxModel_Vtx_0x0950_Vtx[5] = {
 	#include <NFoxModel/Vtx_0x0950.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x09A0 @ 0x9A0 (2 vertices) */
-Vtx dNFoxModel_Vtx_0x09A0_Vtx[2] = {
+/* Vtx: Vtx_0x09A0_Vtx @ 0x9A0 (32 vertices) */
+Vtx dNFoxModel_Vtx_0x09A0_Vtx[32] = {
 	#include <NFoxModel/Vtx_0x09A0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x09C0 @ 0x9C0 (1 vertices) */
-Vtx dNFoxModel_Vtx_0x09C0_Vtx[1] = {
-	#include <NFoxModel/Vtx_0x09C0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x09D0 to 0x0BA0 (464 bytes) */
-u8 dNFoxModel_gap_0x09D0[464] = {
-	#include <NFoxModel/gap_0x09D0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0BA0 @ 0xBA0 (28 vertices) */

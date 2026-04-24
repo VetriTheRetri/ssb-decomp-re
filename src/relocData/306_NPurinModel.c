@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNPurinModel_gap_0x0000[8] = {
-	#include <NPurinModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNPurinModel_Lut_0x0008_palette[16] = {
-	#include <NPurinModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNPurinModel_gap_0x0028[8] = {
-	#include <NPurinModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (464 bytes) */
-u8 dNPurinModel_Tex_0x0030[464] = {
-	#include <NPurinModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (32 vertices) */
+Vtx dNPurinModel_gap_0x0000[32] = {
+	#include <NPurinModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0200 @ 0x200 (31 vertices) */
@@ -39,19 +24,9 @@ Vtx dNPurinModel_Vtx_0x0200_Vtx[31] = {
 	#include <NPurinModel/Vtx_0x0200.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x03F0 @ 0x3F0 (2 vertices) */
-Vtx dNPurinModel_Vtx_0x03F0_Vtx[2] = {
+/* Vtx: Vtx_0x03F0_Vtx @ 0x3F0 (32 vertices) */
+Vtx dNPurinModel_Vtx_0x03F0_Vtx[32] = {
 	#include <NPurinModel/Vtx_0x03F0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0410 @ 0x410 (1 vertices) */
-Vtx dNPurinModel_Vtx_0x0410_Vtx[1] = {
-	#include <NPurinModel/Vtx_0x0410.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0420 to 0x05F0 (464 bytes) */
-u8 dNPurinModel_gap_0x0420[464] = {
-	#include <NPurinModel/gap_0x0420.data.inc.c>
 };
 
 /* Vtx: Vtx_0x05F0 @ 0x5F0 (30 vertices) */

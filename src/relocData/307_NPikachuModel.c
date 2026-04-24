@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNPikachuModel_gap_0x0000[8] = {
-	#include <NPikachuModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNPikachuModel_Lut_0x0008_palette[16] = {
-	#include <NPikachuModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNPikachuModel_gap_0x0028[8] = {
-	#include <NPikachuModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (448 bytes) */
-u8 dNPikachuModel_Tex_0x0030[448] = {
-	#include <NPikachuModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (31 vertices) */
+Vtx dNPikachuModel_gap_0x0000[31] = {
+	#include <NPikachuModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01F0 @ 0x1F0 (13 vertices) */
@@ -199,9 +184,24 @@ Gfx dNPikachuModel_Joint_0x23A0_DisplayList[31] = {
 	#include <NPikachuModel/Joint_0x23A0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2498 to 0x2778 (736 bytes) */
-u8 dNPikachuModel_Joint_0x23A0_post[736] = {
-	#include <NPikachuModel/Joint_0x23A0_post.data.inc.c>
+/* Gfx DL: Joint_0x23A0_post @ 0x2498 (35 cmds) */
+Gfx dNPikachuModel_Joint_0x23A0_post[35] = {
+	#include <NPikachuModel/Joint_0x23A0_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x23A0_post_post @ 0x25B0 (22 cmds) */
+Gfx dNPikachuModel_Joint_0x23A0_post_post[22] = {
+	#include <NPikachuModel/Joint_0x23A0_post_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x23A0_post_post_post @ 0x2660 (21 cmds) */
+Gfx dNPikachuModel_Joint_0x23A0_post_post_post[21] = {
+	#include <NPikachuModel/Joint_0x23A0_post_post_post.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x2708 (112 bytes) */
+u8 dNPikachuModel_Joint_0x23A0_post_post_post_post[112] = {
+	#include <NPikachuModel/Joint_0x23A0_post_post_post_post.data.inc.c>
 };
 
 /* DObjDesc: JointTree @ 0x2778 (28 entries) */

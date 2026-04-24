@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNCaptainModel_gap_0x0000[8] = {
-	#include <NCaptainModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNCaptainModel_Lut_0x0008_palette[16] = {
-	#include <NCaptainModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNCaptainModel_gap_0x0028[8] = {
-	#include <NCaptainModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (448 bytes) */
-u8 dNCaptainModel_Tex_0x0030[448] = {
-	#include <NCaptainModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (31 vertices) */
+Vtx dNCaptainModel_gap_0x0000[31] = {
+	#include <NCaptainModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01F0 @ 0x1F0 (7 vertices) */
@@ -49,19 +34,9 @@ Vtx dNCaptainModel_Vtx_0x0440_Vtx[26] = {
 	#include <NCaptainModel/Vtx_0x0440.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x05E0 @ 0x5E0 (2 vertices) */
-Vtx dNCaptainModel_Vtx_0x05E0_Vtx[2] = {
+/* Vtx: Vtx_0x05E0_Vtx @ 0x5E0 (32 vertices) */
+Vtx dNCaptainModel_Vtx_0x05E0_Vtx[32] = {
 	#include <NCaptainModel/Vtx_0x05E0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0600 @ 0x600 (1 vertices) */
-Vtx dNCaptainModel_Vtx_0x0600_Vtx[1] = {
-	#include <NCaptainModel/Vtx_0x0600.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0610 to 0x07E0 (464 bytes) */
-u8 dNCaptainModel_gap_0x0610[464] = {
-	#include <NCaptainModel/gap_0x0610.data.inc.c>
 };
 
 /* Vtx: Vtx_0x07E0 @ 0x7E0 (4 vertices) */
@@ -84,19 +59,9 @@ Vtx dNCaptainModel_Vtx_0x0AF0_Vtx[32] = {
 	#include <NCaptainModel/Vtx_0x0AF0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0CF0 @ 0xCF0 (2 vertices) */
-Vtx dNCaptainModel_Vtx_0x0CF0_Vtx[2] = {
+/* Vtx: Vtx_0x0CF0_Vtx @ 0xCF0 (32 vertices) */
+Vtx dNCaptainModel_Vtx_0x0CF0_Vtx[32] = {
 	#include <NCaptainModel/Vtx_0x0CF0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0D10 @ 0xD10 (1 vertices) */
-Vtx dNCaptainModel_Vtx_0x0D10_Vtx[1] = {
-	#include <NCaptainModel/Vtx_0x0D10.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0D20 to 0x0EF0 (464 bytes) */
-u8 dNCaptainModel_gap_0x0D20[464] = {
-	#include <NCaptainModel/gap_0x0D20.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0EF0 @ 0xEF0 (4 vertices) */

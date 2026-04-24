@@ -28,39 +28,9 @@ Vtx dNessModel_Vtx_0x06D0_Vtx[13] = {
 	#include <NessModel/Vtx_0x06D0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x07A0 @ 0x7A0 (2 vertices) */
-Vtx dNessModel_Vtx_0x07A0_Vtx[2] = {
+/* Vtx: Vtx_0x07A0_Vtx @ 0x7A0 (9 vertices) */
+Vtx dNessModel_Vtx_0x07A0_Vtx[9] = {
 	#include <NessModel/Vtx_0x07A0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x07C0 @ 0x7C0 (1 vertices) */
-Vtx dNessModel_Vtx_0x07C0_Vtx[1] = {
-	#include <NessModel/Vtx_0x07C0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x07D0 to 0x07E0 (16 bytes) */
-u8 dNessModel_gap_0x07D0[16] = {
-	#include <NessModel/gap_0x07D0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x07E0 @ 0x7E0 (1 vertices) */
-Vtx dNessModel_Vtx_0x07E0_Vtx[1] = {
-	#include <NessModel/Vtx_0x07E0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x07F0 to 0x0800 (16 bytes) */
-u8 dNessModel_gap_0x07F0[16] = {
-	#include <NessModel/gap_0x07F0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0800 @ 0x800 (2 vertices) */
-Vtx dNessModel_Vtx_0x0800_Vtx[2] = {
-	#include <NessModel/Vtx_0x0800.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0820 to 0x0830 (16 bytes) */
-u8 dNessModel_gap_0x0820[16] = {
-	#include <NessModel/gap_0x0820.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0830 @ 0x830 (10 vertices) */
@@ -98,19 +68,9 @@ Vtx dNessModel_Vtx_0x0B60_Vtx[11] = {
 	#include <NessModel/Vtx_0x0B60.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0C10 @ 0xC10 (2 vertices) */
-Vtx dNessModel_Vtx_0x0C10_Vtx[2] = {
+/* Vtx: Vtx_0x0C10_Vtx @ 0xC10 (6 vertices) */
+Vtx dNessModel_Vtx_0x0C10_Vtx[6] = {
 	#include <NessModel/Vtx_0x0C10.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0C30 @ 0xC30 (2 vertices) */
-Vtx dNessModel_Vtx_0x0C30_Vtx[2] = {
-	#include <NessModel/Vtx_0x0C30.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x0C50 to 0x0C70 (32 bytes) */
-u8 dNessModel_gap_0x0C50[32] = {
-	#include <NessModel/gap_0x0C50.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0C70 @ 0xC70 (12 vertices) */
@@ -153,34 +113,9 @@ Vtx dNessModel_Vtx_0x1120_Vtx[10] = {
 	#include <NessModel/Vtx_0x1120.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x11C0 @ 0x11C0 (1 vertices) */
-Vtx dNessModel_Vtx_0x11C0_Vtx[1] = {
+/* Vtx: Vtx_0x11C0_Vtx @ 0x11C0 (12 vertices) */
+Vtx dNessModel_Vtx_0x11C0_Vtx[12] = {
 	#include <NessModel/Vtx_0x11C0.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x11D0 @ 0x11D0 (1 vertices) */
-Vtx dNessModel_Vtx_0x11D0_Vtx[1] = {
-	#include <NessModel/Vtx_0x11D0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x11E0 to 0x11F0 (16 bytes) */
-u8 dNessModel_gap_0x11E0[16] = {
-	#include <NessModel/gap_0x11E0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x11F0 @ 0x11F0 (1 vertices) */
-Vtx dNessModel_Vtx_0x11F0_Vtx[1] = {
-	#include <NessModel/Vtx_0x11F0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1200 to 0x1220 (32 bytes) */
-u8 dNessModel_gap_0x1200[32] = {
-	#include <NessModel/gap_0x1200.data.inc.c>
-};
-
-/* Vtx: Vtx_0x1220 @ 0x1220 (6 vertices) */
-Vtx dNessModel_Vtx_0x1220_Vtx[6] = {
-	#include <NessModel/Vtx_0x1220.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1280 @ 0x1280 (16 vertices) */
@@ -193,44 +128,9 @@ Vtx dNessModel_Vtx_0x1380_Vtx[11] = {
 	#include <NessModel/Vtx_0x1380.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x1430 @ 0x1430 (1 vertices) */
-Vtx dNessModel_Vtx_0x1430_Vtx[1] = {
+/* Vtx: Vtx_0x1430_Vtx @ 0x1430 (12 vertices) */
+Vtx dNessModel_Vtx_0x1430_Vtx[12] = {
 	#include <NessModel/Vtx_0x1430.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x1440 @ 0x1440 (1 vertices) */
-Vtx dNessModel_Vtx_0x1440_Vtx[1] = {
-	#include <NessModel/Vtx_0x1440.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1450 to 0x1460 (16 bytes) */
-u8 dNessModel_gap_0x1450[16] = {
-	#include <NessModel/gap_0x1450.data.inc.c>
-};
-
-/* Vtx: Vtx_0x1460 @ 0x1460 (2 vertices) */
-Vtx dNessModel_Vtx_0x1460_Vtx[2] = {
-	#include <NessModel/Vtx_0x1460.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1480 to 0x1490 (16 bytes) */
-u8 dNessModel_gap_0x1480[16] = {
-	#include <NessModel/gap_0x1480.data.inc.c>
-};
-
-/* Vtx: Vtx_0x1490 @ 0x1490 (1 vertices) */
-Vtx dNessModel_Vtx_0x1490_Vtx[1] = {
-	#include <NessModel/Vtx_0x1490.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x14A0 to 0x14B0 (16 bytes) */
-u8 dNessModel_gap_0x14A0[16] = {
-	#include <NessModel/gap_0x14A0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x14B0 @ 0x14B0 (4 vertices) */
-Vtx dNessModel_Vtx_0x14B0_Vtx[4] = {
-	#include <NessModel/Vtx_0x14B0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x14F0 @ 0x14F0 (16 vertices) */
@@ -594,39 +494,9 @@ Vtx dNessModel_Vtx_0x34E0_Vtx[9] = {
 	#include <NessModel/Vtx_0x34E0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x3570 @ 0x3570 (1 vertices) */
-Vtx dNessModel_Vtx_0x3570_Vtx[1] = {
+/* Vtx: Vtx_0x3570_Vtx @ 0x3570 (9 vertices) */
+Vtx dNessModel_Vtx_0x3570_Vtx[9] = {
 	#include <NessModel/Vtx_0x3570.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x3580 @ 0x3580 (2 vertices) */
-Vtx dNessModel_Vtx_0x3580_Vtx[2] = {
-	#include <NessModel/Vtx_0x3580.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x35A0 to 0x35B0 (16 bytes) */
-u8 dNessModel_gap_0x35A0[16] = {
-	#include <NessModel/gap_0x35A0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x35B0 @ 0x35B0 (1 vertices) */
-Vtx dNessModel_Vtx_0x35B0_Vtx[1] = {
-	#include <NessModel/Vtx_0x35B0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x35C0 to 0x35D0 (16 bytes) */
-u8 dNessModel_gap_0x35C0[16] = {
-	#include <NessModel/gap_0x35C0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x35D0 @ 0x35D0 (2 vertices) */
-Vtx dNessModel_Vtx_0x35D0_Vtx[2] = {
-	#include <NessModel/Vtx_0x35D0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x35F0 to 0x3600 (16 bytes) */
-u8 dNessModel_gap_0x35F0[16] = {
-	#include <NessModel/gap_0x35F0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x3600 @ 0x3600 (2 vertices) */
@@ -946,8 +816,8 @@ u8 dNessModel_gap_0x553C_sub_0x20C[8] = {
 };
 
 /* gap sub-block @ 0x5750 (was gap+0x214, 256 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x214[256] = {
-	#include <NessModel/gap_0x553C_sub_0x214.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x214[16] = {
+	#include <NessModel/gap_0x553C_sub_0x214.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5850 (was gap+0x314, 144 bytes) */
@@ -956,18 +826,23 @@ Gfx dNessModel_DL_0x5850[18] = {
 };
 
 /* gap sub-block @ 0x58E0 (was gap+0x3A4, 192 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x3A4[192] = {
-	#include <NessModel/gap_0x553C_sub_0x3A4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x3A4[12] = {
+	#include <NessModel/gap_0x553C_sub_0x3A4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x59A0 (was gap+0x464, 128 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x464[128] = {
-	#include <NessModel/gap_0x553C_sub_0x464.data.inc.c>
+/* Gfx DL: gap_0x553C_sub_0x464 @ 0x59A0 (15 cmds) */
+Gfx dNessModel_gap_0x553C_sub_0x464[15] = {
+	#include <NessModel/gap_0x553C_sub_0x464.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x5A18 (8 bytes) */
+u8 dNessModel_gap_0x553C_sub_0x464_post[8] = {
+	#include <NessModel/gap_0x553C_sub_0x464_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x5A20 (was gap+0x4E4, 256 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x4E4[256] = {
-	#include <NessModel/gap_0x553C_sub_0x4E4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x4E4[16] = {
+	#include <NessModel/gap_0x553C_sub_0x4E4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5B20 (was gap+0x5E4, 144 bytes) */
@@ -976,18 +851,23 @@ Gfx dNessModel_DL_0x5B20[18] = {
 };
 
 /* gap sub-block @ 0x5BB0 (was gap+0x674, 192 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x674[192] = {
-	#include <NessModel/gap_0x553C_sub_0x674.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x674[12] = {
+	#include <NessModel/gap_0x553C_sub_0x674.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5C70 (was gap+0x734, 128 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x734[128] = {
-	#include <NessModel/gap_0x553C_sub_0x734.data.inc.c>
+/* Gfx DL: gap_0x553C_sub_0x734 @ 0x5C70 (15 cmds) */
+Gfx dNessModel_gap_0x553C_sub_0x734[15] = {
+	#include <NessModel/gap_0x553C_sub_0x734.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x5CE8 (8 bytes) */
+u8 dNessModel_gap_0x553C_sub_0x734_post[8] = {
+	#include <NessModel/gap_0x553C_sub_0x734_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x5CF0 (was gap+0x7B4, 192 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x7B4[192] = {
-	#include <NessModel/gap_0x553C_sub_0x7B4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x7B4[12] = {
+	#include <NessModel/gap_0x553C_sub_0x7B4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5DB0 (was gap+0x874, 144 bytes) */
@@ -996,18 +876,23 @@ Gfx dNessModel_DL_0x5DB0[18] = {
 };
 
 /* gap sub-block @ 0x5E40 (was gap+0x904, 128 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x904[128] = {
-	#include <NessModel/gap_0x553C_sub_0x904.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x904[8] = {
+	#include <NessModel/gap_0x553C_sub_0x904.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5EC0 (was gap+0x984, 128 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x984[128] = {
-	#include <NessModel/gap_0x553C_sub_0x984.data.inc.c>
+/* Gfx DL: gap_0x553C_sub_0x984 @ 0x5EC0 (15 cmds) */
+Gfx dNessModel_gap_0x553C_sub_0x984[15] = {
+	#include <NessModel/gap_0x553C_sub_0x984.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x5F38 (8 bytes) */
+u8 dNessModel_gap_0x553C_sub_0x984_post[8] = {
+	#include <NessModel/gap_0x553C_sub_0x984_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x5F40 (was gap+0xA04, 192 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xA04[192] = {
-	#include <NessModel/gap_0x553C_sub_0xA04.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xA04[12] = {
+	#include <NessModel/gap_0x553C_sub_0xA04.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6000 (was gap+0xAC4, 144 bytes) */
@@ -1016,33 +901,23 @@ Gfx dNessModel_DL_0x6000[18] = {
 };
 
 /* gap sub-block @ 0x6090 (was gap+0xB54, 128 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xB54[128] = {
-	#include <NessModel/gap_0x553C_sub_0xB54.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xB54[8] = {
+	#include <NessModel/gap_0x553C_sub_0xB54.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6110 (was gap+0xBD4, 128 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xBD4[128] = {
-	#include <NessModel/gap_0x553C_sub_0xBD4.data.inc.c>
+/* Gfx DL: gap_0x553C_sub_0xBD4 @ 0x6110 (15 cmds) */
+Gfx dNessModel_gap_0x553C_sub_0xBD4[15] = {
+	#include <NessModel/gap_0x553C_sub_0xBD4.dl.inc.c>
 };
 
-/* gap sub-block @ 0x6190 (was gap+0xC54, 48 bytes) */
-Vtx dNessModel_gap_0x553C_sub_0xC54[3] = {
+/* Raw tail after DL @ 0x6188 (8 bytes) */
+u8 dNessModel_gap_0x553C_sub_0xBD4_post[8] = {
+	#include <NessModel/gap_0x553C_sub_0xBD4_post.data.inc.c>
+};
+
+/* Vtx: gap_0x553C_sub_0xC54 @ 0x6190 (13 vertices) */
+Vtx dNessModel_gap_0x553C_sub_0xC54[13] = {
 	#include <NessModel/gap_0x553C_sub_0xC54.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x61C0 (was gap+0xC84, 48 bytes) */
-Vtx dNessModel_gap_0x553C_sub_0xC84[3] = {
-	#include <NessModel/gap_0x553C_sub_0xC84.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x61F0 (was gap+0xCB4, 48 bytes) */
-Vtx dNessModel_gap_0x553C_sub_0xCB4[3] = {
-	#include <NessModel/gap_0x553C_sub_0xCB4.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x6220 (was gap+0xCE4, 64 bytes) */
-Vtx dNessModel_gap_0x553C_sub_0xCE4[4] = {
-	#include <NessModel/gap_0x553C_sub_0xCE4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6260 (was gap+0xD24, 320 bytes) */
@@ -1076,13 +951,13 @@ Gfx dNessModel_DL_0x69E0[30] = {
 };
 
 /* gap sub-block @ 0x6AD0 (was gap+0x1594, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1594[64] = {
-	#include <NessModel/gap_0x553C_sub_0x1594.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x1594[4] = {
+	#include <NessModel/gap_0x553C_sub_0x1594.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6B10 (was gap+0x15D4, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x15D4[64] = {
-	#include <NessModel/gap_0x553C_sub_0x15D4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x15D4[4] = {
+	#include <NessModel/gap_0x553C_sub_0x15D4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6B50 (was gap+0x1614, 288 bytes) */
@@ -1091,18 +966,23 @@ Gfx dNessModel_DL_0x6B50[36] = {
 };
 
 /* gap sub-block @ 0x6C70 (was gap+0x1734, 112 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1734[112] = {
-	#include <NessModel/gap_0x553C_sub_0x1734.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x1734[7] = {
+	#include <NessModel/gap_0x553C_sub_0x1734.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6CE0 (was gap+0x17A4, 176 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x17A4[176] = {
-	#include <NessModel/gap_0x553C_sub_0x17A4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x17A4[11] = {
+	#include <NessModel/gap_0x553C_sub_0x17A4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x6D90 (was gap+0x1854, 344 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1854[344] = {
-	#include <NessModel/gap_0x553C_sub_0x1854.data.inc.c>
+/* Gfx DL: gap_0x553C_sub_0x1854 @ 0x6D90 (41 cmds) */
+Gfx dNessModel_gap_0x553C_sub_0x1854[41] = {
+	#include <NessModel/gap_0x553C_sub_0x1854.dl.inc.c>
+};
+
+/* Raw tail after DL @ 0x6ED8 (16 bytes) */
+u8 dNessModel_gap_0x553C_sub_0x1854_post[16] = {
+	#include <NessModel/gap_0x553C_sub_0x1854_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x6EE8 (was gap+0x19AC, 1032 bytes) */
@@ -1141,8 +1021,8 @@ u8 dNessModel_gap_0x553C_sub_0x264C[8] = {
 };
 
 /* gap sub-block @ 0x7B90 (was gap+0x2654, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x2654[64] = {
-	#include <NessModel/gap_0x553C_sub_0x2654.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x2654[4] = {
+	#include <NessModel/gap_0x553C_sub_0x2654.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7BD0 (was gap+0x2694, 184 bytes) */
@@ -1221,8 +1101,8 @@ u8 dNessModel_gap_0x553C_sub_0x3514[8] = {
 };
 
 /* gap sub-block @ 0x8A58 (was gap+0x351C, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x351C[64] = {
-	#include <NessModel/gap_0x553C_sub_0x351C.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x351C[4] = {
+	#include <NessModel/gap_0x553C_sub_0x351C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8A98 (was gap+0x355C, 168 bytes) */
@@ -1241,8 +1121,8 @@ u8 dNessModel_gap_0x553C_sub_0x361C[1024] = {
 };
 
 /* gap sub-block @ 0x8F58 (was gap+0x3A1C, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x3A1C[64] = {
-	#include <NessModel/gap_0x553C_sub_0x3A1C.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x3A1C[4] = {
+	#include <NessModel/gap_0x553C_sub_0x3A1C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8F98 (was gap+0x3A5C, 184 bytes) */
@@ -1306,8 +1186,8 @@ u8 dNessModel_gap_0x98E8_sub_0x18[8] = {
 };
 
 /* gap sub-block @ 0x9908 (was gap+0x20, 64 bytes) */
-u8 dNessModel_gap_0x98E8_sub_0x20[64] = {
-	#include <NessModel/gap_0x98E8_sub_0x20.data.inc.c>
+Vtx dNessModel_gap_0x98E8_sub_0x20[4] = {
+	#include <NessModel/gap_0x98E8_sub_0x20.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9948 (was gap+0x60, 184 bytes) */

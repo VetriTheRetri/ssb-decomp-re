@@ -115,19 +115,9 @@ Vtx dSamusModel_Vtx_0x1958_Vtx[10] = {
 	#include <SamusModel/Vtx_0x1958.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x19F8 @ 0x19F8 (6 vertices) */
-Vtx dSamusModel_Vtx_0x19F8_Vtx[6] = {
+/* Vtx: Vtx_0x19F8_Vtx @ 0x19F8 (9 vertices) */
+Vtx dSamusModel_Vtx_0x19F8_Vtx[9] = {
 	#include <SamusModel/Vtx_0x19F8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x1A58 @ 0x1A58 (2 vertices) */
-Vtx dSamusModel_Vtx_0x1A58_Vtx[2] = {
-	#include <SamusModel/Vtx_0x1A58.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1A78 to 0x1A88 (16 bytes) */
-u8 dSamusModel_gap_0x1A78[16] = {
-	#include <SamusModel/gap_0x1A78.data.inc.c>
 };
 
 /* Vtx: Vtx_0x1A88 @ 0x1A88 (3 vertices) */
@@ -150,24 +140,9 @@ Vtx dSamusModel_Vtx_0x1C38_Vtx[10] = {
 	#include <SamusModel/Vtx_0x1C38.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x1CD8 @ 0x1CD8 (4 vertices) */
-Vtx dSamusModel_Vtx_0x1CD8_Vtx[4] = {
+/* Vtx: Vtx_0x1CD8_Vtx @ 0x1CD8 (12 vertices) */
+Vtx dSamusModel_Vtx_0x1CD8_Vtx[12] = {
 	#include <SamusModel/Vtx_0x1CD8.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x1D18 @ 0x1D18 (1 vertices) */
-Vtx dSamusModel_Vtx_0x1D18_Vtx[1] = {
-	#include <SamusModel/Vtx_0x1D18.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1D28 to 0x1D48 (32 bytes) */
-u8 dSamusModel_gap_0x1D28[32] = {
-	#include <SamusModel/gap_0x1D28.data.inc.c>
-};
-
-/* Vtx: Vtx_0x1D48 @ 0x1D48 (5 vertices) */
-Vtx dSamusModel_Vtx_0x1D48_Vtx[5] = {
-	#include <SamusModel/Vtx_0x1D48.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1D98 @ 0x1D98 (15 vertices) */
@@ -1505,49 +1480,9 @@ Vtx dSamusModel_gap_0x6FD4_sub_0x237C[15] = {
 	#include <SamusModel/gap_0x6FD4_sub_0x237C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x9440 (was gap+0x246C, 16 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x246C[1] = {
+/* Vtx: gap_0x6FD4_sub_0x246C @ 0x9440 (45 vertices) */
+Vtx dSamusModel_gap_0x6FD4_sub_0x246C[45] = {
 	#include <SamusModel/gap_0x6FD4_sub_0x246C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9450 (was gap+0x247C, 96 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x247C[6] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x247C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x94B0 (was gap+0x24DC, 80 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x24DC[5] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x24DC.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9500 (was gap+0x252C, 64 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x252C[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x252C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9540 (was gap+0x256C, 48 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x256C[3] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x256C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9570 (was gap+0x259C, 16 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x259C[1] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x259C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9580 (was gap+0x25AC, 176 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x25AC[11] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x25AC.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9630 (was gap+0x265C, 192 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x265C[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x265C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x96F0 (was gap+0x271C, 32 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x271C[2] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x271C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9710 (was gap+0x273C, 112 bytes) */
@@ -1560,14 +1495,9 @@ Vtx dSamusModel_gap_0x6FD4_sub_0x27AC[3] = {
 	#include <SamusModel/gap_0x6FD4_sub_0x27AC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x97B0 (was gap+0x27DC, 32 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x27DC[2] = {
+/* Vtx: gap_0x6FD4_sub_0x27DC @ 0x97B0 (6 vertices) */
+Vtx dSamusModel_gap_0x6FD4_sub_0x27DC[6] = {
 	#include <SamusModel/gap_0x6FD4_sub_0x27DC.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x97D0 (was gap+0x27FC, 64 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x27FC[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x27FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9810 (was gap+0x283C, 160 bytes) */
@@ -1620,14 +1550,9 @@ Vtx dSamusModel_gap_0x6FD4_sub_0x2E3C[20] = {
 	#include <SamusModel/gap_0x6FD4_sub_0x2E3C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x9F50 (was gap+0x2F7C, 144 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x2F7C[9] = {
+/* Vtx: gap_0x6FD4_sub_0x2F7C @ 0x9F50 (20 vertices) */
+Vtx dSamusModel_gap_0x6FD4_sub_0x2F7C[20] = {
 	#include <SamusModel/gap_0x6FD4_sub_0x2F7C.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x9FE0 (was gap+0x300C, 176 bytes) */
-Vtx dSamusModel_gap_0x6FD4_sub_0x300C[11] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x300C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA090 (was gap+0x30BC, 192 bytes) */

@@ -14,24 +14,9 @@
  * does not choke on `Vtx X[0] = {}`.
  */
 
-/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dNMarioModel_gap_0x0000[8] = {
-	#include <NMarioModel/gap_0x0000.data.inc.c>
-};
-
-/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
-u16 dNMarioModel_Lut_0x0008_palette[16] = {
-	#include <NMarioModel/Lut_0x0008.palette.inc.c>
-};
-
-/* Raw data from file offset 0x0028 to 0x0030 (8 bytes) */
-u8 dNMarioModel_gap_0x0028[8] = {
-	#include <NMarioModel/gap_0x0028.data.inc.c>
-};
-
-/* Texture data @ 0x0030 (448 bytes) */
-u8 dNMarioModel_Tex_0x0030[448] = {
-	#include <NMarioModel/Tex_0x0030.tex.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (31 vertices) */
+Vtx dNMarioModel_gap_0x0000[31] = {
+	#include <NMarioModel/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x01F0 @ 0x1F0 (27 vertices) */

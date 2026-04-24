@@ -25,34 +25,9 @@ Vtx dMMarioModel_Vtx_0x0210_Vtx[16] = {
 	#include <MMarioModel/Vtx_0x0210.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x0310 @ 0x310 (24 vertices) */
-Vtx dMMarioModel_Vtx_0x0310_Vtx[24] = {
+/* Vtx: Vtx_0x0310_Vtx @ 0x310 (32 vertices) */
+Vtx dMMarioModel_Vtx_0x0310_Vtx[32] = {
 	#include <MMarioModel/Vtx_0x0310.vtx.inc.c>
-};
-
-/* Vtx: Vtx_0x0490 @ 0x490 (1 vertices) */
-Vtx dMMarioModel_Vtx_0x0490_Vtx[1] = {
-	#include <MMarioModel/Vtx_0x0490.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x04A0 to 0x04D0 (48 bytes) */
-u8 dMMarioModel_gap_0x04A0[48] = {
-	#include <MMarioModel/gap_0x04A0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x04D0 @ 0x4D0 (1 vertices) */
-Vtx dMMarioModel_Vtx_0x04D0_Vtx[1] = {
-	#include <MMarioModel/Vtx_0x04D0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x04E0 to 0x0500 (32 bytes) */
-u8 dMMarioModel_gap_0x04E0[32] = {
-	#include <MMarioModel/gap_0x04E0.data.inc.c>
-};
-
-/* Vtx: Vtx_0x0500 @ 0x500 (1 vertices) */
-Vtx dMMarioModel_Vtx_0x0500_Vtx[1] = {
-	#include <MMarioModel/Vtx_0x0500.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0510 @ 0x510 (1 vertices) */
@@ -238,8 +213,8 @@ DObjDesc dMMarioModel_JointTree[] = {
 PAD(8);
 
 /* Raw data from file offset 0x2288 to 0x2490 (520 bytes) */
-u8 dMMarioModel_Lut256_0x2288[520] = {
-	#include <MMarioModel/Lut256_0x2288.data.inc.c>
+u16 dMMarioModel_Lut256_0x2288[260] = {
+	#include <MMarioModel/Lut256_0x2288.palette.inc.c>
 };
 
 /* Texture data @ 0x2490 (2024 bytes) */

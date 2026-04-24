@@ -624,7 +624,6 @@ $(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.vpk0.bin
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
-	$(V)$(PYTHON) tools/expandRelocFile.py $* 2>/dev/null || true
 	@touch $@
 
 $(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.bin
@@ -632,7 +631,6 @@ $(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.bin
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
-	$(V)$(PYTHON) tools/expandRelocFile.py $* 2>/dev/null || true
 	@touch $@
 
 # User PNG override: if src/relocData/<Name>/<sprite>.<fmt>.png exists, use it
@@ -723,6 +721,15 @@ else ifneq ($$(RELOC_LIST_$(1)),)
 else
   # Hand-written .c master (no manifest)
   RELOC_MASTER_$(1) := $$(RELOC_C_$(1))
+
+  # Expanded human-readable view. Depends on the compiled .o because the
+  # expander uses nm to map byte offsets → symbol names for chain-pointer
+  # resolution and inline Vtx/Gfx/LUT decoding. Runs after extract (not as
+  # part of it) so the .o exists by the time nm is called.
+  $$(BUILD_DIR)/src/relocData/.build/.expand-$(1).stamp: $$(BUILD_DIR)/src/relocData/.build/$(1).o
+	$$(V)$$(PYTHON) tools/expandRelocFile.py $(1) >/dev/null || true
+	@touch $$@
+  RELOC_EXPAND_STAMPS += $$(BUILD_DIR)/src/relocData/.build/.expand-$(1).stamp
 endif
 
 # Compiling depends on:
@@ -772,6 +779,11 @@ $$(BUILD_DIR)/assets/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1)
 endef
 
 $(foreach f,$(RELOC_C_FILES),$(eval $(call RELOC_C_RULE,$(f))))
+
+# Expanded views are regenerated as a post-compile side-effect of `make all`.
+# Each stamp depends on its .o, so incremental edits to a hand-written
+# src/relocData/<name>.c only re-expand the file that actually changed.
+all: $(RELOC_EXPAND_STAMPS)
 
 # verify-reloc: compare generated binaries against originals (run after make)
 .PHONY: verify-reloc

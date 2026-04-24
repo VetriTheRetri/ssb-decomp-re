@@ -24,7 +24,7 @@
  * (35,472 B). Each DL at 0x08A90.. pulls data out of this region via
  * SETTIMG / LOADTLUT / VTX commands. */
 u8 dMVOpeningYamabuki_Tex_pool[0x8A90] = {
-	#include <MVOpeningYamabuki/Tex_pool.data.inc.c>
+	#include <MVOpeningYamabuki/Tex_pool.tex.inc.c>
 };
 
 /* Gfx DL: DL_0x08A90 @ 0x8A90 (5 cmds) */
@@ -95,7 +95,7 @@ PAD(8);  /* tail pad after the DObjDesc array */
 /* `llMVOpeningYamabukiLegsAnimJoint` — AObjEvent32 tracks driving the
  * leg joints (6,640 B). Fed to `gcAddAnimJointAll` in
  * `mvOpeningYamabukiMakeLegs()`. */
-u8 dMVOpeningYamabuki_LegsAnimJoint[0x19F0] = {
+u32 dMVOpeningYamabuki_LegsAnimJoint[1660] = {
 	#include <MVOpeningYamabuki/LegsAnimJoint.data.inc.c>
 };
 
@@ -115,7 +115,7 @@ DObjDesc dMVOpeningYamabuki_LegsShadowDObjDesc[5] = {
 PAD(4);
 
 /* `llMVOpeningYamabukiLegsShadowAnimJoint` (5,712 B). */
-u8 dMVOpeningYamabuki_LegsShadowAnimJoint[0x1650] = {
+u32 dMVOpeningYamabuki_LegsShadowAnimJoint[1428] = {
 	#include <MVOpeningYamabuki/LegsShadowAnimJoint.data.inc.c>
 };
 
@@ -135,7 +135,7 @@ DObjDesc dMVOpeningYamabuki_MBallDObjDesc[5] = {
 PAD(4);
 
 /* `llMVOpeningYamabukiMBallAnimJoint` (2,160 B). */
-u8 dMVOpeningYamabuki_MBallAnimJoint[0x870] = {
+u32 dMVOpeningYamabuki_MBallAnimJoint[540] = {
 	#include <MVOpeningYamabuki/MBallAnimJoint.data.inc.c>
 };
 
@@ -144,7 +144,7 @@ u8 dMVOpeningYamabuki_MBallAnimJoint[0x870] = {
 /* `llMVOpeningYamabukiCamAnimJoint` — 56 bytes, 14 u32 words driving the
  * scene camera via `gcAddCObjCamAnimJoint` in
  * `mvOpeningYamabukiMakeMainCamera()`. */
-u8 dMVOpeningYamabuki_CamAnimJoint[0x38] = {
+u32 dMVOpeningYamabuki_CamAnimJoint[14] = {
 	#include <MVOpeningYamabuki/CamAnimJoint.data.inc.c>
 };
 
@@ -153,7 +153,7 @@ u8 dMVOpeningYamabuki_CamAnimJoint[0x38] = {
  * from the N64 LOADBLOCK 64-bit alignment). Each `Bitmap.buf` in the
  * array below gets chain-patched to point at `tex_tiles[i * 0xF08]`. */
 u8 dMVOpeningYamabuki_Wallpaper_tex_tiles[0x317A0] = {
-	#include <MVOpeningYamabuki/Wallpaper_tex_tiles.data.inc.c>
+	#include <MVOpeningYamabuki/Wallpaper_tex_tiles.tex.inc.c>
 };
 
 /* 53-entry Bitmap array. Each `.buf` points at the matching tile inside

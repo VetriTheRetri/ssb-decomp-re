@@ -162,7 +162,7 @@ DObjDesc dLBTransitionCamera_DObjDesc_0x3F90[] = {
 };
 
 /* Raw data from file offset 0x4148 to 0x4290 (328 bytes) */
-u8 dLBTransitionCamera_AnimJoint_0x4148[328] = {
+u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	#include <LBTransitionCamera/AnimJoint_0x4148.data.inc.c>
 };
 

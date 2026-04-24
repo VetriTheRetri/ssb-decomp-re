@@ -358,7 +358,7 @@ DObjDesc dLBTransitionBlock_DObjDesc_0x4E18[] = {
 };
 
 /* Raw data from file offset 0x536C to 0x5FE0 (3188 bytes) */
-u8 dLBTransitionBlock_AnimJoint_0x536C[3188] = {
+u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	#include <LBTransitionBlock/AnimJoint_0x536C.data.inc.c>
 };
 

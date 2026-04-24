@@ -468,7 +468,7 @@ u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[306] = {
 
 /* Raw data from file offset 0x3A68 to 0x4F08 (5280 bytes) */
 u8 dEFCommonEffects2_Shadow_TextureImage[5280] = {
-	#include <EFCommonEffects2/Shadow_TextureImage.data.inc.c>
+	#include <EFCommonEffects2/Shadow_TextureImage.tex.inc.c>
 };
 
 /* DObjDesc: DeadExplodeDefaultDObjDesc @ 0x4F08 (1 entries) */

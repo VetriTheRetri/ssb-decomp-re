@@ -24,7 +24,7 @@ DObjDesc dLBTransitionPaperAirplane_DObjDesc_0x0F98[] = {
 };
 
 /* Raw data from file offset 0x101C to 0x1050 (52 bytes) */
-u8 dLBTransitionPaperAirplane_AnimJoint_0x101C[52] = {
+u32 dLBTransitionPaperAirplane_AnimJoint_0x101C[13] = {
 	#include <LBTransitionPaperAirplane/AnimJoint_0x101C.data.inc.c>
 };
 

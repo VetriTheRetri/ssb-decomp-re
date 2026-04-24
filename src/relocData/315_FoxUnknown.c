@@ -27,7 +27,7 @@ PAD(8);
 
 /* @ 0x0030, 256 bytes — CI4 texture (32×16) */
 u8 dFoxUnknown_Tex[0x100] = {
-	#include <FoxUnknown/Tex.data.inc.c>
+	#include <FoxUnknown/Tex.tex.inc.c>
 };
 
 /* @ 0x0130, 704 bytes — 44 Vtx */

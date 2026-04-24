@@ -147,7 +147,7 @@ DObjDesc dLBTransitionCheck_DObjDesc_0x3E80[] = {
 };
 
 /* Raw data from file offset 0x4038 to 0x41E0 (424 bytes) */
-u8 dLBTransitionCheck_AnimJoint_0x4038[424] = {
+u32 dLBTransitionCheck_AnimJoint_0x4038[106] = {
 	#include <LBTransitionCheck/AnimJoint_0x4038.data.inc.c>
 };
 

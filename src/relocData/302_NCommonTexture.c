@@ -25,5 +25,5 @@ PAD(8);
 
 /* @ 0x0030, 512 bytes — CI4 texture (32×32) */
 u8 dNCommonTexture_Tex[0x200] = {
-	#include <NCommonTexture/Tex.data.inc.c>
+	#include <NCommonTexture/Tex.tex.inc.c>
 };

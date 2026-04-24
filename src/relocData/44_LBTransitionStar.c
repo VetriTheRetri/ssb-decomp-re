@@ -24,7 +24,7 @@ DObjDesc dLBTransitionStar_DObjDesc_0x2450[] = {
 };
 
 /* Raw data from file offset 0x24D4 to 0x2520 (76 bytes) */
-u8 dLBTransitionStar_AnimJoint_0x24D4[76] = {
+u32 dLBTransitionStar_AnimJoint_0x24D4[19] = {
 	#include <LBTransitionStar/AnimJoint_0x24D4.data.inc.c>
 };
 

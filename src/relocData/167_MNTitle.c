@@ -293,7 +293,7 @@ PAD(4);
 Gfx dMNTitle_Cutout_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_Cutout_tex[4472] = {
-    #include <MNTitle/Cutout.data.inc.c>
+    #include <MNTitle/Cutout.tex.inc.c>
 };
 
 Bitmap dMNTitle_Cutout_bitmaps[] = {
@@ -326,7 +326,7 @@ PAD(12);
 Gfx dMNTitle_JPChar2_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar2_tex[1728] = {
-    #include <MNTitle/JPChar2.data.inc.c>
+    #include <MNTitle/JPChar2.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar2_bitmaps[] = {
@@ -358,7 +358,7 @@ PAD(4);
 Gfx dMNTitle_JPChar3_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar3_tex[1728] = {
-    #include <MNTitle/JPChar3.data.inc.c>
+    #include <MNTitle/JPChar3.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar3_bitmaps[] = {
@@ -390,7 +390,7 @@ PAD(4);
 Gfx dMNTitle_JPChar4_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar4_tex[4936] = {
-    #include <MNTitle/JPChar4.data.inc.c>
+    #include <MNTitle/JPChar4.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar4_bitmaps[] = {
@@ -423,7 +423,7 @@ PAD(12);
 Gfx dMNTitle_JPChar5_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar5_tex[1728] = {
-    #include <MNTitle/JPChar5.data.inc.c>
+    #include <MNTitle/JPChar5.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar5_bitmaps[] = {
@@ -455,7 +455,7 @@ PAD(4);
 Gfx dMNTitle_JPChar6_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar6_tex[624] = {
-    #include <MNTitle/JPChar6.data.inc.c>
+    #include <MNTitle/JPChar6.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar6_bitmaps[] = {
@@ -487,7 +487,7 @@ PAD(4);
 Gfx dMNTitle_JPChar7_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar7_tex[1520] = {
-    #include <MNTitle/JPChar7.data.inc.c>
+    #include <MNTitle/JPChar7.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar7_bitmaps[] = {
@@ -519,7 +519,7 @@ PAD(4);
 Gfx dMNTitle_JPChar8_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar8_tex[384] = {
-    #include <MNTitle/JPChar8.data.inc.c>
+    #include <MNTitle/JPChar8.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar8_bitmaps[] = {
@@ -551,7 +551,7 @@ PAD(4);
 Gfx dMNTitle_JPChar9_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar9_tex[2304] = {
-    #include <MNTitle/JPChar9.data.inc.c>
+    #include <MNTitle/JPChar9.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar9_bitmaps[] = {
@@ -583,7 +583,7 @@ PAD(4);
 Gfx dMNTitle_JPChar10_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar10_tex[960] = {
-    #include <MNTitle/JPChar10.data.inc.c>
+    #include <MNTitle/JPChar10.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar10_bitmaps[] = {
@@ -615,7 +615,7 @@ PAD(4);
 Gfx dMNTitle_JPChar11_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_JPChar11_tex[1920] = {
-    #include <MNTitle/JPChar11.data.inc.c>
+    #include <MNTitle/JPChar11.tex.inc.c>
 };
 
 Bitmap dMNTitle_JPChar11_bitmaps[] = {
@@ -647,7 +647,7 @@ PAD(4);
 Gfx dMNTitle_TMUnk_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_TMUnk_tex[160] = {
-    #include <MNTitle/TMUnk.data.inc.c>
+    #include <MNTitle/TMUnk.tex.inc.c>
 };
 
 Bitmap dMNTitle_TMUnk_bitmaps[] = {
@@ -679,7 +679,7 @@ PAD(4);
 Gfx dMNTitle_Super_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_Super_tex[5104] = {
-    #include <MNTitle/Super.data.inc.c>
+    #include <MNTitle/Super.tex.inc.c>
 };
 
 Bitmap dMNTitle_Super_bitmaps[] = {
@@ -712,7 +712,7 @@ PAD(4);
 Gfx dMNTitle_Copyright_dl[] = { gsSPEndDisplayList() };
 
 u8 dMNTitle_Copyright_tex[14312] = {
-    #include <MNTitle/Copyright.data.inc.c>
+    #include <MNTitle/Copyright.tex.inc.c>
 };
 
 Bitmap dMNTitle_Copyright_bitmaps[] = {

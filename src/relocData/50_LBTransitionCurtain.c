@@ -112,7 +112,7 @@ DObjDesc dLBTransitionCurtain_DObjDesc_0x7AE0[] = {
 };
 
 /* Raw data from file offset 0x7C98 to 0x7E70 (472 bytes) */
-u8 dLBTransitionCurtain_AnimJoint_0x7C98[472] = {
+u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	#include <LBTransitionCurtain/AnimJoint_0x7C98.data.inc.c>
 };
 

@@ -295,7 +295,7 @@ DObjDesc dMVOpeningRunCrash_DObjDesc_0x35F8[] = {
 };
 
 /* Raw data from file offset 0x3700 to 0x3AB0 (944 bytes) */
-u8 dMVOpeningRunCrash_MatAnimJoint_0x3700[944] = {
+u32 dMVOpeningRunCrash_MatAnimJoint_0x3700[236] = {
 	#include <MVOpeningRunCrash/MatAnimJoint_0x3700.data.inc.c>
 };
 

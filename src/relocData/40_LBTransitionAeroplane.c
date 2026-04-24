@@ -370,7 +370,7 @@ DObjDesc dLBTransitionAeroplane_DObjDesc_0xB3F8[] = {
 };
 
 /* Raw data from file offset 0xB710 to 0xB9F0 (736 bytes) */
-u8 dLBTransitionAeroplane_AnimJoint_0xB710[736] = {
+u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	#include <LBTransitionAeroplane/AnimJoint_0xB710.data.inc.c>
 };
 

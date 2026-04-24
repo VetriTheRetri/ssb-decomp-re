@@ -30,7 +30,7 @@ DObjDesc dLBTransitionRotScale_DObjDesc_0x0F98[] = {
 };
 
 /* Raw data from file offset 0x101C to 0x1070 (84 bytes) */
-u8 dLBTransitionRotScale_AnimJoint_0x101C[84] = {
+u32 dLBTransitionRotScale_AnimJoint_0x101C[21] = {
 	#include <LBTransitionRotScale/AnimJoint_0x101C.data.inc.c>
 };
 

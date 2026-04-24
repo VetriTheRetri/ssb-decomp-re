@@ -97,7 +97,7 @@ DObjDesc dLBTransitionSudare1_DObjDesc_0x74A8[] = {
 };
 
 /* Raw data from file offset 0x7660 to 0x7830 (464 bytes) */
-u8 dLBTransitionSudare1_AnimJoint_0x7660[464] = {
+u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	#include <LBTransitionSudare1/AnimJoint_0x7660.data.inc.c>
 };
 

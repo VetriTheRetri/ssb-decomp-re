@@ -25,7 +25,7 @@ DObjDesc dLBTransitionGakubuthi_DObjDesc_0x0F98[] = {
 };
 
 /* Raw data from file offset 0x101C to 0x10E0 (196 bytes) */
-u8 dLBTransitionGakubuthi_AnimJoint_0x101C[196] = {
+u32 dLBTransitionGakubuthi_AnimJoint_0x101C[49] = {
 	#include <LBTransitionGakubuthi/AnimJoint_0x101C.data.inc.c>
 };
 

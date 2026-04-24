@@ -6,8 +6,6 @@
 
 #include "relocdata_types.h"
 
-
-
 /* Raw data from file offset 0x0000 to 0x5028 (20520 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dSCExplainGraphics_gap_0x0000[8] = {
@@ -184,8 +182,8 @@ u8 dSCExplainGraphics_gap_0x5B10_sub_0x10[8] = {
 };
 
 /* gap sub-block @ 0x5B28 (was gap+0x18, 64 bytes) */
-u8 dSCExplainGraphics_gap_0x5B10_sub_0x18[64] = {
-	#include <SCExplainGraphics/gap_0x5B10_sub_0x18.data.inc.c>
+Vtx dSCExplainGraphics_gap_0x5B10_sub_0x18[4] = {
+	#include <SCExplainGraphics/gap_0x5B10_sub_0x18.vtx.inc.c>
 };
 
 /* DisplayList: TapSparkDisplayList @ 0x5B68 (160 bytes) */
@@ -212,7 +210,6 @@ Gfx dSCExplainGraphics_SpecialMoveRGB_DisplayList[29] = {
 u8 dSCExplainGraphics_SpecialMoveRGB_post[24] = {
 	#include <SCExplainGraphics/SpecialMoveRGB_post.data.inc.c>
 };
-
 
 #if defined(REGION_JP)
 
@@ -1375,8 +1372,6 @@ Sprite dSCExplainGraphics_PlusSymbol = {
 };
 
 PAD(4);
-
-
 
 #else /* US */
 

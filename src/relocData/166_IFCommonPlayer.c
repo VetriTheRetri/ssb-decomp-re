@@ -7,8 +7,8 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
-u8 dIFCommonPlayer_gap_0x0000[48] = {
-	#include <IFCommonPlayer/gap_0x0000.data.inc.c>
+Vtx dIFCommonPlayer_gap_0x0000[3] = {
+	#include <IFCommonPlayer/gap_0x0000.vtx.inc.c>
 };
 
 /* DisplayList: Magnify @ 0x30 (72 bytes) */

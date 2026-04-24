@@ -34,9 +34,9 @@ Gfx dKirbySpecial2_Joint_0x09B0_DisplayList[8] = {
 	#include <KirbySpecial2/Joint_0x09B0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x09F0 to 0x0A78 (136 bytes) */
-u8 dKirbySpecial2_Joint_0x09B0_post[136] = {
-	#include <KirbySpecial2/Joint_0x09B0_post.data.inc.c>
+/* Gfx DL: Joint_0x09B0_post @ 0x9F0 (17 cmds) */
+Gfx dKirbySpecial2_Joint_0x09B0_post[17] = {
+	#include <KirbySpecial2/Joint_0x09B0_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x0A78 @ 0xA78 (136 bytes) */

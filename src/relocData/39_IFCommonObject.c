@@ -18,49 +18,49 @@ Vtx dIFCommonObject_Vtx_pool[223] = {
 	#include <IFCommonObject/Vtx_pool.vtx.inc.c>
 };
 
-/* DL 0: 0x00DF0..0x00E38 (72 bytes). */
-u8 dIFCommonObject_DL_0x0DF0[0x48] = {
-	#include <IFCommonObject/DL_0x0DF0.data.inc.c>
+/* Gfx DL: DL_0x0DF0 @ 0xDF0 (9 cmds) */
+Gfx dIFCommonObject_DL_0x0DF0[9] = {
+	#include <IFCommonObject/DL_0x0DF0.dl.inc.c>
 };
 
-/* DL 1: 0x00E38..0x010F8 (704 bytes). */
-u8 dIFCommonObject_DL_0x0E38[0x2C0] = {
-	#include <IFCommonObject/DL_0x0E38.data.inc.c>
+/* Gfx DL: DL_0x0E38 @ 0xE38 (88 cmds) */
+Gfx dIFCommonObject_DL_0x0E38[88] = {
+	#include <IFCommonObject/DL_0x0E38.dl.inc.c>
 };
 
-/* DL 2: 0x010F8..0x01B60 (2664 bytes). */
-u8 dIFCommonObject_DL_0x10F8[0xA68] = {
-	#include <IFCommonObject/DL_0x10F8.data.inc.c>
+/* Gfx DL: DL_0x10F8 @ 0x10F8 (333 cmds) */
+Gfx dIFCommonObject_DL_0x10F8[333] = {
+	#include <IFCommonObject/DL_0x10F8.dl.inc.c>
 };
 
-/* DL 3: 0x01B60..0x025B8 (2648 bytes). */
-u8 dIFCommonObject_DL_0x1B60[0xA58] = {
-	#include <IFCommonObject/DL_0x1B60.data.inc.c>
+/* Gfx DL: DL_0x1B60 @ 0x1B60 (331 cmds) */
+Gfx dIFCommonObject_DL_0x1B60[331] = {
+	#include <IFCommonObject/DL_0x1B60.dl.inc.c>
 };
 
-/* DL 4: 0x025B8..0x02838 (640 bytes). */
-u8 dIFCommonObject_DL_0x25B8[0x280] = {
-	#include <IFCommonObject/DL_0x25B8.data.inc.c>
+/* Gfx DL: DL_0x25B8 @ 0x25B8 (80 cmds) */
+Gfx dIFCommonObject_DL_0x25B8[80] = {
+	#include <IFCommonObject/DL_0x25B8.dl.inc.c>
 };
 
-/* DL 5: 0x02838..0x02EC8 (1680 bytes). */
-u8 dIFCommonObject_DL_0x2838[0x690] = {
-	#include <IFCommonObject/DL_0x2838.data.inc.c>
+/* Gfx DL: DL_0x2838 @ 0x2838 (210 cmds) */
+Gfx dIFCommonObject_DL_0x2838[210] = {
+	#include <IFCommonObject/DL_0x2838.dl.inc.c>
 };
 
-/* DL 6: 0x02EC8..0x03560 (1688 bytes). */
-u8 dIFCommonObject_DL_0x2EC8[0x698] = {
-	#include <IFCommonObject/DL_0x2EC8.data.inc.c>
+/* Gfx DL: DL_0x2EC8 @ 0x2EC8 (211 cmds) */
+Gfx dIFCommonObject_DL_0x2EC8[211] = {
+	#include <IFCommonObject/DL_0x2EC8.dl.inc.c>
 };
 
-/* DL 7: 0x03560..0x03840 (736 bytes). */
-u8 dIFCommonObject_DL_0x3560[0x2E0] = {
-	#include <IFCommonObject/DL_0x3560.data.inc.c>
+/* Gfx DL: DL_0x3560 @ 0x3560 (92 cmds) */
+Gfx dIFCommonObject_DL_0x3560[92] = {
+	#include <IFCommonObject/DL_0x3560.dl.inc.c>
 };
 
-/* DL 8: 0x03840..0x03BC0 (896 bytes). */
-u8 dIFCommonObject_DL_0x3840[0x380] = {
-	#include <IFCommonObject/DL_0x3840.data.inc.c>
+/* Gfx DL: DL_0x3840 @ 0x3840 (112 cmds) */
+Gfx dIFCommonObject_DL_0x3840[112] = {
+	#include <IFCommonObject/DL_0x3840.dl.inc.c>
 };
 
 /* 10-entry DObjDesc joint tree @ 0x03BC0, ending with a DOBJ_ARRAY_MAX

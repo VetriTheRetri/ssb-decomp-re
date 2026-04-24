@@ -278,9 +278,9 @@ Gfx dCaptainSpecial2_Joint_0x5C60_DisplayList[11] = {
 	#include <CaptainSpecial2/Joint_0x5C60.dl.inc.c>
 };
 
-/* Raw data from file offset 0x5CB8 to 0x5D20 (104 bytes) */
-u8 dCaptainSpecial2_Joint_0x5C60_post[104] = {
-	#include <CaptainSpecial2/Joint_0x5C60_post.data.inc.c>
+/* Gfx DL: Joint_0x5C60_post @ 0x5CB8 (13 cmds) */
+Gfx dCaptainSpecial2_Joint_0x5C60_post[13] = {
+	#include <CaptainSpecial2/Joint_0x5C60_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x5D20 @ 0x5D20 (48 bytes) */

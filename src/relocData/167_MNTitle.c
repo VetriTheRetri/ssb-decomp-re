@@ -6,8 +6,6 @@
 
 #include "relocdata_types.h"
 
-
-
 /* Sprite: LogoAnimCutout */
 
 Gfx dMNTitle_LogoAnimCutout_dl[] = { gsSPEndDisplayList() };
@@ -1175,8 +1173,8 @@ u8 dMNTitle_gap_0x26370_sub_0x750[168] = {
 };
 
 /* gap sub-block @ 0x26B68 (was gap+0x7F8, 40 bytes) */
-u8 dMNTitle_gap_0x26370_sub_0x7F8[40] = {
-	#include <MNTitle/gap_0x26370_sub_0x7F8.data.inc.c>
+u16 dMNTitle_gap_0x26370_sub_0x7F8[20] = {
+	#include <MNTitle/gap_0x26370_sub_0x7F8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x26B90 (was gap+0x820, 1032 bytes) */

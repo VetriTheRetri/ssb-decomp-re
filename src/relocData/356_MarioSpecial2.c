@@ -52,9 +52,9 @@ Gfx dMarioSpecial2_Joint_0x03C0_DisplayList[12] = {
 	#include <MarioSpecial2/Joint_0x03C0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0420 to 0x04C0 (160 bytes) */
-u8 dMarioSpecial2_Joint_0x03C0_post[160] = {
-	#include <MarioSpecial2/Joint_0x03C0_post.data.inc.c>
+/* Gfx DL: Joint_0x03C0_post @ 0x420 (20 cmds) */
+Gfx dMarioSpecial2_Joint_0x03C0_post[20] = {
+	#include <MarioSpecial2/Joint_0x03C0_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x04C0 @ 0x4C0 (328 bytes) */

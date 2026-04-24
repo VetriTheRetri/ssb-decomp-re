@@ -179,9 +179,9 @@ Gfx dSamusSpecial2_Joint_0x0930_DisplayList[52] = {
 	#include <SamusSpecial2/Joint_0x0930.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0AD0 to 0x0B78 (168 bytes) */
-u8 dSamusSpecial2_Joint_0x0930_post[168] = {
-	#include <SamusSpecial2/Joint_0x0930_post.data.inc.c>
+/* Gfx DL: Joint_0x0930_post @ 0xAD0 (21 cmds) */
+Gfx dSamusSpecial2_Joint_0x0930_post[21] = {
+	#include <SamusSpecial2/Joint_0x0930_post.dl.inc.c>
 };
 
 /* Raw data from file offset 0x0B78 to 0x0B90 (24 bytes) */

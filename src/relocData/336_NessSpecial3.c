@@ -97,7 +97,17 @@ Gfx dNessSpecial3_PKFireDL_DisplayList[11] = {
 	#include <NessSpecial3/PKFireDL.dl.inc.c>
 };
 
-/* Raw data from file offset 0x08C0 to 0x0BA0 (736 bytes) */
-u8 dNessSpecial3_PKFireDL_post[736] = {
-	#include <NessSpecial3/PKFireDL_post.data.inc.c>
+/* Gfx DL: PKFireDL_post @ 0x8C0 (20 cmds) */
+Gfx dNessSpecial3_PKFireDL_post[20] = {
+	#include <NessSpecial3/PKFireDL_post.dl.inc.c>
+};
+
+/* Gfx DL: PKFireDL_post_post @ 0x960 (17 cmds) */
+Gfx dNessSpecial3_PKFireDL_post_post[17] = {
+	#include <NessSpecial3/PKFireDL_post_post.dl.inc.c>
+};
+
+/* Raw tail after 2 DL(s) @ 0x9E8 (440 bytes) */
+u8 dNessSpecial3_PKFireDL_post_post_post[440] = {
+	#include <NessSpecial3/PKFireDL_post_post_post.data.inc.c>
 };

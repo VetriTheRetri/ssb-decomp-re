@@ -444,9 +444,14 @@ u8 dITCommonObject_LGun_Item_data_remainder[0xD4] = {
 	#include <ITCommonObject/dITCommonObject_LGun_Item_data_remainder.data.inc.c>
 };
 
-/* @ 0x040A8, 736 bytes */
-u8 dITCommonObject_LGunAmmo_Weapon_data[0x2E0] = {
-	#include <ITCommonObject/LGunAmmo_Weapon_data.data.inc.c>
+/* Gfx DL: LGunAmmo_Weapon_data @ 0x40A8 (21 cmds) */
+Gfx dITCommonObject_LGunAmmo_Weapon_data[21] = {
+	#include <ITCommonObject/LGunAmmo_Weapon_data.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x4150 (568 bytes) */
+u8 dITCommonObject_LGunAmmo_Weapon_data_post[568] = {
+	#include <ITCommonObject/LGunAmmo_Weapon_data_post.data.inc.c>
 };
 
 /* @ 0x04388, 808 bytes */
@@ -506,9 +511,14 @@ u8 dITCommonObject_StarRod_Item_data_remainder[0x848] = {
 	#include <ITCommonObject/dITCommonObject_StarRod_Item_data_remainder.data.inc.c>
 };
 
-/* @ 0x05458, 2440 bytes */
-u8 dITCommonObject_StarRod_Weapon_data[0x988] = {
-	#include <ITCommonObject/StarRod_Weapon_data.data.inc.c>
+/* Gfx DL: StarRod_Weapon_data @ 0x5458 (22 cmds) */
+Gfx dITCommonObject_StarRod_Weapon_data[22] = {
+	#include <ITCommonObject/StarRod_Weapon_data.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x5508 (2264 bytes) */
+u8 dITCommonObject_StarRod_Weapon_data_post[2264] = {
+	#include <ITCommonObject/StarRod_Weapon_data_post.data.inc.c>
 };
 
 /* @ 0x05DE0, 424 bytes */

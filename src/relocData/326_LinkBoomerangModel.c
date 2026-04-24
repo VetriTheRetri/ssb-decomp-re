@@ -9,8 +9,8 @@
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0018 (16 bytes) */
-u8 dLinkBoomerangModel_Lut3_0x0008[16] = {
-	#include <LinkBoomerangModel/Lut3_0x0008.data.inc.c>
+u16 dLinkBoomerangModel_Lut3_0x0008[8] = {
+	#include <LinkBoomerangModel/Lut3_0x0008.palette.inc.c>
 };
 
 /* Texture data @ 0x0018 (64 bytes) */

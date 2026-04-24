@@ -125,9 +125,9 @@ Gfx dPurinSpecial2_Joint_0x1F38_DisplayList[6] = {
 	#include <PurinSpecial2/Joint_0x1F38.dl.inc.c>
 };
 
-/* Raw data from file offset 0x1F68 to 0x1FD0 (104 bytes) */
-u8 dPurinSpecial2_Joint_0x1F38_post[104] = {
-	#include <PurinSpecial2/Joint_0x1F38_post.data.inc.c>
+/* Gfx DL: Joint_0x1F38_post @ 0x1F68 (13 cmds) */
+Gfx dPurinSpecial2_Joint_0x1F38_post[13] = {
+	#include <PurinSpecial2/Joint_0x1F38_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x1FD0 @ 0x1FD0 (120 bytes) */

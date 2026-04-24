@@ -10,8 +10,8 @@
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0018 (16 bytes) */
-u8 dFoxSpecial2_Lut3_0x0008[16] = {
-	#include <FoxSpecial2/Lut3_0x0008.data.inc.c>
+u16 dFoxSpecial2_Lut3_0x0008[8] = {
+	#include <FoxSpecial2/Lut3_0x0008.palette.inc.c>
 };
 
 /* Raw data from file offset 0x0018 to 0x0098 (128 bytes) */

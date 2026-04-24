@@ -77,28 +77,23 @@ u8 dEFCommonEffects3_gap_0x0180_sub_0x184[12] = {
 };
 
 /* gap sub-block @ 0x0310 (was gap+0x190, 80 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x190[80] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x190.data.inc.c>
+Vtx dEFCommonEffects3_gap_0x0180_sub_0x190[5] = {
+	#include <EFCommonEffects3/gap_0x0180_sub_0x190.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0360 (was gap+0x1E0, 32 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x1E0[32] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x1E0.data.inc.c>
-};
-
-/* gap sub-block @ 0x0380 (was gap+0x200, 48 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x200[48] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x200.data.inc.c>
+/* Vtx: gap_0x0180_sub_0x1E0 @ 0x360 (5 vertices) */
+Vtx dEFCommonEffects3_gap_0x0180_sub_0x1E0[5] = {
+	#include <EFCommonEffects3/gap_0x0180_sub_0x1E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03B0 (was gap+0x230, 64 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x230[64] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x230.data.inc.c>
+Vtx dEFCommonEffects3_gap_0x0180_sub_0x230[4] = {
+	#include <EFCommonEffects3/gap_0x0180_sub_0x230.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03F0 (was gap+0x270, 80 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x270[80] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x270.data.inc.c>
+Vtx dEFCommonEffects3_gap_0x0180_sub_0x270[5] = {
+	#include <EFCommonEffects3/gap_0x0180_sub_0x270.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0440 (was gap+0x2C0, 216 bytes) */

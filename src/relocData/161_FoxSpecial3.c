@@ -266,19 +266,9 @@ Vtx dFoxSpecial3_Vtx_0x1980_Vtx[6] = {
 	#include <FoxSpecial3/Vtx_0x1980.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x19E0 @ 0x19E0 (1 vertices) */
-Vtx dFoxSpecial3_Vtx_0x19E0_Vtx[1] = {
+/* Vtx: Vtx_0x19E0_Vtx @ 0x19E0 (6 vertices) */
+Vtx dFoxSpecial3_Vtx_0x19E0_Vtx[6] = {
 	#include <FoxSpecial3/Vtx_0x19E0.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x19F0 to 0x19F8 (8 bytes) */
-u8 dFoxSpecial3_gap_0x19F0[8] = {
-	#include <FoxSpecial3/gap_0x19F0.data.inc.c>
-};
-
-/* Raw data from file offset 0x19F8 to 0x1A40 (72 bytes) */
-u8 dFoxSpecial3_Tex_0x19F8[72] = {
-	#include <FoxSpecial3/Tex_0x19F8.tex.inc.c>
 };
 
 /* Vtx: Vtx_0x1A40 @ 0x1A40 (6 vertices) */
@@ -291,19 +281,9 @@ Vtx dFoxSpecial3_Vtx_0x1AA0_Vtx[6] = {
 	#include <FoxSpecial3/Vtx_0x1AA0.vtx.inc.c>
 };
 
-/* Vtx: Vtx_0x1B00 @ 0x1B00 (3 vertices) */
-Vtx dFoxSpecial3_Vtx_0x1B00_Vtx[3] = {
+/* Vtx: Vtx_0x1B00_Vtx @ 0x1B00 (4 vertices) */
+Vtx dFoxSpecial3_Vtx_0x1B00_Vtx[4] = {
 	#include <FoxSpecial3/Vtx_0x1B00.vtx.inc.c>
-};
-
-/* Raw data from file offset 0x1B30 to 0x1B34 (4 bytes) */
-u8 dFoxSpecial3_gap_0x1B30[4] = {
-	#include <FoxSpecial3/gap_0x1B30.data.inc.c>
-};
-
-/* Raw data from file offset 0x1B34 to 0x1B40 (12 bytes) */
-u32 dFoxSpecial3__1B34__AnimJoint[3] = {
-	#include <FoxSpecial3/_1B34__AnimJoint.data.inc.c>
 };
 
 /* Vtx: Vtx_0x1B40 @ 0x1B40 (4 vertices) */
@@ -311,14 +291,9 @@ Vtx dFoxSpecial3_Vtx_0x1B40_Vtx[4] = {
 	#include <FoxSpecial3/Vtx_0x1B40.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x1B80 to 0x1B84 (4 bytes) */
-u8 dFoxSpecial3_gap_0x1B80[4] = {
-	#include <FoxSpecial3/gap_0x1B80.data.inc.c>
-};
-
-/* Raw data from file offset 0x1B84 to 0x1D80 (508 bytes) */
-u32 dFoxSpecial3__1B84__AnimJoint[127] = {
-	#include <FoxSpecial3/_1B84__AnimJoint.data.inc.c>
+/* Vtx: gap_0x1B80 @ 0x1B80 (32 vertices) */
+Vtx dFoxSpecial3_gap_0x1B80[32] = {
+	#include <FoxSpecial3/gap_0x1B80.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1D80 @ 0x1D80 (6 vertices) */
@@ -332,8 +307,8 @@ Vtx dFoxSpecial3_Vtx_0x1DE0_Vtx[8] = {
 };
 
 /* Raw data from file offset 0x1E60 to 0x1EC0 (96 bytes) */
-u8 dFoxSpecial3_gap_0x1E60[96] = {
-	#include <FoxSpecial3/gap_0x1E60.data.inc.c>
+Vtx dFoxSpecial3_gap_0x1E60[6] = {
+	#include <FoxSpecial3/gap_0x1E60.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x1EC0 @ 0x1EC0 (4 vertices) */
@@ -343,18 +318,18 @@ Vtx dFoxSpecial3_Vtx_0x1EC0_Vtx[4] = {
 
 /* Raw data from file offset 0x1F00 to 0x1FA0 (160 bytes) */
 /* gap sub-block @ 0x1F00 (was gap+0x0, 64 bytes) */
-u8 dFoxSpecial3_gap_0x1F00[64] = {
-	#include <FoxSpecial3/gap_0x1F00.data.inc.c>
+Vtx dFoxSpecial3_gap_0x1F00[4] = {
+	#include <FoxSpecial3/gap_0x1F00.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1F40 (was gap+0x40, 32 bytes) */
-u8 dFoxSpecial3_gap_0x1F00_sub_0x40[32] = {
-	#include <FoxSpecial3/gap_0x1F00_sub_0x40.data.inc.c>
+Vtx dFoxSpecial3_gap_0x1F00_sub_0x40[2] = {
+	#include <FoxSpecial3/gap_0x1F00_sub_0x40.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1F60 (was gap+0x60, 64 bytes) */
-u8 dFoxSpecial3_gap_0x1F00_sub_0x60[64] = {
-	#include <FoxSpecial3/gap_0x1F00_sub_0x60.data.inc.c>
+Vtx dFoxSpecial3_gap_0x1F00_sub_0x60[4] = {
+	#include <FoxSpecial3/gap_0x1F00_sub_0x60.vtx.inc.c>
 };
 
 /* DisplayList: Joint_0x1FA0 @ 0x1FA0 (64 bytes) */
@@ -362,9 +337,14 @@ Gfx dFoxSpecial3_Joint_0x1FA0_DisplayList[8] = {
 	#include <FoxSpecial3/Joint_0x1FA0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x1FE0 to 0x2920 (2368 bytes) */
-u8 dFoxSpecial3_Joint_0x1FA0_post[2368] = {
-	#include <FoxSpecial3/Joint_0x1FA0_post.data.inc.c>
+/* Gfx DL: Joint_0x1FA0_post @ 0x1FE0 (273 cmds) */
+Gfx dFoxSpecial3_Joint_0x1FA0_post[273] = {
+	#include <FoxSpecial3/Joint_0x1FA0_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x1FA0_post_post @ 0x2868 (23 cmds) */
+Gfx dFoxSpecial3_Joint_0x1FA0_post_post[23] = {
+	#include <FoxSpecial3/Joint_0x1FA0_post_post.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x2920 @ 0x2920 (136 bytes) */
@@ -372,9 +352,34 @@ Gfx dFoxSpecial3_Joint_0x2920_DisplayList[17] = {
 	#include <FoxSpecial3/Joint_0x2920.dl.inc.c>
 };
 
-/* Raw data from file offset 0x29A8 to 0x2BB0 (520 bytes) */
-u8 dFoxSpecial3_Joint_0x2920_post[520] = {
-	#include <FoxSpecial3/Joint_0x2920_post.data.inc.c>
+/* Gfx DL: Joint_0x2920_post @ 0x29A8 (5 cmds) */
+Gfx dFoxSpecial3_Joint_0x2920_post[5] = {
+	#include <FoxSpecial3/Joint_0x2920_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x2920_post_post @ 0x29D0 (4 cmds) */
+Gfx dFoxSpecial3_Joint_0x2920_post_post[4] = {
+	#include <FoxSpecial3/Joint_0x2920_post_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x2920_post_post_post @ 0x29F0 (6 cmds) */
+Gfx dFoxSpecial3_Joint_0x2920_post_post_post[6] = {
+	#include <FoxSpecial3/Joint_0x2920_post_post_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x2920_post_post_post_post @ 0x2A20 (6 cmds) */
+Gfx dFoxSpecial3_Joint_0x2920_post_post_post_post[6] = {
+	#include <FoxSpecial3/Joint_0x2920_post_post_post_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x2920_post_post_post_post_post @ 0x2A50 (22 cmds) */
+Gfx dFoxSpecial3_Joint_0x2920_post_post_post_post_post[22] = {
+	#include <FoxSpecial3/Joint_0x2920_post_post_post_post_post.dl.inc.c>
+};
+
+/* Gfx DL: Joint_0x2920_post_post_post_post_post_post @ 0x2B00 (22 cmds) */
+Gfx dFoxSpecial3_Joint_0x2920_post_post_post_post_post_post[22] = {
+	#include <FoxSpecial3/Joint_0x2920_post_post_post_post_post_post.dl.inc.c>
 };
 
 /* Raw data from file offset 0x2BB0 to 0x2BC0 (16 bytes) */

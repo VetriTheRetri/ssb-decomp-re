@@ -13,8 +13,8 @@ u8 dYoshiSpecial2_gap_0x0000[48] = {
 };
 
 /* gap sub-block @ 0x0030 (was gap+0x30, 40 bytes) */
-u8 dYoshiSpecial2_gap_0x0000_sub_0x30[40] = {
-	#include <YoshiSpecial2/gap_0x0000_sub_0x30.data.inc.c>
+u16 dYoshiSpecial2_gap_0x0000_sub_0x30[20] = {
+	#include <YoshiSpecial2/gap_0x0000_sub_0x30.palette.inc.c>
 };
 
 /* gap sub-block @ 0x0058 (was gap+0x58, 520 bytes) */
@@ -67,13 +67,18 @@ u8 dYoshiSpecial2_gap_0x04D8_sub_0x10[8] = {
 };
 
 /* gap sub-block @ 0x04F0 (was gap+0x18, 64 bytes) */
-u8 dYoshiSpecial2_gap_0x04D8_sub_0x18[64] = {
-	#include <YoshiSpecial2/gap_0x04D8_sub_0x18.data.inc.c>
+Vtx dYoshiSpecial2_gap_0x04D8_sub_0x18[4] = {
+	#include <YoshiSpecial2/gap_0x04D8_sub_0x18.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0530 to 0x0600 (208 bytes) */
-u8 dYoshiSpecial2_gap_0x0530[208] = {
-	#include <YoshiSpecial2/gap_0x0530.data.inc.c>
+/* Gfx DL: gap_0x0530 @ 0x530 (25 cmds) */
+Gfx dYoshiSpecial2_gap_0x0530[25] = {
+	#include <YoshiSpecial2/gap_0x0530.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x5F8 (8 bytes) */
+u8 dYoshiSpecial2_gap_0x0530_post[8] = {
+	#include <YoshiSpecial2/gap_0x0530_post.data.inc.c>
 };
 
 /* Raw data from file offset 0x0600 to 0x0780 (384 bytes) */

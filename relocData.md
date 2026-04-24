@@ -176,70 +176,98 @@ Recent round of structural work:
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.
 
-### Remaining pure raw-blob files (11 files, ~51 KB)
+### Remaining u8 `.data.inc.c` blocks by classification
 
-Files whose only declarations are `u8[]` wrappers (no structs, no u16/u32):
+Every relocData file now has at least some typed declaration (u16
+palette / u32 anim / Vtx / Gfx / DObjDesc / etc.). The "pure raw-blob
+file" category from earlier rounds is empty — files that used to be
+all-u8 (Images pools, SC1PIntro, SCStaffroll, the stage & bonus image
+files) have all graduated to at least (u16 palette + u8 Tex) form,
+where the `u8 Tex_*` blocks use `.tex.inc.c` includes (properly
+classified as texture data, correct type for `gsDPLoadBlock`).
 
-| Fid | File | Size | Notes |
+What remains are u8 blocks still included via `.data.inc.c` (no
+texture / palette / DL / Vtx / u32 anim classification). Split by
+intent:
+
+| Bucket | Blocks | Bytes | Files |
+|---|---:|---:|---:|
+| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,738 | ~540 KB | 95 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (Tex pools, AnimJoint scripts, image tile pools) | 253 | ~450 KB | 100 |
+| **Total u8 `.data.inc.c`** | 3,991 | ~990 KB | 121 |
+
+Top files in each bucket (bytes):
+
+**Truly unclassified — real typing work**
+
+| Fid | File | Blocks | Bytes |
+|---:|---|---:|---:|
+| 328 | KirbyModel | 566 | 88,232 |
+| 86 | ITCommonObject | 63 | 46,240 |
+| 112 | StageYamabukiFile2 | 65 | 31,528 |
+| 83 | EFCommonEffects1 | 44 | 29,624 |
+| 198 | SCExplainGraphics | 16 | 23,464 |
+| 111 | StageYosterFile2 | 83 | 23,412 |
+| 317 | DonkeyModel | 272 | 21,040 |
+| 332 | CaptainModel | 259 | 16,232 |
+| 105 | StageZebesFile2 | 106 | 14,808 |
+| 136 | Bonus2Common | 18 | 14,568 |
+| 320 | SamusModel | 219 | 14,020 |
+| 335 | NessModel | 105 | 12,904 |
+| 75 | MVOpeningRunCrash | 40 | 11,752 |
+| 149 | GRBonus3File2 | 34 | 11,736 |
+| 68 | MVOpeningCliff | 13 | 11,288 |
+| 338 | YoshiModel | 184 | 11,060 |
+| 114 | StageLastFile2 | 60 | 10,708 |
+| 108 | StageJungleFile2 | 20 | 10,056 |
+| 167 | MNTitle | 15 | 9,256 |
+| 341 | PikachuModel | 152 | 9,036 |
+
+Character-model files dominate through sheer block count — the
+display-list walk that promoted Vtx / Gfx / palettes left Joint
+hierarchy data, Mtx pools, and misc small sub-blocks behind. Stage
+File2 files follow similar shape (collision geometry, layer animation
+metadata). `ITCommonObject` alone has ~46 KB of per-item
+`_data_remainder` sub-blocks that need per-item struct identification
+from runtime code analysis.
+
+**Semantically named — mostly intentional**
+
+| Fid | File | Bytes | What |
 |---:|---|---:|---|
-| 110 | StageYosterImages | 20.1 KB | Stage texture pool (LUT+Tex pairs) |
-| 103 | StagePupupuImages | 11.1 KB | Stage texture pool |
-| 100 | StagePupupuBetaImages | 9.4 KB | Beta stage texture pool (12 LUT+Tex pairs partially typed) |
-| 123 | Bonus1CommonImages4 | 2.6 KB | Bonus stage texture pool (1 cross-file palette typed) |
-| 120 | Bonus1CommonImages1 | 2.1 KB | Bonus stage texture pool (1 cross-file palette typed) |
-| 252 | SCExplainMain | 1.9 KB | How-to-play data/logic tables |
-| 121 | Bonus1CommonImages2 | 1.7 KB | Bonus stage texture pool (2 cross-file palettes typed) |
-| 122 | Bonus1CommonImages3 | 0.8 KB | Bonus stage texture pool (1 cross-file palette typed) |
-| 302 | NCommonTexture | 0.5 KB | Shared palette + 32×32 CI4 for N-variant fighters (partially typed: u16 palette only) |
-| 299 | MarioSecondaryImage | 0.1 KB | Single palette + tex (2 cross-file palettes typed) |
-| 72 | MVOpeningClashFighters | 8 B | Tiny cross-file pointer table |
+| 71 | MVOpeningYamabuki | 252,696 | `Wallpaper_tex_tiles` (203 KB), `Tex_pool` (35 KB), Legs/Shadow/MBall/Cam `AnimJoint` — intentionally left as `u8 …data.inc.c` because bytes are ROM-regenerable and structure is documented in comments above each decl. |
+| 167 | MNTitle | 41,880 | Animation and sprite-layout data referenced by name. |
+| 61 | MVOpeningNewcomers1 | 34,656 | Opening cutscene texture pool. |
+| 62 | MVOpeningNewcomers2 | 25,184 | Opening cutscene texture pool. |
+| 69 | MVOpeningStandoff | 16,424 | Opening cutscene data. |
+| 195 | SCStaffroll | 14,220 | Per-name image sub-blocks named by role. |
+| 84 | EFCommonEffects2 | 5,280 | Effect parameter tables. |
+| (others) | — | 44,060 | Smaller entries across Model files, stage files, LB transitions, etc. |
 
-All other files have at least some typed struct or palette/anim declaration.
+Renaming these from `.data.inc.c` to `.tex.inc.c` (for texture pools)
+or retyping from `u8[]` to `u32 AnimJoint[]` would be a cosmetic
+improvement — the compiled bytes are byte-identical either way, so
+these aren't gating ROM matching.
 
-### Gap bytes inside typed inline masters (~67 KB)
-
-Typed files still have `u8 d<Prefix>_gap_0xNNNN[N]` or `u8
-d<Prefix>_data_0xNNNN[N]` raw-byte blocks for regions not yet
-classified — typically joint hierarchy descriptors, stage collision
-data, animation metadata, DL tails left behind by the display-list
-walk, and sub-blocks split by `splitGapFull.py` / `typeRelocBlocks.py`
-that haven't been promoted to typed structs.
-
-393 gap/data arrays remain across ~100 files totaling ~67 KB. The
-array count is down from ~521 (consolidation by `typeRelocBlocks.py`
-merge pass), but total bytes went up because DL-split tails and
-per-item `_data_remainder` sub-blocks in `ITCommonObject` are now
-explicit `u8` regions rather than opaque larger blocks.
-
-| Category | Arrays | Bytes | Typical content |
-|---|---:|---:|---|
-| Other (MN/SC/FT/IT/etc.) | 153 | 41,948 | Mostly `ITCommonObject` per-item `_data_remainder` / `_mobjsubs_gap` sub-blocks (~37 KB across 63 items) |
-| Bonus stage File2 | 51 | 11,644 | Stage collision/geometry descriptors |
-| Stage File2 | 53 | 6,124 | Stage-specific collision/anim |
-| MVOpening/Ending | 16 | 2,744 | Camera/animation descriptors |
-| Model files | 66 | 1,980 | Joint hierarchy `_post` data (DL-split tails) |
-| EFCommon | 19 | 1,048 | Effect parameter data |
-| Fighter Special | 27 | 980 | Specials' remaining _post / small gaps |
-| MNTitle/SC1PIntro | 3 | 712 | Animation/gap data |
-| GR stage Map | 5 | 100 | PAD / tail bytes |
-
-`ITCommonObject` (fid 86) alone accounts for ~37 KB of the "Other"
-bucket — 63 items with structured `_data_remainder` sub-blocks that
-are intentionally explicit but still `u8`. Removing them would require
-per-item struct identification, not blanket typing.
-
-Use this to regenerate the exact breakdown:
+Scanner to regenerate the per-file breakdown above:
 
 ```python
 import os, re
 R = "src/relocData"
-total = 0
+per_file = {}
 for fn in sorted(os.listdir(R)):
-    if not re.match(r'\d+_\w+\.c$', fn): continue
-    for m in re.finditer(r'u8\s+d\w+?_(gap|data)_0x[0-9A-F]+\[(\d+)\]',
-                          open(f'{R}/{fn}').read()):
-        total += int(m.group(2))
-print(f'{total:,} bytes')
+    if not re.match(r'\d+_\w+\.c$', fn) or '.jp.c' in fn: continue
+    text = open(f'{R}/{fn}').read()
+    total = 0
+    for m in re.finditer(
+            r'^u8\s+(d\w+)\[(\d+|0x[0-9A-Fa-f]+)\]\s*=\s*\{\n'
+            r'[ \t]*#include <[^>]+\.data\.inc\.c>',
+            text, re.MULTILINE):
+        N = int(m.group(2), 16) if m.group(2).startswith('0x') else int(m.group(2))
+        total += N
+    if total > 0: per_file[fn] = total
+for fn, b in sorted(per_file.items(), key=lambda x: -x[1])[:20]:
+    print(f'{b:>9,}  {fn}')
 ```
 
 ---
@@ -404,36 +432,48 @@ more structural representation instead.
 
 The remaining work splits into three buckets:
 
-1. **Promote 11 remaining pure raw-blob files** (~51 KB). These are
-   files whose only declarations are `u8[]` wrappers. Ranked by impact:
-   - **StageYosterImages** (20.1 KB) — LUT+Tex pair decomposition
-     using `typeImagesFile.py` req-list reverse lookup (same technique
-     as StagePupupuImages / Bonus1CommonImages).
-   - **StagePupupuImages** (11.1 KB) — same approach.
-   - **StagePupupuBetaImages** (9.4 KB) — partially typed; LUT+Tex
-     boundaries recovered, still contains u8 trailers.
-   - **Bonus1CommonImages 1–4** (7.2 KB total) — cross-file palette
-     retypes applied; remaining u8 blocks are likely textures awaiting
-     explicit `.tex.inc.c` promotion.
-   - **SCExplainMain** (1.9 KB) — how-to-play data tables, needs
-     struct identification from runtime code analysis.
-   - **NCommonTexture** (0.5 KB) — partially typed; u16 palette split
-     out, remaining u8 texture awaits explicit Tex framing.
-   - **MarioSecondaryImage** (0.1 KB) — cross-file palettes typed;
-     remaining u8 trailers likely texture pixels.
-   - **MVOpeningClashFighters** (8 B) — likely a `void*[2]` cross-file
-     pointer table, needs extern chain analysis.
+1. **Promote unclassified u8 `.data.inc.c` blocks** (~540 KB across
+   ~3,600 blocks in 120 files — the "Truly unclassified" row of the
+   table above). Ranked by impact:
+   - **Character models** (KirbyModel 88 KB, DonkeyModel 21 KB,
+     CaptainModel 16 KB, SamusModel 14 KB, NessModel 13 KB, YoshiModel
+     11 KB, PikachuModel 9 KB, …) — Joint hierarchy bodies and per-DL
+     metadata left after the display-list walk. Structural typing
+     would need Joint / DObj / AnimJoint recognition from the Joint
+     tree structure rather than DL content.
+   - **ITCommonObject** (46 KB, 63 items) — per-item `_data_remainder`
+     and `_mobjsubs_gap` sub-blocks. Each item's layout (spawn data,
+     damage tables, effect tables) needs to be identified from runtime
+     code analysis (`src/it/itattack*.c` handlers per item).
+   - **Stage File2** (StageYamabukiFile2 32 KB, StageYosterFile2
+     23 KB, StageZebesFile2 15 KB, …) — collision geometry, layer
+     animation tracks, and interleaved texture / palette subsections.
+   - **EFCommonEffects1** (30 KB, 44 blocks) — effect parameter
+     tables used by the VFX system (`src/ef/*.c`).
+   - **SCExplainGraphics** (23 KB), **Bonus2Common** (15 KB),
+     **GRBonus3File2** (12 KB), **MNTitle** (9 KB), various
+     MVOpening* files — scene-specific data.
 
-2. **Promote remaining `gap_*` / `data_*` raw arrays** (~67 KB across
-   393 arrays in ~100 files). The biggest single contributor is
-   **ITCommonObject** (~37 KB / 63 per-item `_data_remainder` /
-   `_mobjsubs_gap` sub-blocks) — these need per-item struct
-   identification from runtime code analysis, not blanket typing.
-   Next largest are **Bonus stage File2** (11.6 KB, collision /
-   geometry descriptors) and **Stage File2** (6.1 KB, stage-specific
-   collision / anim). Model files' `_post` DL tails (~2 KB) carry
-   Joint / DObj / Anim structural data that `typeRelocBlocks.py`
-   can't classify via DL walking alone.
+2. **Promote semantically-named `.data.inc.c` blocks** (~450 KB across
+   ~380 blocks in 60 files — the "Semantically named" row). These
+   already have meaningful names (Tex_pool, AnimJoint, tex_tiles)
+   but still use `.data.inc.c`. Renaming to `.tex.inc.c` for texture
+   pools, or retyping u8→u32 for AnimJoint scripts, is byte-identical
+   so strictly cosmetic. The bulk sits in MVOpening* cutscene files
+   (~330 KB combined) where the author chose to leave things as u8
+   wrappers intentionally.
+
+3. **Finish typing remaining struct bitfield tails**. The `WPAttributes` 52-byte
+   layout is fully verified (used by 8 hand-typed Special1 / Lizardon
+   files and 11 promoted ITCommonData blobs). `ITAttributes` 72-byte
+   layout has the visible fields (size, angle, ks, dmg, elem) verified
+   via empirical IDO test fixtures, but the bitfield tail at 0x38+
+   doesn't reduce to a clean MSB-first packing — see the comment block
+   above `struct ITAttributes` in `src/it/ittypes.h`. All 33 promotable
+   ITAttributes blobs in `ITCommonData` (fid 251) are now typed; only
+   Sawamura's `shield_damage=30` remains as a commented-out struct due
+   to the IDO `s32:8` second-bitfield-run static-init bug. All 6
+   `ITAttackEvent[4]` arrays are also typed with decoded fields.
 
 3. **Finish typing remaining struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon

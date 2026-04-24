@@ -238,17 +238,55 @@ def _render_lut_entries(blob, indent, per_line=8):
     return "\n".join(lines)
 
 
-def _render_gfx_entries(blob, indent):
+def _render_gfx_entries(blob, indent, array_file_offset=None,
+                        syms=None, sym_sizes=None, chain_positions=None):
     """Decode a Gfx DL blob to gbi macros via pygfxd. Falls back to a raw
-    `{ { word0, word1 } }` pair list on decode failure."""
+    `{ { word0, word1 } }` pair list on decode failure.
+
+    When `chain_positions` is provided, pointer args (vtx / dl / timg / tlut)
+    at byte positions in that set are resolved to symbol references via
+    `resolve_chain`. Args at positions NOT in the chain are left as literal
+    hex by pygfxd — this is the right behavior for segment-0x0E-style
+    literal addresses that the game resolves at runtime via gsSPSegment
+    rather than via the file's reloc chain."""
     if len(blob) == 0 or len(blob) % 8 != 0:
         return None
+    chain_gated = (chain_positions is not None and array_file_offset is not None
+                   and syms is not None)
     if HAS_PYGFXD and _dl_is_pygfxd_safe(blob):
         out_buf = pygfxd.gfxd_output_buffer(
             b'\0' * (len(blob) * 40 + 1024), len(blob) * 40 + 1024)
         pygfxd.gfxd_input_buffer(blob)
         pygfxd.gfxd_target(pygfxd.gfxd_f3dex2)
         pygfxd.gfxd_endian(pygfxd.GfxdEndian.big, 4)
+
+        def _resolve_if_chained(value):
+            """Return replacement text or None.
+            Returns None (-> pygfxd default = literal hex) when the arg's
+            byte position is not in the walked chain, or when resolve_chain
+            can't produce a symbol."""
+            if not chain_gated:
+                return None
+            arg_file_offset = array_file_offset + pygfxd.gfxd_macro_offset() + 4
+            if arg_file_offset not in chain_positions:
+                return None
+            sym = resolve_chain(value, syms, sym_sizes)
+            if sym is None:
+                return None
+            return f"{sym} /* was 0x{value:08X} */"
+
+        def _addr_cb(value, *_ignored):
+            rep = _resolve_if_chained(value)
+            if rep is None:
+                return 0
+            pygfxd.gfxd_puts(rep)
+            return 1
+
+        if chain_gated:
+            pygfxd.gfxd_vtx_callback(_addr_cb)
+            pygfxd.gfxd_dl_callback(_addr_cb)
+            pygfxd.gfxd_timg_callback(_addr_cb)
+            pygfxd.gfxd_tlut_callback(_addr_cb)
 
         def macro_fn():
             pygfxd.gfxd_puts(indent)
@@ -258,6 +296,17 @@ def _render_gfx_entries(blob, indent):
 
         pygfxd.gfxd_macro_fn(macro_fn)
         pygfxd.gfxd_execute()
+
+        # Reset callbacks with no-op stubs (returning 0 → pygfxd default
+        # formatting). pygfxd's setters don't accept None, so we swap in
+        # stubs rather than clearing.
+        if chain_gated:
+            _noop = lambda *a, **kw: 0
+            pygfxd.gfxd_vtx_callback(_noop)
+            pygfxd.gfxd_dl_callback(_noop)
+            pygfxd.gfxd_timg_callback(_noop)
+            pygfxd.gfxd_tlut_callback(_noop)
+
         text = pygfxd.gfxd_buffer_to_string(out_buf).rstrip()
         if text:
             return text
@@ -284,11 +333,15 @@ def _inc_kind(inc_rel):
     return "other"
 
 
-def inline_inc(text, target_name, raw, syms, sym_sizes):
+def inline_inc(text, target_name, raw, syms, sym_sizes, chain_positions=None):
     """Replace each `Type name[N] = { #include <...> };` with decoded content
     for Vtx / Gfx / u16-LUT arrays. Tex and raw u8/u32 blocks keep the
     `#include` line. Decoding pulls bytes directly from the asset binary
-    using nm's symbol offsets — inc.c format doesn't matter."""
+    using nm's symbol offsets — inc.c format doesn't matter.
+
+    `chain_positions` (optional) gates Gfx pointer-arg resolution so that
+    literals like 0x0E000000 (segmented addresses) don't get misresolved
+    to whatever in-file symbol their low 16 bits happens to coincide with."""
     decl_re = re.compile(
         r"^(?P<ctype>Vtx|Gfx|u16)\s+(?P<name>d\w+)\[(?P<count>\d+|0x[0-9A-Fa-f]+)\]\s*=\s*\{\n"
         r"(?P<indent>[ \t]*)#include <[^>]+\.inc\.c>\n"
@@ -296,6 +349,7 @@ def inline_inc(text, target_name, raw, syms, sym_sizes):
         re.MULTILINE,
     )
     type_byte_size = {"Vtx": 16, "Gfx": 8, "u16": 2}
+    name_to_offset = {n: o for o, n in syms.items()}
 
     def repl(m):
         ctype = m.group("ctype")
@@ -314,7 +368,12 @@ def inline_inc(text, target_name, raw, syms, sym_sizes):
         if ctype == "Vtx":
             rendered = _render_vtx_entries(blob, indent)
         elif ctype == "Gfx":
-            rendered = _render_gfx_entries(blob, indent)
+            rendered = _render_gfx_entries(
+                blob, indent,
+                array_file_offset=name_to_offset.get(name),
+                syms=syms, sym_sizes=sym_sizes,
+                chain_positions=chain_positions,
+            )
         else:  # u16 LUT
             rendered = _render_lut_entries(blob, indent)
         if rendered is None:
@@ -480,12 +539,26 @@ def expand(fid):
             raw = f.read()
     summary = chain_summary(fid, raw, syms) if raw else ""
 
+    # Byte positions in the file that are actual chain-encoded pointers.
+    # Used by `_render_gfx_entries` to distinguish real chain pointers (which
+    # encode `(next_word << 16) | target_word`) from literal segmented
+    # addresses like 0x0E000000 whose byte position isn't in the chain and
+    # whose u32 value must stay literal.
+    chain_positions = set()
+    if raw:
+        intern_start, extern_start = csv_chain_starts(fid)
+        for start in (intern_start, extern_start):
+            if start is None or start == 0xFFFF:
+                continue
+            for ptr, _, _ in walk_chain(raw, start):
+                chain_positions.add(ptr)
+
     with open(c_path) as f:
         text = f.read()
 
-    text = inline_inc(text, target_name, raw, syms, sym_sizes)
+    text = inline_inc(text, target_name, raw, syms, sym_sizes,
+                     chain_positions=chain_positions)
     text = expand_chain_pointers(text, syms, sym_sizes)
-    text = resolve_gfx_chain_args(text, syms, sym_sizes)
 
     header = (
         f"/* AUTO-GENERATED expanded view of src/relocData/{fid}_{target_name}.c\n"

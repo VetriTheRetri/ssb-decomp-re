@@ -88,8 +88,8 @@ u8 dBonus1CommonImages2_Tex_0x0500[128] = {
 PAD(8);
 
 /* Texture: 0x0588 (24 bytes) */
-u8 dBonus1CommonImages2_Tex_0x0588[24] = {
-	#include <Bonus1CommonImages2/Tex_0x0588.tex.inc.c>
+u16 dBonus1CommonImages2_Tex_0x0588[12] = {
+	#include <Bonus1CommonImages2/Tex_0x0588.palette.inc.c>
 };
 
 PAD(8);
@@ -116,8 +116,8 @@ u8 dBonus1CommonImages2_Tex_0x0658[128] = {
 PAD(8);
 
 /* Texture: 0x06E0 (8 bytes) */
-u8 dBonus1CommonImages2_Tex_0x06E0[8] = {
-	#include <Bonus1CommonImages2/Tex_0x06E0.tex.inc.c>
+u16 dBonus1CommonImages2_Tex_0x06E0[4] = {
+	#include <Bonus1CommonImages2/Tex_0x06E0.palette.inc.c>
 };
 
 PAD(8);

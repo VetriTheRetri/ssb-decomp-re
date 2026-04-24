@@ -335,30 +335,69 @@ def do_retypes_and_merges(src, reloc_text, decls, expanded, name_prefix):
 
 # ---- Pass 3: palettes ----
 
-def do_palettes(src, decls, expanded):
-    """u8 blocks used as gsDPSetTextureImage -> gsDPLoadTLUTCmd become u16 palette."""
-    dl_bodies = re.findall(r'Gfx d\w+\[\d+\] = \{\n(.*?)\n\};', expanded, re.DOTALL)
-    palette_syms = set()
-    texture_syms = set()
-    for body in dl_bodies:
-        pending = None
-        for ln in body.split('\n'):
-            mt = re.search(r'gsDPSetTextureImage\([^)]*,\s*(\S+?)(?:\s*/\*.*)?\)', ln)
-            if mt:
-                sym = mt.group(1).rstrip(',')
-                pending = None if sym.startswith('0x') else sym
-                continue
-            if 'gsDPLoadTLUTCmd' in ln:
-                if pending:
-                    palette_syms.add(pending)
+def _scan_gfx_for_palette_texture_hints(body):
+    """Return (palette_syms, texture_syms) sets observed in this Gfx body.
+    Strips `((u8*)sym + 0xN)` casts and `0xHEX` literals to leave bare
+    symbol names."""
+    palette_syms, texture_syms = set(), set()
+    pending = None
+    for ln in body.split('\n'):
+        mt = re.search(r'gsDPSetTextureImage\([^)]*,\s*(.+?)(?:\s*/\*.*)?\)', ln)
+        if mt:
+            raw = mt.group(1).rstrip(',').strip()
+            # Unwrap `((u8*)sym + 0xN)` -> sym
+            cast = re.match(r'\(\(u8\*\)(d\w+)\s*\+\s*0x[0-9A-Fa-f]+\)', raw)
+            if cast:
+                raw = cast.group(1)
+            # Accept bare `dName` only; skip literal hex / other forms.
+            if re.fullmatch(r'd\w+', raw):
+                pending = raw
+            else:
                 pending = None
-            elif 'gsDPLoadBlock' in ln or 'gsDPLoadTile' in ln:
-                if pending:
-                    texture_syms.add(pending)
-                pending = None
+            continue
+        if 'gsDPLoadTLUTCmd' in ln:
+            if pending:
+                palette_syms.add(pending)
+            pending = None
+        elif 'gsDPLoadBlock' in ln or 'gsDPLoadTile' in ln:
+            if pending:
+                texture_syms.add(pending)
+            pending = None
+    return palette_syms, texture_syms
 
-    # Skip ambiguous symbols (used both ways somewhere)
-    palette_only = palette_syms - texture_syms
+
+_global_palette_hints = None
+def _load_global_hints():
+    """Scan every expanded view once, collect global palette vs texture hints
+    per symbol name. Cross-file: a palette symbol in FileX is the TLUT target
+    of a gsDPSetTextureImage from any file, not just FileX itself."""
+    global _global_palette_hints
+    if _global_palette_hints is not None:
+        return _global_palette_hints
+    pal, tex = set(), set()
+    for p in EXP_DIR.iterdir():
+        if not re.match(r'^\d+_\w+\.c$', p.name):
+            continue
+        try:
+            text = p.read_text()
+        except OSError:
+            continue
+        for body in re.findall(r'Gfx d\w+\[\d+\] = \{\n(.*?)\n\};', text, re.DOTALL):
+            p_syms, t_syms = _scan_gfx_for_palette_texture_hints(body)
+            pal |= p_syms
+            tex |= t_syms
+    _global_palette_hints = (pal, tex)
+    return _global_palette_hints
+
+
+def do_palettes(src, decls, expanded):
+    """u8 blocks used as gsDPSetTextureImage -> gsDPLoadTLUTCmd become u16
+    palette. Uses global hints (scans every expanded view) so cross-file
+    palettes -- where file Y's texture/palette blob gets loaded as a TLUT
+    from file X -- are picked up."""
+    pal_global, tex_global = _load_global_hints()
+    # Skip ambiguous symbols (observed as both TLUT and block/tile loads)
+    palette_only = pal_global - tex_global
 
     name_to_off = {d[0]: off for off, d in decls.items()}
     applied = 0
@@ -370,14 +409,14 @@ def do_palettes(src, decls, expanded):
         if ct != 'u8' or bs % 2 != 0:
             continue
         u16count = bs // 2
+        # Handle both .data.inc.c (raw) and .tex.inc.c (texture-named) sources.
         pat = re.compile(
             rf'^u8\s+{re.escape(sym)}\[{bs}\]\s*=\s*\{{\n'
-            rf'(?P<indent>[ \t]*)#include <(?P<inc>[^>]+)\.data\.inc\.c>\n\}};',
+            rf'(?P<indent>[ \t]*)#include <(?P<inc>[^>]+)\.(?P<ext>tex|data)\.inc\.c>\n\}};',
             re.MULTILINE,
         )
         m = pat.search(src)
         if not m:
-            print(f'  PALETTE MISS: {sym}')
             continue
         inc = m.group('inc')
         indent = m.group('indent') or '\t'

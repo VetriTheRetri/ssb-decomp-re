@@ -109,8 +109,8 @@ u8 dBonus1CommonImages4_Tex_0x0A70[64] = {
 PAD(8);
 
 /* Texture: 0x0AB8 (8 bytes) */
-u8 dBonus1CommonImages4_Tex_0x0AB8[8] = {
-	#include <Bonus1CommonImages4/Tex_0x0AB8.tex.inc.c>
+u16 dBonus1CommonImages4_Tex_0x0AB8[4] = {
+	#include <Bonus1CommonImages4/Tex_0x0AB8.palette.inc.c>
 };
 
 PAD(8);

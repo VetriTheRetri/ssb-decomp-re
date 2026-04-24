@@ -109,8 +109,8 @@ u8 dBonus1CommonImages1_Tex_0x0510[128] = {
 PAD(8);
 
 /* Texture: 0x0598 (8 bytes) */
-u8 dBonus1CommonImages1_Tex_0x0598[8] = {
-	#include <Bonus1CommonImages1/Tex_0x0598.tex.inc.c>
+u16 dBonus1CommonImages1_Tex_0x0598[4] = {
+	#include <Bonus1CommonImages1/Tex_0x0598.palette.inc.c>
 };
 
 PAD(8);

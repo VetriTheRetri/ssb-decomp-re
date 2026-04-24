@@ -8,8 +8,8 @@
 
 /* Raw data from file offset 0x0000 to 0x0840 (2112 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x0000[64] = {
-	#include <GRBonus1DonkeyFile2/gap_0x0000.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x0000[4] = {
+	#include <GRBonus1DonkeyFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx @ 0x0040 (4 vertices) */
@@ -256,8 +256,8 @@ u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xDD4[320] = {
 };
 
 /* gap sub-block @ 0x1830 (was gap+0xF14, 320 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xF14[320] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xF14.data.inc.c>
+Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0xF14[20] = {
+	#include <GRBonus1DonkeyFile2/gap_0x091C_sub_0xF14.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1970 (was gap+0x1054, 88 bytes) */

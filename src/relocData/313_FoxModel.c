@@ -1131,13 +1131,13 @@ u8 dFoxModel_gap_0x5A38_sub_0x8E8[240] = {
 };
 
 /* gap sub-block @ 0x6410 (was gap+0x9D8, 288 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x9D8[288] = {
-	#include <FoxModel/gap_0x5A38_sub_0x9D8.data.inc.c>
+Vtx dFoxModel_gap_0x5A38_sub_0x9D8[18] = {
+	#include <FoxModel/gap_0x5A38_sub_0x9D8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6530 (was gap+0xAF8, 384 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0xAF8[384] = {
-	#include <FoxModel/gap_0x5A38_sub_0xAF8.data.inc.c>
+Vtx dFoxModel_gap_0x5A38_sub_0xAF8[24] = {
+	#include <FoxModel/gap_0x5A38_sub_0xAF8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x66B0 (was gap+0xC78, 448 bytes) */
@@ -1206,8 +1206,8 @@ u8 dFoxModel_gap_0x5A38_sub_0x13A8[96] = {
 };
 
 /* gap sub-block @ 0x6E40 (was gap+0x1408, 80 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x1408[80] = {
-	#include <FoxModel/gap_0x5A38_sub_0x1408.data.inc.c>
+Vtx dFoxModel_gap_0x5A38_sub_0x1408[5] = {
+	#include <FoxModel/gap_0x5A38_sub_0x1408.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6E90 (was gap+0x1458, 96 bytes) */

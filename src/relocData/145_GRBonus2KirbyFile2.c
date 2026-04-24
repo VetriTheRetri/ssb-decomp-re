@@ -8,8 +8,8 @@
 
 /* Raw data from file offset 0x0000 to 0x0A20 (2592 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
-u8 dGRBonus2KirbyFile2_gap_0x0000[64] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000.data.inc.c>
+Vtx dGRBonus2KirbyFile2_gap_0x0000[4] = {
+	#include <GRBonus2KirbyFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx @ 0x0040 (4 vertices) */
@@ -53,8 +53,8 @@ u8 dGRBonus2KirbyFile2_gap_0x0000_sub_0x1F8[8] = {
 };
 
 /* gap sub-block @ 0x0200 (was gap+0x200, 32 bytes) */
-u8 dGRBonus2KirbyFile2_gap_0x0000_sub_0x200[32] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x200.data.inc.c>
+Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x200[2] = {
+	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x200.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0220 (was gap+0x220, 32 bytes) */
@@ -88,8 +88,8 @@ u8 dGRBonus2KirbyFile2_gap_0x0000_sub_0x328[24] = {
 };
 
 /* gap sub-block @ 0x0340 (was gap+0x340, 16 bytes) */
-u8 dGRBonus2KirbyFile2_gap_0x0000_sub_0x340[16] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x340.data.inc.c>
+Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x340[1] = {
+	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x340.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0350 (was gap+0x350, 48 bytes) */

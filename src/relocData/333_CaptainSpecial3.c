@@ -72,8 +72,8 @@ u8 dCaptainSpecial3_gap_0x0708_sub_0x10[8] = {
 };
 
 /* gap sub-block @ 0x0720 (was gap+0x18, 64 bytes) */
-u8 dCaptainSpecial3_gap_0x0708_sub_0x18[64] = {
-	#include <CaptainSpecial3/gap_0x0708_sub_0x18.data.inc.c>
+Vtx dCaptainSpecial3_gap_0x0708_sub_0x18[4] = {
+	#include <CaptainSpecial3/gap_0x0708_sub_0x18.vtx.inc.c>
 };
 
 /* Raw data from file offset 0x0760 to 0x0830 (208 bytes) */

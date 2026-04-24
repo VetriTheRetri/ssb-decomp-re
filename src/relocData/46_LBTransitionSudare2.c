@@ -7,8 +7,8 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0040 (64 bytes) */
-u8 dLBTransitionSudare2_gap_0x0000[64] = {
-	#include <LBTransitionSudare2/gap_0x0000.data.inc.c>
+Vtx dLBTransitionSudare2_gap_0x0000[4] = {
+	#include <LBTransitionSudare2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0040 @ 0x40 (2 vertices) */

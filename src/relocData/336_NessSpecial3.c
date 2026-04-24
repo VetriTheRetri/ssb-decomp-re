@@ -28,13 +28,13 @@ u8 dNessSpecial3_gap_0x0000_sub_0xF8[16] = {
 };
 
 /* gap sub-block @ 0x0108 (was gap+0x108, 48 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0x108[48] = {
-	#include <NessSpecial3/gap_0x0000_sub_0x108.data.inc.c>
+Vtx dNessSpecial3_gap_0x0000_sub_0x108[3] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x108.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0138 (was gap+0x138, 48 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0x138[48] = {
-	#include <NessSpecial3/gap_0x0000_sub_0x138.data.inc.c>
+Vtx dNessSpecial3_gap_0x0000_sub_0x138[3] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x138.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0168 (was gap+0x168, 120 bytes) */

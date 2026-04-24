@@ -236,13 +236,13 @@ u8 dEFCommonEffects1_gap_0x7458_sub_0xC0[8] = {
 };
 
 /* gap sub-block @ 0x7520 (was gap+0xC8, 64 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0xC8[64] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0xC8.data.inc.c>
+Vtx dEFCommonEffects1_gap_0x7458_sub_0xC8[4] = {
+	#include <EFCommonEffects1/gap_0x7458_sub_0xC8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7560 (was gap+0x108, 64 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0x108[64] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0x108.data.inc.c>
+Vtx dEFCommonEffects1_gap_0x7458_sub_0x108[4] = {
+	#include <EFCommonEffects1/gap_0x7458_sub_0x108.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x75A0 (was gap+0x148, 200 bytes) */
@@ -348,8 +348,8 @@ u8 dEFCommonEffects1_gap_0x7AF8_sub_0x8[8] = {
 };
 
 /* gap sub-block @ 0x7B08 (was gap+0x10, 288 bytes) */
-u8 dEFCommonEffects1_gap_0x7AF8_sub_0x10[288] = {
-	#include <EFCommonEffects1/gap_0x7AF8_sub_0x10.data.inc.c>
+Vtx dEFCommonEffects1_gap_0x7AF8_sub_0x10[18] = {
+	#include <EFCommonEffects1/gap_0x7AF8_sub_0x10.vtx.inc.c>
 };
 
 /* Raw data from file offset 0x7C28 to 0x7D40 (280 bytes) */

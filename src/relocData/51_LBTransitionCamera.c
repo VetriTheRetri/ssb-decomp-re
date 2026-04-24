@@ -7,8 +7,8 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-u8 dLBTransitionCamera_gap_0x0000[32] = {
-	#include <LBTransitionCamera/gap_0x0000.data.inc.c>
+Vtx dLBTransitionCamera_gap_0x0000[2] = {
+	#include <LBTransitionCamera/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0x0020 @ 0x20 (1 vertices) */

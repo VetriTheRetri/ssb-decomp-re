@@ -227,8 +227,8 @@ u8 dEFCommonEffects3_gap_0x2D20_sub_0x198[8] = {
 };
 
 /* gap sub-block @ 0x2EC0 (was gap+0x1A0, 48 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x1A0[48] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x1A0.data.inc.c>
+Vtx dEFCommonEffects3_gap_0x2D20_sub_0x1A0[3] = {
+	#include <EFCommonEffects3/gap_0x2D20_sub_0x1A0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2EF0 (was gap+0x1D0, 144 bytes) */

@@ -1026,38 +1026,38 @@ u8 dNessModel_gap_0x553C_sub_0xBD4[128] = {
 };
 
 /* gap sub-block @ 0x6190 (was gap+0xC54, 48 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xC54[48] = {
-	#include <NessModel/gap_0x553C_sub_0xC54.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xC54[3] = {
+	#include <NessModel/gap_0x553C_sub_0xC54.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x61C0 (was gap+0xC84, 48 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xC84[48] = {
-	#include <NessModel/gap_0x553C_sub_0xC84.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xC84[3] = {
+	#include <NessModel/gap_0x553C_sub_0xC84.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x61F0 (was gap+0xCB4, 48 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xCB4[48] = {
-	#include <NessModel/gap_0x553C_sub_0xCB4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xCB4[3] = {
+	#include <NessModel/gap_0x553C_sub_0xCB4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6220 (was gap+0xCE4, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xCE4[64] = {
-	#include <NessModel/gap_0x553C_sub_0xCE4.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xCE4[4] = {
+	#include <NessModel/gap_0x553C_sub_0xCE4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6260 (was gap+0xD24, 320 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xD24[320] = {
-	#include <NessModel/gap_0x553C_sub_0xD24.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xD24[20] = {
+	#include <NessModel/gap_0x553C_sub_0xD24.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x63A0 (was gap+0xE64, 480 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xE64[480] = {
-	#include <NessModel/gap_0x553C_sub_0xE64.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0xE64[30] = {
+	#include <NessModel/gap_0x553C_sub_0xE64.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6580 (was gap+0x1044, 480 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1044[480] = {
-	#include <NessModel/gap_0x553C_sub_0x1044.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x1044[30] = {
+	#include <NessModel/gap_0x553C_sub_0x1044.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6760 (was gap+0x1224, 576 bytes) */
@@ -1066,8 +1066,8 @@ Gfx dNessModel_DL_0x6760[72] = {
 };
 
 /* gap sub-block @ 0x69A0 (was gap+0x1464, 64 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1464[64] = {
-	#include <NessModel/gap_0x553C_sub_0x1464.data.inc.c>
+Vtx dNessModel_gap_0x553C_sub_0x1464[4] = {
+	#include <NessModel/gap_0x553C_sub_0x1464.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x69E0 (was gap+0x14A4, 240 bytes) */

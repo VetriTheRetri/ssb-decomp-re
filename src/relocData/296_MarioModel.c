@@ -941,23 +941,23 @@ u8 dMarioModel_gap_0x4A60_sub_0xC80[240] = {
 };
 
 /* gap sub-block @ 0x57D0 (was gap+0xD70, 96 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0xD70[96] = {
-	#include <MarioModel/gap_0x4A60_sub_0xD70.data.inc.c>
+Vtx dMarioModel_gap_0x4A60_sub_0xD70[6] = {
+	#include <MarioModel/gap_0x4A60_sub_0xD70.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5830 (was gap+0xDD0, 512 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0xDD0[512] = {
-	#include <MarioModel/gap_0x4A60_sub_0xDD0.data.inc.c>
+Vtx dMarioModel_gap_0x4A60_sub_0xDD0[32] = {
+	#include <MarioModel/gap_0x4A60_sub_0xDD0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5A30 (was gap+0xFD0, 112 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0xFD0[112] = {
-	#include <MarioModel/gap_0x4A60_sub_0xFD0.data.inc.c>
+Vtx dMarioModel_gap_0x4A60_sub_0xFD0[7] = {
+	#include <MarioModel/gap_0x4A60_sub_0xFD0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5AA0 (was gap+0x1040, 96 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1040[96] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1040.data.inc.c>
+Vtx dMarioModel_gap_0x4A60_sub_0x1040[6] = {
+	#include <MarioModel/gap_0x4A60_sub_0x1040.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5B00 (was gap+0x10A0, 544 bytes) */
@@ -1026,8 +1026,8 @@ u8 dMarioModel_gap_0x4A60_sub_0x1890[112] = {
 };
 
 /* gap sub-block @ 0x6360 (was gap+0x1900, 112 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1900[112] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1900.data.inc.c>
+Vtx dMarioModel_gap_0x4A60_sub_0x1900[7] = {
+	#include <MarioModel/gap_0x4A60_sub_0x1900.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x63D0 (was gap+0x1970, 112 bytes) */

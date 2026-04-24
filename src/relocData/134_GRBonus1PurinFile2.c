@@ -248,8 +248,8 @@ u8 dGRBonus1PurinFile2_gap_0x0A58_sub_0xD58[320] = {
 };
 
 /* gap sub-block @ 0x18F0 (was gap+0xE98, 320 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x0A58_sub_0xE98[320] = {
-	#include <GRBonus1PurinFile2/gap_0x0A58_sub_0xE98.data.inc.c>
+Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0xE98[20] = {
+	#include <GRBonus1PurinFile2/gap_0x0A58_sub_0xE98.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1A30 (was gap+0xFD8, 80 bytes) */

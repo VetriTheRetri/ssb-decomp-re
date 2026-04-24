@@ -1160,8 +1160,8 @@ u8 dMNTitle_gap_0x26370_sub_0x98[1480] = {
 };
 
 /* gap sub-block @ 0x269D0 (was gap+0x660, 64 bytes) */
-u8 dMNTitle_gap_0x26370_sub_0x660[64] = {
-	#include <MNTitle/gap_0x26370_sub_0x660.data.inc.c>
+Vtx dMNTitle_gap_0x26370_sub_0x660[4] = {
+	#include <MNTitle/gap_0x26370_sub_0x660.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x26A10 (was gap+0x6A0, 176 bytes) */
@@ -1269,23 +1269,23 @@ u8 dMNTitle_gap_0x28850_sub_0xD0[8] = {
 };
 
 /* gap sub-block @ 0x28928 (was gap+0xD8, 64 bytes) */
-u8 dMNTitle_gap_0x28850_sub_0xD8[64] = {
-	#include <MNTitle/gap_0x28850_sub_0xD8.data.inc.c>
+Vtx dMNTitle_gap_0x28850_sub_0xD8[4] = {
+	#include <MNTitle/gap_0x28850_sub_0xD8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x28968 (was gap+0x118, 64 bytes) */
-u8 dMNTitle_gap_0x28850_sub_0x118[64] = {
-	#include <MNTitle/gap_0x28850_sub_0x118.data.inc.c>
+Vtx dMNTitle_gap_0x28850_sub_0x118[4] = {
+	#include <MNTitle/gap_0x28850_sub_0x118.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x289A8 (was gap+0x158, 64 bytes) */
-u8 dMNTitle_gap_0x28850_sub_0x158[64] = {
-	#include <MNTitle/gap_0x28850_sub_0x158.data.inc.c>
+Vtx dMNTitle_gap_0x28850_sub_0x158[4] = {
+	#include <MNTitle/gap_0x28850_sub_0x158.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x289E8 (was gap+0x198, 64 bytes) */
-u8 dMNTitle_gap_0x28850_sub_0x198[64] = {
-	#include <MNTitle/gap_0x28850_sub_0x198.data.inc.c>
+Vtx dMNTitle_gap_0x28850_sub_0x198[4] = {
+	#include <MNTitle/gap_0x28850_sub_0x198.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x28A28 (was gap+0x1D8, 200 bytes) */

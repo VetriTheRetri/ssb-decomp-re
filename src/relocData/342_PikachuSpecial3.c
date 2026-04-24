@@ -157,38 +157,38 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1378[8] = {
 };
 
 /* gap sub-block @ 0x1380 (was gap+0x1380, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1380[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1380.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x1380[1] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x1380.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1390 (was gap+0x1390, 32 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1390[32] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1390.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x1390[2] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x1390.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x13B0 (was gap+0x13B0, 48 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x13B0[48] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x13B0.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x13B0[3] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x13B0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x13E0 (was gap+0x13E0, 32 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x13E0[32] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x13E0.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x13E0[2] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x13E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1400 (was gap+0x1400, 48 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1400[48] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1400.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x1400[3] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x1400.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1430 (was gap+0x1430, 48 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1430[48] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1430.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x1430[3] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x1430.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1460 (was gap+0x1460, 48 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1460[48] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1460.data.inc.c>
+Vtx dPikachuSpecial3_gap_0x0000_sub_0x1460[3] = {
+	#include <PikachuSpecial3/gap_0x0000_sub_0x1460.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1490 (was gap+0x1490, 152 bytes) */

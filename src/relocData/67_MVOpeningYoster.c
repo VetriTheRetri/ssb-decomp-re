@@ -704,43 +704,43 @@ u8 dMVOpeningYoster_gap_0xA4C0_sub_0x640[768] = {
 };
 
 /* gap sub-block @ 0xAE00 (was gap+0x940, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0x940[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0x940.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0x940[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0x940.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAE40 (was gap+0x980, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0x980[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0x980.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0x980[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0x980.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAE80 (was gap+0x9C0, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0x9C0[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0x9C0.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0x9C0[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0x9C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAEC0 (was gap+0xA00, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xA00[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xA00.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xA00[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xA00.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAF00 (was gap+0xA40, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xA40[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xA40.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xA40[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xA40.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAF40 (was gap+0xA80, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xA80[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xA80.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xA80[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xA80.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAF80 (was gap+0xAC0, 48 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xAC0[48] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xAC0.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xAC0[3] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xAC0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xAFB0 (was gap+0xAF0, 48 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xAF0[48] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xAF0.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xAF0[3] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xAF0.vtx.inc.c>
 };
 
 /* Vtx: Vtx_0xAFE0 @ 0xAFE0 (1 vertices) */
@@ -749,23 +749,23 @@ Vtx dMVOpeningYoster_Vtx_0xAFE0_Vtx[1] = {
 };
 
 /* gap sub-block @ 0xAFF0 (was gap+0xB30, 96 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xB30[96] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xB30.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xB30[6] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xB30.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB050 (was gap+0xB90, 96 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xB90[96] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xB90.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xB90[6] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xB90.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB0B0 (was gap+0xBF0, 96 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xBF0[96] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xBF0.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xBF0[6] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xBF0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB110 (was gap+0xC50, 64 bytes) */
-u8 dMVOpeningYoster_gap_0xA4C0_sub_0xC50[64] = {
-	#include <MVOpeningYoster/gap_0xA4C0_sub_0xC50.data.inc.c>
+Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xC50[4] = {
+	#include <MVOpeningYoster/gap_0xA4C0_sub_0xC50.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB150 (was gap+0xC90, 88 bytes) */

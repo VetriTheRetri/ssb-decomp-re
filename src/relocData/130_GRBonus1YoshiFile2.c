@@ -229,108 +229,108 @@ u8 dGRBonus1YoshiFile2_gap_0x0E0C[4] = {
 };
 
 /* gap sub-block @ 0x0E10 (was gap+0x4, 320 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x4[320] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x4.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x4[20] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0F50 (was gap+0x144, 512 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x144[512] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x144.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x144[32] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x144.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1150 (was gap+0x344, 224 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x344[224] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x344.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x344[14] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x344.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1230 (was gap+0x424, 336 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x424[336] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x424.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x424[21] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x424.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1380 (was gap+0x574, 352 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x574[352] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x574.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x574[22] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x574.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14E0 (was gap+0x6D4, 480 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x6D4[480] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x6D4.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x6D4[30] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x6D4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x16C0 (was gap+0x8B4, 512 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x8B4[512] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x8B4.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x8B4[32] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x8B4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x18C0 (was gap+0xAB4, 480 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xAB4[480] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xAB4.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xAB4[30] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xAB4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1AA0 (was gap+0xC94, 368 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xC94[368] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xC94.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xC94[23] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xC94.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1C10 (was gap+0xE04, 384 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xE04[384] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xE04.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xE04[24] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xE04.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1D90 (was gap+0xF84, 256 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xF84[256] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xF84.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0xF84[16] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0xF84.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1E90 (was gap+0x1084, 448 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1084[448] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1084.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1084[28] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1084.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2050 (was gap+0x1244, 512 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1244[512] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1244.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1244[32] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1244.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2250 (was gap+0x1444, 128 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1444[128] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1444.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1444[8] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1444.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x22D0 (was gap+0x14C4, 320 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x14C4[320] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x14C4.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x14C4[20] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x14C4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2410 (was gap+0x1604, 32 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1604[32] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1604.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1604[2] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1604.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2430 (was gap+0x1624, 32 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1624[32] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1624.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1624[2] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1624.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2450 (was gap+0x1644, 48 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1644[48] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1644.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1644[3] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1644.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2480 (was gap+0x1674, 64 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1674[64] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1674.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1674[4] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1674.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x24C0 (was gap+0x16B4, 80 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x16B4[80] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x16B4.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x16B4[5] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x16B4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x2510 (was gap+0x1704, 160 bytes) */
-u8 dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1704[160] = {
-	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1704.data.inc.c>
+Vtx dGRBonus1YoshiFile2_gap_0x0E0C_sub_0x1704[10] = {
+	#include <GRBonus1YoshiFile2/gap_0x0E0C_sub_0x1704.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x25B0 (was gap+0x17A4, 96 bytes) */

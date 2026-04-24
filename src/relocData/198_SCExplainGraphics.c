@@ -79,13 +79,13 @@ u8 dSCExplainGraphics_gap_0x50A0_sub_0x20[8] = {
 };
 
 /* gap sub-block @ 0x50C8 (was gap+0x28, 64 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0_sub_0x28[64] = {
-	#include <SCExplainGraphics/gap_0x50A0_sub_0x28.data.inc.c>
+Vtx dSCExplainGraphics_gap_0x50A0_sub_0x28[4] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x28.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5108 (was gap+0x68, 192 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0_sub_0x68[192] = {
-	#include <SCExplainGraphics/gap_0x50A0_sub_0x68.data.inc.c>
+Vtx dSCExplainGraphics_gap_0x50A0_sub_0x68[12] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x68.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x51C8 (was gap+0x128, 160 bytes) */

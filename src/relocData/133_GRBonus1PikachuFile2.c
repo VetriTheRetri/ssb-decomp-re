@@ -271,8 +271,8 @@ u8 dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x10F0[496] = {
 };
 
 /* gap sub-block @ 0x1EA0 (was gap+0x12E0, 320 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x12E0[320] = {
-	#include <GRBonus1PikachuFile2/gap_0x0BC0_sub_0x12E0.data.inc.c>
+Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x12E0[20] = {
+	#include <GRBonus1PikachuFile2/gap_0x0BC0_sub_0x12E0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1FE0 (was gap+0x1420, 80 bytes) */

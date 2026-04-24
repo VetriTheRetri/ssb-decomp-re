@@ -1501,153 +1501,153 @@ u8 dSamusModel_gap_0x6FD4_sub_0x2370[12] = {
 };
 
 /* gap sub-block @ 0x9350 (was gap+0x237C, 240 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x237C[240] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x237C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x237C[15] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x237C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9440 (was gap+0x246C, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x246C[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x246C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x246C[1] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x246C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9450 (was gap+0x247C, 96 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x247C[96] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x247C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x247C[6] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x247C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x94B0 (was gap+0x24DC, 80 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x24DC[80] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x24DC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x24DC[5] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x24DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9500 (was gap+0x252C, 64 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x252C[64] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x252C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x252C[4] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x252C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9540 (was gap+0x256C, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x256C[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x256C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x256C[3] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x256C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9570 (was gap+0x259C, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x259C[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x259C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x259C[1] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x259C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9580 (was gap+0x25AC, 176 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x25AC[176] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x25AC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x25AC[11] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x25AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9630 (was gap+0x265C, 192 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x265C[192] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x265C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x265C[12] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x265C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x96F0 (was gap+0x271C, 32 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x271C[32] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x271C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x271C[2] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x271C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9710 (was gap+0x273C, 112 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x273C[112] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x273C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x273C[7] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x273C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9780 (was gap+0x27AC, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x27AC[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x27AC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x27AC[3] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x27AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x97B0 (was gap+0x27DC, 32 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x27DC[32] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x27DC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x27DC[2] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x27DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x97D0 (was gap+0x27FC, 64 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x27FC[64] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x27FC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x27FC[4] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x27FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9810 (was gap+0x283C, 160 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x283C[160] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x283C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x283C[10] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x283C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x98B0 (was gap+0x28DC, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x28DC[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x28DC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x28DC[3] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x28DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x98E0 (was gap+0x290C, 208 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x290C[208] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x290C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x290C[13] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x290C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x99B0 (was gap+0x29DC, 112 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x29DC[112] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x29DC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x29DC[7] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x29DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9A20 (was gap+0x2A4C, 352 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2A4C[352] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2A4C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2A4C[22] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2A4C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9B80 (was gap+0x2BAC, 128 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2BAC[128] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2BAC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2BAC[8] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2BAC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9C00 (was gap+0x2C2C, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2C2C[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2C2C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2C2C[3] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2C2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9C30 (was gap+0x2C5C, 432 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2C5C[432] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2C5C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2C5C[27] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2C5C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9DE0 (was gap+0x2E0C, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2E0C[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2E0C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2E0C[3] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2E0C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9E10 (was gap+0x2E3C, 320 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2E3C[320] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2E3C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2E3C[20] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2E3C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9F50 (was gap+0x2F7C, 144 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2F7C[144] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2F7C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x2F7C[9] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x2F7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9FE0 (was gap+0x300C, 176 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x300C[176] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x300C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x300C[11] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x300C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA090 (was gap+0x30BC, 192 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x30BC[192] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x30BC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x30BC[12] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x30BC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA150 (was gap+0x317C, 384 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x317C[384] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x317C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x317C[24] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x317C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA2D0 (was gap+0x32FC, 320 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x32FC[320] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x32FC.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x32FC[20] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x32FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA410 (was gap+0x343C, 144 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x343C[144] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x343C.data.inc.c>
+Vtx dSamusModel_gap_0x6FD4_sub_0x343C[9] = {
+	#include <SamusModel/gap_0x6FD4_sub_0x343C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA4A0 (was gap+0x34CC, 112 bytes) */

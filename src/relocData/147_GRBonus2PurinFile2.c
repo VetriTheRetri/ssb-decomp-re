@@ -231,43 +231,43 @@ u8 dGRBonus2PurinFile2_gap_0x091C_sub_0xD14[352] = {
 };
 
 /* gap sub-block @ 0x1790 (was gap+0xE74, 80 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0xE74[80] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xE74.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0xE74[5] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xE74.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x17E0 (was gap+0xEC4, 128 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0xEC4[128] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xEC4.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0xEC4[8] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xEC4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1860 (was gap+0xF44, 48 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0xF44[48] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xF44.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0xF44[3] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xF44.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1890 (was gap+0xF74, 96 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0xF74[96] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xF74.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0xF74[6] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xF74.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x18F0 (was gap+0xFD4, 256 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0xFD4[256] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xFD4.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0xFD4[16] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0xFD4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x19F0 (was gap+0x10D4, 96 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0x10D4[96] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x10D4.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0x10D4[6] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x10D4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1A50 (was gap+0x1134, 256 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0x1134[256] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x1134.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0x1134[16] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x1134.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1B50 (was gap+0x1234, 128 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0x1234[128] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x1234.data.inc.c>
+Vtx dGRBonus2PurinFile2_gap_0x091C_sub_0x1234[8] = {
+	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x1234.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1BD0 (was gap+0x12B4, 120 bytes) */

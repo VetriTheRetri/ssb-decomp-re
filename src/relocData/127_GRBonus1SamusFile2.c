@@ -38,8 +38,8 @@ u8 dGRBonus1SamusFile2_gap_0x0000_sub_0xB8[8] = {
 };
 
 /* gap sub-block @ 0x00C0 (was gap+0xC0, 32 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0xC0[32] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0xC0.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0xC0[2] = {
+	#include <GRBonus1SamusFile2/gap_0x0000_sub_0xC0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x00E0 (was gap+0xE0, 32 bytes) */
@@ -208,63 +208,63 @@ u8 dGRBonus1SamusFile2_gap_0x0A58[8] = {
 };
 
 /* gap sub-block @ 0x0A60 (was gap+0x8, 320 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x8[320] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x8.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x8[20] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0BA0 (was gap+0x148, 320 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x148[320] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x148.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x148[20] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x148.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0CE0 (was gap+0x288, 256 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x288[256] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x288.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x288[16] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x288.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0DE0 (was gap+0x388, 384 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x388[384] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x388.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x388[24] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x388.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0F60 (was gap+0x508, 128 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x508[128] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x508.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x508[8] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x508.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0FE0 (was gap+0x588, 128 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x588[128] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x588.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x588[8] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x588.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1060 (was gap+0x608, 384 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x608[384] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x608.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x608[24] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x608.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11E0 (was gap+0x788, 128 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x788[128] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x788.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x788[8] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x788.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1260 (was gap+0x808, 64 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x808[64] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x808.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x808[4] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x808.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x12A0 (was gap+0x848, 64 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x848[64] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x848.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x848[4] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x848.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x12E0 (was gap+0x888, 320 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x888[320] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x888.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x888[20] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x888.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1420 (was gap+0x9C8, 64 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58_sub_0x9C8[64] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x9C8.data.inc.c>
+Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x9C8[4] = {
+	#include <GRBonus1SamusFile2/gap_0x0A58_sub_0x9C8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1460 (was gap+0xA08, 96 bytes) */

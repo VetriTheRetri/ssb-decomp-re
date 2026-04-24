@@ -8,8 +8,8 @@
 
 /* Raw data from file offset 0x0000 to 0x0108 (264 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
-u8 dStageExplainFile2_gap_0x0000[64] = {
-	#include <StageExplainFile2/gap_0x0000.data.inc.c>
+Vtx dStageExplainFile2_gap_0x0000[4] = {
+	#include <StageExplainFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0040 (was gap+0x40, 200 bytes) */
@@ -46,23 +46,23 @@ u8 dStageExplainFile2_gap_0x018C_sub_0x84[192] = {
 };
 
 /* gap sub-block @ 0x02D0 (was gap+0x144, 128 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x144[128] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x144.data.inc.c>
+Vtx dStageExplainFile2_gap_0x018C_sub_0x144[8] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x144.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0350 (was gap+0x1C4, 96 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x1C4[96] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x1C4.data.inc.c>
+Vtx dStageExplainFile2_gap_0x018C_sub_0x1C4[6] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x1C4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03B0 (was gap+0x224, 32 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x224[32] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x224.data.inc.c>
+Vtx dStageExplainFile2_gap_0x018C_sub_0x224[2] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x224.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x03D0 (was gap+0x244, 48 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x244[48] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x244.data.inc.c>
+Vtx dStageExplainFile2_gap_0x018C_sub_0x244[3] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x244.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0400 (was gap+0x274, 104 bytes) */
@@ -142,13 +142,13 @@ u8 dStageExplainFile2_gap_0x0A3C[4] = {
 };
 
 /* gap sub-block @ 0x0A40 (was gap+0x4, 256 bytes) */
-u8 dStageExplainFile2_gap_0x0A3C_sub_0x4[256] = {
-	#include <StageExplainFile2/gap_0x0A3C_sub_0x4.data.inc.c>
+Vtx dStageExplainFile2_gap_0x0A3C_sub_0x4[16] = {
+	#include <StageExplainFile2/gap_0x0A3C_sub_0x4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0B40 (was gap+0x104, 224 bytes) */
-u8 dStageExplainFile2_gap_0x0A3C_sub_0x104[224] = {
-	#include <StageExplainFile2/gap_0x0A3C_sub_0x104.data.inc.c>
+Vtx dStageExplainFile2_gap_0x0A3C_sub_0x104[14] = {
+	#include <StageExplainFile2/gap_0x0A3C_sub_0x104.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0C20 (was gap+0x1E4, 432 bytes) */

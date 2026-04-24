@@ -41,8 +41,8 @@ u8 dGRBonus2FoxFile2_gap_0x0000_sub_0xB8[8] = {
 };
 
 /* gap sub-block @ 0x00C0 (was gap+0xC0, 32 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0000_sub_0xC0[32] = {
-	#include <GRBonus2FoxFile2/gap_0x0000_sub_0xC0.data.inc.c>
+Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0xC0[2] = {
+	#include <GRBonus2FoxFile2/gap_0x0000_sub_0xC0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x00E0 (was gap+0xE0, 32 bytes) */
@@ -321,8 +321,8 @@ u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230[8] = {
 };
 
 /* gap sub-block @ 0x0D10 (was gap+0x238, 320 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x238[320] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x238.data.inc.c>
+Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x238[20] = {
+	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x238.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0E50 (was gap+0x378, 192 bytes) */
@@ -386,23 +386,23 @@ u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0xF08[160] = {
 };
 
 /* gap sub-block @ 0x1A80 (was gap+0xFA8, 128 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0xFA8[128] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0xFA8.data.inc.c>
+Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0xFA8[8] = {
+	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0xFA8.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1B00 (was gap+0x1028, 64 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1028[64] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1028.data.inc.c>
+Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1028[4] = {
+	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1028.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1B40 (was gap+0x1068, 256 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1068[256] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1068.data.inc.c>
+Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1068[16] = {
+	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1068.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1C40 (was gap+0x1168, 128 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1168[128] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1168.data.inc.c>
+Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1168[8] = {
+	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1168.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1CC0 (was gap+0x11E8, 80 bytes) */

@@ -47,10 +47,16 @@ Recent round of structural work:
   model, stage `*File2`, opening cutscene, character Special, effects
   common, and all LB transitions). `tools/typeRelocBlocks.py` walks the
   Gfx DLs inside each file and types untyped `u8` blocks accordingly:
-    1. u8 blocks starting with `0xE7000000` (gsDPPipeSync) and
-       containing `0xDF00000000000000` (gsSPEndDisplayList) split into
-       `Gfx[cmds] + u8[tail]`. Re-entrant peel handles the common case
-       of multiple consecutive DLs in a single block.
+    1. u8 blocks starting with the full `gsDPPipeSync` sentinel
+       (`E7000000 00000000`) split into `Gfx[cmds] + tail`. The
+       split handles the multi-DL chain case (re-entrant peel for
+       consecutive DLs separated by `gsSPEndDisplayList`), the
+       unterminated-DL case (one logical DL sliced into multiple
+       sub-blocks by intern-chain pointers — each chunk types as
+       `Gfx[N/8]` even without a terminator inside the block), and
+       trailer emission. Trailers that are pure zero padding and
+       not referenced by any `.reloc` entry collapse to a `PAD(N);`
+       macro instead of a named `u8 trailer[N]` array.
     2. Every `gsSPVertex(ptr, count, v0)` span gets unioned (strict
        overlap) so blocks whose declared size matches a span retype
        u8→Vtx, and spans crossing block boundaries merge a contiguous
@@ -62,9 +68,10 @@ Recent round of structural work:
        every expanded view so cross-file palettes (e.g. a
        Bonus1CommonImages block loaded as a TLUT from a character
        file's Gfx) get caught too.
-  Iterated to fixpoint with rebuilds between passes. Net delta across
-  the 180 files: hundreds of new `Vtx[]` / `Gfx[]` arrays, dozens of
-  new palettes, ROM stays byte-identical.
+  Iterated to fixpoint with rebuilds between passes. Final counts:
+  **1,792 `Gfx[]` arrays** (~632 KB), **3,654 `Vtx[]` arrays** (~629
+  KB), **487 u16 palettes** (~21 KB), **625 `PAD()` usages**. ROM
+  stays byte-identical throughout.
 - **`tools/expandRelocFile.py` correctness fixes**. The Gfx-arg
   resolver now gates on walked chain positions (so `0x0EXXXXXX`
   segmented addresses don't falsely bind to in-file symbols whose
@@ -192,20 +199,26 @@ intent:
 
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
-| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,738 | ~540 KB | 95 |
-| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, misc tails) | 159 | ~127 KB | ~60 |
-| **Total u8 `.data.inc.c`** | 3,897 | ~668 KB | 120 |
+| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,400 | ~455 KB | 95 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, misc tails) | 159 | ~127 KB | 82 |
+| **Total u8 `.data.inc.c`** | 3,559 | ~583 KB | 106 |
 
-The semantic bucket dropped from ~450 KB to ~127 KB after one
-cleanup round: 74 `_tex` / `_Image` / `Wallpaper_tex_tiles` / `Tex_pool`
-blocks got their includes renamed `.data.inc.c` → `.tex.inc.c` (~300
-KB moved to proper texture classification), and 18 `AnimJoint` /
-`MatAnimJoint` / `CamAnimJoint` u8 blocks (MVOpeningYamabuki,
-SCStaffroll, 11 LBTransition* files) got retyped u8 → u32 (~23 KB
-moved to proper anim-array classification). What remains of the
-semantic bucket is mostly `*_post` DL-tail metadata and stage
-`MPGeometryData` arrays that need structural typing, not just
-renames.
+The semantic bucket dropped from ~450 KB to ~127 KB in an earlier
+round (74 texture-named blocks renamed `.data.inc.c` → `.tex.inc.c`
+moved ~300 KB to texture classification; 18 AnimJoint blocks retyped
+u8 → u32 for another ~23 KB).
+
+The unclassified bucket dropped from ~540 KB to ~455 KB in the most
+recent round when `tools/typeRelocBlocks.py`'s split pass was
+extended to:
+- type DL fragments that lack a `gsSPEndDisplayList` terminator (the
+  block is a slice of a longer DL chained across sub-blocks);
+- emit `PAD(N);` macros for trailers that are pure zero padding and
+  not referenced by any `.reloc` entry.
+
+After the new split pass, `Gfx[]` arrays grew to **1,792 declarations
+/ ~632 KB**, and 625 `PAD()` usages (~5 KB of zeroed gap) replaced
+small all-zero `u8[]` trailers.
 
 Top files in each bucket (bytes):
 
@@ -213,34 +226,34 @@ Top files in each bucket (bytes):
 
 | Fid | File | Blocks | Bytes |
 |---:|---|---:|---:|
-| 328 | KirbyModel | 566 | 88,232 |
 | 86 | ITCommonObject | 63 | 46,240 |
 | 112 | StageYamabukiFile2 | 65 | 31,528 |
-| 83 | EFCommonEffects1 | 44 | 29,624 |
+| 328 | KirbyModel | 367 | 31,344 |
+| 83 | EFCommonEffects1 | 43 | 29,448 |
 | 198 | SCExplainGraphics | 16 | 23,464 |
-| 111 | StageYosterFile2 | 83 | 23,412 |
-| 317 | DonkeyModel | 272 | 21,040 |
-| 332 | CaptainModel | 259 | 16,232 |
+| 111 | StageYosterFile2 | 76 | 22,852 |
 | 105 | StageZebesFile2 | 106 | 14,808 |
 | 136 | Bonus2Common | 18 | 14,568 |
-| 320 | SamusModel | 219 | 14,020 |
 | 335 | NessModel | 105 | 12,904 |
+| 332 | CaptainModel | 247 | 11,904 |
 | 75 | MVOpeningRunCrash | 40 | 11,752 |
 | 149 | GRBonus3File2 | 34 | 11,736 |
 | 68 | MVOpeningCliff | 13 | 11,288 |
-| 338 | YoshiModel | 184 | 11,060 |
+| 317 | DonkeyModel | 239 | 11,208 |
 | 114 | StageLastFile2 | 60 | 10,708 |
 | 108 | StageJungleFile2 | 20 | 10,056 |
 | 167 | MNTitle | 15 | 9,256 |
-| 341 | PikachuModel | 152 | 9,036 |
+| 338 | YoshiModel | 173 | 8,788 |
+| 341 | PikachuModel | 150 | 8,620 |
+| 320 | SamusModel | 201 | 8,388 |
 
-Character-model files dominate through sheer block count — the
-display-list walk that promoted Vtx / Gfx / palettes left Joint
-hierarchy data, Mtx pools, and misc small sub-blocks behind. Stage
-File2 files follow similar shape (collision geometry, layer animation
-metadata). `ITCommonObject` alone has ~46 KB of per-item
-`_data_remainder` sub-blocks that need per-item struct identification
-from runtime code analysis.
+KirbyModel dropped sharply (88 KB → 31 KB) — many of its `gap_*_sub_*`
+blocks were DL fragments without explicit terminators that the
+extended split pass now classifies as `Gfx[]`. Same shape for
+DonkeyModel, CaptainModel, SamusModel, YoshiModel. `ITCommonObject`
+took the lead with ~46 KB of per-item `_data_remainder` sub-blocks
+that still need per-item struct identification from runtime code
+analysis.
 
 **Semantically named — structural analysis required**
 
@@ -420,7 +433,7 @@ from `assets/relocData/<fid>.vpk0.bin` on every `make extract`.
 | `tools/auditGapRefs.py` | Report `gap_0xNNNN` raw-byte regions that have inbound external references from other files. |
 | `tools/splitGapAtExternRefs.py` | Split such gap regions at the inbound offsets, naming each sub-region `gap_0xNNNN_sub_0xMM`. Skips gaps whose symbol is referenced anywhere in the local `.reloc` (would need label rewrites). |
 | `tools/splitGapFull.py` | Like `splitGapAtExternRefs.py` but ALSO rewrites local `.reloc` intern entries to use the new sub-region symbols, so it works on gaps with intra-file chain references too. |
-| `tools/typeRelocBlocks.py` | Display-list-driven bulk typer: three passes over a file's expanded Gfx bodies: (1) split u8 blocks whose bytes form a gsDPPipeSync-prefixed DL into `Gfx[cmds] + u8[tail]`; (2) walk every `gsSPVertex` span and retype / merge u8 blocks into `Vtx[N]` with strict-overlap span union and `.reloc` target rewrites; (3) retype `gsDPSetTextureImage → gsDPLoadTLUTCmd` targets as `u16 palette[N/2]`. Global palette hint map is derived from every expanded view so cross-file palettes (e.g. a Bonus1CommonImages block loaded as a TLUT from a character file) get caught. Idempotent — re-running against a fully-typed file produces zero changes. Applied across 180 files (every character model, stage File2, opening cutscene, Special, LBTransition, EFCommon, etc.) in the last typing pass. |
+| `tools/typeRelocBlocks.py` | Display-list-driven bulk typer: three passes over a file's expanded Gfx bodies. (1) Split u8 blocks whose first 8 bytes are the full gsDPPipeSync sentinel (`E7000000 00000000`) into `Gfx[cmds] + tail`; handles multi-DL chains (re-entrant peel), unterminated DL fragments (one logical DL spread across intern-chain sub-blocks — each chunk still types as `Gfx[N/8]`), and trailer collapse to `PAD(N);` when the trailer is all-zero and unreferenced. (2) Walk every `gsSPVertex` span and retype / merge u8 blocks into `Vtx[N]` with strict-overlap span union and `.reloc` target rewrites. (3) Retype `gsDPSetTextureImage → gsDPLoadTLUTCmd` targets as `u16 palette[N/2]`. Global palette hint map is derived from every expanded view so cross-file palettes (e.g. a Bonus1CommonImages block loaded as a TLUT from a character file) get caught. Idempotent — re-running against a fully-typed file produces zero changes. |
 
 ---
 

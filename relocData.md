@@ -80,6 +80,15 @@ Recent round of structural work:
   `# -> file N (Name)` annotations into cross-file symbol references
   (e.g. `dStageSectorFile2_Tex_0x19F8 /* was 0xFFFF067E */`) rather
   than binding them to unrelated in-file symbols.
+- **`tools/relocSpriteTool.py` PNG preview fixes**. The extract-time
+  PNG generator now (a) reads `Sprite.attr` and applies the 16-byte
+  odd-row deshuffle on RGBA32 sprites whose `SP_TEXSHUF` bit is set
+  — fixes the zigzag-interleave artefact on title-screen art like
+  `dSC1PIntro_VSDecal` and `dMNTitle_Smash`; (b) renders CI4/CI8
+  sprite previews instead of skipping them, by reading 32 / 512 bytes
+  from `Sprite.LUT` (already resolved by the relocs map) and passing
+  them as `tlut_data` to `n64_to_rgba`. Pure preview-side fixes; ROM
+  bytes unchanged.
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
   typed (`FTHiddenPart`, `FTModelPart`, `FTModelPartDesc*[]`,
   `FTCommonPartContainer`, `FTTexturePartContainer`, `FTThrownStatus[]`,
@@ -199,9 +208,9 @@ intent:
 
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
-| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,400 | ~455 KB | 95 |
+| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,393 | ~452 KB | 94 |
 | Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, misc tails) | 159 | ~127 KB | 82 |
-| **Total u8 `.data.inc.c`** | 3,559 | ~583 KB | 106 |
+| **Total u8 `.data.inc.c`** | 3,552 | ~579 KB | 105 |
 
 The semantic bucket dropped from ~450 KB to ~127 KB in an earlier
 round (74 texture-named blocks renamed `.data.inc.c` → `.tex.inc.c`
@@ -220,6 +229,18 @@ After the new split pass, `Gfx[]` arrays grew to **1,792 declarations
 / ~632 KB**, and 625 `PAD()` usages (~5 KB of zeroed gap) replaced
 small all-zero `u8[]` trailers.
 
+Two follow-up rounds further refined the typing:
+- **Extension alignment** moved 171 declarations whose include
+  extension didn't match their declared C type onto the proper
+  extension: 70 `Vtx[]` to `.vtx.inc.c`, 66 `Gfx[]` to `.dl.inc.c`,
+  35 `u16` palette-named arrays to `.palette.inc.c`. Bytes unchanged
+  (the extract tool routes by C type, not extension); `rg
+  '\.data\.inc\.c'` now strictly returns raw-byte wrappers.
+- **CI8 palette extension**: 7 sprite palettes named `u16[16]` but
+  referenced by Sprites with `nTLUT=256` had their remaining 240
+  colors sitting in adjacent unreferenced gaps. They were merged
+  to `u16[256]` (BannerTop in SC1PIntro plus 6 in SCExplainGraphics).
+
 Top files in each bucket (bytes):
 
 **Truly unclassified — real typing work**
@@ -230,8 +251,8 @@ Top files in each bucket (bytes):
 | 112 | StageYamabukiFile2 | 65 | 31,528 |
 | 328 | KirbyModel | 367 | 31,344 |
 | 83 | EFCommonEffects1 | 43 | 29,448 |
-| 198 | SCExplainGraphics | 16 | 23,464 |
 | 111 | StageYosterFile2 | 76 | 22,852 |
+| 198 | SCExplainGraphics | 10 | 20,584 |
 | 105 | StageZebesFile2 | 106 | 14,808 |
 | 136 | Bonus2Common | 18 | 14,568 |
 | 335 | NessModel | 105 | 12,904 |

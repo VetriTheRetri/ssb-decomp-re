@@ -34,26 +34,42 @@ def popcount(x):
 
 
 # Layout: opcode at bits 25..31, flags at bits 15..24, payload at bits 0..14
+#
+# payload_fn(flags, payload) returns the number of words the runtime consumes
+# AFTER the command word. Derived from src/sys/objanim.c's per-opcode
+# dispatcher -- each case calls AObjAnimAdvance(...) once per payload
+# word it reads, after the initial advance past the command itself.
+#
+# Notable corrections vs. naive guesses:
+#  * SetVal0Rate / SetVal0RateBlock consume popcount(flags), not 2*popcount
+#    (they only read target_val per track, not target_val + target_rate).
+#  * SetInterp / SetAnim each consume 1 follow-up word (the next ->p slot).
+#  * Cmd17 consumes popcount(flags >> 4) words (only tracks 4..13 emit f payloads).
 OPCODES = {
     0x00: ("aobjEvent32End()", lambda f, p: 0),
-    0x01: ("aobjEvent32Jump", lambda f, p: 1),  # Jump consumes one address word after
+    0x01: ("aobjEvent32Jump", lambda f, p: 1),  # Jump reads ->p (next word) as new script
     0x02: ("aobjEvent32Wait", lambda f, p: 0),
     0x03: ("aobjEvent32SetValBlock", lambda f, p: popcount(f)),
     0x04: ("aobjEvent32SetVal", lambda f, p: popcount(f)),
     0x05: ("aobjEvent32SetValRateBlock", lambda f, p: 2 * popcount(f)),
     0x06: ("aobjEvent32SetValRate", lambda f, p: 2 * popcount(f)),
     0x07: ("aobjEvent32SetTargetRate", lambda f, p: popcount(f)),
-    0x08: ("aobjEvent32SetVal0RateBlock", lambda f, p: 2 * popcount(f)),
-    0x09: ("aobjEvent32SetVal0Rate", lambda f, p: 2 * popcount(f)),
+    0x08: ("aobjEvent32SetVal0RateBlock", lambda f, p: popcount(f)),
+    0x09: ("aobjEvent32SetVal0Rate", lambda f, p: popcount(f)),
     0x0A: ("aobjEvent32SetValAfterBlock", lambda f, p: popcount(f)),
     0x0B: ("aobjEvent32SetValAfter", lambda f, p: popcount(f)),
-    0x0D: ("aobjEvent32SetInterp", lambda f, p: 0),
-    0x0E: ("aobjEvent32SetAnim", lambda f, p: 0),
+    0x0C: ("aobjEvent32Cmd12", lambda f, p: 0),
+    0x0D: ("aobjEvent32SetInterp", lambda f, p: 1),
+    0x0E: ("aobjEvent32SetAnim", lambda f, p: 1),
     0x0F: ("aobjEvent32SetFlags", lambda f, p: 0),
+    0x10: ("aobjEvent32Cmd16", lambda f, p: 0),
+    0x11: ("aobjEvent32Cmd17", lambda f, p: popcount((f >> 4) & 0x3FF)),
     0x12: ("aobjEvent32SetExtValAfterBlock", lambda f, p: popcount(f)),
     0x13: ("aobjEvent32SetExtValAfter", lambda f, p: popcount(f)),
     0x14: ("aobjEvent32SetExtValBlock", lambda f, p: popcount(f)),
     0x15: ("aobjEvent32SetExtVal", lambda f, p: popcount(f)),
+    0x16: ("aobjEvent32Cmd22", lambda f, p: 0),
+    0x17: ("aobjEvent32Cmd23", lambda f, p: 0),
 }
 
 
@@ -91,47 +107,147 @@ def format_call(macro, opcode, flags, payload):
         return f"{name}"  # caller appends address
     if name == "aobjEvent32Wait":
         return f"{name}({payload})"
+    if name.startswith("aobjEvent32Cmd"):  # Cmd12 / 16 / 17 / 22 / 23
+        return f"{name}(0x{flags:03X}, {payload})"
     return name
 
 
-def decode_stream(words):
-    """Walk the stream, return list of (output_str, is_command, original_word).
-    Commands get the macro call; payloads get raw hex.
-    Returns None if decode fails (e.g. unrecognized opcode mid-stream)."""
+def decode_stream(words, sym, chain_pointers):
+    """Walk the words, return list of (output_str, kind, original_word).
+    kind is 'cmd' / 'payload' / 'pointer' / 'raw'.
+
+    chain_pointers maps `byte_offset_within_array -> target_label` for
+    every word position in the block that is a chain-encoded pointer per
+    the file's .reloc. Those positions emit a `(u32)((u8*)<target>)`
+    macro and the runtime fixRelocChain.py rewrites them to the chain
+    encoding -- the C source value can be anything since fixRelocChain
+    overwrites it.
+
+    Greedy / lenient: never returns None. Unknown opcodes or
+    payload-overflow cases emit raw hex so the array still round-trips
+    byte-identically."""
     out = []
     i = 0
     n = len(words)
     while i < n:
+        byte_off = i * 4
         word = words[i]
+        # Chain-encoded pointer per .reloc -- emit symbol-relative ref.
+        if byte_off in chain_pointers:
+            target = chain_pointers[byte_off]
+            out.append((f"(u32){target}", 'pointer', word))
+            i += 1
+            continue
         opcode, flags, payload = decode_word(word)
+        # End / Jump / Wait shorthands hardcode some fields to 0.
+        # Fall back to *Raw variants when real bytes carry non-zero values.
+        if opcode == 0x00:
+            if flags == 0 and payload == 0:
+                out.append(("aobjEvent32End()", 'cmd', word))
+            else:
+                out.append((f"aobjEvent32EndRaw(0x{flags:03X}, {payload})", 'cmd', word))
+            i += 1
+            continue
         if opcode not in OPCODES:
-            return None
+            out.append((f"0x{word:08X}", 'raw', word))
+            i += 1
+            continue
         macro, payload_fn = OPCODES[opcode]
         nfollow = payload_fn(flags, payload)
+        # Guard against payload overflow OR a chain pointer landing inside
+        # this opcode's payload window (mis-aligned decode).
         if i + nfollow >= n:
-            return None  # would read past end
+            out.append((f"0x{word:08X}", 'raw', word))
+            i += 1
+            continue
+        payload_window_clean = all(
+            (i + 1 + k) * 4 not in chain_pointers
+            for k in range(nfollow)
+        )
+        if not payload_window_clean:
+            out.append((f"0x{word:08X}", 'raw', word))
+            i += 1
+            continue
         if opcode == 0x01:  # Jump
-            out.append((f"aobjEvent32Jump(0x{words[i+1]:08X})", True, word))
+            if flags == 0 and payload == 0:
+                out.append((f"aobjEvent32Jump(0x{words[i+1]:08X})", 'cmd', word))
+            else:
+                out.append((f"aobjEvent32JumpRaw(0x{flags:03X}, {payload}, 0x{words[i+1]:08X})", 'cmd', word))
             i += 2
             continue
-        out.append((format_call(macro, opcode, flags, payload), True, word))
+        if opcode == 0x02:  # Wait — shorthand hardcodes flags=0
+            if flags == 0:
+                out.append((f"aobjEvent32Wait({payload})", 'cmd', word))
+            else:
+                out.append((f"aobjEvent32WaitRaw(0x{flags:03X}, {payload})", 'cmd', word))
+            i += 1
+            continue
+        out.append((format_call(macro, opcode, flags, payload), 'cmd', word))
         i += 1
-        for j in range(nfollow):
-            out.append((f"0x{words[i]:08X}", False, words[i]))
+        for _ in range(nfollow):
+            out.append((f"0x{words[i]:08X}", 'payload', words[i]))
             i += 1
     return out
 
 
-def process_array(text, sym, words):
-    """Try to decode this array and return new init body if successful."""
-    decoded = decode_stream(words)
-    if decoded is None:
-        return None
+def process_array(text, sym, words, chain_pointers):
+    """Decode this array's words to a body string. Lines are tab-indented;
+    payload words and raw entries get an extra spacing prefix to visually
+    separate them from command lines."""
+    decoded = decode_stream(words, sym, chain_pointers)
     lines = []
-    for s, is_cmd, _ in decoded:
-        prefix = "" if is_cmd else "    "
+    for s, kind, _ in decoded:
+        prefix = "" if kind in ('cmd', 'pointer') else "    "
         lines.append(f"\t{prefix}{s},")
     return "\n".join(lines) + "\n"
+
+
+def parse_reloc_chain_pointers(reloc_path, target_sym):
+    """Return {byte_offset_in_target_array: target_label_string} for every
+    intern .reloc entry whose ptr label is `target_sym+0xN`. The label
+    string is what we'll write in the C source, e.g.
+        ((u8*)dXxx + 0x18)
+        dXxx
+        dOtherSym
+    """
+    out = {}
+    if not os.path.exists(reloc_path):
+        return out
+    label_re = re.compile(r'^(\w+)(?:\+0x([0-9A-Fa-f]+))?$')
+    with open(reloc_path) as f:
+        for ln in f:
+            # Strip the trailing "# -> file N (Name)" annotation
+            if '#' in ln:
+                ln = ln.split('#', 1)[0]
+            ln = ln.strip()
+            if not ln:
+                continue
+            parts = ln.split()
+            if len(parts) != 3:
+                continue
+            chain_type, ptr_label, target_label = parts
+            if chain_type != 'intern':
+                continue
+            m = label_re.match(ptr_label)
+            if not m:
+                continue
+            ptr_sym, ptr_off_hex = m.group(1), m.group(2)
+            if ptr_sym != target_sym:
+                continue
+            ptr_off = int(ptr_off_hex, 16) if ptr_off_hex else 0
+            # Build the target expression for the C source. Same parsing
+            # for the target label.
+            tm = label_re.match(target_label)
+            if not tm:
+                continue
+            tgt_sym, tgt_off_hex = tm.group(1), tm.group(2)
+            tgt_off = int(tgt_off_hex, 16) if tgt_off_hex else 0
+            if tgt_off == 0:
+                target_expr = tgt_sym
+            else:
+                target_expr = f"((u8*){tgt_sym} + 0x{tgt_off:X})"
+            out[ptr_off] = target_expr
+    return out
 
 
 def process_file(file_id, dry=False):
@@ -149,11 +265,15 @@ def process_file(file_id, dry=False):
     with open(c_path) as f:
         text = f.read()
 
+    # Match anywhere `AnimJoint`, `MatAnimJoint`, `CamAnimJoint`, `animjoints`,
+    # or `matanimjoints` appears in the symbol name (no underscore required
+    # before, since `LegsAnimJoint` etc. have no separator).
     pat = re.compile(
-        r"u32 (d\w+?_(?:AnimJoint|MatAnimJoint|CamAnimJoint|animjoints|matanimjoints)(?:_\w+)?)\[(\d+)\] = \{\n"
+        r"u32 (d\w*(?:AnimJoint|MatAnimJoint|CamAnimJoint|animjoints|matanimjoints)\w*)\[(\d+)\] = \{\n"
         r"(\t#include <[^>]+>\n)\};",
         re.MULTILINE,
     )
+    reloc_path = c_path[:-2] + ".reloc"
     changes = 0
     new_text = text
 
@@ -170,16 +290,15 @@ def process_file(file_id, dry=False):
             continue
         with open(inc_path) as f:
             inc_text = f.read()
-        # Parse out the u32 hex values
         words = []
         for hm in re.finditer(r"0x([0-9A-Fa-f]+)", inc_text):
             words.append(int(hm.group(1), 16))
         if len(words) != n:
             continue
-        decoded_body = process_array(text, sym, words)
+        chain_pointers = parse_reloc_chain_pointers(reloc_path, sym)
+        decoded_body = process_array(text, sym, words, chain_pointers)
         if decoded_body is None:
             continue
-        # Replace the include line with decoded macro calls
         old_block = m.group(0)
         new_block = f"u32 {sym}[{n}] = {{\n{decoded_body}}};"
         new_text = new_text.replace(old_block, new_block, 1)

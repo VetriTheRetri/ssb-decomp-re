@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0690 (1680 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 88 bytes) */
@@ -83,5 +84,20 @@ Gfx dCaptainSpecial3_DL_0x0760[26] = {
 
 /* Raw data from file offset 0x0830 to 0x0870 (64 bytes) */
 u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[16] = {
-	#include <CaptainSpecial3/FalconPunchMatAnimJoint_MatAnimJoint.data.inc.c>
+	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x3C),
+	aobjEvent32SetValAfterBlock(0x01F, 0),
+	    0x00000000,
+	    0x00000000,
+	    0x00000000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,
+	    0x1C000000,
+	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
 };

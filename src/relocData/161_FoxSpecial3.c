@@ -405,7 +405,22 @@ u8 dFoxSpecial3_gap_0x2C88[492] = {
 
 /* Raw data from file offset 0x2E74 to 0x2EB4 (64 bytes) */
 u32 dFoxSpecial3__2E74__AnimJoint[16] = {
-	#include <FoxSpecial3/_2E74__AnimJoint.data.inc.c>
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetVal0RateBlock(0x380, 3),
+	    0x3F570A40,
+	    0x3F570A40,
+	    0x3F59999C,
+	aobjEvent32SetVal0RateBlock(0x380, 3),
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	    0x1C000000,
+	(u32)dFoxSpecial3__2E74__AnimJoint,
+	aobjEvent32End(),
+	(u32)0x2EB4,
 };
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */

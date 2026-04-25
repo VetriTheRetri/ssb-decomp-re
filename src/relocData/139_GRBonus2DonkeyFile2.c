@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0848 (2120 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
@@ -372,6 +373,65 @@ u8 dGRBonus2DonkeyFile2_MPGeometryData_0x34B0[32] = {
 
 /* Raw data from file offset 0x34D0 to 0x35C0 (240 bytes) */
 u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[60] = {
-	#include <GRBonus2DonkeyFile2/Layer1Anim_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x38),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x74),
+	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0xB0),
+	aobjEvent32SetVal(0x020, 0),
+	    0xC5D7A000,
+	aobjEvent32SetValAfter(0x050, 0),
+	    0xC5BB8000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x020, 101),
+	    0xC5610000,
+	aobjEvent32SetValBlock(0x020, 100),
+	    0xC5D7A000,
+	aobjEvent32SetValBlock(0x020, 101),
+	    0xC5610000,
+	aobjEvent32SetValBlock(0x020, 98),
+	    0xC5D7A000,
+	    0x1C000000,
+	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x38),
+	aobjEvent32SetVal(0x020, 0),
+	    0x44E10000,
+	aobjEvent32SetValAfter(0x050, 0),
+	    0x44A8C000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x020, 130),
+	    0x44E10000,
+	aobjEvent32SetValBlock(0x020, 120),
+	    0x45960000,
+	aobjEvent32SetValBlock(0x020, 25),
+	    0x45960000,
+	aobjEvent32SetValBlock(0x020, 125),
+	    0x44E10000,
+	    0x1C000000,
+	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x74),
+	aobjEvent32SetVal(0x010, 0),
+	    0x45AD7000,
+	aobjEvent32SetValAfter(0x060, 0),
+	    0x45960000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x010, 250),
+	    0x450CA000,
+	aobjEvent32SetValBlock(0x010, 25),
+	    0x450CA000,
+	aobjEvent32SetValBlock(0x010, 125),
+	    0x45AD7000,
+	    0x1C000000,
+	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0xB0),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

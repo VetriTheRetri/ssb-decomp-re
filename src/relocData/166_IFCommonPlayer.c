@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
 Vtx dIFCommonPlayer_gap_0x0000[3] = {
@@ -34,7 +35,28 @@ PAD(12);
 
 /* Raw data from file offset 0x0270 to 0x02C8 (88 bytes) */
 u32 dIFCommonPlayer_Arrows_AnimJoint[22] = {
-	#include <IFCommonPlayer/Arrows_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x10),
+	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x24),
+	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x38),
+	aobjEvent32SetFlags(0x000, 3),
+	aobjEvent32SetFlags(0x002, 5),
+	aobjEvent32SetFlags(0x000, 1),
+	    0x1C000000,
+	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x10),
+	aobjEvent32SetFlags(0x002, 2),
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 3),
+	    0x1C000000,
+	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x24),
+	aobjEvent32SetFlags(0x002, 5),
+	aobjEvent32SetFlags(0x000, 4),
+	    0x1C000000,
+	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x38),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	    0xDF000000,
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x02C8 to 0x03D0 (264 bytes) */

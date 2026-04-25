@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 PAD(8);
 
@@ -74,5 +75,36 @@ PAD(8);
 
 /* Raw data from file offset 0x06C0 to 0x0740 (128 bytes) */
 u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint[32] = {
-	#include <MarioSpecial2/EntryDokanAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint + 0xC),
+	(u32)((u8*)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint + 0x18),
+	aobjEvent32SetFlags(0x000, 100),
+	aobjEvent32SetFlags(0x002, 20),
+	aobjEvent32End(),
+	aobjEvent32SetVal(0x120, 0),
+	    0x41674408,
+	    0x3727C5AC,
+	aobjEvent32SetValAfter(0x2D0, 0),
+	    0x00000000,
+	    0x00000000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValBlock(0x120, 7),
+	    0x41674408,
+	    0x3F800000,
+	aobjEvent32SetVal(0x100, 86),
+	    0x3F800000,
+	aobjEvent32SetValBlock(0x020, 18),
+	    0x43A08006,
+	aobjEvent32SetValBlock(0x020, 50),
+	    0x43A08006,
+	aobjEvent32SetValBlock(0x020, 18),
+	    0x41674410,
+	aobjEvent32SetVal(0x020, 27),
+	    0x41674410,
+	aobjEvent32SetValBlock(0x100, 7),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x100, 20),
+	    0x00000000,
+	aobjEvent32End(),
 };

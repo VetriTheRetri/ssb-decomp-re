@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 PAD(8);
 
@@ -58,5 +59,60 @@ PAD(4);
 
 /* Raw data from file offset 0x0850 to 0x0930 (224 bytes) */
 u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[56] = {
-	#include <DonkeySpecial2/EntryTaruAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint + 0x8),
+	aobjEvent32SetValAfter(0x002, 0),
+	    0x00000000,
+	aobjEvent32SetValRate(0x005, 0),
+	    0x00000000,
+	    0x3CA317F7,
+	    0x00000000,
+	    0xBD21AC4F,
+	aobjEvent32SetFlags(0x000, 0),
+	aobjEvent32SetVal0Rate(0x001, 10),
+	    0x3E23D6EE,
+	aobjEvent32SetVal0RateBlock(0x004, 5),
+	    0xBE23D705,
+	aobjEvent32SetVal0Rate(0x004, 10),
+	    0x3E2CB6F6,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x001, 10),
+	    0xBE40D4F1,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x004, 10),
+	    0xBE23D705,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x001, 10),
+	    0x3E1D4424,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x004, 10),
+	    0x3E2CB6F6,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x001, 10),
+	    0xBE37D45F,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x004, 10),
+	    0xBE23D705,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x001, 10),
+	    0x3E1B79B2,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x004, 10),
+	    0x3E2CB6F6,
+	aobjEvent32Wait(5),
+	aobjEvent32SetValRate(0x001, 10),
+	    0x00000000,
+	    0xBCBEEC84,
+	aobjEvent32Wait(5),
+	aobjEvent32SetValRateBlock(0x004, 5),
+	    0x00000000,
+	    0xBD54DC20,
+	aobjEvent32SetFlags(0x002, 0),
+	aobjEvent32SetValBlock(0x005, 60),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };

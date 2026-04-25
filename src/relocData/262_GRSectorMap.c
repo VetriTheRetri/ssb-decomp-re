@@ -5,13 +5,18 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageSectorFile2_Tex_0x1C00[];
 
 /* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
 u32 dGRSectorMap_Arwing0_AnimJoint[5] = {
-	#include <GRSectorMap/Arwing0_AnimJoint.data.inc.c>
+	    0x3C649600,
+	aobjEvent32SetValBlock(0x006, 2068),
+	    0x0508050F,
+	    0x0B07150C,
+	    0x0A0A0412,
 };
 
 /* MPGroundData (typed via tools/typeStageMap.py) */

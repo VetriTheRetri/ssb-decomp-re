@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: data_0x0000 @ 0x0 (307 vertices) */
 Vtx dLBTransitionStar_data_0x0000[307] = {
@@ -25,6 +26,24 @@ DObjDesc dLBTransitionStar_DObjDesc_0x2450[] = {
 
 /* Raw data from file offset 0x24D4 to 0x2520 (76 bytes) */
 u32 dLBTransitionStar_AnimJoint_0x24D4[19] = {
-	#include <LBTransitionStar/AnimJoint_0x24D4.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dLBTransitionStar_AnimJoint_0x24D4 + 0x8),
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x3F800000,
+	aobjEvent32SetVal0Rate(0x180, 0),
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValBlock(0x004, 0),
+	    0x00000000,
+	aobjEvent32SetValRate(0x180, 64),
+	    0x428C0000,
+	    0x40177777,
+	    0x428C0000,
+	    0x40177777,
+	aobjEvent32SetValBlock(0x004, 64),
+	    0xBFC90FDB,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

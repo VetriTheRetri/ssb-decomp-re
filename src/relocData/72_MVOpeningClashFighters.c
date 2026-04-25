@@ -6,6 +6,7 @@
  */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* 8-byte header/pad @ 0x0000 */
 u8 dMVOpeningClashFighters_data_0x0000[8] = {
@@ -94,5 +95,20 @@ u32 dMVOpeningClashFighters_0x0F98[298] = {
 
 /* CamAnimJoint @ 0x1440 (64 bytes) */
 u32 dMVOpeningClashFighters_CamAnimJoint[16] = {
-	#include <MVOpeningClashFighters/CamAnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x266, 0),
+	    0x43520000,
+	    0x00000000,
+	    0x43520000,
+	    0x00000000,
+	    0x41838232,
+	aobjEvent32SetVal0Rate(0x010, 0),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x001, 0),
+	    0xC5672ED2,
+	aobjEvent32SetVal0Rate(0x010, 170),
+	    0x44D1A001,
+	aobjEvent32SetValBlock(0x001, 170),
+	    0xC525C869,
+	aobjEvent32End(),
+	aobjEvent32End(),
 };

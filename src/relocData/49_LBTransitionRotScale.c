@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0F98 (3992 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
@@ -31,6 +32,26 @@ DObjDesc dLBTransitionRotScale_DObjDesc_0x0F98[] = {
 
 /* Raw data from file offset 0x101C to 0x1070 (84 bytes) */
 u32 dLBTransitionRotScale_AnimJoint_0x101C[21] = {
-	#include <LBTransitionRotScale/AnimJoint_0x101C.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dLBTransitionRotScale_AnimJoint_0x101C + 0x8),
+	aobjEvent32SetValAfter(0x003, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetVal0Rate(0x004, 0),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x380, 0),
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValRate(0x004, 64),
+	    0x41FB53D1,
+	    0x3FA53483,
+	aobjEvent32SetValBlock(0x380, 64),
+	    0x3727C5AC,
+	    0x3727C5AC,
+	    0x3727C5AC,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

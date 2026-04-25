@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (90 vertices) */
 Vtx dLBTransitionPaperAirplane_Vtx_0x0000_Vtx[90] = {
@@ -25,6 +26,18 @@ DObjDesc dLBTransitionPaperAirplane_DObjDesc_0x0F98[] = {
 
 /* Raw data from file offset 0x101C to 0x1050 (52 bytes) */
 u32 dLBTransitionPaperAirplane_AnimJoint_0x101C[13] = {
-	#include <LBTransitionPaperAirplane/AnimJoint_0x101C.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dLBTransitionPaperAirplane_AnimJoint_0x101C + 0x8),
+	aobjEvent32SetVal0Rate(0x001, 0),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x006, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValRateBlock(0x001, 64),
+	    0xBFCB4BC3,
+	    0xBD9F06F2,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

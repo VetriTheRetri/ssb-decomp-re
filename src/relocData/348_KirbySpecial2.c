@@ -157,7 +157,38 @@ DObjDesc dKirbySpecial2_CutterUpDObjDesc[] = {
 
 /* Raw data from file offset 0x13F0 to 0x1470 (128 bytes) */
 u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[32] = {
-	#include <KirbySpecial2/CutterTrailAnimJoint_AnimJoint.data.inc.c>
+	(u32)((u8*)dKirbySpecial2_CutterTrailAnimJoint_AnimJoint + 0xC),
+	aobjEvent32End(),
+	(u32)((u8*)dKirbySpecial2_CutterTrailAnimJoint_AnimJoint + 0x14),
+	aobjEvent32SetFlags(0x000, 10),
+	aobjEvent32End(),
+	aobjEvent32SetVal0RateBlock(0x100, 0),
+	    0x3F800000,
+	aobjEvent32SetVal0Rate(0x100, 50),
+	    0x3F800000,
+	aobjEvent32Cmd12(0x100, 49),
+	aobjEvent32SetVal0Rate(0x040, 0),
+	    0xC3C30000,
+	aobjEvent32SetValAfterBlock(0x030, 0),
+	    0x00000000,
+	    0x43520000,
+	aobjEvent32SetValRateBlock(0x040, 1),
+	    0xC4430000,
+	    0xC39D7FF7,
+	aobjEvent32SetVal0Rate(0x100, 2),
+	    0x3727C5AC,
+	aobjEvent32SetVal0RateBlock(0x040, 1),
+	    0xC47F0000,
+	aobjEvent32SetVal0Rate(0x040, 6),
+	    0xC47F0000,
+	aobjEvent32Wait(1),
+	aobjEvent32SetVal0Rate(0x100, 48),
+	    0x3727C5AC,
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x040, 3),
+	    0xC1F00000,
+	aobjEvent32Wait(2),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x1470 to 0x14B8 (72 bytes) */
@@ -213,12 +244,66 @@ PAD(4);
 
 /* Raw data from file offset 0x1E30 to 0x1EA0 (112 bytes) */
 u32 dKirbySpecial2_EntryStarL_AnimJoint[28] = {
-	#include <KirbySpecial2/EntryStarL_AnimJoint.data.inc.c>
+	(u32)((u8*)dKirbySpecial2_EntryStarL_AnimJoint + 0x8),
+	(u32)((u8*)dKirbySpecial2_EntryStarL_AnimJoint + 0x38),
+	aobjEvent32SetVal0Rate(0x020, 0),
+	    0x458CA000,
+	aobjEvent32SetValBlock(0x050, 0),
+	    0x458CA000,
+	    0xC53B8000,
+	aobjEvent32SetValRate(0x020, 60),
+	    0x00000000,
+	    0xC3160000,
+	aobjEvent32SetValBlock(0x050, 60),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32End(),
+	aobjEvent32SetValAfter(0x3F7, 0),
+	    0x3FC90FDB,
+	    0xBFC90FDB,
+	    0x00000000,
+	    0xC2B40000,
+	    0x43340000,
+	    0x43340000,
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32Wait(60),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x1EA0 to 0x1F10 (112 bytes) */
 u32 dKirbySpecial2_EntryStarR_AnimJoint[28] = {
-	#include <KirbySpecial2/EntryStarR_AnimJoint.data.inc.c>
+	(u32)((u8*)dKirbySpecial2_EntryStarR_AnimJoint + 0x8),
+	(u32)((u8*)dKirbySpecial2_EntryStarR_AnimJoint + 0x38),
+	aobjEvent32SetVal0Rate(0x020, 0),
+	    0x458CA000,
+	aobjEvent32SetValBlock(0x050, 0),
+	    0xC58CA000,
+	    0xC53B8000,
+	aobjEvent32SetValRate(0x020, 60),
+	    0x00000000,
+	    0xC3160000,
+	aobjEvent32SetValBlock(0x050, 60),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32End(),
+	aobjEvent32SetValAfter(0x3F7, 0),
+	    0xBFC90FDB,
+	    0xBFC90FDB,
+	    0x00000000,
+	    0x42B40000,
+	    0x43340000,
+	    0x43340000,
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32Wait(60),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Vtx: Vtx_0x1F10 @ 0x1F10 (12 vertices) */

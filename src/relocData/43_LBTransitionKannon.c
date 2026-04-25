@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (90 vertices) */
 Vtx dLBTransitionKannon_Vtx_0x0000_Vtx[90] = {
@@ -47,6 +48,29 @@ DObjDesc dLBTransitionKannon_DObjDesc_0x1F00[] = {
 
 /* Raw data from file offset 0x1FB0 to 0x2010 (96 bytes) */
 u32 dLBTransitionKannon_AnimJoint_0x1FB0[24] = {
-	#include <LBTransitionKannon/AnimJoint_0x1FB0.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dLBTransitionKannon_AnimJoint_0x1FB0 + 0xC),
+	(u32)((u8*)dLBTransitionKannon_AnimJoint_0x1FB0 + 0x30),
+	aobjEvent32SetVal0Rate(0x002, 0),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x005, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValRateBlock(0x002, 64),
+	    0x40490FDB,
+	    0x3E04918C,
+	aobjEvent32End(),
+	aobjEvent32SetVal0Rate(0x002, 0),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x005, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValRateBlock(0x002, 64),
+	    0xC0490FDB,
+	    0xBE0700FD,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

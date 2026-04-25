@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: gap_0x0000 @ 0x0 (16 vertices) */
 Vtx dLBTransitionSudare2_gap_0x0000[16] = {
@@ -62,6 +63,29 @@ DObjDesc dLBTransitionSudare2_DObjDesc_0x3EA0[] = {
 
 /* Raw data from file offset 0x3F50 to 0x3FB0 (96 bytes) */
 u32 dLBTransitionSudare2_AnimJoint_0x3F50[24] = {
-	#include <LBTransitionSudare2/AnimJoint_0x3F50.data.inc.c>
+	aobjEvent32End(),
+	(u32)((u8*)dLBTransitionSudare2_AnimJoint_0x3F50 + 0xC),
+	(u32)((u8*)dLBTransitionSudare2_AnimJoint_0x3F50 + 0x30),
+	aobjEvent32SetVal(0x030, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValAfter(0x040, 0),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x030, 64),
+	    0x45548000,
+	    0x451C4000,
+	aobjEvent32End(),
+	aobjEvent32SetVal(0x030, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValAfter(0x040, 0),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x030, 64),
+	    0xC5548000,
+	    0xC51C4000,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

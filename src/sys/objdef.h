@@ -312,6 +312,34 @@ typedef enum AObjTrackKind
 #define aobjEvent32SetExtValAfter(flags_mask, dur)    aobjEvent32(nGCAnimEvent32SetExtValAfter, (flags_mask), (dur))
 #define aobjEvent32SetExtValAfterBlock(flags_mask,d)  aobjEvent32(nGCAnimEvent32SetExtValAfterBlock, (flags_mask), (d))
 
+/* Numbered AObjEvent32 commands the runtime dispatches on but which have
+ * no semantic shorthand (yet). All take raw flags / payload args so any
+ * non-zero bits round-trip exactly. Behavior summary from objanim.c:
+ *   Cmd12 - track-length accumulator (reads payload from this word, flags
+ *           from the NEXT word -- AObjAnimAdvance pattern). 0 follow-up
+ *           f-payload words.
+ *   Cmd16 - func_anim(dobj, flags >> 8, (u8)flags) hook. 0 follow-up words.
+ *   Cmd17 - multi-track func_anim via flags[4..13]; consumes one f-payload
+ *           per set bit in that range.
+ *   Cmd22 / Cmd23 - reserved (no runtime case yet, falls to default).
+ */
+#define aobjEvent32Cmd12(flags_val, payload_val)  aobjEvent32(ANIM_CMD_12, (flags_val), (payload_val))
+#define aobjEvent32Cmd16(flags_val, payload_val)  aobjEvent32(ANIM_CMD_16, (flags_val), (payload_val))
+#define aobjEvent32Cmd17(flags_val, payload_val)  aobjEvent32(ANIM_CMD_17, (flags_val), (payload_val))
+#define aobjEvent32Cmd22(flags_val, payload_val)  aobjEvent32(ANIM_CMD_22, (flags_val), (payload_val))
+#define aobjEvent32Cmd23(flags_val, payload_val)  aobjEvent32(ANIM_CMD_23, (flags_val), (payload_val))
+
+/* Fallback variants for End / Jump / Wait whose shorthand macros above
+ * hardcode flags (and, for End/Jump, payload) to 0. Real ROM bytes
+ * sometimes carry non-zero values in those slots -- runtime don't-cares,
+ * but we need byte-identity. The decoder emits these when the simpler
+ * shorthand can't round-trip. */
+#define aobjEvent32EndRaw(flags_val, payload_val)  aobjEvent32(nGCAnimEvent32End, (flags_val), (payload_val))
+#define aobjEvent32JumpRaw(flags_val, payload_val, addr) \
+    aobjEvent32(nGCAnimEvent32Jump, (flags_val), (payload_val)), (u32)(addr)
+#define aobjEvent32WaitRaw(flags_val, payload_val) \
+    aobjEvent32(nGCAnimEvent32Wait, (flags_val), (payload_val))
+
 /* Track-flag bitmask helpers (for the `flags_mask` argument above). The
  * flags field is 10 bits, covering the joint-track range from RotX (bit 0)
  * to ScaZ (bit 9). Material and camera tracks use extended variants. */

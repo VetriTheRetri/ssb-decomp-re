@@ -214,11 +214,40 @@ def parse_sprite(data, offset):
     return {
         'offset': offset,
         'width': fields[2], 'height': fields[3],
+        # Sprite.attr bit 9 (0x0200) = SP_TEXSHUF: tile rows are pre-shuffled
+        # in storage to work around an N64 LoadTextureBlock issue. RGBA32 in
+        # particular needs an explicit odd-row byte swap to render correctly
+        # in the PNG preview, since n64_to_rgba's standard unswizzle skips
+        # the 32-bit case.
+        'attr': fields[8],
         'nbitmaps': fields[19], 'ndisplist': fields[20],
         'bmheight': fields[21], 'bmHreal': fields[22],
         'bmfmt': fields[23], 'bmsiz': fields[24],
         'bitmap_raw': fields[25],
     }
+
+
+def deshuffle_texshuf_rows(pixel_data, row_byte_count, height, word_size=16):
+    """Undo SP_TEXSHUF storage order on a buffer of row-major bytes.
+    Even rows pass through; odd rows have their bytes swapped within each
+    `word_size`-byte unit (two equal halves exchanged). Default word_size
+    of 16 matches RGBA32 (the only format n64_to_rgba doesn't already
+    unswizzle internally)."""
+    out = bytearray(len(pixel_data))
+    half = word_size // 2
+    for r in range(height):
+        row_start = r * row_byte_count
+        if r & 1:
+            for i in range(0, row_byte_count, word_size):
+                chunk = pixel_data[row_start + i:row_start + i + word_size]
+                if len(chunk) == word_size:
+                    out[row_start + i:row_start + i + half] = chunk[half:]
+                    out[row_start + i + half:row_start + i + word_size] = chunk[:half]
+                else:
+                    out[row_start + i:row_start + i + len(chunk)] = chunk
+        else:
+            out[row_start:row_start + row_byte_count] = pixel_data[row_start:row_start + row_byte_count]
+    return bytes(out)
 
 
 def compute_pixel_data_size(width_img, height, bmfmt, bmsiz):
@@ -513,6 +542,15 @@ def extract_sprites(file_id, output_dir, desc_path=None):
 
         # PNG generation: stitch all tiles vertically using their tile sizes,
         # not the combined region (which includes inter-tile padding bytes).
+        # n64_to_rgba's internal unswizzle handles 4/8/16-bpp odd-row word
+        # swaps, but skips RGBA32 — so when SP_TEXSHUF is set on an RGBA32
+        # sprite, apply the 16-byte odd-row deshuffle here before conversion.
+        texshuf_rgba32 = (
+            (sp.get('attr', 0) & 0x0200) != 0
+            and sp['bmfmt'] == 0 and sp['bmsiz'] == 3
+        )
+        bpp = BPP[sp['bmsiz']]
+        row_byte_count = (width_img * bpp + 7) // 8
         all_rows = []
         for bi in range(sp['nbitmaps']):
             tile_bm_off = bitmap_off + bi * BITMAP_SIZE
@@ -524,6 +562,8 @@ def extract_sprites(file_id, output_dir, desc_path=None):
             tile_h = tile_bm[5]
             tile_size = compute_pixel_data_size(width_img, tile_h, sp['bmfmt'], sp['bmsiz'])
             tile_data = data[tile_pixel_off:tile_pixel_off + tile_size]
+            if texshuf_rgba32:
+                tile_data = deshuffle_texshuf_rows(tile_data, row_byte_count, tile_h)
             tile_rows = n64_to_rgba(tile_data, width_img, tile_h, width_img,
                                     sp['bmfmt'], sp['bmsiz'])
             all_rows.extend(tile_rows)

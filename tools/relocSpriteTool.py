@@ -534,10 +534,9 @@ def extract_sprites(file_id, output_dir, desc_path=None):
                 chunk = pixel_data_combined[i:i + 16]
                 f.write(f"\t{', '.join(f'0x{b:02X}' for b in chunk)},\n")
 
-        # Write a PNG preview unless the format isn't supported by n64_to_rgba.
-        # CI formats need a palette (not extracted yet) and 4c is compressed.
-        if sp['bmfmt'] == 2 or sp['bmsiz'] == 4:
-            print(f"  {name}: {sp['width']}x{out_height} {fmt_name} -> {inc_path} (no PNG)")
+        # 4c (compressed) format can't be decoded without runtime expansion.
+        if sp['bmsiz'] == 4:
+            print(f"  {name}: {sp['width']}x{out_height} {fmt_name} -> {inc_path} (no PNG, 4c compressed)")
             continue
 
         # PNG generation: stitch all tiles vertically using their tile sizes,
@@ -551,6 +550,18 @@ def extract_sprites(file_id, output_dir, desc_path=None):
         )
         bpp = BPP[sp['bmsiz']]
         row_byte_count = (width_img * bpp + 7) // 8
+        # CI sprites: read TLUT bytes from the LUT pointer in the Sprite struct.
+        # Sprite.LUT is at offset +32 (after 2h+2h+2f+2h+Hh+4B+2h = 32 bytes).
+        # Use bmsiz to size the palette: CI4 -> 16 colors, CI8 -> 256 colors.
+        # (Sprite.nTLUT is sometimes wider than the palette actually used --
+        # e.g. CI4 sprite with nTLUT=256 only really needs 16 entries.)
+        tlut_data = None
+        if sp['bmfmt'] == 2:
+            lut_off = relocs.get(sp_off + 32)
+            if lut_off is not None:
+                pal_size = 32 if sp['bmsiz'] == 0 else 512  # CI4=16*2, CI8=256*2
+                if lut_off + pal_size <= len(data):
+                    tlut_data = data[lut_off:lut_off + pal_size]
         all_rows = []
         for bi in range(sp['nbitmaps']):
             tile_bm_off = bitmap_off + bi * BITMAP_SIZE
@@ -565,7 +576,7 @@ def extract_sprites(file_id, output_dir, desc_path=None):
             if texshuf_rgba32:
                 tile_data = deshuffle_texshuf_rows(tile_data, row_byte_count, tile_h)
             tile_rows = n64_to_rgba(tile_data, width_img, tile_h, width_img,
-                                    sp['bmfmt'], sp['bmsiz'])
+                                    sp['bmfmt'], sp['bmsiz'], tlut_data=tlut_data)
             all_rows.extend(tile_rows)
 
         png_path = os.path.join(output_dir, f"{name}.{fmt_name}.png")

@@ -122,9 +122,9 @@ Gfx dGRBonus1KirbyFile2_DL_0x0680[32] = {
 	#include <GRBonus1KirbyFile2/DL_0x0680.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0780 (was gap+0x780, 56 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0000_sub_0x780[56] = {
-	#include <GRBonus1KirbyFile2/gap_0x0000_sub_0x780.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x780 @ 0x780 (7 cmds) */
+Gfx dGRBonus1KirbyFile2_gap_0x0000_sub_0x780[7] = {
+	#include <GRBonus1KirbyFile2/gap_0x0000_sub_0x780.dl.inc.c>
 };
 
 /* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */

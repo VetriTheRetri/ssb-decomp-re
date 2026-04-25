@@ -30,19 +30,14 @@ u8 dStageExplainFile2_gap_0x018C[4] = {
 	#include <StageExplainFile2/gap_0x018C.data.inc.c>
 };
 
-/* gap sub-block @ 0x0190 (was gap+0x4, 48 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x4[48] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x4.data.inc.c>
-};
-
-/* gap sub-block @ 0x01C0 (was gap+0x34, 80 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x34[80] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x34.data.inc.c>
+/* Vtx: gap_0x018C_sub_0x4 @ 0x190 (8 vertices) */
+Vtx dStageExplainFile2_gap_0x018C_sub_0x4[8] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x4.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0210 (was gap+0x84, 192 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x84[192] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x84.data.inc.c>
+Vtx dStageExplainFile2_gap_0x018C_sub_0x84[12] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x84.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x02D0 (was gap+0x144, 128 bytes) */
@@ -60,9 +55,9 @@ Vtx dStageExplainFile2_gap_0x018C_sub_0x244[3] = {
 	#include <StageExplainFile2/gap_0x018C_sub_0x244.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0400 (was gap+0x274, 104 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x274[104] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x274.data.inc.c>
+/* Gfx DL: gap_0x018C_sub_0x274 @ 0x400 (13 cmds) */
+Gfx dStageExplainFile2_gap_0x018C_sub_0x274[13] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x274.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0468 (was gap+0x2DC, 40 bytes) */
@@ -70,9 +65,9 @@ u8 dStageExplainFile2_gap_0x018C_sub_0x2DC[40] = {
 	#include <StageExplainFile2/gap_0x018C_sub_0x2DC.data.inc.c>
 };
 
-/* gap sub-block @ 0x0490 (was gap+0x304, 136 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x304[136] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x304.data.inc.c>
+/* Gfx DL: gap_0x018C_sub_0x304 @ 0x490 (17 cmds) */
+Gfx dStageExplainFile2_gap_0x018C_sub_0x304[17] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x304.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0518 (was gap+0x38C, 40 bytes) */

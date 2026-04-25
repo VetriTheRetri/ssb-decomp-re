@@ -116,7 +116,12 @@ def _find_consecutive_dls(blob):
     """Starting at blob offset 0, peel off consecutive DLs (gsDPPipeSync
     prefix + gsSPEndDisplayList terminator). Returns (dl_sizes, tail_start)
     where dl_sizes is a list of byte lengths and tail_start is the first
-    byte offset after all DLs (equal to len(blob) if no tail)."""
+    byte offset after all DLs (equal to len(blob) if no tail).
+
+    If the very first DL has no `DF000000 00000000` terminator inside the
+    block (the DL continues into a subsequent block), the whole 8-byte-
+    aligned region after the initial gsDPPipeSync is treated as one
+    unterminated DL chunk."""
     END = b'\xDF\x00\x00\x00\x00\x00\x00\x00'
     dl_sizes = []
     pos = 0
@@ -129,30 +134,58 @@ def _find_consecutive_dls(blob):
                 end_pos = i + 8
                 break
         if end_pos is None:
+            # Unterminated: take the whole 8-byte-aligned remainder as one
+            # DL chunk if (a) we're at the very first DL and (b) the
+            # remainder is 8-byte aligned.
+            if pos == 0 and len(blob) % 8 == 0:
+                dl_sizes.append(len(blob) - pos)
+                pos = len(blob)
             break
         dl_sizes.append(end_pos - pos)
         pos = end_pos
     return dl_sizes, pos
 
 
-def do_splits(src, raw, decls, name_prefix):
-    """For each u8 block that starts with a DL, peel every consecutive DL
-    in one pass (so re-runs are idempotent -- no _post_post_post chains
-    that grow one level per invocation)."""
+_DL_PREFIX = b'\xE7\x00\x00\x00\x00\x00\x00\x00'  # gsDPPipeSync
+
+
+def _tail_is_referenced(name, off, tail_start, tail_size, reloc_text):
+    """Return True if any .reloc entry points at a byte inside the trailer
+    range [off+tail_start, off+tail_start+tail_size). Trailer-naming and PAD
+    use are unsafe when something references the trailer interior."""
+    if reloc_text is None or tail_size == 0:
+        return False
+    base_lo = tail_start
+    base_hi = tail_start + tail_size
+    label_re = re.compile(rf'\b{re.escape(name)}\+0x([0-9A-Fa-f]+)\b')
+    for hex_off in label_re.findall(reloc_text):
+        if base_lo <= int(hex_off, 16) < base_hi:
+            return True
+    return False
+
+
+def do_splits(src, raw, decls, name_prefix, reloc_text=None):
+    """For each u8 block that starts with the gsDPPipeSync sentinel
+    `E7000000 00000000`, peel every consecutive DL (terminated by
+    `DF000000 00000000`) and split the trailing bytes into a u8 tail
+    (or a `PAD(N);` macro if the tail is all zero and unreferenced).
+
+    Re-running is idempotent — a u8 block whose first 8 bytes are no
+    longer the prefix (because we already typed it as Gfx) is skipped."""
     splits = []
     for off, (name, ctype, N, bs) in list(decls.items()):
-        if ctype != 'u8' or bs % 8 != 0 or bs < 16:
+        if ctype != 'u8' or bs < 16:
             continue
-        if raw[off:off + 4] != b'\xE7\x00\x00\x00':
+        if raw[off:off + 8] != _DL_PREFIX:
             continue
         dl_sizes, tail_start = _find_consecutive_dls(raw[off:off + bs])
         if not dl_sizes:
             continue
         tail_size = bs - tail_start
-        splits.append((name, off, bs, dl_sizes, tail_size))
+        splits.append((name, off, bs, dl_sizes, tail_start, tail_size))
 
     total_dls = 0
-    for name, off, total, dl_sizes, ts in splits:
+    for name, off, total, dl_sizes, tail_start, ts in splits:
         pat = re.compile(
             r'(?P<comment>/\*[^*]*\*/\n)?'
             rf'u8\s+{re.escape(name)}\[(?:\d+|0x[0-9A-Fa-f]+)\]\s*=\s*\{{\n'
@@ -169,7 +202,7 @@ def do_splits(src, raw, decls, name_prefix):
         cur_off = off
         # Keep the primary (first DL) using the original symbol name so the
         # reloc chain still points at it. Subsequent DLs and any raw tail get
-        # _post suffixes (_post, _post_post, ...); this is ugly but matches the
+        # _post suffixes (_post, _post_post, ...); ugly but matches the
         # pre-existing convention in files already partially split.
         for idx, dls in enumerate(dl_sizes):
             if idx == 0:
@@ -186,13 +219,24 @@ def do_splits(src, raw, decls, name_prefix):
             )
             cur_off += dls
         if ts > 0:
-            suffix = '_post' * len(dl_sizes)
-            tname = name + suffix
-            tinc = inc + suffix
-            pieces.append(
-                f'/* Raw tail after {len(dl_sizes)} DL(s) @ 0x{cur_off:X} ({ts} bytes) */\n'
-                f'u8 {tname}[{ts}] = {{\n{indent}#include <{tinc}.data.inc.c>\n}};'
-            )
+            tail_bytes = raw[off + tail_start: off + tail_start + ts]
+            all_zero = tail_bytes == b'\x00' * ts
+            referenced = _tail_is_referenced(name, off, tail_start, ts, reloc_text)
+            if all_zero and not referenced:
+                # Use the project's PAD(n) macro -- generates a static u8
+                # array with a unique line-derived name, no chain reference.
+                pieces.append(
+                    f'/* {ts} bytes of zero padding after {len(dl_sizes)} DL(s) @ 0x{cur_off:X} */\n'
+                    f'PAD({ts});'
+                )
+            else:
+                suffix = '_post' * len(dl_sizes)
+                tname = name + suffix
+                tinc = inc + suffix
+                pieces.append(
+                    f'/* Raw tail after {len(dl_sizes)} DL(s) @ 0x{cur_off:X} ({ts} bytes) */\n'
+                    f'u8 {tname}[{ts}] = {{\n{indent}#include <{tinc}.data.inc.c>\n}};'
+                )
         total_dls += len(dl_sizes)
         src = src[:m.start()] + '\n\n'.join(pieces) + src[m.end():]
     print(f'  Pass 1 (DL splits): {total_dls} DLs peeled from {len(splits)} blocks')
@@ -453,7 +497,7 @@ def run_for_fid(fid):
 
     # Pass 1
     decls = parse_decls(src, name_to_off)
-    src, n = do_splits(src, raw, decls, name_prefix)
+    src, n = do_splits(src, raw, decls, name_prefix, reloc_text=reloc_text)
     changes += n
     if n > 0:
         # Splits only change declarations in src; the expanded view won't

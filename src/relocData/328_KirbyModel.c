@@ -430,13 +430,18 @@ u8 dKirbyModel_gap_0x31CC_sub_0x394[8] = {
 };
 
 /* gap sub-block @ 0x3568 (was gap+0x39C, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x39C[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x39C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x39C[8] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x39C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x35E8 (was gap+0x41C, 284 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x41C[284] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x41C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x41C @ 0x35E8 (35 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x41C[35] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x41C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x3700 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x41C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x41C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x3704 (was gap+0x538, 48 bytes) */
@@ -465,13 +470,18 @@ u8 dKirbyModel_gap_0x31CC_sub_0x604[8] = {
 };
 
 /* gap sub-block @ 0x37D8 (was gap+0x60C, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x60C[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x60C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x60C[8] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x60C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x3858 (was gap+0x68C, 284 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x68C[284] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x68C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x68C @ 0x3858 (35 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x68C[35] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x68C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x3970 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x68C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x68C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x3974 (was gap+0x7A8, 48 bytes) */
@@ -630,88 +640,63 @@ u8 dKirbyModel_gap_0x31CC_sub_0x1A8C[16] = {
 };
 
 /* gap sub-block @ 0x4C68 (was gap+0x1A9C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1A9C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1A9C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1A9C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1A9C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x4DF8 (was gap+0x1C2C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1C2C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1C2C.data.inc.c>
-};
-
-/* gap sub-block @ 0x4F88 (was gap+0x1DBC, 112 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1DBC[112] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1DBC.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x1C2C @ 0x4DF8 (32 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x1C2C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1C2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x4FF8 (was gap+0x1E2C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1E2C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1E2C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1E2C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1E2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5008 (was gap+0x1E3C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1E3C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1E3C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1E3C[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1E3C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5038 (was gap+0x1E6C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1E6C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1E6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1E6C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1E6C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5058 (was gap+0x1E8C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1E8C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1E8C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1E8C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1E8C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5068 (was gap+0x1E9C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1E9C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1E9C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1E9C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1E9C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5088 (was gap+0x1EBC, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1EBC[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1EBC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1EBC[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1EBC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5098 (was gap+0x1ECC, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1ECC[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1ECC.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x1ECC @ 0x5098 (20 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x1ECC[20] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1ECC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x51C8 (was gap+0x1FFC, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1FFC[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1FFC.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x200C @ 0x51D8 (17 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x200C[17] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x200C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x51D8 (was gap+0x200C, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x200C[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x200C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x211C @ 0x52E8 (124 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x211C[124] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x211C.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5228 (was gap+0x205C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x205C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x205C.data.inc.c>
-};
-
-/* gap sub-block @ 0x5248 (was gap+0x207C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x207C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x207C.data.inc.c>
-};
-
-/* gap sub-block @ 0x5258 (was gap+0x208C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x208C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x208C.data.inc.c>
-};
-
-/* gap sub-block @ 0x5288 (was gap+0x20BC, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x20BC[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x20BC.data.inc.c>
-};
-
-/* gap sub-block @ 0x52E8 (was gap+0x211C, 1004 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x211C[1004] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x211C.data.inc.c>
+/* Raw tail after 1 DL(s) @ 0x56C8 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x211C_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x211C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x56D4 (was gap+0x2508, 152 bytes) */
@@ -755,48 +740,33 @@ u8 dKirbyModel_gap_0x31CC_sub_0x272C[16] = {
 };
 
 /* gap sub-block @ 0x5908 (was gap+0x273C, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x273C[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x273C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x273C[19] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x273C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5A38 (was gap+0x286C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x286C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x286C.data.inc.c>
-};
-
-/* gap sub-block @ 0x5A48 (was gap+0x287C, 496 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x287C[496] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x287C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x286C @ 0x5A38 (32 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x286C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x286C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x5C38 (was gap+0x2A6C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2A6C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2A6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x2A6C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x2A6C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5C48 (was gap+0x2A7C, 208 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2A7C[208] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2A7C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x2A7C @ 0x5C48 (24 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x2A7C[24] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x2A7C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5D18 (was gap+0x2B4C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2B4C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2B4C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x2BFC @ 0x5DC8 (89 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x2BFC[89] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x2BFC.dl.inc.c>
 };
 
-/* gap sub-block @ 0x5D58 (was gap+0x2B8C, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2B8C[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2B8C.data.inc.c>
-};
-
-/* gap sub-block @ 0x5DB8 (was gap+0x2BEC, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2BEC[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2BEC.data.inc.c>
-};
-
-/* gap sub-block @ 0x5DC8 (was gap+0x2BFC, 716 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2BFC[716] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2BFC.data.inc.c>
+/* Raw tail after 1 DL(s) @ 0x6090 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x2BFC_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x2BFC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x6094 (was gap+0x2EC8, 184 bytes) */
@@ -835,73 +805,78 @@ u8 dKirbyModel_gap_0x31CC_sub_0x3094[8] = {
 };
 
 /* gap sub-block @ 0x6268 (was gap+0x309C, 368 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x309C[368] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x309C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x309C[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x309C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x63D8 (was gap+0x320C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x320C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x320C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x320C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x320C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x65D8 (was gap+0x340C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x340C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x340C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x340C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x340C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x65E8 (was gap+0x341C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x341C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x341C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x341C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x341C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6608 (was gap+0x343C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x343C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x343C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x343C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x343C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6618 (was gap+0x344C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x344C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x344C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x344C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x344C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6628 (was gap+0x345C, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x345C[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x345C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x345C[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x345C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6678 (was gap+0x34AC, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x34AC[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x34AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x34AC[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x34AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6878 (was gap+0x36AC, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x36AC[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x36AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x36AC[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x36AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x68C8 (was gap+0x36FC, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x36FC[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x36FC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x36FC[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x36FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6928 (was gap+0x375C, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x375C[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x375C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x375C[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x375C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6978 (was gap+0x37AC, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x37AC[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x37AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x37AC[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x37AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x6998 (was gap+0x37CC, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x37CC[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x37CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x37CC[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x37CC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x69E8 (was gap+0x381C, 1196 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x381C[1196] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x381C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x381C @ 0x69E8 (148 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x381C[148] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x381C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x6E88 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x381C_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x381C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x6E94 (was gap+0x3CC8, 152 bytes) */
@@ -935,33 +910,38 @@ u8 dKirbyModel_gap_0x31CC_sub_0x3E24[8] = {
 };
 
 /* gap sub-block @ 0x6FF8 (was gap+0x3E2C, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x3E2C[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x3E2C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x3E2C[19] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x3E2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7128 (was gap+0x3F5C, 448 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x3F5C[448] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x3F5C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x3F5C[28] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x3F5C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x72E8 (was gap+0x411C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x411C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x411C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x411C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x411C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x74E8 (was gap+0x431C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x431C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x431C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x431C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x431C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7508 (was gap+0x433C, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x433C[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x433C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x433C[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x433C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x7558 (was gap+0x438C, 924 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x438C[924] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x438C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x438C @ 0x7558 (115 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x438C[115] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x438C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x78F0 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x438C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x438C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x78F4 (was gap+0x4728, 184 bytes) */
@@ -1000,78 +980,78 @@ u8 dKirbyModel_gap_0x31CC_sub_0x491C[16] = {
 };
 
 /* gap sub-block @ 0x7AF8 (was gap+0x492C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x492C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x492C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x492C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x492C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7CF8 (was gap+0x4B2C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4B2C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4B2C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4B2C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4B2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7D08 (was gap+0x4B3C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4B3C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4B3C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4B3C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4B3C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7D28 (was gap+0x4B5C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4B5C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4B5C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4B5C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4B5C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7D48 (was gap+0x4B7C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4B7C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4B7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4B7C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4B7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7D58 (was gap+0x4B8C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4B8C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4B8C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4B8C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4B8C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7EE8 (was gap+0x4D1C, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4D1C[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4D1C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4D1C[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4D1C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7F48 (was gap+0x4D7C, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4D7C[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4D7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4D7C[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4D7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7FA8 (was gap+0x4DDC, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4DDC[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4DDC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x4DDC[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4DDC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x7FF8 (was gap+0x4E2C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4E2C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4E2C.data.inc.c>
-};
-
-/* gap sub-block @ 0x8038 (was gap+0x4E6C, 464 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x4E6C[464] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x4E6C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x4E2C @ 0x7FF8 (33 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x4E2C[33] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x4E2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8208 (was gap+0x503C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x503C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x503C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x503C[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x503C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8248 (was gap+0x507C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x507C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x507C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x507C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x507C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8258 (was gap+0x508C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x508C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x508C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x508C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x508C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8268 (was gap+0x509C, 1292 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x509C[1292] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x509C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x509C @ 0x8268 (160 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x509C[160] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x509C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x8768 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x509C_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x509C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8774 (was gap+0x55A8, 152 bytes) */
@@ -1115,38 +1095,43 @@ u8 dKirbyModel_gap_0x31CC_sub_0x57CC[16] = {
 };
 
 /* gap sub-block @ 0x89A8 (was gap+0x57DC, 272 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x57DC[272] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x57DC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x57DC[17] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x57DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8AB8 (was gap+0x58EC, 368 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x58EC[368] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x58EC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x58EC[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x58EC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8C28 (was gap+0x5A5C, 80 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x5A5C[80] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5A5C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x5A5C[5] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x5A5C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8C78 (was gap+0x5AAC, 192 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x5AAC[192] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5AAC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x5AAC[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x5AAC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8D38 (was gap+0x5B6C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x5B6C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5B6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x5B6C[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x5B6C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x8D68 (was gap+0x5B9C, 432 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x5B9C[432] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5B9C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x5B9C[27] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x5B9C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x8F18 (was gap+0x5D4C, 988 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x5D4C[988] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5D4C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x5D4C @ 0x8F18 (123 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x5D4C[123] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x5D4C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x92F0 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x5D4C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x5D4C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x92F4 (was gap+0x6128, 116 bytes) */
@@ -1190,13 +1175,13 @@ u8 dKirbyModel_gap_0x31CC_sub_0x632C[16] = {
 };
 
 /* gap sub-block @ 0x9508 (was gap+0x633C, 384 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x633C[384] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x633C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x633C[24] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x633C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9688 (was gap+0x64BC, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x64BC[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x64BC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x64BC[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x64BC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9818 (was gap+0x664C, 48 bytes) */
@@ -1224,9 +1209,9 @@ u8 dKirbyModel_gap_0x31CC_sub_0x690C[480] = {
 	#include <KirbyModel/gap_0x31CC_sub_0x690C.data.inc.c>
 };
 
-/* gap sub-block @ 0x9CB8 (was gap+0x6AEC, 528 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x6AEC[528] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x6AEC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x6AEC @ 0x9CB8 (66 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x6AEC[66] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x6AEC.dl.inc.c>
 };
 
 /* gap sub-block @ 0x9EC8 (was gap+0x6CFC, 40 bytes) */
@@ -1280,43 +1265,48 @@ u8 dKirbyModel_gap_0x31CC_sub_0x72BC[16] = {
 };
 
 /* gap sub-block @ 0xA498 (was gap+0x72CC, 208 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x72CC[208] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x72CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x72CC[13] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x72CC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA568 (was gap+0x739C, 272 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x739C[272] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x739C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x739C[17] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x739C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA678 (was gap+0x74AC, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x74AC[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x74AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x74AC[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x74AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA6A8 (was gap+0x74DC, 208 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x74DC[208] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x74DC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x74DC[13] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x74DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA778 (was gap+0x75AC, 208 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x75AC[208] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x75AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x75AC[13] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x75AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA848 (was gap+0x767C, 112 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x767C[112] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x767C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x767C[7] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x767C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xA8B8 (was gap+0x76EC, 352 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x76EC[352] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x76EC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x76EC[22] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x76EC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xAA18 (was gap+0x784C, 1228 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x784C[1228] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x784C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x784C @ 0xAA18 (153 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x784C[153] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x784C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0xAEE0 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x784C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x784C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xAEE4 (was gap+0x7D18, 184 bytes) */
@@ -1360,78 +1350,48 @@ u8 dKirbyModel_gap_0x31CC_sub_0x7F5C[16] = {
 };
 
 /* gap sub-block @ 0xB138 (was gap+0x7F6C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x7F6C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x7F6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x7F6C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x7F6C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB2C8 (was gap+0x80FC, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x80FC[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x80FC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x80FC[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x80FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB4C8 (was gap+0x82FC, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x82FC[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x82FC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x82FC[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x82FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB508 (was gap+0x833C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x833C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x833C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x833C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x833C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB518 (was gap+0x834C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x834C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x834C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x834C[2] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x834C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xB538 (was gap+0x836C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x836C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x836C.data.inc.c>
-};
-
-/* gap sub-block @ 0xB558 (was gap+0x838C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x838C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x838C.data.inc.c>
-};
-
-/* gap sub-block @ 0xB578 (was gap+0x83AC, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x83AC[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x83AC.data.inc.c>
-};
-
-/* gap sub-block @ 0xB598 (was gap+0x83CC, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x83CC[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x83CC.data.inc.c>
-};
-
-/* gap sub-block @ 0xB5C8 (was gap+0x83FC, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x83FC[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x83FC.data.inc.c>
-};
-
-/* gap sub-block @ 0xB5E8 (was gap+0x841C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x841C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x841C.data.inc.c>
-};
-
-/* gap sub-block @ 0xB618 (was gap+0x844C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x844C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x844C.data.inc.c>
-};
-
-/* gap sub-block @ 0xB648 (was gap+0x847C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x847C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x847C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x836C @ 0xB538 (20 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x836C[20] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x836C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xB678 (was gap+0x84AC, 448 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x84AC[448] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x84AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x84AC[28] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x84AC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xB838 (was gap+0x866C, 1036 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x866C[1036] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x866C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x866C @ 0xB838 (128 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x866C[128] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x866C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0xBC38 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x866C_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x866C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xBC44 (was gap+0x8A78, 184 bytes) */
@@ -1475,58 +1435,33 @@ u8 dKirbyModel_gap_0x31CC_sub_0x8CBC[16] = {
 };
 
 /* gap sub-block @ 0xBE98 (was gap+0x8CCC, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x8CCC[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x8CCC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x8CCC[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x8CCC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xC028 (was gap+0x8E5C, 368 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x8E5C[368] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x8E5C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x8E5C[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x8E5C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xC198 (was gap+0x8FCC, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x8FCC[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x8FCC.data.inc.c>
-};
-
-/* gap sub-block @ 0xC1C8 (was gap+0x8FFC, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x8FFC[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x8FFC.data.inc.c>
-};
-
-/* gap sub-block @ 0xC1E8 (was gap+0x901C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x901C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x901C.data.inc.c>
-};
-
-/* gap sub-block @ 0xC218 (was gap+0x904C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x904C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x904C.data.inc.c>
-};
-
-/* gap sub-block @ 0xC238 (was gap+0x906C, 32 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x906C[32] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x906C.data.inc.c>
-};
-
-/* gap sub-block @ 0xC258 (was gap+0x908C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x908C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x908C.data.inc.c>
-};
-
-/* gap sub-block @ 0xC288 (was gap+0x90BC, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x90BC[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x90BC.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x8FCC @ 0xC198 (16 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x8FCC[16] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x8FCC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xC298 (was gap+0x90CC, 256 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x90CC[256] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x90CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x90CC[16] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x90CC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xC398 (was gap+0x91CC, 812 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x91CC[812] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x91CC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x91CC @ 0xC398 (100 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x91CC[100] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x91CC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0xC6B8 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x91CC_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x91CC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xC6C4 (was gap+0x94F8, 184 bytes) */
@@ -1570,53 +1505,58 @@ u8 dKirbyModel_gap_0x31CC_sub_0x973C[16] = {
 };
 
 /* gap sub-block @ 0xC918 (was gap+0x974C, 480 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x974C[480] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x974C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x974C[30] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x974C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xCAF8 (was gap+0x992C, 160 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x992C[160] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x992C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x992C[10] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x992C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xCB98 (was gap+0x99CC, 272 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x99CC[272] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x99CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x99CC[17] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x99CC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xCCA8 (was gap+0x9ADC, 320 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9ADC[320] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9ADC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x9ADC[20] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9ADC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xCDE8 (was gap+0x9C1C, 352 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9C1C[352] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9C1C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x9C1C[22] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9C1C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xCF48 (was gap+0x9D7C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9D7C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9D7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x9D7C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9D7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xD148 (was gap+0x9F7C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9F7C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9F7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x9F7C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9F7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xD158 (was gap+0x9F8C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9F8C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9F8C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x9F8C[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9F8C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xD188 (was gap+0x9FBC, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9FBC[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9FBC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x9FBC[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9FBC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xD1B8 (was gap+0x9FEC, 1404 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9FEC[1404] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9FEC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x9FEC @ 0xD1B8 (174 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x9FEC[174] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9FEC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0xD728 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x9FEC_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x9FEC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xD734 (was gap+0xA568, 152 bytes) */
@@ -1660,48 +1600,53 @@ u8 dKirbyModel_gap_0x31CC_sub_0xA77C[16] = {
 };
 
 /* gap sub-block @ 0xD958 (was gap+0xA78C, 320 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xA78C[320] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xA78C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xA78C[20] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xA78C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xDA98 (was gap+0xA8CC, 320 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xA8CC[320] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xA8CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xA8CC[20] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xA8CC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xDBD8 (was gap+0xAA0C, 352 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAA0C[352] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAA0C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xAA0C[22] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAA0C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xDD38 (was gap+0xAB6C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAB6C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAB6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xAB6C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAB6C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xDF38 (was gap+0xAD6C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAD6C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAD6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xAD6C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAD6C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xDF48 (was gap+0xAD7C, 272 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAD7C[272] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAD7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xAD7C[17] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAD7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xE058 (was gap+0xAE8C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAE8C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAE8C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xAE8C[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAE8C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xE088 (was gap+0xAEBC, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAEBC[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAEBC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xAEBC[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAEBC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xE0B8 (was gap+0xAEEC, 1356 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xAEEC[1356] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xAEEC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xAEEC @ 0xE0B8 (169 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xAEEC[169] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAEEC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0xE600 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xAEEC_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xAEEC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xE604 (was gap+0xB438, 152 bytes) */
@@ -1745,53 +1690,43 @@ u8 dKirbyModel_gap_0x31CC_sub_0xB64C[16] = {
 };
 
 /* gap sub-block @ 0xE828 (was gap+0xB65C, 288 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xB65C[288] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xB65C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xB65C[18] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xB65C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xE948 (was gap+0xB77C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xB77C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xB77C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xB77C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xB77C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xEAD8 (was gap+0xB90C, 208 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xB90C[208] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xB90C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xB90C[13] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xB90C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xEBA8 (was gap+0xB9DC, 160 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xB9DC[160] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xB9DC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xB9DC[10] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xB9DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xEC48 (was gap+0xBA7C, 288 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBA7C[288] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBA7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xBA7C[18] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xBA7C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xED68 (was gap+0xBB9C, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBB9C[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBB9C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0xBB9C @ 0xED68 (45 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0xBB9C[45] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xBB9C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xEE98 (was gap+0xBCCC, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBCCC[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBCCC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xBE6C @ 0xF038 (177 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xBE6C[177] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xBE6C.dl.inc.c>
 };
 
-/* gap sub-block @ 0xEF18 (was gap+0xBD4C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBD4C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBD4C.data.inc.c>
-};
-
-/* gap sub-block @ 0xEF48 (was gap+0xBD7C, 240 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBD7C[240] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBD7C.data.inc.c>
-};
-
-/* gap sub-block @ 0xF038 (was gap+0xBE6C, 1420 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBE6C[1420] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBE6C.data.inc.c>
+/* Raw tail after 1 DL(s) @ 0xF5C0 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xBE6C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xBE6C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0xF5C4 (was gap+0xC3F8, 152 bytes) */
@@ -1835,58 +1770,48 @@ u8 dKirbyModel_gap_0x31CC_sub_0xC61C[16] = {
 };
 
 /* gap sub-block @ 0xF7F8 (was gap+0xC62C, 160 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xC62C[160] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xC62C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xC62C[10] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xC62C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xF898 (was gap+0xC6CC, 272 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xC6CC[272] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xC6CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xC6CC[17] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xC6CC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xF9A8 (was gap+0xC7DC, 256 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xC7DC[256] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xC7DC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xC7DC[16] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xC7DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xFAA8 (was gap+0xC8DC, 160 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xC8DC[160] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xC8DC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xC8DC[10] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xC8DC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xFB48 (was gap+0xC97C, 176 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xC97C[176] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xC97C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xC97C[11] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xC97C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xFBF8 (was gap+0xCA2C, 192 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCA2C[192] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCA2C.data.inc.c>
-};
-
-/* gap sub-block @ 0xFCB8 (was gap+0xCAEC, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCAEC[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCAEC.data.inc.c>
-};
-
-/* gap sub-block @ 0xFCF8 (was gap+0xCB2C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCB2C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCB2C.data.inc.c>
-};
-
-/* gap sub-block @ 0xFD38 (was gap+0xCB6C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCB6C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCB6C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0xCA2C @ 0xFBF8 (23 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0xCA2C[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xCA2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0xFD68 (was gap+0xCB9C, 176 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCB9C[176] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCB9C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xCB9C[11] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xCB9C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0xFE18 (was gap+0xCC4C, 1260 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCC4C[1260] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCC4C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xCC4C @ 0xFE18 (157 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xCC4C[157] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xCC4C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x10300 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xCC4C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xCC4C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x10304 (was gap+0xD138, 184 bytes) */
@@ -1930,28 +1855,33 @@ u8 dKirbyModel_gap_0x31CC_sub_0xD37C[16] = {
 };
 
 /* gap sub-block @ 0x10558 (was gap+0xD38C, 416 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xD38C[416] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD38C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xD38C[26] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xD38C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x106F8 (was gap+0xD52C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xD52C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD52C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xD52C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xD52C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x10888 (was gap+0xD6BC, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xD6BC[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD6BC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xD6BC[19] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xD6BC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x109B8 (was gap+0xD7EC, 336 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xD7EC[336] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD7EC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xD7EC[21] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xD7EC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x10B08 (was gap+0xD93C, 924 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xD93C[924] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD93C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xD93C @ 0x10B08 (115 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xD93C[115] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xD93C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x10EA0 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xD93C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xD93C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x10EA4 (was gap+0xDCD8, 152 bytes) */
@@ -1995,28 +1925,33 @@ u8 dKirbyModel_gap_0x31CC_sub_0xDEFC[16] = {
 };
 
 /* gap sub-block @ 0x110D8 (was gap+0xDF0C, 240 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xDF0C[240] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xDF0C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xDF0C[15] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xDF0C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x111C8 (was gap+0xDFFC, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xDFFC[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xDFFC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xDFFC[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xDFFC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11358 (was gap+0xE18C, 288 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xE18C[288] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xE18C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xE18C[18] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xE18C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11478 (was gap+0xE2AC, 336 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xE2AC[336] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xE2AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xE2AC[21] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xE2AC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x115C8 (was gap+0xE3FC, 844 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xE3FC[844] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xE3FC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xE3FC @ 0x115C8 (105 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xE3FC[105] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xE3FC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x11910 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xE3FC_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xE3FC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x11914 (was gap+0xE748, 152 bytes) */
@@ -2060,53 +1995,53 @@ u8 dKirbyModel_gap_0x31CC_sub_0xE96C[16] = {
 };
 
 /* gap sub-block @ 0x11B48 (was gap+0xE97C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xE97C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xE97C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xE97C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xE97C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11D48 (was gap+0xEB7C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEB7C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEB7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xEB7C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEB7C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11D58 (was gap+0xEB8C, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEB8C[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEB8C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xEB8C[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEB8C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11D88 (was gap+0xEBBC, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEBBC[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEBBC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xEBBC[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEBBC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11D98 (was gap+0xEBCC, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEBCC[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEBCC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xEBCC[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEBCC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x11F28 (was gap+0xED5C, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xED5C[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xED5C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xED5C[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xED5C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x11F88 (was gap+0xEDBC, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEDBC[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEDBC.data.inc.c>
-};
-
-/* gap sub-block @ 0x11FC8 (was gap+0xEDFC, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEDFC[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEDFC.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0xEDBC @ 0x11F88 (12 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0xEDBC[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEDBC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x12048 (was gap+0xEE7C, 192 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEE7C[192] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEE7C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xEE7C[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEE7C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x12108 (was gap+0xEF3C, 972 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEF3C[972] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEF3C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xEF3C @ 0x12108 (121 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xEF3C[121] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEF3C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x124D0 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xEF3C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xEF3C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x124D4 (was gap+0xF308, 184 bytes) */
@@ -2150,38 +2085,38 @@ u8 dKirbyModel_gap_0x31CC_sub_0xF54C[16] = {
 };
 
 /* gap sub-block @ 0x12728 (was gap+0xF55C, 368 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xF55C[368] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF55C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xF55C[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xF55C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x12898 (was gap+0xF6CC, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xF6CC[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF6CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xF6CC[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xF6CC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x12A28 (was gap+0xF85C, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xF85C[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF85C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xF85C[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xF85C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x12A88 (was gap+0xF8BC, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xF8BC[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF8BC.data.inc.c>
-};
-
-/* gap sub-block @ 0x12AC8 (was gap+0xF8FC, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xF8FC[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF8FC.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0xF8BC @ 0x12A88 (12 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0xF8BC[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xF8BC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x12B48 (was gap+0xF97C, 192 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xF97C[192] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF97C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xF97C[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xF97C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x12C08 (was gap+0xFA3C, 860 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xFA3C[860] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xFA3C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0xFA3C @ 0x12C08 (106 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0xFA3C[106] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xFA3C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x12F58 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0xFA3C_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xFA3C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x12F64 (was gap+0xFD98, 184 bytes) */
@@ -2225,53 +2160,53 @@ u8 dKirbyModel_gap_0x31CC_sub_0xFFDC[16] = {
 };
 
 /* gap sub-block @ 0x131B8 (was gap+0xFFEC, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xFFEC[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xFFEC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0xFFEC[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0xFFEC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x133B8 (was gap+0x101EC, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x101EC[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x101EC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x101EC[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x101EC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x133C8 (was gap+0x101FC, 48 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x101FC[48] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x101FC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x101FC[3] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x101FC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x133F8 (was gap+0x1022C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1022C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1022C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1022C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1022C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x13408 (was gap+0x1023C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1023C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1023C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1023C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1023C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x13598 (was gap+0x103CC, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x103CC[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x103CC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x103CC[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x103CC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x135F8 (was gap+0x1042C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1042C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1042C.data.inc.c>
-};
-
-/* gap sub-block @ 0x13638 (was gap+0x1046C, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1046C[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1046C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x1042C @ 0x135F8 (12 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x1042C[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1042C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x136B8 (was gap+0x104EC, 192 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x104EC[192] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x104EC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x104EC[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x104EC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x13778 (was gap+0x105AC, 972 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x105AC[972] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x105AC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x105AC @ 0x13778 (121 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x105AC[121] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x105AC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x13B40 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x105AC_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x105AC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x13B44 (was gap+0x10978, 184 bytes) */
@@ -2315,38 +2250,38 @@ u8 dKirbyModel_gap_0x31CC_sub_0x10BBC[16] = {
 };
 
 /* gap sub-block @ 0x13D98 (was gap+0x10BCC, 368 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x10BCC[368] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10BCC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x10BCC[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x10BCC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x13F08 (was gap+0x10D3C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x10D3C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10D3C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x10D3C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x10D3C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14098 (was gap+0x10ECC, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x10ECC[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10ECC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x10ECC[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x10ECC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x140F8 (was gap+0x10F2C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x10F2C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10F2C.data.inc.c>
-};
-
-/* gap sub-block @ 0x14138 (was gap+0x10F6C, 128 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x10F6C[128] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10F6C.data.inc.c>
+/* Vtx: gap_0x31CC_sub_0x10F2C @ 0x140F8 (12 vertices) */
+Vtx dKirbyModel_gap_0x31CC_sub_0x10F2C[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x10F2C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x141B8 (was gap+0x10FEC, 192 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x10FEC[192] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10FEC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x10FEC[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x10FEC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x14278 (was gap+0x110AC, 860 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x110AC[860] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x110AC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x110AC @ 0x14278 (106 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x110AC[106] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x110AC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x145C8 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x110AC_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x110AC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x145D4 (was gap+0x11408, 184 bytes) */
@@ -2390,38 +2325,43 @@ u8 dKirbyModel_gap_0x31CC_sub_0x1164C[16] = {
 };
 
 /* gap sub-block @ 0x14828 (was gap+0x1165C, 512 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1165C[512] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1165C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1165C[32] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1165C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14A28 (was gap+0x1185C, 16 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1185C[16] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1185C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1185C[1] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1185C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14A38 (was gap+0x1186C, 64 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1186C[64] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1186C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1186C[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1186C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14A78 (was gap+0x118AC, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x118AC[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x118AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x118AC[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x118AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14C08 (was gap+0x11A3C, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x11A3C[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x11A3C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x11A3C[19] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x11A3C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x14D38 (was gap+0x11B6C, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x11B6C[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x11B6C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x11B6C[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x11B6C.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x14D98 (was gap+0x11BCC, 940 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x11BCC[940] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x11BCC.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x11BCC @ 0x14D98 (116 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x11BCC[116] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x11BCC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x15138 (12 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x11BCC_post[12] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x11BCC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x15144 (was gap+0x11F78, 152 bytes) */
@@ -2465,28 +2405,33 @@ u8 dKirbyModel_gap_0x31CC_sub_0x1219C[16] = {
 };
 
 /* gap sub-block @ 0x15378 (was gap+0x121AC, 368 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x121AC[368] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x121AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x121AC[23] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x121AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x154E8 (was gap+0x1231C, 400 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1231C[400] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1231C.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x1231C[25] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1231C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x15678 (was gap+0x124AC, 304 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x124AC[304] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x124AC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x124AC[19] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x124AC.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x157A8 (was gap+0x125DC, 96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x125DC[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x125DC.data.inc.c>
+Vtx dKirbyModel_gap_0x31CC_sub_0x125DC[6] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x125DC.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x15808 (was gap+0x1263C, 828 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1263C[828] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1263C.data.inc.c>
+/* Gfx DL: gap_0x31CC_sub_0x1263C @ 0x15808 (103 cmds) */
+Gfx dKirbyModel_gap_0x31CC_sub_0x1263C[103] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1263C.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x15B40 (4 bytes) */
+u8 dKirbyModel_gap_0x31CC_sub_0x1263C_post[4] = {
+	#include <KirbyModel/gap_0x31CC_sub_0x1263C_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x15B44 (was gap+0x12978, 184 bytes) */
@@ -2823,8 +2768,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x324_post[8] = {
 };
 
 /* gap sub-block @ 0x1A878 (was gap+0x57C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x57C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x57C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x57C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x57C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1A8A0 (was gap+0x5A4, 264 bytes) */
@@ -2833,8 +2778,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x5A4[264] = {
 };
 
 /* gap sub-block @ 0x1A9A8 (was gap+0x6AC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x6AC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x6AC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x6AC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x6AC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1A9D0 (was gap+0x6D4, 136 bytes) */
@@ -2843,8 +2788,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x6D4[136] = {
 };
 
 /* gap sub-block @ 0x1AA58 (was gap+0x75C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x75C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x75C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x75C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x75C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1AA80 (was gap+0x784, 72 bytes) */
@@ -2863,8 +2808,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x7F4[520] = {
 };
 
 /* gap sub-block @ 0x1ACF8 (was gap+0x9FC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x9FC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x9FC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x9FC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x9FC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1AD20 (was gap+0xA24, 176 bytes) */
@@ -2878,8 +2823,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0xAD4[520] = {
 };
 
 /* gap sub-block @ 0x1AFD8 (was gap+0xCDC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0xCDC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0xCDC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0xCDC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0xCDC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B000 (was gap+0xD04, 136 bytes) */
@@ -2888,8 +2833,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0xD04[136] = {
 };
 
 /* gap sub-block @ 0x1B088 (was gap+0xD8C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0xD8C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0xD8C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0xD8C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0xD8C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B0B0 (was gap+0xDB4, 776 bytes) */
@@ -2898,8 +2843,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0xDB4[776] = {
 };
 
 /* gap sub-block @ 0x1B3B8 (was gap+0x10BC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x10BC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x10BC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x10BC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x10BC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B3E0 (was gap+0x10E4, 200 bytes) */
@@ -2908,8 +2853,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x10E4[200] = {
 };
 
 /* gap sub-block @ 0x1B4A8 (was gap+0x11AC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x11AC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x11AC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x11AC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x11AC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B4D0 (was gap+0x11D4, 72 bytes) */
@@ -2918,8 +2863,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x11D4[72] = {
 };
 
 /* gap sub-block @ 0x1B518 (was gap+0x121C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x121C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x121C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x121C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x121C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B540 (was gap+0x1244, 72 bytes) */
@@ -2928,8 +2873,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x1244[72] = {
 };
 
 /* gap sub-block @ 0x1B588 (was gap+0x128C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x128C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x128C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x128C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x128C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B5B0 (was gap+0x12B4, 72 bytes) */
@@ -2938,8 +2883,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x12B4[72] = {
 };
 
 /* gap sub-block @ 0x1B5F8 (was gap+0x12FC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x12FC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x12FC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x12FC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x12FC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B620 (was gap+0x1324, 264 bytes) */
@@ -2948,8 +2893,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x1324[264] = {
 };
 
 /* gap sub-block @ 0x1B728 (was gap+0x142C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x142C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x142C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x142C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x142C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B750 (was gap+0x1454, 264 bytes) */
@@ -2958,8 +2903,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x1454[264] = {
 };
 
 /* gap sub-block @ 0x1B858 (was gap+0x155C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x155C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x155C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x155C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x155C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B880 (was gap+0x1584, 264 bytes) */
@@ -2968,8 +2913,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x1584[264] = {
 };
 
 /* gap sub-block @ 0x1B988 (was gap+0x168C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x168C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x168C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x168C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x168C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1B9B0 (was gap+0x16B4, 264 bytes) */
@@ -2978,8 +2923,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x16B4[264] = {
 };
 
 /* gap sub-block @ 0x1BAB8 (was gap+0x17BC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x17BC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x17BC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x17BC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x17BC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1BAE0 (was gap+0x17E4, 136 bytes) */
@@ -2988,8 +2933,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x17E4[136] = {
 };
 
 /* gap sub-block @ 0x1BB68 (was gap+0x186C, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x186C[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x186C.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x186C[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x186C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1BB90 (was gap+0x1894, 520 bytes) */
@@ -3018,8 +2963,8 @@ u8 dKirbyModel_gap_0x1A2FC_sub_0x1B34[136] = {
 };
 
 /* gap sub-block @ 0x1BEB8 (was gap+0x1BBC, 40 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x1BBC[40] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x1BBC.data.inc.c>
+u16 dKirbyModel_gap_0x1A2FC_sub_0x1BBC[20] = {
+	#include <KirbyModel/gap_0x1A2FC_sub_0x1BBC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x1BEE0 (was gap+0x1BE4, 72 bytes) */

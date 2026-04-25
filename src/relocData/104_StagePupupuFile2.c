@@ -18,8 +18,8 @@ Vtx dStagePupupuFile2_gap_0x0000_sub_0x40[4] = {
 };
 
 /* gap sub-block @ 0x0080 (was gap+0x80, 80 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x80[80] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x80.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x80[5] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x80.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x00D0 (was gap+0xD0, 80 bytes) */
@@ -192,9 +192,9 @@ Gfx dStagePupupuFile2_DL_0x0798[17] = {
 	#include <StagePupupuFile2/DL_0x0798.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0820 (was gap+0x820, 120 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x820[120] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x820.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x820 @ 0x820 (15 cmds) */
+Gfx dStagePupupuFile2_gap_0x0000_sub_0x820[15] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x820.dl.inc.c>
 };
 
 /* Raw data from file offset 0x0898 to 0x09D0 (312 bytes) */
@@ -218,9 +218,9 @@ Gfx dStagePupupuFile2_DL_0x0950[6] = {
 	#include <StagePupupuFile2/DL_0x0950.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0980 (was gap+0xE8, 80 bytes) */
-u8 dStagePupupuFile2_gap_0x0898_sub_0xE8[80] = {
-	#include <StagePupupuFile2/gap_0x0898_sub_0xE8.data.inc.c>
+/* Gfx DL: gap_0x0898_sub_0xE8 @ 0x980 (10 cmds) */
+Gfx dStagePupupuFile2_gap_0x0898_sub_0xE8[10] = {
+	#include <StagePupupuFile2/gap_0x0898_sub_0xE8.dl.inc.c>
 };
 
 /* Raw data from file offset 0x09D0 to 0x1D00 (4912 bytes) */

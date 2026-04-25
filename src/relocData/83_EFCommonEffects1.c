@@ -87,13 +87,18 @@ u8 dEFCommonEffects1_gap_0x0000_sub_0x5900[8] = {
 };
 
 /* gap sub-block @ 0x5908 (was gap+0x5908, 64 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x5908[64] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x5908.data.inc.c>
+Vtx dEFCommonEffects1_gap_0x0000_sub_0x5908[4] = {
+	#include <EFCommonEffects1/gap_0x0000_sub_0x5908.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5948 (was gap+0x5948, 140 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x5948[140] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x5948.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x5948 @ 0x5948 (14 cmds) */
+Gfx dEFCommonEffects1_gap_0x0000_sub_0x5948[14] = {
+	#include <EFCommonEffects1/gap_0x0000_sub_0x5948.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x59B8 (28 bytes) */
+u8 dEFCommonEffects1_gap_0x0000_sub_0x5948_post[28] = {
+	#include <EFCommonEffects1/gap_0x0000_sub_0x5948_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x59D4 (was gap+0x59D4, 256 bytes) */

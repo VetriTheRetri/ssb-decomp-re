@@ -471,8 +471,8 @@ u8 dStageCastleFile2_gap_0x3684[20] = {
 };
 
 /* gap sub-block @ 0x3698 (was gap+0x14, 40 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0x14[40] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x14.data.inc.c>
+u16 dStageCastleFile2_gap_0x3684_sub_0x14[20] = {
+	#include <StageCastleFile2/gap_0x3684_sub_0x14.palette.inc.c>
 };
 
 /* gap sub-block @ 0x36C0 (was gap+0x3C, 40 bytes) */
@@ -511,8 +511,8 @@ Vtx dStageCastleFile2_gap_0x3684_sub_0x81C[4] = {
 };
 
 /* gap sub-block @ 0x3EE0 (was gap+0x85C, 64 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0x85C[64] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x85C.data.inc.c>
+Vtx dStageCastleFile2_gap_0x3684_sub_0x85C[4] = {
+	#include <StageCastleFile2/gap_0x3684_sub_0x85C.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x3F20 (was gap+0x89C, 96 bytes) */
@@ -530,9 +530,14 @@ Gfx dStageCastleFile2_DL_0x3FF8[15] = {
 	#include <StageCastleFile2/DL_0x3FF8.dl.inc.c>
 };
 
-/* gap sub-block @ 0x4070 (was gap+0x9EC, 452 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0x9EC[452] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x9EC.data.inc.c>
+/* Gfx DL: gap_0x3684_sub_0x9EC @ 0x4070 (21 cmds) */
+Gfx dStageCastleFile2_gap_0x3684_sub_0x9EC[21] = {
+	#include <StageCastleFile2/gap_0x3684_sub_0x9EC.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x4118 (284 bytes) */
+u8 dStageCastleFile2_gap_0x3684_sub_0x9EC_post[284] = {
+	#include <StageCastleFile2/gap_0x3684_sub_0x9EC_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x4234 (was gap+0xBB0, 100 bytes) */

@@ -127,9 +127,9 @@ Gfx dGRBonus2NessFile2_DL_0x0680[32] = {
 	#include <GRBonus2NessFile2/DL_0x0680.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0780 (was gap+0x780, 56 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x780[56] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x780.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x780 @ 0x780 (7 cmds) */
+Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x780[7] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x780.dl.inc.c>
 };
 
 /* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */
@@ -147,9 +147,9 @@ Gfx dGRBonus2NessFile2_DL_0x0880[32] = {
 	#include <GRBonus2NessFile2/DL_0x0880.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0980 (was gap+0x980, 104 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x980[104] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x980.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x980 @ 0x980 (13 cmds) */
+Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x980[13] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x980.dl.inc.c>
 };
 
 /* gap sub-block @ 0x09E8 (was gap+0x9E8, 136 bytes) */

@@ -7,19 +7,9 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0990 (2448 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000[8] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000.data.inc.c>
-};
-
-/* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
-u16 dGRBonus2LuigiFile2_gap_0x0000_sub_0x8[20] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x8.palette.inc.c>
-};
-
-/* gap sub-block @ 0x0030 (was gap+0x30, 16 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x30[16] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x30.data.inc.c>
+/* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+Vtx dGRBonus2LuigiFile2_gap_0x0000[4] = {
+	#include <GRBonus2LuigiFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx @ 0x0040 (4 vertices) */
@@ -112,9 +102,9 @@ Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x480[4] = {
 	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x480.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x04C0 (was gap+0x4C0, 40 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x4C0[40] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x4C0.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x4C0 @ 0x4C0 (5 cmds) */
+Gfx dGRBonus2LuigiFile2_gap_0x0000_sub_0x4C0[5] = {
+	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x4C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x04E8 (was gap+0x4E8, 40 bytes) */
@@ -127,9 +117,9 @@ u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x510[136] = {
 	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x510.data.inc.c>
 };
 
-/* gap sub-block @ 0x0598 (was gap+0x598, 16 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x598[16] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x598.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x598 @ 0x598 (2 cmds) */
+Gfx dGRBonus2LuigiFile2_gap_0x0000_sub_0x598[2] = {
+	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x598.dl.inc.c>
 };
 
 /* gap sub-block @ 0x05A8 (was gap+0x5A8, 24 bytes) */
@@ -137,9 +127,9 @@ u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x5A8[24] = {
 	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x5A8.data.inc.c>
 };
 
-/* gap sub-block @ 0x05C0 (was gap+0x5C0, 240 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0[240] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x5C0.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x5C0 @ 0x5C0 (30 cmds) */
+Gfx dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0[30] = {
+	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x5C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x06B0 (was gap+0x6B0, 16 bytes) */
@@ -147,9 +137,9 @@ u16 dGRBonus2LuigiFile2_gap_0x0000_sub_0x6B0[8] = {
 	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x6B0.palette.inc.c>
 };
 
-/* gap sub-block @ 0x06C0 (was gap+0x6C0, 24 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x6C0[24] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x6C0.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x6C0 @ 0x6C0 (3 cmds) */
+Gfx dGRBonus2LuigiFile2_gap_0x0000_sub_0x6C0[3] = {
+	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x6C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x06D8 (was gap+0x6D8, 72 bytes) */
@@ -167,9 +157,9 @@ Gfx dGRBonus2LuigiFile2_DL_0x0748[15] = {
 	#include <GRBonus2LuigiFile2/DL_0x0748.dl.inc.c>
 };
 
-/* gap sub-block @ 0x07C0 (was gap+0x7C0, 16 bytes) */
-u8 dGRBonus2LuigiFile2_gap_0x0000_sub_0x7C0[16] = {
-	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x7C0.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x7C0 @ 0x7C0 (2 cmds) */
+Gfx dGRBonus2LuigiFile2_gap_0x0000_sub_0x7C0[2] = {
+	#include <GRBonus2LuigiFile2/gap_0x0000_sub_0x7C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x07D0 (was gap+0x7D0, 40 bytes) */

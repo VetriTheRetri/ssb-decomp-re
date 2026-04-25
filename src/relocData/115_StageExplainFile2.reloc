@@ -10,7 +10,7 @@ extern dStageExplainFile2_gap_0x018C_sub_0x2DC+0x14 0x540  # -> file 103 (StageP
 intern dStageExplainFile2_gap_0x018C_sub_0x304+0xC dStageExplainFile2_gap_0x018C_sub_0x4
 extern dStageExplainFile2_gap_0x018C_sub_0x304+0x2C 0x468  # -> file 103 (StagePupupuImages)
 extern dStageExplainFile2_gap_0x018C_sub_0x304+0x4C 0x490  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_gap_0x018C_sub_0x304+0x6C dStageExplainFile2_gap_0x018C_sub_0x34
+intern dStageExplainFile2_gap_0x018C_sub_0x304+0x6C dStageExplainFile2_gap_0x018C_sub_0x4+0x30
 intern dStageExplainFile2_gap_0x018C_sub_0x304+0x74 dStageExplainFile2_gap_0x018C_sub_0x84
 extern dStageExplainFile2_DL_0x0540+0x4C 0x2248  # -> file 103 (StagePupupuImages)
 extern dStageExplainFile2_DL_0x0540+0x74 0x2270  # -> file 103 (StagePupupuImages)

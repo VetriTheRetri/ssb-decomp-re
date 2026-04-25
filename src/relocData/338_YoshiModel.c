@@ -1362,63 +1362,53 @@ u8 dYoshiModel_gap_0x6E70_sub_0x9A8[24] = {
 };
 
 /* gap sub-block @ 0x7830 (was gap+0x9C0, 144 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x9C0[144] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x9C0.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0x9C0[9] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x9C0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x78C0 (was gap+0xA50, 304 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xA50[304] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xA50.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0xA50[19] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xA50.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x79F0 (was gap+0xB80, 96 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xB80[96] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xB80.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0xB80[6] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xB80.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7A50 (was gap+0xBE0, 96 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xBE0[96] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xBE0.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0xBE0[6] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xBE0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x7AB0 (was gap+0xC40, 48 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xC40[48] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xC40.data.inc.c>
-};
-
-/* gap sub-block @ 0x7AE0 (was gap+0xC70, 320 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xC70[320] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xC70.data.inc.c>
-};
-
-/* gap sub-block @ 0x7C20 (was gap+0xDB0, 80 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xDB0[80] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xDB0.data.inc.c>
-};
-
-/* gap sub-block @ 0x7C70 (was gap+0xE00, 64 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xE00[64] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xE00.data.inc.c>
+/* Vtx: gap_0x6E70_sub_0xC40 @ 0x7AB0 (32 vertices) */
+Vtx dYoshiModel_gap_0x6E70_sub_0xC40[32] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xC40.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7CB0 (was gap+0xE40, 32 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xE40[32] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xE40.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0xE40[2] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xE40.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7CD0 (was gap+0xE60, 48 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xE60[48] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xE60.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0xE60[3] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xE60.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x7D00 (was gap+0xE90, 16 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xE90[16] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xE90.data.inc.c>
+Vtx dYoshiModel_gap_0x6E70_sub_0xE90[1] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xE90.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x7D10 (was gap+0xEA0, 1028 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xEA0[1028] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xEA0.data.inc.c>
+/* Gfx DL: gap_0x6E70_sub_0xEA0 @ 0x7D10 (128 cmds) */
+Gfx dYoshiModel_gap_0x6E70_sub_0xEA0[128] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xEA0.dl.inc.c>
+};
+
+/* Raw tail after 1 DL(s) @ 0x8110 (4 bytes) */
+u8 dYoshiModel_gap_0x6E70_sub_0xEA0_post[4] = {
+	#include <YoshiModel/gap_0x6E70_sub_0xEA0_post.data.inc.c>
 };
 
 /* gap sub-block @ 0x8114 (was gap+0x12A4, 56 bytes) */

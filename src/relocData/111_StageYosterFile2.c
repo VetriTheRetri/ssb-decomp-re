@@ -116,13 +116,13 @@ Vtx dStageYosterFile2_gap_0x0078_sub_0x330[4] = {
 };
 
 /* gap sub-block @ 0x03E8 (was gap+0x370, 64 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0x370[64] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0x370.data.inc.c>
+Vtx dStageYosterFile2_gap_0x0078_sub_0x370[4] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0x370.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0428 (was gap+0x3B0, 64 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0x3B0[64] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0x3B0.data.inc.c>
+Vtx dStageYosterFile2_gap_0x0078_sub_0x3B0[4] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0x3B0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0468 (was gap+0x3F0, 64 bytes) */
@@ -165,9 +165,9 @@ Gfx dStageYosterFile2_DL_0x0618[5] = {
 	#include <StageYosterFile2/DL_0x0618.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0640 (was gap+0x5C8, 24 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0x5C8[24] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0x5C8.data.inc.c>
+/* Gfx DL: gap_0x0078_sub_0x5C8 @ 0x640 (3 cmds) */
+Gfx dStageYosterFile2_gap_0x0078_sub_0x5C8[3] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0x5C8.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0658 (was gap+0x5E0, 264 bytes) */
@@ -185,9 +185,9 @@ Gfx dStageYosterFile2_DL_0x08A0[19] = {
 	#include <StageYosterFile2/DL_0x08A0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0938 (was gap+0x8C0, 304 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0x8C0[304] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0x8C0.data.inc.c>
+/* Gfx DL: gap_0x0078_sub_0x8C0 @ 0x938 (38 cmds) */
+Gfx dStageYosterFile2_gap_0x0078_sub_0x8C0[38] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0x8C0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0A68 (was gap+0x9F0, 40 bytes) */
@@ -225,9 +225,9 @@ Gfx dStageYosterFile2_DL_0x0B98[4] = {
 	#include <StageYosterFile2/DL_0x0B98.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0BB8 (was gap+0xB40, 24 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0xB40[24] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0xB40.data.inc.c>
+/* Gfx DL: gap_0x0078_sub_0xB40 @ 0xBB8 (3 cmds) */
+Gfx dStageYosterFile2_gap_0x0078_sub_0xB40[3] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0xB40.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0BD0 (was gap+0xB58, 8 bytes) */
@@ -235,9 +235,9 @@ Gfx dStageYosterFile2_DL_0x0BD0[1] = {
 	#include <StageYosterFile2/DL_0x0BD0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0BD8 (was gap+0xB60, 64 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0xB60[64] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0xB60.data.inc.c>
+/* Gfx DL: gap_0x0078_sub_0xB60 @ 0xBD8 (8 cmds) */
+Gfx dStageYosterFile2_gap_0x0078_sub_0xB60[8] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0xB60.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0C18 (was gap+0xBA0, 8 bytes) */
@@ -250,9 +250,9 @@ Gfx dStageYosterFile2_DL_0x0C20[30] = {
 	#include <StageYosterFile2/DL_0x0C20.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0D10 (was gap+0xC98, 16 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0xC98[16] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0xC98.data.inc.c>
+/* Gfx DL: gap_0x0078_sub_0xC98 @ 0xD10 (2 cmds) */
+Gfx dStageYosterFile2_gap_0x0078_sub_0xC98[2] = {
+	#include <StageYosterFile2/gap_0x0078_sub_0xC98.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0D20 (was gap+0xCA8, 224 bytes) */

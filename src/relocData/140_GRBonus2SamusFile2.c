@@ -122,9 +122,9 @@ Gfx dGRBonus2SamusFile2_DL_0x0480[30] = {
 	#include <GRBonus2SamusFile2/DL_0x0480.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0570 (was gap+0x570, 24 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x570[24] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x570.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x570 @ 0x570 (3 cmds) */
+Gfx dGRBonus2SamusFile2_gap_0x0000_sub_0x570[3] = {
+	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x570.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0588 (was gap+0x588, 32 bytes) */

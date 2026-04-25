@@ -100,9 +100,9 @@ Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x440[4] = {
 	#include <GRBonus2FoxFile2/gap_0x0000_sub_0x440.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0480 (was gap+0x480, 128 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0000_sub_0x480[128] = {
-	#include <GRBonus2FoxFile2/gap_0x0000_sub_0x480.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x480 @ 0x480 (16 cmds) */
+Gfx dGRBonus2FoxFile2_gap_0x0000_sub_0x480[16] = {
+	#include <GRBonus2FoxFile2/gap_0x0000_sub_0x480.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0500 (was gap+0x500, 128 bytes) */
@@ -135,9 +135,9 @@ Gfx dGRBonus2FoxFile2_DL_0x0658[5] = {
 	#include <GRBonus2FoxFile2/DL_0x0658.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0680 (was gap+0x680, 96 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0000_sub_0x680[96] = {
-	#include <GRBonus2FoxFile2/gap_0x0000_sub_0x680.data.inc.c>
+/* Gfx DL: gap_0x0000_sub_0x680 @ 0x680 (12 cmds) */
+Gfx dGRBonus2FoxFile2_gap_0x0000_sub_0x680[12] = {
+	#include <GRBonus2FoxFile2/gap_0x0000_sub_0x680.dl.inc.c>
 };
 
 /* gap sub-block @ 0x06E0 (was gap+0x6E0, 16 bytes) */

@@ -95,9 +95,17 @@ DObjDesc dCaptainSpecial2_FalconKickDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0B90 to 0x0C00 (112 bytes) */
-u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint[28] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint_0xB98[];
+
+u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dCaptainSpecial2_FalconKickAnimJoint_AnimJoint + 0x8),
+	(u32)dCaptainSpecial2_FalconKickAnimJoint_AnimJoint_0xB98,
+};
+
+u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint_0xB98[] = {
 	aobjEvent32SetValRate(0x001, 0),
 	    0xBCD67750,
 	    0xBC8FFFAA,
@@ -127,9 +135,18 @@ u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint[28] = {
 };
 
 /* Raw data from file offset 0x0C00 to 0x0C48 (72 bytes) */
-u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[18] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08[];
+extern u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[];
+
+u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x3C),
+	(u32)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C,
+};
+
+u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08[] = {
 	aobjEvent32SetValAfterBlock(0x01E, 0),
 	    0x00000000,
 	    0x00000000,
@@ -143,10 +160,14 @@ u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[18] = {
 	    0x3F800000,
 	    0x1C000000,
 	(u32)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x8),
+};
+
+u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[] = {
 	(u32)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x0C48 to 0x1450 (2056 bytes) */
 u8 dCaptainSpecial2_Tex_0x0C48[2056] = {

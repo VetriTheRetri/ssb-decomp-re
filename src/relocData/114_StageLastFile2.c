@@ -567,12 +567,20 @@ u8 dStageLastFile2_MPGeometryData_0x4EF4[28] = {
 };
 
 /* Raw data from file offset 0x4F10 to 0x4F40 (48 bytes) */
-u32 dStageLastFile2_Layer1Anim_AnimJoint[12] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[];
+
+u32 dStageLastFile2_Layer1Anim_AnimJoint[5] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageLastFile2_Layer1Anim_AnimJoint + 0x14),
+	(u32)dStageLastFile2_Layer1Anim_AnimJoint_0x4F24,
 	aobjEvent32End(),
+};
+
+u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[] = {
 	aobjEvent32SetValBlock(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x002, 719),

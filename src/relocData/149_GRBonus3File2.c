@@ -699,19 +699,31 @@ u8 dGRBonus3File2_MPGeometryData_0x65A8[40] = {
 };
 
 /* Raw data from file offset 0x65D0 to 0x6890 (704 bytes) */
-u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[176] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[];
+
+u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[12] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x2A8),
+	(u32)dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x2AC),
+	(u32)dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C,
 	aobjEvent32End(),
+};
+
+u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFFFFFF69,
 	aobjEvent32SetExtValBlock(0x001, 4),
@@ -836,6 +848,9 @@ u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[176] = {
 	    0xFFFFFF69,
 	    0x1C000000,
 	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x30),
+};
+
+u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFFFFA366,
 	aobjEvent32SetExtValBlock(0x001, 60),
@@ -850,6 +865,9 @@ u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[176] = {
 	    0xFFFFA366,
 	    0x1C000000,
 	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x220),
+};
+
+u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[] = {
 	aobjEvent32SetExtValBlock(0x018, 0),
 	    0xB3B3B300,
 	    0x80808000,
@@ -870,11 +888,17 @@ u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[176] = {
 	    0x80808000,
 	    0x1C000000,
 	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x258),
+};
+
+u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[] = {
 	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x30),
+};
+
+u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[] = {
 	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x220),
 	(u32)((u8*)dGRBonus3File2_Layer1MatAnim_MatAnimJoint + 0x258),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 

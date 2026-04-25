@@ -281,10 +281,19 @@ DObjDesc dEFCommonEffects1_DamageSlash[] = {
 };
 
 /* Raw data from file offset 0x7800 to 0x7860 (96 bytes) */
-u32 dEFCommonEffects1_DamageSlash_AnimJoint[24] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x780C[];
+extern u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x7828[];
+
+u32 dEFCommonEffects1_DamageSlash_AnimJoint[3] = {
 	aobjEvent32End(),
-	aobjEvent32SetFlags(0x004, 7683),
-	aobjEvent32SetFlags(0x032, 7690),
+	(u32)dEFCommonEffects1_DamageSlash_AnimJoint_0x780C,
+	(u32)dEFCommonEffects1_DamageSlash_AnimJoint_0x7828,
+};
+
+u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x780C[] = {
 	aobjEvent32SetValAfter(0x070, 0),
 	    0x00000000,
 	    0x00000000,
@@ -292,6 +301,9 @@ u32 dEFCommonEffects1_DamageSlash_AnimJoint[24] = {
 	aobjEvent32SetFlags(0x000, 17),
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x7828[] = {
 	aobjEvent32SetVal(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x003, 0),
@@ -304,9 +316,9 @@ u32 dEFCommonEffects1_DamageSlash_AnimJoint[24] = {
 	aobjEvent32SetValBlock(0x004, 2),
 	    0xBFC90FDB,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x7860 to 0x7A80 (544 bytes) */
 u32 dEFCommonEffects1_DamageSlash_MatAnimJoint[136] = {
@@ -498,8 +510,16 @@ Gfx dEFCommonEffects1_DL_0x7C28[35] = {
 };
 
 /* Raw data from file offset 0x7D40 to 0x7DA0 (96 bytes) */
-u32 dEFCommonEffects1_ImpactWave_AnimJoint[24] = {
-	aobjEvent32SetFlags(0x2D0, 8017),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44[];
+
+u32 dEFCommonEffects1_ImpactWave_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44,
+};
+
+u32 dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44[] = {
 	aobjEvent32SetValAfter(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValRate(0x280, 0),
@@ -522,8 +542,9 @@ u32 dEFCommonEffects1_ImpactWave_AnimJoint[24] = {
 	aobjEvent32SetValBlock(0x100, 8),
 	    0x3FEB2136,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x7DA0 to 0x7E80 (224 bytes) */
 u32 dEFCommonEffects1_ImpactWave_MatAnimJoint[56] = {
@@ -1633,8 +1654,16 @@ Gfx dEFCommonEffects1_DL_0x8FA0[22] = {
 };
 
 /* Raw data from file offset 0x9050 to 0x90C0 (112 bytes) */
-u32 dEFCommonEffects1_CommonSpark_AnimJoint[28] = {
-	(u32)((u8*)dEFCommonEffects1_CommonSpark_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_CommonSpark_AnimJoint_0x9054[];
+
+u32 dEFCommonEffects1_CommonSpark_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_CommonSpark_AnimJoint_0x9054,
+};
+
+u32 dEFCommonEffects1_CommonSpark_AnimJoint_0x9054[] = {
 	aobjEvent32SetValAfterBlock(0x384, 0),
 	    0x3F490FDB,
 	    0x3F800000,
@@ -1661,8 +1690,9 @@ u32 dEFCommonEffects1_CommonSpark_AnimJoint[28] = {
 	    0x3FE66666,
 	aobjEvent32Wait(0),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x90C0 to 0xC978 (14520 bytes) */
 u32 dEFCommonEffects1_CommonSpark_MatAnimJoint[3630] = {
@@ -5353,8 +5383,16 @@ u8 dEFCommonEffects1_gap_0xCAC8[24] = {
 };
 
 /* Raw data from file offset 0xCAE0 to 0xCB40 (96 bytes) */
-u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint[24] = {
-	(u32)((u8*)dEFCommonEffects1_DamageFlyMDust_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4[];
+
+u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4,
+};
+
+u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4[] = {
 	aobjEvent32SetValRateBlock(0x3A0, 0),
 	    0x00000000,
 	    0x3FE464E9,
@@ -5376,13 +5414,22 @@ u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint[24] = {
 	    0xC19990A9,
 	aobjEvent32Wait(10),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0xCB40 to 0xCBC0 (128 bytes) */
-u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[32] = {
-	(u32)((u8*)dEFCommonEffects1_DamageFlyMDust_MatAnimJoint + 0x70),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[];
+extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[];
+
+u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[1] = {
+	(u32)dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0,
+};
+
+u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[] = {
 	aobjEvent32SetVal0Rate(0x01E, 0),
 	    0x00000000,
 	    0x00000000,
@@ -5410,15 +5457,26 @@ u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[32] = {
 	aobjEvent32SetValBlock(0x001, 5),
 	    0x40C00000,
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[] = {
 	(u32)((u8*)dEFCommonEffects1_DamageFlyMDust_MatAnimJoint + 0x4),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0xCBC0 to 0xCC20 (96 bytes) */
-u32 dEFCommonEffects1_QuakeMag0_AnimJoint[24] = {
-	(u32)((u8*)dEFCommonEffects1_QuakeMag0_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4[];
+
+u32 dEFCommonEffects1_QuakeMag0_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4,
+};
+
+u32 dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4[] = {
 	aobjEvent32SetValBlock(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x020, 2),
@@ -5440,13 +5498,21 @@ u32 dEFCommonEffects1_QuakeMag0_AnimJoint[24] = {
 	aobjEvent32SetValBlock(0x020, 2),
 	    0x00000000,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0xCC20 to 0xCCF0 (208 bytes) */
-u32 dEFCommonEffects1_QuakeMag1_AnimJoint[52] = {
-	(u32)((u8*)dEFCommonEffects1_QuakeMag1_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24[];
+
+u32 dEFCommonEffects1_QuakeMag1_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24,
+};
+
+u32 dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24[] = {
 	aobjEvent32SetVal(0x060, 0),
 	    0x34EA0000,
 	    0xB7176800,
@@ -5501,8 +5567,16 @@ u32 dEFCommonEffects1_QuakeMag1_AnimJoint[52] = {
 };
 
 /* Raw data from file offset 0xCCF0 to 0xCDC0 (208 bytes) */
-u32 dEFCommonEffects1_QuakeMag2_AnimJoint[52] = {
-	(u32)((u8*)dEFCommonEffects1_QuakeMag2_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4[];
+
+u32 dEFCommonEffects1_QuakeMag2_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4,
+};
+
+u32 dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4[] = {
 	aobjEvent32SetVal(0x060, 0),
 	    0x35430000,
 	    0xB7976800,
@@ -5557,8 +5631,16 @@ u32 dEFCommonEffects1_QuakeMag2_AnimJoint[52] = {
 };
 
 /* Raw data from file offset 0xCDC0 to 0xCE00 (64 bytes) */
-u32 dEFCommonEffects1_QuakeMag3_AnimJoint[16] = {
-	(u32)((u8*)dEFCommonEffects1_QuakeMag3_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[];
+
+u32 dEFCommonEffects1_QuakeMag3_AnimJoint[1] = {
+	(u32)dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4,
+};
+
+u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[] = {
 	aobjEvent32SetValRateBlock(0x020, 0),
 	    0x00000000,
 	    0x42B691CB,
@@ -5572,7 +5654,7 @@ u32 dEFCommonEffects1_QuakeMag3_AnimJoint[16] = {
 	    0x00000000,
 	    0x3DA8BF0C,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 

@@ -25,9 +25,17 @@ DObjDesc dLBTransitionPaperAirplane_DObjDesc_0x0F98[] = {
 };
 
 /* Raw data from file offset 0x101C to 0x1050 (52 bytes) */
-u32 dLBTransitionPaperAirplane_AnimJoint_0x101C[13] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionPaperAirplane_AnimJoint_0x1024[];
+
+u32 dLBTransitionPaperAirplane_AnimJoint_0x101C[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionPaperAirplane_AnimJoint_0x101C + 0x8),
+	(u32)dLBTransitionPaperAirplane_AnimJoint_0x1024,
+};
+
+u32 dLBTransitionPaperAirplane_AnimJoint_0x1024[] = {
 	aobjEvent32SetVal0Rate(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x006, 0),
@@ -37,7 +45,7 @@ u32 dLBTransitionPaperAirplane_AnimJoint_0x101C[13] = {
 	    0xBFCB4BC3,
 	    0xBD9F06F2,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 

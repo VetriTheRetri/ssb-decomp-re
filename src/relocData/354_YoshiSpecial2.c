@@ -83,8 +83,16 @@ u8 dYoshiSpecial2_gap_0x0530_post[8] = {
 };
 
 /* Raw data from file offset 0x0600 to 0x0780 (384 bytes) */
-u32 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint[96] = {
-	(u32)((u8*)dYoshiSpecial2_EntryEggAnimJoint_AnimJoint + 0x4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint_0x604[];
+
+u32 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint[1] = {
+	(u32)dYoshiSpecial2_EntryEggAnimJoint_AnimJoint_0x604,
+};
+
+u32 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint_0x604[] = {
 	aobjEvent32SetValAfter(0x006, 0),
 	    0x3FC90FDB,
 	    0x00000000,
@@ -179,12 +187,22 @@ u32 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint[96] = {
 	aobjEvent32SetVal0RateBlock(0x001, 58),
 	    0x00000000,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(4);
+
 /* Raw data from file offset 0x0780 to 0x07C0 (64 bytes) */
-u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[16] = {
-	(u32)((u8*)dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint + 0x34),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784[];
+extern u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[];
+
+u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[1] = {
+	(u32)dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4,
+};
+
+u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
 	    0x00000000,
 	    0x00000000,
@@ -197,7 +215,11 @@ u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[16] = {
 	    0x3F800000,
 	aobjEvent32Wait(118),
 	aobjEvent32End(),
+};
+
+u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[] = {
 	(u32)((u8*)dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint + 0x4),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);

@@ -25,9 +25,17 @@ DObjDesc dLBTransitionStar_DObjDesc_0x2450[] = {
 };
 
 /* Raw data from file offset 0x24D4 to 0x2520 (76 bytes) */
-u32 dLBTransitionStar_AnimJoint_0x24D4[19] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionStar_AnimJoint_0x24DC[];
+
+u32 dLBTransitionStar_AnimJoint_0x24D4[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionStar_AnimJoint_0x24D4 + 0x8),
+	(u32)dLBTransitionStar_AnimJoint_0x24DC,
+};
+
+u32 dLBTransitionStar_AnimJoint_0x24DC[] = {
 	aobjEvent32SetValAfter(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0Rate(0x180, 0),
@@ -43,7 +51,7 @@ u32 dLBTransitionStar_AnimJoint_0x24D4[19] = {
 	aobjEvent32SetValBlock(0x004, 64),
 	    0xBFC90FDB,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 

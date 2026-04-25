@@ -74,13 +74,25 @@ DObjDesc dMarioSpecial2_EntryDokanDObjDesc[] = {
 PAD(8);
 
 /* Raw data from file offset 0x06C0 to 0x0740 (128 bytes) */
-u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint[32] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC[];
+extern u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8[];
+
+u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint + 0xC),
-	(u32)((u8*)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint + 0x18),
+	(u32)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC,
+	(u32)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8,
+};
+
+u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC[] = {
 	aobjEvent32SetFlags(0x000, 100),
 	aobjEvent32SetFlags(0x002, 20),
 	aobjEvent32End(),
+};
+
+u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8[] = {
 	aobjEvent32SetVal(0x120, 0),
 	    0x41674408,
 	    0x3727C5AC,

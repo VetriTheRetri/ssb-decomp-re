@@ -257,15 +257,29 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1888[408] = {
 };
 
 /* Raw data from file offset 0x1A20 to 0x1AE0 (192 bytes) */
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[48] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[];
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[8] = {
 	aobjEvent32End(),
-	aobjEvent32SetValBlock(0x114, 1680),
-	    0x068B0699,
-	    0x068C069E,
-	    0x068D06A3,
-	aobjEvent32SetValBlock(0x11C, 1704),
-	    0x068F06AC,
-	    0x069806B1,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0,
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4,
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[] = {
 	    0x08080000,
 	    0xC3C30000,
 	aobjEvent32SetValAfter(0x060, 0),
@@ -275,38 +289,57 @@ u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[48] = {
 	    0x44160000,
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32SetValBlock(0x13A, 1680),
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64[] = {
 	    0x1E010001,
 	    0x1E000004,
 	    0x1E010004,
 	    0x1C000000,
 	    0x06A20699,
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78[] = {
 	aobjEvent32SetFlags(0x002, 3),
 	aobjEvent32SetFlags(0x000, 4),
 	aobjEvent32SetFlags(0x002, 2),
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32SetValBlock(0x14E, 1694),
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C[] = {
 	    0x1E010005,
 	    0x1E000004,
 	    0x1E010000,
 	    0x1C000000,
 	    0x06AB06A3,
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0[] = {
 	aobjEvent32SetFlags(0x000, 4),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32SetValBlock(0x160, 1704),
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0[] = {
 	    0x1E010002,
 	    0x1E000004,
 	    0x1E010003,
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32SetValBlock(0x16A, 1708),
+};
+
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[] = {
 	    0x1E010004,
 	    0x1E000004,
 	    0x1E010001,
 	    0x1C000000,
 	    0x06BA06B1,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x1AE0 to 0x1C70 (400 bytes) */
 u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[100] = {
@@ -492,9 +525,17 @@ DObjDesc dPikachuSpecial3_ThunderJoltDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x22E0 to 0x2350 (112 bytes) */
-u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint[28] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[];
+
+u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint + 0x8),
+	(u32)dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8,
+};
+
+u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[] = {
 	aobjEvent32SetValAfter(0x3F0, 0),
 	    0x00000000,
 	    0x00000000,
@@ -519,14 +560,23 @@ u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint[28] = {
 	    0x1C000000,
 	(u32)((u8*)dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x2350 to 0x2390 (64 bytes) */
-u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[16] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[];
+extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[];
+
+u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint + 0x38),
+	(u32)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388,
+};
+
+u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x001, 3),
@@ -539,6 +589,9 @@ u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[16] = {
 	    0x32980000,
 	    0x1C000000,
 	(u32)((u8*)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint + 0x8),
+};
+
+u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[] = {
 	(u32)((u8*)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint + 0x8),
 	aobjEvent32End(),
 };

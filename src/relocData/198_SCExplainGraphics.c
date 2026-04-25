@@ -119,41 +119,74 @@ DObjDesc dSCExplainGraphics_StickDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x5390 to 0x53C0 (48 bytes) */
-u32 dSCExplainGraphics_StickNeutral_MatAnimJoint[12] = {
-	(u32)((u8*)dSCExplainGraphics_StickNeutral_MatAnimJoint + 0x20),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[];
+extern u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[];
+
+u32 dSCExplainGraphics_StickNeutral_MatAnimJoint[2] = {
+	(u32)dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0,
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x001, 20),
 	    0x3F800000,
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[] = {
 	(u32)((u8*)dSCExplainGraphics_StickNeutral_MatAnimJoint + 0x8),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x53C0 to 0x53F0 (48 bytes) */
-u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint[12] = {
-	(u32)((u8*)dSCExplainGraphics_StickHoldUp_MatAnimJoint + 0x20),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8[];
+extern u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[];
+
+u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint[2] = {
+	(u32)dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0,
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8[] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x40000000,
 	aobjEvent32SetValAfter(0x001, 10),
 	    0x00000000,
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[] = {
 	(u32)((u8*)dSCExplainGraphics_StickHoldUp_MatAnimJoint + 0x8),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x53F0 to 0x5430 (64 bytes) */
-u32 dSCExplainGraphics_StickTapUp_MatAnimJoint[16] = {
-	(u32)((u8*)dSCExplainGraphics_StickTapUp_MatAnimJoint + 0x3C),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8[];
+extern u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[];
+
+u32 dSCExplainGraphics_StickTapUp_MatAnimJoint[2] = {
+	(u32)dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C,
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8[] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x001, 20),
@@ -167,17 +200,32 @@ u32 dSCExplainGraphics_StickTapUp_MatAnimJoint[16] = {
 	aobjEvent32Wait(9),
 	    0x1C000000,
 	(u32)((u8*)dSCExplainGraphics_StickTapUp_MatAnimJoint + 0x8),
+};
+
+u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[] = {
 	(u32)((u8*)dSCExplainGraphics_StickTapUp_MatAnimJoint + 0x8),
 };
 
 /* Raw data from file offset 0x5430 to 0x5450 (32 bytes) */
-u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint[8] = {
-	(u32)((u8*)dSCExplainGraphics_StickHoldForward_MatAnimJoint + 0x18),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438[];
+extern u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[];
+
+u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint[2] = {
+	(u32)dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448,
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438[] = {
 	aobjEvent32SetValAfter(0x001, 0),
 	    0x40800000,
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[] = {
 	(u32)((u8*)dSCExplainGraphics_StickHoldForward_MatAnimJoint + 0x8),
 	aobjEvent32End(),
 };

@@ -153,9 +153,17 @@ DObjDesc dLinkSpecial2_EntryBeamDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0840 to 0x0B60 (800 bytes) */
-u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint[200] = {
-	(u32)((u8*)dLinkSpecial2_EntryWaveAnimJoint_AnimJoint + 0x8),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848[];
+
+u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint[2] = {
+	(u32)dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848,
 	aobjEvent32End(),
+};
+
+u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848[] = {
 	aobjEvent32SetValAfter(0x005, 0),
 	    0x00000000,
 	    0x00000000,
@@ -371,9 +379,18 @@ u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[12] = {
 };
 
 /* Raw data from file offset 0x0B90 to 0x0BF0 (96 bytes) */
-u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint[24] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98[];
+extern u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[];
+
+u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint + 0x50),
+	(u32)dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0,
+};
+
+u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98[] = {
 	aobjEvent32SetExtValAfter(0x018, 0),
 	    0xFFFFFF00,
 	    0x7F808000,
@@ -392,16 +409,28 @@ u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint[24] = {
 	    0xFFFFFF00,
 	    0x1C000000,
 	(u32)((u8*)dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint + 0x8),
+};
+
+u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[] = {
 	(u32)((u8*)dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint + 0x8),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x0BF0 to 0x0C38 (72 bytes) */
-u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[18] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8[];
+extern u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[];
+
+u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint + 0x3C),
+	(u32)dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C,
+};
+
+u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8[] = {
 	aobjEvent32SetExtVal(0x001, 0),
 	    0xFFFFFF66,
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
@@ -415,10 +444,14 @@ u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[18] = {
 	    0xFFFFFF00,
 	    0x1C000000,
 	(u32)((u8*)dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint + 0x8),
+};
+
+u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[] = {
 	(u32)((u8*)dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x0C38 to 0x1038 (1024 bytes) */
 u8 dLinkSpecial2_Tex_0x0C38[1024] = {
@@ -483,9 +516,17 @@ DObjDesc dLinkSpecial2_SpinAttackDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x1250 to 0x12F0 (160 bytes) */
-u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[40] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint_0x1258[];
+
+u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32Wait(1174),
+	(u32)dLinkSpecial2_SpinAttackAnimJoint_AnimJoint_0x1258,
+};
+
+u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint_0x1258[] = {
 	aobjEvent32SetValAfter(0x020, 0),
 	    0x43960000,
 	aobjEvent32SetVal0Rate(0x002, 0),
@@ -521,10 +562,9 @@ u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[40] = {
 	aobjEvent32Wait(5),
 	aobjEvent32SetFlags(0x002, 35),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(12);
 
 /* Raw data from file offset 0x12F0 to 0x1A10 (1824 bytes) */
 u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[456] = {

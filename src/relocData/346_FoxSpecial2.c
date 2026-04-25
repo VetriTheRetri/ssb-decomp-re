@@ -39,9 +39,17 @@ DObjDesc dFoxSpecial2_Reflector[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0340 to 0x03A0 (96 bytes) */
-u32 dFoxSpecial2_ReflectorStart_AnimJoint[24] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFoxSpecial2_ReflectorStart_AnimJoint_0x348[];
+
+u32 dFoxSpecial2_ReflectorStart_AnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dFoxSpecial2_ReflectorStart_AnimJoint_0x348,
+};
+
+u32 dFoxSpecial2_ReflectorStart_AnimJoint_0x348[] = {
 	aobjEvent32SetValBlock(0x3F0, 0),
 	    0x00000000,
 	    0x43700000,
@@ -63,13 +71,22 @@ u32 dFoxSpecial2_ReflectorStart_AnimJoint[24] = {
 	    0x3ECCCCCD,
 	aobjEvent32Wait(0),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(4);
+
 /* Raw data from file offset 0x03A0 to 0x0430 (144 bytes) */
-u32 dFoxSpecial2_ReflectorHit_AnimJoint[36] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFoxSpecial2_ReflectorHit_AnimJoint_0x3A8[];
+
+u32 dFoxSpecial2_ReflectorHit_AnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dFoxSpecial2_ReflectorHit_AnimJoint_0x3A8,
+};
+
+u32 dFoxSpecial2_ReflectorHit_AnimJoint_0x3A8[] = {
 	aobjEvent32SetVal(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -103,13 +120,22 @@ u32 dFoxSpecial2_ReflectorHit_AnimJoint[36] = {
 	    0x3E4CCCCD,
 	    0x3E4CCCCD,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(4);
+
 /* Raw data from file offset 0x0430 to 0x04C0 (144 bytes) */
-u32 dFoxSpecial2_ReflectorEnd_AnimJoint[36] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFoxSpecial2_ReflectorEnd_AnimJoint_0x438[];
+
+u32 dFoxSpecial2_ReflectorEnd_AnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dFoxSpecial2_ReflectorEnd_AnimJoint_0x438,
+};
+
+u32 dFoxSpecial2_ReflectorEnd_AnimJoint_0x438[] = {
 	aobjEvent32SetValAfterBlock(0x070, 0),
 	    0x00000000,
 	    0x43700000,
@@ -143,13 +169,22 @@ u32 dFoxSpecial2_ReflectorEnd_AnimJoint[36] = {
 	    0x3727C5AC,
 	    0x3727C5AC,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(4);
+
 /* Raw data from file offset 0x04C0 to 0x0590 (208 bytes) */
-u32 dFoxSpecial2_ReflectorLoop_AnimJoint[52] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[];
+
+u32 dFoxSpecial2_ReflectorLoop_AnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8,
+};
+
+u32 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[] = {
 	aobjEvent32SetVal(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -203,19 +238,30 @@ u32 dFoxSpecial2_ReflectorLoop_AnimJoint[52] = {
 };
 
 /* Raw data from file offset 0x0590 to 0x09E0 (1104 bytes) */
-u32 dFoxSpecial2_EntryArwingL_AnimJoint[276] = {
-	(u32)((u8*)dFoxSpecial2_EntryArwingL_AnimJoint + 0x30),
-	(u32)((u8*)dFoxSpecial2_EntryArwingL_AnimJoint + 0x138),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x5C0[];
+extern u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x6C8[];
+extern u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x714[];
+extern u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x748[];
+
+u32 dFoxSpecial2_EntryArwingL_AnimJoint[12] = {
+	(u32)dFoxSpecial2_EntryArwingL_AnimJoint_0x5C0,
+	(u32)dFoxSpecial2_EntryArwingL_AnimJoint_0x6C8,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dFoxSpecial2_EntryArwingL_AnimJoint + 0x184),
+	(u32)dFoxSpecial2_EntryArwingL_AnimJoint_0x714,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dFoxSpecial2_EntryArwingL_AnimJoint + 0x1B8),
+	(u32)dFoxSpecial2_EntryArwingL_AnimJoint_0x748,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x5C0[] = {
 	aobjEvent32SetValRate(0x073, 0),
 	    0x3F181063,
 	    0xBB3E3D8A,
@@ -282,6 +328,9 @@ u32 dFoxSpecial2_EntryArwingL_AnimJoint[276] = {
 	    0xBFA147AC,
 	    0xBB310AD6,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x6C8[] = {
 	aobjEvent32SetValRate(0x004, 0),
 	    0x00000000,
 	    0x3C1B9409,
@@ -301,6 +350,9 @@ u32 dFoxSpecial2_EntryArwingL_AnimJoint[276] = {
 	    0xBF33B646,
 	    0xBA8E5B3B,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x714[] = {
 	aobjEvent32SetValBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x001, 55),
@@ -314,6 +366,9 @@ u32 dFoxSpecial2_EntryArwingL_AnimJoint[276] = {
 	aobjEvent32SetValBlock(0x001, 49),
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingL_AnimJoint_0x748[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -479,23 +534,35 @@ u32 dFoxSpecial2_EntryArwingL_AnimJoint[276] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+PAD(4);
+
+/* Raw data from file offset 0x09E0 to 0x0E30 (1104 bytes) */
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xA10[];
+extern u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB18[];
+extern u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB64[];
+extern u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB98[];
+
+u32 dFoxSpecial2_EntryArwingR_AnimJoint[12] = {
+	(u32)dFoxSpecial2_EntryArwingR_AnimJoint_0xA10,
+	(u32)dFoxSpecial2_EntryArwingR_AnimJoint_0xB18,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dFoxSpecial2_EntryArwingR_AnimJoint_0xB64,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dFoxSpecial2_EntryArwingR_AnimJoint_0xB98,
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x09E0 to 0x0E30 (1104 bytes) */
-u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
-	(u32)((u8*)dFoxSpecial2_EntryArwingR_AnimJoint + 0x30),
-	(u32)((u8*)dFoxSpecial2_EntryArwingR_AnimJoint + 0x138),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dFoxSpecial2_EntryArwingR_AnimJoint + 0x184),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dFoxSpecial2_EntryArwingR_AnimJoint + 0x1B8),
-	aobjEvent32End(),
+u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xA10[] = {
 	aobjEvent32SetValRate(0x073, 0),
 	    0x3F181063,
 	    0xBB3E3D8A,
@@ -562,6 +629,9 @@ u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
 	    0xBFA147AC,
 	    0xBB310AD6,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB18[] = {
 	aobjEvent32SetValRate(0x004, 0),
 	    0x00000000,
 	    0xBC1B9415,
@@ -581,6 +651,9 @@ u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
 	    0x3F33B63B,
 	    0x3A8E5B1C,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB64[] = {
 	aobjEvent32SetValBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x001, 55),
@@ -594,6 +667,9 @@ u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
 	aobjEvent32SetValBlock(0x001, 49),
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB98[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -759,5 +835,6 @@ u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);

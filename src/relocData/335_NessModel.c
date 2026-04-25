@@ -1211,10 +1211,18 @@ DObjDesc dNessModel_PKThunderWaveDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x9AC0 to 0x9BB0 (240 bytes) */
-u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint[60] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[];
+
+u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dNessModel_PKThunderWaveAnimJoint_AnimJoint + 0xC),
+	(u32)dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC,
 	aobjEvent32End(),
+};
+
+u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[] = {
 	aobjEvent32SetValAfterBlock(0x3F0, 0),
 	    0xC2FF0000,
 	    0x43340000,

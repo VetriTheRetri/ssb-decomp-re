@@ -585,14 +585,22 @@ u8 dStageYamabukiFile2_gap_0x50DC[228] = {
 };
 
 /* Raw data from file offset 0x51C0 to 0x5260 (160 bytes) */
-u32 dStageYamabukiFile2_Layer0Anim_AnimJoint[40] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[];
+
+u32 dStageYamabukiFile2_Layer0Anim_AnimJoint[7] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageYamabukiFile2_Layer0Anim_AnimJoint + 0x1C),
+	(u32)dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[] = {
 	aobjEvent32SetValRateBlock(0x007, 0),
 	    0x00000000,
 	    0xBABEA2F1,
@@ -624,9 +632,9 @@ u32 dStageYamabukiFile2_Layer0Anim_AnimJoint[40] = {
 	    0x1C000000,
 	(u32)((u8*)dStageYamabukiFile2_Layer0Anim_AnimJoint + 0x1C),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* MObjSub: Layer1MObj @ 0x5260 */
 MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub = {
@@ -941,16 +949,25 @@ u8 dStageYamabukiFile2_MPGeometryData_0x6E8C[36] = {
 };
 
 /* Raw data from file offset 0x6EB0 to 0x7000 (336 bytes) */
-u32 dStageYamabukiFile2_Layer1Anim_AnimJoint[84] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[];
+extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[];
+
+u32 dStageYamabukiFile2_Layer1Anim_AnimJoint[9] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageYamabukiFile2_Layer1Anim_AnimJoint + 0x24),
+	(u32)dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4,
 	aobjEvent32End(),
-	(u32)((u8*)dStageYamabukiFile2_Layer1Anim_AnimJoint + 0xDC),
+	(u32)dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C,
 	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[] = {
 	aobjEvent32SetValRate(0x020, 0),
 	    0x44520000,
 	    0xC08C0925,
@@ -997,6 +1014,9 @@ u32 dStageYamabukiFile2_Layer1Anim_AnimJoint[84] = {
 	    0xC0759225,
 	    0x1C000000,
 	(u32)((u8*)dStageYamabukiFile2_Layer1Anim_AnimJoint + 0x24),
+};
+
+u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0xC4610000,
 	aobjEvent32SetValAfterBlock(0x050, 0),

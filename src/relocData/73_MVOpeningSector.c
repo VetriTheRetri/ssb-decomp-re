@@ -1980,17 +1980,30 @@ DObjDesc dMVOpeningSector_GreatFoxDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0xDA10 to 0xE110 (1792 bytes) */
-u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDA38[];
+extern u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDB4C[];
+extern u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDC60[];
+extern u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDDA4[];
+extern u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDEE8[];
+extern u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDFFC[];
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[10] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint + 0x28),
-	(u32)((u8*)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint + 0x13C),
-	(u32)((u8*)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint + 0x250),
+	(u32)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDA38,
+	(u32)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDB4C,
+	(u32)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDC60,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint + 0x394),
+	(u32)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDDA4,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint + 0x4D8),
-	(u32)((u8*)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint + 0x5EC),
+	(u32)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDEE8,
+	(u32)dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDFFC,
+};
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDA38[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -2060,6 +2073,9 @@ u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 	    0x3727C5AC,
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDB4C[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -2129,6 +2145,9 @@ u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 	    0x3727C5AC,
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDC60[] = {
 	aobjEvent32SetValBlock(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -2210,6 +2229,9 @@ u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDDA4[] = {
 	aobjEvent32SetValBlock(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -2291,6 +2313,9 @@ u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDEE8[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -2360,6 +2385,9 @@ u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 	    0x3727C5AC,
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint_0xDFFC[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -2432,19 +2460,33 @@ u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 };
 
 /* Raw data from file offset 0xE110 to 0xE910 (2048 bytes) */
-u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE140[];
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE24C[];
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE284[];
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE2BC[];
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE300[];
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE344[];
+extern u32 dMVOpeningSector_Arwing0_AnimJoint_0xE680[];
+
+u32 dMVOpeningSector_Arwing0_AnimJoint[12] = {
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x30),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x13C),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x174),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x1AC),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x1F0),
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE140,
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE24C,
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE284,
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE2BC,
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE300,
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x234),
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE344,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing0_AnimJoint + 0x570),
+	(u32)dMVOpeningSector_Arwing0_AnimJoint_0xE680,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE140[] = {
 	aobjEvent32SetValAfter(0x384, 0),
 	    0x00000000,
 	    0x3F35C28F,
@@ -2512,6 +2554,9 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0xC3AEFD9E,
 	    0x4638E1C5,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE24C[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -2526,6 +2571,9 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE284[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -2540,6 +2588,9 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE2BC[] = {
 	aobjEvent32SetValAfterBlock(0x387, 0),
 	    0x00000000,
 	    0x00000000,
@@ -2557,6 +2608,9 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE300[] = {
 	aobjEvent32SetValAfterBlock(0x387, 0),
 	    0x00000000,
 	    0x00000000,
@@ -2574,6 +2628,9 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE344[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FA44822,
 	    0x3FA44822,
@@ -2781,6 +2838,9 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0x3FA44822,
 	    0x3FA44822,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing0_AnimJoint_0xE680[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FA44822,
 	    0x3FA44822,
@@ -2944,23 +3004,38 @@ u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	    0x3FA44822,
 	    0x3FA44822,
 	aobjEvent32End(),
+};
+
+PAD(4);
+
+/* Raw data from file offset 0xE910 to 0xF1C0 (2224 bytes) */
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xE940[];
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xEB30[];
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xEB68[];
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xEBA0[];
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xEBD8[];
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xEC10[];
+extern u32 dMVOpeningSector_Arwing1_AnimJoint_0xEF4C[];
+
+u32 dMVOpeningSector_Arwing1_AnimJoint[12] = {
+	aobjEvent32End(),
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xE940,
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xEB30,
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xEB68,
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xEBA0,
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xEBD8,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xEC10,
+	aobjEvent32End(),
+	(u32)dMVOpeningSector_Arwing1_AnimJoint_0xEF4C,
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0xE910 to 0xF1C0 (2224 bytes) */
-u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
-	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x30),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x220),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x258),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x290),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x2C8),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x300),
-	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing1_AnimJoint + 0x63C),
-	aobjEvent32End(),
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xE940[] = {
 	aobjEvent32SetValRate(0x070, 0),
 	    0x44FEA0A8,
 	    0x40394DD3,
@@ -3085,6 +3160,9 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	    0x404C6C05,
 	    0x404C6C05,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xEB30[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3099,6 +3177,9 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xEB68[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3113,6 +3194,9 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xEBA0[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3127,6 +3211,9 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xEBD8[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3141,6 +3228,9 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xEC10[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3F9CDC34,
 	    0x3F9CDC34,
@@ -3348,6 +3438,9 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	    0x3F9CDC34,
 	    0x3F9CDC34,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing1_AnimJoint_0xEF4C[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3F9CDC34,
 	    0x3F9CDC34,
@@ -3508,19 +3601,33 @@ u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 };
 
 /* Raw data from file offset 0xF1C0 to 0xF9A0 (2016 bytes) */
-u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF1F0[];
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF39C[];
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF3D4[];
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF40C[];
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF444[];
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF47C[];
+extern u32 dMVOpeningSector_Arwing2_AnimJoint_0xF7B0[];
+
+u32 dMVOpeningSector_Arwing2_AnimJoint[12] = {
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x30),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x1DC),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x214),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x24C),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x284),
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF1F0,
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF39C,
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF3D4,
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF40C,
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF444,
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x2BC),
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF47C,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningSector_Arwing2_AnimJoint + 0x5F0),
+	(u32)dMVOpeningSector_Arwing2_AnimJoint_0xF7B0,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF1F0[] = {
 	aobjEvent32SetVal0RateBlock(0x3C7, 0),
 	    0x00000000,
 	    0x00000000,
@@ -3628,6 +3735,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0xC45ADF3C,
 	    0x466501F8,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF39C[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3642,6 +3752,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF3D4[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3656,6 +3769,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF40C[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3670,6 +3786,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF444[] = {
 	aobjEvent32SetValAfterBlock(0x380, 0),
 	    0x3727C5AC,
 	    0x3727C5AC,
@@ -3684,6 +3803,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0x3727C5AC,
 	aobjEvent32Wait(155),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF47C[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FA12F40,
 	    0x3FA12F40,
@@ -3889,6 +4011,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0x3FA12F40,
 	    0x3FA12F40,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningSector_Arwing2_AnimJoint_0xF7B0[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FA12F40,
 	    0x3FA12F40,
@@ -4012,8 +4137,9 @@ u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	    0x3FA12F40,
 	    0x3FA12F40,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0xF9A0 to 0xFA90 (240 bytes) */
 u32 dMVOpeningSector_Cam_AnimJoint[60] = {

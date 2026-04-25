@@ -113,16 +113,31 @@ DObjDesc dLBTransitionCurtain_DObjDesc_0x7AE0[] = {
 };
 
 /* Raw data from file offset 0x7C98 to 0x7E70 (472 bytes) */
-u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionCurtain_AnimJoint_0x7CBC[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7CE4[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7D1C[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7D54[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7D8C[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7DC4[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7DFC[];
+extern u32 dLBTransitionCurtain_AnimJoint_0x7E34[];
+
+u32 dLBTransitionCurtain_AnimJoint_0x7C98[9] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0x24),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0x4C),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0x84),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0xBC),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0xF4),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0x12C),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0x164),
-	(u32)((u8*)dLBTransitionCurtain_AnimJoint_0x7C98 + 0x19C),
+	(u32)dLBTransitionCurtain_AnimJoint_0x7CBC,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7CE4,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7D1C,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7D54,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7D8C,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7DC4,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7DFC,
+	(u32)dLBTransitionCurtain_AnimJoint_0x7E34,
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7CBC[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x300, 0),
@@ -133,6 +148,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 56),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7CE4[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -147,6 +165,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 48),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7D1C[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -161,6 +182,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 40),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7D54[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -175,6 +199,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 32),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7D8C[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -189,6 +216,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 24),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7DC4[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -203,6 +233,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 16),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7DFC[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -217,6 +250,9 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 8),
 	    0x3727C5AC,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCurtain_AnimJoint_0x7E34[] = {
 	aobjEvent32SetVal(0x080, 0),
 	    0x3F800000,
 	aobjEvent32SetValAfter(0x360, 0),
@@ -229,8 +265,7 @@ u32 dLBTransitionCurtain_AnimJoint_0x7C98[118] = {
 	aobjEvent32SetValBlock(0x080, 16),
 	    0x3727C5AC,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(12);
 

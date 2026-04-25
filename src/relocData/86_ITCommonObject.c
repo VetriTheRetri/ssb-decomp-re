@@ -1914,10 +1914,19 @@ DObjDesc dITCommonObject_KamexHydro_Weapon_data_DObjDesc[4] = {
 PAD(8);
 
 /* @ 0x0FA90, 224 bytes */
-u32 dITCommonObject_KamexHydro_Weapon_animjoints[56] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[];
+extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
+
+u32 dITCommonObject_KamexHydro_Weapon_animjoints[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_animjoints + 0xC),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_animjoints + 0xBC),
+	(u32)dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C,
+	(u32)dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C,
+};
+
+u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[] = {
 	aobjEvent32SetValAfter(0x2E0, 0),
 	    0x00000000,
 	    0x00000000,
@@ -1962,6 +1971,9 @@ u32 dITCommonObject_KamexHydro_Weapon_animjoints[56] = {
 	    0x00000000,
 	    0x1C000000,
 	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_animjoints + 0xC),
+};
+
+u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[] = {
 	aobjEvent32SetVal(0x010, 0),
 	    0xC3160000,
 	aobjEvent32SetValAfter(0x060, 0),
@@ -3172,9 +3184,17 @@ DObjDesc dITCommonObject_DogasSmog_Weapon_data_DObjDesc[3] = {
 PAD(12);
 
 /* @ 0x13190, 80 bytes */
-u32 dITCommonObject_DogasSmog_Weapon_animjoints[20] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
+
+u32 dITCommonObject_DogasSmog_Weapon_animjoints[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_DogasSmog_Weapon_animjoints + 0x8),
+	(u32)dITCommonObject_DogasSmog_Weapon_animjoints_0x13198,
+};
+
+u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[] = {
 	aobjEvent32SetVal0Rate(0x180, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -3192,8 +3212,9 @@ u32 dITCommonObject_DogasSmog_Weapon_animjoints[20] = {
 	    0x40B00000,
 	    0x40B00000,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* @ 0x131E0, 952 bytes */
 u32 dITCommonObject_DogasSmog_Weapon_matanimjoints[238] = {

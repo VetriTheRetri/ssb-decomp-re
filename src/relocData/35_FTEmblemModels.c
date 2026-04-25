@@ -126,9 +126,20 @@ DObjDesc dFTEmblemModels_Mario[] = {
 };
 
 /* Raw data from file offset 0x0A14 to 0x0B00 (236 bytes) */
-u32 dFTEmblemModels_Mario_MatAnimJoint[59] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xA1C[];
+extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xA64[];
+extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xAAC[];
+extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xAF4[];
+
+u32 dFTEmblemModels_Mario_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0xE0),
+	(u32)dFTEmblemModels_Mario_MatAnimJoint_0xAF4,
+};
+
+u32 dFTEmblemModels_Mario_MatAnimJoint_0xA1C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -147,6 +158,9 @@ u32 dFTEmblemModels_Mario_MatAnimJoint[59] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Mario_MatAnimJoint_0xA64[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -165,6 +179,9 @@ u32 dFTEmblemModels_Mario_MatAnimJoint[59] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0x50),
+};
+
+u32 dFTEmblemModels_Mario_MatAnimJoint_0xAAC[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -183,6 +200,9 @@ u32 dFTEmblemModels_Mario_MatAnimJoint[59] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0x98),
+};
+
+u32 dFTEmblemModels_Mario_MatAnimJoint_0xAF4[] = {
 	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0x8),
 	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0x50),
 	(u32)((u8*)dFTEmblemModels_Mario_MatAnimJoint + 0x98),
@@ -274,9 +294,19 @@ DObjDesc dFTEmblemModels_Donkey[] = {
 };
 
 /* Raw data from file offset 0x13CC to 0x1470 (164 bytes) */
-u32 dFTEmblemModels_Donkey_MatAnimJoint[41] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[];
+extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[];
+extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[];
+
+u32 dFTEmblemModels_Donkey_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32Wait(1305),
+	(u32)dFTEmblemModels_Donkey_MatAnimJoint_0x1464,
+};
+
+u32 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -295,6 +325,9 @@ u32 dFTEmblemModels_Donkey_MatAnimJoint[41] = {
 	aobjEvent32Wait(2),
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32Wait(1269),
+};
+
+u32 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -313,6 +346,9 @@ u32 dFTEmblemModels_Donkey_MatAnimJoint[41] = {
 	aobjEvent32Wait(2),
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32Wait(1287),
+};
+
+u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[] = {
 	aobjEvent32Wait(1269),
 	aobjEvent32Wait(1287),
 	aobjEvent32End(),
@@ -369,9 +405,18 @@ DObjDesc dFTEmblemModels_Metroid[] = {
 };
 
 /* Raw data from file offset 0x18E4 to 0x1940 (92 bytes) */
-u32 dFTEmblemModels_Metroid_MatAnimJoint[23] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Metroid_MatAnimJoint_0x18EC[];
+extern u32 dFTEmblemModels_Metroid_MatAnimJoint_0x1934[];
+
+u32 dFTEmblemModels_Metroid_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Metroid_MatAnimJoint + 0x50),
+	(u32)dFTEmblemModels_Metroid_MatAnimJoint_0x1934,
+};
+
+u32 dFTEmblemModels_Metroid_MatAnimJoint_0x18EC[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -390,10 +435,14 @@ u32 dFTEmblemModels_Metroid_MatAnimJoint[23] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Metroid_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Metroid_MatAnimJoint_0x1934[] = {
 	(u32)((u8*)dFTEmblemModels_Metroid_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* MObjSub: Fox @ 0x1940 */
 MObjSub dFTEmblemModels_Fox_MObjSub = {
@@ -446,9 +495,18 @@ DObjDesc dFTEmblemModels_Fox[] = {
 };
 
 /* Raw data from file offset 0x2254 to 0x22B0 (92 bytes) */
-u32 dFTEmblemModels_Fox_MatAnimJoint[23] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Fox_MatAnimJoint_0x225C[];
+extern u32 dFTEmblemModels_Fox_MatAnimJoint_0x22A4[];
+
+u32 dFTEmblemModels_Fox_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Fox_MatAnimJoint + 0x50),
+	(u32)dFTEmblemModels_Fox_MatAnimJoint_0x22A4,
+};
+
+u32 dFTEmblemModels_Fox_MatAnimJoint_0x225C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -467,10 +525,14 @@ u32 dFTEmblemModels_Fox_MatAnimJoint[23] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Fox_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Fox_MatAnimJoint_0x22A4[] = {
 	(u32)((u8*)dFTEmblemModels_Fox_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 extern u32 dFTEmblemModels_Zelda_MObjSubPtrArray[];
 
@@ -583,9 +645,20 @@ DObjDesc dFTEmblemModels_Zelda[] = {
 };
 
 /* Raw data from file offset 0x25A4 to 0x2690 (236 bytes) */
-u32 dFTEmblemModels_Zelda_MatAnimJoint[59] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25AC[];
+extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25F4[];
+extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x263C[];
+extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x2684[];
+
+u32 dFTEmblemModels_Zelda_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0xE0),
+	(u32)dFTEmblemModels_Zelda_MatAnimJoint_0x2684,
+};
+
+u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25AC[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -604,6 +677,9 @@ u32 dFTEmblemModels_Zelda_MatAnimJoint[59] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25F4[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -622,6 +698,9 @@ u32 dFTEmblemModels_Zelda_MatAnimJoint[59] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0x50),
+};
+
+u32 dFTEmblemModels_Zelda_MatAnimJoint_0x263C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -640,6 +719,9 @@ u32 dFTEmblemModels_Zelda_MatAnimJoint[59] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0x98),
+};
+
+u32 dFTEmblemModels_Zelda_MatAnimJoint_0x2684[] = {
 	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0x8),
 	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0x50),
 	(u32)((u8*)dFTEmblemModels_Zelda_MatAnimJoint + 0x98),
@@ -696,9 +778,18 @@ DObjDesc dFTEmblemModels_Yoshi[] = {
 };
 
 /* Raw data from file offset 0x2F94 to 0x2FF0 (92 bytes) */
-u32 dFTEmblemModels_Yoshi_MatAnimJoint[23] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C[];
+extern u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4[];
+
+u32 dFTEmblemModels_Yoshi_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Yoshi_MatAnimJoint + 0x50),
+	(u32)dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4,
+};
+
+u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -717,10 +808,14 @@ u32 dFTEmblemModels_Yoshi_MatAnimJoint[23] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Yoshi_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4[] = {
 	(u32)((u8*)dFTEmblemModels_Yoshi_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* MObjSub: FZero @ 0x2FF0 */
 MObjSub dFTEmblemModels_FZero_MObjSub = {
@@ -773,9 +868,18 @@ DObjDesc dFTEmblemModels_FZero[] = {
 };
 
 /* Raw data from file offset 0x38AC to 0x3900 (84 bytes) */
-u32 dFTEmblemModels_FZero_MatAnimJoint[21] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_FZero_MatAnimJoint_0x38B4[];
+extern u32 dFTEmblemModels_FZero_MatAnimJoint_0x38FC[];
+
+u32 dFTEmblemModels_FZero_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_FZero_MatAnimJoint + 0x50),
+	(u32)dFTEmblemModels_FZero_MatAnimJoint_0x38FC,
+};
+
+u32 dFTEmblemModels_FZero_MatAnimJoint_0x38B4[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -794,6 +898,9 @@ u32 dFTEmblemModels_FZero_MatAnimJoint[21] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_FZero_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_FZero_MatAnimJoint_0x38FC[] = {
 	(u32)((u8*)dFTEmblemModels_FZero_MatAnimJoint + 0x8),
 };
 
@@ -848,9 +955,18 @@ DObjDesc dFTEmblemModels_Kirby[] = {
 };
 
 /* Raw data from file offset 0x3EEC to 0x3F40 (84 bytes) */
-u32 dFTEmblemModels_Kirby_MatAnimJoint[21] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4[];
+extern u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C[];
+
+u32 dFTEmblemModels_Kirby_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Kirby_MatAnimJoint + 0x50),
+	(u32)dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C,
+};
+
+u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -869,6 +985,9 @@ u32 dFTEmblemModels_Kirby_MatAnimJoint[21] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Kirby_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C[] = {
 	(u32)((u8*)dFTEmblemModels_Kirby_MatAnimJoint + 0x8),
 };
 
@@ -958,9 +1077,19 @@ DObjDesc dFTEmblemModels_PMonsters[] = {
 };
 
 /* Raw data from file offset 0x4794 to 0x4840 (172 bytes) */
-u32 dFTEmblemModels_PMonsters_MatAnimJoint[43] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x479C[];
+extern u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4[];
+extern u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x482C[];
+
+u32 dFTEmblemModels_PMonsters_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_PMonsters_MatAnimJoint + 0x98),
+	(u32)dFTEmblemModels_PMonsters_MatAnimJoint_0x482C,
+};
+
+u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x479C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -979,6 +1108,9 @@ u32 dFTEmblemModels_PMonsters_MatAnimJoint[43] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_PMonsters_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -997,12 +1129,15 @@ u32 dFTEmblemModels_PMonsters_MatAnimJoint[43] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_PMonsters_MatAnimJoint + 0x50),
+};
+
+u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x482C[] = {
 	(u32)((u8*)dFTEmblemModels_PMonsters_MatAnimJoint + 0x8),
 	(u32)((u8*)dFTEmblemModels_PMonsters_MatAnimJoint + 0x50),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* MObjSub: Mother @ 0x4840 */
 MObjSub dFTEmblemModels_Mother_MObjSub = {
@@ -1055,9 +1190,18 @@ DObjDesc dFTEmblemModels_Mother[] = {
 };
 
 /* Raw data from file offset 0x5A84 to 0x5AE0 (92 bytes) */
-u32 dFTEmblemModels_Mother_MatAnimJoint[23] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dFTEmblemModels_Mother_MatAnimJoint_0x5A8C[];
+extern u32 dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[];
+
+u32 dFTEmblemModels_Mother_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dFTEmblemModels_Mother_MatAnimJoint + 0x50),
+	(u32)dFTEmblemModels_Mother_MatAnimJoint_0x5AD4,
+};
+
+u32 dFTEmblemModels_Mother_MatAnimJoint_0x5A8C[] = {
 	aobjEvent32SetExtValAfterBlock(0x018, 0),
 	    0xB3191900,
 	    0x26262600,
@@ -1076,7 +1220,11 @@ u32 dFTEmblemModels_Mother_MatAnimJoint[23] = {
 	aobjEvent32Wait(2),
 	    0x1C000000,
 	(u32)((u8*)dFTEmblemModels_Mother_MatAnimJoint + 0x8),
+};
+
+u32 dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[] = {
 	(u32)((u8*)dFTEmblemModels_Mother_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);

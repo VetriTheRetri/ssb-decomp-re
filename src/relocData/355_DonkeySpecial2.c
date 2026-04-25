@@ -58,9 +58,17 @@ DObjDesc dDonkeySpecial2_EntryTaruDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0850 to 0x0930 (224 bytes) */
-u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[56] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint_0x858[];
+
+u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint + 0x8),
+	(u32)dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint_0x858,
+};
+
+u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint_0x858[] = {
 	aobjEvent32SetValAfter(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValRate(0x005, 0),
@@ -112,7 +120,6 @@ u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[56] = {
 	    0x00000000,
 	    0x00000000,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(12);

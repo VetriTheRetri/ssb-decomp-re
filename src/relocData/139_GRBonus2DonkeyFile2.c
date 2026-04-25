@@ -372,21 +372,31 @@ u8 dGRBonus2DonkeyFile2_MPGeometryData_0x34B0[32] = {
 };
 
 /* Raw data from file offset 0x34D0 to 0x35C0 (240 bytes) */
-u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[60] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3508[];
+extern u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3544[];
+extern u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3580[];
+
+u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[14] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x38),
+	(u32)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3508,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x74),
-	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0xB0),
+	(u32)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3544,
+	(u32)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3580,
+};
+
+u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3508[] = {
 	aobjEvent32SetVal(0x020, 0),
 	    0xC5D7A000,
 	aobjEvent32SetValAfter(0x050, 0),
@@ -402,6 +412,9 @@ u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[60] = {
 	    0xC5D7A000,
 	    0x1C000000,
 	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x38),
+};
+
+u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3544[] = {
 	aobjEvent32SetVal(0x020, 0),
 	    0x44E10000,
 	aobjEvent32SetValAfter(0x050, 0),
@@ -417,6 +430,9 @@ u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[60] = {
 	    0x44E10000,
 	    0x1C000000,
 	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0x74),
+};
+
+u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3580[] = {
 	aobjEvent32SetVal(0x010, 0),
 	    0x45AD7000,
 	aobjEvent32SetValAfter(0x060, 0),
@@ -431,7 +447,7 @@ u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[60] = {
 	    0x1C000000,
 	(u32)((u8*)dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint + 0xB0),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 

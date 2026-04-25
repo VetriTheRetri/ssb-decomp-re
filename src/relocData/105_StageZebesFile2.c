@@ -1024,35 +1024,46 @@ u8 dStageZebesFile2_MPGeometryData_0x6160[32] = {
 };
 
 /* Raw data from file offset 0x6180 to 0x6410 (656 bytes) */
-u32 dStageZebesFile2_Layer1Anim_AnimJoint[164] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6224[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[];
+
+u32 dStageZebesFile2_Layer1Anim_AnimJoint[28] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x70),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0xA4),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x14C),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dStageZebesFile2_Layer1Anim_AnimJoint_0x6224,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x1F4),
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dStageZebesFile2_Layer1Anim_AnimJoint_0x6374,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+};
+
+u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0[] = {
 	aobjEvent32SetVal0RateBlock(0x020, 0),
 	    0x43B5A496,
 	aobjEvent32SetValRateBlock(0x020, 159),
@@ -1066,6 +1077,9 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint[164] = {
 	    0x43B5A496,
 	    0x1C000000,
 	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x70),
+};
+
+u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6224[] = {
 	aobjEvent32SetValRateBlock(0x100, 0),
 	    0x3F884BB2,
 	    0xBC088889,
@@ -1108,6 +1122,9 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint[164] = {
 	    0xBC088889,
 	    0x1C000000,
 	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0xA4),
+};
+
+u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC[] = {
 	aobjEvent32SetValRateBlock(0x100, 0),
 	    0x3F8CD1B7,
 	    0xBC088889,
@@ -1150,6 +1167,9 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint[164] = {
 	    0xBC088889,
 	    0x1C000000,
 	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x14C),
+};
+
+u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[] = {
 	aobjEvent32SetVal0RateBlock(0x100, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x100, 30),
@@ -1187,9 +1207,9 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint[164] = {
 	    0x1C000000,
 	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x1F4),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x6410 to 0xDF60 (31568 bytes) */
 u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint[7892] = {

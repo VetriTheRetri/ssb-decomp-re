@@ -3177,17 +3177,30 @@ DObjDesc dMVOpeningYamabuki_MBallDObjDesc[5] = {
 PAD(4);
 
 /* `llMVOpeningYamabukiMBallAnimJoint` (2,160 B). */
-u32 dMVOpeningYamabuki_MBallAnimJoint[540] = {
-	(u32)((u8*)dMVOpeningYamabuki_MBallAnimJoint + 0x10),
-	(u32)((u8*)dMVOpeningYamabuki_MBallAnimJoint + 0x28),
-	(u32)((u8*)dMVOpeningYamabuki_MBallAnimJoint + 0xD4),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningYamabuki_MBallAnimJoint_0xCAD0[];
+extern u32 dMVOpeningYamabuki_MBallAnimJoint_0xCAE8[];
+extern u32 dMVOpeningYamabuki_MBallAnimJoint_0xCB94[];
+
+u32 dMVOpeningYamabuki_MBallAnimJoint[4] = {
+	(u32)dMVOpeningYamabuki_MBallAnimJoint_0xCAD0,
+	(u32)dMVOpeningYamabuki_MBallAnimJoint_0xCAE8,
+	(u32)dMVOpeningYamabuki_MBallAnimJoint_0xCB94,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYamabuki_MBallAnimJoint_0xCAD0[] = {
 	aobjEvent32SetValAfter(0x007, 0),
 	    0x00000000,
 	    0xBE8A3D71,
 	    0x00000000,
 	aobjEvent32Wait(160),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYamabuki_MBallAnimJoint_0xCAE8[] = {
 	aobjEvent32SetValRate(0x010, 0),
 	    0x00000000,
 	    0x40AC1B54,
@@ -3231,6 +3244,9 @@ u32 dMVOpeningYamabuki_MBallAnimJoint[540] = {
 	aobjEvent32SetVal0RateBlock(0x010, 6),
 	    0xC293B89E,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYamabuki_MBallAnimJoint_0xCB94[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -3716,9 +3732,9 @@ u32 dMVOpeningYamabuki_MBallAnimJoint[540] = {
 	aobjEvent32SetVal0RateBlock(0x004, 1),
 	    0x3EFC3D1A,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* ──────────────── Cam + wallpaper sprite resource pool ─────────────────── */
 

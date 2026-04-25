@@ -83,8 +83,17 @@ Gfx dCaptainSpecial3_DL_0x0760[26] = {
 };
 
 /* Raw data from file offset 0x0830 to 0x0870 (64 bytes) */
-u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[16] = {
-	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x3C),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[];
+extern u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[];
+
+u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[1] = {
+	(u32)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C,
+};
+
+u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
 	    0x00000000,
 	    0x00000000,
@@ -99,5 +108,8 @@ u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[16] = {
 	    0x00000000,
 	    0x1C000000,
 	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
+};
+
+u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[] = {
 	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
 };

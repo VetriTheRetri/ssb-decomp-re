@@ -90,9 +90,17 @@ DObjDesc dNessSpecial2_PsychicMagnetDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0A30 to 0x0AD0 (160 bytes) */
-u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint[40] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38[];
+
+u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint + 0x8),
+	(u32)dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38,
+};
+
+u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38[] = {
 	aobjEvent32SetValAfter(0x380, 0),
 	    0x40000000,
 	    0x40000000,

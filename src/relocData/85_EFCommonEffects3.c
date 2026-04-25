@@ -131,11 +131,20 @@ DObjDesc dEFCommonEffects3_MBallRays[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0710 to 0x0860 (336 bytes) */
-u32 dEFCommonEffects3_MBallRays_AnimJoint[84] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects3_MBallRays_AnimJoint_0x720[];
+extern u32 dEFCommonEffects3_MBallRays_AnimJoint_0x7C8[];
+
+u32 dEFCommonEffects3_MBallRays_AnimJoint[4] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dEFCommonEffects3_MBallRays_AnimJoint + 0x10),
-	(u32)((u8*)dEFCommonEffects3_MBallRays_AnimJoint + 0xB8),
+	(u32)dEFCommonEffects3_MBallRays_AnimJoint_0x720,
+	(u32)dEFCommonEffects3_MBallRays_AnimJoint_0x7C8,
+};
+
+u32 dEFCommonEffects3_MBallRays_AnimJoint_0x720[] = {
 	aobjEvent32SetValBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x074, 0),
@@ -178,6 +187,9 @@ u32 dEFCommonEffects3_MBallRays_AnimJoint[84] = {
 	    0x403C2DDF,
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_MBallRays_AnimJoint_0x7C8[] = {
 	aobjEvent32SetValBlock(0x002, 0),
 	    0xC1240819,
 	aobjEvent32SetValAfterBlock(0x075, 0),
@@ -215,8 +227,9 @@ u32 dEFCommonEffects3_MBallRays_AnimJoint[84] = {
 	    0x403C2DDF,
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x0860 to 0x2AC0 (8800 bytes) */
 u32 dEFCommonEffects3_MBallRays_MatAnimJoint[2200] = {
@@ -2630,13 +2643,25 @@ DObjDesc dEFCommonEffects3_ItemGetSwirl[] = {
 PAD(12);
 
 /* Raw data from file offset 0x32B0 to 0x3490 (480 bytes) */
-u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x32C8[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x330C[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x336C[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x33CC[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x342C[];
+
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[6] = {
 	aobjEvent32End(),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_AnimJoint + 0x18),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_AnimJoint + 0x5C),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_AnimJoint + 0xBC),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_AnimJoint + 0x11C),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_AnimJoint + 0x17C),
+	(u32)dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x32C8,
+	(u32)dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x330C,
+	(u32)dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x336C,
+	(u32)dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x33CC,
+	(u32)dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x342C,
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x32C8[] = {
 	aobjEvent32SetValAfter(0x3F6, 0),
 	    0x3FC90FDB,
 	    0x00000000,
@@ -2654,6 +2679,9 @@ u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
 	    0xBF860A92,
 	    0xBE51BD8D,
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x330C[] = {
 	aobjEvent32SetValAfterBlock(0x006, 0),
 	    0x00000000,
 	    0x00000000,
@@ -2678,6 +2706,9 @@ u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
 	    0x3F0BB247,
 	    0x3F0D80E1,
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x336C[] = {
 	aobjEvent32SetValAfterBlock(0x006, 0),
 	    0x00000000,
 	    0x00000000,
@@ -2702,6 +2733,9 @@ u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
 	    0x3F0BB247,
 	    0x3F0D80E1,
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x33CC[] = {
 	aobjEvent32SetValAfterBlock(0x006, 0),
 	    0x00000000,
 	    0x00000000,
@@ -2726,6 +2760,9 @@ u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
 	    0x3F0BB247,
 	    0x3F0D80E1,
 	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x342C[] = {
 	aobjEvent32SetValAfterBlock(0x006, 0),
 	    0x00000000,
 	    0x00000000,
@@ -2750,50 +2787,88 @@ u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
 	    0x3F0BB247,
 	    0x3F0D80E1,
 	aobjEvent32End(),
+};
+
+PAD(4);
+
+/* Raw data from file offset 0x3490 to 0x3530 (160 bytes) */
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[6] = {
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518,
+	(u32)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C,
+	(u32)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520,
+	(u32)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524,
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0x4CFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0x1CFFB0FF,
+	aobjEvent32SetExtValBlock(0x001, 3),
+	    0x00FF808D,
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x3490 to 0x3530 (160 bytes) */
-u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[40] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x88),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x8C),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x90),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x94),
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0x4CFFFFFF,
 	aobjEvent32SetExtValBlock(0x001, 5),
 	    0x1CFFB0FF,
 	aobjEvent32SetExtValBlock(0x001, 3),
 	    0x00FF808D,
-	aobjEvent32End(),
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0x4CFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 5),
-	    0x1CFFB0FF,
-	aobjEvent32SetExtValBlock(0x001, 3),
-	    0x00FF808D,
-	aobjEvent32End(),
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0x4CFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 5),
-	    0x1CFFB0FF,
-	aobjEvent32SetExtValBlock(0x001, 3),
-	    0x00FF808D,
-	aobjEvent32End(),
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0x4CFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 5),
-	    0x1CFFB0FF,
-	aobjEvent32SetExtValBlock(0x001, 3),
-	    0x00FF808D,
-	aobjEvent32End(),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x18),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x34),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x50),
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x6C),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0[] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0x4CFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0x1CFFB0FF,
+	aobjEvent32SetExtValBlock(0x001, 3),
+	    0x00FF808D,
+	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0x4CFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0x1CFFB0FF,
+	aobjEvent32SetExtValBlock(0x001, 3),
+	    0x00FF808D,
+	aobjEvent32End(),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[] = {
+	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x18),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = {
+	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x34),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = {
+	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x50),
+};
+
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
+	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x6C),
+	aobjEvent32End(),
+};
+
+PAD(4);
 

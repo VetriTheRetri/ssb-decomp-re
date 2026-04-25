@@ -98,16 +98,31 @@ DObjDesc dLBTransitionSudare1_DObjDesc_0x74A8[] = {
 };
 
 /* Raw data from file offset 0x7660 to 0x7830 (464 bytes) */
-u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionSudare1_AnimJoint_0x7684[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x76BC[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x76DC[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x7714[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x774C[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x7784[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x77BC[];
+extern u32 dLBTransitionSudare1_AnimJoint_0x77F4[];
+
+u32 dLBTransitionSudare1_AnimJoint_0x7660[9] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0x24),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0x5C),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0x7C),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0xB4),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0xEC),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0x124),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0x15C),
-	(u32)((u8*)dLBTransitionSudare1_AnimJoint_0x7660 + 0x194),
+	(u32)dLBTransitionSudare1_AnimJoint_0x7684,
+	(u32)dLBTransitionSudare1_AnimJoint_0x76BC,
+	(u32)dLBTransitionSudare1_AnimJoint_0x76DC,
+	(u32)dLBTransitionSudare1_AnimJoint_0x7714,
+	(u32)dLBTransitionSudare1_AnimJoint_0x774C,
+	(u32)dLBTransitionSudare1_AnimJoint_0x7784,
+	(u32)dLBTransitionSudare1_AnimJoint_0x77BC,
+	(u32)dLBTransitionSudare1_AnimJoint_0x77F4,
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x7684[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -122,6 +137,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 36),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x76BC[] = {
 	aobjEvent32SetVal0RateBlock(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValRateBlock(0x020, 16),
@@ -130,6 +148,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 48),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x76DC[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -144,6 +165,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 42),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x7714[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -158,6 +182,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 30),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x774C[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -172,6 +199,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 24),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x7784[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -186,6 +216,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 18),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x77BC[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -200,6 +233,9 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 12),
 	    0xC5228000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare1_AnimJoint_0x77F4[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -214,6 +250,7 @@ u32 dLBTransitionSudare1_AnimJoint_0x7660[116] = {
 	aobjEvent32SetValBlock(0x020, 6),
 	    0xC5228000,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 

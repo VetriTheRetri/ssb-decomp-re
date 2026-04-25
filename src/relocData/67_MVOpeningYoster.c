@@ -1025,40 +1025,71 @@ u8 dMVOpeningYoster_gap_0xBA98[1240] = {
 };
 
 /* Raw data from file offset 0xBF70 to 0xC940 (2512 bytes) */
-u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xBFF4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC070[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC0EC[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC124[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC174[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC1C4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC214[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC264[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC2B4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC304[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC354[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC3A4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC3F4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC444[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC4D0[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC4F4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC520[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC5B4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC644[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC6D4[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC740[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC7AC[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC83C[];
+extern u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC8CC[];
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[33] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x84),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x100),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x17C),
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xBFF4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC070,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC0EC,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x1B4),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x204),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x254),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x2A4),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x2F4),
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC124,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC174,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC1C4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC214,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC264,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x344),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x394),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x3E4),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x434),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x484),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x4D4),
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC2B4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC304,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC354,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC3A4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC3F4,
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x560),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x584),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x5B0),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x644),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x6D4),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x764),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x7D0),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x83C),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x8CC),
-	(u32)((u8*)dMVOpeningYoster_GroundAnimJoint_AnimJoint + 0x95C),
+	aobjEvent32End(),
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC444,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC4D0,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC4F4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC520,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC5B4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC644,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC6D4,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC740,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC7AC,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC83C,
+	(u32)dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC8CC,
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xBFF4[] = {
 	aobjEvent32SetValBlock(0x014, 0),
 	    0x00000000,
 	    0x44976CCC,
@@ -1090,6 +1121,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC070[] = {
 	aobjEvent32SetValBlock(0x014, 0),
 	    0x00000000,
 	    0xC4976CCD,
@@ -1121,6 +1155,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F68D10E,
 	    0x3F68D10E,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC0EC[] = {
 	aobjEvent32SetValBlock(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -1135,6 +1172,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F2147AE,
 	aobjEvent32Wait(159),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC124[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1155,6 +1195,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC174[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1175,6 +1218,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC1C4[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1195,6 +1241,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC214[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1215,6 +1264,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC264[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1235,6 +1287,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC2B4[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1255,6 +1310,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC304[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1275,6 +1333,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC354[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1295,6 +1356,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC3A4[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1315,6 +1379,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC3F4[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1335,6 +1402,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC444[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0RateBlock(0x180, 0),
@@ -1370,6 +1440,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC4D0[] = {
 	aobjEvent32SetValAfter(0x3F0, 0),
 	    0xC1CC0836,
 	    0x437DD591,
@@ -1379,6 +1452,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x3F28CAFF,
 	aobjEvent32Wait(159),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC4F4[] = {
 	aobjEvent32SetValRateBlock(0x004, 0),
 	    0x00000000,
 	    0x3C3C0AEB,
@@ -1390,6 +1466,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0xBF060A92,
 	aobjEvent32Wait(96),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC520[] = {
 	aobjEvent32SetValBlock(0x020, 0),
 	    0x4313B24C,
 	aobjEvent32SetVal(0x020, 16),
@@ -1427,6 +1506,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0xC21613A1,
 	    0x4313B248,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC5B4[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0x44095728,
 	    0x43888469,
@@ -1463,6 +1545,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x44095728,
 	    0x43888466,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC644[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0xC3A96190,
 	    0x43BB7E7B,
@@ -1499,6 +1584,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0xC3A9618F,
 	    0x43BB7E7B,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC6D4[] = {
 	aobjEvent32SetValBlock(0x010, 0),
 	    0x4422DF2A,
 	aobjEvent32SetVal(0x010, 16),
@@ -1526,6 +1614,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	aobjEvent32SetValBlock(0x010, 16),
 	    0x4422DF2A,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC740[] = {
 	aobjEvent32SetVal(0x010, 0),
 	    0xC3B56D65,
 	aobjEvent32SetValAfter(0x020, 0),
@@ -1553,6 +1644,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	aobjEvent32SetValBlock(0x010, 16),
 	    0xC3B56D64,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC7AC[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0x44095728,
 	    0x448629CF,
@@ -1589,6 +1683,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0x44095728,
 	    0x448629CF,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC83C[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0xC3B800E7,
 	    0x4486B140,
@@ -1625,6 +1722,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	    0xC3B800E9,
 	    0x4486B141,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC8CC[] = {
 	aobjEvent32SetVal(0x020, 0),
 	    0x44962D9D,
 	aobjEvent32SetValAfter(0x010, 0),
@@ -1652,9 +1752,9 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	aobjEvent32SetValBlock(0x020, 16),
 	    0x44962D9D,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Raw data from file offset 0xC940 to 0xC9A0 (96 bytes) */
 u32 dMVOpeningYoster_Cam_AnimJoint[24] = {

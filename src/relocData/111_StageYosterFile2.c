@@ -287,37 +287,65 @@ DObjDesc dStageYosterFile2_Layer0DObj[] = {
 PAD(12);
 
 /* Raw data from file offset 0x1150 to 0x3780 (9776 bytes) */
-u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1198[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11B0[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11C8[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1238[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x160C[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1A28[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1DFC[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2094[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x233C[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2728[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2AFC[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2DA4[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2E48[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3290[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[];
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint[18] = {
 	aobjEvent32End(),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x48),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x60),
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x1198,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x11B0,
 	aobjEvent32End(),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x78),
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x11C8,
 	aobjEvent32End(),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0xE8),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x4BC),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x8D8),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0xCAC),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0xF44),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x11EC),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x15D8),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x19AC),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x1C54),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x1CF8),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x2140),
-	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x21E4),
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x1238,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x160C,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x1A28,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x1DFC,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x2094,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x233C,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x2728,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x2AFC,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x2DA4,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x2E48,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x3290,
+	(u32)dStageYosterFile2_Layer0Anim_AnimJoint_0x3334,
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1198[] = {
 	aobjEvent32SetValBlock(0x004, 0),
 	    0x40C90FDB,
 	aobjEvent32SetValBlock(0x004, 640),
 	    0x00000000,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x48),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11B0[] = {
 	aobjEvent32SetValBlock(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x004, 640),
 	    0x40C90FDB,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x60),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11C8[] = {
 	aobjEvent32SetValRateBlock(0x004, 0),
 	    0x00000000,
 	    0x3CBC0AEB,
@@ -346,6 +374,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x3CC90D1F,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x78),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1238[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0x42266DBD,
 	    0x4390DB3B,
@@ -591,6 +622,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x4390DB3B,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0xE8),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x160C[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0x44262E96,
 	    0x43DCAF95,
@@ -854,6 +888,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x43DCAF95,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x4BC),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1A28[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0xC3E759E3,
 	    0x43FFF7C5,
@@ -1099,6 +1136,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x43FFF7C5,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x8D8),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1DFC[] = {
 	aobjEvent32SetVal(0x010, 0),
 	    0x44451326,
 	aobjEvent32SetValAfter(0x020, 0),
@@ -1265,6 +1305,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x44451326,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0xCAC),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2094[] = {
 	aobjEvent32SetVal(0x010, 0),
 	    0xC404DD0F,
 	aobjEvent32SetValAfter(0x020, 0),
@@ -1435,6 +1478,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0xC404DD0F,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0xF44),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x233C[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0x44262E96,
 	    0x44B0366E,
@@ -1686,6 +1732,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x44B0366E,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x11EC),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2728[] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0xC3DEA4EF,
 	    0x44B0DA50,
@@ -1931,6 +1980,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x44B0DA51,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x15D8),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2AFC[] = {
 	aobjEvent32SetVal(0x020, 0),
 	    0x44C39732,
 	aobjEvent32SetValAfter(0x010, 0),
@@ -2101,6 +2153,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x44C39732,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x19AC),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2DA4[] = {
 	aobjEvent32SetValRate(0x004, 0),
 	    0x00000000,
 	    0x3CC56B70,
@@ -2142,6 +2197,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x3CC92615,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x1C54),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2E48[] = {
 	aobjEvent32SetValBlock(0x380, 0),
 	    0x3F888BF8,
 	    0x3FA633EE,
@@ -2416,6 +2474,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	aobjEvent32Wait(17),
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x1CF8),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3290[] = {
 	aobjEvent32SetValRate(0x004, 0),
 	    0x00000000,
 	    0x3CC56B70,
@@ -2457,6 +2518,9 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	    0x3CC92615,
 	    0x1C000000,
 	(u32)((u8*)dStageYosterFile2_Layer0Anim_AnimJoint + 0x2140),
+};
+
+u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[] = {
 	aobjEvent32SetValBlock(0x380, 0),
 	    0x3F888BF8,
 	    0x3FA633EE,

@@ -41,13 +41,25 @@ DObjDesc dYoshiSpecial3_EggLay[] = {
 PAD(12);
 
 /* Raw data from file offset 0x09F0 to 0x0B90 (416 bytes) */
-u32 dYoshiSpecial3_EggLayBreak_AnimJoint[104] = {
-	(u32)((u8*)dYoshiSpecial3_EggLayBreak_AnimJoint + 0x8),
-	(u32)((u8*)dYoshiSpecial3_EggLayBreak_AnimJoint + 0x18),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dYoshiSpecial3_EggLayBreak_AnimJoint_0x9F8[];
+extern u32 dYoshiSpecial3_EggLayBreak_AnimJoint_0xA08[];
+
+u32 dYoshiSpecial3_EggLayBreak_AnimJoint[2] = {
+	(u32)dYoshiSpecial3_EggLayBreak_AnimJoint_0x9F8,
+	(u32)dYoshiSpecial3_EggLayBreak_AnimJoint_0xA08,
+};
+
+u32 dYoshiSpecial3_EggLayBreak_AnimJoint_0x9F8[] = {
 	aobjEvent32SetValAfter(0x004, 0),
 	    0x00000000,
 	aobjEvent32Wait(10),
 	aobjEvent32End(),
+};
+
+u32 dYoshiSpecial3_EggLayBreak_AnimJoint_0xA08[] = {
 	aobjEvent32SetVal0RateBlock(0x050, 0),
 	    0x37D1FFFF,
 	    0xB7700000,
@@ -145,17 +157,30 @@ u32 dYoshiSpecial3_EggLayBreak_AnimJoint[104] = {
 	    0x3F12CA5A,
 	    0xBE08E3A9,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(4);
+
 /* Raw data from file offset 0x0B90 to 0x0DB0 (544 bytes) */
-u32 dYoshiSpecial3_EggLayThrow_AnimJoint[136] = {
-	(u32)((u8*)dYoshiSpecial3_EggLayThrow_AnimJoint + 0x8),
-	(u32)((u8*)dYoshiSpecial3_EggLayThrow_AnimJoint + 0x18),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dYoshiSpecial3_EggLayThrow_AnimJoint_0xB98[];
+extern u32 dYoshiSpecial3_EggLayThrow_AnimJoint_0xBA8[];
+
+u32 dYoshiSpecial3_EggLayThrow_AnimJoint[2] = {
+	(u32)dYoshiSpecial3_EggLayThrow_AnimJoint_0xB98,
+	(u32)dYoshiSpecial3_EggLayThrow_AnimJoint_0xBA8,
+};
+
+u32 dYoshiSpecial3_EggLayThrow_AnimJoint_0xB98[] = {
 	aobjEvent32SetValAfter(0x004, 0),
 	    0x00000000,
 	aobjEvent32Wait(16),
 	aobjEvent32End(),
+};
+
+u32 dYoshiSpecial3_EggLayThrow_AnimJoint_0xBA8[] = {
 	aobjEvent32SetVal0RateBlock(0x050, 0),
 	    0x37D1FFFF,
 	    0xB7700000,
@@ -284,14 +309,23 @@ u32 dYoshiSpecial3_EggLayThrow_AnimJoint[136] = {
 	    0x42B40000,
 	    0xC1E67A3B,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x0DB0 to 0x0E70 (192 bytes) */
-u32 dYoshiSpecial3_EggLayWait_AnimJoint[48] = {
-	(u32)((u8*)dYoshiSpecial3_EggLayWait_AnimJoint + 0x8),
-	(u32)((u8*)dYoshiSpecial3_EggLayWait_AnimJoint + 0x44),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDB8[];
+extern u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDF4[];
+
+u32 dYoshiSpecial3_EggLayWait_AnimJoint[2] = {
+	(u32)dYoshiSpecial3_EggLayWait_AnimJoint_0xDB8,
+	(u32)dYoshiSpecial3_EggLayWait_AnimJoint_0xDF4,
+};
+
+u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDB8[] = {
 	aobjEvent32SetValRateBlock(0x004, 0),
 	    0x00000000,
 	    0xBDD2E441,
@@ -307,6 +341,9 @@ u32 dYoshiSpecial3_EggLayWait_AnimJoint[48] = {
 	    0xBDD2E441,
 	    0x1C000000,
 	(u32)((u8*)dYoshiSpecial3_EggLayWait_AnimJoint + 0x8),
+};
+
+u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDF4[] = {
 	aobjEvent32SetValAfterBlock(0x020, 0),
 	    0x42B40000,
 	aobjEvent32SetVal0RateBlock(0x050, 0),

@@ -31,9 +31,17 @@ DObjDesc dLBTransitionRotScale_DObjDesc_0x0F98[] = {
 };
 
 /* Raw data from file offset 0x101C to 0x1070 (84 bytes) */
-u32 dLBTransitionRotScale_AnimJoint_0x101C[21] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionRotScale_AnimJoint_0x1024[];
+
+u32 dLBTransitionRotScale_AnimJoint_0x101C[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionRotScale_AnimJoint_0x101C + 0x8),
+	(u32)dLBTransitionRotScale_AnimJoint_0x1024,
+};
+
+u32 dLBTransitionRotScale_AnimJoint_0x1024[] = {
 	aobjEvent32SetValAfter(0x003, 0),
 	    0x00000000,
 	    0x00000000,
@@ -51,7 +59,7 @@ u32 dLBTransitionRotScale_AnimJoint_0x101C[21] = {
 	    0x3727C5AC,
 	    0x3727C5AC,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 

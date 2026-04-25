@@ -62,10 +62,19 @@ DObjDesc dLBTransitionSudare2_DObjDesc_0x3EA0[] = {
 };
 
 /* Raw data from file offset 0x3F50 to 0x3FB0 (96 bytes) */
-u32 dLBTransitionSudare2_AnimJoint_0x3F50[24] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionSudare2_AnimJoint_0x3F5C[];
+extern u32 dLBTransitionSudare2_AnimJoint_0x3F80[];
+
+u32 dLBTransitionSudare2_AnimJoint_0x3F50[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionSudare2_AnimJoint_0x3F50 + 0xC),
-	(u32)((u8*)dLBTransitionSudare2_AnimJoint_0x3F50 + 0x30),
+	(u32)dLBTransitionSudare2_AnimJoint_0x3F5C,
+	(u32)dLBTransitionSudare2_AnimJoint_0x3F80,
+};
+
+u32 dLBTransitionSudare2_AnimJoint_0x3F5C[] = {
 	aobjEvent32SetVal(0x030, 0),
 	    0x00000000,
 	    0x00000000,
@@ -75,6 +84,9 @@ u32 dLBTransitionSudare2_AnimJoint_0x3F50[24] = {
 	    0x45548000,
 	    0x451C4000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionSudare2_AnimJoint_0x3F80[] = {
 	aobjEvent32SetVal(0x030, 0),
 	    0x00000000,
 	    0x00000000,
@@ -84,8 +96,7 @@ u32 dLBTransitionSudare2_AnimJoint_0x3F50[24] = {
 	    0xC5548000,
 	    0xC51C4000,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(12);
 

@@ -291,20 +291,39 @@ DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x6BB8 to 0x6D60 (424 bytes) */
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[];
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[13] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32SetInterp(6993, 0x1E4),
-	aobjEvent32SetInterp(6994, 0x1EA),
+	(u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44,
+	(u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48,
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32SetInterp(6995, 0x1EC),
-	aobjEvent32SetInterp(6996, 0x1F2),
+	(u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C,
+	(u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50,
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32SetInterp(6997, 0x1F4),
-	aobjEvent32SetInterp(6998, 0x2A2),
+	(u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54,
+	(u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58,
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[] = {
 	aobjEvent32SetValBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x001, 261),
@@ -319,6 +338,9 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	    0x00000000,
 	aobjEvent32Wait(56),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24[] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x001, 1),
@@ -331,6 +353,9 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	    0x00000000,
 	aobjEvent32Wait(317),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54[] = {
 	aobjEvent32SetValBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x001, 150),
@@ -345,6 +370,9 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	    0x00000000,
 	aobjEvent32Wait(167),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C[] = {
 	aobjEvent32SetValBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValBlock(0x001, 150),
@@ -359,6 +387,9 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	    0x00000000,
 	aobjEvent32Wait(167),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
 	    0x00000000,
 	    0x00000000,
@@ -377,6 +408,9 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	    0x00000000,
 	aobjEvent32Wait(297),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x001, 1),
@@ -391,30 +425,64 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	    0x00000000,
 	aobjEvent32Wait(316),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[] = {
 	aobjEvent32SetInterp(6907, 0x2A4),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48[] = {
 	aobjEvent32SetInterp(6921, 0x2A6),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C[] = {
 	aobjEvent32SetInterp(6933, 0x2A8),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50[] = {
 	aobjEvent32SetInterp(6947, 0x2AA),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54[] = {
 	aobjEvent32SetInterp(6961, 0x2AC),
+};
+
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[] = {
 	aobjEvent32SetInterp(6979, 0x2B4),
 	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6D60 to 0x7250 (1264 bytes) */
-u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6EA4[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6F4C[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6FDC[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0[];
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[13] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x34),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0xBC),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x144),
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94,
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C,
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6EA4,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x1EC),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x27C),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x300),
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6F4C,
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6FDC,
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060,
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x36C),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x3E4),
-	(u32)((u8*)dMVOpeningStandoff_LightningAnimJoint_AnimJoint + 0x450),
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC,
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144,
+	(u32)dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0,
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[] = {
 	aobjEvent32SetValAfter(0x055, 0),
 	    0x00000000,
 	    0x00000000,
@@ -449,6 +517,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	aobjEvent32SetValBlock(0x002, 55),
 	    0x40053F77,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C[] = {
 	aobjEvent32SetValBlock(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x2F7, 0),
@@ -483,6 +554,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x00000000,
 	aobjEvent32Wait(54),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6EA4[] = {
 	aobjEvent32SetValBlock(0x182, 0),
 	    0x00000000,
 	    0x3F800000,
@@ -525,6 +599,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x00000000,
 	aobjEvent32Wait(54),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6F4C[] = {
 	aobjEvent32SetValAfter(0x077, 0),
 	    0x00000000,
 	    0xBD9D31B2,
@@ -561,6 +638,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x425FEB8A,
 	aobjEvent32Wait(58),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6FDC[] = {
 	aobjEvent32SetVal(0x180, 0),
 	    0x3F516873,
 	    0x3F516873,
@@ -594,6 +674,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x3FAAF919,
 	    0x3F968BE7,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060[] = {
 	aobjEvent32SetVal(0x180, 0),
 	    0x3F516873,
 	    0x3F516873,
@@ -621,6 +704,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x3F847104,
 	    0x3FE6F82B,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC[] = {
 	aobjEvent32SetValAfter(0x075, 0),
 	    0x00000000,
 	    0x00000000,
@@ -651,6 +737,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x4270A6E6,
 	    0x4270A6E6,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144[] = {
 	aobjEvent32SetValBlock(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x3F7, 0),
@@ -678,6 +767,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	    0x00000000,
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0[] = {
 	aobjEvent32SetValBlock(0x102, 0),
 	    0x00000000,
 	    0x3F800000,
@@ -715,10 +807,9 @@ u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	aobjEvent32SetValAfterBlock(0x002, 295),
 	    0x00000000,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(12);
 
 /* Raw data from file offset 0x7250 to 0x8F30 (7392 bytes) */
 u32 dMVOpeningStandoff_Cam_AnimJoint[1848] = {

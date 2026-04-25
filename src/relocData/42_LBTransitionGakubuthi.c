@@ -26,9 +26,17 @@ DObjDesc dLBTransitionGakubuthi_DObjDesc_0x0F98[] = {
 };
 
 /* Raw data from file offset 0x101C to 0x10E0 (196 bytes) */
-u32 dLBTransitionGakubuthi_AnimJoint_0x101C[49] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionGakubuthi_AnimJoint_0x1024[];
+
+u32 dLBTransitionGakubuthi_AnimJoint_0x101C[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionGakubuthi_AnimJoint_0x101C + 0x8),
+	(u32)dLBTransitionGakubuthi_AnimJoint_0x1024,
+};
+
+u32 dLBTransitionGakubuthi_AnimJoint_0x1024[] = {
 	aobjEvent32SetValRate(0x004, 0),
 	    0x00000000,
 	    0xB8A56F24,

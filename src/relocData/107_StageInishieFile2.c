@@ -470,17 +470,27 @@ DObjDesc dStageInishieFile2_Layer0DObj[] = {
 PAD(4);
 
 /* Raw data from file offset 0x4C30 to 0x4E40 (528 bytes) */
-u32 dStageInishieFile2_Layer0Anim_AnimJoint[132] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4C58[];
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4DD0[];
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4E04[];
+
+u32 dStageInishieFile2_Layer0Anim_AnimJoint[10] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	(u32)((u8*)dStageInishieFile2_Layer0Anim_AnimJoint + 0x28),
+	(u32)dStageInishieFile2_Layer0Anim_AnimJoint_0x4C58,
 	aobjEvent32End(),
-	(u32)((u8*)dStageInishieFile2_Layer0Anim_AnimJoint + 0x1A0),
+	(u32)dStageInishieFile2_Layer0Anim_AnimJoint_0x4DD0,
 	aobjEvent32End(),
-	(u32)((u8*)dStageInishieFile2_Layer0Anim_AnimJoint + 0x1D4),
+	(u32)dStageInishieFile2_Layer0Anim_AnimJoint_0x4E04,
 	aobjEvent32End(),
 	aobjEvent32End(),
+};
+
+u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4C58[] = {
 	aobjEvent32SetValRate(0x020, 0),
 	    0x44AC7FFF,
 	    0x42B839D9,
@@ -575,6 +585,9 @@ u32 dStageInishieFile2_Layer0Anim_AnimJoint[132] = {
 	    0x44AC8000,
 	    0x1C000000,
 	(u32)((u8*)dStageInishieFile2_Layer0Anim_AnimJoint + 0x28),
+};
+
+u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4DD0[] = {
 	aobjEvent32SetValBlock(0x012, 0),
 	    0x00000000,
 	    0x447F0000,
@@ -588,6 +601,9 @@ u32 dStageInishieFile2_Layer0Anim_AnimJoint[132] = {
 	    0x447F0000,
 	    0x1C000000,
 	(u32)((u8*)dStageInishieFile2_Layer0Anim_AnimJoint + 0x1A0),
+};
+
+u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4E04[] = {
 	aobjEvent32SetValBlock(0x012, 0),
 	    0xC0490FDB,
 	    0x45520000,
@@ -602,8 +618,9 @@ u32 dStageInishieFile2_Layer0Anim_AnimJoint[132] = {
 	    0x1C000000,
 	(u32)((u8*)dStageInishieFile2_Layer0Anim_AnimJoint + 0x1D4),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x4E40 to 0x6320 (5344 bytes) */
 u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint[1336] = {

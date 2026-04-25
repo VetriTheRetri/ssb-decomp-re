@@ -371,24 +371,40 @@ DObjDesc dLBTransitionAeroplane_DObjDesc_0xB3F8[] = {
 };
 
 /* Raw data from file offset 0xB710 to 0xB9F0 (736 bytes) */
-u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x44),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0xE8),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB754[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB7F8[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB834[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB870[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB8B8[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB8F4[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB930[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB96C[];
+extern u32 dLBTransitionAeroplane_AnimJoint_0xB9A8[];
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB710[17] = {
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB754,
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB7F8,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x124),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB834,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x160),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB870,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x1A8),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB8B8,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x1E4),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB8F4,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x220),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB930,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x25C),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB96C,
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionAeroplane_AnimJoint_0xB710 + 0x298),
+	(u32)dLBTransitionAeroplane_AnimJoint_0xB9A8,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB754[] = {
 	aobjEvent32SetVal0RateBlock(0x3F7, 0),
 	    0x00000000,
 	    0x00000000,
@@ -430,6 +446,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	    0xC51C4000,
 	    0xC4427FC0,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB7F8[] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x075, 0),
@@ -445,6 +464,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	aobjEvent32SetValBlock(0x002, 32),
 	    0xBFBBA866,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB834[] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x075, 0),
@@ -460,6 +482,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	aobjEvent32SetValBlock(0x002, 16),
 	    0x3FAE40F1,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB870[] = {
 	aobjEvent32SetVal(0x042, 0),
 	    0x00000000,
 	    0x00000000,
@@ -478,6 +503,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	    0xC0490FDB,
 	    0x41200000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB8B8[] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x075, 0),
@@ -493,6 +521,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	aobjEvent32SetValBlock(0x002, 16),
 	    0xBFAC0508,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB8F4[] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x075, 0),
@@ -508,6 +539,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	aobjEvent32SetValBlock(0x002, 40),
 	    0x3FBBA866,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB930[] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x075, 0),
@@ -523,6 +557,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	aobjEvent32SetValBlock(0x002, 24),
 	    0xBFAE40F1,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB96C[] = {
 	aobjEvent32SetVal(0x042, 0),
 	    0x00000000,
 	    0x00000000,
@@ -538,6 +575,9 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	    0x40490FDB,
 	    0x41200000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionAeroplane_AnimJoint_0xB9A8[] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x075, 0),
@@ -553,8 +593,7 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB710[184] = {
 	aobjEvent32SetValBlock(0x002, 24),
 	    0x3FAC0508,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(12);
 

@@ -163,16 +163,31 @@ DObjDesc dLBTransitionCamera_DObjDesc_0x3F90[] = {
 };
 
 /* Raw data from file offset 0x4148 to 0x4290 (328 bytes) */
-u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionCamera_AnimJoint_0x416C[];
+extern u32 dLBTransitionCamera_AnimJoint_0x4190[];
+extern u32 dLBTransitionCamera_AnimJoint_0x41B4[];
+extern u32 dLBTransitionCamera_AnimJoint_0x41D8[];
+extern u32 dLBTransitionCamera_AnimJoint_0x41FC[];
+extern u32 dLBTransitionCamera_AnimJoint_0x4220[];
+extern u32 dLBTransitionCamera_AnimJoint_0x4244[];
+extern u32 dLBTransitionCamera_AnimJoint_0x4268[];
+
+u32 dLBTransitionCamera_AnimJoint_0x4148[9] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0x24),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0x48),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0x6C),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0x90),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0xB4),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0xD8),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0xFC),
-	(u32)((u8*)dLBTransitionCamera_AnimJoint_0x4148 + 0x120),
+	(u32)dLBTransitionCamera_AnimJoint_0x416C,
+	(u32)dLBTransitionCamera_AnimJoint_0x4190,
+	(u32)dLBTransitionCamera_AnimJoint_0x41B4,
+	(u32)dLBTransitionCamera_AnimJoint_0x41D8,
+	(u32)dLBTransitionCamera_AnimJoint_0x41FC,
+	(u32)dLBTransitionCamera_AnimJoint_0x4220,
+	(u32)dLBTransitionCamera_AnimJoint_0x4244,
+	(u32)dLBTransitionCamera_AnimJoint_0x4268,
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x416C[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -182,6 +197,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAE5D8C,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x4190[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -191,6 +209,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAE19D0,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x41B4[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -200,6 +221,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAE19D0,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x41D8[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -209,6 +233,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAED36F,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x41FC[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -218,6 +245,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAF6DF7,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x4220[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -227,6 +257,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAEAEDF,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x4244[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -236,6 +269,9 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAFFD39,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionCamera_AnimJoint_0x4268[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x003, 0),
@@ -245,6 +281,7 @@ u32 dLBTransitionCamera_AnimJoint_0x4148[82] = {
 	    0xC01C61AA,
 	    0xBDAF5FEE,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 

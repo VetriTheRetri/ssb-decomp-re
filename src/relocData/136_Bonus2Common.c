@@ -166,10 +166,19 @@ DObjDesc dBonus2Common_PlatformSmall[] = {
 PAD(8);
 
 /* Raw data from file offset 0x3E60 to 0x3F00 (160 bytes) */
-u32 dBonus2Common_PlatformSmall_AnimJoint[40] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dBonus2Common_PlatformSmall_AnimJoint_0x3E6C[];
+extern u32 dBonus2Common_PlatformSmall_AnimJoint_0x3EB0[];
+
+u32 dBonus2Common_PlatformSmall_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dBonus2Common_PlatformSmall_AnimJoint + 0xC),
-	(u32)((u8*)dBonus2Common_PlatformSmall_AnimJoint + 0x50),
+	(u32)dBonus2Common_PlatformSmall_AnimJoint_0x3E6C,
+	(u32)dBonus2Common_PlatformSmall_AnimJoint_0x3EB0,
+};
+
+u32 dBonus2Common_PlatformSmall_AnimJoint_0x3E6C[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x40400000,
 	    0x40400000,
@@ -187,6 +196,9 @@ u32 dBonus2Common_PlatformSmall_AnimJoint[40] = {
 	aobjEvent32SetFlags(0x002, 5),
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformSmall_AnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformSmall_AnimJoint_0x3EB0[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FB33333,
 	    0x3FB33333,
@@ -204,16 +216,27 @@ u32 dBonus2Common_PlatformSmall_AnimJoint[40] = {
 	aobjEvent32SetFlags(0x002, 5),
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformSmall_AnimJoint + 0x50),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x3F00 to 0x3F70 (112 bytes) */
-u32 dBonus2Common_PlatformSmall_MatAnimJoint[28] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C[];
+extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34[];
+extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[];
+extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[];
+
+u32 dBonus2Common_PlatformSmall_MatAnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0x5C),
-	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0x60),
+	(u32)dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C,
+	(u32)dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60,
+};
+
+u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFF000080,
 	aobjEvent32SetExtValBlock(0x001, 10),
@@ -224,6 +247,9 @@ u32 dBonus2Common_PlatformSmall_MatAnimJoint[28] = {
 	    0xFF000000,
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFFFFFFFF,
 	aobjEvent32SetExtValBlock(0x001, 10),
@@ -234,12 +260,18 @@ u32 dBonus2Common_PlatformSmall_MatAnimJoint[28] = {
 	    0xFFFFFF33,
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0x34),
+};
+
+u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[] = {
 	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[] = {
 	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0x34),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* MObjSub: PlatformMedium @ 0x3F70 */
 MObjSub dBonus2Common_PlatformMedium_MObjSub = {
@@ -359,10 +391,19 @@ DObjDesc dBonus2Common_PlatformMedium[] = {
 PAD(8);
 
 /* Raw data from file offset 0x4690 to 0x4730 (160 bytes) */
-u32 dBonus2Common_PlatformMedium_AnimJoint[40] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dBonus2Common_PlatformMedium_AnimJoint_0x469C[];
+extern u32 dBonus2Common_PlatformMedium_AnimJoint_0x46E0[];
+
+u32 dBonus2Common_PlatformMedium_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dBonus2Common_PlatformMedium_AnimJoint + 0xC),
-	(u32)((u8*)dBonus2Common_PlatformMedium_AnimJoint + 0x50),
+	(u32)dBonus2Common_PlatformMedium_AnimJoint_0x469C,
+	(u32)dBonus2Common_PlatformMedium_AnimJoint_0x46E0,
+};
+
+u32 dBonus2Common_PlatformMedium_AnimJoint_0x469C[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x40400000,
 	    0x40400000,
@@ -380,6 +421,9 @@ u32 dBonus2Common_PlatformMedium_AnimJoint[40] = {
 	aobjEvent32SetFlags(0x002, 5),
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformMedium_AnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformMedium_AnimJoint_0x46E0[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FB33333,
 	    0x3FB33333,
@@ -397,16 +441,27 @@ u32 dBonus2Common_PlatformMedium_AnimJoint[40] = {
 	aobjEvent32SetFlags(0x002, 5),
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformMedium_AnimJoint + 0x50),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x4730 to 0x47A0 (112 bytes) */
-u32 dBonus2Common_PlatformMedium_MatAnimJoint[28] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x473C[];
+extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4764[];
+extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[];
+extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[];
+
+u32 dBonus2Common_PlatformMedium_MatAnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0x5C),
-	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0x60),
+	(u32)dBonus2Common_PlatformMedium_MatAnimJoint_0x478C,
+	(u32)dBonus2Common_PlatformMedium_MatAnimJoint_0x4790,
+};
+
+u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x473C[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFF000080,
 	aobjEvent32SetExtValBlock(0x001, 10),
@@ -417,6 +472,9 @@ u32 dBonus2Common_PlatformMedium_MatAnimJoint[28] = {
 	    0xFF000000,
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4764[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFFFFFFFF,
 	aobjEvent32SetExtValBlock(0x001, 10),
@@ -427,12 +485,18 @@ u32 dBonus2Common_PlatformMedium_MatAnimJoint[28] = {
 	    0xFFFFFF33,
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0x34),
+};
+
+u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[] = {
 	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[] = {
 	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0x34),
-	aobjEvent32End(),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* MObjSub: PlatformLarge @ 0x47A0 */
 MObjSub dBonus2Common_PlatformLarge_MObjSub = {
@@ -552,10 +616,19 @@ DObjDesc dBonus2Common_PlatformLarge[] = {
 PAD(8);
 
 /* Raw data from file offset 0x4EC0 to 0x4F70 (176 bytes) */
-u32 dBonus2Common_PlatformLarge_AnimJoint[44] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dBonus2Common_PlatformLarge_AnimJoint_0x4ECC[];
+extern u32 dBonus2Common_PlatformLarge_AnimJoint_0x4F20[];
+
+u32 dBonus2Common_PlatformLarge_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dBonus2Common_PlatformLarge_AnimJoint + 0xC),
-	(u32)((u8*)dBonus2Common_PlatformLarge_AnimJoint + 0x60),
+	(u32)dBonus2Common_PlatformLarge_AnimJoint_0x4ECC,
+	(u32)dBonus2Common_PlatformLarge_AnimJoint_0x4F20,
+};
+
+u32 dBonus2Common_PlatformLarge_AnimJoint_0x4ECC[] = {
 	aobjEvent32SetValAfter(0x070, 0),
 	    0x00000000,
 	    0xC3160000,
@@ -577,6 +650,9 @@ u32 dBonus2Common_PlatformLarge_AnimJoint[44] = {
 	aobjEvent32SetFlags(0x002, 5),
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformLarge_AnimJoint + 0xC),
+};
+
+u32 dBonus2Common_PlatformLarge_AnimJoint_0x4F20[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x3FB33333,
 	    0x3FB33333,
@@ -595,9 +671,9 @@ u32 dBonus2Common_PlatformLarge_AnimJoint[44] = {
 	    0x1C000000,
 	(u32)((u8*)dBonus2Common_PlatformLarge_AnimJoint + 0x60),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x4F70 to 0x5520 (1456 bytes) */
 u32 dBonus2Common_PlatformLarge_MatAnimJoint[364] = {
@@ -1697,10 +1773,19 @@ DObjDesc dBonus2Common_BoardedPlatformLarge[] = {
 };
 
 /* Raw data from file offset 0x6290 to 0x6330 (160 bytes) */
-u32 dBonus2Common_BoardedPlatformLarge_AnimJoint[40] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dBonus2Common_BoardedPlatformLarge_AnimJoint_0x629C[];
+extern u32 dBonus2Common_BoardedPlatformLarge_AnimJoint_0x62E0[];
+
+u32 dBonus2Common_BoardedPlatformLarge_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dBonus2Common_BoardedPlatformLarge_AnimJoint + 0xC),
-	(u32)((u8*)dBonus2Common_BoardedPlatformLarge_AnimJoint + 0x50),
+	(u32)dBonus2Common_BoardedPlatformLarge_AnimJoint_0x629C,
+	(u32)dBonus2Common_BoardedPlatformLarge_AnimJoint_0x62E0,
+};
+
+u32 dBonus2Common_BoardedPlatformLarge_AnimJoint_0x629C[] = {
 	aobjEvent32SetVal0Rate(0x380, 0),
 	    0x40800000,
 	    0x40800000,
@@ -1718,6 +1803,9 @@ u32 dBonus2Common_BoardedPlatformLarge_AnimJoint[40] = {
 	    0x3FD9999A,
 	    0x3FD9999A,
 	aobjEvent32End(),
+};
+
+u32 dBonus2Common_BoardedPlatformLarge_AnimJoint_0x62E0[] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x40200000,
 	    0x40200000,

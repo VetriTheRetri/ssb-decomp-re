@@ -20607,10 +20607,19 @@ DObjDesc dMVCommon_RoomCloseUpEffectAirDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x1DFD8 to 0x1E010 (56 bytes) */
-u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint[14] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4[];
+extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[];
+
+u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint + 0x30),
+	(u32)dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008,
 	aobjEvent32End(),
+};
+
+u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFFFFFFFF,
 	aobjEvent32SetExtValBlock(0x001, 118),
@@ -20620,6 +20629,9 @@ u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint[14] = {
 	aobjEvent32SetExtValBlock(0x001, 58),
 	    0xFFFFFF00,
 	aobjEvent32End(),
+};
+
+u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[] = {
 	(u32)((u8*)dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint + 0xC),
 	aobjEvent32End(),
 };
@@ -21773,9 +21785,18 @@ DObjDesc dMVCommon_RoomCloseUpEffectGroundDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x1F2F4 to 0x1F330 (60 bytes) */
-u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[15] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[];
+extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[];
+
+u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint + 0x34),
+	(u32)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328,
+};
+
+u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[] = {
 	aobjEvent32SetExtVal(0x001, 0),
 	    0xFFFFFFFF,
 	aobjEvent32SetExtValAfterBlock(0x008, 0),
@@ -21787,6 +21808,9 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[15] = {
 	aobjEvent32SetExtValBlock(0x001, 20),
 	    0xFFFFFF00,
 	aobjEvent32End(),
+};
+
+u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
 	(u32)((u8*)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint + 0x8),
 	aobjEvent32End(),
 };

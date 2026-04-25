@@ -221,9 +221,22 @@ DObjDesc dStageMetalFile2_Layer0DObj[] = {
 PAD(12);
 
 /* Raw data from file offset 0x1BA0 to 0x1DD0 (560 bytes) */
-u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1BA8[];
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C18[];
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C7C[];
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1CD8[];
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44[];
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[];
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x214),
+	(u32)dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4,
+};
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1BA8[] = {
 	aobjEvent32SetVal0RateBlock(0x006, 0),
 	    0x38D1B717,
 	    0x38D1B717,
@@ -252,6 +265,9 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x8),
+};
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C18[] = {
 	aobjEvent32SetVal0RateBlock(0x004, 0),
 	    0x38D1B717,
 	aobjEvent32SetVal0Rate(0x004, 221),
@@ -277,6 +293,9 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x78),
+};
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C7C[] = {
 	aobjEvent32SetVal0RateBlock(0x002, 0),
 	    0x38D1B717,
 	aobjEvent32SetVal0Rate(0x002, 50),
@@ -300,6 +319,9 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0xDC),
+};
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1CD8[] = {
 	aobjEvent32SetVal0RateBlock(0x004, 0),
 	    0x38D1B717,
 	aobjEvent32SetValBlock(0x002, 0),
@@ -327,6 +349,9 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x138),
+};
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44[] = {
 	aobjEvent32SetVal0RateBlock(0x006, 0),
 	    0x38D1B717,
 	    0x38D1B717,
@@ -355,14 +380,18 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x1A4),
+};
+
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[] = {
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x8),
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x78),
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0xDC),
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x138),
 	(u32)((u8*)dStageMetalFile2_Layer0MatAnim_MatAnimJoint + 0x1A4),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* MObjSub: Layer1MObj @ 0x1DD0 */
 MObjSub dStageMetalFile2_Layer1MObj_MObjSub = {
@@ -542,9 +571,20 @@ u8 dStageMetalFile2_MPGeometryData_0x3068[40] = {
 };
 
 /* Raw data from file offset 0x3090 to 0x3220 (400 bytes) */
-u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[100] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3098[];
+extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3124[];
+extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0[];
+extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[];
+
+u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x178),
+	(u32)dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208,
+};
+
+u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3098[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x200, 6),
@@ -580,6 +620,9 @@ u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[100] = {
 	aobjEvent32Wait(227),
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x8),
+};
+
+u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3124[] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x00000000,
 	aobjEvent32SetValAfterBlock(0x200, 6),
@@ -615,6 +658,9 @@ u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[100] = {
 	aobjEvent32Wait(227),
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x94),
+};
+
+u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0[] = {
 	aobjEvent32SetVal0RateBlock(0x006, 0),
 	    0x3C23D70A,
 	    0x3C23D70A,
@@ -637,13 +683,16 @@ u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[100] = {
 	    0x3C23D70A,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x120),
+};
+
+u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[] = {
 	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x8),
 	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x94),
 	(u32)((u8*)dStageMetalFile2_Layer1MatAnim_MatAnimJoint + 0x120),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* MObjSub: Layer2MObj @ 0x3220 */
 MObjSub dStageMetalFile2_Layer2MObj_MObjSub = {
@@ -704,9 +753,18 @@ DObjDesc dStageMetalFile2_Layer2DObj[] = {
 PAD(4);
 
 /* Raw data from file offset 0x34F0 to 0x3550 (96 bytes) */
-u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[24] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8[];
+extern u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[];
+
+u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dStageMetalFile2_Layer2MatAnim_MatAnimJoint + 0x50),
+	(u32)dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540,
+};
+
+u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8[] = {
 	aobjEvent32SetVal0RateBlock(0x004, 0),
 	    0x38D1B717,
 	aobjEvent32SetValAfterBlock(0x002, 0),
@@ -725,11 +783,14 @@ u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[24] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer2MatAnim_MatAnimJoint + 0x8),
+};
+
+u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[] = {
 	(u32)((u8*)dStageMetalFile2_Layer2MatAnim_MatAnimJoint + 0x8),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 extern u32 dStageMetalFile2_Layer3MObj_MObjSubPtrArray[];
 
@@ -892,9 +953,21 @@ DObjDesc dStageMetalFile2_Layer3DObj[] = {
 PAD(4);
 
 /* Raw data from file offset 0x3E60 to 0x3FC0 (352 bytes) */
-u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[88] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3E68[];
+extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3EC8[];
+extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F10[];
+extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58[];
+extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0[];
+
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0x150),
+	(u32)dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0,
+};
+
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3E68[] = {
 	aobjEvent32SetVal0RateBlock(0x002, 0),
 	    0x38D1B717,
 	aobjEvent32SetVal0Rate(0x002, 40),
@@ -919,6 +992,9 @@ u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[88] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0x8),
+};
+
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3EC8[] = {
 	aobjEvent32SetVal0RateBlock(0x004, 0),
 	    0x38D1B717,
 	aobjEvent32SetValAfterBlock(0x002, 0),
@@ -937,6 +1013,9 @@ u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[88] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0x68),
+};
+
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F10[] = {
 	aobjEvent32SetVal0RateBlock(0x004, 0),
 	    0x38D1B717,
 	aobjEvent32SetValAfterBlock(0x002, 0),
@@ -955,6 +1034,9 @@ u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[88] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0xB0),
+};
+
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58[] = {
 	aobjEvent32SetVal0RateBlock(0x004, 0),
 	    0x38D1B717,
 	aobjEvent32SetValAfterBlock(0x002, 0),
@@ -977,6 +1059,9 @@ u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[88] = {
 	    0x38D1B717,
 	    0x1C000000,
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0xF8),
+};
+
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0[] = {
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0x8),
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0x68),
 	(u32)((u8*)dStageMetalFile2_Layer3MatAnim_MatAnimJoint + 0xB0),

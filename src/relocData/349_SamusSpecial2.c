@@ -90,9 +90,17 @@ DObjDesc dSamusSpecial2_GrappleBeamDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0410 to 0x0480 (112 bytes) */
-u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[28] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[];
+
+u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418,
+};
+
+u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[] = {
 	aobjEvent32SetValAfter(0x007, 0),
 	    0x00000000,
 	    0x00000000,
@@ -118,8 +126,9 @@ u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[28] = {
 	    0x3F800000,
 	aobjEvent32SetAnim(0x000, 0),
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 
 /* Raw data from file offset 0x0480 to 0x04C8 (72 bytes) */
 u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[18] = {
@@ -199,9 +208,17 @@ DObjDesc dSamusSpecial2_EntryPointDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0C20 to 0x0CA0 (128 bytes) */
-u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[32] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28[];
+
+u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[2] = {
 	aobjEvent32End(),
-	(u32)((u8*)dSamusSpecial2_EntryPointAnimJoint_AnimJoint + 0x8),
+	(u32)dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28,
+};
+
+u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28[] = {
 	aobjEvent32SetVal(0x380, 0),
 	    0x3F800000,
 	    0x3727C5AC,
@@ -230,6 +247,6 @@ u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[32] = {
 	    0x3727C5AC,
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);

@@ -180,13 +180,25 @@ DObjDesc dPurinSpecial2_SingDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x2270 to 0x2D70 (2816 bytes) */
-u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2854[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2B94[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2C3C[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2CCC[];
+
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint[6] = {
 	aobjEvent32End(),
-	(u32)((u8*)dPurinSpecial2_SingAnimJoint_AnimJoint + 0x18),
-	(u32)((u8*)dPurinSpecial2_SingAnimJoint_AnimJoint + 0x5E4),
-	(u32)((u8*)dPurinSpecial2_SingAnimJoint_AnimJoint + 0x924),
-	(u32)((u8*)dPurinSpecial2_SingAnimJoint_AnimJoint + 0x9CC),
-	(u32)((u8*)dPurinSpecial2_SingAnimJoint_AnimJoint + 0xA5C),
+	(u32)dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288,
+	(u32)dPurinSpecial2_SingAnimJoint_AnimJoint_0x2854,
+	(u32)dPurinSpecial2_SingAnimJoint_AnimJoint_0x2B94,
+	(u32)dPurinSpecial2_SingAnimJoint_AnimJoint_0x2C3C,
+	(u32)dPurinSpecial2_SingAnimJoint_AnimJoint_0x2CCC,
+};
+
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288[] = {
 	aobjEvent32SetValRate(0x070, 0),
 	    0x00000000,
 	    0xBCEA6681,
@@ -558,6 +570,9 @@ u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 	    0x43160000,
 	    0x3FA4AB44,
 	aobjEvent32End(),
+};
+
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2854[] = {
 	aobjEvent32SetValAfter(0x006, 0),
 	    0x00000000,
 	    0x00000000,
@@ -766,6 +781,9 @@ u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 	    0x43160000,
 	    0x3FA4AB44,
 	aobjEvent32End(),
+};
+
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2B94[] = {
 	aobjEvent32SetVal(0x060, 0),
 	    0x00000000,
 	    0x00000000,
@@ -808,6 +826,9 @@ u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 	    0x429CC7CE,
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2C3C[] = {
 	aobjEvent32SetVal(0x060, 0),
 	    0x00000000,
 	    0x00000000,
@@ -844,6 +865,9 @@ u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 	    0x00000000,
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2CCC[] = {
 	aobjEvent32SetVal(0x060, 0),
 	    0x00000000,
 	    0x00000000,
@@ -884,44 +908,63 @@ u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 	    0xC2314E94,
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+PAD(4);
+
+/* Raw data from file offset 0x2D70 to 0x2F50 (480 bytes) */
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[];
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[6] = {
+	aobjEvent32End(),
+	(u32)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38,
+	aobjEvent32End(),
+	(u32)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C,
+	(u32)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40,
+	(u32)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44,
+};
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88[] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFF5500,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFF55FF,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFF55FF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFF5500,
+	aobjEvent32SetExtValBlock(0x001, 9),
+	    0xFFFF5500,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFF55FF,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFF55FF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFF5500,
+	aobjEvent32SetExtValBlock(0x001, 19),
+	    0xFFFF5500,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFF55FF,
+	aobjEvent32SetExtValBlock(0x001, 23),
+	    0xFFFF55FF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFF5500,
+	aobjEvent32SetExtValBlock(0x001, 37),
+	    0xFFFF5500,
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x2D70 to 0x2F50 (480 bytes) */
-u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[120] = {
-	aobjEvent32End(),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x1C8),
-	aobjEvent32End(),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x1CC),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x1D0),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x1D4),
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFF5500,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFF55FF,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFF55FF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFF5500,
-	aobjEvent32SetExtValBlock(0x001, 9),
-	    0xFFFF5500,
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFF55FF,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFF55FF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFF5500,
-	aobjEvent32SetExtValBlock(0x001, 19),
-	    0xFFFF5500,
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFF55FF,
-	aobjEvent32SetExtValBlock(0x001, 23),
-	    0xFFFF55FF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFF5500,
-	aobjEvent32SetExtValBlock(0x001, 37),
-	    0xFFFF5500,
-	aobjEvent32End(),
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4[] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
 	    0xFFFFFF00,
 	aobjEvent32SetExtValBlock(0x001, 20),
@@ -948,65 +991,84 @@ u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[120] = {
 	    0xFFFFFF00,
 	aobjEvent32SetExtValBlock(0x001, 37),
 	    0xFFFFFF00,
-	aobjEvent32End(),
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 9),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 19),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 23),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 37),
-	    0xFFFFFF00,
-	aobjEvent32End(),
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 9),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 20),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 19),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 23),
-	    0xFFFFFFFF,
-	aobjEvent32SetExtValBlock(0x001, 10),
-	    0xFFFFFF00,
-	aobjEvent32SetExtValBlock(0x001, 37),
-	    0xFFFFFF00,
-	aobjEvent32End(),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x18),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x84),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0xF0),
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x15C),
-	aobjEvent32End(),
 	aobjEvent32End(),
 };
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60[] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 9),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 19),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 23),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 37),
+	    0xFFFFFF00,
+	aobjEvent32End(),
+};
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 9),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 19),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 23),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 10),
+	    0xFFFFFF00,
+	aobjEvent32SetExtValBlock(0x001, 37),
+	    0xFFFFFF00,
+	aobjEvent32End(),
+};
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[] = {
+	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x18),
+};
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[] = {
+	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x84),
+};
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[] = {
+	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0xF0),
+};
+
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[] = {
+	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x15C),
+	aobjEvent32End(),
+};
+
+PAD(4);

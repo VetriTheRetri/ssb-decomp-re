@@ -156,12 +156,24 @@ DObjDesc dKirbySpecial2_CutterUpDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x13F0 to 0x1470 (128 bytes) */
-u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[32] = {
-	(u32)((u8*)dKirbySpecial2_CutterTrailAnimJoint_AnimJoint + 0xC),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x13FC[];
+extern u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x1404[];
+
+u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[3] = {
+	(u32)dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x13FC,
 	aobjEvent32End(),
-	(u32)((u8*)dKirbySpecial2_CutterTrailAnimJoint_AnimJoint + 0x14),
+	(u32)dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x1404,
+};
+
+u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x13FC[] = {
 	aobjEvent32SetFlags(0x000, 10),
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x1404[] = {
 	aobjEvent32SetVal0RateBlock(0x100, 0),
 	    0x3F800000,
 	aobjEvent32SetVal0Rate(0x100, 50),
@@ -192,26 +204,42 @@ u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[32] = {
 };
 
 /* Raw data from file offset 0x1470 to 0x14B8 (72 bytes) */
-u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[18] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484[];
+extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1494[];
+extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x14A0[];
+
+u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[5] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32Wait(1313),
-	aobjEvent32Wait(1317),
-	aobjEvent32SetValBlock(0x29E, 1320),
+	(u32)dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484,
+	(u32)dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1494,
+	(u32)dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x14A0,
+};
+
+u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484[] = {
 	    0x04000001,
 	    0x1E000002,
 	    0x1E010001,
 	    0x00000000,
+};
+
+u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1494[] = {
 	    0x1E000002,
 	    0x1E010002,
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x14A0[] = {
 	aobjEvent32Wait(2),
 	aobjEvent32SetFlags(0x000, 2),
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x14B8 to 0x1CB8 (2048 bytes) */
 u8 dKirbySpecial2_Tex_0x14B8[2048] = {
@@ -243,9 +271,18 @@ DObjDesc dKirbySpecial2_EntryStar[] = {
 PAD(4);
 
 /* Raw data from file offset 0x1E30 to 0x1EA0 (112 bytes) */
-u32 dKirbySpecial2_EntryStarL_AnimJoint[28] = {
-	(u32)((u8*)dKirbySpecial2_EntryStarL_AnimJoint + 0x8),
-	(u32)((u8*)dKirbySpecial2_EntryStarL_AnimJoint + 0x38),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dKirbySpecial2_EntryStarL_AnimJoint_0x1E38[];
+extern u32 dKirbySpecial2_EntryStarL_AnimJoint_0x1E68[];
+
+u32 dKirbySpecial2_EntryStarL_AnimJoint[2] = {
+	(u32)dKirbySpecial2_EntryStarL_AnimJoint_0x1E38,
+	(u32)dKirbySpecial2_EntryStarL_AnimJoint_0x1E68,
+};
+
+u32 dKirbySpecial2_EntryStarL_AnimJoint_0x1E38[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x458CA000,
 	aobjEvent32SetValBlock(0x050, 0),
@@ -258,6 +295,9 @@ u32 dKirbySpecial2_EntryStarL_AnimJoint[28] = {
 	    0x00000000,
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_EntryStarL_AnimJoint_0x1E68[] = {
 	aobjEvent32SetValAfter(0x3F7, 0),
 	    0x3FC90FDB,
 	    0xBFC90FDB,
@@ -270,14 +310,23 @@ u32 dKirbySpecial2_EntryStarL_AnimJoint[28] = {
 	    0x3F800000,
 	aobjEvent32Wait(60),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x1EA0 to 0x1F10 (112 bytes) */
-u32 dKirbySpecial2_EntryStarR_AnimJoint[28] = {
-	(u32)((u8*)dKirbySpecial2_EntryStarR_AnimJoint + 0x8),
-	(u32)((u8*)dKirbySpecial2_EntryStarR_AnimJoint + 0x38),
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dKirbySpecial2_EntryStarR_AnimJoint_0x1EA8[];
+extern u32 dKirbySpecial2_EntryStarR_AnimJoint_0x1ED8[];
+
+u32 dKirbySpecial2_EntryStarR_AnimJoint[2] = {
+	(u32)dKirbySpecial2_EntryStarR_AnimJoint_0x1EA8,
+	(u32)dKirbySpecial2_EntryStarR_AnimJoint_0x1ED8,
+};
+
+u32 dKirbySpecial2_EntryStarR_AnimJoint_0x1EA8[] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0x458CA000,
 	aobjEvent32SetValBlock(0x050, 0),
@@ -290,6 +339,9 @@ u32 dKirbySpecial2_EntryStarR_AnimJoint[28] = {
 	    0x00000000,
 	    0x00000000,
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_EntryStarR_AnimJoint_0x1ED8[] = {
 	aobjEvent32SetValAfter(0x3F7, 0),
 	    0xBFC90FDB,
 	    0xBFC90FDB,
@@ -302,9 +354,9 @@ u32 dKirbySpecial2_EntryStarR_AnimJoint[28] = {
 	    0x3F800000,
 	aobjEvent32Wait(60),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Vtx: Vtx_0x1F10 @ 0x1F10 (12 vertices) */
 Vtx dKirbySpecial2_Vtx_0x1F10_Vtx[12] = {
@@ -360,34 +412,51 @@ DObjDesc dKirbySpecial2_CutterDownDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x24D0 to 0x2538 (104 bytes) */
-u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint[26] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24E8[];
+extern u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24F8[];
+extern u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x2504[];
+extern u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x2514[];
+
+u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint[6] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32SetVal(0x26E, 2362),
-	    0x0938093E,
-	    0x09390941,
-	    0x09FD0945,
+	(u32)dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24E8,
+	(u32)dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24F8,
+	(u32)dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x2504,
+	(u32)dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x2514,
+};
+
+u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24E8[] = {
 	    0x04000001,
 	    0x1E000002,
 	    0x1E010002,
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24F8[] = {
 	aobjEvent32SetFlags(0x000, 2),
 	aobjEvent32SetFlags(0x002, 3),
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x2504[] = {
 	aobjEvent32Wait(3),
 	aobjEvent32SetFlags(0x000, 2),
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
+};
+
+u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x2514[] = {
 	aobjEvent32Wait(2),
 	aobjEvent32SetFlags(0x000, 2),
 	aobjEvent32SetFlags(0x002, 1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(20);
 
 /* Palette: Lut_0x2538 @ 0x2538 (16 colors RGBA5551) */
 u16 dKirbySpecial2_Lut_0x2538_palette[16] = {

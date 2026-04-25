@@ -359,37 +359,73 @@ DObjDesc dLBTransitionBlock_DObjDesc_0x4E18[] = {
 };
 
 /* Raw data from file offset 0x536C to 0x5FE0 (3188 bytes) */
-u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dLBTransitionBlock_AnimJoint_0x53E4[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5450[];
+extern u32 dLBTransitionBlock_AnimJoint_0x54B0[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5518[];
+extern u32 dLBTransitionBlock_AnimJoint_0x557C[];
+extern u32 dLBTransitionBlock_AnimJoint_0x55E4[];
+extern u32 dLBTransitionBlock_AnimJoint_0x564C[];
+extern u32 dLBTransitionBlock_AnimJoint_0x56B4[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5720[];
+extern u32 dLBTransitionBlock_AnimJoint_0x576C[];
+extern u32 dLBTransitionBlock_AnimJoint_0x57C8[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5838[];
+extern u32 dLBTransitionBlock_AnimJoint_0x58B0[];
+extern u32 dLBTransitionBlock_AnimJoint_0x592C[];
+extern u32 dLBTransitionBlock_AnimJoint_0x59B4[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5A30[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5AA0[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5B24[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5BA0[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5C08[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5C60[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5CC8[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5D3C[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5D98[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5DF0[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5E4C[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5EA8[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5F00[];
+extern u32 dLBTransitionBlock_AnimJoint_0x5F64[];
+
+u32 dLBTransitionBlock_AnimJoint_0x536C[30] = {
 	aobjEvent32End(),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x78),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xE4),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x144),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x1AC),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x210),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x278),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x2E0),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x348),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x3B4),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x400),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x45C),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x4CC),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x544),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x5C0),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x648),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x6C4),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x734),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x7B8),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x834),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x89C),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x8F4),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x95C),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0x9D0),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xA2C),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xA84),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xAE0),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xB3C),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xB94),
-	(u32)((u8*)dLBTransitionBlock_AnimJoint_0x536C + 0xBF8),
+	(u32)dLBTransitionBlock_AnimJoint_0x53E4,
+	(u32)dLBTransitionBlock_AnimJoint_0x5450,
+	(u32)dLBTransitionBlock_AnimJoint_0x54B0,
+	(u32)dLBTransitionBlock_AnimJoint_0x5518,
+	(u32)dLBTransitionBlock_AnimJoint_0x557C,
+	(u32)dLBTransitionBlock_AnimJoint_0x55E4,
+	(u32)dLBTransitionBlock_AnimJoint_0x564C,
+	(u32)dLBTransitionBlock_AnimJoint_0x56B4,
+	(u32)dLBTransitionBlock_AnimJoint_0x5720,
+	(u32)dLBTransitionBlock_AnimJoint_0x576C,
+	(u32)dLBTransitionBlock_AnimJoint_0x57C8,
+	(u32)dLBTransitionBlock_AnimJoint_0x5838,
+	(u32)dLBTransitionBlock_AnimJoint_0x58B0,
+	(u32)dLBTransitionBlock_AnimJoint_0x592C,
+	(u32)dLBTransitionBlock_AnimJoint_0x59B4,
+	(u32)dLBTransitionBlock_AnimJoint_0x5A30,
+	(u32)dLBTransitionBlock_AnimJoint_0x5AA0,
+	(u32)dLBTransitionBlock_AnimJoint_0x5B24,
+	(u32)dLBTransitionBlock_AnimJoint_0x5BA0,
+	(u32)dLBTransitionBlock_AnimJoint_0x5C08,
+	(u32)dLBTransitionBlock_AnimJoint_0x5C60,
+	(u32)dLBTransitionBlock_AnimJoint_0x5CC8,
+	(u32)dLBTransitionBlock_AnimJoint_0x5D3C,
+	(u32)dLBTransitionBlock_AnimJoint_0x5D98,
+	(u32)dLBTransitionBlock_AnimJoint_0x5DF0,
+	(u32)dLBTransitionBlock_AnimJoint_0x5E4C,
+	(u32)dLBTransitionBlock_AnimJoint_0x5EA8,
+	(u32)dLBTransitionBlock_AnimJoint_0x5F00,
+	(u32)dLBTransitionBlock_AnimJoint_0x5F64,
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x53E4[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValRate(0x070, 0),
@@ -417,6 +453,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4F14001,
 	    0xC3F586E5,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5450[] = {
 	aobjEvent32SetVal0Rate(0x054, 0),
 	    0x00000000,
 	    0x00000000,
@@ -441,6 +480,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC528C001,
 	    0xC4098000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x54B0[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValRate(0x070, 0),
@@ -467,6 +509,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4FB4000,
 	    0xC3C80000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5518[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValRate(0x070, 0),
@@ -492,6 +537,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC520DD2A,
 	    0xC3E10000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x557C[] = {
 	aobjEvent32SetVal0Rate(0x014, 0),
 	    0x00000000,
 	    0x00000000,
@@ -518,6 +566,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC5214000,
 	    0xC3AF0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x55E4[] = {
 	aobjEvent32SetValRate(0x074, 0),
 	    0x00000000,
 	    0x3C5EBF10,
@@ -544,6 +595,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC52AA000,
 	    0xC3C80000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x564C[] = {
 	aobjEvent32SetVal0Rate(0x014, 0),
 	    0x00000000,
 	    0x00000000,
@@ -570,6 +624,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC50CA000,
 	    0xC4098000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x56B4[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
 	    0x00000000,
 	aobjEvent32SetValRate(0x070, 0),
@@ -597,6 +654,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC50A2000,
 	    0xC3FA0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5720[] = {
 	aobjEvent32SetValRate(0x060, 0),
 	    0x00000000,
 	    0x4229588E,
@@ -616,6 +676,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4DAC000,
 	    0xC3E10000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x576C[] = {
 	aobjEvent32SetValBlock(0x070, 0),
 	    0x00000000,
 	    0x00000000,
@@ -639,6 +702,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC5192000,
 	    0xC42F0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x57C8[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0xC48FC000,
@@ -667,6 +733,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC5034000,
 	    0xC4098000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5838[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0xC4898000,
@@ -697,6 +766,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4F64001,
 	    0xC42F0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x58B0[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0xC43B8000,
@@ -728,6 +800,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4D48000,
 	    0xC3BE0001,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x592C[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -762,6 +837,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4D70001,
 	    0xC42F0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x59B4[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -793,6 +871,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC50CA000,
 	    0xC4098000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5A30[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -821,6 +902,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC5066000,
 	    0xC43B8000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5AA0[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -854,6 +938,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4FA0000,
 	    0xC4610000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5B24[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0xC3AF0000,
@@ -885,6 +972,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC5228000,
 	    0xC4160000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5BA0[] = {
 	aobjEvent32SetVal(0x064, 0),
 	    0x00000000,
 	    0xC47A0000,
@@ -911,6 +1001,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC5228000,
 	    0xC3FA0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5C08[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0x448FC000,
@@ -933,6 +1026,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x45002000,
 	    0xC4548000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5C60[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -959,6 +1055,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x447A0000,
 	    0xC43B8000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5CC8[] = {
 	aobjEvent32SetVal(0x075, 0),
 	    0x00000000,
 	    0x00000000,
@@ -988,6 +1087,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x00000000,
 	    0xC47A0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5D3C[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -1011,6 +1113,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC4020000,
 	    0xC43B8000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5D98[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0x44898000,
@@ -1033,6 +1138,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x44DAC000,
 	    0xC46D8000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5DF0[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -1056,6 +1164,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xC3340000,
 	    0xC46D8000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5E4C[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0x448FC000,
@@ -1079,6 +1190,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x449C4000,
 	    0xC4548000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5EA8[] = {
 	aobjEvent32SetValBlock(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -1101,6 +1215,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x437A0000,
 	    0xC4548000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5F00[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -1126,6 +1243,9 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0x437A0000,
 	    0xC47A0000,
 	aobjEvent32End(),
+};
+
+u32 dLBTransitionBlock_AnimJoint_0x5F64[] = {
 	aobjEvent32SetVal(0x074, 0),
 	    0x00000000,
 	    0x00000000,
@@ -1156,6 +1276,7 @@ u32 dLBTransitionBlock_AnimJoint_0x536C[797] = {
 	    0xBE820C4A,
 	    0xC4548000,
 	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(4);
 

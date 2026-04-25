@@ -248,10 +248,19 @@ DObjDesc dMVOpeningCliff_OcarinaDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x6850 to 0x8910 (8384 bytes) */
-u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[2096] = {
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C[];
+extern u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4[];
+
+u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[3] = {
 	aobjEvent32End(),
-	(u32)((u8*)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint + 0xC),
-	(u32)((u8*)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint + 0x2094),
+	(u32)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C,
+	(u32)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4,
+};
+
+u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C[] = {
 	aobjEvent32SetVal0RateBlock(0x077, 0),
 	    0x3FA50A3A,
 	    0xBF4A5FD4,
@@ -2334,6 +2343,9 @@ u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[2096] = {
 	    0x4373DD3D,
 	    0x4294504A,
 	aobjEvent32End(),
+};
+
+u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4[] = {
 	aobjEvent32SetValAfter(0x077, 0),
 	    0x3F2368DB,
 	    0xBEFE0814,
@@ -2343,9 +2355,9 @@ u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[2096] = {
 	    0xC14BDEBE,
 	aobjEvent32Wait(160),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x8910 to 0x8A70 (352 bytes) */
 u32 dMVOpeningCliff_Cam_AnimJoint[88] = {

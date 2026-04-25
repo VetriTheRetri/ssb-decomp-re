@@ -47,45 +47,39 @@ DObjDesc dLBTransitionKannon_DObjDesc_0x1F00[] = {
 };
 
 /* Raw data from file offset 0x1FB0 to 0x2010 (96 bytes) */
-/* Forward decls — each script body is a u32 array of aobjEvent32* macro
- * words and raw f32 payloads. Stored as u32[] (not AObjEvent32[]) because
- * AObjEvent32 is a union whose first member is `f32 f`; a brace-enclosed
- * u32 initializer would silently round-trip through int->float conversion
- * and clobber the bit pattern. The runtime accesses these via
- * `AObjEvent32 *` pointers from the table below. */
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
 extern u32 dLBTransitionKannon_AnimJoint_0x1FBC[];
 extern u32 dLBTransitionKannon_AnimJoint_0x1FE0[];
 
-/* AObjScript pointer table — one entry per non-end DObjDesc above. Slots
- * +0x4 and +0x8 get rewritten to chain-encoded form by fixRelocChain.py
- * per the .reloc; the source values just need to compile. */
-u32 dLBTransitionKannon_AnimJoint_0x1FB0[3] = {
-	(u32)NULL,
-	(u32)dLBTransitionKannon_AnimJoint_0x1FBC,
-	(u32)dLBTransitionKannon_AnimJoint_0x1FE0,
+AObjEvent32 *dLBTransitionKannon_AnimJoint_0x1FB0[3] = {
+	NULL,
+	(AObjEvent32 *)dLBTransitionKannon_AnimJoint_0x1FBC,
+	(AObjEvent32 *)dLBTransitionKannon_AnimJoint_0x1FE0,
 };
 
 u32 dLBTransitionKannon_AnimJoint_0x1FBC[] = {
 	aobjEvent32SetVal0Rate(0x002, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x005, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x002, 64),
-	    0x40490FDB,
-	    0x3E04918C,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0x3E04918C,  /* 0.12946146726608276f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionKannon_AnimJoint_0x1FE0[] = {
 	aobjEvent32SetVal0Rate(0x002, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x005, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x002, 64),
-	    0xC0490FDB,
-	    0xBE0700FD,
+	    0xC0490FDB,  /* -3.1415927410125732f */
+	    0xBE0700FD,  /* -0.13183970749378204f */
 	aobjEvent32End(),
 };
 

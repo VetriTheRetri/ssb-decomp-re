@@ -30,26 +30,26 @@ DObjDesc dLBTransitionStar_DObjDesc_0x2450[] = {
  * scripts. Forward decls so the table can reference them. */
 extern u32 dLBTransitionStar_AnimJoint_0x24DC[];
 
-u32 dLBTransitionStar_AnimJoint_0x24D4[2] = {
-	aobjEvent32End(),
-	(u32)dLBTransitionStar_AnimJoint_0x24DC,
+AObjEvent32 *dLBTransitionStar_AnimJoint_0x24D4[2] = {
+	NULL,
+	(AObjEvent32 *)dLBTransitionStar_AnimJoint_0x24DC,
 };
 
 u32 dLBTransitionStar_AnimJoint_0x24DC[] = {
 	aobjEvent32SetValAfter(0x200, 0),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetVal0Rate(0x180, 0),
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRate(0x180, 64),
-	    0x428C0000,
-	    0x40177777,
-	    0x428C0000,
-	    0x40177777,
+	    0x428C0000,  /* 70.0f */
+	    0x40177777,  /* 2.366666555404663f */
+	    0x428C0000,  /* 70.0f */
+	    0x40177777,  /* 2.366666555404663f */
 	aobjEvent32SetValBlock(0x004, 64),
-	    0xBFC90FDB,
+	    0xBFC90FDB,  /* -1.5707963705062866f */
 	aobjEvent32End(),
 };
 

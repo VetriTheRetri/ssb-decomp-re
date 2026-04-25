@@ -89,24 +89,24 @@ Gfx dCaptainSpecial3_DL_0x0760[26] = {
 extern u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[];
 extern u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[];
 
-u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[1] = {
-	(u32)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C,
+AObjEvent32 *dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[1] = {
+	(AObjEvent32 *)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C,
 };
 
 u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,
+	    0x40000000,  /* 2.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,
-	    0x1C000000,
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
 };
 

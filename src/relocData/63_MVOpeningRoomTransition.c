@@ -71,13 +71,13 @@ u8 dMVOpeningRoomTransition_Overlay_post[12] = {
 /* Raw data from file offset 0x0714 to 0x0F40 (2092 bytes) */
 u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
-	    0x3D4CCCCD,
-	    0x3D4CCCCD,
-	    0x3D4CCCCD,
+	    0x3D4CCCCD,  /* 0.05000000074505806f */
+	    0x3D4CCCCD,  /* 0.05000000074505806f */
+	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	aobjEvent32SetVal0RateBlock(0x380, 40),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -325,26 +325,26 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetVal(0x224, 1241),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
 	aobjEvent32SetValBlock(0x0EA, 884),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x056A023E,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x056A023E,  /* 1.1003038948499695e-35f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32JumpRaw(0x3B4, 409, 0x00000000),
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetValBlock(0x32A, 589),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x056501A3,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x056501A3,  /* 1.0767828871289108e-35f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32WaitRaw(0x0F8, 228),
@@ -355,11 +355,11 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetVal(0x2B4, 236),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x06A800A8,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x06A800A8,  /* 6.319554057291584e-35f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32WaitRaw(0x3B8, 0),
@@ -371,42 +371,42 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetValRateBlock(0x2BB, 32482),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x0817FF34,
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x053AFEF6,
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x03B8FF43,
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x0817FF34,  /* 4.573989945713604e-34f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x053AFEF6,  /* 8.792506898510257e-36f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x03B8FF43,  /* 1.0873153244043915e-36f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	    0xFF000000,
 	aobjEvent32SetVal(0x3B1, 32004),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x0702FDE0,
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x0702FDE0,  /* 9.854720155920184e-35f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	    0xFF000000,
 	aobjEvent32SetValBlock(0x0B7, 32094),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x0486FE20,
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x0486FE20,  /* 3.17366255566488e-36f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	    0xFF000000,
 	aobjEvent32SetVal(0x119, 31599),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x0615FCC0,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x0615FCC0,  /* 2.820947669683479e-35f */
 	aobjEvent32End(),
 	aobjEvent32End(),
 	    0xFF000000,
@@ -418,8 +418,8 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetValBlock(0x041, 31481),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	    0xFF000000,
 	aobjEvent32WaitRaw(0x0B9, 31852),
 	aobjEvent32End(),
@@ -522,9 +522,9 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetValBlock(0x10C, 2035),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
 	aobjEvent32WaitRaw(0x14A, 1449),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -537,11 +537,11 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32SetVal(0x1D8, 1874),
-	    0x00000000,
-	    0x00000000,
-	    0xFF000000,
-	    0x065A0536,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0xFF000000,  /* -1.7014118346046923e+38f */
+	    0x065A0536,  /* 4.1005071348927475e-35f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 	    0xFF000000,
 	aobjEvent32WaitRaw(0x112, 776),
@@ -590,13 +590,13 @@ u8 dMVOpeningRoomTransition_Outline_post[12] = {
 /* Raw data from file offset 0x11C4 to 0x11F0 (44 bytes) */
 u32 dMVOpeningRoomTransition_Outline_AnimJoint[11] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
-	    0x3D4CCCCD,
-	    0x3D4CCCCD,
-	    0x3D4CCCCD,
+	    0x3D4CCCCD,  /* 0.05000000074505806f */
+	    0x3D4CCCCD,  /* 0.05000000074505806f */
+	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	aobjEvent32SetVal0RateBlock(0x380, 40),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),

@@ -781,191 +781,191 @@ u32 dGRBonus2PikachuFile2_Layer1Anim_AnimJoint[436] = {
 	    0x44166122,
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x198),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x1F8),
-	    0x1A040000,
+	aobjEvent32SetInterp(0, 0x008),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x3C4),
 	aobjEvent32SetValBlock(0x008, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Cmd12(0x008, 400),
 	aobjEvent32Wait(99),
 	aobjEvent32SetValBlock(0x008, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Wait(400),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x3DC),
-	    0x1A040000,
+	aobjEvent32SetInterp(0, 0x008),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x3C4),
 	aobjEvent32SetValBlock(0x008, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Cmd12(0x008, 100),
 	aobjEvent32Wait(399),
 	aobjEvent32SetValBlock(0x008, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Wait(100),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x418),
-	    0x1A040000,
+	aobjEvent32SetInterp(0, 0x008),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x3C4),
 	aobjEvent32SetValBlock(0x008, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Cmd12(0x008, 300),
 	aobjEvent32Wait(199),
 	aobjEvent32SetValBlock(0x008, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Wait(300),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x454),
-	    0x1A040000,
+	aobjEvent32SetInterp(0, 0x008),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x3C4),
 	aobjEvent32SetValBlock(0x008, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Cmd12(0x008, 200),
 	aobjEvent32Wait(299),
 	aobjEvent32SetValBlock(0x008, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x008, 499),
-	    0x3F7F7CEE,
+	    0x3F7F7CEE,  /* 0.9980000257492065f */
 	aobjEvent32Wait(200),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x490),
-	    0x1A040000,
+	aobjEvent32SetInterp(0, 0x008),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x3C4),
 	aobjEvent32SetValBlock(0x008, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x008, 500),
-	    0x3F800000,
-	    0x1C000000,
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x4CC),
 	aobjEvent32SetVal0RateBlock(0x020, 0),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32Cmd12(0x020, 150),
 	aobjEvent32SetValAfter(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(100),
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32Wait(150),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x4EC),
 	aobjEvent32SetVal0RateBlock(0x020, 0),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32Cmd12(0x020, 200),
 	aobjEvent32SetValAfter(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(50),
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32Wait(200),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x52C),
 	aobjEvent32SetVal0Rate(0x020, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0xC4160000,
-	    0x1C000000,
+	    0xC4160000,  /* -600.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x56C),
 	aobjEvent32SetVal0RateBlock(0x020, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Cmd12(0x020, 50),
 	aobjEvent32SetValAfter(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(200),
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Wait(50),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x598),
 	aobjEvent32SetVal0RateBlock(0x020, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Cmd12(0x020, 100),
 	aobjEvent32SetValAfter(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(150),
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Wait(100),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x5D8),
 	aobjEvent32SetVal0RateBlock(0x020, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Cmd12(0x020, 150),
 	aobjEvent32SetValAfter(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(100),
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Wait(150),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x618),
 	aobjEvent32SetVal0RateBlock(0x020, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 250),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Cmd12(0x020, 200),
 	aobjEvent32SetValAfter(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(50),
 	aobjEvent32SetVal0RateBlock(0x020, 251),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0Rate(0x020, 249),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32Wait(199),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x658),
 	aobjEvent32SetVal0Rate(0x020, 0),
-	    0x44E10000,
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
-	    0x44160000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 250),
-	    0x44E10000,
-	    0x1C000000,
+	    0x44E10000,  /* 1800.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus2PikachuFile2_Layer1Anim_AnimJoint + 0x698),
 	aobjEvent32End(),
 	aobjEvent32End(),

@@ -138,50 +138,50 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	aobjEvent32EndRaw(0x0F6, 135),
 	aobjEvent32EndRaw(0x10C, 153),
 	aobjEvent32SetVal0RateBlock(0x180, 0),
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetVal0RateBlock(0x180, 23),
-	    0x3F9080F3,
-	    0x3F9080F3,
+	    0x3F9080F3,  /* 1.1289352178573608f */
+	    0x3F9080F3,  /* 1.1289352178573608f */
 	aobjEvent32SetVal0RateBlock(0x180, 22),
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	    0x0098007C,
 	aobjEvent32SetValRateBlock(0x180, 0),
-	    0x3F8BE76D,
-	    0x3C080406,
-	    0x3F8BE76D,
-	    0x3C080406,
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0x3C080406,  /* 0.008301740512251854f */
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0x3C080406,  /* 0.008301740512251854f */
 	aobjEvent32SetVal0RateBlock(0x180, 7),
-	    0x3F9080F3,
-	    0x3F9080F3,
+	    0x3F9080F3,  /* 1.1289352178573608f */
+	    0x3F9080F3,  /* 1.1289352178573608f */
 	aobjEvent32SetVal0RateBlock(0x180, 23),
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValRateBlock(0x180, 15),
-	    0x3F8BE76D,
-	    0x3BF9F44D,
-	    0x3F8BE76D,
-	    0x3BF9F44D,
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0x3BF9F44D,  /* 0.007627999875694513f */
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0x3BF9F44D,  /* 0.007627999875694513f */
 	aobjEvent32SetAnim(0x000, 0),
 	    0x00AA0087,
 	aobjEvent32SetValRateBlock(0x180, 0),
-	    0x3F8BE76D,
-	    0xBC3B8DCA,
-	    0x3F8BE76D,
-	    0xBC412490,
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0xBC3B8DCA,  /* -0.011447379365563393f */
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0xBC412490,  /* -0.011788502335548401f */
 	aobjEvent32SetVal0RateBlock(0x180, 14),
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetVal0RateBlock(0x180, 23),
-	    0x3F9080F3,
-	    0x3F9080F3,
+	    0x3F9080F3,  /* 1.1289352178573608f */
+	    0x3F9080F3,  /* 1.1289352178573608f */
 	aobjEvent32SetValRateBlock(0x180, 8),
-	    0x3F8BE76D,
-	    0xBBF9F44D,
-	    0x3F8BE76D,
-	    0xBBF9F44D,
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0xBBF9F44D,  /* -0.007627999875694513f */
+	    0x3F8BE76D,  /* 1.093000054359436f */
+	    0xBBF9F44D,  /* -0.007627999875694513f */
 	aobjEvent32SetAnim(0x000, 0),
 	    0x012E0099,
 	aobjEvent32End(),
@@ -195,13 +195,13 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32SetVal0RateBlock(0x222, 8738),
-	    0x00000000,
-	    0x00000000,
-	    0x00000001,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000001,  /* 1.401298464324817e-45f */
 	aobjEvent32SetVal0Rate(0x046, 17492),
-	    0x00000000,
-	    0x00000000,
-	    0x00000012,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000012,  /* 2.5223372357846707e-44f */
 	    0x34566666,
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -309,12 +309,12 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	    0xFFFFFFFF,
 	    0xFFFFFFFF,
 	aobjEvent32SetExtValAfterBlock(0x0D7, 24047),
-	    0xFFFFFFFF,
-	    0xFFFFFFFF,
-	    0xFFFFFFFF,
-	    0x014E014E,
-	    0x00000000,
-	    0x00000402,
+	    0xFFFFFFFF,  /* nanf */
+	    0xFFFFFFFF,  /* nanf */
+	    0xFFFFFFFF,  /* nanf */
+	    0x014E014E,  /* 3.783716048446655e-38f */
+	    0x00000000,  /* 0.0f */
+	    0x00000402,  /* 1.4377322243972623e-42f */
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x040, 0),
 	aobjEvent32EndRaw(0x080, 64),
@@ -339,24 +339,24 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	aobjEvent32EndRaw(0x000, 8),
 	    0xFFFFFF00,
 	aobjEvent32SetExtValAfter(0x04C, 9728),
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x2EE, 304),
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x27F, 32468),
 	    0xFF6A0000,
 	aobjEvent32SetValBlock(0x3FE, 0),
-	    0xDFDFFFFF,
-	    0xFEC2FED4,
-	    0xFF6A0000,
-	    0x00000000,
-	    0x2F0AE6FF,
-	    0xFEC2012C,
-	    0xFF6A0000,
-	    0x00000800,
-	    0xDFDFFFFF,
+	    0xDFDFFFFF,  /* -3.228179992996846e+19f */
+	    0xFEC2FED4,  /* -1.2959668722758875e+38f */
+	    0xFF6A0000,  /* -3.110393510136703e+38f */
+	    0x00000000,  /* 0.0f */
+	    0x2F0AE6FF,  /* 1.263309318266792e-10f */
+	    0xFEC2012C,  /* -1.2893815795257739e+38f */
+	    0xFF6A0000,  /* -3.110393510136703e+38f */
+	    0x00000800,  /* 2.8698592549372254e-42f */
+	    0xDFDFFFFF,  /* -3.228179992996846e+19f */
 	aobjEvent32EndRaw(0x27E, 300),
 	    0xFF6A0000,
 	aobjEvent32SetVal(0x000, 2047),
@@ -377,8 +377,8 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	aobjEvent32EndRaw(0x000, 8),
 	    0xF5900000,
 	aobjEvent32SetValBlock(0x202, 16464),
-	    0xF5800400,
-	    0x000D4350,
+	    0xF5800400,  /* -3.2455816773968386e+32f */
+	    0x000D4350,  /* 1.218008625191131e-39f */
 	    0xD7000002,
 	    0xFFFFFFFF,
 	    0xF2000000,
@@ -391,12 +391,12 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	aobjEvent32End(),
 	    0xF3000000,
 	aobjEvent32SetValBlock(0x21F, 29696),
-	    0xE7000000,
-	    0x00000000,
-	    0xD9FDFBFF,
-	    0x00000000,
-	    0x01003006,
-	    0x01890150,
+	    0xE7000000,  /* -6.044629098073146e+23f */
+	    0x00000000,  /* 0.0f */
+	    0xD9FDFBFF,  /* -8936280217878528.0f */
+	    0x00000000,  /* 0.0f */
+	    0x01003006,  /* 2.354434214308657e-38f */
+	    0x01890150,  /* 5.032773523971524e-38f */
 	aobjEvent32WaitRaw(0x208, 512),
 	aobjEvent32End(),
 	    0xE7000000,
@@ -423,17 +423,17 @@ u32 dStageYosterFile3_AnimJoint_0x0100[364] = {
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x344, 418),
 	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFFFF00,
+	    0xFFFFFF00,  /* nanf */
 	aobjEvent32SetExtValBlock(0x001, 100),
-	    0xFFFFFFFF,
+	    0xFFFFFFFF,  /* nanf */
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x348, 413),
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x354, 426),
 	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFFFFFF,
+	    0xFFFFFFFF,  /* nanf */
 	aobjEvent32SetExtValBlock(0x001, 100),
-	    0xFFFFFF00,
+	    0xFFFFFF00,  /* nanf */
 	aobjEvent32End(),
 	    0xFFFF01A5,
 	aobjEvent32End(),

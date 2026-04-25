@@ -406,18 +406,18 @@ u8 dFoxSpecial3_gap_0x2C88[492] = {
 /* Raw data from file offset 0x2E74 to 0x2EB4 (64 bytes) */
 u32 dFoxSpecial3__2E74__AnimJoint[16] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetVal0RateBlock(0x380, 3),
-	    0x3F570A40,
-	    0x3F570A40,
-	    0x3F59999C,
+	    0x3F570A40,  /* 0.8400001525878906f */
+	    0x3F570A40,  /* 0.8400001525878906f */
+	    0x3F59999C,  /* 0.8500001430511475f */
 	aobjEvent32SetVal0RateBlock(0x380, 3),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	    0x1C000000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)dFoxSpecial3__2E74__AnimJoint,
 	aobjEvent32End(),
 	(u32)0x2EB4,

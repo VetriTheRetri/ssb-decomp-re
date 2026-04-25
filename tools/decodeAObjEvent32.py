@@ -155,19 +155,24 @@ def decode_stream(words, sym, chain_pointers):
         macro, payload_fn = OPCODES[opcode]
         nfollow = payload_fn(flags, payload)
         # Guard against payload overflow OR a chain pointer landing inside
-        # this opcode's payload window (mis-aligned decode).
+        # this opcode's payload window (mis-aligned decode). Jump (0x01),
+        # SetAnim (0x0E), and SetInterp (0x0D) read their next word as
+        # `->p` -- a pointer the runtime jumps to. A chain pointer at that
+        # position is the EXPECTED form, so don't fall back to raw hex.
         if i + nfollow >= n:
             out.append((f"0x{word:08X}", 'raw', word))
             i += 1
             continue
-        payload_window_clean = all(
-            (i + 1 + k) * 4 not in chain_pointers
-            for k in range(nfollow)
-        )
-        if not payload_window_clean:
-            out.append((f"0x{word:08X}", 'raw', word))
-            i += 1
-            continue
+        expects_pointer_payload = opcode in (0x01, 0x0D, 0x0E)
+        if not expects_pointer_payload:
+            payload_window_clean = all(
+                (i + 1 + k) * 4 not in chain_pointers
+                for k in range(nfollow)
+            )
+            if not payload_window_clean:
+                out.append((f"0x{word:08X}", 'raw', word))
+                i += 1
+                continue
         if opcode == 0x01:  # Jump
             if flags == 0 and payload == 0:
                 out.append((f"aobjEvent32Jump(0x{words[i+1]:08X})", 'cmd', word))
@@ -184,8 +189,34 @@ def decode_stream(words, sym, chain_pointers):
             continue
         out.append((format_call(macro, opcode, flags, payload), 'cmd', word))
         i += 1
+        # Opcodes whose follow-up payload words are f32 values (the runtime
+        # reads `event32->f` from each one). Annotate with `/* {value}f */`
+        # so the human-readable view shows the numeric value alongside the
+        # bit pattern.
+        is_f32_payload_op = opcode in (
+            0x03, 0x04,           # SetValBlock / SetVal
+            0x05, 0x06,           # SetValRateBlock / SetValRate
+            0x07,                 # SetTargetRate
+            0x08, 0x09,           # SetVal0RateBlock / SetVal0Rate
+            0x0A, 0x0B,           # SetValAfterBlock / SetValAfter
+            0x11,                 # Cmd17 (multi-track f32 dispatch)
+            0x12, 0x13, 0x14, 0x15  # SetExt* family
+        )
         for _ in range(nfollow):
-            out.append((f"0x{words[i]:08X}", 'payload', words[i]))
+            payload_byte = i * 4
+            if payload_byte in chain_pointers:
+                # Jump / SetAnim / SetInterp -- runtime reads `->p` here,
+                # and the .reloc has the chain target. Emit symbolic ref.
+                out.append((f"(u32){chain_pointers[payload_byte]}", 'pointer', words[i]))
+            elif is_f32_payload_op:
+                bits = words[i]
+                f = struct.unpack('>f', struct.pack('>I', bits))[0]
+                # Annotate with the float value for readability. process_array
+                # adds the trailing `,`; we put the comment after where it
+                # would land.
+                out.append((f"0x{bits:08X}", 'f32_payload', bits))
+            else:
+                out.append((f"0x{words[i]:08X}", 'payload', words[i]))
             i += 1
     return out
 
@@ -193,12 +224,17 @@ def decode_stream(words, sym, chain_pointers):
 def process_array(text, sym, words, chain_pointers):
     """Decode this array's words to a body string. Lines are tab-indented;
     payload words and raw entries get an extra spacing prefix to visually
-    separate them from command lines."""
+    separate them from command lines. f32 payloads get a trailing
+    `/* {value}f */` comment showing the float interpretation."""
     decoded = decode_stream(words, sym, chain_pointers)
     lines = []
-    for s, kind, _ in decoded:
+    for s, kind, orig_word in decoded:
         prefix = "" if kind in ('cmd', 'pointer') else "    "
-        lines.append(f"\t{prefix}{s},")
+        if kind == 'f32_payload':
+            f = struct.unpack('>f', struct.pack('>I', orig_word))[0]
+            lines.append(f"\t{prefix}{s},  /* {f!r}f */")
+        else:
+            lines.append(f"\t{prefix}{s},")
     return "\n".join(lines) + "\n"
 
 

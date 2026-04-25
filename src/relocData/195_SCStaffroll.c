@@ -3168,9 +3168,9 @@ u8 dSCStaffroll_Interpolation_0x7304[52] = {
 /* Raw data from file offset 0x7338 to 0x78C0 (1416 bytes) */
 u32 dSCStaffroll_AnimJoint_0x7338[354] = {
 	aobjEvent32SetValBlock(0x004, 0),
-	    0xBE427301,
+	    0xBE427301,  /* -0.18989183008670807f */
 	aobjEvent32SetValBlock(0x004, 99),
-	    0x3ED67750,
+	    0x3ED67750,  /* 0.41887903213500977f */
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -3193,19 +3193,19 @@ u32 dSCStaffroll_AnimJoint_0x7338[354] = {
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x1DE, 3855),
 	aobjEvent32SetTargetRate(0x21E, 3855),
-	    0x0F0F0F0F,
-	    0x0F0F0F0F,
-	    0x0F0F0F0F,
-	    0x0F0F5FCF,
-	    0xBB650000,
+	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
+	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
+	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
+	    0x0F0F5FCF,  /* 7.068896404376069e-30f */
+	    0xBB650000,  /* -0.0034942626953125f */
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x1DE, 3855),
 	aobjEvent32SetTargetRate(0x21E, 3855),
-	    0x0F0F0F0F,
-	    0x0F0F0F0F,
-	    0x0F0F0F0F,
-	    0x0F5FCB65,
-	    0x00000000,
+	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
+	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
+	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
+	    0x0F5FCB65,  /* 1.103392122834375e-29f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x1DE, 3855),
 	    0xEFEFEFEF,
@@ -3478,8 +3478,8 @@ u32 dSCStaffroll_AnimJoint_0x7338[354] = {
 	aobjEvent32EndRaw(0x000, 8),
 	    0xF5700000,
 	aobjEvent32SetValBlock(0x202, 16464),
-	    0xF5680800,
-	    0x000D4350,
+	    0xF5680800,  /* -2.9413455333420635e+32f */
+	    0x000D4350,  /* 1.218008625191131e-39f */
 	    0xD7000002,
 	    0xFFFFFFFF,
 	    0xF2000000,
@@ -3501,16 +3501,16 @@ u32 dSCStaffroll_AnimJoint_0x7338[354] = {
 	aobjEvent32EndRaw(0x200, 16392),
 	(u32)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x420),
 	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,
-	    0xDF000000,
+	    0x00000602,  /* 2.1551970381315687e-42f */
+	    0xDF000000,  /* -9.223372036854776e+18f */
 	aobjEvent32End(),
 	    0xE7000000,
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x200, 16392),
 	(u32)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x460),
 	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,
-	    0xE7000000,
+	    0x00040002,  /* 3.673447872288935e-40f */
+	    0xE7000000,  /* -6.044629098073146e+23f */
 	aobjEvent32End(),
 	    0xD9FFFFFF,
 	aobjEvent32EndRaw(0x044, 5),

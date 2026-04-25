@@ -80,10 +80,10 @@ PAD(8);
 extern u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC[];
 extern u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8[];
 
-u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint[3] = {
-	aobjEvent32End(),
-	(u32)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC,
-	(u32)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8,
+AObjEvent32 *dMarioSpecial2_EntryDokanAnimJoint_AnimJoint[3] = {
+	NULL,
+	(AObjEvent32 *)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC,
+	(AObjEvent32 *)dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8,
 };
 
 u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC[] = {
@@ -94,29 +94,29 @@ u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC[] = {
 
 u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8[] = {
 	aobjEvent32SetVal(0x120, 0),
-	    0x41674408,
-	    0x3727C5AC,
+	    0x41674408,  /* 14.454109191894531f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	aobjEvent32SetValAfter(0x2D0, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x120, 7),
-	    0x41674408,
-	    0x3F800000,
+	    0x41674408,  /* 14.454109191894531f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetVal(0x100, 86),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x020, 18),
-	    0x43A08006,
+	    0x43A08006,  /* 321.00018310546875f */
 	aobjEvent32SetValBlock(0x020, 50),
-	    0x43A08006,
+	    0x43A08006,  /* 321.00018310546875f */
 	aobjEvent32SetValBlock(0x020, 18),
-	    0x41674410,
+	    0x41674410,  /* 14.454116821289062f */
 	aobjEvent32SetVal(0x020, 27),
-	    0x41674410,
+	    0x41674410,  /* 14.454116821289062f */
 	aobjEvent32SetValBlock(0x100, 7),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x100, 20),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };

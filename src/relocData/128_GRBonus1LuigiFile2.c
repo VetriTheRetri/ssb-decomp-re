@@ -307,46 +307,46 @@ u32 dGRBonus1LuigiFile2_Layer1Anim_AnimJoint[200] = {
 	(u32)((u8*)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint + 0x3C),
 	(u32)((u8*)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint + 0x94),
 	aobjEvent32SetVal0RateBlock(0x010, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetVal0RateBlock(0x010, 99),
-	    0x44160000,
+	    0x44160000,  /* 600.0f */
 	aobjEvent32SetVal0RateBlock(0x010, 100),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetValBlock(0x010, 1),
-	    0xC4160000,
-	    0x1C000000,
+	    0xC4160000,  /* -600.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint + 0x14),
 	aobjEvent32SetVal(0x030, 0),
-	    0xC5160000,
-	    0x44610000,
+	    0xC5160000,  /* -2400.0f */
+	    0x44610000,  /* 900.0f */
 	aobjEvent32SetValAfter(0x040, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x030, 49),
-	    0xC5160000,
-	    0x44E10000,
+	    0xC5160000,  /* -2400.0f */
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetValBlock(0x030, 50),
-	    0xC53B8000,
-	    0x44E10000,
+	    0xC53B8000,  /* -3000.0f */
+	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetValBlock(0x030, 50),
-	    0xC53B8000,
-	    0x44610000,
+	    0xC53B8000,  /* -3000.0f */
+	    0x44610000,  /* 900.0f */
 	aobjEvent32SetValBlock(0x030, 50),
-	    0xC5160000,
-	    0x44610000,
+	    0xC5160000,  /* -2400.0f */
+	    0x44610000,  /* 900.0f */
 	aobjEvent32SetValBlock(0x030, 1),
-	    0xC5160000,
-	    0x44610000,
-	    0x1C000000,
+	    0xC5160000,  /* -2400.0f */
+	    0x44610000,  /* 900.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint + 0x3C),
 	aobjEvent32SetValBlock(0x020, 0),
-	    0x44960000,
+	    0x44960000,  /* 1200.0f */
 	aobjEvent32SetValBlock(0x020, 159),
-	    0x45034000,
+	    0x45034000,  /* 2100.0f */
 	aobjEvent32SetValBlock(0x020, 40),
-	    0x44960000,
+	    0x44960000,  /* 1200.0f */
 	aobjEvent32SetValBlock(0x020, 1),
-	    0x44960000,
-	    0x1C000000,
+	    0x44960000,  /* 1200.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint + 0x94),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -493,11 +493,11 @@ u32 dGRBonus1LuigiFile2_Layer1Anim_AnimJoint[200] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32SetValAfter(0x070, 0),
-	    0x44160000,
-	    0x4587F000,
-	    0x00000000,
+	    0x44160000,  /* 600.0f */
+	    0x4587F000,  /* 4350.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(200),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint + 0x2FC),
 	aobjEvent32End(),
 	aobjEvent32End(),

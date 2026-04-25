@@ -95,9 +95,9 @@ PAD(12);
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[];
 
-u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[2] = {
-	aobjEvent32End(),
-	(u32)dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418,
+AObjEvent32 *dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[2] = {
+	NULL,
+	(AObjEvent32 *)dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418,
 };
 
 u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[] = {
@@ -213,38 +213,38 @@ PAD(12);
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28[];
 
-u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[2] = {
-	aobjEvent32End(),
-	(u32)dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28,
+AObjEvent32 *dSamusSpecial2_EntryPointAnimJoint_AnimJoint[2] = {
+	NULL,
+	(AObjEvent32 *)dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28,
 };
 
 u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28[] = {
 	aobjEvent32SetVal(0x380, 0),
-	    0x3F800000,
-	    0x3727C5AC,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfter(0x070, 0),
-	    0x00000000,
-	    0x43D98000,
-	    0xC3A50000,
+	    0x00000000,  /* 0.0f */
+	    0x43D98000,  /* 435.0f */
+	    0xC3A50000,  /* -330.0f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetVal(0x280, 109),
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x100, 1),
-	    0x3727C5AC,
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	aobjEvent32SetValBlock(0x100, 10),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x100, 98),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x380, 10),
-	    0x3F800000,
-	    0x3727C5AC,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValBlock(0x380, 1),
-	    0x3727C5AC,
-	    0x3727C5AC,
-	    0x3727C5AC,
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };

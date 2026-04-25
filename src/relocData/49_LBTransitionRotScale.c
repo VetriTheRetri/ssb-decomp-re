@@ -36,28 +36,28 @@ DObjDesc dLBTransitionRotScale_DObjDesc_0x0F98[] = {
  * scripts. Forward decls so the table can reference them. */
 extern u32 dLBTransitionRotScale_AnimJoint_0x1024[];
 
-u32 dLBTransitionRotScale_AnimJoint_0x101C[2] = {
-	aobjEvent32End(),
-	(u32)dLBTransitionRotScale_AnimJoint_0x1024,
+AObjEvent32 *dLBTransitionRotScale_AnimJoint_0x101C[2] = {
+	NULL,
+	(AObjEvent32 *)dLBTransitionRotScale_AnimJoint_0x1024,
 };
 
 u32 dLBTransitionRotScale_AnimJoint_0x1024[] = {
 	aobjEvent32SetValAfter(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x380, 0),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValRate(0x004, 64),
-	    0x41FB53D1,
-	    0x3FA53483,
+	    0x41FB53D1,  /* 31.415925979614258f */
+	    0x3FA53483,  /* 1.2906650304794312f */
 	aobjEvent32SetValBlock(0x380, 64),
-	    0x3727C5AC,
-	    0x3727C5AC,
-	    0x3727C5AC,
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	aobjEvent32End(),
 };
 

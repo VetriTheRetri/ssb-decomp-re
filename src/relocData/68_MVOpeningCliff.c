@@ -254,2105 +254,2105 @@ DObjDesc dMVOpeningCliff_OcarinaDObjDesc[] = {
 extern u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C[];
 extern u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4[];
 
-u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[3] = {
-	aobjEvent32End(),
-	(u32)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C,
-	(u32)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4,
+AObjEvent32 *dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[3] = {
+	NULL,
+	(AObjEvent32 *)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C,
+	(AObjEvent32 *)dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4,
 };
 
 u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x685C[] = {
 	aobjEvent32SetVal0RateBlock(0x077, 0),
-	    0x3FA50A3A,
-	    0xBF4A5FD4,
-	    0x4036E287,
-	    0x41DD577D,
-	    0x43A8B6E6,
-	    0x4287298E,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA50A97,
-	    0x37CD5180,
-	    0xBF4A5FEA,
-	    0xB63C5D8F,
-	    0x4036E251,
-	    0xB7EC15AF,
-	    0x41DD94F5,
-	    0x3D87B417,
-	    0x43A8B387,
-	    0xBD694122,
-	    0x428729C4,
-	    0x3A726924,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA50BA8,
-	    0x384D0122,
-	    0xBF4A6028,
-	    0xB6AFCECB,
-	    0x4036E1B5,
-	    0xB86AD436,
-	    0x41DE48E8,
-	    0x3E0487C0,
-	    0x43A8A9EF,
-	    0xBDDD8776,
-	    0x42872A65,
-	    0x3AF26925,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA50D70,
-	    0x38989376,
-	    0xBF4A6086,
-	    0xB6F9E5EF,
-	    0x4036E0B0,
-	    0xB8ADEC93,
-	    0x41DF6C80,
-	    0x3E416755,
-	    0x43A89AE5,
-	    0xBE1C2F03,
-	    0x42872B73,
-	    0x3B332C52,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA50FE5,
-	    0x38C89BF6,
-	    0xBF4A6107,
-	    0xB71BB729,
-	    0x4036DF4A,
-	    0xB8E43C75,
-	    0x41E0F90A,
-	    0x3E7A7801,
-	    0x43A88733,
-	    0xBE42A2FF,
-	    0x42872CE3,
-	    0x3B6B4BE7,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA516CA,
-	    0x39133D30,
-	    0xBF4A6243,
-	    0xB7466960,
-	    0x4036DB5F,
-	    0xB92663B5,
-	    0x41E531B2,
-	    0x3EB098CF,
-	    0x43A854EA,
-	    0xBE7AA0D9,
-	    0x428730EB,
-	    0x3BAB882D,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA51B34,
-	    0x39293706,
-	    0xBF4A62FC,
-	    0xB7557B17,
-	    0x4036D8E3,
-	    0xB93EE081,
-	    0x41E7D057,
-	    0x3EC76C79,
-	    0x43A837E1,
-	    0xBE86133E,
-	    0x4287337D,
-	    0x3BC4903C,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA52033,
-	    0x393E9025,
-	    0xBF4A63BE,
-	    0xB759E046,
-	    0x4036D611,
-	    0xB9569465,
-	    0x41EABCCC,
-	    0x3EDC59C3,
-	    0x43A81948,
-	    0xBE8B5636,
-	    0x42873662,
-	    0x3BDBE1E0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA525CC,
-	    0x3954258C,
-	    0xBF4A6480,
-	    0xB7593F8D,
-	    0x4036D2EC,
-	    0xB96D7F5E,
-	    0x41EDF05C,
-	    0x3EEF6020,
-	    0x43A7F9E9,
-	    0xBE8D1519,
-	    0x4287399A,
-	    0x3BF376F9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA52BFE,
-	    0x39687971,
-	    0xBF4A6541,
-	    0xB7561BD7,
-	    0x4036CF77,
-	    0xB981BC9A,
-	    0x41F16433,
-	    0x3F003EA5,
-	    0x43A7DA89,
-	    0xBE8B5851,
-	    0x42873D26,
-	    0x3C05644B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA532B8,
-	    0x397C1886,
-	    0xBF4A65FD,
-	    0xB74CB0C4,
-	    0x4036CBB6,
-	    0xB98C5510,
-	    0x41F5118B,
-	    0x3F07DA2A,
-	    0x43A7BBEF,
-	    0xBE861DCA,
-	    0x42874104,
-	    0x3C0FFF4B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA53A02,
-	    0x3987E5D9,
-	    0xBF4A66AD,
-	    0xB73E3FC6,
-	    0x4036C7A9,
-	    0xB9969D27,
-	    0x41F8F1A7,
-	    0x3F0E8313,
-	    0x43A79EE3,
-	    0xBE7AC293,
-	    0x42874528,
-	    0x3C1A1363,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA541D4,
-	    0x399146E1,
-	    0xBF4A674F,
-	    0xB72663B5,
-	    0x4036C357,
-	    0xB9A04483,
-	    0x41FCFDC8,
-	    0x3F143842,
-	    0x43A7842C,
-	    0xBE625245,
-	    0x42874995,
-	    0x3C2405C0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA552F2,
-	    0x39A258F0,
-	    0xBF4A6846,
-	    0xB6D7FE07,
-	    0x4036B9EE,
-	    0xB9B1C513,
-	    0x4202BF79,
-	    0x3F1CC7AF,
-	    0x43A758D5,
-	    0xBE1C834F,
-	    0x42875337,
-	    0x3C361249,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA55C36,
-	    0x39AAE705,
-	    0xBF4A6895,
-	    0xB6879F86,
-	    0x4036B4DF,
-	    0xB9BA6740,
-	    0x4204F336,
-	    0x3F1FA192,
-	    0x43A749C1,
-	    0xBDDE27A9,
-	    0x42875865,
-	    0x3C3E6FF5,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA565F3,
-	    0x39B31AB0,
-	    0xBF4A68BF,
-	    0xB5B9DAA1,
-	    0x4036AF91,
-	    0xB9C290E1,
-	    0x42072F69,
-	    0x3F2188A7,
-	    0x43A74021,
-	    0xBD6A70B5,
-	    0x42875DCD,
-	    0x3C4646B9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA57020,
-	    0x39BAA387,
-	    0xBF4A68BF,
-	    0x35D2F825,
-	    0x4036AA0D,
-	    0xB9C9DD71,
-	    0x420970B1,
-	    0x3F227C5C,
-	    0x43A73CB9,
-	    0x3A41EDB7,
-	    0x4287636B,
-	    0x3C4DEAD7,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA57AB4,
-	    0x39C1F01E,
-	    0xBF4A6890,
-	    0x36A34005,
-	    0x4036A458,
-	    0xB9D09D61,
-	    0x420BB3AA,
-	    0x3F227CA0,
-	    0x43A7404C,
-	    0x3D8647F2,
-	    0x42876940,
-	    0x3C54A2E9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA585B0,
-	    0x39C91E90,
-	    0xBF4A682D,
-	    0x37110A9B,
-	    0x40369E74,
-	    0xB9D73522,
-	    0x420DF4F3,
-	    0x3F24E02F,
-	    0x43A74BA7,
-	    0x3E0FCCB4,
-	    0x42876F3E,
-	    0x3C5AF5CA,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA59110,
-	    0x39CFC05D,
-	    0xBF4A678E,
-	    0x37557B1B,
-	    0x40369862,
-	    0xB9DD686E,
-	    0x421048EC,
-	    0x3F2CF343,
-	    0x43A76047,
-	    0x3E644C2B,
-	    0x4287756C,
-	    0x3C6126F2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA59CCA,
-	    0x39D62FEF,
-	    0xBF4A66B2,
-	    0x378E3747,
-	    0x40369225,
-	    0xB9E3232B,
-	    0x4212C3AB,
-	    0x3F374E3C,
-	    0x43A77E6B,
-	    0x3E9A8752,
-	    0x42877BC2,
-	    0x3C668DBD,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5B54D,
-	    0x39E23C1B,
-	    0xBF4A6429,
-	    0x37E16922,
-	    0x4036853B,
-	    0xB9ECF2B4,
-	    0x42181E07,
-	    0x3F48C1F7,
-	    0x43A7D2EC,
-	    0x3EDC842F,
-	    0x428788DA,
-	    0x3C701AED,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5C208,
-	    0x39E7B085,
-	    0xBF4A6272,
-	    0x380726F8,
-	    0x40367E95,
-	    0xB9F16BF7,
-	    0x421AF5ED,
-	    0x3F4FDA77,
-	    0x43A80714,
-	    0x3EF62409,
-	    0x42878F96,
-	    0x3C741F97,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5CF10,
-	    0x39ECAC62,
-	    0xBF4A6067,
-	    0x381F030A,
-	    0x403677CF,
-	    0xB9F5447E,
-	    0x421DE51E,
-	    0x3F55DC11,
-	    0x43A84065,
-	    0x3F056CB9,
-	    0x4287966D,
-	    0x3C77BF13,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5DC59,
-	    0x39F1BC55,
-	    0xBF4A5E06,
-	    0x383939DE,
-	    0x403670F2,
-	    0xB9F8CCA5,
-	    0x4220E7C1,
-	    0x3F5AC8BB,
-	    0x43A87DC2,
-	    0x3F0D4F0E,
-	    0x42879D5C,
-	    0x3C7AD7A7,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5E9F1,
-	    0x39F685F9,
-	    0xBF4A5B41,
-	    0x3854DA5E,
-	    0x403669FA,
-	    0xB9FBF056,
-	    0x4223F9FE,
-	    0x3F5E9FD0,
-	    0x43A8BE17,
-	    0x3F12C064,
-	    0x4287A45F,
-	    0x3C7D25DF,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5F7C2,
-	    0x39FA9AC4,
-	    0xBF4A581B,
-	    0x3870CB3B,
-	    0x403662F0,
-	    0xB9FE734B,
-	    0x422717F4,
-	    0x3F61601F,
-	    0x43A9004C,
-	    0x3F15BA67,
-	    0x4287AB6F,
-	    0x3C7F95D0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA605CE,
-	    0x39FE734B,
-	    0xBF4A548F,
-	    0x3887EFE5,
-	    0x40365BD5,
-	    0xBA003ED9,
-	    0x422A3DC4,
-	    0x3F630A0E,
-	    0x43A94346,
-	    0x3F163D17,
-	    0x4287B294,
-	    0x3C808467,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA6140D,
-	    0x3A010CC2,
-	    0xBF4A508D,
-	    0x3897A251,
-	    0x403654AE,
-	    0xBA0125E0,
-	    0x422D6792,
-	    0x3F639E35,
-	    0x43A985EF,
-	    0x3F144B96,
-	    0x4287B9B9,
-	    0x3C810B47,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA63127,
-	    0x3A0458B4,
-	    0xBF4A4734,
-	    0x38B9C690,
-	    0x4036463E,
-	    0xBA023530,
-	    0x4233B7B6,
-	    0x3F618469,
-	    0x43AA05ED,
-	    0x3F090807,
-	    0x4287C81D,
-	    0x3C8178F5,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA63FEF,
-	    0x3A05AE3D,
-	    0xBF4A41CD,
-	    0x38CBAB90,
-	    0x40363EFE,
-	    0xBA027B7A,
-	    0x4236D64A,
-	    0x3F5ED52B,
-	    0x43AA4112,
-	    0x3EFF6FDF,
-	    0x4287CF53,
-	    0x3C81815B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA64EE2,
-	    0x3A06DBA0,
-	    0xBF4A3BE1,
-	    0x38DE092B,
-	    0x403637BC,
-	    0xBA02716E,
-	    0x4239E964,
-	    0x3F5B11DA,
-	    0x43AA7788,
-	    0x3EE7DF02,
-	    0x4287D683,
-	    0x3C8102E1,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA65DEC,
-	    0x3A07F9F1,
-	    0xBF4A3575,
-	    0x38F1E485,
-	    0x4036307E,
-	    0xBA023527,
-	    0x423CED31,
-	    0x3F56377F,
-	    0x43AAA832,
-	    0x3ECB619B,
-	    0x4287DDAB,
-	    0x3C8051D0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA66D1E,
-	    0x3A090930,
-	    0xBF4A2E6F,
-	    0x390380AD,
-	    0x40362942,
-	    0xBA01DABD,
-	    0x423FDDC4,
-	    0x3F504680,
-	    0x43AAD1FC,
-	    0x3EA9FBE3,
-	    0x4287E4C8,
-	    0x3C7EA9BA,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA67C65,
-	    0x3A09AEF2,
-	    0xBF4A26D6,
-	    0x390DC8C5,
-	    0x4036220D,
-	    0xBA012FF4,
-	    0x4242B749,
-	    0x3F494072,
-	    0x43AAF3CC,
-	    0x3E83ABBD,
-	    0x4287EBD3,
-	    0x3C7C8E19,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA68BBD,
-	    0x3A0A6DD3,
-	    0xBF4A1EAB,
-	    0x3918F7ED,
-	    0x40361AE4,
-	    0xBA006708,
-	    0x424575E0,
-	    0x3F412317,
-	    0x43AB0C8C,
-	    0x3E30E68A,
-	    0x4287F2D2,
-	    0x3C79DAB4,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA69B2E,
-	    0x3A1046B3,
-	    0xBF4A15D4,
-	    0x38EF4D7A,
-	    0x403613C6,
-	    0xBA0499F8,
-	    0x424815A7,
-	    0x3F3B0B3B,
-	    0x43AB1B22,
-	    0x3DA95340,
-	    0x4287F9B7,
-	    0x3C500679,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA6BECE,
-	    0x3A34D4B3,
-	    0xBF4A15F8,
-	    0xB9215DCE,
-	    0x40360378,
-	    0xBA252C49,
-	    0x424D439A,
-	    0x3F3C419F,
-	    0x43AB1A60,
-	    0xBDA49D86,
-	    0x4287FEBB,
-	    0xBB7A9433,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA6D408,
-	    0x3A485AAA,
-	    0xBF4A234E,
-	    0xB99DB783,
-	    0x4035F9C8,
-	    0xBA3684AF,
-	    0x424FE485,
-	    0x3F3DD32E,
-	    0x43AB0D12,
-	    0xBE19015B,
-	    0x4287FAE7,
-	    0xBC511449,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA6EB5C,
-	    0x3A5A8609,
-	    0xBF4A390A,
-	    0xB9E7DDBA,
-	    0x4035EF2D,
-	    0xBA466960,
-	    0x42528A66,
-	    0x3F3F0AA0,
-	    0x43AAF859,
-	    0xBE57A669,
-	    0x4287F31B,
-	    0xBCAEECA3,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA704A0,
-	    0x3A6BE87C,
-	    0xBF4A56DE,
-	    0xBA1772A3,
-	    0x4035E3B9,
-	    0xBA55710E,
-	    0x425533FA,
-	    0x3F3FE5FB,
-	    0x43AADD1D,
-	    0xBE87146A,
-	    0x4287E774,
-	    0xBCF2DF30,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA71FD2,
-	    0x3A7C7CFC,
-	    0xBF4A7C66,
-	    0xBA395801,
-	    0x4035D772,
-	    0xBA637D94,
-	    0x4257DFF4,
-	    0x3F4066F5,
-	    0x43AABC46,
-	    0xBE9E4235,
-	    0x4287D81A,
-	    0xBD1A2CAE,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA73CC6,
-	    0x3A85DB73,
-	    0xBF4AA94D,
-	    0xBA59D3B7,
-	    0x4035CA6E,
-	    0xBA703E95,
-	    0x425A8D1D,
-	    0x3F408D4C,
-	    0x43AA96BA,
-	    0xBEB162E9,
-	    0x4287C52B,
-	    0xBD397F34,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA75B5A,
-	    0x3A8CFD56,
-	    0xBF4ADD47,
-	    0xBA78C29A,
-	    0x4035BCBB,
-	    0xBA7BDC3F,
-	    0x425D3A28,
-	    0x3F4056E3,
-	    0x43AA6D61,
-	    0xBEC0724A,
-	    0x4287AEDA,
-	    0xBD575EBC,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA77B7B,
-	    0x3A93AE34,
-	    0xBF4B17F0,
-	    0xBA8B1619,
-	    0x4035AE6D,
-	    0xBA833555,
-	    0x425FE5CE,
-	    0x3F3FC5F7,
-	    0x43AA4123,
-	    0xBECB705C,
-	    0x42879546,
-	    0xBD74064C,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA7BFE7,
-	    0x3A9F7913,
-	    0xBF4BA00F,
-	    0xBAA632BD,
-	    0x4035902F,
-	    0xBA8C2CE1,
-	    0x426533E6,
-	    0x3F3D910B,
-	    0x43A9E394,
-	    0xBED53AAD,
-	    0x428758EA,
-	    0xBD94C5E3,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA7E3F5,
-	    0x3AA4A225,
-	    0xBF4BECD4,
-	    0xBAB29A94,
-	    0x40358062,
-	    0xBA8FCE26,
-	    0x4267D3C7,
-	    0x3F3BEC1E,
-	    0x43A9B411,
-	    0xBED406EC,
-	    0x4287366B,
-	    0xBDA12616,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA8091F,
-	    0x3AA93709,
-	    0xBF4C3EED,
-	    0xBABE460E,
-	    0x40357034,
-	    0xBA92F6DD,
-	    0x426A6D28,
-	    0x3F39EB80,
-	    0x43A98547,
-	    0xBECEC611,
-	    0x4287113E,
-	    0xBDACDDA9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA82F38,
-	    0x3AAD5864,
-	    0xBF4C9613,
-	    0xBAC92DA2,
-	    0x40355FB3,
-	    0xBA9592EF,
-	    0x426CFECA,
-	    0x3F378FD7,
-	    0x43A9581A,
-	    0xBEC571CC,
-	    0x4286E989,
-	    0xBDB7F2EB,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA85638,
-	    0x3AB0FC2D,
-	    0xBF4CF1E0,
-	    0xBAD34D8A,
-	    0x40354EF1,
-	    0xBA978437,
-	    0x426F8763,
-	    0x3F34D83B,
-	    0x43A92D77,
-	    0xBEB80C36,
-	    0x4286BF6E,
-	    0xBDC25D6F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA87DEF,
-	    0x3AB406C0,
-	    0xBF4D5208,
-	    0xBADCAFD4,
-	    0x40353E02,
-	    0xBA98E8DC,
-	    0x427205AF,
-	    0x3F31C444,
-	    0x43A9063F,
-	    0xBEA6976C,
-	    0x42869318,
-	    0xBDCC12AC,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA8A649,
-	    0x3AB689B4,
-	    0xBF4DB62D,
-	    0xBAE5533E,
-	    0x40352CF0,
-	    0xBA99CFEB,
-	    0x42747861,
-	    0x3F2E55A9,
-	    0x43A8E35F,
-	    0xBE910F37,
-	    0x428664AB,
-	    0xBDD53023,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA8CF1E,
-	    0x3AB89199,
-	    0xBF4E1E04,
-	    0xBAED32C0,
-	    0x40351BCE,
-	    0xBA9A1139,
-	    0x4276DE40,
-	    0x3F2A8AB2,
-	    0x43A8C5BB,
-	    0xBE6EE72B,
-	    0x42863447,
-	    0xBDDD941B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA921E1,
-	    0x3ABAFB6F,
-	    0xBF4EF754,
-	    0xBAFAB01E,
-	    0x4034F99B,
-	    0xBA98FCF3,
-	    0x427B7E4B,
-	    0x3F24A4E6,
-	    0x43A89DCF,
-	    0xBDF2A42A,
-	    0x4285CE4A,
-	    0xBDEC7302,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA94B88,
-	    0x3ABB5FE5,
-	    0xBF4F6827,
-	    0xBB002297,
-	    0x4034E8A8,
-	    0xBA978E43,
-	    0x427DC992,
-	    0x3F27A03B,
-	    0x43A89344,
-	    0xBD9A7022,
-	    0x428598F6,
-	    0xBDF2CE53,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA97537,
-	    0x3ABB2DC2,
-	    0xBF4FDB48,
-	    0xBB0292C7,
-	    0x4034D7E7,
-	    0xBA9579E5,
-	    0x42801390,
-	    0x3F2BF09B,
-	    0x43A88CA3,
-	    0xBD2EB1B4,
-	    0x4285624C,
-	    0xBDF8747C,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA99EC8,
-	    0x3ABA5A99,
-	    0xBF505072,
-	    0xBB04A493,
-	    0x4034C76B,
-	    0xBA92CE9B,
-	    0x4281488C,
-	    0x3F2E9B21,
-	    0x43A8898E,
-	    0xBC55B09C,
-	    0x42852A76,
-	    0xBDFD7C2A,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA9C819,
-	    0x3AB9026C,
-	    0xBF50C741,
-	    0xBB065660,
-	    0x4034B741,
-	    0xBA8F8CB3,
-	    0x428280D0,
-	    0x3F2FA029,
-	    0x43A889AA,
-	    0x3C5C46D4,
-	    0x4284F190,
-	    0xBE00E105,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA9F110,
-	    0x3AB72807,
-	    0xBF513F6E,
-	    0xBB07A35C,
-	    0x4034A77F,
-	    0xBA8BAA5A,
-	    0x4283B96E,
-	    0x3F2F00C0,
-	    0x43A88C9E,
-	    0x3D16EA06,
-	    0x4284B7D2,
-	    0xBE02ABB1,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAA198E,
-	    0x3AB4A28F,
-	    0xBF51B88E,
-	    0xBB089013,
-	    0x40349832,
-	    0xBA87270A,
-	    0x4284EF79,
-	    0x3F2CBC05,
-	    0x43A8920E,
-	    0x3D69B74D,
-	    0x42847D54,
-	    0xBE041DA2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAA4167,
-	    0x3AB17EC6,
-	    0xBF523261,
-	    0xBB092753,
-	    0x40348971,
-	    0xBA81F8E1,
-	    0x42862005,
-	    0x3F28D1E1,
-	    0x43A8999C,
-	    0x3D97D609,
-	    0x4284424E,
-	    0xBE052D7C,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAA8EB5,
-	    0x3AA966C1,
-	    0xBF5326BA,
-	    0xBB0930BE,
-	    0x40346DD2,
-	    0xBA6B74F3,
-	    0x428864E8,
-	    0x3F1C10F9,
-	    0x43A8ADAD,
-	    0x3DCA9FAD,
-	    0x4283CB38,
-	    0xBE0634FA,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAAB3D6,
-	    0x3AA47774,
-	    0xBF53A09D,
-	    0xBB08A4BA,
-	    0x4034611D,
-	    0xBA5EA9E7,
-	    0x4289736C,
-	    0x3F135479,
-	    0x43A8B978,
-	    0x3DD9E7FA,
-	    0x42838F7D,
-	    0xBE063D68,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAAD7DA,
-	    0x3A9F2633,
-	    0xBF5419D1,
-	    0xBB07B25C,
-	    0x40345510,
-	    0xBA53DF36,
-	    0x428A711B,
-	    0x3F092AC6,
-	    0x43A8C5E7,
-	    0x3DE1ADDA,
-	    0x428353D0,
-	    0xBE05F4AF,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAAFA9F,
-	    0x3A994AA6,
-	    0xBF549205,
-	    0xBB065DE9,
-	    0x4034498E,
-	    0xBA49BF19,
-	    0x428B5B77,
-	    0x3EFB0080,
-	    0x43A8D28F,
-	    0x3DE24DD2,
-	    0x42831856,
-	    0xBE055890,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB1C07,
-	    0x3A92D8BA,
-	    0xBF5508DB,
-	    0xBB04A9AB,
-	    0x40343EA1,
-	    0xBA3EC261,
-	    0x428C2FA5,
-	    0x3EE07669,
-	    0x43A8DF11,
-	    0x3DDC4F7D,
-	    0x4282DD33,
-	    0xBE045EE9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB3BEE,
-	    0x3A8BC38A,
-	    0xBF557E07,
-	    0xBB02973D,
-	    0x40343459,
-	    0xBA32FCB7,
-	    0x428CEAC9,
-	    0x3EC2B6B2,
-	    0x43A8EB0E,
-	    0x3DCFCBAA,
-	    0x4282A297,
-	    0xBE030559,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB5A30,
-	    0x3A840ACF,
-	    0xBF55F12E,
-	    0xBB0023D9,
-	    0x40342ABB,
-	    0xBA2663B5,
-	    0x428D8A0A,
-	    0x3EA1C53C,
-	    0x43A8F62C,
-	    0x3DBCA037,
-	    0x428268A8,
-	    0xBE015624,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB76A8,
-	    0x3A7749DE,
-	    0xBF5661FD,
-	    0xBAFAA9D6,
-	    0x403421D9,
-	    0xBA18CFBE,
-	    0x428E0A93,
-	    0x3E7B410C,
-	    0x43A90007,
-	    0x3DA2D636,
-	    0x42822F8C,
-	    0xBDFE793F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABA99E,
-	    0x3A51CF92,
-	    0xBF573B4D,
-	    0xBAED3646,
-	    0x40341275,
-	    0xB9F62141,
-	    0x428EA416,
-	    0x3DAF05C0,
-	    0x43A90E88,
-	    0x3D36DC7C,
-	    0x4281C090,
-	    0xBDF3E01A,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABBFD6,
-	    0x3A3D0D5F,
-	    0xBF57A325,
-	    0xBAE5610E,
-	    0x40340C0E,
-	    0xB9D58F32,
-	    0x428EB75F,
-	    0xBB7CF349,
-	    0x43A91271,
-	    0x3CB741DA,
-	    0x42818B04,
-	    0xBDED6350,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABD3A9,
-	    0x3A26F05C,
-	    0xBF580756,
-	    0xBADCD07B,
-	    0x40340695,
-	    0xB9B356F2,
-	    0x428EA092,
-	    0xBDAFBD52,
-	    0x43A913A0,
-	    0x3B3B9AD5,
-	    0x428156FC,
-	    0xBDE63535,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABE4F6,
-	    0x3A0F9BEB,
-	    0xBF58678F,
-	    0xBAD3838A,
-	    0x40340216,
-	    0xB98F144C,
-	    0x428E6936,
-	    0xBE139A8F,
-	    0x43A91318,
-	    0xBBDFF767,
-	    0x428124A1,
-	    0xBDDE344F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABF398,
-	    0x39ED93B0,
-	    0xBF58C37A,
-	    0xBAC97F76,
-	    0x4033FEA1,
-	    0xB951B6E3,
-	    0x428E1D47,
-	    0xBE40F63B,
-	    0x43A91211,
-	    0xBC37A737,
-	    0x4280F428,
-	    0xBDD56F97,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABFF60,
-	    0x39B96C1A,
-	    0xBF591ACB,
-	    0xBABEB34F,
-	    0x4033FC42,
-	    0xB9022110,
-	    0x428DBD92,
-	    0xBE6C8D5C,
-	    0x43A9108A,
-	    0xBC7FD944,
-	    0x4280C5B4,
-	    0xBDCBFB7C,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAC0836,
-	    0x39823527,
-	    0xBF596D1B,
-	    0xBAB333C9,
-	    0x4033FB03,
-	    0xB8389921,
-	    0x428D4ADD,
-	    0xBE8B2FBD,
-	    0x43A90E83,
-	    0xBCA51391,
-	    0x42809970,
-	    0xBDC1A827,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAC0DDA,
-	    0x3910A624,
-	    0xBF59BA32,
-	    0xBAA6FBAA,
-	    0x4033FAF9,
-	    0x382663B5,
-	    0x428CC5F5,
-	    0xBE9F3417,
-	    0x43A90BF4,
-	    0xBCCB484F,
-	    0x42806F93,
-	    0xBDB68C92,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAC0F37,
-	    0xB8CCD8F3,
-	    0xBF5A432B,
-	    0xBA8C514C,
-	    0x4033FEAA,
-	    0x396464A4,
-	    0x428B88B8,
-	    0xBEC48D9D,
-	    0x43A90539,
-	    0xBD0D2A2B,
-	    0x428023A3,
-	    0xBD9E24B2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAC0A8F,
-	    0xB96A4791,
-	    0xBF5A7E74,
-	    0xBA7BB915,
-	    0x40340284,
-	    0x39A3B893,
-	    0x428AD1F8,
-	    0xBED5E5F2,
-	    0x43A90103,
-	    0xBD21B789,
-	    0x428001EA,
-	    0xBD90C78B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAC0231,
-	    0xB9B99E54,
-	    0xBF5AB31F,
-	    0xBA5D595C,
-	    0x403407C4,
-	    0x39D7210B,
-	    0x428A0C32,
-	    0xBEE657FD,
-	    0x43A8FC3B,
-	    0xBD36777E,
-	    0x427FC67E,
-	    0xBD82A43F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABF5EC,
-	    0xBA006224,
-	    0xBF5AE0E6,
-	    0xBA3D88A1,
-	    0x40340E7A,
-	    0x3A063600,
-	    0x42893830,
-	    0xBEF5E7AE,
-	    0x43A8F6DF,
-	    0xBD4B9CD6,
-	    0x427F8F9F,
-	    0xBD676933,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABE5A4,
-	    0xBA254060,
-	    0xBF5B076B,
-	    0xBA1C2FB6,
-	    0x403416B0,
-	    0x3A21B839,
-	    0x428856BB,
-	    0xBF024958,
-	    0x43A8F0E9,
-	    0xBD616A66,
-	    0x427F5F93,
-	    0xBD481670,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABD12C,
-	    0xBA4B9272,
-	    0xBF5B265C,
-	    0xB9F2D5A1,
-	    0x40342075,
-	    0x3A3E2BAF,
-	    0x428768A0,
-	    0xBF092C5B,
-	    0x43A8EA56,
-	    0xBD77BF13,
-	    0x427F36A2,
-	    0xBD275523,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FABB85F,
-	    0xBA72EEBF,
-	    0xBF5B3D6B,
-	    0xB9AA3736,
-	    0x40342BD5,
-	    0x3A5B5E06,
-	    0x42866EAA,
-	    0xBF0F9DCD,
-	    0x43A8E323,
-	    0xBD872B9A,
-	    0x427F1527,
-	    0xBD04FAE5,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB9B26,
-	    0xBA8DD52F,
-	    0xBF5B4C36,
-	    0xB93D5885,
-	    0x403438D9,
-	    0x3A799F5C,
-	    0x428569A3,
-	    0xBF159DCB,
-	    0x43A8DB4F,
-	    0xBD92B28A,
-	    0x427EFB7D,
-	    0xBCC252B2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB794A,
-	    0xBAA2DE11,
-	    0xBF5B5278,
-	    0xB801F8E1,
-	    0x40344797,
-	    0x3A8C6422,
-	    0x42845A54,
-	    0xBF1B2BBD,
-	    0x43A8D2D4,
-	    0xBD9E8E17,
-	    0x427EE9F0,
-	    0xBC700A10,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAB2742,
-	    0xBACE83E9,
-	    0xBF5B43F2,
-	    0x39960676,
-	    0x40346A57,
-	    0x3AAC82EA,
-	    0x4282200C,
-	    0xBF24F36B,
-	    0x43A8BFDA,
-	    0xBDB6ED89,
-	    0x427EE06B,
-	    0x3B94DF2E,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAAF6DE,
-	    0xBAE51EBB,
-	    0xBF5B2E77,
-	    0x39EDC0E5,
-	    0x40347E6E,
-	    0x3ABD2BB3,
-	    0x4280F6A4,
-	    0xBF292E89,
-	    0x43A8B557,
-	    0xBDC360E9,
-	    0x427EE913,
-	    0x3C700A4F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAAC15B,
-	    0xBAFC54CD,
-	    0xBF5B0F13,
-	    0x3A242E9D,
-	    0x40349468,
-	    0x3ACE1F72,
-	    0x427F8C33,
-	    0xBF2CF801,
-	    0x43A8AA21,
-	    0xBDD00EE7,
-	    0x427EFB1C,
-	    0x3CCDC0B0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAA86A4,
-	    0xBB09FCCE,
-	    0xBF5AE572,
-	    0x3A5318CC,
-	    0x4034AC45,
-	    0x3ADF63C1,
-	    0x427D1E6F,
-	    0xBF3051EE,
-	    0x43A89E35,
-	    0xBDDD116B,
-	    0x427F16D4,
-	    0x3D12E549,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAA469D,
-	    0xBB160F41,
-	    0xBF5AB130,
-	    0x3A81C564,
-	    0x4034C615,
-	    0x3AF0FD76,
-	    0x427AA581,
-	    0xBF333C65,
-	    0x43A8918D,
-	    0xBDEA5762,
-	    0x427F3C70,
-	    0x3D402A9F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FAA012A,
-	    0xBB226559,
-	    0xBF5A7203,
-	    0x3A9AB954,
-	    0x4034E1DC,
-	    0x3B016C19,
-	    0x427822FC,
-	    0xBF35B62A,
-	    0x43A88426,
-	    0xBDF7CFAF,
-	    0x427F6C4C,
-	    0x3D6EC96A,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA9B62A,
-	    0xBB2EE537,
-	    0xBF5A278F,
-	    0x3AB4808F,
-	    0x4034FFA4,
-	    0x3B0A77DF,
-	    0x4275986F,
-	    0xBF37C11E,
-	    0x43A875FF,
-	    0xBE02BD8B,
-	    0x427FA6A4,
-	    0x3D8F4A03,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA96598,
-	    0xBB3B90DF,
-	    0xBF59D174,
-	    0x3ACF1594,
-	    0x40351F71,
-	    0x3B139F23,
-	    0x42730763,
-	    0xBF395D37,
-	    0x43A86714,
-	    0xBE09B0A0,
-	    0x427FEBC0,
-	    0x3DA7C2BF,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA81CC9,
-	    0xBC5C34FE,
-	    0xBF59584D,
-	    0xBA7567E7,
-	    0x403588D6,
-	    0x3BF45DAF,
-	    0x426DF05D,
-	    0xBF2DCA30,
-	    0x43A825A9,
-	    0xBF37F429,
-	    0x4280359E,
-	    0x3C47CAC2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA5FFD4,
-	    0xBCC0E725,
-	    0xBF59DC81,
-	    0xBB65A9E3,
-	    0x40361AA9,
-	    0x3C50D0DE,
-	    0x426B9CB1,
-	    0xBF2130E4,
-	    0x43A7B3C0,
-	    0xBFA18C52,
-	    0x4280290A,
-	    0xBD8372D3,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3FA2C016,
-	    0xBD093345,
-	    0xBF5AF0E0,
-	    0xBBBFEE9F,
-	    0x4036FC52,
-	    0x3C98083B,
-	    0x42697553,
-	    0xBF14E09C,
-	    0x43A70644,
-	    0xBFE1F112,
-	    0x427FF650,
-	    0xBE093963,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F9E5F2E,
-	    0xBD32063E,
-	    0xBF5C8767,
-	    0xBC01A8AA,
-	    0x40383798,
-	    0x3CCDDE75,
-	    0x42677946,
-	    0xBF08D783,
-	    0x43A621CC,
-	    0xC00E96D6,
-	    0x427F5DF4,
-	    0xBE49EE9D,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F98DA6F,
-	    0xBD5B5FAD,
-	    0xBF5E8B88,
-	    0xBC1C3625,
-	    0x4039D8CE,
-	    0x3D0569F5,
-	    0x4265A78E,
-	    0xBEFA2D70,
-	    0x43A50AEE,
-	    0xC0299FED,
-	    0x427E8F13,
-	    0xBE81ECDC,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F922D0B,
-	    0xBD82AD74,
-	    0xBF60DF02,
-	    0xBC2C9B8F,
-	    0x403BECF9,
-	    0x3D2764AD,
-	    0x4263FF24,
-	    0xBEE34184,
-	    0x43A3C645,
-	    0xC0421365,
-	    0x427D8FAE,
-	    0xBE9B7AC9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F8A52D1,
-	    0xBD97CA30,
-	    0xBF6357CF,
-	    0xBC2F7699,
-	    0x403E7FFA,
-	    0x3D4C3661,
-	    0x42627EFA,
-	    0xBECCED94,
-	    0x43A25868,
-	    0xC057F30A,
-	    0x427C65E0,
-	    0xBEB1A253,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F814C80,
-	    0xBDAC8185,
-	    0xBF65BF9A,
-	    0xBC218B7C,
-	    0x40419A25,
-	    0x3D72851B,
-	    0x42612601,
-	    0xBEB736C9,
-	    0x43A0C5EC,
-	    0xC06B3C9E,
-	    0x427B17A8,
-	    0xBEC460D2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F57E95E,
-	    0xBDD0F2B6,
-	    0xBF69519A,
-	    0xBB968279,
-	    0x40496468,
-	    0x3D9D5B36,
-	    0x425EE510,
-	    0xBE8DC8CA,
-	    0x439D4586,
-	    0xC08507CF,
-	    0x42782677,
-	    0xBEDF8BE6,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F3FD227,
-	    0xBDDE2203,
-	    0xBF69ECE2,
-	    0xB948E214,
-	    0x404DFD41,
-	    0x3DAB7601,
-	    0x425DFAA1,
-	    0xBE744B9B,
-	    0x439B60C9,
-	    0xC08ACC43,
-	    0x42768FC8,
-	    0xBEE7EC77,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F2683B3,
-	    0xBDE64670,
-	    0xBF6967F0,
-	    0x3BA8E519,
-	    0x4052ECA8,
-	    0x3DB5146E,
-	    0x425D3275,
-	    0xBE4E9B62,
-	    0x439969D5,
-	    0xC08F4631,
-	    0x4274ED46,
-	    0xBEECCB8B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3F0C9D02,
-	    0xBDE89457,
-	    0xBF6793F4,
-	    0x3C360DDC,
-	    0x40580E64,
-	    0x3DB94E82,
-	    0x425C8B13,
-	    0xBE2AAAD7,
-	    0x4397653E,
-	    0xC092752A,
-	    0x42734543,
-	    0xBEEE1CCF,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3EE596BF,
-	    0xBDE4F062,
-	    0xBF64586F,
-	    0x3C8D8BA1,
-	    0x405D39F3,
-	    0xC05C4A5A,
-	    0x425C02D7,
-	    0xBE089D04,
-	    0x439557A2,
-	    0xC0945954,
-	    0x42719E11,
-	    0xBEEBD571,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3EB367DB,
-	    0xBDDBE900,
-	    0xBF5FB579,
-	    0x3CCE4814,
-	    0xC02FD776,
-	    0xC05C7D93,
-	    0x425B980A,
-	    0xBE5BBA94,
-	    0x43934597,
-	    0xC0968572,
-	    0x426FFE29,
-	    0xBEA93499,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3E83C8AE,
-	    0xBDCCD67F,
-	    0xBF58E0A3,
-	    0x3D144317,
-	    0xC02B06A4,
-	    0x3DA618EB,
-	    0x425A7BF1,
-	    0xBF03CC8B,
-	    0x43912887,
-	    0xC09A3BF6,
-	    0x426F4409,
-	    0x3C905C0A,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3E309B86,
-	    0xBDB75E9E,
-	    0xBF4F3954,
-	    0x3D439C2D,
-	    0xC0269B8F,
-	    0x3D95D0DC,
-	    0x4257EE27,
-	    0xBF69A435,
-	    0x438EFC0E,
-	    0xC09D7A16,
-	    0x42701E44,
-	    0x3ED9E6A9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3D110163,
-	    0xBD82CA13,
-	    0xBF3503D3,
-	    0x3D861072,
-	    0xC01F5186,
-	    0x3D6139BB,
-	    0x424EB40D,
-	    0xBFD5C6A9,
-	    0x438A93B3,
-	    0xC09D8A6C,
-	    0x42758B7C,
-	    0x3F8410EB,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC7E0A0B,
-	    0xBD502A4C,
-	    0xBF2550BE,
-	    0x3D92777A,
-	    0xC01C6FBF,
-	    0x3D3FE185,
-	    0x42481AE0,
-	    0xC0023692,
-	    0x438866DB,
-	    0xC09A706D,
-	    0x4279A2E6,
-	    0x3F9E7841,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBD6151F9,
-	    0xBD1D0773,
-	    0xBF1471C6,
-	    0x3D9B3CE1,
-	    0xC019FC19,
-	    0x3D23A9AA,
-	    0x424039AB,
-	    0xC018FF83,
-	    0x438648B6,
-	    0xC0954CA9,
-	    0x427E5AD3,
-	    0x3FB1A19D,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBDAB6EC8,
-	    0xBCD94C02,
-	    0xBF02CB57,
-	    0x3DA09532,
-	    0xC017E31E,
-	    0x3D0CBFAC,
-	    0x423717EC,
-	    0xC02F46B7,
-	    0x43844070,
-	    0xC08E2BD5,
-	    0x4281C17A,
-	    0x3FBE79B5,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBDD14DD1,
-	    0xBC7B4500,
-	    0xBEE17807,
-	    0x3DA2B0DD,
-	    0xC0161285,
-	    0x3CF50755,
-	    0x422CBC8D,
-	    0xC0451E54,
-	    0x43825502,
-	    0xC0851C39,
-	    0x428478DA,
-	    0x3FC5F20B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBDE34F27,
-	    0xBB984AE7,
-	    0xBEBD3B37,
-	    0x3DA1BAFC,
-	    0xC0147B4D,
-	    0x3CD7BA3E,
-	    0x42212D1A,
-	    0xC05AA874,
-	    0x43808D37,
-	    0xC0745C75,
-	    0x42874211,
-	    0x3FC8ECC9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBDE23CB0,
-	    0x3BB9B6BE,
-	    0xBE9989FE,
-	    0x3D9DE071,
-	    0xC01312F5,
-	    0x3CBEDA3C,
-	    0x42146CA6,
-	    0xC070187D,
-	    0x437DDF24,
-	    0xC05AE63E,
-	    0x428A0EA3,
-	    0x3FC8237B,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBDCEA8FB,
-	    0x3C809C15,
-	    0xBE6E07E5,
-	    0x3D975A5E,
-	    0xC011D43E,
-	    0x3CA758C2,
-	    0x42067B00,
-	    0xC082D7B9,
-	    0x437B04BD,
-	    0xC03DF887,
-	    0x428CD242,
-	    0x3FC413B0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBD63AE92,
-	    0x3D0F2A00,
-	    0xBDDE9463,
-	    0x3D83C212,
-	    0xC00FDB1B,
-	    0x3C5EF35E,
-	    0x41CDDFF5,
-	    0xC0992C65,
-	    0x4376A299,
-	    0xBFF44939,
-	    0x429212A6,
-	    0x3FB2849D,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCA6C5C3,
-	    0x3D1A8769,
-	    0xBD5D008A,
-	    0x3D57CF1E,
-	    0xC00F32E9,
-	    0x3C10559B,
-	    0x41AA8852,
-	    0xC0905F80,
-	    0x43753223,
-	    0xBF9FD367,
-	    0x42947842,
-	    0x3F91C397,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3C3CE63A,
-	    0x3CE0B832,
-	    0xBC74F0F5,
-	    0x3D039E0B,
-	    0xC00EDA56,
-	    0x3B8328C6,
-	    0x418DAA3C,
-	    0xC043AC5D,
-	    0x437469F0,
-	    0xBF19F6EE,
-	    0x42961FE8,
-	    0x3F2ADACC,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3CE90139,
-	    0x3C385DC7,
-	    0x3B525598,
-	    0x3C49E81F,
-	    0xC00EBE3E,
-	    0x3AA6BB72,
-	    0x417E09FE,
-	    0xBF9D9B31,
-	    0x4374203C,
-	    0xBE5C688E,
-	    0x4296D829,
-	    0x3E6B1804,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3D0138EB,
-	    0xBB0ADC3E,
-	    0x3BE481B8,
-	    0xBAD53052,
-	    0xC00EB542,
-	    0x381A2579,
-	    0x41784833,
-	    0x3E47C037,
-	    0x437407E9,
-	    0xBCDB5B32,
-	    0x4296F106,
-	    0xBD7BC400,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3CCA2031,
-	    0xBC36C390,
-	    0x39A5A000,
-	    0xBC368FF9,
-	    0xC00EBD2C,
-	    0xBA5E86F9,
-	    0x4181CBB6,
-	    0x3F94D9AB,
-	    0x4374140A,
-	    0x3DD672DF,
-	    0x4296A02C,
-	    0xBE84B0BA,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0x3C3FC0AC,
-	    0xBC81A641,
-	    0xBC52865C,
-	    0xBC852CED,
-	    0xC00ECE00,
-	    0xBA9C7AE5,
-	    0x418CB0F8,
-	    0x3FD58F80,
-	    0x43743799,
-	    0x3E37393B,
-	    0x429604F7,
-	    0xBEC5BAD7,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBB642D84,
-	    0xBC844F91,
-	    0xBCEA553E,
-	    0xBC8ADDAC,
-	    0xC00EDFF8,
-	    0xBA93E31A,
-	    0x41998A8A,
-	    0x3FDB8DDA,
-	    0x43746587,
-	    0x3E48E970,
-	    0x42954069,
-	    0xBED99B43,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCCDB008,
-	    0xBB7CF45B,
-	    0xBD554CE5,
-	    0xBBA25BEF,
-	    0xC00EFA77,
-	    0xBA3D02BE,
-	    0x41AC309B,
-	    0x3EEB203A,
-	    0x4374AD14,
-	    0x3D7D7967,
-	    0x429407F4,
-	    0xBDF0F99F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCC3C189,
-	    0x3B99FF4D,
-	    0xBD5441E9,
-	    0x3B75F79E,
-	    0xC00F03E7,
-	    0xBA0DDCB7,
-	    0x41ABA389,
-	    0xBED91C9A,
-	    0x4374AD23,
-	    0xBD34F372,
-	    0x429416AB,
-	    0x3E0312C7,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC893264,
-	    0x3BD206BA,
-	    0xBD39F3A2,
-	    0x3BBD007F,
-	    0xC00F0A3D,
-	    0xB9B0336F,
-	    0x41A627A1,
-	    0xBF1B6319,
-	    0x437498F5,
-	    0xBD9FDF86,
-	    0x42947C8C,
-	    0x3E342107,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC4CB19C,
-	    0x3B5EB6CF,
-	    0xBD2A3A6B,
-	    0x3B496B3B,
-	    0xC00F0DB3,
-	    0xB9325190,
-	    0x41A30011,
-	    0xBE9B1C09,
-	    0x43748996,
-	    0xBD6EEB24,
-	    0x4294B6E5,
-	    0x3DB7B162,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC2F5743,
-	    0x3A7292EE,
-	    0xBD238E68,
-	    0x3A5F6B86,
-	    0xC00F0F32,
-	    0xB8671005,
-	    0x41A1D7DC,
-	    0xBD5318F1,
-	    0x43747E65,
-	    0xBD2B66A0,
-	    0x4294CE3E,
-	    0x3CB2F9EB,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC31B8FD,
-	    0xBA7B1D5B,
-	    0xBD240490,
-	    0xBA5CB746,
-	    0xC00F0F4E,
-	    0x37E992FA,
-	    0x41A2444C,
-	    0x3E105BA9,
-	    0x43747687,
-	    0xBCEEDAC4,
-	    0x4294CACB,
-	    0xBCECE0DD,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC4B42FC,
-	    0xBB13A972,
-	    0xBD29B105,
-	    0xBB039C4A,
-	    0xC00F0E62,
-	    0x38BA7B27,
-	    0x41A3D97C,
-	    0x3E8C67D5,
-	    0x4374711D,
-	    0xBCA6C9D7,
-	    0x4294B3E8,
-	    0xBD82E791,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBC73654D,
-	    0xBB42014A,
-	    0xBD32A6C0,
-	    0xBB2D6C77,
-	    0xC00F0CB6,
-	    0x39079FAA,
-	    0x41A62B6E,
-	    0x3EB24961,
-	    0x43746D41,
-	    0xBC7E015B,
-	    0x42949093,
-	    0xBDAAE826,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCA690EE,
-	    0xBB2AEF65,
-	    0xBD46BC9E,
-	    0xBB194AF7,
-	    0xC00F0877,
-	    0x390AEB42,
-	    0x41AB5618,
-	    0x3EA348A9,
-	    0x437466A8,
-	    0xBC8E053F,
-	    0x42944155,
-	    0xBD970DA0,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCB6C8DE,
-	    0xBACAF19E,
-	    0xBD4E04B4,
-	    0xBAB6CB9B,
-	    0xC00F06C0,
-	    0x38B3930A,
-	    0x41AD581C,
-	    0x3E5D38B6,
-	    0x43746228,
-	    0xBCC4D380,
-	    0x429424B7,
-	    0xBD30920A,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBD2190,
-	    0xB9E3657C,
-	    0xBD50E62E,
-	    0xB9D29B20,
-	    0xC00F05F9,
-	    0x3806FEED,
-	    0x41AE6935,
-	    0x3DDC5825,
-	    0x43745BB6,
-	    0xBCFDBDE7,
-	    0x42941A11,
-	    0xBC2ACEDA,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBD1B05,
-	    0x3677C7B3,
-	    0xBD50F20A,
-	    0xB7675659,
-	    0xC00F05D0,
-	    0x3752F85E,
-	    0x41AEE01A,
-	    0x3D877477,
-	    0x4374540D,
-	    0xBD08D154,
-	    0x42941B38,
-	    0x3B38F87D,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBD13CA,
-	    0x369241E2,
-	    0xBD50FFE7,
-	    0xB7899AB6,
-	    0xC00F059B,
-	    0x377DAA1C,
-	    0x41AF5A2E,
-	    0x3D8ABB22,
-	    0x43744C80,
-	    0xBD06B56C,
-	    0x42941CA3,
-	    0x3B5E6274,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBD0AC1,
-	    0x36AEDDDD,
-	    0xBD5110A4,
-	    0xB7A02184,
-	    0xC00F0560,
-	    0x378F2889,
-	    0x41AFD6E8,
-	    0x3D8D58B0,
-	    0x43744513,
-	    0xBD0434E3,
-	    0x42941E4F,
-	    0x3B800E7E,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBD0058,
-	    0x36C559EE,
-	    0xBD512383,
-	    0xB7B22960,
-	    0xC00F051B,
-	    0x37A1FE61,
-	    0x41B055A3,
-	    0x3D8F416F,
-	    0x43743DCD,
-	    0xBD018138,
-	    0x42942033,
-	    0x3B8F5683,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBCF4D0,
-	    0x36D1ABFA,
-	    0xBD513842,
-	    0xB7C2E09F,
-	    0xC00F04CF,
-	    0x37B25131,
-	    0x41B0D5C2,
-	    0x3D9085C1,
-	    0x437436AD,
-	    0xBCFD35F3,
-	    0x4294224B,
-	    0x3B9C82D9,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBCDBD2,
-	    0x36F22B19,
-	    0xBD5166E9,
-	    0xB7DE3194,
-	    0xC00F0426,
-	    0x37C8EC8A,
-	    0x41B1D7DD,
-	    0x3D90F82D,
-	    0x437428F7,
-	    0xBCEFC6DB,
-	    0x429426F7,
-	    0x3BB21EB1,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBCCE1B,
-	    0x36FBB3CD,
-	    0xBD518042,
-	    0xB7E79C31,
-	    0xC00F03CA,
-	    0x37D43967,
-	    0x41B258A5,
-	    0x3D9032CA,
-	    0x43742265,
-	    0xBCE88766,
-	    0x42942980,
-	    0x3BB9E432,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBCBFD5,
-	    0x36FF0A3F,
-	    0xBD519A6A,
-	    0xB7EDEE1B,
-	    0xC00F0369,
-	    0x37DBC2B7,
-	    0x41B2D865,
-	    0x3D8EAB02,
-	    0x43741C09,
-	    0xBCE0E3B9,
-	    0x42942C22,
-	    0x3BC0E019,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBCB1C0,
-	    0x37071D10,
-	    0xBD51B52B,
-	    0xB7F63FE5,
-	    0xC00F0307,
-	    0x37DA813C,
-	    0x41B35674,
-	    0x3D8C86F3,
-	    0x437415E4,
-	    0xBCD81006,
-	    0x42942EDC,
-	    0x3BC4F5A2,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBCA1CA,
-	    0x3706D171,
-	    0xBD51D12D,
-	    0xB7F935DF,
-	    0xC00F02A6,
-	    0x37E209A4,
-	    0x41B3D264,
-	    0x3D89B8EA,
-	    0x43741006,
-	    0xBCCF3BE6,
-	    0x4294319C,
-	    0x3BC73294,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC93C5,
-	    0x3702DB0D,
-	    0xBD51EC96,
-	    0xB7F7EFE3,
-	    0xC00F023D,
-	    0x37E71005,
-	    0x41B44B76,
-	    0x3D863302,
-	    0x43740A5F,
-	    0xBCC646E6,
-	    0x42943466,
-	    0x3BC88442,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC84B0,
-	    0x37075957,
-	    0xBD52084F,
-	    0xB7F9133A,
-	    0xC00F01D9,
-	    0x37E0C8A1,
-	    0x41B4C122,
-	    0x3D820649,
-	    0x43740500,
-	    0xBCBC21EF,
-	    0x4294372E,
-	    0x3BC732FD,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC75AB,
-	    0x37052175,
-	    0xBD5223F9,
-	    0xB7F56766,
-	    0xC00F0176,
-	    0x37DE4537,
-	    0x41B532C6,
-	    0x3D7A41BB,
-	    0x4373FFE9,
-	    0xBCB21E53,
-	    0x429439EF,
-	    0x3BC4D380,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC595E,
-	    0x36FA0455,
-	    0xBD52591B,
-	    0xB7E80627,
-	    0xC00F00B3,
-	    0x37D2F85E,
-	    0x41B6077E,
-	    0x3D62B377,
-	    0x4373F698,
-	    0xBC9C1E4F,
-	    0x42943F4A,
-	    0x3BBA2809,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC4B49,
-	    0x36F8E0FE,
-	    0xBD52727B,
-	    0xB7DF6E09,
-	    0xC00F0058,
-	    0x37C7AB10,
-	    0x41B66963,
-	    0x3D54D5B7,
-	    0x4373F26C,
-	    0xBC8FDDB7,
-	    0x429441D4,
-	    0x3BB21EB1,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC3DB2,
-	    0x36E77E0D,
-	    0xBD528ACB,
-	    0xB7D28467,
-	    0xC00F0002,
-	    0x37BD9ED7,
-	    0x41B6C4CF,
-	    0x3D45A64A,
-	    0x4373EE99,
-	    0xBC83E04D,
-	    0x4294443E,
-	    0x3BA83CD5,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC318C,
-	    0x36D08912,
-	    0xBD52A14B,
-	    0xB7C30935,
-	    0xC00EFFAF,
-	    0x37B11016,
-	    0x41B71933,
-	    0x3D351B7F,
-	    0x4373EB17,
-	    0xBC6EB88D,
-	    0x42944681,
-	    0x3B9CC69F,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC2683,
-	    0x36BF30B0,
-	    0xBD52B62A,
-	    0xB7B28DD6,
-	    0xC00EFF64,
-	    0x37A1FE61,
-	    0x41B765E8,
-	    0x3D2332CB,
-	    0x4373E7F6,
-	    0xBC541BC9,
-	    0x42944899,
-	    0x3B8F5683,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC1C49,
-	    0x36AC143A,
-	    0xBD52C900,
-	    0xB79EBC8C,
-	    0xC00EFF1F,
-	    0x3791AB31,
-	    0x41B7AA5D,
-	    0x3D0FF49B,
-	    0x4373E531,
-	    0xBC38F81C,
-	    0x42944A7D,
-	    0x3B800E3A,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC1361,
-	    0x368DC8EB,
-	    0xBD52D976,
-	    0xB7881838,
-	    0xC00EFEE3,
-	    0x37815846,
-	    0x41B7E5F4,
-	    0x3CF6AD4D,
-	    0x4373E2D2,
-	    0xBC1C837D,
-	    0x42944C28,
-	    0x3B5DDC01,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC0C86,
-	    0x3679FA4A,
-	    0xBD52E743,
-	    0xB7671005,
-	    0xC00EFEAC,
-	    0x3752F85E,
-	    0x41B81813,
-	    0x3CCA9774,
-	    0x4373E0D8,
-	    0xBBFE015B,
-	    0x42944D92,
-	    0x3B38F87D,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBC013E,
-	    0x35F6C280,
-	    0xBD52FB79,
-	    0xB6F31227,
-	    0xC00EFE65,
-	    0x36E20A1C,
-	    0x41B85D6A,
-	    0x3C554BC3,
-	    0x4373DE2B,
-	    0xBB82B107,
-	    0x42944F94,
-	    0x3AC59E44,
-	aobjEvent32SetValRateBlock(0x077, 1),
-	    0xBCBBFE9F,
-	    0x3591D3AD,
-	    0xBD5300AB,
-	    0xB67F8CD9,
-	    0xC00EFE52,
-	    0x36671005,
-	    0x41B86F7D,
-	    0x3BD9A4BF,
-	    0x4373DD79,
-	    0xBB05DA79,
-	    0x4294501A,
-	    0x3A4C7810,
+	    0x3FA50A3A,  /* 1.289374589920044f */
+	    0xBF4A5FD4,  /* -0.7905247211456299f */
+	    0x4036E287,  /* 2.8575761318206787f */
+	    0x41DD577D,  /* 27.6677188873291f */
+	    0x43A8B6E6,  /* 337.42889404296875f */
+	    0x4287298E,  /* 67.58116149902344f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA50A97,  /* 1.2893856763839722f */
+	    0x37CD5180,  /* 2.4475855752825737e-05f */
+	    0xBF4A5FEA,  /* -0.7905260324478149f */
+	    0xB63C5D8F,  /* -2.8068641313439002e-06f */
+	    0x4036E251,  /* 2.8575632572174072f */
+	    0xB7EC15AF,  /* -2.8143489544163458e-05f */
+	    0x41DD94F5,  /* 27.69773292541504f */
+	    0x3D87B417,  /* 0.06626146286725998f */
+	    0x43A8B387,  /* 337.4025573730469f */
+	    0xBD694122,  /* -0.056946881115436554f */
+	    0x428729C4,  /* 67.58157348632812f */
+	    0x3A726924,  /* 0.0009247234556823969f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA50BA8,  /* 1.2894182205200195f */
+	    0x384D0122,  /* 4.887686372967437e-05f */
+	    0xBF4A6028,  /* -0.790529727935791f */
+	    0xB6AFCECB,  /* -5.239480287855258e-06f */
+	    0x4036E1B5,  /* 2.8575260639190674f */
+	    0xB86AD436,  /* -5.598758434643969e-05f */
+	    0x41DE48E8,  /* 27.785598754882812f */
+	    0x3E0487C0,  /* 0.1294240951538086f */
+	    0x43A8A9EF,  /* 337.3276062011719f */
+	    0xBDDD8776,  /* -0.10816852748394012f */
+	    0x42872A65,  /* 67.58280181884766f */
+	    0x3AF26925,  /* 0.0018494470277801156f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA50D70,  /* 1.2894725799560547f */
+	    0x38989376,  /* 7.275391544681042e-05f */
+	    0xBF4A6086,  /* -0.7905353307723999f */
+	    0xB6F9E5EF,  /* -7.447546067851363e-06f */
+	    0x4036E0B0,  /* 2.857463836669922f */
+	    0xB8ADEC93,  /* -8.293348219012842e-05f */
+	    0x41DF6C80,  /* 27.927978515625f */
+	    0x3E416755,  /* 0.18887074291706085f */
+	    0x43A89AE5,  /* 337.2101135253906f */
+	    0xBE1C2F03,  /* -0.15252308547496796f */
+	    0x42872B73,  /* 67.5848617553711f */
+	    0x3B332C52,  /* 0.002733964938670397f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA50FE5,  /* 1.2895475625991821f */
+	    0x38C89BF6,  /* 9.565793152432889e-05f */
+	    0xBF4A6107,  /* -0.7905430197715759f */
+	    0xB71BB729,  /* -9.281365237256978e-06f */
+	    0x4036DF4A,  /* 2.8573784828186035f */
+	    0xB8E43C75,  /* -0.00010883148206630722f */
+	    0x41E0F90A,  /* 28.121601104736328f */
+	    0x3E7A7801,  /* 0.2445984035730362f */
+	    0x43A88733,  /* 337.0562438964844f */
+	    0xBE42A2FF,  /* -0.19007490575313568f */
+	    0x42872CE3,  /* 67.5876693725586f */
+	    0x3B6B4BE7,  /* 0.0035903395619243383f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA516CA,  /* 1.2897579669952393f */
+	    0x39133D30,  /* 0.0001404180657118559f */
+	    0xBF4A6243,  /* -0.790561854839325f */
+	    0xB7466960,  /* -1.182625419460237e-05f */
+	    0x4036DB5F,  /* 2.8571393489837646f */
+	    0xB92663B5,  /* -0.00015868137415964156f */
+	    0x41E531B2,  /* 28.64926528930664f */
+	    0x3EB098CF,  /* 0.34491583704948425f */
+	    0x43A854EA,  /* 336.66339111328125f */
+	    0xBE7AA0D9,  /* -0.24475421011447906f */
+	    0x428730EB,  /* 67.59554290771484f */
+	    0x3BAB882D,  /* 0.005234739277511835f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA51B34,  /* 1.2898926734924316f */
+	    0x39293706,  /* 0.00016137593775056303f */
+	    0xBF4A62FC,  /* -0.7905728816986084f */
+	    0xB7557B17,  /* -1.272444842470577e-05f */
+	    0x4036D8E3,  /* 2.856987714767456f */
+	    0xB93EE081,  /* -0.00018203446234110743f */
+	    0x41E7D057,  /* 28.976728439331055f */
+	    0x3EC76C79,  /* 0.3894994556903839f */
+	    0x43A837E1,  /* 336.4365539550781f */
+	    0xBE86133E,  /* -0.2618655562400818f */
+	    0x4287337D,  /* 67.6005630493164f */
+	    0x3BC4903C,  /* 0.005998639389872551f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA52033,  /* 1.290045142173767f */
+	    0x393E9025,  /* 0.00018173510034102947f */
+	    0xBF4A63BE,  /* -0.7905844449996948f */
+	    0xB759E046,  /* -1.2986425645067357e-05f */
+	    0x4036D611,  /* 2.8568155765533447f */
+	    0xB9569465,  /* -0.00020463911641854793f */
+	    0x41EABCCC,  /* 29.342185974121094f */
+	    0x3EDC59C3,  /* 0.43037232756614685f */
+	    0x43A81948,  /* 336.197509765625f */
+	    0xBE8B5636,  /* -0.27214211225509644f */
+	    0x42873662,  /* 67.60621643066406f */
+	    0x3BDBE1E0,  /* 0.006710276007652283f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA525CC,  /* 1.2902159690856934f */
+	    0x3954258C,  /* 0.00020231882808730006f */
+	    0xBF4A6480,  /* -0.7905960083007812f */
+	    0xB7593F8D,  /* -1.294900448556291e-05f */
+	    0x4036D2EC,  /* 2.856623649597168f */
+	    0xB96D7F5E,  /* -0.00022649529273621738f */
+	    0x41EDF05C,  /* 29.74236297607422f */
+	    0x3EEF6020,  /* 0.4675302505493164f */
+	    0x43A7F9E9,  /* 335.9524230957031f */
+	    0xBE8D1519,  /* -0.27555158734321594f */
+	    0x4287399A,  /* 67.61250305175781f */
+	    0x3BF376F9,  /* 0.007429954130202532f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA52BFE,  /* 1.290405035018921f */
+	    0x39687971,  /* 0.0002217048458987847f */
+	    0xBF4A6541,  /* -0.7906075119972229f */
+	    0xB7561BD7,  /* -1.276187595067313e-05f */
+	    0x4036CF77,  /* 2.856412649154663f */
+	    0xB981BC9A,  /* -0.0002474531647749245f */
+	    0x41F16433,  /* 30.173925399780273f */
+	    0x3F003EA5,  /* 0.5009558796882629f */
+	    0x43A7DA89,  /* 335.7073059082031f */
+	    0xBE8B5851,  /* -0.2721581757068634f */
+	    0x42873D26,  /* 67.61943054199219f */
+	    0x3C05644B,  /* 0.008141587488353252f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA532B8,  /* 1.2906103134155273f */
+	    0x397C1886,  /* 0.0002404172846581787f */
+	    0xBF4A65FD,  /* -0.7906187176704407f */
+	    0xB74CB0C4,  /* -1.2200503988424316e-05f */
+	    0x4036CBB6,  /* 2.8561835289001465f */
+	    0xB98C5510,  /* -0.00026766257360577583f */
+	    0x41F5118B,  /* 30.63356590270996f */
+	    0x3F07DA2A,  /* 0.5306726694107056f */
+	    0x43A7BBEF,  /* 335.4682312011719f */
+	    0xBE861DCA,  /* -0.26194602251052856f */
+	    0x42874104,  /* 67.62698364257812f */
+	    0x3C0FFF4B,  /* 0.008788893930613995f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA53A02,  /* 1.290832757949829f */
+	    0x3987E5D9,  /* 0.00025920456391759217f */
+	    0xBF4A66AD,  /* -0.7906292080879211f */
+	    0xB73E3FC6,  /* -1.1339730917825364e-05f */
+	    0x4036C7A9,  /* 2.855936288833618f */
+	    0xB9969D27,  /* -0.00028727317112497985f */
+	    0x41F8F1A7,  /* 31.11799430847168f */
+	    0x3F0E8313,  /* 0.5566875338554382f */
+	    0x43A79EE3,  /* 335.2413024902344f */
+	    0xBE7AC293,  /* -0.24488286674022675f */
+	    0x42874528,  /* 67.63507080078125f */
+	    0x3C1A1363,  /* 0.009404036216437817f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA541D4,  /* 1.2910714149475098f */
+	    0x399146E1,  /* 0.00027709364076144993f */
+	    0xBF4A674F,  /* -0.7906388640403748f */
+	    0xB72663B5,  /* -9.917585884977598e-06f */
+	    0x4036C357,  /* 2.855672597885132f */
+	    0xB9A04483,  /* -0.00030568623333238065f */
+	    0x41FCFDC8,  /* 31.623916625976562f */
+	    0x3F143842,  /* 0.5789834260940552f */
+	    0x43A7842C,  /* 335.0325927734375f */
+	    0xBE625245,  /* -0.22101695835590363f */
+	    0x42874995,  /* 67.64371490478516f */
+	    0x3C2405C0,  /* 0.010011136531829834f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA552F2,  /* 1.2915937900543213f */
+	    0x39A258F0,  /* 0.0003096531145274639f */
+	    0xBF4A6846,  /* -0.7906535863876343f */
+	    0xB6D7FE07,  /* -6.43707198832999e-06f */
+	    0x4036B9EE,  /* 2.855098247528076f */
+	    0xB9B1C513,  /* -0.00033906902535818517f */
+	    0x4202BF79,  /* 32.68698501586914f */
+	    0x3F1CC7AF,  /* 0.6124219298362732f */
+	    0x43A758D5,  /* 334.6940002441406f */
+	    0xBE1C834F,  /* -0.1528446525335312f */
+	    0x42875337,  /* 67.66252899169922f */
+	    0x3C361249,  /* 0.011112757958471775f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA55C36,  /* 1.2918765544891357f */
+	    0x39AAE705,  /* 0.0003259704972151667f */
+	    0xBF4A6895,  /* -0.7906582951545715f */
+	    0xB6879F86,  /* -4.041884494654369e-06f */
+	    0x4036B4DF,  /* 2.8547894954681396f */
+	    0xB9BA6740,  /* -0.0003555361181497574f */
+	    0x4204F336,  /* 33.237510681152344f */
+	    0x3F1FA192,  /* 0.6235591173171997f */
+	    0x43A749C1,  /* 334.5762023925781f */
+	    0xBDDE27A9,  /* -0.10847408324480057f */
+	    0x42875865,  /* 67.67264556884766f */
+	    0x3C3E6FF5,  /* 0.011623372323811054f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA565F3,  /* 1.2921737432479858f */
+	    0x39B31AB0,  /* 0.0003416142426431179f */
+	    0xBF4A68BF,  /* -0.7906607985496521f */
+	    0xB5B9DAA1,  /* -1.3847203490513493e-06f */
+	    0x4036AF91,  /* 2.8544657230377197f */
+	    0xB9C290E1,  /* -0.0003711050667334348f */
+	    0x42072F69,  /* 33.79629898071289f */
+	    0x3F2188A7,  /* 0.6309913992881775f */
+	    0x43A74021,  /* 334.5010070800781f */
+	    0xBD6A70B5,  /* -0.05723639205098152f */
+	    0x42875DCD,  /* 67.6832046508789f */
+	    0x3C4646B9,  /* 0.012101822532713413f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA57020,  /* 1.2924842834472656f */
+	    0x39BAA387,  /* 0.00035598521935753524f */
+	    0xBF4A68BF,  /* -0.7906607985496521f */
+	    0x35D2F825,  /* 1.5718438817202696e-06f */
+	    0x4036AA0D,  /* 2.8541290760040283f */
+	    0xB9C9DD71,  /* -0.0003850269422400743f */
+	    0x420970B1,  /* 34.360050201416016f */
+	    0x3F227C5C,  /* 0.6347100734710693f */
+	    0x43A73CB9,  /* 334.4743957519531f */
+	    0x3A41EDB7,  /* 0.0007397787994705141f */
+	    0x4287636B,  /* 67.69417572021484f */
+	    0x3C4DEAD7,  /* 0.012568197213113308f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA57AB4,  /* 1.2928071022033691f */
+	    0x39C1F01E,  /* 0.0003699072985909879f */
+	    0xBF4A6890,  /* -0.7906579971313477f */
+	    0x36A34005,  /* 4.865231403528014e-06f */
+	    0x4036A458,  /* 2.853780746459961f */
+	    0xB9D09D61,  /* -0.00039790107985027134f */
+	    0x420BB3AA,  /* 34.925453186035156f */
+	    0x3F227CA0,  /* 0.6347141265869141f */
+	    0x43A7404C,  /* 334.5023193359375f */
+	    0x3D8647F2,  /* 0.06556691229343414f */
+	    0x42876940,  /* 67.70556640625f */
+	    0x3C54A2E9,  /* 0.012978293932974339f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA585B0,  /* 1.293142318725586f */
+	    0x39C91E90,  /* 0.000383604783564806f */
+	    0xBF4A682D,  /* -0.7906520962715149f */
+	    0x37110A9B,  /* 8.645142770546954e-06f */
+	    0x40369E74,  /* 2.853421211242676f */
+	    0xB9D73522,  /* -0.00041047582635656f */
+	    0x420DF4F3,  /* 35.48920822143555f */
+	    0x3F24E02F,  /* 0.6440457701683044f */
+	    0x43A74BA7,  /* 334.5910339355469f */
+	    0x3E0FCCB4,  /* 0.1404293179512024f */
+	    0x42876F3E,  /* 67.71726989746094f */
+	    0x3C5AF5CA,  /* 0.013364264741539955f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA59110,  /* 1.2934894561767578f */
+	    0x39CFC05D,  /* 0.00039625438512302935f */
+	    0xBF4A678E,  /* -0.7906426191329956f */
+	    0x37557B1B,  /* 1.2724452062684577e-05f */
+	    0x40369862,  /* 2.853050708770752f */
+	    0xB9DD686E,  /* -0.0004223021096549928f */
+	    0x421048EC,  /* 36.07121276855469f */
+	    0x3F2CF343,  /* 0.6755868792533875f */
+	    0x43A76047,  /* 334.7521667480469f */
+	    0x3E644C2B,  /* 0.22294680774211884f */
+	    0x4287756C,  /* 67.72933959960938f */
+	    0x3C6126F2,  /* 0.013742195442318916f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA59CCA,  /* 1.2938473224639893f */
+	    0x39D62FEF,  /* 0.0004085297405254096f */
+	    0xBF4A66B2,  /* -0.790629506111145f */
+	    0x378E3747,  /* 1.6953459635260515e-05f */
+	    0x40369225,  /* 2.8526699542999268f */
+	    0xB9E3232B,  /* -0.0004332301614340395f */
+	    0x4212C3AB,  /* 36.69108200073242f */
+	    0x3F374E3C,  /* 0.7160375118255615f */
+	    0x43A77E6B,  /* 334.9876403808594f */
+	    0x3E9A8752,  /* 0.30181366205215454f */
+	    0x42877BC2,  /* 67.74171447753906f */
+	    0x3C668DBD,  /* 0.014071878977119923f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5B54D,  /* 1.2945953607559204f */
+	    0x39E23C1B,  /* 0.00043150861165486276f */
+	    0xBF4A6429,  /* -0.7905908226966858f */
+	    0x37E16922,  /* 2.6871046429732814e-05f */
+	    0x4036853B,  /* 2.851881742477417f */
+	    0xB9ECF2B4,  /* -0.0004519425565376878f */
+	    0x42181E07,  /* 38.02932357788086f */
+	    0x3F48C1F7,  /* 0.784209668636322f */
+	    0x43A7D2EC,  /* 335.6478271484375f */
+	    0x3EDC842F,  /* 0.4306959807872772f */
+	    0x428788DA,  /* 67.76728820800781f */
+	    0x3C701AED,  /* 0.014654857106506824f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5C208,  /* 1.2949838638305664f */
+	    0x39E7B085,  /* 0.00044191270717419684f */
+	    0xBF4A6272,  /* -0.7905646562576294f */
+	    0x380726F8,  /* 3.2222800655290484e-05f */
+	    0x40367E95,  /* 2.851475954055786f */
+	    0xB9F16BF7,  /* -0.00046047542127780616f */
+	    0x421AF5ED,  /* 38.74016189575195f */
+	    0x3F4FDA77,  /* 0.8119272589683533f */
+	    0x43A80714,  /* 336.0552978515625f */
+	    0x3EF62409,  /* 0.4807436764240265f */
+	    0x42878F96,  /* 67.78044128417969f */
+	    0x3C741F97,  /* 0.014900109730660915f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5CF10,  /* 1.2953815460205078f */
+	    0x39ECAC62,  /* 0.00045141862938180566f */
+	    0xBF4A6067,  /* -0.7905334830284119f */
+	    0x381F030A,  /* 3.7911384424660355e-05f */
+	    0x403677CF,  /* 2.851062536239624f */
+	    0xB9F5447E,  /* -0.00046781072160229087f */
+	    0x421DE51E,  /* 39.47374725341797f */
+	    0x3F55DC11,  /* 0.8353891968727112f */
+	    0x43A84065,  /* 336.5030822753906f */
+	    0x3F056CB9,  /* 0.5211902260780334f */
+	    0x4287966D,  /* 67.7938003540039f */
+	    0x3C77BF13,  /* 0.015121239237487316f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5DC59,  /* 1.29578697681427f */
+	    0x39F1BC55,  /* 0.000461074203485623f */
+	    0xBF4A5E06,  /* -0.7904971837997437f */
+	    0x383939DE,  /* 4.416133015183732e-05f */
+	    0x403670F2,  /* 2.8506436347961426f */
+	    0xB9F8CCA5,  /* -0.0004745471815112978f */
+	    0x4220E7C1,  /* 40.226322174072266f */
+	    0x3F5AC8BB,  /* 0.854625403881073f */
+	    0x43A87DC2,  /* 336.98248291015625f */
+	    0x3F0D4F0E,  /* 0.5519875288009644f */
+	    0x42879D5C,  /* 67.80734252929688f */
+	    0x3C7AD7A7,  /* 0.015310204587876797f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5E9F1,  /* 1.2962018251419067f */
+	    0x39F685F9,  /* 0.0004702059377450496f */
+	    0xBF4A5B41,  /* -0.7904549241065979f */
+	    0x3854DA5E,  /* 5.074810906080529e-05f */
+	    0x403669FA,  /* 2.8502182960510254f */
+	    0xB9FBF056,  /* -0.0004805351491086185f */
+	    0x4223F9FE,  /* 40.99413299560547f */
+	    0x3F5E9FD0,  /* 0.8696260452270508f */
+	    0x43A8BE17,  /* 337.4850769042969f */
+	    0x3F12C064,  /* 0.5732481479644775f */
+	    0x4287A45F,  /* 67.82103729248047f */
+	    0x3C7D25DF,  /* 0.015450923703610897f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5F7C2,  /* 1.2966234683990479f */
+	    0x39FA9AC4,  /* 0.0004779902519658208f */
+	    0xBF4A581B,  /* -0.7904068827629089f */
+	    0x3870CB3B,  /* 5.740973210777156e-05f */
+	    0x403662F0,  /* 2.8497886657714844f */
+	    0xB9FE734B,  /* -0.0004853255522903055f */
+	    0x422717F4,  /* 41.77339172363281f */
+	    0x3F61601F,  /* 0.880372941493988f */
+	    0x43A9004C,  /* 338.0023193359375f */
+	    0x3F15BA67,  /* 0.5848755240440369f */
+	    0x4287AB6F,  /* 67.83483123779297f */
+	    0x3C7F95D0,  /* 0.015599682927131653f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA605CE,  /* 1.2970521450042725f */
+	    0x39FE734B,  /* 0.0004853255522903055f */
+	    0xBF4A548F,  /* -0.7903527617454529f */
+	    0x3887EFE5,  /* 6.481985474238172e-05f */
+	    0x40365BD5,  /* 2.8493549823760986f */
+	    0xBA003ED9,  /* -0.0004892177530564368f */
+	    0x422A3DC4,  /* 42.56031799316406f */
+	    0x3F630A0E,  /* 0.8868721723556519f */
+	    0x43A94346,  /* 338.52557373046875f */
+	    0x3F163D17,  /* 0.5868696570396423f */
+	    0x4287B294,  /* 67.84878540039062f */
+	    0x3C808467,  /* 0.015688134357333183f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA6140D,  /* 1.2974869012832642f */
+	    0x3A010CC2,  /* 0.0004922860534861684f */
+	    0xBF4A508D,  /* -0.7902916073799133f */
+	    0x3897A251,  /* 7.230474875541404e-05f */
+	    0x403654AE,  /* 2.8489184379577637f */
+	    0xBA0125E0,  /* -0.000492660328745842f */
+	    0x422D6792,  /* 43.35114288330078f */
+	    0x3F639E35,  /* 0.8891327977180481f */
+	    0x43A985EF,  /* 339.0463562011719f */
+	    0x3F144B96,  /* 0.5792783498764038f */
+	    0x4287B9B9,  /* 67.86273956298828f */
+	    0x3C810B47,  /* 0.01575244776904583f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA63127,  /* 1.2983750104904175f */
+	    0x3A0458B4,  /* 0.000504861818626523f */
+	    0xBF4A4734,  /* -0.7901489734649658f */
+	    0x38B9C690,  /* 8.85847257450223e-05f */
+	    0x4036463E,  /* 2.8480372428894043f */
+	    0xBA023530,  /* -0.0004967032000422478f */
+	    0x4233B7B6,  /* 44.929405212402344f */
+	    0x3F618469,  /* 0.8809266686439514f */
+	    0x43AA05ED,  /* 340.0462951660156f */
+	    0x3F090807,  /* 0.5352787375450134f */
+	    0x4287C81D,  /* 67.8908462524414f */
+	    0x3C8178F5,  /* 0.015804747119545937f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA63FEF,  /* 1.2988260984420776f */
+	    0x3A05AE3D,  /* 0.0005099510890431702f */
+	    0xBF4A41CD,  /* -0.7900665402412415f */
+	    0x38CBAB90,  /* 9.711750317364931e-05f */
+	    0x40363EFE,  /* 2.847594738006592f */
+	    0xBA027B7A,  /* -0.0004977505886927247f */
+	    0x4236D64A,  /* 45.709266662597656f */
+	    0x3F5ED52B,  /* 0.8704401850700378f */
+	    0x43AA4112,  /* 340.50836181640625f */
+	    0x3EFF6FDF,  /* 0.4989003837108612f */
+	    0x4287CF53,  /* 67.9049301147461f */
+	    0x3C81815B,  /* 0.015808751806616783f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA64EE2,  /* 1.2992823123931885f */
+	    0x3A06DBA0,  /* 0.0005144421011209488f */
+	    0xBF4A3BE1,  /* -0.789976179599762f */
+	    0x38DE092B,  /* 0.00010587492579361424f */
+	    0x403637BC,  /* 2.847151756286621f */
+	    0xBA02716E,  /* -0.0004976008785888553f */
+	    0x4239E964,  /* 46.47792053222656f */
+	    0x3F5B11DA,  /* 0.8557411432266235f */
+	    0x43AA7788,  /* 340.933837890625f */
+	    0x3EE7DF02,  /* 0.4528732895851135f */
+	    0x4287D683,  /* 67.9189682006836f */
+	    0x3C8102E1,  /* 0.015748443081974983f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA65DEC,  /* 1.299741268157959f */
+	    0x3A07F9F1,  /* 0.0005187085480429232f */
+	    0xBF4A3575,  /* -0.7898781895637512f */
+	    0x38F1E485,  /* 0.00011534340592334047f */
+	    0x4036307E,  /* 2.846709728240967f */
+	    0xBA023527,  /* -0.0004967026761732996f */
+	    0x423CED31,  /* 47.231632232666016f */
+	    0x3F56377F,  /* 0.836784303188324f */
+	    0x43AAA832,  /* 341.31402587890625f */
+	    0x3ECB619B,  /* 0.39722904562950134f */
+	    0x4287DDAB,  /* 67.93294525146484f */
+	    0x3C8051D0,  /* 0.015664011240005493f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA66D1E,  /* 1.3002049922943115f */
+	    0x3A090930,  /* 0.0005227504298090935f */
+	    0xBF4A2E6F,  /* -0.7897710204124451f */
+	    0x390380AD,  /* 0.00012541069008875638f */
+	    0x40362942,  /* 2.8462681770324707f */
+	    0xBA01DABD,  /* -0.0004953554016537964f */
+	    0x423FDDC4,  /* 47.96656799316406f */
+	    0x3F504680,  /* 0.8135757446289062f */
+	    0x43AAD1FC,  /* 341.6405029296875f */
+	    0x3EA9FBE3,  /* 0.33199986815452576f */
+	    0x4287E4C8,  /* 67.94683837890625f */
+	    0x3C7EA9BA,  /* 0.015543395653367043f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA67C65,  /* 1.3006712198257446f */
+	    0x3A09AEF2,  /* 0.0005252204136922956f */
+	    0xBF4A26D6,  /* -0.7896550893783569f */
+	    0x390DC8C5,  /* 0.00013521600340027362f */
+	    0x4036220D,  /* 2.8458282947540283f */
+	    0xBA012FF4,  /* -0.0004928105045109987f */
+	    0x4242B749,  /* 48.67898941040039f */
+	    0x3F494072,  /* 0.7861396074295044f */
+	    0x43AAF3CC,  /* 341.9046630859375f */
+	    0x3E83ABBD,  /* 0.257169634103775f */
+	    0x4287EBD3,  /* 67.9605941772461f */
+	    0x3C7C8E19,  /* 0.015414738096296787f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA68BBD,  /* 1.3011394739151f */
+	    0x3A0A6DD3,  /* 0.0005280647310428321f */
+	    0xBF4A1EAB,  /* -0.7895304560661316f */
+	    0x3918F7ED,  /* 0.00014588209160137922f */
+	    0x40361AE4,  /* 2.845391273498535f */
+	    0xBA006708,  /* -0.0004898165352642536f */
+	    0x424575E0,  /* 49.3651123046875f */
+	    0x3F412317,  /* 0.7544416785240173f */
+	    0x43AB0C8C,  /* 342.0980224609375f */
+	    0x3E30E68A,  /* 0.1727544367313385f */
+	    0x4287F2D2,  /* 67.97425842285156f */
+	    0x3C79DAB4,  /* 0.015249896794557571f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA69B2E,  /* 1.3016107082366943f */
+	    0x3A1046B3,  /* 0.0005503699067048728f */
+	    0xBF4A15D4,  /* -0.7893955707550049f */
+	    0x38EF4D7A,  /* 0.00011410839215386659f */
+	    0x403613C6,  /* 2.844956874847412f */
+	    0xBA0499F8,  /* -0.0005058343522250652f */
+	    0x424815A7,  /* 50.02114486694336f */
+	    0x3F3B0B3B,  /* 0.7306401133537292f */
+	    0x43AB1B22,  /* 342.21197509765625f */
+	    0x3DA95340,  /* 0.08267831802368164f */
+	    0x4287F9B7,  /* 67.98772430419922f */
+	    0x3C500679,  /* 0.012696855701506138f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA6BECE,  /* 1.3026978969573975f */
+	    0x3A34D4B3,  /* 0.0006898149731568992f */
+	    0xBF4A15F8,  /* -0.7893977165222168f */
+	    0xB9215DCE,  /* -0.00015389101463370025f */
+	    0x40360378,  /* 2.843961715698242f */
+	    0xBA252C49,  /* -0.000630084949079901f */
+	    0x424D439A,  /* 51.316017150878906f */
+	    0x3F3C419F,  /* 0.7353762984275818f */
+	    0x43AB1A60,  /* 342.2060546875f */
+	    0xBDA49D86,  /* -0.08037857711315155f */
+	    0x4287FEBB,  /* 67.99752044677734f */
+	    0xBB7A9433,  /* -0.003823530627414584f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA6D408,  /* 1.3033456802368164f */
+	    0x3A485AAA,  /* 0.0007642904529348016f */
+	    0xBF4A234E,  /* -0.78960120677948f */
+	    0xB99DB783,  /* -0.0003008210042025894f */
+	    0x4035F9C8,  /* 2.8433704376220703f */
+	    0xBA3684AF,  /* -0.0006962520419619977f */
+	    0x424FE485,  /* 51.97316360473633f */
+	    0x3F3DD32E,  /* 0.7415035963058472f */
+	    0x43AB0D12,  /* 342.10211181640625f */
+	    0xBE19015B,  /* -0.14941923320293427f */
+	    0x4287FAE7,  /* 67.99004364013672f */
+	    0xBC511449,  /* -0.012761184014379978f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA6EB5C,  /* 1.3040575981140137f */
+	    0x3A5A8609,  /* 0.0008336012833751738f */
+	    0xBF4A390A,  /* -0.7899328470230103f */
+	    0xB9E7DDBA,  /* -0.0004422495258040726f */
+	    0x4035EF2D,  /* 2.8427231311798096f */
+	    0xBA466960,  /* -0.0007568802684545517f */
+	    0x42528A66,  /* 52.635154724121094f */
+	    0x3F3F0AA0,  /* 0.7462558746337891f */
+	    0x43AAF859,  /* 341.9402160644531f */
+	    0xBE57A669,  /* -0.2105957418680191f */
+	    0x4287F31B,  /* 67.97481536865234f */
+	    0xBCAEECA3,  /* -0.021353071555495262f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA704A0,  /* 1.3048286437988281f */
+	    0x3A6BE87C,  /* 0.0008999181445688009f */
+	    0xBF4A56DE,  /* -0.7903879880905151f */
+	    0xBA1772A3,  /* -0.0005777275073342025f */
+	    0x4035E3B9,  /* 2.842024087905884f */
+	    0xBA55710E,  /* -0.0008142151637002826f */
+	    0x425533FA,  /* 53.300758361816406f */
+	    0x3F3FE5FB,  /* 0.7496029734611511f */
+	    0x43AADD1D,  /* 341.7274475097656f */
+	    0xBE87146A,  /* -0.2638276219367981f */
+	    0x4287E774,  /* 67.95205688476562f */
+	    0xBCF2DF30,  /* -0.02964743971824646f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA71FD2,  /* 1.3056585788726807f */
+	    0x3A7C7CFC,  /* 0.0009631661232560873f */
+	    0xBF4A7C66,  /* -0.7909606695175171f */
+	    0xBA395801,  /* -0.0007070303545333445f */
+	    0x4035D772,  /* 2.8412747383117676f */
+	    0xBA637D94,  /* -0.0008678075391799212f */
+	    0x4257DFF4,  /* 53.96870422363281f */
+	    0x3F4066F5,  /* 0.751570999622345f */
+	    0x43AABC46,  /* 341.47088623046875f */
+	    0xBE9E4235,  /* -0.30909886956214905f */
+	    0x4287D81A,  /* 67.92207336425781f */
+	    0xBD1A2CAE,  /* -0.03764026612043381f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA73CC6,  /* 1.306542158126831f */
+	    0x3A85DB73,  /* 0.0010212495690211654f */
+	    0xBF4AA94D,  /* -0.7916458249092102f */
+	    0xBA59D3B7,  /* -0.000830944103654474f */
+	    0x4035CA6E,  /* 2.840480327606201f */
+	    0xBA703E95,  /* -0.0009164598886854947f */
+	    0x425A8D1D,  /* 54.6378059387207f */
+	    0x3F408D4C,  /* 0.7521560192108154f */
+	    0x43AA96BA,  /* 341.17755126953125f */
+	    0xBEB162E9,  /* -0.34645774960517883f */
+	    0x4287C52B,  /* 67.88509368896484f */
+	    0xBD397F34,  /* -0.045287325978279114f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA75B5A,  /* 1.3074753284454346f */
+	    0x3A8CFD56,  /* 0.001075665233656764f */
+	    0xBF4ADD47,  /* -0.7924389243125916f */
+	    0xBA78C29A,  /* -0.0009489447111263871f */
+	    0x4035BCBB,  /* 2.839644193649292f */
+	    0xBA7BDC3F,  /* -0.000960770936217159f */
+	    0x425D3A28,  /* 55.306793212890625f */
+	    0x3F4056E3,  /* 0.751325786113739f */
+	    0x43AA6D61,  /* 340.8545227050781f */
+	    0xBEC0724A,  /* -0.3758719563484192f */
+	    0x4287AEDA,  /* 67.84150695800781f */
+	    0xBD575EBC,  /* -0.0525805801153183f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA77B7B,  /* 1.3084558248519897f */
+	    0x3A93AE34,  /* 0.001126712653785944f */
+	    0xBF4B17F0,  /* -0.7933340072631836f */
+	    0xBA8B1619,  /* -0.001061144401319325f */
+	    0x4035AE6D,  /* 2.838771104812622f */
+	    0xBA833555,  /* -0.0010010401019826531f */
+	    0x425FE5CE,  /* 55.97441864013672f */
+	    0x3F3FC5F7,  /* 0.749114453792572f */
+	    0x43AA4123,  /* 340.5088806152344f */
+	    0xBECB705C,  /* -0.39734160900115967f */
+	    0x42879546,  /* 67.79154968261719f */
+	    0xBD74064C,  /* -0.05957631766796112f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA7BFE7,  /* 1.3105438947677612f */
+	    0x3A9F7913,  /* 0.0012166820233687758f */
+	    0xBF4BA00F,  /* -0.7954110503196716f */
+	    0xBAA632BD,  /* -0.00126799161080271f */
+	    0x4035902F,  /* 2.8369252681732178f */
+	    0xBA8C2CE1,  /* -0.0010694527300074697f */
+	    0x426533E6,  /* 57.300682067871094f */
+	    0x3F3D910B,  /* 0.740494430065155f */
+	    0x43A9E394,  /* 339.7779541015625f */
+	    0xBED53AAD,  /* -0.41646328568458557f */
+	    0x428758EA,  /* 67.67366027832031f */
+	    0xBD94C5E3,  /* -0.07264306396245956f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA7E3F5,  /* 1.311644196510315f */
+	    0x3AA4A225,  /* 0.0012560529867187142f */
+	    0xBF4BECD4,  /* -0.7965824604034424f */
+	    0xBAB29A94,  /* -0.0013626390136778355f */
+	    0x40358062,  /* 2.835960865020752f */
+	    0xBA8FCE26,  /* -0.0010971471201628447f */
+	    0x4267D3C7,  /* 57.95681381225586f */
+	    0x3F3BEC1E,  /* 0.7340716123580933f */
+	    0x43A9B411,  /* 339.4067687988281f */
+	    0xBED406EC,  /* -0.414115309715271f */
+	    0x4287366B,  /* 67.60628509521484f */
+	    0xBDA12616,  /* -0.07868592441082001f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA8091F,  /* 1.312778353691101f */
+	    0x3AA93709,  /* 0.0012910078512504697f */
+	    0xBF4C3EED,  /* -0.7978351712226868f */
+	    0xBABE460E,  /* -0.0014516727533191442f */
+	    0x40357034,  /* 2.8349733352661133f */
+	    0xBA92F6DD,  /* -0.0011212487006559968f */
+	    0x426A6D28,  /* 58.606597900390625f */
+	    0x3F39EB80,  /* 0.7262496948242188f */
+	    0x43A98547,  /* 339.0412292480469f */
+	    0xBECEC611,  /* -0.4038548767566681f */
+	    0x4287113E,  /* 67.53367614746094f */
+	    0xBDACDDA9,  /* -0.08440715819597244f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA82F38,  /* 1.3139410018920898f */
+	    0x3AAD5864,  /* 0.0013225194998085499f */
+	    0xBF4C9613,  /* -0.7991649508476257f */
+	    0xBAC92DA2,  /* -0.0015348682645708323f */
+	    0x40355FB3,  /* 2.833966016769409f */
+	    0xBA9592EF,  /* -0.0011411587474867702f */
+	    0x426CFECA,  /* 59.248817443847656f */
+	    0x3F378FD7,  /* 0.7170385718345642f */
+	    0x43A9581A,  /* 338.68829345703125f */
+	    0xBEC571CC,  /* -0.38563382625579834f */
+	    0x4286E989,  /* 67.45612335205078f */
+	    0xBDB7F2EB,  /* -0.0898187980055809f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA85638,  /* 1.3151311874389648f */
+	    0x3AB0FC2D,  /* 0.0013502888614311814f */
+	    0xBF4CF1E0,  /* -0.8005657196044922f */
+	    0xBAD34D8A,  /* -0.0016121130902320147f */
+	    0x40354EF1,  /* 2.8329432010650635f */
+	    0xBA978437,  /* -0.0011559788836166263f */
+	    0x426F8763,  /* 59.8822135925293f */
+	    0x3F34D83B,  /* 0.7064244151115417f */
+	    0x43A92D77,  /* 338.3551940917969f */
+	    0xBEB80C36,  /* -0.35946816205978394f */
+	    0x4286BF6E,  /* 67.37388610839844f */
+	    0xBDC25D6F,  /* -0.09490477293729782f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA87DEF,  /* 1.3163431882858276f */
+	    0x3AB406C0,  /* 0.001373492181301117f */
+	    0xBF4D5208,  /* -0.8020329475402832f */
+	    0xBADCAFD4,  /* -0.001683706883341074f */
+	    0x40353E02,  /* 2.831909656524658f */
+	    0xBA98E8DC,  /* -0.0011666077189147472f */
+	    0x427205AF,  /* 60.505550384521484f */
+	    0x3F31C444,  /* 0.6944010257720947f */
+	    0x43A9063F,  /* 338.0487976074219f */
+	    0xBEA6976C,  /* -0.3253740072250366f */
+	    0x42869318,  /* 67.28729248046875f */
+	    0xBDCC12AC,  /* -0.0996449887752533f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA8A649,  /* 1.3175746202468872f */
+	    0x3AB689B4,  /* 0.001392653677612543f */
+	    0xBF4DB62D,  /* -0.8035610318183899f */
+	    0xBAE5533E,  /* -0.001749612158164382f */
+	    0x40352CF0,  /* 2.8308677673339844f */
+	    0xBA99CFEB,  /* -0.0011734938016161323f */
+	    0x42747861,  /* 61.117557525634766f */
+	    0x3F2E55A9,  /* 0.6809945702552795f */
+	    0x43A8E35F,  /* 337.7763366699219f */
+	    0xBE910F37,  /* -0.2833192050457001f */
+	    0x428664AB,  /* 67.19661712646484f */
+	    0xBDD53023,  /* -0.10409571975469589f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA8CF1E,  /* 1.3188207149505615f */
+	    0x3AB89199,  /* 0.0014081477420404553f */
+	    0xBF4E1E04,  /* -0.8051455020904541f */
+	    0xBAED32C0,  /* -0.0018096789717674255f */
+	    0x40351BCE,  /* 2.829822063446045f */
+	    0xBA9A1139,  /* -0.001175440032966435f */
+	    0x4276DE40,  /* 61.717041015625f */
+	    0x3F2A8AB2,  /* 0.666178822517395f */
+	    0x43A8C5BB,  /* 337.5447692871094f */
+	    0xBE6EE72B,  /* -0.2333037108182907f */
+	    0x42863447,  /* 67.10210418701172f */
+	    0xBDDD941B,  /* -0.10819264501333237f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA921E1,  /* 1.321346402168274f */
+	    0x3ABAFB6F,  /* 0.0014265606878325343f */
+	    0xBF4EF754,  /* -0.8084614276885986f */
+	    0xBAFAB01E,  /* -0.0019125973340123892f */
+	    0x4034F99B,  /* 2.8277347087860107f */
+	    0xBA98FCF3,  /* -0.0011672064429149032f */
+	    0x427B7E4B,  /* 62.87333297729492f */
+	    0x3F24A4E6,  /* 0.6431411504745483f */
+	    0x43A89DCF,  /* 337.2328796386719f */
+	    0xBDF2A42A,  /* -0.11847718060016632f */
+	    0x4285CE4A,  /* 66.90290832519531f */
+	    0xBDEC7302,  /* -0.11545373499393463f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA94B88,  /* 1.322617530822754f */
+	    0x3ABB5FE5,  /* 0.0014295546570792794f */
+	    0xBF4F6827,  /* -0.8101829886436462f */
+	    0xBB002297,  /* -0.001955186715349555f */
+	    0x4034E8A8,  /* 2.826700210571289f */
+	    0xBA978E43,  /* -0.0011562783038243651f */
+	    0x427DC992,  /* 63.44684600830078f */
+	    0x3F27A03B,  /* 0.6547886729240417f */
+	    0x43A89344,  /* 337.1505126953125f */
+	    0xBD9A7022,  /* -0.0754091888666153f */
+	    0x428598F6,  /* 66.79875183105469f */
+	    0xBDF2CE53,  /* -0.11855759471654892f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA97537,  /* 1.3238896131515503f */
+	    0x3ABB2DC2,  /* 0.0014280604664236307f */
+	    0xBF4FDB48,  /* -0.8119397163391113f */
+	    0xBB0292C7,  /* -0.001992391189560294f */
+	    0x4034D7E7,  /* 2.8256776332855225f */
+	    0xBA9579E5,  /* -0.0011404125252738595f */
+	    0x42801390,  /* 64.0382080078125f */
+	    0x3F2BF09B,  /* 0.6716400980949402f */
+	    0x43A88CA3,  /* 337.0987243652344f */
+	    0xBD2EB1B4,  /* -0.04264993965625763f */
+	    0x4285624C,  /* 66.69198608398438f */
+	    0xBDF8747C,  /* -0.12131592631340027f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA99EC8,  /* 1.3251581192016602f */
+	    0x3ABA5A99,  /* 0.001421767403371632f */
+	    0xBF505072,  /* -0.8137274980545044f */
+	    0xBB04A493,  /* -0.002023969544097781f */
+	    0x4034C76B,  /* 2.824671506881714f */
+	    0xBA92CE9B,  /* -0.0011200489243492484f */
+	    0x4281488C,  /* 64.64169311523438f */
+	    0x3F2E9B21,  /* 0.6820545792579651f */
+	    0x43A8898E,  /* 337.07464599609375f */
+	    0xBC55B09C,  /* -0.013042595237493515f */
+	    0x42852A76,  /* 66.58293151855469f */
+	    0xBDFD7C2A,  /* -0.12377198040485382f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA9C819,  /* 1.3264189958572388f */
+	    0x3AB9026C,  /* 0.0014115101657807827f */
+	    0xBF50C741,  /* -0.8155403733253479f */
+	    0xBB065660,  /* -0.0020498260855674744f */
+	    0x4034B741,  /* 2.8236849308013916f */
+	    0xBA8F8CB3,  /* -0.0010951965814456344f */
+	    0x428280D0,  /* 65.2515869140625f */
+	    0x3F2FA029,  /* 0.6860376000404358f */
+	    0x43A889AA,  /* 337.07550048828125f */
+	    0x3C5C46D4,  /* 0.013444621115922928f */
+	    0x4284F190,  /* 66.4718017578125f */
+	    0xBE00E105,  /* -0.1258583813905716f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA9F110,  /* 1.3276691436767578f */
+	    0x3AB72807,  /* 0.0013973721070215106f */
+	    0xBF513F6E,  /* -0.8173741102218628f */
+	    0xBB07A35C,  /* -0.002069673500955105f */
+	    0x4034A77F,  /* 2.822723150253296f */
+	    0xBA8BAA5A,  /* -0.0010655627120286226f */
+	    0x4283B96E,  /* 65.86216735839844f */
+	    0x3F2F00C0,  /* 0.6836051940917969f */
+	    0x43A88C9E,  /* 337.09857177734375f */
+	    0x3D16EA06,  /* 0.03684427589178085f */
+	    0x4284B7D2,  /* 66.35902404785156f */
+	    0xBE02ABB1,  /* -0.12760807573795319f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAA198E,  /* 1.3289048671722412f */
+	    0x3AB4A28F,  /* 0.001378135639242828f */
+	    0xBF51B88E,  /* -0.8192223310470581f */
+	    0xBB089013,  /* -0.0020837828051298857f */
+	    0x40349832,  /* 2.821789264678955f */
+	    0xBA87270A,  /* -0.0010311317164450884f */
+	    0x4284EF79,  /* 66.46772003173828f */
+	    0x3F2CBC05,  /* 0.6747439503669739f */
+	    0x43A8920E,  /* 337.14105224609375f */
+	    0x3D69B74D,  /* 0.057059574872255325f */
+	    0x42847D54,  /* 66.24478149414062f */
+	    0xBE041DA2,  /* -0.12901929020881653f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAA4167,  /* 1.3301209211349487f */
+	    0x3AB17EC6,  /* 0.0013541809748858213f */
+	    0xBF523261,  /* -0.8210812211036682f */
+	    0xBB092753,  /* -0.0020927980076521635f */
+	    0x40348971,  /* 2.8208887577056885f */
+	    0xBA81F8E1,  /* -0.0009916090639308095f */
+	    0x42862005,  /* 67.06253814697266f */
+	    0x3F28D1E1,  /* 0.659452497959137f */
+	    0x43A8999C,  /* 337.2000732421875f */
+	    0x3D97D609,  /* 0.07413870841264725f */
+	    0x4284424E,  /* 66.12950134277344f */
+	    0xBE052D7C,  /* -0.13005632162094116f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAA8EB5,  /* 1.3324800729751587f */
+	    0x3AA966C1,  /* 0.0012924299808219075f */
+	    0xBF5326BA,  /* -0.8248096704483032f */
+	    0xBB0930BE,  /* -0.002093359362334013f */
+	    0x40346DD2,  /* 2.8192028999328613f */
+	    0xBA6B74F3,  /* -0.0008981965365819633f */
+	    0x428864E8,  /* 68.19708251953125f */
+	    0x3F1C10F9,  /* 0.6096339821815491f */
+	    0x43A8ADAD,  /* 337.3568420410156f */
+	    0x3DCA9FAD,  /* 0.09893736988306046f */
+	    0x4283CB38,  /* 65.89691162109375f */
+	    0xBE0634FA,  /* -0.13106146454811096f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAAB3D6,  /* 1.3336131572723389f */
+	    0x3AA47774,  /* 0.0012547806836664677f */
+	    0xBF53A09D,  /* -0.8266695141792297f */
+	    0xBB08A4BA,  /* -0.0020850137807428837f */
+	    0x4034611D,  /* 2.818427324295044f */
+	    0xBA5EA9E7,  /* -0.0008493945351801813f */
+	    0x4289736C,  /* 68.72543334960938f */
+	    0x3F135479,  /* 0.5755077004432678f */
+	    0x43A8B978,  /* 337.448974609375f */
+	    0x3DD9E7FA,  /* 0.10639949142932892f */
+	    0x42838F7D,  /* 65.7802505493164f */
+	    0xBE063D68,  /* -0.13109362125396729f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAAD7DA,  /* 1.334712266921997f */
+	    0x3A9F2633,  /* 0.0012142121559008956f */
+	    0xBF5419D1,  /* -0.8285189270973206f */
+	    0xBB07B25C,  /* -0.0020705675706267357f */
+	    0x40345510,  /* 2.8176918029785156f */
+	    0xBA53DF36,  /* -0.0008082272252067924f */
+	    0x428A711B,  /* 69.22090911865234f */
+	    0x3F092AC6,  /* 0.5358089208602905f */
+	    0x43A8C5E7,  /* 337.5461120605469f */
+	    0x3DE1ADDA,  /* 0.11019487679004669f */
+	    0x428353D0,  /* 65.6636962890625f */
+	    0xBE05F4AF,  /* -0.13081620633602142f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAAFA9F,  /* 1.3357733488082886f */
+	    0x3A994AA6,  /* 0.0011695220600813627f */
+	    0xBF549205,  /* -0.8303530812263489f */
+	    0xBB065DE9,  /* -0.0020502752158790827f */
+	    0x4034498E,  /* 2.8169894218444824f */
+	    0xBA49BF19,  /* -0.0007696017273701727f */
+	    0x428B5B77,  /* 69.67864227294922f */
+	    0x3EFB0080,  /* 0.4902381896972656f */
+	    0x43A8D28F,  /* 337.6449890136719f */
+	    0x3DE24DD2,  /* 0.11049999296665192f */
+	    0x42831856,  /* 65.54753112792969f */
+	    0xBE055890,  /* -0.13022065162658691f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB1C07,  /* 1.3367928266525269f */
+	    0x3A92D8BA,  /* 0.001120350556448102f */
+	    0xBF5508DB,  /* -0.8321663737297058f */
+	    0xBB04A9AB,  /* -0.002024273155257106f */
+	    0x40343EA1,  /* 2.8163225650787354f */
+	    0xBA3EC261,  /* -0.000727688951883465f */
+	    0x428C2FA5,  /* 70.09305572509766f */
+	    0x3EE07669,  /* 0.4384033977985382f */
+	    0x43A8DF11,  /* 337.7427062988281f */
+	    0x3DDC4F7D,  /* 0.1075734868645668f */
+	    0x4282DD33,  /* 65.4320297241211f */
+	    0xBE045EE9,  /* -0.12926830351352692f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB3BEE,  /* 1.337766408920288f */
+	    0x3A8BC38A,  /* 0.0010663133580237627f */
+	    0xBF557E07,  /* -0.8339542746543884f */
+	    0xBB02973D,  /* -0.001992657082155347f */
+	    0x40343459,  /* 2.81569504737854f */
+	    0xBA32FCB7,  /* -0.0006827818579040468f */
+	    0x428CEAC9,  /* 70.45856475830078f */
+	    0x3EC2B6B2,  /* 0.3803001046180725f */
+	    0x43A8EB0E,  /* 337.83636474609375f */
+	    0x3DCFCBAA,  /* 0.10146267712116241f */
+	    0x4282A297,  /* 65.31755828857422f */
+	    0xBE030559,  /* -0.12795008718967438f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB5A30,  /* 1.3386898040771484f */
+	    0x3A840ACF,  /* 0.0010074021993204951f */
+	    0xBF55F12E,  /* -0.8357113599777222f */
+	    0xBB0023D9,  /* -0.0019552616868168116f */
+	    0x40342ABB,  /* 2.815108060836792f */
+	    0xBA2663B5,  /* -0.0006347254966385663f */
+	    0x428D8A0A,  /* 70.76960754394531f */
+	    0x3EA1C53C,  /* 0.3159579038619995f */
+	    0x43A8F62C,  /* 337.9232177734375f */
+	    0x3DBCA037,  /* 0.09210246056318283f */
+	    0x428268A8,  /* 65.20440673828125f */
+	    0xBE015624,  /* -0.12630516290664673f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB76A8,  /* 1.3395586013793945f */
+	    0x3A7749DE,  /* 0.0009433309314772487f */
+	    0xBF5661FD,  /* -0.8374326825141907f */
+	    0xBAFAA9D6,  /* -0.0019124101381748915f */
+	    0x403421D9,  /* 2.814565896987915f */
+	    0xBA18CFBE,  /* -0.0005829295841977f */
+	    0x428E0A93,  /* 71.0206527709961f */
+	    0x3E7B410C,  /* 0.24536532163619995f */
+	    0x43A90007,  /* 338.0002136230469f */
+	    0x3DA2D636,  /* 0.07951013743877411f */
+	    0x42822F8C,  /* 65.09286499023438f */
+	    0xBDFE793F,  /* -0.12425469607114792f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABA99E,  /* 1.341113805770874f */
+	    0x3A51CF92,  /* 0.0008003647672012448f */
+	    0xBF573B4D,  /* -0.8407486081123352f */
+	    0xBAED3646,  /* -0.0018097839783877134f */
+	    0x40341275,  /* 2.813626527786255f */
+	    0xB9F62141,  /* -0.0004694555245805532f */
+	    0x428EA416,  /* 71.32048034667969f */
+	    0x3DAF05C0,  /* 0.08546018600463867f */
+	    0x43A90E88,  /* 338.113525390625f */
+	    0x3D36DC7C,  /* 0.044643864035606384f */
+	    0x4281C090,  /* 64.8760986328125f */
+	    0xBDF3E01A,  /* -0.11907978355884552f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABBFD6,  /* 1.3417918682098389f */
+	    0x3A3D0D5F,  /* 0.0007211770280264318f */
+	    0xBF57A325,  /* -0.8423331379890442f */
+	    0xBAE5610E,  /* -0.001750023802742362f */
+	    0x40340C0E,  /* 2.8132357597351074f */
+	    0xB9D58F32,  /* -0.00040733214700594544f */
+	    0x428EB75F,  /* 71.35814666748047f */
+	    0xBB7CF349,  /* -0.0038597157690674067f */
+	    0x43A91271,  /* 338.1440734863281f */
+	    0x3CB741DA,  /* 0.022370267659425735f */
+	    0x42818B04,  /* 64.77151489257812f */
+	    0xBDED6350,  /* -0.11591207981109619f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABD3A9,  /* 1.342396855354309f */
+	    0x3A26F05C,  /* 0.0006368213798850775f */
+	    0xBF580756,  /* -0.8438619375228882f */
+	    0xBADCD07B,  /* -0.0016846799990162253f */
+	    0x40340695,  /* 2.812901735305786f */
+	    0xB9B356F2,  /* -0.0003420631983317435f */
+	    0x428EA092,  /* 71.31361389160156f */
+	    0xBDAFBD52,  /* -0.08581031858921051f */
+	    0x43A913A0,  /* 338.1533203125f */
+	    0x3B3B9AD5,  /* 0.0028626222629100084f */
+	    0x428156FC,  /* 64.66989135742188f */
+	    0xBDE63535,  /* -0.1124061718583107f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABE4F6,  /* 1.3429248332977295f */
+	    0x3A0F9BEB,  /* 0.000547825067769736f */
+	    0xBF58678F,  /* -0.8453301787376404f */
+	    0xBAD3838A,  /* -0.0016137224156409502f */
+	    0x40340216,  /* 2.8126273155212402f */
+	    0xB98F144C,  /* -0.0002729020779952407f */
+	    0x428E6936,  /* 71.20549011230469f */
+	    0xBE139A8F,  /* -0.14414428174495697f */
+	    0x43A91318,  /* 338.149169921875f */
+	    0xBBDFF767,  /* -0.006834912579506636f */
+	    0x428124A1,  /* 64.57154083251953f */
+	    0xBDDE344F,  /* -0.10849820822477341f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABF398,  /* 1.3433713912963867f */
+	    0x39ED93B0,  /* 0.0004531419835984707f */
+	    0xBF58C37A,  /* -0.8467327356338501f */
+	    0xBAC97F76,  /* -0.0015373069327324629f */
+	    0x4033FEA1,  /* 2.8124163150787354f */
+	    0xB951B6E3,  /* -0.00019999923824798316f */
+	    0x428E1D47,  /* 71.05718231201172f */
+	    0xBE40F63B,  /* -0.1884392946958542f */
+	    0x43A91211,  /* 338.1411437988281f */
+	    0xBC37A737,  /* -0.011209300719201565f */
+	    0x4280F428,  /* 64.47686767578125f */
+	    0xBDD56F97,  /* -0.10421674698591232f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABFF60,  /* 1.3437309265136719f */
+	    0x39B96C1A,  /* 0.00035366491647437215f */
+	    0xBF591ACB,  /* -0.8480650782585144f */
+	    0xBABEB34F,  /* -0.0014549287734553218f */
+	    0x4033FC42,  /* 2.8122715950012207f */
+	    0xB9022110,  /* -0.0001241008285433054f */
+	    0x428DBD92,  /* 70.87025451660156f */
+	    0xBE6C8D5C,  /* -0.23100799322128296f */
+	    0x43A9108A,  /* 338.12921142578125f */
+	    0xBC7FD944,  /* -0.015615765005350113f */
+	    0x4280C5B4,  /* 64.38613891601562f */
+	    0xBDCBFB7C,  /* -0.09960076212882996f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAC0836,  /* 1.3440005779266357f */
+	    0x39823527,  /* 0.0002483513380866498f */
+	    0xBF596D1B,  /* -0.8493210673332214f */
+	    0xBAB333C9,  /* -0.0013672049390152097f */
+	    0x4033FB03,  /* 2.8121955394744873f */
+	    0xB8389921,  /* -4.40116309619043e-05f */
+	    0x428D4ADD,  /* 70.6462173461914f */
+	    0xBE8B2FBD,  /* -0.2718485891819f */
+	    0x43A90E83,  /* 338.1133728027344f */
+	    0xBCA51391,  /* -0.020150931552052498f */
+	    0x42809970,  /* 64.2996826171875f */
+	    0xBDC1A827,  /* -0.09455900639295578f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAC0DDA,  /* 1.344172716140747f */
+	    0x3910A624,  /* 0.0001379480236209929f */
+	    0xBF59BA32,  /* -0.8504973649978638f */
+	    0xBAA6FBAA,  /* -0.001273979665711522f */
+	    0x4033FAF9,  /* 2.8121931552886963f */
+	    0x382663B5,  /* 3.967034353991039e-05f */
+	    0x428CC5F5,  /* 70.38663482666016f */
+	    0xBE9F3417,  /* -0.3109442889690399f */
+	    0x43A90BF4,  /* 338.0933837890625f */
+	    0xBCCB484F,  /* -0.024814752861857414f */
+	    0x42806F93,  /* 64.2179183959961f */
+	    0xBDB68C92,  /* -0.0891353040933609f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAC0F37,  /* 1.3442143201828003f */
+	    0xB8CCD8F3,  /* -9.767887968337163e-05f */
+	    0xBF5A432B,  /* -0.8525874018669128f */
+	    0xBA8C514C,  /* -0.0010705380700528622f */
+	    0x4033FEAA,  /* 2.8124184608459473f */
+	    0x396464A4,  /* 0.00021781265968456864f */
+	    0x428B88B8,  /* 69.76702880859375f */
+	    0xBEC48D9D,  /* -0.3838929235935211f */
+	    0x43A90539,  /* 338.0408020019531f */
+	    0xBD0D2A2B,  /* -0.034464042633771896f */
+	    0x428023A3,  /* 64.0696029663086f */
+	    0xBD9E24B2,  /* -0.0772184282541275f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAC0A8F,  /* 1.3440722227096558f */
+	    0xB96A4791,  /* -0.0002234263956779614f */
+	    0xBF5A7E74,  /* -0.853492021560669f */
+	    0xBA7BB915,  /* -0.000960246950853616f */
+	    0x40340284,  /* 2.8126535415649414f */
+	    0x39A3B893,  /* 0.0003122730122413486f */
+	    0x428AD1F8,  /* 69.41009521484375f */
+	    0xBED5E5F2,  /* -0.4177699685096741f */
+	    0x43A90103,  /* 338.0079040527344f */
+	    0xBD21B789,  /* -0.03948167338967323f */
+	    0x428001EA,  /* 64.00373840332031f */
+	    0xBD90C78B,  /* -0.07069309800863266f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAC0231,  /* 1.343816876411438f */
+	    0xB9B99E54,  /* -0.00035403913352638483f */
+	    0xBF5AB31F,  /* -0.8542956709861755f */
+	    0xBA5D595C,  /* -0.0008443796541541815f */
+	    0x403407C4,  /* 2.812973976135254f */
+	    0x39D7210B,  /* 0.000410326145356521f */
+	    0x428A0C32,  /* 69.02381896972656f */
+	    0xBEE657FD,  /* -0.44989004731178284f */
+	    0x43A8FC3B,  /* 337.9705505371094f */
+	    0xBD36777E,  /* -0.04454755038022995f */
+	    0x427FC67E,  /* 63.94384002685547f */
+	    0xBD82A43F,  /* -0.06378983706235886f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABF5EC,  /* 1.343442440032959f */
+	    0xBA006224,  /* -0.00048974365927279f */
+	    0xBF5AE0E6,  /* -0.8549941778182983f */
+	    0xBA3D88A1,  /* -0.0007230137125588953f */
+	    0x40340E7A,  /* 2.8133835792541504f */
+	    0x3A063600,  /* 0.0005119740962982178f */
+	    0x42893830,  /* 68.6097412109375f */
+	    0xBEF5E7AE,  /* -0.4802832007408142f */
+	    0x43A8F6DF,  /* 337.9286804199219f */
+	    0xBD4B9CD6,  /* -0.049710117280483246f */
+	    0x427F8F9F,  /* 63.890254974365234f */
+	    0xBD676933,  /* -0.05649681016802788f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABE5A4,  /* 1.3429455757141113f */
+	    0xBA254060,  /* -0.0006303843110799789f */
+	    0xBF5B076B,  /* -0.8555819392204285f */
+	    0xBA1C2FB6,  /* -0.0005958037218078971f */
+	    0x403416B0,  /* 2.813884735107422f */
+	    0x3A21B839,  /* 0.000616911391261965f */
+	    0x428856BB,  /* 68.16939544677734f */
+	    0xBF024958,  /* -0.5089316368103027f */
+	    0x43A8F0E9,  /* 337.8821105957031f */
+	    0xBD616A66,  /* -0.055033110082149506f */
+	    0x427F5F93,  /* 63.84333419799805f */
+	    0xBD481670,  /* -0.048849523067474365f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABD12C,  /* 1.3423209190368652f */
+	    0xBA4B9272,  /* -0.0007765657501295209f */
+	    0xBF5B265C,  /* -0.8560540676116943f */
+	    0xB9F2D5A1,  /* -0.0004631700285244733f */
+	    0x40342075,  /* 2.814481019973755f */
+	    0x3A3E2BAF,  /* 0.0007254434167407453f */
+	    0x428768A0,  /* 67.704345703125f */
+	    0xBF092C5B,  /* -0.5358330607414246f */
+	    0x43A8EA56,  /* 337.83074951171875f */
+	    0xBD77BF13,  /* -0.060484956949949265f */
+	    0x427F36A2,  /* 63.80335235595703f */
+	    0xBD275523,  /* -0.04085267707705498f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FABB85F,  /* 1.3415640592575073f */
+	    0xBA72EEBF,  /* -0.0009267143323086202f */
+	    0xBF5B3D6B,  /* -0.8564059138298035f */
+	    0xB9AA3736,  /* -0.0003246606211178005f */
+	    0x40342BD5,  /* 2.8151752948760986f */
+	    0x3A5B5E06,  /* 0.0008368197595700622f */
+	    0x42866EAA,  /* 67.21614074707031f */
+	    0xBF0F9DCD,  /* -0.5610015988349915f */
+	    0x43A8E323,  /* 337.7745056152344f */
+	    0xBD872B9A,  /* -0.06600113213062286f */
+	    0x427F1527,  /* 63.77065658569336f */
+	    0xBD04FAE5,  /* -0.03246583417057991f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB9B26,  /* 1.340672254562378f */
+	    0xBA8DD52F,  /* -0.001082097995094955f */
+	    0xBF5B4C36,  /* -0.8566316366195679f */
+	    0xB93D5885,  /* -0.00018057420675177127f */
+	    0x403438D9,  /* 2.815969705581665f */
+	    0x3A799F5C,  /* 0.0009522342588752508f */
+	    0x428569A3,  /* 66.7063217163086f */
+	    0xBF159DCB,  /* -0.5844389796257019f */
+	    0x43A8DB4F,  /* 337.7133483886719f */
+	    0xBD92B28A,  /* -0.071629598736763f */
+	    0x427EFB7D,  /* 63.7455940246582f */
+	    0xBCC252B2,  /* -0.02372107282280922f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB794A,  /* 1.3396389484405518f */
+	    0xBAA2DE11,  /* -0.0012425800086930394f */
+	    0xBF5B5278,  /* -0.856727123260498f */
+	    0xB801F8E1,  /* -3.09877832478378e-05f */
+	    0x40344797,  /* 2.8168694972991943f */
+	    0x3A8C6422,  /* 0.0010710994247347116f */
+	    0x42845A54,  /* 66.17642211914062f */
+	    0xBF1B2BBD,  /* -0.60613614320755f */
+	    0x43A8D2D4,  /* 337.6470947265625f */
+	    0xBD9E8E17,  /* -0.0774194523692131f */
+	    0x427EE9F0,  /* 63.72845458984375f */
+	    0xBC700A10,  /* -0.01465083658695221f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAB2742,  /* 1.3371355533599854f */
+	    0xBACE83E9,  /* -0.0015755865024402738f */
+	    0xBF5B43F2,  /* -0.8565055131912231f */
+	    0x39960676,  /* 0.00028615043265745044f */
+	    0x40346A57,  /* 2.818990468978882f */
+	    0x3AAC82EA,  /* 0.001316157402470708f */
+	    0x4282200C,  /* 65.06259155273438f */
+	    0xBF24F36B,  /* -0.6443392634391785f */
+	    0x43A8BFDA,  /* 337.49884033203125f */
+	    0xBDB6ED89,  /* -0.08932024985551834f */
+	    0x427EE06B,  /* 63.71915817260742f */
+	    0x3B94DF2E,  /* 0.00454320665448904f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAAF6DE,  /* 1.3356587886810303f */
+	    0xBAE51EBB,  /* -0.0017480471869930625f */
+	    0xBF5B2E77,  /* -0.8561777472496033f */
+	    0x39EDC0E5,  /* 0.00045347880222834647f */
+	    0x40347E6E,  /* 2.820216655731201f */
+	    0x3ABD2BB3,  /* 0.001443257904611528f */
+	    0x4280F6A4,  /* 64.48171997070312f */
+	    0xBF292E89,  /* -0.6608663201332092f */
+	    0x43A8B557,  /* 337.4167175292969f */
+	    0xBDC360E9,  /* -0.09539968520402908f */
+	    0x427EE913,  /* 63.72761154174805f */
+	    0x3C700A4F,  /* 0.01465089526027441f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAAC15B,  /* 1.3340257406234741f */
+	    0xBAFC54CD,  /* -0.001925134682096541f */
+	    0xBF5B0F13,  /* -0.8556987643241882f */
+	    0x3A242E9D,  /* 0.0006263049435801804f */
+	    0x40349468,  /* 2.8215579986572266f */
+	    0x3ACE1F72,  /* 0.0015725924167782068f */
+	    0x427F8C33,  /* 63.88691329956055f */
+	    0xBF2CF801,  /* -0.6756592392921448f */
+	    0x43A8AA21,  /* 337.3291320800781f */
+	    0xBDD00EE7,  /* -0.10159092396497726f */
+	    0x427EFB1C,  /* 63.74522399902344f */
+	    0x3CCDC0B0,  /* 0.025116294622421265f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAA86A4,  /* 1.3322339057922363f */
+	    0xBB09FCCE,  /* -0.002105522435158491f */
+	    0xBF5AE572,  /* -0.8550635576248169f */
+	    0x3A5318CC,  /* 0.0008052706252783537f */
+	    0x4034AC45,  /* 2.823014497756958f */
+	    0x3ADF63C1,  /* 0.0017043278785422444f */
+	    0x427D1E6F,  /* 63.279720306396484f */
+	    0xBF3051EE,  /* -0.688750147819519f */
+	    0x43A89E35,  /* 337.2359924316406f */
+	    0xBDDD116B,  /* -0.10794337838888168f */
+	    0x427F16D4,  /* 63.77229309082031f */
+	    0x3D12E549,  /* 0.03586319461464882f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAA469D,  /* 1.3302799463272095f */
+	    0xBB160F41,  /* -0.0022897275630384684f */
+	    0xBF5AB130,  /* -0.8542661666870117f */
+	    0x3A81C564,  /* 0.0009900745935738087f */
+	    0x4034C615,  /* 2.824589967727661f */
+	    0x3AF0FD76,  /* 0.0018386084120720625f */
+	    0x427AA581,  /* 62.661624908447266f */
+	    0xBF333C65,  /* -0.7001402974128723f */
+	    0x43A8918D,  /* 337.1371154785156f */
+	    0xBDEA5762,  /* -0.11442448198795319f */
+	    0x427F3C70,  /* 63.80902099609375f */
+	    0x3D402A9F,  /* 0.04691564664244652f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FAA012A,  /* 1.3281605243682861f */
+	    0xBB226559,  /* -0.0024779646191745996f */
+	    0xBF5A7203,  /* -0.8533021807670593f */
+	    0x3A9AB954,  /* 0.001180449966341257f */
+	    0x4034E1DC,  /* 2.8262853622436523f */
+	    0x3B016C19,  /* 0.0019748269114643335f */
+	    0x427822FC,  /* 62.03416442871094f */
+	    0xBF35B62A,  /* -0.7098108530044556f */
+	    0x43A88426,  /* 337.03240966796875f */
+	    0xBDF7CFAF,  /* -0.12100159376859665f */
+	    0x427F6C4C,  /* 63.85575866699219f */
+	    0x3D6EC96A,  /* 0.05829755216836929f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA9B62A,  /* 1.3258717060089111f */
+	    0xBB2EE537,  /* -0.0026686915662139654f */
+	    0xBF5A278F,  /* -0.8521661162376404f */
+	    0x3AB4808F,  /* 0.0013771223602816463f */
+	    0x4034FFA4,  /* 2.8281030654907227f */
+	    0x3B0A77DF,  /* 0.0021128577645868063f */
+	    0x4275986F,  /* 61.398860931396484f */
+	    0xBF37C11E,  /* -0.7177904844284058f */
+	    0x43A875FF,  /* 336.9218444824219f */
+	    0xBE02BD8B,  /* -0.12767617404460907f */
+	    0x427FA6A4,  /* 63.91273498535156f */
+	    0x3D8F4A03,  /* 0.06996538490056992f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA96598,  /* 1.3234128952026367f */
+	    0xBB3B90DF,  /* -0.002862028544768691f */
+	    0xBF59D174,  /* -0.8508522510528564f */
+	    0x3ACF1594,  /* 0.001579927746206522f */
+	    0x40351F71,  /* 2.8300440311431885f */
+	    0x3B139F23,  /* 0.002252527279779315f */
+	    0x42730763,  /* 60.7572135925293f */
+	    0xBF395D37,  /* -0.7240785956382751f */
+	    0x43A86714,  /* 336.8052978515625f */
+	    0xBE09B0A0,  /* -0.13446283340454102f */
+	    0x427FEBC0,  /* 63.980224609375f */
+	    0x3DA7C2BF,  /* 0.08191441744565964f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA81CC9,  /* 1.3133784532546997f */
+	    0xBC5C34FE,  /* -0.013440368697047234f */
+	    0xBF59584D,  /* -0.8490036129951477f */
+	    0xBA7567E7,  /* -0.0009361490956507623f */
+	    0x403588D6,  /* 2.8364768028259277f */
+	    0x3BF45DAF,  /* 0.0074574570171535015f */
+	    0x426DF05D,  /* 59.4847297668457f */
+	    0xBF2DCA30,  /* -0.6788663864135742f */
+	    0x43A825A9,  /* 336.2942199707031f */
+	    0xBF37F429,  /* -0.7185693383216858f */
+	    0x4280359E,  /* 64.10472106933594f */
+	    0x3C47CAC2,  /* 0.012194337323307991f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA5FFD4,  /* 1.2968697547912598f */
+	    0xBCC0E725,  /* -0.023547718301415443f */
+	    0xBF59DC81,  /* -0.851020872592926f */
+	    0xBB65A9E3,  /* -0.0035043887328356504f */
+	    0x40361AA9,  /* 2.845377206802368f */
+	    0x3C50D0DE,  /* 0.01274511031806469f */
+	    0x426B9CB1,  /* 58.903018951416016f */
+	    0xBF2130E4,  /* -0.6296522617340088f */
+	    0x43A7B3C0,  /* 335.404296875f */
+	    0xBFA18C52,  /* -1.2620947360992432f */
+	    0x4280290A,  /* 64.08015441894531f */
+	    0xBD8372D3,  /* -0.06418385356664658f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3FA2C016,  /* 1.2714869976043701f */
+	    0xBD093345,  /* -0.03349616006016731f */
+	    0xBF5AF0E0,  /* -0.8552379608154297f */
+	    0xBBBFEE9F,  /* -0.005857303272932768f */
+	    0x4036FC52,  /* 2.8591504096984863f */
+	    0x3C98083B,  /* 0.01855861209332943f */
+	    0x42697553,  /* 58.36457443237305f */
+	    0xBF14E09C,  /* -0.581552267074585f */
+	    0x43A70644,  /* 334.0489501953125f */
+	    0xBFE1F112,  /* -1.765169382095337f */
+	    0x427FF650,  /* 63.99053955078125f */
+	    0xBE093963,  /* -0.13400797545909882f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F9E5F2E,  /* 1.2372796535491943f */
+	    0xBD32063E,  /* -0.04346298426389694f */
+	    0xBF5C8767,  /* -0.8614410758018494f */
+	    0xBC01A8AA,  /* -0.007913747802376747f */
+	    0x40383798,  /* 2.8783931732177734f */
+	    0x3CCDDE75,  /* 0.025130489841103554f */
+	    0x42677946,  /* 57.868431091308594f */
+	    0xBF08D783,  /* -0.5345384478569031f */
+	    0x43A621CC,  /* 332.2640380859375f */
+	    0xC00E96D6,  /* -2.2279562950134277f */
+	    0x427F5DF4,  /* 63.84175109863281f */
+	    0xBE49EE9D,  /* -0.19719929993152618f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F98DA6F,  /* 1.1941660642623901f */
+	    0xBD5B5FAD,  /* -0.05355804041028023f */
+	    0xBF5E8B88,  /* -0.869316577911377f */
+	    0xBC1C3625,  /* -0.009534393437206745f */
+	    0x4039D8CE,  /* 2.903857707977295f */
+	    0x3D0569F5,  /* 0.03257175162434578f */
+	    0x4265A78E,  /* 57.41362762451172f */
+	    0xBEFA2D70,  /* -0.48862791061401367f */
+	    0x43A50AEE,  /* 330.08538818359375f */
+	    0xC0299FED,  /* -2.650386095046997f */
+	    0x427E8F13,  /* 63.63972091674805f */
+	    0xBE81ECDC,  /* -0.2537602186203003f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F922D0B,  /* 1.14199960231781f */
+	    0xBD82AD74,  /* -0.0638073980808258f */
+	    0xBF60DF02,  /* -0.878402829170227f */
+	    0xBC2C9B8F,  /* -0.010535134933888912f */
+	    0x403BECF9,  /* 2.9363386631011963f */
+	    0x3D2764AD,  /* 0.04086749628186226f */
+	    0x4263FF24,  /* 56.99916076660156f */
+	    0xBEE34184,  /* -0.4438592195510864f */
+	    0x43A3C645,  /* 327.5489807128906f */
+	    0xC0421365,  /* -3.0324337482452393f */
+	    0x427D8FAE,  /* 63.39031219482422f */
+	    0xBE9B7AC9,  /* -0.3036711513996124f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F8A52D1,  /* 1.0806523561477661f */
+	    0xBD97CA30,  /* -0.07411611080169678f */
+	    0xBF6357CF,  /* -0.888058602809906f */
+	    0xBC2F7699,  /* -0.0107094282284379f */
+	    0x403E7FFA,  /* 2.9765610694885254f */
+	    0x3D4C3661,  /* 0.04985654726624489f */
+	    0x42627EFA,  /* 56.624000549316406f */
+	    0xBECCED94,  /* -0.40025007724761963f */
+	    0x43A25868,  /* 324.690673828125f */
+	    0xC057F30A,  /* -3.374208927154541f */
+	    0x427C65E0,  /* 63.0994873046875f */
+	    0xBEB1A253,  /* -0.3469415605068207f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F814C80,  /* 1.0101470947265625f */
+	    0xBDAC8185,  /* -0.0842314139008522f */
+	    0xBF65BF9A,  /* -0.8974548578262329f */
+	    0xBC218B7C,  /* -0.00985991582274437f */
+	    0x40419A25,  /* 3.0250332355499268f */
+	    0x3D72851B,  /* 0.05920897051692009f */
+	    0x42612601,  /* 56.287113189697266f */
+	    0xBEB736C9,  /* -0.3578398525714874f */
+	    0x43A0C5EC,  /* 321.5462646484375f */
+	    0xC06B3C9E,  /* -3.675574779510498f */
+	    0x427B17A8,  /* 62.773101806640625f */
+	    0xBEC460D2,  /* -0.3835511803627014f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F57E95E,  /* 0.8434046506881714f */
+	    0xBDD0F2B6,  /* -0.10202543437480927f */
+	    0xBF69519A,  /* -0.9114013910293579f */
+	    0xBB968279,  /* -0.004593190271407366f */
+	    0x40496468,  /* 3.1467533111572266f */
+	    0x3D9D5B36,  /* 0.07683412730693817f */
+	    0x425EE510,  /* 55.72369384765625f */
+	    0xBE8DC8CA,  /* -0.2769225239753723f */
+	    0x439D4586,  /* 314.54315185546875f */
+	    0xC08507CF,  /* -4.157203197479248f */
+	    0x42782677,  /* 62.03756332397461f */
+	    0xBEDF8BE6,  /* -0.4366142153739929f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F3FD227,  /* 0.7493004202842712f */
+	    0xBDDE2203,  /* -0.10846330970525742f */
+	    0xBF69ECE2,  /* -0.9137707948684692f */
+	    0xB948E214,  /* -0.00019157706992700696f */
+	    0x404DFD41,  /* 3.2185823917388916f */
+	    0x3DAB7601,  /* 0.08372116833925247f */
+	    0x425DFAA1,  /* 55.494754791259766f */
+	    0xBE744B9B,  /* -0.23856966197490692f */
+	    0x439B60C9,  /* 310.7561340332031f */
+	    0xC08ACC43,  /* -4.3374342918396f */
+	    0x42768FC8,  /* 61.640411376953125f */
+	    0xBEE7EC77,  /* -0.45297595858573914f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F2683B3,  /* 0.6504470705986023f */
+	    0xBDE64670,  /* -0.11243903636932373f */
+	    0xBF6967F0,  /* -0.9117422103881836f */
+	    0x3BA8E519,  /* 0.005154263693839312f */
+	    0x4052ECA8,  /* 3.295694351196289f */
+	    0x3DB5146E,  /* 0.08841787278652191f */
+	    0x425D3275,  /* 55.29927444458008f */
+	    0xBE4E9B62,  /* -0.20176461338996887f */
+	    0x439969D5,  /* 306.8268127441406f */
+	    0xC08F4631,  /* -4.477318286895752f */
+	    0x4274ED46,  /* 61.231712341308594f */
+	    0xBEECCB8B,  /* -0.46249040961265564f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3F0C9D02,  /* 0.549270749092102f */
+	    0xBDE89457,  /* -0.11356418579816818f */
+	    0xBF6793F4,  /* -0.9046013355255127f */
+	    0x3C360DDC,  /* 0.011111702769994736f */
+	    0x40580E64,  /* 3.37587833404541f */
+	    0x3DB94E82,  /* 0.09048177301883698f */
+	    0x425C8B13,  /* 55.13581466674805f */
+	    0xBE2AAAD7,  /* -0.16666732728481293f */
+	    0x4397653E,  /* 302.79095458984375f */
+	    0xC092752A,  /* -4.5768022537231445f */
+	    0x42734543,  /* 60.8176383972168f */
+	    0xBEEE1CCF,  /* -0.46506354212760925f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3EE596BF,  /* 0.44841572642326355f */
+	    0xBDE4F062,  /* -0.1117866188287735f */
+	    0xBF64586F,  /* -0.8919743895530701f */
+	    0x3C8D8BA1,  /* 0.01727849431335926f */
+	    0x405D39F3,  /* 3.4566619396209717f */
+	    0xC05C4A5A,  /* -3.442038059234619f */
+	    0x425C02D7,  /* 55.00277328491211f */
+	    0xBE089D04,  /* -0.1334114670753479f */
+	    0x439557A2,  /* 298.68463134765625f */
+	    0xC0945954,  /* -4.635904312133789f */
+	    0x42719E11,  /* 60.404361724853516f */
+	    0xBEEBD571,  /* -0.46061280369758606f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3EB367DB,  /* 0.35040172934532166f */
+	    0xBDDBE900,  /* -0.10737800598144531f */
+	    0xBF5FB579,  /* -0.8738628029823303f */
+	    0x3CCE4814,  /* 0.02518085390329361f */
+	    0xC02FD776,  /* -2.747525691986084f */
+	    0xC05C7D93,  /* -3.445164442062378f */
+	    0x425B980A,  /* 54.898475646972656f */
+	    0xBE5BBA94,  /* -0.21457892656326294f */
+	    0x43934597,  /* 294.5436706542969f */
+	    0xC0968572,  /* -4.703789710998535f */
+	    0x426FFE29,  /* 59.99820327758789f */
+	    0xBEA93499,  /* -0.3304794132709503f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3E83C8AE,  /* 0.25739043951034546f */
+	    0xBDCCD67F,  /* -0.10001849383115768f */
+	    0xBF58E0A3,  /* -0.8471776843070984f */
+	    0x3D144317,  /* 0.03619679436087608f */
+	    0xC02B06A4,  /* -2.6722803115844727f */
+	    0x3DA618EB,  /* 0.08110221475362778f */
+	    0x425A7BF1,  /* 54.621036529541016f */
+	    0xBF03CC8B,  /* -0.5148398280143738f */
+	    0x43912887,  /* 290.3166198730469f */
+	    0xC09A3BF6,  /* -4.819819450378418f */
+	    0x426F4409,  /* 59.81644058227539f */
+	    0x3C905C0A,  /* 0.01762201264500618f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3E309B86,  /* 0.17246827483177185f */
+	    0xBDB75E9E,  /* -0.08953593671321869f */
+	    0xBF4F3954,  /* -0.8094685077667236f */
+	    0x3D439C2D,  /* 0.047756362706422806f */
+	    0xC0269B8F,  /* -2.6032445430755615f */
+	    0x3D95D0DC,  /* 0.07315227389335632f */
+	    0x4257EE27,  /* 53.98257064819336f */
+	    0xBF69A435,  /* -0.9126618504524231f */
+	    0x438EFC0E,  /* 285.96917724609375f */
+	    0xC09D7A16,  /* -4.9211530685424805f */
+	    0x42701E44,  /* 60.02955627441406f */
+	    0x3ED9E6A9,  /* 0.425587922334671f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3D110163,  /* 0.035401713103055954f */
+	    0xBD82CA13,  /* -0.06386198848485947f */
+	    0xBF3503D3,  /* -0.7070896029472351f */
+	    0x3D861072,  /* 0.06546105444431305f */
+	    0xC01F5186,  /* -2.4893507957458496f */
+	    0x3D6139BB,  /* 0.05498669669032097f */
+	    0x424EB40D,  /* 51.67583084106445f */
+	    0xBFD5C6A9,  /* -1.670125126838684f */
+	    0x438A93B3,  /* 277.1539001464844f */
+	    0xC09D8A6C,  /* -4.923147201538086f */
+	    0x42758B7C,  /* 61.38621520996094f */
+	    0x3F8410EB,  /* 1.0317662954330444f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC7E0A0B,  /* -0.015505324117839336f */
+	    0xBD502A4C,  /* -0.050821587443351746f */
+	    0xBF2550BE,  /* -0.6457632780075073f */
+	    0x3D92777A,  /* 0.07151694595813751f */
+	    0xC01C6FBF,  /* -2.4443204402923584f */
+	    0x3D3FE185,  /* 0.0468459315598011f */
+	    0x42481AE0,  /* 50.0262451171875f */
+	    0xC0023692,  /* -2.034580707550049f */
+	    0x438866DB,  /* 272.8035583496094f */
+	    0xC09A706D,  /* -4.826223850250244f */
+	    0x4279A2E6,  /* 62.409080505371094f */
+	    0x3F9E7841,  /* 1.2380448579788208f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBD6151F9,  /* -0.05500981584191322f */
+	    0xBD1D0773,  /* -0.03833718225359917f */
+	    0xBF1471C6,  /* -0.579861044883728f */
+	    0x3D9B3CE1,  /* 0.07579971104860306f */
+	    0xC019FC19,  /* -2.4060118198394775f */
+	    0x3D23A9AA,  /* 0.039956726133823395f */
+	    0x424039AB,  /* 48.05631637573242f */
+	    0xC018FF83,  /* -2.3905951976776123f */
+	    0x438648B6,  /* 268.56805419921875f */
+	    0xC0954CA9,  /* -4.665607929229736f */
+	    0x427E5AD3,  /* 63.58869552612305f */
+	    0x3FB1A19D,  /* 1.3877445459365845f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBDAB6EC8,  /* -0.08370739221572876f */
+	    0xBCD94C02,  /* -0.026525501161813736f */
+	    0xBF02CB57,  /* -0.510915219783783f */
+	    0x3DA09532,  /* 0.07840956747531891f */
+	    0xC017E31E,  /* -2.373237133026123f */
+	    0x3D0CBFAC,  /* 0.03436248004436493f */
+	    0x423717EC,  /* 45.77336120605469f */
+	    0xC02F46B7,  /* -2.7386910915374756f */
+	    0x43844070,  /* 264.50341796875f */
+	    0xC08E2BD5,  /* -4.442850589752197f */
+	    0x4281C17A,  /* 64.87788391113281f */
+	    0x3FBE79B5,  /* 1.4880892038345337f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBDD14DD1,  /* -0.10219920426607132f */
+	    0xBC7B4500,  /* -0.015336275100708008f */
+	    0xBEE17807,  /* -0.4403688609600067f */
+	    0x3DA2B0DD,  /* 0.07943890243768692f */
+	    0xC0161285,  /* -2.3448803424835205f */
+	    0x3CF50755,  /* 0.029910722747445107f */
+	    0x422CBC8D,  /* 43.18413162231445f */
+	    0xC0451E54,  /* -3.0799760818481445f */
+	    0x43825502,  /* 260.66412353515625f */
+	    0xC0851C39,  /* -4.159695148468018f */
+	    0x428478DA,  /* 66.23603820800781f */
+	    0x3FC5F20B,  /* 1.546449065208435f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBDE34F27,  /* -0.11099081486463547f */
+	    0xBB984AE7,  /* -0.004647600930184126f */
+	    0xBEBD3B37,  /* -0.3695923984050751f */
+	    0x3DA1BAFC,  /* 0.07896992564201355f */
+	    0xC0147B4D,  /* -2.320025682449341f */
+	    0x3CD7BA3E,  /* 0.026333924382925034f */
+	    0x42212D1A,  /* 40.294044494628906f */
+	    0xC05AA874,  /* -3.416531562805176f */
+	    0x43808D37,  /* 257.1032409667969f */
+	    0xC0745C75,  /* -3.818143129348755f */
+	    0x42874211,  /* 67.62903594970703f */
+	    0x3FC8ECC9,  /* 1.5697261095046997f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBDE23CB0,  /* -0.11046731472015381f */
+	    0x3BB9B6BE,  /* 0.005667536519467831f */
+	    0xBE9989FE,  /* -0.2998809218406677f */
+	    0x3D9DE071,  /* 0.07708824425935745f */
+	    0xC01312F5,  /* -2.29803204536438f */
+	    0x3CBEDA3C,  /* 0.023297421634197235f */
+	    0x42146CA6,  /* 37.106101989746094f */
+	    0xC070187D,  /* -3.7514946460723877f */
+	    0x437DDF24,  /* 253.87164306640625f */
+	    0xC05AE63E,  /* -3.4203028678894043f */
+	    0x428A0EA3,  /* 69.0285873413086f */
+	    0x3FC8237B,  /* 1.5635827779769897f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBDCEA8FB,  /* -0.10090824216604233f */
+	    0x3C809C15,  /* 0.01569942571222782f */
+	    0xBE6E07E5,  /* -0.23245199024677277f */
+	    0x3D975A5E,  /* 0.07390283048152924f */
+	    0xC011D43E,  /* -2.2785792350769043f */
+	    0x3CA758C2,  /* 0.020428065210580826f */
+	    0x42067B00,  /* 33.6201171875f */
+	    0xC082D7B9,  /* -4.088833332061768f */
+	    0x437B04BD,  /* 251.0185089111328f */
+	    0xC03DF887,  /* -2.9682939052581787f */
+	    0x428CD242,  /* 70.41065979003906f */
+	    0x3FC413B0,  /* 1.531850814819336f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBD63AE92,  /* -0.05558640509843826f */
+	    0x3D0F2A00,  /* 0.03495216369628906f */
+	    0xBDDE9463,  /* -0.10868146270513535f */
+	    0x3D83C212,  /* 0.06433500349521637f */
+	    0xC00FDB1B,  /* -2.2477481365203857f */
+	    0x3C5EF35E,  /* 0.013607827946543694f */
+	    0x41CDDFF5,  /* 25.73435401916504f */
+	    0xC0992C65,  /* -4.7866692543029785f */
+	    0x4376A299,  /* 246.63514709472656f */
+	    0xBFF44939,  /* -1.9084845781326294f */
+	    0x429212A6,  /* 73.03642272949219f */
+	    0x3FB2849D,  /* 1.3946720361709595f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCA6C5C3,  /* -0.020357972010970116f */
+	    0x3D1A8769,  /* 0.03772679343819618f */
+	    0xBD5D008A,  /* -0.05395559221506119f */
+	    0x3D57CF1E,  /* 0.05268775671720505f */
+	    0xC00F32E9,  /* -2.2374823093414307f */
+	    0x3C10559B,  /* 0.008809472434222698f */
+	    0x41AA8852,  /* 21.31656265258789f */
+	    0xC0905F80,  /* -4.51165771484375f */
+	    0x43753223,  /* 245.1958465576172f */
+	    0xBF9FD367,  /* -1.2486389875411987f */
+	    0x42947842,  /* 74.23487854003906f */
+	    0x3F91C397,  /* 1.1387814283370972f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3C3CE63A,  /* 0.011529499664902687f */
+	    0x3CE0B832,  /* 0.027431581169366837f */
+	    0xBC74F0F5,  /* -0.014950026758015156f */
+	    0x3D039E0B,  /* 0.03213314339518547f */
+	    0xC00EDA56,  /* -2.2320761680603027f */
+	    0x3B8328C6,  /* 0.004002663306891918f */
+	    0x418DAA3C,  /* 17.70812225341797f */
+	    0xC043AC5D,  /* -3.0573952198028564f */
+	    0x437469F0,  /* 244.413818359375f */
+	    0xBF19F6EE,  /* -0.6014240980148315f */
+	    0x42961FE8,  /* 75.06231689453125f */
+	    0x3F2ADACC,  /* 0.6674010753631592f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3CE90139,  /* 0.02844296582043171f */
+	    0x3C385DC7,  /* 0.011252827011048794f */
+	    0x3B525598,  /* 0.0032094474881887436f */
+	    0x3C49E81F,  /* 0.012323408387601376f */
+	    0xC00EBE3E,  /* -2.2303614616394043f */
+	    0x3AA6BB72,  /* 0.0012720657978206873f */
+	    0x417E09FE,  /* 15.877439498901367f */
+	    0xBF9D9B31,  /* -1.231298565864563f */
+	    0x4374203C,  /* 244.12591552734375f */
+	    0xBE5C688E,  /* -0.21524259448051453f */
+	    0x4296D829,  /* 75.42218780517578f */
+	    0x3E6B1804,  /* 0.22958379983901978f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3D0138EB,  /* 0.03154842182993889f */
+	    0xBB0ADC3E,  /* -0.0021188403479754925f */
+	    0x3BE481B8,  /* 0.006973471492528915f */
+	    0xBAD53052,  /* -0.0016265010926872492f */
+	    0xC00EB542,  /* -2.2298130989074707f */
+	    0x381A2579,  /* 3.6751360312337056e-05f */
+	    0x41784833,  /* 15.517626762390137f */
+	    0x3E47C037,  /* 0.19506917893886566f */
+	    0x437407E9,  /* 244.03089904785156f */
+	    0xBCDB5B32,  /* -0.026776883751153946f */
+	    0x4296F106,  /* 75.47074890136719f */
+	    0xBD7BC400,  /* -0.061466217041015625f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3CCA2031,  /* 0.024673553183674812f */
+	    0xBC36C390,  /* -0.01115502417087555f */
+	    0x39A5A000,  /* 0.0003159046173095703f */
+	    0xBC368FF9,  /* -0.011142724193632603f */
+	    0xC00EBD2C,  /* -2.2302961349487305f */
+	    0xBA5E86F9,  /* -0.000848874042276293f */
+	    0x4181CBB6,  /* 16.224468231201172f */
+	    0x3F94D9AB,  /* 1.1628926992416382f */
+	    0x4374140A,  /* 244.07827758789062f */
+	    0x3DD672DF,  /* 0.10471128672361374f */
+	    0x4296A02C,  /* 75.31283569335938f */
+	    0xBE84B0BA,  /* -0.2591608166694641f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0x3C3FC0AC,  /* 0.011703651398420334f */
+	    0xBC81A641,  /* -0.01582634635269642f */
+	    0xBC52865C,  /* -0.012849416583776474f */
+	    0xBC852CED,  /* -0.016256773844361305f */
+	    0xC00ECE00,  /* -2.2313232421875f */
+	    0xBA9C7AE5,  /* -0.0011938480893149972f */
+	    0x418CB0F8,  /* 17.586410522460938f */
+	    0x3FD58F80,  /* 1.6684417724609375f */
+	    0x43743799,  /* 244.21717834472656f */
+	    0x3E37393B,  /* 0.17892925441265106f */
+	    0x429604F7,  /* 75.00969696044922f */
+	    0xBEC5BAD7,  /* -0.38619109988212585f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBB642D84,  /* -0.003481716848909855f */
+	    0xBC844F91,  /* -0.016151221469044685f */
+	    0xBCEA553E,  /* -0.028605099767446518f */
+	    0xBC8ADDAC,  /* -0.01695140451192856f */
+	    0xC00EDFF8,  /* -2.232419967651367f */
+	    0xBA93E31A,  /* -0.0011282891500741243f */
+	    0x41998A8A,  /* 19.192646026611328f */
+	    0x3FDB8DDA,  /* 1.715266466140747f */
+	    0x43746587,  /* 244.39659118652344f */
+	    0x3E48E970,  /* 0.19620299339294434f */
+	    0x42954069,  /* 74.62580108642578f */
+	    0xBED99B43,  /* -0.4250126779079437f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCCDB008,  /* -0.025108352303504944f */
+	    0xBB7CF45B,  /* -0.003859779564663768f */
+	    0xBD554CE5,  /* -0.05207528546452522f */
+	    0xBBA25BEF,  /* -0.004954806994646788f */
+	    0xC00EFA77,  /* -2.234037160873413f */
+	    0xBA3D02BE,  /* -0.0007210186449810863f */
+	    0x41AC309B,  /* 21.523733139038086f */
+	    0x3EEB203A,  /* 0.4592302441596985f */
+	    0x4374AD14,  /* 244.67608642578125f */
+	    0x3D7D7967,  /* 0.0618833564221859f */
+	    0x429407F4,  /* 74.01553344726562f */
+	    0xBDF0F99F,  /* -0.11766361445188522f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCC3C189,  /* -0.023895995691418648f */
+	    0x3B99FF4D,  /* 0.004699623677879572f */
+	    0xBD5441E9,  /* -0.05182066932320595f */
+	    0x3B75F79E,  /* 0.003753162454813719f */
+	    0xC00F03E7,  /* -2.2346131801605225f */
+	    0xBA0DDCB7,  /* -0.0005411612219177186f */
+	    0x41ABA389,  /* 21.454851150512695f */
+	    0xBED91C9A,  /* -0.4240463376045227f */
+	    0x4374AD23,  /* 244.6763153076172f */
+	    0xBD34F372,  /* -0.04417748004198074f */
+	    0x429416AB,  /* 74.04427337646484f */
+	    0x3E0312C7,  /* 0.12800131738185883f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC893264,  /* -0.01674766093492508f */
+	    0x3BD206BA,  /* 0.006409493274986744f */
+	    0xBD39F3A2,  /* -0.04539836198091507f */
+	    0x3BBD007F,  /* 0.005767881404608488f */
+	    0xC00F0A3D,  /* -2.234999895095825f */
+	    0xB9B0336F,  /* -0.0003360765695106238f */
+	    0x41A627A1,  /* 20.769350051879883f */
+	    0xBF1B6319,  /* -0.6069808602333069f */
+	    0x437498F5,  /* 244.5974884033203f */
+	    0xBD9FDF86,  /* -0.07806305587291718f */
+	    0x42947C8C,  /* 74.24325561523438f */
+	    0x3E342107,  /* 0.17590723931789398f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC4CB19C,  /* -0.012493517249822617f */
+	    0x3B5EB6CF,  /* 0.0033983474131673574f */
+	    0xBD2A3A6B,  /* -0.0415596179664135f */
+	    0x3B496B3B,  /* 0.0030734080355614424f */
+	    0xC00F0DB3,  /* -2.235211133956909f */
+	    0xB9325190,  /* -0.0001700578723102808f */
+	    0x41A30011,  /* 20.375032424926758f */
+	    0xBE9B1C09,  /* -0.3029482662677765f */
+	    0x43748996,  /* 244.53744506835938f */
+	    0xBD6EEB24,  /* -0.05832971632480621f */
+	    0x4294B6E5,  /* 74.35721588134766f */
+	    0x3DB7B162,  /* 0.08969379961490631f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC2F5743,  /* -0.010701957158744335f */
+	    0x3A7292EE,  /* 0.0009253461612388492f */
+	    0xBD238E68,  /* -0.03993073105812073f */
+	    0x3A5F6B86,  /* 0.0008522797143086791f */
+	    0xC00F0F32,  /* -2.235302448272705f */
+	    0xB8671005,  /* -5.508961112354882e-05f */
+	    0x41A1D7DC,  /* 20.23040008544922f */
+	    0xBD5318F1,  /* -0.05153745785355568f */
+	    0x43747E65,  /* 244.4937286376953f */
+	    0xBD2B66A0,  /* -0.04184591770172119f */
+	    0x4294CE3E,  /* 74.40281677246094f */
+	    0x3CB2F9EB,  /* 0.021847685799002647f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC31B8FD,  /* -0.010847327299416065f */
+	    0xBA7B1D5B,  /* -0.0009579264442436397f */
+	    0xBD240490,  /* -0.040043413639068604f */
+	    0xBA5CB746,  /* -0.0008419643854722381f */
+	    0xC00F0F4E,  /* -2.23530912399292f */
+	    0x37E992FA,  /* 2.7844205760629848e-05f */
+	    0x41A2444C,  /* 20.283348083496094f */
+	    0x3E105BA9,  /* 0.14097465574741364f */
+	    0x43747687,  /* 244.46299743652344f */
+	    0xBCEEDAC4,  /* -0.02915704995393753f */
+	    0x4294CACB,  /* 74.39608001708984f */
+	    0xBCECE0DD,  /* -0.02891581691801548f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC4B42FC,  /* -0.012406107038259506f */
+	    0xBB13A972,  /* -0.0022531417198479176f */
+	    0xBD29B105,  /* -0.0414285846054554f */
+	    0xBB039C4A,  /* -0.0020082169212400913f */
+	    0xC00F0E62,  /* -2.235252857208252f */
+	    0x38BA7B27,  /* 8.892110054148361e-05f */
+	    0x41A3D97C,  /* 20.48119354248047f */
+	    0x3E8C67D5,  /* 0.27422967553138733f */
+	    0x4374711D,  /* 244.4418487548828f */
+	    0xBCA6C9D7,  /* -0.020359916612505913f */
+	    0x4294B3E8,  /* 74.35137939453125f */
+	    0xBD82E791,  /* -0.06391824036836624f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBC73654D,  /* -0.014855694957077503f */
+	    0xBB42014A,  /* -0.0029602819122374058f */
+	    0xBD32A6C0,  /* -0.04361605644226074f */
+	    0xBB2D6C77,  /* -0.002646235516294837f */
+	    0xC00F0CB6,  /* -2.2351508140563965f */
+	    0x39079FAA,  /* 0.00012934082769788802f */
+	    0x41A62B6E,  /* 20.77120590209961f */
+	    0x3EB24961,  /* 0.34821608662605286f */
+	    0x43746D41,  /* 244.42677307128906f */
+	    0xBC7E015B,  /* -0.015503252856433392f */
+	    0x42949093,  /* 74.2823715209961f */
+	    0xBDAAE826,  /* -0.08345060050487518f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCA690EE,  /* -0.020332779735326767f */
+	    0xBB2AEF65,  /* -0.0026082631666213274f */
+	    0xBD46BC9E,  /* -0.04851972311735153f */
+	    0xBB194AF7,  /* -0.0023390629794448614f */
+	    0xC00F0877,  /* -2.234891653060913f */
+	    0x390AEB42,  /* 0.00013248345931060612f */
+	    0x41AB5618,  /* 21.417037963867188f */
+	    0x3EA348A9,  /* 0.3189137279987335f */
+	    0x437466A8,  /* 244.4010009765625f */
+	    0xBC8E053F,  /* -0.017336485907435417f */
+	    0x42944155,  /* 74.12760162353516f */
+	    0xBD970DA0,  /* -0.07375645637512207f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCB6C8DE,  /* -0.022312577813863754f */
+	    0xBACAF19E,  /* -0.0015483384486287832f */
+	    0xBD4E04B4,  /* -0.05029745399951935f */
+	    0xBAB6CB9B,  /* -0.0013946177205070853f */
+	    0xC00F06C0,  /* -2.2347869873046875f */
+	    0x38B3930A,  /* 8.562773291487247e-05f */
+	    0x41AD581C,  /* 21.66802215576172f */
+	    0x3E5D38B6,  /* 0.21603664755821228f */
+	    0x43746228,  /* 244.3834228515625f */
+	    0xBCC4D380,  /* -0.02402663230895996f */
+	    0x429424B7,  /* 74.07170867919922f */
+	    0xBD30920A,  /* -0.0431080237030983f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBD2190,  /* -0.023087292909622192f */
+	    0xB9E3657C,  /* -0.00043372425716370344f */
+	    0xBD50E62E,  /* -0.05100076645612717f */
+	    0xB9D29B20,  /* -0.0004016989842057228f */
+	    0xC00F05F9,  /* -2.2347395420074463f */
+	    0x3806FEED,  /* 3.218550773453899e-05f */
+	    0x41AE6935,  /* 21.80137062072754f */
+	    0x3DDC5825,  /* 0.10758999735116959f */
+	    0x43745BB6,  /* 244.35824584960938f */
+	    0xBCFDBDE7,  /* -0.030974341556429863f */
+	    0x42941A11,  /* 74.05091094970703f */
+	    0xBC2ACEDA,  /* -0.010425293818116188f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBD1B05,  /* -0.02308417297899723f */
+	    0x3677C7B3,  /* 3.6922108392900554e-06f */
+	    0xBD50F20A,  /* -0.0510120764374733f */
+	    0xB7675659,  /* -1.3788777323497925e-05f */
+	    0xC00F05D0,  /* -2.234729766845703f */
+	    0x3752F85E,  /* 1.2574802894960158e-05f */
+	    0x41AEE01A,  /* 21.859424591064453f */
+	    0x3D877477,  /* 0.06614010781049728f */
+	    0x4374540D,  /* 244.3283233642578f */
+	    0xBD08D154,  /* -0.03340275585651398f */
+	    0x42941B38,  /* 74.05316162109375f */
+	    0x3B38F87D,  /* 0.0028224282432347536f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBD13CA,  /* -0.023080725222826004f */
+	    0x369241E2,  /* 4.358808837423567e-06f */
+	    0xBD50FFE7,  /* -0.05102529749274254f */
+	    0xB7899AB6,  /* -1.640371556277387e-05f */
+	    0xC00F059B,  /* -2.2347171306610107f */
+	    0x377DAA1C,  /* 1.5119581803446636e-05f */
+	    0x41AF5A2E,  /* 21.91903305053711f */
+	    0x3D8ABB22,  /* 0.06773974001407623f */
+	    0x43744C80,  /* 244.298828125f */
+	    0xBD06B56C,  /* -0.032887861132621765f */
+	    0x42941CA3,  /* 74.0559310913086f */
+	    0x3B5E6274,  /* 0.003393319435417652f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBD0AC1,  /* -0.023076416924595833f */
+	    0x36AEDDDD,  /* 5.211432380747283e-06f */
+	    0xBD5110A4,  /* -0.05104126036167145f */
+	    0xB7A02184,  /* -1.9089093257207423e-05f */
+	    0xC00F0560,  /* -2.2347030639648438f */
+	    0x378F2889,  /* 1.7065804058802314e-05f */
+	    0x41AFD6E8,  /* 21.979934692382812f */
+	    0x3D8D58B0,  /* 0.06901681423187256f */
+	    0x43744513,  /* 244.2698211669922f */
+	    0xBD0434E3,  /* -0.032276999205350876f */
+	    0x42941E4F,  /* 74.05919647216797f */
+	    0x3B800E7E,  /* 0.003907977603375912f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBD0058,  /* -0.023071452975273132f */
+	    0x36C559EE,  /* 5.881526703888085e-06f */
+	    0xBD512383,  /* -0.05105925723910332f */
+	    0xB7B22960,  /* -2.123852027580142e-05f */
+	    0xC00F051B,  /* -2.2346866130828857f */
+	    0x37A1FE61,  /* 1.931115002662409e-05f */
+	    0x41B055A3,  /* 22.04181480407715f */
+	    0x3D8F416F,  /* 0.06994902342557907f */
+	    0x43743DCD,  /* 244.2414093017578f */
+	    0xBD018138,  /* -0.03161737322807312f */
+	    0x42942033,  /* 74.0628890991211f */
+	    0x3B8F5683,  /* 0.0043743266724050045f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBCF4D0,  /* -0.023065954446792603f */
+	    0x36D1ABFA,  /* 6.248706085898448e-06f */
+	    0xBD513842,  /* -0.05107904225587845f */
+	    0xB7C2E09F,  /* -2.323119952052366e-05f */
+	    0xC00F04CF,  /* -2.234668493270874f */
+	    0x37B25131,  /* 2.1257061234791763e-05f */
+	    0x41B0D5C2,  /* 22.104373931884766f */
+	    0x3D9085C1,  /* 0.07056761533021927f */
+	    0x437436AD,  /* 244.2135772705078f */
+	    0xBCFD35F3,  /* -0.03090951405465603f */
+	    0x4294224B,  /* 74.06697845458984f */
+	    0x3B9C82D9,  /* 0.004776340443640947f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBCDBD2,  /* -0.023054037243127823f */
+	    0x36F22B19,  /* 7.217179245344596e-06f */
+	    0xBD5166E9,  /* -0.05112353339791298f */
+	    0xB7DE3194,  /* -2.648754889378324e-05f */
+	    0xC00F0426,  /* -2.234628200531006f */
+	    0x37C8EC8A,  /* 2.3952004994498566e-05f */
+	    0x41B1D7DD,  /* 22.23040199279785f */
+	    0x3D90F82D,  /* 0.07078585773706436f */
+	    0x437428F7,  /* 244.16001892089844f */
+	    0xBCEFC6DB,  /* -0.0292696263641119f */
+	    0x429426F7,  /* 74.07610321044922f */
+	    0x3BB21EB1,  /* 0.005435787606984377f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBCCE1B,  /* -0.023047497496008873f */
+	    0x36FBB3CD,  /* 7.5013144851254765e-06f */
+	    0xBD518042,  /* -0.0511477068066597f */
+	    0xB7E79C31,  /* -2.761007817753125e-05f */
+	    0xC00F03CA,  /* -2.2346062660217285f */
+	    0x37D43967,  /* 2.529909943405073e-05f */
+	    0x41B258A5,  /* 22.293283462524414f */
+	    0x3D9032CA,  /* 0.0704093724489212f */
+	    0x43742265,  /* 244.1343536376953f */
+	    0xBCE88766,  /* -0.028384875506162643f */
+	    0x42942980,  /* 74.0810546875f */
+	    0x3BB9E432,  /* 0.0056729549542069435f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBCBFD5,  /* -0.023040691390633583f */
+	    0x36FF0A3F,  /* 7.60078501116368e-06f */
+	    0xBD519A6A,  /* -0.0511726513504982f */
+	    0xB7EDEE1B,  /* -2.8363478122628294e-05f */
+	    0xC00F0369,  /* -2.2345831394195557f */
+	    0x37DBC2B7,  /* 2.6197505576419644e-05f */
+	    0x41B2D865,  /* 22.355661392211914f */
+	    0x3D8EAB02,  /* 0.06966210901737213f */
+	    0x43741C09,  /* 244.10951232910156f */
+	    0xBCE0E3B9,  /* -0.027452336624264717f */
+	    0x42942C22,  /* 74.08619689941406f */
+	    0x3BC0E019,  /* 0.005886089522391558f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBCB1C0,  /* -0.023033976554870605f */
+	    0x37071D10,  /* 8.053393685258925e-06f */
+	    0xBD51B52B,  /* -0.051198165863752365f */
+	    0xB7F63FE5,  /* -2.9355238439165987e-05f */
+	    0xC00F0307,  /* -2.2345597743988037f */
+	    0x37DA813C,  /* 2.6047804567497224e-05f */
+	    0x41B35674,  /* 22.417213439941406f */
+	    0x3D8C86F3,  /* 0.06861677020788193f */
+	    0x437415E4,  /* 244.08551025390625f */
+	    0xBCD81006,  /* -0.026374828070402145f */
+	    0x42942EDC,  /* 74.09152221679688f */
+	    0x3BC4F5A2,  /* 0.006010727025568485f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBCA1CA,  /* -0.023026365786790848f */
+	    0x3706D171,  /* 8.035786777327303e-06f */
+	    0xBD51D12D,  /* -0.05122487619519234f */
+	    0xB7F935DF,  /* -2.9708198781008832e-05f */
+	    0xC00F02A6,  /* -2.234536647796631f */
+	    0x37E209A4,  /* 2.6945788704324514e-05f */
+	    0x41B3D264,  /* 22.47772979736328f */
+	    0x3D89B8EA,  /* 0.06724722683429718f */
+	    0x43741006,  /* 244.06259155273438f */
+	    0xBCCF3BE6,  /* -0.025297116488218307f */
+	    0x4294319C,  /* 74.09689331054688f */
+	    0x3BC73294,  /* 0.006079027429223061f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC93C5,  /* -0.023019680753350258f */
+	    0x3702DB0D,  /* 7.799605555192102e-06f */
+	    0xBD51EC96,  /* -0.051251016557216644f */
+	    0xB7F7EFE3,  /* -2.9556400477304123e-05f */
+	    0xC00F023D,  /* -2.234511613845825f */
+	    0x37E71005,  /* 2.754480556177441e-05f */
+	    0x41B44B76,  /* 22.536846160888672f */
+	    0x3D863302,  /* 0.06552697718143463f */
+	    0x43740A5F,  /* 244.04051208496094f */
+	    0xBCC646E6,  /* -0.024203728884458542f */
+	    0x42943466,  /* 74.10234069824219f */
+	    0x3BC88442,  /* 0.0061192819848656654f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC84B0,  /* -0.023012489080429077f */
+	    0x37075957,  /* 8.067428098001983e-06f */
+	    0xBD52084F,  /* -0.05127745494246483f */
+	    0xB7F9133A,  /* -2.9692066163988784e-05f */
+	    0xC00F01D9,  /* -2.234487771987915f */
+	    0x37E0C8A1,  /* 2.679630597413052e-05f */
+	    0x41B4C122,  /* 22.594303131103516f */
+	    0x3D820649,  /* 0.06348855048418045f */
+	    0x43740500,  /* 244.01953125f */
+	    0xBCBC21EF,  /* -0.02296539954841137f */
+	    0x4294372E,  /* 74.10777282714844f */
+	    0x3BC732FD,  /* 0.006079076323658228f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC75AB,  /* -0.023005327209830284f */
+	    0x37052175,  /* 7.935207577247638e-06f */
+	    0xBD5223F9,  /* -0.051303837448358536f */
+	    0xB7F56766,  /* -2.9254424589453265e-05f */
+	    0xC00F0176,  /* -2.234464168548584f */
+	    0x37DE4537,  /* 2.6496692953514867e-05f */
+	    0x41B532C6,  /* 22.649791717529297f */
+	    0x3D7A41BB,  /* 0.06109784170985222f */
+	    0x4373FFE9,  /* 243.99964904785156f */
+	    0xBCB21E53,  /* -0.02174297533929348f */
+	    0x429439EF,  /* 74.11315155029297f */
+	    0x3BC4D380,  /* 0.00600665807723999f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC595E,  /* -0.022991832345724106f */
+	    0x36FA0455,  /* 7.451084911735961e-06f */
+	    0xBD52591B,  /* -0.051354508846998215f */
+	    0xB7E80627,  /* -2.7659420084091835e-05f */
+	    0xC00F00B3,  /* -2.234417676925659f */
+	    0x37D2F85E,  /* 2.5149605789920315e-05f */
+	    0x41B6077E,  /* 22.753658294677734f */
+	    0x3D62B377,  /* 0.055346932262182236f */
+	    0x4373F698,  /* 243.9632568359375f */
+	    0xBC9C1E4F,  /* -0.019057421013712883f */
+	    0x42943F4A,  /* 74.12361145019531f */
+	    0x3BBA2809,  /* 0.005681042093783617f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC4B49,  /* -0.022985117509961128f */
+	    0x36F8E0FE,  /* 7.417168490064796e-06f */
+	    0xBD52727B,  /* -0.05137870833277702f */
+	    0xB7DF6E09,  /* -2.6634910682332702e-05f */
+	    0xC00F0058,  /* -2.234395980834961f */
+	    0x37C7AB10,  /* 2.380230580456555e-05f */
+	    0x41B66963,  /* 22.80145835876465f */
+	    0x3D54D5B7,  /* 0.05196162685751915f */
+	    0x4373F26C,  /* 243.94696044921875f */
+	    0xBC8FDDB7,  /* -0.0175617765635252f */
+	    0x429441D4,  /* 74.12857055664062f */
+	    0x3BB21EB1,  /* 0.005435787606984377f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC3DB2,  /* -0.022978637367486954f */
+	    0x36E77E0D,  /* 6.8990107138233725e-06f */
+	    0xBD528ACB,  /* -0.05140189453959465f */
+	    0xB7D28467,  /* -2.509560545149725e-05f */
+	    0xC00F0002,  /* -2.234375476837158f */
+	    0x37BD9ED7,  /* 2.260452129121404e-05f */
+	    0x41B6C4CF,  /* 22.846097946166992f */
+	    0x3D45A64A,  /* 0.048254288733005524f */
+	    0x4373EE99,  /* 243.93202209472656f */
+	    0xBC83E04D,  /* -0.01609816588461399f */
+	    0x4294443E,  /* 74.13328552246094f */
+	    0x3BA83CD5,  /* 0.005134204868227243f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC318C,  /* -0.022972844541072845f */
+	    0x36D08912,  /* 6.214840141183231e-06f */
+	    0xBD52A14B,  /* -0.05142335221171379f */
+	    0xB7C30935,  /* -2.32500988204265e-05f */
+	    0xC00EFFAF,  /* -2.2343556880950928f */
+	    0x37B11016,  /* 2.1107534848852083e-05f */
+	    0x41B71933,  /* 22.887304306030273f */
+	    0x3D351B7F,  /* 0.04421567544341087f */
+	    0x4373EB17,  /* 243.91831970214844f */
+	    0xBC6EB88D,  /* -0.014570367522537708f */
+	    0x42944681,  /* 74.13770294189453f */
+	    0x3B9CC69F,  /* 0.004784419666975737f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC2683,  /* -0.022967582568526268f */
+	    0x36BF30B0,  /* 5.6979115470312536e-06f */
+	    0xBD52B62A,  /* -0.05144325643777847f */
+	    0xB7B28DD6,  /* -2.1285301045281813e-05f */
+	    0xC00EFF64,  /* -2.23433780670166f */
+	    0x37A1FE61,  /* 1.931115002662409e-05f */
+	    0x41B765E8,  /* 22.924758911132812f */
+	    0x3D2332CB,  /* 0.0398433618247509f */
+	    0x4373E7F6,  /* 243.90609741210938f */
+	    0xBC541BC9,  /* -0.01294607762247324f */
+	    0x42944899,  /* 74.14179229736328f */
+	    0x3B8F5683,  /* 0.0043743266724050045f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC1C49,  /* -0.02296270616352558f */
+	    0x36AC143A,  /* 5.128354132466484e-06f */
+	    0xBD52C900,  /* -0.051461219787597656f */
+	    0xB79EBC8C,  /* -1.892286672955379e-05f */
+	    0xC00EFF1F,  /* -2.234321355819702f */
+	    0x3791AB31,  /* 1.736506419547368e-05f */
+	    0x41B7AA5D,  /* 22.95818519592285f */
+	    0x3D0FF49B,  /* 0.03514538332819939f */
+	    0x4373E531,  /* 243.89527893066406f */
+	    0xBC38F81C,  /* -0.011289622634649277f */
+	    0x42944A7D,  /* 74.1454849243164f */
+	    0x3B800E3A,  /* 0.003907945938408375f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC1361,  /* -0.022958459332585335f */
+	    0x368DC8EB,  /* 4.225517386657884e-06f */
+	    0xBD52D976,  /* -0.051476918160915375f */
+	    0xB7881838,  /* -1.6223741113208234e-05f */
+	    0xC00EFEE3,  /* -2.234307050704956f */
+	    0x37815846,  /* 1.541910387459211e-05f */
+	    0x41B7E5F4,  /* 22.987281799316406f */
+	    0x3CF6AD4D,  /* 0.03011193312704563f */
+	    0x4373E2D2,  /* 243.88601684570312f */
+	    0xBC1C837D,  /* -0.009552833624184132f */
+	    0x42944C28,  /* 74.14874267578125f */
+	    0x3B5DDC01,  /* 0.0033853056374937296f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC0C86,  /* -0.022955190390348434f */
+	    0x3679FA4A,  /* 3.724957878148416e-06f */
+	    0xBD52E743,  /* -0.05149007961153984f */
+	    0xB7671005,  /* -1.3772402780887205e-05f */
+	    0xC00EFEAC,  /* -2.2342939376831055f */
+	    0x3752F85E,  /* 1.2574802894960158e-05f */
+	    0x41B81813,  /* 23.011754989624023f */
+	    0x3CCA9774,  /* 0.024730421602725983f */
+	    0x4373E0D8,  /* 243.8782958984375f */
+	    0xBBFE015B,  /* -0.007751626428216696f */
+	    0x42944D92,  /* 74.15150451660156f */
+	    0x3B38F87D,  /* 0.0028224282432347536f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBC013E,  /* -0.022949811071157455f */
+	    0x35F6C280,  /* 1.8385035218670964e-06f */
+	    0xBD52FB79,  /* -0.05150935426354408f */
+	    0xB6F31227,  /* -7.24407755114953e-06f */
+	    0xC00EFE65,  /* -2.2342770099639893f */
+	    0x36E20A1C,  /* 6.736501745763235e-06f */
+	    0x41B85D6A,  /* 23.045612335205078f */
+	    0x3C554BC3,  /* 0.013018551282584667f */
+	    0x4373DE2B,  /* 243.8678436279297f */
+	    0xBB82B107,  /* -0.0039883884601294994f */
+	    0x42944F94,  /* 74.15542602539062f */
+	    0x3AC59E44,  /* 0.00150770740583539f */
+	aobjEvent32SetValRateBlock(0x077, 1),
+	    0xBCBBFE9F,  /* -0.02294856123626232f */
+	    0x3591D3AD,  /* 1.0864947626032517e-06f */
+	    0xBD5300AB,  /* -0.05151430889964104f */
+	    0xB67F8CD9,  /* -3.807994517046609e-06f */
+	    0xC00EFE52,  /* -2.2342724800109863f */
+	    0x36671005,  /* 3.4431006952218013e-06f */
+	    0x41B86F7D,  /* 23.0544376373291f */
+	    0x3BD9A4BF,  /* 0.006641953717917204f */
+	    0x4373DD79,  /* 243.86512756347656f */
+	    0xBB05DA79,  /* -0.0020424409303814173f */
+	    0x4294501A,  /* 74.15644836425781f */
+	    0x3A4C7810,  /* 0.0007799873128533363f */
 	aobjEvent32SetVal0RateBlock(0x077, 1),
-	    0xBCBBFD31,
-	    0xBD530294,
-	    0xC00EFE4C,
-	    0x41B8759C,
-	    0x4373DD3D,
-	    0x4294504A,
+	    0xBCBBFD31,  /* -0.022947879508137703f */
+	    0xBD530294,  /* -0.051516130566596985f */
+	    0xC00EFE4C,  /* -2.2342710494995117f */
+	    0x41B8759C,  /* 23.05742645263672f */
+	    0x4373DD3D,  /* 243.8642120361328f */
+	    0x4294504A,  /* 74.15681457519531f */
 	aobjEvent32End(),
 };
 
 u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4[] = {
 	aobjEvent32SetValAfter(0x077, 0),
-	    0x3F2368DB,
-	    0xBEFE0814,
-	    0x40180027,
-	    0x41D2AB14,
-	    0xC1DD8BFB,
-	    0xC14BDEBE,
+	    0x3F2368DB,  /* 0.6383187174797058f */
+	    0xBEFE0814,  /* -0.49615538120269775f */
+	    0x40180027,  /* 2.375009298324585f */
+	    0x41D2AB14,  /* 26.333534240722656f */
+	    0xC1DD8BFB,  /* -27.693349838256836f */
+	    0xC14BDEBE,  /* -12.741880416870117f */
 	aobjEvent32Wait(160),
 	aobjEvent32End(),
 };
@@ -2362,90 +2362,90 @@ PAD(8);
 /* Raw data from file offset 0x8910 to 0x8A70 (352 bytes) */
 u32 dMVOpeningCliff_Cam_AnimJoint[88] = {
 	aobjEvent32SetValAfter(0x040, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0Rate(0x230, 0),
-	    0x449D8000,
-	    0x00000000,
-	    0x42953289,
+	    0x449D8000,  /* 1260.0f */
+	    0x00000000,  /* 0.0f */
+	    0x42953289,  /* 74.59870147705078f */
 	aobjEvent32SetValRate(0x005, 0),
-	    0x450D86FB,
-	    0x42CDC86A,
-	    0xC548FCAA,
-	    0x42BC338B,
+	    0x450D86FB,  /* 2264.436279296875f */
+	    0x42CDC86A,  /* 102.89143371582031f */
+	    0xC548FCAA,  /* -3215.79150390625f */
+	    0x42BC338B,  /* 94.10066986083984f */
 	aobjEvent32SetValBlock(0x002, 0),
-	    0x44210A12,
+	    0x44210A12,  /* 644.1573486328125f */
 	aobjEvent32SetVal(0x002, 47),
-	    0x442156FB,
+	    0x442156FB,  /* 645.3590698242188f */
 	aobjEvent32SetValRate(0x030, 53),
-	    0x42A83236,
-	    0xC0D68A71,
-	    0x40DDB9D9,
-	    0x3F8EEB8D,
+	    0x42A83236,  /* 84.09806823730469f */
+	    0xC0D68A71,  /* -6.704399585723877f */
+	    0x40DDB9D9,  /* 6.92893648147583f */
+	    0x3F8EEB8D,  /* 1.1165634393692017f */
 	aobjEvent32SetValRate(0x200, 85),
-	    0x4088AD1B,
-	    0xBC261B76,
+	    0x4088AD1B,  /* 4.2711310386657715f */
+	    0xBC261B76,  /* -0.010138383135199547f */
 	aobjEvent32SetValRateBlock(0x005, 29),
-	    0x45793342,
-	    0x3F2C423A,
-	    0x40FABCC0,
-	    0x430793FC,
+	    0x45793342,  /* 3987.20361328125f */
+	    0x3F2C423A,  /* 0.672885537147522f */
+	    0x40FABCC0,  /* 7.835540771484375f */
+	    0x430793FC,  /* 135.57806396484375f */
 	aobjEvent32SetValRateBlock(0x005, 18),
-	    0x4527E66A,
-	    0xC2FFDC35,
-	    0x4539ACB5,
-	    0x42F6D7FC,
+	    0x4527E66A,  /* 2686.40087890625f */
+	    0xC2FFDC35,  /* -127.93009185791016f */
+	    0x4539ACB5,  /* 2970.794189453125f */
+	    0x42F6D7FC,  /* 123.42184448242188f */
 	aobjEvent32SetValRate(0x004, 14),
-	    0x457780FD,
-	    0x40102B84,
+	    0x457780FD,  /* 3960.061767578125f */
+	    0x40102B84,  /* 2.2526559829711914f */
 	aobjEvent32SetValRate(0x001, 15),
-	    0xC35F2E55,
-	    0xC339C143,
+	    0xC35F2E55,  /* -223.1809844970703f */
+	    0xC339C143,  /* -185.7549285888672f */
 	aobjEvent32SetVal(0x002, 80),
-	    0x4421D993,
+	    0x4421D993,  /* 647.3995971679688f */
 	aobjEvent32Wait(6),
 	aobjEvent32SetValRate(0x010, 52),
-	    0x2C106000,
-	    0xAD48A00D,
+	    0x2C106000,  /* 2.0516921495072893e-12f */
+	    0xAD48A00D,  /* -1.1404222184652202e-11f */
 	aobjEvent32SetVal0Rate(0x020, 68),
-	    0x43C33F5A,
+	    0x43C33F5A,  /* 390.49493408203125f */
 	aobjEvent32Wait(8),
 	aobjEvent32SetValRate(0x004, 19),
-	    0x452455C4,
-	    0xC2BCD84F,
+	    0x452455C4,  /* 2629.3603515625f */
+	    0xC2BCD84F,  /* -94.42247772216797f */
 	aobjEvent32Wait(1),
 	aobjEvent32SetValRateBlock(0x001, 18),
-	    0xC539B290,
-	    0xC28BA302,
+	    0xC539B290,  /* -2971.16015625f */
+	    0xC28BA302,  /* -69.81837463378906f */
 	aobjEvent32SetValRate(0x005, 47),
-	    0xC57EBBEA,
-	    0xC10C575D,
-	    0xC1A70E89,
-	    0xC2045153,
+	    0xC57EBBEA,  /* -4075.74462890625f */
+	    0xC10C575D,  /* -8.771328926086426f */
+	    0xC1A70E89,  /* -20.882097244262695f */
+	    0xC2045153,  /* -33.07941818237305f */
 	aobjEvent32Wait(5),
 	aobjEvent32SetValRate(0x200, 62),
-	    0x400692A3,
-	    0xBCECD9B9,
+	    0x400692A3,  /* 2.1026999950408936f */
+	    0xBCECD9B9,  /* -0.028912412002682686f */
 	aobjEvent32Wait(20),
 	aobjEvent32SetValBlock(0x010, 1),
-	    0x28F00000,
+	    0x28F00000,  /* 2.6645352591003757e-14f */
 	aobjEvent32SetValBlock(0x010, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal(0x010, 53),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(14),
 	aobjEvent32SetVal(0x020, 39),
-	    0x43C30000,
+	    0x43C30000,  /* 390.0f */
 	aobjEvent32Wait(6),
 	aobjEvent32SetVal(0x002, 33),
-	    0x441B7F28,
+	    0x441B7F28,  /* 621.98681640625f */
 	aobjEvent32SetVal0Rate(0x004, 33),
-	    0xC196903A,
+	    0xC196903A,  /* -18.820423126220703f */
 	aobjEvent32SetValRate(0x001, 33),
-	    0xC565959E,
-	    0x404A7407,
+	    0xC565959E,  /* -3673.35107421875f */
+	    0x404A7407,  /* 3.1633317470550537f */
 	aobjEvent32Wait(20),
 	aobjEvent32SetVal0RateBlock(0x200, 13),
-	    0x400692A3,
+	    0x400692A3,  /* 2.1026999950408936f */
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),

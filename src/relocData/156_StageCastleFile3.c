@@ -11,15 +11,15 @@
 u32 dStageCastleFile3_AnimJoint_0x0000[16] = {
 	aobjEvent32EndRaw(0x018, 1),
 	aobjEvent32SetValBlock(0x010, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x010, 599),
-	    0xC4834000,
+	    0xC4834000,  /* -1050.0f */
 	aobjEvent32SetValBlock(0x010, 1200),
-	    0x44834000,
+	    0x44834000,  /* 1050.0f */
 	aobjEvent32SetValBlock(0x010, 600),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x010, 2400),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	    0xFFFF0001,
 	aobjEvent32End(),

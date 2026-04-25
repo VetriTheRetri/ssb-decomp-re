@@ -175,111 +175,111 @@ extern u32 dLBTransitionCamera_AnimJoint_0x4220[];
 extern u32 dLBTransitionCamera_AnimJoint_0x4244[];
 extern u32 dLBTransitionCamera_AnimJoint_0x4268[];
 
-u32 dLBTransitionCamera_AnimJoint_0x4148[9] = {
-	aobjEvent32End(),
-	(u32)dLBTransitionCamera_AnimJoint_0x416C,
-	(u32)dLBTransitionCamera_AnimJoint_0x4190,
-	(u32)dLBTransitionCamera_AnimJoint_0x41B4,
-	(u32)dLBTransitionCamera_AnimJoint_0x41D8,
-	(u32)dLBTransitionCamera_AnimJoint_0x41FC,
-	(u32)dLBTransitionCamera_AnimJoint_0x4220,
-	(u32)dLBTransitionCamera_AnimJoint_0x4244,
-	(u32)dLBTransitionCamera_AnimJoint_0x4268,
+AObjEvent32 *dLBTransitionCamera_AnimJoint_0x4148[9] = {
+	NULL,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x416C,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x4190,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x41B4,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x41D8,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x41FC,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x4220,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x4244,
+	(AObjEvent32 *)dLBTransitionCamera_AnimJoint_0x4268,
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x416C[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAE5D8C,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAE5D8C,  /* -0.08513936400413513f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x4190[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAE19D0,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAE19D0,  /* -0.08501017093658447f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x41B4[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAE19D0,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAE19D0,  /* -0.08501017093658447f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x41D8[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAED36F,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAED36F,  /* -0.0853642150759697f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x41FC[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAF6DF7,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAF6DF7,  /* -0.085658960044384f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x4220[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAEAEDF,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAEAEDF,  /* -0.08529447764158249f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x4244[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAFFD39,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAFFD39,  /* -0.08593220263719559f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionCamera_AnimJoint_0x4268[] = {
 	aobjEvent32SetVal0Rate(0x004, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x003, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValRateBlock(0x004, 64),
-	    0xC01C61AA,
-	    0xBDAF5FEE,
+	    0xC01C61AA,  /* -2.4434609413146973f */
+	    0xBDAF5FEE,  /* -0.08563219010829926f */
 	aobjEvent32End(),
 };
 

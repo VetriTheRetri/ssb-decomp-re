@@ -306,15 +306,15 @@ u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {
 	aobjEvent32End(),
 	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0xC),
 	aobjEvent32SetVal0Rate(0x020, 0),
-	    0xC4834000,
+	    0xC4834000,  /* -1050.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
-	    0x44CE4000,
-	    0x00000000,
+	    0x44CE4000,  /* 1650.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 60),
-	    0xC4A8C000,
+	    0xC4A8C000,  /* -1350.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 60),
-	    0xC4834000,
-	    0x1C000000,
+	    0xC4834000,  /* -1050.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0xC),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -462,15 +462,15 @@ u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32SetVal0Rate(0x020, 0),
-	    0xC4160000,
+	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
-	    0x44CE4000,
-	    0x00000000,
+	    0x44CE4000,  /* 1650.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 60),
-	    0xC4610000,
+	    0xC4610000,  /* -900.0f */
 	aobjEvent32SetVal0RateBlock(0x020, 60),
-	    0xC4160000,
-	    0x1C000000,
+	    0xC4160000,  /* -600.0f */
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0x27C),
 	aobjEvent32End(),
 	aobjEvent32End(),

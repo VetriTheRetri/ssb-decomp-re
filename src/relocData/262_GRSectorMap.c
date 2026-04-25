@@ -14,8 +14,8 @@ extern u8 dStageSectorFile2_Tex_0x1C00[];
 u32 dGRSectorMap_Arwing0_AnimJoint[5] = {
 	    0x3C649600,
 	aobjEvent32SetValBlock(0x006, 2068),
-	    0x0508050F,
-	    0x0B07150C,
+	    0x0508050F,  /* 6.39561838540703e-36f */
+	    0x0B07150C,  /* 2.601588815813326e-32f */
 	    0x0A0A0412,
 };
 

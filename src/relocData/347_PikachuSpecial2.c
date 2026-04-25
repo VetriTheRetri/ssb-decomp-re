@@ -102,19 +102,19 @@ PAD(12);
  * scripts. Forward decls so the table can reference them. */
 extern u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898[];
 
-u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint[2] = {
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898,
+AObjEvent32 *dPikachuSpecial2_UnkAnimJoint_AnimJoint[2] = {
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898,
 };
 
 u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898[] = {
 	aobjEvent32SetValAfter(0x007, 0),
-	    0x00000000,
-	    0xBFC90FDB,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0xBFC90FDB,  /* -1.5707963705062866f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetValAfter(0x001, 5),
-	    0x3F490FDB,
+	    0x3F490FDB,  /* 0.7853981852531433f */
 	aobjEvent32Wait(1),
 	aobjEvent32SetFlags(0x002, 1),
 	aobjEvent32SetFlags(0x000, 1),
@@ -123,14 +123,14 @@ u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898[] = {
 	aobjEvent32SetFlags(0x002, 1),
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetValAfter(0x001, 4),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(1),
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32SetFlags(0x000, 1),
 	aobjEvent32SetFlags(0x002, 1),
 	aobjEvent32SetFlags(0x000, 1),
 	aobjEvent32SetFlags(0x002, 0),
-	    0x1C000000,
+	aobjEvent32SetAnim(0x000, 0),
 	(u32)((u8*)dPikachuSpecial2_UnkAnimJoint_AnimJoint + 0x8),
 	aobjEvent32End(),
 };
@@ -278,84 +278,84 @@ PAD(4);
 extern u32 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x1730[];
 extern u32 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x17BC[];
 
-u32 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x1730,
-	(u32)dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x17BC,
+AObjEvent32 *dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint[4] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x1730,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x17BC,
 };
 
 u32 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x1730[] = {
 	aobjEvent32SetVal(0x380, 0),
-	    0x3F933332,
-	    0x3F933332,
-	    0x3F933332,
+	    0x3F933332,  /* 1.1499998569488525f */
+	    0x3F933332,  /* 1.1499998569488525f */
+	    0x3F933332,  /* 1.1499998569488525f */
 	aobjEvent32SetValAfter(0x070, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x431ACCCC,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x431ACCCC,  /* 154.79998779296875f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetVal(0x380, 2),
-	    0x3F2B1785,
-	    0x3F2B1785,
-	    0x3F2B1785,
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	    0x3F2B1785,  /* 0.6683276295661926f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x430A999A,
+	    0x430A999A,  /* 138.60000610351562f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x438F665C,
+	    0x438F665C,  /* 286.7996826171875f */
 	aobjEvent32SetVal(0x380, 2),
-	    0x3FAB990D,
-	    0x3FAB990D,
-	    0x3FAB990D,
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	    0x3FAB990D,  /* 1.3406082391738892f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x439B1995,
+	    0x439B1995,  /* 310.1998596191406f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43E28001,
+	    0x43E28001,  /* 453.0000305175781f */
 	aobjEvent32SetVal(0x380, 2),
-	    0x3FAF5C29,
-	    0x3FAF5C29,
-	    0x3FAF5C29,
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	    0x3FAF5C29,  /* 1.3700000047683716f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43E36669,
+	    0x43E36669,  /* 454.8000793457031f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43E36666,
+	    0x43E36666,  /* 454.79998779296875f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
 
 u32 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint_0x17BC[] = {
 	aobjEvent32SetValAfter(0x3F7, 0),
-	    0x40490FDB,
-	    0x00000000,
-	    0xC0490FDB,
-	    0x00000000,
-	    0x00000000,
-	    0x42960000,
-	    0x3F800000,
-	    0x3E800000,
-	    0x3E800000,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0x00000000,  /* 0.0f */
+	    0xC0490FDB,  /* -3.1415927410125732f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x42960000,  /* 75.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3E800000,  /* 0.25f */
+	    0x3E800000,  /* 0.25f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetValAfter(0x080, 4),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x345, 2),
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x3EB33333,
-	    0x3F4CCCCD,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3EB33333,  /* 0.3499999940395355f */
+	    0x3F4CCCCD,  /* 0.800000011920929f */
 	aobjEvent32SetValAfterBlock(0x345, 2),
-	    0x40490FDB,
-	    0xC0490FDB,
-	    0x43B40000,
-	    0x3F19999A,
-	    0x3F99BE52,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0xC0490FDB,  /* -3.1415927410125732f */
+	    0x43B40000,  /* 360.0f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F99BE52,  /* 1.2011206150054932f */
 	aobjEvent32SetValAfterBlock(0x3C5, 2),
-	    0x40490FDB,
-	    0xC0490FDB,
-	    0x43B40000,
-	    0x3F800000,
-	    0x3F19999A,
-	    0x3F99BE52,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0xC0490FDB,  /* -3.1415927410125732f */
+	    0x43B40000,  /* 360.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F99BE52,  /* 1.2011206150054932f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
@@ -369,80 +369,80 @@ PAD(12);
 extern u32 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x1860[];
 extern u32 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x18DC[];
 
-u32 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x1860,
-	(u32)dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x18DC,
+AObjEvent32 *dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint[4] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x1860,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x18DC,
 };
 
 u32 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x1860[] = {
 	aobjEvent32SetVal(0x380, 0),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfter(0x070, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x43203333,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x43203333,  /* 160.1999969482422f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetVal(0x380, 5),
-	    0x3FAF5C25,
-	    0x3FAF5C25,
-	    0x3FAF5C25,
+	    0x3FAF5C25,  /* 1.3699995279312134f */
+	    0x3FAF5C25,  /* 1.3699995279312134f */
+	    0x3FAF5C25,  /* 1.3699995279312134f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x4324FFFF,
+	    0x4324FFFF,  /* 164.99998474121094f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x438559A0,
+	    0x438559A0,  /* 266.7001953125f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43880CD4,
+	    0x43880CD4,  /* 272.1002197265625f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43E14CD5,
+	    0x43E14CD5,  /* 450.6002502441406f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43E40000,
+	    0x43E40000,  /* 456.0f */
 	aobjEvent32SetValAfter(0x040, 1),
-	    0x43E40000,
+	    0x43E40000,  /* 456.0f */
 	aobjEvent32SetValBlock(0x380, 1),
-	    0x3FAF5C29,
-	    0x3FAF5C29,
-	    0x3FAF5C29,
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	    0x3FAF5C29,  /* 1.3700000047683716f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
 
 u32 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint_0x18DC[] = {
 	aobjEvent32SetValAfter(0x3F7, 0),
-	    0x40490FDB,
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x42B40000,
-	    0x3F800000,
-	    0x3E800000,
-	    0x3E99999B,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x42B40000,  /* 90.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3E800000,  /* 0.25f */
+	    0x3E99999B,  /* 0.30000004172325134f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetValAfter(0x080, 4),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x345, 2),
-	    0x00000000,
-	    0xC0490FDB,
-	    0x00000000,
-	    0x3EB33333,
-	    0x3F1F1B4B,
+	    0x00000000,  /* 0.0f */
+	    0xC0490FDB,  /* -3.1415927410125732f */
+	    0x00000000,  /* 0.0f */
+	    0x3EB33333,  /* 0.3499999940395355f */
+	    0x3F1F1B4B,  /* 0.6215102076530457f */
 	aobjEvent32SetValAfter(0x004, 4),
-	    0xC0490FDB,
+	    0xC0490FDB,  /* -3.1415927410125732f */
 	aobjEvent32SetValAfterBlock(0x341, 2),
-	    0x40490FDB,
-	    0x43B40000,
-	    0x3F19999A,
-	    0x3F99BE52,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0x43B40000,  /* 360.0f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F99BE52,  /* 1.2011206150054932f */
 	aobjEvent32SetValAfterBlock(0x3C1, 2),
-	    0x40490FDB,
-	    0x43B40000,
-	    0x3F800000,
-	    0x3F19999A,
-	    0x3F99BE52,
+	    0x40490FDB,  /* 3.1415927410125732f */
+	    0x43B40000,  /* 360.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F99BE52,  /* 1.2011206150054932f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
@@ -456,78 +456,78 @@ PAD(12);
 extern u32 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1980[];
 extern u32 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1A0C[];
 
-u32 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1980,
-	(u32)dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1A0C,
+AObjEvent32 *dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint[4] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1980,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1A0C,
 };
 
 u32 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1980[] = {
 	aobjEvent32SetVal(0x380, 0),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfter(0x070, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x43203334,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x43203334,  /* 160.20001220703125f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetVal(0x380, 2),
-	    0x3F52A069,
-	    0x3F52A069,
-	    0x3F52A069,
+	    0x3F52A069,  /* 0.8227601647377014f */
+	    0x3F52A069,  /* 0.8227601647377014f */
+	    0x3F52A069,  /* 0.8227601647377014f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x4319999A,
+	    0x4319999A,  /* 153.60000610351562f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x438D4CCE,
+	    0x438D4CCE,  /* 282.60003662109375f */
 	aobjEvent32SetVal(0x380, 3),
-	    0x3FC8F5C0,
-	    0x3FC8F5C0,
-	    0x3FC8F5C0,
+	    0x3FC8F5C0,  /* 1.5699996948242188f */
+	    0x3FC8F5C0,  /* 1.5699996948242188f */
+	    0x3FC8F5C0,  /* 1.5699996948242188f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x4395FFFD,
+	    0x4395FFFD,  /* 299.9999084472656f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43E23333,
+	    0x43E23333,  /* 452.3999938964844f */
 	aobjEvent32SetValAfterBlock(0x040, 1),
-	    0x43EAE66B,
+	    0x43EAE66B,  /* 469.8001403808594f */
 	aobjEvent32SetValAfter(0x040, 1),
-	    0x43EAE666,
+	    0x43EAE666,  /* 469.79998779296875f */
 	aobjEvent32SetValBlock(0x380, 1),
-	    0x3FC8F5C0,
-	    0x3FC8F5C0,
-	    0x3FC8F5C0,
+	    0x3FC8F5C0,  /* 1.5699996948242188f */
+	    0x3FC8F5C0,  /* 1.5699996948242188f */
+	    0x3FC8F5C0,  /* 1.5699996948242188f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
 
 u32 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint_0x1A0C[] = {
 	aobjEvent32SetValAfter(0x3F7, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x3F800000,
-	    0x3E800000,
-	    0x3E99999B,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3E800000,  /* 0.25f */
+	    0x3E99999B,  /* 0.30000004172325134f */
 	aobjEvent32SetFlags(0x000, 0),
 	aobjEvent32SetValAfterBlock(0x341, 2),
-	    0xC0490FDB,
-	    0x43610000,
-	    0x3EB33333,
-	    0x3F400000,
+	    0xC0490FDB,  /* -3.1415927410125732f */
+	    0x43610000,  /* 225.0f */
+	    0x3EB33333,  /* 0.3499999940395355f */
+	    0x3F400000,  /* 0.75f */
 	aobjEvent32SetValAfterBlock(0x341, 2),
-	    0x00000000,
-	    0x00000000,
-	    0x3F000000,
-	    0x3F99999A,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F000000,  /* 0.5f */
+	    0x3F99999A,  /* 1.2000000476837158f */
 	aobjEvent32SetValAfterBlock(0x341, 2),
-	    0x00000000,
-	    0x00000000,
-	    0x3F000000,
-	    0x3F99999A,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F000000,  /* 0.5f */
+	    0x3F99999A,  /* 1.2000000476837158f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
@@ -541,24 +541,24 @@ PAD(4);
 extern u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[];
 extern u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[];
 
-u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC,
+AObjEvent32 *dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[4] = {
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC,
 };
 
 u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
-	    0x3F800000,
-	    0x00000000,
-	    0x00000000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 4),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };
 
@@ -573,26 +573,26 @@ u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[] = {
 extern u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[];
 extern u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[];
 
-u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04,
+AObjEvent32 *dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[4] = {
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04,
 };
 
 u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
-	    0x3F800000,
-	    0x00000000,
-	    0x00000000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 };
 
@@ -610,26 +610,26 @@ PAD(4);
 extern u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20[];
 extern u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[];
 
-u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54,
+AObjEvent32 *dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint[4] = {
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54,
 };
 
 u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
-	    0x00000000,
-	    0x00000000,
-	    0x00000000,
-	    0x3F800000,
-	    0x3F800000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };
 

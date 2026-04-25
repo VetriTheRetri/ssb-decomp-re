@@ -206,14 +206,12 @@ def process_anim_array(c_text, reloc_text, file_prefix, sym_byte_off, sym, count
     for start in script_starts:
         c_lines.append(f'extern u32 {new_names[start]}[];')
     c_lines.append('')
-    c_lines.append(f'u32 {sym}[{table_end // 4}] = {{')
+    c_lines.append(f'AObjEvent32 *{sym}[{table_end // 4}] = {{')
     for ln, off in table_lines:
-        # Rewrite chain-pointer lines that point into the array, to use the
-        # new symbol names.
         s = ln.strip().rstrip(',').strip()
-        replaced = ln
         if off in chain_offsets:
-            # Find the matching reloc entry
+            # Slot is a chain pointer to one of our new scripts.
+            replaced_target = None
             for ptr_off, target_label in reloc_pairs:
                 if ptr_off != off:
                     continue
@@ -222,9 +220,16 @@ def process_anim_array(c_text, reloc_text, file_prefix, sym_byte_off, sym, count
                     continue
                 tgt = int(m.group(1), 16) if m.group(1) else 0
                 if tgt in new_names:
-                    replaced = f'\t(u32){new_names[tgt]},'
+                    replaced_target = new_names[tgt]
                 break
-        c_lines.append(replaced)
+            if replaced_target:
+                c_lines.append(f'\t(AObjEvent32 *){replaced_target},')
+            else:
+                c_lines.append(ln)  # fallback: leave as-is
+        else:
+            # Empty slot -- emit NULL instead of aobjEvent32End() so the
+            # type system reflects "absent script pointer", not "an event".
+            c_lines.append('\tNULL,')
     c_lines.append('};')
     for start, end, block_lines in script_blocks:
         c_lines.append('')

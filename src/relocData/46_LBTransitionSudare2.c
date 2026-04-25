@@ -68,33 +68,33 @@ DObjDesc dLBTransitionSudare2_DObjDesc_0x3EA0[] = {
 extern u32 dLBTransitionSudare2_AnimJoint_0x3F5C[];
 extern u32 dLBTransitionSudare2_AnimJoint_0x3F80[];
 
-u32 dLBTransitionSudare2_AnimJoint_0x3F50[3] = {
-	aobjEvent32End(),
-	(u32)dLBTransitionSudare2_AnimJoint_0x3F5C,
-	(u32)dLBTransitionSudare2_AnimJoint_0x3F80,
+AObjEvent32 *dLBTransitionSudare2_AnimJoint_0x3F50[3] = {
+	NULL,
+	(AObjEvent32 *)dLBTransitionSudare2_AnimJoint_0x3F5C,
+	(AObjEvent32 *)dLBTransitionSudare2_AnimJoint_0x3F80,
 };
 
 u32 dLBTransitionSudare2_AnimJoint_0x3F5C[] = {
 	aobjEvent32SetVal(0x030, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfter(0x040, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x030, 64),
-	    0x45548000,
-	    0x451C4000,
+	    0x45548000,  /* 3400.0f */
+	    0x451C4000,  /* 2500.0f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionSudare2_AnimJoint_0x3F80[] = {
 	aobjEvent32SetVal(0x030, 0),
-	    0x00000000,
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfter(0x040, 0),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x030, 64),
-	    0xC5548000,
-	    0xC51C4000,
+	    0xC5548000,  /* -3400.0f */
+	    0xC51C4000,  /* -2500.0f */
 	aobjEvent32End(),
 };
 

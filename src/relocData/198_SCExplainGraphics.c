@@ -1637,13 +1637,8 @@ u8 dSCExplainGraphics_Banner_tex[26872] = {
 };
 
 /* Palette: @ 0xFF70 (16 colors RGBA5551) */
-u16 dSCExplainGraphics_palette_0xFF70[16] = {
+u16 dSCExplainGraphics_palette_0xFF70[256] = {
 	#include <SCExplainGraphics/palette_0xFF70.palette.inc.c>
-};
-
-/* Raw data from file offset 0xFF90 to 0x10170 (480 bytes) */
-u8 dSCExplainGraphics_gap_0xFF90[480] = {
-	#include <SCExplainGraphics/gap_0xFF90.data.inc.c>
 };
 
 /* Sprite: Banner */
@@ -2016,13 +2011,8 @@ u8 dSCExplainGraphics_BUpGetBack_tex[8440] = {
 };
 
 /* Palette: @ 0x17D90 (16 colors RGBA5551) */
-u16 dSCExplainGraphics_palette_0x17D90[16] = {
+u16 dSCExplainGraphics_palette_0x17D90[256] = {
 	#include <SCExplainGraphics/palette_0x17D90.palette.inc.c>
-};
-
-/* Raw data from file offset 0x17DB0 to 0x17F90 (480 bytes) */
-u8 dSCExplainGraphics_gap_0x17DB0[480] = {
-	#include <SCExplainGraphics/gap_0x17DB0.data.inc.c>
 };
 
 /* Sprite: BUpGetBack */
@@ -2069,13 +2059,8 @@ u8 dSCExplainGraphics_SpecialMoves_tex[8616] = {
 };
 
 /* Palette: @ 0x1A1E0 (16 colors RGBA5551) */
-u16 dSCExplainGraphics_palette_0x1A1E0[16] = {
+u16 dSCExplainGraphics_palette_0x1A1E0[256] = {
 	#include <SCExplainGraphics/palette_0x1A1E0.palette.inc.c>
-};
-
-/* Raw data from file offset 0x1A200 to 0x1A3E0 (480 bytes) */
-u8 dSCExplainGraphics_gap_0x1A200[480] = {
-	#include <SCExplainGraphics/gap_0x1A200.data.inc.c>
 };
 
 /* Sprite: SpecialMoves */
@@ -2345,13 +2330,8 @@ u8 dSCExplainGraphics_AButton_tex[944] = {
 };
 
 /* Palette: @ 0x1D128 (16 colors RGBA5551) */
-u16 dSCExplainGraphics_palette_0x1D128[16] = {
+u16 dSCExplainGraphics_palette_0x1D128[256] = {
 	#include <SCExplainGraphics/palette_0x1D128.palette.inc.c>
-};
-
-/* Raw data from file offset 0x1D148 to 0x1D328 (480 bytes) */
-u8 dSCExplainGraphics_gap_0x1D148[480] = {
-	#include <SCExplainGraphics/gap_0x1D148.data.inc.c>
 };
 
 /* Sprite: AButton */
@@ -2394,13 +2374,8 @@ u8 dSCExplainGraphics_BButton_tex[944] = {
 };
 
 /* Palette: @ 0x1D738 (16 colors RGBA5551) */
-u16 dSCExplainGraphics_palette_0x1D738[16] = {
+u16 dSCExplainGraphics_palette_0x1D738[256] = {
 	#include <SCExplainGraphics/palette_0x1D738.palette.inc.c>
-};
-
-/* Raw data from file offset 0x1D758 to 0x1D938 (480 bytes) */
-u8 dSCExplainGraphics_gap_0x1D758[480] = {
-	#include <SCExplainGraphics/gap_0x1D758.data.inc.c>
 };
 
 /* Sprite: BButton */
@@ -2443,13 +2418,8 @@ u8 dSCExplainGraphics_ZButton_tex[944] = {
 };
 
 /* Palette: @ 0x1DD48 (16 colors RGBA5551) */
-u16 dSCExplainGraphics_palette_0x1DD48[16] = {
+u16 dSCExplainGraphics_palette_0x1DD48[256] = {
 	#include <SCExplainGraphics/palette_0x1DD48.palette.inc.c>
-};
-
-/* Raw data from file offset 0x1DD68 to 0x1DF48 (480 bytes) */
-u8 dSCExplainGraphics_gap_0x1DD68[480] = {
-	#include <SCExplainGraphics/gap_0x1DD68.data.inc.c>
 };
 
 /* Sprite: ZButton */

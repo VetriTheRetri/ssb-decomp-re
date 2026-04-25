@@ -2240,13 +2240,8 @@ u8 dSC1PIntro_BannerTop_tex[18016] = {
 };
 
 /* Palette: @ 0xC5F8 (16 colors RGBA5551) */
-u16 dSC1PIntro_palette_0xC5F8[16] = {
+u16 dSC1PIntro_palette_0xC5F8[256] = {
 	#include <SC1PIntro/palette_0xC5F8.palette.inc.c>
-};
-
-/* Raw data from file offset 0xC618 to 0xC7F8 (480 bytes) */
-u8 dSC1PIntro_gap_0xC618[480] = {
-	#include <SC1PIntro/gap_0xC618.data.inc.c>
 };
 
 /* Sprite: BannerTop */

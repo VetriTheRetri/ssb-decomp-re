@@ -34,12 +34,12 @@ u8 dITBonus1Object_data[0x1000] = {
 
 /* @ 0x1008, 64 bytes — Vtx[4] quad geometry */
 Vtx dITBonus1Object_Vtx[4] = {
-	#include <ITBonus1Object/Vtx.data.inc.c>
+	#include <ITBonus1Object/Vtx.vtx.inc.c>
 };
 
 /* @ 0x1048, 160 bytes — Gfx[20] display list */
 Gfx dITBonus1Object_DL[20] = {
-	#include <ITBonus1Object/DL.data.inc.c>
+	#include <ITBonus1Object/DL.dl.inc.c>
 };
 
 /* @ 0x10E8, 152 bytes — DObjDesc-shaped block (typing TBD) */

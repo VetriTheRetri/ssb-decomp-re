@@ -18,7 +18,7 @@ PAD(8);
 
 /* @ 0x0008, 32 bytes — 16-color RGBA5551 palette */
 u16 dNCommonTexture_palette[16] = {
-	#include <NCommonTexture/palette.data.inc.c>
+	#include <NCommonTexture/palette.palette.inc.c>
 };
 
 PAD(8);

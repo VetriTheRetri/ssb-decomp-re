@@ -13,7 +13,7 @@ Vtx dLBTransitionPaperAirplane_Vtx_0x0000_Vtx[90] = {
 
 /* @ 0x05A0, 2552 bytes — Gfx[319] DL */
 Gfx dLBTransitionPaperAirplane_DL_0x05A0[319] = {
-	#include <LBTransitionPaperAirplane/DL_0x05A0.data.inc.c>
+	#include <LBTransitionPaperAirplane/DL_0x05A0.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0xF98 (3 entries) */

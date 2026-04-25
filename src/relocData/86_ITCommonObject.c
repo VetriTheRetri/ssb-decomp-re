@@ -15,7 +15,7 @@ PAD(8);
 
 /* @ 0x0008, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0008[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x0008.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x0008.palette.inc.c>
 };
 
 /* @ 0x0028, 8 bytes (raw gap) */
@@ -23,7 +23,7 @@ PAD(8);
 
 /* @ 0x0030, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0030[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x0030.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x0030.palette.inc.c>
 };
 
 /* @ 0x0050, 8 bytes (raw gap) */
@@ -31,7 +31,7 @@ PAD(8);
 
 /* @ 0x0058, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0058[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x0058.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x0058.palette.inc.c>
 };
 
 /* @ 0x0078, 408 bytes (raw gap) */
@@ -41,37 +41,37 @@ u8 dITCommonObject_data_0x0000_gap_0x0078[0x198] = {
 
 /* @ 0x0210, 224 bytes (14 vertices) */
 Vtx dITCommonObject_Vtx_0x0210[14] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x0210.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x0210.vtx.inc.c>
 };
 
 /* @ 0x02F0, 176 bytes (11 vertices) */
 Vtx dITCommonObject_Vtx_0x02F0[11] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x02F0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x02F0.vtx.inc.c>
 };
 
 /* @ 0x03A0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x03A0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x03A0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x03A0.vtx.inc.c>
 };
 
 /* @ 0x03E0, 96 bytes (12 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x03E0[12] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x03E0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x03E0.dl.inc.c>
 };
 
 /* @ 0x0440, 256 bytes (32 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x0440[32] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x0440.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x0440.dl.inc.c>
 };
 
 /* @ 0x0540, 160 bytes (20 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x0540[20] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x0540.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x0540.dl.inc.c>
 };
 
 /* @ 0x05E0, 144 bytes (18 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x05E0[18] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x05E0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x05E0.dl.inc.c>
 };
 
 /* @ 0x00670, 1088 bytes */
@@ -88,7 +88,7 @@ PAD(12);
 
 /* @ 0x0758, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0758[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x0758.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x0758.palette.inc.c>
 };
 
 /* @ 0x0778, 520 bytes (raw gap) */
@@ -98,12 +98,12 @@ u8 dITCommonObject_Capsule_Item_data_remainder_gap_0x0778[0x208] = {
 
 /* @ 0x0980, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x0980[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x0980.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x0980.vtx.inc.c>
 };
 
 /* @ 0x09C0, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x09C0[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x09C0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x09C0.dl.inc.c>
 };
 
 /* @ 0x00AB0, 1704 bytes */
@@ -132,7 +132,7 @@ u8 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC[0x5C] = {
 
 /* @ 0x1238, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x1238[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x1238.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x1238.palette.inc.c>
 };
 
 /* @ 0x1258, 96 bytes (trailing gap) */
@@ -148,17 +148,17 @@ u8 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8[0x118] = {
 
 /* @ 0x13D0, 48 bytes (3 vertices) */
 Vtx dITCommonObject_Vtx_0x13D0[3] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x13D0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x13D0.vtx.inc.c>
 };
 
 /* @ 0x1400, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x1400[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x1400.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1400.vtx.inc.c>
 };
 
 /* @ 0x1440, 288 bytes (36 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x1440[36] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x1440.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1440.dl.inc.c>
 };
 
 /* @ 0x01560, 144 bytes */
@@ -189,7 +189,7 @@ PAD(16);
 
 /* @ 0x19D8, 64 bytes (32-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x19D8[32] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x19D8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x19D8.palette.inc.c>
 };
 
 /* @ 0x1A18, 8 bytes (raw gap) */
@@ -197,7 +197,7 @@ PAD(8);
 
 /* @ 0x1A20, 64 bytes (32-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x1A20[32] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x1A20.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x1A20.palette.inc.c>
 };
 
 /* @ 0x1A60, 144 bytes (raw gap) */
@@ -207,32 +207,32 @@ u8 dITCommonObject_Sword_Item_data_remainder_gap_0x1A60[0x90] = {
 
 /* @ 0x1AF0, 48 bytes (3 vertices) */
 Vtx dITCommonObject_Vtx_0x1AF0[3] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x1AF0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1AF0.vtx.inc.c>
 };
 
 /* @ 0x1B20, 144 bytes (9 vertices) */
 Vtx dITCommonObject_Vtx_0x1B20[9] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x1B20.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1B20.vtx.inc.c>
 };
 
 /* @ 0x1BB0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x1BB0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x1BB0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1BB0.vtx.inc.c>
 };
 
 /* @ 0x1BF0, 88 bytes (11 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x1BF0[11] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x1BF0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1BF0.dl.inc.c>
 };
 
 /* @ 0x1C48, 256 bytes (32 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x1C48[32] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x1C48.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1C48.dl.inc.c>
 };
 
 /* @ 0x1D48, 184 bytes (23 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x1D48[23] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x1D48.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1D48.dl.inc.c>
 };
 
 /* @ 0x01E00, 920 bytes */
@@ -248,7 +248,7 @@ PAD(8);
 
 /* @ 0x1EB8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x1EB8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x1EB8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x1EB8.palette.inc.c>
 };
 
 /* @ 0x1ED8, 72 bytes (raw gap) */
@@ -258,12 +258,12 @@ u8 dITCommonObject_Bat_Item_data_remainder_gap_0x1ED8[0x48] = {
 
 /* @ 0x1F20, 384 bytes (24 vertices) */
 Vtx dITCommonObject_Vtx_0x1F20[24] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x1F20.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1F20.vtx.inc.c>
 };
 
 /* @ 0x20A0, 248 bytes (31 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x20A0[31] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x20A0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x20A0.dl.inc.c>
 };
 
 /* @ 0x02198, 1464 bytes */
@@ -281,7 +281,7 @@ u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248[0x80] = {
 
 /* @ 0x22C8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x22C8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x22C8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x22C8.palette.inc.c>
 };
 
 /* @ 0x22E8, 200 bytes (raw gap) */
@@ -291,17 +291,17 @@ u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x22E8[0xC8] = {
 
 /* @ 0x23B0, 192 bytes (12 vertices) */
 Vtx dITCommonObject_Vtx_0x23B0[12] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x23B0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x23B0.vtx.inc.c>
 };
 
 /* @ 0x2470, 384 bytes (24 vertices) */
 Vtx dITCommonObject_Vtx_0x2470[24] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x2470.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x2470.vtx.inc.c>
 };
 
 /* @ 0x25F0, 352 bytes (44 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x25F0[44] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x25F0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x25F0.dl.inc.c>
 };
 
 /* @ 0x02750, 2784 bytes */
@@ -316,7 +316,7 @@ PAD(20);
 
 /* @ 0x27E8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x27E8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x27E8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x27E8.palette.inc.c>
 };
 
 /* @ 0x2808, 2600 bytes (trailing gap) */
@@ -332,12 +332,12 @@ u8 dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230[0xA0] = {
 
 /* @ 0x32D0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x32D0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x32D0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x32D0.vtx.inc.c>
 };
 
 /* @ 0x3310, 232 bytes (29 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x3310[29] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x3310.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x3310.dl.inc.c>
 };
 
 /* @ 0x033F8, 1448 bytes */
@@ -354,7 +354,7 @@ u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C[0x18C] = {
 
 /* @ 0x3608, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x3608[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x3608.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x3608.palette.inc.c>
 };
 
 /* @ 0x3628, 8 bytes (raw gap) */
@@ -362,7 +362,7 @@ PAD(8);
 
 /* @ 0x3630, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x3630[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x3630.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x3630.palette.inc.c>
 };
 
 /* @ 0x3650, 208 bytes (raw gap) */
@@ -372,22 +372,22 @@ u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x3650[0xD0] = {
 
 /* @ 0x3720, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x3720[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x3720.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3720.vtx.inc.c>
 };
 
 /* @ 0x3760, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x3760[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x3760.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3760.vtx.inc.c>
 };
 
 /* @ 0x37A0, 272 bytes (34 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x37A0[34] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x37A0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x37A0.dl.inc.c>
 };
 
 /* @ 0x38B0, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x38B0[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x38B0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x38B0.dl.inc.c>
 };
 
 /* @ 0x039A0, 1456 bytes */
@@ -404,7 +404,7 @@ PAD(12);
 
 /* @ 0x3A88, 96 bytes (48-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x3A88[48] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x3A88.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x3A88.palette.inc.c>
 };
 
 /* @ 0x3AE8, 216 bytes (raw gap) */
@@ -414,22 +414,22 @@ u8 dITCommonObject_MSBomb_Item_data_remainder_gap_0x3AE8[0xD8] = {
 
 /* @ 0x3BC0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x3BC0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x3BC0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3BC0.vtx.inc.c>
 };
 
 /* @ 0x3C00, 192 bytes (12 vertices) */
 Vtx dITCommonObject_Vtx_0x3C00[12] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x3C00.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3C00.vtx.inc.c>
 };
 
 /* @ 0x3CC0, 240 bytes (15 vertices) */
 Vtx dITCommonObject_Vtx_0x3CC0[15] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x3CC0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3CC0.vtx.inc.c>
 };
 
 /* @ 0x3DB0, 416 bytes (52 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x3DB0[52] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x3DB0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x3DB0.dl.inc.c>
 };
 
 /* @ 0x03F50, 344 bytes */
@@ -462,27 +462,27 @@ u8 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388[0x98] = {
 
 /* @ 0x4420, 192 bytes (12 vertices) */
 Vtx dITCommonObject_Vtx_0x4420[12] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x4420.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x4420.vtx.inc.c>
 };
 
 /* @ 0x44E0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x44E0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x44E0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x44E0.vtx.inc.c>
 };
 
 /* @ 0x4520, 88 bytes (11 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x4520[11] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x4520.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4520.dl.inc.c>
 };
 
 /* @ 0x4578, 144 bytes (18 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x4578[18] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x4578.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4578.dl.inc.c>
 };
 
 /* @ 0x4608, 168 bytes (21 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x4608[21] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x4608.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4608.dl.inc.c>
 };
 
 /* @ 0x046B0, 176 bytes */
@@ -529,12 +529,12 @@ u8 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0[0xA0] = {
 
 /* @ 0x5E80, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x5E80[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x5E80.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x5E80.vtx.inc.c>
 };
 
 /* @ 0x5EC0, 200 bytes (25 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x5EC0[25] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x5EC0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x5EC0.dl.inc.c>
 };
 
 /* @ 0x05F88, 2032 bytes */
@@ -551,7 +551,7 @@ u8 dITCommonObject_GShell_Item_data_remainder_gap_0x600C[0x8C] = {
 
 /* @ 0x6098, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x6098[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x6098.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x6098.palette.inc.c>
 };
 
 /* @ 0x60B8, 8 bytes (raw gap) */
@@ -559,7 +559,7 @@ PAD(8);
 
 /* @ 0x60C0, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x60C0[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x60C0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x60C0.palette.inc.c>
 };
 
 /* @ 0x60E0, 1040 bytes (raw gap) */
@@ -569,17 +569,17 @@ u8 dITCommonObject_GShell_Item_data_remainder_gap_0x60E0[0x410] = {
 
 /* @ 0x64F0, 224 bytes (14 vertices) */
 Vtx dITCommonObject_Vtx_0x64F0[14] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x64F0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x64F0.vtx.inc.c>
 };
 
 /* @ 0x65D0, 96 bytes (6 vertices) */
 Vtx dITCommonObject_Vtx_0x65D0[6] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x65D0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x65D0.vtx.inc.c>
 };
 
 /* @ 0x6630, 328 bytes (41 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x6630[41] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x6630.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x6630.dl.inc.c>
 };
 
 /* @ 0x06778, 2608 bytes */
@@ -596,7 +596,7 @@ u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC[0x1EC] = {
 
 /* @ 0x69E8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x69E8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x69E8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x69E8.palette.inc.c>
 };
 
 /* @ 0x6A08, 8 bytes (raw gap) */
@@ -604,7 +604,7 @@ PAD(8);
 
 /* @ 0x6A10, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x6A10[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x6A10.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x6A10.palette.inc.c>
 };
 
 /* @ 0x6A30, 1040 bytes (raw gap) */
@@ -614,17 +614,17 @@ u8 dITCommonObject_Box_Item_data_remainder_gap_0x6A30[0x410] = {
 
 /* @ 0x6E40, 160 bytes (10 vertices) */
 Vtx dITCommonObject_Vtx_0x6E40[10] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x6E40.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x6E40.vtx.inc.c>
 };
 
 /* @ 0x6EE0, 288 bytes (18 vertices) */
 Vtx dITCommonObject_Vtx_0x6EE0[18] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x6EE0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x6EE0.vtx.inc.c>
 };
 
 /* @ 0x7000, 424 bytes (53 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x7000[53] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x7000.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x7000.dl.inc.c>
 };
 
 /* @ 0x071A8, 736 bytes */
@@ -647,12 +647,12 @@ u8 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488[0x90] = {
 
 /* @ 0x7518, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x7518[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x7518.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x7518.vtx.inc.c>
 };
 
 /* @ 0x7558, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x7558[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x7558.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x7558.dl.inc.c>
 };
 
 /* @ 0x07648, 6872 bytes */
@@ -669,7 +669,7 @@ u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC[0x6C4] = {
 
 /* @ 0x7D90, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x7D90[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x7D90.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x7D90.palette.inc.c>
 };
 
 /* @ 0x7DB0, 8 bytes (raw gap) */
@@ -677,7 +677,7 @@ PAD(8);
 
 /* @ 0x7DB8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x7DB8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x7DB8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x7DB8.palette.inc.c>
 };
 
 /* @ 0x7DD8, 4936 bytes (trailing gap) */
@@ -693,22 +693,22 @@ u8 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120[0xB0] = {
 
 /* @ 0x91D0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x91D0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x91D0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x91D0.vtx.inc.c>
 };
 
 /* @ 0x9210, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x9210[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x9210.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x9210.vtx.inc.c>
 };
 
 /* @ 0x9250, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x9250[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x9250.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x9250.dl.inc.c>
 };
 
 /* @ 0x9340, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x9340[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x9340.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x9340.dl.inc.c>
 };
 
 /* @ 0x09430, 3344 bytes */
@@ -727,7 +727,7 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C[0x3DC] = {
 
 /* @ 0x98E8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x98E8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x98E8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x98E8.palette.inc.c>
 };
 
 /* @ 0x9908, 1800 bytes (raw gap) */
@@ -737,12 +737,12 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x9908[0x708] = {
 
 /* @ 0xA010, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xA010[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xA010.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xA010.vtx.inc.c>
 };
 
 /* @ 0xA050, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xA050[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xA050.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xA050.dl.inc.c>
 };
 
 /* @ 0x0A140, 2192 bytes */
@@ -759,7 +759,7 @@ u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4[0x654] = {
 
 /* @ 0xA818, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xA818[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xA818.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xA818.palette.inc.c>
 };
 
 /* @ 0xA838, 408 bytes (trailing gap) */
@@ -775,12 +775,12 @@ u8 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0[0x98] = {
 
 /* @ 0xAA68, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xAA68[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xAA68.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xAA68.vtx.inc.c>
 };
 
 /* @ 0xAAA8, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xAAA8[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xAAA8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xAAA8.dl.inc.c>
 };
 
 /* @ 0x0AB98, 1472 bytes */
@@ -797,7 +797,7 @@ u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C[0x6C] = {
 
 /* @ 0xAC88, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xAC88[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xAC88.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xAC88.palette.inc.c>
 };
 
 /* @ 0xACA8, 904 bytes (raw gap) */
@@ -807,12 +807,12 @@ u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xACA8[0x388] = {
 
 /* @ 0xB030, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xB030[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xB030.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xB030.vtx.inc.c>
 };
 
 /* @ 0xB070, 232 bytes (29 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xB070[29] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xB070.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xB070.dl.inc.c>
 };
 
 /* @ 0x0B158, 1000 bytes */
@@ -829,7 +829,7 @@ u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB1DC[0x34] = {
 
 /* @ 0xB210, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xB210[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xB210.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xB210.palette.inc.c>
 };
 
 /* @ 0xB230, 784 bytes (trailing gap) */
@@ -845,12 +845,12 @@ u8 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540[0x98] = {
 
 /* @ 0xB5D8, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xB5D8[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xB5D8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xB5D8.vtx.inc.c>
 };
 
 /* @ 0xB618, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xB618[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xB618.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xB618.dl.inc.c>
 };
 
 /* @ 0x0B708, 1464 bytes */
@@ -868,7 +868,7 @@ u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8[0x1B0] = {
 
 /* @ 0xB968, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xB968[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xB968.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xB968.palette.inc.c>
 };
 
 /* @ 0xB988, 520 bytes (raw gap) */
@@ -878,12 +878,12 @@ u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB988[0x208] = {
 
 /* @ 0xBB90, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xBB90[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xBB90.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xBB90.vtx.inc.c>
 };
 
 /* @ 0xBBD0, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xBBD0[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xBBD0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xBBD0.dl.inc.c>
 };
 
 /* @ 0x0BCC0, 1136 bytes */
@@ -898,7 +898,7 @@ PAD(20);
 
 /* @ 0xBD58, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xBD58[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xBD58.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xBD58.palette.inc.c>
 };
 
 /* @ 0xBD78, 648 bytes (raw gap) */
@@ -908,12 +908,12 @@ u8 dITCommonObject_Mew_Item_data_remainder_gap_0xBD78[0x288] = {
 
 /* @ 0xC000, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xC000[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xC000.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xC000.vtx.inc.c>
 };
 
 /* @ 0xC040, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xC040[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xC040.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xC040.dl.inc.c>
 };
 
 /* @ 0x0C130, 1008 bytes */
@@ -928,7 +928,7 @@ PAD(20);
 
 /* @ 0xC1C8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xC1C8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xC1C8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xC1C8.palette.inc.c>
 };
 
 /* @ 0xC1E8, 520 bytes (raw gap) */
@@ -938,12 +938,12 @@ u8 dITCommonObject_Nyars_Item_data_remainder_gap_0xC1E8[0x208] = {
 
 /* @ 0xC3F0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xC3F0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xC3F0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xC3F0.vtx.inc.c>
 };
 
 /* @ 0xC430, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xC430[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xC430.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xC430.dl.inc.c>
 };
 
 /* @ 0x0C520, 3824 bytes */
@@ -960,7 +960,7 @@ u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC5A4[0x3C] = {
 
 /* @ 0xC5E0, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xC5E0[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xC5E0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xC5E0.palette.inc.c>
 };
 
 /* @ 0xC600, 3600 bytes (trailing gap) */
@@ -976,12 +976,12 @@ u8 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410[0x90] = {
 
 /* @ 0xD4A0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xD4A0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xD4A0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xD4A0.vtx.inc.c>
 };
 
 /* @ 0xD4E0, 224 bytes (28 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xD4E0[28] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xD4E0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xD4E0.dl.inc.c>
 };
 
 /* @ 0x0D5C0, 1968 bytes */
@@ -998,7 +998,7 @@ u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644[0xF4] = {
 
 /* @ 0xD738, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xD738[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xD738.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xD738.palette.inc.c>
 };
 
 /* @ 0xD758, 1560 bytes (trailing gap) */
@@ -1014,12 +1014,12 @@ u8 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70[0x98] = {
 
 /* @ 0xDE08, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xDE08[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xDE08.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xDE08.vtx.inc.c>
 };
 
 /* @ 0xDE48, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xDE48[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xDE48.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xDE48.dl.inc.c>
 };
 
 /* @ 0x0DF38, 936 bytes */
@@ -1043,12 +1043,12 @@ u8 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0[0x98] = {
 
 /* @ 0xE378, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xE378[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xE378.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xE378.vtx.inc.c>
 };
 
 /* @ 0xE3B8, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xE3B8[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xE3B8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xE3B8.dl.inc.c>
 };
 
 /* @ 0x0E4A8, 184 bytes */
@@ -1081,7 +1081,7 @@ u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4[0x454] = {
 
 /* @ 0xEF38, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xEF38[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xEF38.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xEF38.palette.inc.c>
 };
 
 /* @ 0xEF58, 88 bytes (raw gap) */
@@ -1091,7 +1091,7 @@ u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEF58[0x58] = {
 
 /* @ 0xEFB0, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xEFB0[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0xEFB0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0xEFB0.palette.inc.c>
 };
 
 /* @ 0xEFD0, 1776 bytes (trailing gap) */
@@ -1107,27 +1107,27 @@ u8 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0[0x128] = {
 
 /* @ 0xF7E8, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0xF7E8[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xF7E8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xF7E8.vtx.inc.c>
 };
 
 /* @ 0xF828, 32 bytes (2 vertices) */
 Vtx dITCommonObject_Vtx_0xF828[2] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0xF828.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0xF828.vtx.inc.c>
 };
 
 /* @ 0xF848, 96 bytes (12 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xF848[12] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xF848.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xF848.dl.inc.c>
 };
 
 /* @ 0xF8A8, 120 bytes (15 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xF8A8[15] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xF8A8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xF8A8.dl.inc.c>
 };
 
 /* @ 0xF920, 184 bytes (23 Gfx commands) */
 Gfx dITCommonObject_Gfx_0xF920[23] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0xF920.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0xF920.dl.inc.c>
 };
 
 /* @ 0x0F9D8, 184 bytes */
@@ -1166,7 +1166,7 @@ u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0[0xA8] = {
 
 /* @ 0x10158, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x10158[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x10158.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x10158.palette.inc.c>
 };
 
 /* @ 0x10178, 520 bytes (raw gap) */
@@ -1176,12 +1176,12 @@ u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x10178[0x208] = {
 
 /* @ 0x10380, 48 bytes (3 vertices) */
 Vtx dITCommonObject_Vtx_0x10380[3] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x10380.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x10380.vtx.inc.c>
 };
 
 /* @ 0x103B0, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x103B0[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x103B0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x103B0.dl.inc.c>
 };
 
 /* @ 0x104A0, 176 bytes */
@@ -1204,12 +1204,12 @@ u8 dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0[0xA0] = {
 
 /* @ 0x11180, 48 bytes (3 vertices) */
 Vtx dITCommonObject_Vtx_0x11180[3] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x11180.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x11180.vtx.inc.c>
 };
 
 /* @ 0x111B0, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x111B0[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x111B0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x111B0.dl.inc.c>
 };
 
 /* @ 0x112A0, 1848 bytes */
@@ -1236,7 +1236,7 @@ PAD(12);
 
 /* @ 0x11A68, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x11A68[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x11A68.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x11A68.palette.inc.c>
 };
 
 /* @ 0x11A88, 904 bytes (raw gap) */
@@ -1246,12 +1246,12 @@ u8 dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A88[0x388] = {
 
 /* @ 0x11E10, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x11E10[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x11E10.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x11E10.vtx.inc.c>
 };
 
 /* @ 0x11E50, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x11E50[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x11E50.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x11E50.dl.inc.c>
 };
 
 /* @ 0x11F40, 2272 bytes */
@@ -1268,7 +1268,7 @@ u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4[0x504] = {
 
 /* @ 0x124C8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x124C8[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x124C8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x124C8.palette.inc.c>
 };
 
 /* @ 0x124E8, 520 bytes (raw gap) */
@@ -1278,12 +1278,12 @@ u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x124E8[0x208] = {
 
 /* @ 0x126F0, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x126F0[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x126F0.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x126F0.vtx.inc.c>
 };
 
 /* @ 0x12730, 240 bytes (30 Gfx commands) */
 Gfx dITCommonObject_Gfx_0x12730[30] = {
-	#include <ITCommonObject/dITCommonObject_Gfx_0x12730.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Gfx_0x12730.dl.inc.c>
 };
 
 /* @ 0x12820, 1880 bytes */

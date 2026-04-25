@@ -20,7 +20,7 @@ PAD(8);
 
 /* @ 0x0008, 32 bytes — 16-color RGBA5551 palette */
 u16 dFoxUnknown_palette[16] = {
-	#include <FoxUnknown/palette.data.inc.c>
+	#include <FoxUnknown/palette.palette.inc.c>
 };
 
 PAD(8);
@@ -32,10 +32,10 @@ u8 dFoxUnknown_Tex[0x100] = {
 
 /* @ 0x0130, 704 bytes — 44 Vtx */
 Vtx dFoxUnknown_Vtx[44] = {
-	#include <FoxUnknown/Vtx.data.inc.c>
+	#include <FoxUnknown/Vtx.vtx.inc.c>
 };
 
 /* @ 0x03F0, 304 bytes — 38 Gfx commands (display list) */
 Gfx dFoxUnknown_DL[38] = {
-	#include <FoxUnknown/DL.data.inc.c>
+	#include <FoxUnknown/DL.dl.inc.c>
 };

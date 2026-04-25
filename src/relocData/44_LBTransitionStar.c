@@ -13,7 +13,7 @@ Vtx dLBTransitionStar_data_0x0000[307] = {
 
 /* @ 0x1330, 4384 bytes — Gfx[548] DL */
 Gfx dLBTransitionStar_DL_0x1330[548] = {
-	#include <LBTransitionStar/DL_0x1330.data.inc.c>
+	#include <LBTransitionStar/DL_0x1330.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0x2450 (3 entries) */

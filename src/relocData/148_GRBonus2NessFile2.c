@@ -108,19 +108,11 @@ Gfx dGRBonus2NessFile2_DL_0x0480[32] = {
 	#include <GRBonus2NessFile2/DL_0x0480.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x580[8] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x580.data.inc.c>
-};
-
-/* gap sub-block @ 0x0588 (was gap+0x588, 40 bytes) */
-u16 dGRBonus2NessFile2_gap_0x0000_sub_0x588[20] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x588.palette.inc.c>
-};
-
-/* gap sub-block @ 0x05B0 (was gap+0x5B0, 208 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x5B0[208] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x5B0.data.inc.c>
+/* Merged Gfx DL @ 0x580 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x580[32] = {
+	#include <GRBonus2NessFile2/gap_0x0000_sub_0x580.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 256 bytes) */
@@ -128,19 +120,11 @@ Gfx dGRBonus2NessFile2_DL_0x0680[32] = {
 	#include <GRBonus2NessFile2/DL_0x0680.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x780 @ 0x780 (7 cmds) */
-Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x780[7] = {
+/* Merged Gfx DL @ 0x780 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x780[32] = {
 	#include <GRBonus2NessFile2/gap_0x0000_sub_0x780.dl.inc.c>
-};
-
-/* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */
-u16 dGRBonus2NessFile2_gap_0x0000_sub_0x7B8[20] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x7B8.palette.inc.c>
-};
-
-/* gap sub-block @ 0x07E0 (was gap+0x7E0, 160 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x7E0[160] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x7E0.data.inc.c>
 };
 
 /* gap sub-block @ 0x0880 (was gap+0x880, 256 bytes) */
@@ -148,29 +132,11 @@ Gfx dGRBonus2NessFile2_DL_0x0880[32] = {
 	#include <GRBonus2NessFile2/DL_0x0880.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x980 @ 0x980 (13 cmds) */
-Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x980[13] = {
+/* Merged Gfx DL @ 0x980 — 5 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus2NessFile2_gap_0x0000_sub_0x980[50] = {
 	#include <GRBonus2NessFile2/gap_0x0000_sub_0x980.dl.inc.c>
-};
-
-/* gap sub-block @ 0x09E8 (was gap+0x9E8, 136 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0x9E8[136] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x9E8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0A70 (was gap+0xA70, 72 bytes) */
-u8 dGRBonus2NessFile2_gap_0x0000_sub_0xA70[72] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0xA70.data.inc.c>
-};
-
-/* gap sub-block @ 0x0AB8 (was gap+0xAB8, 16 bytes) */
-u16 dGRBonus2NessFile2_gap_0x0000_sub_0xAB8[8] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0xAB8.palette.inc.c>
-};
-
-/* gap sub-block @ 0x0AC8 (was gap+0xAC8, 72 bytes) */
-Gfx dGRBonus2NessFile2_DL_0x0AC8[9] = {
-	#include <GRBonus2NessFile2/DL_0x0AC8.dl.inc.c>
 };
 
 /* DObjDLLink @ 0xB10 (2 entries) */
@@ -181,7 +147,7 @@ DObjDLLink dGRBonus2NessFile2_DLLink_0x0B10[] = {
 
 /* DObjDLLink @ 0xB20 (2 entries) */
 DObjDLLink dGRBonus2NessFile2_DLLink_0x0B20[] = {
-	{ 0, (Gfx*)dGRBonus2NessFile2_gap_0x0000_sub_0x580 },
+	{ 0, dGRBonus2NessFile2_gap_0x0000_sub_0x580 },
 	{ 4, NULL },
 };
 

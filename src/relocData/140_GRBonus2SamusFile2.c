@@ -123,39 +123,11 @@ Gfx dGRBonus2SamusFile2_DL_0x0480[30] = {
 	#include <GRBonus2SamusFile2/DL_0x0480.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x570 @ 0x570 (3 cmds) */
-Gfx dGRBonus2SamusFile2_gap_0x0000_sub_0x570[3] = {
+/* Merged Gfx DL @ 0x570 — 7 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus2SamusFile2_gap_0x0000_sub_0x570[50] = {
 	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x570.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0588 (was gap+0x588, 32 bytes) */
-u16 dGRBonus2SamusFile2_gap_0x0000_sub_0x588[16] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x588.palette.inc.c>
-};
-
-/* gap sub-block @ 0x05A8 (was gap+0x5A8, 136 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x5A8[136] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x5A8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0630 (was gap+0x630, 40 bytes) */
-u16 dGRBonus2SamusFile2_gap_0x0000_sub_0x630[20] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x630.palette.inc.c>
-};
-
-/* gap sub-block @ 0x0658 (was gap+0x658, 136 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x658[136] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x658.data.inc.c>
-};
-
-/* gap sub-block @ 0x06E0 (was gap+0x6E0, 16 bytes) */
-u16 dGRBonus2SamusFile2_gap_0x0000_sub_0x6E0[8] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x6E0.palette.inc.c>
-};
-
-/* gap sub-block @ 0x06F0 (was gap+0x6F0, 16 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x6F0[16] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x6F0.data.inc.c>
 };
 
 /* DObjDLLink @ 0x700 (2 entries) */

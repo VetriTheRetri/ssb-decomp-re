@@ -55,29 +55,11 @@ Vtx dStageExplainFile2_gap_0x018C_sub_0x244[3] = {
 	#include <StageExplainFile2/gap_0x018C_sub_0x244.vtx.inc.c>
 };
 
-/* Gfx DL: gap_0x018C_sub_0x274 @ 0x400 (13 cmds) */
-Gfx dStageExplainFile2_gap_0x018C_sub_0x274[13] = {
+/* Merged Gfx DL @ 0x274 — 5 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dStageExplainFile2_gap_0x018C_sub_0x274[100] = {
 	#include <StageExplainFile2/gap_0x018C_sub_0x274.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0468 (was gap+0x2DC, 40 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x2DC[40] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x2DC.data.inc.c>
-};
-
-/* Gfx DL: gap_0x018C_sub_0x304 @ 0x490 (17 cmds) */
-Gfx dStageExplainFile2_gap_0x018C_sub_0x304[17] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x304.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0518 (was gap+0x38C, 40 bytes) */
-u8 dStageExplainFile2_gap_0x018C_sub_0x38C[40] = {
-	#include <StageExplainFile2/gap_0x018C_sub_0x38C.data.inc.c>
-};
-
-/* gap sub-block @ 0x0540 (was gap+0x3B4, 480 bytes) */
-Gfx dStageExplainFile2_DL_0x0540[60] = {
-	#include <StageExplainFile2/DL_0x0540.dl.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x720 (3 entries) */

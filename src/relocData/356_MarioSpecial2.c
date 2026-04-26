@@ -48,14 +48,11 @@ Vtx dMarioSpecial2_Vtx_0x0300_Vtx[12] = {
 	#include <MarioSpecial2/Vtx_0x0300.vtx.inc.c>
 };
 
-/* DisplayList: Joint_0x03C0 @ 0x3C0 (96 bytes) */
-Gfx dMarioSpecial2_Joint_0x03C0_DisplayList[12] = {
-	#include <MarioSpecial2/Joint_0x03C0.dl.inc.c>
-};
-
-/* Gfx DL: Joint_0x03C0_post @ 0x420 (20 cmds) */
-Gfx dMarioSpecial2_Joint_0x03C0_post[20] = {
-	#include <MarioSpecial2/Joint_0x03C0_post.dl.inc.c>
+/* Merged Gfx DL @ DisplayList — 2 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dMarioSpecial2_Joint_0x03C0_DisplayList[32] = {
+	#include <MarioSpecial2/Joint_0x03C0_DisplayList.dl.inc.c>
 };
 
 /* DisplayList: Joint_0x04C0 @ 0x4C0 (328 bytes) */

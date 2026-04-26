@@ -103,19 +103,11 @@ Gfx dGRBonus1NessFile2_DL_0x0480[32] = {
 	#include <GRBonus1NessFile2/DL_0x0480.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x580[8] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x580.data.inc.c>
-};
-
-/* gap sub-block @ 0x0588 (was gap+0x588, 40 bytes) */
-u16 dGRBonus1NessFile2_gap_0x0000_sub_0x588[20] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x588.palette.inc.c>
-};
-
-/* gap sub-block @ 0x05B0 (was gap+0x5B0, 208 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0000_sub_0x5B0[208] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x5B0.data.inc.c>
+/* Merged Gfx DL @ 0x580 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus1NessFile2_gap_0x0000_sub_0x580[32] = {
+	#include <GRBonus1NessFile2/gap_0x0000_sub_0x580.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0680 (was gap+0x680, 256 bytes) */
@@ -123,19 +115,11 @@ Gfx dGRBonus1NessFile2_DL_0x0680[32] = {
 	#include <GRBonus1NessFile2/DL_0x0680.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x780 @ 0x780 (7 cmds) */
-Gfx dGRBonus1NessFile2_gap_0x0000_sub_0x780[7] = {
+/* Merged Gfx DL @ 0x780 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus1NessFile2_gap_0x0000_sub_0x780[50] = {
 	#include <GRBonus1NessFile2/gap_0x0000_sub_0x780.dl.inc.c>
-};
-
-/* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */
-u16 dGRBonus1NessFile2_gap_0x0000_sub_0x7B8[20] = {
-	#include <GRBonus1NessFile2/gap_0x0000_sub_0x7B8.palette.inc.c>
-};
-
-/* gap sub-block @ 0x07E0 (was gap+0x7E0, 304 bytes) */
-Gfx dGRBonus1NessFile2_DL_0x07E0[38] = {
-	#include <GRBonus1NessFile2/DL_0x07E0.dl.inc.c>
 };
 
 /* DObjDLLink @ 0x910 (2 entries) */
@@ -146,7 +130,7 @@ DObjDLLink dGRBonus1NessFile2_DLLink_0x0910[] = {
 
 /* DObjDLLink @ 0x920 (2 entries) */
 DObjDLLink dGRBonus1NessFile2_DLLink_0x0920[] = {
-	{ 0, (Gfx*)dGRBonus1NessFile2_gap_0x0000_sub_0x580 },
+	{ 0, dGRBonus1NessFile2_gap_0x0000_sub_0x580 },
 	{ 4, NULL },
 };
 

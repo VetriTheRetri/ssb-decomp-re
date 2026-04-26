@@ -2,14 +2,14 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 extern dGRBonus2FoxFile2_gap_0x0000_sub_0x480+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_gap_0x0000_sub_0x500+0x24 0x6F0  # -> file 121 (Bonus1CommonImages2)
-intern dGRBonus2FoxFile2_gap_0x0000_sub_0x500+0x44 dGRBonus2FoxFile2_gap_0x0000
-extern dGRBonus2FoxFile2_gap_0x0000_sub_0x5A8+0x4C 0x6E0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_gap_0x0000_sub_0x5A8+0x7C 0x6F0  # -> file 121 (Bonus1CommonImages2)
-intern dGRBonus2FoxFile2_gap_0x0000_sub_0x630+0x14 dGRBonus2FoxFile2_gap_0x0000
-extern dGRBonus2FoxFile2_DL_0x06F0+0x4 0x6E0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_DL_0x06F0+0x34 0x6F0  # -> file 121 (Bonus1CommonImages2)
-intern dGRBonus2FoxFile2_DL_0x06F0+0x54 dGRBonus2FoxFile2_gap_0x0000
+extern dGRBonus2FoxFile2_gap_0x0000_sub_0x480+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
+intern dGRBonus2FoxFile2_gap_0x0000_sub_0x480+0xC4 dGRBonus2FoxFile2_gap_0x0000
+extern dGRBonus2FoxFile2_gap_0x0000_sub_0x580+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_gap_0x0000_sub_0x580+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
+intern dGRBonus2FoxFile2_gap_0x0000_sub_0x580+0xC4 dGRBonus2FoxFile2_gap_0x0000
+extern dGRBonus2FoxFile2_gap_0x0000_sub_0x680+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_gap_0x0000_sub_0x680+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
+intern dGRBonus2FoxFile2_gap_0x0000_sub_0x680+0xC4 dGRBonus2FoxFile2_gap_0x0000
 intern dGRBonus2FoxFile2_DL_0x0780+0x3C dGRBonus2FoxFile2_gap_0x0000_sub_0x40
 intern dGRBonus2FoxFile2_DL_0x0780+0x4C dGRBonus2FoxFile2_gap_0x0000_sub_0x80
 intern dGRBonus2FoxFile2_DL_0x0780+0x5C dGRBonus2FoxFile2_gap_0x0000_sub_0xC0

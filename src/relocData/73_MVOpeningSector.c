@@ -1832,9 +1832,9 @@ Gfx dMVOpeningSector_DL_0x6000[3600] = {
 	#include <MVOpeningSector/DL_0x6000.dl.inc.c>
 };
 
-/* gap sub-block @ 0xD080 (was gap+0x7100, 144 bytes) */
-u8 dMVOpeningSector_gap_0x5F80_sub_0x7100[144] = {
-	#include <MVOpeningSector/gap_0x5F80_sub_0x7100.data.inc.c>
+/* Gfx DL continuation @ 0x7100 (was u8[144]). */
+Gfx dMVOpeningSector_gap_0x5F80_sub_0x7100[18] = {
+	#include <MVOpeningSector/gap_0x5F80_sub_0x7100.dl.inc.c>
 };
 
 /* gap sub-block @ 0xD110 (was gap+0x7190, 192 bytes) */

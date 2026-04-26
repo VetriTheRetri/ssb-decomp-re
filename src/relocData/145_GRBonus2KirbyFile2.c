@@ -103,19 +103,11 @@ Gfx dGRBonus2KirbyFile2_DL_0x0480[30] = {
 	#include <GRBonus2KirbyFile2/DL_0x0480.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x570 @ 0x570 (3 cmds) */
-Gfx dGRBonus2KirbyFile2_gap_0x0000_sub_0x570[3] = {
+/* Merged Gfx DL @ 0x570 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus2KirbyFile2_gap_0x0000_sub_0x570[30] = {
 	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x570.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0588 (was gap+0x588, 40 bytes) */
-u16 dGRBonus2KirbyFile2_gap_0x0000_sub_0x588[20] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x588.palette.inc.c>
-};
-
-/* gap sub-block @ 0x05B0 (was gap+0x5B0, 176 bytes) */
-u8 dGRBonus2KirbyFile2_gap_0x0000_sub_0x5B0[176] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x5B0.data.inc.c>
 };
 
 /* gap sub-block @ 0x0660 (was gap+0x660, 240 bytes) */
@@ -123,19 +115,11 @@ Gfx dGRBonus2KirbyFile2_DL_0x0660[30] = {
 	#include <GRBonus2KirbyFile2/DL_0x0660.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x750 @ 0x750 (13 cmds) */
-Gfx dGRBonus2KirbyFile2_gap_0x0000_sub_0x750[13] = {
+/* Merged Gfx DL @ 0x750 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus2KirbyFile2_gap_0x0000_sub_0x750[30] = {
 	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x750.dl.inc.c>
-};
-
-/* gap sub-block @ 0x07B8 (was gap+0x7B8, 40 bytes) */
-u16 dGRBonus2KirbyFile2_gap_0x0000_sub_0x7B8[20] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x7B8.palette.inc.c>
-};
-
-/* gap sub-block @ 0x07E0 (was gap+0x7E0, 96 bytes) */
-u8 dGRBonus2KirbyFile2_gap_0x0000_sub_0x7E0[96] = {
-	#include <GRBonus2KirbyFile2/gap_0x0000_sub_0x7E0.data.inc.c>
 };
 
 /* gap sub-block @ 0x0840 (was gap+0x840, 400 bytes) */

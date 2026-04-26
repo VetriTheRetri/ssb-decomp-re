@@ -1,12 +1,12 @@
 # Relocation metadata for file 124
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1MarioFile2_gap_0x0000_sub_0x4E8+0xC 0x598  # -> file 120 (Bonus1CommonImages1)
-extern dGRBonus1MarioFile2_DL_0x0510+0x14 0x5A8  # -> file 120 (Bonus1CommonImages1)
-intern dGRBonus1MarioFile2_DL_0x0510+0x34 dGRBonus1MarioFile2_gap_0x0000
-extern dGRBonus1MarioFile2_DL_0x05A8+0x4C 0x598  # -> file 120 (Bonus1CommonImages1)
-extern dGRBonus1MarioFile2_DL_0x05A8+0x7C 0x5A8  # -> file 120 (Bonus1CommonImages1)
-intern dGRBonus1MarioFile2_DL_0x05A8+0x9C dGRBonus1MarioFile2_gap_0x0000
+extern dGRBonus1MarioFile2_gap_0x0000_sub_0x480+0x74 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1MarioFile2_gap_0x0000_sub_0x480+0xA4 0x5A8  # -> file 120 (Bonus1CommonImages1)
+intern dGRBonus1MarioFile2_gap_0x0000_sub_0x480+0xC4 dGRBonus1MarioFile2_gap_0x0000
+extern dGRBonus1MarioFile2_gap_0x0000_sub_0x580+0x74 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1MarioFile2_gap_0x0000_sub_0x580+0xA4 0x5A8  # -> file 120 (Bonus1CommonImages1)
+intern dGRBonus1MarioFile2_gap_0x0000_sub_0x580+0xC4 dGRBonus1MarioFile2_gap_0x0000
 extern dGRBonus1MarioFile2_DL_0x0680+0x74 0x598  # -> file 120 (Bonus1CommonImages1)
 extern dGRBonus1MarioFile2_DL_0x0680+0xA4 0x5A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1MarioFile2_DL_0x0680+0xC4 dGRBonus1MarioFile2_gap_0x0000

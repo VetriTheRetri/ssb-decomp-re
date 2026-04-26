@@ -43,6 +43,53 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **DL-chain merging** (15 chains across the GRBonus1/2 corpus + a few
+  MVOpening / Stage files). Many character / stage / opening Gfx DLs
+  were split across multiple `gap_0xNNNN_sub_0xMM` symbols at intern-
+  chain boundaries — the splat tool placed a symbol at every chain-
+  pointer landing, even mid-DL. After classification many intermediate
+  blocks ended up typed as `Gfx[N/8]` (or `u16` palette / `u8` data)
+  but didn't carry a `gsSPEndDisplayList` terminator: the runtime
+  walks straight through them into the next sub-block. The new
+  `tools/merge_dl_chains.py` (a) detects truncated Gfx blocks (no
+  `gsSPEndDisplayList` in the decoded `.dl.inc.c` *or* in the raw
+  `{ { 0xDF000000, 0x00000000 } }` fallback emit_dl produces), (b)
+  walks forward through subsequent blocks treating them as Gfx
+  continuations until it hits a properly-terminated Gfx, (c) merges
+  the whole chain into one `Gfx[N]` at the head's symbol, deleting
+  the intermediates and rewriting `.reloc` entries that used to
+  source from `<intermediate>+0xN` to `<head>+0x(intermediate_off-
+  head_off+N)` form. Skips chains where any intermediate is a branch
+  target (referenced from `.reloc` as a *target*, or from `.c` source
+  outside its own declaration). One outlier survives (`73_MVOpeningSector.c
+  :: dMVOpeningSector_DL_0xD110` — used both as a fall-through
+  continuation *and* as a branch target via `Vtx_0xD1D0_Vtx+0x4`).
+  Also retypes the 8-byte `_sub_0x580` blocks in 9 GRBonus1/2 stages
+  from `u8[8]` to `Gfx[1]` (each holds a single `gsDPPipeSync()`
+  command) and the 4 wallpaper `gap_0xNNNN_sub_0xA0` blocks in
+  `66_MVOpeningClashWallpaper.c` from `u8[120]` to typed `MObjSub`
+  initializers. ROM byte-identical.
+- **`(u8*)<base> + 0xN` symbol resolver** ([tools/resolve_base_offset_refs.py]):
+  scanned every relocData `.c` for `(u8*)<base> + 0xN` cast
+  expressions, used `nm` on the compiled `.o` to compute the byte
+  offset, and replaced the expression with the existing
+  `<base>_0xNNN`-style sibling symbol when one lived at exactly that
+  address. Rewrote 257 expressions across 44 files (e.g.
+  `(u8*)dXxx_MatAnimJoint + 0x8` → `dXxx_MatAnimJoint_0xA1C`). When
+  the substitution would create a forward reference, an
+  `extern <type> <name>[];` is auto-inserted before the file's first
+  definition. Also fixed two latent parser bugs in
+  `extractRelocInc.py`: (1) `_TOP_DECL_RE` regex now accepts `**`
+  (`Type **Name[N]`) declarations — without this fix the byte-offset
+  walker silently skipped any double-pointer declaration, drifting
+  every subsequent block's extracted `.inc.c` content; (2) for
+  `u8/u16/u32/u64` arrays without an explicit `[N]` and without an
+  `.inc.c` include, fall back to a top-level comma-counted scan
+  instead of the hex-literal counter (which double-counted hex inside
+  identifier names like `_0x3700` and undercounted entries that are
+  bare macro calls). The former regression was masked by a stale
+  build until `make clean` + RELOC_DATA build exposed it on
+  `75_MVOpeningRunCrash.c`.
 - **AObjScript32 anim arrays decoded** to `aobjEvent32*()` macros across
   every `u32 dXxx_AnimJoint[] / MatAnimJoint[] / CamAnimJoint[]` block
   (105 files). Decoded forms expose the per-opcode payload-consumption
@@ -102,8 +149,8 @@ Recent round of structural work:
        Bonus1CommonImages block loaded as a TLUT from a character
        file's Gfx) get caught too.
   Iterated to fixpoint with rebuilds between passes. Final counts:
-  **1,792 `Gfx[]` arrays** (~632 KB), **3,654 `Vtx[]` arrays** (~629
-  KB), **487 u16 palettes** (~21 KB), **625 `PAD()` usages**. ROM
+  **1,768 `Gfx[]` arrays** (~622 KB), **3,654 `Vtx[]` arrays** (~613
+  KB), **507 u16 palettes** (~24 KB), **744 `PAD()` usages**. ROM
   stays byte-identical throughout.
 - **`tools/expandRelocFile.py` correctness fixes**. The Gfx-arg
   resolver now gates on walked chain positions (so `0x0EXXXXXX`
@@ -241,9 +288,9 @@ intent:
 
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
-| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,393 | ~441 KB | 94 |
-| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 195 | ~356 KB | 87 |
-| **Total u8 `.data.inc.c`** | 3,588 | ~798 KB | 105 |
+| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,120 | ~393 KB | 94 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 383 | ~397 KB | 85 |
+| **Total u8 `.data.inc.c`** | 3,503 | ~791 KB | 105 |
 
 The semantic bucket dropped from ~450 KB to ~127 KB in an earlier
 round (74 texture-named blocks renamed `.data.inc.c` → `.tex.inc.c`
@@ -258,8 +305,8 @@ extended to:
 - emit `PAD(N);` macros for trailers that are pure zero padding and
   not referenced by any `.reloc` entry.
 
-After the new split pass, `Gfx[]` arrays grew to **1,792 declarations
-/ ~632 KB**, and 625 `PAD()` usages (~5 KB of zeroed gap) replaced
+After the new split pass, `Gfx[]` arrays grew to **1,768 declarations
+/ ~622 KB**, and 744 `PAD()` usages (~6 KB of zeroed gap) replaced
 small all-zero `u8[]` trailers.
 
 Two follow-up rounds further refined the typing:
@@ -280,52 +327,55 @@ Top files in each bucket (bytes):
 
 | Fid | File | Blocks | Bytes |
 |---:|---|---:|---:|
-| 86 | ITCommonObject | 63 | 46,240 |
-| 112 | StageYamabukiFile2 | 65 | 31,528 |
-| 328 | KirbyModel | 367 | 31,344 |
-| 83 | EFCommonEffects1 | 43 | 29,448 |
-| 111 | StageYosterFile2 | 76 | 22,852 |
-| 198 | SCExplainGraphics | 10 | 20,584 |
+| 112 | StageYamabukiFile2 | 61 | 30,936 |
+| 328 | KirbyModel | 338 | 30,484 |
+| 83 | EFCommonEffects1 | 42 | 29,420 |
+| 198 | SCExplainGraphics | 16 | 23,464 |
+| 111 | StageYosterFile2 | 68 | 21,676 |
 | 105 | StageZebesFile2 | 106 | 14,808 |
-| 136 | Bonus2Common | 18 | 14,568 |
-| 335 | NessModel | 105 | 12,904 |
-| 332 | CaptainModel | 247 | 11,904 |
+| 136 | Bonus2Common | 12 | 14,520 |
+| 335 | NessModel | 100 | 12,856 |
+| 332 | CaptainModel | 230 | 11,776 |
 | 75 | MVOpeningRunCrash | 40 | 11,752 |
 | 149 | GRBonus3File2 | 34 | 11,736 |
 | 68 | MVOpeningCliff | 13 | 11,288 |
-| 317 | DonkeyModel | 239 | 11,208 |
+| 317 | DonkeyModel | 224 | 11,096 |
 | 114 | StageLastFile2 | 60 | 10,708 |
-| 108 | StageJungleFile2 | 20 | 10,056 |
+| 108 | StageJungleFile2 | 19 | 9,904 |
 | 167 | MNTitle | 15 | 9,256 |
-| 338 | YoshiModel | 173 | 8,788 |
-| 341 | PikachuModel | 150 | 8,620 |
-| 320 | SamusModel | 201 | 8,388 |
+| 338 | YoshiModel | 164 | 8,712 |
+| 341 | PikachuModel | 141 | 8,528 |
+| 320 | SamusModel | 194 | 8,344 |
+| 84 | EFCommonEffects2 | 45 | 7,088 |
 
-KirbyModel dropped sharply (88 KB → 31 KB) — many of its `gap_*_sub_*`
-blocks were DL fragments without explicit terminators that the
-extended split pass now classifies as `Gfx[]`. Same shape for
-DonkeyModel, CaptainModel, SamusModel, YoshiModel. `ITCommonObject`
-took the lead with ~46 KB of per-item `_data_remainder` sub-blocks
-that still need per-item struct identification from runtime code
-analysis.
+`ITCommonObject` graduated out of this list this round (was top with
+46 KB of per-item `_data_remainder` sub-blocks; those moved to the
+"semantically named" bucket via the `symbolizeRelocFile.py` typing
+pass). KirbyModel and the other character models continue to
+dominate — their remaining unclassified blocks are joint-hierarchy
+bodies that need Joint/AnimJoint structural typing from the joint
+tree, not DL content.
 
 **Semantically named — structural analysis required**
 
 | Fid | File | Bytes | What |
 |---:|---|---:|---|
-| 61 | MVOpeningNewcomers1 | 34,656 | Opening cutscene — `*_post` DL-tail metadata (Joint / DObj / Anim fragments) |
+| 114 | StageLastFile2 | 55,848 | Stage collision + per-layer animation tracks. |
+| 138 | GRBonus2FoxFile2 | 55,644 | Bonus2 stage data — DL-continuation chains and tail metadata. |
+| 86 | ITCommonObject | 46,792 | Per-item `_data_remainder` and `JointCmd` blocks (graduated this round from the unclassified bucket via `symbolizeRelocFile.py`). |
+| 61 | MVOpeningNewcomers1 | 34,656 | Opening cutscene — `*_post` DL-tail metadata (Joint / DObj / Anim fragments). |
+| 105 | StageZebesFile2 | 31,488 | Stage collision + per-layer animation tracks. |
+| 52 | MVCommon | 26,796 | Room-decoration cutscene tails. |
 | 62 | MVOpeningNewcomers2 | 25,184 | Same shape as Newcomers1. |
+| 83 | EFCommonEffects1 | 19,260 | Effect parameter tables. |
 | 69 | MVOpeningStandoff | 16,424 | Opening cutscene post-DL data. |
-| 332 | CaptainModel | 4,696 | Joint-hierarchy `_post` tails (metadata between DL + Vtx sections). |
-| 150 | ITBonus1Object | 4,248 | DObjDesc-shaped `dobj` block, exact field layout TBD. |
-| 338 | YoshiModel | 3,960 | Joint-hierarchy `_post` tails. |
-| 317 | DonkeyModel | 3,928 | Joint-hierarchy `_post` tails. |
-| 113 | StageHyruleFile2 | 3,340 | Stage collision geometry + `MPGeometryData`. |
-| 320 | SamusModel | 3,288 | Joint-hierarchy `_post` tails. |
-| 86 | ITCommonObject | 3,224 | Per-item `JointCmd` / `HitParties` / small structural tails. |
-| 198 | SCExplainGraphics | 2,928 | Post-DL metadata. |
-| 341 | PikachuModel | 2,872 | Joint-hierarchy `_post` tails. |
-| (50 more files) | — | 18,640 | Smaller entries. |
+| 84 | EFCommonEffects2 | 9,648 | Effect parameter tails. |
+| 85 | EFCommonEffects3 | 9,084 | Effect parameter tails. |
+| 111 | StageYosterFile2 | 7,384 | Stage geometry tails. |
+| 112 | StageYamabukiFile2 | 6,504 | Stage geometry tails. |
+| 335 | NessModel | 5,700 | Joint-hierarchy `_post` tails. |
+| 107 | StageInishieFile2 | 5,696 | Stage geometry tails. |
+| (70 more files) | — | ~38 KB | Smaller entries. |
 
 These blocks all have semantic names (`*_post`, `*MPGeometryData_*`,
 `*JointCmd_*`, `*HitParties_*`) but still `u8[]` with `.data.inc.c`.
@@ -517,48 +567,34 @@ more structural representation instead.
 
 The remaining work splits into three buckets:
 
-1. **Promote unclassified u8 `.data.inc.c` blocks** (~540 KB across
-   ~3,600 blocks in 120 files — the "Truly unclassified" row of the
+1. **Promote unclassified u8 `.data.inc.c` blocks** (~393 KB across
+   ~3,120 blocks in 94 files — the "Truly unclassified" row of the
    table above). Ranked by impact:
-   - **Character models** (KirbyModel 88 KB, DonkeyModel 21 KB,
-     CaptainModel 16 KB, SamusModel 14 KB, NessModel 13 KB, YoshiModel
-     11 KB, PikachuModel 9 KB, …) — Joint hierarchy bodies and per-DL
-     metadata left after the display-list walk. Structural typing
-     would need Joint / DObj / AnimJoint recognition from the Joint
-     tree structure rather than DL content.
-   - **ITCommonObject** (46 KB, 63 items) — per-item `_data_remainder`
-     and `_mobjsubs_gap` sub-blocks. Each item's layout (spawn data,
-     damage tables, effect tables) needs to be identified from runtime
-     code analysis (`src/it/itattack*.c` handlers per item).
-   - **Stage File2** (StageYamabukiFile2 32 KB, StageYosterFile2
-     23 KB, StageZebesFile2 15 KB, …) — collision geometry, layer
-     animation tracks, and interleaved texture / palette subsections.
-   - **EFCommonEffects1** (30 KB, 44 blocks) — effect parameter
+   - **Character models** (KirbyModel 30 KB, NessModel 13 KB,
+     CaptainModel 12 KB, DonkeyModel 11 KB, YoshiModel 9 KB,
+     PikachuModel 9 KB, SamusModel 8 KB, …) — joint-hierarchy bodies
+     and per-DL metadata left after the display-list walk. Structural
+     typing would need Joint / DObj / AnimJoint recognition from the
+     joint tree structure rather than DL content.
+   - **Stage File2** (StageYamabukiFile2 31 KB, StageYosterFile2
+     22 KB, StageZebesFile2 15 KB, StageLastFile2 11 KB,
+     StageJungleFile2 10 KB, …) — collision geometry, layer animation
+     tracks, and interleaved texture / palette subsections.
+   - **EFCommonEffects1** (29 KB, 42 blocks) — effect parameter
      tables used by the VFX system (`src/ef/*.c`).
    - **SCExplainGraphics** (23 KB), **Bonus2Common** (15 KB),
-     **GRBonus3File2** (12 KB), **MNTitle** (9 KB), various
-     MVOpening* files — scene-specific data.
+     **MVOpeningRunCrash** (12 KB), **GRBonus3File2** (12 KB),
+     **MVOpeningCliff** (11 KB), **MNTitle** (9 KB), other MVOpening*
+     files — scene-specific data.
 
-2. **Promote semantically-named `.data.inc.c` blocks** (~450 KB across
-   ~380 blocks in 60 files — the "Semantically named" row). These
-   already have meaningful names (Tex_pool, AnimJoint, tex_tiles)
-   but still use `.data.inc.c`. Renaming to `.tex.inc.c` for texture
-   pools, or retyping u8→u32 for AnimJoint scripts, is byte-identical
-   so strictly cosmetic. The bulk sits in MVOpening* cutscene files
-   (~330 KB combined) where the author chose to leave things as u8
-   wrappers intentionally.
-
-3. **Finish typing remaining struct bitfield tails**. The `WPAttributes` 52-byte
-   layout is fully verified (used by 8 hand-typed Special1 / Lizardon
-   files and 11 promoted ITCommonData blobs). `ITAttributes` 72-byte
-   layout has the visible fields (size, angle, ks, dmg, elem) verified
-   via empirical IDO test fixtures, but the bitfield tail at 0x38+
-   doesn't reduce to a clean MSB-first packing — see the comment block
-   above `struct ITAttributes` in `src/it/ittypes.h`. All 33 promotable
-   ITAttributes blobs in `ITCommonData` (fid 251) are now typed; only
-   Sawamura's `shield_damage=30` remains as a commented-out struct due
-   to the IDO `s32:8` second-bitfield-run static-init bug. All 6
-   `ITAttackEvent[4]` arrays are also typed with decoded fields.
+2. **Promote semantically-named `.data.inc.c` blocks** (~397 KB across
+   ~383 blocks in 85 files — the "Semantically named" row). These
+   already have meaningful names (Tex_pool, AnimJoint, tex_tiles,
+   `*_post`, `*_data`) but still use `.data.inc.c`. The bulk sits in
+   StageLastFile2 / GRBonus2FoxFile2 (~111 KB combined — DL-tail
+   metadata after the recent merge pass), MVOpening* cutscene files
+   (~76 KB combined), and ITCommonObject (47 KB of per-item
+   structural tails after symbolizeRelocFile.py promotion).
 
 3. **Finish typing remaining struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon

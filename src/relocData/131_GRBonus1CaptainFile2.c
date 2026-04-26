@@ -103,44 +103,18 @@ Gfx dGRBonus1CaptainFile2_DL_0x0480[32] = {
 	#include <GRBonus1CaptainFile2/DL_0x0480.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x580[8] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x580.data.inc.c>
+/* Merged Gfx DL @ 0x580 — 5 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus1CaptainFile2_gap_0x0000_sub_0x580[32] = {
+	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x580.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0588 (was gap+0x588, 32 bytes) */
-u16 dGRBonus1CaptainFile2_gap_0x0000_sub_0x588[16] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x588.palette.inc.c>
-};
-
-/* gap sub-block @ 0x05A8 (was gap+0x5A8, 136 bytes) */
-u8 dGRBonus1CaptainFile2_gap_0x0000_sub_0x5A8[136] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x5A8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0630 (was gap+0x630, 40 bytes) */
-u16 dGRBonus1CaptainFile2_gap_0x0000_sub_0x630[20] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x630.palette.inc.c>
-};
-
-/* gap sub-block @ 0x0658 (was gap+0x658, 40 bytes) */
-Gfx dGRBonus1CaptainFile2_DL_0x0658[5] = {
-	#include <GRBonus1CaptainFile2/DL_0x0658.dl.inc.c>
-};
-
-/* Gfx DL: gap_0x0000_sub_0x680 @ 0x680 (12 cmds) */
-Gfx dGRBonus1CaptainFile2_gap_0x0000_sub_0x680[12] = {
+/* Merged Gfx DL @ 0x680 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus1CaptainFile2_gap_0x0000_sub_0x680[50] = {
 	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x680.dl.inc.c>
-};
-
-/* gap sub-block @ 0x06E0 (was gap+0x6E0, 16 bytes) */
-u16 dGRBonus1CaptainFile2_gap_0x0000_sub_0x6E0[8] = {
-	#include <GRBonus1CaptainFile2/gap_0x0000_sub_0x6E0.palette.inc.c>
-};
-
-/* gap sub-block @ 0x06F0 (was gap+0x6F0, 288 bytes) */
-Gfx dGRBonus1CaptainFile2_DL_0x06F0[36] = {
-	#include <GRBonus1CaptainFile2/DL_0x06F0.dl.inc.c>
 };
 
 /* DObjDLLink @ 0x810 (2 entries) */
@@ -151,7 +125,7 @@ DObjDLLink dGRBonus1CaptainFile2_DLLink_0x0810[] = {
 
 /* DObjDLLink @ 0x820 (2 entries) */
 DObjDLLink dGRBonus1CaptainFile2_DLLink_0x0820[] = {
-	{ 0, (Gfx*)dGRBonus1CaptainFile2_gap_0x0000_sub_0x580 },
+	{ 0, dGRBonus1CaptainFile2_gap_0x0000_sub_0x580 },
 	{ 4, NULL },
 };
 

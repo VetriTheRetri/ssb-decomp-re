@@ -128,19 +128,11 @@ Gfx dGRBonus1SamusFile2_DL_0x0658[5] = {
 	#include <GRBonus1SamusFile2/DL_0x0658.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x680 @ 0x680 (12 cmds) */
-Gfx dGRBonus1SamusFile2_gap_0x0000_sub_0x680[12] = {
+/* Merged Gfx DL @ 0x680 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus1SamusFile2_gap_0x0000_sub_0x680[32] = {
 	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x680.dl.inc.c>
-};
-
-/* gap sub-block @ 0x06E0 (was gap+0x6E0, 16 bytes) */
-u16 dGRBonus1SamusFile2_gap_0x0000_sub_0x6E0[8] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x6E0.palette.inc.c>
-};
-
-/* gap sub-block @ 0x06F0 (was gap+0x6F0, 144 bytes) */
-Gfx dGRBonus1SamusFile2_DL_0x06F0[18] = {
-	#include <GRBonus1SamusFile2/DL_0x06F0.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0780 (was gap+0x780, 400 bytes) */

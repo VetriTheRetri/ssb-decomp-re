@@ -166,19 +166,11 @@ Gfx dStageYosterFile2_DL_0x0618[5] = {
 	#include <StageYosterFile2/DL_0x0618.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0078_sub_0x5C8 @ 0x640 (3 cmds) */
-Gfx dStageYosterFile2_gap_0x0078_sub_0x5C8[3] = {
+/* Merged Gfx DL @ 0x5C8 — 3 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dStageYosterFile2_gap_0x0078_sub_0x5C8[76] = {
 	#include <StageYosterFile2/gap_0x0078_sub_0x5C8.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0658 (was gap+0x5E0, 264 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0x5E0[264] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0x5E0.data.inc.c>
-};
-
-/* gap sub-block @ 0x0760 (was gap+0x6E8, 320 bytes) */
-Gfx dStageYosterFile2_DL_0x0760[40] = {
-	#include <StageYosterFile2/DL_0x0760.dl.inc.c>
 };
 
 /* gap sub-block @ 0x08A0 (was gap+0x828, 152 bytes) */
@@ -186,14 +178,11 @@ Gfx dStageYosterFile2_DL_0x08A0[19] = {
 	#include <StageYosterFile2/DL_0x08A0.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0078_sub_0x8C0 @ 0x938 (38 cmds) */
-Gfx dStageYosterFile2_gap_0x0078_sub_0x8C0[38] = {
+/* Merged Gfx DL @ 0x8C0 — 2 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dStageYosterFile2_gap_0x0078_sub_0x8C0[43] = {
 	#include <StageYosterFile2/gap_0x0078_sub_0x8C0.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0A68 (was gap+0x9F0, 40 bytes) */
-u8 dStageYosterFile2_gap_0x0078_sub_0x9F0[40] = {
-	#include <StageYosterFile2/gap_0x0078_sub_0x9F0.data.inc.c>
 };
 
 /* gap sub-block @ 0x0A90 (was gap+0xA18, 128 bytes) */
@@ -226,24 +215,18 @@ Gfx dStageYosterFile2_DL_0x0B98[4] = {
 	#include <StageYosterFile2/DL_0x0B98.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0078_sub_0xB40 @ 0xBB8 (3 cmds) */
-Gfx dStageYosterFile2_gap_0x0078_sub_0xB40[3] = {
+/* Merged Gfx DL @ 0xB40 — 2 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dStageYosterFile2_gap_0x0078_sub_0xB40[4] = {
 	#include <StageYosterFile2/gap_0x0078_sub_0xB40.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0BD0 (was gap+0xB58, 8 bytes) */
-Gfx dStageYosterFile2_DL_0x0BD0[1] = {
-	#include <StageYosterFile2/DL_0x0BD0.dl.inc.c>
-};
-
-/* Gfx DL: gap_0x0078_sub_0xB60 @ 0xBD8 (8 cmds) */
-Gfx dStageYosterFile2_gap_0x0078_sub_0xB60[8] = {
+/* Merged Gfx DL @ 0xB60 — 2 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dStageYosterFile2_gap_0x0078_sub_0xB60[9] = {
 	#include <StageYosterFile2/gap_0x0078_sub_0xB60.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0C18 (was gap+0xBA0, 8 bytes) */
-Gfx dStageYosterFile2_DL_0x0C18[1] = {
-	#include <StageYosterFile2/DL_0x0C18.dl.inc.c>
 };
 
 /* gap sub-block @ 0x0C20 (was gap+0xBA8, 240 bytes) */
@@ -251,14 +234,11 @@ Gfx dStageYosterFile2_DL_0x0C20[30] = {
 	#include <StageYosterFile2/DL_0x0C20.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0078_sub_0xC98 @ 0xD10 (2 cmds) */
-Gfx dStageYosterFile2_gap_0x0078_sub_0xC98[2] = {
+/* Merged Gfx DL @ 0xC98 — 2 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dStageYosterFile2_gap_0x0078_sub_0xC98[30] = {
 	#include <StageYosterFile2/gap_0x0078_sub_0xC98.dl.inc.c>
-};
-
-/* gap sub-block @ 0x0D20 (was gap+0xCA8, 224 bytes) */
-Gfx dStageYosterFile2_DL_0x0D20[28] = {
-	#include <StageYosterFile2/DL_0x0D20.dl.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0xE00 (19 entries) */

@@ -1,9 +1,9 @@
 # Relocation metadata for file 139
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x510+0xC 0x598  # -> file 120 (Bonus1CommonImages1)
-extern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x510+0x3C 0x5A8  # -> file 120 (Bonus1CommonImages1)
-intern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x510+0x5C dGRBonus2DonkeyFile2_DL_0x0578
+extern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x4C0+0x5C 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x4C0+0x8C 0x5A8  # -> file 120 (Bonus1CommonImages1)
+intern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x4C0+0xAC dGRBonus2DonkeyFile2_DL_0x0578
 intern dGRBonus2DonkeyFile2_DL_0x0578+0xC dGRBonus2DonkeyFile2_gap_0x0000
 intern dGRBonus2DonkeyFile2_gap_0x0000_sub_0x598+0xC dGRBonus2DonkeyFile2_gap_0x0000
 intern dGRBonus2DonkeyFile2_DL_0x05B8+0xC dGRBonus2DonkeyFile2_gap_0x0000

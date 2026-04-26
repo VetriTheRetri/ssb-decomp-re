@@ -8,19 +8,19 @@ intern dStageYosterSmallFile2_DL_0x0480+0x14 dStageYosterSmallFile2_Lut_0x0030_p
 extern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x34 0x178  # -> file 110 (StageYosterImages)
 extern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x5C 0xBD0  # -> file 110 (StageYosterImages)
 intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x7C dStageYosterSmallFile2_Vtx_0x0080_Vtx
-extern dStageYosterSmallFile2_DL_0x0528+0x2C 0x8  # -> file 110 (StageYosterImages)
-extern dStageYosterSmallFile2_DL_0x0528+0x54 0xA0  # -> file 110 (StageYosterImages)
-intern dStageYosterSmallFile2_DL_0x0528+0x74 dStageYosterSmallFile2_Vtx_0x0100_Vtx
-extern dStageYosterSmallFile2_DL_0x0528+0xA4 0x1030  # -> file 110 (StageYosterImages)
-intern dStageYosterSmallFile2_DL_0x0528+0xDC dStageYosterSmallFile2_Lut_0x0178_palette+0x8
-intern dStageYosterSmallFile2_DL_0x0528+0x11C dStageYosterSmallFile2_Vtx_0x01A0_Vtx
-intern dStageYosterSmallFile2_DL_0x0528+0x124 dStageYosterSmallFile2_gap_0x01B0_sub_0x10
-intern dStageYosterSmallFile2_DL_0x0528+0x15C dStageYosterSmallFile2_gap_0x01B0_sub_0x10+0x10
-intern dStageYosterSmallFile2_DL_0x0528+0x194 dStageYosterSmallFile2_Vtx_0x01F0_Vtx
-intern dStageYosterSmallFile2_DL_0x0528+0x1CC dStageYosterSmallFile2_Vtx_0x01F0_Vtx+0x20
+extern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0xAC 0x8  # -> file 110 (StageYosterImages)
+extern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0xD4 0xA0  # -> file 110 (StageYosterImages)
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0xF4 dStageYosterSmallFile2_Vtx_0x0100_Vtx
+extern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x124 0x1030  # -> file 110 (StageYosterImages)
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x15C dStageYosterSmallFile2_Lut_0x0178_palette+0x8
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x19C dStageYosterSmallFile2_Vtx_0x01A0_Vtx
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x1A4 dStageYosterSmallFile2_gap_0x01B0_sub_0x10
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x1DC dStageYosterSmallFile2_gap_0x01B0_sub_0x10+0x10
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x214 dStageYosterSmallFile2_Vtx_0x01F0_Vtx
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0xE8+0x24C dStageYosterSmallFile2_Vtx_0x01F0_Vtx+0x20
 extern dStageYosterSmallFile2_gap_0x03C0_sub_0x348+0x3C 0x218  # -> file 110 (StageYosterImages)
-extern dStageYosterSmallFile2_gap_0x03C0_sub_0x3A0+0xC 0xEA8  # -> file 110 (StageYosterImages)
-intern dStageYosterSmallFile2_gap_0x03C0_sub_0x3A0+0x2C dStageYosterSmallFile2_Vtx_0x0250_Vtx
+extern dStageYosterSmallFile2_gap_0x03C0_sub_0x348+0x64 0xEA8  # -> file 110 (StageYosterImages)
+intern dStageYosterSmallFile2_gap_0x03C0_sub_0x348+0x84 dStageYosterSmallFile2_Vtx_0x0250_Vtx
 extern dStageYosterSmallFile2_DL_0x07A0+0x1C 0x1A0  # -> file 110 (StageYosterImages)
 extern dStageYosterSmallFile2_DL_0x07A0+0x44 0xA68  # -> file 110 (StageYosterImages)
 intern dStageYosterSmallFile2_DL_0x07A0+0x64 dStageYosterSmallFile2_Vtx_0x0290_Vtx

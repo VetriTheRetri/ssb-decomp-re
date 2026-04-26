@@ -4,15 +4,15 @@
 extern dGRBonus1KirbyFile2_DL_0x0480+0x74 0xAB8  # -> file 123 (Bonus1CommonImages4)
 extern dGRBonus1KirbyFile2_DL_0x0480+0xA4 0xAC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1KirbyFile2_DL_0x0480+0xC4 dGRBonus1KirbyFile2_gap_0x0000
-extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x5B0+0x44 0xAB8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x5B0+0x74 0xAC8  # -> file 123 (Bonus1CommonImages4)
-intern dGRBonus1KirbyFile2_gap_0x0000_sub_0x5B0+0x94 dGRBonus1KirbyFile2_gap_0x0000
+extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x580+0x74 0xAB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x580+0xA4 0xAC8  # -> file 123 (Bonus1CommonImages4)
+intern dGRBonus1KirbyFile2_gap_0x0000_sub_0x580+0xC4 dGRBonus1KirbyFile2_gap_0x0000
 extern dGRBonus1KirbyFile2_DL_0x0680+0x74 0xAB8  # -> file 123 (Bonus1CommonImages4)
 extern dGRBonus1KirbyFile2_DL_0x0680+0xA4 0xAC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1KirbyFile2_DL_0x0680+0xC4 dGRBonus1KirbyFile2_gap_0x0000
-extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x7E0+0x14 0xAB8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x7E0+0x44 0xAC8  # -> file 123 (Bonus1CommonImages4)
-intern dGRBonus1KirbyFile2_gap_0x0000_sub_0x7E0+0x64 dGRBonus1KirbyFile2_gap_0x0000
+extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x780+0x74 0xAB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1KirbyFile2_gap_0x0000_sub_0x780+0xA4 0xAC8  # -> file 123 (Bonus1CommonImages4)
+intern dGRBonus1KirbyFile2_gap_0x0000_sub_0x780+0xC4 dGRBonus1KirbyFile2_gap_0x0000
 intern dGRBonus1KirbyFile2_DL_0x0880+0x3C dGRBonus1KirbyFile2_gap_0x0000_sub_0x40
 intern dGRBonus1KirbyFile2_DL_0x0880+0x4C dGRBonus1KirbyFile2_gap_0x0000_sub_0x80
 intern dGRBonus1KirbyFile2_DL_0x0880+0x5C dGRBonus1KirbyFile2_gap_0x0000_sub_0xC0

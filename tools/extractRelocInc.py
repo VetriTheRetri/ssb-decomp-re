@@ -171,7 +171,7 @@ def _detect_version():
 _TOP_DECL_RE = re.compile(
     r"^(?P<static>\s*(?:static\s+)?(?:const\s+)?)"
     r"(?P<type>\w+)\s+"
-    r"(?P<ptr>\*\s*)?"
+    r"(?P<ptr>\*+\s*)?"
     r"(?P<name>\w+)"
     r"(?:\s*\[\s*(?P<count>0[xX][0-9A-Fa-f]+|\d*)\s*\])?",
     re.MULTILINE,

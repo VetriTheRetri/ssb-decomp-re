@@ -7,6 +7,14 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls — each corner's MObjSub-list head is defined later in the
+ * file (alongside the corner's real MObjSub data) but is referenced from the
+ * LL/LR/UL/UR pointer-table heads above. */
+extern MObjSub *dMVOpeningClashWallpaper_gap_0x30C8_sub_0x118[];
+extern MObjSub *dMVOpeningClashWallpaper_gap_0x3758_sub_0x118[];
+extern MObjSub *dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x118[];
+extern MObjSub *dMVOpeningClashWallpaper_gap_0x4488_sub_0x118[];
+
 /* Raw data from file offset 0x0000 to 0x0AD0 (2768 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dMVOpeningClashWallpaper_gap_0x0000[8] = {
@@ -214,149 +222,236 @@ u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x620[40] = {
 };
 
 /* gap sub-block @ 0x0648 (was gap+0x648, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x648[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x648.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x648 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x648[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x648.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0670 (was gap+0x670, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x670[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x670.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x670 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x670[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x670.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0698 (was gap+0x698, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x698[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x698.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x698 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x698[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x698.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x06C0 (was gap+0x6C0, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x6C0[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x6C0.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x6C0 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x6C0[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x6C0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x06E8 (was gap+0x6E8, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x6E8[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x6E8.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x6E8 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x6E8[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x6E8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0710 (was gap+0x710, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x710[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x710.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x710 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x710[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x710.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0738 (was gap+0x738, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x738[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x738.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x738 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x738[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x738.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0760 (was gap+0x760, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x760[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x760.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x760 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x760[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x760.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0788 (was gap+0x788, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x788[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x788.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x788 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x788[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x788.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x07B0 (was gap+0x7B0, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x7B0[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x7B0.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x7B0 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x7B0[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x7B0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x07D8 (was gap+0x7D8, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x7D8[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x7D8.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x7D8 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x7D8[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x7D8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0800 (was gap+0x800, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x800[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x800.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x800 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x800[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x800.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0828 (was gap+0x828, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x828[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x828.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x828 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x828[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x828.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0850 (was gap+0x850, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x850[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x850.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x850 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x850[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x850.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0878 (was gap+0x878, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x878[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x878.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x878 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x878[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x878.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x08A0 (was gap+0x8A0, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8A0[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x8A0.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x8A0 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8A0[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x8A0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x08C8 (was gap+0x8C8, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8C8[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x8C8.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x8C8 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8C8[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x8C8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x08F0 (was gap+0x8F0, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8F0[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x8F0.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x8F0 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8F0[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x8F0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0918 (was gap+0x918, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x918[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x918.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x918 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x918[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x918.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0940 (was gap+0x940, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x940[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x940.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x940 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x940[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x940.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0968 (was gap+0x968, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x968[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x968.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x968 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x968[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x968.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0990 (was gap+0x990, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x990[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x990.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x990 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x990[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x990.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x09B8 (was gap+0x9B8, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x9B8[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x9B8.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x9B8 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x9B8[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x9B8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x09E0 (was gap+0x9E0, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x9E0[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x9E0.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0x9E0 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0x9E0[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0x9E0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0A08 (was gap+0xA08, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA08[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA08.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0xA08 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA08[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA08.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0A30 (was gap+0xA30, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA30[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA30.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0xA30 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA30[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA30.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0A58 (was gap+0xA58, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA58[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA58.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0xA58 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA58[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA58.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0A80 (was gap+0xA80, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA80[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA80.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0xA80 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0xA80[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xA80.palette.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x0AA8 (was gap+0xAA8, 40 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8[40] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xAA8.data.inc.c>
+/* Palette: 16-color RGBA5551 @ 0xAA8 (followed by 8 bytes pad) */
+u16 dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8[16] = {
+	#include <MVOpeningClashWallpaper/gap_0x0000_sub_0xAA8.palette.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x0AD0 (9600 bytes) */
 u8 dMVOpeningClashWallpaper_Tex_0x0AD0[9600] = {
@@ -364,31 +459,51 @@ u8 dMVOpeningClashWallpaper_Tex_0x0AD0[9600] = {
 };
 
 /* MObjSub: LLMObjSub @ 0x3050 */
-MObjSub dMVOpeningClashWallpaper_LLMObjSub_MObjSub = {
-	0x0C15,
-	0x0C, 0x78,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
-	0x0C17, 0x02A0, 0x0C18, 0x0296,
-	202965644,
-	1.18644831247986e-31f, 1.1941508567630582e-31f,
-	1.2018534010462563e-31f, 1.2095559453294544e-31f,
-	1.2172584896126526e-31f, 1.2249610338958507e-31f,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
-	0x0C21,
-	0x02, 0x3C,
-	0x0C22,
-	0x0232, 0x0C23, 0x0228,
-	1.2634737553118413e-31f, 1.2711762995950394e-31f,
-	1.2788788438782375e-31f, 1.2865813881614357e-31f,
-	0x0C2801F6,
-	{ { 0x0C, 0x29, 0x01, 0xEC } },
-	0x0C, 0x2A, { 0x01, 0xE2 },
-	{ { 0x0C, 0x2B, 0x01, 0xD8 } },
-	{ { 0x0C, 0x2C, 0x01, 0xCE } },
-	{ { 0x0C, 0x2D, 0x01, 0xC4 } },
-	{ { 0x0C, 0x2E, 0x01, 0xBA } },
-	204407216, 204472742,
-	204538268, 204603794,
+/* MObjSub-list head for the LL corner @ (LLMObjSub_MObjSub).
+ * Single 4-byte pointer; entries [1..29] of the original 30-slot table
+ * are now LLPalettes (declared right after, immediately following in
+ * the linker output to preserve the byte layout). Cross-file references
+ * use the symbol llMVOpeningClashWallpaperLLMObjSub which still resolves
+ * to byte offset of this symbol. */
+MObjSub **dMVOpeningClashWallpaper_LLMObjSub_MObjSub[1] = {
+	(MObjSub **)dMVOpeningClashWallpaper_gap_0x30C8_sub_0x118,
+};
+
+/* Palette-pointer table for the LL corner @ LLPalettes.
+ * Reachable via the LL corner's MObjSub.palettes (sub_0xA0+0x2C).
+ * Each entry points to a 16-color RGBA5551 palette in the shared
+ * gap_0x0000 pool; the same 29 palette pointers appear in all four
+ * corners. */
+u16 *dMVOpeningClashWallpaper_LLPalettes[29] = {
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA80,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA58,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA30,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA08,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9E0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9B8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x990,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x968,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x940,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x918,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8F0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8C8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8A0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x878,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x850,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x828,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x800,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7D8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7B0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x788,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x760,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x738,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x710,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6E8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6C0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x698,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x670,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x648,
 };
 
 /* Raw data from file offset 0x30C8 to 0x32A8 (480 bytes) */
@@ -402,9 +517,12 @@ u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0xA0[120] = {
 	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0xA0.data.inc.c>
 };
 
-/* gap sub-block @ 0x31E0 (was gap+0x118, 8 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x30C8_sub_0x118[8] = {
-	#include <MVOpeningClashWallpaper/gap_0x30C8_sub_0x118.data.inc.c>
+/* MObjSub list for the LL corner @ 0x31E0 — referenced by LLMObjSub_MObjSub[0].
+ * NULL-terminated array of MObjSub*. The single non-NULL entry is the
+ * corner's actual MObjSub data block, sub_0xA0 (120 bytes, untyped here). */
+MObjSub *dMVOpeningClashWallpaper_gap_0x30C8_sub_0x118[2] = {
+	(MObjSub *)dMVOpeningClashWallpaper_gap_0x30C8_sub_0xA0,
+	NULL,
 };
 
 /* Vtx: gap_0x30C8_sub_0x120 @ 0x31E8 (12 vertices) */
@@ -608,31 +726,51 @@ u32 dMVOpeningClashWallpaper_LLAnimJoint_AnimJoint_0x36D4[] = {
 };
 
 /* MObjSub: LRMObjSub @ 0x36E0 */
-MObjSub dMVOpeningClashWallpaper_LRMObjSub_MObjSub = {
-	0x0DB9,
-	0x0E, 0x1C,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
-	0x0DBB, 0x02A0, 0x0DBC, 0x0296,
-	230490764,
-	1.1710257795772976e-30f, 1.1771878150038561e-30f,
-	1.1833498504304146e-30f, 1.1895118858569731e-30f,
-	1.1956739212835316e-30f, 1.2018359567100901e-30f,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
-	0x0DC5,
-	0x02, 0x3C,
-	0x0DC6,
-	0x0232, 0x0DC7, 0x0228,
-	1.2326461338428826e-30f, 1.2388081692694411e-30f,
-	1.2449702046959996e-30f, 1.2511322401225581e-30f,
-	0x0DCC01F6,
-	{ { 0x0D, 0xCD, 0x01, 0xEC } },
-	0x0D, 0xCE, { 0x01, 0xE2 },
-	{ { 0x0D, 0xCF, 0x01, 0xD8 } },
-	{ { 0x0D, 0xD0, 0x01, 0xCE } },
-	{ { 0x0D, 0xD1, 0x01, 0xC4 } },
-	{ { 0x0D, 0xD2, 0x01, 0xBA } },
-	231932336, 231997862,
-	232063388, 232128914,
+/* MObjSub-list head for the LR corner @ (LRMObjSub_MObjSub).
+ * Single 4-byte pointer; entries [1..29] of the original 30-slot table
+ * are now LRPalettes (declared right after, immediately following in
+ * the linker output to preserve the byte layout). Cross-file references
+ * use the symbol llMVOpeningClashWallpaperLRMObjSub which still resolves
+ * to byte offset of this symbol. */
+MObjSub **dMVOpeningClashWallpaper_LRMObjSub_MObjSub[1] = {
+	(MObjSub **)dMVOpeningClashWallpaper_gap_0x3758_sub_0x118,
+};
+
+/* Palette-pointer table for the LR corner @ LRPalettes.
+ * Reachable via the LR corner's MObjSub.palettes (sub_0xA0+0x2C).
+ * Each entry points to a 16-color RGBA5551 palette in the shared
+ * gap_0x0000 pool; the same 29 palette pointers appear in all four
+ * corners. */
+u16 *dMVOpeningClashWallpaper_LRPalettes[29] = {
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA80,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA58,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA30,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA08,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9E0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9B8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x990,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x968,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x940,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x918,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8F0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8C8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8A0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x878,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x850,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x828,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x800,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7D8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7B0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x788,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x760,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x738,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x710,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6E8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6C0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x698,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x670,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x648,
 };
 
 /* Raw data from file offset 0x3758 to 0x3938 (480 bytes) */
@@ -646,9 +784,10 @@ u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0xA0[120] = {
 	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0xA0.data.inc.c>
 };
 
-/* gap sub-block @ 0x3870 (was gap+0x118, 8 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3758_sub_0x118[8] = {
-	#include <MVOpeningClashWallpaper/gap_0x3758_sub_0x118.data.inc.c>
+/* MObjSub list for the LR corner @ 0x3870 — see LL version for notes. */
+MObjSub *dMVOpeningClashWallpaper_gap_0x3758_sub_0x118[2] = {
+	(MObjSub *)dMVOpeningClashWallpaper_gap_0x3758_sub_0xA0,
+	NULL,
 };
 
 /* Vtx: gap_0x3758_sub_0x120 @ 0x3878 (12 vertices) */
@@ -852,31 +991,51 @@ u32 dMVOpeningClashWallpaper_LRAnimJoint_AnimJoint_0x3D64[] = {
 };
 
 /* MObjSub: ULMObjSub @ 0x3D70 */
-MObjSub dMVOpeningClashWallpaper_ULMObjSub_MObjSub = {
-	0x0F5D,
-	0x0F, 0xC0,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
-	0x0F5F, 0x02A0, 0x0F60, 0x0296,
-	258015884,
-	1.1143143273365658e-29f, 1.1192439556778126e-29f,
-	1.1241735840190594e-29f, 1.1291032123603062e-29f,
-	1.134032840701553e-29f, 1.1389624690427997e-29f,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
-	0x0F69,
-	0x02, 0x3C,
-	0x0F6A,
-	0x0232, 0x0F6B, 0x0228,
-	1.1636106107490337e-29f, 1.1685402390902805e-29f,
-	1.1734698674315273e-29f, 1.1783994957727741e-29f,
-	0x0F7001F6,
-	{ { 0x0F, 0x71, 0x01, 0xEC } },
-	0x0F, 0x72, { 0x01, 0xE2 },
-	{ { 0x0F, 0x73, 0x01, 0xD8 } },
-	{ { 0x0F, 0x74, 0x01, 0xCE } },
-	{ { 0x0F, 0x75, 0x01, 0xC4 } },
-	{ { 0x0F, 0x76, 0x01, 0xBA } },
-	259457456, 259522982,
-	259588508, 259654034,
+/* MObjSub-list head for the UL corner @ (ULMObjSub_MObjSub).
+ * Single 4-byte pointer; entries [1..29] of the original 30-slot table
+ * are now ULPalettes (declared right after, immediately following in
+ * the linker output to preserve the byte layout). Cross-file references
+ * use the symbol llMVOpeningClashWallpaperULMObjSub which still resolves
+ * to byte offset of this symbol. */
+MObjSub **dMVOpeningClashWallpaper_ULMObjSub_MObjSub[1] = {
+	(MObjSub **)dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x118,
+};
+
+/* Palette-pointer table for the UL corner @ ULPalettes.
+ * Reachable via the UL corner's MObjSub.palettes (sub_0xA0+0x2C).
+ * Each entry points to a 16-color RGBA5551 palette in the shared
+ * gap_0x0000 pool; the same 29 palette pointers appear in all four
+ * corners. */
+u16 *dMVOpeningClashWallpaper_ULPalettes[29] = {
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA80,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA58,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA30,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA08,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9E0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9B8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x990,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x968,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x940,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x918,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8F0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8C8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8A0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x878,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x850,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x828,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x800,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7D8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7B0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x788,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x760,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x738,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x710,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6E8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6C0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x698,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x670,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x648,
 };
 
 /* Raw data from file offset 0x3DE8 to 0x3FC8 (480 bytes) */
@@ -890,9 +1049,10 @@ u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0xA0[120] = {
 	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0xA0.data.inc.c>
 };
 
-/* gap sub-block @ 0x3F00 (was gap+0x118, 8 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x118[8] = {
-	#include <MVOpeningClashWallpaper/gap_0x3DE8_sub_0x118.data.inc.c>
+/* MObjSub list for the UL corner @ 0x3F00 — see LL version for notes. */
+MObjSub *dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x118[2] = {
+	(MObjSub *)dMVOpeningClashWallpaper_gap_0x3DE8_sub_0xA0,
+	NULL,
 };
 
 /* Vtx: gap_0x3DE8_sub_0x120 @ 0x3F08 (4 vertices) */
@@ -1103,31 +1263,51 @@ u32 dMVOpeningClashWallpaper_ULAnimJoint_AnimJoint_0x4404[] = {
 };
 
 /* MObjSub: URMObjSub @ 0x4410 */
-MObjSub dMVOpeningClashWallpaper_URMObjSub_MObjSub = {
-	0x1105,
-	0x11, 0x68,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
-	0x1107, 0x02A0, 0x1108, 0x0296,
-	285803148,
-	1.0887053271440148e-28f, 1.0965927324900097e-28f,
-	1.1044801378360046e-28f, 1.1123675431819995e-28f,
-	1.1202549485279943e-28f, 1.1281423538739892e-28f,
-	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
-	0x1111,
-	0x02, 0x3C,
-	0x1112,
-	0x0232, 0x1113, 0x0228,
-	1.1675793806039636e-28f, 1.1754667859499585e-28f,
-	1.1833541912959533e-28f, 1.1912415966419482e-28f,
-	0x111801F6,
-	{ { 0x11, 0x19, 0x01, 0xEC } },
-	0x11, 0x1A, { 0x01, 0xE2 },
-	{ { 0x11, 0x1B, 0x01, 0xD8 } },
-	{ { 0x11, 0x1C, 0x01, 0xCE } },
-	{ { 0x11, 0x1D, 0x01, 0xC4 } },
-	{ { 0x11, 0x1E, 0x01, 0xBA } },
-	287244720, 287310246,
-	287375772, 287441298,
+/* MObjSub-list head for the UR corner @ (URMObjSub_MObjSub).
+ * Single 4-byte pointer; entries [1..29] of the original 30-slot table
+ * are now URPalettes (declared right after, immediately following in
+ * the linker output to preserve the byte layout). Cross-file references
+ * use the symbol llMVOpeningClashWallpaperURMObjSub which still resolves
+ * to byte offset of this symbol. */
+MObjSub **dMVOpeningClashWallpaper_URMObjSub_MObjSub[1] = {
+	(MObjSub **)dMVOpeningClashWallpaper_gap_0x4488_sub_0x118,
+};
+
+/* Palette-pointer table for the UR corner @ URPalettes.
+ * Reachable via the UR corner's MObjSub.palettes (sub_0xA0+0x2C).
+ * Each entry points to a 16-color RGBA5551 palette in the shared
+ * gap_0x0000 pool; the same 29 palette pointers appear in all four
+ * corners. */
+u16 *dMVOpeningClashWallpaper_URPalettes[29] = {
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA80,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA58,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA30,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0xA08,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9E0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x9B8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x990,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x968,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x940,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x918,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8F0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8C8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x8A0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x878,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x850,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x828,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x800,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7D8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x7B0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x788,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x760,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x738,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x710,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6E8,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x6C0,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x698,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x670,
+	(u16 *)dMVOpeningClashWallpaper_gap_0x0000_sub_0x648,
 };
 
 /* Raw data from file offset 0x4488 to 0x4668 (480 bytes) */
@@ -1141,9 +1321,10 @@ u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0xA0[120] = {
 	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0xA0.data.inc.c>
 };
 
-/* gap sub-block @ 0x45A0 (was gap+0x118, 8 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x4488_sub_0x118[8] = {
-	#include <MVOpeningClashWallpaper/gap_0x4488_sub_0x118.data.inc.c>
+/* MObjSub list for the UR corner @ 0x45A0 — see LL version for notes. */
+MObjSub *dMVOpeningClashWallpaper_gap_0x4488_sub_0x118[2] = {
+	(MObjSub *)dMVOpeningClashWallpaper_gap_0x4488_sub_0xA0,
+	NULL,
 };
 
 /* Vtx: gap_0x4488_sub_0x120 @ 0x45A8 (4 vertices) */

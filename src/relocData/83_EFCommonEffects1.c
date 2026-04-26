@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects1_gap_0x7458[];
 
-extern u8 dEFCommonEffects1_gap_0x7458_sub_0xB8[];
+extern MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xB8[];
 
 /* Raw data from file offset 0x0000 to 0x73E0 (29664 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -193,48 +193,67 @@ u8 dEFCommonEffects1_gap_0x0000_sub_0x7260[384] = {
 	#include <EFCommonEffects1/gap_0x0000_sub_0x7260.data.inc.c>
 };
 
-/* MObjSub: DamageSlash @ 0x73E0 */
-MObjSub dEFCommonEffects1_DamageSlash_MObjSub = {
+/* MObjSub-list head @ 0x73e0 — 16-entry MObjSub** array.
+ * The real MObjSub data starts at +0x40 (dEFCommonEffects1_DamageSlash_MObjSub_real below). */
+MObjSub **dEFCommonEffects1_DamageSlash_MObjSub[16] = {
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x7260,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x70D8,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6F50,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6DC8,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6C40,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6AB8,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6930,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x67A8,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x65A0,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6398,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x6190,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x5F88,
+	(MObjSub **)dEFCommonEffects1_gap_0x0000_sub_0x5D80,
+};
+
+/* The real MObjSub @ +0x40 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dEFCommonEffects1_DamageSlash_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dEFCommonEffects1_gap_0x7458_sub_0xB8),
-	0x1CFB, 0x1D46, 0x1CFC, 0x1C98,
-	486349878,
-	1.681550344879118e-21f, 1.688157894308347e-21f,
-	1.6954649929665517e-21f, 1.70868009182501e-21f,
-	1.7218951906834682e-21f, 1.7351102895419265e-21f,
-	(void**)(dEFCommonEffects1_gap_0x0000_sub_0x65A0),
-	0x1D05,
-	0x18, 0xE6,
-	0x1D06,
-	0x1864, 0x1D07, 0x17E2,
-	1.8143883618923884e-21f, 7.20267410662956e-43f,
-	2.2117248518599836e-21f, 2.938735877055719e-39f,
-	0x00200030,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
+	0x02, 0x02,
+	(void**)0x1D271CFB,
+	0x0020, 0x0000, 0x0020, 0x0030,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x3201,
+	0x02, 0x00,
+	0x0010,
+	0x0030, 0x0020, 0x0030,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002005,
+	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
 	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x3F, 0x80, 0x00, 0x00 } },
-	{ { 0x3F, 0x80, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	1065353216, 0,
-	838926848, 1048624,
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x7458 to 0x7750 (760 bytes) */
-/* gap sub-block @ 0x7458 (was gap+0x0, 64 bytes) */
-u8 dEFCommonEffects1_gap_0x7458[64] = {
-	#include <EFCommonEffects1/gap_0x7458.data.inc.c>
-};
-
 /* gap sub-block @ 0x7498 (was gap+0x40, 120 bytes) */
 u8 dEFCommonEffects1_gap_0x7458_sub_0x40[120] = {
 	#include <EFCommonEffects1/gap_0x7458_sub_0x40.data.inc.c>
 };
 
 /* gap sub-block @ 0x7510 (was gap+0xB8, 8 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0xB8[8] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0xB8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x7510 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xB8[2] = {
+	&dEFCommonEffects1_DamageSlash_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x7518 (was gap+0xC0, 8 bytes) */

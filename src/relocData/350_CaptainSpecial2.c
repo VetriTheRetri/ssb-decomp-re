@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dCaptainSpecial2_gap_0x09D8[];
 
-extern u8 dCaptainSpecial2_gap_0x09D8_sub_0x10[];
+extern MObjSub *dCaptainSpecial2_gap_0x09D8_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
 u8 dCaptainSpecial2_gap_0x0000[48] = {
@@ -38,43 +38,50 @@ u8 dCaptainSpecial2_gap_0x0050_sub_0x490[1152] = {
 	#include <CaptainSpecial2/gap_0x0050_sub_0x490.data.inc.c>
 };
 
-/* MObjSub: FalconKickMObjSub @ 0x960 */
-MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x960 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dCaptainSpecial2_FalconKickMObjSub_MObjSub_real below). */
+MObjSub **dCaptainSpecial2_FalconKickMObjSub_MObjSub[4] = {
+	NULL,
+	NULL,
+	(MObjSub **)dCaptainSpecial2_gap_0x0050_sub_0x490,
+	(MObjSub **)dCaptainSpecial2_gap_0x0050_sub_0x8,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dCaptainSpecial2_gap_0x09D8_sub_0x10),
-	0x025B, 0x0138, 0x025D, 0x0016,
-	514,
-	1.8367774096938661e-37f, 2.938735877055719e-39f,
-	4.408171077909866e-39f, 0.0f,
+	0x02, 0x02,
+	(void**)0x027A025A,
+	0x0020, 0x0000, 0x0030, 0x0030,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 1.478623234625032e-38f,
-	4.408171077909866e-39f, 4.408171077909866e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x05 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x00A1,
+	0x02, 0x00,
+	0x0030,
+	0x0030, 0x0030, 0x0030,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002005,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x00 } },
-	255, 0,
-	-256, -42752,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0xFF, 0xFF, 0x59, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x09D8 to 0x09F0 (24 bytes) */
-/* gap sub-block @ 0x09D8 (was gap+0x0, 16 bytes) */
-u8 dCaptainSpecial2_gap_0x09D8[16] = {
-	#include <CaptainSpecial2/gap_0x09D8.data.inc.c>
-};
-
 /* gap sub-block @ 0x09E8 (was gap+0x10, 8 bytes) */
-u8 dCaptainSpecial2_gap_0x09D8_sub_0x10[8] = {
-	#include <CaptainSpecial2/gap_0x09D8_sub_0x10.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x9E8 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dCaptainSpecial2_gap_0x09D8_sub_0x10[2] = {
+	&dCaptainSpecial2_FalconKickMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: Vtx_0x09F0 @ 0x9F0 (4 vertices) */

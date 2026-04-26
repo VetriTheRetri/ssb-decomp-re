@@ -13,8 +13,8 @@ extern u8 dStageMetalFile2_gap_0x3298[];
 
 PAD(8);
 
-extern u8 dStageMetalFile2_gap_0x1E48_sub_0x178[];
-extern u8 dStageMetalFile2_gap_0x3298_sub_0x8[];
+extern void *dStageMetalFile2_gap_0x1E48_sub_0x178[];
+extern MObjSub *dStageMetalFile2_gap_0x3298_sub_0x8[];
 
 /* Texture data @ 0x0008 (3112 bytes) */
 u8 dStageMetalFile2_Tex_0x0008[3112] = {
@@ -396,40 +396,59 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[] = {
 
 PAD(4);
 
-/* MObjSub: Layer1MObj @ 0x1DD0 */
-MObjSub dStageMetalFile2_Layer1MObj_MObjSub = {
+/* MObjSub-list head @ 0x1dd0 — 18-entry MObjSub** array.
+ * The real MObjSub data starts at +0x48 (dStageMetalFile2_Layer1MObj_MObjSub_real below). */
+MObjSub **dStageMetalFile2_Layer1MObj_MObjSub[18] = {
+	NULL,
+	NULL,
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0x9A8),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0x9D8),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0x9F0),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA08),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA20),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA38),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA50),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA68),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA80),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA98),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAB0),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAC8),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAE0),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAF8),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xB10),
+	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xB28),
+};
+
+/* The real MObjSub @ +0x48 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dStageMetalFile2_Layer1MObj_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dStageMetalFile2_gap_0x1E48_sub_0x178),
-	0x0777, 0x026C, 0x0778, 0x0278,
-	125371006,
-	1.8808648888900672e-34f, 1.888388741501551e-34f,
-	1.8959125941130348e-34f, 1.9034364467245187e-34f,
-	1.9109602993360025e-34f, 1.9184841519474863e-34f,
-	(void**)((u8*)dStageMetalFile2_Tex_0x0008 + 0xA98),
-	0x0781,
-	0x02, 0xAE,
-	0x0782,
-	0x02B4, 0x0783, 0x02BA,
-	1.986276885622575e-34f, 2.0013245908455427e-34f,
-	2.1818819006642884e-34f, 7.20267410662956e-43f,
-	0x00000000,
-	{ { 0x00, 0x20, 0x00, 0x00 } },
-	0x00, 0x0F, { 0x00, 0x01 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x3F, 0x80, 0x00, 0x00 } },
-	1065353216, 0,
-	1065353216, 128190326,
+	0x02, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x000F, 0x0001,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)((u8*)&dStageMetalFile2_Layer1MObj_MObjSub + 0x8),
+	0x0004,
+	0x00, 0x02,
+	0x0000,
+	0x0000, 0x0000, 0x0000,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002205,
+	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0x99, 0x00 } },
+	{ { 0x4C, 0x4C, 0x2E, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x1E48 to 0x2EE0 (4248 bytes) */
-/* gap sub-block @ 0x1E48 (was gap+0x0, 72 bytes) */
-u8 dStageMetalFile2_gap_0x1E48[72] = {
-	#include <StageMetalFile2/gap_0x1E48.data.inc.c>
-};
-
 /* gap sub-block @ 0x1E90 (was gap+0x48, 64 bytes) */
 u8 dStageMetalFile2_gap_0x1E48_sub_0x48[64] = {
 	#include <StageMetalFile2/gap_0x1E48_sub_0x48.data.inc.c>
@@ -446,8 +465,12 @@ u8 dStageMetalFile2_gap_0x1E48_sub_0x100[120] = {
 };
 
 /* gap sub-block @ 0x1FC0 (was gap+0x178, 16 bytes) */
-u8 dStageMetalFile2_gap_0x1E48_sub_0x178[16] = {
-	#include <StageMetalFile2/gap_0x1E48_sub_0x178.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1FC0 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dStageMetalFile2_gap_0x1E48_sub_0x178[4] = {
+	(void *)&dStageMetalFile2_Layer1MObj_MObjSub_real,
+	(void *)dStageMetalFile2_gap_0x1E48_sub_0x88,
+	(void *)dStageMetalFile2_gap_0x1E48_sub_0x100,
+	NULL,
 };
 
 /* gap sub-block @ 0x1FD0 (was gap+0x188, 480 bytes) */
@@ -697,43 +720,48 @@ u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[] = {
 
 PAD(8);
 
-/* MObjSub: Layer2MObj @ 0x3220 */
-MObjSub dStageMetalFile2_Layer2MObj_MObjSub = {
+/* MObjSub-list head @ 0x3220 — 2-entry MObjSub** array.
+ * The real MObjSub data starts at +0x8 (dStageMetalFile2_Layer2MObj_MObjSub_real below). */
+MObjSub **dStageMetalFile2_Layer2MObj_MObjSub[2] = {
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x8 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dStageMetalFile2_Layer2MObj_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dStageMetalFile2_gap_0x3298_sub_0x8),
-	0x0000, 0x0202, 0x0000, 0x0000,
-	2097152,
-	1.4601954591699284e-38f, 2.802596928649634e-45f,
+	0x02, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x009F, 0x004F,
+	2,
 	9.999999747378752e-05f, 0.0013099999632686377f,
 	1.0f, 1.0f,
-	(void**)0x38D1B717,
-	0x3F80,
-	0x00, 0x00,
+	9.999999747378752e-05f, 1.0f,
+	(void**)0x00000000,
+	0x0020,
+	0x00, 0x02,
 	0x0000,
-	0x0000, 0x0020, 0x0002,
+	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,
 	0.0f, 0.0f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x06, { 0x22, 0x05 },
+	0x00062205,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
+	0x00, 0x00, { 0x00, 0x00 },
 	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x08 } },
-	-256, 1280068608,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+	0, 0,
 	0, 0,
 };
 
 /* Raw data from file offset 0x3298 to 0x3468 (464 bytes) */
-/* gap sub-block @ 0x3298 (was gap+0x0, 8 bytes) */
-u8 dStageMetalFile2_gap_0x3298[8] = {
-	#include <StageMetalFile2/gap_0x3298.data.inc.c>
-};
-
 /* gap sub-block @ 0x32A0 (was gap+0x8, 8 bytes) */
-u8 dStageMetalFile2_gap_0x3298_sub_0x8[8] = {
-	#include <StageMetalFile2/gap_0x3298_sub_0x8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x32A0 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dStageMetalFile2_gap_0x3298_sub_0x8[2] = {
+	&dStageMetalFile2_Layer2MObj_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x32A8 (was gap+0x10, 192 bytes) */

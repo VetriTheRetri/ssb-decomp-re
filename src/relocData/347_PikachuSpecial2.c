@@ -12,7 +12,7 @@ extern u8 dPikachuSpecial2_gap_0x06B8[];
 
 PAD(8);
 
-extern u8 dPikachuSpecial2_gap_0x06B8_sub_0x18[];
+extern MObjSub *dPikachuSpecial2_gap_0x06B8_sub_0x18[];
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dPikachuSpecial2_Lut_0x0008_palette[16] = {
@@ -40,43 +40,52 @@ u8 dPikachuSpecial2_gap_0x0028_sub_0x418[512] = {
 	#include <PikachuSpecial2/gap_0x0028_sub_0x418.data.inc.c>
 };
 
-/* MObjSub: UnkMObjSub @ 0x640 */
-MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x640 — 6-entry MObjSub** array.
+ * The real MObjSub data starts at +0x18 (dPikachuSpecial2_UnkMObjSub_MObjSub_real below). */
+MObjSub **dPikachuSpecial2_UnkMObjSub_MObjSub[6] = {
+	NULL,
+	NULL,
+	(MObjSub **)dPikachuSpecial2_gap_0x0028_sub_0x418,
+	(MObjSub **)dPikachuSpecial2_gap_0x0028_sub_0x210,
+	(MObjSub **)dPikachuSpecial2_gap_0x0028_sub_0x8,
+	NULL,
+};
+
+/* The real MObjSub @ +0x18 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dPikachuSpecial2_gap_0x06B8_sub_0x18),
-	0x0193, 0x0110, 0x0194, 0x008E,
-	26673164,
-	0.0f, 7.20267410662956e-43f,
-	6.612381052168431e-38f, 2.938735877055719e-39f,
-	5.877561437213154e-39f, 0.0f,
-	(void**)0x00000000,
-	0x0000,
-	0x00, 0x00,
-	0x3F80,
-	0x0000, 0x3F80, 0x0000,
+	0x02, 0x02,
+	(void**)0x01B40192,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
 	0.0f, 1.0f,
-	0.0f, 9.255296097172552e-41f,
-	0x00200020,
-	{ { 0x00, 0x40, 0x00, 0x40 } },
+	(void**)0x00000000,
+	0x0001,
+	0x02, 0x00,
+	0x0020,
+	0x0020, 0x0040, 0x0040,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002005,
+	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
 	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x05 } },
-	-1, 0,
-	255, 0,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x26, 0x26, 0x26, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x06B8 to 0x06D8 (32 bytes) */
-/* gap sub-block @ 0x06B8 (was gap+0x0, 24 bytes) */
-u8 dPikachuSpecial2_gap_0x06B8[24] = {
-	#include <PikachuSpecial2/gap_0x06B8.data.inc.c>
-};
-
 /* gap sub-block @ 0x06D0 (was gap+0x18, 8 bytes) */
-u8 dPikachuSpecial2_gap_0x06B8_sub_0x18[8] = {
-	#include <PikachuSpecial2/gap_0x06B8_sub_0x18.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x6D0 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dPikachuSpecial2_gap_0x06B8_sub_0x18[2] = {
+	&dPikachuSpecial2_UnkMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: Vtx_0x06D8 @ 0x6D8 (4 vertices) */

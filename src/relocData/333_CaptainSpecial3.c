@@ -29,8 +29,136 @@ u8 dCaptainSpecial3_gap_0x0000_sub_0x288[520] = {
 };
 
 /* gap sub-block @ 0x0490 (was gap+0x490, 512 bytes) */
-u8 dCaptainSpecial3_gap_0x0000_sub_0x490[512] = {
-	#include <CaptainSpecial3/gap_0x0000_sub_0x490.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x490 (128 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dCaptainSpecial3_gap_0x0000_sub_0x490[128] = {
+	NULL,
+	NULL,
+	(void *)0x30300000,  /* unresolved */
+	NULL,
+	NULL,
+	NULL,
+	(void *)0x40040000,  /* unresolved */
+	NULL,
+	NULL,
+	NULL,
+	(void *)0x50570000,  /* unresolved */
+	NULL,
+	NULL,
+	NULL,
+	(void *)0x79700000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x00000003,  /* unresolved */
+	(void *)0x70000000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x00000003,  /* unresolved */
+	(void *)0x99000000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x00000004,  /* unresolved */
+	(void *)0xCEA00000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x00000034,  /* unresolved */
+	(void *)0xE8B00000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x00000035,  /* unresolved */
+	(void *)0xE8C00000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x0000034C,  /* unresolved */
+	(void *)0xE8E70000,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x0000356C,  /* unresolved */
+	(void *)0xFFECB500,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x000446CF,  /* unresolved */
+	(void *)0xFFFEDBB5,  /* unresolved */
+	NULL,
+	NULL,
+	(void *)0x02499CFF,  /* unresolved */
+	(void *)0xFF88FEDB,  /* unresolved */
+	(void *)0x50000000,  /* unresolved */
+	(void *)0x00000002,  /* unresolved */
+	(void *)0x469CDEEF,  /* unresolved */
+	(void *)0xFF8888FD,  /* unresolved */
+	(void *)0xB5000000,  /* unresolved */
+	(void *)0x00000046,  /* unresolved */
+	(void *)0xACCDEFFF,  /* unresolved */
+	(void *)0xFF88888F,  /* unresolved */
+	(void *)0xDB550009,  /* unresolved */
+	(void *)0x0000246C,  /* unresolved */
+	(void *)0xDDDEEFF8,  /* unresolved */
+	(void *)0x88888888,  /* unresolved */
+	(void *)0xFFFC99DD,  /* unresolved */
+	(void *)0x00002467,  /* unresolved */
+	(void *)0x9DDEFF88,  /* unresolved */
+	(void *)0x88888888,  /* unresolved */
+	(void *)0x8FF88FE7,  /* unresolved */
+	NULL,
+	(void *)0x000029BC,  /* unresolved */
+	(void *)0xEEFF8FEC,  /* unresolved */
+	(void *)0xBCF88C00,  /* unresolved */
+	NULL,
+	(void *)0x00246CCD,  /* unresolved */
+	(void *)0xEFFF8FE7,  /* unresolved */
+	(void *)0x07997500,  /* unresolved */
+	NULL,
+	(void *)0x2455569B,  /* unresolved */
+	(void *)0xBDEF8FEB,  /* unresolved */
+	NULL,
+	(void *)0x00000025,  /* unresolved */
+	(void *)0x666AAAA9,  /* unresolved */
+	(void *)0xDDEFF8FB,  /* unresolved */
+	NULL,
+	(void *)0x00001369,  /* unresolved */
+	(void *)0xDDECDDEE,  /* unresolved */
+	(void *)0xEEFFF8FB,  /* unresolved */
+	NULL,
+	(void *)0x00012346,  /* unresolved */
+	(void *)0x9DDEEEEF,  /* unresolved */
+	(void *)0xFFFFF88C,  /* unresolved */
+	(void *)0xB0000000,  /* unresolved */
+	(void *)0x00000003,  /* unresolved */
+	(void *)0x7AACDEEE,  /* unresolved */
+	(void *)0xEEFFFF8F,  /* unresolved */
+	(void *)0xCB900000,  /* unresolved */
+	(void *)0x00000227,  /* unresolved */
+	(void *)0x9DDEEEFF,  /* unresolved */
+	(void *)0xFFFFFF88,  /* unresolved */
+	(void *)0xFEC97000,  /* unresolved */
+	(void *)0x0024577C,  /* unresolved */
+	(void *)0xDEEEEEEE,  /* unresolved */
+	(void *)0xEEFFFF88,  /* unresolved */
+	(void *)0x8FEC9970,  /* unresolved */
+	(void *)0x0123577C,  /* unresolved */
+	(void *)0x79CCBBBC,  /* unresolved */
+	(void *)0xEFFF8888,  /* unresolved */
+	(void *)0x88FFED97,  /* unresolved */
+	(void *)0x00000012,  /* unresolved */
+	(void *)0x557799DE,  /* unresolved */
+	(void *)0xFF888888,  /* unresolved */
+	(void *)0x8FFFED97,  /* unresolved */
+	(void *)0x00001257,  /* unresolved */
+	(void *)0x5779CDF8,  /* unresolved */
+	(void *)0x88FFEEEE,  /* unresolved */
+	(void *)0xEEC99770,  /* unresolved */
+	(void *)0x0123579C,  /* unresolved */
+	(void *)0xCEEEEEEC,  /* unresolved */
+	(void *)0xCCCC7755,  /* unresolved */
+	(void *)0x32000000,  /* unresolved */
+	(void *)0x12569CC9,  /* unresolved */
+	(void *)0x97432222,  /* unresolved */
+	(void *)0x33322200,  /* unresolved */
+	NULL,
+	(void *)0x21233322,  /* unresolved */
+	(void *)0x11000000,  /* unresolved */
+	NULL,
+	NULL,
 };
 
 /* MObjSub: FalconPunchMObjSub @ 0x690 */

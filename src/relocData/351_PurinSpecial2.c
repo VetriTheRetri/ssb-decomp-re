@@ -12,7 +12,7 @@ extern u8 dPurinSpecial2_gap_0x1C98[];
 
 PAD(8);
 
-extern u8 dPurinSpecial2_gap_0x1C98_sub_0x180[];
+extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[];
 
 /* Raw data from file offset 0x0008 to 0x0810 (2056 bytes) */
 u8 dPurinSpecial2_Tex_0x0008[2056] = {
@@ -34,40 +34,47 @@ u8 dPurinSpecial2_Tex_0x1820[1024] = {
 	#include <PurinSpecial2/Tex_0x1820.tex.inc.c>
 };
 
-/* MObjSub: SingMObjSub @ 0x1C20 */
-MObjSub dPurinSpecial2_SingMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x1c20 — 6-entry MObjSub** array.
+ * The real MObjSub data starts at +0x18 (dPurinSpecial2_SingMObjSub_MObjSub_real below). */
+MObjSub **dPurinSpecial2_SingMObjSub_MObjSub[6] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x18 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dPurinSpecial2_SingMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dPurinSpecial2_gap_0x1C98_sub_0x180),
-	0x0000, 0x0000, 0x070C, 0x0788,
-	118294410,
-	2.0166514759768306e-34f, 1.0789998175301091e-42f,
-	0.0f, 2.938735877055719e-39f,
-	5.877561437213154e-39f, 0.0f,
+	0x03, 0x02,
 	(void**)0x00000000,
-	0x0000,
-	0x00, 0x00,
-	0x3F80,
-	0x0000, 0x3F80, 0x0000,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
 	0.0f, 1.0f,
-	0.0f, 9.404816885393553e-38f,
-	0x00200020,
-	{ { 0x00, 0x40, 0x00, 0x40 } },
+	(void**)0x00000000,
+	0x0200,
+	0x03, 0x01,
+	0x0020,
+	0x0020, 0x0040, 0x0040,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002001,
+	{ { 0xFF, 0xFF, 0x55, 0x00 } },
 	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x01 } },
-	-43776, 0,
-	-16744193, 8,
+	{ { 0xFF, 0x00, 0x80, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x66, 0x66, 0x66, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x1C98 to 0x1E38 (416 bytes) */
-/* gap sub-block @ 0x1C98 (was gap+0x0, 24 bytes) */
-u8 dPurinSpecial2_gap_0x1C98[24] = {
-	#include <PurinSpecial2/gap_0x1C98.data.inc.c>
-};
-
 /* gap sub-block @ 0x1CB0 (was gap+0x18, 120 bytes) */
 u8 dPurinSpecial2_gap_0x1C98_sub_0x18[120] = {
 	#include <PurinSpecial2/gap_0x1C98_sub_0x18.data.inc.c>
@@ -84,8 +91,10 @@ u8 dPurinSpecial2_gap_0x1C98_sub_0x108[120] = {
 };
 
 /* gap sub-block @ 0x1E18 (was gap+0x180, 8 bytes) */
-u8 dPurinSpecial2_gap_0x1C98_sub_0x180[8] = {
-	#include <PurinSpecial2/gap_0x1C98_sub_0x180.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1E18 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[2] = {
+	&dPurinSpecial2_SingMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x1E20 (was gap+0x188, 8 bytes) */

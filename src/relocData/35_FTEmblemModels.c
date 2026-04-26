@@ -8,12 +8,12 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
-extern u8 dFTEmblemModels_gap_0x14E8[];
-extern u8 dFTEmblemModels_gap_0x19B8[];
-extern u8 dFTEmblemModels_gap_0x2708[];
-extern u8 dFTEmblemModels_gap_0x3068[];
-extern u8 dFTEmblemModels_gap_0x3978[];
-extern u8 dFTEmblemModels_gap_0x48B8[];
+extern void *dFTEmblemModels_gap_0x14E8[];
+extern void *dFTEmblemModels_gap_0x19B8[];
+extern void *dFTEmblemModels_gap_0x2708[];
+extern void *dFTEmblemModels_gap_0x3068[];
+extern void *dFTEmblemModels_gap_0x3978[];
+extern void *dFTEmblemModels_gap_0x48B8[];
 
 extern MObjSub *dFTEmblemModels_Mario_MObjSubPtrArray[];
 
@@ -393,8 +393,12 @@ MObjSub dFTEmblemModels_Metroid_MObjSub = {
 };
 
 /* Raw data from file offset 0x14E8 to 0x14F8 (16 bytes) */
-u8 dFTEmblemModels_gap_0x14E8[16] = {
-	#include <FTEmblemModels/gap_0x14E8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x14E8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dFTEmblemModels_gap_0x14E8[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dFTEmblemModels_Metroid_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Metroid @ 0x14F8 (40 vertices) */
@@ -483,8 +487,12 @@ MObjSub dFTEmblemModels_Fox_MObjSub = {
 };
 
 /* Raw data from file offset 0x19B8 to 0x19C8 (16 bytes) */
-u8 dFTEmblemModels_gap_0x19B8[16] = {
-	#include <FTEmblemModels/gap_0x19B8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x19B8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dFTEmblemModels_gap_0x19B8[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dFTEmblemModels_Fox_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Fox @ 0x19C8 (97 vertices) */
@@ -770,8 +778,12 @@ MObjSub dFTEmblemModels_Yoshi_MObjSub = {
 };
 
 /* Raw data from file offset 0x2708 to 0x2718 (16 bytes) */
-u8 dFTEmblemModels_gap_0x2708[16] = {
-	#include <FTEmblemModels/gap_0x2708.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x2708 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dFTEmblemModels_gap_0x2708[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dFTEmblemModels_Yoshi_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Yoshi @ 0x2718 (95 vertices) */
@@ -860,8 +872,12 @@ MObjSub dFTEmblemModels_FZero_MObjSub = {
 };
 
 /* Raw data from file offset 0x3068 to 0x3078 (16 bytes) */
-u8 dFTEmblemModels_gap_0x3068[16] = {
-	#include <FTEmblemModels/gap_0x3068.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x3068 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dFTEmblemModels_gap_0x3068[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dFTEmblemModels_FZero_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: FZero @ 0x3078 (91 vertices) */
@@ -947,8 +963,12 @@ MObjSub dFTEmblemModels_Kirby_MObjSub = {
 };
 
 /* Raw data from file offset 0x3978 to 0x3988 (16 bytes) */
-u8 dFTEmblemModels_gap_0x3978[16] = {
-	#include <FTEmblemModels/gap_0x3978.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x3978 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dFTEmblemModels_gap_0x3978[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dFTEmblemModels_Kirby_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Kirby @ 0x3988 (60 vertices) */
@@ -1185,8 +1205,12 @@ MObjSub dFTEmblemModels_Mother_MObjSub = {
 };
 
 /* Raw data from file offset 0x48B8 to 0x48C8 (16 bytes) */
-u8 dFTEmblemModels_gap_0x48B8[16] = {
-	#include <FTEmblemModels/gap_0x48B8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x48B8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dFTEmblemModels_gap_0x48B8[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dFTEmblemModels_Mother_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Mother @ 0x48C8 (204 vertices) */

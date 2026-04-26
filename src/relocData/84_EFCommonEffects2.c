@@ -14,7 +14,7 @@ extern u8 dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects2_gap_0x1F18[];
 
-extern u8 dEFCommonEffects2_gap_0x1F18_sub_0x18[];
+extern MObjSub *dEFCommonEffects2_gap_0x1F18_sub_0x18[];
 
 /* Raw data from file offset 0x0000 to 0x1428 (5160 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -43,8 +43,264 @@ u8 dEFCommonEffects2_gap_0x0000_sub_0xC20[1032] = {
 };
 
 /* gap sub-block @ 0x1028 (was gap+0x1028, 1024 bytes) */
-u8 dEFCommonEffects2_gap_0x0000_sub_0x1028[1024] = {
-	#include <EFCommonEffects2/gap_0x0000_sub_0x1028.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1028 (256 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dEFCommonEffects2_gap_0x0000_sub_0x1028[256] = {
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00B5FF,  /* unresolved */
+	(void *)0x94FFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFFFFCEFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xB5FFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xEFFF84FF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xEFFFFFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFCEFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00EFFF,  /* unresolved */
+	(void *)0x73FFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xCEFFFFFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00EFFF,  /* unresolved */
+	(void *)0xB5FFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFCEFF,  /* unresolved */
+	(void *)0x84FFFF00,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xCEFF5AFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFFFF84FF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xEFFF84FF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xEFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xEFFFB5FF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xEFFFFFFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFEFFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFFFFFFFF,  /* unresolved */
+	(void *)0xFFFFFF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
+	(void *)0xFF00FF00,  /* unresolved */
 };
 
 /* MObjSub: ShockSmallMObjSub @ 0x1428 */
@@ -112,25 +368,37 @@ u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[2348] = {
 	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
-/* MObjSub: FireSparkMObjSub @ 0x1EA0 */
-MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x1ea0 — 6-entry MObjSub** array.
+ * The real MObjSub data starts at +0x18 (dEFCommonEffects2_FireSparkMObjSub_MObjSub_real below). */
+MObjSub **dEFCommonEffects2_FireSparkMObjSub_MObjSub[6] = {
+	NULL,
+	NULL,
+	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x730),
+	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x528),
+	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x320),
+	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x118),
+};
+
+/* The real MObjSub @ +0x18 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dEFCommonEffects2_gap_0x1F18_sub_0x18),
-	0x07AB, 0x0728, 0x07AC, 0x06A6,
-	128779812,
-	2.6334384128055736e-34f, 7.20267410662956e-43f,
-	3.069901301975812e-34f, 2.938735877055719e-39f,
-	2.938780718606577e-39f, 0.0f,
-	(void**)0x00000000,
-	0x0000,
-	0x00, 0x00,
-	0x3F80,
-	0x0000, 0x3F80, 0x0000,
+	0x02, 0x02,
+	(void**)0x07CC07AA,
+	0x0020, 0x0000, 0x0020, 0x0020,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
 	0.0f, 1.0f,
-	0.0f, 9.255296097172552e-41f,
-	0x00200020,
-	{ { 0x00, 0x20, 0x00, 0x20 } },
+	(void**)0x00000000,
+	0x0001,
+	0x02, 0x00,
+	0x0020,
+	0x0020, 0x0020, 0x0020,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00000000,
+	{ { 0x00, 0x00, 0x00, 0x00 } },
 	0x00, 0x00, { 0x00, 0x00 },
 	{ { 0x00, 0x00, 0x00, 0x00 } },
 	{ { 0x00, 0x00, 0x00, 0x00 } },
@@ -141,14 +409,11 @@ MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x1F18 to 0x1F38 (32 bytes) */
-/* gap sub-block @ 0x1F18 (was gap+0x0, 24 bytes) */
-u8 dEFCommonEffects2_gap_0x1F18[24] = {
-	#include <EFCommonEffects2/gap_0x1F18.data.inc.c>
-};
-
 /* gap sub-block @ 0x1F30 (was gap+0x18, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x1F18_sub_0x18[8] = {
-	#include <EFCommonEffects2/gap_0x1F18_sub_0x18.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1F30 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dEFCommonEffects2_gap_0x1F18_sub_0x18[2] = {
+	&dEFCommonEffects2_FireSparkMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: FireSparkVtx @ 0x1F38 (4 vertices) */

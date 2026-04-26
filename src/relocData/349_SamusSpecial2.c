@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dSamusSpecial2_gap_0x0288[];
 
-extern u8 dSamusSpecial2_gap_0x0288_sub_0x10[];
+extern MObjSub *dSamusSpecial2_gap_0x0288_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0210 (528 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -28,43 +28,50 @@ u8 dSamusSpecial2_gap_0x0000_sub_0x110[256] = {
 	#include <SamusSpecial2/gap_0x0000_sub_0x110.data.inc.c>
 };
 
-/* MObjSub: GrappleBeamMObjSub @ 0x210 */
-MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x210 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real below). */
+MObjSub **dSamusSpecial2_GrappleBeamMObjSub_MObjSub[4] = {
+	NULL,
+	NULL,
+	(MObjSub **)dSamusSpecial2_gap_0x0000_sub_0x110,
+	(MObjSub **)dSamusSpecial2_gap_0x0000_sub_0x8,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dSamusSpecial2_gap_0x0288_sub_0x10),
-	0x0087, 0x0044, 0x0089, 0x0002,
-	770,
-	1.524488013622076e-38f, 2.938735877055719e-39f,
-	2.938780718606577e-39f, 0.0f,
+	0x03, 0x02,
+	(void**)0x00A60086,
+	0x0020, 0x0000, 0x0020, 0x0020,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.2913094677057e-41f,
-	1.4693903593032886e-39f, 2.938780718606577e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x01 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0001,
+	0x03, 0x01,
+	0x0010,
+	0x0010, 0x0020, 0x0020,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002001,
 	{ { 0x00, 0x38, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	1442840575, 8,
-	-256, -256,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x55, 0xFF, 0xFF, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x0288 to 0x02A0 (24 bytes) */
-/* gap sub-block @ 0x0288 (was gap+0x0, 16 bytes) */
-u8 dSamusSpecial2_gap_0x0288[16] = {
-	#include <SamusSpecial2/gap_0x0288.data.inc.c>
-};
-
 /* gap sub-block @ 0x0298 (was gap+0x10, 8 bytes) */
-u8 dSamusSpecial2_gap_0x0288_sub_0x10[8] = {
-	#include <SamusSpecial2/gap_0x0288_sub_0x10.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x298 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dSamusSpecial2_gap_0x0288_sub_0x10[2] = {
+	&dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: Vtx_0x02A0 @ 0x2A0 (4 vertices) */

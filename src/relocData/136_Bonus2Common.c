@@ -12,9 +12,9 @@ extern u8 dBonus2Common_gap_0x3798[];
 extern u8 dBonus2Common_gap_0x3FE8[];
 extern u8 dBonus2Common_gap_0x4818[];
 
-extern void *dBonus2Common_gap_0x3798_sub_0x88[];
-extern void *dBonus2Common_gap_0x3FE8_sub_0x88[];
-extern void *dBonus2Common_gap_0x4818_sub_0x88[];
+extern MObjSub *dBonus2Common_gap_0x3798_sub_0x88[];
+extern MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[];
+extern MObjSub *dBonus2Common_gap_0x4818_sub_0x88[];
 
 /* Raw data from file offset 0x0000 to 0x3720 (14112 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -47,40 +47,45 @@ u8 dBonus2Common_gap_0x0000_sub_0x2C30[2800] = {
 	#include <Bonus2Common/gap_0x0000_sub_0x2C30.data.inc.c>
 };
 
-/* MObjSub: PlatformSmall @ 0x3720 */
-MObjSub dBonus2Common_PlatformSmall_MObjSub = {
+/* MObjSub-list head @ 0x3720 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformSmall_MObjSub_real below). */
+MObjSub **dBonus2Common_PlatformSmall_MObjSub[4] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dBonus2Common_PlatformSmall_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dBonus2Common_gap_0x3798_sub_0x88),
-	0x0E08, 0x0E0A, 0x0000, 0x0000,
-	1026,
-	0.0f, 2.938735877055719e-39f,
-	5.0510293601050545e-39f, 0.0f,
+	0x04, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x0037, 0x0037,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.405103871319046e-38f,
-	5.0510293601050545e-39f, 5.0510293601050545e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x22, 0x05 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0200,
+	0x04, 0x01,
+	0x0037,
+	0x0037, 0x0037, 0x0037,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002205,
 	{ { 0xFF, 0x00, 0x00, 0x80 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	-16776961, 8,
-	-16777216, -16777216,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0xFF, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0x00, 0x00, 0x00 } },
+	{ { 0xFF, 0x00, 0x00, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x3798 to 0x3DA8 (1552 bytes) */
-/* gap sub-block @ 0x3798 (was gap+0x0, 16 bytes) */
-u8 dBonus2Common_gap_0x3798[16] = {
-	#include <Bonus2Common/gap_0x3798.data.inc.c>
-};
-
 /* gap sub-block @ 0x37A8 (was gap+0x10, 120 bytes) */
 u8 dBonus2Common_gap_0x3798_sub_0x10[120] = {
 	#include <Bonus2Common/gap_0x3798_sub_0x10.data.inc.c>
@@ -89,8 +94,8 @@ u8 dBonus2Common_gap_0x3798_sub_0x10[120] = {
 /* MObjSub.sprites array @ 0x3820 — texture-pointer table, NULL-terminated.
  * fixRelocChain.py rewrites the non-NULL entry to its chain-encoded form
  * per the .reloc metadata. */
-void *dBonus2Common_gap_0x3798_sub_0x88[2] = {
-	(void *)((u8 *)&dBonus2Common_PlatformSmall_MObjSub + 0x10),
+MObjSub *dBonus2Common_gap_0x3798_sub_0x88[2] = {
+	&dBonus2Common_PlatformSmall_MObjSub_real,
 	NULL,
 };
 
@@ -282,48 +287,53 @@ u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[] = {
 
 PAD(8);
 
-/* MObjSub: PlatformMedium @ 0x3F70 */
-MObjSub dBonus2Common_PlatformMedium_MObjSub = {
+/* MObjSub-list head @ 0x3f70 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformMedium_MObjSub_real below). */
+MObjSub **dBonus2Common_PlatformMedium_MObjSub[4] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dBonus2Common_PlatformMedium_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dBonus2Common_gap_0x3FE8_sub_0x88),
-	0x101C, 0x101E, 0x0000, 0x0000,
-	1026,
-	0.0f, 2.938735877055719e-39f,
-	5.0510293601050545e-39f, 0.0f,
+	0x04, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x0037, 0x0037,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.405103871319046e-38f,
-	5.0510293601050545e-39f, 5.0510293601050545e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x22, 0x05 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0200,
+	0x04, 0x01,
+	0x0037,
+	0x0037, 0x0037, 0x0037,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002205,
 	{ { 0xFF, 0x00, 0x00, 0x80 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	-16776961, 8,
-	-16777216, -16777216,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0xFF, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0x00, 0x00, 0x00 } },
+	{ { 0xFF, 0x00, 0x00, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x3FE8 to 0x45D8 (1520 bytes) */
-/* gap sub-block @ 0x3FE8 (was gap+0x0, 16 bytes) */
-u8 dBonus2Common_gap_0x3FE8[16] = {
-	#include <Bonus2Common/gap_0x3FE8.data.inc.c>
-};
-
 /* gap sub-block @ 0x3FF8 (was gap+0x10, 120 bytes) */
 u8 dBonus2Common_gap_0x3FE8_sub_0x10[120] = {
 	#include <Bonus2Common/gap_0x3FE8_sub_0x10.data.inc.c>
 };
 
 /* MObjSub.sprites array @ 0x4070 — see PlatformSmall version for notes. */
-void *dBonus2Common_gap_0x3FE8_sub_0x88[2] = {
-	(void *)((u8 *)&dBonus2Common_PlatformMedium_MObjSub + 0x10),
+MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[2] = {
+	&dBonus2Common_PlatformMedium_MObjSub_real,
 	NULL,
 };
 
@@ -509,48 +519,53 @@ u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[] = {
 
 PAD(8);
 
-/* MObjSub: PlatformLarge @ 0x47A0 */
-MObjSub dBonus2Common_PlatformLarge_MObjSub = {
+/* MObjSub-list head @ 0x47a0 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformLarge_MObjSub_real below). */
+MObjSub **dBonus2Common_PlatformLarge_MObjSub[4] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dBonus2Common_PlatformLarge_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dBonus2Common_gap_0x4818_sub_0x88),
-	0x1228, 0x122A, 0x0000, 0x0000,
-	1026,
-	0.0f, 2.938735877055719e-39f,
-	5.0510293601050545e-39f, 0.0f,
+	0x04, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x0037, 0x0037,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.405103871319046e-38f,
-	5.0510293601050545e-39f, 5.0510293601050545e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x22, 0x05 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0200,
+	0x04, 0x01,
+	0x0037,
+	0x0037, 0x0037, 0x0037,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002205,
 	{ { 0xFF, 0x00, 0x00, 0x80 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	-16776961, 8,
-	-16777216, -16777216,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0xFF, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0x00, 0x00, 0x00 } },
+	{ { 0xFF, 0x00, 0x00, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x4818 to 0x4E08 (1520 bytes) */
-/* gap sub-block @ 0x4818 (was gap+0x0, 16 bytes) */
-u8 dBonus2Common_gap_0x4818[16] = {
-	#include <Bonus2Common/gap_0x4818.data.inc.c>
-};
-
 /* gap sub-block @ 0x4828 (was gap+0x10, 120 bytes) */
 u8 dBonus2Common_gap_0x4818_sub_0x10[120] = {
 	#include <Bonus2Common/gap_0x4818_sub_0x10.data.inc.c>
 };
 
 /* MObjSub.sprites array @ 0x48A0 — see PlatformSmall version for notes. */
-void *dBonus2Common_gap_0x4818_sub_0x88[2] = {
-	(void *)((u8 *)&dBonus2Common_PlatformLarge_MObjSub + 0x10),
+MObjSub *dBonus2Common_gap_0x4818_sub_0x88[2] = {
+	&dBonus2Common_PlatformLarge_MObjSub_real,
 	NULL,
 };
 

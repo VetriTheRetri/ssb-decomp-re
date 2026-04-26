@@ -8,9 +8,9 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
-extern u8 dLinkSpecial2_gap_0x01A8[];
-extern u8 dLinkSpecial2_gap_0x0568[];
-extern u8 dLinkSpecial2_gap_0x10B0[];
+extern void *dLinkSpecial2_gap_0x01A8[];
+extern void *dLinkSpecial2_gap_0x0568[];
+extern void *dLinkSpecial2_gap_0x10B0[];
 
 PAD(8);
 
@@ -55,8 +55,12 @@ MObjSub dLinkSpecial2_EntryWaveMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x01A8 to 0x01B8 (16 bytes) */
-u8 dLinkSpecial2_gap_0x01A8[16] = {
-	#include <LinkSpecial2/gap_0x01A8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1A8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dLinkSpecial2_gap_0x01A8[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dLinkSpecial2_EntryWaveMObjSub_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Vtx_0x01B8 @ 0x1B8 (18 vertices) */
@@ -124,8 +128,12 @@ MObjSub dLinkSpecial2_EntryBeamMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x0568 to 0x0578 (16 bytes) */
-u8 dLinkSpecial2_gap_0x0568[16] = {
-	#include <LinkSpecial2/gap_0x0568.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x568 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dLinkSpecial2_gap_0x0568[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dLinkSpecial2_EntryBeamMObjSub_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Vtx_0x0578 @ 0x578 (18 vertices) */
@@ -487,8 +495,12 @@ MObjSub dLinkSpecial2_SpinAttackMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x10B0 to 0x10C0 (16 bytes) */
-u8 dLinkSpecial2_gap_0x10B0[16] = {
-	#include <LinkSpecial2/gap_0x10B0.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x10B0 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dLinkSpecial2_gap_0x10B0[4] = {
+	NULL,
+	NULL,
+	(void *)((u8 *)&dLinkSpecial2_SpinAttackMObjSub_MObjSub + 0x8),
+	NULL,
 };
 
 /* Vtx: Vtx_0x10C0 @ 0x10C0 (4 vertices) */

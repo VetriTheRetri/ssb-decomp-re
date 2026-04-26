@@ -2,7 +2,7 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dMNPlayersSpotlight_MObjSub_0x0408+0x4 0x0488
-intern dMNPlayersSpotlight_gap_0x0480_sub_0x8 dMNPlayersSpotlight_MObjSub_0x0408+0x8
+intern dMNPlayersSpotlight_gap_0x0480_sub_0x8 dMNPlayersSpotlight_MObjSub_0x0410
 intern dMNPlayersSpotlight_DL_0x04D0+0x3C dMNPlayersSpotlight_gap_0x0000_sub_0x8
 intern dMNPlayersSpotlight_DL_0x04D0+0x64 dMNPlayersSpotlight_gap_0x0480_sub_0x10
 intern dMNPlayersSpotlight_DLLink_0x0558+0x4 dMNPlayersSpotlight_DL_0x04D0

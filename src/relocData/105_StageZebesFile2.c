@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dStageZebesFile2_gap_0x2BC0[];
 
-extern u8 dStageZebesFile2_gap_0x2BC0_sub_0x948[];
+extern void *dStageZebesFile2_gap_0x2BC0_sub_0x948[];
 
 /* Raw data from file offset 0x0000 to 0x2B48 (11080 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -453,8 +453,12 @@ u8 dStageZebesFile2_gap_0x2BC0_sub_0x8D0[120] = {
 };
 
 /* gap sub-block @ 0x3508 (was gap+0x948, 16 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x948[16] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x948.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x3508 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dStageZebesFile2_gap_0x2BC0_sub_0x948[4] = {
+	(void *)dStageZebesFile2_gap_0x2BC0_sub_0xD8,
+	(void *)dStageZebesFile2_gap_0x2BC0_sub_0x150,
+	(void *)dStageZebesFile2_gap_0x2BC0_sub_0x1C8,
+	NULL,
 };
 
 /* gap sub-block @ 0x3518 (was gap+0x958, 16 bytes) */

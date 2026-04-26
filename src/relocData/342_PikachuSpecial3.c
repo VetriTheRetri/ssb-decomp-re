@@ -8,7 +8,7 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
-extern u8 dPikachuSpecial3_gap_0x2118_sub_0x10[];
+extern MObjSub *dPikachuSpecial3_gap_0x2118_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x1A20 (6688 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -385,43 +385,50 @@ u8 dPikachuSpecial3_gap_0x1C90_sub_0x210[512] = {
 	#include <PikachuSpecial3/gap_0x1C90_sub_0x210.data.inc.c>
 };
 
-/* MObjSub: ThunderJoltMObjSub @ 0x20A0 */
-MObjSub dPikachuSpecial3_ThunderJoltMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x20a0 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real below). */
+MObjSub **dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[4] = {
+	NULL,
+	NULL,
+	(MObjSub **)dPikachuSpecial3_gap_0x1C90_sub_0x210,
+	(MObjSub **)dPikachuSpecial3_gap_0x1C90_sub_0x8,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)dPikachuSpecial3_gap_0x2118_sub_0x10,
-	0x082B, 0x07A8, 0x082D, 0x0726,
-	514,
-	6.079676067907064e-34f, 2.938735877055719e-39f,
-	5.877516595662296e-39f, 0.0f,
+	0x02, 0x02,
+	(void**)0x084A082A,
+	0x0020, 0x0000, 0x0040, 0x0020,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.255296097172552e-41f,
-	2.938780718606577e-39f, 5.877516595662296e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x05 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0001,
+	0x02, 0x00,
+	0x0020,
+	0x0020, 0x0040, 0x0020,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002005,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x00 } },
-	255, 0,
-	-256, -2139062272,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x2118 to 0x2130 (24 bytes) */
-/* gap sub-block @ 0x2118 (was gap+0x0, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x2118[16] = {
-	#include <PikachuSpecial3/gap_0x2118.data.inc.c>
-};
-
 /* gap sub-block @ 0x2128 (was gap+0x10, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x2118_sub_0x10[8] = {
-	#include <PikachuSpecial3/gap_0x2118_sub_0x10.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x2128 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dPikachuSpecial3_gap_0x2118_sub_0x10[2] = {
+	&dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: Vtx_0x2130 @ 0x2130 (4 vertices) */

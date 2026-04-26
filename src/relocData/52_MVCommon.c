@@ -13,8 +13,8 @@ extern u8 dMVCommon_gap_0x1F170[];
 
 PAD(8);
 
-extern u8 dMVCommon_gap_0x1DD18_sub_0x10[];
-extern u8 dMVCommon_gap_0x1F170_sub_0x8[];
+extern MObjSub *dMVCommon_gap_0x1DD18_sub_0x10[];
+extern MObjSub *dMVCommon_gap_0x1F170_sub_0x8[];
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dMVCommon_Lut_0x0008_palette[16] = {
@@ -16986,43 +16986,50 @@ u8 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[4520] = {
 	#include <MVCommon/RoomSnapAnimJoint_AnimJoint_data.data.inc.c>
 };
 
-/* MObjSub: RoomCloseUpEffectAirMObjSub @ 0x1DCA0 */
-MObjSub dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x1dca0 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real below). */
+MObjSub **dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub[4] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dMVCommon_gap_0x1DD18_sub_0x10),
-	0x0000, 0x0000, 0x0000, 0x0000,
-	3,
-	0.0f, 2.938735877055719e-39f,
-	5.877561437213154e-39f, 0.0f,
+	0x00, 0x03,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.403958169694614e-38f,
-	2.938780718606577e-39f, 5.877561437213154e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x02, 0x22, 0x05 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0200,
+	0x00, 0x03,
+	0x0020,
+	0x0020, 0x0040, 0x0040,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00022205,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	255, 8,
-	-256, -256,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x1DD18 to 0x1DF28 (528 bytes) */
-/* gap sub-block @ 0x1DD18 (was gap+0x0, 16 bytes) */
-u8 dMVCommon_gap_0x1DD18[16] = {
-	#include <MVCommon/gap_0x1DD18.data.inc.c>
-};
-
 /* gap sub-block @ 0x1DD28 (was gap+0x10, 8 bytes) */
-u8 dMVCommon_gap_0x1DD18_sub_0x10[8] = {
-	#include <MVCommon/gap_0x1DD18_sub_0x10.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1DD28 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dMVCommon_gap_0x1DD18_sub_0x10[2] = {
+	&dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x1DD30 (was gap+0x18, 64 bytes) */
@@ -17113,43 +17120,48 @@ u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data[4316] = {
 	#include <MVCommon/RoomCloseUpEffectAirAnimJoint_AnimJoint_data.data.inc.c>
 };
 
-/* MObjSub: RoomCloseUpEffectGroundMObjSub @ 0x1F0F8 */
-MObjSub dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x1f0f8 — 2-entry MObjSub** array.
+ * The real MObjSub data starts at +0x8 (dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real below). */
+MObjSub **dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub[2] = {
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x8 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dMVCommon_gap_0x1F170_sub_0x8),
-	0x0000, 0x0003, 0x0000, 0x0000,
-	2097152,
-	5.877561437213154e-39f, 0.0f,
+	0x00, 0x03,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
 	0.0f, 0.0f,
 	1.0f, 1.0f,
+	0.0f, 1.0f,
 	(void**)0x00000000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x1200, 0x0003,
-	2.938780718606577e-39f, 5.877561437213154e-39f,
+	0x1200,
+	0x00, 0x03,
+	0x0020,
+	0x0020, 0x0040, 0x0040,
 	0.0f, 0.0f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x20, 0x05 },
+	0.0f, 0.0f,
+	0x00002005,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
+	0x00, 0x00, { 0x00, 0x00 },
 	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x08 } },
-	-256, -2139062272,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
 	0, 0,
 };
 
 /* Raw data from file offset 0x1F170 to 0x1F270 (256 bytes) */
-/* gap sub-block @ 0x1F170 (was gap+0x0, 8 bytes) */
-u8 dMVCommon_gap_0x1F170[8] = {
-	#include <MVCommon/gap_0x1F170.data.inc.c>
-};
-
 /* gap sub-block @ 0x1F178 (was gap+0x8, 8 bytes) */
-u8 dMVCommon_gap_0x1F170_sub_0x8[8] = {
-	#include <MVCommon/gap_0x1F170_sub_0x8.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x1F178 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dMVCommon_gap_0x1F170_sub_0x8[2] = {
+	&dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x1F180 (was gap+0x10, 64 bytes) */

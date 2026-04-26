@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dMVOpeningRunCrash_gap_0x2B20[];
 
-extern u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
+extern void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
 
 /* Raw data from file offset 0x0000 to 0x2AA8 (10920 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 280 bytes) */
@@ -223,8 +223,10 @@ u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x2A8[120] = {
 };
 
 /* gap sub-block @ 0x2E40 (was gap+0x320, 8 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x320[8] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x320.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x2E40 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[2] = {
+	(void *)dMVOpeningRunCrash_gap_0x2B20_sub_0x140,
+	NULL,
 };
 
 /* gap sub-block @ 0x2E48 (was gap+0x328, 8 bytes) */

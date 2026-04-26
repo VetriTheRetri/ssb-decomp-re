@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dNessSpecial2_gap_0x0888[];
 
-extern u8 dNessSpecial2_gap_0x0888_sub_0x10[];
+extern MObjSub *dNessSpecial2_gap_0x0888_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0810 (2064 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -28,43 +28,50 @@ u8 dNessSpecial2_gap_0x0000_sub_0x410[1024] = {
 	#include <NessSpecial2/gap_0x0000_sub_0x410.data.inc.c>
 };
 
-/* MObjSub: PsychicMagnetMObjSub @ 0x810 */
-MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub = {
+/* MObjSub-list head @ 0x810 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real below). */
+MObjSub **dNessSpecial2_PsychicMagnetMObjSub_MObjSub[4] = {
+	NULL,
+	NULL,
+	(MObjSub **)dNessSpecial2_gap_0x0000_sub_0x410,
+	(MObjSub **)dNessSpecial2_gap_0x0000_sub_0x8,
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	(void**)(dNessSpecial2_gap_0x0888_sub_0x10),
-	0x0207, 0x0104, 0x0209, 0x0002,
-	770,
-	1.219633458786485e-37f, 2.938735877055719e-39f,
-	5.877561437213154e-39f, 0.0f,
+	0x03, 0x02,
+	(void**)0x02260206,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
 	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.2913094677057e-41f,
-	2.938780718606577e-39f, 5.877561437213154e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x01 } },
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0001,
+	0x03, 0x01,
+	0x0020,
+	0x0020, 0x0040, 0x0040,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002001,
 	{ { 0x78, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	16711935, 8,
-	-256, -2139062272,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0xFF, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x0888 to 0x08A0 (24 bytes) */
-/* gap sub-block @ 0x0888 (was gap+0x0, 16 bytes) */
-u8 dNessSpecial2_gap_0x0888[16] = {
-	#include <NessSpecial2/gap_0x0888.data.inc.c>
-};
-
 /* gap sub-block @ 0x0898 (was gap+0x10, 8 bytes) */
-u8 dNessSpecial2_gap_0x0888_sub_0x10[8] = {
-	#include <NessSpecial2/gap_0x0888_sub_0x10.data.inc.c>
+/* MObjSub.sprites pointer table @ +0x898 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+MObjSub *dNessSpecial2_gap_0x0888_sub_0x10[2] = {
+	&dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: Vtx_0x08A0 @ 0x8A0 (4 vertices) */

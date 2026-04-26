@@ -171,6 +171,7 @@ def _detect_version():
 _TOP_DECL_RE = re.compile(
     r"^(?P<static>\s*(?:static\s+)?(?:const\s+)?)"
     r"(?P<type>\w+)\s+"
+    r"(?P<ptr>\*\s*)?"
     r"(?P<name>\w+)"
     r"(?:\s*\[\s*(?P<count>0[xX][0-9A-Fa-f]+|\d*)\s*\])?",
     re.MULTILINE,
@@ -271,6 +272,45 @@ _FIXED_TYPE_SIZES = {
 
 def _count_hex_literals(body):
     return len(re.findall(r"0x[0-9A-Fa-f]+", body))
+
+
+def _count_toplevel_array_entries(body):
+    """Count top-level comma-separated entries inside a `{ ... }` array
+    initializer body. `body` may include the surrounding braces or just
+    the inner text. Macros with internal commas (e.g.
+    `aobjEvent32SetVal0Rate(0x002, 0)`) and casts like
+    `(u32)((u8*)X + 0x1F4)` are kept as a single entry by tracking
+    paren depth. Returns 0 if the body looks empty.
+    """
+    if not body:
+        return 0
+    text = body
+    if text.lstrip().startswith("{"):
+        text = text[text.index("{") + 1:]
+    if text.rstrip().endswith("}"):
+        text = text[:text.rindex("}")]
+    # Strip line + block comments so commas inside `/* ... */` don't count.
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    text = re.sub(r"//[^\n]*", "", text)
+    depth = 0
+    entries = 0
+    has_token = False
+    for ch in text:
+        if ch == "(" or ch == "[" or ch == "{":
+            depth += 1
+            has_token = True
+        elif ch == ")" or ch == "]" or ch == "}":
+            if depth > 0:
+                depth -= 1
+        elif ch == "," and depth == 0:
+            if has_token:
+                entries += 1
+                has_token = False
+        elif not ch.isspace():
+            has_token = True
+    if has_token:
+        entries += 1
+    return entries
 
 
 def _classify_decl_virtual_path(type_, inc_path, decl_text):
@@ -478,6 +518,28 @@ def parse_master_c(path):
                 continue
             type_ = decl_m.group('type')
             name = decl_m.group('name')
+            is_ptr = bool(decl_m.group('ptr'))
+            if is_ptr:
+                # `Type *Name[N]` — opaque 4-byte-per-pointer table (e.g.
+                # `AObjEvent32 *Foo[N]`). The initializer is inline C
+                # (NULL slots and address casts), so there is no inc.c to
+                # emit. But we still need to advance the running file
+                # offset by N*4 so any subsequent inc.c-emitting block
+                # lands at its real position in the binary.
+                body, body_end = _scan_declaration_body(
+                    scan_text, decl_m.end())
+                count_str = decl_m.group('count')
+                if count_str:
+                    count = int(count_str, 0)
+                else:
+                    count = _count_top_level_initializers(body)
+                if count:
+                    out.append(('block', {
+                        'type': type_, 'name': name,
+                        'size': count * 4, 'inc_path': None,
+                    }))
+                pos = body_end
+                continue
             if type_ not in _SUPPORTED_DECL_TYPES \
                     and type_ not in local_typedef_sizes:
                 pos = decl_m.end()
@@ -502,6 +564,21 @@ def parse_master_c(path):
                 size = compute_block_size(virt_path, search_paths=search_paths)
             except SystemExit:
                 size = None
+            # `compute_data_c_size` sizes inline u8/u16/u32/u64 arrays without
+            # an explicit `[N]` by counting `0x...` hex literals. That underruns
+            # for our decoded AObjScript32 arrays where macros like
+            # `aobjEvent32End()` consume a u32 but carry no hex literal. When
+            # the array is ungated by `[N]` and contains aobjEvent32 macros
+            # (or other expression entries), reseat `size` from a top-level
+            # comma-counted scan so the cumulative offset stays aligned with
+            # the binary for any inc.c-emitting blocks that follow.
+            if (type_ in ('u8', 'u16', 'u32', 'u64')
+                    and not decl_m.group('count')
+                    and inc_path is None
+                    and 'aobjEvent32' in body):
+                elem_count = _count_toplevel_array_entries(body)
+                elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[type_]
+                size = elem_count * elem_size
             if not size:
                 # Fallback to the fixed per-element table when compute_*
                 # can't parse the declaration (e.g. a FTAttributes struct

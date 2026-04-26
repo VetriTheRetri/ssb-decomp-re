@@ -43,6 +43,39 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **AObjScript32 anim arrays decoded** to `aobjEvent32*()` macros across
+  every `u32 dXxx_AnimJoint[] / MatAnimJoint[] / CamAnimJoint[]` block
+  (105 files). Decoded forms expose the per-opcode payload-consumption
+  rules from `src/sys/objanim.c`: SetVal* macros emit their f32/u32
+  payload words on follow-up source lines, SetInterp/SetAnim/Jump emit
+  one chain-pointer payload each. AObjEvent32 union initializers
+  promoted from `u32` to `AObjEvent32 *[N]` tables (NULL slots instead
+  of `aobjEvent32End()` placeholders) using forward-decls into the
+  per-joint `u32` script bodies. `tools/decodeAObjEvent32.py` and
+  `tools/splitAnimJointTable.py`.
+- **AnimJoint pointer-table + raw `_data` split**: 24 stage / effects /
+  fighter MatAnim and 1 AnimJoint table whose post-table region
+  contains scripts only reachable via Jump/SetAnim from inside other
+  scripts (orphan scripts) now use a two-block fallback split — the
+  leading chain-pointer table emits as `AObjEvent32 *X[N]`, the
+  remaining bytes dump as one `u8 X_data[L]` `.data.inc.c` include.
+  fixRelocChain still patches the chain-encoded forms via the .reloc;
+  the splitter retargets every entry whose pointer or target offset
+  lands in the post-table region to `<sym>_data+<delta>`. Adds 31
+  `_data` u8 blocks (~222 KB) under the "Semantically named" bucket;
+  zero `u32 ... MatAnimJoint[]` arrays remain. ROM byte-identical.
+- **`tools/extractRelocInc.py` pointer-array awareness**: the
+  parse_master_c walker now recognises `AObjEvent32 *Foo[N]` (and any
+  `Type *Name[N]`) declarations and advances the running file offset
+  by N×4. Without this, downstream `.inc.c` blocks placed after a
+  pointer-array declaration would land at the wrong baserom byte
+  offset (a latent bug exposed by the AnimJoint-split work above —
+  every typed AnimJoint or MatAnim split with a leading `AObjEvent32 *[]`
+  was at risk; some files with inc.c blocks following the table had
+  been silently producing wrong inc.c content). Also adds a
+  top-level-comma counter so u32 arrays containing
+  `aobjEvent32End()` (which has no hex literal) get sized correctly.
+
 - **Display-list walk typing** (180 files covering every character
   model, stage `*File2`, opening cutscene, character Special, effects
   common, and all LB transitions). `tools/typeRelocBlocks.py` walks the
@@ -208,9 +241,9 @@ intent:
 
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
-| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,393 | ~452 KB | 94 |
-| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, misc tails) | 159 | ~127 KB | 82 |
-| **Total u8 `.data.inc.c`** | 3,552 | ~579 KB | 105 |
+| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,393 | ~441 KB | 94 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 195 | ~356 KB | 87 |
+| **Total u8 `.data.inc.c`** | 3,588 | ~798 KB | 105 |
 
 The semantic bucket dropped from ~450 KB to ~127 KB in an earlier
 round (74 texture-named blocks renamed `.data.inc.c` → `.tex.inc.c`

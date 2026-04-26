@@ -342,107 +342,26 @@ u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[] = {
 PAD(4);
 
 /* Raw data from file offset 0x1AE0 to 0x1C70 (400 bytes) */
-u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[100] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x140),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x144),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x148),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x14C),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x150),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x154),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x32400000,  /* 1.1175870895385742e-08f */
-	aobjEvent32SetValAfterBlock(0x001, 4),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x20),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 4),
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x58),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 8),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x88),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 5),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0xA8),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 3),
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0xB2D00000,  /* -2.421438694000244e-08f */
-	aobjEvent32SetValAfterBlock(0x001, 3),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0xE0),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 6),
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x118),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x20),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x58),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x88),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0xA8),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0xE0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x118),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x07C, 63),
-	aobjEvent32Cmd12(0x1FA, 12733),
-	    0x423D4A7D,
-	    0x633D7BFD,
-	    0x8C7D9CFD,
-	    0xAD7DC63D,
-	    0xD6BDF7BD,
-	    0xFFFFEF7E,
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Pointer-table split fallback: chain-pointer table at the
+ * head of the array, followed by raw data containing every
+ * referenced (and orphan) script. The data block is dumped
+ * as one u8[] include; fixRelocChain rewrites the table
+ * entries to chain-encoded form per the .reloc. */
+extern u8 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
+
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x120),
+	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x124),
+	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x128),
+	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x12C),
+	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x130),
+	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x134),
+};
+
+u8 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[368] = {
+	#include <PikachuSpecial3/ThunderJoltBMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
 /* Palette: Lut_0x1C70 @ 0x1C70 (16 colors RGBA5551) */

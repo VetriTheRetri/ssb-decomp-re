@@ -102,7 +102,8 @@ u32 dStageJungleFile3_AnimJoint_0x0000[678] = {
 	    0x12000000,  /* 4.0389678347315804e-28f */
 	    0x44444444,
 	    0x44444440,
-	aobjEvent32JumpRaw(0x220, 561, 0x12252011),
+	aobjEvent32JumpCmd(0x220, 561),
+	    (u32)0x12252011,
 	aobjEvent32SetVal0RateBlock(0x000, 0),
 	aobjEvent32EndRaw(0x000, 1),
 	aobjEvent32SetVal0RateBlock(0x204, 21025),
@@ -181,7 +182,8 @@ u32 dStageJungleFile3_AnimJoint_0x0000[678] = {
 	    0x23332100,  /* 9.710597465560113e-18f */
 	aobjEvent32EndRaw(0x002, 5188),
 	    0x44431000,
-	aobjEvent32JumpRaw(0x0AA, 21858, 0x252518BD),
+	aobjEvent32JumpCmd(0x0AA, 21858),
+	    (u32)0x252518BD,
 	    0xFB888888,
 	    0x888888BF,
 	    0xDB815252,
@@ -404,7 +406,8 @@ u32 dStageJungleFile3_AnimJoint_0x0000[678] = {
 	    0x9CACEC50,  /* -1.1443090578262141e-21f */
 	    0xCACEC444,
 	    0x444CECAC,
-	aobjEvent32JumpRaw(0x19D, 19660, 0x99966510),
+	aobjEvent32JumpCmd(0x19D, 19660),
+	    (u32)0x99966510,
 	aobjEvent32SetExtValAfter(0x024, 4096),
 	    0x00012162,  /* 1.038109928341111e-40f */
 	    0x01566999,  /* 3.9381354958392424e-38f */
@@ -609,7 +612,8 @@ u32 dStageJungleFile3_AnimJoint_0x0000[678] = {
 	    0xF5400800,  /* -2.4342852932507718e+32f */
 	    0x00098260,  /* 8.73289202967226e-40f */
 	    0xFD100000,  /* -1.1963051962064243e+37f */
-	aobjEvent32JumpRaw(0x0CE, 2, 0xE6000000),
+	aobjEvent32JumpCmd(0x0CE, 2),
+	    (u32)0xE6000000,
 	aobjEvent32End(),
 	    0xF0000000,
 	aobjEvent32WaitRaw(0x207, 16384),
@@ -620,7 +624,8 @@ u32 dStageJungleFile3_AnimJoint_0x0000[678] = {
 	    0xF2000000,
 	aobjEvent32EndRaw(0x01F, 16636),
 	    0xFD500000,
-	aobjEvent32JumpRaw(0x0DE, 12, 0xE6000000),
+	aobjEvent32JumpCmd(0x0DE, 12),
+	    (u32)0xE6000000,
 	aobjEvent32End(),
 	    0xF3000000,
 	aobjEvent32SetValBlock(0x27F, 29184),
@@ -647,7 +652,8 @@ u32 dStageJungleFile3_AnimJoint_0x0000[678] = {
 	    0xDF000000,
 	aobjEvent32End(),
 	    0xDE000000,
-	aobjEvent32JumpRaw(0x164, 580, 0xDF000000),
+	aobjEvent32JumpCmd(0x164, 580),
+	    (u32)0xDF000000,
 	aobjEvent32End(),
 	    0xD9C0F9FA,
 	aobjEvent32End(),
@@ -697,7 +703,8 @@ u32 dStageJungleFile3_AnimJoint_0x0A98[146] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32EndRaw(0x000, 16385),
-	aobjEvent32JumpRaw(0x190, 642, 0x00000000),
+	aobjEvent32JumpCmd(0x190, 642),
+	    (u32)0x00000000,
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -718,7 +725,8 @@ u32 dStageJungleFile3_AnimJoint_0x0A98[146] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32JumpRaw(0x1A8, 714, 0x00000000),
+	aobjEvent32JumpCmd(0x1A8, 714),
+	    (u32)0x00000000,
 	aobjEvent32SetVal0Rate(0x010, 0),
 	    0x455D4000,  /* 3540.0f */
 	aobjEvent32SetValAfterBlock(0x060, 0),
@@ -734,7 +742,8 @@ u32 dStageJungleFile3_AnimJoint_0x0A98[146] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32JumpRaw(0x1FA, 730, 0x12C00000),
+	aobjEvent32JumpCmd(0x1FA, 730),
+	    (u32)0x12C00000,
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32SetValBlock(0x024, 0),

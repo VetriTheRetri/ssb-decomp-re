@@ -340,6 +340,13 @@ typedef enum AObjTrackKind
 #define aobjEvent32WaitRaw(flags_val, payload_val) \
     aobjEvent32(nGCAnimEvent32Wait, (flags_val), (payload_val))
 
+/* Single-word Jump command form -- the address sits in the next u32 slot
+ * of the array, written by the source author rather than smuggled into
+ * this macro. Lets each line of the decoded scripts represent exactly
+ * one u32, which is what the splitter relies on. */
+#define aobjEvent32JumpCmd(flags_val, payload_val) \
+    aobjEvent32(nGCAnimEvent32Jump, (flags_val), (payload_val))
+
 /* Track-flag bitmask helpers (for the `flags_mask` argument above). The
  * flags field is 10 bits, covering the joint-track range from RotX (bit 0)
  * to ScaZ (bit 9). Material and camera tracks use extended variants. */

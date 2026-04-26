@@ -174,11 +174,19 @@ def decode_stream(words, sym, chain_pointers):
                 i += 1
                 continue
         if opcode == 0x01:  # Jump
-            if flags == 0 and payload == 0:
-                out.append((f"aobjEvent32Jump(0x{words[i+1]:08X})", 'cmd', word))
+            # Always emit Jump as TWO separate source lines (cmd word +
+            # address word) so the post-decode line count matches the
+            # array's u32 count -- the splitter assumes 1 line == 1 word
+            # and the convenience macros aobjEvent32Jump(addr) / JumpRaw
+            # expand to two u32s on one line, which throws off counting.
+            out.append((f"aobjEvent32JumpCmd(0x{flags:03X}, {payload})", 'cmd', word))
+            i += 1
+            payload_byte = i * 4
+            if payload_byte in chain_pointers:
+                out.append((f"(u32){chain_pointers[payload_byte]}", 'pointer', words[i]))
             else:
-                out.append((f"aobjEvent32JumpRaw(0x{flags:03X}, {payload}, 0x{words[i+1]:08X})", 'cmd', word))
-            i += 2
+                out.append((f"(u32)0x{words[i]:08X}", 'payload', words[i]))
+            i += 1
             continue
         if opcode == 0x02:  # Wait — shorthand hardcodes flags=0
             if flags == 0:

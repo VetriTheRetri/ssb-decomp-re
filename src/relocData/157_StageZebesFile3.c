@@ -456,7 +456,8 @@ u32 dStageZebesFile3_AnimJoint_0x0000[706] = {
 	    0x32100123,
 	    0x44200000,
 	aobjEvent32EndRaw(0x068, 0),
-	aobjEvent32JumpRaw(0x042, 9028, 0x42112233),
+	aobjEvent32JumpCmd(0x042, 9028),
+	    (u32)0x42112233,
 	aobjEvent32Cmd16(0x000, 0),
 	    0x34442100,
 	aobjEvent32EndRaw(0x002, 4403),
@@ -570,10 +571,13 @@ u32 dStageZebesFile3_AnimJoint_0x0000[706] = {
 	aobjEvent32Cmd17(0x066, 13124),
 	    0x00000000,  /* 0.0f */
 	    0x02320254,  /* 1.3078042792005739e-37f */
-	aobjEvent32JumpRaw(0x066, 432, 0x0234012E),
-	aobjEvent32JumpRaw(0x06A, 172, 0x0237002A),
+	aobjEvent32JumpCmd(0x066, 432),
+	    (u32)0x0234012E,
+	aobjEvent32JumpCmd(0x06A, 172),
+	    (u32)0x0237002A,
 	aobjEvent32EndRaw(0x000, 514),
-	aobjEvent32JumpRaw(0x0A8, 562, 0x00200180),
+	aobjEvent32JumpCmd(0x0A8, 562),
+	    (u32)0x00200180,
 	aobjEvent32EndRaw(0x300, 384),
 	aobjEvent32End(),
 	    0xBF000000,
@@ -601,7 +605,8 @@ u32 dStageZebesFile3_AnimJoint_0x0000[706] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32JumpRaw(0x126, 566, 0x00000000),
+	aobjEvent32JumpCmd(0x126, 566),
+	    (u32)0x00000000,
 	aobjEvent32Cmd17(0x1A8, 0),
 	    0x26940000,  /* 1.0269562977782698e-15f */
 	    0x60006000,  /* 3.7001574538475995e+19f */
@@ -663,7 +668,8 @@ u32 dStageZebesFile3_AnimJoint_0x0000[706] = {
 	    0xF5400400,  /* -2.434087222844486e+32f */
 	    0x00094250,  /* 8.50307908152299e-40f */
 	    0xFD100000,
-	aobjEvent32JumpRaw(0x14A, 32, 0xE6000000),
+	aobjEvent32JumpCmd(0x14A, 32),
+	    (u32)0xE6000000,
 	aobjEvent32End(),
 	    0xF0000000,
 	aobjEvent32WaitRaw(0x207, 16384),
@@ -706,7 +712,8 @@ u32 dStageZebesFile3_AnimJoint_0x0000[706] = {
 	    0xDF000000,
 	aobjEvent32End(),
 	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32JumpRaw(0x19C, 630, 0x00000004),
+	aobjEvent32JumpCmd(0x19C, 630),
+	    (u32)0x00000004,
 	aobjEvent32End(),
 };
 
@@ -724,7 +731,8 @@ u32 dStageZebesFile3_AnimJoint_0x0B08[178] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32JumpRaw(0x1CA, 702, 0x00000000),
+	aobjEvent32JumpCmd(0x1CA, 702),
+	    (u32)0x00000000,
 	    0xC38D5CD2,
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -746,7 +754,8 @@ u32 dStageZebesFile3_AnimJoint_0x0B08[178] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32JumpRaw(0x1E2, 742, 0x10100000),
+	aobjEvent32JumpCmd(0x1E2, 742),
+	    (u32)0x10100000,
 	    0xC3870000,
 	aobjEvent32SetVal0RateBlock(0x020, 59),
 	    0x43340000,  /* 180.0f */
@@ -761,7 +770,8 @@ u32 dStageZebesFile3_AnimJoint_0x0B08[178] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
-	aobjEvent32JumpRaw(0x2DE, 880, 0x16108000),
+	aobjEvent32JumpCmd(0x2DE, 880),
+	    (u32)0x16108000,
 	aobjEvent32End(),
 	    0x3F800000,
 	aobjEvent32SetVal0Rate(0x100, 0),

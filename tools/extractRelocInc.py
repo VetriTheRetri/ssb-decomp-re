@@ -532,7 +532,14 @@ def parse_master_c(path):
                 if count_str:
                     count = int(count_str, 0)
                 else:
+                    # Try brace-group count first (handles nested struct
+                    # initializers like `DObjDesc *Foo[] = {{...},{...}}`),
+                    # then fall back to top-level comma counting (handles
+                    # the common pointer-array case where each entry is a
+                    # bare `(Type *)expr,` with no surrounding braces).
                     count = _count_top_level_initializers(body)
+                    if not count:
+                        count = _count_toplevel_array_entries(body)
                 if count:
                     out.append(('block', {
                         'type': type_, 'name': name,
@@ -565,20 +572,25 @@ def parse_master_c(path):
             except SystemExit:
                 size = None
             # `compute_data_c_size` sizes inline u8/u16/u32/u64 arrays without
-            # an explicit `[N]` by counting `0x...` hex literals. That underruns
-            # for our decoded AObjScript32 arrays where macros like
-            # `aobjEvent32End()` consume a u32 but carry no hex literal. When
-            # the array is ungated by `[N]` and contains aobjEvent32 macros
-            # (or other expression entries), reseat `size` from a top-level
-            # comma-counted scan so the cumulative offset stays aligned with
-            # the binary for any inc.c-emitting blocks that follow.
+            # an explicit `[N]` by counting `0x...` hex literals. That breaks
+            # in two ways:
+            #   - Underruns for decoded AObjScript32 arrays where macros like
+            #     `aobjEvent32End()` consume a u32 but carry no hex literal.
+            #   - Overruns when entries contain symbol names with embedded hex
+            #     (e.g. `(u32)((u8*)dXxx_AnimJoint_0x3700 + 0x14)` counts as
+            #     two literals — `0x3700` and `0x14` — for a one-entry array).
+            # When the array is ungated by `[N]` and lacks an inc.c include,
+            # reseat `size` from a top-level comma-counted scan so the
+            # cumulative offset stays aligned with the binary for any
+            # inc.c-emitting blocks that follow.
             if (type_ in ('u8', 'u16', 'u32', 'u64')
                     and not decl_m.group('count')
                     and inc_path is None
-                    and 'aobjEvent32' in body):
+                    and body):
                 elem_count = _count_toplevel_array_entries(body)
-                elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[type_]
-                size = elem_count * elem_size
+                if elem_count:
+                    elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[type_]
+                    size = elem_count * elem_size
             if not size:
                 # Fallback to the fixed per-element table when compute_*
                 # can't parse the declaration (e.g. a FTAttributes struct

@@ -361,7 +361,7 @@ u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848[] = {
 	    0x3FEB2136,  /* 1.8369510173797607f */
 	    0x40200000,  /* 2.5f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dLinkSpecial2_EntryWaveAnimJoint_AnimJoint + 0x8),
+	(u32)(dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848),
 };
 
 /* Raw data from file offset 0x0B60 to 0x0B90 (48 bytes) */
@@ -408,11 +408,11 @@ u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98[] = {
 	aobjEvent32SetExtValBlock(0x001, 40),
 	    0xFFFFFF00,  /* nanf */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98),
 };
 
 u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[] = {
-	(u32)((u8*)dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98),
 	aobjEvent32End(),
 };
 
@@ -443,11 +443,11 @@ u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8[] = {
 	aobjEvent32SetExtValBlock(0x001, 40),
 	    0xFFFFFF00,  /* nanf */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8),
 };
 
 u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[] = {
-	(u32)((u8*)dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8),
 	aobjEvent32End(),
 };
 

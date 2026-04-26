@@ -12,6 +12,8 @@ extern u8 dPikachuSpecial2_gap_0x06B8[];
 
 PAD(8);
 
+extern u8 dPikachuSpecial2_gap_0x06B8_sub_0x18[];
+
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dPikachuSpecial2_Lut_0x0008_palette[16] = {
 	#include <PikachuSpecial2/Lut_0x0008.palette.inc.c>
@@ -42,7 +44,7 @@ u8 dPikachuSpecial2_gap_0x0028_sub_0x418[512] = {
 MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dPikachuSpecial2_gap_0x06B8 + 0x18),
+	(void**)(dPikachuSpecial2_gap_0x06B8_sub_0x18),
 	0x0193, 0x0110, 0x0194, 0x008E,
 	26673164,
 	0.0f, 7.20267410662956e-43f,
@@ -131,7 +133,7 @@ u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898[] = {
 	aobjEvent32SetFlags(0x000, 1),
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial2_UnkAnimJoint_AnimJoint + 0x8),
+	(u32)(dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898),
 	aobjEvent32End(),
 };
 
@@ -563,7 +565,7 @@ u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[] = {
 };
 
 u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[] = {
-	(u32)((u8*)dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint + 0x10),
+	(u32)(dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90),
 };
 
 /* Raw data from file offset 0x1AC0 to 0x1B10 (80 bytes) */
@@ -597,7 +599,7 @@ u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[] = {
 };
 
 u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[] = {
-	(u32)((u8*)dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint + 0x10),
+	(u32)(dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0),
 	aobjEvent32End(),
 };
 
@@ -634,7 +636,7 @@ u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20[] = {
 };
 
 u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[] = {
-	(u32)((u8*)dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint + 0x10),
+	(u32)(dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20),
 	aobjEvent32End(),
 };
 

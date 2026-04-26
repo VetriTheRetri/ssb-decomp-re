@@ -477,7 +477,7 @@ u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[] = {
 	    0x3F000000,  /* 0.5f */
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint + 0x8),
+	(u32)(dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8),
 	aobjEvent32End(),
 };
 
@@ -507,10 +507,10 @@ u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[] = {
 	aobjEvent32SetValAfterBlock(0x001, 1),
 	    0x32980000,  /* 1.7695128917694092e-08f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
 };
 
 u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[] = {
-	(u32)((u8*)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
 	aobjEvent32End(),
 };

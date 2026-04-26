@@ -1974,7 +1974,7 @@ u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[] = {
 	aobjEvent32SetValBlock(0x100, 2),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_animjoints + 0xC),
+	(u32)(dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C),
 };
 
 u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[] = {
@@ -1986,7 +1986,7 @@ u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[] = {
 	aobjEvent32SetValBlock(0x010, 32),
 	    0xC5951000,  /* -4770.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_animjoints + 0xBC),
+	(u32)(dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C),
 };
 
 /* @ 0x0FB70, 1168 bytes */

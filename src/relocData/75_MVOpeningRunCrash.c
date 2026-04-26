@@ -10,6 +10,8 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dMVOpeningRunCrash_gap_0x2B20[];
 
+extern u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
+
 /* Raw data from file offset 0x0000 to 0x2AA8 (10920 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 280 bytes) */
 u8 dMVOpeningRunCrash_gap_0x0000[280] = {
@@ -155,13 +157,13 @@ u8 dMVOpeningRunCrash_gap_0x0000_sub_0x528[9600] = {
 MObjSub dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x320),
+	(void**)(dMVOpeningRunCrash_gap_0x2B20_sub_0x320),
 	0x0AAD, 0x0B92, 0x0AAE, 0x0B94,
 	179243926,
 	1.6948653708348004e-32f, 1.704493551188798e-32f,
 	1.7141217315427957e-32f, 1.7237499118967934e-32f,
 	1.733378092250791e-32f, 1.7430062726047887e-32f,
-	(void**)((u8*)dMVOpeningRunCrash_gap_0x0000 + 0x410),
+	(void**)(dMVOpeningRunCrash_gap_0x0000_sub_0x410),
 	0x0AB7,
 	0x00, 0xFA,
 	0x0AB8,

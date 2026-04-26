@@ -251,7 +251,7 @@ u8 dNYoshiModel_Joint_0x2C40_post_post_post[144] = {
 /* DObjDesc: JointTree @ 0x2EF8 (29 entries) */
 DObjDesc dNYoshiModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x130), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dNYoshiModel_Joint_0x2C40_post_post_post), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x138), { 0.0f, 0.0f, 43.20003128051758f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x140), { 0.0f, 150.00001525878906f, 82.79998016357422f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x148), { 0.0f, 11.999988555908203f, 30.0f }, { 0.5299999713897705f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

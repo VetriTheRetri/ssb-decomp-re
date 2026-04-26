@@ -1279,7 +1279,7 @@ u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[] = {
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dNessModel_PKThunderWaveAnimJoint_AnimJoint + 0xC),
+	(u32)(dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC),
 };
 
 /* Raw data from file offset 0x9BB0 to 0xAB20 (3952 bytes) */

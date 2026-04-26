@@ -14,6 +14,8 @@ extern u8 dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects2_gap_0x1F18[];
 
+extern u8 dEFCommonEffects2_gap_0x1F18_sub_0x18[];
+
 /* Raw data from file offset 0x0000 to 0x1428 (5160 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dEFCommonEffects2_gap_0x0000[8] = {
@@ -49,7 +51,7 @@ u8 dEFCommonEffects2_gap_0x0000_sub_0x1028[1024] = {
 MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub = {
 	0x050B,
 	0x05, 0x2E,
-	(void**)((u8*)dEFCommonEffects2_gap_0x0000 + 0x1028),
+	(void**)(dEFCommonEffects2_gap_0x0000_sub_0x1028),
 	0x050D, 0x0308, 0x050E, 0x0206,
 	84869380,
 	6.817868669698895e-36f, 1.4704469383453895e-39f,
@@ -114,7 +116,7 @@ u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[2348] = {
 MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dEFCommonEffects2_gap_0x1F18 + 0x18),
+	(void**)(dEFCommonEffects2_gap_0x1F18_sub_0x18),
 	0x07AB, 0x0728, 0x07AC, 0x06A6,
 	128779812,
 	2.6334384128055736e-34f, 7.20267410662956e-43f,
@@ -700,7 +702,7 @@ u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x34B4[] = {
 	    0x3FD2C754,  /* 1.6467080116271973f */
 	    0x3F62D0E7,  /* 0.8860000967979431f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint + 0x14),
+	(u32)(dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x34B4),
 };
 
 u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518[] = {
@@ -720,7 +722,7 @@ u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518[] = {
 	    0x3FD2C754,  /* 1.6467080116271973f */
 	    0x3F62D0E7,  /* 0.8860000967979431f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint + 0x78),
+	(u32)(dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518),
 };
 
 u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[] = {
@@ -739,7 +741,7 @@ u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[] = {
 	    0x3FD2C754,  /* 1.6467080116271973f */
 	    0x3F62D0E7,  /* 0.8860000967979431f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint + 0xBC),
+	(u32)(dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C),
 	aobjEvent32End(),
 };
 
@@ -1161,15 +1163,15 @@ u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848[] = {
 };
 
 u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode2_MatAnimJoint + 0x10),
+	(u32)(dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5810),
 };
 
 u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode2_MatAnimJoint + 0x2C),
+	(u32)(dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x582C),
 };
 
 u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode2_MatAnimJoint + 0x48),
+	(u32)(dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848),
 };
 
 /* Raw data from file offset 0x5870 to 0x58E0 (112 bytes) */
@@ -1221,15 +1223,15 @@ u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8[] = {
 };
 
 u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode4_MatAnimJoint + 0x10),
+	(u32)(dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x5880),
 };
 
 u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode4_MatAnimJoint + 0x2C),
+	(u32)(dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x589C),
 };
 
 u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode4_MatAnimJoint + 0x48),
+	(u32)(dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8),
 };
 
 /* Raw data from file offset 0x58E0 to 0x5950 (112 bytes) */
@@ -1281,15 +1283,15 @@ u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928[] = {
 };
 
 u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode1_MatAnimJoint + 0x10),
+	(u32)(dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x58F0),
 };
 
 u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode1_MatAnimJoint + 0x2C),
+	(u32)(dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x590C),
 };
 
 u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[] = {
-	(u32)((u8*)dEFCommonEffects2_DeadExplode1_MatAnimJoint + 0x48),
+	(u32)(dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928),
 };
 
 /* Raw data from file offset 0x5950 to 0x6B40 (4592 bytes) */
@@ -1465,7 +1467,7 @@ u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[] = {
 };
 
 u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[] = {
-	(u32)((u8*)dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28),
 	aobjEvent32End(),
 };
 

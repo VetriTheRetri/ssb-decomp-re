@@ -12,6 +12,8 @@ extern u8 dMVOpeningStandoff_gap_0x61B8[];
 
 PAD(8);
 
+extern u8 dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
+
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dMVOpeningStandoff_Lut_0x0008_palette[16] = {
 	#include <MVOpeningStandoff/Lut_0x0008.palette.inc.c>
@@ -108,7 +110,7 @@ MObjSub dMVOpeningStandoff_LightningMObjSub_MObjSub = {
 	0.0f, 0.0f,
 	2.79300700000659e-24f, 2.8317814856504657e-24f,
 	0.0f, 0.0f,
-	(void**)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x328),
+	(void**)(dMVOpeningStandoff_gap_0x61B8_sub_0x328),
 	0x185D,
 	0x19, 0x3A,
 	0x185F,

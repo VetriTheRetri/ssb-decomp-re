@@ -32,7 +32,7 @@ u8 dYoshiSpecial2_gap_0x0000_sub_0x260[512] = {
 MObjSub dYoshiSpecial2_EntryEggMObjSub_MObjSub = {
 	0x0119,
 	0x01, 0x3A,
-	(void**)((u8*)dYoshiSpecial2_gap_0x0000 + 0x260),
+	(void**)(dYoshiSpecial2_gap_0x0000_sub_0x260),
 	0x011D, 0x0016, 0x0000, 0x0000,
 	514,
 	3.416359210050968e-38f, 2.938735877055719e-39f,
@@ -218,7 +218,7 @@ u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784[] = {
 };
 
 u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[] = {
-	(u32)((u8*)dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)(dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784),
 	aobjEvent32End(),
 };
 

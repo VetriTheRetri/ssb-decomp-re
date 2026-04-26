@@ -140,7 +140,7 @@ u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[] = {
 };
 
 u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[] = {
-	(u32)((u8*)dSCExplainGraphics_StickNeutral_MatAnimJoint + 0x8),
+	(u32)(dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398),
 	aobjEvent32End(),
 };
 
@@ -168,7 +168,7 @@ u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8[] = {
 };
 
 u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[] = {
-	(u32)((u8*)dSCExplainGraphics_StickHoldUp_MatAnimJoint + 0x8),
+	(u32)(dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8),
 	aobjEvent32End(),
 };
 
@@ -199,11 +199,11 @@ u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8[] = {
 	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(9),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dSCExplainGraphics_StickTapUp_MatAnimJoint + 0x8),
+	(u32)(dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8),
 };
 
 u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[] = {
-	(u32)((u8*)dSCExplainGraphics_StickTapUp_MatAnimJoint + 0x8),
+	(u32)(dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8),
 };
 
 /* Raw data from file offset 0x5430 to 0x5450 (32 bytes) */
@@ -226,7 +226,7 @@ u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438[] = {
 };
 
 u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[] = {
-	(u32)((u8*)dSCExplainGraphics_StickHoldForward_MatAnimJoint + 0x8),
+	(u32)(dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438),
 	aobjEvent32End(),
 };
 

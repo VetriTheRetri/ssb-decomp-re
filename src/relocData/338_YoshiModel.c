@@ -328,7 +328,7 @@ u8 dYoshiModel_Joint_0x3148_post_post_post[152] = {
 /* DObjDesc: JointTree @ 0x33A0 (31 entries) */
 DObjDesc dYoshiModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dYoshiModel_Joint_0x3148_post + 0x148), { 0.0f, 0.0f, 0.0f }, { -0.00133500003721565f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dYoshiModel_Joint_0x3148_post_post_post), { 0.0f, 0.0f, 0.0f }, { -0.00133500003721565f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dYoshiModel_Joint_0x3148_post + 0x150), { 0.0f, 0.0f, 43.20000076293945f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)((u8*)dYoshiModel_Joint_0x3148_post + 0x158), { 0.0f, 150.1874542236328f, 82.48522186279297f }, { 0.0015869999770075083f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)((u8*)dYoshiModel_Joint_0x3148_post + 0x160), { 0.0f, 12.000017166137695f, 30.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1074,7 +1074,7 @@ u8 dYoshiModel_Joint_0x6738_post_post_post[144] = {
 /* DObjDesc: JointTree_0x6948 @ 0x6948 (30 entries) */
 DObjDesc dYoshiModel_JointTree_0x6948[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dYoshiModel_Joint_0x6738_post + 0x138), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dYoshiModel_Joint_0x6738_post_post_post), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dYoshiModel_Joint_0x6738_post + 0x140), { 0.0f, 0.0f, 43.20003128051758f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)((u8*)dYoshiModel_Joint_0x6738_post + 0x148), { 0.0f, 150.00001525878906f, 82.79998016357422f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)((u8*)dYoshiModel_Joint_0x6738_post + 0x150), { 0.0f, 11.999988555908203f, 30.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

@@ -630,7 +630,7 @@ u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[] = {
 	    0x00000000,  /* 0.0f */
 	    0xBABEA2F1,  /* -0.001454440993256867f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageYamabukiFile2_Layer0Anim_AnimJoint + 0x1C),
+	(u32)(dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC),
 	aobjEvent32End(),
 };
 
@@ -1013,7 +1013,7 @@ u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[] = {
 	    0x44520000,  /* 840.0f */
 	    0xC0759225,  /* -3.8370449542999268f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageYamabukiFile2_Layer1Anim_AnimJoint + 0x24),
+	(u32)(dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4),
 };
 
 u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[] = {
@@ -1044,7 +1044,7 @@ u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[] = {
 	    0xC4610000,  /* -900.0f */
 	    0x40671CDD,  /* 3.6111366748809814f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageYamabukiFile2_Layer1Anim_AnimJoint + 0xDC),
+	(u32)(dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C),
 	aobjEvent32End(),
 };
 

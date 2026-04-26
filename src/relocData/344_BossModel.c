@@ -295,7 +295,7 @@ u8 dBossModel_Joint_0x1F88_post_post_post_post_post_post_post[184] = {
 DObjDesc dBossModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { -71.9056167602539f, 1538.39794921875f, -142.32513427734375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dBossModel_Joint_0x1F88_post + 0x2A8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dBossModel_Joint_0x1F88_post_post_post_post_post_post_post), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dBossModel_Joint_0x1F88_post + 0x2B0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)((u8*)dBossModel_Joint_0x1F88_post + 0x2B8), { 170.97482299804688f, -320.1016540527344f, 38.93811798095703f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)((u8*)dBossModel_Joint_0x1F88_post + 0x2C0), { 143.61004638671875f, -373.6783142089844f, -154.8404541015625f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },

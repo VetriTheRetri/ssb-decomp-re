@@ -207,7 +207,7 @@ u8 dNPikachuModel_Joint_0x23A0_post_post_post_post[112] = {
 /* DObjDesc: JointTree @ 0x2778 (28 entries) */
 DObjDesc dNPikachuModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dNPikachuModel_Joint_0x23A0_post + 0x270), { 0.0f, -53.765953063964844f, -29.27102279663086f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dNPikachuModel_Joint_0x23A0_post_post_post_post), { 0.0f, -53.765953063964844f, -29.27102279663086f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dNPikachuModel_Joint_0x23A0_post + 0x278), { 0.0f, 74.66741180419922f, 6.122064113616943f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 81.0f, -15.684199333190918f, 78.36808013916016f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -1.4000000192027073e-05f, 0.0f, 0.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },

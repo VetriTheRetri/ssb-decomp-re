@@ -2084,11 +2084,11 @@ u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[] = {
 };
 
 u32 dMNTitle_SlashMat_AnimJoint_0x26010[] = {
-	(u32)((u8*)dMNTitle_SlashMat_AnimJoint + 0x14),
+	(u32)(dMNTitle_SlashMat_AnimJoint_0x25F74),
 };
 
 u32 dMNTitle_SlashMat_AnimJoint_0x26014[] = {
-	(u32)((u8*)dMNTitle_SlashMat_AnimJoint + 0x54),
+	(u32)(dMNTitle_SlashMat_AnimJoint_0x25FB4),
 	aobjEvent32End(),
 };
 
@@ -2233,7 +2233,7 @@ MObjSub dMNTitle_SlashMObjSub_MObjSub = {
 	-1.7118784018193176e-18f, -1.7186279888225971e-18f,
 	-1.7253775758258767e-18f, -1.7321271628291563e-18f,
 	-1.7430300236880646e-18f, -1.7565291976946237e-18f,
-	(void**)((u8*)dMNTitle_gap_0x26370 + 0x820),
+	(void**)(dMNTitle_gap_0x26370_sub_0x820),
 	0xA203,
 	0xA0, 0xF0,
 	0xA204,

@@ -37,7 +37,7 @@ u8 dCaptainSpecial3_gap_0x0000_sub_0x490[512] = {
 MObjSub dCaptainSpecial3_FalconPunchMObjSub_MObjSub = {
 	0x01A5,
 	0x01, 0xC6,
-	(void**)((u8*)dCaptainSpecial3_gap_0x0000 + 0x490),
+	(void**)(dCaptainSpecial3_gap_0x0000_sub_0x490),
 	0x01A7, 0x00A2, 0x01A9, 0x0020,
 	514,
 	7.273607274374296e-38f, 2.938735877055719e-39f,
@@ -107,9 +107,9 @@ u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[] = {
 	aobjEvent32SetValAfterBlock(0x001, 1),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)(dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834),
 };
 
 u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[] = {
-	(u32)((u8*)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)(dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834),
 };

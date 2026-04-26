@@ -619,19 +619,19 @@ u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[] = {
 };
 
 u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[] = {
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x18),
+	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8),
 };
 
 u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = {
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x34),
+	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4),
 };
 
 u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = {
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x50),
+	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0),
 };
 
 u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
-	(u32)((u8*)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint + 0x6C),
+	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC),
 	aobjEvent32End(),
 };
 

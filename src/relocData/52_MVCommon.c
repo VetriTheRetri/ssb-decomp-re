@@ -13,6 +13,9 @@ extern u8 dMVCommon_gap_0x1F170[];
 
 PAD(8);
 
+extern u8 dMVCommon_gap_0x1DD18_sub_0x10[];
+extern u8 dMVCommon_gap_0x1F170_sub_0x8[];
+
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dMVCommon_Lut_0x0008_palette[16] = {
 	#include <MVCommon/Lut_0x0008.palette.inc.c>
@@ -982,7 +985,7 @@ DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
 	{ 1, (void*)dMVCommon_DLLink_0x7D08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_DLLink_0x7D18, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x39B8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)(dMVCommon_gap_0x4370_sub_0x39B8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_DLLink_0x7D40, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 2818.4521484375f, 3203.845947265625f, 5498.3056640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)dMVCommon_DLLink_0x7D50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -999,7 +1002,7 @@ DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
 	{ 3, (void*)dMVCommon_DLLink_0x7DD0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 645.5726318359375f, 1136.498779296875f, 1044.5704345703125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)dMVCommon_DLLink_0x7DE0, { -32.4151611328125f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVCommon_gap_0x4370 + 0x3A80), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)(dMVCommon_gap_0x4370_sub_0x3A80), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_DLLink_0x7E08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1134,7 +1137,7 @@ Gfx dMVCommon_RoomHaze_post_post[34] = {
 DObjDesc dMVCommon_RoomBooksDObjDesc[] = {
 	{ 0, (void*)0x00000000, { -629.3348999023438f, 2549.01708984375f, -4845.73193359375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dMVCommon_RoomHaze_DisplayList + 0xAF8), { -11.84549331665039f, 0.06088300049304962f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomHaze_post + 0x1B8), { 1001.095947265625f, -397.24365234375f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dMVCommon_RoomHaze_post_post), { 1001.095947265625f, -397.24365234375f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -16987,7 +16990,7 @@ u8 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[4520] = {
 MObjSub dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dMVCommon_gap_0x1DD18 + 0x10),
+	(void**)(dMVCommon_gap_0x1DD18_sub_0x10),
 	0x0000, 0x0000, 0x0000, 0x0000,
 	3,
 	0.0f, 2.938735877055719e-39f,
@@ -17088,7 +17091,7 @@ u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4[] = {
 };
 
 u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[] = {
-	(u32)((u8*)dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint + 0xC),
+	(u32)(dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4),
 	aobjEvent32End(),
 };
 
@@ -17114,7 +17117,7 @@ u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data[4316] = {
 MObjSub dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dMVCommon_gap_0x1F170 + 0x8),
+	(void**)(dMVCommon_gap_0x1F170_sub_0x8),
 	0x0000, 0x0003, 0x0000, 0x0000,
 	2097152,
 	5.877561437213154e-39f, 0.0f,
@@ -17199,7 +17202,7 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[] = {
 };
 
 u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
-	(u32)((u8*)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC),
 	aobjEvent32End(),
 };
 
@@ -18296,7 +18299,7 @@ u8 dMVCommon_gap_0x204F8_sub_0x1F38[16] = {
 DObjDesc dMVCommon_RoomDeskGroundDObjDesc[] = {
 	{ 0, (void*)dMVCommon_DLLink_0x223B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dMVCommon_DLLink_0x223C8, { 371.76104736328125f, 2151.7734375f, -4845.66650390625f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_gap_0x204F8 + 0x1EE0), { 524.3055419921875f, 1936.9608154296875f, -4229.2109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dMVCommon_gap_0x204F8_sub_0x1EE0), { 524.3055419921875f, 1936.9608154296875f, -4229.2109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x224C4 to 0x225CC (264 bytes) */

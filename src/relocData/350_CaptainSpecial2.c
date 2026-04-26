@@ -10,6 +10,8 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dCaptainSpecial2_gap_0x09D8[];
 
+extern u8 dCaptainSpecial2_gap_0x09D8_sub_0x10[];
+
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
 u8 dCaptainSpecial2_gap_0x0000[48] = {
 	#include <CaptainSpecial2/gap_0x0000.data.inc.c>
@@ -40,7 +42,7 @@ u8 dCaptainSpecial2_gap_0x0050_sub_0x490[1152] = {
 MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dCaptainSpecial2_gap_0x09D8 + 0x10),
+	(void**)(dCaptainSpecial2_gap_0x09D8_sub_0x10),
 	0x025B, 0x0138, 0x025D, 0x0016,
 	514,
 	1.8367774096938661e-37f, 2.938735877055719e-39f,
@@ -130,7 +132,7 @@ u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint_0xB98[] = {
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dCaptainSpecial2_FalconKickAnimJoint_AnimJoint + 0x8),
+	(u32)(dCaptainSpecial2_FalconKickAnimJoint_AnimJoint_0xB98),
 	aobjEvent32End(),
 };
 
@@ -159,11 +161,11 @@ u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08[] = {
 	aobjEvent32SetValAfterBlock(0x001, 2),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08),
 };
 
 u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[] = {
-	(u32)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x8),
+	(u32)(dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08),
 	aobjEvent32End(),
 };
 

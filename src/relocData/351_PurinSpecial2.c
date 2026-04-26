@@ -12,6 +12,8 @@ extern u8 dPurinSpecial2_gap_0x1C98[];
 
 PAD(8);
 
+extern u8 dPurinSpecial2_gap_0x1C98_sub_0x180[];
+
 /* Raw data from file offset 0x0008 to 0x0810 (2056 bytes) */
 u8 dPurinSpecial2_Tex_0x0008[2056] = {
 	#include <PurinSpecial2/Tex_0x0008.tex.inc.c>
@@ -36,7 +38,7 @@ u8 dPurinSpecial2_Tex_0x1820[1024] = {
 MObjSub dPurinSpecial2_SingMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dPurinSpecial2_gap_0x1C98 + 0x180),
+	(void**)(dPurinSpecial2_gap_0x1C98_sub_0x180),
 	0x0000, 0x0000, 0x070C, 0x0788,
 	118294410,
 	2.0166514759768306e-34f, 1.0789998175301091e-42f,
@@ -1055,19 +1057,19 @@ u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[] = {
 };
 
 u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[] = {
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x18),
+	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88),
 };
 
 u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[] = {
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x84),
+	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4),
 };
 
 u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[] = {
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0xF0),
+	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60),
 };
 
 u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[] = {
-	(u32)((u8*)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint + 0x15C),
+	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC),
 	aobjEvent32End(),
 };
 

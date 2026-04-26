@@ -10,6 +10,8 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dNessSpecial2_gap_0x0888[];
 
+extern u8 dNessSpecial2_gap_0x0888_sub_0x10[];
+
 /* Raw data from file offset 0x0000 to 0x0810 (2064 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dNessSpecial2_gap_0x0000[8] = {
@@ -30,7 +32,7 @@ u8 dNessSpecial2_gap_0x0000_sub_0x410[1024] = {
 MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dNessSpecial2_gap_0x0888 + 0x10),
+	(void**)(dNessSpecial2_gap_0x0888_sub_0x10),
 	0x0207, 0x0104, 0x0209, 0x0002,
 	770,
 	1.219633458786485e-37f, 2.938735877055719e-39f,
@@ -137,7 +139,7 @@ u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38[] = {
 	    0x40133333,  /* 2.299999952316284f */
 	    0x40133333,  /* 2.299999952316284f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint + 0x8),
+	(u32)(dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38),
 	aobjEvent32End(),
 };
 

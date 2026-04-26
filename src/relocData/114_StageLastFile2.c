@@ -10,6 +10,8 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dStageLastFile2_gap_0x20F0[];
 
+extern u8 dStageLastFile2_gap_0x20F0_sub_0x960[];
+
 /* Raw data from file offset 0x0000 to 0x2078 (8312 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dStageLastFile2_gap_0x0000[8] = {
@@ -175,13 +177,13 @@ u8 dStageLastFile2_gap_0x0000_sub_0x1878[2048] = {
 MObjSub dStageLastFile2_Layer1MObj_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dStageLastFile2_gap_0x20F0 + 0x960),
+	(void**)(dStageLastFile2_gap_0x20F0_sub_0x960),
 	0x0821, 0x0A9A, 0x0822, 0x0AA0,
 	136514211,
 	4.935279052793796e-34f, 4.965367116400038e-34f,
 	4.995455180006281e-34f, 5.025543243612524e-34f,
 	5.055631307218766e-34f, 5.085719370825009e-34f,
-	(void**)((u8*)dStageLastFile2_gap_0x0000 + 0x1E8),
+	(void**)(dStageLastFile2_gap_0x0000_sub_0x1E8),
 	0x082B,
 	0x00, 0x70,
 	0x082C,
@@ -586,7 +588,7 @@ u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[] = {
 	aobjEvent32SetValBlock(0x002, 719),
 	    0x40C90FDB,  /* 6.2831854820251465f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageLastFile2_Layer1Anim_AnimJoint + 0x14),
+	(u32)(dStageLastFile2_Layer1Anim_AnimJoint_0x4F24),
 	aobjEvent32End(),
 };
 

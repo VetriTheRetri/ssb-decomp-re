@@ -379,7 +379,7 @@ DObjDesc dGRBonus2MarioFile2_Layer1DObj[] = {
 	{ 1, (void*)0x00000000, { 300.0f, -3000.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -1800.0f, -6600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 5400.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus2MarioFile2_gap_0x0AD8 + 0x27D0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus2MarioFile2_gap_0x0AD8_sub_0x27D0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32C0, { 0.0f, -528.0000610351562f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32D0, { 2400.0f, -1344.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32E0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -459,7 +459,7 @@ u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3BDC[] = {
 	    0xC53B8000,  /* -3000.0f */
 	aobjEvent32Wait(20),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus2MarioFile2_Layer1Anim_AnimJoint + 0x3C),
+	(u32)(dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3BDC),
 };
 
 u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C10[] = {
@@ -477,7 +477,7 @@ u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C10[] = {
 	    0xC5322000,  /* -2850.0f */
 	aobjEvent32Wait(60),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus2MarioFile2_Layer1Anim_AnimJoint + 0x70),
+	(u32)(dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C10),
 };
 
 u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C4C[] = {
@@ -491,7 +491,7 @@ u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C4C[] = {
 	aobjEvent32SetVal0RateBlock(0x020, 100),
 	    0xC53B8000,  /* -3000.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus2MarioFile2_Layer1Anim_AnimJoint + 0xAC),
+	(u32)(dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C4C),
 };
 
 u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C78[] = {
@@ -509,7 +509,7 @@ u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C78[] = {
 	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(60),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus2MarioFile2_Layer1Anim_AnimJoint + 0xD8),
+	(u32)(dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3C78),
 };
 
 u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3CB4[] = {
@@ -527,7 +527,7 @@ u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3CB4[] = {
 	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(20),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus2MarioFile2_Layer1Anim_AnimJoint + 0x114),
+	(u32)(dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3CB4),
 };
 
 u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3CF0[] = {
@@ -541,7 +541,7 @@ u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3CF0[] = {
 	aobjEvent32SetVal0RateBlock(0x020, 100),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus2MarioFile2_Layer1Anim_AnimJoint + 0x150),
+	(u32)(dGRBonus2MarioFile2_Layer1Anim_AnimJoint_0x3CF0),
 	aobjEvent32End(),
 };
 

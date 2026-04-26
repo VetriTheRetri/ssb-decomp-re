@@ -340,7 +340,7 @@ u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDB8[] = {
 	    0x00000000,  /* 0.0f */
 	    0xBDD2E441,  /* -0.10297442227602005f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dYoshiSpecial3_EggLayWait_AnimJoint + 0x8),
+	(u32)(dYoshiSpecial3_EggLayWait_AnimJoint_0xDB8),
 };
 
 u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDF4[] = {
@@ -373,6 +373,6 @@ u32 dYoshiSpecial3_EggLayWait_AnimJoint_0xDF4[] = {
 	    0x00000000,  /* 0.0f */
 	    0xBDD2E441,  /* -0.10297442227602005f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dYoshiSpecial3_EggLayWait_AnimJoint + 0x44),
+	(u32)(dYoshiSpecial3_EggLayWait_AnimJoint_0xDF4),
 	aobjEvent32End(),
 };

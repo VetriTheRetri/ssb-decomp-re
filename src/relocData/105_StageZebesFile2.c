@@ -10,6 +10,8 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dStageZebesFile2_gap_0x2BC0[];
 
+extern u8 dStageZebesFile2_gap_0x2BC0_sub_0x948[];
+
 /* Raw data from file offset 0x0000 to 0x2B48 (11080 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dStageZebesFile2_gap_0x0000[8] = {
@@ -245,7 +247,7 @@ u8 dStageZebesFile2_gap_0x0000_sub_0x2748[1024] = {
 MObjSub dStageZebesFile2_Layer1MObj_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dStageZebesFile2_gap_0x2BC0 + 0x948),
+	(void**)(dStageZebesFile2_gap_0x2BC0_sub_0x948),
 	0x0AD7, 0x0D46, 0x0000, 0x0000,
 	0,
 	2.080504218910902e-32f, 2.1190231116722343e-32f,
@@ -1076,7 +1078,7 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0[] = {
 	aobjEvent32SetVal0RateBlock(0x020, 161),
 	    0x43B5A496,  /* 363.28582763671875f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x70),
+	(u32)(dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0),
 };
 
 u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6224[] = {
@@ -1121,7 +1123,7 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6224[] = {
 	    0x3F884BB2,  /* 1.064810037612915f */
 	    0xBC088889,  /* -0.008333333767950535f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0xA4),
+	(u32)(dStageZebesFile2_Layer1Anim_AnimJoint_0x6224),
 };
 
 u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC[] = {
@@ -1166,7 +1168,7 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC[] = {
 	    0x3F8CD1B7,  /* 1.1001499891281128f */
 	    0xBC088889,  /* -0.008333333767950535f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x14C),
+	(u32)(dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC),
 };
 
 u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[] = {
@@ -1205,7 +1207,7 @@ u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[] = {
 	aobjEvent32SetVal0RateBlock(0x100, 30),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageZebesFile2_Layer1Anim_AnimJoint + 0x1F4),
+	(u32)(dStageZebesFile2_Layer1Anim_AnimJoint_0x6374),
 	aobjEvent32End(),
 };
 

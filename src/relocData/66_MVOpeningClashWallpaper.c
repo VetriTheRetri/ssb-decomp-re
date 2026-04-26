@@ -367,13 +367,13 @@ u8 dMVOpeningClashWallpaper_Tex_0x0AD0[9600] = {
 MObjSub dMVOpeningClashWallpaper_LLMObjSub_MObjSub = {
 	0x0C15,
 	0x0C, 0x78,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0xAA8),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
 	0x0C17, 0x02A0, 0x0C18, 0x0296,
 	202965644,
 	1.18644831247986e-31f, 1.1941508567630582e-31f,
 	1.2018534010462563e-31f, 1.2095559453294544e-31f,
 	1.2172584896126526e-31f, 1.2249610338958507e-31f,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0x918),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
 	0x0C21,
 	0x02, 0x3C,
 	0x0C22,
@@ -588,7 +588,7 @@ u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C[] = {
 };
 
 u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC[] = {
-	(u32)((u8*)dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)(dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C),
 };
 
 /* Raw data from file offset 0x36D0 to 0x36E0 (16 bytes) */
@@ -611,13 +611,13 @@ u32 dMVOpeningClashWallpaper_LLAnimJoint_AnimJoint_0x36D4[] = {
 MObjSub dMVOpeningClashWallpaper_LRMObjSub_MObjSub = {
 	0x0DB9,
 	0x0E, 0x1C,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0xAA8),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
 	0x0DBB, 0x02A0, 0x0DBC, 0x0296,
 	230490764,
 	1.1710257795772976e-30f, 1.1771878150038561e-30f,
 	1.1833498504304146e-30f, 1.1895118858569731e-30f,
 	1.1956739212835316e-30f, 1.2018359567100901e-30f,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0x918),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
 	0x0DC5,
 	0x02, 0x3C,
 	0x0DC6,
@@ -832,7 +832,7 @@ u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC[] = {
 };
 
 u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C[] = {
-	(u32)((u8*)dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)(dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC),
 };
 
 /* Raw data from file offset 0x3D60 to 0x3D70 (16 bytes) */
@@ -855,13 +855,13 @@ u32 dMVOpeningClashWallpaper_LRAnimJoint_AnimJoint_0x3D64[] = {
 MObjSub dMVOpeningClashWallpaper_ULMObjSub_MObjSub = {
 	0x0F5D,
 	0x0F, 0xC0,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0xAA8),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
 	0x0F5F, 0x02A0, 0x0F60, 0x0296,
 	258015884,
 	1.1143143273365658e-29f, 1.1192439556778126e-29f,
 	1.1241735840190594e-29f, 1.1291032123603062e-29f,
 	1.134032840701553e-29f, 1.1389624690427997e-29f,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0x918),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
 	0x0F69,
 	0x02, 0x3C,
 	0x0F6A,
@@ -1106,13 +1106,13 @@ u32 dMVOpeningClashWallpaper_ULAnimJoint_AnimJoint_0x4404[] = {
 MObjSub dMVOpeningClashWallpaper_URMObjSub_MObjSub = {
 	0x1105,
 	0x11, 0x68,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0xAA8),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0xAA8),
 	0x1107, 0x02A0, 0x1108, 0x0296,
 	285803148,
 	1.0887053271440148e-28f, 1.0965927324900097e-28f,
 	1.1044801378360046e-28f, 1.1123675431819995e-28f,
 	1.1202549485279943e-28f, 1.1281423538739892e-28f,
-	(void**)((u8*)dMVOpeningClashWallpaper_gap_0x0000 + 0x918),
+	(void**)(dMVOpeningClashWallpaper_gap_0x0000_sub_0x918),
 	0x1111,
 	0x02, 0x3C,
 	0x1112,
@@ -1332,7 +1332,7 @@ u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824[] = {
 };
 
 u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94[] = {
-	(u32)((u8*)dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint + 0x4),
+	(u32)(dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824),
 	aobjEvent32End(),
 };
 

@@ -9,6 +9,8 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dMNPlayersSpotlight_gap_0x0480[];
 
+extern u8 dMNPlayersSpotlight_gap_0x0480_sub_0x8[];
+
 /* Raw data from file offset 0x0000 to 0x0408 (1032 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dMNPlayersSpotlight_gap_0x0000[8] = {
@@ -24,7 +26,7 @@ u8 dMNPlayersSpotlight_gap_0x0000_sub_0x8[1024] = {
 MObjSub dMNPlayersSpotlight_MObjSub_0x0408 = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dMNPlayersSpotlight_gap_0x0480 + 0x8),
+	(void**)(dMNPlayersSpotlight_gap_0x0480_sub_0x8),
 	0x0000, 0x0402, 0x0000, 0x0000,
 	2097152,
 	2.938780718606577e-39f, 0.0f,

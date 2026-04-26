@@ -12,6 +12,10 @@ extern u8 dBonus2Common_gap_0x3798[];
 extern u8 dBonus2Common_gap_0x3FE8[];
 extern u8 dBonus2Common_gap_0x4818[];
 
+extern void *dBonus2Common_gap_0x3798_sub_0x88[];
+extern void *dBonus2Common_gap_0x3FE8_sub_0x88[];
+extern void *dBonus2Common_gap_0x4818_sub_0x88[];
+
 /* Raw data from file offset 0x0000 to 0x3720 (14112 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dBonus2Common_gap_0x0000[8] = {
@@ -47,7 +51,7 @@ u8 dBonus2Common_gap_0x0000_sub_0x2C30[2800] = {
 MObjSub dBonus2Common_PlatformSmall_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dBonus2Common_gap_0x3798 + 0x88),
+	(void**)(dBonus2Common_gap_0x3798_sub_0x88),
 	0x0E08, 0x0E0A, 0x0000, 0x0000,
 	1026,
 	0.0f, 2.938735877055719e-39f,
@@ -82,14 +86,19 @@ u8 dBonus2Common_gap_0x3798_sub_0x10[120] = {
 	#include <Bonus2Common/gap_0x3798_sub_0x10.data.inc.c>
 };
 
-/* gap sub-block @ 0x3820 (was gap+0x88, 8 bytes) */
-u8 dBonus2Common_gap_0x3798_sub_0x88[8] = {
-	#include <Bonus2Common/gap_0x3798_sub_0x88.data.inc.c>
+/* MObjSub.sprites array @ 0x3820 — texture-pointer table, NULL-terminated.
+ * fixRelocChain.py rewrites the non-NULL entry to its chain-encoded form
+ * per the .reloc metadata. */
+void *dBonus2Common_gap_0x3798_sub_0x88[2] = {
+	(void *)((u8 *)&dBonus2Common_PlatformSmall_MObjSub + 0x10),
+	NULL,
 };
 
-/* gap sub-block @ 0x3828 (was gap+0x90, 8 bytes) */
-u8 dBonus2Common_gap_0x3798_sub_0x90[8] = {
-	#include <Bonus2Common/gap_0x3798_sub_0x90.data.inc.c>
+/* Pointer table @ 0x3828 — referenced by a chain pointer at MObjSub+0x8
+ * (a void** field absent from the current MObjSub struct). NULL-terminated. */
+void *dBonus2Common_gap_0x3798_sub_0x90[2] = {
+	(void *)dBonus2Common_gap_0x3798_sub_0x10,
+	NULL,
 };
 
 /* gap sub-block @ 0x3830 (was gap+0x98, 64 bytes) */
@@ -195,7 +204,7 @@ u32 dBonus2Common_PlatformSmall_AnimJoint_0x3E6C[] = {
 	aobjEvent32Wait(19),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformSmall_AnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformSmall_AnimJoint_0x3E6C),
 };
 
 u32 dBonus2Common_PlatformSmall_AnimJoint_0x3EB0[] = {
@@ -215,7 +224,7 @@ u32 dBonus2Common_PlatformSmall_AnimJoint_0x3EB0[] = {
 	aobjEvent32Wait(19),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformSmall_AnimJoint + 0x50),
+	(u32)(dBonus2Common_PlatformSmall_AnimJoint_0x3EB0),
 	aobjEvent32End(),
 };
 
@@ -246,7 +255,7 @@ u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C[] = {
 	aobjEvent32SetExtValBlock(0x001, 4),
 	    0xFF000000,  /* -1.7014118346046923e+38f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C),
 };
 
 u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34[] = {
@@ -259,15 +268,15 @@ u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34[] = {
 	aobjEvent32SetExtValBlock(0x001, 4),
 	    0xFFFFFF33,  /* nanf */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0x34),
+	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34),
 };
 
 u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[] = {
-	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C),
 };
 
 u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[] = {
-	(u32)((u8*)dBonus2Common_PlatformSmall_MatAnimJoint + 0x34),
+	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34),
 	aobjEvent32End(),
 };
 
@@ -277,7 +286,7 @@ PAD(8);
 MObjSub dBonus2Common_PlatformMedium_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dBonus2Common_gap_0x3FE8 + 0x88),
+	(void**)(dBonus2Common_gap_0x3FE8_sub_0x88),
 	0x101C, 0x101E, 0x0000, 0x0000,
 	1026,
 	0.0f, 2.938735877055719e-39f,
@@ -312,14 +321,16 @@ u8 dBonus2Common_gap_0x3FE8_sub_0x10[120] = {
 	#include <Bonus2Common/gap_0x3FE8_sub_0x10.data.inc.c>
 };
 
-/* gap sub-block @ 0x4070 (was gap+0x88, 8 bytes) */
-u8 dBonus2Common_gap_0x3FE8_sub_0x88[8] = {
-	#include <Bonus2Common/gap_0x3FE8_sub_0x88.data.inc.c>
+/* MObjSub.sprites array @ 0x4070 — see PlatformSmall version for notes. */
+void *dBonus2Common_gap_0x3FE8_sub_0x88[2] = {
+	(void *)((u8 *)&dBonus2Common_PlatformMedium_MObjSub + 0x10),
+	NULL,
 };
 
-/* gap sub-block @ 0x4078 (was gap+0x90, 8 bytes) */
-u8 dBonus2Common_gap_0x3FE8_sub_0x90[8] = {
-	#include <Bonus2Common/gap_0x3FE8_sub_0x90.data.inc.c>
+/* Pointer table @ 0x4078 — see PlatformSmall version for notes. */
+void *dBonus2Common_gap_0x3FE8_sub_0x90[2] = {
+	(void *)dBonus2Common_gap_0x3FE8_sub_0x10,
+	NULL,
 };
 
 /* gap sub-block @ 0x4080 (was gap+0x98, 192 bytes) */
@@ -420,7 +431,7 @@ u32 dBonus2Common_PlatformMedium_AnimJoint_0x469C[] = {
 	aobjEvent32Wait(19),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformMedium_AnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformMedium_AnimJoint_0x469C),
 };
 
 u32 dBonus2Common_PlatformMedium_AnimJoint_0x46E0[] = {
@@ -440,7 +451,7 @@ u32 dBonus2Common_PlatformMedium_AnimJoint_0x46E0[] = {
 	aobjEvent32Wait(19),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformMedium_AnimJoint + 0x50),
+	(u32)(dBonus2Common_PlatformMedium_AnimJoint_0x46E0),
 	aobjEvent32End(),
 };
 
@@ -471,7 +482,7 @@ u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x473C[] = {
 	aobjEvent32SetExtValBlock(0x001, 4),
 	    0xFF000000,  /* -1.7014118346046923e+38f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x473C),
 };
 
 u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4764[] = {
@@ -484,15 +495,15 @@ u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4764[] = {
 	aobjEvent32SetExtValBlock(0x001, 4),
 	    0xFFFFFF33,  /* nanf */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0x34),
+	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x4764),
 };
 
 u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[] = {
-	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x473C),
 };
 
 u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[] = {
-	(u32)((u8*)dBonus2Common_PlatformMedium_MatAnimJoint + 0x34),
+	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x4764),
 	aobjEvent32End(),
 };
 
@@ -502,7 +513,7 @@ PAD(8);
 MObjSub dBonus2Common_PlatformLarge_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)((u8*)dBonus2Common_gap_0x4818 + 0x88),
+	(void**)(dBonus2Common_gap_0x4818_sub_0x88),
 	0x1228, 0x122A, 0x0000, 0x0000,
 	1026,
 	0.0f, 2.938735877055719e-39f,
@@ -537,14 +548,16 @@ u8 dBonus2Common_gap_0x4818_sub_0x10[120] = {
 	#include <Bonus2Common/gap_0x4818_sub_0x10.data.inc.c>
 };
 
-/* gap sub-block @ 0x48A0 (was gap+0x88, 8 bytes) */
-u8 dBonus2Common_gap_0x4818_sub_0x88[8] = {
-	#include <Bonus2Common/gap_0x4818_sub_0x88.data.inc.c>
+/* MObjSub.sprites array @ 0x48A0 — see PlatformSmall version for notes. */
+void *dBonus2Common_gap_0x4818_sub_0x88[2] = {
+	(void *)((u8 *)&dBonus2Common_PlatformLarge_MObjSub + 0x10),
+	NULL,
 };
 
-/* gap sub-block @ 0x48A8 (was gap+0x90, 8 bytes) */
-u8 dBonus2Common_gap_0x4818_sub_0x90[8] = {
-	#include <Bonus2Common/gap_0x4818_sub_0x90.data.inc.c>
+/* Pointer table @ 0x48A8 — see PlatformSmall version for notes. */
+void *dBonus2Common_gap_0x4818_sub_0x90[2] = {
+	(void *)dBonus2Common_gap_0x4818_sub_0x10,
+	NULL,
 };
 
 /* gap sub-block @ 0x48B0 (was gap+0x98, 192 bytes) */
@@ -649,7 +662,7 @@ u32 dBonus2Common_PlatformLarge_AnimJoint_0x4ECC[] = {
 	aobjEvent32Wait(19),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformLarge_AnimJoint + 0xC),
+	(u32)(dBonus2Common_PlatformLarge_AnimJoint_0x4ECC),
 };
 
 u32 dBonus2Common_PlatformLarge_AnimJoint_0x4F20[] = {
@@ -669,7 +682,7 @@ u32 dBonus2Common_PlatformLarge_AnimJoint_0x4F20[] = {
 	aobjEvent32Wait(19),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dBonus2Common_PlatformLarge_AnimJoint + 0x60),
+	(u32)(dBonus2Common_PlatformLarge_AnimJoint_0x4F20),
 	aobjEvent32End(),
 };
 

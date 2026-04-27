@@ -9,11 +9,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern MObjSub *dMNPlayersSpotlight_gap_0x0480_sub_0x8[];
 
-/* Raw data from file offset 0x0000 to 0x0408 (1032 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dMNPlayersSpotlight_gap_0x0000[8] = {
-	#include <MNPlayersSpotlight/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1024 bytes) */
 u8 dMNPlayersSpotlight_gap_0x0000_sub_0x8[1024] = {

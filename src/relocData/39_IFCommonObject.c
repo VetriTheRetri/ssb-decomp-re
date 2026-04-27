@@ -65,8 +65,17 @@ Gfx dIFCommonObject_DL_0x3840[112] = {
 
 /* 10-entry DObjDesc joint tree @ 0x03BC0, ending with a DOBJ_ARRAY_MAX
  * (18) terminator so the lbCommon loop in gcSetupCustomDObjs stops. */
-u8 dIFCommonObject_DObjDesc_joints[0x1B8] = {
-	#include <IFCommonObject/DObjDesc_joints.data.inc.c>
+DObjDesc dIFCommonObject_DObjDesc_joints[10] = {
+	{ 0,  (void*)0x00000000,             { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x0DF0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x10F8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x1B60, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x25B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x2838, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x2EC8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x3560, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void*)dIFCommonObject_DL_0x3840, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000,             { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Unidentified tail region @ 0x03D78..0x03FE0 (616 bytes). Looks like

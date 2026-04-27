@@ -370,13 +370,17 @@ u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[2348] = {
 
 /* MObjSub-list head @ 0x1ea0 — 6-entry MObjSub** array.
  * The real MObjSub data starts at +0x18 (dEFCommonEffects2_FireSparkMObjSub_MObjSub_real below). */
-MObjSub **dEFCommonEffects2_FireSparkMObjSub_MObjSub[6] = {
+MObjSub **dEFCommonEffects2_FireSparkMObjSub_MObjSub[2] = {
 	NULL,
 	NULL,
-	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x730),
-	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x528),
-	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x320),
-	(MObjSub **)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x118),
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
+void *dEFCommonEffects2_FireSparkMObjSub_MObjSub_sprites[4] = {
+	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x730),
+	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x528),
+	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x320),
+	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x118),
 };
 
 /* The real MObjSub @ +0x18 (was folded into the prior
@@ -384,7 +388,7 @@ MObjSub **dEFCommonEffects2_FireSparkMObjSub_MObjSub[6] = {
 MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub_real = {
 	0x0000,
 	0x02, 0x02,
-	(void**)0x07CC07AA,
+	(void**)dEFCommonEffects2_FireSparkMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
 	0.0f, 0.0f,

@@ -376,22 +376,26 @@ u8 dPikachuSpecial3_gap_0x1C90[8] = {
 };
 
 /* gap sub-block @ 0x1C98 (was gap+0x8, 520 bytes) */
-u8 dPikachuSpecial3_gap_0x1C90_sub_0x8[520] = {
-	#include <PikachuSpecial3/gap_0x1C90_sub_0x8.data.inc.c>
+u8 dPikachuSpecial3_Tex_0x1C98[520] = {
+	#include <PikachuSpecial3/Tex_0x1C98.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1EA0 (was gap+0x210, 512 bytes) */
-u8 dPikachuSpecial3_gap_0x1C90_sub_0x210[512] = {
-	#include <PikachuSpecial3/gap_0x1C90_sub_0x210.data.inc.c>
+u8 dPikachuSpecial3_Tex_0x1EA0[512] = {
+	#include <PikachuSpecial3/Tex_0x1EA0.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x20a0 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real below). */
-MObjSub **dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[4] = {
+MObjSub **dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[2] = {
 	NULL,
 	NULL,
-	(MObjSub **)dPikachuSpecial3_gap_0x1C90_sub_0x210,
-	(MObjSub **)dPikachuSpecial3_gap_0x1C90_sub_0x8,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
+void *dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_sprites[2] = {
+	(void *)dPikachuSpecial3_Tex_0x1EA0,
+	(void *)dPikachuSpecial3_Tex_0x1C98,
 };
 
 /* The real MObjSub @ +0x10 (was folded into the prior
@@ -399,7 +403,7 @@ MObjSub **dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[4] = {
 MObjSub dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real = {
 	0x0000,
 	0x02, 0x02,
-	(void**)0x084A082A,
+	(void**)dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0040, 0x0020,
 	0,
 	0.0f, 0.0f,

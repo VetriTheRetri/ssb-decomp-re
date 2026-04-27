@@ -19,22 +19,26 @@ u8 dSamusSpecial2_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 264 bytes) */
-u8 dSamusSpecial2_gap_0x0000_sub_0x8[264] = {
-	#include <SamusSpecial2/gap_0x0000_sub_0x8.data.inc.c>
+u8 dSamusSpecial2_Tex_0x8[264] = {
+	#include <SamusSpecial2/Tex_0x8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0110 (was gap+0x110, 256 bytes) */
-u8 dSamusSpecial2_gap_0x0000_sub_0x110[256] = {
-	#include <SamusSpecial2/gap_0x0000_sub_0x110.data.inc.c>
+u8 dSamusSpecial2_Tex_0x110[256] = {
+	#include <SamusSpecial2/Tex_0x110.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x210 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real below). */
-MObjSub **dSamusSpecial2_GrappleBeamMObjSub_MObjSub[4] = {
+MObjSub **dSamusSpecial2_GrappleBeamMObjSub_MObjSub[2] = {
 	NULL,
 	NULL,
-	(MObjSub **)dSamusSpecial2_gap_0x0000_sub_0x110,
-	(MObjSub **)dSamusSpecial2_gap_0x0000_sub_0x8,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
+void *dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites[2] = {
+	(void *)dSamusSpecial2_Tex_0x110,
+	(void *)dSamusSpecial2_Tex_0x8,
 };
 
 /* The real MObjSub @ +0x10 (was folded into the prior
@@ -42,7 +46,7 @@ MObjSub **dSamusSpecial2_GrappleBeamMObjSub_MObjSub[4] = {
 MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real = {
 	0x0000,
 	0x03, 0x02,
-	(void**)0x00A60086,
+	(void**)dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
 	0.0f, 0.0f,

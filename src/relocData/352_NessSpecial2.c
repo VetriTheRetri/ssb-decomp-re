@@ -19,22 +19,26 @@ u8 dNessSpecial2_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1032 bytes) */
-u8 dNessSpecial2_gap_0x0000_sub_0x8[1032] = {
-	#include <NessSpecial2/gap_0x0000_sub_0x8.data.inc.c>
+u8 dNessSpecial2_Tex_0x8[1032] = {
+	#include <NessSpecial2/Tex_0x8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0410 (was gap+0x410, 1024 bytes) */
-u8 dNessSpecial2_gap_0x0000_sub_0x410[1024] = {
-	#include <NessSpecial2/gap_0x0000_sub_0x410.data.inc.c>
+u8 dNessSpecial2_Tex_0x410[1024] = {
+	#include <NessSpecial2/Tex_0x410.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x810 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real below). */
-MObjSub **dNessSpecial2_PsychicMagnetMObjSub_MObjSub[4] = {
+MObjSub **dNessSpecial2_PsychicMagnetMObjSub_MObjSub[2] = {
 	NULL,
 	NULL,
-	(MObjSub **)dNessSpecial2_gap_0x0000_sub_0x410,
-	(MObjSub **)dNessSpecial2_gap_0x0000_sub_0x8,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
+void *dNessSpecial2_PsychicMagnetMObjSub_MObjSub_sprites[2] = {
+	(void *)dNessSpecial2_Tex_0x410,
+	(void *)dNessSpecial2_Tex_0x8,
 };
 
 /* The real MObjSub @ +0x10 (was folded into the prior
@@ -42,7 +46,7 @@ MObjSub **dNessSpecial2_PsychicMagnetMObjSub_MObjSub[4] = {
 MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real = {
 	0x0000,
 	0x03, 0x02,
-	(void**)0x02260206,
+	(void**)dNessSpecial2_PsychicMagnetMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
 	0.0f, 0.0f,

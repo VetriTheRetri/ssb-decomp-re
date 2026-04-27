@@ -29,22 +29,26 @@ u8 dCaptainSpecial2_gap_0x0050[8] = {
 };
 
 /* gap sub-block @ 0x0058 (was gap+0x8, 1160 bytes) */
-u8 dCaptainSpecial2_gap_0x0050_sub_0x8[1160] = {
-	#include <CaptainSpecial2/gap_0x0050_sub_0x8.data.inc.c>
+u8 dCaptainSpecial2_Tex_0x58[1160] = {
+	#include <CaptainSpecial2/Tex_0x58.tex.inc.c>
 };
 
 /* gap sub-block @ 0x04E0 (was gap+0x490, 1152 bytes) */
-u8 dCaptainSpecial2_gap_0x0050_sub_0x490[1152] = {
-	#include <CaptainSpecial2/gap_0x0050_sub_0x490.data.inc.c>
+u8 dCaptainSpecial2_Tex_0x4E0[1152] = {
+	#include <CaptainSpecial2/Tex_0x4E0.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x960 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dCaptainSpecial2_FalconKickMObjSub_MObjSub_real below). */
-MObjSub **dCaptainSpecial2_FalconKickMObjSub_MObjSub[4] = {
+MObjSub **dCaptainSpecial2_FalconKickMObjSub_MObjSub[2] = {
 	NULL,
 	NULL,
-	(MObjSub **)dCaptainSpecial2_gap_0x0050_sub_0x490,
-	(MObjSub **)dCaptainSpecial2_gap_0x0050_sub_0x8,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
+void *dCaptainSpecial2_FalconKickMObjSub_MObjSub_sprites[2] = {
+	(void *)dCaptainSpecial2_Tex_0x4E0,
+	(void *)dCaptainSpecial2_Tex_0x58,
 };
 
 /* The real MObjSub @ +0x10 (was folded into the prior
@@ -52,7 +56,7 @@ MObjSub **dCaptainSpecial2_FalconKickMObjSub_MObjSub[4] = {
 MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub_real = {
 	0x0000,
 	0x02, 0x02,
-	(void**)0x027A025A,
+	(void**)dCaptainSpecial2_FalconKickMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0030, 0x0030,
 	0,
 	0.0f, 0.0f,

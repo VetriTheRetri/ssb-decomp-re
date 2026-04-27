@@ -16840,43 +16840,47 @@ u32 dMVCommon_RoomTissuesAnimJoint_AnimJoint[15607] = {
 	    0x8C8C8C8C,
 };
 
-/* MObjSub: RoomLogoMObjSub @ 0x1BC60 */
-MObjSub dMVCommon_RoomLogoMObjSub_MObjSub = {
-	0x6F38,
-	0x6F, 0x38,
+/* MObjSub-list head @ 0x1bc60 — 2-entry MObjSub** array.
+ * The real MObjSub data starts at +0x8 (dMVCommon_RoomLogoMObjSub_MObjSub_real below). */
+MObjSub **dMVCommon_RoomLogoMObjSub_MObjSub[2] = {
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x8 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dMVCommon_RoomLogoMObjSub_MObjSub_real = {
+	0x0000,
+	0x00, 0x03,
 	(void**)0x00000000,
-	0x0000, 0x0003, 0x0000, 0x0000,
-	2097152,
-	1.1755062618592343e-38f, 0.0f,
+	0x0020, 0x0000, 0x0080, 0x0055,
+	0,
 	0.0f, 0.0f,
 	1.0f, 1.0f,
+	0.0f, 1.0f,
 	(void**)0x00000000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x0200, 0x0003,
-	1.1755062618592343e-38f, 1.1755062618592343e-38f,
+	0x0200,
+	0x00, 0x03,
+	0x0080,
+	0x0055, 0x0080, 0x0055,
 	0.0f, 0.0f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x02, { 0x22, 0x05 },
+	0.0f, 0.0f,
+	0x00022205,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
+	0x00, 0x00, { 0x00, 0x00 },
 	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x08 } },
-	-256, -256,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	0, 0,
 	0, 0,
 };
 
 /* Raw data from file offset 0x1BCD8 to 0x1C4A8 (2000 bytes) */
-/* gap sub-block @ 0x1BCD8 (was gap+0x0, 8 bytes) */
-u8 dMVCommon_gap_0x1BCD8[8] = {
-	#include <MVCommon/gap_0x1BCD8.data.inc.c>
-};
-
 /* gap sub-block @ 0x1BCE0 (was gap+0x8, 8 bytes) */
-u8 dMVCommon_gap_0x1BCD8_sub_0x8[8] = {
-	#include <MVCommon/gap_0x1BCD8_sub_0x8.data.inc.c>
+MObjSub *dMVCommon_gap_0x1BCD8_sub_0x8[2] = {
+	&dMVCommon_RoomLogoMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x1BCE8 (was gap+0x10, 64 bytes) */
@@ -17976,40 +17980,49 @@ u32 dMVCommon_RoomBossShadowAnimJoint_AnimJoint[727] = {
 	    0x11777771,
 };
 
-/* MObjSub: RoomDeskGroundMObjSub @ 0x20480 */
-MObjSub dMVCommon_RoomDeskGroundMObjSub_MObjSub = {
-	0x8122,
-	0x81, 0xDC,
-	(void**)0x00000000,
-	0x8124, 0x81DE, 0x0000, 0x0000,
-	-2116255262,
-	0.0f, 0.0f,
-	0.0f, 7.20267410662956e-43f,
-	0.0f, 2.938737278354183e-39f,
-	(void**)0x01400070,
+/* MObjSub-list head @ 0x20480 — 8-entry MObjSub** array.
+ * The real MObjSub data starts at +0x20 (dMVCommon_RoomDeskGroundMObjSub_MObjSub_real below). */
+MObjSub **dMVCommon_RoomDeskGroundMObjSub_MObjSub[8] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x20 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dMVCommon_RoomDeskGroundMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	0x3B03,
-	0x126F, 0x0000, 0x0000,
+	0x02, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0001, 0x0140, 0x0070,
+	0,
+	0.0020000000949949026f, 0.0f,
 	1.0f, 1.0f,
 	0.0020000000949949026f, 1.0f,
-	0x00000000,
-	{ { 0x02, 0x00, 0x02, 0x00 } },
-	0x00, 0x10, { 0x00, 0x08 },
-	{ { 0x01, 0x40, 0x00, 0x70 } },
-	{ { 0x3B, 0x03, 0x12, 0x6F } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x3B, 0x03, 0x12, 0x6F } },
-	0, 8197,
-	-111, 0,
+	(void**)0x00000000,
+	0x0200,
+	0x02, 0x00,
+	0x0010,
+	0x0008, 0x0140, 0x0070,
+	0.0020000000949949026f, 0.0f,
+	0.0020000000949949026f, 0.0f,
+	0x00002005,
+	{ { 0xFF, 0xFF, 0xFF, 0x91 } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xCC, 0x00 } },
+	{ { 0xCC, 0xCC, 0xCC, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x204F8 to 0x22440 (8008 bytes) */
-/* gap sub-block @ 0x204F8 (was gap+0x0, 32 bytes) */
-u8 dMVCommon_gap_0x204F8[32] = {
-	#include <MVCommon/gap_0x204F8.data.inc.c>
-};
-
 /* gap sub-block @ 0x20518 (was gap+0x20, 120 bytes) */
 u8 dMVCommon_gap_0x204F8_sub_0x20[120] = {
 	#include <MVCommon/gap_0x204F8_sub_0x20.data.inc.c>
@@ -18036,8 +18049,9 @@ u8 dMVCommon_gap_0x204F8_sub_0x200[120] = {
 };
 
 /* gap sub-block @ 0x20770 (was gap+0x278, 8 bytes) */
-u8 dMVCommon_gap_0x204F8_sub_0x278[8] = {
-	#include <MVCommon/gap_0x204F8_sub_0x278.data.inc.c>
+MObjSub *dMVCommon_gap_0x204F8_sub_0x278[2] = {
+	&dMVCommon_RoomDeskGroundMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x20778 (was gap+0x280, 16 bytes) */
@@ -18342,48 +18356,77 @@ u8 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data[1700] = {
 	#include <MVCommon/RoomDeskGroundMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
-/* MObjSub: RoomSpotlightMObjSub @ 0x22C90 */
-MObjSub dMVCommon_RoomSpotlightMObjSub_MObjSub = {
-	0x8B62,
-	0x8B, 0x62,
+/* MObjSub-list head @ 0x22c90 — 2-entry MObjSub** array.
+ * The real MObjSub data starts at +0x8 (dMVCommon_RoomSpotlightMObjSub_MObjSub_real below). */
+MObjSub **dMVCommon_RoomSpotlightMObjSub_MObjSub[2] = {
+	NULL,
+	NULL,
+};
+
+/* The real MObjSub @ +0x8 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dMVCommon_RoomSpotlightMObjSub_MObjSub_real = {
+	0x0000,
+	0x04, 0x02,
 	(void**)0x00000000,
-	0x0000, 0x0402, 0x0000, 0x0000,
-	2097152,
-	1.4694127800787178e-39f, 0.0f,
+	0x0020, 0x0000, 0x0010, 0x0020,
+	0,
 	0.0f, 0.0f,
 	1.0f, 1.0f,
+	0.0f, 1.0f,
 	(void**)0x00000000,
-	0x3F80,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x0200, 0x0401,
-	1.4694127800787178e-39f, 1.4694127800787178e-39f,
+	0x0200,
+	0x04, 0x01,
+	0x0010,
+	0x0020, 0x0010, 0x0020,
 	0.0f, 0.0f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x22, 0x05 },
+	0.0f, 0.0f,
+	0x00002205,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
+	0x00, 0x00, { 0x00, 0x00 },
 	{ { 0x00, 0x00, 0x00, 0xFF } },
 	{ { 0x00, 0x00, 0x00, 0x08 } },
-	-256, 0,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x00, 0x00, 0x00, 0x00 } },
+	0, 0,
 	0, 0,
 };
 
 /* Raw data from file offset 0x22D08 to 0x22E18 (272 bytes) */
-/* gap sub-block @ 0x22D08 (was gap+0x0, 8 bytes) */
-u8 dMVCommon_gap_0x22D08[8] = {
-	#include <MVCommon/gap_0x22D08.data.inc.c>
+/* gap sub-block @ 0x22D10 (was gap+0x8, 120 bytes) — secondary MObjSub */
+MObjSub dMVCommon_gap_0x22D08_sub_0x8 = {
+	0x0000,
+	0x04, 0x02,
+	(void**)0x00000000,
+	0x0020, 0x0000, 0x0020, 0x0020,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0200,
+	0x04, 0x01,
+	0x0020,
+	0x0020, 0x0020, 0x0020,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002205,
+	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
-/* gap sub-block @ 0x22D10 (was gap+0x8, 120 bytes) */
-u8 dMVCommon_gap_0x22D08_sub_0x8[120] = {
-	#include <MVCommon/gap_0x22D08_sub_0x8.data.inc.c>
-};
-
-/* gap sub-block @ 0x22D88 (was gap+0x80, 16 bytes) */
-u8 dMVCommon_gap_0x22D08_sub_0x80[16] = {
-	#include <MVCommon/gap_0x22D08_sub_0x80.data.inc.c>
+/* gap sub-block @ 0x22D88 (was gap+0x80, 16 bytes) — MObjSub*[4] list */
+MObjSub *dMVCommon_gap_0x22D08_sub_0x80[4] = {
+	&dMVCommon_RoomSpotlightMObjSub_MObjSub_real,
+	&dMVCommon_gap_0x22D08_sub_0x8,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x22D98 (was gap+0x90, 64 bytes) */

@@ -14,67 +14,81 @@ u8 dSCExplainGraphics_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
-u8 dSCExplainGraphics_gap_0x0000_sub_0x8[4104] = {
-	#include <SCExplainGraphics/gap_0x0000_sub_0x8.data.inc.c>
+u8 dSCExplainGraphics_Tex_0x8[4104] = {
+	#include <SCExplainGraphics/Tex_0x8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1010 (was gap+0x1010, 4104 bytes) */
-u8 dSCExplainGraphics_gap_0x0000_sub_0x1010[4104] = {
-	#include <SCExplainGraphics/gap_0x0000_sub_0x1010.data.inc.c>
+u8 dSCExplainGraphics_Tex_0x1010[4104] = {
+	#include <SCExplainGraphics/Tex_0x1010.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2018 (was gap+0x2018, 4104 bytes) */
-u8 dSCExplainGraphics_gap_0x0000_sub_0x2018[4104] = {
-	#include <SCExplainGraphics/gap_0x0000_sub_0x2018.data.inc.c>
+u8 dSCExplainGraphics_Tex_0x2018[4104] = {
+	#include <SCExplainGraphics/Tex_0x2018.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3020 (was gap+0x3020, 4104 bytes) */
-u8 dSCExplainGraphics_gap_0x0000_sub_0x3020[4104] = {
-	#include <SCExplainGraphics/gap_0x0000_sub_0x3020.data.inc.c>
+u8 dSCExplainGraphics_Tex_0x3020[4104] = {
+	#include <SCExplainGraphics/Tex_0x3020.tex.inc.c>
 };
 
 /* gap sub-block @ 0x4028 (was gap+0x4028, 4096 bytes) */
-u8 dSCExplainGraphics_gap_0x0000_sub_0x4028[4096] = {
-	#include <SCExplainGraphics/gap_0x0000_sub_0x4028.data.inc.c>
+u8 dSCExplainGraphics_Tex_0x4028[4096] = {
+	#include <SCExplainGraphics/Tex_0x4028.tex.inc.c>
 };
 
-/* MObjSub: StickMObjSub @ 0x5028 */
-MObjSub dSCExplainGraphics_StickMObjSub_MObjSub = {
-	0x140C,
-	0x14, 0x30,
-	(void**)0x00000000,
-	0x140D, 0x100A, 0x140E, 0x0C08,
-	336529414,
-	7.270934044909977e-27f, 7.421604937063235e-27f,
-	0.0f, 1.0789998175301091e-42f,
-	8.889682785399315e-27f, 2.938735877055719e-39f,
-	(void**)0x00400040,
+/* MObjSub-list head @ 0x5028 — 8-entry MObjSub** array.
+ * The real MObjSub data starts at +0x20 (dSCExplainGraphics_StickMObjSub_MObjSub_real below). */
+MObjSub **dSCExplainGraphics_StickMObjSub_MObjSub[2] = {
+	NULL,
+	NULL,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
+void *dSCExplainGraphics_StickMObjSub_MObjSub_sprites[6] = {
+	(void *)dSCExplainGraphics_Tex_0x4028,
+	(void *)dSCExplainGraphics_Tex_0x3020,
+	(void *)dSCExplainGraphics_Tex_0x2018,
+	(void *)dSCExplainGraphics_Tex_0x1010,
+	(void *)dSCExplainGraphics_Tex_0x8,
+	NULL,
+};
+
+/* The real MObjSub @ +0x20 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dSCExplainGraphics_StickMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	0x0000,
-	0x0000, 0x0000, 0x0000,
+	0x03, 0x02,
+	(void**)dSCExplainGraphics_StickMObjSub_MObjSub_sprites,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
+	0.0f, 0.0f,
 	1.0f, 1.0f,
 	0.0f, 1.0f,
-	0x00000000,
-	{ { 0x00, 0x01, 0x03, 0x01 } },
-	0x00, 0x40, { 0x00, 0x40 },
-	{ { 0x00, 0x40, 0x00, 0x40 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0, 8197,
-	-1, 0,
+	(void**)0x00000000,
+	0x0001,
+	0x03, 0x01,
+	0x0040,
+	0x0040, 0x0040, 0x0040,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002005,
+	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x50A0 to 0x5300 (608 bytes) */
-/* gap sub-block @ 0x50A0 (was gap+0x0, 32 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0[32] = {
-	#include <SCExplainGraphics/gap_0x50A0.data.inc.c>
-};
-
 /* gap sub-block @ 0x50C0 (was gap+0x20, 8 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0_sub_0x20[8] = {
-	#include <SCExplainGraphics/gap_0x50A0_sub_0x20.data.inc.c>
+MObjSub *dSCExplainGraphics_gap_0x50A0_sub_0x20[2] = {
+	&dSCExplainGraphics_StickMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x50C8 (was gap+0x28, 64 bytes) */
@@ -247,43 +261,53 @@ u8 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[1600] = {
 	#include <SCExplainGraphics/StickTapForward_MatAnimJoint_data.data.inc.c>
 };
 
-/* MObjSub: TapSparkMObjSub @ 0x5A98 */
-MObjSub dSCExplainGraphics_TapSparkMObjSub_MObjSub = {
-	0x16A7,
-	0x16, 0xC8,
-	(void**)((u8*)dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x448),
-	0x16A9, 0x15A4, 0x16AB, 0x1522,
-	1026,
-	3.2326038316569446e-25f, 2.938735877055719e-39f,
-	5.877561437213154e-39f, 0.0f,
-	0.0f, 0.0f,
-	(void**)0x3F800000,
-	0x3F80,
-	0x00, 0x00,
+/* MObjSub-list head @ 0x5a98 — 4-entry MObjSub** array.
+ * The real MObjSub data starts at +0x10 (dSCExplainGraphics_TapSparkMObjSub_MObjSub_real below). */
+MObjSub **dSCExplainGraphics_TapSparkMObjSub_MObjSub[1] = {
+	NULL,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
+void *dSCExplainGraphics_TapSparkMObjSub_MObjSub_sprites[3] = {
+	(void *)((u8*)&dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x448),
+	(void *)((u8*)&dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x240),
+	(void *)((u8*)&dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x38),
+};
+
+/* The real MObjSub @ +0x10 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dSCExplainGraphics_TapSparkMObjSub_MObjSub_real = {
 	0x0000,
-	0x0000, 0x3F80, 0x0000,
-	0.0f, 9.327042578545982e-41f,
-	2.938780718606577e-39f, 5.877561437213154e-39f,
-	0x00000000,
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x22, 0x05 } },
+	0x04, 0x02,
+	(void**)dSCExplainGraphics_TapSparkMObjSub_MObjSub_sprites,
+	0x0020, 0x0000, 0x0040, 0x0040,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x0001,
+	0x04, 0x00,
+	0x0020,
+	0x0020, 0x0040, 0x0040,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002205,
 	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	-65281, 8,
-	-65536, 640034304,
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0xFF, 0xFF, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0x00, 0x00 } },
+	{ { 0x26, 0x26, 0x26, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x5B10 to 0x5B68 (88 bytes) */
-/* gap sub-block @ 0x5B10 (was gap+0x0, 16 bytes) */
-u8 dSCExplainGraphics_gap_0x5B10[16] = {
-	#include <SCExplainGraphics/gap_0x5B10.data.inc.c>
-};
-
 /* gap sub-block @ 0x5B20 (was gap+0x10, 8 bytes) */
-u8 dSCExplainGraphics_gap_0x5B10_sub_0x10[8] = {
-	#include <SCExplainGraphics/gap_0x5B10_sub_0x10.data.inc.c>
+MObjSub *dSCExplainGraphics_gap_0x5B10_sub_0x10[2] = {
+	&dSCExplainGraphics_TapSparkMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x5B28 (was gap+0x18, 64 bytes) */

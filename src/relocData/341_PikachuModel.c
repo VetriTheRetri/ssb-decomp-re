@@ -1305,43 +1305,55 @@ u8 dPikachuModel_Tex_0x80F8[4904] = {
 	#include <PikachuModel/Tex_0x80F8.tex.inc.c>
 };
 
-/* MObjSub: ThunderTrailMObjSub @ 0x9420 */
-MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub = {
-	0x2509,
-	0x25, 0x2C,
-	(void**)((u8*)dPikachuModel_Tex_0x80F8 + 0xF28),
-	0x250B, 0x2306, 0x250C, 0x2204,
-	621748482,
-	0.0f, 1.0789998175301091e-42f,
-	1.4931169892420725e-16f, 2.938735877055719e-39f,
-	2.938780718606577e-39f, 0.0f,
-	(void**)0x00000000,
+/* MObjSub-list head @ 0x9420 — 6-entry MObjSub** array.
+ * The real MObjSub data starts at +0x18 (dPikachuModel_ThunderTrailMObjSub_MObjSub_real below). */
+MObjSub **dPikachuModel_ThunderTrailMObjSub_MObjSub[1] = {
+	NULL,
+};
+
+/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
+void *dPikachuModel_ThunderTrailMObjSub_MObjSub_sprites[5] = {
+	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0xF28),
+	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0xB20),
+	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0x718),
+	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0x310),
+	NULL,
+};
+
+/* The real MObjSub @ +0x18 (was folded into the prior
+ * MObjSub-typed declaration). */
+MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x00,
-	0x3F80,
-	0x0000, 0x3F80, 0x0000,
+	0x03, 0x02,
+	(void**)dPikachuModel_ThunderTrailMObjSub_MObjSub_sprites,
+	0x0020, 0x0000, 0x0020, 0x0020,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
 	0.0f, 1.0f,
-	0.0f, 9.2913094677057e-41f,
-	0x00200020,
-	{ { 0x00, 0x20, 0x00, 0x20 } },
+	(void**)0x00000000,
+	0x0001,
+	0x03, 0x01,
+	0x0020,
+	0x0020, 0x0020, 0x0020,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002001,
+	{ { 0xFF, 0xFF, 0xFF, 0xFF } },
 	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0x20, 0x01 } },
-	-1, 0,
-	-39169, 8,
+	{ { 0xFF, 0xFF, 0x66, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* Raw data from file offset 0x9498 to 0x95B0 (280 bytes) */
-/* gap sub-block @ 0x9498 (was gap+0x0, 24 bytes) */
-u8 dPikachuModel_gap_0x9498[24] = {
-	#include <PikachuModel/gap_0x9498.data.inc.c>
-};
-
 /* gap sub-block @ 0x94B0 (was gap+0x18, 8 bytes) */
-u8 dPikachuModel_gap_0x9498_sub_0x18[8] = {
-	#include <PikachuModel/gap_0x9498_sub_0x18.data.inc.c>
+MObjSub *dPikachuModel_gap_0x9498_sub_0x18[2] = {
+	&dPikachuModel_ThunderTrailMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x94B8 (was gap+0x20, 64 bytes) */
@@ -1356,7 +1368,7 @@ Gfx dPikachuModel_DL_0x94F8[23] = {
 
 /* DObjDesc: ThunderTrailDObjDesc @ 0x95B0 (3 entries) */
 DObjDesc dPikachuModel_ThunderTrailDObjDesc[] = {
-	{ 1, (void*)((u8*)dPikachuModel_gap_0x9498 + 0x60), { 5.605193857299268e-45f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.60133705331478e-43f, 3.879131357713549e-37f } },
+	{ 1, (void*)dPikachuModel_DL_0x94F8, { 5.605193857299268e-45f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.60133705331478e-43f, 3.879131357713549e-37f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 9.219703116178701e-41f, 1.2196040875706727e-37f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 1.401298464324817e-45f, 2.387866953589904e-38f, 5.348614539027114e-37f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 3.60133705331478e-43f } },
 };

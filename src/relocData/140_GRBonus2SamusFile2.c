@@ -18,24 +18,14 @@ Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x40[4] = {
 	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x40.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0080 (was gap+0x80, 56 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x80[56] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x80.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x80 @ 0x80 (4 vertices) */
+Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x80[4] = {
+	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x80.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x00B8 (was gap+0xB8, 8 bytes) */
-u16 dGRBonus2SamusFile2_gap_0x0000_sub_0xB8[4] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0xB8.palette.inc.c>
-};
-
-/* gap sub-block @ 0x00C0 (was gap+0xC0, 32 bytes) */
-Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0xC0[2] = {
+/* Vtx: gap_0x0000_sub_0xC0 @ 0xC0 (4 vertices) */
+Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0xC0[4] = {
 	#include <GRBonus2SamusFile2/gap_0x0000_sub_0xC0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x00E0 (was gap+0xE0, 32 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0xE0[32] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0xE0.data.inc.c>
 };
 
 /* Vtx @ 0x0100 (4 vertices) */
@@ -43,24 +33,14 @@ Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x100[4] = {
 	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x100.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0140 (was gap+0x140, 40 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x140[40] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x140.data.inc.c>
+/* Vtx: gap_0x0000_sub_0x140 @ 0x140 (4 vertices) */
+Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x140[4] = {
+	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x140.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0168 (was gap+0x168, 24 bytes) */
-u16 dGRBonus2SamusFile2_gap_0x0000_sub_0x168[12] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x168.palette.inc.c>
-};
-
-/* Vtx @ 0x0180 (1 vertices) */
-Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x180[1] = {
+/* Vtx: gap_0x0000_sub_0x180 @ 0x180 (4 vertices) */
+Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x180[4] = {
 	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x180.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x0190 (was gap+0x190, 48 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0x190[48] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0x190.data.inc.c>
 };
 
 /* Vtx @ 0x01C0 (4 vertices) */

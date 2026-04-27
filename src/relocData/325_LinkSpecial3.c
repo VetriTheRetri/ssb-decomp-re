@@ -65,7 +65,51 @@ Gfx dLinkSpecial3_BoomerangDL_DisplayList[27] = {
 	#include <LinkSpecial3/BoomerangDL.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0458 to 0x06F0 (664 bytes) */
-u8 dLinkSpecial3_BoomerangDL_post[664] = {
-	#include <LinkSpecial3/BoomerangDL_post.data.inc.c>
+/* BoomerangDL_post split into its constituent display lists, DObjDesc
+ * array, and trailing structure. The original 664-byte u8 blob held:
+ *   - 4 Gfx DLs (the last lacks gsSPEndDisplayList — runtime falls
+ *     through into the DObjDesc-area data, but nothing actually calls it
+ *     since no chain pointer targets +0x138);
+ *   - a DObjDesc[4] block at +0x1B8;
+ *   - a 48-byte trailing structure with two chain pointers (purpose TBD). */
+
+/* DL @ 0x458 (2 cmds) — single subDL call + gsSPEndDisplayList.
+ * Targets `Vtx_0x02A0_Vtx + 0xA8` via gsSPVertex (chain at +0x4). */
+Gfx dLinkSpecial3_BoomerangDL_post_DL_0x458[2] = {
+	#include <LinkSpecial3/BoomerangDL_post_DL_0x458.dl.inc.c>
+};
+
+/* DL @ 0x468 (35 cmds) — main boomerang surface DL with multiple
+ * gsSPVertex calls and texture binds. */
+Gfx dLinkSpecial3_BoomerangDL_post_DL_0x468[35] = {
+	#include <LinkSpecial3/BoomerangDL_post_DL_0x468.dl.inc.c>
+};
+
+/* DL @ 0x580 (2 cmds) — wrapper that gsSPDisplayList()s into DL_0x468. */
+Gfx dLinkSpecial3_BoomerangDL_post_DL_0x580[2] = {
+	#include <LinkSpecial3/BoomerangDL_post_DL_0x580.dl.inc.c>
+};
+
+/* DL @ 0x590 (16 cmds) — material/state setup DL with NO
+ * gsSPEndDisplayList terminator. Nothing references this address from
+ * the .reloc, so it's likely a fragment kept for engine reuse rather
+ * than executed via the normal DL chain. */
+Gfx dLinkSpecial3_BoomerangDL_post_DL_0x590[16] = {
+	#include <LinkSpecial3/BoomerangDL_post_DL_0x590.dl.inc.c>
+};
+
+/* DObjDesc @ 0x610 (4 entries) — DObj scene graph for the boomerang.
+ * Entry [1] points at DL_0x458, entry [2] points at DL_0x580. */
+DObjDesc dLinkSpecial3_BoomerangDL_post_DObjDesc[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 37.5f, -15.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLinkSpecial3_BoomerangDL_post_DL_0x458, { 0.0f, -30.0f, -15.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dLinkSpecial3_BoomerangDL_post_DL_0x580, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* Trailing 48-byte structure @ 0x6C0 — two chain pointers (at +0x4 and
+ * +0x20) both target +0xC of this block. Purpose TBD (likely some
+ * boomerang attachment metadata; possibly a small MObj-related struct). */
+u8 dLinkSpecial3_BoomerangDL_post_tail[48] = {
+	#include <LinkSpecial3/BoomerangDL_post_tail.data.inc.c>
 };

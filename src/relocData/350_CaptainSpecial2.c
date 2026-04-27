@@ -398,54 +398,64 @@ Gfx dCaptainSpecial2_Joint_0x5E70_DisplayList[22] = {
 	#include <CaptainSpecial2/Joint_0x5E70.dl.inc.c>
 };
 
-/* Raw data from file offset 0x5F20 to 0x5F30 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F20[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F20.data.inc.c>
+/* DObjDLLink @ 0x5F20 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F20[] = {
+	{ 0, dCaptainSpecial2_Joint_0x5690_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F30 to 0x5F40 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F30[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F30.data.inc.c>
+/* DObjDLLink @ 0x5F30 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F30[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5C60_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F40 to 0x5F50 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F40[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F40.data.inc.c>
+/* DObjDLLink @ 0x5F40 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F40[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5D20_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F50 to 0x5F60 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F50[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F50.data.inc.c>
+/* DObjDLLink @ 0x5F50 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F50[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5D50_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F60 to 0x5F70 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F60[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F60.data.inc.c>
+/* DObjDLLink @ 0x5F60 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F60[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5D80_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F70 to 0x5F80 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F70[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F70.data.inc.c>
+/* DObjDLLink @ 0x5F70 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F70[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5DB0_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F80 to 0x5F90 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F80[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F80.data.inc.c>
+/* DObjDLLink @ 0x5F80 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F80[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5DE0_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5F90 to 0x5FA0 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5F90[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5F90.data.inc.c>
+/* DObjDLLink @ 0x5F90 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5F90[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5E10_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5FA0 to 0x5FB0 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5FA0[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5FA0.data.inc.c>
+/* DObjDLLink @ 0x5FA0 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5FA0[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5E40_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x5FB0 to 0x5FC0 (16 bytes) */
-u8 dCaptainSpecial2_JointCmd_0x5FB0[16] = {
-	#include <CaptainSpecial2/JointCmd_0x5FB0.data.inc.c>
+/* DObjDLLink @ 0x5FB0 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dCaptainSpecial2_JointCmd_0x5FB0[] = {
+	{ 1, dCaptainSpecial2_Joint_0x5E70_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: EntryCar @ 0x5FC0 (13 entries) */

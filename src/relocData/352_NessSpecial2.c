@@ -84,9 +84,10 @@ Gfx dNessSpecial2_Joint_0x08E0_DisplayList[23] = {
 	#include <NessSpecial2/Joint_0x08E0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0998 to 0x09A8 (16 bytes) */
-u8 dNessSpecial2_JointCmd_0x0998[16] = {
-	#include <NessSpecial2/JointCmd_0x0998.data.inc.c>
+/* DObjDLLink @ 0x0998 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dNessSpecial2_JointCmd_0x0998[] = {
+	{ 1, dNessSpecial2_Joint_0x08E0_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: PsychicMagnetDObjDesc @ 0x9A8 (3 entries) */

@@ -73,9 +73,10 @@ Gfx dLinkSpecial2_Joint_0x02D8_DisplayList[34] = {
 	#include <LinkSpecial2/Joint_0x02D8.dl.inc.c>
 };
 
-/* Raw data from file offset 0x03E8 to 0x03F8 (16 bytes) */
-u8 dLinkSpecial2_JointCmd_0x03E8[16] = {
-	#include <LinkSpecial2/JointCmd_0x03E8.data.inc.c>
+/* DObjDLLink @ 0x03E8 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dLinkSpecial2_JointCmd_0x03E8[] = {
+	{ 1, dLinkSpecial2_Joint_0x02D8_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: EntryWaveDObjDesc @ 0x3F8 (3 entries) */
@@ -146,9 +147,10 @@ Gfx dLinkSpecial2_Joint_0x0698_DisplayList[34] = {
 	#include <LinkSpecial2/Joint_0x0698.dl.inc.c>
 };
 
-/* Raw data from file offset 0x07A8 to 0x07B8 (16 bytes) */
-u8 dLinkSpecial2_JointCmd_0x07A8[16] = {
-	#include <LinkSpecial2/JointCmd_0x07A8.data.inc.c>
+/* DObjDLLink @ 0x07A8 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dLinkSpecial2_JointCmd_0x07A8[] = {
+	{ 1, dLinkSpecial2_Joint_0x0698_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: EntryBeamDObjDesc @ 0x7B8 (3 entries) */
@@ -513,9 +515,10 @@ Gfx dLinkSpecial2_Joint_0x1100_DisplayList[22] = {
 	#include <LinkSpecial2/Joint_0x1100.dl.inc.c>
 };
 
-/* Raw data from file offset 0x11B0 to 0x11C0 (16 bytes) */
-u8 dLinkSpecial2_JointCmd_0x11B0[16] = {
-	#include <LinkSpecial2/JointCmd_0x11B0.data.inc.c>
+/* DObjDLLink @ 0x11B0 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dLinkSpecial2_JointCmd_0x11B0[] = {
+	{ 1, dLinkSpecial2_Joint_0x1100_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: SpinAttackDObjDesc @ 0x11C0 (3 entries) */

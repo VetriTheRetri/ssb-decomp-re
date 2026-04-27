@@ -84,9 +84,10 @@ Gfx dSamusSpecial2_Joint_0x02E0_DisplayList[18] = {
 	#include <SamusSpecial2/Joint_0x02E0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0370 to 0x0380 (16 bytes) */
-u8 dSamusSpecial2_JointCmd_0x0370[16] = {
-	#include <SamusSpecial2/JointCmd_0x0370.data.inc.c>
+/* DObjDLLink @ 0x0370 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dSamusSpecial2_JointCmd_0x0370[] = {
+	{ 1, dSamusSpecial2_Joint_0x02E0_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: GrappleBeamDObjDesc @ 0x380 (3 entries) */
@@ -202,9 +203,11 @@ Gfx dSamusSpecial2_Joint_0x0930_post[21] = {
 	#include <SamusSpecial2/Joint_0x0930_post.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0B78 to 0x0B90 (24 bytes) */
-u8 dSamusSpecial2_JointCmd_0x0B78[24] = {
-	#include <SamusSpecial2/JointCmd_0x0B78.data.inc.c>
+/* DObjDLLink @ 0x0B78 (3 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dSamusSpecial2_JointCmd_0x0B78[] = {
+	{ 0, dSamusSpecial2_Joint_0x0930_DisplayList },
+	{ 1, dSamusSpecial2_Joint_0x0930_post },
+	{ 4, NULL },
 };
 
 /* DObjDesc: EntryPointDObjDesc @ 0xB90 (3 entries) */

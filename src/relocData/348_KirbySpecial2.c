@@ -49,9 +49,10 @@ u8 dKirbySpecial2_JointCmd_0x0B00[16] = {
 	#include <KirbySpecial2/JointCmd_0x0B00.data.inc.c>
 };
 
-/* Raw data from file offset 0x0B10 to 0x0B20 (16 bytes) */
-u8 dKirbySpecial2_JointCmd_0x0B10[16] = {
-	#include <KirbySpecial2/JointCmd_0x0B10.data.inc.c>
+/* DObjDLLink @ 0x0B10 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dKirbySpecial2_JointCmd_0x0B10[] = {
+	{ 1, dKirbySpecial2_Joint_0x0A78_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: VulcanJab @ 0xB20 (3 entries) */
@@ -95,14 +96,16 @@ Gfx dKirbySpecial2_Joint_0x0CE0_DisplayList[31] = {
 	#include <KirbySpecial2/Joint_0x0CE0.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0DD8 to 0x0DE8 (16 bytes) */
-u8 dKirbySpecial2_JointCmd_0x0DD8[16] = {
-	#include <KirbySpecial2/JointCmd_0x0DD8.data.inc.c>
+/* DObjDLLink @ 0x0DD8 — first DL slot of CutterTrailDObjDesc[1]. */
+DObjDLLink dKirbySpecial2_JointCmd_0x0DD8[] = {
+	{ 1, dKirbySpecial2_Joint_0x0C70_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x0DE8 to 0x0DF8 (16 bytes) */
-u8 dKirbySpecial2_JointCmd_0x0DE8[16] = {
-	#include <KirbySpecial2/JointCmd_0x0DE8.data.inc.c>
+/* DObjDLLink @ 0x0DE8 — DL slot of CutterTrailDObjDesc[2]. */
+DObjDLLink dKirbySpecial2_JointCmd_0x0DE8[] = {
+	{ 1, dKirbySpecial2_Joint_0x0CE0_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: CutterTrailDObjDesc @ 0xDF8 (4 entries) */
@@ -256,9 +259,10 @@ Gfx dKirbySpecial2_Joint_0x1CF8_DisplayList[20] = {
 	#include <KirbySpecial2/Joint_0x1CF8.dl.inc.c>
 };
 
-/* Raw data from file offset 0x1D98 to 0x1DA8 (16 bytes) */
-u8 dKirbySpecial2_JointCmd_0x1D98[16] = {
-	#include <KirbySpecial2/JointCmd_0x1D98.data.inc.c>
+/* DObjDLLink @ 0x1D98 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dKirbySpecial2_JointCmd_0x1D98[] = {
+	{ 1, dKirbySpecial2_Joint_0x1CF8_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: EntryStar @ 0x1DA8 (3 entries) */

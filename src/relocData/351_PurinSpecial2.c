@@ -157,24 +157,28 @@ Gfx dPurinSpecial2_Joint_0x2090_DisplayList[12] = {
 	#include <PurinSpecial2/Joint_0x2090.dl.inc.c>
 };
 
-/* Raw data from file offset 0x20F0 to 0x2100 (16 bytes) */
-u8 dPurinSpecial2_JointCmd_0x20F0[16] = {
-	#include <PurinSpecial2/JointCmd_0x20F0.data.inc.c>
+/* DObjDLLink @ 0x20F0 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dPurinSpecial2_JointCmd_0x20F0[] = {
+	{ 1, dPurinSpecial2_Joint_0x1F38_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x2100 to 0x2110 (16 bytes) */
-u8 dPurinSpecial2_JointCmd_0x2100[16] = {
-	#include <PurinSpecial2/JointCmd_0x2100.data.inc.c>
+/* DObjDLLink @ 0x2100 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dPurinSpecial2_JointCmd_0x2100[] = {
+	{ 1, dPurinSpecial2_Joint_0x1FD0_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x2110 to 0x2120 (16 bytes) */
-u8 dPurinSpecial2_JointCmd_0x2110[16] = {
-	#include <PurinSpecial2/JointCmd_0x2110.data.inc.c>
+/* DObjDLLink @ 0x2110 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dPurinSpecial2_JointCmd_0x2110[] = {
+	{ 1, dPurinSpecial2_Joint_0x2048_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x2120 to 0x2130 (16 bytes) */
-u8 dPurinSpecial2_JointCmd_0x2120[16] = {
-	#include <PurinSpecial2/JointCmd_0x2120.data.inc.c>
+/* DObjDLLink @ 0x2120 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dPurinSpecial2_JointCmd_0x2120[] = {
+	{ 1, dPurinSpecial2_Joint_0x2090_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: SingDObjDesc @ 0x2130 (7 entries) */

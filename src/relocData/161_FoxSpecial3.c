@@ -382,9 +382,10 @@ Gfx dFoxSpecial3_Joint_0x2920_post_post_post_post_post_post[22] = {
 	#include <FoxSpecial3/Joint_0x2920_post_post_post_post_post_post.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2BB0 to 0x2BC0 (16 bytes) */
-u8 dFoxSpecial3_JointCmd_0x2BB0[16] = {
-	#include <FoxSpecial3/JointCmd_0x2BB0.data.inc.c>
+/* DObjDLLink @ 0x2BB0 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dFoxSpecial3_JointCmd_0x2BB0[] = {
+	{ 0, dFoxSpecial3_Joint_0x1FA0_DisplayList },
+	{ 4, NULL },
 };
 
 /* Raw data from file offset 0x2BC0 to 0x2C30 (112 bytes) */

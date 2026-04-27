@@ -261,14 +261,16 @@ Gfx dPikachuSpecial2_Joint_0x1598_DisplayList[17] = {
 	#include <PikachuSpecial2/Joint_0x1598.dl.inc.c>
 };
 
-/* Raw data from file offset 0x1620 to 0x1630 (16 bytes) */
-u8 dPikachuSpecial2_JointCmd_0x1620[16] = {
-	#include <PikachuSpecial2/JointCmd_0x1620.data.inc.c>
+/* DObjDLLink @ 0x1620 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dPikachuSpecial2_JointCmd_0x1620[] = {
+	{ 0, dPikachuSpecial2_Joint_0x14B8_DisplayList },
+	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x1630 to 0x1640 (16 bytes) */
-u8 dPikachuSpecial2_JointCmd_0x1630[16] = {
-	#include <PikachuSpecial2/JointCmd_0x1630.data.inc.c>
+/* DObjDLLink @ 0x1630 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dPikachuSpecial2_JointCmd_0x1630[] = {
+	{ 1, dPikachuSpecial2_Joint_0x1598_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDesc: ThunderShockDObjDesc @ 0x1640 (5 entries) */

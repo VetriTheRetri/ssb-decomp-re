@@ -15,7 +15,7 @@ u8 dEFCommonEffects3_gap_0x0000[8] = {
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 256 bytes) */
 u8 dEFCommonEffects3_gap_0x0000_sub_0x8[256] = {
-	#include <EFCommonEffects3/gap_0x0000_sub_0x8.data.inc.c>
+	#include <EFCommonEffects3/gap_0x0000_sub_0x8.tex.inc.c>
 };
 
 /* MObjSub: MBallRays @ 0x108 */

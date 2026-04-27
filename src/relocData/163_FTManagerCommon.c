@@ -14,7 +14,7 @@ u8 dFTManagerCommon_gap_0x0000[8] = {
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 512 bytes) */
 u8 dFTManagerCommon_gap_0x0000_sub_0x8[512] = {
-	#include <FTManagerCommon/gap_0x0000_sub_0x8.data.inc.c>
+	#include <FTManagerCommon/gap_0x0000_sub_0x8.tex.inc.c>
 };
 
 /* Vtx @ 0x0208 (4 vertices) */

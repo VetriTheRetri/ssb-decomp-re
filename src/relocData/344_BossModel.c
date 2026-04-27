@@ -334,7 +334,7 @@ u16 dBossModel_gap_0x2850_sub_0x8[20] = {
 
 /* gap sub-block @ 0x2880 (was gap+0x30, 512 bytes) */
 u8 dBossModel_gap_0x2850_sub_0x30[512] = {
-	#include <BossModel/gap_0x2850_sub_0x30.data.inc.c>
+	#include <BossModel/gap_0x2850_sub_0x30.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2A80 (was gap+0x230, 288 bytes) */

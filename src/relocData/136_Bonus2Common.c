@@ -24,27 +24,27 @@ u8 dBonus2Common_gap_0x0000[8] = {
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
 u8 dBonus2Common_gap_0x0000_sub_0x8[4104] = {
-	#include <Bonus2Common/gap_0x0000_sub_0x8.data.inc.c>
+	#include <Bonus2Common/gap_0x0000_sub_0x8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1010 (was gap+0x1010, 2056 bytes) */
 u8 dBonus2Common_gap_0x0000_sub_0x1010[2056] = {
-	#include <Bonus2Common/gap_0x0000_sub_0x1010.data.inc.c>
+	#include <Bonus2Common/gap_0x0000_sub_0x1010.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1818 (was gap+0x1818, 2056 bytes) */
 u8 dBonus2Common_gap_0x0000_sub_0x1818[2056] = {
-	#include <Bonus2Common/gap_0x0000_sub_0x1818.data.inc.c>
+	#include <Bonus2Common/gap_0x0000_sub_0x1818.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2020 (was gap+0x2020, 3088 bytes) */
 u8 dBonus2Common_gap_0x0000_sub_0x2020[3088] = {
-	#include <Bonus2Common/gap_0x0000_sub_0x2020.data.inc.c>
+	#include <Bonus2Common/gap_0x0000_sub_0x2020.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2C30 (was gap+0x2C30, 2800 bytes) */
 u8 dBonus2Common_gap_0x0000_sub_0x2C30[2800] = {
-	#include <Bonus2Common/gap_0x0000_sub_0x2C30.data.inc.c>
+	#include <Bonus2Common/gap_0x0000_sub_0x2C30.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x3720 — 4-entry MObjSub** array.

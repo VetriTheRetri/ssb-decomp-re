@@ -29,7 +29,7 @@ PAD(8);
 
 /* @ 0x0008, 4096 bytes — score curves + RGBA32 image data */
 u8 dITBonus1Object_data[0x1000] = {
-	#include <ITBonus1Object/data.data.inc.c>
+	#include <ITBonus1Object/data.tex.inc.c>
 };
 
 /* @ 0x1008, 64 bytes — Vtx[4] quad geometry */

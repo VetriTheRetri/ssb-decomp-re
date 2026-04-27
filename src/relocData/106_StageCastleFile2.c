@@ -984,17 +984,17 @@ u16 dStageCastleFile2_gap_0x3684_sub_0x64[20] = {
 
 /* gap sub-block @ 0x3710 (was gap+0x8C, 1160 bytes) */
 u8 dStageCastleFile2_gap_0x3684_sub_0x8C[1160] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x8C.data.inc.c>
+	#include <StageCastleFile2/gap_0x3684_sub_0x8C.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3B98 (was gap+0x514, 520 bytes) */
 u8 dStageCastleFile2_gap_0x3684_sub_0x514[520] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x514.data.inc.c>
+	#include <StageCastleFile2/gap_0x3684_sub_0x514.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3DA0 (was gap+0x71C, 192 bytes) */
 u8 dStageCastleFile2_gap_0x3684_sub_0x71C[192] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x71C.data.inc.c>
+	#include <StageCastleFile2/gap_0x3684_sub_0x71C.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3E60 (was gap+0x7DC, 64 bytes) */

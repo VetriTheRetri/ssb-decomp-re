@@ -9,8 +9,8 @@
 
 /* Raw data from file offset 0x0000 to 0x09D0 (2512 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0000[64] = {
-	#include <GRBonus2MarioFile2/gap_0x0000.data.inc.c>
+Vtx dGRBonus2MarioFile2_gap_0x0000[4] = {
+	#include <GRBonus2MarioFile2/gap_0x0000.vtx.inc.c>
 };
 
 /* Vtx: gap_0x0000_sub_0x40 @ 0x40 (4 vertices) */

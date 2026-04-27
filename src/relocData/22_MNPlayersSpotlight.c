@@ -17,7 +17,7 @@ u8 dMNPlayersSpotlight_gap_0x0000[8] = {
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1024 bytes) */
 u8 dMNPlayersSpotlight_gap_0x0000_sub_0x8[1024] = {
-	#include <MNPlayersSpotlight/gap_0x0000_sub_0x8.data.inc.c>
+	#include <MNPlayersSpotlight/gap_0x0000_sub_0x8.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x408 — referenced by `&llMNPlayersSpotlightMObjSub`

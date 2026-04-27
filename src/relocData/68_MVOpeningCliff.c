@@ -221,7 +221,7 @@ u8 dMVOpeningCliff_gap_0x3850_sub_0x1C40[1240] = {
 
 /* gap sub-block @ 0x5968 (was gap+0x2118, 2816 bytes) */
 u8 dMVOpeningCliff_gap_0x3850_sub_0x2118[2816] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x2118.data.inc.c>
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2118.tex.inc.c>
 };
 
 /* gap sub-block @ 0x6468 (was gap+0x2C18, 320 bytes) */

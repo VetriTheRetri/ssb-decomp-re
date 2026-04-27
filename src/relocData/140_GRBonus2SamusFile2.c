@@ -29,8 +29,8 @@ u16 dGRBonus2SamusFile2_gap_0x0000_sub_0xB8[4] = {
 };
 
 /* gap sub-block @ 0x00C0 (was gap+0xC0, 32 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x0000_sub_0xC0[32] = {
-	#include <GRBonus2SamusFile2/gap_0x0000_sub_0xC0.data.inc.c>
+Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0xC0[2] = {
+	#include <GRBonus2SamusFile2/gap_0x0000_sub_0xC0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x00E0 (was gap+0xE0, 32 bytes) */

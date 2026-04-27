@@ -1105,7 +1105,7 @@ u16 dMVCommon_gap_0x8E7C_sub_0xC[20] = {
 
 /* gap sub-block @ 0x8EB0 (was gap+0x34, 2048 bytes) */
 u8 dMVCommon_gap_0x8E7C_sub_0x34[2048] = {
-	#include <MVCommon/gap_0x8E7C_sub_0x34.data.inc.c>
+	#include <MVCommon/gap_0x8E7C_sub_0x34.tex.inc.c>
 };
 
 /* gap sub-block @ 0x96B0 (was gap+0x834, 256 bytes) */

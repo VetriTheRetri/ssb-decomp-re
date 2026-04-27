@@ -367,7 +367,7 @@ u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[] = {
 /* MObjSub: Metroid @ 0x1470 */
 MObjSub dFTEmblemModels_Metroid_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dFTEmblemModels_gap_0x14E8 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
@@ -376,7 +376,7 @@ MObjSub dFTEmblemModels_Metroid_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3000, 0x0002,
 	0.0f, 0.0f,
@@ -461,7 +461,7 @@ PAD(4);
 /* MObjSub: Fox @ 0x1940 */
 MObjSub dFTEmblemModels_Fox_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dFTEmblemModels_gap_0x19B8 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
@@ -470,7 +470,7 @@ MObjSub dFTEmblemModels_Fox_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3000, 0x0002,
 	0.0f, 0.0f,
@@ -752,7 +752,7 @@ u32 dFTEmblemModels_Zelda_MatAnimJoint_0x2684[] = {
 /* MObjSub: Yoshi @ 0x2690 */
 MObjSub dFTEmblemModels_Yoshi_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dFTEmblemModels_gap_0x2708 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
@@ -761,7 +761,7 @@ MObjSub dFTEmblemModels_Yoshi_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3000, 0x0002,
 	0.0f, 0.0f,
@@ -846,7 +846,7 @@ PAD(4);
 /* MObjSub: FZero @ 0x2FF0 */
 MObjSub dFTEmblemModels_FZero_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dFTEmblemModels_gap_0x3068 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
@@ -855,7 +855,7 @@ MObjSub dFTEmblemModels_FZero_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3000, 0x0002,
 	0.0f, 0.0f,
@@ -937,7 +937,7 @@ u32 dFTEmblemModels_FZero_MatAnimJoint_0x38FC[] = {
 /* MObjSub: Kirby @ 0x3900 */
 MObjSub dFTEmblemModels_Kirby_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dFTEmblemModels_gap_0x3978 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
@@ -946,7 +946,7 @@ MObjSub dFTEmblemModels_Kirby_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3000, 0x0002,
 	0.0f, 0.0f,
@@ -1179,7 +1179,7 @@ PAD(8);
 /* MObjSub: Mother @ 0x4840 */
 MObjSub dFTEmblemModels_Mother_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dFTEmblemModels_gap_0x48B8 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
@@ -1188,7 +1188,7 @@ MObjSub dFTEmblemModels_Mother_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3000, 0x0002,
 	0.0f, 0.0f,

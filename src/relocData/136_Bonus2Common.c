@@ -17,10 +17,7 @@ extern MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[];
 extern MObjSub *dBonus2Common_gap_0x4818_sub_0x88[];
 
 /* Raw data from file offset 0x0000 to 0x3720 (14112 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dBonus2Common_gap_0x0000[8] = {
-	#include <Bonus2Common/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
 u8 dBonus2Common_gap_0x0000_sub_0x8[4104] = {
@@ -60,7 +57,7 @@ MObjSub **dBonus2Common_PlatformSmall_MObjSub[4] = {
  * MObjSub-typed declaration). */
 MObjSub dBonus2Common_PlatformSmall_MObjSub_real = {
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0037, 0x0037,
 	0,
@@ -69,7 +66,7 @@ MObjSub dBonus2Common_PlatformSmall_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x04, 0x01,
+	G_IM_FMT_I, G_IM_SIZ_8b,
 	0x0037,
 	0x0037, 0x0037, 0x0037,
 	0.0f, 0.0f,
@@ -300,7 +297,7 @@ MObjSub **dBonus2Common_PlatformMedium_MObjSub[4] = {
  * MObjSub-typed declaration). */
 MObjSub dBonus2Common_PlatformMedium_MObjSub_real = {
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0037, 0x0037,
 	0,
@@ -309,7 +306,7 @@ MObjSub dBonus2Common_PlatformMedium_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x04, 0x01,
+	G_IM_FMT_I, G_IM_SIZ_8b,
 	0x0037,
 	0x0037, 0x0037, 0x0037,
 	0.0f, 0.0f,
@@ -532,7 +529,7 @@ MObjSub **dBonus2Common_PlatformLarge_MObjSub[4] = {
  * MObjSub-typed declaration). */
 MObjSub dBonus2Common_PlatformLarge_MObjSub_real = {
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0037, 0x0037,
 	0,
@@ -541,7 +538,7 @@ MObjSub dBonus2Common_PlatformLarge_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x04, 0x01,
+	G_IM_FMT_I, G_IM_SIZ_8b,
 	0x0037,
 	0x0037, 0x0037, 0x0037,
 	0.0f, 0.0f,

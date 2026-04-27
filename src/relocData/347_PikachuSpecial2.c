@@ -26,16 +26,23 @@ u8 dPikachuSpecial2_gap_0x0028[8] = {
 };
 
 /* gap sub-block @ 0x0030 (was gap+0x8, 520 bytes) */
-u8 dPikachuSpecial2_Tex_0x30[520] = {
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPikachuSpecial2_Tex_0x30[512] = {
 	#include <PikachuSpecial2/Tex_0x30.tex.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x0238 (was gap+0x210, 520 bytes) */
-u8 dPikachuSpecial2_Tex_0x238[520] = {
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPikachuSpecial2_Tex_0x238[512] = {
 	#include <PikachuSpecial2/Tex_0x238.tex.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x0440 (was gap+0x418, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dPikachuSpecial2_Tex_0x440[512] = {
 	#include <PikachuSpecial2/Tex_0x440.tex.inc.c>
 };
@@ -59,7 +66,7 @@ void *dPikachuSpecial2_UnkMObjSub_MObjSub_sprites[4] = {
  * MObjSub-typed declaration). */
 MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)dPikachuSpecial2_UnkMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
@@ -68,7 +75,7 @@ MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0001,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0020,
 	0x0020, 0x0040, 0x0040,
 	0.0f, 0.0f,
@@ -209,7 +216,7 @@ u8 dPikachuSpecial2_Tex_0x11A0[512] = {
 /* MObjSub: ThunderShockMObjSub @ 0x13A0 */
 MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x04EC, 0x050C,
 	82641766,
@@ -218,7 +225,7 @@ MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub = {
 	2.938780718606577e-39f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x3F80,
 	0x0000, 0x3F80, 0x0000,
 	0.0f, 1.0f,

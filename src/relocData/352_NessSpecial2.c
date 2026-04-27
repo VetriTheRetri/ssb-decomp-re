@@ -13,17 +13,16 @@ extern u8 dNessSpecial2_gap_0x0888[];
 extern MObjSub *dNessSpecial2_gap_0x0888_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0810 (2064 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dNessSpecial2_gap_0x0000[8] = {
-	#include <NessSpecial2/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
-/* gap sub-block @ 0x0008 (was gap+0x8, 1032 bytes) */
-u8 dNessSpecial2_Tex_0x8[1032] = {
+/* @tex fmt=IA8 dim=32x32 */
+u8 dNessSpecial2_Tex_0x8[1024] = {
 	#include <NessSpecial2/Tex_0x8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x0410 (was gap+0x410, 1024 bytes) */
+PAD(8);
+
+/* @tex fmt=IA8 dim=32x32 */
 u8 dNessSpecial2_Tex_0x410[1024] = {
 	#include <NessSpecial2/Tex_0x410.tex.inc.c>
 };
@@ -44,30 +43,30 @@ void *dNessSpecial2_PsychicMagnetMObjSub_MObjSub_sprites[2] = {
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */
 MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real = {
-	0x0000,
-	0x03, 0x02,
+	0x0000,                                       /* pad00 */
+	G_IM_FMT_IA, G_IM_SIZ_16b,                    /* fmt, siz */
 	(void**)dNessSpecial2_PsychicMagnetMObjSub_MObjSub_sprites,
-	0x0020, 0x0000, 0x0040, 0x0040,
-	0,
-	0.0f, 0.0f,
-	1.0f, 1.0f,
-	0.0f, 1.0f,
-	(void**)0x00000000,
-	0x0001,
-	0x03, 0x01,
-	0x0020,
-	0x0020, 0x0040, 0x0040,
-	0.0f, 0.0f,
-	0.0f, 0.0f,
-	0x00002001,
-	{ { 0x78, 0xFF, 0xFF, 0xFF } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x00, 0xFF, 0x00, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x08 } },
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
-	{ { 0x80, 0x80, 0x80, 0x00 } },
-	0, 0,
-	0, 0,
+	0x0020, 0x0000, 0x0040, 0x0040,               /* unk08, unk0A, unk0C, unk0E */
+	0,                                            /* unk10 */
+	0.0f, 0.0f,                                   /* trau, trav */
+	1.0f, 1.0f,                                   /* scau, scav */
+	0.0f, 1.0f,                                   /* unk24, unk28 */
+	(void**)0x00000000,                           /* palettes */
+	0x0001,                                       /* flags */
+	G_IM_FMT_IA, G_IM_SIZ_8b,                     /* block_fmt, block_siz */
+	0x0020,                                       /* block_dxt (texture w=32) */
+	0x0020, 0x0040, 0x0040,                       /* unk36 (h=32), unk38, unk3A */
+	0.0f, 0.0f,                                   /* scrollu, scrollv */
+	0.0f, 0.0f,                                   /* unk44, unk48 */
+	0x00002001,                                   /* unk4C */
+	{ { 0x78, 0xFF, 0xFF, 0xFF } },               /* primcolor */
+	0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
+	{ { 0x00, 0xFF, 0x00, 0xFF } },               /* envcolor */
+	{ { 0x00, 0x00, 0x00, 0x08 } },               /* blendcolor */
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },               /* light1color */
+	{ { 0x80, 0x80, 0x80, 0x00 } },               /* light2color */
+	0, 0,                                         /* unk68, unk6C */
+	0, 0,                                         /* unk70, unk74 */
 };
 
 /* Raw data from file offset 0x0888 to 0x08A0 (24 bytes) */

@@ -2226,7 +2226,7 @@ u8 dMNTitle_gap_0x26370_sub_0x2458[16] = {
 /* MObjSub: SlashMObjSub @ 0x287D8 */
 MObjSub dMNTitle_SlashMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0xA1FA, 0xA246, 0x0000, 0x0000,
 	-1577344440,

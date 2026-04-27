@@ -63,9 +63,11 @@ u8 dNessSpecial3_gap_0x0000_sub_0x294[20] = {
 };
 
 /* Raw data from file offset 0x02A8 to 0x0330 (136 bytes) */
-u8 dNessSpecial3_Tex_0x02A8[136] = {
+u8 dNessSpecial3_Tex_0x02A8[128] = {
 	#include <NessSpecial3/Tex_0x02A8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x0330 to 0x0730 (1024 bytes) */
 u8 dNessSpecial3_Tex_0x0330[1024] = {

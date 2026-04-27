@@ -1850,9 +1850,11 @@ u8 dSamusModel_Tex_0xC408[1240] = {
 };
 
 /* Texture data @ 0xC8E0 (136 bytes) */
-u8 dSamusModel_Tex_0xC8E0[136] = {
+u8 dSamusModel_Tex_0xC8E0[128] = {
 	#include <SamusModel/Tex_0xC8E0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0xC968 (112 bytes) */
 u8 dSamusModel_Tex_0xC968[112] = {
@@ -1870,19 +1872,25 @@ u8 dSamusModel_Tex_0xCCA8[560] = {
 };
 
 /* Texture data @ 0xCED8 (520 bytes) */
-u8 dSamusModel_Tex_0xCED8[520] = {
+u8 dSamusModel_Tex_0xCED8[512] = {
 	#include <SamusModel/Tex_0xCED8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xD0E0 (520 bytes) */
-u8 dSamusModel_Tex_0xD0E0[520] = {
+u8 dSamusModel_Tex_0xD0E0[512] = {
 	#include <SamusModel/Tex_0xD0E0.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xD2E8 (520 bytes) */
-u8 dSamusModel_Tex_0xD2E8[520] = {
+u8 dSamusModel_Tex_0xD2E8[512] = {
 	#include <SamusModel/Tex_0xD2E8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xD4F0 @ 0xD4F0 (16 colors RGBA5551) */
 u16 dSamusModel_Lut_0xD4F0_palette[16] = {

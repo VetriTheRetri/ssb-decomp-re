@@ -8,10 +8,7 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x3490 (13456 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dGRBonus3File2_gap_0x0000[8] = {
-	#include <GRBonus3File2/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
 u16 dGRBonus3File2_gap_0x0000_sub_0x8[20] = {
@@ -286,23 +283,23 @@ Gfx dGRBonus3File2_DL_0x3410[16] = {
 /* DObjDesc: Layer0DObj @ 0x3490 (12 entries) */
 DObjDesc dGRBonus3File2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, -450.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x2EB8), { 0.0f, 0.0f, 450.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3188), { 5850.0f, -6818.33203125f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3218), { -6000.0f, -5754.09130859375f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3290), { -6000.0f, -2841.043701171875f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x32F0), { 6000.0f, -2768.33251953125f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3310), { 6000.0f, 234.09756469726562f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3370), { -6000.0f, 68.69014739990234f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3390), { -6000.0f, 2767.172119140625f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x33F0), { 6000.0f, 3000.0f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus3File2_gap_0x0000 + 0x3410), { 6000.0f, 5700.0f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x2EB8), { 0.0f, 0.0f, 450.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3188), { 5850.0f, -6818.33203125f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3218), { -6000.0f, -5754.09130859375f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3290), { -6000.0f, -2841.043701171875f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x32F0), { 6000.0f, -2768.33251953125f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3310), { 6000.0f, 234.09756469726562f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3370), { -6000.0f, 68.69014739990234f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3390), { -6000.0f, 2767.172119140625f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x33F0), { 6000.0f, 3000.0f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)(dGRBonus3File2_DL_0x3410), { 6000.0f, 5700.0f, -300.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* MObjSub: Layer1MObj @ 0x36A0 */
 MObjSub dGRBonus3File2_Layer1MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -311,7 +308,7 @@ MObjSub dGRBonus3File2_Layer1MObj_MObjSub = {
 	0.0f, 1.7509622182051936e-30f,
 	(void**)0x00000000,
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	0x0000,
 	0x0000, 0x0020, 0x0000,
 	2.938780718606577e-39f, 0.0f,

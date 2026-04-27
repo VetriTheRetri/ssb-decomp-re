@@ -36,14 +36,18 @@ u16 dMVOpeningStandoff_Lut_0x0058_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0080 (2056 bytes) */
-u8 dMVOpeningStandoff_Tex_0x0080[2056] = {
+u8 dMVOpeningStandoff_Tex_0x0080[2048] = {
 	#include <MVOpeningStandoff/Tex_0x0080.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x0888 (2056 bytes) */
-u8 dMVOpeningStandoff_Tex_0x0888[2056] = {
+u8 dMVOpeningStandoff_Tex_0x0888[2048] = {
 	#include <MVOpeningStandoff/Tex_0x0888.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x1090 (512 bytes) */
 u8 dMVOpeningStandoff_Tex_0x1090[512] = {
@@ -103,7 +107,7 @@ u8 dMVOpeningStandoff_Ground_post[16424] = {
 /* MObjSub: LightningMObjSub @ 0x6140 */
 MObjSub dMVOpeningStandoff_LightningMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x1854, 0x1930,
 	408361266,

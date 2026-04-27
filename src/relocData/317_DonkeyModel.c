@@ -2034,14 +2034,18 @@ u8 dDonkeyModel_Tex_0xCF88[632] = {
 };
 
 /* Texture data @ 0xD200 (136 bytes) */
-u8 dDonkeyModel_Tex_0xD200[136] = {
+u8 dDonkeyModel_Tex_0xD200[128] = {
 	#include <DonkeyModel/Tex_0xD200.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xD288 (520 bytes) */
-u8 dDonkeyModel_Tex_0xD288[520] = {
+u8 dDonkeyModel_Tex_0xD288[512] = {
 	#include <DonkeyModel/Tex_0xD288.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xD490 @ 0xD490 (16 colors RGBA5551) */
 u16 dDonkeyModel_Lut_0xD490_palette[16] = {

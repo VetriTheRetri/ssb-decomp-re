@@ -13,17 +13,16 @@ extern u8 dSamusSpecial2_gap_0x0288[];
 extern MObjSub *dSamusSpecial2_gap_0x0288_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0210 (528 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dSamusSpecial2_gap_0x0000[8] = {
-	#include <SamusSpecial2/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
-/* gap sub-block @ 0x0008 (was gap+0x8, 264 bytes) */
-u8 dSamusSpecial2_Tex_0x8[264] = {
+/* @tex fmt=IA8 dim=16x16 */
+u8 dSamusSpecial2_Tex_0x8[256] = {
 	#include <SamusSpecial2/Tex_0x8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x0110 (was gap+0x110, 256 bytes) */
+PAD(8);
+
+/* @tex fmt=IA8 dim=16x16 */
 u8 dSamusSpecial2_Tex_0x110[256] = {
 	#include <SamusSpecial2/Tex_0x110.tex.inc.c>
 };
@@ -44,19 +43,19 @@ void *dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites[2] = {
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */
 MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real = {
-	0x0000,
-	0x03, 0x02,
+	0x0000,                                       /* pad00 */
+	G_IM_FMT_IA, G_IM_SIZ_16b,                    /* fmt, siz */
 	(void**)dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites,
-	0x0020, 0x0000, 0x0020, 0x0020,
-	0,
-	0.0f, 0.0f,
-	1.0f, 1.0f,
-	0.0f, 1.0f,
-	(void**)0x00000000,
-	0x0001,
-	0x03, 0x01,
-	0x0010,
-	0x0010, 0x0020, 0x0020,
+	0x0020, 0x0000, 0x0020, 0x0020,               /* unk08, unk0A, unk0C, unk0E */
+	0,                                            /* unk10 */
+	0.0f, 0.0f,                                   /* trau, trav */
+	1.0f, 1.0f,                                   /* scau, scav */
+	0.0f, 1.0f,                                   /* unk24, unk28 */
+	(void**)0x00000000,                           /* palettes */
+	0x0001,                                       /* flags */
+	G_IM_FMT_IA, G_IM_SIZ_8b,                     /* block_fmt, block_siz */
+	0x0010,                                       /* block_dxt (texture w=16) */
+	0x0010, 0x0020, 0x0020,                       /* unk36 (h=16), unk38, unk3A */
 	0.0f, 0.0f,
 	0.0f, 0.0f,
 	0x00002001,

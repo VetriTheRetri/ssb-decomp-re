@@ -24,9 +24,11 @@ u16 dMarioSpecial2_Lut_0x0030_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0058 to 0x00A0 (72 bytes) */
-u8 dMarioSpecial2_Tex_0x0058[72] = {
+u8 dMarioSpecial2_Tex_0x0058[64] = {
 	#include <MarioSpecial2/Tex_0x0058.tex.inc.c>
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x00A0 to 0x0120 (128 bytes) */
 u8 dMarioSpecial2_Tex_0x00A0[128] = {

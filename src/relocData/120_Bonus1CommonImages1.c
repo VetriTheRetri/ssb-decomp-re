@@ -172,6 +172,8 @@ u16 dBonus1CommonImages1_Lut_0x0A00_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0A28 (72 bytes) */
-u8 dBonus1CommonImages1_Tex_0x0A28[72] = {
+u8 dBonus1CommonImages1_Tex_0x0A28[64] = {
 	#include <Bonus1CommonImages1/Tex_0x0A28.tex.inc.c>
 };
+
+PAD(8);

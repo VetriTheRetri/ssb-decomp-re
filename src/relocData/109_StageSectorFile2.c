@@ -17,9 +17,11 @@ u16 dStageSectorFile2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0030 (2056 bytes) */
-u8 dStageSectorFile2_Tex_0x0030[2056] = {
+u8 dStageSectorFile2_Tex_0x0030[2048] = {
 	#include <StageSectorFile2/Tex_0x0030.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0838 @ 0x838 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x0838_palette[16] = {
@@ -29,9 +31,11 @@ u16 dStageSectorFile2_Lut_0x0838_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0860 (136 bytes) */
-u8 dStageSectorFile2_Tex_0x0860[136] = {
+u8 dStageSectorFile2_Tex_0x0860[128] = {
 	#include <StageSectorFile2/Tex_0x0860.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x08E8 @ 0x8E8 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x08E8_palette[16] = {
@@ -53,9 +57,11 @@ u16 dStageSectorFile2_Lut_0x0998_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x09C0 (2056 bytes) */
-u8 dStageSectorFile2_Tex_0x09C0[2056] = {
+u8 dStageSectorFile2_Tex_0x09C0[2048] = {
 	#include <StageSectorFile2/Tex_0x09C0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x11C8 @ 0x11C8 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x11C8_palette[16] = {
@@ -65,19 +71,25 @@ u16 dStageSectorFile2_Lut_0x11C8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x11F0 (2056 bytes) */
-u8 dStageSectorFile2_Tex_0x11F0[2056] = {
+u8 dStageSectorFile2_Tex_0x11F0[2048] = {
 	#include <StageSectorFile2/Tex_0x11F0.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x19F8 (520 bytes) */
-u8 dStageSectorFile2_Tex_0x19F8[520] = {
+u8 dStageSectorFile2_Tex_0x19F8[512] = {
 	#include <StageSectorFile2/Tex_0x19F8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x1C00 (136 bytes) */
-u8 dStageSectorFile2_Tex_0x1C00[136] = {
+u8 dStageSectorFile2_Tex_0x1C00[128] = {
 	#include <StageSectorFile2/Tex_0x1C00.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x1C88 @ 0x1C88 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x1C88_palette[16] = {
@@ -111,9 +123,11 @@ u16 dStageSectorFile2_Lut_0x25E8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2610 (520 bytes) */
-u8 dStageSectorFile2_Tex_0x2610[520] = {
+u8 dStageSectorFile2_Tex_0x2610[512] = {
 	#include <StageSectorFile2/Tex_0x2610.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2818 @ 0x2818 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x2818_palette[16] = {
@@ -123,9 +137,11 @@ u16 dStageSectorFile2_Lut_0x2818_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2840 (520 bytes) */
-u8 dStageSectorFile2_Tex_0x2840[520] = {
+u8 dStageSectorFile2_Tex_0x2840[512] = {
 	#include <StageSectorFile2/Tex_0x2840.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2A48 @ 0x2A48 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x2A48_palette[16] = {
@@ -135,9 +151,11 @@ u16 dStageSectorFile2_Lut_0x2A48_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2A70 (520 bytes) */
-u8 dStageSectorFile2_Tex_0x2A70[520] = {
+u8 dStageSectorFile2_Tex_0x2A70[512] = {
 	#include <StageSectorFile2/Tex_0x2A70.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2C78 @ 0x2C78 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x2C78_palette[16] = {
@@ -147,9 +165,11 @@ u16 dStageSectorFile2_Lut_0x2C78_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2CA0 (264 bytes) */
-u8 dStageSectorFile2_Tex_0x2CA0[264] = {
+u8 dStageSectorFile2_Tex_0x2CA0[256] = {
 	#include <StageSectorFile2/Tex_0x2CA0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2DA8 @ 0x2DA8 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x2DA8_palette[16] = {
@@ -159,9 +179,11 @@ u16 dStageSectorFile2_Lut_0x2DA8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2DD0 (520 bytes) */
-u8 dStageSectorFile2_Tex_0x2DD0[520] = {
+u8 dStageSectorFile2_Tex_0x2DD0[512] = {
 	#include <StageSectorFile2/Tex_0x2DD0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2FD8 @ 0x2FD8 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x2FD8_palette[16] = {
@@ -171,9 +193,11 @@ u16 dStageSectorFile2_Lut_0x2FD8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3000 (264 bytes) */
-u8 dStageSectorFile2_Tex_0x3000[264] = {
+u8 dStageSectorFile2_Tex_0x3000[256] = {
 	#include <StageSectorFile2/Tex_0x3000.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x3108 @ 0x3108 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x3108_palette[16] = {
@@ -183,9 +207,11 @@ u16 dStageSectorFile2_Lut_0x3108_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3130 (72 bytes) */
-u8 dStageSectorFile2_Tex_0x3130[72] = {
+u8 dStageSectorFile2_Tex_0x3130[64] = {
 	#include <StageSectorFile2/Tex_0x3130.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x3178 @ 0x3178 (16 colors RGBA5551) */
 u16 dStageSectorFile2_Lut_0x3178_palette[16] = {

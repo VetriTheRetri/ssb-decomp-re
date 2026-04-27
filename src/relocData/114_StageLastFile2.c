@@ -13,10 +13,7 @@ extern u8 dStageLastFile2_gap_0x20F0[];
 extern void *dStageLastFile2_gap_0x20F0_sub_0x960[];
 
 /* Raw data from file offset 0x0000 to 0x2078 (8312 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dStageLastFile2_gap_0x0000[8] = {
-	#include <StageLastFile2/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
 u16 dStageLastFile2_gap_0x0000_sub_0x8[20] = {
@@ -176,7 +173,7 @@ u8 dStageLastFile2_gap_0x0000_sub_0x1878[2048] = {
 /* MObjSub: Layer1MObj @ 0x2078 */
 MObjSub dStageLastFile2_Layer1MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)(dStageLastFile2_gap_0x20F0_sub_0x960),
 	0x0821, 0x0A9A, 0x0822, 0x0AA0,
 	136514211,

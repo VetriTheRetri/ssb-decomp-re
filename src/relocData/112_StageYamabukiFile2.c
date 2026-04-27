@@ -17,9 +17,11 @@ u16 dStageYamabukiFile2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0030 (1032 bytes) */
-u8 dStageYamabukiFile2_Tex_0x0030[1032] = {
+u8 dStageYamabukiFile2_Tex_0x0030[1024] = {
 	#include <StageYamabukiFile2/Tex_0x0030.tex.inc.c>
 };
+
+PAD(8);
 
 #if !defined(REGION_JP)
 /* Palette: Lut_0x0438 @ 0x438 (16 colors RGBA5551) — US position (pair02) */
@@ -67,9 +69,11 @@ u16 dStageYamabukiFile2_Lut_0x0D78_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0DA0 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x0DA0[136] = {
+u8 dStageYamabukiFile2_Tex_0x0DA0[128] = {
 	#include <StageYamabukiFile2/Tex_0x0DA0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0E28 @ 0xE28 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x0E28_palette[16] = {
@@ -79,9 +83,11 @@ u16 dStageYamabukiFile2_Lut_0x0E28_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0E50 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x0E50[136] = {
+u8 dStageYamabukiFile2_Tex_0x0E50[128] = {
 	#include <StageYamabukiFile2/Tex_0x0E50.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0ED8 @ 0xED8 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x0ED8_palette[16] = {
@@ -91,9 +97,11 @@ u16 dStageYamabukiFile2_Lut_0x0ED8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0F00 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x0F00[136] = {
+u8 dStageYamabukiFile2_Tex_0x0F00[128] = {
 	#include <StageYamabukiFile2/Tex_0x0F00.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0F88 @ 0xF88 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x0F88_palette[16] = {
@@ -103,9 +111,11 @@ u16 dStageYamabukiFile2_Lut_0x0F88_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0FB0 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x0FB0[136] = {
+u8 dStageYamabukiFile2_Tex_0x0FB0[128] = {
 	#include <StageYamabukiFile2/Tex_0x0FB0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x1038 @ 0x1038 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1038_palette[16] = {
@@ -115,9 +125,11 @@ u16 dStageYamabukiFile2_Lut_0x1038_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1060 (264 bytes) */
-u8 dStageYamabukiFile2_Tex_0x1060[264] = {
+u8 dStageYamabukiFile2_Tex_0x1060[256] = {
 	#include <StageYamabukiFile2/Tex_0x1060.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x1168 @ 0x1168 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1168_palette[16] = {
@@ -151,9 +163,11 @@ u16 dStageYamabukiFile2_Lut_0x1348_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1370 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x1370[136] = {
+u8 dStageYamabukiFile2_Tex_0x1370[128] = {
 	#include <StageYamabukiFile2/Tex_0x1370.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x13F8 @ 0x13F8 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x13F8_palette[16] = {
@@ -163,9 +177,11 @@ u16 dStageYamabukiFile2_Lut_0x13F8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1420 (1032 bytes) */
-u8 dStageYamabukiFile2_Tex_0x1420[1032] = {
+u8 dStageYamabukiFile2_Tex_0x1420[1024] = {
 	#include <StageYamabukiFile2/Tex_0x1420.tex.inc.c>
 };
+
+PAD(8);
 
 #if defined(REGION_JP)
 /* Palette: Lut_0x0438 (16 colors RGBA5551) — JP position (pair02, after pair17) */
@@ -193,9 +209,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0x1850 (72 bytes) */
-u8 dStageYamabukiFile2_Tex_0x1850[72] = {
+u8 dStageYamabukiFile2_Tex_0x1850[64] = {
 	#include <StageYamabukiFile2/Tex_0x1850.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x1898 @ 0x1898 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1898_palette[16] = {
@@ -225,9 +243,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0x1AF0 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x1AF0[136] = {
+u8 dStageYamabukiFile2_Tex_0x1AF0[128] = {
 	#include <StageYamabukiFile2/Tex_0x1AF0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x1B78 @ 0x1B78 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1B78_palette[16] = {
@@ -259,9 +279,11 @@ u16 dStageYamabukiFile2_Lut_0x21D8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2200 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x2200[136] = {
+u8 dStageYamabukiFile2_Tex_0x2200[128] = {
 	#include <StageYamabukiFile2/Tex_0x2200.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2288 @ 0x2288 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x2288_palette[16] = {
@@ -271,9 +293,11 @@ u16 dStageYamabukiFile2_Lut_0x2288_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x22B0 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x22B0[136] = {
+u8 dStageYamabukiFile2_Tex_0x22B0[128] = {
 	#include <StageYamabukiFile2/Tex_0x22B0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2338 @ 0x2338 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x2338_palette[16] = {
@@ -283,9 +307,11 @@ u16 dStageYamabukiFile2_Lut_0x2338_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2360 (520 bytes) */
-u8 dStageYamabukiFile2_Tex_0x2360[520] = {
+u8 dStageYamabukiFile2_Tex_0x2360[512] = {
 	#include <StageYamabukiFile2/Tex_0x2360.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2568 @ 0x2568 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x2568_palette[16] = {
@@ -295,9 +321,11 @@ u16 dStageYamabukiFile2_Lut_0x2568_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2590 (520 bytes) */
-u8 dStageYamabukiFile2_Tex_0x2590[520] = {
+u8 dStageYamabukiFile2_Tex_0x2590[512] = {
 	#include <StageYamabukiFile2/Tex_0x2590.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x2798 @ 0x2798 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x2798_palette[16] = {
@@ -307,9 +335,11 @@ u16 dStageYamabukiFile2_Lut_0x2798_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x27C0 (264 bytes) */
-u8 dStageYamabukiFile2_Tex_0x27C0[264] = {
+u8 dStageYamabukiFile2_Tex_0x27C0[256] = {
 	#include <StageYamabukiFile2/Tex_0x27C0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x28C8 @ 0x28C8 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x28C8_palette[16] = {
@@ -331,9 +361,11 @@ u16 dStageYamabukiFile2_Lut_0x3610_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3638 (520 bytes) */
-u8 dStageYamabukiFile2_Tex_0x3638[520] = {
+u8 dStageYamabukiFile2_Tex_0x3638[512] = {
 	#include <StageYamabukiFile2/Tex_0x3638.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x3840 @ 0x3840 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x3840_palette[16] = {
@@ -343,9 +375,11 @@ u16 dStageYamabukiFile2_Lut_0x3840_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3868 (136 bytes) */
-u8 dStageYamabukiFile2_Tex_0x3868[136] = {
+u8 dStageYamabukiFile2_Tex_0x3868[128] = {
 	#include <StageYamabukiFile2/Tex_0x3868.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x38F0 @ 0x38F0 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x38F0_palette[16] = {
@@ -355,9 +389,11 @@ u16 dStageYamabukiFile2_Lut_0x38F0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3918 (520 bytes) */
-u8 dStageYamabukiFile2_Tex_0x3918[520] = {
+u8 dStageYamabukiFile2_Tex_0x3918[512] = {
 	#include <StageYamabukiFile2/Tex_0x3918.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x3B20 @ 0x3B20 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x3B20_palette[16] = {
@@ -639,7 +675,7 @@ PAD(8);
 /* MObjSub: Layer1MObj @ 0x5260 */
 MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,

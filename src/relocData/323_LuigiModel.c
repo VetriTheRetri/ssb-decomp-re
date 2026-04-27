@@ -10,10 +10,7 @@
 extern u8 dLuigiModel_gap_0x28E0_sub_0x37C[];
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dLuigiModel_gap_0x0000[8] = {
-	#include <LuigiModel/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
 u16 dLuigiModel_gap_0x0000_sub_0x8[8] = {

@@ -8,32 +8,34 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x5028 (20520 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dSCExplainGraphics_gap_0x0000[8] = {
-	#include <SCExplainGraphics/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
+/* @tex fmt=IA8 dim=64x64 */
 u8 dSCExplainGraphics_Tex_0x8[4104] = {
 	#include <SCExplainGraphics/Tex_0x8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1010 (was gap+0x1010, 4104 bytes) */
+/* @tex fmt=IA8 dim=64x64 */
 u8 dSCExplainGraphics_Tex_0x1010[4104] = {
 	#include <SCExplainGraphics/Tex_0x1010.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2018 (was gap+0x2018, 4104 bytes) */
+/* @tex fmt=IA8 dim=64x64 */
 u8 dSCExplainGraphics_Tex_0x2018[4104] = {
 	#include <SCExplainGraphics/Tex_0x2018.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3020 (was gap+0x3020, 4104 bytes) */
+/* @tex fmt=IA8 dim=64x64 */
 u8 dSCExplainGraphics_Tex_0x3020[4104] = {
 	#include <SCExplainGraphics/Tex_0x3020.tex.inc.c>
 };
 
 /* gap sub-block @ 0x4028 (was gap+0x4028, 4096 bytes) */
+/* @tex fmt=IA8 dim=64x64 */
 u8 dSCExplainGraphics_Tex_0x4028[4096] = {
 	#include <SCExplainGraphics/Tex_0x4028.tex.inc.c>
 };
@@ -59,7 +61,7 @@ void *dSCExplainGraphics_StickMObjSub_MObjSub_sprites[6] = {
  * MObjSub-typed declaration). */
 MObjSub dSCExplainGraphics_StickMObjSub_MObjSub_real = {
 	0x0000,
-	0x03, 0x02,
+	G_IM_FMT_IA, G_IM_SIZ_16b,
 	(void**)dSCExplainGraphics_StickMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
@@ -68,7 +70,7 @@ MObjSub dSCExplainGraphics_StickMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0001,
-	0x03, 0x01,
+	G_IM_FMT_IA, G_IM_SIZ_8b,
 	0x0040,
 	0x0040, 0x0040, 0x0040,
 	0.0f, 0.0f,
@@ -278,7 +280,7 @@ void *dSCExplainGraphics_TapSparkMObjSub_MObjSub_sprites[3] = {
  * MObjSub-typed declaration). */
 MObjSub dSCExplainGraphics_TapSparkMObjSub_MObjSub_real = {
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	(void**)dSCExplainGraphics_TapSparkMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
@@ -287,7 +289,7 @@ MObjSub dSCExplainGraphics_TapSparkMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0001,
-	0x04, 0x00,
+	G_IM_FMT_I, G_IM_SIZ_4b,
 	0x0020,
 	0x0020, 0x0040, 0x0040,
 	0.0f, 0.0f,

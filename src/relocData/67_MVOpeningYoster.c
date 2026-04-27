@@ -30,9 +30,11 @@ u16 dMVOpeningYoster_Lut255_0x0620[260] = {
 };
 
 /* Texture data @ 0x0828 (4104 bytes) */
-u8 dMVOpeningYoster_Tex_0x0828[4104] = {
+u8 dMVOpeningYoster_Tex_0x0828[4096] = {
 	#include <MVOpeningYoster/Tex_0x0828.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x1830 (2056 bytes) */
 u8 dMVOpeningYoster_Tex_0x1830[2056] = {
@@ -45,9 +47,11 @@ u8 dMVOpeningYoster_Tex_0x2038[2056] = {
 };
 
 /* Texture data @ 0x2840 (2056 bytes) */
-u8 dMVOpeningYoster_Tex_0x2840[2056] = {
+u8 dMVOpeningYoster_Tex_0x2840[2048] = {
 	#include <MVOpeningYoster/Tex_0x2840.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x3048 (2056 bytes) */
 u8 dMVOpeningYoster_Tex_0x3048[2056] = {
@@ -65,9 +69,11 @@ u8 dMVOpeningYoster_Tex_0x4858[4104] = {
 };
 
 /* Texture data @ 0x5860 (4104 bytes) */
-u8 dMVOpeningYoster_Tex_0x5860[4104] = {
+u8 dMVOpeningYoster_Tex_0x5860[4096] = {
 	#include <MVOpeningYoster/Tex_0x5860.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x6868 (4096 bytes) */
 u8 dMVOpeningYoster_Tex_0x6868[4096] = {

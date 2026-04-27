@@ -168,7 +168,7 @@ PAD(8);
 /* MObjSub: Layer1MObj @ 0xA60 */
 MObjSub dGRBonus2FoxFile2_Layer1MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -177,7 +177,7 @@ MObjSub dGRBonus2FoxFile2_Layer1MObj_MObjSub = {
 	0.0f, 0.0f,
 	(void**)(dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218),
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,

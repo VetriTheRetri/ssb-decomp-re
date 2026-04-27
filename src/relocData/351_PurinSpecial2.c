@@ -15,19 +15,25 @@ PAD(8);
 extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[];
 
 /* Raw data from file offset 0x0008 to 0x0810 (2056 bytes) */
-u8 dPurinSpecial2_Tex_0x0008[2056] = {
+u8 dPurinSpecial2_Tex_0x0008[2048] = {
 	#include <PurinSpecial2/Tex_0x0008.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x0810 to 0x1018 (2056 bytes) */
-u8 dPurinSpecial2_Tex_0x0810[2056] = {
+u8 dPurinSpecial2_Tex_0x0810[2048] = {
 	#include <PurinSpecial2/Tex_0x0810.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x1018 to 0x1820 (2056 bytes) */
-u8 dPurinSpecial2_Tex_0x1018[2056] = {
+u8 dPurinSpecial2_Tex_0x1018[2048] = {
 	#include <PurinSpecial2/Tex_0x1018.tex.inc.c>
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x1820 to 0x1C20 (1024 bytes) */
 u8 dPurinSpecial2_Tex_0x1820[1024] = {
@@ -49,7 +55,7 @@ MObjSub **dPurinSpecial2_SingMObjSub_MObjSub[6] = {
  * MObjSub-typed declaration). */
 MObjSub dPurinSpecial2_SingMObjSub_MObjSub_real = {
 	0x0000,
-	0x03, 0x02,
+	G_IM_FMT_IA, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
@@ -58,7 +64,7 @@ MObjSub dPurinSpecial2_SingMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x03, 0x01,
+	G_IM_FMT_IA, G_IM_SIZ_8b,
 	0x0020,
 	0x0020, 0x0040, 0x0040,
 	0.0f, 0.0f,

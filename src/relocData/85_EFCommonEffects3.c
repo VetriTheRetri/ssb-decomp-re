@@ -8,10 +8,7 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0108 (264 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dEFCommonEffects3_gap_0x0000[8] = {
-	#include <EFCommonEffects3/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 256 bytes) */
 u8 dEFCommonEffects3_gap_0x0000_sub_0x8[256] = {
@@ -21,7 +18,7 @@ u8 dEFCommonEffects3_gap_0x0000_sub_0x8[256] = {
 /* MObjSub: MBallRays @ 0x108 */
 MObjSub dEFCommonEffects3_MBallRays_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0045, 0x00BE, 0x00BE, 0x00C1,
 	770,
@@ -279,7 +276,7 @@ u8 dEFCommonEffects3_RebirthHalo_AnimJoint_data[300] = {
 /* MObjSub: ItemGetSwirl @ 0x2CA8 */
 MObjSub dEFCommonEffects3_ItemGetSwirl_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0B2D, 0x0BA8, 0x0B2E, 0x0BAA,
 	187632556,
@@ -288,7 +285,7 @@ MObjSub dEFCommonEffects3_ItemGetSwirl_MObjSub = {
 	2.938758297831148e-39f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x3F80,
 	0x0000, 0x3F80, 0x0000,
 	0.0f, 1.0f,

@@ -1150,7 +1150,7 @@ u8 dNessModel_gap_0x9050_sub_0x420[1024] = {
 /* MObjSub: PKThunderWaveMObjSub @ 0x9870 */
 MObjSub dNessModel_PKThunderWaveMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x261F, 0x2640, 0x2620, 0x251C,
 	639837210,
@@ -1159,7 +1159,7 @@ MObjSub dNessModel_PKThunderWaveMObjSub_MObjSub = {
 	5.877516595662296e-39f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x3F80,
 	0x0000, 0x3F80, 0x0000,
 	0.0f, 1.0f,
@@ -1311,9 +1311,11 @@ u8 dNessModel_Tex_0xAD00[304] = {
 };
 
 /* Texture data @ 0xAE30 (264 bytes) */
-u8 dNessModel_Tex_0xAE30[264] = {
+u8 dNessModel_Tex_0xAE30[256] = {
 	#include <NessModel/Tex_0xAE30.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0xAF38 (2672 bytes) */
 u8 dNessModel_Tex_0xAF38[2672] = {

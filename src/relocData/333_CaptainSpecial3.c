@@ -19,17 +19,20 @@ u16 dCaptainSpecial3_gap_0x0000_sub_0x58[20] = {
 };
 
 /* gap sub-block @ 0x0080 (was gap+0x80, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dCaptainSpecial3_Tex_0x80[520] = {
 	#include <CaptainSpecial3/Tex_0x80.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0288 (was gap+0x288, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dCaptainSpecial3_Tex_0x288[520] = {
 	#include <CaptainSpecial3/Tex_0x288.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0490 (was gap+0x490, 512 bytes) */
 /* MObjSub.sprites pointer table @ +0x490 (128 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dCaptainSpecial3_Tex_0x490[512] = {
 	#include <CaptainSpecial3/Tex_0x490.tex.inc.c>
 };
@@ -51,7 +54,7 @@ void *dCaptainSpecial3_FalconPunchMObjSub_MObjSub_sprites[3] = {
  * MObjSub-typed declaration). */
 MObjSub dCaptainSpecial3_FalconPunchMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)dCaptainSpecial3_FalconPunchMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
@@ -60,7 +63,7 @@ MObjSub dCaptainSpecial3_FalconPunchMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x00A1,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0020,
 	0x0020, 0x0020, 0x0020,
 	0.0f, 0.0f,

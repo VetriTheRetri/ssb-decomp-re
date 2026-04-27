@@ -16,10 +16,7 @@ extern MObjSub *dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x118[];
 extern MObjSub *dMVOpeningClashWallpaper_gap_0x4488_sub_0x118[];
 
 /* Raw data from file offset 0x0000 to 0x0AD0 (2768 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dMVOpeningClashWallpaper_gap_0x0000[8] = {
-	#include <MVOpeningClashWallpaper/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
 u8 dMVOpeningClashWallpaper_gap_0x0000_sub_0x8[40] = {
@@ -517,7 +514,7 @@ u8 dMVOpeningClashWallpaper_gap_0x30C8[160] = {
  * pointer, which targets each corner's own LLPalettes. */
 MObjSub dMVOpeningClashWallpaper_gap_0x30C8_sub_0xA0 = {
 	0x0000,                                       /* pad00 */
-	0x02, 0x02,                                   /* fmt=RGBA, siz=16b */
+	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
 	(void**)0x00000000,                           /* sprites */
 	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
 	0,                                            /* unk10 */
@@ -809,7 +806,7 @@ u8 dMVOpeningClashWallpaper_gap_0x3758[160] = {
  * pointer, which targets each corner's own LRPalettes. */
 MObjSub dMVOpeningClashWallpaper_gap_0x3758_sub_0xA0 = {
 	0x0000,                                       /* pad00 */
-	0x02, 0x02,                                   /* fmt=RGBA, siz=16b */
+	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
 	(void**)0x00000000,                           /* sprites */
 	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
 	0,                                            /* unk10 */
@@ -1099,7 +1096,7 @@ u8 dMVOpeningClashWallpaper_gap_0x3DE8[160] = {
  * pointer, which targets each corner's own ULPalettes. */
 MObjSub dMVOpeningClashWallpaper_gap_0x3DE8_sub_0xA0 = {
 	0x0000,                                       /* pad00 */
-	0x02, 0x02,                                   /* fmt=RGBA, siz=16b */
+	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
 	(void**)0x00000000,                           /* sprites */
 	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
 	0,                                            /* unk10 */
@@ -1396,7 +1393,7 @@ u8 dMVOpeningClashWallpaper_gap_0x4488[160] = {
  * pointer, which targets each corner's own URPalettes. */
 MObjSub dMVOpeningClashWallpaper_gap_0x4488_sub_0xA0 = {
 	0x0000,                                       /* pad00 */
-	0x02, 0x02,                                   /* fmt=RGBA, siz=16b */
+	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
 	(void**)0x00000000,                           /* sprites */
 	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
 	0,                                            /* unk10 */

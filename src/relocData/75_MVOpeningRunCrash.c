@@ -156,7 +156,7 @@ u8 dMVOpeningRunCrash_gap_0x0000_sub_0x528[9600] = {
 /* MObjSub: - @ 0x2AA8 */
 MObjSub dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)(dMVOpeningRunCrash_gap_0x2B20_sub_0x320),
 	0x0AAD, 0x0B92, 0x0AAE, 0x0B94,
 	179243926,

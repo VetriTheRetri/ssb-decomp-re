@@ -33,7 +33,7 @@ MObjSub **dMNPlayersSpotlight_MObjSub_0x0408[2] = {
  * the spotlight is procedurally generated. */
 MObjSub dMNPlayersSpotlight_MObjSub_0x0410 = {
 	0x0000,
-	0x04, 0x02,                                   /* fmt=RGBA, siz=16b */
+	G_IM_FMT_I, G_IM_SIZ_16b,                     /* fmt, siz */
 	(void**)0x00000000,                           /* sprites */
 	0x0020, 0x0000, 0x0020, 0x0020,               /* unk08, unk0A, w=32, h=32 */
 	0,                                            /* unk10 */
@@ -42,7 +42,7 @@ MObjSub dMNPlayersSpotlight_MObjSub_0x0410 = {
 	0.0f, 1.0f,                                   /* unk24, unk28 */
 	(void**)0x00000000,                           /* palettes */
 	0x0200,                                       /* flags */
-	0x04, 0x01,                                   /* block_fmt=RGBA, block_siz=8b */
+	G_IM_FMT_I, G_IM_SIZ_8b,                      /* block_fmt, block_siz */
 	0x0020,                                       /* block_dxt */
 	0x0020, 0x0020, 0x0020,                       /* unk36, unk38, unk3A */
 	0.0f, 0.0f,                                   /* scrollu, scrollv */

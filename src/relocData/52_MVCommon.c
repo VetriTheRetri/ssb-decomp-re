@@ -141,14 +141,18 @@ u16 dMVCommon_Lut_0x0610_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0638 (264 bytes) */
-u8 dMVCommon_Tex_0x0638[264] = {
+u8 dMVCommon_Tex_0x0638[256] = {
 	#include <MVCommon/Tex_0x0638.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x0740 (2056 bytes) */
-u8 dMVCommon_Tex_0x0740[2056] = {
+u8 dMVCommon_Tex_0x0740[2048] = {
 	#include <MVCommon/Tex_0x0740.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x0F48 (272 bytes) */
 u8 dMVCommon_Tex_0x0F48[272] = {
@@ -166,19 +170,25 @@ u8 dMVCommon_Tex_0x10E0[72] = {
 };
 
 /* Texture data @ 0x1128 (264 bytes) */
-u8 dMVCommon_Tex_0x1128[264] = {
+u8 dMVCommon_Tex_0x1128[256] = {
 	#include <MVCommon/Tex_0x1128.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x1230 (264 bytes) */
-u8 dMVCommon_Tex_0x1230[264] = {
+u8 dMVCommon_Tex_0x1230[256] = {
 	#include <MVCommon/Tex_0x1230.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x1338 (264 bytes) */
-u8 dMVCommon_Tex_0x1338[264] = {
+u8 dMVCommon_Tex_0x1338[256] = {
 	#include <MVCommon/Tex_0x1338.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x1440 (136 bytes) */
 u8 dMVCommon_Tex_0x1440[136] = {
@@ -186,29 +196,39 @@ u8 dMVCommon_Tex_0x1440[136] = {
 };
 
 /* Texture data @ 0x14C8 (520 bytes) */
-u8 dMVCommon_Tex_0x14C8[520] = {
+u8 dMVCommon_Tex_0x14C8[512] = {
 	#include <MVCommon/Tex_0x14C8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x16D0 (520 bytes) */
-u8 dMVCommon_Tex_0x16D0[520] = {
+u8 dMVCommon_Tex_0x16D0[512] = {
 	#include <MVCommon/Tex_0x16D0.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x18D8 (136 bytes) */
-u8 dMVCommon_Tex_0x18D8[136] = {
+u8 dMVCommon_Tex_0x18D8[128] = {
 	#include <MVCommon/Tex_0x18D8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x1960 (136 bytes) */
-u8 dMVCommon_Tex_0x1960[136] = {
+u8 dMVCommon_Tex_0x1960[128] = {
 	#include <MVCommon/Tex_0x1960.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x19E8 (2056 bytes) */
-u8 dMVCommon_Tex_0x19E8[2056] = {
+u8 dMVCommon_Tex_0x19E8[2048] = {
 	#include <MVCommon/Tex_0x19E8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x21F0 (3088 bytes) */
 u8 dMVCommon_Tex_0x21F0[3088] = {
@@ -216,9 +236,11 @@ u8 dMVCommon_Tex_0x21F0[3088] = {
 };
 
 /* Texture data @ 0x2E00 (136 bytes) */
-u8 dMVCommon_Tex_0x2E00[136] = {
+u8 dMVCommon_Tex_0x2E00[128] = {
 	#include <MVCommon/Tex_0x2E00.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x2E88 (96 bytes) */
 u8 dMVCommon_Tex_0x2E88[96] = {
@@ -226,14 +248,18 @@ u8 dMVCommon_Tex_0x2E88[96] = {
 };
 
 /* Texture data @ 0x2EE8 (520 bytes) */
-u8 dMVCommon_Tex_0x2EE8[520] = {
+u8 dMVCommon_Tex_0x2EE8[512] = {
 	#include <MVCommon/Tex_0x2EE8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x30F0 (520 bytes) */
-u8 dMVCommon_Tex_0x30F0[520] = {
+u8 dMVCommon_Tex_0x30F0[512] = {
 	#include <MVCommon/Tex_0x30F0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x32F8 (4096 bytes) */
 u8 dMVCommon_Tex_0x32F8[4096] = {
@@ -243,7 +269,7 @@ u8 dMVCommon_Tex_0x32F8[4096] = {
 /* MObjSub: RoomBackgroundMObjSub @ 0x42F8 */
 MObjSub dMVCommon_RoomBackgroundMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -252,7 +278,7 @@ MObjSub dMVCommon_RoomBackgroundMObjSub_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,
@@ -16851,7 +16877,7 @@ MObjSub **dMVCommon_RoomLogoMObjSub_MObjSub[2] = {
  * MObjSub-typed declaration). */
 MObjSub dMVCommon_RoomLogoMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x03,
+	G_IM_FMT_RGBA, G_IM_SIZ_32b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0080, 0x0055,
 	0,
@@ -16860,7 +16886,7 @@ MObjSub dMVCommon_RoomLogoMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x00, 0x03,
+	G_IM_FMT_RGBA, G_IM_SIZ_32b,
 	0x0080,
 	0x0055, 0x0080, 0x0055,
 	0.0f, 0.0f,
@@ -17003,7 +17029,7 @@ MObjSub **dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub[4] = {
  * MObjSub-typed declaration). */
 MObjSub dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x03,
+	G_IM_FMT_RGBA, G_IM_SIZ_32b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
@@ -17012,7 +17038,7 @@ MObjSub dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x00, 0x03,
+	G_IM_FMT_RGBA, G_IM_SIZ_32b,
 	0x0020,
 	0x0020, 0x0040, 0x0040,
 	0.0f, 0.0f,
@@ -17135,7 +17161,7 @@ MObjSub **dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub[2] = {
  * MObjSub-typed declaration). */
 MObjSub dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real = {
 	0x0000,
-	0x00, 0x03,
+	G_IM_FMT_RGBA, G_IM_SIZ_32b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0040, 0x0040,
 	0,
@@ -17144,7 +17170,7 @@ MObjSub dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x1200,
-	0x00, 0x03,
+	G_IM_FMT_RGBA, G_IM_SIZ_32b,
 	0x0020,
 	0x0020, 0x0040, 0x0040,
 	0.0f, 0.0f,
@@ -17997,7 +18023,7 @@ MObjSub **dMVCommon_RoomDeskGroundMObjSub_MObjSub[8] = {
  * MObjSub-typed declaration). */
 MObjSub dMVCommon_RoomDeskGroundMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0001, 0x0140, 0x0070,
 	0,
@@ -18006,7 +18032,7 @@ MObjSub dMVCommon_RoomDeskGroundMObjSub_MObjSub_real = {
 	0.0020000000949949026f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0010,
 	0x0008, 0x0140, 0x0070,
 	0.0020000000949949026f, 0.0f,
@@ -18367,7 +18393,7 @@ MObjSub **dMVCommon_RoomSpotlightMObjSub_MObjSub[2] = {
  * MObjSub-typed declaration). */
 MObjSub dMVCommon_RoomSpotlightMObjSub_MObjSub_real = {
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0010, 0x0020,
 	0,
@@ -18376,7 +18402,7 @@ MObjSub dMVCommon_RoomSpotlightMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x04, 0x01,
+	G_IM_FMT_I, G_IM_SIZ_8b,
 	0x0010,
 	0x0020, 0x0010, 0x0020,
 	0.0f, 0.0f,
@@ -18396,7 +18422,7 @@ MObjSub dMVCommon_RoomSpotlightMObjSub_MObjSub_real = {
 /* gap sub-block @ 0x22D10 (was gap+0x8, 120 bytes) — secondary MObjSub */
 MObjSub dMVCommon_gap_0x22D08_sub_0x8 = {
 	0x0000,
-	0x04, 0x02,
+	G_IM_FMT_I, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
@@ -18405,7 +18431,7 @@ MObjSub dMVCommon_gap_0x22D08_sub_0x8 = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0200,
-	0x04, 0x01,
+	G_IM_FMT_I, G_IM_SIZ_8b,
 	0x0020,
 	0x0020, 0x0020, 0x0020,
 	0.0f, 0.0f,

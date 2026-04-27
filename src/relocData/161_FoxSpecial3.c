@@ -29,9 +29,11 @@ u16 dFoxSpecial3_Lut_0x00B8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x00E0 to 0x0168 (136 bytes) */
-u8 dFoxSpecial3_Tex_0x00E0[136] = {
+u8 dFoxSpecial3_Tex_0x00E0[128] = {
 	#include <FoxSpecial3/Tex_0x00E0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0168 @ 0x168 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0168_palette[16] = {
@@ -41,9 +43,11 @@ u16 dFoxSpecial3_Lut_0x0168_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0190 to 0x01D8 (72 bytes) */
-u8 dFoxSpecial3_Tex_0x0190[72] = {
+u8 dFoxSpecial3_Tex_0x0190[64] = {
 	#include <FoxSpecial3/Tex_0x0190.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x01D8 @ 0x1D8 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x01D8_palette[16] = {
@@ -53,9 +57,11 @@ u16 dFoxSpecial3_Lut_0x01D8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0200 to 0x0308 (264 bytes) */
-u8 dFoxSpecial3_Tex_0x0200[264] = {
+u8 dFoxSpecial3_Tex_0x0200[256] = {
 	#include <FoxSpecial3/Tex_0x0200.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0308 @ 0x308 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0308_palette[16] = {
@@ -65,9 +71,11 @@ u16 dFoxSpecial3_Lut_0x0308_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0330 to 0x0538 (520 bytes) */
-u8 dFoxSpecial3_Tex_0x0330[520] = {
+u8 dFoxSpecial3_Tex_0x0330[512] = {
 	#include <FoxSpecial3/Tex_0x0330.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0538 @ 0x538 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0538_palette[16] = {
@@ -77,9 +85,11 @@ u16 dFoxSpecial3_Lut_0x0538_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0560 to 0x0668 (264 bytes) */
-u8 dFoxSpecial3_Tex_0x0560[264] = {
+u8 dFoxSpecial3_Tex_0x0560[256] = {
 	#include <FoxSpecial3/Tex_0x0560.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0668 @ 0x668 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0668_palette[16] = {
@@ -89,9 +99,11 @@ u16 dFoxSpecial3_Lut_0x0668_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0690 to 0x0798 (264 bytes) */
-u8 dFoxSpecial3_Tex_0x0690[264] = {
+u8 dFoxSpecial3_Tex_0x0690[256] = {
 	#include <FoxSpecial3/Tex_0x0690.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0798 @ 0x798 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0798_palette[16] = {
@@ -101,9 +113,11 @@ u16 dFoxSpecial3_Lut_0x0798_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x07C0 to 0x0808 (72 bytes) */
-u8 dFoxSpecial3_Tex_0x07C0[72] = {
+u8 dFoxSpecial3_Tex_0x07C0[64] = {
 	#include <FoxSpecial3/Tex_0x07C0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0808 @ 0x808 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0808_palette[16] = {
@@ -113,9 +127,11 @@ u16 dFoxSpecial3_Lut_0x0808_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0830 to 0x08B8 (136 bytes) */
-u8 dFoxSpecial3_Tex_0x0830[136] = {
+u8 dFoxSpecial3_Tex_0x0830[128] = {
 	#include <FoxSpecial3/Tex_0x0830.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x08B8 @ 0x8B8 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x08B8_palette[16] = {
@@ -137,9 +153,11 @@ u16 dFoxSpecial3_Lut_0x0998_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x09C0 to 0x0AC8 (264 bytes) */
-u8 dFoxSpecial3_Tex_0x09C0[264] = {
+u8 dFoxSpecial3_Tex_0x09C0[256] = {
 	#include <FoxSpecial3/Tex_0x09C0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0AC8 @ 0xAC8 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0AC8_palette[16] = {
@@ -149,9 +167,11 @@ u16 dFoxSpecial3_Lut_0x0AC8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0AF0 to 0x0BF8 (264 bytes) */
-u8 dFoxSpecial3_Tex_0x0AF0[264] = {
+u8 dFoxSpecial3_Tex_0x0AF0[256] = {
 	#include <FoxSpecial3/Tex_0x0AF0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0BF8 @ 0xBF8 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0BF8_palette[16] = {
@@ -161,9 +181,11 @@ u16 dFoxSpecial3_Lut_0x0BF8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0C20 to 0x0E28 (520 bytes) */
-u8 dFoxSpecial3_Tex_0x0C20[520] = {
+u8 dFoxSpecial3_Tex_0x0C20[512] = {
 	#include <FoxSpecial3/Tex_0x0C20.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0E28 @ 0xE28 (16 colors RGBA5551) */
 u16 dFoxSpecial3_Lut_0x0E28_palette[16] = {

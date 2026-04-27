@@ -19,12 +19,14 @@ u16 dYoshiSpecial2_gap_0x0000_sub_0x30[20] = {
 };
 
 /* gap sub-block @ 0x0058 (was gap+0x58, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dYoshiSpecial2_Tex_0x58[520] = {
 	#include <YoshiSpecial2/Tex_0x58.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0260 (was gap+0x260, 512 bytes) */
 /* MObjSub.sprites pointer table @ +0x260 (128 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dYoshiSpecial2_Tex_0x260[512] = {
 	#include <YoshiSpecial2/Tex_0x260.tex.inc.c>
 };
@@ -46,7 +48,7 @@ void *dYoshiSpecial2_EntryEggMObjSub_MObjSub_sprites[3] = {
  * MObjSub-typed declaration). */
 MObjSub dYoshiSpecial2_EntryEggMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)dYoshiSpecial2_EntryEggMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
@@ -55,7 +57,7 @@ MObjSub dYoshiSpecial2_EntryEggMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x00A1,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0020,
 	0x0020, 0x0020, 0x0020,
 	0.0f, 0.0f,

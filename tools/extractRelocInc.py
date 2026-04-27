@@ -1043,6 +1043,18 @@ def _process_inline(fid, master_path):
             emit_palette(data, off, inc_full)
         else:
             emit_tex(data, off, size, inc_full)
+            # Tex_*.tex.inc.c blocks: emit PNG preview if a DL referenced this
+            # offset and we recovered fmt/siz/dims from `scan_dl_for_tex_meta`.
+            base = os.path.basename(inc_path_rel)
+            if (_HAS_N64IMG and base.startswith('Tex_')
+                    and inc_path_rel.endswith('.tex.inc.c')):
+                block_sub_dir = os.path.dirname(inc_full)
+                # emit_tex_png strips `.data.c`; mock that suffix on the
+                # inline `.tex.inc.c` filename so the PNG name comes out as
+                # `<base>.png`.
+                payload = base[:-len('.tex.inc.c')] + '.data.c'
+                emit_tex_png(data, off, size, tex_meta,
+                             block_sub_dir=block_sub_dir, payload=payload)
         emitted += 1
     return emitted
 

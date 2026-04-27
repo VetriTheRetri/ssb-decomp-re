@@ -15,14 +15,18 @@ u8 dStageInishieFile2_Tex_0x0008[72] = {
 };
 
 /* Texture data @ 0x0050 (136 bytes) */
-u8 dStageInishieFile2_Tex_0x0050[136] = {
+u8 dStageInishieFile2_Tex_0x0050[128] = {
 	#include <StageInishieFile2/Tex_0x0050.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x00D8 (520 bytes) */
-u8 dStageInishieFile2_Tex_0x00D8[520] = {
+u8 dStageInishieFile2_Tex_0x00D8[512] = {
 	#include <StageInishieFile2/Tex_0x00D8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x02E0 (3440 bytes) */
 u8 dStageInishieFile2_Tex_0x02E0[3440] = {
@@ -70,19 +74,25 @@ u8 dStageInishieFile2_Tex_0x3310[520] = {
 };
 
 /* Texture data @ 0x3518 (40 bytes) */
-u8 dStageInishieFile2_Tex_0x3518[40] = {
+u8 dStageInishieFile2_Tex_0x3518[32] = {
 	#include <StageInishieFile2/Tex_0x3518.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x3540 (72 bytes) */
-u8 dStageInishieFile2_Tex_0x3540[72] = {
+u8 dStageInishieFile2_Tex_0x3540[64] = {
 	#include <StageInishieFile2/Tex_0x3540.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x3588 (72 bytes) */
-u8 dStageInishieFile2_Tex_0x3588[72] = {
+u8 dStageInishieFile2_Tex_0x3588[64] = {
 	#include <StageInishieFile2/Tex_0x3588.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x35D0 @ 0x35D0 (16 colors RGBA5551) */
 u16 dStageInishieFile2_Lut_0x35D0_palette[16] = {
@@ -150,7 +160,7 @@ u16 dStageInishieFile2_Lut_0x3710_palette[16] = {
 /* MObjSub: Layer0MObj @ 0x3730 */
 MObjSub dStageInishieFile2_Layer0MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0DCF, 0x0E58, 0x0DD1, 0x0E5A,
 	0,

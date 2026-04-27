@@ -35,24 +35,32 @@ u16 dMVOpeningCliff_Lut13_0x0098[20] = {
 };
 
 /* Texture data @ 0x00C0 (2056 bytes) */
-u8 dMVOpeningCliff_Tex_0x00C0[2056] = {
+u8 dMVOpeningCliff_Tex_0x00C0[2048] = {
 	#include <MVOpeningCliff/Tex_0x00C0.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x08C8 (2056 bytes) */
-u8 dMVOpeningCliff_Tex_0x08C8[2056] = {
+u8 dMVOpeningCliff_Tex_0x08C8[2048] = {
 	#include <MVOpeningCliff/Tex_0x08C8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x10D0 (2056 bytes) */
-u8 dMVOpeningCliff_Tex_0x10D0[2056] = {
+u8 dMVOpeningCliff_Tex_0x10D0[2048] = {
 	#include <MVOpeningCliff/Tex_0x10D0.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0x18D8 (2056 bytes) */
-u8 dMVOpeningCliff_Tex_0x18D8[2056] = {
+u8 dMVOpeningCliff_Tex_0x18D8[2048] = {
 	#include <MVOpeningCliff/Tex_0x18D8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x20E0 (512 bytes) */
 u8 dMVOpeningCliff_Tex_0x20E0[512] = {

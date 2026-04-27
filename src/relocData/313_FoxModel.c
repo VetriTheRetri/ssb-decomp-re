@@ -1339,9 +1339,11 @@ u8 dFoxModel_gap_0x7828_sub_0x188[40] = {
 };
 
 /* Texture data @ 0x79D8 (264 bytes) */
-u8 dFoxModel_Tex_0x79D8[264] = {
+u8 dFoxModel_Tex_0x79D8[256] = {
 	#include <FoxModel/Tex_0x79D8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0x7AE0 (72 bytes) */
 u8 dFoxModel_Tex_0x7AE0[72] = {

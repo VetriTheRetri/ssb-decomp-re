@@ -29,7 +29,7 @@ u8 dLinkSpecial2_Tex_0x0030[256] = {
 /* MObjSub: EntryWaveMObjSub @ 0x130 */
 MObjSub dLinkSpecial2_EntryWaveMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dLinkSpecial2_gap_0x01A8 + 0x8),
 	0x0000, 0x0202, 0x0000, 0x0000,
 	2097152,
@@ -38,7 +38,7 @@ MObjSub dLinkSpecial2_EntryWaveMObjSub_MObjSub = {
 	1.0f, 1.0f,
 	(void**)0x00000000,
 	0x3F80,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x32A0, 0x0200,
 	1.4694127800787178e-39f, 1.4105968083108137e-37f,
@@ -103,7 +103,7 @@ u8 dLinkSpecial2_Tex_0x04B0[64] = {
 /* MObjSub: EntryBeamMObjSub @ 0x4F0 */
 MObjSub dLinkSpecial2_EntryBeamMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dLinkSpecial2_gap_0x0568 + 0x8),
 	0x0000, 0x0202, 0x0000, 0x0000,
 	4194304,
@@ -112,7 +112,7 @@ MObjSub dLinkSpecial2_EntryBeamMObjSub_MObjSub = {
 	1.0f, 1.0f,
 	(void**)0x00000000,
 	0x3F80,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x3200, 0x0200,
 	1.469379148915574e-39f, 1.175495471861059e-38f,
@@ -471,7 +471,7 @@ u8 dLinkSpecial2_Tex_0x0C38[1024] = {
 /* MObjSub: SpinAttackMObjSub @ 0x1038 */
 MObjSub dLinkSpecial2_SpinAttackMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)((u8*)dLinkSpecial2_gap_0x10B0 + 0x8),
 	0x0000, 0x0302, 0x0000, 0x0000,
 	2097152,
@@ -480,7 +480,7 @@ MObjSub dLinkSpecial2_SpinAttackMObjSub_MObjSub = {
 	1.0f, 1.0f,
 	(void**)0x00000000,
 	0x3F80,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x0200, 0x0301,
 	2.938780718606577e-39f, 2.938780718606577e-39f,

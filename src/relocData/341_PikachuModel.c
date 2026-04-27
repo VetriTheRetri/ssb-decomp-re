@@ -1324,7 +1324,7 @@ void *dPikachuModel_ThunderTrailMObjSub_MObjSub_sprites[5] = {
  * MObjSub-typed declaration). */
 MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub_real = {
 	0x0000,
-	0x03, 0x02,
+	G_IM_FMT_IA, G_IM_SIZ_16b,
 	(void**)dPikachuModel_ThunderTrailMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
@@ -1333,7 +1333,7 @@ MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0001,
-	0x03, 0x01,
+	G_IM_FMT_IA, G_IM_SIZ_8b,
 	0x0020,
 	0x0020, 0x0020, 0x0020,
 	0.0f, 0.0f,

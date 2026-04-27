@@ -11,10 +11,7 @@
 extern MObjSub *dPikachuSpecial3_gap_0x2118_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x1A20 (6688 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000[8] = {
-	#include <PikachuSpecial3/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
 u16 dPikachuSpecial3_gap_0x0000_sub_0x8[20] = {
@@ -376,11 +373,15 @@ u8 dPikachuSpecial3_gap_0x1C90[8] = {
 };
 
 /* gap sub-block @ 0x1C98 (was gap+0x8, 520 bytes) */
-u8 dPikachuSpecial3_Tex_0x1C98[520] = {
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPikachuSpecial3_Tex_0x1C98[512] = {
 	#include <PikachuSpecial3/Tex_0x1C98.tex.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x1EA0 (was gap+0x210, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dPikachuSpecial3_Tex_0x1EA0[512] = {
 	#include <PikachuSpecial3/Tex_0x1EA0.tex.inc.c>
 };
@@ -402,7 +403,7 @@ void *dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_sprites[2] = {
  * MObjSub-typed declaration). */
 MObjSub dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0040, 0x0020,
 	0,
@@ -411,7 +412,7 @@ MObjSub dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0001,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0020,
 	0x0020, 0x0040, 0x0020,
 	0.0f, 0.0f,

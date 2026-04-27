@@ -26,7 +26,20 @@ import re
 import struct
 import sys
 
-from n64img.image import CI4, CI8
+from n64img.image import CI4, CI8, I4, I8, IA4, IA8, IA16, RGBA16, RGBA32
+
+# Map fmt token -> (n64img class, bits per pixel).
+_FMT_INFO = {
+	"CI4":    (CI4,    4),
+	"CI8":    (CI8,    8),
+	"I4":     (I4,     4),
+	"I8":     (I8,     8),
+	"IA4":    (IA4,    4),
+	"IA8":    (IA8,    8),
+	"IA16":   (IA16,  16),
+	"RGBA16": (RGBA16, 16),
+	"RGBA32": (RGBA32, 32),
+}
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
@@ -219,30 +232,33 @@ def process_file(fid):
         if info is None:
             continue
         fmt, w, h = info
-        ann_lut = b["ann"].get("lut")
-        lut_name = ann_lut or current_lut_name
-        if lut_name not in luts:
+        fmt_info = _FMT_INFO.get(fmt)
+        if fmt_info is None:
             continue
-        lut_b = luts[lut_name]
-        lut_bytes = data[lut_b["off"]:lut_b["off"] + lut_b["size"]]
+        img_cls, bpp = fmt_info
+        expected_bytes = (w * h * bpp + 7) // 8
         tex_bytes = data[b["off"]:b["off"] + b["size"]]
-        expected_bytes = (w * h) // 2 if fmt == "CI4" else w * h
         if len(tex_bytes) < expected_bytes:
-            # prose dims don't fit the array; re-guess from actual size
-            pixels = len(tex_bytes) * (2 if fmt == "CI4" else 1)
-            w, h = guess_dims(pixels)
-            expected_bytes = (w * h) // 2 if fmt == "CI4" else w * h
-            if len(tex_bytes) < expected_bytes or w * h == 0:
+            # annotated dims don't fit the array; re-guess from actual size
+            # (CI-only fallback — non-CI formats expect explicit dims).
+            if fmt in ("CI4", "CI8"):
+                pixels = len(tex_bytes) * (2 if fmt == "CI4" else 1)
+                w, h = guess_dims(pixels)
+                expected_bytes = (w * h * bpp + 7) // 8
+                if len(tex_bytes) < expected_bytes or w * h == 0:
+                    continue
+            else:
                 continue
-        if fmt == "CI4":
-            img = CI4(tex_bytes[:expected_bytes], w, h)
-            palette = rgba5551_to_palette(lut_bytes, 16)
-        elif fmt == "CI8":
-            img = CI8(tex_bytes[:expected_bytes], w, h)
-            palette = rgba5551_to_palette(lut_bytes, 256)
-        else:
-            continue
-        img.palette = palette
+        img = img_cls(tex_bytes[:expected_bytes], w, h)
+        if fmt in ("CI4", "CI8"):
+            ann_lut = b["ann"].get("lut")
+            lut_name = ann_lut or current_lut_name
+            if lut_name not in luts:
+                continue
+            lut_b = luts[lut_name]
+            lut_bytes = data[lut_b["off"]:lut_b["off"] + lut_b["size"]]
+            entries = 16 if fmt == "CI4" else 256
+            img.palette = rgba5551_to_palette(lut_bytes, entries)
         png_path = os.path.join(out_dir, f"Tex_0x{b['off']:04X}.{fmt.lower()}.png")
         img.write(png_path)
         tex_count += 1

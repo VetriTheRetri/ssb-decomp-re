@@ -2029,9 +2029,11 @@ u8 dCaptainModel_gap_0xB978_sub_0x210[40] = {
 };
 
 /* Texture data @ 0xBBB0 (520 bytes) */
-u8 dCaptainModel_Tex_0xBBB0[520] = {
+u8 dCaptainModel_Tex_0xBBB0[512] = {
 	#include <CaptainModel/Tex_0xBBB0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0xBDB8 (576 bytes) */
 u8 dCaptainModel_Tex_0xBDB8[576] = {
@@ -2054,9 +2056,11 @@ u8 dCaptainModel_Tex_0xC0E0[72] = {
 };
 
 /* Texture data @ 0xC128 (264 bytes) */
-u8 dCaptainModel_Tex_0xC128[264] = {
+u8 dCaptainModel_Tex_0xC128[256] = {
 	#include <CaptainModel/Tex_0xC128.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0xC230 (296 bytes) */
 u8 dCaptainModel_Tex_0xC230[296] = {

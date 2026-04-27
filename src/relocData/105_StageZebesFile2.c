@@ -13,10 +13,7 @@ extern u8 dStageZebesFile2_gap_0x2BC0[];
 extern void *dStageZebesFile2_gap_0x2BC0_sub_0x948[];
 
 /* Raw data from file offset 0x0000 to 0x2B48 (11080 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dStageZebesFile2_gap_0x0000[8] = {
-	#include <StageZebesFile2/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
 u8 dStageZebesFile2_gap_0x0000_sub_0x8[40] = {
@@ -246,7 +243,7 @@ u8 dStageZebesFile2_gap_0x0000_sub_0x2748[1024] = {
 /* MObjSub: Layer1MObj @ 0x2B48 */
 MObjSub dStageZebesFile2_Layer1MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)(dStageZebesFile2_gap_0x2BC0_sub_0x948),
 	0x0AD7, 0x0D46, 0x0000, 0x0000,
 	0,
@@ -255,7 +252,7 @@ MObjSub dStageZebesFile2_Layer1MObj_MObjSub = {
 	0.0f, 2.2056902530432476e-32f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,

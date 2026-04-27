@@ -10,9 +10,11 @@
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0090 (136 bytes) */
-u8 dKirbySpecial2_Tex_0x0008[136] = {
+u8 dKirbySpecial2_Tex_0x0008[128] = {
 	#include <KirbySpecial2/Tex_0x0008.tex.inc.c>
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x0090 to 0x0890 (2048 bytes) */
 u8 dKirbySpecial2_Tex_0x0090[2048] = {

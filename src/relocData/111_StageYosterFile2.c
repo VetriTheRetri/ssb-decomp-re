@@ -10,7 +10,7 @@
 /* MObjSub: Layer0MObj @ 0x0 */
 MObjSub dStageYosterFile2_Layer0MObj_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -19,7 +19,7 @@ MObjSub dStageYosterFile2_Layer0MObj_MObjSub = {
 	0.0f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	1.5613183411599252e-39f, 0.0f,

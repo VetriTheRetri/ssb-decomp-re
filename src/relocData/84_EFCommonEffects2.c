@@ -17,10 +17,7 @@ extern u8 dEFCommonEffects2_gap_0x1F18[];
 extern MObjSub *dEFCommonEffects2_gap_0x1F18_sub_0x18[];
 
 /* Raw data from file offset 0x0000 to 0x1428 (5160 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x0000[8] = {
-	#include <EFCommonEffects2/gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1032 bytes) */
 u8 dEFCommonEffects2_gap_0x0000_sub_0x8[1032] = {
@@ -315,7 +312,7 @@ MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub = {
 	2.938758297831148e-39f, 0.0f,
 	(void**)0x00000000,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x3F80,
 	0x0000, 0x3F80, 0x0000,
 	0.0f, 0.0f,
@@ -387,7 +384,7 @@ void *dEFCommonEffects2_FireSparkMObjSub_MObjSub_sprites[4] = {
  * MObjSub-typed declaration). */
 MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)dEFCommonEffects2_FireSparkMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0020, 0x0020,
 	0,
@@ -396,7 +393,7 @@ MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x0001,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0020,
 	0x0020, 0x0020, 0x0020,
 	0.0f, 0.0f,
@@ -604,7 +601,7 @@ u8 dEFCommonEffects2_gap_0x2310_sub_0x440[16] = {
 /* MObjSub: CatchSwirlMObjSub @ 0x2760 */
 MObjSub dEFCommonEffects2_CatchSwirlMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -613,7 +610,7 @@ MObjSub dEFCommonEffects2_CatchSwirlMObjSub_MObjSub = {
 	1.0f, 1.0f,
 	(void**)0x00000001,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,
@@ -900,7 +897,7 @@ u8 dEFCommonEffects2_gap_0x2FD0_sub_0x3B8[16] = {
 /* MObjSub: ReflectBreakMObjSub @ 0x3398 */
 MObjSub dEFCommonEffects2_ReflectBreakMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -909,7 +906,7 @@ MObjSub dEFCommonEffects2_ReflectBreakMObjSub_MObjSub = {
 	1.0f, 1.0f,
 	(void**)0x00000001,
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	0xC3D4,
 	0xEB94, 0x0000, 0x0000,
 	0.0f, 0.0f,
@@ -1128,7 +1125,7 @@ u8 dEFCommonEffects2_gap_0x4F34_sub_0x4A4[16] = {
 /* MObjSub: DeadExplodeDefaultMObjSub @ 0x53E8 */
 MObjSub dEFCommonEffects2_DeadExplodeDefaultMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,
@@ -1611,7 +1608,7 @@ Gfx dEFCommonEffects2_DL_0x6C28[27] = {
 /* MObjSub: NessPKFlashMObjSub @ 0x6D00 */
 MObjSub dEFCommonEffects2_NessPKFlashMObjSub_MObjSub = {
 	0x0000,
-	0x00, 0x00,
+	G_IM_FMT_RGBA, G_IM_SIZ_4b,
 	(void**)0x00000000,
 	0x0000, 0x0000, 0x0000, 0x0000,
 	0,

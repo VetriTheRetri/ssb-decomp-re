@@ -1545,9 +1545,11 @@ u8 dLinkModel_Tex_0xB1B0[72] = {
 };
 
 /* Texture data @ 0xB1F8 (136 bytes) */
-u8 dLinkModel_Tex_0xB1F8[136] = {
+u8 dLinkModel_Tex_0xB1F8[128] = {
 	#include <LinkModel/Tex_0xB1F8.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xB280 @ 0xB280 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB280_palette[16] = {
@@ -1566,9 +1568,11 @@ u8 dLinkModel_Tex_0xB2A8[392] = {
 };
 
 /* Texture data @ 0xB430 (136 bytes) */
-u8 dLinkModel_Tex_0xB430[136] = {
+u8 dLinkModel_Tex_0xB430[128] = {
 	#include <LinkModel/Tex_0xB430.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xB4B8 @ 0xB4B8 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB4B8_palette[16] = {
@@ -1582,9 +1586,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xB4E0 (264 bytes) */
-u8 dLinkModel_Tex_0xB4E0[264] = {
+u8 dLinkModel_Tex_0xB4E0[256] = {
 	#include <LinkModel/Tex_0xB4E0.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xB5E8 @ 0xB5E8 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB5E8_palette[16] = {
@@ -1619,14 +1625,18 @@ u8 dLinkModel_gap_0xC6E0_sub_0x8[520] = {
 };
 
 /* Texture data @ 0xC8F0 (136 bytes) */
-u8 dLinkModel_Tex_0xC8F0[136] = {
+u8 dLinkModel_Tex_0xC8F0[128] = {
 	#include <LinkModel/Tex_0xC8F0.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xC978 (136 bytes) */
-u8 dLinkModel_Tex_0xC978[136] = {
+u8 dLinkModel_Tex_0xC978[128] = {
 	#include <LinkModel/Tex_0xC978.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0xCA00 (72 bytes) */
 u8 dLinkModel_Tex_0xCA00[72] = {
@@ -1645,29 +1655,39 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xCA70 (136 bytes) */
-u8 dLinkModel_Tex_0xCA70[136] = {
+u8 dLinkModel_Tex_0xCA70[128] = {
 	#include <LinkModel/Tex_0xCA70.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xCAF8 (136 bytes) */
-u8 dLinkModel_Tex_0xCAF8[136] = {
+u8 dLinkModel_Tex_0xCAF8[128] = {
 	#include <LinkModel/Tex_0xCAF8.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xCB80 (264 bytes) */
-u8 dLinkModel_Tex_0xCB80[264] = {
+u8 dLinkModel_Tex_0xCB80[256] = {
 	#include <LinkModel/Tex_0xCB80.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xCC88 (136 bytes) */
-u8 dLinkModel_Tex_0xCC88[136] = {
+u8 dLinkModel_Tex_0xCC88[128] = {
 	#include <LinkModel/Tex_0xCC88.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xCD10 (520 bytes) */
-u8 dLinkModel_Tex_0xCD10[520] = {
+u8 dLinkModel_Tex_0xCD10[512] = {
 	#include <LinkModel/Tex_0xCD10.tex.inc.c>
 };
+
+PAD(8);
 
 /* Texture data @ 0xCF18 (216 bytes) */
 u8 dLinkModel_Tex_0xCF18[216] = {
@@ -1685,14 +1705,18 @@ u8 dLinkModel_Tex_0xD148[1304] = {
 };
 
 /* Texture data @ 0xD660 (264 bytes) */
-u8 dLinkModel_Tex_0xD660[264] = {
+u8 dLinkModel_Tex_0xD660[256] = {
 	#include <LinkModel/Tex_0xD660.tex.inc.c>
 };
 
+PAD(8);
+
 /* Texture data @ 0xD768 (264 bytes) */
-u8 dLinkModel_Tex_0xD768[264] = {
+u8 dLinkModel_Tex_0xD768[256] = {
 	#include <LinkModel/Tex_0xD768.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xD870 @ 0xD870 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD870_palette[16] = {
@@ -1706,9 +1730,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xD898 (136 bytes) */
-u8 dLinkModel_Tex_0xD898[136] = {
+u8 dLinkModel_Tex_0xD898[128] = {
 	#include <LinkModel/Tex_0xD898.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xD920 @ 0xD920 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD920_palette[16] = {
@@ -1722,9 +1748,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xD948 (136 bytes) */
-u8 dLinkModel_Tex_0xD948[136] = {
+u8 dLinkModel_Tex_0xD948[128] = {
 	#include <LinkModel/Tex_0xD948.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xD9D0 @ 0xD9D0 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD9D0_palette[16] = {
@@ -1754,9 +1782,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xDC28 (264 bytes) */
-u8 dLinkModel_Tex_0xDC28[264] = {
+u8 dLinkModel_Tex_0xDC28[256] = {
 	#include <LinkModel/Tex_0xDC28.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xDD30 @ 0xDD30 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDD30_palette[16] = {
@@ -1781,9 +1811,11 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xDD80 (264 bytes) */
-u8 dLinkModel_Tex_0xDD80[264] = {
+u8 dLinkModel_Tex_0xDD80[256] = {
 	#include <LinkModel/Tex_0xDD80.tex.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0xDE88 @ 0xDE88 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDE88_palette[16] = {

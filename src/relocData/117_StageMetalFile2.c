@@ -423,7 +423,7 @@ MObjSub **dStageMetalFile2_Layer1MObj_MObjSub[18] = {
  * MObjSub-typed declaration). */
 MObjSub dStageMetalFile2_Layer1MObj_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x000F, 0x0001,
 	0,
@@ -432,7 +432,7 @@ MObjSub dStageMetalFile2_Layer1MObj_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)((u8*)&dStageMetalFile2_Layer1MObj_MObjSub + 0x8),
 	0x0004,
-	0x00, 0x02,
+	G_IM_FMT_RGBA, G_IM_SIZ_16b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,
@@ -731,7 +731,7 @@ MObjSub **dStageMetalFile2_Layer2MObj_MObjSub[2] = {
  * MObjSub-typed declaration). */
 MObjSub dStageMetalFile2_Layer2MObj_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)0x00000000,
 	0x0020, 0x0000, 0x009F, 0x004F,
 	2,
@@ -740,7 +740,7 @@ MObjSub dStageMetalFile2_Layer2MObj_MObjSub_real = {
 	9.999999747378752e-05f, 1.0f,
 	(void**)0x00000000,
 	0x0020,
-	0x00, 0x02,
+	G_IM_FMT_RGBA, G_IM_SIZ_16b,
 	0x0000,
 	0x0000, 0x0000, 0x0000,
 	0.0f, 0.0f,

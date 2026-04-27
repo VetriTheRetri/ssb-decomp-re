@@ -29,11 +29,13 @@ u8 dCaptainSpecial2_gap_0x0050[8] = {
 };
 
 /* gap sub-block @ 0x0058 (was gap+0x8, 1160 bytes) */
+/* @tex fmt=CI4 dim=48x48 */
 u8 dCaptainSpecial2_Tex_0x58[1160] = {
 	#include <CaptainSpecial2/Tex_0x58.tex.inc.c>
 };
 
 /* gap sub-block @ 0x04E0 (was gap+0x490, 1152 bytes) */
+/* @tex fmt=CI4 dim=48x48 */
 u8 dCaptainSpecial2_Tex_0x4E0[1152] = {
 	#include <CaptainSpecial2/Tex_0x4E0.tex.inc.c>
 };
@@ -55,7 +57,7 @@ void *dCaptainSpecial2_FalconKickMObjSub_MObjSub_sprites[2] = {
  * MObjSub-typed declaration). */
 MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub_real = {
 	0x0000,
-	0x02, 0x02,
+	G_IM_FMT_CI, G_IM_SIZ_16b,
 	(void**)dCaptainSpecial2_FalconKickMObjSub_MObjSub_sprites,
 	0x0020, 0x0000, 0x0030, 0x0030,
 	0,
@@ -64,7 +66,7 @@ MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub_real = {
 	0.0f, 1.0f,
 	(void**)0x00000000,
 	0x00A1,
-	0x02, 0x00,
+	G_IM_FMT_CI, G_IM_SIZ_4b,
 	0x0030,
 	0x0030, 0x0030, 0x0030,
 	0.0f, 0.0f,
@@ -183,49 +185,67 @@ u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0C48 to 0x1450 (2056 bytes) */
-u8 dCaptainSpecial2_Tex_0x0C48[2056] = {
+u8 dCaptainSpecial2_Tex_0x0C48[2048] = {
 	#include <CaptainSpecial2/Tex_0x0C48.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x1450 to 0x1C58 (2056 bytes) */
-u8 dCaptainSpecial2_Tex_0x1450[2056] = {
+u8 dCaptainSpecial2_Tex_0x1450[2048] = {
 	#include <CaptainSpecial2/Tex_0x1450.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x1C58 to 0x2460 (2056 bytes) */
-u8 dCaptainSpecial2_Tex_0x1C58[2056] = {
+u8 dCaptainSpecial2_Tex_0x1C58[2048] = {
 	#include <CaptainSpecial2/Tex_0x1C58.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x2460 to 0x2C68 (2056 bytes) */
-u8 dCaptainSpecial2_Tex_0x2460[2056] = {
+u8 dCaptainSpecial2_Tex_0x2460[2048] = {
 	#include <CaptainSpecial2/Tex_0x2460.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x2C68 to 0x2E70 (520 bytes) */
-u8 dCaptainSpecial2_Tex_0x2C68[520] = {
+u8 dCaptainSpecial2_Tex_0x2C68[512] = {
 	#include <CaptainSpecial2/Tex_0x2C68.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x2E70 to 0x3078 (520 bytes) */
-u8 dCaptainSpecial2_Tex_0x2E70[520] = {
+u8 dCaptainSpecial2_Tex_0x2E70[512] = {
 	#include <CaptainSpecial2/Tex_0x2E70.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x3078 to 0x3480 (1032 bytes) */
-u8 dCaptainSpecial2_Tex_0x3078[1032] = {
+u8 dCaptainSpecial2_Tex_0x3078[1024] = {
 	#include <CaptainSpecial2/Tex_0x3078.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x3480 to 0x3C88 (2056 bytes) */
-u8 dCaptainSpecial2_Tex_0x3480[2056] = {
+u8 dCaptainSpecial2_Tex_0x3480[2048] = {
 	#include <CaptainSpecial2/Tex_0x3480.tex.inc.c>
 };
 
+PAD(8);
+
 /* Raw data from file offset 0x3C88 to 0x3E90 (520 bytes) */
-u8 dCaptainSpecial2_Tex_0x3C88[520] = {
+u8 dCaptainSpecial2_Tex_0x3C88[512] = {
 	#include <CaptainSpecial2/Tex_0x3C88.tex.inc.c>
 };
+
+PAD(8);
 
 /* Raw data from file offset 0x3E90 to 0x3ED0 (64 bytes) */
 u8 dCaptainSpecial2_Tex_0x3E90[64] = {

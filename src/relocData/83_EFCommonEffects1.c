@@ -201,8 +201,9 @@ MObjSub **dEFCommonEffects1_DamageSlash_MObjSub[3] = {
 	NULL,
 };
 
-/* Texture-pointer sprites array (was MObjSub**[] tail starting at +0xC). */
-void *dEFCommonEffects1_DamageSlash_MObjSub_sprites[13] = {
+/* Texture-pointer sprites array for DamageSlash_MObjSub_real
+ * (was MObjSub**[] tail starting at +0xC). */
+void *dEFCommonEffects1_DamageSlash_MObjSub_sprites[8] = {
 	(void *)dEFCommonEffects1_Tex_0x7260,
 	(void *)dEFCommonEffects1_Tex_0x70D8,
 	(void *)dEFCommonEffects1_Tex_0x6F50,
@@ -211,6 +212,11 @@ void *dEFCommonEffects1_DamageSlash_MObjSub_sprites[13] = {
 	(void *)dEFCommonEffects1_Tex_0x6AB8,
 	(void *)dEFCommonEffects1_Tex_0x6930,
 	(void *)dEFCommonEffects1_Tex_0x67A8,
+};
+
+/* Texture-pointer sprites array for the secondary MObjSub
+ * (gap_0x7458_sub_0x40); was the tail of DamageSlash_MObjSub_sprites. */
+void *dEFCommonEffects1_gap_0x7458_sub_0x40_sprites[5] = {
 	(void *)dEFCommonEffects1_Tex_0x65A0,
 	(void *)dEFCommonEffects1_Tex_0x6398,
 	(void *)dEFCommonEffects1_Tex_0x6190,
@@ -248,9 +254,33 @@ MObjSub dEFCommonEffects1_DamageSlash_MObjSub_real = {
 };
 
 /* Raw data from file offset 0x7458 to 0x7750 (760 bytes) */
-/* gap sub-block @ 0x7498 (was gap+0x40, 120 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0x40[120] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0x40.data.inc.c>
+/* gap sub-block @ 0x7498 (was gap+0x40, 120 bytes) — secondary MObjSub
+ * sharing DamageSlash sprites (starting at slot 8 = +0x20 of the array). */
+MObjSub dEFCommonEffects1_gap_0x7458_sub_0x40 = {
+	0x0000,
+	0x02, 0x02,
+	(void**)dEFCommonEffects1_gap_0x7458_sub_0x40_sprites,
+	0x0020, 0x0000, 0x0020, 0x0020,
+	0,
+	0.0f, 0.0f,
+	1.0f, 1.0f,
+	0.0f, 1.0f,
+	(void**)0x00000000,
+	0x3201,
+	0x02, 0x00,
+	0x0020,
+	0x0020, 0x0020, 0x0020,
+	0.0f, 0.0f,
+	0.0f, 0.0f,
+	0x00002005,
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	0x00, 0x00, { 0x00, 0x00 },
+	{ { 0x00, 0x00, 0x00, 0xFF } },
+	{ { 0x00, 0x00, 0x00, 0x08 } },
+	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+	{ { 0x80, 0x80, 0x80, 0x00 } },
+	0, 0,
+	0, 0,
 };
 
 /* gap sub-block @ 0x7510 (was gap+0xB8, 8 bytes) */
@@ -260,9 +290,11 @@ MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xB8[2] = {
 	NULL,
 };
 
-/* gap sub-block @ 0x7518 (was gap+0xC0, 8 bytes) */
-u8 dEFCommonEffects1_gap_0x7458_sub_0xC0[8] = {
-	#include <EFCommonEffects1/gap_0x7458_sub_0xC0.data.inc.c>
+/* gap sub-block @ 0x7518 (was gap+0xC0, 8 bytes) — back-pointer to the
+ * secondary MObjSub at +0x40. */
+MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xC0[2] = {
+	&dEFCommonEffects1_gap_0x7458_sub_0x40,
+	NULL,
 };
 
 /* gap sub-block @ 0x7520 (was gap+0xC8, 64 bytes) */

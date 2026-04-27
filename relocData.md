@@ -43,6 +43,35 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **MObjSub header / sprites split + sprite-texture promotion**.
+  For 14 MObjSub-typed symbols whose declared 120-byte body actually
+  packs `MObjSub **<sym>[H]` header + the real `MObjSub` at +0xN
+  (`pad00 != 0` at offset 0 was the audit signal), restructured to a
+  pair of declarations: `MObjSub **<sym>[H]` + `MObjSub <sym>_real`,
+  absorbing the immediately-following `gap_0xPP` into the real
+  initializer. Then for the 12 cases whose `_real.sprites` field
+  pointed mid-header (`&<sym> + 0xN`, N>0 — meaning the leading slots
+  were a pre-sprite header and the tail was the real sprites array),
+  split each header into `MObjSub **<sym>[N/4]` + `void *<sym>_sprites
+  [H − N/4]` and updated `_real.sprites` to reference the new array
+  directly. Populated NULL slots from `.reloc` chain entries, and
+  renamed the 24 sprite-target gap blocks (`gap_<P>_sub_<S>`) to
+  `Tex_0x<P+S>` with `.tex.inc.c` includes (so the extractor regenerates
+  them with PNG previews). One secondary MObjSub uncovered by this
+  pass (`83_EFCommonEffects1.c :: gap_0x7458_sub_0x40` — 120 B with
+  `pad00=0, fmt=2, siz=2`, sprites field pointing into
+  `DamageSlash_MObjSub_sprites + 0x20`) was retyped from `u8[120]` to
+  `MObjSub`, and its 8-byte back-pointer block (`gap_0x7458_sub_0xC0`)
+  from `u8[8]` to `MObjSub *[2] = { &<sub_0x40>, NULL }`. Files
+  affected: 52, 83, 84, 117, 198, 333, 341, 342, 347, 349, 350, 351,
+  352, 354. Auxiliary cleanups: 7 × 8-byte back-pointer blocks
+  retyped to `MObjSub *[2]`, 1 × 16-byte block to `MObjSub *[4]`, 1
+  secondary 120-byte MObjSub typed (`52_MVCommon.c :: gap_0x22D08_sub_0x8`),
+  2 mistyped `void *[128]` arrays converted to `u8[512]` raw, and
+  one stale `(u8*)gap_0x9498 + 0x60` cross-reference repointed to
+  `dPikachuModel_DL_0x94F8` (the absorbed gap symbol no longer exists).
+  Also resolved 12 `(void**)0xXXXXYYYY` chain-encoded placeholders
+  in `_real` MObjSubs to symbolic refs. ROM byte-identical.
 - **DL-chain merging** (15 chains across the GRBonus1/2 corpus + a few
   MVOpening / Stage files). Many character / stage / opening Gfx DLs
   were split across multiple `gap_0xNNNN_sub_0xMM` symbols at intern-
@@ -288,9 +317,9 @@ intent:
 
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
-| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,120 | ~393 KB | 94 |
-| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 383 | ~397 KB | 85 |
-| **Total u8 `.data.inc.c`** | 3,503 | ~791 KB | 105 |
+| Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,115 | ~327 KB | 92 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 167 | ~351 KB | 82 |
+| **Total u8 `.data.inc.c`** | 3,282 | ~678 KB | 104 |
 
 The semantic bucket dropped from ~450 KB to ~127 KB in an earlier
 round (74 texture-named blocks renamed `.data.inc.c` → `.tex.inc.c`

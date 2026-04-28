@@ -1849,68 +1849,140 @@ segments:
   - [0x1ACAF0, bin, relocData]
 
 # Particle banks
-  - name: efcommon.scb
-    type: bin
+  - name: efcommon_scb
+    type: code
     start: 0x90D5D0
-  - name: efcommon.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x90D5D0, .rodata, particles/efcommon_scb]
+  - name: efcommon_txb
+    type: code
     start: 0x910070
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x910070, .rodata, particles/efcommon_txb]
 
-  - name: particles_unk0.scb
-    type: bin
+  - name: particles_unk0_scb
+    type: code
     start: 0x95CF10
-  - name: particles_unk0.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x95CF10, .rodata, particles/particles_unk0_scb]
+  - name: particles_unk0_txb
+    type: code
     start: 0x95D2F0
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x95D2F0, .rodata, particles/particles_unk0_txb]
 
-  - name: particles_unk1.scb
-    type: bin
+  - name: particles_unk1_scb
+    type: code
     start: 0x95D730
-  - name: particles_unk1.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x95D730, .rodata, particles/particles_unk1_scb]
+  - name: particles_unk1_txb
+    type: code
     start: 0x95D930
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x95D930, .rodata, particles/particles_unk1_txb]
 
-  - name: particles_unk2.scb
-    type: bin
+  - name: particles_unk2_scb
+    type: code
     start: 0x95F990
-  - name: particles_unk2.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x95F990, .rodata, particles/particles_unk2_scb]
+  - name: particles_unk2_txb
+    type: code
     start: 0x95FAE0
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x95FAE0, .rodata, particles/particles_unk2_txb]
 
-  - name: itcommon.scb
-    type: bin
+  - name: itcommon_scb
+    type: code
     start: 0x961F30
-  - name: itcommon.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x961F30, .rodata, particles/itcommon_scb]
+  - name: itcommon_txb
+    type: code
     start: 0x962070
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x962070, .rodata, particles/itcommon_txb]
 
-  - name: grpupupu.scb
-    type: bin
+  - name: grpupupu_scb
+    type: code
     start: 0x9648D0
-  - name: grpupupu.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x9648D0, .rodata, particles/grpupupu_scb]
+  - name: grpupupu_txb
+    type: code
     start: 0x964A70
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x964A70, .rodata, particles/grpupupu_txb]
 
-  - name: grhyrule.scb
-    type: bin
+  - name: grhyrule_scb
+    type: code
     start: 0x965BF0
-  - name: grhyrule.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x965BF0, .rodata, particles/grhyrule_scb]
+  - name: grhyrule_txb
+    type: code
     start: 0x965F10
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x965F10, .rodata, particles/grhyrule_txb]
 
-  - name: gryoster.scb
-    type: bin
+  - name: gryoster_scb
+    type: code
     start: 0x968C10
-  - name: gryoster.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x968C10, .rodata, particles/gryoster_scb]
+  - name: gryoster_txb
+    type: code
     start: 0x968C90
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x968C90, .rodata, particles/gryoster_txb]
 
-  - name: mntitle.scb
-    type: bin
+  - name: mntitle_scb
+    type: code
     start: 0x968EC0
-  - name: mntitle.txb
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x968EC0, .rodata, particles/mntitle_scb]
+  - name: mntitle_txb
+    type: code
     start: 0x968FD0
+    vram: 0x0
+    exclusive_ram_id: particles
+    subsegments:
+      - [0x968FD0, .rodata, particles/mntitle_txb]
 
 # Music and sound effects
   - name: S1_music.sbk

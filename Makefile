@@ -178,8 +178,8 @@ S_TEXT_FILES   := $(shell find asm src -type f -name '*.s' | grep -v /nonmatchin
 S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
 S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
 S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
-PNG_FILES      := $(shell find assets -type f | grep \\.png$ | grep -v '^assets/db/')
-BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/ | grep -v '^assets/db/') \
+PNG_FILES      := $(shell find assets -type f | grep \\.png$ | grep -v '^assets/db/' | grep -v '^assets/particles/')
+BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/ | grep -v '^assets/db/' | grep -v '^assets/particles/') \
                   $(foreach f,$(PNG_FILES:.png=.bin),$f)
 # The number of compressed (vpk0) relocData files differs by version (US: 499,
 # JP: 474). Detect from the filesystem so the same Makefile works for both.
@@ -571,6 +571,24 @@ $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/ovl8/ovl8_30_button.rg
 		--png assets/ovl8/ovl8_30_button.rgba16.png
 
 $(BUILD_DIR)/src/ovl8/ovl8_30.o: $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c
+
+# Particle texture banks (.txb): each bank's images and palettes are
+# extracted from the baserom into per-frame .bin/.png (in assets/particles/)
+# and per-frame .inc.c (in build/src/particles/). Each _txb.o `#include`s
+# the .inc.c bytes -- see PARTICLE_BANK_DISCOVERIES.md.
+PARTICLE_BANKS := efcommon particles_unk0 particles_unk1 particles_unk2 \
+                  itcommon grpupupu grhyrule gryoster mntitle
+
+# Per-bank stamp file: extractor writes many files per invocation, so we
+# track a single stamp instead of every output. Lazy by build dependency,
+# same pattern as the dbkirby rule above.
+$(BUILD_DIR)/src/particles/%.extract-stamp: $(BASEROM) tools/extractParticleTextures.py
+	$(call print_3,Extracting particle textures:,$*,$@)
+	$(V)$(PYTHON) tools/extractParticleTextures.py --version $(VERSION) --baserom $(BASEROM) --bank $*
+	@mkdir -p $(@D) && touch $@
+
+$(foreach b,$(PARTICLE_BANKS),\
+    $(eval $(BUILD_DIR)/src/particles/$(b)_txb.o: $(BUILD_DIR)/src/particles/$(b).extract-stamp))
 
 ifeq ($(RELOC_DATA),1)
 # Compiled relocData files go in build/assets/relocData/ as overrides.

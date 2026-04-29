@@ -1985,18 +1985,30 @@ segments:
       - [0x968FD0, .rodata, particles/mntitle_txb]
 
 # Music and sound effects
-  - name: S1_music.sbk
-    type: bin
+  - name: S1_music_sbk
+    type: code
     start: 0x96DA40
-  - name: B1_sounds1.ctl
-    type: bin
+    vram: 0x0
+    exclusive_ram_id: audio
+    subsegments:
+      - [0x96DA40, .rodata, audio/S1_music_sbk]
+  - name: B1_sounds1_ctl
+    type: code
     start: 0x994850
+    vram: 0x0
+    exclusive_ram_id: audio
+    subsegments:
+      - [0x994850, .rodata, audio/B1_sounds1_ctl]
   - name: B1_sounds1.tbl
     type: bin
     start: 0x99AF70
-  - name: B1_sounds2.ctl
-    type: bin
+  - name: B1_sounds2_ctl
+    type: code
     start: 0xAB18E0
+    vram: 0x0
+    exclusive_ram_id: audio
+    subsegments:
+      - [0xAB18E0, .rodata, audio/B1_sounds2_ctl]
   - name: B1_sounds2.tbl
     type: bin
     start: 0xAC1520

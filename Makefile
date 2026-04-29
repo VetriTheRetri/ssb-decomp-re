@@ -174,24 +174,98 @@ CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO7) -- $(AS) $(ASFLAGS) --
 # C_FILES 	   := $(shell python3 -c "import yaml; d=yaml.safe_load(open('smashbrothers.$(VERSION).yaml')); segs = d.get('segments', d) if isinstance(d, dict) else d; srcs=[]; \
 # [ srcs.append(s.get('source')) for s in segs if isinstance(s, dict) and s.get('type')=='c' and s.get('source') ]; \
 # print(' '.join(sorted(set(srcs))))")
-S_TEXT_FILES   := $(shell find asm src -type f -name '*.s' | grep -v /nonmatchings/ | grep -v /matchings/ | grep -v '\.rodata\.s' | grep -v '\.data\.s' | grep -v '\.bss\.s')
+S_TEXT_FILES   := $(shell find asm src -type f -name '*.s' | grep -v /nonmatchings/ | grep -v /matchings/ | grep -v '\.rodata\.s' | grep -v '\.data\.s' | grep -v '\.bss\.s' | grep -v '\.cseq\.s')
 S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
 S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
 S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
-PNG_FILES      := $(shell find assets -type f | grep \\.png$ | grep -v '^assets/db/' | grep -v '^assets/particles/')
-BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/ | grep -v '^assets/db/' | grep -v '^assets/particles/') \
+PNG_FILES      := $(shell find assets -type f | grep \\.png$ | grep -v '^assets/db/' | grep -v '^assets/particles/' | grep -v '^assets/audio/')
+BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/ | grep -v '^assets/db/' | grep -v '^assets/particles/' | grep -v '^assets/audio/') \
                   $(foreach f,$(PNG_FILES:.png=.bin),$f)
 # The number of compressed (vpk0) relocData files differs by version (US: 499,
 # JP: 474). Detect from the filesystem so the same Makefile works for both.
 VPK0_FILES     := $(wildcard assets/relocData/*.vpk0.bin)
 VPK0_FILES     := $(VPK0_FILES:.vpk0.bin=.vpk0)
 
+# Music sequence banks are extracted from baserom (no committed sources).
+# Compute their object list here (before $(ELF) consumes O_FILES); the
+# extraction recipe and assemble/compile rules live further down.
+MUSIC_BANKS    := S1_music
+MUSIC_EXTRAS   := src/audio/midis
+
+# Auto-extract at parse time when:
+#   * the bank's manifest is missing (fresh checkout, after make clean), or
+#   * any file under MUSIC_EXTRAS/ is newer than the manifest (user
+#     dropped in or modified a .mid -- including by removing one, which
+#     bumps the directory's own mtime).
+# Doing this at parse time means the wildcard below picks up freshly
+# extracted/converted .cseq.s files in the same `make` invocation;
+# users don't need a separate `make extract` step after editing midis.
+_music_needs_extract = $(or \
+    $(if $(wildcard $(BUILD_DIR)/src/audio/$(1).manifest.json),,need-fresh),\
+    $(shell [ -d $(MUSIC_EXTRAS) ] && \
+            find $(MUSIC_EXTRAS) -newer $(BUILD_DIR)/src/audio/$(1).manifest.json -print -quit 2>/dev/null))
+
+$(foreach b,$(MUSIC_BANKS),\
+    $(if $(call _music_needs_extract,$(b)),\
+        $(info Extracting $(b) sequences from baserom + $(MUSIC_EXTRAS)/...)\
+        $(shell mkdir -p $(BUILD_DIR)/src/audio && \
+                $(PYTHON) tools/extractMusicSequences.py \
+                    --version $(VERSION) --bank $(b) \
+                    --src-dir $(BUILD_DIR)/src/audio \
+                    --extras-dir $(MUSIC_EXTRAS) >&2)))
+
+MUSIC_SEQ_SOURCES := $(foreach b,$(MUSIC_BANKS),\
+                       $(wildcard $(BUILD_DIR)/src/audio/$(b)/*.cseq.s))
+MUSIC_SEQ_BINS    := $(MUSIC_SEQ_SOURCES:.cseq.s=.cseq.bin)
+MUSIC_SEQ_INCS    := $(MUSIC_SEQ_BINS:.cseq.bin=.cseq.inc.c)
+MUSIC_SBK_C       := $(foreach b,$(MUSIC_BANKS),$(BUILD_DIR)/src/audio/$(b)_sbk.c)
+MUSIC_SBK_O       := $(MUSIC_SBK_C:.c=.o)
+
+# Sound-effect / instrument banks (.ctl + .tbl). Same shape as the
+# music-sequence pipeline: the per-waveform AIFCs and the _ctl.c
+# aggregator are extracted/generated from the baserom into build/, with
+# user overrides under src/audio/instruments/. Variables are computed
+# here (above the link rule) so $(O_FILES) sees them.
+# Both versions ship B1_sounds1 and B1_sounds2 through this pipeline.
+# JP's B1_sounds2 has different bytes (Japanese voice samples), but
+# since each pass extracts straight from baserom.<v>.z64, the same
+# source path produces version-correct bytes -- no JP-specific shim.
+SOUND_BANKS    := B1_sounds1 B1_sounds2
+SOUND_EXTRAS   := src/audio/instruments
+
+_sound_needs_extract = $(or \
+    $(if $(wildcard $(BUILD_DIR)/src/audio/$(1).ctl.json),,need-fresh),\
+    $(shell [ -d $(SOUND_EXTRAS) ] && \
+            find $(SOUND_EXTRAS) -newer $(BUILD_DIR)/src/audio/$(1).ctl.json -print -quit 2>/dev/null))
+
+$(foreach b,$(SOUND_BANKS),\
+    $(if $(call _sound_needs_extract,$(b)),\
+        $(info Extracting $(b) bank from baserom + $(SOUND_EXTRAS)/...)\
+        $(shell mkdir -p $(BUILD_DIR)/src/audio && \
+                $(PYTHON) tools/extract_ctl_bank.py \
+                    --version $(VERSION) --bank $(b) \
+                    --src-dir $(BUILD_DIR)/src/audio \
+                    --extras-dir $(SOUND_EXTRAS) >&2)))
+
+SOUND_TBL_BINS := $(foreach b,$(SOUND_BANKS),$(BUILD_DIR)/src/audio/$(b).tbl.bin)
+SOUND_TBL_OS   := $(foreach b,$(SOUND_BANKS),$(BUILD_DIR)/assets/$(b).tbl.o)
+SOUND_CTL_C    := $(foreach b,$(SOUND_BANKS),$(BUILD_DIR)/src/audio/$(b)_ctl.c)
+SOUND_CTL_O    := $(SOUND_CTL_C:.c=.o)
+
+# Filter out C/bin sources we now generate from baserom (their build
+# artifacts are added back below, sourced from build/src/audio/).
+SOUND_C_GENERATED := $(foreach b,$(SOUND_BANKS),src/audio/$(b)_ctl.c)
+SOUND_BIN_GENERATED := $(foreach b,$(SOUND_BANKS),assets/$(b).tbl.bin)
+C_FILES   := $(filter-out $(SOUND_C_GENERATED),$(C_FILES))
+BIN_FILES := $(filter-out $(SOUND_BIN_GENERATED),$(BIN_FILES))
+
 O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_TEXT_FILES:.s=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_DATA_FILES:.s=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_RODATA_FILES:.s=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_BSS_FILES:.s=.o),$(BUILD_DIR)/$f) \
-                  $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f)
+                  $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f) \
+                  $(MUSIC_SBK_O) $(SOUND_CTL_O) $(SOUND_TBL_OS)
 
 TEXT_SECTION_FILES := $(foreach f,$(C_FILES:.c=.text),$(BUILD_DIR)/$f) \
                       $(foreach f,$(S_TEXT_FILES:.s=.text),$(BUILD_DIR)/$f)
@@ -589,6 +663,111 @@ $(BUILD_DIR)/src/particles/%.extract-stamp: $(BASEROM) tools/extractParticleText
 
 $(foreach b,$(PARTICLE_BANKS),\
     $(eval $(BUILD_DIR)/src/particles/$(b)_txb.o: $(BUILD_DIR)/src/particles/$(b).extract-stamp))
+
+# Music sequence banks (.sbk): per-sequence sources live in
+# src/audio/<bank>/*.cseq.s (committed, byte-faithful disassembly of
+# Nintendo's compressed-MIDI format). Build pipeline:
+#   baserom.<v>.z64
+#     -> tools/extractMusicSequences.py
+#         -> build/src/audio/<bank>/*.cseq.s          (per-sequence source)
+#         -> build/src/audio/<bank>.manifest.json     (extraction metadata)
+#     -> tools/assemble_cseq.py -> build/src/audio/<bank>/*.cseq.bin
+#     -> tools/binToInc.py      -> build/src/audio/<bank>/*.cseq.inc.c
+#     -> tools/gen_sbk_c.py     -> build/src/audio/<bank>_sbk.c
+#     -> compiled to build/src/audio/<bank>_sbk.o
+# Nothing under src/audio/<bank>/ is committed; everything is regenerated
+# from the baserom (or auto-extracted on demand if the manifest is
+# missing). See MUSIC_AND_SFX_DISCOVERIES.md. The MUSIC_BANKS,
+# MUSIC_SEQ_*, MUSIC_SBK_O variables and the parse-time auto-extract
+# trigger live up near the O_FILES definition so the link rule sees
+# them; the rules themselves stay here.
+
+# Manifest -> .cseq.s files: rebuilt by extractMusicSequences.py. Make
+# treats the manifest as the rule's primary output and the .cseq.s
+# files as group siblings that the same rule produces.
+$(BUILD_DIR)/src/audio/%.manifest.json: tools/extractMusicSequences.py \
+                                         tools/disassemble_cseq.py \
+                                         tools/assemble_cseq.py \
+                                         tools/mid_to_cseq.py \
+                                         tools/_audio_seq_names.py \
+                                         baserom.$(VERSION).z64 \
+                                         $(wildcard $(MUSIC_EXTRAS)/*.mid) \
+                                         $(wildcard $(MUSIC_EXTRAS)/*.midi)
+	$(V)$(PYTHON) tools/extractMusicSequences.py --version $(VERSION) \
+	    --bank $* --src-dir $(BUILD_DIR)/src/audio --extras-dir $(MUSIC_EXTRAS)
+
+.PRECIOUS: $(BUILD_DIR)/src/audio/%.cseq.bin $(BUILD_DIR)/src/audio/%.cseq.s \
+           $(BUILD_DIR)/src/audio/%.cseq.inc.c \
+           $(BUILD_DIR)/src/audio/%_sbk.c \
+           $(BUILD_DIR)/src/audio/%.manifest.json
+$(BUILD_DIR)/src/audio/%.cseq.bin: $(BUILD_DIR)/src/audio/%.cseq.s tools/assemble_cseq.py
+	$(call print_3,Assembling cseq:,$<,$@)
+	@mkdir -p $(@D)
+	$(V)$(PYTHON) tools/assemble_cseq.py $< -o $@
+
+$(BUILD_DIR)/src/audio/%.cseq.inc.c: $(BUILD_DIR)/src/audio/%.cseq.bin tools/binToInc.py
+	$(V)$(PYTHON) tools/binToInc.py $< -o $@
+
+# Generated <bank>_sbk.c -- struct layout from manifest, sequence bodies
+# from the .cseq.inc.c files (resolved via #include at C compile time).
+$(BUILD_DIR)/src/audio/%_sbk.c: $(BUILD_DIR)/src/audio/%.manifest.json tools/gen_sbk_c.py
+	$(V)$(PYTHON) tools/gen_sbk_c.py $< -o $@
+
+# Each <bank>_sbk.c needs every sequence's .inc.c at compile time.
+$(foreach b,$(MUSIC_BANKS),\
+    $(eval $(BUILD_DIR)/src/audio/$(b)_sbk.o: \
+        $(filter $(BUILD_DIR)/src/audio/$(b)/%,$(MUSIC_SEQ_INCS))))
+
+# Compile rule for the generated <bank>_sbk.c. The standard
+# `$(BUILD_DIR)/%.o: %.c` pattern only matches sources under src/, so we
+# spell this one out. Mirrors the standard rule's flags.
+$(BUILD_DIR)/src/audio/%_sbk.o: $(BUILD_DIR)/src/audio/%_sbk.c
+	$(call print_3,Compiling:,$<,$@)
+	@mkdir -p $(@D)
+ifndef SKIP_DEPS
+	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< && rm $@
+endif
+	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) tools/colorizeIDO.py
+	$(V)$(PYTHON) tools/patchMips3Objects.py $@
+
+# ---- Sound-bank pipeline (.ctl + .tbl) ------------------------------
+# Manifest + .tbl rebuild: extract_ctl_bank.py is one tool that produces
+# both, plus per-waveform AIFC/AIFF in build/src/audio/<bank>/. Make
+# treats the manifest as the primary output here.
+.PRECIOUS: $(BUILD_DIR)/src/audio/%.tbl.bin \
+           $(BUILD_DIR)/src/audio/%_ctl.c \
+           $(BUILD_DIR)/src/audio/%.ctl.json
+# Distinct extension (`.ctl.json` vs the music pipeline's
+# `.manifest.json`) so Make can tell the two pattern rules apart.
+$(BUILD_DIR)/src/audio/%.ctl.json: tools/extract_ctl_bank.py \
+                                   tools/audio_codec.py \
+                                   tools/decode_ctl.py \
+                                   baserom.$(VERSION).z64 \
+                                   $(wildcard $(SOUND_EXTRAS)/*.aifc)
+	$(V)$(PYTHON) tools/extract_ctl_bank.py --version $(VERSION) \
+	    --bank $* --src-dir $(BUILD_DIR)/src/audio --extras-dir $(SOUND_EXTRAS)
+
+# The same recipe writes the .tbl.bin -- declare the dep so Make rebuilds
+# the .tbl whenever the manifest is regenerated.
+$(BUILD_DIR)/src/audio/%.tbl.bin: $(BUILD_DIR)/src/audio/%.ctl.json ;
+
+# .tbl bytes -> linkable .o (same recipe as the standard bin -> o rule).
+$(BUILD_DIR)/assets/%.tbl.o: $(BUILD_DIR)/src/audio/%.tbl.bin
+	$(call print_3,Making binary:,$<,$@)
+	@mkdir -p $(@D)
+	$(V)$(OBJCOPY) -I binary -O $(BIG_MIPS_OBJCOPY_TARGET) -B mips $< $@
+
+$(BUILD_DIR)/src/audio/%_ctl.c: $(BUILD_DIR)/src/audio/%.ctl.json tools/gen_ctl_c.py tools/decode_ctl.py
+	$(V)$(PYTHON) tools/gen_ctl_c.py $< -o $@
+
+$(BUILD_DIR)/src/audio/%_ctl.o: $(BUILD_DIR)/src/audio/%_ctl.c
+	$(call print_3,Compiling:,$<,$@)
+	@mkdir -p $(@D)
+ifndef SKIP_DEPS
+	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< && rm $@
+endif
+	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) tools/colorizeIDO.py
+	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
 ifeq ($(RELOC_DATA),1)
 # Compiled relocData files go in build/assets/relocData/ as overrides.

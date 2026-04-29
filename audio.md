@@ -4,16 +4,19 @@ This doc covers the audio source pipeline -- both the **music
 sequences** (BGM, in `S1_music.sbk`) and the **instrument banks** (SFX
 + BGM samples, in `B1_sounds1.ctl/.tbl` and `B1_sounds2.ctl/.tbl`).
 
-The big picture is the same for both: nothing audio-related is
+The big picture is the same for all of them: nothing audio-related is
 committed under `src/audio/`. The 47 BGM tracks, the 117/322 per-bank
-waveforms, and the aggregate `.c` files are all extracted from the
-baserom on demand into `build/src/audio/`. User-supplied overrides
-live in two committed directories:
+waveforms, the aggregate `.c` files, and the FGM (sound-effect-engine)
+blobs are all extracted from the baserom on demand into
+`build/src/audio/`. User-supplied overrides live in three committed
+directories:
 
 * [src/audio/midis/](src/audio/midis/) -- drop a `.mid` to add or
   override a music sequence.
 * [src/audio/instruments/](src/audio/instruments/) -- drop a
   `.aifc` to override an instrument-bank waveform.
+* [src/audio/fgm/](src/audio/fgm/) -- drop a whole-file `.bin` to
+  override one of the FGM data files.
 
 For background on the file formats themselves (`ALSeqFile`,
 `ALBankFile`, compressed-MIDI bytecode, VADPCM, `ALCMidiHdr`, etc.) see
@@ -339,3 +342,180 @@ restores byte-match automatically** on the next build.
 | `tools/extract_ctl_bank.py` | baserom + `instruments/*.aifc` → build | Auto-run by Make. Walks the .ctl, splits the .tbl, applies overrides, writes per-wave AIFC + AIFF + manifest + rebuilt .tbl. |
 | `tools/decode_ctl.py` | library + legacy CLI | The original .ctl walker; still used as a library by extract_ctl_bank.py and gen_ctl_c.py. |
 | `tools/gen_ctl_c.py` | manifest → `_ctl.c` | Aggregate struct + offsetof initializer; mirrors decode_ctl.py output 1:1. |
+
+---
+
+# Part 3: FGM blobs (`fgm.unk`, `fgm.tbl`, `fgm.ucd`)
+
+The "FGM" group is three opaque-ish data files used by the
+sound-effect engine. They live just past the instrument banks in the
+ROM and are loaded together by the audio init in
+[src/sys/audio.c](src/sys/audio.c).
+
+| File | US size | JP size | Format |
+|------|---------|---------|--------|
+| `fgm.unk` |  2 080 B | 2 080 B | Per-SFX **LFO/modulator** parameter table. `{ u32 count; FGMUnkEntry entries[count]; u8 _trail[]; }`, count=100 (US) / 95 (JP). Each 16-byte entry: `{ u8 shape, target, postproc, init_phase; f32 period, amplitude, offset; }`. `shape` selects the LFO waveform (sine / square / saw / sample-and-hold); `target` routes the per-frame output to volume / pitch / pan / scratch register / another voice. See §3 of [MUSIC_AND_SFX_DISCOVERIES.md](MUSIC_AND_SFX_DISCOVERIES.md) for the full enum tables. The file is a fixed 2080-byte buffer; the bytes past `entries[count]` are leftover-from-buffer (preserved verbatim). |
+| `fgm.tbl` | 11 728 B | 11 088 B | **SFX programs**, indexed by `id`. `{ u32 count; s32 offsets[count]; u8 data[]; }` (464 entries US / 454 entries JP) where each entry is a sequence of bytecode opcodes the FGM interpreter ([n_env.c:3746](src/libultra/n_audio/n_env.c#L3746)) executes per frame. Opcodes set vol/pan/pitch, spawn LFO modulators (indexing into `fgm.unk`), trigger sub-sounds, mark/jump for looping, and end. Per-entry decomp now available -- see below. |
+| `fgm.ucd` | 19 232 B | 18 384 B | Same shape as `fgm.tbl`. 695 (US) variable-size FGM microcode chunks. Whole-file binary override only; per-entry decomp deferred. |
+
+## Pipeline
+
+```
+                          baserom.<v>.z64
+                                 │
+                                 │  tools/extract_fgm.py
+                                 │   (auto-runs at parse time when the
+                                 │    extras-dir fingerprint changes)
+                                 ▼
+       ┌─── src/audio/fgm/{fgm.unk,fgm.tbl,fgm.ucd}.bin   (committed user input)
+       │           │
+       ▼           ▼
+build/src/audio/fgm.unk.bin
+build/src/audio/fgm.tbl.bin
+build/src/audio/fgm.ucd.bin
+        │
+        │  objcopy -I binary
+        ▼
+build/assets/fgm.{unk,tbl,ucd}.o   →  linked into the ROM
+```
+
+The fingerprint stored in `build/src/audio/.fgm.stamp.json` records
+each override file's name + size + nanosecond mtime. The Makefile
+parse-time trigger compares the current state of `src/audio/fgm/` to
+this fingerprint via Python (so adds, removals, and edits within the
+same wall-clock second all trigger correctly -- second-granularity
+`find -newer` was unreliable in tight test loops).
+
+## Overriding
+
+Three override paths, checked in priority order:
+
+1. **`src/audio/fgm/fgm.unk.json`** or **`fgm.tbl.json`** --
+   per-entry decomp. Each build writes the canonical decomp to
+   `build/src/audio/fgm.{unk,tbl}.json`; copy one into `src/audio/fgm/`,
+   edit any field, and the build picks up your version.
+2. **`src/audio/fgm/fgm.{unk,tbl,ucd}.bin`** -- whole-file binary
+   replacement. The bytes go straight in. Useful for binary-only
+   edits, or for `fgm.ucd` (still bin-only).
+3. Otherwise the bytes come from the baserom slice.
+
+`fgm.ucd` doesn't have a per-entry view yet. Its layout matches
+`fgm.tbl` (same `{count, offsets, data}` shape, 695 US entries that
+are also FGM bytecode), so adding decomp would be straightforward --
+held off pending a clearer mental model of how it differs from
+`fgm.tbl` semantically (the engine has separate `func_80026A10`,
+`func_800269C0`, `func_80026B40` accessors each indexing one of the
+three tables, so they likely play different roles).
+
+### Per-entry decomp format (`fgm.tbl.json`)
+
+Each entry is a small SFX program. The decoded form is a list of
+instruction rows, each shaped `[op, ...args, wait_frames]`:
+
+```json
+{
+  "count": 464,
+  "total_size": 11728,
+  "entries": [
+    {
+      "idx": 0,
+      "program": [
+        ["trigger",   0,         0],
+        ["pitch",     -750,      0],
+        ["unk36",     127,       0],
+        ["vol",       60,        2],
+        ["vol",       80,        2],
+        ["vol",       107,       2],
+        ["vol",       127,       2],
+        ["vol",       120,       7],
+        ...
+        ["vol",       15,        7],
+        ["end",       0]
+      ],
+      "tail_hex": ""
+    },
+    ...
+  ]
+}
+```
+
+The opcodes correspond directly to the cases in
+[func_80027460_28060](src/libultra/n_audio/n_env.c#L3746):
+
+| op | args | what it does |
+|----|------|--------------|
+| `vol` | `<u8>` | set channel volume (0..127); >127 means relative `arg − 64`, clamped |
+| `pan` | `<u8>` | set channel pan, same set/relative scheme |
+| `pitch` | `<s16>` | pitch in cents; ±1200 range; |arg|>1200 means relative |
+| `unk36` | `<u8>` | sets `arg0->unk36` (semantics still TBD) |
+| `spawn_mod` | `<u8 id> <varint idx>` | attach an LFO modulator from `fgm.unk[idx]` to slot `id` |
+| `stop_mod` | `<u8 id>` | detach modulator at slot `id` |
+| `trigger` | `<varint idx>` | begin a sub-sound (consumes a separate ALWhatever array) |
+| `end` |  | freeze the program (sets runtime timer to 10000) |
+| `mark_loop` |  | save current bytecode position |
+| `jump_loop` |  | restore saved position (loops back to `mark_loop`) |
+
+The trailing element of each row is the wait time (in frames) before
+the next instruction runs. `tail_hex` captures any zero/leftover bytes
+between this entry's last instruction and the next entry's start
+offset (some entries are zero-padded by the encoder).
+
+### Per-entry decomp format (`fgm.unk.json`)
+
+```json
+{
+  "count": 100,
+  "total_size": 2080,
+  "entries": [
+    {"shape": 7, "target": 12, "postproc": 0, "init_phase": 0,
+     "period": 100.0, "amplitude": 190.0, "offset": -200.0},
+    ...
+  ],
+  "trailing_hex": "07 0a 00 00 ..."
+}
+```
+
+Field meanings are in the table above (or see the
+[extract_fgm.py docstring](tools/extract_fgm.py) for the full enum
+listing). `total_size` is fixed at 2080 (matching the original
+preallocated buffer). `trailing_hex` holds the leftover-from-buffer
+bytes that come after the active entries; the encoder pads or
+truncates them so the rebuilt file is always exactly `total_size`
+bytes.
+
+### Round-trip semantics
+
+* No `.json` override → extract from baserom → byte-identical ROM.
+* `*.json` self-override (file copied unchanged) → bytes reconstructed
+  identically → byte-identical ROM.
+* Edit one field/instruction → ROM diverges in just those bytes;
+  per-entry tail/trailing bytes preserved unchanged.
+* For `fgm.unk`: changing the count shifts trailing bytes within the
+  2080-byte total budget (truncated or zero-padded).
+* For `fgm.tbl`: each entry's encoded length depends on its
+  instruction list; the offsets table at the head is rebuilt
+  automatically. Changing the total entry count is allowed but won't
+  byte-match.
+
+Verified for both files, both versions:
+
+| File | Version | bin → json → bin |
+|------|---------|------------------|
+| `fgm.unk` | US (count=100) | byte-identical ✓ |
+| `fgm.unk` | JP (count=95)  | byte-identical ✓ |
+| `fgm.tbl` | US (count=464) | byte-identical ✓ |
+| `fgm.tbl` | JP (count=454) | byte-identical ✓ |
+
+### Caveat: any override breaks byte-match
+
+`fgm.unk`, `fgm.tbl`, and `fgm.ucd` are linked as raw `.data` blobs;
+any change to their bytes flows directly into the ROM. A
+self-override (the exact bytes the extractor produced) keeps the ROM
+matching; anything else doesn't. Removing the override restores
+byte-match.
+
+## FGM tools
+
+| Tool | Direction | Notes |
+|------|-----------|-------|
+| `tools/extract_fgm.py` | baserom + `fgm/*.json` + `fgm/*.bin` → build | Auto-run by Make. Resolves the override priority (`.json` > `.bin` > baserom) per file, also writes a per-build `fgm.{unk,tbl}.json` decomp alongside the binary, and stamps the extras-dir fingerprint for the parse-time trigger. The `decode_fgm_unk` / `encode_fgm_unk` / `decode_fgm_tbl` / `encode_fgm_tbl` helpers in this file are the canonical parsers/serializers. |

@@ -252,12 +252,43 @@ SOUND_TBL_OS   := $(foreach b,$(SOUND_BANKS),$(BUILD_DIR)/assets/$(b).tbl.o)
 SOUND_CTL_C    := $(foreach b,$(SOUND_BANKS),$(BUILD_DIR)/src/audio/$(b)_ctl.c)
 SOUND_CTL_O    := $(SOUND_CTL_C:.c=.o)
 
+# FGM (sound-effect engine) opaque blobs. Same shape: extracted from
+# baserom into build/, with optional whole-file overrides committed to
+# src/audio/fgm/. Per-entry decomp deferred until entry formats are
+# understood.
+FGM_FILES   := fgm.unk fgm.tbl fgm.ucd
+FGM_EXTRAS  := src/audio/fgm
+FGM_BINS    := $(foreach f,$(FGM_FILES),$(BUILD_DIR)/src/audio/$(f).bin)
+FGM_OS      := $(foreach f,$(FGM_FILES),$(BUILD_DIR)/assets/$(f).o)
+FGM_STAMP   := $(BUILD_DIR)/src/audio/.fgm.stamp.json
+
+# Auto-extract trigger. The stamp records the extras dir's
+# filename+size+mtime fingerprint; we re-extract if the fingerprint
+# changed since the last run (catches adds, modifications, AND
+# removals -- second-granularity `find -newer` could miss removals when
+# the rm and the stamp's touch fell in the same second).
+_fgm_needs_extract = $(shell $(PYTHON) -c "import json, os, sys; \
+    stamp='$(FGM_STAMP)'; ed='$(FGM_EXTRAS)'; \
+    cur=[]; \
+    [cur.append({'name':f,'size':os.stat(os.path.join(ed,f)).st_size,'mtime_ns':os.stat(os.path.join(ed,f)).st_mtime_ns}) for f in sorted(os.listdir(ed)) if os.path.isfile(os.path.join(ed,f))] if os.path.isdir(ed) else None; \
+    rec=json.load(open(stamp)).get('extras_fingerprint') if os.path.exists(stamp) else None; \
+    print('y' if rec is None or rec != cur else '', end='')")
+
+$(if $(_fgm_needs_extract),\
+    $(info Extracting fgm files from baserom + $(FGM_EXTRAS)/...)\
+    $(shell mkdir -p $(BUILD_DIR)/src/audio && \
+            $(PYTHON) tools/extract_fgm.py \
+                --version $(VERSION) \
+                --out-dir $(BUILD_DIR)/src/audio \
+                --extras-dir $(FGM_EXTRAS) >&2))
+
 # Filter out C/bin sources we now generate from baserom (their build
 # artifacts are added back below, sourced from build/src/audio/).
 SOUND_C_GENERATED := $(foreach b,$(SOUND_BANKS),src/audio/$(b)_ctl.c)
 SOUND_BIN_GENERATED := $(foreach b,$(SOUND_BANKS),assets/$(b).tbl.bin)
+FGM_BIN_GENERATED := $(foreach f,$(FGM_FILES),assets/$(f).bin)
 C_FILES   := $(filter-out $(SOUND_C_GENERATED),$(C_FILES))
-BIN_FILES := $(filter-out $(SOUND_BIN_GENERATED),$(BIN_FILES))
+BIN_FILES := $(filter-out $(SOUND_BIN_GENERATED) $(FGM_BIN_GENERATED),$(BIN_FILES))
 
 O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_TEXT_FILES:.s=.o),$(BUILD_DIR)/$f) \
@@ -265,7 +296,8 @@ O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_RODATA_FILES:.s=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_BSS_FILES:.s=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f) \
-                  $(MUSIC_SBK_O) $(SOUND_CTL_O) $(SOUND_TBL_OS)
+                  $(MUSIC_SBK_O) $(SOUND_CTL_O) $(SOUND_TBL_OS) \
+                  $(FGM_OS)
 
 TEXT_SECTION_FILES := $(foreach f,$(C_FILES:.c=.text),$(BUILD_DIR)/$f) \
                       $(foreach f,$(S_TEXT_FILES:.s=.text),$(BUILD_DIR)/$f)
@@ -753,6 +785,26 @@ $(BUILD_DIR)/src/audio/%.tbl.bin: $(BUILD_DIR)/src/audio/%.ctl.json ;
 
 # .tbl bytes -> linkable .o (same recipe as the standard bin -> o rule).
 $(BUILD_DIR)/assets/%.tbl.o: $(BUILD_DIR)/src/audio/%.tbl.bin
+	$(call print_3,Making binary:,$<,$@)
+	@mkdir -p $(@D)
+	$(V)$(OBJCOPY) -I binary -O $(BIG_MIPS_OBJCOPY_TARGET) -B mips $< $@
+
+# FGM blobs: same recipe shape as the .tbl one above. Stem captures
+# `fgm.unk`, `fgm.tbl`, `fgm.ucd`. The stamp file gates the parse-time
+# auto-extract; once extraction has happened, the .bin paths are
+# present and Make uses them.
+.PRECIOUS: $(BUILD_DIR)/src/audio/fgm.%.bin $(FGM_STAMP)
+$(BUILD_DIR)/src/audio/fgm.%.bin: $(FGM_STAMP) ;
+
+# This rule is mostly belt-and-braces: the parse-time trigger above
+# already runs extraction when needed, but having the stamp as a real
+# Make target lets explicit `make $(FGM_STAMP)` invocations work too.
+$(FGM_STAMP): tools/extract_fgm.py baserom.$(VERSION).z64 \
+              $(wildcard $(FGM_EXTRAS)/*.bin)
+	$(V)$(PYTHON) tools/extract_fgm.py --version $(VERSION) \
+	    --out-dir $(BUILD_DIR)/src/audio --extras-dir $(FGM_EXTRAS)
+
+$(BUILD_DIR)/assets/fgm.%.o: $(BUILD_DIR)/src/audio/fgm.%.bin
 	$(call print_3,Making binary:,$<,$@)
 	@mkdir -p $(@D)
 	$(V)$(OBJCOPY) -I binary -O $(BIG_MIPS_OBJCOPY_TARGET) -B mips $< $@

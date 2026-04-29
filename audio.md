@@ -355,8 +355,8 @@ ROM and are loaded together by the audio init in
 | File | US size | JP size | Format |
 |------|---------|---------|--------|
 | `fgm.unk` |  2 080 B | 2 080 B | Per-SFX **LFO/modulator** parameter table. `{ u32 count; FGMUnkEntry entries[count]; u8 _trail[]; }`, count=100 (US) / 95 (JP). Each 16-byte entry: `{ u8 shape, target, postproc, init_phase; f32 period, amplitude, offset; }`. `shape` selects the LFO waveform (sine / square / saw / sample-and-hold); `target` routes the per-frame output to volume / pitch / pan / scratch register / another voice. See §3 of [MUSIC_AND_SFX_DISCOVERIES.md](MUSIC_AND_SFX_DISCOVERIES.md) for the full enum tables. The file is a fixed 2080-byte buffer; the bytes past `entries[count]` are leftover-from-buffer (preserved verbatim). |
-| `fgm.tbl` | 11 728 B | 11 088 B | **SFX programs**, indexed by `id`. `{ u32 count; s32 offsets[count]; u8 data[]; }` (464 entries US / 454 entries JP) where each entry is a sequence of bytecode opcodes the FGM interpreter ([n_env.c:3746](src/libultra/n_audio/n_env.c#L3746)) executes per frame. Opcodes set vol/pan/pitch, spawn LFO modulators (indexing into `fgm.unk`), trigger sub-sounds, mark/jump for looping, and end. Per-entry decomp now available -- see below. |
-| `fgm.ucd` | 19 232 B | 18 384 B | Same shape as `fgm.tbl`. 695 (US) variable-size FGM microcode chunks. Whole-file binary override only; per-entry decomp deferred. |
+| `fgm.tbl` | 11 728 B | 11 088 B | **Instrument articulations** (envelope/modulator programs). `{ u32 count; s32 offsets[count]; u8 data[]; }` (464 entries US / 454 entries JP). Each entry is bytecode for the EE0C interpreter ([n_env.c:3746](src/libultra/n_audio/n_env.c#L3746)): set vol/pan/pitch, spawn LFO modulators from `fgm.unk` via opcode 0x40, mark/jump for loops. Articulations are **shared** across many `fgm.ucd` voices -- e.g. tbl[3] is the "landing" envelope used by `nSYAudioFGMDonkeyLanding` / `Captain` / `Kirby` / `Link` / `Ness` / etc. Per-entry decomp lists each articulation's `used_by_voices` so you can see which gmFGMVoiceIDs share it. |
+| `fgm.ucd` | 19 232 B | 18 384 B | **Voice scripts**, indexed directly by [`gmFGMVoiceID`](src/gm/gmsound.h). Same `{count, offsets[], data}` shape (695 US / 669 JP entries). `syAudioPlayFGM(id)` fetches `fgm.ucd[id]` and runs it through the siz34 interpreter ([n_env.c:4600](src/libultra/n_audio/n_env.c#L4600)) -- a small MIDI-like script: set the articulation slot via `set_articulation` (which fgm.tbl entry to spawn), set channel state (volume / pan / key range), play notes (pitch + duration), end. Per-entry decomp now available with `name` populated from the gmFGMVoiceID enum (where defined; ~94% coverage on US, ~96% on JP -- the unnamed tail entries haven't been attributed yet). |
 
 ## Pipeline
 
@@ -388,24 +388,28 @@ same wall-clock second all trigger correctly -- second-granularity
 
 ## Overriding
 
-Three override paths, checked in priority order:
+Three override paths, checked in priority order per file:
 
-1. **`src/audio/fgm/fgm.unk.json`** or **`fgm.tbl.json`** --
-   per-entry decomp. Each build writes the canonical decomp to
-   `build/src/audio/fgm.{unk,tbl}.json`; copy one into `src/audio/fgm/`,
-   edit any field, and the build picks up your version.
+1. **`src/audio/fgm/fgm.{unk,tbl,ucd}.json`** -- per-entry decomp.
+   Each build writes the canonical decomp to
+   `build/src/audio/fgm.{unk,tbl,ucd}.json`; copy one into
+   `src/audio/fgm/`, edit any field, and the build picks up your
+   version.
 2. **`src/audio/fgm/fgm.{unk,tbl,ucd}.bin`** -- whole-file binary
    replacement. The bytes go straight in. Useful for binary-only
-   edits, or for `fgm.ucd` (still bin-only).
+   edits.
 3. Otherwise the bytes come from the baserom slice.
 
-`fgm.ucd` doesn't have a per-entry view yet. Its layout matches
-`fgm.tbl` (same `{count, offsets, data}` shape, 695 US entries that
-are also FGM bytecode), so adding decomp would be straightforward --
-held off pending a clearer mental model of how it differs from
-`fgm.tbl` semantically (the engine has separate `func_80026A10`,
-`func_800269C0`, `func_80026B40` accessors each indexing one of the
-three tables, so they likely play different roles).
+All three FGM files now have per-entry decomp, with cross-references
+between them:
+
+* `fgm.ucd` entries get a `name` field populated from
+  [`gmFGMVoiceID`](src/gm/gmsound.h) (when one exists for that index).
+* `fgm.tbl` entries get a `used_by_voices` array of
+  `[idx, name]` tuples for every fgm.ucd voice that selects this
+  articulation via `set_articulation`.
+* `fgm.unk` entries get a `used_by_tbl` array of fgm.tbl indices that
+  spawn this LFO via the `spawn_mod` opcode.
 
 ### Per-entry decomp format (`fgm.tbl.json`)
 
@@ -460,6 +464,62 @@ the next instruction runs. `tail_hex` captures any zero/leftover bytes
 between this entry's last instruction and the next entry's start
 offset (some entries are zero-padded by the encoder).
 
+### Per-entry decomp format (`fgm.ucd.json`)
+
+Each entry is a short voice script (MIDI-like). Top-level state
+opcodes (`set_articulation`, `set_volume`, `set_pan`, `mark_loop`,
+`jump_loop`, `fork_voice`, ...) plus packed "play note" rows where
+`pitch_code * 100 - 1300` cents is the note's pitch and `dur_code`
+selects the duration:
+
+```json
+{
+  "count": 695,
+  "total_size": 19232,
+  "entries": [
+    {
+      "idx": 0,
+      "name": "nSYAudioFGMExplodeS",
+      "program": [
+        ["set_unk2D", 0],
+        ["set_articulation", 7],
+        ["set_unk1E", 255],
+        ["set_unk1F", 68],
+        ["set_unk1E", 33],
+        ["set_volume", 220],
+        ["note", 3, 7, 20],     // pitch_code=3 (-1000 cents), dur_code=7 (varint timer), timer=20
+        ["set_unk1F", 50],
+        ["note", 3, 7, 30],
+        ["set_unk1F", 20],
+        ["note", 3, 7, 85],
+        ["stop_voice"]
+      ],
+      "tail_hex": ""
+    },
+    ...
+  ]
+}
+```
+
+Note rows: `["note", pitch_code, dur_code, timer]`.
+* `pitch_code = 0` → rest (don't play); otherwise pitch in cents =
+  `pitch_code * 100 - 1300` (so `pitch_code=13` is 0 cents = the
+  reference pitch, `pitch_code=25` is +1200 cents = one octave up).
+* `dur_code = 0` → execute immediately; `1..6` → look up
+  `siz34_0x12[code-1]` (set earlier by `set_dur_table`); `7` → use the
+  varint `timer` directly.
+
+Top-level opcodes: see the
+[extract_fgm.py docstring](tools/extract_fgm.py) for the full table
+(stop_voice, set_articulation, set_unk1E/1F/22/23/2C/2D, set_volume,
+vol_delta, set_pan, pan_delta, fork_voice, mark_loop, jump_loop,
+set_t5_neg2400/4800).
+
+`name` is populated from `gmFGMVoiceID` when the index has a
+defined enum entry. ~94% of US entries (653 of 695) and ~96% of JP
+entries (641 of 669) are named; tail entries past the enum's coverage
+have `name: null`.
+
 ### Per-entry decomp format (`fgm.unk.json`)
 
 ```json
@@ -477,11 +537,22 @@ offset (some entries are zero-padded by the encoder).
 
 Field meanings are in the table above (or see the
 [extract_fgm.py docstring](tools/extract_fgm.py) for the full enum
-listing). `total_size` is fixed at 2080 (matching the original
-preallocated buffer). `trailing_hex` holds the leftover-from-buffer
-bytes that come after the active entries; the encoder pads or
-truncates them so the rebuilt file is always exactly `total_size`
-bytes.
+listing). `used_by_tbl` is the cross-reference back to fgm.tbl entries
+that spawn this LFO. `total_size` is fixed at 2080 (matching the
+original preallocated buffer).
+
+#### `trailing_hex` is **not undecomped data**
+
+The on-disk file is a fixed 2080-byte buffer. Active entries occupy
+`4 + count*16` bytes (1604 on US / 1524 on JP); the remaining 476/556
+bytes after `entries[count]` are *stale leftover from a previous
+version of the file* -- the bytes match the same 16-byte
+`{u8×4, f32×3}` entry shape, but `count` doesn't reach them so the
+engine ignores them. The encoder didn't clear the unused tail of the
+buffer when writing, leaving the previous draft visible there. We
+capture those bytes verbatim in `trailing_hex` so re-encoding produces
+byte-identical output. Same pattern as the leftover-buffer pad bytes
+in the audio banks.
 
 ### Round-trip semantics
 
@@ -497,7 +568,7 @@ bytes.
   automatically. Changing the total entry count is allowed but won't
   byte-match.
 
-Verified for both files, both versions:
+Verified for all three files, both versions:
 
 | File | Version | bin → json → bin |
 |------|---------|------------------|
@@ -505,6 +576,8 @@ Verified for both files, both versions:
 | `fgm.unk` | JP (count=95)  | byte-identical ✓ |
 | `fgm.tbl` | US (count=464) | byte-identical ✓ |
 | `fgm.tbl` | JP (count=454) | byte-identical ✓ |
+| `fgm.ucd` | US (count=695) | byte-identical ✓ |
+| `fgm.ucd` | JP (count=669) | byte-identical ✓ |
 
 ### Caveat: any override breaks byte-match
 
@@ -518,4 +591,4 @@ byte-match.
 
 | Tool | Direction | Notes |
 |------|-----------|-------|
-| `tools/extract_fgm.py` | baserom + `fgm/*.json` + `fgm/*.bin` → build | Auto-run by Make. Resolves the override priority (`.json` > `.bin` > baserom) per file, also writes a per-build `fgm.{unk,tbl}.json` decomp alongside the binary, and stamps the extras-dir fingerprint for the parse-time trigger. The `decode_fgm_unk` / `encode_fgm_unk` / `decode_fgm_tbl` / `encode_fgm_tbl` helpers in this file are the canonical parsers/serializers. |
+| `tools/extract_fgm.py` | baserom + `fgm/*.json` + `fgm/*.bin` → build | Auto-run by Make. Resolves the override priority (`.json` > `.bin` > baserom) per file, writes per-build `fgm.{unk,tbl,ucd}.json` decomps alongside the binaries, parses `gmFGMVoiceID` from gmsound.h to label fgm.ucd entries, computes cross-references (`used_by_voices` / `used_by_tbl`), and stamps the extras-dir fingerprint for the parse-time trigger. The `decode_*` / `encode_*` helpers (`fgm_unk`, `fgm_tbl`, `fgm_ucd`) are the canonical parsers/serializers. |

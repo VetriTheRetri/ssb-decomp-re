@@ -804,7 +804,7 @@ $(FGM_STAMP): tools/extract_fgm.py baserom.$(VERSION).z64 \
 	$(V)$(PYTHON) tools/extract_fgm.py --version $(VERSION) \
 	    --out-dir $(BUILD_DIR)/src/audio --extras-dir $(FGM_EXTRAS)
 
-$(BUILD_DIR)/assets/fgm.%.o: $(BUILD_DIR)/src/audio/fgm.%.bin
+$(BUILD_DIR)/assets/fgm.%.o: $(BUILD_DIR)/src/audio/fgm.%.bin $(FGM_STAMP)
 	$(call print_3,Making binary:,$<,$@)
 	@mkdir -p $(@D)
 	$(V)$(OBJCOPY) -I binary -O $(BIG_MIPS_OBJCOPY_TARGET) -B mips $< $@

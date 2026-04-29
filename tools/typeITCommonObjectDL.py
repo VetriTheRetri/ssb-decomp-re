@@ -106,24 +106,29 @@ def parse_existing_blocks(text):
     """Walk the existing source to find every committed block's (offset, size).
     Returns a list of (offset, size, sym, kind) sorted by offset.
 
-    kind ∈ {"u8", "u32", "DObjDesc"} based on declaration."""
+    kind ∈ {"u8", "u32", "Gfx", "Vtx", "DObjDesc"} based on declaration."""
     blocks = []
     lines = text.split("\n")
     pending_off = None
+    elem_sizes = {"u8": 1, "u32": 4, "Vtx": 16, "Gfx": 8, "DObjDesc": 44, "DObjDLLink": 8, "u16": 2}
     for ln in lines:
         m_c = re.search(r"@ 0x([0-9A-Fa-f]+),", ln)
         if m_c:
             pending_off = int(m_c.group(1), 16)
             continue
-        # Match `u8 dXxx[0xNNN] = {`, `u32 dXxx[N] = {`, `DObjDesc dXxx[N] = {`
-        m = re.match(r"(u8|u32|DObjDesc)\s+(d\w+)\[(0x[0-9A-Fa-f]+|\d+)\]", ln)
+        # Match `<type> dXxx[0xNNN] = {` for any known element type
+        m = re.match(r"(u8|u16|u32|Vtx|Gfx|DObjDesc|DObjDLLink)\s+(d\w+)\[(0x[0-9A-Fa-f]+|\d+)?\]", ln)
         if m and pending_off is not None:
             kind = m.group(1)
             sym = m.group(2)
             size_str = m.group(3)
+            if size_str is None:
+                # `Type sym[] = {` with implicit size — skip; the chain walker
+                # doesn't need parent extents for these (DLLink terminators etc.)
+                pending_off = None
+                continue
             count = int(size_str, 16) if size_str.startswith("0x") else int(size_str)
-            elem_size = {"u8": 1, "u32": 4, "DObjDesc": 44}[kind]
-            byte_size = count * elem_size
+            byte_size = count * elem_sizes[kind]
             blocks.append((pending_off, byte_size, sym, kind))
             pending_off = None
         elif re.match(r"u8 dITCommonObject_data_0x0000\[", ln):
@@ -132,6 +137,17 @@ def parse_existing_blocks(text):
             sz = int(m2.group(1), 16)
             blocks.append((0, sz, "dITCommonObject_data_0x0000", "u8"))
     return sorted(set(blocks))
+
+
+def collect_dl_starts(blocks, text):
+    """Return all byte offsets that begin a DL: (a) chain hex values inside
+    DObjDesc initializers (legacy entry points), and (b) every typed Gfx
+    block declared in the source."""
+    starts = set(parse_dobjdesc_chains(text))
+    for off, _size, _sym, kind in blocks:
+        if kind == "Gfx":
+            starts.add(off)
+    return sorted(starts)
 
 
 def find_block_for_offset(blocks, offset):
@@ -174,17 +190,16 @@ def main():
         data = f.read()
     file_size = len(data)
 
-    # 1. Find every DL starting point from DObjDesc.data fields.
-    dl_starts = parse_dobjdesc_chains(text)
-    print(f"DObjDesc chain pointers found: {len(dl_starts)}")
+    # 1. Find DL entry points: legacy chain-hex values in DObjDesc, plus every
+    # already-typed Gfx block (which is a DL by definition).
+    blocks = parse_existing_blocks(text)
+    print(f"Existing blocks: {len(blocks)}")
+    dl_starts = collect_dl_starts(blocks, text)
+    print(f"DL entry points: {len(dl_starts)} (chain-hex + typed Gfx blocks)")
 
     # 2. Walk all DLs; collect references.
     dls, refs = collect_refs(data, dl_starts, file_size)
     print(f"Walked {len(dls)} DLs, {len(refs)} references")
-
-    # 3. Determine which existing blocks each DL / ref falls inside.
-    blocks = parse_existing_blocks(text)
-    print(f"Existing blocks: {len(blocks)}")
 
     # Group new sub-blocks per parent block
     parent_subblocks = {}  # parent_sym -> list of (offset, kind, count, byte_size)

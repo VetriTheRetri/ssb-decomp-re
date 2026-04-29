@@ -434,6 +434,67 @@ def _load_global_hints():
     return _global_palette_hints
 
 
+def do_textures(src, reloc_text, decls, name_prefix):
+    """u8 blocks used as gsDPSetTextureImage -> gsDPLoadBlock/Tile (NOT
+    LoadTLUT) get renamed to `<prefix>Tex_0x<file_off>` with the include
+    switched from `.data.inc.c` to `.tex.inc.c`. Reuses the cross-file
+    hints collected for the palette pass.
+
+    Symbol renames propagate into the .reloc and into any source-level
+    references (DObjDesc casts, MObjSub palette/sprites pointers, etc.)
+    by word-boundary substitution. Skips symbols already named `_Tex_*`
+    so the pass is idempotent."""
+    pal_global, tex_global = _load_global_hints()
+    texture_only = tex_global - pal_global
+
+    name_to_off = {d[0]: off for off, d in decls.items()}
+    applied = 0
+    rename_map = {}
+    for sym in sorted(texture_only):
+        off = name_to_off.get(sym)
+        if off is None:
+            continue
+        _, ct, N, bs = decls[off]
+        if ct != 'u8':
+            continue
+        # Idempotent: skip if already named like a Tex block
+        if re.search(r'_Tex_0x[0-9A-Fa-f]+$', sym):
+            continue
+        new_sym = f'{name_prefix}Tex_0x{off:04X}'
+        if new_sym == sym or new_sym in name_to_off:
+            continue
+        # Locate and rewrite the declaration. Inc filename mirrors the new sym
+        # (no `d{prefix}_` — same convention as existing _Tex_* blocks).
+        pat = re.compile(
+            rf'^u8\s+{re.escape(sym)}\[{bs}\]\s*=\s*\{{\n'
+            rf'(?P<indent>[ \t]*)#include <(?P<dir>[^>]+)/[^>]+\.(?P<ext>tex|data)\.inc\.c>\n\}};',
+            re.MULTILINE,
+        )
+        m = pat.search(src)
+        if not m:
+            continue
+        new_inc_base = new_sym.replace(name_prefix, '', 1)  # strips `dXxx_` once
+        new_decl = (
+            f'u8 {new_sym}[{bs}] = {{\n'
+            f'{m.group("indent")}#include <{m.group("dir")}/{new_inc_base}.tex.inc.c>\n'
+            f'}};'
+        )
+        src = src[:m.start()] + new_decl + src[m.end():]
+        rename_map[sym] = new_sym
+        applied += 1
+
+    if rename_map:
+        # Substitute renamed symbols throughout the .c (DObjDesc casts,
+        # MObjSub initializers, ptr arrays) and the .reloc.
+        sym_re = re.compile(r'\b(' + '|'.join(re.escape(s) for s in rename_map) + r')\b')
+        src = sym_re.sub(lambda m: rename_map[m.group(1)], src)
+        if reloc_text is not None:
+            reloc_text = sym_re.sub(lambda m: rename_map[m.group(1)], reloc_text)
+
+    print(f'  Pass 4 (textures): {applied}')
+    return src, reloc_text, applied
+
+
 def do_palettes(src, decls, expanded):
     """u8 blocks used as gsDPSetTextureImage -> gsDPLoadTLUTCmd become u16
     palette. Uses global hints (scans every expanded view) so cross-file
@@ -514,6 +575,11 @@ def run_for_fid(fid):
     # Pass 3 (palettes)
     decls = parse_decls(src, name_to_off)
     src, n = do_palettes(src, decls, expanded)
+    changes += n
+
+    # Pass 4 (textures): rename u8 blocks loaded as Tex (LoadBlock/Tile)
+    decls = parse_decls(src, name_to_off)
+    src, reloc_text, n = do_textures(src, reloc_text, decls, name_prefix)
     changes += n
 
     # Clean up blank-line runs left by removed decls

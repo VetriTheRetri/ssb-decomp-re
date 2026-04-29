@@ -43,14 +43,9 @@ Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x180[4] = {
 	#include <GRBonus2NessFile2/gap_0x0000_sub_0x180.vtx.inc.c>
 };
 
-/* Vtx @ 0x01C0 (1 vertices) */
-Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x1C0[1] = {
+/* Vtx: gap_0x0000_sub_0x1C0 @ 0x1C0 (4 vertices) */
+Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x1C0[4] = {
 	#include <GRBonus2NessFile2/gap_0x0000_sub_0x1C0.vtx.inc.c>
-};
-
-/* gap sub-block @ 0x01D0 (was gap+0x1D0, 48 bytes) */
-u16 dGRBonus2NessFile2_gap_0x0000_sub_0x1D0[24] = {
-	#include <GRBonus2NessFile2/gap_0x0000_sub_0x1D0.palette.inc.c>
 };
 
 /* Vtx @ 0x0200 (4 vertices) */

@@ -179,19 +179,36 @@ def process(file_id):
                 if sym in syms:
                     intern_target_offs.add(syms[sym] + off)
 
-    # Find each gap_0xNNNN block and split if it has refs pointing inside
+    # Find each splittable u8 block and split if it has refs pointing inside.
+    # Two recognized patterns:
+    #   1. `u8 dXxx_gap_0xNNNN[N]` — offset encoded in the symbol name
+    #   2. `u8 dXxx_<Item>_(data_remainder|mobjsubs)[N]` — offset looked up via nm
+    # The latter case keeps the original symbol intact and only adds named
+    # `<sym>_sub_0xMM` regions for each split point.
     changes_made = False
     out_dir = os.path.join(BUILD_DIR, target_name)
     os.makedirs(out_dir, exist_ok=True)
 
-    for match in list(re.finditer(
-        r"(u8 d\w+_gap_0x([0-9A-Fa-f]+)\[(\d+)\] = \{\n\t#include <[^>]+>\n\};\n)",
-        text
-    )):
+    block_re = re.compile(
+        r"(u8 (d\w+?)\[(0x[0-9A-Fa-f]+|\d+)\] = \{\n\t#include <[^>]+>\n\};\n)"
+    )
+    for match in list(block_re.finditer(text)):
         full_block = match.group(1)
-        goff = int(match.group(2), 16)
-        gsz = int(match.group(3))
-        gap_sym = f"d{target_name}_gap_0x{goff:04X}"
+        gap_sym = match.group(2)
+        size_str = match.group(3)
+        gsz = int(size_str, 16) if size_str.startswith("0x") else int(size_str)
+
+        # Determine the file offset of this block.
+        m_off = re.search(r"_gap_0x([0-9A-Fa-f]+)$", gap_sym)
+        if m_off:
+            goff = int(m_off.group(1), 16)
+        elif re.search(r"_(data_remainder|mobjsubs)$", gap_sym):
+            syms = nm_symbols(file_id)
+            if gap_sym not in syms:
+                continue
+            goff = syms[gap_sym]
+        else:
+            continue
 
         # All references STRICTLY inside this gap (offset 0 not counted — it's
         # the existing symbol; don't split there)
@@ -208,12 +225,20 @@ def process(file_id):
             bend = boundaries[i+1] if i+1 < len(boundaries) else gsz
             size = bend - bstart
             abs_off = goff + bstart
+            # Inc-file naming follows the existing splitGapFull convention
+            # for `_gap_0xNNNN` blocks (no `d{target}_` prefix), and the
+            # typeITCommonObjectDL convention for `_data_remainder` /
+            # `_mobjsubs` parents (full symbol with prefix). This matches
+            # the inc files already on disk for each style.
             if bstart == 0:
                 sym = gap_sym
-                inc_name = f"gap_0x{goff:04X}.data.inc.c"
             else:
                 sym = f"{gap_sym}_sub_0x{bstart:X}"
-                inc_name = f"gap_0x{goff:04X}_sub_0x{bstart:X}.data.inc.c"
+            if m_off:
+                inc_name = f"gap_0x{goff:04X}.data.inc.c" if bstart == 0 \
+                           else f"gap_0x{goff:04X}_sub_0x{bstart:X}.data.inc.c"
+            else:
+                inc_name = f"{sym}.data.inc.c"
             new_blocks.append(
                 f"/* gap sub-block @ 0x{abs_off:04X} (was gap+0x{bstart:X}, {size} bytes) */\n"
                 f"u8 {sym}[{size}] = {{\n"

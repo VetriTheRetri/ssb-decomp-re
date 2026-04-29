@@ -2,7 +2,7 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dPikachuSpecial3_gap_0x0000_sub_0x270+0x5C dPikachuSpecial3_gap_0x0000_sub_0x8
-intern dPikachuSpecial3_gap_0x0000_sub_0x270+0x8C dPikachuSpecial3_gap_0x0000_sub_0x30
+intern dPikachuSpecial3_gap_0x0000_sub_0x270+0x8C dPikachuSpecial3_Tex_0x0030
 intern dPikachuSpecial3_gap_0x0000_sub_0x270+0xAC dPikachuSpecial3_gap_0x0000_sub_0x230
 intern dPikachuSpecial3_gap_0x0000_sub_0x360 dPikachuSpecial3_gap_0x0000_sub_0x364
 intern dPikachuSpecial3_gap_0x0000_sub_0x364+0x8C dPikachuSpecial3_gap_0x0000_sub_0x364

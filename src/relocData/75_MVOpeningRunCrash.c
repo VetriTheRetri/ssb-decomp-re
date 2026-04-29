@@ -149,8 +149,8 @@ u8 dMVOpeningRunCrash_gap_0x0000_sub_0x500[40] = {
 };
 
 /* gap sub-block @ 0x0528 (was gap+0x528, 9600 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x528[9600] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x528.tex.inc.c>
+u8 dMVOpeningRunCrash_Tex_0x0528[9600] = {
+	#include <MVOpeningRunCrash/Tex_0x0528.tex.inc.c>
 };
 
 /* MObjSub: - @ 0x2AA8 */

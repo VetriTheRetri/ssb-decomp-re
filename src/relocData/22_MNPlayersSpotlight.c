@@ -12,8 +12,8 @@ extern MObjSub *dMNPlayersSpotlight_gap_0x0480_sub_0x8[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1024 bytes) */
-u8 dMNPlayersSpotlight_gap_0x0000_sub_0x8[1024] = {
-	#include <MNPlayersSpotlight/gap_0x0000_sub_0x8.tex.inc.c>
+u8 dMNPlayersSpotlight_Tex_0x0008[1024] = {
+	#include <MNPlayersSpotlight/Tex_0x0008.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x408 — referenced by `&llMNPlayersSpotlightMObjSub`

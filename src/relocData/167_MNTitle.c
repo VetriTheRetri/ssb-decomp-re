@@ -2159,8 +2159,8 @@ u8 dMNTitle_gap_0x26370[152] = {
 };
 
 /* gap sub-block @ 0x26408 (was gap+0x98, 1480 bytes) */
-u8 dMNTitle_gap_0x26370_sub_0x98[1480] = {
-	#include <MNTitle/gap_0x26370_sub_0x98.tex.inc.c>
+u8 dMNTitle_Tex_0x26408[1480] = {
+	#include <MNTitle/Tex_0x26408.tex.inc.c>
 };
 
 /* gap sub-block @ 0x269D0 (was gap+0x660, 64 bytes) */
@@ -2184,8 +2184,8 @@ u16 dMNTitle_gap_0x26370_sub_0x7F8[20] = {
 };
 
 /* gap sub-block @ 0x26B90 (was gap+0x820, 1032 bytes) */
-u8 dMNTitle_gap_0x26370_sub_0x820[1032] = {
-	#include <MNTitle/gap_0x26370_sub_0x820.tex.inc.c>
+u8 dMNTitle_Tex_0x26B90[1032] = {
+	#include <MNTitle/Tex_0x26B90.tex.inc.c>
 };
 
 /* gap sub-block @ 0x26F98 (was gap+0xC28, 1032 bytes) */
@@ -2219,8 +2219,8 @@ u8 dMNTitle_gap_0x26370_sub_0x2050[1032] = {
 };
 
 /* gap sub-block @ 0x287C8 (was gap+0x2458, 16 bytes) */
-u8 dMNTitle_gap_0x26370_sub_0x2458[16] = {
-	#include <MNTitle/gap_0x26370_sub_0x2458.tex.inc.c>
+u8 dMNTitle_Tex_0x287C8[16] = {
+	#include <MNTitle/Tex_0x287C8.tex.inc.c>
 };
 
 /* MObjSub: SlashMObjSub @ 0x287D8 */
@@ -2233,7 +2233,7 @@ MObjSub dMNTitle_SlashMObjSub_MObjSub = {
 	-1.7118784018193176e-18f, -1.7186279888225971e-18f,
 	-1.7253775758258767e-18f, -1.7321271628291563e-18f,
 	-1.7430300236880646e-18f, -1.7565291976946237e-18f,
-	(void**)(dMNTitle_gap_0x26370_sub_0x820),
+	(void**)(dMNTitle_Tex_0x26B90),
 	0xA203,
 	0xA0, 0xF0,
 	0xA204,

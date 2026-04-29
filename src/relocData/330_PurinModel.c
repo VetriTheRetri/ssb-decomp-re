@@ -999,8 +999,8 @@ u8 dPurinModel_gap_0x6028_sub_0x780[40] = {
 };
 
 /* gap sub-block @ 0x67D0 (was gap+0x7A8, 136 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x7A8[136] = {
-	#include <PurinModel/gap_0x6028_sub_0x7A8.tex.inc.c>
+u8 dPurinModel_Tex_0x67D0[136] = {
+	#include <PurinModel/Tex_0x67D0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x6858 (was gap+0x830, 40 bytes) */

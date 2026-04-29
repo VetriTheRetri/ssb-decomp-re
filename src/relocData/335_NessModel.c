@@ -1117,8 +1117,8 @@ u8 dNessModel_gap_0x553C_sub_0x3604[24] = {
 };
 
 /* gap sub-block @ 0x8B58 (was gap+0x361C, 1024 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x361C[1024] = {
-	#include <NessModel/gap_0x553C_sub_0x361C.tex.inc.c>
+u8 dNessModel_Tex_0x8B58[1024] = {
+	#include <NessModel/Tex_0x8B58.tex.inc.c>
 };
 
 /* gap sub-block @ 0x8F58 (was gap+0x3A1C, 64 bytes) */

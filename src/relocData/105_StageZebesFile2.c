@@ -171,71 +171,85 @@ u8 dStageZebesFile2_gap_0x0000_sub_0x4B8[40] = {
 };
 
 /* gap sub-block @ 0x04E0 (was gap+0x4E0, 264 bytes) */
+/* @tex fmt=CI4 dim=64x16 */
 u8 dStageZebesFile2_Tex_0x04E0[264] = {
 	#include <StageZebesFile2/Tex_0x04E0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x05E8 (was gap+0x5E8, 264 bytes) */
+/* @tex fmt=CI4 dim=64x16 */
 u8 dStageZebesFile2_Tex_0x05E8[264] = {
 	#include <StageZebesFile2/Tex_0x05E8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x06F0 (was gap+0x6F0, 520 bytes) */
+/* @tex fmt=CI4 dim=16x64 lut=dStageZebesFile2_gap_0x0000_sub_0xF8 */
 u8 dStageZebesFile2_Tex_0x06F0[520] = {
 	#include <StageZebesFile2/Tex_0x06F0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x08F8 (was gap+0x8F8, 1032 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageZebesFile2_gap_0x0000_sub_0x120 */
 u8 dStageZebesFile2_Tex_0x08F8[1032] = {
 	#include <StageZebesFile2/Tex_0x08F8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0D00 (was gap+0xD00, 264 bytes) */
+/* @tex fmt=CI4 dim=64x16 */
 u8 dStageZebesFile2_Tex_0x0D00[264] = {
 	#include <StageZebesFile2/Tex_0x0D00.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0E08 (was gap+0xE08, 264 bytes) */
+/* @tex fmt=CI4 dim=32x128 lut=dStageZebesFile2_gap_0x0000_sub_0x1C0 */
 u8 dStageZebesFile2_Tex_0x0E08[264] = {
 	#include <StageZebesFile2/Tex_0x0E08.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0F10 (was gap+0xF10, 2056 bytes) */
+/* @tex fmt=CI4 dim=64x64 */
 u8 dStageZebesFile2_Tex_0x0F10[2056] = {
 	#include <StageZebesFile2/Tex_0x0F10.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1718 (was gap+0x1718, 520 bytes) */
+/* @tex fmt=CI4 dim=320x96 lut=dStageZebesFile2_gap_0x0000_sub_0x238 */
 u8 dStageZebesFile2_Tex_0x1718[520] = {
 	#include <StageZebesFile2/Tex_0x1718.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1920 (was gap+0x1920, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dStageZebesFile2_Tex_0x1920[520] = {
 	#include <StageZebesFile2/Tex_0x1920.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1B28 (was gap+0x1B28, 1032 bytes) */
+/* @tex fmt=CI4 dim=256x32 lut=dStageZebesFile2_gap_0x0000_sub_0x300 */
 u8 dStageZebesFile2_Tex_0x1B28[1032] = {
 	#include <StageZebesFile2/Tex_0x1B28.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1F30 (was gap+0x1F30, 520 bytes) */
+/* @tex fmt=CI4 dim=128x32 lut=dStageZebesFile2_gap_0x0000_sub_0x328 */
 u8 dStageZebesFile2_Tex_0x1F30[520] = {
 	#include <StageZebesFile2/Tex_0x1F30.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2138 (was gap+0x2138, 1032 bytes) */
+/* @tex fmt=CI4 dim=64x32 lut=dStageZebesFile2_gap_0x0000_sub_0x3A0 */
 u8 dStageZebesFile2_Tex_0x2138[1032] = {
 	#include <StageZebesFile2/Tex_0x2138.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2540 (was gap+0x2540, 520 bytes) */
+/* @tex fmt=CI4 dim=128x32 */
 u8 dStageZebesFile2_Tex_0x2540[520] = {
 	#include <StageZebesFile2/Tex_0x2540.tex.inc.c>
 };
 
 /* gap sub-block @ 0x2748 (was gap+0x2748, 1024 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dStageZebesFile2_Tex_0x2748[1024] = {
 	#include <StageZebesFile2/Tex_0x2748.tex.inc.c>
 };

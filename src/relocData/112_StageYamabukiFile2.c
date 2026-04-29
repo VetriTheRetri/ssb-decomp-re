@@ -17,6 +17,7 @@ u16 dStageYamabukiFile2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0030 (1032 bytes) */
+/* @tex fmt=CI4 dim=16x128 lut=dStageYamabukiFile2_Lut_0x0008_palette */
 u8 dStageYamabukiFile2_Tex_0x0030[1024] = {
 	#include <StageYamabukiFile2/Tex_0x0030.tex.inc.c>
 };
@@ -45,6 +46,7 @@ u16 dStageYamabukiFile2_Lut_0x0C98_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0CC0 (72 bytes) */
+/* @tex fmt=CI4 dim=8x8 lut=dStageYamabukiFile2_Lut_0x0C98_palette */
 u8 dStageYamabukiFile2_Tex_0x0CC0[72] = {
 	#include <StageYamabukiFile2/Tex_0x0CC0.tex.inc.c>
 };
@@ -57,6 +59,7 @@ u16 dStageYamabukiFile2_Lut_0x0D08_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0D30 (72 bytes) */
+/* @tex fmt=CI4 dim=8x8 lut=dStageYamabukiFile2_Lut_0x0D08_palette */
 u8 dStageYamabukiFile2_Tex_0x0D30[72] = {
 	#include <StageYamabukiFile2/Tex_0x0D30.tex.inc.c>
 };
@@ -69,6 +72,7 @@ u16 dStageYamabukiFile2_Lut_0x0D78_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0DA0 (136 bytes) */
+/* @tex fmt=CI4 dim=48x272 lut=dStageYamabukiFile2_Lut_0x0D78_palette */
 u8 dStageYamabukiFile2_Tex_0x0DA0[128] = {
 	#include <StageYamabukiFile2/Tex_0x0DA0.tex.inc.c>
 };
@@ -83,6 +87,7 @@ u16 dStageYamabukiFile2_Lut_0x0E28_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0E50 (136 bytes) */
+/* @tex fmt=CI4 dim=48x288 lut=dStageYamabukiFile2_Lut_0x0E28_palette */
 u8 dStageYamabukiFile2_Tex_0x0E50[128] = {
 	#include <StageYamabukiFile2/Tex_0x0E50.tex.inc.c>
 };
@@ -97,6 +102,7 @@ u16 dStageYamabukiFile2_Lut_0x0ED8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0F00 (136 bytes) */
+/* @tex fmt=CI4 dim=64x256 lut=dStageYamabukiFile2_Lut_0x0ED8_palette */
 u8 dStageYamabukiFile2_Tex_0x0F00[128] = {
 	#include <StageYamabukiFile2/Tex_0x0F00.tex.inc.c>
 };
@@ -111,6 +117,7 @@ u16 dStageYamabukiFile2_Lut_0x0F88_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0FB0 (136 bytes) */
+/* @tex fmt=CI4 dim=32x224 lut=dStageYamabukiFile2_Lut_0x0F88_palette */
 u8 dStageYamabukiFile2_Tex_0x0FB0[128] = {
 	#include <StageYamabukiFile2/Tex_0x0FB0.tex.inc.c>
 };
@@ -125,6 +132,7 @@ u16 dStageYamabukiFile2_Lut_0x1038_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1060 (264 bytes) */
+/* @tex fmt=CI4 dim=32x336 lut=dStageYamabukiFile2_Lut_0x1038_palette */
 u8 dStageYamabukiFile2_Tex_0x1060[256] = {
 	#include <StageYamabukiFile2/Tex_0x1060.tex.inc.c>
 };
@@ -139,6 +147,7 @@ u16 dStageYamabukiFile2_Lut_0x1168_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1190 (136 bytes) */
+/* @tex fmt=CI4 dim=8x16 lut=dStageYamabukiFile2_Lut_0x1168_palette */
 u8 dStageYamabukiFile2_Tex_0x1190[136] = {
 	#include <StageYamabukiFile2/Tex_0x1190.tex.inc.c>
 };
@@ -151,6 +160,7 @@ u16 dStageYamabukiFile2_Lut_0x1218_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1240 (264 bytes) */
+/* @tex fmt=CI4 dim=24x32 lut=dStageYamabukiFile2_Lut_0x1218_palette */
 u8 dStageYamabukiFile2_Tex_0x1240[264] = {
 	#include <StageYamabukiFile2/Tex_0x1240.tex.inc.c>
 };
@@ -163,6 +173,7 @@ u16 dStageYamabukiFile2_Lut_0x1348_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1370 (136 bytes) */
+/* @tex fmt=CI4 dim=32x16 lut=dStageYamabukiFile2_Lut_0x1348_palette */
 u8 dStageYamabukiFile2_Tex_0x1370[128] = {
 	#include <StageYamabukiFile2/Tex_0x1370.tex.inc.c>
 };
@@ -177,6 +188,7 @@ u16 dStageYamabukiFile2_Lut_0x13F8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1420 (1032 bytes) */
+/* @tex fmt=CI4 dim=32x64 lut=dStageYamabukiFile2_Lut_0x13F8_palette */
 u8 dStageYamabukiFile2_Tex_0x1420[1024] = {
 	#include <StageYamabukiFile2/Tex_0x1420.tex.inc.c>
 };
@@ -209,6 +221,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0x1850 (72 bytes) */
+/* @tex fmt=CI4 dim=16x40 lut=dStageYamabukiFile2_Lut_0x1828_palette */
 u8 dStageYamabukiFile2_Tex_0x1850[64] = {
 	#include <StageYamabukiFile2/Tex_0x1850.tex.inc.c>
 };
@@ -227,6 +240,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0x18C0 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageYamabukiFile2_Lut_0x1898_palette */
 u8 dStageYamabukiFile2_Tex_0x18C0[520] = {
 	#include <StageYamabukiFile2/Tex_0x18C0.tex.inc.c>
 };
@@ -243,6 +257,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0x1AF0 (136 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageYamabukiFile2_Lut_0x1AC8_palette */
 u8 dStageYamabukiFile2_Tex_0x1AF0[128] = {
 	#include <StageYamabukiFile2/Tex_0x1AF0.tex.inc.c>
 };
@@ -279,6 +294,7 @@ u16 dStageYamabukiFile2_Lut_0x21D8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2200 (136 bytes) */
+/* @tex fmt=CI4 dim=16x96 lut=dStageYamabukiFile2_Lut_0x21D8_palette */
 u8 dStageYamabukiFile2_Tex_0x2200[128] = {
 	#include <StageYamabukiFile2/Tex_0x2200.tex.inc.c>
 };
@@ -293,6 +309,7 @@ u16 dStageYamabukiFile2_Lut_0x2288_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x22B0 (136 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dStageYamabukiFile2_Lut_0x2288_palette */
 u8 dStageYamabukiFile2_Tex_0x22B0[128] = {
 	#include <StageYamabukiFile2/Tex_0x22B0.tex.inc.c>
 };
@@ -307,6 +324,7 @@ u16 dStageYamabukiFile2_Lut_0x2338_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2360 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageYamabukiFile2_Lut_0x2338_palette */
 u8 dStageYamabukiFile2_Tex_0x2360[512] = {
 	#include <StageYamabukiFile2/Tex_0x2360.tex.inc.c>
 };
@@ -321,6 +339,7 @@ u16 dStageYamabukiFile2_Lut_0x2568_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2590 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageYamabukiFile2_Lut_0x2568_palette */
 u8 dStageYamabukiFile2_Tex_0x2590[512] = {
 	#include <StageYamabukiFile2/Tex_0x2590.tex.inc.c>
 };
@@ -335,6 +354,7 @@ u16 dStageYamabukiFile2_Lut_0x2798_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x27C0 (264 bytes) */
+/* @tex fmt=CI4 dim=48x32 lut=dStageYamabukiFile2_Lut_0x2798_palette */
 u8 dStageYamabukiFile2_Tex_0x27C0[256] = {
 	#include <StageYamabukiFile2/Tex_0x27C0.tex.inc.c>
 };
@@ -349,6 +369,7 @@ u16 dStageYamabukiFile2_Lut_0x28C8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x28F0 (3360 bytes) */
+/* @tex fmt=CI4 dim=96x32 lut=dStageYamabukiFile2_Lut_0x28C8_palette */
 u8 dStageYamabukiFile2_Tex_0x28F0[3360] = {
 	#include <StageYamabukiFile2/Tex_0x28F0.tex.inc.c>
 };
@@ -361,6 +382,7 @@ u16 dStageYamabukiFile2_Lut_0x3610_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3638 (520 bytes) */
+/* @tex fmt=CI4 dim=64x32 lut=dStageYamabukiFile2_Lut_0x3610_palette */
 u8 dStageYamabukiFile2_Tex_0x3638[512] = {
 	#include <StageYamabukiFile2/Tex_0x3638.tex.inc.c>
 };
@@ -375,6 +397,7 @@ u16 dStageYamabukiFile2_Lut_0x3840_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3868 (136 bytes) */
+/* @tex fmt=CI4 dim=224x48 lut=dStageYamabukiFile2_Lut_0x3840_palette */
 u8 dStageYamabukiFile2_Tex_0x3868[128] = {
 	#include <StageYamabukiFile2/Tex_0x3868.tex.inc.c>
 };
@@ -389,6 +412,7 @@ u16 dStageYamabukiFile2_Lut_0x38F0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3918 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageYamabukiFile2_Lut_0x38F0_palette */
 u8 dStageYamabukiFile2_Tex_0x3918[512] = {
 	#include <StageYamabukiFile2/Tex_0x3918.tex.inc.c>
 };
@@ -403,6 +427,7 @@ u16 dStageYamabukiFile2_Lut_0x3B20_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3B48 (128 bytes) */
+/* @tex fmt=CI4 dim=224x48 lut=dStageYamabukiFile2_Lut_0x3B20_palette */
 u8 dStageYamabukiFile2_Tex_0x3B48[128] = {
 	#include <StageYamabukiFile2/Tex_0x3B48.tex.inc.c>
 };

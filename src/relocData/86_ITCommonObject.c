@@ -42,6 +42,7 @@ u8 dITCommonObject_data_0x0000_gap_0x0078[8] = {
 };
 
 /* gap sub-block @ 0x0080 (was gap+0x8, 136 bytes) */
+/* @tex fmt=CI4 dim=96x16 lut=dITCommonObject_LUT_0x0008 */
 u8 dITCommonObject_Tex_0x0080[136] = {
 	#include <ITCommonObject/Tex_0x0080.tex.inc.c>
 };
@@ -52,6 +53,7 @@ u8 dITCommonObject_Tex_0x0108[136] = {
 };
 
 /* gap sub-block @ 0x0190 (was gap+0x118, 128 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x0058 */
 u8 dITCommonObject_Tex_0x0190[128] = {
 	#include <ITCommonObject/Tex_0x0190.tex.inc.c>
 };
@@ -115,6 +117,7 @@ u8 dITCommonObject_Capsule_Item_data_remainder_gap_0x0778[8] = {
 };
 
 /* gap sub-block @ 0x0780 (was gap+0x8, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x0758 */
 u8 dITCommonObject_Tex_0x0780[512] = {
 	#include <ITCommonObject/Tex_0x0780.tex.inc.c>
 };
@@ -153,11 +156,13 @@ u8 dITCommonObject_Tomato_Item_data_pool_gap_0x0B68[8] = {
 };
 
 /* gap sub-block @ 0x0B70 (was gap+0x8, 520 bytes) */
+/* @tex fmt=I4 dim=32x32 */
 u8 dITCommonObject_Tex_0x0B70[520] = {
 	#include <ITCommonObject/Tex_0x0B70.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0D78 (was gap+0x210, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x0B48 */
 u8 dITCommonObject_Tex_0x0D78[512] = {
 	#include <ITCommonObject/Tex_0x0D78.tex.inc.c>
 };
@@ -562,11 +567,13 @@ u8 dITCommonObject_Sword_Item_data_remainder_gap_0x1A60[8] = {
 };
 
 /* gap sub-block @ 0x1A68 (was gap+0x8, 72 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dITCommonObject_LUT_0x19D8 */
 u8 dITCommonObject_Tex_0x1A68[72] = {
 	#include <ITCommonObject/Tex_0x1A68.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1AB0 (was gap+0x50, 64 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dITCommonObject_LUT_0x1A20 */
 u8 dITCommonObject_Tex_0x1AB0[64] = {
 	#include <ITCommonObject/Tex_0x1AB0.tex.inc.c>
 };
@@ -624,6 +631,7 @@ u8 dITCommonObject_Bat_Item_data_remainder_gap_0x1ED8[8] = {
 };
 
 /* gap sub-block @ 0x1EE0 (was gap+0x8, 64 bytes) */
+/* @tex fmt=CI4 dim=8x8 lut=dITCommonObject_LUT_0x1EB8 */
 u8 dITCommonObject_Tex_0x1EE0[64] = {
 	#include <ITCommonObject/Tex_0x1EE0.tex.inc.c>
 };
@@ -674,6 +682,7 @@ u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x22E8[8] = {
 };
 
 /* gap sub-block @ 0x22F0 (was gap+0x8, 192 bytes) */
+/* @tex fmt=CI4 dim=32x24 lut=dITCommonObject_LUT_0x22C8 */
 u8 dITCommonObject_Tex_0x22F0[192] = {
 	#include <ITCommonObject/Tex_0x22F0.tex.inc.c>
 };
@@ -849,11 +858,13 @@ u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x3650[8] = {
 };
 
 /* gap sub-block @ 0x3658 (was gap+0x8, 136 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dITCommonObject_LUT_0x3608 */
 u8 dITCommonObject_Tex_0x3658[136] = {
 	#include <ITCommonObject/Tex_0x3658.tex.inc.c>
 };
 
 /* gap sub-block @ 0x36E0 (was gap+0x90, 64 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dITCommonObject_LUT_0x3630 */
 u8 dITCommonObject_Tex_0x36E0[64] = {
 	#include <ITCommonObject/Tex_0x36E0.tex.inc.c>
 };
@@ -902,16 +913,19 @@ u8 dITCommonObject_MSBomb_Item_data_remainder_gap_0x3AE8[8] = {
 };
 
 /* gap sub-block @ 0x3AF0 (was gap+0x8, 72 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dITCommonObject_LUT_0x3A88 */
 u8 dITCommonObject_Tex_0x3AF0[72] = {
 	#include <ITCommonObject/Tex_0x3AF0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3B38 (was gap+0x50, 72 bytes) */
+/* @tex fmt=CI4 dim=32x96 lut=dITCommonObject_LUT_0x3A88 */
 u8 dITCommonObject_Tex_0x3B38[72] = {
 	#include <ITCommonObject/Tex_0x3B38.tex.inc.c>
 };
 
 /* gap sub-block @ 0x3B80 (was gap+0x98, 64 bytes) */
+/* @tex fmt=CI4 dim=16x80 lut=dITCommonObject_LUT_0x3A88 */
 u8 dITCommonObject_Tex_0x3B80[64] = {
 	#include <ITCommonObject/Tex_0x3B80.tex.inc.c>
 };
@@ -950,6 +964,7 @@ u8 dITCommonObject_LGun_Item_data_remainder[20] = {
 };
 
 /* gap sub-block @ 0x3FE8 (was gap+0x14, 128 bytes) */
+/* @tex fmt=I4 dim=32x32 */
 u8 dITCommonObject_Tex_0x3FE8[128] = {
 	#include <ITCommonObject/Tex_0x3FE8.tex.inc.c>
 };
@@ -1327,6 +1342,7 @@ u8 dITCommonObject_StarRod_Item_data_remainder[8] = {
 };
 
 /* gap sub-block @ 0x4C18 (was gap+0x8, 2048 bytes) */
+/* @tex fmt=I8 dim=64x64 */
 u8 dITCommonObject_Tex_0x4C18[2048] = {
 	#include <ITCommonObject/Tex_0x4C18.tex.inc.c>
 };
@@ -1460,11 +1476,13 @@ u8 dITCommonObject_GShell_Item_data_remainder_gap_0x60E0[8] = {
 };
 
 /* gap sub-block @ 0x60E8 (was gap+0x8, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x6098 */
 u8 dITCommonObject_Tex_0x60E8[520] = {
 	#include <ITCommonObject/Tex_0x60E8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x62F0 (was gap+0x210, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x60C0 */
 u8 dITCommonObject_Tex_0x62F0[512] = {
 	#include <ITCommonObject/Tex_0x62F0.tex.inc.c>
 };
@@ -1532,11 +1550,13 @@ u8 dITCommonObject_Box_Item_data_remainder_gap_0x6A30[8] = {
 };
 
 /* gap sub-block @ 0x6A38 (was gap+0x8, 520 bytes) */
+/* @tex fmt=CI4 dim=64x32 lut=dITCommonObject_LUT_0x69E8 */
 u8 dITCommonObject_Tex_0x6A38[520] = {
 	#include <ITCommonObject/Tex_0x6A38.tex.inc.c>
 };
 
 /* gap sub-block @ 0x6C40 (was gap+0x210, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x6A10 */
 u8 dITCommonObject_Tex_0x6C40[512] = {
 	#include <ITCommonObject/Tex_0x6C40.tex.inc.c>
 };
@@ -1580,6 +1600,7 @@ u8 dITCommonObject_Taru_Item_data_remainder_sub_0x34[40] = {
 };
 
 /* gap sub-block @ 0x7288 (was gap+0x5C, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dITCommonObject_Tex_0x7288[512] = {
 	#include <ITCommonObject/Tex_0x7288.tex.inc.c>
 };
@@ -1666,6 +1687,7 @@ u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34[40] = {
 };
 
 /* gap sub-block @ 0x7728 (was gap+0x5C, 776 bytes) */
+/* @tex fmt=CI4 dim=48x32 */
 u8 dITCommonObject_Tex_0x7728[776] = {
 	#include <ITCommonObject/Tex_0x7728.tex.inc.c>
 };
@@ -1760,6 +1782,7 @@ u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xE40[520] = {
 };
 
 /* gap sub-block @ 0x8E20 (was gap+0x1048, 768 bytes) */
+/* @tex fmt=CI4 dim=32x48 lut=dITCommonObject_LUT_0x7DB8 */
 u8 dITCommonObject_Tex_0x8E20[768] = {
 	#include <ITCommonObject/Tex_0x8E20.tex.inc.c>
 };
@@ -1927,6 +1950,7 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x9908[8] = {
 };
 
 /* gap sub-block @ 0x9910 (was gap+0x8, 1792 bytes) */
+/* @tex fmt=CI4 dim=64x56 lut=dITCommonObject_LUT_0x98E8 */
 u8 dITCommonObject_Tex_0x9910[1792] = {
 	#include <ITCommonObject/Tex_0x9910.tex.inc.c>
 };
@@ -1960,6 +1984,7 @@ u16 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14[20] = {
 };
 
 /* gap sub-block @ 0xA200 (was gap+0x3C, 1024 bytes) */
+/* @tex fmt=CI4 dim=24x64 lut=dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14 */
 u8 dITCommonObject_Tex_0xA200[1024] = {
 	#include <ITCommonObject/Tex_0xA200.tex.inc.c>
 };
@@ -2100,6 +2125,7 @@ u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xACA8[8] = {
 };
 
 /* gap sub-block @ 0xACB0 (was gap+0x8, 896 bytes) */
+/* @tex fmt=CI4 dim=64x56 lut=dITCommonObject_LUT_0xAC88 */
 u8 dITCommonObject_Tex_0xACB0[896] = {
 	#include <ITCommonObject/Tex_0xACB0.tex.inc.c>
 };
@@ -2248,6 +2274,7 @@ u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB988[8] = {
 };
 
 /* gap sub-block @ 0xB990 (was gap+0x8, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0xB968 */
 u8 dITCommonObject_Tex_0xB990[512] = {
 	#include <ITCommonObject/Tex_0xB990.tex.inc.c>
 };
@@ -2284,6 +2311,7 @@ u8 dITCommonObject_Mew_Item_data_remainder_gap_0xBD78[8] = {
 };
 
 /* gap sub-block @ 0xBD80 (was gap+0x8, 640 bytes) */
+/* @tex fmt=CI4 dim=32x40 lut=dITCommonObject_LUT_0xBD58 */
 u8 dITCommonObject_Tex_0xBD80[640] = {
 	#include <ITCommonObject/Tex_0xBD80.tex.inc.c>
 };
@@ -2320,6 +2348,7 @@ u8 dITCommonObject_Nyars_Item_data_remainder_gap_0xC1E8[8] = {
 };
 
 /* gap sub-block @ 0xC1F0 (was gap+0x8, 512 bytes) */
+/* @tex fmt=CI4 dim=24x32 lut=dITCommonObject_LUT_0xC1C8 */
 u8 dITCommonObject_Tex_0xC1F0[512] = {
 	#include <ITCommonObject/Tex_0xC1F0.tex.inc.c>
 };
@@ -2982,6 +3011,7 @@ u16 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14[20] = {
 };
 
 /* gap sub-block @ 0xEB20 (was gap+0x3C, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14 */
 u8 dITCommonObject_Tex_0xEB20[512] = {
 	#include <ITCommonObject/Tex_0xEB20.tex.inc.c>
 };
@@ -3579,6 +3609,7 @@ u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x10178[8] = {
 };
 
 /* gap sub-block @ 0x10180 (was gap+0x8, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x10158 */
 u8 dITCommonObject_Tex_0x10180[512] = {
 	#include <ITCommonObject/Tex_0x10180.tex.inc.c>
 };
@@ -4430,6 +4461,7 @@ u8 dITCommonObject_Starmie_Item_data_remainder_sub_0x124[16] = {
 };
 
 /* gap sub-block @ 0x11458 (was gap+0x134, 1152 bytes) */
+/* @tex fmt=IA8 dim=72x32 */
 u8 dITCommonObject_Tex_0x11458[1152] = {
 	#include <ITCommonObject/Tex_0x11458.tex.inc.c>
 };
@@ -4471,6 +4503,7 @@ u8 dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A88[8] = {
 };
 
 /* gap sub-block @ 0x11A90 (was gap+0x8, 896 bytes) */
+/* @tex fmt=CI4 dim=32x56 lut=dITCommonObject_LUT_0x11A68 */
 u8 dITCommonObject_Tex_0x11A90[896] = {
 	#include <ITCommonObject/Tex_0x11A90.tex.inc.c>
 };
@@ -4504,6 +4537,7 @@ u16 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14[20] = {
 };
 
 /* gap sub-block @ 0x12000 (was gap+0x3C, 768 bytes) */
+/* @tex fmt=CI4 dim=40x32 lut=dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14 */
 u8 dITCommonObject_Tex_0x12000[768] = {
 	#include <ITCommonObject/Tex_0x12000.tex.inc.c>
 };
@@ -4535,6 +4569,7 @@ u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x124E8[8] = {
 };
 
 /* gap sub-block @ 0x124F0 (was gap+0x8, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0x124C8 */
 u8 dITCommonObject_Tex_0x124F0[512] = {
 	#include <ITCommonObject/Tex_0x124F0.tex.inc.c>
 };

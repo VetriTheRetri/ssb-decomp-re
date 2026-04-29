@@ -31,6 +31,7 @@ u8 dMarioSpecial2_Tex_0x0058[64] = {
 PAD(8);
 
 /* Raw data from file offset 0x00A0 to 0x0120 (128 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dMarioSpecial2_Lut_0x0030_palette */
 u8 dMarioSpecial2_Tex_0x00A0[128] = {
 	#include <MarioSpecial2/Tex_0x00A0.tex.inc.c>
 };

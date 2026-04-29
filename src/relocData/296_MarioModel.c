@@ -1121,6 +1121,7 @@ u8 dMarioModel_gap_0x4A60_sub_0x1B68[40] = {
 };
 
 /* Texture data @ 0x65F0 (1672 bytes) */
+/* @tex fmt=CI4 dim=96x32 */
 u8 dMarioModel_Tex_0x65F0[1672] = {
 	#include <MarioModel/Tex_0x65F0.tex.inc.c>
 };

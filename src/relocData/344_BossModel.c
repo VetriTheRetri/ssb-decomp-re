@@ -333,6 +333,7 @@ u16 dBossModel_gap_0x2850_sub_0x8[20] = {
 };
 
 /* gap sub-block @ 0x2880 (was gap+0x30, 512 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dBossModel_gap_0x2850_sub_0x8 */
 u8 dBossModel_Tex_0x2880[512] = {
 	#include <BossModel/Tex_0x2880.tex.inc.c>
 };

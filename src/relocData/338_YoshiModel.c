@@ -1652,16 +1652,19 @@ u8 dYoshiModel_gap_0x6E70_sub_0x2680[40] = {
 };
 
 /* Texture data @ 0x9518 (2136 bytes) */
+/* @tex fmt=CI4 dim=139x97 */
 u8 dYoshiModel_Tex_0x9518[2136] = {
 	#include <YoshiModel/Tex_0x9518.tex.inc.c>
 };
 
 /* Texture data @ 0x9D70 (272 bytes) */
+/* @tex fmt=CI4 dim=32x27 */
 u8 dYoshiModel_Tex_0x9D70[272] = {
 	#include <YoshiModel/Tex_0x9D70.tex.inc.c>
 };
 
 /* Texture data @ 0x9E80 (72 bytes) */
+/* @tex fmt=CI4 dim=38x13 */
 u8 dYoshiModel_Tex_0x9E80[72] = {
 	#include <YoshiModel/Tex_0x9E80.tex.inc.c>
 };
@@ -1674,6 +1677,7 @@ u16 dYoshiModel_Lut_0x9EC8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x9EF0 (2416 bytes) */
+/* @tex fmt=CI4 dim=32x16 lut=dYoshiModel_Lut_0x9EC8_palette */
 u8 dYoshiModel_Tex_0x9EF0[2416] = {
 	#include <YoshiModel/Tex_0x9EF0.tex.inc.c>
 };

@@ -10,6 +10,7 @@
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 512 bytes) */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dFTManagerCommon_Tex_0x0008[512] = {
 	#include <FTManagerCommon/Tex_0x0008.tex.inc.c>
 };

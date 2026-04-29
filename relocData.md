@@ -43,6 +43,38 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **`tools/typeRelocBlocks.py` Pass 4 + `tools/promoteMObjSub.py` + `tools/annotateTexBlocks.py`**.
+  Three additions: (a) `typeRelocBlocks.py` gained a fourth pass that
+  renames `gsDPSetTextureImage → gsDPLoadBlock/Tile` targets to
+  `<prefix>Tex_0x<file_off>` and switches their includes from
+  `.data.inc.c` to `.tex.inc.c`, propagating renames through the
+  `.reloc` and every inline reference (DObjDesc casts, MObjSub
+  palette/sprites pointers, ptr arrays); single batch run added 86
+  Tex retypes across ~18 files. (b) `promoteMObjSub.py` promotes
+  remaining `u8 X[120]` declarations inside `_mobjsubs_*` to typed
+  `MObjSub X = { … };` initializers (reusing genRelocDataC's
+  `parse_mobjsub` + `format_float`), and a second pass converts the
+  small u8 ptr-array sub-blocks (4..32 bytes, %4==0) inside
+  `_mobjsubs_*` to typed `u32 X[N/4]` with symbolic chain-pointer
+  entries — falls back to raw hex for forward references (IDO doesn't
+  accept those in initializers; fixRelocChain rewrites at link time
+  regardless). 16 MObjSubs + 47 ptr arrays typed in `86_ITCommonObject`.
+  Two IDO gotchas the tool handles: `(u32)<struct_sym>` is not a valid
+  constant initializer (must use `(u32)&<struct_sym>`); and forward
+  references in initializers fail to compile. (c) `annotateTexBlocks.py`
+  walks the expanded view's Gfx bodies and adds
+  `/* @tex fmt=… dim=…x… lut=… */` annotations above
+  `u8 Tex_*` declarations that don't already have one — 424 of 566 Tex
+  blocks now annotated, so `previewImagesTextures.py` renders correct-
+  size PNG previews instead of dimension-guessing for them.
+  Also extended `tools/splitGapFull.py` to accept non-`gap_*` u8
+  parents (`_data_remainder` and `_mobjsubs`); file offset is looked up
+  via `nm` for those. And extended `tools/typeITCommonObjectDL.py` so
+  `parse_existing_blocks` recognises `Gfx`/`Vtx`/`u16`/`DObjDLLink`
+  declarations and a new `collect_dl_starts` walks every typed Gfx
+  block (not just chain-hex DObjDesc entries) — without this the prior
+  pass had silently disconnected from its entry points after DObjDesc
+  fields had been promoted to typed Gfx symbols. ROM byte-identical.
 - **MObjSub header / sprites split + sprite-texture promotion**.
   For 14 MObjSub-typed symbols whose declared 120-byte body actually
   packs `MObjSub **<sym>[H]` header + the real `MObjSub` at +0xN
@@ -178,8 +210,9 @@ Recent round of structural work:
        Bonus1CommonImages block loaded as a TLUT from a character
        file's Gfx) get caught too.
   Iterated to fixpoint with rebuilds between passes. Final counts:
-  **1,768 `Gfx[]` arrays** (~622 KB), **3,654 `Vtx[]` arrays** (~613
-  KB), **507 u16 palettes** (~24 KB), **744 `PAD()` usages**. ROM
+  **1,876 `Gfx[]` arrays** (~656 KB), **3,671 `Vtx[]` arrays** (~616
+  KB), **505 u16 palettes** (~24 KB), **566 `u8 Tex_*[]` arrays**
+  (~605 KB with `.tex.inc.c` includes), **927 `PAD()` usages**. ROM
   stays byte-identical throughout.
 - **`tools/expandRelocFile.py` correctness fixes**. The Gfx-arg
   resolver now gates on walked chain positions (so `0x0EXXXXXX`
@@ -566,7 +599,9 @@ from `assets/relocData/<fid>.vpk0.bin` on every `make extract`.
 | `tools/auditGapRefs.py` | Report `gap_0xNNNN` raw-byte regions that have inbound external references from other files. |
 | `tools/splitGapAtExternRefs.py` | Split such gap regions at the inbound offsets, naming each sub-region `gap_0xNNNN_sub_0xMM`. Skips gaps whose symbol is referenced anywhere in the local `.reloc` (would need label rewrites). |
 | `tools/splitGapFull.py` | Like `splitGapAtExternRefs.py` but ALSO rewrites local `.reloc` intern entries to use the new sub-region symbols, so it works on gaps with intra-file chain references too. |
-| `tools/typeRelocBlocks.py` | Display-list-driven bulk typer: three passes over a file's expanded Gfx bodies. (1) Split u8 blocks whose first 8 bytes are the full gsDPPipeSync sentinel (`E7000000 00000000`) into `Gfx[cmds] + tail`; handles multi-DL chains (re-entrant peel), unterminated DL fragments (one logical DL spread across intern-chain sub-blocks — each chunk still types as `Gfx[N/8]`), and trailer collapse to `PAD(N);` when the trailer is all-zero and unreferenced. (2) Walk every `gsSPVertex` span and retype / merge u8 blocks into `Vtx[N]` with strict-overlap span union and `.reloc` target rewrites. (3) Retype `gsDPSetTextureImage → gsDPLoadTLUTCmd` targets as `u16 palette[N/2]`. Global palette hint map is derived from every expanded view so cross-file palettes (e.g. a Bonus1CommonImages block loaded as a TLUT from a character file) get caught. Idempotent — re-running against a fully-typed file produces zero changes. |
+| `tools/typeRelocBlocks.py` | Display-list-driven bulk typer: four passes over a file's expanded Gfx bodies. (1) Split u8 blocks whose first 8 bytes are the full gsDPPipeSync sentinel (`E7000000 00000000`) into `Gfx[cmds] + tail`; handles multi-DL chains (re-entrant peel), unterminated DL fragments (one logical DL spread across intern-chain sub-blocks — each chunk still types as `Gfx[N/8]`), and trailer collapse to `PAD(N);` when the trailer is all-zero and unreferenced. (2) Walk every `gsSPVertex` span and retype / merge u8 blocks into `Vtx[N]` with strict-overlap span union and `.reloc` target rewrites. (3) Retype `gsDPSetTextureImage → gsDPLoadTLUTCmd` targets as `u16 palette[N/2]`. (4) Rename `gsDPSetTextureImage → gsDPLoadBlock/Tile` targets to `<prefix>Tex_0x<file_off>` with `.tex.inc.c` includes; substitution propagates through `.reloc` and inline source refs (DObjDesc casts, MObjSub palette/sprites pointers, ptr arrays). Global palette/texture hint map is derived from every expanded view so cross-file palettes (e.g. a Bonus1CommonImages block loaded as a TLUT from a character file) get caught — and a symbol observed as both a TLUT and a block load is skipped from both passes. Idempotent — re-running against a fully-typed file produces zero changes. |
+| `tools/promoteMObjSub.py` | Promote `u8 X[120]` declarations whose name contains `_mobjsubs` into typed `MObjSub X = { … };` initializers, reusing `parse_mobjsub` + `format_float` from `genRelocDataC.py`. Pointer fields (sprites @+0x4, palettes @+0x2C) become symbolic refs based on `.reloc` entries when available, otherwise raw chain words. A second pass promotes small `u8 X[N]` blocks (4..32 bytes, %4==0) inside `_mobjsubs_*` to `u32 X[N/4]` with chain-pointer entries resolved symbolically — falls back to raw hex for forward references (which IDO rejects in initializers) since fixRelocChain rewrites the bytes at link time anyway. Always emits `(u32)&sym` (not `(u32)sym`) for struct-symbol references — IDO doesn't accept the latter as a constant initializer. |
+| `tools/annotateTexBlocks.py` | Add `/* @tex fmt=<FMT> dim=<W>x<H> lut=<LUT_SYM> */` annotations above `u8 Tex_*` declarations that don't already carry one, by walking the expanded view's Gfx bodies for the `gsDPSetTile / gsDPSetTextureImage(LUT) / gsDPLoadTLUTCmd / gsDPSetTileSize / gsDPSetTextureImage(TEX) / gsDPLoadBlock` sequence. Format comes from the most-recent `gsDPSetTile` (the SetTextureImage's fmt/siz describes the load buffer, not the texture); dimensions from `gsDPSetTileSize` (`W = lrs/4 + 1`, `H = lrt/4 + 1`); palette from the most-recent committed-via-LoadTLUTCmd target. Pure-comment edit; bytes unchanged. `previewImagesTextures.py` reads these annotations to render correct-size CI4/CI8 PNG previews instead of dimension-guessing. |
 
 ---
 

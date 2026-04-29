@@ -15,6 +15,7 @@ u8 dStageInishieFile2_Tex_0x0008[72] = {
 };
 
 /* Texture data @ 0x0050 (136 bytes) */
+/* @tex fmt=CI4 dim=272x32 lut=dStageInishieFile2_Lut_0x3710_palette */
 u8 dStageInishieFile2_Tex_0x0050[128] = {
 	#include <StageInishieFile2/Tex_0x0050.tex.inc.c>
 };
@@ -34,46 +35,55 @@ u8 dStageInishieFile2_Tex_0x02E0[3440] = {
 };
 
 /* Texture data @ 0x1050 (528 bytes) */
+/* @tex fmt=CI4 dim=128x16 lut=dStageInishieFile2_Lut_0x3648_palette */
 u8 dStageInishieFile2_Tex_0x1050[528] = {
 	#include <StageInishieFile2/Tex_0x1050.tex.inc.c>
 };
 
 /* Texture data @ 0x1260 (136 bytes) */
+/* @tex fmt=CI4 dim=16x192 lut=dStageInishieFile2_Lut_0x3648_palette */
 u8 dStageInishieFile2_Tex_0x1260[136] = {
 	#include <StageInishieFile2/Tex_0x1260.tex.inc.c>
 };
 
 /* Texture data @ 0x12E8 (3040 bytes) */
+/* @tex fmt=CI4 dim=64x16 lut=dStageInishieFile2_Lut_0x3648_palette */
 u8 dStageInishieFile2_Tex_0x12E8[3040] = {
 	#include <StageInishieFile2/Tex_0x12E8.tex.inc.c>
 };
 
 /* Texture data @ 0x1EC8 (3312 bytes) */
+/* @tex fmt=CI4 dim=64x51 lut=dStageInishieFile2_Lut_0x3698_palette */
 u8 dStageInishieFile2_Tex_0x1EC8[3312] = {
 	#include <StageInishieFile2/Tex_0x1EC8.tex.inc.c>
 };
 
 /* Texture data @ 0x2BB8 (1160 bytes) */
+/* @tex fmt=CI4 dim=48x48 lut=dStageInishieFile2_Lut_0x36E8_palette */
 u8 dStageInishieFile2_Tex_0x2BB8[1160] = {
 	#include <StageInishieFile2/Tex_0x2BB8.tex.inc.c>
 };
 
 /* Texture data @ 0x3040 (520 bytes) */
+/* @tex fmt=CI4 dim=56x16 lut=dStageInishieFile2_Lut_0x3698_palette */
 u8 dStageInishieFile2_Tex_0x3040[520] = {
 	#include <StageInishieFile2/Tex_0x3040.tex.inc.c>
 };
 
 /* Texture data @ 0x3248 (200 bytes) */
+/* @tex fmt=CI4 dim=160x24 lut=dStageInishieFile2_Lut_0x3710_palette */
 u8 dStageInishieFile2_Tex_0x3248[200] = {
 	#include <StageInishieFile2/Tex_0x3248.tex.inc.c>
 };
 
 /* Texture data @ 0x3310 (520 bytes) */
+/* @tex fmt=CI4 dim=24x32 lut=dStageInishieFile2_Lut_0x3670_palette */
 u8 dStageInishieFile2_Tex_0x3310[520] = {
 	#include <StageInishieFile2/Tex_0x3310.tex.inc.c>
 };
 
 /* Texture data @ 0x3518 (40 bytes) */
+/* @tex fmt=CI4 dim=320x28 lut=dStageInishieFile2_Lut_0x35F8_palette */
 u8 dStageInishieFile2_Tex_0x3518[32] = {
 	#include <StageInishieFile2/Tex_0x3518.tex.inc.c>
 };

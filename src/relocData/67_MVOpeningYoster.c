@@ -30,6 +30,7 @@ u16 dMVOpeningYoster_Lut255_0x0620[260] = {
 };
 
 /* Texture data @ 0x0828 (4104 bytes) */
+/* @tex fmt=RGBA16 dim=64x32 */
 u8 dMVOpeningYoster_Tex_0x0828[4096] = {
 	#include <MVOpeningYoster/Tex_0x0828.tex.inc.c>
 };
@@ -37,16 +38,19 @@ u8 dMVOpeningYoster_Tex_0x0828[4096] = {
 PAD(8);
 
 /* Texture data @ 0x1830 (2056 bytes) */
+/* @tex fmt=CI8 dim=32x64 lut=dMVOpeningYoster_Lut255_0x0008 */
 u8 dMVOpeningYoster_Tex_0x1830[2056] = {
 	#include <MVOpeningYoster/Tex_0x1830.tex.inc.c>
 };
 
 /* Texture data @ 0x2038 (2056 bytes) */
+/* @tex fmt=CI8 dim=32x64 lut=dMVOpeningYoster_Lut255_0x0210 */
 u8 dMVOpeningYoster_Tex_0x2038[2056] = {
 	#include <MVOpeningYoster/Tex_0x2038.tex.inc.c>
 };
 
 /* Texture data @ 0x2840 (2056 bytes) */
+/* @tex fmt=CI8 dim=32x64 lut=dMVOpeningYoster_Lut255_0x0418 */
 u8 dMVOpeningYoster_Tex_0x2840[2048] = {
 	#include <MVOpeningYoster/Tex_0x2840.tex.inc.c>
 };
@@ -54,6 +58,7 @@ u8 dMVOpeningYoster_Tex_0x2840[2048] = {
 PAD(8);
 
 /* Texture data @ 0x3048 (2056 bytes) */
+/* @tex fmt=CI8 dim=32x64 lut=dMVOpeningYoster_Lut255_0x0620 */
 u8 dMVOpeningYoster_Tex_0x3048[2056] = {
 	#include <MVOpeningYoster/Tex_0x3048.tex.inc.c>
 };
@@ -646,26 +651,31 @@ u16 dMVOpeningYoster_gap_0xA4C0_sub_0x58[20] = {
 };
 
 /* gap sub-block @ 0xA540 (was gap+0x80, 40 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dMVOpeningYoster_gap_0xA4C0_sub_0x8 */
 u8 dMVOpeningYoster_Tex_0xA540[40] = {
 	#include <MVOpeningYoster/Tex_0xA540.tex.inc.c>
 };
 
 /* gap sub-block @ 0xA568 (was gap+0xA8, 392 bytes) */
+/* @tex fmt=CI4 dim=32x48 lut=dMVOpeningYoster_gap_0xA4C0_sub_0x30 */
 u8 dMVOpeningYoster_Tex_0xA568[392] = {
 	#include <MVOpeningYoster/Tex_0xA568.tex.inc.c>
 };
 
 /* gap sub-block @ 0xA6F0 (was gap+0x230, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dMVOpeningYoster_gap_0xA4C0_sub_0x58 */
 u8 dMVOpeningYoster_Tex_0xA6F0[520] = {
 	#include <MVOpeningYoster/Tex_0xA6F0.tex.inc.c>
 };
 
 /* gap sub-block @ 0xA8F8 (was gap+0x438, 520 bytes) */
+/* @tex fmt=I4 dim=64x64 */
 u8 dMVOpeningYoster_Tex_0xA8F8[520] = {
 	#include <MVOpeningYoster/Tex_0xA8F8.tex.inc.c>
 };
 
 /* gap sub-block @ 0xAB00 (was gap+0x640, 768 bytes) */
+/* @tex fmt=I4 dim=64x48 */
 u8 dMVOpeningYoster_Tex_0xAB00[768] = {
 	#include <MVOpeningYoster/Tex_0xAB00.tex.inc.c>
 };

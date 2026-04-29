@@ -17,6 +17,7 @@ u16 dYoshiSpecial3_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0030 to 0x0830 (2048 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dYoshiSpecial3_Lut_0x0008_palette */
 u8 dYoshiSpecial3_Tex_0x0030[2048] = {
 	#include <YoshiSpecial3/Tex_0x0030.tex.inc.c>
 };

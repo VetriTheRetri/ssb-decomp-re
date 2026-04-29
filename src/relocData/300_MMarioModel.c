@@ -218,6 +218,7 @@ u16 dMMarioModel_Lut256_0x2288[260] = {
 };
 
 /* Texture data @ 0x2490 (2024 bytes) */
+/* @tex fmt=CI8 dim=48x42 lut=dMMarioModel_Lut256_0x2288 */
 u8 dMMarioModel_Tex_0x2490[2024] = {
 	#include <MMarioModel/Tex_0x2490.tex.inc.c>
 };

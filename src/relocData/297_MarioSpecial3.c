@@ -20,6 +20,7 @@ u8 dMarioSpecial3_gap_0x0000_sub_0x30[40] = {
 };
 
 /* Raw data from file offset 0x0058 to 0x0168 (272 bytes) */
+/* @tex fmt=CI4 dim=16x16 */
 u8 dMarioSpecial3_Tex_0x0058[272] = {
 	#include <MarioSpecial3/Tex_0x0058.tex.inc.c>
 };

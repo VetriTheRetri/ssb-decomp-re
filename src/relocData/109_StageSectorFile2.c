@@ -71,6 +71,7 @@ u16 dStageSectorFile2_Lut_0x11C8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x11F0 (2056 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageSectorFile2_Lut_0x11C8_palette */
 u8 dStageSectorFile2_Tex_0x11F0[2048] = {
 	#include <StageSectorFile2/Tex_0x11F0.tex.inc.c>
 };
@@ -78,6 +79,7 @@ u8 dStageSectorFile2_Tex_0x11F0[2048] = {
 PAD(8);
 
 /* Texture data @ 0x19F8 (520 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dStageSectorFile2_Tex_0x19F8[512] = {
 	#include <StageSectorFile2/Tex_0x19F8.tex.inc.c>
 };
@@ -85,6 +87,7 @@ u8 dStageSectorFile2_Tex_0x19F8[512] = {
 PAD(8);
 
 /* Texture data @ 0x1C00 (136 bytes) */
+/* @tex fmt=IA16 dim=16x16 */
 u8 dStageSectorFile2_Tex_0x1C00[128] = {
 	#include <StageSectorFile2/Tex_0x1C00.tex.inc.c>
 };
@@ -111,6 +114,7 @@ u16 dStageSectorFile2_Lut_0x2138_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2160 (1160 bytes) */
+/* @tex fmt=CI4 dim=48x48 lut=dStageSectorFile2_Lut_0x2138_palette */
 u8 dStageSectorFile2_Tex_0x2160[1160] = {
 	#include <StageSectorFile2/Tex_0x2160.tex.inc.c>
 };
@@ -137,6 +141,7 @@ u16 dStageSectorFile2_Lut_0x2818_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2840 (520 bytes) */
+/* @tex fmt=CI4 dim=32x64 lut=dStageSectorFile2_Lut_0x2818_palette */
 u8 dStageSectorFile2_Tex_0x2840[512] = {
 	#include <StageSectorFile2/Tex_0x2840.tex.inc.c>
 };
@@ -179,6 +184,7 @@ u16 dStageSectorFile2_Lut_0x2DA8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2DD0 (520 bytes) */
+/* @tex fmt=CI4 dim=96x32 lut=dStageSectorFile2_Lut_0x2DA8_palette */
 u8 dStageSectorFile2_Tex_0x2DD0[512] = {
 	#include <StageSectorFile2/Tex_0x2DD0.tex.inc.c>
 };

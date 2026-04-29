@@ -1983,11 +1983,13 @@ u8 dCaptainModel_gap_0x7DD0_sub_0x3138[40] = {
 };
 
 /* Texture data @ 0xAF30 (72 bytes) */
+/* @tex fmt=CI4 dim=8x18 */
 u8 dCaptainModel_Tex_0xAF30[72] = {
 	#include <CaptainModel/Tex_0xAF30.tex.inc.c>
 };
 
 /* Texture data @ 0xAF78 (760 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dCaptainModel_Tex_0xAF78[760] = {
 	#include <CaptainModel/Tex_0xAF78.tex.inc.c>
 };
@@ -1998,11 +2000,13 @@ u8 dCaptainModel_Tex_0xB270[680] = {
 };
 
 /* Texture data @ 0xB518 (192 bytes) */
+/* @tex fmt=CI4 dim=23x23 */
 u8 dCaptainModel_Tex_0xB518[192] = {
 	#include <CaptainModel/Tex_0xB518.tex.inc.c>
 };
 
 /* Texture data @ 0xB5D8 (896 bytes) */
+/* @tex fmt=CI4 dim=45x57 */
 u8 dCaptainModel_Tex_0xB5D8[896] = {
 	#include <CaptainModel/Tex_0xB5D8.tex.inc.c>
 };
@@ -2036,26 +2040,31 @@ u8 dCaptainModel_Tex_0xBBB0[512] = {
 PAD(8);
 
 /* Texture data @ 0xBDB8 (576 bytes) */
+/* @tex fmt=CI4 dim=26x24 */
 u8 dCaptainModel_Tex_0xBDB8[576] = {
 	#include <CaptainModel/Tex_0xBDB8.tex.inc.c>
 };
 
 /* Texture data @ 0xBFF8 (80 bytes) */
+/* @tex fmt=CI4 dim=20x12 */
 u8 dCaptainModel_Tex_0xBFF8[80] = {
 	#include <CaptainModel/Tex_0xBFF8.tex.inc.c>
 };
 
 /* Texture data @ 0xC048 (152 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dCaptainModel_Tex_0xC048[152] = {
 	#include <CaptainModel/Tex_0xC048.tex.inc.c>
 };
 
 /* Texture data @ 0xC0E0 (72 bytes) */
+/* @tex fmt=CI4 dim=8x24 */
 u8 dCaptainModel_Tex_0xC0E0[72] = {
 	#include <CaptainModel/Tex_0xC0E0.tex.inc.c>
 };
 
 /* Texture data @ 0xC128 (264 bytes) */
+/* @tex fmt=CI4 dim=37x21 */
 u8 dCaptainModel_Tex_0xC128[256] = {
 	#include <CaptainModel/Tex_0xC128.tex.inc.c>
 };
@@ -2063,21 +2072,25 @@ u8 dCaptainModel_Tex_0xC128[256] = {
 PAD(8);
 
 /* Texture data @ 0xC230 (296 bytes) */
+/* @tex fmt=CI4 dim=68x27 */
 u8 dCaptainModel_Tex_0xC230[296] = {
 	#include <CaptainModel/Tex_0xC230.tex.inc.c>
 };
 
 /* Texture data @ 0xC358 (200 bytes) */
+/* @tex fmt=CI4 dim=35x51 */
 u8 dCaptainModel_Tex_0xC358[200] = {
 	#include <CaptainModel/Tex_0xC358.tex.inc.c>
 };
 
 /* Texture data @ 0xC420 (232 bytes) */
+/* @tex fmt=CI4 dim=8x8 lut=dCaptainModel_Lut_0xB958_palette */
 u8 dCaptainModel_Tex_0xC420[232] = {
 	#include <CaptainModel/Tex_0xC420.tex.inc.c>
 };
 
 /* Texture data @ 0xC508 (80 bytes) */
+/* @tex fmt=CI4 dim=8x13 */
 u8 dCaptainModel_Tex_0xC508[80] = {
 	#include <CaptainModel/Tex_0xC508.tex.inc.c>
 };

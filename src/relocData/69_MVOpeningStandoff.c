@@ -36,6 +36,7 @@ u16 dMVOpeningStandoff_Lut_0x0058_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0080 (2056 bytes) */
+/* @tex fmt=CI4 dim=256x256 lut=dMVOpeningStandoff_Lut_0x0008_palette */
 u8 dMVOpeningStandoff_Tex_0x0080[2048] = {
 	#include <MVOpeningStandoff/Tex_0x0080.tex.inc.c>
 };
@@ -43,6 +44,7 @@ u8 dMVOpeningStandoff_Tex_0x0080[2048] = {
 PAD(8);
 
 /* Texture data @ 0x0888 (2056 bytes) */
+/* @tex fmt=CI4 dim=128x128 lut=dMVOpeningStandoff_Lut_0x0030_palette */
 u8 dMVOpeningStandoff_Tex_0x0888[2048] = {
 	#include <MVOpeningStandoff/Tex_0x0888.tex.inc.c>
 };
@@ -50,6 +52,7 @@ u8 dMVOpeningStandoff_Tex_0x0888[2048] = {
 PAD(8);
 
 /* Texture data @ 0x1090 (512 bytes) */
+/* @tex fmt=CI4 dim=128x32 lut=dMVOpeningStandoff_Lut_0x0058_palette */
 u8 dMVOpeningStandoff_Tex_0x1090[512] = {
 	#include <MVOpeningStandoff/Tex_0x1090.tex.inc.c>
 };

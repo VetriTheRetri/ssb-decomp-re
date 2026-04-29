@@ -14,6 +14,7 @@ u16 dLinkBoomerangModel_Lut3_0x0008[8] = {
 };
 
 /* Texture data @ 0x0018 (64 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dLinkBoomerangModel_Lut3_0x0008 */
 u8 dLinkBoomerangModel_Tex_0x0018[64] = {
 	#include <LinkBoomerangModel/Tex_0x0018.tex.inc.c>
 };

@@ -141,6 +141,7 @@ u16 dMVCommon_Lut_0x0610_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0638 (264 bytes) */
+/* @tex fmt=CI4 dim=16x32 lut=dMVCommon_Lut_0x0008_palette */
 u8 dMVCommon_Tex_0x0638[256] = {
 	#include <MVCommon/Tex_0x0638.tex.inc.c>
 };
@@ -148,6 +149,7 @@ u8 dMVCommon_Tex_0x0638[256] = {
 PAD(8);
 
 /* Texture data @ 0x0740 (2056 bytes) */
+/* @tex fmt=RGBA16 dim=33x33 */
 u8 dMVCommon_Tex_0x0740[2048] = {
 	#include <MVCommon/Tex_0x0740.tex.inc.c>
 };
@@ -155,21 +157,25 @@ u8 dMVCommon_Tex_0x0740[2048] = {
 PAD(8);
 
 /* Texture data @ 0x0F48 (272 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_Lut_0x0030_palette */
 u8 dMVCommon_Tex_0x0F48[272] = {
 	#include <MVCommon/Tex_0x0F48.tex.inc.c>
 };
 
 /* Texture data @ 0x1058 (136 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dMVCommon_Lut_0x0080_palette */
 u8 dMVCommon_Tex_0x1058[136] = {
 	#include <MVCommon/Tex_0x1058.tex.inc.c>
 };
 
 /* Texture data @ 0x10E0 (72 bytes) */
+/* @tex fmt=CI4 dim=8x8 lut=dMVCommon_Lut_0x00A8_palette */
 u8 dMVCommon_Tex_0x10E0[72] = {
 	#include <MVCommon/Tex_0x10E0.tex.inc.c>
 };
 
 /* Texture data @ 0x1128 (264 bytes) */
+/* @tex fmt=CI4 dim=16x32 lut=dMVCommon_Lut_0x00D0_palette */
 u8 dMVCommon_Tex_0x1128[256] = {
 	#include <MVCommon/Tex_0x1128.tex.inc.c>
 };
@@ -177,6 +183,7 @@ u8 dMVCommon_Tex_0x1128[256] = {
 PAD(8);
 
 /* Texture data @ 0x1230 (264 bytes) */
+/* @tex fmt=CI4 dim=32x16 lut=dMVCommon_Lut_0x00F8_palette */
 u8 dMVCommon_Tex_0x1230[256] = {
 	#include <MVCommon/Tex_0x1230.tex.inc.c>
 };
@@ -184,6 +191,7 @@ u8 dMVCommon_Tex_0x1230[256] = {
 PAD(8);
 
 /* Texture data @ 0x1338 (264 bytes) */
+/* @tex fmt=CI4 dim=32x16 lut=dMVCommon_Lut_0x0120_palette */
 u8 dMVCommon_Tex_0x1338[256] = {
 	#include <MVCommon/Tex_0x1338.tex.inc.c>
 };
@@ -191,11 +199,13 @@ u8 dMVCommon_Tex_0x1338[256] = {
 PAD(8);
 
 /* Texture data @ 0x1440 (136 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_Lut_0x0148_palette */
 u8 dMVCommon_Tex_0x1440[136] = {
 	#include <MVCommon/Tex_0x1440.tex.inc.c>
 };
 
 /* Texture data @ 0x14C8 (520 bytes) */
+/* @tex fmt=CI4 dim=192x96 lut=dMVCommon_Lut_0x0170_palette */
 u8 dMVCommon_Tex_0x14C8[512] = {
 	#include <MVCommon/Tex_0x14C8.tex.inc.c>
 };
@@ -203,6 +213,7 @@ u8 dMVCommon_Tex_0x14C8[512] = {
 PAD(8);
 
 /* Texture data @ 0x16D0 (520 bytes) */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dMVCommon_Tex_0x16D0[512] = {
 	#include <MVCommon/Tex_0x16D0.tex.inc.c>
 };
@@ -210,6 +221,7 @@ u8 dMVCommon_Tex_0x16D0[512] = {
 PAD(8);
 
 /* Texture data @ 0x18D8 (136 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_Lut_0x0198_palette */
 u8 dMVCommon_Tex_0x18D8[128] = {
 	#include <MVCommon/Tex_0x18D8.tex.inc.c>
 };
@@ -217,6 +229,7 @@ u8 dMVCommon_Tex_0x18D8[128] = {
 PAD(8);
 
 /* Texture data @ 0x1960 (136 bytes) */
+/* @tex fmt=CI4 dim=224x160 lut=dMVCommon_Lut_0x01C0_palette */
 u8 dMVCommon_Tex_0x1960[128] = {
 	#include <MVCommon/Tex_0x1960.tex.inc.c>
 };
@@ -224,6 +237,7 @@ u8 dMVCommon_Tex_0x1960[128] = {
 PAD(8);
 
 /* Texture data @ 0x19E8 (2056 bytes) */
+/* @tex fmt=CI8 dim=32x64 lut=dMVCommon_Lut227_0x01E8 */
 u8 dMVCommon_Tex_0x19E8[2048] = {
 	#include <MVCommon/Tex_0x19E8.tex.inc.c>
 };
@@ -231,11 +245,13 @@ u8 dMVCommon_Tex_0x19E8[2048] = {
 PAD(8);
 
 /* Texture data @ 0x21F0 (3088 bytes) */
+/* @tex fmt=CI8 dim=32x64 lut=dMVCommon_Lut213_0x03B8 */
 u8 dMVCommon_Tex_0x21F0[3088] = {
 	#include <MVCommon/Tex_0x21F0.tex.inc.c>
 };
 
 /* Texture data @ 0x2E00 (136 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dMVCommon_Lut_0x0598_palette */
 u8 dMVCommon_Tex_0x2E00[128] = {
 	#include <MVCommon/Tex_0x2E00.tex.inc.c>
 };
@@ -243,11 +259,13 @@ u8 dMVCommon_Tex_0x2E00[128] = {
 PAD(8);
 
 /* Texture data @ 0x2E88 (96 bytes) */
+/* @tex fmt=CI4 dim=16x11 lut=dMVCommon_Lut_0x05C0_palette */
 u8 dMVCommon_Tex_0x2E88[96] = {
 	#include <MVCommon/Tex_0x2E88.tex.inc.c>
 };
 
 /* Texture data @ 0x2EE8 (520 bytes) */
+/* @tex fmt=CI8 dim=32x32 lut=dMVCommon_Lut_0x05E8_palette */
 u8 dMVCommon_Tex_0x2EE8[512] = {
 	#include <MVCommon/Tex_0x2EE8.tex.inc.c>
 };
@@ -255,6 +273,7 @@ u8 dMVCommon_Tex_0x2EE8[512] = {
 PAD(8);
 
 /* Texture data @ 0x30F0 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dMVCommon_Lut_0x0610_palette */
 u8 dMVCommon_Tex_0x30F0[512] = {
 	#include <MVCommon/Tex_0x30F0.tex.inc.c>
 };
@@ -262,6 +281,7 @@ u8 dMVCommon_Tex_0x30F0[512] = {
 PAD(8);
 
 /* Texture data @ 0x32F8 (4096 bytes) */
+/* @tex fmt=RGBA16 dim=64x32 */
 u8 dMVCommon_Tex_0x32F8[4096] = {
 	#include <MVCommon/Tex_0x32F8.tex.inc.c>
 };
@@ -1130,6 +1150,7 @@ u16 dMVCommon_gap_0x8E7C_sub_0xC[20] = {
 };
 
 /* gap sub-block @ 0x8EB0 (was gap+0x34, 2048 bytes) */
+/* @tex fmt=CI8 dim=64x32 lut=dMVCommon_gap_0x8E7C_sub_0xC */
 u8 dMVCommon_Tex_0x8EB0[2048] = {
 	#include <MVCommon/Tex_0x8EB0.tex.inc.c>
 };

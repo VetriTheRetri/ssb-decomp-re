@@ -136,36 +136,43 @@ u16 dStageLastFile2_gap_0x0000_sub_0x3A0[20] = {
 };
 
 /* gap sub-block @ 0x03C8 (was gap+0x3C8, 2056 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageLastFile2_gap_0x0000_sub_0x8 */
 u8 dStageLastFile2_Tex_0x03C8[2056] = {
 	#include <StageLastFile2/Tex_0x03C8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0BD0 (was gap+0xBD0, 136 bytes) */
+/* @tex fmt=CI4 dim=8x16 */
 u8 dStageLastFile2_Tex_0x0BD0[136] = {
 	#include <StageLastFile2/Tex_0x0BD0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0C58 (was gap+0xC58, 520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageLastFile2_gap_0x0000_sub_0x300 */
 u8 dStageLastFile2_Tex_0x0C58[520] = {
 	#include <StageLastFile2/Tex_0x0C58.tex.inc.c>
 };
 
 /* gap sub-block @ 0x0E60 (was gap+0xE60, 1032 bytes) */
+/* @tex fmt=CI4 dim=64x32 lut=dStageLastFile2_gap_0x0000_sub_0x328 */
 u8 dStageLastFile2_Tex_0x0E60[1032] = {
 	#include <StageLastFile2/Tex_0x0E60.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1268 (was gap+0x1268, 1032 bytes) */
+/* @tex fmt=CI4 dim=64x32 lut=dStageLastFile2_gap_0x0000_sub_0x350 */
 u8 dStageLastFile2_Tex_0x1268[1032] = {
 	#include <StageLastFile2/Tex_0x1268.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1670 (was gap+0x1670, 520 bytes) */
+/* @tex fmt=CI4 dim=320x32 lut=dStageLastFile2_gap_0x0000_sub_0x378 */
 u8 dStageLastFile2_Tex_0x1670[520] = {
 	#include <StageLastFile2/Tex_0x1670.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1878 (was gap+0x1878, 2048 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageLastFile2_gap_0x0000_sub_0x3A0 */
 u8 dStageLastFile2_Tex_0x1878[2048] = {
 	#include <StageLastFile2/Tex_0x1878.tex.inc.c>
 };

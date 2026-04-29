@@ -999,6 +999,7 @@ u8 dPurinModel_gap_0x6028_sub_0x780[40] = {
 };
 
 /* gap sub-block @ 0x67D0 (was gap+0x7A8, 136 bytes) */
+/* @tex fmt=CI4 dim=49x30 */
 u8 dPurinModel_Tex_0x67D0[136] = {
 	#include <PurinModel/Tex_0x67D0.tex.inc.c>
 };
@@ -1041,11 +1042,13 @@ u16 dPurinModel_Lut_0x6948_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x6970 (3296 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dPurinModel_Lut_0x6948_palette */
 u8 dPurinModel_Tex_0x6970[3296] = {
 	#include <PurinModel/Tex_0x6970.tex.inc.c>
 };
 
 /* Texture data @ 0x7650 (1080 bytes) */
+/* @tex fmt=CI4 dim=123x112 */
 u8 dPurinModel_Tex_0x7650[1080] = {
 	#include <PurinModel/Tex_0x7650.tex.inc.c>
 };

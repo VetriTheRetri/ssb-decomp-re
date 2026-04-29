@@ -96,6 +96,7 @@ u16 dLinkSpecial2_Lut_0x0488_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x04B0 to 0x04F0 (64 bytes) */
+/* @tex fmt=CI4 dim=192x8 lut=dLinkSpecial2_Lut_0x0488_palette */
 u8 dLinkSpecial2_Tex_0x04B0[64] = {
 	#include <LinkSpecial2/Tex_0x04B0.tex.inc.c>
 };
@@ -464,6 +465,7 @@ u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0C38 to 0x1038 (1024 bytes) */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dLinkSpecial2_Tex_0x0C38[1024] = {
 	#include <LinkSpecial2/Tex_0x0C38.tex.inc.c>
 };

@@ -1808,21 +1808,25 @@ u8 dSamusModel_gap_0xB27C_sub_0xC[40] = {
 };
 
 /* Texture data @ 0xB2B0 (600 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xB2B0[600] = {
 	#include <SamusModel/Tex_0xB2B0.tex.inc.c>
 };
 
 /* Texture data @ 0xB508 (760 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xB508[760] = {
 	#include <SamusModel/Tex_0xB508.tex.inc.c>
 };
 
 /* Texture data @ 0xB800 (720 bytes) */
+/* @tex fmt=CI4 dim=72x79 */
 u8 dSamusModel_Tex_0xB800[720] = {
 	#include <SamusModel/Tex_0xB800.tex.inc.c>
 };
 
 /* Texture data @ 0xBAD0 (720 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dSamusModel_Tex_0xBAD0[720] = {
 	#include <SamusModel/Tex_0xBAD0.tex.inc.c>
 };
@@ -1833,6 +1837,7 @@ u8 dSamusModel_Tex_0xBDA0[560] = {
 };
 
 /* Texture data @ 0xBFD0 (1040 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xBFD0[1040] = {
 	#include <SamusModel/Tex_0xBFD0.tex.inc.c>
 };
@@ -1845,11 +1850,13 @@ u16 dSamusModel_Lut_0xC3E0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0xC408 (1240 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dSamusModel_Lut_0xC3E0_palette */
 u8 dSamusModel_Tex_0xC408[1240] = {
 	#include <SamusModel/Tex_0xC408.tex.inc.c>
 };
 
 /* Texture data @ 0xC8E0 (136 bytes) */
+/* @tex fmt=CI4 dim=16x16 */
 u8 dSamusModel_Tex_0xC8E0[128] = {
 	#include <SamusModel/Tex_0xC8E0.tex.inc.c>
 };
@@ -1857,11 +1864,13 @@ u8 dSamusModel_Tex_0xC8E0[128] = {
 PAD(8);
 
 /* Texture data @ 0xC968 (112 bytes) */
+/* @tex fmt=CI4 dim=52x14 */
 u8 dSamusModel_Tex_0xC968[112] = {
 	#include <SamusModel/Tex_0xC968.tex.inc.c>
 };
 
 /* Texture data @ 0xC9D8 (720 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dSamusModel_Tex_0xC9D8[720] = {
 	#include <SamusModel/Tex_0xC9D8.tex.inc.c>
 };
@@ -1872,6 +1881,7 @@ u8 dSamusModel_Tex_0xCCA8[560] = {
 };
 
 /* Texture data @ 0xCED8 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xCED8[512] = {
 	#include <SamusModel/Tex_0xCED8.tex.inc.c>
 };
@@ -1879,6 +1889,7 @@ u8 dSamusModel_Tex_0xCED8[512] = {
 PAD(8);
 
 /* Texture data @ 0xD0E0 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xD0E0[512] = {
 	#include <SamusModel/Tex_0xD0E0.tex.inc.c>
 };
@@ -1886,6 +1897,7 @@ u8 dSamusModel_Tex_0xD0E0[512] = {
 PAD(8);
 
 /* Texture data @ 0xD2E8 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xD2E8[512] = {
 	#include <SamusModel/Tex_0xD2E8.tex.inc.c>
 };
@@ -1900,11 +1912,13 @@ u16 dSamusModel_Lut_0xD4F0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0xD518 (256 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dSamusModel_Lut_0xD4F0_palette */
 u8 dSamusModel_Tex_0xD518[256] = {
 	#include <SamusModel/Tex_0xD518.tex.inc.c>
 };
 
 /* Texture data @ 0xD618 (2992 bytes) */
+/* @tex fmt=CI4 dim=38x66 */
 u8 dSamusModel_Tex_0xD618[2992] = {
 	#include <SamusModel/Tex_0xD618.tex.inc.c>
 };

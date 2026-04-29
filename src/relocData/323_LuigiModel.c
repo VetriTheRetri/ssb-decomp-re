@@ -1310,6 +1310,7 @@ u8 dLuigiModel_gap_0x4E8C_sub_0x1E84[40] = {
 };
 
 /* Texture data @ 0x6D38 (1672 bytes) */
+/* @tex fmt=CI4 dim=96x33 */
 u8 dLuigiModel_Tex_0x6D38[1672] = {
 	#include <LuigiModel/Tex_0x6D38.tex.inc.c>
 };

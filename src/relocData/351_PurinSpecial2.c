@@ -29,6 +29,7 @@ u8 dPurinSpecial2_Tex_0x0810[2048] = {
 PAD(8);
 
 /* Raw data from file offset 0x1018 to 0x1820 (2056 bytes) */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dPurinSpecial2_Tex_0x1018[2048] = {
 	#include <PurinSpecial2/Tex_0x1018.tex.inc.c>
 };
@@ -36,6 +37,7 @@ u8 dPurinSpecial2_Tex_0x1018[2048] = {
 PAD(8);
 
 /* Raw data from file offset 0x1820 to 0x1C20 (1024 bytes) */
+/* @tex fmt=IA8 dim=64x64 */
 u8 dPurinSpecial2_Tex_0x1820[1024] = {
 	#include <PurinSpecial2/Tex_0x1820.tex.inc.c>
 };

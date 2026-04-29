@@ -1291,16 +1291,19 @@ u8 dPikachuModel_gap_0x59B8_sub_0x1970[40] = {
 };
 
 /* Texture data @ 0x7350 (528 bytes) */
+/* @tex fmt=CI4 dim=145x57 */
 u8 dPikachuModel_Tex_0x7350[528] = {
 	#include <PikachuModel/Tex_0x7350.tex.inc.c>
 };
 
 /* Texture data @ 0x7560 (2968 bytes) */
+/* @tex fmt=CI4 dim=13x1 */
 u8 dPikachuModel_Tex_0x7560[2968] = {
 	#include <PikachuModel/Tex_0x7560.tex.inc.c>
 };
 
 /* Texture data @ 0x80F8 (4904 bytes) */
+/* @tex fmt=CI4 dim=16x9 */
 u8 dPikachuModel_Tex_0x80F8[4904] = {
 	#include <PikachuModel/Tex_0x80F8.tex.inc.c>
 };

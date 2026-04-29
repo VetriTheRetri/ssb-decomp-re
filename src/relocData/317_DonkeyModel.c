@@ -1999,41 +1999,49 @@ u8 dDonkeyModel_gap_0x7390_sub_0x4D40[40] = {
 };
 
 /* Texture data @ 0xC0F8 (640 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dDonkeyModel_Tex_0xC0F8[640] = {
 	#include <DonkeyModel/Tex_0xC0F8.tex.inc.c>
 };
 
 /* Texture data @ 0xC378 (1792 bytes) */
+/* @tex fmt=CI4 dim=81x75 */
 u8 dDonkeyModel_Tex_0xC378[1792] = {
 	#include <DonkeyModel/Tex_0xC378.tex.inc.c>
 };
 
 /* Texture data @ 0xCA78 (600 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dDonkeyModel_Tex_0xCA78[600] = {
 	#include <DonkeyModel/Tex_0xCA78.tex.inc.c>
 };
 
 /* Texture data @ 0xCCD0 (72 bytes) */
+/* @tex fmt=CI4 dim=38x55 */
 u8 dDonkeyModel_Tex_0xCCD0[72] = {
 	#include <DonkeyModel/Tex_0xCCD0.tex.inc.c>
 };
 
 /* Texture data @ 0xCD18 (72 bytes) */
+/* @tex fmt=CI4 dim=30x10 */
 u8 dDonkeyModel_Tex_0xCD18[72] = {
 	#include <DonkeyModel/Tex_0xCD18.tex.inc.c>
 };
 
 /* Texture data @ 0xCD60 (552 bytes) */
+/* @tex fmt=CI4 dim=24x24 */
 u8 dDonkeyModel_Tex_0xCD60[552] = {
 	#include <DonkeyModel/Tex_0xCD60.tex.inc.c>
 };
 
 /* Texture data @ 0xCF88 (632 bytes) */
+/* @tex fmt=CI4 dim=231x51 */
 u8 dDonkeyModel_Tex_0xCF88[632] = {
 	#include <DonkeyModel/Tex_0xCF88.tex.inc.c>
 };
 
 /* Texture data @ 0xD200 (136 bytes) */
+/* @tex fmt=CI4 dim=39x28 */
 u8 dDonkeyModel_Tex_0xD200[128] = {
 	#include <DonkeyModel/Tex_0xD200.tex.inc.c>
 };
@@ -2041,6 +2049,7 @@ u8 dDonkeyModel_Tex_0xD200[128] = {
 PAD(8);
 
 /* Texture data @ 0xD288 (520 bytes) */
+/* @tex fmt=CI4 dim=64x32 */
 u8 dDonkeyModel_Tex_0xD288[512] = {
 	#include <DonkeyModel/Tex_0xD288.tex.inc.c>
 };
@@ -2055,6 +2064,7 @@ u16 dDonkeyModel_Lut_0xD490_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0xD4B8 (328 bytes) */
+/* @tex fmt=CI4 dim=24x20 lut=dDonkeyModel_Lut_0xD490_palette */
 u8 dDonkeyModel_Tex_0xD4B8[328] = {
 	#include <DonkeyModel/Tex_0xD4B8.tex.inc.c>
 };

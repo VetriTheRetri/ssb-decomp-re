@@ -16,6 +16,7 @@ u16 dLinkSpecial3_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0030 to 0x0150 (288 bytes) */
+/* @tex fmt=CI4 dim=32x18 lut=dLinkSpecial3_Lut_0x0008_palette */
 u8 dLinkSpecial3_Tex_0x0030[288] = {
 	#include <LinkSpecial3/Tex_0x0030.tex.inc.c>
 };

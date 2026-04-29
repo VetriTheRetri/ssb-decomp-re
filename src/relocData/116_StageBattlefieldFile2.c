@@ -85,6 +85,7 @@ PAD(8);
 /* ═══════════════════ TEXTURES (10 CI4 texture blocks) ═══════════════════ */
 
 /* @ 0x0198, 2048 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=64x64 lut=dStageBattlefieldFile2_Lut_0x0008_palette */
 u8 dStageBattlefieldFile2_Tex_0x0198[2048] = {
 	#include <StageBattlefieldFile2/Tex_0x0198.tex.inc.c>
 };
@@ -92,6 +93,7 @@ u8 dStageBattlefieldFile2_Tex_0x0198[2048] = {
 PAD(8);
 
 /* @ 0x09A0, 2048 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=64x64 lut=dStageBattlefieldFile2_Lut_0x0030_palette */
 u8 dStageBattlefieldFile2_Tex_0x09A0[2048] = {
 	#include <StageBattlefieldFile2/Tex_0x09A0.tex.inc.c>
 };
@@ -99,6 +101,7 @@ u8 dStageBattlefieldFile2_Tex_0x09A0[2048] = {
 PAD(8);
 
 /* @ 0x11A8, 2048 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=64x64 lut=dStageBattlefieldFile2_Lut_0x0058_palette */
 u8 dStageBattlefieldFile2_Tex_0x11A8[2048] = {
 	#include <StageBattlefieldFile2/Tex_0x11A8.tex.inc.c>
 };
@@ -106,6 +109,7 @@ u8 dStageBattlefieldFile2_Tex_0x11A8[2048] = {
 PAD(8);
 
 /* @ 0x19B0, 512 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=96x32 lut=dStageBattlefieldFile2_Lut_0x0080_palette */
 u8 dStageBattlefieldFile2_Tex_0x19B0[512] = {
 	#include <StageBattlefieldFile2/Tex_0x19B0.tex.inc.c>
 };
@@ -113,6 +117,7 @@ u8 dStageBattlefieldFile2_Tex_0x19B0[512] = {
 PAD(8);
 
 /* @ 0x1BB8, 1024 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=256x32 lut=dStageBattlefieldFile2_Lut_0x00A8_palette */
 u8 dStageBattlefieldFile2_Tex_0x1BB8[1024] = {
 	#include <StageBattlefieldFile2/Tex_0x1BB8.tex.inc.c>
 };
@@ -120,6 +125,7 @@ u8 dStageBattlefieldFile2_Tex_0x1BB8[1024] = {
 PAD(8);
 
 /* @ 0x1FC0, 512 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=320x32 lut=dStageBattlefieldFile2_Lut_0x00D0_palette */
 u8 dStageBattlefieldFile2_Tex_0x1FC0[512] = {
 	#include <StageBattlefieldFile2/Tex_0x1FC0.tex.inc.c>
 };
@@ -127,6 +133,7 @@ u8 dStageBattlefieldFile2_Tex_0x1FC0[512] = {
 PAD(8);
 
 /* @ 0x21C8, 512 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=384x384 lut=dStageBattlefieldFile2_Lut_0x00F8_palette */
 u8 dStageBattlefieldFile2_Tex_0x21C8[512] = {
 	#include <StageBattlefieldFile2/Tex_0x21C8.tex.inc.c>
 };
@@ -134,6 +141,7 @@ u8 dStageBattlefieldFile2_Tex_0x21C8[512] = {
 PAD(8);
 
 /* @ 0x23D0, 512 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=256x32 lut=dStageBattlefieldFile2_Lut_0x0120_palette */
 u8 dStageBattlefieldFile2_Tex_0x23D0[512] = {
 	#include <StageBattlefieldFile2/Tex_0x23D0.tex.inc.c>
 };
@@ -141,6 +149,7 @@ u8 dStageBattlefieldFile2_Tex_0x23D0[512] = {
 PAD(8);
 
 /* @ 0x25D8, 512 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=128x128 lut=dStageBattlefieldFile2_Lut_0x0148_palette */
 u8 dStageBattlefieldFile2_Tex_0x25D8[512] = {
 	#include <StageBattlefieldFile2/Tex_0x25D8.tex.inc.c>
 };
@@ -148,6 +157,7 @@ u8 dStageBattlefieldFile2_Tex_0x25D8[512] = {
 PAD(8);
 
 /* @ 0x27E0, 1024 bytes — CI4 texture */
+/* @tex fmt=CI4 dim=128x32 lut=dStageBattlefieldFile2_Lut_0x0170_palette */
 u8 dStageBattlefieldFile2_Tex_0x27E0[1024] = {
 	#include <StageBattlefieldFile2/Tex_0x27E0.tex.inc.c>
 };

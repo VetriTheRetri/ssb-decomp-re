@@ -3786,7 +3786,7 @@ PAD(8);
 /* `llMVOpeningYamabukiCamAnimJoint` — 56 bytes, 14 u32 words driving the
  * scene camera via `gcAddCObjCamAnimJoint` in
  * `mvOpeningYamabukiMakeMainCamera()`. */
-u32 dMVOpeningYamabuki_CamAnimJoint[14] = {
+u32 dMVOpeningYamabuki_CamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0x43C93DD2,  /* 402.48297119140625f */
 	    0x4342CC4C,  /* 194.79803466796875f */
@@ -3797,10 +3797,10 @@ u32 dMVOpeningYamabuki_CamAnimJoint[14] = {
 	    0x41CC0350,  /* 25.501617431640625f */
 	aobjEvent32Wait(160),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningYamabuki_CamAnimJoint_post[16] = {
+	#include <MVOpeningYamabuki/CamAnimJoint_post.data.inc.c>
 };
 
 /* Wallpaper texture tiles @ 0x0D368..0x3EB08 (203,680 B). 53 × 320×6

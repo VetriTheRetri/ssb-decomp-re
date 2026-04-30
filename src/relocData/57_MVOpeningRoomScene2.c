@@ -9,7 +9,7 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* CamAnimJoint CamAnimJoint @ 0x0000 (80 bytes) */
-u32 dMVOpeningRoomScene2_CamAnimJoint[20] = {
+u32 dMVOpeningRoomScene2_CamAnimJoint[17] = {
 	aobjEvent32SetVal0RateBlock(0x277, 0),
 	    0xC47F39E0,  /* -1020.904296875f */
 	    0x453E361B,  /* 3043.381591796875f */
@@ -27,7 +27,8 @@ u32 dMVOpeningRoomScene2_CamAnimJoint[20] = {
 	    0xC580EC18,  /* -4125.51171875f */
 	    0x420510A0,  /* 33.2662353515625f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningRoomScene2_CamAnimJoint_post[12] = {
+	#include <MVOpeningRoomScene2/CamAnimJoint_post.data.inc.c>
 };

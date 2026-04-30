@@ -2374,7 +2374,7 @@ u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint_0x88E4[] = {
 PAD(8);
 
 /* Raw data from file offset 0x8910 to 0x8A70 (352 bytes) */
-u32 dMVOpeningCliff_Cam_AnimJoint[88] = {
+u32 dMVOpeningCliff_Cam_AnimJoint[86] = {
 	aobjEvent32SetValAfter(0x040, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetVal0Rate(0x230, 0),
@@ -2461,7 +2461,9 @@ u32 dMVOpeningCliff_Cam_AnimJoint[88] = {
 	aobjEvent32SetVal0RateBlock(0x200, 13),
 	    0x400692A3,  /* 2.1026999950408936f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCliff_Cam_AnimJoint_post[8] = {
+	#include <MVOpeningCliff/Cam_AnimJoint_post.data.inc.c>
 };
 

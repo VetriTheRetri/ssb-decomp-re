@@ -8,7 +8,7 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* AnimJoint block @ 0x0000 (64 bytes) */
-u32 dStageCastleFile3_AnimJoint_0x0000[16] = {
+u32 dStageCastleFile3_AnimJoint_0x0000[14] = {
 	aobjEvent32EndRaw(0x018, 1),
 	aobjEvent32SetValBlock(0x010, 0),
 	    0x00000000,  /* 0.0f */
@@ -23,6 +23,8 @@ u32 dStageCastleFile3_AnimJoint_0x0000[16] = {
 	aobjEvent32SetAnim(0x000, 0),
 	    0xFFFF0001,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dStageCastleFile3_AnimJoint_0x0000_post[8] = {
+	#include <StageCastleFile3/AnimJoint_0x0000_post.data.inc.c>
 };

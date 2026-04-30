@@ -606,7 +606,7 @@ u8 dMVOpeningRoomTransition_Outline_post[12] = {
 };
 
 /* Raw data from file offset 0x11C4 to 0x11F0 (44 bytes) */
-u32 dMVOpeningRoomTransition_Outline_AnimJoint[11] = {
+u32 dMVOpeningRoomTransition_Outline_AnimJoint[9] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
@@ -616,7 +616,9 @@ u32 dMVOpeningRoomTransition_Outline_AnimJoint[11] = {
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningRoomTransition_Outline_AnimJoint_post[8] = {
+	#include <MVOpeningRoomTransition/Outline_AnimJoint_post.data.inc.c>
 };
 

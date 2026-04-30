@@ -1633,7 +1633,7 @@ u32 dMVOpeningClashWallpaper_URAnimJoint_AnimJoint_0x4AA4[] = {
 };
 
 /* Raw data from file offset 0x4AB0 to 0x4AE0 (48 bytes) */
-u32 dMVOpeningClashWallpaper_Cam_AnimJoint[12] = {
+u32 dMVOpeningClashWallpaper_Cam_AnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0x00000000,
 	    0x42700000,
@@ -1644,7 +1644,9 @@ u32 dMVOpeningClashWallpaper_Cam_AnimJoint[12] = {
 	    0x4269CCFB,
 	aobjEvent32Wait(130),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningClashWallpaper_Cam_AnimJoint_post[8] = {
+	#include <MVOpeningClashWallpaper/Cam_AnimJoint_post.data.inc.c>
 };
 

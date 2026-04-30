@@ -648,8 +648,7 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[];
-
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint[10] = {
 	NULL,
 	NULL,
@@ -663,7 +662,7 @@ AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint[10] = {
 	NULL,
 };
 
-u8 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[5304] = {
+u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[1326] = {
 	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data.data.inc.c>
 };
 

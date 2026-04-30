@@ -329,7 +329,7 @@ u32 dMVOpeningRun_Kirby_AnimJoint[56] = {
 };
 
 /* Raw data from file offset 0x0484 to 0x0528 (164 bytes) */
-u32 dMVOpeningRun_Pikachu_AnimJoint[41] = {
+u32 dMVOpeningRun_Pikachu_AnimJoint[38] = {
 	aobjEvent32SetValBlock(0x070, 0),
 	    0x4483C29C,  /* 1054.08154296875f */
 	    0x42003289,  /* 32.04935073852539f */
@@ -368,9 +368,10 @@ u32 dMVOpeningRun_Pikachu_AnimJoint[41] = {
 	aobjEvent32SetVal0RateBlock(0x020, 26),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningRun_Pikachu_AnimJoint_post[12] = {
+	#include <MVOpeningRun/Pikachu_AnimJoint_post.data.inc.c>
 };
 
 /* Texture data for sprite Wallpaper */

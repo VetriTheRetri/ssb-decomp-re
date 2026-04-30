@@ -345,8 +345,7 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
 	NULL,
 	NULL,
@@ -358,7 +357,7 @@ AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
 	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x134),
 };
 
-u8 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[368] = {
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[92] = {
 	#include <PikachuSpecial3/ThunderJoltBMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 

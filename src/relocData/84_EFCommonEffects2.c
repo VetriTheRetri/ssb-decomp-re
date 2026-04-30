@@ -355,13 +355,12 @@ Gfx dEFCommonEffects2_DL_0x1500[14] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data + 0x60),
 };
 
-u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[2348] = {
+u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[587] = {
 	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
@@ -495,14 +494,13 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data + 0x2C),
 };
 
-u8 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[320] = {
+u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[80] = {
 	#include <EFCommonEffects2/FireSparkMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
@@ -797,8 +795,7 @@ u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[6] = {
 	NULL,
 	NULL,
@@ -808,7 +805,7 @@ AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[6] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data + 0x9C),
 };
 
-u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[1200] = {
+u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[300] = {
 	#include <EFCommonEffects2/CatchSwirlMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
@@ -1017,8 +1014,7 @@ u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[5] = {
 	NULL,
 	NULL,
@@ -1027,7 +1023,7 @@ AObjEvent32 *dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[5] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data + 0x8C),
 };
 
-u8 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[1204] = {
+u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[301] = {
 	#include <EFCommonEffects2/ReflectBreakMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 
@@ -1566,8 +1562,7 @@ u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint[4] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x54),
@@ -1575,7 +1570,7 @@ AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint[4] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x5C),
 };
 
-u8 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[4576] = {
+u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[1144] = {
 	#include <EFCommonEffects2/DeadExplode3_MatAnimJoint_data.data.inc.c>
 };
 

@@ -393,15 +393,14 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects1_DamageSlash_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects1_DamageSlash_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_DamageSlash_MatAnimJoint[3] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_DamageSlash_MatAnimJoint_data + 0xDC),
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_DamageSlash_MatAnimJoint_data + 0xE0),
 };
 
-u8 dEFCommonEffects1_DamageSlash_MatAnimJoint_data[532] = {
+u32 dEFCommonEffects1_DamageSlash_MatAnimJoint_data[133] = {
 	#include <EFCommonEffects1/DamageSlash_MatAnimJoint_data.data.inc.c>
 };
 
@@ -500,13 +499,12 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects1_ImpactWave_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects1_ImpactWave_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_ImpactWave_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_ImpactWave_MatAnimJoint_data + 0x2C),
 };
 
-u8 dEFCommonEffects1_ImpactWave_MatAnimJoint_data[220] = {
+u32 dEFCommonEffects1_ImpactWave_MatAnimJoint_data[55] = {
 	#include <EFCommonEffects1/ImpactWave_MatAnimJoint_data.data.inc.c>
 };
 
@@ -521,14 +519,25 @@ Gfx dEFCommonEffects1_DL_0x7E80[24] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects1_FlyOrbs_AnimJoint_data[];
-
+extern u32 dEFCommonEffects1_FlyOrbs_AnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_FlyOrbs_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_FlyOrbs_AnimJoint_data,
 };
 
-u8 dEFCommonEffects1_FlyOrbs_AnimJoint_data[3964] = {
-	#include <EFCommonEffects1/FlyOrbs_AnimJoint_data.data.inc.c>
+u32 dEFCommonEffects1_FlyOrbs_AnimJoint_data[9] = {
+	aobjEvent32SetValBlock(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValBlock(0x380, 19),
+	    0x3F000000,  /* 0.5f */
+	    0x3F000000,  /* 0.5f */
+	    0x3F000000,  /* 0.5f */
+	aobjEvent32End(),
+};
+
+u8 dEFCommonEffects1_FlyOrbs_AnimJoint_data_post[3928] = {
+	#include <EFCommonEffects1/FlyOrbs_AnimJoint_data_post.data.inc.c>
 };
 
 /* MObjSub: CommonSpark @ 0x8EC0 */
@@ -627,13 +636,12 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_CommonSpark_MatAnimJoint_data + 0x6C),
 };
 
-u8 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[14516] = {
+u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[3629] = {
 	#include <EFCommonEffects1/CommonSpark_MatAnimJoint_data.data.inc.c>
 };
 

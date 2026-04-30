@@ -235,8 +235,7 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects3_MBallRays_MatAnimJoint_data[];
-
+extern u32 dEFCommonEffects3_MBallRays_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[4] = {
 	NULL,
 	NULL,
@@ -244,7 +243,7 @@ AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[4] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects3_MBallRays_MatAnimJoint_data + 0x98),
 };
 
-u8 dEFCommonEffects3_MBallRays_MatAnimJoint_data[8784] = {
+u32 dEFCommonEffects3_MBallRays_MatAnimJoint_data[2196] = {
 	#include <EFCommonEffects3/MBallRays_MatAnimJoint_data.data.inc.c>
 };
 
@@ -262,16 +261,27 @@ DObjDesc dEFCommonEffects3_RebirthHalo[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dEFCommonEffects3_RebirthHalo_AnimJoint_data[];
-
+extern u32 dEFCommonEffects3_RebirthHalo_AnimJoint_data[];
 AObjEvent32 *dEFCommonEffects3_RebirthHalo_AnimJoint[3] = {
 	NULL,
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects3_RebirthHalo_AnimJoint_data,
 };
 
-u8 dEFCommonEffects3_RebirthHalo_AnimJoint_data[300] = {
-	#include <EFCommonEffects3/RebirthHalo_AnimJoint_data.data.inc.c>
+u32 dEFCommonEffects3_RebirthHalo_AnimJoint_data[9] = {
+	aobjEvent32SetValBlock(0x002, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x002, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x002, 30),
+	    0x40C90FDB,  /* 6.2831854820251465f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dEFCommonEffects3_RebirthHalo_AnimJoint_data,
+	aobjEvent32End(),
+};
+
+u8 dEFCommonEffects3_RebirthHalo_AnimJoint_data_post[264] = {
+	#include <EFCommonEffects3/RebirthHalo_AnimJoint_data_post.data.inc.c>
 };
 
 /* MObjSub: ItemGetSwirl @ 0x2CA8 */

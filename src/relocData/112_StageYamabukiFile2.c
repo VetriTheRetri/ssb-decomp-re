@@ -1125,8 +1125,7 @@ u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[];
-
+extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9] = {
 	NULL,
 	NULL,
@@ -1139,7 +1138,7 @@ AObjEvent32 *dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9] = {
 	NULL,
 };
 
-u8 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[5876] = {
+u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[1469] = {
 	#include <StageYamabukiFile2/Layer1MatAnim_MatAnimJoint_data.data.inc.c>
 };
 

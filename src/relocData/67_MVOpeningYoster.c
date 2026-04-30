@@ -1773,7 +1773,7 @@ u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint_0xC8CC[] = {
 PAD(8);
 
 /* Raw data from file offset 0xC940 to 0xC9A0 (96 bytes) */
-u32 dMVOpeningYoster_Cam_AnimJoint[24] = {
+u32 dMVOpeningYoster_Cam_AnimJoint[21] = {
 	aobjEvent32SetValAfterBlock(0x062, 0),
 	    0x43BBABF2,  /* 375.34332275390625f */
 	    0x438922E8,  /* 274.272705078125f */
@@ -1795,8 +1795,9 @@ u32 dMVOpeningYoster_Cam_AnimJoint[24] = {
 	    0x44D4D49D,  /* 1702.6441650390625f */
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningYoster_Cam_AnimJoint_post[12] = {
+	#include <MVOpeningYoster/Cam_AnimJoint_post.data.inc.c>
 };
 

@@ -5,6 +5,57 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>
+extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1150[];
+extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1174[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x488[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4A0[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x13F0[];
+extern MObjSub *dSamusModel_gap_0x6FD4_sub_0x148C[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x1990[];
+extern MObjSub *dSamusModel_gap_0x6FD4_sub_0x1D2C[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x1FC0[];
+extern MObjSub *dSamusModel_gap_0x6FD4_sub_0x20DC[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x2370[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x488[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4A0[];
+extern MObjSub *dSamusModel_gap_0x6FD4_sub_0x5FC[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x9B0[];
+extern MObjSub *dSamusModel_gap_0x6FD4_sub_0xADC[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0xDB0[];
+extern MObjSub *dSamusModel_gap_0x6FD4_sub_0xE4C[];
+extern u32 dSamusModel_gap_0x3B24_sub_0x210[];
+extern u32 dSamusModel_gap_0x3B24_sub_0x240[];
+extern u32 dSamusModel_gap_0x3B24_sub_0x270[];
+extern u32 dSamusModel_gap_0x3B24_sub_0x60[];
+extern u8 dSamusModel_gap_0x3B24_sub_0x6F4[];
+extern u8 dSamusModel_gap_0x3B24_sub_0xB2C[];
+extern u8 dSamusModel_gap_0x3B24_sub_0xBA4[];
+extern u8 dSamusModel_gap_0x3B24_sub_0xC1C[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x13C0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1414[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x1960[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1C3C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1CB4[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x1F20[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x1F70[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1FEC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x2064[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x210[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x22D0[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x2320[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x240[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x270[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x50C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x584[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x60[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x950[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0x980[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x9EC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0xA64[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0xD50[];
+extern u32 dSamusModel_gap_0x6FD4_sub_0xD80[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0xDD4[];
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 u8 dSamusModel_gap_0x0000[32] = {
 	#include <SamusModel/gap_0x0000.data.inc.c>
@@ -281,8 +332,19 @@ u8 dSamusModel_gap_0x3B24[96] = {
 };
 
 /* gap sub-block @ 0x3B84 (was gap+0x60, 48 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x60[48] = {
-	#include <SamusModel/gap_0x3B24_sub_0x60.data.inc.c>
+u32 dSamusModel_gap_0x3B24_sub_0x60[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x3BB4 (was gap+0x90, 48 bytes) */
@@ -326,18 +388,51 @@ u8 dSamusModel_gap_0x3B24_sub_0x1E0[48] = {
 };
 
 /* gap sub-block @ 0x3D34 (was gap+0x210, 48 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x210[48] = {
-	#include <SamusModel/gap_0x3B24_sub_0x210.data.inc.c>
+u32 dSamusModel_gap_0x3B24_sub_0x210[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x3D64 (was gap+0x240, 48 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x240[48] = {
-	#include <SamusModel/gap_0x3B24_sub_0x240.data.inc.c>
+u32 dSamusModel_gap_0x3B24_sub_0x240[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x3D94 (was gap+0x270, 48 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x270[48] = {
-	#include <SamusModel/gap_0x3B24_sub_0x270.data.inc.c>
+u32 dSamusModel_gap_0x3B24_sub_0x270[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x3DC4 (was gap+0x2A0, 48 bytes) */
@@ -396,8 +491,10 @@ u8 dSamusModel_gap_0x3B24_sub_0x480[8] = {
 };
 
 /* gap sub-block @ 0x3FAC (was gap+0x488, 12 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x488[12] = {
-	#include <SamusModel/gap_0x3B24_sub_0x488.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x488[3] = {
+	(AObjEvent32 *)dSamusModel_gap_0x3B24_sub_0x210,
+	(AObjEvent32 *)dSamusModel_gap_0x3B24_sub_0x240,
+	(AObjEvent32 *)dSamusModel_gap_0x3B24_sub_0x270,
 };
 
 /* gap sub-block @ 0x3FB8 (was gap+0x494, 8 bytes) */
@@ -411,8 +508,8 @@ u8 dSamusModel_gap_0x3B24_sub_0x49C[4] = {
 };
 
 /* gap sub-block @ 0x3FC4 (was gap+0x4A0, 4 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x4A0[4] = {
-	#include <SamusModel/gap_0x3B24_sub_0x4A0.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4A0[1] = {
+	(AObjEvent32 *)dSamusModel_gap_0x3B24_sub_0x60,
 };
 
 /* gap sub-block @ 0x3FC8 (was gap+0x4A4, 12 bytes) */
@@ -676,8 +773,11 @@ u8 dSamusModel_gap_0x3B24_sub_0x1144[12] = {
 };
 
 /* gap sub-block @ 0x4C74 (was gap+0x1150, 16 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x1150[16] = {
-	#include <SamusModel/gap_0x3B24_sub_0x1150.data.inc.c>
+MObjSub *dSamusModel_gap_0x3B24_sub_0x1150[4] = {
+	(MObjSub *)dSamusModel_gap_0x3B24_sub_0xB2C,
+	(MObjSub *)dSamusModel_gap_0x3B24_sub_0xBA4,
+	(MObjSub *)dSamusModel_gap_0x3B24_sub_0xC1C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4C84 (was gap+0x1160, 12 bytes) */
@@ -691,8 +791,9 @@ u8 dSamusModel_gap_0x3B24_sub_0x116C[8] = {
 };
 
 /* gap sub-block @ 0x4C98 (was gap+0x1174, 8 bytes) */
-u8 dSamusModel_gap_0x3B24_sub_0x1174[8] = {
-	#include <SamusModel/gap_0x3B24_sub_0x1174.data.inc.c>
+MObjSub *dSamusModel_gap_0x3B24_sub_0x1174[2] = {
+	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x6F4,
+	NULL,
 };
 
 /* gap sub-block @ 0x4CA0 (was gap+0x117C, 16 bytes) */
@@ -966,8 +1067,19 @@ u8 dSamusModel_gap_0x6FD4[96] = {
 };
 
 /* gap sub-block @ 0x7034 (was gap+0x60, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x60[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x60.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x60[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7064 (was gap+0x90, 48 bytes) */
@@ -1011,18 +1123,51 @@ u8 dSamusModel_gap_0x6FD4_sub_0x1E0[48] = {
 };
 
 /* gap sub-block @ 0x71E4 (was gap+0x210, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x210[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x210.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x210[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7214 (was gap+0x240, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x240[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x240.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x240[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7244 (was gap+0x270, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x270[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x270.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x270[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7274 (was gap+0x2A0, 48 bytes) */
@@ -1081,8 +1226,10 @@ u8 dSamusModel_gap_0x6FD4_sub_0x480[8] = {
 };
 
 /* gap sub-block @ 0x745C (was gap+0x488, 12 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x488[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x488.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x488[3] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x210,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x240,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x270,
 };
 
 /* gap sub-block @ 0x7468 (was gap+0x494, 8 bytes) */
@@ -1096,8 +1243,8 @@ u8 dSamusModel_gap_0x6FD4_sub_0x49C[4] = {
 };
 
 /* gap sub-block @ 0x7474 (was gap+0x4A0, 4 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x4A0[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x4A0.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4A0[1] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x60,
 };
 
 /* gap sub-block @ 0x7478 (was gap+0x4A4, 12 bytes) */
@@ -1161,8 +1308,11 @@ u8 dSamusModel_gap_0x6FD4_sub_0x584[120] = {
 };
 
 /* gap sub-block @ 0x75D0 (was gap+0x5FC, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x5FC[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x5FC.data.inc.c>
+MObjSub *dSamusModel_gap_0x6FD4_sub_0x5FC[4] = {
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x50C,
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x584,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x75E0 (was gap+0x60C, 208 bytes) */
@@ -1186,18 +1336,43 @@ u8 dSamusModel_gap_0x6FD4_sub_0x79C_post[4] = {
 };
 
 /* gap sub-block @ 0x7924 (was gap+0x950, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x950[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x950.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x950[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7954 (was gap+0x980, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x980[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x980.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x980[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7984 (was gap+0x9B0, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x9B0[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x9B0.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x9B0[4] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x950,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x980,
+	NULL,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0xADC,
 };
 
 /* gap sub-block @ 0x7994 (was gap+0x9C0, 20 bytes) */
@@ -1221,8 +1396,11 @@ u8 dSamusModel_gap_0x6FD4_sub_0xA64[120] = {
 };
 
 /* gap sub-block @ 0x7AB0 (was gap+0xADC, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0xADC[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0xADC.data.inc.c>
+MObjSub *dSamusModel_gap_0x6FD4_sub_0xADC[4] = {
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x9EC,
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0xA64,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x7AC0 (was gap+0xAEC, 128 bytes) */
@@ -1246,18 +1424,43 @@ u8 dSamusModel_gap_0x6FD4_sub_0xBEC_post[4] = {
 };
 
 /* gap sub-block @ 0x7D24 (was gap+0xD50, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0xD50[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0xD50.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0xD50[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7D54 (was gap+0xD80, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0xD80[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0xD80.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0xD80[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7D84 (was gap+0xDB0, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0xDB0[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0xDB0.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0xDB0[4] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0xD50,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0xD80,
+	NULL,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0xE4C,
 };
 
 /* gap sub-block @ 0x7D94 (was gap+0xDC0, 20 bytes) */
@@ -1271,8 +1474,9 @@ u8 dSamusModel_gap_0x6FD4_sub_0xDD4[120] = {
 };
 
 /* gap sub-block @ 0x7E20 (was gap+0xE4C, 8 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0xE4C[8] = {
-	#include <SamusModel/gap_0x6FD4_sub_0xE4C.data.inc.c>
+MObjSub *dSamusModel_gap_0x6FD4_sub_0xE4C[2] = {
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0xDD4,
+	NULL,
 };
 
 /* gap sub-block @ 0x7E28 (was gap+0xE54, 512 bytes) */
@@ -1306,13 +1510,27 @@ u8 dSamusModel_gap_0x6FD4_sub_0x1184_post[12] = {
 };
 
 /* gap sub-block @ 0x8394 (was gap+0x13C0, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x13C0[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x13C0.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x13C0[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x83C4 (was gap+0x13F0, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x13F0[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x13F0.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x13F0[4] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x13C0,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x148C,
 };
 
 /* gap sub-block @ 0x83D4 (was gap+0x1400, 20 bytes) */
@@ -1326,8 +1544,9 @@ u8 dSamusModel_gap_0x6FD4_sub_0x1414[120] = {
 };
 
 /* gap sub-block @ 0x8460 (was gap+0x148C, 8 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x148C[8] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x148C.data.inc.c>
+MObjSub *dSamusModel_gap_0x6FD4_sub_0x148C[2] = {
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x1414,
+	NULL,
 };
 
 /* Vtx: gap_0x6FD4_sub_0x1494 @ 0x8468 (32 vertices) */
@@ -1351,13 +1570,26 @@ u8 dSamusModel_gap_0x6FD4_sub_0x1734_post[4] = {
 };
 
 /* gap sub-block @ 0x8934 (was gap+0x1960, 48 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1960[48] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1960.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x1960[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x8964 (was gap+0x1990, 12 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1990[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1990.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x1990[3] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x1960,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x8970 (was gap+0x199C, 64 bytes) */
@@ -1406,8 +1638,11 @@ u8 dSamusModel_gap_0x6FD4_sub_0x1CB4[120] = {
 };
 
 /* gap sub-block @ 0x8D00 (was gap+0x1D2C, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1D2C[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1D2C.data.inc.c>
+MObjSub *dSamusModel_gap_0x6FD4_sub_0x1D2C[4] = {
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x1C3C,
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x1CB4,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x8D10 (was gap+0x1D3C, 64 bytes) */
@@ -1431,18 +1666,59 @@ u8 dSamusModel_gap_0x6FD4_sub_0x1DBC_post[4] = {
 };
 
 /* gap sub-block @ 0x8EF4 (was gap+0x1F20, 80 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1F20[80] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1F20.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x1F20[20] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(41),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x8F44 (was gap+0x1F70, 80 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1F70[80] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1F70.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x1F70[20] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(41),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x8F94 (was gap+0x1FC0, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1FC0[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1FC0.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x1FC0[4] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x1F20,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x1F70,
+	NULL,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x20DC,
 };
 
 /* gap sub-block @ 0x8FA4 (was gap+0x1FD0, 12 bytes) */
@@ -1466,8 +1742,11 @@ u8 dSamusModel_gap_0x6FD4_sub_0x2064[120] = {
 };
 
 /* gap sub-block @ 0x90B0 (was gap+0x20DC, 16 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x20DC[16] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x20DC.data.inc.c>
+MObjSub *dSamusModel_gap_0x6FD4_sub_0x20DC[4] = {
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x1FEC,
+	(MObjSub *)dSamusModel_gap_0x6FD4_sub_0x2064,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x90C0 (was gap+0x20EC, 64 bytes) */
@@ -1491,18 +1770,58 @@ u8 dSamusModel_gap_0x6FD4_sub_0x216C_post[4] = {
 };
 
 /* gap sub-block @ 0x92A4 (was gap+0x22D0, 80 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x22D0[80] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x22D0.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x22D0[20] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(41),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x92F4 (was gap+0x2320, 80 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2320[80] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2320.data.inc.c>
+u32 dSamusModel_gap_0x6FD4_sub_0x2320[20] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(41),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9344 (was gap+0x2370, 12 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x2370[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x2370.data.inc.c>
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x2370[3] = {
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x22D0,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x2320,
+	NULL,
 };
 
 /* gap sub-block @ 0x9350 (was gap+0x237C, 240 bytes) */

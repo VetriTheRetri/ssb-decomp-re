@@ -252,14 +252,13 @@ u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[];
-
+extern u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[];
 AObjEvent32 *dSCExplainGraphics_StickTapForward_MatAnimJoint[2] = {
 	(AObjEvent32 *)((u8*)dSCExplainGraphics_StickTapForward_MatAnimJoint_data + 0x24),
 	NULL,
 };
 
-u8 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[1600] = {
+u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[400] = {
 	#include <SCExplainGraphics/StickTapForward_MatAnimJoint_data.data.inc.c>
 };
 
@@ -333,13 +332,12 @@ u8 dSCExplainGraphics_TapSparkDisplayList_post[24] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data + 0x20),
 };
 
-u8 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data[540] = {
+u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data[135] = {
 	#include <SCExplainGraphics/TapSparkMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 

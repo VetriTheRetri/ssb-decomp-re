@@ -589,13 +589,12 @@ PAD(12);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data + 0x3C),
 };
 
-u8 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[1816] = {
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[454] = {
 	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };

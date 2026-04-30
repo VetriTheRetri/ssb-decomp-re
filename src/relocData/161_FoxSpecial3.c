@@ -463,7 +463,7 @@ u32 dFoxSpecial3__2E74__AnimJoint[16] = {
 };
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */
-u32 dFoxSpecial3__2EB4__AnimJoint[51] = {
+u32 dFoxSpecial3__2EB4__AnimJoint[50] = {
 	aobjEvent32SetValBlock(0x380, 0),
 	    0x3F800000,
 	    0x3F800000,
@@ -514,6 +514,9 @@ u32 dFoxSpecial3__2EB4__AnimJoint[51] = {
 	    0x3F800000,
 	    0x3CEEEEEA,
 	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dFoxSpecial3__2EB4__AnimJoint_post[4] = {
+	#include <FoxSpecial3/_2EB4__AnimJoint_post.data.inc.c>
 };
 

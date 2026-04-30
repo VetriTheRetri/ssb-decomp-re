@@ -1234,8 +1234,7 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[];
-
+extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageZebesFile2_Layer1MatAnim_MatAnimJoint[28] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data + 0x5B38),
@@ -1267,7 +1266,7 @@ AObjEvent32 *dStageZebesFile2_Layer1MatAnim_MatAnimJoint[28] = {
 	(AObjEvent32 *)((u8*)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data + 0x5B64),
 };
 
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[31456] = {
+u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[7864] = {
 	#include <StageZebesFile2/Layer1MatAnim_MatAnimJoint_data.data.inc.c>
 };
 

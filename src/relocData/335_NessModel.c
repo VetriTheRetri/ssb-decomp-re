@@ -271,18 +271,49 @@ u8 dNessModel_gap_0x2C04_sub_0x60[40] = {
 };
 
 /* gap sub-block @ 0x2C8C (was gap+0x88, 56 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x88[56] = {
-	#include <NessModel/gap_0x2C04_sub_0x88.data.inc.c>
+u32 dNessModel_gap_0x2C04_sub_0x88[14] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(47),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2CC4 (was gap+0xC0, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0xC0[40] = {
-	#include <NessModel/gap_0x2C04_sub_0xC0.data.inc.c>
+u32 dNessModel_gap_0x2C04_sub_0xC0[10] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFF0000FF,  /* -1.7014635547491816e+38f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xFFCE00FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0x0000FFFF,  /* 9.183409485952689e-41f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0x00BD00FF,  /* 1.7357266104968742e-38f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2CEC (was gap+0xE8, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0xE8[40] = {
-	#include <NessModel/gap_0x2C04_sub_0xE8.data.inc.c>
+u32 dNessModel_gap_0x2C04_sub_0xE8[10] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0x8C42FFFF,  /* -1.5022252390726089e-31f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0x393939FF,  /* 0.0001766458008205518f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xCE4A84FF,  /* -849428416.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFF7300FF,  /* -3.230075749901835e+38f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2D14 (was gap+0x110, 40 bytes) */
@@ -321,8 +352,10 @@ u8 dNessModel_gap_0x2C04_sub_0x1E4[4] = {
 };
 
 /* gap sub-block @ 0x2DEC (was gap+0x1E8, 12 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x1E8[12] = {
-	#include <NessModel/gap_0x2C04_sub_0x1E8.data.inc.c>
+AObjEvent32 *dNessModel_gap_0x2C04_sub_0x1E8[3] = {
+	(AObjEvent32 *)dNessModel_gap_0x2C04_sub_0x88,
+	(AObjEvent32 *)dNessModel_gap_0x2C04_sub_0xC0,
+	(AObjEvent32 *)dNessModel_gap_0x2C04_sub_0xE8,
 };
 
 /* gap sub-block @ 0x2DF8 (was gap+0x1F4, 4 bytes) */
@@ -461,8 +494,11 @@ u8 dNessModel_gap_0x2C04_sub_0x89C[8] = {
 };
 
 /* gap sub-block @ 0x34A8 (was gap+0x8A4, 16 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x8A4[16] = {
-	#include <NessModel/gap_0x2C04_sub_0x8A4.data.inc.c>
+MObjSub *dNessModel_gap_0x2C04_sub_0x8A4[4] = {
+	(MObjSub *)dNessModel_gap_0x2C04_sub_0x4CC,
+	(MObjSub *)dNessModel_gap_0x2C04_sub_0x544,
+	(MObjSub *)dNessModel_gap_0x2C04_sub_0x5BC,
+	NULL,
 };
 
 /* gap sub-block @ 0x34B8 (was gap+0x8B4, 8 bytes) */
@@ -737,18 +773,49 @@ u8 dNessModel_gap_0x553C_sub_0x68[40] = {
 };
 
 /* gap sub-block @ 0x55CC (was gap+0x90, 56 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x90[56] = {
-	#include <NessModel/gap_0x553C_sub_0x90.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x90[14] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(47),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5604 (was gap+0xC8, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xC8[40] = {
-	#include <NessModel/gap_0x553C_sub_0xC8.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0xC8[10] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFF0000FF,  /* -1.7014635547491816e+38f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xFFCE00FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0x0000FFFF,  /* 9.183409485952689e-41f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0x00BD00FF,  /* 1.7357266104968742e-38f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x562C (was gap+0xF0, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xF0[40] = {
-	#include <NessModel/gap_0x553C_sub_0xF0.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0xF0[10] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0x8C42FFFF,  /* -1.5022252390726089e-31f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0x393939FF,  /* 0.0001766458008205518f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xCE4A84FF,  /* -849428416.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFF7300FF,  /* -3.230075749901835e+38f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5654 (was gap+0x118, 40 bytes) */
@@ -787,8 +854,10 @@ u8 dNessModel_gap_0x553C_sub_0x1EC[4] = {
 };
 
 /* gap sub-block @ 0x572C (was gap+0x1F0, 12 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1F0[12] = {
-	#include <NessModel/gap_0x553C_sub_0x1F0.data.inc.c>
+AObjEvent32 *dNessModel_gap_0x553C_sub_0x1F0[3] = {
+	(AObjEvent32 *)dNessModel_gap_0x553C_sub_0x90,
+	(AObjEvent32 *)dNessModel_gap_0x553C_sub_0xC8,
+	(AObjEvent32 *)dNessModel_gap_0x553C_sub_0xF0,
 };
 
 /* gap sub-block @ 0x5738 (was gap+0x1FC, 4 bytes) */
@@ -1289,15 +1358,26 @@ u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u8 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data[];
-
+extern u32 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data[];
+extern AObjEvent32 *dNessModel_gap_0x2C04_sub_0x1E8[];
+extern MObjSub *dNessModel_gap_0x2C04_sub_0x8A4[];
+extern AObjEvent32 *dNessModel_gap_0x553C_sub_0x1F0[];
+extern u8 dNessModel_gap_0x2C04_sub_0x4CC[];
+extern u8 dNessModel_gap_0x2C04_sub_0x544[];
+extern u8 dNessModel_gap_0x2C04_sub_0x5BC[];
+extern u32 dNessModel_gap_0x2C04_sub_0x88[];
+extern u32 dNessModel_gap_0x2C04_sub_0xC0[];
+extern u32 dNessModel_gap_0x2C04_sub_0xE8[];
+extern u32 dNessModel_gap_0x553C_sub_0x90[];
+extern u32 dNessModel_gap_0x553C_sub_0xC8[];
+extern u32 dNessModel_gap_0x553C_sub_0xF0[];
 AObjEvent32 *dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint[3] = {
 	NULL,
 	NULL,
 	(AObjEvent32 *)((u8*)dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data + 0xA0),
 };
 
-u8 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data[3940] = {
+u32 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data[985] = {
 	#include <NessModel/PKThunderWaveMatAnimJoint_MatAnimJoint_data.data.inc.c>
 };
 

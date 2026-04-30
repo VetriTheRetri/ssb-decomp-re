@@ -4171,7 +4171,7 @@ u32 dMVOpeningSector_Arwing2_AnimJoint_0xF7B0[] = {
 PAD(4);
 
 /* Raw data from file offset 0xF9A0 to 0xFA90 (240 bytes) */
-u32 dMVOpeningSector_Cam_AnimJoint[60] = {
+u32 dMVOpeningSector_Cam_AnimJoint[58] = {
 	aobjEvent32SetVal0Rate(0x034, 0),
 	    0x469FEC01,  /* 20470.001953125f */
 	    0x00000000,  /* 0.0f */
@@ -4230,8 +4230,10 @@ u32 dMVOpeningSector_Cam_AnimJoint[60] = {
 	    0x44940BB9,  /* 1184.3663330078125f */
 	    0x454CB0E0,  /* 3275.0546875f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningSector_Cam_AnimJoint_post[8] = {
+	#include <MVOpeningSector/Cam_AnimJoint_post.data.inc.c>
 };
 
 /* Sprite: Cockpit */

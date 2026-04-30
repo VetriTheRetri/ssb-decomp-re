@@ -9,7 +9,7 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* CamAnimJoint MarioCamAnimJoint @ 0x0000 (48 bytes) */
-u32 dMVOpeningCommon_MarioCamAnimJoint[12] = {
+u32 dMVOpeningCommon_MarioCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0x43E0BD64,  /* 449.4796142578125f */
 	    0x438342D8,  /* 262.522216796875f */
@@ -20,12 +20,14 @@ u32 dMVOpeningCommon_MarioCamAnimJoint[12] = {
 	    0x42262863,  /* 41.5394401550293f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_MarioCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/MarioCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint DonkeyCamAnimJoint @ 0x0030 (48 bytes) */
-u32 dMVOpeningCommon_DonkeyCamAnimJoint[12] = {
+u32 dMVOpeningCommon_DonkeyCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0xC38F6F05,  /* -286.8673400878906f */
 	    0x438C0EC1,  /* 280.1152648925781f */
@@ -36,12 +38,14 @@ u32 dMVOpeningCommon_DonkeyCamAnimJoint[12] = {
 	    0x428E17D4,  /* 71.04653930664062f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_DonkeyCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/DonkeyCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint SamusCamAnimJoint @ 0x0060 (48 bytes) */
-u32 dMVOpeningCommon_SamusCamAnimJoint[12] = {
+u32 dMVOpeningCommon_SamusCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0xC28799D0,  /* -67.8004150390625f */
 	    0x4441B511,  /* 774.8291625976562f */
@@ -52,12 +56,14 @@ u32 dMVOpeningCommon_SamusCamAnimJoint[12] = {
 	    0x4093F316,  /* 4.6234235763549805f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_SamusCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/SamusCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint FoxCamAnimJoint @ 0x0090 (48 bytes) */
-u32 dMVOpeningCommon_FoxCamAnimJoint[12] = {
+u32 dMVOpeningCommon_FoxCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0xC3811EC5,  /* -258.2403869628906f */
 	    0x438F11EA,  /* 286.13995361328125f */
@@ -68,12 +74,14 @@ u32 dMVOpeningCommon_FoxCamAnimJoint[12] = {
 	    0x4295329F,  /* 74.59886932373047f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_FoxCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/FoxCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint LinkCamAnimJoint @ 0x00C0 (48 bytes) */
-u32 dMVOpeningCommon_LinkCamAnimJoint[12] = {
+u32 dMVOpeningCommon_LinkCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0x423C3D48,  /* 47.059844970703125f */
 	    0x43586FB6,  /* 216.43637084960938f */
@@ -84,12 +92,14 @@ u32 dMVOpeningCommon_LinkCamAnimJoint[12] = {
 	    0x418A1580,  /* 17.260498046875f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_LinkCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/LinkCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint YoshiCamAnimJoint @ 0x00F0 (48 bytes) */
-u32 dMVOpeningCommon_YoshiCamAnimJoint[12] = {
+u32 dMVOpeningCommon_YoshiCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0xC1200D56,  /* -10.003255844116211f */
 	    0x43802D80,  /* 256.35546875f */
@@ -100,12 +110,14 @@ u32 dMVOpeningCommon_YoshiCamAnimJoint[12] = {
 	    0x416E9078,  /* 14.910270690917969f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_YoshiCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/YoshiCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint PikachuCamAnimJoint @ 0x0120 (48 bytes) */
-u32 dMVOpeningCommon_PikachuCamAnimJoint[12] = {
+u32 dMVOpeningCommon_PikachuCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0x437D518E,  /* 253.31857299804688f */
 	    0x4424FFA4,  /* 659.994384765625f */
@@ -116,12 +128,14 @@ u32 dMVOpeningCommon_PikachuCamAnimJoint[12] = {
 	    0x418A1580,  /* 17.260498046875f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_PikachuCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/PikachuCamAnimJoint_post.data.inc.c>
 };
 
 /* CamAnimJoint KirbyCamAnimJoint @ 0x0150 (48 bytes) */
-u32 dMVOpeningCommon_KirbyCamAnimJoint[12] = {
+u32 dMVOpeningCommon_KirbyCamAnimJoint[10] = {
 	aobjEvent32SetValAfter(0x277, 0),
 	    0x41989603,  /* 19.0732479095459f */
 	    0x43E524A6,  /* 458.28631591796875f */
@@ -132,6 +146,8 @@ u32 dMVOpeningCommon_KirbyCamAnimJoint[12] = {
 	    0x41F7FAA0,  /* 30.99737548828125f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+};
+
+u8 dMVOpeningCommon_KirbyCamAnimJoint_post[8] = {
+	#include <MVOpeningCommon/KirbyCamAnimJoint_post.data.inc.c>
 };

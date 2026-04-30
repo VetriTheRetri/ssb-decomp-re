@@ -479,7 +479,11 @@ u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint[184] = {
 	aobjEvent32EndRaw(0x000, 1),
 	aobjEvent32End(),
 	    0x456A6000,
+#if defined(REGION_JP)
+	    0x45C03000,
+#else
 	    0x45B6D000,
+#endif
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),
@@ -490,7 +494,11 @@ u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint[184] = {
 	aobjEvent32EndRaw(0x000, 1),
 	aobjEvent32End(),
 	    0x44160000,
+#if defined(REGION_JP)
+	    0x458CA000,
+#else
 	    0x45834000,
+#endif
 	aobjEvent32End(),
 	aobjEvent32End(),
 	aobjEvent32End(),

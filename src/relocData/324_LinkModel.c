@@ -1551,7 +1551,12 @@ u8 dLinkModel_Tex_0xB1F8[128] = {
 	#include <LinkModel/Tex_0xB1F8.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xB280_palette with extra texture data. */
+u8 dLinkModel_Lut_0xB280_palette_jp_pad[8] = { 0x00, 0x00, 0x00, 0x0D, 0xD3, 0x36, 0x77, 0x76 };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xB280 @ 0xB280 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB280_palette[16] = {
@@ -1576,7 +1581,12 @@ u8 dLinkModel_Tex_0xB430[128] = {
 	#include <LinkModel/Tex_0xB430.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xB4B8_palette with extra texture data. */
+u8 dLinkModel_Lut_0xB4B8_palette_jp_pad[8] = { 0x66, 0x69, 0x91, 0x11, 0x11, 0x16, 0x66, 0x66 };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xB4B8 @ 0xB4B8 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB4B8_palette[16] = {
@@ -1595,7 +1605,12 @@ u8 dLinkModel_Tex_0xB4E0[256] = {
 	#include <LinkModel/Tex_0xB4E0.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xB5E8_palette with extra texture data. */
+u8 dLinkModel_Lut_0xB5E8_palette_jp_pad[8] = { 0xDD, 0x25, 0x77, 0xA5, 0xAA, 0xA5, 0x2D, 0xDD };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xB5E8 @ 0xB5E8 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB5E8_palette[16] = {
@@ -1636,10 +1651,13 @@ u8 dLinkModel_Tex_0xC8F0[128] = {
 	#include <LinkModel/Tex_0xC8F0.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xC978 with extra texture data. */
+u8 dLinkModel_Tex_0xC978_jp_pad[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xC978 (136 bytes) */
-/* @tex fmt=CI4 dim=192x16 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xC978[128] = {
 	#include <LinkModel/Tex_0xC978.tex.inc.c>
 };
@@ -1669,42 +1687,57 @@ u8 dLinkModel_Tex_0xCA70[128] = {
 	#include <LinkModel/Tex_0xCA70.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xCAF8 with extra texture data. */
+u8 dLinkModel_Tex_0xCAF8_jp_pad[8] = { 0xEE, 0xEE, 0xEE, 0xDE, 0xEE, 0xEE, 0xEE, 0xEE };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xCAF8 (136 bytes) */
-/* @tex fmt=CI4 dim=16x28 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCAF8[128] = {
 	#include <LinkModel/Tex_0xCAF8.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xCB80 with extra texture data. */
+u8 dLinkModel_Tex_0xCB80_jp_pad[8] = { 0xBA, 0x86, 0x44, 0x43, 0x34, 0x8C, 0xDD, 0xDD };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xCB80 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCB80[256] = {
 	#include <LinkModel/Tex_0xCB80.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xCC88 with extra texture data. */
+u8 dLinkModel_Tex_0xCC88_jp_pad[8] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xEF, 0xFF, 0xFF };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xCC88 (136 bytes) */
-/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCC88[128] = {
 	#include <LinkModel/Tex_0xCC88.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xCD10 with extra texture data. */
+u8 dLinkModel_Tex_0xCD10_jp_pad[8] = { 0xFF, 0xD8, 0xAC, 0xFF, 0xFF, 0xFC, 0xBA, 0x8D };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xCD10 (520 bytes) */
-/* @tex fmt=CI4 dim=64x57 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCD10[512] = {
 	#include <LinkModel/Tex_0xCD10.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xCF18 with extra texture data. */
+u8 dLinkModel_Tex_0xCF18_jp_pad[8] = { 0xBB, 0x66, 0xBB, 0xBB, 0x6B, 0xBB, 0x69, 0x96 };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xCF18 (216 bytes) */
-/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xCF18[216] = {
 	#include <LinkModel/Tex_0xCF18.tex.inc.c>
 };
@@ -1727,15 +1760,23 @@ u8 dLinkModel_Tex_0xD660[256] = {
 	#include <LinkModel/Tex_0xD660.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Tex_0xD768 with extra texture data. */
+u8 dLinkModel_Tex_0xD768_jp_pad[8] = { 0xAA, 0xAB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBA, 0x99 };
+#else
 PAD(8);
+#endif
 
-/* Texture data @ 0xD768 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xD768[256] = {
 	#include <LinkModel/Tex_0xD768.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xD870_palette with extra texture data. */
+u8 dLinkModel_Lut_0xD870_palette_jp_pad[8] = { 0xBB, 0xBB, 0xBB, 0xBB, 0x22, 0xC5, 0xEE, 0xD9 };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xD870 @ 0xD870 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD870_palette[16] = {
@@ -1754,7 +1795,12 @@ u8 dLinkModel_Tex_0xD898[128] = {
 	#include <LinkModel/Tex_0xD898.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xD920_palette with extra texture data. */
+u8 dLinkModel_Lut_0xD920_palette_jp_pad[8] = { 0xCC, 0xC3, 0xE7, 0x7F, 0xFF, 0x7E, 0xDD, 0x3C };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xD920 @ 0xD920 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD920_palette[16] = {
@@ -1773,7 +1819,12 @@ u8 dLinkModel_Tex_0xD948[128] = {
 	#include <LinkModel/Tex_0xD948.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xD9D0_palette with extra texture data. */
+u8 dLinkModel_Lut_0xD9D0_palette_jp_pad[8] = { 0x00, 0x00, 0x9C, 0x7D, 0xDD, 0x77, 0xF5, 0xCC };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xD9D0 @ 0xD9D0 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD9D0_palette[16] = {
@@ -1809,7 +1860,12 @@ u8 dLinkModel_Tex_0xDC28[256] = {
 	#include <LinkModel/Tex_0xDC28.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xDD30_palette with extra texture data. */
+u8 dLinkModel_Lut_0xDD30_palette_jp_pad[8] = { 0x44, 0x44, 0x44, 0x32, 0xA7, 0x57, 0xB7, 0x87 };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xDD30 @ 0xDD30 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDD30_palette[16] = {
@@ -1839,7 +1895,12 @@ u8 dLinkModel_Tex_0xDD80[256] = {
 	#include <LinkModel/Tex_0xDD80.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap before dLinkModel_Lut_0xDE88_palette with extra texture data. */
+u8 dLinkModel_Lut_0xDE88_palette_jp_pad[8] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0xDE88 @ 0xDE88 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDE88_palette[16] = {

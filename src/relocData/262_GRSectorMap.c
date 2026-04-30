@@ -13,10 +13,19 @@ extern u8 dStageSectorFile2_Tex_0x1C00[];
 /* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
 u32 dGRSectorMap_Arwing0_AnimJoint[5] = {
 	    0x3C649600,
+#if defined(REGION_JP)
+	    0x0A07060F,
+#else
 	aobjEvent32SetValBlock(0x006, 2068),
+#endif
 	    0x0508050F,  /* 6.39561838540703e-36f */
+#if defined(REGION_JP)
+	    0x0A07140A,
+	    0x0A050512,
+#else
 	    0x0B07150C,  /* 2.601588815813326e-32f */
 	    0x0A0A0412,
+#endif
 };
 
 /* MPGroundData (typed via tools/typeStageMap.py) */

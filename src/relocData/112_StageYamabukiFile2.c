@@ -226,7 +226,12 @@ u8 dStageYamabukiFile2_Tex_0x1850[64] = {
 	#include <StageYamabukiFile2/Tex_0x1850.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap between Tex_0x1850 and Lut_0x1898 with extra texture data. */
+u8 dStageYamabukiFile2_Tex_0x1850_jp_pad[8] = { 0x00, 0x00, 0x33, 0x68, 0x81, 0x1A, 0x43, 0x59 };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0x1898 @ 0x1898 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1898_palette[16] = {
@@ -262,7 +267,12 @@ u8 dStageYamabukiFile2_Tex_0x1AF0[128] = {
 	#include <StageYamabukiFile2/Tex_0x1AF0.tex.inc.c>
 };
 
+#if defined(REGION_JP)
+/* JP fills the gap between Tex_0x1AF0 and Lut_0x1B78 with extra texture data. */
+u8 dStageYamabukiFile2_Tex_0x1AF0_jp_pad[8] = { 0x01, 0x77, 0x74, 0x4C, 0xB9, 0x9B, 0x9C, 0xDC };
+#else
 PAD(8);
+#endif
 
 /* Palette: Lut_0x1B78 @ 0x1B78 (16 colors RGBA5551) */
 u16 dStageYamabukiFile2_Lut_0x1B78_palette[16] = {

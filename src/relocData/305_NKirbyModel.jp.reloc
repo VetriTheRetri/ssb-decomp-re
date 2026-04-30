@@ -3,7 +3,7 @@
 # Labels resolved via src/relocData/305_NKirbyModel.reloc .o symbol table
 
 intern dNKirbyModel_Joint_0x1920_DisplayList+0xB4 dNKirbyModel_gap_0x0000
-intern dNKirbyModel_Joint_0x1920_DisplayList+0xFC dNKirbyModel_Lut_0x0008_palette+0x18
+intern dNKirbyModel_Joint_0x1920_DisplayList+0xFC dNKirbyModel_gap_0x0000+0x20
 intern dNKirbyModel_Joint_0x1920_DisplayList+0x104 dNKirbyModel_Vtx_0x0200_Vtx
 intern dNKirbyModel_Joint_0x1920_DisplayList+0x144 dNKirbyModel_Vtx_0x03C0_Vtx
 intern dNKirbyModel_Joint_0x1920_DisplayList+0x184 dNKirbyModel_Vtx_0x05A0_Vtx

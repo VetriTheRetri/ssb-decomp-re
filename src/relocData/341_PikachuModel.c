@@ -5,10 +5,26 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dPikachuModel_gap_0x2B78_sub_0x864[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x83C[];
 
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E8[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13D8[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13D0[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13F0[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1398[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13A0[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C0[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1388[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1390[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13F8[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1380[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B8[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1400[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E0[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B0[];
+extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C8[];
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dPikachuModel_gap_0x0000[8] = {
@@ -16,8 +32,8 @@ u8 dPikachuModel_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u16 dPikachuModel_gap_0x0000_sub_0x8[8] = {
-	#include <PikachuModel/gap_0x0000_sub_0x8.palette.inc.c>
+u8 dPikachuModel_gap_0x0000_sub_0x8[16] = {
+	#include <PikachuModel/gap_0x0000_sub_0x8.data.inc.c>
 };
 
 /* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
@@ -441,8 +457,34 @@ u8 dPikachuModel_gap_0x2B78_sub_0x8A8[16] = {
 };
 
 /* gap sub-block @ 0x3430 (was gap+0x8B8, 108 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x8B8[108] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x8B8.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x8B8[27] = {
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1380,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1388,
+	NULL,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1390,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1398,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13A0,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13B0,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13B8,
+	NULL,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13C0,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13C8,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13D0,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13D8,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13E0,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13E8,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13F0,
+	NULL,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13F8,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1400,
+	NULL,
 };
 
 /* gap sub-block @ 0x349C (was gap+0x924, 20 bytes) */
@@ -601,83 +643,103 @@ u8 dPikachuModel_gap_0x2B78_sub_0x1308[120] = {
 };
 
 /* gap sub-block @ 0x3EF8 (was gap+0x1380, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x1380[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x1380.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x1380[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xED0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F00 (was gap+0x1388, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x1388[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x1388.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x1388[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xA20,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F08 (was gap+0x1390, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x1390[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x1390.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x1390[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xB10,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F10 (was gap+0x1398, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x1398[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x1398.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x1398[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xA98,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F18 (was gap+0x13A0, 16 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13A0[16] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13A0.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13A0[4] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xB88,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xC00,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xC78,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F28 (was gap+0x13B0, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13B0[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13B0.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B0[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xCF0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F30 (was gap+0x13B8, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13B8[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13B8.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B8[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xD68,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F38 (was gap+0x13C0, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13C0[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13C0.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C0[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xE58,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F40 (was gap+0x13C8, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13C8[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13C8.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C8[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xDE0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F48 (was gap+0x13D0, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13D0[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13D0.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13D0[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1038,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F50 (was gap+0x13D8, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13D8[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13D8.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13D8[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xFC0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F58 (was gap+0x13E0, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13E0[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13E0.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E0[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0xF48,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F60 (was gap+0x13E8, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13E8[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13E8.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E8[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x11A0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F68 (was gap+0x13F0, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13F0[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13F0.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13F0[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1128,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F70 (was gap+0x13F8, 8 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x13F8[8] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x13F8.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x13F8[2] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x10B0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3F78 (was gap+0x1400, 16 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x1400[16] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x1400.data.inc.c>
+MObjSub *dPikachuModel_gap_0x2B78_sub_0x1400[4] = {
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1218,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1290,
+	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1308,
+	NULL,
 };
 
 /* Vtx: Vtx_0x3F88 @ 0x3F88 (23 vertices) */
@@ -1101,8 +1163,11 @@ u8 dPikachuModel_gap_0x59B8_sub_0x920[120] = {
 };
 
 /* gap sub-block @ 0x6350 (was gap+0x998, 16 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x998[16] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x998.data.inc.c>
+MObjSub *dPikachuModel_gap_0x59B8_sub_0x998[4] = {
+	(MObjSub *)dPikachuModel_gap_0x59B8_sub_0x8A8,
+	(MObjSub *)dPikachuModel_gap_0x59B8_sub_0x920,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x6360 (was gap+0x9A8, 64 bytes) */

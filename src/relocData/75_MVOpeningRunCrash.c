@@ -6,12 +6,21 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dMVOpeningRunCrash_gap_0x2B20[];
 
 extern void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
 
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3714[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x37F4[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x38D4[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x39B4[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A94[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A98[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A9C[];
+extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3AA0[];
+
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x2AA8 (10920 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 280 bytes) */
 u8 dMVOpeningRunCrash_gap_0x0000[280] = {
@@ -230,18 +239,21 @@ void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[2] = {
 };
 
 /* gap sub-block @ 0x2E48 (was gap+0x328, 8 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x328[8] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x328.data.inc.c>
+MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x328[2] = {
+	(MObjSub *)dMVOpeningRunCrash_gap_0x2B20_sub_0x1B8,
+	NULL,
 };
 
 /* gap sub-block @ 0x2E50 (was gap+0x330, 8 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x330[8] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x330.data.inc.c>
+MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x330[2] = {
+	(MObjSub *)dMVOpeningRunCrash_gap_0x2B20_sub_0x230,
+	NULL,
 };
 
 /* gap sub-block @ 0x2E58 (was gap+0x338, 8 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x338[8] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x338.data.inc.c>
+MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x338[2] = {
+	(MObjSub *)dMVOpeningRunCrash_gap_0x2B20_sub_0x2A8,
+	NULL,
 };
 
 /* Vtx: gap_0x2B20_sub_0x340 @ 0x2E60 (4 vertices) */
@@ -303,15 +315,6 @@ DObjDesc dMVOpeningRunCrash_DObjDesc_0x35F8[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3714[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x37F4[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x38D4[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x39B4[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A94[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A98[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A9C[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3AA0[];
-
 AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3700[5] = {
 	NULL,
 	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x3A94,

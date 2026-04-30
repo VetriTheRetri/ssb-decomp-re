@@ -6,10 +6,24 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern MObjSub *dPikachuSpecial3_gap_0x2118_sub_0x10[];
 
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0[];
+extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[];
+
+extern u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
+extern u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[];
+
+extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[];
+extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[];
+
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x1A20 (6688 bytes) */
 PAD(8);
 
@@ -130,33 +144,39 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x12D8[120] = {
 };
 
 /* gap sub-block @ 0x1350 (was gap+0x1350, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1350[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1350.data.inc.c>
+MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1350[2] = {
+	(MObjSub *)dPikachuSpecial3_gap_0x0000_sub_0x1080,
+	NULL,
 };
 
 /* gap sub-block @ 0x1358 (was gap+0x1358, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1358[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1358.data.inc.c>
+MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1358[2] = {
+	(MObjSub *)dPikachuSpecial3_gap_0x0000_sub_0x10F8,
+	NULL,
 };
 
 /* gap sub-block @ 0x1360 (was gap+0x1360, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1360[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1360.data.inc.c>
+MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1360[2] = {
+	(MObjSub *)dPikachuSpecial3_gap_0x0000_sub_0x1170,
+	NULL,
 };
 
 /* gap sub-block @ 0x1368 (was gap+0x1368, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1368[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1368.data.inc.c>
+MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1368[2] = {
+	(MObjSub *)dPikachuSpecial3_gap_0x0000_sub_0x11E8,
+	NULL,
 };
 
 /* gap sub-block @ 0x1370 (was gap+0x1370, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1370[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1370.data.inc.c>
+MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1370[2] = {
+	(MObjSub *)dPikachuSpecial3_gap_0x0000_sub_0x1260,
+	NULL,
 };
 
 /* gap sub-block @ 0x1378 (was gap+0x1378, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1378[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1378.data.inc.c>
+MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1378[2] = {
+	(MObjSub *)dPikachuSpecial3_gap_0x0000_sub_0x12D8,
+	NULL,
 };
 
 /* Vtx: gap_0x0000_sub_0x1380 @ 0x1380 (3 vertices) */
@@ -258,14 +278,6 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1888[408] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[];
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64[];
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78[];
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C[];
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0[];
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0[];
-extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[];
-
 AObjEvent32 *dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[8] = {
 	NULL,
 	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40,
@@ -345,7 +357,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
 	NULL,
 	NULL,
@@ -459,8 +470,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[];
-
 AObjEvent32 *dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8,
@@ -499,9 +508,6 @@ PAD(8);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[];
-extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[];
-
 AObjEvent32 *dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388,

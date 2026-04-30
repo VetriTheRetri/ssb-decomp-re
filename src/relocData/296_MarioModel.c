@@ -5,17 +5,29 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dMarioModel_gap_0x26D0_sub_0x2F4[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x314[];
 
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA60[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA68[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA98[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA90[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xAA8[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA78[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA58[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA88[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xAA0[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xAB0[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA50[];
+extern MObjSub *dMarioModel_gap_0x26D0_sub_0xA80[];
+
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u16 dMarioModel_gap_0x0000_sub_0x8[8] = {
-	#include <MarioModel/gap_0x0000_sub_0x8.palette.inc.c>
+u8 dMarioModel_gap_0x0000_sub_0x8[16] = {
+	#include <MarioModel/gap_0x0000_sub_0x8.data.inc.c>
 };
 
 /* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
@@ -366,8 +378,32 @@ u8 dMarioModel_gap_0x26D0_sub_0x310[16] = {
 };
 
 /* gap sub-block @ 0x29F0 (was gap+0x320, 100 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0x320[100] = {
-	#include <MarioModel/gap_0x26D0_sub_0x320.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0x320[25] = {
+	NULL,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA50,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA58,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA60,
+	NULL,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA68,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA78,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA80,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA88,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA90,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xA98,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xAA0,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xAA8,
+	NULL,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0xAB0,
+	NULL,
 };
 
 /* gap sub-block @ 0x2A54 (was gap+0x384, 20 bytes) */
@@ -456,63 +492,77 @@ u8 dMarioModel_gap_0x26D0_sub_0x9D8[120] = {
 };
 
 /* gap sub-block @ 0x3120 (was gap+0xA50, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA50[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA50.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA50[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x3C0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3128 (was gap+0xA58, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA58[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA58.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA58[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x4B0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3130 (was gap+0xA60, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA60[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA60.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA60[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x438,
+	NULL,
 };
 
 /* gap sub-block @ 0x3138 (was gap+0xA68, 16 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA68[16] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA68.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA68[4] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x528,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x5A0,
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x618,
+	NULL,
 };
 
 /* gap sub-block @ 0x3148 (was gap+0xA78, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA78[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA78.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA78[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x708,
+	NULL,
 };
 
 /* gap sub-block @ 0x3150 (was gap+0xA80, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA80[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA80.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA80[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x690,
+	NULL,
 };
 
 /* gap sub-block @ 0x3158 (was gap+0xA88, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA88[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA88.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA88[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x870,
+	NULL,
 };
 
 /* gap sub-block @ 0x3160 (was gap+0xA90, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA90[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA90.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA90[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x7F8,
+	NULL,
 };
 
 /* gap sub-block @ 0x3168 (was gap+0xA98, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xA98[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xA98.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xA98[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x780,
+	NULL,
 };
 
 /* gap sub-block @ 0x3170 (was gap+0xAA0, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xAA0[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xAA0.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xAA0[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x9D8,
+	NULL,
 };
 
 /* gap sub-block @ 0x3178 (was gap+0xAA8, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xAA8[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xAA8.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xAA8[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x960,
+	NULL,
 };
 
 /* gap sub-block @ 0x3180 (was gap+0xAB0, 8 bytes) */
-u8 dMarioModel_gap_0x26D0_sub_0xAB0[8] = {
-	#include <MarioModel/gap_0x26D0_sub_0xAB0.data.inc.c>
+MObjSub *dMarioModel_gap_0x26D0_sub_0xAB0[2] = {
+	(MObjSub *)dMarioModel_gap_0x26D0_sub_0x8E8,
+	NULL,
 };
 
 /* Vtx: Vtx_0x3188 @ 0x3188 (23 vertices) */

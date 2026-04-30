@@ -8,6 +8,11 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[];
+extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
+
+extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
+
 
 /* Shared vertex / DL pool the item DObjDesc trees reference via the
  * intern chain. Not yet broken down into typed Vtx / Gfx / Tex blocks. */
@@ -1703,8 +1708,9 @@ u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x36C[120] = {
 };
 
 /* gap sub-block @ 0x7AB0 (was gap+0x3E4, 8 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3E4[8] = {
-	#include <ITCommonObject/gap_0x76CC_sub_0x3E4.data.inc.c>
+MObjSub *dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3E4[2] = {
+	(MObjSub *)dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x36C,
+	NULL,
 };
 
 /* gap sub-block @ 0x7AB8 (was gap+0x3EC, 64 bytes) */
@@ -3214,9 +3220,6 @@ PAD(8);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[];
-extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
-
 AObjEvent32 *dITCommonObject_KamexHydro_Weapon_animjoints[3] = {
 	NULL,
 	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C,
@@ -4699,8 +4702,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
-
 AObjEvent32 *dITCommonObject_DogasSmog_Weapon_animjoints[2] = {
 	NULL,
 	(AObjEvent32 *)dITCommonObject_DogasSmog_Weapon_animjoints_0x13198,

@@ -6,6 +6,12 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[];
+
 
 /* Raw data from file offset 0x0000 to 0x3490 (13456 bytes) */
 PAD(8);
@@ -357,8 +363,11 @@ u8 dGRBonus3File2_gap_0x3718_sub_0x120[8] = {
 };
 
 /* gap sub-block @ 0x3840 (was gap+0x128, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x128[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x128.data.inc.c>
+MObjSub *dGRBonus3File2_gap_0x3718_sub_0x128[4] = {
+	(MObjSub *)dGRBonus3File2_gap_0x3718_sub_0x30,
+	(MObjSub *)dGRBonus3File2_gap_0x3718_sub_0xA8,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x3850 (was gap+0x138, 64 bytes) */
@@ -710,12 +719,6 @@ u8 dGRBonus3File2_MPGeometryData_0x65A8[40] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[];
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[];
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[];
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[];
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[];
-
 AObjEvent32 *dGRBonus3File2_Layer1MatAnim_MatAnimJoint[12] = {
 	NULL,
 	NULL,

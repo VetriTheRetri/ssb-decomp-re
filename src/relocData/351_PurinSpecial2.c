@@ -6,13 +6,28 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dPurinSpecial2_gap_0x1C98[];
 
-PAD(8);
-
 extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[];
+
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2854[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2B94[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2C3C[];
+extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2CCC[];
+
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[];
+extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[];
+
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0810 (2056 bytes) */
 u8 dPurinSpecial2_Tex_0x0008[2048] = {
@@ -106,18 +121,21 @@ MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[2] = {
 };
 
 /* gap sub-block @ 0x1E20 (was gap+0x188, 8 bytes) */
-u8 dPurinSpecial2_gap_0x1C98_sub_0x188[8] = {
-	#include <PurinSpecial2/gap_0x1C98_sub_0x188.data.inc.c>
+MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x188[2] = {
+	(MObjSub *)dPurinSpecial2_gap_0x1C98_sub_0x18,
+	NULL,
 };
 
 /* gap sub-block @ 0x1E28 (was gap+0x190, 8 bytes) */
-u8 dPurinSpecial2_gap_0x1C98_sub_0x190[8] = {
-	#include <PurinSpecial2/gap_0x1C98_sub_0x190.data.inc.c>
+MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x190[2] = {
+	(MObjSub *)dPurinSpecial2_gap_0x1C98_sub_0x90,
+	NULL,
 };
 
 /* gap sub-block @ 0x1E30 (was gap+0x198, 8 bytes) */
-u8 dPurinSpecial2_gap_0x1C98_sub_0x198[8] = {
-	#include <PurinSpecial2/gap_0x1C98_sub_0x198.data.inc.c>
+MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x198[2] = {
+	(MObjSub *)dPurinSpecial2_gap_0x1C98_sub_0x108,
+	NULL,
 };
 
 /* Vtx: Vtx_0x1E38 @ 0x1E38 (4 vertices) */
@@ -206,12 +224,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288[];
-extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2854[];
-extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2B94[];
-extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2C3C[];
-extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2CCC[];
-
 AObjEvent32 *dPurinSpecial2_SingAnimJoint_AnimJoint[6] = {
 	NULL,
 	(AObjEvent32 *)dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288,
@@ -939,15 +951,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[];
-
 AObjEvent32 *dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[6] = {
 	NULL,
 	(AObjEvent32 *)dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38,

@@ -6,12 +6,38 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects1_gap_0x7458[];
 
 extern MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xB8[];
 
+extern u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x780C[];
+extern u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x7828[];
+
+extern u32 dEFCommonEffects1_DamageSlash_MatAnimJoint_data[];
+extern u32 dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44[];
+
+extern u32 dEFCommonEffects1_ImpactWave_MatAnimJoint_data[];
+extern u32 dEFCommonEffects1_FlyOrbs_AnimJoint_data[];
+extern u32 dEFCommonEffects1_CommonSpark_AnimJoint_0x9054[];
+
+extern u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[];
+extern u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4[];
+
+extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[];
+extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[];
+
+extern u32 dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4[];
+
+extern u32 dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24[];
+
+extern u32 dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4[];
+
+extern u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[];
+
+extern AObjEvent32 *dEFCommonEffects1_FlyOrbs_AnimJoint[];
+extern AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[];
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x73E0 (29664 bytes) */
 PAD(8);
 
@@ -81,8 +107,9 @@ u8 dEFCommonEffects1_gap_0x0000_sub_0x5888[120] = {
 };
 
 /* gap sub-block @ 0x5900 (was gap+0x5900, 8 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x5900[8] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x5900.data.inc.c>
+MObjSub *dEFCommonEffects1_gap_0x0000_sub_0x5900[2] = {
+	(MObjSub *)dEFCommonEffects1_gap_0x0000_sub_0x5888,
+	NULL,
 };
 
 /* gap sub-block @ 0x5908 (was gap+0x5908, 64 bytes) */
@@ -351,9 +378,6 @@ DObjDesc dEFCommonEffects1_DamageSlash[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x780C[];
-extern u32 dEFCommonEffects1_DamageSlash_AnimJoint_0x7828[];
-
 AObjEvent32 *dEFCommonEffects1_DamageSlash_AnimJoint[3] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects1_DamageSlash_AnimJoint_0x780C,
@@ -393,7 +417,6 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects1_DamageSlash_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_DamageSlash_MatAnimJoint[3] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_DamageSlash_MatAnimJoint_data + 0xDC),
@@ -460,8 +483,6 @@ Gfx dEFCommonEffects1_DL_0x7C28[35] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44[];
-
 AObjEvent32 *dEFCommonEffects1_ImpactWave_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44,
 };
@@ -499,7 +520,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects1_ImpactWave_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_ImpactWave_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_ImpactWave_MatAnimJoint_data + 0x2C),
 };
@@ -519,7 +539,6 @@ Gfx dEFCommonEffects1_DL_0x7E80[24] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects1_FlyOrbs_AnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_FlyOrbs_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_FlyOrbs_AnimJoint_data,
 };
@@ -593,8 +612,6 @@ Gfx dEFCommonEffects1_DL_0x8FA0[22] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_CommonSpark_AnimJoint_0x9054[];
-
 AObjEvent32 *dEFCommonEffects1_CommonSpark_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_CommonSpark_AnimJoint_0x9054,
 };
@@ -636,7 +653,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects1_CommonSpark_MatAnimJoint_data + 0x6C),
 };
@@ -703,8 +719,6 @@ u8 dEFCommonEffects1_gap_0xCAC8[24] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4[];
-
 AObjEvent32 *dEFCommonEffects1_DamageFlyMDust_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4,
 };
@@ -739,9 +753,6 @@ PAD(8);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[];
-extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[];
-
 AObjEvent32 *dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0,
 };
@@ -787,8 +798,6 @@ PAD(8);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4[];
-
 AObjEvent32 *dEFCommonEffects1_QuakeMag0_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4,
 };
@@ -823,8 +832,6 @@ PAD(8);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24[];
-
 AObjEvent32 *dEFCommonEffects1_QuakeMag1_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24,
 };
@@ -887,8 +894,6 @@ u32 dEFCommonEffects1_QuakeMag1_AnimJoint_0xCC24[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4[];
-
 AObjEvent32 *dEFCommonEffects1_QuakeMag2_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4,
 };
@@ -951,8 +956,6 @@ u32 dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[];
-
 AObjEvent32 *dEFCommonEffects1_QuakeMag3_AnimJoint[1] = {
 	(AObjEvent32 *)dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4,
 };

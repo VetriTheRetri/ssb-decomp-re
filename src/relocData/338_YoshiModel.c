@@ -6,8 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
-
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dYoshiModel_gap_0x38F4_sub_0x708[];
 
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1410[];
@@ -40,35 +38,89 @@ extern u8 dYoshiModel_gap_0x6E70_sub_0x840[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x8B8[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x930[];
 extern u32 dYoshiModel_gap_0x6E70_sub_0xDC[];
-/* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dYoshiModel_gap_0x0000[8] = {
-	#include <YoshiModel/gap_0x0000.data.inc.c>
+extern u8 dYoshiModel_Joint_0x0080_post[];
+extern u8 dYoshiModel_Tex_0x9518[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x13FC[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1408[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1428[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1430[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1438[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1440[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1448[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1450[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1458[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1460[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1468[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1470[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x147C[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1484[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x148C[];
+extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1498[];
+
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+/* commonparts[0].p_mobjsubs target — per-joint MObjSub** table indexed
+ * by joint_id (matches dYoshiModel_JointTree's joint count). Each
+ * non-NULL slot points to a NULL-terminated MObjSub* list living
+ * inside Joint_0x0080_post (or, for joint 28, inside Tex_0x9518).
+ * Engine consumes via lbCommonAddMObjForFighterPartsDObj —
+ * commonparts->p_mobjsubs[joint_id]. The 0x00..0x80 range was carved
+ * into 6 sub-blocks by the splat splitter at chain landing points;
+ * preserved here for matching but typed as MObjSub** slots. */
+
+/* slots [0..1] (joints 0..1) */
+MObjSub *dYoshiModel_gap_0x0000[2] = {
+	NULL,                                                          /* joint 0 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD60),      /* joint 1 */
 };
 
-/* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u16 dYoshiModel_gap_0x0000_sub_0x8[8] = {
-	#include <YoshiModel/gap_0x0000_sub_0x8.palette.inc.c>
+/* slots [2..5] (joints 2..5) */
+MObjSub *dYoshiModel_gap_0x0000_sub_0x8[4] = {
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD74),      /* joint 2 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD7C),      /* joint 3 */
+	NULL,                                                          /* joint 4 */
+	NULL,                                                          /* joint 5 */
 };
 
-/* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
-u8 dYoshiModel_gap_0x0000_sub_0x18[8] = {
-	#include <YoshiModel/gap_0x0000_sub_0x18.data.inc.c>
+/* slots [6..7] (joints 6..7) */
+MObjSub *dYoshiModel_gap_0x0000_sub_0x18[2] = {
+	NULL,                                                          /* joint 6 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD94),      /* joint 7 */
 };
 
-/* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-u8 dYoshiModel_Joint_0x0020_post[32] = {
-	#include <YoshiModel/Joint_0x0020_post.data.inc.c>
+/* slots [8..15] (joints 8..15) */
+MObjSub *dYoshiModel_Joint_0x0020_post[8] = {
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD9C),      /* joint 8 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDA4),      /* joint 9 */
+	NULL,                                                          /* joint 10 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDAC),      /* joint 11 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDB4),      /* joint 12 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDBC),      /* joint 13 */
+	NULL,                                                          /* joint 14 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDC4),      /* joint 15 */
 };
 
-/* Raw data from file offset 0x0040 to 0x0060 (32 bytes) */
-u8 dYoshiModel_Joint_0x0040_post[32] = {
-	#include <YoshiModel/Joint_0x0040_post.data.inc.c>
+/* slots [16..23] (joints 16..23) */
+MObjSub *dYoshiModel_Joint_0x0040_post[8] = {
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDCC),      /* joint 16 */
+	NULL,                                                          /* joint 17 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDD4),      /* joint 18 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDDC),      /* joint 19 */
+	NULL,                                                          /* joint 20 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDE8),      /* joint 21 */
+	NULL,                                                          /* joint 22 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDF0),      /* joint 23 */
 };
 
-/* Raw data from file offset 0x0060 to 0x0080 (32 bytes) */
-u16 dYoshiModel_Joint_0x0060_post[16] = {
-	#include <YoshiModel/Joint_0x0060_post.palette.inc.c>
+/* slots [24..31] (joints 24..31) */
+MObjSub *dYoshiModel_Joint_0x0060_post[8] = {
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDF8),      /* joint 24 */
+	NULL,                                                          /* joint 25 */
+	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xE04),      /* joint 26 */
+	NULL,                                                          /* joint 27 */
+	(MObjSub *)((u8 *)dYoshiModel_Tex_0x9518 + 0x6B8),             /* joint 28 (lives in Tex_0x9518) */
+	NULL,                                                          /* joint 29 */
+	NULL,                                                          /* joint 30 */
+	NULL,                                                          /* joint 31 */
 };
 
 /* Raw data from file offset 0x0080 to 0x0E90 (3600 bytes) */
@@ -745,8 +797,35 @@ u8 dYoshiModel_gap_0x38F4_sub_0x738[4] = {
 };
 
 /* gap sub-block @ 0x4030 (was gap+0x73C, 112 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x73C[112] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x73C.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x73C[28] = {
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x13FC,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1408,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1410,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1428,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1430,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1438,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1440,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1448,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1450,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1458,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1460,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1468,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1470,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x147C,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1484,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x148C,
+	NULL,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1498,
+	NULL,
 };
 
 /* gap sub-block @ 0x40A0 (was gap+0x7AC, 56 bytes) */
@@ -900,13 +979,16 @@ u8 dYoshiModel_gap_0x38F4_sub_0x1384[120] = {
 };
 
 /* gap sub-block @ 0x4CF0 (was gap+0x13FC, 12 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x13FC[12] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x13FC.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x13FC[3] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x130C,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1384,
+	NULL,
 };
 
 /* gap sub-block @ 0x4CFC (was gap+0x1408, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1408[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1408.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1408[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xC7C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D04 (was gap+0x1410, 24 bytes) */
@@ -920,73 +1002,90 @@ MObjSub *dYoshiModel_gap_0x38F4_sub_0x1410[6] = {
 };
 
 /* gap sub-block @ 0x4D1C (was gap+0x1428, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1428[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1428.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1428[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xC04,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D24 (was gap+0x1430, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1430[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1430.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1430[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xB14,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D2C (was gap+0x1438, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1438[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1438.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1438[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xB8C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D34 (was gap+0x1440, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1440[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1440.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1440[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xDE4,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D3C (was gap+0x1448, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1448[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1448.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1448[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xCF4,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D44 (was gap+0x1450, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1450[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1450.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1450[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xD6C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D4C (was gap+0x1458, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1458[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1458.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1458[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xE5C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D54 (was gap+0x1460, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1460[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1460.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1460[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xED4,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D5C (was gap+0x1468, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1468[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1468.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1468[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x10B4,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D64 (was gap+0x1470, 12 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1470[12] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1470.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1470[3] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xFC4,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x103C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D70 (was gap+0x147C, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x147C[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x147C.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x147C[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0xF4C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D78 (was gap+0x1484, 8 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1484[8] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1484.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1484[2] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x112C,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D80 (was gap+0x148C, 12 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x148C[12] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x148C.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x148C[3] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x121C,
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1294,
+	NULL,
 };
 
 /* gap sub-block @ 0x4D8C (was gap+0x1498, 12 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x1498[12] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x1498.data.inc.c>
+MObjSub *dYoshiModel_gap_0x38F4_sub_0x1498[3] = {
+	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x11A4,
+	NULL,
+	NULL,
 };
 
 /* Vtx: Vtx_0x4D98_Vtx @ 0x4D98 (6 vertices) */

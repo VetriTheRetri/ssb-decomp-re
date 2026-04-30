@@ -6,7 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
-
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11F8[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1200[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1228[];
@@ -105,6 +104,19 @@ extern u8 dDonkeyModel_gap_0x7390_sub_0xD28[];
 extern u32 dDonkeyModel_gap_0x7390_sub_0xE4[];
 extern u32 dDonkeyModel_gap_0x7390_sub_0xF44[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0xFD8[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1250[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11F0[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11DC[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11D0[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1258[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1238[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1240[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1248[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1218[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11E8[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1220[];
+extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1230[];
+
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dDonkeyModel_gap_0x0000[8] = {
@@ -112,8 +124,8 @@ u8 dDonkeyModel_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u16 dDonkeyModel_gap_0x0000_sub_0x8[8] = {
-	#include <DonkeyModel/gap_0x0000_sub_0x8.palette.inc.c>
+u8 dDonkeyModel_gap_0x0000_sub_0x8[16] = {
+	#include <DonkeyModel/gap_0x0000_sub_0x8.data.inc.c>
 };
 
 /* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
@@ -132,8 +144,8 @@ u8 dDonkeyModel_Joint_0x0040_post[32] = {
 };
 
 /* Raw data from file offset 0x0060 to 0x0080 (32 bytes) */
-u16 dDonkeyModel_Joint_0x0060_post[16] = {
-	#include <DonkeyModel/Joint_0x0060_post.palette.inc.c>
+u8 dDonkeyModel_Joint_0x0060_post[32] = {
+	#include <DonkeyModel/Joint_0x0060_post.data.inc.c>
 };
 
 /* Raw data from file offset 0x0080 to 0x0F98 (3864 bytes) */
@@ -755,8 +767,33 @@ u8 dDonkeyModel_gap_0x3E78_sub_0x620[8] = {
 };
 
 /* gap sub-block @ 0x44A0 (was gap+0x628, 104 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x628[104] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x628.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x628[26] = {
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x11D0,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x11DC,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x11E8,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x11F0,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x11F8,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1200,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1218,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1220,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1228,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1230,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1238,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1240,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1248,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1250,
+	NULL,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1258,
+	NULL,
 };
 
 /* gap sub-block @ 0x4508 (was gap+0x690, 20 bytes) */
@@ -955,23 +992,29 @@ u8 dDonkeyModel_gap_0x3E78_sub_0x1158[120] = {
 };
 
 /* gap sub-block @ 0x5048 (was gap+0x11D0, 12 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x11D0[12] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x11D0.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11D0[3] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xE10,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xE88,
+	NULL,
 };
 
 /* gap sub-block @ 0x5054 (was gap+0x11DC, 12 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x11DC[12] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x11DC.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11DC[3] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x7F8,
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x870,
+	NULL,
 };
 
 /* gap sub-block @ 0x5060 (was gap+0x11E8, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x11E8[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x11E8.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11E8[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x9D8,
+	NULL,
 };
 
 /* gap sub-block @ 0x5068 (was gap+0x11F0, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x11F0[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x11F0.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11F0[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x8E8,
+	NULL,
 };
 
 /* gap sub-block @ 0x5070 (was gap+0x11F8, 8 bytes) */
@@ -991,13 +1034,15 @@ MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1200[6] = {
 };
 
 /* gap sub-block @ 0x5090 (was gap+0x1218, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1218[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1218.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1218[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xD98,
+	NULL,
 };
 
 /* gap sub-block @ 0x5098 (was gap+0x1220, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1220[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1220.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1220[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xCA8,
+	NULL,
 };
 
 /* gap sub-block @ 0x50A0 (was gap+0x1228, 8 bytes) */
@@ -1007,33 +1052,39 @@ MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1228[2] = {
 };
 
 /* gap sub-block @ 0x50A8 (was gap+0x1230, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1230[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1230.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1230[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xFF0,
+	NULL,
 };
 
 /* gap sub-block @ 0x50B0 (was gap+0x1238, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1238[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1238.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1238[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xF78,
+	NULL,
 };
 
 /* gap sub-block @ 0x50B8 (was gap+0x1240, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1240[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1240.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1240[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0xF00,
+	NULL,
 };
 
 /* gap sub-block @ 0x50C0 (was gap+0x1248, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1248[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1248.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1248[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1158,
+	NULL,
 };
 
 /* gap sub-block @ 0x50C8 (was gap+0x1250, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1250[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1250.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1250[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x10E0,
+	NULL,
 };
 
 /* gap sub-block @ 0x50D0 (was gap+0x1258, 8 bytes) */
-u8 dDonkeyModel_gap_0x3E78_sub_0x1258[8] = {
-	#include <DonkeyModel/gap_0x3E78_sub_0x1258.data.inc.c>
+MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1258[2] = {
+	(MObjSub *)dDonkeyModel_gap_0x3E78_sub_0x1068,
+	NULL,
 };
 
 /* Vtx: Vtx_0x50D8 @ 0x50D8 (4 vertices) */

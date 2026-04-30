@@ -1528,8 +1528,9 @@ u8 dStagePupupuFile2_gap_0x1D00_sub_0x340[40] = {
 };
 
 /* gap sub-block @ 0x2068 (was gap+0x368, 8 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x368[8] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x368.data.inc.c>
+MObjSub *dStagePupupuFile2_gap_0x1D00_sub_0x368[2] = {
+	(MObjSub *)dStagePupupuFile2_gap_0x1D00_sub_0x278,
+	NULL,
 };
 
 /* gap sub-block @ 0x2070 (was gap+0x370, 8 bytes) */

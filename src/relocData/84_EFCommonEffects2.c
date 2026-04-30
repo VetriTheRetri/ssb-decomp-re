@@ -6,16 +6,63 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
 extern u8 dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
 
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects2_gap_0x1F18[];
 
 extern MObjSub *dEFCommonEffects2_gap_0x1F18_sub_0x18[];
 
+extern u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[];
+extern u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8[];
+
+extern u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
+extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28B8[];
+extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28F0[];
+extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2960[];
+extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x29D0[];
+extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[];
+
+extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[];
+extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x34B4[];
+extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518[];
+extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[];
+
+extern u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[];
+extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x54E0[];
+extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x55EC[];
+extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x568C[];
+
+extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5810[];
+extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x582C[];
+extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848[];
+extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[];
+extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[];
+extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[];
+
+extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x5880[];
+extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x589C[];
+extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8[];
+extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[];
+extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[];
+extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[];
+
+extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x58F0[];
+extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x590C[];
+extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928[];
+extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[];
+extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[];
+extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[];
+
+extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[];
+extern u32 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint_0x6D98[];
+
+extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[];
+extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[];
+
+
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x1428 (5160 bytes) */
 PAD(8);
 
@@ -355,7 +402,6 @@ Gfx dEFCommonEffects2_DL_0x1500[14] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data + 0x60),
 };
@@ -439,8 +485,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8[];
-
 AObjEvent32 *dEFCommonEffects2_FireSparkAnimJoint_AnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8,
@@ -494,7 +538,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data + 0x2C),
@@ -537,18 +580,21 @@ u8 dEFCommonEffects2_gap_0x2310_sub_0x1A0[8] = {
 };
 
 /* gap sub-block @ 0x24B8 (was gap+0x1A8, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x1A8[8] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x1A8.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1A8[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x2310_sub_0x38,
+	NULL,
 };
 
 /* gap sub-block @ 0x24C0 (was gap+0x1B0, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x1B0[8] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x1B0.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1B0[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x2310_sub_0xB0,
+	NULL,
 };
 
 /* gap sub-block @ 0x24C8 (was gap+0x1B8, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x1B8[8] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x1B8.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1B8[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x2310_sub_0x128,
+	NULL,
 };
 
 /* gap sub-block @ 0x24D0 (was gap+0x1C0, 48 bytes) */
@@ -633,12 +679,6 @@ u8 dEFCommonEffects2_gap_0x27D8[200] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28B8[];
-extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28F0[];
-extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2960[];
-extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x29D0[];
-extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[];
-
 AObjEvent32 *dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint[6] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28B8,
@@ -795,7 +835,6 @@ u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[6] = {
 	NULL,
 	NULL,
@@ -837,13 +876,15 @@ u8 dEFCommonEffects2_gap_0x2FD0_sub_0x128[8] = {
 };
 
 /* gap sub-block @ 0x3100 (was gap+0x130, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x130[8] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x130.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x2FD0_sub_0x130[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x2FD0_sub_0x38,
+	NULL,
 };
 
 /* gap sub-block @ 0x3108 (was gap+0x138, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x138[8] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x138.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x2FD0_sub_0x138[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x2FD0_sub_0xB0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3110 (was gap+0x140, 64 bytes) */
@@ -928,10 +969,6 @@ u8 dEFCommonEffects2_gap_0x3410[144] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x34B4[];
-extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518[];
-extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[];
-
 AObjEvent32 *dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint[5] = {
 	NULL,
 	NULL,
@@ -1014,7 +1051,6 @@ u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[5] = {
 	NULL,
 	NULL,
@@ -1059,13 +1095,15 @@ u8 dEFCommonEffects2_gap_0x4F34_sub_0x14C[8] = {
 };
 
 /* gap sub-block @ 0x5088 (was gap+0x154, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x154[8] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x154.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x154[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x4F34_sub_0x5C,
+	NULL,
 };
 
 /* gap sub-block @ 0x5090 (was gap+0x15C, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x15C[8] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x15C.data.inc.c>
+MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x15C[2] = {
+	(MObjSub *)dEFCommonEffects2_gap_0x4F34_sub_0xD4,
+	NULL,
 };
 
 /* gap sub-block @ 0x5098 (was gap+0x164, 64 bytes) */
@@ -1155,10 +1193,6 @@ u8 dEFCommonEffects2_gap_0x5460[112] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x54E0[];
-extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x55EC[];
-extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x568C[];
-
 AObjEvent32 *dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint[4] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x54E0,
@@ -1380,13 +1414,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5810[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x582C[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[];
-
 AObjEvent32 *dEFCommonEffects2_DeadExplode2_MatAnimJoint[4] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864,
@@ -1440,13 +1467,6 @@ u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x5880[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x589C[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[];
-
 AObjEvent32 *dEFCommonEffects2_DeadExplode4_MatAnimJoint[4] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4,
@@ -1500,13 +1520,6 @@ u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x58F0[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x590C[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[];
-
 AObjEvent32 *dEFCommonEffects2_DeadExplode1_MatAnimJoint[4] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944,
@@ -1562,7 +1575,6 @@ u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint[4] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x54),
@@ -1634,8 +1646,6 @@ PAD(24);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint_0x6D98[];
-
 AObjEvent32 *dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint_0x6D98,
@@ -1681,9 +1691,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[];
-extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[];
-
 AObjEvent32 *dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4,

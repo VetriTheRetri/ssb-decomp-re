@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB28[];
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB10[];
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB20[];
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB08[];
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xAE0[];
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB00[];
+extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB18[];
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dPurinModel_JointVerts_Vtx[2] = {
 	#include <PurinModel/JointVerts.vtx.inc.c>
@@ -344,8 +351,33 @@ u8 dPurinModel_gap_0x24F8_sub_0x3A8[16] = {
 };
 
 /* gap sub-block @ 0x28B0 (was gap+0x3B8, 104 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x3B8[104] = {
-	#include <PurinModel/gap_0x24F8_sub_0x3B8.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0x3B8[26] = {
+	NULL,
+	NULL,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xAE0,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB00,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB08,
+	NULL,
+	NULL,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB10,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB18,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB20,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB28,
+	NULL,
 };
 
 /* gap sub-block @ 0x2918 (was gap+0x420, 32 bytes) */
@@ -449,38 +481,51 @@ u8 dPurinModel_gap_0x24F8_sub_0xA68[120] = {
 };
 
 /* gap sub-block @ 0x2FD8 (was gap+0xAE0, 32 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xAE0[32] = {
-	#include <PurinModel/gap_0x24F8_sub_0xAE0.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xAE0[8] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x4C8,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x540,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x5B8,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x630,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x6A8,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x720,
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x798,
+	NULL,
 };
 
 /* gap sub-block @ 0x2FF8 (was gap+0xB00, 8 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xB00[8] = {
-	#include <PurinModel/gap_0x24F8_sub_0xB00.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xB00[2] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x888,
+	NULL,
 };
 
 /* gap sub-block @ 0x3000 (was gap+0xB08, 8 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xB08[8] = {
-	#include <PurinModel/gap_0x24F8_sub_0xB08.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xB08[2] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x810,
+	NULL,
 };
 
 /* gap sub-block @ 0x3008 (was gap+0xB10, 8 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xB10[8] = {
-	#include <PurinModel/gap_0x24F8_sub_0xB10.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xB10[2] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x978,
+	NULL,
 };
 
 /* gap sub-block @ 0x3010 (was gap+0xB18, 8 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xB18[8] = {
-	#include <PurinModel/gap_0x24F8_sub_0xB18.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xB18[2] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x900,
+	NULL,
 };
 
 /* gap sub-block @ 0x3018 (was gap+0xB20, 8 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xB20[8] = {
-	#include <PurinModel/gap_0x24F8_sub_0xB20.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xB20[2] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0x9F0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3020 (was gap+0xB28, 8 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xB28[8] = {
-	#include <PurinModel/gap_0x24F8_sub_0xB28.data.inc.c>
+MObjSub *dPurinModel_gap_0x24F8_sub_0xB28[2] = {
+	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xA68,
+	NULL,
 };
 
 /* Vtx: Vtx_0x3028 @ 0x3028 (10 vertices) */
@@ -768,8 +813,11 @@ u8 dPurinModel_gap_0x459C_sub_0x3BC[120] = {
 };
 
 /* gap sub-block @ 0x49D0 (was gap+0x434, 16 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x434[16] = {
-	#include <PurinModel/gap_0x459C_sub_0x434.data.inc.c>
+MObjSub *dPurinModel_gap_0x459C_sub_0x434[4] = {
+	(MObjSub *)dPurinModel_gap_0x459C_sub_0x344,
+	(MObjSub *)dPurinModel_gap_0x459C_sub_0x3BC,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x49E0 (was gap+0x444, 64 bytes) */

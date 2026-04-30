@@ -3713,8 +3713,9 @@ u8 dStageJungleFile2_gap_0xD1B4_sub_0x209C[120] = {
 };
 
 /* gap sub-block @ 0xF2C8 (was gap+0x2114, 8 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x2114[8] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x2114.data.inc.c>
+MObjSub *dStageJungleFile2_gap_0xD1B4_sub_0x2114[2] = {
+	(MObjSub *)dStageJungleFile2_gap_0xD1B4_sub_0x209C,
+	NULL,
 };
 
 /* gap sub-block @ 0xF2D0 (was gap+0x211C, 64 bytes) */

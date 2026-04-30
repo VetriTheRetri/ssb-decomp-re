@@ -6,6 +6,33 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x251E4[];
+extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x25218[];
+extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x25284[];
+extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x252F0[];
+
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25370[];
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25448[];
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x254F4[];
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25678[];
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x257E4[];
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25824[];
+extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25870[];
+
+extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25E84[];
+extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25EBC[];
+extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25EF4[];
+extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25F24[];
+
+extern u32 dMNTitle_SlashMat_AnimJoint_0x25F74[];
+extern u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[];
+extern u32 dMNTitle_SlashMat_AnimJoint_0x26010[];
+extern u32 dMNTitle_SlashMat_AnimJoint_0x26014[];
+
+extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x2902C[];
+extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x29038[];
+extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x29088[];
+
 
 /* Sprite: LogoAnimCutout */
 
@@ -1062,11 +1089,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x251E4[];
-extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x25218[];
-extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x25284[];
-extern u32 dMNTitle_LogoAnimJoint_AnimJoint_0x252F0[];
-
 AObjEvent32 *dMNTitle_LogoAnimJoint_AnimJoint[5] = {
 	NULL,
 	(AObjEvent32 *)dMNTitle_LogoAnimJoint_AnimJoint_0x251E4,
@@ -1187,14 +1209,6 @@ u32 dMNTitle_LabelsAnimJoint_AnimJoint[264] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25370[];
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25448[];
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x254F4[];
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25678[];
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x257E4[];
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25824[];
-extern u32 dMNTitle_LabelsAnimJoint_AnimJoint_0x25870[];
-
 AObjEvent32 *dMNTitle_LabelsAnimJoint_AnimJoint[8] = {
 	NULL,
 	(AObjEvent32 *)dMNTitle_LabelsAnimJoint_AnimJoint_0x25370,
@@ -1940,11 +1954,6 @@ u32 dMNTitle_PressStartAnimJoint_AnimJoint[360] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25E84[];
-extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25EBC[];
-extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25EF4[];
-extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25F24[];
-
 AObjEvent32 *dMNTitle_SlashAnimJoint_AnimJoint[5] = {
 	NULL,
 	(AObjEvent32 *)dMNTitle_SlashAnimJoint_AnimJoint_0x25E84,
@@ -2025,11 +2034,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMNTitle_SlashMat_AnimJoint_0x25F74[];
-extern u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[];
-extern u32 dMNTitle_SlashMat_AnimJoint_0x26010[];
-extern u32 dMNTitle_SlashMat_AnimJoint_0x26014[];
-
 AObjEvent32 *dMNTitle_SlashMat_AnimJoint[5] = {
 	NULL,
 	NULL,
@@ -2271,8 +2275,9 @@ u8 dMNTitle_gap_0x28850_sub_0xC8[8] = {
 };
 
 /* gap sub-block @ 0x28920 (was gap+0xD0, 8 bytes) */
-u8 dMNTitle_gap_0x28850_sub_0xD0[8] = {
-	#include <MNTitle/gap_0x28850_sub_0xD0.data.inc.c>
+MObjSub *dMNTitle_gap_0x28850_sub_0xD0[2] = {
+	(MObjSub *)dMNTitle_gap_0x28850_sub_0x50,
+	NULL,
 };
 
 /* gap sub-block @ 0x28928 (was gap+0xD8, 64 bytes) */
@@ -2365,10 +2370,6 @@ DObjDesc dMNTitle_FireDObjDesc[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x2902C[];
-extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x29038[];
-extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x29088[];
-
 AObjEvent32 *dMNTitle_FireAnimJoint_AnimJoint[7] = {
 	NULL,
 	NULL,

@@ -6,7 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dLinkModel_gap_0x40EC_sub_0x234[];
 extern u8 dLinkModel_gap_0x7AE0_sub_0x214[];
 
@@ -40,6 +39,13 @@ extern u32 dLinkModel_gap_0x9DA8_sub_0x14[];
 extern u32 dLinkModel_gap_0x9DA8_sub_0x4C[];
 extern u32 dLinkModel_gap_0x9DA8_sub_0x74[];
 extern u32 dLinkModel_gap_0x9DA8_sub_0x94[];
+extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[];
+extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7DC[];
+extern MObjSub *dLinkModel_gap_0x40EC_sub_0x804[];
+extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[];
+extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[];
+extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[];
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dLinkModel_gap_0x0000[8] = {
@@ -47,8 +53,8 @@ u8 dLinkModel_gap_0x0000[8] = {
 };
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u16 dLinkModel_gap_0x0000_sub_0x8[8] = {
-	#include <LinkModel/gap_0x0000_sub_0x8.palette.inc.c>
+u8 dLinkModel_gap_0x0000_sub_0x8[16] = {
+	#include <LinkModel/gap_0x0000_sub_0x8.data.inc.c>
 };
 
 /* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
@@ -578,8 +584,39 @@ u8 dLinkModel_gap_0x40EC_sub_0x24C[8] = {
 };
 
 /* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x254[128] = {
-	#include <LinkModel/gap_0x40EC_sub_0x254.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x254[32] = {
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7C4,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7CC,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7D4,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7DC,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7E4,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7F4,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7FC,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x804,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x43C0 (was gap+0x2D4, 12 bytes) */
@@ -658,23 +695,27 @@ u8 dLinkModel_gap_0x40EC_sub_0x74C[120] = {
 };
 
 /* gap sub-block @ 0x48B0 (was gap+0x7C4, 8 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x7C4[8] = {
-	#include <LinkModel/gap_0x40EC_sub_0x7C4.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[2] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x74C,
+	NULL,
 };
 
 /* gap sub-block @ 0x48B8 (was gap+0x7CC, 8 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x7CC[8] = {
-	#include <LinkModel/gap_0x40EC_sub_0x7CC.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[2] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x5E4,
+	NULL,
 };
 
 /* gap sub-block @ 0x48C0 (was gap+0x7D4, 8 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x7D4[8] = {
-	#include <LinkModel/gap_0x40EC_sub_0x7D4.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[2] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x314,
+	NULL,
 };
 
 /* gap sub-block @ 0x48C8 (was gap+0x7DC, 8 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x7DC[8] = {
-	#include <LinkModel/gap_0x40EC_sub_0x7DC.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x7DC[2] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x38C,
+	NULL,
 };
 
 /* gap sub-block @ 0x48D0 (was gap+0x7E4, 16 bytes) */
@@ -692,13 +733,15 @@ MObjSub *dLinkModel_gap_0x40EC_sub_0x7F4[2] = {
 };
 
 /* gap sub-block @ 0x48E8 (was gap+0x7FC, 8 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x7FC[8] = {
-	#include <LinkModel/gap_0x40EC_sub_0x7FC.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[2] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x65C,
+	NULL,
 };
 
 /* gap sub-block @ 0x48F0 (was gap+0x804, 8 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x804[8] = {
-	#include <LinkModel/gap_0x40EC_sub_0x804.data.inc.c>
+MObjSub *dLinkModel_gap_0x40EC_sub_0x804[2] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x6D4,
+	NULL,
 };
 
 /* Vtx: Vtx_0x48F8 @ 0x48F8 (8 vertices) */
@@ -1412,8 +1455,12 @@ DObjDesc dLinkModel_JointTree_0x9CF8[] = {
 
 /* Raw data from file offset 0x9DA8 to 0xB188 (5088 bytes) */
 /* gap sub-block @ 0x9DA8 (was gap+0x0, 20 bytes) */
-u8 dLinkModel_gap_0x9DA8[20] = {
-	#include <LinkModel/gap_0x9DA8.data.inc.c>
+MObjSub *dLinkModel_gap_0x9DA8[5] = {
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x9DA8_sub_0xCC,
+	(MObjSub *)dLinkModel_gap_0x9DA8_sub_0xD8,
 };
 
 /* gap sub-block @ 0x9DBC (was gap+0x14, 56 bytes) */

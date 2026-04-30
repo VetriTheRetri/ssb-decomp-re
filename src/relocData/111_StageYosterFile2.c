@@ -6,6 +6,24 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1198[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11B0[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11C8[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1238[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x160C[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1A28[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1DFC[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2094[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x233C[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2728[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2AFC[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2DA4[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2E48[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3290[];
+extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[];
+
+extern u32 dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data[];
+extern AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint[];
 
 /* MObjSub: Layer0MObj @ 0x0 */
 MObjSub dStageYosterFile2_Layer0MObj_MObjSub = {
@@ -250,22 +268,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1198[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11B0[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11C8[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1238[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x160C[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1A28[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1DFC[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2094[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x233C[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2728[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2AFC[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2DA4[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x2E48[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3290[];
-extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[];
-
 AObjEvent32 *dStageYosterFile2_Layer0Anim_AnimJoint[18] = {
 	NULL,
 	(AObjEvent32 *)dStageYosterFile2_Layer0Anim_AnimJoint_0x1198,
@@ -2764,7 +2766,6 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint[18] = {
 	NULL,
 	NULL,
@@ -2974,8 +2975,9 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x1948[120] = {
 };
 
 /* gap sub-block @ 0x76A8 (was gap+0x19C0, 8 bytes) */
-u8 dStageYosterFile2_gap_0x5CE8_sub_0x19C0[8] = {
-	#include <StageYosterFile2/gap_0x5CE8_sub_0x19C0.data.inc.c>
+MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x19C0[2] = {
+	(MObjSub *)dStageYosterFile2_gap_0x5CE8_sub_0x1948,
+	NULL,
 };
 
 /* gap sub-block @ 0x76B0 (was gap+0x19C8, 64 bytes) */
@@ -3039,8 +3041,9 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x2690[120] = {
 };
 
 /* gap sub-block @ 0x83F0 (was gap+0x2708, 8 bytes) */
-u8 dStageYosterFile2_gap_0x5CE8_sub_0x2708[8] = {
-	#include <StageYosterFile2/gap_0x5CE8_sub_0x2708.data.inc.c>
+MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x2708[2] = {
+	(MObjSub *)dStageYosterFile2_gap_0x5CE8_sub_0x2690,
+	NULL,
 };
 
 /* gap sub-block @ 0x83F8 (was gap+0x2710, 64 bytes) */
@@ -3069,8 +3072,9 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x28E0[120] = {
 };
 
 /* gap sub-block @ 0x8640 (was gap+0x2958, 8 bytes) */
-u8 dStageYosterFile2_gap_0x5CE8_sub_0x2958[8] = {
-	#include <StageYosterFile2/gap_0x5CE8_sub_0x2958.data.inc.c>
+MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x2958[2] = {
+	(MObjSub *)dStageYosterFile2_gap_0x5CE8_sub_0x28E0,
+	NULL,
 };
 
 /* gap sub-block @ 0x8648 (was gap+0x2960, 64 bytes) */
@@ -3139,8 +3143,9 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x3850[120] = {
 };
 
 /* gap sub-block @ 0x95B0 (was gap+0x38C8, 8 bytes) */
-u8 dStageYosterFile2_gap_0x5CE8_sub_0x38C8[8] = {
-	#include <StageYosterFile2/gap_0x5CE8_sub_0x38C8.data.inc.c>
+MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x38C8[2] = {
+	(MObjSub *)dStageYosterFile2_gap_0x5CE8_sub_0x3850,
+	NULL,
 };
 
 /* gap sub-block @ 0x95B8 (was gap+0x38D0, 64 bytes) */
@@ -3204,8 +3209,9 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x4710[120] = {
 };
 
 /* gap sub-block @ 0xA470 (was gap+0x4788, 8 bytes) */
-u8 dStageYosterFile2_gap_0x5CE8_sub_0x4788[8] = {
-	#include <StageYosterFile2/gap_0x5CE8_sub_0x4788.data.inc.c>
+MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x4788[2] = {
+	(MObjSub *)dStageYosterFile2_gap_0x5CE8_sub_0x4710,
+	NULL,
 };
 
 /* gap sub-block @ 0xA478 (was gap+0x4790, 64 bytes) */
@@ -3269,8 +3275,9 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x55C0[120] = {
 };
 
 /* gap sub-block @ 0xB320 (was gap+0x5638, 8 bytes) */
-u8 dStageYosterFile2_gap_0x5CE8_sub_0x5638[8] = {
-	#include <StageYosterFile2/gap_0x5CE8_sub_0x5638.data.inc.c>
+MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x5638[2] = {
+	(MObjSub *)dStageYosterFile2_gap_0x5CE8_sub_0x55C0,
+	NULL,
 };
 
 /* gap sub-block @ 0xB328 (was gap+0x5640, 64 bytes) */

@@ -6,6 +6,11 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4C58[];
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4DD0[];
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4E04[];
+
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[];
 
 PAD(8);
 
@@ -222,18 +227,21 @@ u8 dStageInishieFile2_gap_0x37A8_sub_0x1B8[8] = {
 };
 
 /* gap sub-block @ 0x3968 (was gap+0x1C0, 8 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1C0[8] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1C0.data.inc.c>
+MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1C0[2] = {
+	(MObjSub *)dStageInishieFile2_gap_0x37A8_sub_0x50,
+	NULL,
 };
 
 /* gap sub-block @ 0x3970 (was gap+0x1C8, 8 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1C8[8] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1C8.data.inc.c>
+MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1C8[2] = {
+	(MObjSub *)dStageInishieFile2_gap_0x37A8_sub_0xC8,
+	NULL,
 };
 
 /* gap sub-block @ 0x3978 (was gap+0x1D0, 8 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1D0[8] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1D0.data.inc.c>
+MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1D0[2] = {
+	(MObjSub *)dStageInishieFile2_gap_0x37A8_sub_0x140,
+	NULL,
 };
 
 /* gap sub-block @ 0x3980 (was gap+0x1D8, 64 bytes) */
@@ -493,10 +501,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4C58[];
-extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4DD0[];
-extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4E04[];
-
 AObjEvent32 *dStageInishieFile2_Layer0Anim_AnimJoint[10] = {
 	NULL,
 	NULL,
@@ -648,7 +652,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint[10] = {
 	NULL,
 	NULL,

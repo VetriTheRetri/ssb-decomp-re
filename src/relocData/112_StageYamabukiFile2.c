@@ -6,6 +6,13 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[];
+
+extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[];
+extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[];
+
+extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[];
+extern AObjEvent32 *dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[];
 
 PAD(8);
 
@@ -659,8 +666,6 @@ u8 dStageYamabukiFile2_gap_0x50DC[228] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[];
-
 AObjEvent32 *dStageYamabukiFile2_Layer0Anim_AnimJoint[7] = {
 	NULL,
 	NULL,
@@ -752,8 +757,9 @@ u8 dStageYamabukiFile2_gap_0x52D8_sub_0xB8[8] = {
 };
 
 /* gap sub-block @ 0x5398 (was gap+0xC0, 8 bytes) */
-u8 dStageYamabukiFile2_gap_0x52D8_sub_0xC0[8] = {
-	#include <StageYamabukiFile2/gap_0x52D8_sub_0xC0.data.inc.c>
+MObjSub *dStageYamabukiFile2_gap_0x52D8_sub_0xC0[2] = {
+	(MObjSub *)dStageYamabukiFile2_gap_0x52D8_sub_0x40,
+	NULL,
 };
 
 /* gap sub-block @ 0x53A0 (was gap+0xC8, 96 bytes) */
@@ -1023,9 +1029,6 @@ u8 dStageYamabukiFile2_MPGeometryData_0x6E8C[36] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[];
-extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[];
-
 AObjEvent32 *dStageYamabukiFile2_Layer1Anim_AnimJoint[9] = {
 	NULL,
 	NULL,
@@ -1125,7 +1128,6 @@ u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9] = {
 	NULL,
 	NULL,
@@ -1192,8 +1194,9 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0xFE0[120] = {
 };
 
 /* gap sub-block @ 0x9820 (was gap+0x1058, 8 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x1058[8] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x1058.data.inc.c>
+MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x1058[2] = {
+	(MObjSub *)dStageYamabukiFile2_gap_0x87C8_sub_0xFE0,
+	NULL,
 };
 
 /* gap sub-block @ 0x9828 (was gap+0x1060, 64 bytes) */
@@ -1272,8 +1275,9 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0x3F18[120] = {
 };
 
 /* gap sub-block @ 0xC758 (was gap+0x3F90, 8 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x3F90[8] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x3F90.data.inc.c>
+MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x3F90[2] = {
+	(MObjSub *)dStageYamabukiFile2_gap_0x87C8_sub_0x3F18,
+	NULL,
 };
 
 /* gap sub-block @ 0xC760 (was gap+0x3F98, 64 bytes) */
@@ -1347,8 +1351,9 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0x5A88[120] = {
 };
 
 /* gap sub-block @ 0xE2C8 (was gap+0x5B00, 8 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x5B00[8] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x5B00.data.inc.c>
+MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x5B00[2] = {
+	(MObjSub *)dStageYamabukiFile2_gap_0x87C8_sub_0x5A88,
+	NULL,
 };
 
 /* gap sub-block @ 0xE2D0 (was gap+0x5B08, 64 bytes) */
@@ -1417,8 +1422,9 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0x74E0[120] = {
 };
 
 /* gap sub-block @ 0xFD20 (was gap+0x7558, 8 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x7558[8] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x7558.data.inc.c>
+MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x7558[2] = {
+	(MObjSub *)dStageYamabukiFile2_gap_0x87C8_sub_0x74E0,
+	NULL,
 };
 
 /* gap sub-block @ 0xFD28 (was gap+0x7560, 64 bytes) */

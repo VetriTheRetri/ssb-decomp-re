@@ -6,13 +6,36 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dMVOpeningStandoff_gap_0x61B8[];
 
-PAD(8);
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
 
-extern u8 dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54[];
+extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[];
+
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6EA4[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6F4C[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6FDC[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144[];
+extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0[];
+
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dMVOpeningStandoff_Lut_0x0008_palette[16] = {
@@ -182,33 +205,39 @@ u8 dMVOpeningStandoff_gap_0x61B8_sub_0x290[120] = {
 };
 
 /* gap sub-block @ 0x64C0 (was gap+0x308, 8 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x308[8] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x308.data.inc.c>
+MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x308[2] = {
+	(MObjSub *)dMVOpeningStandoff_gap_0x61B8_sub_0x38,
+	NULL,
 };
 
 /* gap sub-block @ 0x64C8 (was gap+0x310, 8 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x310[8] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x310.data.inc.c>
+MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x310[2] = {
+	(MObjSub *)dMVOpeningStandoff_gap_0x61B8_sub_0xB0,
+	NULL,
 };
 
 /* gap sub-block @ 0x64D0 (was gap+0x318, 8 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x318[8] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x318.data.inc.c>
+MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x318[2] = {
+	(MObjSub *)dMVOpeningStandoff_gap_0x61B8_sub_0x128,
+	NULL,
 };
 
 /* gap sub-block @ 0x64D8 (was gap+0x320, 8 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x320[8] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x320.data.inc.c>
+MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x320[2] = {
+	(MObjSub *)dMVOpeningStandoff_gap_0x61B8_sub_0x1A0,
+	NULL,
 };
 
 /* gap sub-block @ 0x64E0 (was gap+0x328, 8 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x328[8] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x328.data.inc.c>
+MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x328[2] = {
+	(MObjSub *)dMVOpeningStandoff_gap_0x61B8_sub_0x218,
+	NULL,
 };
 
 /* gap sub-block @ 0x64E8 (was gap+0x330, 8 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8_sub_0x330[8] = {
-	#include <MVOpeningStandoff/gap_0x61B8_sub_0x330.data.inc.c>
+MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x330[2] = {
+	(MObjSub *)dMVOpeningStandoff_gap_0x61B8_sub_0x290,
+	NULL,
 };
 
 /* gap sub-block @ 0x64F0 (was gap+0x338, 64 bytes) */
@@ -303,19 +332,6 @@ DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[];
-
 AObjEvent32 *dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[13] = {
 	NULL,
 	NULL,
@@ -465,16 +481,6 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6EA4[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6F4C[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6FDC[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144[];
-extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0[];
-
 AObjEvent32 *dMVOpeningStandoff_LightningAnimJoint_AnimJoint[13] = {
 	NULL,
 	NULL,

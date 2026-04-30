@@ -6,12 +6,14 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dGRBonus2FoxFile2_gap_0x0AD8[];
 
-extern u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218[];
+extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218[];
 
+extern u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint_data[];
+extern u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data[];
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x0950 (2384 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
 Vtx dGRBonus2FoxFile2_gap_0x0000[4] = {
@@ -230,23 +232,27 @@ u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1A0[120] = {
 };
 
 /* gap sub-block @ 0x0CF0 (was gap+0x218, 8 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218[8] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x218.data.inc.c>
+MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218[2] = {
+	(MObjSub *)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38,
+	NULL,
 };
 
 /* gap sub-block @ 0x0CF8 (was gap+0x220, 8 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x220[8] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x220.data.inc.c>
+MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x220[2] = {
+	(MObjSub *)dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0,
+	NULL,
 };
 
 /* gap sub-block @ 0x0D00 (was gap+0x228, 8 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x228[8] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x228.data.inc.c>
+MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x228[2] = {
+	(MObjSub *)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x128,
+	NULL,
 };
 
 /* gap sub-block @ 0x0D08 (was gap+0x230, 8 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230[8] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x230.data.inc.c>
+MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230[2] = {
+	(MObjSub *)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1A0,
+	NULL,
 };
 
 /* gap sub-block @ 0x0D10 (was gap+0x238, 320 bytes) */
@@ -504,7 +510,6 @@ u8 dGRBonus2FoxFile2_MPGeometryData_0x3214[28] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint_data[];
 AObjEvent32 *dGRBonus2FoxFile2_Layer1Anim_AnimJoint[20] = {
 	NULL,
 	NULL,
@@ -1097,7 +1102,6 @@ u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint_data[560] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint[20] = {
 	NULL,
 	NULL,

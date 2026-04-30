@@ -6,12 +6,15 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dStageLastFile2_gap_0x20F0[];
 
 extern void *dStageLastFile2_gap_0x20F0_sub_0x960[];
 
+extern u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[];
+
+extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data[];
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x2078 (8312 bytes) */
 PAD(8);
 
@@ -343,18 +346,27 @@ void *dStageLastFile2_gap_0x20F0_sub_0x960[6] = {
 };
 
 /* gap sub-block @ 0x2A68 (was gap+0x978, 24 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x978[24] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x978.data.inc.c>
+MObjSub *dStageLastFile2_gap_0x20F0_sub_0x978[6] = {
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x690,
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x708,
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x780,
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x7F8,
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x870,
+	NULL,
 };
 
 /* gap sub-block @ 0x2A80 (was gap+0x990, 12 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x990[12] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x990.data.inc.c>
+MObjSub *dStageLastFile2_gap_0x20F0_sub_0x990[3] = {
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x5A0,
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x618,
+	NULL,
 };
 
 /* gap sub-block @ 0x2A8C (was gap+0x99C, 12 bytes) */
-u8 dStageLastFile2_gap_0x20F0_sub_0x99C[12] = {
-	#include <StageLastFile2/gap_0x20F0_sub_0x99C.data.inc.c>
+MObjSub *dStageLastFile2_gap_0x20F0_sub_0x99C[3] = {
+	(MObjSub *)dStageLastFile2_gap_0x20F0_sub_0x8E8,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x2A98 (was gap+0x9A8, 192 bytes) */
@@ -582,8 +594,6 @@ u8 dStageLastFile2_MPGeometryData_0x4EF4[28] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[];
-
 AObjEvent32 *dStageLastFile2_Layer1Anim_AnimJoint[5] = {
 	NULL,
 	NULL,
@@ -608,7 +618,6 @@ u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint[5] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data + 0x1084),

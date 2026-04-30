@@ -6,12 +6,18 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dStageZebesFile2_gap_0x2BC0[];
 
 extern void *dStageZebesFile2_gap_0x2BC0_sub_0x948[];
 
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6224[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[];
+
+extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[];
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x2B48 (11080 bytes) */
 PAD(8);
 
@@ -473,38 +479,53 @@ void *dStageZebesFile2_gap_0x2BC0_sub_0x948[4] = {
 };
 
 /* gap sub-block @ 0x3518 (was gap+0x958, 16 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x958[16] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x958.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x958[4] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x240,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x2B8,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x330,
+	NULL,
 };
 
 /* gap sub-block @ 0x3528 (was gap+0x968, 8 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x968[8] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x968.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x968[2] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x3A8,
+	NULL,
 };
 
 /* gap sub-block @ 0x3530 (was gap+0x970, 8 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x970[8] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x970.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x970[2] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x420,
+	NULL,
 };
 
 /* gap sub-block @ 0x3538 (was gap+0x978, 8 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x978[8] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x978.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x978[2] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x498,
+	NULL,
 };
 
 /* gap sub-block @ 0x3540 (was gap+0x980, 8 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x980[8] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x980.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x980[2] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x510,
+	NULL,
 };
 
 /* gap sub-block @ 0x3548 (was gap+0x988, 8 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x988[8] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x988.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x988[2] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x588,
+	NULL,
 };
 
 /* gap sub-block @ 0x3550 (was gap+0x990, 32 bytes) */
-u8 dStageZebesFile2_gap_0x2BC0_sub_0x990[32] = {
-	#include <StageZebesFile2/gap_0x2BC0_sub_0x990.data.inc.c>
+MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x990[8] = {
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x600,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x678,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x6F0,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x768,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x7E0,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x858,
+	(MObjSub *)dStageZebesFile2_gap_0x2BC0_sub_0x8D0,
+	NULL,
 };
 
 /* gap sub-block @ 0x3570 (was gap+0x9B0, 128 bytes) */
@@ -1044,11 +1065,6 @@ u8 dStageZebesFile2_MPGeometryData_0x6160[32] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x61F0[];
-extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6224[];
-extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x62CC[];
-extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[];
-
 AObjEvent32 *dStageZebesFile2_Layer1Anim_AnimJoint[28] = {
 	NULL,
 	NULL,
@@ -1234,7 +1250,6 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[];
 AObjEvent32 *dStageZebesFile2_Layer1MatAnim_MatAnimJoint[28] = {
 	NULL,
 	(AObjEvent32 *)((u8*)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data + 0x5B38),

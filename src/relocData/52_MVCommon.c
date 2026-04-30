@@ -6,15 +6,35 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-
-/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dMVCommon_gap_0x1DD18[];
 extern u8 dMVCommon_gap_0x1F170[];
 
-PAD(8);
-
 extern MObjSub *dMVCommon_gap_0x1DD18_sub_0x10[];
 extern MObjSub *dMVCommon_gap_0x1F170_sub_0x8[];
+
+extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data[];
+extern u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomLampAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data[];
+extern u32 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4[];
+extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[];
+
+extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[];
+extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[];
+
+extern u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data[];
+extern u32 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[];
+extern AObjEvent32 *dMVCommon_RoomBooksAnimJoint_AnimJoint[];
+extern AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[];
+extern AObjEvent32 *dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[];
+
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
 u16 dMVCommon_Lut_0x0008_palette[16] = {
@@ -356,38 +376,45 @@ u8 dMVCommon_gap_0x4370_sub_0x328[120] = {
 };
 
 /* gap sub-block @ 0x4710 (was gap+0x3A0, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A0[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A0.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3A0[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0x58,
+	NULL,
 };
 
 /* gap sub-block @ 0x4718 (was gap+0x3A8, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3A8[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3A8.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3A8[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0xD0,
+	NULL,
 };
 
 /* gap sub-block @ 0x4720 (was gap+0x3B0, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3B0[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3B0.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3B0[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0x148,
+	NULL,
 };
 
 /* gap sub-block @ 0x4728 (was gap+0x3B8, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3B8[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3B8.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3B8[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0x1C0,
+	NULL,
 };
 
 /* gap sub-block @ 0x4730 (was gap+0x3C0, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3C0[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3C0.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3C0[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0x238,
+	NULL,
 };
 
 /* gap sub-block @ 0x4738 (was gap+0x3C8, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3C8[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3C8.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3C8[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0x2B0,
+	NULL,
 };
 
 /* gap sub-block @ 0x4740 (was gap+0x3D0, 8 bytes) */
-u8 dMVCommon_gap_0x4370_sub_0x3D0[8] = {
-	#include <MVCommon/gap_0x4370_sub_0x3D0.data.inc.c>
+MObjSub *dMVCommon_gap_0x4370_sub_0x3D0[2] = {
+	(MObjSub *)dMVCommon_gap_0x4370_sub_0x328,
+	NULL,
 };
 
 /* gap sub-block @ 0x4748 (was gap+0x3D8, 64 bytes) */
@@ -1071,7 +1098,6 @@ DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[51] = {
 	NULL,
 	NULL,
@@ -1195,7 +1221,6 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomBooksAnimJoint_AnimJoint[3] = {
 	NULL,
 	(AObjEvent32 *)dMVCommon_RoomBooksAnimJoint_AnimJoint_data,
@@ -1668,7 +1693,6 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[3] = {
 	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data,
 	(AObjEvent32 *)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data + 0x860),
@@ -2608,7 +2632,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomLampAnimJoint_AnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomLampAnimJoint_AnimJoint[4] = {
 	(AObjEvent32 *)dMVCommon_RoomLampAnimJoint_AnimJoint_data,
 	NULL,
@@ -18633,7 +18656,6 @@ DObjDesc dMVCommon_RoomLogoDObjDesc[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[2] = {
 	(AObjEvent32 *)((u8*)dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data + 0x1C),
 	NULL,
@@ -18658,7 +18680,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomSnapAnimJoint_AnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dMVCommon_RoomSnapAnimJoint_AnimJoint_data,
@@ -18798,9 +18819,6 @@ DObjDesc dMVCommon_RoomCloseUpEffectAirDObjDesc[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4[];
-extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[];
-
 AObjEvent32 *dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint[3] = {
 	NULL,
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008,
@@ -18830,7 +18848,6 @@ u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint[3] = {
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data,
 	(AObjEvent32 *)((u8*)dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data + 0xC),
@@ -19990,9 +20007,6 @@ DObjDesc dMVCommon_RoomCloseUpEffectGroundDObjDesc[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[];
-extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[];
-
 AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328,
@@ -20023,7 +20037,6 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint[2] = {
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data,
 	(AObjEvent32 *)((u8*)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data + 0x18),
@@ -21126,13 +21139,19 @@ MObjSub *dMVCommon_gap_0x204F8_sub_0x278[2] = {
 };
 
 /* gap sub-block @ 0x20778 (was gap+0x280, 16 bytes) */
-u8 dMVCommon_gap_0x204F8_sub_0x280[16] = {
-	#include <MVCommon/gap_0x204F8_sub_0x280.data.inc.c>
+MObjSub *dMVCommon_gap_0x204F8_sub_0x280[4] = {
+	(MObjSub *)dMVCommon_gap_0x204F8_sub_0x20,
+	(MObjSub *)dMVCommon_gap_0x204F8_sub_0x98,
+	(MObjSub *)dMVCommon_gap_0x204F8_sub_0x110,
+	NULL,
 };
 
 /* gap sub-block @ 0x20788 (was gap+0x290, 16 bytes) */
-u8 dMVCommon_gap_0x204F8_sub_0x290[16] = {
-	#include <MVCommon/gap_0x204F8_sub_0x290.data.inc.c>
+MObjSub *dMVCommon_gap_0x204F8_sub_0x290[4] = {
+	(MObjSub *)dMVCommon_gap_0x204F8_sub_0x188,
+	(MObjSub *)dMVCommon_gap_0x204F8_sub_0x200,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x20798 (was gap+0x2A0, 128 bytes) */
@@ -21410,7 +21429,6 @@ u8 dMVCommon_gap_0x224C4[264] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint[8] = {
 	(AObjEvent32 *)((u8*)dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data + 0x78),
 	NULL,
@@ -21525,7 +21543,6 @@ u8 dMVCommon_RoomSpotlightDisplayList_post[16] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data[];
 AObjEvent32 *dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data + 0x48),
 };

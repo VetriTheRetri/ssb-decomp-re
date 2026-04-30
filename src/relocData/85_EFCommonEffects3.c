@@ -6,6 +6,27 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern u32 dEFCommonEffects3_MBallRays_AnimJoint_0x720[];
+extern u32 dEFCommonEffects3_MBallRays_AnimJoint_0x7C8[];
+
+extern u32 dEFCommonEffects3_MBallRays_MatAnimJoint_data[];
+extern u32 dEFCommonEffects3_RebirthHalo_AnimJoint_data[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x32C8[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x330C[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x336C[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x33CC[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x342C[];
+
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
+extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
+
+extern AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[];
 
 /* Raw data from file offset 0x0000 to 0x0108 (264 bytes) */
 PAD(8);
@@ -71,8 +92,10 @@ u8 dEFCommonEffects3_gap_0x0180_sub_0x178[12] = {
 };
 
 /* gap sub-block @ 0x0304 (was gap+0x184, 12 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x184[12] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x184.data.inc.c>
+MObjSub *dEFCommonEffects3_gap_0x0180_sub_0x184[3] = {
+	(MObjSub *)dEFCommonEffects3_gap_0x0180_sub_0x88,
+	(MObjSub *)dEFCommonEffects3_gap_0x0180_sub_0x100,
+	NULL,
 };
 
 /* gap sub-block @ 0x0310 (was gap+0x190, 80 bytes) */
@@ -132,9 +155,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects3_MBallRays_AnimJoint_0x720[];
-extern u32 dEFCommonEffects3_MBallRays_AnimJoint_0x7C8[];
-
 AObjEvent32 *dEFCommonEffects3_MBallRays_AnimJoint[4] = {
 	NULL,
 	NULL,
@@ -235,7 +255,6 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects3_MBallRays_MatAnimJoint_data[];
 AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[4] = {
 	NULL,
 	NULL,
@@ -261,7 +280,6 @@ DObjDesc dEFCommonEffects3_RebirthHalo[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-extern u32 dEFCommonEffects3_RebirthHalo_AnimJoint_data[];
 AObjEvent32 *dEFCommonEffects3_RebirthHalo_AnimJoint[3] = {
 	NULL,
 	NULL,
@@ -339,18 +357,21 @@ u8 dEFCommonEffects3_gap_0x2D20_sub_0x180[8] = {
 };
 
 /* gap sub-block @ 0x2EA8 (was gap+0x188, 8 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x188[8] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x188.data.inc.c>
+MObjSub *dEFCommonEffects3_gap_0x2D20_sub_0x188[2] = {
+	(MObjSub *)dEFCommonEffects3_gap_0x2D20_sub_0x18,
+	NULL,
 };
 
 /* gap sub-block @ 0x2EB0 (was gap+0x190, 8 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x190[8] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x190.data.inc.c>
+MObjSub *dEFCommonEffects3_gap_0x2D20_sub_0x190[2] = {
+	(MObjSub *)dEFCommonEffects3_gap_0x2D20_sub_0x90,
+	NULL,
 };
 
 /* gap sub-block @ 0x2EB8 (was gap+0x198, 8 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x198[8] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x198.data.inc.c>
+MObjSub *dEFCommonEffects3_gap_0x2D20_sub_0x198[2] = {
+	(MObjSub *)dEFCommonEffects3_gap_0x2D20_sub_0x108,
+	NULL,
 };
 
 /* gap sub-block @ 0x2EC0 (was gap+0x1A0, 48 bytes) */
@@ -419,12 +440,6 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x32C8[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x330C[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x336C[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x33CC[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x342C[];
-
 AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_AnimJoint[6] = {
 	NULL,
 	(AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_AnimJoint_0x32C8,
@@ -568,15 +583,6 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
-
 AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[6] = {
 	NULL,
 	NULL,

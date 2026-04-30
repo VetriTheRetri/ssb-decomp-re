@@ -23,8 +23,11 @@ u8 dNessSpecial3_gap_0x0000_sub_0x80[120] = {
 };
 
 /* gap sub-block @ 0x00F8 (was gap+0xF8, 16 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0xF8[16] = {
-	#include <NessSpecial3/gap_0x0000_sub_0xF8.data.inc.c>
+MObjSub *dNessSpecial3_gap_0x0000_sub_0xF8[4] = {
+	(MObjSub *)dNessSpecial3_gap_0x0000_sub_0x8,
+	(MObjSub *)dNessSpecial3_gap_0x0000_sub_0x80,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x0108 (was gap+0x108, 48 bytes) */

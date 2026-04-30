@@ -244,39 +244,60 @@ Gfx dNYoshiModel_Joint_0x2C40_post_post[19] = {
 };
 
 /* Raw tail after DL @ 0x2E68 (144 bytes) */
-u8 dNYoshiModel_Joint_0x2C40_post_post_post[144] = {
-	#include <NYoshiModel/Joint_0x2C40_post_post_post.data.inc.c>
+/* DObj.dls pre/post-matrix DL pairs (18 pairs, 144 bytes).
+ * Each 2-slot { dls[0], dls[1] } is the target of one DObjDesc.dl;
+ * dls[0] (when non-NULL) draws before gcPrepDObjMatrix, dls[1] after.
+ * See ftDisplayMainDrawDefault case 1. */
+Gfx *dNYoshiModel_Joint_0x2C40_post_post_post[36] = {
+	NULL,                                            dNYoshiModel_Joint_0x1A70_DisplayList,
+	dNYoshiModel_Joint_0x2C40_post_post,             dNYoshiModel_Joint_0x1A70_post,
+	NULL,                                            dNYoshiModel_Joint_0x1CA0_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x1E48_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x1F50_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2048_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2138_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2230_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2328_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2418_DisplayList,
+	dNYoshiModel_Joint_0x2C40_post,                  dNYoshiModel_Joint_0x2418_post,
+	NULL,                                            dNYoshiModel_Joint_0x2618_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2708_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2820_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2928_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2A20_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2B38_DisplayList,
+	NULL,                                            dNYoshiModel_Joint_0x2C40_DisplayList,
 };
 
 /* DObjDesc: JointTree @ 0x2EF8 (29 entries) */
 DObjDesc dNYoshiModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dNYoshiModel_Joint_0x2C40_post_post_post), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x138), { 0.0f, 0.0f, 43.20003128051758f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x140), { 0.0f, 150.00001525878906f, 82.79998016357422f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x148), { 0.0f, 11.999988555908203f, 30.0f }, { 0.5299999713897705f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dNYoshiModel_Joint_0x2C40_post_post_post, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[2]), { 0.0f, 0.0f, 43.20003128051758f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[4]), { 0.0f, 150.00001525878906f, 82.79998016357422f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[6]), { 0.0f, 11.999988555908203f, 30.0f }, { 0.5299999713897705f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { 0.0f, 43.961997985839844f, 18.00501823425293f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 60.0f, 12.00000286102295f, 52.79997253417969f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x150), { 0.0f, 0.0f, 0.0f }, { -3.1415929794311523f, 3.1415929794311523f, 2.643043041229248f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x158), { 43.199974060058594f, 0.0f, 0.0f }, { 0.0f, 0.0f, -1.7163710594177246f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x160), { 43.199989318847656f, 0.0f, 1.1000000085914508e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[8]), { 0.0f, 0.0f, 0.0f }, { -3.1415929794311523f, 3.1415929794311523f, 2.643043041229248f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[10]), { 43.199974060058594f, 0.0f, 0.0f }, { 0.0f, 0.0f, -1.7163710594177246f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[12]), { 43.199989318847656f, 0.0f, 1.1000000085914508e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -60.0f, 12.00000286102295f, 52.79997253417969f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x168), { 0.0f, 0.0f, 0.0f }, { -3.1415929794311523f, 3.1415929794311523f, 2.643043041229248f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x170), { 43.199981689453125f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, -1.7163710594177246f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x178), { 43.199974060058594f, 0.0f, 1.1000000085914508e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[14]), { 0.0f, 0.0f, 0.0f }, { -3.1415929794311523f, 3.1415929794311523f, 2.643043041229248f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[16]), { 43.199981689453125f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, -1.7163710594177246f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[18]), { 43.199974060058594f, 0.0f, 1.1000000085914508e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 7, (void*)0x00000000, { 0.0f, 39.17825698852539f, 7.000000096013537e-06f }, { -2.0943949222564697f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x180), { 0.0f, 54.00000762939453f, -60.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x188), { 0.0f, 12.00000286102295f, -65.99999237060547f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[20]), { 0.0f, 54.00000762939453f, -60.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[22]), { 0.0f, 12.00000286102295f, -65.99999237060547f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 60.0f, -24.0000057220459f, 24.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x190), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.3960860073566437f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x198), { 55.20000457763672f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.9765089750289917f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[24]), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.3960860073566437f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[26]), { 55.20000457763672f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.9765089750289917f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { 82.60124206542969f, -1.9999999949504854e-06f, 0.0f }, { 0.0f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x1A0), { 0.0f, -1.9999999949504854e-06f, 0.0f }, { 3.1415929794311523f, 0.0f, -0.5891109704971313f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[28]), { 0.0f, -1.9999999949504854e-06f, 0.0f }, { 3.1415929794311523f, 0.0f, -0.5891109704971313f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -60.0f, -24.0000057220459f, 24.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x1A8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.3960860073566437f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x1B0), { 55.20000457763672f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.9765089750289917f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[30]), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.3960860073566437f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[32]), { 55.20000457763672f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.9765089750289917f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { 82.60124206542969f, -1.9999999949504854e-06f, 0.0f }, { 0.0f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dNYoshiModel_Joint_0x2C40_post + 0x1B8), { 0.0f, -1.9999999949504854e-06f, 0.0f }, { 3.1415929794311523f, 0.0f, -0.5891119837760925f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)(&dNYoshiModel_Joint_0x2C40_post_post_post[34]), { 0.0f, -1.9999999949504854e-06f, 0.0f }, { 3.1415929794311523f, 0.0f, -0.5891119837760925f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };

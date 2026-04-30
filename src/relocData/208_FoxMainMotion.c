@@ -1568,26 +1568,24 @@ u32 dFoxMainMotion_0x1980[] = {
 #if defined(REGION_JP)
 u32 dFoxMainMotion_0x19D4[] = {
 	0x00000004,
-	0x00000000,
-	0x42700000,
-	0x00000000,
-	0x43AF0000,
-	0x43AF0000,
-	0x43AF0000,
+	ftMotionCommandEnd(),
+};
+u32 dFoxMainMotion_0x19DC[] = {
+	ftMotionCommandStopLoopSFX(40894464),
+	ftMotionCommandEnd(),
+};
+u32 dFoxMainMotion_0x19E4[] = {
+	ftMotionCommandStopLoopSFX(61800448),
+	ftMotionCommandStopLoopSFX(61800448),
+	ftMotionCommandStopLoopSFX(61800448),
 	0x00000032,
-	0xC4000009,
-	0xBC000003,
-	0x74000003,
-	0x98004C00,
-	0x00000000,
-	0xFF4C0000,
-	0x00000000,
-	0x98007C00,
-	0x000000F0,
-	0x00C80000,
-	0x00000000,
-	0x380000B3,
-	0x0C0000A2,
+	ftMotionCommandMakeRumble(0, 9),
+	ftMotionCommandSetSlopeContour(3),
+	ftMotionCommandSetHitStatusAll(3),
+	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, 31, 0, 0, 240, 200, 0, 0, 0),
+	ftMotionPlayFGM(nSYAudioFGMFoxSpecialLwStart),
+	0x0C0000A2,  /* opc=3 truncated */
 };
 #else
 u32 dFoxMainMotion_0x19D4[] = {

@@ -7,6 +7,7 @@
 #include <ft/ftchar/ftkirby/ftkirby.h>
 #include <gm/gmsound.h>
 #include <gm/gmdef.h>
+#include <ef/efdef.h>
 extern u32 dKirbyMainMotion_0x0F64[];
 extern u32 dKirbyMainMotion_0x1000[];
 extern u32 dKirbyMainMotion_0x1088[];
@@ -154,7 +155,7 @@ u32 dKirbyMainMotion_0x0154[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_0x0154),
 	ftMotionPlayFGM(nSYAudioFGMKirbyDash),
 	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -163,15 +164,15 @@ u32 dKirbyMainMotion_0x0154[] = {
 u32 dKirbyMainMotion_0x01B8[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMKirbyFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandWait(10),
 	ftMotionPlayFGM(nSYAudioFGMKirbyFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dKirbyMainMotion_0x01B8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMGroundBrakeGrind),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -182,11 +183,11 @@ u32 dKirbyMainMotion_0x021C[] = {
 };
 
 u32 dKirbyMainMotion_0x0228[] = {
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 120, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -199,14 +200,14 @@ u32 dKirbyMainMotion_0x0258[] = {
 
 u32 dKirbyMainMotion_0x0268[] = {
 	ftMotionPlayFGM(nSYAudioFGMInflateJump5),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dKirbyMainMotion_0x0280[] = {
 	ftMotionCommandSetTexturePartID(10),
 	ftMotionPlayFGM(nSYAudioFGMInflateJump1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
@@ -215,7 +216,7 @@ u32 dKirbyMainMotion_0x0280[] = {
 u32 dKirbyMainMotion_0x02A4[] = {
 	ftMotionCommandSetTexturePartID(10),
 	ftMotionPlayFGM(nSYAudioFGMInflateJump1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
@@ -224,7 +225,7 @@ u32 dKirbyMainMotion_0x02A4[] = {
 u32 dKirbyMainMotion_0x02C8[] = {
 	ftMotionCommandSetTexturePartID(10),
 	ftMotionPlayFGM(nSYAudioFGMInflateJump1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
@@ -233,7 +234,7 @@ u32 dKirbyMainMotion_0x02C8[] = {
 u32 dKirbyMainMotion_0x02EC[] = {
 	ftMotionCommandSetTexturePartID(10),
 	ftMotionPlayFGM(nSYAudioFGMInflateJump1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
@@ -242,7 +243,7 @@ u32 dKirbyMainMotion_0x02EC[] = {
 u32 dKirbyMainMotion_0x0310[] = {
 	ftMotionCommandSetTexturePartID(10),
 	ftMotionPlayFGM(nSYAudioFGMInflateJump1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandEnd(),
 };
@@ -257,7 +258,7 @@ u32 dKirbyMainMotion_0x0330[] = {
 
 u32 dKirbyMainMotion_0x0344[] = {
 	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -297,7 +298,7 @@ u32 dKirbyMainMotion_0x0394[] = {
 
 u32 dKirbyMainMotion_0x03A8[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -329,8 +330,8 @@ u32 dKirbyMainMotion_0x03DC[] = {
 u32 dKirbyMainMotion_0x03E8[] = {
 	ftMotionCommandSetTexturePartID(8),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandWaitAsync(24),
@@ -344,7 +345,7 @@ u32 dKirbyMainMotion_0x0428[] = {
 };
 
 u32 dKirbyMainMotion_0x0430[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -376,7 +377,7 @@ u32 dKirbyMainMotion_0x0480[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_0x0470),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 24, 6, 0, 0, 300, 150, 0, 0, 361, 100, 90, 3, 1, 1, 1, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
@@ -391,7 +392,7 @@ u32 dKirbyMainMotion_0x0480[] = {
 u32 dKirbyMainMotion_0x04F4[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(18),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 6, 1, 0, 190, 160, 0, 0, 361, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 29, 6, 1, 0, 80, 0, 0, 0, 361, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandWait(3),
@@ -407,10 +408,10 @@ u32 dKirbyMainMotion_0x04F4[] = {
 
 u32 dKirbyMainMotion_0x0578[] = {
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlashMiddle, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbySmash3),
 	ftMotionPlayFGM(nSYAudioFGMHeavySwing1),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetHitStatusAll(1),
@@ -419,10 +420,10 @@ u32 dKirbyMainMotion_0x0578[] = {
 
 u32 dKirbyMainMotion_0x05B4[] = {
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlashMiddle, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbySmash3),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -434,9 +435,9 @@ u32 dKirbyMainMotion_0x05F4[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_0x05B4),
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -447,9 +448,9 @@ u32 dKirbyMainMotion_0x05F4[] = {
 u32 dKirbyMainMotion_0x063C[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 15, 0, -100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, -100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -511,12 +512,12 @@ u32 dKirbyMainMotion_0x06D4[] = {
 };
 
 u32 dKirbyMainMotion_0x06E4[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 4, 0, 0, 180, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 29, 4, 0, 0, 150, 200, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(8),
@@ -532,12 +533,12 @@ u32 dKirbyMainMotion_0x0748[] = {
 };
 
 u32 dKirbyMainMotion_0x0758[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 4, 0, 0, 300, 0, 180, 300, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
@@ -553,7 +554,7 @@ u32 dKirbyMainMotion_0x07B0[] = {
 
 u32 dKirbyMainMotion_0x07B8[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(40),
 	ftMotionCommandSetHitStatusAll(1),
@@ -567,7 +568,7 @@ u32 dKirbyMainMotion_0x07DC[] = {
 
 u32 dKirbyMainMotion_0x07E4[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(40),
 	ftMotionCommandSetHitStatusAll(1),
@@ -596,14 +597,14 @@ u32 dKirbyMainMotion_0x0828[] = {
 
 u32 dKirbyMainMotion_0x0834[] = {
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dKirbyMainMotion_0x0850[] = {
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -612,14 +613,14 @@ u32 dKirbyMainMotion_0x086C[] = {
 	ftMotionCommandSetFlag3(6),
 	ftMotionCommandGoto(dKirbyMainMotion_0x0850),
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dKirbyMainMotion_0x0894[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -628,7 +629,7 @@ u32 dKirbyMainMotion_0x08B0[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -640,7 +641,7 @@ u32 dKirbyMainMotion_0x08D4[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -649,14 +650,14 @@ u32 dKirbyMainMotion_0x0908[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dKirbyMainMotion_0x092C[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -665,14 +666,14 @@ u32 dKirbyMainMotion_0x0948[] = {
 	ftMotionCommandSetFlag3(4),
 	ftMotionCommandGoto(dKirbyMainMotion_0x092C),
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dKirbyMainMotion_0x0970[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -681,7 +682,7 @@ u32 dKirbyMainMotion_0x098C[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -693,7 +694,7 @@ u32 dKirbyMainMotion_0x09B0[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -702,7 +703,7 @@ u32 dKirbyMainMotion_0x09E4[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -974,19 +975,19 @@ u32 dKirbyMainMotion_0x0D68[] = {
 };
 
 u32 dKirbyMainMotion_0x0D6C[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindShockSmall, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dKirbyMainMotion_0x0D6C),
-	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyDeadUp),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dKirbyMainMotion_0x0D44 + 9),
 	ftMotionCommandGoto(dKirbyMainMotion_0x0D44 + 9),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -1000,7 +1001,7 @@ u32 dKirbyMainMotion_0x0DF4[] = {
 	ftMotionPlayVoice(nSYAudioVoiceKirbyFuraFura),
 	ftMotionCommandSetTexturePartID(7),
 	ftMotionCommandLoopBegin(12),
-	ftMotionCommandEffect(0, 40, 0, 0, 130, 0, 240, 240, 240),
+	ftMotionCommandEffect(0, nEFKindFuraSparkle, 0, 0, 130, 0, 240, 240, 240),
 	ftMotionCommandWait(10),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dKirbyMainMotion_0x0DF4),
@@ -1010,7 +1011,7 @@ u32 dKirbyMainMotion_0x0E24[] = {
 	ftMotionPlayInterruptableVoice(nSYAudioVoiceKirbyFuraSleep),
 	ftMotionCommandSetTexturePartID(8),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 90, 0, 0, 130, 0, 240, 240, 240),
+	ftMotionCommandEffect(0, nEFKindMusicNote, 0, 0, 130, 0, 240, 240, 240),
 	ftMotionCommandWait(10),
 	ftMotionCommandGoto(dKirbyMainMotion_0x0E24),
 };
@@ -1022,7 +1023,7 @@ FTThrowHitDesc dKirbyMainMotion_0x0E4C[2] = {
 
 u32 dKirbyMainMotion_0x0E84[] = {
 	ftMotionCommandSetThrow((u32)dKirbyMainMotion_0x0ED8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandMakeAttackColl(0, 0, 30, 1, 1, 0, 260, 0, 0, -20, 361, 100, 0, 3, 0, 1, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 30, 1, 1, 0, 160, 0, 0, -160, 361, 100, 0, 3, 0, 1, 0, 0),
@@ -1050,10 +1051,10 @@ u32 dKirbyMainMotion_0x0F10[] = {
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMSamusJump1),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopBegin(10),
 	ftMotionCommandWait(2),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 200, 0, 400),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 0, 400),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -1066,9 +1067,9 @@ u32 dKirbyMainMotion_0x0F60[] = {
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x0F64[] = {
 	ftMotionPlayFGM(nSYAudioFGMExplodeL),
-	ftMotionCommandEffect(0, 29, 0, 0, 200, 280, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 200, 280, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetTexturePartID(0),
@@ -1111,9 +1112,9 @@ u32 dKirbyMainMotion_0x0FE8[] = {
 u32 dKirbyMainMotion_0x0F64[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 0, 7, 1, 0, 200, 0, 0, 0, 361, 80, 0, 3, 0, 2, 0, 10),
 	ftMotionPlayFGM(nSYAudioFGMExplodeL),
-	ftMotionCommandEffect(0, 29, 0, 0, 200, 280, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 200, 280, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetFlag2(1),
@@ -1134,10 +1135,10 @@ u32 dKirbyMainMotion_0x1000[] = {
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandWaitAsync(19),
 	ftMotionPlayFGM(nSYAudioFGMDonkeySlap2),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 15, 0, 0, 0, 150, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, -280, 0, 0, 0),
-	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, 0, 0, 150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, -280, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetHitStatusAll(1),
@@ -1163,10 +1164,10 @@ u32 dKirbyMainMotion_0x1000[] = {
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandWaitAsync(19),
 	ftMotionPlayFGM(nSYAudioFGMDonkeySlap2),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 15, 0, 0, 0, 150, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, -280, 0, 0, 0),
-	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, 0, 0, 150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, -280, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetHitStatusAll(1),
@@ -1498,14 +1499,14 @@ u32 dKirbyMainMotion_0x1230[] = {
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x12B4[] = {
 	0x01420500,
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 8, 1, 0, 260, 0, 150, 200, 361, 100, 0, 3, 1, 2, 1, 10),
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(16),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
@@ -1519,14 +1520,14 @@ u32 dKirbyMainMotion_0x12B4[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionPlayVoice(nSYAudioVoiceKirbySmash1),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 10, 1, 0, 260, 0, 150, 200, 361, 100, 0, 3, 1, 2, 1, 10),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 8, 1, 0, 260, 0, 150, 200, 361, 100, 0, 3, 1, 2, 1, 10),
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(16),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
@@ -1682,8 +1683,8 @@ u32 dKirbyMainMotion_0x1480[] = {
 	ftMotionCommandSetFlag1(38240259),
 	0x01420A00,
 	ftMotionCommandMakeAttackColl(1, 0, 24, 17, 1, 0, 280, 140, 0, 0, 361, 120, 0, 3, 1, 2, 1, 20),
-	ftMotionCommandEffect(22, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(22, nEFKindSparkleWhiteScale, 0, 120, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWait(4),
@@ -1712,8 +1713,8 @@ u32 dKirbyMainMotion_0x1480[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandMakeAttackColl(0, 0, 24, 17, 1, 0, 280, -20, 0, 0, 361, 120, 0, 3, 1, 2, 1, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 24, 17, 1, 0, 280, 140, 0, 0, 361, 120, 0, 3, 1, 2, 1, 20),
-	ftMotionCommandEffect(22, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(22, nEFKindSparkleWhiteScale, 0, 120, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWait(4),
@@ -1731,8 +1732,8 @@ u32 dKirbyMainMotion_0x1480[] = {
 u32 dKirbyMainMotion_0x151C[] = {
 	0x00420C00,
 	ftMotionCommandMakeAttackColl(1, 0, 27, 18, 1, 0, 280, 0, 0, 0, 90, 120, 0, 3, 0, 2, 1, 24),
-	ftMotionCommandEffect(27, 31, 0, 110, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(27, nEFKindSparkleWhiteScale, 0, 110, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 12, 1, 0, 200, 140, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
@@ -1740,7 +1741,7 @@ u32 dKirbyMainMotion_0x151C[] = {
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x15A4[] = {
@@ -1757,8 +1758,8 @@ u32 dKirbyMainMotion_0x151C[] = {
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 16, 1, 0, 320, 140, 0, 0, 90, 120, 0, 3, 0, 2, 1, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 27, 16, 1, 0, 280, 0, 0, 0, 90, 120, 0, 3, 0, 2, 1, 20),
-	ftMotionCommandEffect(27, 31, 0, 110, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(27, nEFKindSparkleWhiteScale, 0, 110, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 12, 1, 0, 200, 140, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
@@ -1766,7 +1767,7 @@ u32 dKirbyMainMotion_0x151C[] = {
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -1781,9 +1782,9 @@ u32 dKirbyMainMotion_0x15C4[] = {
 	0x00421400,
 	ftMotionCommandMakeAttackColl(1, 0, 24, 20, 1, 0, 300, 180, 0, 0, 34, 75, 0, 3, 0, 2, 1, 40),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 20, 1, 0, 180, 0, 0, 0, 35, 75, 0, 3, 0, 2, 1, 40),
-	ftMotionCommandEffect(27, 31, 0, 90, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(22, 31, 0, 90, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(27, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(22, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetAttackCollDamage(0, 10),
@@ -1814,9 +1815,9 @@ u32 dKirbyMainMotion_0x15BC[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 29, 18, 1, 0, 300, 180, 0, 0, 34, 75, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 24, 18, 1, 0, 300, 180, 0, 0, 34, 75, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 18, 1, 0, 180, 0, 0, 0, 35, 75, 0, 3, 0, 2, 1, 30),
-	ftMotionCommandEffect(27, 31, 0, 90, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(22, 31, 0, 90, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(27, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(22, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetAttackCollDamage(0, 10),
@@ -1895,7 +1896,7 @@ u32 dKirbyMainMotion_0x16DC[] = {
 };
 u32 dKirbyMainMotion_0x1758[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	0x0C000070,  /* opc=3 truncated */
 };
 #else
@@ -1946,7 +1947,7 @@ u32 dKirbyMainMotion_0x17A0[] = {
 #else
 u32 dKirbyMainMotion_0x1770[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 3, 1, 0, 300, 0, 150, 220, 361, 100, 80, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 3, 1, 0, 270, 0, 150, 100, 361, 100, 80, 3, 0, 1, 1, 0),
 	ftMotionCommandWait(3),
@@ -1970,7 +1971,7 @@ u32 dKirbyMainMotion_0x17B8[] = {
 };
 u32 dKirbyMainMotion_0x1810[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #else
@@ -2002,7 +2003,7 @@ u32 dKirbyMainMotion_0x1828[] = {
 #else
 u32 dKirbyMainMotion_0x1828[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -2072,7 +2073,7 @@ u32 dKirbyMainMotion_0x188C[] = {
 };
 u32 dKirbyMainMotion_0x18DC[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	0x0C000070,  /* opc=3 truncated */
 };
 #else
@@ -2120,7 +2121,7 @@ u32 dKirbyMainMotion_0x1924[] = {
 #else
 u32 dKirbyMainMotion_0x18F4[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 3, 1, 0, 300, 0, 0, 150, 361, 100, 80, 3, 0, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 3, 1, 0, 300, 0, 0, -150, 361, 100, 80, 3, 0, 2, 1, 0),
 	ftMotionCommandWait(1),
@@ -2131,7 +2132,7 @@ u32 dKirbyMainMotion_0x18F4[] = {
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x193C[] = {
-	ftMotionCommandEffect(0, 29, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandEnd(),
@@ -2151,7 +2152,7 @@ u32 dKirbyMainMotion_0x193C[] = {
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionPlayFGM(nSYAudioFGMKirbyDeadSlam),
-	ftMotionCommandEffect(0, 29, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandEnd(),
@@ -2230,11 +2231,11 @@ u32 dKirbyMainMotion_0x19D4[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x19DC[] = {
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandWaitAsync(23),
 	ftMotionCommandSetAirJumpMax(0),
 	ftMotionPlayFGM(nSYAudioFGMUnkMechanical4),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -120, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 8, 1, 3, 150, 0, 100, 200, 88, 100, 121, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 8, 1, 3, 150, 0, 100, 530, 96, 100, 121, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 8, 1, 3, 150, 0, 400, 200, 88, 100, 105, 3, 0, 2, 5, 0),
@@ -2242,11 +2243,11 @@ u32 dKirbyMainMotion_0x19DC[] = {
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandLoopBegin(8),
-	ftMotionCommandEffect(0, 74, 0, 0, 0, 0, 120, 0, 0),
+	ftMotionCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 120, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandWaitAsync(46),
-	ftMotionCommandEffect(0, 31, 0, 0, 280, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 280, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 2, 1, 3, 330, 0, 300, 400, -85, 100, 200, 3, 0, 2, 5, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetAttackCollSize(0, 0),
@@ -2271,12 +2272,12 @@ u32 dKirbyMainMotion_0x19D4[] = {
 	ftMotionCommandSetParallelScript(dKirbyMainMotion_0x1978),
 	ftMotionPlayVoice(nSYAudioVoiceKirbySpecialHi),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 31, 0, 0, 340, -100, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 340, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandWaitAsync(23),
 	ftMotionCommandSetAirJumpMax(0),
 	ftMotionPlayFGM(nSYAudioFGMUnkMechanical4),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -120, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 8, 1, 3, 150, 0, 100, 200, 88, 100, 121, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 8, 1, 3, 150, 0, 100, 530, 96, 100, 121, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 8, 1, 3, 150, 0, 400, 200, 88, 100, 105, 3, 0, 2, 5, 0),
@@ -2284,11 +2285,11 @@ u32 dKirbyMainMotion_0x19D4[] = {
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandLoopBegin(8),
-	ftMotionCommandEffect(0, 74, 0, 0, 0, 0, 120, 0, 0),
+	ftMotionCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 120, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandWaitAsync(46),
-	ftMotionCommandEffect(0, 31, 0, 0, 280, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 280, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 2, 1, 3, 330, 0, 300, 400, 939, 100, 200, 3, 0, 2, 5, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetAttackCollSize(0, 0),
@@ -2319,7 +2320,7 @@ u32 dKirbyMainMotion_0x1AE0[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMUnkLongWind),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
@@ -2337,12 +2338,12 @@ u32 dKirbyMainMotion_0x1ADC[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayVoice(nSYAudioVoiceKirbySmash1),
 	ftMotionCommandSetFlag2(2),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMUnkLongWind),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
@@ -2361,7 +2362,7 @@ u32 dKirbyMainMotion_0x1B38[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1B3C[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetColAnim(54, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialLwStart),
@@ -2380,8 +2381,8 @@ u32 dKirbyMainMotion_0x1B6C[] = {
 u32 dKirbyMainMotion_0x1B30[] = {
 	ftMotionCommandMakeRumble(10, 9),
 	ftMotionCommandEffect(0, 76, 0, 0, 120, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetColAnim(nGMColAnimFighterKirbySpecialLwStart, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialLwStart),
@@ -2403,7 +2404,7 @@ u32 dKirbyMainMotion_0x1B84[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1B9C[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandHideModelPartAll(),
 	ftMotionCommandSetModelPartID(6, 2),
 };
@@ -2434,7 +2435,7 @@ u32 dKirbyMainMotion_0x1BD4[] = {
 };
 #else
 u32 dKirbyMainMotion_0x1BB4[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandHideModelPartAll(),
 	ftMotionCommandSetModelPartID(6, 2),
 	ftMotionCommandSetFlag1(1),
@@ -2448,7 +2449,7 @@ u32 dKirbyMainMotion_0x1BB4[] = {
 u32 dKirbyMainMotion_0x1BEC[] = {
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialLwLanding),
-	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 };
 #else
 u32 dKirbyMainMotion_0x1BEC[] = {
@@ -2459,8 +2460,8 @@ u32 dKirbyMainMotion_0x1BEC[] = {
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x1C04[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1C28[] = {
@@ -2475,9 +2476,9 @@ u32 dKirbyMainMotion_0x1C28[] = {
 u32 dKirbyMainMotion_0x1C04[] = {
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialLwLanding),
-	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -2487,7 +2488,7 @@ u32 dKirbyMainMotion_0x1C40[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1C44[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1C58[] = {
@@ -2509,7 +2510,7 @@ u32 dKirbyMainMotion_0x1C40[] = {
 	ftMotionPlayVoice(nSYAudioVoiceKirbySpecialLw),
 	ftMotionCommandSetColAnim(nGMColAnimFighterKirbySpecialLwEnd, 0),
 	ftMotionCommandEffect(0, 77, 0, 0, 120, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 	ftMotionCommandSetModelPartID(6, 1),
 	ftMotionCommandSetModelPartID(7, 0),
@@ -2621,7 +2622,7 @@ u32 dKirbyMainMotion_0x1D2C[] = {
 u32 dKirbyMainMotion_0x1D08[] = {
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutine(dKirbyMainMotion_0x1C40 + 12),
-	ftMotionCommandEffect(127, 32, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag0, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialNThrow),
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandSetFlag2(1),
@@ -2658,7 +2659,7 @@ u32 dKirbyMainMotion_0x1D4C[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1D60[] = {
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag0(1),
 };
@@ -2668,7 +2669,7 @@ u32 dKirbyMainMotion_0x1D44[] = {
 	ftMotionCommandSetTexturePartID(10),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMStarGet),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandWaitAsync(12),
@@ -2686,7 +2687,7 @@ u32 dKirbyMainMotion_0x1D78[] = {
 };
 #else
 u32 dKirbyMainMotion_0x1D78[] = {
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 };
 #endif
 
@@ -2700,7 +2701,7 @@ u32 dKirbyMainMotion_0x1D8C[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1D98[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandGoto(0x077F075C),
 };
 #else
@@ -2708,7 +2709,7 @@ u32 dKirbyMainMotion_0x1D88[] = {
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandSetColAnim(nGMColAnimFighterMarioSpecialN, 0),
-	ftMotionCommandEffect(17, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioSpecialN),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandEnd(),
@@ -2717,7 +2718,7 @@ u32 dKirbyMainMotion_0x1D88[] = {
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x1DB0[] = {
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandSetColAnim(39, 0),
@@ -2727,9 +2728,9 @@ u32 dKirbyMainMotion_0x1DB0[] = {
 };
 #else
 u32 dKirbyMainMotion_0x1DB0[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandGoto(dKirbyMainMotion_0x1D88),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 };
 #endif
 
@@ -2743,7 +2744,7 @@ u32 dKirbyMainMotion_0x1DDC[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1DE8[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandGoto(0x07BA0770),
 };
 #else
@@ -2751,7 +2752,7 @@ u32 dKirbyMainMotion_0x1DD8[] = {
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandSetColAnim(nGMColAnimFighterMarioSpecialN, 0),
-	ftMotionCommandEffect(17, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioSpecialN),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandEnd(),
@@ -2767,10 +2768,10 @@ u32 dKirbyMainMotion_0x1E00[] = {
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandSetColAnim(47, 0),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialN),
-	ftMotionCommandEffect(17, 31, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -220, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -220, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1E48[] = {
@@ -2783,7 +2784,7 @@ u32 dKirbyMainMotion_0x1E48[] = {
 };
 #else
 u32 dKirbyMainMotion_0x1E00[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandGoto(dKirbyMainMotion_0x1DD8),
 	ftMotionCommandHideItem(0),
 	ftMotionCommandSetModelPartID(17, 0),
@@ -2792,10 +2793,10 @@ u32 dKirbyMainMotion_0x1E00[] = {
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart, 0),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialN),
-	ftMotionCommandEffect(17, 31, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -220, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -220, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -2803,14 +2804,14 @@ u32 dKirbyMainMotion_0x1E00[] = {
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x1E60[] = {
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialN),
-	ftMotionCommandEffect(17, 31, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1E8C[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #else
@@ -2822,16 +2823,16 @@ u32 dKirbyMainMotion_0x1E60[] = {
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart, 0),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialN),
-	ftMotionCommandEffect(17, 31, 0, 90, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 90, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x1EA4[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1EB8[] = {
@@ -2840,7 +2841,7 @@ u32 dKirbyMainMotion_0x1EB8[] = {
 #else
 u32 dKirbyMainMotion_0x1EA4[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -2855,14 +2856,14 @@ u32 dKirbyMainMotion_0x1EBC[] = {
 };
 #else
 u32 dKirbyMainMotion_0x1EBC[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x1ED0[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 90, -180, 0, 90, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 90, -180, 0, 90, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(0x07C207AE),
 	ftMotionCommandMakeRumble(0, 7),
@@ -2880,7 +2881,7 @@ u32 dKirbyMainMotion_0x1ED0[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyCharge),
-	ftMotionCommandEffect(0, 11, 0, 0, 90, -180, 0, 90, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 90, -180, 0, 90, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dKirbyMainMotion_0x1ED0),
 };
@@ -2936,7 +2937,7 @@ u32 dKirbyMainMotion_0x1F24[] = {
 	ftMotionCommandWait(2),
 	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi, 4),
 	ftMotionCommandWait(7),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 14, 1, 0, 280, 0, 0, 0, 361, 100, 0, 3, 2, 2, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 14, 1, 0, 340, 300, 0, 0, 361, 100, 0, 3, 2, 2, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMBossUnk2),
@@ -2970,15 +2971,15 @@ u32 dKirbyMainMotion_0x1F90[] = {
 	0x0C420000, 0x0C81E490, 0x01540140, 0x00000000, 0x5A464003,
 	0x0C420000, 0x0D00A490, 0x00320000, 0x00000000, 0x5A464003,
 	ftMotionCommandMakeAttackColl(0, 4, 16, 0, 0, 0, 39928, -31744, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 20, 0, 0, 0, -100, 0, 0, 0),
-	ftMotionCommandEffect(17, 31, 0, 0, 0, 0, 200, 200, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashLarge, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 200, 0),
 	ftMotionPlayFGM(nSYAudioFGMBossUnk1),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyDonkeySpecialN),
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(2),
-	ftMotionCommandEffect(17, 31, 0, 0, 0, 0, 200, 200, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 200, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -3001,16 +3002,16 @@ u32 dKirbyMainMotion_0x1F8C[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 15, 36, 1, 0, 280, 0, 0, 0, 361, 100, 0, 3, 12, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 36, 1, 0, 340, 320, 0, 0, 361, 100, 0, 3, 12, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 36, 1, 0, 50, 0, 0, 0, 361, 100, 0, 3, 12, 2, 1, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 20, 0, 0, 0, -100, 0, 0, 0),
-	ftMotionCommandEffect(17, 31, 0, 0, 0, 0, 200, 200, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashLarge, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 200, 0),
 	ftMotionPlayFGM(nSYAudioFGMBossUnk1),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyDonkeySpecialN),
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(2),
-	ftMotionCommandEffect(17, 31, 0, 0, 0, 0, 200, 200, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 200, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -3023,21 +3024,21 @@ u32 dKirbyMainMotion_0x203C[] = {
 };
 u32 dKirbyMainMotion_0x2040[] = {
 	ftMotionCommandWait(13),
-	ftMotionCommandEffect(17, 31, 0, 150, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 150, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x2058[] = {
 	ftMotionCommandWait(13),
-	ftMotionCommandEffect(17, 31, 0, 150, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 150, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #else
 u32 dKirbyMainMotion_0x203C[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_0x1F8C),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -240, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -240, 0, 0, 0),
 	ftMotionCommandWait(13),
-	ftMotionCommandEffect(17, 31, 0, 150, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 150, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -3045,27 +3046,27 @@ u32 dKirbyMainMotion_0x203C[] = {
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x2070[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(17, 31, 0, 150, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 150, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeRumble(0, 7),
 };
 #else
 u32 dKirbyMainMotion_0x2070[] = {
 	ftMotionCommandWait(13),
-	ftMotionCommandEffect(17, 31, 0, 150, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 150, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x2088[] = {
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandPauseScript(),
 };
 #else
 u32 dKirbyMainMotion_0x2088[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(17, 31, 0, 150, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 150, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeRumble(0, 7),
 };
 #endif
@@ -3077,8 +3078,8 @@ u32 dKirbyMainMotion_0x20A0[] = {
 	ftMotionCommandSetColAnim(47, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(17, 18, 0, 200, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -240, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindDustExpandSmall, 0, 200, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -240, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x20DC[] = {
@@ -3091,7 +3092,7 @@ u32 dKirbyMainMotion_0x20DC[] = {
 };
 #else
 u32 dKirbyMainMotion_0x20A0[] = {
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dKirbyMainMotion_0x20A0),
@@ -3099,8 +3100,8 @@ u32 dKirbyMainMotion_0x20A0[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(17, 18, 0, 200, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -240, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindDustExpandSmall, 0, 200, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -240, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -3110,7 +3111,7 @@ u32 dKirbyMainMotion_0x20F4[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x20F8[] = {
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x210C[] = {
@@ -3126,8 +3127,8 @@ u32 dKirbyMainMotion_0x20F4[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(17, 18, 0, 200, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -200, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindDustExpandSmall, 0, 200, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 #endif
@@ -3137,8 +3138,8 @@ u32 dKirbyMainMotion_0x2124[] = {
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyLinkSpecialN),
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialNShoot),
 	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 210, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -3163,8 +3164,8 @@ u32 dKirbyMainMotion_0x2124[] = {
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyLinkSpecialN),
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialNShoot),
 	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 210, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -3302,7 +3303,7 @@ u32 dKirbyMainMotion_0x222C[] = {
 	ftMotionCommandSetTexturePartID(8),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 7, 0, 0, 100, 200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlameRandom, 0, 0, 100, 200, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMShellHit),
 	ftMotionCommandEnd(),
 };
@@ -3325,7 +3326,7 @@ u32 dKirbyMainMotion_0x222C[] = {
 	ftMotionCommandSetTexturePartID(8),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 7, 0, 0, 100, 200, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlameRandom, 0, 0, 100, 200, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMShellHit),
 	ftMotionCommandEnd(),
 };
@@ -3361,15 +3362,15 @@ u32 dKirbyMainMotion_0x2268[] = {
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x228C[] = {
 	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(12),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandWaitAsync(40),
-	ftMotionCommandEffect(13, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(13, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(42),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -220, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -220, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 24, 1, 0, 250, 400, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 26, 1, 0, 200, 0, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
@@ -3397,15 +3398,15 @@ u32 dKirbyMainMotion_0x228C[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyCaptainSpecialNFalcon),
 	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(12),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandWaitAsync(40),
-	ftMotionCommandEffect(13, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(13, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(42),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -220, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -220, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 24, 1, 0, 250, 400, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 26, 1, 0, 200, 0, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
@@ -3430,17 +3431,17 @@ u32 dKirbyMainMotion_0x234C[] = {
 u32 dKirbyMainMotion_0x2350[] = {
 	ftMotionCommandLoopBegin(3),
 	ftMotionCommandWait(12),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionCommandWaitAsync(40),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(13, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(13, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(42),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -220, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -220, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 24, 1, 0, 250, 400, 0, 0, 361, 120, 0, 3, 0, 2, 1, 40),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 26, 1, 0, 200, 0, 0, 0, 361, 120, 0, 3, 0, 2, 1, 40),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
@@ -3467,20 +3468,20 @@ u32 dKirbyMainMotion_0x2348[] = {
 	ftMotionCommandSetParallelScript(dKirbyMainMotion_0x2268),
 	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyCaptainSpecialNFalcon),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopBegin(3),
 	ftMotionCommandWait(12),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionCommandWaitAsync(40),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(13, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(13, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(42),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -220, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -220, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 24, 1, 0, 250, 400, 0, 0, 361, 120, 0, 3, 0, 2, 1, 40),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 26, 1, 0, 200, 0, 0, 0, 361, 120, 0, 3, 0, 2, 1, 40),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
@@ -3500,7 +3501,7 @@ u32 dKirbyMainMotion_0x2348[] = {
 u32 dKirbyMainMotion_0x241C[] = {
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetTexturePartID(0),
@@ -3524,7 +3525,7 @@ u32 dKirbyMainMotion_0x241C[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetTexturePartID(0),
@@ -3534,7 +3535,7 @@ u32 dKirbyMainMotion_0x241C[] = {
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_0x245C[] = {
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionCommandEnd(),
@@ -3555,7 +3556,7 @@ u32 dKirbyMainMotion_0x245C[] = {
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionCommandEnd(),
@@ -3571,8 +3572,8 @@ u32 dKirbyMainMotion_0x2494[] = {
 };
 u32 dKirbyMainMotion_0x2498[] = {
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 150, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 150, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandWaitAsync(40),
@@ -3593,10 +3594,10 @@ u32 dKirbyMainMotion_0x2490[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyNessSpecialN),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 150, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 150, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 150, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandWaitAsync(40),
@@ -3611,8 +3612,8 @@ u32 dKirbyMainMotion_0x24E8[] = {
 };
 u32 dKirbyMainMotion_0x24EC[] = {
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandWaitAsync(40),
@@ -3632,10 +3633,10 @@ u32 dKirbyMainMotion_0x24E8[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyNessSpecialN),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 150, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -210, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -210, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandWaitAsync(40),
@@ -3655,7 +3656,7 @@ u32 dKirbyMainMotion_0x2544[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x2548[] = {
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -120, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 16, 13, 1, 0, 310, -50, 0, 0, 120, 75, 0, 3, 20, 2, 6, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 16, 13, 1, 0, 310, 70, 0, 0, 120, 75, 0, 3, 20, 2, 6, 20),
 	ftMotionCommandMakeRumble(0, 6),
@@ -3678,8 +3679,8 @@ u32 dKirbyMainMotion_0x253C[] = {
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyPurinSpecialN),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(16, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -120, 0, 0, 0),
+	ftMotionCommandEffect(16, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -120, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 16, 13, 1, 0, 310, -50, 0, 0, 120, 75, 0, 3, 20, 2, 6, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 16, 13, 1, 0, 310, 70, 0, 0, 120, 75, 0, 3, 20, 2, 6, 20),
 	ftMotionCommandMakeRumble(0, 6),

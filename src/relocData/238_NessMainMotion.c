@@ -6,6 +6,7 @@
 #include <ft/fttypes.h>
 #include <gm/gmsound.h>
 #include <gm/gmdef.h>
+#include <ef/efdef.h>
 extern u32 dNessMainMotion_0x0128[];
 extern u32 dNessMainMotion_0x165C[];
 extern u32 dNessMainMotion_0x16B0[];
@@ -35,7 +36,7 @@ u32 dNessMainMotion_0x0024[] = {
 	ftMotionCommandGoto(dNessMainMotion_0x0024),
 	ftMotionPlayFGM(nSYAudioFGMNessDash),
 	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -44,14 +45,14 @@ u32 dNessMainMotion_0x0024[] = {
 u32 dNessMainMotion_0x007C[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMNessFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandWait(15),
 	ftMotionPlayFGM(nSYAudioFGMNessFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dNessMainMotion_0x007C),
 	ftMotionPlayFGM(nSYAudioFGMGroundBrakeGrind),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -64,11 +65,11 @@ u32 dNessMainMotion_0x00D0[] = {
 
 u32 dNessMainMotion_0x00E0[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 120, 0, 0, 0),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -81,9 +82,9 @@ u32 dNessMainMotion_0x0114[] = {
 
 u32 dNessMainMotion_0x0128[] = {
 	ftMotionPlayFGM(nSYAudioFGMNessJump),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(0, 41, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -92,7 +93,7 @@ u32 dNessMainMotion_0x0128[] = {
 u32 dNessMainMotion_0x015C[] = {
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
 	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(0, 41, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -101,14 +102,14 @@ u32 dNessMainMotion_0x015C[] = {
 u32 dNessMainMotion_0x0180[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMNessLanding),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dNessMainMotion_0x019C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMNessLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -146,7 +147,7 @@ u32 dNessMainMotion_0x01F0[] = {
 u32 dNessMainMotion_0x0204[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMNessLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -165,8 +166,8 @@ u32 dNessMainMotion_0x022C[] = {
 u32 dNessMainMotion_0x0238[] = {
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandWaitAsync(24),
@@ -177,7 +178,7 @@ u32 dNessMainMotion_0x0238[] = {
 
 u32 dNessMainMotion_0x0278[] = {
 	ftMotionCommandGoto(dNessMainMotion_0x0238),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -211,7 +212,7 @@ u32 dNessMainMotion_0x02D0[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 12, 6, 0, 0, 200, 0, 100, 0, 361, 100, 90, 3, 1, 1, 1, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
@@ -230,7 +231,7 @@ u32 dNessMainMotion_0x0358[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 26, 6, 0, 0, 180, 70, -50, 60, 361, 100, 90, 3, 1, 1, 1, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
@@ -247,7 +248,7 @@ u32 dNessMainMotion_0x03BC[] = {
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionPlayVoice(nSYAudioVoiceNessSmash1),
 	ftMotionPlayFGM(nSYAudioFGMHeavySwing1),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetHitStatusAll(1),
@@ -258,7 +259,7 @@ u32 dNessMainMotion_0x03E8[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionPlayVoice(nSYAudioVoiceNessSmash1),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -269,9 +270,9 @@ u32 dNessMainMotion_0x03E8[] = {
 u32 dNessMainMotion_0x0418[] = {
 	ftMotionCommandGoto(dNessMainMotion_0x03E8),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -281,9 +282,9 @@ u32 dNessMainMotion_0x0418[] = {
 
 u32 dNessMainMotion_0x045C[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 15, 0, -100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, -100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -343,14 +344,14 @@ u32 dNessMainMotion_0x04E8[] = {
 };
 
 u32 dNessMainMotion_0x04F8[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionPlayVoice(nSYAudioVoiceNessSmash1),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandMakeAttackColl(0, 0, 28, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(4),
@@ -364,13 +365,13 @@ u32 dNessMainMotion_0x0564[] = {
 };
 
 u32 dNessMainMotion_0x056C[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionPlayVoice(nSYAudioVoiceNessSmash1),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandMakeAttackColl(0, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 28, 6, 0, 0, 280, 80, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
@@ -386,7 +387,7 @@ u32 dNessMainMotion_0x05D8[] = {
 
 u32 dNessMainMotion_0x05E0[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(15),
 	ftMotionCommandSetHitStatusAll(1),
@@ -400,7 +401,7 @@ u32 dNessMainMotion_0x0604[] = {
 
 u32 dNessMainMotion_0x060C[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(15),
 	ftMotionCommandSetHitStatusAll(1),
@@ -427,14 +428,14 @@ u32 dNessMainMotion_0x0648[] = {
 
 u32 dNessMainMotion_0x0654[] = {
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dNessMainMotion_0x0670[] = {
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -443,14 +444,14 @@ u32 dNessMainMotion_0x068C[] = {
 	ftMotionCommandSetFlag3(6),
 	ftMotionCommandGoto(dNessMainMotion_0x0670),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dNessMainMotion_0x06B4[] = {
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -458,7 +459,7 @@ u32 dNessMainMotion_0x06B4[] = {
 u32 dNessMainMotion_0x06D0[] = {
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -468,7 +469,7 @@ u32 dNessMainMotion_0x06F0[] = {
 	ftMotionCommandGoto(dNessMainMotion_0x06D0),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -476,14 +477,14 @@ u32 dNessMainMotion_0x06F0[] = {
 u32 dNessMainMotion_0x071C[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dNessMainMotion_0x073C[] = {
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -492,14 +493,14 @@ u32 dNessMainMotion_0x0758[] = {
 	ftMotionCommandSetFlag3(4),
 	ftMotionCommandGoto(dNessMainMotion_0x073C),
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dNessMainMotion_0x0780[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -507,7 +508,7 @@ u32 dNessMainMotion_0x0780[] = {
 u32 dNessMainMotion_0x079C[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -517,7 +518,7 @@ u32 dNessMainMotion_0x07BC[] = {
 	ftMotionCommandGoto(dNessMainMotion_0x079C),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -525,7 +526,7 @@ u32 dNessMainMotion_0x07BC[] = {
 u32 dNessMainMotion_0x07E8[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -761,20 +762,20 @@ u32 dNessMainMotion_0x0AC8[] = {
 };
 
 u32 dNessMainMotion_0x0AE8[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindShockSmall, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dNessMainMotion_0x0AE8),
-	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceNessDamage),
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dNessMainMotion_0x0AE8),
 	ftMotionCommandGoto(dNessMainMotion_0x0AE8),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -788,7 +789,7 @@ u32 dNessMainMotion_0x0B74[] = {
 	ftMotionPlayVoice(nSYAudioVoiceNessFuraFura),
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionCommandLoopBegin(12),
-	ftMotionCommandEffect(0, 40, 0, 0, 130, 0, 200, 260, 200),
+	ftMotionCommandEffect(0, nEFKindFuraSparkle, 0, 0, 130, 0, 200, 260, 200),
 	ftMotionCommandWait(10),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dNessMainMotion_0x0B74),
@@ -798,7 +799,7 @@ u32 dNessMainMotion_0x0BA4[] = {
 	ftMotionPlayInterruptableVoice(nSYAudioVoiceNessFuraSleep),
 	ftMotionCommandSetTexturePartID(2),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 90, 0, 0, 130, 0, 240, 240, 240),
+	ftMotionCommandEffect(0, nEFKindMusicNote, 0, 0, 130, 0, 240, 240, 240),
 	ftMotionCommandWait(10),
 	ftMotionCommandGoto(dNessMainMotion_0x0BA4),
 	0xFFFFFFFF,
@@ -821,7 +822,7 @@ u32 dNessMainMotion_0x0C04[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetThrow(dNessMainMotion_0x0BA4 + 10),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandMakeAttackColl(0, 0, 30, 1, 1, 0, 310, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMCatch),
@@ -851,12 +852,12 @@ u32 dNessMainMotion_0x0C84[] = {
 	ftMotionCommandSetModelPartID(10, 2),
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandMakeAttackColl(0, 0, 30, 10, 0, 0, 300, 0, 0, 0, 361, 80, 0, 3, 1, 2, 0, 10),
 	ftMotionCommandLoopBegin(8),
-	ftMotionCommandEffect(30, 41, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindPsionic, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(3),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandClearAttackCollAll(),
@@ -864,9 +865,9 @@ u32 dNessMainMotion_0x0C84[] = {
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(22),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -893,12 +894,12 @@ u32 dNessMainMotion_0x0D70[] = {
 	ftMotionCommandSetModelPartID(10, 2),
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandMakeAttackColl(0, 0, 30, 10, 0, 0, 300, 0, 0, 0, 361, 80, 0, 3, 1, 2, 0, 10),
 	ftMotionCommandLoopBegin(8),
-	ftMotionCommandEffect(30, 41, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindPsionic, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(3),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandClearAttackCollAll(),
@@ -906,9 +907,9 @@ u32 dNessMainMotion_0x0D70[] = {
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(22),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -1007,7 +1008,7 @@ u32 dNessMainMotion_0x0F74[] = {
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 12, 1, 0, 280, 0, 140, 120, 361, 100, 0, 3, 1, 2, 0, 16),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 9, 1, 0, 250, 0, 140, 120, 361, 100, 0, 3, 1, 2, 0, 10),
@@ -1096,7 +1097,7 @@ u32 dNessMainMotion_0x1138[] = {
 	ftMotionCommandSetModelPartID(17, 0),
 	ftMotionCommandHideItem(0),
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(17, 31, 0, 120, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 120, 0, 0, 0, 0, 0),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag1(1),
@@ -1125,7 +1126,7 @@ u32 dNessMainMotion_0x11A8[] = {
 	ftMotionCommandSetModelPartID(30, 0),
 	ftMotionCommandHideItem(0),
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWaitAsync(13),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLinkSpecialNShoot),
 #if defined(REGION_JP)
@@ -1159,7 +1160,7 @@ u32 dNessMainMotion_0x122C[] = {
 	ftMotionCommandHideItem(0),
 	ftMotionCommandWaitAsync(13),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLinkSpecialNShoot),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 100, 100, 100),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 30, 21, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 0),
 #else
@@ -1205,7 +1206,7 @@ u32 dNessMainMotion_0x1314[] = {
 u32 dNessMainMotion_0x1360[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(nSYAudioFGMNessLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(8),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandEnd(),
@@ -1229,7 +1230,7 @@ u32 dNessMainMotion_0x1384[] = {
 u32 dNessMainMotion_0x13F4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMNessLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -1241,7 +1242,7 @@ u32 dNessMainMotion_0x1410[] = {
 #else
 	ftMotionCommandMakeAttackColl(0, 0, 12, 15, 1, 0, 350, 0, 100, 0, 85, 110, 0, 3, 0, 2, 0, 10),
 #endif
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetHitStatusPartAll(1),
@@ -1263,7 +1264,7 @@ u32 dNessMainMotion_0x1454[] = {
 
 u32 dNessMainMotion_0x1494[] = {
 	ftMotionPlayFGM(nSYAudioFGMNessLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -1276,8 +1277,8 @@ u32 dNessMainMotion_0x14AC[] = {
 u32 dNessMainMotion_0x14B8[] = {
 	ftMotionCommandGoto(dNessMainMotion_0x14AC),
 	ftMotionPlayFGM(nSYAudioFGMBurnL),
-	ftMotionCommandEffect(0, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 29, 0, 0, 180, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 180, 0, 0, 0, 0),
 	ftMotionCommandSetColAnim(nGMColAnimFighterNessAppear, 0),
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandMakeRumble(0, 10),
@@ -1286,7 +1287,7 @@ u32 dNessMainMotion_0x14B8[] = {
 	ftMotionCommandResetModelPartAll(),
 	ftMotionCommandMakeRumble(20, 7),
 	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(0, 7, 0, 0, 100, 0, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindFlameRandom, 0, 0, 100, 0, 200, 200, 200),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -1304,10 +1305,10 @@ u32 dNessMainMotion_0x1524[] = {
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
 	ftMotionPlayVoice(nSYAudioVoiceNessSpecialN),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 150, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 150, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 150, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandWaitAsync(40),
@@ -1321,10 +1322,10 @@ u32 dNessMainMotion_0x158C[] = {
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionPlayFGM(nSYAudioFGMNessPSI),
 	ftMotionPlayVoice(nSYAudioVoiceNessSpecialN),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 150, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandWaitAsync(40),
@@ -1338,11 +1339,11 @@ u32 dNessMainMotion_0x15E8[] = {
 	ftMotionCommandSetModelPartID(10, 2),
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionPlayVoice(nSYAudioVoiceNessSpecialHi),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindPsionic, 0, 0, 150, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandPlayLoopSFXStoreInfo(nSYAudioFGMNessPKThunderLoop),
-	ftMotionCommandEffect(0, 31, 0, 0, 150, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 150, 130, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -1371,7 +1372,7 @@ u32 dNessMainMotion_0x165C[] = {
 	ftMotionPlayVoice(nSYAudioVoiceNessDamage),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
 	ftMotionPlayFGM(nSYAudioVoicePublicGaspM),
-	ftMotionCommandEffect(0, 17, 0, 0, 90, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustExpandLarge, 0, 0, 90, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -1387,7 +1388,7 @@ u32 dNessMainMotion_0x165C[] = {
 	ftMotionPlayVoice(nSYAudioVoiceNessDamage),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
 	ftMotionPlayFGM(nSYAudioVoicePublicGaspM),
-	ftMotionCommandEffect(0, 17, 0, 0, 90, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustExpandLarge, 0, 0, 90, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(9),
@@ -1450,7 +1451,7 @@ u32 dNessMainMotion_0x16E8[] = {
 
 u32 dNessMainMotion_0x16F8[] = {
 #if defined(REGION_JP)
-	ftMotionCommandEffect(0, 71, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindRipple, 0, 0, 120, 0, 0, 0, 0),
 #else
 	ftMotionCommandMakeRumble(0, 9),
 #endif
@@ -1462,7 +1463,7 @@ u32 dNessMainMotion_0x16F8[] = {
 #if defined(REGION_JP)
 	ftMotionCommandEnd(),
 #else
-	ftMotionCommandEffect(0, 71, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindRipple, 0, 0, 120, 0, 0, 0, 0),
 #endif
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
@@ -1516,24 +1517,24 @@ u32 dNessMainMotion_0x1728[] = {
 	ftMotionPlayFGM(nSYAudioFGMCharacterUnk1),
 #endif
 #if defined(REGION_JP)
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -120, 0, 0, 0),
 #else
 	ftMotionPlayFGM(nSYAudioVoicePublicAbsorb),
 #endif
 #if defined(REGION_JP)
-	ftMotionCommandEffect(8, 27, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(8, nEFKindDamageFlyMDustReverse, 0, 0, 0, 0, 0, 0, 0),
 #else
 	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialLwHit, 0),
 #endif
 #if defined(REGION_JP)
 	ftMotionCommandLoopBegin(14),
 #else
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -120, 0, 0, 0),
 #endif
 #if defined(REGION_JP)
-	ftMotionCommandEffect(0, 74, 0, 0, 0, 0, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 200, 200, 200),
 #else
-	ftMotionCommandEffect(8, 27, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(8, nEFKindDamageFlyMDustReverse, 0, 0, 0, 0, 0, 0, 0),
 #endif
 #if defined(REGION_JP)
 	ftMotionCommandWait(1),
@@ -1543,7 +1544,7 @@ u32 dNessMainMotion_0x1728[] = {
 #if defined(REGION_JP)
 	ftMotionCommandLoopEnd(),
 #else
-	ftMotionCommandEffect(0, 74, 0, 0, 0, 0, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 200, 200, 200),
 #endif
 #if defined(REGION_JP)
 	ftMotionCommandSetFlag1(1),

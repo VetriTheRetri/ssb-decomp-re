@@ -6,6 +6,7 @@
 #include <ft/fttypes.h>
 #include <gm/gmsound.h>
 #include <gm/gmdef.h>
+#include <ef/efdef.h>
 u32 dPikachuMainMotion_0x0000[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandWait(2),
@@ -32,7 +33,7 @@ u32 dPikachuMainMotion_0x0010[] = {
 u32 dPikachuMainMotion_0x005C[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuDash),
 	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -42,14 +43,14 @@ u32 dPikachuMainMotion_0x0080[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMPikachuFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandWait(15),
 	ftMotionPlayFGM(nSYAudioFGMPikachuFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0080),
 	ftMotionPlayFGM(nSYAudioFGMGroundBrakeGrind),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -61,9 +62,9 @@ u32 dPikachuMainMotion_0x00D8[] = {
 
 u32 dPikachuMainMotion_0x00E4[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 120, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 120, 0, 0, 0),
 	ftMotionCommandWaitAsync(13),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandEnd(),
@@ -78,13 +79,13 @@ u32 dPikachuMainMotion_0x0118[] = {
 
 u32 dPikachuMainMotion_0x0128[] = {
 	ftMotionPlayFGM(nSYAudioFGMInflateJump7),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dPikachuMainMotion_0x0140[] = {
 	ftMotionPlayFGM(nSYAudioFGMInflateJump2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandEnd(),
 };
 
@@ -96,7 +97,7 @@ u32 dPikachuMainMotion_0x0158[] = {
 u32 dPikachuMainMotion_0x0160[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(nSYAudioFGMPikachuLanding),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandWait(5),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
@@ -105,7 +106,7 @@ u32 dPikachuMainMotion_0x0160[] = {
 u32 dPikachuMainMotion_0x0184[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(nSYAudioFGMPikachuLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(5),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
@@ -148,7 +149,7 @@ u32 dPikachuMainMotion_0x01E4[] = {
 
 u32 dPikachuMainMotion_0x01F8[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -172,8 +173,8 @@ u32 dPikachuMainMotion_0x0240[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandSetTexturePartID(1048581),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandWaitAsync(24),
@@ -188,7 +189,7 @@ u32 dPikachuMainMotion_0x0288[] = {
 };
 
 u32 dPikachuMainMotion_0x0290[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -220,7 +221,7 @@ u32 dPikachuMainMotion_0x02E0[] = {
 	ftMotionCommandGoto(dPikachuMainMotion_0x02D0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(17),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 6, 0, 0, 300, 0, 150, 300, 361, 100, 90, 3, 1, 1, 1, 0),
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
@@ -235,7 +236,7 @@ u32 dPikachuMainMotion_0x02E0[] = {
 u32 dPikachuMainMotion_0x0354[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(12),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 23, 6, 1, 0, 260, 0, 0, 0, 361, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
@@ -249,10 +250,10 @@ u32 dPikachuMainMotion_0x0354[] = {
 
 u32 dPikachuMainMotion_0x03B0[] = {
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 42, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoicePikachuSmash2),
 	ftMotionPlayFGM(nSYAudioFGMHeavySwing1),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetHitStatusAll(1),
@@ -261,10 +262,10 @@ u32 dPikachuMainMotion_0x03B0[] = {
 
 u32 dPikachuMainMotion_0x03EC[] = {
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandEffect(0, 42, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoicePikachuSmash2),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -275,9 +276,9 @@ u32 dPikachuMainMotion_0x03EC[] = {
 u32 dPikachuMainMotion_0x042C[] = {
 	ftMotionCommandGoto(dPikachuMainMotion_0x03EC),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -287,9 +288,9 @@ u32 dPikachuMainMotion_0x042C[] = {
 
 u32 dPikachuMainMotion_0x0470[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 15, 0, -100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, -100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -350,13 +351,13 @@ u32 dPikachuMainMotion_0x0504[] = {
 
 u32 dPikachuMainMotion_0x050C[] = {
 	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandMakeAttackColl(0, 0, 5, 6, 0, 0, 180, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 28, 6, 0, 0, 210, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(4),
@@ -372,12 +373,12 @@ u32 dPikachuMainMotion_0x0578[] = {
 
 u32 dPikachuMainMotion_0x0584[] = {
 	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 6, 0, 0, 300, 0, 180, 300, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
@@ -391,7 +392,7 @@ u32 dPikachuMainMotion_0x05D8[] = {
 
 u32 dPikachuMainMotion_0x05E0[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -405,7 +406,7 @@ u32 dPikachuMainMotion_0x0604[] = {
 
 u32 dPikachuMainMotion_0x060C[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(35),
 	ftMotionCommandSetHitStatusAll(1),
@@ -433,14 +434,14 @@ u32 dPikachuMainMotion_0x0648[] = {
 
 u32 dPikachuMainMotion_0x0658[] = {
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dPikachuMainMotion_0x0674[] = {
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -449,14 +450,14 @@ u32 dPikachuMainMotion_0x0690[] = {
 	ftMotionCommandSetFlag3(6),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0674),
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dPikachuMainMotion_0x06B8[] = {
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -464,7 +465,7 @@ u32 dPikachuMainMotion_0x06B8[] = {
 u32 dPikachuMainMotion_0x06D4[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -474,7 +475,7 @@ u32 dPikachuMainMotion_0x06F4[] = {
 	ftMotionCommandGoto(dPikachuMainMotion_0x06D4),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -482,14 +483,14 @@ u32 dPikachuMainMotion_0x06F4[] = {
 u32 dPikachuMainMotion_0x0720[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dPikachuMainMotion_0x0740[] = {
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -498,14 +499,14 @@ u32 dPikachuMainMotion_0x075C[] = {
 	ftMotionCommandSetFlag3(4),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0740),
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
 u32 dPikachuMainMotion_0x0784[] = {
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -513,7 +514,7 @@ u32 dPikachuMainMotion_0x0784[] = {
 u32 dPikachuMainMotion_0x07A0[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -523,7 +524,7 @@ u32 dPikachuMainMotion_0x07C0[] = {
 	ftMotionCommandGoto(dPikachuMainMotion_0x07A0),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -531,7 +532,7 @@ u32 dPikachuMainMotion_0x07C0[] = {
 u32 dPikachuMainMotion_0x07EC[] = {
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
@@ -786,20 +787,20 @@ u32 dPikachuMainMotion_0x0B10[] = {
 u32 dPikachuMainMotion_0x0B30[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandSetTexturePartID(1048581),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindShockSmall, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0B30),
-	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoicePikachuDeadUp),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0B30),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0B30),
 	ftMotionCommandSetTexturePartID(6),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -812,7 +813,7 @@ u32 dPikachuMainMotion_0x0BC0[] = {
 	ftMotionCommandSetTexturePartID(1048581),
 	ftMotionPlayVoice(nSYAudioVoicePikachuFuraFura),
 	ftMotionCommandLoopBegin(24),
-	ftMotionCommandEffect(0, 40, 0, 0, 130, 0, 200, 260, 200),
+	ftMotionCommandEffect(0, nEFKindFuraSparkle, 0, 0, 130, 0, 200, 260, 200),
 	ftMotionCommandWait(10),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0BC0),
@@ -822,7 +823,7 @@ u32 dPikachuMainMotion_0x0BF0[] = {
 	ftMotionPlayInterruptableVoice(nSYAudioVoicePikachuFuraSleep),
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048581),
-	ftMotionCommandEffect(0, 90, 0, 0, 130, 0, 220, 260, 220),
+	ftMotionCommandEffect(0, nEFKindMusicNote, 0, 0, 130, 0, 220, 260, 220),
 	ftMotionCommandWait(10),
 	ftMotionCommandGoto(dPikachuMainMotion_0x0BF0),
 };
@@ -857,9 +858,9 @@ u32 dPikachuMainMotion_0x0CC0[] = {
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandWaitAsync(20),
 	ftMotionPlayFGM(nSYAudioFGMLightSwingL),
-	ftMotionCommandEffect(0, 31, 0, 0, 200, 280, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 280, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -879,13 +880,13 @@ u32 dPikachuMainMotion_0x0D54[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterPikachuAttackS4, 30),
 	ftMotionCommandWaitAsync(12),
 	ftMotionPlayFGM(nSYAudioFGMPikachuElectric4),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopBegin(11),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 200, 200, 200),
+	ftMotionCommandEffect(30, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 200, 200),
 	ftMotionCommandWait(2),
 	ftMotionCommandLoopEnd(),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag2(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -957,7 +958,7 @@ u32 dPikachuMainMotion_0x0E80[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 11, 12, 1, 0, 270, 0, 70, 15, 361, 70, 0, 3, 0, 2, 0, 40),
 	ftMotionCommandMakeAttackColl(1, 0, 5, 12, 1, 0, 180, 0, 20, 0, 361, 70, 0, 3, 0, 2, 0, 40),
 #endif
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetTexturePartID(6),
@@ -965,7 +966,7 @@ u32 dPikachuMainMotion_0x0E80[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(nSYAudioFGMPikachuDownBounce),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(35),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionCommandSetSlopeContour(0),
@@ -1026,7 +1027,7 @@ u32 dPikachuMainMotion_0x0FF0[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 29, 11, 1, 0, 160, 0, 0, 0, 87, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 29, 11, 1, 0, 300, 115, 180, -60, 87, 100, 0, 3, 0, 1, 1, 10),
 #endif
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(10),
 	ftMotionCommandClearAttackCollAll(),
@@ -1038,7 +1039,7 @@ u32 dPikachuMainMotion_0x103C[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 12, 1, 0, 160, 0, 0, 0, 35, 100, 0, 3, 0, 2, 1, 12),
 	ftMotionCommandMakeAttackColl(1, 0, 29, 12, 1, 0, 280, 110, 170, -65, 35, 100, 0, 3, 0, 2, 1, 12),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
@@ -1102,8 +1103,8 @@ u32 dPikachuMainMotion_0x1170[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 18, 1, 0, 160, 0, 0, 0, 95, 100, 0, 3, 0, 2, 1, 40),
 	ftMotionCommandMakeAttackColl(1, 0, 29, 18, 1, 0, 310, 115, 180, -60, 95, 100, 0, 3, 0, 2, 1, 40),
-	ftMotionCommandEffect(29, 31, 0, 110, 170, -70, 100, 100, 100),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(29, nEFKindSparkleWhiteScale, 0, 110, 170, -70, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(3),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 9, 1, 0, 200, 0, 0, 0, 90, 100, 0, 3, 0, 1, 1, 10),
@@ -1116,21 +1117,21 @@ u32 dPikachuMainMotion_0x1170[] = {
 u32 dPikachuMainMotion_0x1200[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(26, 31, 0, 120, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(26, nEFKindSparkleWhiteScale, 0, 120, 0, 0, 0, 0, 0),
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandMakeAttackColl(0, 0, 26, 16, 1, 0, 270, 100, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 21, 16, 1, 0, 270, 100, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 16, 1, 0, 180, 0, 0, 0, 361, 120, 0, 3, 0, 2, 1, 30),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(11),
-	ftMotionCommandEffect(26, 31, 0, 120, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(26, nEFKindSparkleWhiteScale, 0, 120, 0, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 26, 13, 1, 0, 270, 100, 0, 0, 361, 110, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 21, 13, 1, 0, 270, 100, 0, 0, 361, 110, 0, 3, 0, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 13, 1, 0, 180, 0, 0, 0, 361, 110, 0, 3, 0, 2, 1, 30),
-	ftMotionCommandEffect(0, 15, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetSlopeContour(0),
@@ -1180,7 +1181,7 @@ u32 dPikachuMainMotion_0x1380[] = {
 u32 dPikachuMainMotion_0x13EC[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuLanding),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 6, 1, 2, 360, 0, 65, 15, 361, 100, 0, 3, 0, 1, 4, 30),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1205,7 +1206,7 @@ u32 dPikachuMainMotion_0x1490[] = {
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandMakeAttackColl(0, 0, 29, 10, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 29, 10, 1, 0, 280, 96, 150, -50, 361, 100, 0, 3, 0, 2, 1, 10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
@@ -1214,7 +1215,7 @@ u32 dPikachuMainMotion_0x1490[] = {
 
 u32 dPikachuMainMotion_0x14DC[] = {
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 31, 0, 0, 200, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 0, 0, 0, 0),
 	ftMotionCommandSetColAnim(nGMColAnimFighterPikachuAttackS4, 25),
 	ftMotionCommandWaitAsync(8),
 	ftMotionPlayFGM(nSYAudioFGMPikachuElectric3),
@@ -1228,9 +1229,9 @@ u32 dPikachuMainMotion_0x14DC[] = {
 
 u32 dPikachuMainMotion_0x1534[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuDeadSlam),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1238,7 +1239,7 @@ u32 dPikachuMainMotion_0x1534[] = {
 
 u32 dPikachuMainMotion_0x1574[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -1261,7 +1262,7 @@ u32 dPikachuMainMotion_0x15A4[] = {
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetTexturePartID(0),
@@ -1277,7 +1278,7 @@ u32 dPikachuMainMotion_0x15F0[] = {
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandWait(60),
 	ftMotionCommandSetTexturePartID(0),
 	ftMotionCommandSetTexturePartID(1048576),
@@ -1310,9 +1311,9 @@ u32 dPikachuMainMotion_0x1668[] = {
 	ftMotionCommandSetTexturePartID(5),
 	ftMotionCommandSetTexturePartID(1048581),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 70, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindThunderAmp, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetColAnim(nGMColAnimFighterPikachuSpecialLwHit, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 16, 0, 2, 700, 0, 300, 0, 361, 60, 0, 3, 2, 2, 4, 100),
 	ftMotionCommandWait(10),
@@ -1342,7 +1343,7 @@ u32 dPikachuMainMotion_0x16F0[] = {
 u32 dPikachuMainMotion_0x1710[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuElectric1),
 	ftMotionPlayVoice(nSYAudioVoicePikachuSpecialHi),
-	ftMotionCommandEffect(0, 31, 0, 0, 200, 0, 60, 60, 60),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 0, 60, 60, 60),
 #if !defined(REGION_JP)
 	ftMotionCommandSetColAnim(nGMColAnimFighterPikachuSpecialHi, 0),
 #endif
@@ -1350,7 +1351,7 @@ u32 dPikachuMainMotion_0x1710[] = {
 };
 
 u32 dPikachuMainMotion_0x1730[] = {
-	ftMotionCommandEffect(0, 71, 0, 0, 200, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindRipple, 0, 0, 200, 0, 0, 0, 0),
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandWait(9),
 	ftMotionCommandSetFlag1(1),

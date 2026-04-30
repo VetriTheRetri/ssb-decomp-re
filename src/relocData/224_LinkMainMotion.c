@@ -6,6 +6,7 @@
 #include <ft/fttypes.h>
 #include <gm/gmdef.h>
 
+#include <ef/efdef.h>
 u32 dLinkMainMotion_0x0000[] = {
 	ftMotionCommandSetTexturePartID(2),
 	ftMotionCommandWait(6),
@@ -36,7 +37,7 @@ u32 dLinkMainMotion_0x0054[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMLinkDash),
 	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -45,15 +46,15 @@ u32 dLinkMainMotion_0x0054[] = {
 u32 dLinkMainMotion_0x007C[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMLinkFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandWait(15),
 	ftMotionPlayFGM(nSYAudioFGMLinkFoot),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dLinkMainMotion_0x007C),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMGroundBrakeGrind),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -66,11 +67,11 @@ u32 dLinkMainMotion_0x00D4[] = {
 
 u32 dLinkMainMotion_0x00E4[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -84,7 +85,7 @@ u32 dLinkMainMotion_0x0118[] = {
 u32 dLinkMainMotion_0x0128[] = {
 	ftMotionPlayFGM(nSYAudioFGMGroundGrind3),
 	ftMotionPlayVoice(nSYAudioVoiceLinkJump),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -92,7 +93,7 @@ u32 dLinkMainMotion_0x0144[] = {
 	ftMotionPlayFGM(nSYAudioFGMUnkGrind5),
 	ftMotionPlayVoice(nSYAudioVoiceLinkJumpAerial),
 	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
@@ -101,14 +102,14 @@ u32 dLinkMainMotion_0x0144[] = {
 u32 dLinkMainMotion_0x016C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dLinkMainMotion_0x0188[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -154,7 +155,7 @@ u32 dLinkMainMotion_0x01E4[] = {
 u32 dLinkMainMotion_0x01F8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
@@ -189,8 +190,8 @@ u32 dLinkMainMotion_0x0244[] = {
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandWaitAsync(24),
@@ -204,7 +205,7 @@ u32 dLinkMainMotion_0x0288[] = {
 };
 
 u32 dLinkMainMotion_0x0290[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -239,9 +240,9 @@ u32 dLinkMainMotion_0x02E0[] = {
 	ftMotionCommandWaitAsync(15),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 8, 1, 3, 220, 0, 0, 200, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 8, 1, 3, 160, 0, 0, 0, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandWait(4),
@@ -256,7 +257,7 @@ u32 dLinkMainMotion_0x02E0[] = {
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 6, 1, 3, 220, 0, 0, 200, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 6, 1, 3, 160, 0, 0, 0, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandWait(2),
@@ -277,9 +278,9 @@ u32 dLinkMainMotion_0x03CC[] = {
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(19),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 8, 0, 3, 220, 0, 0, 200, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 8, 0, 3, 160, 0, 0, 0, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandWait(3),
@@ -294,7 +295,7 @@ u32 dLinkMainMotion_0x03CC[] = {
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 6, 0, 3, 220, 0, 0, 200, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 6, 0, 3, 160, 0, 0, 0, 361, 100, 110, 3, 0, 1, 5, 0),
 	ftMotionCommandWait(2),
@@ -312,10 +313,10 @@ u32 dLinkMainMotion_0x03CC[] = {
 
 u32 dLinkMainMotion_0x049C[] = {
 	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 42, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceLinkGrunt2),
 	ftMotionPlayFGM(nSYAudioFGMHeavySwing1),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetHitStatusAll(1),
@@ -324,9 +325,9 @@ u32 dLinkMainMotion_0x049C[] = {
 
 u32 dLinkMainMotion_0x04D8[] = {
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandEffect(0, 42, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindFlashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -337,9 +338,9 @@ u32 dLinkMainMotion_0x04D8[] = {
 u32 dLinkMainMotion_0x0514[] = {
 	ftMotionCommandGoto(dLinkMainMotion_0x04D8),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -349,9 +350,9 @@ u32 dLinkMainMotion_0x0514[] = {
 
 u32 dLinkMainMotion_0x0558[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 15, 0, -100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, -100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetHitStatusAll(1),
@@ -416,7 +417,7 @@ u32 dLinkMainMotion_0x05FC[] = {
 
 u32 dLinkMainMotion_0x0604[] = {
 	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSmash1),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetAfterImage(0, 0),
@@ -424,7 +425,7 @@ u32 dLinkMainMotion_0x0604[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 11, 4, 1, 3, 220, 0, 0, 200, 361, 100, 110, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 4, 1, 3, 160, 0, 0, 0, 361, 100, 110, 3, 0, 2, 5, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(3),
@@ -444,7 +445,7 @@ u32 dLinkMainMotion_0x0680[] = {
 };
 
 u32 dLinkMainMotion_0x0688[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSmash1),
 	ftMotionCommandWaitAsync(11),
@@ -453,7 +454,7 @@ u32 dLinkMainMotion_0x0688[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 11, 4, 1, 3, 220, 0, 0, 240, 361, 100, 110, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 4, 1, 3, 160, 0, 0, 0, 361, 100, 110, 3, 0, 2, 5, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(4),
@@ -475,7 +476,7 @@ u32 dLinkMainMotion_0x0708[] = {
 
 u32 dLinkMainMotion_0x0710[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(18),
 	ftMotionCommandSetHitStatusAll(1),
@@ -489,7 +490,7 @@ u32 dLinkMainMotion_0x0734[] = {
 
 u32 dLinkMainMotion_0x073C[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(36),
 	ftMotionCommandSetHitStatusAll(1),
@@ -527,7 +528,7 @@ u32 dLinkMainMotion_0x0794[] = {
 
 u32 dLinkMainMotion_0x07B0[] = {
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(31),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -538,7 +539,7 @@ u32 dLinkMainMotion_0x07B0[] = {
 u32 dLinkMainMotion_0x07D8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -552,7 +553,7 @@ u32 dLinkMainMotion_0x0804[] = {
 	ftMotionCommandGoto(dLinkMainMotion_0x07D8),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -563,7 +564,7 @@ u32 dLinkMainMotion_0x0804[] = {
 u32 dLinkMainMotion_0x0840[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -575,7 +576,7 @@ u32 dLinkMainMotion_0x086C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -590,7 +591,7 @@ u32 dLinkMainMotion_0x089C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -602,7 +603,7 @@ u32 dLinkMainMotion_0x08DC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -612,7 +613,7 @@ u32 dLinkMainMotion_0x08DC[] = {
 
 u32 dLinkMainMotion_0x090C[] = {
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(26),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -624,7 +625,7 @@ u32 dLinkMainMotion_0x0934[] = {
 	ftMotionCommandSetFlag3(4),
 	ftMotionCommandGoto(dLinkMainMotion_0x090C),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -634,7 +635,7 @@ u32 dLinkMainMotion_0x0934[] = {
 
 u32 dLinkMainMotion_0x0968[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -645,7 +646,7 @@ u32 dLinkMainMotion_0x0968[] = {
 u32 dLinkMainMotion_0x0990[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(26),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -658,7 +659,7 @@ u32 dLinkMainMotion_0x09BC[] = {
 	ftMotionCommandGoto(dLinkMainMotion_0x0990),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -669,7 +670,7 @@ u32 dLinkMainMotion_0x09BC[] = {
 u32 dLinkMainMotion_0x09F4[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetModelPartID(21, -1),
@@ -982,15 +983,15 @@ u32 dLinkMainMotion_0x0D68[] = {
 	0x9BF88000,
 	0x00000000,
 #else
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),
+	ftMotionCommandEffect(0, nEFKindShockSmall, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dLinkMainMotion_0x0D68),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
-	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
@@ -1005,9 +1006,9 @@ u32 dLinkMainMotion_0x0DD4[] = {
 	ftMotionCommandEnd(),
 	ftMotionCommandEnd(),
 #else
-	ftMotionCommandEffect(-1, 32, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag0, 0, 0, 0, 0, 0, 0, 0),
 #endif
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
@@ -1034,7 +1035,7 @@ u32 dLinkMainMotion_0x0E00[] = {
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	ftMotionCommandLoopBegin(5),
-	ftMotionCommandEffect(0, 40, 0, 0, 130, 0, 200, 260, 200),
+	ftMotionCommandEffect(0, nEFKindFuraSparkle, 0, 0, 130, 0, 200, 260, 200),
 	ftMotionCommandWait(10),
 	ftMotionCommandLoopEnd(),
 #if defined(REGION_JP)
@@ -1062,7 +1063,7 @@ u32 dLinkMainMotion_0x0E34[] = {
 	ftMotionPlayInterruptableVoice(nSYAudioVoiceLinkFuraSleep),
 	ftMotionCommandSetTexturePartID(2),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 90, 0, 0, 130, 0, 200, 260, 200),
+	ftMotionCommandEffect(0, nEFKindMusicNote, 0, 0, 130, 0, 200, 260, 200),
 	ftMotionCommandWait(10),
 	ftMotionCommandGoto(dLinkMainMotion_0x0E34),
 #endif
@@ -1099,12 +1100,12 @@ u32 dLinkMainMotion_0x0E94[] = {
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandMakeRumble(16, 9),
 	ftMotionCommandMakeAttackColl(0, 0, 35, 1, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMLinkCatchHookshot),
 	ftMotionCommandSetFlag1(12),
 	ftMotionCommandSetFlag2(5),
 	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(35, 31, 0, 0, 0, 0, 90, 90, 90),
+	ftMotionCommandEffect(35, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 90, 90, 90),
 	ftMotionCommandWait(3),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandClearAttackCollAll(),
@@ -1201,9 +1202,9 @@ u32 dLinkMainMotion_0x0F6C[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 32, 8, 0, 0, 200, 0, 0, 0, 361, 80, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionPlayFGM(nSYAudioFGMKickL),
-	ftMotionCommandEffect(15, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(15, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetFlag2(1),
@@ -1246,13 +1247,13 @@ u32 dLinkMainMotion_0x1040[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 27, 8, 0, 0, 200, 0, 0, 0, 361, 80, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionPlayFGM(nSYAudioFGMKickL),
-	ftMotionCommandEffect(35, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(35, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 #if defined(REGION_JP)
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 #else
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 #endif
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
@@ -1342,9 +1343,9 @@ u32 dLinkMainMotion_0x113C[] = {
 	ftMotionCommandWaitAsync(12),
 #endif
 	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandWaitAsync(30),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSmash1),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
@@ -1367,7 +1368,7 @@ u32 dLinkMainMotion_0x1174[] = {
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing1),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWaitAsync(12),
@@ -1397,7 +1398,7 @@ u32 dLinkMainMotion_0x11DC[] = {
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing1),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandWait(2),
 #if defined(REGION_JP)
 	ftMotionCommandSetAfterImage(0, 262143),
@@ -1428,7 +1429,7 @@ u32 dLinkMainMotion_0x1244[] = {
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioVoiceLinkJumpAerial),
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandWait(2),
 #if defined(REGION_JP)
 	ftMotionCommandSetAfterImage(0, 262143),
@@ -1627,7 +1628,7 @@ u32 dLinkMainMotion_0x1440[] = {
 	0x98587C00,
 #else
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(11, 31, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 #endif
 };
@@ -1678,7 +1679,7 @@ u32 dLinkMainMotion_0x1458[] = {
 	0x0800000E,
 #else
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(7),
@@ -1686,7 +1687,7 @@ u32 dLinkMainMotion_0x1458[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 14, 1, 3, 220, 0, 0, 190, 361, 100, 0, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 16, 1, 3, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 5, 10),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 10, 1, 3, 220, 0, 0, 190, 361, 100, 0, 3, 0, 2, 5, 0),
@@ -1711,10 +1712,10 @@ u32 dLinkMainMotion_0x1500[] = {
 	ftMotionPlayVoice(nSYAudioVoiceLinkJumpAerial),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 18, 1, 3, 260, 0, 0, 280, 361, 100, 0, 3, 0, 2, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 17, 1, 3, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 5, 0),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -100, 0, 80, 100),
+	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -100, 0, 80, 100),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
 	ftMotionCommandWait(2),
-	ftMotionCommandEffect(0, 31, 0, 0, 300, 400, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 300, 400, 0, 0, 0),
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
@@ -1748,7 +1749,7 @@ u32 dLinkMainMotion_0x1578[] = {
 #endif
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing3),
 	ftMotionCommandWait(9),
-	ftMotionCommandEffect(0, 31, 0, 0, 60, -360, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 60, -360, 0, 0, 0),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
 #if defined(REGION_JP)
@@ -1770,7 +1771,7 @@ u32 dLinkMainMotion_0x15D8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
 #endif
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSetAfterImage(0, 0),
@@ -1803,7 +1804,7 @@ u32 dLinkMainMotion_0x1648[] = {
 	ftMotionCommandSetSlopeContour(3),
 #endif
 	ftMotionCommandWaitAsync(5),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandWaitAsync(15),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(16),
@@ -1814,7 +1815,7 @@ u32 dLinkMainMotion_0x1648[] = {
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWait(3),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -100, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 12, 1, 3, 240, 0, 0, 270, 361, 100, 0, 3, 0, 1, 5, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 11, 12, 1, 3, 240, 0, 0, 130, 361, 100, 0, 3, 0, 1, 5, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 10, 12, 1, 3, 180, 0, 0, 0, 361, 100, 0, 3, 0, 1, 5, 20),
@@ -1842,12 +1843,12 @@ u32 dLinkMainMotion_0x1724[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(10),
 #endif
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 0, 0, 0),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(11),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSmash1),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 11, 8, 1, 3, 240, 0, 0, 180, 120, 100, 80, 3, 0, 0, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 8, 1, 3, 240, 0, 0, 0, 100, 100, 80, 3, 0, 0, 5, 0),
@@ -1875,8 +1876,8 @@ u32 dLinkMainMotion_0x1724[] = {
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 11, 4, 1, 3, 380, 0, 0, 180, 80, 100, 25, 3, 0, 0, 5, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 4, 1, 3, 200, 0, 0, 0, 80, 100, 25, 3, 0, 0, 5, 0),
@@ -1897,8 +1898,8 @@ u32 dLinkMainMotion_0x1724[] = {
 	ftMotionCommandWait(1),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 12, 1, 3, 380, 0, 0, 180, 90, 90, 0, 3, 0, 2, 5, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 12, 1, 3, 200, 0, 0, 0, 90, 90, 0, 3, 0, 2, 5, 30),
 	ftMotionCommandWait(5),
@@ -1927,8 +1928,8 @@ u32 dLinkMainMotion_0x1898[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
-	ftMotionCommandEffect(0, 15, 0, 0, 0, 150, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, 0, 0, 150, 0, 0, 0),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
 #if defined(REGION_JP)
@@ -1948,8 +1949,8 @@ u32 dLinkMainMotion_0x1898[] = {
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(21),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, -150, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 11, 16, 1, 3, 220, 0, 0, 240, 40, 100, 0, 3, 0, 2, 5, 35),
@@ -2008,7 +2009,7 @@ u32 dLinkMainMotion_0x1A1C[] = {
 #endif
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(15),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 20, 1, 3, 280, 0, 0, 250, 361, 100, 0, 3, 0, 2, 5, 5),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 20, 1, 3, 220, 0, 0, 0, 361, 100, 0, 3, 0, 2, 5, 5),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
@@ -2049,7 +2050,7 @@ u32 dLinkMainMotion_0x1AB8[] = {
 	ftMotionCommandSetFlag1(50),
 	ftMotionCommandWaitAsync(6),
 #endif
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandMakeAttackColl(0, 0, 27, 10, 1, 0, 280, 10, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 27, 10, 1, 0, 280, 90, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 10, 1, 0, 310, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
@@ -2080,7 +2081,7 @@ u32 dLinkMainMotion_0x1B6C[] = {
 #endif
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandSetFlag1(20),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 11, 16, 1, 3, 360, 0, 0, 100, 70, 100, 0, 3, 0, 2, 5, 5),
 #else
@@ -2114,7 +2115,7 @@ u32 dLinkMainMotion_0x1BD4[] = {
 #endif
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandSetFlag1(30),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 180, 90, 90, 90),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 11, 18, 1, 3, 360, 0, 0, 100, 361, 100, 0, 3, 0, 2, 5, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 18, 1, 3, 200, 0, 0, 0, 361, 100, 0, 3, 0, 2, 5, 30),
@@ -2180,9 +2181,9 @@ u32 dLinkMainMotion_0x1C54[] = {
 	ftMotionCommandSetModelPartID(21, 0),
 	ftMotionCommandSetModelPartID(19, -1),
 	ftMotionPlayFGM(nSYAudioFGMLinkDeadSlam),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 31, 0, 60, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(40),
 	ftMotionCommandResetModelPartAll(),
 	ftMotionCommandHideItem(1),
@@ -2194,7 +2195,7 @@ u32 dLinkMainMotion_0x1CA8[] = {
 #if defined(REGION_JP)
 #else
 	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
@@ -2262,7 +2263,7 @@ u32 dLinkMainMotion_0x1CF8[] = {
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialLwGet),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(19, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(19, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
@@ -2290,8 +2291,8 @@ u32 dLinkMainMotion_0x1D2C[] = {
 #endif
 	ftMotionPlayVoice(nSYAudioVoiceLinkSmash1),
 	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(10, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(10, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(38),
 #if defined(REGION_JP)
@@ -2361,7 +2362,7 @@ u32 dLinkMainMotion_0x1DCC[] = {
 	ftMotionCommandEnd(),
 	ftMotionCommandEnd(),
 #else
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 #endif
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialHi),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSpecialHi),
@@ -2370,15 +2371,15 @@ u32 dLinkMainMotion_0x1DCC[] = {
 	ftMotionCommandMakeRumble(30, 7),
 	ftMotionCommandSetFlag2(13),
 	ftMotionCommandWaitAsync(3),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 100, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 100, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 150, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 150, 0, 0, 0),
 	ftMotionCommandWaitAsync(5),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 200, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 200, 0, 0, 0),
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 250, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 250, 0, 0, 0),
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandEffect(11, 31, 0, 0, 0, 300, 0, 0, 0),
+	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 300, 0, 0, 0),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 16, 1, 3, 300, 0, 0, 300, 361, 100, 0, 3, 0, 2, 5, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 16, 1, 3, 200, 0, 0, 0, 361, 100, 0, 3, 0, 2, 5, 30),
@@ -2387,7 +2388,7 @@ u32 dLinkMainMotion_0x1DCC[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 10, 8, 1, 3, 140, 0, 0, 0, 361, 100, 0, 3, 0, 1, 5, 10),
 	ftMotionCommandSetFlag2(2),
 	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetFlag2(3),
 	ftMotionCommandWaitAsync(26),

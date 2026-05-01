@@ -12,6 +12,14 @@ extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[];
 extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
 
 extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
+extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[];
+extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x68[];
+extern u8 dITCommonObject_StarRod_Weapon_data_post_0x70[];
+extern u8 dITCommonObject_StarRod_Weapon_data_post_0x98[];
+extern u8 dITCommonObject_Tex_0x55C8[];
+extern u8 dITCommonObject_Tex_0x57D0[];
+extern u8 dITCommonObject_Tex_0x59D8[];
+extern u8 dITCommonObject_Tex_0x5BE0[];
 
 
 /* Shared vertex / DL pool the item DObjDesc trees reference via the
@@ -732,29 +740,29 @@ u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808[8] = {
 	#include <ITCommonObject/gap_0x2808.data.inc.c>
 };
 
-/* gap sub-block @ 0x2810 (was gap+0x8, 520 bytes) */
-u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x8[520] = {
-	#include <ITCommonObject/gap_0x2808_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x2810[520] = {
+	#include <ITCommonObject/Tex_0x2810.tex.inc.c>
 };
 
-/* gap sub-block @ 0x2A18 (was gap+0x210, 520 bytes) */
-u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x210[520] = {
-	#include <ITCommonObject/gap_0x2808_sub_0x210.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x2A18[520] = {
+	#include <ITCommonObject/Tex_0x2A18.tex.inc.c>
 };
 
-/* gap sub-block @ 0x2C20 (was gap+0x418, 520 bytes) */
-u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x418[520] = {
-	#include <ITCommonObject/gap_0x2808_sub_0x418.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x2C20[520] = {
+	#include <ITCommonObject/Tex_0x2C20.tex.inc.c>
 };
 
-/* gap sub-block @ 0x2E28 (was gap+0x620, 520 bytes) */
-u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x620[520] = {
-	#include <ITCommonObject/gap_0x2808_sub_0x620.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x2E28[520] = {
+	#include <ITCommonObject/Tex_0x2E28.tex.inc.c>
 };
 
-/* gap sub-block @ 0x3030 (was gap+0x828, 512 bytes) */
-u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x828[512] = {
-	#include <ITCommonObject/gap_0x2808_sub_0x828.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x3030[512] = {
+	#include <ITCommonObject/Tex_0x3030.tex.inc.c>
 };
 
 /* @ 0x03230, 456 bytes */
@@ -767,11 +775,11 @@ u32 dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230[2] = {
 
 /* u32 pointer array @ 0x3238 (6 entries) */
 u32 dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230_sub_0x8[6] = {
-	(u32)&dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x828,
-	(u32)&dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x620,
-	(u32)&dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x418,
-	(u32)&dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x210,
-	(u32)&dITCommonObject_Hammer_Item_data_remainder_gap_0x2808_sub_0x8,
+	(u32)&dITCommonObject_Tex_0x3030,
+	(u32)&dITCommonObject_Tex_0x2E28,
+	(u32)&dITCommonObject_Tex_0x2C20,
+	(u32)&dITCommonObject_Tex_0x2A18,
+	(u32)&dITCommonObject_Tex_0x2810,
 	0x00000000,
 };
 
@@ -991,8 +999,16 @@ Gfx dITCommonObject_LGunAmmo_Weapon_data[21] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x4150 (568 bytes) */
-u8 dITCommonObject_LGunAmmo_Weapon_data_post[568] = {
+u8 dITCommonObject_LGunAmmo_Weapon_data_post[64] = {
 	#include <ITCommonObject/LGunAmmo_Weapon_data_post.data.inc.c>
+};
+/* split-self chunk @ +0x40 (40 bytes, abs 0x4190) */
+u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[40] = {
+	#include <ITCommonObject/LGunAmmo_Weapon_data_post_0x40.data.inc.c>
+};
+/* split-self chunk @ +0x68 (464 bytes, abs 0x41B8) */
+u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x68[464] = {
+	#include <ITCommonObject/LGunAmmo_Weapon_data_post_0x68.data.inc.c>
 };
 
 /* @ 0x04388, 808 bytes */
@@ -1006,8 +1022,8 @@ u32 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388[3] = {
 
 /* u32 pointer array @ 0x4394 (3 entries) */
 u32 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0xC[3] = {
-	(u32)((u8*)&dITCommonObject_LGunAmmo_Weapon_data + 0x110),
-	(u32)((u8*)&dITCommonObject_LGunAmmo_Weapon_data + 0xE8),
+	(u32)&dITCommonObject_LGunAmmo_Weapon_data_post_0x68,
+	(u32)&dITCommonObject_LGunAmmo_Weapon_data_post_0x40,
 	0x00000000,
 };
 
@@ -1371,8 +1387,32 @@ Gfx dITCommonObject_StarRod_Weapon_data[22] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x5508 (2264 bytes) */
-u8 dITCommonObject_StarRod_Weapon_data_post[2264] = {
+u8 dITCommonObject_StarRod_Weapon_data_post[112] = {
 	#include <ITCommonObject/StarRod_Weapon_data_post.data.inc.c>
+};
+/* split-self chunk @ +0x70 (40 bytes, abs 0x5578) */
+u8 dITCommonObject_StarRod_Weapon_data_post_0x70[40] = {
+	#include <ITCommonObject/StarRod_Weapon_data_post_0x70.data.inc.c>
+};
+/* split-self chunk @ +0x98 (40 bytes, abs 0x55A0) */
+u8 dITCommonObject_StarRod_Weapon_data_post_0x98[40] = {
+	#include <ITCommonObject/StarRod_Weapon_data_post_0x98.data.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x55C8[520] = {
+	#include <ITCommonObject/Tex_0x55C8.tex.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x57D0[520] = {
+	#include <ITCommonObject/Tex_0x57D0.tex.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x59D8[520] = {
+	#include <ITCommonObject/Tex_0x59D8.tex.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x5BE0[512] = {
+	#include <ITCommonObject/Tex_0x5BE0.tex.inc.c>
 };
 
 /* @ 0x05DE0, 424 bytes */
@@ -1385,16 +1425,16 @@ u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0[2] = {
 
 /* u32 pointer array @ 0x5DE8 (4 entries) */
 u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x8[4] = {
-	(u32)((u8*)&dITCommonObject_StarRod_Weapon_data + 0x788),
-	(u32)((u8*)&dITCommonObject_StarRod_Weapon_data + 0x580),
-	(u32)((u8*)&dITCommonObject_StarRod_Weapon_data + 0x378),
-	(u32)((u8*)&dITCommonObject_StarRod_Weapon_data + 0x170),
+	(u32)&dITCommonObject_Tex_0x5BE0,
+	(u32)&dITCommonObject_Tex_0x59D8,
+	(u32)&dITCommonObject_Tex_0x57D0,
+	(u32)&dITCommonObject_Tex_0x55C8,
 };
 
 /* u32 pointer array @ 0x5DF8 (2 entries) */
 u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x18[2] = {
-	(u32)((u8*)&dITCommonObject_StarRod_Weapon_data + 0x148),
-	(u32)((u8*)&dITCommonObject_StarRod_Weapon_data + 0x120),
+	(u32)&dITCommonObject_StarRod_Weapon_data_post_0x98,
+	(u32)&dITCommonObject_StarRod_Weapon_data_post_0x70,
 };
 
 /* MObjSub @ 0x5E00 */
@@ -1785,44 +1825,44 @@ u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8[8] = {
 	#include <ITCommonObject/gap_0x7DD8.data.inc.c>
 };
 
-/* gap sub-block @ 0x7DE0 (was gap+0x8, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x8[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x7DE0[520] = {
+	#include <ITCommonObject/Tex_0x7DE0.tex.inc.c>
 };
 
-/* gap sub-block @ 0x7FE8 (was gap+0x210, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x210[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0x210.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x7FE8[520] = {
+	#include <ITCommonObject/Tex_0x7FE8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x81F0 (was gap+0x418, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x418[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0x418.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x81F0[520] = {
+	#include <ITCommonObject/Tex_0x81F0.tex.inc.c>
 };
 
-/* gap sub-block @ 0x83F8 (was gap+0x620, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x620[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0x620.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x83F8[520] = {
+	#include <ITCommonObject/Tex_0x83F8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x8600 (was gap+0x828, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x828[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0x828.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x8600[520] = {
+	#include <ITCommonObject/Tex_0x8600.tex.inc.c>
 };
 
-/* gap sub-block @ 0x8808 (was gap+0xA30, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xA30[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0xA30.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x8808[520] = {
+	#include <ITCommonObject/Tex_0x8808.tex.inc.c>
 };
 
-/* gap sub-block @ 0x8A10 (was gap+0xC38, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xC38[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0xC38.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x8A10[520] = {
+	#include <ITCommonObject/Tex_0x8A10.tex.inc.c>
 };
 
-/* gap sub-block @ 0x8C18 (was gap+0xE40, 520 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xE40[520] = {
-	#include <ITCommonObject/gap_0x7DD8_sub_0xE40.data.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x8C18[520] = {
+	#include <ITCommonObject/Tex_0x8C18.tex.inc.c>
 };
 
 /* gap sub-block @ 0x8E20 (was gap+0x1048, 768 bytes) */
@@ -1843,14 +1883,14 @@ u32 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120[4] = {
 
 /* u32 pointer array @ 0x9130 (8 entries) */
 u32 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x10[8] = {
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xE40,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xC38,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0xA30,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x828,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x620,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x418,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x210,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8_sub_0x8,
+	(u32)&dITCommonObject_Tex_0x8C18,
+	(u32)&dITCommonObject_Tex_0x8A10,
+	(u32)&dITCommonObject_Tex_0x8808,
+	(u32)&dITCommonObject_Tex_0x8600,
+	(u32)&dITCommonObject_Tex_0x83F8,
+	(u32)&dITCommonObject_Tex_0x81F0,
+	(u32)&dITCommonObject_Tex_0x7FE8,
+	(u32)&dITCommonObject_Tex_0x7DE0,
 };
 
 /* MObjSub @ 0x9150 */
@@ -2061,19 +2101,19 @@ u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA838[8] = {
 	#include <ITCommonObject/gap_0xA838.data.inc.c>
 };
 
-/* gap sub-block @ 0xA840 (was gap+0x8, 136 bytes) */
-u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA838_sub_0x8[136] = {
-	#include <ITCommonObject/gap_0xA838_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=16x16 */
+u8 dITCommonObject_Tex_0xA840[136] = {
+	#include <ITCommonObject/Tex_0xA840.tex.inc.c>
 };
 
-/* gap sub-block @ 0xA8C8 (was gap+0x90, 136 bytes) */
-u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA838_sub_0x90[136] = {
-	#include <ITCommonObject/gap_0xA838_sub_0x90.data.inc.c>
+/* @tex fmt=CI4 dim=16x16 */
+u8 dITCommonObject_Tex_0xA8C8[136] = {
+	#include <ITCommonObject/Tex_0xA8C8.tex.inc.c>
 };
 
-/* gap sub-block @ 0xA950 (was gap+0x118, 128 bytes) */
-u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA838_sub_0x118[128] = {
-	#include <ITCommonObject/gap_0xA838_sub_0x118.data.inc.c>
+/* @tex fmt=CI4 dim=16x16 */
+u8 dITCommonObject_Tex_0xA950[128] = {
+	#include <ITCommonObject/Tex_0xA950.tex.inc.c>
 };
 
 /* @ 0x0A9D0, 456 bytes */
@@ -2086,9 +2126,9 @@ u32 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0[2] = {
 
 /* u32 pointer array @ 0xA9D8 (4 entries) */
 u32 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x8[4] = {
-	(u32)&dITCommonObject_Wark_Item_data_remainder_gap_0xA838_sub_0x118,
-	(u32)&dITCommonObject_Wark_Item_data_remainder_gap_0xA838_sub_0x90,
-	(u32)&dITCommonObject_Wark_Item_data_remainder_gap_0xA838_sub_0x8,
+	(u32)&dITCommonObject_Tex_0xA950,
+	(u32)&dITCommonObject_Tex_0xA8C8,
+	(u32)&dITCommonObject_Tex_0xA840,
 	0x00000000,
 };
 
@@ -2211,14 +2251,14 @@ u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230[8] = {
 	#include <ITCommonObject/gap_0xB230.data.inc.c>
 };
 
-/* gap sub-block @ 0xB238 (was gap+0x8, 392 bytes) */
-u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230_sub_0x8[392] = {
-	#include <ITCommonObject/gap_0xB230_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dITCommonObject_Tex_0xB238[392] = {
+	#include <ITCommonObject/Tex_0xB238.tex.inc.c>
 };
 
-/* gap sub-block @ 0xB3C0 (was gap+0x190, 384 bytes) */
-u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230_sub_0x190[384] = {
-	#include <ITCommonObject/gap_0xB230_sub_0x190.data.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dITCommonObject_Tex_0xB3C0[384] = {
+	#include <ITCommonObject/Tex_0xB3C0.tex.inc.c>
 };
 
 /* @ 0x0B540, 456 bytes */
@@ -2232,8 +2272,8 @@ u32 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540[3] = {
 
 /* u32 pointer array @ 0xB54C (3 entries) */
 u32 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0xC[3] = {
-	(u32)&dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230_sub_0x190,
-	(u32)&dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230_sub_0x8,
+	(u32)&dITCommonObject_Tex_0xB3C0,
+	(u32)&dITCommonObject_Tex_0xB238,
 	0x00000000,
 };
 
@@ -2436,14 +2476,14 @@ u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600[8] = {
 	#include <ITCommonObject/gap_0xC600.data.inc.c>
 };
 
-/* gap sub-block @ 0xC608 (was gap+0x8, 1800 bytes) */
-u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600_sub_0x8[1800] = {
-	#include <ITCommonObject/gap_0xC600_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=64x56 */
+u8 dITCommonObject_Tex_0xC608[1800] = {
+	#include <ITCommonObject/Tex_0xC608.tex.inc.c>
 };
 
-/* gap sub-block @ 0xCD10 (was gap+0x710, 1792 bytes) */
-u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600_sub_0x710[1792] = {
-	#include <ITCommonObject/gap_0xC600_sub_0x710.data.inc.c>
+/* @tex fmt=CI4 dim=64x56 */
+u8 dITCommonObject_Tex_0xCD10[1792] = {
+	#include <ITCommonObject/Tex_0xCD10.tex.inc.c>
 };
 
 /* @ 0x0D410, 432 bytes */
@@ -2456,8 +2496,8 @@ u32 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410[2] = {
 
 /* u32 pointer array @ 0xD418 (2 entries) */
 u32 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x8[2] = {
-	(u32)&dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600_sub_0x710,
-	(u32)&dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600_sub_0x8,
+	(u32)&dITCommonObject_Tex_0xCD10,
+	(u32)&dITCommonObject_Tex_0xC608,
 };
 
 /* MObjSub @ 0xD420 */
@@ -2545,19 +2585,19 @@ u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758[8] = {
 	#include <ITCommonObject/gap_0xD758.data.inc.c>
 };
 
-/* gap sub-block @ 0xD760 (was gap+0x8, 520 bytes) */
-u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x8[520] = {
-	#include <ITCommonObject/gap_0xD758_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=24x32 */
+u8 dITCommonObject_Tex_0xD760[520] = {
+	#include <ITCommonObject/Tex_0xD760.tex.inc.c>
 };
 
-/* gap sub-block @ 0xD968 (was gap+0x210, 520 bytes) */
-u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x210[520] = {
-	#include <ITCommonObject/gap_0xD758_sub_0x210.data.inc.c>
+/* @tex fmt=CI4 dim=24x32 */
+u8 dITCommonObject_Tex_0xD968[520] = {
+	#include <ITCommonObject/Tex_0xD968.tex.inc.c>
 };
 
-/* gap sub-block @ 0xDB70 (was gap+0x418, 512 bytes) */
-u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x418[512] = {
-	#include <ITCommonObject/gap_0xD758_sub_0x418.data.inc.c>
+/* @tex fmt=CI4 dim=24x32 */
+u8 dITCommonObject_Tex_0xDB70[512] = {
+	#include <ITCommonObject/Tex_0xDB70.tex.inc.c>
 };
 
 /* @ 0x0DD70, 456 bytes */
@@ -2571,9 +2611,9 @@ u32 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70[3] = {
 
 /* u32 pointer array @ 0xDD7C (3 entries) */
 u32 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0xC[3] = {
-	(u32)&dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x418,
-	(u32)&dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x210,
-	(u32)&dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x8,
+	(u32)&dITCommonObject_Tex_0xDB70,
+	(u32)&dITCommonObject_Tex_0xD968,
+	(u32)&dITCommonObject_Tex_0xD760,
 };
 
 /* MObjSub @ 0xDD88 */
@@ -2662,9 +2702,9 @@ u32 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0[3] = {
 
 /* u32 pointer array @ 0xE2EC (3 entries) */
 u32 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0xC[3] = {
-	(u32)&dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x418,
-	(u32)&dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x210,
-	(u32)&dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758_sub_0x8,
+	(u32)&dITCommonObject_Tex_0xDB70,
+	(u32)&dITCommonObject_Tex_0xD968,
+	(u32)&dITCommonObject_Tex_0xD760,
 };
 
 /* MObjSub @ 0xE2F8 */
@@ -3108,34 +3148,34 @@ u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0[8] = {
 	#include <ITCommonObject/gap_0xEFD0.data.inc.c>
 };
 
-/* gap sub-block @ 0xEFD8 (was gap+0x8, 200 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x8[200] = {
-	#include <ITCommonObject/gap_0xEFD0_sub_0x8.data.inc.c>
+/* @tex fmt=CI4 dim=16x24 */
+u8 dITCommonObject_Tex_0xEFD8[200] = {
+	#include <ITCommonObject/Tex_0xEFD8.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF0A0 (was gap+0xD0, 200 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0xD0[200] = {
-	#include <ITCommonObject/gap_0xEFD0_sub_0xD0.data.inc.c>
+/* @tex fmt=CI4 dim=16x24 */
+u8 dITCommonObject_Tex_0xF0A0[200] = {
+	#include <ITCommonObject/Tex_0xF0A0.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF168 (was gap+0x198, 200 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x198[200] = {
-	#include <ITCommonObject/gap_0xEFD0_sub_0x198.data.inc.c>
+/* @tex fmt=CI4 dim=16x24 */
+u8 dITCommonObject_Tex_0xF168[200] = {
+	#include <ITCommonObject/Tex_0xF168.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF230 (was gap+0x260, 392 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x260[392] = {
-	#include <ITCommonObject/gap_0xEFD0_sub_0x260.data.inc.c>
+/* @tex fmt=CI4 dim=24x24 */
+u8 dITCommonObject_Tex_0xF230[392] = {
+	#include <ITCommonObject/Tex_0xF230.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF3B8 (was gap+0x3E8, 392 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x3E8[392] = {
-	#include <ITCommonObject/gap_0xEFD0_sub_0x3E8.data.inc.c>
+/* @tex fmt=CI4 dim=24x24 */
+u8 dITCommonObject_Tex_0xF3B8[392] = {
+	#include <ITCommonObject/Tex_0xF3B8.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF540 (was gap+0x570, 384 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x570[384] = {
-	#include <ITCommonObject/gap_0xEFD0_sub_0x570.data.inc.c>
+/* @tex fmt=CI4 dim=24x24 */
+u8 dITCommonObject_Tex_0xF540[384] = {
+	#include <ITCommonObject/Tex_0xF540.tex.inc.c>
 };
 
 /* @ 0x0F6C0, 792 bytes */
@@ -3149,16 +3189,16 @@ u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0[3] = {
 
 /* u32 pointer array @ 0xF6CC (3 entries) */
 u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xC[3] = {
-	(u32)&dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x570,
-	(u32)&dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x3E8,
-	(u32)&dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x260,
+	(u32)&dITCommonObject_Tex_0xF540,
+	(u32)&dITCommonObject_Tex_0xF3B8,
+	(u32)&dITCommonObject_Tex_0xF230,
 };
 
 /* u32 pointer array @ 0xF6D8 (4 entries) */
 u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x18[4] = {
-	(u32)&dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x198,
-	(u32)&dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0xD0,
-	(u32)&dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0_sub_0x8,
+	(u32)&dITCommonObject_Tex_0xF168,
+	(u32)&dITCommonObject_Tex_0xF0A0,
+	(u32)&dITCommonObject_Tex_0xEFD8,
 	0x00000000,
 };
 
@@ -4662,19 +4702,19 @@ u8 dITCommonObject_Dogas_Item_data_remainder_sub_0xC[140] = {
 	#include <ITCommonObject/dITCommonObject_Dogas_Item_data_remainder_sub_0xC.data.inc.c>
 };
 
-/* gap sub-block @ 0x12968 (was gap+0x98, 520 bytes) */
-u8 dITCommonObject_Dogas_Item_data_remainder_sub_0x98[520] = {
-	#include <ITCommonObject/dITCommonObject_Dogas_Item_data_remainder_sub_0x98.data.inc.c>
+/* @tex fmt=I4 dim=32x32 */
+u8 dITCommonObject_Tex_0x12968[520] = {
+	#include <ITCommonObject/Tex_0x12968.tex.inc.c>
 };
 
-/* gap sub-block @ 0x12B70 (was gap+0x2A0, 520 bytes) */
-u8 dITCommonObject_Dogas_Item_data_remainder_sub_0x2A0[520] = {
-	#include <ITCommonObject/dITCommonObject_Dogas_Item_data_remainder_sub_0x2A0.data.inc.c>
+/* @tex fmt=I4 dim=32x32 */
+u8 dITCommonObject_Tex_0x12B70[520] = {
+	#include <ITCommonObject/Tex_0x12B70.tex.inc.c>
 };
 
-/* gap sub-block @ 0x12D78 (was gap+0x4A8, 512 bytes) */
-u8 dITCommonObject_Dogas_Item_data_remainder_sub_0x4A8[512] = {
-	#include <ITCommonObject/dITCommonObject_Dogas_Item_data_remainder_sub_0x4A8.data.inc.c>
+/* @tex fmt=I4 dim=32x32 */
+u8 dITCommonObject_Tex_0x12D78[512] = {
+	#include <ITCommonObject/Tex_0x12D78.tex.inc.c>
 };
 
 /* @ 0x12F78, 392 bytes */
@@ -4686,9 +4726,9 @@ u32 dITCommonObject_DogasSmog_Weapon_mobjsubs[2] = {
 
 /* u32 pointer array @ 0x12F80 (4 entries) */
 u32 dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x8[4] = {
-	(u32)&dITCommonObject_Dogas_Item_data_remainder_sub_0x4A8,
-	(u32)&dITCommonObject_Dogas_Item_data_remainder_sub_0x2A0,
-	(u32)&dITCommonObject_Dogas_Item_data_remainder_sub_0x98,
+	(u32)&dITCommonObject_Tex_0x12D78,
+	(u32)&dITCommonObject_Tex_0x12B70,
+	(u32)&dITCommonObject_Tex_0x12968,
 	0x00000000,
 };
 

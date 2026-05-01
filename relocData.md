@@ -64,9 +64,16 @@ Recent round of structural work:
   references in initializers fail to compile. (c) `annotateTexBlocks.py`
   walks the expanded view's Gfx bodies and adds
   `/* @tex fmt=… dim=…x… lut=… */` annotations above
-  `u8 Tex_*` declarations that don't already have one — 424 of 566 Tex
-  blocks now annotated, so `previewImagesTextures.py` renders correct-
-  size PNG previews instead of dimension-guessing for them.
+  `u8 Tex_*` declarations that don't already have one. Combined with
+  `tools/annotateMObjSubSprites.py` (which derives fmt/dim from MObjSub
+  fields when a sprite isn't reached via Gfx), **445 of 593 Tex blocks
+  (75%) are now annotated**, so `previewImagesTextures.py` renders
+  correct-size PNG previews instead of dimension-guessing for them. The
+  remaining 148 un-annotated blocks are concentrated in stage-image
+  files (`StagePupupuImages`, `Bonus1CommonImages*`, `StageYosterImages`,
+  etc.) where the texture isn't reached via either of the two automated
+  derivation paths; they need manual fmt/dim from inspecting the
+  renderer code or from a sibling Sprite struct.
   Also extended `tools/splitGapFull.py` to accept non-`gap_*` u8
   parents (`_data_remainder` and `_mobjsubs`); file offset is looked up
   via `nm` for those. And extended `tools/typeITCommonObjectDL.py` so
@@ -75,6 +82,60 @@ Recent round of structural work:
   block (not just chain-hex DObjDesc entries) — without this the prior
   pass had silently disconnected from its entry points after DObjDesc
   fields had been promoted to typed Gfx symbols. ROM byte-identical.
+- **End-to-end "offset → typed symbol" pipeline** (`auditOffsetRefs.py` →
+  `splitBlockAtSelfRefs.py` → `retypeSpriteChunks.py`). Closes the gap
+  where a chain pointer lands at a non-zero offset into an existing
+  typed block, leaving the source littered with `(cast)((u8*)&parent +
+  0xN)` arithmetic that's opaque about what's actually being indexed.
+  - `auditOffsetRefs.py --apply` rewrites references whose target lives
+    at exactly that offset (EXACT — `(cast)&target`) or in an adjacent
+    typed sibling (PARTIAL_CROSS — `(cast)((u8*)&adjacent + delta)`).
+    20 EXACT + 15 PARTIAL_CROSS rewrites applied across `117`, `198`,
+    `69`, `84`, `86` on first run.
+  - `splitBlockAtSelfRefs.py` handles what's left — internal indices into
+    the *same* block (PARTIAL_SELF). Splits at every unique referenced
+    offset, generating element-type-aware chunks (u8/u16/u32/AObjEvent32/
+    Vtx/Gfx/MObjSub) with their own `.inc.c` files. 20 new chunks across
+    `198_SCExplainGraphics`, `69_MVOpeningStandoff`, `84_EFCommonEffects2`,
+    `86_ITCommonObject`. Inline-init arrays (e.g. `MObjSub **X[18]`) are
+    skipped because the offset is just C array indexing.
+  - `retypeSpriteChunks.py` walks every typed MObjSub's `.sprites` field
+    to its leaf chunks and retypes them as `u8 <File>_Tex_0x<abs>[size]`
+    with `.tex.inc.c` and an `@tex fmt=… dim=…x…` annotation derived from
+    the MObjSub's `block_fmt`/`block_siz` and `unk38`/`unk3A` fields.
+    Handles both `G_IM_FMT_*` macros and raw-hex (`0x04, 0x02`) forms;
+    sanity-checks dim vs chunk size (atlas dims that don't fit a leaf
+    chunk are dropped so the previewer falls back to size-guessing).
+    Renames propagate through the .c, the `.reloc`, and any per-version
+    `.jp.reloc`. Accepts `void *X[]`, `MObjSub *X[]`, and `u32 X[]` sprite
+    array shapes. Plumbs PNG previews through `previewImagesTextures.py`
+    (which got a grayscale fallback for CI textures whose owning MObjSub
+    has no LUT in scope — output tagged `.nolut.png`).
+  - Concrete result for the user-flagged
+    `dMVOpeningStandoff_gap_0x61B8_sub_0xC` example: each entry now reads
+    `(u32)&dMVOpeningStandoff_Tex_0x{2128,3130,4138,5140}` instead of
+    `(u32)((u8*)&Ground_post + 0x{10,1018,2020,3028})`, and each Tex has
+    a `@tex fmt=I4 dim=64x128` annotation + an `.i4.png` preview. Both
+    US and JP `RELOC_DATA=1` byte-match. Files retyped this round: `69`,
+    `84`, `86`, `108`, `111`, `112`, `198`, `335`, `342`.
+- **`tools/splitTexBlocksAtChainRefs.py`**. For each typed `u8 Tex_0xN[size]`
+  block that has chain-pointer entries landing *inside* it (rather than at
+  offset 0), splits the block at every internal chain offset so each
+  ptr-array target becomes its own first-class symbol. Targets reached
+  via `MObjSub.palettes` (+0x2C) chain are typed as `u16 palette_0xN[K]`
+  with `.palette.inc.c`; targets via `MObjSub.sprites` (+0x4) chain stay
+  `u8 Tex_0xN[K]` with `.tex.inc.c`. The truncated original keeps the
+  `Tex_0xN` name. The tool then rewrites every `(u32)((u8*)&Tex_X + 0xN)`
+  reference in u32 ptr arrays to use the appropriate new symbol (with
+  inner offset preserved when the reference doesn't land on a chunk
+  boundary), and injects forward-extern declarations at the top of the
+  file so IDO accepts the const-initializer references. Applied to 3
+  files: `117_StageMetalFile2` (1 block → 16 palettes), `323_LuigiModel`
+  (2 blocks → 6 palettes + 5 tex chunks), `341_PikachuModel` (3 blocks
+  → 27 palettes + 14 tex chunks). After the rewrite, run
+  `tools/extractRelocInc.py <fid> --version us|jp` to generate the
+  per-version `.inc.c` files at the new symbol offsets. ROM
+  byte-identical for both versions.
 - **MObjSub header / sprites split + sprite-texture promotion**.
   For 14 MObjSub-typed symbols whose declared 120-byte body actually
   packs `MObjSub **<sym>[H]` header + the real `MObjSub` at +0xN
@@ -554,7 +615,7 @@ from `assets/<v>/relocData/<fid>.vpk0.bin` on every `make extract`.
 | `tools/genMotionDescOffsets.py` | Scans every `u32 d<File>_<label>[]` motion-script symbol across `*MainMotion.c` / `*SubMotion.c` and emits `include/ft/motiondesc_offsets.h` (one `#define name byte_offset` per script entry). Lets `src/ft/ftdata.c` reference scripts by name. |
 | `tools/relocData.py` | Original extract / assemble tool. `makeBin` assembles the final `relocData.bin` from override (`build/<v>/assets/<v>/relocData/`) or baserom (`assets/<v>/relocData/`) files. |
 | `tools/verifyRelocOffsets.py` | Per-file binary verification. |
-| `tools/previewImagesTextures.py` | CI4/CI8 PNG previews for typed `LUT` + `Tex` block pairs. Annotation-aware (`/* @tex fmt=CI4 dim=WxH lut=… */`) with fallback to dimension-guessing. Runs at `make extract` time alongside `extractRelocInc.py`. |
+| `tools/previewImagesTextures.py` | PNG previews for typed `LUT` + `Tex` block pairs in any format the previewer knows (`CI4/CI8/I4/I8/IA4/IA8/IA16/RGBA16/RGBA32`). Annotation-aware (`/* @tex fmt=… dim=WxH lut=… */`); when no `dim=` is given, falls back to a near-square guess sized by the annotated `fmt=`'s bpp (preserves the `fmt`, not hardcoded CI4). For CI textures with no LUT in scope (e.g. sibling MObjSub.palettes is NULL or in another file) the renderer uses a grayscale ramp and tags the output `.nolut.png` so the missing LUT is obvious. Runs at `make extract` time alongside `extractRelocInc.py`. |
 | `tools/expandRelocFile.py` | Emits a human-readable expanded view of any fighter-style relocData file at `build/<v>/src/relocData/<fid>_<Name>.c`: decodes Vtx[] blobs into struct literals, Gfx[] into gbi macros via pygfxd, LUTs into u16 hex pairs, and rewrites chain-encoded `0xXXXXYYYY` pointer args to symbolic `&sym` references. Parallel artifact for code review; not compiled. `make reloc-expand-<fid>` / `reloc-expand-all` drives it. |
 
 ### Migration / promotion (one-shot)
@@ -600,8 +661,13 @@ from `assets/<v>/relocData/<fid>.vpk0.bin` on every `make extract`.
 | `tools/splitGapAtExternRefs.py` | Split such gap regions at the inbound offsets, naming each sub-region `gap_0xNNNN_sub_0xMM`. Skips gaps whose symbol is referenced anywhere in the local `.reloc` (would need label rewrites). |
 | `tools/splitGapFull.py` | Like `splitGapAtExternRefs.py` but ALSO rewrites local `.reloc` intern entries to use the new sub-region symbols, so it works on gaps with intra-file chain references too. |
 | `tools/typeRelocBlocks.py` | Display-list-driven bulk typer: four passes over a file's expanded Gfx bodies. (1) Split u8 blocks whose first 8 bytes are the full gsDPPipeSync sentinel (`E7000000 00000000`) into `Gfx[cmds] + tail`; handles multi-DL chains (re-entrant peel), unterminated DL fragments (one logical DL spread across intern-chain sub-blocks — each chunk still types as `Gfx[N/8]`), and trailer collapse to `PAD(N);` when the trailer is all-zero and unreferenced. (2) Walk every `gsSPVertex` span and retype / merge u8 blocks into `Vtx[N]` with strict-overlap span union and `.reloc` target rewrites. (3) Retype `gsDPSetTextureImage → gsDPLoadTLUTCmd` targets as `u16 palette[N/2]`. (4) Rename `gsDPSetTextureImage → gsDPLoadBlock/Tile` targets to `<prefix>Tex_0x<file_off>` with `.tex.inc.c` includes; substitution propagates through `.reloc` and inline source refs (DObjDesc casts, MObjSub palette/sprites pointers, ptr arrays). Global palette/texture hint map is derived from every expanded view so cross-file palettes (e.g. a Bonus1CommonImages block loaded as a TLUT from a character file) get caught — and a symbol observed as both a TLUT and a block load is skipped from both passes. Idempotent — re-running against a fully-typed file produces zero changes. |
-| `tools/promoteMObjSub.py` | Promote `u8 X[120]` declarations whose name contains `_mobjsubs` into typed `MObjSub X = { … };` initializers, reusing `parse_mobjsub` + `format_float` from `genRelocDataC.py`. Pointer fields (sprites @+0x4, palettes @+0x2C) become symbolic refs based on `.reloc` entries when available, otherwise raw chain words. A second pass promotes small `u8 X[N]` blocks (4..32 bytes, %4==0) inside `_mobjsubs_*` to `u32 X[N/4]` with chain-pointer entries resolved symbolically — falls back to raw hex for forward references (which IDO rejects in initializers) since fixRelocChain rewrites the bytes at link time anyway. Always emits `(u32)&sym` (not `(u32)sym`) for struct-symbol references — IDO doesn't accept the latter as a constant initializer. |
+| `tools/promoteMObjSub.py` | Promote `u8 X[120]` declarations into typed `MObjSub X[1] = {{ … }};` initializers, reusing `parse_mobjsub` + `format_float` from `genRelocDataC.py`. Three passes: (1) MObjSub blocks: matched either by legacy `_mobjsubs` substring, OR by being referenced from a `MObjSub *Y[]` array elsewhere in the file (covers `*_gap_*_sub_*` blocks in fighter models). Emits the array form `MObjSub X[1]` so `(MObjSub *)X` casts decay correctly; auto-rewrites within-file `extern u8 X[]` to `extern MObjSub X[]`. (2) Small `u8 X[N]` blocks (4..32 bytes, %4==0) that are either legacy `_mobjsubs` syms OR `.sprites/.palettes` chain targets become `u32 X[N/4]` with symbolic chain-pointer entries; emits `(u32)&sym` (not `(u32)sym`) for struct-symbol refs since IDO rejects the latter as a constant initializer; auto-injects forward-extern declarations at the top of the file when a referenced sym is declared further down. (3) Second-level `.palettes` chain targets (palette data blocks reached via MObjSub.palettes → ptr-array → block) get retyped as `u16 X[N/2]` with `.palette.inc.c`. **`--dual-version` mode**: also reads JP-side bytes (via JP fid mapping in `relocFileDescriptions.jp.txt` + `build/jp/src/relocData/.build/<jp_fid>.o`); per-line diff between US and JP decoded MObjSub fields produces `#if defined(REGION_US) / #elif defined(REGION_JP)` overlays only around lines whose values differ (e.g. fighter primcolor differences). **`parse_reloc`** resolves bare numeric file-offset targets (`0xXXXX`) back to `<sym>+0xN` form by binary-searching the nm symbol table, so downstream emit can produce symbolic references even when the .reloc didn't pre-resolve them. |
 | `tools/annotateTexBlocks.py` | Add `/* @tex fmt=<FMT> dim=<W>x<H> lut=<LUT_SYM> */` annotations above `u8 Tex_*` declarations that don't already carry one, by walking the expanded view's Gfx bodies for the `gsDPSetTile / gsDPSetTextureImage(LUT) / gsDPLoadTLUTCmd / gsDPSetTileSize / gsDPSetTextureImage(TEX) / gsDPLoadBlock` sequence. Format comes from the most-recent `gsDPSetTile` (the SetTextureImage's fmt/siz describes the load buffer, not the texture); dimensions from `gsDPSetTileSize` (`W = lrs/4 + 1`, `H = lrt/4 + 1`); palette from the most-recent committed-via-LoadTLUTCmd target. Pure-comment edit; bytes unchanged. `previewImagesTextures.py` reads these annotations to render correct-size CI4/CI8 PNG previews instead of dimension-guessing. |
+| `tools/annotateMObjSubSprites.py` | Companion to `annotateTexBlocks.py` for sprites that aren't reached via Gfx command sequences. Walks each `MObjSub` declaration's `sprites`/`palettes` ptr arrays in the .c, derives `(fmt, dim)` from the MObjSub's `fmt`/`siz`/`unk0C`/`unk0E` and `block_*`/`unk38`/`unk3A` fields, and emits `/* @tex fmt=<F> dim=<W>x<H> */` above each target Tex block. Also renames any lingering `gap_*` sprite targets to `Tex_0xXXXX` and updates references in the .c + .reloc. `--all` to bulk-process; flagged anomalies (size/dim mismatch, non-renderable fmt, expression-form refs) are reported as warnings without blocking annotation of the rest. |
+| `tools/splitTexBlocksAtChainRefs.py` | For each typed `u8 Tex_0xN[size]` block whose `.reloc` has chain pointers landing inside it (not at offset 0), splits the block at every internal chain offset so each ptr-array target becomes a first-class symbol. `MObjSub.palettes` chain targets become `u16 palette_0xN[K]` (`.palette.inc.c`); `MObjSub.sprites` chain targets become `u8 Tex_0xN[K]` (`.tex.inc.c`). Truncates the original Tex block to its first chunk; rewrites every `(u32)((u8*)&Tex_X + 0xN)` reference in u32 ptr arrays to use the appropriate new symbol; injects forward-extern declarations at the top of the file. Re-run `extractRelocInc.py` per version after to materialize the per-symbol `.inc.c` files. Carries the parent's `@tex fmt=…` annotation onto sprite chunks when present. |
+| `tools/auditOffsetRefs.py` | Cast-agnostic inventory of every `(<cast>)((u8*)&<sym> + 0x<offset>)` reference in `src/relocData/*.c`. Categorises each as `EXACT` (a typed sym lives at exactly that offset → safe rewrite to `(<cast>)&<target>`), `PARTIAL_CROSS` (target offset lands inside an *adjacent* typed sym → rewrite to `(<cast>)((u8*)&<adjacent>+<delta>)`), `PARTIAL_SELF` (offset is into the source sym itself — legitimate array-indexing or a candidate for `splitBlockAtSelfRefs`), or `ORPHAN` (no covering sym). With `--apply`, rewrites EXACT and PARTIAL_CROSS in-place — same byte address, but the reference reads as a direct symbolic ref instead of an opaque offset. |
+| `tools/splitBlockAtSelfRefs.py` | Generic block splitter for the PARTIAL_SELF cases left after `auditOffsetRefs.py` — when a typed declaration like `u8 X[N]` / `u32 X[N]` / `Vtx X[N]` is referenced via `(<cast>)((u8*)&X + 0x<offset>)` at a non-zero offset, splits `X` at each unique offset so each chunk becomes its own first-class symbol. Each chunk inherits the parent's element type (alignment-validated against the element size), gets its own `.inc.c` at the parent's same suffix, and references rewrite to `(<cast>)&<chunk_sym>`. Forward externs injected at top. Skips inline-init arrays (where the offset is just C array indexing). Bytes preserved. |
+| `tools/retypeSpriteChunks.py` | After `splitBlockAtSelfRefs.py` (or any other split) produces chunks that are reached via a `MObjSub.sprites` pointer-array indirection, retype each chunk as a texture: rename the chunk to `<File>_Tex_0x<abs>` (abs offset from `nm`), switch its include extension to `.tex.inc.c`, and prepend a `/* @tex fmt=… dim=…x… */` annotation derived from the owning MObjSub's `block_fmt`/`block_siz` (offset 0x32–33) and `unk38`/`unk3A` (offset 0x38–3A). Handles both the `G_IM_FMT_*` macro form and the raw-hex form (`0x04, 0x02`). Sanity-checks the dim against chunk size (drops `dim=` if a tile-atlas dim wouldn't fit a single chunk so previewImagesTextures.py size-guesses instead). Propagates the rename to both the shared `.reloc` and any per-version `.jp.reloc`. Accepts u32-typed sprite ptr arrays in addition to `void *X[]` / `MObjSub *X[]`. |
 
 ---
 

@@ -63,19 +63,19 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x364[164] = {
 	#include <PikachuSpecial3/gap_0x0000_sub_0x364.data.inc.c>
 };
 
-/* gap sub-block @ 0x0408 (was gap+0x408, 1032 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x408[1032] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x408.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuSpecial3_Tex_0x408[1032] = {
+	#include <PikachuSpecial3/Tex_0x408.tex.inc.c>
 };
 
-/* gap sub-block @ 0x0810 (was gap+0x810, 1032 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x810[1032] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x810.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuSpecial3_Tex_0x810[1032] = {
+	#include <PikachuSpecial3/Tex_0x810.tex.inc.c>
 };
 
-/* gap sub-block @ 0x0C18 (was gap+0xC18, 1024 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0xC18[1024] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0xC18.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuSpecial3_Tex_0xC18[1024] = {
+	#include <PikachuSpecial3/Tex_0xC18.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1018 (was gap+0x1018, 32 bytes) */
@@ -85,44 +85,44 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1018[32] = {
 
 /* u32 pointer array @ 0x1038 (3 entries) */
 u32 dPikachuSpecial3_gap_0x0000_sub_0x1038[3] = {
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0xC18,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x810,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x408,
+	(u32)&dPikachuSpecial3_Tex_0xC18,
+	(u32)&dPikachuSpecial3_Tex_0x810,
+	(u32)&dPikachuSpecial3_Tex_0x408,
 };
 
 /* u32 pointer array @ 0x1044 (3 entries) */
 u32 dPikachuSpecial3_gap_0x0000_sub_0x1044[3] = {
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0xC18,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x810,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x408,
+	(u32)&dPikachuSpecial3_Tex_0xC18,
+	(u32)&dPikachuSpecial3_Tex_0x810,
+	(u32)&dPikachuSpecial3_Tex_0x408,
 };
 
 /* u32 pointer array @ 0x1050 (3 entries) */
 u32 dPikachuSpecial3_gap_0x0000_sub_0x1050[3] = {
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0xC18,
+	(u32)&dPikachuSpecial3_Tex_0xC18,
 	0x00000000,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x408,
+	(u32)&dPikachuSpecial3_Tex_0x408,
 };
 
 /* u32 pointer array @ 0x105C (3 entries) */
 u32 dPikachuSpecial3_gap_0x0000_sub_0x105C[3] = {
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0xC18,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x810,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x408,
+	(u32)&dPikachuSpecial3_Tex_0xC18,
+	(u32)&dPikachuSpecial3_Tex_0x810,
+	(u32)&dPikachuSpecial3_Tex_0x408,
 };
 
 /* u32 pointer array @ 0x1068 (3 entries) */
 u32 dPikachuSpecial3_gap_0x0000_sub_0x1068[3] = {
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0xC18,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x810,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x408,
+	(u32)&dPikachuSpecial3_Tex_0xC18,
+	(u32)&dPikachuSpecial3_Tex_0x810,
+	(u32)&dPikachuSpecial3_Tex_0x408,
 };
 
 /* u32 pointer array @ 0x1074 (3 entries) */
 u32 dPikachuSpecial3_gap_0x0000_sub_0x1074[3] = {
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0xC18,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x810,
-	(u32)&dPikachuSpecial3_gap_0x0000_sub_0x408,
+	(u32)&dPikachuSpecial3_Tex_0xC18,
+	(u32)&dPikachuSpecial3_Tex_0x810,
+	(u32)&dPikachuSpecial3_Tex_0x408,
 };
 
 /* MObjSub @ 0x1080 */

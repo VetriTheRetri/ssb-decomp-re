@@ -1190,32 +1190,32 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x88[20] = {
 	#include <StageYamabukiFile2/gap_0x87C8_sub_0x88.palette.inc.c>
 };
 
-/* gap sub-block @ 0x8878 (was gap+0xB0, 968 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0xB0[968] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0xB0.data.inc.c>
+/* @tex fmt=CI4 dim=40x40 */
+u8 dStageYamabukiFile2_Tex_0x8878[968] = {
+	#include <StageYamabukiFile2/Tex_0x8878.tex.inc.c>
 };
 
-/* gap sub-block @ 0x8C40 (was gap+0x478, 968 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x478[968] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x478.data.inc.c>
+/* @tex fmt=CI4 dim=40x40 */
+u8 dStageYamabukiFile2_Tex_0x8C40[968] = {
+	#include <StageYamabukiFile2/Tex_0x8C40.tex.inc.c>
 };
 
-/* gap sub-block @ 0x9008 (was gap+0x840, 968 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x840[968] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x840.data.inc.c>
+/* @tex fmt=CI4 dim=40x40 */
+u8 dStageYamabukiFile2_Tex_0x9008[968] = {
+	#include <StageYamabukiFile2/Tex_0x9008.tex.inc.c>
 };
 
-/* gap sub-block @ 0x93D0 (was gap+0xC08, 968 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0xC08[968] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0xC08.data.inc.c>
+/* @tex fmt=CI4 dim=40x40 */
+u8 dStageYamabukiFile2_Tex_0x93D0[968] = {
+	#include <StageYamabukiFile2/Tex_0x93D0.tex.inc.c>
 };
 
 /* u32 pointer array @ 0x9798 (4 entries) */
 u32 dStageYamabukiFile2_gap_0x87C8_sub_0xFD0[4] = {
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0xC08,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x840,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x478,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0xB0,
+	(u32)&dStageYamabukiFile2_Tex_0x93D0,
+	(u32)&dStageYamabukiFile2_Tex_0x9008,
+	(u32)&dStageYamabukiFile2_Tex_0x8C40,
+	(u32)&dStageYamabukiFile2_Tex_0x8878,
 };
 
 /* MObjSub @ 0x97A8 */
@@ -1289,44 +1289,44 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x1AA8[20] = {
 	#include <StageYamabukiFile2/gap_0x87C8_sub_0x1AA8.palette.inc.c>
 };
 
-/* gap sub-block @ 0xA298 (was gap+0x1AD0, 1544 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x1AD0[1544] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x1AD0.data.inc.c>
+/* @tex fmt=CI4 dim=40x64 */
+u8 dStageYamabukiFile2_Tex_0xA298[1544] = {
+	#include <StageYamabukiFile2/Tex_0xA298.tex.inc.c>
 };
 
-/* gap sub-block @ 0xA8A0 (was gap+0x20D8, 1544 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x20D8[1544] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x20D8.data.inc.c>
+/* @tex fmt=CI4 dim=40x64 */
+u8 dStageYamabukiFile2_Tex_0xA8A0[1544] = {
+	#include <StageYamabukiFile2/Tex_0xA8A0.tex.inc.c>
 };
 
-/* gap sub-block @ 0xAEA8 (was gap+0x26E0, 1544 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x26E0[1544] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x26E0.data.inc.c>
+/* @tex fmt=CI4 dim=40x64 */
+u8 dStageYamabukiFile2_Tex_0xAEA8[1544] = {
+	#include <StageYamabukiFile2/Tex_0xAEA8.tex.inc.c>
 };
 
-/* gap sub-block @ 0xB4B0 (was gap+0x2CE8, 1544 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x2CE8[1544] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x2CE8.data.inc.c>
+/* @tex fmt=CI4 dim=40x64 */
+u8 dStageYamabukiFile2_Tex_0xB4B0[1544] = {
+	#include <StageYamabukiFile2/Tex_0xB4B0.tex.inc.c>
 };
 
-/* gap sub-block @ 0xBAB8 (was gap+0x32F0, 1544 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x32F0[1544] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x32F0.data.inc.c>
+/* @tex fmt=CI4 dim=40x64 */
+u8 dStageYamabukiFile2_Tex_0xBAB8[1544] = {
+	#include <StageYamabukiFile2/Tex_0xBAB8.tex.inc.c>
 };
 
-/* gap sub-block @ 0xC0C0 (was gap+0x38F8, 1544 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x38F8[1544] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x38F8.data.inc.c>
+/* @tex fmt=CI4 dim=40x64 */
+u8 dStageYamabukiFile2_Tex_0xC0C0[1544] = {
+	#include <StageYamabukiFile2/Tex_0xC0C0.tex.inc.c>
 };
 
 /* u32 pointer array @ 0xC6C8 (6 entries) */
 u32 dStageYamabukiFile2_gap_0x87C8_sub_0x3F00[6] = {
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x38F8,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x32F0,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x2CE8,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x26E0,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x20D8,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x1AD0,
+	(u32)&dStageYamabukiFile2_Tex_0xC0C0,
+	(u32)&dStageYamabukiFile2_Tex_0xBAB8,
+	(u32)&dStageYamabukiFile2_Tex_0xB4B0,
+	(u32)&dStageYamabukiFile2_Tex_0xAEA8,
+	(u32)&dStageYamabukiFile2_Tex_0xA8A0,
+	(u32)&dStageYamabukiFile2_Tex_0xA298,
 };
 
 /* MObjSub @ 0xC6E0 */
@@ -1400,38 +1400,38 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x43A0[20] = {
 	#include <StageYamabukiFile2/gap_0x87C8_sub_0x43A0.palette.inc.c>
 };
 
-/* gap sub-block @ 0xCB90 (was gap+0x43C8, 1160 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x43C8[1160] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x43C8.data.inc.c>
+/* @tex fmt=CI4 dim=40x48 */
+u8 dStageYamabukiFile2_Tex_0xCB90[1160] = {
+	#include <StageYamabukiFile2/Tex_0xCB90.tex.inc.c>
 };
 
-/* gap sub-block @ 0xD018 (was gap+0x4850, 1160 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x4850[1160] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x4850.data.inc.c>
+/* @tex fmt=CI4 dim=40x48 */
+u8 dStageYamabukiFile2_Tex_0xD018[1160] = {
+	#include <StageYamabukiFile2/Tex_0xD018.tex.inc.c>
 };
 
-/* gap sub-block @ 0xD4A0 (was gap+0x4CD8, 1160 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x4CD8[1160] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x4CD8.data.inc.c>
+/* @tex fmt=CI4 dim=40x48 */
+u8 dStageYamabukiFile2_Tex_0xD4A0[1160] = {
+	#include <StageYamabukiFile2/Tex_0xD4A0.tex.inc.c>
 };
 
-/* gap sub-block @ 0xD928 (was gap+0x5160, 1160 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x5160[1160] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x5160.data.inc.c>
+/* @tex fmt=CI4 dim=40x48 */
+u8 dStageYamabukiFile2_Tex_0xD928[1160] = {
+	#include <StageYamabukiFile2/Tex_0xD928.tex.inc.c>
 };
 
-/* gap sub-block @ 0xDDB0 (was gap+0x55E8, 1160 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x55E8[1160] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x55E8.data.inc.c>
+/* @tex fmt=CI4 dim=40x48 */
+u8 dStageYamabukiFile2_Tex_0xDDB0[1160] = {
+	#include <StageYamabukiFile2/Tex_0xDDB0.tex.inc.c>
 };
 
 /* u32 pointer array @ 0xE238 (6 entries) */
 u32 dStageYamabukiFile2_gap_0x87C8_sub_0x5A70[6] = {
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x55E8,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x5160,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x4CD8,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x4850,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x43C8,
+	(u32)&dStageYamabukiFile2_Tex_0xDDB0,
+	(u32)&dStageYamabukiFile2_Tex_0xD928,
+	(u32)&dStageYamabukiFile2_Tex_0xD4A0,
+	(u32)&dStageYamabukiFile2_Tex_0xD018,
+	(u32)&dStageYamabukiFile2_Tex_0xCB90,
 	0x00000000,
 };
 
@@ -1506,32 +1506,32 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x5F88[20] = {
 	#include <StageYamabukiFile2/gap_0x87C8_sub_0x5F88.palette.inc.c>
 };
 
-/* gap sub-block @ 0xE778 (was gap+0x5FB0, 1352 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x5FB0[1352] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x5FB0.data.inc.c>
+/* @tex fmt=CI4 dim=48x56 */
+u8 dStageYamabukiFile2_Tex_0xE778[1352] = {
+	#include <StageYamabukiFile2/Tex_0xE778.tex.inc.c>
 };
 
-/* gap sub-block @ 0xECC0 (was gap+0x64F8, 1352 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x64F8[1352] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x64F8.data.inc.c>
+/* @tex fmt=CI4 dim=48x56 */
+u8 dStageYamabukiFile2_Tex_0xECC0[1352] = {
+	#include <StageYamabukiFile2/Tex_0xECC0.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF208 (was gap+0x6A40, 1352 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x6A40[1352] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x6A40.data.inc.c>
+/* @tex fmt=CI4 dim=48x56 */
+u8 dStageYamabukiFile2_Tex_0xF208[1352] = {
+	#include <StageYamabukiFile2/Tex_0xF208.tex.inc.c>
 };
 
-/* gap sub-block @ 0xF750 (was gap+0x6F88, 1352 bytes) */
-u8 dStageYamabukiFile2_gap_0x87C8_sub_0x6F88[1352] = {
-	#include <StageYamabukiFile2/gap_0x87C8_sub_0x6F88.data.inc.c>
+/* @tex fmt=CI4 dim=48x56 */
+u8 dStageYamabukiFile2_Tex_0xF750[1352] = {
+	#include <StageYamabukiFile2/Tex_0xF750.tex.inc.c>
 };
 
 /* u32 pointer array @ 0xFC98 (4 entries) */
 u32 dStageYamabukiFile2_gap_0x87C8_sub_0x74D0[4] = {
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x6F88,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x6A40,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x64F8,
-	(u32)&dStageYamabukiFile2_gap_0x87C8_sub_0x5FB0,
+	(u32)&dStageYamabukiFile2_Tex_0xF750,
+	(u32)&dStageYamabukiFile2_Tex_0xF208,
+	(u32)&dStageYamabukiFile2_Tex_0xECC0,
+	(u32)&dStageYamabukiFile2_Tex_0xE778,
 };
 
 /* MObjSub @ 0xFCA8 */

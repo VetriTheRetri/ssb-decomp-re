@@ -141,6 +141,9 @@ PAD(12);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[];
+extern u8 dSCExplainGraphics_Tex_0x5488[];
+extern u8 dSCExplainGraphics_Tex_0x5690[];
+extern u8 dSCExplainGraphics_Tex_0x5898[];
 extern u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[];
 
 AObjEvent32 *dSCExplainGraphics_StickNeutral_MatAnimJoint[2] = {
@@ -260,8 +263,20 @@ AObjEvent32 *dSCExplainGraphics_StickTapForward_MatAnimJoint[2] = {
 	NULL,
 };
 
-u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[400] = {
+u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[12] = {
 	#include <SCExplainGraphics/StickTapForward_MatAnimJoint_data.data.inc.c>
+};
+/* @tex fmt=I4 */
+u8 dSCExplainGraphics_Tex_0x5488[520] = {
+	#include <SCExplainGraphics/Tex_0x5488.tex.inc.c>
+};
+/* @tex fmt=I4 */
+u8 dSCExplainGraphics_Tex_0x5690[520] = {
+	#include <SCExplainGraphics/Tex_0x5690.tex.inc.c>
+};
+/* @tex fmt=I4 */
+u8 dSCExplainGraphics_Tex_0x5898[512] = {
+	#include <SCExplainGraphics/Tex_0x5898.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x5a98 — 4-entry MObjSub** array.
@@ -272,9 +287,9 @@ MObjSub **dSCExplainGraphics_TapSparkMObjSub_MObjSub[1] = {
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
 void *dSCExplainGraphics_TapSparkMObjSub_MObjSub_sprites[3] = {
-	(void *)((u8*)&dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x448),
-	(void *)((u8*)&dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x240),
-	(void *)((u8*)&dSCExplainGraphics_StickTapForward_MatAnimJoint + 0x38),
+	(void *)&dSCExplainGraphics_Tex_0x5898,
+	(void *)&dSCExplainGraphics_Tex_0x5690,
+	(void *)&dSCExplainGraphics_Tex_0x5488,
 };
 
 /* The real MObjSub @ +0x10 (was folded into the prior

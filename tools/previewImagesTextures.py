@@ -155,20 +155,24 @@ def infer_tex_format(block, prose_comment):
     """From an annotation or prose comment, infer (fmt, width, height).
     Returns None if we can't decide."""
     ann = block["ann"]
+    annotated_fmt = None
     if block["ann_tag"] == "tex":
-        fmt = ann.get("fmt", "CI4")
+        annotated_fmt = ann.get("fmt")
         dim = ann.get("dim", "")
         wh = re.match(r"(\d+)x(\d+)", dim)
         if wh:
-            return fmt, int(wh.group(1)), int(wh.group(2))
+            return annotated_fmt or "CI4", int(wh.group(1)), int(wh.group(2))
     # prose fallback: "(texture pixels — CI4_96x16)"
     m = re.search(r"CI(4|8)_(\d+)x(\d+)", prose_comment or "")
     if m:
         return f"CI{m.group(1)}", int(m.group(2)), int(m.group(3))
-    # guess from size
+    # Guess from size; preserve the annotated fmt if one was given (otherwise
+    # default to CI4). bpp determines the pixel-count multiplier.
     if block["size"]:
-        fmt = "CI4"
-        pixels = block["size"] * 2
+        fmt = annotated_fmt or "CI4"
+        bpp = {"CI4": 4, "CI8": 8, "I4": 4, "I8": 8, "IA4": 4, "IA8": 8,
+               "IA16": 16, "RGBA16": 16, "RGBA32": 32}.get(fmt, 4)
+        pixels = block["size"] * 8 // bpp
         w, h = guess_dims(pixels)
         return fmt, w, h
     return None
@@ -257,16 +261,23 @@ def process_file(fid):
             else:
                 continue
         img = img_cls(tex_bytes[:expected_bytes], w, h)
+        png_suffix = ""
         if fmt in ("CI4", "CI8"):
             ann_lut = b["ann"].get("lut")
             lut_name = ann_lut or current_lut_name
-            if lut_name not in luts:
-                continue
-            lut_b = luts[lut_name]
-            lut_bytes = data[lut_b["off"]:lut_b["off"] + lut_b["size"]]
             entries = 16 if fmt == "CI4" else 256
-            img.palette = rgba5551_to_palette(lut_bytes, entries)
-        png_path = os.path.join(out_dir, f"Tex_0x{b['off']:04X}.{fmt.lower()}.png")
+            lut_b = luts.get(lut_name)
+            if lut_b and lut_b["off"] is not None and lut_b["size"]:
+                lut_bytes = data[lut_b["off"]:lut_b["off"] + lut_b["size"]]
+                img.palette = rgba5551_to_palette(lut_bytes, entries)
+            else:
+                # No usable LUT in scope (sibling MObjSub.palettes is NULL,
+                # in another file, or the LUT decl was inline-init without
+                # an offset). Render with a grayscale fallback so the
+                # texture's spatial structure is at least visible.
+                img.palette = [(i * 255 // (entries - 1),) * 3 + (255,) for i in range(entries)]
+                png_suffix = ".nolut"
+        png_path = os.path.join(out_dir, f"Tex_0x{b['off']:04X}.{fmt.lower()}{png_suffix}.png")
         img.write(png_path)
         tex_count += 1
 

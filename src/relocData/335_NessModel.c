@@ -1436,19 +1436,19 @@ u8 dNessModel_gap_0x553C_sub_0x1854_post[16] = {
 	#include <NessModel/gap_0x553C_sub_0x1854_post.data.inc.c>
 };
 
-/* gap sub-block @ 0x6EE8 (was gap+0x19AC, 1032 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x19AC[1032] = {
-	#include <NessModel/gap_0x553C_sub_0x19AC.data.inc.c>
+/* @tex fmt=IA8 */
+u8 dNessModel_Tex_0x6EE8[1032] = {
+	#include <NessModel/Tex_0x6EE8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x72F0 (was gap+0x1DB4, 1032 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1DB4[1032] = {
-	#include <NessModel/gap_0x553C_sub_0x1DB4.data.inc.c>
+/* @tex fmt=IA8 */
+u8 dNessModel_Tex_0x72F0[1032] = {
+	#include <NessModel/Tex_0x72F0.tex.inc.c>
 };
 
-/* gap sub-block @ 0x76F8 (was gap+0x21BC, 1024 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x21BC[1024] = {
-	#include <NessModel/gap_0x553C_sub_0x21BC.data.inc.c>
+/* @tex fmt=IA8 */
+u8 dNessModel_Tex_0x76F8[1024] = {
+	#include <NessModel/Tex_0x76F8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x7AF8 (was gap+0x25BC, 8 bytes) */
@@ -1459,9 +1459,9 @@ MObjSub *dNessModel_gap_0x553C_sub_0x25BC[2] = {
 
 /* u32 pointer array @ 0x7B00 (4 entries) */
 u32 dNessModel_gap_0x553C_sub_0x25C4[4] = {
-	(u32)&dNessModel_gap_0x553C_sub_0x21BC,
-	(u32)&dNessModel_gap_0x553C_sub_0x1DB4,
-	(u32)&dNessModel_gap_0x553C_sub_0x19AC,
+	(u32)&dNessModel_Tex_0x76F8,
+	(u32)&dNessModel_Tex_0x72F0,
+	(u32)&dNessModel_Tex_0x6EE8,
 	0x00000000,
 };
 
@@ -1546,19 +1546,19 @@ u8 dNessModel_gap_0x553C_sub_0x2864[24] = {
 	#include <NessModel/gap_0x553C_sub_0x2864.data.inc.c>
 };
 
-/* gap sub-block @ 0x7DB8 (was gap+0x287C, 1032 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x287C[1032] = {
-	#include <NessModel/gap_0x553C_sub_0x287C.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dNessModel_Tex_0x7DB8[1032] = {
+	#include <NessModel/Tex_0x7DB8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x81C0 (was gap+0x2C84, 1032 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x2C84[1032] = {
-	#include <NessModel/gap_0x553C_sub_0x2C84.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dNessModel_Tex_0x81C0[1032] = {
+	#include <NessModel/Tex_0x81C0.tex.inc.c>
 };
 
-/* gap sub-block @ 0x85C8 (was gap+0x308C, 1024 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x308C[1024] = {
-	#include <NessModel/gap_0x553C_sub_0x308C.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dNessModel_Tex_0x85C8[1024] = {
+	#include <NessModel/Tex_0x85C8.tex.inc.c>
 };
 
 /* gap sub-block @ 0x89C8 (was gap+0x348C, 4 bytes) */
@@ -1568,9 +1568,9 @@ MObjSub *dNessModel_gap_0x553C_sub_0x348C[1] = {
 
 /* u32 pointer array @ 0x89CC (3 entries) */
 u32 dNessModel_gap_0x553C_sub_0x3490[3] = {
-	(u32)&dNessModel_gap_0x553C_sub_0x308C,
-	(u32)&dNessModel_gap_0x553C_sub_0x2C84,
-	(u32)&dNessModel_gap_0x553C_sub_0x287C,
+	(u32)&dNessModel_Tex_0x85C8,
+	(u32)&dNessModel_Tex_0x81C0,
+	(u32)&dNessModel_Tex_0x7DB8,
 };
 
 /* MObjSub @ 0x89D8 */

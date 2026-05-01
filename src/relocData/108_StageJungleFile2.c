@@ -3677,38 +3677,38 @@ u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[20] = {
 	#include <StageJungleFile2/gap_0xD1B4_sub_0x234.palette.inc.c>
 };
 
-/* gap sub-block @ 0xD410 (was gap+0x25C, 1544 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x25C[1544] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x25C.data.inc.c>
+/* @tex fmt=CI4 dim=48x64 */
+u8 dStageJungleFile2_Tex_0xD410[1544] = {
+	#include <StageJungleFile2/Tex_0xD410.tex.inc.c>
 };
 
-/* gap sub-block @ 0xDA18 (was gap+0x864, 1544 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x864[1544] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x864.data.inc.c>
+/* @tex fmt=CI4 dim=48x64 */
+u8 dStageJungleFile2_Tex_0xDA18[1544] = {
+	#include <StageJungleFile2/Tex_0xDA18.tex.inc.c>
 };
 
-/* gap sub-block @ 0xE020 (was gap+0xE6C, 1544 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0xE6C[1544] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0xE6C.data.inc.c>
+/* @tex fmt=CI4 dim=48x64 */
+u8 dStageJungleFile2_Tex_0xE020[1544] = {
+	#include <StageJungleFile2/Tex_0xE020.tex.inc.c>
 };
 
-/* gap sub-block @ 0xE628 (was gap+0x1474, 1544 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x1474[1544] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x1474.data.inc.c>
+/* @tex fmt=CI4 dim=48x64 */
+u8 dStageJungleFile2_Tex_0xE628[1544] = {
+	#include <StageJungleFile2/Tex_0xE628.tex.inc.c>
 };
 
-/* gap sub-block @ 0xEC30 (was gap+0x1A7C, 1544 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x1A7C[1544] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x1A7C.data.inc.c>
+/* @tex fmt=CI4 dim=48x64 */
+u8 dStageJungleFile2_Tex_0xEC30[1544] = {
+	#include <StageJungleFile2/Tex_0xEC30.tex.inc.c>
 };
 
 /* u32 pointer array @ 0xF238 (6 entries) */
 u32 dStageJungleFile2_gap_0xD1B4_sub_0x2084[6] = {
-	(u32)&dStageJungleFile2_gap_0xD1B4_sub_0x1A7C,
-	(u32)&dStageJungleFile2_gap_0xD1B4_sub_0x1474,
-	(u32)&dStageJungleFile2_gap_0xD1B4_sub_0xE6C,
-	(u32)&dStageJungleFile2_gap_0xD1B4_sub_0x864,
-	(u32)&dStageJungleFile2_gap_0xD1B4_sub_0x25C,
+	(u32)&dStageJungleFile2_Tex_0xEC30,
+	(u32)&dStageJungleFile2_Tex_0xE628,
+	(u32)&dStageJungleFile2_Tex_0xE020,
+	(u32)&dStageJungleFile2_Tex_0xDA18,
+	(u32)&dStageJungleFile2_Tex_0xD410,
 	0x00000000,
 };
 

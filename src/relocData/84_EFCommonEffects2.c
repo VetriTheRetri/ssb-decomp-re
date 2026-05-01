@@ -59,6 +59,10 @@ extern u32 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint_0x6D98[];
 
 extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[];
 extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[];
+extern u8 dEFCommonEffects2_Tex_0x1688[];
+extern u8 dEFCommonEffects2_Tex_0x1890[];
+extern u8 dEFCommonEffects2_Tex_0x1A98[];
+extern u8 dEFCommonEffects2_Tex_0x1CA0[];
 
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
@@ -408,8 +412,24 @@ AObjEvent32 *dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data + 0x60),
 };
 
-u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[587] = {
+u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[69] = {
 	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint_data.data.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x1688[520] = {
+	#include <EFCommonEffects2/Tex_0x1688.tex.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x1890[520] = {
+	#include <EFCommonEffects2/Tex_0x1890.tex.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x1A98[520] = {
+	#include <EFCommonEffects2/Tex_0x1A98.tex.inc.c>
+};
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x1CA0[512] = {
+	#include <EFCommonEffects2/Tex_0x1CA0.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x1ea0 — 6-entry MObjSub** array.
@@ -421,10 +441,10 @@ MObjSub **dEFCommonEffects2_FireSparkMObjSub_MObjSub[2] = {
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
 void *dEFCommonEffects2_FireSparkMObjSub_MObjSub_sprites[4] = {
-	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x730),
-	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x528),
-	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x320),
-	(void *)((u8*)&dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0x118),
+	(void *)&dEFCommonEffects2_Tex_0x1CA0,
+	(void *)&dEFCommonEffects2_Tex_0x1A98,
+	(void *)&dEFCommonEffects2_Tex_0x1890,
+	(void *)&dEFCommonEffects2_Tex_0x1688,
 };
 
 /* The real MObjSub @ +0x18 (was folded into the prior

@@ -32,6 +32,10 @@ extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0[];
+extern u8 dMVOpeningStandoff_Tex_0x2128[];
+extern u8 dMVOpeningStandoff_Tex_0x3130[];
+extern u8 dMVOpeningStandoff_Tex_0x4138[];
+extern u8 dMVOpeningStandoff_Tex_0x5140[];
 
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
@@ -126,8 +130,24 @@ Gfx dMVOpeningStandoff_Ground_DisplayList[161] = {
 };
 
 /* Raw data from file offset 0x2118 to 0x6140 (16424 bytes) */
-u8 dMVOpeningStandoff_Ground_post[16424] = {
+u8 dMVOpeningStandoff_Ground_post[16] = {
 	#include <MVOpeningStandoff/Ground_post.data.inc.c>
+};
+/* @tex fmt=I4 dim=64x128 */
+u8 dMVOpeningStandoff_Tex_0x2128[4104] = {
+	#include <MVOpeningStandoff/Tex_0x2128.tex.inc.c>
+};
+/* @tex fmt=I4 dim=64x128 */
+u8 dMVOpeningStandoff_Tex_0x3130[4104] = {
+	#include <MVOpeningStandoff/Tex_0x3130.tex.inc.c>
+};
+/* @tex fmt=I4 dim=64x128 */
+u8 dMVOpeningStandoff_Tex_0x4138[4104] = {
+	#include <MVOpeningStandoff/Tex_0x4138.tex.inc.c>
+};
+/* @tex fmt=I4 dim=64x128 */
+u8 dMVOpeningStandoff_Tex_0x5140[4096] = {
+	#include <MVOpeningStandoff/Tex_0x5140.tex.inc.c>
 };
 
 /* MObjSub: LightningMObjSub @ 0x6140 */
@@ -168,20 +188,20 @@ u8 dMVOpeningStandoff_gap_0x61B8[12] = {
 
 /* u32 pointer array @ 0x61C4 (5 entries) */
 u32 dMVOpeningStandoff_gap_0x61B8_sub_0xC[5] = {
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x3028),
+	(u32)&dMVOpeningStandoff_Tex_0x5140,
 	0x00000000,
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x2020),
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x1018),
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x10),
+	(u32)&dMVOpeningStandoff_Tex_0x4138,
+	(u32)&dMVOpeningStandoff_Tex_0x3130,
+	(u32)&dMVOpeningStandoff_Tex_0x2128,
 };
 
 /* u32 pointer array @ 0x61D8 (6 entries) */
 u32 dMVOpeningStandoff_gap_0x61B8_sub_0x20[6] = {
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x3028),
+	(u32)&dMVOpeningStandoff_Tex_0x5140,
 	0x00000000,
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x2020),
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x1018),
-	(u32)((u8*)&dMVOpeningStandoff_Ground_post + 0x10),
+	(u32)&dMVOpeningStandoff_Tex_0x4138,
+	(u32)&dMVOpeningStandoff_Tex_0x3130,
+	(u32)&dMVOpeningStandoff_Tex_0x2128,
 	0x00000000,
 };
 

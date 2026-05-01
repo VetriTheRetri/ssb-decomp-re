@@ -35,7 +35,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 
 FMT_TABLE = {
     ("CI", "4b"): "CI4",

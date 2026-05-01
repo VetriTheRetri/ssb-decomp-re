@@ -34,7 +34,7 @@ import sys
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 BUILD_OBJ_DIR = os.path.join(BUILD_DIR, ".build")
 CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
 

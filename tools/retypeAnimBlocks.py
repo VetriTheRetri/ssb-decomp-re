@@ -15,7 +15,7 @@ import struct
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 
 TARGET_KINDS = ("AnimJoint", "MatAnimJoint", "AttackEvents", "KeyEvent")

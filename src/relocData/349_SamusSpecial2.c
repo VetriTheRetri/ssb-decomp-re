@@ -42,31 +42,33 @@ void *dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites[2] = {
 
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */
-MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real = {
-	0x0000,                                       /* pad00 */
-	G_IM_FMT_IA, G_IM_SIZ_16b,                    /* fmt, siz */
-	(void**)dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites,
-	0x0020, 0x0000, 0x0020, 0x0020,               /* unk08, unk0A, unk0C, unk0E */
-	0,                                            /* unk10 */
-	0.0f, 0.0f,                                   /* trau, trav */
-	1.0f, 1.0f,                                   /* scau, scav */
-	0.0f, 1.0f,                                   /* unk24, unk28 */
-	(void**)0x00000000,                           /* palettes */
-	0x0001,                                       /* flags */
-	G_IM_FMT_IA, G_IM_SIZ_8b,                     /* block_fmt, block_siz */
-	0x0010,                                       /* block_dxt (texture w=16) */
-	0x0010, 0x0020, 0x0020,                       /* unk36 (h=16), unk38, unk3A */
-	0.0f, 0.0f,
-	0.0f, 0.0f,
-	0x00002001,
-	{ { 0x00, 0x38, 0xFF, 0xFF } },
-	0x00, 0x00, { 0x00, 0x00 },
-	{ { 0x55, 0xFF, 0xFF, 0xFF } },
-	{ { 0x00, 0x00, 0x00, 0x08 } },
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },
-	0, 0,
-	0, 0,
+MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real[1] = {
+	{
+		0x0000,                                       /* pad00 */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                    /* fmt, siz */
+		(void**)dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites,
+		0x0020, 0x0000, 0x0020, 0x0020,               /* unk08, unk0A, unk0C, unk0E */
+		0,                                            /* unk10 */
+		0.0f, 0.0f,                                   /* trau, trav */
+		1.0f, 1.0f,                                   /* scau, scav */
+		0.0f, 1.0f,                                   /* unk24, unk28 */
+		(void**)0x00000000,                           /* palettes */
+		0x0001,                                       /* flags */
+		G_IM_FMT_IA, G_IM_SIZ_8b,                     /* block_fmt, block_siz */
+		0x0010,                                       /* block_dxt (texture w=16) */
+		0x0010, 0x0020, 0x0020,                       /* unk36 (h=16), unk38, unk3A */
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002001,
+		{ { 0x00, 0x38, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x55, 0xFF, 0xFF, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
 /* Raw data from file offset 0x0288 to 0x02A0 (24 bytes) */

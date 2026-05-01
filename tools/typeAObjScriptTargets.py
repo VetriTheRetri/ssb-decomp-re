@@ -175,7 +175,7 @@ def run_decode_all():
             inc_match = re.search(r"<([^>]+)>", inc_line)
             if not inc_match:
                 continue
-            inc_path = os.path.join(PROJECT_DIR, "build", "src", "relocData", inc_match.group(1))
+            inc_path = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData", inc_match.group(1))
             if not os.path.exists(inc_path):
                 continue
             inc_text = open(inc_path).read()

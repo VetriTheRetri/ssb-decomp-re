@@ -520,7 +520,7 @@ def main():
     # Default include paths if not provided
     search_paths = list(args.include_paths) if args.include_paths else [
         os.path.join(PROJECT_DIR, "src", "relocData"),
-        os.path.join(PROJECT_DIR, "build", "src", "relocData"),
+        os.path.join(PROJECT_DIR, "build", "us", "src", "relocData"),
     ]
 
     converted_ids = None

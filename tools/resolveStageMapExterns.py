@@ -29,7 +29,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 
 # Stage -> (map_fid, file2_fid, file3_fid, sprite_fid, mainmotion_fid)
 #
@@ -296,7 +296,7 @@ def load_symbol_types():
     type_map = {}
     # Scan build/src/relocData/*_*.c generated masters and src/relocData/**/*.c
     paths = []
-    for root in (os.path.join(PROJECT_DIR, "build", "src", "relocData"),
+    for root in (os.path.join(PROJECT_DIR, "build", "us", "src", "relocData"),
                  RELOC_DIR):
         if not os.path.isdir(root):
             continue

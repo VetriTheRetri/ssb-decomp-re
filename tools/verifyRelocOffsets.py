@@ -16,7 +16,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
 # Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
 EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 COMPRESSED_FILE_COUNT = 499
 
 

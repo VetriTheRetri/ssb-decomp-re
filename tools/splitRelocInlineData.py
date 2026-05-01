@@ -24,7 +24,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_RELOC = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_RELOC = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_RELOC = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 
 
 def count_top_level_braces(body):

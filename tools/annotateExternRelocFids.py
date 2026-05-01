@@ -17,7 +17,7 @@ import subprocess
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 EXCESS_PATH = os.path.join(PROJECT_DIR, "tools", "vpk0_excess_bytes.txt")
 DESC_PATH = os.path.join(PROJECT_DIR, "tools", "relocFileDescriptions.us.txt")
 

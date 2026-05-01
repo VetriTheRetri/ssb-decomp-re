@@ -512,31 +512,33 @@ u8 dMVOpeningClashWallpaper_gap_0x30C8[160] = {
 /* MObjSub for the LL wallpaper corner — was an untyped u8[120].
  * All four corners share identical bytes except for the palettes
  * pointer, which targets each corner's own LLPalettes. */
-MObjSub dMVOpeningClashWallpaper_gap_0x30C8_sub_0xA0 = {
-	0x0000,                                       /* pad00 */
-	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
-	(void**)0x00000000,                           /* sprites */
-	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
-	0,                                            /* unk10 */
-	0.0f, 0.0f,                                   /* trau, trav */
-	1.0f, 1.0f,                                   /* scau, scav */
-	0.0f, 1.0f,                                   /* unk24, unk28 */
-	(void**)dMVOpeningClashWallpaper_LLPalettes,  /* palettes */
-	0x0004,                                       /* flags */
-	0x02, 0x00,                                   /* block_fmt, block_siz */
-	0x00A0,                                       /* block_dxt */
-	0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
-	0.0f, 0.0f,                                   /* scrollu, scrollv */
-	0.0f, 0.0f,                                   /* unk44, unk48 */
-	0x00002005,                                   /* unk4C */
-	{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
-	0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
-	{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
-	{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
-	0, 0,                                         /* unk68, unk6C */
-	0, 0,                                         /* unk70, unk74 */
+MObjSub dMVOpeningClashWallpaper_gap_0x30C8_sub_0xA0[1] = {
+	{
+		0x0000,                                       /* pad00 */
+		G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
+		(void**)0x00000000,                           /* sprites */
+		0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
+		0,                                            /* unk10 */
+		0.0f, 0.0f,                                   /* trau, trav */
+		1.0f, 1.0f,                                   /* scau, scav */
+		0.0f, 1.0f,                                   /* unk24, unk28 */
+		(void**)dMVOpeningClashWallpaper_LLPalettes,  /* palettes */
+		0x0004,                                       /* flags */
+		0x02, 0x00,                                   /* block_fmt, block_siz */
+		0x00A0,                                       /* block_dxt */
+		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                                   /* scrollu, scrollv */
+		0.0f, 0.0f,                                   /* unk44, unk48 */
+		0x00002005,                                   /* unk4C */
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
+		0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
+		{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
+		{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
+		0, 0,                                         /* unk68, unk6C */
+		0, 0,                                         /* unk70, unk74 */
+	}
 };
 
 /* MObjSub list for the LL corner @ 0x31E0 — referenced by LLMObjSub_MObjSub[0].
@@ -804,31 +806,33 @@ u8 dMVOpeningClashWallpaper_gap_0x3758[160] = {
 /* MObjSub for the LR wallpaper corner — was an untyped u8[120].
  * All four corners share identical bytes except for the palettes
  * pointer, which targets each corner's own LRPalettes. */
-MObjSub dMVOpeningClashWallpaper_gap_0x3758_sub_0xA0 = {
-	0x0000,                                       /* pad00 */
-	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
-	(void**)0x00000000,                           /* sprites */
-	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
-	0,                                            /* unk10 */
-	0.0f, 0.0f,                                   /* trau, trav */
-	1.0f, 1.0f,                                   /* scau, scav */
-	0.0f, 1.0f,                                   /* unk24, unk28 */
-	(void**)dMVOpeningClashWallpaper_LRPalettes,  /* palettes */
-	0x0004,                                       /* flags */
-	0x02, 0x00,                                   /* block_fmt, block_siz */
-	0x00A0,                                       /* block_dxt */
-	0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
-	0.0f, 0.0f,                                   /* scrollu, scrollv */
-	0.0f, 0.0f,                                   /* unk44, unk48 */
-	0x00002005,                                   /* unk4C */
-	{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
-	0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
-	{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
-	{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
-	0, 0,                                         /* unk68, unk6C */
-	0, 0,                                         /* unk70, unk74 */
+MObjSub dMVOpeningClashWallpaper_gap_0x3758_sub_0xA0[1] = {
+	{
+		0x0000,                                       /* pad00 */
+		G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
+		(void**)0x00000000,                           /* sprites */
+		0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
+		0,                                            /* unk10 */
+		0.0f, 0.0f,                                   /* trau, trav */
+		1.0f, 1.0f,                                   /* scau, scav */
+		0.0f, 1.0f,                                   /* unk24, unk28 */
+		(void**)dMVOpeningClashWallpaper_LRPalettes,  /* palettes */
+		0x0004,                                       /* flags */
+		0x02, 0x00,                                   /* block_fmt, block_siz */
+		0x00A0,                                       /* block_dxt */
+		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                                   /* scrollu, scrollv */
+		0.0f, 0.0f,                                   /* unk44, unk48 */
+		0x00002005,                                   /* unk4C */
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
+		0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
+		{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
+		{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
+		0, 0,                                         /* unk68, unk6C */
+		0, 0,                                         /* unk70, unk74 */
+	}
 };
 
 /* MObjSub list for the LR corner @ 0x3870 — see LL version for notes. */
@@ -1094,31 +1098,33 @@ u8 dMVOpeningClashWallpaper_gap_0x3DE8[160] = {
 /* MObjSub for the UL wallpaper corner — was an untyped u8[120].
  * All four corners share identical bytes except for the palettes
  * pointer, which targets each corner's own ULPalettes. */
-MObjSub dMVOpeningClashWallpaper_gap_0x3DE8_sub_0xA0 = {
-	0x0000,                                       /* pad00 */
-	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
-	(void**)0x00000000,                           /* sprites */
-	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
-	0,                                            /* unk10 */
-	0.0f, 0.0f,                                   /* trau, trav */
-	1.0f, 1.0f,                                   /* scau, scav */
-	0.0f, 1.0f,                                   /* unk24, unk28 */
-	(void**)dMVOpeningClashWallpaper_ULPalettes,  /* palettes */
-	0x0004,                                       /* flags */
-	0x02, 0x00,                                   /* block_fmt, block_siz */
-	0x00A0,                                       /* block_dxt */
-	0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
-	0.0f, 0.0f,                                   /* scrollu, scrollv */
-	0.0f, 0.0f,                                   /* unk44, unk48 */
-	0x00002005,                                   /* unk4C */
-	{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
-	0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
-	{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
-	{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
-	0, 0,                                         /* unk68, unk6C */
-	0, 0,                                         /* unk70, unk74 */
+MObjSub dMVOpeningClashWallpaper_gap_0x3DE8_sub_0xA0[1] = {
+	{
+		0x0000,                                       /* pad00 */
+		G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
+		(void**)0x00000000,                           /* sprites */
+		0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
+		0,                                            /* unk10 */
+		0.0f, 0.0f,                                   /* trau, trav */
+		1.0f, 1.0f,                                   /* scau, scav */
+		0.0f, 1.0f,                                   /* unk24, unk28 */
+		(void**)dMVOpeningClashWallpaper_ULPalettes,  /* palettes */
+		0x0004,                                       /* flags */
+		0x02, 0x00,                                   /* block_fmt, block_siz */
+		0x00A0,                                       /* block_dxt */
+		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                                   /* scrollu, scrollv */
+		0.0f, 0.0f,                                   /* unk44, unk48 */
+		0x00002005,                                   /* unk4C */
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
+		0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
+		{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
+		{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
+		0, 0,                                         /* unk68, unk6C */
+		0, 0,                                         /* unk70, unk74 */
+	}
 };
 
 /* MObjSub list for the UL corner @ 0x3F00 — see LL version for notes. */
@@ -1391,31 +1397,33 @@ u8 dMVOpeningClashWallpaper_gap_0x4488[160] = {
 /* MObjSub for the UR wallpaper corner — was an untyped u8[120].
  * All four corners share identical bytes except for the palettes
  * pointer, which targets each corner's own URPalettes. */
-MObjSub dMVOpeningClashWallpaper_gap_0x4488_sub_0xA0 = {
-	0x0000,                                       /* pad00 */
-	G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
-	(void**)0x00000000,                           /* sprites */
-	0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
-	0,                                            /* unk10 */
-	0.0f, 0.0f,                                   /* trau, trav */
-	1.0f, 1.0f,                                   /* scau, scav */
-	0.0f, 1.0f,                                   /* unk24, unk28 */
-	(void**)dMVOpeningClashWallpaper_URPalettes,  /* palettes */
-	0x0004,                                       /* flags */
-	0x02, 0x00,                                   /* block_fmt, block_siz */
-	0x00A0,                                       /* block_dxt */
-	0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
-	0.0f, 0.0f,                                   /* scrollu, scrollv */
-	0.0f, 0.0f,                                   /* unk44, unk48 */
-	0x00002005,                                   /* unk4C */
-	{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
-	0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
-	{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
-	{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
-	{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
-	0, 0,                                         /* unk68, unk6C */
-	0, 0,                                         /* unk70, unk74 */
+MObjSub dMVOpeningClashWallpaper_gap_0x4488_sub_0xA0[1] = {
+	{
+		0x0000,                                       /* pad00 */
+		G_IM_FMT_CI, G_IM_SIZ_16b,                                   /* fmt=RGBA, siz=16b */
+		(void**)0x00000000,                           /* sprites */
+		0x0020, 0x0000, 0x00A0, 0x0078,               /* unk08, unk0A, w=160, h=120 */
+		0,                                            /* unk10 */
+		0.0f, 0.0f,                                   /* trau, trav */
+		1.0f, 1.0f,                                   /* scau, scav */
+		0.0f, 1.0f,                                   /* unk24, unk28 */
+		(void**)dMVOpeningClashWallpaper_URPalettes,  /* palettes */
+		0x0004,                                       /* flags */
+		0x02, 0x00,                                   /* block_fmt, block_siz */
+		0x00A0,                                       /* block_dxt */
+		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                                   /* scrollu, scrollv */
+		0.0f, 0.0f,                                   /* unk44, unk48 */
+		0x00002005,                                   /* unk4C */
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },                  /* primcolor */
+		0x00, 0x00, { 0x00, 0x00 },                   /* prim_l, prim_m, prim_pad */
+		{ { 0x00, 0x00, 0x00, 0xFF } },                  /* envcolor */
+		{ { 0x00, 0x00, 0x00, 0x08 } },                  /* blendcolor */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light1color */
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },                  /* light2color */
+		0, 0,                                         /* unk68, unk6C */
+		0, 0,                                         /* unk70, unk74 */
+	}
 };
 
 /* MObjSub list for the UR corner @ 0x45A0 — see LL version for notes. */

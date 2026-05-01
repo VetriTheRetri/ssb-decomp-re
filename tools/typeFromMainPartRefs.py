@@ -40,7 +40,7 @@ import sys
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
-OBJDIR = os.path.join(PROJECT_DIR, "build", "src", "relocData", ".build")
+OBJDIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData", ".build")
 
 
 def find_main_files():

@@ -28,7 +28,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 EXCESS_PATH = os.path.join(PROJECT_DIR, "tools", "vpk0_excess_bytes.txt")
 
 
@@ -170,7 +170,7 @@ def symbol_type_from_c(sym_name):
         rf"^\s*(?:static\s+)?([A-Za-z_][\w\s*]*?)\s+{re.escape(sym_name)}\s*(?:\[[^\]]*\])?\s*=",
         re.MULTILINE,
     )
-    for root in (RELOC_DIR, os.path.join(PROJECT_DIR, "build", "src", "relocData")):
+    for root in (RELOC_DIR, os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")):
         if not os.path.isdir(root):
             continue
         for dirpath, _, filenames in os.walk(root):

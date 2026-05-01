@@ -31,7 +31,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_OBJ_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData", ".build")
+BUILD_OBJ_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData", ".build")
 
 
 _nm_cache = {}

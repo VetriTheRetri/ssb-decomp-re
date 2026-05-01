@@ -329,7 +329,7 @@ def process_file(file_id, dry=False):
         inc_match = re.search(r"<([^>]+)>", inc_line)
         if not inc_match:
             continue
-        inc_path = os.path.join(PROJECT_DIR, "build", "src", "relocData", inc_match.group(1))
+        inc_path = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData", inc_match.group(1))
         if not os.path.exists(inc_path):
             continue
         with open(inc_path) as f:

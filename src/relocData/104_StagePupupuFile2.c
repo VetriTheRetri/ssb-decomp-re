@@ -1502,9 +1502,11 @@ u8 dStagePupupuFile2_gap_0x1D00_sub_0x250[16] = {
 	#include <StagePupupuFile2/gap_0x1D00_sub_0x250.data.inc.c>
 };
 
-/* gap sub-block @ 0x1F60 (was gap+0x260, 12 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x260[12] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x260.data.inc.c>
+/* u32 pointer array @ 0x1F60 (3 entries) */
+u32 dStagePupupuFile2_gap_0x1D00_sub_0x260[3] = {
+	0x07D906F8,
+	0x07DA0784,
+	0x07DB0810,
 };
 
 /* gap sub-block @ 0x1F6C (was gap+0x26C, 12 bytes) */
@@ -1512,9 +1514,34 @@ u8 dStagePupupuFile2_gap_0x1D00_sub_0x26C[12] = {
 	#include <StagePupupuFile2/gap_0x1D00_sub_0x26C.data.inc.c>
 };
 
-/* gap sub-block @ 0x1F78 (was gap+0x278, 120 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x278[120] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x278.data.inc.c>
+/* MObjSub @ 0x1F78 */
+MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x278[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dStagePupupuFile2_gap_0x1D00_sub_0x260,
+		0x0020, 0x0180, 0x0080, 0x0080,
+		0,
+		0.006599999964237213f, 0.0f,
+		2.0f, 4.0f,
+		0.006599999964237213f, 2.0f,
+		(void**)0x00000000,
+		0x006B,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0080, 0x0080,
+		0.006599999964237213f, 0.0f,
+		0.006599999964237213f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x73, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0xB3, 0xB3, 0xB3, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
 /* gap sub-block @ 0x1FF0 (was gap+0x2F0, 80 bytes) */

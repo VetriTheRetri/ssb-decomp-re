@@ -8,15 +8,16 @@ N64 decompilation of Super Smash Bros. (US version). The goal is to produce C so
 
 ```bash
 make -j$(nproc)                  # Build the US ROM (parallel)
-make init -j$(nproc)             # Full extract + build for US (run after pulling or modifying splat yaml/symbols)
-make init -j$(nproc) VERSION=jp  # Full extract + build for JP — always use `make init` when switching versions; a plain `make VERSION=jp` on a tree last extracted for US can fail with missing-symbol linker errors
-make clean                       # Clean build artifacts
-make extract                     # Re-extract assembly/assets from baserom
+make init -j$(nproc)             # Full extract + build for US (run on a fresh clone, after pulling, or after modifying splat yaml/symbols)
+make init -j$(nproc) VERSION=jp  # Same, for JP
+make VERSION=jp -j$(nproc)       # Day-to-day: switch versions with no re-init. Both versions' build/<v>/, asm/<v>/, assets/<v>/, .splat/<v>/, expected/build/<v>/ trees coexist.
+make clean                       # Clean the active version's build artifacts
+make extract                     # Re-extract the active version's assembly/assets from baserom (preserves the inactive version)
 make format                      # Run clang-format on source files
 make validate                    # Validate build output matches expected
 ```
 
-Build flags: `NON_MATCHING=1` allows building with non-matching C stubs instead of assembly. `RELOC_DATA=1` compiles relocData files from C source instead of using original binaries. `make report` generates progress reports for decomp.dev.
+Build flags: `NON_MATCHING=1` allows building with non-matching C stubs instead of assembly. `RELOC_DATA=1` compiles relocData files from C source instead of using original binaries. `make report` generates progress reports for decomp.dev. `VERSION=us` (default) or `VERSION=jp` selects the ROM version; the build is fully version-isolated so swapping between them is incremental.
 
 ## Decomp Workflow
 
@@ -71,15 +72,18 @@ Build flags: `NON_MATCHING=1` allows building with non-matching C stubs instead 
 
 ## Directory Structure
 
-- `src/` - Decompiled C source
-- `asm/nonmatchings/` - Assembly stubs for unmatched functions
+- `src/` - Decompiled C source (shared across versions)
 - `include/` - Headers and type definitions
-- `assets/` - Game assets
 - `symbols/` - Symbol definitions for linker
-- `relocAssets/` - Relocated asset files
-- `.splat/` - Generated linker scripts from splat
 - `tools/` - Build tools, scripts, submodules
-- `build/` - Build output (not committed)
+- `relocAssets/` - Relocated asset files
+- `asm/<v>/` - Per-version splat output (asm files for unmatched/data segments). `asm/nonmatchings` is a symlink to `asm/<active-version>/nonmatchings` maintained by the Makefile so the existing `#pragma GLOBAL_ASM("asm/nonmatchings/...")` directives in `src/` resolve to the active version's bytes without per-pragma changes.
+- `assets/<v>/` - Per-version extracted assets (`relocData/`, `db/`, `ovl8/`, `particles/`, plus splat-extracted `*.tbl.bin`, `fgm.*.bin`, etc.)
+- `.splat/<v>/` - Per-version splat-generated linker script + undefined-symbol files
+- `build/<v>/` - Per-version build output (.o files, generated headers, etc.). Final ROM/ELF/MAP land at `build/smashbrothers.<v>.{z64,elf,map}` so external tooling (`diff_settings.py`, `decomp.yaml`) finds them at well-known paths.
+- `expected/build/<v>/` - Per-version asm-differ snapshot (populated by `make expected VERSION=<v>`)
+
+Per-version trees coexist on disk; `make VERSION=<v>` swaps between them incrementally. None of `build/`, `asm/`, `assets/`, `.splat/`, or `expected/` is committed.
 
 ## Compiler
 
@@ -93,9 +97,9 @@ relocData files are binary asset files (models, stages, effects) containing Gfx 
 
 - **`.c` files** — Hand-authored C source. These drive extraction and expansion. Each declaration's type (`Vtx`, `Gfx`, `u8`, `DObjDLLink`, etc.) tells the extraction tool what format to use for the `.inc.c` file. Only `.c`, `.reloc`, and `.spritelist` files belong here — no subdirectories or generated artifacts.
 - **`.reloc` files** — Relocation metadata mapping pointer locations to target symbols. Symbol names here must match the `.c` file exactly.
-- **`.spritelist` files** — Drive extraction for sprite-only files; expanded to `.c` files in `build/src/relocData/`.
+- **`.spritelist` files** — Drive extraction for sprite-only files; expanded to `.c` files in `build/<v>/src/relocData/`.
 
-### Build outputs (`build/src/relocData/`)
+### Build outputs (`build/<v>/src/relocData/`)
 
 - **Expanded `.c` files** — Human-readable view with decoded Gfx macros, Vtx structs, etc. Inline data (Gfx, Vtx) is decoded directly; only textures, palettes, and untyped blobs use `#include`. Use these to identify what type untyped `u8[]` gap blocks actually are.
 - **`.inc.c` files** — Generated from the baserom binary during `make extract`. Format depends on the declared C type: `.vtx.inc.c` for `Vtx`, `.dl.inc.c` for `Gfx`, `.palette.inc.c` for `u16` palettes, `.data.inc.c` for raw `u8`/`u32`.
@@ -105,7 +109,7 @@ relocData files are binary asset files (models, stages, effects) containing Gfx 
 
 To convert an untyped `u8[]` gap block to its actual type:
 
-1. Look at the **expanded** `.c` file in `build/src/relocData/` to see how the data is used (e.g., `gsSPVertex(symbol, N, 0)` → Vtx, `gsDPSetTextureImage(...)` → texture).
+1. Look at the **expanded** `.c` file in `build/<v>/src/relocData/` to see how the data is used (e.g., `gsSPVertex(symbol, N, 0)` → Vtx, `gsDPSetTextureImage(...)` → texture).
 2. In the **source** `.c` file in `src/relocData/`, change the type and include path:
    - `u8 dFoo_gap_0xNN[64]` with `.data.inc.c` → `Vtx dFoo_gap_0xNN[4]` with `.vtx.inc.c`
    - Keep the **same symbol name** to preserve relocation chain order (renaming symbols changes the chain threading and breaks matching).

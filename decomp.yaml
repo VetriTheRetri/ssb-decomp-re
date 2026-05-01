@@ -49,6 +49,19 @@ tools:
       # i.e.: "build/us/asm/us/header.o" -> `path_index: 4`.
       # path_index: 2
       prefixes_to_trim:
+        # Per-version build/asm paths (post step-5 layout). Listed before the
+        # legacy paths so the longer prefix wins when both would match.
+        - build/us/lib/
+        - build/us/src/
+        - build/us/asm/us/data/
+        - build/us/asm/us/
+        - build/us/
+        - build/jp/lib/
+        - build/jp/src/
+        - build/jp/asm/jp/data/
+        - build/jp/asm/jp/
+        - build/jp/
+        # Legacy shared paths kept for backwards compatibility with old reports.
         - build/lib/
         - build/src/
         - build/asm/data/

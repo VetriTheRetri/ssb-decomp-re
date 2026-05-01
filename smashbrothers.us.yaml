@@ -8,9 +8,11 @@ options:
   platform: n64
   compiler: IDO
 
-  build_path: build
+  build_path: build/us
+  asm_path: asm/us
+  asset_path: assets/us
 
-  ld_script_path: .splat/smashbrothers.ld
+  ld_script_path: .splat/us/smashbrothers.ld
   ld_dependencies: True
   asm_emit_size_directive: True
 
@@ -39,8 +41,8 @@ options:
   reloc_addrs_path:
     - reloc_addrs.txt
 
-  undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
-  undefined_syms_auto_path: .splat/undefined_syms_auto.txt
+  undefined_funcs_auto_path: .splat/us/undefined_funcs_auto.txt
+  undefined_syms_auto_path: .splat/us/undefined_syms_auto.txt
 
   extensions_path: tools/splat_ext
 

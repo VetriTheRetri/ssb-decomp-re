@@ -30,9 +30,16 @@ from math import floor
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
-EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "relocData")
-CSV_PATH = os.path.join(PROJECT_DIR, "assets", "relocData.csv")
+# Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
+EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
+CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
 COMPRESSED_FILE_COUNT = 499
+
+
+def _bind_version(version):
+    global EXTRACTED_FILES_PATH, CSV_PATH
+    EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData")
+    CSV_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData.csv")
 
 SPRITE_SIZE = 68
 BITMAP_SIZE = 16
@@ -675,6 +682,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "extract":
+        _bind_version(args.version)
         # Default descriptions path comes from --version (us or jp)
         desc_path = args.descriptions or os.path.join(
             SCRIPT_DIR, f"relocFileDescriptions.{args.version}.txt")
@@ -691,7 +699,8 @@ def main():
             if re.match(r'^_\d+_$', file_name):
                 file_name = ""
             subdir = file_name if file_name else f"file_{args.file_id}"
-            out_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData", subdir)
+            out_dir = os.path.join(PROJECT_DIR, "build", args.version,
+                                   "src", "relocData", subdir)
         extract_sprites(args.file_id, out_dir, desc_path)
     elif args.command == "png2inc":
         fmt = args.format

@@ -339,13 +339,13 @@ image and per-palette is `#include`d from a separate `.inc.c` of hex
 bytes. The pipeline:
 
 ```
-                    +-- assets/particles/<bank>/tex_N_img_M.<fmt>.bin   (raw bytes)
-                    |   assets/particles/<bank>/tex_N_img_M.<fmt>.png   (RGBA preview)
-                    |   assets/particles/<bank>/tex_N_pal_M.bin
+                    +-- assets/<v>/particles/<bank>/tex_N_img_M.<fmt>.bin   (raw bytes)
+                    |   assets/<v>/particles/<bank>/tex_N_img_M.<fmt>.png   (RGBA preview)
+                    |   assets/<v>/particles/<bank>/tex_N_pal_M.bin
 baserom.us.z64 ----+
                     |
-                    +-- build/src/particles/<bank>/tex_N_img_M.<fmt>.inc.c
-                        build/src/particles/<bank>/tex_N_pal_M.inc.c
+                    +-- build/<v>/src/particles/<bank>/tex_N_img_M.<fmt>.inc.c
+                        build/<v>/src/particles/<bank>/tex_N_pal_M.inc.c
                                                             |
                                                             v
                         src/particles/<bank>_txb.c uses `#include <particles/<bank>/...>`
@@ -356,8 +356,8 @@ reads the baserom slice, parses the LBTextures, and writes all of the
 above. It runs lazily as a build dependency: each `_txb.o` depends on a
 per-bank `extract-stamp` file that guards the extractor invocation, same
 shape as the dbkirby rule in the [Makefile](Makefile#L527). All
-`assets/particles/` files are gitignored (the broader `assets/` rule in
-[.gitignore](.gitignore#L11) covers them); `build/src/particles/` is also
+`assets/<v>/particles/` files are gitignored (the broader `assets/` rule in
+[.gitignore](.gitignore#L11) covers them); `build/<v>/src/particles/` is also
 gitignored (under `build/`).
 
 PNG previews go through a per-format decoder
@@ -373,7 +373,7 @@ inline hex:    src/particles/efcommon_txb.c was 21,469 lines / 2.0 MB
 ```
 
 (Whole src/particles/ dropped from 2.6 MB to 284 KB; 246 PNG previews
-landed in assets/particles/.)
+landed in assets/<v>/particles/.)
 
 A future tightening: swap to splat's typed image segments
 (`i4`/`ci4`/etc. + `palette`) and a PNG -> bin build step so the PNGs

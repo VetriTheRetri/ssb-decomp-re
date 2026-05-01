@@ -22,7 +22,13 @@ import re
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
-CSV_PATH = os.path.join(PROJECT_DIR, "assets", "relocData.csv")
+# Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
+CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
+
+
+def _bind_version(version):
+    global CSV_PATH
+    CSV_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData.csv")
 
 
 def read_symbol_table(obj_path):
@@ -179,7 +185,10 @@ def main():
     parser.add_argument("reloc_path", help="Relocation metadata file (.reloc)")
     parser.add_argument("obj_path", help="Compiled object file (.o) for symbol resolution")
     parser.add_argument("--file-id", type=int, default=None, help="File ID for CSV update")
+    parser.add_argument("--version", default="us", choices=("us", "jp"),
+                        help="Selects assets/<v>/relocData.csv")
     args = parser.parse_args()
+    _bind_version(args.version)
 
     fixup_binary(args.binary_path, args.reloc_path, args.obj_path, args.file_id)
 

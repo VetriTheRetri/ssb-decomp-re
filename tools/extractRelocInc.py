@@ -20,8 +20,23 @@ import sys
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 SRC_RELOC = os.path.join(PROJECT_DIR, "src", "relocData")
-BUILD_RELOC = os.path.join(PROJECT_DIR, "build", "src", "relocData")
-ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+# BUILD_RELOC and ASSET_DIR default to the US tree; main() rebinds them via
+# _bind_version() once --version is parsed.
+BUILD_RELOC = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
+ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
+
+
+def _assets_root_for(version):
+    return os.path.join(PROJECT_DIR, "assets", version, "relocData")
+
+
+def _bind_version(version):
+    """Rebind module-scoped paths to a specific version. Callers from inside
+    the build pipeline pass an explicit version; legacy callers that rely on
+    auto-detect can omit it."""
+    global ASSET_DIR, BUILD_RELOC
+    ASSET_DIR = _assets_root_for(version)
+    BUILD_RELOC = os.path.join(PROJECT_DIR, "build", version, "src", "relocData")
 
 sys.path.insert(0, SCRIPT_DIR)
 from genRelocMaster import parse_manifest, compute_block_size
@@ -151,17 +166,19 @@ def inline_master_for(fid):
 
 
 def _detect_version():
-    """Figure out which baserom the currently-extracted assets came from.
-    JP has 2107 files + sentinel + header (2109 csv lines), US has 2132
-    + sentinel + header (2134 csv lines) — use that as a cheap fingerprint."""
-    csv_path = os.path.join(os.path.dirname(SRC_RELOC), "..",
-                             "assets", "relocData.csv")
-    try:
-        with open(csv_path) as f:
-            row_count = sum(1 for _ in f)
-    except OSError:
-        return None
-    return "jp" if row_count == 2109 else "us"
+    """Figure out which baserom's assets we should look at. With per-version
+    asset trees both can be present at once, so prefer whichever tree the
+    caller bound via --version (reflected in ASSET_DIR). Otherwise fall back
+    to the first existing per-version CSV."""
+    cur_csv = os.path.join(os.path.dirname(ASSET_DIR), "relocData.csv")
+    if os.path.exists(cur_csv):
+        # ASSET_DIR is .../assets/<v>/relocData; pick its parent dir name.
+        return os.path.basename(os.path.dirname(ASSET_DIR))
+    for v in ("us", "jp"):
+        csv = os.path.join(PROJECT_DIR, "assets", v, "relocData.csv")
+        if os.path.exists(csv):
+            return v
+    return None
 
 
 # Matches the start of a top-level typed declaration: `<Type> <name>...;`
@@ -1112,7 +1129,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('fids', nargs='*', type=int,
                     help='File IDs to extract; default = every manifest on disk.')
+    ap.add_argument('--version', default=None,
+                    help='Version (us|jp) — selects assets/<v>/relocData/. '
+                         'Defaults to auto-detect from on-disk CSVs.')
     args = ap.parse_args()
+
+    if args.version:
+        _bind_version(args.version)
+    else:
+        v = _detect_version()
+        if v:
+            _bind_version(v)
 
     if args.fids:
         targets = args.fids

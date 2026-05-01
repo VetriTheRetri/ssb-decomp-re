@@ -211,8 +211,21 @@ if __name__ == "__main__":
 
 	inFilePath = sys.argv[1]
 
+	# Optional --out-dir <dir>: write encoded/metadata under <dir>/ instead of
+	# next to the input file. Lets the build keep these per-version artifacts
+	# under build/<v>/src/credits/ so version-switching doesn't clobber them.
+	outDir = None
+	if '--out-dir' in sys.argv:
+		idx = sys.argv.index('--out-dir')
+		outDir = sys.argv[idx + 1]
+		del sys.argv[idx:idx + 2]
+
 	base, ext = os.path.splitext(inFilePath)      # x.credits.v , .txt
 	base, region = os.path.splitext(base)         # x.credits , .v
+
+	if outDir is not None:
+		os.makedirs(outDir, exist_ok=True)
+		base = os.path.join(outDir, os.path.basename(base))
 
 	outEncodedPath = base + '.encoded'
 	outMetadataPath = base + '.metadata'

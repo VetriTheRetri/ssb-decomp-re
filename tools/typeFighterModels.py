@@ -35,7 +35,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 DESC_PATH = os.path.join(PROJECT_DIR, "tools", "relocFileDescriptions.us.txt")
 
 DOBJDESC_SIZE = 44  # bytes

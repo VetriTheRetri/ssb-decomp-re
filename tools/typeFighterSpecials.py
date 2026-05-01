@@ -253,7 +253,7 @@ def find_dl_entries(data, dobjdesc_offsets):
 
 def read_bin(fid):
     for ext in (".vpk0.bin", ".bin"):
-        p = os.path.join(PROJECT_DIR, "assets", "relocData", f"{fid}{ext}")
+        p = os.path.join(PROJECT_DIR, "assets", "us", "relocData", f"{fid}{ext}")
         if os.path.exists(p):
             with open(p, "rb") as f:
                 return f.read()

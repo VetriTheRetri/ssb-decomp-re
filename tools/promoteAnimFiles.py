@@ -34,7 +34,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 
 US_DESC = os.path.join(PROJECT_DIR, "tools/relocFileDescriptions.us.txt")
-ASSET_DIR = os.path.join(PROJECT_DIR, "assets/relocData")
+ASSET_DIR = os.path.join(PROJECT_DIR, "assets/us/relocData")
 OUT_DIR = os.path.join(PROJECT_DIR, "src/relocData")
 
 # File id ranges per character (derived from relocFileDescriptions.us.txt).

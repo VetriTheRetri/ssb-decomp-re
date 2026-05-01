@@ -8,7 +8,7 @@ The big picture is the same for all of them: nothing audio-related is
 committed under `src/audio/`. The 47 BGM tracks, the 117/322 per-bank
 waveforms, the aggregate `.c` files, and the FGM (sound-effect-engine)
 blobs are all extracted from the baserom on demand into
-`build/src/audio/`. User-supplied overrides live in three committed
+`build/<v>/src/audio/`. User-supplied overrides live in three committed
 directories:
 
 * [src/audio/midis/](src/audio/midis/) -- drop a `.mid` to add or
@@ -33,9 +33,9 @@ For background on the file formats themselves (`ALSeqFile`,
 * Nothing under [src/audio/S1_music/](src/audio/S1_music/) is committed
   -- the directory doesn't exist in the repo. The 47 base sequences
   live only in `baserom.<version>.z64` and are extracted on demand into
-  `build/src/audio/S1_music/`.
+  `build/<v>/src/audio/S1_music/`.
 * The `_sbk.c` aggregate file is also a build artifact:
-  `build/src/audio/S1_music_sbk.c`.
+  `build/<v>/src/audio/S1_music_sbk.c`.
 * To add a new song, drop a standard MIDI Type 1 `.mid` into
   [src/audio/midis/](src/audio/midis/) and rebuild.
 * If your `.mid`'s filename stem matches a base sequence's name (e.g.
@@ -64,23 +64,23 @@ For background on the file formats themselves (`ALSeqFile`,
        │     [.cseq.bin]  →  tools/disassemble_cseq.py
        │                                  │
        ▼                                  ▼
-build/src/audio/S1_music.manifest.json   build/src/audio/S1_music/seq_NN_<Name>.cseq.s
+build/<v>/src/audio/S1_music.manifest.json   build/<v>/src/audio/S1_music/seq_NN_<Name>.cseq.s
                                  │
                                  │  tools/assemble_cseq.py
                                  ▼
-build/src/audio/S1_music/seq_NN_<Name>.cseq.bin
+build/<v>/src/audio/S1_music/seq_NN_<Name>.cseq.bin
                                  │
                                  │  tools/binToInc.py
                                  ▼
-build/src/audio/S1_music/seq_NN_<Name>.cseq.inc.c
+build/<v>/src/audio/S1_music/seq_NN_<Name>.cseq.inc.c
                                  │
                                  │  #include from
                                  ▼
-build/src/audio/S1_music_sbk.c   (tools/gen_sbk_c.py)
+build/<v>/src/audio/S1_music_sbk.c   (tools/gen_sbk_c.py)
                                  │
                                  │  custom Make rule (C compile)
                                  ▼
-build/src/audio/S1_music_sbk.o   →  linked into the ROM
+build/<v>/src/audio/S1_music_sbk.o   →  linked into the ROM
 ```
 
 The `extract` step writes both the per-sequence `.cseq.s` files and a
@@ -105,8 +105,8 @@ flow through the per-sequence `#include` chain. See
 ```
 src/audio/midis/MyNewSong.mid
         ↓ make
-build/src/audio/S1_music/seq_47_MyNewSong.cseq.s
-build/src/audio/S1_music_sbk.c   ← seq_count bumped to 48
+build/<v>/src/audio/S1_music/seq_47_MyNewSong.cseq.s
+build/<v>/src/audio/S1_music_sbk.c   ← seq_count bumped to 48
 ```
 
 The new sequence is loadable by index (47 in the example). To add a
@@ -200,11 +200,11 @@ recognized.
 To pull an existing sequence into a DAW:
 
 1. Build once (`make`) so the per-sequence `.cseq.s` files exist under
-   `build/src/audio/S1_music/`.
+   `build/<v>/src/audio/S1_music/`.
 2. Convert the one you want:
 
    ```
-   python3 tools/cseq_to_mid.py build/src/audio/S1_music/seq_09_Hyrule.cseq.s -o Hyrule.mid
+   python3 tools/cseq_to_mid.py build/<v>/src/audio/S1_music/seq_09_Hyrule.cseq.s -o Hyrule.mid
    ```
 
 3. Open `Hyrule.mid` in any DAW. It's a normal Type 1 MIDI file:
@@ -272,17 +272,17 @@ bytes for both US and JP without per-version source forks.
        │     [VADPCM bytes + codebook + loop]
        │                                  │
        ▼                                  ▼
-build/src/audio/<bank>.ctl.json  build/src/audio/<bank>/wave_NNN.aifc   (Nintendo AIFC)
-build/src/audio/<bank>.tbl.bin   build/src/audio/<bank>/wave_NNN.aiff   (decoded preview)
+build/<v>/src/audio/<bank>.ctl.json  build/<v>/src/audio/<bank>/wave_NNN.aifc   (Nintendo AIFC)
+build/<v>/src/audio/<bank>.tbl.bin   build/<v>/src/audio/<bank>/wave_NNN.aiff   (decoded preview)
         │                                 │
         │  tools/gen_ctl_c.py             │  (preview only -- not used by build)
         ▼                                 │
-build/src/audio/<bank>_ctl.c              │
+build/<v>/src/audio/<bank>_ctl.c              │
         │                                 │
         │  C compile (custom Make rule)   │
         ▼                                 │
-build/src/audio/<bank>_ctl.o              │
-build/assets/<bank>.tbl.o (objcopy bin)   │
+build/<v>/src/audio/<bank>_ctl.o              │
+build/<v>/assets/<v>/<bank>.tbl.o (objcopy bin)   │
         │                                 │
         ▼                                 │
    linked into the ROM
@@ -299,7 +299,7 @@ exist purely as previews next to each waveform.
 
 1. Pick the waveform you want to replace by index. Example:
    `wave_023` is index 23 in `B1_sounds1`. Browse
-   `build/src/audio/B1_sounds1/wave_*.aiff` to listen and decide.
+   `build/<v>/src/audio/B1_sounds1/wave_*.aiff` to listen and decide.
 2. Author your replacement and save it as a Nintendo-flavor `.aifc`
    matching the index: `src/audio/instruments/wave_023.aifc`.
 3. `make`. The build sees the new `.aifc` (via the directory-mtime
@@ -370,16 +370,16 @@ ROM and are loaded together by the audio init in
        ┌─── src/audio/fgm/{fgm.unk,fgm.tbl,fgm.ucd}.bin   (committed user input)
        │           │
        ▼           ▼
-build/src/audio/fgm.unk.bin
-build/src/audio/fgm.tbl.bin
-build/src/audio/fgm.ucd.bin
+build/<v>/src/audio/fgm.unk.bin
+build/<v>/src/audio/fgm.tbl.bin
+build/<v>/src/audio/fgm.ucd.bin
         │
         │  objcopy -I binary
         ▼
-build/assets/fgm.{unk,tbl,ucd}.o   →  linked into the ROM
+build/<v>/assets/<v>/fgm.{unk,tbl,ucd}.o   →  linked into the ROM
 ```
 
-The fingerprint stored in `build/src/audio/.fgm.stamp.json` records
+The fingerprint stored in `build/<v>/src/audio/.fgm.stamp.json` records
 each override file's name + size + nanosecond mtime. The Makefile
 parse-time trigger compares the current state of `src/audio/fgm/` to
 this fingerprint via Python (so adds, removals, and edits within the
@@ -392,7 +392,7 @@ Three override paths, checked in priority order per file:
 
 1. **`src/audio/fgm/fgm.{unk,tbl,ucd}.json`** -- per-entry decomp.
    Each build writes the canonical decomp to
-   `build/src/audio/fgm.{unk,tbl,ucd}.json`; copy one into
+   `build/<v>/src/audio/fgm.{unk,tbl,ucd}.json`; copy one into
    `src/audio/fgm/`, edit any field, and the build picks up your
    version.
 2. **`src/audio/fgm/fgm.{unk,tbl,ucd}.bin`** -- whole-file binary

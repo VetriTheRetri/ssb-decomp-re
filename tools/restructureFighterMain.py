@@ -67,7 +67,7 @@ def walk_chain(data, start_word):
 
 def get_csv_reloc_info(fid):
     """Get intern/extern chain start words from CSV."""
-    csv_path = os.path.join(PROJECT_DIR, "assets", "relocData.csv")
+    csv_path = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
     with open(csv_path) as f:
         reader = csv.reader(f)
         header = next(reader)

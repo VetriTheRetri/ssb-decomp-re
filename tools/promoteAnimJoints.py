@@ -31,7 +31,7 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
-ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 OUT_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 DESC_PATH = os.path.join(PROJECT_DIR, "tools", "relocFileDescriptions.us.txt")
 

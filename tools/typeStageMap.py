@@ -27,7 +27,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 SYMBOLS_PATH = os.path.join(PROJECT_DIR, "symbols", "reloc_data_symbols.us.txt")
 
 MPGROUNDDATA_SIZE = 0xA8  # 168 bytes per IDO sizeof

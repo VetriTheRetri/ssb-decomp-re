@@ -44,7 +44,7 @@ FTATTR_SIZE = 0x348  # 840 bytes
 
 
 def read_bin(fid):
-    path = os.path.join(PROJECT_DIR, "assets", "relocData", f"{fid}.vpk0.bin")
+    path = os.path.join(PROJECT_DIR, "assets", "us", "relocData", f"{fid}.vpk0.bin")
     with open(path, "rb") as f:
         return f.read()
 

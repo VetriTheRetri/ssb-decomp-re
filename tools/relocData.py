@@ -5,31 +5,49 @@ import sys
 import json
 import subprocess
 
-COMPRESSED_FILE_COUNT = 499
+COMPRESSED_FILE_COUNT = {"us": 499, "jp": 474}
 ENDIANNESS = "big"
-EXTRACTED_FILES_PATH = "assets/relocData"
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VPK0_EXCESS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vpk0_excess_bytes.txt")
 RELOC_EXTRACTOR_BIN_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ssbfile")
 VPK0_BIN_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vpk0cmd")
+
+
+def assetsDir(version):
+	return f"assets/{version}/relocData"
+
+def relocBinPath(version):
+	return os.path.join(PROJECT_DIR, "assets", version, "relocData.bin")
+
+def relocCsvPath(version):
+	return os.path.join(PROJECT_DIR, "assets", version, "relocData.csv")
+
+def detectVersionFromDescriptions(descPath):
+	m = re.search(r'relocFileDescriptions\.(\w+)\.txt', descPath)
+	if m:
+		return m.group(1)
+	return "us"
 
 
 def extractSsbfile(relocFileDescriptionsFilePath, version="us"):
 	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
 		lines = relocFileDescriptionsFile.read().split('\n')
 	FILE_COUNT = getFileCount(lines)
-	ROM_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", f"baserom.{version}.z64")
-	os.chdir(EXTRACTED_FILES_PATH)
+	ROM_PATH = os.path.join(PROJECT_DIR, f"baserom.{version}.z64")
+	os.makedirs(assetsDir(version), exist_ok=True)
+	os.chdir(assetsDir(version))
 	processes = []
 	for i in range(FILE_COUNT):
 		processes.append(subprocess.Popen([RELOC_EXTRACTOR_BIN_PATH, f'{i}', '--mode', 'decompress', '--rom', ROM_PATH], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
 	for i in range(FILE_COUNT):
 		processes[i].wait()
 
-def extract(relocFileDescriptionsFilePath):
+def extract(relocFileDescriptionsFilePath, version="us"):
 	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
 		lines = relocFileDescriptionsFile.read().split('\n')
 	FILE_COUNT = getFileCount(lines)
-	RELOC_DATA_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "assets/relocData.bin")
+	RELOC_DATA_FILE_PATH = relocBinPath(version)
+	extractedFilesPath = assetsDir(version)
 	RELOC_TABLE_ENTRY_SIZE = 12 # in bytes
 	RELOC_TABLE_SIZE = (FILE_COUNT + 1) * RELOC_TABLE_ENTRY_SIZE # in bytes
 
@@ -47,14 +65,14 @@ def extract(relocFileDescriptionsFilePath):
 			relocTable.append({"isVpk0": isVpk0, "dataOffset": dataOffset, "relocInternOffset": relocInternOffset, "compressedSize": compressedSize, "relocExternOffset": relocExternOffset, "decompressedSize": decompressedSize})
 
 	# write table as csv
-	with open(f"{EXTRACTED_FILES_PATH}.csv", 'w') as outTableFile:
+	with open(relocCsvPath(version), 'w') as outTableFile:
 		outTableFile.write("isVpk0, dataOffset, relocInternOffset, compressedSize, relocExternOffset, decompressedSize\n")
 		for entry in relocTable:
 			row = ["1" if entry['isVpk0'] else "0", f"{entry['dataOffset']:#0{8}x}", f"{entry['relocInternOffset']:#0{6}x}", f"{entry['compressedSize']:#0{6}x}", f"{entry['relocExternOffset']:#0{6}x}", f"{entry['decompressedSize']:#0{6}x}"]
 			outTableFile.write(", ".join(row) + "\n")
 
 	# write reloc files
-	os.makedirs(EXTRACTED_FILES_PATH, exist_ok=True)
+	os.makedirs(extractedFilesPath, exist_ok=True)
 	with open(RELOC_DATA_FILE_PATH, 'rb') as romFile:
 		for i, entry in enumerate(relocTable[:-1]):
 
@@ -62,7 +80,7 @@ def extract(relocFileDescriptionsFilePath):
 			bytesToRead = relocTable[i + 1]['dataOffset'] - entry['dataOffset']
 			fileBytes = romFile.read(bytesToRead)
 
-			targetFilePath = f"{EXTRACTED_FILES_PATH}/{i}.bin"
+			targetFilePath = f"{extractedFilesPath}/{i}.bin"
 			if entry['isVpk0']:
 				with open(targetFilePath[:-3] + "vpk0", 'wb') as targetFile:
 					targetFile.write(fileBytes)
@@ -71,32 +89,38 @@ def extract(relocFileDescriptionsFilePath):
 				with open(targetFilePath, 'wb') as targetFile:
 					targetFile.write(fileBytes)
 
-def getVpk0ExcessPath():
-	"""Pick the right vpk0_excess_bytes file based on the currently extracted
-	relocData.csv. We sniff the JP-vs-US distinction by looking at the row count
-	in the CSV (US has 2132 + 1 sentinel, JP has 2107 + 1).
-	"""
+def getVpk0ExcessPath(version=None):
+	"""Pick the right vpk0_excess_bytes file. If version is given we use it
+	directly; otherwise sniff JP-vs-US by row count of an existing CSV under
+	assets/<v>/. Falls back to the US file."""
 	scriptDir = os.path.dirname(os.path.abspath(__file__))
-	csvPath = os.path.join(os.path.dirname(scriptDir), "assets", "relocData.csv")
-	if os.path.exists(csvPath):
-		with open(csvPath) as f:
-			rowCount = sum(1 for _ in f) - 1  # minus header
-		# JP has 2108 rows (2107 files + sentinel), US has 2133
-		if rowCount == 2108:
-			jpPath = os.path.join(scriptDir, "vpk0_excess_bytes.jp.txt")
-			if os.path.exists(jpPath):
-				return jpPath
-	# Fallback to the default (US) file
+	if version == "jp":
+		jpPath = os.path.join(scriptDir, "vpk0_excess_bytes.jp.txt")
+		if os.path.exists(jpPath):
+			return jpPath
+		return VPK0_EXCESS_PATH
+	if version is None:
+		# Legacy auto-detect: prefer JP CSV if its row count matches.
+		jpCsv = relocCsvPath("jp")
+		usCsv = relocCsvPath("us")
+		csvPath = jpCsv if os.path.exists(jpCsv) else (usCsv if os.path.exists(usCsv) else None)
+		if csvPath:
+			with open(csvPath) as f:
+				rowCount = sum(1 for _ in f) - 1
+			if rowCount == 2108:
+				jpPath = os.path.join(scriptDir, "vpk0_excess_bytes.jp.txt")
+				if os.path.exists(jpPath):
+					return jpPath
 	return VPK0_EXCESS_PATH
 
 
-def compressFile(inputBinaryPath, outputVpk0Path):
+def compressFile(inputBinaryPath, outputVpk0Path, version=None):
 	subprocess.run([VPK0_BIN_PATH, 'c', inputBinaryPath, outputVpk0Path])
 	targetFileNameNoExt = os.path.basename(outputVpk0Path).split('.')[0]
 	targetVpk0Excess = None
 	foundExcess = False
 
-	with open(getVpk0ExcessPath(), 'r') as vpk0ExcessFile:
+	with open(getVpk0ExcessPath(version), 'r') as vpk0ExcessFile:
 		for line in vpk0ExcessFile.read().split('\n'):
 			if ' - ' not in line:
 				continue
@@ -110,9 +134,10 @@ def compressFile(inputBinaryPath, outputVpk0Path):
 		with open(outputVpk0Path, 'ab') as outputFile:
 			outputFile.write(targetVpk0Excess)
 
-def makeBin(overrideDir=None):
+def makeBin(overrideDir=None, version="us"):
 
-	with open(f"{EXTRACTED_FILES_PATH}.csv", 'r') as tableFile:
+	extractedFilesPath = assetsDir(version)
+	with open(relocCsvPath(version), 'r') as tableFile:
 		csvLines = tableFile.read().split('\n')
 	relocTable = []
 	isFirstLine = True
@@ -123,7 +148,7 @@ def makeBin(overrideDir=None):
 		row = line.split(', ')
 		relocTable.append({"isVpk0": row[0] != '0', "dataOffset": eval(row[1]), "relocInternOffset": eval(row[2]), "compressedSize": eval(row[3]), "relocExternOffset": eval(row[4]), "decompressedSize": eval(row[5])})
 
-	with open(f"{EXTRACTED_FILES_PATH}.bin", 'wb') as targetFile:
+	with open(relocBinPath(version), 'wb') as targetFile:
 		# write table
 		for item in relocTable:
 			firstWord = item["dataOffset"]
@@ -142,13 +167,13 @@ def makeBin(overrideDir=None):
 			if overridePath and os.path.exists(overridePath):
 				filePath = overridePath
 			else:
-				filePath = f'{EXTRACTED_FILES_PATH}/{i}.{ext}'
+				filePath = f'{extractedFilesPath}/{i}.{ext}'
 			with open(filePath, 'rb') as relocFile:
 				targetFile.write(relocFile.read())
 
-def printExcess(fileSuffix=".manually_compressed"):
-	for i in range(COMPRESSED_FILE_COUNT):
-		filePath = f"{EXTRACTED_FILES_PATH}/{i}.vpk0"
+def printExcess(fileSuffix=".manually_compressed", version="us"):
+	for i in range(COMPRESSED_FILE_COUNT[version]):
+		filePath = f"{assetsDir(version)}/{i}.vpk0"
 		vpkManuallyCompressed = filePath + fileSuffix
 		with open(vpkManuallyCompressed, 'rb') as f:
 			f.seek(0, 2)
@@ -276,25 +301,37 @@ def generateDefineHeader(relocFileDescriptionsFilePath, outputHeaderFilePath):
 			outputHeaderFile.write(f"#define {symbolName} {offset}\n")
 
 if __name__ == "__main__":
-	if len(sys.argv) < 2:
+	# Strip a single optional --version <v> arg from anywhere in argv. Lets
+	# every subcommand take the same flag without us hand-rolling per-cmd
+	# parsing. extractAll / makeBin / compress route the version through;
+	# the other subcommands are version-agnostic.
+	cliVersion = None
+	args = sys.argv[1:]
+	if "--version" in args:
+		i = args.index("--version")
+		cliVersion = args[i + 1]
+		del args[i:i+2]
+
+	if len(args) < 1:
 		print("Usage:")
-		print("Extract:         relocData extractAll <relocFileDescriptionsFilePath> [<version>]")
-		print("Compress:        relocData compress <binInputPath> <vpk0OutputPath>")
+		print("Extract:         relocData extractAll <relocFileDescriptionsFilePath> [--version <v>]")
+		print("Compress:        relocData compress <binInputPath> <vpk0OutputPath> [--version <v>]")
 		print("Relocate:        relocData relocate <binInputPath> <binOutputPath> <relocInternOffset> <relocExternOffset>")
-		print("Make bin:        relocData makeBin")
+		print("Make bin:        relocData makeBin [<overrideDir>] [--version <v>]")
 		print("Generate header: relocData genHeader <relocFileDescriptionsFilePath> <headerOutputPath> <linkerFileOutputPath>")
 		sys.exit(1)
 
-	if sys.argv[1] == 'extractAll':
-		extract(sys.argv[2])
-	elif sys.argv[1] == 'compress':
-		compressFile(sys.argv[2], sys.argv[3])
-	elif sys.argv[1] == 'relocate':
-		relocateFile(sys.argv[2], sys.argv[3], eval(sys.argv[4]), eval(sys.argv[5]))
-	elif sys.argv[1] == 'makeBin':
-		overrideDir = sys.argv[2] if len(sys.argv) > 2 else None
-		makeBin(overrideDir)
-	elif sys.argv[1] == 'genHeader':
-		generateHeader(sys.argv[2], sys.argv[3], sys.argv[4])
-	elif sys.argv[1] == 'genDefineHeader':
-		generateDefineHeader(sys.argv[2], sys.argv[3])
+	if args[0] == 'extractAll':
+		version = cliVersion or detectVersionFromDescriptions(args[1])
+		extract(args[1], version)
+	elif args[0] == 'compress':
+		compressFile(args[1], args[2], cliVersion)
+	elif args[0] == 'relocate':
+		relocateFile(args[1], args[2], eval(args[3]), eval(args[4]))
+	elif args[0] == 'makeBin':
+		overrideDir = args[1] if len(args) > 1 else None
+		makeBin(overrideDir, cliVersion or "us")
+	elif args[0] == 'genHeader':
+		generateHeader(args[1], args[2], args[3])
+	elif args[0] == 'genDefineHeader':
+		generateDefineHeader(args[1], args[2])

@@ -37,7 +37,7 @@ import sys
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
-ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import genRelocDataC as grdc

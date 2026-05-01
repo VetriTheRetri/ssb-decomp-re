@@ -43,7 +43,7 @@ JP_FIGHTERS = [
 def read_jp_bin(jp_id):
     candidates = [
         f"/tmp/jp_relocdata/{jp_id}.vpk0.bin",
-        os.path.join(PROJECT_DIR, "assets", "relocData", f"{jp_id}.vpk0.bin"),
+        os.path.join(PROJECT_DIR, "assets", "jp", "relocData", f"{jp_id}.vpk0.bin"),
     ]
     for path in candidates:
         if os.path.isfile(path):

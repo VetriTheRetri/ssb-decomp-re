@@ -43,8 +43,15 @@ _FMT_INFO = {
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+# Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
+ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
+
+
+def _bind_version(version):
+    global ASSETS_DIR, BUILD_DIR
+    ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", version, "relocData")
+    BUILD_DIR = os.path.join(PROJECT_DIR, "build", version, "src", "relocData")
 
 N64_WIDTHS = [8, 16, 24, 32, 48, 64, 96, 128, 160, 192, 256]
 
@@ -290,7 +297,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("file_ids", nargs="*", type=int)
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--version", default="us", choices=("us", "jp"),
+                    help="Selects assets/<v>/relocData/")
     args = ap.parse_args()
+    _bind_version(args.version)
 
     if args.all:
         targets = discover_all()

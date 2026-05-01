@@ -40,10 +40,11 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
-CSV_PATH = os.path.join(PROJECT_DIR, 'assets', 'relocData.csv')
-ASSETS_DIR = os.path.join(PROJECT_DIR, 'assets', 'relocData')
+# JP-specific tool — defaults point at the JP per-version trees.
+CSV_PATH = os.path.join(PROJECT_DIR, 'assets', 'jp', 'relocData.csv')
+ASSETS_DIR = os.path.join(PROJECT_DIR, 'assets', 'jp', 'relocData')
 SRC_DIR = os.path.join(PROJECT_DIR, 'src', 'relocData')
-BUILD_DIR = os.path.join(PROJECT_DIR, 'build', 'src', 'relocData')
+BUILD_DIR = os.path.join(PROJECT_DIR, 'build', 'jp', 'src', 'relocData')
 
 IDO = os.path.join(PROJECT_DIR, 'tools/ido-recomp/7.1/cc')
 INCLUDES = ['-Iinclude', '-Isrc', '-Isrc/relocData', '-Ibuild/src',

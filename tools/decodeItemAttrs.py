@@ -28,7 +28,7 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 
 
 def decode_itattr(blob):

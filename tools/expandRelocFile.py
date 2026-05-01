@@ -25,10 +25,19 @@ import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
-ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
-BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
+# Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
+ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 BUILD_OBJ_DIR = os.path.join(BUILD_DIR, ".build")
-CSV_PATH = os.path.join(PROJECT_DIR, "assets", "relocData.csv")
+CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
+
+
+def _bind_version(version):
+    global ASSETS_DIR, CSV_PATH, BUILD_DIR, BUILD_OBJ_DIR
+    ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", version, "relocData")
+    CSV_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData.csv")
+    BUILD_DIR = os.path.join(PROJECT_DIR, "build", version, "src", "relocData")
+    BUILD_OBJ_DIR = os.path.join(BUILD_DIR, ".build")
 
 try:
     import pygfxd
@@ -715,7 +724,10 @@ def main():
     ap.add_argument("fid", type=int, nargs="?")
     ap.add_argument("--all", action="store_true",
                     help="Expand every relocData .c file with a built .o")
+    ap.add_argument("--version", default="us", choices=("us", "jp"),
+                    help="Selects assets/<v>/relocData/ + relocData.csv")
     args = ap.parse_args()
+    _bind_version(args.version)
     if args.all:
         fids = []
         for fn in os.listdir(RELOC_DIR):

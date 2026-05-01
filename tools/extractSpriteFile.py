@@ -25,8 +25,15 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
-CSV_PATH = os.path.join(PROJECT_DIR, "assets", "relocData.csv")
-ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+# Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
+CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
+ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
+
+
+def _bind_version(version):
+    global CSV_PATH, ASSETS_DIR
+    CSV_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData.csv")
+    ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", version, "relocData")
 
 SPRITE_SIZE = 68
 BITMAP_SIZE = 16
@@ -636,6 +643,7 @@ def main():
                          "src/relocData/*_<Name>.<version>.spritelist "
                          "(with a fallback to *_<Name>.spritelist).")
     args = ap.parse_args()
+    _bind_version(args.version)
 
     data = load_binary(args.fid)
     csv_row = load_csv_row(args.fid)

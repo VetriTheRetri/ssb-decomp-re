@@ -453,7 +453,7 @@ flagged below.
 
 | File | Status | C source |
 |---|---|---|
-| `S1_music.sbk` | byte-identical | `build/src/audio/S1_music_sbk.c` (auto-generated from baserom; see §4) |
+| `S1_music.sbk` | byte-identical | `build/<v>/src/audio/S1_music_sbk.c` (auto-generated from baserom; see §4) |
 | `B1_sounds1.ctl` | byte-identical | [src/audio/B1_sounds1_ctl.c](src/audio/B1_sounds1_ctl.c) |
 | `B1_sounds1.tbl` | raw bin (waveform data, no decomp needed yet) | -- |
 | `B1_sounds2.ctl` | byte-identical (US only) | [src/audio/B1_sounds2_ctl.c](src/audio/B1_sounds2_ctl.c) |
@@ -482,16 +482,16 @@ Following the [Nintendo audio workflow](https://ultra64.ca/files/documentation/o
   pulls each MIDI sequence out of the baserom .sbk slice and immediately
   disassembles it (via [disassemble_cseq.py](tools/disassemble_cseq.py),
   see below) into a `.cseq.s` source file under
-  `build/src/audio/<bank>/seq_NN_<Name>.cseq.s`. Filenames combine the
+  `build/<v>/src/audio/<bank>/seq_NN_<Name>.cseq.s`. Filenames combine the
   numeric-index + the `gmMusicID` short name from
   [src/gm/gmsound.h](src/gm/gmsound.h#L30) so the on-disk listing is
   human-readable (e.g. `seq_09_Hyrule.cseq.s`, `seq_38_Ending.cseq.s`).
-  Also writes `build/src/audio/<bank>.manifest.json` with the bank's
+  Also writes `build/<v>/src/audio/<bank>.manifest.json` with the bank's
   revision, sequence count, and per-sequence (logical_len, physical_len)
   pairs needed to reconstruct the `_sbk.c` file. The Makefile auto-runs
   this script at parse time when the manifest is missing.
 - [tools/gen_sbk_c.py](tools/gen_sbk_c.py): emits the
-  `build/src/audio/<bank>_sbk.c` aggregate-struct C source from the
+  `build/<v>/src/audio/<bank>_sbk.c` aggregate-struct C source from the
   manifest. The output mirrors the original hand-edited file 1:1 (same
   struct layout, same `offsetof`-based `seqArray` initializer, same
   per-sequence `#include`s); only the comment header differs. The `.c`
@@ -538,27 +538,27 @@ required for music.
 baserom.<v>.z64
         |
         | tools/extractMusicSequences.py
-        |   (auto-triggered when build/src/audio/<bank>.manifest.json
+        |   (auto-triggered when build/<v>/src/audio/<bank>.manifest.json
         |    is missing; run explicitly via the script for re-extraction)
         v
-build/src/audio/<bank>.manifest.json           (extraction metadata)
-build/src/audio/<bank>/seq_NN_<Name>.cseq.s    (per-sequence source)
+build/<v>/src/audio/<bank>.manifest.json           (extraction metadata)
+build/<v>/src/audio/<bank>/seq_NN_<Name>.cseq.s    (per-sequence source)
         |
         | tools/assemble_cseq.py
         v
-build/src/audio/<bank>/seq_NN_<Name>.cseq.bin
+build/<v>/src/audio/<bank>/seq_NN_<Name>.cseq.bin
         |
         | tools/binToInc.py
         v
-build/src/audio/<bank>/seq_NN_<Name>.cseq.inc.c
+build/<v>/src/audio/<bank>/seq_NN_<Name>.cseq.inc.c
         |
         | #include from
         v
-build/src/audio/<bank>_sbk.c                   (tools/gen_sbk_c.py)
+build/<v>/src/audio/<bank>_sbk.c                   (tools/gen_sbk_c.py)
         |
         | C compile (custom Makefile rule)
         v
-build/src/audio/<bank>_sbk.o                   (linked into the ROM)
+build/<v>/src/audio/<bank>_sbk.o                   (linked into the ROM)
 ```
 
 This mirrors the [Nintendo audio workflow](https://ultra64.ca/files/documentation/online-manuals/man/pro-man/pro18/index.html):

@@ -130,8 +130,8 @@ def main():
     parser.add_argument("segment_start", help="relocData segment start (hex)")
     parser.add_argument("segment_end", help="relocData segment end (hex)")
     parser.add_argument("output", help="Output excess bytes file path")
-    parser.add_argument("--reloc-dir", default=os.path.join(PROJECT_DIR, "assets", "relocData"),
-                        help="Directory containing extracted .vpk0.bin files")
+    parser.add_argument("--reloc-dir", default=os.path.join(PROJECT_DIR, "assets", "us", "relocData"),
+                        help="Directory containing extracted .vpk0.bin files (default: assets/us/relocData)")
     args = parser.parse_args()
 
     file_count = parse_file_count(args.descriptions)

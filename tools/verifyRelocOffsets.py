@@ -14,9 +14,15 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
-EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "relocData")
+# Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
+EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
 COMPRESSED_FILE_COUNT = 499
+
+
+def _bind_version(version):
+    global EXTRACTED_FILES_PATH
+    EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData")
 
 
 def get_original_path(file_id):
@@ -93,11 +99,18 @@ def verify_file(file_id):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: verifyRelocOffsets.py <file_id> [<file_id> ...]")
+    # Strip a single optional --version <v> arg from anywhere in argv.
+    args = sys.argv[1:]
+    if "--version" in args:
+        i = args.index("--version")
+        _bind_version(args[i + 1])
+        del args[i:i+2]
+
+    if not args:
+        print("Usage: verifyRelocOffsets.py [--version us|jp] <file_id> [<file_id> ...]")
         sys.exit(1)
 
-    file_ids = [int(x) for x in sys.argv[1:]]
+    file_ids = [int(x) for x in args]
     all_match = True
 
     print(f"Verifying {len(file_ids)} relocData file(s)...")

@@ -21,17 +21,22 @@ VERSION ?= us
 BASEROM := baserom.$(VERSION).z64
 TARGET  := smashbrothers
 
+# Per-version build tree so US and JP artifacts can coexist on disk. Defined
+# here (rather than further down) because EXTRA_LINK_DEPS and the parse-time
+# RELOC_NAMES_MK shell both reference it below.
+BUILD_DIR := build/$(VERSION)
+
 # Default extra link dependencies (US build)
-EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt build/assets/relocData.o
+EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt $(BUILD_DIR)/assets/$(VERSION)/relocData.o
 
 # JP build is WIP - many C-side symbols still need to be mapped, so by default
 # we skip the relocData link dep. With RELOC_DATA=1, the JP build still attempts
 # to include relocData.o (so the relocData side of the pipeline can be tested).
 ifeq ($(VERSION),jp)
   ifeq ($(RELOC_DATA),1)
-    EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld build/assets/relocData.o
+    EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/jp/smashbrothers_jp.ld $(BUILD_DIR)/assets/$(VERSION)/relocData.o
   else
-    EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld
+    EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/jp/smashbrothers_jp.ld
   endif
 endif
 
@@ -106,10 +111,18 @@ endif
 
 # ----- Output ------
 
-BUILD_DIR := build
-ROM       := $(BUILD_DIR)/$(TARGET).$(VERSION).z64
-ELF       := $(BUILD_DIR)/$(TARGET).$(VERSION).elf
-LD_MAP    := $(BUILD_DIR)/$(TARGET).$(VERSION).map
+# BUILD_DIR is defined above (right after VERSION) so EXTRA_LINK_DEPS / the
+# RELOC_NAMES_MK parse-time shell can reference it.
+#
+# Final ROM/ELF/MAP intentionally live at the top level of build/, NOT under
+# $(BUILD_DIR), so external tooling (diff_settings.py, decomp.yaml, etc.)
+# can find them at the same well-known paths regardless of which version
+# was last built. Per-version intermediates (.o files, generated headers,
+# etc.) live under build/$(VERSION)/ so US and JP builds don't clobber each
+# other.
+ROM       := build/$(TARGET).$(VERSION).z64
+ELF       := build/$(TARGET).$(VERSION).elf
+LD_MAP    := build/$(TARGET).$(VERSION).map
 
 # ----- Tools ------
 
@@ -125,16 +138,16 @@ CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFI
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)
-    LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt
+    LDFLAGS := -T .splat/jp/undefined_funcs_auto.txt -T .splat/jp/undefined_syms_auto.txt \
+               -T .splat/jp/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt
     C_FILES := $(shell find src -type f | grep \\.c$)
 	C_FILES := $(filter-out \
 			    src/mn/mncommon/mncongra.c \
 				src/mn/mncommon/mnstartup.c \
 			   ,$(C_FILES))
 else ifeq ($(VERSION),us)
-    LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.$(VERSION).txt
+    LDFLAGS := -T .splat/us/undefined_funcs_auto.txt -T .splat/us/undefined_syms_auto.txt \
+               -T .splat/us/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.$(VERSION).txt
     C_FILES := $(shell find src -type f | grep \\.c$)
 else
     $(error Unsupported VERSION "$(VERSION)")
@@ -155,8 +168,8 @@ RELOC_C_FILES ?=
 # name when JP/US file ids differ. The on-disk manifest filename uses whichever
 # version's id existed when it was first committed (typically US), so we glob
 # *_<Name>.manifest as a fallback.
-RELOC_NAMES_MK := build/reloc_names.$(VERSION).mk
-$(shell mkdir -p build && python3 tools/genRelocNamesMk.py tools/relocFileDescriptions.$(VERSION).txt > $(RELOC_NAMES_MK))
+RELOC_NAMES_MK := $(BUILD_DIR)/reloc_names.$(VERSION).mk
+$(shell mkdir -p $(BUILD_DIR) && python3 tools/genRelocNamesMk.py tools/relocFileDescriptions.$(VERSION).txt > $(RELOC_NAMES_MK))
 include $(RELOC_NAMES_MK)
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
@@ -174,16 +187,29 @@ CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO7) -- $(AS) $(ASFLAGS) --
 # C_FILES 	   := $(shell python3 -c "import yaml; d=yaml.safe_load(open('smashbrothers.$(VERSION).yaml')); segs = d.get('segments', d) if isinstance(d, dict) else d; srcs=[]; \
 # [ srcs.append(s.get('source')) for s in segs if isinstance(s, dict) and s.get('type')=='c' and s.get('source') ]; \
 # print(' '.join(sorted(set(srcs))))")
-S_TEXT_FILES   := $(shell find asm src -type f -name '*.s' | grep -v /nonmatchings/ | grep -v /matchings/ | grep -v '\.rodata\.s' | grep -v '\.data\.s' | grep -v '\.bss\.s' | grep -v '\.cseq\.s')
-S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
-S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
-S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
-PNG_FILES      := $(shell find assets -type f | grep \\.png$ | grep -v '^assets/db/' | grep -v '^assets/particles/' | grep -v '^assets/audio/')
-BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/ | grep -v '^assets/db/' | grep -v '^assets/particles/' | grep -v '^assets/audio/') \
+# Maintain asm/nonmatchings as a symlink to the active version's tree so the
+# existing #pragma GLOBAL_ASM("asm/nonmatchings/...") directives across src/
+# resolve regardless of which version is being built. (Step 5 moved the actual
+# files to asm/$(VERSION)/nonmatchings/.) Limitation: simultaneous parallel
+# builds for both versions race on this symlink.
+$(shell mkdir -p asm && ln -sfn $(VERSION)/nonmatchings asm/nonmatchings)
+
+S_TEXT_FILES   := $(shell find asm/$(VERSION) src -type f -name '*.s' 2>/dev/null | grep -v /nonmatchings/ | grep -v /matchings/ | grep -v '\.rodata\.s' | grep -v '\.data\.s' | grep -v '\.bss\.s' | grep -v '\.cseq\.s')
+S_DATA_FILES   := $(shell find asm/$(VERSION) -type f 2>/dev/null | grep \\.data\\.s$)
+S_RODATA_FILES := $(shell find asm/$(VERSION) -type f 2>/dev/null | grep \\.rodata\\.s$)
+S_BSS_FILES    := $(shell find asm/$(VERSION) -type f 2>/dev/null | grep \\.bss\\.s$)
+# db/, particles/, audio/ are #include'd as inc.c rather than linked as .o, so
+# their .png/.bin files don't need a build/.../foo.o produced from the find list.
+# These dirs may live at top level (legacy) or under assets/<v>/ (post step-4),
+# so we exclude any matching path component, not just literal `^assets/<dir>/`.
+PNG_FILES      := $(shell find assets/$(VERSION) -type f -name '*.png' 2>/dev/null \
+                    -not -path '*/db/*' -not -path '*/particles/*' -not -path '*/audio/*')
+BIN_FILES      := $(shell find assets/$(VERSION) -type f -name '*.bin' 2>/dev/null \
+                    -not -path '*/relocData/*' -not -path '*/db/*' -not -path '*/particles/*' -not -path '*/audio/*') \
                   $(foreach f,$(PNG_FILES:.png=.bin),$f)
 # The number of compressed (vpk0) relocData files differs by version (US: 499,
 # JP: 474). Detect from the filesystem so the same Makefile works for both.
-VPK0_FILES     := $(wildcard assets/relocData/*.vpk0.bin)
+VPK0_FILES     := $(wildcard assets/$(VERSION)/relocData/*.vpk0.bin)
 VPK0_FILES     := $(VPK0_FILES:.vpk0.bin=.vpk0)
 
 # Music sequence banks are extracted from baserom (no committed sources).
@@ -309,127 +335,127 @@ RODATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.rodata),$(BUILD_DIR)/$f) \
                         $(foreach f,$(S_RODATA_FILES:.s=.rodata),$(BUILD_DIR)/$f)
 
 # directory flags
-build/src/libultra/io/%.o: 		OPTFLAGS := -O1 -g0 -mips2
-build/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0 -mips2
-build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0 -mips2
-build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0 -mips2
-build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0 -mips2
+$(BUILD_DIR)/src/libultra/io/%.o: 		OPTFLAGS := -O1 -g0 -mips2
+$(BUILD_DIR)/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0 -mips2
+$(BUILD_DIR)/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0 -mips2
+$(BUILD_DIR)/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0 -mips2
+$(BUILD_DIR)/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0 -mips2
 
 # per file flags
-build/src/libultra/n_audio/n_cspsetvol.o:	OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_cspsetvol.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_cspsetseq.o:	OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_cspsetseq.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_cspsetpriority.o:	OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_cspsetpriority.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_cspsetfxmix.o:	OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_cspsetfxmix.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_cspsetbank.o:	OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_cspsetbank.o:	CC := $(IDO7)
-build/src/libultra/n_audio/n_env.o: OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_env.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_synstartvoiceparam.o: OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_synstartvoiceparam.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_seq.o: OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_seq.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_seqplayer.o:	OPTFLAGS := -O3 -g0 -mips2
-build/src/libultra/n_audio/n_seqplayer.o: CC := $(IDO7)
-build/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/viswapcontext.o: CC := $(IDO5)
-build/src/libultra/io/pfsselectbank.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/pfsselectbank.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o:	OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetseq.o:	OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetseq.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetpriority.o:	OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetpriority.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetfxmix.o:	OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetfxmix.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetbank.o:	OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_cspsetbank.o:	CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_env.o: OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_env.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_synstartvoiceparam.o: OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_synstartvoiceparam.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_seq.o: OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_seq.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/n_audio/n_seqplayer.o:	OPTFLAGS := -O3 -g0 -mips2
+$(BUILD_DIR)/src/libultra/n_audio/n_seqplayer.o: CC := $(IDO7)
+$(BUILD_DIR)/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/viswapcontext.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/pfsselectbank.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/pfsselectbank.o: CC := $(IDO5)
 ifeq ($(VERSION),jp)
-build/src/libultra/io/epirawread.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/epirawread.o: OPTFLAGS := -O1 -mips2
 else
-build/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
 endif
-build/src/libultra/io/epirawread.o: CC := $(IDO5)
-build/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/contramwrite.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/epirawread.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/contramwrite.o: CC := $(IDO5)
 ifeq ($(VERSION),jp)
-build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/aisetfreq.o: OPTFLAGS := -O1 -mips2
 else
-build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/aisetfreq.o: OPTFLAGS := -O2 -mips2
 endif
-build/src/libultra/io/aisetfreq.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/aisetfreq.o: CC := $(IDO5)
 ifeq ($(VERSION),jp)
-build/src/libultra/io/epirawdma.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/epirawdma.o: OPTFLAGS := -O1 -mips2
 else
-build/src/libultra/io/epirawdma.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/epirawdma.o: OPTFLAGS := -O2 -mips2
 endif
-build/src/libultra/io/epirawdma.o: CC := $(IDO5)
-build/src/libultra/gu/mtxcatf.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/gu/mtxcatf.o: CC := $(IDO5)
-build/src/libultra/gu/mtxxfmf.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/gu/mtxxfmf.o: CC := $(IDO5)
-build/src/libultra/gu/sinf.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/gu/sinf.o: CC := $(IDO5)
-build/src/libultra/io/motor.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/motor.o: CC := $(IDO5)
-build/src/libultra/io/sirawdma.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/sirawdma.o: CC := $(IDO5)
-build/src/libultra/io/pimgr.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/pimgr.o: CC := $(IDO5)
-build/src/libultra/io/pfsgetstatus.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/pfsgetstatus.o: CC := $(IDO5)
-build/src/libultra/io/contpfs.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/contpfs.o: CC := $(IDO5)
-build/src/libultra/io/contramread.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/contramread.o: CC := $(IDO5)
-build/src/libultra/io/crc.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/crc.o: CC := $(IDO5)
-build/src/libultra/io/pfsisplug.o: OPTFLAGS := -O1 -mips2
-build/src/libultra/io/pfsisplug.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/epirawdma.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/gu/mtxcatf.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/gu/mtxcatf.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/gu/mtxxfmf.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/gu/mtxxfmf.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/gu/sinf.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/gu/sinf.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/motor.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/motor.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/sirawdma.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/sirawdma.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/pimgr.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/pimgr.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/pfsgetstatus.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/pfsgetstatus.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/contpfs.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/contpfs.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/contramread.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/contramread.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/crc.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/crc.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/pfsisplug.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/pfsisplug.o: CC := $(IDO5)
 ifeq ($(VERSION),jp)
-build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/epirawwrite.o: OPTFLAGS := -O1 -mips2
 else
-build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
 endif
-build/src/libultra/io/epirawwrite.o: CC := $(IDO5)
-build/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
-build/src/libultra/os/seteventmesg.o: CC := $(IDO5)
-build/src/libultra/io/vimgr.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/vimgr.o: CC := $(IDO5)
-build/src/libultra/io/leodiskinit.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/leodiskinit.o: CC := $(IDO5)
-build/src/libultra/io/leointerrupt.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/leointerrupt.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/epirawwrite.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/os/seteventmesg.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/vimgr.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/vimgr.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/leodiskinit.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/leodiskinit.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/leointerrupt.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/leointerrupt.o: CC := $(IDO5)
 ifeq ($(VERSION),jp)
-build/src/libultra/io/cartrominit.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/cartrominit.o: OPTFLAGS := -O1 -mips2
 else
-build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
 endif
-build/src/libultra/io/cartrominit.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/cartrominit.o: CC := $(IDO5)
 ifeq ($(VERSION),jp)
-build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32
+$(BUILD_DIR)/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32
 else
-build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32 -DBUILD_VERSION=7
+$(BUILD_DIR)/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32 -DBUILD_VERSION=7
 endif
-build/src/libultra/os/exceptasm.o: CC := $(IDO5)
-build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
-build/src/libultra/os/initialize.o: CC := $(IDO5)
-build/src/libultra/io/controller.o: OPTFLAGS := -O1 -mips2
-build/src/libultra/io/controller.o: CC := $(IDO5)
-build/src/libultra/io/contreaddata.o: OPTFLAGS := -O2 -mips2
-build/src/libultra/io/contreaddata.o: CC := $(IDO5)
-build/src/libultra/io/devmgr.o: OPTFLAGS := -O1 -mips2
-build/src/libultra/io/devmgr.o: CC := $(IDO5)
-build/src/libultra/libc/ll.o: OPTFLAGS := -O1 -mips3 -32
-build/src/libultra/libc/xprintf.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/libc/xprintf.o: CC := $(IDO5)
-build/src/libultra/libc/xldtob.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/libc/xldtob.o: CC := $(IDO5)
-build/src/libultra/libc/xlitob.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/libc/xlitob.o: CC := $(IDO5)
-build/src/libultra/libc/ldiv.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/libc/ldiv.o: CC := $(IDO5)
-build/src/libultra/audio/cents2ratio.o: OPTFLAGS := -O3 -mips2
-build/src/libultra/audio/cents2ratio.o: CC := $(IDO5)
-build/src/libultra/libc/llcvt.o: OPTFLAGS := -O1 -mips3 -32
+$(BUILD_DIR)/src/libultra/os/exceptasm.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/os/initialize.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/controller.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/controller.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/contreaddata.o: OPTFLAGS := -O2 -mips2
+$(BUILD_DIR)/src/libultra/io/contreaddata.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/io/devmgr.o: OPTFLAGS := -O1 -mips2
+$(BUILD_DIR)/src/libultra/io/devmgr.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/libc/ll.o: OPTFLAGS := -O1 -mips3 -32
+$(BUILD_DIR)/src/libultra/libc/xprintf.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/libc/xprintf.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/libc/xldtob.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/libc/xldtob.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/libc/xlitob.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/libc/xlitob.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/libc/ldiv.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/libc/ldiv.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/audio/cents2ratio.o: OPTFLAGS := -O3 -mips2
+$(BUILD_DIR)/src/libultra/audio/cents2ratio.o: CC := $(IDO5)
+$(BUILD_DIR)/src/libultra/libc/llcvt.o: OPTFLAGS := -O1 -mips3 -32
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)
@@ -438,17 +464,16 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
-# Bootstrap reloc_data.h and the version-specific symbols file at parse time.
-# Both files are gitignored, and the version-specific symbols file ensures we
-# regenerate when switching between US and JP builds. We also pass the active
-# converted-files list so the bootstrap output already reflects which files
-# get manifest-computed offsets vs description offsets — without this, the
-# proper rule below would never re-fire (its outputs would already exist and
-# be newer than its dependencies) and we'd link against the wrong values.
-# Bootstrap uses --converted-files "" (empty) so it never needs extracted
-# .inc.c files. The proper rule below regenerates with the real list once
-# extract stamps exist, giving correct manifest-computed offsets.
-$(shell ([ -f include/reloc_data.h ] && [ -f symbols/reloc_data_symbols.$(VERSION).txt ]) || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt --converted-files "" > /dev/null)
+# Bootstrap the version-specific reloc_data header and symbols file at parse
+# time. Both files are gitignored; include/reloc_data.h itself is a committed
+# selector shim that #includes the active version's header. We pass the
+# converted-files list (empty here) so the bootstrap output reflects which
+# files get manifest-computed offsets vs description offsets — without this,
+# the proper rule below would never re-fire (its outputs would already exist
+# and be newer than its dependencies) and we'd link against the wrong values.
+# The proper rule below regenerates with the real list once extract stamps
+# exist, giving correct manifest-computed offsets.
+$(shell ([ -f include/reloc_data.$(VERSION).h ] && [ -f symbols/reloc_data_symbols.$(VERSION).txt ]) || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.$(VERSION).h ./symbols/reloc_data_symbols.$(VERSION).txt --converted-files "" > /dev/null)
 
 # Bootstrap the motion-desc offsets header so the first build doesn't fail.
 # The proper rule below regenerates it whenever a MainMotion/SubMotion source
@@ -477,20 +502,38 @@ diff: $(ROM)
 
 clean:
 	rm -r -f $(BUILD_DIR)
+	rm -f $(ROM) $(ELF) $(LD_MAP)
 	rm -f src/credits/staff.credits.encoded src/credits/staff.credits.metadata
 	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
 	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
-	rm -f include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt
+	rm -f include/reloc_data.$(VERSION).h symbols/reloc_data_symbols.$(VERSION).txt
 	@echo removing vpk0 files
 	@rm -f $(VPK0_FILES)
 
 extract:
-	rm -r -f asm
-	rm -r -f assets
-	# Drop generated symbols/header from any previous version build so the
-	# parse-time bootstrap regenerates for the version we're extracting now.
-	rm -f include/reloc_data.h symbols/reloc_data_symbols.us.txt symbols/reloc_data_symbols.jp.txt
+	# Wipe only the active version's asm/ and .splat/ trees. The inactive
+	# version's stays so its build/<v>/ .o files remain valid. Also clean up
+	# any legacy top-level entries in asm/ and .splat/ from before the
+	# step-5 migration. The asm/nonmatchings symlink is preserved (it gets
+	# recreated at parse time and points into asm/<v>/).
+	rm -rf asm/$(VERSION) .splat/$(VERSION)
+	@mkdir -p asm .splat
+	find asm -mindepth 1 -maxdepth 1 -not -name us -not -name jp -not -name nonmatchings -exec rm -rf {} +
+	find .splat -mindepth 1 -maxdepth 1 -not -name us -not -name jp -exec rm -rf {} +
+	# Wipe the active version's per-version assets/ subtree plus every shared
+	# splat output at the top level (top-level .bin files, assets/rsp/, plus
+	# any legacy top-level db/ovl8/particles/ leftover from before the step-4
+	# migration). After step 5, splat itself writes everything under
+	# assets/$(VERSION)/, so the find below mostly tidies legacy state.
+	rm -rf assets/$(VERSION)
+	@mkdir -p assets
+	find assets -mindepth 1 -maxdepth 1 -not -name us -not -name jp -exec rm -rf {} +
+	# Drop the active version's generated header/symbols so the parse-time
+	# bootstrap regenerates them for this extract. Don't touch the OTHER
+	# version's outputs — they're separately gitignored and let the inactive
+	# build/<v>/ tree's .o files stay valid across an init.
+	rm -f include/reloc_data.$(VERSION).h symbols/reloc_data_symbols.$(VERSION).txt
 	# Drop encoded credits files too — they're generated from the version-
 	# specific .txt source but make can't tell which version they came from.
 	rm -f src/credits/staff.credits.encoded src/credits/staff.credits.metadata
@@ -499,26 +542,34 @@ extract:
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
-	$(PYTHON) tools/relocData.py extractAll tools/relocFileDescriptions.$(VERSION).txt
+	$(PYTHON) tools/relocData.py extractAll tools/relocFileDescriptions.$(VERSION).txt --version $(VERSION)
 	@mkdir -p relocAssets
 ifeq ($(VERSION),us)
 	@# halAssetTool's parser only accepts 3-digit file ids in the names section,
 	@# so strip names for file ids >= 1000 before passing the descriptions file in.
-	@mkdir -p build
-	sed '/^-[0-9][0-9][0-9][0-9]/d' tools/relocFileDescriptions.$(VERSION).txt > build/relocFileDescriptions.$(VERSION).halAssetTool.txt
-	tools/halAssetTool x build/relocFileDescriptions.$(VERSION).halAssetTool.txt assets/relocData/ relocAssets
+	@mkdir -p $(BUILD_DIR)
+	sed '/^-[0-9][0-9][0-9][0-9]/d' tools/relocFileDescriptions.$(VERSION).txt > $(BUILD_DIR)/relocFileDescriptions.$(VERSION).halAssetTool.txt
+	tools/halAssetTool x $(BUILD_DIR)/relocFileDescriptions.$(VERSION).halAssetTool.txt assets/$(VERSION)/relocData/ relocAssets
 endif
 
 init:
-	${MAKE} clean
+	${MAKE} clean VERSION=$(VERSION)
 	${MAKE} extract RELOC_DATA=$(RELOC_DATA) VERSION=$(VERSION)
 	${MAKE} all RELOC_DATA=$(RELOC_DATA) VERSION=$(VERSION)
 
-# asm-differ expected object files
+# asm-differ expected object files. Version-scoped: snapshots only the active
+# version's tree under expected/build/<v>/ plus its top-level ROM/ELF/MAP, so
+# `make expected VERSION=us` after a US match doesn't blow away an existing
+# JP snapshot (and vice versa). asm-differ resolves
+# expected/build/<v>/<obj> by prepending expected_dir (`expected/`) to the
+# build-relative .o path, so this layout is what it already expects.
 expected:
-	mkdir -p expected/build
-	rm -rf expected/build/
-	cp -r build/ expected/build/
+	@mkdir -p expected/build
+	rm -rf expected/build/$(VERSION)
+	cp -r $(BUILD_DIR) expected/build/$(VERSION)
+	@for f in $(ROM) $(ELF) $(LD_MAP); do \
+		[ -f $$f ] && cp $$f expected/build/ || true; \
+	done
 
 format:
 	$(PYTHON) tools/formatHelper.py -e
@@ -586,12 +637,12 @@ endif
 RELOCDATA_STRUCT_FILES := $(wildcard src/relocData/*.manifest src/relocData/*.spritelist src/relocData/*/*.sprite.c src/relocData/*/*.data.c src/relocData/*/*.dobjdesc.c src/relocData/*/*.palette.c src/relocData/*/*.mobjsub.c src/relocData/*/*.dl.c src/relocData/*/*.vtx.c)
 RELOCDATA_EXTRACT_STAMPS := $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.build/.extract-$(f).stamp)
 
-include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt &: \
+include/reloc_data.$(VERSION).h symbols/reloc_data_symbols.$(VERSION).txt &: \
 		./tools/relocFileDescriptions.$(VERSION).txt \
 		tools/genRelocSymbols.py tools/genRelocMaster.py \
 		$(RELOCDATA_STRUCT_FILES) $(RELOCDATA_EXTRACT_STAMPS)
 	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
-	$(V)$(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt -Isrc/relocData -I$(BUILD_DIR)/src/relocData --converted-files "$(RELOC_C_FILES)"
+	$(V)$(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.$(VERSION).h ./symbols/reloc_data_symbols.$(VERSION).txt -Isrc/relocData -I$(BUILD_DIR)/src/relocData --converted-files "$(RELOC_C_FILES)"
 
 # Per-motion-script offset macros consumed by ftdata.c (and per-character
 # scsubsysdata*.c) so FTMotionDesc entries can name the script they
@@ -602,20 +653,24 @@ include/ft/motiondesc_offsets.h: tools/genMotionDescOffsets.py $(RELOC_MOTION_SO
 	$(call print_2,Generating motion-desc offset header from:,$<,$(BLUE))
 	$(V)$(PYTHON) tools/genMotionDescOffsets.py $@
 
-# Staff roll specific
-src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
-src/credits/staff.credits.encoded: src/credits/staff.credits.$(VERSION).txt tools/creditsTextConverter.py
+# Staff roll specific. The encoded/metadata files are version-specific content
+# generated from the .$(VERSION).txt sources; we put them under $(BUILD_DIR)/
+# (per-version) so switching versions doesn't poison a cached scstaffroll.o.
+# scstaffroll.c does `#include "credits/<name>.encoded"`, resolved via
+# -I$(BUILD_DIR)/src in INCLUDES.
+src/sc/sccommon/scstaffroll.c: $(BUILD_DIR)/src/credits/staff.credits.encoded $(BUILD_DIR)/src/credits/titles.credits.encoded $(BUILD_DIR)/src/credits/info.credits.encoded $(BUILD_DIR)/src/credits/companies.credits.encoded
+$(BUILD_DIR)/src/credits/staff.credits.encoded: src/credits/staff.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
-	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
-src/credits/titles.credits.encoded: src/credits/titles.credits.$(VERSION).txt tools/creditsTextConverter.py
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont --out-dir $(@D)
+$(BUILD_DIR)/src/credits/titles.credits.encoded: src/credits/titles.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
-	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
-src/credits/info.credits.encoded: src/credits/info.credits.$(VERSION).txt tools/creditsTextConverter.py
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont --out-dir $(@D)
+$(BUILD_DIR)/src/credits/info.credits.encoded: src/credits/info.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
-	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont -multiline
-src/credits/companies.credits.encoded: src/credits/companies.credits.$(VERSION).txt tools/creditsTextConverter.py
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont -multiline --out-dir $(@D)
+$(BUILD_DIR)/src/credits/companies.credits.encoded: src/credits/companies.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
-	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont --out-dir $(@D)
 
 # Binaries
 $(BUILD_DIR)/%.o: %.bin
@@ -635,46 +690,48 @@ assets/%.bin: assets/%.png
 # offset into both a raw .bin (gitignored asset) and a build-time .inc.c
 # (hex initializer for the `dDBCubeKirbyFaceTexture` array). The .png
 # preview sits next to the .bin so the asset is viewable without building.
-.PRECIOUS: assets/db/dbkirby.rgba16.bin assets/db/dbkirby.png
-assets/db/dbkirby.rgba16.bin assets/db/dbkirby.png &: $(BASEROM) tools/extractDbKirbyTex.py
+.PRECIOUS: assets/$(VERSION)/db/dbkirby.rgba16.bin assets/$(VERSION)/db/dbkirby.png
+assets/$(VERSION)/db/dbkirby.rgba16.bin assets/$(VERSION)/db/dbkirby.png &: $(BASEROM) tools/extractDbKirbyTex.py
 	$(call print_3,Extracting dbkirby texture:,$<,$@)
+	@mkdir -p assets/$(VERSION)/db
 	$(V)$(PYTHON) tools/extractDbKirbyTex.py --version $(VERSION) \
 		--baserom $(BASEROM) \
-		--bin assets/db/dbkirby.rgba16.bin \
+		--bin assets/$(VERSION)/db/dbkirby.rgba16.bin \
 		--inc $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c \
-		--png assets/db/dbkirby.png
+		--png assets/$(VERSION)/db/dbkirby.png
 
-$(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c: assets/db/dbkirby.rgba16.bin
+$(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c: assets/$(VERSION)/db/dbkirby.rgba16.bin
 	@# The grouped rule above wrote this file too — touch it so make
 	@# doesn't re-run the generator on every incremental build.
 	@test -f $@ || $(PYTHON) tools/extractDbKirbyTex.py --version $(VERSION) \
 		--baserom $(BASEROM) \
-		--bin assets/db/dbkirby.rgba16.bin \
+		--bin assets/$(VERSION)/db/dbkirby.rgba16.bin \
 		--inc $@ \
-		--png assets/db/dbkirby.png
+		--png assets/$(VERSION)/db/dbkirby.png
 
 # dbcube.c `#include`s the generated inc.c, so its .o must wait for the
 # extraction step to finish.
 $(BUILD_DIR)/src/db/dbcube.o: $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c
 
 # ovl8_30 debug menu button icon — 16x16 RGBA5551.
-.PRECIOUS: assets/ovl8/ovl8_30_button.rgba16.bin assets/ovl8/ovl8_30_button.rgba16.png
-assets/ovl8/ovl8_30_button.rgba16.bin assets/ovl8/ovl8_30_button.rgba16.png &: $(BASEROM) tools/extractOvl8ButtonTex.py
+.PRECIOUS: assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
+assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png &: $(BASEROM) tools/extractOvl8ButtonTex.py
 	$(call print_3,Extracting ovl8_30 button texture:,$<,$@)
+	@mkdir -p assets/$(VERSION)/ovl8
 	$(V)$(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
 		--baserom $(BASEROM) \
-		--bin assets/ovl8/ovl8_30_button.rgba16.bin \
+		--bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin \
 		--inc $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c \
-		--png assets/ovl8/ovl8_30_button.rgba16.png
+		--png assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
 
-$(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/ovl8/ovl8_30_button.rgba16.bin
+$(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin
 	@# The grouped rule above wrote this file too — touch it so make
 	@# doesn't re-run the generator on every incremental build.
 	@test -f $@ || $(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
 		--baserom $(BASEROM) \
-		--bin assets/ovl8/ovl8_30_button.rgba16.bin \
+		--bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin \
 		--inc $@ \
-		--png assets/ovl8/ovl8_30_button.rgba16.png
+		--png assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
 
 $(BUILD_DIR)/src/ovl8/ovl8_30.o: $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c
 
@@ -690,7 +747,7 @@ PARTICLE_BANKS := efcommon particles_unk0 particles_unk1 particles_unk2 \
 # same pattern as the dbkirby rule above.
 $(BUILD_DIR)/src/particles/%.extract-stamp: $(BASEROM) tools/extractParticleTextures.py
 	$(call print_3,Extracting particle textures:,$*,$@)
-	$(V)$(PYTHON) tools/extractParticleTextures.py --version $(VERSION) --baserom $(BASEROM) --bank $*
+	$(V)$(PYTHON) tools/extractParticleTextures.py --version $(VERSION) --baserom $(BASEROM) --bank $* --inc-dir $(BUILD_DIR)/src/particles --assets-dir assets/$(VERSION)/particles
 	@mkdir -p $(@D) && touch $@
 
 $(foreach b,$(PARTICLE_BANKS),\
@@ -822,30 +879,30 @@ endif
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
 ifeq ($(RELOC_DATA),1)
-# Compiled relocData files go in build/assets/relocData/ as overrides.
-# Compressed files (those that have a .vpk0.bin in assets/) go through
-# vpk0 compression; uncompressed files go directly to .bin. The boundary
-# differs by version (US: 499, JP: 474), so we check the filesystem.
+# Compiled relocData files go in build/<v>/assets/<v>/relocData/ as overrides.
+# Compressed files (those that have a .vpk0.bin in assets/<v>/relocData/) go
+# through vpk0 compression; uncompressed files go directly to .bin. The
+# boundary differs by version (US: 499, JP: 474), so we check the filesystem.
 RELOC_C_OVERRIDES := $(foreach f,$(RELOC_C_FILES),\
-                       $(if $(wildcard assets/relocData/$(f).vpk0.bin),\
-                         $(BUILD_DIR)/assets/relocData/$(f).vpk0,\
-                         $(BUILD_DIR)/assets/relocData/$(f).bin))
+                       $(if $(wildcard assets/$(VERSION)/relocData/$(f).vpk0.bin),\
+                         $(BUILD_DIR)/assets/$(VERSION)/relocData/$(f).vpk0,\
+                         $(BUILD_DIR)/assets/$(VERSION)/relocData/$(f).bin))
 
 # Reloc data
-assets/relocData.bin: $(VPK0_FILES) $(RELOC_C_OVERRIDES)
-	$(call print_2,Making reloc data binary:,relocData.bin,$(BLUE))
-	$(V)$(PYTHON) tools/relocData.py makeBin $(BUILD_DIR)/assets/relocData
+assets/$(VERSION)/relocData.bin: $(VPK0_FILES) $(RELOC_C_OVERRIDES)
+	$(call print_2,Making reloc data binary:,$@,$(BLUE))
+	$(V)$(PYTHON) tools/relocData.py makeBin $(BUILD_DIR)/assets/$(VERSION)/relocData --version $(VERSION)
 
 # Compressed files (originals from baserom)
-.PRECIOUS: assets/relocData/%.vpk0
-assets/relocData/%.vpk0: assets/relocData/%.vpk0.bin
+.PRECIOUS: assets/$(VERSION)/relocData/%.vpk0
+assets/$(VERSION)/relocData/%.vpk0: assets/$(VERSION)/relocData/%.vpk0.bin
 	$(call print_3,Compressing File:,$<,$@)
-	$(V)$(PYTHON) tools/relocData.py compress $< $@
+	$(V)$(PYTHON) tools/relocData.py compress $< $@ --version $(VERSION)
 
 # Compressed override files (compiled C source)
-$(BUILD_DIR)/assets/relocData/%.vpk0: $(BUILD_DIR)/assets/relocData/%.vpk0.bin
+$(BUILD_DIR)/assets/$(VERSION)/relocData/%.vpk0: $(BUILD_DIR)/assets/$(VERSION)/relocData/%.vpk0.bin
 	$(call print_3,Compressing File:,$<,$@)
-	$(V)$(PYTHON) tools/relocData.py compress $< $@
+	$(V)$(PYTHON) tools/relocData.py compress $< $@ --version $(VERSION)
 endif
 
 # relocData C-to-binary rules
@@ -868,18 +925,18 @@ endif
 # decompressed ROM segment; extractRelocInc pulls raw Vtx / palette /
 # texture bytes for typed Vtx / LUT / Tex wrapper blocks. Both must run
 # before the master C file is compiled, so they hang off the same stamp.
-$(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.vpk0.bin
+$(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/$(VERSION)/relocData/%.vpk0.bin
 	@mkdir -p $(@D)
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
-	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
-	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
+	$(V)$(PYTHON) tools/extractRelocInc.py $* --version $(VERSION) >/dev/null
+	$(V)$(PYTHON) tools/previewImagesTextures.py $* --version $(VERSION) 2>/dev/null || true
 	@touch $@
 
-$(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.bin
+$(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/$(VERSION)/relocData/%.bin
 	@mkdir -p $(@D)
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
-	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
-	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
+	$(V)$(PYTHON) tools/extractRelocInc.py $* --version $(VERSION) >/dev/null
+	$(V)$(PYTHON) tools/previewImagesTextures.py $* --version $(VERSION) 2>/dev/null || true
 	@touch $@
 
 # User PNG override: if src/relocData/<Name>/<sprite>.<fmt>.png exists, use it
@@ -963,8 +1020,8 @@ else ifneq ($$(RELOC_LIST_$(1)),)
   # overwrites those files with the binary-walked version — the two paths
   # produce byte-identical content for well-behaved sprites, but the
   # ordering makes sure our bytes are the ones that land on disk.
-  $$(RELOC_MASTER_$(1)) $$(RELOC_AUTO_RELOC_$(1)): $$(RELOC_LIST_$(1)) tools/extractSpriteFile.py tools/relocFileDescriptions.$(VERSION).txt assets/relocData/$(1).vpk0.bin | $$(RELOC_STAMP_$(1))
-	$$(call print_3,Auto-extracting sprite file:,assets/relocData/$(1).vpk0.bin,$$@)
+  $$(RELOC_MASTER_$(1)) $$(RELOC_AUTO_RELOC_$(1)): $$(RELOC_LIST_$(1)) tools/extractSpriteFile.py tools/relocFileDescriptions.$(VERSION).txt assets/$(VERSION)/relocData/$(1).vpk0.bin | $$(RELOC_STAMP_$(1))
+	$$(call print_3,Auto-extracting sprite file:,assets/$(VERSION)/relocData/$(1).vpk0.bin,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(PYTHON) tools/extractSpriteFile.py $(1) $$(RELOC_MASTER_$(1)) --version $(VERSION)
 else
@@ -976,7 +1033,7 @@ else
   # resolution and inline Vtx/Gfx/LUT decoding. Runs after extract (not as
   # part of it) so the .o exists by the time nm is called.
   $$(BUILD_DIR)/src/relocData/.build/.expand-$(1).stamp: $$(BUILD_DIR)/src/relocData/.build/$(1).o
-	$$(V)$$(PYTHON) tools/expandRelocFile.py $(1) >/dev/null || true
+	$$(V)$$(PYTHON) tools/expandRelocFile.py $(1) --version $(VERSION) >/dev/null || true
 	@touch $$@
   RELOC_EXPAND_STAMPS += $$(BUILD_DIR)/src/relocData/.build/.expand-$(1).stamp
 endif
@@ -1009,21 +1066,21 @@ RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;
 # uncompressed files (ID >= 499) go directly to .bin.
-$$(BUILD_DIR)/assets/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
+$$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
-	$$(V)cp assets/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
+	$$(V)cp assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
 	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi
 
-$$(BUILD_DIR)/assets/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
+$$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
 	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi
 endef
 
@@ -1037,7 +1094,7 @@ all: $(RELOC_EXPAND_STAMPS)
 # verify-reloc: compare generated binaries against originals (run after make)
 .PHONY: verify-reloc
 verify-reloc:
-	@$(PYTHON) tools/verifyRelocOffsets.py $(RELOC_C_FILES)
+	@$(PYTHON) tools/verifyRelocOffsets.py --version $(VERSION) $(RELOC_C_FILES)
 
 # reloc-expand-<fid>: generate the human-readable expanded .c + texture PNGs
 # for one relocData file. Depends on the compiled .o because the expander uses
@@ -1047,8 +1104,8 @@ verify-reloc:
 #   make reloc-expand-all             # every file in RELOC_C_FILES
 .PHONY: reloc-expand-% reloc-expand-all reloc-expand-compile
 reloc-expand-%: $(BUILD_DIR)/src/relocData/.build/%.o
-	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
-	$(V)$(PYTHON) tools/expandRelocFile.py $*
+	$(V)$(PYTHON) tools/previewImagesTextures.py $* --version $(VERSION) 2>/dev/null || true
+	$(V)$(PYTHON) tools/expandRelocFile.py $* --version $(VERSION)
 
 # Prerequisite phase: compile every reloc .o in parallel via make.
 reloc-expand-compile: $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.build/$(f).o)
@@ -1057,15 +1114,15 @@ reloc-expand-compile: $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.b
 # expander + previewer on the whole corpus in one shot (each tool's --all
 # walks the list internally, avoiding sub-make overhead per file).
 reloc-expand-all: reloc-expand-compile
-	$(V)$(PYTHON) tools/previewImagesTextures.py --all 2>&1 | tail -5
-	$(V)$(PYTHON) tools/expandRelocFile.py --all 2>&1 | tail -20
+	$(V)$(PYTHON) tools/previewImagesTextures.py --all --version $(VERSION) 2>&1 | tail -5
+	$(V)$(PYTHON) tools/expandRelocFile.py --all --version $(VERSION) 2>&1 | tail -20
 
 # relocData texture management
 # extract-textures: extract PNG previews from relocData sprite files
 .PHONY: extract-textures
 extract-textures:
 	@for f in $(RELOC_C_FILES); do \
-		$(PYTHON) tools/relocSpriteTool.py extract $$f; \
+		$(PYTHON) tools/relocSpriteTool.py extract $$f --version $(VERSION); \
 	done
 
 # Convert a single PNG back to .inc.c: make png2inc PNG=path/to/Sprite.ia8.png INC=path/to/output.inc.c

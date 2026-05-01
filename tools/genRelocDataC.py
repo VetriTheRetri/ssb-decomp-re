@@ -28,8 +28,8 @@ import math
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.join(SCRIPT_DIR, "..")
-EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "relocData")
-CSV_PATH = os.path.join(PROJECT_DIR, "assets", "relocData.csv")
+EXTRACTED_FILES_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
+CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
 COMPRESSED_FILE_COUNT = 499
 
 SPRITE_SIZE = 68

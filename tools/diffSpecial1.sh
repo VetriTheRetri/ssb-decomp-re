@@ -6,9 +6,10 @@
 set -e
 
 PROJECT=$(cd "$(dirname "$0")/.." && pwd)
+VERSION=${VERSION:-us}
 IDO=$PROJECT/tools/ido-recomp/7.1/cc
 CFLAGS="-c -G 0 -non_shared -Xfullwarn -Xcpluscomm -Wab,-r4300_mul -woff 649,838,712,516,624,568,763 -O2 -mips2"
-INC="-Iinclude -Isrc -Isrc/relocData -Ibuild/src/relocData"
+INC="-Iinclude -Isrc -Isrc/relocData -Ibuild/$VERSION/src/relocData"
 
 arg=$1
 if [[ -z $arg ]]; then
@@ -26,8 +27,8 @@ else
     fid=${base%%_*}
 fi
 
-bin=$PROJECT/assets/relocData/$fid.vpk0.bin
-[[ -f $bin ]] || bin=$PROJECT/assets/relocData/$fid.bin
+bin=$PROJECT/assets/$VERSION/relocData/$fid.vpk0.bin
+[[ -f $bin ]] || bin=$PROJECT/assets/$VERSION/relocData/$fid.bin
 [[ -f $bin ]] || { echo "no asset for fid $fid" >&2; exit 1; }
 
 obj=/tmp/reloc_$fid.o

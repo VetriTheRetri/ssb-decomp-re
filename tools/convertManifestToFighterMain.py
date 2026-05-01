@@ -42,7 +42,7 @@ FIGHTER_MAINS = [
 
 def read_built_bin(fid):
     """Read the post-build, post-fixRelocChain binary."""
-    path = os.path.join(PROJECT_DIR, "build", "assets", "relocData",
+    path = os.path.join(PROJECT_DIR, "build", "assets", "us", "relocData",
                         f"{fid}.vpk0.bin")
     if not os.path.isfile(path):
         raise FileNotFoundError(

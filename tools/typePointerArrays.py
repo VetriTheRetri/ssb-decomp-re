@@ -33,7 +33,7 @@ import sys
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(PROJECT_DIR, "src", "relocData")
 BUILD_OBJ = os.path.join(PROJECT_DIR, "build", "src", "relocData", ".build")
-ASSETS = os.path.join(PROJECT_DIR, "assets", "relocData")
+ASSETS = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 
 
 def baserom_bytes(fid):

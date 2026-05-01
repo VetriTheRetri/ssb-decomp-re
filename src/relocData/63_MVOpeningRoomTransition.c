@@ -617,8 +617,3 @@ u32 dMVOpeningRoomTransition_Outline_AnimJoint[9] = {
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningRoomTransition_Outline_AnimJoint_post[8] = {
-	#include <MVOpeningRoomTransition/Outline_AnimJoint_post.data.inc.c>
-};
-

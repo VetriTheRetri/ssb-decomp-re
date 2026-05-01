@@ -24,7 +24,3 @@ u32 dStageCastleFile3_AnimJoint_0x0000[14] = {
 	    0xFFFF0001,
 	aobjEvent32End(),
 };
-
-u8 dStageCastleFile3_AnimJoint_0x0000_post[8] = {
-	#include <StageCastleFile3/AnimJoint_0x0000_post.data.inc.c>
-};

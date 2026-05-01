@@ -1653,8 +1653,3 @@ u32 dMVOpeningClashWallpaper_Cam_AnimJoint[10] = {
 	aobjEvent32Wait(130),
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningClashWallpaper_Cam_AnimJoint_post[8] = {
-	#include <MVOpeningClashWallpaper/Cam_AnimJoint_post.data.inc.c>
-};
-

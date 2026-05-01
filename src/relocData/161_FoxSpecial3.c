@@ -515,8 +515,3 @@ u32 dFoxSpecial3__2EB4__AnimJoint[50] = {
 	    0x3CEEEEEA,
 	aobjEvent32End(),
 };
-
-u8 dFoxSpecial3__2EB4__AnimJoint_post[4] = {
-	#include <FoxSpecial3/_2EB4__AnimJoint_post.data.inc.c>
-};
-

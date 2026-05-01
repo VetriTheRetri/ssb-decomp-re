@@ -111,7 +111,3 @@ u32 dMVOpeningClashFighters_CamAnimJoint[15] = {
 	    0xC525C869,  /* -2652.525634765625f */
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningClashFighters_CamAnimJoint_post[4] = {
-	#include <MVOpeningClashFighters/CamAnimJoint_post.data.inc.c>
-};

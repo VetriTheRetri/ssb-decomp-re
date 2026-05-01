@@ -324,6 +324,3 @@ Gfx dNSamusModel_gap_0x2FE8_sub_0x1978[77] = {
 };
 
 /* Raw tail after DL @ 0x4BC8 (8 bytes) */
-u8 dNSamusModel_gap_0x2FE8_sub_0x1978_post[8] = {
-	#include <NSamusModel/gap_0x2FE8_sub_0x1978_post.data.inc.c>
-};

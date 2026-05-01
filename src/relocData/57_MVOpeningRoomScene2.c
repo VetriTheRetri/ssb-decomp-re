@@ -28,7 +28,3 @@ u32 dMVOpeningRoomScene2_CamAnimJoint[17] = {
 	    0x420510A0,  /* 33.2662353515625f */
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningRoomScene2_CamAnimJoint_post[12] = {
-	#include <MVOpeningRoomScene2/CamAnimJoint_post.data.inc.c>
-};

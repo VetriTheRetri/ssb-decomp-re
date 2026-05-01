@@ -147,7 +147,3 @@ u32 dMVOpeningCommon_KirbyCamAnimJoint[10] = {
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningCommon_KirbyCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/KirbyCamAnimJoint_post.data.inc.c>
-};

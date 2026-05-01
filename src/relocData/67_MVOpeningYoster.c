@@ -1796,8 +1796,3 @@ u32 dMVOpeningYoster_Cam_AnimJoint[21] = {
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningYoster_Cam_AnimJoint_post[12] = {
-	#include <MVOpeningYoster/Cam_AnimJoint_post.data.inc.c>
-};
-

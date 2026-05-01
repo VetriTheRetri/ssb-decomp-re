@@ -2462,8 +2462,3 @@ u32 dMVOpeningCliff_Cam_AnimJoint[86] = {
 	    0x400692A3,  /* 2.1026999950408936f */
 	aobjEvent32End(),
 };
-
-u8 dMVOpeningCliff_Cam_AnimJoint_post[8] = {
-	#include <MVOpeningCliff/Cam_AnimJoint_post.data.inc.c>
-};
-

@@ -1,3 +1,4 @@
+#include "common.h"
 #include <lb/library.h>
 #include <sys/matrix.h>
 #include <ef/efdef.h>
@@ -1444,20 +1445,11 @@ void lbParticleStructFuncRun(GObj *gobj)
 	}
 }
 
-#ifdef NON_MATCHING
-/* 
- * NONMATCHING: xh, xl, yh, yl, pos_x, pos_y and pos_z float reg and/or order swaps
- * This is likely related to control flow, because xl and yl are supposed to go into saved regs,
- * but they are instead placed in fv0 and fv1 (f0 and f2 respectively). xh and yh are however
- * correctly placed into the registers they belong in. The empty brackets are also suspicious.
- */
-
-// 0x800D0D34
 void lbParticleDrawTextures(GObj *gobj)
 {
     LBParticle *pc;
     void *prev_image, *prev_palette;
-    s32 prev_ac, prev_alpha;
+    u32 prev_ac, prev_alpha;
     s32 tlut;
     Mtx44f look_at_f;
     Mtx44f projection_f;
@@ -1656,7 +1648,8 @@ void lbParticleDrawTextures(GObj *gobj)
         projection_f[3][2] = vtrans2 / vscale2;
     }
     pc0_magnitude = sqrtf(SQUARE(projection_f[0][0]) + SQUARE(projection_f[1][0]) + SQUARE(projection_f[2][0]));
-    pc1_magnitude = sqrtf(SQUARE(projection_f[0][1]) + SQUARE(projection_f[1][1]) + SQUARE(projection_f[2][1]));
+    xl = SQUARE(projection_f[0][1]) + SQUARE(projection_f[1][1]) + SQUARE(projection_f[2][1]);
+    pc1_magnitude = sqrtf(xl);
     
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_NONE);
@@ -1682,7 +1675,9 @@ void lbParticleDrawTextures(GObj *gobj)
                 if (pc->size != 0.0F)
                 {
                     pos_x = pc->pos.x;
-                    pos_y = pc->pos.y;
+                    yl = pc->pos.y;
+                    pos_y = yl;
+                    if (pc->pos.z);
                     pos_z = pc->pos.z;
                     
                     if (pc->xf != NULL)
@@ -1773,11 +1768,9 @@ void lbParticleDrawTextures(GObj *gobj)
                         {
                             tm *= pc->size;
 
-                            mx = tm * mx;
-                            xh = mx + tx;
-                            
-                            my = tm * my;
-                            yh = my + ty;
+                            xh = (tm * mx) + tx;
+                            // if (tx);                          
+                            yh = (tm * my) + ty;
 
                             tx = tx * vscale0 + vtrans0;
                             xh = xh * vscale0 + vtrans0;
@@ -1794,6 +1787,8 @@ void lbParticleDrawTextures(GObj *gobj)
                             }
                             ty = ty * vscale1 + vtrans1;
                             yh = yh * vscale1 + vtrans1;
+              
+                            if (mx);
                             
                             if (ty < yh)
                             {
@@ -2119,9 +2114,6 @@ void lbParticleDrawTextures(GObj *gobj)
         gDPSetTextureLUT(gSYTaskmanDLHeads[0]++, G_TT_NONE);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleDrawTextures.s")
-#endif /* NON_MATCHING */
 
 // 0x800D2720
 void lbParticleAddAttachDObj(s32 bank_id, DObj *dobj)

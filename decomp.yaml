@@ -42,12 +42,12 @@ tools:
       # If you don't have .NON_MATCHING markers in all your function and data
       # symbols then you should set `check_asm_paths: True` and
       # `report_data: False`, otherwise those progress will get a fake boost.
-      check_asm_paths: False
-      report_data: True
+      check_asm_paths: True
+      report_data: False
       # Change if the asm path in the build folder is deeper than two subfolders.
       # i.e.: "build/us/asm/header.o" -> `path_index: 3`.
       # i.e.: "build/us/asm/us/header.o" -> `path_index: 4`.
-      # path_index: 2
+      path_index: 3
       prefixes_to_trim:
         # Per-version build/asm paths (post step-5 layout). Listed before the
         # legacy paths so the longer prefix wins when both would match.

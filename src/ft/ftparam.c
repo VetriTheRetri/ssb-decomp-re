@@ -2483,7 +2483,7 @@ f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
 void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
 {
     s32 unused1[2];
-    DObj *attach_dobj;
+    FTParts *parts;
     Vec3f sp50;
     Vec3f sp44;
     Vec3f sp38;
@@ -2506,11 +2506,11 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
 
     syVectorNormCross3D(&sp50, &sp2C, &sp44);
 
-    attach_dobj = dobj->child->user_data.p;
+    parts = ftGetParts(dobj->child);
 
-    sp38.x = attach_dobj->rotate.vec.f.x;
-    sp38.y = attach_dobj->rotate.vec.f.y;
-    sp38.z = attach_dobj->rotate.vec.f.z;
+    sp38.x = parts->unk_dobjtrans_0x10[2][0];
+    sp38.y = parts->unk_dobjtrans_0x10[2][1];
+    sp38.z = parts->unk_dobjtrans_0x10[2][2];
 
     syVectorNorm3D(&sp44);
     syVectorNorm3D(&sp38);

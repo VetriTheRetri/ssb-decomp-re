@@ -1451,10 +1451,7 @@ Gfx dPurinModel_gap_0x6028_sub_0x4A8[90] = {
 	#include <PurinModel/gap_0x6028_sub_0x4A8.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x67A0 (8 bytes) */
-u8 dPurinModel_gap_0x6028_sub_0x4A8_post[8] = {
-	#include <PurinModel/gap_0x6028_sub_0x4A8_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x67A8 (was gap+0x780, 40 bytes) */
 u8 dPurinModel_gap_0x6028_sub_0x780[40] = {

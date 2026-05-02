@@ -4232,9 +4232,7 @@ u32 dMVOpeningSector_Cam_AnimJoint[58] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningSector_Cam_AnimJoint_post[8] = {
-	#include <MVOpeningSector/Cam_AnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* Sprite: Cockpit */
 

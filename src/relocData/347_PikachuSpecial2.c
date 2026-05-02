@@ -20,10 +20,7 @@ u16 dPikachuSpecial2_Lut_0x0008_palette[16] = {
 };
 
 /* Raw data from file offset 0x0028 to 0x0640 (1560 bytes) */
-/* gap sub-block @ 0x0028 (was gap+0x0, 8 bytes) */
-u8 dPikachuSpecial2_gap_0x0028[8] = {
-	#include <PikachuSpecial2/gap_0x0028.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0030 (was gap+0x8, 520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */

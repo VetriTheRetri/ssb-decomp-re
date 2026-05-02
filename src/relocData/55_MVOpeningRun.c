@@ -370,9 +370,7 @@ u32 dMVOpeningRun_Pikachu_AnimJoint[38] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningRun_Pikachu_AnimJoint_post[12] = {
-	#include <MVOpeningRun/Pikachu_AnimJoint_post.data.inc.c>
-};
+PAD(12);
 
 /* Texture data for sprite Wallpaper */
 /* Split out from .sprite.c so the palette blocks can sit at

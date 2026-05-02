@@ -23,10 +23,7 @@ u16 dCaptainSpecial2_Lut_0x0030_palette[16] = {
 };
 
 /* Raw data from file offset 0x0050 to 0x0960 (2320 bytes) */
-/* gap sub-block @ 0x0050 (was gap+0x0, 8 bytes) */
-u8 dCaptainSpecial2_gap_0x0050[8] = {
-	#include <CaptainSpecial2/gap_0x0050.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0058 (was gap+0x8, 1160 bytes) */
 /* @tex fmt=CI4 dim=48x48 */

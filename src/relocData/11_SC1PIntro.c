@@ -1347,9 +1347,7 @@ u32 dSC1PIntro_FighterMarioCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterMarioCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterMarioCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6CB0 to 0x6CE0 (48 bytes) */
 u32 dSC1PIntro_FighterFoxCam_AnimJoint[11] = {
@@ -1366,9 +1364,7 @@ u32 dSC1PIntro_FighterFoxCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterFoxCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterFoxCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6CE0 to 0x6D10 (48 bytes) */
 u32 dSC1PIntro_FighterDonkeyCam_AnimJoint[11] = {
@@ -1385,9 +1381,7 @@ u32 dSC1PIntro_FighterDonkeyCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterDonkeyCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterDonkeyCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6D10 to 0x6D40 (48 bytes) */
 u32 dSC1PIntro_FighterSamusCam_AnimJoint[11] = {
@@ -1404,9 +1398,7 @@ u32 dSC1PIntro_FighterSamusCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterSamusCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterSamusCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6D40 to 0x6D70 (48 bytes) */
 u32 dSC1PIntro_FighterLuigiCam_AnimJoint[11] = {
@@ -1423,9 +1415,7 @@ u32 dSC1PIntro_FighterLuigiCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterLuigiCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterLuigiCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6D70 to 0x6DA0 (48 bytes) */
 u32 dSC1PIntro_FighterLinkCam_AnimJoint[11] = {
@@ -1442,9 +1432,7 @@ u32 dSC1PIntro_FighterLinkCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterLinkCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterLinkCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6DA0 to 0x6DD0 (48 bytes) */
 u32 dSC1PIntro_FighterYoshiCam_AnimJoint[11] = {
@@ -1461,9 +1449,7 @@ u32 dSC1PIntro_FighterYoshiCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterYoshiCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterYoshiCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6DD0 to 0x6E00 (48 bytes) */
 u32 dSC1PIntro_FighterCaptainCam_AnimJoint[11] = {
@@ -1480,9 +1466,7 @@ u32 dSC1PIntro_FighterCaptainCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterCaptainCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterCaptainCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6E00 to 0x6E30 (48 bytes) */
 u32 dSC1PIntro_FighterKirbyCam_AnimJoint[11] = {
@@ -1499,9 +1483,7 @@ u32 dSC1PIntro_FighterKirbyCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterKirbyCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterKirbyCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6E30 to 0x6E60 (48 bytes) */
 u32 dSC1PIntro_FighterPikachuCam_AnimJoint[11] = {
@@ -1518,9 +1500,7 @@ u32 dSC1PIntro_FighterPikachuCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterPikachuCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterPikachuCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6E60 to 0x6E90 (48 bytes) */
 u32 dSC1PIntro_FighterPurinCam_AnimJoint[11] = {
@@ -1537,9 +1517,7 @@ u32 dSC1PIntro_FighterPurinCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterPurinCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterPurinCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6E90 to 0x6EC0 (48 bytes) */
 u32 dSC1PIntro_FighterNessCam_AnimJoint[11] = {
@@ -1556,9 +1534,7 @@ u32 dSC1PIntro_FighterNessCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_FighterNessCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/FighterNessCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6EC0 to 0x6EF0 (48 bytes) */
 u32 dSC1PIntro_StageKirbyCam_AnimJoint[11] = {
@@ -1575,9 +1551,7 @@ u32 dSC1PIntro_StageKirbyCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageKirbyCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageKirbyCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6EF0 to 0x6F20 (48 bytes) */
 u32 dSC1PIntro_StageYoshiCam_AnimJoint[11] = {
@@ -1594,9 +1568,7 @@ u32 dSC1PIntro_StageYoshiCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageYoshiCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageYoshiCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6F20 to 0x6F50 (48 bytes) */
 u32 dSC1PIntro_StageBossCam_AnimJoint[11] = {
@@ -1613,9 +1585,7 @@ u32 dSC1PIntro_StageBossCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageBossCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageBossCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6F50 to 0x6F80 (48 bytes) */
 u32 dSC1PIntro_StageSamusCam_AnimJoint[11] = {
@@ -1632,9 +1602,7 @@ u32 dSC1PIntro_StageSamusCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageSamusCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageSamusCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6F80 to 0x6FB0 (48 bytes) */
 u32 dSC1PIntro_StageFoxCam_AnimJoint[11] = {
@@ -1651,9 +1619,7 @@ u32 dSC1PIntro_StageFoxCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageFoxCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageFoxCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6FB0 to 0x6FE0 (48 bytes) */
 u32 dSC1PIntro_StagePikachuCam_AnimJoint[11] = {
@@ -1670,9 +1636,7 @@ u32 dSC1PIntro_StagePikachuCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StagePikachuCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StagePikachuCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x6FE0 to 0x7010 (48 bytes) */
 u32 dSC1PIntro_StageLinkCam_AnimJoint[11] = {
@@ -1689,9 +1653,7 @@ u32 dSC1PIntro_StageLinkCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageLinkCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageLinkCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x7010 to 0x7040 (48 bytes) */
 u32 dSC1PIntro_StageDonkeyCam_AnimJoint[11] = {
@@ -1708,9 +1670,7 @@ u32 dSC1PIntro_StageDonkeyCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageDonkeyCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageDonkeyCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x7040 to 0x7070 (48 bytes) */
 u32 dSC1PIntro_StageMarioCam_AnimJoint[11] = {
@@ -1727,9 +1687,7 @@ u32 dSC1PIntro_StageMarioCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageMarioCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageMarioCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x7070 to 0x70A0 (48 bytes) */
 u32 dSC1PIntro_StageMMarioCam_AnimJoint[11] = {
@@ -1746,9 +1704,7 @@ u32 dSC1PIntro_StageMMarioCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageMMarioCam_AnimJoint_post[4] = {
-	#include <SC1PIntro/StageMMarioCam_AnimJoint_post.data.inc.c>
-};
+PAD(4);
 
 /* Raw data from file offset 0x70A0 to 0x70D8 (56 bytes) */
 u32 dSC1PIntro_StageZakoCam_AnimJoint[11] = {
@@ -1765,9 +1721,7 @@ u32 dSC1PIntro_StageZakoCam_AnimJoint[11] = {
 	aobjEvent32End(),
 };
 
-u8 dSC1PIntro_StageZakoCam_AnimJoint_post[12] = {
-	#include <SC1PIntro/StageZakoCam_AnimJoint_post.data.inc.c>
-};
+PAD(12);
 
 /* Texture data for sprite LinkMarker */
 /* Split out from .sprite.c so the palette blocks can sit at

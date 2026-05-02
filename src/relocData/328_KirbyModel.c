@@ -3610,9 +3610,7 @@ u32 dKirbyModel_gap_0x31CC_sub_0xA77C[3] = {
 	aobjEvent32End(),
 };
 
-u8 dKirbyModel_gap_0x31CC_sub_0xA77C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xA77C_post.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0xD958 (was gap+0xA78C, 320 bytes) */
 Vtx dKirbyModel_gap_0x31CC_sub_0xA78C[20] = {
@@ -6304,10 +6302,7 @@ Gfx dKirbyModel_gap_0x1A2FC_sub_0x324[74] = {
 	#include <KirbyModel/gap_0x1A2FC_sub_0x324.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x1A870 (8 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x324_post[8] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x324_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x1A878 (was gap+0x57C, 40 bytes) */
 u16 dKirbyModel_gap_0x1A2FC_sub_0x57C[20] = {

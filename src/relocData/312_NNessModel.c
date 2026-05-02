@@ -232,10 +232,7 @@ Gfx dNNessModel_gap_0x3210_sub_0x30[31] = {
 	#include <NNessModel/gap_0x3210_sub_0x30.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x3338 (8 bytes) */
-u8 dNNessModel_gap_0x3210_sub_0x30_post[8] = {
-	#include <NNessModel/gap_0x3210_sub_0x30_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x3340 (was gap+0x130, 192 bytes) */
 Vtx dNNessModel_gap_0x3210_sub_0x130[12] = {

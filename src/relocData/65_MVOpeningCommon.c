@@ -22,9 +22,7 @@ u32 dMVOpeningCommon_MarioCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_MarioCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/MarioCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint DonkeyCamAnimJoint @ 0x0030 (48 bytes) */
 u32 dMVOpeningCommon_DonkeyCamAnimJoint[10] = {
@@ -40,9 +38,7 @@ u32 dMVOpeningCommon_DonkeyCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_DonkeyCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/DonkeyCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint SamusCamAnimJoint @ 0x0060 (48 bytes) */
 u32 dMVOpeningCommon_SamusCamAnimJoint[10] = {
@@ -58,9 +54,7 @@ u32 dMVOpeningCommon_SamusCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_SamusCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/SamusCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint FoxCamAnimJoint @ 0x0090 (48 bytes) */
 u32 dMVOpeningCommon_FoxCamAnimJoint[10] = {
@@ -76,9 +70,7 @@ u32 dMVOpeningCommon_FoxCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_FoxCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/FoxCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint LinkCamAnimJoint @ 0x00C0 (48 bytes) */
 u32 dMVOpeningCommon_LinkCamAnimJoint[10] = {
@@ -94,9 +86,7 @@ u32 dMVOpeningCommon_LinkCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_LinkCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/LinkCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint YoshiCamAnimJoint @ 0x00F0 (48 bytes) */
 u32 dMVOpeningCommon_YoshiCamAnimJoint[10] = {
@@ -112,9 +102,7 @@ u32 dMVOpeningCommon_YoshiCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_YoshiCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/YoshiCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint PikachuCamAnimJoint @ 0x0120 (48 bytes) */
 u32 dMVOpeningCommon_PikachuCamAnimJoint[10] = {
@@ -130,9 +118,7 @@ u32 dMVOpeningCommon_PikachuCamAnimJoint[10] = {
 	aobjEvent32End(),
 };
 
-u8 dMVOpeningCommon_PikachuCamAnimJoint_post[8] = {
-	#include <MVOpeningCommon/PikachuCamAnimJoint_post.data.inc.c>
-};
+PAD(8);
 
 /* CamAnimJoint KirbyCamAnimJoint @ 0x0150 (48 bytes) */
 u32 dMVOpeningCommon_KirbyCamAnimJoint[10] = {

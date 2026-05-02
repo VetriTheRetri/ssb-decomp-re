@@ -48,10 +48,7 @@ Gfx dPikachuSpecial3_gap_0x0000_sub_0x270[29] = {
 	#include <PikachuSpecial3/gap_0x0000_sub_0x270.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x358 (8 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x270_post[8] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x270_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0360 (was gap+0x360, 4 bytes) */
 u8 dPikachuSpecial3_gap_0x0000_sub_0x360[4] = {
@@ -540,10 +537,7 @@ u16 dPikachuSpecial3_Lut_0x1C70_palette[16] = {
 };
 
 /* Raw data from file offset 0x1C90 to 0x20A0 (1040 bytes) */
-/* gap sub-block @ 0x1C90 (was gap+0x0, 8 bytes) */
-u8 dPikachuSpecial3_gap_0x1C90[8] = {
-	#include <PikachuSpecial3/gap_0x1C90.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x1C98 (was gap+0x8, 520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */

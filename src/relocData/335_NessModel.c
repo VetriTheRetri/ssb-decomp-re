@@ -1286,10 +1286,7 @@ Gfx dNessModel_gap_0x553C_sub_0x464[15] = {
 	#include <NessModel/gap_0x553C_sub_0x464.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5A18 (8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x464_post[8] = {
-	#include <NessModel/gap_0x553C_sub_0x464_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5A20 (was gap+0x4E4, 256 bytes) */
 Vtx dNessModel_gap_0x553C_sub_0x4E4[16] = {
@@ -1311,10 +1308,7 @@ Gfx dNessModel_gap_0x553C_sub_0x734[15] = {
 	#include <NessModel/gap_0x553C_sub_0x734.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5CE8 (8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x734_post[8] = {
-	#include <NessModel/gap_0x553C_sub_0x734_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5CF0 (was gap+0x7B4, 192 bytes) */
 Vtx dNessModel_gap_0x553C_sub_0x7B4[12] = {
@@ -1336,10 +1330,7 @@ Gfx dNessModel_gap_0x553C_sub_0x984[15] = {
 	#include <NessModel/gap_0x553C_sub_0x984.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5F38 (8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x984_post[8] = {
-	#include <NessModel/gap_0x553C_sub_0x984_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5F40 (was gap+0xA04, 192 bytes) */
 Vtx dNessModel_gap_0x553C_sub_0xA04[12] = {
@@ -1361,10 +1352,7 @@ Gfx dNessModel_gap_0x553C_sub_0xBD4[15] = {
 	#include <NessModel/gap_0x553C_sub_0xBD4.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x6188 (8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0xBD4_post[8] = {
-	#include <NessModel/gap_0x553C_sub_0xBD4_post.data.inc.c>
-};
+PAD(8);
 
 /* Vtx: gap_0x553C_sub_0xC54 @ 0x6190 (13 vertices) */
 Vtx dNessModel_gap_0x553C_sub_0xC54[13] = {

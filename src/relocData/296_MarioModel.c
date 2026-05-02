@@ -30,10 +30,7 @@ u8 dMarioModel_gap_0x0000_sub_0x8[16] = {
 	#include <MarioModel/gap_0x0000_sub_0x8.data.inc.c>
 };
 
-/* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
-u8 dMarioModel_gap_0x0000_sub_0x18[8] = {
-	#include <MarioModel/gap_0x0000_sub_0x18.data.inc.c>
-};
+PAD(8);
 
 /* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
 u8 dMarioModel_Joint_0x0020_post[32] = {
@@ -1297,10 +1294,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x4B0[23] = {
 	#include <MarioModel/gap_0x4A60_sub_0x4B0.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x4FC8 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x4B0_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x4B0_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x4FD0 (was gap+0x570, 288 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x570[18] = {
@@ -1312,10 +1306,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x690[19] = {
 	#include <MarioModel/gap_0x4A60_sub_0x690.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5188 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x690_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x690_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5190 (was gap+0x730, 368 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x730[23] = {
@@ -1327,10 +1318,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x8A0[23] = {
 	#include <MarioModel/gap_0x4A60_sub_0x8A0.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x53B8 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x8A0_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x8A0_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x53C0 (was gap+0x960, 288 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x960[18] = {
@@ -1342,10 +1330,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0xA80[19] = {
 	#include <MarioModel/gap_0x4A60_sub_0xA80.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5578 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0xA80_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0xA80_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5580 (was gap+0xB20, 128 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0xB20[8] = {
@@ -1357,10 +1342,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0xBA0[13] = {
 	#include <MarioModel/gap_0x4A60_sub_0xBA0.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5668 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0xBA0_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0xBA0_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5670 (was gap+0xC10, 112 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0xC10[7] = {
@@ -1372,10 +1354,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0xC80[29] = {
 	#include <MarioModel/gap_0x4A60_sub_0xC80.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x57C8 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0xC80_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0xC80_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x57D0 (was gap+0xD70, 96 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0xD70[6] = {
@@ -1412,10 +1391,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x1360[13] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1360.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5E28 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1360_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1360_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5E30 (was gap+0x13D0, 160 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x13D0[10] = {
@@ -1427,10 +1403,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x1470[13] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1470.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x5F38 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1470_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1470_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x5F40 (was gap+0x14E0, 128 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x14E0[8] = {
@@ -1442,10 +1415,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x1560[15] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1560.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x6038 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1560_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1560_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x6040 (was gap+0x15E0, 128 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x15E0[8] = {
@@ -1457,10 +1427,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x1660[15] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1660.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x6138 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1660_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1660_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x6140 (was gap+0x16E0, 160 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x16E0[10] = {
@@ -1472,10 +1439,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x1780[13] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1780.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x6248 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1780_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1780_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x6250 (was gap+0x17F0, 160 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x17F0[10] = {
@@ -1487,10 +1451,7 @@ Gfx dMarioModel_gap_0x4A60_sub_0x1890[13] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1890.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x6358 (8 bytes) */
-u8 dMarioModel_gap_0x4A60_sub_0x1890_post[8] = {
-	#include <MarioModel/gap_0x4A60_sub_0x1890_post.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x6360 (was gap+0x1900, 112 bytes) */
 Vtx dMarioModel_gap_0x4A60_sub_0x1900[7] = {

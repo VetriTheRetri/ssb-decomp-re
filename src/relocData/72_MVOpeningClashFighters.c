@@ -8,10 +8,7 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
-/* 8-byte header/pad @ 0x0000 */
-u8 dMVOpeningClashFighters_data_0x0000[8] = {
-	#include <MVOpeningClashFighters/data_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* AObjEvent32 stream @ 0x0008 (2048 bytes) */
 u32 dMVOpeningClashFighters_0x0008[512] = {

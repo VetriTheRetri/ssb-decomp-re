@@ -92,10 +92,7 @@ Gfx dYoshiSpecial2_gap_0x0530[25] = {
 	#include <YoshiSpecial2/gap_0x0530.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x5F8 (8 bytes) */
-u8 dYoshiSpecial2_gap_0x0530_post[8] = {
-	#include <YoshiSpecial2/gap_0x0530_post.data.inc.c>
-};
+PAD(8);
 
 /* Raw data from file offset 0x0600 to 0x0780 (384 bytes) */
 /* Script-table split: leading chain-pointer table at the

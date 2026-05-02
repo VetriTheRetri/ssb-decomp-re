@@ -457,8 +457,9 @@ function render(data) {
 
 		if (fn.scratch) {
 			html += '<a class="scratch-btn" href="' + escHtml(fn.scratch) + '" target="_blank" rel="noopener">';
-			html += '<svg viewBox="0 0 16 16"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.5 3h1v4.5L11 10l-.5.86-3-1.75V4z"/></svg>';
-			html += 'SCRATCH</a>';
+			html += 'SCRATCH';
+			html += '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 2h5v5h-2V5.41l-5.3 5.3-1.4-1.42L10.59 4H9V2zM3 4h4v2H5v5h5V9h2v4H3V4z"/></svg>';
+			html += '</a>';
 		}
 
 		card.innerHTML = html;

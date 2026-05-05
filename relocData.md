@@ -27,6 +27,107 @@ bytes — every file compiles from C source.
 | Auto-extracted sprite files | **96** | A committed `.spritelist` marker drives `tools/extractSpriteFile.py`, which walks the ROM binary's reloc chain, auto-discovers every Sprite + Bitmap + pixel block, and emits a full master `.c` + `.reloc` + `.inc.c` set under `build/`. |
 | **Total** | **2,134** | |
 
+### Per-file completion %
+
+Overall: **2040 / 2132** files at 100% (96.99% of bytes typed; 514,664 / 17,082,000 bytes still untyped across 92 files).
+
+A block is *untyped* when it includes a `.data.inc.c` whose body is flat hex bytes (no nested `{...}` initializers). `.data.inc.c` files structured by a local `typedef struct` count as typed. Spritelist-driven files are 100% by construction. Sizes come from the `.data` section of the compiled US `.o`. The table below lists every file below 100%, sorted by completion (worst first); regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
+
+| FID | Name | Size (B) | Untyped (B) | Untyped blocks | Complete |
+|----:|---|---:|---:|---:|---:|
+| 252 | SCExplainMain | 6096 | 6096 | 5 | 0.00% |
+| 152 | StagePupupuFile3 | 14080 | 14072 | 2 | 0.06% |
+| 153 | StageSectorFile3 | 7680 | 7664 | 2 | 0.21% |
+| 157 | StageZebesFile3 | 3536 | 3528 | 2 | 0.23% |
+| 158 | StageJungleFile3 | 3296 | 3288 | 2 | 0.24% |
+| 162 | GRBonus3File3 | 2320 | 2312 | 2 | 0.34% |
+| 159 | StageYamabukiFile3 | 10976 | 10920 | 14 | 0.51% |
+| 155 | StageInishieFile3 | 5136 | 5108 | 6 | 0.55% |
+| 154 | StageYosterFile3 | 1712 | 1700 | 2 | 0.70% |
+| 72 | MVOpeningClashFighters | 5248 | 5176 | 16 | 1.37% |
+| 83 | EFCommonEffects1 | 52736 | 42572 | 26 | 19.27% |
+| 264 | GRYamabukiMap | 832 | 664 | 11 | 20.19% |
+| 138 | GRBonus2FoxFile2 | 68624 | 53864 | 3 | 21.51% |
+| 114 | StageLastFile2 | 76128 | 58144 | 38 | 23.62% |
+| 85 | EFCommonEffects3 | 13616 | 9228 | 7 | 32.23% |
+| 105 | StageZebesFile2 | 57184 | 34040 | 50 | 40.47% |
+| 260 | GRInishieMap | 368 | 200 | 4 | 45.65% |
+| 84 | EFCommonEffects2 | 28352 | 12704 | 32 | 55.19% |
+| 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
+| 262 | GRSectorMap | 304 | 116 | 2 | 61.84% |
+| 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
+| 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
+| 166 | IFCommonPlayer | 976 | 272 | 1 | 72.13% |
+| 353 | LinkSpecial2 | 6672 | 1816 | 1 | 72.78% |
+| 257 | GRZebesMap | 224 | 56 | 2 | 75.00% |
+| 261 | GRJungleMap | 224 | 56 | 2 | 75.00% |
+| 265 | GRHyruleMap | 224 | 56 | 2 | 75.00% |
+| 68 | MVOpeningCliff | 35440 | 8464 | 11 | 76.12% |
+| 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
+| 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
+| 341 | PikachuModel | 39984 | 8296 | 94 | 79.25% |
+| 61 | MVOpeningNewcomers1 | 167600 | 34656 | 4 | 79.32% |
+| 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
+| 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
+| 335 | NessModel | 50112 | 8988 | 53 | 82.06% |
+| 332 | CaptainModel | 51344 | 9196 | 110 | 82.09% |
+| 313 | FoxModel | 32336 | 5616 | 81 | 82.63% |
+| 338 | YoshiModel | 44256 | 7172 | 94 | 83.79% |
+| 296 | MarioModel | 29968 | 4688 | 70 | 84.36% |
+| 323 | LuigiModel | 32528 | 4972 | 85 | 84.71% |
+| 330 | PurinModel | 32224 | 4424 | 68 | 86.27% |
+| 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
+| 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
+| 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
+| 75 | MVOpeningRunCrash | 15024 | 1760 | 32 | 88.29% |
+| 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
+| 317 | DonkeyModel | 54784 | 6228 | 74 | 88.63% |
+| 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
+| 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
+| 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
+| 328 | KirbyModel | 120864 | 11648 | 123 | 90.36% |
+| 320 | SamusModel | 58704 | 5640 | 76 | 90.39% |
+| 63 | MVOpeningRoomTransition | 4592 | 440 | 6 | 90.42% |
+| 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
+| 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
+| 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
+| 129 | GRBonus1LinkFile2 | 10720 | 684 | 6 | 93.62% |
+| 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
+| 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
+| 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
+| 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
+| 324 | LinkModel | 73584 | 3016 | 38 | 95.90% |
+| 333 | CaptainSpecial3 | 2160 | 88 | 1 | 95.93% |
+| 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
+| 133 | GRBonus1PikachuFile2 | 11488 | 448 | 1 | 96.10% |
+| 39 | IFCommonObject | 16352 | 616 | 1 | 96.23% |
+| 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
+| 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
+| 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
+| 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
+| 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
+| 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
+| 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
+| 354 | YoshiSpecial2 | 1984 | 48 | 1 | 97.58% |
+| 67 | MVOpeningYoster | 51616 | 1240 | 1 | 97.60% |
+| 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
+| 117 | StageMetalFile2 | 16320 | 308 | 4 | 98.11% |
+| 55 | MVOpeningRun | 22768 | 276 | 2 | 98.79% |
+| 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
+| 344 | BossModel | 11584 | 136 | 1 | 98.83% |
+| 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
+| 102 | StagePupupuBeta2 | 10496 | 64 | 1 | 99.39% |
+| 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
+| 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |
+| 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
+| 350 | CaptainSpecial2 | 26080 | 48 | 1 | 99.82% |
+| 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
+| 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |
+| 147 | GRBonus2PurinFile2 | 21728 | 24 | 1 | 99.89% |
+| 69 | MVOpeningStandoff | 36656 | 28 | 2 | 99.92% |
+| 73 | MVOpeningSector | 249056 | 128 | 1 | 99.95% |
+| 71 | MVOpeningYamabuki | 257696 | 16 | 1 | 99.99% |
+
 ### Per-region divergence (JP build)
 
 For files where US and JP share the same `.c` source but diverge on a

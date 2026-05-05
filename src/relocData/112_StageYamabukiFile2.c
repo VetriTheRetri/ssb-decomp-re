@@ -712,34 +712,13 @@ u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[] = {
 
 PAD(8);
 
-/* MObjSub: Layer1MObj @ 0x5260 */
-MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		1.60631370417321e-26f, 0.0f,
-		1.626508851495659e-26f, 0.0f,
-		1.6362753192808443e-26f, 1.646293236479569e-26f,
-		(void**)((u8*)dStageYamabukiFile2_Tex_0x28F0 + 0x510),
-		0x14A5,
-		0x0C, 0x82,
-		0x14A6,
-		0x0A7E, 0x14A9, 0x0B80,
-		0.0f, 1.0789998175301091e-42f,
-		2.010200164661866e-26f, 2.938735877055719e-39f,
-		0x00200020,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x00, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x3F, 0x80, 0x00, 0x00 } },
-		{ { 0x3F, 0x80, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		1065353216, 0,
-		10552065, 2097184,
-	}
+/* @ 0x5260 (120 bytes) — was misclassified as `MObjSub`; the
+ * bytes are not a regular MObjSub: chain-pointer slots sit in
+ * fields that real MObjSubs use as floats/colors. Kept as raw u8
+ * pending a structural retype. The .reloc still patches every
+ * slot the runtime walks, so semantics match the original. */
+u8 dStageYamabukiFile2_Layer1MObj_MObjSub[120] = {
+	#include <StageYamabukiFile2/Layer1MObj_MObjSub.data.inc.c>
 };
 
 /* Raw data from file offset 0x52D8 to 0x6A70 (6040 bytes) */

@@ -313,34 +313,13 @@ DObjDesc dGRBonus3File2_Layer0DObj[] = {
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* MObjSub: Layer1MObj @ 0x36A0 */
-MObjSub dGRBonus3File2_Layer1MObj_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 1.0973480506169102e-30f,
-		0.0f, 0.0f,
-		0.0f, 1.7509622182051936e-30f,
-		(void**)0x00000000,
-		0x0000,
-		G_IM_FMT_I, G_IM_SIZ_16b,
-		0x0000,
-		0x0000, 0x0020, 0x0000,
-		2.938780718606577e-39f, 0.0f,
-		0.0f, 0.0f,
-		0x3F800000,
-		{ { 0x3F, 0x80, 0x00, 0x00 } },
-		0x00, 0x00, { 0x00, 0x00 },
-		{ { 0x3F, 0x80, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x02, 0x00, 0x04, 0x01 } },
-		{ { 0x00, 0x10, 0x00, 0x20 } },
-		2097184, 0,
-		0, 0,
-	}
+/* @ 0x36A0 (120 bytes) — was misclassified as `MObjSub`; the
+ * bytes are not a regular MObjSub: chain-pointer slots sit in
+ * fields that real MObjSubs use as floats/colors. Kept as raw u8
+ * pending a structural retype. The .reloc still patches every
+ * slot the runtime walks, so semantics match the original. */
+u8 dGRBonus3File2_Layer1MObj_MObjSub[120] = {
+	#include <GRBonus3File2/Layer1MObj_MObjSub.data.inc.c>
 };
 
 /* Raw data from file offset 0x3718 to 0x6120 (10760 bytes) */

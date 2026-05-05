@@ -6,9 +6,21 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern u8 dGRBonus2FoxFile2_gap_0x0AD8[];
 
+extern void *dGRBonus2FoxFile2_Layer1MObj_sprites_A[];
+extern void *dGRBonus2FoxFile2_Layer1MObj_sprites_B[];
 extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218[];
+extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x220[];
+extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x228[];
+extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230[];
+
+/* Cross-file references resolved by fixRelocChain.py — file 121 (Bonus1CommonImages2) */
+extern u8 dBonus1CommonImages2_Tex_0x0190[];
+extern u8 dBonus1CommonImages2_Tex_0x0240[];
+extern u8 dBonus1CommonImages2_Tex_0x02F0[];
+extern u8 dBonus1CommonImages2_Tex_0x03A0[];
+extern u8 dBonus1CommonImages2_Tex_0x0450[];
+extern u8 dBonus1CommonImages2_Tex_0x0500[];
 
 extern u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint_data[];
 extern u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data[];
@@ -167,60 +179,66 @@ DObjDesc dGRBonus2FoxFile2_Layer0DObj[] = {
 
 PAD(8);
 
-/* MObjSub: Layer1MObj @ 0xA60 */
-MObjSub dGRBonus2FoxFile2_Layer1MObj_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		(void**)(dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218),
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		2.4981115879334233e-37f, 2.5128057157342105e-37f,
-		0x02C50342,
-		{ { 0x02, 0xAD, 0x00, 0x64 } },
-		0x02, 0xAE, { 0x00, 0x90 },
-		{ { 0x02, 0xAF, 0x00, 0xBC } },
-		{ { 0x02, 0xB0, 0x00, 0xE8 } },
-		{ { 0x02, 0xB1, 0x01, 0x14 } },
-		{ { 0x02, 0xB2, 0x01, 0x40 } },
-		45285476, 45351056,
-		45416636, 45482216,
-	}
+/* @ 0xA60 (80 bytes) — looks MObjSub-shaped at the head but the body
+ * isn't an MObjSub: the bytes from +0x50 onward are two embedded
+ * pointer arrays, and only 4 fields (at +0x2C/+0x44/+0x48/+0x4C) carry
+ * intern relocs (to MObjSub *[2] sprite-set tables). Treat the whole
+ * 80-byte head as a void*[20] with named entries at the patched slots
+ * (every chain-target symbol is resolved at link time by
+ * fixRelocChain). */
+void *dGRBonus2FoxFile2_Layer1MObj_data[20] = {
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL,
+	dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218,    /* +0x2C */
+	NULL, NULL, NULL, NULL, NULL,
+	dGRBonus2FoxFile2_gap_0x0AD8_sub_0x220,    /* +0x44 */
+	dGRBonus2FoxFile2_gap_0x0AD8_sub_0x228,    /* +0x48 */
+	dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230,    /* +0x4C */
+};
+
+/* Sprite array referenced by gap_0x0AD8_sub_0x38.sprites
+ * (originally Layer1MObj_MObjSub+0x50). */
+void *dGRBonus2FoxFile2_Layer1MObj_sprites_A[6] = {
+	dBonus1CommonImages2_Tex_0x0190,
+	dBonus1CommonImages2_Tex_0x0240,
+	dBonus1CommonImages2_Tex_0x02F0,
+	dBonus1CommonImages2_Tex_0x03A0,
+	dBonus1CommonImages2_Tex_0x0450,
+	dBonus1CommonImages2_Tex_0x0500,
+};
+
+/* Sprite array referenced by gap_0x0AD8_sub_0xB0.sprites
+ * (originally Layer1MObj_MObjSub+0x68, last 2 entries spilled into the
+ * old `gap_0x0AD8` symbol — absorbed here). */
+void *dGRBonus2FoxFile2_Layer1MObj_sprites_B[6] = {
+	dBonus1CommonImages2_Tex_0x0190,
+	dBonus1CommonImages2_Tex_0x0240,
+	dBonus1CommonImages2_Tex_0x02F0,
+	dBonus1CommonImages2_Tex_0x03A0,
+	dBonus1CommonImages2_Tex_0x0450,
+	dBonus1CommonImages2_Tex_0x0500,
 };
 
 /* Raw data from file offset 0x0AD8 to 0x2998 (7872 bytes) */
-/* gap sub-block @ 0x0AD8 (was gap+0x0, 8 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8[8] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8.data.inc.c>
+/* sprite array referenced by gap_0x0AD8_sub_0x128.sprites */
+void *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8[6] = {
+	dBonus1CommonImages2_Tex_0x0190,
+	dBonus1CommonImages2_Tex_0x0240,
+	dBonus1CommonImages2_Tex_0x02F0,
+	dBonus1CommonImages2_Tex_0x03A0,
+	dBonus1CommonImages2_Tex_0x0450,
+	dBonus1CommonImages2_Tex_0x0500,
 };
 
-/* u32 pointer array @ 0xAE0 (6 entries) */
-u32 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8[6] = {
-	0x02B90064,
-	0x02BA0090,
-	0x02BB00BC,
-	0x02BC00E8,
-	0x02BD0114,
-	0x02BE0140,
-};
-
-/* u32 pointer array @ 0xAF8 (6 entries) */
-u32 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20[6] = {
-	0x02BF0064,
-	0x02C00090,
-	0x02C100BC,
-	0x02C200E8,
-	0x02C30114,
-	0x074F0140,
+/* sprite array referenced by gap_0x0AD8_sub_0x1A0.sprites — same
+ * shape as sub_0x8. */
+void *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20[6] = {
+	dBonus1CommonImages2_Tex_0x0190,
+	dBonus1CommonImages2_Tex_0x0240,
+	dBonus1CommonImages2_Tex_0x02F0,
+	dBonus1CommonImages2_Tex_0x03A0,
+	dBonus1CommonImages2_Tex_0x0450,
+	dBonus1CommonImages2_Tex_0x0500,
 };
 
 /* MObjSub @ 0xB10 */
@@ -228,7 +246,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dGRBonus2FoxFile2_Layer1MObj_MObjSub + 0x50),
+		(void**)dGRBonus2FoxFile2_Layer1MObj_sprites_A,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
 		0.0f, 0.0f,
@@ -258,7 +276,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dGRBonus2FoxFile2_Layer1MObj_MObjSub + 0x68),
+		(void**)dGRBonus2FoxFile2_Layer1MObj_sprites_B,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
 		0.0f, 0.0f,

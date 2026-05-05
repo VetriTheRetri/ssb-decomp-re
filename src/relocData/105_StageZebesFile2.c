@@ -260,34 +260,13 @@ u8 dStageZebesFile2_Tex_0x2748[1024] = {
 	#include <StageZebesFile2/Tex_0x2748.tex.inc.c>
 };
 
-/* MObjSub: Layer1MObj @ 0x2B48 */
-MObjSub dStageZebesFile2_Layer1MObj_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)(dStageZebesFile2_gap_0x2BC0_sub_0x948),
-		0x0AD7, 0x0D46, 0x0000, 0x0000,
-		0,
-		2.080504218910902e-32f, 2.1190231116722343e-32f,
-		0.0f, 0.0f,
-		0.0f, 2.2056902530432476e-32f,
-		(void**)0x00000000,
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x0AEA0D50,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x00, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x0A, 0xED, 0x0D, 0x52 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0, 183373140,
-		183435566, 183501092,
-	}
+/* @ 0x2B48 (120 bytes) — was misclassified as `MObjSub`; the
+ * bytes are not a regular MObjSub: chain-pointer slots sit in
+ * fields that real MObjSubs use as floats/colors. Kept as raw u8
+ * pending a structural retype. The .reloc still patches every
+ * slot the runtime walks, so semantics match the original. */
+u8 dStageZebesFile2_Layer1MObj_MObjSub[120] = {
+	#include <StageZebesFile2/Layer1MObj_MObjSub.data.inc.c>
 };
 
 /* Raw data from file offset 0x2BC0 to 0x5AC0 (12032 bytes) */

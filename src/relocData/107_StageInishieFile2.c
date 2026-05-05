@@ -172,34 +172,13 @@ u16 dStageInishieFile2_Lut_0x3710_palette[16] = {
 	#include <StageInishieFile2/Lut_0x3710.palette.inc.c>
 };
 
-/* MObjSub: Layer0MObj @ 0x3730 */
-MObjSub dStageInishieFile2_Layer0MObj_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0DCF, 0x0E58, 0x0DD1, 0x0E5A,
-		0,
-		1.3007335878289515e-30f, 0.0f,
-		1.319222703374165e-30f, 0.0f,
-		0.0f, 1.3251789802695556e-30f,
-		(void**)((u8*)dStageInishieFile2_Tex_0x12E8 + 0x5C0),
-		0x0DD9,
-		0x06, 0x8C,
-		0x0DDA,
-		0x06EE, 0x0DDB, 0x0750,
-		1.3559842673458487e-30f, 1.3621376511339851e-30f,
-		1.368310218989927e-30f, 1.3867895544221418e-30f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x02, 0x02 } },
-		0x0D, 0xFF, { 0x0D, 0xD6 },
-		{ { 0x00, 0x20, 0x00, 0x00 } },
-		{ { 0x00, 0x20, 0x00, 0x30 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0, 1065353216,
-		1065353216, 0,
-	}
+/* @ 0x3730 (120 bytes) — was misclassified as `MObjSub`; the
+ * bytes are not a regular MObjSub: chain-pointer slots sit in
+ * fields that real MObjSubs use as floats/colors. Kept as raw u8
+ * pending a structural retype. The .reloc still patches every
+ * slot the runtime walks, so semantics match the original. */
+u8 dStageInishieFile2_Layer0MObj_MObjSub[120] = {
+	#include <StageInishieFile2/Layer0MObj_MObjSub.data.inc.c>
 };
 
 /* Raw data from file offset 0x37A8 to 0x4A48 (4768 bytes) */

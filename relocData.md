@@ -43,6 +43,86 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **Post-DObjDesc zero-pad gaps → `PAD(N);`** across 30 stage / GRBonus
+  / Model / MVOpening files. Many `*File2`-style files had a small
+  `u8 dXxx_gap_0xNNN[N]` block (4/8/12/20 bytes, all-zero in baserom)
+  sitting between a top-level `DObjDesc` array and the next data
+  region — pure alignment padding to the next 16-byte boundary, not
+  meaningful data. Two distinct fixups: (a) replace the `u8` decl
+  with `PAD(N);` so the bytes still emit but the file no longer
+  carries a name for the pad; (b) rewrite `(void*)((u8*)<sym> +
+  0xMMM)` references in DObjDesc / DObjDLLink / similar entries (which
+  used the gap as an arbitrary base for arithmetic into a much later
+  block) to the actual target symbol they index — e.g.
+  `(u8*)dGRBonus1SamusFile2_gap_0x0A58 + 0xA08` →
+  `dGRBonus1SamusFile2_DL_0x1460`. Resolution walks every top-level
+  decl in the file, derives the file offset from its name (`_0xNNN`
+  or `_0xNNN_sub_0xMMM`), and looks up `gap_offset + ref_offset`. 31
+  pads created, 39 base-offset references rewritten across files
+  52, 67, 68, 106, 108, 111, 113, 115, 118, 124–132, 134, 137, 139,
+  141, 143, 145, 147, 149, 309, 320, 328, 330, 344. ROM byte-identical.
+- **MPGeometryData + referenced vertex/line/mapobj typing** across 36 of
+  38 stage / GRBonus collision files. Each file's
+  `dXxx_MPGeometryData_0xNNN` symbol — previously a `u8[28..3340]` raw
+  blob — is now a typed `MPGeometryData` struct initializer pulling its
+  pointer fields from the existing `.reloc` targets (`yakumono_count`,
+  `mapobj_count` decoded from the binary). Seven files needed structural
+  treatment beyond the simple case: 31 had only trailing zero pad
+  (handled with `MPGeometryData = { … }` followed by an implicit
+  alignment pad — IDO 7.1 sizes typed-pointer structs differently from
+  `void*` and aligns the next decl naturally, so explicit `PAD()` after
+  the typed struct corrupts the layout); 5 multi-struct files
+  (107/111/113/115/118) carry trailing DObjDLLink/DL/texture data after
+  the 28-byte header that is referenced by other `Layer*DObj` decls and
+  by extern relocs, and were split into `MPGeometryData header` +
+  `u8 …_trailing[N]` with `.reloc` offsets ≥ 28 retargeted to the
+  trailing symbol (offset rebased by −28); 1 file (104 StagePupupu)
+  stays `u8[28]` because the binary has 0xFFFF in the u16-to-pointer
+  struct padding (which a typed initializer can't reproduce — C zeroes
+  pad bytes) and the pointer fields hold literal sentinels instead of
+  reloc chain values; 1 file (129 GRBonus1Link) stays `u8` because the
+  JP binary has a different MPGeometryData layout (an extra leading u32
+  chain field shifting every field by 4 bytes, plus 4 bytes prepended
+  into the `line_info` and `mapobjs` target blocks) that the shared US
+  `.reloc` and `.jp.reloc` overrides encode independently — a single
+  typed initializer in the shared `.c` can only describe one layout, so
+  the whole sub_0x2454/MPGeometryData region was reverted to raw u8. Then a second pass typed the five blocks each
+  MPGeometryData points to: `vertex_data` → `MPVertexData[N]` (`Vec2h
+  pos + u16 flags`, 6 B), `vertex_id` → flat `u16[N]` (the container
+  wraps a flexible `u16 vertex_id[1]`), `vertex_links` →
+  `MPVertexLinks[N]` (`u16 v1, v2`), `line_info` → `MPLineInfo[N]`
+  (`u16 yakumono_id + MPLineData[4]`, 18 B), `mapobjs` →
+  `MPMapObjData[N]` (`u16 kind + Vec2h pos`, 6 B). Field types worked
+  out from `src/mp/mpcollision.c`'s globals (`gMPCollisionVertexData/
+  IDs/Links/MapObjs`) which receive `gdata->{vertex_data,vertex_id,
+  vertex_links,mapobjs}` directly. The MPGeometryData struct in
+  `src/mp/mptypes.h` keeps its `void*` fields (a brief experiment with
+  typed pointers shrank `sizeof` from 28→26 because IDO derives pointer
+  alignment from the pointed-to type's alignment — typed pointers to
+  2-byte-aligned structs collapse the pad before `mapobjs`); the
+  initializers carry casts at use sites instead. Net: 169 typed
+  declarations / ~22 KB out of u8 in this pass.
+  Also added `MPGeometryData` (0x1C), `MPVertexData` (6), `MPVertexLinks`
+  (4), `MPLineInfo` (18), `MPMapObjData` (6) to
+  `tools/extractRelocInc.py`'s `_SUPPORTED_DECL_TYPES` /
+  `_FIXED_TYPE_SIZES`, plus a 4-byte alignment step in `_process_inline`
+  between non-`pad` decls so the cumulative offset matches IDO's actual
+  placement (without it, MPLineInfo[1] / MPMapObjData[odd-N] blocks
+  produce a 2-byte offset slip that corrupts every later inc.c — caught
+  during the JP build, since US's trailing inc.c was hand-extracted to
+  the right offsets while JP went through the walker fresh). ROM
+  byte-identical for both US and JP.
+- **DL-chain merge for file 127's `gap_0x0000_sub_0x580`**. The block
+  referenced from `dGRBonus1SamusFile2_DLLink_0x0920` was a 5-piece
+  mistype (`u8[8]` + `u16` palette + `u8` data + `u16` palette +
+  `Gfx[5]` tail) covering one logical 256-byte Gfx DL whose head
+  wasn't terminated with `gsSPEndDisplayList` — runtime walks straight
+  through. Merged to one `Gfx[32]` mirroring the symmetric existing
+  `_sub_0x680` merge (relocs at +0x74/+0xA4 to file 121 textures and
+  +0xC4 to internal vertex match exactly). After the fix, audited
+  every `(Gfx*)<sym>` cast and unconditional DObjDLLink target across
+  all 412 relocData `.c` files: every target now declares `Gfx[N]`
+  ending in `gsSPEndDisplayList()`. ROM byte-identical.
 - **`tools/typeRelocBlocks.py` Pass 4 + `tools/promoteMObjSub.py` + `tools/annotateTexBlocks.py`**.
   Three additions: (a) `typeRelocBlocks.py` gained a fourth pass that
   renames `gsDPSetTextureImage → gsDPLoadBlock/Tile` targets to
@@ -273,7 +353,8 @@ Recent round of structural work:
   Iterated to fixpoint with rebuilds between passes. Final counts:
   **1,876 `Gfx[]` arrays** (~656 KB), **3,671 `Vtx[]` arrays** (~616
   KB), **505 u16 palettes** (~24 KB), **566 `u8 Tex_*[]` arrays**
-  (~605 KB with `.tex.inc.c` includes), **927 `PAD()` usages**. ROM
+  (~605 KB with `.tex.inc.c` includes), **1,121 `PAD()` usages** (~9 KB
+  of zeroed gap, including 31 added by the post-DObjDesc pad-gap pass). ROM
   stays byte-identical throughout.
 - **`tools/expandRelocFile.py` correctness fixes**. The Gfx-arg
   resolver now gates on walked chain positions (so `0x0EXXXXXX`
@@ -412,8 +493,12 @@ intent:
 | Bucket | Blocks | Bytes | Files |
 |---|---:|---:|---:|
 | Truly unclassified (`_gap_0x*`, `_data_0x*`, `_data_remainder`, `_mobjsubs_gap`) | 3,115 | ~327 KB | 92 |
-| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 167 | ~351 KB | 82 |
+| Semantically named but still wrapped as `u8 …data.inc.c` (post-DL data, MPGeometryData_*_trailing, JointCmd, MatAnim/AnimJoint `_data` trailers, misc tails) | 167 | ~351 KB | 82 |
 | **Total u8 `.data.inc.c`** | 3,282 | ~678 KB | 104 |
+
+Counts above are pre-MPGeometryData-typing snapshots; the recent
+typing pass (174 typed decls / ~23 KB, see top of "Recent round")
+moved that work out without rerunning the per-file scan.
 
 The semantic bucket dropped from ~450 KB to ~127 KB in an earlier
 round (74 texture-named blocks renamed `.data.inc.c` → `.tex.inc.c`
@@ -500,12 +585,15 @@ tree, not DL content.
 | 107 | StageInishieFile2 | 5,696 | Stage geometry tails. |
 | (70 more files) | — | ~38 KB | Smaller entries. |
 
-These blocks all have semantic names (`*_post`, `*MPGeometryData_*`,
+These blocks all have semantic names (`*_post`, `*MPGeometryData_*_trailing`,
 `*JointCmd_*`, `*HitParties_*`) but still `u8[]` with `.data.inc.c`.
 Unlike the earlier renames (which were straight texture/anim identity
 calls), these need structural typing — e.g. Joint hierarchy parsing,
-MPGeometryData struct layout, per-item HitParty format — rather than
-just a mechanical include rename.
+per-item HitParty format — rather than just a mechanical include
+rename. (`*MPGeometryData_*` blocks themselves are now typed; only the
+`*MPGeometryData_*_trailing` tails on the 5 multi-struct stage files,
+which carry embedded DObjDLLink/DL/texture data after the 28-byte
+header, remain in this bucket pending block splitting.)
 
 Scanner to regenerate the per-file breakdown above:
 

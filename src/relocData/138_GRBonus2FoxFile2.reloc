@@ -35,22 +35,22 @@ intern dGRBonus2FoxFile2_Layer0DObj+0x30 dGRBonus2FoxFile2_DLLink_0x0910
 intern dGRBonus2FoxFile2_Layer0DObj+0x5C dGRBonus2FoxFile2_DLLink_0x0920
 intern dGRBonus2FoxFile2_Layer0DObj+0x88 dGRBonus2FoxFile2_DLLink_0x0930
 intern dGRBonus2FoxFile2_Layer0DObj+0xB4 dGRBonus2FoxFile2_DLLink_0x0940
-intern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x2C 0x0CF0
-intern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x44 0x0CF8
-intern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x48 0x0D00
-intern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x4C 0x0D08
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x50 0x190  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x54 0x240  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x58 0x2F0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x5C 0x3A0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x60 0x450  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x64 0x500  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x68 0x190  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x6C 0x240  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x70 0x2F0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x74 0x3A0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_gap_0x0AD8 0x450  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus2FoxFile2_gap_0x0AD8+0x4 0x500  # -> file 121 (Bonus1CommonImages2)
+intern dGRBonus2FoxFile2_Layer1MObj_data+0x2C dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218
+intern dGRBonus2FoxFile2_Layer1MObj_data+0x44 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x220
+intern dGRBonus2FoxFile2_Layer1MObj_data+0x48 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x228
+intern dGRBonus2FoxFile2_Layer1MObj_data+0x4C dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_A 0x190  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_A+0x4 0x240  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_A+0x8 0x2F0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_A+0xC 0x3A0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_A+0x10 0x450  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_A+0x14 0x500  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_B 0x190  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_B+0x4 0x240  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_B+0x8 0x2F0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_B+0xC 0x3A0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_B+0x10 0x450  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus2FoxFile2_Layer1MObj_sprites_B+0x14 0x500  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8 0x190  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8+0x4 0x240  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8+0x8 0x2F0  # -> file 121 (Bonus1CommonImages2)
@@ -63,8 +63,8 @@ extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20+0x8 0x2F0  # -> file 121 (Bonus1Com
 extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20+0xC 0x3A0  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20+0x10 0x450  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20+0x14 0x500  # -> file 121 (Bonus1CommonImages2)
-intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38+0x4 dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x50
-intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0+0x4 dGRBonus2FoxFile2_Layer1MObj_MObjSub+0x68
+intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38+0x4 dGRBonus2FoxFile2_Layer1MObj_sprites_A
+intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0+0x4 dGRBonus2FoxFile2_Layer1MObj_sprites_B
 intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x128+0x4 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8
 intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1A0+0x4 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20
 intern dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38

@@ -25,34 +25,13 @@ extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[];
 extern u32 dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data[];
 extern AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint[];
 
-/* MObjSub: Layer0MObj @ 0x0 */
-MObjSub dStageYosterFile2_Layer0MObj_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		(void**)0x00000000,
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		1.5613183411599252e-39f, 0.0f,
-		2.112334120704801e-39f, 1.7453508684797035e-39f,
-		0x00140196,
-		{ { 0x00, 0x15, 0x01, 0x54 } },
-		0x01, 0x79, { 0x01, 0x96 },
-		{ { 0x00, 0x00, 0x02, 0x02 } },
-		{ { 0x00, 0x35, 0x00, 0x12 } },
-		{ { 0x00, 0x20, 0x00, 0x00 } },
-		{ { 0x00, 0x20, 0x00, 0x20 } },
-		0, 0,
-		0, 1065353216,
-	}
+/* @ 0x0000 (120 bytes) — was misclassified as `MObjSub`; the
+ * bytes are not a regular MObjSub: chain-pointer slots sit in
+ * fields that real MObjSubs use as floats/colors. Kept as raw u8
+ * pending a structural retype. The .reloc still patches every
+ * slot the runtime walks, so semantics match the original. */
+u8 dStageYosterFile2_Layer0MObj_MObjSub[120] = {
+	#include <StageYosterFile2/Layer0MObj_MObjSub.data.inc.c>
 };
 
 /* Raw data from file offset 0x0078 to 0x0E00 (3464 bytes) */

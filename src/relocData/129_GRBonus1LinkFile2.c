@@ -197,10 +197,7 @@ DObjDesc dGRBonus1LinkFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x0E0C to 0x2378 (5484 bytes) */
-/* gap sub-block @ 0x0E0C (was gap+0x0, 4 bytes) */
-u8 dGRBonus1LinkFile2_gap_0x0E0C[4] = {
-	#include <GRBonus1LinkFile2/gap_0x0E0C.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x0E10 (was gap+0x4, 320 bytes) */
 Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x4[20] = {
@@ -310,39 +307,38 @@ Gfx dGRBonus1LinkFile2_DL_0x1EE8[146] = {
 /* DObjDesc: Layer1DObj @ 0x2378 (5 entries) */
 DObjDesc dGRBonus1LinkFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1LinkFile2_gap_0x0E0C + 0xFA4), { 1783.199951171875f, -1950.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1LinkFile2_gap_0x0E0C + 0x109C), { 1500.0f, 733.2000122070312f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1LinkFile2_gap_0x0E0C + 0x10DC), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1LinkFile2_DL_0x1DB0, { 1783.199951171875f, -1950.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1LinkFile2_DL_0x1EA8, { 1500.0f, 733.2000122070312f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1LinkFile2_DL_0x1EE8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x2454 to 0x26E0 (652 bytes) */
-/* gap sub-block @ 0x2454 (was gap+0x0, 264 bytes) */
+/* Raw data from file offset 0x2454 to 0x26E0 (652 bytes).
+ * Kept as raw u8 wrappers — the JP binary's MPGeometryData section
+ * has an extra leading u32 chain field that shifts every field by 4
+ * bytes, plus 4 leading bytes prepended into sub_0x234/sub_0x26C
+ * (line_info and mapobjs targets); .reloc and .jp.reloc encode the
+ * two layouts. A typed initializer can only describe one of them. */
 u8 dGRBonus1LinkFile2_gap_0x2454[264] = {
 	#include <GRBonus1LinkFile2/gap_0x2454.data.inc.c>
 };
 
-/* gap sub-block @ 0x255C (was gap+0x108, 156 bytes) */
 u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x108[156] = {
 	#include <GRBonus1LinkFile2/gap_0x2454_sub_0x108.data.inc.c>
 };
 
-/* gap sub-block @ 0x25F8 (was gap+0x1A4, 144 bytes) */
 u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4[144] = {
 	#include <GRBonus1LinkFile2/gap_0x2454_sub_0x1A4.data.inc.c>
 };
 
-/* gap sub-block @ 0x2688 (was gap+0x234, 56 bytes) */
 u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x234[56] = {
 	#include <GRBonus1LinkFile2/gap_0x2454_sub_0x234.data.inc.c>
 };
 
-/* gap sub-block @ 0x26C0 (was gap+0x26C, 32 bytes) */
 u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x26C[32] = {
 	#include <GRBonus1LinkFile2/gap_0x2454_sub_0x26C.data.inc.c>
 };
 
-/* Raw data from file offset 0x26E0 to 0x2700 (32 bytes) */
 u8 dGRBonus1LinkFile2_MPGeometryData_0x26E0[32] = {
 	#include <GRBonus1LinkFile2/MPGeometryData_0x26E0.data.inc.c>
 };

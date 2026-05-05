@@ -28,10 +28,10 @@ intern dStageExplainFile2_MPGeometryData_0x0854+0x8 dStageExplainFile2_gap_0x07A
 intern dStageExplainFile2_MPGeometryData_0x0854+0xC dStageExplainFile2_gap_0x07A4_sub_0x74
 intern dStageExplainFile2_MPGeometryData_0x0854+0x10 dStageExplainFile2_gap_0x07A4_sub_0x88
 intern dStageExplainFile2_MPGeometryData_0x0854+0x18 dStageExplainFile2_gap_0x07A4_sub_0x9C
-extern dStageExplainFile2_MPGeometryData_0x0854+0xD0 0x1858  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_MPGeometryData_0x0854+0x100 0x1880  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_MPGeometryData_0x0854+0x120 dStageExplainFile2_MPGeometryData_0x0854+0x1C
-intern dStageExplainFile2_Layer2DObj+0x30 dStageExplainFile2_MPGeometryData_0x0854+0x8C
+extern dStageExplainFile2_MPGeometryData_0x0854_trailing+0xB4 0x1858  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_MPGeometryData_0x0854_trailing+0xE4 0x1880  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_MPGeometryData_0x0854_trailing+0x104 dStageExplainFile2_MPGeometryData_0x0854_trailing
+intern dStageExplainFile2_Layer2DObj+0x30 dStageExplainFile2_MPGeometryData_0x0854_trailing+0x70
 extern dStageExplainFile2_DL_0x0C20+0x44 0x2678  # -> file 103 (StagePupupuImages)
 extern dStageExplainFile2_DL_0x0C20+0x74 0x26A0  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_DL_0x0C20+0x94 dStageExplainFile2_gap_0x0A3C_sub_0x4

@@ -1438,35 +1438,94 @@ u8 dStageZebesFile2_gap_0x5C78[836] = {
 	#include <StageZebesFile2/gap_0x5C78.data.inc.c>
 };
 
-/* gap sub-block @ 0x5FBC (was gap+0x344, 156 bytes) */
-u8 dStageZebesFile2_gap_0x5C78_sub_0x344[156] = {
-	#include <StageZebesFile2/gap_0x5C78_sub_0x344.data.inc.c>
+/* MPVertexData[26] @ 0x5FBC — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dStageZebesFile2_gap_0x5C78_sub_0x344[26] = {
+	{ {    130,   1640 }, 0x4000 },
+	{ {   1148,   1819 }, 0x4000 },
+	{ {   2166,   1999 }, 0x0000 },
+	{ {  -2507,   2341 }, 0x4000 },
+	{ {  -1537,   2341 }, 0x4000 },
+	{ {   -566,   2341 }, 0x0000 },
+	{ {   -268,   3106 }, 0x4000 },
+	{ {    367,   3106 }, 0x4000 },
+	{ {   1003,   3106 }, 0x0000 },
+	{ {  -3210,    557 }, 0x8000 },
+	{ {  -2400,    557 }, 0x8000 },
+	{ {  -2204,    509 }, 0x8000 },
+	{ {  -1438,     51 }, 0x8000 },
+	{ {  -1246,      2 }, 0x8000 },
+	{ {  -1021,      2 }, 0x8000 },
+	{ {   -830,     55 }, 0x8000 },
+	{ {   -533,    251 }, 0x8000 },
+	{ {   -352,    304 }, 0x8000 },
+	{ {    347,    303 }, 0x8000 },
+	{ {    518,    254 }, 0x8000 },
+	{ {   1202,   -177 }, 0x8000 },
+	{ {   1478,   -269 }, 0x8000 },
+	{ {   2242,   -269 }, 0x0000 },
+	{ {   -359,    130 }, 0x4000 },
+	{ {     -2,    130 }, 0x4000 },
+	{ {    355,    130 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x6058 (was gap+0x3E0, 52 bytes) */
-u8 dStageZebesFile2_gap_0x5C78_sub_0x3E0[52] = {
-	#include <StageZebesFile2/gap_0x5C78_sub_0x3E0.data.inc.c>
+/* MPVertexArray (26 IDs) @ 0x6058 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageZebesFile2_gap_0x5C78_sub_0x3E0[26] = {
+	  6,   7,   8,   3,   4,   5,   0,   1,   2,   9,  10,  11,  12,  13,  14,  15,
+	 16,  17,  18,  19,  20,  21,  22,  23,  24,  25,
 };
 
-/* gap sub-block @ 0x608C (was gap+0x414, 20 bytes) */
-u8 dStageZebesFile2_gap_0x5C78_sub_0x414[20] = {
-	#include <StageZebesFile2/gap_0x5C78_sub_0x414.data.inc.c>
+/* MPVertexLinks[5] @ 0x608C — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageZebesFile2_gap_0x5C78_sub_0x414[5] = {
+	{   0, 3 }, {   3, 3 }, {   6, 3 }, {   9, 14 }, {  23, 3 },
 };
 
-/* gap sub-block @ 0x60A0 (was gap+0x428, 36 bytes) */
-u8 dStageZebesFile2_gap_0x5C78_sub_0x428[36] = {
-	#include <StageZebesFile2/gap_0x5C78_sub_0x428.data.inc.c>
+/* MPLineInfo[2] @ 0x60A0 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageZebesFile2_gap_0x5C78_sub_0x428[2] = {
+	{ 1, { {  0,   4}, {  4,   0}, {  4,   0}, {  4,   0} } },
+	{ 2, { {  4,   1}, {  5,   0}, {  5,   0}, {  5,   0} } },
 };
 
-/* gap sub-block @ 0x60C4 (was gap+0x44C, 156 bytes) */
-u8 dStageZebesFile2_gap_0x5C78_sub_0x44C[156] = {
-	#include <StageZebesFile2/gap_0x5C78_sub_0x44C.data.inc.c>
+/* MPMapObjData[26] @ 0x60C4 — map objects (MPGeometryData.mapobjs) */
+MPMapObjData dStageZebesFile2_gap_0x5C78_sub_0x44C[26] = {
+	{  37, {     0,   314 } },
+	{  33, { -2556,   572 } },
+	{  45, {     0,   314 } },
+	{  44, { -2556,   572 } },
+	{  24, { -2556,   572 } },
+	{  25, { -1137,    11 } },
+	{  26, {     0,   314 } },
+	{  27, {  1745,  -261 } },
+	{  28, { -1566,  2351 } },
+	{  29, {   974,  1799 } },
+	{  30, {   341,  3113 } },
+	{  31, {  2987,   503 } },
+	{   4, { -1338,  5100 } },
+	{   4, {   191,  5100 } },
+	{   4, {  1391,  5100 } },
+	{   4, {  2981,  5100 } },
+	{   4, {  1961,  1170 } },
+	{   4, {  -168,  2430 } },
+	{   4, { -2868,  3000 } },
+	{  21, {     0,   314 } },
+	{   0, { -2556,   572 } },
+	{   1, { -1137,    11 } },
+	{   2, {     0,   314 } },
+	{   3, {  1745,  -262 } },
+	{  32, {     0,  4200 } },
+	{  12, {     0, -9000 } },
 };
 
-/* Raw data from file offset 0x6160 to 0x6180 (32 bytes) */
-u8 dStageZebesFile2_MPGeometryData_0x6160[32] = {
-	#include <StageZebesFile2/MPGeometryData_0x6160.data.inc.c>
+/* MPGeometryData @ 0x6160 (28 bytes + 4 bytes pad) */
+MPGeometryData dStageZebesFile2_MPGeometryData_0x6160 = {
+	2,
+	(MPVertexPosContainer*)dStageZebesFile2_gap_0x5C78_sub_0x344,
+	(MPVertexArray*)dStageZebesFile2_gap_0x5C78_sub_0x3E0,
+	dStageZebesFile2_gap_0x5C78_sub_0x414,
+	dStageZebesFile2_gap_0x5C78_sub_0x428,
+	26,
+	(MPMapObjContainer*)dStageZebesFile2_gap_0x5C78_sub_0x44C,
 };
+PAD(4);
 
 /* Raw data from file offset 0x6180 to 0x6410 (656 bytes) */
 /* Script-table split: leading chain-pointer table at the

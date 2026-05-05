@@ -25,10 +25,7 @@ DObjDesc dStageExplainFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x018C to 0x0720 (1428 bytes) */
-/* gap sub-block @ 0x018C (was gap+0x0, 4 bytes) */
-u8 dStageExplainFile2_gap_0x018C[4] = {
-	#include <StageExplainFile2/gap_0x018C.data.inc.c>
-};
+PAD(4);
 
 /* Vtx: gap_0x018C_sub_0x4 @ 0x190 (8 vertices) */
 Vtx dStageExplainFile2_gap_0x018C_sub_0x4[8] = {
@@ -65,7 +62,7 @@ Gfx dStageExplainFile2_gap_0x018C_sub_0x274[100] = {
 /* DObjDesc: Layer1DObj @ 0x720 (3 entries) */
 DObjDesc dStageExplainFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageExplainFile2_gap_0x018C_sub_0x274), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageExplainFile2_gap_0x018C_sub_0x274, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -75,43 +72,55 @@ u8 dStageExplainFile2_gap_0x07A4[80] = {
 	#include <StageExplainFile2/gap_0x07A4.data.inc.c>
 };
 
-/* gap sub-block @ 0x07F4 (was gap+0x50, 36 bytes) */
-u8 dStageExplainFile2_gap_0x07A4_sub_0x50[36] = {
-	#include <StageExplainFile2/gap_0x07A4_sub_0x50.data.inc.c>
+/* MPVertexArray (18 IDs) @ 0x07F4 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageExplainFile2_gap_0x07A4_sub_0x50[18] = {
+	 10,  11,  12,   5,   6,   0,   1,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+	  0,   0,
 };
 
-/* gap sub-block @ 0x0818 (was gap+0x74, 20 bytes) */
-u8 dStageExplainFile2_gap_0x07A4_sub_0x74[20] = {
-	#include <StageExplainFile2/gap_0x07A4_sub_0x74.data.inc.c>
+/* MPVertexLinks[5] @ 0x0818 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageExplainFile2_gap_0x07A4_sub_0x74[5] = {
+	{   0, 3 }, {   3, 2 }, {   5, 2 }, {   7, 5 }, {  12, 5 },
 };
 
-/* gap sub-block @ 0x082C (was gap+0x88, 20 bytes) */
-u8 dStageExplainFile2_gap_0x07A4_sub_0x88[20] = {
-	#include <StageExplainFile2/gap_0x07A4_sub_0x88.data.inc.c>
+/* MPLineInfo[1] @ 0x082C — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageExplainFile2_gap_0x07A4_sub_0x88[1] = {
+	{ 1, { {  0,   2}, {  2,   1}, {  3,   1}, {  4,   1} } },
 };
 
-/* gap sub-block @ 0x0840 (was gap+0x9C, 20 bytes) */
-u8 dStageExplainFile2_gap_0x07A4_sub_0x9C[20] = {
-	#include <StageExplainFile2/gap_0x07A4_sub_0x9C.data.inc.c>
+/* MPMapObjData[3] @ 0x0840 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dStageExplainFile2_gap_0x07A4_sub_0x9C[3] = {
+	{   0, {   660,     0 } },
+	{   1, {  1440,     0 } },
+	{  32, {  1050,  1020 } },
 };
 
-/* Raw data from file offset 0x0854 to 0x09B8 (356 bytes) */
-u8 dStageExplainFile2_MPGeometryData_0x0854[356] = {
-	#include <StageExplainFile2/MPGeometryData_0x0854.data.inc.c>
+/* MPGeometryData @ 0x0854 (28 bytes) */
+MPGeometryData dStageExplainFile2_MPGeometryData_0x0854 = {
+	1,
+	(MPVertexPosContainer*)dStageExplainFile2_gap_0x07A4,
+	(MPVertexArray*)dStageExplainFile2_gap_0x07A4_sub_0x50,
+	dStageExplainFile2_gap_0x07A4_sub_0x74,
+	dStageExplainFile2_gap_0x07A4_sub_0x88,
+	3,
+	(MPMapObjContainer*)dStageExplainFile2_gap_0x07A4_sub_0x9C,
+};
+
+/* Trailing data after MPGeometryData @ 0x0870 (328 bytes) — embedded
+ * DObjDLLink/DL/texture mix; referenced by Layer2DObj+0x30 at +0x70. */
+u8 dStageExplainFile2_MPGeometryData_0x0854_trailing[328] = {
+	#include <StageExplainFile2/MPGeometryData_0x0854_trailing.data.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x9B8 (3 entries) */
 DObjDesc dStageExplainFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageExplainFile2_MPGeometryData_0x0854 + 0x8C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dStageExplainFile2_MPGeometryData_0x0854_trailing + 0x70), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x0A3C to 0x0DD0 (916 bytes) */
-/* gap sub-block @ 0x0A3C (was gap+0x0, 4 bytes) */
-u8 dStageExplainFile2_gap_0x0A3C[4] = {
-	#include <StageExplainFile2/gap_0x0A3C.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x0A40 (was gap+0x4, 256 bytes) */
 Vtx dStageExplainFile2_gap_0x0A3C_sub_0x4[16] = {
@@ -131,7 +140,7 @@ Gfx dStageExplainFile2_DL_0x0C20[54] = {
 /* DObjDesc: Layer3DObj @ 0xDD0 (3 entries) */
 DObjDesc dStageExplainFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageExplainFile2_gap_0x0A3C + 0x1E4), { 0.0f, 0.0f, -49.396202087402344f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageExplainFile2_DL_0x0C20, { 0.0f, 0.0f, -49.396202087402344f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

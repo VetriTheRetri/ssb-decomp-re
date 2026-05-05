@@ -332,35 +332,135 @@ DObjDesc dGRBonus1NessFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x29F0 to 0x2DF8 (1032 bytes) */
-/* gap sub-block @ 0x29F0 (was gap+0x0, 420 bytes) */
-u8 dGRBonus1NessFile2_gap_0x29F0[420] = {
-	#include <GRBonus1NessFile2/gap_0x29F0.data.inc.c>
+/* MPVertexData[70] @ 0x29F0 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dGRBonus1NessFile2_gap_0x29F0[70] = {
+	{ {   4800,  -1500 }, 0x0000 },
+	{ {   4200,  -1500 }, 0x0000 },
+	{ {   4200,  -1200 }, 0x0000 },
+	{ {   4800,  -1200 }, 0x0000 },
+	{ {   4800,    300 }, 0x0000 },
+	{ {   4200,    300 }, 0x0000 },
+	{ {   4200,    600 }, 0x0000 },
+	{ {   4800,    600 }, 0x0000 },
+	{ {   4800,   1800 }, 0x0000 },
+	{ {   3900,   1800 }, 0x0000 },
+	{ {   3900,   2100 }, 0x0000 },
+	{ {   5100,   2100 }, 0x0000 },
+	{ {   5100,  -4200 }, 0x0000 },
+	{ {   4800,  -4200 }, 0x0000 },
+	{ {   6000,  -4200 }, 0x0000 },
+	{ {   5700,  -4200 }, 0x0000 },
+	{ {   5700,   2100 }, 0x0000 },
+	{ {   6000,   2100 }, 0x0000 },
+	{ {   3300,    900 }, 0x4000 },
+	{ {   2400,    900 }, 0x0000 },
+	{ {  -4050,  -4200 }, 0x0000 },
+	{ {  -4950,  -4200 }, 0x0000 },
+	{ {  -4950,  -3000 }, 0x0000 },
+	{ {  -2550,  -3000 }, 0x0000 },
+	{ {  -2550,  -4200 }, 0x0000 },
+	{ {  -3450,  -4200 }, 0x0000 },
+	{ {  -3450,  -3900 }, 0x0000 },
+	{ {  -2850,  -3900 }, 0x0000 },
+	{ {  -2850,  -3300 }, 0x0000 },
+	{ {  -4650,  -3300 }, 0x0000 },
+	{ {  -4650,  -3900 }, 0x0000 },
+	{ {  -4050,  -3900 }, 0x0000 },
+	{ {   1800,  -4200 }, 0x0000 },
+	{ {  -1500,  -4200 }, 0x0000 },
+	{ {  -1500,  -2700 }, 0x0000 },
+	{ {  -1200,  -2700 }, 0x0000 },
+	{ {  -1200,  -3900 }, 0x0000 },
+	{ {   1500,  -3900 }, 0x0000 },
+	{ {   1500,  -3000 }, 0x0000 },
+	{ {   2400,  -3000 }, 0x0000 },
+	{ {   2400,   -900 }, 0x0000 },
+	{ {   3300,   -900 }, 0x0000 },
+	{ {   3300,   1200 }, 0x0000 },
+	{ {   3600,   1200 }, 0x0000 },
+	{ {   3600,   -300 }, 0x0000 },
+	{ {   4200,   -300 }, 0x0000 },
+	{ {   4200,   -600 }, 0x0000 },
+	{ {   3600,   -600 }, 0x0000 },
+	{ {   3600,  -2100 }, 0x0000 },
+	{ {   4200,  -2100 }, 0x0000 },
+	{ {   4200,  -2400 }, 0x0000 },
+	{ {   3300,  -2400 }, 0x0000 },
+	{ {   3300,  -1200 }, 0x0000 },
+	{ {   2700,  -1200 }, 0x0000 },
+	{ {   2700,  -3300 }, 0x0000 },
+	{ {   1800,  -3300 }, 0x0000 },
+	{ {  -3000,    600 }, 0x0000 },
+	{ {  -3300,    600 }, 0x0000 },
+	{ {  -3300,   1500 }, 0x0000 },
+	{ {  -5100,   1500 }, 0x0000 },
+	{ {  -5100,   1800 }, 0x0000 },
+	{ {  -3900,   1800 }, 0x0000 },
+	{ {  -3900,   2700 }, 0x0000 },
+	{ {  -5700,   2700 }, 0x0000 },
+	{ {  -5700,   3000 }, 0x0000 },
+	{ {  -3600,   3000 }, 0x0000 },
+	{ {  -3600,   1800 }, 0x0000 },
+	{ {  -3000,   1800 }, 0x0000 },
+	{ {    449,    150 }, 0x4000 },
+	{ {   -450,    150 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x2B94 (was gap+0x1A4, 272 bytes) */
-u8 dGRBonus1NessFile2_gap_0x29F0_sub_0x1A4[272] = {
-	#include <GRBonus1NessFile2/gap_0x29F0_sub_0x1A4.data.inc.c>
+/* MPVertexArray (136 IDs) @ 0x2B94 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus1NessFile2_gap_0x29F0_sub_0x1A4[136] = {
+	 64,  65,  16,  17,  10,  11,  66,  67,  60,  61,  42,  43,  18,  19,   6,   7,
+	 44,  45,  40,  41,   2,   3,  48,  49,  34,  35,  38,  39,  22,  23,  26,  27,
+	 36,  37,  30,  31,  14,  15,  32,  33,  20,  21,  12,  13,  24,  25,  28,  29,
+	 54,  55,  50,  51,   0,   1,  52,  53,  46,  47,   4,   5,  56,  57,  58,  59,
+	  8,   9,  62,  63,  17,  14,  11,  12,  49,  50,  45,  46,  43,  44,  47,  48,
+	 53,  54,  55,  32,  35,  36,  23,  24,  67,  56,  65,  66,  31,  20,  29,  30,
+	 63,  64,  59,  60,  21,  22,  61,  62,  25,  26,  57,  58,  27,  28,  33,  34,
+	 37,  38,  39,  40,  51,  52,  41,  42,   9,  10,   5,   6,   1,   2,   3,   4,
+	 13,   0,   7,   8,  15,  16,  68,  69,
 };
 
-/* gap sub-block @ 0x2CA4 (was gap+0x2B4, 272 bytes) */
-u8 dGRBonus1NessFile2_gap_0x29F0_sub_0x2B4[272] = {
-	#include <GRBonus1NessFile2/gap_0x29F0_sub_0x2B4.data.inc.c>
+/* MPVertexLinks[68] @ 0x2CA4 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus1NessFile2_gap_0x29F0_sub_0x2B4[68] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 }, {  14, 2 }, {  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 2 },
+	{  24, 2 }, {  26, 2 }, {  28, 2 }, {  30, 2 }, {  32, 2 }, {  34, 2 },
+	{  36, 2 }, {  38, 2 }, {  40, 2 }, {  42, 2 }, {  44, 2 }, {  46, 2 },
+	{  48, 2 }, {  50, 2 }, {  52, 2 }, {  54, 2 }, {  56, 2 }, {  58, 2 },
+	{  60, 2 }, {  62, 2 }, {  64, 2 }, {  66, 2 }, {  68, 2 }, {  70, 2 },
+	{  72, 2 }, {  74, 2 }, {  76, 2 }, {  78, 2 }, {  80, 2 }, {  82, 2 },
+	{  84, 2 }, {  86, 2 }, {  88, 2 }, {  90, 2 }, {  92, 2 }, {  94, 2 },
+	{  96, 2 }, {  98, 2 }, { 100, 2 }, { 102, 2 }, { 104, 2 }, { 106, 2 },
+	{ 108, 2 }, { 110, 2 }, { 112, 2 }, { 114, 2 }, { 116, 2 }, { 118, 2 },
+	{ 120, 2 }, { 122, 2 }, { 124, 2 }, { 126, 2 }, { 128, 2 }, { 130, 2 },
+	{ 132, 2 }, { 134, 2 },
 };
 
-/* gap sub-block @ 0x2DB4 (was gap+0x3C4, 36 bytes) */
-u8 dGRBonus1NessFile2_gap_0x29F0_sub_0x3C4[36] = {
-	#include <GRBonus1NessFile2/gap_0x29F0_sub_0x3C4.data.inc.c>
+/* MPLineInfo[2] @ 0x2DB4 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus1NessFile2_gap_0x29F0_sub_0x3C4[2] = {
+	{ 1, { {  0,  18}, { 18,  16}, { 34,  14}, { 48,  19} } },
+	{ 2, { { 67,   1}, { 68,   0}, { 68,   0}, { 68,   0} } },
 };
 
-/* gap sub-block @ 0x2DD8 (was gap+0x3E8, 32 bytes) */
-u8 dGRBonus1NessFile2_gap_0x29F0_sub_0x3E8[32] = {
-	#include <GRBonus1NessFile2/gap_0x29F0_sub_0x3E8.data.inc.c>
+/* MPMapObjData[5] @ 0x2DD8 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus1NessFile2_gap_0x29F0_sub_0x3E8[5] = {
+	{  33, {   149, -3896 } },
+	{   0, {   149, -3896 } },
+	{   1, {  -750, -3896 } },
+	{   2, {  1049, -3896 } },
+	{   3, { -3750, -2996 } },
 };
 
-/* Raw data from file offset 0x2DF8 to 0x2E20 (40 bytes) */
-u8 dGRBonus1NessFile2_MPGeometryData_0x2DF8[40] = {
-	#include <GRBonus1NessFile2/MPGeometryData_0x2DF8.data.inc.c>
+/* MPGeometryData @ 0x2DF8 (28 bytes + 12 bytes pad) */
+MPGeometryData dGRBonus1NessFile2_MPGeometryData_0x2DF8 = {
+	2,
+	(MPVertexPosContainer*)dGRBonus1NessFile2_gap_0x29F0,
+	(MPVertexArray*)dGRBonus1NessFile2_gap_0x29F0_sub_0x1A4,
+	dGRBonus1NessFile2_gap_0x29F0_sub_0x2B4,
+	dGRBonus1NessFile2_gap_0x29F0_sub_0x3C4,
+	5,
+	(MPMapObjContainer*)dGRBonus1NessFile2_gap_0x29F0_sub_0x3E8,
 };
+PAD(12);
 
 /* Raw data from file offset 0x2E20 to 0x30D0 (688 bytes) */
 u32 dGRBonus1NessFile2_Layer1Anim_AnimJoint[172] = {

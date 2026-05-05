@@ -145,10 +145,7 @@ DObjDesc dGRBonus1DonkeyFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x091C to 0x1F20 (5636 bytes) */
-/* gap sub-block @ 0x091C (was gap+0x0, 4 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x091C[4] = {
-	#include <GRBonus1DonkeyFile2/gap_0x091C.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x0920 (was gap+0x4, 512 bytes) */
 Vtx dGRBonus1DonkeyFile2_gap_0x091C_sub_0x4[32] = {
@@ -238,42 +235,87 @@ Gfx dGRBonus1DonkeyFile2_DL_0x1E68[23] = {
 /* DObjDesc: Layer1DObj @ 0x1F20 (5 entries) */
 DObjDesc dGRBonus1DonkeyFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1DonkeyFile2_gap_0x091C + 0x1054), { 0.0f, 0.0f, 1.1000000085914508e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1DonkeyFile2_gap_0x091C + 0x14A4), { -1500.0f, 1200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1DonkeyFile2_gap_0x091C + 0x154C), { 2250.0f, 3900.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1DonkeyFile2_DL_0x1970, { 0.0f, 0.0f, 1.1000000085914508e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1DonkeyFile2_DL_0x1DC0, { -1500.0f, 1200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1DonkeyFile2_DL_0x1E68, { 2250.0f, 3900.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x1FFC to 0x21B8 (444 bytes) */
-/* gap sub-block @ 0x1FFC (was gap+0x0, 168 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x1FFC[168] = {
-	#include <GRBonus1DonkeyFile2/gap_0x1FFC.data.inc.c>
+/* MPVertexData[28] @ 0x1FFC — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dGRBonus1DonkeyFile2_gap_0x1FFC[28] = {
+	{ {  -3900,   2850 }, 0x0000 },
+	{ {  -1800,   2850 }, 0x0000 },
+	{ {  -1800,   2550 }, 0x0000 },
+	{ {  -3900,   2550 }, 0x0000 },
+	{ {  -3900,   2850 }, 0x0000 },
+	{ {  -3900,   3750 }, 0x0000 },
+	{ {  -2700,   3750 }, 0x0000 },
+	{ {  -2700,   2850 }, 0x0000 },
+	{ {   1200,   -900 }, 0x0000 },
+	{ {  -3000,   -900 }, 0x0000 },
+	{ {  -3000,    300 }, 0x0000 },
+	{ {  -3600,    300 }, 0x0000 },
+	{ {  -3600,    600 }, 0x0000 },
+	{ {  -2700,    600 }, 0x0000 },
+	{ {  -2700,   -600 }, 0x0000 },
+	{ {    900,   -600 }, 0x0000 },
+	{ {    900,    900 }, 0x0000 },
+	{ {   1200,    900 }, 0x0000 },
+	{ {  -1800,   5400 }, 0x4000 },
+	{ {  -2700,   5400 }, 0x0000 },
+	{ {   4200,   2700 }, 0x4000 },
+	{ {   3300,   2700 }, 0x0000 },
+	{ {    600,    300 }, 0x4000 },
+	{ {   -600,    300 }, 0x0000 },
+	{ {    139,  -1500 }, 0x0000 },
+	{ {   -155,  -1500 }, 0x0000 },
+	{ {   -150,    300 }, 0x0000 },
+	{ {    150,    300 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x20A4 (was gap+0xA8, 96 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0xA8[96] = {
-	#include <GRBonus1DonkeyFile2/gap_0x1FFC_sub_0xA8.data.inc.c>
+/* MPVertexArray (48 IDs) @ 0x20A4 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0xA8[48] = {
+	 18,  19,   5,   6,   0,   1,  20,  21,  16,  17,  12,  13,  14,  15,   8,   9,
+	 10,  11,   2,   3,  17,   8,   1,   2,   6,   7,  13,  14,   3,   4,   5,  11,
+	 12,   9,  10,  15,  16,  22,  23,  26,  27,  24,  25,  27,  24,  25,  26,   0,
 };
 
-/* gap sub-block @ 0x2104 (was gap+0x108, 92 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x108[92] = {
-	#include <GRBonus1DonkeyFile2/gap_0x1FFC_sub_0x108.data.inc.c>
+/* MPVertexLinks[23] @ 0x2104 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x108[23] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 }, {  14, 2 }, {  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 2 },
+	{  24, 2 }, {  26, 2 }, {  28, 3 }, {  31, 2 }, {  33, 2 }, {  35, 2 },
+	{  37, 2 }, {  39, 2 }, {  41, 2 }, {  43, 2 }, {  45, 2 },
 };
 
-/* gap sub-block @ 0x2160 (was gap+0x164, 56 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x164[56] = {
-	#include <GRBonus1DonkeyFile2/gap_0x1FFC_sub_0x164.data.inc.c>
+/* MPLineInfo[3] @ 0x2160 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x164[3] = {
+	{ 1, { {  0,   7}, {  7,   3}, { 10,   4}, { 14,   4} } },
+	{ 2, { { 18,   1}, { 19,   0}, { 19,   0}, { 19,   0} } },
+	{ 3, { { 19,   1}, { 20,   1}, { 21,   1}, { 22,   1} } },
 };
 
-/* gap sub-block @ 0x2198 (was gap+0x19C, 32 bytes) */
-u8 dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x19C[32] = {
-	#include <GRBonus1DonkeyFile2/gap_0x1FFC_sub_0x19C.data.inc.c>
+/* MPMapObjData[5] @ 0x2198 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x19C[5] = {
+	{  33, {  -600,  -597 } },
+	{   0, {  -600,  -597 } },
+	{   1, {   150,  -597 } },
+	{   2, { -2100,  -597 } },
+	{   3, { -1350,  -597 } },
 };
 
-/* Raw data from file offset 0x21B8 to 0x21E0 (40 bytes) */
-u8 dGRBonus1DonkeyFile2_MPGeometryData_0x21B8[40] = {
-	#include <GRBonus1DonkeyFile2/MPGeometryData_0x21B8.data.inc.c>
+/* MPGeometryData @ 0x21B8 (28 bytes + 12 bytes pad) */
+MPGeometryData dGRBonus1DonkeyFile2_MPGeometryData_0x21B8 = {
+	3,
+	(MPVertexPosContainer*)dGRBonus1DonkeyFile2_gap_0x1FFC,
+	(MPVertexArray*)dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0xA8,
+	dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x108,
+	dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x164,
+	5,
+	(MPMapObjContainer*)dGRBonus1DonkeyFile2_gap_0x1FFC_sub_0x19C,
 };
+PAD(12);
 
 /* Raw data from file offset 0x21E0 to 0x24B0 (720 bytes) */
 u32 dGRBonus1DonkeyFile2_Layer1Anim_AnimJoint[180] = {

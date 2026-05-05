@@ -4,9 +4,9 @@
 extern dGRBonus1SamusFile2_DL_0x0480+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus1SamusFile2_DL_0x0480+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_DL_0x0480+0xC4 dGRBonus1SamusFile2_gap_0x0000
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8+0x4C 0x6E0  # -> file 121 (Bonus1CommonImages2)
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8+0x7C 0x6F0  # -> file 121 (Bonus1CommonImages2)
-intern dGRBonus1SamusFile2_gap_0x0000_sub_0x630+0x14 dGRBonus1SamusFile2_gap_0x0000
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x580+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x580+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
+intern dGRBonus1SamusFile2_gap_0x0000_sub_0x580+0xC4 dGRBonus1SamusFile2_gap_0x0000
 extern dGRBonus1SamusFile2_gap_0x0000_sub_0x680+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
 extern dGRBonus1SamusFile2_gap_0x0000_sub_0x680+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0000_sub_0x680+0xC4 dGRBonus1SamusFile2_gap_0x0000

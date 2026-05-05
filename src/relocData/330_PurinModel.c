@@ -1411,10 +1411,7 @@ DObjDesc dPurinModel_JointTree_0x5BB0[] = {
 };
 
 /* Raw data from file offset 0x6028 to 0x6948 (2336 bytes) */
-/* gap sub-block @ 0x6028 (was gap+0x0, 8 bytes) */
-u8 dPurinModel_gap_0x6028[8] = {
-	#include <PurinModel/gap_0x6028.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x6030 (was gap+0x8, 80 bytes) */
 Vtx dPurinModel_gap_0x6028_sub_0x8[5] = {

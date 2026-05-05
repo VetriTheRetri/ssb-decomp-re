@@ -104,13 +104,13 @@ intern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x8 dStageYosterSmallFile2_g
 intern dStageYosterSmallFile2_MPGeometryData_0x39F0+0xC dStageYosterSmallFile2_gap_0x3874_sub_0x84
 intern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x10 dStageYosterSmallFile2_gap_0x3874_sub_0xA0
 intern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x18 dStageYosterSmallFile2_gap_0x3874_sub_0xB4
-extern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x1A4 0x178  # -> file 110 (StageYosterImages)
-extern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x1D4 0xBD0  # -> file 110 (StageYosterImages)
-intern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x1F4 dStageYosterSmallFile2_MPGeometryData_0x39F0+0x20
-extern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x234 0x8  # -> file 110 (StageYosterImages)
-extern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x25C 0xA0  # -> file 110 (StageYosterImages)
-intern dStageYosterSmallFile2_MPGeometryData_0x39F0+0x27C dStageYosterSmallFile2_MPGeometryData_0x39F0+0xE0
-intern dStageYosterSmallFile2_Layer2DObj+0x30 dStageYosterSmallFile2_MPGeometryData_0x39F0+0x160
+extern dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x188 0x178  # -> file 110 (StageYosterImages)
+extern dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x1B8 0xBD0  # -> file 110 (StageYosterImages)
+intern dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x1D8 dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x4
+extern dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x218 0x8  # -> file 110 (StageYosterImages)
+extern dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x240 0xA0  # -> file 110 (StageYosterImages)
+intern dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x260 dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0xC4
+intern dStageYosterSmallFile2_Layer2DObj+0x30 dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing+0x144
 intern dStageYosterSmallFile2_DL_0x4120+0x2C dStageYosterSmallFile2_DL_0x4158
 extern dStageYosterSmallFile2_DL_0x4158+0x3C 0x1F0  # -> file 110 (StageYosterImages)
 extern dStageYosterSmallFile2_DL_0x4158+0x6C 0x2C8  # -> file 110 (StageYosterImages)

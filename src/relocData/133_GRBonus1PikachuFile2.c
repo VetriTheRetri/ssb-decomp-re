@@ -270,35 +270,116 @@ DObjDesc dGRBonus1PikachuFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x2708 to 0x2A10 (776 bytes) */
-/* gap sub-block @ 0x2708 (was gap+0x0, 348 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x2708[348] = {
-	#include <GRBonus1PikachuFile2/gap_0x2708.data.inc.c>
+/* MPVertexData[58] @ 0x2708 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dGRBonus1PikachuFile2_gap_0x2708[58] = {
+	{ {  -4200,      0 }, 0x0000 },
+	{ {  -5100,      0 }, 0x0000 },
+	{ {  -5100,    300 }, 0x0000 },
+	{ {  -4200,    300 }, 0x0000 },
+	{ {   3900,    300 }, 0x0000 },
+	{ {   3600,    300 }, 0x0000 },
+	{ {   3600,   3900 }, 0x0000 },
+	{ {   3600,   4200 }, 0x0000 },
+	{ {   3900,   4200 }, 0x0000 },
+	{ {   3900,   3900 }, 0x0000 },
+	{ {    600,   -900 }, 0x0000 },
+	{ {   -600,   -900 }, 0x0000 },
+	{ {   -600,   3300 }, 0x0000 },
+	{ {   -300,   3300 }, 0x0000 },
+	{ {   -300,   -600 }, 0x0000 },
+	{ {    300,   -600 }, 0x0000 },
+	{ {    300,   3300 }, 0x0000 },
+	{ {    600,   3300 }, 0x0000 },
+	{ {    600,   1200 }, 0x0000 },
+	{ {   1500,   1200 }, 0x0000 },
+	{ {   1500,    900 }, 0x0000 },
+	{ {    600,    900 }, 0x0000 },
+	{ {   1050,  -5700 }, 0x0000 },
+	{ {  -2700,  -5700 }, 0x0000 },
+	{ {  -2700,  -3300 }, 0x0000 },
+	{ {  -2700,      0 }, 0x0000 },
+	{ {  -3600,      0 }, 0x0000 },
+	{ {  -3600,    300 }, 0x0000 },
+	{ {  -2400,    300 }, 0x0000 },
+	{ {  -2400,      0 }, 0x0000 },
+	{ {  -2400,  -3000 }, 0x0000 },
+	{ {  -1800,  -3000 }, 0x0000 },
+	{ {   -300,  -2700 }, 0x0000 },
+	{ {    300,  -2700 }, 0x0000 },
+	{ {   1800,  -3000 }, 0x0000 },
+	{ {   2400,  -3000 }, 0x0000 },
+	{ {   2700,  -3300 }, 0x0000 },
+	{ {   2700,  -3900 }, 0x0000 },
+	{ {   3600,  -2700 }, 0x0000 },
+	{ {   3600,  -3300 }, 0x0000 },
+	{ {   3900,  -3300 }, 0x0000 },
+	{ {   3900,  -2700 }, 0x0000 },
+	{ {   3000,  -1800 }, 0x0000 },
+	{ {   3000,   1200 }, 0x0000 },
+	{ {   3000,   1500 }, 0x0000 },
+	{ {   2700,   1500 }, 0x0000 },
+	{ {   2400,   1500 }, 0x0000 },
+	{ {   2400,   1200 }, 0x0000 },
+	{ {   2700,   1200 }, 0x0000 },
+	{ {   2700,  -1800 }, 0x0000 },
+	{ {   1800,   3450 }, 0x4000 },
+	{ {   1200,   3450 }, 0x0000 },
+	{ {  -2400,   3600 }, 0x0000 },
+	{ {  -3000,   3600 }, 0x0000 },
+	{ {  -3000,   3900 }, 0x0000 },
+	{ {  -2400,   3900 }, 0x0000 },
+	{ {    450,    150 }, 0x4000 },
+	{ {   -450,    150 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x2864 (was gap+0x15C, 196 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x2708_sub_0x15C[196] = {
-	#include <GRBonus1PikachuFile2/gap_0x2708_sub_0x15C.data.inc.c>
+/* MPVertexArray (98 IDs) @ 0x2864 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus1PikachuFile2_gap_0x2708_sub_0x15C[98] = {
+	  7,   8,  54,  55,  50,  51,  12,  13,  16,  17,  44,  45,  46,  18,  19,  27,
+	 28,   2,   3,  14,  15,  30,  31,  32,  33,  34,  35,  22,  23,  39,  40,  10,
+	 11,   0,   1,  25,  26,   4,   5,  20,  21,  47,  48,  52,  53,   8,   9,   4,
+	 40,  41,  42,  43,  44,  35,  36,  37,  22,  19,  20,  21,  10,  17,  18,  13,
+	 14,  28,  29,  30,  55,  52,   3,   0,   1,   2,  26,  27,  53,  54,  23,  24,
+	 25,  11,  12,  15,  16,  46,  47,  48,  49,  38,  38,  39,   5,   6,   7,  56,
+	 57,   0,
 };
 
-/* gap sub-block @ 0x2928 (was gap+0x220, 164 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x2708_sub_0x220[164] = {
-	#include <GRBonus1PikachuFile2/gap_0x2708_sub_0x220.data.inc.c>
+/* MPVertexLinks[41] @ 0x2928 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus1PikachuFile2_gap_0x2708_sub_0x220[41] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 3 },
+	{  13, 2 }, {  15, 2 }, {  17, 2 }, {  19, 2 }, {  21, 6 }, {  27, 2 },
+	{  29, 2 }, {  31, 2 }, {  33, 2 }, {  35, 2 }, {  37, 2 }, {  39, 2 },
+	{  41, 2 }, {  43, 2 }, {  45, 3 }, {  48, 5 }, {  53, 4 }, {  57, 2 },
+	{  59, 2 }, {  61, 2 }, {  63, 2 }, {  65, 3 }, {  68, 2 }, {  70, 2 },
+	{  72, 2 }, {  74, 2 }, {  76, 2 }, {  78, 3 }, {  81, 2 }, {  83, 2 },
+	{  85, 2 }, {  87, 3 }, {  90, 2 }, {  92, 3 }, {  95, 2 },
 };
 
-/* gap sub-block @ 0x29CC (was gap+0x2C4, 36 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x2708_sub_0x2C4[36] = {
-	#include <GRBonus1PikachuFile2/gap_0x2708_sub_0x2C4.data.inc.c>
+/* MPLineInfo[2] @ 0x29CC — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus1PikachuFile2_gap_0x2708_sub_0x2C4[2] = {
+	{ 1, { {  0,  11}, { 11,   9}, { 20,  10}, { 30,  10} } },
+	{ 2, { { 40,   1}, { 41,   0}, { 41,   0}, { 41,   0} } },
 };
 
-/* gap sub-block @ 0x29F0 (was gap+0x2E8, 32 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x2708_sub_0x2E8[32] = {
-	#include <GRBonus1PikachuFile2/gap_0x2708_sub_0x2E8.data.inc.c>
+/* MPMapObjData[5] @ 0x29F0 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus1PikachuFile2_gap_0x2708_sub_0x2E8[5] = {
+	{  33, {     0, -2697 } },
+	{   0, {     0, -2697 } },
+	{   1, {  1950, -2997 } },
+	{   2, {  2250, -2997 } },
+	{   3, { -2100, -2997 } },
 };
 
-/* Raw data from file offset 0x2A10 to 0x2A30 (32 bytes) */
-u8 dGRBonus1PikachuFile2_MPGeometryData_0x2A10[32] = {
-	#include <GRBonus1PikachuFile2/MPGeometryData_0x2A10.data.inc.c>
+/* MPGeometryData @ 0x2A10 (28 bytes + 4 bytes pad) */
+MPGeometryData dGRBonus1PikachuFile2_MPGeometryData_0x2A10 = {
+	2,
+	(MPVertexPosContainer*)dGRBonus1PikachuFile2_gap_0x2708,
+	(MPVertexArray*)dGRBonus1PikachuFile2_gap_0x2708_sub_0x15C,
+	dGRBonus1PikachuFile2_gap_0x2708_sub_0x220,
+	dGRBonus1PikachuFile2_gap_0x2708_sub_0x2C4,
+	5,
+	(MPMapObjContainer*)dGRBonus1PikachuFile2_gap_0x2708_sub_0x2E8,
 };
+PAD(4);
 
 /* Raw data from file offset 0x2A30 to 0x2CE0 (688 bytes) */
 u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {

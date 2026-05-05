@@ -301,35 +301,133 @@ DObjDesc dGRBonus2SamusFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x2044 to 0x2460 (1052 bytes) */
-/* gap sub-block @ 0x2044 (was gap+0x0, 360 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x2044[360] = {
-	#include <GRBonus2SamusFile2/gap_0x2044.data.inc.c>
+/* MPVertexData[60] @ 0x2044 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dGRBonus2SamusFile2_gap_0x2044[60] = {
+	{ {   -750,      0 }, 0x000E },
+	{ {    750,      0 }, 0x0000 },
+	{ {   -750,      0 }, 0x000E },
+	{ {    750,      0 }, 0x0000 },
+	{ {   -750,      0 }, 0x000E },
+	{ {    750,      0 }, 0x0000 },
+	{ {   -750,      0 }, 0x000E },
+	{ {    750,      0 }, 0x0000 },
+	{ {   -750,      0 }, 0x000E },
+	{ {    750,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x000E },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x000E },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x000E },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -345,      0 }, 0x000E },
+	{ {    345,      0 }, 0x0000 },
+	{ {   -345,      0 }, 0x000E },
+	{ {    345,      0 }, 0x0000 },
+	{ {  -4500,  -4800 }, 0x0000 },
+	{ {   -300,  -4800 }, 0x0000 },
+	{ {    300,  -4200 }, 0x0000 },
+	{ {    300,  -3000 }, 0x0000 },
+	{ {  -3300,  -3000 }, 0x0000 },
+	{ {  -3300,  -1800 }, 0x0000 },
+	{ {    300,  -1800 }, 0x0000 },
+	{ {    300,   2700 }, 0x0000 },
+	{ {   -300,   2700 }, 0x0000 },
+	{ {   -300,   2400 }, 0x0000 },
+	{ {      0,   2400 }, 0x0000 },
+	{ {      0,  -1200 }, 0x0000 },
+	{ {  -1800,  -1200 }, 0x0000 },
+	{ {  -1800,  -1500 }, 0x0000 },
+	{ {  -3300,  -1500 }, 0x0000 },
+	{ {  -3300,    900 }, 0x0000 },
+	{ {  -5100,    900 }, 0x0000 },
+	{ {  -5100,  -4200 }, 0x0000 },
+	{ {   -899,      0 }, 0x0000 },
+	{ {  -1799,      0 }, 0x0000 },
+	{ {  -1799,    900 }, 0x0000 },
+	{ {   -899,    900 }, 0x0000 },
+	{ {  -1799,    750 }, 0x0000 },
+	{ {  -3299,    750 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
+	{ {    450,      0 }, 0x0000 },
+	{ {   -450,      0 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x21AC (was gap+0x168, 160 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x2044_sub_0x168[160] = {
-	#include <GRBonus2SamusFile2/gap_0x2044_sub_0x168.data.inc.c>
+/* MPVertexArray (80 IDs) @ 0x21AC — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus2SamusFile2_gap_0x2044_sub_0x168[80] = {
+	  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,
+	 16,  17,  18,  19,  27,  28,  35,  36,  40,  41,  42,  43,  31,  32,  33,  34,
+	 23,  24,  20,  21,  25,  26,  38,  39,  29,  30,  26,  27,  21,  22,  23,  41,
+	 38,  34,  35,  24,  25,  36,  37,  20,  32,  33,  39,  40,  28,  29,  30,  31,
+	 44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,
 };
 
-/* gap sub-block @ 0x224C (was gap+0x208, 156 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x2044_sub_0x208[156] = {
-	#include <GRBonus2SamusFile2/gap_0x2044_sub_0x208.data.inc.c>
+/* MPVertexLinks[39] @ 0x224C — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus2SamusFile2_gap_0x2044_sub_0x208[39] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 }, {  14, 2 }, {  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 2 },
+	{  24, 2 }, {  26, 2 }, {  28, 2 }, {  30, 2 }, {  32, 2 }, {  34, 2 },
+	{  36, 2 }, {  38, 2 }, {  40, 2 }, {  42, 2 }, {  44, 3 }, {  47, 2 },
+	{  49, 2 }, {  51, 2 }, {  53, 3 }, {  56, 2 }, {  58, 2 }, {  60, 2 },
+	{  62, 2 }, {  64, 2 }, {  66, 2 }, {  68, 2 }, {  70, 2 }, {  72, 2 },
+	{  74, 2 }, {  76, 2 }, {  78, 2 },
 };
 
-/* gap sub-block @ 0x22E8 (was gap+0x2A4, 344 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x2044_sub_0x2A4[344] = {
-	#include <GRBonus2SamusFile2/gap_0x2044_sub_0x2A4.data.inc.c>
+/* MPLineInfo[19] @ 0x22E8 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus2SamusFile2_gap_0x2044_sub_0x2A4[19] = {
+	{ 1, { {  0,   1}, {  1,   0}, {  1,   0}, {  1,   0} } },
+	{ 2, { {  1,   1}, {  2,   0}, {  2,   0}, {  2,   0} } },
+	{ 3, { {  2,   1}, {  3,   0}, {  3,   0}, {  3,   0} } },
+	{ 4, { {  3,   1}, {  4,   0}, {  4,   0}, {  4,   0} } },
+	{ 5, { {  4,   1}, {  5,   0}, {  5,   0}, {  5,   0} } },
+	{ 6, { {  5,   1}, {  6,   0}, {  6,   0}, {  6,   0} } },
+	{ 7, { {  6,   1}, {  7,   0}, {  7,   0}, {  7,   0} } },
+	{ 8, { {  7,   1}, {  8,   0}, {  8,   0}, {  8,   0} } },
+	{ 9, { {  8,   1}, {  9,   0}, {  9,   0}, {  9,   0} } },
+	{ 10, { {  9,   1}, { 10,   0}, { 10,   0}, { 10,   0} } },
+	{ 11, { { 10,   7}, { 17,   4}, { 21,   5}, { 26,   5} } },
+	{ 12, { { 31,   1}, { 32,   0}, { 32,   0}, { 32,   0} } },
+	{ 13, { { 32,   1}, { 33,   0}, { 33,   0}, { 33,   0} } },
+	{ 14, { { 33,   1}, { 34,   0}, { 34,   0}, { 34,   0} } },
+	{ 15, { { 34,   1}, { 35,   0}, { 35,   0}, { 35,   0} } },
+	{ 16, { { 35,   1}, { 36,   0}, { 36,   0}, { 36,   0} } },
+	{ 17, { { 36,   1}, { 37,   0}, { 37,   0}, { 37,   0} } },
+	{ 18, { { 37,   1}, { 38,   0}, { 38,   0}, { 38,   0} } },
+	{ 19, { { 38,   1}, { 39,   0}, { 39,   0}, { 39,   0} } },
 };
 
-/* gap sub-block @ 0x2440 (was gap+0x3FC, 32 bytes) */
-u8 dGRBonus2SamusFile2_gap_0x2044_sub_0x3FC[32] = {
-	#include <GRBonus2SamusFile2/gap_0x2044_sub_0x3FC.data.inc.c>
+/* MPMapObjData[5] @ 0x2440 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus2SamusFile2_gap_0x2044_sub_0x3FC[5] = {
+	{  33, { -1950, -3000 } },
+	{   0, { -1950, -3000 } },
+	{   1, { -2700, -3000 } },
+	{   2, {  -300, -3000 } },
+	{   3, { -1050, -3000 } },
 };
 
-/* Raw data from file offset 0x2460 to 0x2480 (32 bytes) */
-u8 dGRBonus2SamusFile2_MPGeometryData_0x2460[32] = {
-	#include <GRBonus2SamusFile2/MPGeometryData_0x2460.data.inc.c>
+/* MPGeometryData @ 0x2460 (28 bytes + 4 bytes pad) */
+MPGeometryData dGRBonus2SamusFile2_MPGeometryData_0x2460 = {
+	19,
+	(MPVertexPosContainer*)dGRBonus2SamusFile2_gap_0x2044,
+	(MPVertexArray*)dGRBonus2SamusFile2_gap_0x2044_sub_0x168,
+	dGRBonus2SamusFile2_gap_0x2044_sub_0x208,
+	dGRBonus2SamusFile2_gap_0x2044_sub_0x2A4,
+	5,
+	(MPMapObjContainer*)dGRBonus2SamusFile2_gap_0x2044_sub_0x3FC,
 };
+PAD(4);
 
 /* Raw data from file offset 0x2480 to 0x29F0 (1392 bytes) */
 u32 dGRBonus2SamusFile2_Layer1Anim_AnimJoint[348] = {

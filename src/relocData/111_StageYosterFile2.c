@@ -246,21 +246,21 @@ DObjDesc dStageYosterFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0001140000022132881f, 0.0f, 0.0001140000022132881f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0x4E0), { 887.4002075195312f, 1080.0f, -1799.9998779296875f }, { 0.0f, 0.0f, 6.283185005187988f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0x5A0), { -1500.0003662109375f, 60.00001525878906f, -1584.0010986328125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageYosterFile2_gap_0x0078_sub_0x5C8), { 0.0f, 0.0f, 0.0001720000000204891f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterFile2_gap_0x0078_sub_0x5C8, { 0.0f, 0.0f, 0.0001720000000204891f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0x828), { 138.6901092529297f, 903.6001586914062f, -933.5997924804688f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageYosterFile2_gap_0x0078_sub_0x8C0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterFile2_gap_0x0078_sub_0x8C0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xA18), { 41.6071662902832f, 289.7127380371094f, -837.2098999023438f }, { 0.0f, 0.0f, 2.967060089111328f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xA98), { 664.7279052734375f, 441.3717346191406f, -837.2098999023438f }, { 0.0f, 0.0f, 3.9269909858703613f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xAB8), { -462.7022399902344f, 511.9356994628906f, -837.2099609375f }, { 0.0f, 0.0f, 2.356194019317627f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xAE0), { 788.2991943359375f, 950.05029296875f, -837.2099609375f }, { 0.0f, 0.0f, 4.71238899230957f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xB00), { -531.4540405273438f, 950.05029296875f, -837.2099609375f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xB20), { 664.7279052734375f, 1409.700927734375f, -837.2099609375f }, { 0.0f, 0.0f, 5.497786998748779f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageYosterFile2_gap_0x0078_sub_0xB40), { -445.2885437011719f, 1414.822265625f, -837.2099609375f }, { 0.0f, 0.0f, 0.785398006439209f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageYosterFile2_gap_0x0078_sub_0xB60), { 87.81080627441406f, 1564.724853515625f, -837.2099609375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterFile2_gap_0x0078_sub_0xB40, { -445.2885437011719f, 1414.822265625f, -837.2099609375f }, { 0.0f, 0.0f, 0.785398006439209f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterFile2_gap_0x0078_sub_0xB60, { 87.81080627441406f, 1564.724853515625f, -837.2099609375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -3870.00048828125f, 1830.0f, -480.0003356933594f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)((u8*)dStageYosterFile2_gap_0x0078 + 0xBA8), { 0.0f, 0.0005719999899156392f, -5.700000110664405e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0667719841003418f, 1.2984600067138672f, 1.0667719841003418f } },
 	{ 1, (void*)0x00000000, { 3810.0f, 2999.999755859375f, -479.9999084472656f }, { 0.0f, 0.0f, 0.0f }, { 1.149999976158142f, 1.149999976158142f, 1.0f } },
-	{ 2, (void*)(dStageYosterFile2_gap_0x0078_sub_0xC98), { -0.000686999992467463f, 0.000686999992467463f, -5.700000110664405e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0667719841003418f, 1.2984600067138672f, 1.0667719841003418f } },
+	{ 2, (void*)dStageYosterFile2_gap_0x0078_sub_0xC98, { -0.000686999992467463f, 0.000686999992467463f, -5.700000110664405e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0667719841003418f, 1.2984600067138672f, 1.0667719841003418f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -2809,43 +2809,94 @@ u8 dStageYosterFile2_gap_0x4F80[128] = {
 	#include <StageYosterFile2/gap_0x4F80.data.inc.c>
 };
 
-/* gap sub-block @ 0x5000 (was gap+0x80, 52 bytes) */
-u8 dStageYosterFile2_gap_0x4F80_sub_0x80[52] = {
-	#include <StageYosterFile2/gap_0x4F80_sub_0x80.data.inc.c>
+/* MPVertexArray (26 IDs) @ 0x5000 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageYosterFile2_gap_0x4F80_sub_0x80[26] = {
+	  0,   1,   2,   3,   4,   5,  13,  14,  15,  16,  19,  20,  17,  18,   9,  10,
+	 11,  12,   6,   7,   8,   8,   9,  12,   6,   0,
 };
 
-/* gap sub-block @ 0x5034 (was gap+0xB4, 40 bytes) */
-u8 dStageYosterFile2_gap_0x4F80_sub_0xB4[40] = {
-	#include <StageYosterFile2/gap_0x4F80_sub_0xB4.data.inc.c>
+/* MPVertexLinks[10] @ 0x5034 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageYosterFile2_gap_0x4F80_sub_0xB4[10] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 4 }, {  10, 2 }, {  12, 2 },
+	{  14, 4 }, {  18, 3 }, {  21, 2 }, {  23, 2 },
 };
 
-/* gap sub-block @ 0x505C (was gap+0xDC, 72 bytes) */
-u8 dStageYosterFile2_gap_0x4F80_sub_0xDC[72] = {
-	#include <StageYosterFile2/gap_0x4F80_sub_0xDC.data.inc.c>
+/* MPLineInfo[4] @ 0x505C — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageYosterFile2_gap_0x4F80_sub_0xDC[4] = {
+	{ 1, { {  0,   1}, {  1,   0}, {  1,   0}, {  1,   0} } },
+	{ 2, { {  1,   1}, {  2,   0}, {  2,   0}, {  2,   0} } },
+	{ 3, { {  2,   1}, {  3,   0}, {  3,   0}, {  3,   0} } },
+	{ 4, { {  3,   4}, {  7,   1}, {  8,   1}, {  9,   1} } },
 };
 
-/* gap sub-block @ 0x50A4 (was gap+0x124, 228 bytes) */
-u8 dStageYosterFile2_gap_0x4F80_sub_0x124[228] = {
-	#include <StageYosterFile2/gap_0x4F80_sub_0x124.data.inc.c>
+/* MPMapObjData[38] @ 0x50A4 — map objects (MPGeometryData.mapobjs) */
+MPMapObjData dStageYosterFile2_gap_0x4F80_sub_0x124[38] = {
+	{  37, { -1110,  1050 } },
+	{  38, {  1259,  1589 } },
+	{  39, {     0,  2400 } },
+	{  33, {     0,  -180 } },
+	{  24, {   749,  -120 } },
+	{  25, {  1529,    59 } },
+	{  26, {  -630,  -155 } },
+	{  27, { -1200,   -41 } },
+	{  28, {  -840,   942 } },
+	{  29, {   990,  1485 } },
+	{  30, {  -119,  2391 } },
+	{  31, {   -60,  -212 } },
+	{   4, {  -421,  3759 } },
+	{   4, {  3168,  5443 } },
+	{   4, {  4172,  2775 } },
+	{   4, {  7407,  5459 } },
+	{   4, { -3859,  5046 } },
+	{   4, {    52,   946 } },
+	{   4, {  1897,  1598 } },
+	{   4, {   185,  5911 } },
+	{   4, {  1222,  5044 } },
+	{   4, { -1431,  2105 } },
+	{   4, {  -726,  1616 } },
+	{   4, {  1250,  3619 } },
+	{   4, {    34,  1773 } },
+	{   4, { -1875,  1202 } },
+	{   4, {  1694,  1004 } },
+	{  21, {    29,  -258 } },
+	{   0, {   629,   -96 } },
+	{   1, {    90,  2409 } },
+	{   2, {   756,  1513 } },
+	{   3, {  -990,  1032 } },
+	{  32, {     0,  2970 } },
+	{  43, {  1583,  3641 } },
+	{  43, {  2736,  3629 } },
+	{  43, { -1245,  3644 } },
+	{  43, { -2532,  3539 } },
+	{  43, {     0,  3720 } },
 };
 
-/* Raw data from file offset 0x5188 to 0x5448 (704 bytes) */
-u8 dStageYosterFile2_MPGeometryData_0x5188[704] = {
-	#include <StageYosterFile2/MPGeometryData_0x5188.data.inc.c>
+/* MPGeometryData @ 0x5188 (28 bytes) */
+MPGeometryData dStageYosterFile2_MPGeometryData_0x5188 = {
+	4,
+	(MPVertexPosContainer*)dStageYosterFile2_gap_0x4F80,
+	(MPVertexArray*)dStageYosterFile2_gap_0x4F80_sub_0x80,
+	dStageYosterFile2_gap_0x4F80_sub_0xB4,
+	dStageYosterFile2_gap_0x4F80_sub_0xDC,
+	38,
+	(MPMapObjContainer*)dStageYosterFile2_gap_0x4F80_sub_0x124,
+};
+
+/* Trailing data after MPGeometryData @ 0x51A4 (676 bytes) — embedded
+ * DObjDLLink/DL/texture mix referenced by other layer DObjs. */
+u8 dStageYosterFile2_MPGeometryData_0x5188_trailing[676] = {
+	#include <StageYosterFile2/MPGeometryData_0x5188_trailing.data.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x5448 (3 entries) */
 DObjDesc dStageYosterFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0001140000022132881f, 0.0f, 0.0001140000022132881f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYosterFile2_MPGeometryData_0x5188 + 0x168), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dStageYosterFile2_MPGeometryData_0x5188_trailing + 0x14C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x54CC to 0x5C38 (1900 bytes) */
-/* gap sub-block @ 0x54CC (was gap+0x0, 4 bytes) */
-u8 dStageYosterFile2_gap_0x54CC[4] = {
-	#include <StageYosterFile2/gap_0x54CC.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x54D0 (was gap+0x4, 64 bytes) */
 Vtx dStageYosterFile2_gap_0x54CC_sub_0x4[4] = {
@@ -2920,8 +2971,8 @@ Gfx dStageYosterFile2_DL_0x5A08[70] = {
 /* DObjDesc: Layer3DObj @ 0x5C38 (4 entries) */
 DObjDesc dStageYosterFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0001140000022132881f, 0.0f, 0.0002859999949578196f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x54CC + 0x3F4), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYosterFile2_gap_0x54CC + 0x53C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterFile2_DL_0x58C0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterFile2_DL_0x5A08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

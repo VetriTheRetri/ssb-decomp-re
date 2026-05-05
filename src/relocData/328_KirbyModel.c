@@ -6287,10 +6287,7 @@ DObjDesc dKirbyModel_JointTree_0x19F08[] = {
 };
 
 /* Raw data from file offset 0x1A2FC to 0x1D4B8 (12732 bytes) */
-/* gap sub-block @ 0x1A2FC (was gap+0x0, 4 bytes) */
-u8 dKirbyModel_gap_0x1A2FC[4] = {
-	#include <KirbyModel/gap_0x1A2FC.data.inc.c>
-};
+PAD(4);
 
 /* Vtx: gap_0x1A2FC_sub_0x4 @ 0x1A300 (50 vertices) */
 Vtx dKirbyModel_gap_0x1A2FC_sub_0x4[50] = {

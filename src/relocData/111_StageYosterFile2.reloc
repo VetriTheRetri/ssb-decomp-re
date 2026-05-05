@@ -135,13 +135,13 @@ intern dStageYosterFile2_MPGeometryData_0x5188+0x8 dStageYosterFile2_gap_0x4F80_
 intern dStageYosterFile2_MPGeometryData_0x5188+0xC dStageYosterFile2_gap_0x4F80_sub_0xB4
 intern dStageYosterFile2_MPGeometryData_0x5188+0x10 dStageYosterFile2_gap_0x4F80_sub_0xDC
 intern dStageYosterFile2_MPGeometryData_0x5188+0x18 dStageYosterFile2_gap_0x4F80_sub_0x124
-extern dStageYosterFile2_MPGeometryData_0x5188+0x1AC 0x178  # -> file 110 (StageYosterImages)
-extern dStageYosterFile2_MPGeometryData_0x5188+0x1DC 0xBD0  # -> file 110 (StageYosterImages)
-intern dStageYosterFile2_MPGeometryData_0x5188+0x1FC dStageYosterFile2_MPGeometryData_0x5188+0x28
-extern dStageYosterFile2_MPGeometryData_0x5188+0x23C 0x8  # -> file 110 (StageYosterImages)
-extern dStageYosterFile2_MPGeometryData_0x5188+0x264 0xA0  # -> file 110 (StageYosterImages)
-intern dStageYosterFile2_MPGeometryData_0x5188+0x284 dStageYosterFile2_MPGeometryData_0x5188+0xE8
-intern dStageYosterFile2_Layer2DObj+0x30 dStageYosterFile2_MPGeometryData_0x5188+0x168
+extern dStageYosterFile2_MPGeometryData_0x5188_trailing+0x190 0x178  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_MPGeometryData_0x5188_trailing+0x1C0 0xBD0  # -> file 110 (StageYosterImages)
+intern dStageYosterFile2_MPGeometryData_0x5188_trailing+0x1E0 dStageYosterFile2_MPGeometryData_0x5188_trailing+0xC
+extern dStageYosterFile2_MPGeometryData_0x5188_trailing+0x220 0x8  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_MPGeometryData_0x5188_trailing+0x248 0xA0  # -> file 110 (StageYosterImages)
+intern dStageYosterFile2_MPGeometryData_0x5188_trailing+0x268 dStageYosterFile2_MPGeometryData_0x5188_trailing+0xCC
+intern dStageYosterFile2_Layer2DObj+0x30 dStageYosterFile2_MPGeometryData_0x5188_trailing+0x14C
 intern dStageYosterFile2_DL_0x58C0+0x2C dStageYosterFile2_DL_0x58F8
 extern dStageYosterFile2_DL_0x58F8+0x3C 0x1F0  # -> file 110 (StageYosterImages)
 extern dStageYosterFile2_DL_0x58F8+0x6C 0x2C8  # -> file 110 (StageYosterImages)

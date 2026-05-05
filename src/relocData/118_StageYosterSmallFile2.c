@@ -2978,43 +2978,86 @@ u8 dStageYosterSmallFile2_gap_0x3874[92] = {
 	#include <StageYosterSmallFile2/gap_0x3874.data.inc.c>
 };
 
-/* gap sub-block @ 0x38D0 (was gap+0x5C, 40 bytes) */
-u8 dStageYosterSmallFile2_gap_0x3874_sub_0x5C[40] = {
-	#include <StageYosterSmallFile2/gap_0x3874_sub_0x5C.data.inc.c>
+/* MPVertexArray (20 IDs) @ 0x38D0 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageYosterSmallFile2_gap_0x3874_sub_0x5C[20] = {
+	  7,   8,   9,  10,  13,  14,  11,  12,   3,   4,   5,   6,   0,   1,   2,   2,
+	  3,   6,   0,   0,
 };
 
-/* gap sub-block @ 0x38F8 (was gap+0x84, 28 bytes) */
-u8 dStageYosterSmallFile2_gap_0x3874_sub_0x84[28] = {
-	#include <StageYosterSmallFile2/gap_0x3874_sub_0x84.data.inc.c>
+/* MPVertexLinks[7] @ 0x38F8 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageYosterSmallFile2_gap_0x3874_sub_0x84[7] = {
+	{   0, 4 }, {   4, 2 }, {   6, 2 }, {   8, 4 }, {  12, 3 }, {  15, 2 },
+	{  17, 2 },
 };
 
-/* gap sub-block @ 0x3914 (was gap+0xA0, 20 bytes) */
-u8 dStageYosterSmallFile2_gap_0x3874_sub_0xA0[20] = {
-	#include <StageYosterSmallFile2/gap_0x3874_sub_0xA0.data.inc.c>
+/* MPLineInfo[1] @ 0x3914 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageYosterSmallFile2_gap_0x3874_sub_0xA0[1] = {
+	{ 1, { {  0,   4}, {  4,   1}, {  5,   1}, {  6,   1} } },
 };
 
-/* gap sub-block @ 0x3928 (was gap+0xB4, 200 bytes) */
-u8 dStageYosterSmallFile2_gap_0x3874_sub_0xB4[200] = {
-	#include <StageYosterSmallFile2/gap_0x3874_sub_0xB4.data.inc.c>
+/* MPMapObjData[33] @ 0x3928 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dStageYosterSmallFile2_gap_0x3874_sub_0xB4[33] = {
+	{  37, { -1110,   930 } },
+	{  38, {  1259,  1319 } },
+	{  39, {     0,  2250 } },
+	{  33, {    29,  -180 } },
+	{  24, {   749,  -156 } },
+	{  25, {  1529,    23 } },
+	{  26, {  -630,  -191 } },
+	{  27, { -1200,   -77 } },
+	{  28, {  -840,   786 } },
+	{  29, {  1110,  1178 } },
+	{  30, {  -119,  2085 } },
+	{  31, {   -60,  -218 } },
+	{   4, {   519,  3612 } },
+	{   4, {  1872,   863 } },
+	{   4, {  -506,  3519 } },
+	{   4, {  1467,  2559 } },
+	{   4, { -1251,  2049 } },
+	{   4, { -1016,  1386 } },
+	{   4, {   252,   455 } },
+	{   4, {  -293,   791 } },
+	{   4, { -1866,   971 } },
+	{   4, {  1007,  1941 } },
+	{  21, {    29,  -293 } },
+	{   0, {   629,  -180 } },
+	{   1, {    90,  2085 } },
+	{   2, {   900,  1140 } },
+	{   3, {  -990,   828 } },
+	{  32, {     0,  2820 } },
+	{  43, {  1553,  3641 } },
+	{  43, {  2700,  3629 } },
+	{  43, { -1245,  3644 } },
+	{  43, { -2550,  3539 } },
+	{  43, {     0,  3690 } },
 };
 
-/* Raw data from file offset 0x39F0 to 0x3CA8 (696 bytes) */
-u8 dStageYosterSmallFile2_MPGeometryData_0x39F0[696] = {
-	#include <StageYosterSmallFile2/MPGeometryData_0x39F0.data.inc.c>
+/* MPGeometryData @ 0x39F0 (28 bytes) */
+MPGeometryData dStageYosterSmallFile2_MPGeometryData_0x39F0 = {
+	1,
+	(MPVertexPosContainer*)dStageYosterSmallFile2_gap_0x3874,
+	(MPVertexArray*)dStageYosterSmallFile2_gap_0x3874_sub_0x5C,
+	dStageYosterSmallFile2_gap_0x3874_sub_0x84,
+	dStageYosterSmallFile2_gap_0x3874_sub_0xA0,
+	33,
+	(MPMapObjContainer*)dStageYosterSmallFile2_gap_0x3874_sub_0xB4,
+};
+
+/* Trailing data after MPGeometryData @ 0x3A0C (668 bytes) — embedded
+ * DObjDLLink/DL/texture mix referenced by other layer DObjs. */
+u8 dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing[668] = {
+	#include <StageYosterSmallFile2/MPGeometryData_0x39F0_trailing.data.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x3CA8 (3 entries) */
 DObjDesc dStageYosterSmallFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0001140000022132881f, 0.0f, 0.0001140000022132881f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYosterSmallFile2_MPGeometryData_0x39F0 + 0x160), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dStageYosterSmallFile2_MPGeometryData_0x39F0_trailing + 0x144), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x3D2C to 0x4498 (1900 bytes) */
-/* gap sub-block @ 0x3D2C (was gap+0x0, 4 bytes) */
-u8 dStageYosterSmallFile2_gap_0x3D2C[4] = {
-	#include <StageYosterSmallFile2/gap_0x3D2C.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x3D30 (was gap+0x4, 64 bytes) */
 Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x4[4] = {
@@ -3089,8 +3132,8 @@ Gfx dStageYosterSmallFile2_DL_0x4268[70] = {
 /* DObjDesc: Layer3DObj @ 0x4498 (4 entries) */
 DObjDesc dStageYosterSmallFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0001140000022132881f, 0.0f, 0.0002859999949578196f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYosterSmallFile2_gap_0x3D2C + 0x3F4), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageYosterSmallFile2_gap_0x3D2C + 0x53C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterSmallFile2_DL_0x4120, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageYosterSmallFile2_DL_0x4268, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

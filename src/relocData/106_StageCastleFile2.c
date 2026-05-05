@@ -456,30 +456,79 @@ u8 dStageCastleFile2_gap_0x2B10[152] = {
 	#include <StageCastleFile2/gap_0x2B10.data.inc.c>
 };
 
-/* gap sub-block @ 0x2BA8 (was gap+0x98, 80 bytes) */
-u8 dStageCastleFile2_gap_0x2B10_sub_0x98[80] = {
-	#include <StageCastleFile2/gap_0x2B10_sub_0x98.data.inc.c>
+/* MPVertexArray (40 IDs) @ 0x2BA8 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageCastleFile2_gap_0x2B10_sub_0x98[40] = {
+	 10,  11,  12,  13,  14,  15,  16,   4,   5,   6,   7,   0,   1,   2,   3,   8,
+	  9,   3,   4,   1,   2,   7,   8,   9,   0,  17,  18,  19,  20,  21,  19,  20,
+	 21,  22,  23,  23,  24,  24,  22,   0,
 };
 
-/* gap sub-block @ 0x2BF8 (was gap+0xE8, 64 bytes) */
-u8 dStageCastleFile2_gap_0x2B10_sub_0xE8[64] = {
-	#include <StageCastleFile2/gap_0x2B10_sub_0xE8.data.inc.c>
+/* MPVertexLinks[16] @ 0x2BF8 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageCastleFile2_gap_0x2B10_sub_0xE8[16] = {
+	{   0, 7 }, {   7, 4 }, {  11, 2 }, {  13, 2 }, {  15, 2 }, {  17, 2 },
+	{  19, 2 }, {  21, 2 }, {  23, 2 }, {  25, 2 }, {  27, 2 }, {  29, 2 },
+	{  31, 2 }, {  33, 2 }, {  35, 2 }, {  37, 2 },
 };
 
-/* gap sub-block @ 0x2C38 (was gap+0x128, 72 bytes) */
-u8 dStageCastleFile2_gap_0x2B10_sub_0x128[72] = {
-	#include <StageCastleFile2/gap_0x2B10_sub_0x128.data.inc.c>
+/* MPLineInfo[4] @ 0x2C38 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageCastleFile2_gap_0x2B10_sub_0x128[4] = {
+	{ 1, { {  0,   2}, {  2,   3}, {  5,   2}, {  7,   2} } },
+	{ 2, { {  9,   1}, { 10,   0}, { 10,   0}, { 10,   0} } },
+	{ 3, { { 10,   0}, { 10,   1}, { 11,   1}, { 12,   1} } },
+	{ 4, { { 13,   0}, { 13,   1}, { 14,   1}, { 15,   1} } },
 };
 
-/* gap sub-block @ 0x2C80 (was gap+0x170, 216 bytes) */
-u8 dStageCastleFile2_gap_0x2B10_sub_0x170[216] = {
-	#include <StageCastleFile2/gap_0x2B10_sub_0x170.data.inc.c>
+/* MPMapObjData[36] @ 0x2C80 — map objects (MPGeometryData.mapobjs) */
+MPMapObjData dStageCastleFile2_gap_0x2B10_sub_0x170[36] = {
+	{  37, {   596,   657 } },
+	{  38, {   851,  1581 } },
+	{  33, {  -648,   633 } },
+	{  34, {  -693,  1557 } },
+	{  45, {  1256,  1599 } },
+	{  44, { -1248,  1554 } },
+	{  24, { -1428,  1617 } },
+	{  25, {  -843,  1515 } },
+	{  26, {  -213,  1578 } },
+	{  27, {   761,  1566 } },
+	{  28, {   506,   639 } },
+	{  29, {  1376,  1578 } },
+	{  30, {  -438,   654 } },
+	{  31, {    11,   648 } },
+	{   4, {  -963,  1089 } },
+	{   4, {  -498,  1127 } },
+	{   4, {    26,  9108 } },
+	{   4, { -1023,  8469 } },
+	{   4, {  -363,  8469 } },
+	{   4, {   416,  8469 } },
+	{   4, {    26,  1142 } },
+	{   4, { -2973,  4698 } },
+	{   4, { -1428,  9102 } },
+	{   4, {  1586,  9066 } },
+	{   4, {   446,  1134 } },
+	{   4, {   735,  9117 } },
+	{   4, {   896,  1106 } },
+	{   4, {  2831,  4610 } },
+	{   4, {  -678,  9105 } },
+	{  19, {     0,  3525 } },
+	{  21, {    -3,   648 } },
+	{   0, {  -210,  1574 } },
+	{   1, {   765,  1563 } },
+	{   2, {   300,  1515 } },
+	{   3, {  -840,  1526 } },
+	{  32, {     0,  2940 } },
 };
 
-/* Raw data from file offset 0x2D58 to 0x2D80 (40 bytes) */
-u8 dStageCastleFile2_MPGeometryData_0x2D58[40] = {
-	#include <StageCastleFile2/MPGeometryData_0x2D58.data.inc.c>
+/* MPGeometryData @ 0x2D58 (28 bytes + 12 bytes pad) */
+MPGeometryData dStageCastleFile2_MPGeometryData_0x2D58 = {
+	4,
+	(MPVertexPosContainer*)dStageCastleFile2_gap_0x2B10,
+	(MPVertexArray*)dStageCastleFile2_gap_0x2B10_sub_0x98,
+	dStageCastleFile2_gap_0x2B10_sub_0xE8,
+	dStageCastleFile2_gap_0x2B10_sub_0x128,
+	36,
+	(MPMapObjContainer*)dStageCastleFile2_gap_0x2B10_sub_0x170,
 };
+PAD(12);
 
 /* Raw data from file offset 0x2D80 to 0x3218 (1176 bytes) */
 u32 dStageCastleFile2_Layer1Anim_AnimJoint[294] = {
@@ -1005,10 +1054,7 @@ DObjDesc dStageCastleFile2_Layer3DObj[] = {
 };
 
 /* Raw data from file offset 0x3684 to 0x4520 (3740 bytes) */
-/* gap sub-block @ 0x3684 (was gap+0x0, 20 bytes) */
-u8 dStageCastleFile2_gap_0x3684[20] = {
-	#include <StageCastleFile2/gap_0x3684.data.inc.c>
-};
+PAD(20);
 
 /* gap sub-block @ 0x3698 (was gap+0x14, 40 bytes) */
 u16 dStageCastleFile2_gap_0x3684_sub_0x14[20] = {

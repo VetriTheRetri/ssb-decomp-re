@@ -574,7 +574,7 @@ DObjDesc dGRBonus2FoxFile2_Layer1DObj[] = {
 	{ 1, (void*)0x00000000, { -2400.0f, -1200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -3900.0f, -1500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2900, { -591.7717895507812f, -3884.810546875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1E38), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1E38, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2928, { 2628.000244140625f, 750.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2938, { 2171.992919921875f, -450.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2948, { 372.00335693359375f, -450.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -591,29 +591,70 @@ u8 dGRBonus2FoxFile2_gap_0x2D34[464] = {
 	#include <GRBonus2FoxFile2/gap_0x2D34.data.inc.c>
 };
 
-/* gap sub-block @ 0x2F04 (was gap+0x1D0, 216 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x2D34_sub_0x1D0[216] = {
-	#include <GRBonus2FoxFile2/gap_0x2D34_sub_0x1D0.data.inc.c>
+/* MPVertexArray (108 IDs) @ 0x2F04 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus2FoxFile2_gap_0x2D34_sub_0x1D0[108] = {
+	  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,
+	 16,  17,  18,  19,  20,  21,  47,  48,  49,  26,  27,  29,  30,  31,  32,  33,
+	 34,  22,  23,  41,  42,  52,  53,  37,  38,  43,  44,  39,  40,  45,  46,  49,
+	 50,  51,  52,  34,  35,  36,  37,  30,  31,  27,  28,  29,  40,  41,  44,  22,
+	 23,  24,  25,  26,  42,  43,  46,  47,  38,  39,  53,  54,  45,  56,  57,  55,
+	 56,  57,  58,  60,  61,  59,  60,  61,  62,  64,  65,  63,  64,  65,  66,  68,
+	 69,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,   0,
 };
 
-/* gap sub-block @ 0x2FDC (was gap+0x2A8, 192 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x2D34_sub_0x2A8[192] = {
-	#include <GRBonus2FoxFile2/gap_0x2D34_sub_0x2A8.data.inc.c>
+/* MPVertexLinks[48] @ 0x2FDC — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus2FoxFile2_gap_0x2D34_sub_0x2A8[48] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 }, {  14, 2 }, {  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 3 },
+	{  25, 2 }, {  27, 2 }, {  29, 4 }, {  33, 2 }, {  35, 2 }, {  37, 2 },
+	{  39, 2 }, {  41, 2 }, {  43, 2 }, {  45, 2 }, {  47, 4 }, {  51, 4 },
+	{  55, 2 }, {  57, 3 }, {  60, 2 }, {  62, 2 }, {  64, 4 }, {  68, 2 },
+	{  70, 2 }, {  72, 2 }, {  74, 3 }, {  77, 2 }, {  79, 2 }, {  81, 2 },
+	{  83, 2 }, {  85, 2 }, {  87, 2 }, {  89, 2 }, {  91, 2 }, {  93, 2 },
+	{  95, 2 }, {  97, 2 }, {  99, 2 }, { 101, 2 }, { 103, 2 }, { 105, 2 },
 };
 
-/* gap sub-block @ 0x309C (was gap+0x368, 344 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x2D34_sub_0x368[344] = {
-	#include <GRBonus2FoxFile2/gap_0x2D34_sub_0x368.data.inc.c>
+/* MPLineInfo[19] @ 0x309C — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus2FoxFile2_gap_0x2D34_sub_0x368[19] = {
+	{ 1, { {  0,   1}, {  1,   0}, {  1,   0}, {  1,   0} } },
+	{ 2, { {  1,   1}, {  2,   0}, {  2,   0}, {  2,   0} } },
+	{ 3, { {  2,   1}, {  3,   0}, {  3,   0}, {  3,   0} } },
+	{ 4, { {  3,   1}, {  4,   0}, {  4,   0}, {  4,   0} } },
+	{ 5, { {  4,   1}, {  5,   0}, {  5,   0}, {  5,   0} } },
+	{ 6, { {  5,   1}, {  6,   0}, {  6,   0}, {  6,   0} } },
+	{ 7, { {  6,   1}, {  7,   0}, {  7,   0}, {  7,   0} } },
+	{ 8, { {  7,   1}, {  8,   0}, {  8,   0}, {  8,   0} } },
+	{ 9, { {  8,   1}, {  9,   0}, {  9,   0}, {  9,   0} } },
+	{ 10, { {  9,   1}, { 10,   0}, { 10,   0}, { 10,   0} } },
+	{ 11, { { 10,   1}, { 11,   0}, { 11,   0}, { 11,   0} } },
+	{ 12, { { 11,   4}, { 15,   7}, { 22,   6}, { 28,   5} } },
+	{ 13, { { 33,   1}, { 34,   0}, { 34,   1}, { 35,   1} } },
+	{ 14, { { 36,   1}, { 37,   0}, { 37,   1}, { 38,   1} } },
+	{ 15, { { 39,   1}, { 40,   0}, { 40,   1}, { 41,   1} } },
+	{ 16, { { 42,   1}, { 43,   0}, { 43,   1}, { 44,   1} } },
+	{ 17, { { 45,   1}, { 46,   0}, { 46,   0}, { 46,   0} } },
+	{ 18, { { 46,   1}, { 47,   0}, { 47,   0}, { 47,   0} } },
+	{ 19, { { 47,   1}, { 48,   0}, { 48,   0}, { 48,   0} } },
 };
 
-/* gap sub-block @ 0x31F4 (was gap+0x4C0, 32 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x2D34_sub_0x4C0[32] = {
-	#include <GRBonus2FoxFile2/gap_0x2D34_sub_0x4C0.data.inc.c>
+/* MPMapObjData[5] @ 0x31F4 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus2FoxFile2_gap_0x2D34_sub_0x4C0[5] = {
+	{  33, { -6750, -3146 } },
+	{   0, { -6750, -3146 } },
+	{   1, { -6300, -3146 } },
+	{   2, { -7200, -3146 } },
+	{   3, { -6300, -3146 } },
 };
 
-/* Raw data from file offset 0x3214 to 0x3230 (28 bytes) */
-u8 dGRBonus2FoxFile2_MPGeometryData_0x3214[28] = {
-	#include <GRBonus2FoxFile2/MPGeometryData_0x3214.data.inc.c>
+/* MPGeometryData @ 0x3214 (28 bytes) */
+MPGeometryData dGRBonus2FoxFile2_MPGeometryData_0x3214 = {
+	19,
+	(MPVertexPosContainer*)dGRBonus2FoxFile2_gap_0x2D34,
+	(MPVertexArray*)dGRBonus2FoxFile2_gap_0x2D34_sub_0x1D0,
+	dGRBonus2FoxFile2_gap_0x2D34_sub_0x2A8,
+	dGRBonus2FoxFile2_gap_0x2D34_sub_0x368,
+	5,
+	(MPMapObjContainer*)dGRBonus2FoxFile2_gap_0x2D34_sub_0x4C0,
 };
 
 /* Raw data from file offset 0x3230 to 0x3B40 (2320 bytes) */

@@ -169,10 +169,7 @@ DObjDesc dGRBonus1KirbyFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x0B94 to 0x2150 (5564 bytes) */
-/* gap sub-block @ 0x0B94 (was gap+0x0, 12 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x0B94[12] = {
-	#include <GRBonus1KirbyFile2/gap_0x0B94.data.inc.c>
-};
+PAD(12);
 
 /* gap sub-block @ 0x0BA0 (was gap+0xC, 128 bytes) */
 Vtx dGRBonus1KirbyFile2_gap_0x0B94_sub_0xC[8] = {
@@ -307,41 +304,109 @@ Gfx dGRBonus1KirbyFile2_DL_0x1FB0[52] = {
 /* DObjDesc: Layer1DObj @ 0x2150 (4 entries) */
 DObjDesc dGRBonus1KirbyFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1KirbyFile2_gap_0x0B94 + 0xE6C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1KirbyFile2_gap_0x0B94 + 0x141C), { -1650.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1KirbyFile2_DL_0x1A00, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1KirbyFile2_DL_0x1FB0, { -1650.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x2200 to 0x24AC (684 bytes) */
-/* gap sub-block @ 0x2200 (was gap+0x0, 276 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x2200[276] = {
-	#include <GRBonus1KirbyFile2/gap_0x2200.data.inc.c>
+/* MPVertexData[46] @ 0x2200 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dGRBonus1KirbyFile2_gap_0x2200[46] = {
+	{ {   1200,  -2550 }, 0x0000 },
+	{ {  -1800,  -2550 }, 0x0000 },
+	{ {  -1800,  -1050 }, 0x0000 },
+	{ {  -1200,  -1050 }, 0x0000 },
+	{ {  -1200,  -2250 }, 0x0000 },
+	{ {    600,  -2250 }, 0x0000 },
+	{ {    600,  -1050 }, 0x0000 },
+	{ {   1200,  -1050 }, 0x0000 },
+	{ {   2400,   -900 }, 0x0000 },
+	{ {   2100,   -900 }, 0x0000 },
+	{ {   3300,    300 }, 0x0000 },
+	{ {   3300,   4800 }, 0x0000 },
+	{ {   3600,   4800 }, 0x0000 },
+	{ {   3600,    300 }, 0x0000 },
+	{ {    150,   1050 }, 0x0000 },
+	{ {   -750,   1050 }, 0x0000 },
+	{ {   -750,   1350 }, 0x0000 },
+	{ {    150,   1350 }, 0x0000 },
+	{ {    900,   2550 }, 0x0000 },
+	{ {  -1500,   2550 }, 0x0000 },
+	{ {  -1500,   2850 }, 0x0000 },
+	{ {    900,   2850 }, 0x0000 },
+	{ {    900,   4500 }, 0x0000 },
+	{ {   2400,   4500 }, 0x0000 },
+	{ {   2400,    300 }, 0x0000 },
+	{ {   1800,   -300 }, 0x0000 },
+	{ {   1800,   -600 }, 0x0000 },
+	{ {   2700,    300 }, 0x0000 },
+	{ {   2700,   4800 }, 0x0000 },
+	{ {    900,   4800 }, 0x0000 },
+	{ {  -4950,   2550 }, 0x0000 },
+	{ {  -3150,   2550 }, 0x0000 },
+	{ {  -3150,  -3150 }, 0x0000 },
+	{ {  -4050,  -3150 }, 0x0000 },
+	{ {  -4050,  -3450 }, 0x0000 },
+	{ {  -2550,  -3450 }, 0x0000 },
+	{ {  -2550,  -3150 }, 0x0000 },
+	{ {  -2850,  -3150 }, 0x0000 },
+	{ {  -2850,   2850 }, 0x0000 },
+	{ {  -5250,   2850 }, 0x0000 },
+	{ {  -5250,  -4350 }, 0x0000 },
+	{ {  -4950,  -4350 }, 0x0000 },
+	{ {    750,   -150 }, 0x0000 },
+	{ {   -750,   -150 }, 0x0000 },
+	{ {   -750,    150 }, 0x0000 },
+	{ {    750,    150 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x2314 (was gap+0x114, 176 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x2200_sub_0x114[176] = {
-	#include <GRBonus1KirbyFile2/gap_0x2200_sub_0x114.data.inc.c>
+/* MPVertexArray (88 IDs) @ 0x2314 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus1KirbyFile2_gap_0x2200_sub_0x114[88] = {
+	 11,  12,  28,  29,  20,  21,  38,  39,  16,  17,   6,   7,   2,   3,   4,   5,
+	 32,  33,  36,  37,  40,  41,  34,  35,   0,   1,   8,   9,  14,  15,  18,  19,
+	 30,  31,  22,  23,  12,  13,   8,  26,  27,  28,   7,   0,  21,  18,  17,  14,
+	  3,   4,  35,  36,  37,  38,  41,  30,  39,  40,  33,  34,  31,  32,   1,   2,
+	 19,  20,  15,  16,   5,   6,  29,  22,  23,  24,  25,  26,   9,  10,  11,  44,
+	 45,  42,  43,  45,  42,  43,  44,   0,
 };
 
-/* gap sub-block @ 0x23C4 (was gap+0x1C4, 164 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x2200_sub_0x1C4[164] = {
-	#include <GRBonus1KirbyFile2/gap_0x2200_sub_0x1C4.data.inc.c>
+/* MPVertexLinks[41] @ 0x23C4 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus1KirbyFile2_gap_0x2200_sub_0x1C4[41] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 }, {  14, 2 }, {  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 2 },
+	{  24, 2 }, {  26, 2 }, {  28, 2 }, {  30, 2 }, {  32, 2 }, {  34, 2 },
+	{  36, 3 }, {  39, 3 }, {  42, 2 }, {  44, 2 }, {  46, 2 }, {  48, 2 },
+	{  50, 2 }, {  52, 2 }, {  54, 2 }, {  56, 2 }, {  58, 2 }, {  60, 2 },
+	{  62, 2 }, {  64, 2 }, {  66, 2 }, {  68, 2 }, {  70, 2 }, {  72, 4 },
+	{  76, 3 }, {  79, 2 }, {  81, 2 }, {  83, 2 }, {  85, 2 },
 };
 
-/* gap sub-block @ 0x2468 (was gap+0x268, 36 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x2200_sub_0x268[36] = {
-	#include <GRBonus1KirbyFile2/gap_0x2200_sub_0x268.data.inc.c>
+/* MPLineInfo[2] @ 0x2468 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus1KirbyFile2_gap_0x2200_sub_0x268[2] = {
+	{ 1, { {  0,  10}, { 10,   8}, { 18,   9}, { 27,  10} } },
+	{ 2, { { 37,   1}, { 38,   1}, { 39,   1}, { 40,   1} } },
 };
 
-/* gap sub-block @ 0x248C (was gap+0x28C, 32 bytes) */
-u8 dGRBonus1KirbyFile2_gap_0x2200_sub_0x28C[32] = {
-	#include <GRBonus1KirbyFile2/gap_0x2200_sub_0x28C.data.inc.c>
+/* MPMapObjData[5] @ 0x248C — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus1KirbyFile2_gap_0x2200_sub_0x28C[5] = {
+	{  33, {  -600, -2246 } },
+	{   0, {  -600, -2246 } },
+	{   1, { -1050, -2246 } },
+	{   2, {     0, -2246 } },
+	{   3, {   449, -2246 } },
 };
 
-/* Raw data from file offset 0x24AC to 0x24D0 (36 bytes) */
-u8 dGRBonus1KirbyFile2_MPGeometryData_0x24AC[36] = {
-	#include <GRBonus1KirbyFile2/MPGeometryData_0x24AC.data.inc.c>
+/* MPGeometryData @ 0x24AC (28 bytes + 8 bytes pad) */
+MPGeometryData dGRBonus1KirbyFile2_MPGeometryData_0x24AC = {
+	2,
+	(MPVertexPosContainer*)dGRBonus1KirbyFile2_gap_0x2200,
+	(MPVertexArray*)dGRBonus1KirbyFile2_gap_0x2200_sub_0x114,
+	dGRBonus1KirbyFile2_gap_0x2200_sub_0x1C4,
+	dGRBonus1KirbyFile2_gap_0x2200_sub_0x268,
+	5,
+	(MPMapObjContainer*)dGRBonus1KirbyFile2_gap_0x2200_sub_0x28C,
 };
+PAD(8);
 
 /* Raw data from file offset 0x24D0 to 0x2780 (688 bytes) */
 u32 dGRBonus1KirbyFile2_Layer1Anim_AnimJoint[172] = {

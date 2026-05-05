@@ -153,10 +153,7 @@ DObjDesc dGRBonus1PurinFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x0A58 to 0x1FF8 (5536 bytes) */
-/* gap sub-block @ 0x0A58 (was gap+0x0, 8 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x0A58[8] = {
-	#include <GRBonus1PurinFile2/gap_0x0A58.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0A60 (was gap+0x8, 448 bytes) */
 Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x8[28] = {
@@ -246,41 +243,99 @@ Gfx dGRBonus1PurinFile2_DL_0x1F48[22] = {
 /* DObjDesc: Layer1DObj @ 0x1FF8 (5 entries) */
 DObjDesc dGRBonus1PurinFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PurinFile2_gap_0x0A58 + 0xFD8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PurinFile2_gap_0x0A58 + 0x1448), { -4800.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PurinFile2_gap_0x0A58 + 0x14F0), { -3750.0f, -3150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PurinFile2_DL_0x1A30, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PurinFile2_DL_0x1EA0, { -4800.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PurinFile2_DL_0x1F48, { -3750.0f, -3150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x20D4 to 0x2304 (560 bytes) */
-/* gap sub-block @ 0x20D4 (was gap+0x0, 240 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x20D4[240] = {
-	#include <GRBonus1PurinFile2/gap_0x20D4.data.inc.c>
+/* MPVertexData[40] @ 0x20D4 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dGRBonus1PurinFile2_gap_0x20D4[40] = {
+	{ {   2700,   6600 }, 0x0000 },
+	{ {   3300,   6600 }, 0x0000 },
+	{ {   3300,   6300 }, 0x0000 },
+	{ {   3300,  -1200 }, 0x0000 },
+	{ {   2700,  -1200 }, 0x0000 },
+	{ {   2700,   -900 }, 0x0000 },
+	{ {   2700,   -600 }, 0x0000 },
+	{ {   3000,   -600 }, 0x0000 },
+	{ {   3000,    600 }, 0x0000 },
+	{ {  -2400,    600 }, 0x0000 },
+	{ {  -2400,    898 }, 0x0000 },
+	{ {  -2400,   1200 }, 0x0000 },
+	{ {  -1200,   1200 }, 0x0000 },
+	{ {   -600,   1500 }, 0x0000 },
+	{ {    600,   1500 }, 0x0000 },
+	{ {   1200,   1800 }, 0x0000 },
+	{ {   2700,   1800 }, 0x0000 },
+	{ {   2700,   6300 }, 0x0000 },
+	{ {  -1950,  -3300 }, 0x0000 },
+	{ {  -2550,  -3300 }, 0x0000 },
+	{ {  -2550,  -3000 }, 0x0000 },
+	{ {  -1950,  -3000 }, 0x0000 },
+	{ {  -1800,   3000 }, 0x4000 },
+	{ {  -3300,   3000 }, 0x0000 },
+	{ {  -5400,  -3300 }, 0x0000 },
+	{ {  -6000,  -3300 }, 0x0000 },
+	{ {  -6000,    900 }, 0x0000 },
+	{ {  -4800,   2100 }, 0x0000 },
+	{ {  -4800,   3300 }, 0x0000 },
+	{ {  -4800,   3600 }, 0x0000 },
+	{ {  -4200,   3600 }, 0x0000 },
+	{ {  -4200,   3300 }, 0x0000 },
+	{ {  -4200,   2100 }, 0x0000 },
+	{ {  -5400,    900 }, 0x0000 },
+	{ {    450,   -149 }, 0x0000 },
+	{ {   -450,   -149 }, 0x0000 },
+	{ {   -450,    150 }, 0x0000 },
+	{ {    450,    150 }, 0x0000 },
+	{ {    600,    150 }, 0x4000 },
+	{ {   -600,    150 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x21C4 (was gap+0xF0, 128 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x20D4_sub_0xF0[128] = {
-	#include <GRBonus1PurinFile2/gap_0x20D4_sub_0xF0.data.inc.c>
+/* MPVertexArray (64 IDs) @ 0x21C4 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus1PurinFile2_gap_0x20D4_sub_0xF0[64] = {
+	  0,   1,  29,  30,  22,  23,  11,  12,  13,  14,  15,  16,   6,   7,  20,  21,
+	 18,  19,  24,  25,   3,   4,   8,   9,  32,  33,   1,   2,   3,  21,  18,  30,
+	 31,  32,  33,  24,  25,  26,  27,  28,  29,  19,  20,   9,  10,  11,   4,   5,
+	  6,  16,  17,   7,   8,  36,  37,  34,  35,  37,  34,  35,  36,  38,  39,   0,
 };
 
-/* gap sub-block @ 0x2244 (was gap+0x170, 104 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x20D4_sub_0x170[104] = {
-	#include <GRBonus1PurinFile2/gap_0x20D4_sub_0x170.data.inc.c>
+/* MPVertexLinks[26] @ 0x2244 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus1PurinFile2_gap_0x20D4_sub_0x170[26] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 6 }, {  12, 2 }, {  14, 2 },
+	{  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 2 }, {  24, 2 }, {  26, 3 },
+	{  29, 2 }, {  31, 3 }, {  34, 2 }, {  36, 5 }, {  41, 2 }, {  43, 3 },
+	{  46, 3 }, {  49, 2 }, {  51, 2 }, {  53, 2 }, {  55, 2 }, {  57, 2 },
+	{  59, 2 }, {  61, 2 },
 };
 
-/* gap sub-block @ 0x22AC (was gap+0x1D8, 56 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x20D4_sub_0x1D8[56] = {
-	#include <GRBonus1PurinFile2/gap_0x20D4_sub_0x1D8.data.inc.c>
+/* MPLineInfo[3] @ 0x22AC — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus1PurinFile2_gap_0x20D4_sub_0x1D8[3] = {
+	{ 1, { {  0,   6}, {  6,   5}, { 11,   4}, { 15,   6} } },
+	{ 2, { { 21,   1}, { 22,   1}, { 23,   1}, { 24,   1} } },
+	{ 3, { { 25,   1}, { 26,   0}, { 26,   0}, { 26,   0} } },
 };
 
-/* gap sub-block @ 0x22E4 (was gap+0x210, 32 bytes) */
-u8 dGRBonus1PurinFile2_gap_0x20D4_sub_0x210[32] = {
-	#include <GRBonus1PurinFile2/gap_0x20D4_sub_0x210.data.inc.c>
+/* MPMapObjData[5] @ 0x22E4 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus1PurinFile2_gap_0x20D4_sub_0x210[5] = {
+	{  33, {     0,  1503 } },
+	{   0, {     0,  1503 } },
+	{   1, {  2100,  1803 } },
+	{   2, {  1350,  1803 } },
+	{   3, { -1950,  1203 } },
 };
 
-/* Raw data from file offset 0x2304 to 0x2320 (28 bytes) */
-u8 dGRBonus1PurinFile2_MPGeometryData_0x2304[28] = {
-	#include <GRBonus1PurinFile2/MPGeometryData_0x2304.data.inc.c>
+/* MPGeometryData @ 0x2304 (28 bytes) */
+MPGeometryData dGRBonus1PurinFile2_MPGeometryData_0x2304 = {
+	3,
+	(MPVertexPosContainer*)dGRBonus1PurinFile2_gap_0x20D4,
+	(MPVertexArray*)dGRBonus1PurinFile2_gap_0x20D4_sub_0xF0,
+	dGRBonus1PurinFile2_gap_0x20D4_sub_0x170,
+	dGRBonus1PurinFile2_gap_0x20D4_sub_0x1D8,
+	5,
+	(MPMapObjContainer*)dGRBonus1PurinFile2_gap_0x20D4_sub_0x210,
 };
 
 /* Raw data from file offset 0x2320 to 0x2650 (816 bytes) */

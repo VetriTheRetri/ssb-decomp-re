@@ -560,15 +560,15 @@ u8 dStageInishieFile2_gap_0x37A8_sub_0x1288[24] = {
 /* DObjDesc: Layer0DObj @ 0x4A48 (11 entries) */
 DObjDesc dStageInishieFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageInishieFile2_gap_0x37A8_sub_0x11F8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_gap_0x37A8_sub_0x11F8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageInishieFile2_DLLink_0x49B8, { -2775.0f, 1245.0f, -6600.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageInishieFile2_DLLink_0x49C8, { -2775.0f, 3369.33203125f, -6600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageInishieFile2_DLLink_0x49D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageInishieFile2_DLLink_0x49E8, { 873.5250244140625f, 345.0f, -5730.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageInishieFile2_DLLink_0x49F8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageInishieFile2_DLLink_0x4A08, { 3483.224853515625f, 2490.0f, -4950.0f }, { 0.0f, -3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageInishieFile2_gap_0x37A8_sub_0x1270), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dStageInishieFile2_gap_0x37A8_sub_0x1288), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_gap_0x37A8_sub_0x1270, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_gap_0x37A8_sub_0x1288, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -759,40 +759,119 @@ u8 dStageInishieFile2_gap_0x63A4[176] = {
 	#include <StageInishieFile2/gap_0x63A4.data.inc.c>
 };
 
-/* gap sub-block @ 0x6454 (was gap+0xB0, 156 bytes) */
-u8 dStageInishieFile2_gap_0x63A4_sub_0xB0[156] = {
-	#include <StageInishieFile2/gap_0x63A4_sub_0xB0.data.inc.c>
+/* MPVertexData[26] @ 0x6454 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dStageInishieFile2_gap_0x63A4_sub_0xB0[26] = {
+	{ {    378,     63 }, 0x0000 },
+	{ {   -378,     63 }, 0x0000 },
+	{ {    378,     63 }, 0x0000 },
+	{ {   -378,     63 }, 0x0000 },
+	{ {   2597,   1615 }, 0x4000 },
+	{ {   1599,   1615 }, 0x0000 },
+	{ {   2297,    790 }, 0x4000 },
+	{ {   1149,    790 }, 0x0000 },
+	{ {   -874,   1165 }, 0x4000 },
+	{ {  -2025,   1165 }, 0x0000 },
+	{ {   -885,  -6120 }, 0x0000 },
+	{ {   -885,      0 }, 0x8000 },
+	{ {  -7935,      0 }, 0x0000 },
+	{ {    870,  -6120 }, 0x0000 },
+	{ {    870,      0 }, 0x8000 },
+	{ {   2652,      0 }, 0x0000 },
+	{ {   2652,    240 }, 0x000D },
+	{ {   3168,    240 }, 0x0000 },
+	{ {   3168,      0 }, 0x0000 },
+	{ {   8115,      0 }, 0x0000 },
+	{ {  -2508,   1320 }, 0x0000 },
+	{ {  -7616,   1320 }, 0x0000 },
+	{ {  -7616,   1603 }, 0x0000 },
+	{ {  -3012,   1605 }, 0x0000 },
+	{ {  -3012,   2205 }, 0x000C },
+	{ {  -2508,   2205 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x64F0 (was gap+0x14C, 76 bytes) */
-u8 dStageInishieFile2_gap_0x63A4_sub_0x14C[76] = {
-	#include <StageInishieFile2/gap_0x63A4_sub_0x14C.data.inc.c>
+/* MPVertexArray (38 IDs) @ 0x64F0 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageInishieFile2_gap_0x63A4_sub_0x14C[38] = {
+	  0,   1,   2,   3,  24,  25,   4,   5,  22,  23,   8,   9,   6,   7,  16,  17,
+	 14,  15,  11,  12,  18,  19,  20,  21,  17,  18,  10,  11,  25,  20,  21,  22,
+	 23,  24,  13,  14,  15,  16,
 };
 
-/* gap sub-block @ 0x653C (was gap+0x198, 76 bytes) */
-u8 dStageInishieFile2_gap_0x63A4_sub_0x198[76] = {
-	#include <StageInishieFile2/gap_0x63A4_sub_0x198.data.inc.c>
+/* MPVertexLinks[19] @ 0x653C — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageInishieFile2_gap_0x63A4_sub_0x198[19] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 }, {  14, 2 }, {  16, 2 }, {  18, 2 }, {  20, 2 }, {  22, 2 },
+	{  24, 2 }, {  26, 2 }, {  28, 2 }, {  30, 2 }, {  32, 2 }, {  34, 2 },
+	{  36, 2 },
 };
 
-/* gap sub-block @ 0x6588 (was gap+0x1E4, 56 bytes) */
-u8 dStageInishieFile2_gap_0x63A4_sub_0x1E4[56] = {
-	#include <StageInishieFile2/gap_0x63A4_sub_0x1E4.data.inc.c>
+/* MPLineInfo[3] @ 0x6588 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageInishieFile2_gap_0x63A4_sub_0x1E4[3] = {
+	{ 1, { {  0,   1}, {  1,   0}, {  1,   0}, {  1,   0} } },
+	{ 2, { {  1,   1}, {  2,   0}, {  2,   0}, {  2,   0} } },
+	{ 5, { {  2,   9}, { 11,   1}, { 12,   3}, { 15,   4} } },
 };
 
-/* gap sub-block @ 0x65C0 (was gap+0x21C, 216 bytes) */
-u8 dStageInishieFile2_gap_0x63A4_sub_0x21C[216] = {
-	#include <StageInishieFile2/gap_0x63A4_sub_0x21C.data.inc.c>
+/* MPMapObjData[36] @ 0x65C0 — map objects (MPGeometryData.mapobjs) */
+MPMapObjData dStageInishieFile2_gap_0x63A4_sub_0x21C[36] = {
+	{  24, {  2149,  1845 } },
+	{  25, {  2149,   157 } },
+	{  26, {  1729,   990 } },
+	{  27, { -3810,   150 } },
+	{  28, {  3619,   142 } },
+	{  29, { -1435,   142 } },
+	{  30, { -1585,  1290 } },
+	{  31, { -2080,   157 } },
+	{   4, { -3245,  3067 } },
+	{   4, { -2330,   907 } },
+	{   4, { -1185,  3810 } },
+	{   4, { -1955,  4477 } },
+	{   4, {  2109,  3157 } },
+	{   4, {  -980,   667 } },
+	{   4, {  2469,   742 } },
+	{   4, {   369,  6172 } },
+	{   4, {  1329,  1777 } },
+	{   4, {  2814,  1282 } },
+	{   7, { -2756,  1845 } },
+	{   8, {  2910,  -120 } },
+	{   5, {  -417,   363 } },
+	{   6, {   420,   362 } },
+	{  20, {  -795, -1380 } },
+	{  10, { -2760,  2265 } },
+	{  11, {  2910,   300 } },
+	{   9, { -2778,  2963 } },
+	{   9, {    30,  1874 } },
+	{   9, {    62,  1158 } },
+	{   9, {  2081,  2412 } },
+	{   9, { -1485,  1931 } },
+	{  21, {  1414,   172 } },
+	{   0, { -1800,  1318 } },
+	{   1, {  1500,   962 } },
+	{   2, { -1500,   142 } },
+	{   3, {  1800,  1807 } },
+	{  32, {   330,  2190 } },
 };
 
-/* Raw data from file offset 0x6698 to 0x6820 (392 bytes) */
-u8 dStageInishieFile2_MPGeometryData_0x6698[392] = {
-	#include <StageInishieFile2/MPGeometryData_0x6698.data.inc.c>
+/* MPGeometryData @ 0x6698 (28 bytes) */
+MPGeometryData dStageInishieFile2_MPGeometryData_0x6698 = {
+	3,
+	(MPVertexPosContainer*)dStageInishieFile2_gap_0x63A4_sub_0xB0,
+	(MPVertexArray*)dStageInishieFile2_gap_0x63A4_sub_0x14C,
+	dStageInishieFile2_gap_0x63A4_sub_0x198,
+	dStageInishieFile2_gap_0x63A4_sub_0x1E4,
+	36,
+	(MPMapObjContainer*)dStageInishieFile2_gap_0x63A4_sub_0x21C,
+};
+
+/* Trailing data after MPGeometryData @ 0x66B4 (364 bytes) — embedded
+ * DObjDLLink/DL/texture mix referenced by other layer DObjs. */
+u8 dStageInishieFile2_MPGeometryData_0x6698_trailing[364] = {
+	#include <StageInishieFile2/MPGeometryData_0x6698_trailing.data.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x6820 (4 entries) */
 DObjDesc dStageInishieFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_MPGeometryData_0x6698 + 0xA8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dStageInishieFile2_MPGeometryData_0x6698_trailing + 0x8C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 0.0f, 4.2756305980968973e-32f, 9.330486409651907e-38f }, { 5.6548384655120264e-27f, -107372544.0f, 4.2755644765396636e-32f }, { 9.330486409651907e-38f, 5.6545549686242126e-27f, -107372544.0f } },
 };

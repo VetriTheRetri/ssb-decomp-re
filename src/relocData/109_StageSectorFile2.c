@@ -4527,30 +4527,75 @@ u8 dStageSectorFile2_gap_0x8730_sub_0x160[212] = {
 	#include <StageSectorFile2/gap_0x8730_sub_0x160.data.inc.c>
 };
 
-/* gap sub-block @ 0x8964 (was gap+0x234, 88 bytes) */
-u8 dStageSectorFile2_gap_0x8730_sub_0x234[88] = {
-	#include <StageSectorFile2/gap_0x8730_sub_0x234.data.inc.c>
+/* MPVertexArray (44 IDs) @ 0x8964 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageSectorFile2_gap_0x8730_sub_0x234[44] = {
+	  0,   1,   2,   3,   9,  10,  11,  12,  13,  14,  15,  16,  17,  18,  19,  20,
+	 21,  22,  23,  26,  27,  28,  29,  30,  31,  32,  33,  34,   4,   6,   7,   8,
+	 30,  31,  23,  24,  25,  26,   8,   9,   4,   5,   6,   0,
 };
 
-/* gap sub-block @ 0x89BC (was gap+0x28C, 36 bytes) */
-u8 dStageSectorFile2_gap_0x8730_sub_0x28C[36] = {
-	#include <StageSectorFile2/gap_0x8730_sub_0x28C.data.inc.c>
+/* MPVertexLinks[9] @ 0x89BC — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageSectorFile2_gap_0x8730_sub_0x28C[9] = {
+	{   0, 4 }, {   4, 15 }, {  19, 5 }, {  24, 5 }, {  29, 3 }, {  32, 2 },
+	{  34, 4 }, {  38, 2 }, {  40, 3 },
 };
 
-/* gap sub-block @ 0x89E0 (was gap+0x2B0, 36 bytes) */
-u8 dStageSectorFile2_gap_0x8730_sub_0x2B0[36] = {
-	#include <StageSectorFile2/gap_0x8730_sub_0x2B0.data.inc.c>
+/* MPLineInfo[2] @ 0x89E0 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageSectorFile2_gap_0x8730_sub_0x2B0[2] = {
+	{ 1, { {  0,   1}, {  1,   0}, {  1,   0}, {  1,   0} } },
+	{ 2, { {  1,   2}, {  3,   2}, {  5,   2}, {  7,   2} } },
 };
 
-/* gap sub-block @ 0x8A04 (was gap+0x2D4, 212 bytes) */
-u8 dStageSectorFile2_gap_0x8730_sub_0x2D4[212] = {
-	#include <StageSectorFile2/gap_0x8730_sub_0x2D4.data.inc.c>
+/* MPMapObjData[35] @ 0x8A04 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dStageSectorFile2_gap_0x8730_sub_0x2D4[35] = {
+	{  37, {    -3,  1687 } },
+	{  33, { -3001,  1809 } },
+	{  24, { -1130,  1582 } },
+	{  25, {  -587,  1608 } },
+	{  26, {   -43,  1676 } },
+	{  27, {   479,  1772 } },
+	{  28, {  1858,  2636 } },
+	{  29, {  2387,  2823 } },
+	{  30, {  2980,  3031 } },
+	{  31, {  3568,  3226 } },
+	{   4, { -6000,  7495 } },
+	{   4, { -5250,  7495 } },
+	{   4, {  1499,  7495 } },
+	{   4, {  2249,  7495 } },
+	{   4, {  2999,  7495 } },
+	{   4, {  3749,  7495 } },
+	{   4, {  4499,  7495 } },
+	{   4, {  5249,  7495 } },
+	{   4, {  5999,  7495 } },
+	{   4, {  6749,  7495 } },
+	{   4, {  7499,  7495 } },
+	{   4, { -4500,  7495 } },
+	{   4, { -3750,  7495 } },
+	{   4, { -3000,  7495 } },
+	{   4, { -2250,  7495 } },
+	{   4, { -1500,  7495 } },
+	{   4, {  -750,  7495 } },
+	{   4, {     0,  7495 } },
+	{   4, {   749,  7495 } },
+	{  21, {   480,  1772 } },
+	{   0, { -3301,  1869 } },
+	{   1, { -2094,  1708 } },
+	{   2, {  -898,  1593 } },
+	{   3, {   296,  1739 } },
+	{  32, {     0,  3150 } },
 };
 
-/* Raw data from file offset 0x8AD8 to 0x8B00 (40 bytes) */
-u8 dStageSectorFile2_MPGeometryData_0x8AD8[40] = {
-	#include <StageSectorFile2/MPGeometryData_0x8AD8.data.inc.c>
+/* MPGeometryData @ 0x8AD8 (28 bytes + 12 bytes pad) */
+MPGeometryData dStageSectorFile2_MPGeometryData_0x8AD8 = {
+	2,
+	(MPVertexPosContainer*)dStageSectorFile2_gap_0x8730_sub_0x160,
+	(MPVertexArray*)dStageSectorFile2_gap_0x8730_sub_0x234,
+	dStageSectorFile2_gap_0x8730_sub_0x28C,
+	dStageSectorFile2_gap_0x8730_sub_0x2B0,
+	35,
+	(MPMapObjContainer*)dStageSectorFile2_gap_0x8730_sub_0x2D4,
 };
+PAD(12);
 
 /* Raw data from file offset 0x8B00 to 0xB810 (11536 bytes) */
 u32 dStageSectorFile2_Layer1Anim_AnimJoint[2884] = {

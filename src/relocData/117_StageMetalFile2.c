@@ -568,35 +568,71 @@ DObjDesc dStageMetalFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x2F64 to 0x3068 (260 bytes) */
-/* gap sub-block @ 0x2F64 (was gap+0x0, 72 bytes) */
-u8 dStageMetalFile2_gap_0x2F64[72] = {
-	#include <StageMetalFile2/gap_0x2F64.data.inc.c>
+/* MPVertexData[12] @ 0x2F64 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dStageMetalFile2_gap_0x2F64[12] = {
+	{ {    612,    948 }, 0x4000 },
+	{ {   -612,    948 }, 0x0000 },
+	{ {  -1500,    -90 }, 0x0000 },
+	{ {  -1500,   -870 }, 0x0000 },
+	{ {   1392,   -961 }, 0x0000 },
+	{ {   1418,   -493 }, 0x0000 },
+	{ {   1865,   -444 }, 0x0000 },
+	{ {   2292,    176 }, 0x8000 },
+	{ {   1362,    222 }, 0x0000 },
+	{ {    673,    -76 }, 0x0000 },
+	{ {    -45,    -78 }, 0x0000 },
+	{ {   -765,     58 }, 0x8000 },
 };
 
-/* gap sub-block @ 0x2FAC (was gap+0x48, 36 bytes) */
-u8 dStageMetalFile2_gap_0x2F64_sub_0x48[36] = {
-	#include <StageMetalFile2/gap_0x2F64_sub_0x48.data.inc.c>
+/* MPVertexArray (18 IDs) @ 0x2FAC — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageMetalFile2_gap_0x2F64_sub_0x48[18] = {
+	  0,   1,   7,   8,   9,  10,  11,   2,   3,   4,   5,   6,   6,   7,   4,   5,
+	  2,   3,
 };
 
-/* gap sub-block @ 0x2FD0 (was gap+0x6C, 28 bytes) */
-u8 dStageMetalFile2_gap_0x2F64_sub_0x6C[28] = {
-	#include <StageMetalFile2/gap_0x2F64_sub_0x6C.data.inc.c>
+/* MPVertexLinks[7] @ 0x2FD0 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageMetalFile2_gap_0x2F64_sub_0x6C[7] = {
+	{   0, 2 }, {   2, 6 }, {   8, 2 }, {  10, 2 }, {  12, 2 }, {  14, 2 },
+	{  16, 2 },
 };
 
-/* gap sub-block @ 0x2FEC (was gap+0x88, 20 bytes) */
-u8 dStageMetalFile2_gap_0x2F64_sub_0x88[20] = {
-	#include <StageMetalFile2/gap_0x2F64_sub_0x88.data.inc.c>
+/* MPLineInfo[1] @ 0x2FEC — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageMetalFile2_gap_0x2F64_sub_0x88[1] = {
+	{ 1, { {  0,   2}, {  2,   2}, {  4,   2}, {  6,   1} } },
 };
 
-/* gap sub-block @ 0x3000 (was gap+0x9C, 104 bytes) */
-u8 dStageMetalFile2_gap_0x2F64_sub_0x9C[104] = {
-	#include <StageMetalFile2/gap_0x2F64_sub_0x9C.data.inc.c>
+/* MPMapObjData[17] @ 0x3000 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dStageMetalFile2_gap_0x2F64_sub_0x9C[17] = {
+	{  37, {     0,  1050 } },
+	{  33, {     0,     0 } },
+	{   4, { -1050,  4800 } },
+	{   4, {  -750,  4800 } },
+	{   4, {  -420,  4800 } },
+	{   4, {  -120,  4800 } },
+	{   4, {   150,  4800 } },
+	{   4, {   450,  4800 } },
+	{   4, {   780,  4800 } },
+	{   4, {  1080,  4800 } },
+	{   4, {  -300,   540 } },
+	{   4, {   300,   540 } },
+	{   0, {  -960,   135 } },
+	{   1, {  -330,    45 } },
+	{   2, {   525,    30 } },
+	{   3, {  1545,   315 } },
+	{  32, {     0,  1710 } },
 };
 
-/* Raw data from file offset 0x3068 to 0x3090 (40 bytes) */
-u8 dStageMetalFile2_MPGeometryData_0x3068[40] = {
-	#include <StageMetalFile2/MPGeometryData_0x3068.data.inc.c>
+/* MPGeometryData @ 0x3068 (28 bytes + 12 bytes pad) */
+MPGeometryData dStageMetalFile2_MPGeometryData_0x3068 = {
+	1,
+	(MPVertexPosContainer*)dStageMetalFile2_gap_0x2F64,
+	(MPVertexArray*)dStageMetalFile2_gap_0x2F64_sub_0x48,
+	dStageMetalFile2_gap_0x2F64_sub_0x6C,
+	dStageMetalFile2_gap_0x2F64_sub_0x88,
+	17,
+	(MPMapObjContainer*)dStageMetalFile2_gap_0x2F64_sub_0x9C,
 };
+PAD(12);
 
 /* Raw data from file offset 0x3090 to 0x3220 (400 bytes) */
 /* Script-table split: leading chain-pointer table at the

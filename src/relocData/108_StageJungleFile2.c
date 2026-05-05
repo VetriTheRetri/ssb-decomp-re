@@ -636,35 +636,94 @@ DObjDesc dStageJungleFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x9954 to 0x9AFC (424 bytes) */
-/* gap sub-block @ 0x9954 (was gap+0x0, 120 bytes) */
-u8 dStageJungleFile2_gap_0x9954[120] = {
-	#include <StageJungleFile2/gap_0x9954.data.inc.c>
+/* MPVertexData[20] @ 0x9954 — vertex positions (MPGeometryData.vertex_data) */
+MPVertexData dStageJungleFile2_gap_0x9954[20] = {
+	{ {    339,     44 }, 0x4000 },
+	{ {      0,     44 }, 0x4000 },
+	{ {   -339,     44 }, 0x0000 },
+	{ {    339,     44 }, 0x4000 },
+	{ {      0,     44 }, 0x4000 },
+	{ {   -339,     44 }, 0x0000 },
+	{ {  -2449,   1418 }, 0x4000 },
+	{ {  -1270,   1626 }, 0x0000 },
+	{ {   1270,   1626 }, 0x4000 },
+	{ {   2449,   1418 }, 0x0000 },
+	{ {  -2130,      0 }, 0x8000 },
+	{ {  -1372,      0 }, 0x8000 },
+	{ {  -1080,    -52 }, 0x8000 },
+	{ {   -540,   -245 }, 0x8000 },
+	{ {   -262,   -299 }, 0x8000 },
+	{ {    262,   -299 }, 0x8000 },
+	{ {    540,   -245 }, 0x8000 },
+	{ {   1080,    -52 }, 0x8000 },
+	{ {   1372,      0 }, 0x8000 },
+	{ {   2130,      0 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x99CC (was gap+0x78, 40 bytes) */
-u8 dStageJungleFile2_gap_0x9954_sub_0x78[40] = {
-	#include <StageJungleFile2/gap_0x9954_sub_0x78.data.inc.c>
+/* MPVertexArray (20 IDs) @ 0x99CC — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageJungleFile2_gap_0x9954_sub_0x78[20] = {
+	  0,   1,   2,   3,   4,   5,   8,   9,   6,   7,  10,  11,  12,  13,  14,  15,
+	 16,  17,  18,  19,
 };
 
-/* gap sub-block @ 0x99F4 (was gap+0xA0, 20 bytes) */
-u8 dStageJungleFile2_gap_0x9954_sub_0xA0[20] = {
-	#include <StageJungleFile2/gap_0x9954_sub_0xA0.data.inc.c>
+/* MPVertexLinks[5] @ 0x99F4 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageJungleFile2_gap_0x9954_sub_0xA0[5] = {
+	{   0, 3 }, {   3, 3 }, {   6, 2 }, {   8, 2 }, {  10, 10 },
 };
 
-/* gap sub-block @ 0x9A08 (was gap+0xB4, 56 bytes) */
-u8 dStageJungleFile2_gap_0x9954_sub_0xB4[56] = {
-	#include <StageJungleFile2/gap_0x9954_sub_0xB4.data.inc.c>
+/* MPLineInfo[3] @ 0x9A08 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageJungleFile2_gap_0x9954_sub_0xB4[3] = {
+	{ 1, { {  0,   1}, {  1,   0}, {  1,   0}, {  1,   0} } },
+	{ 2, { {  1,   1}, {  2,   0}, {  2,   0}, {  2,   0} } },
+	{ 3, { {  2,   3}, {  5,   0}, {  5,   0}, {  5,   0} } },
 };
 
-/* gap sub-block @ 0x9A40 (was gap+0xEC, 188 bytes) */
-u8 dStageJungleFile2_gap_0x9954_sub_0xEC[188] = {
-	#include <StageJungleFile2/gap_0x9954_sub_0xEC.data.inc.c>
+/* MPMapObjData[31] @ 0x9A40 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dStageJungleFile2_gap_0x9954_sub_0xEC[31] = {
+	{  37, {  1859,  1537 } },
+	{  33, { -1739,     2 } },
+	{  34, {  -840,  -128 } },
+	{  35, {     0,  -292 } },
+	{  24, { -1740,     3 } },
+	{  25, {  -630,  -207 } },
+	{  26, {   630,  -207 } },
+	{  27, {  1740,     2 } },
+	{  28, { -1860,  1533 } },
+	{  29, {  1860,  1533 } },
+	{  30, {  -360,  1443 } },
+	{  31, {   360,  1443 } },
+	{   4, { -2219,  4983 } },
+	{   4, { -1499,  4983 } },
+	{   4, { -2039,  1053 } },
+	{   4, {  2220,  4983 } },
+	{   4, {  1500,  4983 } },
+	{   4, {  -359,  4980 } },
+	{   4, {   360,  4980 } },
+	{   4, {     0,  1380 } },
+	{   4, {  1500,  1173 } },
+	{   4, {  2040,  1053 } },
+	{   4, { -1499,  1173 } },
+	{  21, { -1409,     2 } },
+	{  22, { -1740,     2 } },
+	{  23, {  -630,  -207 } },
+	{   0, { -1739,     2 } },
+	{   1, {  -630,  -210 } },
+	{   2, {   630,  -210 } },
+	{   3, {  1739,     2 } },
+	{  32, {     0,  2610 } },
 };
 
-/* Raw data from file offset 0x9AFC to 0x9B20 (36 bytes) */
-u8 dStageJungleFile2_MPGeometryData_0x9AFC[36] = {
-	#include <StageJungleFile2/MPGeometryData_0x9AFC.data.inc.c>
+/* MPGeometryData @ 0x9AFC (28 bytes + 8 bytes pad) */
+MPGeometryData dStageJungleFile2_MPGeometryData_0x9AFC = {
+	3,
+	(MPVertexPosContainer*)dStageJungleFile2_gap_0x9954,
+	(MPVertexArray*)dStageJungleFile2_gap_0x9954_sub_0x78,
+	dStageJungleFile2_gap_0x9954_sub_0xA0,
+	dStageJungleFile2_gap_0x9954_sub_0xB4,
+	31,
+	(MPMapObjContainer*)dStageJungleFile2_gap_0x9954_sub_0xEC,
 };
+PAD(8);
 
 /* Raw data from file offset 0x9B20 to 0xC7D8 (11448 bytes) */
 u32 dStageJungleFile2_Layer1Anim_AnimJoint[2862] = {
@@ -3541,10 +3600,7 @@ DObjDesc dStageJungleFile2_Layer2DObj[] = {
 };
 
 /* Raw data from file offset 0xC888 to 0xD188 (2304 bytes) */
-/* gap sub-block @ 0xC888 (was gap+0x0, 8 bytes) */
-u8 dStageJungleFile2_gap_0xC888[8] = {
-	#include <StageJungleFile2/gap_0xC888.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0xC890 (was gap+0x8, 64 bytes) */
 Vtx dStageJungleFile2_gap_0xC888_sub_0x8[4] = {

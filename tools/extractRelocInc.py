@@ -202,7 +202,9 @@ _PAD_RE = re.compile(r"^\s*PAD\(\s*(?P<n>\d+)\s*\)\s*;", re.MULTILINE)
 _SUPPORTED_DECL_TYPES = frozenset({
     "u8", "u16", "u32", "u64", "s8", "s16", "s32", "s64", "f32",
     "Vtx", "Vtx_t", "Gfx", "Bitmap", "DObjDesc", "DObjDLLink", "MObjSub",
-    "Sprite", "MPGroundData", "FTAttributes", "FTThrowHitDesc",
+    "Sprite", "MPGroundData", "MPGeometryData",
+    "MPVertexData", "MPVertexLinks", "MPLineInfo", "MPMapObjData",
+    "FTAttributes", "FTThrowHitDesc",
     "WPAttributes", "ITAttributes",
 })
 
@@ -280,6 +282,12 @@ _FIXED_TYPE_SIZES = {
     "Vtx": 16, "Vtx_t": 16, "Gfx": 8, "Bitmap": 16,
     "DObjDesc": 44, "DObjDLLink": 8, "MObjSub": 120, "Sprite": 68,
     "MPGroundData": 0xA8,
+    "MPGeometryData": 0x1C,
+    "MPVertexData": 6,    # Vec2h pos + u16 flags
+    "MPVertexLinks": 4,   # u16 vertex1, vertex2
+    "MPLineInfo": 18,     # u16 yakumono_id + MPLineData[4] (u16,u16 each)
+    "MPMapObjData": 6,    # u16 mapobj_kind + Vec2h pos
+
     "FTAttributes": 0x488,       # from src/ft/fttypes.h, matches stock main sources
     "FTThrowHitDesc": 0x60,      # from src/ft/fttypes.h
     "WPAttributes": 52,          # from src/wp/wptypes.h (0x34 bytes)
@@ -1011,6 +1019,9 @@ def _process_inline(fid, master_path):
         return 0
 
     # First pass: assign byte offsets and gather DL tex metadata.
+    # IDO aligns top-level globals to 4 bytes; emulate that between non-`pad`
+    # decls so the cumulative offset matches the linker's actual placement.
+    # `pad` entries (PAD(N)) are byte-exact and not auto-aligned.
     block_info = []  # (entry, offset)
     tex_meta = {}
     offset = 0
@@ -1018,6 +1029,8 @@ def _process_inline(fid, master_path):
         if kind == 'pad':
             offset += payload
             continue
+        if offset % 4 != 0:
+            offset += 4 - (offset % 4)
         size = payload['size']
         block_info.append((payload, offset))
         inc_path = payload.get('inc_path') or ''

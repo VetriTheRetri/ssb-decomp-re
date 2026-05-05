@@ -767,29 +767,42 @@ u8 dStageLastFile2_gap_0x4E50[44] = {
 	#include <StageLastFile2/gap_0x4E50.data.inc.c>
 };
 
-/* gap sub-block @ 0x4E7C (was gap+0x2C, 28 bytes) */
-u8 dStageLastFile2_gap_0x4E50_sub_0x2C[28] = {
-	#include <StageLastFile2/gap_0x4E50_sub_0x2C.data.inc.c>
+/* MPVertexArray (14 IDs) @ 0x4E7C — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageLastFile2_gap_0x4E50_sub_0x2C[14] = {
+	  4,   5,   2,   3,   6,   0,   5,   6,   0,   1,   3,   4,   1,   2,
 };
 
-/* gap sub-block @ 0x4E98 (was gap+0x48, 28 bytes) */
-u8 dStageLastFile2_gap_0x4E50_sub_0x48[28] = {
-	#include <StageLastFile2/gap_0x4E50_sub_0x48.data.inc.c>
+/* MPVertexLinks[7] @ 0x4E98 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageLastFile2_gap_0x4E50_sub_0x48[7] = {
+	{   0, 2 }, {   2, 2 }, {   4, 2 }, {   6, 2 }, {   8, 2 }, {  10, 2 },
+	{  12, 2 },
 };
 
-/* gap sub-block @ 0x4EB4 (was gap+0x64, 20 bytes) */
-u8 dStageLastFile2_gap_0x4E50_sub_0x64[20] = {
-	#include <StageLastFile2/gap_0x4E50_sub_0x64.data.inc.c>
+/* MPLineInfo[1] @ 0x4EB4 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageLastFile2_gap_0x4E50_sub_0x64[1] = {
+	{ 1, { {  0,   1}, {  1,   2}, {  3,   2}, {  5,   2} } },
 };
 
-/* gap sub-block @ 0x4EC8 (was gap+0x78, 44 bytes) */
-u8 dStageLastFile2_gap_0x4E50_sub_0x78[44] = {
-	#include <StageLastFile2/gap_0x4E50_sub_0x78.data.inc.c>
+/* MPMapObjData[7] @ 0x4EC8 — map objects (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dStageLastFile2_gap_0x4E50_sub_0x78[7] = {
+	{  37, {   900,     1 } },
+	{  33, {  -900,     1 } },
+	{   0, {  -900,     1 } },
+	{   1, {   900,     1 } },
+	{   2, {  -600,     1 } },
+	{   3, {   600,     1 } },
+	{  32, {     0,  1050 } },
 };
 
-/* Raw data from file offset 0x4EF4 to 0x4F10 (28 bytes) */
-u8 dStageLastFile2_MPGeometryData_0x4EF4[28] = {
-	#include <StageLastFile2/MPGeometryData_0x4EF4.data.inc.c>
+/* MPGeometryData @ 0x4EF4 (28 bytes) */
+MPGeometryData dStageLastFile2_MPGeometryData_0x4EF4 = {
+	1,
+	(MPVertexPosContainer*)dStageLastFile2_gap_0x4E50,
+	(MPVertexArray*)dStageLastFile2_gap_0x4E50_sub_0x2C,
+	dStageLastFile2_gap_0x4E50_sub_0x48,
+	dStageLastFile2_gap_0x4E50_sub_0x64,
+	7,
+	(MPMapObjContainer*)dStageLastFile2_gap_0x4E50_sub_0x78,
 };
 
 /* Raw data from file offset 0x4F10 to 0x4F40 (48 bytes) */

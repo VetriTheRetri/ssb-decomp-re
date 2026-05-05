@@ -103,29 +103,11 @@ Gfx dGRBonus1SamusFile2_DL_0x0480[32] = {
 	#include <GRBonus1SamusFile2/DL_0x0480.dl.inc.c>
 };
 
-/* gap sub-block @ 0x0580 (was gap+0x580, 8 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x580[8] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x580.data.inc.c>
-};
-
-/* gap sub-block @ 0x0588 (was gap+0x588, 32 bytes) */
-u16 dGRBonus1SamusFile2_gap_0x0000_sub_0x588[16] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x588.palette.inc.c>
-};
-
-/* gap sub-block @ 0x05A8 (was gap+0x5A8, 136 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8[136] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x5A8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0630 (was gap+0x630, 40 bytes) */
-u16 dGRBonus1SamusFile2_gap_0x0000_sub_0x630[20] = {
-	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x630.palette.inc.c>
-};
-
-/* gap sub-block @ 0x0658 (was gap+0x658, 40 bytes) */
-Gfx dGRBonus1SamusFile2_DL_0x0658[5] = {
-	#include <GRBonus1SamusFile2/DL_0x0658.dl.inc.c>
+/* Merged Gfx DL @ 0x580 — 5 blocks merged because
+ * the head wasn't terminated with gsSPEndDisplayList; runtime
+ * walks straight through. */
+Gfx dGRBonus1SamusFile2_gap_0x0000_sub_0x580[32] = {
+	#include <GRBonus1SamusFile2/gap_0x0000_sub_0x580.dl.inc.c>
 };
 
 /* Merged Gfx DL @ 0x680 — 3 blocks merged because
@@ -175,10 +157,7 @@ DObjDesc dGRBonus1SamusFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x0A58 to 0x1868 (3600 bytes) */
-/* gap sub-block @ 0x0A58 (was gap+0x0, 8 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x0A58[8] = {
-	#include <GRBonus1SamusFile2/gap_0x0A58.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x0A60 (was gap+0x8, 320 bytes) */
 Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x8[20] = {
@@ -258,40 +237,84 @@ Gfx dGRBonus1SamusFile2_DL_0x1558[98] = {
 /* DObjDesc: Layer1DObj @ 0x1868 (4 entries) */
 DObjDesc dGRBonus1SamusFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1SamusFile2_gap_0x0A58 + 0xA08), { -150.00001525878906f, 1500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1SamusFile2_gap_0x0A58 + 0xB00), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1SamusFile2_DL_0x1460, { -150.00001525878906f, 1500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1SamusFile2_DL_0x1558, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x1918 to 0x1AD4 (444 bytes) */
-/* gap sub-block @ 0x1918 (was gap+0x0, 168 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x1918[168] = {
-	#include <GRBonus1SamusFile2/gap_0x1918.data.inc.c>
+/* MPVertexData[28] @ 0x1918 — vertex positions (referenced by MPGeometryData.vertex_data) */
+MPVertexData dGRBonus1SamusFile2_gap_0x1918[28] = {
+	{ {   450,   150 }, 0x4000 },
+	{ {  -450,   150 }, 0x0000 },
+	{ {   300,  -600 }, 0x4000 },
+	{ {  -600,  -600 }, 0x0000 },
+	{ { -2250,  1350 }, 0x0000 },
+	{ { -3150,  1350 }, 0x0000 },
+	{ { -3150,  1650 }, 0x0000 },
+	{ { -2250,  1650 }, 0x0000 },
+	{ { -1650, -2100 }, 0x0000 },
+	{ {  1350, -2100 }, 0x0000 },
+	{ {  1350,  1650 }, 0x0000 },
+	{ {   750,  1650 }, 0x0000 },
+	{ {   750,  1350 }, 0x0000 },
+	{ {  1050,  1350 }, 0x0000 },
+	{ {  1050, -1800 }, 0x0000 },
+	{ { -1350, -1800 }, 0x0000 },
+	{ { -1350,  1350 }, 0x0000 },
+	{ { -1050,  1350 }, 0x0000 },
+	{ { -1050,  1650 }, 0x0000 },
+	{ { -1650,  1650 }, 0x0000 },
+	{ {  3750, -3000 }, 0x0000 },
+	{ {  2550, -3000 }, 0x0000 },
+	{ {  2550, -2700 }, 0x0000 },
+	{ {  3750, -2700 }, 0x0000 },
+	{ {  2550,  1350 }, 0x0000 },
+	{ {  1950,  1350 }, 0x0000 },
+	{ {  1950,  1650 }, 0x0000 },
+	{ {  2550,  1650 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x19C0 (was gap+0xA8, 104 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x1918_sub_0xA8[104] = {
-	#include <GRBonus1SamusFile2/gap_0x1918_sub_0xA8.data.inc.c>
+/* MPVertexArray (52 IDs) @ 0x19C0 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dGRBonus1SamusFile2_gap_0x1918_sub_0xA8[52] = {
+	 0,  1, 10, 11, 26, 27, 18, 19,  6,  7,  2,  3, 14, 15, 22, 23,
+	20, 21,  8,  9, 12, 13,  4,  5, 16, 17, 24, 25, 23, 20, 27, 24,
+	 9, 10, 17, 18, 15, 16,  7,  4,  5,  6, 19,  8, 11, 12, 13, 14,
+	25, 26, 21, 22,
 };
 
-/* gap sub-block @ 0x1A28 (was gap+0x110, 104 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x1918_sub_0x110[104] = {
-	#include <GRBonus1SamusFile2/gap_0x1918_sub_0x110.data.inc.c>
+/* MPVertexLinks[26] @ 0x1A28 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dGRBonus1SamusFile2_gap_0x1918_sub_0x110[26] = {
+	{  0, 2 }, {  2, 2 }, {  4, 2 }, {  6, 2 }, {  8, 2 }, { 10, 2 },
+	{ 12, 2 }, { 14, 2 }, { 16, 2 }, { 18, 2 }, { 20, 2 }, { 22, 2 },
+	{ 24, 2 }, { 26, 2 }, { 28, 2 }, { 30, 2 }, { 32, 2 }, { 34, 2 },
+	{ 36, 2 }, { 38, 2 }, { 40, 2 }, { 42, 2 }, { 44, 2 }, { 46, 2 },
+	{ 48, 2 }, { 50, 2 },
 };
 
-/* gap sub-block @ 0x1A90 (was gap+0x178, 36 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x1918_sub_0x178[36] = {
-	#include <GRBonus1SamusFile2/gap_0x1918_sub_0x178.data.inc.c>
+/* MPLineInfo[2] @ 0x1A90 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dGRBonus1SamusFile2_gap_0x1918_sub_0x178[2] = {
+	{ 1, { { 0, 1 }, { 1, 0 }, {  1, 0 }, {  1, 0 } } },
+	{ 2, { { 1, 7 }, { 8, 6 }, { 14, 6 }, { 20, 6 } } },
 };
 
-/* gap sub-block @ 0x1AB4 (was gap+0x19C, 32 bytes) */
-u8 dGRBonus1SamusFile2_gap_0x1918_sub_0x19C[32] = {
-	#include <GRBonus1SamusFile2/gap_0x1918_sub_0x19C.data.inc.c>
+/* MPMapObjData[5] @ 0x1AB4 — map object placements (MPGeometryData.mapobjs); 2 bytes pad to align next decl */
+MPMapObjData dGRBonus1SamusFile2_gap_0x1918_sub_0x19C[5] = {
+	{ 33, { -150, -1797 } },
+	{  0, { -150, -1797 } },
+	{  1, { -1050, -1797 } },
+	{  2, { -600, -1797 } },
+	{  3, {  300, -1797 } },
 };
 
-/* Raw data from file offset 0x1AD4 to 0x1AF0 (28 bytes) */
-u8 dGRBonus1SamusFile2_MPGeometryData_0x1AD4[28] = {
-	#include <GRBonus1SamusFile2/MPGeometryData_0x1AD4.data.inc.c>
+/* MPGeometryData @ 0x1AD4 (28 bytes) */
+MPGeometryData dGRBonus1SamusFile2_MPGeometryData_0x1AD4 = {
+	2,                                                              /* yakumono_count */
+	(MPVertexPosContainer*)dGRBonus1SamusFile2_gap_0x1918,          /* vertex_data */
+	(MPVertexArray*)dGRBonus1SamusFile2_gap_0x1918_sub_0xA8,        /* vertex_id */
+	dGRBonus1SamusFile2_gap_0x1918_sub_0x110,                       /* vertex_links */
+	dGRBonus1SamusFile2_gap_0x1918_sub_0x178,                       /* line_info */
+	5,                                                              /* mapobj_count */
+	(MPMapObjContainer*)dGRBonus1SamusFile2_gap_0x1918_sub_0x19C,   /* mapobjs */
 };
 
 /* Raw data from file offset 0x1AF0 to 0x1DA0 (688 bytes) */

@@ -1235,7 +1235,7 @@ DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
 	{ 1, (void*)dMVCommon_DLLink_0x7D08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_DLLink_0x7D18, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)(dMVCommon_gap_0x4370_sub_0x39B8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_gap_0x4370_sub_0x39B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_DLLink_0x7D40, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 2818.4521484375f, 3203.845947265625f, 5498.3056640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)dMVCommon_DLLink_0x7D50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1252,7 +1252,7 @@ DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
 	{ 3, (void*)dMVCommon_DLLink_0x7DD0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 645.5726318359375f, 1136.498779296875f, 1044.5704345703125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)dMVCommon_DLLink_0x7DE0, { -32.4151611328125f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)(dMVCommon_gap_0x4370_sub_0x3A80), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVCommon_gap_0x4370_sub_0x3A80, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_DLLink_0x7E08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1341,10 +1341,7 @@ DObjDesc dMVCommon_RoomDesk[] = {
 };
 
 /* Raw data from file offset 0x8E7C to 0x98F8 (2684 bytes) */
-/* gap sub-block @ 0x8E7C (was gap+0x0, 12 bytes) */
-u8 dMVCommon_gap_0x8E7C[12] = {
-	#include <MVCommon/gap_0x8E7C.data.inc.c>
-};
+PAD(12);
 
 /* gap sub-block @ 0x8E88 (was gap+0xC, 40 bytes) */
 u16 dMVCommon_gap_0x8E7C_sub_0xC[20] = {
@@ -1386,7 +1383,7 @@ Gfx dMVCommon_RoomHaze_post_post[34] = {
 DObjDesc dMVCommon_RoomBooksDObjDesc[] = {
 	{ 0, (void*)0x00000000, { -629.3348999023438f, 2549.01708984375f, -4845.73193359375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)((u8*)dMVCommon_RoomHaze_DisplayList + 0xAF8), { -11.84549331665039f, 0.06088300049304962f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dMVCommon_RoomHaze_post_post), { 1001.095947265625f, -397.24365234375f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomHaze_post_post, { 1001.095947265625f, -397.24365234375f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -21725,7 +21722,7 @@ u8 dMVCommon_gap_0x204F8_sub_0x1F38[16] = {
 DObjDesc dMVCommon_RoomDeskGroundDObjDesc[] = {
 	{ 0, (void*)dMVCommon_DLLink_0x223B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dMVCommon_DLLink_0x223C8, { 371.76104736328125f, 2151.7734375f, -4845.66650390625f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)(dMVCommon_gap_0x204F8_sub_0x1EE0), { 524.3055419921875f, 1936.9608154296875f, -4229.2109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_gap_0x204F8_sub_0x1EE0, { 524.3055419921875f, 1936.9608154296875f, -4229.2109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
 /* Raw data from file offset 0x224C4 to 0x225CC (264 bytes) */

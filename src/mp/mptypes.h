@@ -57,12 +57,12 @@ struct MPLineInfo
 struct MPGeometryData
 {
 	u16 yakumono_count;
-	void* vertex_data;
-	void* vertex_id;
-	void* vertex_links;
+	void* vertex_data;     /* MPVertexPosContainer* — typed via cast at use sites */
+	void* vertex_id;       /* MPVertexArray* — typed via cast at use sites */
+	void* vertex_links;    /* MPVertexLinks* — typed via cast at use sites */
 	MPLineInfo* line_info;
 	u16 mapobj_count;
-	void* mapobjs;
+	void* mapobjs;         /* MPMapObjContainer* — typed via cast at use sites */
 };
 
 struct MPVertexInfoContainer

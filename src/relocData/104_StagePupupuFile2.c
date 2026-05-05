@@ -1570,7 +1570,10 @@ u8 dStagePupupuFile2_gap_0x1D00_sub_0x378[28] = {
 	#include <StagePupupuFile2/gap_0x1D00_sub_0x378.data.inc.c>
 };
 
-/* Raw data from file offset 0x2094 to 0x20B0 (28 bytes) */
+/* MPGeometryData @ 0x2094 (28 bytes) — left as raw bytes because the binary
+ * contains 0xFFFF in the u16->ptr struct padding (offsets 2-3) which a typed
+ * MPGeometryData initializer cannot reproduce, and all pointer fields hold
+ * literal sentinel values rather than relocations (no .reloc entries). */
 u8 dStagePupupuFile2_MPGeometryData_0x2094[28] = {
 	#include <StagePupupuFile2/MPGeometryData_0x2094.data.inc.c>
 };

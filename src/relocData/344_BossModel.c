@@ -348,10 +348,7 @@ DObjDesc dBossModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x2850 to 0x2D40 (1264 bytes) */
-/* gap sub-block @ 0x2850 (was gap+0x0, 8 bytes) */
-u8 dBossModel_gap_0x2850[8] = {
-	#include <BossModel/gap_0x2850.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x2858 (was gap+0x8, 40 bytes) */
 u16 dBossModel_gap_0x2850_sub_0x8[20] = {

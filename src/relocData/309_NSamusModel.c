@@ -223,10 +223,7 @@ DObjDesc dNSamusModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x2FE8 to 0x4BD0 (7144 bytes) */
-/* gap sub-block @ 0x2FE8 (was gap+0x0, 8 bytes) */
-u8 dNSamusModel_gap_0x2FE8[8] = {
-	#include <NSamusModel/gap_0x2FE8.data.inc.c>
-};
+PAD(8);
 
 /* Vtx: gap_0x2FE8_sub_0x8 @ 0x2FF0 (32 vertices) */
 Vtx dNSamusModel_gap_0x2FE8_sub_0x8[32] = {

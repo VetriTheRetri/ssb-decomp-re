@@ -1027,30 +1027,77 @@ u8 dStageYamabukiFile2_gap_0x6AC8_sub_0x160[188] = {
 	#include <StageYamabukiFile2/gap_0x6AC8_sub_0x160.data.inc.c>
 };
 
-/* gap sub-block @ 0x6CE4 (was gap+0x21C, 84 bytes) */
-u8 dStageYamabukiFile2_gap_0x6AC8_sub_0x21C[84] = {
-	#include <StageYamabukiFile2/gap_0x6AC8_sub_0x21C.data.inc.c>
+/* MPVertexArray (42 IDs) @ 0x6CE4 — vertex_id table (MPGeometryData.vertex_id) */
+u16 dStageYamabukiFile2_gap_0x6AC8_sub_0x21C[42] = {
+	  1,   2,   3,  16,  17,   6,   7,   8,   9,  10,  11,  12,  21,  22,   4,   5,
+	 17,  18,  19,   0,   1,  20,  21,  22,  23,  12,  13,   3,   4,   5,   6,  14,
+	 15,  16,  24,  25,  26,  27,  28,  29,  30,   0,
 };
 
-/* gap sub-block @ 0x6D38 (was gap+0x270, 64 bytes) */
-u8 dStageYamabukiFile2_gap_0x6AC8_sub_0x270[64] = {
-	#include <StageYamabukiFile2/gap_0x6AC8_sub_0x270.data.inc.c>
+/* MPVertexLinks[16] @ 0x6D38 — line vertex pairs (MPGeometryData.vertex_links) */
+MPVertexLinks dStageYamabukiFile2_gap_0x6AC8_sub_0x270[16] = {
+	{   0, 3 }, {   3, 2 }, {   5, 7 }, {  12, 2 }, {  14, 2 }, {  16, 3 },
+	{  19, 2 }, {  21, 2 }, {  23, 2 }, {  25, 2 }, {  27, 2 }, {  29, 2 },
+	{  31, 3 }, {  34, 3 }, {  37, 2 }, {  39, 2 },
 };
 
-/* gap sub-block @ 0x6D78 (was gap+0x2B0, 72 bytes) */
-u8 dStageYamabukiFile2_gap_0x6AC8_sub_0x2B0[72] = {
-	#include <StageYamabukiFile2/gap_0x6AC8_sub_0x2B0.data.inc.c>
+/* MPLineInfo[4] @ 0x6D78 — yakumono line groups (MPGeometryData.line_info) */
+MPLineInfo dStageYamabukiFile2_gap_0x6AC8_sub_0x2B0[4] = {
+	{ 1, { {  0,   4}, {  4,   1}, {  5,   3}, {  8,   5} } },
+	{ 3, { { 13,   0}, { 13,   0}, { 13,   0}, { 13,   1} } },
+	{ 5, { { 14,   1}, { 15,   0}, { 15,   0}, { 15,   0} } },
+	{ 7, { { 15,   1}, { 16,   0}, { 16,   0}, { 16,   0} } },
 };
 
-/* gap sub-block @ 0x6DC0 (was gap+0x2F8, 204 bytes) */
-u8 dStageYamabukiFile2_gap_0x6AC8_sub_0x2F8[204] = {
-	#include <StageYamabukiFile2/gap_0x6AC8_sub_0x2F8.data.inc.c>
+/* MPMapObjData[34] @ 0x6DC0 — map objects (MPGeometryData.mapobjs) */
+MPMapObjData dStageYamabukiFile2_gap_0x6AC8_sub_0x2F8[34] = {
+	{  37, {  1470,   930 } },
+	{  33, {  -960,  -240 } },
+	{  45, {  1470,   930 } },
+	{  44, {  -960,  -240 } },
+	{  24, {  -510,  -240 } },
+	{  25, {     0,   -30 } },
+	{  26, {   705,   165 } },
+	{  27, {  1455,   945 } },
+	{  28, {  3135,   585 } },
+	{  29, { -3030, -1425 } },
+	{  30, { -1440,  -210 } },
+	{  31, { -2340,  1140 } },
+	{   4, {  1161,  1670 } },
+	{   4, {   401,   822 } },
+	{   4, { -2417,  8355 } },
+	{   4, {  -978,   143 } },
+	{   4, {  -156,   492 } },
+	{   4, {  3221,  5300 } },
+	{   4, {   136,  7137 } },
+	{   4, { -1222,  1180 } },
+	{   4, { -4260,  -120 } },
+	{   4, { -3054, -1104 } },
+	{   4, {  3210,  1020 } },
+	{  21, { -2940,  4170 } },
+	{  18, {  1500,   360 } },
+	{  17, {  1290,   255 } },
+	{  14, {  1320,   270 } },
+	{  16, {  1260,   225 } },
+	{  15, {  1365,   270 } },
+	{   0, {  1200,   810 } },
+	{   1, {  -660,  -270 } },
+	{   2, {   510,    90 } },
+	{   3, { -1200,  -270 } },
+	{  32, {     0,  1150 } },
 };
 
-/* Raw data from file offset 0x6E8C to 0x6EB0 (36 bytes) */
-u8 dStageYamabukiFile2_MPGeometryData_0x6E8C[36] = {
-	#include <StageYamabukiFile2/MPGeometryData_0x6E8C.data.inc.c>
+/* MPGeometryData @ 0x6E8C (28 bytes + 8 bytes pad) */
+MPGeometryData dStageYamabukiFile2_MPGeometryData_0x6E8C = {
+	4,
+	(MPVertexPosContainer*)dStageYamabukiFile2_gap_0x6AC8_sub_0x160,
+	(MPVertexArray*)dStageYamabukiFile2_gap_0x6AC8_sub_0x21C,
+	dStageYamabukiFile2_gap_0x6AC8_sub_0x270,
+	dStageYamabukiFile2_gap_0x6AC8_sub_0x2B0,
+	34,
+	(MPMapObjContainer*)dStageYamabukiFile2_gap_0x6AC8_sub_0x2F8,
 };
+PAD(8);
 
 /* Raw data from file offset 0x6EB0 to 0x7000 (336 bytes) */
 /* Script-table split: leading chain-pointer table at the

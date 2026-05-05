@@ -14,13 +14,13 @@
 
 #include "relocdata_types.h"
 
-/* @ 0x0000, 64 bytes — 16 MIPS instructions cast and called as `sb32 (*)(void*)` */
-u32 dSYSignValidate_Func[16] = {
-	#include <SYSignValidate/Func.data.inc.c>
-};
+sb32 dSYSignValidate_Func(u32* arg0) {
+    if (arg0[0] != 0x04080040) return FALSE;
+    
+    if (arg0[1] != 0x02081040) return FALSE;
+
+    return TRUE;
+}
 
 /* @ 0x0040, 4 bytes — byte count of Func, used for icache writeback. */
 s32 dSYSignValidate_NBytes = 0x40;
-
-/* @ 0x0044, 12 bytes — trailing padding so the file rounds to 80 bytes. */
-u32 dSYSignValidate_pad[3] = { 0x00000000, 0x00000000, 0x00000000 };

@@ -14,13 +14,9 @@
 
 #include "relocdata_types.h"
 
-/* @ 0x0000, 48 bytes — 12 MIPS instructions cast and called as `sb32 (*)(void)` */
-u32 dSYKseg1Validate_Func[12] = {
-	#include <SYKseg1Validate/Func.data.inc.c>
-};
+sb32 dSYKseg1Validate_Func(void) {
+    return (*(s32* )0xA0000200 == 0xAC290000) ? TRUE : FALSE;
+}
 
 /* @ 0x0030, 4 bytes — byte count of Func, used for icache writeback. */
 s32 dSYKseg1Validate_NBytes = 0x30;
-
-/* @ 0x0034, 12 bytes — trailing padding so the file rounds to 64 bytes. */
-u32 dSYKseg1Validate_pad[3] = { 0x00000000, 0x00000000, 0x00000000 };

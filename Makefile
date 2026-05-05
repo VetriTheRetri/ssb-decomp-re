@@ -1066,10 +1066,20 @@ RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;
 # uncompressed files (ID >= 499) go directly to .bin.
+#
+# A handful of relocData files (e.g. SYKseg1Validate, SYSignValidate) embed a
+# small MIPS function as raw u32[] data and cast it to a function pointer at
+# runtime. Once those are decomp'd to real C functions, the bytes live in
+# .text rather than .data. To keep the same on-disk layout (function bytes
+# first, then the trailing data), we read .text's size from the .o and bump
+# .data's LMA past it before merging both sections into a single blob. When
+# .text is empty (the common case — pure data files), the LMA shift is 0 and
+# the output is identical to the old .data-only extraction.
 $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
-	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
+	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
+	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
 	$$(V)cp assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
 	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
@@ -1078,7 +1088,8 @@ $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/reloc
 $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
-	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
+	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
+	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
 	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi

@@ -216,7 +216,7 @@ def compute_palette_c_size(palette_c_path):
     with open(palette_c_path) as f:
         content = f.read()
     if not re.search(r'u16\s+\w+\s*\[\s*16\s*\]\s*=\s*\{', content):
-        print(f"Error: {palette_c_path} doesn't look like a 16-color palette",
+        print(f"Warning: {palette_c_path} doesn't look like a 16-color palette",
               file=sys.stderr)
         sys.exit(1)
     return 32
@@ -293,7 +293,7 @@ def compute_dl_c_size(dl_c_path):
         return int(m.group(1)) * 8
     m = re.search(r'Gfx\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
     if not m:
-        print(f"Error: {dl_c_path} doesn't look like a Gfx[] array",
+        print(f"Warning: {dl_c_path} doesn't look like a Gfx[] array",
               file=sys.stderr)
         sys.exit(1)
     return _count_top_level_braces(m.group(1)) * 8
@@ -326,7 +326,7 @@ def compute_vtx_c_size(vtx_c_path):
     # "(0 vertices" marker embedded in the header comment we wrote.
     if '(0 vertices' in raw:
         return 0
-    print(f"Error: {vtx_c_path} doesn't look like a Vtx[] array",
+    print(f"Warning: {vtx_c_path} doesn't look like a Vtx[] array",
           file=sys.stderr)
     sys.exit(1)
 

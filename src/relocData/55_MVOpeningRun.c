@@ -7,10 +7,13 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
-/* Raw data from file offset 0x0000 to 0x0004 (4 bytes) */
-u8 dMVOpeningRun_gap_0x0000[4] = {
-	#include <MVOpeningRun/gap_0x0000.data.inc.c>
-};
+extern u32 dMVOpeningRun_Mario_AnimJoint[];
+
+/* Intern reloc chain head — fixRelocChain rewrites this 4-byte slot at
+ * link time with the chain-encoded pointer to Mario_AnimJoint (and the
+ * forward chain link to the next entry). The intern chain threads
+ * through every chain pointer in this file. */
+AObjEvent32 *dMVOpeningRun_chain_head[1] = { (AObjEvent32 *)dMVOpeningRun_Mario_AnimJoint };
 
 /* Raw data from file offset 0x0004 to 0x00B4 (176 bytes) */
 u32 dMVOpeningRun_Mario_AnimJoint[44] = {
@@ -381,14 +384,10 @@ u8 dMVOpeningRun_Wallpaper_tex[] = {
     #include <MVOpeningRun/Wallpaper.ci8.inc.c>
 };
 
-/* Palette: @ 0x56C0 (16 colors RGBA5551) */
-u16 dMVOpeningRun_palette_0x56C0[16] = {
+/* Palette: @ 0x56C0 (152 colors RGBA5551, used by the CI8 wallpaper).
+ * The Sprite's `nTLUT=256` is a max-index hint, not the entry count. */
+u16 dMVOpeningRun_palette_0x56C0[152] = {
 	#include <MVOpeningRun/palette_0x56C0.palette.inc.c>
-};
-
-/* Raw data from file offset 0x56E0 to 0x57F0 (272 bytes) */
-u8 dMVOpeningRun_gap_0x56E0[272] = {
-	#include <MVOpeningRun/gap_0x56E0.data.inc.c>
 };
 
 /* Sprite: Wallpaper */

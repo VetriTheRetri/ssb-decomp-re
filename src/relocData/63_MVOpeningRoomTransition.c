@@ -63,9 +63,13 @@ Gfx dMVOpeningRoomTransition_Overlay_DisplayList[45] = {
 	#include <MVOpeningRoomTransition/Overlay.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0708 to 0x0714 (12 bytes) */
-u8 dMVOpeningRoomTransition_Overlay_post[12] = {
-	#include <MVOpeningRoomTransition/Overlay_post.data.inc.c>
+extern u32 dMVOpeningRoomTransition_Overlay_AnimJoint[];
+
+/* 8-byte alignment pad + chain-pointer slot to Overlay_AnimJoint
+ * (`&llMVOpeningRoomTransitionOverlayAnimJoint` resolves to +0x8). */
+PAD(8);
+AObjEvent32 *dMVOpeningRoomTransition_Overlay_AnimJoint_ptr[1] = {
+	(AObjEvent32 *)dMVOpeningRoomTransition_Overlay_AnimJoint,
 };
 
 /* Raw data from file offset 0x0714 to 0x0F40 (2092 bytes) */
@@ -600,9 +604,13 @@ Gfx dMVOpeningRoomTransition_Outline_DisplayList[79] = {
 	#include <MVOpeningRoomTransition/Outline.dl.inc.c>
 };
 
-/* Raw data from file offset 0x11B8 to 0x11C4 (12 bytes) */
-u8 dMVOpeningRoomTransition_Outline_post[12] = {
-	#include <MVOpeningRoomTransition/Outline_post.data.inc.c>
+extern u32 dMVOpeningRoomTransition_Outline_AnimJoint[];
+
+/* 8-byte alignment pad + chain-pointer slot to Outline_AnimJoint
+ * (`&llMVOpeningRoomTransitionOutlineAnimJoint` resolves to +0x8). */
+PAD(8);
+AObjEvent32 *dMVOpeningRoomTransition_Outline_AnimJoint_ptr[1] = {
+	(AObjEvent32 *)dMVOpeningRoomTransition_Outline_AnimJoint,
 };
 
 /* Raw data from file offset 0x11C4 to 0x11F0 (44 bytes) */

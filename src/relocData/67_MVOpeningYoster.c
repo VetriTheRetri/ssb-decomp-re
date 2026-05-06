@@ -1032,10 +1032,40 @@ DObjDesc dMVOpeningYoster_GroundDObjDesc[] = {
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 };
 
-/* Raw data from file offset 0xBA98 to 0xBF70 (1240 bytes) */
-u8 dMVOpeningYoster_gap_0xBA98[1240] = {
-	#include <MVOpeningYoster/gap_0xBA98.data.inc.c>
+/* `llMVOpeningYosterNestDObjDesc` — 27-joint nest scene-graph tree.
+ * Entries 0..26 each carry a Vtx pointer in `.dl`; entry 27 is the
+ * `{ 18, NULL, … }` terminator. */
+DObjDesc dMVOpeningYoster_NestDObjDesc[28] = {
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB810_Vtx, { 729.0f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB820_Vtx, { -729.00018f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB830_Vtx, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB840_Vtx, { 361.79999f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB850_Vtx, { 0.0f, -68.40001f, 459.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 0.0f, 0.0f, -772.79999f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB860_Vtx, { 729.0f, -68.40001f, 458.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB870_Vtx, { -729.00018f, -68.40001f, 461.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB880_Vtx, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB890_Vtx, { 361.79999f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8A0_Vtx, { 0.0f, -68.40001f, 291.00009f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8B0_Vtx, { 0.0f, 138.00003f, 127.80f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8C0_Vtx, { 94.200005f, 138.00003f, 65.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8D0_Vtx, { -128.99997f, 138.00003f, 65.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8E0_Vtx, { -166.80003f, 138.00003f, -23.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8F0_Vtx, { 188.39996f, 138.00003f, 21.59997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -25.504009f, 253.83424f, 192.27606f }, { 0.0f, 0.0f, 0.0f }, { 0.6515430f, 0.6515430f, 0.6593470f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB900_Vtx, { 138.69005f, 693.59979f, -933.60f }, { 0.0f, 0.0f, -0.3599740f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB910_Vtx, { -37.519169f, 147.69641f, -837.20978f }, { 0.0f, 0.0f, 2.96706f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB920_Vtx, { 549.36182f, 273.03436f, -837.20990f }, { 0.0f, 0.0f, 3.9269910f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB930_Vtx, { -338.76218f, 374.98813f, -837.20990f }, { 0.0f, 0.0f, 2.356194f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB940_Vtx, { 651.48694f, 693.42999f, -837.21008f }, { 0.0f, 0.0f, 4.712389f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB950_Vtx, { -362.85461f, 693.42999f, -837.20996f }, { 0.0f, 0.0f, 1.570796f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB960_Vtx, { 549.36182f, 1073.30652f, -837.21021f }, { 0.0f, 0.0f, 5.497787f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB970_Vtx, { -368.00711f, 1077.53918f, -837.21014f }, { 0.0f, 0.0f, 0.785398f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_Vtx_0xB980_Vtx, { 72.570915f, 1201.42542f, -837.21021f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
+PAD(8);
 
 /* Raw data from file offset 0xBF70 to 0xC940 (2512 bytes) */
 /* Script-table split: leading chain-pointer table at the

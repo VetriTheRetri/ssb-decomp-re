@@ -1852,8 +1852,11 @@ Vtx dMVOpeningSector_Vtx_0x5F50_Vtx[3] = {
 
 /* Raw data from file offset 0x5F80 to 0xD820 (30880 bytes) */
 /* gap sub-block @ 0x5F80 (was gap+0x0, 128 bytes) */
-u8 dMVOpeningSector_gap_0x5F80[128] = {
-	#include <MVOpeningSector/gap_0x5F80.data.inc.c>
+/* 16 Gfx commands of geometry-mode + othermode setup. The symbol is
+ * also used as a base for `+0xN` arithmetic into the larger
+ * 30880-byte data region that follows it. */
+Gfx dMVOpeningSector_gap_0x5F80[16] = {
+	#include <MVOpeningSector/gap_0x5F80.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6000 (was gap+0x80, 28800 bytes) */

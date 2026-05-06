@@ -29,9 +29,11 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2040 / 2132** files at 100% (96.99% of bytes typed; 514,664 / 17,082,000 bytes still untyped across 92 files).
+Overall: **2045 / 2132** files at 100% (97.00% of bytes typed; 512,952 / 17,082,000 bytes still untyped across 87 files).
 
-A block is *untyped* when it includes a `.data.inc.c` whose body is flat hex bytes (no nested `{...}` initializers). `.data.inc.c` files structured by a local `typedef struct` count as typed. Spritelist-driven files are 100% by construction. Sizes come from the `.data` section of the compiled US `.o`. The table below lists every file below 100%, sorted by completion (worst first); regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
+Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
+
+Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is flat hex bytes (no nested `{...}` initializers). `.data.inc.c` files structured by a local `typedef struct` count as typed. Spritelist-driven files are 100% by construction. Sizes come from the `.data` section of the compiled US `.o`.
 
 | FID | Name | Size (B) | Untyped (B) | Untyped blocks | Complete |
 |----:|---|---:|---:|---:|---:|
@@ -87,7 +89,7 @@ A block is *untyped* when it includes a `.data.inc.c` whose body is flat hex byt
 | 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
 | 328 | KirbyModel | 120864 | 11648 | 123 | 90.36% |
 | 320 | SamusModel | 58704 | 5640 | 76 | 90.39% |
-| 63 | MVOpeningRoomTransition | 4592 | 440 | 6 | 90.42% |
+| 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
 | 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
@@ -109,10 +111,8 @@ A block is *untyped* when it includes a `.data.inc.c` whose body is flat hex byt
 | 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
 | 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
 | 354 | YoshiSpecial2 | 1984 | 48 | 1 | 97.58% |
-| 67 | MVOpeningYoster | 51616 | 1240 | 1 | 97.60% |
 | 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
 | 117 | StageMetalFile2 | 16320 | 308 | 4 | 98.11% |
-| 55 | MVOpeningRun | 22768 | 276 | 2 | 98.79% |
 | 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
 | 344 | BossModel | 11584 | 136 | 1 | 98.83% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
@@ -124,9 +124,6 @@ A block is *untyped* when it includes a `.data.inc.c` whose body is flat hex byt
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
 | 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |
 | 147 | GRBonus2PurinFile2 | 21728 | 24 | 1 | 99.89% |
-| 69 | MVOpeningStandoff | 36656 | 28 | 2 | 99.92% |
-| 73 | MVOpeningSector | 249056 | 128 | 1 | 99.95% |
-| 71 | MVOpeningYamabuki | 257696 | 16 | 1 | 99.99% |
 
 ### Per-region divergence (JP build)
 

@@ -1,7 +1,7 @@
 # Relocation metadata for file 55
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dMVOpeningRun_gap_0x0000 0x0004
+intern dMVOpeningRun_chain_head dMVOpeningRun_Mario_AnimJoint
 intern dMVOpeningRun_Mario_AnimJoint+0xAC 0x00B4
 intern dMVOpeningRun_Fox_AnimJoint+0x6C 0x0124
 intern dMVOpeningRun_Donkey_AnimJoint+0x5C 0x0184

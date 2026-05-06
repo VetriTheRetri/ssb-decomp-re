@@ -6,7 +6,7 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern u8 dMVOpeningStandoff_gap_0x61B8[];
+extern u32 dMVOpeningStandoff_gap_0x61B8[];
 
 extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
 
@@ -129,10 +129,7 @@ Gfx dMVOpeningStandoff_Ground_DisplayList[161] = {
 	#include <MVOpeningStandoff/Ground.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2118 to 0x6140 (16424 bytes) */
-u8 dMVOpeningStandoff_Ground_post[16] = {
-	#include <MVOpeningStandoff/Ground_post.data.inc.c>
-};
+PAD(16);
 /* @tex fmt=I4 dim=64x128 */
 u8 dMVOpeningStandoff_Tex_0x2128[4104] = {
 	#include <MVOpeningStandoff/Tex_0x2128.tex.inc.c>
@@ -180,10 +177,13 @@ MObjSub dMVOpeningStandoff_LightningMObjSub_MObjSub[1] = {
 	}
 };
 
-/* Raw data from file offset 0x61B8 to 0x6950 (1944 bytes) */
-/* gap sub-block @ 0x61B8 (was gap+0x0, 12 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8[12] = {
-	#include <MVOpeningStandoff/gap_0x61B8.data.inc.c>
+/* Three Tex pointers — referenced by `gap_0x61B8_sub_0xC` and various
+ * MObjSub.sprites slots elsewhere. Chain pointers; fixRelocChain
+ * patches the bytes at link time. */
+u32 dMVOpeningStandoff_gap_0x61B8[3] = {
+	(u32)&dMVOpeningStandoff_Tex_0x4138,
+	(u32)&dMVOpeningStandoff_Tex_0x3130,
+	(u32)&dMVOpeningStandoff_Tex_0x2128,
 };
 
 /* u32 pointer array @ 0x61C4 (5 entries) */

@@ -36,9 +36,9 @@ import sys
 
 PROJECT = pathlib.Path(__file__).resolve().parent.parent
 SRC_DIR = PROJECT / 'src' / 'relocData'
-EXP_DIR = PROJECT / 'build' / 'src' / 'relocData'
-OBJ_DIR = PROJECT / 'build' / 'src' / 'relocData' / '.build'
-ASSETS_DIR = PROJECT / 'assets' / 'relocData'
+EXP_DIR = PROJECT / 'build' / 'us' / 'src' / 'relocData'
+OBJ_DIR = PROJECT / 'build' / 'us' / 'src' / 'relocData' / '.build'
+ASSETS_DIR = PROJECT / 'assets' / 'us' / 'relocData'
 
 TYPE_SIZE = {'Vtx': 16, 'Gfx': 8, 'u8': 1, 'u16': 2, 'u32': 4,
              'DObjDesc': 16, 'DObjDLLink': 8}

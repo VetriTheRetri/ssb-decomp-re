@@ -1127,7 +1127,17 @@ def emit_tex_png(data, offset, size, tex_meta, block_sub_dir, payload):
         return
     if fmt == 2 and palette_offset is not None:
         img.set_palette(data[palette_offset:palette_offset + 32])
-    png_name = payload[:-len('.data.c')] + '.png'
+    # Format suffix in filename keeps the PNG identifiable when multiple
+    # tools emit previews and matches `previewImagesTextures.py`'s scheme,
+    # so the two tools produce the same filename rather than duplicates.
+    fmt_to_str = {
+        (0, 2): 'rgba16', (0, 3): 'rgba32',
+        (2, 0): 'ci4',    (2, 1): 'ci8',
+        (3, 0): 'ia4',    (3, 1): 'ia8', (3, 2): 'ia16',
+        (4, 0): 'i4',     (4, 1): 'i8',
+    }
+    fmt_token = fmt_to_str.get((fmt, siz), 'png')
+    png_name = payload[:-len('.data.c')] + f'.{fmt_token}.png'
     png_path = os.path.join(block_sub_dir, png_name)
     os.makedirs(block_sub_dir, exist_ok=True)
     try:

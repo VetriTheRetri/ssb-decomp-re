@@ -24,6 +24,7 @@ import argparse
 import os
 import re
 import struct
+import subprocess
 import sys
 
 from n64img.image import CI4, CI8, I4, I8, IA4, IA8, IA16, RGBA16, RGBA32
@@ -122,7 +123,10 @@ def parse_c_blocks(text, target_name):
         lower = short.lower()
         if "_lut_" in lower or "_tlut_" in lower or "_palette" in lower or lower.startswith(("lut_", "tlut_")):
             kind = "lut"
-        elif "_tex_" in lower or lower.startswith("tex_"):
+        elif re.search(r"(?:^|_)tex_0x[0-9a-f]+", lower) or "tex_pool" in lower:
+            # Match the `Tex_0xN` per-texture naming convention. Atlas-style
+            # blobs (`*_tex_tiles`, `*_tex_atlas`) aren't single textures so
+            # we skip them — they can't render as one PNG anyway.
             kind = "tex"
         elif ctype == "Vtx":
             kind = "vtx"
@@ -207,6 +211,22 @@ def process_file(fid):
     lines = text.split("\n")
 
     blocks = parse_c_blocks(text, target_name)
+    # Resolve each block's true file offset via `nm` on the compiled .o,
+    # since `_0xN` parsed from the symbol name is only the trail-relative
+    # offset for blocks split out of trailing regions.
+    o_path = os.path.join(BUILD_DIR, ".build", f"{fid}.o")
+    if os.path.exists(o_path):
+        nm_out = subprocess.run(["nm", o_path],
+                                capture_output=True, text=True, check=True).stdout
+        sym_off = {}
+        for ln in nm_out.splitlines():
+            parts = ln.split()
+            if len(parts) >= 3 and parts[1] in ("D", "d"):
+                sym_off[parts[2]] = int(parts[0], 16)
+        for b in blocks:
+            if b["name"] in sym_off:
+                b["off"] = sym_off[b["name"]]
+
     luts = {b["name"]: b for b in blocks if b["kind"] == "lut"}
     textures = [b for b in blocks if b["kind"] == "tex"]
     if not textures and not luts:

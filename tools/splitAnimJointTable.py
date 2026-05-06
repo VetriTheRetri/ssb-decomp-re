@@ -93,6 +93,15 @@ def line_is_end(ln):
     return s == 'aobjEvent32End()'
 
 
+def line_is_event_macro(ln):
+    """True iff the line is an aobjEvent32* macro call (the start of a real
+    script). Raw hex literals or chain-pointer casts at the head of a
+    block mean it isn't an AObjEvent32 stream — the splitter should bail
+    before typing it as one."""
+    s = ln.strip().rstrip(',').strip()
+    return s.startswith('aobjEvent32')
+
+
 def find_table_end(lines, chain_offsets):
     """Walk lines from offset 0 while each word is either a chain pointer
     or a zero/null slot. Return the byte offset where the table ends (=
@@ -120,15 +129,31 @@ def find_table_end(lines, chain_offsets):
 
 def find_script_end(lines, start_off, limit_off):
     """Within [start_off, limit_off), find the byte offset of the first
-    aobjEvent32End() line. Returns the byte AFTER that End (script end
-    exclusive). If no End found within limit, returns limit_off."""
+    aobjEvent32End() line, then greedily consume any contiguous run of
+    End/zero/null words that follows (trailing track-end markers or
+    alignment pads that belong to the same script's array). Returns the
+    byte AFTER that run. If no End found within limit, returns limit_off.
+    Only `line_is_end` triggers the run start — zero-valued f32 payloads
+    sitting before the End shouldn't be misread as the script's tail."""
+    first_end_off = None
+    last_end_off = None
     for ln, off in lines:
         if off < start_off:
             continue
         if off >= limit_off:
             break
-        if line_is_end(ln):
-            return off + 4
+        if first_end_off is None:
+            if line_is_end(ln):
+                first_end_off = off
+                last_end_off = off
+            # Otherwise: still in the script body; payload f32 zeros are OK
+            continue
+        if line_is_end(ln) or line_is_zero(ln):
+            last_end_off = off
+        else:
+            return last_end_off + 4
+    if first_end_off is not None:
+        return last_end_off + 4
     return limit_off
 
 
@@ -293,37 +318,62 @@ def process_anim_array(c_text, reloc_text, file_prefix, sym_byte_off, sym, count
     for start, end in ranges:
         block_lines = [(ln, off) for ln, off in lines if start <= off < end]
         script_blocks.append((start, end, block_lines))
-    # Trailing pad: bytes from last script end to total_bytes, must be all
-    # zero for a clean per-script split. If not, the array contains orphan
-    # scripts only reachable via Jump/SetAnim from inside other scripts —
-    # fall back to the two-block split (table + raw u8 data) which doesn't
-    # need to identify each script boundary.
-    pad_start = ranges[-1][1] if ranges else table_end
-    pad_lines = [(ln, off) for ln, off in lines if off >= pad_start]
-    if not all(line_is_zero(ln) for ln, _ in pad_lines):
-        return _two_block_split(c_text, file_prefix, sym_byte_off, sym, count,
-                                 body, lines, total_bytes, table_end,
-                                 reloc_pairs, chain_offsets)
-    pad_size = total_bytes - pad_start
-    # Coverage check: every byte after table_end must be in exactly one
-    # script range or in the trailing PAD. Anything else means there are
-    # scripts reachable only via Jump/SetAnim from inside other scripts
-    # (not from the leading pointer table). For those, fall back to the
-    # `_two_block_split` mode below: just split off the table and dump
-    # the rest as one raw u8 data block (with `.data.inc.c` include).
+    # Walk ranges in order; the cleanly-tileable region is the longest
+    # prefix where ranges[i].start == prev_end AND each range's first line
+    # is a valid aobjEvent32 macro (i.e. it's actually a script, not raw
+    # data referenced from inside another script). Anything from there to
+    # total_bytes goes into a `u8 <sym>_trailing[N]` block.
+    lines_at_off = {off: ln for ln, off in lines}
     covered = table_end
-    full_coverage = True
+    clean_ranges = []
+    stopped_at_nonscript = False
     for s, e in ranges:
         if s != covered:
-            full_coverage = False
             break
+        first_line = lines_at_off.get(s, '')
+        if not line_is_event_macro(first_line):
+            stopped_at_nonscript = True
+            break
+        clean_ranges.append((s, e))
         covered = e
-    if covered + pad_size != total_bytes:
-        full_coverage = False
-    if not full_coverage:
+    # If we stopped because the next "script" was actually raw data, the
+    # previous clean script's greedy End-run almost certainly belongs to
+    # that data block, not to the script — shrink the last clean range
+    # back to its first End() so those trailing words flow into _trailing.
+    if stopped_at_nonscript and clean_ranges:
+        last_s, _ = clean_ranges[-1]
+        for ln, off in lines:
+            if off < last_s:
+                continue
+            if line_is_end(ln):
+                clean_ranges[-1] = (last_s, off + 4)
+                covered = off + 4
+                break
+    # Trim ranges to the clean prefix; rebuild script_blocks accordingly
+    ranges = clean_ranges
+    script_blocks = []
+    for start, end in ranges:
+        block_lines = [(ln, off) for ln, off in lines if start <= off < end]
+        script_blocks.append((start, end, block_lines))
+    if not script_blocks:
         return _two_block_split(c_text, file_prefix, sym_byte_off, sym, count,
                                  body, lines, total_bytes, table_end,
                                  reloc_pairs, chain_offsets)
+    # Anything after the last clean script and before total_bytes is the
+    # trailing region. If it's all zero/End we emit a PAD; otherwise it
+    # becomes a u8 _trailing block (with .data.inc.c include) carrying
+    # orphan scripts and embedded data tables.
+    pad_start = covered
+    pad_lines = [(ln, off) for ln, off in lines if off >= pad_start]
+    pad_size = total_bytes - pad_start
+    pad_is_zero = all(line_is_zero(ln) for ln, _ in pad_lines)
+    trailing_size = 0 if pad_is_zero else pad_size
+    if pad_is_zero:
+        pass  # keep pad_size, emit PAD(pad_size)
+    else:
+        pad_size = 0  # the bytes go into the _trailing u8 block instead
+    # script_starts must be limited to the clean-prefix script_blocks now
+    script_starts = [s for s, _, _ in script_blocks]
     # Build symbol names for the new scripts; each script uses absolute offset
     # = sym's nm offset + script byte offset within array.
     new_names = {}
@@ -372,16 +422,34 @@ def process_anim_array(c_text, reloc_text, file_prefix, sym_byte_off, sym, count
     if pad_size:
         c_lines.append('')
         c_lines.append(f'PAD({pad_size});')
+    trailing_sym = None
+    if trailing_size > 0:
+        trailing_sym = f'{sym}_trailing'
+        short = trailing_sym.removeprefix(file_prefix)
+        file_subdir = file_prefix.rstrip('_').removeprefix('d')
+        inc_path = f'{file_subdir}/{short}.data.inc.c'
+        c_lines.append('')
+        c_lines.append('/* Trailing region: orphan scripts reachable only via Jump/SetAnim')
+        c_lines.append(' * from inside the typed scripts above, plus any embedded data')
+        c_lines.append(' * tables. Dumped raw because the boundaries aren\'t cleanly')
+        c_lines.append(' * detectable from .reloc + first-End-per-script alone. */')
+        c_lines.append(f'u8 {trailing_sym}[{trailing_size}] = {{')
+        c_lines.append(f'\t#include <{inc_path}>')
+        c_lines.append('};')
     new_block = '\n'.join(c_lines)
     # Rewrite .reloc lines: any chain entry whose target falls into a
-    # script's range gets retargeted to `<new_script_sym>+<off_within>`.
+    # clean script's range gets retargeted to `<new_script_sym>+<off_within>`;
+    # targets in the trailing region (when present) become `<trailing_sym>+<delta>`.
+    trailing_start = script_blocks[-1][1] if script_blocks else table_end
     rename_map = {}
+    ptr_rewrites = {}
     for ptr_off, target_label in reloc_pairs:
         m = re.match(rf'^{re.escape(sym)}(?:\+0x([0-9A-Fa-f]+))?$', target_label)
         if not m:
             continue
         tgt = int(m.group(1), 16) if m.group(1) else 0
-        # Find the containing script
+        # Find the containing clean script
+        retargeted = False
         for start in script_starts:
             new_name = new_names[start]
             for s2, e2 in ranges:
@@ -393,10 +461,43 @@ def process_anim_array(c_text, reloc_text, file_prefix, sym_byte_off, sym, count
                         rename_map[target_label] = new_name
                     else:
                         rename_map[target_label] = f'{new_name}+0x{delta:X}'
+                    retargeted = True
                     break
+            if retargeted:
+                break
+        # If target lies in the trailing region, retarget to <sym>_trailing
+        if not retargeted and trailing_sym and tgt >= trailing_start:
+            delta = tgt - trailing_start
+            if delta == 0:
+                rename_map[target_label] = trailing_sym
             else:
-                continue
-            break
+                rename_map[target_label] = f'{trailing_sym}+0x{delta:X}'
+        # ALSO: if the *pointer* (ptr_off) lies in the trailing region, the
+        # ptr_label needs rewriting too — fixRelocChain looks up ptr_label
+        # via nm, and the original `<sym>+0xN` no longer covers that byte
+        # since `<sym>` is now just the table.
+        if trailing_sym and ptr_off >= trailing_start:
+            old_ptr = sym if ptr_off == 0 else f'{sym}+0x{ptr_off:X}'
+            new_ptr_off = ptr_off - trailing_start
+            new_ptr = trailing_sym if new_ptr_off == 0 else f'{trailing_sym}+0x{new_ptr_off:X}'
+            ptr_rewrites[old_ptr] = new_ptr
+        # Same for ptr_off pointing into a clean script
+        elif ptr_off >= table_end and ptr_off < trailing_start:
+            for start in script_starts:
+                new_name = new_names[start]
+                for s2, e2 in ranges:
+                    if s2 != start:
+                        continue
+                    if s2 <= ptr_off < e2:
+                        delta = ptr_off - s2
+                        old_ptr = sym if ptr_off == 0 else f'{sym}+0x{ptr_off:X}'
+                        new_ptr = new_name if delta == 0 else f'{new_name}+0x{delta:X}'
+                        ptr_rewrites[old_ptr] = new_ptr
+                        break
+                if old_ptr in ptr_rewrites:
+                    break
+    if ptr_rewrites:
+        return new_block, rename_map, ptr_rewrites
     return new_block, rename_map
 
 
@@ -409,7 +510,7 @@ def process_file(fid):
     fname = re.match(rf'^{fid}_(\w+)\.c$', c_path.name).group(1)
     file_prefix = f'd{fname}_'
     reloc_path = c_path.with_suffix('.reloc')
-    obj = pathlib.Path(f'build/src/relocData/.build/{fid}.o')
+    obj = pathlib.Path(f'build/us/src/relocData/.build/{fid}.o')
     if not obj.exists():
         return False
     nm_out = subprocess.run(['mips-linux-gnu-nm', str(obj)],

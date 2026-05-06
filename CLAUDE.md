@@ -102,8 +102,8 @@ relocData files are binary asset files (models, stages, effects) containing Gfx 
 ### Build outputs (`build/<v>/src/relocData/`)
 
 - **Expanded `.c` files** — Human-readable view with decoded Gfx macros, Vtx structs, etc. Inline data (Gfx, Vtx) is decoded directly; only textures, palettes, and untyped blobs use `#include`. Use these to identify what type untyped `u8[]` gap blocks actually are.
-- **`.inc.c` files** — Generated from the baserom binary during `make extract`. Format depends on the declared C type: `.vtx.inc.c` for `Vtx`, `.dl.inc.c` for `Gfx`, `.palette.inc.c` for `u16` palettes, `.data.inc.c` for raw `u8`/`u32`.
-- **`.png` previews** — Generated for texture blocks to help with annotation.
+- **`.inc.c` files** — Generated from the baserom binary during `make extract`. **The include's filename extension — not the symbol name — is what types the block:** `.vtx.inc.c` ↔ `Vtx`, `.dl.inc.c` ↔ `Gfx`, `.palette.inc.c` ↔ `u16` palette, `.tex.inc.c` ↔ `u8` texture (also enables PNG previews when a DL references the symbol), `.data.inc.c` ↔ untyped raw bytes. A symbol called `dFoo_palette_0xNNNN` that still includes `.data.inc.c` is mistyped — rename the include to `.palette.inc.c` (and re-extract). The naming goal is to **eliminate `.data.inc.c` blocks** in favor of typed extensions wherever the block is a single coherent type.
+- **`.png` previews** — Generated for `Tex_0xNNNN.tex.inc.c` blocks. The `Tex_` prefix on the symbol plus the `.tex.inc.c` extension are both required; the previewer also needs a DL elsewhere to set the texture image so it can recover fmt/dim, or an inline `/* @tex fmt=CI4 dim=WxH */` annotation above the decl.
 
 ### Typing workflow
 
@@ -115,6 +115,8 @@ To convert an untyped `u8[]` gap block to its actual type:
    - Keep the **same symbol name** to preserve relocation chain order (renaming symbols changes the chain threading and breaks matching).
 3. Run `make extract` to regenerate the `.inc.c` files in the new format, then rebuild with `RELOC_DATA=1`.
 4. Only convert blocks whose size is exactly divisible by the element size (e.g., 16 bytes per Vtx). Blocks that straddle type boundaries (e.g., 56 bytes = 3 Vtx + 8 shared bytes) should stay as `u8`.
+5. **Never hardcode reloc-chain pointer values (`0xXXXXYYYY`).** Any 4-byte slot listed as an `intern`/`extern` entry in the `.reloc` is a chain-encoded pointer that `tools/fixRelocChain.py` rewrites at link time using the `(next_word << 16) | target_word` encoding. In the C source, write these slots as **typed pointer expressions** (e.g. `(MObjSub *)dFoo_sub_0x1234`, `(u16 *)&dFoo_Tex_0x65F0[0x1B0]`, or `NULL`) — never as raw chain hex like `0x0A961972`. The compiler emits whatever address the expression evaluates to; `fixRelocChain.py` overwrites it post-link, so the chosen pointer type only needs to give the slot the right size. Add forward `extern` decls when the target appears later in the file. Same rule applies to `.reloc` files: prefer `dFoo_sub_0x1234` symbolic targets over raw `0x1234` byte offsets so symbol shuffles don't silently desync.
+6. **If a chain-encoded pointer in a typed array points into the middle of an existing block, that's a signal to split the parent.** E.g., a palette pointer landing inside `Tex_0xNNNN+0x5E8` usually means the texture has trailing palette frames embedded — split them out into their own typed `u16` arrays so the pointer becomes `dFoo_palette_0xMMMM` instead of `(u16 *)&dFoo_Tex_0xNNNN[0x5E8]`. The `.reloc` raw-offset form (`dFoo_Tex_0xNNNN+0x5E8`) is also a hint that a split is overdue.
 
 ### Key types in relocData files
 
@@ -125,8 +127,9 @@ To convert an untyped `u8[]` gap block to its actual type:
 | DL link array | `DObjDLLink` | inline C init | `{ list_id, Gfx* }` pairs, terminator `{ 4, NULL }` |
 | DObj descriptor | `DObjDesc` | inline C init | Scene graph entries |
 | Palette/TLUT | `u16` | `.palette.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadTLUT()` |
-| Texture | `u8` | `.data.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadBlock()` |
-| Animation | `u32` / `u16` | `.data.inc.c` | AnimJoint / AObjEvent16 data |
+| Texture | `u8` (`Tex_0xNNNN`) | `.tex.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadBlock()`; previewer also writes a `.png` |
+| Animation | `u32` / `u16` | `.data.inc.c` | AnimJoint / AObjEvent16 data (no dedicated typed extension yet) |
+| Untyped raw | `u8` / `u32` | `.data.inc.c` | Last resort — only for blocks that genuinely straddle types |
 
 ## Important Notes
 

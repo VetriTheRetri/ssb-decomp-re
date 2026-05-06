@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2045 / 2132** files at 100% (97.00% of bytes typed; 512,952 / 17,082,000 bytes still untyped across 87 files).
+Overall: **2046 / 2132** files at 100% (97.03% of bytes typed; 507,812 / 17,082,000 bytes still untyped across 86 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -75,7 +75,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 332 | CaptainModel | 51344 | 9196 | 110 | 82.09% |
 | 313 | FoxModel | 32336 | 5616 | 81 | 82.63% |
 | 338 | YoshiModel | 44256 | 7172 | 94 | 83.79% |
-| 296 | MarioModel | 29968 | 4688 | 70 | 84.36% |
 | 323 | LuigiModel | 32528 | 4972 | 85 | 84.71% |
 | 330 | PurinModel | 32224 | 4424 | 68 | 86.27% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
@@ -93,7 +92,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
-| 129 | GRBonus1LinkFile2 | 10720 | 684 | 6 | 93.62% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
@@ -116,6 +114,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
 | 344 | BossModel | 11584 | 136 | 1 | 98.83% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
+| 296 | MarioModel | 29968 | 232 | 1 | 99.23% |
 | 102 | StagePupupuBeta2 | 10496 | 64 | 1 | 99.39% |
 | 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
 | 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |

@@ -55,13 +55,36 @@ def read_symbol_table(obj_path):
     return symbols
 
 
-def resolve_label(label, symbols):
+_extern_symbol_cache = {}  # {file_id: {sym_name: offset}}
+
+
+def _load_extern_symbols(file_id, version):
+    """Load and cache the symbol table for another relocData file's .o so
+    cross-file extern labels can resolve to byte offsets in the target."""
+    if file_id in _extern_symbol_cache:
+        return _extern_symbol_cache[file_id]
+    o_path = os.path.join(PROJECT_DIR, 'build', version, 'src', 'relocData',
+                           '.build', f'{file_id}.o')
+    if not os.path.exists(o_path):
+        return None
+    syms = read_symbol_table(o_path)
+    _extern_symbol_cache[file_id] = syms
+    return syms
+
+
+def resolve_label(label, symbols, extern_file_id=None, version=None):
     """Resolve a label like 'varname+0x34' to a byte offset.
 
     Supports:
         varname         -> symbols[varname]
         varname+0x34    -> symbols[varname] + 0x34
         0x1234          -> 0x1234  (raw hex fallback)
+
+    If `extern_file_id` is given (from a `# -> file NNN` comment on an extern
+    line) and the label isn't found in `symbols`, falls back to the symbol
+    table of `<build>/<version>/src/relocData/.build/<extern_file_id>.o`.
+    The result is then a byte offset within THAT file's binary, which is
+    exactly what the chain encoder needs for a cross-file pointer.
     """
     # Raw hex offset (backwards compat)
     if re.match(r'^0x[0-9a-fA-F]+$', label):
@@ -72,32 +95,52 @@ def resolve_label(label, symbols):
     if m:
         name = m.group(1)
         rel_offset = int(m.group(2), 16)
-        if name not in symbols:
-            print(f"Error: symbol '{name}' not found in object file", file=sys.stderr)
-            sys.exit(1)
-        return symbols[name] + rel_offset
+        if name in symbols:
+            return symbols[name] + rel_offset
+        # Cross-file fallback for externs.
+        if extern_file_id is not None and version is not None:
+            ext = _load_extern_symbols(extern_file_id, version)
+            if ext is not None and name in ext:
+                return ext[name] + rel_offset
+        print(f"Error: symbol '{name}' not found in object file", file=sys.stderr)
+        sys.exit(1)
 
     # plain label
     if label in symbols:
         return symbols[label]
+    if extern_file_id is not None and version is not None:
+        ext = _load_extern_symbols(extern_file_id, version)
+        if ext is not None and label in ext:
+            return ext[label]
 
     print(f"Error: cannot resolve label '{label}'", file=sys.stderr)
     sys.exit(1)
 
 
-def parse_reloc_metadata(reloc_path, symbols):
+def parse_reloc_metadata(reloc_path, symbols, version=None):
     """Parse .reloc file, resolving labels to byte offsets.
 
     Returns (intern_entries, extern_entries) where each is a list of
     (ptr_byte_offset, target_byte_offset).
+
+    Inline `# -> file NNN (Name)` comments on extern lines are used to
+    locate the target file's `.o` for cross-file symbol resolution. The
+    comment is purely metadata for readability — the only thing the parser
+    needs from it is the integer file ID.
     """
     intern_entries = []
     extern_entries = []
 
+    extern_fid_re = re.compile(r'#\s*->\s*file\s+(\d+)\b')
+
     with open(reloc_path) as f:
         for line in f:
-            # Strip trailing inline comments like `# -> file 208 (FoxMainMotion)`
-            # that annotateExternRelocFids.py writes for readability.
+            extern_fid = None
+            # Pull out the file-id hint before stripping the comment.
+            m = extern_fid_re.search(line)
+            if m:
+                extern_fid = int(m.group(1))
+            # Strip inline comments for parsing.
             hash_idx = line.find('#')
             if hash_idx >= 0:
                 line = line[:hash_idx]
@@ -109,8 +152,11 @@ def parse_reloc_metadata(reloc_path, symbols):
                 continue
 
             chain_type, ptr_label, target_label = parts
+            # ptr_label is always in this file's binary; target_label may
+            # cross to another file when chain_type == 'extern'.
             ptr_off = resolve_label(ptr_label, symbols)
-            target_off = resolve_label(target_label, symbols)
+            tgt_fid = extern_fid if chain_type == 'extern' else None
+            target_off = resolve_label(target_label, symbols, tgt_fid, version)
 
             if chain_type == 'intern':
                 intern_entries.append((ptr_off, target_off))
@@ -142,11 +188,11 @@ def build_chain(data, entries):
     return entries[0][0] // 4
 
 
-def fixup_binary(binary_path, reloc_path, obj_path, file_id=None):
+def fixup_binary(binary_path, reloc_path, obj_path, file_id=None, version=None):
     """Patch relocation chains using symbolic labels resolved from .o file."""
 
     symbols = read_symbol_table(obj_path)
-    intern_entries, extern_entries = parse_reloc_metadata(reloc_path, symbols)
+    intern_entries, extern_entries = parse_reloc_metadata(reloc_path, symbols, version)
 
     with open(binary_path, 'rb') as f:
         data = bytearray(f.read())
@@ -190,7 +236,7 @@ def main():
     args = parser.parse_args()
     _bind_version(args.version)
 
-    fixup_binary(args.binary_path, args.reloc_path, args.obj_path, args.file_id)
+    fixup_binary(args.binary_path, args.reloc_path, args.obj_path, args.file_id, args.version)
 
 
 if __name__ == "__main__":

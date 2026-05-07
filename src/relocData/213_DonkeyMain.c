@@ -13,8 +13,8 @@ extern Gfx dDonkeyModel_Joint_0x2F08_DisplayList[];
 extern Gfx dDonkeyModel_Joint_0x6188_DisplayList[];
 extern Gfx dDonkeyModel_Joint_0x61F8_DisplayList[];
 extern Gfx dDonkeyModel_Joint_0x6748_DisplayList[];
-extern u8 dDonkeyModel_gap_0x0000[];
-extern u8 dDonkeyModel_gap_0x0000_sub_0x18[];
+extern MObjSub **dDonkeyModel_gap_0x0000[];
+extern u8 dDonkeyModel_Joint_0x0080_post[];
 extern u8 dDonkeyModel_gap_0x3E78_sub_0x11F8[];
 extern u8 dDonkeyModel_gap_0x3E78_sub_0x1200[];
 extern u8 dDonkeyModel_gap_0x3E78_sub_0x1228[];
@@ -91,7 +91,7 @@ FTHiddenPart dDonkeyMain_hiddenparts[4] = {
 
 /* @ 0x0058, 80 bytes: FTAttributes.sub_0x058 target (was dDonkeyMain_pre+0x58) */
 FTModelPart dDonkeyMain_modelparts_desc_0x058[4] = {
-	{ (Gfx*)&dDonkeyModel_Joint_0x2760_DisplayList, (MObjSub**)((u8*)dDonkeyModel_gap_0x0000_sub_0x18 + 0xF00), (AObjEvent32**)&dDonkeyModel_gap_0x3E78_sub_0x5D4, NULL, 0x00 },
+	{ (Gfx*)&dDonkeyModel_Joint_0x2760_DisplayList, (MObjSub**)((u8*)dDonkeyModel_Joint_0x0080_post + 0xE98), (AObjEvent32**)&dDonkeyModel_gap_0x3E78_sub_0x5D4, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_Joint_0x6188_DisplayList, (MObjSub**)&dDonkeyModel_gap_0x3E78_sub_0x11F8, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0x4A4, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_gap_0x7390_sub_0xBA8, (MObjSub**)&dDonkeyModel_gap_0x7390_sub_0xAC0, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0xD08, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_gap_0x7390_sub_0xE48, (MObjSub**)&dDonkeyModel_gap_0x7390_sub_0xDA0, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0xF78, NULL, 0x00 },
@@ -99,7 +99,7 @@ FTModelPart dDonkeyMain_modelparts_desc_0x058[4] = {
 
 /* @ 0x00A8, 120 bytes: FTAttributes.sub_0x0A8 target (was dDonkeyMain_pre+0xA8) */
 FTModelPart dDonkeyMain_modelparts_desc_0x0A8[6] = {
-	{ (Gfx*)&dDonkeyModel_Joint_0x2930_DisplayList, (MObjSub**)((u8*)dDonkeyModel_gap_0x0000_sub_0x18 + 0xF10), (AObjEvent32**)&dDonkeyModel_gap_0x3E78_sub_0x5E0, NULL, 0x00 },
+	{ (Gfx*)&dDonkeyModel_Joint_0x2930_DisplayList, (MObjSub**)((u8*)dDonkeyModel_Joint_0x0080_post + 0xEA8), (AObjEvent32**)&dDonkeyModel_gap_0x3E78_sub_0x5E0, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_Joint_0x61F8_DisplayList, (MObjSub**)&dDonkeyModel_gap_0x3E78_sub_0x1200, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0x4A8, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x16C8, (MObjSub**)&dDonkeyModel_gap_0x7390_sub_0x1230, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0x1B94, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x2228, (MObjSub**)&dDonkeyModel_gap_0x7390_sub_0x1E60, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0x26B4, NULL, 0x00 },
@@ -109,7 +109,7 @@ FTModelPart dDonkeyMain_modelparts_desc_0x0A8[6] = {
 
 /* @ 0x0120, 80 bytes: FTAttributes.sub_0x120 target (was dDonkeyMain_pre+0x120) */
 FTModelPart dDonkeyMain_modelparts_desc_0x120[4] = {
-	{ (Gfx*)&dDonkeyModel_Joint_0x2F08_DisplayList, (MObjSub**)((u8*)dDonkeyModel_gap_0x0000_sub_0x18 + 0xF38), (AObjEvent32**)&dDonkeyModel_gap_0x3E78_sub_0x5FC, NULL, 0x00 },
+	{ (Gfx*)&dDonkeyModel_Joint_0x2F08_DisplayList, (MObjSub**)((u8*)dDonkeyModel_Joint_0x0080_post + 0xED0), (AObjEvent32**)&dDonkeyModel_gap_0x3E78_sub_0x5FC, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_Joint_0x6748_DisplayList, (MObjSub**)&dDonkeyModel_gap_0x3E78_sub_0x1228, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0x4C4, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x658, (MObjSub**)&dDonkeyModel_gap_0x7390_sub_0x570, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0x7B8, NULL, 0x00 },
 	{ (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x8F8, (MObjSub**)&dDonkeyModel_gap_0x7390_sub_0x850, (AObjEvent32**)&dDonkeyModel_gap_0x7390_sub_0xA28, NULL, 0x00 },

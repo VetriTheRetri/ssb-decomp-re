@@ -5,7 +5,9 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 extern u8 dFoxModel_gap_0x2E60_sub_0x2B0[];
+extern u8 dFoxModel_Joint_0x0060_post[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x284[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB54[];
 
@@ -19,29 +21,38 @@ extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB18[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB34[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB2C[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB3C[];
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
-/* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dFoxModel_gap_0x0000[8] = {
-	#include <FoxModel/gap_0x0000.data.inc.c>
+/* MObjSub-dispatch table at file 0x0000 (96 bytes, 24 u32 slots).
+ * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
+ * trailing-index cells inside dFoxModel_Joint_0x0060_post. The original splitter
+ * sliced this region into 4 fragments (see git history); the
+ * .reloc relationships only make sense as one continuous table. */
+MObjSub **dFoxModel_gap_0x0000[24] = {
+	NULL,  /* +0x00 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7C0),  /* +0x04 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7CC),  /* +0x08 */
+	NULL,  /* +0x0C */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7E0),  /* +0x10 */
+	NULL,  /* +0x14 */
+	NULL,  /* +0x18 */
+	NULL,  /* +0x1C */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7E8),  /* +0x20 */
+	NULL,  /* +0x24 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7F4),  /* +0x28 */
+	NULL,  /* +0x2C */
+	NULL,  /* +0x30 */
+	NULL,  /* +0x34 */
+	NULL,  /* +0x38 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7FC),  /* +0x3C */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x804),  /* +0x40 */
+	NULL,  /* +0x44 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x80C),  /* +0x48 */
+	NULL,  /* +0x4C */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x814),  /* +0x50 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x81C),  /* +0x54 */
+	NULL,  /* +0x58 */
+	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x824),  /* +0x5C */
 };
 
-/* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u8 dFoxModel_gap_0x0000_sub_0x8[16] = {
-	#include <FoxModel/gap_0x0000_sub_0x8.data.inc.c>
-};
-
-PAD(8);
-
-/* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-u8 dFoxModel_Joint_0x0020_post[32] = {
-	#include <FoxModel/Joint_0x0020_post.data.inc.c>
-};
-
-/* Raw data from file offset 0x0040 to 0x0060 (32 bytes) */
-u8 dFoxModel_Joint_0x0040_post[32] = {
-	#include <FoxModel/Joint_0x0040_post.data.inc.c>
-};
 
 /* Raw data from file offset 0x0060 to 0x0890 (2096 bytes) */
 u8 dFoxModel_Joint_0x0060_post[2096] = {
@@ -464,8 +475,9 @@ u8 dFoxModel_gap_0x2E60_sub_0x2C4[4] = {
 };
 
 /* gap sub-block @ 0x3128 (was gap+0x2C8, 8 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x2C8[8] = {
-	#include <FoxModel/gap_0x2E60_sub_0x2C8.data.inc.c>
+u32 dFoxModel_gap_0x2E60_sub_0x2C8[2] = {
+	(u32)dFoxModel_gap_0x2E60_sub_0x214,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x3130 (was gap+0x2D0, 108 bytes) */
@@ -1486,8 +1498,9 @@ u8 dFoxModel_gap_0x5A38_sub_0x2BC[4] = {
 };
 
 /* gap sub-block @ 0x5CF8 (was gap+0x2C0, 8 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x2C0[8] = {
-	#include <FoxModel/gap_0x5A38_sub_0x2C0.data.inc.c>
+u32 dFoxModel_gap_0x5A38_sub_0x2C0[2] = {
+	(u32)dFoxModel_gap_0x5A38_sub_0x20C,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5D00 (was gap+0x2C8, 208 bytes) */
@@ -1656,8 +1669,51 @@ Gfx dFoxModel_DL_0x6E90[12] = {
 };
 
 /* gap sub-block @ 0x6EF0 (was gap+0x14B8, 176 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x14B8[176] = {
-	#include <FoxModel/gap_0x5A38_sub_0x14B8.data.inc.c>
+u32 dFoxModel_gap_0x5A38_sub_0x14B8[44] = {
+	aobjEvent32EndRaw(0x0BF, 32767),
+	aobjEvent32EndRaw(0x008, 0),
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	aobjEvent32EndRaw(0x08F, 32766),
+	aobjEvent32EndRaw(0x036, 0),
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	aobjEvent32EndRaw(0x00D, 32742),
+	aobjEvent32EndRaw(0x002, 0),
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	aobjEvent32EndRaw(0x08A, 4),
+	    0xFFEF0000,
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	    0xFFEE0000,
+	aobjEvent32EndRaw(0x01E, 0),
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	    0xE7000000,
+	aobjEvent32End(),
+	    0xD9DDFFFF,
+	aobjEvent32End(),
+	    0xFCFFFE05,
+	    0xFF167DFF,
+	    0xD7000000,
+	aobjEvent32End(),
+	aobjEvent32EndRaw(0x200, 20490),
+	(u32)dFoxModel_gap_0x5A38_sub_0x14B8,
+	aobjEvent32SetValBlock(0x010, 1540),
+	    0x00040208,  /* 3.6807065983341375e-40f */
+	aobjEvent32SetValBlock(0x00C, 4),
+	    0x00060802,  /* 5.5388563879981314e-40f */
+	    0x06000204,  /* 2.4075605152215996e-35f */
+	aobjEvent32EndRaw(0x004, 6),
+	    0xE7000000,
+	aobjEvent32End(),
+	    0xE7000000,
+	aobjEvent32End(),
+	    0xD9FFFFFF,
+	aobjEvent32EndRaw(0x044, 0),
+	    0xDF000000,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x6FA0 (was gap+0x1568, 128 bytes) */

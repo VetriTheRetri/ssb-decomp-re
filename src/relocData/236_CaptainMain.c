@@ -5,13 +5,13 @@
 #include <ft/fttypes.h>
 
 extern DObjDesc dCaptainModel_JointTree[];
+extern u8 dCaptainModel_Joint_0x0080_post[];
 extern DObjDesc dCaptainModel_JointTree_0x7900[];
 extern Gfx dCaptainModel_Joint_0x2A98_DisplayList[];
 extern Gfx dCaptainModel_Joint_0x3308_DisplayList[];
 extern Gfx dCaptainModel_Joint_0x6AF0_DisplayList[];
 extern Gfx dCaptainModel_Joint_0x7148_DisplayList[];
-extern u8 dCaptainModel_gap_0x0000[];
-extern u8 dCaptainModel_gap_0x0000_sub_0x18[];
+extern MObjSub **dCaptainModel_gap_0x0000[];
 extern u8 dCaptainModel_gap_0x40B0_sub_0x17A4[];
 extern u8 dCaptainModel_gap_0x40B0_sub_0x17D4[];
 extern u8 dCaptainModel_gap_0x40B0_sub_0x784[];
@@ -94,7 +94,7 @@ FTHiddenPart dCaptainMain_hiddenparts[4] = {
 
 /* @ 0x005C, 120 bytes: FTAttributes.sub_0x05C target (was dCaptainMain_pre+0x5C) */
 FTModelPart dCaptainMain_modelparts_desc_0x05C[6] = {
-	{ (Gfx*)&dCaptainModel_Joint_0x2A98_DisplayList, (MObjSub**)((u8*)dCaptainModel_gap_0x0000_sub_0x18 + 0x11F4), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x784, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_Joint_0x2A98_DisplayList, (MObjSub**)((u8*)dCaptainModel_Joint_0x0080_post + 0x118C), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x784, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_Joint_0x6AF0_DisplayList, (MObjSub**)&dCaptainModel_gap_0x40B0_sub_0x17A4, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x694, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x16D8, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x15B8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x18E4, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x1A30, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x1988, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x1B7C, NULL, 0x00 },
@@ -104,7 +104,7 @@ FTModelPart dCaptainMain_modelparts_desc_0x05C[6] = {
 
 /* @ 0x00D4, 120 bytes: FTAttributes.sub_0x0D4 target (was dCaptainMain_pre+0xD4) */
 FTModelPart dCaptainMain_modelparts_desc_0x0D4[6] = {
-	{ (Gfx*)&dCaptainModel_Joint_0x3308_DisplayList, (MObjSub**)((u8*)dCaptainModel_gap_0x0000_sub_0x18 + 0x1230), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x7B0, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_Joint_0x3308_DisplayList, (MObjSub**)((u8*)dCaptainModel_Joint_0x0080_post + 0x11C8), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x7B0, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_Joint_0x7148_DisplayList, (MObjSub**)&dCaptainModel_gap_0x40B0_sub_0x17D4, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x6B4, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x928, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x808, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0xB34, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0xC80, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0xBD8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0xDCC, NULL, 0x00 },

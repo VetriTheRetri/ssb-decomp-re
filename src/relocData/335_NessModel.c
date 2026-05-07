@@ -6,6 +6,14 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+extern Gfx dNessModel_DL_0x7BD0[];
+extern Gfx dNessModel_DL_0x8A98[];
+extern MObjSub dNessModel_PKThunderWaveMObjSub_MObjSub[];
+extern u16 dNessModel_gap_0x2C04_sub_0x1B0[];
+extern u16 dNessModel_gap_0x553C_sub_0x1B8[];
+extern u32 dNessModel_gap_0x553C_sub_0x274C[];
+extern u8 dNessModel_gap_0x553C_sub_0x27EC[];
+extern u8 dNessModel_gap_0x553C_sub_0x283C[];
 extern u8 dNessModel_gap_0x553C_sub_0x1FC[];
 
 extern u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[];
@@ -403,8 +411,9 @@ u8 dNessModel_gap_0x2C04_sub_0x200[4] = {
 };
 
 /* gap sub-block @ 0x2E08 (was gap+0x204, 8 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x204[8] = {
-	#include <NessModel/gap_0x2C04_sub_0x204.data.inc.c>
+u32 dNessModel_gap_0x2C04_sub_0x204[2] = {
+	(u32)dNessModel_gap_0x2C04_sub_0x1B0,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2E10 (was gap+0x20C, 108 bytes) */
@@ -1262,8 +1271,9 @@ u8 dNessModel_gap_0x553C_sub_0x208[4] = {
 };
 
 /* gap sub-block @ 0x5748 (was gap+0x20C, 8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x20C[8] = {
-	#include <NessModel/gap_0x553C_sub_0x20C.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x20C[2] = {
+	(u32)dNessModel_gap_0x553C_sub_0x1B8,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5750 (was gap+0x214, 256 bytes) */
@@ -1500,18 +1510,55 @@ Gfx dNessModel_DL_0x7BD0[23] = {
 };
 
 /* gap sub-block @ 0x7C88 (was gap+0x274C, 16 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x274C[16] = {
-	#include <NessModel/gap_0x553C_sub_0x274C.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x274C[4] = {
+	aobjEvent32EndRaw(0x000, 1),
+	(u32)dNessModel_DL_0x7BD0,
+	aobjEvent32EndRaw(0x000, 4),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7C98 (was gap+0x275C, 136 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x275C[136] = {
-	#include <NessModel/gap_0x553C_sub_0x275C.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x275C[34] = {
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	    0x3F99999A,
+	    0x3F99999A,
+	    0x3F99999A,
+	aobjEvent32EndRaw(0x000, 1),
+	(u32)dNessModel_gap_0x553C_sub_0x274C,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32EndRaw(0x000, 18),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7D20 (was gap+0x27E4, 8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x27E4[8] = {
-	#include <NessModel/gap_0x553C_sub_0x27E4.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x27E4[2] = {
+	(u32)dNessModel_gap_0x553C_sub_0x27EC,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7D28 (was gap+0x27EC, 72 bytes) */
@@ -1530,8 +1577,13 @@ u8 dNessModel_gap_0x553C_sub_0x283C[40] = {
 };
 
 /* gap sub-block @ 0x7DA0 (was gap+0x2864, 24 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x2864[24] = {
-	#include <NessModel/gap_0x553C_sub_0x2864.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x2864[6] = {
+	(u32)dNessModel_gap_0x553C_sub_0x283C,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* @tex fmt=IA8 dim=32x32 */
@@ -1608,8 +1660,13 @@ Gfx dNessModel_DL_0x8A98[21] = {
 };
 
 /* gap sub-block @ 0x8B40 (was gap+0x3604, 24 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x3604[24] = {
-	#include <NessModel/gap_0x553C_sub_0x3604.data.inc.c>
+u32 dNessModel_gap_0x553C_sub_0x3604[6] = {
+	aobjEvent32EndRaw(0x000, 1),
+	(u32)dNessModel_DL_0x8A98,
+	aobjEvent32EndRaw(0x000, 4),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x8B58 (was gap+0x361C, 1024 bytes) */
@@ -1681,8 +1738,9 @@ u8 dNessModel_gap_0x98E8[24] = {
 };
 
 /* gap sub-block @ 0x9900 (was gap+0x18, 8 bytes) */
-u8 dNessModel_gap_0x98E8_sub_0x18[8] = {
-	#include <NessModel/gap_0x98E8_sub_0x18.data.inc.c>
+u32 dNessModel_gap_0x98E8_sub_0x18[2] = {
+	(u32)((u8*)dNessModel_PKThunderWaveMObjSub_MObjSub + 0x18),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9908 (was gap+0x20, 64 bytes) */

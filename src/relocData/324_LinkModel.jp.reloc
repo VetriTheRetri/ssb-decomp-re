@@ -3,9 +3,9 @@
 # Labels resolved via src/relocData/324_LinkModel.reloc .o symbol table
 
 intern dLinkModel_gap_0x0000+0x4 dLinkModel_Joint_0x0040_post+0x530
-intern dLinkModel_gap_0x0000_sub_0x8 dLinkModel_Joint_0x0040_post+0x538
-intern dLinkModel_gap_0x0000_sub_0x8+0x8 dLinkModel_Joint_0x0040_post+0x540
-intern dLinkModel_Joint_0x0020_post+0x4 dLinkModel_Joint_0x0040_post+0x548
+intern dLinkModel_gap_0x0000+0x8 dLinkModel_Joint_0x0040_post+0x538
+intern dLinkModel_gap_0x0000+0x10 dLinkModel_Joint_0x0040_post+0x540
+intern dLinkModel_gap_0x0000+0x24 dLinkModel_Joint_0x0040_post+0x548
 intern dLinkModel_Joint_0x0040_post+0xC dLinkModel_Joint_0x0040_post+0x550
 intern dLinkModel_Joint_0x0040_post+0x10 dLinkModel_Joint_0x0040_post+0x560
 intern dLinkModel_Joint_0x0040_post+0x18 dLinkModel_Joint_0x0040_post+0x568

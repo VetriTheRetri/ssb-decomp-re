@@ -5,6 +5,14 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
+extern u8 dPikachuModel_gap_0x2B78_sub_0x714[];
+extern u8 dPikachuModel_Joint_0x0040_post[];
+extern u8 dPikachuModel_gap_0x2B78_sub_0x784[];
+extern u8 dPikachuModel_gap_0x2B78_sub_0x7F4[];
+extern u32 dPikachuModel_gap_0x59B8_sub_0x1778[];
+extern u16 dPikachuModel_gap_0x59B8_sub_0xB4C[];
+extern u16 dPikachuModel_gap_0x59B8_sub_0xB74[];
 extern u8 dPikachuModel_gap_0x2B78_sub_0x864[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x83C[];
 
@@ -24,27 +32,30 @@ extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1400[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E0[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B0[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C8[];
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
-/* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dPikachuModel_gap_0x0000[8] = {
-	#include <PikachuModel/gap_0x0000.data.inc.c>
+/* MObjSub-dispatch table at file 0x0000 (64 bytes, 16 u32 slots).
+ * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
+ * trailing-index cells inside dPikachuModel_Joint_0x0040_post. The original splitter
+ * sliced this region into 4 fragments (see git history); the
+ * .reloc relationships only make sense as one continuous table. */
+MObjSub **dPikachuModel_gap_0x0000[16] = {
+	NULL,  /* +0x00 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xA88),  /* +0x04 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xA90),  /* +0x08 */
+	NULL,  /* +0x0C */
+	NULL,  /* +0x10 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xA98),  /* +0x14 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xAA0),  /* +0x18 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xAA8),  /* +0x1C */
+	NULL,  /* +0x20 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xAB8),  /* +0x24 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xAC0),  /* +0x28 */
+	NULL,  /* +0x2C */
+	NULL,  /* +0x30 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xAC8),  /* +0x34 */
+	(MObjSub **)((u8 *)dPikachuModel_Joint_0x0040_post + 0xAD0),  /* +0x38 */
+	NULL,  /* +0x3C */
 };
 
-/* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u8 dPikachuModel_gap_0x0000_sub_0x8[16] = {
-	#include <PikachuModel/gap_0x0000_sub_0x8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
-u8 dPikachuModel_gap_0x0000_sub_0x18[8] = {
-	#include <PikachuModel/gap_0x0000_sub_0x18.data.inc.c>
-};
-
-/* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-u8 dPikachuModel_Joint_0x0020_post[32] = {
-	#include <PikachuModel/Joint_0x0020_post.data.inc.c>
-};
 
 /* Raw data from file offset 0x0040 to 0x0B58 (2840 bytes) */
 u8 dPikachuModel_Joint_0x0040_post[2840] = {
@@ -452,8 +463,11 @@ u8 dPikachuModel_gap_0x2B78_sub_0x8A4[4] = {
 };
 
 /* gap sub-block @ 0x3420 (was gap+0x8A8, 16 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x8A8[16] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x8A8.data.inc.c>
+u32 dPikachuModel_gap_0x2B78_sub_0x8A8[4] = {
+	(u32)dPikachuModel_gap_0x2B78_sub_0x714,
+	(u32)dPikachuModel_gap_0x2B78_sub_0x784,
+	(u32)dPikachuModel_gap_0x2B78_sub_0x7F4,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x3430 (was gap+0x8B8, 108 bytes) */
@@ -1511,103 +1525,605 @@ u8 dPikachuModel_gap_0x59B8[20] = {
 };
 
 /* gap sub-block @ 0x59CC (was gap+0x14, 108 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x14[108] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x14.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x14[27] = {
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5A38 (was gap+0x80, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x80[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x80.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x80[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5A90 (was gap+0xD8, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0xD8[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0xD8.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0xD8[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5AE8 (was gap+0x130, 168 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x130[168] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x130.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x130[42] = {
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetVal(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(47),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32Wait(46),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5B90 (was gap+0x1D8, 176 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x1D8[176] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x1D8.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x1D8[44] = {
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetVal(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(47),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x41000000,  /* 8.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x41100000,  /* 9.0f */
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5C40 (was gap+0x288, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x288[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x288.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x288[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5C98 (was gap+0x2E0, 108 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x2E0[108] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x2E0.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x2E0[27] = {
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5D04 (was gap+0x34C, 108 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x34C[108] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x34C.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x34C[27] = {
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5D70 (was gap+0x3B8, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x3B8[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x3B8.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x3B8[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5DC8 (was gap+0x410, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x410[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x410.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x410[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5E20 (was gap+0x468, 108 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x468[108] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x468.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x468[27] = {
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5E8C (was gap+0x4D4, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x4D4[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x4D4.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x4D4[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5EE4 (was gap+0x52C, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x52C[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x52C.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x52C[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5F3C (was gap+0x584, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x584[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x584.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x584[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5F94 (was gap+0x5DC, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x5DC[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x5DC.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x5DC[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5FEC (was gap+0x634, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x634[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x634.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x634[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x6044 (was gap+0x68C, 88 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x68C[88] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x68C.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x68C[22] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x609C (was gap+0x6E4, 128 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x6E4[128] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x6E4.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x6E4[32] = {
+	aobjEvent32SetExtValAfter(0x019, 0),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xC8C828FF,  /* -409927.96875f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xE8A828FF,  /* -6.352910508572228e+24f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xFFD933FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x019, 1),
+	    0xA5FF10FF,  /* -4.424696563851328e-16f */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x611C (was gap+0x764, 108 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x764[108] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x764.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x764[27] = {
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x6188 (was gap+0x7D0, 108 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x7D0[108] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x7D0.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x7D0[27] = {
+	aobjEvent32SetExtValAfter(0x018, 0),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32Wait(97),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x61F4 (was gap+0x83C, 4 bytes) */
@@ -1796,8 +2312,12 @@ u16 dPikachuModel_gap_0x59B8_sub_0xB74[16] = {
 };
 
 /* gap sub-block @ 0x654C (was gap+0xB94, 20 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0xB94[20] = {
-	#include <PikachuModel/gap_0x59B8_sub_0xB94.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0xB94[5] = {
+	(u32)dPikachuModel_gap_0x59B8_sub_0xB4C,
+	(u32)dPikachuModel_gap_0x59B8_sub_0xB74,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x6560 (was gap+0xBA8, 144 bytes) */
@@ -1896,8 +2416,51 @@ Gfx dPikachuModel_DL_0x70D0[12] = {
 };
 
 /* gap sub-block @ 0x7130 (was gap+0x1778, 176 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x1778[176] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x1778.data.inc.c>
+u32 dPikachuModel_gap_0x59B8_sub_0x1778[44] = {
+	aobjEvent32EndRaw(0x059, 32762),
+	aobjEvent32EndRaw(0x01A, 0),
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	aobjEvent32EndRaw(0x05D, 32761),
+	    0xFFFF0000,
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	    0xFFF5000E,
+	    0xFFE70000,
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	    0xFFE90013,
+	aobjEvent32EndRaw(0x00E, 0),
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	    0xFFFAFFF7,
+	    0xFFFF0000,
+	aobjEvent32End(),
+	    0xFFFFFF00,
+	    0xE7000000,
+	aobjEvent32End(),
+	    0xD9DDFFFF,
+	aobjEvent32End(),
+	    0xFCFFFE05,
+	    0xFF167DFF,
+	    0xD7000000,
+	aobjEvent32End(),
+	aobjEvent32EndRaw(0x200, 20490),
+	(u32)dPikachuModel_gap_0x59B8_sub_0x1778,
+	aobjEvent32SetValBlock(0x010, 1540),
+	    0x00080402,  /* 7.36121701488327e-40f */
+	aobjEvent32SetValBlock(0x008, 1536),
+	    0x00060800,  /* 5.538828362028845e-40f */
+	aobjEvent32SetValBlock(0x000, 516),
+	aobjEvent32EndRaw(0x010, 512),
+	    0xE7000000,
+	aobjEvent32End(),
+	    0xE7000000,
+	aobjEvent32End(),
+	    0xD9FFFFFF,
+	aobjEvent32EndRaw(0x044, 0),
+	    0xDF000000,
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x71E0 (was gap+0x1828, 64 bytes) */

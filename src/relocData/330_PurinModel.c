@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB28[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB10[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB20[];
@@ -241,78 +242,267 @@ u8 dPurinModel_gap_0x24F8[64] = {
 };
 
 /* gap sub-block @ 0x2538 (was gap+0x40, 92 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x40[92] = {
-	#include <PurinModel/gap_0x24F8_sub_0x40.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x40[23] = {
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(46),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32Wait(48),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2594 (was gap+0x9C, 92 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x9C[92] = {
-	#include <PurinModel/gap_0x24F8_sub_0x9C.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x9C[23] = {
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(46),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32Wait(48),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x25F0 (was gap+0xF8, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0xF8[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0xF8.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0xF8[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2620 (was gap+0x128, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x128[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x128.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x128[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2650 (was gap+0x158, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x158[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x158.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x158[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2680 (was gap+0x188, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x188[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x188.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x188[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x26B0 (was gap+0x1B8, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x1B8[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x1B8.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x1B8[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x26E0 (was gap+0x1E8, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x1E8[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x1E8.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x1E8[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2710 (was gap+0x218, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x218[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x218.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x218[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2740 (was gap+0x248, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x248[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x248.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x248[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2770 (was gap+0x278, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x278[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x278.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x278[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x27A0 (was gap+0x2A8, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x2A8[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x2A8.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x2A8[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x27D0 (was gap+0x2D8, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x2D8[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x2D8.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x2D8[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2800 (was gap+0x308, 48 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x308[48] = {
-	#include <PurinModel/gap_0x24F8_sub_0x308.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x308[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2830 (was gap+0x338, 56 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x338[56] = {
-	#include <PurinModel/gap_0x24F8_sub_0x338.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x338[14] = {
+	aobjEvent32SetExtValAfterBlock(0x019, 0),
+	    0xFFCDD8FF,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2868 (was gap+0x370, 36 bytes) */
@@ -346,8 +536,11 @@ u8 dPurinModel_gap_0x24F8_sub_0x3A4[4] = {
 };
 
 /* gap sub-block @ 0x28A0 (was gap+0x3A8, 16 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x3A8[16] = {
-	#include <PurinModel/gap_0x24F8_sub_0x3A8.data.inc.c>
+u32 dPurinModel_gap_0x24F8_sub_0x3A8[4] = {
+	(u32)dPurinModel_gap_0x24F8_sub_0x338,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x28B0 (was gap+0x3B8, 104 bytes) */
@@ -1053,68 +1246,233 @@ u8 dPurinModel_gap_0x459C[28] = {
 };
 
 /* gap sub-block @ 0x45B8 (was gap+0x1C, 92 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x1C[92] = {
-	#include <PurinModel/gap_0x459C_sub_0x1C.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x1C[23] = {
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(46),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32Wait(48),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4614 (was gap+0x78, 92 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x78[92] = {
-	#include <PurinModel/gap_0x459C_sub_0x78.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x78[23] = {
+	aobjEvent32SetValAfter(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(46),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfter(0x001, 1),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32Wait(48),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4670 (was gap+0xD4, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0xD4[48] = {
-	#include <PurinModel/gap_0x459C_sub_0xD4.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0xD4[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x46A0 (was gap+0x104, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x104[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x104.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x104[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x46D0 (was gap+0x134, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x134[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x134.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x134[12] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4700 (was gap+0x164, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x164[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x164.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x164[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4730 (was gap+0x194, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x194[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x194.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x194[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4760 (was gap+0x1C4, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x1C4[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x1C4.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x1C4[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4790 (was gap+0x1F4, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x1F4[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x1F4.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x1F4[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x47C0 (was gap+0x224, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x224[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x224.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x224[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x47F0 (was gap+0x254, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x254[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x254.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x254[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4820 (was gap+0x284, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x284[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x284.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x284[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4850 (was gap+0x2B4, 48 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x2B4[48] = {
-	#include <PurinModel/gap_0x459C_sub_0x2B4.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x2B4[12] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFCDD8FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x001, 2),
+	    0xE0B8D8FF,  /* -1.065574101873066e+20f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xF8D0C8FF,  /* -3.387732598991924e+34f */
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xD0F8FFFF,  /* -33420212224.0f */
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFF7BDFF,  /* nanf */
+	aobjEvent32Wait(96),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x4880 (was gap+0x2E4, 28 bytes) */
@@ -1266,8 +1624,10 @@ u16 dPurinModel_gap_0x459C_sub_0x620[20] = {
 };
 
 /* gap sub-block @ 0x4BE4 (was gap+0x648, 12 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x648[12] = {
-	#include <PurinModel/gap_0x459C_sub_0x648.data.inc.c>
+u32 dPurinModel_gap_0x459C_sub_0x648[3] = {
+	(u32)dPurinModel_gap_0x459C_sub_0x5F8,
+	(u32)dPurinModel_gap_0x459C_sub_0x620,
+	aobjEvent32End(),
 };
 
 /* Vtx: Vtx_0x4BF0 @ 0x4BF0 (6 vertices) */

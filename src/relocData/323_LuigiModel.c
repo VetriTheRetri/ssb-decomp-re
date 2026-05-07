@@ -512,8 +512,9 @@ u8 dLuigiModel_gap_0x28E0_sub_0x364[16] = {
 };
 
 /* gap sub-block @ 0x2C54 (was gap+0x374, 8 bytes) */
-u8 dLuigiModel_gap_0x28E0_sub_0x374[8] = {
-	#include <LuigiModel/gap_0x28E0_sub_0x374.data.inc.c>
+AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x374[2] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x1BC,
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x1F4,
 };
 
 /* gap sub-block @ 0x2C5C (was gap+0x37C, 4 bytes) */

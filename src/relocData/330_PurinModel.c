@@ -1031,33 +1031,41 @@ u32 dPurinModel_gap_0x24F8_sub_0x338[14] = {
 };
 
 /* gap sub-block @ 0x2868 (was gap+0x370, 36 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x370[36] = {
-	#include <PurinModel/gap_0x24F8_sub_0x370.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x370[9] = {
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x40,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x9C,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0xF8,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x128,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x158,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x188,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x1B8,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x248,
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x278,
 };
 
 /* gap sub-block @ 0x288C (was gap+0x394, 4 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x394[4] = {
-	#include <PurinModel/gap_0x24F8_sub_0x394.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x394[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x218,
 };
 
 /* gap sub-block @ 0x2890 (was gap+0x398, 4 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x398[4] = {
-	#include <PurinModel/gap_0x24F8_sub_0x398.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x398[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x1E8,
 };
 
 /* gap sub-block @ 0x2894 (was gap+0x39C, 4 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x39C[4] = {
-	#include <PurinModel/gap_0x24F8_sub_0x39C.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x39C[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x2D8,
 };
 
 /* gap sub-block @ 0x2898 (was gap+0x3A0, 4 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x3A0[4] = {
-	#include <PurinModel/gap_0x24F8_sub_0x3A0.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A0[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x2A8,
 };
 
 /* gap sub-block @ 0x289C (was gap+0x3A4, 4 bytes) */
-u8 dPurinModel_gap_0x24F8_sub_0x3A4[4] = {
-	#include <PurinModel/gap_0x24F8_sub_0x3A4.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A4[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x24F8_sub_0x308,
 };
 
 /* gap sub-block @ 0x28A0 (was gap+0x3A8, 16 bytes) */
@@ -2001,33 +2009,39 @@ u32 dPurinModel_gap_0x459C_sub_0x2B4[12] = {
 };
 
 /* gap sub-block @ 0x4880 (was gap+0x2E4, 28 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x2E4[28] = {
-	#include <PurinModel/gap_0x459C_sub_0x2E4.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x2E4[7] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x1C,
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x78,
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0xD4,
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x104,
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x134,
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x164,
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x194,
 };
 
 /* gap sub-block @ 0x489C (was gap+0x300, 4 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x300[4] = {
-	#include <PurinModel/gap_0x459C_sub_0x300.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x300[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x1F4,
 };
 
 /* gap sub-block @ 0x48A0 (was gap+0x304, 4 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x304[4] = {
-	#include <PurinModel/gap_0x459C_sub_0x304.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x304[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x1C4,
 };
 
 /* gap sub-block @ 0x48A4 (was gap+0x308, 4 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x308[4] = {
-	#include <PurinModel/gap_0x459C_sub_0x308.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x308[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x254,
 };
 
 /* gap sub-block @ 0x48A8 (was gap+0x30C, 4 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x30C[4] = {
-	#include <PurinModel/gap_0x459C_sub_0x30C.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x30C[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x224,
 };
 
 /* gap sub-block @ 0x48AC (was gap+0x310, 4 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x310[4] = {
-	#include <PurinModel/gap_0x459C_sub_0x310.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x310[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x284,
 };
 
 /* gap sub-block @ 0x48B0 (was gap+0x314, 20 bytes) */

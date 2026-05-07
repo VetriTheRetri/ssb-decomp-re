@@ -156,6 +156,16 @@ extern MObjSub *dCaptainModel_gap_0x40B0_sub_0x17E8[];
 extern MObjSub *dCaptainModel_gap_0x40B0_sub_0x1804[];
 extern MObjSub *dCaptainModel_gap_0x40B0_sub_0x17B0[];
 extern MObjSub *dCaptainModel_gap_0x40B0_sub_0x1794[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x790[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7A4[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7AC[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7BC[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7C0[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7C4[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7CC[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7D0[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7D4[];
+extern AObjEvent32 * dCaptainModel_gap_0x40B0_sub_0x7DC[];
 /* MObjSub-dispatch table at file 0x0000 (96 bytes, 24 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dCaptainModel_Joint_0x0080_post. The original splitter
@@ -1505,8 +1515,25 @@ DObjDesc dCaptainModel_JointTree[] = {
 
 /* Raw data from file offset 0x40B0 to 0x58D0 (6176 bytes) */
 /* gap sub-block @ 0x40B0 (was gap+0x0, 72 bytes) */
-u8 dCaptainModel_gap_0x40B0[72] = {
-	#include <CaptainModel/gap_0x40B0.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x40B0[18] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x790,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7A4,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7AC,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7B0,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7BC,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7C0,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7C4,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7CC,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7D0,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7D4,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x7DC,
+	NULL,
 };
 
 /* gap sub-block @ 0x40F8 (was gap+0x48, 56 bytes) */
@@ -2092,23 +2119,28 @@ u32 dCaptainModel_gap_0x40B0_sub_0x728[14] = {
 };
 
 /* gap sub-block @ 0x4810 (was gap+0x760, 8 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x760[8] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x760.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x760[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x4F8,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x530,
 };
 
 /* gap sub-block @ 0x4818 (was gap+0x768, 20 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x768[20] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x768.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x768[5] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x48,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x80,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0xB8,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0xF0,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x128,
 };
 
 /* gap sub-block @ 0x482C (was gap+0x77C, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x77C[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x77C.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x77C[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x240,
 };
 
 /* gap sub-block @ 0x4830 (was gap+0x780, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x780[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x780.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x780[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x160,
 };
 
 /* gap sub-block @ 0x4834 (was gap+0x784, 12 bytes) */
@@ -2119,18 +2151,23 @@ AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x784[3] = {
 };
 
 /* gap sub-block @ 0x4840 (was gap+0x790, 20 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x790[20] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x790.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x790[5] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x278,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x2C8,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x300,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x338,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x370,
 };
 
 /* gap sub-block @ 0x4854 (was gap+0x7A4, 8 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7A4[8] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7A4.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7A4[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x488,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x4C0,
 };
 
 /* gap sub-block @ 0x485C (was gap+0x7AC, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7AC[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7AC.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7AC[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x3A8,
 };
 
 /* gap sub-block @ 0x4860 (was gap+0x7B0, 12 bytes) */
@@ -2141,38 +2178,40 @@ AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7B0[3] = {
 };
 
 /* gap sub-block @ 0x486C (was gap+0x7BC, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7BC[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7BC.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7BC[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x568,
 };
 
 /* gap sub-block @ 0x4870 (was gap+0x7C0, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7C0[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7C0.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7C0[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x648,
 };
 
 /* gap sub-block @ 0x4874 (was gap+0x7C4, 8 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7C4[8] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7C4.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7C4[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x5D8,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x610,
 };
 
 /* gap sub-block @ 0x487C (was gap+0x7CC, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7CC[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7CC.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7CC[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x5A0,
 };
 
 /* gap sub-block @ 0x4880 (was gap+0x7D0, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7D0[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7D0.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7D0[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x728,
 };
 
 /* gap sub-block @ 0x4884 (was gap+0x7D4, 8 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7D4[8] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7D4.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7D4[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x6B8,
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x6F0,
 };
 
 /* gap sub-block @ 0x488C (was gap+0x7DC, 4 bytes) */
-u8 dCaptainModel_gap_0x40B0_sub_0x7DC[4] = {
-	#include <CaptainModel/gap_0x40B0_sub_0x7DC.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x7DC[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x40B0_sub_0x680,
 };
 
 /* gap sub-block @ 0x4890 (was gap+0x7E0, 104 bytes) */
@@ -4146,23 +4185,28 @@ u32 dCaptainModel_gap_0x7DD0_sub_0x638[14] = {
 };
 
 /* gap sub-block @ 0x8440 (was gap+0x670, 8 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x670[8] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x670.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x670[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x408,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x440,
 };
 
 /* gap sub-block @ 0x8448 (was gap+0x678, 20 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x678[20] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x678.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x678[5] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x48,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x80,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0xB8,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0xF0,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x120,
 };
 
 /* gap sub-block @ 0x845C (was gap+0x68C, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x68C[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x68C.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x68C[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x200,
 };
 
 /* gap sub-block @ 0x8460 (was gap+0x690, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x690[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x690.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x690[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x158,
 };
 
 /* gap sub-block @ 0x8464 (was gap+0x694, 8 bytes) */
@@ -4172,18 +4216,21 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x694[2] = {
 };
 
 /* gap sub-block @ 0x846C (was gap+0x69C, 12 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x69C[12] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x69C.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x69C[3] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x238,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x288,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x2C0,
 };
 
 /* gap sub-block @ 0x8478 (was gap+0x6A8, 8 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6A8[8] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6A8.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6A8[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x3A0,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x3D8,
 };
 
 /* gap sub-block @ 0x8480 (was gap+0x6B0, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6B0[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6B0.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6B0[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x2F8,
 };
 
 /* gap sub-block @ 0x8484 (was gap+0x6B4, 8 bytes) */
@@ -4193,33 +4240,35 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6B4[2] = {
 };
 
 /* gap sub-block @ 0x848C (was gap+0x6BC, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6BC[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6BC.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6BC[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x478,
 };
 
 /* gap sub-block @ 0x8490 (was gap+0x6C0, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6C0[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6C0.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6C0[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x558,
 };
 
 /* gap sub-block @ 0x8494 (was gap+0x6C4, 8 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6C4[8] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6C4.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6C4[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x4E8,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x520,
 };
 
 /* gap sub-block @ 0x849C (was gap+0x6CC, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6CC[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6CC.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6CC[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x4B0,
 };
 
 /* gap sub-block @ 0x84A0 (was gap+0x6D0, 4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6D0[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6D0.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6D0[1] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x638,
 };
 
 /* gap sub-block @ 0x84A4 (was gap+0x6D4, 8 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6D4[8] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6D4.data.inc.c>
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6D4[2] = {
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x5C8,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x600,
 };
 
 /* gap sub-block @ 0x84AC (was gap+0x6DC, 8 bytes) */
@@ -5441,8 +5490,9 @@ u16 dCaptainModel_Lut_0xB958_palette[16] = {
 
 /* Raw data from file offset 0xB978 to 0xBBB0 (568 bytes) */
 /* gap sub-block @ 0xB978 (was gap+0x0, 8 bytes) */
-u8 dCaptainModel_gap_0xB978[8] = {
-	#include <CaptainModel/gap_0xB978.data.inc.c>
+u32 dCaptainModel_gap_0xB978[2] = {
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0xB980 (was gap+0x8, 520 bytes) */

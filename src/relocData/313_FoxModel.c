@@ -21,6 +21,7 @@ extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB18[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB34[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB2C[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB3C[];
+extern u32 dFoxModel_gap_0x5A38_sub_0x2C0[];
 /* MObjSub-dispatch table at file 0x0000 (96 bytes, 24 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dFoxModel_Joint_0x0060_post. The original splitter
@@ -1362,8 +1363,12 @@ DObjDesc dFoxModel_JointTree_0x5510[] = {
 
 /* Raw data from file offset 0x5A38 to 0x72D8 (6304 bytes) */
 /* gap sub-block @ 0x5A38 (was gap+0x0, 20 bytes) */
-u8 dFoxModel_gap_0x5A38[20] = {
-	#include <FoxModel/gap_0x5A38.data.inc.c>
+AObjEvent32 *dFoxModel_gap_0x5A38[5] = {
+	NULL,
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x2C0,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x5A4C (was gap+0x14, 40 bytes) */
@@ -1705,8 +1710,9 @@ u16 dFoxModel_Lut_0x72D8_palette[16] = {
 
 /* Raw data from file offset 0x72F8 to 0x7508 (528 bytes) */
 /* gap sub-block @ 0x72F8 (was gap+0x0, 8 bytes) */
-u8 dFoxModel_gap_0x72F8[8] = {
-	#include <FoxModel/gap_0x72F8.data.inc.c>
+u32 dFoxModel_gap_0x72F8[2] = {
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7300 (was gap+0x8, 520 bytes) */
@@ -1721,8 +1727,9 @@ u16 dFoxModel_Lut_0x7508_palette[16] = {
 
 /* Raw data from file offset 0x7528 to 0x75D0 (168 bytes) */
 /* gap sub-block @ 0x7528 (was gap+0x0, 8 bytes) */
-u8 dFoxModel_gap_0x7528[8] = {
-	#include <FoxModel/gap_0x7528.data.inc.c>
+u32 dFoxModel_gap_0x7528[2] = {
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7530 (was gap+0x8, 40 bytes) */
@@ -1758,8 +1765,9 @@ u16 dFoxModel_Lut_0x7808_palette[16] = {
 
 /* Raw data from file offset 0x7828 to 0x79D8 (432 bytes) */
 /* gap sub-block @ 0x7828 (was gap+0x0, 8 bytes) */
-u8 dFoxModel_gap_0x7828[8] = {
-	#include <FoxModel/gap_0x7828.data.inc.c>
+u32 dFoxModel_gap_0x7828[2] = {
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7830 (was gap+0x8, 264 bytes) */

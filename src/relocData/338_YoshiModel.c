@@ -6,7 +6,8 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
-extern u32 dYoshiModel_gap_0x6E70_sub_0x2280[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x2280[];
+extern Gfx dYoshiModel_DL_0x9140[];
 extern u16 dYoshiModel_palette_0x9C58[];
 extern u16 dYoshiModel_palette_0x9C80[];
 extern u16 dYoshiModel_palette_0x9CA8[];
@@ -4287,51 +4288,14 @@ Gfx dYoshiModel_DL_0x9090[12] = {
 };
 
 /* gap sub-block @ 0x90F0 (was gap+0x2280, 176 bytes) */
-u32 dYoshiModel_gap_0x6E70_sub_0x2280[44] = {
-	aobjEvent32EndRaw(0x077, 32749),
-	aobjEvent32EndRaw(0x050, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x086, 27),
-	aobjEvent32EndRaw(0x008, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x0BB, 32749),
-	aobjEvent32EndRaw(0x00C, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x081, 32748),
-	    0xFFE10000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFEFFFEB,
-	    0xFFFF0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 20490),
-	(u32)dYoshiModel_gap_0x6E70_sub_0x2280,
-	aobjEvent32SetValBlock(0x010, 1540),
-	    0x00020608,  /* 1.8583459714489994e-40f */
-	aobjEvent32SetValBlock(0x000, 2052),
-	aobjEvent32EndRaw(0x010, 2),
-	aobjEvent32SetValBlock(0x00C, 516),
-	    0x00000402,  /* 1.4377322243972623e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
+/* Vtx data @ 0x90F0 (80 B / 5 vertices) */
+Vtx dYoshiModel_gap_0x6E70_sub_0x2280[5] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2280.vtx.inc.c>
+};
+
+/* Gfx DL @ 0x9140 (96 B / 12 cmds) */
+Gfx dYoshiModel_DL_0x9140[12] = {
+	#include <YoshiModel/DL_0x9140.dl.inc.c>
 };
 
 /* gap sub-block @ 0x91A0 (was gap+0x2330, 128 bytes) */

@@ -50,7 +50,8 @@ extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xB00[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xB08[];
 extern u8 dPikachuModel_gap_0x2B78_sub_0x784[];
 extern u8 dPikachuModel_gap_0x2B78_sub_0x7F4[];
-extern u32 dPikachuModel_gap_0x59B8_sub_0x1778[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x1778[];
+extern Gfx dPikachuModel_DL_0x7180[];
 extern u16 dPikachuModel_gap_0x59B8_sub_0xB4C[];
 extern u16 dPikachuModel_gap_0x59B8_sub_0xB74[];
 extern u8 dPikachuModel_gap_0x2B78_sub_0x864[];
@@ -95,7 +96,6 @@ MObjSub **dPikachuModel_gap_0x0000[16] = {
 	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAD0,  /* +0x38 */
 	NULL,  /* +0x3C */
 };
-
 
 /* Raw data from file offset 0x40 to 0x168 (296 bytes).
  * Holds palette/sprite tables. The 20 MObjSubs (0x78 bytes
@@ -3112,51 +3112,14 @@ Gfx dPikachuModel_DL_0x70D0[12] = {
 };
 
 /* gap sub-block @ 0x7130 (was gap+0x1778, 176 bytes) */
-u32 dPikachuModel_gap_0x59B8_sub_0x1778[44] = {
-	aobjEvent32EndRaw(0x059, 32762),
-	aobjEvent32EndRaw(0x01A, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x05D, 32761),
-	    0xFFFF0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFF5000E,
-	    0xFFE70000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFE90013,
-	aobjEvent32EndRaw(0x00E, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFFAFFF7,
-	    0xFFFF0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 20490),
-	(u32)dPikachuModel_gap_0x59B8_sub_0x1778,
-	aobjEvent32SetValBlock(0x010, 1540),
-	    0x00080402,  /* 7.36121701488327e-40f */
-	aobjEvent32SetValBlock(0x008, 1536),
-	    0x00060800,  /* 5.538828362028845e-40f */
-	aobjEvent32SetValBlock(0x000, 516),
-	aobjEvent32EndRaw(0x010, 512),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
+/* Vtx data @ 0x7130 (80 B / 5 vertices) */
+Vtx dPikachuModel_gap_0x59B8_sub_0x1778[5] = {
+	#include <PikachuModel/gap_0x59B8_sub_0x1778.vtx.inc.c>
+};
+
+/* Gfx DL @ 0x7180 (96 B / 12 cmds) */
+Gfx dPikachuModel_DL_0x7180[12] = {
+	#include <PikachuModel/DL_0x7180.dl.inc.c>
 };
 
 /* gap sub-block @ 0x71E0 (was gap+0x1828, 64 bytes) */

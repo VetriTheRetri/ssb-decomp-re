@@ -53,7 +53,6 @@ MObjSub **dFoxModel_gap_0x0000[24] = {
 	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x824),  /* +0x5C */
 };
 
-
 /* Raw data from file offset 0x0060 to 0x0890 (2096 bytes) */
 u8 dFoxModel_Joint_0x0060_post[2096] = {
 	#include <FoxModel/Joint_0x0060_post.data.inc.c>
@@ -1669,51 +1668,14 @@ Gfx dFoxModel_DL_0x6E90[12] = {
 };
 
 /* gap sub-block @ 0x6EF0 (was gap+0x14B8, 176 bytes) */
-u32 dFoxModel_gap_0x5A38_sub_0x14B8[44] = {
-	aobjEvent32EndRaw(0x0BF, 32767),
-	aobjEvent32EndRaw(0x008, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x08F, 32766),
-	aobjEvent32EndRaw(0x036, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x00D, 32742),
-	aobjEvent32EndRaw(0x002, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x08A, 4),
-	    0xFFEF0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFEE0000,
-	aobjEvent32EndRaw(0x01E, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 20490),
-	(u32)dFoxModel_gap_0x5A38_sub_0x14B8,
-	aobjEvent32SetValBlock(0x010, 1540),
-	    0x00040208,  /* 3.6807065983341375e-40f */
-	aobjEvent32SetValBlock(0x00C, 4),
-	    0x00060802,  /* 5.5388563879981314e-40f */
-	    0x06000204,  /* 2.4075605152215996e-35f */
-	aobjEvent32EndRaw(0x004, 6),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
+/* Vtx data @ 0x6EF0 (80 B / 5 vertices) */
+Vtx dFoxModel_gap_0x5A38_sub_0x14B8[5] = {
+	#include <FoxModel/gap_0x5A38_sub_0x14B8.vtx.inc.c>
+};
+
+/* Gfx DL @ 0x6F40 (96 B / 12 cmds) */
+Gfx dFoxModel_DL_0x6F40[12] = {
+	#include <FoxModel/DL_0x6F40.dl.inc.c>
 };
 
 /* gap sub-block @ 0x6FA0 (was gap+0x1568, 128 bytes) */

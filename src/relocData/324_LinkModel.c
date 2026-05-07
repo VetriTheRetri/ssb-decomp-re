@@ -31,7 +31,8 @@ extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x568[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x570[];
 extern u16 dLinkModel_gap_0x40EC_sub_0x1C8[];
 extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
-extern u32 dLinkModel_gap_0x9DA8_sub_0x1158[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x1158[];
+extern Gfx dLinkModel_DL_0xAF40[];
 extern u8 dLinkModel_gap_0x40EC_sub_0x234[];
 extern u8 dLinkModel_gap_0x7AE0_sub_0x214[];
 
@@ -94,7 +95,6 @@ MObjSub **dLinkModel_gap_0x0000[16] = {
 	NULL,  /* +0x38 */
 	NULL,  /* +0x3C */
 };
-
 
 /* Raw data from file offset 0x40 to 0xC0 (128 bytes).
  * Holds palette/sprite tables. The 10 MObjSubs (0x78 bytes
@@ -2517,48 +2517,17 @@ Gfx dLinkModel_gap_0x9DA8_sub_0x10F8[11] = {
 PAD(8);
 
 /* gap sub-block @ 0xAF00 (was gap+0x1158, 160 bytes) */
-u32 dLinkModel_gap_0x9DA8_sub_0x1158[40] = {
-	aobjEvent32EndRaw(0x062, 9),
-	aobjEvent32EndRaw(0x01A, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFEB0000,
-	aobjEvent32EndRaw(0x02A, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x007, 32765),
-	    0xFFF80000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFEB001F,
-	aobjEvent32EndRaw(0x002, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)dLinkModel_gap_0x9DA8_sub_0x1158,
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000204,  /* 7.230700075916056e-43f */
-	    0x06060004,  /* 2.5202610361066864e-35f */
-	aobjEvent32EndRaw(0x004, 6),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Vtx data @ 0xAF00 (64 B / 4 vertices) */
+Vtx dLinkModel_gap_0x9DA8_sub_0x1158[4] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x1158.vtx.inc.c>
 };
+
+/* Gfx DL @ 0xAF40 (88 B / 11 cmds) */
+Gfx dLinkModel_DL_0xAF40[11] = {
+	#include <LinkModel/DL_0xAF40.dl.inc.c>
+};
+
+PAD(8);
 
 /* gap sub-block @ 0xAFA0 (was gap+0x11F8, 192 bytes) */
 Vtx dLinkModel_gap_0x9DA8_sub_0x11F8[12] = {

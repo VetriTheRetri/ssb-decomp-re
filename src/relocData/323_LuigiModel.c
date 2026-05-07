@@ -7,7 +7,8 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>
 extern u16 dLuigiModel_gap_0x28E0_sub_0x304[];
-extern u32 dLuigiModel_gap_0x4E8C_sub_0x1D24[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1D24[];
+extern Gfx dLuigiModel_DL_0x6C20[];
 extern u16 dLuigiModel_gap_0x4E8C_sub_0x328[];
 extern u8 dLuigiModel_gap_0x28E0_sub_0x37C[];
 
@@ -2135,66 +2136,17 @@ Gfx dLuigiModel_DL_0x6B40[14] = {
 };
 
 /* gap sub-block @ 0x6BB0 (was gap+0x1D24, 232 bytes) */
-u32 dLuigiModel_gap_0x4E8C_sub_0x1D24[58] = {
-	aobjEvent32EndRaw(0x094, 1),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x056, 3),
-	aobjEvent32EndRaw(0x040, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x047, 32744),
-	aobjEvent32EndRaw(0x02A, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x04B, 32743),
-	    0xFFE60000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x05C, 3),
-	    0xFFDB0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFD80006,
-	aobjEvent32EndRaw(0x016, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFDBFFF4,
-	aobjEvent32EndRaw(0x016, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 28686),
-	(u32)dLuigiModel_gap_0x4E8C_sub_0x1D24,
-	aobjEvent32SetValBlock(0x018, 2568),
-	    0x00060C08,  /* 5.553289762180677e-40f */
-	    0x0606040C,  /* 2.520557205581796e-35f */
-	aobjEvent32EndRaw(0x004, 2572),
-	aobjEvent32SetValBlock(0x010, 2562),
-	    0x0004020C,  /* 3.6807626502727105e-40f */
-	aobjEvent32SetValBlock(0x00C, 2048),
-	    0x00060004,  /* 5.510185821418046e-40f */
-	    0x06020008,  /* 2.445030545597762e-35f */
-	aobjEvent32EndRaw(0x000, 516),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Vtx data @ 0x6BB0 (112 B / 7 vertices) */
+Vtx dLuigiModel_gap_0x4E8C_sub_0x1D24[7] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1D24.vtx.inc.c>
 };
+
+/* Gfx DL @ 0x6C20 (112 B / 14 cmds) */
+Gfx dLuigiModel_DL_0x6C20[14] = {
+	#include <LuigiModel/DL_0x6C20.dl.inc.c>
+};
+
+PAD(8);
 
 /* palette @ retyped from u8[40] to u16[20] */
 u16 dLuigiModel_gap_0x4E8C_sub_0x1E0C[20] = {

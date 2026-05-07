@@ -79,7 +79,8 @@ extern MObjSub *dCaptainModel_Joint_0x0080_post_sub_0x11F4[];
 extern MObjSub *dCaptainModel_Joint_0x0080_post_sub_0x11FC[];
 extern MObjSub *dCaptainModel_Joint_0x0080_post_sub_0x1204[];
 extern MObjSub *dCaptainModel_Joint_0x0080_post_sub_0x1210[];
-extern u32 dCaptainModel_gap_0x7DD0_sub_0x2FB0[];
+extern Vtx dCaptainModel_gap_0x7DD0_sub_0x2FB0[];
+extern Gfx dCaptainModel_DL_0xADF0[];
 extern MObjSub *dCaptainModel_gap_0x40B0_sub_0x17A4[];
 extern MObjSub *dCaptainModel_gap_0x40B0_sub_0x17D4[];
 extern AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x784[];
@@ -186,7 +187,6 @@ MObjSub **dCaptainModel_gap_0x0000[24] = {
 	(MObjSub **)&dCaptainModel_Joint_0x0080_post_sub_0x1204,  /* +0x58 */
 	NULL,  /* +0x5C */
 };
-
 
 /* u32 pointer array @ 0x60 (8 entries) */
 u32 dCaptainModel_Joint_0x0060_post[8] = {
@@ -5316,66 +5316,17 @@ Gfx dCaptainModel_DL_0xAD10[14] = {
 };
 
 /* gap sub-block @ 0xAD80 (was gap+0x2FB0, 232 bytes) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x2FB0[58] = {
-	aobjEvent32EndRaw(0x09E, 8),
-	aobjEvent32EndRaw(0x03E, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x05B, 32755),
-	aobjEvent32EndRaw(0x024, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x05D, 32764),
-	    0xFFEB0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x07E, 12),
-	    0xFFE20000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFF1FFF2,
-	    0xFFFF0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFEF0012,
-	    0xFFED0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFEA0010,
-	aobjEvent32EndRaw(0x024, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 28686),
-	(u32)dCaptainModel_gap_0x7DD0_sub_0x2FB0,
-	aobjEvent32SetValBlock(0x018, 2568),
-	    0x00080A06,  /* 7.382797011233872e-40f */
-	    0x06040806,  /* 2.4832335380276353e-35f */
-	aobjEvent32EndRaw(0x008, 520),
-	aobjEvent32SetValBlock(0x000, 3080),
-	aobjEvent32EndRaw(0x018, 10),
-	aobjEvent32SetValBlock(0x004, 8),
-	    0x0000060A,  /* 2.1664074258461672e-42f */
-	aobjEvent32SetValBlock(0x008, 1536),
-	    0x00020400,  /* 1.8510592194345104e-40f */
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Vtx data @ 0xAD80 (112 B / 7 vertices) */
+Vtx dCaptainModel_gap_0x7DD0_sub_0x2FB0[7] = {
+	#include <CaptainModel/gap_0x7DD0_sub_0x2FB0.vtx.inc.c>
 };
+
+/* Gfx DL @ 0xADF0 (112 B / 14 cmds) */
+Gfx dCaptainModel_DL_0xADF0[14] = {
+	#include <CaptainModel/DL_0xADF0.dl.inc.c>
+};
+
+PAD(8);
 
 /* gap sub-block @ 0xAE68 (was gap+0x3098, 40 bytes) */
 u16 dCaptainModel_gap_0x7DD0_sub_0x3098[20] = {

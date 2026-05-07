@@ -7,7 +7,76 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>
 extern u32 dSamusModel_gap_0x3B24_sub_0x360[];
+extern u16 dSamusModel_palette_0xB4B8[];
+extern u16 dSamusModel_palette_0xB4E0[];
+extern u16 dSamusModel_palette_0xB710[];
+extern u16 dSamusModel_palette_0xB738[];
+extern u16 dSamusModel_palette_0xB760[];
+extern u16 dSamusModel_palette_0xB788[];
+extern u16 dSamusModel_palette_0xB7B0[];
+extern u16 dSamusModel_palette_0xB7D8[];
+extern u16 dSamusModel_palette_0xBA08[];
+extern u16 dSamusModel_palette_0xBA30[];
+extern u16 dSamusModel_palette_0xBA58[];
+extern u16 dSamusModel_palette_0xBA80[];
+extern u16 dSamusModel_palette_0xBAA8[];
+extern u16 dSamusModel_palette_0xBCD8[];
+extern u16 dSamusModel_palette_0xBD00[];
+extern u16 dSamusModel_palette_0xBD28[];
+extern u16 dSamusModel_palette_0xBD50[];
+extern u16 dSamusModel_palette_0xBD78[];
+extern u16 dSamusModel_palette_0xBFA8[];
+extern u16 dSamusModel_palette_0xC818[];
+extern u16 dSamusModel_palette_0xC840[];
+extern u16 dSamusModel_palette_0xC868[];
+extern u16 dSamusModel_palette_0xC890[];
+extern u16 dSamusModel_palette_0xC8B8[];
+extern u16 dSamusModel_palette_0xC9B0[];
+extern u16 dSamusModel_palette_0xCBE0[];
+extern u16 dSamusModel_palette_0xCC08[];
+extern u16 dSamusModel_palette_0xCC30[];
+extern u16 dSamusModel_palette_0xCC58[];
+extern u16 dSamusModel_palette_0xCC80[];
+extern u16 dSamusModel_palette_0xCEB0[];
+extern u16 dSamusModel_palette_0xD5A0[];
+extern u16 dSamusModel_palette_0xD5C8[];
+extern u16 dSamusModel_palette_0xD5F0[];
 extern u8 dSamusModel_Joint_0x0040_post[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x1D8[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x250[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x2C8[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x340[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x3B8[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x430[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x4A8[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x520[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x598[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x610[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x688[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x700[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x778[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x7F0[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x868[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x8E0[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x958[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x9D0[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0xA48[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0xAC0[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0xB38[];
+extern MObjSub dSamusModel_Joint_0x0040_post_sub_0xBB0[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC28[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC34[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC44[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC50[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC58[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC60[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC70[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC7C[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC88[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC90[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC98[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xCA4[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xCAC[];
 extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1150[];
 extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1174[];
 extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x488[];
@@ -76,17 +145,17 @@ extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1198[];
  * .reloc relationships only make sense as one continuous table. */
 MObjSub **dSamusModel_gap_0x0000[16] = {
 	NULL,  /* +0x00 */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC28),  /* +0x04 */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC34),  /* +0x08 */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC28,  /* +0x04 */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC34,  /* +0x08 */
 	NULL,  /* +0x0C */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC44),  /* +0x10 */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC50),  /* +0x14 */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC58),  /* +0x18 */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC44,  /* +0x10 */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC50,  /* +0x14 */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC58,  /* +0x18 */
 	NULL,  /* +0x1C */
 	NULL,  /* +0x20 */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC60),  /* +0x24 */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC60,  /* +0x24 */
 	NULL,  /* +0x28 */
-	(MObjSub **)((u8 *)dSamusModel_Joint_0x0040_post + 0xC70),  /* +0x2C */
+	(MObjSub **)&dSamusModel_Joint_0x0040_post_sub_0xC70,  /* +0x2C */
 	NULL,  /* +0x30 */
 	NULL,  /* +0x34 */
 	NULL,  /* +0x38 */
@@ -94,10 +163,718 @@ MObjSub **dSamusModel_gap_0x0000[16] = {
 };
 
 
-/* Raw data from file offset 0x0040 to 0x0CF8 (3256 bytes) */
-u8 dSamusModel_Joint_0x0040_post[3256] = {
+/* Raw data from file offset 0x40 to 0x218 (472 bytes).
+ * Holds palette/sprite tables. The 22 MObjSubs (0x78 bytes
+ * each, file offsets 0x218..0xC68) and
+ * 13 MObjSub* trailing-index cells (0xC68..0xCF8)
+ * have been split out below. */
+u8 dSamusModel_Joint_0x0040_post[472] = {
 	#include <SamusModel/Joint_0x0040_post.data.inc.c>
 };
+
+/* MObjSub @ 0x218 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x1D8[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x44),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x290 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x250[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x58),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x308 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x2C8[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x6C),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x380 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x340[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0073, 0x0006, 0x0018, 0x0011,
+		0,
+		0.23090000450611115f, 0.273840993642807f,
+		0.7721999883651733f, 0.2763180136680603f,
+		0.23090000450611115f, 0.7721999883651733f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x80),
+		0x0004,
+		0x02, 0x00,
+		0x0018,
+		0x0011, 0x0018, 0x0011,
+		0.23090000450611115f, 0.273840993642807f,
+		0.23090000450611115f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x3F8 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x3B8[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0065, 0x0006, 0x0010, 0x0008,
+		0,
+		0.3423529863357544f, 0.0f,
+		0.3152939975261688f, 1.0f,
+		0.3423529863357544f, 0.3152939975261688f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x94),
+		0x0004,
+		0x02, 0x00,
+		0x0008,
+		0x0008, 0x0010, 0x0008,
+		0.3423529863357544f, 0.0f,
+		0.3423529863357544f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x470 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x430[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0040, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xA8),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0040, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x4E8 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x4A8[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0010, 0x0010,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xBC),
+		0x0004,
+		0x02, 0x00,
+		0x0010,
+		0x0010, 0x0010, 0x0010,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x560 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x520[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xD0),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x5D8 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x598[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0073, 0x0006, 0x0018, 0x0011,
+		0,
+		0.23090000450611115f, 0.27379998564720154f,
+		0.7721999883651733f, 0.27630001306533813f,
+		0.23090000450611115f, 0.7721999883651733f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xE4),
+		0x0004,
+		0x02, 0x00,
+		0x0018,
+		0x0011, 0x0018, 0x0011,
+		0.23090000450611115f, 0.27379998564720154f,
+		0.23090000450611115f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x650 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x610[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0040, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xF8),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0040, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x6C8 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x688[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x10C),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x740 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x700[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0050, 0x0004, 0x0040, 0x0020,
+		0,
+		0.05000000074505806f, 0.12999999523162842f,
+		0.8999999761581421f, 0.4000000059604645f,
+		0.05000000074505806f, 0.8999999761581421f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x120),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0040, 0x0020,
+		0.05000000074505806f, 0.12999999523162842f,
+		0.05000000074505806f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x7B8 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x778[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0036, 0x000B, 0x0020, 0x0020,
+		0,
+		0.013538000173866749f, 0.039799999445676804f,
+		0.588923990726471f, 1.280400037765503f,
+		0.013538000173866749f, 0.588923990726471f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x134),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.013538000173866749f, 0.039799999445676804f,
+		0.013538000173866749f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x830 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x7F0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x148),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x8A8 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x868[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xF7, 0xCE, 0x00, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x920 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x8E0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x15C),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0x998 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x958[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0036, 0x000B, 0x0020, 0x0020,
+		0,
+		0.013538000173866749f, 0.039799999445676804f,
+		0.588923990726471f, 1.280400037765503f,
+		0.013538000173866749f, 0.588923990726471f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x170),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.013538000173866749f, 0.039799999445676804f,
+		0.013538000173866749f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0xA10 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0x9D0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x184),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0xA88 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0xA48[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xF7, 0xCE, 0x00, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0xB00 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0xAC0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x198),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0xB78 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0xB38[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0028, 0x0004, 0x0020, 0x0020,
+		0,
+		0.09962199628353119f, -0.0005000000237487257f,
+		0.800000011920929f, 0.9629999995231628f,
+		0.09962199628353119f, 0.800000011920929f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x1AC),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.09962199628353119f, -0.0005000000237487257f,
+		0.09962199628353119f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+/* MObjSub @ 0xBF0 */
+MObjSub dSamusModel_Joint_0x0040_post_sub_0xBB0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x1C0),
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub* trailing-index cells, NULL-terminated lists indexed by
+ * dSamusModel_gap_0x0000[joint] dispatch. */
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC28[3] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0xB38,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0xBB0,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC34[4] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x610,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x688,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x700,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC44[3] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x2C8,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x340,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC50[2] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x250,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC58[2] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x1D8,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC60[4] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x3B8,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x430,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x4A8,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC70[3] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x520,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x598,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC7C[3] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x868,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x8E0,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC88[2] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x7F0,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC90[2] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x778,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC98[3] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0xA48,
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0xAC0,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xCA4[2] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x9D0,
+	NULL,
+};
+MObjSub *dSamusModel_Joint_0x0040_post_sub_0xCAC[2] = {
+	(MObjSub *)dSamusModel_Joint_0x0040_post_sub_0x958,
+	NULL,
+};
+PAD(4);
 
 /* Vtx: Vtx_0x0CF8 @ 0xCF8 (30 vertices) */
 Vtx dSamusModel_Vtx_0x0CF8_Vtx[30] = {
@@ -3533,32 +4310,108 @@ u16 dSamusModel_gap_0xB27C_sub_0xC[20] = {
 };
 
 /* Texture data @ 0xB2B0 (600 bytes) */
-/* @tex fmt=CI4 dim=32x32 */
-u8 dSamusModel_Tex_0xB2B0[600] = {
+/* Texture: 0xB2B0 (CI4 — trailing 0x50 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xB2B0[520] = {
 	#include <SamusModel/Tex_0xB2B0.tex.inc.c>
 };
 
+u16 dSamusModel_palette_0xB4B8[20] = {
+	#include <SamusModel/palette_0xB4B8.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xB4E0[20] = {
+	#include <SamusModel/palette_0xB4E0.palette.inc.c>
+};
+
 /* Texture data @ 0xB508 (760 bytes) */
-/* @tex fmt=CI4 dim=32x32 */
-u8 dSamusModel_Tex_0xB508[760] = {
+/* Texture: 0xB508 (CI4 — trailing 0xF0 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xB508[520] = {
 	#include <SamusModel/Tex_0xB508.tex.inc.c>
 };
 
+u16 dSamusModel_palette_0xB710[20] = {
+	#include <SamusModel/palette_0xB710.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xB738[20] = {
+	#include <SamusModel/palette_0xB738.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xB760[20] = {
+	#include <SamusModel/palette_0xB760.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xB788[20] = {
+	#include <SamusModel/palette_0xB788.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xB7B0[20] = {
+	#include <SamusModel/palette_0xB7B0.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xB7D8[20] = {
+	#include <SamusModel/palette_0xB7D8.palette.inc.c>
+};
+
 /* Texture data @ 0xB800 (720 bytes) */
-/* @tex fmt=CI4 dim=72x79 */
-u8 dSamusModel_Tex_0xB800[720] = {
+/* Texture: 0xB800 (CI4 — trailing 0xC8 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xB800[520] = {
 	#include <SamusModel/Tex_0xB800.tex.inc.c>
 };
 
+u16 dSamusModel_palette_0xBA08[20] = {
+	#include <SamusModel/palette_0xBA08.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBA30[20] = {
+	#include <SamusModel/palette_0xBA30.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBA58[20] = {
+	#include <SamusModel/palette_0xBA58.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBA80[20] = {
+	#include <SamusModel/palette_0xBA80.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBAA8[20] = {
+	#include <SamusModel/palette_0xBAA8.palette.inc.c>
+};
+
 /* Texture data @ 0xBAD0 (720 bytes) */
-/* @tex fmt=CI4 dim=64x32 */
-u8 dSamusModel_Tex_0xBAD0[720] = {
+/* Texture: 0xBAD0 (CI4 — trailing 0xC8 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xBAD0[520] = {
 	#include <SamusModel/Tex_0xBAD0.tex.inc.c>
 };
 
-/* Texture data @ 0xBDA0 (560 bytes) */
-u8 dSamusModel_Tex_0xBDA0[560] = {
+u16 dSamusModel_palette_0xBCD8[20] = {
+	#include <SamusModel/palette_0xBCD8.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBD00[20] = {
+	#include <SamusModel/palette_0xBD00.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBD28[20] = {
+	#include <SamusModel/palette_0xBD28.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBD50[20] = {
+	#include <SamusModel/palette_0xBD50.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xBD78[20] = {
+	#include <SamusModel/palette_0xBD78.palette.inc.c>
+};
+
+/* Texture: 0xBDA0 (CI4 — trailing 0x28 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xBDA0[520] = {
 	#include <SamusModel/Tex_0xBDA0.tex.inc.c>
+};
+
+u16 dSamusModel_palette_0xBFA8[20] = {
+	#include <SamusModel/palette_0xBFA8.palette.inc.c>
 };
 
 /* Texture data @ 0xBFD0 (1040 bytes) */
@@ -3575,9 +4428,29 @@ u16 dSamusModel_Lut_0xC3E0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0xC408 (1240 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dSamusModel_Lut_0xC3E0_palette */
-u8 dSamusModel_Tex_0xC408[1240] = {
+/* Texture: 0xC408 (CI4 — trailing 0xC8 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xC408[1040] = {
 	#include <SamusModel/Tex_0xC408.tex.inc.c>
+};
+
+u16 dSamusModel_palette_0xC818[20] = {
+	#include <SamusModel/palette_0xC818.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xC840[20] = {
+	#include <SamusModel/palette_0xC840.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xC868[20] = {
+	#include <SamusModel/palette_0xC868.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xC890[20] = {
+	#include <SamusModel/palette_0xC890.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xC8B8[20] = {
+	#include <SamusModel/palette_0xC8B8.palette.inc.c>
 };
 
 /* Texture data @ 0xC8E0 (136 bytes) */
@@ -3589,20 +4462,48 @@ u8 dSamusModel_Tex_0xC8E0[128] = {
 PAD(8);
 
 /* Texture data @ 0xC968 (112 bytes) */
-/* @tex fmt=CI4 dim=52x14 */
-u8 dSamusModel_Tex_0xC968[112] = {
+/* Texture: 0xC968 (CI4 — trailing 0x28 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xC968[72] = {
 	#include <SamusModel/Tex_0xC968.tex.inc.c>
 };
 
+u16 dSamusModel_palette_0xC9B0[20] = {
+	#include <SamusModel/palette_0xC9B0.palette.inc.c>
+};
+
 /* Texture data @ 0xC9D8 (720 bytes) */
-/* @tex fmt=CI4 dim=64x32 */
-u8 dSamusModel_Tex_0xC9D8[720] = {
+/* Texture: 0xC9D8 (CI4 — trailing 0xC8 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xC9D8[520] = {
 	#include <SamusModel/Tex_0xC9D8.tex.inc.c>
 };
 
-/* Texture data @ 0xCCA8 (560 bytes) */
-u8 dSamusModel_Tex_0xCCA8[560] = {
+u16 dSamusModel_palette_0xCBE0[20] = {
+	#include <SamusModel/palette_0xCBE0.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xCC08[20] = {
+	#include <SamusModel/palette_0xCC08.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xCC30[20] = {
+	#include <SamusModel/palette_0xCC30.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xCC58[20] = {
+	#include <SamusModel/palette_0xCC58.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xCC80[20] = {
+	#include <SamusModel/palette_0xCC80.palette.inc.c>
+};
+
+/* Texture: 0xCCA8 (CI4 — trailing 0x28 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xCCA8[520] = {
 	#include <SamusModel/Tex_0xCCA8.tex.inc.c>
+};
+
+u16 dSamusModel_palette_0xCEB0[20] = {
+	#include <SamusModel/palette_0xCEB0.palette.inc.c>
 };
 
 /* Texture data @ 0xCED8 (520 bytes) */
@@ -3637,9 +4538,21 @@ u16 dSamusModel_Lut_0xD4F0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0xD518 (256 bytes) */
-/* @tex fmt=CI4 dim=16x16 lut=dSamusModel_Lut_0xD4F0_palette */
-u8 dSamusModel_Tex_0xD518[256] = {
+/* Texture: 0xD518 (CI4 — trailing 0x78 bytes split as palette frames) */
+u8 dSamusModel_Tex_0xD518[136] = {
 	#include <SamusModel/Tex_0xD518.tex.inc.c>
+};
+
+u16 dSamusModel_palette_0xD5A0[20] = {
+	#include <SamusModel/palette_0xD5A0.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xD5C8[20] = {
+	#include <SamusModel/palette_0xD5C8.palette.inc.c>
+};
+
+u16 dSamusModel_palette_0xD5F0[20] = {
+	#include <SamusModel/palette_0xD5F0.palette.inc.c>
 };
 
 /* Texture data @ 0xD618 (2992 bytes) */

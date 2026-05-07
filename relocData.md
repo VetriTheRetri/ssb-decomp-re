@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2046 / 2132** files at 100% (97.16% of bytes typed; 484,840 / 17,082,000 bytes still untyped across 86 files).
+Overall: **2046 / 2132** files at 100% (97.32% of bytes typed; 457,860 / 17,082,000 bytes still untyped across 86 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -70,28 +70,22 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 61 | MVOpeningNewcomers1 | 167600 | 34656 | 4 | 79.32% |
 | 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
-| 335 | NessModel | 50112 | 7996 | 25 | 84.04% |
-| 341 | PikachuModel | 39984 | 5660 | 59 | 85.84% |
+| 335 | NessModel | 50112 | 6476 | 25 | 87.08% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
 | 75 | MVOpeningRunCrash | 15024 | 1760 | 32 | 88.29% |
 | 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
-| 313 | FoxModel | 32336 | 3648 | 30 | 88.72% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
-| 317 | DonkeyModel | 54784 | 5772 | 66 | 89.46% |
 | 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
 | 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
-| 332 | CaptainModel | 51344 | 5076 | 41 | 90.11% |
-| 338 | YoshiModel | 44256 | 4012 | 39 | 90.93% |
 | 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
 | 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
 | 323 | LuigiModel | 32528 | 2632 | 35 | 91.91% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
-| 328 | KirbyModel | 120864 | 9328 | 88 | 92.28% |
-| 330 | PurinModel | 32224 | 2348 | 24 | 92.71% |
+| 341 | PikachuModel | 39984 | 3116 | 59 | 92.21% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
-| 320 | SamusModel | 58704 | 3640 | 31 | 93.80% |
+| 328 | KirbyModel | 120864 | 7092 | 62 | 94.13% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
@@ -101,18 +95,24 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 133 | GRBonus1PikachuFile2 | 11488 | 448 | 1 | 96.10% |
 | 39 | IFCommonObject | 16352 | 616 | 1 | 96.23% |
 | 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
+| 317 | DonkeyModel | 54784 | 1892 | 65 | 96.55% |
 | 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
 | 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
-| 324 | LinkModel | 73584 | 2112 | 17 | 97.13% |
 | 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
 | 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
 | 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
 | 354 | YoshiSpecial2 | 1984 | 48 | 1 | 97.58% |
 | 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
+| 332 | CaptainModel | 51344 | 1012 | 40 | 98.03% |
 | 117 | StageMetalFile2 | 16320 | 308 | 4 | 98.11% |
+| 338 | YoshiModel | 44256 | 716 | 39 | 98.38% |
+| 320 | SamusModel | 58704 | 856 | 31 | 98.54% |
 | 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
 | 344 | BossModel | 11584 | 136 | 1 | 98.83% |
+| 324 | LinkModel | 73584 | 840 | 17 | 98.86% |
+| 313 | FoxModel | 32336 | 312 | 27 | 99.04% |
+| 330 | PurinModel | 32224 | 300 | 19 | 99.07% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
 | 296 | MarioModel | 29968 | 232 | 1 | 99.23% |
 | 102 | StagePupupuBeta2 | 10496 | 64 | 1 | 99.39% |
@@ -139,6 +139,49 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **Mario-style post-region decompose across 10 fighter Models** —
+  split each fighter's per-skeleton MObjSub region (the giant
+  `Joint_0xNN_post[N]` block targeted by `gap_0x0000`'s
+  `MObjSub **` dispatch) into:
+  1. **N typed `MObjSub *Joint_0xNN_post_sub_0xM[k]` trailing-index
+     cell arrays** (NULL-terminated, 1..6 MObjSub* entries each), at
+     the tail of the post region. Each cell is one of the lists that
+     `gap_0x0000[joint]` dispatch entries point to; entries now use
+     `(MObjSub **)&Joint_0xNN_post_sub_0xM` instead of raw
+     `+0xN` arithmetic.
+  2. **K typed `MObjSub Joint_0xNN_post_sub_0xM[1]` struct
+     initializers** (0x78 bytes each, 0x78-stride) covering the body
+     of the post region. Promoted via
+     `tools/promoteMObjSub.py <fid> --dual-version` which emits
+     per-line `#if defined(REGION_US/JP)` overlays where US and JP
+     byte content diverges (e.g. fighter primcolor differences).
+  3. The remaining post region head (0..first-MObjSub offset) holds
+     palette/sprite tables targeted by each MObjSub's
+     `palettes`/`sprites` pointer fields.
+  - **Donkey only**: also extended `gap_0x0000` from `[24]` to `[25]`
+    by absorbing the first 4 bytes of the old `Joint_0x0060_post`
+    (the dispatch slot for joint 24); split the remaining 28 bytes
+    (`Joint_0x0060_post_sub_0x8[6]`, 6-entry `u16*` palette table)
+    referenced by MObjSub `_sub_0x1C8.palettes`. Plus 22 inner
+    `u16 *Joint_0x0080_post_sub_0xM[5]` palette tables split out of
+    the post head for each MObjSub palette field.
+  - **Texture trailing palettes**: `tools/split_tex_palettes.py`
+    (new) walks each `Tex_0xN` block's intern reloc entries and
+    splits any consecutive 40-byte trailing palette frames into
+    standalone `u16 palette_0xN[20]` decls with `.palette.inc.c`
+    extension. Applied to Donkey/Samus/Link/Purin/Captain/Ness/Yoshi/
+    Pikachu (Fox/Luigi/Kirby had no trailing palettes to split).
+  - Per-fighter completion deltas (US, before → after this whole
+    round of fighter Model work): Mario 99.23% (untouched, reference);
+    Fox 87.85% → 99.04%; Donkey 88.78% → 96.55%; Samus 90.73% →
+    98.54%; Luigi 88.13% → 91.91% (head-dispatch alignment trap
+    blocks further work — need `Vtx_0x0910` → `Vtx_0x090C` rename
+    first); Link 96.28% → 98.86%; Kirby 90.73% → 94.13%;
+    Purin 87.88% → 99.07%; Captain 82.95% → 98.03%; Ness 83.58% →
+    87.08% (head dispatch lives in `JointVerts_Vtx[2]` — different
+    pattern, blocks gap_0x0000 promotion); Yoshi 84.79% → 98.38%;
+    Pikachu 79.93% → 92.21%. Both ROMs byte-identical for each
+    fighter.
 - **Head MObjSub** dispatch tables typed across 6 fighter Models** —
   the file 0x0000 region of each fighter Model holds a sparse
   `MObjSub **gap_0x0000[N]` array — chain-encoded pointers to the

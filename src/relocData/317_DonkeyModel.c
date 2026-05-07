@@ -6,7 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
-extern u8 dDonkeyModel_Joint_0x0080_post[];
 extern u8 dDonkeyModel_Tex_0xC0F8[];
 extern u8 dDonkeyModel_Tex_0xCA78[];
 extern u8 dDonkeyModel_Tex_0xCCD0[];
@@ -65,7 +64,8 @@ extern MObjSub *dDonkeyModel_Joint_0x0080_post_sub_0xEF0[];
 extern MObjSub *dDonkeyModel_Joint_0x0080_post_sub_0xEFC[];
 extern MObjSub *dDonkeyModel_Joint_0x0080_post_sub_0xF04[];
 extern MObjSub *dDonkeyModel_Joint_0x0080_post_sub_0xF0C[];
-extern u32 dDonkeyModel_gap_0x7390_sub_0x4C00[];
+extern Vtx dDonkeyModel_gap_0x7390_sub_0x4C00[];
+extern Gfx dDonkeyModel_DL_0xC020[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11F8[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1200[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1228[];
@@ -233,25 +233,30 @@ MObjSub **dDonkeyModel_gap_0x0000[25] = {
 
 PAD(4);  /* +0x64..+0x68 NULL pad */
 
-/* Palette table @ file 0x68 — 6 RGBA5551 palette frames embedded inside
- * dDonkeyModel_Tex_0xCD60 / dDonkeyModel_Tex_0xC378 textures.
- * Referenced by MObjSub_sub_0x1C8.palettes (whole table) and
- * MObjSub_sub_0x240.palettes (last entry only, +0x14). */
-u16 *dDonkeyModel_Joint_0x0060_post_sub_0x8[6] = {
+/* Palette table @ file 0x68 — 5 RGBA5551 palette frames. Referenced by
+ * MObjSub_sub_0x1C8.palettes (whole table). The 6th frame originally at
+ * +0x14 has been split into Joint_0x0060_post_sub_0x1C below so the
+ * MObjSub_sub_0x240.palettes reference is a clean symbol with no offset. */
+u16 *dDonkeyModel_Joint_0x0060_post_sub_0x8[5] = {
 	dDonkeyModel_palette_0xCF60,
 	dDonkeyModel_palette_0xCEE8,
 	dDonkeyModel_palette_0xCF10,
 	(u16 *)dDonkeyModel_palette_0xC550,
 	dDonkeyModel_palette_0xCF38,
-	dDonkeyModel_palette_0xCA50,
 };
 
-/* Raw data from file offset 0x0080 to 0x0248 (456 bytes).
- * Holds palette/sprite tables. The 27 MObjSubs (0x78 bytes each) and
- * 15 trailing MObjSub* cells that followed have been split out below. */
-/* Pre-tables region @ dDonkeyModel_Joint_0x0080_post+0..0x10 */
-u8 dDonkeyModel_Joint_0x0080_post[16] = {
-	#include <DonkeyModel/Joint_0x0080_post.data.inc.c>
+/* Palette table @ file 0x7C — 5 RGBA5551 palette frames. Referenced by
+ * MObjSub_sub_0x240.palettes (whole table). Absorbs the 16-byte
+ * "Joint_0x0080_post pre-tables region" that originally held the next
+ * 4 entries; that name is now only used as a base for `_sub_*` cell
+ * symbols (the original parent region's MObjSub-dispatch suffix block
+ * naming is preserved). */
+u16 *dDonkeyModel_Joint_0x0060_post_sub_0x1C[5] = {
+	dDonkeyModel_palette_0xCA50,
+	dDonkeyModel_gap_0x7390_sub_0x4D18,
+	dDonkeyModel_palette_0xC528,
+	dDonkeyModel_palette_0xC550,
+	dDonkeyModel_gap_0x7390_sub_0x4D40,
 };
 
 u16 *dDonkeyModel_Joint_0x0080_post_sub_0x10[5] = {
@@ -449,7 +454,7 @@ MObjSub dDonkeyModel_Joint_0x0080_post_sub_0x240[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dDonkeyModel_Joint_0x0060_post_sub_0x8 + 0x14),
+		(void**)dDonkeyModel_Joint_0x0060_post_sub_0x1C,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -5072,79 +5077,17 @@ Gfx dDonkeyModel_DL_0xBF10[16] = {
 	#include <DonkeyModel/DL_0xBF10.dl.inc.c>
 };
 
-/* gap sub-block @ 0xBF90 (was gap+0x4C00, 280 bytes) */
-u32 dDonkeyModel_gap_0x7390_sub_0x4C00[70] = {
-	aobjEvent32EndRaw(0x0FE, 14),
-	aobjEvent32EndRaw(0x060, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x0C9, 32740),
-	aobjEvent32EndRaw(0x04A, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x0BA, 19),
-	    0xFFC20000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x09F, 32765),
-	    0xFFC70000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFD30015,
-	    0xFFE80000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFD50013,
-	aobjEvent32EndRaw(0x040, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFD7FFFE,
-	    0xFFE90000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFD9FFF6,
-	aobjEvent32EndRaw(0x036, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x009, 32742),
-	    0xFFFD0000,
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xFCFFFE05,
-	    0xFF167DFF,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x201, 4114),
-	(u32)dDonkeyModel_gap_0x7390_sub_0x4C00,
-	aobjEvent32SetValBlock(0x020, 3596),
-	    0x000C0E0A,  /* 1.107062220576678e-39f */
-	aobjEvent32SetValBlock(0x010, 3082),
-	    0x00100C06,  /* 1.4736811352010512e-39f */
-	aobjEvent32SetValBlock(0x018, 2052),
-	    0x00060C04,  /* 5.553233710242104e-40f */
-	    0x060A0408,  /* 2.5957876960907203e-35f */
-	aobjEvent32EndRaw(0x020, 526),
-	aobjEvent32SetValBlock(0x020, 1538),
-	    0x00000A0E,  /* 3.606942247172079e-42f */
-	aobjEvent32SetValBlock(0x000, 1034),
-	aobjEvent32EndRaw(0x008, 6),
-	aobjEvent32SetValBlock(0x01C, 512),
-	    0x00000206,  /* 7.258726045202552e-43f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	    0x00000000,  /* 0.0f */
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xDF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Vtx data @ 0xBF90 (was gap+0x4C00, 144 bytes / 9 vertices) */
+Vtx dDonkeyModel_gap_0x7390_sub_0x4C00[9] = {
+	#include <DonkeyModel/gap_0x7390_sub_0x4C00.vtx.inc.c>
 };
+
+/* Gfx DL @ 0xC020 (was gap+0x4C00+0x90, 16 cmds / 128 bytes) */
+Gfx dDonkeyModel_DL_0xC020[16] = {
+	#include <DonkeyModel/DL_0xC020.dl.inc.c>
+};
+
+PAD(8);  /* trailing zeros after gap+0x4C00 DL */
 
 /* gap sub-block @ 0xC0A8 (was gap+0x4D18, 40 bytes) */
 u16 dDonkeyModel_gap_0x7390_sub_0x4D18[20] = {

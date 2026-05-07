@@ -55,20 +55,41 @@ def read_symbol_table(obj_path):
     return symbols
 
 
-_extern_symbol_cache = {}  # {file_id: {sym_name: offset}}
+_extern_symbol_cache = {}  # {(version, file_id): {sym_name: offset}}
+_name_to_fid_cache = {}    # {version: {file_name: file_id}}
+
+
+def _load_name_to_fid(version):
+    """Build a {target_name: fid} map by parsing relocFileDescriptions.<v>.txt.
+    Used to translate a US fid (from a shared `# -> file NNN (Name)` comment)
+    to the corresponding JP fid (since fids differ between versions but
+    target names match)."""
+    if version in _name_to_fid_cache:
+        return _name_to_fid_cache[version]
+    path = os.path.join(PROJECT_DIR, 'tools', f'relocFileDescriptions.{version}.txt')
+    m = {}
+    if os.path.exists(path):
+        for ln in open(path):
+            x = re.match(r'^-(\d+):\s*(.+)\s*$', ln)
+            if x:
+                m[x.group(2).strip()] = int(x.group(1))
+    _name_to_fid_cache[version] = m
+    return m
 
 
 def _load_extern_symbols(file_id, version):
     """Load and cache the symbol table for another relocData file's .o so
     cross-file extern labels can resolve to byte offsets in the target."""
-    if file_id in _extern_symbol_cache:
-        return _extern_symbol_cache[file_id]
+    key = (version, file_id)
+    if key in _extern_symbol_cache:
+        return _extern_symbol_cache[key]
     o_path = os.path.join(PROJECT_DIR, 'build', version, 'src', 'relocData',
                            '.build', f'{file_id}.o')
     if not os.path.exists(o_path):
+        _extern_symbol_cache[key] = None
         return None
     syms = read_symbol_table(o_path)
-    _extern_symbol_cache[file_id] = syms
+    _extern_symbol_cache[key] = syms
     return syms
 
 
@@ -131,15 +152,26 @@ def parse_reloc_metadata(reloc_path, symbols, version=None):
     intern_entries = []
     extern_entries = []
 
-    extern_fid_re = re.compile(r'#\s*->\s*file\s+(\d+)\b')
+    extern_hint_re = re.compile(r'#\s*->\s*file\s+(\d+)(?:\s*\(([^)]+)\))?')
+    name_to_fid = _load_name_to_fid(version) if version else {}
 
     with open(reloc_path) as f:
         for line in f:
             extern_fid = None
-            # Pull out the file-id hint before stripping the comment.
-            m = extern_fid_re.search(line)
+            # Pull out the file-id and (optional) name hint from the inline
+            # comment. The fid in the comment is whatever version's reloc
+            # generator wrote; for shared US/JP relocs it's the US fid. If
+            # the comment carries a name and the current version's fid for
+            # that name differs from the literal fid, prefer the name lookup
+            # (so JP builds reading a US-flavored shared reloc still work).
+            m = extern_hint_re.search(line)
             if m:
-                extern_fid = int(m.group(1))
+                literal_fid = int(m.group(1))
+                hint_name = m.group(2)
+                if hint_name and hint_name in name_to_fid:
+                    extern_fid = name_to_fid[hint_name]
+                else:
+                    extern_fid = literal_fid
             # Strip inline comments for parsing.
             hash_idx = line.find('#')
             if hash_idx >= 0:

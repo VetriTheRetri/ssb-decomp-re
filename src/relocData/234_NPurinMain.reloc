@@ -1,23 +1,23 @@
 # Relocation metadata for file 234
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNPurinMain_file_handles 0x34 # -> file 232 (PurinMainMotion)
-extern dNPurinMain_commonparts_container 0x23B8 # -> file 306 (NPurinModel)
-extern dNPurinMain_commonparts_container+0x10 0x23B8 # -> file 306 (NPurinModel)
-extern dNPurinMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+extern dNPurinMain_file_handles dPurinMainMotion_0x0034 # -> file 232 (PurinMainMotion)
+extern dNPurinMain_commonparts_container dNPurinModel_JointTree # -> file 306 (NPurinModel)
+extern dNPurinMain_commonparts_container+0x10 dNPurinModel_JointTree # -> file 306 (NPurinModel)
+extern dNPurinMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
 intern dNPurinMain_attr+0x29C dNPurinMain_setup_parts
 intern dNPurinMain_attr+0x2A0 dNPurinMain_animlock
 intern dNPurinMain_attr+0x2D0 dNPurinMain_hiddenparts
 intern dNPurinMain_attr+0x2D4 dNPurinMain_commonparts_container
-extern dNPurinMain_attr+0x2D8 0x0 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2DC 0x450 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2E0 0xC40 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2E4 0x1480 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2E8 0x1CA0 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2EC 0x2540 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2F0 0x2CD0 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2F4 0x3560 # -> file 331 (PurinShieldPose)
-extern dNPurinMain_attr+0x2F8 0x3DA0 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2D8 dPurinShieldPose_data0 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2DC dPurinShieldPose_ptrs0 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2E0 dPurinShieldPose_ptrs1 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2E4 dPurinShieldPose_ptrs2 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2E8 dPurinShieldPose_ptrs3 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2EC dPurinShieldPose_ptrs4 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2F0 dPurinShieldPose_ptrs5 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2F4 dPurinShieldPose_ptrs6 # -> file 331 (PurinShieldPose)
+extern dNPurinMain_attr+0x2F8 dPurinShieldPose_ptrs7 # -> file 331 (PurinShieldPose)
 intern dNPurinMain_attr+0x328 dNPurinMain_modelparts_container
 intern dNPurinMain_attr+0x330 dNPurinMain_textureparts_container
 intern dNPurinMain_attr+0x338 dNPurinMain_thrown_status

@@ -1,13 +1,13 @@
 # Relocation metadata for file 250
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dBossMain_file_handles 0x0 # -> file 249 (BossMainMotion)
-extern dBossMain_commonparts_container 0x23D8 # -> file 344 (BossModel)
-extern dBossMain_commonparts_container+0x10 0x23D8 # -> file 344 (BossModel)
-extern dBossMain_stock_luts 0x90 # -> file 345 (MasterHandIcon)
-extern dBossMain_sprites 0xC0 # -> file 345 (MasterHandIcon)
+extern dBossMain_file_handles dBossMainMotion_0x0000 # -> file 249 (BossMainMotion)
+extern dBossMain_commonparts_container dBossModel_JointTree # -> file 344 (BossModel)
+extern dBossMain_commonparts_container+0x10 dBossModel_JointTree # -> file 344 (BossModel)
+extern dBossMain_stock_luts dMasterHandIcon_Stock_tex+0x88 # -> file 345 (MasterHandIcon)
+extern dBossMain_sprites dMasterHandIcon_Stock # -> file 345 (MasterHandIcon)
 intern dBossMain_sprites+0x4 dBossMain_stock_luts
-extern dBossMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+extern dBossMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
 intern dBossMain_attr+0x29C dBossMain_setup_parts
 intern dBossMain_attr+0x2A0 dBossMain_animlock
 intern dBossMain_attr+0x2D0 dBossMain_hiddenparts

@@ -1,9 +1,9 @@
 # Relocation metadata for file 203
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dMarioMain_file_handles 0x24 # -> file 202 (MarioMainMotion)
-extern dMarioMain_file_handles+0x4 0x608 # -> file 356 (MarioSpecial2)
-extern dMarioMain_file_handles+0x8 0x0 # -> file 204 (MarioSpecial1)
+extern dMarioMain_file_handles dMarioMainMotion_0x0024 # -> file 202 (MarioMainMotion)
+extern dMarioMain_file_handles+0x4 dMarioSpecial2_EntryDokanDObjDesc # -> file 356 (MarioSpecial2)
+extern dMarioMain_file_handles+0x8 dMarioSpecial1_Fireball_WeaponAttributes # -> file 204 (MarioSpecial1)
 extern dMarioMain_modelparts_desc_0x05C dMarioModel_Joint_0x18D8_DisplayList # -> file 296 (MarioModel)
 extern dMarioMain_modelparts_desc_0x05C+0x14 dMarioModel_Joint_0x3E60_DisplayList # -> file 296 (MarioModel)
 extern dMarioMain_modelparts_desc_0x05C+0x28 dMarioModel_gap_0x4A60_sub_0x8A0 # -> file 296 (MarioModel)
@@ -48,15 +48,15 @@ intern dMarioMain_attr+0x29C dMarioMain_setup_parts
 intern dMarioMain_attr+0x2A0 dMarioMain_animlock
 intern dMarioMain_attr+0x2D0 dMarioMain_hiddenparts
 intern dMarioMain_attr+0x2D4 dMarioMain_commonparts_container
-extern dMarioMain_attr+0x2D8 0xF0 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2DC 0x5A0 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2E0 0xA10 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2E4 0xE80 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2E8 0x12F0 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2EC 0x17A0 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2F0 0x1C60 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2F4 0x20E0 # -> file 298 (MarioShieldPose)
-extern dMarioMain_attr+0x2F8 0x2540 # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2D8 dMarioShieldPose_script0_14+0x10 # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2DC dMarioShieldPose_ptrs1+0x1EC # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2E0 dMarioShieldPose_script2_15+0x2C # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2E4 dMarioShieldPose_script3_15+0x30 # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2E8 dMarioShieldPose_script4_15+0x38 # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2EC dMarioShieldPose_script5_15+0x30 # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2F0 dMarioShieldPose_script6_15+0x2C # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2F4 dMarioShieldPose_script7_15+0x34 # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2F8 dMarioShieldPose_script8_15+0x30 # -> file 298 (MarioShieldPose)
 intern dMarioMain_attr+0x328 dMarioMain_modelparts_container
 intern dMarioMain_attr+0x330 dMarioMain_textureparts_container
 intern dMarioMain_attr+0x338 dMarioMain_thrown_status

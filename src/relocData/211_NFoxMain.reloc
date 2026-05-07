@@ -1,23 +1,23 @@
 # Relocation metadata for file 211
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNFoxMain_file_handles 0x0 # -> file 208 (FoxMainMotion)
-extern dNFoxMain_commonparts_container 0x2DF8 # -> file 303 (NFoxModel)
-extern dNFoxMain_commonparts_container+0x10 0x2DF8 # -> file 303 (NFoxModel)
-extern dNFoxMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+extern dNFoxMain_file_handles dFoxMainMotion_0x0000 # -> file 208 (FoxMainMotion)
+extern dNFoxMain_commonparts_container dNFoxModel_JointTree # -> file 303 (NFoxModel)
+extern dNFoxMain_commonparts_container+0x10 dNFoxModel_JointTree # -> file 303 (NFoxModel)
+extern dNFoxMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
 intern dNFoxMain_attr+0x29C dNFoxMain_setup_parts
 intern dNFoxMain_attr+0x2A0 dNFoxMain_animlock
 intern dNFoxMain_attr+0x2D0 dNFoxMain_hiddenparts
 intern dNFoxMain_attr+0x2D4 dNFoxMain_commonparts_container
-extern dNFoxMain_attr+0x2D8 0x120 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2DC 0x620 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2E0 0xAD0 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2E4 0xF90 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2E8 0x1440 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2EC 0x1900 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2F0 0x1DB0 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2F4 0x2270 # -> file 314 (FoxShieldPose)
-extern dNFoxMain_attr+0x2F8 0x2710 # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2D8 dFoxShieldPose_script0_17+0x10 # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2DC dFoxShieldPose_ptrs1+0x23C # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2E0 dFoxShieldPose_script2_17+0x2C # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2E4 dFoxShieldPose_script3_17+0x30 # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2E8 dFoxShieldPose_script4_17+0x2C # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2EC dFoxShieldPose_script5_17+0x2C # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2F0 dFoxShieldPose_script6_17+0x30 # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2F4 dFoxShieldPose_script7_17+0x34 # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2F8 dFoxShieldPose_script8_17+0x38 # -> file 314 (FoxShieldPose)
 intern dNFoxMain_attr+0x328 dNFoxMain_modelparts_container
 intern dNFoxMain_attr+0x330 dNFoxMain_textureparts_container
 intern dNFoxMain_attr+0x338 dNFoxMain_thrown_status

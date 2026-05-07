@@ -1786,13 +1786,13 @@ u8 dPikachuModel_gap_0x59B8_sub_0xA38_post[4] = {
 };
 
 /* gap sub-block @ 0x6504 (was gap+0xB4C, 40 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0xB4C[40] = {
-	#include <PikachuModel/gap_0x59B8_sub_0xB4C.data.inc.c>
+u16 dPikachuModel_gap_0x59B8_sub_0xB4C[20] = {
+	#include <PikachuModel/gap_0x59B8_sub_0xB4C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x652C (was gap+0xB74, 32 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0xB74[32] = {
-	#include <PikachuModel/gap_0x59B8_sub_0xB74.data.inc.c>
+u16 dPikachuModel_gap_0x59B8_sub_0xB74[16] = {
+	#include <PikachuModel/gap_0x59B8_sub_0xB74.palette.inc.c>
 };
 
 /* gap sub-block @ 0x654C (was gap+0xB94, 20 bytes) */
@@ -1928,8 +1928,8 @@ u8 dPikachuModel_gap_0x59B8_sub_0x1908_post[16] = {
 };
 
 /* gap sub-block @ 0x7328 (was gap+0x1970, 40 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x1970[40] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x1970.data.inc.c>
+u16 dPikachuModel_gap_0x59B8_sub_0x1970[20] = {
+	#include <PikachuModel/gap_0x59B8_sub_0x1970.palette.inc.c>
 };
 
 /* Texture data @ 0x7350 (528 bytes) */
@@ -2055,30 +2055,28 @@ u16 dPikachuModel_palette_0x9930[16] = {
 	#include <PikachuModel/palette_0x9930.palette.inc.c>
 };
 
-/* Raw data from file offset 0x9950 to 0x99F0 (160 bytes) */
-/* gap sub-block @ 0x9950 (was gap+0x0, 8 bytes) */
-u8 dPikachuModel_gap_0x9950[8] = {
-	#include <PikachuModel/gap_0x9950.data.inc.c>
+/* "Stock LUTs" — palette frames cycled by FTSprites.stock_luts (PikachuMain).
+ * dPikachuMain_stock_luts[5] targets palette_0x9930, gap_0x9950_sub_0x{8,30,58,80}.
+ * Each frame is 16 colors RGBA5551 (32 bytes); first 4 trail an 8-byte pad,
+ * last has none. The standalone gap_0x9950[8] is the trailing pad of palette_0x9930. */
+u16 dPikachuModel_gap_0x9950[4] = {
+	#include <PikachuModel/gap_0x9950.palette.inc.c>
 };
 
-/* gap sub-block @ 0x9958 (was gap+0x8, 40 bytes) */
-u8 dPikachuModel_gap_0x9950_sub_0x8[40] = {
-	#include <PikachuModel/gap_0x9950_sub_0x8.data.inc.c>
+u16 dPikachuModel_gap_0x9950_sub_0x8[20] = {
+	#include <PikachuModel/gap_0x9950_sub_0x8.palette.inc.c>
 };
 
-/* gap sub-block @ 0x9980 (was gap+0x30, 40 bytes) */
-u8 dPikachuModel_gap_0x9950_sub_0x30[40] = {
-	#include <PikachuModel/gap_0x9950_sub_0x30.data.inc.c>
+u16 dPikachuModel_gap_0x9950_sub_0x30[20] = {
+	#include <PikachuModel/gap_0x9950_sub_0x30.palette.inc.c>
 };
 
-/* gap sub-block @ 0x99A8 (was gap+0x58, 40 bytes) */
-u8 dPikachuModel_gap_0x9950_sub_0x58[40] = {
-	#include <PikachuModel/gap_0x9950_sub_0x58.data.inc.c>
+u16 dPikachuModel_gap_0x9950_sub_0x58[20] = {
+	#include <PikachuModel/gap_0x9950_sub_0x58.palette.inc.c>
 };
 
-/* gap sub-block @ 0x99D0 (was gap+0x80, 32 bytes) */
-u8 dPikachuModel_gap_0x9950_sub_0x80[32] = {
-	#include <PikachuModel/gap_0x9950_sub_0x80.data.inc.c>
+u16 dPikachuModel_gap_0x9950_sub_0x80[16] = {
+	#include <PikachuModel/gap_0x9950_sub_0x80.palette.inc.c>
 };
 
 /* Sprite: Stock */

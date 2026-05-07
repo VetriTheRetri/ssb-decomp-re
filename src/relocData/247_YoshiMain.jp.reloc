@@ -15,60 +15,60 @@ intern dYoshiMain_attr+0x338 dYoshiMain_thrown_status
 intern dYoshiMain_attr+0x340 dYoshiMain_sprites
 intern dYoshiMain_attr+0x344 dYoshiMain_skeleton
 
-extern dYoshiMain_file_handles 0x34
-extern dYoshiMain_file_handles+0x4 0x530
-extern dYoshiMain_file_handles+0x8 0x960
-extern dYoshiMain_file_handles+0xC 0xA860
-extern dYoshiMain_file_handles+0x40 0x5458
-extern dYoshiMain_modelparts_desc_0x0D4 0x2398
-extern dYoshiMain_modelparts_desc_0x0D4+0x4 0xDFC
-extern dYoshiMain_modelparts_desc_0x0D4+0x8 0x3FDC
-extern dYoshiMain_modelparts_desc_0x0D4+0x14 0x5CF8
-extern dYoshiMain_modelparts_desc_0x0D4+0x18 0x4D04
-extern dYoshiMain_modelparts_desc_0x0D4+0x1C 0x7514
-extern dYoshiMain_modelparts_desc_0x0D4+0x28 0x7D10
-extern dYoshiMain_modelparts_desc_0x0D4+0x2C 0x7818
-extern dYoshiMain_modelparts_desc_0x0D4+0x30 0x822C
-extern dYoshiMain_modelparts_desc_0x0D4+0x3C 0x7D10
-extern dYoshiMain_modelparts_desc_0x0D4+0x40 0x7818
-extern dYoshiMain_modelparts_desc_0x0D4+0x44 0x822C
-extern dYoshiMain_commonparts_container 0x33A0
-extern dYoshiMain_commonparts_container+0x4 0x0
-extern dYoshiMain_commonparts_container+0x8 0x38A0
-extern dYoshiMain_commonparts_container+0x10 0x6948
-extern dYoshiMain_commonparts_container+0x14 0x4030
-extern dYoshiMain_commonparts_container+0x18 0x6E50
-extern dYoshiMain_stock_luts 0xA9B0
-extern dYoshiMain_stock_luts+0x4 0xA9D8
-extern dYoshiMain_stock_luts+0x8 0xAA00
-extern dYoshiMain_stock_luts+0xC 0xAA28
-extern dYoshiMain_stock_luts+0x10 0xAA50
-extern dYoshiMain_stock_luts+0x14 0xAA78
-extern dYoshiMain_sprites 0xAAA8
-extern dYoshiMain_sprites+0x8 0xAC98
-extern dYoshiMain_skeleton_dls+0x8 0x8300
-extern dYoshiMain_skeleton_dls+0x10 0x8490
-extern dYoshiMain_skeleton_dls+0x18 0x88B0
-extern dYoshiMain_skeleton_dls+0x38 0x8C50
-extern dYoshiMain_skeleton_dls+0x40 0x8B40
-extern dYoshiMain_skeleton_dls+0x48 0x8D10
-extern dYoshiMain_skeleton_dls+0x58 0x8C50
-extern dYoshiMain_skeleton_dls+0x60 0x8B40
-extern dYoshiMain_skeleton_dls+0x68 0x8DC0
-extern dYoshiMain_skeleton_dls+0x78 0x9220
-extern dYoshiMain_skeleton_dls+0x80 0x9350
-extern dYoshiMain_skeleton_dls+0x90 0x8EC0
-extern dYoshiMain_skeleton_dls+0x98 0x8FD0
-extern dYoshiMain_skeleton_dls+0xA8 0x9090
-extern dYoshiMain_skeleton_dls+0xB8 0x8EC0
-extern dYoshiMain_skeleton_dls+0xC0 0x8FD0
-extern dYoshiMain_skeleton_dls+0xD0 0x9090
-extern dYoshiMain_attr+0x2D8 0x0
-extern dYoshiMain_attr+0x2DC 0x500
-extern dYoshiMain_attr+0x2E0 0x7D0
-extern dYoshiMain_attr+0x2E4 0xAA0
-extern dYoshiMain_attr+0x2E8 0xD70
-extern dYoshiMain_attr+0x2EC 0x1040
-extern dYoshiMain_attr+0x2F0 0x1310
-extern dYoshiMain_attr+0x2F4 0x15E0
-extern dYoshiMain_attr+0x2F8 0x18B0
+extern dYoshiMain_file_handles dYoshiMainMotion_0x0034  # -> file 221 (YoshiMainMotion)
+extern dYoshiMain_file_handles+0x4 dYoshiSpecial2_gap_0x0530  # -> file 329 (YoshiSpecial2)
+extern dYoshiMain_file_handles+0x8 dYoshiSpecial3_EggLay  # -> file 314 (YoshiSpecial3)
+extern dYoshiMain_file_handles+0xC dYoshiModel_gap_0xA860  # -> file 313 (YoshiModel)
+extern dYoshiMain_file_handles+0x40 dITCommonObject_StarRod_Weapon_data  # -> file 86 (ITCommonObject)
+extern dYoshiMain_modelparts_desc_0x0D4 dYoshiModel_Joint_0x2398_DisplayList  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x4 dYoshiModel_Joint_0x0080_post+0xD7C  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x8 dYoshiModel_gap_0x38F4_sub_0x6E8  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x14 dYoshiModel_Joint_0x5CF8_DisplayList  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x18 dYoshiModel_gap_0x38F4_sub_0x1410  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x1C dYoshiModel_gap_0x6E70_sub_0x6A4  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x28 dYoshiModel_gap_0x6E70_sub_0xEA0  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x2C dYoshiModel_gap_0x6E70_sub_0x9A8  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x30 dYoshiModel_gap_0x6E70_sub_0x13BC  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x3C dYoshiModel_gap_0x6E70_sub_0xEA0  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x40 dYoshiModel_gap_0x6E70_sub_0x9A8  # -> file 313 (YoshiModel)
+extern dYoshiMain_modelparts_desc_0x0D4+0x44 dYoshiModel_gap_0x6E70_sub_0x13BC  # -> file 313 (YoshiModel)
+extern dYoshiMain_commonparts_container dYoshiModel_JointTree  # -> file 313 (YoshiModel)
+extern dYoshiMain_commonparts_container+0x4 dYoshiModel_gap_0x0000  # -> file 313 (YoshiModel)
+extern dYoshiMain_commonparts_container+0x8 dYoshiModel_JointTree+0x500  # -> file 313 (YoshiModel)
+extern dYoshiMain_commonparts_container+0x10 dYoshiModel_JointTree_0x6948  # -> file 313 (YoshiModel)
+extern dYoshiMain_commonparts_container+0x14 dYoshiModel_gap_0x38F4_sub_0x73C  # -> file 313 (YoshiModel)
+extern dYoshiMain_commonparts_container+0x18 dYoshiModel_JointTree_0x6948+0x508  # -> file 313 (YoshiModel)
+extern dYoshiMain_stock_luts dYoshiModel_palette_0xA9B0  # -> file 313 (YoshiModel)
+extern dYoshiMain_stock_luts+0x4 dYoshiModel_gap_0xA9D0_sub_0x8  # -> file 313 (YoshiModel)
+extern dYoshiMain_stock_luts+0x8 dYoshiModel_gap_0xA9D0_sub_0x30  # -> file 313 (YoshiModel)
+extern dYoshiMain_stock_luts+0xC dYoshiModel_gap_0xA9D0_sub_0x58  # -> file 313 (YoshiModel)
+extern dYoshiMain_stock_luts+0x10 dYoshiModel_gap_0xA9D0_sub_0x80  # -> file 313 (YoshiModel)
+extern dYoshiMain_stock_luts+0x14 dYoshiModel_gap_0xA9D0_sub_0xA8  # -> file 313 (YoshiModel)
+extern dYoshiMain_sprites dYoshiModel_Stock  # -> file 313 (YoshiModel)
+extern dYoshiMain_sprites+0x8 dYoshiModel_FTEmblem  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x8 dYoshiModel_DL_0x8300  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x10 dYoshiModel_gap_0x6E70_sub_0x1620  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x18 dYoshiModel_gap_0x6E70_sub_0x1A40  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x38 dYoshiModel_gap_0x6E70_sub_0x1DE0  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x40 dYoshiModel_gap_0x6E70_sub_0x1CD0  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x48 dYoshiModel_DL_0x8D10  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x58 dYoshiModel_gap_0x6E70_sub_0x1DE0  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x60 dYoshiModel_gap_0x6E70_sub_0x1CD0  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x68 dYoshiModel_DL_0x8DC0  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x78 dYoshiModel_DL_0x9220  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x80 dYoshiModel_gap_0x6E70_sub_0x24E0  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x90 dYoshiModel_gap_0x6E70_sub_0x2050  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0x98 dYoshiModel_gap_0x6E70_sub_0x2160  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0xA8 dYoshiModel_DL_0x9090  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0xB8 dYoshiModel_gap_0x6E70_sub_0x2050  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0xC0 dYoshiModel_gap_0x6E70_sub_0x2160  # -> file 313 (YoshiModel)
+extern dYoshiMain_skeleton_dls+0xD0 dYoshiModel_DL_0x9090  # -> file 313 (YoshiModel)
+extern dYoshiMain_attr+0x2D8 dYoshiShieldPose_data0  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2DC dYoshiShieldPose_data0+0x500  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E0 dYoshiShieldPose_script1_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E4 dYoshiShieldPose_script2_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E8 dYoshiShieldPose_script3_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2EC dYoshiShieldPose_script4_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F0 dYoshiShieldPose_script5_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F4 dYoshiShieldPose_script6_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F8 dYoshiShieldPose_script7_20+0x28  # -> file 315 (YoshiShieldPose)

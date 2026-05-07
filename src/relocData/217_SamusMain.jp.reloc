@@ -22,92 +22,92 @@ intern dSamusMain_attr+0x338 dSamusMain_thrown_status
 intern dSamusMain_attr+0x340 dSamusMain_sprites
 intern dSamusMain_attr+0x344 dSamusMain_skeleton
 
-extern dSamusMain_file_handles 0x84
-extern dSamusMain_file_handles+0x4 0x380
-extern dSamusMain_file_handles+0x8 0x0
-extern dSamusMain_file_handles+0xC 0xE0D8
-extern dSamusMain_file_handles+0x10 0xE008
-extern dSamusMain_modelparts_desc_0x120 0x20C8
-extern dSamusMain_modelparts_desc_0x120+0x4 0xC74
-extern dSamusMain_modelparts_desc_0x120+0x8 0x3FAC
-extern dSamusMain_modelparts_desc_0x120+0x14 0x5960
-extern dSamusMain_modelparts_desc_0x120+0x18 0x4C74
-extern dSamusMain_modelparts_desc_0x120+0x1C 0x745C
-extern dSamusMain_modelparts_desc_0x120+0x28 0x8158
-extern dSamusMain_modelparts_desc_0x120+0x2C 0x7E20
-extern dSamusMain_modelparts_desc_0x120+0x30 0x83C4
-extern dSamusMain_modelparts_desc_0x120+0x3C 0x8158
-extern dSamusMain_modelparts_desc_0x120+0x40 0x7E20
-extern dSamusMain_modelparts_desc_0x120+0x44 0x83C4
-extern dSamusMain_modelparts_desc_0x120+0x50 0x8708
-extern dSamusMain_modelparts_desc_0x120+0x54 0x8460
-extern dSamusMain_modelparts_desc_0x120+0x58 0x8964
-extern dSamusMain_modelparts_desc_0x120+0x64 0x8708
-extern dSamusMain_modelparts_desc_0x120+0x68 0x8460
-extern dSamusMain_modelparts_desc_0x120+0x6C 0x8964
-extern dSamusMain_modelparts_desc_0x198 0x2608
-extern dSamusMain_modelparts_desc_0x198+0x4 0xC98
-extern dSamusMain_modelparts_desc_0x198+0x8 0x3FC4
-extern dSamusMain_modelparts_desc_0x198+0x14 0x5E00
-extern dSamusMain_modelparts_desc_0x198+0x18 0x4C98
-extern dSamusMain_modelparts_desc_0x198+0x1C 0x7474
-extern dSamusMain_modelparts_desc_0x198+0x28 0x7770
-extern dSamusMain_modelparts_desc_0x198+0x2C 0x75D0
-extern dSamusMain_modelparts_desc_0x198+0x30 0x7984
-extern dSamusMain_modelparts_desc_0x198+0x3C 0x7BC0
-extern dSamusMain_modelparts_desc_0x198+0x40 0x7AB0
-extern dSamusMain_modelparts_desc_0x198+0x44 0x7D84
-extern dSamusMain_modelparts_desc_0x1E8 0x8D90
-extern dSamusMain_modelparts_desc_0x1E8+0x4 0x8D00
-extern dSamusMain_modelparts_desc_0x1E8+0xC 0x8F94
-extern dSamusMain_modelparts_desc_0x1E8+0x14 0x8D90
-extern dSamusMain_modelparts_desc_0x1E8+0x18 0x8D00
-extern dSamusMain_modelparts_desc_0x1E8+0x20 0x8F94
-extern dSamusMain_modelparts_desc_0x210 0x9140
-extern dSamusMain_modelparts_desc_0x210+0x4 0x90B0
-extern dSamusMain_modelparts_desc_0x210+0xC 0x9344
-extern dSamusMain_modelparts_desc_0x210+0x14 0x9140
-extern dSamusMain_modelparts_desc_0x210+0x18 0x90B0
-extern dSamusMain_modelparts_desc_0x210+0x20 0x9344
-extern dSamusMain_modelparts_desc_0x238 0x2C20
-extern dSamusMain_modelparts_desc_0x238+0x14 0x2C20
-extern dSamusMain_modelparts_desc_0x238+0x28 0x8A70
-extern dSamusMain_modelparts_desc_0x238+0x3C 0x8A70
-extern dSamusMain_commonparts_container 0x3520
-extern dSamusMain_commonparts_container+0x4 0x0
-extern dSamusMain_commonparts_container+0x8 0x3B00
-extern dSamusMain_commonparts_container+0x10 0x69D0
-extern dSamusMain_commonparts_container+0x14 0x4000
-extern dSamusMain_commonparts_container+0x18 0x6FB0
-extern dSamusMain_stock_luts 0xE220
-extern dSamusMain_stock_luts+0x4 0xE248
-extern dSamusMain_stock_luts+0x8 0xE270
-extern dSamusMain_stock_luts+0xC 0xE298
-extern dSamusMain_stock_luts+0x10 0xE2C0
-extern dSamusMain_sprites 0xE2F0
-extern dSamusMain_sprites+0x8 0xE508
-extern dSamusMain_skeleton_dls+0x8 0xAD58
-extern dSamusMain_skeleton_dls+0x10 0xAD60
-extern dSamusMain_skeleton_dls+0x18 0xAD68
-extern dSamusMain_skeleton_dls+0x20 0xAD70
-extern dSamusMain_skeleton_dls+0x28 0xAD78
-extern dSamusMain_skeleton_dls+0x30 0xAD80
-extern dSamusMain_skeleton_dls+0x48 0xAD88
-extern dSamusMain_skeleton_dls+0x50 0xAD90
-extern dSamusMain_skeleton_dls+0x58 0xAD98
-extern dSamusMain_skeleton_dls+0x60 0xADA0
-extern dSamusMain_skeleton_dls+0xB8 0xADA8
-extern dSamusMain_skeleton_dls+0xC0 0xADB0
-extern dSamusMain_skeleton_dls+0xD0 0xADB8
-extern dSamusMain_skeleton_dls+0xE0 0xADC0
-extern dSamusMain_skeleton_dls+0xE8 0xADC8
-extern dSamusMain_skeleton_dls+0xF8 0xADD0
-extern dSamusMain_attr+0x2D8 0xF0
-extern dSamusMain_attr+0x2DC 0x570
-extern dSamusMain_attr+0x2E0 0x9A0
-extern dSamusMain_attr+0x2E4 0xDE0
-extern dSamusMain_attr+0x2E8 0x1210
-extern dSamusMain_attr+0x2EC 0x1650
-extern dSamusMain_attr+0x2F0 0x1A90
-extern dSamusMain_attr+0x2F4 0x1EE0
-extern dSamusMain_attr+0x2F8 0x2310
+extern dSamusMain_file_handles dSamusMainMotion_0x0084  # -> file 191 (SamusMainMotion)
+extern dSamusMain_file_handles+0x4 dSamusSpecial2_GrappleBeamDObjDesc  # -> file 324 (SamusSpecial2)
+extern dSamusMain_file_handles+0x8 dSamusSpecial1_ChargeShot_WeaponAttributes  # -> file 193 (SamusSpecial1)
+extern dSamusMain_file_handles+0xC dSamusModel_Tex_0xD618+0xAC0  # -> file 295 (SamusModel)
+extern dSamusMain_file_handles+0x10 dSamusModel_Tex_0xD618+0x9F0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120 dSamusModel_Joint_0x20C8_DisplayList  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x4 dSamusModel_Joint_0x0040_post+0xC34  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x8 dSamusModel_gap_0x3B24_sub_0x488  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x14 dSamusModel_Joint_0x5960_DisplayList  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x18 dSamusModel_gap_0x3B24_sub_0x1150  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x1C dSamusModel_gap_0x6FD4_sub_0x488  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x28 dSamusModel_gap_0x6FD4_sub_0x1184  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x2C dSamusModel_gap_0x6FD4_sub_0xE4C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x30 dSamusModel_gap_0x6FD4_sub_0x13F0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x3C dSamusModel_gap_0x6FD4_sub_0x1184  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x40 dSamusModel_gap_0x6FD4_sub_0xE4C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x44 dSamusModel_gap_0x6FD4_sub_0x13F0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x50 dSamusModel_gap_0x6FD4_sub_0x1734  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x54 dSamusModel_gap_0x6FD4_sub_0x148C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x58 dSamusModel_gap_0x6FD4_sub_0x1990  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x64 dSamusModel_gap_0x6FD4_sub_0x1734  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x68 dSamusModel_gap_0x6FD4_sub_0x148C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x120+0x6C dSamusModel_gap_0x6FD4_sub_0x1990  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198 dSamusModel_Joint_0x2608_DisplayList  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x4 dSamusModel_Joint_0x0040_post+0xC58  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x8 dSamusModel_gap_0x3B24_sub_0x4A0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x14 dSamusModel_Joint_0x5E00_DisplayList  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x18 dSamusModel_gap_0x3B24_sub_0x1174  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x1C dSamusModel_gap_0x6FD4_sub_0x4A0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x28 dSamusModel_gap_0x6FD4_sub_0x79C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x2C dSamusModel_gap_0x6FD4_sub_0x5FC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x30 dSamusModel_gap_0x6FD4_sub_0x9B0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x3C dSamusModel_gap_0x6FD4_sub_0xBEC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x40 dSamusModel_gap_0x6FD4_sub_0xADC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x198+0x44 dSamusModel_gap_0x6FD4_sub_0xDB0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x1E8 dSamusModel_gap_0x6FD4_sub_0x1DBC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x1E8+0x4 dSamusModel_gap_0x6FD4_sub_0x1D2C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x1E8+0xC dSamusModel_gap_0x6FD4_sub_0x1FC0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x1E8+0x14 dSamusModel_gap_0x6FD4_sub_0x1DBC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x1E8+0x18 dSamusModel_gap_0x6FD4_sub_0x1D2C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x1E8+0x20 dSamusModel_gap_0x6FD4_sub_0x1FC0  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x210 dSamusModel_gap_0x6FD4_sub_0x216C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x210+0x4 dSamusModel_gap_0x6FD4_sub_0x20DC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x210+0xC dSamusModel_gap_0x6FD4_sub_0x2370  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x210+0x14 dSamusModel_gap_0x6FD4_sub_0x216C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x210+0x18 dSamusModel_gap_0x6FD4_sub_0x20DC  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x210+0x20 dSamusModel_gap_0x6FD4_sub_0x2370  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x238 dSamusModel_Joint_0x2C20_DisplayList  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x238+0x14 dSamusModel_Joint_0x2C20_DisplayList  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x238+0x28 dSamusModel_gap_0x6FD4_sub_0x1A9C  # -> file 295 (SamusModel)
+extern dSamusMain_modelparts_desc_0x238+0x3C dSamusModel_gap_0x6FD4_sub_0x1A9C  # -> file 295 (SamusModel)
+extern dSamusMain_commonparts_container dSamusModel_JointTree  # -> file 295 (SamusModel)
+extern dSamusMain_commonparts_container+0x4 dSamusModel_gap_0x0000  # -> file 295 (SamusModel)
+extern dSamusMain_commonparts_container+0x8 dSamusModel_JointTree+0x5E0  # -> file 295 (SamusModel)
+extern dSamusMain_commonparts_container+0x10 dSamusModel_JointTree_0x69D0  # -> file 295 (SamusModel)
+extern dSamusMain_commonparts_container+0x14 dSamusModel_gap_0x3B24_sub_0x4DC  # -> file 295 (SamusModel)
+extern dSamusMain_commonparts_container+0x18 dSamusModel_JointTree_0x69D0+0x5E0  # -> file 295 (SamusModel)
+extern dSamusMain_stock_luts dSamusModel_palette_0xE220  # -> file 295 (SamusModel)
+extern dSamusMain_stock_luts+0x4 dSamusModel_gap_0xE240_sub_0x8  # -> file 295 (SamusModel)
+extern dSamusMain_stock_luts+0x8 dSamusModel_gap_0xE240_sub_0x30  # -> file 295 (SamusModel)
+extern dSamusMain_stock_luts+0xC dSamusModel_gap_0xE240_sub_0x58  # -> file 295 (SamusModel)
+extern dSamusMain_stock_luts+0x10 dSamusModel_gap_0xE240_sub_0x80  # -> file 295 (SamusModel)
+extern dSamusMain_sprites dSamusModel_Stock  # -> file 295 (SamusModel)
+extern dSamusMain_sprites+0x8 dSamusModel_FTEmblem  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x8 dSamusModel_gap_0x6FD4_sub_0x3D84  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x10 dSamusModel_gap_0x6FD4_sub_0x3D8C  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x18 dSamusModel_gap_0x6FD4_sub_0x3D94  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x20 dSamusModel_gap_0x6FD4_sub_0x3D9C  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x28 dSamusModel_gap_0x6FD4_sub_0x3DA4  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x30 dSamusModel_gap_0x6FD4_sub_0x3DAC  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x48 dSamusModel_gap_0x6FD4_sub_0x3DB4  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x50 dSamusModel_gap_0x6FD4_sub_0x3DBC  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x58 dSamusModel_gap_0x6FD4_sub_0x3DC4  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0x60 dSamusModel_gap_0x6FD4_sub_0x3DCC  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0xB8 dSamusModel_gap_0x6FD4_sub_0x3DD4  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0xC0 dSamusModel_gap_0x6FD4_sub_0x3DDC  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0xD0 dSamusModel_gap_0x6FD4_sub_0x3DE4  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0xE0 dSamusModel_gap_0x6FD4_sub_0x3DEC  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0xE8 dSamusModel_gap_0x6FD4_sub_0x3DF4  # -> file 295 (SamusModel)
+extern dSamusMain_skeleton_dls+0xF8 dSamusModel_gap_0x6FD4_sub_0x3DFC  # -> file 295 (SamusModel)
+extern dSamusMain_attr+0x2D8 dSamusShieldPose_script0_14+0x10  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2DC dSamusShieldPose_ptrs1+0x2C4  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2E0 dSamusShieldPose_script2_14+0x34  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2E4 dSamusShieldPose_script3_14+0x38  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2E8 dSamusShieldPose_script4_14+0x2C  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2EC dSamusShieldPose_script5_14+0x34  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2F0 dSamusShieldPose_script6_14+0x38  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2F4 dSamusShieldPose_script7_14+0x38  # -> file 297 (SamusShieldPose)
+extern dSamusMain_attr+0x2F8 dSamusShieldPose_script8_14+0x38  # -> file 297 (SamusShieldPose)

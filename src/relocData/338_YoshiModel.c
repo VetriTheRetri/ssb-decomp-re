@@ -2824,33 +2824,33 @@ Gfx dYoshiModel_gap_0x6E70_sub_0x24E0[26] = {
 PAD(8);
 
 /* gap sub-block @ 0x9428 (was gap+0x25B8, 40 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x25B8[40] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x25B8.data.inc.c>
+u16 dYoshiModel_gap_0x6E70_sub_0x25B8[20] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x25B8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x9450 (was gap+0x25E0, 40 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x25E0[40] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x25E0.data.inc.c>
+u16 dYoshiModel_gap_0x6E70_sub_0x25E0[20] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x25E0.palette.inc.c>
 };
 
 /* gap sub-block @ 0x9478 (was gap+0x2608, 40 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2608[40] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2608.data.inc.c>
+u16 dYoshiModel_gap_0x6E70_sub_0x2608[20] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2608.palette.inc.c>
 };
 
 /* gap sub-block @ 0x94A0 (was gap+0x2630, 40 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2630[40] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2630.data.inc.c>
+u16 dYoshiModel_gap_0x6E70_sub_0x2630[20] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2630.palette.inc.c>
 };
 
 /* gap sub-block @ 0x94C8 (was gap+0x2658, 40 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2658[40] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2658.data.inc.c>
+u16 dYoshiModel_gap_0x6E70_sub_0x2658[20] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2658.palette.inc.c>
 };
 
 /* gap sub-block @ 0x94F0 (was gap+0x2680, 40 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x2680[40] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x2680.data.inc.c>
+u16 dYoshiModel_gap_0x6E70_sub_0x2680[20] = {
+	#include <YoshiModel/gap_0x6E70_sub_0x2680.palette.inc.c>
 };
 
 /* Texture data @ 0x9518 (2136 bytes) */
@@ -2908,35 +2908,32 @@ u16 dYoshiModel_palette_0xA9B0[16] = {
 	#include <YoshiModel/palette_0xA9B0.palette.inc.c>
 };
 
-/* Raw data from file offset 0xA9D0 to 0xAA98 (200 bytes) */
-/* gap sub-block @ 0xA9D0 (was gap+0x0, 8 bytes) */
-u8 dYoshiModel_gap_0xA9D0[8] = {
-	#include <YoshiModel/gap_0xA9D0.data.inc.c>
+/* "Stock LUTs" — palette frames cycled by FTSprites.stock_luts (YoshiMain).
+ * dYoshiMain_stock_luts[6] targets palette_0xA9B0, gap_0xA9D0_sub_0x{8,30,58,80,A8}.
+ * Each frame is 16 colors RGBA5551 (32 bytes); first 5 trail an 8-byte pad,
+ * last has none. The standalone gap_0xA9D0[8] is the trailing pad of palette_0xA9B0. */
+u16 dYoshiModel_gap_0xA9D0[4] = {
+	#include <YoshiModel/gap_0xA9D0.palette.inc.c>
 };
 
-/* gap sub-block @ 0xA9D8 (was gap+0x8, 40 bytes) */
-u8 dYoshiModel_gap_0xA9D0_sub_0x8[40] = {
-	#include <YoshiModel/gap_0xA9D0_sub_0x8.data.inc.c>
+u16 dYoshiModel_gap_0xA9D0_sub_0x8[20] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x8.palette.inc.c>
 };
 
-/* gap sub-block @ 0xAA00 (was gap+0x30, 40 bytes) */
-u8 dYoshiModel_gap_0xA9D0_sub_0x30[40] = {
-	#include <YoshiModel/gap_0xA9D0_sub_0x30.data.inc.c>
+u16 dYoshiModel_gap_0xA9D0_sub_0x30[20] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x30.palette.inc.c>
 };
 
-/* gap sub-block @ 0xAA28 (was gap+0x58, 40 bytes) */
-u8 dYoshiModel_gap_0xA9D0_sub_0x58[40] = {
-	#include <YoshiModel/gap_0xA9D0_sub_0x58.data.inc.c>
+u16 dYoshiModel_gap_0xA9D0_sub_0x58[20] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x58.palette.inc.c>
 };
 
-/* gap sub-block @ 0xAA50 (was gap+0x80, 40 bytes) */
-u8 dYoshiModel_gap_0xA9D0_sub_0x80[40] = {
-	#include <YoshiModel/gap_0xA9D0_sub_0x80.data.inc.c>
+u16 dYoshiModel_gap_0xA9D0_sub_0x80[20] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x80.palette.inc.c>
 };
 
-/* gap sub-block @ 0xAA78 (was gap+0xA8, 32 bytes) */
-u8 dYoshiModel_gap_0xA9D0_sub_0xA8[32] = {
-	#include <YoshiModel/gap_0xA9D0_sub_0xA8.data.inc.c>
+u16 dYoshiModel_gap_0xA9D0_sub_0xA8[16] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0xA8.palette.inc.c>
 };
 
 /* Sprite: Stock */

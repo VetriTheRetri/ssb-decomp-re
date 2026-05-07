@@ -3961,13 +3961,13 @@ u8 dDonkeyModel_gap_0x7390_sub_0x4C00[280] = {
 };
 
 /* gap sub-block @ 0xC0A8 (was gap+0x4D18, 40 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x4D18[40] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x4D18.data.inc.c>
+u16 dDonkeyModel_gap_0x7390_sub_0x4D18[20] = {
+	#include <DonkeyModel/gap_0x7390_sub_0x4D18.palette.inc.c>
 };
 
 /* gap sub-block @ 0xC0D0 (was gap+0x4D40, 40 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x4D40[40] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x4D40.data.inc.c>
+u16 dDonkeyModel_gap_0x7390_sub_0x4D40[20] = {
+	#include <DonkeyModel/gap_0x7390_sub_0x4D40.palette.inc.c>
 };
 
 /* Texture data @ 0xC0F8 (640 bytes) */

@@ -19,74 +19,74 @@ intern dNessMain_attr+0x338 dNessMain_thrown_status
 intern dNessMain_attr+0x340 dNessMain_sprites
 intern dNessMain_attr+0x344 dNessMain_skeleton
 
-extern dNessMain_file_handles 0x24
-extern dNessMain_file_handles+0x4 0x9A8
-extern dNessMain_file_handles+0x8 0x0
-extern dNessMain_file_handles+0xC 0x7C98
-extern dNessMain_file_handles+0x10 0x7AF8
-extern dNessMain_file_handles+0x14 0x7D20
-extern dNessMain_file_handles+0x18 0x7D70
-extern dNessMain_file_handles+0x40 0x8B40
-extern dNessMain_file_handles+0x44 0x89C8
-extern dNessMain_modelparts_desc_0x0C4 0x1B88
-extern dNessMain_modelparts_desc_0x0C4+0x4 0x698
-extern dNessMain_modelparts_desc_0x0C4+0x8 0x2DEC
-extern dNessMain_modelparts_desc_0x0C4+0x14 0x44E8
-extern dNessMain_modelparts_desc_0x0C4+0x18 0x34A8
-extern dNessMain_modelparts_desc_0x0C4+0x1C 0x572C
-extern dNessMain_modelparts_desc_0x0C4+0x28 0x6760
-extern dNessMain_modelparts_desc_0x0C4+0x3C 0x6760
-extern dNessMain_modelparts_desc_0x114 0x1AF8
-extern dNessMain_modelparts_desc_0x114+0x14 0x4470
-extern dNessMain_modelparts_desc_0x114+0x28 0x5B20
-extern dNessMain_modelparts_desc_0x114+0x3C 0x5C70
-extern dNessMain_modelparts_desc_0x114+0x50 0x6000
-extern dNessMain_modelparts_desc_0x114+0x64 0x6110
-extern dNessMain_modelparts_desc_0x18C 0x20E8
-extern dNessMain_modelparts_desc_0x18C+0x14 0x4A70
-extern dNessMain_modelparts_desc_0x18C+0x28 0x5850
-extern dNessMain_modelparts_desc_0x18C+0x3C 0x59A0
-extern dNessMain_modelparts_desc_0x18C+0x50 0x5DB0
-extern dNessMain_modelparts_desc_0x18C+0x64 0x5EC0
-extern dNessMain_modelparts_desc_0x204 0x6B50
-extern dNessMain_modelparts_desc_0x204+0x14 0x6B50
-extern dNessMain_modelparts_desc_0x204+0x28 0x6D90
-extern dNessMain_modelparts_desc_0x204+0x3C 0x6D90
-extern dNessMain_modelparts_desc_0x254 0x69E0
-extern dNessMain_modelparts_desc_0x254+0x14 0x69E0
-extern dNessMain_commonparts_container 0x26B0
-extern dNessMain_commonparts_container+0x4 0x0
-extern dNessMain_commonparts_container+0x8 0x2B80
-extern dNessMain_commonparts_container+0x10 0x4FE8
-extern dNessMain_commonparts_container+0x14 0x2E10
-extern dNessMain_commonparts_container+0x18 0x54C0
-extern dNessMain_stock_luts 0xC0E0
-extern dNessMain_stock_luts+0x4 0xC108
-extern dNessMain_stock_luts+0x8 0xC130
-extern dNessMain_stock_luts+0xC 0xC158
-extern dNessMain_sprites 0xC188
-extern dNessMain_sprites+0x8 0xC378
-extern dNessMain_skeleton_dls+0x8 0x9CE0
-extern dNessMain_skeleton_dls+0x10 0x9DB0
-extern dNessMain_skeleton_dls+0x20 0xA490
-extern dNessMain_skeleton_dls+0x28 0xA380
-extern dNessMain_skeleton_dls+0x30 0xA570
-extern dNessMain_skeleton_dls+0x40 0xA120
-extern dNessMain_skeleton_dls+0x50 0xA490
-extern dNessMain_skeleton_dls+0x58 0xA380
-extern dNessMain_skeleton_dls+0x60 0xA650
-extern dNessMain_skeleton_dls+0x78 0xA760
-extern dNessMain_skeleton_dls+0x80 0xA870
-extern dNessMain_skeleton_dls+0x90 0xA950
-extern dNessMain_skeleton_dls+0xA8 0xA760
-extern dNessMain_skeleton_dls+0xB0 0xA870
-extern dNessMain_skeleton_dls+0xC0 0xA950
-extern dNessMain_attr+0x2D8 0x0
-extern dNessMain_attr+0x2DC 0x500
-extern dNessMain_attr+0x2E0 0xA20
-extern dNessMain_attr+0x2E4 0xF50
-extern dNessMain_attr+0x2E8 0x1490
-extern dNessMain_attr+0x2EC 0x1A00
-extern dNessMain_attr+0x2F0 0x1FD0
-extern dNessMain_attr+0x2F4 0x2560
-extern dNessMain_attr+0x2F8 0x2BA0
+extern dNessMain_file_handles dNessMainMotion_0x0024  # -> file 213 (NessMainMotion)
+extern dNessMain_file_handles+0x4 dNessSpecial2_PsychicMagnetDObjDesc  # -> file 327 (NessSpecial2)
+extern dNessMain_file_handles+0x8 dNessSpecial1_PKFire_WeaponAttributes  # -> file 215 (NessSpecial1)
+extern dNessMain_file_handles+0xC dNessModel_gap_0x553C_sub_0x275C  # -> file 310 (NessModel)
+extern dNessMain_file_handles+0x10 dNessModel_gap_0x553C_sub_0x25BC  # -> file 310 (NessModel)
+extern dNessMain_file_handles+0x14 dNessModel_gap_0x553C_sub_0x27E4  # -> file 310 (NessModel)
+extern dNessMain_file_handles+0x18 dNessModel_gap_0x553C_sub_0x2834  # -> file 310 (NessModel)
+extern dNessMain_file_handles+0x40 dNessModel_gap_0x553C_sub_0x3604  # -> file 310 (NessModel)
+extern dNessMain_file_handles+0x44 dNessModel_gap_0x553C_sub_0x348C  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4 dNessModel_Joint_0x1B88_DisplayList  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x4 dNessModel_Joint_0x0040_post+0x658  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x8 dNessModel_gap_0x2C04_sub_0x1E8  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x14 dNessModel_Joint_0x44E8_DisplayList  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x18 dNessModel_gap_0x2C04_sub_0x8A4  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x1C dNessModel_gap_0x553C_sub_0x1F0  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x28 dNessModel_DL_0x6760  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x0C4+0x3C dNessModel_DL_0x6760  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x114 dNessModel_Joint_0x1AF8_DisplayList  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x114+0x14 dNessModel_Joint_0x4470_DisplayList  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x114+0x28 dNessModel_DL_0x5B20  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x114+0x3C dNessModel_gap_0x553C_sub_0x734  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x114+0x50 dNessModel_DL_0x6000  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x114+0x64 dNessModel_gap_0x553C_sub_0xBD4  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x18C dNessModel_Joint_0x20E8_DisplayList  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x18C+0x14 dNessModel_Joint_0x4A70_DisplayList  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x18C+0x28 dNessModel_DL_0x5850  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x18C+0x3C dNessModel_gap_0x553C_sub_0x464  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x18C+0x50 dNessModel_DL_0x5DB0  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x18C+0x64 dNessModel_gap_0x553C_sub_0x984  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x204 dNessModel_DL_0x6B50  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x204+0x14 dNessModel_DL_0x6B50  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x204+0x28 dNessModel_gap_0x553C_sub_0x1854  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x204+0x3C dNessModel_gap_0x553C_sub_0x1854  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x254 dNessModel_DL_0x69E0  # -> file 310 (NessModel)
+extern dNessMain_modelparts_desc_0x254+0x14 dNessModel_DL_0x69E0  # -> file 310 (NessModel)
+extern dNessMain_commonparts_container dNessModel_JointTree  # -> file 310 (NessModel)
+extern dNessMain_commonparts_container+0x4 dNessModel_JointVerts_Vtx  # -> file 310 (NessModel)
+extern dNessMain_commonparts_container+0x8 dNessModel_JointTree+0x4D0  # -> file 310 (NessModel)
+extern dNessMain_commonparts_container+0x10 dNessModel_JointTree_0x4FE8  # -> file 310 (NessModel)
+extern dNessMain_commonparts_container+0x14 dNessModel_gap_0x2C04_sub_0x20C  # -> file 310 (NessModel)
+extern dNessMain_commonparts_container+0x18 dNessModel_JointTree_0x4FE8+0x4D8  # -> file 310 (NessModel)
+extern dNessMain_stock_luts dNessModel_palette_0xC0E0  # -> file 310 (NessModel)
+extern dNessMain_stock_luts+0x4 dNessModel_gap_0xC100_sub_0x8  # -> file 310 (NessModel)
+extern dNessMain_stock_luts+0x8 dNessModel_gap_0xC100_sub_0x30  # -> file 310 (NessModel)
+extern dNessMain_stock_luts+0xC dNessModel_gap_0xC100_sub_0x58  # -> file 310 (NessModel)
+extern dNessMain_sprites dNessModel_Stock  # -> file 310 (NessModel)
+extern dNessMain_sprites+0x8 dNessModel_FTEmblem  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x8 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x124  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x10 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x1F4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x20 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x8D4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x28 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x7C4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x30 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x9B4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x40 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x564  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x50 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x8D4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x58 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0x7C4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x60 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xA94  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x78 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xBA4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x80 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xCB4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0x90 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xD94  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0xA8 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xBA4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0xB0 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xCB4  # -> file 310 (NessModel)
+extern dNessMain_skeleton_dls+0xC0 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data+0xD94  # -> file 310 (NessModel)
+extern dNessMain_attr+0x2D8 dNessShieldPose_data0  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2DC dNessShieldPose_data0+0x500  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2E0 dNessShieldPose_script1_20+0x38  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2E4 dNessShieldPose_script2_20+0x34  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2E8 dNessShieldPose_script3_20+0x34  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2EC dNessShieldPose_script4_20+0x34  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2F0 dNessShieldPose_script5_20+0x3C  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2F4 dNessShieldPose_script6_20+0x38  # -> file 312 (NessShieldPose)
+extern dNessMain_attr+0x2F8 dNessShieldPose_script7_20+0x3C  # -> file 312 (NessShieldPose)

@@ -1,30 +1,30 @@
 # Relocation metadata for file 219
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNSamusMain_file_handles 0x84 # -> file 216 (SamusMainMotion)
-extern dNSamusMain_modelparts_desc_0x0E4 0x1C00 # -> file 309 (NSamusModel)
-extern dNSamusMain_modelparts_desc_0x0E4+0x14 0x1C00 # -> file 309 (NSamusModel)
-extern dNSamusMain_modelparts_desc_0x0E4+0x28 0x3BF0 # -> file 309 (NSamusModel)
-extern dNSamusMain_modelparts_desc_0x0E4+0x3C 0x3BF0 # -> file 309 (NSamusModel)
-extern dNSamusMain_modelparts_desc_0x0E4+0x50 0x4960 # -> file 309 (NSamusModel)
-extern dNSamusMain_modelparts_desc_0x0E4+0x64 0x4960 # -> file 309 (NSamusModel)
+extern dNSamusMain_file_handles dSamusMainMotion_0x0084 # -> file 216 (SamusMainMotion)
+extern dNSamusMain_modelparts_desc_0x0E4 dNSamusModel_Joint_0x1C00_DisplayList # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x14 dNSamusModel_Joint_0x1C00_DisplayList # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x28 dNSamusModel_DL_0x3BF0 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x3C dNSamusModel_DL_0x3BF0 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x50 dNSamusModel_gap_0x2FE8_sub_0x1978 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x64 dNSamusModel_gap_0x2FE8_sub_0x1978 # -> file 309 (NSamusModel)
 intern dNSamusMain_modelparts_container+0x8 dNSamusMain_modelparts_desc_0x0E4
-extern dNSamusMain_commonparts_container 0x2A10 # -> file 309 (NSamusModel)
-extern dNSamusMain_commonparts_container+0x10 0x2A10 # -> file 309 (NSamusModel)
-extern dNSamusMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+extern dNSamusMain_commonparts_container dNSamusModel_JointTree # -> file 309 (NSamusModel)
+extern dNSamusMain_commonparts_container+0x10 dNSamusModel_JointTree # -> file 309 (NSamusModel)
+extern dNSamusMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
 intern dNSamusMain_attr+0x29C dNSamusMain_setup_parts
 intern dNSamusMain_attr+0x2A0 dNSamusMain_animlock
 intern dNSamusMain_attr+0x2D0 dNSamusMain_hiddenparts
 intern dNSamusMain_attr+0x2D4 dNSamusMain_commonparts_container
-extern dNSamusMain_attr+0x2D8 0xF0 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2DC 0x570 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2E0 0x9A0 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2E4 0xDE0 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2E8 0x1210 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2EC 0x1650 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2F0 0x1A90 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2F4 0x1EE0 # -> file 322 (SamusShieldPose)
-extern dNSamusMain_attr+0x2F8 0x2310 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2D8 dSamusShieldPose_script0_14+0x10 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2DC dSamusShieldPose_ptrs1+0x2C4 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2E0 dSamusShieldPose_script2_14+0x34 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2E4 dSamusShieldPose_script3_14+0x38 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2E8 dSamusShieldPose_script4_14+0x2C # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2EC dSamusShieldPose_script5_14+0x34 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2F0 dSamusShieldPose_script6_14+0x38 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2F4 dSamusShieldPose_script7_14+0x38 # -> file 322 (SamusShieldPose)
+extern dNSamusMain_attr+0x2F8 dSamusShieldPose_script8_14+0x38 # -> file 322 (SamusShieldPose)
 intern dNSamusMain_attr+0x328 dNSamusMain_modelparts_container
 intern dNSamusMain_attr+0x338 dNSamusMain_thrown_status
 intern dNSamusMain_attr+0x340 dNSamusMain_sprites

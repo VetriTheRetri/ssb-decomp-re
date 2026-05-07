@@ -3558,28 +3558,28 @@ u8 dCaptainModel_gap_0x7DD0_sub_0x2FB0[232] = {
 };
 
 /* gap sub-block @ 0xAE68 (was gap+0x3098, 40 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x3098[40] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x3098.data.inc.c>
+u16 dCaptainModel_gap_0x7DD0_sub_0x3098[20] = {
+	#include <CaptainModel/gap_0x7DD0_sub_0x3098.palette.inc.c>
 };
 
 /* gap sub-block @ 0xAE90 (was gap+0x30C0, 40 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x30C0[40] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x30C0.data.inc.c>
+u16 dCaptainModel_gap_0x7DD0_sub_0x30C0[20] = {
+	#include <CaptainModel/gap_0x7DD0_sub_0x30C0.palette.inc.c>
 };
 
 /* gap sub-block @ 0xAEB8 (was gap+0x30E8, 40 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x30E8[40] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x30E8.data.inc.c>
+u16 dCaptainModel_gap_0x7DD0_sub_0x30E8[20] = {
+	#include <CaptainModel/gap_0x7DD0_sub_0x30E8.palette.inc.c>
 };
 
 /* gap sub-block @ 0xAEE0 (was gap+0x3110, 40 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x3110[40] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x3110.data.inc.c>
+u16 dCaptainModel_gap_0x7DD0_sub_0x3110[20] = {
+	#include <CaptainModel/gap_0x7DD0_sub_0x3110.palette.inc.c>
 };
 
 /* gap sub-block @ 0xAF08 (was gap+0x3138, 40 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x3138[40] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x3138.data.inc.c>
+u16 dCaptainModel_gap_0x7DD0_sub_0x3138[20] = {
+	#include <CaptainModel/gap_0x7DD0_sub_0x3138.palette.inc.c>
 };
 
 /* Texture data @ 0xAF30 (72 bytes) */
@@ -3628,8 +3628,8 @@ u8 dCaptainModel_gap_0xB978_sub_0x8[520] = {
 };
 
 /* gap sub-block @ 0xBB88 (was gap+0x210, 40 bytes) */
-u8 dCaptainModel_gap_0xB978_sub_0x210[40] = {
-	#include <CaptainModel/gap_0xB978_sub_0x210.data.inc.c>
+u16 dCaptainModel_gap_0xB978_sub_0x210[20] = {
+	#include <CaptainModel/gap_0xB978_sub_0x210.palette.inc.c>
 };
 
 /* Texture data @ 0xBBB0 (520 bytes) */
@@ -3709,35 +3709,32 @@ u16 dCaptainModel_palette_0xC5B0[16] = {
 	#include <CaptainModel/palette_0xC5B0.palette.inc.c>
 };
 
-/* Raw data from file offset 0xC5D0 to 0xC698 (200 bytes) */
-/* gap sub-block @ 0xC5D0 (was gap+0x0, 8 bytes) */
-u8 dCaptainModel_gap_0xC5D0[8] = {
-	#include <CaptainModel/gap_0xC5D0.data.inc.c>
+/* "Stock LUTs" — palette frames cycled by FTSprites.stock_luts (CaptainMain).
+ * dCaptainMain_stock_luts[6] targets palette_0xC5B0, gap_0xC5D0_sub_0x{8,30,58,80,A8}.
+ * Each frame is 16 colors RGBA5551 (32 bytes); first 5 trail an 8-byte pad,
+ * last has none. The standalone gap_0xC5D0[8] is the trailing pad of palette_0xC5B0. */
+u16 dCaptainModel_gap_0xC5D0[4] = {
+	#include <CaptainModel/gap_0xC5D0.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC5D8 (was gap+0x8, 40 bytes) */
-u8 dCaptainModel_gap_0xC5D0_sub_0x8[40] = {
-	#include <CaptainModel/gap_0xC5D0_sub_0x8.data.inc.c>
+u16 dCaptainModel_gap_0xC5D0_sub_0x8[20] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x8.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC600 (was gap+0x30, 40 bytes) */
-u8 dCaptainModel_gap_0xC5D0_sub_0x30[40] = {
-	#include <CaptainModel/gap_0xC5D0_sub_0x30.data.inc.c>
+u16 dCaptainModel_gap_0xC5D0_sub_0x30[20] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x30.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC628 (was gap+0x58, 40 bytes) */
-u8 dCaptainModel_gap_0xC5D0_sub_0x58[40] = {
-	#include <CaptainModel/gap_0xC5D0_sub_0x58.data.inc.c>
+u16 dCaptainModel_gap_0xC5D0_sub_0x58[20] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x58.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC650 (was gap+0x80, 40 bytes) */
-u8 dCaptainModel_gap_0xC5D0_sub_0x80[40] = {
-	#include <CaptainModel/gap_0xC5D0_sub_0x80.data.inc.c>
+u16 dCaptainModel_gap_0xC5D0_sub_0x80[20] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x80.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC678 (was gap+0xA8, 32 bytes) */
-u8 dCaptainModel_gap_0xC5D0_sub_0xA8[32] = {
-	#include <CaptainModel/gap_0xC5D0_sub_0xA8.data.inc.c>
+u16 dCaptainModel_gap_0xC5D0_sub_0xA8[16] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0xA8.palette.inc.c>
 };
 
 /* Sprite: Stock */

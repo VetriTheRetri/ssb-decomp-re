@@ -334,83 +334,83 @@ u8 dFoxModel_gap_0x2E60[28] = {
 };
 
 /* gap sub-block @ 0x2E7C (was gap+0x1C, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x1C[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x1C.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x1C[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x1C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2EA4 (was gap+0x44, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x44[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x44.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x44[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x44.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2ECC (was gap+0x6C, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x6C[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x6C.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x6C[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x6C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2EF4 (was gap+0x94, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x94[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x94.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x94[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x94.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2F1C (was gap+0xBC, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0xBC[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0xBC.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0xBC[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0xBC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2F44 (was gap+0xE4, 32 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0xE4[32] = {
-	#include <FoxModel/gap_0x2E60_sub_0xE4.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0xE4[16] = {
+	#include <FoxModel/gap_0x2E60_sub_0xE4.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2F64 (was gap+0x104, 32 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x104[32] = {
-	#include <FoxModel/gap_0x2E60_sub_0x104.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x104[16] = {
+	#include <FoxModel/gap_0x2E60_sub_0x104.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2F84 (was gap+0x124, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x124[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x124.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x124[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x124.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2FAC (was gap+0x14C, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x14C[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x14C.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x14C[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x14C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2FD4 (was gap+0x174, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x174[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x174.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x174[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x174.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2FFC (was gap+0x19C, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x19C[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x19C.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x19C[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x19C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x3024 (was gap+0x1C4, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x1C4[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x1C4.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x1C4[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x1C4.palette.inc.c>
 };
 
 /* gap sub-block @ 0x304C (was gap+0x1EC, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x1EC[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x1EC.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x1EC[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x1EC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x3074 (was gap+0x214, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x214[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x214.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x214[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x214.palette.inc.c>
 };
 
 /* gap sub-block @ 0x309C (was gap+0x23C, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x23C[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x23C.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x23C[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x23C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x30C4 (was gap+0x264, 40 bytes) */
-u8 dFoxModel_gap_0x2E60_sub_0x264[40] = {
-	#include <FoxModel/gap_0x2E60_sub_0x264.data.inc.c>
+u16 dFoxModel_gap_0x2E60_sub_0x264[20] = {
+	#include <FoxModel/gap_0x2E60_sub_0x264.palette.inc.c>
 };
 
 /* gap sub-block @ 0x30EC (was gap+0x28C, 8 bytes) */
@@ -1356,83 +1356,83 @@ u8 dFoxModel_gap_0x5A38[20] = {
 };
 
 /* gap sub-block @ 0x5A4C (was gap+0x14, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x14[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x14.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x14[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x14.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5A74 (was gap+0x3C, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x3C[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x3C.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x3C[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x3C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5A9C (was gap+0x64, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x64[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x64.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x64[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x64.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5AC4 (was gap+0x8C, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x8C[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x8C.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x8C[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x8C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5AEC (was gap+0xB4, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0xB4[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0xB4.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0xB4[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0xB4.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5B14 (was gap+0xDC, 32 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0xDC[32] = {
-	#include <FoxModel/gap_0x5A38_sub_0xDC.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0xDC[16] = {
+	#include <FoxModel/gap_0x5A38_sub_0xDC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5B34 (was gap+0xFC, 32 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0xFC[32] = {
-	#include <FoxModel/gap_0x5A38_sub_0xFC.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0xFC[16] = {
+	#include <FoxModel/gap_0x5A38_sub_0xFC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5B54 (was gap+0x11C, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x11C[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x11C.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x11C[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x11C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5B7C (was gap+0x144, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x144[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x144.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x144[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x144.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5BA4 (was gap+0x16C, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x16C[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x16C.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x16C[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x16C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5BCC (was gap+0x194, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x194[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x194.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x194[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x194.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5BF4 (was gap+0x1BC, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x1BC[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x1BC.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x1BC[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x1BC.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5C1C (was gap+0x1E4, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x1E4[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x1E4.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x1E4[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x1E4.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5C44 (was gap+0x20C, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x20C[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x20C.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x20C[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x20C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5C6C (was gap+0x234, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x234[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x234.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x234[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x234.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5C94 (was gap+0x25C, 40 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x25C[40] = {
-	#include <FoxModel/gap_0x5A38_sub_0x25C.data.inc.c>
+u16 dFoxModel_gap_0x5A38_sub_0x25C[20] = {
+	#include <FoxModel/gap_0x5A38_sub_0x25C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x5CBC (was gap+0x284, 8 bytes) */
@@ -1708,23 +1708,23 @@ u8 dFoxModel_gap_0x7528[8] = {
 };
 
 /* gap sub-block @ 0x7530 (was gap+0x8, 40 bytes) */
-u8 dFoxModel_gap_0x7528_sub_0x8[40] = {
-	#include <FoxModel/gap_0x7528_sub_0x8.data.inc.c>
+u16 dFoxModel_gap_0x7528_sub_0x8[20] = {
+	#include <FoxModel/gap_0x7528_sub_0x8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x7558 (was gap+0x30, 40 bytes) */
-u8 dFoxModel_gap_0x7528_sub_0x30[40] = {
-	#include <FoxModel/gap_0x7528_sub_0x30.data.inc.c>
+u16 dFoxModel_gap_0x7528_sub_0x30[20] = {
+	#include <FoxModel/gap_0x7528_sub_0x30.palette.inc.c>
 };
 
 /* gap sub-block @ 0x7580 (was gap+0x58, 40 bytes) */
-u8 dFoxModel_gap_0x7528_sub_0x58[40] = {
-	#include <FoxModel/gap_0x7528_sub_0x58.data.inc.c>
+u16 dFoxModel_gap_0x7528_sub_0x58[20] = {
+	#include <FoxModel/gap_0x7528_sub_0x58.palette.inc.c>
 };
 
 /* gap sub-block @ 0x75A8 (was gap+0x80, 40 bytes) */
-u8 dFoxModel_gap_0x7528_sub_0x80[40] = {
-	#include <FoxModel/gap_0x7528_sub_0x80.data.inc.c>
+u16 dFoxModel_gap_0x7528_sub_0x80[20] = {
+	#include <FoxModel/gap_0x7528_sub_0x80.palette.inc.c>
 };
 
 /* Texture data @ 0x75D0 (568 bytes) */
@@ -1750,23 +1750,23 @@ u8 dFoxModel_gap_0x7828_sub_0x8[264] = {
 };
 
 /* gap sub-block @ 0x7938 (was gap+0x110, 40 bytes) */
-u8 dFoxModel_gap_0x7828_sub_0x110[40] = {
-	#include <FoxModel/gap_0x7828_sub_0x110.data.inc.c>
+u16 dFoxModel_gap_0x7828_sub_0x110[20] = {
+	#include <FoxModel/gap_0x7828_sub_0x110.palette.inc.c>
 };
 
 /* gap sub-block @ 0x7960 (was gap+0x138, 40 bytes) */
-u8 dFoxModel_gap_0x7828_sub_0x138[40] = {
-	#include <FoxModel/gap_0x7828_sub_0x138.data.inc.c>
+u16 dFoxModel_gap_0x7828_sub_0x138[20] = {
+	#include <FoxModel/gap_0x7828_sub_0x138.palette.inc.c>
 };
 
 /* gap sub-block @ 0x7988 (was gap+0x160, 40 bytes) */
-u8 dFoxModel_gap_0x7828_sub_0x160[40] = {
-	#include <FoxModel/gap_0x7828_sub_0x160.data.inc.c>
+u16 dFoxModel_gap_0x7828_sub_0x160[20] = {
+	#include <FoxModel/gap_0x7828_sub_0x160.palette.inc.c>
 };
 
 /* gap sub-block @ 0x79B0 (was gap+0x188, 40 bytes) */
-u8 dFoxModel_gap_0x7828_sub_0x188[40] = {
-	#include <FoxModel/gap_0x7828_sub_0x188.data.inc.c>
+u16 dFoxModel_gap_0x7828_sub_0x188[20] = {
+	#include <FoxModel/gap_0x7828_sub_0x188.palette.inc.c>
 };
 
 /* Texture data @ 0x79D8 (264 bytes) */
@@ -1797,25 +1797,25 @@ u16 dFoxModel_palette_0x7B80[16] = {
 	#include <FoxModel/palette_0x7B80.palette.inc.c>
 };
 
-/* Raw data from file offset 0x7BA0 to 0x7C18 (120 bytes) */
-/* gap sub-block @ 0x7BA0 (was gap+0x0, 8 bytes) */
-u8 dFoxModel_gap_0x7BA0[8] = {
-	#include <FoxModel/gap_0x7BA0.data.inc.c>
+/* "Stock LUTs" — palette frames cycled by FTSprites.stock_luts (FoxMain).
+ * Pointers in dFoxMain_stock_luts[4] target palette_0x7B80, gap_0x7BA0_sub_0x8,
+ * gap_0x7BA0_sub_0x30, gap_0x7BA0_sub_0x58. Each frame is 16 colors RGBA5551
+ * (32 bytes), with an 8-byte trailing pad between frames; the last frame has
+ * no pad. The standalone gap_0x7BA0[8] is the trailing pad of palette_0x7B80. */
+u16 dFoxModel_gap_0x7BA0[4] = {
+	#include <FoxModel/gap_0x7BA0.palette.inc.c>
 };
 
-/* gap sub-block @ 0x7BA8 (was gap+0x8, 40 bytes) */
-u8 dFoxModel_gap_0x7BA0_sub_0x8[40] = {
-	#include <FoxModel/gap_0x7BA0_sub_0x8.data.inc.c>
+u16 dFoxModel_gap_0x7BA0_sub_0x8[20] = {
+	#include <FoxModel/gap_0x7BA0_sub_0x8.palette.inc.c>
 };
 
-/* gap sub-block @ 0x7BD0 (was gap+0x30, 40 bytes) */
-u8 dFoxModel_gap_0x7BA0_sub_0x30[40] = {
-	#include <FoxModel/gap_0x7BA0_sub_0x30.data.inc.c>
+u16 dFoxModel_gap_0x7BA0_sub_0x30[20] = {
+	#include <FoxModel/gap_0x7BA0_sub_0x30.palette.inc.c>
 };
 
-/* gap sub-block @ 0x7BF8 (was gap+0x58, 32 bytes) */
-u8 dFoxModel_gap_0x7BA0_sub_0x58[32] = {
-	#include <FoxModel/gap_0x7BA0_sub_0x58.data.inc.c>
+u16 dFoxModel_gap_0x7BA0_sub_0x58[16] = {
+	#include <FoxModel/gap_0x7BA0_sub_0x58.palette.inc.c>
 };
 
 /* Sprite: Stock */

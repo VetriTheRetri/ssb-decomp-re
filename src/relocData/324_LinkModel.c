@@ -524,13 +524,13 @@ u8 dLinkModel_gap_0x40EC_sub_0x168[56] = {
 };
 
 /* gap sub-block @ 0x428C (was gap+0x1A0, 40 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x1A0[40] = {
-	#include <LinkModel/gap_0x40EC_sub_0x1A0.data.inc.c>
+u16 dLinkModel_gap_0x40EC_sub_0x1A0[20] = {
+	#include <LinkModel/gap_0x40EC_sub_0x1A0.palette.inc.c>
 };
 
 /* gap sub-block @ 0x42B4 (was gap+0x1C8, 40 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x1C8[40] = {
-	#include <LinkModel/gap_0x40EC_sub_0x1C8.data.inc.c>
+u16 dLinkModel_gap_0x40EC_sub_0x1C8[20] = {
+	#include <LinkModel/gap_0x40EC_sub_0x1C8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x42DC (was gap+0x1F0, 56 bytes) */
@@ -1429,13 +1429,13 @@ u8 dLinkModel_gap_0x7AE0_sub_0x134[56] = {
 };
 
 /* gap sub-block @ 0x7C4C (was gap+0x16C, 40 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x16C[40] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x16C.data.inc.c>
+u16 dLinkModel_gap_0x7AE0_sub_0x16C[20] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x16C.palette.inc.c>
 };
 
 /* gap sub-block @ 0x7C74 (was gap+0x194, 40 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x194[40] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x194.data.inc.c>
+u16 dLinkModel_gap_0x7AE0_sub_0x194[20] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x194.palette.inc.c>
 };
 
 /* gap sub-block @ 0x7C9C (was gap+0x1BC, 56 bytes) */
@@ -2500,25 +2500,24 @@ u16 dLinkModel_palette_0x11CA0[16] = {
 	#include <LinkModel/palette_0x11CA0.palette.inc.c>
 };
 
-/* Raw data from file offset 0x11CC0 to 0x11D38 (120 bytes) */
-/* gap sub-block @ 0x11CC0 (was gap+0x0, 8 bytes) */
-u8 dLinkModel_gap_0x11CC0[8] = {
-	#include <LinkModel/gap_0x11CC0.data.inc.c>
+/* "Stock LUTs" — palette frames cycled by FTSprites.stock_luts (LinkMain).
+ * dLinkMain_stock_luts[4] targets palette_0x11CA0, gap_0x11CC0_sub_0x{8,30,58}.
+ * Each frame is 16 colors RGBA5551 (32 bytes); first 3 trail an 8-byte pad,
+ * last has none. The standalone gap_0x11CC0[8] is the trailing pad of palette_0x11CA0. */
+u16 dLinkModel_gap_0x11CC0[4] = {
+	#include <LinkModel/gap_0x11CC0.palette.inc.c>
 };
 
-/* gap sub-block @ 0x11CC8 (was gap+0x8, 40 bytes) */
-u8 dLinkModel_gap_0x11CC0_sub_0x8[40] = {
-	#include <LinkModel/gap_0x11CC0_sub_0x8.data.inc.c>
+u16 dLinkModel_gap_0x11CC0_sub_0x8[20] = {
+	#include <LinkModel/gap_0x11CC0_sub_0x8.palette.inc.c>
 };
 
-/* gap sub-block @ 0x11CF0 (was gap+0x30, 40 bytes) */
-u8 dLinkModel_gap_0x11CC0_sub_0x30[40] = {
-	#include <LinkModel/gap_0x11CC0_sub_0x30.data.inc.c>
+u16 dLinkModel_gap_0x11CC0_sub_0x30[20] = {
+	#include <LinkModel/gap_0x11CC0_sub_0x30.palette.inc.c>
 };
 
-/* gap sub-block @ 0x11D18 (was gap+0x58, 32 bytes) */
-u8 dLinkModel_gap_0x11CC0_sub_0x58[32] = {
-	#include <LinkModel/gap_0x11CC0_sub_0x58.data.inc.c>
+u16 dLinkModel_gap_0x11CC0_sub_0x58[16] = {
+	#include <LinkModel/gap_0x11CC0_sub_0x58.palette.inc.c>
 };
 
 /* Sprite: Stock */

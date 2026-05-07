@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2046 / 2132** files at 100% (97.03% of bytes typed; 507,812 / 17,082,000 bytes still untyped across 86 files).
+Overall: **2046 / 2132** files at 100% (97.06% of bytes typed; 501,580 / 17,082,000 bytes still untyped across 86 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -67,27 +67,27 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 68 | MVOpeningCliff | 35440 | 8464 | 11 | 76.12% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
-| 341 | PikachuModel | 39984 | 8296 | 94 | 79.25% |
 | 61 | MVOpeningNewcomers1 | 167600 | 34656 | 4 | 79.32% |
+| 341 | PikachuModel | 39984 | 8024 | 86 | 79.93% |
 | 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
-| 335 | NessModel | 50112 | 8988 | 53 | 82.06% |
-| 332 | CaptainModel | 51344 | 9196 | 110 | 82.09% |
-| 313 | FoxModel | 32336 | 5616 | 81 | 82.63% |
-| 338 | YoshiModel | 44256 | 7172 | 94 | 83.79% |
-| 323 | LuigiModel | 32528 | 4972 | 85 | 84.71% |
-| 330 | PurinModel | 32224 | 4424 | 68 | 86.27% |
+| 332 | CaptainModel | 51344 | 8756 | 98 | 82.95% |
+| 335 | NessModel | 50112 | 8228 | 33 | 83.58% |
+| 338 | YoshiModel | 44256 | 6732 | 82 | 84.79% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
+| 313 | FoxModel | 32336 | 3928 | 37 | 87.85% |
+| 330 | PurinModel | 32224 | 3904 | 54 | 87.88% |
+| 323 | LuigiModel | 32528 | 3860 | 52 | 88.13% |
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
 | 75 | MVOpeningRunCrash | 15024 | 1760 | 32 | 88.29% |
 | 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
-| 317 | DonkeyModel | 54784 | 6228 | 74 | 88.63% |
+| 317 | DonkeyModel | 54784 | 6148 | 72 | 88.78% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
 | 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
 | 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
-| 328 | KirbyModel | 120864 | 11648 | 123 | 90.36% |
-| 320 | SamusModel | 58704 | 5640 | 76 | 90.39% |
+| 328 | KirbyModel | 120864 | 11208 | 111 | 90.73% |
+| 320 | SamusModel | 58704 | 5440 | 70 | 90.73% |
 | 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
 | 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
@@ -96,11 +96,11 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
 | 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
-| 324 | LinkModel | 73584 | 3016 | 38 | 95.90% |
 | 333 | CaptainSpecial3 | 2160 | 88 | 1 | 95.93% |
 | 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
 | 133 | GRBonus1PikachuFile2 | 11488 | 448 | 1 | 96.10% |
 | 39 | IFCommonObject | 16352 | 616 | 1 | 96.23% |
+| 324 | LinkModel | 73584 | 2736 | 30 | 96.28% |
 | 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
 | 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
@@ -123,7 +123,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
 | 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |
 | 147 | GRBonus2PurinFile2 | 21728 | 24 | 1 | 99.89% |
-
 ### Per-region divergence (JP build)
 
 For files where US and JP share the same `.c` source but diverge on a

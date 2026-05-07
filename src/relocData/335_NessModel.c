@@ -280,18 +280,18 @@ u8 dNessModel_gap_0x2C04[16] = {
 };
 
 /* gap sub-block @ 0x2C14 (was gap+0x10, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x10[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x10.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x10[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x10.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2C3C (was gap+0x38, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x38[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x38.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x38[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x38.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2C64 (was gap+0x60, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x60[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x60.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x60[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x60.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2C8C (was gap+0x88, 56 bytes) */
@@ -341,28 +341,28 @@ u32 dNessModel_gap_0x2C04_sub_0xE8[10] = {
 };
 
 /* gap sub-block @ 0x2D14 (was gap+0x110, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x110[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x110.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x110[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x110.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2D3C (was gap+0x138, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x138[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x138.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x138[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x138.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2D64 (was gap+0x160, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x160[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x160.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x160[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x160.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2D8C (was gap+0x188, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x188[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x188.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x188[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x188.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2DB4 (was gap+0x1B0, 40 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x1B0[40] = {
-	#include <NessModel/gap_0x2C04_sub_0x1B0.data.inc.c>
+u16 dNessModel_gap_0x2C04_sub_0x1B0[20] = {
+	#include <NessModel/gap_0x2C04_sub_0x1B0.palette.inc.c>
 };
 
 /* gap sub-block @ 0x2DDC (was gap+0x1D8, 12 bytes) */
@@ -1139,18 +1139,18 @@ u8 dNessModel_gap_0x553C[24] = {
 };
 
 /* gap sub-block @ 0x5554 (was gap+0x18, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x18[40] = {
-	#include <NessModel/gap_0x553C_sub_0x18.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x18[20] = {
+	#include <NessModel/gap_0x553C_sub_0x18.palette.inc.c>
 };
 
 /* gap sub-block @ 0x557C (was gap+0x40, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x40[40] = {
-	#include <NessModel/gap_0x553C_sub_0x40.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x40[20] = {
+	#include <NessModel/gap_0x553C_sub_0x40.palette.inc.c>
 };
 
 /* gap sub-block @ 0x55A4 (was gap+0x68, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x68[40] = {
-	#include <NessModel/gap_0x553C_sub_0x68.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x68[20] = {
+	#include <NessModel/gap_0x553C_sub_0x68.palette.inc.c>
 };
 
 /* gap sub-block @ 0x55CC (was gap+0x90, 56 bytes) */
@@ -1200,28 +1200,28 @@ u32 dNessModel_gap_0x553C_sub_0xF0[10] = {
 };
 
 /* gap sub-block @ 0x5654 (was gap+0x118, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x118[40] = {
-	#include <NessModel/gap_0x553C_sub_0x118.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x118[20] = {
+	#include <NessModel/gap_0x553C_sub_0x118.palette.inc.c>
 };
 
 /* gap sub-block @ 0x567C (was gap+0x140, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x140[40] = {
-	#include <NessModel/gap_0x553C_sub_0x140.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x140[20] = {
+	#include <NessModel/gap_0x553C_sub_0x140.palette.inc.c>
 };
 
 /* gap sub-block @ 0x56A4 (was gap+0x168, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x168[40] = {
-	#include <NessModel/gap_0x553C_sub_0x168.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x168[20] = {
+	#include <NessModel/gap_0x553C_sub_0x168.palette.inc.c>
 };
 
 /* gap sub-block @ 0x56CC (was gap+0x190, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x190[40] = {
-	#include <NessModel/gap_0x553C_sub_0x190.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x190[20] = {
+	#include <NessModel/gap_0x553C_sub_0x190.palette.inc.c>
 };
 
 /* gap sub-block @ 0x56F4 (was gap+0x1B8, 40 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1B8[40] = {
-	#include <NessModel/gap_0x553C_sub_0x1B8.data.inc.c>
+u16 dNessModel_gap_0x553C_sub_0x1B8[20] = {
+	#include <NessModel/gap_0x553C_sub_0x1B8.palette.inc.c>
 };
 
 /* gap sub-block @ 0x571C (was gap+0x1E0, 12 bytes) */
@@ -1871,25 +1871,24 @@ u16 dNessModel_palette_0xC0E0[16] = {
 	#include <NessModel/palette_0xC0E0.palette.inc.c>
 };
 
-/* Raw data from file offset 0xC100 to 0xC178 (120 bytes) */
-/* gap sub-block @ 0xC100 (was gap+0x0, 8 bytes) */
-u8 dNessModel_gap_0xC100[8] = {
-	#include <NessModel/gap_0xC100.data.inc.c>
+/* "Stock LUTs" — palette frames cycled by FTSprites.stock_luts (NessMain).
+ * dNessMain_stock_luts[4] targets palette_0xC0E0, gap_0xC100_sub_0x{8,30,58}.
+ * Each frame is 16 colors RGBA5551 (32 bytes); first 3 trail an 8-byte pad,
+ * last has none. The standalone gap_0xC100[8] is the trailing pad of palette_0xC0E0. */
+u16 dNessModel_gap_0xC100[4] = {
+	#include <NessModel/gap_0xC100.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC108 (was gap+0x8, 40 bytes) */
-u8 dNessModel_gap_0xC100_sub_0x8[40] = {
-	#include <NessModel/gap_0xC100_sub_0x8.data.inc.c>
+u16 dNessModel_gap_0xC100_sub_0x8[20] = {
+	#include <NessModel/gap_0xC100_sub_0x8.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC130 (was gap+0x30, 40 bytes) */
-u8 dNessModel_gap_0xC100_sub_0x30[40] = {
-	#include <NessModel/gap_0xC100_sub_0x30.data.inc.c>
+u16 dNessModel_gap_0xC100_sub_0x30[20] = {
+	#include <NessModel/gap_0xC100_sub_0x30.palette.inc.c>
 };
 
-/* gap sub-block @ 0xC158 (was gap+0x58, 32 bytes) */
-u8 dNessModel_gap_0xC100_sub_0x58[32] = {
-	#include <NessModel/gap_0xC100_sub_0x58.data.inc.c>
+u16 dNessModel_gap_0xC100_sub_0x58[16] = {
+	#include <NessModel/gap_0xC100_sub_0x58.palette.inc.c>
 };
 
 /* Sprite: Stock */

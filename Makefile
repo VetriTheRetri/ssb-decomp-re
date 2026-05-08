@@ -171,6 +171,13 @@ RELOC_C_FILES ?=
 RELOC_NAMES_MK := $(BUILD_DIR)/reloc_names.$(VERSION).mk
 $(shell mkdir -p $(BUILD_DIR) && python3 tools/genRelocNamesMk.py tools/relocFileDescriptions.$(VERSION).txt > $(RELOC_NAMES_MK))
 include $(RELOC_NAMES_MK)
+
+# Cross-file extern deps: each fid's vpk0.bin needs the .o files of every
+# fid it references via `extern X # -> file NNN` in its .reloc, so
+# fixRelocChain.py can resolve cross-file labels under -j parallel build.
+RELOC_EXTERN_DEPS_MK := $(BUILD_DIR)/reloc_extern_deps.$(VERSION).mk
+$(shell python3 tools/genRelocExternDepsMk.py $(VERSION) > $(RELOC_EXTERN_DEPS_MK))
+include $(RELOC_EXTERN_DEPS_MK)
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 

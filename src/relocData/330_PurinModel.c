@@ -124,8 +124,11 @@ u32 dPurinModel_Joint_0x00E0_post[8] = {
  * each, file offsets 0x110..0x818) and
  * 7 MObjSub* trailing-index cells (0x818..0x870)
  * have been split out below. */
-u8 dPurinModel_Joint_0x0100_post[16] = {
-	#include <PurinModel/Joint_0x0100_post.data.inc.c>
+u16 *dPurinModel_Joint_0x0100_post[4] = {
+	(u16 *)dPurinModel_gap_0x6028_sub_0x8A8,
+	(u16 *)dPurinModel_gap_0x6028_sub_0x8D0,
+	(u16 *)dPurinModel_gap_0x6028_sub_0x8F8,
+	NULL,
 };
 
 /* MObjSub @ 0x110 */

@@ -59,8 +59,6 @@ intern dFoxSpecial3_Joint_0x1FA0_post+0x86C dFoxSpecial3_Vtx_0x1DE0_Vtx
 intern dFoxSpecial3_Joint_0x1FA0_post+0x8B4 dFoxSpecial3_Tex_0x08E0+0x48
 intern dFoxSpecial3_Joint_0x1FA0_post+0x8E4 dFoxSpecial3_Tex_0x08E0+0x70
 intern dFoxSpecial3_Joint_0x1FA0_post+0x90C dFoxSpecial3_gap_0x1E60
-extern dFoxSpecial3_Joint_0x2920_DisplayList+0x54 0x19F8  # -> file 51203 (?)
-intern dFoxSpecial3_Joint_0x2920_DisplayList+0x7C 0x29A8
 extern dFoxSpecial3_Joint_0x2920_DisplayList+0x54 0x19F8  # -> file 109 (StageSectorFile2)
 intern dFoxSpecial3_Joint_0x2920_DisplayList+0x7C 0x29A8
 intern dFoxSpecial3_Joint_0x2920_post+0x14 dFoxSpecial3_Vtx_0x1EC0_Vtx

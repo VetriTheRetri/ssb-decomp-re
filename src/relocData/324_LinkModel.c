@@ -34,7 +34,7 @@ extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
 extern Vtx dLinkModel_gap_0x9DA8_sub_0x1158[];
 extern Gfx dLinkModel_DL_0xAF40[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[];
-extern u8 dLinkModel_gap_0x7AE0_sub_0x214[];
+extern u16 *dLinkModel_gap_0x7AE0_sub_0x214[];
 
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x238[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x244[];
@@ -987,8 +987,8 @@ AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x244[1] = {
 };
 
 /* gap sub-block @ 0x4334 (was gap+0x248, 4 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x248[4] = {
-	#include <LinkModel/gap_0x40EC_sub_0x248.data.inc.c>
+u16 *dLinkModel_gap_0x40EC_sub_0x248[1] = {
+	(u16 *)dLinkModel_gap_0x40EC_sub_0x1A0,
 };
 
 /* gap sub-block @ 0x4338 (was gap+0x24C, 8 bytes) */
@@ -1932,8 +1932,8 @@ AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x210[1] = {
 };
 
 /* gap sub-block @ 0x7CF4 (was gap+0x214, 4 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x214[4] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x214.data.inc.c>
+u16 *dLinkModel_gap_0x7AE0_sub_0x214[1] = {
+	(u16 *)dLinkModel_gap_0x7AE0_sub_0x16C,
 };
 
 /* gap sub-block @ 0x7CF8 (was gap+0x218, 8 bytes) */
@@ -2671,8 +2671,9 @@ u8 dLinkModel_gap_0xC6E0[8] = {
 };
 
 /* gap sub-block @ 0xC6E8 (was gap+0x8, 520 bytes) */
-u8 dLinkModel_gap_0xC6E0_sub_0x8[520] = {
-	#include <LinkModel/gap_0xC6E0_sub_0x8.data.inc.c>
+/* @tex */
+u8 dLinkModel_Tex_0xC6E8[520] = {
+	#include <LinkModel/Tex_0xC6E8.tex.inc.c>
 };
 
 /* Texture data @ 0xC8F0 (136 bytes) */

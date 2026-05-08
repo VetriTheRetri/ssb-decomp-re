@@ -18,7 +18,7 @@ extern u16 dNessModel_gap_0x553C_sub_0x1B8[];
 extern u32 dNessModel_gap_0x553C_sub_0x274C[];
 extern u8 dNessModel_gap_0x553C_sub_0x27EC[];
 extern u8 dNessModel_gap_0x553C_sub_0x283C[];
-extern u8 dNessModel_gap_0x553C_sub_0x1FC[];
+extern u16 *dNessModel_gap_0x553C_sub_0x1FC[];
 
 extern u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[];
 
@@ -785,8 +785,8 @@ u8 dNessModel_gap_0x2C04_sub_0x1D8[12] = {
 };
 
 /* gap sub-block @ 0x2DE8 (was gap+0x1E4, 4 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x1E4[4] = {
-	#include <NessModel/gap_0x2C04_sub_0x1E4.data.inc.c>
+u16 *dNessModel_gap_0x2C04_sub_0x1E4[1] = {
+	(u16 *)dNessModel_gap_0x2C04_sub_0x60,
 };
 
 /* gap sub-block @ 0x2DEC (was gap+0x1E8, 12 bytes) */
@@ -797,23 +797,23 @@ AObjEvent32 *dNessModel_gap_0x2C04_sub_0x1E8[3] = {
 };
 
 /* gap sub-block @ 0x2DF8 (was gap+0x1F4, 4 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x1F4[4] = {
-	#include <NessModel/gap_0x2C04_sub_0x1F4.data.inc.c>
+u16 *dNessModel_gap_0x2C04_sub_0x1F4[1] = {
+	(u16 *)dNessModel_gap_0x2C04_sub_0x110,
 };
 
 /* gap sub-block @ 0x2DFC (was gap+0x1F8, 4 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x1F8[4] = {
-	#include <NessModel/gap_0x2C04_sub_0x1F8.data.inc.c>
+u16 *dNessModel_gap_0x2C04_sub_0x1F8[1] = {
+	(u16 *)dNessModel_gap_0x2C04_sub_0x138,
 };
 
 /* gap sub-block @ 0x2E00 (was gap+0x1FC, 4 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x1FC[4] = {
-	#include <NessModel/gap_0x2C04_sub_0x1FC.data.inc.c>
+u16 *dNessModel_gap_0x2C04_sub_0x1FC[1] = {
+	(u16 *)dNessModel_gap_0x2C04_sub_0x160,
 };
 
 /* gap sub-block @ 0x2E04 (was gap+0x200, 4 bytes) */
-u8 dNessModel_gap_0x2C04_sub_0x200[4] = {
-	#include <NessModel/gap_0x2C04_sub_0x200.data.inc.c>
+u16 *dNessModel_gap_0x2C04_sub_0x200[1] = {
+	(u16 *)dNessModel_gap_0x2C04_sub_0x188,
 };
 
 /* gap sub-block @ 0x2E08 (was gap+0x204, 8 bytes) */
@@ -1645,8 +1645,8 @@ u8 dNessModel_gap_0x553C_sub_0x1E0[12] = {
 };
 
 /* gap sub-block @ 0x5728 (was gap+0x1EC, 4 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1EC[4] = {
-	#include <NessModel/gap_0x553C_sub_0x1EC.data.inc.c>
+u16 *dNessModel_gap_0x553C_sub_0x1EC[1] = {
+	(u16 *)dNessModel_gap_0x553C_sub_0x68,
 };
 
 /* gap sub-block @ 0x572C (was gap+0x1F0, 12 bytes) */
@@ -1657,23 +1657,23 @@ AObjEvent32 *dNessModel_gap_0x553C_sub_0x1F0[3] = {
 };
 
 /* gap sub-block @ 0x5738 (was gap+0x1FC, 4 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x1FC[4] = {
-	#include <NessModel/gap_0x553C_sub_0x1FC.data.inc.c>
+u16 *dNessModel_gap_0x553C_sub_0x1FC[1] = {
+	(u16 *)dNessModel_gap_0x553C_sub_0x118,
 };
 
 /* gap sub-block @ 0x573C (was gap+0x200, 4 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x200[4] = {
-	#include <NessModel/gap_0x553C_sub_0x200.data.inc.c>
+u16 *dNessModel_gap_0x553C_sub_0x200[1] = {
+	(u16 *)dNessModel_gap_0x553C_sub_0x140,
 };
 
 /* gap sub-block @ 0x5740 (was gap+0x204, 4 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x204[4] = {
-	#include <NessModel/gap_0x553C_sub_0x204.data.inc.c>
+u16 *dNessModel_gap_0x553C_sub_0x204[1] = {
+	(u16 *)dNessModel_gap_0x553C_sub_0x168,
 };
 
 /* gap sub-block @ 0x5744 (was gap+0x208, 4 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x208[4] = {
-	#include <NessModel/gap_0x553C_sub_0x208.data.inc.c>
+u16 *dNessModel_gap_0x553C_sub_0x208[1] = {
+	(u16 *)dNessModel_gap_0x553C_sub_0x190,
 };
 
 /* gap sub-block @ 0x5748 (was gap+0x20C, 8 bytes) */
@@ -2099,13 +2099,15 @@ u8 dNessModel_gap_0x9050[24] = {
 };
 
 /* gap sub-block @ 0x9068 (was gap+0x18, 1032 bytes) */
-u8 dNessModel_gap_0x9050_sub_0x18[1032] = {
-	#include <NessModel/gap_0x9050_sub_0x18.data.inc.c>
+/* @tex */
+u8 dNessModel_Tex_0x9068[1032] = {
+	#include <NessModel/Tex_0x9068.tex.inc.c>
 };
 
 /* gap sub-block @ 0x9470 (was gap+0x420, 1024 bytes) */
-u8 dNessModel_gap_0x9050_sub_0x420[1024] = {
-	#include <NessModel/gap_0x9050_sub_0x420.data.inc.c>
+/* @tex */
+u8 dNessModel_Tex_0x9470[1024] = {
+	#include <NessModel/Tex_0x9470.tex.inc.c>
 };
 
 /* MObjSub: PKThunderWaveMObjSub @ 0x9870 */

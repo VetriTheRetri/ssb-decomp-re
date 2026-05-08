@@ -18,7 +18,14 @@ The format comes from the latest `gsDPSetTile` before the Tex's
 `gsDPSetTextureImage` (the SetTextureImage's fmt/siz describe the
 load buffer, not the texture). The LUT is the symbol from the most
 recent `gsDPSetTextureImage(... LUT)` followed by `gsDPLoadTLUTCmd`,
-within the same Gfx body. Dimensions come from `gsDPSetTileSize`.
+within the same Gfx body. Dimensions come from `gsDPLoadBlock` — the
+*stored* size — using the lrs (texel count − 1) and dxt (row-stride
+encoding) parameters. `gsDPSetTileSize` (the *render* size) is kept
+as a fallback for cases where LoadBlock decoding fails (dxt=0, etc.);
+when the render tile is bigger than the load (mirror/scaled rendering),
+relying on it produces dim values that exceed the stored bytes and the
+PNG previewer falls back to guess_dims, yielding garbage like 16×145
+instead of the actual 32×72.
 
 Idempotent: skips Tex decls that already carry a `/* @tex … */`
 comment immediately above. Doesn't change bytes.
@@ -53,11 +60,18 @@ FMT_TABLE = {
 def collect_tex_info_from_gfx_body(body):
     """Walk one Gfx[] body's command lines. Return a dict
     {tex_sym: {'fmt': str, 'w': int, 'h': int, 'lut': str|None}} for every
-    Tex symbol referenced via the load-block sequence in this body."""
+    Tex symbol referenced via the load-block sequence in this body.
+
+    Dimensions come from `gsDPLoadBlock` (the *stored* texture size), not
+    `gsDPSetTileSize` (the *render* tile size — which can exceed the
+    stored size when the DL stretches the texture via mirror/wrap or
+    larger texcoords). The render tile is kept as a fallback for cases
+    where LoadBlock's row-stride decoding fails (dxt=0, etc.)."""
     result = {}
     last_tile_fmt = None       # ('CI'|'I'|'IA'|'RGBA', '4b'|'8b'|'16b'|'32b')
-    last_tile_size = None      # (W, H)
-    pending_settimg = None     # ('lut'|'tex', symbol)
+    last_tile_size = None      # (W, H) from SetTileSize (render size — fallback)
+    last_settimg_siz = None    # '4b'|'8b'|'16b'|'32b' from SetTextureImage
+    pending_settimg = None     # symbol
     last_committed_lut = None  # symbol
 
     settimg_re = re.compile(
@@ -69,6 +83,43 @@ def collect_tex_info_from_gfx_body(body):
     settilesize_re = re.compile(
         r"gsDPSetTileSize\(\s*\w+\s*,\s*[^,]+,\s*[^,]+,\s*0x([0-9A-Fa-f]+)\s*,\s*0x([0-9A-Fa-f]+)\s*\)"
     )
+    loadblock_re = re.compile(
+        r"gsDPLoadBlock\(\s*\w+\s*,\s*[^,]+,\s*[^,]+,\s*(\d+)\s*,\s*(\d+)\s*\)"
+    )
+
+    def stored_dims_from_loadblock(lrs, dxt, settimg_siz, tile_fmt):
+        """Decode (width_pixels, height_pixels) of the *stored* texture
+        from LoadBlock parameters. Returns None if the params don't yield
+        clean dims (zero dxt, non-divisible row stride, etc.)."""
+        if tile_fmt is None:
+            return None
+        fmt_name = FMT_TABLE.get(tile_fmt)
+        if fmt_name is None:
+            return None
+        # Bytes loaded depends on the SetTextureImage SIZ (load-buffer width).
+        siz_bytes = {"4b": 0.5, "8b": 1, "16b": 2, "32b": 4}.get(settimg_siz)
+        if siz_bytes is None:
+            return None
+        bytes_loaded = int((lrs + 1) * siz_bytes)
+        if bytes_loaded <= 0:
+            return None
+        # Row stride: dxt = (1<<11) / num_qwords_per_row
+        if dxt <= 0:
+            return None
+        qwords_per_row = (1 << 11) // dxt
+        if qwords_per_row <= 0:
+            return None
+        width_bytes = qwords_per_row * 8
+        # Convert width_bytes → width_pixels using the actual texture fmt's bpp.
+        bpp = {"CI4": 4, "CI8": 8, "I4": 4, "I8": 8, "IA4": 4, "IA8": 8,
+               "IA16": 16, "RGBA16": 16, "RGBA32": 32}.get(fmt_name)
+        if bpp is None or width_bytes * 8 % bpp != 0:
+            return None
+        width_pixels = width_bytes * 8 // bpp
+        if width_pixels <= 0 or bytes_loaded % width_bytes != 0:
+            return None
+        height_pixels = bytes_loaded // width_bytes
+        return (width_pixels, height_pixels)
 
     for ln in body.split("\n"):
         m = settile_re.search(ln)
@@ -83,13 +134,8 @@ def collect_tex_info_from_gfx_body(body):
             continue
         m = settimg_re.search(ln)
         if m:
-            fmt = m.group(1)
             sym = m.group(3)
-            # The fmt/siz on the SetTextureImage describes the load buffer,
-            # not the texture. We'll use last_tile_fmt for the actual format.
-            # Tag the pending sym as either lut (RGBA→TLUT path) or tex
-            # (CI/I/IA→Block path). We can't know yet — wait for the
-            # follow-up LoadTLUTCmd / LoadBlock.
+            last_settimg_siz = m.group(2)
             pending_settimg = sym
             continue
         if "gsDPLoadTLUTCmd" in ln:
@@ -97,12 +143,20 @@ def collect_tex_info_from_gfx_body(body):
                 last_committed_lut = pending_settimg
             pending_settimg = None
             continue
-        if "gsDPLoadBlock" in ln or "gsDPLoadTile" in ln:
+        m_lb = loadblock_re.search(ln)
+        if m_lb or "gsDPLoadTile" in ln:
             if pending_settimg is not None and "_Tex_" in pending_settimg \
-                    and last_tile_fmt is not None and last_tile_size is not None:
+                    and last_tile_fmt is not None:
                 fmt_name = FMT_TABLE.get(last_tile_fmt)
-                if fmt_name:
-                    w, h = last_tile_size
+                stored = None
+                if m_lb and last_settimg_siz is not None:
+                    stored = stored_dims_from_loadblock(
+                        int(m_lb.group(1)), int(m_lb.group(2)),
+                        last_settimg_siz, last_tile_fmt)
+                if stored is None and last_tile_size is not None:
+                    stored = last_tile_size
+                if fmt_name and stored is not None:
+                    w, h = stored
                     result[pending_settimg] = {
                         "fmt": fmt_name,
                         "w": w,
@@ -115,6 +169,7 @@ def collect_tex_info_from_gfx_body(body):
             # Reset state — next DL is independent.
             last_tile_fmt = None
             last_tile_size = None
+            last_settimg_siz = None
             pending_settimg = None
             last_committed_lut = None
     return result
@@ -131,10 +186,12 @@ def collect_tex_info_for_fid(expanded_path):
     return out
 
 
-def annotate_source(src_path, tex_info):
+def annotate_source(src_path, tex_info, overwrite=False):
     """For each `u8 dXxx_Tex_0xNNNN[N]` decl in the source, insert the
-    `/* @tex … */` line above if missing. Returns the modified text and
-    the number of annotations applied."""
+    `/* @tex … */` line above if missing. With `overwrite=True`, an
+    existing `/* @tex … */` line is replaced with the freshly-derived
+    annotation (useful after fixing the dim-derivation logic). Returns
+    the modified text and the number of annotations applied."""
     text = open(src_path).read()
     decl_re = re.compile(
         r"^(u8 (d\w+_Tex_0x[0-9A-Fa-f]+)\[(?:0x[0-9A-Fa-f]+|\d+)\] = \{)$",
@@ -147,25 +204,57 @@ def annotate_source(src_path, tex_info):
         sym = m.group(2)
         if sym not in tex_info:
             return m.group(0)
-        # Look at the line immediately preceding to skip if @tex already there.
-        line_start = m.start()
-        prev_nl = text.rfind("\n", 0, line_start - 1)
-        prev_line = text[prev_nl + 1:line_start - 1] if prev_nl >= 0 else ""
-        if "@tex" in prev_line:
-            return m.group(0)
         info = tex_info[sym]
         ann = f"/* @tex fmt={info['fmt']} dim={info['w']}x{info['h']}"
         if info["lut"]:
             ann += f" lut={info['lut']}"
         ann += " */"
+        # Inspect the line immediately preceding the decl.
+        line_start = m.start()
+        prev_nl = text.rfind("\n", 0, line_start - 1)
+        prev_line = text[prev_nl + 1:line_start - 1] if prev_nl >= 0 else ""
+        if "@tex" in prev_line:
+            if not overwrite or prev_line == ann:
+                return m.group(0)
+            # Replace just the previous line.
+            applied += 1
+            return ann + m.group(0)[(line_start - prev_nl - 1) - len(prev_line) - 1:]
         applied += 1
         return ann + "\n" + m.group(0)
+
+    if overwrite:
+        # Different replacement strategy: strip the previous @tex line in
+        # one pass via lookbehind-friendly regex over the same decls.
+        out_lines = text.split("\n")
+        decl_one_line_re = re.compile(
+            r"^u8 (d\w+_Tex_0x[0-9A-Fa-f]+)\[(?:0x[0-9A-Fa-f]+|\d+)\] = \{$"
+        )
+        new_lines = []
+        i = 0
+        while i < len(out_lines):
+            m = decl_one_line_re.match(out_lines[i])
+            if m and m.group(1) in tex_info:
+                info = tex_info[m.group(1)]
+                ann = f"/* @tex fmt={info['fmt']} dim={info['w']}x{info['h']}"
+                if info["lut"]:
+                    ann += f" lut={info['lut']}"
+                ann += " */"
+                if new_lines and "@tex" in new_lines[-1]:
+                    if new_lines[-1] != ann:
+                        new_lines[-1] = ann
+                        applied += 1
+                else:
+                    new_lines.append(ann)
+                    applied += 1
+            new_lines.append(out_lines[i])
+            i += 1
+        return "\n".join(new_lines), applied
 
     new_text = decl_re.sub(insert, text)
     return new_text, applied
 
 
-def process_fid(fid):
+def process_fid(fid, overwrite=False):
     src = None
     name = None
     for fn in os.listdir(RELOC_DIR):
@@ -183,11 +272,12 @@ def process_fid(fid):
     tex_info = collect_tex_info_for_fid(expanded)
     if not tex_info:
         return 0
-    new_text, applied = annotate_source(src, tex_info)
+    new_text, applied = annotate_source(src, tex_info, overwrite=overwrite)
     if applied > 0:
         with open(src, "w") as f:
             f.write(new_text)
-        print(f"  fid {fid} ({name}): {applied} Tex annotations added")
+        verb = "rewritten" if overwrite else "added"
+        print(f"  fid {fid} ({name}): {applied} Tex annotations {verb}")
     return applied
 
 
@@ -195,6 +285,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("fids", nargs="*", type=int)
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--overwrite", action="store_true",
+                    help="Replace existing @tex annotations instead of skipping them.")
     args = ap.parse_args()
 
     if args.all:
@@ -210,8 +302,9 @@ def main():
 
     total = 0
     for f in fids:
-        total += process_fid(f)
-    print(f"\nTotal Tex annotations added: {total}")
+        total += process_fid(f, overwrite=args.overwrite)
+    verb = "rewritten" if args.overwrite else "added"
+    print(f"\nTotal Tex annotations {verb}: {total}")
 
 
 if __name__ == "__main__":

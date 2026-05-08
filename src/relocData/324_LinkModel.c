@@ -2726,13 +2726,13 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xB1B0 (72 bytes) */
-/* @tex fmt=CI4 dim=8x8 lut=dLinkModel_Lut_0xB188_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xB188_palette */
 u8 dLinkModel_Tex_0xB1B0[72] = {
 	#include <LinkModel/Tex_0xB1B0.tex.inc.c>
 };
 
 /* Texture data @ 0xB1F8 (136 bytes) */
-/* @tex fmt=CI4 dim=400x16 lut=dLinkModel_Lut_0xB280_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB280_palette */
 u8 dLinkModel_Tex_0xB1F8[128] = {
 	#include <LinkModel/Tex_0xB1F8.tex.inc.c>
 };
@@ -2786,7 +2786,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xB4E0 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xB4B8_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xB4E0[256] = {
 	#include <LinkModel/Tex_0xB4E0.tex.inc.c>
 };
@@ -2888,7 +2888,7 @@ u8 dLinkModel_Tex_0xC6E8[520] = {
 };
 
 /* Texture data @ 0xC8F0 (136 bytes) */
-/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDC00_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xDC00_palette */
 u8 dLinkModel_Tex_0xC8F0[128] = {
 	#include <LinkModel/Tex_0xC8F0.tex.inc.c>
 };
@@ -2900,7 +2900,7 @@ u8 dLinkModel_Tex_0xC978_jp_pad[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD,
 PAD(8);
 #endif
 
-/* @tex fmt=CI4 dim=192x16 lut=dLinkModel_Lut_0xB4B8_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xC978[128] = {
 	#include <LinkModel/Tex_0xC978.tex.inc.c>
 };
@@ -2908,7 +2908,7 @@ u8 dLinkModel_Tex_0xC978[128] = {
 PAD(8);
 
 /* Texture data @ 0xCA00 (72 bytes) */
-/* @tex fmt=CI4 dim=8x8 lut=dLinkModel_Lut_0xC6C0_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xC6C0_palette */
 u8 dLinkModel_Tex_0xCA00[72] = {
 	#include <LinkModel/Tex_0xCA00.tex.inc.c>
 };
@@ -2937,7 +2937,7 @@ u8 dLinkModel_Tex_0xCAF8_jp_pad[8] = { 0xEE, 0xEE, 0xEE, 0xDE, 0xEE, 0xEE, 0xEE,
 PAD(8);
 #endif
 
-/* @tex fmt=CI4 dim=16x28 lut=dLinkModel_Lut_0xDD30_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCAF8[128] = {
 	#include <LinkModel/Tex_0xCAF8.tex.inc.c>
 };
@@ -2949,7 +2949,7 @@ u8 dLinkModel_Tex_0xCB80_jp_pad[8] = { 0xBA, 0x86, 0x44, 0x43, 0x34, 0x8C, 0xDD,
 PAD(8);
 #endif
 
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCB80[256] = {
 	#include <LinkModel/Tex_0xCB80.tex.inc.c>
 };
@@ -2973,7 +2973,7 @@ u8 dLinkModel_Tex_0xCD10_jp_pad[8] = { 0xFF, 0xD8, 0xAC, 0xFF, 0xFF, 0xFC, 0xBA,
 PAD(8);
 #endif
 
-/* @tex fmt=CI4 dim=64x57 lut=dLinkModel_Lut_0xDD30_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCD10[512] = {
 	#include <LinkModel/Tex_0xCD10.tex.inc.c>
 };
@@ -3013,7 +3013,7 @@ u16 dLinkModel_palette_0xCFC8[20] = {
 };
 
 /* Texture: 0xCFF0 (CI4) — 152 bytes texture, 112 bytes trailing palette frames */
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dLinkModel_Tex_0xCFF0[152] = {
 	#include <LinkModel/Tex_0xCFF0.tex.inc.c>
 };
@@ -3041,7 +3041,7 @@ u16 dLinkModel_palette_0xD120[20] = {
 /* Texture data @ 0xD148 (1304 bytes) — split into 6 sub-frames at offsets
  * referenced by sprite pointer arrays / DL bindings (US +0x108/+0x310;
  * JP +0x98/+0x2A0/+0x4A8). */
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xD148[152] = {
 	#include <LinkModel/Tex_0xD148.tex.inc.c>
 };
@@ -3067,7 +3067,7 @@ u8 dLinkModel_Tex_0xD5F0[112] = {
 };
 
 /* Texture data @ 0xD660 (264 bytes) */
-/* @tex fmt=CI4 dim=32x33 lut=dLinkModel_Lut_0xDD30_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xD660[256] = {
 	#include <LinkModel/Tex_0xD660.tex.inc.c>
 };
@@ -3079,7 +3079,7 @@ u8 dLinkModel_Tex_0xD768_jp_pad[8] = { 0xAA, 0xAB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBA,
 PAD(8);
 #endif
 
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xD768[256] = {
 	#include <LinkModel/Tex_0xD768.tex.inc.c>
 };
@@ -3168,7 +3168,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xDC28 (264 bytes) */
-/* @tex fmt=CI4 dim=32x64 lut=dLinkModel_Lut_0xDC00_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDC00_palette */
 u8 dLinkModel_Tex_0xDC28[256] = {
 	#include <LinkModel/Tex_0xDC28.tex.inc.c>
 };
@@ -3203,7 +3203,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xDD80 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD58_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD58_palette */
 u8 dLinkModel_Tex_0xDD80[256] = {
 	#include <LinkModel/Tex_0xDD80.tex.inc.c>
 };
@@ -3227,13 +3227,13 @@ PAD(8);
 #endif
 
 /* Texture data @ 0xDEB0 (1160 bytes) */
-/* @tex fmt=CI4 dim=64x72 lut=dLinkModel_Lut_0xDE88_palette */
+/* @tex fmt=CI4 dim=32x72 lut=dLinkModel_Lut_0xDE88_palette */
 u8 dLinkModel_Tex_0xDEB0[1160] = {
 	#include <LinkModel/Tex_0xDEB0.tex.inc.c>
 };
 
 /* Texture data @ 0xE338 (14608 bytes) */
-/* @tex fmt=CI4 dim=8x8 lut=dLinkModel_Lut_0xDC00_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xDC00_palette */
 u8 dLinkModel_Tex_0xE338[14608] = {
 	#include <LinkModel/Tex_0xE338.tex.inc.c>
 };

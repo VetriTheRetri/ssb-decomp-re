@@ -2431,9 +2431,17 @@ Gfx dMarioModel_DL_0x63D0[14] = {
  * Self-referencing block (reloc at +0x94 points back to itself); structure
  * unidentified. Not reached by any other intern reloc. Leave as u8 until a
  * code consumer is found. */
-u8 dMarioModel_gap_0x4A60_sub_0x19E0[232] = {
-	#include <MarioModel/gap_0x4A60_sub_0x19E0.data.inc.c>
+/* Vtx data @ 0x6440 (was gap+0x19E0, 112 B / 7 vertices) */
+Vtx dMarioModel_gap_0x4A60_sub_0x19E0[7] = {
+	#include <MarioModel/gap_0x4A60_sub_0x19E0.vtx.inc.c>
 };
+
+/* Gfx DL @ 0x64B0 (112 B / 14 cmds) */
+Gfx dMarioModel_DL_0x64B0[14] = {
+	#include <MarioModel/DL_0x64B0.dl.inc.c>
+};
+
+PAD(8);  /* trailing zeros after gap+0x19E0 DL */
 
 /* MObjSub.palettes frames (RGBA5551 16-color palette + 8 bytes pad each).
  * Five frames cycled via gap_0x26D0_sub_0x384[5] / gap_0x4A60 equivalent. */

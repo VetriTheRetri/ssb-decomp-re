@@ -33,8 +33,26 @@ extern u16 dLinkModel_gap_0x40EC_sub_0x1C8[];
 extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
 extern Vtx dLinkModel_gap_0x9DA8_sub_0x1158[];
 extern Gfx dLinkModel_DL_0xAF40[];
+extern u8 dLinkModel_Tex_0xB610[];
+extern u8 dLinkModel_Tex_0xBAA0[];
+extern u8 dLinkModel_Tex_0xC0B0[];
+extern u8 dLinkModel_Tex_0xC6E8[];
+extern u8 dLinkModel_Tex_0xD148[];
+extern u8 dLinkModel_Tex_0xD250[];
+extern u8 dLinkModel_Tex_0xD458[];
+extern u16 dLinkModel_Lut_0xC6C0_palette[];
+extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x228[];
+extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x22C[];
+extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x230[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[];
+extern u16 *dLinkModel_gap_0x40EC_sub_0x248[];
+extern u32 dLinkModel_gap_0x40EC_sub_0x24C[];
+extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F4[];
+extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F8[];
+extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1FC[];
+extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x200[];
 extern u16 *dLinkModel_gap_0x7AE0_sub_0x214[];
+extern u32 dLinkModel_gap_0x7AE0_sub_0x218[];
 
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x238[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x244[];
@@ -72,12 +90,13 @@ extern MObjSub *dLinkModel_gap_0x40EC_sub_0x804[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[];
-/* MObjSub-dispatch table at file 0x0000 (64 bytes, 16 u32 slots).
+/* MObjSub-dispatch table at file 0x0000 (128 bytes, 32 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
- * trailing-index cells inside dLinkModel_Joint_0x0040_post. The original splitter
- * sliced this region into 3 fragments (see git history); the
- * .reloc relationships only make sense as one continuous table. */
-MObjSub **dLinkModel_gap_0x0000[16] = {
+ * trailing-index cells inside this file. Chain pointers at slots 1, 2,
+ * 4, 9, 19, 20, 22, 27 thread to sub_0x530..0x570. The original splitter
+ * sliced this region into 3 fragments (gap_0x0000[16] + the first half
+ * of Joint_0x0040_post[128]); they're really one 32-slot table. */
+MObjSub **dLinkModel_gap_0x0000[32] = {
 	NULL,  /* +0x00 */
 	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x530,  /* +0x04 */
 	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x538,  /* +0x08 */
@@ -94,15 +113,64 @@ MObjSub **dLinkModel_gap_0x0000[16] = {
 	NULL,  /* +0x34 */
 	NULL,  /* +0x38 */
 	NULL,  /* +0x3C */
+	NULL,  /* +0x40 */
+	NULL,  /* +0x44 */
+	NULL,  /* +0x48 */
+	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x550,  /* +0x4C */
+	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x560,  /* +0x50 */
+	NULL,  /* +0x54 */
+	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x568,  /* +0x58 */
+	NULL,  /* +0x5C */
+	NULL,  /* +0x60 */
+	NULL,  /* +0x64 */
+	NULL,  /* +0x68 */
+	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x570,  /* +0x6C */
+	NULL,  /* +0x70 */
+	NULL,  /* +0x74 */
+	NULL,  /* +0x78 */
+	NULL,  /* +0x7C */
 };
 
-/* Raw data from file offset 0x40 to 0xC0 (128 bytes).
- * Holds palette/sprite tables. The 10 MObjSubs (0x78 bytes
- * each, file offsets 0xC0..0x570) and
- * 8 MObjSub* trailing-index cells (0x570..0x5B8)
- * have been split out below. */
-u8 dLinkModel_Joint_0x0040_post[128] = {
-	#include <LinkModel/Joint_0x0040_post.data.inc.c>
+/* Per-MObjSub sprite & palette pointer arrays (file 0x80..0xC0).
+ * Each array is the `sprites` or `palettes` table fed to one MObjSub.
+ * JP overrides every chain target — see .jp.reloc — so the C source
+ * uses US targets as size-only placeholders; fixRelocChain.py rewrites
+ * both versions. */
+
+/* sprites for sub_0x1E8 @ 0x80 (3 entries) */
+u8 *dLinkModel_Sprites_0x0080[3] = {
+	dLinkModel_Tex_0xC6E8,
+	dLinkModel_Tex_0xC0B0,
+	dLinkModel_Tex_0xBAA0,
+};
+
+/* sprites for sub_0x260 @ 0x8C (2 entries) */
+u8 *dLinkModel_Sprites_0x008C[2] = {
+	dLinkModel_Tex_0xD458,
+	dLinkModel_Tex_0xD250,
+};
+
+/* palettes for sub_0x260 @ 0x94 (2 entries) */
+u16 *dLinkModel_Palettes_0x0094[2] = {
+	dLinkModel_Lut_0xC6C0_palette,
+	dLinkModel_Lut_0xC6C0_palette,
+};
+
+/* palettes for sub_0x3C8 @ 0x9C (4 entries) */
+u16 *dLinkModel_Palettes_0x009C[4] = {
+	dLinkModel_palette_0xCFC8,
+	dLinkModel_palette_0xCFA0,
+	dLinkModel_palette_0xD0F8,
+	dLinkModel_palette_0xD120,
+};
+
+/* palettes for sub_0x440 @ 0xAC (4 entries + NULL terminator) */
+u16 *dLinkModel_Palettes_0x00AC[5] = {
+	dLinkModel_palette_0xCFC8,
+	dLinkModel_palette_0xCFA0,
+	dLinkModel_palette_0xD0F8,
+	dLinkModel_palette_0xD120,
+	NULL,
 };
 
 /* MObjSub @ 0xC0 */
@@ -197,7 +265,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x1E8[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dLinkModel_Joint_0x0040_post + 0x40),
+		(void**)dLinkModel_Sprites_0x0080,
 		0x0074, 0x000D, 0x0040, 0x0020,
 		0,
 		0.193805992603302f, 0.4235230088233948f,
@@ -226,13 +294,13 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x260[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dLinkModel_Joint_0x0040_post + 0x4C),
+		(void**)dLinkModel_Sprites_0x008C,
 		0x00E4, 0x000D, 0x0020, 0x0020,
 		0,
 		0.40060800313949585f, 0.7700849771499634f,
 		0.2547830045223236f, 0.13982999324798584f,
 		0.40060800313949585f, 0.2547830045223236f,
-		(void**)((u8*)dLinkModel_Joint_0x0040_post + 0x54),
+		(void**)dLinkModel_Palettes_0x0094,
 		0x0005,
 		0x02, 0x00,
 		0x0020,
@@ -319,7 +387,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x3C8[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dLinkModel_Joint_0x0040_post + 0x5C),
+		(void**)dLinkModel_Palettes_0x009C,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -348,7 +416,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x440[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dLinkModel_Joint_0x0040_post + 0x6C),
+		(void**)dLinkModel_Palettes_0x00AC,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -797,14 +865,55 @@ DObjDesc dLinkModel_JointTree[] = {
 #endif
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 3.3539507248848087e-29f }, { 3.393394071072413e-29f, 0.0f, 3.4920019851515934e-29f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void *)dLinkModel_gap_0x40EC_sub_0x234, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x40EC to 0x48F8 (2060 bytes) */
-/* gap sub-block @ 0x40EC (was gap+0x0, 52 bytes) */
-u8 dLinkModel_gap_0x40EC[52] = {
-	#include <LinkModel/gap_0x40EC.data.inc.c>
+/* Sparse AObjEvent32 ** dispatch table @ 0x4094 (was JointTree+0x5AC, 84 bytes,
+ * 21 slots). Chain pointers thread through slots 4, 5, 7, 12 to the
+ * gap_0x40EC_sub_0x228..0x234 master arrays. */
+AObjEvent32 **dLinkModel_JointTree_post[21] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x228,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x22C,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x230,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x234,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* Raw data from file offset 0x40E8 to 0x48F8 (2064 bytes).
+ * gap_0x40EC was extended 4 bytes earlier (now starts at 0x40E8) so its
+ * 14 u32 slots match the surrounding anim-script-style arrays. The
+ * symbol name "gap_0x40EC" is preserved for chain-order stability. */
+/* gap sparse pointer table @ 0x40E8 (was 52-byte u8, now 56-byte 14 u32 slots) */
+AObjEvent32 **dLinkModel_gap_0x40EC[14] = {
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x238,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x244,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x248,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x24C,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x4120 (was gap+0x34, 56 bytes) */
@@ -1759,15 +1868,64 @@ DObjDesc dLinkModel_JointTree_0x74B0[] = {
 #endif
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 1.631829116025795e-20f, 1.653005101265866e-20f, 0.0f }, { 1.705944822027973e-20f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.811824101993474e-20f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 1.822412175392866e-20f, 1.8435884837503638e-20f } },
-	{ 0, (void *)dLinkModel_gap_0x7AE0_sub_0x214, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.8354083795050837e-20f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* Sparse AObjEvent32 ** dispatch table @ 0x7A5C (was JointTree_0x74B0+0x5AC,
+ * 132 bytes, 33 slots). Chain pointers thread through slots 2, 3, 5, 10,
+ * 20, 21, 23, 28 to the gap_0x7AE0_sub_0x1F4..0x218 master arrays. */
+AObjEvent32 **dLinkModel_JointTree_0x74B0_post[33] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x1F4,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x1F8,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x1FC,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x200,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x204,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x210,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x214,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x7AE0_sub_0x218,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* Raw data from file offset 0x7AE0 to 0x7D00 (544 bytes) */
-/* gap sub-block @ 0x7AE0 (was gap+0x0, 56 bytes) */
-u8 dLinkModel_gap_0x7AE0[56] = {
-	#include <LinkModel/gap_0x7AE0.data.inc.c>
+/* gap sub-block @ 0x7AE0 (was gap+0x0, 56 bytes) — anim script */
+u32 dLinkModel_gap_0x7AE0[14] = {
+	aobjEvent32SetExtValAfterBlock(0x018, 0),
+	    0x144C1400,  /* 1.0303312283091635e-26f */
+	    0x144C1400,  /* 1.0303312283091635e-26f */
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0x7366B300,  /* 1.8277875195038818e+31f */
+	    0x7366B300,  /* 1.8277875195038818e+31f */
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0x33000000,  /* 2.9802322387695312e-08f */
+	    0x33000000,  /* 2.9802322387695312e-08f */
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0x00336600,  /* 4.7202010095580014e-39f */
+	    0x00336600,  /* 4.7202010095580014e-39f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x7B18 (was gap+0x38, 56 bytes) */
@@ -1910,8 +2068,8 @@ AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F8[1] = {
 };
 
 /* gap sub-block @ 0x7CDC (was gap+0x1FC, 4 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x1FC[4] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x1FC.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1FC[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x7AE0,
 };
 
 /* gap sub-block @ 0x7CE0 (was gap+0x200, 4 bytes) */
@@ -2553,10 +2711,8 @@ Gfx dLinkModel_gap_0x9DA8_sub_0x1378[11] = {
 	#include <LinkModel/gap_0x9DA8_sub_0x1378.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0xB178 (16 bytes) */
-u8 dLinkModel_gap_0x9DA8_sub_0x1378_post[16] = {
-	#include <LinkModel/gap_0x9DA8_sub_0x1378_post.data.inc.c>
-};
+/* Raw tail after DL @ 0xB178 (16 bytes, all-zero pad) */
+PAD(16);
 
 /* Palette: Lut_0xB188 @ 0xB188 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB188_palette[16] = {
@@ -2653,10 +2809,64 @@ static u8 _pad_0xB608[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0x22, 0xA5, 0x2D, 0xDD };
 PAD(8);
 #endif
 
-/* Texture data @ 0xB610 (4272 bytes) */
+/* Texture data @ 0xB610 (4272 bytes) — split into 13 sub-frames at offsets
+ * referenced by sprite pointer arrays, palette pointers (JP only at +0x1040),
+ * and nested chains (gap_0x8110_sub_0x3BC). Union of US (+0x88/+0x490/
+ * +0x698/+0xAA0/+0xCA8) and JP (+0x18/+0x420/+0x628/+0xA30/+0xC38/+0x1040/
+ * +0x1068) offsets gives 13 contiguous typed blocks. */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB5E8_palette */
-u8 dLinkModel_Tex_0xB610[4272] = {
+u8 dLinkModel_Tex_0xB610[24] = {
 	#include <LinkModel/Tex_0xB610.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xB628[112] = {
+	#include <LinkModel/Tex_0xB628.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xB698[920] = {
+	#include <LinkModel/Tex_0xB698.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xBA30[112] = {
+	#include <LinkModel/Tex_0xBA30.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xBAA0[408] = {
+	#include <LinkModel/Tex_0xBAA0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xBC38[112] = {
+	#include <LinkModel/Tex_0xBC38.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xBCA8[920] = {
+	#include <LinkModel/Tex_0xBCA8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xC040[112] = {
+	#include <LinkModel/Tex_0xC040.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xC0B0[408] = {
+	#include <LinkModel/Tex_0xC0B0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xC248[112] = {
+	#include <LinkModel/Tex_0xC248.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xC2B8[920] = {
+	#include <LinkModel/Tex_0xC2B8.tex.inc.c>
+};
+
+/* JP-side palette frame at file 0xC650 (40 bytes = 20 colors), referenced
+ * via Palettes_0x0094 and several DL bindings. */
+u16 dLinkModel_palette_0xC650[20] = {
+	#include <LinkModel/palette_0xC650.palette.inc.c>
+};
+
+u8 dLinkModel_Tex_0xC678[72] = {
+	#include <LinkModel/Tex_0xC678.tex.inc.c>
 };
 
 /* Palette: Lut_0xC6C0 @ 0xC6C0 (16 colors RGBA5551) */
@@ -2665,10 +2875,11 @@ u16 dLinkModel_Lut_0xC6C0_palette[16] = {
 };
 
 /* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
-/* gap sub-block @ 0xC6E0 (was gap+0x0, 8 bytes) */
-u8 dLinkModel_gap_0xC6E0[8] = {
-	#include <LinkModel/gap_0xC6E0.data.inc.c>
-};
+#if defined(REGION_JP)
+static u8 dLinkModel_gap_0xC6E0_jp_pad[8] = { 0x99, 0x99, 0xE8, 0x8C, 0x7A, 0x55, 0x2D, 0xDD };
+#else
+PAD(8);
+#endif
 
 /* gap sub-block @ 0xC6E8 (was gap+0x8, 520 bytes) */
 /* @tex */
@@ -2769,9 +2980,22 @@ u8 dLinkModel_Tex_0xCF18_jp_pad[8] = { 0xBB, 0x66, 0xBB, 0xBB, 0x6B, 0xBB, 0x69,
 PAD(8);
 #endif
 
-/* Texture: 0xCF18 (CI4 — trailing 0x50 bytes split as palette frames) */
-u8 dLinkModel_Tex_0xCF18[136] = {
+/* Texture: 0xCF18 (CI4) — 24 bytes texture, 88 bytes trailing palette frames
+ * (reachable via JP chain pointers as palette data). */
+u8 dLinkModel_Tex_0xCF18[24] = {
 	#include <LinkModel/Tex_0xCF18.tex.inc.c>
+};
+
+u16 dLinkModel_palette_0xCF30[20] = {
+	#include <LinkModel/palette_0xCF30.palette.inc.c>
+};
+
+u16 dLinkModel_palette_0xCF58[20] = {
+	#include <LinkModel/palette_0xCF58.palette.inc.c>
+};
+
+u16 dLinkModel_palette_0xCF80[16] = {
+	#include <LinkModel/palette_0xCF80.palette.inc.c>
 };
 
 u16 dLinkModel_palette_0xCFA0[20] = {
@@ -2782,10 +3006,21 @@ u16 dLinkModel_palette_0xCFC8[20] = {
 	#include <LinkModel/palette_0xCFC8.palette.inc.c>
 };
 
-/* Texture data @ 0xCFF0 (344 bytes) */
-/* Texture: 0xCFF0 (CI4 — trailing 0x50 bytes split as palette frames) */
-u8 dLinkModel_Tex_0xCFF0[264] = {
+/* Texture: 0xCFF0 (CI4) — 152 bytes texture, 112 bytes trailing palette frames */
+u8 dLinkModel_Tex_0xCFF0[152] = {
 	#include <LinkModel/Tex_0xCFF0.tex.inc.c>
+};
+
+u16 dLinkModel_palette_0xD088[20] = {
+	#include <LinkModel/palette_0xD088.palette.inc.c>
+};
+
+u16 dLinkModel_palette_0xD0B0[20] = {
+	#include <LinkModel/palette_0xD0B0.palette.inc.c>
+};
+
+u16 dLinkModel_palette_0xD0D8[16] = {
+	#include <LinkModel/palette_0xD0D8.palette.inc.c>
 };
 
 u16 dLinkModel_palette_0xD0F8[20] = {
@@ -2796,10 +3031,32 @@ u16 dLinkModel_palette_0xD120[20] = {
 	#include <LinkModel/palette_0xD120.palette.inc.c>
 };
 
-/* Texture data @ 0xD148 (1304 bytes) */
+/* Texture data @ 0xD148 (1304 bytes) — split into 6 sub-frames at offsets
+ * referenced by sprite pointer arrays / DL bindings (US +0x108/+0x310;
+ * JP +0x98/+0x2A0/+0x4A8). */
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
-u8 dLinkModel_Tex_0xD148[1304] = {
+u8 dLinkModel_Tex_0xD148[152] = {
 	#include <LinkModel/Tex_0xD148.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xD1E0[112] = {
+	#include <LinkModel/Tex_0xD1E0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xD250[408] = {
+	#include <LinkModel/Tex_0xD250.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xD3E8[112] = {
+	#include <LinkModel/Tex_0xD3E8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xD458[408] = {
+	#include <LinkModel/Tex_0xD458.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0xD5F0[112] = {
+	#include <LinkModel/Tex_0xD5F0.tex.inc.c>
 };
 
 /* Texture data @ 0xD660 (264 bytes) */

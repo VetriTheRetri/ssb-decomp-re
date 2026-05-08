@@ -2900,6 +2900,7 @@ u8 dLinkModel_Tex_0xC978_jp_pad[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD,
 PAD(8);
 #endif
 
+/* @tex fmt=CI4 dim=192x16 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xC978[128] = {
 	#include <LinkModel/Tex_0xC978.tex.inc.c>
 };
@@ -2936,6 +2937,7 @@ u8 dLinkModel_Tex_0xCAF8_jp_pad[8] = { 0xEE, 0xEE, 0xEE, 0xDE, 0xEE, 0xEE, 0xEE,
 PAD(8);
 #endif
 
+/* @tex fmt=CI4 dim=16x28 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCAF8[128] = {
 	#include <LinkModel/Tex_0xCAF8.tex.inc.c>
 };
@@ -2947,6 +2949,7 @@ u8 dLinkModel_Tex_0xCB80_jp_pad[8] = { 0xBA, 0x86, 0x44, 0x43, 0x34, 0x8C, 0xDD,
 PAD(8);
 #endif
 
+/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCB80[256] = {
 	#include <LinkModel/Tex_0xCB80.tex.inc.c>
 };
@@ -2958,6 +2961,7 @@ u8 dLinkModel_Tex_0xCC88_jp_pad[8] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xEF, 0xFF,
 PAD(8);
 #endif
 
+/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCC88[128] = {
 	#include <LinkModel/Tex_0xCC88.tex.inc.c>
 };
@@ -2969,6 +2973,7 @@ u8 dLinkModel_Tex_0xCD10_jp_pad[8] = { 0xFF, 0xD8, 0xAC, 0xFF, 0xFF, 0xFC, 0xBA,
 PAD(8);
 #endif
 
+/* @tex fmt=CI4 dim=64x57 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCD10[512] = {
 	#include <LinkModel/Tex_0xCD10.tex.inc.c>
 };
@@ -2982,6 +2987,7 @@ PAD(8);
 
 /* Texture: 0xCF18 (CI4) — 24 bytes texture, 88 bytes trailing palette frames
  * (reachable via JP chain pointers as palette data). */
+/* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xCF18[24] = {
 	#include <LinkModel/Tex_0xCF18.tex.inc.c>
 };
@@ -3007,6 +3013,7 @@ u16 dLinkModel_palette_0xCFC8[20] = {
 };
 
 /* Texture: 0xCFF0 (CI4) — 152 bytes texture, 112 bytes trailing palette frames */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dLinkModel_Tex_0xCFF0[152] = {
 	#include <LinkModel/Tex_0xCFF0.tex.inc.c>
 };
@@ -3072,6 +3079,7 @@ u8 dLinkModel_Tex_0xD768_jp_pad[8] = { 0xAA, 0xAB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBA,
 PAD(8);
 #endif
 
+/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xD768[256] = {
 	#include <LinkModel/Tex_0xD768.tex.inc.c>
 };

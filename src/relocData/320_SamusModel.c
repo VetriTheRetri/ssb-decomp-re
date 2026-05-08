@@ -41,7 +41,7 @@ extern u16 dSamusModel_palette_0xCEB0[];
 extern u16 dSamusModel_palette_0xD5A0[];
 extern u16 dSamusModel_palette_0xD5C8[];
 extern u16 dSamusModel_palette_0xD5F0[];
-extern u8 dSamusModel_Joint_0x0040_post[];
+extern MObjSub **dSamusModel_Joint_0x0040_post[];
 extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x1D8[];
 extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x250[];
 extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x2C8[];
@@ -138,6 +138,15 @@ extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1144[];
 extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1160[];
 extern MObjSub *dSamusModel_gap_0x3B24_sub_0x116C[];
 extern MObjSub *dSamusModel_gap_0x3B24_sub_0x1198[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4A4[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4B0[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4B8[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4C0[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4C4[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4C8[];
+extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4D0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x4D4[];
+extern u16 dSamusModel_gap_0xB27C_sub_0xC[];
 /* MObjSub-dispatch table at file 0x0000 (64 bytes, 16 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dSamusModel_Joint_0x0040_post. The original splitter
@@ -168,8 +177,125 @@ MObjSub **dSamusModel_gap_0x0000[16] = {
  * each, file offsets 0x218..0xC68) and
  * 13 MObjSub* trailing-index cells (0xC68..0xCF8)
  * have been split out below. */
-u8 dSamusModel_Joint_0x0040_post[472] = {
-	#include <SamusModel/Joint_0x0040_post.data.inc.c>
+MObjSub **dSamusModel_Joint_0x0040_post[118] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xC7C,
+	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xC88,
+	NULL,
+	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xC90,
+	NULL,
+	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xC98,
+	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xCA4,
+	NULL,
+	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xCAC,
+	NULL,
+	(MObjSub **)dSamusModel_palette_0xB4E0,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB4E0,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_gap_0xB27C_sub_0xC,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xD5A0,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xD5C8,
+	(MObjSub **)dSamusModel_palette_0xD5F0,
+	(MObjSub **)dSamusModel_palette_0xC9B0,
+	(MObjSub **)dSamusModel_palette_0xC818,
+	(MObjSub **)dSamusModel_palette_0xC840,
+	(MObjSub **)dSamusModel_palette_0xC868,
+	(MObjSub **)dSamusModel_palette_0xC890,
+	(MObjSub **)dSamusModel_palette_0xC9B0,
+	(MObjSub **)dSamusModel_palette_0xC818,
+	(MObjSub **)dSamusModel_palette_0xC840,
+	(MObjSub **)dSamusModel_palette_0xC868,
+	(MObjSub **)dSamusModel_palette_0xC890,
+	(MObjSub **)dSamusModel_palette_0xC9B0,
+	(MObjSub **)dSamusModel_palette_0xC818,
+	(MObjSub **)dSamusModel_palette_0xC8B8,
+	(MObjSub **)dSamusModel_palette_0xC868,
+	(MObjSub **)dSamusModel_palette_0xC890,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_gap_0xB27C_sub_0xC,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xD5A0,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xD5C8,
+	(MObjSub **)dSamusModel_palette_0xD5F0,
+	(MObjSub **)dSamusModel_palette_0xBAA8,
+	(MObjSub **)dSamusModel_palette_0xBA08,
+	(MObjSub **)dSamusModel_palette_0xBA30,
+	(MObjSub **)dSamusModel_palette_0xBA58,
+	(MObjSub **)dSamusModel_palette_0xBA80,
+	(MObjSub **)dSamusModel_palette_0xBFA8,
+	(MObjSub **)dSamusModel_palette_0xBCD8,
+	(MObjSub **)dSamusModel_palette_0xBD00,
+	(MObjSub **)dSamusModel_palette_0xBD28,
+	(MObjSub **)dSamusModel_palette_0xBD50,
+	(MObjSub **)dSamusModel_palette_0xC9B0,
+	(MObjSub **)dSamusModel_palette_0xC818,
+	(MObjSub **)dSamusModel_palette_0xB7B0,
+	(MObjSub **)dSamusModel_palette_0xC868,
+	(MObjSub **)dSamusModel_palette_0xB7D8,
+	(MObjSub **)dSamusModel_palette_0xB4E0,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB4E0,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xB788,
+	(MObjSub **)dSamusModel_palette_0xB4B8,
+	(MObjSub **)dSamusModel_palette_0xB710,
+	(MObjSub **)dSamusModel_palette_0xB738,
+	(MObjSub **)dSamusModel_palette_0xB760,
+	(MObjSub **)dSamusModel_palette_0xCC80,
+	(MObjSub **)dSamusModel_palette_0xCBE0,
+	(MObjSub **)dSamusModel_palette_0xCC08,
+	(MObjSub **)dSamusModel_palette_0xCC30,
+	(MObjSub **)dSamusModel_palette_0xCC58,
+	(MObjSub **)dSamusModel_palette_0xBAA8,
+	(MObjSub **)dSamusModel_palette_0xBA08,
+	(MObjSub **)dSamusModel_palette_0xCEB0,
+	(MObjSub **)dSamusModel_palette_0xBA58,
+	(MObjSub **)dSamusModel_palette_0xBA80,
+	NULL,
 };
 
 /* MObjSub @ 0x218 */
@@ -2755,8 +2881,31 @@ DObjDesc dSamusModel_JointTree_0x69D0[] = {
 
 /* Raw data from file offset 0x6FD4 to 0xADD8 (15876 bytes) */
 /* gap sub-block @ 0x6FD4 (was gap+0x0, 96 bytes) */
-u8 dSamusModel_gap_0x6FD4[96] = {
-	#include <SamusModel/gap_0x6FD4.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4[24] = {
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4A4,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4B0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4B8,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4C0,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4C4,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4C8,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4D0,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4D4,
+	NULL,
 };
 
 /* gap sub-block @ 0x7034 (was gap+0x60, 48 bytes) */
@@ -3288,8 +3437,8 @@ Gfx dSamusModel_gap_0x6FD4_sub_0x79C[54] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x7920 (4 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x79C_post[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x79C_post.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4_sub_0x79C_post[1] = {
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x9B0,
 };
 
 /* gap sub-block @ 0x7924 (was gap+0x950, 48 bytes) */
@@ -3435,8 +3584,8 @@ Gfx dSamusModel_gap_0x6FD4_sub_0xBEC[44] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x7D20 (4 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0xBEC_post[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0xBEC_post.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4_sub_0xBEC_post[1] = {
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0xDB0,
 };
 
 /* gap sub-block @ 0x7D24 (was gap+0xD50, 48 bytes) */
@@ -3550,8 +3699,10 @@ Gfx dSamusModel_gap_0x6FD4_sub_0x1184[70] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8388 (12 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1184_post[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1184_post.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4_sub_0x1184_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x13F0,
 };
 
 /* gap sub-block @ 0x8394 (was gap+0x13C0, 48 bytes) */
@@ -3639,8 +3790,8 @@ Gfx dSamusModel_gap_0x6FD4_sub_0x1734[69] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8930 (4 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1734_post[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1734_post.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4_sub_0x1734_post[1] = {
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x1990,
 };
 
 /* gap sub-block @ 0x8934 (was gap+0x1960, 48 bytes) */
@@ -3687,8 +3838,10 @@ Gfx dSamusModel_gap_0x6FD4_sub_0x1A9C[47] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8BE8 (12 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1A9C_post[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1A9C_post.data.inc.c>
+MObjSub **dSamusModel_gap_0x6FD4_sub_0x1A9C_post[3] = {
+	NULL,
+	NULL,
+	(MObjSub **)dSamusModel_gap_0x6FD4_sub_0x1D2C,
 };
 
 /* u32 pointer array @ 0x8BF4 (3 entries) */
@@ -3790,8 +3943,8 @@ Gfx dSamusModel_gap_0x6FD4_sub_0x1DBC[44] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8EF0 (4 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x1DBC_post[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x1DBC_post.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4_sub_0x1DBC_post[1] = {
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x1FC0,
 };
 
 /* gap sub-block @ 0x8EF4 (was gap+0x1F20, 80 bytes) */
@@ -3949,8 +4102,8 @@ Gfx dSamusModel_gap_0x6FD4_sub_0x216C[44] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x92A0 (4 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x216C_post[4] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x216C_post.data.inc.c>
+AObjEvent32 **dSamusModel_gap_0x6FD4_sub_0x216C_post[1] = {
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x2370,
 };
 
 /* gap sub-block @ 0x92A4 (was gap+0x22D0, 80 bytes) */

@@ -4381,8 +4381,10 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x928[50] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8888 (12 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x928_post[12] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x928_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x928_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0xB34,
 };
 
 /* gap sub-block @ 0x8894 (was gap+0xAC4, 56 bytes) */
@@ -4487,8 +4489,8 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0xC80[34] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8B60 (4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0xC80_post[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0xC80_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0xC80_post[1] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0xDCC,
 };
 
 /* gap sub-block @ 0x8B64 (was gap+0xD94, 56 bytes) */
@@ -4620,8 +4622,10 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x1008[52] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8F78 (12 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x1008_post[12] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x1008_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x1008_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x1224,
 };
 
 /* gap sub-block @ 0x8F84 (was gap+0x11B4, 56 bytes) */
@@ -4726,8 +4730,8 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x1350[32] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x9220 (4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x1350_post[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x1350_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x1350_post[1] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x148C,
 };
 
 /* gap sub-block @ 0x9224 (was gap+0x1454, 56 bytes) */
@@ -4859,8 +4863,8 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x16D8[51] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x9640 (4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x16D8_post[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x16D8_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x16D8_post[1] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x18E4,
 };
 
 /* gap sub-block @ 0x9644 (was gap+0x1874, 56 bytes) */
@@ -4965,8 +4969,8 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x1A30[34] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x9910 (4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x1A30_post[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x1A30_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x1A30_post[1] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x1B7C,
 };
 
 /* gap sub-block @ 0x9914 (was gap+0x1B44, 56 bytes) */
@@ -5098,8 +5102,10 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x1DB8[52] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x9D28 (12 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x1DB8_post[12] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x1DB8_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x1DB8_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x1FD4,
 };
 
 /* gap sub-block @ 0x9D34 (was gap+0x1F64, 56 bytes) */
@@ -5204,8 +5210,8 @@ Gfx dCaptainModel_gap_0x7DD0_sub_0x2100[32] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x9FD0 (4 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x2100_post[4] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x2100_post.data.inc.c>
+AObjEvent32 **dCaptainModel_gap_0x7DD0_sub_0x2100_post[1] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x223C,
 };
 
 /* gap sub-block @ 0x9FD4 (was gap+0x2204, 56 bytes) */

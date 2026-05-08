@@ -22,6 +22,9 @@ extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB34[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB2C[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB3C[];
 extern u32 dFoxModel_gap_0x5A38_sub_0x2C0[];
+extern u8 dFoxModel_gap_0x2E60_sub_0x2C0[];
+extern u8 dFoxModel_gap_0x2E60_sub_0x2C4[];
+extern u32 dFoxModel_gap_0x2E60_sub_0x2C8[];
 /* MObjSub-dispatch table at file 0x0000 (96 bytes, 24 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dFoxModel_Joint_0x0060_post. The original splitter
@@ -340,8 +343,14 @@ DObjDesc dFoxModel_JointTree[] = {
 
 /* Raw data from file offset 0x2E60 to 0x39C0 (2912 bytes) */
 /* gap sub-block @ 0x2E60 (was gap+0x0, 28 bytes) */
-u8 dFoxModel_gap_0x2E60[28] = {
-	#include <FoxModel/gap_0x2E60.data.inc.c>
+AObjEvent32 *dFoxModel_gap_0x2E60[7] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x2C0,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x2C4,
+	NULL,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x2C8,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x2E7C (was gap+0x1C, 40 bytes) */

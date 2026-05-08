@@ -184,6 +184,31 @@ extern MObjSub *dKirbyModel_gap_0x1970_sub_0x75C[];
 extern MObjSub *dKirbyModel_gap_0x1970_sub_0x744[];
 extern MObjSub *dKirbyModel_gap_0x1970_sub_0x764[];
 extern MObjSub *dKirbyModel_gap_0x1970_sub_0x74C[];
+extern MObjSub * dKirbyModel_Joint_0x0020_post_sub_0x46C[];
+extern MObjSub * dKirbyModel_Joint_0x0020_post_sub_0x474[];
+extern MObjSub * dKirbyModel_Joint_0x0020_post_sub_0x47C[];
+extern MObjSub * dKirbyModel_Joint_0x0020_post_sub_0x484[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1DDC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1E04[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1E2C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1E54[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0x1EA4[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0x23A4[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0x25D4[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0x2804[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0x2A34[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x2C3C[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0x2C64[];
+extern u8 dKirbyModel_gap_0x1A2FC_sub_0xAD4[];
+extern AObjEvent32 * dKirbyModel_gap_0x1970_sub_0x2B8[];
+extern AObjEvent32 * dKirbyModel_gap_0x1970_sub_0x2BC[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x15FEC[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x15FF8[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16000[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16008[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16010[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16018[];
+extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16020[];
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dKirbyModel_JointVerts_Vtx[2] = {
 	#include <KirbyModel/JointVerts.vtx.inc.c>
@@ -194,8 +219,43 @@ Vtx dKirbyModel_JointVerts_Vtx[2] = {
  * each, file offsets 0xB0..0x470) and
  * 7 MObjSub* trailing-index cells (0x470..0x4B0)
  * have been split out below. */
-u8 dKirbyModel_Joint_0x0020_post[144] = {
-	#include <KirbyModel/Joint_0x0020_post.data.inc.c>
+MObjSub **dKirbyModel_Joint_0x0020_post[36] = {
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_Joint_0x0020_post_sub_0x46C,
+	(MObjSub **)dKirbyModel_Joint_0x0020_post_sub_0x474,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_Joint_0x0020_post_sub_0x47C,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_Joint_0x0020_post_sub_0x484,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x2C64,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x2804,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x1EA4,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x25D4,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x23A4,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x2A34,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0xAD4,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x2C3C,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x1DDC,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x1E04,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x1E2C,
+	(MObjSub **)dKirbyModel_gap_0x1A2FC_sub_0x1E54,
+	NULL,
 };
 
 /* MObjSub @ 0xB0 */
@@ -540,8 +600,14 @@ DObjDesc dKirbyModel_JointTree[] = {
 
 /* Raw data from file offset 0x1970 to 0x20E0 (1904 bytes) */
 /* gap sub-block @ 0x1970 (was gap+0x0, 28 bytes) */
-u8 dKirbyModel_gap_0x1970[28] = {
-	#include <KirbyModel/gap_0x1970.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x1970[7] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x1970_sub_0x2B8,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x1970_sub_0x2BC,
+	NULL,
 };
 
 /* gap sub-block @ 0x198C (was gap+0x1C, 152 bytes) */
@@ -744,33 +810,33 @@ AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2A0[2] = {
 };
 
 /* gap sub-block @ 0x1C18 (was gap+0x2A8, 4 bytes) */
-u8 dKirbyModel_gap_0x1970_sub_0x2A8[4] = {
-	#include <KirbyModel/gap_0x1970_sub_0x2A8.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2A8[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x1970_sub_0x14C,
 };
 
 /* gap sub-block @ 0x1C1C (was gap+0x2AC, 4 bytes) */
-u8 dKirbyModel_gap_0x1970_sub_0x2AC[4] = {
-	#include <KirbyModel/gap_0x1970_sub_0x2AC.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2AC[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x1970_sub_0x100,
 };
 
 /* gap sub-block @ 0x1C20 (was gap+0x2B0, 4 bytes) */
-u8 dKirbyModel_gap_0x1970_sub_0x2B0[4] = {
-	#include <KirbyModel/gap_0x1970_sub_0x2B0.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2B0[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x1970_sub_0x1E4,
 };
 
 /* gap sub-block @ 0x1C24 (was gap+0x2B4, 4 bytes) */
-u8 dKirbyModel_gap_0x1970_sub_0x2B4[4] = {
-	#include <KirbyModel/gap_0x1970_sub_0x2B4.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2B4[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x1970_sub_0x198,
 };
 
 /* gap sub-block @ 0x1C28 (was gap+0x2B8, 4 bytes) */
-u8 dKirbyModel_gap_0x1970_sub_0x2B8[4] = {
-	#include <KirbyModel/gap_0x1970_sub_0x2B8.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2B8[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x1970_sub_0x230,
 };
 
 /* gap sub-block @ 0x1C2C (was gap+0x2BC, 4 bytes) */
-u8 dKirbyModel_gap_0x1970_sub_0x2BC[4] = {
-	#include <KirbyModel/gap_0x1970_sub_0x2BC.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1970_sub_0x2BC[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x1970_sub_0x268,
 };
 
 /* gap sub-block @ 0x1C30 (was gap+0x2C0, 108 bytes) */
@@ -1390,28 +1456,28 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2E4[2] = {
 };
 
 /* gap sub-block @ 0x34B8 (was gap+0x2EC, 4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2EC[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2EC.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2EC[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x190,
 };
 
 /* gap sub-block @ 0x34BC (was gap+0x2F0, 4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2F0[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2F0.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2F0[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x144,
 };
 
 /* gap sub-block @ 0x34C0 (was gap+0x2F4, 4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2F4[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2F4.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2F4[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x228,
 };
 
 /* gap sub-block @ 0x34C4 (was gap+0x2F8, 4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2F8[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2F8.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2F8[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x1DC,
 };
 
 /* gap sub-block @ 0x34C8 (was gap+0x2FC, 4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2FC[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2FC.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2FC[1] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x274,
 };
 
 /* gap sub-block @ 0x34CC (was gap+0x300, 8 bytes) */
@@ -1475,8 +1541,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x41C[35] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x3700 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x41C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x41C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x41C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x568,
 };
 
 /* gap sub-block @ 0x3704 (was gap+0x538, 48 bytes) */
@@ -1559,8 +1625,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x68C[35] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x3970 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x68C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x68C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x68C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x7D8,
 };
 
 /* gap sub-block @ 0x3974 (was gap+0x7A8, 48 bytes) */
@@ -2034,8 +2100,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x211C[124] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x56C8 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x211C_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x211C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x211C_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x25EC,
 };
 
 /* gap sub-block @ 0x56D4 (was gap+0x2508, 152 bytes) */
@@ -2219,8 +2287,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x2BFC[89] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x6090 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x2BFC_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2BFC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x2BFC_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x2FCC,
 };
 
 /* gap sub-block @ 0x6094 (was gap+0x2EC8, 184 bytes) */
@@ -2425,8 +2493,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x381C[148] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x6E88 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x381C_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x381C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x381C_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x3D60,
 };
 
 /* gap sub-block @ 0x6E94 (was gap+0x3CC8, 152 bytes) */
@@ -2559,8 +2629,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x438C[115] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x78F0 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x438C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x438C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x438C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x47E0,
 };
 
 /* gap sub-block @ 0x78F4 (was gap+0x4728, 184 bytes) */
@@ -2773,8 +2843,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x509C[160] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8768 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x509C_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x509C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x509C_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x568C,
 };
 
 /* gap sub-block @ 0x8774 (was gap+0x55A8, 152 bytes) */
@@ -2968,8 +3040,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x5D4C[123] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x92F0 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x5D4C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5D4C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x5D4C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x61E8,
 };
 
 /* gap sub-block @ 0x92F4 (was gap+0x6128, 116 bytes) */
@@ -3365,8 +3437,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x784C[153] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0xAEE0 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x784C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x784C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x784C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x7E1C,
 };
 
 /* gap sub-block @ 0xAEE4 (was gap+0x7D18, 184 bytes) */
@@ -3573,8 +3645,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x866C[128] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0xBC38 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x866C_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x866C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x866C_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x8B7C,
 };
 
 /* gap sub-block @ 0xBC44 (was gap+0x8A78, 184 bytes) */
@@ -3766,8 +3840,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x91CC[100] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0xC6B8 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x91CC_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x91CC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x91CC_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x95FC,
 };
 
 /* gap sub-block @ 0xC6C4 (was gap+0x94F8, 184 bytes) */
@@ -3984,8 +4060,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x9FEC[174] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0xD728 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x9FEC_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9FEC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x9FEC_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xA638,
 };
 
 /* gap sub-block @ 0xD734 (was gap+0xA568, 152 bytes) */
@@ -4377,8 +4455,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0xBE6C[177] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0xF5C0 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xBE6C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xBE6C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0xBE6C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xC4DC,
 };
 
 /* gap sub-block @ 0xF5C4 (was gap+0xC3F8, 152 bytes) */
@@ -4577,8 +4655,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0xCC4C[157] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x10300 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xCC4C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xCC4C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0xCC4C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xD23C,
 };
 
 /* gap sub-block @ 0x10304 (was gap+0xD138, 184 bytes) */
@@ -4770,8 +4848,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0xD93C[115] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x10EA0 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xD93C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD93C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0xD93C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xDDBC,
 };
 
 /* gap sub-block @ 0x10EA4 (was gap+0xDCD8, 152 bytes) */
@@ -4955,8 +5033,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0xE3FC[105] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x11910 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xE3FC_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xE3FC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0xE3FC_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xE82C,
 };
 
 /* gap sub-block @ 0x11914 (was gap+0xE748, 152 bytes) */
@@ -5160,8 +5238,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0xEF3C[121] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x124D0 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xEF3C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xEF3C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0xEF3C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xF40C,
 };
 
 /* gap sub-block @ 0x124D4 (was gap+0xF308, 184 bytes) */
@@ -5358,8 +5436,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0xFA3C[106] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x12F58 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0xFA3C_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xFA3C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0xFA3C_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0xFE9C,
 };
 
 /* gap sub-block @ 0x12F64 (was gap+0xFD98, 184 bytes) */
@@ -5571,8 +5651,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x105AC[121] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x13B40 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x105AC_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x105AC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x105AC_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x10A7C,
 };
 
 /* gap sub-block @ 0x13B44 (was gap+0x10978, 184 bytes) */
@@ -5769,8 +5849,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x110AC[106] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x145C8 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x110AC_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x110AC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x110AC_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x1150C,
 };
 
 /* gap sub-block @ 0x145D4 (was gap+0x11408, 184 bytes) */
@@ -5972,8 +6054,10 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x11BCC[116] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x15138 (12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x11BCC_post[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x11BCC_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x11BCC_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x1205C,
 };
 
 /* gap sub-block @ 0x15144 (was gap+0x11F78, 152 bytes) */
@@ -6157,8 +6241,8 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x1263C[103] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x15B40 (4 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x1263C_post[4] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1263C_post.data.inc.c>
+AObjEvent32 **dKirbyModel_gap_0x31CC_sub_0x1263C_post[1] = {
+	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x12A7C,
 };
 
 /* gap sub-block @ 0x15B44 (was gap+0x12978, 184 bytes) */
@@ -6538,8 +6622,10 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x14634[1] = {
 };
 
 /* gap sub-block @ 0x17804 (was gap+0x14638, 12 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x14638[12] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x14638.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x14638[3] = {
+	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x1459C,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x17810 (was gap+0x14644, 64 bytes) */
@@ -6563,8 +6649,31 @@ Gfx dKirbyModel_gap_0x31CC_sub_0x15894[95] = {
 };
 
 /* Raw tail after DL @ 0x18D58 (96 bytes) */
-u8 dKirbyModel_gap_0x31CC_sub_0x15894_post[96] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x15894_post.data.inc.c>
+MObjSub **dKirbyModel_gap_0x31CC_sub_0x15894_post[24] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x15FEC,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x15FF8,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x16000,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x16008,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x16010,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x16018,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x16020,
 };
 
 /* palette @ retyped from u8[44] to u16[22] */
@@ -7355,8 +7464,9 @@ u32 dKirbyModel_gap_0x1A2FC_sub_0x308C[34] = {
 };
 
 /* gap sub-block @ 0x1D410 (was gap+0x3114, 8 bytes) */
-u8 dKirbyModel_gap_0x1A2FC_sub_0x3114[8] = {
-	#include <KirbyModel/gap_0x1A2FC_sub_0x3114.data.inc.c>
+AObjEvent32 *dKirbyModel_gap_0x1A2FC_sub_0x3114[2] = {
+	NULL,
+	(AObjEvent32 *)dKirbyModel_gap_0x1A2FC_sub_0x311C,
 };
 
 /* gap sub-block @ 0x1D418 (was gap+0x311C, 160 bytes) */

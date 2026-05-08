@@ -73,6 +73,7 @@ extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1400[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E0[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B0[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C8[];
+extern u32 dPikachuModel_gap_0x59B8_sub_0xB94[];
 /* MObjSub-dispatch table at file 0x0000 (64 bytes, 16 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dPikachuModel_Joint_0x0040_post. The original splitter
@@ -3509,8 +3510,8 @@ Gfx dPikachuModel_gap_0x59B8_sub_0xA38[34] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x6500 (4 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0xA38_post[4] = {
-	#include <PikachuModel/gap_0x59B8_sub_0xA38_post.data.inc.c>
+AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0xA38_post[1] = {
+	(AObjEvent32 *)dPikachuModel_gap_0x59B8_sub_0xB94,
 };
 
 /* gap sub-block @ 0x6504 (was gap+0xB4C, 40 bytes) */

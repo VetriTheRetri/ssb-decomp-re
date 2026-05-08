@@ -33,7 +33,7 @@ extern u16 dLinkModel_gap_0x40EC_sub_0x1C8[];
 extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
 extern Vtx dLinkModel_gap_0x9DA8_sub_0x1158[];
 extern Gfx dLinkModel_DL_0xAF40[];
-extern u8 dLinkModel_gap_0x40EC_sub_0x234[];
+extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[];
 extern u8 dLinkModel_gap_0x7AE0_sub_0x214[];
 
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x238[];
@@ -955,23 +955,23 @@ u32 dLinkModel_gap_0x40EC_sub_0x1F0[14] = {
 };
 
 /* gap sub-block @ 0x4314 (was gap+0x228, 4 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x228[4] = {
-	#include <LinkModel/gap_0x40EC_sub_0x228.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x228[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x1F0,
 };
 
 /* gap sub-block @ 0x4318 (was gap+0x22C, 4 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x22C[4] = {
-	#include <LinkModel/gap_0x40EC_sub_0x22C.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x22C[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x168,
 };
 
 /* gap sub-block @ 0x431C (was gap+0x230, 4 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x230[4] = {
-	#include <LinkModel/gap_0x40EC_sub_0x230.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x230[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x34,
 };
 
 /* gap sub-block @ 0x4320 (was gap+0x234, 4 bytes) */
-u8 dLinkModel_gap_0x40EC_sub_0x234[4] = {
-	#include <LinkModel/gap_0x40EC_sub_0x234.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x6C,
 };
 
 /* gap sub-block @ 0x4324 (was gap+0x238, 12 bytes) */
@@ -1900,13 +1900,13 @@ u32 dLinkModel_gap_0x7AE0_sub_0x1BC[14] = {
 };
 
 /* gap sub-block @ 0x7CD4 (was gap+0x1F4, 4 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x1F4[4] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x1F4.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F4[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x7AE0_sub_0x1BC,
 };
 
 /* gap sub-block @ 0x7CD8 (was gap+0x1F8, 4 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x1F8[4] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x1F8.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F8[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x7AE0_sub_0x134,
 };
 
 /* gap sub-block @ 0x7CDC (was gap+0x1FC, 4 bytes) */
@@ -1915,8 +1915,8 @@ u8 dLinkModel_gap_0x7AE0_sub_0x1FC[4] = {
 };
 
 /* gap sub-block @ 0x7CE0 (was gap+0x200, 4 bytes) */
-u8 dLinkModel_gap_0x7AE0_sub_0x200[4] = {
-	#include <LinkModel/gap_0x7AE0_sub_0x200.data.inc.c>
+AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x200[1] = {
+	(AObjEvent32 *)dLinkModel_gap_0x7AE0_sub_0x38,
 };
 
 /* gap sub-block @ 0x7CE4 (was gap+0x204, 12 bytes) */
@@ -2014,8 +2014,12 @@ Gfx dLinkModel_gap_0x8110_sub_0x270[39] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x84B8 (20 bytes) */
-u8 dLinkModel_gap_0x8110_sub_0x270_post[20] = {
-	#include <LinkModel/gap_0x8110_sub_0x270_post.data.inc.c>
+MObjSub **dLinkModel_gap_0x8110_sub_0x270_post[5] = {
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x8110_sub_0x5B0,
+	(MObjSub **)dLinkModel_gap_0x8110_sub_0x5C0,
 };
 
 /* u32 pointer array @ 0x84CC (3 entries) */

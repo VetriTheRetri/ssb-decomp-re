@@ -54,6 +54,8 @@ extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E0C[];
 extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E34[];
 extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E5C[];
 extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E84[];
+extern u8 dLuigiModel_gap_0x28E0_sub_0x390[];
+extern u32 dLuigiModel_gap_0x28E0_sub_0x394[];
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
@@ -303,8 +305,12 @@ DObjDesc dLuigiModel_JointTree[] = {
 
 /* Raw data from file offset 0x28E0 to 0x3590 (3248 bytes) */
 /* gap sub-block @ 0x28E0 (was gap+0x0, 20 bytes) */
-u8 dLuigiModel_gap_0x28E0[20] = {
-	#include <LuigiModel/gap_0x28E0.data.inc.c>
+AObjEvent32 *dLuigiModel_gap_0x28E0[5] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x390,
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x394,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x28F4 (was gap+0x14, 40 bytes) */
@@ -507,8 +513,11 @@ AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x360[1] = {
 };
 
 /* gap sub-block @ 0x2C44 (was gap+0x364, 16 bytes) */
-u8 dLuigiModel_gap_0x28E0_sub_0x364[16] = {
-	#include <LuigiModel/gap_0x28E0_sub_0x364.data.inc.c>
+AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x364[4] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0xC4,
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x134,
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x15C,
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x184,
 };
 
 /* gap sub-block @ 0x2C54 (was gap+0x374, 8 bytes) */
@@ -1665,8 +1674,13 @@ AObjEvent32 *dLuigiModel_gap_0x4E8C_sub_0x384[1] = {
 };
 
 /* gap sub-block @ 0x5214 (was gap+0x388, 24 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x388[24] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x388.data.inc.c>
+AObjEvent32 *dLuigiModel_gap_0x4E8C_sub_0x388[6] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x4E8C_sub_0xE8,
+	(AObjEvent32 *)dLuigiModel_gap_0x4E8C_sub_0x158,
+	(AObjEvent32 *)dLuigiModel_gap_0x4E8C_sub_0x180,
+	(AObjEvent32 *)dLuigiModel_gap_0x4E8C_sub_0x1A8,
+	(AObjEvent32 *)dLuigiModel_gap_0x4E8C_sub_0x1E0,
+	(AObjEvent32 *)dLuigiModel_gap_0x4E8C_sub_0x218,
 };
 
 /* gap sub-block @ 0x522C (was gap+0x3A0, 4 bytes) */
@@ -1717,8 +1731,9 @@ Gfx dLuigiModel_gap_0x4E8C_sub_0x534[20] = {
 };
 
 /* Raw tail after DL @ 0x5460 (8 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x534_post[8] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x534_post.data.inc.c>
+MObjSub **dLuigiModel_gap_0x4E8C_sub_0x534_post[2] = {
+	(MObjSub **)dLuigiModel_gap_0x4E8C_sub_0x654,
+	NULL,
 };
 
 /* gap sub-block @ 0x5468 (was gap+0x5DC, 88 bytes) */
@@ -1792,8 +1807,9 @@ Gfx dLuigiModel_gap_0x4E8C_sub_0x7C4[16] = {
 };
 
 /* Raw tail after DL @ 0x56D0 (8 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0x7C4_post[8] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x7C4_post.data.inc.c>
+MObjSub **dLuigiModel_gap_0x4E8C_sub_0x7C4_post[2] = {
+	(MObjSub **)dLuigiModel_gap_0x4E8C_sub_0x8C4,
+	NULL,
 };
 
 /* gap sub-block @ 0x56D8 (was gap+0x84C, 88 bytes) */
@@ -1941,8 +1957,9 @@ Gfx dLuigiModel_gap_0x4E8C_sub_0xD14[16] = {
 };
 
 /* Raw tail after DL @ 0x5C20 (8 bytes) */
-u8 dLuigiModel_gap_0x4E8C_sub_0xD14_post[8] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0xD14_post.data.inc.c>
+MObjSub **dLuigiModel_gap_0x4E8C_sub_0xD14_post[2] = {
+	(MObjSub **)dLuigiModel_gap_0x4E8C_sub_0xE14,
+	NULL,
 };
 
 /* gap sub-block @ 0x5C28 (was gap+0xD9C, 88 bytes) */

@@ -117,6 +117,19 @@ extern AObjEvent32 * dYoshiModel_gap_0x38F4_sub_0x728[];
 extern AObjEvent32 * dYoshiModel_gap_0x38F4_sub_0x72C[];
 extern AObjEvent32 * dYoshiModel_gap_0x38F4_sub_0x730[];
 extern AObjEvent32 * dYoshiModel_gap_0x38F4_sub_0x738[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6BC[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6C0[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6C4[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6C8[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6CC[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6D0[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6D4[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6D8[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6DC[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6E4[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6E8[];
+extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6EC[];
+extern u8 dYoshiModel_gap_0x6E70_sub_0x6F4[];
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* commonparts[0].p_mobjsubs target — per-joint MObjSub** table indexed
@@ -3239,8 +3252,27 @@ DObjDesc dYoshiModel_JointTree_0x6948[] = {
 
 /* Raw data from file offset 0x6E70 to 0x9518 (9896 bytes) */
 /* gap sub-block @ 0x6E70 (was gap+0x0, 80 bytes) */
-u8 dYoshiModel_gap_0x6E70[80] = {
-	#include <YoshiModel/gap_0x6E70.data.inc.c>
+AObjEvent32 **dYoshiModel_gap_0x6E70[20] = {
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6BC,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6C0,
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6C4,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6C8,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6CC,
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6D0,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6D4,
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6D8,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6DC,
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6E4,
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6E8,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6EC,
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6F4,
+	NULL,
 };
 
 /* gap sub-block @ 0x6EC0 (was gap+0x50, 140 bytes) */
@@ -4070,8 +4102,8 @@ Gfx dYoshiModel_gap_0x6E70_sub_0xEA0[128] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x8110 (4 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0xEA0_post[4] = {
-	#include <YoshiModel/gap_0x6E70_sub_0xEA0_post.data.inc.c>
+AObjEvent32 **dYoshiModel_gap_0x6E70_sub_0xEA0_post[1] = {
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x13BC,
 };
 
 /* gap sub-block @ 0x8114 (was gap+0x12A4, 56 bytes) */

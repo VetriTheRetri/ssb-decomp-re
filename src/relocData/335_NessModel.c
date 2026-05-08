@@ -44,6 +44,9 @@ extern MObjSub *dNessModel_gap_0x2C04_sub_0x8B4[];
 extern MObjSub *dNessModel_gap_0x2C04_sub_0x8BC[];
 extern MObjSub *dNessModel_gap_0x2C04_sub_0x88C[];
 extern MObjSub *dNessModel_gap_0x2C04_sub_0x89C[];
+extern MObjSub * dNessModel_Joint_0x0040_post_sub_0x658[];
+extern MObjSub * dNessModel_Joint_0x0040_post_sub_0x668[];
+extern u32 dNessModel_gap_0x553C_sub_0x2864[];
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dNessModel_JointVerts_Vtx[2] = {
@@ -51,8 +54,15 @@ Vtx dNessModel_JointVerts_Vtx[2] = {
 };
 
 /* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-u8 dNessModel_Joint_0x0020_post[32] = {
-	#include <NessModel/Joint_0x0020_post.data.inc.c>
+MObjSub **dNessModel_Joint_0x0020_post[8] = {
+	(MObjSub **)dNessModel_Joint_0x0040_post_sub_0x658,
+	NULL,
+	(MObjSub **)dNessModel_Joint_0x0040_post_sub_0x668,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* Raw data from file offset 0x40 to 0xE0 (160 bytes).
@@ -1963,8 +1973,9 @@ u8 dNessModel_gap_0x553C_sub_0x27EC[72] = {
 };
 
 /* gap sub-block @ 0x7D70 (was gap+0x2834, 8 bytes) */
-u8 dNessModel_gap_0x553C_sub_0x2834[8] = {
-	#include <NessModel/gap_0x553C_sub_0x2834.data.inc.c>
+AObjEvent32 *dNessModel_gap_0x553C_sub_0x2834[2] = {
+	NULL,
+	(AObjEvent32 *)dNessModel_gap_0x553C_sub_0x2864,
 };
 
 /* gap sub-block @ 0x7D78 (was gap+0x283C, 40 bytes) */

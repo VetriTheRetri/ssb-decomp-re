@@ -24,19 +24,39 @@ extern u16 dPurinModel_gap_0x6028_sub_0x880[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8A8[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8D0[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8F8[];
+extern MObjSub * dPurinModel_Joint_0x0100_post_sub_0x750[];
+extern MObjSub * dPurinModel_Joint_0x0100_post_sub_0x758[];
+extern MObjSub * dPurinModel_Joint_0x0100_post_sub_0x760[];
+extern AObjEvent32 * dPurinModel_gap_0x459C_sub_0x310[];
+extern u8 dPurinModel_gap_0x459C_sub_0x314[];
+extern u32 dPurinModel_gap_0x459C_sub_0x648[];
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dPurinModel_JointVerts_Vtx[2] = {
 	#include <PurinModel/JointVerts.vtx.inc.c>
 };
 
 /* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-u8 dPurinModel_Joint_0x0020_post[32] = {
-	#include <PurinModel/Joint_0x0020_post.data.inc.c>
+MObjSub **dPurinModel_Joint_0x0020_post[8] = {
+	NULL,
+	NULL,
+	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x750,
+	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x758,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* Raw data from file offset 0x0040 to 0x0060 (32 bytes) */
-u8 dPurinModel_Joint_0x0040_post[32] = {
-	#include <PurinModel/Joint_0x0040_post.data.inc.c>
+MObjSub **dPurinModel_Joint_0x0040_post[8] = {
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x760,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* u32 pointer array @ 0x60 (8 entries) */
@@ -1774,8 +1794,14 @@ DObjDesc dPurinModel_JointTree_0x40A0[] = {
 
 /* Raw data from file offset 0x459C to 0x4BF0 (1620 bytes) */
 /* gap sub-block @ 0x459C (was gap+0x0, 28 bytes) */
-u8 dPurinModel_gap_0x459C[28] = {
-	#include <PurinModel/gap_0x459C.data.inc.c>
+AObjEvent32 **dPurinModel_gap_0x459C[7] = {
+	(AObjEvent32 **)dPurinModel_gap_0x459C_sub_0x310,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dPurinModel_gap_0x459C_sub_0x314,
+	NULL,
 };
 
 /* gap sub-block @ 0x45B8 (was gap+0x1C, 92 bytes) */
@@ -2148,8 +2174,8 @@ Gfx dPurinModel_gap_0x459C_sub_0x4C4[38] = {
 };
 
 /* Raw tail after 1 DL(s) @ 0x4B90 (4 bytes) */
-u8 dPurinModel_gap_0x459C_sub_0x4C4_post[4] = {
-	#include <PurinModel/gap_0x459C_sub_0x4C4_post.data.inc.c>
+AObjEvent32 *dPurinModel_gap_0x459C_sub_0x4C4_post[1] = {
+	(AObjEvent32 *)dPurinModel_gap_0x459C_sub_0x648,
 };
 
 /* gap sub-block @ 0x4B94 (was gap+0x5F8, 40 bytes) */

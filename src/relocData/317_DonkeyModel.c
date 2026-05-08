@@ -97,6 +97,8 @@ extern u16 dDonkeyModel_palette_0xD0D8[];
 extern u16 dDonkeyModel_palette_0xD100[];
 extern u16 dDonkeyModel_palette_0xD128[];
 extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4A4[];
+extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4DC[];
+extern MObjSub **dDonkeyModel_gap_0x7390_sub_0x4E0[];
 extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4A8[];
 extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4C4[];
 extern MObjSub *dDonkeyModel_gap_0x7390_sub_0x570[];
@@ -202,6 +204,13 @@ extern AObjEvent32 * dDonkeyModel_gap_0x3E78_sub_0x610[];
 extern AObjEvent32 * dDonkeyModel_gap_0x3E78_sub_0x618[];
 extern AObjEvent32 * dDonkeyModel_gap_0x3E78_sub_0x61C[];
 extern AObjEvent32 * dDonkeyModel_gap_0x3E78_sub_0x620[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4BC[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4C0[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4C8[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4CC[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4D0[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4D4[];
+extern AObjEvent32 * dDonkeyModel_gap_0x7390_sub_0x4D8[];
 
 /* MObjSub-dispatch table at file 0x0000 (100 bytes, 25 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
@@ -3253,9 +3262,27 @@ DObjDesc dDonkeyModel_JointTree_0x6EC0[] = {
 };
 
 /* Raw data from file offset 0x7390 to 0xC0F8 (19816 bytes) */
-/* gap sub-block @ 0x7390 (was gap+0x0, 72 bytes) */
-u8 dDonkeyModel_gap_0x7390[72] = {
-	#include <DonkeyModel/gap_0x7390.data.inc.c>
+/* Master dispatch: per-joint AObjEvent32 *Y[] arrays for the
+ * second skeleton (referenced from JointTree_0x6EC0+0x4B0..) */
+AObjEvent32 **dDonkeyModel_gap_0x7390[18] = {
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4A8,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4BC,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4C0,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4C4,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4C8,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4CC,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4D0,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4D4,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4D8,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4DC,
+	NULL,
 };
 
 /* gap sub-block @ 0x73D8 (was gap+0x48, 52 bytes) */
@@ -3691,9 +3718,16 @@ AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4D8[1] = {
 	(AObjEvent32 *)dDonkeyModel_gap_0x7390_sub_0x424,
 };
 
-/* gap sub-block @ 0x786C (was gap+0x4DC, 8 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x4DC[8] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x4DC.data.inc.c>
+/* AObjEvent32 * slot @ 0x786C (was gap+0x4DC, 4 bytes) — single-entry
+ * anim chain pointing to the script at gap+0x3F0. */
+AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4DC[1] = {
+	(AObjEvent32 *)dDonkeyModel_gap_0x7390_sub_0x3F0,
+};
+
+/* MObjSub ** slot @ 0x7870 (was gap+0x4E0, 4 bytes) — single-entry
+ * MObjSub pointer-array pointer aimed at gap+0x570. */
+MObjSub **dDonkeyModel_gap_0x7390_sub_0x4E0[1] = {
+	(MObjSub **)dDonkeyModel_gap_0x7390_sub_0x570,
 };
 
 /* u32 pointer array @ 0x7874 (5 entries) */
@@ -3751,9 +3785,9 @@ Gfx dDonkeyModel_gap_0x7390_sub_0x658[37] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x658.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x7B10 (4 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x658_post[4] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x658_post.data.inc.c>
+/* Trailing AObjEvent32 ** slot after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0x658_post[1] = {
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x7B8,
 };
 
 /* gap sub-block @ 0x7B14 (was gap+0x784, 52 bytes) */
@@ -3835,9 +3869,11 @@ Gfx dDonkeyModel_gap_0x7390_sub_0x8F8[30] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x8F8.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x7D78 (12 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x8F8_post[12] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x8F8_post.data.inc.c>
+/* Trailing 3-slot AObjEvent32 ** array after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0x8F8_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0xA28,
 };
 
 /* gap sub-block @ 0x7D84 (was gap+0x9F4, 52 bytes) */
@@ -3919,9 +3955,9 @@ Gfx dDonkeyModel_gap_0x7390_sub_0xBA8[37] = {
 	#include <DonkeyModel/gap_0x7390_sub_0xBA8.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x8060 (4 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0xBA8_post[4] = {
-	#include <DonkeyModel/gap_0x7390_sub_0xBA8_post.data.inc.c>
+/* Trailing AObjEvent32 ** slot after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0xBA8_post[1] = {
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0xD08,
 };
 
 /* gap sub-block @ 0x8064 (was gap+0xCD4, 52 bytes) */
@@ -4003,9 +4039,11 @@ Gfx dDonkeyModel_gap_0x7390_sub_0xE48[30] = {
 	#include <DonkeyModel/gap_0x7390_sub_0xE48.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x82C8 (12 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0xE48_post[12] = {
-	#include <DonkeyModel/gap_0x7390_sub_0xE48_post.data.inc.c>
+/* Trailing 3-slot AObjEvent32 ** array after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0xE48_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0xF78,
 };
 
 /* gap sub-block @ 0x82D4 (was gap+0xF44, 52 bytes) */
@@ -4264,9 +4302,9 @@ Gfx dDonkeyModel_gap_0x7390_sub_0x16C8[123] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x16C8.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x8E30 (4 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x16C8_post[4] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x16C8_post.data.inc.c>
+/* Trailing AObjEvent32 ** slot after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0x16C8_post[1] = {
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x1B94,
 };
 
 /* gap sub-block @ 0x8E34 (was gap+0x1AA4, 48 bytes) */
@@ -4593,9 +4631,9 @@ Gfx dDonkeyModel_gap_0x7390_sub_0x2228[115] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x2228.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x9950 (4 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x2228_post[4] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x2228_post.data.inc.c>
+/* Trailing AObjEvent32 ** slot after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0x2228_post[1] = {
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x26B4,
 };
 
 /* gap sub-block @ 0x9954 (was gap+0x25C4, 48 bytes) */
@@ -4922,9 +4960,11 @@ Gfx dDonkeyModel_gap_0x7390_sub_0x2E28[122] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x2E28.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0xA588 (12 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x2E28_post[12] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x2E28_post.data.inc.c>
+/* Trailing 3-slot AObjEvent32 ** array after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0x2E28_post[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x32F4,
 };
 
 /* gap sub-block @ 0xA594 (was gap+0x3204, 48 bytes) */
@@ -5251,9 +5291,9 @@ Gfx dDonkeyModel_gap_0x7390_sub_0x3978[115] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x3978.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0xB0A0 (4 bytes) */
-u8 dDonkeyModel_gap_0x7390_sub_0x3978_post[4] = {
-	#include <DonkeyModel/gap_0x7390_sub_0x3978_post.data.inc.c>
+/* Trailing AObjEvent32 ** slot after Gfx DL */
+AObjEvent32 **dDonkeyModel_gap_0x7390_sub_0x3978_post[1] = {
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x3E04,
 };
 
 /* gap sub-block @ 0xB0A4 (was gap+0x3D14, 48 bytes) */

@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2046 / 2132** files at 100% (97.33% of bytes typed; 456,392 / 17,082,000 bytes still untyped across 86 files).
+Overall: **2047 / 2132** files at 100% (97.33% of bytes typed; 456,256 / 17,082,000 bytes still untyped across 85 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -118,7 +118,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
 | 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
-| 317 | DonkeyModel | 54784 | 136 | 10 | 99.75% |
 | 350 | CaptainSpecial2 | 26080 | 48 | 1 | 99.82% |
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
 | 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |

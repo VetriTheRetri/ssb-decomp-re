@@ -1774,7 +1774,7 @@ u16 dFoxModel_gap_0x7528_sub_0x80[20] = {
 };
 
 /* Texture data @ 0x75D0 (568 bytes) */
-/* @tex fmt=CI4 dim=46x41 */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dFoxModel_Tex_0x75D0[568] = {
 	#include <FoxModel/Tex_0x75D0.tex.inc.c>
 };
@@ -1818,7 +1818,7 @@ u16 dFoxModel_gap_0x7828_sub_0x188[20] = {
 };
 
 /* Texture data @ 0x79D8 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dFoxModel_Tex_0x79D8[256] = {
 	#include <FoxModel/Tex_0x79D8.tex.inc.c>
 };
@@ -1826,7 +1826,7 @@ u8 dFoxModel_Tex_0x79D8[256] = {
 PAD(8);
 
 /* Texture data @ 0x7AE0 (72 bytes) */
-/* @tex fmt=CI4 dim=8x8 lut=dFoxModel_Lut_0x7508_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dFoxModel_Lut_0x7508_palette */
 u8 dFoxModel_Tex_0x7AE0[72] = {
 	#include <FoxModel/Tex_0x7AE0.tex.inc.c>
 };

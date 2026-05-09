@@ -17,7 +17,7 @@ u16 dStageJungleFile2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0030 (1032 bytes) */
-/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x0008_palette */
+/* @tex fmt=CI4 dim=32x64 lut=dStageJungleFile2_Lut_0x0008_palette */
 u8 dStageJungleFile2_Tex_0x0030[1032] = {
 	#include <StageJungleFile2/Tex_0x0030.tex.inc.c>
 };
@@ -30,7 +30,7 @@ u16 dStageJungleFile2_Lut_0x0438_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0460 (520 bytes) */
-/* @tex fmt=CI4 dim=128x32 lut=dStageJungleFile2_Lut_0x0438_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageJungleFile2_Lut_0x0438_palette */
 u8 dStageJungleFile2_Tex_0x0460[520] = {
 	#include <StageJungleFile2/Tex_0x0460.tex.inc.c>
 };
@@ -43,7 +43,7 @@ u16 dStageJungleFile2_Lut_0x0668_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0690 (1032 bytes) */
-/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x0668_palette */
+/* @tex fmt=CI4 dim=32x64 lut=dStageJungleFile2_Lut_0x0668_palette */
 u8 dStageJungleFile2_Tex_0x0690[1024] = {
 	#include <StageJungleFile2/Tex_0x0690.tex.inc.c>
 };
@@ -58,7 +58,7 @@ u16 dStageJungleFile2_Lut_0x0A98_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0AC0 (2056 bytes) */
-/* @tex fmt=CI4 dim=320x64 lut=dStageJungleFile2_Lut_0x0A98_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x0A98_palette */
 u8 dStageJungleFile2_Tex_0x0AC0[2048] = {
 	#include <StageJungleFile2/Tex_0x0AC0.tex.inc.c>
 };
@@ -85,6 +85,7 @@ u16 dStageJungleFile2_Lut_0x1AF8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1B20 (2056 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x1AF8_palette */
 u8 dStageJungleFile2_Tex_0x1B20[2056] = {
 	#include <StageJungleFile2/Tex_0x1B20.tex.inc.c>
 };
@@ -97,6 +98,7 @@ u16 dStageJungleFile2_Lut_0x2328_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2350 (2056 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x2328_palette */
 u8 dStageJungleFile2_Tex_0x2350[2056] = {
 	#include <StageJungleFile2/Tex_0x2350.tex.inc.c>
 };
@@ -109,7 +111,7 @@ u16 dStageJungleFile2_Lut_0x2B58_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2B80 (520 bytes) */
-/* @tex fmt=CI4 dim=64x144 lut=dStageJungleFile2_Lut_0x2B58_palette */
+/* @tex fmt=CI4 dim=64x16 lut=dStageJungleFile2_Lut_0x2B58_palette */
 u8 dStageJungleFile2_Tex_0x2B80[512] = {
 	#include <StageJungleFile2/Tex_0x2B80.tex.inc.c>
 };
@@ -154,7 +156,7 @@ u16 dStageJungleFile2_Lut_0x3DE8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3E10 (136 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dStageJungleFile2_Lut_0x3DE8_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dStageJungleFile2_Lut_0x3DE8_palette */
 u8 dStageJungleFile2_Tex_0x3E10[128] = {
 	#include <StageJungleFile2/Tex_0x3E10.tex.inc.c>
 };
@@ -169,7 +171,7 @@ u16 dStageJungleFile2_Lut_0x3E98_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x3EC0 (2056 bytes) */
-/* @tex fmt=CI4 dim=128x64 lut=dStageJungleFile2_Lut_0x3E98_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x3E98_palette */
 u8 dStageJungleFile2_Tex_0x3EC0[2048] = {
 	#include <StageJungleFile2/Tex_0x3EC0.tex.inc.c>
 };
@@ -222,7 +224,7 @@ u16 dStageJungleFile2_Lut_0x5958_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x5980 (520 bytes) */
-/* @tex fmt=CI4 dim=64x32 lut=dStageJungleFile2_Lut_0x5958_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageJungleFile2_Lut_0x5958_palette */
 u8 dStageJungleFile2_Tex_0x5980[512] = {
 	#include <StageJungleFile2/Tex_0x5980.tex.inc.c>
 };
@@ -237,7 +239,7 @@ u16 dStageJungleFile2_Lut_0x5B88_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x5BB0 (264 bytes) */
-/* @tex fmt=CI4 dim=160x32 lut=dStageJungleFile2_Lut_0x5B88_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dStageJungleFile2_Lut_0x5B88_palette */
 u8 dStageJungleFile2_Tex_0x5BB0[256] = {
 	#include <StageJungleFile2/Tex_0x5BB0.tex.inc.c>
 };
@@ -252,7 +254,7 @@ u16 dStageJungleFile2_Lut_0x5CB8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x5CE0 (2056 bytes) */
-/* @tex fmt=CI4 dim=256x64 lut=dStageJungleFile2_Lut_0x5CB8_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x5CB8_palette */
 u8 dStageJungleFile2_Tex_0x5CE0[2048] = {
 	#include <StageJungleFile2/Tex_0x5CE0.tex.inc.c>
 };
@@ -267,7 +269,7 @@ u16 dStageJungleFile2_Lut_0x64E8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x6510 (2056 bytes) */
-/* @tex fmt=CI4 dim=256x64 lut=dStageJungleFile2_Lut_0x64E8_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x64E8_palette */
 u8 dStageJungleFile2_Tex_0x6510[2048] = {
 	#include <StageJungleFile2/Tex_0x6510.tex.inc.c>
 };
@@ -282,7 +284,7 @@ u16 dStageJungleFile2_Lut_0x6D18_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x6D40 (2048 bytes) */
-/* @tex fmt=CI4 dim=256x64 lut=dStageJungleFile2_Lut_0x6D18_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile2_Lut_0x6D18_palette */
 u8 dStageJungleFile2_Tex_0x6D40[2048] = {
 	#include <StageJungleFile2/Tex_0x6D40.tex.inc.c>
 };

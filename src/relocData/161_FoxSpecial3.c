@@ -17,7 +17,7 @@ u16 dFoxSpecial3_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0030 to 0x00B8 (136 bytes) */
-/* @tex fmt=CI4 dim=8x64 lut=dFoxSpecial3_Lut_0x0008_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dFoxSpecial3_Lut_0x0008_palette */
 u8 dFoxSpecial3_Tex_0x0030[136] = {
 	#include <FoxSpecial3/Tex_0x0030.tex.inc.c>
 };
@@ -30,7 +30,7 @@ u16 dFoxSpecial3_Lut_0x00B8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x00E0 to 0x0168 (136 bytes) */
-/* @tex fmt=CI4 dim=96x16 lut=dFoxSpecial3_Lut_0x00B8_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dFoxSpecial3_Lut_0x00B8_palette */
 u8 dFoxSpecial3_Tex_0x00E0[128] = {
 	#include <FoxSpecial3/Tex_0x00E0.tex.inc.c>
 };
@@ -120,7 +120,7 @@ u16 dFoxSpecial3_Lut_0x0798_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x07C0 to 0x0808 (72 bytes) */
-/* @tex fmt=CI4 dim=32x8 lut=dFoxSpecial3_Lut_0x0798_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Lut_0x0798_palette */
 u8 dFoxSpecial3_Tex_0x07C0[64] = {
 	#include <FoxSpecial3/Tex_0x07C0.tex.inc.c>
 };
@@ -163,7 +163,7 @@ u16 dFoxSpecial3_Lut_0x0998_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x09C0 to 0x0AC8 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dFoxSpecial3_Lut_0x0998_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dFoxSpecial3_Lut_0x0998_palette */
 u8 dFoxSpecial3_Tex_0x09C0[256] = {
 	#include <FoxSpecial3/Tex_0x09C0.tex.inc.c>
 };
@@ -178,7 +178,7 @@ u16 dFoxSpecial3_Lut_0x0AC8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0AF0 to 0x0BF8 (264 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dFoxSpecial3_Lut_0x0AC8_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dFoxSpecial3_Lut_0x0AC8_palette */
 u8 dFoxSpecial3_Tex_0x0AF0[256] = {
 	#include <FoxSpecial3/Tex_0x0AF0.tex.inc.c>
 };
@@ -221,7 +221,7 @@ u16 dFoxSpecial3_Lut_0x1058_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x1080 to 0x1178 (248 bytes) */
-/* @tex fmt=CI4 dim=192x8 lut=dFoxSpecial3_Lut_0x1058_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Lut_0x1058_palette */
 u8 dFoxSpecial3_Tex_0x1080[248] = {
 	#include <FoxSpecial3/Tex_0x1080.tex.inc.c>
 };
@@ -234,7 +234,7 @@ u16 dFoxSpecial3_Lut_0x1178_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x11A0 to 0x11E0 (64 bytes) */
-/* @tex fmt=CI4 dim=8x8 lut=dFoxSpecial3_Lut_0x1178_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Lut_0x1178_palette */
 u8 dFoxSpecial3_Tex_0x11A0[64] = {
 	#include <FoxSpecial3/Tex_0x11A0.tex.inc.c>
 };

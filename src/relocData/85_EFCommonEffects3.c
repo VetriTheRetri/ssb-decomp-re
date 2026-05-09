@@ -32,7 +32,7 @@ extern AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 256 bytes) */
-/* @tex fmt=IA8 dim=16x26 */
+/* @tex fmt=IA8 dim=16x16 */
 u8 dEFCommonEffects3_Tex_0x0008[256] = {
 	#include <EFCommonEffects3/Tex_0x0008.tex.inc.c>
 };

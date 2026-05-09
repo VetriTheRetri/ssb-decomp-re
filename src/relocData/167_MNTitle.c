@@ -2189,7 +2189,7 @@ u16 dMNTitle_gap_0x26370_sub_0x7F8[20] = {
 };
 
 /* gap sub-block @ 0x26B90 (was gap+0x820, 1032 bytes) */
-/* @tex fmt=IA8 dim=32x64 */
+/* @tex fmt=IA8 dim=16x64 */
 u8 dMNTitle_Tex_0x26B90[1032] = {
 	#include <MNTitle/Tex_0x26B90.tex.inc.c>
 };
@@ -2225,7 +2225,7 @@ u8 dMNTitle_gap_0x26370_sub_0x2050[1032] = {
 };
 
 /* gap sub-block @ 0x287C8 (was gap+0x2458, 16 bytes) */
-/* @tex fmt=CI4 dim=32x2 lut=dMNTitle_gap_0x26370_sub_0x7F8 */
+/* @tex fmt=CI4 dim=16x2 lut=dMNTitle_gap_0x26370_sub_0x7F8 */
 u8 dMNTitle_Tex_0x287C8[16] = {
 	#include <MNTitle/Tex_0x287C8.tex.inc.c>
 };

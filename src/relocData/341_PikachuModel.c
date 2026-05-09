@@ -3676,6 +3676,7 @@ u16 dPikachuModel_gap_0x59B8_sub_0x1970[20] = {
 
 /* Texture data @ 0x7350 (528 bytes) */
 /* Texture: 0x7350 (CI4 — trailing 0x78 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dPikachuModel_Tex_0x7350[408] = {
 	#include <PikachuModel/Tex_0x7350.tex.inc.c>
 };
@@ -3694,6 +3695,7 @@ u16 dPikachuModel_palette_0x7538[20] = {
 
 /* Texture data @ 0x7560 (2968 bytes) */
 /* Texture: 0x7560 (CI4 — trailing 0x28 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=96x61 lut=dPikachuModel_Tex_0x7560 */
 u8 dPikachuModel_Tex_0x7560[2928] = {
 	#include <PikachuModel/Tex_0x7560.tex.inc.c>
 };
@@ -3703,7 +3705,7 @@ u16 dPikachuModel_palette_0x80D0[20] = {
 };
 
 /* Texture data @ 0x80F8 (4904 bytes) */
-/* @tex fmt=CI4 dim=16x9 */
+/* @tex fmt=CI4 dim=16x1 */
 u8 dPikachuModel_Tex_0x80F8[4904] = {
 	#include <PikachuModel/Tex_0x80F8.tex.inc.c>
 };

@@ -22,6 +22,7 @@ u16 dLinkSpecial2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0030 to 0x0130 (256 bytes) */
+/* @tex fmt=CI4 dim=16x32 lut=dLinkSpecial2_Lut_0x0008_palette */
 u8 dLinkSpecial2_Tex_0x0030[256] = {
 	#include <LinkSpecial2/Tex_0x0030.tex.inc.c>
 };
@@ -98,7 +99,7 @@ u16 dLinkSpecial2_Lut_0x0488_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x04B0 to 0x04F0 (64 bytes) */
-/* @tex fmt=CI4 dim=192x8 lut=dLinkSpecial2_Lut_0x0488_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dLinkSpecial2_Lut_0x0488_palette */
 u8 dLinkSpecial2_Tex_0x04B0[64] = {
 	#include <LinkSpecial2/Tex_0x04B0.tex.inc.c>
 };

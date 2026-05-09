@@ -208,7 +208,7 @@ u8 dPikachuSpecial2_gap_0x0988_sub_0x410[1032] = {
 };
 
 /* Raw data from file offset 0x11A0 to 0x13A0 (512 bytes) */
-/* @tex fmt=CI4 dim=64x64 lut=dPikachuSpecial2_Lut_0x0968_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dPikachuSpecial2_Lut_0x0968_palette */
 u8 dPikachuSpecial2_Tex_0x11A0[512] = {
 	#include <PikachuSpecial2/Tex_0x11A0.tex.inc.c>
 };

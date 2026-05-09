@@ -57,6 +57,8 @@ extern MObjSub *dMarioModel_Joint_0x0040_post_sub_0x750[];
 /* Forward decls — palette frames split out of Tex_0x65F0 (defined later
  * at file offsets 0x6BD8/0x6C00/0x6C28/0x6C50) referenced by gap_0x26D0_sub_0x3A8. */
 extern u8 dMarioModel_Tex_0x65F0[];
+extern u8 dMarioModel_Tex_0x67A0[];
+extern u8 dMarioModel_Tex_0x69D0[];
 extern u8 dMarioModel_Tex_0x6C78[];
 extern u8 dMarioModel_Tex_0x6D68[];
 extern u8 dMarioModel_Tex_0x6F98[];
@@ -141,9 +143,7 @@ u16 *dMarioModel_Joint_0x0040_post_sub_0x24[5] = {
  * gap_0x26D0_sub_0x398 sprite table. */
 u8 *dMarioModel_Joint_0x0040_post_sub_0x38[4] = {
 	dMarioModel_Tex_0x6F98,
-	dMarioModel_Tex_0x6D68,
-	&dMarioModel_Tex_0x65F0[0x1B0],
-	&dMarioModel_Tex_0x65F0[0x3E0],
+	dMarioModel_Tex_0x6D68,dMarioModel_Tex_0x67A0,dMarioModel_Tex_0x69D0,
 };
 
 /* Palette table B @ 0x0088 — 5 RGBA5551 palette frames (one shared with
@@ -1204,9 +1204,7 @@ u16 *dMarioModel_gap_0x26D0_sub_0x384[5] = {
  * last two are sub-regions of Tex_0x65F0. */
 u8 *dMarioModel_gap_0x26D0_sub_0x398[4] = {
 	(u8 *)dMarioModel_Tex_0x6F98,
-	(u8 *)dMarioModel_Tex_0x6D68,
-	(u8 *)&dMarioModel_Tex_0x65F0[0x1B0],
-	(u8 *)&dMarioModel_Tex_0x65F0[0x3E0],
+	(u8 *)dMarioModel_Tex_0x6D68,dMarioModel_Tex_0x67A0,dMarioModel_Tex_0x69D0,
 };
 
 /* MObjSub.palettes table @ 0x2A78 — referenced by sub_0x5A0+0x2C.
@@ -2468,8 +2466,19 @@ u16 dMarioModel_gap_0x4A60_sub_0x1B68[20] = {
 /* Texture data @ 0x65F0 (1512 bytes — CI4). The original 1672-byte chunk
  * was split: 1512 bytes of texture proper, then four 40-byte RGBA5551
  * palette frames (sub_0x3A8 cycles them). */
-u8 dMarioModel_Tex_0x65F0[1512] = {
+/* @tex fmt=CI4 dim=32x24 */
+u8 dMarioModel_Tex_0x65F0[432] = {
 	#include <MarioModel/Tex_0x65F0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dMarioModel_Tex_0x67A0[560] = {
+	#include <MarioModel/Tex_0x67A0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dMarioModel_Tex_0x69D0[520] = {
+	#include <MarioModel/Tex_0x69D0.tex.inc.c>
 };
 
 /* RGBA5551 palette frames embedded after Tex_0x65F0. Each is 16 colors
@@ -2500,6 +2509,7 @@ u8 dMarioModel_Tex_0x6C78[240] = {
 /* CI4 sprite frame @ 0x6D68 (520 bytes) — referenced as
  * gap_0x26D0_sub_0x398[1]. Split out of the original Tex_0x6C78 region
  * so the chain pointer resolves to a typed symbol. */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dMarioModel_Tex_0x6D68[520] = {
 	#include <MarioModel/Tex_0x6D68.tex.inc.c>
 };
@@ -2515,6 +2525,7 @@ PAD(8);
 /* CI4 texture frame @ file 0x6F98 (528 bytes = 32x32 CI4 + 16-byte pad)
  * referenced by MObjSub.sprites tables (gap_0x26D0_sub_0x398[0] and
  * Joint_0x0040_post_sub_0x38[0]). */
+/* @tex fmt=CI4 dim=32x33 */
 u8 dMarioModel_Tex_0x6F98[528] = {
 	#include <MarioModel/Tex_0x6F98.tex.inc.c>
 };

@@ -24,7 +24,7 @@ u16 dDonkeySpecial2_Lut_0x0030_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x0058 to 0x0260 (520 bytes) */
-/* @tex fmt=CI4 dim=64x32 lut=dDonkeySpecial2_Lut_0x0008_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dDonkeySpecial2_Lut_0x0008_palette */
 u8 dDonkeySpecial2_Tex_0x0058[512] = {
 	#include <DonkeySpecial2/Tex_0x0058.tex.inc.c>
 };

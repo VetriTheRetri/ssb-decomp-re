@@ -2815,59 +2815,73 @@ PAD(8);
  * +0x698/+0xAA0/+0xCA8) and JP (+0x18/+0x420/+0x628/+0xA30/+0xC38/+0x1040/
  * +0x1068) offsets gives 13 contiguous typed blocks. */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB5E8_palette */
-u8 dLinkModel_Tex_0xB610[24] = {
+u8 dLinkModel_Tex_0xB610[128] = {
 	#include <LinkModel/Tex_0xB610.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_B610_80_jp[8] = { 0x11, 0x11, 0x11, 0x7A, 0x22, 0x52, 0x2D, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xB628[112] = {
-	#include <LinkModel/Tex_0xB628.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xB698[920] = {
+/* @tex fmt=CI4 dim=64x32 */
+u8 dLinkModel_Tex_0xB698[1024] = {
 	#include <LinkModel/Tex_0xB698.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_B698_400_jp[8] = { 0x22, 0x22, 0x22, 0x5A, 0x7A, 0x55, 0x2D, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xBA30[112] = {
-	#include <LinkModel/Tex_0xBA30.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xBAA0[408] = {
+/* @tex fmt=CI4 dim=32x32 */
+u8 dLinkModel_Tex_0xBAA0[512] = {
 	#include <LinkModel/Tex_0xBAA0.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_BAA0_200_jp[8] = { 0xDD, 0xDD, 0xD7, 0x11, 0x75, 0x52, 0x22, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xBC38[112] = {
-	#include <LinkModel/Tex_0xBC38.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xBCA8[920] = {
+/* @tex fmt=CI4 dim=64x32 */
+u8 dLinkModel_Tex_0xBCA8[1024] = {
 	#include <LinkModel/Tex_0xBCA8.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_BCA8_400_jp[8] = { 0x11, 0x11, 0x11, 0x75, 0x55, 0x55, 0x2D, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xC040[112] = {
-	#include <LinkModel/Tex_0xC040.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xC0B0[408] = {
+/* @tex fmt=CI4 dim=32x32 */
+u8 dLinkModel_Tex_0xC0B0[512] = {
 	#include <LinkModel/Tex_0xC0B0.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_C0B0_200_jp[8] = { 0x88, 0x88, 0x27, 0x7A, 0x22, 0x52, 0x2D, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xC248[112] = {
-	#include <LinkModel/Tex_0xC248.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xC2B8[920] = {
+/* @tex fmt=CI4 dim=64x32 */
+u8 dLinkModel_Tex_0xC2B8[1024] = {
 	#include <LinkModel/Tex_0xC2B8.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_C2B8_400_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xD2, 0x7B, 0x88 };
+#else
+PAD(8);
+#endif
 
 /* JP-side palette frame at file 0xC650 (40 bytes = 20 colors), referenced
  * via Palettes_0x0094 and several DL bindings. */
-u16 dLinkModel_palette_0xC650[20] = {
-	#include <LinkModel/palette_0xC650.palette.inc.c>
-};
 
-u8 dLinkModel_Tex_0xC678[72] = {
-	#include <LinkModel/Tex_0xC678.tex.inc.c>
-};
 
 /* Palette: Lut_0xC6C0 @ 0xC6C0 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xC6C0_palette[16] = {
@@ -2882,7 +2896,7 @@ PAD(8);
 #endif
 
 /* gap sub-block @ 0xC6E8 (was gap+0x8, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dLinkModel_Tex_0xC6E8[520] = {
 	#include <LinkModel/Tex_0xC6E8.tex.inc.c>
 };
@@ -2988,21 +3002,17 @@ PAD(8);
 /* Texture: 0xCF18 (CI4) — 24 bytes texture, 88 bytes trailing palette frames
  * (reachable via JP chain pointers as palette data). */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB4B8_palette */
-u8 dLinkModel_Tex_0xCF18[24] = {
+u8 dLinkModel_Tex_0xCF18[128] = {
 	#include <LinkModel/Tex_0xCF18.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_CF18_80_jp[8] = { 0x44, 0x46, 0x66, 0x77, 0x76, 0x8C, 0xDB, 0x86 };
+#else
+PAD(8);
+#endif
 
-u16 dLinkModel_palette_0xCF30[20] = {
-	#include <LinkModel/palette_0xCF30.palette.inc.c>
-};
 
-u16 dLinkModel_palette_0xCF58[20] = {
-	#include <LinkModel/palette_0xCF58.palette.inc.c>
-};
 
-u16 dLinkModel_palette_0xCF80[16] = {
-	#include <LinkModel/palette_0xCF80.palette.inc.c>
-};
 
 u16 dLinkModel_palette_0xCFA0[20] = {
 	#include <LinkModel/palette_0xCFA0.palette.inc.c>
@@ -3014,21 +3024,17 @@ u16 dLinkModel_palette_0xCFC8[20] = {
 
 /* Texture: 0xCFF0 (CI4) — 152 bytes texture, 112 bytes trailing palette frames */
 /* @tex fmt=CI4 dim=16x32 */
-u8 dLinkModel_Tex_0xCFF0[152] = {
+u8 dLinkModel_Tex_0xCFF0[256] = {
 	#include <LinkModel/Tex_0xCFF0.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_CFF0_100_jp[8] = { 0x44, 0x46, 0x66, 0x77, 0x76, 0x8C, 0xDB, 0x86 };
+#else
+PAD(8);
+#endif
 
-u16 dLinkModel_palette_0xD088[20] = {
-	#include <LinkModel/palette_0xD088.palette.inc.c>
-};
 
-u16 dLinkModel_palette_0xD0B0[20] = {
-	#include <LinkModel/palette_0xD0B0.palette.inc.c>
-};
 
-u16 dLinkModel_palette_0xD0D8[16] = {
-	#include <LinkModel/palette_0xD0D8.palette.inc.c>
-};
 
 u16 dLinkModel_palette_0xD0F8[20] = {
 	#include <LinkModel/palette_0xD0F8.palette.inc.c>
@@ -3042,29 +3048,37 @@ u16 dLinkModel_palette_0xD120[20] = {
  * referenced by sprite pointer arrays / DL bindings (US +0x108/+0x310;
  * JP +0x98/+0x2A0/+0x4A8). */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
-u8 dLinkModel_Tex_0xD148[152] = {
+u8 dLinkModel_Tex_0xD148[256] = {
 	#include <LinkModel/Tex_0xD148.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_D148_100_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xD1E0[112] = {
-	#include <LinkModel/Tex_0xD1E0.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xD250[408] = {
+/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xC6C0_palette */
+u8 dLinkModel_Tex_0xD250[512] = {
 	#include <LinkModel/Tex_0xD250.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_D250_200_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xD3E8[112] = {
-	#include <LinkModel/Tex_0xD3E8.tex.inc.c>
-};
 
-u8 dLinkModel_Tex_0xD458[408] = {
+/* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xC6C0_palette */
+u8 dLinkModel_Tex_0xD458[512] = {
 	#include <LinkModel/Tex_0xD458.tex.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_D458_200_jp[8] = { 0xFF, 0xFF, 0xFE, 0xA8, 0x74, 0x32, 0x23, 0x34 };
+#else
+PAD(8);
+#endif
 
-u8 dLinkModel_Tex_0xD5F0[112] = {
-	#include <LinkModel/Tex_0xD5F0.tex.inc.c>
-};
 
 /* Texture data @ 0xD660 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */

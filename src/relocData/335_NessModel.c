@@ -1840,17 +1840,17 @@ u8 dNessModel_gap_0x553C_sub_0x1854_post[16] = {
 	#include <NessModel/gap_0x553C_sub_0x1854_post.data.inc.c>
 };
 
-/* @tex fmt=IA8 */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dNessModel_Tex_0x6EE8[1032] = {
 	#include <NessModel/Tex_0x6EE8.tex.inc.c>
 };
 
-/* @tex fmt=IA8 */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dNessModel_Tex_0x72F0[1032] = {
 	#include <NessModel/Tex_0x72F0.tex.inc.c>
 };
 
-/* @tex fmt=IA8 */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dNessModel_Tex_0x76F8[1024] = {
 	#include <NessModel/Tex_0x76F8.tex.inc.c>
 };
@@ -2273,6 +2273,7 @@ u16 dNessModel_palette_0xACD8[20] = {
 
 /* Texture data @ 0xAD00 (304 bytes) */
 /* Texture: 0xAD00 (CI4 — trailing 0x28 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dNessModel_Tex_0xAD00[264] = {
 	#include <NessModel/Tex_0xAD00.tex.inc.c>
 };
@@ -2289,13 +2290,13 @@ u8 dNessModel_Tex_0xAE30[256] = {
 PAD(8);
 
 /* Texture data @ 0xAF38 (2672 bytes) */
-/* @tex fmt=CI4 dim=8x8 */
+/* @tex fmt=CI4 dim=32x167 */
 u8 dNessModel_Tex_0xAF38[2672] = {
 	#include <NessModel/Tex_0xAF38.tex.inc.c>
 };
 
 /* Texture data @ 0xB9A8 (72 bytes) */
-/* @tex fmt=CI4 dim=8x8 lut=dNessModel_Lut_0xC060_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dNessModel_Lut_0xC060_palette */
 u8 dNessModel_Tex_0xB9A8[72] = {
 	#include <NessModel/Tex_0xB9A8.tex.inc.c>
 };
@@ -2308,13 +2309,14 @@ u16 dNessModel_Lut_0xB9F0_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0xBA18 (824 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dNessModel_Lut_0xB9F0_palette */
+/* @tex fmt=CI4 dim=16x32 lut=dNessModel_Lut_0xB9F0_palette */
 u8 dNessModel_Tex_0xBA18[824] = {
 	#include <NessModel/Tex_0xBA18.tex.inc.c>
 };
 
 /* Texture data @ 0xBD50 (152 bytes) */
 /* Texture: 0xBD50 (CI4 — trailing 0x50 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x8 lut=dNessModel_Lut_0xC060_palette */
 u8 dNessModel_Tex_0xBD50[72] = {
 	#include <NessModel/Tex_0xBD50.tex.inc.c>
 };
@@ -2328,7 +2330,7 @@ u16 dNessModel_palette_0xBDC0[20] = {
 };
 
 /* Texture data @ 0xBDE8 (632 bytes) */
-/* @tex fmt=CI4 dim=8x16 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dNessModel_Tex_0xBDE8[632] = {
 	#include <NessModel/Tex_0xBDE8.tex.inc.c>
 };

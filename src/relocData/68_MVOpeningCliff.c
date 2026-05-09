@@ -35,7 +35,7 @@ u16 dMVOpeningCliff_Lut13_0x0098[20] = {
 };
 
 /* Texture data @ 0x00C0 (2056 bytes) */
-/* @tex fmt=CI4 dim=128x64 lut=dMVOpeningCliff_Lut12_0x0008 */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_Lut12_0x0008 */
 u8 dMVOpeningCliff_Tex_0x00C0[2048] = {
 	#include <MVOpeningCliff/Tex_0x00C0.tex.inc.c>
 };
@@ -43,7 +43,7 @@ u8 dMVOpeningCliff_Tex_0x00C0[2048] = {
 PAD(8);
 
 /* Texture data @ 0x08C8 (2056 bytes) */
-/* @tex fmt=CI4 dim=384x640 lut=dMVOpeningCliff_Lut12_0x0028 */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_Lut12_0x0028 */
 u8 dMVOpeningCliff_Tex_0x08C8[2048] = {
 	#include <MVOpeningCliff/Tex_0x08C8.tex.inc.c>
 };
@@ -51,7 +51,7 @@ u8 dMVOpeningCliff_Tex_0x08C8[2048] = {
 PAD(8);
 
 /* Texture data @ 0x10D0 (2056 bytes) */
-/* @tex fmt=CI4 dim=128x512 lut=dMVOpeningCliff_Lut13_0x0048 */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_Lut13_0x0048 */
 u8 dMVOpeningCliff_Tex_0x10D0[2048] = {
 	#include <MVOpeningCliff/Tex_0x10D0.tex.inc.c>
 };
@@ -59,7 +59,7 @@ u8 dMVOpeningCliff_Tex_0x10D0[2048] = {
 PAD(8);
 
 /* Texture data @ 0x18D8 (2056 bytes) */
-/* @tex fmt=CI4 dim=192x64 lut=dMVOpeningCliff_Lut15_0x0070 */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_Lut15_0x0070 */
 u8 dMVOpeningCliff_Tex_0x18D8[2048] = {
 	#include <MVOpeningCliff/Tex_0x18D8.tex.inc.c>
 };
@@ -67,7 +67,7 @@ u8 dMVOpeningCliff_Tex_0x18D8[2048] = {
 PAD(8);
 
 /* Texture data @ 0x20E0 (512 bytes) */
-/* @tex fmt=CI4 dim=256x256 lut=dMVOpeningCliff_Lut13_0x0098 */
+/* @tex fmt=CI4 dim=32x32 lut=dMVOpeningCliff_Lut13_0x0098 */
 u8 dMVOpeningCliff_Tex_0x20E0[512] = {
 	#include <MVOpeningCliff/Tex_0x20E0.tex.inc.c>
 };

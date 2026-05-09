@@ -20,7 +20,7 @@ extern MObjSub *dBonus2Common_gap_0x4818_sub_0x88[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
-/* @tex fmt=RGBA16 dim=128x32 */
+/* @tex fmt=RGBA16 dim=64x32 */
 u8 dBonus2Common_Tex_0x0008[4104] = {
 	#include <Bonus2Common/Tex_0x0008.tex.inc.c>
 };
@@ -32,7 +32,7 @@ u8 dBonus2Common_Tex_0x1010[2056] = {
 };
 
 /* gap sub-block @ 0x1818 (was gap+0x1818, 2056 bytes) */
-/* @tex fmt=RGBA16 dim=64x64 */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dBonus2Common_Tex_0x1818[2056] = {
 	#include <Bonus2Common/Tex_0x1818.tex.inc.c>
 };

@@ -16,7 +16,7 @@ u16 dStageHyruleFile2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0030 (2056 bytes) */
-/* @tex fmt=CI4 dim=64x576 lut=dStageHyruleFile2_Lut_0x0008_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageHyruleFile2_Lut_0x0008_palette */
 u8 dStageHyruleFile2_Tex_0x0030[2048] = {
 	#include <StageHyruleFile2/Tex_0x0030.tex.inc.c>
 };
@@ -31,7 +31,7 @@ u16 dStageHyruleFile2_Lut_0x0838_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0860 (1032 bytes) */
-/* @tex fmt=CI4 dim=192x32 lut=dStageHyruleFile2_Lut_0x0838_palette */
+/* @tex fmt=CI4 dim=64x32 lut=dStageHyruleFile2_Lut_0x0838_palette */
 u8 dStageHyruleFile2_Tex_0x0860[1024] = {
 	#include <StageHyruleFile2/Tex_0x0860.tex.inc.c>
 };
@@ -46,7 +46,7 @@ u16 dStageHyruleFile2_Lut_0x0C68_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0C90 (520 bytes) */
-/* @tex fmt=CI4 dim=128x32 lut=dStageHyruleFile2_Lut_0x0C68_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageHyruleFile2_Lut_0x0C68_palette */
 u8 dStageHyruleFile2_Tex_0x0C90[512] = {
 	#include <StageHyruleFile2/Tex_0x0C90.tex.inc.c>
 };
@@ -61,7 +61,7 @@ u16 dStageHyruleFile2_Lut_0x0E98_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0EC0 (2056 bytes) */
-/* @tex fmt=CI4 dim=512x64 lut=dStageHyruleFile2_Lut_0x0E98_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageHyruleFile2_Lut_0x0E98_palette */
 u8 dStageHyruleFile2_Tex_0x0EC0[2048] = {
 	#include <StageHyruleFile2/Tex_0x0EC0.tex.inc.c>
 };
@@ -91,7 +91,7 @@ u16 dStageHyruleFile2_Lut_0x1AF8_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1B20 (520 bytes) */
-/* @tex fmt=CI4 dim=224x224 lut=dStageHyruleFile2_Lut_0x1AF8_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageHyruleFile2_Lut_0x1AF8_palette */
 u8 dStageHyruleFile2_Tex_0x1B20[512] = {
 	#include <StageHyruleFile2/Tex_0x1B20.tex.inc.c>
 };
@@ -106,7 +106,7 @@ u16 dStageHyruleFile2_Lut_0x1D28_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x1D50 (2056 bytes) */
-/* @tex fmt=CI4 dim=128x512 lut=dStageHyruleFile2_Lut_0x1D28_palette */
+/* @tex fmt=CI4 dim=64x64 lut=dStageHyruleFile2_Lut_0x1D28_palette */
 u8 dStageHyruleFile2_Tex_0x1D50[2048] = {
 	#include <StageHyruleFile2/Tex_0x1D50.tex.inc.c>
 };
@@ -150,7 +150,7 @@ u16 dStageHyruleFile2_Lut_0x2838_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2860 (520 bytes) */
-/* @tex fmt=CI4 dim=64x96 lut=dStageHyruleFile2_Lut_0x2838_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageHyruleFile2_Lut_0x2838_palette */
 u8 dStageHyruleFile2_Tex_0x2860[512] = {
 	#include <StageHyruleFile2/Tex_0x2860.tex.inc.c>
 };
@@ -165,7 +165,7 @@ u16 dStageHyruleFile2_Lut_0x2A68_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x2A90 (520 bytes) */
-/* @tex fmt=CI4 dim=32x96 lut=dStageHyruleFile2_Lut_0x2A68_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageHyruleFile2_Lut_0x2A68_palette */
 u8 dStageHyruleFile2_Tex_0x2A90[512] = {
 	#include <StageHyruleFile2/Tex_0x2A90.tex.inc.c>
 };

@@ -33,7 +33,7 @@ u16 dPikachuSpecial3_gap_0x0000_sub_0x8[20] = {
 };
 
 /* gap sub-block @ 0x0030 (was gap+0x30, 512 bytes) */
-/* @tex fmt=CI4 dim=64x64 lut=dPikachuSpecial3_gap_0x0000_sub_0x8 */
+/* @tex fmt=CI4 dim=32x32 lut=dPikachuSpecial3_gap_0x0000_sub_0x8 */
 u8 dPikachuSpecial3_Tex_0x0030[512] = {
 	#include <PikachuSpecial3/Tex_0x0030.tex.inc.c>
 };

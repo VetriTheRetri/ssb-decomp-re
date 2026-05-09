@@ -5409,13 +5409,14 @@ u16 dCaptainModel_gap_0x7DD0_sub_0x3138[20] = {
 };
 
 /* Texture data @ 0xAF30 (72 bytes) */
-/* @tex fmt=CI4 dim=8x18 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dCaptainModel_Tex_0xAF30[72] = {
 	#include <CaptainModel/Tex_0xAF30.tex.inc.c>
 };
 
 /* Texture data @ 0xAF78 (760 bytes) */
 /* Texture: 0xAF78 (CI4 — trailing 0xF0 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dCaptainModel_Tex_0xAF78[520] = {
 	#include <CaptainModel/Tex_0xAF78.tex.inc.c>
 };
@@ -5467,6 +5468,7 @@ u16 dCaptainModel_palette_0xB4F0[20] = {
 
 /* Texture data @ 0xB518 (192 bytes) */
 /* Texture: 0xB518 (CI4 — trailing 0x78 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dCaptainModel_Tex_0xB518[72] = {
 	#include <CaptainModel/Tex_0xB518.tex.inc.c>
 };
@@ -5484,7 +5486,7 @@ u16 dCaptainModel_palette_0xB5B0[20] = {
 };
 
 /* Texture data @ 0xB5D8 (896 bytes) */
-/* @tex fmt=CI4 dim=45x57 */
+/* @tex fmt=CI4 dim=32x56 */
 u8 dCaptainModel_Tex_0xB5D8[896] = {
 	#include <CaptainModel/Tex_0xB5D8.tex.inc.c>
 };
@@ -5502,7 +5504,8 @@ u32 dCaptainModel_gap_0xB978[2] = {
 };
 
 /* gap sub-block @ 0xB980 (was gap+0x8, 520 bytes) */
-u32 dCaptainModel_gap_0xB978_sub_0x8[130] = {
+/* @tex fmt=CI4 dim=32x32 lut=dCaptainModel_Lut_0xB958_palette */
+u32 dCaptainModel_Tex_0xB980[130] = {
 	aobjEvent32SetVal0RateBlock(0x222, 4369),
 	    0x11111111,  /* 1.1443742118159064e-28f */
 	    0x11111111,  /* 1.1443742118159064e-28f */
@@ -5648,13 +5651,14 @@ u8 dCaptainModel_Tex_0xBBB0[512] = {
 PAD(8);
 
 /* Texture data @ 0xBDB8 (576 bytes) */
-/* @tex fmt=CI4 dim=26x24 */
+/* @tex fmt=CI4 dim=16x16 */
 u8 dCaptainModel_Tex_0xBDB8[576] = {
 	#include <CaptainModel/Tex_0xBDB8.tex.inc.c>
 };
 
 /* Texture data @ 0xBFF8 (80 bytes) */
 /* Texture: 0xBFF8 (CI4 — trailing 0x28 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x4 */
 u8 dCaptainModel_Tex_0xBFF8[40] = {
 	#include <CaptainModel/Tex_0xBFF8.tex.inc.c>
 };
@@ -5665,6 +5669,7 @@ u16 dCaptainModel_palette_0xC020[20] = {
 
 /* Texture data @ 0xC048 (152 bytes) */
 /* Texture: 0xC048 (CI4 — trailing 0x50 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dCaptainModel_Tex_0xC048[72] = {
 	#include <CaptainModel/Tex_0xC048.tex.inc.c>
 };
@@ -5678,13 +5683,13 @@ u16 dCaptainModel_palette_0xC0B8[20] = {
 };
 
 /* Texture data @ 0xC0E0 (72 bytes) */
-/* @tex fmt=CI4 dim=8x24 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dCaptainModel_Tex_0xC0E0[72] = {
 	#include <CaptainModel/Tex_0xC0E0.tex.inc.c>
 };
 
 /* Texture data @ 0xC128 (264 bytes) */
-/* @tex fmt=CI4 dim=37x21 */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dCaptainModel_Tex_0xC128[256] = {
 	#include <CaptainModel/Tex_0xC128.tex.inc.c>
 };
@@ -5693,6 +5698,7 @@ PAD(8);
 
 /* Texture data @ 0xC230 (296 bytes) */
 /* Texture: 0xC230 (CI4 — trailing 0xA0 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x16 */
 u8 dCaptainModel_Tex_0xC230[136] = {
 	#include <CaptainModel/Tex_0xC230.tex.inc.c>
 };
@@ -5714,13 +5720,14 @@ u16 dCaptainModel_palette_0xC330[20] = {
 };
 
 /* Texture data @ 0xC358 (200 bytes) */
-/* @tex fmt=CI4 dim=35x51 */
+/* @tex fmt=CI4 dim=16x24 */
 u8 dCaptainModel_Tex_0xC358[200] = {
 	#include <CaptainModel/Tex_0xC358.tex.inc.c>
 };
 
 /* Texture data @ 0xC420 (232 bytes) */
 /* Texture: 0xC420 (CI4 — trailing 0xA0 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x8 lut=dCaptainModel_Lut_0xB958_palette */
 u8 dCaptainModel_Tex_0xC420[72] = {
 	#include <CaptainModel/Tex_0xC420.tex.inc.c>
 };
@@ -5742,7 +5749,7 @@ u16 dCaptainModel_palette_0xC4E0[20] = {
 };
 
 /* Texture data @ 0xC508 (80 bytes) */
-/* @tex fmt=CI4 dim=8x13 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dCaptainModel_Tex_0xC508[80] = {
 	#include <CaptainModel/Tex_0xC508.tex.inc.c>
 };

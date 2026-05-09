@@ -184,7 +184,7 @@ u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0C48 to 0x1450 (2056 bytes) */
-/* @tex fmt=RGBA16 dim=32x160 */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dCaptainSpecial2_Tex_0x0C48[2048] = {
 	#include <CaptainSpecial2/Tex_0x0C48.tex.inc.c>
 };
@@ -192,7 +192,7 @@ u8 dCaptainSpecial2_Tex_0x0C48[2048] = {
 PAD(8);
 
 /* Raw data from file offset 0x1450 to 0x1C58 (2056 bytes) */
-/* @tex fmt=RGBA16 dim=256x32 */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dCaptainSpecial2_Tex_0x1450[2048] = {
 	#include <CaptainSpecial2/Tex_0x1450.tex.inc.c>
 };
@@ -200,7 +200,7 @@ u8 dCaptainSpecial2_Tex_0x1450[2048] = {
 PAD(8);
 
 /* Raw data from file offset 0x1C58 to 0x2460 (2056 bytes) */
-/* @tex fmt=RGBA16 dim=32x64 */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dCaptainSpecial2_Tex_0x1C58[2048] = {
 	#include <CaptainSpecial2/Tex_0x1C58.tex.inc.c>
 };
@@ -208,7 +208,7 @@ u8 dCaptainSpecial2_Tex_0x1C58[2048] = {
 PAD(8);
 
 /* Raw data from file offset 0x2460 to 0x2C68 (2056 bytes) */
-/* @tex fmt=RGBA16 dim=160x128 */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dCaptainSpecial2_Tex_0x2460[2048] = {
 	#include <CaptainSpecial2/Tex_0x2460.tex.inc.c>
 };
@@ -256,7 +256,7 @@ u8 dCaptainSpecial2_Tex_0x3C88[512] = {
 PAD(8);
 
 /* Raw data from file offset 0x3E90 to 0x3ED0 (64 bytes) */
-/* @tex fmt=IA8 dim=16x16 */
+/* @tex fmt=IA8 dim=8x8 */
 u8 dCaptainSpecial2_Tex_0x3E90[64] = {
 	#include <CaptainSpecial2/Tex_0x3E90.tex.inc.c>
 };

@@ -174,7 +174,7 @@ u16 dSamusSpecial2_Lut_0x04C8_palette[16] = {
 PAD(8);
 
 /* Raw data from file offset 0x04F0 to 0x0570 (128 bytes) */
-/* @tex fmt=CI4 dim=192x16 lut=dSamusSpecial2_Lut_0x04C8_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dSamusSpecial2_Lut_0x04C8_palette */
 u8 dSamusSpecial2_Tex_0x04F0[128] = {
 	#include <SamusSpecial2/Tex_0x04F0.tex.inc.c>
 };

@@ -17,7 +17,7 @@ u16 dStageCastleFile2_Lut_0x0008_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0030 (520 bytes) */
-/* @tex fmt=CI4 dim=32x64 lut=dStageCastleFile2_Lut_0x0008_palette */
+/* @tex fmt=CI4 dim=16x64 lut=dStageCastleFile2_Lut_0x0008_palette */
 u8 dStageCastleFile2_Tex_0x0030[512] = {
 	#include <StageCastleFile2/Tex_0x0030.tex.inc.c>
 };
@@ -67,7 +67,7 @@ u16 dStageCastleFile2_Lut_0x0300_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0328 (72 bytes) */
-/* @tex fmt=CI4 dim=64x64 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0328[64] = {
 	#include <StageCastleFile2/Tex_0x0328.tex.inc.c>
 };
@@ -75,7 +75,7 @@ u8 dStageCastleFile2_Tex_0x0328[64] = {
 PAD(8);
 
 /* Texture data @ 0x0370 (24 bytes) */
-/* @tex fmt=CI4 dim=48x2 lut=dStageCastleFile2_Lut_0x0238_palette */
+/* @tex fmt=CI4 dim=16x2 lut=dStageCastleFile2_Lut_0x0238_palette */
 u8 dStageCastleFile2_Tex_0x0370[16] = {
 	#include <StageCastleFile2/Tex_0x0370.tex.inc.c>
 };
@@ -83,7 +83,7 @@ u8 dStageCastleFile2_Tex_0x0370[16] = {
 PAD(8);
 
 /* Texture data @ 0x0388 (136 bytes) */
-/* @tex fmt=CI4 dim=32x48 lut=dStageCastleFile2_Lut_0x0238_palette */
+/* @tex fmt=CI4 dim=32x8 lut=dStageCastleFile2_Lut_0x0238_palette */
 u8 dStageCastleFile2_Tex_0x0388[128] = {
 	#include <StageCastleFile2/Tex_0x0388.tex.inc.c>
 };
@@ -91,7 +91,7 @@ u8 dStageCastleFile2_Tex_0x0388[128] = {
 PAD(8);
 
 /* Texture data @ 0x0410 (72 bytes) */
-/* @tex fmt=CI4 dim=32x48 lut=dStageCastleFile2_Lut_0x0260_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dStageCastleFile2_Lut_0x0260_palette */
 u8 dStageCastleFile2_Tex_0x0410[72] = {
 	#include <StageCastleFile2/Tex_0x0410.tex.inc.c>
 };
@@ -104,7 +104,7 @@ u16 dStageCastleFile2_Lut_0x0458_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0480 (200 bytes) */
-/* @tex fmt=CI4 dim=192x24 lut=dStageCastleFile2_Lut_0x0458_palette */
+/* @tex fmt=CI4 dim=16x24 lut=dStageCastleFile2_Lut_0x0458_palette */
 u8 dStageCastleFile2_Tex_0x0480[200] = {
 	#include <StageCastleFile2/Tex_0x0480.tex.inc.c>
 };
@@ -123,7 +123,7 @@ u16 dStageCastleFile2_Lut_0x0610_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0638 (136 bytes) */
-/* @tex fmt=CI4 dim=192x96 lut=dStageCastleFile2_Lut_0x0610_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dStageCastleFile2_Lut_0x0610_palette */
 u8 dStageCastleFile2_Tex_0x0638[128] = {
 	#include <StageCastleFile2/Tex_0x0638.tex.inc.c>
 };
@@ -131,7 +131,7 @@ u8 dStageCastleFile2_Tex_0x0638[128] = {
 PAD(8);
 
 /* Texture data @ 0x06C0 (136 bytes) */
-/* @tex fmt=CI4 dim=160x96 lut=dStageCastleFile2_Lut_0x02D8_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dStageCastleFile2_Lut_0x02D8_palette */
 u8 dStageCastleFile2_Tex_0x06C0[128] = {
 	#include <StageCastleFile2/Tex_0x06C0.tex.inc.c>
 };
@@ -139,7 +139,7 @@ u8 dStageCastleFile2_Tex_0x06C0[128] = {
 PAD(8);
 
 /* Texture data @ 0x0748 (72 bytes) */
-/* @tex fmt=CI4 dim=80x80 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0748[72] = {
 	#include <StageCastleFile2/Tex_0x0748.tex.inc.c>
 };
@@ -152,7 +152,7 @@ u8 dStageCastleFile2_Tex_0x0790[32] = {
 PAD(8);
 
 /* Texture data @ 0x07B8 (72 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dStageCastleFile2_Lut_0x0300_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dStageCastleFile2_Lut_0x0300_palette */
 u8 dStageCastleFile2_Tex_0x07B8[64] = {
 	#include <StageCastleFile2/Tex_0x07B8.tex.inc.c>
 };
@@ -160,7 +160,7 @@ u8 dStageCastleFile2_Tex_0x07B8[64] = {
 PAD(8);
 
 /* Texture data @ 0x0800 (40 bytes) */
-/* @tex fmt=CI4 dim=32x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=16x4 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0800[32] = {
 	#include <StageCastleFile2/Tex_0x0800.tex.inc.c>
 };
@@ -168,7 +168,7 @@ u8 dStageCastleFile2_Tex_0x0800[32] = {
 PAD(8);
 
 /* Texture data @ 0x0828 (72 bytes) */
-/* @tex fmt=CI4 dim=32x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0828[72] = {
 	#include <StageCastleFile2/Tex_0x0828.tex.inc.c>
 };
@@ -181,7 +181,7 @@ u16 dStageCastleFile2_Lut_0x0870_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0898 (136 bytes) */
-/* @tex fmt=CI4 dim=64x64 lut=dStageCastleFile2_Lut_0x0870_palette */
+/* @tex fmt=CI4 dim=16x16 lut=dStageCastleFile2_Lut_0x0870_palette */
 u8 dStageCastleFile2_Tex_0x0898[128] = {
 	#include <StageCastleFile2/Tex_0x0898.tex.inc.c>
 };
@@ -189,13 +189,13 @@ u8 dStageCastleFile2_Tex_0x0898[128] = {
 PAD(8);
 
 /* Texture data @ 0x0920 (392 bytes) */
-/* @tex fmt=CI4 dim=48x32 lut=dStageCastleFile2_Lut_0x0288_palette */
+/* @tex fmt=CI4 dim=32x24 lut=dStageCastleFile2_Lut_0x0288_palette */
 u8 dStageCastleFile2_Tex_0x0920[392] = {
 	#include <StageCastleFile2/Tex_0x0920.tex.inc.c>
 };
 
 /* Texture data @ 0x0AA8 (24 bytes) */
-/* @tex fmt=CI4 dim=32x20 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=16x2 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0AA8[16] = {
 	#include <StageCastleFile2/Tex_0x0AA8.tex.inc.c>
 };
@@ -203,13 +203,13 @@ u8 dStageCastleFile2_Tex_0x0AA8[16] = {
 PAD(8);
 
 /* Texture data @ 0x0AC0 (136 bytes) */
-/* @tex fmt=CI4 dim=24x48 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=32x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0AC0[136] = {
 	#include <StageCastleFile2/Tex_0x0AC0.tex.inc.c>
 };
 
 /* Texture data @ 0x0B48 (72 bytes) */
-/* @tex fmt=CI4 dim=32x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
+/* @tex fmt=CI4 dim=16x8 lut=dStageCastleFile2_Lut_0x02B0_palette */
 u8 dStageCastleFile2_Tex_0x0B48[64] = {
 	#include <StageCastleFile2/Tex_0x0B48.tex.inc.c>
 };
@@ -217,7 +217,7 @@ u8 dStageCastleFile2_Tex_0x0B48[64] = {
 PAD(8);
 
 /* Texture data @ 0x0B90 (512 bytes) */
-/* @tex fmt=CI4 dim=96x32 lut=dStageCastleFile2_Lut_0x0260_palette */
+/* @tex fmt=CI4 dim=32x32 lut=dStageCastleFile2_Lut_0x0260_palette */
 u8 dStageCastleFile2_Tex_0x0B90[512] = {
 	#include <StageCastleFile2/Tex_0x0B90.tex.inc.c>
 };
@@ -1072,7 +1072,7 @@ u16 dStageCastleFile2_gap_0x3684_sub_0x64[20] = {
 };
 
 /* gap sub-block @ 0x3710 (was gap+0x8C, 1160 bytes) */
-/* @tex fmt=CI4 dim=40x48 lut=dStageCastleFile2_gap_0x3684_sub_0x14 */
+/* @tex fmt=CI4 dim=32x72 lut=dStageCastleFile2_gap_0x3684_sub_0x14 */
 u8 dStageCastleFile2_Tex_0x3710[1160] = {
 	#include <StageCastleFile2/Tex_0x3710.tex.inc.c>
 };
@@ -1084,7 +1084,7 @@ u8 dStageCastleFile2_Tex_0x3B98[520] = {
 };
 
 /* gap sub-block @ 0x3DA0 (was gap+0x71C, 192 bytes) */
-/* @tex fmt=CI4 dim=32x24 lut=dStageCastleFile2_gap_0x3684_sub_0x64 */
+/* @tex fmt=CI4 dim=16x24 lut=dStageCastleFile2_gap_0x3684_sub_0x64 */
 u8 dStageCastleFile2_Tex_0x3DA0[192] = {
 	#include <StageCastleFile2/Tex_0x3DA0.tex.inc.c>
 };

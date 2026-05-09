@@ -10,7 +10,7 @@
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0090 (136 bytes) */
-/* @tex fmt=I4 dim=32x32 */
+/* @tex fmt=I4 dim=16x16 */
 u8 dKirbySpecial2_Tex_0x0008[128] = {
 	#include <KirbySpecial2/Tex_0x0008.tex.inc.c>
 };
@@ -18,7 +18,7 @@ u8 dKirbySpecial2_Tex_0x0008[128] = {
 PAD(8);
 
 /* Raw data from file offset 0x0090 to 0x0890 (2048 bytes) */
-/* @tex fmt=RGBA32 dim=512x32 */
+/* @tex fmt=RGBA32 dim=16x32 */
 u8 dKirbySpecial2_Tex_0x0090[2048] = {
 	#include <KirbySpecial2/Tex_0x0090.tex.inc.c>
 };
@@ -250,7 +250,7 @@ u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x14A0[] = {
 PAD(8);
 
 /* Raw data from file offset 0x14B8 to 0x1CB8 (2048 bytes) */
-/* @tex fmt=RGBA32 dim=32x32 */
+/* @tex fmt=RGBA32 dim=16x32 */
 u8 dKirbySpecial2_Tex_0x14B8[2048] = {
 	#include <KirbySpecial2/Tex_0x14B8.tex.inc.c>
 };

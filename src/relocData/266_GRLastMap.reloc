@@ -1,9 +1,9 @@
 # Relocation metadata for file 266
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRLastMap_header+0x10 0x4D48  # -> file 114 (StageLastFile2)
-extern dGRLastMap_header+0x14 0x4F10  # -> file 114 (StageLastFile2)
-extern dGRLastMap_header+0x18 0x2078  # -> file 114 (StageLastFile2)
-extern dGRLastMap_header+0x1C 0x4F40  # -> file 114 (StageLastFile2)
-extern dGRLastMap_header+0x40 0x4EF4  # -> file 114 (StageLastFile2)
-extern dGRLastMap_header+0x48 0x26C88  # -> file 96 (StageLastBackground)
+extern dGRLastMap_header+0x10 dGRLastMap_pad+0x4CA0  # -> file 114 (StageLastFile2)
+extern dGRLastMap_header+0x14 dGRLastMap_pad+0x4E68  # -> file 114 (StageLastFile2)
+extern dGRLastMap_header+0x18 dGRLastMap_pad+0x1FD0  # -> file 114 (StageLastFile2)
+extern dGRLastMap_header+0x1C dGRLastMap_pad+0x4E98  # -> file 114 (StageLastFile2)
+extern dGRLastMap_header+0x40 dGRLastMap_pad+0x4E4C  # -> file 114 (StageLastFile2)
+extern dGRLastMap_header+0x48 dGRLastMap_pad+0x26BE0  # -> file 96 (StageLastBackground)

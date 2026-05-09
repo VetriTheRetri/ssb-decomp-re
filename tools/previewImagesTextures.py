@@ -121,7 +121,11 @@ def parse_c_blocks(text, target_name):
         off = int(off_matches[-1], 16) if off_matches else None
         short = name[len(prefix):]
         lower = short.lower()
-        if "_lut_" in lower or "_tlut_" in lower or "_palette" in lower or lower.startswith(("lut_", "tlut_")):
+        if ("_lut_" in lower or "_tlut_" in lower or "_palette" in lower
+                or lower.startswith(("lut_", "tlut_", "palette_"))):
+            # Recognise both the `<File>_Lut_0xN` and the `<File>_palette_0xN`
+            # prefix form — split-out palette frames inside model data
+            # files use the latter (e.g. dLuigiModel_palette_0x7548).
             kind = "lut"
         elif re.search(r"(?:^|_)tex_0x[0-9a-f]+", lower) or "tex_pool" in lower:
             # Match the `Tex_0xN` per-texture naming convention. Atlas-style

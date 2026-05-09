@@ -4,12 +4,12 @@
 
 intern dGRCastleMap_header+0x84 dGRCastleMap_item_weights
 
-extern dGRCastleMap_header 0x1850
-extern dGRCastleMap_header+0x10 0x2A08
-extern dGRCastleMap_header+0x14 0x2D80
-extern dGRCastleMap_header+0x20 0x3218
-extern dGRCastleMap_header+0x24 0x32D0
-extern dGRCastleMap_header+0x30 0x3600
-extern dGRCastleMap_header+0x40 0x2D58
-extern dGRCastleMap_header+0x48 0x26C88
-extern dGRCastleMap_header+0x80 0x0
+extern dGRCastleMap_header dGRCastleMap_pad+0x1794
+extern dGRCastleMap_header+0x10 dGRCastleMap_pad+0x294C
+extern dGRCastleMap_header+0x14 dGRCastleMap_pad+0x2CC4
+extern dGRCastleMap_header+0x20 dGRCastleMap_pad+0x315C
+extern dGRCastleMap_header+0x24 dGRCastleMap_pad+0x3214
+extern dGRCastleMap_header+0x30 dGRCastleMap_pad+0x3544
+extern dGRCastleMap_header+0x40 dGRCastleMap_pad+0x2C9C
+extern dGRCastleMap_header+0x48 dGRCastleMap_pad+0x26BCC
+extern dGRCastleMap_header+0x80 dGRCastleMap_item_weights

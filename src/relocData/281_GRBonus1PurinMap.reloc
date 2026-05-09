@@ -1,8 +1,8 @@
 # Relocation metadata for file 281
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1PurinMap_header 0x950  # -> file 134 (GRBonus1PurinFile2)
-extern dGRBonus1PurinMap_header+0x10 0x1FF8  # -> file 134 (GRBonus1PurinFile2)
-extern dGRBonus1PurinMap_header+0x14 0x2320  # -> file 134 (GRBonus1PurinFile2)
-extern dGRBonus1PurinMap_header+0x40 0x2304  # -> file 134 (GRBonus1PurinFile2)
-extern dGRBonus1PurinMap_header+0x48 0x26C88  # -> file 119 (Bonus1CommonBackground)
+extern dGRBonus1PurinMap_header dGRBonus1PurinMap_pad+0x8A8  # -> file 134 (GRBonus1PurinFile2)
+extern dGRBonus1PurinMap_header+0x10 dGRBonus1PurinMap_pad+0x1F50  # -> file 134 (GRBonus1PurinFile2)
+extern dGRBonus1PurinMap_header+0x14 dGRBonus1PurinMap_pad+0x2278  # -> file 134 (GRBonus1PurinFile2)
+extern dGRBonus1PurinMap_header+0x40 dGRBonus1PurinMap_pad+0x225C  # -> file 134 (GRBonus1PurinFile2)
+extern dGRBonus1PurinMap_header+0x48 dGRBonus1PurinMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

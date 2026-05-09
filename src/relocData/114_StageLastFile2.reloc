@@ -1,10 +1,10 @@
 # Relocation metadata for file 114
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dStageLastFile2_Layer1MObj_MObjSub+0x4 0x2A50
-intern dStageLastFile2_Layer1MObj_MObjSub+0x8 0x2A68
-intern dStageLastFile2_Layer1MObj_MObjSub+0xC 0x2A80
-intern dStageLastFile2_Layer1MObj_MObjSub+0x10 0x2A8C
+intern dStageLastFile2_Layer1MObj_MObjSub+0x4 dStageLastFile2_gap_0x20F0_sub_0x960
+intern dStageLastFile2_Layer1MObj_MObjSub+0x8 dStageLastFile2_gap_0x20F0_sub_0x978
+intern dStageLastFile2_Layer1MObj_MObjSub+0xC dStageLastFile2_gap_0x20F0_sub_0x990
+intern dStageLastFile2_Layer1MObj_MObjSub+0x10 dStageLastFile2_gap_0x20F0_sub_0x99C
 intern dStageLastFile2_Layer1MObj_MObjSub+0x14 dStageLastFile2_gap_0x0000_sub_0x2D8
 intern dStageLastFile2_Layer1MObj_MObjSub+0x18 dStageLastFile2_gap_0x0000_sub_0x2B0
 intern dStageLastFile2_Layer1MObj_MObjSub+0x1C dStageLastFile2_gap_0x0000_sub_0x288

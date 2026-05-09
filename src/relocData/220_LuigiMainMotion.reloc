@@ -8,7 +8,7 @@ intern dLuigiMainMotion_0x0024+0x2C dLuigiMainMotion_0x0024
 intern dLuigiMainMotion_0x0084+0x38 dLuigiMainMotion_0x0084
 intern dLuigiMainMotion_0x01C0+0x4 dLuigiMainMotion_0x01B8
 intern dLuigiMainMotion_0x01CC+0x4 dLuigiMainMotion_0x01B8
-extern dLuigiMainMotion_0x01CC+0xC 0x758  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x01CC+0xC dLuigiMainMotion_0x0750+0x8  # -> file 201 (FTCommonMoveset)
 intern dLuigiMainMotion_0x0258+0x4 dLuigiMainMotion_0x0218
 intern dLuigiMainMotion_0x0298+0x4 dLuigiMainMotion_0x0280
 intern dLuigiMainMotion_0x02A0+0x8 dLuigiMainMotion_0x0260
@@ -22,23 +22,23 @@ intern dLuigiMainMotion_0x0750+0x8 dLuigiMainMotion_0x0734
 intern dLuigiMainMotion_0x07B4+0x8 dLuigiMainMotion_0x0794
 intern dLuigiMainMotion_0x0810+0xC dLuigiMainMotion_0x0800
 intern dLuigiMainMotion_0x0834+0xC dLuigiMainMotion_0x0820
-extern dLuigiMainMotion_0x0834+0x20 0x0  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x086C+0x14 0x64  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x08A0+0x1C 0xC8  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x08DC+0x14 0x12C  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0908+0x8 0x1A0  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0920+0xC 0x1F4  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0944+0x24 0x248  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0980+0xC 0x2B0  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x099C+0x8 0x324  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x09B4+0xC 0x378  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x09D8+0x10 0x3CC  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0A00+0xC 0x430  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0A1C+0xC 0x494  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0A38+0x10 0x4F8  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0A68+0x1C 0x55C  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0AA0+0x10 0x5C0  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0AE8+0x10 0x634  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0834+0x20 dLuigiMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x086C+0x14 dLuigiMainMotion_0x005C+0x8  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x08A0+0x1C dLuigiMainMotion_0x0084+0x44  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x08DC+0x14 dLuigiMainMotion_0x0128+0x4  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0908+0x8 dLuigiMainMotion_0x019C+0x4  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0920+0xC dLuigiMainMotion_0x01E0+0x14  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0944+0x24 dLuigiMainMotion_0x0218+0x30  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0980+0xC dLuigiMainMotion_0x02B0  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x099C+0x8 dLuigiMainMotion_0x02B0+0x74  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x09B4+0xC dLuigiMainMotion_0x0330+0x48  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x09D8+0x10 dLuigiMainMotion_0x03CC  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0A00+0xC dLuigiMainMotion_0x040C+0x24  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0A1C+0xC dLuigiMainMotion_0x0488+0xC  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0A38+0x10 dLuigiMainMotion_0x04EC+0xC  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0A68+0x1C dLuigiMainMotion_0x0558+0x4  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0AA0+0x10 dLuigiMainMotion_0x0560+0x60  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0AE8+0x10 dLuigiMainMotion_0x0630+0x4  # -> file 201 (FTCommonMoveset)
 intern dLuigiMainMotion_0x0AE8+0x20 dLuigiMainMotion_0x0AE8
 intern dLuigiMainMotion_0x0B0C+0x30 dLuigiMainMotion_0x0B0C
 intern dLuigiMainMotion_0x0B0C+0x54 dLuigiMainMotion_0x0B0C
@@ -48,13 +48,13 @@ intern dLuigiMainMotion_0x0BC8+0x24 dLuigiMainMotion_0x0BC8
 intern dLuigiMainMotion_0x0C28+0x4 dLuigiMainMotion_0x0BF0
 intern dLuigiMainMotion_0x0CA4+0x4 dLuigiMainMotion_0x0C6C
 intern dLuigiMainMotion_0x0D38+0x8 dLuigiMainMotion_0x0D00
-extern dLuigiMainMotion_0x0DF0+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0DFC+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
-extern dLuigiMainMotion_0x0E08+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0DF0+0x4 dLuigiMainMotion_0x06AC  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0DFC+0x4 dLuigiMainMotion_0x06AC+0x18  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0E08+0x4 dLuigiMainMotion_0x06C8+0x4  # -> file 201 (FTCommonMoveset)
 intern dLuigiMainMotion_0x0E14+0x4 dLuigiMainMotion_0x01B8
-extern dLuigiMainMotion_0x0E14+0xC 0x6F0  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0E14+0xC dLuigiMainMotion_0x06E8+0x8  # -> file 201 (FTCommonMoveset)
 intern dLuigiMainMotion_0x0E28+0x4 dLuigiMainMotion_0x01B8
-extern dLuigiMainMotion_0x0E28+0xC 0x70C  # -> file 201 (FTCommonMoveset)
+extern dLuigiMainMotion_0x0E28+0xC dLuigiMainMotion_0x06E8+0x24  # -> file 201 (FTCommonMoveset)
 intern dLuigiMainMotion_0x1738+0x4 dLuigiMainMotion_0x1700
 intern dLuigiMainMotion_0x1784+0x14 dLuigiMainMotion_0x1758
 intern dLuigiMainMotion_0x1844+0x64 dLuigiMainMotion_0x17FC

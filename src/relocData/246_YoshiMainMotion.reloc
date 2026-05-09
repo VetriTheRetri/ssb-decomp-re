@@ -8,7 +8,7 @@ intern dYoshiMainMotion_0x0034+0x28 dYoshiMainMotion_0x0034
 intern dYoshiMainMotion_0x0084+0x3C dYoshiMainMotion_0x0084
 intern dYoshiMainMotion_0x01EC+0x4 dYoshiMainMotion_0x01E0
 intern dYoshiMainMotion_0x01F8+0x4 dYoshiMainMotion_0x01E0
-extern dYoshiMainMotion_0x01F8+0xC 0x758  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x01F8+0xC dYoshiMainMotion_0x0748+0x10  # -> file 201 (FTCommonMoveset)
 intern dYoshiMainMotion_0x0284+0x4 dYoshiMainMotion_0x0240
 intern dYoshiMainMotion_0x02C4+0x4 dYoshiMainMotion_0x02AC
 intern dYoshiMainMotion_0x02CC+0x8 dYoshiMainMotion_0x028C
@@ -22,23 +22,23 @@ intern dYoshiMainMotion_0x07D0+0x8 dYoshiMainMotion_0x07B4
 intern dYoshiMainMotion_0x083C+0x10 dYoshiMainMotion_0x0814
 intern dYoshiMainMotion_0x08AC+0x8 dYoshiMainMotion_0x08A0
 intern dYoshiMainMotion_0x08CC+0x10 dYoshiMainMotion_0x08B8
-extern dYoshiMainMotion_0x08CC+0x28 0x0  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0914+0x14 0x64  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0948+0x20 0xC8  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0988+0x14 0x12C  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x09BC+0xC 0x1A0  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x09E0+0xC 0x1F4  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A04+0x20 0x248  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A3C+0xC 0x2B0  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A60+0xC 0x324  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A84+0xC 0x378  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0AA8+0x14 0x3CC  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0AD4+0xC 0x430  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0AF8+0x10 0x494  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0B20+0x10 0x4F8  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0B50+0x1C 0x55C  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0B8C+0x10 0x5C0  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0BE4+0x14 0x634  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x08CC+0x28 dYoshiMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0914+0x14 dYoshiMainMotion_0x0034+0x30  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0948+0x20 dYoshiMainMotion_0x0084+0x44  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0988+0x14 dYoshiMainMotion_0x012C  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x09BC+0xC dYoshiMainMotion_0x01A0  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x09E0+0xC dYoshiMainMotion_0x01EC+0x8  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0A04+0x20 dYoshiMainMotion_0x0240+0x8  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0A3C+0xC dYoshiMainMotion_0x02AC+0x4  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0A60+0xC dYoshiMainMotion_0x02DC+0x48  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0A84+0xC dYoshiMainMotion_0x02DC+0x9C  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0AA8+0x14 dYoshiMainMotion_0x037C+0x50  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0AD4+0xC dYoshiMainMotion_0x0424+0xC  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0AF8+0x10 dYoshiMainMotion_0x046C+0x28  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0B20+0x10 dYoshiMainMotion_0x04C0+0x38  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0B50+0x1C dYoshiMainMotion_0x055C  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0B8C+0x10 dYoshiMainMotion_0x056C+0x54  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0BE4+0x14 dYoshiMainMotion_0x05E0+0x54  # -> file 201 (FTCommonMoveset)
 intern dYoshiMainMotion_0x0BE4+0x24 dYoshiMainMotion_0x0BE4
 intern dYoshiMainMotion_0x0C0C+0x30 dYoshiMainMotion_0x0C0C
 intern dYoshiMainMotion_0x0C0C+0x58 dYoshiMainMotion_0x0C0C
@@ -48,13 +48,13 @@ intern dYoshiMainMotion_0x0CD0+0x28 dYoshiMainMotion_0x0CD0
 intern dYoshiMainMotion_0x0D34+0x4 dYoshiMainMotion_0x0CFC
 intern dYoshiMainMotion_0x0DC8+0x4 dYoshiMainMotion_0x0D90
 intern dYoshiMainMotion_0x0E64+0x4 dYoshiMainMotion_0x0E2C
-extern dYoshiMainMotion_0x0EC8+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0ED4+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0EE0+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0EC8+0x4 dYoshiMainMotion_0x06A8+0x4  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0ED4+0x4 dYoshiMainMotion_0x06C0+0x4  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0EE0+0x4 dYoshiMainMotion_0x06CC  # -> file 201 (FTCommonMoveset)
 intern dYoshiMainMotion_0x0EEC+0x4 dYoshiMainMotion_0x01E0
-extern dYoshiMainMotion_0x0EEC+0xC 0x6F0  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0EEC+0xC dYoshiMainMotion_0x06E8+0x8  # -> file 201 (FTCommonMoveset)
 intern dYoshiMainMotion_0x0F00+0x4 dYoshiMainMotion_0x01E0
-extern dYoshiMainMotion_0x0F00+0xC 0x70C  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_0x0F00+0xC dYoshiMainMotion_0x0704+0x8  # -> file 201 (FTCommonMoveset)
 intern dYoshiMainMotion_0x11C8+0x4 dYoshiMainMotion_0x1164
 intern dYoshiMainMotion_0x11C8+0xC dYoshiMainMotion_0x1164
 intern dYoshiMainMotion_0x11C8+0x14 dYoshiMainMotion_0x1164

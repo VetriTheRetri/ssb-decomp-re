@@ -3,4 +3,4 @@
 # Labels resolved via src/relocData/218_SamusSpecial1.reloc .o symbol table
 
 
-extern dSamusSpecial1_ChargeShot_WeaponAttributes 0x270
+extern dSamusSpecial1_ChargeShot_WeaponAttributes dSamusSpecial1_ChargeShot_WeaponAttributes+0x270

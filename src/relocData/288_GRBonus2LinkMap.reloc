@@ -1,8 +1,8 @@
 # Relocation metadata for file 288
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2LinkMap_header 0x938  # -> file 142 (GRBonus2LinkFile2)
-extern dGRBonus2LinkMap_header+0x10 0x3C28  # -> file 142 (GRBonus2LinkFile2)
-extern dGRBonus2LinkMap_header+0x14 0x4680  # -> file 142 (GRBonus2LinkFile2)
-extern dGRBonus2LinkMap_header+0x40 0x465C  # -> file 142 (GRBonus2LinkFile2)
-extern dGRBonus2LinkMap_header+0x48 0x26C88  # -> file 119 (Bonus1CommonBackground)
+extern dGRBonus2LinkMap_header dGRBonus2LinkMap_pad+0x890  # -> file 142 (GRBonus2LinkFile2)
+extern dGRBonus2LinkMap_header+0x10 dGRBonus2LinkMap_pad+0x3B80  # -> file 142 (GRBonus2LinkFile2)
+extern dGRBonus2LinkMap_header+0x14 dGRBonus2LinkMap_pad+0x45D8  # -> file 142 (GRBonus2LinkFile2)
+extern dGRBonus2LinkMap_header+0x40 dGRBonus2LinkMap_pad+0x45B4  # -> file 142 (GRBonus2LinkFile2)
+extern dGRBonus2LinkMap_header+0x48 dGRBonus2LinkMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

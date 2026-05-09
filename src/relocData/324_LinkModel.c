@@ -3248,8 +3248,152 @@ u8 dLinkModel_Tex_0xDEB0[1160] = {
 
 /* Texture data @ 0xE338 (14608 bytes) */
 /* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xDC00_palette */
-u8 dLinkModel_Tex_0xE338[14608] = {
+u8 dLinkModel_Tex_0xE338[7536] = {
 	#include <LinkModel/Tex_0xE338.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x100A8[4104] = {
+	#include <LinkModel/Tex_0x100A8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x110B0[120] = {
+	#include <LinkModel/Tex_0x110B0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11128[120] = {
+	#include <LinkModel/Tex_0x11128.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x111A0[120] = {
+	#include <LinkModel/Tex_0x111A0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11218[120] = {
+	#include <LinkModel/Tex_0x11218.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11290[120] = {
+	#include <LinkModel/Tex_0x11290.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11308[120] = {
+	#include <LinkModel/Tex_0x11308.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11380[120] = {
+	#include <LinkModel/Tex_0x11380.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x113F8[120] = {
+	#include <LinkModel/Tex_0x113F8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11470[120] = {
+	#include <LinkModel/Tex_0x11470.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x114E8[40] = {
+	#include <LinkModel/Tex_0x114E8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11510[32] = {
+	#include <LinkModel/Tex_0x11510.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11530[16] = {
+	#include <LinkModel/Tex_0x11530.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11540[16] = {
+	#include <LinkModel/Tex_0x11540.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11550[16] = {
+	#include <LinkModel/Tex_0x11550.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11560[16] = {
+	#include <LinkModel/Tex_0x11560.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11570[32] = {
+	#include <LinkModel/Tex_0x11570.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11590[32] = {
+	#include <LinkModel/Tex_0x11590.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x115B0[32] = {
+	#include <LinkModel/Tex_0x115B0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x115D0[32] = {
+	#include <LinkModel/Tex_0x115D0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x115F0[32] = {
+	#include <LinkModel/Tex_0x115F0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11610[64] = {
+	#include <LinkModel/Tex_0x11610.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11650[48] = {
+	#include <LinkModel/Tex_0x11650.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11680[632] = {
+	#include <LinkModel/Tex_0x11680.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x118F8[160] = {
+	#include <LinkModel/Tex_0x118F8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11998[176] = {
+	#include <LinkModel/Tex_0x11998.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11A48[52] = {
+	#include <LinkModel/Tex_0x11A48.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11A7C[52] = {
+	#include <LinkModel/Tex_0x11A7C.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11AB0[52] = {
+	#include <LinkModel/Tex_0x11AB0.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11AE4[52] = {
+	#include <LinkModel/Tex_0x11AE4.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11B18[52] = {
+	#include <LinkModel/Tex_0x11B18.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11B4C[52] = {
+	#include <LinkModel/Tex_0x11B4C.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11B80[52] = {
+	#include <LinkModel/Tex_0x11B80.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11BB4[52] = {
+	#include <LinkModel/Tex_0x11BB4.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11BE8[52] = {
+	#include <LinkModel/Tex_0x11BE8.tex.inc.c>
+};
+
+u8 dLinkModel_Tex_0x11C1C[44] = {
+	#include <LinkModel/Tex_0x11C1C.tex.inc.c>
 };
 
 /* Texture data for sprite Stock */

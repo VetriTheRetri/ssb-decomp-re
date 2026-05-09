@@ -3,4 +3,4 @@
 # Labels resolved via src/relocData/210_FoxSpecial1.reloc .o symbol table
 
 
-extern dFoxSpecial1_Blaster_WeaponAttributes 0x40
+extern dFoxSpecial1_Blaster_WeaponAttributes dFoxSpecial1_Blaster_WeaponAttributes+0x40

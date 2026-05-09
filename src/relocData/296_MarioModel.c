@@ -2471,7 +2471,7 @@ u8 dMarioModel_Tex_0x65F0[432] = {
 	#include <MarioModel/Tex_0x65F0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x35 */
 u8 dMarioModel_Tex_0x67A0[560] = {
 	#include <MarioModel/Tex_0x67A0.tex.inc.c>
 };

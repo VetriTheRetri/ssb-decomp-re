@@ -1,23 +1,23 @@
 # Relocation metadata for file 143
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2YoshiFile2_DL_0x0540+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x0540+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0540+0x74 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0540+0xA4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0+0x10  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x0540+0xC4 dGRBonus2YoshiFile2_gap_0x0000
-extern dGRBonus2YoshiFile2_DL_0x0640+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x0640+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0640+0x74 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0640+0xA4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0+0x10  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x0640+0xC4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x40
-extern dGRBonus2YoshiFile2_DL_0x0740+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x0740+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0740+0x74 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0740+0xA4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0+0x10  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x0740+0xC4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x80
-extern dGRBonus2YoshiFile2_DL_0x0840+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x0840+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0840+0x74 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0840+0xA4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0+0x10  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x0840+0xC4 dGRBonus2YoshiFile2_gap_0x0000_sub_0xC0
-extern dGRBonus2YoshiFile2_DL_0x0940+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x0940+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0940+0x74 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0940+0xA4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0+0x10  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x0940+0xC4 dGRBonus2YoshiFile2_gap_0x0000_sub_0xC0
-extern dGRBonus2YoshiFile2_DL_0x0A40+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x0A40+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0A40+0x74 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x0A40+0xA4 dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0+0x10  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x0A40+0xC4 dGRBonus2YoshiFile2_gap_0x0000_sub_0xC0
 intern dGRBonus2YoshiFile2_DL_0x0B40+0x3C dGRBonus2YoshiFile2_gap_0x0000_sub_0x100
 intern dGRBonus2YoshiFile2_DL_0x0B40+0x4C dGRBonus2YoshiFile2_gap_0x0000_sub_0x140
@@ -51,32 +51,32 @@ intern dGRBonus2YoshiFile2_Layer0DObj+0xE0 dGRBonus2YoshiFile2_DLLink_0x0D10
 intern dGRBonus2YoshiFile2_Layer0DObj+0x10C dGRBonus2YoshiFile2_DLLink_0x0D20
 intern dGRBonus2YoshiFile2_Layer0DObj+0x138 dGRBonus2YoshiFile2_DLLink_0x0D30
 intern dGRBonus2YoshiFile2_DL_0x1D70+0x54 dGRBonus2YoshiFile2_DL_0x1DD0
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0x1C 0x298  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0x44 0x100  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0x1C dGRBonus2YoshiFile2_gap_0x0000_sub_0x280+0x18  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0x44 dGRBonus2YoshiFile2_gap_0x0000_sub_0x100  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x64 dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x4
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0xAC 0x188  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0xAC dGRBonus2YoshiFile2_gap_0x0000_sub_0x180+0x8  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0xCC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x104
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0x11C 0x78  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0x11C dGRBonus2YoshiFile2_gap_0x0000_sub_0x40+0x38  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x13C dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x244
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x17C dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x384
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0x1BC 0x100  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0x1BC dGRBonus2YoshiFile2_gap_0x0000_sub_0x100  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x1DC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x484
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x24C dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x664
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0x2A4 0x8  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x1DD0+0x2CC 0x30  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0x2A4 dGRBonus2YoshiFile2_gap_0x0000+0x8  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x1DD0+0x2CC dGRBonus2YoshiFile2_gap_0x0000+0x30  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x2EC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x7C4
 intern dGRBonus2YoshiFile2_DL_0x1DD0+0x33C dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x9A4
-extern dGRBonus2YoshiFile2_DL_0x2128+0x1C 0x298  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x2128+0x44 0x188  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x2128+0x1C dGRBonus2YoshiFile2_gap_0x0000_sub_0x280+0x18  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x2128+0x44 dGRBonus2YoshiFile2_gap_0x0000_sub_0x180+0x8  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x2128+0x64 dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xA24
 intern dGRBonus2YoshiFile2_DL_0x21C0+0xC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xA24
 intern dGRBonus2YoshiFile2_DL_0x2200+0xC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xA24
-extern dGRBonus2YoshiFile2_DL_0x2240+0x1C 0x8  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x2240+0x44 0x30  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x2240+0x1C dGRBonus2YoshiFile2_gap_0x0000+0x8  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x2240+0x44 dGRBonus2YoshiFile2_gap_0x0000+0x30  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x2240+0x64 dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xB64
 intern dGRBonus2YoshiFile2_DL_0x22D0+0xC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xC64
-extern dGRBonus2YoshiFile2_DL_0x2308+0x1C 0x298  # -> file 122 (Bonus1CommonImages3)
-extern dGRBonus2YoshiFile2_DL_0x2308+0x3C 0x188  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x2308+0x1C dGRBonus2YoshiFile2_gap_0x0000_sub_0x280+0x18  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2YoshiFile2_DL_0x2308+0x3C dGRBonus2YoshiFile2_gap_0x0000_sub_0x180+0x8  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2YoshiFile2_DL_0x2308+0x5C dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xD64
 intern dGRBonus2YoshiFile2_DL_0x2398+0xC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xD64
 intern dGRBonus2YoshiFile2_DL_0x23D8+0xC dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xD64

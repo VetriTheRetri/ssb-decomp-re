@@ -2,13 +2,13 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dMVOpeningRun_chain_head dMVOpeningRun_Mario_AnimJoint
-intern dMVOpeningRun_Mario_AnimJoint+0xAC 0x00B4
-intern dMVOpeningRun_Fox_AnimJoint+0x6C 0x0124
-intern dMVOpeningRun_Donkey_AnimJoint+0x5C 0x0184
-intern dMVOpeningRun_Samus_AnimJoint+0x9C 0x0224
-intern dMVOpeningRun_Link_AnimJoint+0x10C 0x0334
-intern dMVOpeningRun_Yoshi_AnimJoint+0x6C 0x03A4
-intern dMVOpeningRun_Kirby_AnimJoint+0xDC 0x0484
+intern dMVOpeningRun_Mario_AnimJoint+0xAC dMVOpeningRun_Fox_AnimJoint
+intern dMVOpeningRun_Fox_AnimJoint+0x6C dMVOpeningRun_Donkey_AnimJoint
+intern dMVOpeningRun_Donkey_AnimJoint+0x5C dMVOpeningRun_Samus_AnimJoint
+intern dMVOpeningRun_Samus_AnimJoint+0x9C dMVOpeningRun_Link_AnimJoint
+intern dMVOpeningRun_Link_AnimJoint+0x10C dMVOpeningRun_Yoshi_AnimJoint
+intern dMVOpeningRun_Yoshi_AnimJoint+0x6C dMVOpeningRun_Kirby_AnimJoint
+intern dMVOpeningRun_Kirby_AnimJoint+0xDC dMVOpeningRun_Pikachu_AnimJoint
 intern dMVOpeningRun_Wallpaper_bitmaps+0x8 dMVOpeningRun_Wallpaper_tex
 intern dMVOpeningRun_Wallpaper_bitmaps+0x18 dMVOpeningRun_Wallpaper_tex+0x788
 intern dMVOpeningRun_Wallpaper_bitmaps+0x28 dMVOpeningRun_Wallpaper_tex+0xF10

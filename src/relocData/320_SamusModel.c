@@ -4587,8 +4587,12 @@ u16 dSamusModel_palette_0xBFA8[20] = {
 
 /* Texture data @ 0xBFD0 (1040 bytes) */
 /* @tex fmt=CI4 dim=32x32 */
-u8 dSamusModel_Tex_0xBFD0[1040] = {
+u8 dSamusModel_Tex_0xBFD0[520] = {
 	#include <SamusModel/Tex_0xBFD0.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xC1D8[520] = {
+	#include <SamusModel/Tex_0xC1D8.tex.inc.c>
 };
 
 /* Palette: Lut_0xC3E0 @ 0xC3E0 (16 colors RGBA5551) */
@@ -4601,8 +4605,12 @@ PAD(8);
 /* Texture data @ 0xC408 (1240 bytes) */
 /* Texture: 0xC408 (CI4 — trailing 0xC8 bytes split as palette frames) */
 /* @tex fmt=CI4 dim=32x32 lut=dSamusModel_Lut_0xC3E0_palette */
-u8 dSamusModel_Tex_0xC408[1040] = {
+u8 dSamusModel_Tex_0xC408[520] = {
 	#include <SamusModel/Tex_0xC408.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xC610[520] = {
+	#include <SamusModel/Tex_0xC610.tex.inc.c>
 };
 
 u16 dSamusModel_palette_0xC818[20] = {
@@ -4732,8 +4740,119 @@ u16 dSamusModel_palette_0xD5F0[20] = {
 
 /* Texture data @ 0xD618 (2992 bytes) */
 /* @tex fmt=CI4 dim=32x187 */
-u8 dSamusModel_Tex_0xD618[2992] = {
+u8 dSamusModel_Tex_0xD618[280] = {
 	#include <SamusModel/Tex_0xD618.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xD730[40] = {
+	#include <SamusModel/Tex_0xD730.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xD758[40] = {
+	#include <SamusModel/Tex_0xD758.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xD780[40] = {
+	#include <SamusModel/Tex_0xD780.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xD7A8[40] = {
+	#include <SamusModel/Tex_0xD7A8.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xD7D0[520] = {
+	#include <SamusModel/Tex_0xD7D0.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xD9D8[40] = {
+	#include <SamusModel/Tex_0xD9D8.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDA00[40] = {
+	#include <SamusModel/Tex_0xDA00.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDA28[40] = {
+	#include <SamusModel/Tex_0xDA28.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDA50[40] = {
+	#include <SamusModel/Tex_0xDA50.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDA78[40] = {
+	#include <SamusModel/Tex_0xDA78.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDAA0[520] = {
+	#include <SamusModel/Tex_0xDAA0.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDCA8[40] = {
+	#include <SamusModel/Tex_0xDCA8.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDCD0[40] = {
+	#include <SamusModel/Tex_0xDCD0.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDCF8[88] = {
+	#include <SamusModel/Tex_0xDCF8.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDD50[40] = {
+	#include <SamusModel/Tex_0xDD50.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDD78[104] = {
+	#include <SamusModel/Tex_0xDD78.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDDE0[40] = {
+	#include <SamusModel/Tex_0xDDE0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=16x8 */
+u8 dSamusModel_Tex_0xDE08[112] = {
+	#include <SamusModel/Tex_0xDE08.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=16x8 */
+u8 dSamusModel_Tex_0xDE78[112] = {
+	#include <SamusModel/Tex_0xDE78.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=16x8 */
+u8 dSamusModel_Tex_0xDEE8[80] = {
+	#include <SamusModel/Tex_0xDEE8.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDF38[40] = {
+	#include <SamusModel/Tex_0xDF38.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDF60[40] = {
+	#include <SamusModel/Tex_0xDF60.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xDF88[132] = {
+	#include <SamusModel/Tex_0xDF88.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xE00C[12] = {
+	#include <SamusModel/Tex_0xE00C.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xE018[120] = {
+	#include <SamusModel/Tex_0xE018.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xE090[8] = {
+	#include <SamusModel/Tex_0xE090.tex.inc.c>
+};
+
+u8 dSamusModel_Tex_0xE098[304] = {
+	#include <SamusModel/Tex_0xE098.tex.inc.c>
 };
 
 /* Texture data for sprite Stock */

@@ -20,6 +20,16 @@ extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB00[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB18[];
 extern u16 dPurinModel_Lut_0x6948_palette[];
 extern u8 dPurinModel_Tex_0x6970[];
+extern u8 dPurinModel_Tex_0x69F8[];
+extern u8 dPurinModel_Tex_0x6A20[];
+extern u8 dPurinModel_Tex_0x6A48[];
+extern u8 dPurinModel_Tex_0x6A98[];
+extern u8 dPurinModel_Tex_0x6AC0[];
+extern u8 dPurinModel_Tex_0x6CF0[];
+extern u8 dPurinModel_Tex_0x6F20[];
+extern u8 dPurinModel_Tex_0x7150[];
+extern u8 dPurinModel_Tex_0x7358[];
+extern u8 dPurinModel_Tex_0x7380[];
 extern u16 dPurinModel_gap_0x6028_sub_0x880[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8A8[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8D0[];
@@ -63,24 +73,24 @@ MObjSub **dPurinModel_Joint_0x0040_post[8] = {
 u32 dPurinModel_Joint_0x0060_post[8] = {
 	0x001A021A,
 	0x00000000,
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0xA10),
+	dPurinModel_Tex_0x7380,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x150),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x380),
+	dPurinModel_Tex_0x6AC0,
+	dPurinModel_Tex_0x6CF0,
 };
 
 /* u32 pointer array @ 0x80 (8 entries) */
 u32 dPurinModel_Joint_0x0080_post[8] = {
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x5B0),
+	dPurinModel_Tex_0x6F20,
 	0x00000000,
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x9E8),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x88),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0xB0),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0xD8),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x128),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0xA10),
+	dPurinModel_Tex_0x7358,
+	dPurinModel_Tex_0x69F8,
+	dPurinModel_Tex_0x6A20,
+	dPurinModel_Tex_0x6A48,
+	dPurinModel_Tex_0x6A98,
+	dPurinModel_Tex_0x7380,
 };
 
 /* u32 pointer array @ 0xA0 (8 entries) */
@@ -88,19 +98,19 @@ u32 dPurinModel_Joint_0x00A0_post[8] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x150),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x380),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x7E0),
+	dPurinModel_Tex_0x6AC0,
+	dPurinModel_Tex_0x6CF0,
+	dPurinModel_Tex_0x7150,
 	0x00000000,
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x9E8),
+	dPurinModel_Tex_0x7358,
 };
 
 /* u32 pointer array @ 0xC0 (8 entries) */
 u32 dPurinModel_Joint_0x00C0_post[8] = {
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x88),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0xB0),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0xD8),
-	(u32)((u8*)&dPurinModel_Tex_0x6970 + 0x128),
+	dPurinModel_Tex_0x69F8,
+	dPurinModel_Tex_0x6A20,
+	dPurinModel_Tex_0x6A48,
+	dPurinModel_Tex_0x6A98,
 	(u32)dPurinModel_palette_0x7628,
 	(u32)dPurinModel_palette_0x7588,
 	(u32)dPurinModel_palette_0x75B0,
@@ -2429,8 +2439,53 @@ PAD(8);
 /* Texture data @ 0x6970 (3296 bytes) */
 /* Texture: 0x6970 (CI4 — trailing 0xC8 bytes split as palette frames) */
 /* @tex fmt=CI4 dim=48x129 lut=dPurinModel_Tex_0x6970 */
-u8 dPurinModel_Tex_0x6970[3096] = {
+u8 dPurinModel_Tex_0x6970[136] = {
 	#include <PurinModel/Tex_0x6970.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x69F8[40] = {
+	#include <PurinModel/Tex_0x69F8.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x6A20[40] = {
+	#include <PurinModel/Tex_0x6A20.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x6A48[80] = {
+	#include <PurinModel/Tex_0x6A48.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x6A98[40] = {
+	#include <PurinModel/Tex_0x6A98.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPurinModel_Tex_0x6AC0[560] = {
+	#include <PurinModel/Tex_0x6AC0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPurinModel_Tex_0x6CF0[560] = {
+	#include <PurinModel/Tex_0x6CF0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPurinModel_Tex_0x6F20[560] = {
+	#include <PurinModel/Tex_0x6F20.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPurinModel_Tex_0x7150[520] = {
+	#include <PurinModel/Tex_0x7150.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x7358[40] = {
+	#include <PurinModel/Tex_0x7358.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dPurinModel_Tex_0x7380[520] = {
+	#include <PurinModel/Tex_0x7380.tex.inc.c>
 };
 
 u16 dPurinModel_palette_0x7588[20] = {
@@ -2455,8 +2510,16 @@ u16 dPurinModel_palette_0x7628[20] = {
 
 /* Texture data @ 0x7650 (1080 bytes) */
 /* @tex fmt=CI4 dim=16x16 */
-u8 dPurinModel_Tex_0x7650[1080] = {
+u8 dPurinModel_Tex_0x7650[136] = {
 	#include <PurinModel/Tex_0x7650.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x76D8[680] = {
+	#include <PurinModel/Tex_0x76D8.tex.inc.c>
+};
+
+u8 dPurinModel_Tex_0x7980[264] = {
+	#include <PurinModel/Tex_0x7980.tex.inc.c>
 };
 
 /* Texture data for sprite Stock */

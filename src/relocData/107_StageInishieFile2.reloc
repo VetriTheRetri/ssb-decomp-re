@@ -1,10 +1,10 @@
 # Relocation metadata for file 107
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dStageInishieFile2_Layer0MObj_MObjSub+0x8 0x3960
-intern dStageInishieFile2_Layer0MObj_MObjSub+0xC 0x3968
-intern dStageInishieFile2_Layer0MObj_MObjSub+0x14 0x3970
-intern dStageInishieFile2_Layer0MObj_MObjSub+0x1C 0x3978
+intern dStageInishieFile2_Layer0MObj_MObjSub+0x8 dStageInishieFile2_gap_0x37A8_sub_0x1B8
+intern dStageInishieFile2_Layer0MObj_MObjSub+0xC dStageInishieFile2_gap_0x37A8_sub_0x1C0
+intern dStageInishieFile2_Layer0MObj_MObjSub+0x14 dStageInishieFile2_gap_0x37A8_sub_0x1C8
+intern dStageInishieFile2_Layer0MObj_MObjSub+0x1C dStageInishieFile2_gap_0x37A8_sub_0x1D0
 intern dStageInishieFile2_Layer0MObj_MObjSub+0x28 dStageInishieFile2_Tex_0x12E8+0x438
 intern dStageInishieFile2_Layer0MObj_MObjSub+0x2C dStageInishieFile2_Tex_0x12E8+0x5C0
 intern dStageInishieFile2_Layer0MObj_MObjSub+0x30 dStageInishieFile2_Tex_0x12E8+0x748

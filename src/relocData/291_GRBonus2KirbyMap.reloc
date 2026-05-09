@@ -1,9 +1,9 @@
 # Relocation metadata for file 291
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2KirbyMap_header 0xA20  # -> file 145 (GRBonus2KirbyFile2)
-extern dGRBonus2KirbyMap_header+0x10 0x2DB8  # -> file 145 (GRBonus2KirbyFile2)
-extern dGRBonus2KirbyMap_header+0x14 0x3690  # -> file 145 (GRBonus2KirbyFile2)
-extern dGRBonus2KirbyMap_header+0x40 0x3670  # -> file 145 (GRBonus2KirbyFile2)
-extern dGRBonus2KirbyMap_header+0x48 0x26C88  # -> file 119 (Bonus1CommonBackground)
-extern dGRBonus2KirbyMap_header+0x80 0x3920  # -> file 145 (GRBonus2KirbyFile2)
+extern dGRBonus2KirbyMap_header dGRBonus2KirbyMap_pad+0x978  # -> file 145 (GRBonus2KirbyFile2)
+extern dGRBonus2KirbyMap_header+0x10 dGRBonus2KirbyMap_pad+0x2D10  # -> file 145 (GRBonus2KirbyFile2)
+extern dGRBonus2KirbyMap_header+0x14 dGRBonus2KirbyMap_pad+0x35E8  # -> file 145 (GRBonus2KirbyFile2)
+extern dGRBonus2KirbyMap_header+0x40 dGRBonus2KirbyMap_pad+0x35C8  # -> file 145 (GRBonus2KirbyFile2)
+extern dGRBonus2KirbyMap_header+0x48 dGRBonus2KirbyMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)
+extern dGRBonus2KirbyMap_header+0x80 dGRBonus2KirbyMap_pad+0x3878  # -> file 145 (GRBonus2KirbyFile2)

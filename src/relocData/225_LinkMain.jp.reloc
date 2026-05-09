@@ -27,10 +27,10 @@ intern dLinkMain_attr+0x344 dLinkMain_skeleton
 extern dLinkMain_file_handles dLinkMainMotion_0x0014  # -> file 199 (LinkMainMotion)
 extern dLinkMain_file_handles+0x4 dLinkSpecial2_EntryWaveDObjDesc  # -> file 328 (LinkSpecial2)
 extern dLinkMain_file_handles+0x8 dLinkSpecial1_Boomerang_WeaponAttributes  # -> file 201 (LinkSpecial1)
-extern dLinkMain_file_handles+0xC 0x11908
-extern dLinkMain_file_handles+0x10 0x110A8
-extern dLinkMain_file_handles+0x14 0x11990
-extern dLinkMain_file_handles+0x18 0x11A40
+extern dLinkMain_file_handles+0xC dLinkMain_attr+0x11200
+extern dLinkMain_file_handles+0x10 dLinkMain_attr+0x109A0
+extern dLinkMain_file_handles+0x14 dLinkMain_attr+0x11288
+extern dLinkMain_file_handles+0x18 dLinkMain_attr+0x11338
 extern dLinkMain_file_handles+0x40 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data+0x5E0  # -> file 328 (LinkSpecial2)
 extern dLinkMain_file_handles+0x48 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data+0x698  # -> file 328 (LinkSpecial2)
 extern dLinkMain_modelparts_desc_0x130 dLinkModel_Joint_0x2630_DisplayList  # -> file 299 (LinkModel)

@@ -9,7 +9,7 @@ intern dNessMainMotion_0x007C+0x38 dNessMainMotion_0x007C
 intern dNessMainMotion_0x0114+0x10 dNessMainMotion_0x0128
 intern dNessMainMotion_0x01E4+0x4 dNessMainMotion_0x01C8+0x14
 intern dNessMainMotion_0x01F0+0x4 dNessMainMotion_0x01C8+0x14
-extern dNessMainMotion_0x01F0+0xC 0x758  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x01F0+0xC dNessMainMotion_0x0758  # -> file 201 (FTCommonMoveset)
 intern dNessMainMotion_0x0278+0x4 dNessMainMotion_0x0238
 intern dNessMainMotion_0x02B8+0x4 dNessMainMotion_0x02A0
 intern dNessMainMotion_0x02C0+0x8 dNessMainMotion_0x0278+0x8
@@ -23,23 +23,23 @@ intern dNessMainMotion_0x0758+0x8 dNessMainMotion_0x073C
 intern dNessMainMotion_0x07BC+0x8 dNessMainMotion_0x079C
 intern dNessMainMotion_0x0814+0x8 dNessMainMotion_0x0808
 intern dNessMainMotion_0x082C+0x8 dNessMainMotion_0x0820
-extern dNessMainMotion_0x082C+0x1C 0x0  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0860+0x14 0x64  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0894+0x1C 0xC8  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x08D0+0x10 0x12C  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x08F8+0x8 0x1A0  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0910+0xC 0x1F4  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0934+0x20 0x248  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x096C+0xC 0x2B0  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0988+0x8 0x324  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x09A0+0xC 0x378  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x09C4+0x10 0x3CC  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x09EC+0xC 0x430  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0A08+0xC 0x494  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0A24+0x10 0x4F8  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0A54+0x18 0x55C  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0A88+0x10 0x5C0  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0AC8+0xC 0x634  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x082C+0x1C dNessMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0860+0x14 dNessMainMotion_0x0024+0x40  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0894+0x1C dNessMainMotion_0x007C+0x4C  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x08D0+0x10 dNessMainMotion_0x0128+0x4  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x08F8+0x8 dNessMainMotion_0x019C+0x4  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0910+0xC dNessMainMotion_0x01F0+0x4  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0934+0x20 dNessMainMotion_0x0238+0x10  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x096C+0xC dNessMainMotion_0x02A0+0x10  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0988+0x8 dNessMainMotion_0x02D0+0x54  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x09A0+0xC dNessMainMotion_0x0358+0x20  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x09C4+0x10 dNessMainMotion_0x03BC+0x10  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x09EC+0xC dNessMainMotion_0x0418+0x18  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0A08+0xC dNessMainMotion_0x0494  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0A24+0x10 dNessMainMotion_0x04F8  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0A54+0x18 dNessMainMotion_0x04F8+0x64  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0A88+0x10 dNessMainMotion_0x056C+0x54  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0AC8+0xC dNessMainMotion_0x0630+0x4  # -> file 201 (FTCommonMoveset)
 intern dNessMainMotion_0x0AC8+0x1C dNessMainMotion_0x0AC8
 intern dNessMainMotion_0x0AE8+0x30 dNessMainMotion_0x0AE8
 intern dNessMainMotion_0x0AE8+0x54 dNessMainMotion_0x0AE8
@@ -49,13 +49,13 @@ intern dNessMainMotion_0x0BA4+0x24 dNessMainMotion_0x0BA4
 intern dNessMainMotion_0x0C04+0x8 dNessMainMotion_0x0BA4+0x28
 intern dNessMainMotion_0x0C84+0x8 dNessMainMotion_0x0C04+0x48
 intern dNessMainMotion_0x0D70+0x8 dNessMainMotion_0x0C84+0xB4
-extern dNessMainMotion_0x0E24+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0E30+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
-extern dNessMainMotion_0x0E3C+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0E24+0x4 dNessMainMotion_0x068C+0x20  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0E30+0x4 dNessMainMotion_0x06B4+0x10  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0E3C+0x4 dNessMainMotion_0x06B4+0x18  # -> file 201 (FTCommonMoveset)
 intern dNessMainMotion_0x0E48+0x4 dNessMainMotion_0x01C8+0x14
-extern dNessMainMotion_0x0E48+0xC 0x6F0  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0E48+0xC dNessMainMotion_0x06F0  # -> file 201 (FTCommonMoveset)
 intern dNessMainMotion_0x0E5C+0x4 dNessMainMotion_0x01C8+0x14
-extern dNessMainMotion_0x0E5C+0xC 0x70C  # -> file 201 (FTCommonMoveset)
+extern dNessMainMotion_0x0E5C+0xC dNessMainMotion_0x06F0+0x1C  # -> file 201 (FTCommonMoveset)
 intern dNessMainMotion_0x14B8+0x4 dNessMainMotion_0x14AC
 intern dNessMainMotion_0x1524+0x4 dNessMainMotion_0x1520
 intern dNessMainMotion_0x16B0+0x4 dNessMainMotion_0x15E8

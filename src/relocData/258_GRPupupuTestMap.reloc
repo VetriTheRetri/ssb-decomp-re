@@ -1,13 +1,13 @@
 # Relocation metadata for file 258
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRPupupuTestMap_header 0x898  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x4 0x9D0  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x10 0x1D00  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x14 0x20B0  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x20 0x22D0  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x30 0x2810  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x34 0x28C0  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x40 0x2094  # -> file 102 (StagePupupuBeta2)
-extern dGRPupupuTestMap_header+0x48 0x26C88  # -> file 88 (StageDreamLand)
+extern dGRPupupuTestMap_header dGRPupupuTestMap_pad+0x7DC  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x4 dGRPupupuTestMap_pad+0x914  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x10 dGRPupupuTestMap_pad+0x1C44  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x14 dGRPupupuTestMap_pad+0x1FF4  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x20 dGRPupupuTestMap_pad+0x2214  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x30 dGRPupupuTestMap_pad+0x2754  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x34 dGRPupupuTestMap_pad+0x2804  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x40 dGRPupupuTestMap_pad+0x1FD8  # -> file 102 (StagePupupuBeta2)
+extern dGRPupupuTestMap_header+0x48 dGRPupupuTestMap_pad+0x26BCC  # -> file 88 (StageDreamLand)
 intern dGRPupupuTestMap_header+0x84 dGRPupupuTestMap_item_weights

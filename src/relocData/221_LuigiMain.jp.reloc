@@ -44,7 +44,7 @@ extern dLuigiMain_modelparts_desc_0x0AC+0x3C dLuigiModel_gap_0x4E8C_sub_0x7C4  #
 extern dLuigiMain_modelparts_desc_0x0AC+0x40 dLuigiModel_gap_0x4E8C_sub_0x8C4  # -> file 298 (LuigiModel)
 extern dLuigiMain_modelparts_desc_0x0AC+0x44 dLuigiModel_gap_0x4E8C_sub_0x910  # -> file 298 (LuigiModel)
 extern dLuigiMain_commonparts_container dLuigiModel_JointTree  # -> file 298 (LuigiModel)
-extern dLuigiMain_commonparts_container+0x4 0x0
+extern dLuigiMain_commonparts_container+0x4 dLuigiMain_file_handles
 extern dLuigiMain_commonparts_container+0x8 dLuigiModel_JointTree+0x480  # -> file 298 (LuigiModel)
 extern dLuigiMain_commonparts_container+0x10 dLuigiModel_JointTree_0x49E8  # -> file 298 (LuigiModel)
 extern dLuigiMain_commonparts_container+0x14 dLuigiModel_gap_0x28E0_sub_0x3A0  # -> file 298 (LuigiModel)

@@ -3,5 +3,5 @@
 # Labels resolved via src/relocData/222_LuigiSpecial1.reloc .o symbol table
 
 
-extern dLuigiSpecial1_Fireball_WeaponAttributes 0x1A8
-extern dLuigiSpecial1_Fireball_WeaponAttributes+0x4 0xD8
+extern dLuigiSpecial1_Fireball_WeaponAttributes dLuigiSpecial1_Fireball_WeaponAttributes+0x1A8
+extern dLuigiSpecial1_Fireball_WeaponAttributes+0x4 dLuigiSpecial1_Fireball_WeaponAttributes+0xD8

@@ -1,7 +1,7 @@
 # Relocation metadata for file 349
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dSamusSpecial2_GrappleBeamMObjSub_MObjSub+0x4 0x0298
+intern dSamusSpecial2_GrappleBeamMObjSub_MObjSub+0x4 dSamusSpecial2_gap_0x0288_sub_0x10
 intern dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites dSamusSpecial2_Tex_0x110
 intern dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites+0x4 dSamusSpecial2_Tex_0x8
 intern dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real+0x4 dSamusSpecial2_GrappleBeamMObjSub_MObjSub_sprites

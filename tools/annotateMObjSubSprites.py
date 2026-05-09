@@ -367,21 +367,41 @@ def find_pointer_array_targets(text, array_name):
         return None
     body = decl["body"]
     targets = []
-    # Recognises `&NAME[0xN]` / `&NAME[N]` (with optional outer cast) — a
-    # pointer into the middle of an existing block. The parser flags this
-    # as a `("__split__", parent, offset)` so the planner can split the
-    # parent at that offset and replace the reference with a bare symbol.
+    # Recognises pointer-into-block expressions in two equivalent shapes
+    # commonly emitted by the splatter for legacy reloc-data files:
+    #   `&NAME[0xN]`              — clean form
+    #   `((u8*)&NAME + 0xN)`      — older legacy form (typically wrapped
+    #                                in another cast, e.g. `(u32)(...)`)
+    # Both indicate the slot points into the middle of `NAME` at offset
+    # `N` and the parser flags them as `("__split__", parent, offset)`
+    # so the planner can split the parent at that offset and replace the
+    # reference with a bare symbol.
     split_re = re.compile(
         r"^&\s*([A-Za-z_]\w*)\s*\[\s*(0x[0-9A-Fa-f]+|\d+)\s*\]\s*$"
+    )
+    legacy_split_re = re.compile(
+        r"^\(\s*\w+\s*\*+\s*\)\s*&\s*([A-Za-z_]\w*)\s*"
+        r"\+\s*(0x[0-9A-Fa-f]+|\d+)\s*$"
     )
     for tok in split_top_level(body):
         tok = tok.strip().rstrip(",")
         if not tok:
             continue
-        # Strip leading cast `(<T> *...)` (any number of `*`s, any element
-        # type) so the remaining text exposes the actual pointee expression.
-        cast_stripped = re.sub(r"^\(\s*\w+\s*\**\s*\)\s*", "", tok)
+        # Strip up to two leading casts `(<T> *...)` (any number of `*`s,
+        # any element type) so the remaining text exposes the actual
+        # pointee expression. The legacy form `(u32)((u8*)&Foo + 0xN)`
+        # carries an outer + inner cast; both are stripped before split
+        # parsing matches the inner expression.
+        cast_stripped = re.sub(
+            r"^(?:\(\s*\w+\s*\**\s*\)\s*){1,2}", "", tok)
+        # Also strip an enclosing pair of parens like `((u8*)&Foo + 0xN)`
+        # (after the outer `(u32)` was peeled).
         cast_stripped = cast_stripped.strip()
+        if cast_stripped.startswith("(") and cast_stripped.endswith(")"):
+            inner = cast_stripped[1:-1].strip()
+            inner = re.sub(r"^\(\s*\w+\s*\**\s*\)\s*", "", inner).strip()
+            if "+" in inner and inner.startswith("&"):
+                cast_stripped = inner
         # Pure NULL slot
         if cast_stripped in ("NULL", "0", "0x0", "0x00000000") or \
                 re.fullmatch(r"0x0+", cast_stripped):
@@ -399,6 +419,21 @@ def find_pointer_array_targets(text, array_name):
         if m:
             off = int(m.group(2), 0)
             targets.append(("__split__", m.group(1), off))
+            continue
+        # `&Tex_X + 0xN` (legacy form, with the casts already stripped).
+        m = legacy_split_re.match(cast_stripped)
+        if m:
+            off = int(m.group(2), 0)
+            targets.append(("__split__", m.group(1), off))
+            continue
+        # Same form without the outer cast (just `&Tex_X + 0xN`).
+        m2 = re.match(
+            r"^&\s*([A-Za-z_]\w*)\s*\+\s*(0x[0-9A-Fa-f]+|\d+)\s*$",
+            cast_stripped,
+        )
+        if m2:
+            off = int(m2.group(2), 0)
+            targets.append(("__split__", m2.group(1), off))
             continue
         # Address-of or arithmetic expression — points into another block,
         # not a standalone block we can rename.
@@ -444,7 +479,11 @@ def find_target_basename(target_name, file_prefix):
 
 
 def load_reloc_map(reloc_path):
-    """Parse a .reloc file into `{(source_sym, byte_offset): target_sym}`.
+    """Parse a .reloc file into `{(source_sym, byte_offset): target}`.
+    The target is captured *with* any trailing `+0xN` (i.e.
+    `dFoo_Bar+0x18`), not just the bare symbol name — that's needed so
+    callers can detect chain pointers landing in the middle of an
+    existing block (split candidates) rather than at its boundary.
     Used to resolve `u32 X[N] = { 0xCHAINHEX, ... }`-style legacy sprite/
     palette arrays, where each slot's binary value is opaque chain hex
     that fixRelocChain.py rewrites at link time but the .reloc carries
@@ -455,7 +494,7 @@ def load_reloc_map(reloc_path):
     line_re = re.compile(
         r"^\s*(?:intern|extern)\s+"
         r"([A-Za-z_]\w*)(?:\+0x([0-9A-Fa-f]+))?"
-        r"\s+([A-Za-z_]\w*)"
+        r"\s+([A-Za-z_]\w*(?:\+0x[0-9A-Fa-f]+)?)"
     )
     with open(reloc_path) as f:
         for ln in f:
@@ -471,13 +510,20 @@ def load_reloc_map(reloc_path):
 def resolve_unresolved_targets(targets, array_name, reloc_map):
     """For each `("__unresolved__", text)` entry, look up the target
     symbol in `reloc_map` keyed on `(array_name, slot_idx*4)`. The
-    array's slot stride is fixed at 4 bytes (chain pointer width)."""
+    array's slot stride is fixed at 4 bytes (chain pointer width).
+    A target carrying `+0xN` (a chain pointer landing mid-block) is
+    converted to a `("__split__", parent, offset)` tuple so the planner
+    splits the parent block."""
     out = []
     for idx, t in enumerate(targets):
         if isinstance(t, tuple) and t[0] == "__unresolved__":
             tgt = reloc_map.get((array_name, idx * 4))
             if tgt is not None:
-                out.append(tgt)
+                m = re.match(r"^([A-Za-z_]\w*)\+0x([0-9A-Fa-f]+)$", tgt)
+                if m:
+                    out.append(("__split__", m.group(1), int(m.group(2), 16)))
+                else:
+                    out.append(tgt)
                 continue
         out.append(t)
     return out
@@ -660,11 +706,14 @@ def plan_for_file(fid, file_path):
                         f"  ! sprites[{tex_idx}] = `{tgt}` — not declared in "
                         f"this file")
                     continue
-                # Pair this sprite with the same-index palettes entry, if
-                # the MObjSub provided a palettes array of matching arity.
+                # Pair this sprite with the same-index palettes entry,
+                # falling back to `palettes[i mod len]` when the sprites
+                # array is longer than the palettes array — gcDrawMObjForDObj
+                # cycles palettes via the texture_id field, so a 5-frame
+                # sprite atlas with 2 palettes alternates pal[0]/pal[1].
                 lut_name = None
-                if pal_targets and tex_idx < len(pal_targets):
-                    pal = pal_targets[tex_idx]
+                if pal_targets:
+                    pal = pal_targets[tex_idx % len(pal_targets)]
                     if isinstance(pal, str):
                         lut_name = pal
                 tex_block = by_name[tgt]
@@ -743,10 +792,54 @@ def plan_for_file(fid, file_path):
                 })
                 seen_blocks.add(tgt)
 
+    # Sweep the entire reloc map for `Tex+offset` chain pointers we
+    # didn't already discover via sprites arrays. Each one is a split
+    # request without dim/lut info; the planner uses minimal stub dim
+    # so the layout split happens but no @tex annotation is forced.
+    extra_splits = scan_reloc_for_tex_offsets(reloc_map, by_name)
+    for parent, offsets in extra_splits.items():
+        for off in offsets:
+            existing_offsets = {r["offset"] for r in splits.get(parent, [])}
+            if off in existing_offsets:
+                continue
+            splits.setdefault(parent, []).append({
+                "offset": off,
+                "fmt": None, "w": None, "h": None, "lut": None,
+                "mobjsub": "(reloc-scan)",
+                "from_idx": 0, "tex_idx": 0,
+                "from_sprites": None,
+            })
+
     return plan, anomalies, splits, by_name, blocks
 
 
 # ─── merge over-splits ──────────────────────────────────────────────────
+
+def scan_reloc_for_tex_offsets(reloc_map, by_name):
+    """Scan a parsed reloc map for `<source>+<offset>: <Tex_X>+<N>`
+    entries — any chain pointer landing in the middle of an existing
+    `Tex_*` block. These are split candidates even when they originate
+    from a u8/u32-typed legacy block (which the regular plan walk
+    skips because it can't parse the slot list as pointer expressions).
+
+    Returns a dict {parent_name: set(offsets)} for each Tex with at
+    least one mid-block reference. The planner converts these into
+    split requests using the MObjSub-supplied dim/lut from any
+    referencing sprites array we already saw, otherwise falls back to
+    a sensible default."""
+    splits_from_reloc = {}
+    for (_src, _src_off), target in reloc_map.items():
+        m = re.match(r"^(d\w+_Tex_0x[0-9A-Fa-f]+)\+0x([0-9A-Fa-f]+)$", target)
+        if not m:
+            continue
+        parent, off = m.group(1), int(m.group(2), 16)
+        if parent not in by_name:
+            continue
+        if off <= 0 or off >= (by_name[parent].get("size") or 0):
+            continue
+        splits_from_reloc.setdefault(parent, set()).add(off)
+    return splits_from_reloc
+
 
 def scan_dl_annotations(text, blocks):
     """Find every `/* @tex fmt=… dim=W×H lut=… */` annotation already in
@@ -1132,13 +1225,21 @@ def plan_split_layout(parent_name, parent_block, split_reqs):
     offsets = sorted(by_off)
     if not offsets:
         return [], anomalies
-    # Validate offsets fit within the parent.
+    # Drop out-of-bounds offsets (a previous split round may have already
+    # shrunk the parent below the request, leaving stale offsets in the
+    # reloc that already point past the parent's new size — the .reloc
+    # remapper handles those once a new split runs).
+    in_bounds = []
     for off in offsets:
         if off <= 0 or off >= parent_size:
             anomalies.append(
                 f"  ! split at `{parent_name}+0x{off:X}` falls outside "
-                f"parent (size={parent_size}); skipping splits for this parent")
-            return [], anomalies
+                f"parent (size={parent_size}); skipping this offset only")
+            continue
+        in_bounds.append(off)
+    if not in_bounds:
+        return [], anomalies
+    offsets = in_bounds
 
     layout = [{
         "name": parent_name,
@@ -1262,13 +1363,13 @@ def apply_splits(file_path, splits, by_name):
             if ext_lines:
                 text = text[:insert_pos] + "".join(ext_lines) + text[insert_pos:]
 
-        # Rewrite every `&parent[off]` / `(cast)&parent[off]` reference.
+        # Rewrite every `&parent[off]` / `(cast)&parent[off]` reference,
+        # plus the legacy `(u32)((u8*)&parent + 0xN)` form.
         for sub in layout:
             if sub.get("is_parent_head"):
                 continue
             off = sub["parent_offset"]
-            # Match the C source pattern `&<parent>[<off>]` with optional
-            # cast and surrounding whitespace.
+            # `&parent[<off>]` or `(cast)&parent[<off>]`
             ref_re = re.compile(
                 rf"\(?\s*(?:\(\s*\w+\s*\**\s*\)\s*)?\&\s*"
                 rf"{re.escape(parent)}\s*\[\s*"
@@ -1276,13 +1377,49 @@ def apply_splits(file_path, splits, by_name):
                 re.IGNORECASE,
             )
             text = ref_re.sub(sub["name"], text)
-            # Update every reloc file's target form `parent+0xN` → `subsym`.
-            for rp in list(reloc_texts):
-                reloc_texts[rp] = re.sub(
-                    rf"\b{re.escape(parent)}\+0x0*{off:X}\b",
-                    sub["name"],
-                    reloc_texts[rp],
-                )
+            # Legacy expression form `(u32)((u8*)&parent + 0xN)` — common
+            # in older `u32 X[]` sprite/palette tables. Strip the casts
+            # too so the slot becomes a plain symbol reference.
+            legacy_re = re.compile(
+                rf"\(\s*\w+\s*\**\s*\)\s*\(\s*\(\s*\w+\s*\**\s*\)\s*\&\s*"
+                rf"{re.escape(parent)}\s*\+\s*"
+                rf"(?:0x0*{off:X}|{off})\s*\)",
+                re.IGNORECASE,
+            )
+            text = legacy_re.sub(sub["name"], text)
+
+        # Build the parent's full sub-block range table so we can map *any*
+        # `parent+0xK` reloc target — even ones that don't align to a split
+        # boundary — to `<sub>+0x<remainder>`. Without this fixup, refs
+        # whose offset falls past the head's new (smaller) size would be
+        # left dangling, breaking fixRelocChain.py.
+        ranges = []  # list of (start_offset, sub_name)
+        cur = 0
+        for sub in layout:
+            ranges.append((cur, sub["name"]))
+            cur += sub["size"]
+        ranges.sort()
+        def remap_target(parent_off):
+            """Find the sub-block covering `parent_off` and return
+            `<sub>+0x<remainder>` (or just `<sub>` if remainder == 0)."""
+            chosen = None
+            for start, name in ranges:
+                if start <= parent_off:
+                    chosen = (start, name)
+                else:
+                    break
+            if chosen is None:
+                return None
+            start, name = chosen
+            rem = parent_off - start
+            return name if rem == 0 else f"{name}+0x{rem:X}"
+
+        ref_re = re.compile(rf"\b{re.escape(parent)}\+0x([0-9A-Fa-f]+)\b")
+        def _ref_repl(m):
+            new = remap_target(int(m.group(1), 16))
+            return new if new is not None else m.group(0)
+        for rp in list(reloc_texts):
+            reloc_texts[rp] = ref_re.sub(_ref_repl, reloc_texts[rp])
 
     return text, reloc_texts, anomalies, sub_names
 

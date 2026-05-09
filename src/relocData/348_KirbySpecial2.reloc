@@ -1,8 +1,8 @@
 # Relocation metadata for file 348
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dKirbySpecial2_Joint_0x09B0_DisplayList+0x34 0x09F0
-intern dKirbySpecial2_Joint_0x09B0_DisplayList+0x34 0x09F0
+intern dKirbySpecial2_Joint_0x09B0_DisplayList+0x34 dKirbySpecial2_Joint_0x09B0_post
+intern dKirbySpecial2_Joint_0x09B0_DisplayList+0x34 dKirbySpecial2_Joint_0x09B0_post
 intern dKirbySpecial2_Joint_0x09B0_post+0x2C dKirbySpecial2_Tex_0x0090
 intern dKirbySpecial2_Joint_0x09B0_post+0x4C dKirbySpecial2_Vtx_0x0890_Vtx
 intern dKirbySpecial2_Joint_0x0A78_DisplayList+0x2C dKirbySpecial2_Tex_0x0008

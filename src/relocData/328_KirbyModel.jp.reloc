@@ -1083,5 +1083,5 @@ intern dKirbyModel_Stock+0x34 dKirbyModel_Stock_bitmaps
 intern dKirbyModel_FTEmblem_bitmaps+0x8 dKirbyModel_FTEmblem_tex
 intern dKirbyModel_FTEmblem+0x34 dKirbyModel_FTEmblem_bitmaps
 
-extern dKirbyModel_DL_0x17850+0x74 0x9EC8
-extern dKirbyModel_DL_0x17850+0xA4 0x9EF0
+extern dKirbyModel_DL_0x17850+0x74 dKirbyModel_gap_0x31CC_sub_0x6CFC
+extern dKirbyModel_DL_0x17850+0xA4 dKirbyModel_gap_0x31CC_sub_0x6D24

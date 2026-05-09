@@ -1,9 +1,9 @@
 # Relocation metadata for file 244
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dPikachuSpecial1_ThunderJoltAir_WeaponAttributes 0x270  # -> file 342 (PikachuSpecial3)
-extern dPikachuSpecial1_ThunderJoltAir_WeaponAttributes+0x8 0x360  # -> file 342 (PikachuSpecial3)
-extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes 0x1888  # -> file 342 (PikachuSpecial3)
-extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x4 0x1018  # -> file 342 (PikachuSpecial3)
-extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x8 0x1A20  # -> file 342 (PikachuSpecial3)
-extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0xC 0x1AE0  # -> file 342 (PikachuSpecial3)
+extern dPikachuSpecial1_ThunderJoltAir_WeaponAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x23C  # -> file 342 (PikachuSpecial3)
+extern dPikachuSpecial1_ThunderJoltAir_WeaponAttributes+0x8 dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x32C  # -> file 342 (PikachuSpecial3)
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x1854  # -> file 342 (PikachuSpecial3)
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x4 dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0xFE4  # -> file 342 (PikachuSpecial3)
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x8 dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x19EC  # -> file 342 (PikachuSpecial3)
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0xC dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x1AAC  # -> file 342 (PikachuSpecial3)

@@ -49,53 +49,737 @@ extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC48[];
 extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC74[];
 extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC58[];
 extern u8 dLuigiModel_Tex_0x6D38[];
+extern u8 dLuigiModel_Tex_0x6EE8[];
+extern u8 dLuigiModel_Tex_0x7118[];
+extern u16 dLuigiModel_palette_0x7320[];
+extern u16 dLuigiModel_palette_0x7348[];
+extern u16 dLuigiModel_palette_0x7370[];
+extern u16 dLuigiModel_palette_0x7398[];
 extern u8 dLuigiModel_Tex_0x73C0[];
-extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E0C[];
-extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E34[];
-extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E5C[];
-extern u16 dLuigiModel_gap_0x4E8C_sub_0x1E84[];
+extern u16 dLuigiModel_palette_0x7548[];
+extern u8 dLuigiModel_Tex_0x7570[];
+extern u8 dLuigiModel_Tex_0x77A0[];
+extern u16 dLuigiModel_palette_0x79A8[];
+extern u8 dLuigiModel_Tex_0x79D0[];
+extern u16 dLuigiModel_palette_0x6C98[];
+extern u16 dLuigiModel_palette_0x6CC0[];
+extern u16 dLuigiModel_palette_0x6CE8[];
+extern u16 dLuigiModel_palette_0x6D10[];
 extern u8 dLuigiModel_gap_0x28E0_sub_0x390[];
 extern u32 dLuigiModel_gap_0x28E0_sub_0x394[];
 
-/* Forward DObjDesc chain-target decls for fixRelocChain.py */
-/* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-PAD(8);
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x7F8[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x800[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x808[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x810[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x818[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x834[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x83C[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x844[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x84C[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x854[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x85C[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x864[];
 
-/* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
-u8 dLuigiModel_gap_0x0000_sub_0x8[16] = {
-	#include <LuigiModel/gap_0x0000_sub_0x8.data.inc.c>
+/* MObjSub-dispatch table at file 0x0000 (96 bytes, 24 u32 slots).
+ * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
+ * trailing-index cells inside Joint_0x00A0_post. Originally split
+ * across PAD(8) + gap_0x0000_sub_0x8[16] + gap_0x0000_sub_0x18[8] +
+ * Joint_0x0020_post[32] + Joint_0x0040_post[32]; merged here so the
+ * .reloc relationships are visible as one continuous table (mirrors
+ * MarioModel's gap_0x0000[25]). */
+MObjSub **dLuigiModel_gap_0x0000[24] = {
+	NULL,                                                       /* +0x00 */
+	NULL,                                                       /* +0x04 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x7F8,        /* +0x08 */
+	NULL,                                                       /* +0x0C */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x800,        /* +0x10 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x808,        /* +0x14 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x810,        /* +0x18 */
+	NULL,                                                       /* +0x1C */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x818,        /* +0x20 → 6-tuple cell */
+	NULL,                                                       /* +0x24 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x834,        /* +0x28 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x83C,        /* +0x2C */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x844,        /* +0x30 */
+	NULL,                                                       /* +0x34 */
+	NULL,                                                       /* +0x38 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x84C,        /* +0x3C */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x854,        /* +0x40 */
+	NULL,                                                       /* +0x44 */
+	NULL,                                                       /* +0x48 */
+	NULL,                                                       /* +0x4C */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x85C,        /* +0x50 */
+	(MObjSub **)dLuigiModel_Joint_0x00A0_post_sub_0x864,        /* +0x54 */
+	NULL,                                                       /* +0x58 */
+	NULL,                                                       /* +0x5C */
 };
 
-/* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
-u32 dLuigiModel_gap_0x0000_sub_0x18[2] = {
-	(u32)0x08B0,
-	aobjEvent32End(),
+/* Joint_0x0060_post region @ 0x60 (32 bytes total, split into 3 sub-tables
+ * mirroring MarioModel's Joint_0x0040_post_sub_0x24/_0x38/_0x48 pattern). */
+
+/* Lead NULL slot @ 0x60 — referenced by `extern DL_0x6270+0x44 →
+ * Joint_0x0060_post` (cross-file ref from MarioSecondaryImage). */
+void *dLuigiModel_Joint_0x0060_post[1] = { NULL };
+
+/* Palette table @ 0x64 — 4 palette frames read by MObjSub_0x0.palettes. */
+u16 *dLuigiModel_Joint_0x0060_post_sub_0x4[4] = {
+	dLuigiModel_palette_0x6D10,
+	dLuigiModel_palette_0x6C98,
+	dLuigiModel_palette_0x6CC0,
+	dLuigiModel_palette_0x6CE8,
 };
 
-/* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-u8 dLuigiModel_Joint_0x0020_post[32] = {
-	#include <LuigiModel/Joint_0x0020_post.data.inc.c>
+/* Sprite table @ 0x74 — 3 sprite frames read by MObjSub_0x1E0.sprites. */
+u8 *dLuigiModel_Joint_0x0060_post_sub_0x14[3] = {
+	dLuigiModel_Tex_0x79D0,
+	dLuigiModel_Tex_0x7570,
+	dLuigiModel_Tex_0x77A0,
 };
 
-/* Raw data from file offset 0x0040 to 0x0060 (32 bytes) */
-u8 dLuigiModel_Joint_0x0040_post[32] = {
-	#include <LuigiModel/Joint_0x0040_post.data.inc.c>
+/* Joint_0x0080_post region @ 0x80 (32 bytes total, split into 3 sub-tables).
+ * The same RGBA5551 texels are reinterpreted as TLUT payload when read via
+ * an MObjSub.palettes field — the N64 SetTextureImage/LoadTLUT pair lets
+ * texture data double as a palette. */
+
+/* Sprite table @ 0x80 — 2 sprite frames (no MObjSub references; left as a
+ * standalone table at the parent's base offset). */
+u8 *dLuigiModel_Joint_0x0080_post[2] = {
+	dLuigiModel_Tex_0x6EE8,
+	dLuigiModel_Tex_0x7118,
 };
 
-/* Raw data from file offset 0x0060 to 0x0080 (32 bytes) */
-u8 dLuigiModel_Joint_0x0060_post[32] = {
-	#include <LuigiModel/Joint_0x0060_post.data.inc.c>
+/* Palette/sprite table @ 0x88 — 2 entries read by MObjSub_0x1E0.palettes. */
+u16 *dLuigiModel_Joint_0x0080_post_sub_0x8[2] = {
+	dLuigiModel_palette_0x79A8,
+	dLuigiModel_palette_0x7548,
 };
 
-/* Raw data from file offset 0x0080 to 0x00A0 (32 bytes) */
-u8 dLuigiModel_Joint_0x0080_post[32] = {
-	#include <LuigiModel/Joint_0x0080_post.data.inc.c>
+/* Palette/sprite table @ 0x90 — 4 entries read by MObjSub_0x258.palettes. */
+u16 *dLuigiModel_Joint_0x0080_post_sub_0x10[4] = {
+	dLuigiModel_palette_0x7398,
+	dLuigiModel_palette_0x7320,
+	dLuigiModel_palette_0x7348,
+	dLuigiModel_palette_0x7370,
 };
 
-/* Raw data from file offset 0x00A0 to 0x0910 (2160 bytes) */
-u8 dLuigiModel_Joint_0x00A0_post[2160] = {
-	#include <LuigiModel/Joint_0x00A0_post.data.inc.c>
+/* === 17 MObjSub structs decoded from Joint_0x00A0_post[2160] === */
+
+/* MObjSub @ Joint_0x00A0_post+0x0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0040, 0x0000, 0x0040, 0x0018,
+		1,
+		0.0f, 0.15199999511241913f,
+		1.0f, 0.6000000238418579f,
+		0.0f, 1.0f,
+		(void**)dLuigiModel_Joint_0x0060_post_sub_0x4,
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0018, 0x0040, 0x0018,
+		0.0f, 0.15199999511241913f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
+
+/* MObjSub @ Joint_0x00A0_post+0x78 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x78[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x3200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0xF0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0xF0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0xAD, 0xDE, 0xFF } },
+#else
+		{ { 0x00, 0xB5, 0x00, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x168 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x168[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0xAD, 0xDE, 0xFF } },
+#else
+		{ { 0x00, 0xB5, 0x00, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x1E0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x1E0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dLuigiModel_Joint_0x0060_post_sub_0x14,
+		0x006A, 0x000D, 0x0040, 0x0020,
+		1,
+		0.20000000298023224f, 0.328000009059906f,
+		0.6000000238418579f, 0.6200000047683716f,
+		0.20000000298023224f, 0.6000000238418579f,
+		(void**)dLuigiModel_Joint_0x0080_post_sub_0x8,
+		0x3005,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0040, 0x0020,
+		0.20000000298023224f, 0.328000009059906f,
+		0.20000000298023224f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x8C, 0x66, 0x66, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x258 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x258[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x006A, 0x000B, 0x0020, 0x0018,
+		0,
+		0.32499998807907104f, 0.057999998331069946f,
+		0.3499999940395355f, 0.30000001192092896f,
+		0.32499998807907104f, 0.3499999940395355f,
+		(void**)dLuigiModel_Joint_0x0080_post_sub_0x10,
+		0x0004,
+		0x02, 0x00,
+		0x0020,
+		0x0018, 0x0020, 0x0018,
+		0.32499998807907104f, 0.057999998331069946f,
+		0.32499998807907104f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x2D0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x2D0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0xAD, 0xDE, 0xFF } },
+#else
+		{ { 0x00, 0xB5, 0x00, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x348 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x348[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x3200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xE1, 0x99, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x8C, 0x66, 0x66, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x3C0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x3C0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x3200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xE1, 0x99, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x8C, 0x66, 0x66, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x438 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x438[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x3200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xE1, 0x99, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x8C, 0x66, 0x66, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x4B0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x4B0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x3200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x528 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x528[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0xAD, 0xDE, 0xFF } },
+#else
+		{ { 0x00, 0xB5, 0x00, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x5A0 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x5A0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0xAD, 0xDE, 0xFF } },
+#else
+		{ { 0x00, 0xB5, 0x00, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x618 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x618[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0x00, 0x08, 0xFF } },
+#else
+		{ { 0x84, 0x00, 0xFF, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x690 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x690[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0x00, 0x08, 0xFF } },
+#else
+		{ { 0x84, 0x00, 0xFF, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x708 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x708[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0x00, 0x08, 0xFF } },
+#else
+		{ { 0x84, 0x00, 0xFF, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x00A0_post+0x780 */
+MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x780[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+#if defined(REGION_JP)
+		{ { 0xFF, 0x00, 0x08, 0xFF } },
+#else
+		{ { 0x84, 0x00, 0xFF, 0xFF } },
+#endif
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* === 12 trailing-index cells (file 0x0898..0x0910, 0x78 bytes) === */
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x7F8[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x0,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x800[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x168,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x808[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0xF0,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x810[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x78,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x818[7] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x1E0,
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x258,
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x2D0,
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x348,
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x3C0,
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x438,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x834[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x5A0,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x83C[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x528,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x844[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x4B0,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x84C[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x690,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x854[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x618,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x85C[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x780,
+	NULL,
+};
+
+MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x864[2] = {
+	(MObjSub *)dLuigiModel_Joint_0x00A0_post_sub_0x708,
+	NULL,
+};
+
+PAD(4);  /* trailing 4 bytes after sub_0x864's NULL terminator */
+
 
 /* Vtx: Vtx_0x0910 @ 0x910 (24 vertices) */
 Vtx dLuigiModel_Vtx_0x0910_Vtx[24] = {
@@ -594,33 +1278,33 @@ MObjSub *dLuigiModel_gap_0x28E0_sub_0x3A0[25] = {
 
 /* u32 pointer array @ 0x2CE4 (4 entries) */
 u32 dLuigiModel_gap_0x28E0_sub_0x404[4] = {
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1E84,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1E0C,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1E34,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1E5C,
+	(u32)&dLuigiModel_palette_0x6D10,
+	(u32)&dLuigiModel_palette_0x6C98,
+	(u32)&dLuigiModel_palette_0x6CC0,
+	(u32)&dLuigiModel_palette_0x6CE8,
 };
 
 /* u32 pointer array @ 0x2CF4 (5 entries) */
 u32 dLuigiModel_gap_0x28E0_sub_0x414[5] = {
-	(u32)((u8*)&dLuigiModel_Tex_0x73C0 + 0x610),
-	(u32)((u8*)&dLuigiModel_Tex_0x73C0 + 0x1B0),
-	(u32)((u8*)&dLuigiModel_Tex_0x73C0 + 0x3E0),
-	(u32)((u8*)&dLuigiModel_Tex_0x6D38 + 0x1B0),
-	(u32)((u8*)&dLuigiModel_Tex_0x6D38 + 0x3E0),
+	dLuigiModel_Tex_0x79D0,
+	dLuigiModel_Tex_0x7570,
+	dLuigiModel_Tex_0x77A0,
+	dLuigiModel_Tex_0x6EE8,
+	dLuigiModel_Tex_0x7118,
 };
 
-/* u32 pointer array @ 0x2D08 (2 entries) */
+/* u32 pointer array @ 0x2D08 (2 entries) — palettes for gap_0x28E0_sub_0x620. */
 u32 dLuigiModel_gap_0x28E0_sub_0x428[2] = {
-	(u32)((u8*)&dLuigiModel_Tex_0x73C0 + 0x5E8),
-	(u32)((u8*)&dLuigiModel_Tex_0x73C0 + 0x188),
+	(u32)dLuigiModel_palette_0x79A8,
+	(u32)dLuigiModel_palette_0x7548,
 };
 
-/* u32 pointer array @ 0x2D10 (4 entries) */
+/* u32 pointer array @ 0x2D10 (4 entries) — palettes for an MObjSub. */
 u32 dLuigiModel_gap_0x28E0_sub_0x430[4] = {
-	(u32)((u8*)&dLuigiModel_Tex_0x6D38 + 0x660),
-	(u32)((u8*)&dLuigiModel_Tex_0x6D38 + 0x5E8),
-	(u32)((u8*)&dLuigiModel_Tex_0x6D38 + 0x610),
-	(u32)((u8*)&dLuigiModel_Tex_0x6D38 + 0x638),
+	(u32)dLuigiModel_palette_0x7398,
+	(u32)dLuigiModel_palette_0x7320,
+	(u32)dLuigiModel_palette_0x7348,
+	(u32)dLuigiModel_palette_0x7370,
 };
 
 /* MObjSub @ 0x2D20 */
@@ -2167,34 +2851,83 @@ Gfx dLuigiModel_DL_0x6C20[14] = {
 PAD(8);
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_gap_0x4E8C_sub_0x1E0C[20] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1E0C.palette.inc.c>
+u16 dLuigiModel_palette_0x6C98[20] = {
+	#include <LuigiModel/palette_0x6C98.palette.inc.c>
 };
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_gap_0x4E8C_sub_0x1E34[20] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1E34.palette.inc.c>
+u16 dLuigiModel_palette_0x6CC0[20] = {
+	#include <LuigiModel/palette_0x6CC0.palette.inc.c>
 };
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_gap_0x4E8C_sub_0x1E5C[20] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1E5C.palette.inc.c>
+u16 dLuigiModel_palette_0x6CE8[20] = {
+	#include <LuigiModel/palette_0x6CE8.palette.inc.c>
 };
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_gap_0x4E8C_sub_0x1E84[20] = {
-	#include <LuigiModel/gap_0x4E8C_sub_0x1E84.palette.inc.c>
+u16 dLuigiModel_palette_0x6D10[20] = {
+	#include <LuigiModel/palette_0x6D10.palette.inc.c>
 };
 
 /* Texture data @ 0x6D38 (1672 bytes) */
-/* @tex fmt=CI4 dim=32x24 */
-u8 dLuigiModel_Tex_0x6D38[1672] = {
+/* @tex fmt=CI4 dim=32x24 lut=dLuigiModel_palette_0x6D10 */
+u8 dLuigiModel_Tex_0x6D38[432] = {
 	#include <LuigiModel/Tex_0x6D38.tex.inc.c>
 };
 
-/* Texture data @ 0x73C0 (2072 bytes) */
-u8 dLuigiModel_Tex_0x73C0[2072] = {
+/* @tex fmt=CI4 dim=32x35 lut=dLuigiModel_palette_0x7548 */
+u8 dLuigiModel_Tex_0x6EE8[560] = {
+	#include <LuigiModel/Tex_0x6EE8.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 lut=dLuigiModel_palette_0x79A8 */
+u8 dLuigiModel_Tex_0x7118[520] = {
+	#include <LuigiModel/Tex_0x7118.tex.inc.c>
+};
+
+u16 dLuigiModel_palette_0x7320[20] = {
+	#include <LuigiModel/palette_0x7320.palette.inc.c>
+};
+
+u16 dLuigiModel_palette_0x7348[20] = {
+	#include <LuigiModel/palette_0x7348.palette.inc.c>
+};
+
+u16 dLuigiModel_palette_0x7370[20] = {
+	#include <LuigiModel/palette_0x7370.palette.inc.c>
+};
+
+u16 dLuigiModel_palette_0x7398[20] = {
+	#include <LuigiModel/palette_0x7398.palette.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x24 */
+u8 dLuigiModel_Tex_0x73C0[392] = {
 	#include <LuigiModel/Tex_0x73C0.tex.inc.c>
+};
+
+u16 dLuigiModel_palette_0x7548[20] = {
+	#include <LuigiModel/palette_0x7548.palette.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x35 lut=dLuigiModel_palette_0x7548 */
+u8 dLuigiModel_Tex_0x7570[560] = {
+	#include <LuigiModel/Tex_0x7570.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 lut=dLuigiModel_palette_0x79A8 */
+u8 dLuigiModel_Tex_0x77A0[520] = {
+	#include <LuigiModel/Tex_0x77A0.tex.inc.c>
+};
+
+u16 dLuigiModel_palette_0x79A8[20] = {
+	#include <LuigiModel/palette_0x79A8.palette.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 lut=dLuigiModel_palette_0x79A8 */
+u8 dLuigiModel_Tex_0x79D0[520] = {
+	#include <LuigiModel/Tex_0x79D0.tex.inc.c>
 };
 
 /* Texture data for sprite Stock */

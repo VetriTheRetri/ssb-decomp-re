@@ -1718,7 +1718,7 @@ u8 dFoxModel_gap_0x5A38_sub_0x15E8_post[56] = {
 };
 
 /* gap sub-block @ 0x70D0 (was gap+0x1698, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dFoxModel_Tex_0x70D0[520] = {
 	#include <FoxModel/Tex_0x70D0.tex.inc.c>
 };
@@ -1736,7 +1736,7 @@ u32 dFoxModel_gap_0x72F8[2] = {
 };
 
 /* gap sub-block @ 0x7300 (was gap+0x8, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dFoxModel_Tex_0x7300[520] = {
 	#include <FoxModel/Tex_0x7300.tex.inc.c>
 };
@@ -1775,8 +1775,13 @@ u16 dFoxModel_gap_0x7528_sub_0x80[20] = {
 
 /* Texture data @ 0x75D0 (568 bytes) */
 /* @tex fmt=CI4 dim=16x32 */
-u8 dFoxModel_Tex_0x75D0[568] = {
+u8 dFoxModel_Tex_0x75D0[304] = {
 	#include <FoxModel/Tex_0x75D0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x16 */
+u8 dFoxModel_Tex_0x7700[264] = {
+	#include <FoxModel/Tex_0x7700.tex.inc.c>
 };
 
 /* Palette: Lut_0x7808 @ 0x7808 (16 colors RGBA5551) */
@@ -1792,7 +1797,7 @@ u32 dFoxModel_gap_0x7828[2] = {
 };
 
 /* gap sub-block @ 0x7830 (was gap+0x8, 264 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dFoxModel_Tex_0x7830[264] = {
 	#include <FoxModel/Tex_0x7830.tex.inc.c>
 };

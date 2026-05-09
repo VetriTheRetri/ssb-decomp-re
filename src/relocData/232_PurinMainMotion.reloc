@@ -8,7 +8,7 @@ intern dPurinMainMotion_0x0034+0x2C dPurinMainMotion_0x0034
 intern dPurinMainMotion_0x0088+0x3C dPurinMainMotion_0x0088
 intern dPurinMainMotion_0x0238+0x4 dPurinMainMotion_0x022C
 intern dPurinMainMotion_0x0244+0x4 dPurinMainMotion_0x022C
-extern dPurinMainMotion_0x0244+0xC 0x758  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0244+0xC dPurinMainMotion_0x0748+0x10  # -> file 201 (FTCommonMoveset)
 intern dPurinMainMotion_0x02E4+0x4 dPurinMainMotion_0x0298
 intern dPurinMainMotion_0x0324+0x4 dPurinMainMotion_0x030C
 intern dPurinMainMotion_0x032C+0x8 dPurinMainMotion_0x02EC
@@ -22,23 +22,23 @@ intern dPurinMainMotion_0x07B0+0x8 dPurinMainMotion_0x0794
 intern dPurinMainMotion_0x0814+0x8 dPurinMainMotion_0x07F4
 intern dPurinMainMotion_0x0874+0x8 dPurinMainMotion_0x0860
 intern dPurinMainMotion_0x0894+0x8 dPurinMainMotion_0x0880
-extern dPurinMainMotion_0x0894+0x20 0x0  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x08D4+0x14 0x64  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0908+0x18 0xC8  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0940+0x14 0x12C  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0974+0xC 0x1A0  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0998+0xC 0x1F4  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x09BC+0x20 0x248  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x09F4+0xC 0x2B0  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0A18+0x14 0x324  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0A44+0x14 0x378  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0A70+0x14 0x3CC  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0A9C+0x14 0x430  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0AC8+0x10 0x494  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0AF0+0x10 0x4F8  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0B20+0x14 0x55C  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0B54+0x10 0x5C0  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0BBC+0x14 0x634  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0894+0x20 dPurinMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x08D4+0x14 dPurinMainMotion_0x0034+0x30  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0908+0x18 dPurinMainMotion_0x0088+0x40  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0940+0x14 dPurinMainMotion_0x012C  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0974+0xC dPurinMainMotion_0x0184+0x1C  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0998+0xC dPurinMainMotion_0x01F4  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x09BC+0x20 dPurinMainMotion_0x0244+0x4  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x09F4+0xC dPurinMainMotion_0x0298+0x18  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0A18+0x14 dPurinMainMotion_0x0324  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0A44+0x14 dPurinMainMotion_0x033C+0x3C  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0A70+0x14 dPurinMainMotion_0x03B0+0x1C  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0A9C+0x14 dPurinMainMotion_0x040C+0x24  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0AC8+0x10 dPurinMainMotion_0x0488+0xC  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0AF0+0x10 dPurinMainMotion_0x04CC+0x2C  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0B20+0x14 dPurinMainMotion_0x0558+0x4  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0B54+0x10 dPurinMainMotion_0x0568+0x58  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0BBC+0x14 dPurinMainMotion_0x0630+0x4  # -> file 201 (FTCommonMoveset)
 intern dPurinMainMotion_0x0BBC+0x24 dPurinMainMotion_0x0BBC
 intern dPurinMainMotion_0x0BE4+0x34 dPurinMainMotion_0x0BE4
 intern dPurinMainMotion_0x0BE4+0x54 dPurinMainMotion_0x0BE4
@@ -48,13 +48,13 @@ intern dPurinMainMotion_0x0CA4+0x28 dPurinMainMotion_0x0CA4
 intern dPurinMainMotion_0x0D08+0xC dPurinMainMotion_0x0CD0
 intern dPurinMainMotion_0x0D9C+0x4 dPurinMainMotion_0x0D64
 intern dPurinMainMotion_0x0E8C+0x4 dPurinMainMotion_0x0E54
-extern dPurinMainMotion_0x0F00+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0F0C+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
-extern dPurinMainMotion_0x0F18+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0F00+0x4 dPurinMainMotion_0x06AC  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0F0C+0x4 dPurinMainMotion_0x06AC+0x18  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0F18+0x4 dPurinMainMotion_0x06C8+0x4  # -> file 201 (FTCommonMoveset)
 intern dPurinMainMotion_0x0F24+0x4 dPurinMainMotion_0x022C
-extern dPurinMainMotion_0x0F24+0xC 0x6F0  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0F24+0xC dPurinMainMotion_0x06E4+0xC  # -> file 201 (FTCommonMoveset)
 intern dPurinMainMotion_0x0F38+0x4 dPurinMainMotion_0x022C
-extern dPurinMainMotion_0x0F38+0xC 0x70C  # -> file 201 (FTCommonMoveset)
+extern dPurinMainMotion_0x0F38+0xC dPurinMainMotion_0x070C  # -> file 201 (FTCommonMoveset)
 intern dPurinMainMotion_0x0F4C+0x10 dPurinMainMotion_0x0000
 intern dPurinMainMotion_0x0F4C+0x1C dPurinMainMotion_0x0000
 intern dPurinMainMotion_0x1000+0x4 dPurinMainMotion_0x1000

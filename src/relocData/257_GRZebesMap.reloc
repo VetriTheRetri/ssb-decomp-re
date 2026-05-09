@@ -1,11 +1,11 @@
 # Relocation metadata for file 257
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRZebesMap_MapHeader_0x0014+0x10 0x5AC0  # -> file 105 (StageZebesFile2)
-extern dGRZebesMap_MapHeader_0x0014+0x14 0x6180  # -> file 105 (StageZebesFile2)
-extern dGRZebesMap_MapHeader_0x0014+0x18 0x2B48  # -> file 105 (StageZebesFile2)
-extern dGRZebesMap_MapHeader_0x0014+0x1C 0x6410  # -> file 105 (StageZebesFile2)
-extern dGRZebesMap_MapHeader_0x0014+0x40 0x6160  # -> file 105 (StageZebesFile2)
-extern dGRZebesMap_MapHeader_0x0014+0x48 0x26C88  # -> file 89 (StageZebes)
-extern dGRZebesMap_MapHeader_0x0014+0x80 0xB08  # -> file 157 (StageZebesFile3)
+extern dGRZebesMap_MapHeader_0x0014+0x10 dGRZebesMap_Acid_GRAttackColl+0x5A04  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x14 dGRZebesMap_Acid_GRAttackColl+0x60C4  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x18 dGRZebesMap_Acid_GRAttackColl+0x2A8C  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x1C dGRZebesMap_Acid_GRAttackColl+0x6354  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x40 dGRZebesMap_Acid_GRAttackColl+0x60A4  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x48 dGRZebesMap_Acid_GRAttackColl+0x26BCC  # -> file 89 (StageZebes)
+extern dGRZebesMap_MapHeader_0x0014+0x80 dGRZebesMap_Acid_GRAttackColl+0xA4C  # -> file 157 (StageZebesFile3)
 intern dGRZebesMap_MapHeader_0x0014+0x84 dGRZebesMap_gap_0x0000

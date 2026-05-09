@@ -5487,8 +5487,33 @@ u16 dCaptainModel_palette_0xB5B0[20] = {
 
 /* Texture data @ 0xB5D8 (896 bytes) */
 /* @tex fmt=CI4 dim=32x56 */
-u8 dCaptainModel_Tex_0xB5D8[896] = {
+u8 dCaptainModel_Tex_0xB5D8[136] = {
 	#include <CaptainModel/Tex_0xB5D8.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xB660[40] = {
+	#include <CaptainModel/Tex_0xB660.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xB688[40] = {
+	#include <CaptainModel/Tex_0xB688.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xB6B0[40] = {
+	#include <CaptainModel/Tex_0xB6B0.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xB6D8[40] = {
+	#include <CaptainModel/Tex_0xB6D8.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xB700[80] = {
+	#include <CaptainModel/Tex_0xB700.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dCaptainModel_Tex_0xB750[520] = {
+	#include <CaptainModel/Tex_0xB750.tex.inc.c>
 };
 
 /* Palette: Lut_0xB958 @ 0xB958 (16 colors RGBA5551) */
@@ -5644,16 +5669,60 @@ u16 dCaptainModel_gap_0xB978_sub_0x210[20] = {
 };
 
 /* Texture data @ 0xBBB0 (520 bytes) */
-u8 dCaptainModel_Tex_0xBBB0[512] = {
+u8 dCaptainModel_Tex_0xBBB0[264] = {
 	#include <CaptainModel/Tex_0xBBB0.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBCB8[40] = {
+	#include <CaptainModel/Tex_0xBCB8.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBCE0[136] = {
+	#include <CaptainModel/Tex_0xBCE0.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBD68[40] = {
+	#include <CaptainModel/Tex_0xBD68.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBD90[32] = {
+	#include <CaptainModel/Tex_0xBD90.tex.inc.c>
 };
 
 PAD(8);
 
 /* Texture data @ 0xBDB8 (576 bytes) */
 /* @tex fmt=CI4 dim=16x16 */
-u8 dCaptainModel_Tex_0xBDB8[576] = {
+u8 dCaptainModel_Tex_0xBDB8[136] = {
 	#include <CaptainModel/Tex_0xBDB8.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBE40[72] = {
+	#include <CaptainModel/Tex_0xBE40.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBE88[40] = {
+	#include <CaptainModel/Tex_0xBE88.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBEB0[40] = {
+	#include <CaptainModel/Tex_0xBEB0.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBED8[40] = {
+	#include <CaptainModel/Tex_0xBED8.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBF00[40] = {
+	#include <CaptainModel/Tex_0xBF00.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBF28[72] = {
+	#include <CaptainModel/Tex_0xBF28.tex.inc.c>
+};
+
+u8 dCaptainModel_Tex_0xBF70[136] = {
+	#include <CaptainModel/Tex_0xBF70.tex.inc.c>
 };
 
 /* Texture data @ 0xBFF8 (80 bytes) */

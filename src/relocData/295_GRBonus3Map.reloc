@@ -1,10 +1,10 @@
 # Relocation metadata for file 295
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus3Map_gap_0x0000 0x3490  # -> file 149 (GRBonus3File2)
-extern dGRBonus3Map_gap_0x0000+0x10 0x6120  # -> file 149 (GRBonus3File2)
-extern dGRBonus3Map_gap_0x0000+0x18 0x36A0  # -> file 149 (GRBonus3File2)
-extern dGRBonus3Map_gap_0x0000+0x1C 0x65D0  # -> file 149 (GRBonus3File2)
-extern dGRBonus3Map_gap_0x0000+0x40 0x65A8  # -> file 149 (GRBonus3File2)
-extern dGRBonus3Map_gap_0x0000+0x80 0x0  # -> file 162 (GRBonus3File3)
-extern dGRBonus3Map_TaruBomb_ItemAttributes 0x788  # -> file 162 (GRBonus3File3)
+extern dGRBonus3Map_gap_0x0000 dGRBonus3Map_TaruBomb_AttackEvents+0x33A0  # -> file 149 (GRBonus3File2)
+extern dGRBonus3Map_gap_0x0000+0x10 dGRBonus3Map_TaruBomb_AttackEvents+0x6030  # -> file 149 (GRBonus3File2)
+extern dGRBonus3Map_gap_0x0000+0x18 dGRBonus3Map_TaruBomb_AttackEvents+0x35B0  # -> file 149 (GRBonus3File2)
+extern dGRBonus3Map_gap_0x0000+0x1C dGRBonus3Map_TaruBomb_AttackEvents+0x64E0  # -> file 149 (GRBonus3File2)
+extern dGRBonus3Map_gap_0x0000+0x40 dGRBonus3Map_TaruBomb_AttackEvents+0x64B8  # -> file 149 (GRBonus3File2)
+extern dGRBonus3Map_gap_0x0000+0x80 dGRBonus3Map_gap_0x0000  # -> file 162 (GRBonus3File3)
+extern dGRBonus3Map_TaruBomb_ItemAttributes dGRBonus3Map_TaruBomb_AttackEvents+0x698  # -> file 162 (GRBonus3File3)

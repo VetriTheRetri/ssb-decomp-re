@@ -1,8 +1,8 @@
 # Relocation metadata for file 356
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dMarioSpecial2_Joint_0x03C0_DisplayList+0x54 0x0420
-intern dMarioSpecial2_Joint_0x03C0_DisplayList+0x54 0x0420
+intern dMarioSpecial2_Joint_0x03C0_DisplayList+0x54 dMarioSpecial2_Joint_0x03C0_DisplayList+0x60
+intern dMarioSpecial2_Joint_0x03C0_DisplayList+0x54 dMarioSpecial2_Joint_0x03C0_DisplayList+0x60
 intern dMarioSpecial2_Joint_0x03C0_DisplayList+0x7C dMarioSpecial2_Lut_0x0008_palette
 intern dMarioSpecial2_Joint_0x03C0_DisplayList+0xA4 dMarioSpecial2_Tex_0x0058
 intern dMarioSpecial2_Joint_0x03C0_DisplayList+0xC4 dMarioSpecial2_Vtx_0x0120_Vtx

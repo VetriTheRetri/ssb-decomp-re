@@ -97,6 +97,29 @@ extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDF0[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDF8[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xE04[];
 extern u8 dYoshiModel_Tex_0x9518[];
+extern u8 dYoshiModel_Tex_0x9560[];
+extern u8 dYoshiModel_Tex_0x9588[];
+extern u8 dYoshiModel_Tex_0x95B0[];
+extern u8 dYoshiModel_Tex_0x95D8[];
+extern u8 dYoshiModel_Tex_0x9600[];
+extern u8 dYoshiModel_Tex_0x9628[];
+extern u8 dYoshiModel_Tex_0x9650[];
+extern u8 dYoshiModel_Tex_0x96D8[];
+extern u8 dYoshiModel_Tex_0x9700[];
+extern u8 dYoshiModel_Tex_0x9788[];
+extern u8 dYoshiModel_Tex_0x97B0[];
+extern u8 dYoshiModel_Tex_0x9838[];
+extern u8 dYoshiModel_Tex_0x9860[];
+extern u8 dYoshiModel_Tex_0x98E8[];
+extern u8 dYoshiModel_Tex_0x9910[];
+extern u8 dYoshiModel_Tex_0x9998[];
+extern u8 dYoshiModel_Tex_0x99C0[];
+extern u8 dYoshiModel_Tex_0x9A48[];
+extern u8 dYoshiModel_Tex_0x9A70[];
+extern u8 dYoshiModel_Tex_0x9AF8[];
+extern u8 dYoshiModel_Tex_0x9B20[];
+extern u8 dYoshiModel_Tex_0x9BA8[];
+extern u8 dYoshiModel_Tex_0x9BD0[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x13FC[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1408[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1428[];
@@ -4403,8 +4426,100 @@ u16 dYoshiModel_gap_0x6E70_sub_0x2680[20] = {
 /* Texture data @ 0x9518 (2136 bytes) */
 /* Texture: 0x9518 (CI4 — trailing 0x118 bytes split as palette frames) */
 /* @tex fmt=CI4 dim=16x8 */
-u8 dYoshiModel_Tex_0x9518[1856] = {
+u8 dYoshiModel_Tex_0x9518[72] = {
 	#include <YoshiModel/Tex_0x9518.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9560[40] = {
+	#include <YoshiModel/Tex_0x9560.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9588[40] = {
+	#include <YoshiModel/Tex_0x9588.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x95B0[40] = {
+	#include <YoshiModel/Tex_0x95B0.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x95D8[40] = {
+	#include <YoshiModel/Tex_0x95D8.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9600[40] = {
+	#include <YoshiModel/Tex_0x9600.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9628[40] = {
+	#include <YoshiModel/Tex_0x9628.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9650[136] = {
+	#include <YoshiModel/Tex_0x9650.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x96D8[40] = {
+	#include <YoshiModel/Tex_0x96D8.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9700[136] = {
+	#include <YoshiModel/Tex_0x9700.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9788[40] = {
+	#include <YoshiModel/Tex_0x9788.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x97B0[136] = {
+	#include <YoshiModel/Tex_0x97B0.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9838[40] = {
+	#include <YoshiModel/Tex_0x9838.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9860[136] = {
+	#include <YoshiModel/Tex_0x9860.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x98E8[40] = {
+	#include <YoshiModel/Tex_0x98E8.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9910[136] = {
+	#include <YoshiModel/Tex_0x9910.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9998[40] = {
+	#include <YoshiModel/Tex_0x9998.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x99C0[136] = {
+	#include <YoshiModel/Tex_0x99C0.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9A48[40] = {
+	#include <YoshiModel/Tex_0x9A48.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9A70[136] = {
+	#include <YoshiModel/Tex_0x9A70.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9AF8[40] = {
+	#include <YoshiModel/Tex_0x9AF8.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9B20[136] = {
+	#include <YoshiModel/Tex_0x9B20.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9BA8[40] = {
+	#include <YoshiModel/Tex_0x9BA8.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9BD0[136] = {
+	#include <YoshiModel/Tex_0x9BD0.tex.inc.c>
 };
 
 u16 dYoshiModel_palette_0x9C58[20] = {
@@ -4477,8 +4592,20 @@ PAD(8);
 
 /* Texture data @ 0x9EF0 (2416 bytes) */
 /* @tex fmt=CI4 dim=32x16 lut=dYoshiModel_Lut_0x9EC8_palette */
-u8 dYoshiModel_Tex_0x9EF0[2416] = {
+u8 dYoshiModel_Tex_0x9EF0[264] = {
 	#include <YoshiModel/Tex_0x9EF0.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0x9FF8[40] = {
+	#include <YoshiModel/Tex_0x9FF8.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0xA020[2048] = {
+	#include <YoshiModel/Tex_0xA020.tex.inc.c>
+};
+
+u8 dYoshiModel_Tex_0xA820[64] = {
+	#include <YoshiModel/Tex_0xA820.tex.inc.c>
 };
 
 /* Gfx DL: gap_0xA860 @ 0xA860 (29 cmds) */

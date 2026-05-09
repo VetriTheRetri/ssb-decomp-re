@@ -2263,8 +2263,16 @@ u32 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_data[985] = {
 };
 
 /* Texture: 0xAB20 (CI4 — trailing 0x28 bytes split as palette frames) */
-u8 dNessModel_Tex_0xAB20[440] = {
+u8 dNessModel_Tex_0xAB20[264] = {
 	#include <NessModel/Tex_0xAB20.tex.inc.c>
+};
+
+u8 dNessModel_Tex_0xAC28[40] = {
+	#include <NessModel/Tex_0xAC28.tex.inc.c>
+};
+
+u8 dNessModel_Tex_0xAC50[136] = {
+	#include <NessModel/Tex_0xAC50.tex.inc.c>
 };
 
 u16 dNessModel_palette_0xACD8[20] = {
@@ -2291,8 +2299,33 @@ PAD(8);
 
 /* Texture data @ 0xAF38 (2672 bytes) */
 /* @tex fmt=CI4 dim=32x167 */
-u8 dNessModel_Tex_0xAF38[2672] = {
+u8 dNessModel_Tex_0xAF38[72] = {
 	#include <NessModel/Tex_0xAF38.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dNessModel_Tex_0xAF80[520] = {
+	#include <NessModel/Tex_0xAF80.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dNessModel_Tex_0xB188[520] = {
+	#include <NessModel/Tex_0xB188.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dNessModel_Tex_0xB390[520] = {
+	#include <NessModel/Tex_0xB390.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dNessModel_Tex_0xB598[520] = {
+	#include <NessModel/Tex_0xB598.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dNessModel_Tex_0xB7A0[520] = {
+	#include <NessModel/Tex_0xB7A0.tex.inc.c>
 };
 
 /* Texture data @ 0xB9A8 (72 bytes) */
@@ -2310,8 +2343,16 @@ PAD(8);
 
 /* Texture data @ 0xBA18 (824 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dNessModel_Lut_0xB9F0_palette */
-u8 dNessModel_Tex_0xBA18[824] = {
+u8 dNessModel_Tex_0xBA18[264] = {
 	#include <NessModel/Tex_0xBA18.tex.inc.c>
+};
+
+u8 dNessModel_Tex_0xBB20[40] = {
+	#include <NessModel/Tex_0xBB20.tex.inc.c>
+};
+
+u8 dNessModel_Tex_0xBB48[520] = {
+	#include <NessModel/Tex_0xBB48.tex.inc.c>
 };
 
 /* Texture data @ 0xBD50 (152 bytes) */
@@ -2331,8 +2372,16 @@ u16 dNessModel_palette_0xBDC0[20] = {
 
 /* Texture data @ 0xBDE8 (632 bytes) */
 /* @tex fmt=CI4 dim=16x8 */
-u8 dNessModel_Tex_0xBDE8[632] = {
+u8 dNessModel_Tex_0xBDE8[72] = {
 	#include <NessModel/Tex_0xBDE8.tex.inc.c>
+};
+
+u8 dNessModel_Tex_0xBE30[40] = {
+	#include <NessModel/Tex_0xBE30.tex.inc.c>
+};
+
+u8 dNessModel_Tex_0xBE58[520] = {
+	#include <NessModel/Tex_0xBE58.tex.inc.c>
 };
 
 /* Palette: Lut_0xC060 @ 0xC060 (16 colors RGBA5551) */

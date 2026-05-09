@@ -3677,8 +3677,32 @@ u16 dPikachuModel_gap_0x59B8_sub_0x1970[20] = {
 /* Texture data @ 0x7350 (528 bytes) */
 /* Texture: 0x7350 (CI4 — trailing 0x78 bytes split as palette frames) */
 /* @tex fmt=CI4 dim=16x8 */
-u8 dPikachuModel_Tex_0x7350[408] = {
+u8 dPikachuModel_Tex_0x7350[72] = {
 	#include <PikachuModel/Tex_0x7350.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7398[40] = {
+	#include <PikachuModel/Tex_0x7398.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x73C0[40] = {
+	#include <PikachuModel/Tex_0x73C0.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x73E8[40] = {
+	#include <PikachuModel/Tex_0x73E8.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7410[40] = {
+	#include <PikachuModel/Tex_0x7410.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7438[40] = {
+	#include <PikachuModel/Tex_0x7438.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7460[136] = {
+	#include <PikachuModel/Tex_0x7460.tex.inc.c>
 };
 
 u16 dPikachuModel_palette_0x74E8[20] = {
@@ -3696,8 +3720,100 @@ u16 dPikachuModel_palette_0x7538[20] = {
 /* Texture data @ 0x7560 (2968 bytes) */
 /* Texture: 0x7560 (CI4 — trailing 0x28 bytes split as palette frames) */
 /* @tex fmt=CI4 dim=96x61 lut=dPikachuModel_Tex_0x7560 */
-u8 dPikachuModel_Tex_0x7560[2928] = {
+u8 dPikachuModel_Tex_0x7560[16] = {
 	#include <PikachuModel/Tex_0x7560.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7570[40] = {
+	#include <PikachuModel/Tex_0x7570.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7598[40] = {
+	#include <PikachuModel/Tex_0x7598.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x75C0[40] = {
+	#include <PikachuModel/Tex_0x75C0.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x75E8[40] = {
+	#include <PikachuModel/Tex_0x75E8.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7610[40] = {
+	#include <PikachuModel/Tex_0x7610.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x16 */
+u8 dPikachuModel_Tex_0x7638[264] = {
+	#include <PikachuModel/Tex_0x7638.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7740[40] = {
+	#include <PikachuModel/Tex_0x7740.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7768[40] = {
+	#include <PikachuModel/Tex_0x7768.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7790[40] = {
+	#include <PikachuModel/Tex_0x7790.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x77B8[80] = {
+	#include <PikachuModel/Tex_0x77B8.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x16 */
+u8 dPikachuModel_Tex_0x7808[304] = {
+	#include <PikachuModel/Tex_0x7808.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x16 */
+u8 dPikachuModel_Tex_0x7938[304] = {
+	#include <PikachuModel/Tex_0x7938.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x16 */
+u8 dPikachuModel_Tex_0x7A68[264] = {
+	#include <PikachuModel/Tex_0x7A68.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7B70[40] = {
+	#include <PikachuModel/Tex_0x7B70.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7B98[264] = {
+	#include <PikachuModel/Tex_0x7B98.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7CA0[40] = {
+	#include <PikachuModel/Tex_0x7CA0.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7CC8[40] = {
+	#include <PikachuModel/Tex_0x7CC8.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7CF0[40] = {
+	#include <PikachuModel/Tex_0x7CF0.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7D18[80] = {
+	#include <PikachuModel/Tex_0x7D18.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7D68[304] = {
+	#include <PikachuModel/Tex_0x7D68.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7E98[304] = {
+	#include <PikachuModel/Tex_0x7E98.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x7FC8[264] = {
+	#include <PikachuModel/Tex_0x7FC8.tex.inc.c>
 };
 
 u16 dPikachuModel_palette_0x80D0[20] = {
@@ -3706,8 +3822,52 @@ u16 dPikachuModel_palette_0x80D0[20] = {
 
 /* Texture data @ 0x80F8 (4904 bytes) */
 /* @tex fmt=CI4 dim=16x1 */
-u8 dPikachuModel_Tex_0x80F8[4904] = {
+u8 dPikachuModel_Tex_0x80F8[16] = {
 	#include <PikachuModel/Tex_0x80F8.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x8108[40] = {
+	#include <PikachuModel/Tex_0x8108.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x8130[40] = {
+	#include <PikachuModel/Tex_0x8130.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x8158[40] = {
+	#include <PikachuModel/Tex_0x8158.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x8180[80] = {
+	#include <PikachuModel/Tex_0x8180.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x81D0[304] = {
+	#include <PikachuModel/Tex_0x81D0.tex.inc.c>
+};
+
+u8 dPikachuModel_Tex_0x8300[264] = {
+	#include <PikachuModel/Tex_0x8300.tex.inc.c>
+};
+
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuModel_Tex_0x8408[1032] = {
+	#include <PikachuModel/Tex_0x8408.tex.inc.c>
+};
+
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuModel_Tex_0x8810[1032] = {
+	#include <PikachuModel/Tex_0x8810.tex.inc.c>
+};
+
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuModel_Tex_0x8C18[1032] = {
+	#include <PikachuModel/Tex_0x8C18.tex.inc.c>
+};
+
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuModel_Tex_0x9020[1024] = {
+	#include <PikachuModel/Tex_0x9020.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x9420 — 6-entry MObjSub** array.
@@ -3718,10 +3878,10 @@ MObjSub **dPikachuModel_ThunderTrailMObjSub_MObjSub[1] = {
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
 void *dPikachuModel_ThunderTrailMObjSub_MObjSub_sprites[5] = {
-	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0xF28),
-	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0xB20),
-	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0x718),
-	(void *)((u8*)&dPikachuModel_Tex_0x80F8 + 0x310),
+	dPikachuModel_Tex_0x9020,
+	dPikachuModel_Tex_0x8C18,
+	dPikachuModel_Tex_0x8810,
+	dPikachuModel_Tex_0x8408,
 	NULL,
 };
 

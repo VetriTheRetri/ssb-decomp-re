@@ -1,7 +1,7 @@
 # Relocation metadata for file 354
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dYoshiSpecial2_EntryEggMObjSub_MObjSub+0x0 0x04E8
+intern dYoshiSpecial2_EntryEggMObjSub_MObjSub+0x0 dYoshiSpecial2_gap_0x04D8_sub_0x10
 intern dYoshiSpecial2_EntryEggMObjSub_MObjSub_sprites dYoshiSpecial2_Tex_0x260
 intern dYoshiSpecial2_EntryEggMObjSub_MObjSub_sprites+0x4 dYoshiSpecial2_Tex_0x58
 intern dYoshiSpecial2_EntryEggMObjSub_MObjSub_real+0x4 dYoshiSpecial2_EntryEggMObjSub_MObjSub_sprites

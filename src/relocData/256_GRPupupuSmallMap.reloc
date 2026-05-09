@@ -1,10 +1,10 @@
 # Relocation metadata for file 256
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRPupupuSmallMap_header 0x870  # -> file 101 (StagePupupuBeta1)
-extern dGRPupupuSmallMap_header+0x4 0x9B0  # -> file 101 (StagePupupuBeta1)
-extern dGRPupupuSmallMap_header+0x10 0x1258  # -> file 101 (StagePupupuBeta1)
-extern dGRPupupuSmallMap_header+0x30 0x1910  # -> file 101 (StagePupupuBeta1)
-extern dGRPupupuSmallMap_header+0x40 0x1374  # -> file 101 (StagePupupuBeta1)
-extern dGRPupupuSmallMap_header+0x48 0x26C88  # -> file 88 (StageDreamLand)
+extern dGRPupupuSmallMap_header dGRPupupuSmallMap_pad+0x7B4  # -> file 101 (StagePupupuBeta1)
+extern dGRPupupuSmallMap_header+0x4 dGRPupupuSmallMap_pad+0x8F4  # -> file 101 (StagePupupuBeta1)
+extern dGRPupupuSmallMap_header+0x10 dGRPupupuSmallMap_pad+0x119C  # -> file 101 (StagePupupuBeta1)
+extern dGRPupupuSmallMap_header+0x30 dGRPupupuSmallMap_pad+0x1854  # -> file 101 (StagePupupuBeta1)
+extern dGRPupupuSmallMap_header+0x40 dGRPupupuSmallMap_pad+0x12B8  # -> file 101 (StagePupupuBeta1)
+extern dGRPupupuSmallMap_header+0x48 dGRPupupuSmallMap_pad+0x26BCC  # -> file 88 (StageDreamLand)
 intern dGRPupupuSmallMap_header+0x84 dGRPupupuSmallMap_item_weights

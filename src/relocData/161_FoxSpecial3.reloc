@@ -1,8 +1,8 @@
 # Relocation metadata for file 161
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dFoxSpecial3_Joint_0x1FA0_DisplayList+0x34 0x1FE0
-intern dFoxSpecial3_Joint_0x1FA0_DisplayList+0x34 0x1FE0
+intern dFoxSpecial3_Joint_0x1FA0_DisplayList+0x34 dFoxSpecial3_Joint_0x1FA0_post
+intern dFoxSpecial3_Joint_0x1FA0_DisplayList+0x34 dFoxSpecial3_Joint_0x1FA0_post
 intern dFoxSpecial3_Joint_0x1FA0_post+0x2C dFoxSpecial3_Lut_0x0AC8_palette
 intern dFoxSpecial3_Joint_0x1FA0_post+0x5C dFoxSpecial3_Tex_0x0AF0
 intern dFoxSpecial3_Joint_0x1FA0_post+0x7C dFoxSpecial3_Vtx_0x11E0_Vtx
@@ -59,17 +59,17 @@ intern dFoxSpecial3_Joint_0x1FA0_post+0x86C dFoxSpecial3_Vtx_0x1DE0_Vtx
 intern dFoxSpecial3_Joint_0x1FA0_post+0x8B4 dFoxSpecial3_Tex_0x08E0+0x48
 intern dFoxSpecial3_Joint_0x1FA0_post+0x8E4 dFoxSpecial3_Tex_0x08E0+0x70
 intern dFoxSpecial3_Joint_0x1FA0_post+0x90C dFoxSpecial3_gap_0x1E60
-extern dFoxSpecial3_Joint_0x2920_DisplayList+0x54 0x19F8  # -> file 109 (StageSectorFile2)
-intern dFoxSpecial3_Joint_0x2920_DisplayList+0x7C 0x29A8
+extern dFoxSpecial3_Joint_0x2920_DisplayList+0x54 dFoxSpecial3_Vtx_0x19E0_Vtx+0x18  # -> file 109 (StageSectorFile2)
+intern dFoxSpecial3_Joint_0x2920_DisplayList+0x7C dFoxSpecial3_Joint_0x2920_post
 intern dFoxSpecial3_Joint_0x2920_post+0x14 dFoxSpecial3_Vtx_0x1EC0_Vtx
 intern dFoxSpecial3_Joint_0x2920_post+0x34 dFoxSpecial3_gap_0x1F00
 intern dFoxSpecial3_Joint_0x2920_post+0x54 dFoxSpecial3_Vtx_0x1EC0_Vtx
 intern dFoxSpecial3_Joint_0x2920_post+0x5C dFoxSpecial3_Vtx_0x1EC0_Vtx+0x30
 intern dFoxSpecial3_Joint_0x2920_post+0x64 dFoxSpecial3_gap_0x1F00_sub_0x40
 intern dFoxSpecial3_Joint_0x2920_post+0x84 dFoxSpecial3_gap_0x1F00
-extern dFoxSpecial3_Joint_0x2920_post+0x10C 0x19F8  # -> file 109 (StageSectorFile2)
+extern dFoxSpecial3_Joint_0x2920_post+0x10C dFoxSpecial3_Vtx_0x19E0_Vtx+0x18  # -> file 109 (StageSectorFile2)
 intern dFoxSpecial3_Joint_0x2920_post+0x134 dFoxSpecial3_gap_0x1F00_sub_0x60
-extern dFoxSpecial3_Joint_0x2920_post+0x1BC 0x19F8  # -> file 109 (StageSectorFile2)
+extern dFoxSpecial3_Joint_0x2920_post+0x1BC dFoxSpecial3_Vtx_0x19E0_Vtx+0x18  # -> file 109 (StageSectorFile2)
 intern dFoxSpecial3_Joint_0x2920_post+0x1E4 dFoxSpecial3_gap_0x1F00_sub_0x60
 intern dFoxSpecial3_JointCmd_0x2BB0+0x4 dFoxSpecial3_Joint_0x1FA0_DisplayList
 intern dFoxSpecial3_JointCmd_0x2BC0+0x4 dFoxSpecial3_Joint_0x2920_DisplayList
@@ -87,6 +87,6 @@ intern dFoxSpecial3_gap_0x2C88+0x88 dFoxSpecial3_JointCmd_0x2BC0+0x30
 intern dFoxSpecial3_gap_0x2C88+0xB4 dFoxSpecial3_JointCmd_0x2BC0+0x40
 intern dFoxSpecial3_gap_0x2C88+0x10C dFoxSpecial3_JointCmd_0x2BC0+0x50
 intern dFoxSpecial3_gap_0x2C88+0x164 dFoxSpecial3_JointCmd_0x2BC0+0x60
-intern dFoxSpecial3_gap_0x2C88+0x1E8 0x2E74
+intern dFoxSpecial3_gap_0x2C88+0x1E8 dFoxSpecial3__2E74__AnimJoint
 intern dFoxSpecial3__2E74__AnimJoint+0x34 dFoxSpecial3__2E74__AnimJoint
-intern dFoxSpecial3__2E74__AnimJoint+0x3C 0x2EB4
+intern dFoxSpecial3__2E74__AnimJoint+0x3C dFoxSpecial3__2EB4__AnimJoint

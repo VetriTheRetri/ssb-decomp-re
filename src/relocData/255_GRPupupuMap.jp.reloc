@@ -4,12 +4,12 @@
 
 intern dGRPupupuMap_header+0x84 dGRPupupuMap_item_weights
 
-extern dGRPupupuMap_header 0x1008
-extern dGRPupupuMap_header+0x10 0x1CE0
-extern dGRPupupuMap_header+0x20 0x2450
-extern dGRPupupuMap_header+0x28 0x1F50
-extern dGRPupupuMap_header+0x2C 0x2530
-extern dGRPupupuMap_header+0x30 0x2BF8
-extern dGRPupupuMap_header+0x40 0x1F34
-extern dGRPupupuMap_header+0x48 0x26C88
-extern dGRPupupuMap_header+0x80 0x10F0
+extern dGRPupupuMap_header dGRPupupuMap_pad+0xF4C
+extern dGRPupupuMap_header+0x10 dGRPupupuMap_pad+0x1C24
+extern dGRPupupuMap_header+0x20 dGRPupupuMap_pad+0x2394
+extern dGRPupupuMap_header+0x28 dGRPupupuMap_pad+0x1E94
+extern dGRPupupuMap_header+0x2C dGRPupupuMap_pad+0x2474
+extern dGRPupupuMap_header+0x30 dGRPupupuMap_pad+0x2B3C
+extern dGRPupupuMap_header+0x40 dGRPupupuMap_pad+0x1E78
+extern dGRPupupuMap_header+0x48 dGRPupupuMap_pad+0x26BCC
+extern dGRPupupuMap_header+0x80 dGRPupupuMap_pad+0x1034

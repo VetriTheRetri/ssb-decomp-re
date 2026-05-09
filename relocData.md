@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2048 / 2132** files at 100% (97.34% of bytes typed; 454,480 / 17,082,000 bytes still untyped across 84 files).
+Overall: **2049 / 2132** files at 100% (97.41% of bytes typed; 442,872 / 17,082,000 bytes still untyped across 83 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -70,23 +70,21 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 61 | MVOpeningNewcomers1 | 167600 | 34656 | 4 | 79.32% |
 | 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
-| 335 | NessModel | 50112 | 6436 | 23 | 87.16% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
 | 75 | MVOpeningRunCrash | 15024 | 1760 | 32 | 88.29% |
 | 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
-| 313 | FoxModel | 32336 | 3576 | 25 | 88.94% |
 | 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
 | 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
 | 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
 | 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
+| 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
-| 323 | LuigiModel | 32528 | 2540 | 28 | 92.19% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
+| 313 | FoxModel | 32336 | 2152 | 2 | 93.34% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
-| 328 | KirbyModel | 120864 | 6600 | 24 | 94.54% |
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
 | 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
@@ -105,17 +103,18 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
 | 341 | PikachuModel | 39984 | 832 | 7 | 97.92% |
 | 117 | StageMetalFile2 | 16320 | 308 | 4 | 98.11% |
+| 328 | KirbyModel | 120864 | 1680 | 12 | 98.61% |
 | 332 | CaptainModel | 51344 | 680 | 3 | 98.68% |
 | 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
 | 344 | BossModel | 11584 | 136 | 1 | 98.83% |
-| 324 | LinkModel | 73584 | 792 | 9 | 98.92% |
 | 338 | YoshiModel | 44256 | 432 | 4 | 99.02% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
 | 102 | StagePupupuBeta2 | 10496 | 64 | 1 | 99.39% |
 | 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
 | 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |
+| 323 | LuigiModel | 32528 | 180 | 8 | 99.45% |
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
-| 330 | PurinModel | 32224 | 100 | 3 | 99.69% |
+| 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
 | 350 | CaptainSpecial2 | 26080 | 48 | 1 | 99.82% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |

@@ -48,7 +48,7 @@ extern dLuigiMain_commonparts_container+0x4 dLuigiMain_file_handles
 extern dLuigiMain_commonparts_container+0x8 dLuigiModel_JointTree+0x480  # -> file 298 (LuigiModel)
 extern dLuigiMain_commonparts_container+0x10 dLuigiModel_JointTree_0x49E8  # -> file 298 (LuigiModel)
 extern dLuigiMain_commonparts_container+0x14 dLuigiModel_gap_0x28E0_sub_0x3A0  # -> file 298 (LuigiModel)
-extern dLuigiMain_commonparts_container+0x18 dLuigiModel_JointTree_0x49E8+0x478  # -> file 298 (LuigiModel)
+extern dLuigiMain_commonparts_container+0x18 dLuigiModel_JointTree_0x49E8_post  # -> file 298 (LuigiModel)
 extern dLuigiMain_stock_luts dLuigiModel_palette_0x7C30  # -> file 298 (LuigiModel)
 extern dLuigiMain_stock_luts+0x4 dLuigiModel_gap_0x7C50_sub_0x8  # -> file 298 (LuigiModel)
 extern dLuigiMain_stock_luts+0x8 dLuigiModel_gap_0x7C50_sub_0x30  # -> file 298 (LuigiModel)

@@ -128,7 +128,7 @@ To convert an untyped `u8[]` gap block to its actual type:
 | DObj descriptor | `DObjDesc` | inline C init | Scene graph entries |
 | Palette/TLUT | `u16` | `.palette.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadTLUT()` |
 | Texture | `u8` (`Tex_0xNNNN`) | `.tex.inc.c` | Referenced by `gsDPSetTextureImage()` + `gsDPLoadBlock()`; previewer also writes a `.png` |
-| Animation | `u32` / `u16` | `.data.inc.c` | AnimJoint / AObjEvent16 data (no dedicated typed extension yet) |
+| Animation | `u32` / `u16` | `.data.inc.c` or **inline** | AnimJoint / AObjEvent16 data (no dedicated typed extension yet). For `AObjEvent32` scripts (typed `u32`, referenced by `AObjEvent32 *` arrays), prefer **inline** decoding with `aobjEvent32*()` macros over `.data.inc.c` includes — match the surrounding style of already-decoded scripts in the file. The trailing pair `aobjEvent32Wait(N), aobjEvent32End()` (raw bytes `0x040000NN, 0x00000000`) is the giveaway that a block is an AObjEvent32 script; opcode = `(word >> 25) & 0x7F` (0x12 = SetExtValAfterBlock, 0x13 = SetExtValAfter, etc., per `AObjEvent32Kind` in `src/sys/objdef.h`). The block size = (1 + popcount(flags)) words per opcode + 1 word for `Wait` + 1 word for `End`. |
 | Untyped raw | `u8` / `u32` | `.data.inc.c` | Last resort — only for blocks that genuinely straddle types |
 
 ## Important Notes

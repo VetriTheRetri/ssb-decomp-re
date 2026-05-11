@@ -42,7 +42,7 @@ extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x814[];
 extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x81C[];
 extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x824[];
 
-MObjSub **dFoxModel_gap_0x0000[24] = {
+MObjSub **dFoxModel_gap_0x0000[27] = {
 	NULL,  /* +0x00 */
 	dFoxModel_Joint_0x0060_post_sub_0x7C0,  /* +0x04 */
 	dFoxModel_Joint_0x0060_post_sub_0x7CC,  /* +0x08 */
@@ -67,16 +67,11 @@ MObjSub **dFoxModel_gap_0x0000[24] = {
 	dFoxModel_Joint_0x0060_post_sub_0x81C,  /* +0x54 */
 	NULL,  /* +0x58 */
 	dFoxModel_Joint_0x0060_post_sub_0x824,  /* +0x5C */
+	NULL,  /* +0x60 */
+	NULL,  /* +0x64 */
+	NULL,  /* +0x68 */
 };
 
-/* Raw data from file offset 0x0060 to 0x0890 (2096 bytes), decoded into
- * 16 sprite/texture/palette pointer slots (0x0..0x40) + 16 MObjSub structs
- * (0x40..0x7C0) + 11 trailing-index cells (0x7C0..0x830). The original
- * untyped `u8 Joint_0x0060_post[2096]` block emitted block+offset chain
- * pointer references; this split replaces them with typed sub-symbols. */
-
-/* Forward decls for the sprite/texture/palette targets the header points
- * at — these blocks live further down in the file at 0x7300+. */
 extern u8 dFoxModel_Tex_0x70D0[];
 extern u8 dFoxModel_Tex_0x7300[];
 extern u8 dFoxModel_Tex_0x7700[];
@@ -90,28 +85,31 @@ extern u16 dFoxModel_gap_0x7828_sub_0x138[];
 extern u16 dFoxModel_gap_0x7828_sub_0x160[];
 extern u16 dFoxModel_gap_0x7828_sub_0x188[];
 
-/* === Joint_0x0060_post[2096] decoded into typed sub-symbols === */
+u16 *dFoxModel_Joint_0x0060_post_sub_0xC[4] = { 
+	dFoxModel_gap_0x7528_sub_0x80,
+	dFoxModel_gap_0x7528_sub_0x8,
+	dFoxModel_gap_0x7528_sub_0x30,
+	dFoxModel_gap_0x7528_sub_0x58
+};
 
-/* Sprite/texture/palette pointer table @ Joint_0x0060_post+0x0..+0x40
- * (16 u32 slots — 12 chain pointers, 4 NULL filler). Each slot is its
- * own typed `void *[1]` symbol so MObjSubs can reference them via the
- * sub-symbol name with no `+offset` form. */
-void *dFoxModel_Joint_0x0060_post_sub_0x0[1] = { NULL };
-void *dFoxModel_Joint_0x0060_post_sub_0x4[1] = { NULL };
-void *dFoxModel_Joint_0x0060_post_sub_0x8[1] = { NULL };
-void *dFoxModel_Joint_0x0060_post_sub_0xC[1] = { (void *)dFoxModel_gap_0x7528_sub_0x80 };
-void *dFoxModel_Joint_0x0060_post_sub_0x10[1] = { (void *)dFoxModel_gap_0x7528_sub_0x8 };
-void *dFoxModel_Joint_0x0060_post_sub_0x14[1] = { (void *)dFoxModel_gap_0x7528_sub_0x30 };
-void *dFoxModel_Joint_0x0060_post_sub_0x18[1] = { (void *)dFoxModel_gap_0x7528_sub_0x58 };
-void *dFoxModel_Joint_0x0060_post_sub_0x1C[1] = { (void *)dFoxModel_Tex_0x7300 };
-void *dFoxModel_Joint_0x0060_post_sub_0x20[1] = { (void *)dFoxModel_Tex_0x70D0 };
-void *dFoxModel_Joint_0x0060_post_sub_0x24[1] = { (void *)dFoxModel_Tex_0x7830 };
-void *dFoxModel_Joint_0x0060_post_sub_0x28[1] = { (void *)dFoxModel_Tex_0x7700 };
-void *dFoxModel_Joint_0x0060_post_sub_0x2C[1] = { (void *)dFoxModel_gap_0x7828_sub_0x188 };
-void *dFoxModel_Joint_0x0060_post_sub_0x30[1] = { (void *)dFoxModel_gap_0x7828_sub_0x110 };
-void *dFoxModel_Joint_0x0060_post_sub_0x34[1] = { (void *)dFoxModel_gap_0x7828_sub_0x138 };
-void *dFoxModel_Joint_0x0060_post_sub_0x38[1] = { (void *)dFoxModel_gap_0x7828_sub_0x160 };
-void *dFoxModel_Joint_0x0060_post_sub_0x3C[1] = { NULL };
+u8 *dFoxModel_Joint_0x0060_post_sub_0x1C[2] = { 
+	dFoxModel_Tex_0x7300,
+	dFoxModel_Tex_0x70D0,
+};
+
+u8 *dFoxModel_Joint_0x0060_post_sub_0x24[2] = { 
+	dFoxModel_Tex_0x7830,
+	dFoxModel_Tex_0x7700
+};
+
+u16 *dFoxModel_Joint_0x0060_post_sub_0x2C[4] = { 
+	dFoxModel_gap_0x7828_sub_0x188,
+	dFoxModel_gap_0x7828_sub_0x110,
+	dFoxModel_gap_0x7828_sub_0x138,
+	dFoxModel_gap_0x7828_sub_0x160
+};
+
+PAD(4);
 
 /* MObjSub @ Joint_0x0060_post+0x40 */
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x40[1] = {
@@ -1151,33 +1149,35 @@ MObjSub *dFoxModel_gap_0x2E60_sub_0x2D0[27] = {
 	NULL,
 };
 
-/* u32 pointer array @ 0x319C (4 entries) */
-u32 dFoxModel_gap_0x2E60_sub_0x33C[4] = {
-	0x0C681D6A,
-	0x0C691D4C,
-	0x0C6A1D56,
-	0x0C6B1D60,
+/* Palette-pointer table @ 0x319C (4 entries). All slots are chain-encoded
+ * intern pointers patched by fixRelocChain at load time. */
+void *dFoxModel_gap_0x2E60_sub_0x33C[4] = {
+	dFoxModel_gap_0x7528_sub_0x80,
+	dFoxModel_gap_0x7528_sub_0x8,
+	dFoxModel_gap_0x7528_sub_0x30,
+	dFoxModel_gap_0x7528_sub_0x58,
 };
 
-/* u32 pointer array @ 0x31AC (2 entries) */
-u32 dFoxModel_gap_0x2E60_sub_0x34C[2] = {
-	0x0C6C1CC0,
-	0x0C6D1C34,
+/* Texture-pointer table @ 0x31AC (2 entries). Both slots are chain-encoded. */
+void *dFoxModel_gap_0x2E60_sub_0x34C[2] = {
+	dFoxModel_Tex_0x7300,
+	dFoxModel_Tex_0x70D0,
 };
 
-/* u32 pointer array @ 0x31B4 (2 entries) */
-u32 dFoxModel_gap_0x2E60_sub_0x354[2] = {
-	0x0C6E1E0C,
-	0x0C6F1DC0,
+/* Texture-pointer table @ 0x31B4 (2 entries). Both slots are chain-encoded. */
+void *dFoxModel_gap_0x2E60_sub_0x354[2] = {
+	dFoxModel_Tex_0x7830,
+	dFoxModel_Tex_0x7700,
 };
 
-/* u32 pointer array @ 0x31BC (5 entries) */
-u32 dFoxModel_gap_0x2E60_sub_0x35C[5] = {
-	0x0C701E6C,
-	0x0C711E4E,
-	0x0C721E58,
-	0x0C9D1E62,
-	0x00000000,
+/* Palette-pointer table @ 0x31BC (5 entries, NULL-terminated). Slots 0..3
+ * are chain-encoded; the final slot is a literal NULL sentinel. */
+void *dFoxModel_gap_0x2E60_sub_0x35C[5] = {
+	dFoxModel_gap_0x7828_sub_0x188,
+	dFoxModel_gap_0x7828_sub_0x110,
+	dFoxModel_gap_0x7828_sub_0x138,
+	dFoxModel_gap_0x7828_sub_0x160,
+	NULL,
 };
 
 /* MObjSub @ 0x31D0 */
@@ -2371,13 +2371,23 @@ Gfx dFoxModel_gap_0x5A38_sub_0x15E8[15] = {
 	#include <FoxModel/gap_0x5A38_sub_0x15E8.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x7098 (56 bytes) */
-u8 dFoxModel_gap_0x5A38_sub_0x15E8_post[56] = {
-	#include <FoxModel/gap_0x5A38_sub_0x15E8_post.data.inc.c>
+/* Pre-texture alignment pad @ 0x7098 (16 zero bytes). */
+PAD(16);
+
+/* Palette: Lut_0x70A8 @ 0x70A8 (16 colors RGBA5551). Byte-identical to
+ * Lut_0x72D8 — a leading duplicate of the same TLUT for Tex_0x70D0 that
+ * isn't referenced by any chain pointer in this file, but lives where a
+ * CI4 texture's TLUT would conventionally sit (immediately before the
+ * texel block). */
+u16 dFoxModel_Lut_0x70A8_palette[16] = {
+	#include <FoxModel/Lut_0x70A8.palette.inc.c>
 };
 
+/* Trailing 8 zero bytes to align Tex_0x70D0 to its 16-byte boundary. */
+PAD(8);
+
 /* gap sub-block @ 0x70D0 (was gap+0x1698, 520 bytes) */
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x32 lut=dFoxModel_Lut_0x70A8_palette */
 u8 dFoxModel_Tex_0x70D0[520] = {
 	#include <FoxModel/Tex_0x70D0.tex.inc.c>
 };
@@ -2392,7 +2402,7 @@ PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x72F8[2] = { End, End }`;
 		  * no relocations reference it. */
 
 /* gap sub-block @ 0x7300 (was gap+0x8, 520 bytes) */
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x32 lut=dFoxModel_Lut_0x72D8_palette */
 u8 dFoxModel_Tex_0x7300[520] = {
 	#include <FoxModel/Tex_0x7300.tex.inc.c>
 };
@@ -2431,7 +2441,7 @@ u8 dFoxModel_Tex_0x75D0[304] = {
 	#include <FoxModel/Tex_0x75D0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x16 */
+/* @tex fmt=CI4 dim=32x16 lut=dFoxModel_Lut_0x7808_palette */
 u8 dFoxModel_Tex_0x7700[264] = {
 	#include <FoxModel/Tex_0x7700.tex.inc.c>
 };
@@ -2445,7 +2455,7 @@ u16 dFoxModel_Lut_0x7808_palette[16] = {
 PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x7828[2] = { End, End }`. */
 
 /* gap sub-block @ 0x7830 (was gap+0x8, 264 bytes) */
-/* @tex fmt=CI4 dim=32x16 */
+/* @tex fmt=CI4 dim=32x16 lut=dFoxModel_Lut_0x7808_palette */
 u8 dFoxModel_Tex_0x7830[264] = {
 	#include <FoxModel/Tex_0x7830.tex.inc.c>
 };

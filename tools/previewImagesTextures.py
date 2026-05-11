@@ -47,12 +47,36 @@ RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 # Default to the US tree; main() rebinds via _bind_version() once --version is parsed.
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
+DESCRIPTIONS_PATH = os.path.join(PROJECT_DIR, "tools", "relocFileDescriptions.us.txt")
+# fid -> name from the current version's descriptions file. Source filenames
+# carry their US fid as a prefix; JP remaps the same file to a different fid
+# (e.g. CaptainModel is fid 332 in US, 307 in JP). Without this lookup the
+# previewer would fail to find `307_*.c` and silently skip every JP texture.
+_FID_TO_NAME = {}
+
+
+def _load_descriptions():
+    global _FID_TO_NAME
+    _FID_TO_NAME = {}
+    if not os.path.exists(DESCRIPTIONS_PATH):
+        return
+    with open(DESCRIPTIONS_PATH) as f:
+        for ln in f:
+            m = re.match(r"\s*-(\d+):\s*(\S+)", ln)
+            if m:
+                _FID_TO_NAME[int(m.group(1))] = m.group(2)
 
 
 def _bind_version(version):
-    global ASSETS_DIR, BUILD_DIR
+    global ASSETS_DIR, BUILD_DIR, DESCRIPTIONS_PATH
     ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", version, "relocData")
     BUILD_DIR = os.path.join(PROJECT_DIR, "build", version, "src", "relocData")
+    DESCRIPTIONS_PATH = os.path.join(
+        PROJECT_DIR, "tools", f"relocFileDescriptions.{version}.txt")
+    _load_descriptions()
+
+
+_load_descriptions()
 
 N64_WIDTHS = [8, 16, 24, 32, 48, 64, 96, 128, 160, 192, 256]
 
@@ -187,6 +211,26 @@ def infer_tex_format(block, prose_comment):
 
 
 def find_c_file(fid):
+    """Locate the source `.c` for `fid` under src/relocData/.
+
+    Source filenames are stamped with the US fid (e.g. `332_CaptainModel.c`),
+    but JP remaps the same content to a different fid (JP fid 307 =
+    CaptainModel). We look up the name from the version-specific descriptions
+    file and match by suffix; when descriptions lists a name but no `.c`
+    matches (typical for `.spritelist`-only assets), return None instead of
+    falling through to a literal `<fid>_*.c` prefix match — otherwise JP fid
+    294 = DkIcon would spuriously bind to `294_GRBonus2NessMap.c`."""
+    name = _FID_TO_NAME.get(fid)
+    if name:
+        candidates = []
+        for fn in os.listdir(RELOC_DIR):
+            m = re.match(rf"^\d+_({re.escape(name)})\.c$", fn)
+            if m:
+                candidates.append(fn)
+        if candidates:
+            fn = sorted(candidates)[0]
+            return os.path.join(RELOC_DIR, fn), name
+        return None, None
     for fn in os.listdir(RELOC_DIR):
         m = re.match(rf"^{fid}_(\w+)\.c$", fn)
         if m:
@@ -245,7 +289,8 @@ def process_file(fid):
             continue
         entries = b["size"] // 2
         palette = rgba5551_to_palette(data[b["off"]:b["off"]+b["size"]], entries)
-        png_path = os.path.join(out_dir, f"LUT_0x{b['off']:04X}.lut.png")
+        # See the Tex case below for why we name by `short` instead of `off`.
+        png_path = os.path.join(out_dir, f"{b['short']}.lut.png")
         raw = bytes(range(entries)) if entries <= 256 else bytes((i & 0xFF) for i in range(entries))
         img = CI8(raw, entries, 1) if entries > 16 else CI4(_pack_ci4(entries), entries, 1)
         img.palette = palette
@@ -301,7 +346,14 @@ def process_file(fid):
                 # texture's spatial structure is at least visible.
                 img.palette = [(i * 255 // (entries - 1),) * 3 + (255,) for i in range(entries)]
                 png_suffix = ".nolut"
-        png_path = os.path.join(out_dir, f"Tex_0x{b['off']:04X}.{fmt.lower()}{png_suffix}.png")
+        # Name the PNG after the SYMBOL (the `Tex_0xN` short form taken from
+        # the C decl) rather than the resolved binary offset. Both versions
+        # share source filenames, but JP's link-time offsets often differ
+        # from US (earlier blocks may be shorter), so naming by `b['off']`
+        # would produce `Tex_0x6D18.ci4.png` next to `Tex_0x6D38.tex.inc.c`
+        # — visually unpaired in the file tree and missed by `Tex_*.png`
+        # sibling lookups in the IDE.
+        png_path = os.path.join(out_dir, f"{b['short']}.{fmt.lower()}{png_suffix}.png")
         img.write(png_path)
         tex_count += 1
 

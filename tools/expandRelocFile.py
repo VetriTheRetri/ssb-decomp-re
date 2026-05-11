@@ -30,14 +30,38 @@ ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 BUILD_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData")
 BUILD_OBJ_DIR = os.path.join(BUILD_DIR, ".build")
 CSV_PATH = os.path.join(PROJECT_DIR, "assets", "us", "relocData.csv")
+DESCRIPTIONS_PATH = os.path.join(PROJECT_DIR, "tools", "relocFileDescriptions.us.txt")
+# fid -> name from the version's descriptions file. Source filenames carry
+# their US fid as a prefix, but JP remaps the same file to a different fid
+# (e.g. FoxModel is fid 313 in US, 288 in JP). Without this lookup the
+# expander would pair JP's `313.o` (which is YoshiModel) with `313_FoxModel.c`.
+_FID_TO_NAME = {}
+
+
+def _load_descriptions():
+    global _FID_TO_NAME
+    _FID_TO_NAME = {}
+    if not os.path.exists(DESCRIPTIONS_PATH):
+        return
+    with open(DESCRIPTIONS_PATH) as f:
+        for ln in f:
+            m = re.match(r"\s*-(\d+):\s*(\S+)", ln)
+            if m:
+                _FID_TO_NAME[int(m.group(1))] = m.group(2)
 
 
 def _bind_version(version):
-    global ASSETS_DIR, CSV_PATH, BUILD_DIR, BUILD_OBJ_DIR
+    global ASSETS_DIR, CSV_PATH, BUILD_DIR, BUILD_OBJ_DIR, DESCRIPTIONS_PATH
     ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", version, "relocData")
     CSV_PATH = os.path.join(PROJECT_DIR, "assets", version, "relocData.csv")
     BUILD_DIR = os.path.join(PROJECT_DIR, "build", version, "src", "relocData")
     BUILD_OBJ_DIR = os.path.join(BUILD_DIR, ".build")
+    DESCRIPTIONS_PATH = os.path.join(
+        PROJECT_DIR, "tools", f"relocFileDescriptions.{version}.txt")
+    _load_descriptions()
+
+
+_load_descriptions()
 
 try:
     import pygfxd
@@ -172,6 +196,30 @@ def chain_summary(fid, data, syms):
 
 
 def find_c_file(fid):
+    """Locate the source `.c` for `fid` under src/relocData/.
+
+    Source filenames are stamped with the US fid (e.g. `313_FoxModel.c`),
+    but JP remaps the same file to a different fid via relocFileDescriptions
+    — JP fid 313 is YoshiModel, whose source is `338_YoshiModel.c`. So we
+    look up the version-specific name first and match by suffix.
+
+    When the descriptions file does identify `fid` but no source matches the
+    name (typical for `.spritelist`-only files), return None *without*
+    falling through to a prefix match — otherwise JP fid 294 = DkIcon would
+    spuriously bind to `294_GRBonus2NessMap.c` (the source whose US fid
+    happens to be 294). The prefix fallback is only safe when the fid is
+    unknown to the descriptions file at all."""
+    name = _FID_TO_NAME.get(fid)
+    if name:
+        candidates = []
+        for fn in os.listdir(RELOC_DIR):
+            m = re.match(rf"^\d+_({re.escape(name)})\.c$", fn)
+            if m:
+                candidates.append(fn)
+        if candidates:
+            fn = sorted(candidates)[0]
+            return os.path.join(RELOC_DIR, fn), name
+        return None, None
     for fn in os.listdir(RELOC_DIR):
         m = re.match(rf"^{fid}_(\w+)\.c$", fn)
         if m:
@@ -757,8 +805,27 @@ def expand(fid):
                      extern_map=extern_map)
     text = expand_chain_pointers(text, syms, sym_sizes, chain_positions)
 
+    # Rewrite any leftover `#include <X.inc.c>` to the quoted form so IDE
+    # go-to-definition resolves relative to the expanded file's directory.
+    # The source uses angle-bracket includes that rely on a configured
+    # include search path; that's correct for compilation, but the
+    # expanded file lives under `build/<v>/src/relocData/` and is never
+    # compiled — opening it in VS Code with the US C/C++ config active
+    # would have F12 land in `build/us/...` even when the file itself is
+    # under `build/jp/...`. Quoted includes hit the file's own directory
+    # first, so JP expansions point at JP inc.c files and vice versa.
+    text = re.sub(
+        r'#include <([^>]+\.inc\.c)>',
+        r'#include "\1"',
+        text,
+    )
+
+    # `c_path` is the actual source — its filename prefix is the US fid even
+    # when expanding for JP, so use it verbatim instead of reconstructing
+    # `{fid}_{target_name}.c`.
+    src_rel = os.path.relpath(c_path, PROJECT_DIR)
     header = (
-        f"/* AUTO-GENERATED expanded view of src/relocData/{fid}_{target_name}.c\n"
+        f"/* AUTO-GENERATED expanded view of {src_rel}\n"
         f" * Inlines every .inc.c blob, expands chain pointers to symbol refs\n"
         f" * where possible, and decodes Gfx[] arrays via pygfxd.\n"
         f" *\n"

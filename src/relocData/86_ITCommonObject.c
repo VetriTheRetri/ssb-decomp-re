@@ -14,7 +14,7 @@ extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
 extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
 extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[];
 extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x68[];
-extern u8 dITCommonObject_StarRod_Weapon_data_post_0x70[];
+extern u16 dITCommonObject_StarRod_Weapon_data_post_0x70[];
 extern u8 dITCommonObject_StarRod_Weapon_data_post_0x98[];
 extern u8 dITCommonObject_Tex_0x55C8[];
 extern u8 dITCommonObject_Tex_0x57D0[];
@@ -1364,9 +1364,11 @@ u8 dITCommonObject_StarRod_Weapon_data_post[112] = {
 	#include <ITCommonObject/StarRod_Weapon_data_post.data.inc.c>
 };
 /* split-self chunk @ +0x70 (40 bytes, abs 0x5578) */
-u8 dITCommonObject_StarRod_Weapon_data_post_0x70[40] = {
-	#include <ITCommonObject/StarRod_Weapon_data_post_0x70.data.inc.c>
+u16 dITCommonObject_StarRod_Weapon_data_post_0x70[16] = {
+	#include <ITCommonObject/StarRod_Weapon_data_post_0x70.palette.inc.c>
 };
+
+PAD(8);
 /* split-self chunk @ +0x98 (40 bytes, abs 0x55A0) */
 u8 dITCommonObject_StarRod_Weapon_data_post_0x98[40] = {
 	#include <ITCommonObject/StarRod_Weapon_data_post_0x98.data.inc.c>
@@ -1541,9 +1543,11 @@ u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC[12] = {
 };
 
 /* gap sub-block @ 0x6808 (was gap+0xC, 40 bytes) */
-u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xC[40] = {
-	#include <ITCommonObject/gap_0x67FC_sub_0xC.data.inc.c>
+u16 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xC[16] = {
+	#include <ITCommonObject/gap_0x67FC_sub_0xC.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x6830 (was gap+0x34, 128 bytes) */
 u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0x34[128] = {
@@ -1612,9 +1616,11 @@ u8 dITCommonObject_Taru_Item_data_remainder[12] = {
 };
 
 /* gap sub-block @ 0x7238 (was gap+0xC, 40 bytes) */
-u8 dITCommonObject_Taru_Item_data_remainder_sub_0xC[40] = {
-	#include <ITCommonObject/dITCommonObject_Taru_Item_data_remainder_sub_0xC.data.inc.c>
+u16 dITCommonObject_Taru_Item_data_remainder_sub_0xC[16] = {
+	#include <ITCommonObject/dITCommonObject_Taru_Item_data_remainder_sub_0xC.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x7260 (was gap+0x34, 40 bytes) */
 u8 dITCommonObject_Taru_Item_data_remainder_sub_0x34[40] = {
@@ -1701,14 +1707,18 @@ u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC[12] = {
 };
 
 /* gap sub-block @ 0x76D8 (was gap+0xC, 40 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0xC[40] = {
-	#include <ITCommonObject/gap_0x76CC_sub_0xC.data.inc.c>
+u16 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0xC[16] = {
+	#include <ITCommonObject/gap_0x76CC_sub_0xC.palette.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x7700 (was gap+0x34, 40 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34[40] = {
-	#include <ITCommonObject/gap_0x76CC_sub_0x34.data.inc.c>
+u16 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34[16] = {
+	#include <ITCommonObject/gap_0x76CC_sub_0x34.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x7728 (was gap+0x5C, 776 bytes) */
 /* @tex fmt=CI4 dim=32x48 */
@@ -1934,8 +1944,8 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x14[176] = {
 };
 
 /* gap sub-block @ 0x95D0 (was gap+0xC4, 32 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4[32] = {
-	#include <ITCommonObject/gap_0x950C_sub_0xC4.data.inc.c>
+u16 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4[16] = {
+	#include <ITCommonObject/gap_0x950C_sub_0xC4.palette.inc.c>
 };
 
 /* gap sub-block @ 0x95F0 (was gap+0xE4, 120 bytes) */
@@ -2190,10 +2200,18 @@ DObjDesc dITCommonObject_Kabigon_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xB1DC, 52 bytes (raw gap) */
-u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB1DC[0x34] = {
-	#include <ITCommonObject/dITCommonObject_Kabigon_Item_data_remainder_gap_0xB1DC.data.inc.c>
+/* @ 0xB1DC, 52 bytes: PAD(12) + 16-color palette + PAD(8) leading
+ * into LUT_0xB210. The palette is byte-similar to LUT_0xB210 — likely
+ * the team-color variant for the same Kabigon sprite. No chain entry
+ * points at it. */
+PAD(12);
+
+/* @ 0xB1E8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xB1E8[16] = {
+	#include <ITCommonObject/LUT_0xB1E8.palette.inc.c>
 };
+
+PAD(8);
 
 /* @ 0xB210, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xB210[16] = {
@@ -2403,10 +2421,17 @@ DObjDesc dITCommonObject_NyarsCoin_Weapon_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xC5A4, 60 bytes (raw gap) */
-u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC5A4[0x3C] = {
-	#include <ITCommonObject/dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC5A4.data.inc.c>
+/* @ 0xC5A4, 60 bytes: PAD(20) + 16-color palette + PAD(8) leading
+ * into LUT_0xC5E0 (likely a team-color variant for NyarsCoin). No
+ * chain entry points at it. */
+PAD(20);
+
+/* @ 0xC5B8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xC5B8[16] = {
+	#include <ITCommonObject/LUT_0xC5B8.palette.inc.c>
 };
+
+PAD(8);
 
 /* @ 0xC5E0, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xC5E0[16] = {

@@ -8,10 +8,17 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0460 (1120 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 48 bytes) */
-u8 dYoshiSpecial2_gap_0x0000[48] = {
-	#include <YoshiSpecial2/gap_0x0000.data.inc.c>
+/* 48-byte leading region split into PAD + TLUT + PAD — the 32 middle
+ * bytes are a 16-color RGBA5551 palette sitting just before the
+ * gap_0x0000_sub_0x30 palette pool; no chain entry references it. */
+PAD(8);
+
+/* Palette @ 0x8 (16 colors RGBA5551) */
+u16 dYoshiSpecial2_gap_0x0000_sub_0x8[16] = {
+	#include <YoshiSpecial2/gap_0x0000_sub_0x8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0030 (was gap+0x30, 40 bytes) */
 u16 dYoshiSpecial2_gap_0x0000_sub_0x30[20] = {

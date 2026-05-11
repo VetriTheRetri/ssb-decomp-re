@@ -175,19 +175,25 @@ DObjDesc dMVOpeningCliff_Hills[] = {
 PAD(8);
 
 /* gap sub-block @ 0x3858 (was gap+0x8, 40 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x8[40] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x8.data.inc.c>
+u16 dMVOpeningCliff_gap_0x3850_sub_0x8[16] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x3880 (was gap+0x30, 40 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x30[40] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x30.data.inc.c>
+u16 dMVOpeningCliff_gap_0x3850_sub_0x30[16] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x30.palette.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x38A8 (was gap+0x58, 40 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x58[40] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x58.data.inc.c>
+u16 dMVOpeningCliff_gap_0x3850_sub_0x58[16] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x58.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x38D0 (was gap+0x80, 2056 bytes) */
 u8 dMVOpeningCliff_gap_0x3850_sub_0x80[2056] = {

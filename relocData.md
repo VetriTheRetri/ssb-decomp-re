@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2052 / 2132** files at 100% (97.42% of bytes typed; 439,924 / 17,082,000 bytes still untyped across 80 files).
+Overall: **2054 / 2132** files at 100% (97.44% of bytes typed; 437,364 / 17,082,000 bytes still untyped across 78 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -50,9 +50,9 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 83 | EFCommonEffects1 | 52736 | 42572 | 26 | 19.27% |
 | 264 | GRYamabukiMap | 832 | 664 | 11 | 20.19% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53864 | 3 | 21.51% |
-| 114 | StageLastFile2 | 76128 | 58144 | 38 | 23.62% |
+| 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
 | 85 | EFCommonEffects3 | 13616 | 9228 | 7 | 32.23% |
-| 105 | StageZebesFile2 | 57184 | 34040 | 50 | 40.47% |
+| 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 260 | GRInishieMap | 368 | 200 | 4 | 45.65% |
 | 84 | EFCommonEffects2 | 28352 | 12704 | 32 | 55.19% |
 | 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
@@ -64,7 +64,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 257 | GRZebesMap | 224 | 56 | 2 | 75.00% |
 | 261 | GRJungleMap | 224 | 56 | 2 | 75.00% |
 | 265 | GRHyruleMap | 224 | 56 | 2 | 75.00% |
-| 68 | MVOpeningCliff | 35440 | 8464 | 11 | 76.12% |
+| 68 | MVOpeningCliff | 35440 | 8344 | 8 | 76.46% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
 | 61 | MVOpeningNewcomers1 | 167600 | 34656 | 4 | 79.32% |
@@ -73,16 +73,16 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
-| 75 | MVOpeningRunCrash | 15024 | 1760 | 32 | 88.29% |
 | 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
 | 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
 | 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
 | 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
-| 86 | ITCommonObject | 79584 | 7040 | 83 | 91.15% |
 | 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
+| 86 | ITCommonObject | 79584 | 6696 | 75 | 91.59% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
+| 75 | MVOpeningRunCrash | 15024 | 1040 | 14 | 93.08% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
@@ -97,7 +97,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
 | 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
 | 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
-| 354 | YoshiSpecial2 | 1984 | 48 | 1 | 97.58% |
 | 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
 | 341 | PikachuModel | 39984 | 832 | 7 | 97.92% |
 | 117 | StageMetalFile2 | 16320 | 308 | 4 | 98.11% |
@@ -112,7 +111,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
 | 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
-| 350 | CaptainSpecial2 | 26080 | 48 | 1 | 99.82% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
 | 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |

@@ -12,10 +12,18 @@ extern u8 dCaptainSpecial2_gap_0x09D8[];
 
 extern MObjSub *dCaptainSpecial2_gap_0x09D8_sub_0x10[];
 
-/* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
-u8 dCaptainSpecial2_gap_0x0000[48] = {
-	#include <CaptainSpecial2/gap_0x0000.data.inc.c>
+/* Raw data from file offset 0x0000 to 0x0030 (48 bytes), split into
+ * leading PAD + TLUT + trailing PAD. The 32 middle bytes are a 16-color
+ * RGBA5551 palette that lives just before Lut_0x0030; no chain entry
+ * points at it within this file. */
+PAD(8);
+
+/* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
+u16 dCaptainSpecial2_Lut_0x0008_palette[16] = {
+	#include <CaptainSpecial2/Lut_0x0008.palette.inc.c>
 };
+
+PAD(8);
 
 /* Palette: Lut_0x0030 @ 0x30 (16 colors RGBA5551) */
 u16 dCaptainSpecial2_Lut_0x0030_palette[16] = {

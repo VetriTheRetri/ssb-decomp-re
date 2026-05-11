@@ -20,10 +20,10 @@ intern dFoxMain_modelparts_container+0x30 dFoxMain_modelparts_desc_0x0B0
 intern dFoxMain_modelparts_container+0x34 dFoxMain_modelparts_desc_0x100
 extern dFoxMain_commonparts_container dFoxModel_JointTree # -> file 313 (FoxModel)
 extern dFoxMain_commonparts_container+0x4 dFoxModel_gap_0x0000 # -> file 313 (FoxModel)
-extern dFoxMain_commonparts_container+0x8 dFoxModel_JointTree+0x4D8 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x8 dFoxModel_JointTree_post # -> file 313 (FoxModel)
 extern dFoxMain_commonparts_container+0x10 dFoxModel_JointTree_0x5510 # -> file 313 (FoxModel)
 extern dFoxMain_commonparts_container+0x14 dFoxModel_gap_0x2E60_sub_0x2D0 # -> file 313 (FoxModel)
-extern dFoxMain_commonparts_container+0x18 dFoxModel_JointTree_0x5510+0x4D0 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x18 dFoxModel_JointTree_0x5510_post # -> file 313 (FoxModel)
 extern dFoxMain_stock_luts dFoxModel_palette_0x7B80 # -> file 313 (FoxModel)
 extern dFoxMain_stock_luts+0x4 dFoxModel_gap_0x7BA0_sub_0x8 # -> file 313 (FoxModel)
 extern dFoxMain_stock_luts+0x8 dFoxModel_gap_0x7BA0_sub_0x30 # -> file 313 (FoxModel)

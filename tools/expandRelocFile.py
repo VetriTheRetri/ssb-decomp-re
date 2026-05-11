@@ -514,22 +514,77 @@ def inline_inc(text, target_name, raw, syms, sym_sizes,
     return decl_re.sub(repl, text)
 
 
-def expand_chain_pointers(text, syms, sym_sizes):
+def expand_chain_pointers(text, syms, sym_sizes, chain_positions=None):
     """Within DObjDesc array initializers, replace `(void*)0xCHAINHEX` with
-    symbolic refs when the chain target maps to a known symbol."""
+    symbolic refs when the chain target maps to a known symbol AND the
+    pointer's byte position lies in the intern chain.
+
+    Without the chain_positions gate, literal NULLs (`(void*)0x00000000`)
+    get spuriously rewritten to whatever symbol sits at file byte 0 — the
+    chain decoder happily resolves `next=0, target=word 0` to the first
+    symbol. DObjDesc.dl at +0x4 within each entry is in the chain only
+    when the binary stored a real pointer there; NULL slots stay NULL."""
+    name_to_byte = {n: o for o, n in syms.items()}
+    # DObjDesc layout (src/sys/objtypes.h):
+    #   { s32 id; void *dl; Vec3f translate; Vec3f rotate; Vec3f scale; }
+    # = 4 + 4 + 12 + 12 + 12 = 0x2C bytes. The dl pointer sits at +0x4
+    # within each entry. We can't derive stride from sym_sizes here
+    # because nm gives the last symbol in the file a placeholder size of
+    # 0x10000, which would yield a nonsense stride for any trailing
+    # DObjDesc array.
+    DOBJDESC_STRIDE = 0x2C
+    DL_OFF = 0x4
+
     def repl_dobj(blk):
-        body = blk.group(1)
+        arr_name = blk.group(1)
+        n_entries = int(blk.group(2))
+        body = blk.group(3)
+        base = name_to_byte.get(arr_name)
+        stride = DOBJDESC_STRIDE
+
+        counter = {"i": 0}
         def repl_ptr(m):
-            chain = int(m.group(1), 16)
+            entry_idx = counter["i"]
+            counter["i"] += 1
+            hex_arg = m.group(1)
+            if hex_arg is None:
+                return m.group(0)  # NULL or already symbolic — leave it
+            chain = int(hex_arg, 16)
+            # 0x00000000 is the source convention for a NULL pointer.
+            # Decoding it produces target_byte=0, which spuriously binds
+            # to whatever symbol sits at file byte 0. Skip unconditionally.
+            if chain == 0:
+                return m.group(0)
+            # When chain_positions was successfully derived from the CSV
+            # intern-chain start, a slot whose byte position isn't in the
+            # walked chain is genuinely not chain-encoded — leave it as
+            # the raw literal. Empty chain_positions (CSV says no chain
+            # start, e.g. fid 101) falls through; trust the source author
+            # there, since the convention in those files is to hand-write
+            # the chain-encoded hex literal.
+            if chain_positions and base is not None:
+                ptr_byte = base + entry_idx * stride + DL_OFF
+                if ptr_byte not in chain_positions:
+                    return m.group(0)
             sym = resolve_chain(chain, syms, sym_sizes)
             if sym is None:
                 return m.group(0)
             target_word = chain & 0xFFFF
             return f"(void*){sym}  /* was 0x{chain:08X} -> byte 0x{target_word*4:04X} */"
-        new_body = re.sub(r"\(void\*\)0x([0-9A-Fa-f]{8})", repl_ptr, body)
+
+        # Match every pointer slot — NULL, `(void*)symbol`, and
+        # `(void*)0xHEX` — so the entry-index counter advances once per
+        # DObjDesc entry regardless of which form the source uses. Only
+        # the hex form populates group(1); the other shapes leave it None
+        # and the substitution is skipped.
+        new_body = re.sub(
+            r"NULL|\(void\*\)(?:(0x[0-9A-Fa-f]{8})|[A-Za-z_]\w*)",
+            repl_ptr, body,
+        )
         return blk.group(0).replace(body, new_body)
+
     return re.sub(
-        r"DObjDesc \w+\[\d+\] = \{(.*?)\n\};",
+        r"DObjDesc (\w+)\[(\d+)\] = \{(.*?)\n\};",
         repl_dobj,
         text,
         flags=re.DOTALL,
@@ -700,7 +755,7 @@ def expand(fid):
     text = inline_inc(text, target_name, raw, syms, sym_sizes,
                      chain_positions=chain_positions,
                      extern_map=extern_map)
-    text = expand_chain_pointers(text, syms, sym_sizes)
+    text = expand_chain_pointers(text, syms, sym_sizes, chain_positions)
 
     header = (
         f"/* AUTO-GENERATED expanded view of src/relocData/{fid}_{target_name}.c\n"

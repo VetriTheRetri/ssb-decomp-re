@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2050 / 2132** files at 100% (97.41% of bytes typed; 442,692 / 17,082,000 bytes still untyped across 82 files).
+Overall: **2050 / 2132** files at 100% (97.42% of bytes typed; 440,596 / 17,082,000 bytes still untyped across 82 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -83,7 +83,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
-| 313 | FoxModel | 32336 | 2152 | 2 | 93.34% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
@@ -116,6 +115,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
 | 350 | CaptainSpecial2 | 26080 | 48 | 1 | 99.82% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
+| 313 | FoxModel | 32336 | 56 | 1 | 99.83% |
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
 | 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |
 | 147 | GRBonus2PurinFile2 | 21728 | 24 | 1 | 99.89% |

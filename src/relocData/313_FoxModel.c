@@ -6,9 +6,9 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern u16 *dFoxModel_gap_0x2E60_sub_0x2B0[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2B0[];
 extern u8 dFoxModel_Joint_0x0060_post[];
-extern u16 *dFoxModel_gap_0x5A38_sub_0x284[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x284[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB54[];
 
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB4C[];
@@ -21,46 +21,640 @@ extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB18[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB34[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB2C[];
 extern MObjSub *dFoxModel_gap_0x2E60_sub_0xB3C[];
-extern u32 dFoxModel_gap_0x5A38_sub_0x2C0[];
-extern u16 *dFoxModel_gap_0x2E60_sub_0x2C0[];
-extern u16 *dFoxModel_gap_0x2E60_sub_0x2C4[];
-extern u32 dFoxModel_gap_0x2E60_sub_0x2C8[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2C0[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C0[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C4[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C8[];
 /* MObjSub-dispatch table at file 0x0000 (96 bytes, 24 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dFoxModel_Joint_0x0060_post. The original splitter
  * sliced this region into 4 fragments (see git history); the
  * .reloc relationships only make sense as one continuous table. */
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7C0[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7CC[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7E0[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7E8[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7F4[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7FC[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x804[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x80C[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x814[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x81C[];
+extern MObjSub *dFoxModel_Joint_0x0060_post_sub_0x824[];
+
 MObjSub **dFoxModel_gap_0x0000[24] = {
 	NULL,  /* +0x00 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7C0),  /* +0x04 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7CC),  /* +0x08 */
+	dFoxModel_Joint_0x0060_post_sub_0x7C0,  /* +0x04 */
+	dFoxModel_Joint_0x0060_post_sub_0x7CC,  /* +0x08 */
 	NULL,  /* +0x0C */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7E0),  /* +0x10 */
+	dFoxModel_Joint_0x0060_post_sub_0x7E0,  /* +0x10 */
 	NULL,  /* +0x14 */
 	NULL,  /* +0x18 */
 	NULL,  /* +0x1C */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7E8),  /* +0x20 */
+	dFoxModel_Joint_0x0060_post_sub_0x7E8,  /* +0x20 */
 	NULL,  /* +0x24 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7F4),  /* +0x28 */
+	dFoxModel_Joint_0x0060_post_sub_0x7F4,  /* +0x28 */
 	NULL,  /* +0x2C */
 	NULL,  /* +0x30 */
 	NULL,  /* +0x34 */
 	NULL,  /* +0x38 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x7FC),  /* +0x3C */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x804),  /* +0x40 */
+	dFoxModel_Joint_0x0060_post_sub_0x7FC,  /* +0x3C */
+	dFoxModel_Joint_0x0060_post_sub_0x804,  /* +0x40 */
 	NULL,  /* +0x44 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x80C),  /* +0x48 */
+	dFoxModel_Joint_0x0060_post_sub_0x80C,  /* +0x48 */
 	NULL,  /* +0x4C */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x814),  /* +0x50 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x81C),  /* +0x54 */
+	dFoxModel_Joint_0x0060_post_sub_0x814,  /* +0x50 */
+	dFoxModel_Joint_0x0060_post_sub_0x81C,  /* +0x54 */
 	NULL,  /* +0x58 */
-	(MObjSub **)((u8 *)dFoxModel_Joint_0x0060_post + 0x824),  /* +0x5C */
+	dFoxModel_Joint_0x0060_post_sub_0x824,  /* +0x5C */
 };
 
-/* Raw data from file offset 0x0060 to 0x0890 (2096 bytes) */
-u8 dFoxModel_Joint_0x0060_post[2096] = {
-	#include <FoxModel/Joint_0x0060_post.data.inc.c>
+/* Raw data from file offset 0x0060 to 0x0890 (2096 bytes), decoded into
+ * 16 sprite/texture/palette pointer slots (0x0..0x40) + 16 MObjSub structs
+ * (0x40..0x7C0) + 11 trailing-index cells (0x7C0..0x830). The original
+ * untyped `u8 Joint_0x0060_post[2096]` block emitted block+offset chain
+ * pointer references; this split replaces them with typed sub-symbols. */
+
+/* Forward decls for the sprite/texture/palette targets the header points
+ * at — these blocks live further down in the file at 0x7300+. */
+extern u8 dFoxModel_Tex_0x70D0[];
+extern u8 dFoxModel_Tex_0x7300[];
+extern u8 dFoxModel_Tex_0x7700[];
+extern u8 dFoxModel_Tex_0x7830[];
+extern u16 dFoxModel_gap_0x7528_sub_0x8[];
+extern u16 dFoxModel_gap_0x7528_sub_0x30[];
+extern u16 dFoxModel_gap_0x7528_sub_0x58[];
+extern u16 dFoxModel_gap_0x7528_sub_0x80[];
+extern u16 dFoxModel_gap_0x7828_sub_0x110[];
+extern u16 dFoxModel_gap_0x7828_sub_0x138[];
+extern u16 dFoxModel_gap_0x7828_sub_0x160[];
+extern u16 dFoxModel_gap_0x7828_sub_0x188[];
+
+/* === Joint_0x0060_post[2096] decoded into typed sub-symbols === */
+
+/* Sprite/texture/palette pointer table @ Joint_0x0060_post+0x0..+0x40
+ * (16 u32 slots — 12 chain pointers, 4 NULL filler). Each slot is its
+ * own typed `void *[1]` symbol so MObjSubs can reference them via the
+ * sub-symbol name with no `+offset` form. */
+void *dFoxModel_Joint_0x0060_post_sub_0x0[1] = { NULL };
+void *dFoxModel_Joint_0x0060_post_sub_0x4[1] = { NULL };
+void *dFoxModel_Joint_0x0060_post_sub_0x8[1] = { NULL };
+void *dFoxModel_Joint_0x0060_post_sub_0xC[1] = { (void *)dFoxModel_gap_0x7528_sub_0x80 };
+void *dFoxModel_Joint_0x0060_post_sub_0x10[1] = { (void *)dFoxModel_gap_0x7528_sub_0x8 };
+void *dFoxModel_Joint_0x0060_post_sub_0x14[1] = { (void *)dFoxModel_gap_0x7528_sub_0x30 };
+void *dFoxModel_Joint_0x0060_post_sub_0x18[1] = { (void *)dFoxModel_gap_0x7528_sub_0x58 };
+void *dFoxModel_Joint_0x0060_post_sub_0x1C[1] = { (void *)dFoxModel_Tex_0x7300 };
+void *dFoxModel_Joint_0x0060_post_sub_0x20[1] = { (void *)dFoxModel_Tex_0x70D0 };
+void *dFoxModel_Joint_0x0060_post_sub_0x24[1] = { (void *)dFoxModel_Tex_0x7830 };
+void *dFoxModel_Joint_0x0060_post_sub_0x28[1] = { (void *)dFoxModel_Tex_0x7700 };
+void *dFoxModel_Joint_0x0060_post_sub_0x2C[1] = { (void *)dFoxModel_gap_0x7828_sub_0x188 };
+void *dFoxModel_Joint_0x0060_post_sub_0x30[1] = { (void *)dFoxModel_gap_0x7828_sub_0x110 };
+void *dFoxModel_Joint_0x0060_post_sub_0x34[1] = { (void *)dFoxModel_gap_0x7828_sub_0x138 };
+void *dFoxModel_Joint_0x0060_post_sub_0x38[1] = { (void *)dFoxModel_gap_0x7828_sub_0x160 };
+void *dFoxModel_Joint_0x0060_post_sub_0x3C[1] = { NULL };
+
+/* MObjSub @ Joint_0x0060_post+0x40 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x40[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x002D, 0x0005, 0x0020, 0x0020,
+		0,
+		0.15000000596046448f, 0.1809999942779541f,
+		0.699999988079071f, 0.75f,
+		0.15000000596046448f, 0.699999988079071f,
+		(void**)dFoxModel_Joint_0x0060_post_sub_0xC,
+		0x0004,
+		0x02, 0x00,
+		0x0010,
+		0x0020, 0x0020, 0x0020,
+		0.15000000596046448f, 0.1809999942779541f,
+		0.15000000596046448f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
+
+/* MObjSub @ Joint_0x0060_post+0xB8 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0xB8[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xEF, 0xEF, 0xA5, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x130 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x130[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xEF, 0xEF, 0xA5, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x1A8 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x1A8[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xEF, 0xEF, 0xA5, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x220 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x220[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xEF, 0xEF, 0xA5, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x298 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x298[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dFoxModel_Joint_0x0060_post_sub_0x1C,
+		0x0072, 0x000B, 0x0040, 0x0020,
+		0,
+		0.1599999964237213f, 0.3919999897480011f,
+		0.6800000071525574f, 0.2800000011920929f,
+		0.1599999964237213f, 0.6800000071525574f,
+		(void**)0x00000000,
+		0x0001,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0040, 0x0020,
+		0.1599999964237213f, 0.3919999897480011f,
+		0.1599999964237213f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x310 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x310[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dFoxModel_Joint_0x0060_post_sub_0x24,
+		0x00D5, 0x0014, 0x0020, 0x0010,
+		0,
+		0.609499990940094f, 0.7577499747276306f,
+		0.4129999876022339f, 0.15000000596046448f,
+		0.609499990940094f, 0.4129999876022339f,
+		(void**)0x00000000,
+		0x0001,
+		0x02, 0x00,
+		0x0020,
+		0x0010, 0x0020, 0x0010,
+		0.609499990940094f, 0.7577499747276306f,
+		0.609499990940094f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x388 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x388[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xEF, 0xEF, 0xA5, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x400 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x400[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)dFoxModel_Joint_0x0060_post_sub_0x2C,
+		0x0004,
+		0x02, 0x00,
+		0x0010,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x478 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x478[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0x4A, 0x5A, 0x00, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x4F0 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x4F0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x568 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x568[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x5E0 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x5E0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0x4A, 0x5A, 0x00, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x658 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x658[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x6D0 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x6D0[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ Joint_0x0060_post+0x748 */
+MObjSub dFoxModel_Joint_0x0060_post_sub_0x748[1] = {
+	{
+		0x0000,
+		0x00, 0x02,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
+		0,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0x4A, 0x5A, 0x00, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* === Trailing-index cells @ Joint_0x0060_post+0x7C0..+0x830 === */
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7C0[3] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x400,
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x478,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7CC[5] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x40,
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0xB8,
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x130,
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x1A8,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7E0[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x220,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7E8[3] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x298,
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x310,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7F4[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x388,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x7FC[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x5E0,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x804[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x568,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x80C[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x4F0,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x814[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x748,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x81C[2] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x6D0,
+	NULL,
+};
+
+MObjSub *dFoxModel_Joint_0x0060_post_sub_0x824[3] = {
+	(MObjSub *)dFoxModel_Joint_0x0060_post_sub_0x658,
+	NULL,
+	NULL,
+};
+
 
 /* Vtx: Vtx_0x0890 @ 0x890 (8 vertices) */
 Vtx dFoxModel_Vtx_0x0890_Vtx[8] = {
@@ -307,7 +901,10 @@ Gfx dFoxModel_Joint_0x2818_DisplayList[36] = {
 	#include <FoxModel/Joint_0x2818.dl.inc.c>
 };
 
-/* DObjDesc: JointTree @ 0x2938 (30 entries) */
+/* DObjDesc: JointTree @ 0x2938 (28 entries, 0x4D0 bytes — array always
+ * terminates at the `{ 18, ... }` sentinel. The 22 u32s that formerly
+ * looked like 2 trailing entries are slots 0..21 of the AObjEvent32 **
+ * dispatch immediately following — see JointTree_post). */
 DObjDesc dFoxModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dFoxModel_Joint_0x1970_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -337,21 +934,50 @@ DObjDesc dFoxModel_JointTree[] = {
 	{ 3, (void*)dFoxModel_Joint_0x2818_DisplayList, { 0.0f, 16.19999885559082f, -112.50000762939453f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 5.163332487364004e-32f, 5.240370860633845e-32f }, { 0.0f, 5.394447607173525e-32f, 0.0f }, { 0.0f, 0.0f, 5.47148539269619e-32f } },
-	{ 0, (void *)dFoxModel_gap_0x2E60_sub_0x2B0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 5.702598749264185e-32f, 5.779636534786849e-32f }, { 0.0f, 5.856674320309514e-32f, 0.0f } },
 };
 
-/* Raw data from file offset 0x2E60 to 0x39C0 (2912 bytes) */
-/* gap sub-block @ 0x2E60 (was gap+0x0, 28 bytes) */
-AObjEvent32 *dFoxModel_gap_0x2E60[7] = {
-	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x2C0,
-	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x2C4,
+PAD(8);  /* alignment between JointTree and JointTree_post */
+
+/* AObjEvent32 ** dispatch table @ file 0x2E10 (108 bytes, 27 slots).
+ * Lives immediately after the PAD and is referenced from FoxMain via
+ * commonparts_container+0x8. Was previously split as two bogus
+ * DObjDesc entries (slots 0..21) + `AObjEvent32 *gap_0x2E60[7]`
+ * (slots 20..26 — naming offset because gap_0x2E60 was the first byte
+ * of a new file region in the original splitter view). */
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x28C[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x294[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2A4[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2A8[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2B4[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2B8[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2BC[];
+extern AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C8[];
+
+AObjEvent32 **dFoxModel_JointTree_post[27] = {
 	NULL,
-	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x2C8,
+	dFoxModel_gap_0x2E60_sub_0x28C,                  /* +0x4 (slot 1) */
+	dFoxModel_gap_0x2E60_sub_0x294,                  /* +0x8 (slot 2) */
 	NULL,
+	dFoxModel_gap_0x2E60_sub_0x2A4,                  /* +0x10 (slot 4) */
+	NULL, NULL, NULL,
+	dFoxModel_gap_0x2E60_sub_0x2A8,                  /* +0x20 (slot 8) */
 	NULL,
+	dFoxModel_gap_0x2E60_sub_0x2B0,                  /* +0x28 (slot 10) */
+	NULL, NULL, NULL, NULL,
+	dFoxModel_gap_0x2E60_sub_0x2B4,                  /* +0x3C (slot 15) */
+	dFoxModel_gap_0x2E60_sub_0x2B8,                  /* +0x40 (slot 16) */
 	NULL,
+	dFoxModel_gap_0x2E60_sub_0x2BC,                  /* +0x48 (slot 18) */
+	NULL,
+	dFoxModel_gap_0x2E60_sub_0x2C0,                  /* +0x50 (slot 20, was gap_0x2E60+0x0) */
+	dFoxModel_gap_0x2E60_sub_0x2C4,                  /* +0x54 (slot 21, was gap_0x2E60+0x4) */
+	NULL,
+	dFoxModel_gap_0x2E60_sub_0x2C8,                  /* +0x5C (slot 23, was gap_0x2E60+0xC) */
+	NULL, NULL, NULL,
 };
+
+/* Raw data from file offset 0x2E7C to 0x39C0 (2884 bytes — original gap
+ * region 0x2E60..0x39C0 minus the 28 bytes folded into JointTree_post). */
 
 /* gap sub-block @ 0x2E7C (was gap+0x1C, 40 bytes) */
 u16 dFoxModel_gap_0x2E60_sub_0x1C[20] = {
@@ -434,64 +1060,64 @@ u16 dFoxModel_gap_0x2E60_sub_0x264[20] = {
 };
 
 /* gap sub-block @ 0x30EC (was gap+0x28C, 8 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x28C[2] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x14C,
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x174,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x28C[2] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x14C,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x174,
 };
 
 /* gap sub-block @ 0x30F4 (was gap+0x294, 16 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x294[4] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x1C,
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x44,
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x6C,
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x94,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x294[4] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x1C,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x44,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x6C,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x94,
 };
 
 /* gap sub-block @ 0x3104 (was gap+0x2A4, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2A4[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0xBC,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2A4[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0xBC,
 };
 
 /* gap sub-block @ 0x3108 (was gap+0x2A8, 8 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2A8[2] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0xE4,
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x104,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2A8[2] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0xE4,
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x104,
 };
 
 /* gap sub-block @ 0x3110 (was gap+0x2B0, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2B0[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x124,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2B0[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x124,
 };
 
 /* gap sub-block @ 0x3114 (was gap+0x2B4, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2B4[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x1EC,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2B4[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x1EC,
 };
 
 /* gap sub-block @ 0x3118 (was gap+0x2B8, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2B8[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x1C4,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2B8[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x1C4,
 };
 
 /* gap sub-block @ 0x311C (was gap+0x2BC, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2BC[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x19C,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2BC[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x19C,
 };
 
 /* gap sub-block @ 0x3120 (was gap+0x2C0, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2C0[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x264,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C0[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x264,
 };
 
 /* gap sub-block @ 0x3124 (was gap+0x2C4, 4 bytes) */
-u16 *dFoxModel_gap_0x2E60_sub_0x2C4[1] = {
-	(u16 *)dFoxModel_gap_0x2E60_sub_0x23C,
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C4[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x23C,
 };
 
 /* gap sub-block @ 0x3128 (was gap+0x2C8, 8 bytes) */
-u32 dFoxModel_gap_0x2E60_sub_0x2C8[2] = {
-	(u32)dFoxModel_gap_0x2E60_sub_0x214,
-	aobjEvent32End(),
+AObjEvent32 *dFoxModel_gap_0x2E60_sub_0x2C8[2] = {
+	(AObjEvent32 *)dFoxModel_gap_0x2E60_sub_0x214,
+	NULL,
 };
 
 /* gap sub-block @ 0x3130 (was gap+0x2D0, 108 bytes) */
@@ -1341,7 +1967,11 @@ Gfx dFoxModel_Joint_0x5400_DisplayList[34] = {
 	#include <FoxModel/Joint_0x5400.dl.inc.c>
 };
 
-/* DObjDesc: JointTree_0x5510 @ 0x5510 (30 entries) */
+/* DObjDesc: JointTree_0x5510 @ 0x5510 (28 entries, 0x4D0 bytes — array
+ * always terminates at the `{ 18, ... }` sentinel. The 22 u32s that
+ * formerly looked like 2 trailing entries are slots 0..21 of the
+ * AObjEvent32 ** dispatch immediately following — see
+ * JointTree_0x5510_post). */
 DObjDesc dFoxModel_JointTree_0x5510[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dFoxModel_Joint_0x4720_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1371,19 +2001,48 @@ DObjDesc dFoxModel_JointTree_0x5510[] = {
 	{ 3, (void*)dFoxModel_Joint_0x5400_DisplayList, { 0.0f, 16.19999885559082f, -112.50000762939453f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void *)dFoxModel_gap_0x5A38_sub_0x284, { 2.0363715804538255e-25f, 0.0f, 2.0694161009569186e-25f }, { 0.0f, 0.0f, 0.0f }, { 2.101728090153804e-25f, 0.0f, 2.1825079398865015e-25f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 2.1986640577444607e-25f }, { 2.230976046941346e-25f, 0.0f, 2.2632880361382317e-25f }, { 0.0f, 2.279444153996191e-25f, 2.3117561431930765e-25f } },
 };
 
-/* Raw data from file offset 0x5A38 to 0x72D8 (6304 bytes) */
-/* gap sub-block @ 0x5A38 (was gap+0x0, 20 bytes) */
-AObjEvent32 *dFoxModel_gap_0x5A38[5] = {
+/* AObjEvent32 ** dispatch table @ file 0x59E0 (108 bytes, 27 slots).
+ * Lives immediately after JointTree_0x5510 (no PAD) and is referenced
+ * from FoxMain via commonparts_container+0x18. Was previously split as
+ * two bogus DObjDesc entries (slots 0..21) + `AObjEvent32 *gap_0x5A38[5]`
+ * (slots 22..26). */
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x28C[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x29C[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2A0[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2A8[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2AC[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2B0[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2B4[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2B8[];
+extern AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2BC[];
+
+AObjEvent32 **dFoxModel_JointTree_0x5510_post[27] = {
 	NULL,
-	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x2C0,
+	dFoxModel_gap_0x5A38_sub_0x284,                  /* +0x4 (slot 1) */
+	dFoxModel_gap_0x5A38_sub_0x28C,                  /* +0x8 (slot 2) */
 	NULL,
+	dFoxModel_gap_0x5A38_sub_0x29C,                  /* +0x10 (slot 4) */
+	NULL, NULL, NULL,
+	dFoxModel_gap_0x5A38_sub_0x2A0,                  /* +0x20 (slot 8) */
 	NULL,
+	dFoxModel_gap_0x5A38_sub_0x2A8,                  /* +0x28 (slot 10) */
+	NULL, NULL, NULL, NULL,
+	dFoxModel_gap_0x5A38_sub_0x2AC,                  /* +0x3C (slot 15) */
+	dFoxModel_gap_0x5A38_sub_0x2B0,                  /* +0x40 (slot 16) */
 	NULL,
+	dFoxModel_gap_0x5A38_sub_0x2B4,                  /* +0x48 (slot 18) */
+	NULL,
+	dFoxModel_gap_0x5A38_sub_0x2B8,                  /* +0x50 (slot 20) */
+	dFoxModel_gap_0x5A38_sub_0x2BC,                  /* +0x54 (slot 21) */
+	NULL,
+	dFoxModel_gap_0x5A38_sub_0x2C0,                  /* +0x5C (slot 23, was gap_0x5A38+0x4) */
+	NULL, NULL, NULL,
 };
+
+/* Raw data from file offset 0x5A4C to 0x72D8 (6284 bytes — original gap
+ * region 0x5A38..0x72D8 minus the 20 bytes folded into JointTree_0x5510_post). */
 
 /* gap sub-block @ 0x5A4C (was gap+0x14, 40 bytes) */
 u16 dFoxModel_gap_0x5A38_sub_0x14[20] = {
@@ -1466,64 +2125,64 @@ u16 dFoxModel_gap_0x5A38_sub_0x25C[20] = {
 };
 
 /* gap sub-block @ 0x5CBC (was gap+0x284, 8 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x284[2] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x144,
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x16C,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x284[2] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x144,
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x16C,
 };
 
 /* gap sub-block @ 0x5CC4 (was gap+0x28C, 16 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x28C[4] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x14,
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x3C,
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x64,
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x8C,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x28C[4] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x14,
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x3C,
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x64,
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x8C,
 };
 
 /* gap sub-block @ 0x5CD4 (was gap+0x29C, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x29C[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0xB4,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x29C[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0xB4,
 };
 
 /* gap sub-block @ 0x5CD8 (was gap+0x2A0, 8 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2A0[2] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0xDC,
-	(u16 *)dFoxModel_gap_0x5A38_sub_0xFC,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2A0[2] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0xDC,
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0xFC,
 };
 
 /* gap sub-block @ 0x5CE0 (was gap+0x2A8, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2A8[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x11C,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2A8[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x11C,
 };
 
 /* gap sub-block @ 0x5CE4 (was gap+0x2AC, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2AC[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x1E4,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2AC[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x1E4,
 };
 
 /* gap sub-block @ 0x5CE8 (was gap+0x2B0, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2B0[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x1BC,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2B0[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x1BC,
 };
 
 /* gap sub-block @ 0x5CEC (was gap+0x2B4, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2B4[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x194,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2B4[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x194,
 };
 
 /* gap sub-block @ 0x5CF0 (was gap+0x2B8, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2B8[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x25C,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2B8[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x25C,
 };
 
 /* gap sub-block @ 0x5CF4 (was gap+0x2BC, 4 bytes) */
-u16 *dFoxModel_gap_0x5A38_sub_0x2BC[1] = {
-	(u16 *)dFoxModel_gap_0x5A38_sub_0x234,
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2BC[1] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x234,
 };
 
 /* gap sub-block @ 0x5CF8 (was gap+0x2C0, 8 bytes) */
-u32 dFoxModel_gap_0x5A38_sub_0x2C0[2] = {
-	(u32)dFoxModel_gap_0x5A38_sub_0x20C,
-	aobjEvent32End(),
+AObjEvent32 *dFoxModel_gap_0x5A38_sub_0x2C0[2] = {
+	(AObjEvent32 *)dFoxModel_gap_0x5A38_sub_0x20C,
+	NULL,
 };
 
 /* gap sub-block @ 0x5D00 (was gap+0x2C8, 208 bytes) */
@@ -1729,11 +2388,8 @@ u16 dFoxModel_Lut_0x72D8_palette[16] = {
 };
 
 /* Raw data from file offset 0x72F8 to 0x7508 (528 bytes) */
-/* gap sub-block @ 0x72F8 (was gap+0x0, 8 bytes) */
-u32 dFoxModel_gap_0x72F8[2] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-};
+PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x72F8[2] = { End, End }`;
+		  * no relocations reference it. */
 
 /* gap sub-block @ 0x7300 (was gap+0x8, 520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */
@@ -1747,11 +2403,7 @@ u16 dFoxModel_Lut_0x7508_palette[16] = {
 };
 
 /* Raw data from file offset 0x7528 to 0x75D0 (168 bytes) */
-/* gap sub-block @ 0x7528 (was gap+0x0, 8 bytes) */
-u32 dFoxModel_gap_0x7528[2] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-};
+PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x7528[2] = { End, End }`. */
 
 /* gap sub-block @ 0x7530 (was gap+0x8, 40 bytes) */
 u16 dFoxModel_gap_0x7528_sub_0x8[20] = {
@@ -1790,11 +2442,7 @@ u16 dFoxModel_Lut_0x7808_palette[16] = {
 };
 
 /* Raw data from file offset 0x7828 to 0x79D8 (432 bytes) */
-/* gap sub-block @ 0x7828 (was gap+0x0, 8 bytes) */
-u32 dFoxModel_gap_0x7828[2] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-};
+PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x7828[2] = { End, End }`. */
 
 /* gap sub-block @ 0x7830 (was gap+0x8, 264 bytes) */
 /* @tex fmt=CI4 dim=32x16 */

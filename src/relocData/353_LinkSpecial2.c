@@ -8,9 +8,9 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
-extern void *dLinkSpecial2_gap_0x01A8[];
-extern void *dLinkSpecial2_gap_0x0568[];
-extern void *dLinkSpecial2_gap_0x10B0[];
+extern MObjSub *dLinkSpecial2_gap_0x01B0[];
+extern MObjSub *dLinkSpecial2_gap_0x0570[];
+extern MObjSub *dLinkSpecial2_gap_0x10B8[];
 
 PAD(8);
 
@@ -27,42 +27,47 @@ u8 dLinkSpecial2_Tex_0x0030[256] = {
 	#include <LinkSpecial2/Tex_0x0030.tex.inc.c>
 };
 
-/* MObjSub: EntryWaveMObjSub @ 0x130 */
+/* MObjSub ** pointer table @ 0x130 (2 entries). Same shape as the
+ * SpinAttack/EntryBeam pair below — wrapping MObj prefix that chains
+ * to the sprites table. */
+MObjSub **dLinkSpecial2_EntryWaveMObjSub[2] = {
+	NULL,
+	(MObjSub **)dLinkSpecial2_gap_0x01B0,
+};
+
+/* MObjSub: EntryWaveMObjSub @ 0x138 (was 0x130 — shifted +8). */
 MObjSub dLinkSpecial2_EntryWaveMObjSub_MObjSub[1] = {
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dLinkSpecial2_gap_0x01A8 + 0x8),
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4105968083108137e-37f, 0.0f,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0240, 0x0020,
+		0,
 		0.0f, 0.0f,
 		1.0f, 1.0f,
+		0.0f, 1.0f,
 		(void**)0x00000000,
-		0x3F80,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x32A0, 0x0200,
-		1.4694127800787178e-39f, 1.4105968083108137e-37f,
+		0x32A0,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
+		0x0010,
+		0x0020, 0x0240, 0x0020,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0.0f, 0.0f,
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0x61 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 2139127808,
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x7F, 0x80, 0x80, 0x00 } },
+		0, 0,
 		0, 0,
 	}
 };
 
-/* Raw data from file offset 0x01A8 to 0x01B8 (16 bytes) */
-/* MObjSub.sprites pointer table @ +0x1A8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dLinkSpecial2_gap_0x01A8[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dLinkSpecial2_EntryWaveMObjSub_MObjSub + 0x8),
+/* MObjSub* sprites table @ 0x1B0 (2 entries). */
+MObjSub *dLinkSpecial2_gap_0x01B0[2] = {
+	(MObjSub *)&dLinkSpecial2_EntryWaveMObjSub_MObjSub,
 	NULL,
 };
 
@@ -104,42 +109,46 @@ u8 dLinkSpecial2_Tex_0x04B0[64] = {
 	#include <LinkSpecial2/Tex_0x04B0.tex.inc.c>
 };
 
-/* MObjSub: EntryBeamMObjSub @ 0x4F0 */
+/* MObjSub ** pointer table @ 0x4F0 (2 entries). Same shape as the
+ * SpinAttack/EntryWave pair. */
+MObjSub **dLinkSpecial2_EntryBeamMObjSub[2] = {
+	NULL,
+	(MObjSub **)dLinkSpecial2_gap_0x0570,
+};
+
+/* MObjSub: EntryBeamMObjSub @ 0x4F8 (was 0x4F0 — shifted +8). */
 MObjSub dLinkSpecial2_EntryBeamMObjSub_MObjSub[1] = {
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dLinkSpecial2_gap_0x0568 + 0x8),
-		0x0000, 0x0202, 0x0000, 0x0000,
-		4194304,
-		1.175495471861059e-38f, 1.401298464324817e-45f,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0040, 0x0000, 0x0080, 0x0008,
+		1,
 		0.0f, 0.0f,
 		1.0f, 1.0f,
+		0.0f, 1.0f,
 		(void**)0x00000000,
-		0x3F80,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3200, 0x0200,
-		1.469379148915574e-39f, 1.175495471861059e-38f,
+		0x3200,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
+		0x0010,
+		0x0008, 0x0080, 0x0008,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0.0f, 0.0f,
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0x5C } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-1280068864, 2139127808,
+		{ { 0xB3, 0xB3, 0xB3, 0x00 } },
+		{ { 0x7F, 0x80, 0x80, 0x00 } },
+		0, 0,
 		0, 0,
 	}
 };
 
-/* Raw data from file offset 0x0568 to 0x0578 (16 bytes) */
-/* MObjSub.sprites pointer table @ +0x568 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dLinkSpecial2_gap_0x0568[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dLinkSpecial2_EntryBeamMObjSub_MObjSub + 0x8),
+/* MObjSub* sprites table @ 0x570 (2 entries). */
+MObjSub *dLinkSpecial2_gap_0x0570[2] = {
+	(MObjSub *)&dLinkSpecial2_EntryBeamMObjSub_MObjSub,
 	NULL,
 };
 
@@ -380,9 +389,17 @@ u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848[] = {
 	(u32)(dLinkSpecial2_EntryWaveAnimJoint_AnimJoint_0x848),
 };
 
-/* Raw data from file offset 0x0B60 to 0x0B90 (48 bytes) */
-u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[12] = {
-	aobjEvent32Jump(0x00000000),
+/* Script-table split: leading chain-pointer table @ 0xB60, AObjEvent32
+ * script @ 0xB68 (matches the EntryWaveAnimJoint pattern above). The
+ * script's SetAnim self-pointer at +0x20 loops back to its start. */
+extern u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint_0xB68[];
+
+AObjEvent32 *dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[2] = {
+	(AObjEvent32 *)dLinkSpecial2_EntryBeamAnimJoint_AnimJoint_0xB68,
+	NULL,
+};
+
+u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint_0xB68[10] = {
 	aobjEvent32SetVal(0x002, 0),
 	    0x00000000,
 	aobjEvent32SetValAfter(0x005, 0),
@@ -391,7 +408,8 @@ u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[12] = {
 	aobjEvent32SetValBlock(0x002, 120),
 	    0x3FC90FDB,
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32Jump(0x00000000),
+	(u32)(dLinkSpecial2_EntryBeamAnimJoint_AnimJoint_0xB68),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x0B90 to 0x0BF0 (96 bytes) */
@@ -475,42 +493,50 @@ u8 dLinkSpecial2_Tex_0x0C38[1024] = {
 	#include <LinkSpecial2/Tex_0x0C38.tex.inc.c>
 };
 
-/* MObjSub: SpinAttackMObjSub @ 0x1038 */
+/* MObjSub ** pointer table @ 0x1038 (2 entries). Entry 1 chains to the
+ * sprites table at gap_0x10B8; the wrapping struct here is the MObj's
+ * outer { next, parent_gobj } header that precedes the embedded MObjSub
+ * below. */
+MObjSub **dLinkSpecial2_SpinAttackMObjSub[2] = {
+	NULL,
+	(MObjSub **)dLinkSpecial2_gap_0x10B8,
+};
+
+/* MObjSub: SpinAttackMObjSub @ 0x1040 (was 0x1038 — shifted +8 once the
+ * preceding MObjSub** prefix got its own typed declaration). */
 MObjSub dLinkSpecial2_SpinAttackMObjSub_MObjSub[1] = {
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dLinkSpecial2_gap_0x10B0 + 0x8),
-		0x0000, 0x0302, 0x0000, 0x0000,
-		2097152,
-		2.938780718606577e-39f, 0.0f,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
 		0.0f, 0.0f,
 		1.0f, 1.0f,
+		0.0f, 1.0f,
 		(void**)0x00000000,
-		0x3F80,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x0200, 0x0301,
-		2.938780718606577e-39f, 2.938780718606577e-39f,
+		0x0200,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x00, { 0x20, 0x01 },
+		0.0f, 0.0f,
+		0x00002001,
 		{ { 0xFF, 0xFF, 0x60, 0xA3 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0xD0, 0x0C, 0x03, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, -256,
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		0, 0,
 		0, 0,
 	}
 };
 
-/* Raw data from file offset 0x10B0 to 0x10C0 (16 bytes) */
-/* MObjSub.sprites pointer table @ +0x10B0 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dLinkSpecial2_gap_0x10B0[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dLinkSpecial2_SpinAttackMObjSub_MObjSub + 0x8),
+/* MObjSub* sprites table @ 0x10B8 (2 entries). After the shift, entry 0
+ * points cleanly at the SpinAttackMObjSub's start (no `+0x8` offset). */
+MObjSub *dLinkSpecial2_gap_0x10B8[2] = {
+	(MObjSub *)&dLinkSpecial2_SpinAttackMObjSub_MObjSub,
 	NULL,
 };
 
@@ -602,6 +628,68 @@ AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[2] = {
 	(AObjEvent32 *)((u8*)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data + 0x3C),
 };
 
-u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[454] = {
+/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data (15 u32) */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[15] = {
 	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data.data.inc.c>
+};
+
+/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C (5 u32) */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C[5] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C.data.inc.c>
+};
+
+/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50 (10 u32) */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50[10] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50.data.inc.c>
+};
+
+/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78 (66 u32) */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78[66] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78.data.inc.c>
+};
+
+/* CI4 32×32 texel block — referenced by DL_at_0x400 via SetTextureImage
+ * (CI 16b) + LoadBlock (255,1024) + SetTile (4b, masks 5/5). */
+/* @tex fmt=CI4 dim=32x32 */
+u8 dLinkSpecial2_Tex_0x1478[512] = {
+	#include <LinkSpecial2/Tex_0x1478.tex.inc.c>
+};
+
+/* Vtx[4] — referenced by DL_at_0x400 via gsSPVertex. */
+Vtx dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x380[4] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x380.vtx.inc.c>
+};
+
+/* Vtx[4] — referenced by DL_at_0x4F0 via gsSPVertex. */
+Vtx dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C0[4] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C0.vtx.inc.c>
+};
+
+/* Gfx DL @ _data+0x400 (30 cmds) — starts with gsDPPipeSync, ends with
+ * gsSPEndDisplayList. Cross-script chain pointers (per the .reloc)
+ * reference other split chunks in _data. */
+Gfx dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x400[30] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x400.dl.inc.c>
+};
+
+/* Gfx DL @ _data+0x4F0 (26 cmds) — same DL shape as the one above. */
+Gfx dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x4F0[26] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x4F0.dl.inc.c>
+};
+
+/* DObjDLLink[2] — DL slot for a DObjDesc entry, referenced by the
+ * material struct at _data_at_0x5D0 (entry 2's `dl` field). */
+DObjDLLink dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5C0[] = {
+	{ 0, dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x400 },
+	{ 4, NULL },
+};
+
+/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0 (53 u32) */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0[53] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0.data.inc.c>
+};
+
+/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4 (29 u32) */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4[29] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4.data.inc.c>
 };

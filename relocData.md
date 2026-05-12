@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2054 / 2132** files at 100% (97.44% of bytes typed; 437,364 / 17,082,000 bytes still untyped across 78 files).
+Overall: **2055 / 2132** files at 100% (97.45% of bytes typed; 436,244 / 17,082,000 bytes still untyped across 77 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -60,7 +60,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
 | 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
 | 166 | IFCommonPlayer | 976 | 272 | 1 | 72.13% |
-| 353 | LinkSpecial2 | 6672 | 1816 | 1 | 72.78% |
 | 257 | GRZebesMap | 224 | 56 | 2 | 75.00% |
 | 261 | GRJungleMap | 224 | 56 | 2 | 75.00% |
 | 265 | GRHyruleMap | 224 | 56 | 2 | 75.00% |
@@ -75,6 +74,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
 | 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
+| 353 | LinkSpecial2 | 6672 | 712 | 6 | 89.33% |
 | 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
 | 52 | MVCommon | 149280 | 15188 | 21 | 89.83% |
 | 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
@@ -113,7 +113,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
 | 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
-| 348 | KirbySpecial2 | 10512 | 16 | 1 | 99.85% |
 | 147 | GRBonus2PurinFile2 | 21728 | 24 | 1 | 99.89% |
 
 ### Per-region divergence (JP build)

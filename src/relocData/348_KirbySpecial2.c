@@ -48,9 +48,10 @@ Gfx dKirbySpecial2_Joint_0x0A78_DisplayList[17] = {
 	#include <KirbySpecial2/Joint_0x0A78.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0B00 to 0x0B10 (16 bytes) */
-u8 dKirbySpecial2_JointCmd_0x0B00[16] = {
-	#include <KirbySpecial2/JointCmd_0x0B00.data.inc.c>
+/* DObjDLLink @ 0x0B00 (2 entries) — DL slot for a DObjDesc entry. */
+DObjDLLink dKirbySpecial2_JointCmd_0x0B00[] = {
+	{ 1, dKirbySpecial2_Joint_0x09B0_DisplayList },
+	{ 4, NULL },
 };
 
 /* DObjDLLink @ 0x0B10 (2 entries) — DL slot for a DObjDesc entry. */

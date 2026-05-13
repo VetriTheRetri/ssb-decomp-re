@@ -175,9 +175,13 @@ include $(RELOC_NAMES_MK)
 # Cross-file extern deps: each fid's vpk0.bin needs the .o files of every
 # fid it references via `extern X # -> file NNN` in its .reloc, so
 # fixRelocChain.py can resolve cross-file labels under -j parallel build.
+# Only needed when compiling relocData from C; otherwise the included file's
+# first target declaration would hijack make's default goal.
+ifeq ($(RELOC_DATA),1)
 RELOC_EXTERN_DEPS_MK := $(BUILD_DIR)/reloc_extern_deps.$(VERSION).mk
 $(shell python3 tools/genRelocExternDepsMk.py $(VERSION) > $(RELOC_EXTERN_DEPS_MK))
 include $(RELOC_EXTERN_DEPS_MK)
+endif
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 

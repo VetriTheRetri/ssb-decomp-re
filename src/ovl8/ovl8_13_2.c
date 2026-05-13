@@ -69,13 +69,13 @@ extern u8* D_8038F050_1AB8A0;
 extern s32* D_8038F290_1ABAE0;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
-extern db4Bytes D_8038FB98_1AC3E8;
+extern char D_8038FBA8_1AC3F8[16];
 
 extern void func_ovl8_8037D990(s32);
 extern void func_ovl8_8037D9B4(db4Bytes*);
 extern void func_ovl8_8037D9D0(db4Bytes*);
 void func_ovl8_8037DAA0(s32, u32);
-void func_ovl8_8037DFF8(Sprite*, u16, u16, u8, s32, s32*, s32*, f32);
+void func_ovl8_8037DFF8(Sprite*, u16, u16, u8, u8, u8*, u8*, f32);
 
 // 8037DD60
 void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
@@ -157,7 +157,97 @@ void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 }
 
 // 8037DFF8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13_2/func_ovl8_8037DFF8.s")
+void func_ovl8_8037DFF8(Sprite *sprite, u16 width, u16 height, u8 left_trim, u8 right_trim, u8 *src_buffer, u8 *dst_buffer, f32 alpha_blend)
+{
+	f32 red_delta;
+	f32 green_delta;
+	f32 blue_delta;
+	f32 alpha_f;
+	u16 row;
+	u16 col;
+	u16 last_col;
+	u8 pixel_value;
+	u8 red;
+	u8 green;
+	u8 blue;
+	s32 rgb16;
+    sb32 is_transparent;
+	u8 *temp;
+
+	if (alpha_blend == 1.0f)
+	{
+		red_delta = green_delta = blue_delta = 0.0f;
+	}
+	else
+	{
+		red_delta = (D_8038FB90_1AC3E0.color2.r - D_8038FB90_1AC3E0.color1.r) / alpha_blend;
+		green_delta = (D_8038FB90_1AC3E0.color2.g - D_8038FB90_1AC3E0.color1.g) / alpha_blend;
+		blue_delta = (D_8038FB90_1AC3E0.color2.b - D_8038FB90_1AC3E0.color1.b) / alpha_blend;
+	}
+
+	last_col = width - right_trim;
+
+	for (row = 0; row < height; row++)
+	{
+		for (col = left_trim; col < last_col; col++)
+		{
+			pixel_value = (0, src_buffer)[col];
+            is_transparent = (pixel_value == 0);
+
+			if (D_8038FB90_1AC3E0.dbUnknownS14_0xC != 0)
+			{
+				pixel_value = ~pixel_value;
+			}
+
+			if (sprite->bmsiz == 1)
+			{
+				temp = dst_buffer++; *temp = D_8038FBA8_1AC3F8[src_buffer[col]];
+			}
+			else if (sprite->bmsiz == 2)
+			{
+				if (is_transparent)
+				{
+					red = D_8038FB90_1AC3E0.color2.r;
+					green = D_8038FB90_1AC3E0.color2.g;
+					blue = D_8038FB90_1AC3E0.color2.b;
+				}
+				else
+				{
+					alpha_f = pixel_value;
+
+					red = (red_delta * alpha_f + D_8038FB90_1AC3E0.color1.r);
+					green = (green_delta * alpha_f + D_8038FB90_1AC3E0.color1.g);
+					blue = (blue_delta * alpha_f + D_8038FB90_1AC3E0.color1.b);
+				}
+
+				rgb16 = ((red & 0xF8) << 8) + (((green & 0xF8) << 3) & 0x7C0) + (((blue & 0xF8) >> 2) & 0x3E) + 1;
+				temp = dst_buffer++; *temp = (rgb16 >> 8);
+				temp = dst_buffer++; *temp = rgb16;
+			}
+			else if (sprite->bmsiz == 3)
+			{
+				if (is_transparent)
+				{
+					temp = dst_buffer++; *temp = D_8038FB90_1AC3E0.color2.r;
+					temp = dst_buffer++; *temp = D_8038FB90_1AC3E0.color2.g;
+					temp = dst_buffer++; *temp = D_8038FB90_1AC3E0.color2.b;
+					temp = dst_buffer++; *temp = D_8038FB90_1AC3E0.color2.a;
+				}
+				else
+				{
+					alpha_f = pixel_value;
+
+					temp = dst_buffer++; *temp = (red_delta * alpha_f + D_8038FB90_1AC3E0.color1.r);
+					temp = dst_buffer++; *temp = (green_delta * alpha_f + D_8038FB90_1AC3E0.color1.g);
+					temp = dst_buffer++; *temp = (blue_delta * alpha_f + D_8038FB90_1AC3E0.color1.b);
+					temp = dst_buffer++; *temp = D_8038FB90_1AC3E0.color1.a;
+				}
+			}
+		}
+
+		src_buffer += (u32)width * 1;
+	}
+}
 
 // 8037E6F4
 u32 func_ovl8_8037E6F4(u8 arg0) {
@@ -265,10 +355,10 @@ dbUnknown5* func_ovl8_8037E8C8(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
 		{
 			arg1 = (dbUnknownLinkStruct *)&arg0->unk_dbunk5_0xB8;
 			arg2 = (dbUnknownLink *)&arg0->unk_dbunk5_0x114;
-			#line 265
+			#line 355
 			func_ovl8_803717E0(arg1);
 			func_ovl8_8037C2D0(arg2);
-			#line 272
+			#line 362
 		}
 		
 		func_ovl8_8037C710(arg0, arg1, arg2);

@@ -235,8 +235,8 @@ void func_ovl8_8037D5AC(u16, u16, u8*, u8*);
 void func_ovl8_8037D990(s32);
 void func_ovl8_8037D99C(s32);
 void func_ovl8_8037D9A8(s32);
-void func_ovl8_8037D9B4(db4Bytes*);
-void func_ovl8_8037D9D0(db4Bytes*);
+void func_ovl8_8037D9B4(SYColorRGBA*);
+void func_ovl8_8037D9D0(SYColorRGBA*);
 void func_ovl8_8037D9EC(u16, u16);
 extern void func_ovl8_8037DFF8(Sprite*, u16, u16, u8, s32, s32*, s32*, f32);
 
@@ -662,15 +662,15 @@ void func_ovl8_8037D9A8(s32 arg0)
 }
 
 // 0x8037D9B4
-void func_ovl8_8037D9B4(db4Bytes* arg0)
+void func_ovl8_8037D9B4(SYColorRGBA* arg0)
 {
-    D_8038FB90_1AC3E0.dbUnknownS14_0x8 = *arg0;
+    D_8038FB90_1AC3E0.color2 = *arg0;
 }
 
 // 0x8037D9D0
-void func_ovl8_8037D9D0(db4Bytes* arg0)
+void func_ovl8_8037D9D0(SYColorRGBA* arg0)
 {
-    D_8038FB90_1AC3E0.dbUnknownS14_0x4 = *arg0;
+    D_8038FB90_1AC3E0.color1 = *arg0;
 }
 
 // 0x8037D9EC

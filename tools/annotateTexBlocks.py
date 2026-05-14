@@ -75,7 +75,7 @@ def collect_tex_info_from_gfx_body(body):
     last_committed_lut = None  # symbol
 
     settimg_re = re.compile(
-        r"gsDPSetTextureImage\(\s*G_IM_FMT_(\w+)\s*,\s*G_IM_SIZ_(\d+b)\s*,\s*\d+\s*,\s*([A-Za-z_]\w+)"
+        r"gsDPSetTextureImage\(\s*G_IM_FMT_(\w+)\s*,\s*G_IM_SIZ_(\d+b)\s*,\s*(\d+)\s*,\s*([A-Za-z_]\w+)"
     )
     settile_re = re.compile(
         r"gsDPSetTile\(\s*G_IM_FMT_(\w+)\s*,\s*G_IM_SIZ_(\d+b)\s*,"
@@ -121,6 +121,32 @@ def collect_tex_info_from_gfx_body(body):
         height_pixels = bytes_loaded // width_bytes
         return (width_pixels, height_pixels)
 
+    # Width declared by SetTextureImage for the current pending texture
+    # (the load-tile path uses this directly, since each LoadTile only
+    # covers a sub-row range — height comes from max lrt+1 across the
+    # SetTileSize calls bound to the same texture).
+    pending_settimg_w = None
+    # Running max of (rows+1) seen via SetTileSize while pending_settimg
+    # is alive. Updated on each SetTileSize.
+    pending_settimg_h = 0
+
+    def _commit_load_path():
+        """Record the current pending texture using fmt from SetTile and
+        width from SetTextureImage and the running height from SetTileSize.
+        Called when the texture's load sequence is finalized (next
+        SetTextureImage / EndDisplayList / SPDisplayList break)."""
+        if (pending_settimg is not None and "_Tex_" in pending_settimg
+                and last_tile_fmt is not None and pending_settimg_w
+                and pending_settimg_h):
+            fmt_name = FMT_TABLE.get(last_tile_fmt)
+            if fmt_name:
+                result.setdefault(pending_settimg, {
+                    "fmt": fmt_name,
+                    "w": pending_settimg_w,
+                    "h": pending_settimg_h,
+                    "lut": last_committed_lut if fmt_name in ("CI4", "CI8") else None,
+                })
+
     for ln in body.split("\n"):
         m = settile_re.search(ln)
         if m:
@@ -131,25 +157,37 @@ def collect_tex_info_from_gfx_body(body):
             lrs = int(m.group(1), 16)
             lrt = int(m.group(2), 16)
             last_tile_size = ((lrs >> 2) + 1, (lrt >> 2) + 1)
+            # Track running max-height for the current pending texture
+            # (load-tile chunks update lrt monotonically across loads).
+            if pending_settimg is not None:
+                pending_settimg_h = max(pending_settimg_h, (lrt >> 2) + 1)
             continue
         m = settimg_re.search(ln)
         if m:
-            sym = m.group(3)
+            # Finalize any in-flight texture before switching.
+            _commit_load_path()
+            sym = m.group(4)
             last_settimg_siz = m.group(2)
             pending_settimg = sym
+            pending_settimg_w = int(m.group(3))
+            pending_settimg_h = 0
             continue
         if "gsDPLoadTLUTCmd" in ln:
             if pending_settimg is not None:
                 last_committed_lut = pending_settimg
             pending_settimg = None
+            pending_settimg_w = None
+            pending_settimg_h = 0
             continue
         m_lb = loadblock_re.search(ln)
-        if m_lb or "gsDPLoadTile" in ln:
+        if m_lb:
+            # LoadBlock path: dims come from the block's own (lrs,dxt)
+            # — record immediately and stop tracking this texture.
             if pending_settimg is not None and "_Tex_" in pending_settimg \
                     and last_tile_fmt is not None:
                 fmt_name = FMT_TABLE.get(last_tile_fmt)
                 stored = None
-                if m_lb and last_settimg_siz is not None:
+                if last_settimg_siz is not None:
                     stored = stored_dims_from_loadblock(
                         int(m_lb.group(1)), int(m_lb.group(2)),
                         last_settimg_siz, last_tile_fmt)
@@ -164,14 +202,24 @@ def collect_tex_info_from_gfx_body(body):
                         "lut": last_committed_lut if fmt_name in ("CI4", "CI8") else None,
                     }
             pending_settimg = None
+            pending_settimg_w = None
+            pending_settimg_h = 0
+            continue
+        if "gsDPLoadTile" in ln:
+            # LoadTile path: keep pending_settimg alive — dims accumulate
+            # from SetTextureImage width + max SetTileSize lrt+1 height.
             continue
         if "gsSPEndDisplayList" in ln:
+            _commit_load_path()
             # Reset state — next DL is independent.
             last_tile_fmt = None
             last_tile_size = None
             last_settimg_siz = None
             pending_settimg = None
+            pending_settimg_w = None
+            pending_settimg_h = 0
             last_committed_lut = None
+    _commit_load_path()
     return result
 
 

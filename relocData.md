@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2055 / 2132** files at 100% (97.08% of bytes typed; 498,512 / 17,082,000 bytes still untyped across 77 files).
+Overall: **2057 / 2132** files at 100% (97.41% of bytes typed; 442,796 / 17,082,000 bytes still untyped across 75 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -53,8 +53,8 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
 | 85 | EFCommonEffects3 | 13616 | 9228 | 7 | 32.23% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
+| 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
 | 260 | GRInishieMap | 368 | 200 | 4 | 45.65% |
-| 52 | MVCommon | 149280 | 76136 | 15 | 51.00% |
 | 84 | EFCommonEffects2 | 28352 | 12704 | 32 | 55.19% |
 | 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
 | 262 | GRSectorMap | 304 | 116 | 2 | 61.84% |
@@ -67,7 +67,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 68 | MVOpeningCliff | 35440 | 8344 | 8 | 76.46% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
-| 61 | MVOpeningNewcomers1 | 167600 | 34656 | 4 | 79.32% |
 | 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
@@ -76,7 +75,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
 | 353 | LinkSpecial2 | 6672 | 712 | 6 | 89.33% |
-| 62 | MVOpeningNewcomers2 | 245008 | 25184 | 4 | 89.72% |
 | 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
 | 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
 | 86 | ITCommonObject | 79584 | 6696 | 75 | 91.59% |
@@ -737,10 +735,8 @@ tree, not DL content.
 | 114 | StageLastFile2 | 55,848 | Stage collision + per-layer animation tracks. |
 | 138 | GRBonus2FoxFile2 | 55,644 | Bonus2 stage data — DL-continuation chains and tail metadata. |
 | 86 | ITCommonObject | 46,792 | Per-item `_data_remainder` and `JointCmd` blocks (graduated this round from the unclassified bucket via `symbolizeRelocFile.py`). |
-| 52 | MVCommon | 73,144 | Room-decoration AObjEvent32 script tails (each `_post_data_0x0000` is the residue after the first `aobjEvent32End()` of its AnimJoint/MatAnimJoint). |
-| 61 | MVOpeningNewcomers1 | 34,656 | Opening cutscene — `*_post` DL-tail metadata (Joint / DObj / Anim fragments). |
+| 52 | MVCommon | 81,580 | Room-decoration AObjEvent32 script tails (each `_post_data_0x0000` is the residue after the first `aobjEvent32End()` of its AnimJoint/MatAnimJoint). |
 | 105 | StageZebesFile2 | 31,488 | Stage collision + per-layer animation tracks. |
-| 62 | MVOpeningNewcomers2 | 25,184 | Same shape as Newcomers1. |
 | 83 | EFCommonEffects1 | 19,260 | Effect parameter tables. |
 | 69 | MVOpeningStandoff | 16,424 | Opening cutscene post-DL data. |
 | 84 | EFCommonEffects2 | 9,648 | Effect parameter tails. |

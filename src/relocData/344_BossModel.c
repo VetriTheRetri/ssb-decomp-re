@@ -351,9 +351,10 @@ DObjDesc dBossModel_JointTree[] = {
 PAD(8);
 
 /* gap sub-block @ 0x2858 (was gap+0x8, 40 bytes) */
-u16 dBossModel_gap_0x2850_sub_0x8[20] = {
+u16 dBossModel_gap_0x2850_sub_0x8[16] = {
 	#include <BossModel/gap_0x2850_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x2880 (was gap+0x30, 512 bytes) */
 /* @tex fmt=CI4 dim=32x32 lut=dBossModel_gap_0x2850_sub_0x8 */

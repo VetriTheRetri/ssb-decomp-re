@@ -3074,24 +3074,28 @@ Gfx dLuigiModel_DL_0x6C20[14] = {
 PAD(8);
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_palette_0x6C98[20] = {
+u16 dLuigiModel_palette_0x6C98[16] = {
 	#include <LuigiModel/palette_0x6C98.palette.inc.c>
 };
+PAD(8);
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_palette_0x6CC0[20] = {
+u16 dLuigiModel_palette_0x6CC0[16] = {
 	#include <LuigiModel/palette_0x6CC0.palette.inc.c>
 };
+PAD(8);
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_palette_0x6CE8[20] = {
+u16 dLuigiModel_palette_0x6CE8[16] = {
 	#include <LuigiModel/palette_0x6CE8.palette.inc.c>
 };
+PAD(8);
 
 /* palette @ retyped from u8[40] to u16[20] */
-u16 dLuigiModel_palette_0x6D10[20] = {
+u16 dLuigiModel_palette_0x6D10[16] = {
 	#include <LuigiModel/palette_0x6D10.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x6D38 (1672 bytes) */
 /* @tex fmt=CI4 dim=32x24 lut=dLuigiModel_palette_0x6D10 */
@@ -3109,30 +3113,35 @@ u8 dLuigiModel_Tex_0x7118[520] = {
 	#include <LuigiModel/Tex_0x7118.tex.inc.c>
 };
 
-u16 dLuigiModel_palette_0x7320[20] = {
+u16 dLuigiModel_palette_0x7320[16] = {
 	#include <LuigiModel/palette_0x7320.palette.inc.c>
 };
+PAD(8);
 
-u16 dLuigiModel_palette_0x7348[20] = {
+u16 dLuigiModel_palette_0x7348[16] = {
 	#include <LuigiModel/palette_0x7348.palette.inc.c>
 };
+PAD(8);
 
-u16 dLuigiModel_palette_0x7370[20] = {
+u16 dLuigiModel_palette_0x7370[16] = {
 	#include <LuigiModel/palette_0x7370.palette.inc.c>
 };
+PAD(8);
 
-u16 dLuigiModel_palette_0x7398[20] = {
+u16 dLuigiModel_palette_0x7398[16] = {
 	#include <LuigiModel/palette_0x7398.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x24 */
 u8 dLuigiModel_Tex_0x73C0[392] = {
 	#include <LuigiModel/Tex_0x73C0.tex.inc.c>
 };
 
-u16 dLuigiModel_palette_0x7548[20] = {
+u16 dLuigiModel_palette_0x7548[16] = {
 	#include <LuigiModel/palette_0x7548.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x35 lut=dLuigiModel_palette_0x7548 */
 u8 dLuigiModel_Tex_0x7570[560] = {
@@ -3144,9 +3153,10 @@ u8 dLuigiModel_Tex_0x77A0[520] = {
 	#include <LuigiModel/Tex_0x77A0.tex.inc.c>
 };
 
-u16 dLuigiModel_palette_0x79A8[20] = {
+u16 dLuigiModel_palette_0x79A8[16] = {
 	#include <LuigiModel/palette_0x79A8.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x32 lut=dLuigiModel_palette_0x79A8 */
 u8 dLuigiModel_Tex_0x79D0[520] = {

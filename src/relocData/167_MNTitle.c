@@ -2184,9 +2184,10 @@ u8 dMNTitle_gap_0x26370_sub_0x750[168] = {
 };
 
 /* gap sub-block @ 0x26B68 (was gap+0x7F8, 40 bytes) */
-u16 dMNTitle_gap_0x26370_sub_0x7F8[20] = {
+u16 dMNTitle_gap_0x26370_sub_0x7F8[16] = {
 	#include <MNTitle/gap_0x26370_sub_0x7F8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x26B90 (was gap+0x820, 1032 bytes) */
 /* @tex fmt=IA8 dim=16x64 */

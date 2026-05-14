@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2057 / 2132** files at 100% (97.41% of bytes typed; 442,796 / 17,082,000 bytes still untyped across 75 files).
+Overall: **2062 / 2132** files at 100% (97.88% of bytes typed; 362,868 / 17,082,000 bytes still untyped across 70 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -46,16 +46,12 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 159 | StageYamabukiFile3 | 10976 | 10920 | 14 | 0.51% |
 | 155 | StageInishieFile3 | 5136 | 5108 | 6 | 0.55% |
 | 154 | StageYosterFile3 | 1712 | 1700 | 2 | 0.70% |
-| 72 | MVOpeningClashFighters | 5248 | 5176 | 16 | 1.37% |
-| 83 | EFCommonEffects1 | 52736 | 42572 | 26 | 19.27% |
 | 264 | GRYamabukiMap | 832 | 664 | 11 | 20.19% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53864 | 3 | 21.51% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
-| 85 | EFCommonEffects3 | 13616 | 9228 | 7 | 32.23% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
 | 260 | GRInishieMap | 368 | 200 | 4 | 45.65% |
-| 84 | EFCommonEffects2 | 28352 | 12704 | 32 | 55.19% |
 | 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
 | 262 | GRSectorMap | 304 | 116 | 2 | 61.84% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
@@ -64,7 +60,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 257 | GRZebesMap | 224 | 56 | 2 | 75.00% |
 | 261 | GRJungleMap | 224 | 56 | 2 | 75.00% |
 | 265 | GRHyruleMap | 224 | 56 | 2 | 75.00% |
-| 68 | MVOpeningCliff | 35440 | 8344 | 8 | 76.46% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
 | 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
@@ -72,15 +67,12 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
-| 66 | MVOpeningClashWallpaper | 19168 | 2240 | 44 | 88.31% |
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
 | 353 | LinkSpecial2 | 6672 | 712 | 6 | 89.33% |
-| 63 | MVOpeningRoomTransition | 4592 | 416 | 4 | 90.94% |
 | 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
 | 86 | ITCommonObject | 79584 | 6696 | 75 | 91.59% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
-| 75 | MVOpeningRunCrash | 15024 | 1040 | 14 | 93.08% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
@@ -92,7 +84,9 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
 | 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
+| 85 | EFCommonEffects3 | 13616 | 408 | 3 | 97.00% |
 | 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
+| 84 | EFCommonEffects2 | 28352 | 776 | 7 | 97.26% |
 | 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
 | 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
 | 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
@@ -102,6 +96,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 332 | CaptainModel | 51344 | 680 | 3 | 98.68% |
 | 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
 | 344 | BossModel | 11584 | 136 | 1 | 98.83% |
+| 83 | EFCommonEffects1 | 52736 | 608 | 4 | 98.85% |
 | 338 | YoshiModel | 44256 | 432 | 4 | 99.02% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
 | 102 | StagePupupuBeta2 | 10496 | 64 | 1 | 99.39% |
@@ -708,9 +703,7 @@ Top files in each bucket (bytes):
 | 136 | Bonus2Common | 12 | 14,520 |
 | 335 | NessModel | 100 | 12,856 |
 | 332 | CaptainModel | 230 | 11,776 |
-| 75 | MVOpeningRunCrash | 40 | 11,752 |
 | 149 | GRBonus3File2 | 34 | 11,736 |
-| 68 | MVOpeningCliff | 13 | 11,288 |
 | 317 | DonkeyModel | 224 | 11,096 |
 | 114 | StageLastFile2 | 60 | 10,708 |
 | 108 | StageJungleFile2 | 19 | 9,904 |
@@ -963,8 +956,7 @@ The remaining work splits into three buckets:
    - **EFCommonEffects1** (29 KB, 42 blocks) — effect parameter
      tables used by the VFX system (`src/ef/*.c`).
    - **SCExplainGraphics** (23 KB), **Bonus2Common** (15 KB),
-     **MVOpeningRunCrash** (12 KB), **GRBonus3File2** (12 KB),
-     **MVOpeningCliff** (11 KB), **MNTitle** (9 KB), other MVOpening*
+     **GRBonus3File2** (12 KB), **MNTitle** (9 KB), other MVOpening*
      files — scene-specific data.
 
 2. **Promote semantically-named `.data.inc.c` blocks** (~397 KB across

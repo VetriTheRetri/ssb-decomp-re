@@ -14,9 +14,10 @@ u8 dCaptainSpecial3_gap_0x0000[88] = {
 };
 
 /* gap sub-block @ 0x0058 (was gap+0x58, 40 bytes) */
-u16 dCaptainSpecial3_gap_0x0000_sub_0x58[20] = {
+u16 dCaptainSpecial3_gap_0x0000_sub_0x58[16] = {
 	#include <CaptainSpecial3/gap_0x0000_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0080 (was gap+0x80, 520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */

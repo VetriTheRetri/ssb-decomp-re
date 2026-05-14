@@ -2443,25 +2443,30 @@ PAD(8);  /* trailing zeros after gap+0x19E0 DL */
 
 /* MObjSub.palettes frames (RGBA5551 16-color palette + 8 bytes pad each).
  * Five frames cycled via gap_0x26D0_sub_0x384[5] / gap_0x4A60 equivalent. */
-u16 dMarioModel_gap_0x4A60_sub_0x1AC8[20] = {
+u16 dMarioModel_gap_0x4A60_sub_0x1AC8[16] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1AC8.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x4A60_sub_0x1AF0[20] = {
+u16 dMarioModel_gap_0x4A60_sub_0x1AF0[16] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1AF0.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x4A60_sub_0x1B18[20] = {
+u16 dMarioModel_gap_0x4A60_sub_0x1B18[16] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1B18.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x4A60_sub_0x1B40[20] = {
+u16 dMarioModel_gap_0x4A60_sub_0x1B40[16] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1B40.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x4A60_sub_0x1B68[20] = {
+u16 dMarioModel_gap_0x4A60_sub_0x1B68[16] = {
 	#include <MarioModel/gap_0x4A60_sub_0x1B68.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x65F0 (1512 bytes — CI4). The original 1672-byte chunk
  * was split: 1512 bytes of texture proper, then four 40-byte RGBA5551
@@ -2483,21 +2488,25 @@ u8 dMarioModel_Tex_0x69D0[520] = {
 
 /* RGBA5551 palette frames embedded after Tex_0x65F0. Each is 16 colors
  * + 8 bytes pad (40 bytes), referenced by gap_0x26D0_sub_0x3A8. */
-u16 dMarioModel_palette_0x6BD8[20] = {
+u16 dMarioModel_palette_0x6BD8[16] = {
 	#include <MarioModel/palette_0x6BD8.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_palette_0x6C00[20] = {
+u16 dMarioModel_palette_0x6C00[16] = {
 	#include <MarioModel/palette_0x6C00.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_palette_0x6C28[20] = {
+u16 dMarioModel_palette_0x6C28[16] = {
 	#include <MarioModel/palette_0x6C28.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_palette_0x6C50[20] = {
+u16 dMarioModel_palette_0x6C50[16] = {
 	#include <MarioModel/palette_0x6C50.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x6C78 (240 bytes — CI4). Original 760-byte chunk was
  * split: 240 bytes referenced by Joint DLs at +0x0, then a separate
@@ -2543,21 +2552,25 @@ u8 dMarioModel_Stock_tex[88] = {
  * all 5 as `dMarioMain_stock_luts[+0x0..+0x10]` (costume color frames for
  * the Stock icon). First four are 16 colors + 8 bytes trailing pad
  * (40 bytes each); the last is exactly 32 bytes (no trailing pad). */
-u16 dMarioModel_palette_0x7200[20] = {
+u16 dMarioModel_palette_0x7200[16] = {
 	#include <MarioModel/palette_0x7200.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x7220_sub_0x8[20] = {
+u16 dMarioModel_gap_0x7220_sub_0x8[16] = {
 	#include <MarioModel/gap_0x7220_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x7220_sub_0x30[20] = {
+u16 dMarioModel_gap_0x7220_sub_0x30[16] = {
 	#include <MarioModel/gap_0x7220_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
-u16 dMarioModel_gap_0x7220_sub_0x58[20] = {
+u16 dMarioModel_gap_0x7220_sub_0x58[16] = {
 	#include <MarioModel/gap_0x7220_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
 u16 dMarioModel_gap_0x7220_sub_0x80[16] = {
 	#include <MarioModel/gap_0x7220_sub_0x80.palette.inc.c>

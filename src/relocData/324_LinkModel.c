@@ -3014,13 +3014,23 @@ PAD(8);
 
 
 
-u16 dLinkModel_palette_0xCFA0[20] = {
+u16 dLinkModel_palette_0xCFA0[16] = {
 	#include <LinkModel/palette_0xCFA0.palette.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_CFA0_20_jp[8] = { 0x44, 0x67, 0x78, 0x76, 0x64, 0x44, 0x46, 0x87 };
+#else
+PAD(8);
+#endif
 
-u16 dLinkModel_palette_0xCFC8[20] = {
+u16 dLinkModel_palette_0xCFC8[16] = {
 	#include <LinkModel/palette_0xCFC8.palette.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_CFC8_20_jp[8] = { 0x8A, 0xBB, 0xBA, 0x86, 0x44, 0x46, 0x7A, 0xBB };
+#else
+PAD(8);
+#endif
 
 /* Texture: 0xCFF0 (CI4) — 152 bytes texture, 112 bytes trailing palette frames */
 /* @tex fmt=CI4 dim=16x32 */
@@ -3036,13 +3046,23 @@ PAD(8);
 
 
 
-u16 dLinkModel_palette_0xD0F8[20] = {
+u16 dLinkModel_palette_0xD0F8[16] = {
 	#include <LinkModel/palette_0xD0F8.palette.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_D0F8_20_jp[8] = { 0x44, 0x67, 0x78, 0x76, 0x64, 0x44, 0x46, 0x87 };
+#else
+PAD(8);
+#endif
 
-u16 dLinkModel_palette_0xD120[20] = {
+u16 dLinkModel_palette_0xD120[16] = {
 	#include <LinkModel/palette_0xD120.palette.inc.c>
 };
+#if defined(REGION_JP)
+static u8 _pad_D120_20_jp[8] = { 0x8A, 0xBB, 0xBA, 0x86, 0x44, 0x46, 0x7A, 0xBB };
+#else
+PAD(8);
+#endif
 
 /* Texture data @ 0xD148 (1304 bytes) — split into 6 sub-frames at offsets
  * referenced by sprite pointer arrays / DL bindings (US +0x108/+0x310;
@@ -3418,13 +3438,15 @@ u16 dLinkModel_gap_0x11CC0[4] = {
 	#include <LinkModel/gap_0x11CC0.palette.inc.c>
 };
 
-u16 dLinkModel_gap_0x11CC0_sub_0x8[20] = {
+u16 dLinkModel_gap_0x11CC0_sub_0x8[16] = {
 	#include <LinkModel/gap_0x11CC0_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dLinkModel_gap_0x11CC0_sub_0x30[20] = {
+u16 dLinkModel_gap_0x11CC0_sub_0x30[16] = {
 	#include <LinkModel/gap_0x11CC0_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
 u16 dLinkModel_gap_0x11CC0_sub_0x58[16] = {
 	#include <LinkModel/gap_0x11CC0_sub_0x58.palette.inc.c>
@@ -3495,4 +3517,3 @@ Sprite dLinkModel_FTEmblem = {
 };
 
 PAD(4);
-

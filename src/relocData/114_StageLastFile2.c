@@ -19,9 +19,10 @@ extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
-u16 dStageLastFile2_gap_0x0000_sub_0x8[20] = {
+u16 dStageLastFile2_gap_0x0000_sub_0x8[16] = {
 	#include <StageLastFile2/gap_0x0000_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0030 (was gap+0x30, 40 bytes) */
 u16 dStageLastFile2_gap_0x0000_sub_0x30[16] = {
@@ -148,29 +149,34 @@ u8 dStageLastFile2_gap_0x0000_sub_0x2D8[40] = {
 };
 
 /* gap sub-block @ 0x0300 (was gap+0x300, 40 bytes) */
-u16 dStageLastFile2_gap_0x0000_sub_0x300[20] = {
+u16 dStageLastFile2_gap_0x0000_sub_0x300[16] = {
 	#include <StageLastFile2/gap_0x0000_sub_0x300.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0328 (was gap+0x328, 40 bytes) */
-u16 dStageLastFile2_gap_0x0000_sub_0x328[20] = {
+u16 dStageLastFile2_gap_0x0000_sub_0x328[16] = {
 	#include <StageLastFile2/gap_0x0000_sub_0x328.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0350 (was gap+0x350, 40 bytes) */
-u16 dStageLastFile2_gap_0x0000_sub_0x350[20] = {
+u16 dStageLastFile2_gap_0x0000_sub_0x350[16] = {
 	#include <StageLastFile2/gap_0x0000_sub_0x350.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0378 (was gap+0x378, 40 bytes) */
-u16 dStageLastFile2_gap_0x0000_sub_0x378[20] = {
+u16 dStageLastFile2_gap_0x0000_sub_0x378[16] = {
 	#include <StageLastFile2/gap_0x0000_sub_0x378.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x03A0 (was gap+0x3A0, 40 bytes) */
-u16 dStageLastFile2_gap_0x0000_sub_0x3A0[20] = {
+u16 dStageLastFile2_gap_0x0000_sub_0x3A0[16] = {
 	#include <StageLastFile2/gap_0x0000_sub_0x3A0.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x03C8 (was gap+0x3C8, 2056 bytes) */
 /* @tex fmt=CI4 dim=64x64 lut=dStageLastFile2_gap_0x0000_sub_0x8 */
@@ -857,4 +863,3 @@ AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint[5] = {
 u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data[13955] = {
 	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data.data.inc.c>
 };
-

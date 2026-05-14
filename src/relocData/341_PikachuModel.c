@@ -3670,9 +3670,10 @@ u32 dPikachuModel_gap_0x59B8_sub_0x1908_post[4] = {
 };
 
 /* gap sub-block @ 0x7328 (was gap+0x1970, 40 bytes) */
-u16 dPikachuModel_gap_0x59B8_sub_0x1970[20] = {
+u16 dPikachuModel_gap_0x59B8_sub_0x1970[16] = {
 	#include <PikachuModel/gap_0x59B8_sub_0x1970.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x7350 (528 bytes) */
 /* Texture: 0x7350 (CI4 — trailing 0x78 bytes split as palette frames) */
@@ -3705,17 +3706,20 @@ u8 dPikachuModel_Tex_0x7460[136] = {
 	#include <PikachuModel/Tex_0x7460.tex.inc.c>
 };
 
-u16 dPikachuModel_palette_0x74E8[20] = {
+u16 dPikachuModel_palette_0x74E8[16] = {
 	#include <PikachuModel/palette_0x74E8.palette.inc.c>
 };
+PAD(8);
 
-u16 dPikachuModel_palette_0x7510[20] = {
+u16 dPikachuModel_palette_0x7510[16] = {
 	#include <PikachuModel/palette_0x7510.palette.inc.c>
 };
+PAD(8);
 
-u16 dPikachuModel_palette_0x7538[20] = {
+u16 dPikachuModel_palette_0x7538[16] = {
 	#include <PikachuModel/palette_0x7538.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x7560 (2968 bytes) */
 /* Texture: 0x7560 (CI4 — trailing 0x28 bytes split as palette frames) */
@@ -3816,9 +3820,10 @@ u8 dPikachuModel_Tex_0x7FC8[264] = {
 	#include <PikachuModel/Tex_0x7FC8.tex.inc.c>
 };
 
-u16 dPikachuModel_palette_0x80D0[20] = {
+u16 dPikachuModel_palette_0x80D0[16] = {
 	#include <PikachuModel/palette_0x80D0.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x80F8 (4904 bytes) */
 /* @tex fmt=CI4 dim=16x1 */
@@ -3983,17 +3988,20 @@ u16 dPikachuModel_gap_0x9950[4] = {
 	#include <PikachuModel/gap_0x9950.palette.inc.c>
 };
 
-u16 dPikachuModel_gap_0x9950_sub_0x8[20] = {
+u16 dPikachuModel_gap_0x9950_sub_0x8[16] = {
 	#include <PikachuModel/gap_0x9950_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dPikachuModel_gap_0x9950_sub_0x30[20] = {
+u16 dPikachuModel_gap_0x9950_sub_0x30[16] = {
 	#include <PikachuModel/gap_0x9950_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
-u16 dPikachuModel_gap_0x9950_sub_0x58[20] = {
+u16 dPikachuModel_gap_0x9950_sub_0x58[16] = {
 	#include <PikachuModel/gap_0x9950_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
 u16 dPikachuModel_gap_0x9950_sub_0x80[16] = {
 	#include <PikachuModel/gap_0x9950_sub_0x80.palette.inc.c>
@@ -4064,4 +4072,3 @@ Sprite dPikachuModel_FTEmblem = {
 };
 
 PAD(4);
-

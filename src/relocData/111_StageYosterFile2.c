@@ -2962,9 +2962,10 @@ u8 dStageYosterFile2_gap_0x5CE8[216] = {
 };
 
 /* gap sub-block @ 0x5DC0 (was gap+0xD8, 40 bytes) */
-u16 dStageYosterFile2_gap_0x5CE8_sub_0xD8[20] = {
+u16 dStageYosterFile2_gap_0x5CE8_sub_0xD8[16] = {
 	#include <StageYosterFile2/gap_0x5CE8_sub_0xD8.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x64 */
 u8 dStageYosterFile2_Tex_0x5DE8[1032] = {
@@ -3073,9 +3074,10 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x1E60[96] = {
 };
 
 /* gap sub-block @ 0x7BA8 (was gap+0x1EC0, 40 bytes) */
-u16 dStageYosterFile2_gap_0x5CE8_sub_0x1EC0[20] = {
+u16 dStageYosterFile2_gap_0x5CE8_sub_0x1EC0[16] = {
 	#include <StageYosterFile2/gap_0x5CE8_sub_0x1EC0.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x40 */
 u8 dStageYosterFile2_Tex_0x7BD0[648] = {
@@ -3231,9 +3233,10 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x301C[100] = {
 };
 
 /* gap sub-block @ 0x8D68 (was gap+0x3080, 40 bytes) */
-u16 dStageYosterFile2_gap_0x5CE8_sub_0x3080[20] = {
+u16 dStageYosterFile2_gap_0x5CE8_sub_0x3080[16] = {
 	#include <StageYosterFile2/gap_0x5CE8_sub_0x3080.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x40 */
 u8 dStageYosterFile2_Tex_0x8D90[648] = {
@@ -3325,9 +3328,10 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x3EE0[96] = {
 };
 
 /* gap sub-block @ 0x9C28 (was gap+0x3F40, 40 bytes) */
-u16 dStageYosterFile2_gap_0x5CE8_sub_0x3F40[20] = {
+u16 dStageYosterFile2_gap_0x5CE8_sub_0x3F40[16] = {
 	#include <StageYosterFile2/gap_0x5CE8_sub_0x3F40.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x40 */
 u8 dStageYosterFile2_Tex_0x9C50[648] = {
@@ -3419,9 +3423,10 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x4D90[96] = {
 };
 
 /* gap sub-block @ 0xAAD8 (was gap+0x4DF0, 40 bytes) */
-u16 dStageYosterFile2_gap_0x5CE8_sub_0x4DF0[20] = {
+u16 dStageYosterFile2_gap_0x5CE8_sub_0x4DF0[16] = {
 	#include <StageYosterFile2/gap_0x5CE8_sub_0x4DF0.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x40 */
 u8 dStageYosterFile2_Tex_0xAB00[648] = {
@@ -3511,4 +3516,3 @@ u8 dStageYosterFile2_gap_0x5CE8_sub_0x5870[976] = {
 u8 dStageYosterFile2_gap_0x5CE8_sub_0x5C40[8] = {
 	#include <StageYosterFile2/gap_0x5CE8_sub_0x5C40.data.inc.c>
 };
-

@@ -3731,9 +3731,10 @@ u8 dStageJungleFile2_gap_0xD1B4[564] = {
 };
 
 /* gap sub-block @ 0xD3E8 (was gap+0x234, 40 bytes) */
-u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[20] = {
+u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[16] = {
 	#include <StageJungleFile2/gap_0xD1B4_sub_0x234.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=48x64 */
 u8 dStageJungleFile2_Tex_0xD410[1544] = {
@@ -3835,4 +3836,3 @@ u8 dStageJungleFile2_gap_0xD1B4_sub_0x2364[188] = {
 u8 dStageJungleFile2_gap_0xD1B4_sub_0x2420[12] = {
 	#include <StageJungleFile2/gap_0xD1B4_sub_0x2420.data.inc.c>
 };
-

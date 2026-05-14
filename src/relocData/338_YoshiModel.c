@@ -4394,34 +4394,40 @@ Gfx dYoshiModel_gap_0x6E70_sub_0x24E0[26] = {
 PAD(8);
 
 /* gap sub-block @ 0x9428 (was gap+0x25B8, 40 bytes) */
-u16 dYoshiModel_gap_0x6E70_sub_0x25B8[20] = {
+u16 dYoshiModel_gap_0x6E70_sub_0x25B8[16] = {
 	#include <YoshiModel/gap_0x6E70_sub_0x25B8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x9450 (was gap+0x25E0, 40 bytes) */
-u16 dYoshiModel_gap_0x6E70_sub_0x25E0[20] = {
+u16 dYoshiModel_gap_0x6E70_sub_0x25E0[16] = {
 	#include <YoshiModel/gap_0x6E70_sub_0x25E0.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x9478 (was gap+0x2608, 40 bytes) */
-u16 dYoshiModel_gap_0x6E70_sub_0x2608[20] = {
+u16 dYoshiModel_gap_0x6E70_sub_0x2608[16] = {
 	#include <YoshiModel/gap_0x6E70_sub_0x2608.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x94A0 (was gap+0x2630, 40 bytes) */
-u16 dYoshiModel_gap_0x6E70_sub_0x2630[20] = {
+u16 dYoshiModel_gap_0x6E70_sub_0x2630[16] = {
 	#include <YoshiModel/gap_0x6E70_sub_0x2630.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x94C8 (was gap+0x2658, 40 bytes) */
-u16 dYoshiModel_gap_0x6E70_sub_0x2658[20] = {
+u16 dYoshiModel_gap_0x6E70_sub_0x2658[16] = {
 	#include <YoshiModel/gap_0x6E70_sub_0x2658.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x94F0 (was gap+0x2680, 40 bytes) */
-u16 dYoshiModel_gap_0x6E70_sub_0x2680[20] = {
+u16 dYoshiModel_gap_0x6E70_sub_0x2680[16] = {
 	#include <YoshiModel/gap_0x6E70_sub_0x2680.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x9518 (2136 bytes) */
 /* Texture: 0x9518 (CI4 — trailing 0x118 bytes split as palette frames) */
@@ -4522,33 +4528,40 @@ u8 dYoshiModel_Tex_0x9BD0[136] = {
 	#include <YoshiModel/Tex_0x9BD0.tex.inc.c>
 };
 
-u16 dYoshiModel_palette_0x9C58[20] = {
+u16 dYoshiModel_palette_0x9C58[16] = {
 	#include <YoshiModel/palette_0x9C58.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9C80[20] = {
+u16 dYoshiModel_palette_0x9C80[16] = {
 	#include <YoshiModel/palette_0x9C80.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9CA8[20] = {
+u16 dYoshiModel_palette_0x9CA8[16] = {
 	#include <YoshiModel/palette_0x9CA8.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9CD0[20] = {
+u16 dYoshiModel_palette_0x9CD0[16] = {
 	#include <YoshiModel/palette_0x9CD0.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9CF8[20] = {
+u16 dYoshiModel_palette_0x9CF8[16] = {
 	#include <YoshiModel/palette_0x9CF8.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9D20[20] = {
+u16 dYoshiModel_palette_0x9D20[16] = {
 	#include <YoshiModel/palette_0x9D20.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9D48[20] = {
+u16 dYoshiModel_palette_0x9D48[16] = {
 	#include <YoshiModel/palette_0x9D48.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x9D70 (272 bytes) */
 /* Texture: 0x9D70 (CI4 — trailing 0xC8 bytes split as palette frames) */
@@ -4557,25 +4570,30 @@ u8 dYoshiModel_Tex_0x9D70[72] = {
 	#include <YoshiModel/Tex_0x9D70.tex.inc.c>
 };
 
-u16 dYoshiModel_palette_0x9DB8[20] = {
+u16 dYoshiModel_palette_0x9DB8[16] = {
 	#include <YoshiModel/palette_0x9DB8.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9DE0[20] = {
+u16 dYoshiModel_palette_0x9DE0[16] = {
 	#include <YoshiModel/palette_0x9DE0.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9E08[20] = {
+u16 dYoshiModel_palette_0x9E08[16] = {
 	#include <YoshiModel/palette_0x9E08.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9E30[20] = {
+u16 dYoshiModel_palette_0x9E30[16] = {
 	#include <YoshiModel/palette_0x9E30.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_palette_0x9E58[20] = {
+u16 dYoshiModel_palette_0x9E58[16] = {
 	#include <YoshiModel/palette_0x9E58.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x9E80 (72 bytes) */
 /* @tex fmt=CI4 dim=16x8 */
@@ -4643,21 +4661,25 @@ u16 dYoshiModel_gap_0xA9D0[4] = {
 	#include <YoshiModel/gap_0xA9D0.palette.inc.c>
 };
 
-u16 dYoshiModel_gap_0xA9D0_sub_0x8[20] = {
+u16 dYoshiModel_gap_0xA9D0_sub_0x8[16] = {
 	#include <YoshiModel/gap_0xA9D0_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_gap_0xA9D0_sub_0x30[20] = {
+u16 dYoshiModel_gap_0xA9D0_sub_0x30[16] = {
 	#include <YoshiModel/gap_0xA9D0_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_gap_0xA9D0_sub_0x58[20] = {
+u16 dYoshiModel_gap_0xA9D0_sub_0x58[16] = {
 	#include <YoshiModel/gap_0xA9D0_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
-u16 dYoshiModel_gap_0xA9D0_sub_0x80[20] = {
+u16 dYoshiModel_gap_0xA9D0_sub_0x80[16] = {
 	#include <YoshiModel/gap_0xA9D0_sub_0x80.palette.inc.c>
 };
+PAD(8);
 
 u16 dYoshiModel_gap_0xA9D0_sub_0xA8[16] = {
 	#include <YoshiModel/gap_0xA9D0_sub_0xA8.palette.inc.c>

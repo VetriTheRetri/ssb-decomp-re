@@ -69,9 +69,7 @@ MObjSub dEFCommonEffects3_MBallRays_MObjSub[1] = {
 
 /* Raw data from file offset 0x0180 to 0x0628 (1192 bytes) */
 /* gap sub-block @ 0x0180 (was gap+0x0, 16 bytes) */
-u8 dEFCommonEffects3_gap_0x0180[16] = {
-	#include <EFCommonEffects3/gap_0x0180.data.inc.c>
-};
+PAD(16);
 
 /* gap sub-block @ 0x0190 (was gap+0x10, 120 bytes) */
 u8 dEFCommonEffects3_gap_0x0180_sub_0x10[120] = {
@@ -139,8 +137,10 @@ MObjSub dEFCommonEffects3_gap_0x0180_sub_0x100[1] = {
 };
 
 /* gap sub-block @ 0x02F8 (was gap+0x178, 12 bytes) */
-u8 dEFCommonEffects3_gap_0x0180_sub_0x178[12] = {
-	#include <EFCommonEffects3/gap_0x0180_sub_0x178.data.inc.c>
+void *dEFCommonEffects3_gap_0x0180_sub_0x178[3] = {
+	(void *)((u8*)dEFCommonEffects3_MBallRays_MObjSub + 0x10),
+	(void *)dEFCommonEffects3_gap_0x0180_sub_0x10,
+	NULL,
 };
 
 /* gap sub-block @ 0x0304 (was gap+0x184, 12 bytes) */
@@ -314,8 +314,23 @@ AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[4] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects3_MBallRays_MatAnimJoint_data + 0x98),
 };
 
-u32 dEFCommonEffects3_MBallRays_MatAnimJoint_data[2196] = {
-	#include <EFCommonEffects3/MBallRays_MatAnimJoint_data.data.inc.c>
+u32 dEFCommonEffects3_MBallRays_MatAnimJoint_data[9] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0xFFFFFF80,  /* nanf */
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtValBlock(0x001, 25),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0xFFFFFF00,  /* nanf */
+	aobjEvent32End(),
+};
+
+/* TRAIL: 8748 bytes of non-script data (textures/vtx/etc.)
+ * referenced by .reloc at various offsets. Kept as raw u8 so the
+ * source has at most one aobjEvent32End() per u32 array. */
+u8 dEFCommonEffects3_MBallRays_MatAnimJoint_data_trail[8748] = {
+	#include <EFCommonEffects3/MBallRays_MatAnimJoint_data_trail.data.inc.c>
 };
 
 /* DObjDesc: RebirthHalo @ 0x2AC0 (4 entries) */
@@ -481,8 +496,9 @@ MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x108[1] = {
 };
 
 /* gap sub-block @ 0x2EA0 (was gap+0x180, 8 bytes) */
-u8 dEFCommonEffects3_gap_0x2D20_sub_0x180[8] = {
-	#include <EFCommonEffects3/gap_0x2D20_sub_0x180.data.inc.c>
+void *dEFCommonEffects3_gap_0x2D20_sub_0x180[2] = {
+	(void *)((u8*)dEFCommonEffects3_ItemGetSwirl_MObjSub + 0x18),
+	NULL,
 };
 
 /* gap sub-block @ 0x2EA8 (was gap+0x188, 8 bytes) */

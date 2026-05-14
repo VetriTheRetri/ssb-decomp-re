@@ -156,9 +156,10 @@ u8 dStageInishieFile2_gap_0x36B8[8] = {
 };
 
 /* gap sub-block @ 0x36C0 (was gap+0x8, 40 bytes) */
-u16 dStageInishieFile2_gap_0x36B8_sub_0x8[20] = {
+u16 dStageInishieFile2_gap_0x36B8_sub_0x8[16] = {
 	#include <StageInishieFile2/gap_0x36B8_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* Palette: Lut_0x36E8 @ 0x36E8 (16 colors RGBA5551) */
 u16 dStageInishieFile2_Lut_0x36E8_palette[16] = {
@@ -899,4 +900,3 @@ DObjDesc dStageInishieFile2_Layer3DObj[] = {
 };
 
 PAD(12);
-

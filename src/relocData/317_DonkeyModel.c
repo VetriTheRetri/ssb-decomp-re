@@ -5519,14 +5519,16 @@ Gfx dDonkeyModel_DL_0xC020[16] = {
 PAD(8);  /* trailing zeros after gap+0x4C00 DL */
 
 /* gap sub-block @ 0xC0A8 (was gap+0x4D18, 40 bytes) */
-u16 dDonkeyModel_gap_0x7390_sub_0x4D18[20] = {
+u16 dDonkeyModel_gap_0x7390_sub_0x4D18[16] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x4D18.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0xC0D0 (was gap+0x4D40, 40 bytes) */
-u16 dDonkeyModel_gap_0x7390_sub_0x4D40[20] = {
+u16 dDonkeyModel_gap_0x7390_sub_0x4D40[16] = {
 	#include <DonkeyModel/gap_0x7390_sub_0x4D40.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xC0F8 (640 bytes) */
 /* Texture: 0xC0F8 (CI4 — trailing 0x78 bytes split as palette frames) */
@@ -5535,17 +5537,20 @@ u8 dDonkeyModel_Tex_0xC0F8[520] = {
 	#include <DonkeyModel/Tex_0xC0F8.tex.inc.c>
 };
 
-u16 dDonkeyModel_palette_0xC300[20] = {
+u16 dDonkeyModel_palette_0xC300[16] = {
 	#include <DonkeyModel/palette_0xC300.palette.inc.c>
 };
+PAD(8);
 
-u16 dDonkeyModel_palette_0xC328[20] = {
+u16 dDonkeyModel_palette_0xC328[16] = {
 	#include <DonkeyModel/palette_0xC328.palette.inc.c>
 };
+PAD(8);
 
-u16 dDonkeyModel_palette_0xC350[20] = {
+u16 dDonkeyModel_palette_0xC350[16] = {
 	#include <DonkeyModel/palette_0xC350.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xC378 (1792 bytes) */
 /* Texture: 0xC378 (CI4 — trailing 0x28 bytes split as palette frames) */
@@ -5554,41 +5559,48 @@ u8 dDonkeyModel_Tex_0xC378[392] = {
 	#include <DonkeyModel/Tex_0xC378.tex.inc.c>
 };
 /* palette @ 0xC500 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x188 */
-u16 dDonkeyModel_palette_0xC500[20] = {
+u16 dDonkeyModel_palette_0xC500[16] = {
 	#include <DonkeyModel/palette_0xC500.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xC528 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x1B0 */
-u16 dDonkeyModel_palette_0xC528[20] = {
+u16 dDonkeyModel_palette_0xC528[16] = {
 	#include <DonkeyModel/palette_0xC528.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xC550 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x1D8 */
-u16 dDonkeyModel_palette_0xC550[20] = {
+u16 dDonkeyModel_palette_0xC550[16] = {
 	#include <DonkeyModel/palette_0xC550.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xC578 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x200 */
-u16 dDonkeyModel_palette_0xC578[20] = {
+u16 dDonkeyModel_palette_0xC578[16] = {
 	#include <DonkeyModel/palette_0xC578.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xC5A0 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x228 */
-u16 dDonkeyModel_palette_0xC5A0[20] = {
+u16 dDonkeyModel_palette_0xC5A0[16] = {
 	#include <DonkeyModel/palette_0xC5A0.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xC5C8 (560 bytes) — split from dDonkeyModel_Tex_0xC378+0x250 */
 u16 dDonkeyModel_palette_0xC5C8[280] = {
 	#include <DonkeyModel/palette_0xC5C8.palette.inc.c>
 };
 /* palette @ 0xC7F8 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x480 */
-u16 dDonkeyModel_palette_0xC7F8[20] = {
+u16 dDonkeyModel_palette_0xC7F8[16] = {
 	#include <DonkeyModel/palette_0xC7F8.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xC820 (560 bytes) — split from dDonkeyModel_Tex_0xC378+0x4A8 */
 u16 dDonkeyModel_palette_0xC820[280] = {
 	#include <DonkeyModel/palette_0xC820.palette.inc.c>
 };
 
-u16 dDonkeyModel_palette_0xCA50[20] = {
+u16 dDonkeyModel_palette_0xCA50[16] = {
 	#include <DonkeyModel/palette_0xCA50.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xCA78 (600 bytes) */
 /* Texture: 0xCA78 (CI4 — trailing 0x50 bytes split as palette frames) */
@@ -5597,13 +5609,15 @@ u8 dDonkeyModel_Tex_0xCA78[520] = {
 	#include <DonkeyModel/Tex_0xCA78.tex.inc.c>
 };
 
-u16 dDonkeyModel_palette_0xCC80[20] = {
+u16 dDonkeyModel_palette_0xCC80[16] = {
 	#include <DonkeyModel/palette_0xCC80.palette.inc.c>
 };
+PAD(8);
 
-u16 dDonkeyModel_palette_0xCCA8[20] = {
+u16 dDonkeyModel_palette_0xCCA8[16] = {
 	#include <DonkeyModel/palette_0xCCA8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xCCD0 (72 bytes) */
 /* @tex fmt=CI4 dim=16x8 */
@@ -5641,21 +5655,25 @@ u8 dDonkeyModel_Tex_0xCD60[392] = {
 	#include <DonkeyModel/Tex_0xCD60.tex.inc.c>
 };
 
-u16 dDonkeyModel_palette_0xCEE8[20] = {
+u16 dDonkeyModel_palette_0xCEE8[16] = {
 	#include <DonkeyModel/palette_0xCEE8.palette.inc.c>
 };
+PAD(8);
 
-u16 dDonkeyModel_palette_0xCF10[20] = {
+u16 dDonkeyModel_palette_0xCF10[16] = {
 	#include <DonkeyModel/palette_0xCF10.palette.inc.c>
 };
+PAD(8);
 
-u16 dDonkeyModel_palette_0xCF38[20] = {
+u16 dDonkeyModel_palette_0xCF38[16] = {
 	#include <DonkeyModel/palette_0xCF38.palette.inc.c>
 };
+PAD(8);
 
-u16 dDonkeyModel_palette_0xCF60[20] = {
+u16 dDonkeyModel_palette_0xCF60[16] = {
 	#include <DonkeyModel/palette_0xCF60.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xCF88 (632 bytes) */
 /* Texture: 0xCF88 (CI4 — trailing 0x28 bytes split as palette frames) */
@@ -5664,41 +5682,49 @@ u8 dDonkeyModel_Tex_0xCF88[136] = {
 	#include <DonkeyModel/Tex_0xCF88.tex.inc.c>
 };
 /* palette @ 0xD010 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0x88 */
-u16 dDonkeyModel_palette_0xD010[20] = {
+u16 dDonkeyModel_palette_0xD010[16] = {
 	#include <DonkeyModel/palette_0xD010.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD038 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0xB0 */
-u16 dDonkeyModel_palette_0xD038[20] = {
+u16 dDonkeyModel_palette_0xD038[16] = {
 	#include <DonkeyModel/palette_0xD038.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD060 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0xD8 */
-u16 dDonkeyModel_palette_0xD060[20] = {
+u16 dDonkeyModel_palette_0xD060[16] = {
 	#include <DonkeyModel/palette_0xD060.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD088 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0x100 */
-u16 dDonkeyModel_palette_0xD088[20] = {
+u16 dDonkeyModel_palette_0xD088[16] = {
 	#include <DonkeyModel/palette_0xD088.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD0B0 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0x128 */
-u16 dDonkeyModel_palette_0xD0B0[20] = {
+u16 dDonkeyModel_palette_0xD0B0[16] = {
 	#include <DonkeyModel/palette_0xD0B0.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD0D8 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0x150 */
-u16 dDonkeyModel_palette_0xD0D8[20] = {
+u16 dDonkeyModel_palette_0xD0D8[16] = {
 	#include <DonkeyModel/palette_0xD0D8.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD100 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0x178 */
-u16 dDonkeyModel_palette_0xD100[20] = {
+u16 dDonkeyModel_palette_0xD100[16] = {
 	#include <DonkeyModel/palette_0xD100.palette.inc.c>
 };
+PAD(8);
 /* palette @ 0xD128 (176 bytes) — split from dDonkeyModel_Tex_0xCF88+0x1A0 */
 u16 dDonkeyModel_palette_0xD128[88] = {
 	#include <DonkeyModel/palette_0xD128.palette.inc.c>
 };
 
-u16 dDonkeyModel_palette_0xD1D8[20] = {
+u16 dDonkeyModel_palette_0xD1D8[16] = {
 	#include <DonkeyModel/palette_0xD1D8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xD200 (136 bytes) */
 /* @tex fmt=CI4 dim=16x16 */

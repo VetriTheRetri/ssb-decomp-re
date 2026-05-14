@@ -1057,19 +1057,22 @@ DObjDesc dStageCastleFile2_Layer3DObj[] = {
 PAD(20);
 
 /* gap sub-block @ 0x3698 (was gap+0x14, 40 bytes) */
-u16 dStageCastleFile2_gap_0x3684_sub_0x14[20] = {
+u16 dStageCastleFile2_gap_0x3684_sub_0x14[16] = {
 	#include <StageCastleFile2/gap_0x3684_sub_0x14.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x36C0 (was gap+0x3C, 40 bytes) */
-u16 dStageCastleFile2_gap_0x3684_sub_0x3C[20] = {
+u16 dStageCastleFile2_gap_0x3684_sub_0x3C[16] = {
 	#include <StageCastleFile2/gap_0x3684_sub_0x3C.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x36E8 (was gap+0x64, 40 bytes) */
-u16 dStageCastleFile2_gap_0x3684_sub_0x64[20] = {
+u16 dStageCastleFile2_gap_0x3684_sub_0x64[16] = {
 	#include <StageCastleFile2/gap_0x3684_sub_0x64.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x3710 (was gap+0x8C, 1160 bytes) */
 /* @tex fmt=CI4 dim=32x72 lut=dStageCastleFile2_gap_0x3684_sub_0x14 */
@@ -1148,4 +1151,3 @@ u8 dStageCastleFile2_gap_0x3684_sub_0xD00[64] = {
 u8 dStageCastleFile2_gap_0x3684_sub_0xD40[348] = {
 	#include <StageCastleFile2/gap_0x3684_sub_0xD40.data.inc.c>
 };
-

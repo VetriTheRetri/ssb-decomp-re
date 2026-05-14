@@ -7,26 +7,70 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls for the orphan AObjEvent32 scripts (defined later) */
+extern u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x84[];
+extern u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[];
+
 /* Raw data from file offset 0x0000 to 0x05A0 (1440 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 132 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000[132] = {
-	#include <MVOpeningRoomTransition/gap_0x0000.data.inc.c>
+/* Orphan model #1 at 0x0000: Vtx[3] + Gfx DL[10] + AObjEvent32* (4 B trailing slot).
+ * The Vtx data, the gsSPVertex that targets it, and the gsSPEndDisplayList are
+ * all self-contained inside the 132-byte block; the trailing pointer is then
+ * picked up by .reloc as a chain reference to its associated AnimJoint script. */
+Vtx dMVOpeningRoomTransition_gap_0x0000_Vtx[3] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_Vtx.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0084 (was gap+0x84, 44 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x84[44] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x84.data.inc.c>
+Gfx dMVOpeningRoomTransition_gap_0x0030_DL[10] = {
+	#include <MVOpeningRoomTransition/gap_0x0030_DL.dl.inc.c>
 };
 
-/* gap sub-block @ 0x00B0 (was gap+0xB0, 196 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0xB0[196] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0xB0.data.inc.c>
+AObjEvent32 *dMVOpeningRoomTransition_gap_0x0080_AnimJointPtr[1] = {
+	(AObjEvent32 *)dMVOpeningRoomTransition_gap_0x0000_sub_0x84,
 };
 
-/* gap sub-block @ 0x0174 (was gap+0x174, 44 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[44] = {
-	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x174.data.inc.c>
+/* Orphan AObjEvent32 script for model #1 @ 0x0084 (9 words + 8-byte trailing PAD).
+ * Same opcode shape as Outline_AnimJoint: 2 × SetVal0RateBlock(ScaXYZ) + End. */
+u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x84[9] = {
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x380, 40),
+	    0x42100000,  /* 36.0f */
+	    0x42100000,  /* 36.0f */
+	    0x42100000,  /* 36.0f */
+	aobjEvent32End(),
 };
+
+PAD(8);
+
+/* Orphan model #2 at 0x00B0: Vtx[6] + Gfx DL[12] + AObjEvent32* (4 B trailing slot). */
+Vtx dMVOpeningRoomTransition_gap_0x00B0_Vtx[6] = {
+	#include <MVOpeningRoomTransition/gap_0x00B0_Vtx.vtx.inc.c>
+};
+
+Gfx dMVOpeningRoomTransition_gap_0x0110_DL[12] = {
+	#include <MVOpeningRoomTransition/gap_0x0110_DL.dl.inc.c>
+};
+
+AObjEvent32 *dMVOpeningRoomTransition_gap_0x0170_AnimJointPtr[1] = {
+	(AObjEvent32 *)dMVOpeningRoomTransition_gap_0x0000_sub_0x174,
+};
+
+/* Orphan AObjEvent32 script for model #2 @ 0x0174 (identical content to sub_0x84). */
+u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[9] = {
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x380, 40),
+	    0x42100000,  /* 36.0f */
+	    0x42100000,  /* 36.0f */
+	    0x42100000,  /* 36.0f */
+	aobjEvent32End(),
+};
+
+PAD(8);
 
 /* gap sub-block @ 0x01A0 (was gap+0x1A0, 512 bytes) */
 Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x1A0[32] = {
@@ -72,8 +116,10 @@ AObjEvent32 *dMVOpeningRoomTransition_Overlay_AnimJoint_ptr[1] = {
 	(AObjEvent32 *)dMVOpeningRoomTransition_Overlay_AnimJoint,
 };
 
-/* Raw data from file offset 0x0714 to 0x0F40 (2092 bytes) */
-u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
+/* AObjEvent32 script @ 0x0714 (9 words, 36 B). Was previously typed as
+ * `u32 [523]` which lumped 7 trailing Vtx arrays into the same block; those
+ * are now split out below. The Outline DL references them via .reloc. */
+u32 dMVOpeningRoomTransition_Overlay_AnimJoint[9] = {
 	aobjEvent32SetVal0RateBlock(0x380, 0),
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
@@ -83,521 +129,41 @@ u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFDA5025B,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFCB2034E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF79FF91F,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFA09FB1B,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFAE8042E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF8D805DF,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFAACFC70,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFC35FD77,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFC880251,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFB210341,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF744FB55,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF9C9FCAD,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFB0702A9,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF90303BC,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFA53FDA6,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFBF6FE54,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFC840171,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFB1B0207,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF86BFDB3,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFA9BFE5D,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF8190266,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF4E6035E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFA41FEDB,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFBE9FF30,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFBE300D1,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFA390126,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF5C3FEFE,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF8B7FF48,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF9AD009F,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFB640000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF9860000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF71D00E0,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x3DF, 31261),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x19B, 31696),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x1B3, 30446),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x2E9, 31115),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x0C9, 31292),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x367, 31717),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x19B, 30404),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x3FD, 31086),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x21F, 31408),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x183, 31800),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x25D, 29697),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x1AF, 30582),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x001, 31268),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x001, 31700),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF39F81E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF73FA63,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFEBAF999,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF18FB72,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFD6BF77F,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFE2AF9F2,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFDC2FA96,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFE67FC26,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFAB9F621,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFC3FF8F9,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFC88FACF,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFD88FC4E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF994F82D,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFB6EFA6E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFC22FC22,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFD3FFD3F,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetVal(0x224, 1241),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	aobjEvent32SetValBlock(0x0EA, 884),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x056A023E,  /* 1.1003038948499695e-35f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x3B4, 409),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetValBlock(0x32A, 589),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x056501A3,  /* 1.0767828871289108e-35f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x0F8, 228),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x262, 162),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetVal(0x2B4, 236),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x06A800A8,  /* 6.319554057291584e-35f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x3B8, 0),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x058, 0),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetValRateBlock(0x2BB, 32482),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x0817FF34,  /* 4.573989945713604e-34f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x053AFEF6,  /* 8.792506898510257e-36f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x03B8FF43,  /* 1.0873153244043915e-36f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,
-	aobjEvent32SetVal(0x3B1, 32004),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x0702FDE0,  /* 9.854720155920184e-35f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,
-	aobjEvent32SetValBlock(0x0B7, 32094),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x0486FE20,  /* 3.17366255566488e-36f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,
-	aobjEvent32SetVal(0x119, 31599),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x0615FCC0,  /* 2.820947669683479e-35f */
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x1BF, 31935),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x2F1, 32175),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetValBlock(0x041, 31481),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x0B9, 31852),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x0C7, 31645),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x23F, 31969),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x37B, 30978),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x02D, 31494),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFD9705D0,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFE490423,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFCDC0A5B,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFDC4075F,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF1C047C,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF5E0331,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF3907E2,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFF73059D,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x000, 1638),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x000, 1166),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x204, 2621),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x170, 1865),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x21A, 1351),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x17E, 962),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x2BC, 2842),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x0CC, 2023),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x07C, 1386),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32EndRaw(0x332, 986),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x378, 1789),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x152, 1273),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x362, 1414),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x142, 1007),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetValBlock(0x10C, 2035),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	aobjEvent32WaitRaw(0x14A, 1449),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x0D4, 1130),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x248, 804),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32SetVal(0x1D8, 1874),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xFF000000,  /* -1.7014118346046923e+38f */
-	    0x065A0536,  /* 4.1005071348927475e-35f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32WaitRaw(0x112, 776),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	aobjEvent32JumpCmd(0x276, 552),
-	    (u32)0x00000000,
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xF8B108E8,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFACC0657,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFCBA04E5,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFDAC037C,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFB9B0838,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
-	    0xFCDF05DA,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFF000000,
 };
+
+PAD(8);
+
+/* 7 Vtx arrays loaded by Outline_DisplayList (was inlined into Overlay_AnimJoint).
+ * Span 0x0740..0xF40 (2048 B = 128 Vtx total). */
+Vtx dMVOpeningRoomTransition_Vtx_0x0740_Vtx[32] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0740.vtx.inc.c>
+};
+
+Vtx dMVOpeningRoomTransition_Vtx_0x0940_Vtx[2] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0940.vtx.inc.c>
+};
+
+Vtx dMVOpeningRoomTransition_Vtx_0x0960_Vtx[28] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0960.vtx.inc.c>
+};
+
+Vtx dMVOpeningRoomTransition_Vtx_0x0B20_Vtx[30] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0B20.vtx.inc.c>
+};
+
+Vtx dMVOpeningRoomTransition_Vtx_0x0D00_Vtx[2] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0D00.vtx.inc.c>
+};
+
+Vtx dMVOpeningRoomTransition_Vtx_0x0D20_Vtx[28] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0D20.vtx.inc.c>
+};
+
+Vtx dMVOpeningRoomTransition_Vtx_0x0EE0_Vtx[6] = {
+	#include <MVOpeningRoomTransition/Vtx_0x0EE0.vtx.inc.c>
+};
+
+/* placeholder so I can use sed to delete the leftover inline u32 data */
 
 /* DisplayList: Outline @ 0xF40 (632 bytes) */
 Gfx dMVOpeningRoomTransition_Outline_DisplayList[79] = {

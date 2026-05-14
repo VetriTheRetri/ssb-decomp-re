@@ -61,9 +61,10 @@ u16 dMVCommon_Lut_0x0030_palette[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x0058 (was gap+0x8, 40 bytes) */
-u16 dMVCommon_gap_0x0050_sub_0x8[20] = {
+u16 dMVCommon_gap_0x0050_sub_0x8[16] = {
 	#include <MVCommon/gap_0x0050_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* Palette: Lut_0x0080 @ 0x80 (16 colors RGBA5551) */
 u16 dMVCommon_Lut_0x0080_palette[16] = {
@@ -1472,9 +1473,10 @@ DObjDesc dMVCommon_RoomDesk[] = {
 PAD(12);
 
 /* gap sub-block @ 0x8E88 (was gap+0xC, 40 bytes) */
-u16 dMVCommon_gap_0x8E7C_sub_0xC[20] = {
+u16 dMVCommon_gap_0x8E7C_sub_0xC[16] = {
 	#include <MVCommon/gap_0x8E7C_sub_0xC.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x8EB0 (was gap+0x34, 2048 bytes) */
 /* @tex fmt=CI8 dim=64x32 lut=dMVCommon_gap_0x8E7C_sub_0xC */
@@ -4462,4 +4464,3 @@ DObjDLLink dMVCommon_RoomSunlightDLLink[] = {
 };
 
 PAD(8);
-

@@ -6,7 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern u8 dMVOpeningRunCrash_gap_0x2B20[];
 
 extern void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
 
@@ -22,25 +21,70 @@ extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3AA0[];
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x2AA8 (10920 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 280 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000[280] = {
-	#include <MVOpeningRunCrash/gap_0x0000.data.inc.c>
+/* Orphan palette pool @ 0x0000 (7 palettes; not referenced by any visible MObjSub).
+ * Trailing-PAD convention except palette_0xD0 → palette_0xF0 (naturally 16-aligned). */
+PAD(8);
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x8[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x8.palette.inc.c>
 };
+
+PAD(8);
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x30[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x30.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x58[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x58.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x80[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x80.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0xA8[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0xA8.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0xD0[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0xD0.palette.inc.c>
+};
+
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0xF0[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0xF0.palette.inc.c>
+};
+
+PAD(8);
 
 /* gap sub-block @ 0x0118 (was gap+0x118, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x118[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x118.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x118[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x118.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0140 (was gap+0x140, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x140[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x140.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x140[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x140.palette.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x0168 (was gap+0x168, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x168[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x168.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x168[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x168.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0190 (was gap+0x190, 40 bytes) */
 u16 dMVOpeningRunCrash_gap_0x0000_sub_0x190[16] = {
@@ -92,9 +136,11 @@ u16 dMVOpeningRunCrash_gap_0x0000_sub_0x280[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x02A8 (was gap+0x2A8, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x2A8[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x2A8.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x2A8[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x2A8.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x02D0 (was gap+0x2D0, 40 bytes) */
 u16 dMVOpeningRunCrash_gap_0x0000_sub_0x2D0[16] = {
@@ -139,9 +185,11 @@ u16 dMVOpeningRunCrash_gap_0x0000_sub_0x398[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x03C0 (was gap+0x3C0, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x3C0[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x3C0.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x3C0[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x3C0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x03E8 (was gap+0x3E8, 40 bytes) */
 u16 dMVOpeningRunCrash_gap_0x0000_sub_0x3E8[16] = {
@@ -172,9 +220,11 @@ u16 dMVOpeningRunCrash_gap_0x0000_sub_0x460[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x0488 (was gap+0x488, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x488[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x488.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x488[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x488.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x04B0 (was gap+0x4B0, 40 bytes) */
 u16 dMVOpeningRunCrash_gap_0x0000_sub_0x4B0[16] = {
@@ -184,14 +234,18 @@ u16 dMVOpeningRunCrash_gap_0x0000_sub_0x4B0[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x04D8 (was gap+0x4D8, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x4D8[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x4D8.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x4D8[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x4D8.palette.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x0500 (was gap+0x500, 40 bytes) */
-u8 dMVOpeningRunCrash_gap_0x0000_sub_0x500[40] = {
-	#include <MVOpeningRunCrash/gap_0x0000_sub_0x500.data.inc.c>
+u16 dMVOpeningRunCrash_gap_0x0000_sub_0x500[16] = {
+	#include <MVOpeningRunCrash/gap_0x0000_sub_0x500.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0528 (was gap+0x528, 9600 bytes) */
 u8 dMVOpeningRunCrash_Tex_0x0528[9600] = {
@@ -229,29 +283,130 @@ MObjSub dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub[1] = {
 };
 
 /* Raw data from file offset 0x2B20 to 0x35F8 (2776 bytes) */
-/* gap sub-block @ 0x2B20 (was gap+0x0, 4 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20[4] = {
-	#include <MVOpeningRunCrash/gap_0x2B20.data.inc.c>
+/* Single palette pointer slot @ 0x2B20 */
+u16 *dMVOpeningRunCrash_gap_0x2B20[1] = {
+	dMVOpeningRunCrash_gap_0x0000_sub_0x118,
 };
 
-/* gap sub-block @ 0x2B24 (was gap+0x4, 104 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x4[104] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x4.data.inc.c>
+/* Palette pointer table @ 0x2B24 (26 palettes, no terminator) */
+u16 *dMVOpeningRunCrash_gap_0x2B20_sub_0x4[26] = {
+	dMVOpeningRunCrash_gap_0x0000_sub_0x500,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4D8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4B0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x488,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x460,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x438,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x410,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3E8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3C0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x398,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x370,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x348,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x320,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2F8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2D0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2A8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x280,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x258,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x230,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x208,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1E0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1B8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x190,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x168,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x140,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x118,
 };
 
-/* gap sub-block @ 0x2B8C (was gap+0x6C, 104 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x6C[104] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x6C.data.inc.c>
+/* Palette pointer table @ 0x2B8C (26 palettes, no terminator) */
+u16 *dMVOpeningRunCrash_gap_0x2B20_sub_0x6C[26] = {
+	dMVOpeningRunCrash_gap_0x0000_sub_0x500,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4D8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4B0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x488,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x460,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x438,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x410,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3E8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3C0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x398,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x370,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x348,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x320,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2F8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2D0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2A8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x280,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x258,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x230,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x208,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1E0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1B8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x190,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x168,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x140,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x118,
 };
 
-/* gap sub-block @ 0x2BF4 (was gap+0xD4, 108 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0xD4[108] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0xD4.data.inc.c>
+/* Palette pointer table @ 0x2BF4 (26 palettes + NULL terminator) */
+u16 *dMVOpeningRunCrash_gap_0x2B20_sub_0xD4[27] = {
+	dMVOpeningRunCrash_gap_0x0000_sub_0x500,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4D8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4B0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x488,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x460,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x438,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x410,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3E8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3C0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x398,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x370,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x348,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x320,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2F8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2D0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2A8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x280,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x258,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x230,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x208,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1E0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1B8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x190,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x168,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x140,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x118,
+	NULL,
 };
 
-/* gap sub-block @ 0x2C60 (was gap+0x140, 120 bytes) */
-u8 dMVOpeningRunCrash_gap_0x2B20_sub_0x140[120] = {
-	#include <MVOpeningRunCrash/gap_0x2B20_sub_0x140.data.inc.c>
+/* MObjSub @ 0x2C60 (palettes pointer aliased to MObjSub_0x2AA8+0x14, the inline palette pool) */
+MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x140[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x00A0, 0x0078,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)((u8*)dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub + 0x14),
+		0x0004,
+		0x02, 0x00,
+		0x00A0,
+		0x0078, 0x00A0, 0x0078,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x26, 0x26, 0x26, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
 /* MObjSub @ 0x2CD8 */

@@ -6,8 +6,8 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern u8 dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
-extern u8 dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
+extern void *dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
+extern void *dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
 
 extern u8 dEFCommonEffects2_gap_0x1F18[];
 
@@ -23,7 +23,15 @@ extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2960[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x29D0[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[];
 
-extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[];
+extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2AC8[];
+extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2AEC[];
+extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2B10[];
+extern u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2B34[];
+extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B58[];
+extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B5C[];
+extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B60[];
+extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B64[];
+extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[];
 extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x34B4[];
 extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518[];
 extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[];
@@ -71,24 +79,32 @@ extern u8 dEFCommonEffects2_Tex_0x1CA0[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1032 bytes) */
-u8 dEFCommonEffects2_gap_0x0000_sub_0x8[1032] = {
-	#include <EFCommonEffects2/gap_0x0000_sub_0x8.data.inc.c>
+u8 dEFCommonEffects2_Tex_0x0008[1024] = {
+	#include <EFCommonEffects2/Tex_0x0008.tex.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0410 (was gap+0x410, 1032 bytes) */
-u8 dEFCommonEffects2_gap_0x0000_sub_0x410[1032] = {
-	#include <EFCommonEffects2/gap_0x0000_sub_0x410.data.inc.c>
+u8 dEFCommonEffects2_Tex_0x0410[1024] = {
+	#include <EFCommonEffects2/Tex_0x0410.tex.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0818 (was gap+0x818, 1032 bytes) */
-u8 dEFCommonEffects2_gap_0x0000_sub_0x818[1032] = {
-	#include <EFCommonEffects2/gap_0x0000_sub_0x818.data.inc.c>
+u8 dEFCommonEffects2_Tex_0x0818[1024] = {
+	#include <EFCommonEffects2/Tex_0x0818.tex.inc.c>
 };
 
+PAD(8);
+
 /* gap sub-block @ 0x0C20 (was gap+0xC20, 1032 bytes) */
-u8 dEFCommonEffects2_gap_0x0000_sub_0xC20[1032] = {
-	#include <EFCommonEffects2/gap_0x0000_sub_0xC20.data.inc.c>
+u8 dEFCommonEffects2_Tex_0x0C20[1024] = {
+	#include <EFCommonEffects2/Tex_0x0C20.tex.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x1028 (was gap+0x1028, 1024 bytes) */
 /* MObjSub.sprites pointer table @ +0x1028 (256 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
@@ -383,13 +399,12 @@ MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub[1] = {
 
 /* Raw data from file offset 0x14A0 to 0x1500 (96 bytes) */
 /* gap sub-block @ 0x14A0 (was gap+0x0, 24 bytes) */
-u8 dEFCommonEffects2_gap_0x14A0[24] = {
-	#include <EFCommonEffects2/gap_0x14A0.data.inc.c>
-};
+PAD(24);
 
 /* gap sub-block @ 0x14B8 (was gap+0x18, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x14A0_sub_0x18[8] = {
-	#include <EFCommonEffects2/gap_0x14A0_sub_0x18.data.inc.c>
+void *dEFCommonEffects2_gap_0x14A0_sub_0x18[2] = {
+	(void *)((u8*)dEFCommonEffects2_ShockSmallMObjSub_MObjSub + 0x18),
+	NULL,
 };
 
 /* gap sub-block @ 0x14C0 (was gap+0x20, 64 bytes) */
@@ -412,8 +427,40 @@ AObjEvent32 *dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data + 0x60),
 };
 
-u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[69] = {
-	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint_data.data.inc.c>
+u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[26] = {
+	aobjEvent32SetVal0Rate(0x01E, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x01E, 19),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValBlock(0x001, 3),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data,
+	(u32)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data,
+	aobjEvent32End(),
+};
+
+/* TRAIL: 172 bytes of non-script data (textures/vtx/etc.)
+ * referenced by .reloc at various offsets. Kept as raw u8 so the
+ * source has at most one aobjEvent32End() per u32 array. */
+u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data_trail[172] = {
+	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint_data_trail.data.inc.c>
 };
 /* @tex fmt=CI4 dim=32x32 */
 u8 dEFCommonEffects2_Tex_0x1688[520] = {
@@ -436,7 +483,7 @@ u8 dEFCommonEffects2_Tex_0x1CA0[512] = {
  * The real MObjSub data starts at +0x18 (dEFCommonEffects2_FireSparkMObjSub_MObjSub_real below). */
 MObjSub **dEFCommonEffects2_FireSparkMObjSub_MObjSub[2] = {
 	NULL,
-	NULL,
+	(MObjSub **)dEFCommonEffects2_gap_0x1F18_sub_0x18,
 };
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -567,8 +614,25 @@ AObjEvent32 *dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[2] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data + 0x2C),
 };
 
-u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[80] = {
-	#include <EFCommonEffects2/FireSparkMatAnimJoint_MatAnimJoint_data.data.inc.c>
+u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[11] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32End(),
+};
+
+/* TRAIL: 276 bytes of non-script data (textures/vtx/etc.)
+ * referenced by .reloc at various offsets. Kept as raw u8 so the
+ * source has at most one aobjEvent32End() per u32 array. */
+u8 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data_trail[276] = {
+	#include <EFCommonEffects2/FireSparkMatAnimJoint_MatAnimJoint_data_trail.data.inc.c>
 };
 
 /* DObjDesc: CatchSwirlDObjDesc @ 0x22B8 (2 entries) */
@@ -674,8 +738,9 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0x128[1] = {
 };
 
 /* gap sub-block @ 0x24B0 (was gap+0x1A0, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x1A0[8] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x1A0.data.inc.c>
+void *dEFCommonEffects2_gap_0x2310_sub_0x1A0[2] = {
+	(void *)((u8*)dEFCommonEffects2_CatchSwirlDObjDesc + 0x18),
+	NULL,
 };
 
 /* gap sub-block @ 0x24B8 (was gap+0x1A8, 8 bytes) */
@@ -722,23 +787,27 @@ Gfx dEFCommonEffects2_DL_0x2698[17] = {
 };
 
 /* gap sub-block @ 0x2720 (was gap+0x410, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x410[16] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x410.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2310_sub_0x410[2] = {
+	{ 1, dEFCommonEffects2_DL_0x2500 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x2730 (was gap+0x420, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x420[16] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x420.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2310_sub_0x420[2] = {
+	{ 1, dEFCommonEffects2_DL_0x2588 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x2740 (was gap+0x430, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x430[16] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x430.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2310_sub_0x430[2] = {
+	{ 1, dEFCommonEffects2_DL_0x2610 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x2750 (was gap+0x440, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2310_sub_0x440[16] = {
-	#include <EFCommonEffects2/gap_0x2310_sub_0x440.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2310_sub_0x440[2] = {
+	{ 1, dEFCommonEffects2_DL_0x2698 },
+	{ 4, NULL },
 };
 
 /* MObjSub: CatchSwirlMObjSub @ 0x2760 */
@@ -931,22 +1000,95 @@ u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[] = {
 };
 
 /* Raw data from file offset 0x2AB0 to 0x2F78 (1224 bytes) */
-/* Pointer-table split fallback: chain-pointer table at the
- * head of the array, followed by raw data containing every
- * referenced (and orphan) script. The data block is dumped
- * as one u8[] include; fixRelocChain rewrites the table
- * entries to chain-encoded form per the .reloc. */
+/* CatchSwirl material AnimJoint table for 6 MObjs:
+ *   [0]=NULL, [1]=NULL, [2..5]=ptrs to 4 identical scripts.
+ * The triple-indirect MObj->ptrs->script pattern resolves to
+ * AObjEvent32 *[1] arrays at consecutive 4-byte offsets. */
 AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[6] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data + 0x90),
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data + 0x94),
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data + 0x98),
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data + 0x9C),
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B58,
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B5C,
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B60,
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B64,
 };
 
-u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint_data[300] = {
-	#include <EFCommonEffects2/CatchSwirlMatAnimJoint_MatAnimJoint_data.data.inc.c>
+/* Script @ 0x2AC8: 9 words / 0x24 bytes. Material color ramp. */
+u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2AC8[9] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFF7DFF,
+	aobjEvent32SetExtValBlock(0x001, 8),
+	    0xFFA129FF,
+	aobjEvent32SetExtValBlock(0x001, 4),
+	    0xFF72008D,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFF72008D,
+	aobjEvent32End(),
+};
+
+/* Script @ 0x2AEC: identical to 0x2AC8. */
+u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2AEC[9] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFF7DFF,
+	aobjEvent32SetExtValBlock(0x001, 8),
+	    0xFFA129FF,
+	aobjEvent32SetExtValBlock(0x001, 4),
+	    0xFF72008D,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFF72008D,
+	aobjEvent32End(),
+};
+
+/* Script @ 0x2B10: identical to 0x2AC8. */
+u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2B10[9] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFF7DFF,
+	aobjEvent32SetExtValBlock(0x001, 8),
+	    0xFFA129FF,
+	aobjEvent32SetExtValBlock(0x001, 4),
+	    0xFF72008D,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFF72008D,
+	aobjEvent32End(),
+};
+
+/* Script @ 0x2B34: identical to 0x2AC8. */
+u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2B34[9] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFF7DFF,
+	aobjEvent32SetExtValBlock(0x001, 8),
+	    0xFFA129FF,
+	aobjEvent32SetExtValBlock(0x001, 4),
+	    0xFF72008D,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFF72008D,
+	aobjEvent32End(),
+};
+
+/* Per-MObj AObjEvent32 *[1] arrays at 0x2B58..0x2B67. */
+AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B58[1] = {
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2AC8,
+};
+
+AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B5C[1] = {
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2AEC,
+};
+
+AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B60[1] = {
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2B10,
+};
+
+AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B64[1] = {
+	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_AnimJoint_0x2B34,
+};
+
+PAD(16);
+
+/* IA16 texture (1024 B) @ 0x2B78, referenced by DL_0x31D0+0x34,
+ * DL_0x3258+0x34, DL_0x32E0+0x34. LoadBlock count=511 16b. */
+/* @tex fmt=IA16 dim=32x16 */
+u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[1024] = {
+	#include <EFCommonEffects2/CatchSwirlMatAnimJoint_Tex_0x2B78.tex.inc.c>
 };
 
 /* DObjDesc: ReflectBreakDObjDesc @ 0x2F78 (2 entries) */
@@ -1022,8 +1164,9 @@ MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0xB0[1] = {
 };
 
 /* gap sub-block @ 0x30F8 (was gap+0x128, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x128[8] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x128.data.inc.c>
+void *dEFCommonEffects2_gap_0x2FD0_sub_0x128[2] = {
+	(void *)((u8*)dEFCommonEffects2_ReflectBreakDObjDesc + 0x18),
+	NULL,
 };
 
 /* gap sub-block @ 0x3100 (was gap+0x130, 8 bytes) */
@@ -1069,18 +1212,21 @@ Gfx dEFCommonEffects2_DL_0x32E0[17] = {
 };
 
 /* gap sub-block @ 0x3368 (was gap+0x398, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x398[16] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x398.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2FD0_sub_0x398[2] = {
+	{ 1, dEFCommonEffects2_DL_0x31D0 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x3378 (was gap+0x3A8, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x3A8[16] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x3A8.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2FD0_sub_0x3A8[2] = {
+	{ 1, dEFCommonEffects2_DL_0x3258 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x3388 (was gap+0x3B8, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0_sub_0x3B8[16] = {
-	#include <EFCommonEffects2/gap_0x2FD0_sub_0x3B8.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x2FD0_sub_0x3B8[2] = {
+	{ 1, dEFCommonEffects2_DL_0x32E0 },
+	{ 4, NULL },
 };
 
 /* MObjSub: ReflectBreakMObjSub @ 0x3398 */
@@ -1212,8 +1358,51 @@ AObjEvent32 *dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[5] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data + 0x8C),
 };
 
-u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[301] = {
-	#include <EFCommonEffects2/ReflectBreakMatAnimJoint_MatAnimJoint_data.data.inc.c>
+u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[37] = {
+	aobjEvent32SetExtVal(0x001, 0),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x008, 0),
+	    0xACE0FF00,  /* -6.394773599538439e-12f */
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtVal(0x001, 11),
+	    0xFFFFFF00,  /* nanf */
+	aobjEvent32Wait(3),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data,
+	aobjEvent32SetExtVal(0x001, 0),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x008, 0),
+	    0xACE0FF00,  /* -6.394773599538439e-12f */
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtVal(0x001, 11),
+	    0xFFFFFF00,  /* nanf */
+	aobjEvent32Wait(3),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)((u8*)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data + 0x2C),
+	aobjEvent32SetExtVal(0x001, 0),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(0x008, 0),
+	    0xACE0FF00,  /* -6.394773599538439e-12f */
+	aobjEvent32SetExtValBlock(0x001, 5),
+	    0xFFFFFFFF,  /* nanf */
+	aobjEvent32SetExtVal(0x001, 11),
+	    0xFFFFFF00,  /* nanf */
+	aobjEvent32Wait(3),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)((u8*)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data + 0x58),
+	(u32)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data,
+	(u32)((u8*)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data + 0x2C),
+	(u32)((u8*)dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data + 0x58),
+	aobjEvent32End(),
+};
+
+/* TRAIL: 1056 bytes of non-script data (textures/vtx/etc.)
+ * referenced by .reloc at various offsets. Kept as raw u8 so the
+ * source has at most one aobjEvent32End() per u32 array. */
+u8 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data_trail[1056] = {
+	#include <EFCommonEffects2/ReflectBreakMatAnimJoint_MatAnimJoint_data_trail.data.inc.c>
 };
 
 /* Raw data from file offset 0x3A68 to 0x4F08 (5280 bytes) */
@@ -1293,8 +1482,9 @@ MObjSub dEFCommonEffects2_gap_0x4F34_sub_0xD4[1] = {
 };
 
 /* gap sub-block @ 0x5080 (was gap+0x14C, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x14C[8] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x14C.data.inc.c>
+void *dEFCommonEffects2_gap_0x4F34_sub_0x14C[2] = {
+	(void *)((u8*)dEFCommonEffects2_DeadExplodeDefaultDObjDesc + 0x10),
+	NULL,
 };
 
 /* gap sub-block @ 0x5088 (was gap+0x154, 8 bytes) */
@@ -1345,18 +1535,21 @@ Gfx dEFCommonEffects2_DL_0x5310[21] = {
 };
 
 /* gap sub-block @ 0x53B8 (was gap+0x484, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x484[16] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x484.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x4F34_sub_0x484[2] = {
+	{ 1, dEFCommonEffects2_DL_0x5218 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x53C8 (was gap+0x494, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x494[16] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x494.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x4F34_sub_0x494[2] = {
+	{ 1, dEFCommonEffects2_DL_0x52B0 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x53D8 (was gap+0x4A4, 16 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34_sub_0x4A4[16] = {
-	#include <EFCommonEffects2/gap_0x4F34_sub_0x4A4.data.inc.c>
+DObjDLLink dEFCommonEffects2_gap_0x4F34_sub_0x4A4[2] = {
+	{ 1, dEFCommonEffects2_DL_0x5310 },
+	{ 4, NULL },
 };
 
 /* MObjSub: DeadExplodeDefaultMObjSub @ 0x53E8 */
@@ -1787,8 +1980,21 @@ AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint[4] = {
 	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x5C),
 };
 
-u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[1144] = {
-	#include <EFCommonEffects2/DeadExplode3_MatAnimJoint_data.data.inc.c>
+u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[7] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xCDFFFF99,  /* -536867616.0f */
+	aobjEvent32SetExtValBlock(0x001, 30),
+	    0xCDFFFF99,  /* -536867616.0f */
+	aobjEvent32SetExtValBlock(0x001, 6),
+	    0xCDFFFF00,  /* -536862720.0f */
+	aobjEvent32End(),
+};
+
+/* TRAIL: 4548 bytes of non-script data (textures/vtx/etc.)
+ * referenced by .reloc at various offsets. Kept as raw u8 so the
+ * source has at most one aobjEvent32End() per u32 array. */
+u8 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_trail[4548] = {
+	#include <EFCommonEffects2/DeadExplode3_MatAnimJoint_data_trail.data.inc.c>
 };
 
 /* DObjDesc: NessPKFlashDObjDesc @ 0x6B40 (1 entries) */
@@ -1803,8 +2009,9 @@ u8 dEFCommonEffects2_gap_0x6B6C[116] = {
 };
 
 /* gap sub-block @ 0x6BE0 (was gap+0x74, 8 bytes) */
-u8 dEFCommonEffects2_gap_0x6B6C_sub_0x74[8] = {
-	#include <EFCommonEffects2/gap_0x6B6C_sub_0x74.data.inc.c>
+void *dEFCommonEffects2_gap_0x6B6C_sub_0x74[2] = {
+	(void *)((u8*)dEFCommonEffects2_NessPKFlashDObjDesc + 0x28),
+	NULL,
 };
 
 /* gap sub-block @ 0x6BE8 (was gap+0x7C, 64 bytes) */

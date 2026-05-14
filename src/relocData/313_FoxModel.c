@@ -2416,24 +2416,28 @@ u16 dFoxModel_Lut_0x7508_palette[16] = {
 PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x7528[2] = { End, End }`. */
 
 /* gap sub-block @ 0x7530 (was gap+0x8, 40 bytes) */
-u16 dFoxModel_gap_0x7528_sub_0x8[20] = {
+u16 dFoxModel_gap_0x7528_sub_0x8[16] = {
 	#include <FoxModel/gap_0x7528_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x7558 (was gap+0x30, 40 bytes) */
-u16 dFoxModel_gap_0x7528_sub_0x30[20] = {
+u16 dFoxModel_gap_0x7528_sub_0x30[16] = {
 	#include <FoxModel/gap_0x7528_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x7580 (was gap+0x58, 40 bytes) */
-u16 dFoxModel_gap_0x7528_sub_0x58[20] = {
+u16 dFoxModel_gap_0x7528_sub_0x58[16] = {
 	#include <FoxModel/gap_0x7528_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x75A8 (was gap+0x80, 40 bytes) */
-u16 dFoxModel_gap_0x7528_sub_0x80[20] = {
+u16 dFoxModel_gap_0x7528_sub_0x80[16] = {
 	#include <FoxModel/gap_0x7528_sub_0x80.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x75D0 (568 bytes) */
 /* @tex fmt=CI4 dim=16x32 */
@@ -2461,24 +2465,28 @@ u8 dFoxModel_Tex_0x7830[264] = {
 };
 
 /* gap sub-block @ 0x7938 (was gap+0x110, 40 bytes) */
-u16 dFoxModel_gap_0x7828_sub_0x110[20] = {
+u16 dFoxModel_gap_0x7828_sub_0x110[16] = {
 	#include <FoxModel/gap_0x7828_sub_0x110.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x7960 (was gap+0x138, 40 bytes) */
-u16 dFoxModel_gap_0x7828_sub_0x138[20] = {
+u16 dFoxModel_gap_0x7828_sub_0x138[16] = {
 	#include <FoxModel/gap_0x7828_sub_0x138.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x7988 (was gap+0x160, 40 bytes) */
-u16 dFoxModel_gap_0x7828_sub_0x160[20] = {
+u16 dFoxModel_gap_0x7828_sub_0x160[16] = {
 	#include <FoxModel/gap_0x7828_sub_0x160.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x79B0 (was gap+0x188, 40 bytes) */
-u16 dFoxModel_gap_0x7828_sub_0x188[20] = {
+u16 dFoxModel_gap_0x7828_sub_0x188[16] = {
 	#include <FoxModel/gap_0x7828_sub_0x188.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x79D8 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 */
@@ -2517,13 +2525,15 @@ u16 dFoxModel_gap_0x7BA0[4] = {
 	#include <FoxModel/gap_0x7BA0.palette.inc.c>
 };
 
-u16 dFoxModel_gap_0x7BA0_sub_0x8[20] = {
+u16 dFoxModel_gap_0x7BA0_sub_0x8[16] = {
 	#include <FoxModel/gap_0x7BA0_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dFoxModel_gap_0x7BA0_sub_0x30[20] = {
+u16 dFoxModel_gap_0x7BA0_sub_0x30[16] = {
 	#include <FoxModel/gap_0x7BA0_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
 u16 dFoxModel_gap_0x7BA0_sub_0x58[16] = {
 	#include <FoxModel/gap_0x7BA0_sub_0x58.palette.inc.c>
@@ -2594,4 +2604,3 @@ Sprite dFoxModel_FTEmblem = {
 };
 
 PAD(4);
-

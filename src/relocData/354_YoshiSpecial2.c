@@ -21,9 +21,10 @@ u16 dYoshiSpecial2_gap_0x0000_sub_0x8[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x0030 (was gap+0x30, 40 bytes) */
-u16 dYoshiSpecial2_gap_0x0000_sub_0x30[20] = {
+u16 dYoshiSpecial2_gap_0x0000_sub_0x30[16] = {
 	#include <YoshiSpecial2/gap_0x0000_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0058 (was gap+0x58, 520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */

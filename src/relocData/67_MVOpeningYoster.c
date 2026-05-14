@@ -633,19 +633,22 @@ DObjDesc dMVOpeningYoster_Nest[] = {
 PAD(8);
 
 /* gap sub-block @ 0xA4C8 (was gap+0x8, 40 bytes) */
-u16 dMVOpeningYoster_gap_0xA4C0_sub_0x8[20] = {
+u16 dMVOpeningYoster_gap_0xA4C0_sub_0x8[16] = {
 	#include <MVOpeningYoster/gap_0xA4C0_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0xA4F0 (was gap+0x30, 40 bytes) */
-u16 dMVOpeningYoster_gap_0xA4C0_sub_0x30[20] = {
+u16 dMVOpeningYoster_gap_0xA4C0_sub_0x30[16] = {
 	#include <MVOpeningYoster/gap_0xA4C0_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0xA518 (was gap+0x58, 40 bytes) */
-u16 dMVOpeningYoster_gap_0xA4C0_sub_0x58[20] = {
+u16 dMVOpeningYoster_gap_0xA4C0_sub_0x58[16] = {
 	#include <MVOpeningYoster/gap_0xA4C0_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0xA540 (was gap+0x80, 40 bytes) */
 /* @tex fmt=CI4 dim=16x4 lut=dMVOpeningYoster_gap_0xA4C0_sub_0x8 */

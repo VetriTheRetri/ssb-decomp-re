@@ -1,94 +1,117 @@
-/* relocData file 72: MVOpeningClashFighters — movie/opening camera animation data.
+/* relocData file 72: MVOpeningClashFighters — opening "clash" sequence assets.
  *
- * Block boundaries from intern-chain relocation targets.
- * Each sub-block is a u32 AObjEvent32 command stream passed to
- * gcAddCObjCamAnimJoint by the movie engine.
- */
+ * The previous typing labelled every block as `u32 ...[N]` with a comment
+ * claiming AObjEvent32 streams. The actual structure (recovered from the
+ * intern-chain reloc layout + decoded DL opcodes in block 0x0F98):
+ *   - 0x0008    RGBA16 32x32 texture
+ *   - 0x0808    Vtx[32] (loaded as base vertex bank by first gsSPVertex)
+ *   - 0x0A08..0x0F78  thirteen Vtx[N] arrays (size = N*16 bytes)
+ *   - 0x0F98    Gfx DL[131] (gsDPPipeSync..gsSPEndDisplayList) referencing
+ *               every Tex/Vtx block above
+ *   - 0x13B0    DObjDesc[3] (root + id=1 entry pointing back to the DL + id=18
+ *               terminator). This is what consumes the DL.
+ *   - 0x1440    CamAnimJoint (legitimate AObjEvent32 script)
+ *
+ * Note: neither the DL nor the DObjDesc is externally referenced — only
+ * CamAnimJoint is exported in reloc_data.us.h. The Tex/Vtx/DL/DObjDesc
+ * appear to be orphan dev-leftover data in the file. */
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 PAD(8);
 
-/* AObjEvent32 stream @ 0x0008 (2048 bytes) */
-u32 dMVOpeningClashFighters_0x0008[512] = {
-	#include <MVOpeningClashFighters/0x0008.data.inc.c>
+/* RGBA16 texture @ 0x0008 (32x32, 2048 bytes) */
+/* @tex fmt=RGBA16 dim=32x32 */
+u8 dMVOpeningClashFighters_Tex_0x0008[2048] = {
+	#include <MVOpeningClashFighters/Tex_0x0008.tex.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0808 (512 bytes) */
-u32 dMVOpeningClashFighters_0x0808[128] = {
-	#include <MVOpeningClashFighters/0x0808.data.inc.c>
+/* Vtx @ 0x0808 (32 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0808_Vtx[32] = {
+	#include <MVOpeningClashFighters/Vtx_0x0808.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0A08 (16 bytes) */
-u32 dMVOpeningClashFighters_0x0A08[4] = {
-	#include <MVOpeningClashFighters/0x0A08.data.inc.c>
+/* Vtx @ 0x0A08 (1 vertex) */
+Vtx dMVOpeningClashFighters_Vtx_0x0A08_Vtx[1] = {
+	#include <MVOpeningClashFighters/Vtx_0x0A08.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0A18 (320 bytes) */
-u32 dMVOpeningClashFighters_0x0A18[80] = {
-	#include <MVOpeningClashFighters/0x0A18.data.inc.c>
+/* Vtx @ 0x0A18 (20 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0A18_Vtx[20] = {
+	#include <MVOpeningClashFighters/Vtx_0x0A18.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0B58 (160 bytes) */
-u32 dMVOpeningClashFighters_0x0B58[40] = {
-	#include <MVOpeningClashFighters/0x0B58.data.inc.c>
+/* Vtx @ 0x0B58 (10 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0B58_Vtx[10] = {
+	#include <MVOpeningClashFighters/Vtx_0x0B58.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0BF8 (16 bytes) */
-u32 dMVOpeningClashFighters_0x0BF8[4] = {
-	#include <MVOpeningClashFighters/0x0BF8.data.inc.c>
+/* Vtx @ 0x0BF8 (1 vertex) */
+Vtx dMVOpeningClashFighters_Vtx_0x0BF8_Vtx[1] = {
+	#include <MVOpeningClashFighters/Vtx_0x0BF8.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0C08 (128 bytes) */
-u32 dMVOpeningClashFighters_0x0C08[32] = {
-	#include <MVOpeningClashFighters/0x0C08.data.inc.c>
+/* Vtx @ 0x0C08 (8 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0C08_Vtx[8] = {
+	#include <MVOpeningClashFighters/Vtx_0x0C08.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0C88 (16 bytes) */
-u32 dMVOpeningClashFighters_0x0C88[4] = {
-	#include <MVOpeningClashFighters/0x0C88.data.inc.c>
+/* Vtx @ 0x0C88 (1 vertex) */
+Vtx dMVOpeningClashFighters_Vtx_0x0C88_Vtx[1] = {
+	#include <MVOpeningClashFighters/Vtx_0x0C88.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0C98 (256 bytes) */
-u32 dMVOpeningClashFighters_0x0C98[64] = {
-	#include <MVOpeningClashFighters/0x0C98.data.inc.c>
+/* Vtx @ 0x0C98 (16 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0C98_Vtx[16] = {
+	#include <MVOpeningClashFighters/Vtx_0x0C98.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0D98 (80 bytes) */
-u32 dMVOpeningClashFighters_0x0D98[20] = {
-	#include <MVOpeningClashFighters/0x0D98.data.inc.c>
+/* Vtx @ 0x0D98 (5 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0D98_Vtx[5] = {
+	#include <MVOpeningClashFighters/Vtx_0x0D98.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0DE8 (144 bytes) */
-u32 dMVOpeningClashFighters_0x0DE8[36] = {
-	#include <MVOpeningClashFighters/0x0DE8.data.inc.c>
+/* Vtx @ 0x0DE8 (9 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0DE8_Vtx[9] = {
+	#include <MVOpeningClashFighters/Vtx_0x0DE8.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0E78 (128 bytes) */
-u32 dMVOpeningClashFighters_0x0E78[32] = {
-	#include <MVOpeningClashFighters/0x0E78.data.inc.c>
+/* Vtx @ 0x0E78 (8 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0E78_Vtx[8] = {
+	#include <MVOpeningClashFighters/Vtx_0x0E78.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0EF8 (64 bytes) */
-u32 dMVOpeningClashFighters_0x0EF8[16] = {
-	#include <MVOpeningClashFighters/0x0EF8.data.inc.c>
+/* Vtx @ 0x0EF8 (4 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0EF8_Vtx[4] = {
+	#include <MVOpeningClashFighters/Vtx_0x0EF8.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0F38 (64 bytes) */
-u32 dMVOpeningClashFighters_0x0F38[16] = {
-	#include <MVOpeningClashFighters/0x0F38.data.inc.c>
+/* Vtx @ 0x0F38 (4 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0F38_Vtx[4] = {
+	#include <MVOpeningClashFighters/Vtx_0x0F38.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0F78 (32 bytes) */
-u32 dMVOpeningClashFighters_0x0F78[8] = {
-	#include <MVOpeningClashFighters/0x0F78.data.inc.c>
+/* Vtx @ 0x0F78 (2 vertices) */
+Vtx dMVOpeningClashFighters_Vtx_0x0F78_Vtx[2] = {
+	#include <MVOpeningClashFighters/Vtx_0x0F78.vtx.inc.c>
 };
 
-/* AObjEvent32 stream @ 0x0F98 (1192 bytes) */
-u32 dMVOpeningClashFighters_0x0F98[298] = {
-	#include <MVOpeningClashFighters/0x0F98.data.inc.c>
+/* Display list @ 0x0F98 (131 cmds, terminates with gsSPEndDisplayList) */
+Gfx dMVOpeningClashFighters_DL_0x0F98[131] = {
+	#include <MVOpeningClashFighters/DL_0x0F98.dl.inc.c>
 };
+
+/* DObjDesc array @ 0x13B0 (3 entries: root id=0 with scale 0.2, id=1 referencing
+ * the DL above, id=18 terminator). The single chain pointer at DObjDesc[1].dl
+ * is what the .reloc previously labelled "DL_0x0F98+0x448 → DL_0x0F98 (self)". */
+DObjDesc dMVOpeningClashFighters_DObjDesc_0x13B0[3] = {
+	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.2f, 0.2f, 0.2f } },
+	{ 1, (void*)dMVOpeningClashFighters_DL_0x0F98, { 0.0f, -3000.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+PAD(12);
 
 /* CamAnimJoint @ 0x1440 (64 bytes) */
 u32 dMVOpeningClashFighters_CamAnimJoint[15] = {

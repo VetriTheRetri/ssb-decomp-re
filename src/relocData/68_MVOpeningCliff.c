@@ -20,19 +20,22 @@ u16 dMVOpeningCliff_Lut12_0x0028[16] = {
 };
 
 /* Raw data from file offset 0x0048 to 0x0070 (40 bytes) */
-u16 dMVOpeningCliff_Lut13_0x0048[20] = {
+u16 dMVOpeningCliff_Lut13_0x0048[16] = {
 	#include <MVOpeningCliff/Lut13_0x0048.palette.inc.c>
 };
+PAD(8);
 
 /* Raw data from file offset 0x0070 to 0x0098 (40 bytes) */
-u16 dMVOpeningCliff_Lut15_0x0070[20] = {
+u16 dMVOpeningCliff_Lut15_0x0070[16] = {
 	#include <MVOpeningCliff/Lut15_0x0070.palette.inc.c>
 };
+PAD(8);
 
 /* Raw data from file offset 0x0098 to 0x00C0 (40 bytes) */
-u16 dMVOpeningCliff_Lut13_0x0098[20] = {
+u16 dMVOpeningCliff_Lut13_0x0098[16] = {
 	#include <MVOpeningCliff/Lut13_0x0098.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0x00C0 (2056 bytes) */
 /* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_Lut12_0x0008 */
@@ -195,44 +198,56 @@ u16 dMVOpeningCliff_gap_0x3850_sub_0x58[16] = {
 
 PAD(8);
 
-/* gap sub-block @ 0x38D0 (was gap+0x80, 2056 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x80[2056] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x80.data.inc.c>
+/* CI4 texture @ 0x38D0 (uses palette sub_0x8, 2048 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_gap_0x3850_sub_0x8 */
+u8 dMVOpeningCliff_Tex_0x38D0[2048] = {
+	#include <MVOpeningCliff/Tex_0x38D0.tex.inc.c>
 };
 
-/* gap sub-block @ 0x40D8 (was gap+0x888, 2056 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x888[2056] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x888.data.inc.c>
+PAD(8);
+
+/* CI4 texture @ 0x40D8 (uses palette sub_0x30, 2048 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_gap_0x3850_sub_0x30 */
+u8 dMVOpeningCliff_Tex_0x40D8[2048] = {
+	#include <MVOpeningCliff/Tex_0x40D8.tex.inc.c>
 };
 
-/* gap sub-block @ 0x48E0 (was gap+0x1090, 2048 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x1090[2048] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x1090.data.inc.c>
+PAD(8);
+
+/* CI4 texture @ 0x48E0 (uses palette sub_0x58, 2048 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dMVOpeningCliff_gap_0x3850_sub_0x58 */
+u8 dMVOpeningCliff_Tex_0x48E0[2048] = {
+	#include <MVOpeningCliff/Tex_0x48E0.tex.inc.c>
 };
 
-/* gap sub-block @ 0x50E0 (was gap+0x1890, 304 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x1890[304] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x1890.data.inc.c>
+/* Vtx for orphan gap DL @ 0x50E0 (19 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x50E0_Vtx[19] = {
+	#include <MVOpeningCliff/Vtx_0x50E0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5210 (was gap+0x19C0, 144 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x19C0[144] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x19C0.data.inc.c>
+/* Vtx for orphan gap DL @ 0x5210 (9 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x5210_Vtx[9] = {
+	#include <MVOpeningCliff/Vtx_0x5210.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x52A0 (was gap+0x1A50, 368 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x1A50[368] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x1A50.data.inc.c>
+/* Vtx for orphan gap DL @ 0x52A0 (23 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x52A0_Vtx[23] = {
+	#include <MVOpeningCliff/Vtx_0x52A0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5410 (was gap+0x1BC0, 128 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x1BC0[128] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x1BC0.data.inc.c>
+/* Vtx for orphan gap DL @ 0x5410 (8 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x5410_Vtx[8] = {
+	#include <MVOpeningCliff/Vtx_0x5410.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x5490 (was gap+0x1C40, 1240 bytes) */
-u8 dMVOpeningCliff_gap_0x3850_sub_0x1C40[1240] = {
-	#include <MVOpeningCliff/gap_0x3850_sub_0x1C40.data.inc.c>
+/* Vtx for orphan gap DL (self-referenced via gsSPVertex from DL_0x5630) @ 0x5490 (26 vertices) */
+Vtx dMVOpeningCliff_Vtx_0x5490_Vtx[26] = {
+	#include <MVOpeningCliff/Vtx_0x5490.vtx.inc.c>
+};
+
+/* Orphan DL @ 0x5630 (103 cmds, references Tex_0x38D0/40D8/48E0, palettes sub_0x8/30/58, Vtx_0x50E0/5210/52A0/5410/5490) */
+Gfx dMVOpeningCliff_DL_0x5630[103] = {
+	#include <MVOpeningCliff/DL_0x5630.dl.inc.c>
 };
 
 /* gap sub-block @ 0x5968 (was gap+0x2118, 2816 bytes) */

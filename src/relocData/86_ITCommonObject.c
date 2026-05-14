@@ -2036,9 +2036,10 @@ u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4[20] = {
 };
 
 /* gap sub-block @ 0xA1D8 (was gap+0x14, 40 bytes) */
-u16 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14[20] = {
+u16 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14[16] = {
 	#include <ITCommonObject/gap_0xA1C4_sub_0x14.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0xA200 (was gap+0x3C, 1024 bytes) */
 /* @tex fmt=CI4 dim=32x64 lut=dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14 */
@@ -3064,9 +3065,10 @@ u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4[20] = {
 };
 
 /* gap sub-block @ 0xEAF8 (was gap+0x14, 40 bytes) */
-u16 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14[20] = {
+u16 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14[16] = {
 	#include <ITCommonObject/gap_0xEAE4_sub_0x14.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0xEB20 (was gap+0x3C, 512 bytes) */
 /* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14 */
@@ -4584,9 +4586,10 @@ u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4[20] = {
 };
 
 /* gap sub-block @ 0x11FD8 (was gap+0x14, 40 bytes) */
-u16 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14[20] = {
+u16 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14[16] = {
 	#include <ITCommonObject/gap_0x11FC4_sub_0x14.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x12000 (was gap+0x3C, 768 bytes) */
 /* @tex fmt=CI4 dim=32x48 lut=dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14 */

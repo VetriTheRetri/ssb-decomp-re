@@ -28,9 +28,10 @@ extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
-u16 dPikachuSpecial3_gap_0x0000_sub_0x8[20] = {
+u16 dPikachuSpecial3_gap_0x0000_sub_0x8[16] = {
 	#include <PikachuSpecial3/gap_0x0000_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x0030 (was gap+0x30, 512 bytes) */
 /* @tex fmt=CI4 dim=32x32 lut=dPikachuSpecial3_gap_0x0000_sub_0x8 */

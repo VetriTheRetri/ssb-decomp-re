@@ -2275,9 +2275,10 @@ u8 dNessModel_Tex_0xAC50[136] = {
 	#include <NessModel/Tex_0xAC50.tex.inc.c>
 };
 
-u16 dNessModel_palette_0xACD8[20] = {
+u16 dNessModel_palette_0xACD8[16] = {
 	#include <NessModel/palette_0xACD8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xAD00 (304 bytes) */
 /* Texture: 0xAD00 (CI4 — trailing 0x28 bytes split as palette frames) */
@@ -2286,9 +2287,10 @@ u8 dNessModel_Tex_0xAD00[264] = {
 	#include <NessModel/Tex_0xAD00.tex.inc.c>
 };
 
-u16 dNessModel_palette_0xAE08[20] = {
+u16 dNessModel_palette_0xAE08[16] = {
 	#include <NessModel/palette_0xAE08.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xAE30 (264 bytes) */
 u8 dNessModel_Tex_0xAE30[256] = {
@@ -2362,13 +2364,15 @@ u8 dNessModel_Tex_0xBD50[72] = {
 	#include <NessModel/Tex_0xBD50.tex.inc.c>
 };
 
-u16 dNessModel_palette_0xBD98[20] = {
+u16 dNessModel_palette_0xBD98[16] = {
 	#include <NessModel/palette_0xBD98.palette.inc.c>
 };
+PAD(8);
 
-u16 dNessModel_palette_0xBDC0[20] = {
+u16 dNessModel_palette_0xBDC0[16] = {
 	#include <NessModel/palette_0xBDC0.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xBDE8 (632 bytes) */
 /* @tex fmt=CI4 dim=16x8 */
@@ -2413,13 +2417,15 @@ u16 dNessModel_gap_0xC100[4] = {
 	#include <NessModel/gap_0xC100.palette.inc.c>
 };
 
-u16 dNessModel_gap_0xC100_sub_0x8[20] = {
+u16 dNessModel_gap_0xC100_sub_0x8[16] = {
 	#include <NessModel/gap_0xC100_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dNessModel_gap_0xC100_sub_0x30[20] = {
+u16 dNessModel_gap_0xC100_sub_0x30[16] = {
 	#include <NessModel/gap_0xC100_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
 u16 dNessModel_gap_0xC100_sub_0x58[16] = {
 	#include <NessModel/gap_0xC100_sub_0x58.palette.inc.c>
@@ -2490,4 +2496,3 @@ Sprite dNessModel_FTEmblem = {
 };
 
 PAD(4);
-

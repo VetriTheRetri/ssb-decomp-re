@@ -4472,9 +4472,10 @@ DObjDesc dSamusModel_JointTree_0xADD8[] = {
 PAD(12);
 
 /* gap sub-block @ 0xB288 (was gap+0xC, 40 bytes) */
-u16 dSamusModel_gap_0xB27C_sub_0xC[20] = {
+u16 dSamusModel_gap_0xB27C_sub_0xC[16] = {
 	#include <SamusModel/gap_0xB27C_sub_0xC.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xB2B0 (600 bytes) */
 /* Texture: 0xB2B0 (CI4 — trailing 0x50 bytes split as palette frames) */
@@ -4483,13 +4484,15 @@ u8 dSamusModel_Tex_0xB2B0[520] = {
 	#include <SamusModel/Tex_0xB2B0.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xB4B8[20] = {
+u16 dSamusModel_palette_0xB4B8[16] = {
 	#include <SamusModel/palette_0xB4B8.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xB4E0[20] = {
+u16 dSamusModel_palette_0xB4E0[16] = {
 	#include <SamusModel/palette_0xB4E0.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xB508 (760 bytes) */
 /* Texture: 0xB508 (CI4 — trailing 0xF0 bytes split as palette frames) */
@@ -4498,29 +4501,35 @@ u8 dSamusModel_Tex_0xB508[520] = {
 	#include <SamusModel/Tex_0xB508.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xB710[20] = {
+u16 dSamusModel_palette_0xB710[16] = {
 	#include <SamusModel/palette_0xB710.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xB738[20] = {
+u16 dSamusModel_palette_0xB738[16] = {
 	#include <SamusModel/palette_0xB738.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xB760[20] = {
+u16 dSamusModel_palette_0xB760[16] = {
 	#include <SamusModel/palette_0xB760.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xB788[20] = {
+u16 dSamusModel_palette_0xB788[16] = {
 	#include <SamusModel/palette_0xB788.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xB7B0[20] = {
+u16 dSamusModel_palette_0xB7B0[16] = {
 	#include <SamusModel/palette_0xB7B0.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xB7D8[20] = {
+u16 dSamusModel_palette_0xB7D8[16] = {
 	#include <SamusModel/palette_0xB7D8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xB800 (720 bytes) */
 /* Texture: 0xB800 (CI4 — trailing 0xC8 bytes split as palette frames) */
@@ -4529,25 +4538,30 @@ u8 dSamusModel_Tex_0xB800[520] = {
 	#include <SamusModel/Tex_0xB800.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xBA08[20] = {
+u16 dSamusModel_palette_0xBA08[16] = {
 	#include <SamusModel/palette_0xBA08.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBA30[20] = {
+u16 dSamusModel_palette_0xBA30[16] = {
 	#include <SamusModel/palette_0xBA30.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBA58[20] = {
+u16 dSamusModel_palette_0xBA58[16] = {
 	#include <SamusModel/palette_0xBA58.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBA80[20] = {
+u16 dSamusModel_palette_0xBA80[16] = {
 	#include <SamusModel/palette_0xBA80.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBAA8[20] = {
+u16 dSamusModel_palette_0xBAA8[16] = {
 	#include <SamusModel/palette_0xBAA8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xBAD0 (720 bytes) */
 /* Texture: 0xBAD0 (CI4 — trailing 0xC8 bytes split as palette frames) */
@@ -4556,34 +4570,40 @@ u8 dSamusModel_Tex_0xBAD0[520] = {
 	#include <SamusModel/Tex_0xBAD0.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xBCD8[20] = {
+u16 dSamusModel_palette_0xBCD8[16] = {
 	#include <SamusModel/palette_0xBCD8.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBD00[20] = {
+u16 dSamusModel_palette_0xBD00[16] = {
 	#include <SamusModel/palette_0xBD00.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBD28[20] = {
+u16 dSamusModel_palette_0xBD28[16] = {
 	#include <SamusModel/palette_0xBD28.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBD50[20] = {
+u16 dSamusModel_palette_0xBD50[16] = {
 	#include <SamusModel/palette_0xBD50.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xBD78[20] = {
+u16 dSamusModel_palette_0xBD78[16] = {
 	#include <SamusModel/palette_0xBD78.palette.inc.c>
 };
+PAD(8);
 
 /* Texture: 0xBDA0 (CI4 — trailing 0x28 bytes split as palette frames) */
 u8 dSamusModel_Tex_0xBDA0[520] = {
 	#include <SamusModel/Tex_0xBDA0.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xBFA8[20] = {
+u16 dSamusModel_palette_0xBFA8[16] = {
 	#include <SamusModel/palette_0xBFA8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xBFD0 (1040 bytes) */
 /* @tex fmt=CI4 dim=32x32 */
@@ -4613,25 +4633,30 @@ u8 dSamusModel_Tex_0xC610[520] = {
 	#include <SamusModel/Tex_0xC610.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xC818[20] = {
+u16 dSamusModel_palette_0xC818[16] = {
 	#include <SamusModel/palette_0xC818.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xC840[20] = {
+u16 dSamusModel_palette_0xC840[16] = {
 	#include <SamusModel/palette_0xC840.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xC868[20] = {
+u16 dSamusModel_palette_0xC868[16] = {
 	#include <SamusModel/palette_0xC868.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xC890[20] = {
+u16 dSamusModel_palette_0xC890[16] = {
 	#include <SamusModel/palette_0xC890.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xC8B8[20] = {
+u16 dSamusModel_palette_0xC8B8[16] = {
 	#include <SamusModel/palette_0xC8B8.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xC8E0 (136 bytes) */
 /* @tex fmt=CI4 dim=16x16 */
@@ -4648,9 +4673,10 @@ u8 dSamusModel_Tex_0xC968[72] = {
 	#include <SamusModel/Tex_0xC968.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xC9B0[20] = {
+u16 dSamusModel_palette_0xC9B0[16] = {
 	#include <SamusModel/palette_0xC9B0.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xC9D8 (720 bytes) */
 /* Texture: 0xC9D8 (CI4 — trailing 0xC8 bytes split as palette frames) */
@@ -4659,34 +4685,40 @@ u8 dSamusModel_Tex_0xC9D8[520] = {
 	#include <SamusModel/Tex_0xC9D8.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xCBE0[20] = {
+u16 dSamusModel_palette_0xCBE0[16] = {
 	#include <SamusModel/palette_0xCBE0.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xCC08[20] = {
+u16 dSamusModel_palette_0xCC08[16] = {
 	#include <SamusModel/palette_0xCC08.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xCC30[20] = {
+u16 dSamusModel_palette_0xCC30[16] = {
 	#include <SamusModel/palette_0xCC30.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xCC58[20] = {
+u16 dSamusModel_palette_0xCC58[16] = {
 	#include <SamusModel/palette_0xCC58.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xCC80[20] = {
+u16 dSamusModel_palette_0xCC80[16] = {
 	#include <SamusModel/palette_0xCC80.palette.inc.c>
 };
+PAD(8);
 
 /* Texture: 0xCCA8 (CI4 — trailing 0x28 bytes split as palette frames) */
 u8 dSamusModel_Tex_0xCCA8[520] = {
 	#include <SamusModel/Tex_0xCCA8.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xCEB0[20] = {
+u16 dSamusModel_palette_0xCEB0[16] = {
 	#include <SamusModel/palette_0xCEB0.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xCED8 (520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */
@@ -4726,17 +4758,20 @@ u8 dSamusModel_Tex_0xD518[136] = {
 	#include <SamusModel/Tex_0xD518.tex.inc.c>
 };
 
-u16 dSamusModel_palette_0xD5A0[20] = {
+u16 dSamusModel_palette_0xD5A0[16] = {
 	#include <SamusModel/palette_0xD5A0.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xD5C8[20] = {
+u16 dSamusModel_palette_0xD5C8[16] = {
 	#include <SamusModel/palette_0xD5C8.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_palette_0xD5F0[20] = {
+u16 dSamusModel_palette_0xD5F0[16] = {
 	#include <SamusModel/palette_0xD5F0.palette.inc.c>
 };
+PAD(8);
 
 /* Texture data @ 0xD618 (2992 bytes) */
 /* @tex fmt=CI4 dim=32x187 */
@@ -4877,17 +4912,20 @@ u16 dSamusModel_gap_0xE240[4] = {
 	#include <SamusModel/gap_0xE240.palette.inc.c>
 };
 
-u16 dSamusModel_gap_0xE240_sub_0x8[20] = {
+u16 dSamusModel_gap_0xE240_sub_0x8[16] = {
 	#include <SamusModel/gap_0xE240_sub_0x8.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_gap_0xE240_sub_0x30[20] = {
+u16 dSamusModel_gap_0xE240_sub_0x30[16] = {
 	#include <SamusModel/gap_0xE240_sub_0x30.palette.inc.c>
 };
+PAD(8);
 
-u16 dSamusModel_gap_0xE240_sub_0x58[20] = {
+u16 dSamusModel_gap_0xE240_sub_0x58[16] = {
 	#include <SamusModel/gap_0xE240_sub_0x58.palette.inc.c>
 };
+PAD(8);
 
 u16 dSamusModel_gap_0xE240_sub_0x80[16] = {
 	#include <SamusModel/gap_0xE240_sub_0x80.palette.inc.c>
@@ -4958,4 +4996,3 @@ Sprite dSamusModel_FTEmblem = {
 };
 
 PAD(4);
-

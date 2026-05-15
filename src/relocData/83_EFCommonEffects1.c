@@ -7,6 +7,14 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 extern u8 dEFCommonEffects1_gap_0x7458[];
+extern Gfx dEFCommonEffects1_gap_0x0000_sub_0x5948[];
+extern u32 dEFCommonEffects1_gap_0x0000_sub_0x59D4[];
+extern u32 dEFCommonEffects1_gap_0x0000_sub_0x5AD4[];
+extern void *dEFCommonEffects1_gap_0x0000_sub_0x5B60[];
+extern u16 dEFCommonEffects1_palette_0x5B78[];
+extern u16 dEFCommonEffects1_palette_0x5BA0[];
+extern u16 dEFCommonEffects1_palette_0x5BC8[];
+extern u16 dEFCommonEffects1_palette_0x5BF0[];
 extern MObjSub *dEFCommonEffects1_gap_0x0000_sub_0x5900[];
 
 extern MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xB8[];
@@ -46,6 +54,19 @@ extern u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[];
 
 extern AObjEvent32 *dEFCommonEffects1_FlyOrbs_AnimJoint[];
 extern AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[];
+
+extern MObjSub *dEFCommonEffects1_gap_0xC9F0_sub_0x20[];
+extern void *dEFCommonEffects1_DamageFlyMDust_MObjSub_head[];
+extern void *dEFCommonEffects1_DamageFlyMDust_MObjSub[];
+extern MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub_real[];
+extern AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint_ptrs_0x9130[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0x9148[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0x9950[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0xA158[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0xA960[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0xB168[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0xB970[];
+extern u8 dEFCommonEffects1_CommonSpark_Tex_0xC178[];
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 /* Raw data from file offset 0x0000 to 0x73E0 (29664 bytes) */
@@ -193,25 +214,163 @@ Gfx dEFCommonEffects1_gap_0x0000_sub_0x5948[14] = {
 	#include <EFCommonEffects1/gap_0x0000_sub_0x5948.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x59B8 (28 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x5948_post[28] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x5948_post.data.inc.c>
+/* DObjDLLink[2] @ 0x59B8 — bind DL_0x5948 to list-id 1, terminator {4,NULL}. */
+DObjDLLink dEFCommonEffects1_gap_0x0000_sub_0x5948_DLLink[2] = {
+	{ 1, dEFCommonEffects1_gap_0x0000_sub_0x5948 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x59D4 (was gap+0x59D4, 256 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x59D4[256] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x59D4.data.inc.c>
+PAD(8);
+
+/* Tail chain @ 0x59D0 — links the Joint leaf into the AObjEvent32 chain
+ * (next link is the script @ 0x59D4). */
+void *dEFCommonEffects1_gap_0x0000_sub_0x5948_chain[1] = {
+	(void *)dEFCommonEffects1_gap_0x0000_sub_0x59D4,
 };
 
-/* gap sub-block @ 0x5AD4 (was gap+0x5AD4, 140 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x5AD4[140] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x5AD4.data.inc.c>
+/* AObjEvent32 script @ 0x59D4 (63 words / 252 B, ends at End() at +0xF8).
+ * Scales (0x384/0x180), color (0x004/0x200) tracks for the Joint above. */
+u32 dEFCommonEffects1_gap_0x0000_sub_0x59D4[63] = {
+	aobjEvent32SetValBlock(0x384, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValBlock(0x384, 1),
+	    0x00000000,
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValAfter(0x004, 3),
+	    0x3F490FDB,  /* pi/4 */
+	aobjEvent32SetValAfter(0x200, 15),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x41000000,  /* 8.0f */
+	    0x41000000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40C00000,  /* 6.0f */
+	    0x40C00000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40000000,  /* 2.0f */
+	    0x40000000,
+	aobjEvent32SetValAfter(0x004, 2),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40A00000,  /* 5.0f */
+	    0x40A00000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40800000,  /* 4.0f */
+	    0x40800000,
+	aobjEvent32SetValAfterBlock(0x184, 1),
+	    0x00000000,
+	    0x40200000,  /* 2.5f */
+	    0x40200000,
+	aobjEvent32SetValAfterBlock(0x184, 1),
+	    0x00000000,
+	    0x40400000,  /* 3.0f */
+	    0x40400000,
+	aobjEvent32SetVal(0x004, 8),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40600000,  /* 3.5f */
+	    0x40600000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40800000,
+	    0x40800000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40C00000,
+	    0x40C00000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x41000000,
+	    0x41000000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x40B00000,  /* 5.5f */
+	    0x40B00000,
+	aobjEvent32SetValAfterBlock(0x180, 2),
+	    0x41000000,
+	    0x41000000,
+	aobjEvent32SetValAfterBlock(0x180, 1),
+	    0x41000000,
+	    0x41000000,
+	aobjEvent32End(),
 };
 
-/* gap sub-block @ 0x5B60 (was gap+0x5B60, 184 bytes) */
-u8 dEFCommonEffects1_gap_0x0000_sub_0x5B60[184] = {
-	#include <EFCommonEffects1/gap_0x0000_sub_0x5B60.data.inc.c>
+/* Tail chain @ 0x5AD0 — next link is the palette-frame block @ 0x5B60. */
+void *dEFCommonEffects1_gap_0x0000_sub_0x59D4_chain[1] = {
+	(void *)dEFCommonEffects1_gap_0x0000_sub_0x5B60,
 };
+
+/* AObjEvent32 script @ 0x5AD4 (35 words / 140 B, single End() at end).
+ * Color-cycle ramp (0x01E rate, 0x001 after-block). */
+u32 dEFCommonEffects1_gap_0x0000_sub_0x5AD4[35] = {
+	aobjEvent32SetVal0Rate(0x01E, 0),
+	    0x00000000,
+	    0x00000000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x41100000,  /* 9.0f */
+	aobjEvent32SetVal0Rate(0x01E, 16),
+	    0x00000000,
+	    0x00000000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x41200000,  /* 10.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0xBAA67621,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40400000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40800000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40A00000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40C00000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40E00000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x41000000,
+	aobjEvent32SetValBlock(0x001, 1),
+	    0x41000000,
+	aobjEvent32End(),
+};
+
+/* 4-byte chain head @ 0x5B60 — chains forward into the AObjEvent32
+ * script @ 0x5AD4. PAD(20) follows before the 4 palette frames. */
+void *dEFCommonEffects1_gap_0x0000_sub_0x5B60[1] = {
+	(void *)dEFCommonEffects1_gap_0x0000_sub_0x5AD4,
+};
+
+PAD(20);
+
+/* 4 × CI4 palette[16] frames @ 0x5B78..0x5C0F, separated by PAD(8),
+ * plus a trailing PAD(8) before the next block @ 0x5C18. Each frame
+ * is the same 16-color set (0x0842..0x0035 — fade ramp). */
+u16 dEFCommonEffects1_palette_0x5B78[16] = {
+	#include <EFCommonEffects1/palette_0x5B78.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects1_palette_0x5BA0[16] = {
+	#include <EFCommonEffects1/palette_0x5BA0.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects1_palette_0x5BC8[16] = {
+	#include <EFCommonEffects1/palette_0x5BC8.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects1_palette_0x5BF0[16] = {
+	#include <EFCommonEffects1/palette_0x5BF0.palette.inc.c>
+};
+PAD(8);
 
 /* gap sub-block @ 0x5C18 (was gap+0x5C18, 320 bytes = 8 × CI4 palette[16]+PAD(8)) */
 u16 dEFCommonEffects1_gap_0x0000_sub_0x5C18[16] = {
@@ -958,14 +1117,20 @@ u32 dEFCommonEffects1_CommonSpark_AnimJoint_0x9054[] = {
 
 PAD(4);
 
-/* Raw data from file offset 0x90C0 to 0xC978 (14520 bytes) */
-/* Pointer-table split fallback: chain-pointer table at the
- * head of the array, followed by raw data containing every
- * referenced (and orphan) script. The data block is dumped
- * as one u8[] include; fixRelocChain rewrites the table
- * entries to chain-encoded form per the .reloc. */
+/* Raw data from file offset 0x90C0 to 0xC978 (14520 bytes).
+ * Layout:
+ *   0x90C0 (4):    AObjEvent32 **MatAnimJoint (chain to ptrs_0x9130)
+ *   0x90C4 (108):  AnimJoint script @ data (idx 0..26)
+ *   0x9130 (24):   AObjEvent32 *[6] sprite-script pointer table
+ *                   [0] = script, [1..5] = NULL
+ *   0x9148 (2048): Tex_0x9148 (IA16 32x32) — DamageFlyMDust sprite frame 7
+ *   0x9948 (8):    PAD(8)
+ *   0x9950 (2048): Tex_0x9950 — sprite frame 6
+ *   0x9F58 (8):    PAD(8)   [wait — recompute]
+ *   ... 7 textures total spaced 2056 B apart, no trailing PAD after last
+ */
 AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[1] = {
-	(AObjEvent32 *)((u8*)dEFCommonEffects1_CommonSpark_MatAnimJoint_data + 0x6C),
+	(AObjEvent32 *)dEFCommonEffects1_CommonSpark_MatAnimJoint_ptrs_0x9130,
 };
 
 u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[27] = {
@@ -998,30 +1163,99 @@ u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[27] = {
 	aobjEvent32End(),
 };
 
-/* TRAIL: 14408 bytes of non-script data (textures/vtx/etc.)
- * referenced by .reloc at various offsets. Kept as raw u8 so the
- * source has at most one aobjEvent32End() per u32 array. */
-u8 dEFCommonEffects1_CommonSpark_MatAnimJoint_data_trail[14408] = {
-	#include <EFCommonEffects1/CommonSpark_MatAnimJoint_data_trail.data.inc.c>
+/* Per-MObj AObjEvent32 *[6] sprite-script pointer table @ 0x9130.
+ * [0] points to the script; [1..5] are NULL (unused MObj slots). */
+AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint_ptrs_0x9130[6] = {
+	(AObjEvent32 *)dEFCommonEffects1_CommonSpark_MatAnimJoint_data,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
-/* MObjSub: DamageFlyMDust @ 0xC978 */
-MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub[1] = {
+/* DamageFlyMDust sprite frame textures: 7 IA16 32x32 frames (2048 B each),
+ * separated by PAD(8). Referenced by DamageFlyMDust_MObjSub's sprite array. */
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0x9148[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0x9148.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0x9950[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0x9950.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0xA158[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0xA158.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0xA960[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0xA960.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0xB168[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0xB168.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0xB970[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0xB970.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=IA16 dim=32x32 */
+u8 dEFCommonEffects1_CommonSpark_Tex_0xC178[2048] = {
+	#include <EFCommonEffects1/CommonSpark_Tex_0xC178.tex.inc.c>
+};
+
+/* DamageFlyMDust pointer-table head @ 0xC978 (4 B): head chain pointer
+ * to the gap_0xC9F0_sub_0x20 MObjSub** list. */
+void *dEFCommonEffects1_DamageFlyMDust_MObjSub_head[1] = {
+	(void *)dEFCommonEffects1_gap_0xC9F0_sub_0x20,
+};
+
+/* DamageFlyMDust sprite-frame table @ 0xC97C (28 B = 7 × 4 B). Each entry
+ * is a chain pointer to one IA16 32×32 sprite frame in the CommonSpark
+ * texture block. Frame order is high→low (sprite 0 = newest frame). */
+void *dEFCommonEffects1_DamageFlyMDust_MObjSub[7] = {
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0xC178,
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0xB970,
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0xB168,
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0xA960,
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0xA158,
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0x9950,
+	(void *)dEFCommonEffects1_CommonSpark_Tex_0x9148,
+};
+
+/* DamageFlyMDust real MObjSub @ 0xC998 (120 B). Note this extends past
+ * the conceptual "0xC9F0 boundary" (its trailing 32 B occupy what was
+ * gap+0x0..+0x1F PAD); only the 8-B gap_0xC9F0_sub_0x20 (MObjSub** list)
+ * remains separately in the gap. */
+MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub_real[1] = {
 	{
-		0x325F,
-		0x32, 0x84,
-		(void**)((u8*)dEFCommonEffects1_CommonSpark_MatAnimJoint + 0x30B8),
-		0x3261, 0x2E5C, 0x3262, 0x2C5A,
-		845359704,
-		1.3280518018632392e-08f, 1.3338269155838134e-08f,
-		1.3454227953957343e-08f, 1.4704469383453895e-39f,
-		1.5389728602599462e-08f, 2.938735877055719e-39f,
-		(void**)0x00200020,
+		0x0010,
+		0x03, 0x02,
+		(void**)dEFCommonEffects1_DamageFlyMDust_MObjSub,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 0.0f,
+		(void**)0x00000000,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
+		0x00, 0x00,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
-		1.0f, 1.0f,
+		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0x00000000,
 		{ { 0x00, 0x00, 0x00, 0x00 } },
@@ -1035,13 +1269,10 @@ MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub[1] = {
 	}
 };
 
-/* Raw data from file offset 0xC9F0 to 0xCA18 (40 bytes) */
-/* gap sub-block @ 0xC9F0 (was gap+0x0, 32 bytes) */
-PAD(32);
-
-/* gap sub-block @ 0xCA10 (was gap+0x20, 8 bytes) */
-void *dEFCommonEffects1_gap_0xC9F0_sub_0x20[2] = {
-	(void *)((u8*)dEFCommonEffects1_DamageFlyMDust_MObjSub + 0x20),
+/* Raw data from file offset 0xCA10 to 0xCA18 (8 bytes) */
+/* gap sub-block @ 0xCA10: 2-entry MObjSub** list head. */
+MObjSub *dEFCommonEffects1_gap_0xC9F0_sub_0x20[2] = {
+	(MObjSub *)dEFCommonEffects1_DamageFlyMDust_MObjSub_real,
 	NULL,
 };
 

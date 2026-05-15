@@ -12,11 +12,20 @@ extern void *dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
 extern u8 dEFCommonEffects2_gap_0x1F18[];
 
 extern MObjSub *dEFCommonEffects2_gap_0x1F18_sub_0x18[];
+extern MObjSub *dEFCommonEffects2_gap_0x14A0_sub_0x18[];
+extern void *dEFCommonEffects2_ShockSmallMObjSub_MObjSub_head[];
+extern void *dEFCommonEffects2_ShockSmallMObjSub_MObjSub[];
+extern MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub_real[];
 
 extern u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[];
+extern u16 dEFCommonEffects2_ShockSmall_palette_0x15E8[];
+extern u16 dEFCommonEffects2_ShockSmall_palette_0x1610[];
+extern u16 dEFCommonEffects2_ShockSmall_palette_0x1638[];
+extern u16 dEFCommonEffects2_ShockSmall_palette_0x1660[];
 extern u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8[];
 
 extern u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
+extern u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28B8[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28F0[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2960[];
@@ -367,22 +376,41 @@ void *dEFCommonEffects2_gap_0x0000_sub_0x1028[256] = {
 	(void *)0xFF00FF00,  /* unresolved */
 };
 
-/* MObjSub: ShockSmallMObjSub @ 0x1428 */
-MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub[1] = {
+/* ShockSmallMObjSub pointer-table head @ 0x1428 (4 B): head chain ptr to
+ * the gap_0x14A0_sub_0x18 MObjSub** list (which points back into _real). */
+void *dEFCommonEffects2_ShockSmallMObjSub_MObjSub_head[1] = {
+	(void *)dEFCommonEffects2_gap_0x14A0_sub_0x18,
+};
+
+/* ShockSmall sprite-frame table @ 0x142C (20 B = 5 × 4 B). [0] points to
+ * the 1024-byte sprite pool gap_0x0000_sub_0x1028, [1..4] are the four
+ * 1032-byte Tex_0x0008..0x0C20 frames. */
+void *dEFCommonEffects2_ShockSmallMObjSub_MObjSub[5] = {
+	(void *)dEFCommonEffects2_gap_0x0000_sub_0x1028,
+	(void *)dEFCommonEffects2_Tex_0x0C20,
+	(void *)dEFCommonEffects2_Tex_0x0818,
+	(void *)dEFCommonEffects2_Tex_0x0410,
+	(void *)dEFCommonEffects2_Tex_0x0008,
+};
+
+/* ShockSmall real MObjSub @ 0x1440 (120 B). Extends past 0x14A0 into
+ * what was the leading PAD(24) of the next gap block; only the 8-B
+ * gap_0x14A0_sub_0x18 (MObjSub** list) remains separately at 0x14B8. */
+MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub_real[1] = {
 	{
-		0x050B,
-		0x05, 0x2E,
-		(void**)(dEFCommonEffects2_gap_0x0000_sub_0x1028),
-		0x050D, 0x0308, 0x050E, 0x0206,
-		84869380,
-		6.817868669698895e-36f, 1.4704469383453895e-39f,
-		8.182366928797652e-36f, 2.938735877055719e-39f,
-		2.938758297831148e-39f, 0.0f,
+		0x0010,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
+		(void**)dEFCommonEffects2_ShockSmallMObjSub_MObjSub,
+		0x0020, 0x0000, 0x0020, 0x0010,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x3F80,
-		0x0000, 0x3F80, 0x0000,
+		0x00, 0x00,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0x00000000,
@@ -397,13 +425,10 @@ MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub[1] = {
 	}
 };
 
-/* Raw data from file offset 0x14A0 to 0x1500 (96 bytes) */
-/* gap sub-block @ 0x14A0 (was gap+0x0, 24 bytes) */
-PAD(24);
-
-/* gap sub-block @ 0x14B8 (was gap+0x18, 8 bytes) */
-void *dEFCommonEffects2_gap_0x14A0_sub_0x18[2] = {
-	(void *)((u8*)dEFCommonEffects2_ShockSmallMObjSub_MObjSub + 0x18),
+/* Raw data from file offset 0x14B8 to 0x1500 (72 bytes) */
+/* MObjSub** list head @ 0x14B8 — points to ShockSmallMObjSub_MObjSub_real. */
+MObjSub *dEFCommonEffects2_gap_0x14A0_sub_0x18[2] = {
+	dEFCommonEffects2_ShockSmallMObjSub_MObjSub_real,
 	NULL,
 };
 
@@ -456,12 +481,31 @@ u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[26] = {
 	aobjEvent32End(),
 };
 
-/* TRAIL: 172 bytes of non-script data (textures/vtx/etc.)
- * referenced by .reloc at various offsets. Kept as raw u8 so the
- * source has at most one aobjEvent32End() per u32 array. */
-u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data_trail[172] = {
-	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint_data_trail.data.inc.c>
+/* 4 CI4 palette frames @ 0x15E8/0x1610/0x1638/0x1660 (32 B each)
+ * separated by PAD(8); leading PAD(12) and trailing PAD(8). The last
+ * frame (0x1660) is loaded as a TLUT by FireSparkDisplayList+0x54
+ * (MatAnimJoint+0xF0 in the original block offset). */
+PAD(12);
+
+u16 dEFCommonEffects2_ShockSmall_palette_0x15E8[16] = {
+	#include <EFCommonEffects2/ShockSmall_palette_0x15E8.palette.inc.c>
 };
+PAD(8);
+
+u16 dEFCommonEffects2_ShockSmall_palette_0x1610[16] = {
+	#include <EFCommonEffects2/ShockSmall_palette_0x1610.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_ShockSmall_palette_0x1638[16] = {
+	#include <EFCommonEffects2/ShockSmall_palette_0x1638.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_ShockSmall_palette_0x1660[16] = {
+	#include <EFCommonEffects2/ShockSmall_palette_0x1660.palette.inc.c>
+};
+PAD(8);
 /* @tex fmt=CI4 dim=32x32 */
 u8 dEFCommonEffects2_Tex_0x1688[520] = {
 	#include <EFCommonEffects2/Tex_0x1688.tex.inc.c>
@@ -628,11 +672,20 @@ u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[11] = {
 	aobjEvent32End(),
 };
 
-/* TRAIL: 276 bytes of non-script data (textures/vtx/etc.)
- * referenced by .reloc at various offsets. Kept as raw u8 so the
- * source has at most one aobjEvent32End() per u32 array. */
-u8 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data_trail[276] = {
-	#include <EFCommonEffects2/FireSparkMatAnimJoint_MatAnimJoint_data_trail.data.inc.c>
+/* AObjEvent32 *[1] chain head @ 0x21A4 — chains forward into the script
+ * @ data (the FireSpark MatAnimJoint script). MatAnimJoint+0x4 also chains
+ * here, forming a head→ptrs→script triple indirect. */
+AObjEvent32 *dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data_trail[1] = {
+	(AObjEvent32 *)dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data,
+};
+
+PAD(16);
+
+/* I4 texture (32x16, 256 B) @ 0x21B8 — shared sprite frame loaded by 4
+ * DLs (DL_0x2500/2588/2610/2698) all via SetTextureImage at +0x3C. */
+/* @tex fmt=I4 dim=32x16 */
+u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[256] = {
+	#include <EFCommonEffects2/FireSpark_Tex_0x21B8.tex.inc.c>
 };
 
 /* DObjDesc: CatchSwirlDObjDesc @ 0x22B8 (2 entries) */

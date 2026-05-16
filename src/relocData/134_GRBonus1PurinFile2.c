@@ -338,12 +338,20 @@ MPGeometryData dGRBonus1PurinFile2_MPGeometryData_0x2304 = {
 	(MPMapObjContainer*)dGRBonus1PurinFile2_gap_0x20D4_sub_0x210,
 };
 
-/* Raw data from file offset 0x2320 to 0x2650 (816 bytes) */
-u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint[204] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x10),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x4C),
+extern u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x10[];
+extern u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x4C[];
+extern u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2BC[];
+extern u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8[];
+
+/* AObjEvent32 *[4] joint table 1. */
+AObjEvent32 *dGRBonus1PurinFile2_Layer1Anim_AnimJoint[4] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x10,
+	(AObjEvent32 *)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x4C,
+};
+
+u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x10[15] = {
 	aobjEvent32SetVal0Rate(0x010, 0),
 	    0xC5960000,  /* -4800.0f */
 	aobjEvent32SetValAfterBlock(0x060, 0),
@@ -358,7 +366,10 @@ u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint[204] = {
 	aobjEvent32SetVal0RateBlock(0x010, 75),
 	    0xC5960000,  /* -4800.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x10),
+	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x10,
+};
+
+u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x4C[11] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0xC544E000,  /* -3150.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -369,152 +380,43 @@ u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint[204] = {
 	aobjEvent32SetVal0RateBlock(0x020, 150),
 	    0xC544E000,  /* -3150.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x4C),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC5960000,
-	    0xC56A6000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x451F6000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC56A6000,
-	    0xC528C000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x4528C000,
-	    0xC3160000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x456A6000,
-	    0x43960000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC4CE4000,
-	    0xC4A8C000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x45034000,
-	    0x45034000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC5B22000,
-	    0x45610000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC4F3C000,
-	    0x459AB000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC50CA000,
-	    0x44BB8000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 18),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x2BC),
-	aobjEvent32End(),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x2F8),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x4C,
+};
+
+PAD(8);
+
+/* DObjDesc[12] — Layer1 scene-object list. */
+DObjDesc dGRBonus1PurinFile2_Layer1Anim_DObjDesc[12] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -4800.0f, -3750.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 0.0f, 2550.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -3750.0f, -2700.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 2700.0f, -150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 3750.0f, 300.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -1650.0f, -1350.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 2100.0f, 2100.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -5700.0f, 3600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -1950.0f, 4950.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -2250.0f, 1500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* AObjEvent32 *[11] joint table 2. */
+AObjEvent32 *dGRBonus1PurinFile2_Layer1Anim_AnimJoint_ptrs_0x290[11] = {
+	NULL,
+	(AObjEvent32 *)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2BC,
+	NULL,
+	(AObjEvent32 *)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2BC[15] = {
 	aobjEvent32SetVal0Rate(0x010, 0),
 	    0xC5960000,  /* -4800.0f */
 	aobjEvent32SetValAfterBlock(0x060, 0),
@@ -529,7 +431,10 @@ u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint[204] = {
 	aobjEvent32SetVal0RateBlock(0x010, 75),
 	    0xC5960000,  /* -4800.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x2BC),
+	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2BC,
+};
+
+u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8[11] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0xC528C000,  /* -2700.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -540,9 +445,8 @@ u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint[204] = {
 	aobjEvent32SetVal0RateBlock(0x020, 150),
 	    0xC528C000,  /* -2700.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus1PurinFile2_Layer1Anim_AnimJoint + 0x2F8),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8,
 };
+
+PAD(12);
 

@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2067 / 2132** files at 100% (97.84% of bytes typed; 369,440 / 17,082,000 bytes still untyped across 65 files).
+Overall: **2068 / 2132** files at 100% (97.84% of bytes typed; 368,992 / 17,082,000 bytes still untyped across 64 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -80,7 +80,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
 | 333 | CaptainSpecial3 | 2160 | 88 | 1 | 95.93% |
 | 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
-| 133 | GRBonus1PikachuFile2 | 11488 | 448 | 1 | 96.10% |
 | 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
 | 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
@@ -598,6 +597,16 @@ Recent round of structural work:
   fully typed: `Vtx[]` arrays, one `Gfx[]` per DL, and a `DObjDesc`
   trailer. The chain-encoded `p_dobjs` values remain inline-hex
   placeholders (no `.reloc` for this fid yet).
+- `GRBonus1*File2` (fids 124–135) — each `Layer1Anim_AnimJoint` was
+  mis-decoded by `decodeAObjEvent32.py` as one giant `u32` AObjEvent32
+  script. Each is really: `AObjEvent32 *[K]` joint table + N loop
+  scripts + `DObjDesc[12]` scene-object list + a second joint table +
+  N scripts + PADs. Re-segmented all 12 files (2026-05-15) by walking
+  the `.reloc` chain (joint-table entry slots vs. script loopbacks) and
+  scanning for the `DObjDesc` id=18 terminator. Completion % unchanged
+  (the `u32`-macro blocks already counted as typed) — a structural-
+  correctness fix. fid 133 also gained a `Vtx[30]` / `DObjDLLink[3]`
+  retype and lost its last raw `gap_` block.
 - `ITCommonData` (fid 251, 3,392 B) — item attribute + weapon attribute
   pool, now **fully typed**: 34 `ITAttributes` struct initializers (33
   matching + 1 Sawamura with IDO bitfield bug comment), 6

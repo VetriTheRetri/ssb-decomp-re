@@ -153,7 +153,8 @@ DObjDLLink dGRBonus1PikachuFile2_DLLink_0x0A50[] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: Layer0DObj @ 0xA60 (8 entries) */
+/* DObjDesc: Layer0DObj @ 0xA60 (7 entries; entry [6] id=18 terminates).
+ * The former 8th entry was the head of the Vtx_0x0BA0 block below. */
 DObjDesc dGRBonus1PikachuFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A10, { 2550.0f, -4800.0f, -600.0f }, { 0.0f, 0.0f, -3.9269909858703613f }, { 1.0f, 1.0f, 1.0f } },
@@ -162,13 +163,16 @@ DObjDesc dGRBonus1PikachuFile2_Layer0DObj[] = {
 	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A40, { -2700.0f, 2400.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus1PikachuFile2_DLLink_0x0A50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 1.5872873164046699e-37f, 1.5869173736100881e-37f }, { 1.4990767215349695e-36f, 1.1663108012064884e-38f, 3.160065924821352e-38f }, { 1.5869173736100881e-37f, 3.747691803837424e-37f, 1.1663108012064884e-38f } },
 };
 
-/* Raw data from file offset 0x0BC0 to 0x2658 (6808 bytes) */
-/* gap sub-block @ 0x0BC0 (was gap+0x0, 448 bytes) */
-u8 dGRBonus1PikachuFile2_gap_0x0BC0[448] = {
-	#include <GRBonus1PikachuFile2/gap_0x0BC0.data.inc.c>
+/* 12 B alignment pad between the DObjDesc array and the Vtx array. */
+PAD(12);
+
+/* Raw data from file offset 0x0BA0 to 0x2658 */
+/* Vtx[30] @ 0x0BA0 — gsSPVertex target of DL_0x2030. Absorbs the former
+ * gap_0x0BC0 raw block (the array spans 0x0BA0..0x0D80). */
+Vtx dGRBonus1PikachuFile2_Vtx_0x0BA0[30] = {
+	#include <GRBonus1PikachuFile2/Vtx_0x0BA0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0D80 (was gap+0x1C0, 256 bytes) */
@@ -264,8 +268,8 @@ Gfx dGRBonus1PikachuFile2_DL_0x25D0[17] = {
 /* DObjDesc: Layer1DObj @ 0x2658 (4 entries) */
 DObjDesc dGRBonus1PikachuFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0BC0 + 0x1420), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dGRBonus1PikachuFile2_gap_0x0BC0 + 0x1A10), { 1650.0f, -1050.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DL_0x1FE0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus1PikachuFile2_DL_0x25D0, { 1650.0f, -1050.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -381,11 +385,18 @@ MPGeometryData dGRBonus1PikachuFile2_MPGeometryData_0x2A10 = {
 };
 PAD(4);
 
-/* Raw data from file offset 0x2A30 to 0x2CE0 (688 bytes) */
-u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0xC),
+extern u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data[];
+extern u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C[];
+
+/* AObjEvent32 *[3] joint table — entry[2] -> the script below. */
+AObjEvent32 *dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data,
+};
+
+/* AObjEvent32 script (loops via SetAnim back to its own head). */
+u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data[11] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0xC4834000,  /* -1050.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -396,152 +407,40 @@ u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {
 	aobjEvent32SetVal0RateBlock(0x020, 60),
 	    0xC4834000,  /* -1050.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0xC),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xC3960000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC528C000,
-	    0x45834000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x44CE4000,
-	    0xC4160000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC573C000,
-	    0xC4E10000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xC4BB8000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x45034000,
-	    0xC528C000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x454E4000,
-	    0x44610000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0x44E10000,
-	    0xC5A8C000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC5034000,
-	    0xC528C000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 1),
-	aobjEvent32End(),
-	    0xC573C000,
-	    0x44CE4000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32EndRaw(0x000, 18),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0x27C),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data,
+};
+
+/* 8 B pad — trailing zeros after the first script. */
+PAD(8);
+
+/* DObjDesc[12] @ 0x2A70 — Layer1 scene-object list; entry [11] id=18 ends it. */
+DObjDesc dGRBonus1PikachuFile2_Layer1Anim_DObjDesc[12] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 0.0f, -300.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -2700.0f, 4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 1650.0f, -600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -3900.0f, -1800.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 0.0f, -1500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 2100.0f, -2700.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 3300.0f, 900.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 1800.0f, -5400.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -2100.0f, -2700.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -3900.0f, 1650.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* 4 B pad before the second joint table. */
+PAD(4);
+
+/* AObjEvent32 *[10] joint table — entry[2] -> the second script; rest NULL. */
+AObjEvent32 *dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_ptrs_0x254[10] = {
+	NULL, NULL,
+	(AObjEvent32 *)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C,
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+};
+
+/* Second AObjEvent32 script. */
+u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -552,8 +451,9 @@ u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {
 	aobjEvent32SetVal0RateBlock(0x020, 60),
 	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint + 0x27C),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	(u32)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C,
 };
+
+/* 8 B pad — trailing zeros at end of file. */
+PAD(8);
 

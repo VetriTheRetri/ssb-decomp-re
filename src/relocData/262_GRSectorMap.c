@@ -5,10 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <wp/wptypes.h>  // WPAttributes
 #include <sys/objdef.h>  // aobjEvent32* macros
+#include <gm/gmsound.h>  // gmFGMVoiceID
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageSectorFile2_Tex_0x1C00[];
+extern u32 dStageSectorFile3_AnimJoint_0x1C50[];
 
 /* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
 u32 dGRSectorMap_Arwing0_AnimJoint[5] = {
@@ -85,13 +88,64 @@ MPGroundData dGRSectorMap_MapHeader_0x0014 =
     { 0, 0, 15000 },  /* zoom_end */
 };
 
-/* Raw data from file offset 0x00BC to 0x00F0 (52 bytes) */
-u8 dGRSectorMap_ArwingLaser2D_WeaponAttributes[52] = {
-	#include <GRSectorMap/ArwingLaser2D_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0xBC */
+WPAttributes dGRSectorMap_ArwingLaser2D_WeaponAttributes = {
+    (void *)dStageSectorFile3_AnimJoint_0x1C50,  /* data */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    28, 0, -28, 564,  /* map_coll top/center/bottom/width */
+    300,  /* size */
+    361,  /* angle            : 10 */
+    75,  /* knockback_scale  : 10 */
+    16,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    5,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    0,  /* can_setoff       :  1 */
+    nSYAudioFGMExplodeS,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    70,  /* knockback_base   : 10 */
 };
 
-/* Raw data from file offset 0x00F0 to 0x0130 (64 bytes) */
-u8 dGRSectorMap_ArwingLaser3D_WeaponAttributes[64] = {
-	#include <GRSectorMap/ArwingLaser3D_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0xF0 */
+WPAttributes dGRSectorMap_ArwingLaser3D_WeaponAttributes = {
+    (void *)dStageSectorFile3_AnimJoint_0x1C50,  /* data */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    28, 0, -28, 28,  /* map_coll top/center/bottom/width */
+    300,  /* size */
+    361,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    18,  /* damage           :  8 */
+    1,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    2,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    0,  /* can_setoff       :  1 */
+    nSYAudioFGMExplodeS,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    1,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    0,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    0,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    10,  /* knockback_base   : 10 */
 };
+PAD(12);
 

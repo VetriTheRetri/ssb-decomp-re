@@ -5,12 +5,28 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <it/ittypes.h>  // ITAttributes
+#include <wp/wptypes.h>  // WPAttributes
+#include <gm/gmsound.h>  // gmFGMVoiceID
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageYamabukiFile2_Tex_0x28F0[];
 extern u8 dStageYamabukiFile2_Tex_0x1BA0[];
 extern u8 dStageYamabukiFile2_Tex_0x2360[];
 extern u8 dStageYamabukiFile2_Tex_0x0460[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x0360[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x03F0[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x0790[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x0820[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x0EA0[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x0F30[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x17D0[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x1990[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x1A20[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x2180[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x2340[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x23D0[];
+extern u32 dStageYamabukiFile3_AnimJoint_0x2A50[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -79,53 +95,284 @@ MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
     { 0, 0, 15000 },  /* zoom_end */
 };
 
-/* Raw data from file offset 0x00BC to 0x0104 (72 bytes) */
-u8 dGRYamabukiMap_GLucky_ItemAttributes[72] = {
-	#include <GRYamabukiMap/GLucky_ItemAttributes.data.inc.c>
+/* ITAttributes @ 0xBC */
+ITAttributes dGRYamabukiMap_GLucky_ItemAttributes[1] = {{
+	(void *)dStageYamabukiFile3_AnimJoint_0x0360,  /* data */
+	NULL,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_AnimJoint_0x03F0,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 390, 360, 360 },  /* damage_coll_size */
+	180, 0, -180, 195,  /* map_coll top/center/bottom/width */
+	300,  /* size */
+	361,  /* angle */
+	100,  /* ks */
+	5,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	0,  /* cso */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* pri */
+	0,  /* cri */
+	0,  /* crf */
+	0,  /* hop */
+	0,  /* refl */
+	0,  /* shield */
+	20,  /* kb */
+	4,  /* type */
+	1,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
+
+/* ITAttributes @ 0x104 */
+ITAttributes dGRYamabukiMap_Marumine_ItemAttributes[1] = {{
+	(void *)dStageYamabukiFile3_AnimJoint_0x0790,  /* data */
+	NULL,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_AnimJoint_0x0820,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 390, 360, 360 },  /* damage_coll_size */
+	225, 0, -225, 248,  /* map_coll top/center/bottom/width */
+	400,  /* size */
+	361,  /* angle */
+	100,  /* ks */
+	10,  /* dmg */
+	1,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	0,  /* cso */
+	nSYAudioFGMBurnM,  /* hit_sfx */
+	1,  /* pri */
+	1,  /* cri */
+	1,  /* crf */
+	0,  /* hop */
+	0,  /* refl */
+	1,  /* shield */
+	40,  /* kb */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
+
+/* ITAttackEvent[4] @ 0x14C */
+ITAttackEvent dGRYamabukiMap_Marumine_AttackEvents[4] = {
+	{ 0, 361, 30, 700 },
+	{ 2, 361, 30, 350 },
+	{ 4, 361, 20, 300 },
+	{ 6, 361, 10, 200 },
 };
 
-/* Raw data from file offset 0x0104 to 0x014C (72 bytes) */
-u8 dGRYamabukiMap_Marumine_ItemAttributes[72] = {
-	#include <GRYamabukiMap/Marumine_ItemAttributes.data.inc.c>
+/* ITAttributes @ 0x16C */
+ITAttributes dGRYamabukiMap_Porygon_ItemAttributes[1] = {{
+	(void *)dStageYamabukiFile3_AnimJoint_0x0EA0,  /* data */
+	NULL,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_AnimJoint_0x0F30,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 390, 360, 360 },  /* damage_coll_size */
+	300, 0, -300, 360,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	40,  /* ks */
+	16,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	0,  /* cso */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* pri */
+	1,  /* cri */
+	1,  /* crf */
+	0,  /* hop */
+	0,  /* refl */
+	1,  /* shield */
+	80,  /* kb */
+	6,  /* type */
+	1,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
+
+/* ITMonsterEvent[2] @ 0x1B4 */
+ITMonsterEvent dGRYamabukiMap_Porygon_HitParties[2] = {
+	{ 0, 40, 18, 300, 40, 0, 70, 0, 0, 0, nSYAudioFGMPunchL },
+	{ 8, 40, 8, 300, 70, 0, 40, 0, 0, 0, nSYAudioFGMPunchL },
 };
 
-/* Raw data from file offset 0x014C to 0x016C (32 bytes) */
-u32 dGRYamabukiMap_Marumine_AttackEvents[8] = {
-	#include <GRYamabukiMap/Marumine_AttackEvents.data.inc.c>
+/* ITAttributes @ 0x1FC */
+ITAttributes dGRYamabukiMap_Hitokage_ItemAttributes[1] = {{
+	(void *)dStageYamabukiFile3_AnimJoint_0x1990,  /* data */
+	(void *)dStageYamabukiFile3_AnimJoint_0x17D0,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_AnimJoint_0x1A20,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 200, 200, 200 },  /* damage_coll_size */
+	252, 0, -252, 273,  /* map_coll top/center/bottom/width */
+	340,  /* size */
+	361,  /* angle */
+	100,  /* ks */
+	5,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	0,  /* cso */
+	nSYAudioFGMBurnM,  /* hit_sfx */
+	1,  /* pri */
+	1,  /* cri */
+	1,  /* crf */
+	0,  /* hop */
+	0,  /* refl */
+	1,  /* shield */
+	20,  /* kb */
+	6,  /* type */
+	1,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
+
+/* WPAttributes @ 0x244 */
+WPAttributes dGRYamabukiMap_HitokageFlame_WeaponAttributes = {
+    NULL,  /* data (chain-encoded — fixRelocChain patches if .reloc has entry) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    50, 0, -50, 50,  /* map_coll top/center/bottom/width */
+    320,  /* size */
+    0,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    2,  /* damage           :  8 */
+    1,  /* element          :  4 */
+    3,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    0,  /* can_setoff       :  1 */
+    nSYAudioFGMBurnS,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    0,  /* knockback_base   : 10 */
 };
 
-/* Raw data from file offset 0x016C to 0x01B4 (72 bytes) */
-u8 dGRYamabukiMap_Porygon_ItemAttributes[72] = {
-	#include <GRYamabukiMap/Porygon_ItemAttributes.data.inc.c>
+/* ITAttributes @ 0x278 */
+ITAttributes dGRYamabukiMap_Fushigibana_ItemAttributes[1] = {{
+	(void *)dStageYamabukiFile3_AnimJoint_0x2340,  /* data */
+	(void *)dStageYamabukiFile3_AnimJoint_0x2180,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_AnimJoint_0x23D0,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 200, 200, 200 },  /* damage_coll_size */
+	360, 0, -360, 510,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	361,  /* angle */
+	100,  /* ks */
+	5,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	0,  /* cso */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* pri */
+	1,  /* cri */
+	1,  /* crf */
+	0,  /* hop */
+	0,  /* refl */
+	1,  /* shield */
+	20,  /* kb */
+	6,  /* type */
+	1,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
+
+/* ITMonsterEvent[2] @ 0x2C0 */
+ITMonsterEvent dGRYamabukiMap_Fushigibana_HitParties[2] = {
+	{ 0, 40, 20, 300, 100, 90, 0, 0, 0, 0, nSYAudioFGMPunchL },
+	{ 8, 361, 8, 300, 70, 0, 30, 0, 0, 0, nSYAudioFGMPunchL },
 };
 
-/* Raw data from file offset 0x01B4 to 0x01FC (72 bytes) */
-u8 dGRYamabukiMap_Porygon_HitParties[72] = {
-	#include <GRYamabukiMap/Porygon_HitParties.data.inc.c>
+/* WPAttributes @ 0x308 */
+WPAttributes dGRYamabukiMap_FushigibanaRazor_WeaponAttributes = {
+    (void *)dStageYamabukiFile3_AnimJoint_0x2A50,  /* data */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    120, 0, -120, 360,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    90,  /* angle            : 10 */
+    60,  /* knockback_scale  : 10 */
+    3,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    nSYAudioFGMKickM,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    30,  /* knockback_base   : 10 */
 };
-
-/* Raw data from file offset 0x01FC to 0x0244 (72 bytes) */
-u8 dGRYamabukiMap_Hitokage_ItemAttributes[72] = {
-	#include <GRYamabukiMap/Hitokage_ItemAttributes.data.inc.c>
-};
-
-/* Raw data from file offset 0x0244 to 0x0278 (52 bytes) */
-u8 dGRYamabukiMap_HitokageFlame_WeaponAttributes[52] = {
-	#include <GRYamabukiMap/HitokageFlame_WeaponAttributes.data.inc.c>
-};
-
-/* Raw data from file offset 0x0278 to 0x02C0 (72 bytes) */
-u8 dGRYamabukiMap_Fushigibana_ItemAttributes[72] = {
-	#include <GRYamabukiMap/Fushigibana_ItemAttributes.data.inc.c>
-};
-
-/* Raw data from file offset 0x02C0 to 0x0308 (72 bytes) */
-u8 dGRYamabukiMap_Fushigibana_HitParties[72] = {
-	#include <GRYamabukiMap/Fushigibana_HitParties.data.inc.c>
-};
-
-/* Raw data from file offset 0x0308 to 0x0340 (56 bytes) */
-u8 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes[56] = {
-	#include <GRYamabukiMap/FushigibanaRazor_WeaponAttributes.data.inc.c>
-};
+PAD(4);
 

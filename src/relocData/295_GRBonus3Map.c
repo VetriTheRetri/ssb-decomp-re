@@ -5,6 +5,8 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <it/ittypes.h>  // ITAttributes
+#include <gm/gmsound.h>  // gmFGMVoiceID
 
 /* MPGroundData (typed via tools/typeStageMap.py) */
 
@@ -15,6 +17,7 @@ extern MObjSub dGRBonus3File2_Layer1MObj_MObjSub[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[];
 extern u32 dGRBonus3File2_MPGeometryData_0x65A8[];
 extern u32 dGRBonus3File2_gap_0x0000[];
+extern u32 dGRBonus3File3_AnimJoint_0x0788[];
 MPGroundData dGRBonus3Map_gap_0x0000 =
 {
     /* gr_desc[4] */
@@ -62,13 +65,51 @@ MPGroundData dGRBonus3Map_gap_0x0000 =
     { 0, 0, 0 },  /* zoom_end */
 };
 
-/* Raw data from file offset 0x00A8 to 0x00F0 (72 bytes) */
-u8 dGRBonus3Map_TaruBomb_ItemAttributes[72] = {
-	#include <GRBonus3Map/TaruBomb_ItemAttributes.data.inc.c>
-};
+/* ITAttributes @ 0xA8 */
+ITAttributes dGRBonus3Map_TaruBomb_ItemAttributes[1] = {{
+	(void *)dGRBonus3File3_AnimJoint_0x0788,  /* data */
+	NULL,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	1, 0, 0, 1, 0,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 294, 316, 294 },  /* damage_coll_size */
+	236, 0, -236, 221,  /* map_coll top/center/bottom/width */
+	290,  /* size */
+	70,  /* angle */
+	20,  /* ks */
+	10,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	1,  /* cso */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* pri */
+	0,  /* cri */
+	0,  /* crf */
+	0,  /* hop */
+	1,  /* refl */
+	1,  /* shield */
+	90,  /* kb */
+	6,  /* type */
+	1,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
 
-/* Raw data from file offset 0x00F0 to 0x0110 (32 bytes) */
-u32 dGRBonus3Map_TaruBomb_AttackEvents[8] = {
-	#include <GRBonus3Map/TaruBomb_AttackEvents.data.inc.c>
+/* ITAttackEvent[4] @ 0xF0 */
+ITAttackEvent dGRBonus3Map_TaruBomb_AttackEvents[4] = {
+	{ 0, 361, 16, 350 },
+	{ 2, 361, 11, 250 },
+	{ 4, 361, 8, 150 },
+	{ 6, 361, 1, 0 },
 };
 

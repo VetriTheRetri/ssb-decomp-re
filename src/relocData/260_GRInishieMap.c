@@ -5,11 +5,17 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <it/ittypes.h>  // ITAttributes
 #include <gr/grtypes.h>  // GRAttackColl
+#include <gm/gmsound.h>  // gmFGMVoiceID
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageInishieFile2_Tex_0x02E0[];
 extern u8 dStageInishieFile2_Tex_0x12E8[];
+extern u32 dStageInishieFile3_AnimJoint_0x0A68[];
+extern u32 dStageInishieFile3_AnimJoint_0x0C30[];
+extern u32 dStageInishieFile3_AnimJoint_0x11F8[];
+extern u32 dStageInishieFile3_AnimJoint_0x13B0[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -82,13 +88,84 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
  * via llGRInishieMapPowerBlockGRAttackColl. */
 GRAttackColl dGRInishieMap_PowerBlock_GRAttackColl = { 1, 20, 90, 130, 0, 30, 0 };
 
-/* Raw data from file offset 0x00D8 to 0x0120 (72 bytes) */
-u8 dGRInishieMap_PowerBlock_ItemAttributes[72] = {
-	#include <GRInishieMap/PowerBlock_ItemAttributes.data.inc.c>
-};
+/* ITAttributes @ 0xD8 */
+ITAttributes dGRInishieMap_PowerBlock_ItemAttributes[1] = {{
+	(void *)dStageInishieFile3_AnimJoint_0x11F8,  /* data */
+	NULL,  /* p_mobjsubs */
+	(void *)dStageInishieFile3_AnimJoint_0x13B0,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 400, 300, 300 },  /* damage_coll_size */
+	110, 0, -110, 159,  /* map_coll top/center/bottom/width */
+	10,  /* size */
+	361,  /* angle */
+	100,  /* ks */
+	5,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	1,  /* cso */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* pri */
+	1,  /* cri */
+	0,  /* crf */
+	1,  /* hop */
+	0,  /* refl */
+	1,  /* shield */
+	20,  /* kb */
+	6,  /* type */
+	0,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
 
-/* Raw data from file offset 0x0120 to 0x0170 (80 bytes) */
-u8 dGRInishieMap_Pakkun_ItemAttributes[80] = {
-	#include <GRInishieMap/Pakkun_ItemAttributes.data.inc.c>
-};
+/* ITAttributes @ 0x120 */
+ITAttributes dGRInishieMap_Pakkun_ItemAttributes[1] = {{
+	(void *)dStageInishieFile3_AnimJoint_0x0C30,  /* data */
+	(void *)dStageInishieFile3_AnimJoint_0x0A68,  /* p_mobjsubs */
+	NULL,  /* anim_joints */
+	NULL,  /* p_matanim_joints */
+	0, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+	0, 0, 0,  /* attack_offset0 x/y/z */
+	0, 0, 0,  /* attack_offset1 x/y/z */
+	{ 0, 0, 0 },  /* damage_coll_offset */
+	{ 450, 490, 450 },  /* damage_coll_size */
+	110, 0, -110, 159,  /* map_coll top/center/bottom/width */
+	200,  /* size */
+	80,  /* angle */
+	80,  /* ks */
+	5,  /* dmg */
+	0,  /* elem */
+	0,  /* kw */
+	0,  /* sd */
+	1,  /* ac */
+	1,  /* cso */
+	nSYAudioFGMPunchL,  /* hit_sfx */
+	1,  /* pri */
+	1,  /* cri */
+	1,  /* crf */
+	0,  /* hop */
+	0,  /* refl */
+	1,  /* shield */
+	80,  /* kb */
+	6,  /* type */
+	1,  /* hitstatus */
+	0,  /* b6 */
+	0,  /* b7 */
+	nSYAudioFGMItemThrow,  /* drop */
+	nSYAudioFGMItemThrow,  /* throw */
+	nSYAudioFGMItemThrow,  /* smash */
+	100,  /* vel */
+	0,  /* spin */
+}};
+PAD(8);
 

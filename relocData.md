@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2071 / 2132** files at 100% (97.84% of bytes typed; 368,712 / 17,082,000 bytes still untyped across 61 files).
+Overall: **2075 / 2132** files at 100% (97.85% of bytes typed; 367,740 / 17,082,000 bytes still untyped across 57 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -47,15 +47,11 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 155 | StageInishieFile3 | 5136 | 5108 | 6 | 0.55% |
 | 154 | StageYosterFile3 | 1712 | 1700 | 2 | 0.70% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
-| 264 | GRYamabukiMap | 832 | 644 | 10 | 22.60% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
 | 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
-| 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
-| 262 | GRSectorMap | 304 | 116 | 2 | 61.84% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
-| 260 | GRInishieMap | 368 | 108 | 2 | 70.65% |
 | 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
 | 166 | IFCommonPlayer | 976 | 272 | 1 | 72.13% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
@@ -624,15 +620,25 @@ Recent round of structural work:
   files as hardcoded inline `MPItemWeights` (2026-05-15), and added
   `MPItemWeights` to `extractRelocInc.py` / `genRelocMaster.py` size
   tables. 10 map files reached 100%.
-- `GR*Map` stage-hazard `*_GRAttackColl` blocks (fids 257, 260) — typed
-  as `GRAttackColl` (7 × s32 hit params: kind/damage/angle/knockback/
-  element), confirmed by `grzebes.c` / `grinishie.c` casting
-  `llGR*Map*GRAttackColl` to `GRAttackColl *`. 257's block is
-  `GRAttackColl` + 8 B pad; 260's is exactly one. fid 257 reached 100%.
-  Remaining hazard blocks are identified but not yet typed: `*_Item-`
-  `Attributes` → `ITAttributes`, `*_WeaponAttributes` → `WPAttributes`
-  (both bitfield-packed structs — need per-block field initializers),
-  `*_HitParties` → `ITMonsterEvent`, in fids 260/262/264/295.
+- `GR*Map` stage-hazard data blocks (fids 257/260/262/264/295) — every
+  remaining hazard `u8`/`u32` block typed to its real struct (2026-05-16),
+  identified from the `gr*.c` / `it*.c` source that loads each:
+  `*_GRAttackColl` → `GRAttackColl` (7×s32), `*_ItemAttributes` →
+  `ITAttributes` (8 blocks), `*_WeaponAttributes` → `WPAttributes`
+  (4 blocks), `*_HitParties` → `ITMonsterEvent[2]`, `*_AttackEvents` →
+  `ITAttackEvent[4]`. The `ITAttributes`/`ITMonsterEvent`/`ITAttackEvent`
+  bitfield layouts were verified by round-tripping against the known-good
+  `ITCommonData` initializers (`ITMonsterEvent`/`ITAttackEvent` pack
+  `timer`+`angle:10`+`damage:8` into the first word — sizeof 36 / 8).
+  `GRAttackColl` (0x1C) added to the tool size tables. FGM-id fields
+  (`hit_sfx`, `drop`/`throw`/`smash`, `fgm_id`, WP `sfx`) use the
+  region-aware `gmFGMVoiceID` enum (`nSYAudioFGMPunchL` etc.) — a single
+  name yields the correct US/JP ordinal, so no `#if` guard is needed for
+  the JP build's divergent sound ids. The chain-encoded `data` /
+  `anim_joints` / `p_mobjsubs` pointer fields are written as `extern`
+  block-name references to the target file's `AnimJoint` blocks (e.g.
+  `dStageYamabukiFile3_AnimJoint_0x0360`) rather than raw chain hex.
+  **All 41 GR Map files (fids 255–295) now at 100%.**
 - `ITCommonData` (fid 251, 3,392 B) — item attribute + weapon attribute
   pool, now **fully typed**: 34 `ITAttributes` struct initializers (33
   matching + 1 Sawamura with IDO bitfield bug comment), 6

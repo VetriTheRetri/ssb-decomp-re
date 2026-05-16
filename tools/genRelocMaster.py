@@ -192,6 +192,7 @@ def compute_data_c_size(data_c_path, search_paths=()):
     KNOWN_STRUCT_SIZES = {
         'MPGroundData': 0xA8,  # 168 bytes per IDO sizeof
         'MPItemWeights': 20,   # u8 values[20]
+        'GRAttackColl': 28,    # 7 x s32
     }
     for type_name, type_size in KNOWN_STRUCT_SIZES.items():
         # Match `<TypeName> <ident> = {`. Brace-balanced body skipping is

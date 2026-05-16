@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2070 / 2132** files at 100% (97.84% of bytes typed; 368,820 / 17,082,000 bytes still untyped across 62 files).
+Overall: **2071 / 2132** files at 100% (97.84% of bytes typed; 368,712 / 17,082,000 bytes still untyped across 61 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -52,16 +52,15 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
-| 260 | GRInishieMap | 368 | 180 | 3 | 51.09% |
 | 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
 | 262 | GRSectorMap | 304 | 116 | 2 | 61.84% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
+| 260 | GRInishieMap | 368 | 108 | 2 | 70.65% |
 | 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
 | 166 | IFCommonPlayer | 976 | 272 | 1 | 72.13% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
-| 257 | GRZebesMap | 224 | 36 | 1 | 83.93% |
 | 102 | StagePupupuBeta2 | 10496 | 1412 | 4 | 86.55% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
@@ -624,10 +623,16 @@ Recent round of structural work:
   `values[20]`, retyped all 131 `item_weights` declarations across 13
   files as hardcoded inline `MPItemWeights` (2026-05-15), and added
   `MPItemWeights` to `extractRelocInc.py` / `genRelocMaster.py` size
-  tables. 10 map files reached 100%. Still untyped: the stage-hazard
-  `*_ItemAttributes` (`ITAttributes`), `*_WeaponAttributes`
-  (`WPAttributes`), `*_GRAttackColl`, `*_HitParties` blocks in fids
-  257/260/262/264/295 — each needs a full struct-field initializer.
+  tables. 10 map files reached 100%.
+- `GR*Map` stage-hazard `*_GRAttackColl` blocks (fids 257, 260) — typed
+  as `GRAttackColl` (7 × s32 hit params: kind/damage/angle/knockback/
+  element), confirmed by `grzebes.c` / `grinishie.c` casting
+  `llGR*Map*GRAttackColl` to `GRAttackColl *`. 257's block is
+  `GRAttackColl` + 8 B pad; 260's is exactly one. fid 257 reached 100%.
+  Remaining hazard blocks are identified but not yet typed: `*_Item-`
+  `Attributes` → `ITAttributes`, `*_WeaponAttributes` → `WPAttributes`
+  (both bitfield-packed structs — need per-block field initializers),
+  `*_HitParties` → `ITMonsterEvent`, in fids 260/262/264/295.
 - `ITCommonData` (fid 251, 3,392 B) — item attribute + weapon attribute
   pool, now **fully typed**: 34 `ITAttributes` struct initializers (33
   matching + 1 Sawamura with IDO bitfield bug comment), 6

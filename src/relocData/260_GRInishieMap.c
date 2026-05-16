@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <gr/grtypes.h>  // GRAttackColl
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageInishieFile2_Tex_0x02E0[];
@@ -77,10 +78,9 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
     { 0, 0, 15000 },  /* zoom_end */
 };
 
-/* Raw data from file offset 0x00BC to 0x00D8 (28 bytes) */
-u8 dGRInishieMap_PowerBlock_GRAttackColl[28] = {
-	#include <GRInishieMap/PowerBlock_GRAttackColl.data.inc.c>
-};
+/* GRAttackColl @ 0xBC — POW-block hazard hit params; read by grinishie.c
+ * via llGRInishieMapPowerBlockGRAttackColl. */
+GRAttackColl dGRInishieMap_PowerBlock_GRAttackColl = { 1, 20, 90, 130, 0, 30, 0 };
 
 /* Raw data from file offset 0x00D8 to 0x0120 (72 bytes) */
 u8 dGRInishieMap_PowerBlock_ItemAttributes[72] = {

@@ -205,7 +205,7 @@ _SUPPORTED_DECL_TYPES = frozenset({
     "Sprite", "MPGroundData", "MPGeometryData", "MPItemWeights",
     "MPVertexData", "MPVertexLinks", "MPLineInfo", "MPMapObjData",
     "FTAttributes", "FTThrowHitDesc",
-    "WPAttributes", "ITAttributes",
+    "WPAttributes", "ITAttributes", "GRAttackColl",
 })
 
 
@@ -292,6 +292,7 @@ _FIXED_TYPE_SIZES = {
     "FTAttributes": 0x488,       # from src/ft/fttypes.h, matches stock main sources
     "FTThrowHitDesc": 0x1C,      # 7 × s32, src/ft/fttypes.h
     "WPAttributes": 52,          # from src/wp/wptypes.h (0x34 bytes)
+    "GRAttackColl": 0x1C,        # 7 × s32, src/gr/grtypes.h
     "ITAttributes": 72,          # from src/it/ittypes.h (0x48 bytes)
 }
 

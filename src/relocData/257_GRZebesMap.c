@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <gr/grtypes.h>  // GRAttackColl
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -70,8 +71,8 @@ MPGroundData dGRZebesMap_MapHeader_0x0014 =
     { 0, 0, 15000 },  /* zoom_end */
 };
 
-/* Raw data from file offset 0x00BC to 0x00E0 (36 bytes) */
-u8 dGRZebesMap_Acid_GRAttackColl[36] = {
-	#include <GRZebesMap/Acid_GRAttackColl.data.inc.c>
-};
+/* GRAttackColl @ 0xBC — acid-hazard hit params; read by grzebes.c via
+ * llGRZebesMapAcidGRAttackColl. 8 B trailing pad. */
+GRAttackColl dGRZebesMap_Acid_GRAttackColl = { 0, 16, 80, 130, 0, 30, 1 };
+PAD(8);
 

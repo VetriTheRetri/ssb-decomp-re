@@ -10,12 +10,28 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[];
 extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
+extern AObjEvent32 *dITCommonObject_Star_Item_matanimjoints_0x1658[];
+extern AObjEvent32 *dITCommonObject_FFlower_Item_matanimjoints_0x4788[];
+extern AObjEvent32 *dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE67C[];
+extern AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[];
+extern u32 dITCommonObject_Dogas_Item_data_remainder_sub_0xC[];
+extern u32 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0_sub_0xC[];
+extern u32 dITCommonObject_Pippi_Item_data_remainder_sub_0x8[];
+extern AObjEvent32 *dITCommonObject_Starmie_Item_data_remainder_sub_0x124[];
+extern AObjEvent32 *dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0x5C[];
+extern u32 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x14[];
+extern AObjEvent32 *dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x178[];
+extern u32 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC[];
+extern u16 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4[];
+extern u32 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14[];
+extern u32 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14[];
+extern u32 dITCommonObject_Spear_Item_data_remainder_sub_0x14[];
 
 extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
-extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[];
+extern u16 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[];
 extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x68[];
 extern u16 dITCommonObject_StarRod_Weapon_data_post_0x70[];
-extern u8 dITCommonObject_StarRod_Weapon_data_post_0x98[];
+extern u16 dITCommonObject_StarRod_Weapon_data_post_0x98[];
 extern u8 dITCommonObject_Tex_0x55C8[];
 extern u8 dITCommonObject_Tex_0x57D0[];
 extern u8 dITCommonObject_Tex_0x59D8[];
@@ -147,13 +163,11 @@ DObjDesc dITCommonObject_Tomato_Item_data_DObjDesc[3] = {
 };
 
 /* @ 0x0B34, 20 bytes (raw gap) */
-u8 dITCommonObject_Tomato_Item_data_pool_gap_0x0B34[0x14] = {
-	#include <ITCommonObject/dITCommonObject_Tomato_Item_data_pool_gap_0x0B34.data.inc.c>
-};
+PAD(20);
 
 /* @ 0x0B48, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0B48[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x0B48.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_LUT_0x0B48.palette.inc.c>
 };
 
 /* @ 0x0B68, 1040 bytes (raw gap) */
@@ -173,12 +187,12 @@ u8 dITCommonObject_Tex_0x0D78[512] = {
 
 /* @ 0x0F78, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x0F78[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x0F78.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x0F78.vtx.inc.c>
 };
 
 /* @ 0x0FB8, 64 bytes (4 vertices) */
 Vtx dITCommonObject_Vtx_0x0FB8[4] = {
-	#include <ITCommonObject/dITCommonObject_Vtx_0x0FB8.data.inc.c>
+	#include <ITCommonObject/dITCommonObject_Vtx_0x0FB8.vtx.inc.c>
 };
 
 /* @ 0x0FF8, 336 bytes — 42 Gfx commands (Tomato display list, also referenced by Heart) */
@@ -201,19 +215,19 @@ DObjDesc dITCommonObject_Heart_Item_data_DObjDesc[3] = {
 
 /* @ 0x11DC, 92 bytes (raw gap) */
 /* gap sub-block @ 0x11DC (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC[12] = {
-	#include <ITCommonObject/gap_0x11DC.data.inc.c>
-};
+PAD(12);
 
 /* gap sub-block @ 0x11E8 (was gap+0xC, 40 bytes) */
-u8 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0xC[40] = {
-	#include <ITCommonObject/gap_0x11DC_sub_0xC.data.inc.c>
+u16 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0xC[16] = {
+	#include <ITCommonObject/gap_0x11DC_sub_0xC.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x1210 (was gap+0x34, 40 bytes) */
-u8 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34[40] = {
-	#include <ITCommonObject/gap_0x11DC_sub_0x34.data.inc.c>
+u16 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34[16] = {
+	#include <ITCommonObject/gap_0x11DC_sub_0x34.palette.inc.c>
 };
+PAD(8);
 
 /* @ 0x1238, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x1238[16] = {
@@ -250,7 +264,7 @@ MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x18[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)0x00000000,
+		NULL,
 		0x0080, 0x0007, 0x0010, 0x0010,
 		0,
 		0.3804999887943268f, -0.12200000137090683f,
@@ -280,7 +294,7 @@ MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x90[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)0x00000000,
+		NULL,
 		0x005E, 0x0005, 0x0010, 0x0010,
 		0,
 		0.29670000076293945f, 0.3400000035762787f,
@@ -338,10 +352,14 @@ DObjDesc dITCommonObject_Star_Item_data_DObjDesc[3] = {
 /* @ 0x15E4, 12 bytes (vertex / DL / texture pool) */
 PAD(12);
 
-/* @ 0x015F0, 808 bytes */
-u32 dITCommonObject_Star_Item_matanimjoints[202] = {
-	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x68),
+/* @ 0x015F0, 8 bytes — Star item matanim joint table (per-MObj AObjEvent32** entries) */
+AObjEvent32 **dITCommonObject_Star_Item_matanimjoints[2] = {
+	NULL,
+	(AObjEvent32 **)dITCommonObject_Star_Item_matanimjoints_0x1658,
+};
+
+/* @ 0x015F8, 48 bytes — AObjEvent32 matanim script */
+u32 dITCommonObject_Star_Item_matanimjoints_0x15F8[12] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x200, 2),
@@ -353,7 +371,11 @@ u32 dITCommonObject_Star_Item_matanimjoints[202] = {
 	aobjEvent32SetValAfterBlock(0x200, 2),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x8),
+	(u32)(dITCommonObject_Star_Item_matanimjoints_0x15F8),
+};
+
+/* @ 0x01628, 48 bytes — AObjEvent32 matanim script */
+u32 dITCommonObject_Star_Item_matanimjoints_0x1628[12] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x200, 2),
@@ -365,183 +387,53 @@ u32 dITCommonObject_Star_Item_matanimjoints[202] = {
 	aobjEvent32SetValAfterBlock(0x200, 2),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x38),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x8),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x38),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 4369),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x022, 4642),
-	aobjEvent32End(),
-	aobjEvent32SetVal0RateBlock(0x244, 8738),
-	    0x00000001,  /* 1.401298464324817e-45f */
-	    0x12233333,  /* 5.149683892986268e-28f */
-	    0x00000011,  /* 2.382207389352189e-44f */
-	aobjEvent32Cmd17(0x066, 13380),
-	    0x00000112,  /* 3.839557792249999e-43f */
-	    0x33344455,  /* 4.197166347807979e-08f */
-	aobjEvent32EndRaw(0x000, 4387),
-	    0x3444557C,
-	aobjEvent32EndRaw(0x000, 4643),
-	    0x445566BF,
-	aobjEvent32EndRaw(0x002, 4659),
-	    0x455668FF,
-	aobjEvent32EndRaw(0x002, 8756),
-	    0x45667AFF,
-	aobjEvent32EndRaw(0x022, 9012),
-	    0x55677CFF,
-	aobjEvent32EndRaw(0x024, 9028),
-	    0x56778DFF,
-	aobjEvent32EndRaw(0x024, 9029),
-	    0x56788EFF,
-	aobjEvent32EndRaw(0x024, 13125),
-	    0x56788FFF,
-	aobjEvent32EndRaw(0x024, 13125),
-	    0x66789FFF,
-	aobjEvent32EndRaw(0x01B, 32498),
-	aobjEvent32EndRaw(0x090, 0),
-	aobjEvent32End(),
-	aobjEvent32SetValAfterBlock(0x2D0, 18176),
-	    0x0004FEBA,  /* 4.587206574905862e-40f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0xA7A50000,  /* -4.579669976578771e-15f */
-	aobjEvent32EndRaw(0x01D, 32498),
-	    0xFFB90000,
-	aobjEvent32End(),
-	aobjEvent32SetValAfter(0x0D1, 14592),
-	    0xFFF0FEF2,  /* nanf */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x831A0000,  /* -4.525653250665807e-37f */
-	    0xFFF5FE5E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x81020000,
-	    0xFFF7FEDE,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x81030000,
-	aobjEvent32EndRaw(0x013, 32478),
-	    0xFFF00000,
-	aobjEvent32End(),
-	    0x34028C00,
-	aobjEvent32EndRaw(0x013, 32478),
-	aobjEvent32EndRaw(0x020, 0),
-	aobjEvent32End(),
-	    0x33027500,
-	aobjEvent32EndRaw(0x013, 32350),
-	aobjEvent32EndRaw(0x026, 0),
-	aobjEvent32End(),
-	    0xE7BC6800,
-	aobjEvent32EndRaw(0x013, 32350),
-	    0xFFED0000,
-	aobjEvent32End(),
-	    0xE8BC9700,
-	    0xFFF5FE5E,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x102, 0),
-	aobjEvent32EndRaw(0x000, 693),
-	aobjEvent32EndRaw(0x118, 0),
-	aobjEvent32Wait(1024),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x001, 32764),
-	aobjEvent32EndRaw(0x118, 0),
-	aobjEvent32Wait(236),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x001, 32764),
-	    0xFF740000,
-	aobjEvent32EndRaw(0x000, 236),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x000, 693),
-	    0xFF740000,
-	aobjEvent32EndRaw(0x000, 1024),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xDB0A0000,
-	    0x66000000,
-	    0xDB0A0004,
-	    0x66000000,
-	    0xDB0A0018,
-	aobjEvent32Cmd12(0x200, 0),
-	    0xDB0A001C,
-	aobjEvent32Cmd12(0x200, 0),
-	    0xFCFFFFFF,
-	    0xFFFE7D3E,
-	    0xD7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x201, 12310),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0xF8),
-	aobjEvent32SetValBlock(0x028, 4624),
-	    0x000E1012,  /* 1.2914618880941093e-39f */
-	    0x060C0E12,  /* 2.6341410691455524e-35f */
-	aobjEvent32EndRaw(0x024, 2572),
-	aobjEvent32SetValBlock(0x014, 4616),
-	    0x000A0810,  /* 9.212472416102785e-40f */
-	    0x06100E0A,  /* 2.709370411710775e-35f */
-	aobjEvent32EndRaw(0x00C, 1026),
-	aobjEvent32SetValBlock(0x004, 1024),
-	    0x00000406,  /* 1.4433374182545616e-42f */
-	aobjEvent32WaitRaw(0x204, 6),
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xFC30FE61,
-	    0x55FEF379,
-	    0xFA000000,
-	    0xFFFFFFFF,
-	    0xFB000000,
-	    0xFF0080FF,
-	    0xF9000000,
-	aobjEvent32EndRaw(0x000, 8),
-	    0xF5900000,
-	aobjEvent32SetValBlock(0x202, 64),
-	    0xF5800200,  /* -3.245383606990553e+32f */
-	    0x000D0340,  /* 1.195027330376204e-39f */
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xF2000000,
-	aobjEvent32EndRaw(0x00F, 16508),
-	    0xFD900000,
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x78),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	aobjEvent32SetValBlock(0x207, 30720),
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	    0x00000000,  /* 0.0f */
-	    0xD9FDFBFB,  /* -8936278070394880.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x1A8),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x004, 1028),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x1E8),
-	aobjEvent32EndRaw(0x000, 4),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 1),
-	(u32)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x260),
-	aobjEvent32EndRaw(0x000, 4),
-	aobjEvent32End(),
+	(u32)(dITCommonObject_Star_Item_matanimjoints_0x1628),
+};
+
+/* @ 0x01658, 8 bytes — Star item matanim joint table (per-track AObjEvent32* entries) */
+AObjEvent32 *dITCommonObject_Star_Item_matanimjoints_0x1658[2] = {
+	(AObjEvent32 *)dITCommonObject_Star_Item_matanimjoints_0x15F8,
+	(AObjEvent32 *)dITCommonObject_Star_Item_matanimjoints_0x1628,
+};
+
+/* @ 0x01660, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x01668, 128 bytes — Sword item texture */
+u8 dITCommonObject_Tex_0x1668[128] = {
+	#include <ITCommonObject/dITCommonObject_Tex_0x1668.tex.inc.c>
+};
+
+/* @ 0x016E8, 176 bytes (11 vertices) */
+Vtx dITCommonObject_Vtx_0x16E8[11] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x16E8.vtx.inc.c>
+};
+
+/* @ 0x01798, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x1798[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1798.vtx.inc.c>
+};
+
+/* @ 0x017D8, 120 bytes (15 Gfx commands) — Sword joint 1 DL */
+Gfx dITCommonObject_Gfx_0x17D8[15] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x17D8.dl.inc.c>
+};
+
+/* @ 0x01850, 168 bytes (21 Gfx commands) — Sword joint 2 DL */
+Gfx dITCommonObject_Gfx_0x1850[21] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1850.dl.inc.c>
+};
+
+/* @ 0x018F8, 16 bytes — Sword joint 1 DL links */
+DObjDLLink dITCommonObject_Sword_Item_DLLink_0x18F8[2] = {
+	{ 0, dITCommonObject_Gfx_0x17D8 },
+	{ 4, NULL },
+};
+
+/* @ 0x01908, 16 bytes — Sword joint 2 DL links */
+DObjDLLink dITCommonObject_Sword_Item_DLLink_0x1908[2] = {
+	{ 1, dITCommonObject_Gfx_0x1850 },
+	{ 4, NULL },
 };
 
 /* @ 0x01918, 1256 bytes */
@@ -658,19 +550,39 @@ DObjDesc dITCommonObject_Harisen_Item_data_DObjDesc[4] = {
 
 /* @ 0x2248, 128 bytes (raw gap) */
 /* gap sub-block @ 0x2248 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248[20] = {
-	#include <ITCommonObject/gap_0x2248.data.inc.c>
+AObjEvent32 *dITCommonObject_Harisen_Item_data_remainder_gap_0x2248[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x14,
 };
 
 /* gap sub-block @ 0x225C (was gap+0x14, 32 bytes) */
-u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x14[32] = {
+u32 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x14[8] = {
 	#include <ITCommonObject/gap_0x2248_sub_0x14.data.inc.c>
 };
 
 /* gap sub-block @ 0x227C (was gap+0x34, 76 bytes) */
-u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x34[76] = {
-	#include <ITCommonObject/gap_0x2248_sub_0x34.data.inc.c>
+u32 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x34[16] = {
+	aobjEvent32SetVal0RateBlock(0x200, 0),
+	    0x40200000,  /* 2.5f */
+	aobjEvent32SetValRateBlock(0x200, 1),
+	    0x3DCCCCCD,  /* 0.10000000149011612f */
+	    0xBE2932A2,  /* -0.16523221135139465f */
+	aobjEvent32SetVal0RateBlock(0x200, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x200, 1),
+	    0x3DCCCCCD,  /* 0.10000000149011612f */
+	    0x3E974EE0,  /* 0.29552364349365234f */
+	aobjEvent32SetValRateBlock(0x200, 2),
+	    0x3FA00000,  /* 1.25f */
+	    0x3E03A83B,  /* 0.12857143580913544f */
+	aobjEvent32SetVal0RateBlock(0x200, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };
+PAD(12);
 
 /* @ 0x22C8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x22C8[16] = {
@@ -773,7 +685,7 @@ MObjSub dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230_sub_0x20[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0020,
@@ -817,23 +729,52 @@ DObjDesc dITCommonObject_BombHei_Item_data_DObjDesc[3] = {
 
 /* @ 0x347C, 396 bytes (raw gap) */
 /* gap sub-block @ 0x347C (was gap+0x0, 4 bytes) */
-u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C[4] = {
-	#include <ITCommonObject/gap_0x347C.data.inc.c>
+PAD(4);
+
+/* @ 0x3480, 64 bytes (4 vertices) */
+Vtx dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x4[4] = {
+	#include <ITCommonObject/dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x4.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x3480 (was gap+0x4, 312 bytes) */
-u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x4[312] = {
-	#include <ITCommonObject/gap_0x347C_sub_0x4.data.inc.c>
+/* @ 0x34C0, 232 bytes (29 Gfx commands) — BombHei item DL */
+Gfx dITCommonObject_Gfx_0x34C0[29] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x34C0.dl.inc.c>
+};
+
+/* @ 0x35A8, 16 bytes — DL-fragment link table */
+void *dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x12C[4] = {
+	NULL,
+	NULL,
+	NULL,
+	(void *)dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x178,
 };
 
 /* gap sub-block @ 0x35B8 (was gap+0x13C, 60 bytes) */
-u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x13C[60] = {
-	#include <ITCommonObject/gap_0x347C_sub_0x13C.data.inc.c>
+u32 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x13C[15] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 7),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 7),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 7),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 7),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x001, 7),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32Wait(14),
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x13C,
 };
 
 /* gap sub-block @ 0x35F4 (was gap+0x178, 20 bytes) */
-u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x178[20] = {
-	#include <ITCommonObject/gap_0x347C_sub_0x178.data.inc.c>
+AObjEvent32 *dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x178[5] = {
+	(AObjEvent32 *)dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x13C,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* @ 0x3608, 32 bytes (16-color RGBA5551 palette) */
@@ -951,9 +892,7 @@ DObjDesc dITCommonObject_LGun_Item_data_DObjDesc[3] = {
 
 /* @ 0x3FD4, 212 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0x3FD4 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_LGun_Item_data_remainder[20] = {
-	#include <ITCommonObject/dITCommonObject_LGun_Item_data_remainder.data.inc.c>
-};
+PAD(20);
 
 /* gap sub-block @ 0x3FE8 (was gap+0x14, 128 bytes) */
 /* @tex fmt=I4 dim=16x16 */
@@ -976,9 +915,10 @@ u8 dITCommonObject_LGunAmmo_Weapon_data_post[64] = {
 	#include <ITCommonObject/LGunAmmo_Weapon_data_post.data.inc.c>
 };
 /* split-self chunk @ +0x40 (40 bytes, abs 0x4190) */
-u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[40] = {
-	#include <ITCommonObject/LGunAmmo_Weapon_data_post_0x40.data.inc.c>
+u16 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[16] = {
+	#include <ITCommonObject/LGunAmmo_Weapon_data_post_0x40.palette.inc.c>
 };
+PAD(8);
 /* split-self chunk @ +0x68 (464 bytes, abs 0x41B8) */
 u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x68[464] = {
 	#include <ITCommonObject/LGunAmmo_Weapon_data_post_0x68.data.inc.c>
@@ -1005,7 +945,7 @@ MObjSub dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0x18[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)0x00000000,
+		NULL,
 		0x0020, 0x0001, 0x0020, 0x0020,
 		0,
 		0.012500000186264515f, -0.02500000037252903f,
@@ -1069,264 +1009,84 @@ DObjDesc dITCommonObject_FFlower_Item_data_DObjDesc[4] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x04760, 1024 bytes */
-u32 dITCommonObject_FFlower_Item_matanimjoints[256] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x28),
+/* @ 0x04760, 12 bytes — FFlower item matanim joint table (per-MObj AObjEvent32** entries) */
+AObjEvent32 *dITCommonObject_FFlower_Item_matanimjoints[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_FFlower_Item_matanimjoints_0x4788,
+};
+
+/* @ 0x0476C, 28 bytes — AObjEvent32 matanim script */
+u32 dITCommonObject_FFlower_Item_matanimjoints_0x476C[7] = {
 	aobjEvent32SetValAfterBlock(0x200, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfter(0x200, 3),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32Wait(6),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0xC),
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0xC),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x003, 31295),
-	    0xFC3FFFFF,
-	aobjEvent32EndRaw(0x00E, 15),
-	aobjEvent32EndRaw(0x02E, 29),
-	aobjEvent32EndRaw(0x05A, 51),
-	aobjEvent32EndRaw(0x072, 63),
-	aobjEvent32Cmd12(0x1EE, 10611),
-	    0x63256325,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x003, 31809),
-	    0xFCC5FD4B,
-	    0xFDCFFC00,
-	    0xFE55FED9,
-	    0xF71DF8C1,
-	    0xFA01FB01,
-	    0xFC01FD81,
-	    0xFEC1FFC1,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32SetVal0RateBlock(0x246, 13106),
-	    0x11233332,  /* 1.2874208528759454e-28f */
-	    0x21123333,  /* 4.953448572145572e-19f */
-	    0x21123333,  /* 4.953448572145572e-19f */
-	    0x32112333,  /* 8.448114208192692e-09f */
-	    0x32112333,
-	    0x33211233,
-	    0x33211233,
-	    0x33321123,
-	    0x33321123,
-	    0x33332112,
-	    0x33332112,
-	aobjEvent32Cmd17(0x266, 12817),
-	    0x23333211,  /* 9.714211417656357e-18f */
-	    0x12333321,  /* 5.654546205642966e-28f */
-	    0x12333321,  /* 5.654546205642966e-28f */
-	aobjEvent32SetVal0RateBlock(0x246, 13106),
-	    0x11233332,  /* 1.2874208528759454e-28f */
-	    0x21123333,  /* 4.953448572145572e-19f */
-	    0x21123333,  /* 4.953448572145572e-19f */
-	    0x32112333,  /* 8.448114208192692e-09f */
-	    0x32112333,
-	    0x33211233,
-	    0x33211233,
-	    0x33321123,
-	    0x33321123,
-	    0x33332112,
-	    0x33332112,
-	aobjEvent32Cmd17(0x266, 12817),
-	    0x23333211,  /* 9.714211417656357e-18f */
-	    0x12333321,  /* 5.654546205642966e-28f */
-	    0x12333321,  /* 5.654546205642966e-28f */
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x55555555,
-	aobjEvent32End(),
-	    0x55511455,
-	aobjEvent32End(),
-	    0x55513115,
-	aobjEvent32End(),
-	    0x55513342,
-	aobjEvent32End(),
-	    0x55524466,
-	aobjEvent32End(),
-	    0x55524667,
-	aobjEvent32End(),
-	    0x55416678,
-	aobjEvent32End(),
-	    0x54146788,
-	aobjEvent32End(),
-	    0x51346788,
-	aobjEvent32End(),
-	    0x51346778,
-	aobjEvent32End(),
-	    0x55222477,
-	aobjEvent32End(),
-	    0x55555246,
-	aobjEvent32End(),
-	    0x55555424,
-	aobjEvent32End(),
-	    0x55555523,
-	aobjEvent32End(),
-	    0x55555551,
-	aobjEvent32End(),
-	    0x55555555,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x034, 38),
-	aobjEvent32End(),
-	aobjEvent32JumpCmd(0x000, 1024),
-	    (u32)0x7F000000,
-	aobjEvent32EndRaw(0x035, 32565),
-	aobjEvent32End(),
-	aobjEvent32JumpCmd(0x000, 0),
-	    (u32)0x7F000000,
-	aobjEvent32EndRaw(0x034, 38),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 1024),
-	    0x7F000000,
-	    0xFFF30026,
-	aobjEvent32EndRaw(0x02E, 0),
-	aobjEvent32EndRaw(0x28A, 1024),
-	    0xC1006E00,
-	aobjEvent32EndRaw(0x035, 32565),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x7F000000,
-	    0xFFF3FF35,
-	aobjEvent32EndRaw(0x02E, 0),
-	aobjEvent32EndRaw(0x28A, 0),
-	    0xC1006E00,
-	    0xFFF3FF35,
-	    0xFFE90000,
-	aobjEvent32EndRaw(0x174, 0),
-	    0xC0009200,
-	    0xFFF30026,
-	    0xFFE90000,
-	aobjEvent32EndRaw(0x174, 1024),
-	    0xC0009200,
-	aobjEvent32EndRaw(0x0B5, 32678),
-	aobjEvent32End(),
-	aobjEvent32JumpCmd(0x000, 0),
-	    (u32)0xFFFFFF00,
-	    0xFFA6FFA6,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFFA6005A,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 512),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x0B4, 90),
-	aobjEvent32End(),
-	aobjEvent32JumpCmd(0x000, 512),
-	    (u32)0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xDB0A0000,
-	    0xFFFFFF00,
-	    0xDB0A0004,
-	    0xFFFFFF00,
-	    0xDB0A0018,
-	    0xB3B3B300,
-	    0xDB0A001C,
-	    0xB3B3B300,
-	    0xE3001001,
-	aobjEvent32EndRaw(0x001, 0),
-	    0xFC127E24,
-	    0xFFFFF3F9,
-	    0xE8000000,
-	aobjEvent32End(),
-	    0xF5000100,
-	aobjEvent32WaitRaw(0x200, 0),
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xF9000000,
-	aobjEvent32End(),
-	    0xDE000000,
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x2B8),
-	    0xDF000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x202, 64),
-	    0xF5400200,  /* -2.4339881876413433e+32f */
-	    0x00090040,  /* 8.266091485236377e-40f */
-	    0xFD100000,
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x38),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x007, 16508),
-	    0xFD500000,
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x88),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x0703F800,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x201, 16),
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x190),
-	aobjEvent32SetValBlock(0x01C, 3082),
-	    0x00080C0E,  /* 7.39008376324836e-40f */
-	    0x06060E0A,  /* 2.521291315579209e-35f */
-	    0x0004080E,  /* 3.702314620654026e-40f */
-	aobjEvent32SetValBlock(0x00C, 2562),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xDF000000,  /* -9.223372036854776e+18f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12408),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x202, 48),
-	    0xF5400200,  /* -2.4339881876413433e+32f */
-	    0x00090330,  /* 8.2766292496881e-40f */
-	    0xFD100000,
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x60),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x007, 16444),
-	    0xFD500000,
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x110),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	aobjEvent32SetValBlock(0x207, 30720),
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	    0x00000000,  /* 0.0f */
-	    0xD9DDFBFF,  /* -7810380311035904.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x210),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 1024),
-	    0xE3001001,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8312),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)(dITCommonObject_FFlower_Item_matanimjoints_0x476C),
+};
+
+/* @ 0x04788, 4 bytes — FFlower item matanim joint table (per-track AObjEvent32* entries) */
+AObjEvent32 *dITCommonObject_FFlower_Item_matanimjoints_0x4788[1] = {
+	(AObjEvent32 *)dITCommonObject_FFlower_Item_matanimjoints_0x476C,
+};
+
+/* @ 0x0478C, 12 bytes (raw gap) */
+PAD(12);
+
+/* @ 0x04798, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x4798[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x4798.palette.inc.c>
+};
+
+/* @ 0x047B8, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x047C0, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x47C0[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x47C0.palette.inc.c>
+};
+
+/* @ 0x047E0, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x047E8, 128 bytes — StarRod item texture */
+u8 dITCommonObject_Tex_0x47E8[128] = {
+	#include <ITCommonObject/dITCommonObject_Tex_0x47E8.tex.inc.c>
+};
+
+/* @ 0x04868, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x04870, 128 bytes — StarRod item texture */
+u8 dITCommonObject_Tex_0x4870[128] = {
+	#include <ITCommonObject/dITCommonObject_Tex_0x4870.tex.inc.c>
+};
+
+/* @ 0x048F0, 128 bytes (8 vertices) */
+Vtx dITCommonObject_Vtx_0x48F0[8] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x48F0.vtx.inc.c>
+};
+
+/* @ 0x04970, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x4970[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x4970.vtx.inc.c>
+};
+
+/* @ 0x049B0, 104 bytes (13 Gfx commands) — StarRod joint 1 DL */
+Gfx dITCommonObject_Gfx_0x49B0[13] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x49B0.dl.inc.c>
+};
+
+/* @ 0x04A18, 136 bytes (17 Gfx commands) — StarRod shared DL */
+Gfx dITCommonObject_Gfx_0x4A18[17] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4A18.dl.inc.c>
+};
+
+/* @ 0x04AA0, 192 bytes (24 Gfx commands) — StarRod joint 2 DL */
+Gfx dITCommonObject_Gfx_0x4AA0[24] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4AA0.dl.inc.c>
 };
 
 /* @ 0x04B60, 2296 bytes */
@@ -1339,9 +1099,7 @@ DObjDesc dITCommonObject_StarRod_Item_data_DObjDesc[4] = {
 
 /* @ 0x4C10, 2120 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0x4C10 (was gap+0x0, 8 bytes) */
-u8 dITCommonObject_StarRod_Item_data_remainder[8] = {
-	#include <ITCommonObject/dITCommonObject_StarRod_Item_data_remainder.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x4C18 (was gap+0x8, 2048 bytes) */
 /* @tex fmt=I8 dim=32x64 */
@@ -1370,9 +1128,10 @@ u16 dITCommonObject_StarRod_Weapon_data_post_0x70[16] = {
 
 PAD(8);
 /* split-self chunk @ +0x98 (40 bytes, abs 0x55A0) */
-u8 dITCommonObject_StarRod_Weapon_data_post_0x98[40] = {
-	#include <ITCommonObject/StarRod_Weapon_data_post_0x98.data.inc.c>
+u16 dITCommonObject_StarRod_Weapon_data_post_0x98[16] = {
+	#include <ITCommonObject/StarRod_Weapon_data_post_0x98.palette.inc.c>
 };
+PAD(8);
 /* @tex fmt=CI4 dim=32x32 */
 u8 dITCommonObject_Tex_0x55C8[520] = {
 	#include <ITCommonObject/Tex_0x55C8.tex.inc.c>
@@ -1467,23 +1226,43 @@ DObjDesc dITCommonObject_GShell_Item_data_DObjDesc[3] = {
 
 /* @ 0x600C, 140 bytes (raw gap) */
 /* gap sub-block @ 0x600C (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_GShell_Item_data_remainder_gap_0x600C[12] = {
-	#include <ITCommonObject/gap_0x600C.data.inc.c>
+AObjEvent32 *dITCommonObject_GShell_Item_data_remainder_gap_0x600C[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC,
 };
 
 /* gap sub-block @ 0x6018 (was gap+0xC, 48 bytes) */
-u8 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC[48] = {
+u32 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC[12] = {
 	#include <ITCommonObject/gap_0x600C_sub_0xC.data.inc.c>
 };
 
 /* gap sub-block @ 0x6048 (was gap+0x3C, 60 bytes) */
-u8 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x3C[60] = {
-	#include <ITCommonObject/gap_0x600C_sub_0x3C.data.inc.c>
+u32 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x3C[15] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfter(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32Wait(4),
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x3C,
 };
 
 /* gap sub-block @ 0x6084 (was gap+0x78, 20 bytes) */
-u8 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x78[20] = {
-	#include <ITCommonObject/gap_0x600C_sub_0x78.data.inc.c>
+AObjEvent32 *dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x78[5] = {
+	(AObjEvent32 *)dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x3C,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* @ 0x6098, 32 bytes (16-color RGBA5551 palette) */
@@ -1538,9 +1317,7 @@ DObjDesc dITCommonObject_Box_Item_data_DObjDesc[3] = {
 
 /* @ 0x67FC, 492 bytes (raw gap) */
 /* gap sub-block @ 0x67FC (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC[12] = {
-	#include <ITCommonObject/gap_0x67FC.data.inc.c>
-};
+PAD(12);
 
 /* gap sub-block @ 0x6808 (was gap+0xC, 40 bytes) */
 u16 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xC[16] = {
@@ -1611,9 +1388,7 @@ DObjDesc dITCommonObject_Taru_Item_data_DObjDesc[3] = {
 
 /* @ 0x722C, 604 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0x722C (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_Taru_Item_data_remainder[12] = {
-	#include <ITCommonObject/dITCommonObject_Taru_Item_data_remainder.data.inc.c>
-};
+PAD(12);
 
 /* gap sub-block @ 0x7238 (was gap+0xC, 40 bytes) */
 u16 dITCommonObject_Taru_Item_data_remainder_sub_0xC[16] = {
@@ -1623,9 +1398,10 @@ u16 dITCommonObject_Taru_Item_data_remainder_sub_0xC[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x7260 (was gap+0x34, 40 bytes) */
-u8 dITCommonObject_Taru_Item_data_remainder_sub_0x34[40] = {
-	#include <ITCommonObject/dITCommonObject_Taru_Item_data_remainder_sub_0x34.data.inc.c>
+u16 dITCommonObject_Taru_Item_data_remainder_sub_0x34[16] = {
+	#include <ITCommonObject/dITCommonObject_Taru_Item_data_remainder_sub_0x34.palette.inc.c>
 };
+PAD(8);
 
 /* gap sub-block @ 0x7288 (was gap+0x5C, 512 bytes) */
 /* @tex fmt=CI4 dim=32x32 */
@@ -1652,7 +1428,7 @@ MObjSub dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x10[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)0x00000000,
+		NULL,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
 		0.0f, 0.0f,
@@ -1702,9 +1478,7 @@ DObjDesc dITCommonObject_NBumper_Item_data_DObjDesc[3] = {
 
 /* @ 0x76CC, 1732 bytes (raw gap) */
 /* gap sub-block @ 0x76CC (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC[12] = {
-	#include <ITCommonObject/gap_0x76CC.data.inc.c>
-};
+PAD(12);
 
 /* gap sub-block @ 0x76D8 (was gap+0xC, 40 bytes) */
 u16 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0xC[16] = {
@@ -1737,7 +1511,7 @@ MObjSub dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x36C[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)0x00000000,
+		NULL,
 		0x0020, 0x0000, 0x0030, 0x0020,
 		0,
 		0.0f, 0.0f,
@@ -1878,7 +1652,7 @@ MObjSub dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x30[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0020,
@@ -1934,13 +1708,60 @@ DObjDesc dITCommonObject_MBall_Item_data_DObjDesc[5] = {
 
 /* @ 0x950C, 988 bytes (raw gap) */
 /* gap sub-block @ 0x950C (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C[20] = {
-	#include <ITCommonObject/gap_0x950C.data.inc.c>
+u16 *dITCommonObject_MBall_Item_data_remainder_gap_0x950C[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4,
 };
 
 /* gap sub-block @ 0x9520 (was gap+0x14, 176 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x14[176] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x14.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x14[44] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x14,
 };
 
 /* gap sub-block @ 0x95D0 (was gap+0xC4, 32 bytes) */
@@ -1949,13 +1770,45 @@ u16 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4[16] = {
 };
 
 /* gap sub-block @ 0x95F0 (was gap+0xE4, 120 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xE4[120] = {
-	#include <ITCommonObject/gap_0x950C_sub_0xE4.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xE4[30] = {
+	aobjEvent32SetValRate(0x070, 0),
+	    0x453B8000,  /* 3000.0f */
+	    0xC33A9701,  /* -186.58985900878906f */
+	    0xC53B8000,  /* -3000.0f */
+	    0x43E60595,  /* 460.0436096191406f */
+	    0x45BB8000,  /* 6000.0f */
+	    0xC38811B8,  /* -272.138427734375f */
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3FC00000,  /* 1.5f */
+	    0x3FC00000,  /* 1.5f */
+	    0x3FC00000,  /* 1.5f */
+	aobjEvent32SetValRate(0x020, 40),
+	    0x42B40000,  /* 90.0f */
+	    0xC280F1D0,  /* -64.4722900390625f */
+	aobjEvent32SetVal0RateBlock(0x3D0, 40),
+	    0x41F00000,  /* 30.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetTargetRate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x3F0, 80),
+	    0x41F00000,  /* 30.0f */
+	    0x42B40000,  /* 90.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9668 (was gap+0x15C, 16 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x15C[16] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x15C.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x15C[4] = {
+	aobjEvent32SetFlags(0x002, 40),
+	aobjEvent32SetFlags(0x000, 35),
+	aobjEvent32SetFlags(0x002, 45),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9678 (was gap+0x16C, 40 bytes) */
@@ -1964,13 +1817,45 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x16C[40] = {
 };
 
 /* gap sub-block @ 0x96A0 (was gap+0x194, 120 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x194[120] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x194.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x194[30] = {
+	aobjEvent32SetValRate(0x070, 0),
+	    0xC53B8000,  /* -3000.0f */
+	    0x4338665C,  /* 184.39984130859375f */
+	    0xC53B8000,  /* -3000.0f */
+	    0x43E4B91A,  /* 457.44610595703125f */
+	    0x45BB8000,  /* 6000.0f */
+	    0xC38D86F7,  /* -283.0544128417969f */
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3FC00000,  /* 1.5f */
+	    0x3FC00000,  /* 1.5f */
+	    0x3FC00000,  /* 1.5f */
+	aobjEvent32SetValRate(0x020, 40),
+	    0x42B40000,  /* 90.0f */
+	    0xC280F1D0,  /* -64.4722900390625f */
+	aobjEvent32SetVal0RateBlock(0x3D0, 40),
+	    0x41F00000,  /* 30.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetTargetRate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x3F0, 80),
+	    0x41F00000,  /* 30.0f */
+	    0x42B40000,  /* 90.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9718 (was gap+0x20C, 16 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x20C[16] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x20C.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x20C[4] = {
+	aobjEvent32SetFlags(0x002, 40),
+	aobjEvent32SetFlags(0x000, 35),
+	aobjEvent32SetFlags(0x002, 45),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9728 (was gap+0x21C, 40 bytes) */
@@ -1979,8 +1864,51 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x21C[40] = {
 };
 
 /* gap sub-block @ 0x9750 (was gap+0x244, 176 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x244[176] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x244.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x244[44] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(82),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x9800 (was gap+0x2F4, 32 bytes) */
@@ -1989,13 +1917,61 @@ u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4[32] = {
 };
 
 /* gap sub-block @ 0x9820 (was gap+0x314, 176 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x314[176] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x314.data.inc.c>
+u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x314[44] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40A00000,  /* 5.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40C00000,  /* 6.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40E00000,  /* 7.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(82),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x98D0 (was gap+0x3C4, 24 bytes) */
-u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x3C4[24] = {
-	#include <ITCommonObject/gap_0x950C_sub_0x3C4.data.inc.c>
+AObjEvent32 *dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x3C4[6] = {
+	(AObjEvent32 *)dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x314,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* @ 0x98E8, 32 bytes (16-color RGBA5551 palette) */
@@ -2031,9 +2007,7 @@ DObjDesc dITCommonObject_Wark_Item_data_DObjDesc[3] = {
 
 /* @ 0xA1C4, 1620 bytes (raw gap) */
 /* gap sub-block @ 0xA1C4 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4[20] = {
-	#include <ITCommonObject/gap_0xA1C4.data.inc.c>
-};
+PAD(20);
 
 /* gap sub-block @ 0xA1D8 (was gap+0x14, 40 bytes) */
 u16 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14[16] = {
@@ -2112,7 +2086,7 @@ MObjSub dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x18[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0010,
@@ -2156,18 +2130,42 @@ DObjDesc dITCommonObject_WarkRock_Weapon_data_DObjDesc[3] = {
 
 /* @ 0xAC1C, 108 bytes (raw gap) */
 /* gap sub-block @ 0xAC1C (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C[12] = {
-	#include <ITCommonObject/gap_0xAC1C.data.inc.c>
+AObjEvent32 **dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0x5C,
 };
 
 /* gap sub-block @ 0xAC28 (was gap+0xC, 80 bytes) */
-u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0xC[80] = {
-	#include <ITCommonObject/gap_0xAC1C_sub_0xC.data.inc.c>
+u32 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0xC[20] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0xC,
 };
 
 /* gap sub-block @ 0xAC78 (was gap+0x5C, 16 bytes) */
-u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0x5C[16] = {
-	#include <ITCommonObject/gap_0xAC1C_sub_0x5C.data.inc.c>
+AObjEvent32 *dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0x5C[4] = {
+	(AObjEvent32 *)dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C_sub_0xC,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* @ 0xAC88, 32 bytes (16-color RGBA5551 palette) */
@@ -2259,7 +2257,7 @@ MObjSub dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0x18[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0020,
@@ -2304,23 +2302,48 @@ DObjDesc dITCommonObject_Tosakinto_Item_data_DObjDesc[4] = {
 
 /* @ 0xB7B8, 432 bytes (raw gap) */
 /* gap sub-block @ 0xB7B8 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8[20] = {
-	#include <ITCommonObject/gap_0xB7B8.data.inc.c>
+AObjEvent32 *dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14,
 };
 
 /* gap sub-block @ 0xB7CC (was gap+0x14, 320 bytes) */
-u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14[320] = {
+u32 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14[80] = {
 	#include <ITCommonObject/gap_0xB7B8_sub_0x14.data.inc.c>
 };
 
 /* gap sub-block @ 0xB90C (was gap+0x154, 80 bytes) */
-u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x154[80] = {
-	#include <ITCommonObject/gap_0xB7B8_sub_0x154.data.inc.c>
+u32 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x154[20] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x154,
 };
 
 /* gap sub-block @ 0xB95C (was gap+0x1A4, 12 bytes) */
-u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x1A4[12] = {
-	#include <ITCommonObject/gap_0xB7B8_sub_0x1A4.data.inc.c>
+AObjEvent32 *dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x1A4[3] = {
+	(AObjEvent32 *)dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x154,
+	NULL,
+	NULL,
 };
 
 /* @ 0xB968, 32 bytes (16-color RGBA5551 palette) */
@@ -2477,7 +2500,7 @@ MObjSub dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x10[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x00A1,
 		0x02, 0x00,
 		0x0040,
@@ -2521,18 +2544,39 @@ DObjDesc dITCommonObject_Lizardon_Item_data_DObjDesc[3] = {
 
 /* @ 0xD644, 244 bytes (raw gap) */
 /* gap sub-block @ 0xD644 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644[20] = {
-	#include <ITCommonObject/gap_0xD644.data.inc.c>
+AObjEvent32 *dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14,
 };
 
 /* gap sub-block @ 0xD658 (was gap+0x14, 48 bytes) */
-u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14[48] = {
+u32 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14[12] = {
 	#include <ITCommonObject/gap_0xD644_sub_0x14.data.inc.c>
 };
 
 /* gap sub-block @ 0xD688 (was gap+0x44, 72 bytes) */
-u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x44[72] = {
-	#include <ITCommonObject/gap_0xD644_sub_0x44.data.inc.c>
+u32 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x44[18] = {
+	aobjEvent32SetValAfterBlock(0x01F, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 16),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 16),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x44,
 };
 
 /* gap sub-block @ 0xD6D0 (was gap+0x8C, 104 bytes) */
@@ -2590,7 +2634,7 @@ MObjSub dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0x18[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0018,
@@ -2635,23 +2679,134 @@ DObjDesc dITCommonObject_Spear_Item_data_DObjDesc[4] = {
 
 /* @ 0xDFE8, 760 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0xDFE8 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Spear_Item_data_remainder[20] = {
-	#include <ITCommonObject/dITCommonObject_Spear_Item_data_remainder.data.inc.c>
+AObjEvent32 *dITCommonObject_Spear_Item_data_remainder[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_Spear_Item_data_remainder_sub_0x14,
 };
 
 /* gap sub-block @ 0xDFFC (was gap+0x14, 304 bytes) */
-u8 dITCommonObject_Spear_Item_data_remainder_sub_0x14[304] = {
+u32 dITCommonObject_Spear_Item_data_remainder_sub_0x14[76] = {
 	#include <ITCommonObject/dITCommonObject_Spear_Item_data_remainder_sub_0x14.data.inc.c>
 };
 
 /* gap sub-block @ 0xE12C (was gap+0x144, 432 bytes) */
-u8 dITCommonObject_Spear_Item_data_remainder_sub_0x144[432] = {
-	#include <ITCommonObject/dITCommonObject_Spear_Item_data_remainder_sub_0x144.data.inc.c>
+u32 dITCommonObject_Spear_Item_data_remainder_sub_0x144[108] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_Spear_Item_data_remainder_sub_0x144,
 };
 
 /* gap sub-block @ 0xE2DC (was gap+0x2F4, 4 bytes) */
-u8 dITCommonObject_Spear_Item_data_remainder_sub_0x2F4[4] = {
-	#include <ITCommonObject/dITCommonObject_Spear_Item_data_remainder_sub_0x2F4.data.inc.c>
+AObjEvent32 *dITCommonObject_Spear_Item_data_remainder_sub_0x2F4[1] = {
+	(AObjEvent32 *)dITCommonObject_Spear_Item_data_remainder_sub_0x144,
 };
 
 /* @ 0x0E2E0, 456 bytes */
@@ -2681,7 +2836,7 @@ MObjSub dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0x18[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0018,
@@ -2727,11 +2882,15 @@ DObjDesc dITCommonObject_SpearSwarm_Weapon_data_DObjDesc[4] = {
 /* @ 0xE558, 8 bytes (vertex / DL / texture pool) */
 PAD(8);
 
-/* @ 0x0E560, 1280 bytes */
-u32 dITCommonObject_SpearSwarm_Weapon_matanimjoints[320] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0x11C),
+/* @ 0x0E560, 12 bytes — SpearSwarm weapon matanim joint table (per-MObj AObjEvent32** entries) */
+AObjEvent32 *dITCommonObject_SpearSwarm_Weapon_matanimjoints[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE67C,
+};
+
+/* @ 0x0E56C, 272 bytes — AObjEvent32 matanim script */
+u32 dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE56C[68] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
@@ -2799,256 +2958,38 @@ u32 dITCommonObject_SpearSwarm_Weapon_matanimjoints[320] = {
 	aobjEvent32SetValAfterBlock(0x001, 1),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0xC),
-	(u32)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0xC),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x6318EF79,
-	    0xF661ED59,
-	    0x9CE5B413,
-	    0x83956319,
-	    0x5AD55A4F,
-	    0x319118C9,
-	    0x85776471,
-	    0x4B633A59,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32SetValBlock(0x2CE, 0),
-	    0x88800000,  /* -7.703719777548943e-34f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x04145669,  /* 1.7436993990031397e-36f */
-	    0xA1980000,  /* -1.0299920638612292e-18f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x082, 5503),
-	    0xF14AA000,
-	aobjEvent32EndRaw(0x171, 6247),
-	    0x88887000,
-	aobjEvent32EndRaw(0x009, 15102),
-	    0xDCEFB000,
-	aobjEvent32EndRaw(0x017, 14662),
-	    0x96541000,
-	aobjEvent32EndRaw(0x017, 10990),
-	    0xDDDFA000,
-	aobjEvent32EndRaw(0x157, 16349),
-	    0x76670000,
-	aobjEvent32EndRaw(0x017, 12014),
-	    0xEDDEFA00,
-	aobjEvent32EndRaw(0x177, 12269),
-	    0xDEF00000,
-	aobjEvent32EndRaw(0x015, 32750),
-	    0xEDDDFAB9,
-	    0xABBAFEEE,
-	    0xEF000000,
-	aobjEvent32EndRaw(0x015, 32767),
-	    0xEEDDEABB,
-	    0xABAAFEEE,
-	    0xEF000000,
-	aobjEvent32EndRaw(0x0F5, 12287),
-	    0xEEEEEFAB,
-	    0xBBBAFFED,
-	    0xEEF00000,
-	aobjEvent32EndRaw(0x0F5, 11006),
-	    0xEEEEEFFA,
-	    0x99BBAFED,
-	    0xDEF00000,
-	aobjEvent32EndRaw(0x0F5, 12269),
-	    0xDEEEEEA9,
-	    0x6699BFEC,
-	    0xDDF00000,
-	aobjEvent32SetValBlock(0x357, 12013),
-	    0xDDEEEF96,  /* -2.1521431034006077e+18f */
-	    0x5556999C,  /* 14747202224128.0f */
-	    0xCDF00000,  /* -503316480.0f */
-	    0x0ABBAEED,  /* 1.807324474567587e-32f */
-	    0xDDDEEF65,  /* -2.0080211808160317e+18f */
-	    0x55556699,  /* 14664789393408.0f */
-	    0x4DF00000,  /* 503316480.0f */
-	aobjEvent32SetValRateBlock(0x377, 16365),
-	    0xCDDDF553,  /* -465480288.0f */
-	    0x33335569,  /* 4.1754365298629637e-08f */
-	    0x9A000000,  /* -2.6469779601696886e-23f */
-	    0x0AAABFED,  /* 1.6442598982215194e-32f */
-	    0xCCDE6333,  /* -116595096.0f */
-	    0x33333355,  /* 4.172337142449578e-08f */
-	    0x99800000,  /* -1.3234889800848443e-23f */
-	    0x0998FFED,  /* 3.6833340391428806e-33f */
-	    0xCCD65533,  /* -112372120.0f */
-	    0x33233335,  /* 3.7997967439196145e-08f */
-	    0x69800000,  /* 1.9342813113834067e+25f */
-	    0x098777F7,  /* 3.261288220843493e-33f */
-	    0x66653333,  /* 2.7059159586555097e+23f */
-	    0x22222333,  /* 2.1973728304080753e-18f */
-	    0x56780000,  /* 68169720922112.0f */
-	    0x08764449,  /* 7.410820105280127e-34f */
-	    0x65533332,
-	aobjEvent32Cmd17(0x044, 8755),
-	    0x556AAA00,  /* 16125991583744.0f */
-	aobjEvent32SetVal(0x0E8, 17476),
-	    0x65333322,  /* 5.2890427146226436e+22f */
-	    0x22222223,  /* 2.1973165821264217e-18f */
-	    0x36BBBBA0,  /* 5.594876711256802e-06f */
-	    0x00844411,  /* 1.21467031185957e-38f */
-	    0x45333322,
-	aobjEvent32Cmd17(0x044, 8755),
-	    0x56FF1EE0,  /* 140254036099072.0f */
-	aobjEvent32EndRaw(0x108, 16657),
-	aobjEvent32SetValAfter(0x0AA, 13107),
-	    0x22222233,  /* 2.197319890848872e-18f */
-	    0x56EEF4E0,  /* 131367748763648.0f */
-	    0x00841111,  /* 1.2128407765845475e-38f */
-	    0x12533222,  /* 6.664165386291906e-28f */
-	aobjEvent32Cmd17(0x044, 8739),
-	    0x54EFF1E0,  /* 8244441382912.0f */
-	aobjEvent32EndRaw(0x00C, 16657),
-	aobjEvent32SetVal0RateBlock(0x2CA, 13106),
-	    0x22222233,  /* 2.197319890848872e-18f */
-	    0x5DEAA700,  /* 2.113560415748227e+18f */
-	    0x00064444,  /* 5.755020689104878e-40f */
-	    0x11153333,  /* 1.1769804465156253e-28f */
-	    0x32223335,  /* 9.441284198885569e-09f */
-	    0x4DEF0000,
-	aobjEvent32EndRaw(0x013, 15289),
-	    0x41145333,
-	    0x33699556,
-	    0xDDE70000,
-	aobjEvent32EndRaw(0x011, 15281),
-	    0x44116556,
-	    0x99999999,
-	    0xFE700000,
-	aobjEvent32EndRaw(0x015, 15279),
-	    0x7F114BB9,
-	    0x55569996,
-	    0x98000000,
-	aobjEvent32EndRaw(0x017, 15076),
-	aobjEvent32SetVal0RateBlock(0x282, 7061),
-	    0x56BBABB6,  /* 103173083627520.0f */
-	    0x58000000,  /* 562949953421312.0f */
-	    0x000BAEDD,  /* 1.0729195834934038e-39f */
-	    0x44117B9A,
-	    0xBBAAFFFF,
-	    0xF8000000,
-	aobjEvent32EndRaw(0x015, 32493),
-	    0xC1119BBA,
-	    0xFEEDEEDE,
-	    0xEE000000,
-	aobjEvent32EndRaw(0x001, 32749),
-	    0xC114BBAF,
-	    0xEEDCCCCC,
-	    0xCD000000,
-	aobjEvent32End(),
-	    0x4147BAFE,
-	    0xEDDCCCCC,
-	    0xCD000000,
-	aobjEvent32End(),
-	aobjEvent32WaitRaw(0x08F, 16382),
-	    0xDDDCCCCC,
-	    0xDE000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x111, 16369),
-	    0xFAECCCEE,
-	    0xD0000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x015, 16353),
-	    0xAEDCCCEA,
-	aobjEvent32SetVal0RateBlock(0x000, 0),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x013, 16383),
-	    0xECCCCCCE,
-	aobjEvent32SetVal0RateBlock(0x000, 0),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x017, 16366),
-	    0xDCCCCCCD,
-	    0xE0000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x017, 16365),
-	    0xDCCCCCCD,
-	    0xE0000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x01F, 30862),
-	    0xDDDDDCDE,
-	    0xE0000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x27A, 317),
-	aobjEvent32End(),
-	aobjEvent32Wait(1280),
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x27B, 32451),
-	aobjEvent32End(),
-	aobjEvent32Wait(0),
-	    0xFFFFFF00,
-	    0xFEC3FEC3,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFEC3013D,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 1279),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE3001001,
-	aobjEvent32EndRaw(0x001, 0),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12408),
-	    0xFC127E24,
-	    0xFFFFF3F9,
-	    0xF9000000,
-	aobjEvent32End(),
-	    0xE8000000,
-	aobjEvent32End(),
-	    0xF5000100,
-	aobjEvent32WaitRaw(0x200, 0),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x203, 80),
-	    0xF5400400,  /* -2.434087222844486e+32f */
-	    0x00098250,  /* 8.732667821917968e-40f */
-	    0xFD100000,  /* -1.1963051962064243e+37f */
-	(u32)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0x128),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xF2000000,
-	aobjEvent32EndRaw(0x00F, 16540),
-	    0xFD500000,
-	(u32)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0x150),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	aobjEvent32SetValBlock(0x227, 29696),
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	    0x00000000,  /* 0.0f */
-	    0xD9DDFBFF,  /* -7810380311035904.0f */
-	    0x00000000,  /* 0.0f */
-	    0x01004008,  /* 2.3555827185300175e-38f */
-	(u32)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0x3D0),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 1024),
-	    0xE3001001,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8312),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)(dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE56C),
+};
+
+/* @ 0x0E67C, 4 bytes — SpearSwarm weapon matanim joint table (per-track AObjEvent32* entries) */
+AObjEvent32 *dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE67C[1] = {
+	(AObjEvent32 *)dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE56C,
+};
+
+/* @ 0x0E680, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x0E688, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xE688[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xE688.palette.inc.c>
+};
+
+/* @ 0x0E6A8, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x0E6B0, 640 bytes — Kamex weapon texture */
+u8 dITCommonObject_Tex_0xE6B0[640] = {
+	#include <ITCommonObject/dITCommonObject_Tex_0xE6B0.tex.inc.c>
+};
+
+/* @ 0x0E930, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xE930[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xE930.vtx.inc.c>
+};
+
+/* @ 0x0E970, 240 bytes (30 Gfx commands) — Kamex weapon DL */
+Gfx dITCommonObject_Gfx_0xE970[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xE970.dl.inc.c>
 };
 
 /* @ 0x0EA60, 3168 bytes */
@@ -3060,9 +3001,7 @@ DObjDesc dITCommonObject_Kamex_Item_data_DObjDesc[3] = {
 
 /* @ 0xEAE4, 1108 bytes (raw gap) */
 /* gap sub-block @ 0xEAE4 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4[20] = {
-	#include <ITCommonObject/gap_0xEAE4.data.inc.c>
-};
+PAD(20);
 
 /* gap sub-block @ 0xEAF8 (was gap+0x14, 40 bytes) */
 u16 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14[16] = {
@@ -3174,7 +3113,7 @@ MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x28[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0018,
@@ -3204,7 +3143,7 @@ MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xA0[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0010,
@@ -3340,11 +3279,15 @@ u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[] = {
 	(u32)(dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C),
 };
 
-/* @ 0x0FB70, 1168 bytes */
-u32 dITCommonObject_KamexHydro_Weapon_matanimjoints[292] = {
-	aobjEvent32End(),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x12C),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x130),
+/* @ 0x0FB70, 12 bytes — KamexHydro weapon matanim joint table (per-MObj AObjEvent32** entries) */
+AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints[3] = {
+	NULL,
+	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C,
+	(AObjEvent32 *)&dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[1],
+};
+
+/* @ 0x0FB7C, 144 bytes — AObjEvent32 matanim script */
+u32 dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFB7C[36] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
@@ -3380,7 +3323,11 @@ u32 dITCommonObject_KamexHydro_Weapon_matanimjoints[292] = {
 	aobjEvent32SetValAfterBlock(0x001, 2),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0xC),
+	(u32)(dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFB7C),
+};
+
+/* @ 0x0FC0C, 144 bytes — AObjEvent32 matanim script */
+u32 dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC0C[36] = {
 	aobjEvent32SetValAfterBlock(0x001, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
@@ -3416,224 +3363,39 @@ u32 dITCommonObject_KamexHydro_Weapon_matanimjoints[292] = {
 	aobjEvent32SetValAfterBlock(0x001, 2),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x9C),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x9C),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0xC),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0x8A0EFFFF,
-	    0xFFBDFEF7,
-	    0xFE73F5ED,
-	    0xE569DCE5,
-	    0xF569ECE5,
-	    0xBBDDE4A3,
-	    0xCC1FBB9B,
-	    0xA2932183,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x001, 28398),
-	    0xEEEE00EE,
-	    0xEEEEE00E,
-	    0xEEEAE000,
-	aobjEvent32EndRaw(0x001, 17990),
-	    0xAAAAEEEE,
-	    0xEEEEEEEA,
-	    0x644A0000,
-	aobjEvent32EndRaw(0x000, 3432),
-	    0xCCEEEEED,
-	    0xDDDDDDDD,
-	    0xA4A00000,
-	aobjEvent32EndRaw(0x000, 205),
-	    0xEEEDDDDD,
-	    0xCCCCCCBB,
-	    0xAC000000,
-	aobjEvent32EndRaw(0x000, 14),
-	    0xEDDDCCCC,
-	    0xAAAAA998,
-	    0x89E00000,
-	aobjEvent32EndRaw(0x000, 237),
-	    0xDDCCCCAA,
-	    0xAA776788,
-	    0x558E0000,
-	aobjEvent32EndRaw(0x000, 3805),
-	    0xDCCCCAAA,
-	    0x77677855,
-	    0x44590000,
-	aobjEvent32EndRaw(0x000, 3549),
-	    0xCCBCAAA7,
-	    0x66444784,
-	    0x3345E000,
-	aobjEvent32EndRaw(0x001, 28124),
-	    0xCBBCB966,
-	    0x64433483,
-	    0x3334A000,
-	aobjEvent32EndRaw(0x001, 28107),
-	    0xBBBDC953,
-	aobjEvent32Cmd17(0x044, 9011),
-	    0x22339000,  /* 2.433525657461605e-18f */
-	aobjEvent32EndRaw(0x001, 24011),
-	    0xB98DB832,
-	aobjEvent32Cmd16(0x222, 8754),
-	aobjEvent32Cmd17(0x046, 20480),
-	    0x0000DCB9,  /* 7.918036972667379e-41f */
-	    0x988CB522,
-	aobjEvent32SetVal0RateBlock(0x222, 4642),
-	    0x22223000,  /* 2.1980504981249094e-18f */
-	    0x0000DCB9,  /* 7.918036972667379e-41f */
-	    0x885BB521,  /* -6.611583129056822e-34f */
-	aobjEvent32SetVal0RateBlock(0x222, 4642),
-	    0x22223000,  /* 2.1980504981249094e-18f */
-	    0x0000ECB8,  /* 8.491868693808391e-41f */
-	    0x85559321,  /* -1.0042235181215192e-35f */
-	aobjEvent32SetVal0RateBlock(0x222, 4642),
-	    0x22225000,  /* 2.199744564019418e-18f */
-	    0x00000CB8,  /* 4.5626277998416044e-42f */
-	    0x88554532,  /* -6.417869466058483e-34f */
-	aobjEvent32SetVal0RateBlock(0x222, 8738),
-	    0x21229000,  /* 5.507831739521088e-19f */
-	    0x00000AB8,  /* 3.845162986107298e-42f */
-	    0x89CC9433,  /* -4.9250579457424035e-33f */
-	    0x3119B532,
-	aobjEvent32SetVal0RateBlock(0x245, 8192),
-	    0x00000E88,  /* 5.2128302872883195e-42f */
-	    0x589EEC32,  /* 1397898306650112.0f */
-	    0x229B4222,  /* 4.208285502266591e-18f */
-	    0x11230000,  /* 1.2858432755102492e-28f */
-	aobjEvent32EndRaw(0x000, 133),
-	    0x5589EEB2,
-	aobjEvent32SetExtValBlock(0x368, 4642),
-	    0x11250000,  /* 1.3016204936146695e-28f */
-	    0x000000B5,  /* 2.536350220427919e-43f */
-	    0x54599C94,  /* 3738539393024.0f */
-	    0x8A411221,  /* -9.296021649969767e-33f */
-	    0x11290000,  /* 1.33317492982351e-28f */
-	aobjEvent32EndRaw(0x1DD, 28360),
-	    0x44348832,
-	    0x93112211,
-	aobjEvent32Cmd17(0x0BD, 27136),
-	    0x0EA66AC9,  /* 4.102498982335896e-30f */
-	    0x43333322,  /* 179.19973754882812f */
-	    0x32122111,  /* 8.505836923689003e-09f */
-	aobjEvent32Cmd17(0x34C, 18032),
-	    0x0AD7767B,  /* 2.0748314301106274e-32f */
-	    0x43322222,  /* 178.13333129882812f */
-	    0x22222111,  /* 2.197259920254462e-18f */
-	aobjEvent32SetExtValAfterBlock(0x288, 18256),
-	    0x0A7A4677,  /* 1.2050315116541776e-32f */
-	    0x53222225,  /* 696357552128.0f */
-	    0x32211112,  /* 9.375314746762342e-09f */
-	    0x444464B0,
-	aobjEvent32EndRaw(0x14E, 25703),
-	    0x5322223D,
-	    0xA3211112,
-	aobjEvent32Cmd17(0x088, 18432),
-	    0x0000A976,  /* 6.079112997933921e-41f */
-	    0x84222222,
-	aobjEvent32Cmd17(0x042, 4386),
-	    0x25570000,  /* 1.8648277366750676e-16f */
-	aobjEvent32EndRaw(0x000, 10),
-	    0x752225F2,
-	aobjEvent32SetExtValAfterBlock(0x3E2, 4389),
-	    0x50000000,  /* 8589934592.0f */
-	    0x00000000,  /* 0.0f */
-	    0x07422592,  /* 1.4605978782335116e-34f */
-	    0x25921250,  /* 2.533937178193866e-16f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32EndRaw(0x0EA, 9201),
-	aobjEvent32SetVal0Rate(0x3E4, 9472),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x00064221,  /* 5.747355586505021e-40f */
-	    0x12225000,  /* 5.121679427147419e-28f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32EndRaw(0x000, 2099),
-	    0x33500000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x3F5, 32549),
-	aobjEvent32End(),
-	aobjEvent32WaitRaw(0x39E, 1),
-	    0xFFFFFF00,
-	    0xFE06FF25,
-	aobjEvent32End(),
-	    0xFE310001,
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x000, 540),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x3FE, 1518),
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE3001001,
-	aobjEvent32EndRaw(0x001, 0),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12408),
-	    0xFC127E24,
-	    0xFFFFF3F9,
-	    0xF9000000,
-	aobjEvent32End(),
-	    0xE8000000,
-	aobjEvent32End(),
-	    0xF5000100,
-	aobjEvent32WaitRaw(0x200, 0),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x202, 16464),
-	    0xF5400400,  /* -2.434087222844486e+32f */
-	    0x00094250,  /* 8.50307908152299e-40f */
-	    0xFD100000,
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x148),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xF2000000,
-	aobjEvent32EndRaw(0x00F, 16508),
-	    0xFD500000,
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x170),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x070FF400,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFBFF,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 12294),
-	(u32)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x370),
-	aobjEvent32WaitRaw(0x208, 512),
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 1024),
-	    0xE3001001,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8312),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)(dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC0C),
+};
+
+/* @ 0x0FC9C, 8 bytes — KamexHydro weapon matanim joint table (per-track AObjEvent32* entries) */
+AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[2] = {
+	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC0C,
+	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFB7C,
+};
+
+/* @ 0x0FCA4, 20 bytes (raw gap) */
+PAD(20);
+
+/* @ 0x0FCB8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xFCB8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xFCB8.palette.inc.c>
+};
+
+/* @ 0x0FCD8, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x0FCE0, 512 bytes — Kamex weapon texture */
+u8 dITCommonObject_Tex_0xFCE0[512] = {
+	#include <ITCommonObject/dITCommonObject_Tex_0xFCE0.tex.inc.c>
+};
+
+/* @ 0x0FEE0, 48 bytes (3 vertices) */
+Vtx dITCommonObject_Vtx_0xFEE0[3] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xFEE0.vtx.inc.c>
+};
+
+/* @ 0x0FF10, 240 bytes (30 Gfx commands) — Kamex weapon DL */
+Gfx dITCommonObject_Gfx_0xFF10[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xFF10.dl.inc.c>
 };
 
 /* @ 0x10000, 1184 bytes */
@@ -3646,14 +3408,52 @@ DObjDesc dITCommonObject_MLucky_Item_data_DObjDesc[4] = {
 
 /* @ 0x100B0, 168 bytes (raw gap) */
 /* gap sub-block @ 0x100B0 (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0[12] = {
-	#include <ITCommonObject/gap_0x100B0.data.inc.c>
+AObjEvent32 *dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0_sub_0xC,
 };
 
 /* gap sub-block @ 0x100BC (was gap+0xC, 156 bytes) */
-u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0_sub_0xC[156] = {
-	#include <ITCommonObject/gap_0x100B0_sub_0xC.data.inc.c>
+u32 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0_sub_0xC[36] = {
+	aobjEvent32SetValRate(0x1A0, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3F745303,  /* 0.9543916583061218f */
+	    0x3F800000,  /* 1.0f */
+	    0xBB9461C7,  /* -0.0045282575301826f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B9E7784,  /* 0.004836024716496468f */
+	aobjEvent32SetValAfterBlock(0x250, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x1A0, 16),
+	    0x411C0000,  /* 9.75f */
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x1A0, 16),
+	    0x00000000,  /* 0.0f */
+	    0xBF617C7F,  /* -0.8808059096336365f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B95F5F2,  /* 0.00457643810659647f */
+	    0x3F800000,  /* 1.0f */
+	    0xBB88762C,  /* -0.004164477810263634f */
+	aobjEvent32SetVal0RateBlock(0x1A0, 16),
+	    0xC11C0000,  /* -9.75f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x1A0, 16),
+	    0x00000000,  /* 0.0f */
+	    0x3F5D419A,  /* 0.8642822504043579f */
+	    0x3F800000,  /* 1.0f */
+	    0xBB916343,  /* -0.004436881747096777f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B8E06C2,  /* 0.004334301687777042f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0_sub_0xC,
+	aobjEvent32End(),
 };
+PAD(12);
 
 /* @ 0x10158, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x10158[16] = {
@@ -3688,7 +3488,7 @@ DObjDesc dITCommonObject_Egg_Item_data_DObjDesc[4] = {
 };
 
 /* @ 0x10550, 2960 bytes */
-u32 dITCommonObject_Egg_Item_animjoints[740] = {
+u32 dITCommonObject_Egg_Item_animjoints[736] = {
 	aobjEvent32End(),
 	aobjEvent32End(),
 	(u32)((u8*)dITCommonObject_Egg_Item_animjoints + 0xC),
@@ -4425,11 +4225,8 @@ u32 dITCommonObject_Egg_Item_animjoints[740] = {
 	aobjEvent32EndRaw(0x000, 3277),
 	    0x9E000000,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+PAD(16);
 
 /* @ 0x110E0, 160 bytes (raw gap) */
 /* u32 pointer array @ 0x110E0 (2 entries) */
@@ -4459,7 +4256,7 @@ MObjSub dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0_sub_0x20[1] = {
 		0.20000000298023224f, 0.30160000920295715f,
 		0.6000000238418579f, 0.699999988079071f,
 		0.20000000298023224f, 0.6000000238418579f,
-		(void**)0x00000000,
+		NULL,
 		0x0001,
 		0x02, 0x00,
 		0x0020,
@@ -4503,18 +4300,92 @@ DObjDesc dITCommonObject_Starmie_Item_data_DObjDesc[3] = {
 
 /* @ 0x11324, 1716 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0x11324 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Starmie_Item_data_remainder[20] = {
-	#include <ITCommonObject/dITCommonObject_Starmie_Item_data_remainder.data.inc.c>
+AObjEvent32 **dITCommonObject_Starmie_Item_data_remainder[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dITCommonObject_Starmie_Item_data_remainder_sub_0x124,
 };
 
 /* gap sub-block @ 0x11338 (was gap+0x14, 272 bytes) */
-u8 dITCommonObject_Starmie_Item_data_remainder_sub_0x14[272] = {
-	#include <ITCommonObject/dITCommonObject_Starmie_Item_data_remainder_sub_0x14.data.inc.c>
+u32 dITCommonObject_Starmie_Item_data_remainder_sub_0x14[68] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_Starmie_Item_data_remainder_sub_0x14,
 };
 
 /* gap sub-block @ 0x11448 (was gap+0x124, 16 bytes) */
-u8 dITCommonObject_Starmie_Item_data_remainder_sub_0x124[16] = {
-	#include <ITCommonObject/dITCommonObject_Starmie_Item_data_remainder_sub_0x124.data.inc.c>
+AObjEvent32 *dITCommonObject_Starmie_Item_data_remainder_sub_0x124[4] = {
+	(AObjEvent32 *)dITCommonObject_Starmie_Item_data_remainder_sub_0x14,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x11458 (was gap+0x134, 1152 bytes) */
@@ -4581,9 +4452,7 @@ DObjDesc dITCommonObject_Sawamura_Item_data_DObjDesc[3] = {
 
 /* @ 0x11FC4, 1284 bytes (raw gap) */
 /* gap sub-block @ 0x11FC4 (was gap+0x0, 20 bytes) */
-u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4[20] = {
-	#include <ITCommonObject/gap_0x11FC4.data.inc.c>
-};
+PAD(20);
 
 /* gap sub-block @ 0x11FD8 (was gap+0x14, 40 bytes) */
 u16 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14[16] = {
@@ -4646,14 +4515,47 @@ DObjDesc dITCommonObject_Dogas_Item_data_DObjDesc[4] = {
 
 /* @ 0x128D0, 1704 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0x128D0 (was gap+0x0, 12 bytes) */
-u8 dITCommonObject_Dogas_Item_data_remainder[12] = {
-	#include <ITCommonObject/dITCommonObject_Dogas_Item_data_remainder.data.inc.c>
+AObjEvent32 *dITCommonObject_Dogas_Item_data_remainder[3] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dITCommonObject_Dogas_Item_data_remainder_sub_0xC,
 };
 
 /* gap sub-block @ 0x128DC (was gap+0xC, 140 bytes) */
-u8 dITCommonObject_Dogas_Item_data_remainder_sub_0xC[140] = {
-	#include <ITCommonObject/dITCommonObject_Dogas_Item_data_remainder_sub_0xC.data.inc.c>
+u32 dITCommonObject_Dogas_Item_data_remainder_sub_0xC[31] = {
+	aobjEvent32SetVal0Rate(0x004, 0),
+	    0x3DB2B8C2,  /* 0.0872664600610733f */
+	aobjEvent32SetValRate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	    0x40B3661E,  /* 5.606215476989746f */
+	aobjEvent32SetValAfterBlock(0x050, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRate(0x004, 16),
+	    0x00000000,  /* 0.0f */
+	    0xBBFD4A3F,  /* -0.007729798089712858f */
+	aobjEvent32SetVal0RateBlock(0x020, 16),
+	    0x42700000,  /* 60.0f */
+	aobjEvent32SetValRate(0x020, 16),
+	    0x00000000,  /* 0.0f */
+	    0xC09E6030,  /* -4.949241638183594f */
+	aobjEvent32SetVal0RateBlock(0x004, 16),
+	    0xBDB2B8C2,  /* -0.0872664600610733f */
+	aobjEvent32SetValRate(0x004, 16),
+	    0x00000000,  /* 0.0f */
+	    0x3BE270EF,  /* 0.006910435389727354f */
+	aobjEvent32SetVal0RateBlock(0x020, 16),
+	    0xC2700000,  /* -60.0f */
+	aobjEvent32SetValRate(0x020, 16),
+	    0x00000000,  /* 0.0f */
+	    0x40AD81C2,  /* 5.422089576721191f */
+	aobjEvent32SetVal0RateBlock(0x004, 16),
+	    0x3DB2B8C2,  /* 0.0872664600610733f */
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dITCommonObject_Dogas_Item_data_remainder_sub_0xC,
+	aobjEvent32End(),
 };
+PAD(16);
 
 /* @tex fmt=I4 dim=32x32 */
 u8 dITCommonObject_Tex_0x12968[520] = {
@@ -4696,7 +4598,7 @@ MObjSub dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x18[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)0x00000000,
+		NULL,
 		0x3201,
 		0x04, 0x00,
 		0x0020,
@@ -5031,11 +4933,58 @@ DObjDesc dITCommonObject_Pippi_Item_data_DObjDesc[3] = {
 
 /* @ 0x1361C, 196 bytes (vertex / DL / texture pool) */
 /* gap sub-block @ 0x1361C (was gap+0x0, 8 bytes) */
-u8 dITCommonObject_Pippi_Item_data_remainder[8] = {
-	#include <ITCommonObject/dITCommonObject_Pippi_Item_data_remainder.data.inc.c>
+AObjEvent32 *dITCommonObject_Pippi_Item_data_remainder[2] = {
+	NULL,
+	(AObjEvent32 *)dITCommonObject_Pippi_Item_data_remainder_sub_0x8,
 };
 
 /* gap sub-block @ 0x13624 (was gap+0x8, 188 bytes) */
-u8 dITCommonObject_Pippi_Item_data_remainder_sub_0x8[188] = {
-	#include <ITCommonObject/dITCommonObject_Pippi_Item_data_remainder_sub_0x8.data.inc.c>
+u32 dITCommonObject_Pippi_Item_data_remainder_sub_0x8[47] = {
+	aobjEvent32SetValRate(0x180, 0),
+	    0x3ECB5FEB,  /* 0.39721617102622986f */
+	    0x3C46F69E,  /* 0.012143759056925774f */
+	    0x3ED1DF43,  /* 0.4099064767360687f */
+	    0x3F4A6EA4,  /* 0.7907507419586182f */
+	aobjEvent32SetValBlock(0x200, 0),
+	    0x3727C5AC,  /* 9.999999747378752e-06f */
+	aobjEvent32SetVal(0x200, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRate(0x080, 8),
+	    0x3FA3BC8B,  /* 1.2791913747787476f */
+	    0x3EC4A971,  /* 0.38410523533821106f */
+	aobjEvent32SetVal0RateBlock(0x100, 4),
+	    0x3FFEB354,  /* 1.9898476600646973f */
+	aobjEvent32SetValRate(0x100, 4),
+	    0x3F89BF2D,  /* 1.0761467218399048f */
+	    0xBF078A89,  /* -0.5294576287269592f */
+	aobjEvent32Wait(1),
+	aobjEvent32SetVal(0x200, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32Wait(3),
+	aobjEvent32SetValRate(0x080, 2),
+	    0x4004A121,  /* 2.0723345279693604f */
+	    0xBABB38B9,  /* -0.001428387244231999f */
+	aobjEvent32SetVal0RateBlock(0x100, 2),
+	    0x3E53D395,  /* 0.20686180889606476f */
+	aobjEvent32SetVal(0x200, 11),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRateBlock(0x180, 3),
+	    0x3FB32AFB,  /* 1.3997491598129272f */
+	    0xBF0034D0,  /* -0.5008058547973633f */
+	    0x3F29E90C,  /* 0.6637122631072998f */
+	    0x3EC6D60F,  /* 0.3883518874645233f */
+	aobjEvent32SetValRate(0x080, 2),
+	    0x3F3BC73D,  /* 0.7335088849067688f */
+	    0xBD6E3D39,  /* -0.058163855224847794f */
+	aobjEvent32SetVal0RateBlock(0x100, 2),
+	    0x3F9FACF4,  /* 1.2474656105041504f */
+	aobjEvent32SetValRateBlock(0x180, 4),
+	    0x3F867F81,  /* 1.050766110420227f */
+	    0x3B850433,  /* 0.004059338476508856f */
+	    0x3F6C824D,  /* 0.9238632321357727f */
+	    0xBC5198EB,  /* -0.012792806141078472f */
+	aobjEvent32SetVal0RateBlock(0x180, 2),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };

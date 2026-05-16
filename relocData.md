@@ -536,6 +536,65 @@ Recent round of structural work:
   `Gfx` / `LUT` / `Tex` / `MObjSub` / `animjoint` / `matanim` named
   sub-blocks, all `(void*)0xXXXXYYYY` hex placeholders replaced with
   `(void*)&local_sym`. See `tools/symbolizeRelocFile.py`.
+  - **matanimjoints split (2026-05-16)** — the four `*_matanimjoints`
+    blocks (`Star_Item`, `FFlower_Item`, `SpearSwarm_Weapon`,
+    `KamexHydro_Weapon`) were each a single mis-typed `u32[N]` blob that
+    actually packs three different things: the matanim joint table
+    (`AObjEvent32 *[]` per-MObj + per-track pointer arrays), the
+    `AObjEvent32` matanim scripts they point at (kept inline with
+    `aobjEvent32*()` macros), and a trailing model pool belonging to the
+    *next* item (`Sword`/`StarRod`/`Kamex`) — `Tex` / `LUT` palette /
+    `Vtx` / `Gfx` DL / `DObjDLLink`, recovered by walking the F3DEX2
+    DLs (`G_VTX` / `G_SETTIMG` / `G_LOADTLUT` / `G_DL` targets) and the
+    intern reloc chain. Each blob became 9–16 typed sub-decls; `.reloc`
+    targets rewritten from `matanimjoints+0xBIG` to the real sub-symbol.
+    Byte-identical on US + JP.
+  - **AObjEvent32 retype pass (2026-05-16)** — ran `retypeAObjEventBlocks.py 86`
+    to clear the per-item `_data_remainder` raw-`u8` blobs: 39 blocks
+    retyped (27 `u32` AObjEvent32 anim scripts decoded inline with
+    `aobjEvent32*()` macros, 10 `AObjEvent32 *[]` pointer arrays, 2
+    `AObjEvent32 **[]` master arrays) plus 6 hand-typed `AObjEvent32 *[]`
+    anim-joint tables (`Harisen`/`GShell`/`Tosakinto`/`Lizardon`/`Spear`
+    `_gap` tables) and one `u16 *[5]` palette-pointer table (`MBall`).
+    Untyped chain-pointer-bearing `u8` blocks went 46 → 18. The 18
+    remaining are bespoke: `_data_remainder` script bodies with embedded
+    forward chain pointers, `_post` DObjDesc-style structs, and
+    `Tex_0x7728` (a pool with a stray internal chain pointer) — each
+    needs individual struct typing. Byte-identical on US + JP.
+  - **Typing cleanup (2026-05-16)** — fixed mis-typed/mis-named blocks:
+    two all-zero `_gap` blobs (`Tomato_Item_data_pool_gap_0x0B34`,
+    `BombHei_…_gap_0x347C`) → `PAD()`; three include-extension
+    mismatches (`LUT_0x0B48` → `.palette.inc.c` — it's a real TLUT, set
+    via `gsDPSetTextureImage(RGBA16,1,…)`+`gsDPLoadTLUTCmd`, not a
+    texture; `Vtx_0x0F78`/`Vtx_0x0FB8` → `.vtx.inc.c`); four MObjSub
+    `palettes`-array targets still typed `u8[40]` → `u16[16]` palette +
+    `PAD(8)` (`Heart_…_sub_0xC`/`sub_0x34`, `StarRod_Weapon_data_post_0x98`,
+    `Taru_…_sub_0x34`). Note: `PAD()` must use a decimal literal —
+    `extractRelocInc.py` does not parse `PAD(0x14)` and silently treats
+    the block as 0 bytes. Byte-identical on US + JP.
+  - **AObjEvent32 script cleanup (2026-05-16)** — `Harisen_…_sub_0x14`
+    typed `u8`→`u32` anim script; `BombHei_…_gap_0x347C_sub_0x4` (a 312 B
+    `u8` blob) split into `Vtx[4]` + `Gfx[29]` DL + a `void *[4]`
+    DL-fragment link table (walked the F3DEX2 DL for the boundaries).
+    The `retypeAObjEventBlocks.py` pass had over-eagerly decoded blocks
+    that were really padding/leftover: 9 all-zero `u32[N]` blobs
+    (mis-rendered as N× `aobjEvent32End()`) → `PAD()`, and 4 real
+    scripts with trailing extra `End()`s (`Harisen_…_sub_0x34`,
+    `MLucky_…_sub_0xC`, `Egg_Item_animjoints`, `Dogas_…_sub_0xC`)
+    trimmed to a single terminating `End()` + trailing `PAD()`. A
+    decoded AObjEvent32 script has exactly one `aobjEvent32End()`.
+    Byte-identical on US + JP.
+  - **MObjSub-target / table-target retypes (2026-05-16)** —
+    `LGunAmmo_Weapon_data_post_0x40` retyped `u8[40]` → `u16[16]`
+    palette + `PAD(8)` (it's a MObjSub `palettes`-array target, reached
+    via `FFlower_…_mobjsubs_gap_0x4388_sub_0xC`). Four AObjEvent32
+    script bodies pointed at by the `DObjDesc`-trailing `AObjEvent32 *[]`
+    tables (`GShell_…_sub_0xC`, `Tosakinto_…_sub_0x14`,
+    `Lizardon_…_sub_0x14`, `Spear_…_sub_0x14`) retyped `u8` → `u32`.
+    All 16 `(void**)0x00000000` raw-hex placeholders (MObjSub `sprites`
+    fields, all genuinely NULL) rewritten as `NULL` — the file has no
+    non-zero hardcoded chain hex left (the earlier `symbolizeRelocFile.py`
+    pass resolved those). Byte-identical on US + JP.
 - `KirbySpecial1` (fid 230, 48 B) → `void *[9]` table of cross-file
   `WPAttributes` pointers — one entry per fighter whose neutral
   special Kirby can copy. Extern chain with 9 entries, all resolved

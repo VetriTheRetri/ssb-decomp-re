@@ -2,7 +2,7 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels resolved via src/relocData/264_GRYamabukiMap.reloc .o symbol table
 
-intern dGRYamabukiMap_ItemHead_0x0014+0x84 dGRYamabukiMap_gap_0x0000
+intern dGRYamabukiMap_ItemHead_0x0014+0x84 dGRYamabukiMap_item_weights
 
 extern dGRYamabukiMap_ItemHead_0x0014 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x44F0
 extern dGRYamabukiMap_ItemHead_0x0014+0x4 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x4658

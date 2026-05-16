@@ -11,7 +11,7 @@ extern dGRYamabukiMap_ItemHead_0x0014+0x30 dGRYamabukiMap_FushigibanaRazor_Weapo
 extern dGRYamabukiMap_ItemHead_0x0014+0x40 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x6B84  # -> file 112 (StageYamabukiFile2)
 extern dGRYamabukiMap_ItemHead_0x0014+0x48 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x26980  # -> file 94 (StagePokemon)
 extern dGRYamabukiMap_ItemHead_0x0014+0x80 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x598  # -> file 160 (StageYamabukiFile4)
-intern dGRYamabukiMap_ItemHead_0x0014+0x84 dGRYamabukiMap_gap_0x0000
+intern dGRYamabukiMap_ItemHead_0x0014+0x84 dGRYamabukiMap_item_weights
 extern dGRYamabukiMap_GLucky_ItemAttributes dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x58  # -> file 159 (StageYamabukiFile3)
 extern dGRYamabukiMap_GLucky_ItemAttributes+0x8 dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0xE8  # -> file 159 (StageYamabukiFile3)
 extern dGRYamabukiMap_Marumine_ItemAttributes dGRYamabukiMap_FushigibanaRazor_WeaponAttributes+0x488  # -> file 159 (StageYamabukiFile3)

@@ -202,7 +202,7 @@ _PAD_RE = re.compile(r"^\s*PAD\(\s*(?P<n>\d+)\s*\)\s*;", re.MULTILINE)
 _SUPPORTED_DECL_TYPES = frozenset({
     "u8", "u16", "u32", "u64", "s8", "s16", "s32", "s64", "f32",
     "Vtx", "Vtx_t", "Gfx", "Bitmap", "DObjDesc", "DObjDLLink", "MObjSub",
-    "Sprite", "MPGroundData", "MPGeometryData",
+    "Sprite", "MPGroundData", "MPGeometryData", "MPItemWeights",
     "MPVertexData", "MPVertexLinks", "MPLineInfo", "MPMapObjData",
     "FTAttributes", "FTThrowHitDesc",
     "WPAttributes", "ITAttributes",
@@ -282,6 +282,7 @@ _FIXED_TYPE_SIZES = {
     "Vtx": 16, "Vtx_t": 16, "Gfx": 8, "Bitmap": 16,
     "DObjDesc": 44, "DObjDLLink": 8, "MObjSub": 120, "Sprite": 68,
     "MPGroundData": 0xA8,
+    "MPItemWeights": 20,
     "MPGeometryData": 0x1C,
     "MPVertexData": 6,    # Vec2h pos + u16 flags
     "MPVertexLinks": 4,   # u16 vertex1, vertex2
@@ -289,7 +290,7 @@ _FIXED_TYPE_SIZES = {
     "MPMapObjData": 6,    # u16 mapobj_kind + Vec2h pos
 
     "FTAttributes": 0x488,       # from src/ft/fttypes.h, matches stock main sources
-    "FTThrowHitDesc": 0x60,      # from src/ft/fttypes.h
+    "FTThrowHitDesc": 0x1C,      # 7 × s32, src/ft/fttypes.h
     "WPAttributes": 52,          # from src/wp/wptypes.h (0x34 bytes)
     "ITAttributes": 72,          # from src/it/ittypes.h (0x48 bytes)
 }

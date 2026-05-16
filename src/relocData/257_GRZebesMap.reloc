@@ -8,4 +8,4 @@ extern dGRZebesMap_MapHeader_0x0014+0x1C dGRZebesMap_Acid_GRAttackColl+0x6354  #
 extern dGRZebesMap_MapHeader_0x0014+0x40 dGRZebesMap_Acid_GRAttackColl+0x60A4  # -> file 105 (StageZebesFile2)
 extern dGRZebesMap_MapHeader_0x0014+0x48 dGRZebesMap_Acid_GRAttackColl+0x26BCC  # -> file 89 (StageZebes)
 extern dGRZebesMap_MapHeader_0x0014+0x80 dGRZebesMap_Acid_GRAttackColl+0xA4C  # -> file 157 (StageZebesFile3)
-intern dGRZebesMap_MapHeader_0x0014+0x84 dGRZebesMap_gap_0x0000
+intern dGRZebesMap_MapHeader_0x0014+0x84 dGRZebesMap_item_weights

@@ -7,9 +7,11 @@
 #include "relocdata_types.h"
 
 /* Item-randomizer weights — referenced by header.item_weights */
-u8 dGRZebesMap_gap_0x0000[20] = {
-	#include <GRZebesMap/gap_0x0000.data.inc.c>
-};
+#if defined(REGION_JP)
+MPItemWeights dGRZebesMap_item_weights = { { 0x0A, 0x0A, 0xC8, 0x00, 0x0A, 0x07, 0x03, 0x0F, 0x05, 0x08, 0x06, 0x1E, 0x0F, 0x07, 0x14, 0x0A, 0x0A, 0x05, 0x05, 0x12 } };
+#else
+MPItemWeights dGRZebesMap_item_weights = { { 0x14, 0x08, 0xC8, 0x00, 0x0A, 0x05, 0x05, 0x14, 0x05, 0x08, 0x0C, 0x1E, 0x0F, 0x08, 0x16, 0x0C, 0x0E, 0x05, 0x07, 0x10 } };
+#endif
 
 /* MPGroundData (typed via tools/typeStageMap.py) */
 
@@ -54,7 +56,7 @@ MPGroundData dGRZebesMap_MapHeader_0x0014 =
     -9500,  /* map_bound_left */
     nSYAudioBGMZebes,  /* bgm_id */
     (void *)((u8 *)dStageZebesFile2_gap_0x0000 + 0xB08),  /* map_nodes */
-    dGRZebesMap_gap_0x0000,  /* item_weights */
+    &dGRZebesMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     4400,  /* camera_bound_team_top */
     -2100,  /* camera_bound_team_bottom */

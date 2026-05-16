@@ -6,4 +6,4 @@ extern dGRHyruleMap_MapHeader_0x0014+0x10 dGRHyruleMap_TwisterThrow_HitDesc+0x56
 extern dGRHyruleMap_MapHeader_0x0014+0x30 dGRHyruleMap_TwisterThrow_HitDesc+0x65EC  # -> file 113 (StageHyruleFile2)
 extern dGRHyruleMap_MapHeader_0x0014+0x40 dGRHyruleMap_TwisterThrow_HitDesc+0x58E0  # -> file 113 (StageHyruleFile2)
 extern dGRHyruleMap_MapHeader_0x0014+0x48 dGRHyruleMap_TwisterThrow_HitDesc+0x26BCC  # -> file 95 (StageCastle)
-intern dGRHyruleMap_MapHeader_0x0014+0x84 dGRHyruleMap_gap_0x0000
+intern dGRHyruleMap_MapHeader_0x0014+0x84 dGRHyruleMap_item_weights

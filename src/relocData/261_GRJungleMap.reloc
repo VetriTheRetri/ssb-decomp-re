@@ -9,4 +9,4 @@ extern dGRJungleMap_MapHeader_0x0014+0x30 dGRJungleMap_TaruCannThrow_HitDesc+0xD
 extern dGRJungleMap_MapHeader_0x0014+0x40 dGRJungleMap_TaruCannThrow_HitDesc+0x9A40  # -> file 108 (StageJungleFile2)
 extern dGRJungleMap_MapHeader_0x0014+0x48 dGRJungleMap_TaruCannThrow_HitDesc+0x26BCC  # -> file 92 (StageJungle)
 extern dGRJungleMap_MapHeader_0x0014+0x80 dGRJungleMap_TaruCannThrow_HitDesc+0x9DC  # -> file 158 (StageJungleFile3)
-intern dGRJungleMap_MapHeader_0x0014+0x84 dGRJungleMap_gap_0x0000
+intern dGRJungleMap_MapHeader_0x0014+0x84 dGRJungleMap_item_weights

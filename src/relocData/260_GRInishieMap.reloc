@@ -11,7 +11,7 @@ extern dGRInishieMap_MapHeader_0x0014+0x30 dGRInishieMap_Pakkun_ItemAttributes+0
 extern dGRInishieMap_MapHeader_0x0014+0x40 dGRInishieMap_Pakkun_ItemAttributes+0x6578  # -> file 107 (StageInishieFile2)
 extern dGRInishieMap_MapHeader_0x0014+0x48 dGRInishieMap_Pakkun_ItemAttributes+0x26B68  # -> file 91 (StageInishieBackground)
 extern dGRInishieMap_MapHeader_0x0014+0x80 dGRInishieMap_Pakkun_ItemAttributes+0x4D0  # -> file 155 (StageInishieFile3)
-intern dGRInishieMap_MapHeader_0x0014+0x84 dGRInishieMap_gap_0x0000
+intern dGRInishieMap_MapHeader_0x0014+0x84 dGRInishieMap_item_weights
 extern dGRInishieMap_PowerBlock_ItemAttributes dGRInishieMap_Pakkun_ItemAttributes+0x10D8  # -> file 155 (StageInishieFile3)
 extern dGRInishieMap_PowerBlock_ItemAttributes+0x8 dGRInishieMap_Pakkun_ItemAttributes+0x1290  # -> file 155 (StageInishieFile3)
 extern dGRInishieMap_Pakkun_ItemAttributes dGRInishieMap_Pakkun_ItemAttributes+0xB10  # -> file 155 (StageInishieFile3)

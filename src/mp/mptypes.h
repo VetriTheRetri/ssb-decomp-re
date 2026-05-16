@@ -163,7 +163,7 @@ struct MPCollData
 
 struct MPItemWeights
 {
-    u8 values[1];
+    u8 values[nITKindCommonEnd + 1]; // one randomizer weight per common item kind (nITKindCommonStart..nITKindCommonEnd)
 };
 
 struct MPGroundDesc

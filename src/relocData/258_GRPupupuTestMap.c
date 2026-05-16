@@ -19,7 +19,7 @@ extern u32 dStagePupupuFile2_Layer3Anim_AnimJoint[];
 extern u32 dStagePupupuFile2_MPGeometryData_0x2094[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
-u8 dGRPupupuTestMap_item_weights[20] = { 0x46, 0x28, 0x78, 0x00, 0x0A, 0x07, 0x06, 0x0A, 0x05, 0x0A, 0x0A, 0x08, 0x0A, 0x07, 0x0A, 0x0A, 0x0A, 0x05, 0x05, 0x12 };
+MPItemWeights dGRPupupuTestMap_item_weights = { { 0x46, 0x28, 0x78, 0x00, 0x0A, 0x07, 0x06, 0x0A, 0x05, 0x0A, 0x0A, 0x08, 0x0A, 0x07, 0x0A, 0x0A, 0x0A, 0x05, 0x05, 0x12 } };
 
 MPGroundData dGRPupupuTestMap_header =
 {
@@ -54,7 +54,7 @@ MPGroundData dGRPupupuTestMap_header =
     -11000,  /* map_bound_left */
     nSYAudioBGMPupupu,  /* bgm_id */
     NULL,  /* map_nodes */
-    dGRPupupuTestMap_item_weights,  /* item_weights */
+    &dGRPupupuTestMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     4000,  /* camera_bound_team_top */
     -2500,  /* camera_bound_team_bottom */

@@ -5,11 +5,14 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <ft/fttypes.h>  // FTThrowHitDesc
 
 /* Item-randomizer weights — referenced by header.item_weights */
-u8 dGRHyruleMap_gap_0x0000[20] = {
-	#include <GRHyruleMap/gap_0x0000.data.inc.c>
-};
+#if defined(REGION_JP)
+MPItemWeights dGRHyruleMap_item_weights = { { 0x46, 0x28, 0x96, 0x00, 0x05, 0x19, 0x06, 0x0A, 0x05, 0x08, 0x0A, 0x08, 0x0A, 0x07, 0x0A, 0x0A, 0x0A, 0x05, 0x05, 0x12 } };
+#else
+MPItemWeights dGRHyruleMap_item_weights = { { 0x50, 0x3C, 0x50, 0x00, 0x00, 0x14, 0x06, 0x0F, 0x08, 0x08, 0x0A, 0x08, 0x0A, 0x0A, 0x0D, 0x0A, 0x0A, 0x0A, 0x05, 0x12 } };
+#endif
 
 /* MPGroundData (typed via tools/typeStageMap.py) */
 
@@ -52,7 +55,7 @@ MPGroundData dGRHyruleMap_MapHeader_0x0014 =
     -12000,  /* map_bound_left */
     nSYAudioBGMHyrule,  /* bgm_id */
     NULL,  /* map_nodes */
-    dGRHyruleMap_gap_0x0000,  /* item_weights */
+    &dGRHyruleMap_item_weights,  /* item_weights */
     -2600,  /* alt_warning */
     6000,  /* camera_bound_team_top */
     -2100,  /* camera_bound_team_bottom */
@@ -66,8 +69,10 @@ MPGroundData dGRHyruleMap_MapHeader_0x0014 =
     { 0, 0, 15000 },  /* zoom_end */
 };
 
-/* Raw data from file offset 0x00BC to 0x00E0 (36 bytes) */
-u8 dGRHyruleMap_TwisterThrow_HitDesc[36] = {
-	#include <GRHyruleMap/TwisterThrow_HitDesc.data.inc.c>
-};
+/* FTThrowHitDesc @ 0xBC — hit params for the tornado's fighter-throw.
+ * Read by ftCommonTwisterShootFighter() via llGRHyruleMapTwisterThrowHitDesc. */
+FTThrowHitDesc dGRHyruleMap_TwisterThrow_HitDesc = { 2, 14, 90, 60, 0, 115, 0 };
+
+/* 8 B trailing pad — end of file. */
+PAD(8);
 

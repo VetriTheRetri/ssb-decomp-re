@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2068 / 2132** files at 100% (97.84% of bytes typed; 368,992 / 17,082,000 bytes still untyped across 64 files).
+Overall: **2070 / 2132** files at 100% (97.84% of bytes typed; 368,820 / 17,082,000 bytes still untyped across 62 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -46,24 +46,22 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 159 | StageYamabukiFile3 | 10976 | 10920 | 14 | 0.51% |
 | 155 | StageInishieFile3 | 5136 | 5108 | 6 | 0.55% |
 | 154 | StageYosterFile3 | 1712 | 1700 | 2 | 0.70% |
-| 264 | GRYamabukiMap | 832 | 664 | 11 | 20.19% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
+| 264 | GRYamabukiMap | 832 | 644 | 10 | 22.60% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
 | 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
-| 260 | GRInishieMap | 368 | 200 | 4 | 45.65% |
+| 260 | GRInishieMap | 368 | 180 | 3 | 51.09% |
 | 295 | GRBonus3Map | 272 | 104 | 2 | 61.76% |
 | 262 | GRSectorMap | 304 | 116 | 2 | 61.84% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
 | 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
 | 166 | IFCommonPlayer | 976 | 272 | 1 | 72.13% |
-| 257 | GRZebesMap | 224 | 56 | 2 | 75.00% |
-| 261 | GRJungleMap | 224 | 56 | 2 | 75.00% |
-| 265 | GRHyruleMap | 224 | 56 | 2 | 75.00% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
+| 257 | GRZebesMap | 224 | 36 | 1 | 83.93% |
 | 102 | StagePupupuBeta2 | 10496 | 1412 | 4 | 86.55% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
@@ -607,6 +605,29 @@ Recent round of structural work:
   (the `u32`-macro blocks already counted as typed) — a structural-
   correctness fix. fid 133 also gained a `Vtx[30]` / `DObjDLLink[3]`
   retype and lost its last raw `gap_` block.
+- `GR*Map` stage-hazard throw descriptors (fids 261, 265) — the trailing
+  36-B `u8` block in `GRJungleMap` (`TaruCannThrow_HitDesc`) and
+  `GRHyruleMap` (`TwisterThrow_HitDesc`) is really an `FTThrowHitDesc`
+  (7 × s32 = 28 B) + 8 B pad — confirmed by `ftcommontarucann.c` /
+  `ftcommontwister.c`, which cast `llGR*Map*ThrowHitDesc` to
+  `FTThrowHitDesc *`. Retyped 2026-05-15 (both 75% → 91.07%). Fixed a
+  wrong `FTThrowHitDesc` size (`0x60` → `0x1C`) in
+  `extractRelocInc.py`'s `_FIXED_TYPE_SIZES`. Also renamed the
+  `gap_0x0000` item-weight blocks to `item_weights` in fids 257/260/261/
+  264/265 for consistency with the other map files.
+- `GR*Map` item-weight blocks (fids 255–270) — the 20-B `item_weights`
+  block in every stage map was typed `u8[20]`; it is really an
+  `MPItemWeights` (one randomizer weight per common item kind,
+  `nITKindCommonStart..nITKindCommonEnd` = 20 — confirmed by the
+  `itmanager.c` weight loops indexing `values[0..19]`). Changed the
+  `MPItemWeights` struct from the `values[1]` flex-array placeholder to
+  `values[20]`, retyped all 131 `item_weights` declarations across 13
+  files as hardcoded inline `MPItemWeights` (2026-05-15), and added
+  `MPItemWeights` to `extractRelocInc.py` / `genRelocMaster.py` size
+  tables. 10 map files reached 100%. Still untyped: the stage-hazard
+  `*_ItemAttributes` (`ITAttributes`), `*_WeaponAttributes`
+  (`WPAttributes`), `*_GRAttackColl`, `*_HitParties` blocks in fids
+  257/260/262/264/295 — each needs a full struct-field initializer.
 - `ITCommonData` (fid 251, 3,392 B) — item attribute + weapon attribute
   pool, now **fully typed**: 34 `ITAttributes` struct initializers (33
   matching + 1 Sawamura with IDO bitfield bug comment), 6

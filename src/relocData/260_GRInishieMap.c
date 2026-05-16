@@ -11,9 +11,11 @@ extern u8 dStageInishieFile2_Tex_0x02E0[];
 extern u8 dStageInishieFile2_Tex_0x12E8[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
-u8 dGRInishieMap_gap_0x0000[20] = {
-	#include <GRInishieMap/gap_0x0000.data.inc.c>
-};
+#if defined(REGION_JP)
+MPItemWeights dGRInishieMap_item_weights = { { 0x50, 0x28, 0x78, 0x00, 0x0A, 0x07, 0x0A, 0x0A, 0x05, 0x0A, 0x0A, 0x08, 0x14, 0x12, 0x0A, 0x0E, 0x0A, 0x05, 0x05, 0x12 } };
+#else
+MPItemWeights dGRInishieMap_item_weights = { { 0x50, 0x28, 0x78, 0x00, 0x0A, 0x05, 0x0A, 0x0A, 0x05, 0x08, 0x08, 0x07, 0x14, 0x12, 0x08, 0x0E, 0x06, 0x19, 0x0A, 0x12 } };
+#endif
 
 /* MPGroundData (typed via tools/typeStageMap.py) */
 
@@ -61,7 +63,7 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
     -7400,  /* map_bound_left */
     nSYAudioBGMInishie,  /* bgm_id */
     (void *)((u8 *)dStageInishieFile2_gap_0x0000 + 0x5F0),  /* map_nodes */
-    dGRInishieMap_gap_0x0000,  /* item_weights */
+    &dGRInishieMap_item_weights,  /* item_weights */
     -2200,  /* alt_warning */
     3000,  /* camera_bound_team_top */
     -1000,  /* camera_bound_team_bottom */

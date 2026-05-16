@@ -13,9 +13,11 @@ extern u8 dStageYamabukiFile2_Tex_0x2360[];
 extern u8 dStageYamabukiFile2_Tex_0x0460[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
-u8 dGRYamabukiMap_gap_0x0000[20] = {
-	#include <GRYamabukiMap/gap_0x0000.data.inc.c>
-};
+#if defined(REGION_JP)
+MPItemWeights dGRYamabukiMap_item_weights = { { 0x5A, 0x28, 0x50, 0x00, 0x0A, 0x07, 0x06, 0x0A, 0x05, 0x0A, 0x0A, 0x0D, 0x0A, 0x07, 0x0F, 0x0A, 0x0A, 0x05, 0x05, 0x28 } };
+#else
+MPItemWeights dGRYamabukiMap_item_weights = { { 0x64, 0x28, 0x50, 0x00, 0x0C, 0x06, 0x08, 0x0A, 0x08, 0x0C, 0x09, 0x0D, 0x0A, 0x0A, 0x11, 0x0A, 0x12, 0x04, 0x08, 0x28 } };
+#endif
 
 /* MPGroundData (typed via tools/typeStageMap.py) */
 
@@ -63,7 +65,7 @@ MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
     -10000,  /* map_bound_left */
     nSYAudioBGMYamabuki,  /* bgm_id */
     (void *)((u8 *)dStageYamabukiFile2_gap_0x0000 + 0x8A0),  /* map_nodes */
-    dGRYamabukiMap_gap_0x0000,  /* item_weights */
+    &dGRYamabukiMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     5000,  /* camera_bound_team_top */
     -2500,  /* camera_bound_team_bottom */

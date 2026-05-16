@@ -531,9 +531,11 @@ DObjDLLink dGRBonus2FoxFile2_DLLink_0x2900[] = {
 	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x2910 (was gap+0x1E38, 24 bytes) */
-u8 dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1E38[24] = {
-	#include <GRBonus2FoxFile2/gap_0x0AD8_sub_0x1E38.data.inc.c>
+/* DObjDLLink @ 0x2910 (3 entries) — referenced by Layer1DObj. */
+DObjDLLink dGRBonus2FoxFile2_DLLink_0x2910[3] = {
+	{ 0, dGRBonus2FoxFile2_DL_0x1DB8 },
+	{ 1, dGRBonus2FoxFile2_DL_0x2890 },
+	{ 4, NULL },
 };
 
 /* DObjDLLink @ 0x1E50 (2 entries) */
@@ -592,7 +594,7 @@ DObjDesc dGRBonus2FoxFile2_Layer1DObj[] = {
 	{ 1, (void*)0x00000000, { -2400.0f, -1200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -3900.0f, -1500.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2900, { -591.7717895507812f, -3884.810546875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1E38, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2910, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2928, { 2628.000244140625f, 750.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2938, { 2171.992919921875f, -450.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2FoxFile2_DLLink_0x2948, { 372.00335693359375f, -450.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

@@ -319,9 +319,11 @@ Gfx dGRBonus2MarioFile2_DL_0x31F0[23] = {
 	#include <GRBonus2MarioFile2/DL_0x31F0.dl.inc.c>
 };
 
-/* gap sub-block @ 0x32A8 (was gap+0x27D0, 24 bytes) */
-u8 dGRBonus2MarioFile2_gap_0x0AD8_sub_0x27D0[24] = {
-	#include <GRBonus2MarioFile2/gap_0x0AD8_sub_0x27D0.data.inc.c>
+/* DObjDLLink @ 0x32A8 (3 entries) — referenced by Layer1DObj[11]. */
+DObjDLLink dGRBonus2MarioFile2_DLLink_0x32A8[3] = {
+	{ 0, dGRBonus2MarioFile2_DL_0x28D0 },
+	{ 1, dGRBonus2MarioFile2_DL_0x31F0 },
+	{ 4, NULL },
 };
 
 /* DObjDLLink @ 0x27E8 (2 entries) */
@@ -355,7 +357,7 @@ DObjDesc dGRBonus2MarioFile2_Layer1DObj[] = {
 	{ 1, (void*)0x00000000, { 300.0f, -3000.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -1800.0f, -6600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 5400.0f, -4200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dGRBonus2MarioFile2_gap_0x0AD8_sub_0x27D0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32A8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32C0, { 0.0f, -528.0000610351562f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32D0, { 2400.0f, -1344.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2MarioFile2_DLLink_0x32E0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

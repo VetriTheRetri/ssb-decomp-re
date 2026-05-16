@@ -358,9 +358,11 @@ Gfx dGRBonus2PurinFile2_DL_0x3060[14] = {
 	#include <GRBonus2PurinFile2/DL_0x3060.dl.inc.c>
 };
 
-/* gap sub-block @ 0x30D0 (was gap+0x27B4, 24 bytes) */
-u8 dGRBonus2PurinFile2_gap_0x091C_sub_0x27B4[24] = {
-	#include <GRBonus2PurinFile2/gap_0x091C_sub_0x27B4.data.inc.c>
+/* DObjDLLink @ 0x30D0 (3 entries) — referenced by Layer1DObj. */
+DObjDLLink dGRBonus2PurinFile2_DLLink_0x30D0[3] = {
+	{ 0, dGRBonus2PurinFile2_DL_0x1BD0 },
+	{ 1, dGRBonus2PurinFile2_DL_0x3060 },
+	{ 4, NULL },
 };
 
 /* DObjDLLink @ 0x27CC (2 entries) */
@@ -496,7 +498,7 @@ DObjDesc dGRBonus2PurinFile2_Layer1DObj[] = {
 	{ 1, (void*)0x00000000, { -4523.11669921875f, 3343.2470703125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -2061.471923828125f, 3527.922119140625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { -3900.0f, -852.24560546875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dGRBonus2PurinFile2_gap_0x091C_sub_0x27B4, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dGRBonus2PurinFile2_DLLink_0x30D0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2PurinFile2_DLLink_0x30E8, { -4523.11669921875f, 2893.2470703125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2PurinFile2_DLLink_0x30F8, { -3938.529052734375f, 3222.0771484375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2PurinFile2_DLLink_0x3108, { -3353.937744140625f, 3550.909912109375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

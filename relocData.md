@@ -29,13 +29,11 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2065 / 2132** files at 100% (97.84% of bytes typed; 369,536 / 17,082,000 bytes still untyped across 67 files).
+Overall: **2067 / 2132** files at 100% (97.84% of bytes typed; 369,440 / 17,082,000 bytes still untyped across 65 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
 Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is flat hex bytes (no nested `{...}` initializers). `.data.inc.c` files structured by a local `typedef struct` count as typed. Spritelist-driven files are 100% by construction. Sizes come from the `.data` section of the compiled US `.o`.
-
-Note: fids 102 (StagePupupuBeta2) and 104 (StagePupupuFile2) *regressed* in this metric on 2026-05-15 — not from lost work but from honesty. Both had blocks mis-typed as `Gfx[]` DLs / `u32` `aobjEvent32` anim scripts that counted as "typed". Splitting them into real `DObjDesc` arrays + `Gfx` DLs + raw `u8` Vtx/data pools exposed the genuinely-raw pool data the bogus typing had hidden.
 
 | FID | Name | Size (B) | Untyped (B) | Untyped blocks | Complete |
 |----:|---|---:|---:|---:|---:|
@@ -49,7 +47,7 @@ Note: fids 102 (StagePupupuBeta2) and 104 (StagePupupuFile2) *regressed* in this
 | 155 | StageInishieFile3 | 5136 | 5108 | 6 | 0.55% |
 | 154 | StageYosterFile3 | 1712 | 1700 | 2 | 0.70% |
 | 264 | GRYamabukiMap | 832 | 664 | 11 | 20.19% |
-| 138 | GRBonus2FoxFile2 | 68624 | 53864 | 3 | 21.51% |
+| 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
 | 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
@@ -100,12 +98,10 @@ Note: fids 102 (StagePupupuBeta2) and 104 (StagePupupuFile2) *regressed* in this
 | 338 | YoshiModel | 44256 | 432 | 4 | 99.02% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
 | 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
-| 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
+| 144 | GRBonus2CaptainFile2 | 20368 | 96 | 1 | 99.53% |
 | 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
-| 137 | GRBonus2MarioFile2 | 15648 | 24 | 1 | 99.85% |
-| 147 | GRBonus2PurinFile2 | 21728 | 24 | 1 | 99.89% |
 
 ### Per-region divergence (JP build)
 

@@ -32,15 +32,26 @@ SRC_DIR = PROJECT / "src" / "relocData"
 EXP_DIR = PROJECT / "build" / "us" / "src" / "relocData"
 
 
-# Regexes against expanded view
-_VTX_RE = re.compile(
-    r"gsSPVertex\(\s*\(\(u8\*\)(\w+_Tex_pool)\s*\+\s*0x([0-9A-Fa-f]+)\)"
-    r"\s*/\*\s*was\s*0x[0-9A-Fa-f]+\s*\*/\s*,\s*(\d+)\s*,"
-)
-_TEX_SETIMG_RE = re.compile(
-    r"gsDPSetTextureImage\([^,]+,\s*([^,]+),\s*\d+\s*,\s*"
-    r"\(\(u8\*\)(\w+_Tex_pool)\s*\+\s*0x([0-9A-Fa-f]+)\)"
-)
+# Regexes against expanded view — pool_sym is interpolated at match time
+# so any source-level symbol works (not just `*_Tex_pool`).
+def _make_vtx_re(pool_sym):
+    # Matches either `((u8*)pool + 0xN)` or bare `pool` (== offset 0).
+    return re.compile(
+        rf"gsSPVertex\(\s*(?:\(\(u8\*\){re.escape(pool_sym)}\s*\+\s*0x([0-9A-Fa-f]+)\)"
+        rf"|{re.escape(pool_sym)})"
+        rf"\s*/\*\s*was\s*0x[0-9A-Fa-f]+\s*\*/\s*,\s*(\d+)\s*,"
+    )
+
+
+def _make_tex_setimg_re(pool_sym):
+    # Matches either `((u8*)pool + 0xN)` or bare `pool` (== offset 0).
+    return re.compile(
+        rf"gsDPSetTextureImage\([^,]+,\s*([^,]+),\s*\d+\s*,\s*"
+        rf"(?:\(\(u8\*\){re.escape(pool_sym)}\s*\+\s*0x([0-9A-Fa-f]+)\)"
+        rf"|{re.escape(pool_sym)}\b)"
+    )
+
+
 _TEX_LOADBLOCK_RE = re.compile(
     r"gsDPLoadBlock\(\s*\w+\s*,\s*\d+\s*,\s*\d+\s*,\s*(\d+)\s*,\s*\d+\s*\)"
 )
@@ -53,23 +64,24 @@ def collect_refs(expanded_text, pool_sym):
     Overlapping Vtx spans (a DL referencing into the middle of another DL's
     Vtx array) are merged into a single union span — sub-references resolve
     to `+offset` entries against the unioned head."""
+    vtx_re = _make_vtx_re(pool_sym)
+    tex_setimg_re = _make_tex_setimg_re(pool_sym)
+
     vtx_spans = []  # list of (start, end)
     tex_refs = []   # list of (off, "Tex"/"palette", size)
 
-    for m in _VTX_RE.finditer(expanded_text):
-        if m.group(1) != pool_sym:
-            continue
-        off = int(m.group(2), 16)
-        count = int(m.group(3))
+    for m in vtx_re.finditer(expanded_text):
+        off = int(m.group(1), 16) if m.group(1) else 0
+        count = int(m.group(2))
         vtx_spans.append((off, off + count * 16))
 
     lines = expanded_text.split("\n")
     for i, line in enumerate(lines):
-        m = _TEX_SETIMG_RE.search(line)
-        if not m or m.group(2) != pool_sym:
+        m = tex_setimg_re.search(line)
+        if not m:
             continue
         siz = m.group(1).strip()
-        off = int(m.group(3), 16)
+        off = int(m.group(2), 16) if m.group(2) else 0
         for j in range(i + 1, min(i + 20, len(lines))):
             mb = _TEX_LOADBLOCK_RE.search(lines[j])
             if mb:
@@ -121,6 +133,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("fid", type=int)
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument(
+        "--sym",
+        help="Pool symbol to split. Defaults to `d<Name>_Tex_pool`. "
+             "Use this for any u8 pool block (e.g. data_trail_post).",
+    )
+    ap.add_argument(
+        "--prefix",
+        help="Prefix for new sub-decl symbols (e.g. "
+             "`dEFCommonEffects3_MBallRays_`). Defaults to `d<Name>_`.",
+    )
+    ap.add_argument(
+        "--base-offset",
+        type=lambda s: int(s, 0),
+        default=0,
+        help="File-absolute base offset added to pool-relative offsets "
+             "when naming new symbols (e.g. 0x918 for fid 85's trail_post).",
+    )
     args = ap.parse_args()
 
     fid = args.fid
@@ -136,17 +165,18 @@ def main():
     src = src_path.read_text()
     expanded = exp_path.read_text()
 
-    pool_sym = f"d{name}_Tex_pool"
-    # Find the pool declaration
+    pool_sym = args.sym if args.sym else f"d{name}_Tex_pool"
+    base_off = args.base_offset
+    # Find the pool declaration — accept both hex (0xN) and decimal sizes.
     pat = re.compile(
-        rf"u8\s+{re.escape(pool_sym)}\s*\[\s*0x([0-9A-Fa-f]+)\s*\]\s*=\s*\{{\n"
+        rf"u8\s+{re.escape(pool_sym)}\s*\[\s*(0x[0-9A-Fa-f]+|\d+)\s*\]\s*=\s*\{{\n"
         rf"(\s*)#include\s*<([^>]+)>\n\}};",
         re.MULTILINE,
     )
     m = pat.search(src)
     if not m:
         sys.exit(f"no u8 {pool_sym}[...] decl found in {src_path}")
-    pool_size = int(m.group(1), 16)
+    pool_size = int(m.group(1), 0)
     indent = m.group(2) or "\t"
     inc_path = m.group(3)  # e.g. "MVOpeningYamabuki/Tex_pool.tex.inc.c"
     inc_dir = inc_path.split("/", 1)[0]  # "MVOpeningYamabuki"
@@ -157,7 +187,7 @@ def main():
     # Build piece list covering [0, pool_size)
     pieces = []
     cursor = 0
-    prefix = f"d{name}_"
+    prefix = args.prefix if args.prefix else f"d{name}_"
 
     for i, (off, kind, size, count) in enumerate(refs):
         if cursor < off:
@@ -178,27 +208,31 @@ def main():
     if cursor < pool_size:
         pieces.append((cursor, pool_size - cursor, "gap", None, None))
 
-    # Generate new C source for the pool region
+    # Generate new C source for the pool region.
+    # `off` is pool-relative; `disp_off = off + base_off` is the file-absolute
+    # offset used in symbol/include names (so existing file-offset convention
+    # in fid 85's MBallRays blocks is preserved).
     out = []
     for off, size, kind, count, _ in pieces:
         # Skip 0-byte pieces (shouldn't happen)
         if size == 0:
             continue
+        disp_off = off + base_off
         if kind == "Vtx":
-            sym = f"{prefix}Vtx_0x{off:04X}"
-            inc = f"<{inc_dir}/Vtx_0x{off:04X}.vtx.inc.c>"
+            sym = f"{prefix}Vtx_0x{disp_off:04X}"
+            inc = f"<{inc_dir}/Vtx_0x{disp_off:04X}.vtx.inc.c>"
             out.append(f"Vtx {sym}[{count}] = {{\n{indent}#include {inc}\n}};")
         elif kind == "Tex":
-            sym = f"{prefix}Tex_0x{off:04X}"
-            inc = f"<{inc_dir}/Tex_0x{off:04X}.tex.inc.c>"
+            sym = f"{prefix}Tex_0x{disp_off:04X}"
+            inc = f"<{inc_dir}/Tex_0x{disp_off:04X}.tex.inc.c>"
             out.append(f"u8 {sym}[0x{size:X}] = {{\n{indent}#include {inc}\n}};")
         elif kind == "palette":
-            sym = f"{prefix}palette_0x{off:04X}"
-            inc = f"<{inc_dir}/palette_0x{off:04X}.palette.inc.c>"
+            sym = f"{prefix}palette_0x{disp_off:04X}"
+            inc = f"<{inc_dir}/palette_0x{disp_off:04X}.palette.inc.c>"
             out.append(f"u16 {sym}[{size // 2}] = {{\n{indent}#include {inc}\n}};")
         else:  # gap
-            sym = f"{prefix}data_0x{off:04X}"
-            inc = f"<{inc_dir}/data_0x{off:04X}.data.inc.c>"
+            sym = f"{prefix}data_0x{disp_off:04X}"
+            inc = f"<{inc_dir}/data_0x{disp_off:04X}.data.inc.c>"
             out.append(f"u8 {sym}[0x{size:X}] = {{\n{indent}#include {inc}\n}};")
 
     new_block = "\n\n".join(out)
@@ -215,14 +249,15 @@ def main():
         for off, size, kind, count, _ in pieces:
             if size == 0:
                 continue
+            disp_off = off + base_off
             if kind == "Vtx":
-                sym = f"{prefix}Vtx_0x{off:04X}"
+                sym = f"{prefix}Vtx_0x{disp_off:04X}"
             elif kind == "Tex":
-                sym = f"{prefix}Tex_0x{off:04X}"
+                sym = f"{prefix}Tex_0x{disp_off:04X}"
             elif kind == "palette":
-                sym = f"{prefix}palette_0x{off:04X}"
+                sym = f"{prefix}palette_0x{disp_off:04X}"
             else:
-                sym = f"{prefix}data_0x{off:04X}"
+                sym = f"{prefix}data_0x{disp_off:04X}"
             piece_map.append((off, off + size, sym))
 
         def rewrite_target(match):

@@ -29,11 +29,13 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2062 / 2132** files at 100% (97.88% of bytes typed; 362,868 / 17,082,000 bytes still untyped across 70 files).
+Overall: **2065 / 2132** files at 100% (97.84% of bytes typed; 369,536 / 17,082,000 bytes still untyped across 67 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
 Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is flat hex bytes (no nested `{...}` initializers). `.data.inc.c` files structured by a local `typedef struct` count as typed. Spritelist-driven files are 100% by construction. Sizes come from the `.data` section of the compiled US `.o`.
+
+Note: fids 102 (StagePupupuBeta2) and 104 (StagePupupuFile2) *regressed* in this metric on 2026-05-15 — not from lost work but from honesty. Both had blocks mis-typed as `Gfx[]` DLs / `u32` `aobjEvent32` anim scripts that counted as "typed". Splitting them into real `DObjDesc` arrays + `Gfx` DLs + raw `u8` Vtx/data pools exposed the genuinely-raw pool data the bogus typing had hidden.
 
 | FID | Name | Size (B) | Untyped (B) | Untyped blocks | Complete |
 |----:|---|---:|---:|---:|---:|
@@ -49,6 +51,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 264 | GRYamabukiMap | 832 | 664 | 11 | 20.19% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53864 | 3 | 21.51% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
+| 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
 | 260 | GRInishieMap | 368 | 200 | 4 | 45.65% |
@@ -62,8 +65,8 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 265 | GRHyruleMap | 224 | 56 | 2 | 75.00% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
-| 104 | StagePupupuFile2 | 17392 | 3196 | 57 | 81.62% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
+| 102 | StagePupupuBeta2 | 10496 | 1412 | 4 | 86.55% |
 | 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
 | 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
 | 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
@@ -84,9 +87,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
 | 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
-| 85 | EFCommonEffects3 | 13616 | 408 | 3 | 97.00% |
 | 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
-| 84 | EFCommonEffects2 | 28352 | 776 | 7 | 97.26% |
 | 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
 | 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
 | 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
@@ -96,10 +97,8 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 332 | CaptainModel | 51344 | 680 | 3 | 98.68% |
 | 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
 | 344 | BossModel | 11584 | 136 | 1 | 98.83% |
-| 83 | EFCommonEffects1 | 52736 | 608 | 4 | 98.85% |
 | 338 | YoshiModel | 44256 | 432 | 4 | 99.02% |
 | 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
-| 102 | StagePupupuBeta2 | 10496 | 64 | 1 | 99.39% |
 | 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
 | 144 | GRBonus2CaptainFile2 | 20368 | 120 | 2 | 99.41% |
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
@@ -585,16 +584,24 @@ Recent round of structural work:
   walking the extern reloc chains in StagePupupuBeta1/2 (both target
   the same 12 LUT and 12 Tex offsets). Tex sizes 128 / 512 / 1024 /
   2048 bytes (CI4 32×8 / 32×32 / 64×32 / 64×64).
-- `StagePupupuBeta1` (fid 101, 6,560 B) and `StagePupupuBeta2`
-  (fid 102, 10,496 B) — Pupupu Beta stage geometry, now **fully typed**:
-  12 `Vtx[]` arrays in the data pool (1 of size 5/7 + 11 of size 4),
-  one `Gfx[]` array per DL (8 DLs in Beta1, 13 in Beta2, sizes from
-  13 to 482 cmds), and a `DObjDesc[3]` / `DObjDesc[4]` block in the
-  trailer. The two chain-encoded `p_dobjs` values in each trailer
-  remain inline-hex placeholders (no `.reloc` for these fids yet) —
-  fixRelocChain leaves them alone since both files have empty `.reloc`,
-  and the runtime patches them via the `gMPCollisionGroundData`-based
-  load path.
+- `StagePupupuBeta2` (fid 102, 10,496 B) — Pupupu Beta stage geometry.
+  Originally three mid-file blocks (`DL_0x0898` / `DL_0x1D00` / `DL_0x22D0`)
+  were mis-typed as one giant `Gfx[]` each; each is really `DObjDesc[N]`
+  (scene-object list) + a Vtx data pool + the real tail display list.
+  Split (2026-05-15) into 4 `DObjDesc` arrays, 13 `Gfx[]` DLs, 26 `Vtx[]`
+  arrays via `tools/splitTexPoolByDL.py`. A `.reloc` file was created from
+  the binary chain walk (63 intern + 42 extern entries) so all chain
+  pointers — including the two trailer `p_dobjs` and the embedded slots in
+  `data_0x28C0` — are now symbolic and rebuilt by fixRelocChain. Still raw
+  u8: `data_0x09CC` / `_0x1DDC` (4-entry pointer table + 104-B per-object
+  sub-blocks of an unidentified struct), `data_0x2354` (12-B remnant),
+  `data_0x28C0` (64-B trailer). Note: completion % *dropped* from 99.39%
+  to 86.55% because the mis-typed `Gfx` blocks previously counted as
+  "typed" — the new figure honestly reflects the still-raw pool data.
+- `StagePupupuBeta1` (fid 101, 6,560 B) — Pupupu Beta stage geometry,
+  fully typed: `Vtx[]` arrays, one `Gfx[]` per DL, and a `DObjDesc`
+  trailer. The chain-encoded `p_dobjs` values remain inline-hex
+  placeholders (no `.reloc` for this fid yet).
 - `ITCommonData` (fid 251, 3,392 B) — item attribute + weapon attribute
   pool, now **fully typed**: 34 `ITAttributes` struct initializers (33
   matching + 1 Sawamura with IDO bitfield bug comment), 6
@@ -711,7 +718,6 @@ Top files in each bucket (bytes):
 | 338 | YoshiModel | 164 | 8,712 |
 | 341 | PikachuModel | 141 | 8,528 |
 | 320 | SamusModel | 194 | 8,344 |
-| 84 | EFCommonEffects2 | 45 | 7,088 |
 
 `ITCommonObject` graduated out of this list this round (was top with
 46 KB of per-item `_data_remainder` sub-blocks; those moved to the
@@ -732,8 +738,6 @@ tree, not DL content.
 | 105 | StageZebesFile2 | 31,488 | Stage collision + per-layer animation tracks. |
 | 83 | EFCommonEffects1 | 19,260 | Effect parameter tables. |
 | 69 | MVOpeningStandoff | 16,424 | Opening cutscene post-DL data. |
-| 84 | EFCommonEffects2 | 9,648 | Effect parameter tails. |
-| 85 | EFCommonEffects3 | 9,084 | Effect parameter tails. |
 | 111 | StageYosterFile2 | 7,384 | Stage geometry tails. |
 | 112 | StageYamabukiFile2 | 6,504 | Stage geometry tails. |
 | 335 | NessModel | 5,700 | Joint-hierarchy `_post` tails. |

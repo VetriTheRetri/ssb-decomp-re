@@ -107,7 +107,17 @@ relocData files are binary asset files (models, stages, effects) containing Gfx 
 
 ### Typing workflow
 
-To convert an untyped `u8[]` gap block to its actual type:
+**For any `u8 …_data_…` or `…_Tex_pool` block referenced by `gsSPVertex` / `gsDPSetTextureImage` / `gsDPLoadTLUTCmd` commands in the surrounding DLs, use `tools/splitTexPoolByDL.py` — DO NOT split such pools by hand.** It walks the expanded `.c` for every reference into the named block, infers Vtx count from `gsSPVertex(…, N, …)`, infers Tex size from the following `gsDPLoadBlock(siz, lrs)`, infers palette size from the following `gsDPLoadTLUTCmd(…, last_idx)`, and emits typed sub-decls + matching `.reloc` rewrites in one pass. Run the expander first (`python3 tools/expandRelocFile.py <fid> --version us`) so the expanded view is current. Usage:
+
+```bash
+python3 tools/splitTexPoolByDL.py <fid> \
+    --sym <full_pool_symbol> \           # required if not `d<Name>_Tex_pool`
+    --prefix d<Name>_<NameSpace>_ \      # optional, defaults to `d<Name>_`
+    --base-offset 0x<file_offset> \      # optional, names sub-decls by file offset instead of pool-relative
+    --dry                                # preview before applying
+```
+
+To convert an untyped `u8[]` gap block to its actual type **by hand** (use this only when `splitTexPoolByDL.py` doesn't fit — single-block conversions, unusual layouts, etc.):
 
 1. Look at the **expanded** `.c` file in `build/<v>/src/relocData/` to see how the data is used (e.g., `gsSPVertex(symbol, N, 0)` → Vtx, `gsDPSetTextureImage(...)` → texture).
 2. In the **source** `.c` file in `src/relocData/`, change the type and include path:

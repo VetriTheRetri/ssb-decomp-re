@@ -6,10 +6,25 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern void *dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
-extern void *dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
+extern MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
+extern MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x154[];
+extern MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x15C[];
+extern MObjSub dEFCommonEffects2_DeadExplodeDefaultMObjSub_real[];
+extern MObjSub dEFCommonEffects2_ReflectBreakMObjSub_real[];
+extern MObjSub *dEFCommonEffects2_gap_0x2FD0_sub_0x128[];
+extern MObjSub *dEFCommonEffects2_gap_0x2FD0_sub_0x130[];
+extern MObjSub *dEFCommonEffects2_gap_0x2FD0_sub_0x138[];
+extern MObjSub *dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
+extern void *dEFCommonEffects2_NessPKFlashMObjSub[];
+extern MObjSub dEFCommonEffects2_NessPKFlashMObjSub_real[];
 
 extern u8 dEFCommonEffects2_gap_0x1F18[];
+extern u8 dEFCommonEffects2_Tex_0x1028[];
+extern MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1A0[];
+extern MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1A8[];
+extern MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1B0[];
+extern MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1B8[];
+extern MObjSub dEFCommonEffects2_CatchSwirlMObjSub_real[];
 
 extern MObjSub *dEFCommonEffects2_gap_0x1F18_sub_0x18[];
 extern MObjSub *dEFCommonEffects2_gap_0x14A0_sub_0x18[];
@@ -26,6 +41,36 @@ extern u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8[];
 
 extern u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
 extern u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[];
+
+extern u8 dEFCommonEffects2_ReflectBreak_Tex_0x3658[];
+extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3858[];
+extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3898[];
+extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x38D8[];
+extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[];
+extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3958[];
+extern DObjDLLink dEFCommonEffects2_ReflectBreak_DLLink_0x3988[];
+extern DObjDLLink dEFCommonEffects2_ReflectBreak_DLLink_0x3998[];
+extern DObjDesc dEFCommonEffects2_ReflectBreak_DObjDesc_0x39A8[];
+
+extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_0x597C[];
+extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_0x5998[];
+extern AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint_ptrs_0x59B4[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x59C8[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x59F0[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A18[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A40[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A68[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A90[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AB8[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AE0[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x5B08[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x5D10[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x5F18[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6120[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6328[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6530[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6738[];
+extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6940[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28B8[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28F0[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2960[];
@@ -116,264 +161,9 @@ u8 dEFCommonEffects2_Tex_0x0C20[1024] = {
 PAD(8);
 
 /* gap sub-block @ 0x1028 (was gap+0x1028, 1024 bytes) */
-/* MObjSub.sprites pointer table @ +0x1028 (256 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dEFCommonEffects2_gap_0x0000_sub_0x1028[256] = {
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00B5FF,  /* unresolved */
-	(void *)0x94FFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFFFFCEFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xB5FFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xEFFF84FF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xEFFFFFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFCEFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00EFFF,  /* unresolved */
-	(void *)0x73FFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xCEFFFFFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00EFFF,  /* unresolved */
-	(void *)0xB5FFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFCEFF,  /* unresolved */
-	(void *)0x84FFFF00,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xCEFF5AFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFFFF84FF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xEFFF84FF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xEFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xEFFFB5FF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xEFFFFFFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFEFFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFFFFFFFF,  /* unresolved */
-	(void *)0xFFFFFF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
-	(void *)0xFF00FF00,  /* unresolved */
+/* @tex fmt=IA16 dim=16x32 */
+u8 dEFCommonEffects2_Tex_0x1028[1024] = {
+	#include <EFCommonEffects2/Tex_0x1028.tex.inc.c>
 };
 
 /* ShockSmallMObjSub pointer-table head @ 0x1428 (4 B): head chain ptr to
@@ -382,11 +172,10 @@ void *dEFCommonEffects2_ShockSmallMObjSub_MObjSub_head[1] = {
 	(void *)dEFCommonEffects2_gap_0x14A0_sub_0x18,
 };
 
-/* ShockSmall sprite-frame table @ 0x142C (20 B = 5 × 4 B). [0] points to
- * the 1024-byte sprite pool gap_0x0000_sub_0x1028, [1..4] are the four
- * 1032-byte Tex_0x0008..0x0C20 frames. */
+/* ShockSmall sprite-frame table @ 0x142C (20 B = 5 × 4 B). 5 frames of
+ * the same IA16 16×32 (1024 B) sprite, in reverse-temporal order. */
 void *dEFCommonEffects2_ShockSmallMObjSub_MObjSub[5] = {
-	(void *)dEFCommonEffects2_gap_0x0000_sub_0x1028,
+	(void *)dEFCommonEffects2_Tex_0x1028,
 	(void *)dEFCommonEffects2_Tex_0x0C20,
 	(void *)dEFCommonEffects2_Tex_0x0818,
 	(void *)dEFCommonEffects2_Tex_0x0410,
@@ -688,17 +477,54 @@ u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[256] = {
 	#include <EFCommonEffects2/FireSpark_Tex_0x21B8.tex.inc.c>
 };
 
-/* DObjDesc: CatchSwirlDObjDesc @ 0x22B8 (2 entries) */
-DObjDesc dEFCommonEffects2_CatchSwirlDObjDesc[] = {
-	{ 0, (void*)0x00000000, { 1.0654956302341688e-33f, 1.0715143449813712e-33f, 1.0775330597285737e-33f }, { 2.0708070517321904e-33f, 1.4377322243972623e-42f, 0.0f }, { 2.938735877055719e-39f, 2.938758297831148e-39f, 0.0f } },
-	{ 0, (void*)0x00000000, { 1.0f, 1.0f, 0.0f }, { 1.0f, 0.0f, 9.405102750280275e-38f }, { 2.938758297831148e-39f, 2.938758297831148e-39f, 0.0f } },
+/* CatchSwirlDObjDesc was MIS-TYPED — actually a 4-MObj wrapper @ 0x22B8.
+ * Layout: 8 B leading PAD, 16 B = void *MObjSub **head[4] (each points to
+ * a 2-entry MObjSub*[] list), then a real MObjSub @ +0x18 that spans
+ * 120 B (consuming the trailing 56 B that used to be gap_0x2310). */
+PAD(8);
+
+/* MObjSub** head table @ 0x22C0 — 4 entries, each chains to a separate
+ * 2-entry MObjSub* list (gap_0x2310_sub_0x1A0/_0x1A8/_0x1B0/_0x1B8). */
+MObjSub **dEFCommonEffects2_CatchSwirlMObjSub_head[4] = {
+	(MObjSub **)dEFCommonEffects2_gap_0x2310_sub_0x1A0,
+	(MObjSub **)dEFCommonEffects2_gap_0x2310_sub_0x1A8,
+	(MObjSub **)dEFCommonEffects2_gap_0x2310_sub_0x1B0,
+	(MObjSub **)dEFCommonEffects2_gap_0x2310_sub_0x1B8,
 };
 
-/* Raw data from file offset 0x2310 to 0x2760 (1104 bytes) */
-/* gap sub-block @ 0x2310 (was gap+0x0, 56 bytes) */
-u8 dEFCommonEffects2_gap_0x2310[56] = {
-	#include <EFCommonEffects2/gap_0x2310.data.inc.c>
+/* Real MObjSub for CatchSwirl @ 0x22D0 (120 B, ends at 0x2347 — extends
+ * past the conceptual 0x22B8..0x2310 region into what was gap_0x2310). */
+MObjSub dEFCommonEffects2_CatchSwirlMObjSub_real[1] = {
+	{
+		0x0000,
+		G_IM_FMT_I, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0010,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x0200,
+		G_IM_FMT_I, G_IM_SIZ_4b,
+		0x0020,
+		0x0010, 0x0020, 0x0010,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002001,
+		{ { 0xFF, 0xFF, 0x7D, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0x7D, 0x00 } },
+		{ { 0x80, 0x80, 0x80, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
+
+/* Raw data from file offset 0x2310 to 0x2760 (1104 bytes) — the leading
+ * 56 B was absorbed by CatchSwirlMObjSub_real above. */
 
 /* MObjSub @ 0x2348 */
 MObjSub dEFCommonEffects2_gap_0x2310_sub_0x38[1] = {
@@ -791,8 +617,8 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0x128[1] = {
 };
 
 /* gap sub-block @ 0x24B0 (was gap+0x1A0, 8 bytes) */
-void *dEFCommonEffects2_gap_0x2310_sub_0x1A0[2] = {
-	(void *)((u8*)dEFCommonEffects2_CatchSwirlDObjDesc + 0x18),
+MObjSub *dEFCommonEffects2_gap_0x2310_sub_0x1A0[2] = {
+	dEFCommonEffects2_CatchSwirlMObjSub_real,
 	NULL,
 };
 
@@ -864,39 +690,22 @@ DObjDLLink dEFCommonEffects2_gap_0x2310_sub_0x440[2] = {
 };
 
 /* MObjSub: CatchSwirlMObjSub @ 0x2760 */
-MObjSub dEFCommonEffects2_CatchSwirlMObjSub_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-		(void**)0x00000001,
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		1.570796012878418f, 0.0f,
-		0x3F800000,
-		{ { 0x3F, 0x80, 0x00, 0x00 } },
-		0x3F, 0x80, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x02 } },
-		{ { 0x09, 0xFA, 0x09, 0xC8 } },
-		{ { 0x3E, 0x75, 0xC2, 0xD2 } },
-		{ { 0x42, 0xE2, 0x2D, 0xCC } },
-		-1035033030, 0,
-		0, 0,
-	}
+/* CatchSwirlDObjDesc was MIS-TYPED (formerly "CatchSwirlMObjSub_MObjSub"
+ * + gap_0x27D8). Actually a 7-entry DObjDesc[] scene graph @ 0x2760:
+ *   [0] root,         [1] Y-rotation parent,
+ *   [2..5] 4 sprite quads at 4 rotations around Y axis (one DLLink each),
+ *   [6] terminator id=18. Followed by PAD(12). */
+DObjDesc dEFCommonEffects2_CatchSwirlDObjDesc[7] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 1.570796012878418f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2310_sub_0x410, { 0.24000099301338196f, 113.08944702148438f, -51.662330627441406f }, { 0.0f, 0.0f, 0.0f }, { 0.6636480093002319f, 0.6145380139350891f, 0.6636480093002319f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2310_sub_0x420, { 0.24000099301338196f, 51.662330627441406f, 113.08944702148438f }, { 1.570796012878418f, 0.0f, 0.0f }, { 0.6636480093002319f, 0.6145380139350891f, 0.6636480093002319f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2310_sub_0x430, { 0.24000099301338196f, -113.08946228027344f, 51.66230392456055f }, { 3.1415929794311523f, 0.0f, 0.0f }, { 0.6636480093002319f, 0.6145380139350891f, 0.6636480093002319f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2310_sub_0x440, { 0.24000099301338196f, -51.662330627441406f, -113.08944702148438f }, { -1.570796012878418f, 0.0f, 0.0f }, { 0.6636480093002319f, 0.6145380139350891f, 0.6636480093002319f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x27D8 to 0x28A0 (200 bytes) */
-u8 dEFCommonEffects2_gap_0x27D8[200] = {
-	#include <EFCommonEffects2/gap_0x27D8.data.inc.c>
-};
+PAD(12);
 
 /* Raw data from file offset 0x28A0 to 0x2AB0 (528 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -1139,22 +948,59 @@ PAD(16);
 
 /* IA16 texture (1024 B) @ 0x2B78, referenced by DL_0x31D0+0x34,
  * DL_0x3258+0x34, DL_0x32E0+0x34. LoadBlock count=511 16b. */
-/* @tex fmt=IA16 dim=32x16 */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[1024] = {
 	#include <EFCommonEffects2/CatchSwirlMatAnimJoint_Tex_0x2B78.tex.inc.c>
 };
 
-/* DObjDesc: ReflectBreakDObjDesc @ 0x2F78 (2 entries) */
-DObjDesc dEFCommonEffects2_ReflectBreakDObjDesc[] = {
-	{ 0, (void*)0x00000000, { 8.6685267493903e-32f, 8.707046523772395e-32f, 1.4640756278615873e-31f }, { 0.0f, 1.0789998175301091e-42f, 0.0f }, { 2.938735877055719e-39f, 2.9388255601574356e-39f, 0.0f } },
-	{ 0, (void*)0x00000000, { 1.0f, 1.0f, 0.0f }, { 1.0f, 0.0f, 4.039338094763389e-28f }, { 2.938780718606577e-39f, 2.9388255601574356e-39f, 0.0f } },
+/* ReflectBreakDObjDesc was MIS-TYPED — actually a 3-MObj wrapper @ 0x2F78.
+ * Layout: 8 B header (zeros), 12 B = MObjSub **head[3], 4 B reserved
+ * (sprite-count or similar), then MObjSub_real @ +0x18 (120 B) absorbing
+ * the former 56 B gap_0x2FD0. */
+PAD(8);
+
+/* MObjSub** head table @ 0x2F80 — 3 entries. */
+MObjSub **dEFCommonEffects2_ReflectBreakMObjSub_head[3] = {
+	(MObjSub **)dEFCommonEffects2_gap_0x2FD0_sub_0x128,
+	(MObjSub **)dEFCommonEffects2_gap_0x2FD0_sub_0x130,
+	(MObjSub **)dEFCommonEffects2_gap_0x2FD0_sub_0x138,
 };
 
-/* Raw data from file offset 0x2FD0 to 0x3398 (968 bytes) */
-/* gap sub-block @ 0x2FD0 (was gap+0x0, 56 bytes) */
-u8 dEFCommonEffects2_gap_0x2FD0[56] = {
-	#include <EFCommonEffects2/gap_0x2FD0.data.inc.c>
+PAD(4);
+
+/* Real MObjSub @ 0x2F90 (120 B, ends at 0x3008 — absorbs the former 56 B
+ * gap_0x2FD0). IA16 32×32 with custom envcolor/light. */
+MObjSub dEFCommonEffects2_ReflectBreakMObjSub_real[1] = {
+	{
+		0x0000,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0040,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x1200,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
+		0x0020,
+		0x0020, 0x0020, 0x0040,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xAC, 0xE0, 0xFF, 0x00 } },
+		{ { 0x80, 0x80, 0x80, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
+
+/* Raw data from file offset 0x2FD0 to 0x3398 (968 bytes) — leading 56 B
+ * absorbed by ReflectBreakMObjSub_real above. */
 
 /* MObjSub @ 0x3008 */
 MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0x38[1] = {
@@ -1217,8 +1063,8 @@ MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0xB0[1] = {
 };
 
 /* gap sub-block @ 0x30F8 (was gap+0x128, 8 bytes) */
-void *dEFCommonEffects2_gap_0x2FD0_sub_0x128[2] = {
-	(void *)((u8*)dEFCommonEffects2_ReflectBreakDObjDesc + 0x18),
+MObjSub *dEFCommonEffects2_gap_0x2FD0_sub_0x128[2] = {
+	dEFCommonEffects2_ReflectBreakMObjSub_real,
 	NULL,
 };
 
@@ -1282,39 +1128,17 @@ DObjDLLink dEFCommonEffects2_gap_0x2FD0_sub_0x3B8[2] = {
 	{ 4, NULL },
 };
 
-/* MObjSub: ReflectBreakMObjSub @ 0x3398 */
-MObjSub dEFCommonEffects2_ReflectBreakMObjSub_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-		(void**)0x00000001,
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0xC3D4,
-		0xEB94, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x3F800000,
-		{ { 0x3F, 0x80, 0x00, 0x00 } },
-		0x3F, 0x80, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x02 } },
-		{ { 0x0D, 0x08, 0x0C, 0xDA } },
-		{ { 0x42, 0xA3, 0x62, 0x49 } },
-		{ { 0x42, 0xD9, 0xDE, 0x2A } },
-		0, 0,
-		0, -1094344245,
-	}
-};
-
-/* Raw data from file offset 0x3410 to 0x34A0 (144 bytes) */
-u8 dEFCommonEffects2_gap_0x3410[144] = {
-	#include <EFCommonEffects2/gap_0x3410.data.inc.c>
+/* ReflectBreakDObjDesc was MIS-TYPED (formerly "ReflectBreakMObjSub_MObjSub"
+ * + gap_0x3410). Actually a 6-entry DObjDesc[] scene graph @ 0x3398:
+ *   [0] root, [1] X-translation parent, [2..4] 3 shard quads w/ DL bindings,
+ *   [5] terminator id=18. */
+DObjDesc dEFCommonEffects2_ReflectBreakDObjDesc[6] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -425.8404541015625f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2FD0_sub_0x398, { 81.69196319580078f, 108.93391418457031f, 0.0f }, { 0.0f, 0.0f, -0.38600000739097595f }, { 2.9309499263763428f, 1.31181001663208f, 0.7200000286102295f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2FD0_sub_0x3A8, { 67.28166198730469f, 11.78016471862793f, 0.0f }, { 0.0f, 0.0f, 0.47999900579452515f }, { 2.9309499263763428f, 0.9316840171813965f, 0.7200000286102295f } },
+	{ 2, (void *)dEFCommonEffects2_gap_0x2FD0_sub_0x3B8, { 31.792301177978516f, 43.32387161254883f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 2.9309499263763428f, 0.9316840171813965f, 0.7200000286102295f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x34A0 to 0x35A0 (256 bytes) */
@@ -1451,11 +1275,69 @@ u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data[37] = {
 	aobjEvent32End(),
 };
 
-/* TRAIL: 1056 bytes of non-script data (textures/vtx/etc.)
- * referenced by .reloc at various offsets. Kept as raw u8 so the
- * source has at most one aobjEvent32End() per u32 array. */
-u8 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint_data_trail[1056] = {
-	#include <EFCommonEffects2/ReflectBreakMatAnimJoint_MatAnimJoint_data_trail.data.inc.c>
+/* Trail layout (1056 B total):
+ *   0x000..0x00F  PAD(16)                                — alignment
+ *   0x010..0x20F  Tex_0x3658 (I4 32x32, 512 B)          — DL_C SetTexImage
+ *   0x210..0x24F  Vtx_0x3858[4]                          — DL_B SPVertex
+ *   0x250..0x28F  Vtx_0x3898[4]                          — DL_D SPVertex
+ *   0x290..0x2EF  DL_0x38D8[12]                          — texture-setup DL
+ *   0x2F0..0x30F  DL_0x3938[4]                           — draw sub-DL
+ *   0x310..0x33F  DL_0x3958[6]                           — second-MObj draw DL
+ *   0x340..0x34F  DLLink_0x3988[2]                       — binds DL_0x38D8
+ *   0x350..0x35F  DLLink_0x3998[2]                       — binds DL_0x3958
+ *   0x360..0x40F  DObjDesc_0x39A8[4]                     — scene graph entries
+ *   0x410..0x417  PAD(8)
+ *   0x418..0x41F  trailing gsSPEndDisplayList (orphan)
+ */
+PAD(16);
+
+/* @tex fmt=I4 dim=32x32 */
+u8 dEFCommonEffects2_ReflectBreak_Tex_0x3658[512] = {
+	#include <EFCommonEffects2/ReflectBreak_Tex_0x3658.tex.inc.c>
+};
+
+Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3858[4] = {
+	#include <EFCommonEffects2/ReflectBreak_Vtx_0x3858.vtx.inc.c>
+};
+
+Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3898[4] = {
+	#include <EFCommonEffects2/ReflectBreak_Vtx_0x3898.vtx.inc.c>
+};
+
+Gfx dEFCommonEffects2_ReflectBreak_DL_0x38D8[12] = {
+	#include <EFCommonEffects2/ReflectBreak_DL_0x38D8.dl.inc.c>
+};
+
+Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[4] = {
+	#include <EFCommonEffects2/ReflectBreak_DL_0x3938.dl.inc.c>
+};
+
+Gfx dEFCommonEffects2_ReflectBreak_DL_0x3958[6] = {
+	#include <EFCommonEffects2/ReflectBreak_DL_0x3958.dl.inc.c>
+};
+
+DObjDLLink dEFCommonEffects2_ReflectBreak_DLLink_0x3988[2] = {
+	{ 1, dEFCommonEffects2_ReflectBreak_DL_0x38D8 },
+	{ 4, NULL },
+};
+
+DObjDLLink dEFCommonEffects2_ReflectBreak_DLLink_0x3998[2] = {
+	{ 1, dEFCommonEffects2_ReflectBreak_DL_0x3958 },
+	{ 4, NULL },
+};
+
+DObjDesc dEFCommonEffects2_ReflectBreak_DObjDesc_0x39A8[4] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, dEFCommonEffects2_ReflectBreak_DLLink_0x3988, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, dEFCommonEffects2_ReflectBreak_DLLink_0x3998, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+PAD(8);
+
+/* Trailing orphan gsSPEndDisplayList @ 0x3A60 (8 B). */
+Gfx dEFCommonEffects2_ReflectBreak_DL_end_0x3A60[1] = {
+	gsSPEndDisplayList(),
 };
 
 /* Raw data from file offset 0x3A68 to 0x4F08 (5280 bytes) */
@@ -1463,16 +1345,52 @@ u8 dEFCommonEffects2_Shadow_TextureImage[5280] = {
 	#include <EFCommonEffects2/Shadow_TextureImage.tex.inc.c>
 };
 
-/* DObjDesc: DeadExplodeDefaultDObjDesc @ 0x4F08 (1 entries) */
-DObjDesc dEFCommonEffects2_DeadExplodeDefaultDObjDesc[] = {
-	{ 0, (void *)dEFCommonEffects2_gap_0x4F34_sub_0x14C, { 4.974964395099933e-27f, 8.081907707380465e-27f, 1.0789998175301091e-42f }, { 0.0f, 2.938735877055719e-39f, 5.877561437213154e-39f }, { 0.0f, 0.0f, 0.0f } },
+/* DeadExplodeDefaultDObjDesc was MIS-TYPED — actually a 3-MObj wrapper.
+ * Layout: 4 B header (zero), 12 B = MObjSub **head[3] (each chains to a
+ * MObjSub*[2] list), then MObjSub_real @ +0x10 spanning 120 B into what
+ * was gap_0x4F34 (92 B of MObjSub trailing fields). */
+PAD(4);
+
+/* MObjSub** head table @ 0x4F0C — 3 entries. */
+MObjSub **dEFCommonEffects2_DeadExplodeDefaultMObjSub_head[3] = {
+	(MObjSub **)dEFCommonEffects2_gap_0x4F34_sub_0x14C,
+	(MObjSub **)dEFCommonEffects2_gap_0x4F34_sub_0x154,
+	(MObjSub **)dEFCommonEffects2_gap_0x4F34_sub_0x15C,
 };
 
-/* Raw data from file offset 0x4F34 to 0x53E8 (1204 bytes) */
-/* gap sub-block @ 0x4F34 (was gap+0x0, 92 bytes) */
-u8 dEFCommonEffects2_gap_0x4F34[92] = {
-	#include <EFCommonEffects2/gap_0x4F34.data.inc.c>
+/* Real MObjSub @ 0x4F18 (120 B, ends at 0x4F90 — absorbs the former 92 B
+ * gap_0x4F34 block; gap_0x4F34_sub_0x5C starts right where this ends). */
+MObjSub dEFCommonEffects2_DeadExplodeDefaultMObjSub_real[1] = {
+	{
+		0x0000,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0040, 0x0040,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x0200,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
+		0x0020,
+		0x0040, 0x0040, 0x0040,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002001,
+		{ { 0xFF, 0xFF, 0xBB, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x51, 0x36, 0xFF, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
+
+/* Raw data from file offset 0x4F34 to 0x53E8 (1204 bytes) — leading 92 B
+ * absorbed by DeadExplodeDefaultMObjSub_real above. */
 
 /* MObjSub @ 0x4F90 */
 MObjSub dEFCommonEffects2_gap_0x4F34_sub_0x5C[1] = {
@@ -1535,8 +1453,8 @@ MObjSub dEFCommonEffects2_gap_0x4F34_sub_0xD4[1] = {
 };
 
 /* gap sub-block @ 0x5080 (was gap+0x14C, 8 bytes) */
-void *dEFCommonEffects2_gap_0x4F34_sub_0x14C[2] = {
-	(void *)((u8*)dEFCommonEffects2_DeadExplodeDefaultDObjDesc + 0x10),
+MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x14C[2] = {
+	dEFCommonEffects2_DeadExplodeDefaultMObjSub_real,
 	NULL,
 };
 
@@ -1605,40 +1523,20 @@ DObjDLLink dEFCommonEffects2_gap_0x4F34_sub_0x4A4[2] = {
 	{ 4, NULL },
 };
 
-/* MObjSub: DeadExplodeDefaultMObjSub @ 0x53E8 */
-MObjSub dEFCommonEffects2_DeadExplodeDefaultMObjSub_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-		(void**)0x00000001,
-		0x1511,
-		0x14, 0xEE,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x40CDB23C,
-		{ { 0x41, 0x8B, 0xFF, 0xFE } },
-		0x3F, 0x80, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x01 } },
-		{ { 0x15, 0x1C, 0x14, 0xF2 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0, 0,
-		0, 0,
-	}
+/* DeadExplodeDefaultDObjDesc was MIS-TYPED (formerly
+ * "DeadExplodeDefaultMObjSub_MObjSub" + gap_0x5460). Actually a 5-entry
+ * DObjDesc[] scene graph @ 0x53E8:
+ *   [0] root, [1..3] three explosion-shard DObjs with DL bindings,
+ *   [4] terminator id=18. Followed by PAD(12). */
+DObjDesc dEFCommonEffects2_DeadExplodeDefaultDObjDesc[5] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dEFCommonEffects2_gap_0x4F34_sub_0x484, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 6.428007125854492f, 17.499996185302734f, 1.0f } },
+	{ 1, (void *)dEFCommonEffects2_gap_0x4F34_sub_0x494, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 4.0268449783325195f, 16.42875862121582f, 1.0f } },
+	{ 1, (void *)dEFCommonEffects2_gap_0x4F34_sub_0x4A4, { 0.0f, 0.0f, 0.0f }, { 0.0f, 12.217305183410645f, 0.0f }, { 8.693626403808594f, 17.499996185302734f, 8.60861587524414f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x5460 to 0x54D0 (112 bytes) */
-u8 dEFCommonEffects2_gap_0x5460[112] = {
-	#include <EFCommonEffects2/gap_0x5460.data.inc.c>
-};
+PAD(12);
 
 /* Raw data from file offset 0x54D0 to 0x5800 (816 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -2028,42 +1926,207 @@ u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[] = {
  * entries to chain-encoded form per the .reloc. */
 AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint[4] = {
 	NULL,
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x54),
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x58),
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data + 0x5C),
+	(AObjEvent32 *)dEFCommonEffects2_DeadExplode3_MatAnimJoint_ptrs_0x59B4,
+	(AObjEvent32 *)((u8 *)dEFCommonEffects2_DeadExplode3_MatAnimJoint_ptrs_0x59B4 + 4),
+	(AObjEvent32 *)((u8 *)dEFCommonEffects2_DeadExplode3_MatAnimJoint_ptrs_0x59B4 + 8),
 };
 
+/* Script 0 (MObj 1) @ 0x5960 — material color/alpha ramp. */
 u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[7] = {
 	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xCDFFFF99,  /* -536867616.0f */
+	    0xCDFFFF99,
 	aobjEvent32SetExtValBlock(0x001, 30),
-	    0xCDFFFF99,  /* -536867616.0f */
+	    0xCDFFFF99,
 	aobjEvent32SetExtValBlock(0x001, 6),
-	    0xCDFFFF00,  /* -536862720.0f */
+	    0xCDFFFF00,
 	aobjEvent32End(),
 };
 
-/* TRAIL: 4548 bytes of non-script data (textures/vtx/etc.)
- * referenced by .reloc at various offsets. Kept as raw u8 so the
- * source has at most one aobjEvent32End() per u32 array. */
-u8 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_trail[4548] = {
-	#include <EFCommonEffects2/DeadExplode3_MatAnimJoint_data_trail.data.inc.c>
+/* Script 1 (MObj 2) @ 0x597C — identical shape to Script 0. */
+u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_0x597C[7] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 30),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValBlock(0x001, 6),
+	    0xFFFFFF00,
+	aobjEvent32End(),
 };
 
-/* DObjDesc: NessPKFlashDObjDesc @ 0x6B40 (1 entries) */
-DObjDesc dEFCommonEffects2_NessPKFlashDObjDesc[] = {
-	{ 0, (void *)dEFCommonEffects2_gap_0x6B6C_sub_0x74, { 8.731006476080497e-23f, 8.772283465174005e-23f, 8.813560454267514e-23f }, { 8.854837443361022e-23f, 8.89611443245453e-23f, 8.937391421548039e-23f }, { 8.978668410641547e-23f, 9.061304430362707e-23f, 7.20267410662956e-43f } },
+/* Script 2 (MObj 3) @ 0x5998 — same opcode shape but different args/payloads
+ * than Script 0/1 (uses 0x60FF0066/0x60FF0000 instead of 0xCDFFFF99/0xFFFFFFFF,
+ * and payloads 0/20/16 instead of 0/30/6). */
+u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_0x5998[7] = {
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0x60FF0066,
+	aobjEvent32SetExtValBlock(0x001, 20),
+	    0x60FF0066,
+	aobjEvent32SetExtValBlock(0x001, 16),
+	    0x60FF0000,
+	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x6B6C to 0x6D00 (404 bytes) */
-/* gap sub-block @ 0x6B6C (was gap+0x0, 116 bytes) */
-u8 dEFCommonEffects2_gap_0x6B6C[116] = {
-	#include <EFCommonEffects2/gap_0x6B6C.data.inc.c>
+/* AObjEvent32 *[3] per-MObj script-pointer table @ 0x59B4. Resolves the
+ * MatAnimJoint[1..3] entries to their respective scripts. */
+AObjEvent32 *dEFCommonEffects2_DeadExplode3_MatAnimJoint_ptrs_0x59B4[3] = {
+	(AObjEvent32 *)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data,
+	(AObjEvent32 *)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_0x597C,
+	(AObjEvent32 *)dEFCommonEffects2_DeadExplode3_MatAnimJoint_data_0x5998,
 };
 
-/* gap sub-block @ 0x6BE0 (was gap+0x74, 8 bytes) */
-void *dEFCommonEffects2_gap_0x6B6C_sub_0x74[2] = {
-	(void *)((u8*)dEFCommonEffects2_NessPKFlashDObjDesc + 0x28),
+PAD(8);
+
+/* 8 CI4 palette frames @ 0x59C8..0x5AFF, separated by PAD(8). The last
+ * frame @ 0x5AE0 is loaded as a TLUT by DL_0x6C28+0x44. */
+u16 dEFCommonEffects2_DeadExplode3_palette_0x59C8[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x59C8.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x59F0[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x59F0.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x5A18[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x5A18.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x5A40[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x5A40.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x5A68[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x5A68.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x5A90[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x5A90.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x5AB8[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x5AB8.palette.inc.c>
+};
+PAD(8);
+
+u16 dEFCommonEffects2_DeadExplode3_palette_0x5AE0[16] = {
+	#include <EFCommonEffects2/DeadExplode3_palette_0x5AE0.palette.inc.c>
+};
+PAD(8);
+
+/* 8 CI4 sprite-frame textures (32x32, 512 B each) @ 0x5B08..0x6B3F,
+ * separated by PAD(8). NessPKFlashDObjDesc's 8 chain-pointer slots at
+ * +0x8..+0x24 target these in reverse order (newest frame first). */
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x5B08[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x5B08.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x5D10[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x5D10.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x5F18[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x5F18.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x6120[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x6120.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x6328[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x6328.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x6530[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x6530.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x6738[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x6738.tex.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
+u8 dEFCommonEffects2_DeadExplode3_Tex_0x6940[512] = {
+	#include <EFCommonEffects2/DeadExplode3_Tex_0x6940.tex.inc.c>
+};
+
+/* NessPKFlashDObjDesc was MIS-TYPED — actually a MObjSub wrapper @ 0x6B40.
+ * Layout: 4 B leading PAD (id=0), 4 B head ptr, 32 B = void *sprites[8]
+ * (chain to the 8 CI4 32x32 sprite-frame textures in DeadExplode3 trail),
+ * then MObjSub_real @ +0x28 (120 B) absorbing the former 116 B gap_0x6B6C. */
+PAD(4);
+
+/* MObjSub** head ptr @ 0x6B44 — chains to the 2-entry MObjSub*[] list. */
+void *dEFCommonEffects2_NessPKFlashMObjSub_head[1] = {
+	(void *)dEFCommonEffects2_gap_0x6B6C_sub_0x74,
+};
+
+/* Sprite-frame pointer table @ 0x6B48 — 8 chain ptrs to the CI4 32×32
+ * sprite frames in DeadExplode3 trail (newest frame first). */
+void *dEFCommonEffects2_NessPKFlashMObjSub[8] = {
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6940,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6738,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6530,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6328,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6120,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x5F18,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x5D10,
+	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x5B08,
+};
+
+/* Real MObjSub @ 0x6B68 (120 B, ends at 0x6BE0 — absorbs the former
+ * 116 B gap_0x6B6C). Uses CI4 32×32 sprite format with palette TLUT. */
+MObjSub dEFCommonEffects2_NessPKFlashMObjSub_real[1] = {
+	{
+		0x0000,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		(void**)dEFCommonEffects2_NessPKFlashMObjSub,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x0001,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x59, 0x59, 0x59, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* Raw data from file offset 0x6BE0 to 0x6D00 (288 bytes) — leading 116 B
+ * absorbed by NessPKFlashMObjSub_real above. */
+MObjSub *dEFCommonEffects2_gap_0x6B6C_sub_0x74[2] = {
+	dEFCommonEffects2_NessPKFlashMObjSub_real,
 	NULL,
 };
 
@@ -2077,37 +2140,17 @@ Gfx dEFCommonEffects2_DL_0x6C28[27] = {
 	#include <EFCommonEffects2/DL_0x6C28.dl.inc.c>
 };
 
-/* MObjSub: NessPKFlashMObjSub @ 0x6D00 */
-MObjSub dEFCommonEffects2_NessPKFlashMObjSub_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-		(void**)0x00000001,
-		0x1B65,
-		0x1B, 0x0A,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x3727C5AC,
-		{ { 0x37, 0x27, 0xC5, 0xAC } },
-		0x3F, 0x80, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x12 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0, 0,
-		0, 0,
-	}
+/* NessPKFlashDObjDesc was MIS-TYPED (formerly "NessPKFlashMObjSub_MObjSub"
+ * + PAD(24)). Actually a 3-entry DObjDesc[] scene graph @ 0x6D00:
+ *   [0] root, [1] DL-binding entry with tiny S=(1e-5,1e-5,1) (dl→DL_0x6C28),
+ *   [2] terminator id=18. Followed by PAD(12). */
+DObjDesc dEFCommonEffects2_NessPKFlashDObjDesc[3] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dEFCommonEffects2_DL_0x6C28, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-PAD(24);
+PAD(12);
 
 /* Raw data from file offset 0x6D90 to 0x6E20 (144 bytes) */
 /* Script-table split: leading chain-pointer table at the

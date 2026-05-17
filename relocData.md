@@ -676,6 +676,53 @@ Recent round of structural work:
     `u8 dITCommonObject_Egg_Item_animjoints_trailing[2776]` with an
     `Egg_Item_animjoints_trailing.data.inc.c` include. Byte-identical
     on US + JP.
+  - **`blockname+offset` pointer cleanup (2026-05-17)** — 14 chain
+    pointers in the `.c` written as `(u8*)<block> + 0xNN` (offsets
+    computed off a wrong base symbol) rewritten to the real target
+    symbol from the `.reloc`: 6 DObjDesc joint `.ptr` fields (Sword/
+    StarRod/Kamex/MLucky → `Sword_Item_DLLink_*` / `Gfx_*`), the
+    Starmie/DogasSmog `mobjsubs`/`matanimjoints` refs, and the
+    `Starmie sub_0x8` table. `Egg_Item_animjoints_trailing` (the
+    untyped 2776-B pool) split at its `.reloc`/DL reference points
+    into 7 named `u8` pieces (`_trailing` + `_0x10698`..`_0x10EE0`)
+    so the Starmie table and `Gfx_0x111B0` resolve to symbols.
+    `DogasSmog_Weapon_matanimjoints_trailing_data` (the last
+    `.data.inc.c` blob) decoded into a self-contained textured quad:
+    `_trailing_LUT` (u16 16-colour TLUT), `_trailing_Tex` (u8[512]),
+    `_trailing_Vtx` (Vtx[3]), `_trailing_DL` (Gfx[29]); the Pippi
+    DObjDesc joint resolves cleanly to `_trailing_DL`. Byte-identical
+    on US + JP. Follow-up: reloc-internal `LGunAmmo_Weapon_data+0xNN`
+    DL-jump targets still overshoot the declared block.
+  - **`.data.inc.c` typing pass (2026-05-17)** — remaining untyped
+    includes typed from DL evidence: `Egg_…_0x10698` → `u16`
+    `.palette.inc.c` (TLUT loaded by `Gfx_0x111B0`); `LGunAmmo_data_0x41B8`
+    → `.tex.inc.c` (CI texture — the `FFlower_…_sub_0xC` descriptor
+    pairs it with the `_post_0x40` palette); `LGunAmmo_data_0x4300`
+    (all-zero) → `PAD(8)`. Byte-identical on US + JP.
+  - **MObjSub sprite typing + texture annotation (2026-05-17)** —
+    the five `Egg_…_0x106C0..0x10EE0` Starmie-table records are the
+    `Starmie_…_sub_0x20` MObjSub sprite frames; ran
+    `tools/annotateMObjSubSprites.py` to rename them
+    `Tex_0x106C0..0x10EE0` and annotate `@tex fmt=CI4 dim=32x32`
+    (last frame absorbed its trailing `PAD(16)` — it was over-split
+    to 496 B; the real 32x32 CI4 frame is 512 B). 41 MObjSub sprite
+    blocks annotated overall, plus 7 DL-referenced `Tex_*` blocks
+    via `tools/annotateTexBlocks.py` (83 `@tex` comments total).
+    Two orphan `.data.inc.c` blocks remained after this pass.
+  - **Final `.data.inc.c` elimination → fid 86 fully typed (2026-05-17)**
+    — `Egg_…_trailing` (160 B) decoded as four identical 16-colour
+    RGBA16 palettes (`LUT_0x105F8/10620/10648/10670`, each `u16[16]`
+    + `PAD(8)`) — the five Egg sprite frames each have a palette.
+    `Heart_Item_data_remainder_gap_0x1258` absorbed into the
+    preceding block: `Gfx_0x1440` loads `LUT_0x1238` via
+    `gsDPSetTextureImage`+`gsDPLoadBlock`, so it is a texture, not a
+    palette — merged the two into `Tex_0x1238` (`u8[128]`, CI4 16x16).
+    Palette-size audit: `Egg_…_0x10698`/`DogasSmog_…_trailing_LUT`
+    trimmed `u16[20]`→`u16[16]`+`PAD(8)`; `LUT_0x19D8/1A20` (32-colour)
+    and `LUT_0x3A88` (48-colour) confirmed genuine via `gsDPLoadTLUTCmd`
+    counts and left as-is. **fid 86 now carries zero `.data.inc.c`
+    includes** — every block is a typed Gfx/Vtx/u16-palette/u8-texture/
+    struct. Byte-identical on US + JP.
 - `KirbySpecial1` (fid 230, 48 B) → `void *[9]` table of cross-file
   `WPAttributes` pointers — one entry per fighter whose neutral
   special Kirby can copy. Extern chain with 9 entries, all resolved

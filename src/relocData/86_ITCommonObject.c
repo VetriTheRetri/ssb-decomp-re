@@ -257,14 +257,10 @@ u16 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34[16] = {
 };
 PAD(8);
 
-/* @ 0x1238, 32 bytes (16-color RGBA5551 palette) */
-u16 dITCommonObject_LUT_0x1238[16] = {
-	#include <ITCommonObject/dITCommonObject_LUT_0x1238.palette.inc.c>
-};
-
-/* @ 0x1258, 96 bytes (trailing gap) */
-u8 dITCommonObject_Heart_Item_data_remainder_gap_0x1258[0x60] = {
-	#include <ITCommonObject/dITCommonObject_Heart_Item_data_remainder_gap_0x1258.data.inc.c>
+/* @ 0x1238, 128 bytes — CI4 texture (Gfx_0x1440 SetTextureImage + LoadBlock) */
+/* @tex fmt=CI4 dim=16x16 */
+u8 dITCommonObject_Tex_0x1238[128] = {
+	#include <ITCommonObject/Tex_0x1238.tex.inc.c>
 };
 
 /* @ 0x012B8, 680 bytes */
@@ -428,6 +424,7 @@ AObjEvent32 *dITCommonObject_Star_Item_matanimjoints_0x1658[2] = {
 PAD(8);
 
 /* @ 0x01668, 128 bytes — Sword item texture */
+/* @tex fmt=I4 dim=16x16 */
 u8 dITCommonObject_Tex_0x1668[128] = {
 	#include <ITCommonObject/dITCommonObject_Tex_0x1668.tex.inc.c>
 };
@@ -467,8 +464,8 @@ DObjDLLink dITCommonObject_Sword_Item_DLLink_0x1908[2] = {
 /* @ 0x01918, 1256 bytes */
 DObjDesc dITCommonObject_Sword_Item_data_DObjDesc[4] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x308), { 0.0f, 360.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dITCommonObject_Star_Item_matanimjoints + 0x318), { 0.0f, -267.0000305175781f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dITCommonObject_Sword_Item_DLLink_0x18F8, { 0.0f, 360.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dITCommonObject_Sword_Item_DLLink_0x1908, { 0.0f, -267.0000305175781f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -971,19 +968,21 @@ u16 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[16] = {
 	#include <ITCommonObject/LGunAmmo_Weapon_data_post_0x40.palette.inc.c>
 };
 PAD(8);
-/* split-self chunk @ +0x68 (464 bytes, abs 0x41B8) */
+/* @ 0x41B8, 72 bytes — CI texture (paired with the _post_0x40
+ * palette by the FFlower_…_sub_0xC image descriptor) */
 u8 dITCommonObject_LGunAmmo_data_0x41B8[0x48] = {
-	#include <ITCommonObject/data_0x41B8.data.inc.c>
+	#include <ITCommonObject/data_0x41B8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x32 */
 u8 dITCommonObject_LGunAmmo_Tex_0x4200[0x100] = {
 	#include <ITCommonObject/Tex_0x4200.tex.inc.c>
 };
 
-u8 dITCommonObject_LGunAmmo_data_0x4300[0x8] = {
-	#include <ITCommonObject/data_0x4300.data.inc.c>
-};
+/* @ 0x4300, 8 bytes (zero pad between textures) */
+PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 */
 u8 dITCommonObject_LGunAmmo_Tex_0x4308[0x80] = {
 	#include <ITCommonObject/Tex_0x4308.tex.inc.c>
 };
@@ -1116,6 +1115,7 @@ u16 dITCommonObject_LUT_0x47C0[16] = {
 PAD(8);
 
 /* @ 0x047E8, 128 bytes — StarRod item texture */
+/* @tex fmt=CI4 dim=16x16 lut=dITCommonObject_LUT_0x4798 */
 u8 dITCommonObject_Tex_0x47E8[128] = {
 	#include <ITCommonObject/dITCommonObject_Tex_0x47E8.tex.inc.c>
 };
@@ -1124,6 +1124,7 @@ u8 dITCommonObject_Tex_0x47E8[128] = {
 PAD(8);
 
 /* @ 0x04870, 128 bytes — StarRod item texture */
+/* @tex fmt=CI4 dim=16x16 lut=dITCommonObject_LUT_0x47C0 */
 u8 dITCommonObject_Tex_0x4870[128] = {
 	#include <ITCommonObject/dITCommonObject_Tex_0x4870.tex.inc.c>
 };
@@ -1156,8 +1157,8 @@ Gfx dITCommonObject_Gfx_0x4AA0[24] = {
 /* @ 0x04B60, 2296 bytes */
 DObjDesc dITCommonObject_StarRod_Item_data_DObjDesc[4] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x250), { 0.0f, 157.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 16386, (void*)((u8*)dITCommonObject_FFlower_Item_matanimjoints + 0x340), { 0.0f, 105.44328308105469f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dITCommonObject_Gfx_0x49B0, { 0.0f, 157.5f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16386, (void*)dITCommonObject_Gfx_0x4AA0, { 0.0f, 105.44328308105469f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1217,19 +1218,19 @@ u16 dITCommonObject_StarRod_Weapon_data_post_0x98[16] = {
 	#include <ITCommonObject/StarRod_Weapon_data_post_0x98.palette.inc.c>
 };
 PAD(8);
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_StarRod_Weapon_data_post_0x70 */
 u8 dITCommonObject_Tex_0x55C8[520] = {
 	#include <ITCommonObject/Tex_0x55C8.tex.inc.c>
 };
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_StarRod_Weapon_data_post_0x98 */
 u8 dITCommonObject_Tex_0x57D0[520] = {
 	#include <ITCommonObject/Tex_0x57D0.tex.inc.c>
 };
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_StarRod_Weapon_data_post_0x70 */
 u8 dITCommonObject_Tex_0x59D8[520] = {
 	#include <ITCommonObject/Tex_0x59D8.tex.inc.c>
 };
-/* @tex fmt=CI4 dim=32x32 */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_StarRod_Weapon_data_post_0x98 */
 u8 dITCommonObject_Tex_0x5BE0[512] = {
 	#include <ITCommonObject/Tex_0x5BE0.tex.inc.c>
 };
@@ -2947,17 +2948,17 @@ u16 dITCommonObject_LUT_0xD738[16] = {
 /* @ 0xD758, 1560 bytes (trailing gap) */
 PAD(8);
 
-/* @tex fmt=CI4 dim=24x32 */
+/* @tex fmt=CI4 dim=16x65 */
 u8 dITCommonObject_Tex_0xD760[520] = {
 	#include <ITCommonObject/Tex_0xD760.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=24x32 */
+/* @tex fmt=CI4 dim=16x65 */
 u8 dITCommonObject_Tex_0xD968[520] = {
 	#include <ITCommonObject/Tex_0xD968.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=24x32 */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dITCommonObject_Tex_0xDB70[512] = {
 	#include <ITCommonObject/Tex_0xDB70.tex.inc.c>
 };
@@ -3412,6 +3413,7 @@ u16 dITCommonObject_LUT_0xE688[16] = {
 PAD(8);
 
 /* @ 0x0E6B0, 640 bytes — Kamex weapon texture */
+/* @tex fmt=CI4 dim=32x40 lut=dITCommonObject_LUT_0xE688 */
 u8 dITCommonObject_Tex_0xE6B0[640] = {
 	#include <ITCommonObject/dITCommonObject_Tex_0xE6B0.tex.inc.c>
 };
@@ -3429,7 +3431,7 @@ Gfx dITCommonObject_Gfx_0xE970[30] = {
 /* @ 0x0EA60, 3168 bytes */
 DObjDesc dITCommonObject_Kamex_Item_data_DObjDesc[3] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dITCommonObject_SpearSwarm_Weapon_matanimjoints + 0x410), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dITCommonObject_Gfx_0xE970, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -3533,17 +3535,17 @@ u8 dITCommonObject_Tex_0xF168[200] = {
 	#include <ITCommonObject/Tex_0xF168.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=24x24 */
+/* @tex fmt=CI4 dim=16x49 */
 u8 dITCommonObject_Tex_0xF230[392] = {
 	#include <ITCommonObject/Tex_0xF230.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=24x24 */
+/* @tex fmt=CI4 dim=16x49 */
 u8 dITCommonObject_Tex_0xF3B8[392] = {
 	#include <ITCommonObject/Tex_0xF3B8.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=24x24 */
+/* @tex fmt=CI4 dim=24x32 */
 u8 dITCommonObject_Tex_0xF540[384] = {
 	#include <ITCommonObject/Tex_0xF540.tex.inc.c>
 };
@@ -3854,6 +3856,7 @@ u16 dITCommonObject_LUT_0xFCB8[16] = {
 PAD(8);
 
 /* @ 0x0FCE0, 512 bytes — Kamex weapon texture */
+/* @tex fmt=CI4 dim=32x32 lut=dITCommonObject_LUT_0xFCB8 */
 u8 dITCommonObject_Tex_0xFCE0[512] = {
 	#include <ITCommonObject/dITCommonObject_Tex_0xFCE0.tex.inc.c>
 };
@@ -3872,7 +3875,7 @@ Gfx dITCommonObject_Gfx_0xFF10[30] = {
 DObjDesc dITCommonObject_MLucky_Item_data_DObjDesc[4] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dITCommonObject_KamexHydro_Weapon_matanimjoints + 0x3A0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dITCommonObject_Gfx_0xFF10, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -4013,14 +4016,60 @@ AObjEvent32 *dITCommonObject_Egg_Item_animjoints_0x105E4[5] = {
 	NULL, NULL, NULL, NULL, NULL,
 };
 
-/* Trailing region: data/scripts referenced via base+0x148..+0x990
- * by Gfx_0x111B0 and the Starmie sub table. Content is not valid
- * AObjEvent32 script (opcodes out of range); kept as an untyped
- * raw block — boundaries are not cleanly recoverable. */
-u8 dITCommonObject_Egg_Item_animjoints_trailing[2776] = {
-	#include <ITCommonObject/Egg_Item_animjoints_trailing.data.inc.c>
+/* Trailing region: the Egg item's Starmie-variant sprite pool —
+ * five 16-colour RGBA16 palettes (one per sprite frame), then the
+ * five 32x32 CI4 sprite frames of the MObjSub (sub_0x20) table.
+ * The four leading palettes are identical (shared frame palette). */
+u16 dITCommonObject_LUT_0x105F8[16] = {
+	#include <ITCommonObject/LUT_0x105F8.palette.inc.c>
 };
-PAD(16);
+PAD(8);
+
+u16 dITCommonObject_LUT_0x10620[16] = {
+	#include <ITCommonObject/LUT_0x10620.palette.inc.c>
+};
+PAD(8);
+
+u16 dITCommonObject_LUT_0x10648[16] = {
+	#include <ITCommonObject/LUT_0x10648.palette.inc.c>
+};
+PAD(8);
+
+u16 dITCommonObject_LUT_0x10670[16] = {
+	#include <ITCommonObject/LUT_0x10670.palette.inc.c>
+};
+PAD(8);
+
+/* 16-colour RGBA16 TLUT (loaded by Gfx_0x111B0) */
+u16 dITCommonObject_LUT_0x10698[16] = {
+	#include <ITCommonObject/LUT_0x10698.palette.inc.c>
+};
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x106C0[520] = {
+	#include <ITCommonObject/Tex_0x106C0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x108C8[520] = {
+	#include <ITCommonObject/Tex_0x108C8.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x10AD0[520] = {
+	#include <ITCommonObject/Tex_0x10AD0.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x10CD8[520] = {
+	#include <ITCommonObject/Tex_0x10CD8.tex.inc.c>
+};
+
+/* @tex fmt=CI4 dim=32x32 */
+u8 dITCommonObject_Tex_0x10EE0[512] = {
+	#include <ITCommonObject/Tex_0x10EE0.tex.inc.c>
+};
 
 /* @ 0x110E0, 160 bytes (raw gap) */
 /* u32 pointer array @ 0x110E0 (2 entries) */
@@ -4031,11 +4080,11 @@ u32 dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0[2] = {
 
 /* u32 pointer array @ 0x110E8 (6 entries) */
 u32 dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0_sub_0x8[6] = {
-	(u32)((u8*)&dITCommonObject_Egg_Item_animjoints + 0x990),
-	(u32)((u8*)&dITCommonObject_Egg_Item_animjoints + 0x788),
-	(u32)((u8*)&dITCommonObject_Egg_Item_animjoints + 0x580),
-	(u32)((u8*)&dITCommonObject_Egg_Item_animjoints + 0x378),
-	(u32)((u8*)&dITCommonObject_Egg_Item_animjoints + 0x170),
+	(u32)dITCommonObject_Tex_0x10EE0,
+	(u32)dITCommonObject_Tex_0x10CD8,
+	(u32)dITCommonObject_Tex_0x10AD0,
+	(u32)dITCommonObject_Tex_0x108C8,
+	(u32)dITCommonObject_Tex_0x106C0,
 	0x00000000,
 };
 
@@ -4208,7 +4257,7 @@ DObjDLLink dITCommonObject_Starmie_Item_data_remainder_sub_0x6A4[2] = {
 /* @ 0x119D8, 1384 bytes */
 DObjDesc dITCommonObject_StarmieSwift_Weapon_data_DObjDesc[3] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dITCommonObject_Starmie_Item_data_remainder + 0x6A4), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dITCommonObject_Starmie_Item_data_remainder_sub_0x6A4, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -4445,7 +4494,7 @@ u32 dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x178[4] = {
 /* @ 0x13100, 144 bytes */
 DObjDesc dITCommonObject_DogasSmog_Weapon_data_DObjDesc[3] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dITCommonObject_DogasSmog_Weapon_mobjsubs + 0x178), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 5.5f, 5.5f, 1.0f } },
+	{ 1, (void*)dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x178, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 5.5f, 5.5f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -4488,10 +4537,11 @@ PAD(4);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dITCommonObject_DogasSmog_Weapon_matanimjoints_0x131E8[];
+extern AObjEvent32 *dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing[];
 
 AObjEvent32 *dITCommonObject_DogasSmog_Weapon_matanimjoints[2] = {
 	NULL,
-	(u32)((u8*)dITCommonObject_DogasSmog_Weapon_matanimjoints + 0x64),
+	(u32)dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing,
 };
 
 u32 dITCommonObject_DogasSmog_Weapon_matanimjoints_0x131E8[] = {
@@ -4520,17 +4570,10 @@ u32 dITCommonObject_DogasSmog_Weapon_matanimjoints_0x131E8[] = {
 	aobjEvent32End(),
 };
 
-/* Trailing region: orphan scripts reachable only via Jump/SetAnim
- * from inside the typed scripts above, plus any embedded data
- * tables. Dumped raw because the boundaries aren't cleanly
- * detectable from .reloc + first-End-per-script alone. */
-/* Pointer-table split fallback: chain-pointer table at the
- * head of the array, followed by raw data containing every
- * referenced (and orphan) script. The data block is dumped
- * as one u8[] include; fixRelocChain rewrites the table
- * entries to chain-encoded form per the .reloc. */
-extern u8 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_data[];
-
+/* Trailing region: _trailing is a 5-entry AObjEvent32* table
+ * (only [0] used -> the _0x131E8 matanim script). The block that
+ * followed it is a self-contained textured quad, decoded below
+ * into TLUT / texture / Vtx / DL. */
 AObjEvent32 *dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing[5] = {
 	(u32)dITCommonObject_DogasSmog_Weapon_matanimjoints_0x131E8,
 	NULL,
@@ -4539,14 +4582,31 @@ AObjEvent32 *dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing[5] = {
 	NULL,
 };
 
-u8 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_data[832] = {
-	#include <ITCommonObject/DogasSmog_Weapon_matanimjoints_trailing_data.data.inc.c>
+/* @ 0x13258, 40 bytes — 16-colour RGBA16 TLUT + 8 B pad */
+u16 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_LUT[16] = {
+	#include <ITCommonObject/DogasSmog_Weapon_matanimjoints_trailing_LUT.palette.inc.c>
+};
+PAD(8);
+
+/* @ 0x13280, 512 bytes — texture image */
+u8 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Tex[512] = {
+	#include <ITCommonObject/DogasSmog_Weapon_matanimjoints_trailing_Tex.tex.inc.c>
+};
+
+/* @ 0x13480, 48 bytes — quad geometry (3 vertices) */
+Vtx dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Vtx[3] = {
+	#include <ITCommonObject/DogasSmog_Weapon_matanimjoints_trailing_Vtx.vtx.inc.c>
+};
+
+/* @ 0x134B0, 232 bytes — DL: loads the TLUT + texture, draws the quad */
+Gfx dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_DL[29] = {
+	#include <ITCommonObject/DogasSmog_Weapon_matanimjoints_trailing_DL.dl.inc.c>
 };
 
 /* @ 0x13598, 328 bytes */
 DObjDesc dITCommonObject_Pippi_Item_data_DObjDesc[3] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dITCommonObject_DogasSmog_Weapon_matanimjoints + 0x2D0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_DL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

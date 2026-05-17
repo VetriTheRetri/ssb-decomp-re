@@ -17,18 +17,36 @@ Gfx dIFCommonPlayer_Magnify_DisplayList[9] = {
 	#include <IFCommonPlayer/Magnify.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0078 to 0x0188 (272 bytes) */
-u8 dIFCommonPlayer_Magnify_post[272] = {
-	#include <IFCommonPlayer/Magnify_post.data.inc.c>
+/* @ 0x0078, 8 bytes (raw gap) */
+PAD(8);
+
+/* @ 0x0080, 48 bytes - Vtx[3] shared by the three arrow DLs */
+Vtx dIFCommonPlayer_Magnify_Vtx[3] = {
+	#include <IFCommonPlayer/dIFCommonPlayer_Magnify_Vtx.vtx.inc.c>
+};
+
+/* @ 0x00B0, 72 bytes - Gfx[9] arrow DL 0 */
+Gfx dIFCommonPlayer_Magnify_DL0[9] = {
+	#include <IFCommonPlayer/dIFCommonPlayer_Magnify_DL0.dl.inc.c>
+};
+
+/* @ 0x00F8, 72 bytes - Gfx[9] arrow DL 1 */
+Gfx dIFCommonPlayer_Magnify_DL1[9] = {
+	#include <IFCommonPlayer/dIFCommonPlayer_Magnify_DL1.dl.inc.c>
+};
+
+/* @ 0x0140, 72 bytes - Gfx[9] arrow DL 2 */
+Gfx dIFCommonPlayer_Magnify_DL2[9] = {
+	#include <IFCommonPlayer/dIFCommonPlayer_Magnify_DL2.dl.inc.c>
 };
 
 /* DObjDesc: Arrows @ 0x188 (5 entries) */
 DObjDesc dIFCommonPlayer_Arrows[] = {
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dIFCommonPlayer_Magnify_post + 0x38), { 5.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dIFCommonPlayer_Magnify_post + 0x80), { 16.000001907348633f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dIFCommonPlayer_Magnify_post + 0xC8), { 27.000003814697266f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dIFCommonPlayer_Magnify_DL0, { 5.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dIFCommonPlayer_Magnify_DL1, { 16.000001907348633f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dIFCommonPlayer_Magnify_DL2, { 27.000003814697266f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 PAD(12);

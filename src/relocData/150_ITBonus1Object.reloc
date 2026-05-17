@@ -5,4 +5,4 @@
 intern dITBonus1Object_DL+0x4C dITBonus1Object_data
 intern dITBonus1Object_DL+0x6C dITBonus1Object_Vtx
 intern dITBonus1Object_dobj+0x4 dITBonus1Object_DL
-intern dITBonus1Object_dobj+0x40 dITBonus1Object_dobj
+intern dITBonus1Object_DObjDesc+0x30 dITBonus1Object_dobj

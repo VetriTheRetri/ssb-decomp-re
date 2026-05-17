@@ -17,10 +17,10 @@
  *                  the quad. Four intern-chain pointers inside this DL
  *                  resolve back to the data pool, the Vtx array, and the
  *                  trailing dobj block.
- *   0x10E8-0x117F  DObjDesc-shaped 152-byte block — the file's "object"
- *                  struct (id + dl pointer + transform), referenced from
- *                  inside the DL. Held as a u8 block until the exact
- *                  field layout is verified against the engine.
+ *   0x10E8-0x10F7  DObjDLLink[2] — selects the DL (list 1), `{4,NULL}` term.
+ *   0x10F8-0x117B  DObjDesc[3] joint tree — `{0,NULL,…}`, `{1,&dobj,…}`,
+ *                  `{18,NULL,…}` terminator.
+ *   0x117C-0x117F  PAD(4).
  */
 
 #include "relocdata_types.h"
@@ -42,7 +42,18 @@ Gfx dITBonus1Object_DL[20] = {
 	#include <ITBonus1Object/DL.dl.inc.c>
 };
 
-/* @ 0x10E8, 152 bytes — DObjDesc-shaped block (typing TBD) */
-u8 dITBonus1Object_dobj[0x98] = {
-	#include <ITBonus1Object/dobj.data.inc.c>
+/* @ 0x10E8, 16 bytes — DObjDLLink selector (DL list 1) */
+DObjDLLink dITBonus1Object_dobj[2] = {
+	{ 1, dITBonus1Object_DL },
+	{ 4, NULL },
 };
+
+/* @ 0x10F8, 132 bytes — DObjDesc joint tree */
+DObjDesc dITBonus1Object_DObjDesc[3] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dITBonus1Object_dobj, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* @ 0x117C, 4 bytes (raw gap) */
+PAD(4);

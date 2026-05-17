@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2075 / 2132** files at 100% (97.85% of bytes typed; 367,740 / 17,082,000 bytes still untyped across 57 files).
+Overall: **2077 / 2132** files at 100% (97.89% of bytes typed; 360,796 / 17,082,000 bytes still untyped across 55 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -53,7 +53,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
 | 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
-| 166 | IFCommonPlayer | 976 | 272 | 1 | 72.13% |
 | 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
 | 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
 | 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
@@ -64,7 +63,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
 | 353 | LinkSpecial2 | 6672 | 712 | 6 | 89.33% |
 | 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
-| 86 | ITCommonObject | 79584 | 6696 | 75 | 91.59% |
 | 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
 | 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
 | 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
@@ -74,7 +72,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 333 | CaptainSpecial3 | 2160 | 88 | 1 | 95.93% |
 | 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
 | 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
-| 150 | ITBonus1Object | 4480 | 152 | 1 | 96.61% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
 | 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
 | 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
@@ -93,6 +90,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
 | 144 | GRBonus2CaptainFile2 | 20368 | 96 | 1 | 99.53% |
 | 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
+| 86 | ITCommonObject | 79584 | 176 | 3 | 99.78% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
 
 ### Per-region divergence (JP build)
@@ -595,6 +593,89 @@ Recent round of structural work:
     fields, all genuinely NULL) rewritten as `NULL` — the file has no
     non-zero hardcoded chain hex left (the earlier `symbolizeRelocFile.py`
     pass resolved those). Byte-identical on US + JP.
+  - **Box DL split (2026-05-16)** — `Box_…_gap_0x67FC_sub_0xB4` (312 B
+    `u8` blob, same shape as `BombHei_…_sub_0x4`) split into `Vtx[4]` +
+    `Gfx[29]` DL (`dITCommonObject_Gfx_0x68F0`) + `PAD(16)`, `.reloc`
+    rewritten to the new sub-symbols. Byte-identical on US + JP.
+  - **DObjDLLink blocks (2026-05-16)** — three `u8` blobs that begin with
+    a `DObjDLLink` selector typed: `Starmie_…_sub_0x6A4` → `DObjDLLink[2]`;
+    `LGunAmmo_Weapon_data_post` → `DObjDLLink[2]` + `PAD(8)` + `u16[16]`
+    palette + `PAD(8)`; `StarRod_Weapon_data_post` → `DObjDLLink[2]` +
+    `PAD(16)` + two `u16[16]` palettes (each + `PAD(8)`). Two `.reloc`
+    entries that expressed the link's `Gfx*` slot via an overshoot off
+    the preceding DL (`…_Weapon_data+0xAC/+0xB4`) rewritten to the
+    proper `…_Weapon_data_post+0x4` symbol. Byte-identical on US + JP.
+  - **`_post` DObjDesc blocks + MBall structs (2026-05-16)** — the four
+    `…_sub_…_post` `u8` blobs (`NBumper`/`Wark`/`Kamex`/`Sawamura`) each
+    open with a 3-entry `DObjDesc` joint tree (`{0,NULL,…}`,
+    `{1, ptr→sub, …}`, `{18,NULL,…}` terminator) → typed `DObjDesc[3]`,
+    followed by `PAD()` + `u16[16]` RGBA5551 palettes (NBumper has 7
+    identical palettes, Wark/Kamex 2 each, Sawamura none). The three
+    `MBall_…_gap_0x950C_sub_{0x16C,0x21C,0x2F4}` linked structs retyped
+    `u8` → `u32` (tangled chain-pointer structures; no struct definition
+    available, so raw `u32` rather than a guessed type). Byte-identical
+    on US + JP.
+  - **AObjEvent32 decode pass (2026-05-16)** — five blocks decoded inline
+    with `aobjEvent32*()` macros via `tools/decodeAObjEvent32.py`'s
+    decoder, eliminating their `.data.inc.c` includes: `MBall_…_sub_0x16C`,
+    `MBall_…_sub_0x2F4`, `Tosakinto_…_sub_0x14`, `Lizardon_…_sub_0x14`.
+    `MBall_…_sub_0xC4` turned out to be an `AObjEvent32 *[8]` script-pointer
+    table (`{script, NULL×4, script, script, script}`), hand-typed as
+    such; `MBall_…_gap_0x950C` corrected `u16 *[5]` → `AObjEvent32 *[5]`.
+    Nine forward `extern` decls added for the now-inline chain targets.
+    Untyped (`.data.inc.c`) chain-pointer blocks: 9 → 5. US + JP OK.
+  - **Final ITCommonObject cleanup (2026-05-16)** — decoded four more
+    AObjEvent32 scripts inline (`Harisen_…_sub_0x14`, `GShell_…_sub_0xC`,
+    `MBall_…_sub_0x21C`, `Spear_…_sub_0x14`); `Box_…_sub_0x34` retyped
+    `.data.inc.c` → `.tex.inc.c` (a `gsDPSetTextureImage` target);
+    `Kamex_…_gap_0xEF58` split to `PAD` + two `u16[16]` palettes;
+    `Lizardon_…_sub_0x8C` typed `AObjEvent32 *[6]` script-pointer table +
+    two `u16[16]` palettes. File 86 now has only **2** `.data.inc.c`
+    blocks left: `Heart_…_gap_0x1258` (unidentified `{u32,0}`-pair data)
+    and `LGunAmmo_Weapon_data_post_0x68` (a 464-byte texture pool).
+    US + JP byte-identical.
+  - **LGunAmmo texture pool (2026-05-17)** — ran `splitTexPoolByDL.py`
+    on `LGunAmmo_Weapon_data_post_0x68` (`--prefix dITCommonObject_LGunAmmo_
+    --base-offset 0x41B8`): split into `Tex_0x4200` (256 B) + `Tex_0x4308`
+    (128 B) typed `.tex.inc.c`, with two small non-texture remainders
+    (`data_0x41B8` 72 B, `data_0x4300` 8 B) left raw. File 86 is down to
+    3 `.data.inc.c` includes (those two pool remainders + the
+    unidentified `Heart_…_gap_0x1258`). US + JP byte-identical.
+  - **Script / AObjEvent32* array split (2026-05-17)** — a decoded
+    AObjEvent32 script has exactly one `aobjEvent32End()`, at its end;
+    where the decoder rendered `…End()` followed by more words, those
+    trailing words are an `AObjEvent32 *[]` pointer array, not script.
+    Eight ITCommonObject blocks split into `u32` script + `AObjEvent32 *[]`
+    `_post` array (`Harisen_…_sub_0x14`, `GShell_…_sub_0xC`,
+    `MBall_…_sub_0x16C/0x21C/0x2F4`, `Tosakinto_…_sub_0x14`,
+    `Spear_…_sub_0x14`, `Lizardon_…_sub_0x14`); `.reloc` ptr labels in
+    the trailing region rebased onto the new `_post` symbol.
+    Byte-identical on US + JP.
+  - **Chain-hex symbolization + AnimJoint-table split (2026-05-17)** —
+    14 `_mobjsubs_gap_*` `u32[]` pointer-array slots that still held raw
+    chain-encoded hex (e.g. `0x04B004F0`) rewritten to `(u32)&<target>`
+    from the `.reloc`. `Egg_Item_animjoints` and
+    `DogasSmog_Weapon_matanimjoints` (decoded as one giant `u32[]` with
+    200+ `End()`s) split via `splitAnimJointTable.py` into an
+    `AObjEvent32 *[]` script-pointer table + leading `u32` script + a
+    `u8 _trailing` block (the trailing block still holds further nested
+    table/script structure — a recursive follow-up). Byte-identical
+    on US + JP.
+  - **`_trailing` decomposition (2026-05-17)** — both `_trailing`
+    blocks retyped `u8`→`u32` and re-extracted as word format.
+    `DogasSmog_Weapon_matanimjoints_trailing` resolved cleanly to an
+    `AObjEvent32 *[5]` table. `Egg_Item_animjoints` corrected: the
+    leading `_0x1055C` script carried 6 `End()`s — trimmed to its
+    single terminator, the 5 trailing zero words split into a sparse
+    `AObjEvent32 *dITCommonObject_Egg_Item_animjoints_0x105E4[5]`
+    (all NULL). `Egg_…_trailing` (2776 B): its content is not valid
+    AObjEvent32 script (opcodes out of range) — it is data referenced
+    by `Gfx_0x111B0` / the Starmie sub table at `base+0x148..+0x990`,
+    and the boundaries are not cleanly recoverable. The misleading
+    inline `aobjEvent32*()` decode was reverted to an untyped
+    `u8 dITCommonObject_Egg_Item_animjoints_trailing[2776]` with an
+    `Egg_Item_animjoints_trailing.data.inc.c` include. Byte-identical
+    on US + JP.
 - `KirbySpecial1` (fid 230, 48 B) → `void *[9]` table of cross-file
   `WPAttributes` pointers — one entry per fighter whose neutral
   special Kirby can copy. Extern chain with 9 entries, all resolved

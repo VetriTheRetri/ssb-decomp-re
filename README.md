@@ -1,3 +1,6 @@
+[![Code](https://decomp.dev/VetriTheRetri/ssb-decomp-re/us.svg?mode=shield&measure=code&label=Code)](https://decomp.dev/VetriTheRetri/ssb-decomp-re)
+[![Data](https://decomp.dev/VetriTheRetri/ssb-decomp-re/us.svg?mode=shield&measure=data&label=Data)](https://decomp.dev/VetriTheRetri/ssb-decomp-re)
+
 # Super Smash Bros. 64 Decompilation
 
 Want to help? Here's a list of remaining functions: https://VetriTheRetri.github.io/ssb-decomp-re/

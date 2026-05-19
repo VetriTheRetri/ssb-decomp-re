@@ -8,10 +8,20 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0690 (1680 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 88 bytes) */
-u8 dCaptainSpecial3_gap_0x0000[88] = {
-	#include <CaptainSpecial3/gap_0x0000.data.inc.c>
+/* Three 16-colour CI4 palettes — one per FalconPunch sprite frame
+ * (Tex_0x80 / Tex_0x288 / Tex_0x490). Each palette is preceded by
+ * PAD(8); DL_0x0760 loads sub_0x58 as a TLUT. */
+PAD(8);
+
+u16 dCaptainSpecial3_gap_0x0000_sub_0x8[16] = {
+	#include <CaptainSpecial3/gap_0x0000_sub_0x8.palette.inc.c>
 };
+PAD(8);
+
+u16 dCaptainSpecial3_gap_0x0000_sub_0x30[16] = {
+	#include <CaptainSpecial3/gap_0x0000_sub_0x30.palette.inc.c>
+};
+PAD(8);
 
 /* gap sub-block @ 0x0058 (was gap+0x58, 40 bytes) */
 u16 dCaptainSpecial3_gap_0x0000_sub_0x58[16] = {

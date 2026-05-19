@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2077 / 2132** files at 100% (97.89% of bytes typed; 360,796 / 17,082,000 bytes still untyped across 55 files).
+Overall: **2086 / 2132** files at 100% (98.13% of bytes typed; 319,604 / 17,082,000 bytes still untyped across 46 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -38,14 +38,7 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | FID | Name | Size (B) | Untyped (B) | Untyped blocks | Complete |
 |----:|---|---:|---:|---:|---:|
 | 252 | SCExplainMain | 6096 | 6096 | 5 | 0.00% |
-| 152 | StagePupupuFile3 | 14080 | 14072 | 2 | 0.06% |
 | 153 | StageSectorFile3 | 7680 | 7664 | 2 | 0.21% |
-| 157 | StageZebesFile3 | 3536 | 3528 | 2 | 0.23% |
-| 158 | StageJungleFile3 | 3296 | 3288 | 2 | 0.24% |
-| 162 | GRBonus3File3 | 2320 | 2312 | 2 | 0.34% |
-| 159 | StageYamabukiFile3 | 10976 | 10920 | 14 | 0.51% |
-| 155 | StageInishieFile3 | 5136 | 5108 | 6 | 0.55% |
-| 154 | StageYosterFile3 | 1712 | 1700 | 2 | 0.70% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
 | 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
@@ -69,7 +62,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
 | 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
 | 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
-| 333 | CaptainSpecial3 | 2160 | 88 | 1 | 95.93% |
 | 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
 | 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
 | 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
@@ -90,7 +82,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
 | 144 | GRBonus2CaptainFile2 | 20368 | 96 | 1 | 99.53% |
 | 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
-| 86 | ITCommonObject | 79584 | 176 | 3 | 99.78% |
 | 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
 
 ### Per-region divergence (JP build)
@@ -723,6 +714,94 @@ Recent round of structural work:
     counts and left as-is. **fid 86 now carries zero `.data.inc.c`
     includes** — every block is a typed Gfx/Vtx/u16-palette/u8-texture/
     struct. Byte-identical on US + JP.
+- `CaptainSpecial3` (fid 333, Captain Falcon's Falcon Punch effect)
+  reached 100% (2026-05-17). The leading `gap_0x0000` u8[88] blob
+  decoded as three 16-colour CI4 palettes — one per FalconPunch sprite
+  frame (`Tex_0x80`/`0x288`/`0x490`) — each `u16[16]` preceded by
+  `PAD(8)`. The file's role was confirmed by tracing fileID 333
+  (`llCaptainSpecial3FileID`) → `gFTDataCaptainSpecial3` →
+  `src/ef/efmanager.c`; that fileID-tracing technique is captured as
+  the `reloc-trace-uses` skill in `.claude/skills/`. Byte-identical
+  on US + JP.
+- `GRBonus3File3` (fid 162, GRBonus3 "Race to the Finish" stage
+  AnimJoint data) fully typed (2026-05-18). The file had an empty
+  `.reloc` — `tools/walkRelocChains.py` recovered the 19-entry intern
+  chain from the binary; the generated `.reloc` reproduces it exactly.
+  Structure decoded end to end: two `DObjDesc` joint trees
+  (`DObjDesc_0x0000[6]` / `DObjDesc_0x0788[4]`, `id=18` terminators);
+  an `AObjEvent32 *[7]` animation table (`AnimJoint_0x0108`) feeding
+  four `AObjEvent32` scripts decoded inline via `decodeAObjEvent32.py`;
+  two `Gfx` display lists (`DL_0x0548`, `DL_0x06C8`) plus a third
+  (`DL_0x08A0`) `#include`d as `.dl.inc.c`; the textures / TLUT /
+  `Vtx` arrays the DLs reference (`Tex_0x0240` CI, `Tex_0x02C8` I,
+  `LUT_0x0218`, `Vtx_0x0348/0388/0508/0840`) typed from the DL walk;
+  and two `DObjDLLink` arrays that the second joint tree points at.
+  Zero `.data.inc.c` includes. Byte-identical on US + JP.
+- `Stage*File3` batch (2026-05-18, one file per pass) — applying the
+  `GRBonus3File3` technique to the stage AnimJoint File3 pool files.
+  - `StageYosterFile3` (fid 154) fully typed: two render-setup
+    `Gfx[16]` DL fragments; `DObjDesc_0x0100[5]` joint tree; an
+    `AObjEvent32 *[3]` table + three scripts (decoded via
+    `decodeAObjEvent32.py`); an I4 `Tex_0x02B8` (512 B); an inline
+    `MObjSub` reached through `MObjSub **` / `MObjSub *` list-link
+    arrays; two `Vtx[2]` arrays + a `Gfx[29]` DL; and a trailing
+    `AObjEvent32 **` / `AObjEvent32 *` table tree + scripts. 16-entry
+    intern chain recovered from the binary. Zero `.data.inc.c`.
+    Byte-identical on US + JP.
+  - `StageZebesFile3` (fid 157, 3,536 B) fully typed: four 16-colour
+    `u16 LUT[16]` TLUTs and four 32×32 CI4 `Tex` sprite frames (each
+    512 B + a trailing `PAD`); an inline `MObjSub` sprite material
+    reached through an `MObjSub **` list-link and feeding off a
+    `u8 *[4]` frame-pointer table; a `Vtx[8]` array + a `Gfx[36]` DL
+    (TLUT load + segmented texture branch); a `DObjDLLink[2]` and a
+    `DObjDesc[3]` joint tree; and two `AObjEvent32` scripts (12 / 122
+    words, decoded via `decodeAObjEvent32.py`) threaded through three
+    `AObjEvent32 *` pointer tables. 16-entry intern chain recovered
+    from the binary. Zero `.data.inc.c`. Byte-identical on US + JP.
+  - `StageJungleFile3` (fid 158, 3,296 B) fully typed: a 16-colour
+    `u16 LUT[16]`, a 64×64 CI4 `Tex` (2,048 B), two `Vtx` arrays, a
+    `Gfx[31]` main DL plus a `Gfx[2]` branch stub and a `Gfx[16]`
+    render-setup fragment, a `DObjDesc[3]` joint tree, and three
+    `AObjEvent32` scripts (11 / 32 / 58 words) behind `AObjEvent32 *`
+    tables. 10-entry intern chain. Byte-identical on US + JP.
+  - `StageInishieFile3` (fid 155, 5,136 B) fully typed: three
+    `DObjDesc` joint trees (6 / 3 / 3 entries) driving nine display
+    lists, eleven `Vtx` arrays, CI `Tex` blocks + an inline `MObjSub`
+    sprite material (via `MObjSub **` / `u8 *[4]` frame table), and
+    six `AObjEvent32` scripts behind `AObjEvent32 *` tables. 40 intern
+    + 4 extern chain pointers — the externs (segmented texture images
+    in another file) carry raw target offsets in the `.reloc`.
+    Byte-identical on US + JP.
+  - `StageYamabukiFile3` (fid 159, 10,976 B) fully typed: six
+    `DObjDesc[3]` joint trees driving display lists, eight 16-colour
+    `u16 LUT[16]` TLUTs, CI `Tex` blocks (incl. four sprite frames),
+    seven `Vtx[4]` arrays, twelve `Gfx` DLs, two inline `MObjSub`
+    sprite materials (each via `MObjSub **` / `u8 *[2]` frame table),
+    a `DObjDLLink[3]`, and six `AObjEvent32` scripts behind
+    `AObjEvent32 *` joint tables. Every offset that another file's
+    extern chain points into (the GR\*Map req-list entry points) is a
+    named block start. 43-entry intern chain; `.c` + `.reloc` emitted
+    by a layout-driven generator that cross-checks every block
+    boundary and every entry point against the binary. Byte-identical
+    on US + JP.
+  - `StagePupupuFile3` (fid 152, 14,080 B) fully typed: the largest
+    File3 pool — a sprite-image pool (5 `u16 LUT[16]` TLUTs + 8 CI
+    `Tex` blocks) feeding two inline `MObjSub` materials, four
+    `DObjDesc` joint trees (4 / 7 / 8 / 11 entries) driving twenty
+    `Gfx` DLs, eighteen `Vtx` arrays, and ~75 `AObjEvent32` scripts
+    threaded through ~25 `AObjEvent32 *` pointer tables. 147-entry
+    intern chain; the `.c` + `.reloc` were emitted by a layout-driven
+    generator whose ~130-block table is self-validated against the
+    binary (every boundary asserted) and whose chain is walked
+    directly from the `relocData.csv` head word. Byte-identical on
+    US + JP.
+  - `StageSectorFile3` (fid 153, 7,680 B) — **not yet typed.** Unlike
+    the other File3 pools it carries no `DObjDesc` joint trees (zero
+    `id=18` terminators); it is a camera-path / spline format — triples
+    of `f32` keyframe arrays behind 6-word descriptor headers, plus an
+    opcode stream that does not decode as `AObjEvent32`. Typing it
+    needs dedicated reverse-engineering of the camera-curve struct
+    layout, so it is left as the raw `u8` placeholder for now.
 - `KirbySpecial1` (fid 230, 48 B) → `void *[9]` table of cross-file
   `WPAttributes` pointers — one entry per fighter whose neutral
   special Kirby can copy. Extern chain with 9 entries, all resolved

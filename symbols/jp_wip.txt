@@ -197,7 +197,6 @@ n_alCSPSetVol = 0x8002F9C0;
 n_alCSPStop = 0x8002FC40;
 n_alCSPPlay = 0x8002FB60;
 n_alClose = 0x8002CBF8;
-n_aspMainTextStart = 0x80039AD0;
 n_aspMainDataStart = 0x8003F7F0;
 func_800269C0_275C0 = 0x80026770;
 func_80026070_26C70 = 0x80025E20;

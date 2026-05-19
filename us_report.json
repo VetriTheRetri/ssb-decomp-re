@@ -1,15 +1,15 @@
 {
   "measures": {
-    "fuzzy_match_percent": 96.7248,
-    "total_code": "1474720",
-    "matched_code": "1426420",
-    "matched_code_percent": 96.7248,
+    "fuzzy_match_percent": 97.245445,
+    "total_code": "1475232",
+    "matched_code": "1434596",
+    "matched_code_percent": 97.245445,
     "matched_data_percent": 100.0,
-    "total_functions": 7167,
-    "matched_functions": 7143,
-    "matched_functions_percent": 99.66513,
+    "total_functions": 7165,
+    "matched_functions": 7145,
+    "matched_functions_percent": 99.72086,
     "complete_data_percent": 100.0,
-    "total_units": 657
+    "total_units": 656
   },
   "units": [
     {
@@ -13060,15 +13060,21 @@
     {
       "name": "rsp/n_aspmain",
       "measures": {
+        "fuzzy_match_percent": 100.0,
         "total_code": "3168",
+        "matched_code": "3168",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
-        "total_functions": 2,
+        "total_functions": 1,
+        "matched_functions": 1,
+        "matched_functions_percent": 100.0,
         "total_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "3168",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147718848"
           }
@@ -13083,16 +13089,11 @@
       ],
       "functions": [
         {
-          "name": "n_aspMainTextStart",
+          "name": "$_static_symbol_800396C0_build/us/asm/us/data/rsp/n_aspmain.o_.text",
           "size": "3168",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147718848"
-          }
-        },
-        {
-          "name": "n_aspMainTextEnd",
-          "metadata": {
-            "virtual_address": "2147722016"
           }
         }
       ],
@@ -13108,15 +13109,21 @@
     {
       "name": "rsp/gspF3DEX2_fifo",
       "measures": {
-        "total_code": "4496",
+        "fuzzy_match_percent": 100.0,
+        "total_code": "5008",
+        "matched_code": "5008",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
-        "total_functions": 2,
+        "total_functions": 1,
+        "matched_functions": 1,
+        "matched_functions_percent": 100.0,
         "total_units": 1
       },
       "sections": [
         {
           "name": ".text",
-          "size": "4496",
+          "size": "5008",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147722016"
           }
@@ -13131,16 +13138,11 @@
       ],
       "functions": [
         {
-          "name": "gspF3DEX2_fifoTextStart",
-          "size": "4496",
+          "name": "$_static_symbol_8003A320_build/us/asm/us/data/rsp/gspF3DEX2_fifo.o_.text",
+          "size": "5008",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147722016"
-          }
-        },
-        {
-          "name": "gspF3DEX2_fifoTextEnd",
-          "metadata": {
-            "virtual_address": "2147726512"
           }
         }
       ],
@@ -13150,32 +13152,6 @@
         "progress_categories": [
           "rsp",
           "segment_.main"
-        ]
-      }
-    },
-    {
-      "name": "assets/us/unk_3C0B0",
-      "measures": {
-        "fuzzy_match_percent": 100.0,
-        "matched_code_percent": 100.0,
-        "matched_data_percent": 100.0,
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "512",
-          "metadata": {
-            "virtual_address": "2147726512"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".main",
-        "module_id": 3,
-        "progress_categories": [
-          "assets"
         ]
       }
     },
@@ -82975,9 +82951,14 @@
       "id": "rsp",
       "name": "rsp",
       "measures": {
-        "total_code": "7664",
+        "fuzzy_match_percent": 100.0,
+        "total_code": "8176",
+        "matched_code": "8176",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
-        "total_functions": 4,
+        "total_functions": 2,
+        "matched_functions": 2,
+        "matched_functions_percent": 100.0,
         "complete_data_percent": 100.0,
         "total_units": 2
       }
@@ -82992,7 +82973,7 @@
         "matched_functions_percent": 100.0,
         "complete_code_percent": 100.0,
         "complete_data_percent": 100.0,
-        "total_units": 8
+        "total_units": 7
       }
     },
     {
@@ -83277,14 +83258,14 @@
       "id": "segment_.main",
       "name": "Segment .main",
       "measures": {
-        "fuzzy_match_percent": 90.41391,
-        "total_code": "241600",
-        "matched_code": "218440",
-        "matched_code_percent": 90.41391,
+        "fuzzy_match_percent": 93.599655,
+        "total_code": "242112",
+        "matched_code": "226616",
+        "matched_code_percent": 93.59966,
         "matched_data_percent": 100.0,
-        "total_functions": 875,
-        "matched_functions": 868,
-        "matched_functions_percent": 99.2,
+        "total_functions": 873,
+        "matched_functions": 870,
+        "matched_functions_percent": 99.65636,
         "complete_data_percent": 100.0,
         "total_units": 171
       }

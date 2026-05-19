@@ -314,9 +314,10 @@ __osShutdown = 0x8003D3FC;
 osViClock = 0x8003D3F8;
 osClockRate = 0x8003D3F0; // type:u64
 
-n_aspMainTextStart = 0x800396C0; // name_end:n_aspMainTextEnd
+// n_aspMainTextStart / gspF3DEX2_fifoTextStart are SDK RSP microcode .code blobs;
+// defined as linker symbols in symbols/linker_constants.txt so splat does not
+// label them as code functions (keeps them out of the decomp progress %).
 n_aspMainDataStart = 0x8003F400; // name_end:n_aspMainDataEnd
-gspF3DEX2_fifoTextStart = 0x8003A320; // name_end:gspF3DEX2_fifoTextEnd
 gspF3DEX2_fifoDataStart = 0x8003F6B0; // name_end:gspF3DEX2_fifoDataEnd
 
 spSetAttribute = 0x80023870;

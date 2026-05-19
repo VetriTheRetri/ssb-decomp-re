@@ -251,8 +251,7 @@ segments:
       - [0x03A650, c, libultra/io/vigetcurrframebuf]
       - [0x03A690, c, libultra/io/spsetpc]
       - [0x03A6D0, textbin, rsp/n_aspmain]
-      - [0x03B330, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
-      - [0x03C4C0, bin, unk_3C4C0] # other rsp files?
+      - [0x03B330, textbin, rsp/gspF3DEX2_fifo] # F3DEX2 fifo 2.04H .code (includes 0x200 overlay tail formerly split as unk_3C4C0)
       - [0x03C6C0, .data, sys/main]
       - [0x03C6F0, .data, sys/taskman]
       - [0x03C760, .data, sys/rdp]

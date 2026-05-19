@@ -251,8 +251,7 @@ segments:
       - [0x03A270, c, libultra/io/spsetpc]
       - [0x03A2B0, hasm, libultra/os/setwatchlo]
       - [0x03A2C0, textbin, rsp/n_aspmain]
-      - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
-      - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
+      - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # F3DEX2 fifo 2.04H .code (includes 0x200 overlay tail formerly split as unk_3C0B0)
       - [0x03C2B0, .data, sys/main]
       - [0x03C2E0, .data, sys/taskman]
       - [0x03C350, .data, sys/rdp]

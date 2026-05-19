@@ -1,1 +1,6 @@
 D_80080080 = 0x80080080; // ignore:true This address appears in boot, but it's a coincidence
+// Suppress the auto-label splat puts at the start of the n_aspMain RSP microcode
+// textbin, so its .text is not counted as undecompiled code in the progress report
+// (matches gspF3DEX2_fifo, which gets no label). us / jp addresses respectively.
+D_800396C0_3A2C0 = 0x800396C0; // ignore:true
+D_80039AD0_3A6D0 = 0x80039AD0; // ignore:true

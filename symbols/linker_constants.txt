@@ -47,5 +47,11 @@ gDBUiNodeTypeTable = 0x8038fbc0; /* segment:ovl8 */
 n_alCSPNew = 0x8002c3d0;
 n_alAudioFrame = 0x8002C708;
 
+/* SDK RSP microcode .code blobs (n_audio aspMain + F3DEX2 fifo 2.04H).
+   Kept as linker symbols rather than splat symbol_addrs so the textbin
+   .text is not counted as undecompiled code in the progress report. */
+n_aspMainTextStart = 0x800396C0;
+gspF3DEX2_fifoTextStart = 0x8003A320;
+
 gSYControllerMainButtonTap = 0x80045472;
 gSYControllerMainButtonUpdate = 0x80045474;

@@ -183,7 +183,6 @@ tools:
             - sys
             - libultra
             - rsp
-            - assets/unk_3C0B0
         - id: segment_.scmanager
           name: Segment .scmanager
           paths:

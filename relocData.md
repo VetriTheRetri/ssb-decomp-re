@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2086 / 2132** files at 100% (98.13% of bytes typed; 319,604 / 17,082,000 bytes still untyped across 46 files).
+Overall: **2087 / 2132** files at 100% (98.19% of bytes typed; 309,296 / 17,082,000 bytes still untyped across 45 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -41,7 +41,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 153 | StageSectorFile3 | 7680 | 7664 | 2 | 0.21% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
-| 104 | StagePupupuFile2 | 17392 | 10308 | 64 | 40.73% |
 | 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
@@ -196,7 +195,7 @@ Recent round of structural work:
   pads created, 39 base-offset references rewritten across files
   52, 67, 68, 106, 108, 111, 113, 115, 118, 124–132, 134, 137, 139,
   141, 143, 145, 147, 149, 309, 320, 328, 330, 344. ROM byte-identical.
-- **MPGeometryData + referenced vertex/line/mapobj typing** across 36 of
+- **MPGeometryData + referenced vertex/line/mapobj typing** across 37 of
   38 stage / GRBonus collision files. Each file's
   `dXxx_MPGeometryData_0xNNN` symbol — previously a `u8[28..3340]` raw
   blob — is now a typed `MPGeometryData` struct initializer pulling its
@@ -211,11 +210,7 @@ Recent round of structural work:
   the 28-byte header that is referenced by other `Layer*DObj` decls and
   by extern relocs, and were split into `MPGeometryData header` +
   `u8 …_trailing[N]` with `.reloc` offsets ≥ 28 retargeted to the
-  trailing symbol (offset rebased by −28); 1 file (104 StagePupupu)
-  stays `u8[28]` because the binary has 0xFFFF in the u16-to-pointer
-  struct padding (which a typed initializer can't reproduce — C zeroes
-  pad bytes) and the pointer fields hold literal sentinels instead of
-  reloc chain values; 1 file (129 GRBonus1Link) stays `u8` because the
+  trailing symbol (offset rebased by −28); 1 file (129 GRBonus1Link) stays `u8` because the
   JP binary has a different MPGeometryData layout (an extra leading u32
   chain field shifting every field by 4 bytes, plus 4 bytes prepended
   into the `line_info` and `mapobjs` target blocks) that the shared US
@@ -247,6 +242,21 @@ Recent round of structural work:
   during the JP build, since US's trailing inc.c was hand-extracted to
   the right offsets while JP went through the walker fresh). ROM
   byte-identical for both US and JP.
+- **File 104 (StagePupupuFile2) deep typing** — 40.7% → 100%. The
+  `gap_0x1D00` MObj region resolved to MP collision geometry:
+  `sub_0x234` is the stage's `MPGeometryData`, its five arrays typed
+  `MPVertexData` / `u16` vertex-ids / `MPVertexLinks` / `MPLineInfo` /
+  `MPMapObjData` (confirmed against `255 GRPupupuMap`'s
+  `MPGroundData.map_geometry`). Also: four AObjEvent32 material-scroll
+  scripts + `AObjEvent32 *`/`**` link tables decoded out of
+  `Layer3Anim_data_0x343C` / `_0x3F04`; two `MObjSub`s recovered
+  (`sub_0x2F0`+`sub_0x340` merged, plus `MObjSub_0x3208`); DObjDesc
+  trees, Vtx pools and embedded textures/TLUTs split out; the
+  `MObjData_0x2D60` sprite pool typed (MObjSub + `MObjSub *`/`**`
+  tables, three sprite frames typed `Tex_` CI4 via the MObjSub fmt).
+  `255 GRPupupuMap`'s nine cross-file pointers were all repointed from
+  `gap_0xNNNN+offset` placeholders to the real typed symbols (files
+  104 / 88 / 152). ROM byte-identical, US and JP.
 - **DL-chain merge for file 127's `gap_0x0000_sub_0x580`**. The block
   referenced from `dGRBonus1SamusFile2_DLLink_0x0920` was a 5-piece
   mistype (`u8[8]` + `u16` palette + `u8` data + `u16` palette +

@@ -38,144 +38,86 @@ Vtx dStagePupupuFile2_gap_0x0000_sub_0x170[7] = {
 	#include <StagePupupuFile2/gap_0x0000_sub_0x170.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x01E0 (was gap+0x1E0, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x1E0[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x1E0.data.inc.c>
+/* @ 0x01E0..0x06C0 — Vtx pool; one Vtx[N] per gsSPVertex load (counts
+ * decoded from the referencing display lists). */
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x1E0[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x1E0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0210 (was gap+0x210, 40 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x210[40] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x210.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x210[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x210.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0238 (was gap+0x238, 8 bytes) */
-u16 dStagePupupuFile2_gap_0x0000_sub_0x238[4] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x238.palette.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x240[4] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x240.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0240 (was gap+0x240, 32 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x240[32] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x240.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x280[4] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x280.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0260 (was gap+0x260, 32 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x260[32] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x260.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x2C0[5] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x2C0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0280 (was gap+0x280, 64 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x280[64] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x280.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x310[5] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x310.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x02C0 (was gap+0x2C0, 80 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x2C0[80] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x2C0.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x360[4] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x360.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0310 (was gap+0x310, 80 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x310[80] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x310.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x3A0[4] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x3A0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0360 (was gap+0x360, 64 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x360[64] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x360.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x3E0[5] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x3E0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x03A0 (was gap+0x3A0, 64 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x3A0[64] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x3A0.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x430[5] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x430.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x03E0 (was gap+0x3E0, 80 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x3E0[80] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x3E0.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x480[4] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x480.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0430 (was gap+0x430, 56 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x430[56] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x430.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x4C0[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x4C0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0468 (was gap+0x468, 24 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x468[24] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x468.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x4F0[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x4F0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0480 (was gap+0x480, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x480[16] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x480.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x520[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x520.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0490 (was gap+0x490, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x490[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x490.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x550[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x550.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x04C0 (was gap+0x4C0, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x4C0[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x4C0.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x580[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x580.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x04F0 (was gap+0x4F0, 40 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x4F0[40] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x4F0.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x5B0[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x5B0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0518 (was gap+0x518, 8 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x518[8] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x518.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x5E0[8] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x5E0.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0520 (was gap+0x520, 32 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x520[32] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x520.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x660[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x660.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x0540 (was gap+0x540, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x540[16] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x540.data.inc.c>
-};
-
-/* gap sub-block @ 0x0550 (was gap+0x550, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x550[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x550.data.inc.c>
-};
-
-/* gap sub-block @ 0x0580 (was gap+0x580, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x580[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x580.data.inc.c>
-};
-
-/* gap sub-block @ 0x05B0 (was gap+0x5B0, 24 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x5B0[24] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x5B0.data.inc.c>
-};
-
-/* gap sub-block @ 0x05C8 (was gap+0x5C8, 24 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x5C8[24] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x5C8.data.inc.c>
-};
-
-/* gap sub-block @ 0x05E0 (was gap+0x5E0, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x5E0[16] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x5E0.data.inc.c>
-};
-
-/* gap sub-block @ 0x05F0 (was gap+0x5F0, 112 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x5F0[112] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x5F0.data.inc.c>
-};
-
-/* gap sub-block @ 0x0660 (was gap+0x660, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x660[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x660.data.inc.c>
-};
-
-/* gap sub-block @ 0x0690 (was gap+0x690, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x0000_sub_0x690[48] = {
-	#include <StagePupupuFile2/gap_0x0000_sub_0x690.data.inc.c>
+Vtx dStagePupupuFile2_gap_0x0000_sub_0x690[3] = {
+	#include <StagePupupuFile2/gap_0x0000_sub_0x690.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x06C0 (was gap+0x6C0, 72 bytes) */
@@ -193,18 +135,13 @@ Gfx dStagePupupuFile2_DL_0x0798[17] = {
 	#include <StagePupupuFile2/DL_0x0798.dl.inc.c>
 };
 
-/* Gfx DL: gap_0x0000_sub_0x820 @ 0x820 (15 cmds) */
-Gfx dStagePupupuFile2_gap_0x0000_sub_0x820[15] = {
+/* @ 0x0820, 136 bytes — Gfx[17] display list (absorbs the former
+ * mis-typed gap_0x0898 tail). */
+Gfx dStagePupupuFile2_gap_0x0000_sub_0x820[17] = {
 	#include <StagePupupuFile2/gap_0x0000_sub_0x820.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0898 to 0x09D0 (312 bytes) */
-/* gap sub-block @ 0x0898 (was gap+0x0, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x0898[16] = {
-	#include <StagePupupuFile2/gap_0x0898.data.inc.c>
-};
-
-/* gap sub-block @ 0x08A8 (was gap+0x10, 128 bytes) */
+/* @ 0x08A8, 128 bytes — Gfx[16] display list. */
 Gfx dStagePupupuFile2_DL_0x08A8[16] = {
 	#include <StagePupupuFile2/DL_0x08A8.dl.inc.c>
 };
@@ -223,15 +160,75 @@ Gfx dStagePupupuFile2_DL_0x0950[6] = {
 Gfx dStagePupupuFile2_gap_0x0898_sub_0xE8[10] = {
 	#include <StagePupupuFile2/gap_0x0898_sub_0xE8.dl.inc.c>
 };
-/* @ 0x09D0, 1592 bytes — Gfx[199] display list region (concatenated
- * sub-DLs). Was mis-decoded as a u32 AObjEvent32 script by decodeAObjEvent32. */
-Gfx dStagePupupuFile2_Layer0Anim_AnimJoint[199] = {
+/* @ 0x09D0..0x1008 — DObjDesc-referenced display lists; one Gfx[] per
+ * scene-object sub-DL (split at the joint-tree dl entry points). */
+Gfx dStagePupupuFile2_Layer0Anim_AnimJoint[9] = {
 	#include <StagePupupuFile2/Layer0Anim_AnimJoint.dl.inc.c>
 };
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0A18[4] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0A18.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0A38[4] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0A38.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0A58[4] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0A58.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0A78[20] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0A78.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0B18[5] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0B18.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0B40[31] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0B40.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0C38[17] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0C38.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0CC0[12] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0CC0.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0D20[12] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0D20.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0D80[12] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0D80.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0DE0[12] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0DE0.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0E40[12] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0E40.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer0Anim_DL_0x0EA0[45] = {
+	#include <StagePupupuFile2/Layer0Anim_DL_0x0EA0.dl.inc.c>
+};
 
-/* @ 0x1008, 2264 bytes — Vtx / texture data pool referenced by the DLs. */
-u8 dStagePupupuFile2_data_0x1008[0x3C8] = {
-	#include <StagePupupuFile2/data_0x1008.data.inc.c>
+/* @ 0x1008, 968 bytes — DObjDesc[22] scene-object joint tree. */
+DObjDesc dStagePupupuFile2_data_0x1008[22] = {
+	{ 0, (void *)dStagePupupuFile2_DL_0x06C0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_DL_0x0798, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_gap_0x0000_sub_0x820, { 0.0f, 1530.0f, -1800.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8193, (void *)dStagePupupuFile2_DL_0x08A8, { -1215.0f, 0.0f, -1579.3961181640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8193, (void *)dStagePupupuFile2_DL_0x0928, { 1192.5f, 0.0f, -1474.3961181640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { -525.0f, 0.0f, -1219.3961181640625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8194, (void *)dStagePupupuFile2_DL_0x0950, { -0.11421199887990952f, 0.0f, -0.07930800318717957f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void *)dStagePupupuFile2_gap_0x0898_sub_0xE8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0A18, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0A38, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0A58, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8193, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0A78, { -1650.5914306640625f, 0.0f, -670.6721801757812f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8193, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0B18, { 1650.1971435546875f, 0.0f, -562.4356079101562f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0B40, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0C38, { -2516.651611328125f, 2421.644287109375f, -1024.0018310546875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0CC0, { 2363.001220703125f, 2091.13134765625f, -778.5145263671875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0D20, { 1585.0531005859375f, 2915.105712890625f, -764.4365234375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0D80, { -1473.05517578125f, 2725.387939453125f, -670.0806884765625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0DE0, { 104.66553497314453f, 2390.105712890625f, -523.4376220703125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0E40, { -970.2298583984375f, 1866.1318359375f, -460.67205810546875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer0Anim_DL_0x0EA0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 Vtx dStagePupupuFile2_Vtx_0x13D0[24] = {
@@ -267,67 +264,156 @@ Gfx dStagePupupuFile2_Layer0Anim_DL_0x18E0[128] = {
 	#include <StagePupupuFile2/Layer0Anim_DL_0x18E0.dl.inc.c>
 };
 
-/* @ 0x1CE0, 32 bytes — trailing zero padding. */
-u8 dStagePupupuFile2_Layer0Anim_pad_0x1CE0[32] = {
-	#include <StagePupupuFile2/Layer0Anim_pad_0x1CE0.data.inc.c>
+/* @ 0x1CE0, 132 bytes — DObjDesc[3] joint tree (was mis-split as a 32-byte
+ * "pad" head + the 100-byte gap_0x1D00 tail). */
+DObjDesc dStagePupupuFile2_Layer0Anim_DObjDesc_0x1CE0[3] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer0Anim_DL_0x18E0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x1D00 to 0x2094 (916 bytes) */
-/* gap sub-block @ 0x1D00 (was gap+0x0, 100 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00[100] = {
-	#include <StagePupupuFile2/gap_0x1D00.data.inc.c>
+/* Raw data from file offset 0x1D64 to 0x2078 (788 bytes) */
+
+/* @ 0x1D64, 114 bytes - MP collision vertex positions (MPVertexPosContainer). */
+MPVertexData dStagePupupuFile2_gap_0x1D00_MPVertexData_0x1D64[19] = {
+	{ {   1972,  -1072 }, 0x0000 },
+	{ {  -1972,  -1072 }, 0x0000 },
+	{ {  -2075,   -834 }, 0x0000 },
+	{ {  -2290,   -331 }, 0x0000 },
+	{ {  -2307,   -124 }, 0x0000 },
+	{ {  -2318,      0 }, 0x8000 },
+	{ {   2318,      0 }, 0x0000 },
+	{ {   2307,   -124 }, 0x0000 },
+	{ {   2290,   -331 }, 0x0000 },
+	{ {   2075,   -834 }, 0x0000 },
+	{ {   -951,    904 }, 0x4000 },
+	{ {  -1396,    904 }, 0x4000 },
+	{ {  -1841,    904 }, 0x0000 },
+	{ {   1892,    907 }, 0x4000 },
+	{ {   1421,    907 }, 0x4000 },
+	{ {    951,    907 }, 0x0000 },
+	{ {    570,   1542 }, 0x4000 },
+	{ {      0,   1542 }, 0x4000 },
+	{ {   -570,   1542 }, 0x0000 },
 };
 
-/* gap sub-block @ 0x1D64 (was gap+0x64, 116 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x64[116] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x64.data.inc.c>
+/* @ 0x1DD8, 48 bytes - MP collision vertex-id array (MPVertexArray).
+ * (IDO 4-byte-aligns this, supplying the 2 zero pad bytes at 0x1DD6.) */
+u16 dStagePupupuFile2_gap_0x1D00_MPVertexArray_0x1DD8[24] = {
+	0x0010, 0x0011, 0x0012, 0x000D, 0x000E, 0x000F, 0x000A, 0x000B,
+	0x000C, 0x0005, 0x0006, 0x0000, 0x0001, 0x0006, 0x0007, 0x0008,
+	0x0009, 0x0000, 0x0001, 0x0002, 0x0003, 0x0004, 0x0005, 0x0000,
 };
 
-/* gap sub-block @ 0x1DD8 (was gap+0xD8, 48 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0xD8[48] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0xD8.data.inc.c>
+/* @ 0x1E08, 28 bytes - MP collision vertex links (MPVertexLinks). */
+MPVertexLinks dStagePupupuFile2_gap_0x1D00_MPVertexLinks_0x1E08[7] = {
+	{   0,   3 },
+	{   3,   3 },
+	{   6,   3 },
+	{   9,   2 },
+	{  11,   2 },
+	{  13,   5 },
+	{  18,   5 },
 };
 
-/* gap sub-block @ 0x1E08 (was gap+0x108, 8 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x108[8] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x108.data.inc.c>
+/* @ 0x1E24, 18 bytes - MP collision line info (MPLineInfo). */
+MPLineInfo dStagePupupuFile2_gap_0x1D00_MPLineInfo_0x1E24[1] = {
+	{
+		1,  /* yakumono_id */
+		{
+			{ 0, 4 },
+			{ 4, 1 },
+			{ 5, 1 },
+			{ 6, 1 },
+		},
+	},
 };
 
-/* gap sub-block @ 0x1E10 (was gap+0x110, 20 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x110[20] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x110.data.inc.c>
+/* @ 0x1E38, 252 bytes - MP collision map-object data (MPMapObjContainer).
+ * (IDO 4-byte-aligns this, supplying the 2 zero pad bytes at 0x1E36.) */
+MPMapObjData dStagePupupuFile2_gap_0x1D00_MPMapObjData_0x1E38[42] = {
+	{ 0x0025, {      1,   1545 } },
+	{ 0x0026, {  -1397,    906 } },
+	{ 0x0027, {   1421,    909 } },
+	{ 0x0021, {      0,      6 } },
+	{ 0x002D, {   1421,    909 } },
+	{ 0x002C, {  -1397,    906 } },
+	{ 0x0018, {      0,      5 } },
+	{ 0x0019, {  -1398,    909 } },
+	{ 0x001A, {      0,   1545 } },
+	{ 0x001B, {   1422,    909 } },
+	{ 0x001C, {  -2009,      6 } },
+	{ 0x001D, {   -810,      6 } },
+	{ 0x001E, {    810,      6 } },
+	{ 0x001F, {   2010,      6 } },
+	{ 0x0004, {      0,   6006 } },
+	{ 0x0004, {   -360,   6006 } },
+	{ 0x0004, {   -495,   1209 } },
+	{ 0x0004, {    495,   1209 } },
+	{ 0x0004, {    164,   1209 } },
+	{ 0x0004, {   1095,    606 } },
+	{ 0x0004, {  -1694,    606 } },
+	{ 0x0004, {  -1094,    606 } },
+	{ 0x0004, {   1755,    606 } },
+	{ 0x0004, {  -2142,   1479 } },
+	{ 0x0004, {   2144,   1479 } },
+	{ 0x0004, {    360,   6006 } },
+	{ 0x0004, {  -1397,   6006 } },
+	{ 0x0004, {  -1757,   6006 } },
+	{ 0x0004, {  -1037,   6006 } },
+	{ 0x0004, {   1058,   6006 } },
+	{ 0x0004, {   1421,   6006 } },
+	{ 0x0004, {   1778,   6006 } },
+	{ 0x0004, {   -164,   1209 } },
+	{ 0x0015, {   -942,    276 } },
+	{ 0x0000, {      0,      6 } },
+	{ 0x0001, {  -1397,    906 } },
+	{ 0x0002, {      1,   1545 } },
+	{ 0x0003, {   1421,    909 } },
+	{ 0x0020, {      0,   2526 } },
+	{ 0x002B, {   2010,      6 } },
+	{ 0x002B, {  -2009,      6 } },
+	{ 0x002B, {  -1398,    909 } },
 };
 
-/* gap sub-block @ 0x1E24 (was gap+0x124, 20 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x124[20] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x124.data.inc.c>
+/* @ 0x1F34 - MP collision geometry descriptor (MPGeometryData), the
+ * map_geometry pointed at by GRPupupuMap's MPGroundData header. */
+MPGeometryData dStagePupupuFile2_gap_0x1D00_MPGeometryData_0x1F34 = {
+	1,  /* yakumono_count */
+	(void *)dStagePupupuFile2_gap_0x1D00_MPVertexData_0x1D64,
+	(void *)dStagePupupuFile2_gap_0x1D00_MPVertexArray_0x1DD8,
+	(void *)dStagePupupuFile2_gap_0x1D00_MPVertexLinks_0x1E08,
+	dStagePupupuFile2_gap_0x1D00_MPLineInfo_0x1E24,
+	42,  /* mapobj_count */
+	(void *)dStagePupupuFile2_gap_0x1D00_MPMapObjData_0x1E38,
 };
 
-/* gap sub-block @ 0x1E38 (was gap+0x138, 252 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x138[252] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x138.data.inc.c>
+/* @ 0x1F50 — MObjSub-list table (4 entries; [0],[1] unused/NULL). */
+extern MObjSub *dStagePupupuFile2_gap_0x1D00_sub_0x368[];
+extern MObjSub *dStagePupupuFile2_gap_0x1D00_sub_0x370[];
+MObjSub **dStagePupupuFile2_gap_0x1D00_sub_0x250[4] = {
+	NULL,
+	NULL,
+	dStagePupupuFile2_gap_0x1D00_sub_0x368,
+	dStagePupupuFile2_gap_0x1D00_sub_0x370,
 };
 
-/* gap sub-block @ 0x1F34 (was gap+0x234, 28 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x234[28] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x234.data.inc.c>
+/* @ 0x1F60 — MObjSub texture-pointer array (3 entries); each slot is an
+ * extern reloc-chain pointer into file 103 (StagePupupuImages). */
+extern u8 dStagePupupuImages_Tex_0x1BE0[];
+extern u8 dStagePupupuImages_Tex_0x1E10[];
+extern u8 dStagePupupuImages_Tex_0x2040[];
+u8 *dStagePupupuFile2_gap_0x1D00_sub_0x260[3] = {
+	dStagePupupuImages_Tex_0x1BE0,
+	dStagePupupuImages_Tex_0x1E10,
+	dStagePupupuImages_Tex_0x2040,
 };
 
-/* gap sub-block @ 0x1F50 (was gap+0x250, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x250[16] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x250.data.inc.c>
-};
-
-/* u32 pointer array @ 0x1F60 (3 entries) */
-u32 dStagePupupuFile2_gap_0x1D00_sub_0x260[3] = {
-	0x07D906F8,
-	0x07DA0784,
-	0x07DB0810,
-};
-
-/* gap sub-block @ 0x1F6C (was gap+0x26C, 12 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x26C[12] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x26C.data.inc.c>
+/* @ 0x1F6C — MObjSub texture-pointer array (3 entries -> file 103). */
+u8 *dStagePupupuFile2_gap_0x1D00_sub_0x26C[3] = {
+	dStagePupupuImages_Tex_0x1BE0,
+	dStagePupupuImages_Tex_0x1E10,
+	dStagePupupuImages_Tex_0x1E10,
 };
 
 /* MObjSub @ 0x1F78 */
@@ -360,14 +446,34 @@ MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x278[1] = {
 	}
 };
 
-/* gap sub-block @ 0x1FF0 (was gap+0x2F0, 80 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x2F0[80] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x2F0.data.inc.c>
-};
-
-/* gap sub-block @ 0x2040 (was gap+0x340, 40 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x340[40] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x340.data.inc.c>
+/* MObjSub @ 0x1FF0 (absorbs the former sub_0x340 tail; 120 bytes total). */
+MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x2F0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dStagePupupuFile2_gap_0x1D00_sub_0x26C,
+		0x0020, 0x0040, 0x0020, 0x0040,
+		0,
+		0.006599999964237213f, 0.0f,
+		1.25f, 2.0f,
+		0.006599999964237213f, 1.25f,
+		(void**)0x00000000,
+		0x006B,
+		0x02, 0x00,
+		0x0020,
+		0x0020, 0x0020, 0x0040,
+		0.006599999964237213f, 0.0f,
+		0.006599999964237213f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x73, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0xB3, 0xB3, 0xB3, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
 /* gap sub-block @ 0x2068 (was gap+0x368, 8 bytes) */
@@ -376,34 +482,36 @@ MObjSub *dStagePupupuFile2_gap_0x1D00_sub_0x368[2] = {
 	NULL,
 };
 
-/* gap sub-block @ 0x2070 (was gap+0x370, 8 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x370[8] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x370.data.inc.c>
+/* @ 0x2070 — MObjSub-list (2 entries) for the sub_0x2F0 MObjSub. */
+MObjSub *dStagePupupuFile2_gap_0x1D00_sub_0x370[2] = {
+	(MObjSub *)dStagePupupuFile2_gap_0x1D00_sub_0x2F0,
+	NULL,
 };
 
-/* gap sub-block @ 0x2078 (was gap+0x378, 28 bytes) */
-u8 dStagePupupuFile2_gap_0x1D00_sub_0x378[28] = {
-	#include <StagePupupuFile2/gap_0x1D00_sub_0x378.data.inc.c>
+/* @ 0x2078 — geometry (gsSPVertex n=7 from Layer1Anim_DL_0x21E8) */
+Vtx dStagePupupuFile2_Vtx_0x2078[7] = {
+	#include <StagePupupuFile2/Vtx_0x2078.vtx.inc.c>
 };
 
-/* MPGeometryData @ 0x2094 (28 bytes) — left as raw bytes because the binary
- * contains 0xFFFF in the u16->ptr struct padding (offsets 2-3) which a typed
- * MPGeometryData initializer cannot reproduce, and all pointer fields hold
- * literal sentinel values rather than relocations (no .reloc entries). */
-u8 dStagePupupuFile2_MPGeometryData_0x2094[28] = {
-	#include <StagePupupuFile2/MPGeometryData_0x2094.data.inc.c>
+/* @ 0x20E8 — geometry (gsSPVertex n=8 from DL_0x22D0) */
+Vtx dStagePupupuFile2_Vtx_0x20E8[8] = {
+	#include <StagePupupuFile2/Vtx_0x20E8.vtx.inc.c>
 };
 
-/* @ 0x20B0, 312 bytes — Vtx / data pool referenced by gsSPVertex from
- * DL_0x22D0 / DL_0x2380. Was mis-decoded as a u32 AObjEvent32 script. */
-u8 dStagePupupuFile2_Layer1Anim_AnimJoint[312] = {
-	#include <StagePupupuFile2/Layer1Anim_AnimJoint.data.inc.c>
+/* @ 0x2168 — geometry (gsSPVertex n=8 from DL_0x2380) */
+Vtx dStagePupupuFile2_Vtx_0x2168[8] = {
+	#include <StagePupupuFile2/Vtx_0x2168.vtx.inc.c>
 };
 
-/* @ 0x21E8, 232 bytes — Gfx[29] display list (the "DL within" the old
- * mis-typed AnimJoint block; concatenated sub-DLs, flows into DL_0x22D0). */
-Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8[29] = {
+/* @ 0x21E8, 224 bytes — Gfx[28] display list (concatenated sub-DLs). */
+Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8[28] = {
 	#include <StagePupupuFile2/Layer1Anim_DL_0x21E8.dl.inc.c>
+};
+
+/* @ 0x22C8 — Gfx[1] sub-DL (gsDPPipeSync; flows into DL_0x22D0).
+ * Split out so DObjDesc dl pointers resolve to a clean symbol. */
+Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8_sub_0xE0[1] = {
+	#include <StagePupupuFile2/Layer1Anim_DL_0x21E8_sub_0xE0.dl.inc.c>
 };
 
 /* Raw data from file offset 0x22D0 to 0x2810 (1344 bytes) */
@@ -417,109 +525,1047 @@ Gfx dStagePupupuFile2_DL_0x2380[26] = {
 	#include <StagePupupuFile2/DL_0x2380.dl.inc.c>
 };
 
-/* gap sub-block @ 0x2450 (was gap+0x180, 224 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x180[224] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x180.data.inc.c>
+/* @ 0x2450, 220 bytes — DObjDesc[5] scene-object joint tree. */
+DObjDesc dStagePupupuFile2_gap_0x22D0_sub_0x180[5] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer1Anim_DL_0x21E8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer1Anim_DL_0x21E8_sub_0xE0, { -435.0f, 0.0f, 885.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_DL_0x2380, { 795.0f, 0.0f, 1080.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* gap sub-block @ 0x2530 (was gap+0x260, 16 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x260[16] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x260.data.inc.c>
+/* @ 0x252C, 4 bytes — 16-byte alignment padding after the DObjDesc tree. */
+PAD(4);
+
+/* @ 0x2530 — AObjEvent32 script-list table (4 entries; [0],[1] unused/NULL). */
+extern AObjEvent32 *dStagePupupuFile2_gap_0x22D0_sub_0x430[];
+extern AObjEvent32 *dStagePupupuFile2_gap_0x22D0_sub_0x434[];
+AObjEvent32 **dStagePupupuFile2_gap_0x22D0_sub_0x260[4] = {
+	NULL,
+	NULL,
+	dStagePupupuFile2_gap_0x22D0_sub_0x430,
+	dStagePupupuFile2_gap_0x22D0_sub_0x434,
 };
 
-/* gap sub-block @ 0x2540 (was gap+0x270, 224 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x270[224] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x270.data.inc.c>
+/* @ 0x2540, 224 bytes - AObjEvent32 material-scroll script (loops to self) */
+u32 dStagePupupuFile2_gap_0x22D0_sub_0x270[56] = {
+	aobjEvent32SetValAfter(0x021, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0Rate(0x142, 0),
+	    0x3BD844D0,  /* 0.006599999964237213f */
+	    0x3BD844D0,  /* 0.006599999964237213f */
+	    0x3EE66666,  /* 0.44999998807907104f */
+	aobjEvent32SetValBlock(0x080, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x100, 59),
+	    0x3F19999A,  /* 0.6000000238418579f */
+	aobjEvent32SetValAfter(0x001, 119),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x080, 216),
+	    0xBF800000,  /* -1.0f */
+	aobjEvent32SetValRate(0x040, 216),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValAfter(0x020, 227),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRate(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x100, 60),
+	    0x3EE66666,  /* 0.44999998807907104f */
+	aobjEvent32Wait(22),
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRate(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32Wait(11),
+	aobjEvent32SetVal(0x100, 97),
+	    0x3EE66666,  /* 0.44999998807907104f */
+	aobjEvent32SetValAfter(0x001, 109),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(16),
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStagePupupuFile2_gap_0x22D0_sub_0x270,
 };
 
-/* gap sub-block @ 0x2620 (was gap+0x350, 88 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x350[88] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x350.data.inc.c>
+/* @ 0x2620, 224 bytes - AObjEvent32 material-scroll script (loops to self).
+ * One contiguous script: absorbs the former sub_0x3A8 and sub_0x3D0. */
+u32 dStagePupupuFile2_gap_0x22D0_sub_0x350[56] = {
+	aobjEvent32SetValAfter(0x021, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0Rate(0x142, 0),
+	    0x3BD844D0,  /* 0.006599999964237213f */
+	    0x3BD844D0,  /* 0.006599999964237213f */
+	    0x3EE66666,  /* 0.44999998807907104f */
+	aobjEvent32SetValBlock(0x080, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x100, 59),
+	    0x3F19999A,  /* 0.6000000238418579f */
+	aobjEvent32SetValAfter(0x001, 119),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x080, 216),
+	    0xBF800000,  /* -1.0f */
+	aobjEvent32SetValRate(0x040, 216),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValAfter(0x020, 227),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRate(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x100, 60),
+	    0x3EE66666,  /* 0.44999998807907104f */
+	aobjEvent32Wait(22),
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRate(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32Wait(11),
+	aobjEvent32SetVal(0x100, 97),
+	    0x3EE66666,  /* 0.44999998807907104f */
+	aobjEvent32SetValAfter(0x001, 109),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(16),
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0xBC449BA6,  /* -0.012000000104308128f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetValRateBlock(0x002, 27),
+	    0x3BD94079,  /* 0.006630000192672014f */
+	    0xB74687C7,  /* -1.1833332791866269e-05f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStagePupupuFile2_gap_0x22D0_sub_0x350,
 };
 
-/* gap sub-block @ 0x2678 (was gap+0x3A8, 40 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x3A8[40] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x3A8.data.inc.c>
+/* @ 0x2700 — AObjEvent32 script-list (1 entry). */
+AObjEvent32 *dStagePupupuFile2_gap_0x22D0_sub_0x430[1] = {
+	(AObjEvent32 *)dStagePupupuFile2_gap_0x22D0_sub_0x270,
 };
 
-/* gap sub-block @ 0x26A0 (was gap+0x3D0, 96 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x3D0[96] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x3D0.data.inc.c>
+/* @ 0x2704 — AObjEvent32 script-list (3 entries; [1],[2] unused/NULL). */
+AObjEvent32 *dStagePupupuFile2_gap_0x22D0_sub_0x434[3] = {
+	(AObjEvent32 *)dStagePupupuFile2_gap_0x22D0_sub_0x350,
+	NULL,
+	NULL,
 };
 
-/* gap sub-block @ 0x2700 (was gap+0x430, 4 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x430[4] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x430.data.inc.c>
+/* @ 0x2710 — geometry */
+Vtx dStagePupupuFile2_Vtx_0x2710[4] = {
+	#include <StagePupupuFile2/Vtx_0x2710.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2704 (was gap+0x434, 12 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x434[12] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x434.data.inc.c>
+/* @ 0x2750 — geometry */
+Vtx dStagePupupuFile2_Vtx_0x2750[4] = {
+	#include <StagePupupuFile2/Vtx_0x2750.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2710 (was gap+0x440, 64 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x440[64] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x440.data.inc.c>
+/* @ 0x2790 — geometry */
+Vtx dStagePupupuFile2_Vtx_0x2790[16] = {
+	#include <StagePupupuFile2/Vtx_0x2790.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2750 (was gap+0x480, 64 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x480[64] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x480.data.inc.c>
+/* @ 0x2890 — geometry */
+Vtx dStagePupupuFile2_Vtx_0x2890[14] = {
+	#include <StagePupupuFile2/Vtx_0x2890.vtx.inc.c>
 };
 
-/* gap sub-block @ 0x2790 (was gap+0x4C0, 128 bytes) */
-u8 dStagePupupuFile2_gap_0x22D0_sub_0x4C0[128] = {
-	#include <StagePupupuFile2/gap_0x22D0_sub_0x4C0.data.inc.c>
+/* @ 0x2970..0x2BF8 — Gfx DL region; one Gfx[] per concatenated sub-DL
+ * (the 16 bytes at 0x2960 were a Vtx tail, folded into AnimJoint). */
+Gfx dStagePupupuFile2_Layer3Anim_DL_0x2970[9] = {
+	#include <StagePupupuFile2/Layer3Anim_DL_0x2970.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer3Anim_DL_0x29B8[18] = {
+	#include <StagePupupuFile2/Layer3Anim_DL_0x29B8.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer3Anim_DL_0x2A48[4] = {
+	#include <StagePupupuFile2/Layer3Anim_DL_0x2A48.dl.inc.c>
+};
+Gfx dStagePupupuFile2_Layer3Anim_DL_0x2A68[50] = {
+	#include <StagePupupuFile2/Layer3Anim_DL_0x2A68.dl.inc.c>
 };
 
-/* Raw data from file offset 0x2810 to 0x28C0 (176 bytes) */
-/* gap sub-block @ 0x2810 (was gap+0x0, 128 bytes) */
-u8 dStagePupupuFile2_gap_0x2810[128] = {
-	#include <StagePupupuFile2/gap_0x2810.data.inc.c>
+/* @ 0x2BF8, 220 bytes — DObjDesc[5] scene-object joint tree. */
+DObjDesc dStagePupupuFile2_Layer3Anim_DObjDesc_0x2BF8[5] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer3Anim_DL_0x2970, { 0.0f, -38.55649948120117f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer3Anim_DL_0x2A48, { 0.0f, -38.55649948120117f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStagePupupuFile2_Layer3Anim_DL_0x2A68, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* gap sub-block @ 0x2890 (was gap+0x80, 24 bytes) */
-u8 dStagePupupuFile2_gap_0x2810_sub_0x80[24] = {
-	#include <StagePupupuFile2/gap_0x2810_sub_0x80.data.inc.c>
+/* @ 0x2CD4, 20 bytes — zero fill ahead of the TLUT pool. */
+PAD(20);
+
+/* @ 0x2CE8, 32 bytes — TLUT (16 colors). */
+u16 dStagePupupuFile2_Layer3Anim_Lut_0x2CE8_palette[16] = {
+	#include <StagePupupuFile2/Layer3Anim_Lut_0x2CE8.palette.inc.c>
 };
 
-/* gap sub-block @ 0x28A8 (was gap+0x98, 24 bytes) */
-u8 dStagePupupuFile2_gap_0x2810_sub_0x98[24] = {
-	#include <StagePupupuFile2/gap_0x2810_sub_0x98.data.inc.c>
-};
-/* @ 0x28C0, 6960 bytes — was mis-decoded as one u32 AObjEvent32 script.
- * Really 7 regions: 4 data pools interleaved with 3 Gfx display lists. */
-u8 dStagePupupuFile2_Layer3Anim_AnimJoint[160] = {
-	#include <StagePupupuFile2/Layer3Anim_AnimJoint.data.inc.c>
+/* @ 0x2D08, 8 bytes — alignment padding. */
+PAD(8);
+
+/* @ 0x2D10, 32 bytes — TLUT (16 colors). */
+u16 dStagePupupuFile2_Layer3Anim_Lut_0x2D10_palette[16] = {
+	#include <StagePupupuFile2/Layer3Anim_Lut_0x2D10.palette.inc.c>
 };
 
-/* @ 0x2960, 664 bytes — Gfx[83] DL region (concatenated sub-DLs). */
-Gfx dStagePupupuFile2_Layer3Anim_DL_0x2960[83] = {
-	#include <StagePupupuFile2/Layer3Anim_DL_0x2960.dl.inc.c>
+/* @ 0x2D30, 8 bytes — alignment padding. */
+PAD(8);
+
+/* @ 0x2D38, 32 bytes — TLUT (16 colors); loaded by Layer3Anim_DL_0x32C8. */
+u16 dStagePupupuFile2_Layer3Anim_Lut_0x2D38_palette[16] = {
+	#include <StagePupupuFile2/Layer3Anim_Lut_0x2D38.palette.inc.c>
 };
 
-/* @ 0x2BF8, 1736 bytes — Vtx / texture data pool. */
-u8 dStagePupupuFile2_Layer3Anim_data_0x2BF8[1736] = {
-	#include <StagePupupuFile2/Layer3Anim_data_0x2BF8.data.inc.c>
+/* @ 0x2D58, 8 bytes — alignment padding. */
+PAD(8);
+
+/* @ 0x2D60 — MObj sprite-frame texture (CI4 32x24, per MObjSub_0x3208). */
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStagePupupuFile2_Layer3Anim_Tex_0x2D60[392] = {
+	#include <StagePupupuFile2/Layer3Anim_Tex_0x2D60.tex.inc.c>
 };
 
-/* @ 0x32C0, 248 bytes — Gfx[31] DL. */
-Gfx dStagePupupuFile2_Layer3Anim_DL_0x32C0[31] = {
-	#include <StagePupupuFile2/Layer3Anim_DL_0x32C0.dl.inc.c>
+/* @ 0x2EE8 — MObj sprite-frame texture (CI4 32x24, per MObjSub_0x3208). */
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStagePupupuFile2_Layer3Anim_Tex_0x2EE8[392] = {
+	#include <StagePupupuFile2/Layer3Anim_Tex_0x2EE8.tex.inc.c>
 };
 
-/* @ 0x33B8, 2512 bytes — Vtx / texture data pool. */
-u8 dStagePupupuFile2_Layer3Anim_data_0x33B8[2512] = {
-	#include <StagePupupuFile2/Layer3Anim_data_0x33B8.data.inc.c>
+/* @ 0x3070 — MObj sprite-frame texture (CI4 32x24, per MObjSub_0x3208). */
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStagePupupuFile2_Layer3Anim_Tex_0x3070[388] = {
+	#include <StagePupupuFile2/Layer3Anim_Tex_0x3070.tex.inc.c>
 };
 
-/* @ 0x3D88, 248 bytes — Gfx[31] DL. */
-Gfx dStagePupupuFile2_Layer3Anim_DL_0x3D88[31] = {
-	#include <StagePupupuFile2/Layer3Anim_DL_0x3D88.dl.inc.c>
+/* @ 0x31F4 — MObjSub-list pointer. */
+extern MObjSub *dStagePupupuFile2_Layer3Anim_mobjlink_0x3280[];
+MObjSub **dStagePupupuFile2_Layer3Anim_mobjlink_0x31F4[1] = {
+	dStagePupupuFile2_Layer3Anim_mobjlink_0x3280,
 };
 
-/* @ 0x3E80, 1392 bytes — trailing data pool. */
-u8 dStagePupupuFile2_Layer3Anim_data_0x3E80[1392] = {
-	#include <StagePupupuFile2/Layer3Anim_data_0x3E80.data.inc.c>
+/* @ 0x31F8 — MObjSub sprite-frame texture table (3 entries + NULL). */
+u8 *dStagePupupuFile2_Layer3Anim_spritelink_0x31F8[4] = {
+	dStagePupupuFile2_Layer3Anim_Tex_0x3070,
+	dStagePupupuFile2_Layer3Anim_Tex_0x2EE8,
+	dStagePupupuFile2_Layer3Anim_Tex_0x2D60,
+	NULL,
 };
+
+/* @ 0x3208 — material object sub. */
+MObjSub dStagePupupuFile2_Layer3Anim_MObjSub_0x3208[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dStagePupupuFile2_Layer3Anim_spritelink_0x31F8,
+		0x0020, 0x0000, 0x0020, 0x0018,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x0001,
+		0x02, 0x00,
+		0x0020,
+		0x0018, 0x0020, 0x0018,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x26, 0x26, 0x26, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* @ 0x3280 — MObjSub-list (2 entries). */
+MObjSub *dStagePupupuFile2_Layer3Anim_mobjlink_0x3280[2] = {
+	(MObjSub *)dStagePupupuFile2_Layer3Anim_MObjSub_0x3208,
+	NULL,
+};
+
+/* @ 0x3288 — geometry (gsSPVertex n=4 from Layer3Anim_DL_0x32C8) */
+Vtx dStagePupupuFile2_Layer3Anim_Vtx_0x3288[4] = {
+	#include <StagePupupuFile2/Layer3Anim_Vtx_0x3288.vtx.inc.c>
+};
+
+/* @ 0x32C8, 240 bytes — Gfx[30] DL. */
+Gfx dStagePupupuFile2_Layer3Anim_DL_0x32C8[30] = {
+	#include <StagePupupuFile2/Layer3Anim_DL_0x32C8.dl.inc.c>
+};
+
+/* @ 0x33B8, 132 bytes — DObjDesc[3] scene-object joint tree. */
+DObjDesc dStagePupupuFile2_Layer3Anim_DObjDesc_0x33B8[3] = {
+	{ 0, NULL, { -2113.312744140625f, 32.81246566772461f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer3Anim_DL_0x32C8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* @ 0x343C — AObjEvent32 material-anim block (4 scripts + link tables)
+ * followed by an embedded TLUT + CI texture used by Layer3Anim_DL_0x3D90. */
+extern u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x3448[];
+extern AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x36D8[];
+extern u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x36E8[];
+extern AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x395C[];
+
+/* @ 0x343C, 12 bytes - AObjEvent32 link table. */
+AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x343C[3] = {
+	NULL,
+	(AObjEvent32 *)dStagePupupuFile2_Layer3Anim_MatAnim_0x3448,
+	NULL,
+};
+
+/* @ 0x3448, 144 bytes - AObjEvent32 material-anim script. */
+u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x3448[36] = {
+	aobjEvent32SetVal0Rate(0x030, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x040, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x010, 240),
+	    0xC50CA000,  /* -2250.0f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0xC1700000,  /* -15.0f */
+	    0x3FF00000,  /* 1.875f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x42B40000,  /* 90.0f */
+	    0x405BFFFF,  /* 3.437499761581421f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x43160000,  /* 150.0f */
+	    0x40480000,  /* 3.125f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x43700000,  /* 240.0f */
+	    0x3FC80001,  /* 1.5625001192092896f */
+	aobjEvent32SetVal0RateBlock(0x020, 24),
+	    0x43610000,  /* 225.0f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x43700000,  /* 240.0f */
+	    0xBFC80001,  /* -1.5625001192092896f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x43160000,  /* 150.0f */
+	    0xC0480001,  /* -3.125000238418579f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x42B40000,  /* 90.0f */
+	    0xC05C0001,  /* -3.437500238418579f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0xC1700000,  /* -15.0f */
+	    0xBFF00001,  /* -1.8750001192092896f */
+	aobjEvent32SetVal0RateBlock(0x020, 24),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
+};
+
+/* @ 0x34D8, 16 bytes - AObjEvent32 link-table pointer. */
+AObjEvent32 **dStagePupupuFile2_Layer3Anim_matlink2_0x34D8[4] = {
+	NULL, NULL, NULL,
+	dStagePupupuFile2_Layer3Anim_matlink_0x36D8,
+};
+
+/* @ 0x34E8, 496 bytes - AObjEvent32 material-anim script (loops to self). */
+u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x34E8[124] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStagePupupuFile2_Layer3Anim_MatAnim_0x34E8,
+};
+
+/* @ 0x36D8, 16 bytes - AObjEvent32 link table. */
+AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x36D8[4] = {
+	(AObjEvent32 *)dStagePupupuFile2_Layer3Anim_MatAnim_0x34E8,
+	NULL,
+	(AObjEvent32 *)dStagePupupuFile2_Layer3Anim_MatAnim_0x36E8,
+	NULL,
+};
+
+/* @ 0x36E8, 184 bytes - AObjEvent32 material-anim script. */
+u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x36E8[46] = {
+	aobjEvent32SetValAfter(0x3C7, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	    0xC215B6DB,  /* -37.42856979370117f */
+	aobjEvent32SetValBlock(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x010, 48),
+	    0xC3E10000,  /* -450.0f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0xC3960000,  /* -300.0f */
+	    0xBF10822A,  /* -0.5644861459732056f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x3ECB7241,  /* 0.3973560631275177f */
+	    0x4211424A,  /* 36.314735412597656f */
+	aobjEvent32SetVal(0x010, 48),
+	    0xC4610000,  /* -900.0f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x43960000,  /* 300.0f */
+	    0xBF0944ED,  /* -0.5362079739570618f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0xB6322002,  /* -2.6542697924014647e-06f */
+	    0xC20089E5,  /* -32.13466262817383f */
+	aobjEvent32SetVal(0x010, 48),
+	    0xC4A8C000,  /* -1350.0f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0xC3960000,  /* -300.0f */
+	    0xBF36A950,  /* -0.7135210037231445f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x3ECB7241,  /* 0.3973560631275177f */
+	    0x4211253C,  /* 36.28636169433594f */
+	aobjEvent32SetVal(0x010, 48),
+	    0xC4E10000,  /* -1800.0f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0x43960000,  /* 300.0f */
+	    0xBF8AE630,  /* -1.0851497650146484f */
+	aobjEvent32SetValRateBlock(0x020, 24),
+	    0xB6322002,  /* -2.6542697924014647e-06f */
+	    0xC205045E,  /* -33.25426483154297f */
+	aobjEvent32End(),
+};
+
+/* @ 0x37A0, 8 bytes - AObjEvent32 link-table pointer. */
+AObjEvent32 **dStagePupupuFile2_Layer3Anim_matlink2_0x37A0[2] = {
+	NULL,
+	dStagePupupuFile2_Layer3Anim_matlink_0x395C,
+};
+
+/* @ 0x37A8, 436 bytes - AObjEvent32 material-anim script (loops to self). */
+u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x37A8[109] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 26),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 26),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfter(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(12),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStagePupupuFile2_Layer3Anim_MatAnim_0x37A8,
+};
+
+/* @ 0x395C, 12 bytes - AObjEvent32 link table. */
+AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x395C[3] = {
+	(AObjEvent32 *)dStagePupupuFile2_Layer3Anim_MatAnim_0x37A8,
+	NULL,
+	NULL,
+};
+
+/* @ 0x3968, 32 bytes - TLUT (16 colors) for Layer3Anim_DL_0x3D90. */
+u16 dStagePupupuFile2_Layer3Anim_Lut_0x3968_palette[16] = {
+	#include <StagePupupuFile2/Layer3Anim_Lut_0x3968.palette.inc.c>
+};
+
+/* @ 0x3988, 8 bytes - 16-byte alignment padding. */
+PAD(8);
+
+/* @ 0x3990, 960 bytes - CI texture for Layer3Anim_DL_0x3D90. */
+u8 dStagePupupuFile2_Layer3Anim_Tex_0x3990[960] = {
+	#include <StagePupupuFile2/Layer3Anim_Tex_0x3990.tex.inc.c>
+};
+
+/* @ 0x3D50 — geometry (gsSPVertex n=4 from Layer3Anim_DL_0x3D90) */
+Vtx dStagePupupuFile2_Layer3Anim_Vtx_0x3D50[4] = {
+	#include <StagePupupuFile2/Layer3Anim_Vtx_0x3D50.vtx.inc.c>
+};
+
+/* @ 0x3D90, 240 bytes — Gfx[30] DL. */
+Gfx dStagePupupuFile2_Layer3Anim_DL_0x3D90[30] = {
+	#include <StagePupupuFile2/Layer3Anim_DL_0x3D90.dl.inc.c>
+};
+
+/* @ 0x3E80, 132 bytes — DObjDesc[3] scene-object joint tree. */
+DObjDesc dStagePupupuFile2_Layer3Anim_DObjDesc_0x3E80[3] = {
+	{ 0, NULL, { -1349.9998779296875f, 120.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 16385, (void *)dStagePupupuFile2_Layer3Anim_DL_0x3D90, { 0.0f, -0.19035500288009644f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* @ 0x3F04 — AObjEvent32 material-anim block: two { link-table, script } pairs. */
+extern u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x3F18[];
+extern u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x4088[];
+
+/* @ 0x3F04, 20 bytes - AObjEvent32 material-anim link table. */
+AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x3F04[5] = {
+	NULL, NULL, NULL,
+	(AObjEvent32 *)dStagePupupuFile2_Layer3Anim_MatAnim_0x3F18,
+	NULL,
+};
+
+/* @ 0x3F18, 348 bytes - AObjEvent32 material-anim script */
+u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x3F18[87] = {
+	aobjEvent32SetValAfter(0x240, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0Rate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRate(0x180, 0),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetValBlock(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x020, 64),
+	    0x42F00000,  /* 120.0f */
+	aobjEvent32SetVal(0x010, 256),
+	    0xC4E10000,  /* -1800.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0Rate(0x020, 64),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0Rate(0x020, 64),
+	    0x42F00000,  /* 120.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0Rate(0x020, 64),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB9EB48B,  /* -0.004843299742788076f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B8EF729,  /* 0.004362959880381823f */
+	aobjEvent32End(),
+};
+
+/* @ 0x4074, 20 bytes - AObjEvent32 material-anim link table. */
+AObjEvent32 *dStagePupupuFile2_Layer3Anim_matlink_0x4074[5] = {
+	NULL, NULL, NULL,
+	(AObjEvent32 *)dStagePupupuFile2_Layer3Anim_MatAnim_0x4088,
+	NULL,
+};
+
+/* @ 0x4088, 860 bytes - AObjEvent32 material-anim script */
+u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x4088[215] = {
+	aobjEvent32SetValAfter(0x240, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRate(0x1A0, 0),
+	    0x3E42EC82,  /* 0.1903553307056427f */
+	    0xC122146D,  /* -10.129986763000488f */
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetValBlock(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRate(0x020, 384),
+	    0xC4610000,  /* -900.0f */
+	    0x3FE65AEE,  /* 1.799649953842163f */
+	aobjEvent32SetVal(0x010, 512),
+	    0xC58CA000,  /* -4500.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB9EB48B,  /* -0.004843299742788076f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B8EF729,  /* 0.004362959880381823f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetValRate(0x020, 384),
+	    0x453B8000,  /* 3000.0f */
+	    0x41B7F8B6,  /* 22.996440887451172f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal(0x010, 256),
+	    0xC5D2F000,  /* -6750.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB89700A,  /* -0.004194264300167561f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B969C8D,  /* 0.004596299026161432f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F733333,  /* 0.949999988079071f */
+	    0x3F866666,  /* 1.0499999523162842f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3B93009C,  /* 0.00448615662753582f */
+	    0x3F800000,  /* 1.0f */
+	    0xBBA02CAD,  /* -0.004888138268142939f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F866666,  /* 1.0499999523162842f */
+	    0x3F733333,  /* 0.949999988079071f */
+	aobjEvent32SetValRateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0xBB9EB48B,  /* -0.004843299742788076f */
+	    0x3F800000,  /* 1.0f */
+	    0x3B8EF729,  /* 0.004362959880381823f */
+	aobjEvent32End(),
+};
+
+/* @ 0x43E4, 12 bytes - trailing zero padding. */
+PAD(12);
 

@@ -5,14 +5,15 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
-extern u8 dStagePupupuFile3[];
-
-/* Cross-file references resolved by fixRelocChain.py — see .reloc */
-extern u8 dStagePupupuFile2_gap_0x22D0[];
-extern u8 dStagePupupuFile2_gap_0x1D00[];
-extern u8 dStagePupupuFile2_Layer3Anim_AnimJoint[];
 extern Sprite dStageDreamLand_sprite_0x26C88[];
-extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];
+extern DObjDesc dStagePupupuFile3_DObjDesc_0x10F0[];
+extern DObjDesc dStagePupupuFile2_data_0x1008[];
+extern DObjDesc dStagePupupuFile2_Layer0Anim_DObjDesc_0x1CE0[];
+extern DObjDesc dStagePupupuFile2_gap_0x22D0_sub_0x180[];
+extern MObjSub **dStagePupupuFile2_gap_0x1D00_sub_0x250[];
+extern void *dStagePupupuFile2_gap_0x22D0_sub_0x260[];
+extern DObjDesc dStagePupupuFile2_Layer3Anim_DObjDesc_0x2BF8[];
+extern MPGeometryData dStagePupupuFile2_gap_0x1D00_MPGeometryData_0x1F34;
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 #if defined(REGION_JP)
@@ -25,12 +26,12 @@ MPGroundData dGRPupupuMap_header =
 {
     /* gr_desc[4] */
     {
-        { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x638), NULL, NULL, NULL },
-        { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x1310), NULL, NULL, NULL },
-        { (void *)((u8 *)dStagePupupuFile2_gap_0x22D0 + 0x180), NULL, (void *)((u8 *)dStagePupupuFile2_gap_0x1D00 + 0x250), (void *)((u8 *)dStagePupupuFile2_gap_0x22D0 + 0x260) },
-        { (void *)((u8 *)dStagePupupuFile2_Layer3Anim_AnimJoint + 0x338), NULL, NULL, NULL },
+        { (void *)dStagePupupuFile2_data_0x1008, NULL, NULL, NULL },
+        { (void *)dStagePupupuFile2_Layer0Anim_DObjDesc_0x1CE0, NULL, NULL, NULL },
+        { (void *)dStagePupupuFile2_gap_0x22D0_sub_0x180, NULL, (void *)dStagePupupuFile2_gap_0x1D00_sub_0x250, (void *)dStagePupupuFile2_gap_0x22D0_sub_0x260 },
+        { (void *)dStagePupupuFile2_Layer3Anim_DObjDesc_0x2BF8, NULL, NULL, NULL },
     },
-    (void *)((u8 *)dStagePupupuFile2_gap_0x1D00 + 0x234),  /* map_geometry */
+    &dStagePupupuFile2_gap_0x1D00_MPGeometryData_0x1F34,  /* map_geometry */
     0,  /* layer_mask */
     dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x6E, 0xD2, 0xFF },  /* fog_color */
@@ -53,7 +54,7 @@ MPGroundData dGRPupupuMap_header =
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
     nSYAudioBGMPupupu,  /* bgm_id */
-    (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x720),  /* map_nodes */
+    (void *)dStagePupupuFile3_DObjDesc_0x10F0,  /* map_nodes */
     &dGRPupupuMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     3500,  /* camera_bound_team_top */

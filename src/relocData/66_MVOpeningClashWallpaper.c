@@ -1522,7 +1522,7 @@ u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[] = {
 u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[] = {
 	aobjEvent32SetVal0RateBlock(0x200, 4193),
 	    0x00000000,
-	    0x00000000,
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x4400 to 0x4410 (16 bytes) */

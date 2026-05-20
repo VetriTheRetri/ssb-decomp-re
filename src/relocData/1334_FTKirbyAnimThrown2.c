@@ -22,30 +22,30 @@ extern u16 dFTKirbyAnimThrown2_joint22[16];
 extern u16 dFTKirbyAnimThrown2_joint23[34];
 
 /* Joint pointer table (23 entries, 92 bytes) */
-u32 dFTKirbyAnimThrown2_joints[] = {
-	(u32)dFTKirbyAnimThrown2_joint1, /* [0] joint 1 */
-	(u32)dFTKirbyAnimThrown2_joint2, /* [1] joint 2 */
-	(u32)dFTKirbyAnimThrown2_joint3, /* [2] joint 3 */
-	(u32)dFTKirbyAnimThrown2_joint4, /* [3] joint 4 */
-	(u32)dFTKirbyAnimThrown2_joint6, /* [4] joint 6 */
-	0x00000000, /* [5] NULL */
-	(u32)dFTKirbyAnimThrown2_joint7, /* [6] joint 7 */
-	(u32)dFTKirbyAnimThrown2_joint8, /* [7] joint 8 */
-	(u32)dFTKirbyAnimThrown2_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTKirbyAnimThrown2_joint11, /* [10] joint 11 */
-	(u32)dFTKirbyAnimThrown2_joint12, /* [11] joint 12 */
-	(u32)dFTKirbyAnimThrown2_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTKirbyAnimThrown2_joint15, /* [14] joint 15 */
-	(u32)dFTKirbyAnimThrown2_joint17, /* [15] joint 17 */
-	0x00000000, /* [16] NULL */
-	(u32)dFTKirbyAnimThrown2_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTKirbyAnimThrown2_joint20, /* [19] joint 20 */
-	(u32)dFTKirbyAnimThrown2_joint22, /* [20] joint 22 */
-	0x00000000, /* [21] NULL */
-	(u32)dFTKirbyAnimThrown2_joint23, /* [22] joint 23 */
+AObjEvent32 * dFTKirbyAnimThrown2_joints[] = {
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint4, /* [3] joint 4 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint6, /* [4] joint 6 */
+	NULL, /* [5] NULL */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint17, /* [15] joint 17 */
+	NULL, /* [16] NULL */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint22, /* [20] joint 22 */
+	NULL, /* [21] NULL */
+	(AObjEvent32 *)dFTKirbyAnimThrown2_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */

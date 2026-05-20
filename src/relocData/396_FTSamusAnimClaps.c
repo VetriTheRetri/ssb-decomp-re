@@ -20,30 +20,30 @@ extern u16 dFTSamusAnimClaps_joint22[36];
 extern u16 dFTSamusAnimClaps_joint23[60];
 
 /* Joint pointer table (23 entries, 92 bytes) */
-u32 dFTSamusAnimClaps_joints[] = {
-	(u32)dFTSamusAnimClaps_joint1, /* [0] joint 1 */
-	(u32)dFTSamusAnimClaps_joint2, /* [1] joint 2 */
-	(u32)dFTSamusAnimClaps_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTSamusAnimClaps_joint5, /* [4] joint 5 */
-	(u32)dFTSamusAnimClaps_joint6, /* [5] joint 6 */
-	(u32)dFTSamusAnimClaps_joint8, /* [6] joint 8 */
-	0x00000000, /* [7] NULL */
-	(u32)dFTSamusAnimClaps_joint11, /* [8] joint 11 */
-	0x00000000, /* [9] NULL */
-	0x00000000, /* [10] NULL */
-	(u32)dFTSamusAnimClaps_joint12, /* [11] joint 12 */
-	(u32)dFTSamusAnimClaps_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTSamusAnimClaps_joint15, /* [14] joint 15 */
-	(u32)dFTSamusAnimClaps_joint17, /* [15] joint 17 */
-	0x00000000, /* [16] NULL */
-	(u32)dFTSamusAnimClaps_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTSamusAnimClaps_joint20, /* [19] joint 20 */
-	(u32)dFTSamusAnimClaps_joint22, /* [20] joint 22 */
-	0x00000000, /* [21] NULL */
-	(u32)dFTSamusAnimClaps_joint23, /* [22] joint 23 */
+AObjEvent32 * dFTSamusAnimClaps_joints[] = {
+	(AObjEvent32 *)dFTSamusAnimClaps_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint8, /* [6] joint 8 */
+	NULL, /* [7] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint11, /* [8] joint 11 */
+	NULL, /* [9] NULL */
+	NULL, /* [10] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint17, /* [15] joint 17 */
+	NULL, /* [16] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint22, /* [20] joint 22 */
+	NULL, /* [21] NULL */
+	(AObjEvent32 *)dFTSamusAnimClaps_joint23, /* [22] joint 23 */
 };
 
 /* 4-byte alignment padding */

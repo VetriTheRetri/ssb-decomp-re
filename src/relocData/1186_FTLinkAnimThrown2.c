@@ -25,37 +25,37 @@ extern u16 dFTLinkAnimThrown2_joint29[32];
 extern u16 dFTLinkAnimThrown2_joint30[44];
 
 /* Joint pointer table (30 entries, 120 bytes) */
-u32 dFTLinkAnimThrown2_joints[] = {
-	0x00000000, /* [0] NULL */
-	(u32)dFTLinkAnimThrown2_joint2, /* [1] joint 2 */
-	(u32)dFTLinkAnimThrown2_joint3, /* [2] joint 3 */
-	(u32)dFTLinkAnimThrown2_joint5, /* [3] joint 5 */
-	0x00000000, /* [4] NULL */
-	(u32)dFTLinkAnimThrown2_joint6, /* [5] joint 6 */
-	(u32)dFTLinkAnimThrown2_joint7, /* [6] joint 7 */
-	(u32)dFTLinkAnimThrown2_joint10, /* [7] joint 10 */
-	0x00000000, /* [8] NULL */
-	0x00000000, /* [9] NULL */
-	(u32)dFTLinkAnimThrown2_joint11, /* [10] joint 11 */
-	(u32)dFTLinkAnimThrown2_joint12, /* [11] joint 12 */
-	(u32)dFTLinkAnimThrown2_joint13, /* [12] joint 13 */
-	(u32)dFTLinkAnimThrown2_joint14, /* [13] joint 14 */
-	(u32)dFTLinkAnimThrown2_joint17, /* [14] joint 17 */
-	0x00000000, /* [15] NULL */
-	0x00000000, /* [16] NULL */
-	(u32)dFTLinkAnimThrown2_joint18, /* [17] joint 18 */
-	(u32)dFTLinkAnimThrown2_joint19, /* [18] joint 19 */
-	(u32)dFTLinkAnimThrown2_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTLinkAnimThrown2_joint22, /* [21] joint 22 */
-	(u32)dFTLinkAnimThrown2_joint24, /* [22] joint 24 */
-	0x00000000, /* [23] NULL */
-	(u32)dFTLinkAnimThrown2_joint26, /* [24] joint 26 */
-	0x00000000, /* [25] NULL */
-	(u32)dFTLinkAnimThrown2_joint27, /* [26] joint 27 */
-	(u32)dFTLinkAnimThrown2_joint29, /* [27] joint 29 */
-	0x00000000, /* [28] NULL */
-	(u32)dFTLinkAnimThrown2_joint30, /* [29] joint 30 */
+AObjEvent32 * dFTLinkAnimThrown2_joints[] = {
+	NULL, /* [0] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint5, /* [3] joint 5 */
+	NULL, /* [4] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint10, /* [7] joint 10 */
+	NULL, /* [8] NULL */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint14, /* [13] joint 14 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint17, /* [14] joint 17 */
+	NULL, /* [15] NULL */
+	NULL, /* [16] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint18, /* [17] joint 18 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint19, /* [18] joint 19 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint24, /* [22] joint 24 */
+	NULL, /* [23] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint26, /* [24] joint 26 */
+	NULL, /* [25] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint27, /* [26] joint 27 */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint29, /* [27] joint 29 */
+	NULL, /* [28] NULL */
+	(AObjEvent32 *)dFTLinkAnimThrown2_joint30, /* [29] joint 30 */
 };
 
 /* 4-byte alignment padding */

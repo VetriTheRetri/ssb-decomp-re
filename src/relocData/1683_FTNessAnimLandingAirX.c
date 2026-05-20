@@ -24,33 +24,33 @@ extern u16 dFTNessAnimLandingAirX_joint25[46];
 extern u16 dFTNessAnimLandingAirX_joint26[44];
 
 /* Joint pointer table (26 entries, 104 bytes) */
-u32 dFTNessAnimLandingAirX_joints[] = {
-	(u32)dFTNessAnimLandingAirX_joint1, /* [0] joint 1 */
-	(u32)dFTNessAnimLandingAirX_joint2, /* [1] joint 2 */
-	(u32)dFTNessAnimLandingAirX_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTNessAnimLandingAirX_joint5, /* [4] joint 5 */
-	(u32)dFTNessAnimLandingAirX_joint7, /* [5] joint 7 */
-	0x00000000, /* [6] NULL */
-	(u32)dFTNessAnimLandingAirX_joint8, /* [7] joint 8 */
-	(u32)dFTNessAnimLandingAirX_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTNessAnimLandingAirX_joint11, /* [10] joint 11 */
-	(u32)dFTNessAnimLandingAirX_joint12, /* [11] joint 12 */
-	(u32)dFTNessAnimLandingAirX_joint13, /* [12] joint 13 */
-	(u32)dFTNessAnimLandingAirX_joint15, /* [13] joint 15 */
-	0x00000000, /* [14] NULL */
-	(u32)dFTNessAnimLandingAirX_joint16, /* [15] joint 16 */
-	(u32)dFTNessAnimLandingAirX_joint18, /* [16] joint 18 */
-	0x00000000, /* [17] NULL */
-	(u32)dFTNessAnimLandingAirX_joint19, /* [18] joint 19 */
-	(u32)dFTNessAnimLandingAirX_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTNessAnimLandingAirX_joint22, /* [21] joint 22 */
-	(u32)dFTNessAnimLandingAirX_joint24, /* [22] joint 24 */
-	0x00000000, /* [23] NULL */
-	(u32)dFTNessAnimLandingAirX_joint25, /* [24] joint 25 */
-	(u32)dFTNessAnimLandingAirX_joint26, /* [25] joint 26 */
+AObjEvent32 * dFTNessAnimLandingAirX_joints[] = {
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint7, /* [5] joint 7 */
+	NULL, /* [6] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint15, /* [13] joint 15 */
+	NULL, /* [14] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint18, /* [16] joint 18 */
+	NULL, /* [17] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint19, /* [18] joint 19 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint24, /* [22] joint 24 */
+	NULL, /* [23] NULL */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint25, /* [24] joint 25 */
+	(AObjEvent32 *)dFTNessAnimLandingAirX_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */

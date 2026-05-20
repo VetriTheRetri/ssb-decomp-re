@@ -22,34 +22,34 @@ extern u16 dFTNessAnimEggLayPulled_joint26[24];
 extern u16 dFTNessAnimEggLayPulled_joint27[10];
 
 /* Joint pointer table (27 entries, 108 bytes) */
-u32 dFTNessAnimEggLayPulled_joints[] = {
-	0x00000000, /* [0] NULL */
-	0x00000000, /* [1] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint3, /* [2] joint 3 */
-	(u32)dFTNessAnimEggLayPulled_joint5, /* [3] joint 5 */
-	0x00000000, /* [4] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint6, /* [5] joint 6 */
-	(u32)dFTNessAnimEggLayPulled_joint9, /* [6] joint 9 */
-	0x00000000, /* [7] NULL */
-	0x00000000, /* [8] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint11, /* [9] joint 11 */
-	0x00000000, /* [10] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint12, /* [11] joint 12 */
-	(u32)dFTNessAnimEggLayPulled_joint13, /* [12] joint 13 */
-	(u32)dFTNessAnimEggLayPulled_joint14, /* [13] joint 14 */
-	(u32)dFTNessAnimEggLayPulled_joint16, /* [14] joint 16 */
-	0x00000000, /* [15] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint17, /* [16] joint 17 */
-	(u32)dFTNessAnimEggLayPulled_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint20, /* [19] joint 20 */
-	(u32)dFTNessAnimEggLayPulled_joint22, /* [20] joint 22 */
-	0x00000000, /* [21] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint23, /* [22] joint 23 */
-	(u32)dFTNessAnimEggLayPulled_joint25, /* [23] joint 25 */
-	0x00000000, /* [24] NULL */
-	(u32)dFTNessAnimEggLayPulled_joint26, /* [25] joint 26 */
-	(u32)dFTNessAnimEggLayPulled_joint27, /* [26] joint 27 */
+AObjEvent32 * dFTNessAnimEggLayPulled_joints[] = {
+	NULL, /* [0] NULL */
+	NULL, /* [1] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint5, /* [3] joint 5 */
+	NULL, /* [4] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint9, /* [6] joint 9 */
+	NULL, /* [7] NULL */
+	NULL, /* [8] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint11, /* [9] joint 11 */
+	NULL, /* [10] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint14, /* [13] joint 14 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint16, /* [14] joint 16 */
+	NULL, /* [15] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint22, /* [20] joint 22 */
+	NULL, /* [21] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint23, /* [22] joint 23 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint25, /* [23] joint 25 */
+	NULL, /* [24] NULL */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint26, /* [25] joint 26 */
+	(AObjEvent32 *)dFTNessAnimEggLayPulled_joint27, /* [26] joint 27 */
 };
 
 /* Joint 3 */

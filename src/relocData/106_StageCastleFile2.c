@@ -310,10 +310,16 @@ DObjDesc dStageCastleFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x18A8 to 0x2A08 (4448 bytes) */
-/* gap sub-block @ 0x18A8 (was gap+0x0, 232 bytes) */
-u8 dStageCastleFile2_gap_0x18A8[232] = {
-	#include <StageCastleFile2/gap_0x18A8.data.inc.c>
+/* DObjDesc[5] @ 0x18A8 — scene-graph entries (entry 4 is the
+ * { 18, NULL, ..., scale=0 } sentinel terminator). */
+DObjDesc dStageCastleFile2_gap_0x18A8[5] = {
+	{ 0x2001, (void*)dStageCastleFile2_DL_0x14E8, { 480.0f, 501.00003051757812f, -540.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageCastleFile2_DL_0x15D8, { -480.0f, 501.00003051757812f, -540.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_DL_0x1698, { 0.0f, 1815.0f, -840.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_DL_0x1760, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+PAD(12);
 
 /* gap sub-block @ 0x1990 (was gap+0xE8, 176 bytes) */
 Vtx dStageCastleFile2_gap_0x18A8_sub_0xE8[11] = {
@@ -443,17 +449,43 @@ Gfx dStageCastleFile2_DL_0x28F8[34] = {
 /* DObjDesc: Layer1DObj @ 0x2A08 (6 entries) */
 DObjDesc dStageCastleFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_gap_0x18A8 + 0x998), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_gap_0x18A8 + 0xEB0), { 842.3998413085938f, -225.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_gap_0x18A8 + 0xF60), { 3869.294921875f, 3411.622314453125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_gap_0x18A8 + 0x1050), { -3869.294921875f, 3411.71240234375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_DL_0x2240, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_DL_0x2758, { 842.3998413085938f, -225.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_DL_0x2808, { 3869.294921875f, 3411.622314453125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_DL_0x28F8, { -3869.294921875f, 3411.71240234375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x2B10 to 0x2D58 (584 bytes) */
-/* gap sub-block @ 0x2B10 (was gap+0x0, 152 bytes) */
-u8 dStageCastleFile2_gap_0x2B10[152] = {
-	#include <StageCastleFile2/gap_0x2B10.data.inc.c>
+/* MPVertexData[25] @ 0x2B10 — MP collision vertex positions
+ * (MPGeometryData.vertex_data). IDO 4-byte-aligns the following
+ * MPVertexArray, supplying the 2 zero pad bytes at 0x2BA6. */
+MPVertexData dStageCastleFile2_gap_0x2B10[25] = {
+	{ {  -855,  -917 }, 0x0000 },
+	{ {   855,  -915 }, 0x0000 },
+	{ {   703,  -120 }, 0x0000 },
+	{ {  1170,  -120 }, 0x0000 },
+	{ {  1170,   375 }, 0x0000 },
+	{ {   620,   510 }, 0x0000 },
+	{ {  -620,   510 }, 0x0000 },
+	{ { -1170,   375 }, 0x0000 },
+	{ { -1170,  -120 }, 0x0000 },
+	{ {  -703,  -120 }, 0x0000 },
+	{ {  2220,  1230 }, 0x4000 },
+	{ {  1810,  1225 }, 0x4000 },
+	{ {  1342,  1422 }, 0x4000 },
+	{ {  1138,  1446 }, 0x4000 },
+	{ {   594,  1398 }, 0x4000 },
+	{ { -1333,  1401 }, 0x4000 },
+	{ { -1980,  1571 }, 0x0000 },
+	{ {  2339,   124 }, 0x0000 },
+	{ { -2339,   124 }, 0x0000 },
+	{ {   210,  -360 }, 0x0000 },
+	{ {  -420,  -390 }, 0x0000 },
+	{ {   300,   450 }, 0x0000 },
+	{ {  -210,  -360 }, 0x0000 },
+	{ {   420,  -390 }, 0x0000 },
+	{ {  -300,   450 }, 0x0000 },
 };
 
 /* MPVertexArray (40 IDs) @ 0x2BA8 — vertex_id table (MPGeometryData.vertex_id) */
@@ -531,12 +563,28 @@ MPGeometryData dStageCastleFile2_MPGeometryData_0x2D58 = {
 PAD(12);
 
 /* Raw data from file offset 0x2D80 to 0x3218 (1176 bytes) */
-u32 dStageCastleFile2_Layer1Anim_AnimJoint[294] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x14),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x64),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x9C),
+/* Split AnimJoint blob: forward decls for sub-scripts. */
+extern u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x14[20];
+extern u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x64[14];
+extern u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x9C[14];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0xE0[12];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1A0[5];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1F0[4];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x230[3];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x260[3];
+extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x290[9];
+extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x2D8[30];
+extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x3C8[26];
+
+AObjEvent32 *dStageCastleFile2_Layer1Anim_AnimJoint[5] = {
+	NULL,
+	NULL,
+	(AObjEvent32 *)dStageCastleFile2_Layer1Anim_AnimJoint_0x14,
+	(AObjEvent32 *)dStageCastleFile2_Layer1Anim_AnimJoint_0x64,
+	(AObjEvent32 *)dStageCastleFile2_Layer1Anim_AnimJoint_0x9C,
+};
+
+u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x14[20] = {
 	aobjEvent32SetValBlock(0x010, 0),
 	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetValBlock(0x010, 999),
@@ -556,7 +604,10 @@ u32 dStageCastleFile2_Layer1Anim_AnimJoint[294] = {
 	aobjEvent32SetValBlock(0x010, 200),
 	    0x44E10000,  /* 1800.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x14),
+	(u32)(dStageCastleFile2_Layer1Anim_AnimJoint_0x14),
+};
+
+u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x64[14] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0x453B8000,  /* 3000.0f */
 	    0x45142000,  /* 2370.0f */
@@ -570,7 +621,10 @@ u32 dStageCastleFile2_Layer1Anim_AnimJoint[294] = {
 	    0x453B8000,  /* 3000.0f */
 	    0x45142000,  /* 2370.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x64),
+	(u32)(dStageCastleFile2_Layer1Anim_AnimJoint_0x64),
+};
+
+u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x9C[14] = {
 	aobjEvent32SetValBlock(0x030, 0),
 	    0xC53B8000,  /* -3000.0f */
 	    0x45142000,  /* 2370.0f */
@@ -584,265 +638,66 @@ u32 dStageCastleFile2_Layer1Anim_AnimJoint[294] = {
 	    0xC53B8000,  /* -3000.0f */
 	    0x45142000,  /* 2370.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x9C),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xFE2D0082,
-	aobjEvent32EndRaw(0x11C, 0),
-	    0x4D150060,
-	    0xFFFFFFFF,
-	    0xFE2D0082,
-	    0xFF920000,
-	    0x4D15FF21,
-	    0xFFFFFFFF,
-	aobjEvent32EndRaw(0x000, 467),
-	    0xFF920000,
-	    0x3BE8FF21,
-	    0xFFFFFFFF,
-	aobjEvent32EndRaw(0x000, 467),
-	aobjEvent32EndRaw(0x11C, 0),
-	    0x3BE8005F,
-	    0xFFFFFFFF,
-	aobjEvent32EndRaw(0x3A6, 130),
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32SetExtVal(0x174, 95),
-	    0xFFFFFFFF,  /* nanf */
-	    0x01D30082,  /* 7.750988743254603e-38f */
-	    0xFF920000,  /* nanf */
-	    0x2ABAFF21,  /* 3.3217268454073523e-13f */
-	    0xFFFFFFFF,  /* nanf */
-	aobjEvent32EndRaw(0x243, 32352),
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32SetInterp(95, 0x2A8),
-	    0xFFFFFFFF,
-	    0xFE2D0082,
-	aobjEvent32EndRaw(0x11C, 0),
-	    0xFD360060,
-	    0xFFFFFFFF,
-	aobjEvent32EndRaw(0x243, 32352),
-	    0xFF920000,
-	aobjEvent32SetInterp(32544, 0x2A9),
-	    0xFFFFFFFF,
-	    0xFEDFFE60,
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32SetValRate(0x136, 95),
-	    0xFFFFFFFF,  /* nanf */
-	    0xFEDFFE60,  /* -1.4886931678671302e+38f */
-	    0xFF920000,  /* nanf */
-	    0x0C9BFF21,  /* 2.4035081435472237e-31f */
-	    0xFFFFFFFF,  /* nanf */
-	    0xFE2D0082,  /* -5.748976999600973e+37f */
-	    0xFF920000,  /* nanf */
-	    0xFD36FF21,  /* -1.5202762515706124e+37f */
-	    0xFFFFFFFF,  /* nanf */
-	    0x01D30082,  /* 7.750988743254603e-38f */
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32WaitRaw(0x3C0, 1245),
-	    0x666666FF,
-	aobjEvent32EndRaw(0x243, 32352),
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32WaitRaw(0x180, 0),
-	    0x666666FF,
-	    0xFEDFFE60,
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32EndRaw(0x23E, 0),
-	    0x666666FF,
-	    0xFE2D0082,
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32EndRaw(0x000, 1245),
-	    0x666666FF,
-	aobjEvent32EndRaw(0x000, 467),
-	aobjEvent32EndRaw(0x11C, 0),
-	aobjEvent32JumpCmd(0x1DE, 2016),
-	    (u32)0x666666FF,
-	aobjEvent32JumpCmd(0x0DA, 503),
-	    (u32)0x01B00000,
-	aobjEvent32EndRaw(0x001, 32719),
-	    0x9DA472FF,
-	    0xFD9301F7,
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32EndRaw(0x000, 1553),
-	    0xB2B987FF,
-	aobjEvent32JumpCmd(0x08A, 379),
-	    (u32)0x041D0000,
-	aobjEvent32JumpCmd(0x1BE, 2),
-	    (u32)0x9DA472FF,
-	    0xFDBB017B,
-	aobjEvent32WaitRaw(0x03A, 0),
-	aobjEvent32JumpCmd(0x1BE, 1501),
-	    (u32)0x9DA472FF,
-	aobjEvent32JumpCmd(0x0DA, 503),
-	    (u32)0x01B00000,
-	aobjEvent32EndRaw(0x016, 661),
-	    0x888F5DFF,
-	aobjEvent32WaitRaw(0x11C, 379),
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32JumpCmd(0x1C1, 32751),
-	    (u32)0x888F5DFF,
-	aobjEvent32JumpCmd(0x08A, 379),
-	    (u32)0x041D0000,
-	aobjEvent32JumpCmd(0x1C2, 1531),
-	    (u32)0x969D6BFF,
-	    0xFD9301F7,
-	aobjEvent32EndRaw(0x360, 0),
-	    0xFFF40356,
-	    0xB2B987FF,
-	    0xFDBB017B,
-	aobjEvent32WaitRaw(0x03A, 0),
-	aobjEvent32JumpCmd(0x1CA, 28),
-	    (u32)0xA4AB79FF,
-	    0xFB72017B,
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32JumpCmd(0x1BA, 1504),
-	    (u32)0xB2B987FF,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FDFFFF,
-	aobjEvent32End(),
-	    0xE3001001,
-	aobjEvent32EndRaw(0x001, 0),
-	    0xFC121824,
-	    0xFF33FFFF,
-	    0xE8000000,
-	aobjEvent32End(),
-	    0xF5000100,
-	aobjEvent32WaitRaw(0x200, 0),
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xDE000000,
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x2D8),
-	    0xDF000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x201, 64),
-	    0xF5400200,  /* -2.4339881876413433e+32f */
-	    0x00088040,  /* 7.806914004446421e-40f */
-	    0xFD100000,
-	(u32)dStageCastleFile2_Lut_0x0610_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x13F, 16396),
-	    0xFD500000,
-	(u32)dStageCastleFile2_Tex_0x0790,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	aobjEvent32SetValBlock(0x201, 30720),
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32EndRaw(0x201, 16408),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0xE0),
-	aobjEvent32SetValBlock(0x02C, 5138),
-	    0x00121410,  /* 1.660235999756614e-39f */
-	    0x060E1612,  /* 2.672344635547277e-35f */
-	    0x000C1210,  /* 1.1085055579949325e-39f */
-	aobjEvent32SetValBlock(0x018, 4106),
-	    0x00080C0A,  /* 7.390027711309788e-40f */
-	    0x06080A06,  /* 2.5586121132741145e-35f */
-	aobjEvent32EndRaw(0x014, 1030),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x202, 64),
-	    0xF5400200,  /* -2.4339881876413433e+32f */
-	    0x00090240,  /* 8.27326613337372e-40f */
-	    0xF2000000,
-	aobjEvent32EndRaw(0x017, 16636),
-	    0xFD500000,
-	(u32)dStageCastleFile2_Tex_0x0638,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x0703F800,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 20490),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x1A0),
-	aobjEvent32SetValBlock(0x010, 1540),
-	    0x00080402,  /* 7.36121701488327e-40f */
-	aobjEvent32WaitRaw(0x200, 2050),
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x201, 16464),
-	    0xF5400400,  /* -2.434087222844486e+32f */
-	    0x0008C350,  /* 8.047488924801705e-40f */
-	    0xFD100000,
-	(u32)dStageCastleFile2_Lut_0x02B0_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x00B, 16572),
-	    0xFD500000,
-	(u32)dStageCastleFile2_Tex_0x0AC0,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x0703F400,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x1F0),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,  /* 3.673447872288935e-40f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xF5400400,
-	aobjEvent32EndRaw(0x011, 16976),
-	aobjEvent32EndRaw(0x200, 12294),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x230),
-	aobjEvent32WaitRaw(0x208, 512),
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 12294),
-	(u32)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x260),
-	aobjEvent32WaitRaw(0x208, 512),
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x004, 0),
-	    0xE3001001,
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)dStageCastleFile2_Layer1Anim_AnimJoint_0x9C,
+};
+PAD(12);
+
+Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0xE0[12] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0xE0.vtx.inc.c>
+};
+
+Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1A0[5] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x1A0.vtx.inc.c>
+};
+
+Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1F0[4] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x1F0.vtx.inc.c>
+};
+
+Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x230[3] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x230.vtx.inc.c>
+};
+
+Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x260[3] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x260.vtx.inc.c>
+};
+
+Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x290[9] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x290.dl.inc.c>
+};
+
+Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x2D8[30] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x2D8.dl.inc.c>
+};
+
+Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x3C8[26] = {
+	#include <StageCastleFile2/Layer1Anim_AnimJoint_0x3C8.dl.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x3218 (4 entries) */
 DObjDesc dStageCastleFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x290), { 0.0f, -300.0f, 780.0f }, { 0.0f, 0.0f, 1.6713279485702515f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_Layer1Anim_AnimJoint + 0x3C8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_Layer1Anim_AnimJoint_0x290, { 0.0f, -300.0f, 780.0f }, { 0.0f, 0.0f, 1.6713279485702515f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_Layer1Anim_AnimJoint_0x3C8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 PAD(8);
 
 /* Raw data from file offset 0x32D0 to 0x3600 (816 bytes) */
-u32 dStageCastleFile2_Layer2Anim_AnimJoint[204] = {
-	aobjEvent32End(),
-	(u32)((u8*)dStageCastleFile2_Layer2Anim_AnimJoint + 0xC),
-	aobjEvent32End(),
+/* Split AnimJoint blob: forward decls for sub-scripts. */
+extern u32 dStageCastleFile2_Layer2Anim_AnimJoint_0xC[20];
+extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0x60[8];
+extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0xE0[12];
+extern Gfx dStageCastleFile2_Layer2Anim_AnimJoint_0x1A0[50];
+
+AObjEvent32 *dStageCastleFile2_Layer2Anim_AnimJoint[3] = {
+	NULL,
+	(AObjEvent32 *)dStageCastleFile2_Layer2Anim_AnimJoint_0xC,
+	NULL,
+};
+
+u32 dStageCastleFile2_Layer2Anim_AnimJoint_0xC[20] = {
 	aobjEvent32SetValBlock(0x004, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValBlock(0x004, 999),
@@ -862,194 +717,26 @@ u32 dStageCastleFile2_Layer2Anim_AnimJoint[204] = {
 	aobjEvent32SetValBlock(0x004, 200),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageCastleFile2_Layer2Anim_AnimJoint + 0xC),
-	aobjEvent32End(),
-	aobjEvent32WaitRaw(0x030, 585),
-	aobjEvent32EndRaw(0x398, 0),
-	aobjEvent32SetValAfter(0x3C0, 736),
-	    0xE6E6E600,  /* -5.451935210984858e+23f */
-	    0x04180188,  /* 1.786821724801623e-36f */
-	    0x01CC0000,  /* 7.493776486492083e-38f */
-	    0x17E0007A,  /* 1.447578102096603e-24f */
-	    0xE6E6E600,
-	aobjEvent32JumpCmd(0x048, 392),
-	    (u32)0x03DC0000,
-	aobjEvent32SetVal0Rate(0x05A, 122),
-	    0xE6E6E600,  /* -5.451935210984858e+23f */
-	    0x02240249,  /* 1.204947290360975e-37f */
-	    0x03DC0000,  /* 1.2930437859045163e-36f */
-	    0x122D02E0,  /* 5.459271835239169e-28f */
-	    0xE6E6E600,
-	    0xFDDC0249,
-	aobjEvent32JumpCmd(0x3B8, 0),
-	    (u32)0x05B202E0,
-	    0xE6E6E600,
-	    0xFDDC0188,
-	aobjEvent32JumpCmd(0x3B8, 0),
-	    (u32)0x05B2007A,
-	    0xE6E6E600,
-	    0xFBE80188,
-	aobjEvent32EndRaw(0x398, 0),
-	aobjEvent32EndRaw(0x000, 122),
-	    0xE6E6E600,
-	    0xFBE80249,
-	aobjEvent32EndRaw(0x398, 0),
-	aobjEvent32EndRaw(0x000, 736),
-	    0xE6E6E600,
-	    0xFDBB017B,
-	aobjEvent32WaitRaw(0x03A, 0),
-	aobjEvent32EndRaw(0x000, 8),
-	    0xAAAAAAFF,
-	    0xFDBBFFA7,
-	aobjEvent32WaitRaw(0x03A, 0),
-	aobjEvent32WaitRaw(0x3BA, 8),
-	    0xAAAAAAFF,
-	aobjEvent32JumpCmd(0x08A, 379),
-	    (u32)0x041D0000,
-	aobjEvent32EndRaw(0x000, 23),
-	    0xAAAAAAFF,
-	aobjEvent32JumpCmd(0x08B, 32679),
-	    (u32)0x041D0000,
-	aobjEvent32WaitRaw(0x3BA, 23),
-	    0xAAAAAAFF,
-	aobjEvent32JumpCmd(0x08A, 379),
-	    (u32)0x041D0000,
-	aobjEvent32EndRaw(0x000, 23),
-	    0x888888FF,
-	aobjEvent32WaitRaw(0x11C, 379),
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32EndRaw(0x000, 32),
-	    0x888888FF,
-	aobjEvent32WaitRaw(0x11D, 32678),
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32WaitRaw(0x3C0, 32),
-	    0x888888FF,
-	aobjEvent32JumpCmd(0x08B, 32679),
-	    (u32)0x041D0000,
-	aobjEvent32WaitRaw(0x3BA, 23),
-	    0x888888FF,
-	    0xFDBB017B,
-	aobjEvent32WaitRaw(0x03A, 0),
-	aobjEvent32EndRaw(0x000, 8),
-	    0xEEEEEEFF,
-	    0xFDBBFFA7,
-	aobjEvent32WaitRaw(0x03A, 0),
-	aobjEvent32WaitRaw(0x3BA, 8),
-	    0xEEEEEEFF,
-	    0xFB72FFA7,
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32WaitRaw(0x3BA, 0),
-	    0xEEEEEEFF,
-	    0xFB72017B,
-	aobjEvent32EndRaw(0x360, 0),
-	aobjEvent32End(),
-	    0xEEEEEEFF,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DDFFFF,
-	aobjEvent32End(),
-	    0xE3001001,
-	aobjEvent32EndRaw(0x001, 0),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12360),
-	    0xFC127E24,
-	    0xFFFFF3F9,
-	    0xF9000000,
-	aobjEvent32End(),
-	    0xE8000000,
-	aobjEvent32End(),
-	    0xF5000100,
-	aobjEvent32WaitRaw(0x200, 0),
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x202, 16448),
-	    0xF5400200,  /* -2.4339881876413433e+32f */
-	    0x00094240,  /* 8.502854873768698e-40f */
-	    0xFD100000,
-	(u32)dStageCastleFile2_Lut_0x0458_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xF2000000,
-	aobjEvent32EndRaw(0x05F, 16476),
-	    0xFD500000,
-	(u32)dStageCastleFile2_Tex_0x0480,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x0705F800,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x201, 16),
-	(u32)((u8*)dStageCastleFile2_Layer2Anim_AnimJoint + 0x60),
-	aobjEvent32SetValBlock(0x01C, 3082),
-	    0x00080E0A,  /* 7.397202359447131e-40f */
-	    0x0606080A,  /* 2.5208505051976505e-35f */
-	    0x0004060A,  /* 3.69508392057811e-40f */
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8264),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x040, 0),
-	    0xFC121824,
-	    0xFF33FFFF,
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x200, 16448),
-	    0xF5400200,  /* -2.4339881876413433e+32f */
-	aobjEvent32EndRaw(0x010, 16960),
-	    0xFD100000,
-	(u32)dStageCastleFile2_Lut_0x0238_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x017, 16388),
-	    0xFD500000,
-	(u32)dStageCastleFile2_Tex_0x0370,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	aobjEvent32SetValBlock(0x200, 30720),
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x201, 16408),
-	(u32)((u8*)dStageCastleFile2_Layer2Anim_AnimJoint + 0xE0),
-	aobjEvent32SetValBlock(0x02C, 5138),
-	    0x00101612,  /* 1.4772852748512946e-39f */
-	    0x060E0C0A,  /* 2.671607655690609e-35f */
-	    0x00080E0A,  /* 7.397202359447131e-40f */
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,  /* 3.673447872288935e-40f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x004, 0),
-	    0xE3001001,
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)dStageCastleFile2_Layer2Anim_AnimJoint_0xC,
+};
+PAD(4);
+
+Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0x60[8] = {
+	#include <StageCastleFile2/Layer2Anim_AnimJoint_0x60.vtx.inc.c>
+};
+
+Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0xE0[12] = {
+	#include <StageCastleFile2/Layer2Anim_AnimJoint_0xE0.vtx.inc.c>
+};
+
+Gfx dStageCastleFile2_Layer2Anim_AnimJoint_0x1A0[50] = {
+	#include <StageCastleFile2/Layer2Anim_AnimJoint_0x1A0.dl.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0x3600 (3 entries) */
 DObjDesc dStageCastleFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageCastleFile2_Layer2Anim_AnimJoint + 0x1A0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageCastleFile2_Layer2Anim_AnimJoint_0x1A0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1127,27 +814,238 @@ Gfx dStageCastleFile2_gap_0x3684_sub_0x9EC[21] = {
 	#include <StageCastleFile2/gap_0x3684_sub_0x9EC.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0x4118 (284 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0x9EC_post[284] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0x9EC_post.data.inc.c>
+/* Forward decls for the DObjDesc dl pointers and the joint table's
+ * AObjEvent32 * targets — those decls appear later in the file. */
+extern Gfx dStageCastleFile2_DL_0x3F20[];
+extern Gfx dStageCastleFile2_DL_0x3FF8[];
+extern u32 dStageCastleFile2_gap_0x3684_sub_0xBB0[24];
+extern u32 dStageCastleFile2_gap_0x3684_sub_0xC14[54];
+extern u32 dStageCastleFile2_gap_0x3684_sub_0xD00[16];
+extern u32 dStageCastleFile2_gap_0x3684_sub_0xD40[];
+
+/* DObjDesc[6] @ 0x4118 — scene-graph entries (entry 5 is the
+ * { 18, NULL, ..., scale=0 } sentinel terminator). */
+DObjDesc dStageCastleFile2_gap_0x3684_sub_0x9EC_post[6] = {
+	{ 0, (void*)0x00000000, { -3000.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 30.0f, 0.0f, -30.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x4002, (void*)dStageCastleFile2_DL_0x3F20, { -30.0f, 0.0f, 30.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x4001, (void*)dStageCastleFile2_DL_0x3FF8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x4001, (void*)dStageCastleFile2_gap_0x3684_sub_0x9EC, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* AObjEvent32 *[5] joint pointer table @ 0x4220 — animation scripts
+ * for each DObj slot. Slots 0,1 → scripts at sub_0xBB0 / sub_0xC14;
+ * remaining slots NULL. */
+AObjEvent32 *dStageCastleFile2_gap_0x3684_sub_0x9EC_post_joint[5] = {
+	(AObjEvent32 *)dStageCastleFile2_gap_0x3684_sub_0xBB0,
+	(AObjEvent32 *)dStageCastleFile2_gap_0x3684_sub_0xC14,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x4234 (was gap+0xBB0, 100 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0xBB0[100] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0xBB0.data.inc.c>
+u32 dStageCastleFile2_gap_0x3684_sub_0xBB0[24] = {
+	aobjEvent32SetValAfter(0x040, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x010, 256),
+	    0xC53B8000,  /* -3000.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0xC2F00000,  /* -120.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0xC2F00000,  /* -120.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0xC2F00000,  /* -120.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	    0xC2F00000,  /* -120.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 32),
+	aobjEvent32End(),
+};
+PAD(4);
+
+/* gap sub-block @ 0x4298 (was gap+0xC14, 236 bytes) — AObjEvent32
+ * script followed by a 2-entry AObjEvent32 * pointer array. */
+u32 dStageCastleFile2_gap_0x3684_sub_0xC14[54] = {
+	aobjEvent32SetVal0Rate(0x180, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };
 
-/* gap sub-block @ 0x4298 (was gap+0xC14, 236 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0xC14[236] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0xC14.data.inc.c>
+/* AObjEvent32 *[2] pointer table @ 0x4370 (= sub_0xC14+0xD8) — chain
+ * pointers to the two AObjEvent32 scripts at sub_0xD00 / sub_0xD40. */
+AObjEvent32 *dStageCastleFile2_gap_0x3684_sub_0xC14_joint[2] = {
+	(AObjEvent32 *)dStageCastleFile2_gap_0x3684_sub_0xD00,
+	(AObjEvent32 *)dStageCastleFile2_gap_0x3684_sub_0xD40,
 };
+PAD(12);
 
 /* gap sub-block @ 0x4384 (was gap+0xD00, 64 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0xD00[64] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0xD00.data.inc.c>
+u32 dStageCastleFile2_gap_0x3684_sub_0xD00[16] = {
+	aobjEvent32SetValRate(0x020, 0),
+	    0xC4BB8000,  /* -1500.0f */
+	    0x4186BD3A,  /* 16.842395782470703f */
+	aobjEvent32SetValBlock(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x010, 768),
+	    0xC68CA000,  /* -18000.0f */
+	aobjEvent32SetValRateBlock(0x020, 384),
+	    0x44E10000,  /* 1800.0f */
+	    0x3D32031D,  /* 0.043460000306367874f */
+	aobjEvent32SetTargetRate(0x020, 0),
+	    0x3D322D0E,  /* 0.04349999874830246f */
+	aobjEvent32SetValRateBlock(0x020, 384),
+	    0xC4960000,  /* -1200.0f */
+	    0xC115BA97,  /* -9.358054161071777f */
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x43C4 (was gap+0xD40, 348 bytes) */
-u8 dStageCastleFile2_gap_0x3684_sub_0xD40[348] = {
-	#include <StageCastleFile2/gap_0x3684_sub_0xD40.data.inc.c>
+u32 dStageCastleFile2_gap_0x3684_sub_0xD40[84] = {
+	aobjEvent32SetVal0Rate(0x180, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x180, 368),
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	    0x3F8CCCCD,  /* 1.100000023841858f */
+	aobjEvent32SetVal0RateBlock(0x180, 16),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };
+PAD(12);

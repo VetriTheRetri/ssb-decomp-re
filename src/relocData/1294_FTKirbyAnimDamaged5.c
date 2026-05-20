@@ -21,29 +21,29 @@ extern u16 dFTKirbyAnimDamaged5_joint21[14];
 extern u16 dFTKirbyAnimDamaged5_joint22[132];
 
 /* Joint pointer table (22 entries, 88 bytes) */
-u32 dFTKirbyAnimDamaged5_joints[] = {
-	(u32)dFTKirbyAnimDamaged5_joint1, /* [0] joint 1 */
-	(u32)dFTKirbyAnimDamaged5_joint2, /* [1] joint 2 */
-	(u32)dFTKirbyAnimDamaged5_joint3, /* [2] joint 3 */
-	(u32)dFTKirbyAnimDamaged5_joint5, /* [3] joint 5 */
-	0x00000000, /* [4] NULL */
-	(u32)dFTKirbyAnimDamaged5_joint6, /* [5] joint 6 */
-	(u32)dFTKirbyAnimDamaged5_joint7, /* [6] joint 7 */
-	(u32)dFTKirbyAnimDamaged5_joint9, /* [7] joint 9 */
-	0x00000000, /* [8] NULL */
-	(u32)dFTKirbyAnimDamaged5_joint10, /* [9] joint 10 */
-	(u32)dFTKirbyAnimDamaged5_joint11, /* [10] joint 11 */
-	(u32)dFTKirbyAnimDamaged5_joint13, /* [11] joint 13 */
-	0x00000000, /* [12] NULL */
-	(u32)dFTKirbyAnimDamaged5_joint14, /* [13] joint 14 */
-	(u32)dFTKirbyAnimDamaged5_joint16, /* [14] joint 16 */
-	0x00000000, /* [15] NULL */
-	(u32)dFTKirbyAnimDamaged5_joint18, /* [16] joint 18 */
-	0x00000000, /* [17] NULL */
-	(u32)dFTKirbyAnimDamaged5_joint19, /* [18] joint 19 */
-	(u32)dFTKirbyAnimDamaged5_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTKirbyAnimDamaged5_joint22, /* [21] joint 22 */
+AObjEvent32 * dFTKirbyAnimDamaged5_joints[] = {
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint5, /* [3] joint 5 */
+	NULL, /* [4] NULL */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint9, /* [7] joint 9 */
+	NULL, /* [8] NULL */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint10, /* [9] joint 10 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint13, /* [11] joint 13 */
+	NULL, /* [12] NULL */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint14, /* [13] joint 14 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint16, /* [14] joint 16 */
+	NULL, /* [15] NULL */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint18, /* [16] joint 18 */
+	NULL, /* [17] NULL */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint19, /* [18] joint 19 */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTKirbyAnimDamaged5_joint22, /* [21] joint 22 */
 };
 
 /* Joint 1 */

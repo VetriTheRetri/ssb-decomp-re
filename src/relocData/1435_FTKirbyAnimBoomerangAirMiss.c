@@ -22,30 +22,30 @@ extern u16 dFTKirbyAnimBoomerangAirMiss_joint22[14];
 extern u16 dFTKirbyAnimBoomerangAirMiss_joint23[106];
 
 /* Joint pointer table (23 entries, 92 bytes) */
-u32 dFTKirbyAnimBoomerangAirMiss_joints[] = {
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint1, /* [0] joint 1 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint2, /* [1] joint 2 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint3, /* [2] joint 3 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint5, /* [3] joint 5 */
-	0x00000000, /* [4] NULL */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint6, /* [5] joint 6 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint7, /* [6] joint 7 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint8, /* [7] joint 8 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint11, /* [10] joint 11 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint12, /* [11] joint 12 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint15, /* [14] joint 15 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint17, /* [15] joint 17 */
-	0x00000000, /* [16] NULL */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint20, /* [19] joint 20 */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint22, /* [20] joint 22 */
-	0x00000000, /* [21] NULL */
-	(u32)dFTKirbyAnimBoomerangAirMiss_joint23, /* [22] joint 23 */
+AObjEvent32 * dFTKirbyAnimBoomerangAirMiss_joints[] = {
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint5, /* [3] joint 5 */
+	NULL, /* [4] NULL */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint17, /* [15] joint 17 */
+	NULL, /* [16] NULL */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint22, /* [20] joint 22 */
+	NULL, /* [21] NULL */
+	(AObjEvent32 *)dFTKirbyAnimBoomerangAirMiss_joint23, /* [22] joint 23 */
 };
 
 /* Joint 1 */

@@ -20,32 +20,32 @@ extern u16 dFTDonkeyAnimDamage_joint24[8];
 extern u16 dFTDonkeyAnimDamage_joint25[10];
 
 /* Joint pointer table (25 entries, 100 bytes) */
-u32 dFTDonkeyAnimDamage_joints[] = {
-	(u32)dFTDonkeyAnimDamage_joint1, /* [0] joint 1 */
-	(u32)dFTDonkeyAnimDamage_joint2, /* [1] joint 2 */
-	(u32)dFTDonkeyAnimDamage_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTDonkeyAnimDamage_joint5, /* [4] joint 5 */
-	(u32)dFTDonkeyAnimDamage_joint7, /* [5] joint 7 */
-	0x00000000, /* [6] NULL */
-	(u32)dFTDonkeyAnimDamage_joint10, /* [7] joint 10 */
-	0x00000000, /* [8] NULL */
-	0x00000000, /* [9] NULL */
-	(u32)dFTDonkeyAnimDamage_joint11, /* [10] joint 11 */
-	(u32)dFTDonkeyAnimDamage_joint13, /* [11] joint 13 */
-	0x00000000, /* [12] NULL */
-	(u32)dFTDonkeyAnimDamage_joint16, /* [13] joint 16 */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dFTDonkeyAnimDamage_joint17, /* [16] joint 17 */
-	(u32)dFTDonkeyAnimDamage_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTDonkeyAnimDamage_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTDonkeyAnimDamage_joint22, /* [21] joint 22 */
-	(u32)dFTDonkeyAnimDamage_joint24, /* [22] joint 24 */
-	0x00000000, /* [23] NULL */
-	(u32)dFTDonkeyAnimDamage_joint25, /* [24] joint 25 */
+AObjEvent32 * dFTDonkeyAnimDamage_joints[] = {
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint7, /* [5] joint 7 */
+	NULL, /* [6] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint10, /* [7] joint 10 */
+	NULL, /* [8] NULL */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint13, /* [11] joint 13 */
+	NULL, /* [12] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint16, /* [13] joint 16 */
+	NULL, /* [14] NULL */
+	NULL, /* [15] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint24, /* [22] joint 24 */
+	NULL, /* [23] NULL */
+	(AObjEvent32 *)dFTDonkeyAnimDamage_joint25, /* [24] joint 25 */
 };
 
 /* 4-byte alignment padding */

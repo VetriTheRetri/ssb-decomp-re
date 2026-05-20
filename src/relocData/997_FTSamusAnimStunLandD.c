@@ -20,30 +20,30 @@ extern u16 dFTSamusAnimStunLandD_joint22[44];
 extern u16 dFTSamusAnimStunLandD_joint23[64];
 
 /* Joint pointer table (23 entries, 92 bytes) */
-u32 dFTSamusAnimStunLandD_joints[] = {
-	(u32)dFTSamusAnimStunLandD_joint2, /* [0] joint 2 */
-	0x00000000, /* [1] NULL */
-	(u32)dFTSamusAnimStunLandD_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTSamusAnimStunLandD_joint5, /* [4] joint 5 */
-	(u32)dFTSamusAnimStunLandD_joint6, /* [5] joint 6 */
-	(u32)dFTSamusAnimStunLandD_joint7, /* [6] joint 7 */
-	(u32)dFTSamusAnimStunLandD_joint8, /* [7] joint 8 */
-	(u32)dFTSamusAnimStunLandD_joint11, /* [8] joint 11 */
-	0x00000000, /* [9] NULL */
-	0x00000000, /* [10] NULL */
-	(u32)dFTSamusAnimStunLandD_joint12, /* [11] joint 12 */
-	(u32)dFTSamusAnimStunLandD_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTSamusAnimStunLandD_joint15, /* [14] joint 15 */
-	(u32)dFTSamusAnimStunLandD_joint17, /* [15] joint 17 */
-	0x00000000, /* [16] NULL */
-	(u32)dFTSamusAnimStunLandD_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTSamusAnimStunLandD_joint20, /* [19] joint 20 */
-	(u32)dFTSamusAnimStunLandD_joint22, /* [20] joint 22 */
-	0x00000000, /* [21] NULL */
-	(u32)dFTSamusAnimStunLandD_joint23, /* [22] joint 23 */
+AObjEvent32 * dFTSamusAnimStunLandD_joints[] = {
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint2, /* [0] joint 2 */
+	NULL, /* [1] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint11, /* [8] joint 11 */
+	NULL, /* [9] NULL */
+	NULL, /* [10] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint17, /* [15] joint 17 */
+	NULL, /* [16] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint22, /* [20] joint 22 */
+	NULL, /* [21] NULL */
+	(AObjEvent32 *)dFTSamusAnimStunLandD_joint23, /* [22] joint 23 */
 };
 
 /* Joint 2 */

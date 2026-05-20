@@ -21,39 +21,39 @@ extern u16 dFTNSamusAnimPose1P_joint31[16];
 extern u16 dFTNSamusAnimPose1P_joint32[24];
 
 /* Joint pointer table (32 entries, 128 bytes) */
-u32 dFTNSamusAnimPose1P_joints[] = {
-	(u32)dFTNSamusAnimPose1P_joint1, /* [0] joint 1 */
-	(u32)dFTNSamusAnimPose1P_joint2, /* [1] joint 2 */
-	(u32)dFTNSamusAnimPose1P_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTNSamusAnimPose1P_joint5, /* [4] joint 5 */
-	(u32)dFTNSamusAnimPose1P_joint6, /* [5] joint 6 */
-	(u32)dFTNSamusAnimPose1P_joint8, /* [6] joint 8 */
-	0x00000000, /* [7] NULL */
-	(u32)dFTNSamusAnimPose1P_joint9, /* [8] joint 9 */
-	(u32)dFTNSamusAnimPose1P_joint11, /* [9] joint 11 */
-	0x00000000, /* [10] NULL */
-	(u32)dFTNSamusAnimPose1P_joint12, /* [11] joint 12 */
-	(u32)dFTNSamusAnimPose1P_joint23, /* [12] joint 23 */
-	0x00000000, /* [13] NULL */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	0x00000000, /* [16] NULL */
-	0x00000000, /* [17] NULL */
-	0x00000000, /* [18] NULL */
-	0x00000000, /* [19] NULL */
-	0x00000000, /* [20] NULL */
-	0x00000000, /* [21] NULL */
-	0x00000000, /* [22] NULL */
-	(u32)dFTNSamusAnimPose1P_joint24, /* [23] joint 24 */
-	(u32)dFTNSamusAnimPose1P_joint26, /* [24] joint 26 */
-	0x00000000, /* [25] NULL */
-	(u32)dFTNSamusAnimPose1P_joint28, /* [26] joint 28 */
-	0x00000000, /* [27] NULL */
-	(u32)dFTNSamusAnimPose1P_joint29, /* [28] joint 29 */
-	(u32)dFTNSamusAnimPose1P_joint31, /* [29] joint 31 */
-	0x00000000, /* [30] NULL */
-	(u32)dFTNSamusAnimPose1P_joint32, /* [31] joint 32 */
+AObjEvent32 * dFTNSamusAnimPose1P_joints[] = {
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint8, /* [6] joint 8 */
+	NULL, /* [7] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint9, /* [8] joint 9 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint11, /* [9] joint 11 */
+	NULL, /* [10] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint23, /* [12] joint 23 */
+	NULL, /* [13] NULL */
+	NULL, /* [14] NULL */
+	NULL, /* [15] NULL */
+	NULL, /* [16] NULL */
+	NULL, /* [17] NULL */
+	NULL, /* [18] NULL */
+	NULL, /* [19] NULL */
+	NULL, /* [20] NULL */
+	NULL, /* [21] NULL */
+	NULL, /* [22] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint24, /* [23] joint 24 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint26, /* [24] joint 26 */
+	NULL, /* [25] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint28, /* [26] joint 28 */
+	NULL, /* [27] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint29, /* [28] joint 29 */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint31, /* [29] joint 31 */
+	NULL, /* [30] NULL */
+	(AObjEvent32 *)dFTNSamusAnimPose1P_joint32, /* [31] joint 32 */
 };
 
 /* 4-byte alignment padding */

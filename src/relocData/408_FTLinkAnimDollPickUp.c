@@ -35,37 +35,37 @@ extern u16 dFTLinkAnimDollPickUp_joint29[4];
 extern u16 dFTLinkAnimDollPickUp_joint30[60];
 
 /* Joint pointer table (30 entries, 120 bytes) */
-u32 dFTLinkAnimDollPickUp_joints[] = {
-	(u32)dFTLinkAnimDollPickUp_joint1, /* [0] joint 1 */
-	(u32)dFTLinkAnimDollPickUp_joint2, /* [1] joint 2 */
-	(u32)dFTLinkAnimDollPickUp_joint3, /* [2] joint 3 */
-	(u32)dFTLinkAnimDollPickUp_joint4, /* [3] joint 4 */
-	(u32)dFTLinkAnimDollPickUp_joint5, /* [4] joint 5 */
-	(u32)dFTLinkAnimDollPickUp_joint6, /* [5] joint 6 */
-	(u32)dFTLinkAnimDollPickUp_joint7, /* [6] joint 7 */
-	(u32)dFTLinkAnimDollPickUp_joint8, /* [7] joint 8 */
-	(u32)dFTLinkAnimDollPickUp_joint9, /* [8] joint 9 */
-	(u32)dFTLinkAnimDollPickUp_joint10, /* [9] joint 10 */
-	(u32)dFTLinkAnimDollPickUp_joint11, /* [10] joint 11 */
-	(u32)dFTLinkAnimDollPickUp_joint12, /* [11] joint 12 */
-	(u32)dFTLinkAnimDollPickUp_joint13, /* [12] joint 13 */
-	(u32)dFTLinkAnimDollPickUp_joint14, /* [13] joint 14 */
-	(u32)dFTLinkAnimDollPickUp_joint15, /* [14] joint 15 */
-	(u32)dFTLinkAnimDollPickUp_joint16, /* [15] joint 16 */
-	(u32)dFTLinkAnimDollPickUp_joint17, /* [16] joint 17 */
-	(u32)dFTLinkAnimDollPickUp_joint18, /* [17] joint 18 */
-	(u32)dFTLinkAnimDollPickUp_joint19, /* [18] joint 19 */
-	(u32)dFTLinkAnimDollPickUp_joint20, /* [19] joint 20 */
-	(u32)dFTLinkAnimDollPickUp_joint21, /* [20] joint 21 */
-	(u32)dFTLinkAnimDollPickUp_joint22, /* [21] joint 22 */
-	(u32)dFTLinkAnimDollPickUp_joint23, /* [22] joint 23 */
-	(u32)dFTLinkAnimDollPickUp_joint24, /* [23] joint 24 */
-	(u32)dFTLinkAnimDollPickUp_joint25, /* [24] joint 25 */
-	(u32)dFTLinkAnimDollPickUp_joint26, /* [25] joint 26 */
-	(u32)dFTLinkAnimDollPickUp_joint27, /* [26] joint 27 */
-	(u32)dFTLinkAnimDollPickUp_joint28, /* [27] joint 28 */
-	(u32)dFTLinkAnimDollPickUp_joint29, /* [28] joint 29 */
-	(u32)dFTLinkAnimDollPickUp_joint30, /* [29] joint 30 */
+AObjEvent32 * dFTLinkAnimDollPickUp_joints[] = {
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint4, /* [3] joint 4 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint9, /* [8] joint 9 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint10, /* [9] joint 10 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint14, /* [13] joint 14 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint18, /* [17] joint 18 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint19, /* [18] joint 19 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint21, /* [20] joint 21 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint23, /* [22] joint 23 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint24, /* [23] joint 24 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint25, /* [24] joint 25 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint26, /* [25] joint 26 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint27, /* [26] joint 27 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint28, /* [27] joint 28 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint29, /* [28] joint 29 */
+	(AObjEvent32 *)dFTLinkAnimDollPickUp_joint30, /* [29] joint 30 */
 };
 
 /* Joint 1 */

@@ -20,31 +20,31 @@ extern u16 dFTMarioAnimFallSpecial_joint23[20];
 extern u16 dFTMarioAnimFallSpecial_joint24[32];
 
 /* Joint pointer table (24 entries, 96 bytes) */
-u32 dFTMarioAnimFallSpecial_joints[] = {
-	(u32)dFTMarioAnimFallSpecial_joint1, /* [0] joint 1 */
-	(u32)dFTMarioAnimFallSpecial_joint2, /* [1] joint 2 */
-	(u32)dFTMarioAnimFallSpecial_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTMarioAnimFallSpecial_joint5, /* [4] joint 5 */
-	(u32)dFTMarioAnimFallSpecial_joint10, /* [5] joint 10 */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	0x00000000, /* [8] NULL */
-	0x00000000, /* [9] NULL */
-	(u32)dFTMarioAnimFallSpecial_joint11, /* [10] joint 11 */
-	(u32)dFTMarioAnimFallSpecial_joint12, /* [11] joint 12 */
-	(u32)dFTMarioAnimFallSpecial_joint13, /* [12] joint 13 */
-	(u32)dFTMarioAnimFallSpecial_joint15, /* [13] joint 15 */
-	0x00000000, /* [14] NULL */
-	(u32)dFTMarioAnimFallSpecial_joint16, /* [15] joint 16 */
-	(u32)dFTMarioAnimFallSpecial_joint18, /* [16] joint 18 */
-	0x00000000, /* [17] NULL */
-	(u32)dFTMarioAnimFallSpecial_joint20, /* [18] joint 20 */
-	0x00000000, /* [19] NULL */
-	(u32)dFTMarioAnimFallSpecial_joint21, /* [20] joint 21 */
-	(u32)dFTMarioAnimFallSpecial_joint23, /* [21] joint 23 */
-	0x00000000, /* [22] NULL */
-	(u32)dFTMarioAnimFallSpecial_joint24, /* [23] joint 24 */
+AObjEvent32 * dFTMarioAnimFallSpecial_joints[] = {
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint10, /* [5] joint 10 */
+	NULL, /* [6] NULL */
+	NULL, /* [7] NULL */
+	NULL, /* [8] NULL */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint15, /* [13] joint 15 */
+	NULL, /* [14] NULL */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint18, /* [16] joint 18 */
+	NULL, /* [17] NULL */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint20, /* [18] joint 20 */
+	NULL, /* [19] NULL */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint21, /* [20] joint 21 */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint23, /* [21] joint 23 */
+	NULL, /* [22] NULL */
+	(AObjEvent32 *)dFTMarioAnimFallSpecial_joint24, /* [23] joint 24 */
 };
 
 /* Joint 1 */

@@ -22,32 +22,32 @@ extern u16 dFTMarioAnimCliffCatch_joint24[16];
 extern u16 dFTMarioAnimCliffCatch_joint25[28];
 
 /* Joint pointer table (25 entries, 100 bytes) */
-u32 dFTMarioAnimCliffCatch_joints[] = {
-	(u32)dFTMarioAnimCliffCatch_joint1, /* [0] joint 1 */
-	(u32)dFTMarioAnimCliffCatch_joint2, /* [1] joint 2 */
-	(u32)dFTMarioAnimCliffCatch_joint5, /* [2] joint 5 */
-	0x00000000, /* [3] NULL */
-	0x00000000, /* [4] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint6, /* [5] joint 6 */
-	(u32)dFTMarioAnimCliffCatch_joint8, /* [6] joint 8 */
-	0x00000000, /* [7] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint9, /* [8] joint 9 */
-	(u32)dFTMarioAnimCliffCatch_joint11, /* [9] joint 11 */
-	0x00000000, /* [10] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint12, /* [11] joint 12 */
-	(u32)dFTMarioAnimCliffCatch_joint13, /* [12] joint 13 */
-	(u32)dFTMarioAnimCliffCatch_joint14, /* [13] joint 14 */
-	(u32)dFTMarioAnimCliffCatch_joint16, /* [14] joint 16 */
-	0x00000000, /* [15] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint17, /* [16] joint 17 */
-	(u32)dFTMarioAnimCliffCatch_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint22, /* [21] joint 22 */
-	(u32)dFTMarioAnimCliffCatch_joint24, /* [22] joint 24 */
-	0x00000000, /* [23] NULL */
-	(u32)dFTMarioAnimCliffCatch_joint25, /* [24] joint 25 */
+AObjEvent32 * dFTMarioAnimCliffCatch_joints[] = {
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint5, /* [2] joint 5 */
+	NULL, /* [3] NULL */
+	NULL, /* [4] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint8, /* [6] joint 8 */
+	NULL, /* [7] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint9, /* [8] joint 9 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint11, /* [9] joint 11 */
+	NULL, /* [10] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint14, /* [13] joint 14 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint16, /* [14] joint 16 */
+	NULL, /* [15] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint24, /* [22] joint 24 */
+	NULL, /* [23] NULL */
+	(AObjEvent32 *)dFTMarioAnimCliffCatch_joint25, /* [24] joint 25 */
 };
 
 /* Joint 1 */

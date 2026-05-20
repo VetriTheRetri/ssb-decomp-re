@@ -22,32 +22,32 @@ extern u16 dFTCaptainAnimUnknown_joint24[8];
 extern u16 dFTCaptainAnimUnknown_joint25[14];
 
 /* Joint pointer table (25 entries, 100 bytes) */
-u32 dFTCaptainAnimUnknown_joints[] = {
-	(u32)dFTCaptainAnimUnknown_joint1, /* [0] joint 1 */
-	(u32)dFTCaptainAnimUnknown_joint2, /* [1] joint 2 */
-	(u32)dFTCaptainAnimUnknown_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTCaptainAnimUnknown_joint5, /* [4] joint 5 */
-	(u32)dFTCaptainAnimUnknown_joint6, /* [5] joint 6 */
-	(u32)dFTCaptainAnimUnknown_joint7, /* [6] joint 7 */
-	(u32)dFTCaptainAnimUnknown_joint8, /* [7] joint 8 */
-	(u32)dFTCaptainAnimUnknown_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTCaptainAnimUnknown_joint11, /* [10] joint 11 */
-	(u32)dFTCaptainAnimUnknown_joint12, /* [11] joint 12 */
-	(u32)dFTCaptainAnimUnknown_joint16, /* [12] joint 16 */
-	0x00000000, /* [13] NULL */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dFTCaptainAnimUnknown_joint17, /* [16] joint 17 */
-	(u32)dFTCaptainAnimUnknown_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTCaptainAnimUnknown_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTCaptainAnimUnknown_joint22, /* [21] joint 22 */
-	(u32)dFTCaptainAnimUnknown_joint24, /* [22] joint 24 */
-	0x00000000, /* [23] NULL */
-	(u32)dFTCaptainAnimUnknown_joint25, /* [24] joint 25 */
+AObjEvent32 * dFTCaptainAnimUnknown_joints[] = {
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint16, /* [12] joint 16 */
+	NULL, /* [13] NULL */
+	NULL, /* [14] NULL */
+	NULL, /* [15] NULL */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint24, /* [22] joint 24 */
+	NULL, /* [23] NULL */
+	(AObjEvent32 *)dFTCaptainAnimUnknown_joint25, /* [24] joint 25 */
 };
 
 /* 4-byte alignment padding */

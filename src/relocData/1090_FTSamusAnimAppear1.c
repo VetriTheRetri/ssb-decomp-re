@@ -18,31 +18,31 @@ extern u16 dFTSamusAnimAppear1_joint23[108];
 extern u16 dFTSamusAnimAppear1_joint24[338];
 
 /* Joint pointer table (24 entries, 96 bytes) */
-u32 dFTSamusAnimAppear1_joints[] = {
-	0x00000000, /* [0] NULL */
-	(u32)dFTSamusAnimAppear1_joint3, /* [1] joint 3 */
-	0x00000000, /* [2] NULL */
-	(u32)dFTSamusAnimAppear1_joint5, /* [3] joint 5 */
-	0x00000000, /* [4] NULL */
-	(u32)dFTSamusAnimAppear1_joint6, /* [5] joint 6 */
-	(u32)dFTSamusAnimAppear1_joint9, /* [6] joint 9 */
-	0x00000000, /* [7] NULL */
-	0x00000000, /* [8] NULL */
-	(u32)dFTSamusAnimAppear1_joint12, /* [9] joint 12 */
-	0x00000000, /* [10] NULL */
-	0x00000000, /* [11] NULL */
-	(u32)dFTSamusAnimAppear1_joint13, /* [12] joint 13 */
-	(u32)dFTSamusAnimAppear1_joint15, /* [13] joint 15 */
-	0x00000000, /* [14] NULL */
-	(u32)dFTSamusAnimAppear1_joint16, /* [15] joint 16 */
-	(u32)dFTSamusAnimAppear1_joint18, /* [16] joint 18 */
-	0x00000000, /* [17] NULL */
-	(u32)dFTSamusAnimAppear1_joint20, /* [18] joint 20 */
-	0x00000000, /* [19] NULL */
-	(u32)dFTSamusAnimAppear1_joint21, /* [20] joint 21 */
-	(u32)dFTSamusAnimAppear1_joint23, /* [21] joint 23 */
-	0x00000000, /* [22] NULL */
-	(u32)dFTSamusAnimAppear1_joint24, /* [23] joint 24 */
+AObjEvent32 * dFTSamusAnimAppear1_joints[] = {
+	NULL, /* [0] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint3, /* [1] joint 3 */
+	NULL, /* [2] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint5, /* [3] joint 5 */
+	NULL, /* [4] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint9, /* [6] joint 9 */
+	NULL, /* [7] NULL */
+	NULL, /* [8] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint12, /* [9] joint 12 */
+	NULL, /* [10] NULL */
+	NULL, /* [11] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint15, /* [13] joint 15 */
+	NULL, /* [14] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint18, /* [16] joint 18 */
+	NULL, /* [17] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint20, /* [18] joint 20 */
+	NULL, /* [19] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint21, /* [20] joint 21 */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint23, /* [21] joint 23 */
+	NULL, /* [22] NULL */
+	(AObjEvent32 *)dFTSamusAnimAppear1_joint24, /* [23] joint 24 */
 };
 
 /* Joint 3 */

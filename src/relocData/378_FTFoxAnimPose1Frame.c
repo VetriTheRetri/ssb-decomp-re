@@ -23,32 +23,32 @@ extern u16 dFTFoxAnimPose1Frame_joint24[8];
 extern u16 dFTFoxAnimPose1Frame_joint25[16];
 
 /* Joint pointer table (25 entries, 100 bytes) */
-u32 dFTFoxAnimPose1Frame_joints[] = {
-	(u32)dFTFoxAnimPose1Frame_joint1, /* [0] joint 1 */
-	(u32)dFTFoxAnimPose1Frame_joint2, /* [1] joint 2 */
-	(u32)dFTFoxAnimPose1Frame_joint4, /* [2] joint 4 */
-	0x00000000, /* [3] NULL */
-	(u32)dFTFoxAnimPose1Frame_joint5, /* [4] joint 5 */
-	(u32)dFTFoxAnimPose1Frame_joint6, /* [5] joint 6 */
-	(u32)dFTFoxAnimPose1Frame_joint7, /* [6] joint 7 */
-	(u32)dFTFoxAnimPose1Frame_joint8, /* [7] joint 8 */
-	(u32)dFTFoxAnimPose1Frame_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTFoxAnimPose1Frame_joint11, /* [10] joint 11 */
-	(u32)dFTFoxAnimPose1Frame_joint12, /* [11] joint 12 */
-	(u32)dFTFoxAnimPose1Frame_joint15, /* [12] joint 15 */
-	0x00000000, /* [13] NULL */
-	0x00000000, /* [14] NULL */
-	(u32)dFTFoxAnimPose1Frame_joint16, /* [15] joint 16 */
-	(u32)dFTFoxAnimPose1Frame_joint18, /* [16] joint 18 */
-	0x00000000, /* [17] NULL */
-	(u32)dFTFoxAnimPose1Frame_joint20, /* [18] joint 20 */
-	0x00000000, /* [19] NULL */
-	(u32)dFTFoxAnimPose1Frame_joint21, /* [20] joint 21 */
-	(u32)dFTFoxAnimPose1Frame_joint23, /* [21] joint 23 */
-	0x00000000, /* [22] NULL */
-	(u32)dFTFoxAnimPose1Frame_joint24, /* [23] joint 24 */
-	(u32)dFTFoxAnimPose1Frame_joint25, /* [24] joint 25 */
+AObjEvent32 * dFTFoxAnimPose1Frame_joints[] = {
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint4, /* [2] joint 4 */
+	NULL, /* [3] NULL */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint6, /* [5] joint 6 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint15, /* [12] joint 15 */
+	NULL, /* [13] NULL */
+	NULL, /* [14] NULL */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint18, /* [16] joint 18 */
+	NULL, /* [17] NULL */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint20, /* [18] joint 20 */
+	NULL, /* [19] NULL */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint21, /* [20] joint 21 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint23, /* [21] joint 23 */
+	NULL, /* [22] NULL */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint24, /* [23] joint 24 */
+	(AObjEvent32 *)dFTFoxAnimPose1Frame_joint25, /* [24] joint 25 */
 };
 
 /* 4-byte alignment padding */

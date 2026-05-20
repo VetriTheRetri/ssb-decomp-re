@@ -26,33 +26,33 @@ extern u16 dFTYoshiAnimUnknown4_joint25[8];
 extern u16 dFTYoshiAnimUnknown4_joint26[14];
 
 /* Joint pointer table (26 entries, 104 bytes) */
-u32 dFTYoshiAnimUnknown4_joints[] = {
-	(u32)dFTYoshiAnimUnknown4_joint1, /* [0] joint 1 */
-	(u32)dFTYoshiAnimUnknown4_joint2, /* [1] joint 2 */
-	(u32)dFTYoshiAnimUnknown4_joint3, /* [2] joint 3 */
-	(u32)dFTYoshiAnimUnknown4_joint4, /* [3] joint 4 */
-	(u32)dFTYoshiAnimUnknown4_joint6, /* [4] joint 6 */
-	0x00000000, /* [5] NULL */
-	(u32)dFTYoshiAnimUnknown4_joint7, /* [6] joint 7 */
-	(u32)dFTYoshiAnimUnknown4_joint8, /* [7] joint 8 */
-	(u32)dFTYoshiAnimUnknown4_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTYoshiAnimUnknown4_joint11, /* [10] joint 11 */
-	(u32)dFTYoshiAnimUnknown4_joint12, /* [11] joint 12 */
-	(u32)dFTYoshiAnimUnknown4_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTYoshiAnimUnknown4_joint15, /* [14] joint 15 */
-	(u32)dFTYoshiAnimUnknown4_joint16, /* [15] joint 16 */
-	(u32)dFTYoshiAnimUnknown4_joint17, /* [16] joint 17 */
-	(u32)dFTYoshiAnimUnknown4_joint18, /* [17] joint 18 */
-	(u32)dFTYoshiAnimUnknown4_joint20, /* [18] joint 20 */
-	0x00000000, /* [19] NULL */
-	(u32)dFTYoshiAnimUnknown4_joint21, /* [20] joint 21 */
-	(u32)dFTYoshiAnimUnknown4_joint22, /* [21] joint 22 */
-	(u32)dFTYoshiAnimUnknown4_joint23, /* [22] joint 23 */
-	(u32)dFTYoshiAnimUnknown4_joint25, /* [23] joint 25 */
-	0x00000000, /* [24] NULL */
-	(u32)dFTYoshiAnimUnknown4_joint26, /* [25] joint 26 */
+AObjEvent32 * dFTYoshiAnimUnknown4_joints[] = {
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint4, /* [3] joint 4 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint6, /* [4] joint 6 */
+	NULL, /* [5] NULL */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint18, /* [17] joint 18 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint20, /* [18] joint 20 */
+	NULL, /* [19] NULL */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint21, /* [20] joint 21 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint23, /* [22] joint 23 */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint25, /* [23] joint 25 */
+	NULL, /* [24] NULL */
+	(AObjEvent32 *)dFTYoshiAnimUnknown4_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */

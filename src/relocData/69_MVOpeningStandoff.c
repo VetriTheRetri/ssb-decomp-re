@@ -17,11 +17,6 @@ extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54[];
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[];
 
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C[];
@@ -513,20 +508,24 @@ DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
+/* Joint table entries point to overlapping offsets within a single
+ * SetInterp opcode stream (6 SetInterps + End). Each entry plays a
+ * different suffix of the stream — the runtime walks opcodes until
+ * it hits End at offset 0x18. */
 AObjEvent32 *dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[13] = {
 	NULL,
 	NULL,
 	NULL,
 	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44,
-	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48,
+	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x4),
 	NULL,
 	NULL,
-	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C,
-	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50,
+	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x8),
+	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0xC),
 	NULL,
 	NULL,
-	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54,
-	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58,
+	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x10),
+	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x14),
 };
 
 u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[] = {
@@ -633,27 +632,15 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[] = {
+/* Consolidated SetInterp opcode stream — the 6 joint-table entries
+ * that referenced offsets 0x6D44..0x6D58 each enter this stream at a
+ * different word and walk forward until they hit End at byte +0x18. */
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[7] = {
 	aobjEvent32SetInterp(6907, 0x2A4),
-};
-
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D48[] = {
 	aobjEvent32SetInterp(6921, 0x2A6),
-};
-
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D4C[] = {
 	aobjEvent32SetInterp(6933, 0x2A8),
-};
-
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D50[] = {
 	aobjEvent32SetInterp(6947, 0x2AA),
-};
-
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D54[] = {
 	aobjEvent32SetInterp(6961, 0x2AC),
-};
-
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D58[] = {
 	aobjEvent32SetInterp(6979, 0x2B4),
 	aobjEvent32End(),
 };

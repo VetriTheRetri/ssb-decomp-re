@@ -25,33 +25,33 @@ extern u16 dFTBossAnimChargeStart1_joint25[30];
 extern u16 dFTBossAnimChargeStart1_joint26[36];
 
 /* Joint pointer table (26 entries, 104 bytes) */
-u32 dFTBossAnimChargeStart1_joints[] = {
-	(u32)dFTBossAnimChargeStart1_joint1, /* [0] joint 1 */
-	(u32)dFTBossAnimChargeStart1_joint3, /* [1] joint 3 */
-	0x00000000, /* [2] NULL */
-	(u32)dFTBossAnimChargeStart1_joint4, /* [3] joint 4 */
-	(u32)dFTBossAnimChargeStart1_joint5, /* [4] joint 5 */
-	(u32)dFTBossAnimChargeStart1_joint7, /* [5] joint 7 */
-	0x00000000, /* [6] NULL */
-	(u32)dFTBossAnimChargeStart1_joint8, /* [7] joint 8 */
-	(u32)dFTBossAnimChargeStart1_joint10, /* [8] joint 10 */
-	0x00000000, /* [9] NULL */
-	(u32)dFTBossAnimChargeStart1_joint11, /* [10] joint 11 */
-	(u32)dFTBossAnimChargeStart1_joint12, /* [11] joint 12 */
-	(u32)dFTBossAnimChargeStart1_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTBossAnimChargeStart1_joint15, /* [14] joint 15 */
-	(u32)dFTBossAnimChargeStart1_joint16, /* [15] joint 16 */
-	(u32)dFTBossAnimChargeStart1_joint17, /* [16] joint 17 */
-	(u32)dFTBossAnimChargeStart1_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTBossAnimChargeStart1_joint20, /* [19] joint 20 */
-	(u32)dFTBossAnimChargeStart1_joint21, /* [20] joint 21 */
-	(u32)dFTBossAnimChargeStart1_joint23, /* [21] joint 23 */
-	0x00000000, /* [22] NULL */
-	(u32)dFTBossAnimChargeStart1_joint24, /* [23] joint 24 */
-	(u32)dFTBossAnimChargeStart1_joint25, /* [24] joint 25 */
-	(u32)dFTBossAnimChargeStart1_joint26, /* [25] joint 26 */
+AObjEvent32 * dFTBossAnimChargeStart1_joints[] = {
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint3, /* [1] joint 3 */
+	NULL, /* [2] NULL */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint4, /* [3] joint 4 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint7, /* [5] joint 7 */
+	NULL, /* [6] NULL */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint10, /* [8] joint 10 */
+	NULL, /* [9] NULL */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint16, /* [15] joint 16 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint20, /* [19] joint 20 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint21, /* [20] joint 21 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint23, /* [21] joint 23 */
+	NULL, /* [22] NULL */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint24, /* [23] joint 24 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint25, /* [24] joint 25 */
+	(AObjEvent32 *)dFTBossAnimChargeStart1_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */

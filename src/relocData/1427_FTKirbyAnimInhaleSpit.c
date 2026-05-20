@@ -25,33 +25,33 @@ extern u16 dFTKirbyAnimInhaleSpit_joint25[74];
 extern u16 dFTKirbyAnimInhaleSpit_joint26[12];
 
 /* Joint pointer table (26 entries, 104 bytes) */
-u32 dFTKirbyAnimInhaleSpit_joints[] = {
-	(u32)dFTKirbyAnimInhaleSpit_joint1, /* [0] joint 1 */
-	(u32)dFTKirbyAnimInhaleSpit_joint2, /* [1] joint 2 */
-	(u32)dFTKirbyAnimInhaleSpit_joint3, /* [2] joint 3 */
-	(u32)dFTKirbyAnimInhaleSpit_joint4, /* [3] joint 4 */
-	(u32)dFTKirbyAnimInhaleSpit_joint5, /* [4] joint 5 */
-	(u32)dFTKirbyAnimInhaleSpit_joint7, /* [5] joint 7 */
-	0x00000000, /* [6] NULL */
-	(u32)dFTKirbyAnimInhaleSpit_joint8, /* [7] joint 8 */
-	(u32)dFTKirbyAnimInhaleSpit_joint9, /* [8] joint 9 */
-	(u32)dFTKirbyAnimInhaleSpit_joint11, /* [9] joint 11 */
-	0x00000000, /* [10] NULL */
-	(u32)dFTKirbyAnimInhaleSpit_joint12, /* [11] joint 12 */
-	(u32)dFTKirbyAnimInhaleSpit_joint13, /* [12] joint 13 */
-	(u32)dFTKirbyAnimInhaleSpit_joint14, /* [13] joint 14 */
-	(u32)dFTKirbyAnimInhaleSpit_joint16, /* [14] joint 16 */
-	0x00000000, /* [15] NULL */
-	(u32)dFTKirbyAnimInhaleSpit_joint17, /* [16] joint 17 */
-	(u32)dFTKirbyAnimInhaleSpit_joint19, /* [17] joint 19 */
-	0x00000000, /* [18] NULL */
-	(u32)dFTKirbyAnimInhaleSpit_joint21, /* [19] joint 21 */
-	0x00000000, /* [20] NULL */
-	(u32)dFTKirbyAnimInhaleSpit_joint22, /* [21] joint 22 */
-	(u32)dFTKirbyAnimInhaleSpit_joint24, /* [22] joint 24 */
-	0x00000000, /* [23] NULL */
-	(u32)dFTKirbyAnimInhaleSpit_joint25, /* [24] joint 25 */
-	(u32)dFTKirbyAnimInhaleSpit_joint26, /* [25] joint 26 */
+AObjEvent32 * dFTKirbyAnimInhaleSpit_joints[] = {
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint1, /* [0] joint 1 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint4, /* [3] joint 4 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint5, /* [4] joint 5 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint7, /* [5] joint 7 */
+	NULL, /* [6] NULL */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint9, /* [8] joint 9 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint11, /* [9] joint 11 */
+	NULL, /* [10] NULL */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint13, /* [12] joint 13 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint14, /* [13] joint 14 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint16, /* [14] joint 16 */
+	NULL, /* [15] NULL */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint17, /* [16] joint 17 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint19, /* [17] joint 19 */
+	NULL, /* [18] NULL */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint21, /* [19] joint 21 */
+	NULL, /* [20] NULL */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint22, /* [21] joint 22 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint24, /* [22] joint 24 */
+	NULL, /* [23] NULL */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint25, /* [24] joint 25 */
+	(AObjEvent32 *)dFTKirbyAnimInhaleSpit_joint26, /* [25] joint 26 */
 };
 
 /* Joint 1 */

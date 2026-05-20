@@ -25,34 +25,34 @@ extern u16 dFTPikachuAnimThrown1_joint26[26];
 extern u16 dFTPikachuAnimThrown1_joint27[32];
 
 /* Joint pointer table (27 entries, 108 bytes) */
-u32 dFTPikachuAnimThrown1_joints[] = {
-	0x00000000, /* [0] NULL */
-	(u32)dFTPikachuAnimThrown1_joint2, /* [1] joint 2 */
-	(u32)dFTPikachuAnimThrown1_joint3, /* [2] joint 3 */
-	(u32)dFTPikachuAnimThrown1_joint4, /* [3] joint 4 */
-	(u32)dFTPikachuAnimThrown1_joint6, /* [4] joint 6 */
-	0x00000000, /* [5] NULL */
-	(u32)dFTPikachuAnimThrown1_joint7, /* [6] joint 7 */
-	(u32)dFTPikachuAnimThrown1_joint8, /* [7] joint 8 */
-	(u32)dFTPikachuAnimThrown1_joint9, /* [8] joint 9 */
-	(u32)dFTPikachuAnimThrown1_joint10, /* [9] joint 10 */
-	(u32)dFTPikachuAnimThrown1_joint11, /* [10] joint 11 */
-	(u32)dFTPikachuAnimThrown1_joint12, /* [11] joint 12 */
-	(u32)dFTPikachuAnimThrown1_joint14, /* [12] joint 14 */
-	0x00000000, /* [13] NULL */
-	(u32)dFTPikachuAnimThrown1_joint15, /* [14] joint 15 */
-	(u32)dFTPikachuAnimThrown1_joint17, /* [15] joint 17 */
-	0x00000000, /* [16] NULL */
-	(u32)dFTPikachuAnimThrown1_joint18, /* [17] joint 18 */
-	(u32)dFTPikachuAnimThrown1_joint20, /* [18] joint 20 */
-	0x00000000, /* [19] NULL */
-	(u32)dFTPikachuAnimThrown1_joint22, /* [20] joint 22 */
-	0x00000000, /* [21] NULL */
-	(u32)dFTPikachuAnimThrown1_joint23, /* [22] joint 23 */
-	(u32)dFTPikachuAnimThrown1_joint25, /* [23] joint 25 */
-	0x00000000, /* [24] NULL */
-	(u32)dFTPikachuAnimThrown1_joint26, /* [25] joint 26 */
-	(u32)dFTPikachuAnimThrown1_joint27, /* [26] joint 27 */
+AObjEvent32 * dFTPikachuAnimThrown1_joints[] = {
+	NULL, /* [0] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint2, /* [1] joint 2 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint3, /* [2] joint 3 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint4, /* [3] joint 4 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint6, /* [4] joint 6 */
+	NULL, /* [5] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint7, /* [6] joint 7 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint8, /* [7] joint 8 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint9, /* [8] joint 9 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint10, /* [9] joint 10 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint11, /* [10] joint 11 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint12, /* [11] joint 12 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint14, /* [12] joint 14 */
+	NULL, /* [13] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint15, /* [14] joint 15 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint17, /* [15] joint 17 */
+	NULL, /* [16] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint18, /* [17] joint 18 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint20, /* [18] joint 20 */
+	NULL, /* [19] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint22, /* [20] joint 22 */
+	NULL, /* [21] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint23, /* [22] joint 23 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint25, /* [23] joint 25 */
+	NULL, /* [24] NULL */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint26, /* [25] joint 26 */
+	(AObjEvent32 *)dFTPikachuAnimThrown1_joint27, /* [26] joint 27 */
 };
 
 /* Joint 2 */

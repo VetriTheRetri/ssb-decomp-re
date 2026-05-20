@@ -8,6 +8,10 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 extern u32 dMVOpeningRun_Mario_AnimJoint[];
+extern u32 dMVOpeningRun_Link_AnimJoint[];
+extern u32 dMVOpeningRun_Yoshi_AnimJoint[];
+extern u32 dMVOpeningRun_Kirby_AnimJoint[];
+extern u32 dMVOpeningRun_Pikachu_AnimJoint[];
 
 /* Intern reloc chain head — fixRelocChain rewrites this 4-byte slot at
  * link time with the chain-encoded pointer to Mario_AnimJoint (and the
@@ -123,8 +127,8 @@ u32 dMVOpeningRun_Donkey_AnimJoint[24] = {
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x0184 to 0x0224 (160 bytes) */
-u32 dMVOpeningRun_Samus_AnimJoint[40] = {
+/* Raw data from file offset 0x0184 to 0x0220 (156 bytes) */
+u32 dMVOpeningRun_Samus_AnimJoint[39] = {
 	aobjEvent32SetValBlock(0x070, 0),
 	    0x4457C5A6,
 	    0xC2E36497,
@@ -163,12 +167,16 @@ u32 dMVOpeningRun_Samus_AnimJoint[40] = {
 	aobjEvent32SetVal0RateBlock(0x030, 82),
 	    0xC1C875B8,
 	    0x00000000,
-	    0x00000000,
-	    0x00CC0089,
+	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x0224 to 0x0334 (272 bytes) */
-u32 dMVOpeningRun_Link_AnimJoint[68] = {
+/* Chain-pointer slot @ 0x0220 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Samus_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Link_AnimJoint,
+};
+
+/* Raw data from file offset 0x0224 to 0x0328 (260 bytes) */
+u32 dMVOpeningRun_Link_AnimJoint[65] = {
 	aobjEvent32SetVal0RateBlock(0x070, 0),
 	    0xC485242E,  /* -1065.130615234375f */
 	    0x00000000,  /* 0.0f */
@@ -234,13 +242,15 @@ u32 dMVOpeningRun_Link_AnimJoint[68] = {
 	    0xC3BA4642,  /* -372.54888916015625f */
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)0x0334,
+};
+PAD(8);
+/* Chain-pointer slot @ 0x0330 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Link_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Yoshi_AnimJoint,
 };
 
-/* Raw data from file offset 0x0334 to 0x03A4 (112 bytes) */
-u32 dMVOpeningRun_Yoshi_AnimJoint[28] = {
+/* Raw data from file offset 0x0334 to 0x0394 (96 bytes) */
+u32 dMVOpeningRun_Yoshi_AnimJoint[24] = {
 	aobjEvent32SetVal0Rate(0x050, 0),
 	    0xC4A5BB0F,  /* -1325.8455810546875f */
 	    0xC49D9B0A,  /* -1260.844970703125f */
@@ -265,14 +275,15 @@ u32 dMVOpeningRun_Yoshi_AnimJoint[28] = {
 	    0xC4848B63,  /* -1060.3558349609375f */
 	    0x44D57D4A,  /* 1707.915283203125f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)0x03A4,
+};
+PAD(12);
+/* Chain-pointer slot @ 0x03A0 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Yoshi_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Kirby_AnimJoint,
 };
 
-/* Raw data from file offset 0x03A4 to 0x0484 (224 bytes) */
-u32 dMVOpeningRun_Kirby_AnimJoint[56] = {
+/* Raw data from file offset 0x03A4 to 0x0478 (212 bytes) */
+u32 dMVOpeningRun_Kirby_AnimJoint[53] = {
 	aobjEvent32SetVal(0x070, 0),
 	    0xC4B933F4,  /* -1481.62353515625f */
 	    0x429A035A,  /* 77.00654602050781f */
@@ -326,9 +337,11 @@ u32 dMVOpeningRun_Kirby_AnimJoint[56] = {
 	    0x441392B0,  /* 590.2919921875f */
 	    0x450A46DC,  /* 2212.4287109375f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)0x0484,
+};
+PAD(8);
+/* Chain-pointer slot @ 0x0480 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Kirby_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Pikachu_AnimJoint,
 };
 
 /* Raw data from file offset 0x0484 to 0x0528 (164 bytes) */

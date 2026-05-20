@@ -20,7 +20,7 @@ MPItemWeights dGRZebesMap_item_weights = { { 0x14, 0x08, 0xC8, 0x00, 0x0A, 0x05,
 extern Sprite dStageZebes_sprite_0x26C88[];
 extern DObjDesc dStageZebesFile2_Layer1DObj[];
 extern u32 dStageZebesFile2_Layer1Anim_AnimJoint[];
-extern MObjSub dStageZebesFile2_Layer1MObj_MObjSub[];
+extern MObjSub **dStageZebesFile2_Layer1MObj_MObjSub[];
 extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint[];
 extern u32 dStageZebesFile2_MPGeometryData_0x6160[];
 extern u32 dStageZebesFile2_gap_0x0000[];

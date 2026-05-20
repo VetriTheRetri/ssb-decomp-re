@@ -29,7 +29,7 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2087 / 2132** files at 100% (98.19% of bytes typed; 309,296 / 17,082,000 bytes still untyped across 45 files).
+Overall: **2089 / 2132** files at 100% (98.39% of bytes typed; 275,404 / 17,082,000 bytes still untyped across 43 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
@@ -41,7 +41,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 153 | StageSectorFile3 | 7680 | 7664 | 2 | 0.21% |
 | 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
 | 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
-| 105 | StageZebesFile2 | 57184 | 33440 | 35 | 41.52% |
 | 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
 | 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
 | 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
@@ -63,7 +62,6 @@ Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is 
 | 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
 | 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
 | 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
-| 139 | GRBonus2DonkeyFile2 | 13760 | 452 | 1 | 96.72% |
 | 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
 | 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
 | 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
@@ -99,6 +97,27 @@ build uses one of three override mechanisms, in priority order:
 file has been migrated to one of the structural mechanisms above.
 
 Recent round of structural work:
+- **File 105 (StageZebesFile2) deep typing** — 41.5% → 100%. The
+  31,456-byte `Layer1MatAnim_MatAnimJoint_data` u32 master block was
+  carved into its actual constituents: three Gfx DLs (DL_0xCDA0 / DL_0xDC60 /
+  DL_0xDD98) + two embedded MObj sprite-set pools (`_0x6A68` and `_0x7928`).
+  Each pool decoded as `Gfx[16]` setup prefix + `DObjDesc[3]` scene-graph
+  (the `list_id=0x4001` entry dispatches the prefix DL via the runtime
+  loader) + `AObjEvent32 *[N]` joint table + `MObjSub *[2]` MObjSub
+  pointer table + `MObjSub` itself (CI4 sprite-set descriptor with
+  `palettes=NULL` because palette dispatch is via the joint-table script
+  or via TLUTs hard-loaded in the DL). Surfaced six 32×24 CI4 sprite
+  frames + a 5-palette TLUT animation set at `_at_0x1E0..0x280`
+  accessed by computed offset from the joint table (no chain pointer
+  lands on the palette set itself). Also: `Layer1MObj_MObjSub[112]`
+  retyped from u8 to `MObjSub **[28]` — it's the `p_mobjsubs` field
+  of `MPGroundDesc` consumed by `dGRZebesMap_MapHeader_0x0014` in
+  fid 257; 8 of 28 slots populated, each pointing to a NULL-terminated
+  `MObjSub *[]` per-layer table. Fixed an inline-hex transcription
+  typo at `_at_0x5B80` (palette had `0x0842A849` vs binary `0x08420849`)
+  uncovered by forcing a clean rebuild. Validator `tools/validateRelocFile.py 105`
+  reports `All clean` (0 errors, 0 warnings across R001-R009). ROM
+  byte-identical for both US and JP.
 - **Mario-style post-region decompose across 10 fighter Models** —
   split each fighter's per-skeleton MObjSub region (the giant
   `Joint_0xNN_post[N]` block targeted by `gap_0x0000`'s

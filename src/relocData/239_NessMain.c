@@ -150,9 +150,7 @@ FTModelPartDesc *dNessMain_modelparts_container[27] = {
 };
 
 /* @ 0x02E8, 4 bytes: FTAttributes.textureparts_container target (was dNessMain_pre+0x2E8) */
-u32 dNessMain_textureparts_container[1] = {
-	0x0C000000,
-};
+FTTexturePart dNessMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 
 /* @ 0x02EC, 32 bytes: FTAttributes.commonparts_container target (was dNessMain_pre+0x2EC) */
 FTCommonPartContainer dNessMain_commonparts_container = {
@@ -382,7 +380,7 @@ FTAttributes dNessMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dNessMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dNessMain_textureparts_container, /* textureparts_container */
+	(FTTexturePartContainer*)&dNessMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNessMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */

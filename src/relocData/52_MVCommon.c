@@ -1525,13 +1525,16 @@ PAD(8);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
+extern u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_0x30[12];
+
 AObjEvent32 *dMVCommon_RoomBooksAnimJoint_AnimJoint[3] = {
 	NULL,
 	(AObjEvent32 *)dMVCommon_RoomBooksAnimJoint_AnimJoint_data,
-	(AObjEvent32 *)((u8*)dMVCommon_RoomBooksAnimJoint_AnimJoint_data + 0x30),
+	(AObjEvent32 *)dMVCommon_RoomBooksAnimJoint_AnimJoint_data_0x30,
 };
 
-u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[24] = {
+/* Script 1: AnimJoint @ offset 0x00 */
+u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[12] = {
 	aobjEvent32SetVal(0x010, 0),
 	    0x44051D4B,  /* 532.4577026367188f */
 	aobjEvent32SetValAfter(0x060, 0),
@@ -1544,6 +1547,10 @@ u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[24] = {
 	aobjEvent32SetValBlock(0x010, 130),
 	    0xC13D8724,  /* -11.84549331665039f */
 	aobjEvent32End(),
+};
+
+/* Script 2: AnimJoint @ offset 0x30 */
+u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_0x30[12] = {
 	aobjEvent32SetVal(0x004, 0),
 	    0xB4E82000,  /* -4.323665052652359e-07f */
 	aobjEvent32SetValAfter(0x003, 0),
@@ -1624,7 +1631,12 @@ AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[3] = {
 	(AObjEvent32 *)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data + 0x954),
 };
 
-u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[666] = {
+/* Split AnimJoint blob: forward decls for sub-scripts. */
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x0[536];
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x860[61];
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954[69];
+
+u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x0[536] = {
 	aobjEvent32SetValBlock(0x077, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
@@ -2161,6 +2173,9 @@ u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[666] = {
 	    0x4510F6B9,  /* 2319.420166015625f */
 	    0xC57B5788,  /* -4021.470703125f */
 	aobjEvent32End(),
+};
+
+u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x860[61] = {
 	aobjEvent32SetVal0Rate(0x007, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
@@ -2222,6 +2237,9 @@ u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[666] = {
 	    0xBCD36451,  /* -0.0258046705275774f */
 	    0xBEA3F9E5,  /* -0.32026591897010803f */
 	aobjEvent32End(),
+};
+
+u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954[69] = {
 	aobjEvent32SetVal0Rate(0x007, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
@@ -2634,8 +2652,52 @@ u32 dMVCommon_RoomLampAnimJoint_AnimJoint_data[276] = {
 	aobjEvent32End(),
 };
 
-u8 dMVCommon_RoomLampAnimJoint_AnimJoint_data_post_data_0x0000[0x390] = {
-	#include <MVCommon/RoomLampAnimJoint_AnimJoint_data_post_data_0x0000.data.inc.c>
+PAD(8);
+
+u16 dMVCommon_RoomLamp_palette_0xC308[16] = {
+	#include <MVCommon/palette_0xC308.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomLamp_palette_0xC330[16] = {
+	#include <MVCommon/palette_0xC330.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomLamp_palette_0xC358[16] = {
+	#include <MVCommon/palette_0xC358.palette.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomLamp_Tex_0xC380[0x80] = {
+	#include <MVCommon/Tex_0xC380.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomLamp_Tex_0xC408[0x40] = {
+	#include <MVCommon/Tex_0xC408.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomLamp_Tex_0xC450[0x100] = {
+	#include <MVCommon/Tex_0xC450.tex.inc.c>
+};
+
+Vtx dMVCommon_RoomLamp_Vtx_0xC550[4] = {
+	#include <MVCommon/Vtx_0xC550.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomLamp_Vtx_0xC590[4] = {
+	#include <MVCommon/Vtx_0xC590.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomLamp_Vtx_0xC5D0[12] = {
+	#include <MVCommon/Vtx_0xC5D0.vtx.inc.c>
 };
 
 /* DisplayList: RoomTissuesDisplayList @ 0xC690 (488 bytes, 61 cmds) */
@@ -2951,8 +3013,36 @@ u32 dMVCommon_RoomTissuesAnimJoint_AnimJoint[297] = {
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomTissuesAnimJoint_AnimJoint_post_data_0x0000[0xEF38] = {
-	#include <MVCommon/RoomTissuesAnimJoint_AnimJoint_post_data_0x0000.data.inc.c>
+PAD(16);
+
+u8 dMVCommon_RoomTissues_Tex_0xCD38[0x500] = {
+	#include <MVCommon/Tex_0xCD38.tex.inc.c>
+};
+
+u8 dMVCommon_RoomTissues_data_0xD238[0xAA10] = {
+	#include <MVCommon/data_0xD238.data.inc.c>
+};
+
+u8 dMVCommon_RoomTissues_Tex_0x17C48[0x1000] = {
+	#include <MVCommon/Tex_0x17C48.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomTissues_Tex_0x18C50[0x1000] = {
+	#include <MVCommon/Tex_0x18C50.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomTissues_Tex_0x19C58[0x1000] = {
+	#include <MVCommon/Tex_0x19C58.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomTissues_Tex_0x1AC60[0x1000] = {
+	#include <MVCommon/Tex_0x1AC60.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x1bc60 — 2-entry MObjSub** array.
@@ -3152,32 +3242,22 @@ AObjEvent32 *dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x1C[2] = {
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x1C_post[16] = {
-	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x1C_post.data.inc.c>
+PAD(16);
+
+/* IA16 texture loaded by DL_at_0x484 (G_SETTIMG + G_LOADBLOCK loads
+ * 1024 bytes = 512 IA16 texels starting here). The original _at_0x34 +
+ * _at_0x34_post split was a splitTrailingZeroPad artifact; the runtime
+ * sees one contiguous texture, so combine into a single Tex block. */
+u8 dMVCommon_RoomLogo_Tex_0x1C568[0x400] = {
+	#include <MVCommon/RoomLogo_Tex_0x1C568.tex.inc.c>
 };
 
-u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x34[0x20] = {
-	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x34.data.inc.c>
+/* Chain target of DL_at_0x484+0x84 (G_MOVEMEM-style buffer); 32
+ * bytes of raw data + 4-byte alignment pad before the next block. */
+u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434[32] = {
+	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434.data.inc.c>
 };
-
-/* Trailing region after 2nd consecutive aobjEvent32End() — kept
- * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x34_post_data_0x0000[0x3E0] = {
-	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x34_post_data_0x0000.data.inc.c>
-};
-
-/* u32: dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434 (20 u32) */
-u32 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434[9] = {
-	aobjEvent32EndRaw(0x30C, 0),
-	aobjEvent32End(),
-	aobjEvent32JumpCmd(0x3FC, 0),
-	    (u32)0x00007F00,
-	    0xFE7901A8,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 511),
-	aobjEvent32EndRaw(0x000, 32512),
-	aobjEvent32End(),
-};
+PAD(4);
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
@@ -3260,8 +3340,16 @@ u32 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[37] = {
 	aobjEvent32End(),
 };
 
-u8 dMVCommon_RoomSnapAnimJoint_AnimJoint_data_post_data_0x0000[0x1114] = {
-	#include <MVCommon/RoomSnapAnimJoint_AnimJoint_data_post_data_0x0000.data.inc.c>
+PAD(12);
+
+u8 dMVCommon_RoomSnap_Tex_0x1CB98[0x100] = {
+	#include <MVCommon/Tex_0x1CB98.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomSnap_Tex_0x1CCA0[0x1000] = {
+	#include <MVCommon/Tex_0x1CCA0.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x1dca0 — 4-entry MObjSub** array.
@@ -3460,9 +3548,7 @@ u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0x60[28] = {
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0x60_post[12] = {
-	#include <MVCommon/RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0x60_post.data.inc.c>
-};
+PAD(12);
 
 u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xDC[0x1000] = {
 	#include <MVCommon/RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xDC.data.inc.c>
@@ -3571,18 +3657,26 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
+extern u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x18[24];
+extern u8 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[8];
+
 AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint[2] = {
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data,
-	(AObjEvent32 *)((u8*)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data + 0x18),
+	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x18,
 };
 
-u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data[33] = {
+/* Script 1: AnimJoint @ offset 0x00 (referenced by joint table[0]) */
+u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data[6] = {
 	aobjEvent32SetValAfter(0x070, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(180),
 	aobjEvent32End(),
+};
+
+/* Script 2: AnimJoint @ offset 0x18 (referenced by joint table[1]) */
+u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x18[24] = {
 	aobjEvent32SetVal(0x280, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
@@ -3607,15 +3701,43 @@ u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data[33] = {
 	    0x4041B094,  /* 3.026402473449707f */
 	    0x4041B094,  /* 3.026402473449707f */
 	aobjEvent32End(),
-	    0xFE790018,
-	aobjEvent32EndRaw(0x244, 0),
-	aobjEvent32End(),
 };
 
-/* Trailing region after 2nd consecutive aobjEvent32End() — kept
- * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_post_data_0x0000[0x3D4] = {
-	#include <MVCommon/RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_post_data_0x0000.data.inc.c>
+/* Raw 8-byte block @ offset 0x78 (referenced by RoomBossShadowDisplayList+0x3C
+ * — DL data target, not a script: word 0's top byte is 0xFE which is not a
+ * valid AObjEvent32 opcode). */
+u8 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[8] = {
+	#include <MVCommon/RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78.data.inc.c>
+};
+PAD(4);
+
+/* Trailing data region kept as raw bytes pending reloc-chain analysis. */
+u8 dMVCommon_RoomCloseUpEffectGround_data_0x1F3BC[0x1F4] = {
+	#include <MVCommon/data_0x1F3BC.data.inc.c>
+};
+
+Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F5B0[5] = {
+	#include <MVCommon/Vtx_0x1F5B0.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F600[1] = {
+	#include <MVCommon/Vtx_0x1F600.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F610[12] = {
+	#include <MVCommon/Vtx_0x1F610.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F6D0[10] = {
+	#include <MVCommon/Vtx_0x1F6D0.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F770[1] = {
+	#include <MVCommon/Vtx_0x1F770.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F780[1] = {
+	#include <MVCommon/Vtx_0x1F780.vtx.inc.c>
 };
 
 /* DisplayList: RoomBossShadowDisplayList @ 0x1F790 (384 bytes, 48 cmds) */
@@ -3661,8 +3783,148 @@ u32 dMVCommon_RoomBossShadowAnimJoint_AnimJoint[24] = {
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomBossShadowAnimJoint_AnimJoint_post_data_0x0000[0xAFC] = {
-	#include <MVCommon/RoomBossShadowAnimJoint_AnimJoint_post_data_0x0000.data.inc.c>
+PAD(20);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1F998[16] = {
+	#include <MVCommon/palette_0x1F998.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1F9C0[16] = {
+	#include <MVCommon/palette_0x1F9C0.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1F9E8[16] = {
+	#include <MVCommon/palette_0x1F9E8.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1FA10[6] = {
+	#include <MVCommon/palette_0x1FA10.palette.inc.c>
+};
+
+PAD(12);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1FA28[16] = {
+	#include <MVCommon/palette_0x1FA28.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1FA50[16] = {
+	#include <MVCommon/palette_0x1FA50.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1FA78[16] = {
+	#include <MVCommon/palette_0x1FA78.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomBossShadow_palette_0x1FAA0[16] = {
+	#include <MVCommon/palette_0x1FAA0.palette.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FAC8[0x100] = {
+	#include <MVCommon/Tex_0x1FAC8.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FBD0[0x40] = {
+	#include <MVCommon/Tex_0x1FBD0.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FC18[0x40] = {
+	#include <MVCommon/Tex_0x1FC18.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FC60[0x80] = {
+	#include <MVCommon/Tex_0x1FC60.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FCE8[0x40] = {
+	#include <MVCommon/Tex_0x1FCE8.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FD30[0x40] = {
+	#include <MVCommon/Tex_0x1FD30.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FD78[0x40] = {
+	#include <MVCommon/Tex_0x1FD78.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FDC0[0x40] = {
+	#include <MVCommon/Tex_0x1FDC0.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FE08[0x180] = {
+	#include <MVCommon/Tex_0x1FE08.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x1FF90[0xC0] = {
+	#include <MVCommon/Tex_0x1FF90.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x20058[0x40] = {
+	#include <MVCommon/Tex_0x20058.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x200A0[0xC0] = {
+	#include <MVCommon/Tex_0x200A0.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x20168[0x200] = {
+	#include <MVCommon/Tex_0x20168.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x20370[0x40] = {
+	#include <MVCommon/Tex_0x20370.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x203B8[0x40] = {
+	#include <MVCommon/Tex_0x203B8.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomBossShadow_Tex_0x20400[0x80] = {
+	#include <MVCommon/Tex_0x20400.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x20480 — 8-entry MObjSub** array.
@@ -4256,8 +4518,16 @@ AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x88[3] =
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x88_post_data_0x0000[0x610] = {
-	#include <MVCommon/RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x88_post_data_0x0000.data.inc.c>
+PAD(8);
+
+u8 dMVCommon_RoomDeskGround_Tex_0x22688[0x400] = {
+	#include <MVCommon/Tex_0x22688.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dMVCommon_RoomDeskGround_Tex_0x22A90[0x200] = {
+	#include <MVCommon/Tex_0x22A90.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x22c90 — 2-entry MObjSub** array.
@@ -4400,22 +4670,18 @@ AObjEvent32 *dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x48[3] = 
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x48_post[16] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x48_post.data.inc.c>
-};
+PAD(16);
 
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x64[0x804] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x64.data.inc.c>
+u8 dMVCommon_RoomSpotlight_Tex_0x22F78[0x804] = {
+	#include <MVCommon/RoomSpotlight_Tex_0x22F78.tex.inc.c>
 };
 
 /* Trailing region after 2nd consecutive aobjEvent32End() — kept
  * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x64_post[4] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x64_post.data.inc.c>
-};
+PAD(4);
 
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x86C[0x800] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x86C.data.inc.c>
+u8 dMVCommon_RoomSpotlight_Tex_0x23780[0x800] = {
+	#include <MVCommon/RoomSpotlight_Tex_0x23780.tex.inc.c>
 };
 
 u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x106C[0x90] = {

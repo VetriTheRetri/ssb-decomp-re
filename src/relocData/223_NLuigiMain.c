@@ -44,9 +44,7 @@ FTModelPartDesc *dNLuigiMain_modelparts_container[25] = {
 };
 
 /* @ 0x00B8, 4 bytes: FTAttributes.textureparts_container target (was dNLuigiMain_pre+0xB8) */
-u32 dNLuigiMain_textureparts_container[1] = {
-	0x0C000000,
-};
+FTTexturePart dNLuigiMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 
 /* @ 0x00BC, 32 bytes: FTAttributes.commonparts_container target (was dNLuigiMain_pre+0xBC) */
 FTCommonPartContainer dNLuigiMain_commonparts_container = {
@@ -230,7 +228,7 @@ FTAttributes dNLuigiMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dNLuigiMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dNLuigiMain_textureparts_container, /* textureparts_container */
+	(FTTexturePartContainer*)&dNLuigiMain_textureparts_container, /* textureparts_container */
 	28, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNLuigiMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */

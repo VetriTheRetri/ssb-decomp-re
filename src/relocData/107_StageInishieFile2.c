@@ -10,7 +10,7 @@ extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4C58[];
 extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4DD0[];
 extern u32 dStageInishieFile2_Layer0Anim_AnimJoint_0x4E04[];
 
-extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[];
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[38];
 
 PAD(8);
 
@@ -51,10 +51,38 @@ u8 dStageInishieFile2_Tex_0x1260[136] = {
 	#include <StageInishieFile2/Tex_0x1260.tex.inc.c>
 };
 
-/* Texture data @ 0x12E8 (3040 bytes) */
-/* @tex fmt=CI4 dim=32x16 lut=dStageInishieFile2_Lut_0x3648_palette */
-u8 dStageInishieFile2_Tex_0x12E8[3040] = {
+/* Sprite-frame texture pool @ 0x12E8 (3040 bytes) — 8 CI4 frames of
+ * varying size; the Layer0MObj sprite-frame lists index them. */
+u8 dStageInishieFile2_Tex_0x12E8[0x108] = {
 	#include <StageInishieFile2/Tex_0x12E8.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x13F0[0x198] = {
+	#include <StageInishieFile2/Tex_0x13F0.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x1588[0x198] = {
+	#include <StageInishieFile2/Tex_0x1588.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x1720[0x188] = {
+	#include <StageInishieFile2/Tex_0x1720.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x18A8[0x188] = {
+	#include <StageInishieFile2/Tex_0x18A8.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x1A30[0x188] = {
+	#include <StageInishieFile2/Tex_0x1A30.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x1BB8[0x188] = {
+	#include <StageInishieFile2/Tex_0x1BB8.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x1D40[0x188] = {
+	#include <StageInishieFile2/Tex_0x1D40.tex.inc.c>
 };
 
 /* Texture data @ 0x1EC8 (3312 bytes) */
@@ -150,10 +178,7 @@ u16 dStageInishieFile2_Lut_0x3698_palette[16] = {
 };
 
 /* Raw data from file offset 0x36B8 to 0x36E8 (48 bytes) */
-/* gap sub-block @ 0x36B8 (was gap+0x0, 8 bytes) */
-u8 dStageInishieFile2_gap_0x36B8[8] = {
-	#include <StageInishieFile2/gap_0x36B8.data.inc.c>
-};
+PAD(8);
 
 /* gap sub-block @ 0x36C0 (was gap+0x8, 40 bytes) */
 u16 dStageInishieFile2_gap_0x36B8_sub_0x8[16] = {
@@ -173,19 +198,80 @@ u16 dStageInishieFile2_Lut_0x3710_palette[16] = {
 	#include <StageInishieFile2/Lut_0x3710.palette.inc.c>
 };
 
-/* @ 0x3730 (120 bytes) — was misclassified as `MObjSub`; the
- * bytes are not a regular MObjSub: chain-pointer slots sit in
- * fields that real MObjSubs use as floats/colors. Kept as raw u8
- * pending a structural retype. The .reloc still patches every
- * slot the runtime walks, so semantics match the original. */
-u8 dStageInishieFile2_Layer0MObj_MObjSub[120] = {
-	#include <StageInishieFile2/Layer0MObj_MObjSub.data.inc.c>
+/* Layer0MObj header @ 0x3730 — 8-byte zero pad, then a MObjSub**[8]
+ * table pointing at the four MObjSub*[2] joint arrays (slots 2/4/6/7
+ * unused). */
+extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1B8[2];
+extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1C0[2];
+extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1C8[2];
+extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1D0[2];
+PAD(8);
+MObjSub **dStageInishieFile2_Layer0MObj_MObjSub[8] = {
+	(MObjSub **)dStageInishieFile2_gap_0x37A8_sub_0x1B8,
+	(MObjSub **)dStageInishieFile2_gap_0x37A8_sub_0x1C0,
+	NULL,
+	(MObjSub **)dStageInishieFile2_gap_0x37A8_sub_0x1C8,
+	NULL,
+	(MObjSub **)dStageInishieFile2_gap_0x37A8_sub_0x1D0,
+	NULL,
+	NULL,
 };
 
+/* Sprite-frame pointer lists into the Tex_0x12E8 sprite sheet — one
+ * per MObjSub (each MObjSub's `sprites` field points at its list). */
+void *dStageInishieFile2_Layer0MObj_MObjSub_sub_0x28[3] = {
+	(void*)dStageInishieFile2_Tex_0x1720,
+	(void*)dStageInishieFile2_Tex_0x18A8,
+	(void*)dStageInishieFile2_Tex_0x1A30,
+};
+
+void *dStageInishieFile2_Layer0MObj_MObjSub_sub_0x34[2] = {
+	(void*)dStageInishieFile2_Tex_0x1BB8,
+	(void*)dStageInishieFile2_Tex_0x1D40,
+};
+
+void *dStageInishieFile2_Layer0MObj_MObjSub_sub_0x3C[2] = {
+	(void*)dStageInishieFile2_Tex_0x1588,
+	(void*)dStageInishieFile2_Tex_0x13F0,
+};
+
+void *dStageInishieFile2_Layer0MObj_MObjSub_sub_0x44[2] = {
+	(void*)dStageInishieFile2_Tex_0x1588,
+	(void*)dStageInishieFile2_Tex_0x13F0,
+};
+PAD(4);
+
 /* Raw data from file offset 0x37A8 to 0x4A48 (4768 bytes) */
-/* gap sub-block @ 0x37A8 (was gap+0x0, 80 bytes) */
-u8 dStageInishieFile2_gap_0x37A8[80] = {
-	#include <StageInishieFile2/gap_0x37A8.data.inc.c>
+/* MObjSub @ 0x3780 — spans the header tail + former gap_0x37A8;
+ * `sprites` points back into the header's +0x28 frame array. */
+/* MObjSub @ 0x3780 */
+MObjSub dStageInishieFile2_Layer0MObj_MObjSub_real[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x28,
+		0x0020, 0x0000, 0x0020, 0x0030,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x0001,
+		0x02, 0x00,
+		0x0010,
+		0x0030, 0x0020, 0x0030,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		{ { 0x99, 0x99, 0x99, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
 /* MObjSub @ 0x37F8 */
@@ -193,7 +279,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0x50[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dStageInishieFile2_Layer0MObj_MObjSub + 0x34),
+		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x34,
 		0x0020, 0x0000, 0x0018, 0x0018,
 		0,
 		0.0f, 0.0f,
@@ -223,7 +309,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0xC8[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dStageInishieFile2_Layer0MObj_MObjSub + 0x3C),
+		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x3C,
 		0x0020, 0x0000, 0x0018, 0x0019,
 		0,
 		0.0f, 0.0f,
@@ -253,7 +339,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0x140[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dStageInishieFile2_Layer0MObj_MObjSub + 0x44),
+		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x44,
 		0x0020, 0x0000, 0x0018, 0x0019,
 		0,
 		0.0f, 0.0f,
@@ -278,9 +364,10 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0x140[1] = {
 	}
 };
 
-/* gap sub-block @ 0x3960 (was gap+0x1B8, 8 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1B8[8] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1B8.data.inc.c>
+/* MObjSub *[2] @ 0x3960 — joint array for the Layer0MObj header MObjSub. */
+MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1B8[2] = {
+	(MObjSub *)dStageInishieFile2_Layer0MObj_MObjSub_real,
+	NULL,
 };
 
 /* gap sub-block @ 0x3968 (was gap+0x1C0, 8 bytes) */
@@ -486,9 +573,11 @@ Gfx dStageInishieFile2_DL_0x4900[20] = {
 	#include <StageInishieFile2/DL_0x4900.dl.inc.c>
 };
 
-/* gap sub-block @ 0x49A0 (was gap+0x11F8, 24 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x11F8[24] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x11F8.data.inc.c>
+/* DObjDLLink[3] @ 0x49A0 */
+DObjDLLink dStageInishieFile2_gap_0x37A8_sub_0x11F8[3] = {
+	{ 0, dStageInishieFile2_DL_0x3F30 },
+	{ 1, dStageInishieFile2_DL_0x4688 },
+	{ 4, NULL },
 };
 
 /* DObjDLLink @ 0x1210 (2 entries) */
@@ -527,14 +616,18 @@ DObjDLLink dStageInishieFile2_DLLink_0x4A08[] = {
 	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x4A18 (was gap+0x1270, 24 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1270[24] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1270.data.inc.c>
+/* DObjDLLink[3] @ 0x4A18 */
+DObjDLLink dStageInishieFile2_gap_0x37A8_sub_0x1270[3] = {
+	{ 0, dStageInishieFile2_DL_0x43A8 },
+	{ 1, dStageInishieFile2_DL_0x4758 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x4A30 (was gap+0x1288, 24 bytes) */
-u8 dStageInishieFile2_gap_0x37A8_sub_0x1288[24] = {
-	#include <StageInishieFile2/gap_0x37A8_sub_0x1288.data.inc.c>
+/* DObjDLLink[3] @ 0x4A30 */
+DObjDLLink dStageInishieFile2_gap_0x37A8_sub_0x1288[3] = {
+	{ 0, dStageInishieFile2_DL_0x45C0 },
+	{ 1, dStageInishieFile2_DL_0x4900 },
+	{ 4, NULL },
 };
 
 /* DObjDesc: Layer0DObj @ 0x4A48 (11 entries) */
@@ -722,22 +815,564 @@ AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint[10] = {
 	NULL,
 };
 
-u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[1326] = {
-	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data.data.inc.c>
+/* Split AnimJoint blob: forward decls for sub-scripts. */
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[38];
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x98[132];
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x2A8[120];
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x488[120];
+extern AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x668[1];
+extern AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x66C[1];
+extern AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x670[1];
+extern AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x674[1];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x678[10];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x718[4];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x758[15];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x848[4];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x888[12];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x948[8];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x9C8[8];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xA48[4];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xA88[4];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xAC8[8];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xB48[8];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xBC8[24];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD48[4];
+extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88[8];
+extern Gfx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88_dl[214];
+
+u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[38] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 180),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 180),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0xB2A80000,  /* -1.955777406692505e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 180),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 180),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 9),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data,
 };
 
-/* DObjDesc: Layer1DObj @ 0x6320 (3 entries) */
+u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x98[132] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x98,
+};
+
+u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x2A8[120] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x2A8,
+};
+
+u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x488[120] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 13),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 14),
+	    0x32800000,  /* 1.4901161193847656e-08f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x488,
+};
+
+AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x668[1] = {
+	(AObjEvent32 *)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data,
+};
+
+AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x66C[1] = {
+	(AObjEvent32 *)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x98,
+};
+
+AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x670[1] = {
+	(AObjEvent32 *)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x2A8,
+};
+
+AObjEvent32 * dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x674[1] = {
+	(AObjEvent32 *)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x488,
+};
+
+/* Vtx[10] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x678[10] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x678.vtx.inc.c>
+};
+
+/* Vtx[4] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x718[4] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x718.vtx.inc.c>
+};
+
+/* Vtx[15] — overlapping vertex pool. data_0xD88_dl loads it as one
+ * 10-vert block (gsSPVertex +0x0) then re-loads sub-ranges into the
+ * vertex cache: &[1] (2 verts), &[4] (1), &[6] (1), &[9] (6 verts,
+ * extending past the first 10 to fill out all 15). */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x758[15] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x758.vtx.inc.c>
+};
+
+/* Vtx[4] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x848[4] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x848.vtx.inc.c>
+};
+
+/* Vtx[12] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x888[12] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x888.vtx.inc.c>
+};
+
+/* Vtx[8] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x948[8] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x948.vtx.inc.c>
+};
+
+/* Vtx[8] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x9C8[8] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0x9C8.vtx.inc.c>
+};
+
+/* Vtx[4] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xA48[4] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xA48.vtx.inc.c>
+};
+
+/* Vtx[4] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xA88[4] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xA88.vtx.inc.c>
+};
+
+/* Vtx[8] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xAC8[8] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xAC8.vtx.inc.c>
+};
+
+/* Vtx[8] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xB48[8] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xB48.vtx.inc.c>
+};
+
+/* Vtx[24] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xBC8[24] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xBC8.vtx.inc.c>
+};
+
+/* Vtx[4] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD48[4] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xD48.vtx.inc.c>
+};
+
+/* Vtx[8] — vertex buffer loaded by data_0xD88_dl gsSPVertex */
+Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88[8] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xD88.vtx.inc.c>
+};
+
+/* Gfx display list @ _data_0xD88+0x80 (214 cmds) — texture/vertex
+ * loads chain-resolved via the .reloc; final EndDL's 2nd word lands
+ * in what used to be the trailing PAD(4). */
+Gfx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88_dl[214] = {
+	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint_data_0xD88_dl.dl.inc.c>
+};
+
+/* DObjDesc[7] @ 0x6320 — entries 3-5's dl fields point at the 3
+ * EndDL-delimited sub-DLs inside data_0xD88_dl; entry 6 is the
+ * { 18, NULL, scale=0 } sentinel. (Absorbed the former gap_0x63A4,
+ * which was the un-sentinel'd tail of this same array.) */
 DObjDesc dStageInishieFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88_dl, { 2910.0f, -120.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)&dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88_dl[58], { -2760.0f, 1845.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)&dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0xD88_dl[115], { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x63A4 to 0x6698 (756 bytes) */
-/* gap sub-block @ 0x63A4 (was gap+0x0, 176 bytes) */
-u8 dStageInishieFile2_gap_0x63A4[176] = {
-	#include <StageInishieFile2/gap_0x63A4.data.inc.c>
-};
 
 /* MPVertexData[26] @ 0x6454 — vertex positions (MPGeometryData.vertex_data) */
 MPVertexData dStageInishieFile2_gap_0x63A4_sub_0xB0[26] = {
@@ -842,24 +1477,37 @@ MPGeometryData dStageInishieFile2_MPGeometryData_0x6698 = {
 	(MPMapObjContainer*)dStageInishieFile2_gap_0x63A4_sub_0x21C,
 };
 
-/* Trailing data after MPGeometryData @ 0x66B4 (364 bytes) — embedded
- * DObjDLLink/DL/texture mix referenced by other layer DObjs. */
-u8 dStageInishieFile2_MPGeometryData_0x6698_trailing[364] = {
-	#include <StageInishieFile2/MPGeometryData_0x6698_trailing.data.inc.c>
+/* Trailing data after MPGeometryData @ 0x66B4 — 12-byte zero pad,
+ * two Vtx[4] buffers, then a 28-cmd Gfx DL (Layer2DObj[1].dl). */
+PAD(12);
+
+Vtx dStageInishieFile2_MPGeometryData_0x6698_trailing_Vtx_0xC[4] = {
+	#include <StageInishieFile2/MPGeometryData_0x6698_trailing_Vtx_0xC.vtx.inc.c>
 };
 
-/* DObjDesc: Layer2DObj @ 0x6820 (4 entries) */
+Vtx dStageInishieFile2_MPGeometryData_0x6698_trailing_Vtx_0x4C[4] = {
+	#include <StageInishieFile2/MPGeometryData_0x6698_trailing_Vtx_0x4C.vtx.inc.c>
+};
+
+/* Gfx DL[28] — gsSPVertex cmds load the two Vtx[4] buffers above. */
+Gfx dStageInishieFile2_MPGeometryData_0x6698_trailing_dl[28] = {
+	#include <StageInishieFile2/MPGeometryData_0x6698_trailing_dl.dl.inc.c>
+};
+
+/* DObjDesc: Layer2DObj @ 0x6820 (3 entries) */
 DObjDesc dStageInishieFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_MPGeometryData_0x6698_trailing + 0x8C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_MPGeometryData_0x6698_trailing_dl, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 4.2756305980968973e-32f, 9.330486409651907e-38f }, { 5.6548384655120264e-27f, -107372544.0f, 4.2755644765396636e-32f }, { 9.330486409651907e-38f, 5.6545549686242126e-27f, -107372544.0f } },
 };
 
-/* Raw data from file offset 0x68D0 to 0x6C00 (816 bytes) */
-/* gap sub-block @ 0x68D0 (was gap+0x0, 32 bytes) */
-u8 dStageInishieFile2_gap_0x68D0[32] = {
-	#include <StageInishieFile2/gap_0x68D0.data.inc.c>
+/* Raw data from file offset 0x68A4 to 0x6C00 (860 bytes) */
+/* 12-byte zero header, then 6 Vtx[4] buffers loaded by DL_0x6A30. */
+PAD(12);
+
+/* Vtx[4] @ 0x68B0 — DL_0x6A30 gsSPVertex (absorbed former gap_0x68D0). */
+Vtx dStageInishieFile2_gap_0x68B0[4] = {
+	#include <StageInishieFile2/gap_0x68B0.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x68F0 (was gap+0x20, 64 bytes) */
@@ -895,7 +1543,7 @@ Gfx dStageInishieFile2_DL_0x6A30[58] = {
 /* DObjDesc: Layer3DObj @ 0x6C00 (3 entries) */
 DObjDesc dStageInishieFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageInishieFile2_gap_0x68D0 + 0x160), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageInishieFile2_DL_0x6A30, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

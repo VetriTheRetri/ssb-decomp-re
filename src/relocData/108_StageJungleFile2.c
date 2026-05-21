@@ -564,14 +564,28 @@ Gfx dStageJungleFile2_DL_0x8A50[25] = {
 DObjDesc dStageJungleFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageJungleFile2_DL_0x7E90, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_DL_0x7E90 + 0x248), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x80D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x8228, { 895.7948608398438f, -129.00001525878906f, -1075.7728271484375f }, { 0.0f, 0.0f, 0.34906598925590515f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x82B8, { -858.1722412109375f, -132.00001525878906f, -1037.4708251953125f }, { 0.0f, 0.0f, -0.34906598925590515f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x82D8, { 322.17120361328125f, -289.97235107421875f, -1015.1021728515625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x8338, { -288.8154602050781f, -300.0000915527344f, -923.3582763671875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x83A8, { 137.89181518554688f, -300.0f, -808.8450927734375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x8418, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x84B8, { -1681.42626953125f, 8.53681755065918f, -790.8189697265625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x8548, { 1678.57373046875f, 8.53681755065918f, -790.8189697265625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x8568, { -1681.2030029296875f, 0.0f, -790.2900390625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x8600, { 1678.7969970703125f, 0.0f, -790.2900390625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x8638, { -1679.995361328125f, -7.100000220816582e-05f, -788.7171020507812f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0x87E0, { 1682.999755859375f, -3.7999998312443495e-05f, -790.0509033203125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x8960, { -1683.3736572265625f, -0.3282800018787384f, -672.91455078125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x8A08, { 1682.6251220703125f, -0.3282800018787384f, -672.91455078125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x8A50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x8B9C to 0x9878 (3292 bytes) */
 /* gap sub-block @ 0x8B9C (was gap+0x0, 708 bytes) */
-u8 dStageJungleFile2_gap_0x8B9C[708] = {
-	#include <StageJungleFile2/gap_0x8B9C.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x8E60 (was gap+0x2C4, 128 bytes) */
 Vtx dStageJungleFile2_gap_0x8B9C_sub_0x2C4[8] = {
@@ -631,9 +645,9 @@ Gfx dStageJungleFile2_DL_0x95D8[84] = {
 /* DObjDesc: Layer1DObj @ 0x9878 (5 entries) */
 DObjDesc dStageJungleFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_gap_0x8B9C + 0x7C4), { 366.0000305175781f, 1388.7550048828125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_gap_0x8B9C + 0x92C), { -366.0000305175781f, 1387.109619140625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_gap_0x8B9C + 0xA3C), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x9360, { 366.0000305175781f, 1388.7550048828125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x94C8, { -366.0000305175781f, 1387.109619140625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0x95D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -728,11 +742,27 @@ MPGeometryData dStageJungleFile2_MPGeometryData_0x9AFC = {
 PAD(8);
 
 /* Raw data from file offset 0x9B20 to 0xC7D8 (11448 bytes) */
-u32 dStageJungleFile2_Layer1Anim_AnimJoint[2862] = {
-	aobjEvent32End(),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x10),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x13F8),
-	aobjEvent32End(),
+/* Split AnimJoint blob: forward decls for sub-scripts. */
+extern u32 dStageJungleFile2_Layer1Anim_AnimJoint_0x10[1274];
+extern u32 dStageJungleFile2_Layer1Anim_AnimJoint_0x13F8[1274];
+extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x27E0[4];
+extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2820[4];
+extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2860[4];
+extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28A0[4];
+extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28E0[4];
+extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2920[4];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2960[9];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[74];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8[24];
+
+AObjEvent32 *dStageJungleFile2_Layer1Anim_AnimJoint[4] = {
+	NULL,
+	(AObjEvent32 *)dStageJungleFile2_Layer1Anim_AnimJoint_0x10,
+	(AObjEvent32 *)dStageJungleFile2_Layer1Anim_AnimJoint_0x13F8,
+	NULL,
+};
+
+u32 dStageJungleFile2_Layer1Anim_AnimJoint_0x10[1274] = {
 	aobjEvent32SetVal(0x030, 0),
 	    0x43B70001,  /* 366.0000305175781f */
 	    0x44AD9829,  /* 1388.7550048828125f */
@@ -2006,7 +2036,10 @@ u32 dStageJungleFile2_Layer1Anim_AnimJoint[2862] = {
 	aobjEvent32SetValBlock(0x020, 1),
 	    0x44AD9837,  /* 1388.7567138671875f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x10),
+	(u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x10,
+};
+
+u32 dStageJungleFile2_Layer1Anim_AnimJoint_0x13F8[1274] = {
 	aobjEvent32SetVal(0x030, 0),
 	    0xC3B70001,  /* -366.0000305175781f */
 	    0x44AD6382,  /* 1387.109619140625f */
@@ -3280,324 +3313,50 @@ u32 dStageJungleFile2_Layer1Anim_AnimJoint[2862] = {
 	aobjEvent32SetValBlock(0x020, 1),
 	    0x44AD6355,  /* 1387.1041259765625f */
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x13F8),
-	    0xFB320000,
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32SetVal(0x000, 0),
-	    0xFFFFFFFF,
-	    0xF7AE0000,
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32End(),
-	    0xFFFFFFFF,
-	    0xF7AE0000,
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x000002FE,
-	    0xFFFFFFFF,
-	    0xFB320000,
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x080002FE,
-	    0xFFFFFFFF,
-	    0xFE7AFED4,
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32EndRaw(0x000, 2048),
-	    0xBEBEBCFF,
-	    0xFB320000,
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32End(),
-	    0xDCDCD8FF,
-	    0xFB320000,
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x04470000,
-	    0xDCDCD8FF,
-	    0xFE7AFED4,
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x04470800,
-	    0xBEBEBCFF,
-	aobjEvent32EndRaw(0x30D, 32468),
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x080002FE,
-	    0xFFFFFFFF,
-	    0xFE7AFED4,
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x000002FE,
-	    0xFFFFFFFF,
-	aobjEvent32EndRaw(0x30D, 32468),
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32SetVal(0x000, 0),
-	    0xFFFFFFFF,
-	    0xFE7AFED4,
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32End(),
-	    0xFFFFFFFF,
-	aobjEvent32WaitRaw(0x19C, 0),
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x0BBA0000,
-	    0xDCDCD8FF,
-	aobjEvent32EndRaw(0x30D, 32468),
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x0BBA0800,
-	    0xBEBEBCFF,
-	aobjEvent32WaitRaw(0x19C, 0),
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32SetVal0RateBlock(0x002, 0),
-	    0xDCDCD8FF,  /* -4.973046768368353e+17f */
-	aobjEvent32EndRaw(0x30D, 32468),
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32SetVal0RateBlock(0x002, 2048),
-	    0xBEBEBCFF,  /* -0.37253567576408386f */
-	aobjEvent32SetVal(0x0A4, 0),
-	    0x02670000,  /* 1.6971199689996776e-37f */
-	    0x080002FE,  /* 3.852211618724757e-34f */
-	    0xFFFFFFFF,  /* nanf */
-	aobjEvent32WaitRaw(0x19C, 0),
-	aobjEvent32JumpCmd(0x0CE, 0),
-	    (u32)0x000002FE,
-	    0xFFFFFFFF,
-	aobjEvent32SetVal(0x0A4, 0),
-	    0x05280000,  /* 7.899322037525772e-36f */
-	    0x08000000,  /* 3.851859888774472e-34f */
-	    0xFFFFFFFF,  /* nanf */
-	aobjEvent32WaitRaw(0x19C, 0),
-	aobjEvent32WaitRaw(0x250, 0),
-	aobjEvent32End(),
-	    0xFFFFFFFF,
-	aobjEvent32EndRaw(0x153, 32470),
-	aobjEvent32WaitRaw(0x208, 0),
-	aobjEvent32End(),
-	    0xFFFFFF00,
-	    0xFF6CFED6,
-	aobjEvent32JumpCmd(0x386, 0),
-	    (u32)0x03F80007,
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x153, 32470),
-	aobjEvent32JumpCmd(0x102, 0),
-	    (u32)0x04000400,
-	    0xFFFFFF00,
-	aobjEvent32EndRaw(0x3CB, 32470),
-	aobjEvent32JumpCmd(0x386, 0),
-	    (u32)0x000703F8,
-	    0xFFFFFF00,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FDFBFF,
-	aobjEvent32End(),
-	    0xE3001001,
-	aobjEvent32EndRaw(0x001, 0),
-	    0xF9000000,
-	aobjEvent32End(),
-	    0xE8000000,
-	aobjEvent32End(),
-	    0xF5000100,
-	aobjEvent32WaitRaw(0x200, 0),
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xDE000000,
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x29A8),
-	    0xDF000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12360),
-	    0xFC121824,
-	    0xFF33FFFF,
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x203, 96),
-	    0xF5400800,  /* -2.4342852932507718e+32f */
-	    0x00098260,  /* 8.73289202967226e-40f */
-	    0xFD100000,  /* -1.1963051962064243e+37f */
-	(u32)dStageJungleFile2_Lut_0x46C8_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x01F, 16636),
-	    0xFD500000,
-	(u32)dStageJungleFile2_Tex_0x46F0,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x073FF200,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x27E0),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8264),
-	    0xFD100000,
-	(u32)dStageJungleFile2_Lut_0x3E98_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x03F, 16636),
-	    0xFD500000,
-	(u32)dStageJungleFile2_Tex_0x3EC0,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x073FF200,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x2820),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12360),
-	    0xFD100000,
-	(u32)dStageJungleFile2_Lut_0x46C8_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x01F, 16636),
-	    0xFD500000,
-	(u32)dStageJungleFile2_Tex_0x46F0,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x073FF200,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x2860),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,  /* 3.673447872288935e-40f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8264),
-	    0xFD100000,
-	(u32)dStageJungleFile2_Lut_0x3E98_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x03F, 16636),
-	    0xFD500000,
-	(u32)dStageJungleFile2_Tex_0x3EC0,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x073FF200,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x28A0),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,  /* 3.673447872288935e-40f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 12360),
-	    0xFD100000,
-	(u32)dStageJungleFile2_Lut_0x46C8_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x01F, 16636),
-	    0xFD500000,
-	(u32)dStageJungleFile2_Tex_0x46F0,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x073FF200,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x28E0),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,  /* 3.673447872288935e-40f */
-	    0xDF000000,  /* -9.223372036854776e+18f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9DFFFFF,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x000, 1024),
-	    0xFC127E24,
-	    0xFFFFF3F9,
-	    0xF5500000,
-	aobjEvent32SetValBlock(0x202, 16464),
-	    0xF5400400,  /* -2.434087222844486e+32f */
-	    0x00094250,  /* 8.50307908152299e-40f */
-	    0xFD100000,
-	(u32)dStageJungleFile2_Lut_0x5728_palette,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF0000000,
-	aobjEvent32WaitRaw(0x207, 16384),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xF2000000,
-	aobjEvent32EndRaw(0x00F, 16508),
-	    0xFD500000,
-	(u32)dStageJungleFile2_Tex_0x5750,
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x070FF400,
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x2920),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 0),
-	    0xE3001001,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8264),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x13F8,
+};
+
+Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x27E0[4] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x27E0.vtx.inc.c>
+};
+
+Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2820[4] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2820.vtx.inc.c>
+};
+
+Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2860[4] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2860.vtx.inc.c>
+};
+
+Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28A0[4] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x28A0.vtx.inc.c>
+};
+
+Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28E0[4] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x28E0.vtx.inc.c>
+};
+
+Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2920[4] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2920.vtx.inc.c>
+};
+
+Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2960[9] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2960.dl.inc.c>
+};
+
+Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[74] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x29A8.dl.inc.c>
+};
+
+Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8[24] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2BF8.dl.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0xC7D8 (4 entries) */
 DObjDesc dStageJungleFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x2960), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageJungleFile2_Layer1Anim_AnimJoint + 0x2BF8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_Layer1Anim_AnimJoint_0x2960, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -3722,13 +3481,40 @@ Gfx dStageJungleFile2_DL_0xD080[33] = {
 /* DObjDesc: Layer3DObj @ 0xD188 (1 entries) */
 DObjDesc dStageJungleFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0xCC90, { -1551.0885009765625f, 3.0000429153442383f, 799.03466796875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0xCD68, { 1587.0006103515625f, 1.9999999949504854e-06f, 899.7705688476562f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0xCDD8, { 0.21669599413871765f, -300.00006103515625f, 973.3448486328125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0xCED0, { -1367.9993896484375f, -4.8999998398358e-05f, 982.8641357421875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0xCF50, { 1781.9979248046875f, -1.9999999949504854e-06f, 1046.7701416015625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0xCFC0, { -1617.0f, 5.199999941396527e-05f, 1076.7708740234375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dStageJungleFile2_DL_0xD020, { 1371.00048828125f, 0.0f, 1106.7696533203125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageJungleFile2_DL_0xD080, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0xD1B4 to 0xF5E0 (9260 bytes) */
-/* gap sub-block @ 0xD1B4 (was gap+0x0, 564 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4[564] = {
-	#include <StageJungleFile2/gap_0xD1B4.data.inc.c>
+/* PAD(8) + 4x (16-color RGBA5551 palette + PAD(8)) @ 0xD340. */
+PAD(8);
+
+u16 dStageJungleFile2_Lut_0xD348_palette[16] = {
+	#include <StageJungleFile2/Lut_0xD348.palette.inc.c>
 };
+PAD(8);
+
+u16 dStageJungleFile2_Lut_0xD370_palette[16] = {
+	#include <StageJungleFile2/Lut_0xD370.palette.inc.c>
+};
+PAD(8);
+
+u16 dStageJungleFile2_Lut_0xD398_palette[16] = {
+	#include <StageJungleFile2/Lut_0xD398.palette.inc.c>
+};
+PAD(8);
+
+u16 dStageJungleFile2_Lut_0xD3C0_palette[16] = {
+	#include <StageJungleFile2/Lut_0xD3C0.palette.inc.c>
+};
+PAD(8);
 
 /* gap sub-block @ 0xD3E8 (was gap+0x234, 40 bytes) */
 u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[16] = {
@@ -3762,14 +3548,14 @@ u8 dStageJungleFile2_Tex_0xEC30[1544] = {
 };
 
 /* u32 pointer array @ 0xF238 (6 entries) */
-u32 dStageJungleFile2_gap_0xD1B4_sub_0x2084[6] = {
+u32 dStageJungleFile2_gap_0xD1B4_sub_0x2084[5] = {
 	(u32)&dStageJungleFile2_Tex_0xEC30,
 	(u32)&dStageJungleFile2_Tex_0xE628,
 	(u32)&dStageJungleFile2_Tex_0xE020,
 	(u32)&dStageJungleFile2_Tex_0xDA18,
 	(u32)&dStageJungleFile2_Tex_0xD410,
-	0x00000000,
 };
+PAD(4);
 
 /* MObjSub @ 0xF250 */
 MObjSub dStageJungleFile2_gap_0xD1B4_sub_0x209C[1] = {
@@ -3817,22 +3603,117 @@ Gfx dStageJungleFile2_gap_0xD1B4_sub_0x215C[30] = {
 	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C.dl.inc.c>
 };
 
-/* Raw tail after 1 DL(s) @ 0xF400 (152 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x215C_post[152] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C_post.data.inc.c>
+/* DObjDesc[3] @ 0xF400 — entry 2 is the { 18, ... } sentinel. */
+DObjDesc dStageJungleFile2_gap_0xD1B4_sub_0x215C_post[3] = {
+	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x4001, (void*)dStageJungleFile2_gap_0xD1B4_sub_0x215C, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* gap sub-block @ 0xF498 (was gap+0x22E4, 128 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x22E4[128] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x22E4.data.inc.c>
+/* PAD(12) + AObjEvent32*[2] joint table for the sub_0x22E4 script. */
+extern u32 dStageJungleFile2_gap_0xD1B4_sub_0x22E4[27];
+extern AObjEvent32 *dStageJungleFile2_gap_0xD1B4_sub_0x2420[3];
+PAD(12);
+AObjEvent32 *dStageJungleFile2_gap_0xD1B4_sub_0x215C_post_joint[2] = {
+	(AObjEvent32 *)dStageJungleFile2_gap_0xD1B4_sub_0x22E4,
+	NULL,
+};
+
+/* AObjEvent32 script @ 0xF498 — referenced by the joint table above. */
+u32 dStageJungleFile2_gap_0xD1B4_sub_0x22E4[27] = {
+	aobjEvent32SetVal0Rate(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRate(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	    0xC1BF1D66,  /* -23.889354705810547f */
+	aobjEvent32SetValAfterBlock(0x040, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRate(0x010, 104),
+	    0xC50CA000,  /* -2250.0f */
+	    0xC1D339EC,  /* -26.403282165527344f */
+	aobjEvent32SetVal0RateBlock(0x020, 15),
+	    0xC1F00000,  /* -30.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 11),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 15),
+	    0xC1F00000,  /* -30.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 11),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 15),
+	    0xC1F00000,  /* -30.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 11),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 15),
+	    0xC1F00000,  /* -30.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 11),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
+};
+
+/* AObjEvent32**[5] tail — joint-table pointer array (entry 4 -> the
+ * sub_0x2420 AObjEvent32*[3] table). */
+AObjEvent32 **dStageJungleFile2_gap_0xD1B4_sub_0x22E4_post[5] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dStageJungleFile2_gap_0xD1B4_sub_0x2420,
 };
 
 /* gap sub-block @ 0xF518 (was gap+0x2364, 188 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x2364[188] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x2364.data.inc.c>
+u32 dStageJungleFile2_gap_0xD1B4_sub_0x2364[47] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfter(0x001, 5),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32Wait(4),
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dStageJungleFile2_gap_0xD1B4_sub_0x2364,
 };
 
 /* gap sub-block @ 0xF5D4 (was gap+0x2420, 12 bytes) */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x2420[12] = {
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x2420.data.inc.c>
+AObjEvent32 *dStageJungleFile2_gap_0xD1B4_sub_0x2420[3] = {
+	(AObjEvent32 *)dStageJungleFile2_gap_0xD1B4_sub_0x2364,
+	NULL,
+	NULL,
 };

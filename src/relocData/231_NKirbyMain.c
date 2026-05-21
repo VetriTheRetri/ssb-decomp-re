@@ -46,9 +46,7 @@ FTModelPartDesc *dNKirbyMain_modelparts_container[27] = {
 };
 
 /* @ 0x00E0, 4 bytes: FTAttributes.textureparts_container target (was dNKirbyMain_pre+0xE0) */
-u32 dNKirbyMain_textureparts_container[1] = {
-	0x06000000,
-};
+FTTexturePart dNKirbyMain_textureparts_container = { 0x06, { 0x00, 0x00 } };
 
 /* @ 0x00E4, 32 bytes: FTAttributes.commonparts_container target (was dNKirbyMain_pre+0xE4) */
 FTCommonPartContainer dNKirbyMain_commonparts_container = {
@@ -232,7 +230,7 @@ FTAttributes dNKirbyMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dNKirbyMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dNKirbyMain_textureparts_container, /* textureparts_container */
+	(FTTexturePartContainer*)&dNKirbyMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNKirbyMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */

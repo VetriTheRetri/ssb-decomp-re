@@ -104,9 +104,7 @@ FTModelPartDesc *dLuigiMain_modelparts_container[25] = {
 };
 
 /* @ 0x0160, 4 bytes: FTAttributes.textureparts_container target (was dLuigiMain_pre+0x160) */
-u32 dLuigiMain_textureparts_container[1] = {
-	0x0C000000,
-};
+FTTexturePart dLuigiMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 
 /* @ 0x0164, 32 bytes: FTAttributes.commonparts_container target (was dLuigiMain_pre+0x164) */
 FTCommonPartContainer dLuigiMain_commonparts_container = {
@@ -175,94 +173,41 @@ FTThrownStatus dLuigiMain_thrown_status[54] = {
 };
 
 /* @ 0x0334, 348 bytes: FTAttributes.translate_scales target (was dLuigiMain_pre+0x334) */
-u32 dLuigiMain_translate_scales[87] = {
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F91A6B5,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F94B5DD,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F9FD8AE,
-	0x3F800000,
-	0x3F800000,
-	0x4038B439,
-	0x3F800000,
-	0x3F800000,
-	0x3F94B5DD,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
+/* One per-joint Vec3f translation-scale vector for each of Luigi's 29 joints.
+ * Identity except the Y axis of joints 3, 7, 11, 12, 13 — retargets Mario's
+ * shared animation data onto Luigi's taller build. Applied by
+ * lbCommonPlayTranslateScaledDObjAnim() (multiplies translation tracks only;
+ * rotation tracks are left untouched). */
+Vec3f dLuigiMain_translate_scales[29] = {
+	{ 1.0f, 1.0f,    1.0f }, /* joint  0 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  1 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  2 */
+	{ 1.0f, 1.1379f, 1.0f }, /* joint  3 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  4 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  5 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  6 */
+	{ 1.0f, 1.1618f, 1.0f }, /* joint  7 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  8 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint  9 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 10 */
+	{ 1.0f, 1.2488f, 1.0f }, /* joint 11 */
+	{ 1.0f, 2.886f,  1.0f }, /* joint 12 */
+	{ 1.0f, 1.1618f, 1.0f }, /* joint 13 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 14 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 15 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 16 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 17 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 18 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 19 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 20 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 21 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 22 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 23 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 24 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 25 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 26 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 27 */
+	{ 1.0f, 1.0f,    1.0f }, /* joint 28 */
 };
 
 /* @ 0x0490, 16 bytes: FTAttributes.sub_0x490 target (was dLuigiMain_pre+0x490) */
@@ -447,10 +392,10 @@ FTAttributes dLuigiMain_attr = {
 	{ 0x00, 0x00, 0x00, 0x0D, 0x42, 0x0F, 0xA6, 0xE9, 0x00, 0x00, 0x00, 0x07, 0x42, 0x0F, 0x8B, 0x44 }, /* filler_0x30C */
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
-	(Vec3f*)dLuigiMain_translate_scales, /* translate_scales */
+	dLuigiMain_translate_scales, /* translate_scales */
 	(FTModelPartContainer*)dLuigiMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dLuigiMain_textureparts_container, /* textureparts_container */
+	(FTTexturePartContainer*)&dLuigiMain_textureparts_container, /* textureparts_container */
 	28, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dLuigiMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */

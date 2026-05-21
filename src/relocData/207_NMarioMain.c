@@ -44,9 +44,7 @@ FTModelPartDesc *dNMarioMain_modelparts_container[25] = {
 };
 
 /* @ 0x00B8, 4 bytes: FTAttributes.textureparts_container target (was dNMarioMain_pre+0xB8) */
-u32 dNMarioMain_textureparts_container[1] = {
-	0x0C000000,
-};
+FTTexturePart dNMarioMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 
 /* @ 0x00BC, 32 bytes: FTAttributes.commonparts_container target (was dNMarioMain_pre+0xBC) */
 FTCommonPartContainer dNMarioMain_commonparts_container = {
@@ -230,7 +228,7 @@ FTAttributes dNMarioMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dNMarioMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dNMarioMain_textureparts_container, /* textureparts_container */
+	(FTTexturePartContainer*)&dNMarioMain_textureparts_container, /* textureparts_container */
 	28, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNMarioMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */

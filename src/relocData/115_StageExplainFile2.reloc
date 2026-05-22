@@ -1,25 +1,25 @@
 # Relocation metadata for file 115
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dStageExplainFile2_DL_0x0040+0x44 dStageExplainFile2_Layer3DObj+0xA88  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_DL_0x0040+0x74 dStageExplainFile2_Layer3DObj+0xAB0  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0040+0x44 dStagePupupuImages_Lut_0x1858_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0040+0x74 dStagePupupuImages_Tex_0x1880  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_DL_0x0040+0x94 dStageExplainFile2_gap_0x0000
 intern dStageExplainFile2_Layer0DObj+0x30 dStageExplainFile2_DL_0x0040
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x4C dStageExplainFile2_gap_0x018C_sub_0x274+0x118  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x7C dStageExplainFile2_gap_0x018C_sub_0x274+0x140  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x4C dStagePupupuImages_Lut_0x0518_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x7C dStagePupupuImages_Tex_0x0540  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0x9C dStageExplainFile2_gap_0x018C_sub_0x4
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0xBC dStageExplainFile2_gap_0x018C_sub_0x274+0x68  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0xDC dStageExplainFile2_gap_0x018C_sub_0x274+0x90  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0xBC dStagePupupuImages_Lut_0x0468_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0xDC dStagePupupuImages_Tex_0x0490  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0xFC dStageExplainFile2_gap_0x018C_sub_0x4+0x30
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0x104 dStageExplainFile2_gap_0x018C_sub_0x84
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x18C dStageExplainFile2_Layer3DObj+0x1478  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x1B4 dStageExplainFile2_Layer3DObj+0x14A0  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x18C dStagePupupuImages_Lut_0x2248_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x1B4 dStagePupupuImages_Tex_0x2270  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0x1D4 dStageExplainFile2_gap_0x018C_sub_0x144
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x224 dStageExplainFile2_Layer3DObj+0x1AD8  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x24C dStageExplainFile2_Layer3DObj+0x1B00  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x224 dStagePupupuImages_Lut_0x28A8_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x24C dStagePupupuImages_Tex_0x28D0  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0x26C dStageExplainFile2_gap_0x018C_sub_0x1C4
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x29C dStageExplainFile2_Layer3DObj+0xCB8  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_gap_0x018C_sub_0x274+0x2C4 dStageExplainFile2_Layer3DObj+0xCE0  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x29C dStagePupupuImages_Lut_0x1A88_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_gap_0x018C_sub_0x274+0x2C4 dStagePupupuImages_Tex_0x1AB0  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0x2E4 dStageExplainFile2_gap_0x018C_sub_0x1C4+0x60
 intern dStageExplainFile2_gap_0x018C_sub_0x274+0x2EC dStageExplainFile2_gap_0x018C_sub_0x244
 intern dStageExplainFile2_Layer1DObj+0x30 dStageExplainFile2_gap_0x018C_sub_0x274
@@ -28,14 +28,14 @@ intern dStageExplainFile2_MPGeometryData_0x0854+0x8 dStageExplainFile2_gap_0x07A
 intern dStageExplainFile2_MPGeometryData_0x0854+0xC dStageExplainFile2_gap_0x07A4_sub_0x74
 intern dStageExplainFile2_MPGeometryData_0x0854+0x10 dStageExplainFile2_gap_0x07A4_sub_0x88
 intern dStageExplainFile2_MPGeometryData_0x0854+0x18 dStageExplainFile2_gap_0x07A4_sub_0x9C
-extern dStageExplainFile2_MPGeometryData_0x0854_trailing+0xB4 dStageExplainFile2_Layer3DObj+0xA88  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_MPGeometryData_0x0854_trailing+0xE4 dStageExplainFile2_Layer3DObj+0xAB0  # -> file 103 (StagePupupuImages)
-intern dStageExplainFile2_MPGeometryData_0x0854_trailing+0x104 dStageExplainFile2_MPGeometryData_0x0854_trailing
-intern dStageExplainFile2_Layer2DObj+0x30 dStageExplainFile2_MPGeometryData_0x0854_trailing+0x70
-extern dStageExplainFile2_DL_0x0C20+0x44 dStageExplainFile2_Layer3DObj+0x18A8  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_DL_0x0C20+0x74 dStageExplainFile2_Layer3DObj+0x18D0  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x08E0+0x44 dStagePupupuImages_Lut_0x1858_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x08E0+0x74 dStagePupupuImages_Tex_0x1880  # -> file 103 (StagePupupuImages)
+intern dStageExplainFile2_DL_0x08E0+0x94 dStageExplainFile2_MPGeometryData_0x0854_trailing
+intern dStageExplainFile2_Layer2DObj+0x30 dStageExplainFile2_DL_0x08E0
+extern dStageExplainFile2_DL_0x0C20+0x44 dStagePupupuImages_Lut_0x2678_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0C20+0x74 dStagePupupuImages_Tex_0x26A0  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_DL_0x0C20+0x94 dStageExplainFile2_gap_0x0A3C_sub_0x4
-extern dStageExplainFile2_DL_0x0C20+0xFC dStageExplainFile2_Layer3DObj+0x1478  # -> file 103 (StagePupupuImages)
-extern dStageExplainFile2_DL_0x0C20+0x124 dStageExplainFile2_Layer3DObj+0x14A0  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0C20+0xFC dStagePupupuImages_Lut_0x2248_palette  # -> file 103 (StagePupupuImages)
+extern dStageExplainFile2_DL_0x0C20+0x124 dStagePupupuImages_Tex_0x2270  # -> file 103 (StagePupupuImages)
 intern dStageExplainFile2_DL_0x0C20+0x144 dStageExplainFile2_gap_0x0A3C_sub_0x104
 intern dStageExplainFile2_Layer3DObj+0x30 dStageExplainFile2_DL_0x0C20

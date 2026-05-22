@@ -20,7 +20,7 @@ Gfx dStageExplainFile2_DL_0x0040[25] = {
 /* DObjDesc: Layer0DObj @ 0x108 (3 entries) */
 DObjDesc dStageExplainFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageExplainFile2_gap_0x0000 + 0x40), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageExplainFile2_DL_0x0040, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -67,9 +67,21 @@ DObjDesc dStageExplainFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x07A4 to 0x0854 (176 bytes) */
-/* gap sub-block @ 0x07A4 (was gap+0x0, 80 bytes) */
-u8 dStageExplainFile2_gap_0x07A4[80] = {
-	#include <StageExplainFile2/gap_0x07A4.data.inc.c>
+/* MPVertexData[13] @ 0x07A4 — MPGeometryData.vertex_data (2 bytes pad; compiler 4-aligns next decl) */
+MPVertexData dStageExplainFile2_gap_0x07A4[13] = {
+	{ { -1972, -1079 }, 0x0000 },
+	{ {  1972, -1079 }, 0x0000 },
+	{ {  2074,  -841 }, 0x0000 },
+	{ {  2290,  -337 }, 0x0000 },
+	{ {  2307,  -132 }, 0x0000 },
+	{ {  2318,    -6 }, 0x8000 },
+	{ { -2318,    -6 }, 0x0000 },
+	{ { -2307,  -132 }, 0x0000 },
+	{ { -2290,  -337 }, 0x0000 },
+	{ { -2074,  -841 }, 0x0000 },
+	{ {  -951,   897 }, 0x4000 },
+	{ { -1396,   897 }, 0x4000 },
+	{ { -1841,   897 }, 0x0000 },
 };
 
 /* MPVertexArray (18 IDs) @ 0x07F4 — vertex_id table (MPGeometryData.vertex_id) */
@@ -106,16 +118,20 @@ MPGeometryData dStageExplainFile2_MPGeometryData_0x0854 = {
 	(MPMapObjContainer*)dStageExplainFile2_gap_0x07A4_sub_0x9C,
 };
 
-/* Trailing data after MPGeometryData @ 0x0870 (328 bytes) — embedded
- * DObjDLLink/DL/texture mix; referenced by Layer2DObj+0x30 at +0x70. */
-u8 dStageExplainFile2_MPGeometryData_0x0854_trailing[328] = {
-	#include <StageExplainFile2/MPGeometryData_0x0854_trailing.data.inc.c>
+/* Vtx[7] @ 0x0870 — vertex pool drawn by DL_0x08E0 */
+Vtx dStageExplainFile2_MPGeometryData_0x0854_trailing[7] = {
+	#include <StageExplainFile2/MPGeometryData_0x0854_trailing.vtx.inc.c>
+};
+
+/* Gfx DL @ 0x08E0 — referenced by Layer2DObj; draws the 7-vtx pool above */
+Gfx dStageExplainFile2_DL_0x08E0[27] = {
+	#include <StageExplainFile2/DL_0x08E0.dl.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x9B8 (3 entries) */
 DObjDesc dStageExplainFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageExplainFile2_MPGeometryData_0x0854_trailing + 0x70), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageExplainFile2_DL_0x08E0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

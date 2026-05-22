@@ -13,159 +13,355 @@ extern u8 dStageMetalFile2_gap_0x3298[];
 
 PAD(8);
 
-extern void *dStageMetalFile2_gap_0x1E48_sub_0x178[];
+extern MObjSub *dStageMetalFile2_gap_0x1E48_sub_0x178[];
 extern MObjSub *dStageMetalFile2_gap_0x3298_sub_0x8[];
 
 /* Texture data @ 0x0008 (3112 bytes) */
-u8 dStageMetalFile2_Tex_0x0008[3112] = {
+u8 dStageMetalFile2_Tex_0x0008[0x40] = {
 	#include <StageMetalFile2/Tex_0x0008.tex.inc.c>
 };
 
-extern u32 dStageMetalFile2_Layer0MObj_MObjSubPtrArray[];
+PAD(8);
 
-/* MObjSub array: Layer0MObj @ 0xC30 (5 entries) */
-MObjSub dStageMetalFile2_Layer0MObj_MObjSub[5] = {
-	/* [0] @ 0xC30 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)((u8*)dStageMetalFile2_Layer0MObj_MObjSubPtrArray + 0x8),
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		0.0008089999901130795f, 0.008562999777495861f,
-		1.0f, 1.0f,
-		(void**)0x3A541312,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [1] @ 0xCA8 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		0.019998999312520027f, 9.999999747378752e-05f,
-		1.0f, 1.0f,
-		(void**)0x3CA3D4F1,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [2] @ 0xD20 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		0.0032099999953061342f, 9.999999747378752e-05f,
-		1.0f, 1.0f,
-		(void**)0x3B525EDD,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [3] @ 0xD98 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		9.999999747378752e-05f, 9.999999747378752e-05f,
-		1.0f, 1.0f,
-		(void**)0x38D1B717,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [4] @ 0xE10 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		0.0008089999901130795f, 0.008562999777495861f,
-		1.0f, 1.0f,
-		(void**)0x3A541312,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
+u8 dStageMetalFile2_Tex_0x0050[0x200] = {
+	#include <StageMetalFile2/Tex_0x0050.tex.inc.c>
 };
 
+PAD(8);
+
+u8 dStageMetalFile2_Tex_0x0258[0xB0] = {
+	#include <StageMetalFile2/Tex_0x0258.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dStageMetalFile2_Tex_0x0310[0x400] = {
+	#include <StageMetalFile2/Tex_0x0310.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dStageMetalFile2_Tex_0x0718[0x40] = {
+	#include <StageMetalFile2/Tex_0x0718.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dStageMetalFile2_Tex_0x0760[0x40] = {
+	#include <StageMetalFile2/Tex_0x0760.tex.inc.c>
+};
+
+PAD(8);
+
+u8 dStageMetalFile2_Tex_0x07A8[0x200] = {
+	#include <StageMetalFile2/Tex_0x07A8.tex.inc.c>
+};
+
+PAD(8);
+
+/* Palette: 0x09B0 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x09B0[8] = {
+	#include <StageMetalFile2/palette_0x09B0.palette.inc.c>
+};
+PAD(8);
+
+u8 dStageMetalFile2_Tex_0x09C8[0x10] = {
+	#include <StageMetalFile2/Tex_0x09C8.tex.inc.c>
+};
+
+PAD(8);
+
+/* Palette: 0x09E0 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x09E0[8] = {
+	#include <StageMetalFile2/palette_0x09E0.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x09F8 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x09F8[8] = {
+	#include <StageMetalFile2/palette_0x09F8.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0A10 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0A10[8] = {
+	#include <StageMetalFile2/palette_0x0A10.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0A28 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0A28[8] = {
+	#include <StageMetalFile2/palette_0x0A28.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0A40 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0A40[8] = {
+	#include <StageMetalFile2/palette_0x0A40.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0A58 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0A58[8] = {
+	#include <StageMetalFile2/palette_0x0A58.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0A70 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0A70[8] = {
+	#include <StageMetalFile2/palette_0x0A70.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0A88 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0A88[8] = {
+	#include <StageMetalFile2/palette_0x0A88.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0AA0 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0AA0[8] = {
+	#include <StageMetalFile2/palette_0x0AA0.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0AB8 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0AB8[8] = {
+	#include <StageMetalFile2/palette_0x0AB8.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0AD0 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0AD0[8] = {
+	#include <StageMetalFile2/palette_0x0AD0.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0AE8 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0AE8[8] = {
+	#include <StageMetalFile2/palette_0x0AE8.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0B00 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0B00[8] = {
+	#include <StageMetalFile2/palette_0x0B00.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0B18 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0B18[8] = {
+	#include <StageMetalFile2/palette_0x0B18.palette.inc.c>
+};
+PAD(8);
+
+/* Palette: 0x0B30 (8 colors RGBA5551) */
+u16 dStageMetalFile2_palette_0x0B30[8] = {
+	#include <StageMetalFile2/palette_0x0B30.palette.inc.c>
+};
+PAD(8);
+
+u16 dStageMetalFile2_palette_0x0B48[16] = {
+	#include <StageMetalFile2/palette_0x0B48.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dStageMetalFile2_palette_0x0B70[16] = {
+	#include <StageMetalFile2/palette_0x0B70.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dStageMetalFile2_palette_0x0B98[16] = {
+	#include <StageMetalFile2/palette_0x0B98.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dStageMetalFile2_palette_0x0BC0[16] = {
+	#include <StageMetalFile2/palette_0x0BC0.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dStageMetalFile2_palette_0x0BE8[16] = {
+	#include <StageMetalFile2/palette_0x0BE8.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dStageMetalFile2_palette_0x0C10[16] = {
+	#include <StageMetalFile2/palette_0x0C10.palette.inc.c>
+};
+
+extern MObjSub *dStageMetalFile2_Layer0MObj_MObjSubPtrArray[];
+
+/* MObjSub-list head @ 0xC30 — MObjSub** table ([0] NULL, [1] -> PtrArray). */
+MObjSub **dStageMetalFile2_Layer0MObj_MObjSub[2] = {
+	NULL,
+	dStageMetalFile2_Layer0MObj_MObjSubPtrArray,
+};
+
+/* MObjSub @ 0xC38 */
+MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		0.0008089999901130795f, 0.008562999777495861f,
+		1.0f, 1.0f,
+		0.0008089999901130795f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0xCB0 */
+MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real1[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		0.019998999312520027f, 9.999999747378752e-05f,
+		1.0f, 1.0f,
+		0.019998999312520027f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0xD28 */
+MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real2[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		0.0032099999953061342f, 9.999999747378752e-05f,
+		1.0f, 1.0f,
+		0.0032099999953061342f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0xDA0 */
+MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real3[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		9.999999747378752e-05f, 9.999999747378752e-05f,
+		1.0f, 1.0f,
+		9.999999747378752e-05f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0xE18 */
+MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real4[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		0.0008089999901130795f, 0.008562999777495861f,
+		1.0f, 1.0f,
+		0.0008089999901130795f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+
 /* MObjSub pointer array @ 0xE88 (32 bytes: leading pad + 7 pointers + NULL) */
-u32 dStageMetalFile2_Layer0MObj_MObjSubPtrArray[] = {
-	0x00000000, 0x00000000, 0x03A5030E, 0x03A6032C,
-	0x03A7034A, 0x03A80368, 0x05D90386, 0x00000000,
+MObjSub *dStageMetalFile2_Layer0MObj_MObjSubPtrArray[6] = {
+	dStageMetalFile2_Layer0MObj_MObjSub_real0,
+	dStageMetalFile2_Layer0MObj_MObjSub_real1,
+	dStageMetalFile2_Layer0MObj_MObjSub_real2,
+	dStageMetalFile2_Layer0MObj_MObjSub_real3,
+	dStageMetalFile2_Layer0MObj_MObjSub_real4,
+	NULL,
 };
 
 /* Raw data from file offset 0x0EA8 to 0x1B10 (3176 bytes) */
@@ -217,7 +413,7 @@ Gfx dStageMetalFile2_DL_0x1708[129] = {
 /* DObjDesc: Layer0DObj @ 0x1B10 (3 entries) */
 DObjDesc dStageMetalFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageMetalFile2_gap_0x0EA8 + 0x860), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageMetalFile2_DL_0x1708, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -396,27 +592,30 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[] = {
 
 PAD(4);
 
-/* MObjSub-list head @ 0x1dd0 — 18-entry MObjSub** array.
- * The real MObjSub data starts at +0x48 (dStageMetalFile2_Layer1MObj_MObjSub_real below). */
-MObjSub **dStageMetalFile2_Layer1MObj_MObjSub[18] = {
+/* MObjSub-list head @ 0x1dd0 — MObjSub** table ([0] NULL, [1] -> sub array). */
+MObjSub **dStageMetalFile2_Layer1MObj_MObjSub[2] = {
 	NULL,
-	NULL,
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0x9A8),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0x9D8),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0x9F0),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA08),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA20),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA38),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA50),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA68),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA80),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xA98),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAB0),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAC8),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAE0),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xAF8),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xB10),
-	(MObjSub **)((u8*)&dStageMetalFile2_Tex_0x0008 + 0xB28),
+	dStageMetalFile2_gap_0x1E48_sub_0x178,
+};
+
+/* Palette-pointer table @ 0x1dd8 — Layer1MObj_MObjSub_real.palettes target (16 palettes). */
+void *dStageMetalFile2_Layer1MObj_MObjSub_real_palettes[16] = {
+	(void *)dStageMetalFile2_palette_0x09B0,
+	(void *)dStageMetalFile2_palette_0x09E0,
+	(void *)dStageMetalFile2_palette_0x09F8,
+	(void *)dStageMetalFile2_palette_0x0A10,
+	(void *)dStageMetalFile2_palette_0x0A28,
+	(void *)dStageMetalFile2_palette_0x0A40,
+	(void *)dStageMetalFile2_palette_0x0A58,
+	(void *)dStageMetalFile2_palette_0x0A70,
+	(void *)dStageMetalFile2_palette_0x0A88,
+	(void *)dStageMetalFile2_palette_0x0AA0,
+	(void *)dStageMetalFile2_palette_0x0AB8,
+	(void *)dStageMetalFile2_palette_0x0AD0,
+	(void *)dStageMetalFile2_palette_0x0AE8,
+	(void *)dStageMetalFile2_palette_0x0B00,
+	(void *)dStageMetalFile2_palette_0x0B18,
+	(void *)dStageMetalFile2_palette_0x0B30,
 };
 
 /* The real MObjSub @ +0x48 (was folded into the prior
@@ -431,7 +630,7 @@ MObjSub dStageMetalFile2_Layer1MObj_MObjSub_real[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)&dStageMetalFile2_Layer1MObj_MObjSub + 0x8),
+		(void**)dStageMetalFile2_Layer1MObj_MObjSub_real_palettes,
 		0x0004,
 		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
@@ -451,27 +650,91 @@ MObjSub dStageMetalFile2_Layer1MObj_MObjSub_real[1] = {
 };
 
 /* Raw data from file offset 0x1E48 to 0x2EE0 (4248 bytes) */
-/* gap sub-block @ 0x1E90 (was gap+0x48, 64 bytes) */
-u8 dStageMetalFile2_gap_0x1E48_sub_0x48[64] = {
-	#include <StageMetalFile2/gap_0x1E48_sub_0x48.data.inc.c>
+/* Palette-pointer table @ 0x1E90 — 16 palette pointers (MObjSub.palettes target). */
+void *dStageMetalFile2_gap_0x1E48_sub_0x48[16] = {
+	(void *)dStageMetalFile2_palette_0x09B0,
+	(void *)dStageMetalFile2_palette_0x09E0,
+	(void *)dStageMetalFile2_palette_0x09F8,
+	(void *)dStageMetalFile2_palette_0x0A10,
+	(void *)dStageMetalFile2_palette_0x0A28,
+	(void *)dStageMetalFile2_palette_0x0A40,
+	(void *)dStageMetalFile2_palette_0x0A58,
+	(void *)dStageMetalFile2_palette_0x0A70,
+	(void *)dStageMetalFile2_palette_0x0A88,
+	(void *)dStageMetalFile2_palette_0x0AA0,
+	(void *)dStageMetalFile2_palette_0x0AB8,
+	(void *)dStageMetalFile2_palette_0x0AD0,
+	(void *)dStageMetalFile2_palette_0x0AE8,
+	(void *)dStageMetalFile2_palette_0x0B00,
+	(void *)dStageMetalFile2_palette_0x0B18,
+	(void *)dStageMetalFile2_palette_0x0B30,
 };
 
 /* gap sub-block @ 0x1ED0 (was gap+0x88, 120 bytes) */
-u8 dStageMetalFile2_gap_0x1E48_sub_0x88[120] = {
-	#include <StageMetalFile2/gap_0x1E48_sub_0x88.data.inc.c>
+MObjSub dStageMetalFile2_gap_0x1E48_sub_0x88[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x000F, 0x0001,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)dStageMetalFile2_gap_0x1E48_sub_0x48,
+		0x0004,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0x99, 0x00 } },
+		{ { 0x4C, 0x4C, 0x2E, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
 /* gap sub-block @ 0x1F48 (was gap+0x100, 120 bytes) */
-u8 dStageMetalFile2_gap_0x1E48_sub_0x100[120] = {
-	#include <StageMetalFile2/gap_0x1E48_sub_0x100.data.inc.c>
+MObjSub dStageMetalFile2_gap_0x1E48_sub_0x100[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		0.01015700027346611f, 0.009943000040948391f,
+		1.0f, 1.0f,
+		0.01015700027346611f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x000E2205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
-/* gap sub-block @ 0x1FC0 (was gap+0x178, 16 bytes) */
-/* MObjSub.sprites pointer table @ +0x1FC0 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dStageMetalFile2_gap_0x1E48_sub_0x178[4] = {
-	(void *)&dStageMetalFile2_Layer1MObj_MObjSub_real,
-	(void *)dStageMetalFile2_gap_0x1E48_sub_0x88,
-	(void *)dStageMetalFile2_gap_0x1E48_sub_0x100,
+/* MObjSub* array @ 0x1FC0 — the 3 Layer1 MObjSubs (Layer1MObj_MObjSub[1] points here). */
+MObjSub *dStageMetalFile2_gap_0x1E48_sub_0x178[4] = {
+	dStageMetalFile2_Layer1MObj_MObjSub_real,
+	dStageMetalFile2_gap_0x1E48_sub_0x88,
+	dStageMetalFile2_gap_0x1E48_sub_0x100,
 	NULL,
 };
 
@@ -563,7 +826,7 @@ Gfx dStageMetalFile2_DL_0x2950[178] = {
 /* DObjDesc: Layer1DObj @ 0x2EE0 (3 entries) */
 DObjDesc dStageMetalFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageMetalFile2_gap_0x1E48 + 0xB08), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageMetalFile2_DL_0x2950, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -817,7 +1080,7 @@ Gfx dStageMetalFile2_DL_0x3368[32] = {
 /* DObjDesc: Layer2DObj @ 0x3468 (3 entries) */
 DObjDesc dStageMetalFile2_Layer2DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageMetalFile2_gap_0x3298 + 0xD0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageMetalFile2_DL_0x3368, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -863,131 +1126,147 @@ u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[] = {
 
 PAD(8);
 
-extern u32 dStageMetalFile2_Layer3MObj_MObjSubPtrArray[];
+extern MObjSub *dStageMetalFile2_Layer3MObj_MObjSubPtrArray[];
 
-/* MObjSub array: Layer3MObj @ 0x3550 (4 entries) */
-MObjSub dStageMetalFile2_Layer3MObj_MObjSub[4] = {
-	/* [0] @ 0x3550 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)((u8*)dStageMetalFile2_Layer3MObj_MObjSubPtrArray + 0x8),
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		0.004556000232696533f, 9.999999747378752e-05f,
-		1.0f, 1.0f,
-		(void**)0x3B954A80,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [1] @ 0x35C8 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		9.999999747378752e-05f, 0.0008239999879151583f,
-		1.0f, 1.0f,
-		(void**)0x38D1B717,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [2] @ 0x3640 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		9.999999747378752e-05f, 9.999999747378752e-05f,
-		1.0f, 1.0f,
-		(void**)0x38D1B717,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
-	/* [3] @ 0x36B8 */
-	{
-		0x0000,
-		0x00, 0x00,
-		(void**)0x00000000,
-		0x0000, 0x0202, 0x0000, 0x0000,
-		2097152,
-		1.4601954591699284e-38f, 2.802596928649634e-45f,
-		9.999999747378752e-05f, 0.009999999776482582f,
-		1.0f, 1.0f,
-		(void**)0x38D1B717,
-		0x3F80,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x0020, 0x0002,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x06, { 0x22, 0x05 },
-		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x08 } },
-		-256, 1280068608,
-		0, 0,
-	},
+/* MObjSub-list head @ 0x3550 — MObjSub** table ([0] NULL, [1] -> PtrArray). */
+MObjSub **dStageMetalFile2_Layer3MObj_MObjSub[2] = {
+	NULL,
+	dStageMetalFile2_Layer3MObj_MObjSubPtrArray,
 };
 
+/* MObjSub @ 0x3558 */
+MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real0[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		0.004556000232696533f, 9.999999747378752e-05f,
+		1.0f, 1.0f,
+		0.004556000232696533f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0x35D0 */
+MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real1[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		9.999999747378752e-05f, 0.0008239999879151583f,
+		1.0f, 1.0f,
+		9.999999747378752e-05f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0x3648 */
+MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real2[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		9.999999747378752e-05f, 9.999999747378752e-05f,
+		1.0f, 1.0f,
+		9.999999747378752e-05f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+/* MObjSub @ 0x36C0 */
+MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real3[1] = {
+	{
+		0x0000,
+		0x02, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x009F, 0x004F,
+		2,
+		9.999999747378752e-05f, 0.009999999776482582f,
+		1.0f, 1.0f,
+		9.999999747378752e-05f, 1.0f,
+		(void**)0x00000000,
+		0x0020,
+		0x00, 0x02,
+		0x0000,
+		0x0000, 0x0000, 0x0000,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00062205,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x4C, 0x4C, 0x4C, 0x00 } },
+		0, 0,
+		0, 0,
+	}
+};
+
+
 /* MObjSub pointer array @ 0x3730 (28 bytes: leading pad + 6 pointers + NULL) */
-u32 dStageMetalFile2_Layer3MObj_MObjSubPtrArray[] = {
-	0x00000000, 0x00000000, 0x0DCF0D56, 0x0DD00D74,
-	0x0DD10D92, 0x0EEB0DB0, 0x00000000,
+MObjSub *dStageMetalFile2_Layer3MObj_MObjSubPtrArray[5] = {
+	dStageMetalFile2_Layer3MObj_MObjSub_real0,
+	dStageMetalFile2_Layer3MObj_MObjSub_real1,
+	dStageMetalFile2_Layer3MObj_MObjSub_real2,
+	dStageMetalFile2_Layer3MObj_MObjSub_real3,
+	NULL,
 };
 
 /* Raw data from file offset 0x374C to 0x3DD8 (1676 bytes) */
 /* gap sub-block @ 0x374C (was gap+0x0, 4 bytes) */
-u8 dStageMetalFile2_gap_0x374C[4] = {
-	#include <StageMetalFile2/gap_0x374C.data.inc.c>
-};
+PAD(4);
 
 /* gap sub-block @ 0x3750 (was gap+0x4, 144 bytes) */
 Vtx dStageMetalFile2_gap_0x374C_sub_0x4[9] = {
@@ -1017,7 +1296,7 @@ Gfx dStageMetalFile2_DL_0x3B50[81] = {
 /* DObjDesc: Layer3DObj @ 0x3DD8 (3 entries) */
 DObjDesc dStageMetalFile2_Layer3DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dStageMetalFile2_gap_0x374C + 0x404), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dStageMetalFile2_DL_0x3B50, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

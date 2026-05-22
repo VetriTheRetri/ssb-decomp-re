@@ -45,7 +45,8 @@ u16 dStagePupupuImages_Lut_0x0468_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x0490 (128 bytes) */
+/* Texture: 0x0490 (128 bytes) — StageExplainFile2 gap_0x018C_sub_0x274 DL */
+/* @tex fmt=CI4 dim=16x16 lut=dStagePupupuImages_Lut_0x0468_palette */
 u8 dStagePupupuImages_Tex_0x0490[128] = {
 	#include <StagePupupuImages/Tex_0x0490.tex.inc.c>
 };
@@ -59,7 +60,8 @@ u16 dStagePupupuImages_Lut_0x0518_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x0540 (128 bytes) */
+/* Texture: 0x0540 (128 bytes) — StageExplainFile2 gap_0x018C_sub_0x274 DL */
+/* @tex fmt=CI4 dim=16x16 lut=dStagePupupuImages_Lut_0x0518_palette */
 u8 dStagePupupuImages_Tex_0x0540[128] = {
 	#include <StagePupupuImages/Tex_0x0540.tex.inc.c>
 };
@@ -115,7 +117,8 @@ u16 dStagePupupuImages_Lut_0x1858_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x1880 (512 bytes) */
+/* Texture: 0x1880 (512 bytes) — StageExplainFile2 DL_0x0040 / DL_0x08E0 */
+/* @tex fmt=CI4 dim=32x32 lut=dStagePupupuImages_Lut_0x1858_palette */
 u8 dStagePupupuImages_Tex_0x1880[512] = {
 	#include <StagePupupuImages/Tex_0x1880.tex.inc.c>
 };
@@ -129,7 +132,8 @@ u16 dStagePupupuImages_Lut_0x1A88_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x1AB0 (256 bytes) */
+/* Texture: 0x1AB0 (256 bytes) — StageExplainFile2 gap_0x018C_sub_0x274 DL */
+/* @tex fmt=CI4 dim=16x32 lut=dStagePupupuImages_Lut_0x1A88_palette */
 u8 dStagePupupuImages_Tex_0x1AB0[256] = {
 	#include <StagePupupuImages/Tex_0x1AB0.tex.inc.c>
 };
@@ -171,7 +175,8 @@ u16 dStagePupupuImages_Lut_0x2248_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x2270 (1024 bytes) */
+/* Texture: 0x2270 (1024 bytes) — StageExplainFile2 DL_0x0C20 / gap_0x018C_sub_0x274 DL */
+/* @tex fmt=CI4 dim=32x64 lut=dStagePupupuImages_Lut_0x2248_palette */
 u8 dStagePupupuImages_Tex_0x2270[1024] = {
 	#include <StagePupupuImages/Tex_0x2270.tex.inc.c>
 };
@@ -185,7 +190,8 @@ u16 dStagePupupuImages_Lut_0x2678_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x26A0 (512 bytes) */
+/* Texture: 0x26A0 (512 bytes) — StageExplainFile2 DL_0x0C20 */
+/* @tex fmt=CI4 dim=32x32 lut=dStagePupupuImages_Lut_0x2678_palette */
 u8 dStagePupupuImages_Tex_0x26A0[512] = {
 	#include <StagePupupuImages/Tex_0x26A0.tex.inc.c>
 };
@@ -199,7 +205,8 @@ u16 dStagePupupuImages_Lut_0x28A8_palette[16] = {
 
 PAD(8);
 
-/* Texture: 0x28D0 (512 bytes) */
+/* Texture: 0x28D0 (512 bytes) — StageExplainFile2 gap_0x018C_sub_0x274 DL */
+/* @tex fmt=CI4 dim=32x32 lut=dStagePupupuImages_Lut_0x28A8_palette */
 u8 dStagePupupuImages_Tex_0x28D0[512] = {
 	#include <StagePupupuImages/Tex_0x28D0.tex.inc.c>
 };

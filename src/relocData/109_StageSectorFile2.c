@@ -4051,7 +4051,7 @@ DObjDesc dStageSectorFile2_Layer1Anim_DObj_0x2BF8[3] = {
 
 /* @ 0x2C7C — joint tables -> 3 AObjEvent32 scripts */
 extern u32 dStageSectorFile2_Layer1Anim_AnimJoint_0x2C88[8];
-extern u32 dStageSectorFile2_Layer1Anim_sub_0x2CD4[5];
+extern AObjEvent32 *dStageSectorFile2_Layer1Anim_sub_0x2CD4[5];
 extern u32 dStageSectorFile2_Layer1Anim_AnimJoint_0x2CE8[8];
 
 AObjEvent32 *dStageSectorFile2_Layer1Anim_sub_0x2C7C[3] = {

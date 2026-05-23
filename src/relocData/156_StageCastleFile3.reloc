@@ -1,0 +1,6 @@
+# Relocation metadata for file 156 (StageCastleFile3)
+# Format: <type> <ptr_label> <target_label>
+# Two intern chain slots: the AnimJoint root pointer at +0x00, and the
+# SetAnim loopback inside the script. Both target the script start.
+intern dStageCastleFile3_AnimJointRoot dStageCastleFile3_AnimJoint_0x0004
+intern dStageCastleFile3_AnimJoint_0x0004+0x2C dStageCastleFile3_AnimJoint_0x0004

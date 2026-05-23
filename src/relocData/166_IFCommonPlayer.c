@@ -51,30 +51,50 @@ DObjDesc dIFCommonPlayer_Arrows[] = {
 
 PAD(12);
 
-/* Raw data from file offset 0x0270 to 0x02C8 (88 bytes) */
-u32 dIFCommonPlayer_Arrows_AnimJoint[22] = {
-	aobjEvent32End(),
-	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x10),
-	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x24),
-	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x38),
+extern u32 dIFCommonPlayer_Arrows_AnimJoint_0x0280[5];
+extern u32 dIFCommonPlayer_Arrows_AnimJoint_0x0294[5];
+extern u32 dIFCommonPlayer_Arrows_AnimJoint_0x02A8[4];
+
+/* @ 0x0270 — joint anim table (4 entries: one per DObj in dIFCommonPlayer_Arrows).
+ * Consumed by gcAddAnimJointAll() as AObjEvent32** -- one script ptr per DObj
+ * walked by gcGetTreeDObjNext(). Root joint has no anim. */
+AObjEvent32 *dIFCommonPlayer_Arrows_AnimJoint[4] = {
+	NULL,
+	(AObjEvent32 *)dIFCommonPlayer_Arrows_AnimJoint_0x0280,
+	(AObjEvent32 *)dIFCommonPlayer_Arrows_AnimJoint_0x0294,
+	(AObjEvent32 *)dIFCommonPlayer_Arrows_AnimJoint_0x02A8,
+};
+
+/* @ 0x0280 — AObjEvent32 script for joint 1 (DL0) */
+u32 dIFCommonPlayer_Arrows_AnimJoint_0x0280[5] = {
 	aobjEvent32SetFlags(0x000, 3),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetFlags(0x000, 1),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x10),
+	(u32)dIFCommonPlayer_Arrows_AnimJoint_0x0280,
+};
+
+/* @ 0x0294 — AObjEvent32 script for joint 2 (DL1) */
+u32 dIFCommonPlayer_Arrows_AnimJoint_0x0294[5] = {
 	aobjEvent32SetFlags(0x002, 2),
 	aobjEvent32SetFlags(0x000, 4),
 	aobjEvent32SetFlags(0x002, 3),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x24),
+	(u32)dIFCommonPlayer_Arrows_AnimJoint_0x0294,
+};
+
+/* @ 0x02A8 — AObjEvent32 script for joint 3 (DL2) */
+u32 dIFCommonPlayer_Arrows_AnimJoint_0x02A8[4] = {
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetFlags(0x000, 4),
 	aobjEvent32SetAnim(0x000, 0),
-	(u32)((u8*)dIFCommonPlayer_Arrows_AnimJoint + 0x38),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	    0xDF000000,
-	aobjEvent32End(),
+	(u32)dIFCommonPlayer_Arrows_AnimJoint_0x02A8,
+};
+
+PAD(8);
+
+Gfx dIFCommonPlayer_Arrows_EmptyDL[1] = {
+	gsSPEndDisplayList(),
 };
 
 /* Raw data from file offset 0x02C8 to 0x03D0 (264 bytes) */

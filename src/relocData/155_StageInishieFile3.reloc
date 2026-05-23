@@ -40,7 +40,7 @@ intern dStageInishieFile3_DL_0x10D0+0xF4 dStageInishieFile3_Vtx_0x1090
 intern dStageInishieFile3_DObjDesc_0x11F8+0x30 dStageInishieFile3_DL_0x10D0
 intern dStageInishieFile3_mobjlink_0x127C+0x8 dStageInishieFile3_AnimJoint_0x1288
 intern dStageInishieFile3_mobjlink_0x13B0+0x4 dStageInishieFile3_AnimJoint_0x13B8
-extern dStageInishieFile3_DL_0x01C8+0x3C 0x3710
-extern dStageInishieFile3_DL_0x05F0+0x44 0x35D0
-extern dStageInishieFile3_DL_0x0B40+0x5C 0x3620
-extern dStageInishieFile3_DL_0x10D0+0x44 0x35F8
+extern dStageInishieFile3_DL_0x01C8+0x3C dStageInishieFile2_Lut_0x3710_palette  # -> file 107 (StageInishieFile2)
+extern dStageInishieFile3_DL_0x05F0+0x44 dStageInishieFile2_Lut_0x35D0_palette  # -> file 107 (StageInishieFile2)
+extern dStageInishieFile3_DL_0x0B40+0x5C dStageInishieFile2_Lut_0x3620_palette  # -> file 107 (StageInishieFile2)
+extern dStageInishieFile3_DL_0x10D0+0x44 dStageInishieFile2_Lut_0x35F8_palette  # -> file 107 (StageInishieFile2)

@@ -1,20 +1,20 @@
 # Relocation metadata for file 148
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2NessFile2_DL_0x0480+0x74 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x138  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x0480+0xA4 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x148  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x0480+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x0480+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x0480+0xC4 dGRBonus2NessFile2_gap_0x0000
-extern dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x74 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x138  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_gap_0x0000_sub_0x580+0xA4 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x148  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_gap_0x0000_sub_0x580+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_gap_0x0000_sub_0x580+0xC4 dGRBonus2NessFile2_gap_0x0000
-extern dGRBonus2NessFile2_DL_0x0680+0x74 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x138  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x0680+0xA4 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x148  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x0680+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x0680+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x0680+0xC4 dGRBonus2NessFile2_gap_0x0000
-extern dGRBonus2NessFile2_gap_0x0000_sub_0x780+0x74 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x138  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_gap_0x0000_sub_0x780+0xA4 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x148  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_gap_0x0000_sub_0x780+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_gap_0x0000_sub_0x780+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_gap_0x0000_sub_0x780+0xC4 dGRBonus2NessFile2_gap_0x0000
-extern dGRBonus2NessFile2_DL_0x0880+0x74 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x138  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x0880+0xA4 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x148  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x0880+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x0880+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x0880+0xC4 dGRBonus2NessFile2_gap_0x0000
 intern dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x3C dGRBonus2NessFile2_gap_0x0000_sub_0x40
 intern dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x4C dGRBonus2NessFile2_gap_0x0000_sub_0x80
@@ -46,12 +46,12 @@ intern dGRBonus2NessFile2_Layer0DObj+0xB4 dGRBonus2NessFile2_DLLink_0x0B40
 intern dGRBonus2NessFile2_Layer0DObj+0xE0 dGRBonus2NessFile2_DLLink_0x0B50
 intern dGRBonus2NessFile2_Layer0DObj+0x10C dGRBonus2NessFile2_DLLink_0x0B60
 intern dGRBonus2NessFile2_DL_0x25F0+0x44 dGRBonus2NessFile2_DL_0x2640
-extern dGRBonus2NessFile2_DL_0x2640+0x2C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2640+0x54 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0xF0  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0x2C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0x54 dBonus1CommonImages4_Tex_0x0A70  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2640+0x74 dGRBonus2NessFile2_gap_0x0CD0
 intern dGRBonus2NessFile2_DL_0x2640+0x9C dGRBonus2NessFile2_gap_0x0CD0_sub_0x80
 intern dGRBonus2NessFile2_DL_0x2640+0xC4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x100
-extern dGRBonus2NessFile2_DL_0x2640+0xEC dGRBonus2NessFile2_gap_0x0000_sub_0x440+0x18  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0xEC dBonus1CommonImages4_Lut_0x0458_palette  # -> file 123 (Bonus1CommonImages4)
 extern dGRBonus2NessFile2_DL_0x2640+0x114 dGRBonus2NessFile2_DL_0x0480  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2640+0x134 dGRBonus2NessFile2_gap_0x0CD0_sub_0x140
 intern dGRBonus2NessFile2_DL_0x2640+0x15C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1C0
@@ -63,16 +63,16 @@ intern dGRBonus2NessFile2_DL_0x2640+0x23C dGRBonus2NessFile2_gap_0x0CD0_sub_0x4E
 intern dGRBonus2NessFile2_DL_0x2640+0x26C dGRBonus2NessFile2_gap_0x0CD0_sub_0x5A0
 intern dGRBonus2NessFile2_DL_0x2640+0x2AC dGRBonus2NessFile2_gap_0x0CD0_sub_0x6E0
 intern dGRBonus2NessFile2_DL_0x2640+0x2E4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x7E0
-extern dGRBonus2NessFile2_DL_0x2640+0x314 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2640+0x33C dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0x314 dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0x33C dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2640+0x35C dGRBonus2NessFile2_gap_0x0CD0_sub_0x860
 intern dGRBonus2NessFile2_DL_0x2640+0x394 dGRBonus2NessFile2_gap_0x0CD0_sub_0x960
 intern dGRBonus2NessFile2_DL_0x2640+0x3C4 dGRBonus2NessFile2_gap_0x0CD0_sub_0xA20
 intern dGRBonus2NessFile2_DL_0x2640+0x40C dGRBonus2NessFile2_gap_0x0CD0_sub_0xBA0
 intern dGRBonus2NessFile2_DL_0x2640+0x454 dGRBonus2NessFile2_gap_0x0CD0_sub_0xD00
 intern dGRBonus2NessFile2_DL_0x2640+0x47C dGRBonus2NessFile2_gap_0x0CD0_sub_0xD80
-extern dGRBonus2NessFile2_DL_0x2640+0x4DC dGRBonus2NessFile2_gap_0x0000_sub_0x780+0x38  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2640+0x504 dGRBonus2NessFile2_gap_0x0000_sub_0x780+0x60  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0x4DC dBonus1CommonImages4_Lut_0x07B8_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2640+0x504 dBonus1CommonImages4_Tex_0x07E0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2640+0x524 dGRBonus2NessFile2_gap_0x0CD0_sub_0xF60
 intern dGRBonus2NessFile2_DL_0x2640+0x574 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1060
 intern dGRBonus2NessFile2_DL_0x2640+0x5B4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1120
@@ -82,58 +82,58 @@ intern dGRBonus2NessFile2_DL_0x2640+0x664 dGRBonus2NessFile2_gap_0x0CD0_sub_0x12
 intern dGRBonus2NessFile2_DL_0x2640+0x684 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1300
 intern dGRBonus2NessFile2_DL_0x2640+0x6C4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x13E0
 intern dGRBonus2NessFile2_DL_0x2640+0x6E4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1420
-extern dGRBonus2NessFile2_DL_0x2D38+0x1C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2D38+0x44 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2D38+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2D38+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2D38+0x64 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460
 intern dGRBonus2NessFile2_DL_0x2D38+0x8C dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0
-extern dGRBonus2NessFile2_DL_0x2D38+0xB4 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2D38+0xDC dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2D38+0xB4 dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2D38+0xDC dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2D38+0xFC dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520
-extern dGRBonus2NessFile2_DL_0x2E50+0x1C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2E50+0x44 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2E50+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2E50+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2E50+0x64 dGRBonus2NessFile2_gap_0x0CD0_sub_0x15A0
 intern dGRBonus2NessFile2_DL_0x2E50+0x8C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1620
-extern dGRBonus2NessFile2_DL_0x2E50+0xB4 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2E50+0xDC dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2E50+0xB4 dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2E50+0xDC dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2E50+0xFC dGRBonus2NessFile2_gap_0x0CD0_sub_0x1660
-extern dGRBonus2NessFile2_DL_0x2F68+0x1C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2F68+0x44 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2F68+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2F68+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2F68+0x64 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460+0x20
 intern dGRBonus2NessFile2_DL_0x2F68+0x6C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460+0x60
 intern dGRBonus2NessFile2_DL_0x2F68+0x74 dGRBonus2NessFile2_gap_0x0CD0_sub_0x16E0
 intern dGRBonus2NessFile2_DL_0x2F68+0x9C dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0+0x10
 intern dGRBonus2NessFile2_DL_0x2F68+0xA4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1720
-extern dGRBonus2NessFile2_DL_0x2F68+0xCC dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x2F68+0xEC dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2F68+0xCC dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x2F68+0xEC dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x2F68+0x10C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520+0x40
 intern dGRBonus2NessFile2_DL_0x2F68+0x114 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1740
-extern dGRBonus2NessFile2_DL_0x3098+0x1C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x3098+0x44 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x3098+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x3098+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x3098+0x64 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1780
 intern dGRBonus2NessFile2_DL_0x3098+0x8C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1800
-extern dGRBonus2NessFile2_DL_0x3098+0xB4 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x3098+0xD4 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x3098+0xB4 dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x3098+0xD4 dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x3098+0xF4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1840
-extern dGRBonus2NessFile2_DL_0x31A8+0x1C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x31A8+0x44 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x31A8+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x31A8+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x31A8+0x64 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460+0x20
 intern dGRBonus2NessFile2_DL_0x31A8+0x6C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460+0x60
 intern dGRBonus2NessFile2_DL_0x31A8+0x74 dGRBonus2NessFile2_gap_0x0CD0_sub_0x18C0
 intern dGRBonus2NessFile2_DL_0x31A8+0x9C dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0+0x10
 intern dGRBonus2NessFile2_DL_0x31A8+0xA4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1900
-extern dGRBonus2NessFile2_DL_0x31A8+0xCC dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x31A8+0xF4 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x31A8+0xCC dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x31A8+0xF4 dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x31A8+0x114 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520+0x40
 intern dGRBonus2NessFile2_DL_0x31A8+0x11C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1840
-extern dGRBonus2NessFile2_DL_0x32E0+0x1C dGRBonus2NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x32E0+0x44 dGRBonus2NessFile2_gap_0x0000_sub_0x980+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x32E0+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x32E0+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x32E0+0x64 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460+0x20
 intern dGRBonus2NessFile2_DL_0x32E0+0x6C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460+0x60
 intern dGRBonus2NessFile2_DL_0x32E0+0x74 dGRBonus2NessFile2_gap_0x0CD0_sub_0x18C0
 intern dGRBonus2NessFile2_DL_0x32E0+0x9C dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0+0x10
 intern dGRBonus2NessFile2_DL_0x32E0+0xA4 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1900
-extern dGRBonus2NessFile2_DL_0x32E0+0xCC dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x8  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2NessFile2_DL_0x32E0+0xF4 dGRBonus2NessFile2_gap_0x0000_sub_0x580+0x30  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x32E0+0xCC dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2NessFile2_DL_0x32E0+0xF4 dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2NessFile2_DL_0x32E0+0x114 dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520+0x40
 intern dGRBonus2NessFile2_DL_0x32E0+0x11C dGRBonus2NessFile2_gap_0x0CD0_sub_0x1840
 intern dGRBonus2NessFile2_DLLink_0x3430+0x4 dGRBonus2NessFile2_DL_0x25F0
@@ -155,19 +155,19 @@ intern dGRBonus2NessFile2_MPGeometryData_0x3DC0+0x8 dGRBonus2NessFile2_gap_0x37E
 intern dGRBonus2NessFile2_MPGeometryData_0x3DC0+0xC dGRBonus2NessFile2_gap_0x37E4_sub_0x378
 intern dGRBonus2NessFile2_MPGeometryData_0x3DC0+0x10 dGRBonus2NessFile2_gap_0x37E4_sub_0x488
 intern dGRBonus2NessFile2_MPGeometryData_0x3DC0+0x18 dGRBonus2NessFile2_gap_0x37E4_sub_0x5BC
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x8 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x48
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x30 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x64
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x34 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0xA0
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x38 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0xDC
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x3C dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x130
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x40 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x17C
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x44 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x1B8
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x60 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x48
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x9C dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x64
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0xD8 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0xA0
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x12C dGRBonus2NessFile2_Layer1Anim_AnimJoint+0xDC
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x178 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x130
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x1B4 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x17C
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x1F0 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x1B8
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x2B4 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x2BC
-intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x2D4 dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x2BC
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x8 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x48
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x30 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x64
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x34 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0xA0
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x38 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0xDC
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x3C dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x130
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x40 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x17C
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint+0x44 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x1B8
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x48+0x18 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x48
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x64+0x38 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x64
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0xA0+0x38 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0xA0
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0xDC+0x50 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0xDC
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x130+0x48 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x130
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x17C+0x38 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x17C
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x1B8+0x38 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x1B8
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x2B4+0x4 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x2BC
+intern dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x2BC+0x18 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x2BC

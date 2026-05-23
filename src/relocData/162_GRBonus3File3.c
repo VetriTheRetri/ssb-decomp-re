@@ -7,10 +7,10 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
-extern u32 dGRBonus3File3_AnimJoint_0x0124[];
-extern u32 dGRBonus3File3_AnimJoint_0x0150[];
-extern u32 dGRBonus3File3_AnimJoint_0x018C[];
-extern u32 dGRBonus3File3_AnimJoint_0x01C8[];
+extern u32 dGRBonus3File3_AnimJoint_0x0124[11];
+extern u32 dGRBonus3File3_AnimJoint_0x0150[15];
+extern u32 dGRBonus3File3_AnimJoint_0x018C[15];
+extern u32 dGRBonus3File3_AnimJoint_0x01C8[16];
 
 /* @ 0x0000 — joint tree (6 entries) */
 DObjDesc dGRBonus3File3_DObjDesc_0x0000[6] = {
@@ -87,7 +87,7 @@ u32 dGRBonus3File3_AnimJoint_0x018C[15] = {
 };
 
 /* @ 0x01C8 — AObjEvent32 animation script */
-u32 dGRBonus3File3_AnimJoint_0x01C8[20] = {
+u32 dGRBonus3File3_AnimJoint_0x01C8[16] = {
 	aobjEvent32SetVal0Rate(0x020, 0),
 	    0xC5610000,  /* -3600.0f */
 	aobjEvent32SetValAfterBlock(0x050, 0),
@@ -104,11 +104,10 @@ u32 dGRBonus3File3_AnimJoint_0x01C8[20] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus3File3_AnimJoint_0x01C8,
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
 };
+
+/* @ 0x0208, 16 bytes — 16-byte alignment padding after AObjEvent32 script. */
+PAD(16);
 
 /* @ 0x0218 — 16-colour TLUT */
 u16 dGRBonus3File3_LUT_0x0218[16] = {

@@ -251,21 +251,34 @@ u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[] = {
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x5450 to 0x5A98 (1608 bytes) */
-/* Pointer-table split fallback: chain-pointer table at the
- * head of the array, followed by raw data containing every
- * referenced (and orphan) script. The data block is dumped
- * as one u8[] include; fixRelocChain rewrites the table
- * entries to chain-encoded form per the .reloc. */
-extern u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[];
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, followed by per-joint AObjEvent32
+ * scripts. Forward decls so the table can reference them. */
+extern u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458[];
+extern u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[];
+
 AObjEvent32 *dSCExplainGraphics_StickTapForward_MatAnimJoint[2] = {
-	(AObjEvent32 *)((u8*)dSCExplainGraphics_StickTapForward_MatAnimJoint_data + 0x24),
+	(AObjEvent32 *)dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C,
 	NULL,
 };
 
-u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_data[12] = {
-	#include <SCExplainGraphics/StickTapForward_MatAnimJoint_data.data.inc.c>
+u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458[] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 10),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfter(0x001, 5),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32Wait(15),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)(dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458),
 };
+
+u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[] = {
+	(u32)(dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458),
+};
+
+PAD(8);
 /* @tex fmt=I4 */
 u8 dSCExplainGraphics_Tex_0x5488[520] = {
 	#include <SCExplainGraphics/Tex_0x5488.tex.inc.c>
@@ -340,24 +353,64 @@ Gfx dSCExplainGraphics_TapSparkDisplayList_DisplayList[20] = {
 	#include <SCExplainGraphics/TapSparkDisplayList.dl.inc.c>
 };
 
-/* Raw data from file offset 0x5C08 to 0x5C20 (24 bytes) */
-u8 dSCExplainGraphics_TapSparkDisplayList_post[24] = {
-	#include <SCExplainGraphics/TapSparkDisplayList_post.data.inc.c>
+/* DObjDLLink trailer for TapSparkDisplayList — 2-entry array with the
+ * standard {4, NULL} sentinel, followed by 8 bytes of alignment pad. */
+DObjDLLink dSCExplainGraphics_TapSparkDisplayList_DLLink[2] = {
+	{ 1, dSCExplainGraphics_TapSparkDisplayList_DisplayList },
+	{ 4, NULL },
 };
+PAD(8);
 
 /* Raw data from file offset 0x5C20 to 0x5E40 (544 bytes) */
-/* Pointer-table split fallback: chain-pointer table at the
- * head of the array, followed by raw data containing every
- * referenced (and orphan) script. The data block is dumped
- * as one u8[] include; fixRelocChain rewrites the table
- * entries to chain-encoded form per the .reloc. */
-extern u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data[];
+/* Script-table split: leading chain-pointer table at the
+ * start of the AnimJoint, then the script body, then the
+ * resources referenced by SpecialMoveRGB's display list
+ * (palette/texture order differs between US and JP). */
+extern u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24[];
+extern u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44[];
+
 AObjEvent32 *dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)((u8*)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data + 0x20),
+	(AObjEvent32 *)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44,
 };
 
-u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_data[135] = {
-	#include <SCExplainGraphics/TapSparkMatAnimJoint_MatAnimJoint_data.data.inc.c>
+u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24[] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfter(0x001, 3),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32Wait(6),
+	aobjEvent32End(),
+};
+
+u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44[] = {
+	(u32)(dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24),
+};
+
+PAD(16);
+
+#if defined(REGION_JP)
+/* JP: palette (32B) → PAD(8) → texture (384B) */
+u16 dSCExplainGraphics_SpecialMoveRGB_palette[16] = {
+	#include <SCExplainGraphics/SpecialMoveRGB_palette.palette.inc.c>
+};
+PAD(8);
+u8 dSCExplainGraphics_SpecialMoveRGB_tex[384] = {
+	#include <SCExplainGraphics/SpecialMoveRGB_tex.tex.inc.c>
+};
+#else
+/* US: texture (392B) → palette (32B) */
+u8 dSCExplainGraphics_SpecialMoveRGB_tex[392] = {
+	#include <SCExplainGraphics/SpecialMoveRGB_tex.tex.inc.c>
+};
+u16 dSCExplainGraphics_SpecialMoveRGB_palette[16] = {
+	#include <SCExplainGraphics/SpecialMoveRGB_palette.palette.inc.c>
+};
+#endif
+
+Vtx dSCExplainGraphics_SpecialMoveRGB_vtx[4] = {
+	#include <SCExplainGraphics/SpecialMoveRGB_vtx.vtx.inc.c>
 };
 
 /* DisplayList: SpecialMoveRGB @ 0x5E40 (232 bytes) */
@@ -366,9 +419,13 @@ Gfx dSCExplainGraphics_SpecialMoveRGB_DisplayList[29] = {
 };
 
 /* Raw data from file offset 0x5F28 to 0x5F40 (24 bytes) */
-u8 dSCExplainGraphics_SpecialMoveRGB_post[24] = {
-	#include <SCExplainGraphics/SpecialMoveRGB_post.data.inc.c>
+/* DObjDLLink trailer for SpecialMoveRGB — 2-entry array with the
+ * standard {4, NULL} sentinel, followed by 8 bytes of alignment pad. */
+DObjDLLink dSCExplainGraphics_SpecialMoveRGB_DLLink[2] = {
+	{ 1, dSCExplainGraphics_SpecialMoveRGB_DisplayList },
+	{ 4, NULL },
 };
+PAD(8);
 
 #if defined(REGION_JP)
 
@@ -639,8 +696,50 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText8 (300(304)x87 ci8, 15 tiles) */
-u8 dSCExplainGraphics_JPText8_tex[26568] = {
-    #include <SCExplainGraphics/JPText8.ci8.inc.c>
+u8 dSCExplainGraphics_JPText8_tex_00_00[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_01[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_02[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_03[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_03.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_04[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_04.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_05[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_05.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_06[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_06.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_07[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_07.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_08[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_08.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_09[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_09.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_10[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_10.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_11[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_11.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_12[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_12.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_13[1832] = {
+	#include <SCExplainGraphics/JPText8_tex_13.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText8_tex_00_14[920] = {
+	#include <SCExplainGraphics/JPText8_tex_14.tex.inc.c>
 };
 
 /* Palette: @ 0x10380 (16 colors RGBA5551) */
@@ -649,8 +748,8 @@ u16 dSCExplainGraphics_JPText8_palette[16] = {
 };
 
 /* Raw data from file offset 0x103A0 to 0x10580 (480 bytes) */
-u8 dSCExplainGraphics_JPText8_gap[480] = {
-	#include <SCExplainGraphics/JPText8_gap.data.inc.c>
+u16 dSCExplainGraphics_JPText8_palframes[240] = {
+	#include <SCExplainGraphics/JPText8_palframes.palette.inc.c>
 };
 
 /* Sprite: JPText8 */
@@ -658,21 +757,21 @@ u8 dSCExplainGraphics_JPText8_gap[480] = {
 /* Sprite: JPText8 (300x73 ci8) */
 
 Bitmap dSCExplainGraphics_JPText8_bitmaps[] = {
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x728, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0xE50, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x1578, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x1CA0, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x23C8, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x2AF0, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x3218, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x3940, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x4068, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x4790, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x4EB8, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x55E0, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x5D08, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex + 0x6430, 3, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_00, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_01, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_02, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_03, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_04, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_05, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_06, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_07, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_08, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_09, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_10, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_11, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_12, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_13, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_JPText8_tex_14, 3, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText8 = {
@@ -702,8 +801,17 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText9 (260(272)x51 ci4, 4 tiles) */
-u8 dSCExplainGraphics_JPText9_tex[6968] = {
-    #include <SCExplainGraphics/JPText9.ci4.inc.c>
+u8 dSCExplainGraphics_JPText9_tex_00_00[2048] = {
+	#include <SCExplainGraphics/JPText9_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText9_tex_00_01[2048] = {
+	#include <SCExplainGraphics/JPText9_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText9_tex_00_02[2048] = {
+	#include <SCExplainGraphics/JPText9_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText9_tex_00_03[824] = {
+	#include <SCExplainGraphics/JPText9_tex_03.tex.inc.c>
 };
 
 /* Palette: @ 0x12200 (16 colors RGBA5551) */
@@ -716,10 +824,10 @@ u16 dSCExplainGraphics_JPText9_palette[16] = {
 /* Sprite: JPText9 (260x48 ci4) */
 
 Bitmap dSCExplainGraphics_JPText9_bitmaps[] = {
-	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex, 15, 0 },
-	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex + 0x800, 15, 0 },
-	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex + 0x1000, 15, 0 },
-	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex + 0x1800, 6, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex_00, 15, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex_01, 15, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex_02, 15, 0 },
+	{ 260, 272, 0, 0, dSCExplainGraphics_JPText9_tex_03, 6, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText9 = {
@@ -749,8 +857,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText10 (204(208)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText10_tex[3448] = {
-    #include <SCExplainGraphics/JPText10.ci4.inc.c>
+u8 dSCExplainGraphics_JPText10_tex_00_00[1984] = {
+	#include <SCExplainGraphics/JPText10_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText10_tex_00_01[1464] = {
+	#include <SCExplainGraphics/JPText10_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x13030 (16 colors RGBA5551) */
@@ -763,8 +874,8 @@ u16 dSCExplainGraphics_JPText10_palette[16] = {
 /* Sprite: JPText10 (204x32 ci4) */
 
 Bitmap dSCExplainGraphics_JPText10_bitmaps[] = {
-	{ 204, 208, 0, 0, dSCExplainGraphics_JPText10_tex, 19, 0 },
-	{ 204, 208, 0, 0, dSCExplainGraphics_JPText10_tex + 0x7C0, 14, 0 },
+	{ 204, 208, 0, 0, dSCExplainGraphics_JPText10_tex_00, 19, 0 },
+	{ 204, 208, 0, 0, dSCExplainGraphics_JPText10_tex_01, 14, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText10 = {
@@ -794,8 +905,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText11 (160x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText11_tex[2656] = {
-    #include <SCExplainGraphics/JPText11.ci4.inc.c>
+u8 dSCExplainGraphics_JPText11_tex_00_00[2008] = {
+	#include <SCExplainGraphics/JPText11_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText11_tex_00_01[648] = {
+	#include <SCExplainGraphics/JPText11_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x13B28 (16 colors RGBA5551) */
@@ -808,8 +922,8 @@ u16 dSCExplainGraphics_JPText11_palette[16] = {
 /* Sprite: JPText11 (160x32 ci4) */
 
 Bitmap dSCExplainGraphics_JPText11_bitmaps[] = {
-	{ 160, 160, 0, 0, dSCExplainGraphics_JPText11_tex, 25, 0 },
-	{ 160, 160, 0, 0, dSCExplainGraphics_JPText11_tex + 0x7D8, 8, 0 },
+	{ 160, 160, 0, 0, dSCExplainGraphics_JPText11_tex_00, 25, 0 },
+	{ 160, 160, 0, 0, dSCExplainGraphics_JPText11_tex_01, 8, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText11 = {
@@ -883,8 +997,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText13 (134(144)x49 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText13_tex[3544] = {
-    #include <SCExplainGraphics/JPText13.ci4.inc.c>
+u8 dSCExplainGraphics_JPText13_tex_00_00[2024] = {
+	#include <SCExplainGraphics/JPText13_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText13_tex_00_01[1520] = {
+	#include <SCExplainGraphics/JPText13_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x14EF0 (16 colors RGBA5551) */
@@ -897,8 +1014,8 @@ u16 dSCExplainGraphics_JPText13_palette[16] = {
 /* Sprite: JPText13 (134x48 ci4) */
 
 Bitmap dSCExplainGraphics_JPText13_bitmaps[] = {
-	{ 134, 144, 0, 0, dSCExplainGraphics_JPText13_tex, 28, 0 },
-	{ 134, 144, 0, 0, dSCExplainGraphics_JPText13_tex + 0x7E8, 21, 0 },
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText13_tex_00, 28, 0 },
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText13_tex_01, 21, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText13 = {
@@ -928,8 +1045,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText14 (140(144)x49 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText14_tex[3544] = {
-    #include <SCExplainGraphics/JPText14.ci4.inc.c>
+u8 dSCExplainGraphics_JPText14_tex_00_00[2024] = {
+	#include <SCExplainGraphics/JPText14_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText14_tex_00_01[1520] = {
+	#include <SCExplainGraphics/JPText14_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x15D60 (16 colors RGBA5551) */
@@ -942,8 +1062,8 @@ u16 dSCExplainGraphics_JPText14_palette[16] = {
 /* Sprite: JPText14 (140x48 ci4) */
 
 Bitmap dSCExplainGraphics_JPText14_bitmaps[] = {
-	{ 140, 144, 0, 0, dSCExplainGraphics_JPText14_tex, 28, 0 },
-	{ 140, 144, 0, 0, dSCExplainGraphics_JPText14_tex + 0x7E8, 21, 0 },
+	{ 140, 144, 0, 0, dSCExplainGraphics_JPText14_tex_00, 28, 0 },
+	{ 140, 144, 0, 0, dSCExplainGraphics_JPText14_tex_01, 21, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText14 = {
@@ -973,8 +1093,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText15 (176x31 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText15_tex[2744] = {
-    #include <SCExplainGraphics/JPText15.ci4.inc.c>
+u8 dSCExplainGraphics_JPText15_tex_00_00[2032] = {
+	#include <SCExplainGraphics/JPText15_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText15_tex_00_01[712] = {
+	#include <SCExplainGraphics/JPText15_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x168B0 (16 colors RGBA5551) */
@@ -987,8 +1110,8 @@ u16 dSCExplainGraphics_JPText15_palette[16] = {
 /* Sprite: JPText15 (176x30 ci4) */
 
 Bitmap dSCExplainGraphics_JPText15_bitmaps[] = {
-	{ 176, 176, 0, 0, dSCExplainGraphics_JPText15_tex, 23, 0 },
-	{ 176, 176, 0, 0, dSCExplainGraphics_JPText15_tex + 0x7F0, 8, 0 },
+	{ 176, 176, 0, 0, dSCExplainGraphics_JPText15_tex_00, 23, 0 },
+	{ 176, 176, 0, 0, dSCExplainGraphics_JPText15_tex_01, 8, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText15 = {
@@ -1018,8 +1141,20 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText16 (162(168)x52 ci8, 5 tiles) */
-u8 dSCExplainGraphics_JPText16_tex[8776] = {
-    #include <SCExplainGraphics/JPText16.ci8.inc.c>
+u8 dSCExplainGraphics_JPText16_tex_00_00[2024] = {
+	#include <SCExplainGraphics/JPText16_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText16_tex_00_01[2024] = {
+	#include <SCExplainGraphics/JPText16_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText16_tex_00_02[2024] = {
+	#include <SCExplainGraphics/JPText16_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText16_tex_00_03[2024] = {
+	#include <SCExplainGraphics/JPText16_tex_03.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText16_tex_00_04[680] = {
+	#include <SCExplainGraphics/JPText16_tex_04.tex.inc.c>
 };
 
 /* Palette: @ 0x18B90 (16 colors RGBA5551) */
@@ -1028,8 +1163,8 @@ u16 dSCExplainGraphics_JPText16_palette[16] = {
 };
 
 /* Raw data from file offset 0x18BB0 to 0x18D90 (480 bytes) */
-u8 dSCExplainGraphics_JPText16_gap[480] = {
-	#include <SCExplainGraphics/JPText16_gap.data.inc.c>
+u16 dSCExplainGraphics_JPText16_palframes[240] = {
+	#include <SCExplainGraphics/JPText16_palframes.palette.inc.c>
 };
 
 /* Sprite: JPText16 */
@@ -1037,11 +1172,11 @@ u8 dSCExplainGraphics_JPText16_gap[480] = {
 /* Sprite: JPText16 (162x48 ci8) */
 
 Bitmap dSCExplainGraphics_JPText16_bitmaps[] = {
-	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex, 12, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0x7E8, 12, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0xFD0, 12, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0x17B8, 12, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex + 0x1FA0, 4, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex_00, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex_01, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex_02, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex_03, 12, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_JPText16_tex_04, 4, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText16 = {
@@ -1071,8 +1206,20 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText17 (174(176)x52 ci8, 5 tiles) */
-u8 dSCExplainGraphics_JPText17_tex[9192] = {
-    #include <SCExplainGraphics/JPText17.ci8.inc.c>
+u8 dSCExplainGraphics_JPText17_tex_00_00[1944] = {
+	#include <SCExplainGraphics/JPText17_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText17_tex_00_01[1944] = {
+	#include <SCExplainGraphics/JPText17_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText17_tex_00_02[1944] = {
+	#include <SCExplainGraphics/JPText17_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText17_tex_00_03[1944] = {
+	#include <SCExplainGraphics/JPText17_tex_03.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText17_tex_00_04[1416] = {
+	#include <SCExplainGraphics/JPText17_tex_04.tex.inc.c>
 };
 
 /* Palette: @ 0x1B220 (16 colors RGBA5551) */
@@ -1081,8 +1228,8 @@ u16 dSCExplainGraphics_JPText17_palette[16] = {
 };
 
 /* Raw data from file offset 0x1B240 to 0x1B420 (480 bytes) */
-u8 dSCExplainGraphics_JPText17_gap[480] = {
-	#include <SCExplainGraphics/JPText17_gap.data.inc.c>
+u16 dSCExplainGraphics_JPText17_palframes[240] = {
+	#include <SCExplainGraphics/JPText17_palframes.palette.inc.c>
 };
 
 /* Sprite: JPText17 */
@@ -1090,11 +1237,11 @@ u8 dSCExplainGraphics_JPText17_gap[480] = {
 /* Sprite: JPText17 (174x48 ci8) */
 
 Bitmap dSCExplainGraphics_JPText17_bitmaps[] = {
-	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex, 11, 0 },
-	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0x798, 11, 0 },
-	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0xF30, 11, 0 },
-	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0x16C8, 11, 0 },
-	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex + 0x1E60, 8, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex_00, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex_01, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex_02, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex_03, 11, 0 },
+	{ 174, 176, 0, 0, dSCExplainGraphics_JPText17_tex_04, 8, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText17 = {
@@ -1168,8 +1315,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText19 (134(144)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText19_tex[2392] = {
-    #include <SCExplainGraphics/JPText19.ci4.inc.c>
+u8 dSCExplainGraphics_JPText19_tex_00_00[2024] = {
+	#include <SCExplainGraphics/JPText19_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText19_tex_00_01[368] = {
+	#include <SCExplainGraphics/JPText19_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x1C460 (16 colors RGBA5551) */
@@ -1182,8 +1332,8 @@ u16 dSCExplainGraphics_JPText19_palette[16] = {
 /* Sprite: JPText19 (134x32 ci4) */
 
 Bitmap dSCExplainGraphics_JPText19_bitmaps[] = {
-	{ 134, 144, 0, 0, dSCExplainGraphics_JPText19_tex, 28, 0 },
-	{ 134, 144, 0, 0, dSCExplainGraphics_JPText19_tex + 0x7E8, 5, 0 },
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText19_tex_00, 28, 0 },
+	{ 134, 144, 0, 0, dSCExplainGraphics_JPText19_tex_01, 5, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText19 = {
@@ -1301,8 +1451,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText22 (162(176)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText22_tex[2920] = {
-    #include <SCExplainGraphics/JPText22.ci4.inc.c>
+u8 dSCExplainGraphics_JPText22_tex_00_00[2032] = {
+	#include <SCExplainGraphics/JPText22_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_JPText22_tex_00_01[888] = {
+	#include <SCExplainGraphics/JPText22_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x1D960 (16 colors RGBA5551) */
@@ -1315,8 +1468,8 @@ u16 dSCExplainGraphics_JPText22_palette[16] = {
 /* Sprite: JPText22 (162x32 ci4) */
 
 Bitmap dSCExplainGraphics_JPText22_bitmaps[] = {
-	{ 162, 176, 0, 0, dSCExplainGraphics_JPText22_tex, 23, 0 },
-	{ 162, 176, 0, 0, dSCExplainGraphics_JPText22_tex + 0x7F0, 10, 0 },
+	{ 162, 176, 0, 0, dSCExplainGraphics_JPText22_tex_00, 23, 0 },
+	{ 162, 176, 0, 0, dSCExplainGraphics_JPText22_tex_01, 10, 0 },
 };
 
 Sprite dSCExplainGraphics_JPText22 = {
@@ -1356,8 +1509,8 @@ u16 dSCExplainGraphics_AButton_palette[16] = {
 };
 
 /* Raw data from file offset 0x1DDC8 to 0x1DFA8 (480 bytes) */
-u8 dSCExplainGraphics_AButton_gap[480] = {
-	#include <SCExplainGraphics/AButton_gap.data.inc.c>
+u16 dSCExplainGraphics_AButton_palframes[240] = {
+	#include <SCExplainGraphics/AButton_palframes.palette.inc.c>
 };
 
 /* Sprite: AButton */
@@ -1405,8 +1558,8 @@ u16 dSCExplainGraphics_BButton_palette[16] = {
 };
 
 /* Raw data from file offset 0x1E3D8 to 0x1E5B8 (480 bytes) */
-u8 dSCExplainGraphics_BButton_gap[480] = {
-	#include <SCExplainGraphics/BButton_gap.data.inc.c>
+u16 dSCExplainGraphics_BButton_palframes[240] = {
+	#include <SCExplainGraphics/BButton_palframes.palette.inc.c>
 };
 
 /* Sprite: BButton */
@@ -1454,8 +1607,8 @@ u16 dSCExplainGraphics_ZButton_palette[16] = {
 };
 
 /* Raw data from file offset 0x1E9E8 to 0x1EBC8 (480 bytes) */
-u8 dSCExplainGraphics_ZButton_gap[480] = {
-	#include <SCExplainGraphics/ZButton_gap.data.inc.c>
+u16 dSCExplainGraphics_ZButton_palframes[240] = {
+	#include <SCExplainGraphics/ZButton_palframes.palette.inc.c>
 };
 
 /* Sprite: ZButton */
@@ -1791,8 +1944,50 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Banner (300(304)x88 ci8, 15 tiles) */
-u8 dSCExplainGraphics_Banner_tex[26872] = {
-    #include <SCExplainGraphics/Banner.ci8.inc.c>
+u8 dSCExplainGraphics_Banner_tex_00[1832] = {
+	#include <SCExplainGraphics/Banner_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_01[1832] = {
+	#include <SCExplainGraphics/Banner_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_02[1832] = {
+	#include <SCExplainGraphics/Banner_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_03[1832] = {
+	#include <SCExplainGraphics/Banner_tex_03.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_04[1832] = {
+	#include <SCExplainGraphics/Banner_tex_04.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_05[1832] = {
+	#include <SCExplainGraphics/Banner_tex_05.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_06[1832] = {
+	#include <SCExplainGraphics/Banner_tex_06.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_07[1832] = {
+	#include <SCExplainGraphics/Banner_tex_07.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_08[1832] = {
+	#include <SCExplainGraphics/Banner_tex_08.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_09[1832] = {
+	#include <SCExplainGraphics/Banner_tex_09.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_10[1832] = {
+	#include <SCExplainGraphics/Banner_tex_10.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_11[1832] = {
+	#include <SCExplainGraphics/Banner_tex_11.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_12[1832] = {
+	#include <SCExplainGraphics/Banner_tex_12.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_13[1832] = {
+	#include <SCExplainGraphics/Banner_tex_13.tex.inc.c>
+};
+u8 dSCExplainGraphics_Banner_tex_14[1224] = {
+	#include <SCExplainGraphics/Banner_tex_14.tex.inc.c>
 };
 
 /* Palette: @ 0xFF70 (16 colors RGBA5551) */
@@ -1805,21 +2000,21 @@ u16 dSCExplainGraphics_palette_0xFF70[256] = {
 /* Sprite: Banner (300x74 ci8) */
 
 Bitmap dSCExplainGraphics_Banner_bitmaps[] = {
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x728, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0xE50, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x1578, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x1CA0, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x23C8, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x2AF0, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x3218, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x3940, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x4068, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x4790, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x4EB8, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x55E0, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x5D08, 6, 0 },
-	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex + 0x6430, 4, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_00, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_01, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_02, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_03, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_04, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_05, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_06, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_07, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_08, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_09, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_10, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_11, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_12, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_13, 6, 0 },
+	{ 300, 304, 0, 0, dSCExplainGraphics_Banner_tex_14, 4, 0 },
 };
 
 Sprite dSCExplainGraphics_Banner = {
@@ -1849,8 +2044,17 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: TapTheStick (264(272)x53 ci4, 4 tiles) */
-u8 dSCExplainGraphics_TapTheStick_tex[7240] = {
-    #include <SCExplainGraphics/TapTheStick.ci4.inc.c>
+u8 dSCExplainGraphics_TapTheStick_tex_00[1912] = {
+	#include <SCExplainGraphics/TapTheStick_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_TapTheStick_tex_01[1912] = {
+	#include <SCExplainGraphics/TapTheStick_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_TapTheStick_tex_02[1912] = {
+	#include <SCExplainGraphics/TapTheStick_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_TapTheStick_tex_03[1504] = {
+	#include <SCExplainGraphics/TapTheStick_tex_03.tex.inc.c>
 };
 
 /* Palette: @ 0x11F00 (16 colors RGBA5551) */
@@ -1863,10 +2067,10 @@ u16 dSCExplainGraphics_palette_0x11F00[16] = {
 /* Sprite: TapTheStick (264x50 ci4) */
 
 Bitmap dSCExplainGraphics_TapTheStick_bitmaps[] = {
-	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex, 14, 0 },
-	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex + 0x778, 14, 0 },
-	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex + 0xEF0, 14, 0 },
-	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex + 0x1668, 11, 0 },
+	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex_00, 14, 0 },
+	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex_01, 14, 0 },
+	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex_02, 14, 0 },
+	{ 264, 272, 0, 0, dSCExplainGraphics_TapTheStick_tex_03, 11, 0 },
 };
 
 Sprite dSCExplainGraphics_TapTheStick = {
@@ -1896,8 +2100,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: Jump (170(176)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_Jump_tex[2920] = {
-    #include <SCExplainGraphics/Jump.ci4.inc.c>
+u8 dSCExplainGraphics_Jump_tex_00[2032] = {
+	#include <SCExplainGraphics/Jump_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_Jump_tex_01[888] = {
+	#include <SCExplainGraphics/Jump_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x12B20 (16 colors RGBA5551) */
@@ -1910,8 +2117,8 @@ u16 dSCExplainGraphics_palette_0x12B20[16] = {
 /* Sprite: Jump (170x32 ci4) */
 
 Bitmap dSCExplainGraphics_Jump_bitmaps[] = {
-	{ 170, 176, 0, 0, dSCExplainGraphics_Jump_tex, 23, 0 },
-	{ 170, 176, 0, 0, dSCExplainGraphics_Jump_tex + 0x7F0, 10, 0 },
+	{ 170, 176, 0, 0, dSCExplainGraphics_Jump_tex_00, 23, 0 },
+	{ 170, 176, 0, 0, dSCExplainGraphics_Jump_tex_01, 10, 0 },
 };
 
 Sprite dSCExplainGraphics_Jump = {
@@ -1941,8 +2148,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: MidairJump (156(160)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_MidairJump_tex[2656] = {
-    #include <SCExplainGraphics/MidairJump.ci4.inc.c>
+u8 dSCExplainGraphics_MidairJump_tex_00[2008] = {
+	#include <SCExplainGraphics/MidairJump_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_MidairJump_tex_01[648] = {
+	#include <SCExplainGraphics/MidairJump_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x13618 (16 colors RGBA5551) */
@@ -1955,8 +2165,8 @@ u16 dSCExplainGraphics_palette_0x13618[16] = {
 /* Sprite: MidairJump (156x32 ci4) */
 
 Bitmap dSCExplainGraphics_MidairJump_bitmaps[] = {
-	{ 156, 160, 0, 0, dSCExplainGraphics_MidairJump_tex, 25, 0 },
-	{ 156, 160, 0, 0, dSCExplainGraphics_MidairJump_tex + 0x7D8, 8, 0 },
+	{ 156, 160, 0, 0, dSCExplainGraphics_MidairJump_tex_00, 25, 0 },
+	{ 156, 160, 0, 0, dSCExplainGraphics_MidairJump_tex_01, 8, 0 },
 };
 
 Sprite dSCExplainGraphics_MidairJump = {
@@ -2030,8 +2240,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: PowerAttack (160x31 ci4, 2 tiles) */
-u8 dSCExplainGraphics_PowerAttack_tex[2496] = {
-    #include <SCExplainGraphics/PowerAttack.ci4.inc.c>
+u8 dSCExplainGraphics_PowerAttack_tex_00[1928] = {
+	#include <SCExplainGraphics/PowerAttack_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_PowerAttack_tex_01[568] = {
+	#include <SCExplainGraphics/PowerAttack_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x14408 (16 colors RGBA5551) */
@@ -2044,8 +2257,8 @@ u16 dSCExplainGraphics_palette_0x14408[16] = {
 /* Sprite: PowerAttack (160x30 ci4) */
 
 Bitmap dSCExplainGraphics_PowerAttack_bitmaps[] = {
-	{ 160, 160, 0, 0, dSCExplainGraphics_PowerAttack_tex, 24, 0 },
-	{ 160, 160, 0, 0, dSCExplainGraphics_PowerAttack_tex + 0x788, 7, 0 },
+	{ 160, 160, 0, 0, dSCExplainGraphics_PowerAttack_tex_00, 24, 0 },
+	{ 160, 160, 0, 0, dSCExplainGraphics_PowerAttack_tex_01, 7, 0 },
 };
 
 Sprite dSCExplainGraphics_PowerAttack = {
@@ -2075,8 +2288,11 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: SmashAttack (132(144)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_SmashAttack_tex[2392] = {
-    #include <SCExplainGraphics/SmashAttack.ci4.inc.c>
+u8 dSCExplainGraphics_SmashAttack_tex_00[2024] = {
+	#include <SCExplainGraphics/SmashAttack_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_SmashAttack_tex_01[368] = {
+	#include <SCExplainGraphics/SmashAttack_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x14DF0 (16 colors RGBA5551) */
@@ -2089,8 +2305,8 @@ u16 dSCExplainGraphics_palette_0x14DF0[16] = {
 /* Sprite: SmashAttack (132x32 ci4) */
 
 Bitmap dSCExplainGraphics_SmashAttack_bitmaps[] = {
-	{ 132, 144, 0, 0, dSCExplainGraphics_SmashAttack_tex, 28, 0 },
-	{ 132, 144, 0, 0, dSCExplainGraphics_SmashAttack_tex + 0x7E8, 5, 0 },
+	{ 132, 144, 0, 0, dSCExplainGraphics_SmashAttack_tex_00, 28, 0 },
+	{ 132, 144, 0, 0, dSCExplainGraphics_SmashAttack_tex_01, 5, 0 },
 };
 
 Sprite dSCExplainGraphics_SmashAttack = {
@@ -2120,8 +2336,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: KnockThemOff (200(208)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_KnockThemOff_tex[3448] = {
-    #include <SCExplainGraphics/KnockThemOff.ci4.inc.c>
+u8 dSCExplainGraphics_KnockThemOff_tex_00[1984] = {
+	#include <SCExplainGraphics/KnockThemOff_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_KnockThemOff_tex_01[1464] = {
+	#include <SCExplainGraphics/KnockThemOff_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x15C00 (16 colors RGBA5551) */
@@ -2134,8 +2353,8 @@ u16 dSCExplainGraphics_palette_0x15C00[16] = {
 /* Sprite: KnockThemOff (200x32 ci4) */
 
 Bitmap dSCExplainGraphics_KnockThemOff_bitmaps[] = {
-	{ 200, 208, 0, 0, dSCExplainGraphics_KnockThemOff_tex, 19, 0 },
-	{ 200, 208, 0, 0, dSCExplainGraphics_KnockThemOff_tex + 0x7C0, 14, 0 },
+	{ 200, 208, 0, 0, dSCExplainGraphics_KnockThemOff_tex_00, 19, 0 },
+	{ 200, 208, 0, 0, dSCExplainGraphics_KnockThemOff_tex_01, 14, 0 },
 };
 
 Sprite dSCExplainGraphics_KnockThemOff = {
@@ -2165,8 +2384,20 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: BUpGetBack (162(168)x50 ci8, 5 tiles) */
-u8 dSCExplainGraphics_BUpGetBack_tex[8440] = {
-    #include <SCExplainGraphics/BUpGetBack.ci8.inc.c>
+u8 dSCExplainGraphics_BUpGetBack_tex_00[1856] = {
+	#include <SCExplainGraphics/BUpGetBack_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_BUpGetBack_tex_01[1856] = {
+	#include <SCExplainGraphics/BUpGetBack_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_BUpGetBack_tex_02[1856] = {
+	#include <SCExplainGraphics/BUpGetBack_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_BUpGetBack_tex_03[1856] = {
+	#include <SCExplainGraphics/BUpGetBack_tex_03.tex.inc.c>
+};
+u8 dSCExplainGraphics_BUpGetBack_tex_04[1016] = {
+	#include <SCExplainGraphics/BUpGetBack_tex_04.tex.inc.c>
 };
 
 /* Palette: @ 0x17D90 (16 colors RGBA5551) */
@@ -2179,11 +2410,11 @@ u16 dSCExplainGraphics_palette_0x17D90[256] = {
 /* Sprite: BUpGetBack (162x46 ci8) */
 
 Bitmap dSCExplainGraphics_BUpGetBack_bitmaps[] = {
-	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex, 11, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex + 0x740, 11, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex + 0xE80, 11, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex + 0x15C0, 11, 0 },
-	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex + 0x1D00, 6, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex_00, 11, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex_01, 11, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex_02, 11, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex_03, 11, 0 },
+	{ 162, 168, 0, 0, dSCExplainGraphics_BUpGetBack_tex_04, 6, 0 },
 };
 
 Sprite dSCExplainGraphics_BUpGetBack = {
@@ -2213,8 +2444,23 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: SpecialMoves (168x51 ci8, 6 tiles) */
-u8 dSCExplainGraphics_SpecialMoves_tex[8616] = {
-    #include <SCExplainGraphics/SpecialMoves.ci8.inc.c>
+u8 dSCExplainGraphics_SpecialMoves_tex_00[1520] = {
+	#include <SCExplainGraphics/SpecialMoves_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_SpecialMoves_tex_01[1520] = {
+	#include <SCExplainGraphics/SpecialMoves_tex_01.tex.inc.c>
+};
+u8 dSCExplainGraphics_SpecialMoves_tex_02[1520] = {
+	#include <SCExplainGraphics/SpecialMoves_tex_02.tex.inc.c>
+};
+u8 dSCExplainGraphics_SpecialMoves_tex_03[1520] = {
+	#include <SCExplainGraphics/SpecialMoves_tex_03.tex.inc.c>
+};
+u8 dSCExplainGraphics_SpecialMoves_tex_04[1520] = {
+	#include <SCExplainGraphics/SpecialMoves_tex_04.tex.inc.c>
+};
+u8 dSCExplainGraphics_SpecialMoves_tex_05[1016] = {
+	#include <SCExplainGraphics/SpecialMoves_tex_05.tex.inc.c>
 };
 
 /* Palette: @ 0x1A1E0 (16 colors RGBA5551) */
@@ -2227,12 +2473,12 @@ u16 dSCExplainGraphics_palette_0x1A1E0[256] = {
 /* Sprite: SpecialMoves (168x46 ci8) */
 
 Bitmap dSCExplainGraphics_SpecialMoves_bitmaps[] = {
-	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex, 9, 0 },
-	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex + 0x5F0, 9, 0 },
-	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex + 0xBE0, 9, 0 },
-	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex + 0x11D0, 9, 0 },
-	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex + 0x17C0, 9, 0 },
-	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex + 0x1DB0, 6, 0 },
+	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex_00, 9, 0 },
+	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex_01, 9, 0 },
+	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex_02, 9, 0 },
+	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex_03, 9, 0 },
+	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex_04, 9, 0 },
+	{ 168, 168, 0, 0, dSCExplainGraphics_SpecialMoves_tex_05, 6, 0 },
 };
 
 Sprite dSCExplainGraphics_SpecialMoves = {
@@ -2306,8 +2552,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: ThrowEnemy (146(160)x31 ci4, 2 tiles) */
-u8 dSCExplainGraphics_ThrowEnemy_tex[2496] = {
-    #include <SCExplainGraphics/ThrowEnemy.ci4.inc.c>
+u8 dSCExplainGraphics_ThrowEnemy_tex_00[1928] = {
+	#include <SCExplainGraphics/ThrowEnemy_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_ThrowEnemy_tex_01[568] = {
+	#include <SCExplainGraphics/ThrowEnemy_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x1B428 (16 colors RGBA5551) */
@@ -2320,8 +2569,8 @@ u16 dSCExplainGraphics_palette_0x1B428[16] = {
 /* Sprite: ThrowEnemy (146x30 ci4) */
 
 Bitmap dSCExplainGraphics_ThrowEnemy_bitmaps[] = {
-	{ 146, 160, 0, 0, dSCExplainGraphics_ThrowEnemy_tex, 24, 0 },
-	{ 146, 160, 0, 0, dSCExplainGraphics_ThrowEnemy_tex + 0x788, 7, 0 },
+	{ 146, 160, 0, 0, dSCExplainGraphics_ThrowEnemy_tex_00, 24, 0 },
+	{ 146, 160, 0, 0, dSCExplainGraphics_ThrowEnemy_tex_01, 7, 0 },
 };
 
 Sprite dSCExplainGraphics_ThrowEnemy = {
@@ -2439,8 +2688,11 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: ThrowItems (130(144)x49 ci4, 2 tiles) */
-u8 dSCExplainGraphics_ThrowItems_tex[3544] = {
-    #include <SCExplainGraphics/ThrowItems.ci4.inc.c>
+u8 dSCExplainGraphics_ThrowItems_tex_00[1952] = {
+	#include <SCExplainGraphics/ThrowItems_tex_00.tex.inc.c>
+};
+u8 dSCExplainGraphics_ThrowItems_tex_01[1592] = {
+	#include <SCExplainGraphics/ThrowItems_tex_01.tex.inc.c>
 };
 
 /* Palette: @ 0x1CCE0 (16 colors RGBA5551) */
@@ -2453,8 +2705,8 @@ u16 dSCExplainGraphics_palette_0x1CCE0[16] = {
 /* Sprite: ThrowItems (130x48 ci4) */
 
 Bitmap dSCExplainGraphics_ThrowItems_bitmaps[] = {
-	{ 130, 144, 0, 0, dSCExplainGraphics_ThrowItems_tex, 27, 0 },
-	{ 130, 144, 0, 0, dSCExplainGraphics_ThrowItems_tex + 0x7A0, 22, 0 },
+	{ 130, 144, 0, 0, dSCExplainGraphics_ThrowItems_tex_00, 27, 0 },
+	{ 130, 144, 0, 0, dSCExplainGraphics_ThrowItems_tex_01, 22, 0 },
 };
 
 Sprite dSCExplainGraphics_ThrowItems = {

@@ -322,21 +322,56 @@ DObjDesc dGRBonus3File2_Layer0DObj[] = {
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x36A0 (120 bytes) — was misclassified as `MObjSub`; the
- * bytes are not a regular MObjSub: chain-pointer slots sit in
- * fields that real MObjSubs use as floats/colors. Kept as raw u8
- * pending a structural retype. The .reloc still patches every
- * slot the runtime walks, so semantics match the original. */
-u8 dGRBonus3File2_Layer1MObj_MObjSub[120] = {
-	#include <GRBonus3File2/Layer1MObj_MObjSub.data.inc.c>
+/* Layer1MObj head @ 0x36A0 — 48-byte `void *[12]` MObj-style
+ * pointer head with chain-encoded entries at indices 6 (→ chain
+ * marker that loops back to the MObjSub at 0x36D0) and 10 (→
+ * MObjSub *[4] sub-list). Externs in 295_GRBonus3Map declare
+ * this symbol as `MObjSub[]`; that's the legacy "MObjSub head"
+ * convention (matches fid 138's `Layer1MObj_data`). */
+extern MObjSub *dGRBonus3File2_Layer1MObj_chain[];
+extern MObjSub *dGRBonus3File2_Layer1MObj_subs[];
+
+void *dGRBonus3File2_Layer1MObj_MObjSub[12] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	dGRBonus3File2_Layer1MObj_chain,    /* +0x18 → chain marker → Layer1MObj_real */
+	NULL, NULL, NULL,
+	dGRBonus3File2_Layer1MObj_subs,     /* +0x28 → MObjSub *[4] sub-list */
+	NULL,
 };
 
-/* Raw data from file offset 0x3718 to 0x6120 (10760 bytes) */
-/* gap sub-block @ 0x3718 (was gap+0x0, 48 bytes) */
-u8 dGRBonus3File2_gap_0x3718[48] = {
-	#include <GRBonus3File2/gap_0x3718.data.inc.c>
+/* MObjSub @ 0x36D0 — the actual material data (120 bytes); spans
+ * what used to be Layer1MObj_MObjSub+0x30..0x77 + the old
+ * gap_0x3718 (48-byte tail). */
+MObjSub dGRBonus3File2_Layer1MObj_real[1] = {
+	{
+		0x0000,
+		0x04, 0x02,
+		(void**)0x00000000,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void**)0x00000000,
+		0x0200,
+		0x04, 0x01,
+		0x0010,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{ { 0xFF, 0xFF, 0xFF, 0x69 } },
+		0x00, 0x00, { 0x00, 0x00 },
+		{ { 0xFF, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xB3, 0x33, 0x00 } },
+		{ { 0x80, 0x80, 0x80, 0x00 } },
+		0, 0,
+		0, 0,
+	}
 };
 
+/* Raw data from file offset 0x3748 to 0x6120 (10712 bytes) */
 /* MObjSub @ 0x3748 */
 MObjSub dGRBonus3File2_gap_0x3718_sub_0x30[1] = {
 	{
@@ -397,13 +432,17 @@ MObjSub dGRBonus3File2_gap_0x3718_sub_0xA8[1] = {
 	}
 };
 
-/* gap sub-block @ 0x3838 (was gap+0x120, 8 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x120[8] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x120.data.inc.c>
+/* Chain marker @ 0x3838 — single-entry MObjSub* chain that loops
+ * back to Layer1MObj_real (the MObjSub at 0x36D0). The Layer1MObj
+ * head's slot at +0x18 chain-points to this marker. */
+MObjSub *dGRBonus3File2_Layer1MObj_chain[2] = {
+	dGRBonus3File2_Layer1MObj_real,
+	NULL,
 };
 
-/* gap sub-block @ 0x3840 (was gap+0x128, 16 bytes) */
-MObjSub *dGRBonus3File2_gap_0x3718_sub_0x128[4] = {
+/* MObjSub *[4] sub-list @ 0x3840 — Layer1MObj head's slot at +0x28
+ * chain-points here. */
+MObjSub *dGRBonus3File2_Layer1MObj_subs[4] = {
 	(MObjSub *)dGRBonus3File2_gap_0x3718_sub_0x30,
 	(MObjSub *)dGRBonus3File2_gap_0x3718_sub_0xA8,
 	NULL,
@@ -679,37 +718,56 @@ DObjDLLink dGRBonus3File2_DLLink_0x6090[] = {
 	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x60A0 (was gap+0x2988, 24 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x2988[24] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x2988.data.inc.c>
+/* DObjDLLink[3] @ 0x60A0 — { 0, DL_0x5A20 }, { 1, DL_0x5F10 }, { 4, NULL } */
+DObjDLLink dGRBonus3File2_DLLink_0x60A0[3] = {
+	{ 0, dGRBonus3File2_DL_0x5A20 },
+	{ 1, dGRBonus3File2_DL_0x5F10 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x60B8 (was gap+0x29A0, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x29A0[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x29A0.data.inc.c>
+/* DObjDLLink[2] @ 0x60B8 — { 0, DL_0x5AB8 }, { 4, NULL } */
+DObjDLLink dGRBonus3File2_DLLink_0x60B8[2] = {
+	{ 0, dGRBonus3File2_DL_0x5AB8 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x60C8 (was gap+0x29B0, 24 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x29B0[24] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x29B0.data.inc.c>
+/* DObjDLLink[3] @ 0x60C8 — { 0, DL_0x5C88 }, { 1, DL_0x5FC0 }, { 4, NULL } */
+DObjDLLink dGRBonus3File2_DLLink_0x60C8[3] = {
+	{ 0, dGRBonus3File2_DL_0x5C88 },
+	{ 1, dGRBonus3File2_DL_0x5FC0 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x60E0 (was gap+0x29C8, 24 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x29C8[24] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x29C8.data.inc.c>
+/* DObjDLLink[3] @ 0x60E0 — { 0, DL_0x5D00 }, { 1, DL_0x6000 }, { 4, NULL } */
+DObjDLLink dGRBonus3File2_DLLink_0x60E0[3] = {
+	{ 0, dGRBonus3File2_DL_0x5D00 },
+	{ 1, dGRBonus3File2_DL_0x6000 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x60F8 (was gap+0x29E0, 24 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x29E0[24] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x29E0.data.inc.c>
+/* DObjDLLink[3] @ 0x60F8 — { 0, DL_0x5D20 }, { 1, DL_0x6020 }, { 4, NULL } */
+DObjDLLink dGRBonus3File2_DLLink_0x60F8[3] = {
+	{ 0, dGRBonus3File2_DL_0x5D20 },
+	{ 1, dGRBonus3File2_DL_0x6020 },
+	{ 4, NULL },
 };
 
-/* gap sub-block @ 0x6110 (was gap+0x29F8, 16 bytes) */
-u8 dGRBonus3File2_gap_0x3718_sub_0x29F8[16] = {
-	#include <GRBonus3File2/gap_0x3718_sub_0x29F8.data.inc.c>
+/* DObjDLLink[2] @ 0x6110 — { 0, DL_0x5D50 }, { 4, NULL } */
+DObjDLLink dGRBonus3File2_DLLink_0x6110[2] = {
+	{ 0, dGRBonus3File2_DL_0x5D50 },
+	{ 4, NULL },
 };
 
-/* DObjDesc: Layer1DObj @ 0x6120 (6 entries) */
+/* DObjDesc: Layer1DObj @ 0x6120 (13 entries — merged with the 7 that
+ * used to live in gap_0x6228; the last entry is the {18, NULL, ...}
+ * sentinel). */
+extern DObjDLLink dGRBonus3File2_DLLink_0x60A0[];
+extern DObjDLLink dGRBonus3File2_DLLink_0x60B8[];
+extern DObjDLLink dGRBonus3File2_DLLink_0x60C8[];
+extern DObjDLLink dGRBonus3File2_DLLink_0x60E0[];
+extern DObjDLLink dGRBonus3File2_DLLink_0x60F8[];
+extern DObjDLLink dGRBonus3File2_DLLink_0x6110[];
+
 DObjDesc dGRBonus3File2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -717,17 +775,57 @@ DObjDesc dGRBonus3File2_Layer1DObj[] = {
 	{ 1, (void*)dGRBonus3File2_DLLink_0x6070, { 1650.0f, 1650.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus3File2_DLLink_0x6080, { 1500.0f, -4050.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus3File2_DLLink_0x6090, { -150.0f, -1350.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dGRBonus3File2_DLLink_0x60A0, { -3150.0f, 4350.0f, 150.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,      (void*)dGRBonus3File2_DLLink_0x60B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dGRBonus3File2_DLLink_0x60C8, { -6000.0f, 7200.0f, 456.03729248046875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2001, (void*)dGRBonus3File2_DLLink_0x60E0, { 5850.0f, -4050.0f, 349.1464538574219f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,      (void*)dGRBonus3File2_DLLink_0x60F8, { 0.0f, -1500.0f, 150.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,      (void*)dGRBonus3File2_DLLink_0x6110, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x6228 to 0x65A8 (896 bytes) */
-/* gap sub-block @ 0x6228 (was gap+0x0, 308 bytes) */
-u8 dGRBonus3File2_gap_0x6228[308] = {
-	#include <GRBonus3File2/gap_0x6228.data.inc.c>
-};
-
-/* gap sub-block @ 0x635C (was gap+0x134, 236 bytes) */
-u8 dGRBonus3File2_gap_0x6228_sub_0x134[236] = {
-	#include <GRBonus3File2/gap_0x6228_sub_0x134.data.inc.c>
+/* MPVertexData[39] @ 0x635C — MPGeometryData.vertex_data (2 bytes
+ * pad; compiler 4-aligns the next u16 decl). */
+MPVertexData dGRBonus3File2_gap_0x6228_sub_0x134[39] = {
+	{ {   6900,   7200 }, 0x0000 },
+	{ {  -7200,   7200 }, 0x0000 },
+	{ {  -7200,  -7200 }, 0x0000 },
+	{ {   5437,  -7200 }, 0x000E },
+	{ {   6900,  -7200 }, 0x0000 },
+	{ {  -7500,   4350 }, 0x0000 },
+	{ {  -3750,   4350 }, 0x0000 },
+	{ {  -3750,   3900 }, 0x0000 },
+	{ {  -2550,   3900 }, 0x0000 },
+	{ {  -2550,   4350 }, 0x0000 },
+	{ {   4800,   4350 }, 0x0000 },
+	{ {   4800,   5550 }, 0x0000 },
+	{ {   4500,   5550 }, 0x0000 },
+	{ {   4500,   4650 }, 0x0000 },
+	{ {  -7500,   4650 }, 0x0000 },
+	{ {   6900,   1814 }, 0x0000 },
+	{ {  -4800,   2400 }, 0x0000 },
+	{ {  -4800,   2100 }, 0x0000 },
+	{ {   6900,   1507 }, 0x0000 },
+	{ {  -7500,  -1500 }, 0x0000 },
+	{ {  -3600,  -1500 }, 0x0000 },
+	{ {  -3600,  -1800 }, 0x0000 },
+	{ {  -1350,  -1800 }, 0x0000 },
+	{ {  -1350,  -2100 }, 0x0000 },
+	{ {   1500,  -2100 }, 0x0000 },
+	{ {   1500,  -1800 }, 0x0000 },
+	{ {   3000,  -1800 }, 0x0000 },
+	{ {   3000,  -1500 }, 0x0000 },
+	{ {   4800,  -1500 }, 0x0000 },
+	{ {   4800,   -300 }, 0x0000 },
+	{ {   4500,   -300 }, 0x0000 },
+	{ {   4500,  -1200 }, 0x0000 },
+	{ {  -7500,  -1200 }, 0x0000 },
+	{ {   7200,  -3900 }, 0x0000 },
+	{ {  -4800,  -3900 }, 0x0000 },
+	{ {  -4800,  -3000 }, 0x0000 },
+	{ {  -5100,  -3000 }, 0x0000 },
+	{ {  -5100,  -4200 }, 0x0000 },
+	{ {   7200,  -4200 }, 0x0000 },
 };
 
 /* MPVertexArray (70 IDs) @ 0x6448 — vertex_id table (MPGeometryData.vertex_id) */

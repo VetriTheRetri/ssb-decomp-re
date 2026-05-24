@@ -6,10 +6,11 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+#include <sys/interp.h>  // SYInterpDesc
 
 /* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
-u8 dSCStaffroll_gap_0x0000[8] = {
-	#include <SCStaffroll/gap_0x0000.data.inc.c>
+Gfx dSCStaffroll_unusedSpriteDL_0x0000[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x0000.dl.inc.c>
 };
 
 /* Raw data from file offset 0x0008 to 0x0178 (368 bytes) */
@@ -327,8 +328,9 @@ Sprite dSCStaffroll_TextBoxAUpper = {
 };
 
 /* Raw data from file offset 0x329C to 0x32A8 (12 bytes) */
-u8 dSCStaffroll_gap_0x329C[12] = {
-	#include <SCStaffroll/gap_0x329C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x329C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x329C.dl.inc.c>
 };
 
 /* Sprite: TextBoxALower */
@@ -364,8 +366,9 @@ Sprite dSCStaffroll_TextBoxALower = {
 };
 
 /* Raw data from file offset 0x3354 to 0x3368 (20 bytes) */
-u8 dSCStaffroll_gap_0x3354[20] = {
-	#include <SCStaffroll/gap_0x3354.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3354[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3354.dl.inc.c>
 };
 
 /* Sprite: TextBoxBUpper */
@@ -401,8 +404,9 @@ Sprite dSCStaffroll_TextBoxBUpper = {
 };
 
 /* Raw data from file offset 0x342C to 0x3438 (12 bytes) */
-u8 dSCStaffroll_gap_0x342C[12] = {
-	#include <SCStaffroll/gap_0x342C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x342C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x342C.dl.inc.c>
 };
 
 /* Sprite: TextBoxBLower */
@@ -438,8 +442,9 @@ Sprite dSCStaffroll_TextBoxBLower = {
 };
 
 /* Raw data from file offset 0x34F4 to 0x3508 (20 bytes) */
-u8 dSCStaffroll_gap_0x34F4[20] = {
-	#include <SCStaffroll/gap_0x34F4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x34F4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x34F4.dl.inc.c>
 };
 
 /* Sprite: TextBoxCUpper */
@@ -475,8 +480,9 @@ Sprite dSCStaffroll_TextBoxCUpper = {
 };
 
 /* Raw data from file offset 0x35CC to 0x35D8 (12 bytes) */
-u8 dSCStaffroll_gap_0x35CC[12] = {
-	#include <SCStaffroll/gap_0x35CC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x35CC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x35CC.dl.inc.c>
 };
 
 /* Sprite: TextBoxCLower */
@@ -512,8 +518,9 @@ Sprite dSCStaffroll_TextBoxCLower = {
 };
 
 /* Raw data from file offset 0x3684 to 0x3698 (20 bytes) */
-u8 dSCStaffroll_gap_0x3684[20] = {
-	#include <SCStaffroll/gap_0x3684.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3684[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3684.dl.inc.c>
 };
 
 /* Sprite: TextBoxDUpper */
@@ -549,8 +556,9 @@ Sprite dSCStaffroll_TextBoxDUpper = {
 };
 
 /* Raw data from file offset 0x375C to 0x3768 (12 bytes) */
-u8 dSCStaffroll_gap_0x375C[12] = {
-	#include <SCStaffroll/gap_0x375C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x375C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x375C.dl.inc.c>
 };
 
 /* Sprite: TextBoxDLower */
@@ -586,8 +594,9 @@ Sprite dSCStaffroll_TextBoxDLower = {
 };
 
 /* Raw data from file offset 0x3824 to 0x3838 (20 bytes) */
-u8 dSCStaffroll_gap_0x3824[20] = {
-	#include <SCStaffroll/gap_0x3824.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3824[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3824.dl.inc.c>
 };
 
 /* Sprite: TextBoxEUpper */
@@ -623,8 +632,9 @@ Sprite dSCStaffroll_TextBoxEUpper = {
 };
 
 /* Raw data from file offset 0x38FC to 0x3908 (12 bytes) */
-u8 dSCStaffroll_gap_0x38FC[12] = {
-	#include <SCStaffroll/gap_0x38FC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x38FC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x38FC.dl.inc.c>
 };
 
 /* Sprite: TextBoxELower */
@@ -660,8 +670,9 @@ Sprite dSCStaffroll_TextBoxELower = {
 };
 
 /* Raw data from file offset 0x39B4 to 0x39C8 (20 bytes) */
-u8 dSCStaffroll_gap_0x39B4[20] = {
-	#include <SCStaffroll/gap_0x39B4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x39B4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x39B4.dl.inc.c>
 };
 
 /* Sprite: TextBoxFUpper */
@@ -697,8 +708,9 @@ Sprite dSCStaffroll_TextBoxFUpper = {
 };
 
 /* Raw data from file offset 0x3A8C to 0x3A98 (12 bytes) */
-u8 dSCStaffroll_gap_0x3A8C[12] = {
-	#include <SCStaffroll/gap_0x3A8C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3A8C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3A8C.dl.inc.c>
 };
 
 /* Sprite: TextBoxFLower */
@@ -734,8 +746,9 @@ Sprite dSCStaffroll_TextBoxFLower = {
 };
 
 /* Raw data from file offset 0x3B54 to 0x3B68 (20 bytes) */
-u8 dSCStaffroll_gap_0x3B54[20] = {
-	#include <SCStaffroll/gap_0x3B54.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3B54[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3B54.dl.inc.c>
 };
 
 /* Sprite: TextBoxGUpper */
@@ -771,8 +784,9 @@ Sprite dSCStaffroll_TextBoxGUpper = {
 };
 
 /* Raw data from file offset 0x3C2C to 0x3C38 (12 bytes) */
-u8 dSCStaffroll_gap_0x3C2C[12] = {
-	#include <SCStaffroll/gap_0x3C2C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3C2C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3C2C.dl.inc.c>
 };
 
 /* Sprite: TextBoxGLower */
@@ -808,8 +822,9 @@ Sprite dSCStaffroll_TextBoxGLower = {
 };
 
 /* Raw data from file offset 0x3CEC to 0x3CF8 (12 bytes) */
-u8 dSCStaffroll_gap_0x3CEC[12] = {
-	#include <SCStaffroll/gap_0x3CEC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3CEC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3CEC.dl.inc.c>
 };
 
 /* Sprite: TextBoxHUpper */
@@ -845,8 +860,9 @@ Sprite dSCStaffroll_TextBoxHUpper = {
 };
 
 /* Raw data from file offset 0x3DBC to 0x3DC8 (12 bytes) */
-u8 dSCStaffroll_gap_0x3DBC[12] = {
-	#include <SCStaffroll/gap_0x3DBC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3DBC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3DBC.dl.inc.c>
 };
 
 /* Sprite: TextBoxHLower */
@@ -882,8 +898,9 @@ Sprite dSCStaffroll_TextBoxHLower = {
 };
 
 /* Raw data from file offset 0x3E84 to 0x3E98 (20 bytes) */
-u8 dSCStaffroll_gap_0x3E84[20] = {
-	#include <SCStaffroll/gap_0x3E84.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3E84[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3E84.dl.inc.c>
 };
 
 /* Sprite: TextBoxIUpper */
@@ -919,8 +936,9 @@ Sprite dSCStaffroll_TextBoxIUpper = {
 };
 
 /* Raw data from file offset 0x3F5C to 0x3F68 (12 bytes) */
-u8 dSCStaffroll_gap_0x3F5C[12] = {
-	#include <SCStaffroll/gap_0x3F5C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x3F5C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x3F5C.dl.inc.c>
 };
 
 /* Sprite: TextBoxILower */
@@ -956,8 +974,9 @@ Sprite dSCStaffroll_TextBoxILower = {
 };
 
 /* Raw data from file offset 0x4024 to 0x4038 (20 bytes) */
-u8 dSCStaffroll_gap_0x4024[20] = {
-	#include <SCStaffroll/gap_0x4024.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4024[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4024.dl.inc.c>
 };
 
 /* Sprite: TextBoxJUpper */
@@ -993,8 +1012,9 @@ Sprite dSCStaffroll_TextBoxJUpper = {
 };
 
 /* Raw data from file offset 0x40FC to 0x4108 (12 bytes) */
-u8 dSCStaffroll_gap_0x40FC[12] = {
-	#include <SCStaffroll/gap_0x40FC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x40FC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x40FC.dl.inc.c>
 };
 
 /* Sprite: TextBoxJLower */
@@ -1030,8 +1050,9 @@ Sprite dSCStaffroll_TextBoxJLower = {
 };
 
 /* Raw data from file offset 0x41CC to 0x41D8 (12 bytes) */
-u8 dSCStaffroll_gap_0x41CC[12] = {
-	#include <SCStaffroll/gap_0x41CC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x41CC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x41CC.dl.inc.c>
 };
 
 /* Sprite: TextBoxKUpper */
@@ -1067,8 +1088,9 @@ Sprite dSCStaffroll_TextBoxKUpper = {
 };
 
 /* Raw data from file offset 0x429C to 0x42A8 (12 bytes) */
-u8 dSCStaffroll_gap_0x429C[12] = {
-	#include <SCStaffroll/gap_0x429C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x429C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x429C.dl.inc.c>
 };
 
 /* Sprite: TextBoxKLower */
@@ -1104,8 +1126,9 @@ Sprite dSCStaffroll_TextBoxKLower = {
 };
 
 /* Raw data from file offset 0x4364 to 0x4378 (20 bytes) */
-u8 dSCStaffroll_gap_0x4364[20] = {
-	#include <SCStaffroll/gap_0x4364.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4364[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4364.dl.inc.c>
 };
 
 /* Sprite: TextBoxLUpper */
@@ -1141,8 +1164,9 @@ Sprite dSCStaffroll_TextBoxLUpper = {
 };
 
 /* Raw data from file offset 0x443C to 0x4448 (12 bytes) */
-u8 dSCStaffroll_gap_0x443C[12] = {
-	#include <SCStaffroll/gap_0x443C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x443C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x443C.dl.inc.c>
 };
 
 /* Sprite: TextBoxLLower */
@@ -1178,8 +1202,9 @@ Sprite dSCStaffroll_TextBoxLLower = {
 };
 
 /* Raw data from file offset 0x4504 to 0x4518 (20 bytes) */
-u8 dSCStaffroll_gap_0x4504[20] = {
-	#include <SCStaffroll/gap_0x4504.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4504[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4504.dl.inc.c>
 };
 
 /* Sprite: TextBoxMUpper */
@@ -1215,8 +1240,9 @@ Sprite dSCStaffroll_TextBoxMUpper = {
 };
 
 /* Raw data from file offset 0x45DC to 0x45E8 (12 bytes) */
-u8 dSCStaffroll_gap_0x45DC[12] = {
-	#include <SCStaffroll/gap_0x45DC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x45DC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x45DC.dl.inc.c>
 };
 
 /* Sprite: TextBoxMLower */
@@ -1252,8 +1278,9 @@ Sprite dSCStaffroll_TextBoxMLower = {
 };
 
 /* Raw data from file offset 0x4694 to 0x46A8 (20 bytes) */
-u8 dSCStaffroll_gap_0x4694[20] = {
-	#include <SCStaffroll/gap_0x4694.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4694[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4694.dl.inc.c>
 };
 
 /* Sprite: TextBoxNUpper */
@@ -1289,8 +1316,9 @@ Sprite dSCStaffroll_TextBoxNUpper = {
 };
 
 /* Raw data from file offset 0x476C to 0x4778 (12 bytes) */
-u8 dSCStaffroll_gap_0x476C[12] = {
-	#include <SCStaffroll/gap_0x476C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x476C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x476C.dl.inc.c>
 };
 
 /* Sprite: TextBoxNLower */
@@ -1326,8 +1354,9 @@ Sprite dSCStaffroll_TextBoxNLower = {
 };
 
 /* Raw data from file offset 0x4824 to 0x4838 (20 bytes) */
-u8 dSCStaffroll_gap_0x4824[20] = {
-	#include <SCStaffroll/gap_0x4824.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4824[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4824.dl.inc.c>
 };
 
 /* Sprite: TextBoxOUpper */
@@ -1363,8 +1392,9 @@ Sprite dSCStaffroll_TextBoxOUpper = {
 };
 
 /* Raw data from file offset 0x48FC to 0x4908 (12 bytes) */
-u8 dSCStaffroll_gap_0x48FC[12] = {
-	#include <SCStaffroll/gap_0x48FC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x48FC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x48FC.dl.inc.c>
 };
 
 /* Sprite: TextBoxOLower */
@@ -1400,8 +1430,9 @@ Sprite dSCStaffroll_TextBoxOLower = {
 };
 
 /* Raw data from file offset 0x49B4 to 0x49C8 (20 bytes) */
-u8 dSCStaffroll_gap_0x49B4[20] = {
-	#include <SCStaffroll/gap_0x49B4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x49B4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x49B4.dl.inc.c>
 };
 
 /* Sprite: TextBoxPUpper */
@@ -1437,8 +1468,9 @@ Sprite dSCStaffroll_TextBoxPUpper = {
 };
 
 /* Raw data from file offset 0x4A8C to 0x4A98 (12 bytes) */
-u8 dSCStaffroll_gap_0x4A8C[12] = {
-	#include <SCStaffroll/gap_0x4A8C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4A8C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4A8C.dl.inc.c>
 };
 
 /* Sprite: TextBoxPLower */
@@ -1474,8 +1506,9 @@ Sprite dSCStaffroll_TextBoxPLower = {
 };
 
 /* Raw data from file offset 0x4B4C to 0x4B58 (12 bytes) */
-u8 dSCStaffroll_gap_0x4B4C[12] = {
-	#include <SCStaffroll/gap_0x4B4C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4B4C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4B4C.dl.inc.c>
 };
 
 /* Sprite: TextBoxQUpper */
@@ -1511,8 +1544,9 @@ Sprite dSCStaffroll_TextBoxQUpper = {
 };
 
 /* Raw data from file offset 0x4C1C to 0x4C28 (12 bytes) */
-u8 dSCStaffroll_gap_0x4C1C[12] = {
-	#include <SCStaffroll/gap_0x4C1C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4C1C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4C1C.dl.inc.c>
 };
 
 /* Sprite: TextBoxQLower */
@@ -1548,8 +1582,9 @@ Sprite dSCStaffroll_TextBoxQLower = {
 };
 
 /* Raw data from file offset 0x4CDC to 0x4CE8 (12 bytes) */
-u8 dSCStaffroll_gap_0x4CDC[12] = {
-	#include <SCStaffroll/gap_0x4CDC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4CDC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4CDC.dl.inc.c>
 };
 
 /* Sprite: TextBoxRUpper */
@@ -1585,8 +1620,9 @@ Sprite dSCStaffroll_TextBoxRUpper = {
 };
 
 /* Raw data from file offset 0x4DAC to 0x4DB8 (12 bytes) */
-u8 dSCStaffroll_gap_0x4DAC[12] = {
-	#include <SCStaffroll/gap_0x4DAC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4DAC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4DAC.dl.inc.c>
 };
 
 /* Sprite: TextBoxRLower */
@@ -1622,8 +1658,9 @@ Sprite dSCStaffroll_TextBoxRLower = {
 };
 
 /* Raw data from file offset 0x4E64 to 0x4E78 (20 bytes) */
-u8 dSCStaffroll_gap_0x4E64[20] = {
-	#include <SCStaffroll/gap_0x4E64.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4E64[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4E64.dl.inc.c>
 };
 
 /* Sprite: TextBoxSUpper */
@@ -1659,8 +1696,9 @@ Sprite dSCStaffroll_TextBoxSUpper = {
 };
 
 /* Raw data from file offset 0x4F3C to 0x4F48 (12 bytes) */
-u8 dSCStaffroll_gap_0x4F3C[12] = {
-	#include <SCStaffroll/gap_0x4F3C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4F3C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4F3C.dl.inc.c>
 };
 
 /* Sprite: TextBoxSLower */
@@ -1696,8 +1734,9 @@ Sprite dSCStaffroll_TextBoxSLower = {
 };
 
 /* Raw data from file offset 0x4FF4 to 0x5008 (20 bytes) */
-u8 dSCStaffroll_gap_0x4FF4[20] = {
-	#include <SCStaffroll/gap_0x4FF4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x4FF4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x4FF4.dl.inc.c>
 };
 
 /* Sprite: TextBoxTUpper */
@@ -1733,8 +1772,9 @@ Sprite dSCStaffroll_TextBoxTUpper = {
 };
 
 /* Raw data from file offset 0x50CC to 0x50D8 (12 bytes) */
-u8 dSCStaffroll_gap_0x50CC[12] = {
-	#include <SCStaffroll/gap_0x50CC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x50CC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x50CC.dl.inc.c>
 };
 
 /* Sprite: TextBoxTLower */
@@ -1770,8 +1810,9 @@ Sprite dSCStaffroll_TextBoxTLower = {
 };
 
 /* Raw data from file offset 0x5194 to 0x51A8 (20 bytes) */
-u8 dSCStaffroll_gap_0x5194[20] = {
-	#include <SCStaffroll/gap_0x5194.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5194[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5194.dl.inc.c>
 };
 
 /* Sprite: TextBoxUUpper */
@@ -1807,8 +1848,9 @@ Sprite dSCStaffroll_TextBoxUUpper = {
 };
 
 /* Raw data from file offset 0x526C to 0x5278 (12 bytes) */
-u8 dSCStaffroll_gap_0x526C[12] = {
-	#include <SCStaffroll/gap_0x526C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x526C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x526C.dl.inc.c>
 };
 
 /* Sprite: TextBoxULower */
@@ -1844,8 +1886,9 @@ Sprite dSCStaffroll_TextBoxULower = {
 };
 
 /* Raw data from file offset 0x5324 to 0x5338 (20 bytes) */
-u8 dSCStaffroll_gap_0x5324[20] = {
-	#include <SCStaffroll/gap_0x5324.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5324[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5324.dl.inc.c>
 };
 
 /* Sprite: TextBoxVUpper */
@@ -1881,8 +1924,9 @@ Sprite dSCStaffroll_TextBoxVUpper = {
 };
 
 /* Raw data from file offset 0x53FC to 0x5408 (12 bytes) */
-u8 dSCStaffroll_gap_0x53FC[12] = {
-	#include <SCStaffroll/gap_0x53FC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x53FC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x53FC.dl.inc.c>
 };
 
 /* Sprite: TextBoxVLower */
@@ -1918,8 +1962,9 @@ Sprite dSCStaffroll_TextBoxVLower = {
 };
 
 /* Raw data from file offset 0x54B4 to 0x54C8 (20 bytes) */
-u8 dSCStaffroll_gap_0x54B4[20] = {
-	#include <SCStaffroll/gap_0x54B4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x54B4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x54B4.dl.inc.c>
 };
 
 /* Sprite: TextBoxWUpper */
@@ -1955,8 +2000,9 @@ Sprite dSCStaffroll_TextBoxWUpper = {
 };
 
 /* Raw data from file offset 0x558C to 0x5598 (12 bytes) */
-u8 dSCStaffroll_gap_0x558C[12] = {
-	#include <SCStaffroll/gap_0x558C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x558C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x558C.dl.inc.c>
 };
 
 /* Sprite: TextBoxWLower */
@@ -1992,8 +2038,9 @@ Sprite dSCStaffroll_TextBoxWLower = {
 };
 
 /* Raw data from file offset 0x5644 to 0x5658 (20 bytes) */
-u8 dSCStaffroll_gap_0x5644[20] = {
-	#include <SCStaffroll/gap_0x5644.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5644[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5644.dl.inc.c>
 };
 
 /* Sprite: TextBoxXUpper */
@@ -2029,8 +2076,9 @@ Sprite dSCStaffroll_TextBoxXUpper = {
 };
 
 /* Raw data from file offset 0x571C to 0x5728 (12 bytes) */
-u8 dSCStaffroll_gap_0x571C[12] = {
-	#include <SCStaffroll/gap_0x571C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x571C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x571C.dl.inc.c>
 };
 
 /* Sprite: TextBoxXLower */
@@ -2066,8 +2114,9 @@ Sprite dSCStaffroll_TextBoxXLower = {
 };
 
 /* Raw data from file offset 0x57D4 to 0x57E8 (20 bytes) */
-u8 dSCStaffroll_gap_0x57D4[20] = {
-	#include <SCStaffroll/gap_0x57D4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x57D4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x57D4.dl.inc.c>
 };
 
 /* Sprite: TextBoxYUpper */
@@ -2103,8 +2152,9 @@ Sprite dSCStaffroll_TextBoxYUpper = {
 };
 
 /* Raw data from file offset 0x58AC to 0x58B8 (12 bytes) */
-u8 dSCStaffroll_gap_0x58AC[12] = {
-	#include <SCStaffroll/gap_0x58AC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x58AC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x58AC.dl.inc.c>
 };
 
 /* Sprite: TextBoxYLower */
@@ -2140,8 +2190,9 @@ Sprite dSCStaffroll_TextBoxYLower = {
 };
 
 /* Raw data from file offset 0x596C to 0x5978 (12 bytes) */
-u8 dSCStaffroll_gap_0x596C[12] = {
-	#include <SCStaffroll/gap_0x596C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x596C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x596C.dl.inc.c>
 };
 
 /* Sprite: TextBoxZUpper */
@@ -2177,8 +2228,9 @@ Sprite dSCStaffroll_TextBoxZUpper = {
 };
 
 /* Raw data from file offset 0x5A3C to 0x5A48 (12 bytes) */
-u8 dSCStaffroll_gap_0x5A3C[12] = {
-	#include <SCStaffroll/gap_0x5A3C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5A3C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5A3C.dl.inc.c>
 };
 
 /* Sprite: TextBoxZLower */
@@ -2214,8 +2266,9 @@ Sprite dSCStaffroll_TextBoxZLower = {
 };
 
 /* Raw data from file offset 0x5AF4 to 0x5B08 (20 bytes) */
-u8 dSCStaffroll_gap_0x5AF4[20] = {
-	#include <SCStaffroll/gap_0x5AF4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5AF4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5AF4.dl.inc.c>
 };
 
 /* Sprite: TextBoxColon */
@@ -2251,8 +2304,9 @@ Sprite dSCStaffroll_TextBoxColon = {
 };
 
 /* Raw data from file offset 0x5BB4 to 0x5BC8 (20 bytes) */
-u8 dSCStaffroll_gap_0x5BB4[20] = {
-	#include <SCStaffroll/gap_0x5BB4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5BB4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5BB4.dl.inc.c>
 };
 
 /* Sprite: TextBoxComma */
@@ -2288,8 +2342,9 @@ Sprite dSCStaffroll_TextBoxComma = {
 };
 
 /* Raw data from file offset 0x5C44 to 0x5C58 (20 bytes) */
-u8 dSCStaffroll_gap_0x5C44[20] = {
-	#include <SCStaffroll/gap_0x5C44.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5C44[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5C44.dl.inc.c>
 };
 
 /* Sprite: TextBoxPeriod */
@@ -2325,8 +2380,9 @@ Sprite dSCStaffroll_TextBoxPeriod = {
 };
 
 /* Raw data from file offset 0x5CD4 to 0x5CE8 (20 bytes) */
-u8 dSCStaffroll_gap_0x5CD4[20] = {
-	#include <SCStaffroll/gap_0x5CD4.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5CD4[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5CD4.dl.inc.c>
 };
 
 /* Sprite: TextBoxDash */
@@ -2362,8 +2418,9 @@ Sprite dSCStaffroll_TextBoxDash = {
 };
 
 /* Raw data from file offset 0x5D5C to 0x5D68 (12 bytes) */
-u8 dSCStaffroll_gap_0x5D5C[12] = {
-	#include <SCStaffroll/gap_0x5D5C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5D5C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5D5C.dl.inc.c>
 };
 
 /* Sprite: TextBox1 */
@@ -2399,8 +2456,9 @@ Sprite dSCStaffroll_TextBox1 = {
 };
 
 /* Raw data from file offset 0x5E2C to 0x5E38 (12 bytes) */
-u8 dSCStaffroll_gap_0x5E2C[12] = {
-	#include <SCStaffroll/gap_0x5E2C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5E2C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5E2C.dl.inc.c>
 };
 
 /* Sprite: TextBox2 */
@@ -2436,8 +2494,9 @@ Sprite dSCStaffroll_TextBox2 = {
 };
 
 /* Raw data from file offset 0x5EFC to 0x5F08 (12 bytes) */
-u8 dSCStaffroll_gap_0x5EFC[12] = {
-	#include <SCStaffroll/gap_0x5EFC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5EFC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5EFC.dl.inc.c>
 };
 
 /* Sprite: TextBox3 */
@@ -2473,8 +2532,9 @@ Sprite dSCStaffroll_TextBox3 = {
 };
 
 /* Raw data from file offset 0x5FCC to 0x5FD8 (12 bytes) */
-u8 dSCStaffroll_gap_0x5FCC[12] = {
-	#include <SCStaffroll/gap_0x5FCC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x5FCC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x5FCC.dl.inc.c>
 };
 
 /* Sprite: TextBox4 */
@@ -2510,8 +2570,9 @@ Sprite dSCStaffroll_TextBox4 = {
 };
 
 /* Raw data from file offset 0x609C to 0x60A8 (12 bytes) */
-u8 dSCStaffroll_gap_0x609C[12] = {
-	#include <SCStaffroll/gap_0x609C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x609C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x609C.dl.inc.c>
 };
 
 /* Sprite: TextBox5 */
@@ -2547,8 +2608,9 @@ Sprite dSCStaffroll_TextBox5 = {
 };
 
 /* Raw data from file offset 0x616C to 0x6178 (12 bytes) */
-u8 dSCStaffroll_gap_0x616C[12] = {
-	#include <SCStaffroll/gap_0x616C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x616C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x616C.dl.inc.c>
 };
 
 /* Sprite: TextBox6 */
@@ -2584,8 +2646,9 @@ Sprite dSCStaffroll_TextBox6 = {
 };
 
 /* Raw data from file offset 0x623C to 0x6248 (12 bytes) */
-u8 dSCStaffroll_gap_0x623C[12] = {
-	#include <SCStaffroll/gap_0x623C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x623C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x623C.dl.inc.c>
 };
 
 /* Sprite: TextBox7 */
@@ -2621,8 +2684,9 @@ Sprite dSCStaffroll_TextBox7 = {
 };
 
 /* Raw data from file offset 0x630C to 0x6318 (12 bytes) */
-u8 dSCStaffroll_gap_0x630C[12] = {
-	#include <SCStaffroll/gap_0x630C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x630C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x630C.dl.inc.c>
 };
 
 /* Sprite: TextBox8 */
@@ -2658,8 +2722,9 @@ Sprite dSCStaffroll_TextBox8 = {
 };
 
 /* Raw data from file offset 0x63DC to 0x63E8 (12 bytes) */
-u8 dSCStaffroll_gap_0x63DC[12] = {
-	#include <SCStaffroll/gap_0x63DC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x63DC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x63DC.dl.inc.c>
 };
 
 /* Sprite: TextBox9 */
@@ -2695,8 +2760,9 @@ Sprite dSCStaffroll_TextBox9 = {
 };
 
 /* Raw data from file offset 0x64AC to 0x64B8 (12 bytes) */
-u8 dSCStaffroll_gap_0x64AC[12] = {
-	#include <SCStaffroll/gap_0x64AC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x64AC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x64AC.dl.inc.c>
 };
 
 /* Sprite: TextBox0 */
@@ -2732,8 +2798,9 @@ Sprite dSCStaffroll_TextBox0 = {
 };
 
 /* Raw data from file offset 0x657C to 0x6588 (12 bytes) */
-u8 dSCStaffroll_gap_0x657C[12] = {
-	#include <SCStaffroll/gap_0x657C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x657C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x657C.dl.inc.c>
 };
 
 /* Sprite: TextBoxQuote */
@@ -2769,8 +2836,9 @@ Sprite dSCStaffroll_TextBoxQuote = {
 };
 
 /* Raw data from file offset 0x6604 to 0x6618 (20 bytes) */
-u8 dSCStaffroll_gap_0x6604[20] = {
-	#include <SCStaffroll/gap_0x6604.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x6604[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x6604.dl.inc.c>
 };
 
 /* Sprite: TextBoxAmpers */
@@ -3028,8 +3096,9 @@ Sprite dSCStaffroll_TextBoxEAccent = {
 };
 
 /* Raw data from file offset 0x6B64 to 0x6B78 (20 bytes) */
-u8 dSCStaffroll_gap_0x6B64[20] = {
-	#include <SCStaffroll/gap_0x6B64.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x6B64[2] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x6B64.dl.inc.c>
 };
 #endif
 
@@ -3066,8 +3135,9 @@ Sprite dSCStaffroll_Crosshair = {
 };
 
 /* Raw data from file offset 0x6D9C to 0x6DA8 (12 bytes) */
-u8 dSCStaffroll_gap_0x6D9C[12] = {
-	#include <SCStaffroll/gap_0x6D9C.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x6D9C[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x6D9C.dl.inc.c>
 };
 
 /* Sprite: TextBoxBracketLeft */
@@ -3103,8 +3173,9 @@ Sprite dSCStaffroll_TextBoxBracketLeft = {
 };
 
 /* Raw data from file offset 0x6FDC to 0x6FE8 (12 bytes) */
-u8 dSCStaffroll_gap_0x6FDC[12] = {
-	#include <SCStaffroll/gap_0x6FDC.data.inc.c>
+PAD(4);
+Gfx dSCStaffroll_unusedSpriteDL_0x6FDC[1] = {
+	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x6FDC.dl.inc.c>
 };
 
 /* Sprite: TextBoxBracketRight */
@@ -3139,394 +3210,110 @@ Sprite dSCStaffroll_TextBoxBracketRight = {
 	0, 0,
 };
 
-/* Raw data from file offset 0x721C to 0x7304 (232 bytes) */
-/* gap sub-block @ 0x721C (was gap+0x0, 12 bytes) */
-u8 dSCStaffroll_gap_0x721C[12] = {
-	#include <SCStaffroll/gap_0x721C.data.inc.c>
+/* StaffrollHeader @ 0x721C — 3 pointer slots: NULL + SYInterpDesc + AnimJoint setup script. */
+extern Vec3f dSCStaffroll_Points_0x7228[8];
+extern f32 dSCStaffroll_Keyframes_0x7288[6];
+extern f32 dSCStaffroll_Quartics_0x72A0[25];
+extern SYInterpDesc dSCStaffroll_Interpolation_0x7304[1];
+extern u32 dSCStaffroll_AnimJoint_Setup_0x731C[7];
+extern u32 dSCStaffroll_AnimJoint_0x7338[5];
+extern u8 dSCStaffroll_AnimJoint_0x7358[1024];
+extern Vtx dSCStaffroll_AnimJoint_0x7758[4];
+extern Vtx dSCStaffroll_AnimJoint_0x7798[4];
+extern Gfx dSCStaffroll_AnimJoint_DL_0x77D8[17];
+extern Gfx dSCStaffroll_AnimJoint_DL_0x7860[4];
+extern Gfx dSCStaffroll_AnimJoint_DL_0x7880[8];
+
+void *dSCStaffroll_StaffrollHeader[3] = {
+	NULL,
+	(void *)dSCStaffroll_Interpolation_0x7304,
+	(void *)dSCStaffroll_AnimJoint_0x7338,
 };
 
-/* gap sub-block @ 0x7228 (was gap+0xC, 96 bytes) */
-u8 dSCStaffroll_gap_0x721C_sub_0xC[96] = {
-	#include <SCStaffroll/gap_0x721C_sub_0xC.data.inc.c>
+Vec3f dSCStaffroll_Points_0x7228[8] = {
+	{ -280.82037f, -159.58678f, 605.7593f },
+	{ -98.54599f, -126.8449f, 327.375f },
+	{ 83.7284f, -94.10303f, 48.990753f },
+	{ 58.747913f, 2.629765f, -212.3352f },
+	{ -178.79285f, 72.95225f, -405.5f },
+	{ -458.7232f, 139.82056f, -524.78125f },
+	{ -871.74115f, 205.81422f, -641.71875f },
+	{ -1284.759f, 271.8079f, -758.65625f },
 };
 
-/* gap sub-block @ 0x7288 (was gap+0x6C, 24 bytes) */
-u8 dSCStaffroll_gap_0x721C_sub_0x6C[24] = {
-	#include <SCStaffroll/gap_0x721C_sub_0x6C.data.inc.c>
+f32 dSCStaffroll_Keyframes_0x7288[6] = {
+	0.0f, 0.194292f, 0.362257f, 0.543994f, 0.746575f, 1.0f,
 };
 
-/* gap sub-block @ 0x72A0 (was gap+0x84, 100 bytes) */
-u8 dSCStaffroll_gap_0x721C_sub_0x84[100] = {
-	#include <SCStaffroll/gap_0x721C_sub_0x84.data.inc.c>
+f32 dSCStaffroll_Quartics_0x72A0[25] = {
+	184.92339f, -1.7e-05f, -631.7313f, -0.000222f, 1746.7778f,
+	42.234528f, -59.586906f, 426.25696f, -523.7697f, 1299.9694f,
+	115.30385f, -568.55865f, 450.089f, 318.92166f, 1185.1042f,
+	52.151268f, -22.654272f, 657.61707f, -25.361145f, 1500.8602f,
+	69.2132f, -276.85266f, -438.4054f, 1430.5151f, 2162.613f,
 };
 
-/* Raw data from file offset 0x7304 to 0x7338 (52 bytes) */
-u8 dSCStaffroll_Interpolation_0x7304[52] = {
-	#include <SCStaffroll/Interpolation_0x7304.data.inc.c>
+SYInterpDesc dSCStaffroll_Interpolation_0x7304[1] = {
+	{ nSYInterpKindBezier, 6, 0.0f,
+	  dSCStaffroll_Points_0x7228,
+	  203.93144f,
+	  dSCStaffroll_Keyframes_0x7288,
+	  dSCStaffroll_Quartics_0x72A0 },
+};
+
+/* AObjEvent32 script invoked by gcAddAnimJointAll on this scene:
+ * SetInterp(Bezier-style) at the SYInterpDesc above, then 2 SetValBlock
+ * frames driving a value from 0.0 -> 1.0 over ~99 frames. */
+u32 dSCStaffroll_AnimJoint_Setup_0x731C[7] = {
+	aobjEvent32SetInterp(0, 0x008),
+	(u32)dSCStaffroll_Interpolation_0x7304,
+	aobjEvent32SetValBlock(0x008, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x008, 99),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x7338 to 0x78C0 (1416 bytes) */
-u32 dSCStaffroll_AnimJoint_0x7338[354] = {
+/* AnimJoint scene-block @ 0x7338 (1416 bytes) — header + script + 2 data
+ * regions + 3 Gfx DLs. Chain pointers between sub-blocks resolved via .reloc. */
+u32 dSCStaffroll_AnimJoint_0x7338[5] = {
 	aobjEvent32SetValBlock(0x004, 0),
-	    0xBE427301,  /* -0.18989183008670807f */
+	    0xBE427301,  /* -0.190f */
 	aobjEvent32SetValBlock(0x004, 99),
-	    0x3ED67750,  /* 0.41887903213500977f */
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DF, 28655),
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFCB6500,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	aobjEvent32SetTargetRate(0x21E, 3855),
-	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
-	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
-	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
-	    0x0F0F5FCF,  /* 7.068896404376069e-30f */
-	    0xBB650000,  /* -0.0034942626953125f */
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	aobjEvent32SetTargetRate(0x21E, 3855),
-	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
-	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
-	    0x0F0F0F0F,  /* 7.053344520075142e-30f */
-	    0x0F5FCB65,  /* 1.103392122834375e-29f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFEFEFEF,
-	    0xEFCB6500,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3855),
-	    0xEF000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 3967),
-	    0xCB000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DE, 24523),
-	    0x65000000,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DF, 24421),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x1DF, 19200),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x196, 25856),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x0CA, 0),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 20),
-	aobjEvent32End(),
-	aobjEvent32Wait(2048),
-	aobjEvent32EndRaw(0x000, 32512),
-	aobjEvent32EndRaw(0x001, 32748),
-	aobjEvent32End(),
-	aobjEvent32Wait(0),
-	aobjEvent32EndRaw(0x000, 32512),
-	    0xFFECFFEC,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 32512),
-	    0xFFEC0014,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 2048),
-	aobjEvent32EndRaw(0x000, 32512),
-	aobjEvent32EndRaw(0x000, 20),
-	aobjEvent32End(),
-	aobjEvent32JumpCmd(0x3FE, 0),
-	    (u32)0x00007F00,
-	aobjEvent32EndRaw(0x001, 32748),
-	aobjEvent32End(),
-	aobjEvent32Wait(2048),
-	aobjEvent32EndRaw(0x000, 32512),
-	aobjEvent32EndRaw(0x028, 20),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 32512),
-	aobjEvent32EndRaw(0x029, 32748),
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x000, 2048),
-	aobjEvent32EndRaw(0x000, 32512),
-	    0xD9DDFFFA,
-	aobjEvent32End(),
-	    0xE2001E01,
-	aobjEvent32EndRaw(0x000, 1),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0A0, 16960),
-	    0xFC6096C1,
-	    0x552EFF7F,
-	    0xFA000000,
-	    0xFFFFFFFF,
-	    0xFB000000,
-	    0xFF0000FF,
-	    0xF9000000,
-	aobjEvent32EndRaw(0x000, 8),
-	    0xF5700000,
-	aobjEvent32SetValBlock(0x202, 16464),
-	    0xF5680800,  /* -2.9413455333420635e+32f */
-	    0x000D4350,  /* 1.218008625191131e-39f */
-	    0xD7000002,
-	    0xFFFFFFFF,
-	    0xF2000000,
-	aobjEvent32EndRaw(0x00F, 16636),
-	    0xFD700000,
-	(u32)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x20),
-	    0xE6000000,
-	aobjEvent32End(),
-	    0xF3000000,
-	    0x071FF200,
-	    0xE7000000,
-	aobjEvent32End(),
-	    0xDE000000,
-	(u32)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x528),
-	    0xDF000000,
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x420),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00000602,  /* 2.1551970381315687e-42f */
-	    0xDF000000,  /* -9.223372036854776e+18f */
-	aobjEvent32End(),
-	    0xE7000000,
-	aobjEvent32End(),
-	aobjEvent32EndRaw(0x200, 16392),
-	(u32)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x460),
-	aobjEvent32SetValBlock(0x00C, 1026),
-	    0x00040002,  /* 3.673447872288935e-40f */
-	    0xE7000000,  /* -6.044629098073146e+23f */
-	aobjEvent32End(),
-	    0xD9FFFFFF,
-	aobjEvent32EndRaw(0x044, 5),
-	    0xE2001E01,
-	aobjEvent32End(),
-	    0xE200001C,
-	aobjEvent32EndRaw(0x0AA, 8312),
-	    0xDF000000,
-	aobjEvent32End(),
+	    0x3ED67750,  /* 0.4189f */
+	aobjEvent32End(),
+};
+PAD(12);
+
+u8 dSCStaffroll_AnimJoint_0x7358[1024] = {
+	#include <SCStaffroll/AnimJoint_0x7358.tex.inc.c>
+};
+
+Vtx dSCStaffroll_AnimJoint_0x7758[4] = {
+	#include <SCStaffroll/AnimJoint_0x7758.vtx.inc.c>
+};
+
+Vtx dSCStaffroll_AnimJoint_0x7798[4] = {
+	#include <SCStaffroll/AnimJoint_0x7798.vtx.inc.c>
+};
+
+Gfx dSCStaffroll_AnimJoint_DL_0x77D8[17] = {
+	#include <SCStaffroll/AnimJoint_DL_0x77D8.dl.inc.c>
+};
+
+Gfx dSCStaffroll_AnimJoint_DL_0x7860[4] = {
+	#include <SCStaffroll/AnimJoint_DL_0x7860.dl.inc.c>
+};
+
+Gfx dSCStaffroll_AnimJoint_DL_0x7880[8] = {
+	#include <SCStaffroll/AnimJoint_DL_0x7880.dl.inc.c>
 };
 
 /* DObjDesc: - @ 0x78C0 (3 entries) */
 DObjDesc dSCStaffroll_DObjDesc_0x78C0[] = {
-	{ 0, (void*)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x4A0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dSCStaffroll_AnimJoint_0x7338 + 0x548), { 110.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0, (void*)dSCStaffroll_AnimJoint_DL_0x77D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dSCStaffroll_AnimJoint_DL_0x7880, { 110.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

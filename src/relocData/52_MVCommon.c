@@ -31,7 +31,7 @@ extern AObjEvent32 *dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E
 extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data[];
 extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xC[];
 extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0x60[];
-extern u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xDC[];
+extern u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_Tex_0xDC[];
 extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[];
 extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[];
 
@@ -1436,11 +1436,15 @@ AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[8] =
 	NULL,
 };
 
-/* Trailing region after 2nd consecutive aobjEvent32End() — kept
- * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_data_0x0000[0x30] = {
-	#include <MVCommon/RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_data_0x0000.data.inc.c>
+/* Trailing region after 2nd consecutive aobjEvent32End() — palette
+ * + texture pair bracketed by 8-byte alignment padding. */
+PAD(8);
+
+u16 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_palette_0x0008[16] = {
+	#include <MVCommon/RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_palette_0x0008.palette.inc.c>
 };
+
+PAD(8);
 
 u8 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Tex_0x0030[0x40] = {
 	#include <MVCommon/RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Tex_0x0030.tex.inc.c>
@@ -1494,9 +1498,80 @@ Gfx dMVCommon_DL_0x97B0[41] = {
 	#include <MVCommon/DL_0x97B0.dl.inc.c>
 };
 
-/* DisplayList: RoomHaze @ 0x98F8 (2872 bytes, 359 cmds) */
-Gfx dMVCommon_RoomHaze_DisplayList[359] = {
-	#include <MVCommon/RoomHaze.dl.inc.c>
+/* RoomHaze region @ 0x98F8 (2872 bytes) — pool of palettes + textures +
+ * Vtx + 2 small Gfx DLs (header @ +0x0, body @ +0xAF8), formerly miscalled
+ * "RoomHaze_DisplayList". Split into typed sub-blocks. */
+
+/* 12-byte header: opaque flag (0x00000001) + chain pointer to DL_0x97B0
+ * at +0x4 + opaque flag (0x00000004) at +0x8. Not standard Gfx opcodes
+ * (byte 0 is 0x00 not 0xDE), so kept as raw u32[3]. */
+u32 dMVCommon_RoomHaze_DLHeader[3] = {
+	0x00000001,
+	(u32)dMVCommon_DL_0x97B0,
+	0x00000004,
+};
+PAD(20);
+
+u16 dMVCommon_RoomHaze_palette_0x0020[8] = {
+	#include <MVCommon/RoomHaze_palette_0x0020.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomHaze_palette_0x0038[16] = {
+	#include <MVCommon/RoomHaze_palette_0x0038.palette.inc.c>
+};
+
+PAD(8);
+
+u16 dMVCommon_RoomHaze_palette_0x0060[256] = {
+	#include <MVCommon/RoomHaze_palette_0x0060.palette.inc.c>
+};
+
+PAD(8);
+
+/* @tex fmt=CI4 dim=16x32 lut=dMVCommon_RoomHaze_palette_0x0020 */
+u8 dMVCommon_RoomHaze_Tex_0x0268[0x100] = {
+	#include <MVCommon/RoomHaze_Tex_0x0268.tex.inc.c>
+};
+
+PAD(8);
+
+/* @tex fmt=CI4 dim=32x16 lut=dMVCommon_RoomHaze_palette_0x0038 */
+u8 dMVCommon_RoomHaze_Tex_0x0370[0x100] = {
+	#include <MVCommon/RoomHaze_Tex_0x0370.tex.inc.c>
+};
+
+PAD(8);
+
+/* @tex fmt=CI8 dim=32x32 lut=dMVCommon_RoomHaze_palette_0x0060 */
+u8 dMVCommon_RoomHaze_Tex_0x0478[0x400] = {
+	#include <MVCommon/RoomHaze_Tex_0x0478.tex.inc.c>
+};
+
+Vtx dMVCommon_RoomHaze_Vtx_0x0878[8] = {
+	#include <MVCommon/RoomHaze_Vtx_0x0878.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomHaze_Vtx_0x08F8[4] = {
+	#include <MVCommon/RoomHaze_Vtx_0x08F8.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomHaze_Vtx_0x0938[12] = {
+	#include <MVCommon/RoomHaze_Vtx_0x0938.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomHaze_Vtx_0x09F8[4] = {
+	#include <MVCommon/RoomHaze_Vtx_0x09F8.vtx.inc.c>
+};
+
+Vtx dMVCommon_RoomHaze_Vtx_0x0A38[12] = {
+	#include <MVCommon/RoomHaze_Vtx_0x0A38.vtx.inc.c>
+};
+
+/* Body DL: 8 cmds, ends with gsSPDisplayList(RoomHaze_post) + gsSPEndDisplayList. */
+Gfx dMVCommon_RoomHaze_DLBody[8] = {
+	#include <MVCommon/RoomHaze_DLBody.dl.inc.c>
 };
 
 /* Gfx DL: RoomHaze_post @ 0xA430 (55 cmds) */
@@ -1512,7 +1587,7 @@ Gfx dMVCommon_RoomHaze_post_post[34] = {
 /* DObjDesc: RoomBooksDObjDesc @ 0xA6F8 (4 entries) */
 DObjDesc dMVCommon_RoomBooksDObjDesc[] = {
 	{ 0, (void*)0x00000000, { -629.3348999023438f, 2549.01708984375f, -4845.73193359375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomHaze_DisplayList + 0xAF8), { -11.84549331665039f, 0.06088300049304962f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomHaze_DLBody, { -11.84549331665039f, 0.06088300049304962f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dMVCommon_RoomHaze_post_post, { 1001.095947265625f, -397.24365234375f, 0.06545999646186829f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
@@ -1565,11 +1640,21 @@ u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_0x30[12] = {
 	aobjEvent32End(),
 };
 
-/* Trailing region after 2nd consecutive aobjEvent32End() — kept
- * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_data_0x0000[0x5C] = {
-	#include <MVCommon/RoomBooksAnimJoint_AnimJoint_data_post_data_0x0000.data.inc.c>
+/* Trailing region after 2nd consecutive aobjEvent32End() — palette
+ * pair + texture pair, all with 4..16-byte alignment padding. */
+PAD(12);
+
+u16 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x000C[16] = {
+	#include <MVCommon/RoomBooksAnimJoint_AnimJoint_data_post_palette_0x000C.palette.inc.c>
 };
+
+PAD(8);
+
+u16 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x0034[16] = {
+	#include <MVCommon/RoomBooksAnimJoint_AnimJoint_data_post_palette_0x0034.palette.inc.c>
+};
+
+PAD(8);
 
 u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x005C[0x200] = {
 	#include <MVCommon/RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x005C.tex.inc.c>
@@ -2311,10 +2396,12 @@ u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954[69] = {
 	aobjEvent32End(),
 };
 
-/* Trailing region after 2nd consecutive aobjEvent32End() — kept
- * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_data_0x0000[0x34] = {
-	#include <MVCommon/RoomPencilsAnimJoint_AnimJoint_data_post_data_0x0000.data.inc.c>
+/* Trailing region after 2nd consecutive aobjEvent32End() — alignment
+ * padding before the trailing texture. */
+PAD(20);
+
+u8 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Tex_0x0014[0x20] = {
+	#include <MVCommon/RoomPencilsAnimJoint_AnimJoint_data_post_Tex_0x0014.tex.inc.c>
 };
 
 Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0034[13] = {
@@ -3019,8 +3106,10 @@ u8 dMVCommon_RoomTissues_Tex_0xCD38[0x500] = {
 	#include <MVCommon/Tex_0xCD38.tex.inc.c>
 };
 
-u8 dMVCommon_RoomTissues_data_0xD238[0xAA10] = {
-	#include <MVCommon/data_0xD238.data.inc.c>
+PAD(8);
+
+u8 dMVCommon_RoomTissues_Tex_0xD240[0xAA08] = {
+	#include <MVCommon/Tex_0xD240.tex.inc.c>
 };
 
 u8 dMVCommon_RoomTissues_Tex_0x17C48[0x1000] = {
@@ -3252,17 +3341,11 @@ u8 dMVCommon_RoomLogo_Tex_0x1C568[0x400] = {
 	#include <MVCommon/RoomLogo_Tex_0x1C568.tex.inc.c>
 };
 
-/* Chain target of DL_at_0x484+0x84 (G_MOVEMEM-style buffer); 32
- * bytes of raw data + 4-byte alignment pad before the next block. */
-u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434[32] = {
-	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434.data.inc.c>
-};
-PAD(4);
-
-/* Trailing region after 2nd consecutive aobjEvent32End() — kept
- * as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434_post[44] = {
-	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434_post.data.inc.c>
+/* Chain target of DL_at_0x484+0x84 — gsSPVertex(..., 5, 0) reads 80
+ * bytes (5 Vtx) starting here, spanning what was previously typed as
+ * data_at_0x434[32] + PAD(4) + data_at_0x434_post[44]. */
+Vtx dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434[5] = {
+	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434.vtx.inc.c>
 };
 
 /* Gfx DL @ _data+0x484 (20 cmds) — starts with gsDPPipeSync, ends with
@@ -3550,8 +3633,13 @@ u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0x60[28] = {
  * as raw bytes pending reloc-chain analysis. */
 PAD(12);
 
-u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xDC[0x1000] = {
-	#include <MVCommon/RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xDC.data.inc.c>
+/* 32×32 RGBA32 glow/beam texture used by the CloseUpEffect "air" effect.
+ * Not statically referenced from this file's .reloc or any DL — the
+ * MObjSub for this object has a NULL tex pointer that the runtime fills
+ * in (presumably to (AnimJoint_data_base + 0xDC) = this symbol). */
+/* @tex fmt=RGBA32 dim=32x32 */
+u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_Tex_0xDC[0x1000] = {
+	#include <MVCommon/RoomCloseUpEffectAirAnimJoint_AnimJoint_Tex_0xDC.tex.inc.c>
 };
 
 /* MObjSub-list head @ 0x1f0f8 — 2-entry MObjSub** array.
@@ -3658,7 +3746,7 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
 extern u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x18[24];
-extern u8 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[8];
+extern Vtx dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[32];
 
 AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint[2] = {
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data,
@@ -3703,17 +3791,11 @@ u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x18[24] = {
 	aobjEvent32End(),
 };
 
-/* Raw 8-byte block @ offset 0x78 (referenced by RoomBossShadowDisplayList+0x3C
- * — DL data target, not a script: word 0's top byte is 0xFE which is not a
- * valid AObjEvent32 opcode). */
-u8 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[8] = {
-	#include <MVCommon/RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78.data.inc.c>
-};
-PAD(4);
-
-/* Trailing data region kept as raw bytes pending reloc-chain analysis. */
-u8 dMVCommon_RoomCloseUpEffectGround_data_0x1F3BC[0x1F4] = {
-	#include <MVCommon/data_0x1F3BC.data.inc.c>
+/* Chain target of RoomBossShadowDisplayList+0x3C — gsSPVertex(..., 32, 0)
+ * reads 512 bytes (32 Vtx) starting here, spanning what was previously
+ * typed as data_0x78[8] + PAD(4) + data_0x1F3BC[0x1F4]. */
+Vtx dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[32] = {
+	#include <MVCommon/RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78.vtx.inc.c>
 };
 
 Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F5B0[5] = {
@@ -4684,17 +4766,24 @@ u8 dMVCommon_RoomSpotlight_Tex_0x23780[0x800] = {
 	#include <MVCommon/RoomSpotlight_Tex_0x23780.tex.inc.c>
 };
 
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x106C[0x90] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x106C.data.inc.c>
+/* gsSPVertex target — 9 Vtx (144 bytes). */
+Vtx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x106C[9] = {
+	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x106C.vtx.inc.c>
 };
 
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x10FC[0x40] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x10FC.data.inc.c>
+/* gsSPVertex target — 4 Vtx (64 bytes). */
+Vtx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x10FC[4] = {
+	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x10FC.vtx.inc.c>
 };
 
-/* DL #1: ends at +0xD8 (gsSPEndDisplayList()) — 28 cmds */
-Gfx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x113C[28] = {
-	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x113C.dl.inc.c>
+/* gsSPVertex target — 4 Vtx (64 bytes) preceding the DL @ +0x40. */
+Vtx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x113C[4] = {
+	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x113C.vtx.inc.c>
+};
+
+/* DL #1: starts at parent _at_0x113C+0x40, ends at +0xD8 (gsSPEndDisplayList) — 20 cmds */
+Gfx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x117C[20] = {
+	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x117C.dl.inc.c>
 };
 
 /* DL #2: starts at parent +0x121C, ends at parent +0x12EC — 26 cmds */
@@ -4705,7 +4794,7 @@ Gfx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x121C[26] = {
 /* RoomOutside scene-graph block @ 0x24200 (1288 bytes).
  * Header is a DObjDLLink[3] + padding + Vtx/Light data + embedded DL. */
 DObjDLLink dMVCommon_RoomOutside_DisplayList[] = {
-	{ 0, (Gfx *)((u8 *)dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x113C + 0x40) },
+	{ 0, dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x117C },
 	{ 1, dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x121C },
 	{ 4, NULL },
 };

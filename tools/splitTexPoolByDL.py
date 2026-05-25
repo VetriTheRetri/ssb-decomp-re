@@ -189,6 +189,12 @@ def main():
     cursor = 0
     prefix = args.prefix if args.prefix else f"d{name}_"
 
+    # Compute the start offset of the next ref for each ref (so we can grow
+    # a palette into trailing zero space without colliding with the next
+    # typed block).
+    next_starts = [refs[i + 1][0] if i + 1 < len(refs) else pool_size
+                   for i in range(len(refs))]
+
     for i, (off, kind, size, count) in enumerate(refs):
         if cursor < off:
             # Untyped gap before this ref
@@ -197,6 +203,18 @@ def main():
             cursor = off
         if size <= 0:
             continue
+        # gsDPLoadTLUTCmd(5, N) loads (N+1) entries but the storage backing
+        # the TLUT is almost always a full 16-entry palette. If we declare a
+        # u16[<16>] with non-multiple-of-2-entry count (i.e. byte size not
+        # 4-aligned), IDO inserts alignment padding between this block and
+        # the next, which breaks byte-identical layout. Round palettes up
+        # to 16 entries when room exists before the next ref / pool end.
+        if kind == "palette":
+            room = next_starts[i] - off
+            if size < 32 and room >= 32:
+                size = 32                       # full 16-entry palette
+            elif size % 4 != 0 and (size + (4 - size % 4)) <= room:
+                size = size + (4 - size % 4)   # at least 4-byte align
         end = off + size
         # Cap at pool end
         if end > pool_size:
@@ -212,6 +230,10 @@ def main():
     # `off` is pool-relative; `disp_off = off + base_off` is the file-absolute
     # offset used in symbol/include names (so existing file-offset convention
     # in fid 85's MBallRays blocks is preserved).
+    # The inc.c filename mirrors the symbol name (minus the standard
+    # `d<Name>_` module prefix) so multiple split pools in the same fid
+    # don't collide on identical short suffixes like `data_0x0000.data.inc.c`.
+    inc_prefix = prefix[len(f"d{name}_"):] if prefix.startswith(f"d{name}_") else ""
     out = []
     for off, size, kind, count, _ in pieces:
         # Skip 0-byte pieces (shouldn't happen)
@@ -220,19 +242,19 @@ def main():
         disp_off = off + base_off
         if kind == "Vtx":
             sym = f"{prefix}Vtx_0x{disp_off:04X}"
-            inc = f"<{inc_dir}/Vtx_0x{disp_off:04X}.vtx.inc.c>"
+            inc = f"<{inc_dir}/{inc_prefix}Vtx_0x{disp_off:04X}.vtx.inc.c>"
             out.append(f"Vtx {sym}[{count}] = {{\n{indent}#include {inc}\n}};")
         elif kind == "Tex":
             sym = f"{prefix}Tex_0x{disp_off:04X}"
-            inc = f"<{inc_dir}/Tex_0x{disp_off:04X}.tex.inc.c>"
+            inc = f"<{inc_dir}/{inc_prefix}Tex_0x{disp_off:04X}.tex.inc.c>"
             out.append(f"u8 {sym}[0x{size:X}] = {{\n{indent}#include {inc}\n}};")
         elif kind == "palette":
             sym = f"{prefix}palette_0x{disp_off:04X}"
-            inc = f"<{inc_dir}/palette_0x{disp_off:04X}.palette.inc.c>"
+            inc = f"<{inc_dir}/{inc_prefix}palette_0x{disp_off:04X}.palette.inc.c>"
             out.append(f"u16 {sym}[{size // 2}] = {{\n{indent}#include {inc}\n}};")
         else:  # gap
             sym = f"{prefix}data_0x{disp_off:04X}"
-            inc = f"<{inc_dir}/data_0x{disp_off:04X}.data.inc.c>"
+            inc = f"<{inc_dir}/{inc_prefix}data_0x{disp_off:04X}.data.inc.c>"
             out.append(f"u8 {sym}[0x{size:X}] = {{\n{indent}#include {inc}\n}};")
 
     new_block = "\n\n".join(out)

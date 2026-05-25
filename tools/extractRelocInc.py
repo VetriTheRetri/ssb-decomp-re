@@ -206,6 +206,8 @@ _SUPPORTED_DECL_TYPES = frozenset({
     "MPVertexData", "MPVertexLinks", "MPLineInfo", "MPMapObjData",
     "FTAttributes", "FTThrowHitDesc",
     "WPAttributes", "ITAttributes", "GRAttackColl",
+    "GRSectorDesc", "SYInterpDesc",
+    "Vec3f", "SYColorPack",
 })
 
 
@@ -280,7 +282,11 @@ _FIXED_TYPE_SIZES = {
     "u8":  1, "u16": 2, "u32": 4, "u64": 8,
     "s8":  1, "s16": 2, "s32": 4, "s64": 8, "f32": 4,
     "Vtx": 16, "Vtx_t": 16, "Gfx": 8, "Bitmap": 16,
+    "Vec3f": 12,
     "DObjDesc": 44, "DObjDLLink": 8, "MObjSub": 120, "Sprite": 68,
+    "GRSectorDesc": 48,  # 5 ptr + 24-byte filler, src/gr/grvars.h
+    "SYInterpDesc": 24,  # 6 words, src/sys/interp.h
+    "SYColorPack": 4,    # union { SYColorRGBA s; u32 pack; }, include/ssb_types.h
     "MPGroundData": 0xA8,
     "MPItemWeights": 20,
     "MPGeometryData": 0x1C,

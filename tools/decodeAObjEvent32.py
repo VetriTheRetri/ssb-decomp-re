@@ -294,7 +294,7 @@ def parse_reloc_chain_pointers(reloc_path, target_sym):
     return out
 
 
-def process_file(file_id, dry=False):
+def process_file(file_id, dry=False, target_syms=None):
     c_path = None
     target_name = None
     for fn in os.listdir(RELOC_DIR):
@@ -309,19 +309,32 @@ def process_file(file_id, dry=False):
     with open(c_path) as f:
         text = f.read()
 
-    # Match anywhere `AnimJoint`, `MatAnimJoint`, `CamAnimJoint`, `animjoints`,
-    # or `matanimjoints` appears in the symbol name (no underscore required
-    # before, since `LegsAnimJoint` etc. have no separator).
-    pat = re.compile(
-        r"u32 (d\w*(?:AnimJoint|MatAnimJoint|CamAnimJoint|animjoints|matanimjoints)\w*)\[(\d+)\] = \{\n"
+    # Default symbol-name pattern: match anywhere `AnimJoint`,
+    # `MatAnimJoint`, `CamAnimJoint`, `animjoints`, or `matanimjoints`
+    # appears in the symbol name. If `target_syms` is set, accept any
+    # u32 array whose name is in the explicit list — useful for blocks
+    # that don't follow the standard naming convention.
+    if target_syms:
+        sym_alt = "|".join(re.escape(s) for s in target_syms)
+        sym_pattern = rf"(?:{sym_alt})"
+    else:
+        sym_pattern = (r"d\w*(?:AnimJoint|MatAnimJoint|CamAnimJoint|"
+                       r"animjoints|matanimjoints)\w*")
+    pat_inc = re.compile(
+        rf"u32 ({sym_pattern})\[(\d+)\] = \{{\n"
         r"(\t#include <[^>]+>\n)\};",
+        re.MULTILINE,
+    )
+    pat_inline = re.compile(
+        rf"u32 ({sym_pattern})\[(\d+)\] = \{{\n"
+        r"(?P<body>(?:[^}].*\n)+?)\};",
         re.MULTILINE,
     )
     reloc_path = c_path[:-2] + ".reloc"
     changes = 0
     new_text = text
 
-    for m in pat.finditer(text):
+    for m in pat_inc.finditer(text):
         sym = m.group(1)
         n = int(m.group(2))
         inc_line = m.group(3)
@@ -340,6 +353,61 @@ def process_file(file_id, dry=False):
         if len(words) != n:
             continue
         chain_pointers = parse_reloc_chain_pointers(reloc_path, sym)
+        decoded_body = process_array(text, sym, words, chain_pointers)
+        if decoded_body is None:
+            continue
+        old_block = m.group(0)
+        new_block = f"u32 {sym}[{n}] = {{\n{decoded_body}}};"
+        new_text = new_text.replace(old_block, new_block, 1)
+        changes += 1
+
+    # Now also handle inline-hex bodies.
+    for m in pat_inline.finditer(new_text):
+        sym = m.group(1)
+        n = int(m.group(2))
+        body = m.group("body")
+        # Skip blocks that already contain aobjEvent32 macro calls (i.e.
+        # already decoded) or `#include` references (handled above).
+        if "aobjEvent32" in body or "#include" in body:
+            continue
+        # Each non-blank source line corresponds to ONE u32 word in the
+        # array. Parse each line: either a `0xNNNN…` hex literal or a
+        # chain-pointer expression like `(u32)dXxx` / `(u32)((u8*)dXxx + 0xN)`.
+        body_lines = [ln for ln in body.split("\n") if ln.strip()]
+        if len(body_lines) != n:
+            continue
+        words = []
+        chain_pointers = {}
+        ok = True
+        for i, ln in enumerate(body_lines):
+            byte_off = i * 4
+            stripped = ln.strip().rstrip(",").rstrip()
+            # Strip trailing comment
+            stripped = re.sub(r"\s*/\*.*\*/\s*$", "", stripped).rstrip(",").rstrip()
+            hm = re.match(r"^0x([0-9A-Fa-f]+)$", stripped)
+            if hm:
+                words.append(int(hm.group(1), 16))
+                continue
+            # Chain pointer expressions: `(u32)dXxx`, `(u32)(dXxx)`,
+            # `(u32)((u8*)dXxx + 0xN)`, `(u32)((u8*)dXxx+0xN)`.
+            cm = re.match(
+                r"^\(u32\)\s*\(?\s*(?:\(u8\s*\*\)\s*)?(?P<sym>d[A-Za-z_][A-Za-z_0-9]*)"
+                r"\s*(?:\+\s*0x(?P<off>[0-9A-Fa-f]+))?\s*\)?\s*\)?\s*$",
+                stripped,
+            )
+            if cm:
+                tgt_sym = cm.group("sym")
+                tgt_off = int(cm.group("off"), 16) if cm.group("off") else 0
+                if tgt_off == 0:
+                    chain_pointers[byte_off] = tgt_sym
+                else:
+                    chain_pointers[byte_off] = f"((u8*){tgt_sym} + 0x{tgt_off:X})"
+                words.append(0)  # placeholder, decoder ignores via chain_pointers
+                continue
+            ok = False
+            break
+        if not ok or len(words) != n:
+            continue
         decoded_body = process_array(text, sym, words, chain_pointers)
         if decoded_body is None:
             continue
@@ -371,6 +439,9 @@ def main():
     ap.add_argument("file_ids", nargs="*", type=int)
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--symbol", action="append", default=[],
+                    help="decode only this u32 array (may be repeated). "
+                    "Use for blocks whose name doesn't include AnimJoint.")
     args = ap.parse_args()
     if args.all:
         targets = sorted({
@@ -383,7 +454,8 @@ def main():
         targets = args.file_ids
     total = 0
     for fid in targets:
-        if process_file(fid, dry=args.dry):
+        if process_file(fid, dry=args.dry,
+                         target_syms=args.symbol or None):
             total += 1
     print(f"{total} files updated")
 

@@ -156,20 +156,37 @@ u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38[] = {
 	aobjEvent32End(),
 };
 
-/* Raw data from file offset 0x0AD0 to 0x0B10 (64 bytes) */
-u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[16] = {
-	aobjEvent32End(),
-	aobjEvent32Jump(0x14008000),
-	aobjEvent32End(),
+/* Raw data from file offset 0x0AD0 to 0x0B10 (64 bytes).
+ * Split into header[2] + main script + loop-back ptr + End so each
+ * chain target is a bare block symbol. */
+extern AObjEvent32 *dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_loop;
+extern u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data[12];
+
+AObjEvent32 *dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[2] = {
+	NULL,
+	(AObjEvent32 *)&dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_loop,
+};
+
+/* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(1, *) pairs,
+ * SetAnim, then a chain-encoded back-pointer to data start. */
+u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data[12] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 6),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 3),
 	    0xB0800000,
 	aobjEvent32SetValAfterBlock(0x001, 6),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 3),
 	    0x32C00000,
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32Jump(0xFFFF02B6),
-	aobjEvent32End(),
+	(u32)(dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data),    /* chain back to data start */
 };
+
+/* Chain back-pointer @ +0x38 — fixRelocChain rewrites this slot. */
+AObjEvent32 *dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_loop =
+	(AObjEvent32 *)dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data;
+
+/* Trailing End opcode @ +0x3C */
+u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_end = 0;

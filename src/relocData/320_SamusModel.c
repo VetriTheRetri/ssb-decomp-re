@@ -41,6 +41,19 @@ extern u16 dSamusModel_palette_0xCEB0[];
 extern u16 dSamusModel_palette_0xD5A0[];
 extern u16 dSamusModel_palette_0xD5C8[];
 extern u16 dSamusModel_palette_0xD5F0[];
+extern u8 dSamusModel_Tex_0xD730[];
+extern u8 dSamusModel_Tex_0xD758[];
+extern u8 dSamusModel_Tex_0xD780[];
+extern u8 dSamusModel_Tex_0xD7A8[];
+extern u8 dSamusModel_Tex_0xD9D8[];
+extern u8 dSamusModel_Tex_0xDA00[];
+extern u8 dSamusModel_Tex_0xDA28[];
+extern u8 dSamusModel_Tex_0xDA50[];
+extern u8 dSamusModel_Tex_0xDA78[];
+extern u8 dSamusModel_Tex_0xDCA8[];
+extern u8 dSamusModel_Tex_0xDE08[];
+extern u8 dSamusModel_Tex_0xDE78[];
+extern u8 dSamusModel_Tex_0xDEE8[];
 extern MObjSub **dSamusModel_Joint_0x0040_post[];
 extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x1D8[];
 extern MObjSub dSamusModel_Joint_0x0040_post_sub_0x250[];
@@ -145,7 +158,7 @@ extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4C0[];
 extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4C4[];
 extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4C8[];
 extern AObjEvent32 * dSamusModel_gap_0x6FD4_sub_0x4D0[];
-extern u8 dSamusModel_gap_0x6FD4_sub_0x4D4[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4D4[];
 extern u16 dSamusModel_gap_0xB27C_sub_0xC[];
 /* MObjSub-dispatch table at file 0x0000 (64 bytes, 16 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
@@ -177,7 +190,7 @@ MObjSub **dSamusModel_gap_0x0000[16] = {
  * each, file offsets 0x218..0xC68) and
  * 13 MObjSub* trailing-index cells (0xC68..0xCF8)
  * have been split out below. */
-MObjSub **dSamusModel_Joint_0x0040_post[118] = {
+MObjSub **dSamusModel_Joint_0x0040_post[17] = {
 	NULL,
 	NULL,
 	NULL,
@@ -195,108 +208,169 @@ MObjSub **dSamusModel_Joint_0x0040_post[118] = {
 	NULL,
 	(MObjSub **)dSamusModel_Joint_0x0040_post_sub_0xCAC,
 	NULL,
-	(MObjSub **)dSamusModel_palette_0xB4E0,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB4E0,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_gap_0xB27C_sub_0xC,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xD5A0,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xD5C8,
-	(MObjSub **)dSamusModel_palette_0xD5F0,
-	(MObjSub **)dSamusModel_palette_0xC9B0,
-	(MObjSub **)dSamusModel_palette_0xC818,
-	(MObjSub **)dSamusModel_palette_0xC840,
-	(MObjSub **)dSamusModel_palette_0xC868,
-	(MObjSub **)dSamusModel_palette_0xC890,
-	(MObjSub **)dSamusModel_palette_0xC9B0,
-	(MObjSub **)dSamusModel_palette_0xC818,
-	(MObjSub **)dSamusModel_palette_0xC840,
-	(MObjSub **)dSamusModel_palette_0xC868,
-	(MObjSub **)dSamusModel_palette_0xC890,
-	(MObjSub **)dSamusModel_palette_0xC9B0,
-	(MObjSub **)dSamusModel_palette_0xC818,
-	(MObjSub **)dSamusModel_palette_0xC8B8,
-	(MObjSub **)dSamusModel_palette_0xC868,
-	(MObjSub **)dSamusModel_palette_0xC890,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_gap_0xB27C_sub_0xC,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xD5A0,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xD5C8,
-	(MObjSub **)dSamusModel_palette_0xD5F0,
-	(MObjSub **)dSamusModel_palette_0xBAA8,
-	(MObjSub **)dSamusModel_palette_0xBA08,
-	(MObjSub **)dSamusModel_palette_0xBA30,
-	(MObjSub **)dSamusModel_palette_0xBA58,
-	(MObjSub **)dSamusModel_palette_0xBA80,
-	(MObjSub **)dSamusModel_palette_0xBFA8,
-	(MObjSub **)dSamusModel_palette_0xBCD8,
-	(MObjSub **)dSamusModel_palette_0xBD00,
-	(MObjSub **)dSamusModel_palette_0xBD28,
-	(MObjSub **)dSamusModel_palette_0xBD50,
-	(MObjSub **)dSamusModel_palette_0xC9B0,
-	(MObjSub **)dSamusModel_palette_0xC818,
-	(MObjSub **)dSamusModel_palette_0xB7B0,
-	(MObjSub **)dSamusModel_palette_0xC868,
-	(MObjSub **)dSamusModel_palette_0xB7D8,
-	(MObjSub **)dSamusModel_palette_0xB4E0,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB4E0,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xB788,
-	(MObjSub **)dSamusModel_palette_0xB4B8,
-	(MObjSub **)dSamusModel_palette_0xB710,
-	(MObjSub **)dSamusModel_palette_0xB738,
-	(MObjSub **)dSamusModel_palette_0xB760,
-	(MObjSub **)dSamusModel_palette_0xCC80,
-	(MObjSub **)dSamusModel_palette_0xCBE0,
-	(MObjSub **)dSamusModel_palette_0xCC08,
-	(MObjSub **)dSamusModel_palette_0xCC30,
-	(MObjSub **)dSamusModel_palette_0xCC58,
-	(MObjSub **)dSamusModel_palette_0xBAA8,
-	(MObjSub **)dSamusModel_palette_0xBA08,
-	(MObjSub **)dSamusModel_palette_0xCEB0,
-	(MObjSub **)dSamusModel_palette_0xBA58,
-	(MObjSub **)dSamusModel_palette_0xBA80,
-	NULL,
 };
+
+void *dSamusModel_Joint_0x0040_post_palset_0x44[5] = {
+	(void *)dSamusModel_palette_0xB4E0,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x58[5] = {
+	(void *)dSamusModel_palette_0xB4E0,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x6C[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_gap_0xB27C_sub_0xC,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x80[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xD5A0,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xD5C8,
+	(void *)dSamusModel_palette_0xD5F0,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x94[5] = {
+	(void *)dSamusModel_palette_0xC9B0,
+	(void *)dSamusModel_palette_0xC818,
+	(void *)dSamusModel_palette_0xC840,
+	(void *)dSamusModel_palette_0xC868,
+	(void *)dSamusModel_palette_0xC890,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0xA8[5] = {
+	(void *)dSamusModel_palette_0xC9B0,
+	(void *)dSamusModel_palette_0xC818,
+	(void *)dSamusModel_palette_0xC840,
+	(void *)dSamusModel_palette_0xC868,
+	(void *)dSamusModel_palette_0xC890,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0xBC[5] = {
+	(void *)dSamusModel_palette_0xC9B0,
+	(void *)dSamusModel_palette_0xC818,
+	(void *)dSamusModel_palette_0xC8B8,
+	(void *)dSamusModel_palette_0xC868,
+	(void *)dSamusModel_palette_0xC890,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0xD0[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_gap_0xB27C_sub_0xC,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0xE4[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xD5A0,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xD5C8,
+	(void *)dSamusModel_palette_0xD5F0,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0xF8[5] = {
+	(void *)dSamusModel_palette_0xBAA8,
+	(void *)dSamusModel_palette_0xBA08,
+	(void *)dSamusModel_palette_0xBA30,
+	(void *)dSamusModel_palette_0xBA58,
+	(void *)dSamusModel_palette_0xBA80,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x10C[5] = {
+	(void *)dSamusModel_palette_0xBFA8,
+	(void *)dSamusModel_palette_0xBCD8,
+	(void *)dSamusModel_palette_0xBD00,
+	(void *)dSamusModel_palette_0xBD28,
+	(void *)dSamusModel_palette_0xBD50,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x120[5] = {
+	(void *)dSamusModel_palette_0xC9B0,
+	(void *)dSamusModel_palette_0xC818,
+	(void *)dSamusModel_palette_0xB7B0,
+	(void *)dSamusModel_palette_0xC868,
+	(void *)dSamusModel_palette_0xB7D8,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x134[5] = {
+	(void *)dSamusModel_palette_0xB4E0,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x148[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x15C[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x170[5] = {
+	(void *)dSamusModel_palette_0xB4E0,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x184[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x198[5] = {
+	(void *)dSamusModel_palette_0xB788,
+	(void *)dSamusModel_palette_0xB4B8,
+	(void *)dSamusModel_palette_0xB710,
+	(void *)dSamusModel_palette_0xB738,
+	(void *)dSamusModel_palette_0xB760,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x1AC[5] = {
+	(void *)dSamusModel_palette_0xCC80,
+	(void *)dSamusModel_palette_0xCBE0,
+	(void *)dSamusModel_palette_0xCC08,
+	(void *)dSamusModel_palette_0xCC30,
+	(void *)dSamusModel_palette_0xCC58,
+};
+
+void *dSamusModel_Joint_0x0040_post_palset_0x1C0[5] = {
+	(void *)dSamusModel_palette_0xBAA8,
+	(void *)dSamusModel_palette_0xBA08,
+	(void *)dSamusModel_palette_0xCEB0,
+	(void *)dSamusModel_palette_0xBA58,
+	(void *)dSamusModel_palette_0xBA80,
+};
+
+u32 *dSamusModel_Joint_0x0040_post_palset_tail[1] = { NULL };
 
 /* MObjSub @ 0x218 */
 MObjSub dSamusModel_Joint_0x0040_post_sub_0x1D8[1] = {
@@ -309,7 +383,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x1D8[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x44),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x44,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -338,7 +412,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x250[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x58),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x58,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -367,7 +441,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x2C8[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x6C),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x6C,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -396,7 +470,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x340[1] = {
 		0.23090000450611115f, 0.273840993642807f,
 		0.7721999883651733f, 0.2763180136680603f,
 		0.23090000450611115f, 0.7721999883651733f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x80),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x80,
 		0x0004,
 		0x02, 0x00,
 		0x0018,
@@ -425,7 +499,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x3B8[1] = {
 		0.3423529863357544f, 0.0f,
 		0.3152939975261688f, 1.0f,
 		0.3423529863357544f, 0.3152939975261688f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x94),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x94,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -454,7 +528,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x430[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xA8),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0xA8,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -483,7 +557,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x4A8[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xBC),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0xBC,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -512,7 +586,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x520[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xD0),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0xD0,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -541,7 +615,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x598[1] = {
 		0.23090000450611115f, 0.27379998564720154f,
 		0.7721999883651733f, 0.27630001306533813f,
 		0.23090000450611115f, 0.7721999883651733f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xE4),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0xE4,
 		0x0004,
 		0x02, 0x00,
 		0x0018,
@@ -570,7 +644,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x610[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0xF8),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0xF8,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -599,7 +673,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x688[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x10C),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x10C,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -628,7 +702,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x700[1] = {
 		0.05000000074505806f, 0.12999999523162842f,
 		0.8999999761581421f, 0.4000000059604645f,
 		0.05000000074505806f, 0.8999999761581421f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x120),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x120,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -657,7 +731,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x778[1] = {
 		0.013538000173866749f, 0.039799999445676804f,
 		0.588923990726471f, 1.280400037765503f,
 		0.013538000173866749f, 0.588923990726471f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x134),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x134,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -686,7 +760,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x7F0[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x148),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x148,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -744,7 +818,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x8E0[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x15C),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x15C,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -773,7 +847,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x958[1] = {
 		0.013538000173866749f, 0.039799999445676804f,
 		0.588923990726471f, 1.280400037765503f,
 		0.013538000173866749f, 0.588923990726471f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x170),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x170,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -802,7 +876,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0x9D0[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x184),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x184,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -860,7 +934,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0xAC0[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x198),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x198,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -889,7 +963,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0xB38[1] = {
 		0.09962199628353119f, -0.0005000000237487257f,
 		0.800000011920929f, 0.9629999995231628f,
 		0.09962199628353119f, 0.800000011920929f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x1AC),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x1AC,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -918,7 +992,7 @@ MObjSub dSamusModel_Joint_0x0040_post_sub_0xBB0[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dSamusModel_Joint_0x0040_post + 0x1C0),
+		(void**)dSamusModel_Joint_0x0040_post_palset_0x1C0,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -1217,7 +1291,15 @@ Gfx dSamusModel_Joint_0x3418_DisplayList[33] = {
 	#include <SamusModel/Joint_0x3418.dl.inc.c>
 };
 
-/* DObjDesc: JointTree @ 0x3520 (35 entries) */
+/* DObjDesc: JointTree @ 0x3520 (34 entries — the original 35th was
+ * the per-joint dispatch table at +0x5D8 with chain pointers landing
+ * in float fields; split out below as `gap_0x3AF8`). */
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x480[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x488[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x494[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x49C[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4A0[];
+
 DObjDesc dSamusModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dSamusModel_Joint_0x1F18_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1253,13 +1335,62 @@ DObjDesc dSamusModel_JointTree[] = {
 	{ 6, (void*)dSamusModel_Joint_0x3418_DisplayList, { -1.9999999949504854e-06f, -5.700000110664405e-05f, -1.9999999949504854e-06f }, { 0.05590999871492386f, 0.12842699885368347f, 0.045496001839637756f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 4.784001330219472e-30f, 4.8333058891121696e-30f }, { 0.0f, 4.857958920874903e-30f, 4.882611576479444e-30f }, { 4.956567662502106e-30f, 0.0f, 0.0f } },
+};
+
+/* Per-joint dispatch table @ 0x3AF8 — 11 slots holding chain-encoded
+ * `AObjEvent32 **` pointers to per-joint script arrays. Originally
+ * rolled into JointTree as a 35th DObjDesc entry. */
+AObjEvent32 **dSamusModel_gap_0x3AF8[11] = {
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x480,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x488,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x494,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x49C,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4A0,
+	NULL,
+	NULL,
 };
 
 /* Raw data from file offset 0x3B24 to 0x4CF8 (4564 bytes) */
-/* gap sub-block @ 0x3B24 (was gap+0x0, 96 bytes) */
-u8 dSamusModel_gap_0x3B24[96] = {
-	#include <SamusModel/gap_0x3B24.data.inc.c>
+/* Master dispatch @ 0x3B24 — per-joint AObjEvent32 *Y[] arrays for
+ * the first skeleton (mirrors gap_0x6FD4 in the second skeleton). */
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4A4[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4B0[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4B8[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4C0[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4C4[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4C8[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4D0[];
+extern AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4D4[];
+
+AObjEvent32 **dSamusModel_gap_0x3B24[24] = {
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4A4,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4B0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4B8,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4C0,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4C4,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4C8,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4D0,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x4D4,
+	NULL,
 };
 
 /* gap sub-block @ 0x3B84 (was gap+0x60, 48 bytes) */
@@ -1683,10 +1814,12 @@ AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4D0[1] = {
 	(AObjEvent32 *)dSamusModel_gap_0x3B24_sub_0x390,
 };
 
-/* gap sub-block @ 0x3FF8 (was gap+0x4D4, 8 bytes) */
-u32 dSamusModel_gap_0x3B24_sub_0x4D4[2] = {
-	(u32)dSamusModel_gap_0x3B24_sub_0x360,
-	aobjEvent32End(),
+/* gap sub-block @ 0x3FF8 (was gap+0x4D4, 8 bytes) — chain marker
+ * pointing back to the script at gap_0x3B24_sub_0x360, terminator
+ * NULL. */
+AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4D4[2] = {
+	(AObjEvent32 *)dSamusModel_gap_0x3B24_sub_0x360,
+	NULL,
 };
 
 /* gap sub-block @ 0x4000 (was gap+0x4DC, 132 bytes) */
@@ -1727,184 +1860,184 @@ MObjSub *dSamusModel_gap_0x3B24_sub_0x4DC[33] = {
 };
 
 /* u32 pointer array @ 0x4084 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x560[5] = {
-	0x10222D38,
-	0x10232D2E,
-	0x10242DC4,
-	0x10252DCE,
-	0x10262DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x560[5] = {
+	(u16 *)dSamusModel_palette_0xB4E0,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x4098 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x574[5] = {
-	0x10272D38,
-	0x10282D2E,
-	0x10292DC4,
-	0x102A2DCE,
-	0x102B2DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x574[5] = {
+	(u16 *)dSamusModel_palette_0xB4E0,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x40AC (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x588[5] = {
-	0x102C2DE2,
-	0x102D2D2E,
-	0x102E2CA2,
-	0x102F2DCE,
-	0x10302DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x588[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_gap_0xB27C_sub_0xC,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x40C0 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x59C[5] = {
-	0x10312DE2,
-	0x10323568,
-	0x10332DC4,
-	0x10343572,
-	0x1035357C,
+u16 *dSamusModel_gap_0x3B24_sub_0x59C[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xD5A0,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xD5C8,
+	(u16 *)dSamusModel_palette_0xD5F0,
 };
 
 /* u32 pointer array @ 0x40D4 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x5B0[5] = {
-	0x1036326C,
-	0x10373206,
-	0x10383210,
-	0x1039321A,
-	0x103A3224,
+u16 *dSamusModel_gap_0x3B24_sub_0x5B0[5] = {
+	(u16 *)dSamusModel_palette_0xC9B0,
+	(u16 *)dSamusModel_palette_0xC818,
+	(u16 *)dSamusModel_palette_0xC840,
+	(u16 *)dSamusModel_palette_0xC868,
+	(u16 *)dSamusModel_palette_0xC890,
 };
 
 /* u32 pointer array @ 0x40E8 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x5C4[5] = {
-	0x103B326C,
-	0x103C3206,
-	0x103D3210,
-	0x103E321A,
-	0x103F3224,
+u16 *dSamusModel_gap_0x3B24_sub_0x5C4[5] = {
+	(u16 *)dSamusModel_palette_0xC9B0,
+	(u16 *)dSamusModel_palette_0xC818,
+	(u16 *)dSamusModel_palette_0xC840,
+	(u16 *)dSamusModel_palette_0xC868,
+	(u16 *)dSamusModel_palette_0xC890,
 };
 
 /* u32 pointer array @ 0x40FC (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x5D8[5] = {
-	0x1040326C,
-	0x10413206,
-	0x1042322E,
-	0x1043321A,
-	0x10443224,
+u16 *dSamusModel_gap_0x3B24_sub_0x5D8[5] = {
+	(u16 *)dSamusModel_palette_0xC9B0,
+	(u16 *)dSamusModel_palette_0xC818,
+	(u16 *)dSamusModel_palette_0xC8B8,
+	(u16 *)dSamusModel_palette_0xC868,
+	(u16 *)dSamusModel_palette_0xC890,
 };
 
 /* u32 pointer array @ 0x4110 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x5EC[5] = {
-	0x10452DE2,
-	0x10462D2E,
-	0x10472CA2,
-	0x10482DCE,
-	0x10492DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x5EC[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_gap_0xB27C_sub_0xC,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x4124 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x600[5] = {
-	0x104A2DE2,
-	0x104B3568,
-	0x104C2DC4,
-	0x104D3572,
-	0x104E357C,
+u16 *dSamusModel_gap_0x3B24_sub_0x600[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xD5A0,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xD5C8,
+	(u16 *)dSamusModel_palette_0xD5F0,
 };
 
 /* u32 pointer array @ 0x4138 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x614[5] = {
-	0x104F2FEA,
-	0x10502F36,
-	0x10512F5E,
-	0x10522F4A,
-	0x10532F54,
+u16 *dSamusModel_gap_0x3B24_sub_0x614[5] = {
+	(u16 *)dSamusModel_palette_0xBFA8,
+	(u16 *)dSamusModel_palette_0xBCD8,
+	(u16 *)dSamusModel_palette_0xBD78,
+	(u16 *)dSamusModel_palette_0xBD28,
+	(u16 *)dSamusModel_palette_0xBD50,
 };
 
 /* u32 pointer array @ 0x414C (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x628[5] = {
-	0x10542EAA,
-	0x10552E82,
-	0x10562E8C,
-	0x10572E96,
-	0x10582EA0,
+u16 *dSamusModel_gap_0x3B24_sub_0x628[5] = {
+	(u16 *)dSamusModel_palette_0xBAA8,
+	(u16 *)dSamusModel_palette_0xBA08,
+	(u16 *)dSamusModel_palette_0xBA30,
+	(u16 *)dSamusModel_palette_0xBA58,
+	(u16 *)dSamusModel_palette_0xBA80,
 };
 
 /* u32 pointer array @ 0x4160 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x63C[5] = {
-	0x1059326C,
-	0x105A3206,
-	0x105B2DEC,
-	0x105C321A,
-	0x105D2DF6,
+u16 *dSamusModel_gap_0x3B24_sub_0x63C[5] = {
+	(u16 *)dSamusModel_palette_0xC9B0,
+	(u16 *)dSamusModel_palette_0xC818,
+	(u16 *)dSamusModel_palette_0xB7B0,
+	(u16 *)dSamusModel_palette_0xC868,
+	(u16 *)dSamusModel_palette_0xB7D8,
 };
 
 /* u32 pointer array @ 0x4174 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x650[5] = {
-	0x105E2D38,
-	0x105F2D2E,
-	0x10602DC4,
-	0x10612DCE,
-	0x10622DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x650[5] = {
+	(u16 *)dSamusModel_palette_0xB4E0,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x4188 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x664[5] = {
-	0x10632DE2,
-	0x10642D2E,
-	0x10652DC4,
-	0x10662DCE,
-	0x10672DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x664[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x419C (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x678[5] = {
-	0x10682DE2,
-	0x10692D2E,
-	0x106A2DC4,
-	0x106B2DCE,
-	0x106C2DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x678[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x41B0 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x68C[5] = {
-	0x106D2D38,
-	0x106E2D2E,
-	0x106F2DC4,
-	0x10702DCE,
-	0x10712DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x68C[5] = {
+	(u16 *)dSamusModel_palette_0xB4E0,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x41C4 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x6A0[5] = {
-	0x10722DE2,
-	0x10732D2E,
-	0x10742DC4,
-	0x10752DCE,
-	0x10762DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x6A0[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x41D8 (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x6B4[5] = {
-	0x10772DE2,
-	0x10782D2E,
-	0x10792DC4,
-	0x107A2DCE,
-	0x107B2DD8,
+u16 *dSamusModel_gap_0x3B24_sub_0x6B4[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x41EC (5 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x6C8[5] = {
-	0x107C3320,
-	0x107D32F8,
-	0x107E3302,
-	0x107F330C,
-	0x10803316,
+u16 *dSamusModel_gap_0x3B24_sub_0x6C8[5] = {
+	(u16 *)dSamusModel_palette_0xCC80,
+	(u16 *)dSamusModel_palette_0xCBE0,
+	(u16 *)dSamusModel_palette_0xCC08,
+	(u16 *)dSamusModel_palette_0xCC30,
+	(u16 *)dSamusModel_palette_0xCC58,
 };
 
 /* u32 pointer array @ 0x4200 (6 entries) */
-u32 dSamusModel_gap_0x3B24_sub_0x6DC[6] = {
-	0x10812EAA,
-	0x10822E82,
-	0x108333AC,
-	0x10842E96,
-	0x10912EA0,
-	0x00000000,
+u16 *dSamusModel_gap_0x3B24_sub_0x6DC[6] = {
+	(u16 *)dSamusModel_palette_0xBAA8,
+	(u16 *)dSamusModel_palette_0xBA08,
+	(u16 *)dSamusModel_palette_0xCEB0,
+	(u16 *)dSamusModel_palette_0xBA58,
+	(u16 *)dSamusModel_palette_0xBA80,
+	NULL,
 };
 
 /* MObjSub @ 0x4218 */
@@ -2840,7 +2973,15 @@ Gfx dSamusModel_Joint_0x68D0_DisplayList[32] = {
 	#include <SamusModel/Joint_0x68D0.dl.inc.c>
 };
 
-/* DObjDesc: JointTree_0x69D0 @ 0x69D0 (35 entries) */
+/* DObjDesc: JointTree_0x69D0 @ 0x69D0 (34 entries — the original
+ * 35th was the per-joint dispatch table at +0x5D8 for the second
+ * skeleton; split out below as `gap_0x6FA8`). */
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x480[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x488[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x494[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x49C[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4A0[];
+
 DObjDesc dSamusModel_JointTree_0x69D0[] = {
 	{ 0, (void*)0x00000000, { 0.00011300000187475234f, 444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dSamusModel_Joint_0x57D8_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -2876,7 +3017,23 @@ DObjDesc dSamusModel_JointTree_0x69D0[] = {
 	{ 6, (void*)dSamusModel_Joint_0x68D0_DisplayList, { -3.999999989900971e-06f, -5.700000110664405e-05f, -7.000000096013537e-06f }, { 0.05590900033712387f, 0.12842699885368347f, 0.04551900178194046f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 3.9392590979730103e-22f, 3.9723468273461107e-22f }, { 0.0f, 3.9888911969036403e-22f, 4.00543531402568e-22f }, { 4.0550664032143515e-22f, 0.0f, 0.0f } },
+};
+
+/* Per-joint dispatch table @ 0x6FA8 — 11 slots holding chain-encoded
+ * `AObjEvent32 **` pointers for the second skeleton. Originally rolled
+ * into JointTree_0x69D0 as a 35th DObjDesc entry. */
+AObjEvent32 **dSamusModel_gap_0x6FA8[11] = {
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x480,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x488,
+	NULL,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x494,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x49C,
+	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x4A0,
+	NULL,
+	NULL,
 };
 
 /* Raw data from file offset 0x6FD4 to 0xADD8 (15876 bytes) */
@@ -3329,28 +3486,33 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4D0[1] = {
 	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x390,
 };
 
-/* gap sub-block @ 0x74A8 (was gap+0x4D4, 12 bytes) */
-u8 dSamusModel_gap_0x6FD4_sub_0x4D4[12] = {
-	#include <SamusModel/gap_0x6FD4_sub_0x4D4.data.inc.c>
+/* gap sub-block @ 0x74A8 (was gap+0x4D4, 12 bytes) — 3-entry chain
+ * marker { ptr, NULL, ptr } */
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x360[];
+extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x5FC[];
+AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4D4[3] = {
+	dSamusModel_gap_0x6FD4_sub_0x360,
+	NULL,
+	dSamusModel_gap_0x6FD4_sub_0x5FC,
 };
 
 /* u32 pointer array @ 0x74B4 (5 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x4E0[5] = {
-	0x1D2E2DE2,
-	0x1D2F2D2E,
-	0x1D302DC4,
-	0x1D312DCE,
-	0x1D322DD8,
+u16 *dSamusModel_gap_0x6FD4_sub_0x4E0[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x74C8 (6 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x4F4[6] = {
-	0x1D332DE2,
-	0x1D342D2E,
-	0x1D352DC4,
-	0x1D362DCE,
-	0x1D432DD8,
-	0x00000000,
+u16 *dSamusModel_gap_0x6FD4_sub_0x4F4[6] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
+	NULL,
 };
 
 /* MObjSub @ 0x74E0 */
@@ -3482,22 +3644,22 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x9B0[4] = {
 };
 
 /* u32 pointer array @ 0x7994 (5 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x9C0[5] = {
-	0x1E662DE2,
-	0x1E672D2E,
-	0x1E682DC4,
-	0x1E692DCE,
-	0x1E6A2DD8,
+u16 *dSamusModel_gap_0x6FD4_sub_0x9C0[5] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
 };
 
 /* u32 pointer array @ 0x79A8 (6 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x9D4[6] = {
-	0x1E6B2DE2,
-	0x1E6C2D2E,
-	0x1E6D2DC4,
-	0x1E6E2DCE,
-	0x1E7B2DD8,
-	0x00000000,
+u16 *dSamusModel_gap_0x6FD4_sub_0x9D4[6] = {
+	(u16 *)dSamusModel_palette_0xB788,
+	(u16 *)dSamusModel_palette_0xB4B8,
+	(u16 *)dSamusModel_palette_0xB710,
+	(u16 *)dSamusModel_palette_0xB738,
+	(u16 *)dSamusModel_palette_0xB760,
+	NULL,
 };
 
 /* MObjSub @ 0x79C0 */
@@ -3629,12 +3791,12 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0xDB0[4] = {
 };
 
 /* u32 pointer array @ 0x7D94 (5 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0xDC0[5] = {
-	0x1F66372A,
-	0x1F6735CC,
-	0x1F6835D6,
-	0x1F6935E0,
-	0x1F7535EA,
+u16 *dSamusModel_gap_0x6FD4_sub_0xDC0[5] = {
+	(u16 *)dSamusModel_Tex_0xDCA8,
+	(u16 *)dSamusModel_Tex_0xD730,
+	(u16 *)dSamusModel_Tex_0xD758,
+	(u16 *)dSamusModel_Tex_0xD780,
+	(u16 *)dSamusModel_Tex_0xD7A8,
 };
 
 /* MObjSub @ 0x7DA8 */
@@ -3730,12 +3892,12 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x13F0[4] = {
 };
 
 /* u32 pointer array @ 0x83D4 (5 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x1400[5] = {
-	0x20F6369E,
-	0x20F73676,
-	0x20F83680,
-	0x20F9368A,
-	0x21053694,
+u16 *dSamusModel_gap_0x6FD4_sub_0x1400[5] = {
+	(u16 *)dSamusModel_Tex_0xDA78,
+	(u16 *)dSamusModel_Tex_0xD9D8,
+	(u16 *)dSamusModel_Tex_0xDA00,
+	(u16 *)dSamusModel_Tex_0xDA28,
+	(u16 *)dSamusModel_Tex_0xDA50,
 };
 
 /* MObjSub @ 0x83E8 */
@@ -3845,18 +4007,18 @@ MObjSub **dSamusModel_gap_0x6FD4_sub_0x1A9C_post[3] = {
 };
 
 /* u32 pointer array @ 0x8BF4 (3 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x1C20[3] = {
-	0x22FE3782,
-	0x22FF379E,
-	0x230037BA,
+u8 *dSamusModel_gap_0x6FD4_sub_0x1C20[3] = {
+	dSamusModel_Tex_0xDE08,
+	dSamusModel_Tex_0xDE78,
+	dSamusModel_Tex_0xDEE8,
 };
 
 /* u32 pointer array @ 0x8C00 (4 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x1C2C[4] = {
-	0x23013782,
-	0x2302379E,
-	0x230537BA,
-	0x00000000,
+u8 *dSamusModel_gap_0x6FD4_sub_0x1C2C[4] = {
+	dSamusModel_Tex_0xDE08,
+	dSamusModel_Tex_0xDE78,
+	dSamusModel_Tex_0xDEE8,
+	NULL,
 };
 
 /* MObjSub @ 0x8C10 */
@@ -4004,18 +4166,18 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x1FC0[4] = {
 };
 
 /* u32 pointer array @ 0x8FA4 (3 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x1FD0[3] = {
-	0x23EA3782,
-	0x23EB379E,
-	0x23EC37BA,
+u8 *dSamusModel_gap_0x6FD4_sub_0x1FD0[3] = {
+	dSamusModel_Tex_0xDE08,
+	dSamusModel_Tex_0xDE78,
+	dSamusModel_Tex_0xDEE8,
 };
 
 /* u32 pointer array @ 0x8FB0 (4 entries) */
-u32 dSamusModel_gap_0x6FD4_sub_0x1FDC[4] = {
-	0x23ED3782,
-	0x23EE379E,
-	0x23F137BA,
-	0x00000000,
+u8 *dSamusModel_gap_0x6FD4_sub_0x1FDC[4] = {
+	dSamusModel_Tex_0xDE08,
+	dSamusModel_Tex_0xDE78,
+	dSamusModel_Tex_0xDEE8,
+	NULL,
 };
 
 /* MObjSub @ 0x8FC0 */

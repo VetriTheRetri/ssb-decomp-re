@@ -9,7 +9,7 @@
 extern u8 dDonkeyModel_Tex_0xC0F8[];
 extern u8 dDonkeyModel_Tex_0xCA78[];
 extern u8 dDonkeyModel_Tex_0xCCD0[];
-extern u32 dDonkeyModel_Tex_0xCD18[];
+extern u8 dDonkeyModel_Tex_0xCD18[];
 extern u8 dDonkeyModel_Tex_0xCF88[];
 extern u8 dDonkeyModel_Tex_0xD200[];
 extern u8 dDonkeyModel_Tex_0xD288[];
@@ -69,6 +69,10 @@ extern Gfx dDonkeyModel_DL_0xC020[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x11F8[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1200[];
 extern MObjSub *dDonkeyModel_gap_0x3E78_sub_0x1228[];
+extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5BC[];
+extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5C4[];
+extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5CC[];
+extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5D0[];
 extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5D4[];
 extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5E0[];
 extern AObjEvent32 *dDonkeyModel_gap_0x3E78_sub_0x5FC[];
@@ -96,6 +100,10 @@ extern u16 dDonkeyModel_palette_0xD0B0[];
 extern u16 dDonkeyModel_palette_0xD0D8[];
 extern u16 dDonkeyModel_palette_0xD100[];
 extern u16 dDonkeyModel_palette_0xD128[];
+extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x48C[];
+extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x494[];
+extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x49C[];
+extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4A0[];
 extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4A4[];
 extern AObjEvent32 *dDonkeyModel_gap_0x7390_sub_0x4DC[];
 extern MObjSub **dDonkeyModel_gap_0x7390_sub_0x4E0[];
@@ -1517,7 +1525,9 @@ Gfx dDonkeyModel_Joint_0x37F8_DisplayList[54] = {
 	#include <DonkeyModel/Joint_0x37F8.dl.inc.c>
 };
 
-/* DObjDesc: JointTree @ 0x39A8 (28 entries) */
+/* DObjDesc: JointTree @ 0x39A8 (27 entries — the original 28th was
+ * the per-joint dispatch table at +0x4A4, split out below as
+ * `gap_0x3E4C`). */
 DObjDesc dDonkeyModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 387.7086181640625f, 1.838994026184082f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dDonkeyModel_Joint_0x2188_DisplayList, { 0.0f, -53.65236282348633f, -38.71075439453125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1546,7 +1556,25 @@ DObjDesc dDonkeyModel_JointTree[] = {
 	{ 6, (void*)dDonkeyModel_Joint_0x37F8_DisplayList, { -3.999999989900971e-06f, -9.999999974752427e-07f, -1.4000000192027073e-05f }, { 0.11823499947786331f, -0.5214139819145203f, 0.04863499850034714f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -387.7086181640625f, -1.838994026184082f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 1.4797709694930886e-29f, 1.4994927930501677e-29f, 0.0f }, { 1.509353855291984e-29f, 1.5192147670705237e-29f, 1.538936440164326e-29f }, { 0.0f, 1.558658414184682e-29f, 0.0f } },
+};
+
+/* Per-joint dispatch table @ 0x3E4C — 11 slots holding chain-encoded
+ * `AObjEvent32 **` pointers to the per-joint script arrays that live in
+ * the gap_0x3E78 region below. (Originally rolled into JointTree as a
+ * 28th DObjDesc entry; the bytes there are chain-encoded pointers in
+ * what the extractor interpreted as float fields.) */
+AObjEvent32 **dDonkeyModel_gap_0x3E4C[11] = {
+	NULL,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5BC,
+	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5C4,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5CC,
+	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5D0,
+	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5D4,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5E0,
+	NULL,
 };
 
 /* Raw data from file offset 0x3E78 to 0x50D8 (4704 bytes) */
@@ -3229,7 +3257,9 @@ Gfx dDonkeyModel_Joint_0x6DB8_DisplayList[33] = {
 	#include <DonkeyModel/Joint_0x6DB8.dl.inc.c>
 };
 
-/* DObjDesc: JointTree_0x6EC0 @ 0x6EC0 (28 entries) */
+/* DObjDesc: JointTree_0x6EC0 @ 0x6EC0 (27 entries — the original
+ * 28th was the per-joint dispatch table at +0x4A4 for the second
+ * skeleton, split out below as `gap_0x7364`). */
 DObjDesc dDonkeyModel_JointTree_0x6EC0[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 387.7086181640625f, 1.838989019393921f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dDonkeyModel_Joint_0x5C18_DisplayList, { 0.0f, -53.65236282348633f, -38.71075439453125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -3258,7 +3288,24 @@ DObjDesc dDonkeyModel_JointTree_0x6EC0[] = {
 	{ 6, (void*)dDonkeyModel_Joint_0x6DB8_DisplayList, { -7.000000096013537e-06f, 0.0f, -1.4000000192027073e-05f }, { 0.11712300032377243f, -0.5315330028533936f, 0.048927001655101776f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 6.000000212225132e-06f, -387.7086181640625f, -1.839005947113037f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 1.4698489565378167e-21f }, { 1.4830840482870569e-21f, 0.0f, 1.4897016951358728e-21f }, { 1.496319241010493e-21f, 1.5095542317855372e-21f, 0.0f } },
+};
+
+/* Per-joint dispatch table @ 0x7364 — 11 slots holding chain-encoded
+ * `AObjEvent32 **` pointers to the per-joint script arrays that live
+ * in the gap_0x7390 region below. (Originally rolled into
+ * JointTree_0x6EC0 as a 28th DObjDesc entry.) */
+AObjEvent32 **dDonkeyModel_gap_0x7364[11] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x48C,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x494,
+	NULL,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x49C,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4A0,
+	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x4A4,
+	NULL,
 };
 
 /* Raw data from file offset 0x7390 to 0xC0F8 (19816 bytes) */
@@ -5583,18 +5630,28 @@ u16 dDonkeyModel_palette_0xC5A0[16] = {
 	#include <DonkeyModel/palette_0xC5A0.palette.inc.c>
 };
 PAD(8);
-/* palette @ 0xC5C8 (560 bytes) — split from dDonkeyModel_Tex_0xC378+0x250 */
-u16 dDonkeyModel_palette_0xC5C8[280] = {
+/* palette @ 0xC5C8 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x250 */
+u16 dDonkeyModel_palette_0xC5C8[16] = {
 	#include <DonkeyModel/palette_0xC5C8.palette.inc.c>
+};
+PAD(8);
+/* palette @ 0xC5F0 (520 bytes) — chain target for Tex_0xC378+0x278 */
+u16 dDonkeyModel_palette_0xC5F0[260] = {
+	#include <DonkeyModel/palette_0xC5F0.palette.inc.c>
 };
 /* palette @ 0xC7F8 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x480 */
 u16 dDonkeyModel_palette_0xC7F8[16] = {
 	#include <DonkeyModel/palette_0xC7F8.palette.inc.c>
 };
 PAD(8);
-/* palette @ 0xC820 (560 bytes) — split from dDonkeyModel_Tex_0xC378+0x4A8 */
-u16 dDonkeyModel_palette_0xC820[280] = {
+/* palette @ 0xC820 (40 bytes) — split from dDonkeyModel_Tex_0xC378+0x4A8 */
+u16 dDonkeyModel_palette_0xC820[16] = {
 	#include <DonkeyModel/palette_0xC820.palette.inc.c>
+};
+PAD(8);
+/* palette @ 0xC848 (520 bytes) — chain target for Tex_0xC378+0x4D0 */
+u16 dDonkeyModel_palette_0xC848[260] = {
+	#include <DonkeyModel/palette_0xC848.palette.inc.c>
 };
 
 u16 dDonkeyModel_palette_0xCA50[16] = {
@@ -5627,25 +5684,8 @@ u8 dDonkeyModel_Tex_0xCCD0[72] = {
 
 /* Texture data @ 0xCD18 (72 bytes) */
 /* @tex fmt=CI4 dim=30x10 */
-u32 dDonkeyModel_Tex_0xCD18[18] = {
-	aobjEvent32Cmd17(0x044, 8738),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32Cmd17(0x084, 8914),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfterBlock(0x068, 11613),
-	    0x00000000,  /* 0.0f */
-	    0x2FEF2D5D,  /* 4.35060792947084e-10f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32Cmd23(0x3DE, 11613),
-	aobjEvent32End(),
-	aobjEvent32Cmd23(0x3DE, 11613),
-	aobjEvent32End(),
-	aobjEvent32Cmd23(0x3DE, 11613),
-	aobjEvent32End(),
-	aobjEvent32Cmd23(0x3DE, 11613),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+u8 dDonkeyModel_Tex_0xCD18[72] = {
+	#include <DonkeyModel/Tex_0xCD18.tex.inc.c>
 };
 
 /* Texture data @ 0xCD60 (552 bytes) */
@@ -5716,9 +5756,14 @@ u16 dDonkeyModel_palette_0xD100[16] = {
 	#include <DonkeyModel/palette_0xD100.palette.inc.c>
 };
 PAD(8);
-/* palette @ 0xD128 (176 bytes) — split from dDonkeyModel_Tex_0xCF88+0x1A0 */
-u16 dDonkeyModel_palette_0xD128[88] = {
+/* palette @ 0xD128 (40 bytes) — split from dDonkeyModel_Tex_0xCF88+0x1A0 */
+u16 dDonkeyModel_palette_0xD128[16] = {
 	#include <DonkeyModel/palette_0xD128.palette.inc.c>
+};
+PAD(8);
+/* palette @ 0xD150 (136 bytes) — chain target for Tex_0xCF88+0x1C8 */
+u16 dDonkeyModel_palette_0xD150[68] = {
+	#include <DonkeyModel/palette_0xD150.palette.inc.c>
 };
 
 u16 dDonkeyModel_palette_0xD1D8[16] = {

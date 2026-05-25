@@ -6,7 +6,7 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
-extern u8 dCaptainModel_Joint_0x0080_post[];
+extern void *dCaptainModel_Joint_0x0080_post[];
 extern u16 dCaptainModel_palette_0xB180[];
 extern u16 dCaptainModel_palette_0xB1A8[];
 extern u16 dCaptainModel_palette_0xB1D0[];
@@ -31,6 +31,27 @@ extern u16 dCaptainModel_palette_0xC468[];
 extern u16 dCaptainModel_palette_0xC490[];
 extern u16 dCaptainModel_palette_0xC4B8[];
 extern u16 dCaptainModel_palette_0xC4E0[];
+extern u16 dCaptainModel_Lut_0xB958_palette[];
+extern u16 dCaptainModel_palette_0xB660[];
+extern u16 dCaptainModel_palette_0xB688[];
+extern u16 dCaptainModel_palette_0xB6B0[];
+extern u16 dCaptainModel_palette_0xB6D8[];
+extern u16 dCaptainModel_palette_0xB700[];
+extern u8 dCaptainModel_Tex_0xB750[];
+extern u8 dCaptainModel_Tex_0xB980[];
+extern u16 dCaptainModel_palette_0xBCB8[];
+extern u16 dCaptainModel_palette_0xBD68[];
+extern u16 dCaptainModel_palette_0xBD90[];
+extern u8 dCaptainModel_Tex_0xBE88[];
+extern u8 dCaptainModel_Tex_0xBEB0[];
+extern u8 dCaptainModel_Tex_0xBED8[];
+extern u8 dCaptainModel_Tex_0xBF00[];
+extern u16 dCaptainModel_gap_0x7DD0_sub_0x3098[];
+extern u16 dCaptainModel_gap_0x7DD0_sub_0x30C0[];
+extern u16 dCaptainModel_gap_0x7DD0_sub_0x30E8[];
+extern u16 dCaptainModel_gap_0x7DD0_sub_0x3110[];
+extern u16 dCaptainModel_gap_0x7DD0_sub_0x3138[];
+extern u16 dCaptainModel_gap_0xB978_sub_0x210[];
 extern MObjSub dCaptainModel_Joint_0x0080_post_sub_0x258[];
 extern MObjSub dCaptainModel_Joint_0x0080_post_sub_0x2D0[];
 extern MObjSub dCaptainModel_Joint_0x0080_post_sub_0x348[];
@@ -198,16 +219,20 @@ MObjSub **dCaptainModel_gap_0x0000[24] = {
 	NULL,  /* +0x5C */
 };
 
-/* u32 pointer array @ 0x60 (8 entries) */
-u32 dCaptainModel_Joint_0x0060_post[8] = {
-	0x001A04A4,
-	0x00000000,
-	(u32)dCaptainModel_palette_0xB248,
-	(u32)dCaptainModel_palette_0xB180,
-	(u32)dCaptainModel_palette_0xB1A8,
-	(u32)dCaptainModel_palette_0xB1D0,
-	(u32)dCaptainModel_palette_0xB1F8,
-	(u32)dCaptainModel_palette_0xB220,
+/* void pointer array @ 0x60 (8 entries) */
+void *dCaptainModel_Joint_0x0060_post[2] = {
+	dCaptainModel_Joint_0x0080_post_sub_0x1210,
+	NULL,
+};
+
+/* palette/sprite set @ +0x8 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0060_post_palset_0x8[6] = {
+	dCaptainModel_palette_0xB248,
+	dCaptainModel_palette_0xB180,
+	dCaptainModel_palette_0xB1A8,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_palette_0xB1F8,
+	dCaptainModel_palette_0xB220,
 };
 
 /* Raw data from file offset 0x80 to 0x2D8 (600 bytes).
@@ -215,8 +240,253 @@ u32 dCaptainModel_Joint_0x0060_post[8] = {
  * each, file offsets 0x2D8..0x11D8) and
  * 16 MObjSub* trailing-index cells (0x11D8..0x1298)
  * have been split out below. */
-u8 dCaptainModel_Joint_0x0080_post[600] = {
-	#include <CaptainModel/Joint_0x0080_post.data.inc.c>
+void *dCaptainModel_Joint_0x0080_post[6] = {
+	dCaptainModel_palette_0xB248,
+	dCaptainModel_palette_0xB180,
+	dCaptainModel_palette_0xB1A8,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_palette_0xB1F8,
+	dCaptainModel_palette_0xB220,
+};
+
+/* palette/sprite set @ +0x18 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x18[6] = {
+	dCaptainModel_gap_0x7DD0_sub_0x3138,
+	dCaptainModel_gap_0x7DD0_sub_0x3098,
+	dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	dCaptainModel_gap_0x7DD0_sub_0x3110,
+};
+
+/* palette/sprite set @ +0x30 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x30[6] = {
+	dCaptainModel_gap_0x7DD0_sub_0x3138,
+	dCaptainModel_gap_0x7DD0_sub_0x3098,
+	dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	dCaptainModel_gap_0x7DD0_sub_0x3110,
+};
+
+/* palette/sprite set @ +0x48 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x48[6] = {
+	dCaptainModel_gap_0x7DD0_sub_0x3138,
+	dCaptainModel_gap_0x7DD0_sub_0x3098,
+	dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	dCaptainModel_gap_0x7DD0_sub_0x3110,
+};
+
+/* palette/sprite set @ +0x60 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x60[6] = {
+	dCaptainModel_gap_0x7DD0_sub_0x3138,
+	dCaptainModel_gap_0x7DD0_sub_0x3098,
+	dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	dCaptainModel_gap_0x7DD0_sub_0x3110,
+};
+
+/* palette/sprite set @ +0x78 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x78[6] = {
+	dCaptainModel_palette_0xBD90,
+	dCaptainModel_palette_0xBCB8,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x90 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x90[6] = {
+	dCaptainModel_Lut_0xB958_palette,
+	dCaptainModel_palette_0xBD68,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0xA8 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0xA8[6] = {
+	dCaptainModel_palette_0xC0B8,
+	dCaptainModel_palette_0xC090,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0xC0 (7 entries / 28 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0xC0[7] = {
+	dCaptainModel_Tex_0xB980,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	dCaptainModel_Tex_0xB750,
+};
+
+/* palette/sprite set @ +0xDC (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0xDC[6] = {
+	dCaptainModel_Lut_0xB958_palette,
+	dCaptainModel_palette_0xB660,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0xF4 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0xF4[6] = {
+	dCaptainModel_palette_0xB5B0,
+	dCaptainModel_palette_0xB560,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB588,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x10C (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x10C[6] = {
+	dCaptainModel_palette_0xB4F0,
+	dCaptainModel_palette_0xB478,
+	dCaptainModel_palette_0xB4A0,
+	dCaptainModel_palette_0xB4C8,
+	dCaptainModel_palette_0xB4F0,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x124 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x124[6] = {
+	dCaptainModel_palette_0xB4F0,
+	dCaptainModel_palette_0xB478,
+	dCaptainModel_palette_0xB4A0,
+	dCaptainModel_palette_0xB4C8,
+	dCaptainModel_palette_0xB4F0,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x13C (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x13C[6] = {
+	dCaptainModel_gap_0x7DD0_sub_0x3138,
+	dCaptainModel_gap_0x7DD0_sub_0x3098,
+	dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	dCaptainModel_gap_0x7DD0_sub_0x3110,
+};
+
+/* palette/sprite set @ +0x154 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x154[6] = {
+	dCaptainModel_palette_0xBD90,
+	dCaptainModel_palette_0xBCB8,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x16C (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x16C[6] = {
+	dCaptainModel_Lut_0xB958_palette,
+	dCaptainModel_palette_0xBD68,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x184 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x184[6] = {
+	dCaptainModel_palette_0xC0B8,
+	dCaptainModel_palette_0xC090,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x19C (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x19C[6] = {
+	dCaptainModel_palette_0xC4E0,
+	dCaptainModel_palette_0xC468,
+	dCaptainModel_palette_0xC490,
+	dCaptainModel_palette_0xC4B8,
+	dCaptainModel_palette_0xC4E0,
+	dCaptainModel_palette_0xC4E0,
+};
+
+/* palette/sprite set @ +0x1B4 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x1B4[6] = {
+	dCaptainModel_palette_0xB248,
+	dCaptainModel_palette_0xB180,
+	dCaptainModel_palette_0xB1A8,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_gap_0xB978_sub_0x210,
+	dCaptainModel_palette_0xB220,
+};
+
+/* palette/sprite set @ +0x1CC (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x1CC[6] = {
+	dCaptainModel_palette_0xB248,
+	dCaptainModel_palette_0xB180,
+	dCaptainModel_palette_0xB1A8,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_palette_0xB1F8,
+	dCaptainModel_palette_0xB220,
+};
+
+/* palette/sprite set @ +0x1E4 (5 entries / 20 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x1E4[5] = {
+	dCaptainModel_palette_0xB248,
+	dCaptainModel_palette_0xC020,
+	dCaptainModel_palette_0xB1A8,
+	dCaptainModel_palette_0xB1D0,
+	dCaptainModel_palette_0xB1F8,
+};
+
+/* palette/sprite set @ +0x1F8 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x1F8[6] = {
+	dCaptainModel_Lut_0xB958_palette,
+	dCaptainModel_palette_0xB660,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x210 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x210[6] = {
+	dCaptainModel_palette_0xC330,
+	dCaptainModel_palette_0xB660,
+	dCaptainModel_palette_0xC2B8,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xC2E0,
+	dCaptainModel_palette_0xC308,
+};
+
+/* palette/sprite set @ +0x228 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x228[6] = {
+	dCaptainModel_Lut_0xB958_palette,
+	dCaptainModel_palette_0xB660,
+	dCaptainModel_palette_0xB688,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xB6D8,
+	dCaptainModel_palette_0xB700,
+};
+
+/* palette/sprite set @ +0x240 (6 entries / 24 bytes) */
+void *dCaptainModel_Joint_0x0080_post_palset_0x240[6] = {
+	dCaptainModel_palette_0xC330,
+	dCaptainModel_palette_0xB660,
+	dCaptainModel_palette_0xC2B8,
+	dCaptainModel_palette_0xB6B0,
+	dCaptainModel_palette_0xC2E0,
+	dCaptainModel_palette_0xC308,
 };
 
 /* MObjSub @ 0x2D8 */
@@ -230,7 +500,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x258[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0060_post + 0x8),
+		(void**)dCaptainModel_Joint_0x0060_post_palset_0x8,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -288,7 +558,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x348[1] = {
 		0.0f, -0.015200000256299973f,
 		1.0f, 0.36000001430511475f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x18),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x18,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -317,7 +587,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x3C0[1] = {
 		0.0f, -0.01839200034737587f,
 		1.0f, 0.5855849981307983f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x30),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x30,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -346,7 +616,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x438[1] = {
 		0.0f, -0.016429999843239784f,
 		1.0f, 0.4456599950790405f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x48),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x48,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -375,7 +645,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x4B0[1] = {
 		0.0f, 0.0015320000238716602f,
 		1.0f, 0.38093501329421997f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x60),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x60,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -404,7 +674,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x528[1] = {
 		0.2220810055732727f, 0.1444769948720932f,
 		0.7158370018005371f, 0.7110459804534912f,
 		0.2220810055732727f, 0.7158370018005371f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x78),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x78,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -433,7 +703,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x5A0[1] = {
 		0.10154999792575836f, 0.21199999749660492f,
 		0.7728999853134155f, 0.4000000059604645f,
 		0.10154999792575836f, 0.7728999853134155f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x90),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x90,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -462,7 +732,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x618[1] = {
 		0.0f, 0.14490200579166412f,
 		1.0f, 0.2765960097312927f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0xA8),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0xA8,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -514,13 +784,13 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x708[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0xC0),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0xC0,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0xDC),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0xDC,
 		0x0005,
 		0x02, 0x00,
 		0x0020,
@@ -578,7 +848,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x7F8[1] = {
 		0.14823199808597565f, 0.09524500370025635f,
 		0.7035359740257263f, 0.33590900897979736f,
 		0.14823199808597565f, 0.7035359740257263f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0xF4),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0xF4,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -607,7 +877,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x870[1] = {
 		0.14692699909210205f, 0.14813099801540375f,
 		0.7061460018157959f, 0.7037379741668701f,
 		0.14692699909210205f, 0.7061460018157959f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x10C),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x10C,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -636,7 +906,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x8E8[1] = {
 		0.15000000596046448f, 0.15000000596046448f,
 		0.699999988079071f, 0.699999988079071f,
 		0.15000000596046448f, 0.699999988079071f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x124),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x124,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -665,7 +935,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x960[1] = {
 		0.0f, 0.0017500000540167093f,
 		1.0f, 0.4124999940395355f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x13C),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x13C,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -694,7 +964,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0x9D8[1] = {
 		0.26649999618530273f, 0.1615999937057495f,
 		0.675000011920929f, 0.676800012588501f,
 		0.26649999618530273f, 0.675000011920929f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x154),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x154,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -723,7 +993,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xA50[1] = {
 		0.10154999792575836f, 0.21199999749660492f,
 		0.7728999853134155f, 0.4000000059604645f,
 		0.10154999792575836f, 0.7728999853134155f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x16C),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x16C,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -752,7 +1022,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xAC8[1] = {
 		0.0f, 0.19979999959468842f,
 		1.0f, 0.262800008058548f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x184),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x184,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -810,7 +1080,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xBB8[1] = {
 		-0.00800000037997961f, 0.00139999995008111f,
 		1.0f, 0.6899999976158142f,
 		-0.00800000037997961f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x19C),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x19C,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -839,7 +1109,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xC30[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x1B4),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x1B4,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -868,7 +1138,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xCA8[1] = {
 		0.06499999761581421f, 0.003599999938160181f,
 		0.8700000047683716f, 0.864799976348877f,
 		0.06499999761581421f, 0.8700000047683716f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x1CC),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x1CC,
 		0x0004,
 		0x02, 0x00,
 		0x0020,
@@ -897,7 +1167,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xD20[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x1E4),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x1E4,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -926,7 +1196,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xD98[1] = {
 		0.6000000238418579f, 0.05999999865889549f,
 		0.3700000047683716f, 0.8999999761581421f,
 		0.6000000238418579f, 0.3700000047683716f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x1F8),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x1F8,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -955,7 +1225,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xE10[1] = {
 		0.053599998354911804f, 0.06492000073194504f,
 		0.9408000111579895f, 0.47815901041030884f,
 		0.053599998354911804f, 0.9408000111579895f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x210),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x210,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -1042,7 +1312,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xF78[1] = {
 		0.6000000238418579f, 0.05999999865889549f,
 		0.3700000047683716f, 0.8999999761581421f,
 		0.6000000238418579f, 0.3700000047683716f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x228),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x228,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -1071,7 +1341,7 @@ MObjSub dCaptainModel_Joint_0x0080_post_sub_0xFF0[1] = {
 		0.028999999165534973f, 0.06537699699401855f,
 		0.949999988079071f, 0.4916459918022156f,
 		0.028999999165534973f, 0.949999988079071f,
-		(void**)((u8*)dCaptainModel_Joint_0x0080_post + 0x240),
+		(void**)dCaptainModel_Joint_0x0080_post_palset_0x240,
 		0x0004,
 		0x02, 0x00,
 		0x0010,
@@ -1481,7 +1751,15 @@ Gfx dCaptainModel_Joint_0x3AD8_DisplayList[33] = {
 	#include <CaptainModel/Joint_0x3AD8.dl.inc.c>
 };
 
-/* DObjDesc: JointTree @ 0x3BE0 (28 entries) */
+/* DObjDesc: JointTree @ 0x3BE0 (27 entries — the original 28th was
+ * the per-joint dispatch table at +0x4A4; split out below as
+ * `gap_0x4084`). */
+extern AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x760[];
+extern AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x768[];
+extern AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x77C[];
+extern AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x780[];
+extern AObjEvent32 *dCaptainModel_gap_0x40B0_sub_0x784[];
+
 DObjDesc dCaptainModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dCaptainModel_Joint_0x2448_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1510,7 +1788,20 @@ DObjDesc dCaptainModel_JointTree[] = {
 	{ 6, (void*)dCaptainModel_Joint_0x3AD8_DisplayList, { -1.9999999949504854e-06f, -5.700000110664405e-05f, -1.9999999949504854e-06f }, { 0.05590999871492386f, 0.12842699885368347f, 0.045496001839637756f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 3.275160629933373e-29f }, { 3.314604277047531e-29f, 0.0f, 3.3343273043108256e-29f }, { 3.3540491278679047e-29f, 3.393492474055509e-29f, 0.0f } },
+};
+
+/* Per-joint dispatch table @ 0x4084 — 11 slots holding chain-encoded
+ * `AObjEvent32 **` pointers. Originally rolled into JointTree as a
+ * 28th DObjDesc entry. */
+AObjEvent32 **dCaptainModel_gap_0x4084[11] = {
+	NULL, NULL, NULL, NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x760,    /* +0x10 */
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x768,    /* +0x14 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x77C,    /* +0x1C */
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x780,    /* +0x20 */
+	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x784,    /* +0x24 */
+	NULL,
 };
 
 /* Raw data from file offset 0x40B0 to 0x58D0 (6176 bytes) */
@@ -2245,221 +2536,221 @@ MObjSub *dCaptainModel_gap_0x40B0_sub_0x7E0[26] = {
 };
 
 /* u32 pointer array @ 0x48F8 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x848[6] = {
-	0x123F2C92,
-	0x12402C60,
-	0x12412C6A,
-	0x12422C74,
-	0x12432C7E,
-	0x12442C88,
+u16 *dCaptainModel_gap_0x40B0_sub_0x848[6] = {
+	(u16 *)dCaptainModel_palette_0xB248,
+	(u16 *)dCaptainModel_palette_0xB180,
+	(u16 *)dCaptainModel_palette_0xB1A8,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_palette_0xB1F8,
+	(u16 *)dCaptainModel_palette_0xB220,
 };
 
 /* u32 pointer array @ 0x4910 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x860[6] = {
-	0x12452C92,
-	0x12462C60,
-	0x12472C6A,
-	0x12482C74,
-	0x12492C7E,
-	0x124A2C88,
+u16 *dCaptainModel_gap_0x40B0_sub_0x860[6] = {
+	(u16 *)dCaptainModel_palette_0xB248,
+	(u16 *)dCaptainModel_palette_0xB180,
+	(u16 *)dCaptainModel_palette_0xB1A8,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_palette_0xB1F8,
+	(u16 *)dCaptainModel_palette_0xB220,
 };
 
 /* u32 pointer array @ 0x4928 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x878[6] = {
-	0x124B2BC2,
-	0x124C2B9A,
-	0x124D2BA4,
-	0x124E2C74,
-	0x124F2BAE,
-	0x12502BB8,
+u16 *dCaptainModel_gap_0x40B0_sub_0x878[6] = {
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3138,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3098,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3110,
 };
 
 /* u32 pointer array @ 0x4940 (5 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x890[5] = {
-	0x12512BC2,
-	0x12522B9A,
-	0x12532BA4,
-	0x12542C74,
-	0x12552BAE,
+u16 *dCaptainModel_gap_0x40B0_sub_0x890[5] = {
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3138,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3098,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30E8,
 };
 
 /* u32 pointer array @ 0x4954 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x8A4[6] = {
-	0x12562BC2,
-	0x12572B9A,
-	0x12582BA4,
-	0x12592C74,
-	0x125A2BAE,
-	0x125B2BB8,
+u16 *dCaptainModel_gap_0x40B0_sub_0x8A4[6] = {
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3138,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3098,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3110,
 };
 
 /* u32 pointer array @ 0x496C (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x8BC[6] = {
-	0x125C2BC2,
-	0x125D2B9A,
-	0x125E2BA4,
-	0x125F2C74,
-	0x12602BAE,
-	0x12612BB8,
+u16 *dCaptainModel_gap_0x40B0_sub_0x8BC[6] = {
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3138,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3098,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3110,
 };
 
 /* u32 pointer array @ 0x4984 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x8D4[6] = {
-	0x12622F64,
-	0x12632F2E,
-	0x12642DA2,
-	0x12652DAC,
-	0x12662DB6,
-	0x12672DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x8D4[6] = {
+	(u16 *)dCaptainModel_palette_0xBD90,
+	(u16 *)dCaptainModel_palette_0xBCB8,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x499C (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x8EC[6] = {
-	0x1268302E,
-	0x12693024,
-	0x126A2DA2,
-	0x126B2DAC,
-	0x126C2DB6,
-	0x126D2DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x8EC[6] = {
+	(u16 *)dCaptainModel_palette_0xC0B8,
+	(u16 *)dCaptainModel_palette_0xC090,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x49B4 (7 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x904[7] = {
-	0x12732E60,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x12742DD4,
+u8 *dCaptainModel_gap_0x40B0_sub_0x904[7] = {
+	dCaptainModel_Tex_0xB980,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	dCaptainModel_Tex_0xB750,
 };
 
 /* u32 pointer array @ 0x49D0 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x920[6] = {
-	0x12752E56,
-	0x12762D98,
-	0x12772DA2,
-	0x12782DAC,
-	0x12792DB6,
-	0x127A2DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x920[6] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x49E8 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x938[6] = {
-	0x127B2D6C,
-	0x127C2D58,
-	0x127D2DA2,
-	0x127E2DAC,
-	0x127F2D62,
-	0x12802DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x938[6] = {
+	(u16 *)dCaptainModel_palette_0xB5B0,
+	(u16 *)dCaptainModel_palette_0xB560,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB588,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x4A00 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x950[6] = {
-	0x12812BC2,
-	0x12822B9A,
-	0x12832BA4,
-	0x12842C74,
-	0x12852BAE,
-	0x12862BB8,
+u16 *dCaptainModel_gap_0x40B0_sub_0x950[6] = {
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3138,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3098,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30C0,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x30E8,
+	(u16 *)dCaptainModel_gap_0x7DD0_sub_0x3110,
 };
 
 /* u32 pointer array @ 0x4A18 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x968[6] = {
-	0x12872F64,
-	0x12882F2E,
-	0x12892DA2,
-	0x128A2DAC,
-	0x128B2DB6,
-	0x128C2DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x968[6] = {
+	(u16 *)dCaptainModel_palette_0xBD90,
+	(u16 *)dCaptainModel_palette_0xBCB8,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x4A30 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x980[6] = {
-	0x128D302E,
-	0x128E3024,
-	0x128F2DA2,
-	0x12902DAC,
-	0x12912DB6,
-	0x12922DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x980[6] = {
+	(u16 *)dCaptainModel_palette_0xC0B8,
+	(u16 *)dCaptainModel_palette_0xC090,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x4A48 (4 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x998[4] = {
-	0x12933138,
-	0x1294311A,
-	0x12953124,
-	0x1296312E,
+u16 *dCaptainModel_gap_0x40B0_sub_0x998[4] = {
+	(u16 *)dCaptainModel_palette_0xC4E0,
+	(u16 *)dCaptainModel_palette_0xC468,
+	(u16 *)dCaptainModel_palette_0xC490,
+	(u16 *)dCaptainModel_palette_0xC4B8,
 };
 
 /* u32 pointer array @ 0x4A58 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x9A8[6] = {
-	0x12972C92,
-	0x12982C60,
-	0x12992C6A,
-	0x129A2C74,
-	0x129B2EE2,
-	0x129C2C88,
+u16 *dCaptainModel_gap_0x40B0_sub_0x9A8[6] = {
+	(u16 *)dCaptainModel_palette_0xB248,
+	(u16 *)dCaptainModel_palette_0xB180,
+	(u16 *)dCaptainModel_palette_0xB1A8,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_gap_0xB978_sub_0x210,
+	(u16 *)dCaptainModel_palette_0xB220,
 };
 
 /* u32 pointer array @ 0x4A70 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x9C0[6] = {
-	0x129D2C92,
-	0x129E2C60,
-	0x129F2C6A,
-	0x12A02C74,
-	0x12A12C7E,
-	0x12A22C88,
+u16 *dCaptainModel_gap_0x40B0_sub_0x9C0[6] = {
+	(u16 *)dCaptainModel_palette_0xB248,
+	(u16 *)dCaptainModel_palette_0xB180,
+	(u16 *)dCaptainModel_palette_0xB1A8,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_palette_0xB1F8,
+	(u16 *)dCaptainModel_palette_0xB220,
 };
 
 /* u32 pointer array @ 0x4A88 (5 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x9D8[5] = {
-	0x12A32C92,
-	0x12A43008,
-	0x12A52C6A,
-	0x12A62C74,
-	0x12A72C7E,
+u16 *dCaptainModel_gap_0x40B0_sub_0x9D8[5] = {
+	(u16 *)dCaptainModel_palette_0xB248,
+	(u16 *)dCaptainModel_palette_0xC020,
+	(u16 *)dCaptainModel_palette_0xB1A8,
+	(u16 *)dCaptainModel_palette_0xB1D0,
+	(u16 *)dCaptainModel_palette_0xB1F8,
 };
 
 /* u32 pointer array @ 0x4A9C (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0x9EC[6] = {
-	0x12A82E56,
-	0x12A92D98,
-	0x12AA2DA2,
-	0x12AB2DAC,
-	0x12AC2DB6,
-	0x12AD2DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0x9EC[6] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x4AB4 (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0xA04[6] = {
-	0x12AE30CC,
-	0x12AF2D98,
-	0x12B030AE,
-	0x12B12DAC,
-	0x12B230B8,
-	0x12B330C2,
+u16 *dCaptainModel_gap_0x40B0_sub_0xA04[6] = {
+	(u16 *)dCaptainModel_palette_0xC330,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xC2B8,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xC2E0,
+	(u16 *)dCaptainModel_palette_0xC308,
 };
 
 /* u32 pointer array @ 0x4ACC (6 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0xA1C[6] = {
-	0x12B42E56,
-	0x12B52D98,
-	0x12B62DA2,
-	0x12B72DAC,
-	0x12B82DB6,
-	0x12B92DC0,
+u16 *dCaptainModel_gap_0x40B0_sub_0xA1C[6] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x4AE4 (7 entries) */
-u32 dCaptainModel_gap_0x40B0_sub_0xA34[7] = {
-	0x12BA30CC,
-	0x12BB2D98,
-	0x12BC30AE,
-	0x12BD2DAC,
-	0x12BE30B8,
-	0x12CB30C2,
-	0x00000000,
+u16 *dCaptainModel_gap_0x40B0_sub_0xA34[7] = {
+	(u16 *)dCaptainModel_palette_0xC330,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xC2B8,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xC2E0,
+	(u16 *)dCaptainModel_palette_0xC308,
+	NULL,
 };
 
 /* MObjSub @ 0x4B00 */
@@ -3641,6 +3932,15 @@ Gfx dCaptainModel_Joint_0x7800_DisplayList[32] = {
 };
 
 /* DObjDesc: JointTree_0x7900 @ 0x7900 (28 entries) */
+/* DObjDesc: JointTree_0x7900 @ 0x7900 (27 entries — the original 28th
+ * was the per-joint dispatch table at +0x4A4; split out below as
+ * `gap_0x7DA4`). */
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x670[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x678[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x68C[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x690[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x694[];
+
 DObjDesc dCaptainModel_JointTree_0x7900[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dCaptainModel_Joint_0x6540_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -3669,13 +3969,53 @@ DObjDesc dCaptainModel_JointTree_0x7900[] = {
 	{ 6, (void*)dCaptainModel_Joint_0x7800_DisplayList, { -1.9999999949504854e-06f, -5.700000110664405e-05f, -1.9999999949504854e-06f }, { 0.05590999871492386f, 0.12842699885368347f, 0.045496001839637756f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -444.72869873046875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 5.0425809020633405e-20f }, { 5.084933195660909e-20f, 0.0f, 5.1061106349294004e-20f }, { 5.127286781728185e-20f, 5.1696387522083265e-20f, 0.0f } },
+};
+
+/* Per-joint dispatch table @ 0x7DA4 — 11 slots */
+AObjEvent32 **dCaptainModel_gap_0x7DA4[11] = {
+	NULL, NULL, NULL, NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x670,    /* +0x10 */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x678,    /* +0x14 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x68C,    /* +0x1C */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x690,    /* +0x20 */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x694,    /* +0x24 */
+	NULL,
 };
 
 /* Raw data from file offset 0x7DD0 to 0xAF30 (12640 bytes) */
-/* gap sub-block @ 0x7DD0 (was gap+0x0, 72 bytes) */
-u8 dCaptainModel_gap_0x7DD0[72] = {
-	#include <CaptainModel/gap_0x7DD0.data.inc.c>
+/* Master dispatch @ 0x7DD0 — 18 slots */
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x69C[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6A8[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6B0[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6B4[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6BC[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6C0[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6C4[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6CC[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6D0[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6D4[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6DC[];
+
+AObjEvent32 **dCaptainModel_gap_0x7DD0[18] = {
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x69C,    /* +0x00 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6A8,    /* +0x08 */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6B0,    /* +0x0C */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6B4,    /* +0x10 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6BC,    /* +0x18 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6C0,    /* +0x20 */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6C4,    /* +0x24 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6CC,    /* +0x2C */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6D0,    /* +0x34 */
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6D4,    /* +0x38 */
+	NULL,
+	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x6DC,    /* +0x40 */
+	NULL,
 };
 
 /* gap sub-block @ 0x7E18 (was gap+0x48, 56 bytes) */
@@ -4271,30 +4611,34 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6D4[2] = {
 	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x600,
 };
 
-/* gap sub-block @ 0x84AC (was gap+0x6DC, 8 bytes) */
-u8 dCaptainModel_gap_0x7DD0_sub_0x6DC[8] = {
-	#include <CaptainModel/gap_0x7DD0_sub_0x6DC.data.inc.c>
+/* gap sub-block @ 0x84AC (was gap+0x6DC, 8 bytes) — chain marker
+ * { ptr, ptr } */
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x590[];
+extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x808[];
+AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6DC[2] = {
+	dCaptainModel_gap_0x7DD0_sub_0x590,
+	dCaptainModel_gap_0x7DD0_sub_0x808,
 };
 
 /* u32 pointer array @ 0x84B4 (6 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x6E4[6] = {
-	0x212E302E,
-	0x212F3024,
-	0x21302DA2,
-	0x21312DAC,
-	0x21322DB6,
-	0x21332DC0,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x6E4[6] = {
+	(u16 *)dCaptainModel_palette_0xC0B8,
+	(u16 *)dCaptainModel_palette_0xC090,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x84CC (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x6FC[7] = {
-	0x21342FC0,
-	0x21352FA2,
-	0x21362FAC,
-	0x21372FB6,
-	0x21382DB6,
-	0x21452DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x6FC[7] = {
+	(u16 *)dCaptainModel_Tex_0xBF00,
+	(u16 *)dCaptainModel_Tex_0xBE88,
+	(u16 *)dCaptainModel_Tex_0xBEB0,
+	(u16 *)dCaptainModel_Tex_0xBED8,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x84E8 */
@@ -4432,14 +4776,14 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0xB34[4] = {
 };
 
 /* u32 pointer array @ 0x8914 (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0xB44[7] = {
-	0x22462E56,
-	0x22472D98,
-	0x22482DA2,
-	0x22492DAC,
-	0x224A2DB6,
-	0x22572DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0xB44[7] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x8930 */
@@ -4518,24 +4862,24 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0xDCC[2] = {
 };
 
 /* u32 pointer array @ 0x8BA4 (6 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0xDD4[6] = {
-	0x22EA2E56,
-	0x22EB2D98,
-	0x22EC2DA2,
-	0x22ED2DAC,
-	0x22EE2DB6,
-	0x22EF2DC0,
+u16 *dCaptainModel_gap_0x7DD0_sub_0xDD4[6] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x8BBC (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0xDEC[7] = {
-	0x22F0302E,
-	0x22F13024,
-	0x22F22DA2,
-	0x22F32DAC,
-	0x22F42DB6,
-	0x23012DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0xDEC[7] = {
+	(u16 *)dCaptainModel_palette_0xC0B8,
+	(u16 *)dCaptainModel_palette_0xC090,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x8BD8 */
@@ -4673,14 +5017,14 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x1224[4] = {
 };
 
 /* u32 pointer array @ 0x9004 (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x1234[7] = {
-	0x24022E56,
-	0x24032D98,
-	0x24042DA2,
-	0x24052DAC,
-	0x24062DB6,
-	0x24132DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x1234[7] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x9020 */
@@ -4759,24 +5103,24 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x148C[2] = {
 };
 
 /* u32 pointer array @ 0x9264 (6 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x1494[6] = {
-	0x249A302E,
-	0x249B3024,
-	0x249C2DA2,
-	0x249D2DAC,
-	0x249E2DB6,
-	0x249F2DC0,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x1494[6] = {
+	(u16 *)dCaptainModel_palette_0xC0B8,
+	(u16 *)dCaptainModel_palette_0xC090,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x927C (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x14AC[7] = {
-	0x24A02FC0,
-	0x24A12FA2,
-	0x24A22FAC,
-	0x24A32FB6,
-	0x24A42DB6,
-	0x24B12DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x14AC[7] = {
+	(u16 *)dCaptainModel_Tex_0xBF00,
+	(u16 *)dCaptainModel_Tex_0xBE88,
+	(u16 *)dCaptainModel_Tex_0xBEB0,
+	(u16 *)dCaptainModel_Tex_0xBED8,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x9298 */
@@ -4912,14 +5256,14 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x18E4[4] = {
 };
 
 /* u32 pointer array @ 0x96C4 (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x18F4[7] = {
-	0x25B22E56,
-	0x25B32D98,
-	0x25B42DA2,
-	0x25B52DAC,
-	0x25B62DB6,
-	0x25C32DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x18F4[7] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x96E0 */
@@ -4998,24 +5342,24 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x1B7C[2] = {
 };
 
 /* u32 pointer array @ 0x9954 (6 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x1B84[6] = {
-	0x26562E56,
-	0x26572D98,
-	0x26582DA2,
-	0x26592DAC,
-	0x265A2DB6,
-	0x265B2DC0,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x1B84[6] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
 };
 
 /* u32 pointer array @ 0x996C (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x1B9C[7] = {
-	0x265C302E,
-	0x265D3024,
-	0x265E2DA2,
-	0x265F2DAC,
-	0x26602DB6,
-	0x266D2DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x1B9C[7] = {
+	(u16 *)dCaptainModel_palette_0xC0B8,
+	(u16 *)dCaptainModel_palette_0xC090,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x9988 */
@@ -5153,14 +5497,14 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x1FD4[4] = {
 };
 
 /* u32 pointer array @ 0x9DB4 (7 entries) */
-u32 dCaptainModel_gap_0x7DD0_sub_0x1FE4[7] = {
-	0x276E2E56,
-	0x276F2D98,
-	0x27702DA2,
-	0x27712DAC,
-	0x27722DB6,
-	0x277F2DC0,
-	0x00000000,
+u16 *dCaptainModel_gap_0x7DD0_sub_0x1FE4[7] = {
+	(u16 *)dCaptainModel_Lut_0xB958_palette,
+	(u16 *)dCaptainModel_palette_0xB660,
+	(u16 *)dCaptainModel_palette_0xB688,
+	(u16 *)dCaptainModel_palette_0xB6B0,
+	(u16 *)dCaptainModel_palette_0xB6D8,
+	(u16 *)dCaptainModel_palette_0xB700,
+	NULL,
 };
 
 /* MObjSub @ 0x9DD0 */
@@ -5509,24 +5853,24 @@ u8 dCaptainModel_Tex_0xB5D8[136] = {
 	#include <CaptainModel/Tex_0xB5D8.tex.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xB660[40] = {
-	#include <CaptainModel/Tex_0xB660.tex.inc.c>
+u16 dCaptainModel_palette_0xB660[16] = {
+	#include <CaptainModel/palette_0xB660.palette.inc.c>
 };
-
-u8 dCaptainModel_Tex_0xB688[40] = {
-	#include <CaptainModel/Tex_0xB688.tex.inc.c>
+PAD(8);
+u16 dCaptainModel_palette_0xB688[16] = {
+	#include <CaptainModel/palette_0xB688.palette.inc.c>
 };
-
-u8 dCaptainModel_Tex_0xB6B0[40] = {
-	#include <CaptainModel/Tex_0xB6B0.tex.inc.c>
+PAD(8);
+u16 dCaptainModel_palette_0xB6B0[16] = {
+	#include <CaptainModel/palette_0xB6B0.palette.inc.c>
 };
-
-u8 dCaptainModel_Tex_0xB6D8[40] = {
-	#include <CaptainModel/Tex_0xB6D8.tex.inc.c>
+PAD(8);
+u16 dCaptainModel_palette_0xB6D8[16] = {
+	#include <CaptainModel/palette_0xB6D8.palette.inc.c>
 };
-
-u8 dCaptainModel_Tex_0xB700[80] = {
-	#include <CaptainModel/Tex_0xB700.tex.inc.c>
+PAD(8);
+u16 dCaptainModel_palette_0xB700[40] = {
+	#include <CaptainModel/palette_0xB700.palette.inc.c>
 };
 
 /* @tex fmt=CI4 dim=32x32 */
@@ -5540,145 +5884,23 @@ u16 dCaptainModel_Lut_0xB958_palette[16] = {
 };
 
 /* Raw data from file offset 0xB978 to 0xBBB0 (568 bytes) */
-/* gap sub-block @ 0xB978 (was gap+0x0, 8 bytes) */
-u32 dCaptainModel_gap_0xB978[2] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* gap sub-block @ 0xB978 (was gap+0x0, 8 bytes) — 2 NULL pointer slots */
+void *dCaptainModel_gap_0xB978[2] = {
+	NULL,
+	NULL,
 };
 
-/* gap sub-block @ 0xB980 (was gap+0x8, 520 bytes) */
+/* Texture @ 0xB980 — CI4 32x32 (512B) + 8-byte trailing block split
+ * out as `Tex_0xB980_post` below. */
 /* @tex fmt=CI4 dim=32x32 lut=dCaptainModel_Lut_0xB958_palette */
-u32 dCaptainModel_Tex_0xB980[130] = {
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x1114AAAA,  /* 1.1727731321814899e-28f */
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x1A77BBBB,  /* 5.1230050290125525e-23f */
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x5777BBBB,  /* 272385668284416.0f */
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x11111145,  /* 1.1443804710882256e-28f */
-	    0x7777BBBB,  /* 5.0246287121889666e+33f */
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x11111477,  /* 1.1444789342566324e-28f */
-	    0x777777BB,  /* 5.0192411971379966e+33f */
-	    0x44444444,
-	    0x44444411,
-	aobjEvent32SetVal0RateBlock(0x222, 26487),
-	    0x77777777,  /* 5.019220152157329e+33f */
-	    0x22222222,  /* 2.1973163753312686e-18f */
-	    0x22222441,  /* 2.1974286650994226e-18f */
-	aobjEvent32SetVal0RateBlock(0x22A, 30583),
-	    0x77777777,  /* 5.019220152157329e+33f */
-	    0x88888888,  /* -8.217300606262893e-34f */
-	    0x88888241,  /* -8.215824809839635e-34f */
-	    0x11577777,  /* 1.69973224094325e-28f */
-	    0x75665577,
-	    0x88888888,
-	    0x88888241,
-	aobjEvent32SetValAfter(0x0EE, 30054),
-	    0x6AAA44AA,  /* 1.0292082310090731e+26f */
-	    0x22222222,  /* 2.1973163753312686e-18f */
-	    0x22888241,  /* 3.7000785552135054e-18f */
-	    0x47775657,  /* 63318.33984375f */
-	    0x77756A44,  /* 4.977609583101839e+33f */
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x32288241,
-	    0x6B77A57B,
-	    0x77777775,
-	    0x33333333,
-	    0x33288241,
-	    0x6775A7B7,
-	    0x56777777,
-	    0x33333333,
-	    0x33288241,
-	    0x577AA777,
-	    0x7664A555,
-	    0x33333333,
-	    0x33288241,
-	    0x5764A777,
-	    0x77756414,
-	    0x33333333,
-	    0x33288241,
-	    0x6A4A5777,
-	    0x7777B757,
-	    0x33333333,
-	    0x33288241,
-	    0xA6577777,
-	    0x77777777,
-	    0x33333333,
-	    0x33288241,
-	    0x57777BBB,
-	    0xB777776A,
-	    0x33333333,
-	    0x33288244,
-	    0xB77BBBBB,
-	    0xBBB75AA7,
-	    0x33333333,
-	    0x33288244,
-	    0xB777BBBB,
-	    0xBB77A5B7,
-	    0x33333333,
-	    0x33288244,
-	    0xB7777777,
-	    0x7777A57B,
-	    0x33333333,
-	    0x3328824A,
-	    0xB7777544,
-	    0x4A111A7B,
-	    0x33333333,
-	    0x33288241,
-	    0xA1111111,
-	aobjEvent32SetVal0RateBlock(0x222, 4439),
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	aobjEvent32SetVal0RateBlock(0x222, 4519),
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	aobjEvent32SetVal0RateBlock(0x222, 4373),
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0xC1111116,
-	    0x33333333,
-	    0x33288241,
-	aobjEvent32SetVal0RateBlock(0x222, 4377),
-	    0xDDD11111,  /* -1.8831051150285865e+18f */
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	aobjEvent32SetVal0RateBlock(0x222, 4509),
-	    0xDDDD9111,  /* -1.995695105712849e+18f */
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	aobjEvent32SetVal0RateBlock(0x222, 6621),
-	    0xDD9C1111,  /* -1.405723554527314e+18f */
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	aobjEvent32SetVal0RateBlock(0x223, 7645),
-	    0xC1111111,  /* -9.066666603088379f */
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33288241,  /* 3.92340133714697e-08f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	aobjEvent32SetVal0RateBlock(0x222, 4369),
-	    0x33333333,  /* 4.17232506322307e-08f */
-	    0x33222241,  /* 3.774971801817628e-08f */
-	    0x11111111,  /* 1.1443742118159064e-28f */
-	    0x11111111,
-	aobjEvent32End(),
-	aobjEvent32End(),
+u8 dCaptainModel_Tex_0xB980[512] = {
+	#include <CaptainModel/Tex_0xB980.tex.inc.c>
+};
+
+/* 8-byte trailing block @ 0xBB80 — 2 NULL pointer slots */
+void *dCaptainModel_Tex_0xB980_post[2] = {
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0xBB88 (was gap+0x210, 40 bytes) */
@@ -5692,20 +5914,22 @@ u8 dCaptainModel_Tex_0xBBB0[264] = {
 	#include <CaptainModel/Tex_0xBBB0.tex.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xBCB8[40] = {
-	#include <CaptainModel/Tex_0xBCB8.tex.inc.c>
+u16 dCaptainModel_palette_0xBCB8[16] = {
+	#include <CaptainModel/palette_0xBCB8.palette.inc.c>
 };
+PAD(8);
 
 u8 dCaptainModel_Tex_0xBCE0[136] = {
 	#include <CaptainModel/Tex_0xBCE0.tex.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xBD68[40] = {
-	#include <CaptainModel/Tex_0xBD68.tex.inc.c>
+u16 dCaptainModel_palette_0xBD68[16] = {
+	#include <CaptainModel/palette_0xBD68.palette.inc.c>
 };
+PAD(8);
 
-u8 dCaptainModel_Tex_0xBD90[32] = {
-	#include <CaptainModel/Tex_0xBD90.tex.inc.c>
+u16 dCaptainModel_palette_0xBD90[16] = {
+	#include <CaptainModel/palette_0xBD90.palette.inc.c>
 };
 
 PAD(8);

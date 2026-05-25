@@ -13,21 +13,23 @@
 extern u8 dStageSectorFile2_Tex_0x1C00[];
 extern u32 dStageSectorFile3_AnimJoint_0x1C50[];
 
-/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
-u32 dGRSectorMap_Arwing0_AnimJoint[5] = {
-	    0x3C649600,
+/* item_weights for dGRSectorMap_MapHeader_0x0014 below: one u8 randomizer
+ * weight per common item kind (nITKindCommonStart..nITKindCommonEnd, 20 in
+ * total). Several weights differ between US and JP. */
+u8 dGRSectorMap_Arwing0_AnimJoint[20] = {
+	0x3C, 0x64, 0x96, 0x00,
 #if defined(REGION_JP)
-	    0x0A07060F,
+	0x0A, 0x07, 0x06, 0x0F,
 #else
-	aobjEvent32SetValBlock(0x006, 2068),
+	0x06, 0x03, 0x08, 0x14,
 #endif
-	    0x0508050F,  /* 6.39561838540703e-36f */
+	0x05, 0x08, 0x05, 0x0F,
 #if defined(REGION_JP)
-	    0x0A07140A,
-	    0x0A050512,
+	0x0A, 0x07, 0x14, 0x0A,
+	0x0A, 0x05, 0x05, 0x12,
 #else
-	    0x0B07150C,  /* 2.601588815813326e-32f */
-	    0x0A0A0412,
+	0x0B, 0x07, 0x15, 0x0C,
+	0x0A, 0x0A, 0x04, 0x12,
 #endif
 };
 
@@ -74,7 +76,7 @@ MPGroundData dGRSectorMap_MapHeader_0x0014 =
     -14000,  /* map_bound_left */
     nSYAudioBGMSector,  /* bgm_id */
     dStageSectorFile2_gap_0x0000,  /* map_nodes */
-    dGRSectorMap_Arwing0_AnimJoint,  /* item_weights */
+    (MPItemWeights *)dGRSectorMap_Arwing0_AnimJoint,  /* item_weights */
     -2300,  /* alt_warning */
     7000,  /* camera_bound_team_top */
     -1500,  /* camera_bound_team_bottom */

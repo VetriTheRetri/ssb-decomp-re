@@ -6,7 +6,7 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dMVOpeningRoomWallpaper_sprite_0x26C88[];
-extern u8 dStageCastleFile3[];
+extern AObjEvent32 *dStageCastleFile3_AnimJointRoot[1];
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageCastle_sprite_0x26C88[];
@@ -72,6 +72,3 @@ MPGroundData dGRCastleMap_header =
     { 0, 0, 0 },  /* zoom_start */
     { 0, 0, 15000 },  /* zoom_end */
 };
-
-/* 4 bytes of trailing pad to 16-byte file boundary */
-u8 dGRCastleMap_pad[4] = { 0, 0, 0, 0 };

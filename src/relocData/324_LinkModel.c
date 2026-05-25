@@ -11,6 +11,9 @@ extern u16 dLinkModel_palette_0xCFA0[];
 extern u16 dLinkModel_palette_0xCFC8[];
 extern u16 dLinkModel_palette_0xD0F8[];
 extern u16 dLinkModel_palette_0xD120[];
+extern u8 dLinkModel_Tex_0xB698[];
+extern u8 dLinkModel_Tex_0xBCA8[];
+extern u8 dLinkModel_Tex_0xC2B8[];
 extern MObjSub dLinkModel_Joint_0x0040_post_sub_0x80[];
 extern MObjSub dLinkModel_Joint_0x0040_post_sub_0xF8[];
 extern MObjSub dLinkModel_Joint_0x0040_post_sub_0x170[];
@@ -46,13 +49,13 @@ extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x22C[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x230[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[];
 extern u16 *dLinkModel_gap_0x40EC_sub_0x248[];
-extern u32 dLinkModel_gap_0x40EC_sub_0x24C[];
+extern u16 *dLinkModel_gap_0x40EC_sub_0x24C[];
 extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F4[];
 extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1F8[];
 extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x1FC[];
 extern AObjEvent32 *dLinkModel_gap_0x7AE0_sub_0x200[];
 extern u16 *dLinkModel_gap_0x7AE0_sub_0x214[];
-extern u32 dLinkModel_gap_0x7AE0_sub_0x218[];
+extern u16 *dLinkModel_gap_0x7AE0_sub_0x218[];
 
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x238[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x244[];
@@ -1100,10 +1103,12 @@ u16 *dLinkModel_gap_0x40EC_sub_0x248[1] = {
 	(u16 *)dLinkModel_gap_0x40EC_sub_0x1A0,
 };
 
-/* gap sub-block @ 0x4338 (was gap+0x24C, 8 bytes) */
-u32 dLinkModel_gap_0x40EC_sub_0x24C[2] = {
-	(u32)dLinkModel_gap_0x40EC_sub_0x1C8,
-	aobjEvent32End(),
+/* gap sub-block @ 0x4338 (was gap+0x24C, 8 bytes) — chain marker
+ * pointing at the palette frames at gap_0x40EC_sub_0x1C8; terminator
+ * NULL. */
+u16 *dLinkModel_gap_0x40EC_sub_0x24C[2] = {
+	dLinkModel_gap_0x40EC_sub_0x1C8,
+	NULL,
 };
 
 /* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
@@ -1143,39 +1148,39 @@ MObjSub *dLinkModel_gap_0x40EC_sub_0x254[32] = {
 };
 
 /* u32 pointer array @ 0x43C0 (3 entries) */
-u32 dLinkModel_gap_0x40EC_sub_0x2D4[3] = {
-	0x10F131BA,
-	0x10F2302C,
-	0x10F32EA8,
+u8 *dLinkModel_gap_0x40EC_sub_0x2D4[3] = {
+	dLinkModel_Tex_0xC6E8,
+	dLinkModel_Tex_0xC0B0,
+	dLinkModel_Tex_0xBAA0,
 };
 
 /* u32 pointer array @ 0x43CC (2 entries) */
-u32 dLinkModel_gap_0x40EC_sub_0x2E0[2] = {
-	0x10F43516,
-	0x10F53494,
+u8 *dLinkModel_gap_0x40EC_sub_0x2E0[2] = {
+	dLinkModel_Tex_0xD458,
+	dLinkModel_Tex_0xD250,
 };
 
 /* u32 pointer array @ 0x43D4 (2 entries) */
-u32 dLinkModel_gap_0x40EC_sub_0x2E8[2] = {
-	0x10F631B0,
-	0x10F731B0,
+u16 *dLinkModel_gap_0x40EC_sub_0x2E8[2] = {
+	(u16 *)dLinkModel_Lut_0xC6C0_palette,
+	(u16 *)dLinkModel_Lut_0xC6C0_palette,
 };
 
 /* u32 pointer array @ 0x43DC (4 entries) */
-u32 dLinkModel_gap_0x40EC_sub_0x2F0[4] = {
-	0x10F833F2,
-	0x10F933E8,
-	0x10FA343E,
-	0x10FB3448,
+u16 *dLinkModel_gap_0x40EC_sub_0x2F0[4] = {
+	(u16 *)dLinkModel_palette_0xCFC8,
+	(u16 *)dLinkModel_palette_0xCFA0,
+	(u16 *)dLinkModel_palette_0xD0F8,
+	(u16 *)dLinkModel_palette_0xD120,
 };
 
 /* u32 pointer array @ 0x43EC (5 entries) */
-u32 dLinkModel_gap_0x40EC_sub_0x300[5] = {
-	0x10FC33F2,
-	0x10FD33E8,
-	0x10FE343E,
-	0x115B3448,
-	0x00000000,
+u16 *dLinkModel_gap_0x40EC_sub_0x300[5] = {
+	(u16 *)dLinkModel_palette_0xCFC8,
+	(u16 *)dLinkModel_palette_0xCFA0,
+	(u16 *)dLinkModel_palette_0xD0F8,
+	(u16 *)dLinkModel_palette_0xD120,
+	NULL,
 };
 
 /* MObjSub @ 0x4400 */
@@ -2094,10 +2099,12 @@ u16 *dLinkModel_gap_0x7AE0_sub_0x214[1] = {
 	(u16 *)dLinkModel_gap_0x7AE0_sub_0x16C,
 };
 
-/* gap sub-block @ 0x7CF8 (was gap+0x218, 8 bytes) */
-u32 dLinkModel_gap_0x7AE0_sub_0x218[2] = {
-	(u32)dLinkModel_gap_0x7AE0_sub_0x194,
-	aobjEvent32End(),
+/* gap sub-block @ 0x7CF8 (was gap+0x218, 8 bytes) — chain marker
+ * pointing at the palette frames at gap_0x7AE0_sub_0x194; terminator
+ * NULL. */
+u16 *dLinkModel_gap_0x7AE0_sub_0x218[2] = {
+	dLinkModel_gap_0x7AE0_sub_0x194,
+	NULL,
 };
 
 /* Vtx: Vtx_0x7D00 @ 0x7D00 (4 vertices) */
@@ -2181,16 +2188,16 @@ MObjSub **dLinkModel_gap_0x8110_sub_0x270_post[5] = {
 };
 
 /* u32 pointer array @ 0x84CC (3 entries) */
-u32 dLinkModel_gap_0x8110_sub_0x3BC[3] = {
-	0x213430AE,
-	0x21352F2A,
-	0x21362DA6,
+u8 *dLinkModel_gap_0x8110_sub_0x3BC[3] = {
+	dLinkModel_Tex_0xC2B8,
+	dLinkModel_Tex_0xBCA8,
+	dLinkModel_Tex_0xB698,
 };
 
 /* u32 pointer array @ 0x84D8 (2 entries) */
-u32 dLinkModel_gap_0x8110_sub_0x3C8[2] = {
-	0x21373516,
-	0x21573494,
+u8 *dLinkModel_gap_0x8110_sub_0x3C8[2] = {
+	dLinkModel_Tex_0xD458,
+	dLinkModel_Tex_0xD250,
 };
 
 /* MObjSub @ 0x84E0 */

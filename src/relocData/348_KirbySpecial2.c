@@ -216,7 +216,7 @@ u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint_0x1404[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484[];
+extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484[4];
 extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1494[];
 extern u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x14A0[];
 
@@ -228,16 +228,16 @@ AObjEvent32 *dKirbySpecial2_CutterUpAnimJoint_AnimJoint[5] = {
 	(AObjEvent32 *)dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x14A0,
 };
 
-u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484[] = {
-	    0x04000001,
-	    0x1E000002,
-	    0x1E010001,
-	    0x00000000,
+u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1484[4] = {
+	aobjEvent32Wait(1),
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 1),
+	aobjEvent32End(),
 };
 
 u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint_0x1494[] = {
-	    0x1E000002,
-	    0x1E010002,
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 2),
 	aobjEvent32End(),
 };
 
@@ -441,9 +441,9 @@ AObjEvent32 *dKirbySpecial2_CutterDownAnimJoint_AnimJoint[6] = {
 };
 
 u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint_0x24E8[] = {
-	    0x04000001,
-	    0x1E000002,
-	    0x1E010002,
+	aobjEvent32Wait(1),
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 2),
 	aobjEvent32End(),
 };
 

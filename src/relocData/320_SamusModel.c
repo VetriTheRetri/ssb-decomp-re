@@ -3488,12 +3488,10 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4D0[1] = {
 
 /* gap sub-block @ 0x74A8 (was gap+0x4D4, 12 bytes) — 3-entry chain
  * marker { ptr, NULL, ptr } */
-extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x360[];
-extern AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x5FC[];
 AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x4D4[3] = {
-	dSamusModel_gap_0x6FD4_sub_0x360,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x360,
 	NULL,
-	dSamusModel_gap_0x6FD4_sub_0x5FC,
+	(AObjEvent32 *)dSamusModel_gap_0x6FD4_sub_0x5FC,
 };
 
 /* u32 pointer array @ 0x74B4 (5 entries) */

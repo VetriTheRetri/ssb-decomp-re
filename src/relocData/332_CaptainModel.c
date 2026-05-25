@@ -4613,11 +4613,9 @@ AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6D4[2] = {
 
 /* gap sub-block @ 0x84AC (was gap+0x6DC, 8 bytes) — chain marker
  * { ptr, ptr } */
-extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x590[];
-extern AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x808[];
 AObjEvent32 *dCaptainModel_gap_0x7DD0_sub_0x6DC[2] = {
-	dCaptainModel_gap_0x7DD0_sub_0x590,
-	dCaptainModel_gap_0x7DD0_sub_0x808,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x590,
+	(AObjEvent32 *)dCaptainModel_gap_0x7DD0_sub_0x808,
 };
 
 /* u32 pointer array @ 0x84B4 (6 entries) */

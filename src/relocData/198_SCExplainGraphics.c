@@ -696,49 +696,49 @@ PAD(12);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText8 (300(304)x87 ci8, 15 tiles) */
-u8 dSCExplainGraphics_JPText8_tex_00_00[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_00[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_01[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_01[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_01.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_02[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_02[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_02.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_03[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_03[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_03.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_04[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_04[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_04.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_05[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_05[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_05.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_06[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_06[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_06.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_07[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_07[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_07.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_08[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_08[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_08.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_09[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_09[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_09.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_10[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_10[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_10.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_11[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_11[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_11.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_12[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_12[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_12.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_13[1832] = {
+u8 dSCExplainGraphics_JPText8_tex_13[1832] = {
 	#include <SCExplainGraphics/JPText8_tex_13.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText8_tex_00_14[920] = {
+u8 dSCExplainGraphics_JPText8_tex_14[920] = {
 	#include <SCExplainGraphics/JPText8_tex_14.tex.inc.c>
 };
 
@@ -801,16 +801,16 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText9 (260(272)x51 ci4, 4 tiles) */
-u8 dSCExplainGraphics_JPText9_tex_00_00[2048] = {
+u8 dSCExplainGraphics_JPText9_tex_00[2048] = {
 	#include <SCExplainGraphics/JPText9_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText9_tex_00_01[2048] = {
+u8 dSCExplainGraphics_JPText9_tex_01[2048] = {
 	#include <SCExplainGraphics/JPText9_tex_01.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText9_tex_00_02[2048] = {
+u8 dSCExplainGraphics_JPText9_tex_02[2048] = {
 	#include <SCExplainGraphics/JPText9_tex_02.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText9_tex_00_03[824] = {
+u8 dSCExplainGraphics_JPText9_tex_03[824] = {
 	#include <SCExplainGraphics/JPText9_tex_03.tex.inc.c>
 };
 
@@ -857,10 +857,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText10 (204(208)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText10_tex_00_00[1984] = {
+u8 dSCExplainGraphics_JPText10_tex_00[1984] = {
 	#include <SCExplainGraphics/JPText10_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText10_tex_00_01[1464] = {
+u8 dSCExplainGraphics_JPText10_tex_01[1464] = {
 	#include <SCExplainGraphics/JPText10_tex_01.tex.inc.c>
 };
 
@@ -905,10 +905,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText11 (160x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText11_tex_00_00[2008] = {
+u8 dSCExplainGraphics_JPText11_tex_00[2008] = {
 	#include <SCExplainGraphics/JPText11_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText11_tex_00_01[648] = {
+u8 dSCExplainGraphics_JPText11_tex_01[648] = {
 	#include <SCExplainGraphics/JPText11_tex_01.tex.inc.c>
 };
 
@@ -997,10 +997,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText13 (134(144)x49 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText13_tex_00_00[2024] = {
+u8 dSCExplainGraphics_JPText13_tex_00[2024] = {
 	#include <SCExplainGraphics/JPText13_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText13_tex_00_01[1520] = {
+u8 dSCExplainGraphics_JPText13_tex_01[1520] = {
 	#include <SCExplainGraphics/JPText13_tex_01.tex.inc.c>
 };
 
@@ -1045,10 +1045,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText14 (140(144)x49 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText14_tex_00_00[2024] = {
+u8 dSCExplainGraphics_JPText14_tex_00[2024] = {
 	#include <SCExplainGraphics/JPText14_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText14_tex_00_01[1520] = {
+u8 dSCExplainGraphics_JPText14_tex_01[1520] = {
 	#include <SCExplainGraphics/JPText14_tex_01.tex.inc.c>
 };
 
@@ -1093,10 +1093,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText15 (176x31 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText15_tex_00_00[2032] = {
+u8 dSCExplainGraphics_JPText15_tex_00[2032] = {
 	#include <SCExplainGraphics/JPText15_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText15_tex_00_01[712] = {
+u8 dSCExplainGraphics_JPText15_tex_01[712] = {
 	#include <SCExplainGraphics/JPText15_tex_01.tex.inc.c>
 };
 
@@ -1141,19 +1141,19 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText16 (162(168)x52 ci8, 5 tiles) */
-u8 dSCExplainGraphics_JPText16_tex_00_00[2024] = {
+u8 dSCExplainGraphics_JPText16_tex_00[2024] = {
 	#include <SCExplainGraphics/JPText16_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText16_tex_00_01[2024] = {
+u8 dSCExplainGraphics_JPText16_tex_01[2024] = {
 	#include <SCExplainGraphics/JPText16_tex_01.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText16_tex_00_02[2024] = {
+u8 dSCExplainGraphics_JPText16_tex_02[2024] = {
 	#include <SCExplainGraphics/JPText16_tex_02.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText16_tex_00_03[2024] = {
+u8 dSCExplainGraphics_JPText16_tex_03[2024] = {
 	#include <SCExplainGraphics/JPText16_tex_03.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText16_tex_00_04[680] = {
+u8 dSCExplainGraphics_JPText16_tex_04[680] = {
 	#include <SCExplainGraphics/JPText16_tex_04.tex.inc.c>
 };
 
@@ -1206,19 +1206,19 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText17 (174(176)x52 ci8, 5 tiles) */
-u8 dSCExplainGraphics_JPText17_tex_00_00[1944] = {
+u8 dSCExplainGraphics_JPText17_tex_00[1944] = {
 	#include <SCExplainGraphics/JPText17_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText17_tex_00_01[1944] = {
+u8 dSCExplainGraphics_JPText17_tex_01[1944] = {
 	#include <SCExplainGraphics/JPText17_tex_01.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText17_tex_00_02[1944] = {
+u8 dSCExplainGraphics_JPText17_tex_02[1944] = {
 	#include <SCExplainGraphics/JPText17_tex_02.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText17_tex_00_03[1944] = {
+u8 dSCExplainGraphics_JPText17_tex_03[1944] = {
 	#include <SCExplainGraphics/JPText17_tex_03.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText17_tex_00_04[1416] = {
+u8 dSCExplainGraphics_JPText17_tex_04[1416] = {
 	#include <SCExplainGraphics/JPText17_tex_04.tex.inc.c>
 };
 
@@ -1315,10 +1315,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText19 (134(144)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText19_tex_00_00[2024] = {
+u8 dSCExplainGraphics_JPText19_tex_00[2024] = {
 	#include <SCExplainGraphics/JPText19_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText19_tex_00_01[368] = {
+u8 dSCExplainGraphics_JPText19_tex_01[368] = {
 	#include <SCExplainGraphics/JPText19_tex_01.tex.inc.c>
 };
 
@@ -1451,10 +1451,10 @@ PAD(20);
    their original physical position between the texture and
    the bitmap array. */
 /* Texture: JPText22 (162(176)x33 ci4, 2 tiles) */
-u8 dSCExplainGraphics_JPText22_tex_00_00[2032] = {
+u8 dSCExplainGraphics_JPText22_tex_00[2032] = {
 	#include <SCExplainGraphics/JPText22_tex_00.tex.inc.c>
 };
-u8 dSCExplainGraphics_JPText22_tex_00_01[888] = {
+u8 dSCExplainGraphics_JPText22_tex_01[888] = {
 	#include <SCExplainGraphics/JPText22_tex_01.tex.inc.c>
 };
 

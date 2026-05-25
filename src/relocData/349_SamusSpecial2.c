@@ -10,7 +10,7 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dSamusSpecial2_gap_0x0288[];
 
-extern MObjSub *dSamusSpecial2_gap_0x0288_sub_0x10[];
+extern MObjSub *dSamusSpecial2_gap_0x0288_sub_0x10[2];
 
 /* Raw data from file offset 0x0000 to 0x0210 (528 bytes) */
 PAD(8);
@@ -145,26 +145,40 @@ u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[] = {
 
 PAD(4);
 
-/* Raw data from file offset 0x0480 to 0x04C8 (72 bytes) */
-u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[18] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32SetValAfterBlock(0x001, 0),
-	    0x00000000,
-	aobjEvent32SetValAfterBlock(0x001, 4),
-	    0x3F800000,
-	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
-	aobjEvent32SetValAfterBlock(0x001, 4),
-	    0x3F800000,
-	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
-	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32End(),
-	aobjEvent32Jump(0x00000000),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Raw data from file offset 0x0480 to 0x04C8 (72 bytes).
+ * Split into header[2] + main script + loop-back ptr + trailing zeros
+ * so each chain target is a bare block symbol. */
+extern AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop;
+extern u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data[12];
+
+AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[2] = {
+	NULL,
+	(AObjEvent32 *)&dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop,
 };
+
+/* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(0x001, *), then
+ * SetAnim with a chain-encoded back-pointer to data start. */
+u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data[12] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)(dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data),
+};
+
+/* Chain back-pointer @ +0x38 — fixRelocChain rewrites this slot. */
+AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop =
+	(AObjEvent32 *)dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data;
+
+/* Trailing zero pad @ +0x3C..+0x47 (12 bytes) */
+PAD(12);
 
 /* Palette: Lut_0x04C8 @ 0x4C8 (16 colors RGBA5551) */
 u16 dSamusSpecial2_Lut_0x04C8_palette[16] = {

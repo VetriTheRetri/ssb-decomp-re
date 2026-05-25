@@ -573,6 +573,12 @@ def parse_master_c(path):
                     count = _count_top_level_initializers(body)
                     if not count:
                         count = _count_toplevel_array_entries(body)
+                    # Scalar pointer `Type *X = expr;` has no brackets and
+                    # no `{...}` initializer; body is empty. Treat as one
+                    # pointer slot (4 bytes) so the cumulative offset stays
+                    # aligned for any inc.c-emitting block that follows.
+                    if not count and not body:
+                        count = 1
                 if count:
                     out.append(('block', {
                         'type': type_, 'name': name,

@@ -27,6 +27,9 @@ Reports any of:
   R012  MObjSub.sprites or .palettes points at a `void *[]` array whose
         entries are mistyped (sprites should hold u8 texture blocks,
         palettes should hold u16 palette blocks)
+  R013  Undecoded opcode word in an AObjEvent32 script — once the first
+        body entry is an aobjEvent32 macro, every opcode-position slot
+        should be a macro, not raw hex
 
 Usage:
     tools/validateRelocFile.py <fid_or_path> [<fid_or_path> ...]
@@ -457,6 +460,63 @@ def is_pointer_array(decl):
 # ---------------------------------------------------------------------------
 # Rules
 # ---------------------------------------------------------------------------
+
+
+# A line at AObjEvent32 opcode position: single tab + raw hex literal + comma.
+# Payload words sit at deeper indent (tab + four spaces) so this only
+# matches undecoded *opcode* slots.
+_OPCODE_RAW_HEX_RE = re.compile(r"^\t0x[0-9A-Fa-f]+,\s*(?:/\*.*\*/)?\s*$")
+# A line at AObjEvent32 payload position OR an opcode mis-indented as
+# payload: tab + 4+ spaces + raw hex literal + comma. We need this to
+# catch the second R013 variant — opcodes that appear BEFORE the first
+# real macro (so they cannot be payload of anything).
+_PAYLOAD_RAW_HEX_RE = re.compile(r"^\t {2,}0x[0-9A-Fa-f]+,\s*(?:/\*.*\*/)?\s*$")
+
+
+def check_aobjevent32_undecoded_opcode(decl, path, diags):
+    """R013 — Raw hex word inside an AObjEvent32 script that should be a
+    decoded aobjEvent32*() macro. Two variants:
+      (a) raw hex at opcode indent (single tab) appearing before the
+          script's terminator macro — a missed opcode decode;
+      (b) raw hex at payload indent appearing BEFORE the first macro —
+          a mis-indented opcode (it cannot be payload of anything).
+    Words AFTER the last End()/SetAnim()/Jump() are treated as trailing
+    data and not flagged."""
+    if decl.ctype != "u32" or decl.is_pointer:
+        return
+    macros = decl.macro_lines()
+    if not macros:
+        return  # not a script
+    first_macro_ln = macros[0][0]
+    terminator_ln = None
+    for ln, txt in macros:
+        if any(t.rstrip("()") in txt for t in _AOBJ_TERMINATORS):
+            terminator_ln = ln
+    for ln, txt in decl.body:
+        opcode_form = bool(_OPCODE_RAW_HEX_RE.match(txt))
+        payload_form = bool(_PAYLOAD_RAW_HEX_RE.match(txt))
+        if not (opcode_form or payload_form):
+            continue
+        raw_word = txt.strip().rstrip(",").strip()
+        if "(" in raw_word or "&" in raw_word:
+            continue
+        # Variant (a): opcode-indent raw hex before terminator.
+        # Variant (b): payload-indent raw hex BEFORE the first macro.
+        if opcode_form and (terminator_ln is None or ln < terminator_ln):
+            diags.append(Diag(
+                path, ln, "R013", "warn",
+                f"undecoded opcode word in script '{decl.name}' — "
+                f"`{raw_word}` should be an `aobjEvent32*()` macro "
+                f"(decode the opcode at this slot)"
+            ))
+        elif payload_form and ln < first_macro_ln:
+            diags.append(Diag(
+                path, ln, "R013", "warn",
+                f"mis-indented opcode word in script '{decl.name}' — "
+                f"`{raw_word}` appears at payload indent before any opcode "
+                f"macro; it should be an `aobjEvent32*()` call at opcode "
+                f"indent"
+            ))
 
 
 def check_aobjevent32_termination(decl, path, diags):
@@ -1185,6 +1245,8 @@ def validate(c_path, enabled_rules):
             check_untyped_data_blob(d, c_path, diags)
         if "R011" in enabled_rules:
             check_dobj_sentinel(d, c_path, diags)
+        if "R013" in enabled_rules:
+            check_aobjevent32_undecoded_opcode(d, c_path, diags)
     if "R012" in enabled_rules:
         decls_by_name = {d.name: d for d in decls}
         for d in decls:
@@ -1209,7 +1271,7 @@ def validate(c_path, enabled_rules):
 
 
 ALL_RULES = ["R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008",
-             "R009", "R010", "R011", "R012"]
+             "R009", "R010", "R011", "R012", "R013"]
 
 
 def main():
@@ -1230,6 +1292,7 @@ def main():
             "  R010  Untyped `.data.inc.c` blob (tracked for typing)\n"
             "  R011  DObjDesc/DObjDLLink missing terminating sentinel\n"
             "  R012  MObjSub.sprites/.palettes target has wrong-typed entries\n"
+            "  R013  Undecoded opcode word in an AObjEvent32 script\n"
         ),
     )
     ap.add_argument("targets", nargs="+",

@@ -148,12 +148,12 @@ PAD(4);
 /* Raw data from file offset 0x0480 to 0x04C8 (72 bytes).
  * Split into header[2] + main script + loop-back ptr + trailing zeros
  * so each chain target is a bare block symbol. */
-extern AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop;
+extern AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop[1];
 extern u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data[12];
 
 AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)&dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop,
+	(AObjEvent32 *)dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop,
 };
 
 /* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(0x001, *), then
@@ -174,8 +174,9 @@ u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data[12] = {
 };
 
 /* Chain back-pointer @ +0x38 — fixRelocChain rewrites this slot. */
-AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop =
-	(AObjEvent32 *)dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data;
+AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop[1] = {
+	(AObjEvent32 *)dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data,
+};
 
 /* Trailing zero pad @ +0x3C..+0x47 (12 bytes) */
 PAD(12);

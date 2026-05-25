@@ -519,19 +519,30 @@ DObjDesc dCaptainSpecial2_EntryCar[] = {
 PAD(4);
 
 /* Raw data from file offset 0x6200 to 0x6518 (792 bytes) */
-u32 dCaptainSpecial2__6200__AnimJoint[198] = {
-	aobjEvent32End(),
-	(u32)((u8*)dCaptainSpecial2__6200__AnimJoint + 0x30),
-	(u32)((u8*)dCaptainSpecial2__6200__AnimJoint + 0x244),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dCaptainSpecial2__6200__AnimJoint + 0x2C4),
+/* Raw data from file offset 0x6200 to 0x6518 (792 bytes).
+ * Split into header[12] (chain table to per-joint scripts) +
+ * three AObjEvent32 scripts (sub_0x30 / sub_0x244 / sub_0x2C4). */
+extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x30[133];
+extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32];
+extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[21];
+
+AObjEvent32 *dCaptainSpecial2__6200__AnimJoint[12] = {
+	NULL,
+	(AObjEvent32 *)dCaptainSpecial2__6200__AnimJoint_sub_0x30,
+	(AObjEvent32 *)dCaptainSpecial2__6200__AnimJoint_sub_0x244,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainSpecial2__6200__AnimJoint_sub_0x2C4,
+};
+
+/* Sub-script @ +0x30 (133 words / 532 bytes) */
+u32 dCaptainSpecial2__6200__AnimJoint_sub_0x30[133] = {
 	aobjEvent32SetValRate(0x070, 0),
 	    0xC58CA000,  /* -4500.0f */
 	    0x42E313C0,  /* 113.53857421875f */
@@ -665,7 +676,11 @@ u32 dCaptainSpecial2__6200__AnimJoint[198] = {
 	    0xC66A6000,  /* -15000.0f */
 	    0xC3C14B0F,  /* -386.5863952636719f */
 	aobjEvent32End(),
-	aobjEvent32SetValBlock(0x380, 0),
+};
+
+/* Sub-script @ +0x244 (32 words / 128 bytes) */
+u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32] = {
+	aobjEvent32SetValBlock(0x180, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
@@ -697,6 +712,10 @@ u32 dCaptainSpecial2__6200__AnimJoint[198] = {
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
+};
+
+/* Sub-script @ +0x2C4 (21 words / 84 bytes) */
+u32 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[21] = {
 	aobjEvent32SetVal(0x001, 0),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfter(0x006, 0),
@@ -715,10 +734,11 @@ u32 dCaptainSpecial2__6200__AnimJoint[198] = {
 	aobjEvent32SetValBlock(0x001, 50),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	0x00000000,
+	0x00000000,
 	(u32)0x6518,
 };
+
 
 /* Raw data from file offset 0x6518 to 0x6598 (128 bytes) */
 u32 dCaptainSpecial2__6518__AnimJoint[32] = {
@@ -750,9 +770,9 @@ u32 dCaptainSpecial2__6518__AnimJoint[32] = {
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dCaptainSpecial2__6518__AnimJoint,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	0x00000000,
+	0x00000000,
+	0x00000000,
 	(u32)0x6598,
 };
 

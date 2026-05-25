@@ -680,7 +680,7 @@ u32 dCaptainSpecial2__6200__AnimJoint_sub_0x30[133] = {
 
 /* Sub-script @ +0x244 (32 words / 128 bytes) */
 u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32] = {
-	aobjEvent32SetValBlock(0x180, 0),
+	aobjEvent32SetValBlock(0x380, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */

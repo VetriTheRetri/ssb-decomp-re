@@ -522,6 +522,15 @@ void grInishieMakePowerBlock(void)
     }
     gGRCommonStruct.inishie.pblock_pos_ids = (u8*) syTaskmanMalloc(pos_count * sizeof(*gGRCommonStruct.inishie.pblock_pos_ids), 0x0);
 
+    if (gGRCommonStruct.inishie.pblock_pos_ids == NULL)
+    {
+        while (TRUE)
+        {
+            syDebugPrintf("PowerBlock pos_ids alloc failed!\n");
+            scManagerRunPrintGObjStatus();
+        }
+    }
+
     mpCollisionGetMapObjIDsKind(nMPMapObjKindPowerBlock, pos_ids);
 
     for (i = 0; i < pos_count; i++)

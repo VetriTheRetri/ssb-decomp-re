@@ -151,8 +151,16 @@ PAD(8);
 
 /* Raw data from file offset 0x08E0 to 0x0998 (184 bytes) */
 /* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Lut_0x08B8_palette */
-u8 dFoxSpecial3_Tex_0x08E0[184] = {
+/* Three sequential textures previously combined into one 184-byte
+ * Tex_0x08E0 with byte-offset arithmetic references at +0x48 and +0x70. */
+u8 dFoxSpecial3_Tex_0x08E0[72] = {
 	#include <FoxSpecial3/Tex_0x08E0.tex.inc.c>
+};
+u8 dFoxSpecial3_Tex_0x0928[40] = {
+	#include <FoxSpecial3/Tex_0x0928.tex.inc.c>
+};
+u8 dFoxSpecial3_Tex_0x0950[72] = {
+	#include <FoxSpecial3/Tex_0x0950.tex.inc.c>
 };
 
 /* Palette: Lut_0x0998 @ 0x998 (16 colors RGBA5551) */
@@ -426,20 +434,66 @@ DObjDLLink dFoxSpecial3_JointCmd_0x2BB0[] = {
 	{ 4, NULL },
 };
 
-/* Raw data from file offset 0x2BC0 to 0x2C30 (112 bytes) */
-u8 dFoxSpecial3_JointCmd_0x2BC0[112] = {
-	#include <FoxSpecial3/JointCmd_0x2BC0.data.inc.c>
+/* Raw data from file offset 0x2BC0 to 0x2C30 (112 bytes) — 7 sequential
+ * DObjDLLink[2] terminator-pairs, one per Joint display list. Originally
+ * a single u8[112] blob with byte-offset references from gap_0x2C88. */
+DObjDLLink dFoxSpecial3_JointCmd_0x2BC0[2] = {
+	{ 1, dFoxSpecial3_Joint_0x2920_DisplayList },
+	{ 4, NULL },
+};
+DObjDLLink dFoxSpecial3_JointCmd_0x2BD0[2] = {
+	{ 1, dFoxSpecial3_Joint_0x2920_post_post },
+	{ 4, NULL },
+};
+DObjDLLink dFoxSpecial3_JointCmd_0x2BE0[2] = {
+	{ 1, dFoxSpecial3_Joint_0x2920_post_post_post },
+	{ 4, NULL },
+};
+DObjDLLink dFoxSpecial3_JointCmd_0x2BF0[2] = {
+	{ 1, dFoxSpecial3_Joint_0x2920_post_post_post_post },
+	{ 4, NULL },
+};
+DObjDLLink dFoxSpecial3_JointCmd_0x2C00[2] = {
+	{ 0, dFoxSpecial3_Joint_0x1FA0_post_post },
+	{ 4, NULL },
+};
+DObjDLLink dFoxSpecial3_JointCmd_0x2C10[2] = {
+	{ 1, dFoxSpecial3_Joint_0x2920_post_post_post_post_post },
+	{ 4, NULL },
+};
+DObjDLLink dFoxSpecial3_JointCmd_0x2C20[2] = {
+	{ 1, dFoxSpecial3_Joint_0x2920_post_post_post_post_post_post },
+	{ 4, NULL },
 };
 
-/* DObjDesc: EntryArwing @ 0x2C30 (2 entries) */
-DObjDesc dFoxSpecial3_EntryArwing[] = {
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dFoxSpecial3_JointCmd_0x2BB0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+/* DObjDesc: EntryArwing @ 0x2C30 (13 entries) — previously split into
+ * a 2-entry "EntryArwing" + 492-byte gap_0x2C88 blob; in fact it's one
+ * 13-entry scene graph ending with the {18, ...} sentinel at index 12,
+ * followed by 8 bytes of trailer whose chain ptr at +0x240 targets
+ * __2E74__AnimJoint. Entry cmd ids 0x8002 / 0x8003 carry high-bit
+ * flags on top of cmd=2/3. */
+DObjDesc dFoxSpecial3_EntryArwing[13] = {
+	{ 0x0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x1, (void*)dFoxSpecial3_JointCmd_0x2BB0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dFoxSpecial3_JointCmd_0x2BC0, { 213.48599243164062f, -97.46099853515625f, 394.4850158691406f }, { 0.0f, 0.0f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 0x8002, (void*)dFoxSpecial3_JointCmd_0x2BD0, { -213.48602294921875f, -97.46099853515625f, 394.4850158691406f }, { 0.0f, 0.0f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 0x8002, (void*)dFoxSpecial3_JointCmd_0x2BE0, { 213.48599243164062f, -97.46099853515625f, 394.4850158691406f }, { 0.0f, 0.0f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 0x8002, (void*)dFoxSpecial3_JointCmd_0x2BF0, { -213.48602294921875f, -97.46099853515625f, 394.4850158691406f }, { 0.0f, 0.0f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 0x2, (void*)dFoxSpecial3_JointCmd_0x2C00, { 0.0f, 168.23626708984375f, -261.0562744140625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8003, (void*)dFoxSpecial3_JointCmd_0x2C10, { 0.0f, -41.76900100708008f, -696.1500244140625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8003, (void*)dFoxSpecial3_JointCmd_0x2C20, { 0.0f, -41.76900100708008f, -696.1500244140625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x12, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Raw data from file offset 0x2C88 to 0x2E74 (492 bytes) */
-u8 dFoxSpecial3_gap_0x2C88[492] = {
-	#include <FoxSpecial3/gap_0x2C88.data.inc.c>
+/* 8-byte trailer past the DObjDesc sentinel — a 4-byte pad followed by
+ * a chain pointer to the AnimJoint script at __2E74__AnimJoint. */
+PAD(4);
+extern u32 dFoxSpecial3__2E74__AnimJoint[];
+AObjEvent32 *dFoxSpecial3_EntryArwing_post[1] = {
+	(AObjEvent32 *)dFoxSpecial3__2E74__AnimJoint,
 };
 
 /* Raw data from file offset 0x2E74 to 0x2EB4 (64 bytes) */

@@ -30,6 +30,8 @@ Reports any of:
   R013  Undecoded opcode word in an AObjEvent32 script — once the first
         body entry is an aobjEvent32 macro, every opcode-position slot
         should be a macro, not raw hex
+  R014  Vtx block holds inline literal data instead of a `.vtx.inc.c`
+        include
 
 Usage:
     tools/validateRelocFile.py <fid_or_path> [<fid_or_path> ...]
@@ -718,6 +720,36 @@ def check_raw_hex_chunks(decl, path, diags, lines):
         ))
 
 
+def check_binary_data_inline(decl, path, diags):
+    """R014 — Vtx blocks should reference a `.vtx.inc.c` include rather
+    than inlining literal vertex data. Vtx coordinate arrays are heavy
+    enough that keeping them inline in the .c file makes the source
+    unreadable and obscures the diff against baserom; the convention is
+    to extract them to `build/<v>/src/relocData/<file>/<sym>.vtx.inc.c`
+    and reference that via `#include`. Pointer arrays (`Vtx *foo[]`) are
+    exempt — those are dispatch tables, not raw vertex data. (Gfx
+    sentinel arrays like `Gfx X[1] = { gsSPEndDisplayList() }` are
+    commonly inlined and not flagged.)"""
+    if decl.is_pointer:
+        return
+    if decl.ctype != "Vtx":
+        return
+    if any(e == ".vtx.inc.c" for _ln, e, _raw in decl.includes):
+        return
+    # Inline data — anything in `body` past whitespace constitutes
+    # literal entries (the parser already filters blanks and #-directives).
+    if not decl.body:
+        return
+    parts = decl.name.split("_", 1)
+    sym_tail = parts[1] if len(parts) > 1 else decl.name
+    diags.append(Diag(
+        path, decl.start_line, "R014", "warn",
+        f"'{decl.name}' (Vtx[{decl.size}]) inlines literal data — "
+        f"replace the body with `#include <<FileName>/{sym_tail}.vtx.inc.c>` "
+        f"so the extractor regenerates the block from the baserom"
+    ))
+
+
 def check_untyped_data_blob(decl, path, diags):
     """R010 — a u8/u16/u32 block backed by a raw `.data.inc.c` include.
     The extractor couldn't classify it; tracked so untyped blobs stay
@@ -1247,6 +1279,8 @@ def validate(c_path, enabled_rules):
             check_dobj_sentinel(d, c_path, diags)
         if "R013" in enabled_rules:
             check_aobjevent32_undecoded_opcode(d, c_path, diags)
+        if "R014" in enabled_rules:
+            check_binary_data_inline(d, c_path, diags)
     if "R012" in enabled_rules:
         decls_by_name = {d.name: d for d in decls}
         for d in decls:
@@ -1271,7 +1305,7 @@ def validate(c_path, enabled_rules):
 
 
 ALL_RULES = ["R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008",
-             "R009", "R010", "R011", "R012", "R013"]
+             "R009", "R010", "R011", "R012", "R013", "R014"]
 
 
 def main():
@@ -1293,6 +1327,7 @@ def main():
             "  R011  DObjDesc/DObjDLLink missing terminating sentinel\n"
             "  R012  MObjSub.sprites/.palettes target has wrong-typed entries\n"
             "  R013  Undecoded opcode word in an AObjEvent32 script\n"
+            "  R014  Vtx block inlines literal data instead of using a `.vtx.inc.c` include\n"
         ),
     )
     ap.add_argument("targets", nargs="+",

@@ -406,16 +406,15 @@ MPVertexLinks dStagePupupuBeta2_data_0x1DDC_sub_0x1E8[30] = {
 };
 
 /* MPLineInfo[3] @ 0x203C — yakumono line groups (MPGeometryData.line_info).
- * 3 × 18 bytes + 2-byte alignment pad before MPMapObjData below. */
+ * 3 × 18 = 54 bytes; IDO inserts 2-byte trailing pad to 4-align MPMapObjData. */
 MPLineInfo dStagePupupuBeta2_data_0x1DDC_sub_0x260[3] = {
 	{ 1, { {  0,   1 }, {  1,   1 }, {  2,   1 }, {  3,   1 } } },
 	{ 2, { {  4,   2 }, {  6,   2 }, {  8,   2 }, { 10,   2 } } },
 	{ 3, { { 12,   7 }, { 19,   3 }, { 22,   4 }, { 26,   4 } } },
 };
 
-PAD(2);
-
-/* MPMapObjData[5] @ 0x2074 — map objects (MPGeometryData.mapobjs). */
+/* MPMapObjData[5] @ 0x2074 — map objects (MPGeometryData.mapobjs).
+ * 5 × 6 = 30 bytes; IDO inserts 2-byte trailing pad to 4-align MPGeometryData. */
 MPMapObjData dStagePupupuBeta2_data_0x1DDC_sub_0x298[5] = {
 	{ 4, { -1005, 2595 } },
 	{ 0, {  -450,  150 } },
@@ -423,8 +422,6 @@ MPMapObjData dStagePupupuBeta2_data_0x1DDC_sub_0x298[5] = {
 	{ 2, {     0, 1701 } },
 	{ 3, {  1522,  930 } },
 };
-
-PAD(2);
 
 /* MPGeometryData stage descriptor @ 0x2094 — pointer fields are
  * chain-rewritten by fixRelocChain at link time per the .reloc. */

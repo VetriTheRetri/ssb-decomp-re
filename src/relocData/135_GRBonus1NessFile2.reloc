@@ -1,14 +1,14 @@
 # Relocation metadata for file 135
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1NessFile2_DL_0x0480+0x74 dGRBonus1NessFile2_gap_0x0A84_sub_0x34  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1NessFile2_DL_0x0480+0xA4 dGRBonus1NessFile2_gap_0x0A84_sub_0x44  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_DL_0x0480+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_DL_0x0480+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1NessFile2_DL_0x0480+0xC4 dGRBonus1NessFile2_gap_0x0000
-extern dGRBonus1NessFile2_gap_0x0000_sub_0x580+0x74 dGRBonus1NessFile2_gap_0x0A84_sub_0x34  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1NessFile2_gap_0x0000_sub_0x580+0xA4 dGRBonus1NessFile2_gap_0x0A84_sub_0x44  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_gap_0x0000_sub_0x580+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_gap_0x0000_sub_0x580+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1NessFile2_gap_0x0000_sub_0x580+0xC4 dGRBonus1NessFile2_gap_0x0000
-extern dGRBonus1NessFile2_DL_0x0680+0x74 dGRBonus1NessFile2_gap_0x0A84_sub_0x34  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1NessFile2_DL_0x0680+0xA4 dGRBonus1NessFile2_gap_0x0A84_sub_0x44  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_DL_0x0680+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_DL_0x0680+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1NessFile2_DL_0x0680+0xC4 dGRBonus1NessFile2_gap_0x0000
 intern dGRBonus1NessFile2_gap_0x0000_sub_0x780+0x3C dGRBonus1NessFile2_gap_0x0000_sub_0x40
 intern dGRBonus1NessFile2_gap_0x0000_sub_0x780+0x4C dGRBonus1NessFile2_gap_0x0000_sub_0x80
@@ -37,11 +37,11 @@ intern dGRBonus1NessFile2_Layer0DObj+0x88 dGRBonus1NessFile2_DLLink_0x0930
 intern dGRBonus1NessFile2_Layer0DObj+0xB4 dGRBonus1NessFile2_DLLink_0x0940
 intern dGRBonus1NessFile2_DL_0x2140+0x44 dGRBonus1NessFile2_DL_0x2190
 extern dGRBonus1NessFile2_DL_0x2190+0x2C dGRBonus1NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1NessFile2_DL_0x2190+0x54 dGRBonus1NessFile2_Layer0DObj+0x98  # -> file 123 (Bonus1CommonImages4)
-intern dGRBonus1NessFile2_DL_0x2190+0x74 dGRBonus1NessFile2_Layer0DObj+0x110
+extern dGRBonus1NessFile2_DL_0x2190+0x54 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
+intern dGRBonus1NessFile2_DL_0x2190+0x74 dGRBonus1NessFile2_Vtx_0x0A60
 intern dGRBonus1NessFile2_DL_0x2190+0x9C dGRBonus1NessFile2_gap_0x0A84_sub_0x5C
 intern dGRBonus1NessFile2_DL_0x2190+0xCC dGRBonus1NessFile2_gap_0x0A84_sub_0x9C
-extern dGRBonus1NessFile2_DL_0x2190+0x104 dGRBonus1NessFile2_gap_0x0000_sub_0x440+0x18  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_DL_0x2190+0x104 dBonus1CommonImages4_Lut_0x0458_palette  # -> file 123 (Bonus1CommonImages4)
 extern dGRBonus1NessFile2_DL_0x2190+0x12C dGRBonus1NessFile2_DL_0x0480  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1NessFile2_DL_0x2190+0x14C dGRBonus1NessFile2_gap_0x0A84_sub_0xDC
 intern dGRBonus1NessFile2_DL_0x2190+0x194 dGRBonus1NessFile2_gap_0x0A84_sub_0x2DC
@@ -70,7 +70,7 @@ intern dGRBonus1NessFile2_DL_0x2190+0x5DC dGRBonus1NessFile2_gap_0x0A84_sub_0x12
 intern dGRBonus1NessFile2_DL_0x2190+0x61C dGRBonus1NessFile2_gap_0x0A84_sub_0x133C
 intern dGRBonus1NessFile2_DL_0x2190+0x65C dGRBonus1NessFile2_gap_0x0A84_sub_0x13FC
 extern dGRBonus1NessFile2_DL_0x2850+0x1C dGRBonus1NessFile2_gap_0x0000_sub_0x1C0+0x10  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus1NessFile2_DL_0x2850+0x44 dGRBonus1NessFile2_Layer0DObj+0x98  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus1NessFile2_DL_0x2850+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus1NessFile2_DL_0x2850+0x64 dGRBonus1NessFile2_gap_0x0A84_sub_0x157C
 intern dGRBonus1NessFile2_DL_0x2850+0x94 dGRBonus1NessFile2_gap_0x0A84_sub_0x15BC
 intern dGRBonus1NessFile2_DL_0x2850+0xBC dGRBonus1NessFile2_gap_0x0A84_sub_0x163C

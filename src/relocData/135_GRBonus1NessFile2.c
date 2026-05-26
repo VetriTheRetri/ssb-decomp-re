@@ -146,31 +146,29 @@ DObjDLLink dGRBonus1NessFile2_DLLink_0x0940[] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: Layer0DObj @ 0x950 (7 entries) */
-DObjDesc dGRBonus1NessFile2_Layer0DObj[] = {
+/* DObjDesc: Layer0DObj @ 0x950 (6 entries; sentinel at [5]). The
+ * trailing 44 bytes that an earlier extractor mis-typed as a 7th
+ * DObjDesc are actually a 9-word chain-pointer block that's targeted
+ * from DL_0x2190+0x74 — split out as `Layer0DObj_post` below so the
+ * .reloc target is a bare symbol. */
+DObjDesc dGRBonus1NessFile2_Layer0DObj[6] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0910, { 315.6907653808594f, 2244.0f, -569.5111083984375f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0920, { 5397.69287109375f, 2579.4716796875f, -569.5111083984375f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0930, { -3752.30712890625f, 29.47173309326172f, -569.5111083984375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus1NessFile2_DLLink_0x0940, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 2.6964396753863672e-33f, 1.5869173736100881e-37f, 0.0f }, { 1.1754943508222875e-38f, 3.5130725427149415e-31f, 1.5869173736100881e-37f }, { 2.407412430484045e-35f, 1.1754943508222875e-38f, 3.5130725427149415e-31f } },
 };
 
-/* Raw data from file offset 0x0A84 to 0x2940 (7868 bytes) */
-/* gap sub-block @ 0x0A84 (was gap+0x0, 52 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0A84[52] = {
-	#include <GRBonus1NessFile2/gap_0x0A84.data.inc.c>
-};
-
-/* gap sub-block @ 0x0AB8 (was gap+0x34, 16 bytes) */
-u16 dGRBonus1NessFile2_gap_0x0A84_sub_0x34[8] = {
-	#include <GRBonus1NessFile2/gap_0x0A84_sub_0x34.palette.inc.c>
-};
-
-/* gap sub-block @ 0x0AC8 (was gap+0x44, 24 bytes) */
-u8 dGRBonus1NessFile2_gap_0x0A84_sub_0x44[24] = {
-	#include <GRBonus1NessFile2/gap_0x0A84_sub_0x44.data.inc.c>
+/* Vtx[8] @ 0x0A60 — referenced by DL_0x2190's gsSPVertex(addr, 8, 0) at
+ * +0x74. Was previously split across Layer0DObj_post (mis-typed as a chain-
+ * pointer block) plus gap_0x0A84 / gap_0x0A84_sub_0x34 / gap_0x0A84_sub_0x44
+ * (the latter two mis-typed as palette/texture targets; the extern reloc
+ * entries that hit those byte positions actually reference file 123's
+ * Tex_0x0AB8 palette and Tex_0x0AC8 texture, see .reloc). */
+PAD(8);
+Vtx dGRBonus1NessFile2_Vtx_0x0A60[8] = {
+	#include <GRBonus1NessFile2/Vtx_0x0A60.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0AE0 (was gap+0x5C, 64 bytes) */

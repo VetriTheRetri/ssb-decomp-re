@@ -173,8 +173,11 @@ DObjDLLink dGRBonus2LinkFile2_DLLink_0x0928[] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: Layer0DObj @ 0x938 (14 entries) */
-DObjDesc dGRBonus2LinkFile2_Layer0DObj[] = {
+/* DObjDesc: Layer0DObj @ 0x938 (13 entries; sentinel at [12]). The
+ * trailing 44 bytes that an earlier extractor mis-typed as a 14th
+ * DObjDesc are a 12-byte zero header followed by an 8-word chain-pointer
+ * block targeted from elsewhere — split out as `Layer0DObj_post` below. */
+DObjDesc dGRBonus2LinkFile2_Layer0DObj[13] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2LinkFile2_DLLink_0x0888, { -6300.0f, 150.0f, 0.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2LinkFile2_DLLink_0x0898, { -3000.0f, -3150.0f, 0.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
@@ -188,13 +191,17 @@ DObjDesc dGRBonus2LinkFile2_Layer0DObj[] = {
 	{ 1, (void*)dGRBonus2LinkFile2_DLLink_0x0918, { -5850.0f, -2100.0f, 0.0f }, { 0.0f, 0.0f, 2.356194019317627f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2LinkFile2_DLLink_0x0928, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 1.0093875392553974e-22f, 1.5869173736100881e-37f }, { 7.174648137343064e-43f, 4.5559015672128453e-41f, 1.0093780729245348e-22f }, { 1.5869173736100881e-37f, 0.0f, 4.5559015672128453e-41f } },
 };
 
-/* Raw data from file offset 0x0BA0 to 0x3C28 (12424 bytes) */
-/* gap sub-block @ 0x0BA0 (was gap+0x0, 224 bytes) */
-u8 dGRBonus2LinkFile2_gap_0x0BA0[224] = {
-	#include <GRBonus2LinkFile2/gap_0x0BA0.data.inc.c>
+/* Trailing 12 bytes of zero pad (compiler-extended sentinel slack). */
+PAD(12);
+
+/* @ 0xB80, 256 bytes — Vtx[16] loaded by `gsSPVertex(this, 16, 0)` from
+ * DL_0x2E38+0x68 (chain arg at +0x6C). The first 32 B previously lived
+ * under the ghost-DObjDesc symbol `Layer0DObj_post`, and the remaining
+ * 224 B under `gap_0x0BA0` — both were the same Vtx pool split. */
+Vtx dGRBonus2LinkFile2_Vtx_0xB80[16] = {
+	#include <GRBonus2LinkFile2/Vtx_0xB80.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x0C80 (was gap+0xE0, 256 bytes) */

@@ -1,8 +1,8 @@
 # Relocation metadata for file 142
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x74 dGRBonus2LinkFile2_Layer0DObj+0x180  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0xA4 dGRBonus2LinkFile2_Layer0DObj+0x190  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x74 dBonus1CommonImages4_Tex_0x0AB8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0xA4 dBonus1CommonImages4_Tex_0x0AC8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0xC4 dGRBonus2LinkFile2_DL_0x0610
 intern dGRBonus2LinkFile2_DL_0x0610+0xC dGRBonus2LinkFile2_gap_0x0000
 intern dGRBonus2LinkFile2_DL_0x0630+0xC dGRBonus2LinkFile2_gap_0x0000_sub_0x40
@@ -40,64 +40,64 @@ intern dGRBonus2LinkFile2_Layer0DObj+0x190 dGRBonus2LinkFile2_DLLink_0x0908
 intern dGRBonus2LinkFile2_Layer0DObj+0x1BC dGRBonus2LinkFile2_DLLink_0x0918
 intern dGRBonus2LinkFile2_Layer0DObj+0x1E8 dGRBonus2LinkFile2_DLLink_0x0928
 intern dGRBonus2LinkFile2_DL_0x2DE0+0x4C dGRBonus2LinkFile2_DL_0x2E38
-extern dGRBonus2LinkFile2_DL_0x2E38+0x24 dGRBonus2LinkFile2_gap_0x0000_sub_0x100+0xD0  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x2E38+0x4C dGRBonus2LinkFile2_Layer0DObj+0xB0  # -> file 123 (Bonus1CommonImages4)
-intern dGRBonus2LinkFile2_DL_0x2E38+0x6C dGRBonus2LinkFile2_Layer0DObj+0x248
+extern dGRBonus2LinkFile2_DL_0x2E38+0x24 dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x4C dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
+intern dGRBonus2LinkFile2_DL_0x2E38+0x6C dGRBonus2LinkFile2_Vtx_0xB80
 intern dGRBonus2LinkFile2_DL_0x2E38+0xA4 dGRBonus2LinkFile2_gap_0x0BA0_sub_0xE0
-extern dGRBonus2LinkFile2_DL_0x2E38+0xEC dGRBonus2LinkFile2_Layer0DObj+0x138  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0xEC dBonus1CommonImages4_Tex_0x0A70  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x10C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1E0
-extern dGRBonus2LinkFile2_DL_0x2E38+0x144 dGRBonus2LinkFile2_Layer0DObj+0xB0  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x144 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x164 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x260
 intern dGRBonus2LinkFile2_DL_0x2E38+0x1AC dGRBonus2LinkFile2_gap_0x0BA0_sub_0x460
-extern dGRBonus2LinkFile2_DL_0x2E38+0x1F4 dGRBonus2LinkFile2_Layer0DObj+0x138  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x1F4 dBonus1CommonImages4_Tex_0x0A70  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x214 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x560
-extern dGRBonus2LinkFile2_DL_0x2E38+0x26C dGRBonus2LinkFile2_Layer0DObj+0xB0  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x26C dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x28C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x650
-extern dGRBonus2LinkFile2_DL_0x2E38+0x2EC dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x48  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x2E38+0x314 dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x70  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x2EC dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x314 dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x334 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x850
 intern dGRBonus2LinkFile2_DL_0x2E38+0x36C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x950
 intern dGRBonus2LinkFile2_DL_0x2E38+0x394 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x9D0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x3DC dGRBonus2LinkFile2_gap_0x0BA0_sub_0xAC0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x424 dGRBonus2LinkFile2_gap_0x0BA0_sub_0xCC0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x46C dGRBonus2LinkFile2_gap_0x0BA0_sub_0xEC0
-extern dGRBonus2LinkFile2_DL_0x2E38+0x4B4 dGRBonus2LinkFile2_gap_0x0000_sub_0x300+0x158  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x2E38+0x4DC dGRBonus2LinkFile2_gap_0x0000_sub_0x300+0x180  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x4B4 dBonus1CommonImages4_Lut_0x0458_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x4DC dBonus1CommonImages4_Tex_0x0480  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x4FC dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1000
 intern dGRBonus2LinkFile2_DL_0x2E38+0x524 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1080
 intern dGRBonus2LinkFile2_DL_0x2E38+0x574 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1280
 intern dGRBonus2LinkFile2_DL_0x2E38+0x5BC dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1460
 intern dGRBonus2LinkFile2_DL_0x2E38+0x60C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1620
-extern dGRBonus2LinkFile2_DL_0x2E38+0x634 dGRBonus2LinkFile2_gap_0x0000_sub_0x778+0x40  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x2E38+0x65C dGRBonus2LinkFile2_gap_0x0000_sub_0x778+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x634 dBonus1CommonImages4_Lut_0x07B8_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x65C dBonus1CommonImages4_Tex_0x07E0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x67C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1660
 intern dGRBonus2LinkFile2_DL_0x2E38+0x69C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x16C0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x71C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x18C0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x724 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x18D0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x77C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x19B0
 intern dGRBonus2LinkFile2_DL_0x2E38+0x7F4 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1BB0
-extern dGRBonus2LinkFile2_DL_0x2E38+0x834 dGRBonus2LinkFile2_gap_0x0000+0x8  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x2E38+0x834 dBonus1CommonImages4_Tex_0x0008  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x2E38+0x854 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1C30
-extern dGRBonus2LinkFile2_DL_0x36D8+0x24 dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x48  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x36D8+0x4C dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x70  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x36D8+0x24 dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x36D8+0x4C dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x36D8+0x6C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1E30
-extern dGRBonus2LinkFile2_DL_0x36D8+0x9C dGRBonus2LinkFile2_gap_0x0000_sub_0x300+0x158  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x36D8+0xC4 dGRBonus2LinkFile2_gap_0x0000_sub_0x300+0x180  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x36D8+0x9C dBonus1CommonImages4_Lut_0x0458_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x36D8+0xC4 dBonus1CommonImages4_Tex_0x0480  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x36D8+0xE4 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1EB0
-extern dGRBonus2LinkFile2_DL_0x36D8+0x114 dGRBonus2LinkFile2_gap_0x0000_sub_0x778+0x40  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x36D8+0x134 dGRBonus2LinkFile2_gap_0x0000_sub_0x778+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x36D8+0x114 dBonus1CommonImages4_Lut_0x07B8_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x36D8+0x134 dBonus1CommonImages4_Tex_0x07E0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x36D8+0x154 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1F30
-extern dGRBonus2LinkFile2_DL_0x3840+0x1C dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x48  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x3840+0x44 dGRBonus2LinkFile2_gap_0x0000_sub_0x540+0x70  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x3840+0x1C dBonus1CommonImages4_Lut_0x0588_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x3840+0x44 dBonus1CommonImages4_Tex_0x05B0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x3840+0x64 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1F70
-extern dGRBonus2LinkFile2_DL_0x3840+0x94 dGRBonus2LinkFile2_gap_0x0000_sub_0x300+0x158  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x3840+0xBC dGRBonus2LinkFile2_gap_0x0000_sub_0x300+0x180  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x3840+0x94 dBonus1CommonImages4_Lut_0x0458_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x3840+0xBC dBonus1CommonImages4_Tex_0x0480  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x3840+0xDC dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1FF0
-extern dGRBonus2LinkFile2_DL_0x3840+0x10C dGRBonus2LinkFile2_gap_0x0000_sub_0x778+0x40  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x3840+0x12C dGRBonus2LinkFile2_gap_0x0000_sub_0x778+0x68  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x3840+0x10C dBonus1CommonImages4_Lut_0x07B8_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x3840+0x12C dBonus1CommonImages4_Tex_0x07E0  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x3840+0x14C dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2070
-extern dGRBonus2LinkFile2_DL_0x39A0+0x1C dGRBonus2LinkFile2_gap_0x0000_sub_0x100+0xD0  # -> file 123 (Bonus1CommonImages4)
-extern dGRBonus2LinkFile2_DL_0x39A0+0x44 dGRBonus2LinkFile2_Layer0DObj+0xB0  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x39A0+0x1C dBonus1CommonImages4_Lut_0x01D0_palette  # -> file 123 (Bonus1CommonImages4)
+extern dGRBonus2LinkFile2_DL_0x39A0+0x44 dBonus1CommonImages4_Tex_0x09E8  # -> file 123 (Bonus1CommonImages4)
 intern dGRBonus2LinkFile2_DL_0x39A0+0x64 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x20B0
 intern dGRBonus2LinkFile2_DL_0x39A0+0x94 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2170
 intern dGRBonus2LinkFile2_DL_0x3A50+0x14 dGRBonus2LinkFile2_gap_0x0BA0_sub_0x20B0

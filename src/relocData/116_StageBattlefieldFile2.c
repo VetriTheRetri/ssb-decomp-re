@@ -267,32 +267,83 @@ DObjDesc dStageBattlefieldFile2_DObjDesc_0x4170[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x41F4, 144 bytes — stage geometry data block 0 */
-u8 dStageBattlefieldFile2_data_0x41F4[144] = {
-	#include <StageBattlefieldFile2/data_0x41F4.data.inc.c>
+/* @ 0x41F4, 144 bytes — MPVertexData[24] (vertex_data of MPGeometryData_0x4388) */
+MPVertexData dStageBattlefieldFile2_data_0x41F4[24] = {
+	{ {   -645,   1021 }, 0x4000 },
+	{ {   -940,   1021 }, 0x4000 },
+	{ {  -1465,   1021 }, 0x4000 },
+	{ {  -1695,   1021 }, 0x0000 },
+	{ {   1725,   1020 }, 0x4000 },
+	{ {   1593,   1020 }, 0x4000 },
+	{ {    860,   1020 }, 0x4000 },
+	{ {    675,   1020 }, 0x0000 },
+	{ {   -525,   1801 }, 0x4000 },
+	{ {   -364,   1801 }, 0x4000 },
+	{ {    160,   1801 }, 0x4000 },
+	{ {    525,   1801 }, 0x0000 },
+	{ {  -1387,   -270 }, 0x0000 },
+	{ {  -1803,   -270 }, 0x0000 },
+	{ {  -1950,      0 }, 0x8000 },
+	{ {   1950,      0 }, 0x0000 },
+	{ {   1803,   -270 }, 0x0000 },
+	{ {   1387,   -270 }, 0x0000 },
+	{ {   1246,   -607 }, 0x0000 },
+	{ {    623,   -607 }, 0x0000 },
+	{ {    525,  -1080 }, 0x0000 },
+	{ {   -525,  -1080 }, 0x0000 },
+	{ {   -623,   -607 }, 0x0000 },
+	{ {  -1246,   -607 }, 0x0000 },
 };
 
-/* @ 0x4284, 72 bytes — stage geometry data block 1 */
-u8 dStageBattlefieldFile2_data_0x4284[72] = {
-	#include <StageBattlefieldFile2/data_0x4284.data.inc.c>
+/* @ 0x4284, 72 bytes — MPVertexArray (u16[36] vertex IDs) */
+u16 dStageBattlefieldFile2_data_0x4284[36] = {
+	  8,   9,  10,  11,   0,   1,   2,   3,   4,   5,   6,   7,
+	 14,  15,  20,  21,  18,  19,  22,  23,  16,  17,  12,  13,
+	 15,  16,  17,  18,  19,  20,  13,  14,  23,  12,  21,  22,
 };
 
-/* @ 0x42CC, 60 bytes — stage geometry data block 2 */
-u8 dStageBattlefieldFile2_data_0x42CC[60] = {
-	#include <StageBattlefieldFile2/data_0x42CC.data.inc.c>
+/* @ 0x42CC, 60 bytes — MPVertexLinks[15] (line vertex pairs) */
+MPVertexLinks dStageBattlefieldFile2_data_0x42CC[15] = {
+	{   0,   4 }, {   4,   4 }, {   8,   4 }, {  12,   2 }, {  14,   2 },
+	{  16,   2 }, {  18,   2 }, {  20,   2 }, {  22,   2 }, {  24,   2 },
+	{  26,   2 }, {  28,   2 }, {  30,   2 }, {  32,   2 }, {  34,   2 },
 };
 
-/* @ 0x4308, 20 bytes — stage geometry data block 3 */
-u8 dStageBattlefieldFile2_data_0x4308[20] = {
-	#include <StageBattlefieldFile2/data_0x4308.data.inc.c>
+/* @ 0x4308, 20 bytes — MPLineInfo[1] (yakumono line groups; compiler
+ * pads sizeof to 20 internally to align line_data, no extra PAD needed). */
+MPLineInfo dStageBattlefieldFile2_data_0x4308[1] = {
+	{ 1, { {   0,   4 }, {   4,   5 }, {   9,   3 }, {  12,   3 } } },
 };
 
-/* @ 0x431C, 108 bytes — stage geometry data block 4 */
-u8 dStageBattlefieldFile2_data_0x431C[108] = {
-	#include <StageBattlefieldFile2/data_0x431C.data.inc.c>
+/* @ 0x431C, 108 bytes — MPMapObjData[18] (map object kinds + positions) */
+MPMapObjData dStageBattlefieldFile2_data_0x431C[18] = {
+	{  37, {  -1170,   1022 } },
+	{  38, {      0,   1803 } },
+	{  39, {   1200,   1022 } },
+	{  33, {      0,      2 } },
+	{   4, {      0,   1323 } },
+	{   4, {      0,   2883 } },
+	{   4, {  -1170,   2583 } },
+	{   4, {   1170,   2583 } },
+	{   4, {   1170,    632 } },
+	{   4, {  -1170,    632 } },
+	{   0, {      0,      3 } },
+	{   1, {      0,   1803 } },
+	{   2, {  -1170,   1022 } },
+	{   3, {   1200,   1022 } },
+	{  32, {      0,   2514 } },
+	{  43, {  -1170,      2 } },
+	{  43, {   1200,      2 } },
+	{  43, {      0,   1803 } },
 };
 
-/* @ 0x4388, 40 bytes — stage descriptor / pointer table */
-u8 dStageBattlefieldFile2_data_0x4388[40] = {
-	#include <StageBattlefieldFile2/data_0x4388.data.inc.c>
+/* @ 0x4388, 28 bytes — MPGeometryData stage descriptor + 12-byte trailer pad */
+MPGeometryData dStageBattlefieldFile2_data_0x4388 = {
+	1,
+	(MPVertexPosContainer*)dStageBattlefieldFile2_data_0x41F4,
+	(MPVertexArray*)dStageBattlefieldFile2_data_0x4284,
+	dStageBattlefieldFile2_data_0x42CC,
+	dStageBattlefieldFile2_data_0x4308,
+	18,
+	(MPMapObjContainer*)dStageBattlefieldFile2_data_0x431C,
 };

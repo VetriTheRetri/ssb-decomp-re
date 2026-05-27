@@ -372,7 +372,11 @@ Gfx dBossModel_gap_0x2850_sub_0x350[35] = {
 	#include <BossModel/gap_0x2850_sub_0x350.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x2CB8 (136 bytes) */
-u8 dBossModel_gap_0x2850_sub_0x350_post[136] = {
-	#include <BossModel/gap_0x2850_sub_0x350_post.data.inc.c>
+/* DObjDesc array @ 0x2CB8 (3 entries: 1 real + sentinel + leading id=0). */
+DObjDesc dBossModel_DObjDescs_0x2CB8[3] = {
+	{ 0,  (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,  (void *)dBossModel_gap_0x2850_sub_0x350, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+
+PAD(4);

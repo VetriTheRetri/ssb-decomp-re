@@ -6,19 +6,17 @@
 
 #include "relocdata_types.h"
 
-/* Vtx: JointVerts @ 0x0 (3 vertices) */
-Vtx dFoxSpecial4_JointVerts_Vtx[3] = {
+/* Vtx: JointVerts @ 0x0 (4 vertices) — absorbs old gap_0x0030 and the 8 bytes
+ * the extractor had at the head of ReflectorDL. */
+Vtx dFoxSpecial4_JointVerts_Vtx[4] = {
 	#include <FoxSpecial4/JointVerts.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0030 to 0x0038 (8 bytes) */
-u8 dFoxSpecial4_gap_0x0030[8] = {
-	#include <FoxSpecial4/gap_0x0030.data.inc.c>
-};
-
-/* DisplayList: ReflectorDL @ 0x38 (80 bytes) */
-Gfx dFoxSpecial4_ReflectorDL_DisplayList[10] = {
+/* DisplayList: ReflectorDL @ 0x40 (72 bytes) — real DL starts here (after the
+ * 4 Vtx), 9 commands ending at 0x88. */
+Gfx dFoxSpecial4_ReflectorDL_DisplayList[9] = {
 	#include <FoxSpecial4/ReflectorDL.dl.inc.c>
 };
 
-/* Raw data from file offset 0x0088 to 0x0090 (8 bytes) */
+/* @ 0x88: 8 bytes of trailing zero pad. */
+PAD(8);

@@ -204,10 +204,11 @@ _SUPPORTED_DECL_TYPES = frozenset({
     "Vtx", "Vtx_t", "Gfx", "Bitmap", "DObjDesc", "DObjDLLink", "MObjSub",
     "Sprite", "MPGroundData", "MPGeometryData", "MPItemWeights",
     "MPVertexData", "MPVertexLinks", "MPLineInfo", "MPMapObjData",
-    "FTAttributes", "FTThrowHitDesc",
+    "FTAttributes", "FTThrowHitDesc", "FTKeyEvent",
     "WPAttributes", "ITAttributes", "GRAttackColl",
     "GRSectorDesc", "SYInterpDesc",
     "Vec3f", "SYColorPack",
+    "SCExplainPhase",
 })
 
 
@@ -297,6 +298,8 @@ _FIXED_TYPE_SIZES = {
 
     "FTAttributes": 0x488,       # from src/ft/fttypes.h, matches stock main sources
     "FTThrowHitDesc": 0x1C,      # 7 × s32, src/ft/fttypes.h
+    "FTKeyEvent": 2,             # union { u16 halfword; ... }, src/ft/fttypes.h
+    "SCExplainPhase": 44,        # struct, src/sc/sctypes.h
     "WPAttributes": 52,          # from src/wp/wptypes.h (0x34 bytes)
     "GRAttackColl": 0x1C,        # 7 × s32, src/gr/grtypes.h
     "ITAttributes": 72,          # from src/it/ittypes.h (0x48 bytes)
@@ -383,10 +386,12 @@ def _virtual_block_text(body_open, body_close, decl_text, type_):
     declaration). Extra includes for any types referenced by the decl
     keep the file self-consistent for the helper that parses it."""
     extras = []
-    if type_ in ("FTAttributes", "FTThrowHitDesc"):
+    if type_ in ("FTAttributes", "FTThrowHitDesc", "FTKeyEvent"):
         extras.append('#include <ft/fttypes.h>')
     if type_ == "MPGroundData":
         extras.append('#include <mp/mptypes.h>')
+    if type_ == "SCExplainPhase":
+        extras.append('#include <sc/sctypes.h>')
     header = '#include "relocdata_types.h"\n' + "".join(e + "\n" for e in extras)
     return header + "\n" + decl_text
 

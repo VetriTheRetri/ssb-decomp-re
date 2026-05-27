@@ -52,7 +52,14 @@ extern MObjSub dYoshiModel_gap_0x6E70_sub_0x840[];
 extern MObjSub dYoshiModel_gap_0x6E70_sub_0x8B8[];
 extern MObjSub dYoshiModel_gap_0x6E70_sub_0x930[];
 extern u32 dYoshiModel_gap_0x6E70_sub_0xDC[];
-extern u8 dYoshiModel_Joint_0x0080_post[];
+extern void *dYoshiModel_Joint_0x0080_post[];
+extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x28[];
+extern void *dYoshiModel_Joint_0x0080_post_sprites_0x60[];
+extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x98[];
+extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0xD0[];
+extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0xE8[];
+extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x100[];
+extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x118[];
 extern MObjSub dYoshiModel_Joint_0x0080_post_sub_0x130[];
 extern MObjSub dYoshiModel_Joint_0x0080_post_sub_0x1A8[];
 extern MObjSub dYoshiModel_Joint_0x0080_post_sub_0x220[];
@@ -97,28 +104,28 @@ extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDF0[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDF8[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xE04[];
 extern u8 dYoshiModel_Tex_0x9518[];
-extern u8 dYoshiModel_Tex_0x9560[];
-extern u8 dYoshiModel_Tex_0x9588[];
-extern u8 dYoshiModel_Tex_0x95B0[];
-extern u8 dYoshiModel_Tex_0x95D8[];
-extern u8 dYoshiModel_Tex_0x9600[];
-extern u8 dYoshiModel_Tex_0x9628[];
+extern u16 dYoshiModel_palette_0x9560[];
+extern u16 dYoshiModel_palette_0x9588[];
+extern u16 dYoshiModel_palette_0x95B0[];
+extern u16 dYoshiModel_palette_0x95D8[];
+extern u16 dYoshiModel_palette_0x9600[];
+extern u16 dYoshiModel_palette_0x9628[];
 extern u8 dYoshiModel_Tex_0x9650[];
-extern u8 dYoshiModel_Tex_0x96D8[];
+extern u16 dYoshiModel_palette_0x96D8[];
 extern u8 dYoshiModel_Tex_0x9700[];
-extern u8 dYoshiModel_Tex_0x9788[];
+extern u16 dYoshiModel_palette_0x9788[];
 extern u8 dYoshiModel_Tex_0x97B0[];
-extern u8 dYoshiModel_Tex_0x9838[];
+extern u16 dYoshiModel_palette_0x9838[];
 extern u8 dYoshiModel_Tex_0x9860[];
-extern u8 dYoshiModel_Tex_0x98E8[];
+extern u16 dYoshiModel_palette_0x98E8[];
 extern u8 dYoshiModel_Tex_0x9910[];
-extern u8 dYoshiModel_Tex_0x9998[];
+extern u16 dYoshiModel_palette_0x9998[];
 extern u8 dYoshiModel_Tex_0x99C0[];
-extern u8 dYoshiModel_Tex_0x9A48[];
+extern u16 dYoshiModel_palette_0x9A48[];
 extern u8 dYoshiModel_Tex_0x9A70[];
-extern u8 dYoshiModel_Tex_0x9AF8[];
+extern u16 dYoshiModel_palette_0x9AF8[];
 extern u8 dYoshiModel_Tex_0x9B20[];
-extern u8 dYoshiModel_Tex_0x9BA8[];
+extern u16 dYoshiModel_palette_0x9BA8[];
 extern u8 dYoshiModel_Tex_0x9BD0[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x13FC[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1408[];
@@ -152,7 +159,7 @@ extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6DC[];
 extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6E4[];
 extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6E8[];
 extern AObjEvent32 * dYoshiModel_gap_0x6E70_sub_0x6EC[];
-extern u8 dYoshiModel_gap_0x6E70_sub_0x6F4[];
+extern void *dYoshiModel_gap_0x6E70_sub_0x6F4[];
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 /* commonparts[0].p_mobjsubs target — per-joint MObjSub** table indexed
@@ -167,13 +174,13 @@ extern u8 dYoshiModel_gap_0x6E70_sub_0x6F4[];
 /* slots [0..1] (joints 0..1) */
 MObjSub *dYoshiModel_gap_0x0000[2] = {
 	NULL,                                                          /* joint 0 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD60),      /* joint 1 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xD60,            /* joint 1 */
 };
 
 /* slots [2..5] (joints 2..5) */
 MObjSub *dYoshiModel_gap_0x0000_sub_0x8[4] = {
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD74),      /* joint 2 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD7C),      /* joint 3 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xD74,            /* joint 2 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xD7C,            /* joint 3 */
 	NULL,                                                          /* joint 4 */
 	NULL,                                                          /* joint 5 */
 };
@@ -181,52 +188,210 @@ MObjSub *dYoshiModel_gap_0x0000_sub_0x8[4] = {
 /* slots [6..7] (joints 6..7) */
 MObjSub *dYoshiModel_gap_0x0000_sub_0x18[2] = {
 	NULL,                                                          /* joint 6 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD94),      /* joint 7 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xD94,            /* joint 7 */
 };
 
 /* slots [8..15] (joints 8..15) */
 MObjSub *dYoshiModel_Joint_0x0020_post[8] = {
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xD9C),      /* joint 8 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDA4),      /* joint 9 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xD9C,            /* joint 8 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDA4,            /* joint 9 */
 	NULL,                                                          /* joint 10 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDAC),      /* joint 11 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDB4),      /* joint 12 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDBC),      /* joint 13 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDAC,            /* joint 11 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDB4,            /* joint 12 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDBC,            /* joint 13 */
 	NULL,                                                          /* joint 14 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDC4),      /* joint 15 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDC4,            /* joint 15 */
 };
 
 /* slots [16..23] (joints 16..23) */
 MObjSub *dYoshiModel_Joint_0x0040_post[8] = {
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDCC),      /* joint 16 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDCC,            /* joint 16 */
 	NULL,                                                          /* joint 17 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDD4),      /* joint 18 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDDC),      /* joint 19 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDD4,            /* joint 18 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDDC,            /* joint 19 */
 	NULL,                                                          /* joint 20 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDE8),      /* joint 21 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDE8,            /* joint 21 */
 	NULL,                                                          /* joint 22 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDF0),      /* joint 23 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDF0,            /* joint 23 */
 };
 
-/* slots [24..31] (joints 24..31) */
-MObjSub *dYoshiModel_Joint_0x0060_post[8] = {
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xDF8),      /* joint 24 */
+/* slots [24..27] (joints 24..27) */
+MObjSub *dYoshiModel_Joint_0x0060_post[4] = {
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xDF8,            /* joint 24 */
 	NULL,                                                          /* joint 25 */
-	(MObjSub *)((u8 *)dYoshiModel_Joint_0x0080_post + 0xE04),      /* joint 26 */
+	(MObjSub *)dYoshiModel_Joint_0x0080_post_sub_0xE04,            /* joint 26 */
 	NULL,                                                          /* joint 27 */
-	(MObjSub *)((u8 *)dYoshiModel_Tex_0x9518 + 0x6B8),             /* joint 28 (lives in Tex_0x9518) */
-	NULL,                                                          /* joint 29 */
-	NULL,                                                          /* joint 30 */
-	NULL,                                                          /* joint 31 */
 };
 
-/* Raw data from file offset 0x80 to 0x1B0 (304 bytes).
- * Holds palette/sprite tables. The 26 MObjSubs (0x78 bytes
- * each, file offsets 0x1B0..0xDE0) and
- * 17 MObjSub* trailing-index cells (0xDE0..0xE90)
- * have been split out below. */
-u8 dYoshiModel_Joint_0x0080_post[304] = {
-	#include <YoshiModel/Joint_0x0080_post.data.inc.c>
+/* Sprite pointer array @ Joint_0x0060_post+0x10 (4 slots) —
+ * sub_0x1A8.sprites target. Single texture frame + 3 NULL trailing. */
+u8 *dYoshiModel_Joint_0x0060_post_sprites[4] = {
+	dYoshiModel_Tex_0x9BD0,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* Sprite/palette pointer tables @ file 0x80..0x1B0 (304 bytes, 76 slots).
+ * Four sprite-pointer sub-tables and four palette-pointer sub-tables,
+ * each used by one or more MObjSubs (sprites field at MObjSub+0x4,
+ * palettes field at MObjSub+0x2C). The MObjSubs themselves live at
+ * file offsets 0x1B0..0xDE0, and 17 MObjSub* trailing-index cells
+ * follow at 0xDE0..0xE90. */
+extern u16 dYoshiModel_palette_0x9560[];
+extern u16 dYoshiModel_palette_0x9588[];
+extern u16 dYoshiModel_palette_0x95B0[];
+extern u16 dYoshiModel_palette_0x95D8[];
+extern u16 dYoshiModel_palette_0x9600[];
+extern u16 dYoshiModel_palette_0x9628[];
+extern u8 dYoshiModel_Tex_0x9650[];
+extern u16 dYoshiModel_palette_0x96D8[];
+extern u8 dYoshiModel_Tex_0x9700[];
+extern u16 dYoshiModel_palette_0x9788[];
+extern u8 dYoshiModel_Tex_0x97B0[];
+extern u16 dYoshiModel_palette_0x9838[];
+extern u8 dYoshiModel_Tex_0x9860[];
+extern u16 dYoshiModel_palette_0x98E8[];
+extern u8 dYoshiModel_Tex_0x9910[];
+extern u16 dYoshiModel_palette_0x9998[];
+extern u8 dYoshiModel_Tex_0x99C0[];
+extern u16 dYoshiModel_palette_0x9A48[];
+extern u8 dYoshiModel_Tex_0x9A70[];
+extern u16 dYoshiModel_palette_0x9AF8[];
+extern u8 dYoshiModel_Tex_0x9B20[];
+extern u16 dYoshiModel_palette_0x9BA8[];
+extern u8 dYoshiModel_Tex_0x9BD0[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2680[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x25B8[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x25E0[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2608[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2630[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2658[];
+extern u16 dYoshiModel_palette_0x9D20[];
+extern u16 dYoshiModel_palette_0x9DB8[];
+extern u16 dYoshiModel_palette_0x9DE0[];
+extern u16 dYoshiModel_palette_0x9E08[];
+extern u16 dYoshiModel_palette_0x9E30[];
+extern u16 dYoshiModel_palette_0x9E58[];
+/* +0x00..+0x27 (10 slots) — Yoshi face sprite frames A (8 textures
+ * + 2 trailing NULL). No MObjSub references this directly; preserved
+ * for byte identity. Slot 0 is also the post-block chain head. */
+void *dYoshiModel_Joint_0x0080_post[10] = {
+	NULL,
+	(void *)dYoshiModel_Tex_0x97B0,
+	(void *)dYoshiModel_Tex_0x9650,
+	(void *)dYoshiModel_Tex_0x9860,
+	(void *)dYoshiModel_Tex_0x9910,
+	(void *)dYoshiModel_Tex_0x99C0,
+	(void *)dYoshiModel_Tex_0x9B20,
+	(void *)dYoshiModel_Tex_0x9A70,
+	NULL,
+	NULL,
+};
+
+/* +0x28..+0x5F (14 slots) — sub_0x1A8.palettes target.
+ * 14 palette frames (each u16[16]+PAD(8) at 0x9560..0x9BA8, formerly
+ * mistyped as 40-byte u8 textures alongside CI4 textures). */
+u16 *dYoshiModel_Joint_0x0080_post_palettes_0x28[14] = {
+	dYoshiModel_palette_0x9BA8,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x96D8,
+	dYoshiModel_palette_0x9788,
+	dYoshiModel_palette_0x9628,
+	dYoshiModel_palette_0x9838,
+	dYoshiModel_palette_0x98E8,
+	dYoshiModel_palette_0x9998,
+	dYoshiModel_palette_0x9AF8,
+	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
+};
+
+/* +0x60..+0x6F (4 slots) — sub_0x220.sprites target.
+ * Single-texture sprite array + 3 trailing NULL. */
+void *dYoshiModel_Joint_0x0080_post_sprites_0x60[4] = {
+	(void *)dYoshiModel_Tex_0x9BD0,
+	NULL,
+	NULL,
+	NULL,
+};
+
+/* +0x70..+0x97 (10 slots) — Yoshi face sprite frames B (8 textures
+ * + 2 trailing NULL; same set as Joint_0x0080_post but with slot 6/7
+ * reordered). No MObjSub references this directly. */
+void *dYoshiModel_Joint_0x0080_post_sprites_0x70[10] = {
+	(void *)dYoshiModel_Tex_0x9700,
+	(void *)dYoshiModel_Tex_0x97B0,
+	(void *)dYoshiModel_Tex_0x9650,
+	(void *)dYoshiModel_Tex_0x9860,
+	(void *)dYoshiModel_Tex_0x9910,
+	(void *)dYoshiModel_Tex_0x99C0,
+	(void *)dYoshiModel_Tex_0x9A70,
+	(void *)dYoshiModel_Tex_0x9B20,
+	NULL,
+	NULL,
+};
+
+/* +0x98..+0xCF (14 slots) — sub_0x220.palettes target.
+ * Same 14 palette frames as +0x28 (slot 10/11 reordered). */
+u16 *dYoshiModel_Joint_0x0080_post_palettes_0x98[14] = {
+	dYoshiModel_palette_0x9BA8,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x96D8,
+	dYoshiModel_palette_0x9788,
+	dYoshiModel_palette_0x9628,
+	dYoshiModel_palette_0x9838,
+	dYoshiModel_palette_0x98E8,
+	dYoshiModel_palette_0x9998,
+	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x9AF8,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
+};
+
+/* +0xD0..+0xE7 (6 slots) — sub_0x388.palettes target.
+ * Palette frame pointers (gap_0x6E70_sub_0x*). */
+u16 *dYoshiModel_Joint_0x0080_post_palettes_0xD0[6] = {
+	dYoshiModel_gap_0x6E70_sub_0x2680,
+	dYoshiModel_gap_0x6E70_sub_0x25B8,
+	dYoshiModel_gap_0x6E70_sub_0x25E0,
+	dYoshiModel_gap_0x6E70_sub_0x2608,
+	dYoshiModel_gap_0x6E70_sub_0x2630,
+	dYoshiModel_gap_0x6E70_sub_0x2658,
+};
+
+/* +0xE8..+0xFF (6 slots) — sub_0x838.palettes target. Palette frames. */
+u16 *dYoshiModel_Joint_0x0080_post_palettes_0xE8[6] = {
+	dYoshiModel_palette_0x9E58,
+	dYoshiModel_palette_0x9D20,
+	dYoshiModel_palette_0x9DB8,
+	dYoshiModel_palette_0x9DE0,
+	dYoshiModel_palette_0x9E08,
+	dYoshiModel_palette_0x9E30,
+};
+
+/* +0x100..+0x117 (6 slots) — sub_0x8B0.palettes target. */
+u16 *dYoshiModel_Joint_0x0080_post_palettes_0x100[6] = {
+	dYoshiModel_palette_0x9E58,
+	dYoshiModel_palette_0x9D20,
+	dYoshiModel_palette_0x9DB8,
+	dYoshiModel_palette_0x9DE0,
+	dYoshiModel_palette_0x9E08,
+	dYoshiModel_palette_0x9E30,
+};
+
+/* +0x118..+0x12F (6 slots) — sub_0x928.palettes target. */
+u16 *dYoshiModel_Joint_0x0080_post_palettes_0x118[6] = {
+	dYoshiModel_palette_0x9E58,
+	dYoshiModel_palette_0x9D20,
+	dYoshiModel_palette_0x9DB8,
+	dYoshiModel_palette_0x9DE0,
+	dYoshiModel_palette_0x9E08,
+	dYoshiModel_palette_0x9E30,
 };
 
 /* MObjSub @ 0x1B0 */
@@ -263,13 +428,13 @@ MObjSub dYoshiModel_Joint_0x0080_post_sub_0x1A8[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dYoshiModel_Joint_0x0060_post + 0x10),
+		(void**)dYoshiModel_Joint_0x0060_post_sprites,
 		0x006A, 0x0009, 0x0010, 0x0010,
 		0,
 		0.5364000201225281f, 0.010400000028312206f,
 		0.30000001192092896f, 0.4000000059604645f,
 		0.5364000201225281f, 0.30000001192092896f,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0x28),
+		(void**)dYoshiModel_Joint_0x0080_post_palettes_0x28,
 		0x0005,
 		0x02, 0x00,
 		0x0010,
@@ -292,13 +457,13 @@ MObjSub dYoshiModel_Joint_0x0080_post_sub_0x220[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0x60),
+		(void**)dYoshiModel_Joint_0x0080_post_sprites_0x60,
 		0x006A, 0x0009, 0x0010, 0x0010,
 		0,
 		0.5404009819030762f, 0.010400000028312206f,
 		0.30000001192092896f, 0.4000000059604645f,
 		0.5404009819030762f, 0.30000001192092896f,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0x98),
+		(void**)dYoshiModel_Joint_0x0080_post_palettes_0x98,
 		0x0005,
 		0x02, 0x00,
 		0x0010,
@@ -385,7 +550,7 @@ MObjSub dYoshiModel_Joint_0x0080_post_sub_0x388[1] = {
 		0.7692000269889832f, 0.038600001484155655f,
 		0.10000000149011612f, 0.15000000596046448f,
 		0.7692000269889832f, 0.10000000149011612f,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0xD0),
+		(void**)dYoshiModel_Joint_0x0080_post_palettes_0xD0,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -675,7 +840,7 @@ MObjSub dYoshiModel_Joint_0x0080_post_sub_0x838[1] = {
 		0.06544999778270721f, -0.03359999880194664f,
 		0.3555000126361847f, 0.3919999897480011f,
 		0.06544999778270721f, 0.3555000126361847f,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0xE8),
+		(void**)dYoshiModel_Joint_0x0080_post_palettes_0xE8,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -704,7 +869,7 @@ MObjSub dYoshiModel_Joint_0x0080_post_sub_0x8B0[1] = {
 		0.3124000132083893f, 0.009999999776482582f,
 		0.30000001192092896f, 0.30000001192092896f,
 		0.3124000132083893f, 0.30000001192092896f,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0x100),
+		(void**)dYoshiModel_Joint_0x0080_post_palettes_0x100,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -733,7 +898,7 @@ MObjSub dYoshiModel_Joint_0x0080_post_sub_0x928[1] = {
 		0.5289999842643738f, 0.0f,
 		0.30000001192092896f, 1.0f,
 		0.5289999842643738f, 0.30000001192092896f,
-		(void**)((u8*)dYoshiModel_Joint_0x0080_post + 0x118),
+		(void**)dYoshiModel_Joint_0x0080_post_palettes_0x118,
 		0x0004,
 		0x02, 0x00,
 		0x0008,
@@ -1366,7 +1531,9 @@ Gfx *dYoshiModel_Joint_0x3148_post_post_post[38] = {
 	NULL,                                       dYoshiModel_Joint_0x3148_DisplayList,
 };
 
-/* DObjDesc: JointTree @ 0x33A0 (31 entries) */
+/* DObjDesc: JointTree @ 0x33A0 (29 entries, 0x4FC bytes — array proper.
+ * Immediately followed by JointTree_post (22-slot AObjEvent32** per-joint
+ * dispatch table) which together span up to 0x38F4. */
 DObjDesc dYoshiModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dYoshiModel_Joint_0x3148_post_post_post, { 0.0f, 0.0f, 0.0f }, { -0.00133500003721565f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1397,8 +1564,42 @@ DObjDesc dYoshiModel_JointTree[] = {
 	{ 6, (void*)&dYoshiModel_Joint_0x3148_post_post_post[36], { 9.999999974752427e-07f, 0.0f, 0.0f }, { 3.1415929794311523f, 0.0f, -0.5888599753379822f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 2.0961795183637217e-30f, 2.1085062223241845e-30f, 2.157810216979594e-30f }, { 0.0f, 0.0f, 0.0f }, { 2.170137109019153e-30f, 2.1824632487423273e-30f, 2.20711534010958e-30f } },
-	{ 0, (void *)dYoshiModel_gap_0x38F4_sub_0x708, { 2.231767619555929e-30f, 2.2564197109231817e-30f, 0.0f }, { 2.268745850646356e-30f, 2.293397942013609e-30f, 0.0f }, { 2.3057240817367833e-30f, 2.330376173104036e-30f, 0.0f } },
+};
+
+/* AObjEvent32 ** dispatch table @ file 0x389C (88 bytes, 22 slots).
+ * Lives immediately after JointTree (no PAD); references AObjEvent32 *
+ * scripts in the gap_0x38F4 region. */
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x6D4[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x6E4[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x6FC[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x700[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x704[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x70C[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x710[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x714[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x718[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x71C[];
+extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x720[];
+AObjEvent32 **dYoshiModel_JointTree_post[22] = {
+	NULL, NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6D4,   /* slot 2  (+0x8) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6E4,   /* slot 3  (+0xC) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6E8,   /* slot 4  (+0x10) */
+	NULL, NULL, NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6FC,   /* slot 8  (+0x20) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x700,   /* slot 9  (+0x24) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x704,   /* slot 10 (+0x28) */
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x708,   /* slot 12 (+0x30) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x70C,   /* slot 13 (+0x34) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x710,   /* slot 14 (+0x38) */
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x714,   /* slot 16 (+0x40) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x718,   /* slot 17 (+0x44) */
+	NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x71C,   /* slot 19 (+0x4C) */
+	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x720,   /* slot 20 (+0x50) */
+	NULL,
 };
 
 /* Raw data from file offset 0x38F4 to 0x4D98 (5284 bytes) */
@@ -2073,70 +2274,113 @@ MObjSub *dYoshiModel_gap_0x38F4_sub_0x73C[28] = {
 	NULL,
 };
 
-/* gap sub-block @ 0x40A0 (was gap+0x7AC, 56 bytes) */
-u32 dYoshiModel_gap_0x38F4_sub_0x7AC[14] = {
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x6B8),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x1E8),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x298),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x138),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x348),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x3F8),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x4A8),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x608),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x558),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Sprite pointer array @ 0x40A0 (14 entries) — MObjSub.sprites target.
+ * `Tex_0x9518 + 0xN` byte-offsets resolve to existing Tex_0x* texture
+ * symbols (Tex_0x9518 is 72 bytes; +0xN > 0x48 lands in later textures). */
+u8 *dYoshiModel_gap_0x38F4_sub_0x7AC[14] = {
+	dYoshiModel_Tex_0x9BD0,    /* Tex_0x9518 + 0x6B8 */
+	NULL,
+	NULL,
+	NULL,
+	dYoshiModel_Tex_0x9700,    /* Tex_0x9518 + 0x1E8 */
+	dYoshiModel_Tex_0x97B0,    /* Tex_0x9518 + 0x298 */
+	dYoshiModel_Tex_0x9650,    /* Tex_0x9518 + 0x138 */
+	dYoshiModel_Tex_0x9860,    /* Tex_0x9518 + 0x348 */
+	dYoshiModel_Tex_0x9910,    /* Tex_0x9518 + 0x3F8 */
+	dYoshiModel_Tex_0x99C0,    /* Tex_0x9518 + 0x4A8 */
+	dYoshiModel_Tex_0x9B20,    /* Tex_0x9518 + 0x608 */
+	dYoshiModel_Tex_0x9A70,    /* Tex_0x9518 + 0x558 */
+	NULL,
+	NULL,
 };
 
-/* gap sub-block @ 0x40D8 (was gap+0x7E4, 56 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x7E4[56] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x7E4.data.inc.c>
+/* Palette pointer array @ 0x40D8 (14 entries) — MObjSub.palettes target.
+ * Slot 0 NULL, 13 palette frames. */
+u16 *dYoshiModel_gap_0x38F4_sub_0x7E4[14] = {
+	NULL,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x96D8,
+	dYoshiModel_palette_0x9788,
+	dYoshiModel_palette_0x9628,
+	dYoshiModel_palette_0x9838,
+	dYoshiModel_palette_0x98E8,
+	dYoshiModel_palette_0x9998,
+	dYoshiModel_palette_0x9AF8,
+	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
 };
 
-/* gap sub-block @ 0x4110 (was gap+0x81C, 56 bytes) */
-u32 dYoshiModel_gap_0x38F4_sub_0x81C[14] = {
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x6B8),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x1E8),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x298),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x138),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x348),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x3F8),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x4A8),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x558),
-	(u32)((u8*)dYoshiModel_Tex_0x9518 + 0x608),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Sprite pointer array @ 0x4110 (14 entries) — MObjSub.sprites target.
+ * Same Yoshi face texture set as sub_0x7AC (slot 10/11 reordered). */
+u8 *dYoshiModel_gap_0x38F4_sub_0x81C[14] = {
+	dYoshiModel_Tex_0x9BD0,    /* Tex_0x9518 + 0x6B8 */
+	NULL,
+	NULL,
+	NULL,
+	dYoshiModel_Tex_0x9700,    /* Tex_0x9518 + 0x1E8 */
+	dYoshiModel_Tex_0x97B0,    /* Tex_0x9518 + 0x298 */
+	dYoshiModel_Tex_0x9650,    /* Tex_0x9518 + 0x138 */
+	dYoshiModel_Tex_0x9860,    /* Tex_0x9518 + 0x348 */
+	dYoshiModel_Tex_0x9910,    /* Tex_0x9518 + 0x3F8 */
+	dYoshiModel_Tex_0x99C0,    /* Tex_0x9518 + 0x4A8 */
+	dYoshiModel_Tex_0x9A70,    /* Tex_0x9518 + 0x558 */
+	dYoshiModel_Tex_0x9B20,    /* Tex_0x9518 + 0x608 */
+	NULL,
+	NULL,
 };
 
-/* gap sub-block @ 0x4148 (was gap+0x854, 56 bytes) */
-u8 dYoshiModel_gap_0x38F4_sub_0x854[56] = {
-	#include <YoshiModel/gap_0x38F4_sub_0x854.data.inc.c>
+/* Palette pointer array @ 0x4148 (14 entries) — MObjSub.palettes target.
+ * Slot 0 NULL, 13 palette frames (same as sub_0x7E4). */
+u16 *dYoshiModel_gap_0x38F4_sub_0x854[14] = {
+	NULL,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x96D8,
+	dYoshiModel_palette_0x9788,
+	dYoshiModel_palette_0x9628,
+	dYoshiModel_palette_0x9838,
+	dYoshiModel_palette_0x98E8,
+	dYoshiModel_palette_0x9998,
+	dYoshiModel_palette_0x9AF8,
+	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
 };
 
-/* u32 pointer array @ 0x4180 (6 entries) */
-u32 dYoshiModel_gap_0x38F4_sub_0x88C[6] = {
-	0x1061253C,
-	0x1062250A,
-	0x10632514,
-	0x1064251E,
-	0x10652528,
-	0x10662532,
+/* Palette pointer array @ 0x4180 (6 entries) — MObjSub.palettes target */
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2680[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x25B8[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x25E0[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2608[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2630[];
+extern u16 dYoshiModel_gap_0x6E70_sub_0x2658[];
+u16 *dYoshiModel_gap_0x38F4_sub_0x88C[6] = {
+	dYoshiModel_gap_0x6E70_sub_0x2680,
+	dYoshiModel_gap_0x6E70_sub_0x25B8,
+	dYoshiModel_gap_0x6E70_sub_0x25E0,
+	dYoshiModel_gap_0x6E70_sub_0x2608,
+	dYoshiModel_gap_0x6E70_sub_0x2630,
+	dYoshiModel_gap_0x6E70_sub_0x2658,
 };
 
-/* u32 pointer array @ 0x4198 (6 entries) */
-u32 dYoshiModel_gap_0x38F4_sub_0x8A4[6] = {
-	0x10672752,
-	0x10682716,
-	0x10692720,
-	0x106A272A,
-	0x106B2734,
-	0x106D273E,
+/* Palette pointer array @ 0x4198 (6 entries) — MObjSub.palettes target */
+extern u16 dYoshiModel_palette_0x9C58[];
+extern u16 dYoshiModel_palette_0x9C80[];
+extern u16 dYoshiModel_palette_0x9CA8[];
+extern u16 dYoshiModel_palette_0x9CD0[];
+extern u16 dYoshiModel_palette_0x9CF8[];
+extern u16 dYoshiModel_palette_0x9D48[];
+u16 *dYoshiModel_gap_0x38F4_sub_0x8A4[6] = {
+	dYoshiModel_palette_0x9D48,
+	dYoshiModel_palette_0x9C58,
+	dYoshiModel_palette_0x9C80,
+	dYoshiModel_palette_0x9CA8,
+	dYoshiModel_palette_0x9CD0,
+	dYoshiModel_palette_0x9CF8,
 };
 
 /* MObjSub @ 0x41B0 */
@@ -3239,7 +3483,9 @@ Gfx *dYoshiModel_Joint_0x6738_post_post_post[36] = {
 	NULL,                                       dYoshiModel_Joint_0x6738_DisplayList,
 };
 
-/* DObjDesc: JointTree_0x6948 @ 0x6948 (30 entries) */
+/* DObjDesc: JointTree_0x6948 @ 0x6948 (29 entries, 0x4FC bytes — array
+ * proper. Immediately followed by JointTree_0x6948_post (11-slot
+ * AObjEvent32** per-joint dispatch table) spanning up to gap_0x6E70. */
 DObjDesc dYoshiModel_JointTree_0x6948[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dYoshiModel_Joint_0x6738_post_post_post, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -3270,7 +3516,21 @@ DObjDesc dYoshiModel_JointTree_0x6948[] = {
 	{ 6, (void*)&dYoshiModel_Joint_0x6738_post_post_post[34], { 0.0f, -1.9999999949504854e-06f, 0.0f }, { 3.1415929794311523f, 0.0f, -0.5891119837760925f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 2.4834325794767167e-22f }, { 2.4999766965987566e-22f, 2.5661513980384885e-22f, 0.0f }, { 0.0f, 0.0f, 2.5826962724669974e-22f } },
+};
+
+/* AObjEvent32 ** dispatch table @ file 0x6E44 (44 bytes, 11 slots).
+ * Lives immediately after JointTree_0x6948; trailing space is followed
+ * by gap_0x6E70. */
+extern AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x698[];
+extern AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x6A0[];
+extern AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x6B8[];
+AObjEvent32 **dYoshiModel_JointTree_0x6948_post[11] = {
+	NULL, NULL, NULL, NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x698,   /* slot 4  (+0x10) */
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6A0,   /* slot 5  (+0x14) */
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6A4,   /* slot 6  (+0x18) */
+	NULL, NULL, NULL,
+	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6B8,   /* slot 10 (+0x28) */
 };
 
 /* Raw data from file offset 0x6E70 to 0x9518 (9896 bytes) */
@@ -3883,40 +4143,53 @@ AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x6EC[2] = {
 	(AObjEvent32 *)dYoshiModel_gap_0x6E70_sub_0x5D8,
 };
 
-/* gap sub-block @ 0x7564 (was gap+0x6F4, 16 bytes) */
-u8 dYoshiModel_gap_0x6E70_sub_0x6F4[16] = {
-	#include <YoshiModel/gap_0x6E70_sub_0x6F4.data.inc.c>
+/* Pointer table @ 0x7564 (4 slots) — referenced as AObjEvent32** but
+ * holds mixed pointer types (slot 0 = AObjEvent32 script, slot 3 =
+ * MObjSub* dispatch list). */
+extern u32 dYoshiModel_gap_0x6E70_sub_0x550[];
+void *dYoshiModel_gap_0x6E70_sub_0x6F4[4] = {
+	(void *)dYoshiModel_gap_0x6E70_sub_0x550,
+	NULL,
+	NULL,
+	(void *)dYoshiModel_gap_0x6E70_sub_0x9A8,
 };
 
-/* u32 pointer array @ 0x7574 (6 entries) */
-u32 dYoshiModel_gap_0x6E70_sub_0x704[6] = {
-	0x1D5E26EA,
-	0x1D5F2558,
-	0x1D602562,
-	0x1D61256C,
-	0x1D622576,
-	0x1D632580,
+/* Palette pointer array @ 0x7574 (6 entries) — MObjSub.palettes target */
+extern u16 dYoshiModel_palette_0x9560[];
+extern u16 dYoshiModel_palette_0x9588[];
+extern u16 dYoshiModel_palette_0x95B0[];
+extern u16 dYoshiModel_palette_0x95D8[];
+extern u16 dYoshiModel_palette_0x9600[];
+extern u16 dYoshiModel_palette_0x9BA8[];
+u16 *dYoshiModel_gap_0x6E70_sub_0x704[6] = {
+	dYoshiModel_palette_0x9BA8,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
 };
 
-/* u32 pointer array @ 0x758C (6 entries) */
-u32 dYoshiModel_gap_0x6E70_sub_0x71C[6] = {
-	0x1D6426EA,
-	0x1D652558,
-	0x1D662562,
-	0x1D67256C,
-	0x1D682576,
-	0x1D692580,
+/* Palette pointer array @ 0x758C (6 entries) — MObjSub.palettes target */
+u16 *dYoshiModel_gap_0x6E70_sub_0x71C[6] = {
+	dYoshiModel_palette_0x9BA8,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
 };
 
-/* u32 pointer array @ 0x75A4 (7 entries) */
-u32 dYoshiModel_gap_0x6E70_sub_0x734[7] = {
-	0x1D6A253C,
-	0x1D6B250A,
-	0x1D6C2514,
-	0x1D6D251E,
-	0x1D6E2528,
-	0x1D992532,
-	0x00000000,
+/* Palette pointer array @ 0x75A4 (7 entries) — MObjSub.palettes target;
+ * 6 palette frames + NULL terminator */
+u16 *dYoshiModel_gap_0x6E70_sub_0x734[7] = {
+	dYoshiModel_gap_0x6E70_sub_0x2680,
+	dYoshiModel_gap_0x6E70_sub_0x25B8,
+	dYoshiModel_gap_0x6E70_sub_0x25E0,
+	dYoshiModel_gap_0x6E70_sub_0x2608,
+	dYoshiModel_gap_0x6E70_sub_0x2630,
+	dYoshiModel_gap_0x6E70_sub_0x2658,
+	NULL,
 };
 
 /* MObjSub @ 0x75C0 */
@@ -4436,93 +4709,107 @@ u8 dYoshiModel_Tex_0x9518[72] = {
 	#include <YoshiModel/Tex_0x9518.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9560[40] = {
-	#include <YoshiModel/Tex_0x9560.tex.inc.c>
+u16 dYoshiModel_palette_0x9560[16] = {
+	#include <YoshiModel/palette_0x9560.palette.inc.c>
 };
+PAD(8);
 
-u8 dYoshiModel_Tex_0x9588[40] = {
-	#include <YoshiModel/Tex_0x9588.tex.inc.c>
+u16 dYoshiModel_palette_0x9588[16] = {
+	#include <YoshiModel/palette_0x9588.palette.inc.c>
 };
+PAD(8);
 
-u8 dYoshiModel_Tex_0x95B0[40] = {
-	#include <YoshiModel/Tex_0x95B0.tex.inc.c>
+u16 dYoshiModel_palette_0x95B0[16] = {
+	#include <YoshiModel/palette_0x95B0.palette.inc.c>
 };
+PAD(8);
 
-u8 dYoshiModel_Tex_0x95D8[40] = {
-	#include <YoshiModel/Tex_0x95D8.tex.inc.c>
+u16 dYoshiModel_palette_0x95D8[16] = {
+	#include <YoshiModel/palette_0x95D8.palette.inc.c>
 };
+PAD(8);
 
-u8 dYoshiModel_Tex_0x9600[40] = {
-	#include <YoshiModel/Tex_0x9600.tex.inc.c>
+u16 dYoshiModel_palette_0x9600[16] = {
+	#include <YoshiModel/palette_0x9600.palette.inc.c>
 };
+PAD(8);
 
-u8 dYoshiModel_Tex_0x9628[40] = {
-	#include <YoshiModel/Tex_0x9628.tex.inc.c>
+u16 dYoshiModel_palette_0x9628[16] = {
+	#include <YoshiModel/palette_0x9628.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9650[136] = {
 	#include <YoshiModel/Tex_0x9650.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x96D8[40] = {
-	#include <YoshiModel/Tex_0x96D8.tex.inc.c>
+u16 dYoshiModel_palette_0x96D8[16] = {
+	#include <YoshiModel/palette_0x96D8.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9700[136] = {
 	#include <YoshiModel/Tex_0x9700.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9788[40] = {
-	#include <YoshiModel/Tex_0x9788.tex.inc.c>
+u16 dYoshiModel_palette_0x9788[16] = {
+	#include <YoshiModel/palette_0x9788.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x97B0[136] = {
 	#include <YoshiModel/Tex_0x97B0.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9838[40] = {
-	#include <YoshiModel/Tex_0x9838.tex.inc.c>
+u16 dYoshiModel_palette_0x9838[16] = {
+	#include <YoshiModel/palette_0x9838.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9860[136] = {
 	#include <YoshiModel/Tex_0x9860.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x98E8[40] = {
-	#include <YoshiModel/Tex_0x98E8.tex.inc.c>
+u16 dYoshiModel_palette_0x98E8[16] = {
+	#include <YoshiModel/palette_0x98E8.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9910[136] = {
 	#include <YoshiModel/Tex_0x9910.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9998[40] = {
-	#include <YoshiModel/Tex_0x9998.tex.inc.c>
+u16 dYoshiModel_palette_0x9998[16] = {
+	#include <YoshiModel/palette_0x9998.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x99C0[136] = {
 	#include <YoshiModel/Tex_0x99C0.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9A48[40] = {
-	#include <YoshiModel/Tex_0x9A48.tex.inc.c>
+u16 dYoshiModel_palette_0x9A48[16] = {
+	#include <YoshiModel/palette_0x9A48.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9A70[136] = {
 	#include <YoshiModel/Tex_0x9A70.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9AF8[40] = {
-	#include <YoshiModel/Tex_0x9AF8.tex.inc.c>
+u16 dYoshiModel_palette_0x9AF8[16] = {
+	#include <YoshiModel/palette_0x9AF8.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9B20[136] = {
 	#include <YoshiModel/Tex_0x9B20.tex.inc.c>
 };
 
-u8 dYoshiModel_Tex_0x9BA8[40] = {
-	#include <YoshiModel/Tex_0x9BA8.tex.inc.c>
+u16 dYoshiModel_palette_0x9BA8[16] = {
+	#include <YoshiModel/palette_0x9BA8.palette.inc.c>
 };
+PAD(8);
 
 u8 dYoshiModel_Tex_0x9BD0[136] = {
 	#include <YoshiModel/Tex_0x9BD0.tex.inc.c>
@@ -4631,13 +4918,8 @@ Gfx dYoshiModel_gap_0xA860[29] = {
 	#include <YoshiModel/gap_0xA860.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0xA948 (16 bytes) */
-u32 dYoshiModel_gap_0xA860_post[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-};
+/* 16 trailing zero bytes after the DL — padding, not a script. */
+PAD(16);
 
 /* Texture data for sprite Stock */
 /* Split out from .sprite.c so the palette blocks can sit at

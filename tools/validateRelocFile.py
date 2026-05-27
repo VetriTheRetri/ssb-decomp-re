@@ -692,7 +692,10 @@ def check_chain_pointer_target_form(decl, path, diags, script_syms):
 
     `&sym[N]` is only flagged inside pointer arrays — for typed struct
     arrays, `&typed_arr[N]` at an element boundary is a legitimate
-    way to point at a specific element.
+    way to point at a specific element. See also R012, which catches
+    the related case of MObjSub.sprites/palettes pointing at a
+    wrongly-typed pointer array (e.g. `&MObjSub_ptr_arr[N]` assigned
+    to a sprites field that expects `u8 *[]`).
 
     Skip refs whose target is a known AObjEvent32 script — mid-script
     entry points are legitimate (the runtime walks opcodes from any
@@ -1008,7 +1011,7 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
 
     def entries_of(name):
         d = decls_by_name.get(name)
-        if d is None or not d.is_pointer or d.ctype != "void":
+        if d is None or not d.is_pointer:
             return None
         # Parse body for non-NULL symbol references.
         out = []
@@ -1029,14 +1032,39 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
     def check_role(target_sym, target_ln, field, expected_ctype):
         if target_sym.startswith("0x"):
             return
+        target_decl = decls_by_name.get(target_sym)
+        if target_decl is None:
+            return
+        # Fast-path: the target is already typed as the expected pointer
+        # array (`u8 *[]` for sprites, `u16 *[]` for palettes).
+        if target_decl.is_pointer and target_decl.ctype == expected_ctype:
+            return
+        # If the target is a typed pointer array of the WRONG base type
+        # (e.g. MObjSub.sprites pointing at an `MObjSub *[]` joint-dispatch
+        # table), flag the array itself — the field expects a homogenous
+        # block-pointer array of `expected_ctype`. This is the smoking gun
+        # for "slicing into the middle of a different-purpose pointer
+        # array" (e.g. `&Joint_0x0060_post[4]` where Joint_0x0060_post is
+        # an MObjSub-dispatch table, not a texture/palette array).
+        if (target_decl.is_pointer and target_decl.ctype != "void"
+                and target_decl.ctype != expected_ctype):
+            diags.append(Diag(
+                path, target_ln, "R012", "warn",
+                f"'{decl.name}'.{field} points at '{target_sym}' which "
+                f"is `{target_decl.ctype} *[]` — {field} expects "
+                f"`{expected_ctype} *[]`. Either retype the target or "
+                f"split it: slicing into a heterogeneous pointer array "
+                f"often hides a mis-split parent"
+            ))
+            return
         entries = entries_of(target_sym)
         if entries is None:
             return
         for ln, sym in entries:
-            target_decl = decls_by_name.get(sym)
-            if target_decl is None:
+            entry_decl = decls_by_name.get(sym)
+            if entry_decl is None:
                 continue
-            actual = target_decl.ctype
+            actual = entry_decl.ctype
             ok = (actual == expected_ctype)
             # Allow palette-typed (`u16`) blocks in palettes arrays. Allow
             # u8/Texture blocks in sprites arrays. Reject mismatch.

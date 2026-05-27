@@ -16,7 +16,7 @@ intern dNNessMain_attr+0x2A0 dNNessMain_animlock
 intern dNNessMain_attr+0x2D0 dNNessMain_hiddenparts
 intern dNNessMain_attr+0x2D4 dNNessMain_commonparts_container
 extern dNNessMain_attr+0x2D8 dNessShieldPose_data0 # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2DC dNessShieldPose_data0+0x500 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2DC dNessShieldPose_data0_end # -> file 337 (NessShieldPose)
 extern dNNessMain_attr+0x2E0 dNessShieldPose_script1_20+0x38 # -> file 337 (NessShieldPose)
 extern dNNessMain_attr+0x2E4 dNessShieldPose_script2_20+0x34 # -> file 337 (NessShieldPose)
 extern dNNessMain_attr+0x2E8 dNessShieldPose_script3_20+0x34 # -> file 337 (NessShieldPose)

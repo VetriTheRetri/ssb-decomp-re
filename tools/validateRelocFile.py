@@ -202,12 +202,15 @@ def parse_c(path):
     lines = _collapse_split_array_sizes(raw_lines)
     decls = []
     externs = {}  # name -> ctype
+    extern_ptr_syms = set()  # extern decls with `*` in their type
     i = 0
     while i < len(lines):
         line = lines[i]
         em = _EXTERN_DECL_RE.match(line)
         if em:
             externs[em.group("name")] = em.group("type").strip()
+            if em.group("stars") and "*" in em.group("stars"):
+                extern_ptr_syms.add(em.group("name"))
             i += 1
             continue
         dm = _DECL_HEAD_RE.match(line)
@@ -296,7 +299,7 @@ def parse_c(path):
             i = j
             continue
         i += 1
-    return decls, externs, lines
+    return decls, externs, lines, extern_ptr_syms
 
 
 _EXTERN_FID_RE = re.compile(
@@ -404,6 +407,58 @@ def is_aobjevent32_script(decl):
             continue
         return "aobjEvent32" in s
     return False
+
+
+def is_figatree_script(decl):
+    """Heuristic: a u16 array whose body holds `ftAnim*` macro calls.
+    These are figatree animation scripts (AObjEvent16-style); the runtime
+    walks them from any u16 offset, so mid-script entry-point references
+    in .reloc are legitimate."""
+    if decl.ctype != "u16" or decl.is_pointer:
+        return False
+    for _, txt in decl.body:
+        s = _strip_comments(txt).strip()
+        if not s or s == "};":
+            continue
+        return "ftAnim" in s
+    return False
+
+
+# Cache of {file_id: (script_syms_set, ptr_syms_set)} loaded from other
+# relocData files for cross-file extern-target validation.
+_extern_decl_cache = {}
+
+
+def _load_extern_decl_info(fid):
+    """Load `(script_syms, ptr_syms)` for relocData file `fid` from the
+    project tree, caching the result. Used by R004 to recognize extern
+    targets whose typing only lives in another file."""
+    if fid in _extern_decl_cache:
+        return _extern_decl_cache[fid]
+    # Resolve fid → src path.
+    target_path = None
+    src_dir = os.path.dirname(os.path.abspath(__file__))
+    # tools/validateRelocFile.py → ../src/relocData/<fid>_*.c
+    proj_root = os.path.dirname(src_dir)
+    reloc_dir = os.path.join(proj_root, "src", "relocData")
+    if os.path.isdir(reloc_dir):
+        for fname in os.listdir(reloc_dir):
+            if fname.startswith(f"{fid}_") and fname.endswith(".c"):
+                target_path = os.path.join(reloc_dir, fname)
+                break
+    if target_path is None:
+        _extern_decl_cache[fid] = (set(), set())
+        return _extern_decl_cache[fid]
+    try:
+        decls, _externs, _lines, _eptr = parse_c(target_path)
+    except Exception:
+        _extern_decl_cache[fid] = (set(), set())
+        return _extern_decl_cache[fid]
+    scripts = {d.name for d in decls
+               if is_aobjevent32_script(d) or is_figatree_script(d)}
+    ptrs = {d.name for d in decls if d.is_pointer}
+    _extern_decl_cache[fid] = (scripts, ptrs)
+    return _extern_decl_cache[fid]
 
 
 def last_aobjevent32_macro(decl):
@@ -685,6 +740,12 @@ def check_raw_hex_chunks(decl, path, diags, lines):
         return
     if decl.has_include():
         return
+    # Conventional fighter-main bitmask blocks: `<file>_animlock[2]` and
+    # `<file>_setup_parts[2]` are u32 bone/part bitmask + terminator pairs.
+    # The type is correct; the values are intentionally inline.
+    for suffix in ("_animlock", "_setup_parts"):
+        if decl.name.endswith(suffix):
+            return
     # Check raw source lines (including stripped `#` lines) for
     # preprocessor block markers — body member list excludes them.
     for k in range(decl.start_line, decl.end_line):
@@ -1045,7 +1106,7 @@ def check_reloc_target_form(reloc_path, entries, diags, type_by_sym,
     Pointer arrays (e.g. `MObjSub **arr[]`, `void *arr[]`) have a 4-byte
     element size regardless of the base ctype — landing on a 4-byte
     boundary in a pointer array is a clean element reference."""
-    for line_no, kind, ptr, target, _comment in entries:
+    for line_no, kind, ptr, target, comment in entries:
         # Raw 0xNNNN byte-offset target → very-likely chain hex.
         if re.match(r"^0x[0-9A-Fa-f]+$", target):
             diags.append(Diag(
@@ -1071,6 +1132,18 @@ def check_reloc_target_form(reloc_path, entries, diags, type_by_sym,
             elem_size = _TYPED_ELEMENT_SIZES.get(t)
             if elem_size and off % elem_size == 0:
                 continue
+            # Cross-file lookup: if this is an extern target with a
+            # `# -> file NNN` annotation, load that file's local
+            # script/ptr_sym info and re-check.
+            if kind == "extern" and comment:
+                fm = _EXTERN_FID_RE.search(comment)
+                if fm:
+                    fid = int(fm.group("fid"))
+                    ext_scripts, ext_ptrs = _load_extern_decl_info(fid)
+                    if sym in ext_scripts:
+                        continue
+                    if sym in ext_ptrs and off % 4 == 0:
+                        continue
             diags.append(Diag(
                 reloc_path, line_no, "R004", "warn",
                 f"reloc target '{target}' uses sym+offset form — split "
@@ -1251,7 +1324,7 @@ def find_c_path(arg):
 
 
 def validate(c_path, enabled_rules):
-    decls, externs, lines = parse_c(c_path)
+    decls, externs, lines, extern_ptr_syms = parse_c(c_path)
     reloc_path = c_path[:-2] + ".reloc"
     entries = parse_reloc(reloc_path)
     # Pre-compute set of decl names that are AObjEvent32 scripts (u32
@@ -1289,6 +1362,7 @@ def validate(c_path, enabled_rules):
         type_by_sym = {d.name: d.ctype for d in decls}
         type_by_sym.update(externs)  # extern type also helps
         ptr_syms = {d.name for d in decls if d.is_pointer}
+        ptr_syms |= extern_ptr_syms
         check_reloc_target_form(reloc_path, entries, diags, type_by_sym,
                                   script_syms, ptr_syms)
     if "R008" in enabled_rules:

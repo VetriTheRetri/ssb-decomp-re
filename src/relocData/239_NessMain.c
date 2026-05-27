@@ -3,11 +3,12 @@
 
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
+#include <wp/wptypes.h>
 
 extern u32 dNessMainMotion_0x0024[];
 extern DObjDesc dNessModel_JointTree[];
 extern DObjDesc dNessModel_JointTree_0x4FE8[];
-extern Vtx dNessModel_JointVerts_Vtx[];
+extern MObjSub **dNessModel_JointVerts_Vtx[];
 extern Gfx dNessModel_Joint_0x1AF8_DisplayList[];
 extern Gfx dNessModel_Joint_0x1B88_DisplayList[];
 extern Gfx dNessModel_Joint_0x20E8_DisplayList[];
@@ -15,6 +16,21 @@ extern Gfx dNessModel_Joint_0x4470_DisplayList[];
 extern Gfx dNessModel_Joint_0x44E8_DisplayList[];
 extern Gfx dNessModel_Joint_0x4A70_DisplayList[];
 extern DObjDesc dNessModel_PKThunderWaveDObjDesc[];
+extern Gfx dNessModel_DL_0x9CE0[];
+extern Gfx dNessModel_DL_0x9DB0[];
+extern Gfx dNessModel_DL_0xA120[];
+extern Gfx dNessModel_DL_0xA380[];
+extern Gfx dNessModel_DL_0xA490[];
+extern Gfx dNessModel_DL_0xA570[];
+extern Gfx dNessModel_DL_0xA650[];
+extern Gfx dNessModel_DL_0xA760[];
+extern Gfx dNessModel_DL_0xA870[];
+extern Gfx dNessModel_DL_0xA950[];
+extern void *dNessModel_gap_0x2B80[];
+extern void *dNessModel_gap_0x54B8[];
+extern MObjSub **dNessModel_Joint_0x0040_post_sub_0x658[3];
+extern Sprite dNessModel_Stock;
+extern Sprite dNessModel_FTEmblem;
 extern u8 dNessModel_gap_0x2C04_sub_0x1E8[];
 extern u8 dNessModel_gap_0x2C04_sub_0x20C[];
 extern u8 dNessModel_gap_0x2C04_sub_0x8A4[];
@@ -24,12 +40,12 @@ extern u8 dNessModel_gap_0x553C_sub_0x1614[];
 extern u8 dNessModel_gap_0x553C_sub_0x1854[];
 extern u8 dNessModel_gap_0x553C_sub_0x1F0[];
 extern u8 dNessModel_gap_0x553C_sub_0x25BC[];
-extern u8 dNessModel_gap_0x553C_sub_0x275C[];
+extern DObjDesc dNessModel_DObjDesc_0x7C98[3];
 extern u8 dNessModel_gap_0x553C_sub_0x27E4[];
 extern u8 dNessModel_gap_0x553C_sub_0x2834[];
 extern u8 dNessModel_gap_0x553C_sub_0x314[];
 extern u8 dNessModel_gap_0x553C_sub_0x348C[];
-extern u8 dNessModel_gap_0x553C_sub_0x3604[];
+extern DObjDLLink dNessModel_DLLink_0x8B40[2];
 extern u8 dNessModel_gap_0x553C_sub_0x464[];
 extern u8 dNessModel_gap_0x553C_sub_0x5E4[];
 extern u8 dNessModel_gap_0x553C_sub_0x734[];
@@ -42,40 +58,78 @@ extern u8 dNessModel_gap_0xC100_sub_0x58[];
 extern u8 dNessModel_gap_0xC100_sub_0x8[];
 extern u16 dNessModel_palette_0xC0E0[];
 extern DObjDesc dNessSpecial2_PsychicMagnetDObjDesc[];
+extern WPAttributes dNessSpecial1_PKFire_WeaponAttributes;
 
 /* Pre-attributes data (367 words, 0x05BC bytes) */
-/* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dNessMain_pre+0x0) */
-u32 dNessMain_file_handles[29] = {
+/* @ 0x0000, 12 bytes: 3 cross-file handle pointers (chain-rewritten). */
+void *dNessMain_file_handles[3] = {
 
-	(u32)&dNessMainMotion_0x0024, /* extern -> 0x0024 */
-	(u32)&dNessSpecial2_PsychicMagnetDObjDesc, /* extern -> 0x09A8 */
-	0x00030000, /* extern -> 0x0000 */
-	(u32)&dNessModel_gap_0x553C_sub_0x275C, /* extern -> 0x7C98 */
-	(u32)&dNessModel_gap_0x553C_sub_0x25BC, /* extern -> 0x7AF8 */
-	(u32)&dNessModel_gap_0x553C_sub_0x27E4, /* extern -> 0x7D20 */
-	(u32)&dNessModel_gap_0x553C_sub_0x2834, /* extern -> 0x7D70 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00640000,
-	0xFF9C0064,
-	0x00961900,
-	0x07818800,
-	0x0160B91C,
-	0x0C800000,
-	(u32)&dNessModel_gap_0x553C_sub_0x3604, /* extern -> 0x8B40 */
-	(u32)&dNessModel_gap_0x553C_sub_0x348C, /* extern -> 0x89C8 */
-	0x00000000,
-	0x00000000,
-	0x0000FF9C,
-	0x00000000,
-	0x00000000,
-	0x00320000,
-	0xFFCE0032,
-	0x00641900,
-	0x0780C800,
-	0x0140B984,
-	0x0C800000,
+	(void *)&dNessMainMotion_0x0024,
+	(void *)&dNessSpecial2_PsychicMagnetDObjDesc,
+	(void *)&dNessSpecial1_PKFire_WeaponAttributes,
+};
+
+/* @ 0x000C, 52 bytes: WPAttributes for PK Thunder head projectile.
+ * Referenced from wp/wpness/wpnesspkthunder.c via llNessMainPKThunderWeaponAttributes (0x0C). */
+WPAttributes dNessMain_PKThunderWeaponAttributes = {
+	(void *)&dNessModel_DObjDesc_0x7C98,                /* data */
+	(MObjSub ***)&dNessModel_gap_0x553C_sub_0x25BC,     /* p_mobjsubs */
+	(AObjEvent32 **)&dNessModel_gap_0x553C_sub_0x27E4,  /* anim_joints */
+	(AObjEvent32 ***)&dNessModel_gap_0x553C_sub_0x2834, /* p_matanim_joints */
+	{ { 0, 0, 0 }, { 0, 0, 0 } },                       /* attack_offsets */
+	100, 0, -100, 100,                                  /* map_coll top/center/bottom/width */
+	150, /* size             : 16 */
+	100, /* angle            : 10 */
+	30,  /* knockback_scale  : 10 */
+	6,   /* damage           :  8 */
+	2,   /* element          :  4 */
+	0,   /* knockback_weight : 10 */
+	1,   /* shield_damage    :  8 */
+	1,   /* attack_count     :  2 */
+	1,   /* can_setoff       :  1 */
+	23,  /* sfx              : 10 */
+	1,   /* priority         :  3 */
+	0,   /* can_rehit_item   :  1 */
+	0,   /* can_rehit_fighter:  1 */
+	0,   /* can_hop          :  1 */
+	1,   /* can_reflect      :  1 */
+	1,   /* can_absorb       :  1 */
+	1,   /* can_shield       :  1 */
+	0,   /* unused_0x2F_b6   :  1 */
+	0,   /* unused_0x2F_b7   :  1 */
+	50,  /* knockback_base   : 10 */
+};
+
+/* @ 0x0040, 52 bytes: WPAttributes for PK Thunder trail projectile (uses a
+ * display list rather than a DObjDesc).
+ * Referenced from wp/wpness/wpnesspkthunder.c via llNessMainPKThunderTrailWeaponAttributes (0x40). */
+WPAttributes dNessMain_PKThunderTrailWeaponAttributes = {
+	(void *)&dNessModel_DLLink_0x8B40,              /* data */
+	(MObjSub ***)&dNessModel_gap_0x553C_sub_0x348C, /* p_mobjsubs */
+	NULL,                                           /* anim_joints */
+	NULL,                                           /* p_matanim_joints */
+	{ { 0, -100, 0 }, { 0, 0, 0 } },                /* attack_offsets */
+	50, 0, -50, 50,                                 /* map_coll top/center/bottom/width */
+	100, /* size             : 16 */
+	100, /* angle            : 10 */
+	30,  /* knockback_scale  : 10 */
+	3,   /* damage           :  8 */
+	2,   /* element          :  4 */
+	0,   /* knockback_weight : 10 */
+	1,   /* shield_damage    :  8 */
+	1,   /* attack_count     :  2 */
+	0,   /* can_setoff       :  1 */
+	23,  /* sfx              : 10 */
+	1,   /* priority         :  3 */
+	1,   /* can_rehit_item   :  1 */
+	0,   /* can_rehit_fighter:  1 */
+	0,   /* can_hop          :  1 */
+	0,   /* can_reflect      :  1 */
+	0,   /* can_absorb       :  1 */
+	1,   /* can_shield       :  1 */
+	0,   /* unused_0x2F_b6   :  1 */
+	0,   /* unused_0x2F_b7   :  1 */
+	50,  /* knockback_base   : 10 */
 };
 
 /* @ 0x0074, 8 bytes: FTAttributes.animlock target (was dNessMain_pre+0x74) */
@@ -100,7 +154,7 @@ FTHiddenPart dNessMain_hiddenparts[4] = {
 
 /* @ 0x00C4, 80 bytes: FTAttributes.sub_0x0C4 target (was dNessMain_pre+0xC4) */
 FTModelPart dNessMain_modelparts_desc_0x0C4[4] = {
-	{ (Gfx*)&dNessModel_Joint_0x1B88_DisplayList, (MObjSub**)((u8*)dNessModel_JointVerts_Vtx + 0x698), (AObjEvent32**)&dNessModel_gap_0x2C04_sub_0x1E8, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_Joint_0x1B88_DisplayList, (MObjSub**)&dNessModel_Joint_0x0040_post_sub_0x658, (AObjEvent32**)&dNessModel_gap_0x2C04_sub_0x1E8, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_Joint_0x44E8_DisplayList, (MObjSub**)&dNessModel_gap_0x2C04_sub_0x8A4, (AObjEvent32**)&dNessModel_gap_0x553C_sub_0x1F0, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1224, NULL, NULL, NULL, 0x40 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1224, NULL, NULL, NULL, 0x40 },
@@ -155,8 +209,8 @@ FTTexturePart dNessMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 /* @ 0x02EC, 32 bytes: FTAttributes.commonparts_container target (was dNessMain_pre+0x2EC) */
 FTCommonPartContainer dNessMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dNessModel_JointTree, (MObjSub***)&dNessModel_JointVerts_Vtx, (AObjEvent32***)((u8*)dNessModel_JointTree + 0x4D0), 0x00 },
-		{ (DObjDesc*)&dNessModel_JointTree_0x4FE8, (MObjSub***)&dNessModel_gap_0x2C04_sub_0x20C, (AObjEvent32***)((u8*)dNessModel_JointTree_0x4FE8 + 0x4D8), 0x00 },
+		{ (DObjDesc*)&dNessModel_JointTree, (MObjSub***)&dNessModel_JointVerts_Vtx, (AObjEvent32***)&dNessModel_gap_0x2B80, 0x00 },
+		{ (DObjDesc*)&dNessModel_JointTree_0x4FE8, (MObjSub***)&dNessModel_gap_0x2C04_sub_0x20C, (AObjEvent32***)&dNessModel_gap_0x54B8[2], 0x00 },
 	},
 };
 
@@ -228,38 +282,38 @@ int *dNessMain_stock_luts[4] = {
 
 /* @ 0x04CC, 12 bytes: FTAttributes.sprites target (was dNessMain_pre+0x4CC) */
 FTSprites dNessMain_sprites = {
-	(Sprite*)((u8*)dNessModel_gap_0xC100_sub_0x58 + 0x30), /* stock_sprite */
+	&dNessModel_Stock, /* stock_sprite */
 	(int**)dNessMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dNessModel_gap_0xC100_sub_0x58 + 0x220), /* emblem */
+	&dNessModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x04D8, 216 bytes: FTAttributes.sub_0x4D8 target (was dNessMain_pre+0x4D8) */
 FTSkeleton dNessMain_skeleton_dls[27] = {
 	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0x2D0) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0x3A0) }, 0 },
+	{ { (Gfx*)dNessModel_DL_0x9CE0 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0x9DB0 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xA80) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0x970) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xB60) }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA490 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA380 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA570 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0x710) }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA120 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xA80) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0x970) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xC40) }, 0 },
-	{ { NULL }, 0 },
-	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xD50) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xE60) }, 0 },
-	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xF40) }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA490 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA380 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA650 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xD50) }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xE60) }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA760 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA870 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)((u8*)dNessModel_PKThunderWaveDObjDesc + 0xF40) }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA950 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA760 }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA870 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)dNessModel_DL_0xA950 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
 };
@@ -386,9 +440,4 @@ FTAttributes dNessMain_attr = {
 	17, /* joint_itemlight_id */
 	&dNessMain_sprites, /* sprites */
 	(FTSkeleton**)dNessMain_skeleton, /* skeleton */
-};
-
-/* Trailing padding (3 words) */
-u32 dNessMain_pad[3] = {
-	0x00000000, 0x00000000, 0x00000000,
 };

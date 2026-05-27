@@ -201,7 +201,7 @@ DObjDLLink dGRBonus2CaptainFile2_DLLink_0x0E90[] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: Layer0DObj @ 0xEA0 (12 entries) */
+/* DObjDesc: Layer0DObj @ 0xEA0 (11 entries: 10 real + sentinel) */
 DObjDesc dGRBonus2CaptainFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2CaptainFile2_DLLink_0x0E10, { 6450.0f, 6600.0f, -600.0f }, { 0.0f, 0.0f, 1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
@@ -214,13 +214,15 @@ DObjDesc dGRBonus2CaptainFile2_Layer0DObj[] = {
 	{ 1, (void*)dGRBonus2CaptainFile2_DLLink_0x0E80, { -1350.0f, -5100.0f, -600.0f }, { 0.0f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dGRBonus2CaptainFile2_DLLink_0x0E90, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 9.269115636346889e-30f, 1.5869173736100881e-37f }, { 8.08582969519334e-29f, 4.5559015672128453e-41f, 1.030432378623567e-34f }, { 1.5869173736100881e-37f, 0.0f, 4.5559015672128453e-41f } },
 };
 
-/* Raw data from file offset 0x10B0 to 0x4198 (12520 bytes) */
-/* gap sub-block @ 0x10B0 (was gap+0x0, 96 bytes) */
-u8 dGRBonus2CaptainFile2_gap_0x10B0[96] = {
-	#include <GRBonus2CaptainFile2/gap_0x10B0.data.inc.c>
+/* 12 bytes of zero padding to 16-byte-align the following Vtx pool. */
+PAD(12);
+
+/* Vtx @ 0x1090 (8 vertices) — referenced by DL_0x3530 gsSPVertex; absorbs the
+ * old gap_0x10B0 u8[96] which was actually the trailing 6 Vtx of this pool. */
+Vtx dGRBonus2CaptainFile2_Vtx_0x1090[8] = {
+	#include <GRBonus2CaptainFile2/Vtx_0x1090.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x1110 (was gap+0x60, 192 bytes) */
@@ -990,6 +992,5 @@ u32 dGRBonus2CaptainFile2_Layer1Anim_AnimJoint_0x4ED0[] = {
 	    0xC43B8000,  /* -750.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dGRBonus2CaptainFile2_Layer1Anim_AnimJoint_0x4ED0),
-	aobjEvent32End(),
 };
 

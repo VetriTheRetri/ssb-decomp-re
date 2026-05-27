@@ -5,11 +5,25 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
+
+extern MObjSub *dNessSpecial3_gap_0x0000_sub_0xF8[];
+extern AObjEvent32 *dNessSpecial3_gap_0x0000_sub_0x294[];
+extern u32 dNessSpecial3_gap_0x0000_sub_0x1E4[];
+extern u32 dNessSpecial3_gap_0x0000_sub_0x23C[];
+extern Gfx dNessSpecial3_PKFireDL_DisplayList[];
+extern Gfx dNessSpecial3_PKFireDL_post_post[];
+extern DObjDLLink dNessSpecial3_PKFireDL_DLLink_a[];
+extern DObjDLLink dNessSpecial3_PKFireDL_DLLink_b[];
+extern u32 dNessSpecial3_PKFireDL_script_a[];
+extern u32 dNessSpecial3_PKFireDL_script_b[];
 
 /* Raw data from file offset 0x0000 to 0x02A8 (680 bytes) */
-/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
-u8 dNessSpecial3_gap_0x0000[8] = {
-	#include <NessSpecial3/gap_0x0000.data.inc.c>
+/* @ 0x0000, 8 bytes: MObjSub** pointer array referenced by 240's PKFire
+ * WPAttributes.p_mobjsubs. */
+MObjSub **dNessSpecial3_gap_0x0000[2] = {
+	(MObjSub **)dNessSpecial3_gap_0x0000_sub_0xF8,
+	NULL,
 };
 
 /* MObjSub @ 0x8 */
@@ -95,24 +109,73 @@ Gfx dNessSpecial3_DL_0x0168[15] = {
 	#include <NessSpecial3/DL_0x0168.dl.inc.c>
 };
 
-/* gap sub-block @ 0x01E0 (was gap+0x1E0, 4 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0x1E0[4] = {
-	#include <NessSpecial3/gap_0x0000_sub_0x1E0.data.inc.c>
+/* @ 0x01E0, 4 bytes: AObjEvent32** pointer (single slot) referenced by 240's
+ * PKFire WPAttributes.p_matanim_joints — points to sub_0x294. */
+AObjEvent32 **dNessSpecial3_gap_0x0000_sub_0x1E0[1] = {
+	(AObjEvent32 **)dNessSpecial3_gap_0x0000_sub_0x294,
 };
 
-/* gap sub-block @ 0x01E4 (was gap+0x1E4, 88 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0x1E4[88] = {
-	#include <NessSpecial3/gap_0x0000_sub_0x1E4.data.inc.c>
+/* @ 0x01E4, 88 bytes: AObjEvent32 script (material anim joint). */
+u32 dNessSpecial3_gap_0x0000_sub_0x1E4[22] = {
+	aobjEvent32SetExtValBlock(0x018, 0),
+	    0xFFFF0000,  /* nanf */
+	    0xFFFF0000,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 6),
+	    0xFFFF2600,  /* nanf */
+	    0xFFFF2600,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 5),
+	    0xFFFFF300,  /* nanf */
+	    0xFFFFF300,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 1),
+	    0xFFFFF300,  /* nanf */
+	    0xFFFFF300,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 9),
+	    0xFFFF2600,  /* nanf */
+	    0xFFFF2600,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 10),
+	    0xFFFF0000,  /* nanf */
+	    0xFFFF0000,  /* nanf */
+	aobjEvent32End(),
 };
 
-/* gap sub-block @ 0x023C (was gap+0x23C, 88 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0x23C[88] = {
-	#include <NessSpecial3/gap_0x0000_sub_0x23C.data.inc.c>
+/* @ 0x023C, 88 bytes: AObjEvent32 script (material anim joint) — same payload
+ * as sub_0x1E4. */
+u32 dNessSpecial3_gap_0x0000_sub_0x23C[22] = {
+	aobjEvent32SetExtValBlock(0x018, 0),
+	    0xFFFF0000,  /* nanf */
+	    0xFFFF0000,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 6),
+	    0xFFFF2600,  /* nanf */
+	    0xFFFF2600,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 5),
+	    0xFFFFF300,  /* nanf */
+	    0xFFFFF300,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 1),
+	    0xFFFFFF00,  /* nanf */
+	    0xFFFFFF00,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 1),
+	    0xFFFFF300,  /* nanf */
+	    0xFFFFF300,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 9),
+	    0xFFFF2600,  /* nanf */
+	    0xFFFF2600,  /* nanf */
+	aobjEvent32SetExtValBlock(0x018, 10),
+	    0xFFFF0000,  /* nanf */
+	    0xFFFF0000,  /* nanf */
+	aobjEvent32End(),
 };
 
-/* gap sub-block @ 0x0294 (was gap+0x294, 20 bytes) */
-u8 dNessSpecial3_gap_0x0000_sub_0x294[20] = {
-	#include <NessSpecial3/gap_0x0000_sub_0x294.data.inc.c>
+/* @ 0x0294, 20 bytes: AObjEvent32* pointer array (5 slots) — first 2 point to
+ * the sub_0x1E4 / sub_0x23C scripts, rest are NULL. */
+AObjEvent32 *dNessSpecial3_gap_0x0000_sub_0x294[5] = {
+	(AObjEvent32 *)dNessSpecial3_gap_0x0000_sub_0x1E4,
+	(AObjEvent32 *)dNessSpecial3_gap_0x0000_sub_0x23C,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* Raw data from file offset 0x02A8 to 0x0330 (136 bytes) */
@@ -144,13 +207,15 @@ Vtx dNessSpecial3_Vtx_0x0830_Vtx[3] = {
 	#include <NessSpecial3/Vtx_0x0830.vtx.inc.c>
 };
 
-/* Raw data from file offset 0x0860 to 0x0868 (8 bytes) */
-u8 dNessSpecial3_gap_0x0860[8] = {
-	#include <NessSpecial3/gap_0x0860.data.inc.c>
+/* Vtx @ 0x860 (1 vertex) — absorbs the 8 bytes previously labeled gap_0x0860
+ * plus the 8 bytes the extractor had at the head of PKFireDL_DisplayList. */
+Vtx dNessSpecial3_Vtx_0x0860_Vtx[1] = {
+	#include <NessSpecial3/Vtx_0x0860.vtx.inc.c>
 };
 
-/* DisplayList: PKFireDL @ 0x868 (88 bytes) */
-Gfx dNessSpecial3_PKFireDL_DisplayList[11] = {
+/* DisplayList: PKFireDL @ 0x870 (80 bytes) — real DL starts here (after the
+ * Vtx at 0x860), with DLLink_a's dl now resolving to the bare symbol. */
+Gfx dNessSpecial3_PKFireDL_DisplayList[10] = {
 	#include <NessSpecial3/PKFireDL.dl.inc.c>
 };
 
@@ -164,7 +229,85 @@ Gfx dNessSpecial3_PKFireDL_post_post[17] = {
 	#include <NessSpecial3/PKFireDL_post_post.dl.inc.c>
 };
 
-/* Raw tail after 2 DL(s) @ 0x9E8 (440 bytes) */
-u8 dNessSpecial3_PKFireDL_post_post_post[440] = {
-	#include <NessSpecial3/PKFireDL_post_post_post.data.inc.c>
+/* ===== Trailing data tree @ 0x9E8 (440 bytes total) — typed sub-blocks ===== */
+
+/* @ 0x9E8: DObjDLLink array (1 entry + sentinel) calling into PKFireDL_DisplayList. */
+DObjDLLink dNessSpecial3_PKFireDL_DLLink_a[2] = {
+	{ 1, dNessSpecial3_PKFireDL_DisplayList },
+	{ 4, NULL },
 };
+
+/* @ 0x9F8: DObjDLLink array (1 entry + sentinel) calling into PKFireDL_post_post. */
+DObjDLLink dNessSpecial3_PKFireDL_DLLink_b[2] = {
+	{ 1, dNessSpecial3_PKFireDL_post_post },
+	{ 4, NULL },
+};
+
+/* @ 0xA08: DObjDesc array — 4 real entries + 1 sentinel (id=18). */
+DObjDesc dNessSpecial3_PKFireDL_DObjDescs[5] = {
+	{ 0,      (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1,      (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2,      (void *)dNessSpecial3_PKFireDL_DLLink_a, { 0.0f, 0.0f, 0.0f }, { 0.0f, 5.497787f, 0.0f }, { 1.03906202f, 0.96875f, 1.03906202f } },
+	{ 0x2002, (void *)dNessSpecial3_PKFireDL_DLLink_b, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.899999976f, 0.899999976f, 1.0f } },
+	{ 18,     (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* @ 0xAE4: 20 bytes of zero padding between the DObjDesc array and the script-pointer table. */
+PAD(20);
+
+/* @ 0xAF8: AObjEvent32* pointer table — entries are the two scripts below. */
+AObjEvent32 *dNessSpecial3_PKFireDL_script_ptrs[2] = {
+	(AObjEvent32 *)dNessSpecial3_PKFireDL_script_a,
+	(AObjEvent32 *)dNessSpecial3_PKFireDL_script_b,
+};
+
+/* @ 0xB00: AObjEvent32 script_a (84 bytes / 21 u32) — referenced by script_ptrs[0]. */
+u32 dNessSpecial3_PKFireDL_script_a[21] = {
+	aobjEvent32SetValAfter(0x005, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValBlock(0x002, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x002, 8),
+	    0x40C90FDB,  /* 6.2831854820251465f */
+	aobjEvent32SetVal0RateBlock(0x380, 4),
+	    0x3FA00000,  /* 1.25f */
+	    0x3F4CCCCD,  /* 0.800000011920929f */
+	    0x3FA00000,  /* 1.25f */
+	aobjEvent32SetVal0RateBlock(0x380, 4),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dNessSpecial3_PKFireDL_script_a,
+};
+
+/* @ 0xB54: AObjEvent32 script_b (72 bytes / 18 u32) — referenced by script_ptrs[1].
+ * Script ends with SetAnim loopback + 1 End; trailing 4 bytes are PAD. */
+u32 dNessSpecial3_PKFireDL_script_b[18] = {
+	aobjEvent32SetValBlock(0x180, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F4CCCCD,  /* 0.800000011920929f */
+	aobjEvent32SetValBlock(0x180, 2),
+	    0x3F4CCCCD,  /* 0.800000011920929f */
+	    0x3F99999A,  /* 1.2000000476837158f */
+	aobjEvent32SetValBlock(0x180, 2),
+	    0x3F800000,  /* 1.0f */
+	    0x3F4CCCCD,  /* 0.800000011920929f */
+	aobjEvent32SetValBlock(0x180, 2),
+	    0x3F4CCCCD,  /* 0.800000011920929f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValBlock(0x180, 2),
+	    0x3F800000,  /* 1.0f */
+	    0x3F4CCCCD,  /* 0.800000011920929f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dNessSpecial3_PKFireDL_script_b,
+	aobjEvent32End(),
+};
+
+PAD(4);
+

@@ -5,6 +5,9 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
+
+extern u32 dLinkSpecial3_BoomerangDL_post_anim_script[];
 
 PAD(8);
 
@@ -108,9 +111,24 @@ DObjDesc dLinkSpecial3_BoomerangDL_post_DObjDesc[] = {
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* Trailing 48-byte structure @ 0x6C0 — two chain pointers (at +0x4 and
- * +0x20) both target +0xC of this block. Purpose TBD (likely some
- * boomerang attachment metadata; possibly a small MObj-related struct). */
-u8 dLinkSpecial3_BoomerangDL_post_tail[48] = {
-	#include <LinkSpecial3/BoomerangDL_post_tail.data.inc.c>
+/* @ 0x6C0, 12 bytes: AObjEvent32* pointer array — slot [1] points at the
+ * accompanying anim_script. */
+AObjEvent32 *dLinkSpecial3_BoomerangDL_post_anim_ptrs[3] = {
+	NULL,
+	(AObjEvent32 *)dLinkSpecial3_BoomerangDL_post_anim_script,
+	NULL,
 };
+
+/* @ 0x6CC, 28 bytes: AObjEvent32 script — SetValBlock pair + SetAnim loopback. */
+u32 dLinkSpecial3_BoomerangDL_post_anim_script[7] = {
+	aobjEvent32SetValBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 6),
+	    0x40C90FDB,  /* 6.2831854820251465f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dLinkSpecial3_BoomerangDL_post_anim_script,
+	aobjEvent32End(),
+};
+
+/* @ 0x6E8: 8 bytes of trailing zero padding. */
+PAD(8);

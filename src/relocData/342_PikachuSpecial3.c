@@ -20,7 +20,7 @@ extern u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
 extern u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[];
 
 extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[];
-extern u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[];
+extern AObjEvent32* dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[];
 
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
@@ -51,15 +51,62 @@ Gfx dPikachuSpecial3_gap_0x0000_sub_0x270[29] = {
 
 PAD(8);
 
-/* gap sub-block @ 0x0360 (was gap+0x360, 4 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x360[4] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x360.data.inc.c>
+extern u32 dPikachuSpecial3_gap_0x0000_sub_0x364[];
+extern MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1350[];
+extern MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1358[];
+extern MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1360[];
+extern MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1368[];
+extern MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1370[];
+extern MObjSub *dPikachuSpecial3_gap_0x0000_sub_0x1378[];
+
+/* @ 0x360: single AObjEvent32* pointer to the script below. */
+AObjEvent32 *dPikachuSpecial3_gap_0x0000_sub_0x360[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_gap_0x0000_sub_0x364,
 };
 
-/* gap sub-block @ 0x0364 (was gap+0x364, 164 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x364[164] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x364.data.inc.c>
+/* @ 0x364: AObjEvent32 script (37 u32) — SetAnim self-loopback at +0x8C
+ * (followed by aobjEvent32End and 16 bytes of trailing zero pad). */
+u32 dPikachuSpecial3_gap_0x0000_sub_0x364[37] = {
+	aobjEvent32SetValAfter(0x004, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x380, 0),
+	    0x3F933332,  /* 1.1499998569488525f */
+	    0x3F933332,  /* 1.1499998569488525f */
+	    0x3F933332,  /* 1.1499998569488525f */
+	aobjEvent32SetValAfter(0x004, 3),
+	    0x3EB2B8C2,  /* 0.3490658402442932f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	    0x3FAF5C29,  /* 1.3700000047683716f */
+	aobjEvent32SetValAfter(0x004, 3),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	    0x3FAB990D,  /* 1.3406082391738892f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	    0x3F2B1785,  /* 0.6683276295661926f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F933332,  /* 1.1499998569488525f */
+	    0x3F933332,  /* 1.1499998569488525f */
+	    0x3F933332,  /* 1.1499998569488525f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_gap_0x0000_sub_0x364,
+	aobjEvent32End(),
 };
+
+PAD(16);
 
 /* @tex fmt=IA8 dim=32x32 */
 u8 dPikachuSpecial3_Tex_0x408[1032] = {
@@ -76,51 +123,59 @@ u8 dPikachuSpecial3_Tex_0xC18[1024] = {
 	#include <PikachuSpecial3/Tex_0xC18.tex.inc.c>
 };
 
-/* gap sub-block @ 0x1018 (was gap+0x1018, 32 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1018[32] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1018.data.inc.c>
+/* @ 0x1018: MObjSub** lookup table — 2 NULL slots + 6 pointers to per-frame
+ * MObjSub* tables (sub_0x1350..sub_0x1378). */
+MObjSub **dPikachuSpecial3_gap_0x0000_sub_0x1018[8] = {
+	NULL,
+	NULL,
+	dPikachuSpecial3_gap_0x0000_sub_0x1350,
+	dPikachuSpecial3_gap_0x0000_sub_0x1358,
+	dPikachuSpecial3_gap_0x0000_sub_0x1360,
+	dPikachuSpecial3_gap_0x0000_sub_0x1368,
+	dPikachuSpecial3_gap_0x0000_sub_0x1370,
+	dPikachuSpecial3_gap_0x0000_sub_0x1378,
 };
 
 /* u32 pointer array @ 0x1038 (3 entries) */
-u32 dPikachuSpecial3_gap_0x0000_sub_0x1038[3] = {
-	(u32)&dPikachuSpecial3_Tex_0xC18,
-	(u32)&dPikachuSpecial3_Tex_0x810,
-	(u32)&dPikachuSpecial3_Tex_0x408,
+u8 *dPikachuSpecial3_gap_0x0000_sub_0x1038[3] = {
+	dPikachuSpecial3_Tex_0xC18,
+	dPikachuSpecial3_Tex_0x810,
+	dPikachuSpecial3_Tex_0x408,
 };
 
-/* u32 pointer array @ 0x1044 (3 entries) */
-u32 dPikachuSpecial3_gap_0x0000_sub_0x1044[3] = {
-	(u32)&dPikachuSpecial3_Tex_0xC18,
-	(u32)&dPikachuSpecial3_Tex_0x810,
-	(u32)&dPikachuSpecial3_Tex_0x408,
+/* u8* pointer array @ 0x1044 (3 entries) */
+u8 *dPikachuSpecial3_gap_0x0000_sub_0x1044[3] = {
+	dPikachuSpecial3_Tex_0xC18,
+	dPikachuSpecial3_Tex_0x810,
+	dPikachuSpecial3_Tex_0x408,
 };
 
-/* u32 pointer array @ 0x1050 (3 entries) */
-u32 dPikachuSpecial3_gap_0x0000_sub_0x1050[3] = {
-	(u32)&dPikachuSpecial3_Tex_0xC18,
-	0x00000000,
-	(u32)&dPikachuSpecial3_Tex_0x408,
+/* u8* pointer array @ 0x1050 (3 entries) */
+u8 *dPikachuSpecial3_gap_0x0000_sub_0x1050[3] = {
+	dPikachuSpecial3_Tex_0xC18,
+	NULL,
+	dPikachuSpecial3_Tex_0x408,
 };
 
-/* u32 pointer array @ 0x105C (3 entries) */
-u32 dPikachuSpecial3_gap_0x0000_sub_0x105C[3] = {
-	(u32)&dPikachuSpecial3_Tex_0xC18,
-	(u32)&dPikachuSpecial3_Tex_0x810,
-	(u32)&dPikachuSpecial3_Tex_0x408,
+/* u8* pointer array @ 0x105C (3 entries) */
+u8 *dPikachuSpecial3_gap_0x0000_sub_0x105C[3] = {
+	dPikachuSpecial3_Tex_0xC18,
+	dPikachuSpecial3_Tex_0x810,
+	dPikachuSpecial3_Tex_0x408,
 };
 
-/* u32 pointer array @ 0x1068 (3 entries) */
-u32 dPikachuSpecial3_gap_0x0000_sub_0x1068[3] = {
-	(u32)&dPikachuSpecial3_Tex_0xC18,
-	(u32)&dPikachuSpecial3_Tex_0x810,
-	(u32)&dPikachuSpecial3_Tex_0x408,
+/* u8* pointer array @ 0x1068 (3 entries) */
+u8 *dPikachuSpecial3_gap_0x0000_sub_0x1068[3] = {
+	dPikachuSpecial3_Tex_0xC18,
+	dPikachuSpecial3_Tex_0x810,
+	dPikachuSpecial3_Tex_0x408,
 };
 
-/* u32 pointer array @ 0x1074 (3 entries) */
-u32 dPikachuSpecial3_gap_0x0000_sub_0x1074[3] = {
-	(u32)&dPikachuSpecial3_Tex_0xC18,
-	(u32)&dPikachuSpecial3_Tex_0x810,
-	(u32)&dPikachuSpecial3_Tex_0x408,
+/* u8* pointer array @ 0x1074 (3 entries) */
+u8 *dPikachuSpecial3_gap_0x0000_sub_0x1074[3] = {
+	dPikachuSpecial3_Tex_0xC18,
+	dPikachuSpecial3_Tex_0x810,
+	dPikachuSpecial3_Tex_0x408,
 };
 
 /* MObjSub @ 0x1080 */
@@ -400,39 +455,57 @@ Gfx dPikachuSpecial3_DL_0x1790[19] = {
 };
 
 /* gap sub-block @ 0x1828 (was gap+0x1828, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1828[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1828.data.inc.c>
+DObjDLLink dPikachuSpecial3_gap_0x0000_sub_0x1828[2] = {
+	{ 1, dPikachuSpecial3_DL_0x1490 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x1838 (was gap+0x1838, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1838[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1838.data.inc.c>
+DObjDLLink dPikachuSpecial3_gap_0x0000_sub_0x1838[2] = {
+	{ 1, dPikachuSpecial3_DL_0x1528 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x1848 (was gap+0x1848, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1848[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1848.data.inc.c>
+DObjDLLink dPikachuSpecial3_gap_0x0000_sub_0x1848[2] = {
+	{ 1, dPikachuSpecial3_DL_0x15C0 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x1858 (was gap+0x1858, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1858[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1858.data.inc.c>
+DObjDLLink dPikachuSpecial3_gap_0x0000_sub_0x1858[2] = {
+	{ 1, dPikachuSpecial3_DL_0x1660 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x1868 (was gap+0x1868, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1868[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1868.data.inc.c>
+DObjDLLink dPikachuSpecial3_gap_0x0000_sub_0x1868[2] = {
+	{ 1, dPikachuSpecial3_DL_0x16F8 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x1878 (was gap+0x1878, 16 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1878[16] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1878.data.inc.c>
+DObjDLLink dPikachuSpecial3_gap_0x0000_sub_0x1878[2] = {
+	{ 1, dPikachuSpecial3_DL_0x1790 },
+	{ 4, NULL },
 };
 
 /* gap sub-block @ 0x1888 (was gap+0x1888, 408 bytes) */
-u8 dPikachuSpecial3_gap_0x0000_sub_0x1888[408] = {
-	#include <PikachuSpecial3/gap_0x0000_sub_0x1888.data.inc.c>
+/* DObjDesc array @ 0x1888 — 8 real entries + 1 sentinel. Entries 2..7 point
+ * to the six DObjDLLink sub-blocks above (each wrapping one Gfx DL). */
+DObjDesc dPikachuSpecial3_gap_0x0000_sub_0x1888[9] = {
+	{  0, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{  1, (void *)0x00000000, { 600.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{  2, (void *)&dPikachuSpecial3_gap_0x0000_sub_0x1828, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.785398006f }, { 1.5f, 1.5f, 1.0f } },
+	{  2, (void *)&dPikachuSpecial3_gap_0x0000_sub_0x1838, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.261799008f },  { 1.5f, 1.5f, 1.0f } },
+	{  2, (void *)&dPikachuSpecial3_gap_0x0000_sub_0x1848, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.30899704f },   { 1.5f, 1.5f, 1.0f } },
+	{  2, (void *)&dPikachuSpecial3_gap_0x0000_sub_0x1858, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -1.30899704f },  { 1.5f, 1.5f, 1.0f } },
+	{  2, (void *)&dPikachuSpecial3_gap_0x0000_sub_0x1868, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.261799008f }, { 1.5f, 1.5f, 1.0f } },
+	{  2, (void *)&dPikachuSpecial3_gap_0x0000_sub_0x1878, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.785398006f },  { 1.5f, 1.5f, 1.0f } },
+	{ 18, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+
+PAD(12);
 
 /* Raw data from file offset 0x1A20 to 0x1AE0 (192 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -449,8 +522,8 @@ AObjEvent32 *dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[8] = {
 	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[] = {
-	    0x08080000,
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[9] = {
+	aobjEvent32SetVal(0x010, 0),
 	    0xC3C30000,
 	aobjEvent32SetValAfter(0x060, 0),
 	    0x00000000,
@@ -458,54 +531,54 @@ u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[] = {
 	aobjEvent32SetValBlock(0x010, 9),
 	    0x44160000,
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32SetValBlock(0x13A, 1680),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64[] = {
-	    0x1E010001,
-	    0x1E000004,
-	    0x1E010004,
-	    0x1C000000,
-	    0x06A20699,
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64[5] = {
+	aobjEvent32SetFlags(0x002, 1),
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 4),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A64,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78[] = {
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78[5] = {
 	aobjEvent32SetFlags(0x002, 3),
 	aobjEvent32SetFlags(0x000, 4),
 	aobjEvent32SetFlags(0x002, 2),
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32SetValBlock(0x14E, 1694),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A78,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C[] = {
-	    0x1E010005,
-	    0x1E000004,
-	    0x1E010000,
-	    0x1C000000,
-	    0x06AB06A3,
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C[5] = {
+	aobjEvent32SetFlags(0x002, 5),
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 0),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A8C,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0[] = {
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0[4] = {
 	aobjEvent32SetFlags(0x000, 4),
 	aobjEvent32SetFlags(0x002, 5),
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32SetValBlock(0x160, 1704),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AA0,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0[] = {
-	    0x1E010002,
-	    0x1E000004,
-	    0x1E010003,
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0[5] = {
+	aobjEvent32SetFlags(0x002, 2),
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 3),
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32SetValBlock(0x16A, 1708),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AB0,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[] = {
-	    0x1E010004,
-	    0x1E000004,
-	    0x1E010001,
-	    0x1C000000,
-	    0x06BA06B1,
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4[6] = {
+	aobjEvent32SetFlags(0x002, 4),
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 1),
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1AC4,
 	aobjEvent32End(),
 };
 
@@ -517,20 +590,143 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
+extern u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[];
+extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x120[];
+extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x124[];
+extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x128[];
+extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x12C[];
+extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x130[];
+extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x134[];
+
 AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x120),
-	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x124),
-	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x128),
-	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x12C),
-	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x130),
-	(AObjEvent32 *)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data + 0x134),
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x120,
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x124,
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x128,
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x12C,
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x130,
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x134,
 };
 
-u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[92] = {
-	#include <PikachuSpecial3/ThunderJoltBMatAnimJoint_MatAnimJoint_data.data.inc.c>
+/* Continuous AObjEvent32 script stream — 6 sub-scripts separated by SetAnim
+ * loopbacks at +0x34, +0x64, +0x84, +0xBC, +0xF4, +0x11C. Each is targeted
+ * by the corresponding pointer-table entry below. */
+/* 6 separate AObjEvent32 scripts, each ending with SetAnim loopback to its own start. */
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data[14] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x32400000,  /* 1.1175870895385742e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data,
 };
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x38[12] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x38,
+};
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x68[8] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 8),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x68,
+};
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x88[14] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 5),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x88,
+};
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0xC0[14] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0xB2D00000,  /* -2.421438694000244e-08f */
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0xC0,
+};
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0xF8[10] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0xF8,
+};
+
+/* @ +0x120..+0x137: pointer-table entries — 6 separate AObjEvent32 *[1] arrays
+ * (one per script-start) so each MatAnimJoint slot references a bare symbol. */
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x120[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data,
+};
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x124[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x38,
+};
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x128[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x68,
+};
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x12C[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x88,
+};
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x130[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0xC0,
+};
+AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x134[1] = {
+	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0xF8,
+};
+
+/* @ +0x138..+0x16F: PAD(16) + 16-color RGBA5551 palette + PAD(8) */
+PAD(16);
+
+u16 dPikachuSpecial3_ThunderJoltBMatAnimJoint_palette[16] = {
+	#include <PikachuSpecial3/ThunderJoltBMatAnimJoint_palette.palette.inc.c>
+};
+
+PAD(8);
 
 /* Palette: Lut_0x1C70 @ 0x1C70 (16 colors RGBA5551) */
 u16 dPikachuSpecial3_Lut_0x1C70_palette[16] = {
@@ -658,16 +854,15 @@ u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8[] = {
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint_0x22E8),
-	aobjEvent32End(),
 };
 
-PAD(8);
+PAD(12);
 
 /* Raw data from file offset 0x2350 to 0x2390 (64 bytes) */
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388,
 };
@@ -687,7 +882,7 @@ u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[] = {
 	(u32)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
 };
 
-u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[] = {
-	(u32)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
-	aobjEvent32End(),
+AObjEvent32* dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[] = {
+	(AObjEvent32*)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
+	NULL,
 };

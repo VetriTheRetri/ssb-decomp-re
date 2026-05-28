@@ -303,22 +303,21 @@ Gfx dStageCastleFile2_DL_0x1760[30] = {
 	#include <StageCastleFile2/DL_0x1760.dl.inc.c>
 };
 
-/* DObjDesc: Layer0DObj @ 0x1850 (2 entries) */
+/* DObjDesc: Layer0DObj @ 0x1850 (7 entries, terminated by { 18, ... } sentinel
+ * at +0xE8 = 0x1938; the 5 trailing entries were previously split off as
+ * `gap_0x18A8` but they form one continuous scene-graph walk). */
 DObjDesc dStageCastleFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageCastleFile2_DL_0x1190, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-};
-
-/* Raw data from file offset 0x18A8 to 0x2A08 (4448 bytes) */
-/* DObjDesc[5] @ 0x18A8 — scene-graph entries (entry 4 is the
- * { 18, NULL, ..., scale=0 } sentinel terminator). */
-DObjDesc dStageCastleFile2_gap_0x18A8[5] = {
+	/* +0x58 (file 0x18A8): continuation — scene-graph entries. */
 	{ 0x2001, (void*)dStageCastleFile2_DL_0x14E8, { 480.0f, 501.00003051757812f, -540.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 0x2001, (void*)dStageCastleFile2_DL_0x15D8, { -480.0f, 501.00003051757812f, -540.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageCastleFile2_DL_0x1698, { 0.0f, 1815.0f, -840.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageCastleFile2_DL_0x1760, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+
+/* Raw data from file offset 0x18A8 to 0x2A08 (4448 bytes) */
 PAD(12);
 
 /* gap sub-block @ 0x1990 (was gap+0xE8, 176 bytes) */

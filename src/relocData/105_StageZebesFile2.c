@@ -1602,7 +1602,9 @@ DObjDLLink dStageZebesFile2_gap_0x2BC0_sub_0x2EF0[2] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: Layer1DObj @ 0x5AC0 (10 entries) */
+/* DObjDesc: Layer1DObj @ 0x5AC0 (29 entries, terminated by { 18, ... } sentinel
+ * at +0x4D0 = 0x5FB8; the 19 trailing entries were previously split off as
+ * `gap_0x5C78` but they form one continuous scene-graph walk). */
 DObjDesc dStageZebesFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageZebesFile2_DLLink_0x5930, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1614,13 +1616,7 @@ DObjDesc dStageZebesFile2_Layer1DObj[] = {
 	{ 2, (void*)dStageZebesFile2_DLLink_0x5980, { -1692.0f, 576.2859497070312f, -462.0000915527344f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dStageZebesFile2_DLLink_0x5990, { -2502.0f, 666.2859497070312f, -462.0000915527344f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dStageZebesFile2_DLLink_0x59A0, { 1488.0f, -20.714149475097656f, -417.0000915527344f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-};
-
-/* Raw data from file offset 0x5C78 to 0x6160 (1256 bytes) */
-/* gap sub-block @ 0x5C78 (was gap+0x0, 836 bytes) */
-/* DObjDesc[19] @ 0x5C78 — scene graph for stage props (each entry's dl_list
- * is one of the 17 DObjDLLink[2] arrays above; last 2 entries have no DL). */
-DObjDesc dStageZebesFile2_gap_0x5C78[19] = {
+	/* +0x1B8 (file 0x5C78): continuation — scene graph for stage props. */
 	{ 8194, (void*)dStageZebesFile2_gap_0x2BC0_sub_0x2DF0, { -3.002701997756958f, 546.2862548828125f, -405.0009460449219f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.064810037612915f, 1.0f } },
 	{ 8194, (void*)dStageZebesFile2_gap_0x2BC0_sub_0x2E00, { -3.0000269412994385f, 570.000244140625f, -398.9993896484375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 8194, (void*)dStageZebesFile2_gap_0x2BC0_sub_0x2E10, { -3.002701997756958f, 312.2861328125f, -393.0008850097656f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1641,6 +1637,8 @@ DObjDesc dStageZebesFile2_gap_0x5C78[19] = {
 	{ 2, (void*)dStageZebesFile2_gap_0x2BC0_sub_0x2EF0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+
+/* Raw data from file offset 0x5C78 to 0x6160 (1256 bytes) */
 
 /* MPVertexData[26] @ 0x5FBC — vertex positions (MPGeometryData.vertex_data) */
 MPVertexData dStageZebesFile2_gap_0x5C78_sub_0x344[26] = {

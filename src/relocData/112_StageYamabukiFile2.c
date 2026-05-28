@@ -661,15 +661,14 @@ Gfx dStageYamabukiFile2_DL_0x4C50[129] = {
 	#include <StageYamabukiFile2/DL_0x4C50.dl.inc.c>
 };
 
-/* DObjDesc: Layer0DObj @ 0x5058 (3 entries) */
+/* DObjDesc: Layer0DObj @ 0x5058 (8 entries, terminated by { 18, ... } sentinel
+ * at +0x108 = 0x5160; the 5 trailing entries were previously split off as
+ * `gap_0x50DC` but they form one continuous scene-graph walk). */
 DObjDesc dStageYamabukiFile2_Layer0DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageYamabukiFile2_DL_0x45D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dStageYamabukiFile2_DL_0x4810, { -3002.714599609375f, 115.08750915527344f, -3241.796630859375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-};
-
-/* DObjDesc: gap_0x50DC @ 0x50DC (5 entries) */
-DObjDesc dStageYamabukiFile2_gap_0x50DC[5] = {
+	/* +0x84 (file 0x50DC): continuation. */
 	{ 32771, (void*)dStageYamabukiFile2_DL_0x4938, { 4.9857330322265625f, 3054.670166015625f, 13.561248779296875f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageYamabukiFile2_DL_0x49C0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 8194, (void*)dStageYamabukiFile2_DL_0x4BB8, { 923.3999633789062f, 1369.8443603515625f, -2440.9111328125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1055,14 +1054,13 @@ DObjDLLink dStageYamabukiFile2_gap_0x52D8_sub_0x1788[2] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: Layer1DObj @ 0x6A70 (2 entries) */
+/* DObjDesc: Layer1DObj @ 0x6A70 (10 entries, terminated by { 18, ... } sentinel
+ * at +0x158 = 0x6BC8; the 8 trailing entries were previously split off as
+ * `gap_0x6AC8` but they form one continuous scene-graph walk). */
 DObjDesc dStageYamabukiFile2_Layer1DObj[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageYamabukiFile2_DLLink_0x69F0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-};
-
-/* DObjDesc: gap_0x6AC8 @ 0x6AC8 (8 entries) */
-DObjDesc dStageYamabukiFile2_gap_0x6AC8[8] = {
+	/* +0x58 (file 0x6AC8): continuation. */
 	{ 8194, (void*)dStageYamabukiFile2_gap_0x52D8_sub_0x1728, { 1784.4000244140625f, 802.0511474609375f, -426.7783203125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 1740.0f, 360.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dStageYamabukiFile2_gap_0x52D8_sub_0x1738, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

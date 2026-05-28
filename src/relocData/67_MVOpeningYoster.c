@@ -1025,7 +1025,10 @@ Vtx dMVOpeningYoster_Vtx_0xB980_Vtx[1] = {
 	#include <MVOpeningYoster/Vtx_0xB980.vtx.inc.c>
 };
 
-/* DObjDesc: GroundDObjDesc @ 0xB990 (6 entries) */
+/* DObjDesc: GroundDObjDesc @ 0xB990 (34 entries, terminated by { 18, ... }
+ * sentinel at +0x5D8 = 0xBF68; the 28 trailing entries — formerly mis-labeled
+ * `NestDObjDesc` — are continuation of this same scene-graph walk. The actual
+ * llMVOpeningYosterNestDObjDesc symbol lives separately at file 0x9808.). */
 DObjDesc dMVOpeningYoster_GroundDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 160.8000030517578f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -1033,12 +1036,7 @@ DObjDesc dMVOpeningYoster_GroundDObjDesc[] = {
 	{ 2, (void*)dMVOpeningYoster_Vtx_0xB7F0_Vtx, { -542.4000244140625f, 707.1599731445312f, -639.0f }, { 0.0f, 0.0f, -3.1415929794311523f }, { 0.9094399809837341f, 0.9094399809837341f, 0.9094399809837341f } },
 	{ 2, (void*)dMVOpeningYoster_Vtx_0xB800_Vtx, { -379.8000183105469f, 839.7599487304688f, -753.5999145507812f }, { 0.0f, 0.0f, 1.3962630033493042f }, { 0.6299999952316284f, 0.6299999952316284f, 0.6299999952316284f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-};
-
-/* `llMVOpeningYosterNestDObjDesc` — 27-joint nest scene-graph tree.
- * Entries 0..26 each carry a Vtx pointer in `.dl`; entry 27 is the
- * `{ 18, NULL, … }` terminator. */
-DObjDesc dMVOpeningYoster_NestDObjDesc[28] = {
+	/* +0x108 (file 0xBA98): continuation — nest scene-graph subtree. */
 	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB810_Vtx, { 729.0f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB820_Vtx, { -729.00018f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB830_Vtx, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

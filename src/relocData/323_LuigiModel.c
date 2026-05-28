@@ -12,6 +12,13 @@ extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1D24[];
 extern Gfx dLuigiModel_DL_0x6C20[];
 extern u32 dLuigiModel_gap_0x4E8C_sub_0x328[];
 extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x37C[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x354[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x358[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x35C[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x364[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x380[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x388[];
+extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x38C[];
 
 extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x360[];
 extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x384[];
@@ -958,7 +965,11 @@ Gfx dLuigiModel_Joint_0x2380_DisplayList[18] = {
 	#include <LuigiModel/Joint_0x2380.dl.inc.c>
 };
 
-/* DObjDesc: JointTree @ 0x2410 (28 entries) */
+/* DObjDesc: JointTree @ 0x2410 (26 entries, 0x478 bytes — array always
+ * terminates at the `{ 18, ... }` sentinel; the 108 bytes that formerly
+ * looked like two trailing DObjDesc entries + `gap_0x28E0[5]` are slots
+ * 0..26 of the AObjEvent32 ** dispatch immediately following — see
+ * JointTree_post below). Same shape as JointTree_0x49E8 / JointTree_0x49E8_post. */
 DObjDesc dLuigiModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0001140000022132881f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -986,23 +997,51 @@ DObjDesc dLuigiModel_JointTree[] = {
 	{ 6, (void*)dLuigiModel_Joint_0x2380_DisplayList, { 0.0f, 9.999999974752427e-07f, -3.999999989900971e-06f }, { 0.1259080022573471f, 0.4220089912414551f, 0.19265399873256683f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 30.0f, 120.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 8.090984187375438e-33f }, { 0.0f, 8.139133170669088e-33f, 8.187282153962739e-33f }, { 8.28357938586607e-33f, 0.0f, 8.3798766177694e-33f } },
-	{ 0, (void *)dLuigiModel_gap_0x28E0_sub_0x37C, { 8.476178257776547e-33f, 8.620623738289559e-33f, 0.0f }, { 0.0f, 8.66877272158321e-33f, 8.861366450705902e-33f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* AObjEvent32 ** dispatch table @ file 0x2888 (108 bytes, 27 slots).
+ * Lives immediately after JointTree's 26-entry DObjDesc array (which ends
+ * at +0x478) and folds in what was previously typed as the 20-byte
+ * `gap_0x28E0[5]` AObjEvent32* table (slots 22..26). All 12 chain pointers
+ * are declared in the .reloc so fixRelocChain rebuilds the chain encoding.
+ * Same shape as MarioModel's JointTree_post / LuigiModel's JointTree_0x49E8_post. */
+AObjEvent32 **dLuigiModel_JointTree_post[27] = {
+	NULL, NULL, NULL, NULL,
+	dLuigiModel_gap_0x28E0_sub_0x354,                    /* +0x10, slot 4 */
+	NULL,
+	dLuigiModel_gap_0x28E0_sub_0x358,                    /* +0x18, slot 6 */
+	dLuigiModel_gap_0x28E0_sub_0x35C,                    /* +0x1C, slot 7 */
+	dLuigiModel_gap_0x28E0_sub_0x360,                    /* +0x20, slot 8 */
+	NULL,
+	dLuigiModel_gap_0x28E0_sub_0x364,                    /* +0x28, slot 10 */
+	NULL,
+	dLuigiModel_gap_0x28E0_sub_0x37C,                    /* +0x30, slot 12 */
+	dLuigiModel_gap_0x28E0_sub_0x380,                    /* +0x34, slot 13 */
+	dLuigiModel_gap_0x28E0_sub_0x384,                    /* +0x38, slot 14 */
+	NULL, NULL,
+	dLuigiModel_gap_0x28E0_sub_0x388,                    /* +0x44, slot 17 */
+	dLuigiModel_gap_0x28E0_sub_0x38C,                    /* +0x48, slot 18 */
+	NULL, NULL, NULL,
+	dLuigiModel_gap_0x28E0_sub_0x390,                    /* +0x58, slot 22 (was gap_0x28E0+0x0) */
+	dLuigiModel_gap_0x28E0_sub_0x394,                    /* +0x5C, slot 23 (was gap_0x28E0+0x4) */
+	NULL, NULL, NULL,
 };
 
 /* Raw data from file offset 0x28E0 to 0x3590 (3248 bytes) */
-/* gap sub-block @ 0x28E0 (was gap+0x0, 20 bytes) */
-AObjEvent32 *dLuigiModel_gap_0x28E0[5] = {
-	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x390,
-	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x394,
-	NULL,
-	NULL,
-	NULL,
-};
 
-/* gap sub-block @ 0x28F4 (was gap+0x14, 40 bytes) */
-u16 dLuigiModel_gap_0x28E0_sub_0x14[20] = {
-	#include <LuigiModel/gap_0x28E0_sub_0x14.palette.inc.c>
+/* AObjEvent32 script @ 0x28F4 (was gap+0x14, 40 bytes — was typed u16[20]
+ * "palette"). ScaY-track keyframe sequence (flags=0x200). */
+u32 dLuigiModel_gap_0x28E0_sub_0x14[10] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x291C (was gap+0x3C, 56 bytes) */
@@ -1023,14 +1062,34 @@ u32 dLuigiModel_gap_0x28E0_sub_0x3C[14] = {
 	aobjEvent32End(),
 };
 
-/* gap sub-block @ 0x2954 (was gap+0x74, 40 bytes) */
-u16 dLuigiModel_gap_0x28E0_sub_0x74[20] = {
-	#include <LuigiModel/gap_0x28E0_sub_0x74.palette.inc.c>
+/* AObjEvent32 script @ 0x2954 (was gap+0x74, 40 bytes — was typed u16[20]
+ * "palette"). ExtVal-track color keyframe sequence (flags=0x001). */
+u32 dLuigiModel_gap_0x28E0_sub_0x74[10] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0x00B500FF,
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0x00D6FFFF,
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFADDEFF,
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
-/* gap sub-block @ 0x297C (was gap+0x9C, 40 bytes) */
-u16 dLuigiModel_gap_0x28E0_sub_0x9C[20] = {
-	#include <LuigiModel/gap_0x28E0_sub_0x9C.palette.inc.c>
+/* AObjEvent32 script @ 0x297C (was gap+0x9C, 40 bytes — was typed u16[20]
+ * "palette"). ExtVal-track color keyframe sequence (flags=0x001). */
+u32 dLuigiModel_gap_0x28E0_sub_0x9C[10] = {
+	aobjEvent32SetExtValAfterBlock(0x001, 0),
+	    0x00B500FF,
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0xFFFFFFFF,
+	aobjEvent32SetExtValAfterBlock(0x001, 1),
+	    0x00D6FFFF,
+	aobjEvent32SetExtValAfter(0x001, 1),
+	    0xFFADDEFF,
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x29A4 (was gap+0xC4, 112 bytes) */
@@ -1236,18 +1295,18 @@ u32 dLuigiModel_gap_0x28E0_sub_0x32C[10] = {
 };
 
 /* gap sub-block @ 0x2C34 (was gap+0x354, 4 bytes) */
-u16 *dLuigiModel_gap_0x28E0_sub_0x354[1] = {
-	(u16 *)dLuigiModel_gap_0x28E0_sub_0x14,
+AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x354[1] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x14,
 };
 
 /* gap sub-block @ 0x2C38 (was gap+0x358, 4 bytes) */
-u16 *dLuigiModel_gap_0x28E0_sub_0x358[1] = {
-	(u16 *)dLuigiModel_gap_0x28E0_sub_0x9C,
+AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x358[1] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x9C,
 };
 
 /* gap sub-block @ 0x2C3C (was gap+0x35C, 4 bytes) */
-u16 *dLuigiModel_gap_0x28E0_sub_0x35C[1] = {
-	(u16 *)dLuigiModel_gap_0x28E0_sub_0x74,
+AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x35C[1] = {
+	(AObjEvent32 *)dLuigiModel_gap_0x28E0_sub_0x74,
 };
 
 /* gap sub-block @ 0x2C40 (was gap+0x360, 4 bytes) */

@@ -4500,15 +4500,14 @@ DObjDLLink dMVCommon_gap_0x204F8_sub_0x1F38[] = {
 	{ 4, NULL },
 };
 
-/* DObjDesc: RoomDeskGroundDObjDesc @ 0x22440 (3 entries) */
+/* DObjDesc: RoomDeskGroundDObjDesc @ 0x22440 (9 entries, terminated by { 18, ... }
+ * sentinel at +0x188 = 0x225C8; the 6 trailing entries were previously split off
+ * as `gap_0x224C4` but they form one continuous scene-graph walk). */
 DObjDesc dMVCommon_RoomDeskGroundDObjDesc[] = {
 	{ 0, (void*)dMVCommon_DLLink_0x223B8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dMVCommon_DLLink_0x223C8, { 371.76104736328125f, 2151.7734375f, -4845.66650390625f }, { 0.0f, 0.0f, 0.6999989748001099f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dMVCommon_gap_0x204F8_sub_0x1EE0, { 524.3055419921875f, 1936.9608154296875f, -4229.2109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-};
-
-/* DObjDesc @ 0x224C4 (6 entries; continuation of RoomDeskGroundDObjDesc) */
-DObjDesc dMVCommon_gap_0x224C4[] = {
+	/* +0x84 (file 0x224C4): continuation. */
 	{ 0x2002, (void*)dMVCommon_gap_0x204F8_sub_0x1EF8, { -658.76171875f, 345.0677490234375f, 206.84234619140625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_gap_0x204F8_sub_0x1F08, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMVCommon_gap_0x204F8_sub_0x1F18, { 1713.91162109375f, 8.938522338867188f, 572.97412109375f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },

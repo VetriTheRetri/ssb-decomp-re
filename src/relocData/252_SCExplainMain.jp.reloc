@@ -23,6 +23,5 @@ extern dSCExplainMain_ExplainPhase_0x1404+0x2C8 dSCExplainGraphics_JPText19  # -
 extern dSCExplainMain_ExplainPhase_0x1404+0x2F4 dSCExplainGraphics_JPText20  # -> file 173 (SCExplainGraphics)
 extern dSCExplainMain_ExplainPhase_0x1404+0x320 dSCExplainGraphics_JPText21  # -> file 173 (SCExplainGraphics)
 extern dSCExplainMain_ExplainPhase_0x1404+0x34C dSCExplainGraphics_JPText22  # -> file 173 (SCExplainGraphics)
-# Phase 20/21: target lands inside a JPText texture (no Sprite struct head)
-extern dSCExplainMain_ExplainPhase_0x1404+0x378 dSCExplainGraphics_JPText6_tex+0xF8  # -> file 173 (SCExplainGraphics)
-extern dSCExplainMain_ExplainPhase_0x1404+0x3A4 dSCExplainGraphics_JPText7_tex+0x164  # -> file 173 (SCExplainGraphics)
+extern dSCExplainMain_ExplainPhase_0x1404+0x378 dSCExplainGraphics_JPText5  # -> file 173 (SCExplainGraphics)
+extern dSCExplainMain_ExplainPhase_0x1404+0x3A4 dSCExplainGraphics_JPText6  # -> file 173 (SCExplainGraphics)

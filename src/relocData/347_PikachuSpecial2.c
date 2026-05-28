@@ -48,7 +48,7 @@ u8 dPikachuSpecial2_Tex_0x440[512] = {
  * The real MObjSub data starts at +0x18 (dPikachuSpecial2_UnkMObjSub_MObjSub_real below). */
 MObjSub **dPikachuSpecial2_UnkMObjSub_MObjSub[2] = {
 	NULL,
-	NULL,
+	(MObjSub **)dPikachuSpecial2_gap_0x06B8_sub_0x18,
 };
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -153,58 +153,78 @@ u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898[] = {
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dPikachuSpecial2_UnkAnimJoint_AnimJoint_0x898),
-	aobjEvent32End(),
 };
 
-PAD(4);
+PAD(8);
 
-/* Raw data from file offset 0x0900 to 0x0968 (104 bytes) */
-u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[26] = {
-	aobjEvent32End(),
-	aobjEvent32Jump(0x14008000),
-	aobjEvent32End(),
+/* UnkMatAnimJoint @ 0x900 — material-anim-joints table for the
+ * ThunderShock effect. Same shape as NessModel's PKThunderWave:
+ *   - head AObjEvent32 *[2] (8B) — entry [1] → inner table
+ *   - script body (72B) with SetValAfterBlock... + SetAnim loop
+ *   - inner AObjEvent32 *[1] (4B) — entry [0] → script
+ *   - PAD(20)
+ * Was originally one opaque `u32[26]` block which decoded as 7
+ * spurious aobjEvent32End() calls (the chain-pointer slots at
+ * +0x4 / +0x4C / +0x50 plus the trailing PAD(20) words). */
+extern u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_0x8[];
+extern AObjEvent32 *dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_inner_0x50[];
+
+AObjEvent32 *dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[2] = {
+	NULL,
+	(AObjEvent32 *)dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_inner_0x50,
+};
+
+/* The MAT anim script @ 0x908. Sets value tracks (likely material
+ * scroll U/V) over a sequence of frames, then loops back to start. */
+u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_0x8[18] = {
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x40000000,
+	    0x40000000,  /* 2.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x3F800000,
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 1),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x40000000,
+	    0x40000000,  /* 2.0f */
 	aobjEvent32SetValAfterBlock(0x001, 2),
-	    0x00000000,
+	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32Jump(0x04EB0242),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+	    (u32)dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_0x8,
 };
+
+/* Inner per-mobj AObjEvent32 *[1] for joint [1] (single mobj). */
+AObjEvent32 *dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_inner_0x50[1] = {
+	(AObjEvent32 *)dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_0x8,
+};
+
+PAD(20);
 
 /* Palette: Lut_0x0968 @ 0x968 (16 colors RGBA5551) */
 u16 dPikachuSpecial2_Lut_0x0968_palette[16] = {
 	#include <PikachuSpecial2/Lut_0x0968.palette.inc.c>
 };
 
-/* Raw data from file offset 0x0988 to 0x11A0 (2072 bytes) */
-/* gap sub-block @ 0x0988 (was gap+0x0, 8 bytes) */
-u8 dPikachuSpecial2_gap_0x0988[8] = {
-	#include <PikachuSpecial2/gap_0x0988.data.inc.c>
+PAD(8);
+
+/* Sprite textures @ 0x990 / 0xD98 — referenced by
+ * ThunderShockMObjSub_MObjSub_real.sprites. Each is a 32×32 IA8
+ * texture (1024B) with 8B trailing pad (1032B total). The DL at
+ * Joint_0x1598 loads them via gsDPLoadBlock(siz=16b, lrs=511) =
+ * 512 16-bit reads = 1024 bytes. Same shape as the per-frame sprite
+ * textures in fid 341 (Tex_0x8408 / Tex_0x8810 / etc.). */
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuSpecial2_Tex_0x0990[1032] = {
+	#include <PikachuSpecial2/Tex_0x0990.tex.inc.c>
 };
 
-/* gap sub-block @ 0x0990 (was gap+0x8, 1032 bytes) */
-u8 dPikachuSpecial2_gap_0x0988_sub_0x8[1032] = {
-	#include <PikachuSpecial2/gap_0x0988_sub_0x8.data.inc.c>
-};
-
-/* gap sub-block @ 0x0D98 (was gap+0x410, 1032 bytes) */
-u8 dPikachuSpecial2_gap_0x0988_sub_0x410[1032] = {
-	#include <PikachuSpecial2/gap_0x0988_sub_0x410.data.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dPikachuSpecial2_Tex_0x0D98[1032] = {
+	#include <PikachuSpecial2/Tex_0x0D98.tex.inc.c>
 };
 
 /* Raw data from file offset 0x11A0 to 0x13A0 (512 bytes) */
@@ -213,45 +233,61 @@ u8 dPikachuSpecial2_Tex_0x11A0[512] = {
 	#include <PikachuSpecial2/Tex_0x11A0.tex.inc.c>
 };
 
-/* MObjSub: ThunderShockMObjSub @ 0x13A0 */
-MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub[1] = {
+/* ThunderShockMObjSub @ 0x13A0 — was decoded as a single MObjSub[1]
+ * but actually a 3-part composite: 16B head pointer table + 8B
+ * sprite-pointer array + the real 120B MObjSub. The original split
+ * missed that the MObjSub starts at +0x18 of the umbrella name and
+ * extends 120 bytes past it (into what was called gap_0x1418). Same
+ * shape as dPikachuModel_ThunderTrailMObjSub_MObjSub in fid 341. */
+extern MObjSub *dPikachuSpecial2_gap_0x1418_sub_0x18[];
+void *dPikachuSpecial2_ThunderShockMObjSub_MObjSub[4] = {
+	NULL,
+	NULL,
+	NULL,
+	(void *)dPikachuSpecial2_gap_0x1418_sub_0x18,    /* post ptr → MObjSub*-list */
+};
+
+/* @ 0x13B0 — 2-entry sprite-pointer array referenced by MObjSub_real.sprites */
+u8 *dPikachuSpecial2_ThunderShockMObjSub_MObjSub_sprites[2] = {
+	dPikachuSpecial2_Tex_0x0D98,
+	dPikachuSpecial2_Tex_0x0990,
+};
+
+/* @ 0x13B8 — the real MObjSub (120 bytes, formerly split across the
+ * tail of `ThunderShockMObjSub_MObjSub` and `gap_0x1418`). */
+MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub_real[1] = {
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x04EC, 0x050C,
-		82641766,
-		5.619082541163537e-36f, 1.0789998175301091e-42f,
-		6.583672370270115e-36f, 2.938735877055719e-39f,
-		2.938780718606577e-39f, 0.0f,
-		(void**)0x00000000,
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x3F80,
-		0x0000, 0x3F80, 0x0000,
+		3, 2,
+		(void**)dPikachuSpecial2_ThunderShockMObjSub_MObjSub_sprites,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
 		0.0f, 1.0f,
-		0.0f, 1.478659247995565e-38f,
-		0x00200020,
-		{ { 0x00, 0x20, 0x00, 0x20 } },
+		(void**)0x00000000,
+		0x00A1,
+		3, 1,
+		0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00002005,
+		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
 		0x00, 0x00, { 0x00, 0x00 },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x20, 0x05 } },
-		-1, 0,
-		255, 8,
+		{ { 0x00, 0x00, 0x00, 0xFF } },
+		{ { 0x00, 0x00, 0x00, 0x08 } },
+		{ { 0xFF, 0xFF, 0xFF, 0x00 } },
+		{ { 0x80, 0x80, 0x80, 0x00 } },
+		0, 0,
+		0, 0,
 	}
 };
 
-/* Raw data from file offset 0x1418 to 0x1438 (32 bytes) */
-/* gap sub-block @ 0x1418 (was gap+0x0, 24 bytes) */
-u8 dPikachuSpecial2_gap_0x1418[24] = {
-	#include <PikachuSpecial2/gap_0x1418.data.inc.c>
-};
-
-/* gap sub-block @ 0x1430 (was gap+0x18, 8 bytes) */
-u8 dPikachuSpecial2_gap_0x1418_sub_0x18[8] = {
-	#include <PikachuSpecial2/gap_0x1418_sub_0x18.data.inc.c>
+/* @ 0x1430 — 2-slot trailing MObjSub*-list (NULL-terminated). */
+MObjSub *dPikachuSpecial2_gap_0x1418_sub_0x18[2] = {
+	dPikachuSpecial2_ThunderShockMObjSub_MObjSub_real,
+	NULL,
 };
 
 /* Vtx: Vtx_0x1438 @ 0x1438 (4 vertices) */
@@ -565,7 +601,7 @@ PAD(4);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[];
-extern u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[];
+extern AObjEvent32 *dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[];
 
 AObjEvent32 *dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[4] = {
 	NULL,
@@ -588,8 +624,8 @@ u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[] = {
 	aobjEvent32End(),
 };
 
-u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[] = {
-	(u32)(dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90),
+AObjEvent32 *dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[] = {
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90,
 };
 
 /* Raw data from file offset 0x1AC0 to 0x1B10 (80 bytes) */
@@ -597,7 +633,8 @@ u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[];
-extern u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[];
+extern AObjEvent32 *dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[];
+extern AObjEvent32 *dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[];
 
 AObjEvent32 *dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[4] = {
 	NULL,
@@ -622,27 +659,26 @@ u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[] = {
 	aobjEvent32End(),
 };
 
-u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[] = {
-	(u32)(dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0),
-	aobjEvent32End(),
-};
-
-PAD(4);
-
-/* Raw data from file offset 0x1B10 to 0x1B60 (80 bytes) */
-/* Script-table split: leading chain-pointer table at the
- * start of the AnimJoint, followed by per-joint AObjEvent32
- * scripts. Forward decls so the table can reference them. */
-extern u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20[];
-extern u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[];
-
-AObjEvent32 *dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint[4] = {
+/* Combined inner-table @ 0x1B04 — was split into ThunderShock1's
+ * 8-byte inner (ptr + End), PAD(4), and the ThunderShock2MatAnimJoint
+ * head [4]. Treating the whole 28B region as one AObjEvent32 *[7]
+ * eliminates the dead PAD and the 3-NULL-leading ThunderShock2 head:
+ *   [0] @ 0x1B04 → ThunderShock1 script (_0x1AD0)
+ *   [1..5]       → NULL (was End + PAD + 3 leading NULLs of TS2 head)
+ *   [6] @ 0x1B1C → ThunderShock2 inner (_0x1B54), formerly TS2 head[3]
+ * The ThunderShock2MatAnimJoint_MatAnimJoint head symbol is gone; the
+ * TS2 script/_inner blocks keep their original names. */
+AObjEvent32 *dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[7] = {
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0,
+	NULL,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
 	(AObjEvent32 *)dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54,
 };
 
+/* Raw data from file offset 0x1B20 to 0x1B60 (64 bytes) — TS2 script + inner */
 u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20[] = {
 	aobjEvent32SetValAfterBlock(0x01F, 0),
 	    0x00000000,  /* 0.0f */
@@ -659,9 +695,9 @@ u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20[] = {
 	aobjEvent32End(),
 };
 
-u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[] = {
-	(u32)(dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20),
-	aobjEvent32End(),
+AObjEvent32 *dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[] = {
+	(AObjEvent32 *)dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20,
+	NULL,
 };
 
 PAD(4);

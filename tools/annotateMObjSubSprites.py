@@ -876,7 +876,7 @@ def scan_dl_annotations(text, blocks):
             "from_idx": 0,
             "from_sprites": None,
             "from_palettes": None,
-            "expected_bytes": (w * h * int(re.search(r"\d+$", fmt).group(0)) + 7) // 8,
+            "expected_bytes": (w * h * (int(re.search(r"\d+$", fmt).group(0)) if re.search(r"\d+$", fmt) else 4) + 7) // 8,
             "skip_apply": False,
         })
     return out
@@ -921,7 +921,10 @@ def find_merges(plan, blocks, dl_entries=None):
         truth_h = entry.get("truth_h") or 0
         if not fmt or truth_w <= 0 or truth_h <= 0:
             continue
-        bits = int(re.search(r"\d+$", fmt).group(0))
+        m_bits = re.search(r"\d+$", fmt)
+        if not m_bits:
+            continue
+        bits = int(m_bits.group(0))
         truth_bytes = (truth_w * truth_h * bits + 7) // 8
         size = entry.get("size") or 0
         # Only consider under-sized blocks (over-split). Allow up to 8

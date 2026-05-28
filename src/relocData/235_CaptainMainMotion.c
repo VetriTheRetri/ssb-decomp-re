@@ -7,98 +7,40 @@
 #include <gm/gmsound.h>
 #include <gm/gmdef.h>
 #include <ef/efdef.h>
+/* ftMotionCommand script (52 bytes, ends with End() at +0x30).
+ * Referenced from FTCommonMoveset (file 201) at gap_0x0928+0x24. */
 u32 dCaptainMainMotion_0x0000[] = {
 	0x001E0046,
-};
-
-u32 dCaptainMainMotion_0x0004[] = {
 	0x00280028,
-};
-
-u32 dCaptainMainMotion_0x0008[] = {
 	0x006400FA,
-};
-
-u32 dCaptainMainMotion_0x000C[] = {
 	0x005000D2,
-};
-
-u32 dCaptainMainMotion_0x0010[] = {
 	0x001E0046,
-};
-
-u32 dCaptainMainMotion_0x0014[] = {
 	0x006400A0,
-};
-
-u32 dCaptainMainMotion_0x0018[] = {
 	0x0000006E,
-};
-
-u32 dCaptainMainMotion_0x001C[] = {
 	0x005000D2,
-};
-
-u32 dCaptainMainMotion_0x0020[] = {
 	0x00140064,
-};
-
-u32 dCaptainMainMotion_0x0024[] = {
 	0xFFF60050,
 	0x00140064,
-};
-
-u32 dCaptainMainMotion_0x002C[] = {
 	0x001E0046,
-};
-
-u32 dCaptainMainMotion_0x0030[] = {
 	ftMotionCommandEnd(),
 };
 
+/* ftMotionCommand script (32 bytes, ends with End() at +0x1C). */
 u32 dCaptainMainMotion_0x0034[] = {
 	0x001E0046,
-};
-
-u32 dCaptainMainMotion_0x0038[] = {
 	0x001E0046,
-};
-
-u32 dCaptainMainMotion_0x003C[] = {
 	0x00280028,
-};
-
-u32 dCaptainMainMotion_0x0040[] = {
 	0x00780104,
-};
-
-u32 dCaptainMainMotion_0x0044[] = {
 	0x005000D2,
-};
-
-u32 dCaptainMainMotion_0x0048[] = {
 	0x001E0046,
-};
-
-u32 dCaptainMainMotion_0x004C[] = {
 	0x006400A0,
-};
-
-u32 dCaptainMainMotion_0x0050[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dCaptainMainMotion_0x0054[] = {
-	0x005000D2,
-};
-
-u32 dCaptainMainMotion_0x0058[] = {
-	0x00140064,
-};
-
-u32 dCaptainMainMotion_0x005C[] = {
-	0xFFF60050,
-	0x00140064,
+/* Parameter table (16 bytes, 4 u32 — preceding the externally-referenced
+ * dCaptainMainMotion_0x0064 script start). */
+u32 dCaptainMainMotion_0x0054[4] = {
+	#include <CaptainMainMotion/dCaptainMainMotion_0x0054.data.inc.c>
 };
 
 u32 dCaptainMainMotion_0x0064[] = {

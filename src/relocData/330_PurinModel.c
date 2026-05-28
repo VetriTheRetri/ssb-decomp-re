@@ -2529,22 +2529,18 @@ u8 dPurinModel_Tex_0x6A98[40] = {
 	#include <PurinModel/Tex_0x6A98.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dPurinModel_Tex_0x6AC0[560] = {
 	#include <PurinModel/Tex_0x6AC0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dPurinModel_Tex_0x6CF0[560] = {
 	#include <PurinModel/Tex_0x6CF0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dPurinModel_Tex_0x6F20[560] = {
 	#include <PurinModel/Tex_0x6F20.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dPurinModel_Tex_0x7150[520] = {
 	#include <PurinModel/Tex_0x7150.tex.inc.c>
 };
@@ -2553,10 +2549,49 @@ u8 dPurinModel_Tex_0x7358[40] = {
 	#include <PurinModel/Tex_0x7358.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dPurinModel_Tex_0x7380[520] = {
 	#include <PurinModel/Tex_0x7380.tex.inc.c>
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 u16 dPurinModel_palette_0x7588[16] = {
 	#include <PurinModel/palette_0x7588.palette.inc.c>
@@ -2589,10 +2624,12 @@ u8 dPurinModel_Tex_0x7650[136] = {
 	#include <PurinModel/Tex_0x7650.tex.inc.c>
 };
 
+/* @tex fmt=RGBA16 dim=16x21 */
 u8 dPurinModel_Tex_0x76D8[680] = {
 	#include <PurinModel/Tex_0x76D8.tex.inc.c>
 };
 
+/* @tex fmt=RGBA16 dim=16x8 */
 u8 dPurinModel_Tex_0x7980[264] = {
 	#include <PurinModel/Tex_0x7980.tex.inc.c>
 };

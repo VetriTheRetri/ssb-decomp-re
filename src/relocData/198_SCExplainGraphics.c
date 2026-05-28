@@ -279,15 +279,15 @@ u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[] = {
 };
 
 PAD(8);
-/* @tex fmt=I4 */
+/* @tex fmt=I4 dim=32x32 */
 u8 dSCExplainGraphics_Tex_0x5488[520] = {
 	#include <SCExplainGraphics/Tex_0x5488.tex.inc.c>
 };
-/* @tex fmt=I4 */
+/* @tex fmt=I4 dim=32x32 */
 u8 dSCExplainGraphics_Tex_0x5690[520] = {
 	#include <SCExplainGraphics/Tex_0x5690.tex.inc.c>
 };
-/* @tex fmt=I4 */
+/* @tex fmt=I4 dim=32x32 */
 u8 dSCExplainGraphics_Tex_0x5898[512] = {
 	#include <SCExplainGraphics/Tex_0x5898.tex.inc.c>
 };

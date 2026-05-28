@@ -7257,7 +7257,7 @@ u8 dKirbyModel_Tex_0x1AD20[176] = {
 };
 
 /* gap sub-block @ 0x1ADD0 (was gap+0xAD4, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 lut=dKirbyModel_gap_0x1A2FC_sub_0x1E54 */
 u8 dKirbyModel_Tex_0x1ADD0[520] = {
 	#include <KirbyModel/Tex_0x1ADD0.tex.inc.c>
 };
@@ -7483,7 +7483,7 @@ u16 dKirbyModel_palette_0x1E7C[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x1C1A0 (was gap+0x1EA4, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 lut=dKirbyModel_gap_0x1A2FC_sub_0x2C3C */
 u8 dKirbyModel_Tex_0x1C1A0[520] = {
 	#include <KirbyModel/Tex_0x1C1A0.tex.inc.c>
 };
@@ -7529,25 +7529,25 @@ u16 dKirbyModel_palette_0x237C[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x1C6A0 (was gap+0x23A4, 560 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x35 lut=dKirbyModel_gap_0x1A2FC_sub_0x1E04 */
 u8 dKirbyModel_Tex_0x1C6A0[560] = {
 	#include <KirbyModel/Tex_0x1C6A0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1C8D0 (was gap+0x25D4, 560 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x35 lut=dKirbyModel_gap_0x1A2FC_sub_0x1DDC */
 u8 dKirbyModel_Tex_0x1C8D0[560] = {
 	#include <KirbyModel/Tex_0x1C8D0.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1CB00 (was gap+0x2804, 560 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x35 */
 u8 dKirbyModel_Tex_0x1CB00[560] = {
 	#include <KirbyModel/Tex_0x1CB00.tex.inc.c>
 };
 
 /* gap sub-block @ 0x1CD30 (was gap+0x2A34, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 lut=dKirbyModel_gap_0x1A2FC_sub_0x1E2C */
 u8 dKirbyModel_Tex_0x1CD30[520] = {
 	#include <KirbyModel/Tex_0x1CD30.tex.inc.c>
 };
@@ -7559,7 +7559,7 @@ u16 dKirbyModel_gap_0x1A2FC_sub_0x2C3C[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x1CF60 (was gap+0x2C64, 520 bytes) */
-/* @tex */
+/* @tex fmt=CI4 dim=32x32 lut=dKirbyModel_gap_0x1A2FC_sub_0x2C3C */
 u8 dKirbyModel_Tex_0x1CF60[520] = {
 	#include <KirbyModel/Tex_0x1CF60.tex.inc.c>
 };

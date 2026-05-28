@@ -2769,6 +2769,7 @@ u8 dNessModel_Tex_0xAC28[40] = {
 	#include <NessModel/Tex_0xAC28.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x16 lut=dNessModel_Tex_0xAC28 */
 u8 dNessModel_Tex_0xAC50[136] = {
 	#include <NessModel/Tex_0xAC50.tex.inc.c>
 };
@@ -2803,30 +2804,45 @@ u8 dNessModel_Tex_0xAF38[72] = {
 	#include <NessModel/Tex_0xAF38.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dNessModel_Tex_0xAF80[520] = {
 	#include <NessModel/Tex_0xAF80.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dNessModel_Tex_0xB188[520] = {
 	#include <NessModel/Tex_0xB188.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dNessModel_Tex_0xB390[520] = {
 	#include <NessModel/Tex_0xB390.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dNessModel_Tex_0xB598[520] = {
 	#include <NessModel/Tex_0xB598.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x32 */
 u8 dNessModel_Tex_0xB7A0[520] = {
 	#include <NessModel/Tex_0xB7A0.tex.inc.c>
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Texture data @ 0xB9A8 (72 bytes) */
 /* @tex fmt=CI4 dim=16x8 lut=dNessModel_Lut_0xC060_palette */
@@ -2851,6 +2867,7 @@ u8 dNessModel_Tex_0xBB20[40] = {
 	#include <NessModel/Tex_0xBB20.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x32 lut=dNessModel_Tex_0xBB20 */
 u8 dNessModel_Tex_0xBB48[520] = {
 	#include <NessModel/Tex_0xBB48.tex.inc.c>
 };
@@ -2882,6 +2899,7 @@ u8 dNessModel_Tex_0xBE30[40] = {
 	#include <NessModel/Tex_0xBE30.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x32 lut=dNessModel_Tex_0xBE30 */
 u8 dNessModel_Tex_0xBE58[520] = {
 	#include <NessModel/Tex_0xBE58.tex.inc.c>
 };

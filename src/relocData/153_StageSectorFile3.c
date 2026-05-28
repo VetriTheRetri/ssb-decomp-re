@@ -129,8 +129,7 @@ extern u32 dStageSectorFile3_Sub_0x1B34[17];
 extern AObjEvent32 *dStageSectorFile3_Sub_0x1B78[3];
 extern u32 dStageSectorFile3_Sub_0x1B84[24];
 extern AObjEvent32 *dStageSectorFile3_Sub_0x1BE4[3];
-extern AObjEvent32 *dStageSectorFile3_Sub_0x1BF0[1];
-extern u32 dStageSectorFile3_Sub_0x1BF4[23];
+extern Vtx dStageSectorFile3_Sub_0x1BF0[6];
 extern Gfx dStageSectorFile3_AnimJoint_0x1C50[27];
 extern AObjEvent32 *dStageSectorFile3_Sub_0x1D28[3];
 extern u32 dStageSectorFile3_Sub_0x1D34[5];
@@ -1281,34 +1280,11 @@ AObjEvent32 *dStageSectorFile3_Sub_0x1BE4[3] = {
 	NULL,
 };
 
-AObjEvent32 *dStageSectorFile3_Sub_0x1BF0[1] = {
-	NULL,
-};
-
-u32 dStageSectorFile3_Sub_0x1BF4[23] = {
-	    0x02390000,
-	    0x01FD01FE,
-	    0xFFFFFF00,
-	    0x00380000,
-	    0x01FF0000,
-	    0x01FD0000,
-	    0xFFFFFF00,
-	    0x00000023,
-	    0x017F0000,
-	    0x01E001DC,
-	    0xFFFFFF00,
-	    0x0000FFDC,
-	    0x017F0000,
-	    0x01E001DC,
-	    0xFFFFFF00,
-	    0x00000000,
-	    0xFDCC0000,
-	    0x00000000,
-	    0xFFFFFF00,
-	    0xFFC80000,
-	    0x01FF0000,
-	    0x000001FF,
-	    0xFFFFFF00,
+/* Vtx[6] @ 0x1BF0 (96 bytes) — referenced by gsSPVertex at
+ * AnimJoint_0x1C50+0x90 (chain pointer at +0x94 → Sub_0x1BF0). Was
+ * previously split as `Sub_0x1BF0` (NULL ptr) + `Sub_0x1BF4` (raw u32[23]). */
+Vtx dStageSectorFile3_Sub_0x1BF0[6] = {
+	#include <StageSectorFile3/Sub_0x1BF0.vtx.inc.c>
 };
 
 /* Gfx[27] @ 0x1C50 — ArwingLaser weapon DL referenced as WPAttributes.data

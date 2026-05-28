@@ -4789,6 +4789,7 @@ u8 dSamusModel_Tex_0xC408[520] = {
 	#include <SamusModel/Tex_0xC408.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xC610[520] = {
 	#include <SamusModel/Tex_0xC610.tex.inc.c>
 };
@@ -5007,17 +5008,14 @@ u8 dSamusModel_Tex_0xDDE0[40] = {
 	#include <SamusModel/Tex_0xDDE0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x8 */
 u8 dSamusModel_Tex_0xDE08[112] = {
 	#include <SamusModel/Tex_0xDE08.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x8 */
 u8 dSamusModel_Tex_0xDE78[112] = {
 	#include <SamusModel/Tex_0xDE78.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x8 */
 u8 dSamusModel_Tex_0xDEE8[80] = {
 	#include <SamusModel/Tex_0xDEE8.tex.inc.c>
 };
@@ -5049,6 +5047,114 @@ u8 dSamusModel_Tex_0xE090[8] = {
 u8 dSamusModel_Tex_0xE098[304] = {
 	#include <SamusModel/Tex_0xE098.tex.inc.c>
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Texture data for sprite Stock */
 /* Split out from .sprite.c so the palette blocks can sit at

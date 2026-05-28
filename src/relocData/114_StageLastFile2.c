@@ -1245,10 +1245,10 @@ extern AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x1084[5];
 extern AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x1098[5];
 extern AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x10AC[2];
 extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x10B4[2];
-extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2364[1032];
-extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x276C[1032];
-extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2B74[1032];
-extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2F7C[1032];
+extern u8 dStageLastFile2_Tex_0x72B2[1032];
+extern u8 dStageLastFile2_Tex_0x76BA[1032];
+extern u8 dStageLastFile2_Tex_0x7AC2[1032];
+extern u8 dStageLastFile2_Tex_0x7ECA[1032];
 extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3384[1036];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3384_tail[1];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3794[4];
@@ -1272,8 +1272,8 @@ extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3C6C[33];
 extern AObjEvent32 **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3C6C_aobj[7];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3D0C[207];
 extern AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4048[1];
-extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054[1024];
-extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C[1028];
+extern u8 dStageLastFile2_Tex_0x8FA2[1024];
+extern u8 dStageLastFile2_Tex_0x93AA[1028];
 extern MObjSub **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C_tbl[8];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4880[2];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4888[2];
@@ -3767,23 +3767,27 @@ u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x14FC[919] = {
 PAD(12);
 
 /* sprite frame (data_0x37A4 MObjSub textures) */
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2364[1032] = {
-	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x2364.tex.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dStageLastFile2_Tex_0x72B2[1032] = {
+	#include <StageLastFile2/Tex_0x72B2.tex.inc.c>
 };
 
 /* sprite frame (data_0x37A4 MObjSub textures) */
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x276C[1032] = {
-	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x276C.tex.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dStageLastFile2_Tex_0x76BA[1032] = {
+	#include <StageLastFile2/Tex_0x76BA.tex.inc.c>
 };
 
 /* sprite frame (data_0x37A4 MObjSub textures) */
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2B74[1032] = {
-	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x2B74.tex.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dStageLastFile2_Tex_0x7AC2[1032] = {
+	#include <StageLastFile2/Tex_0x7AC2.tex.inc.c>
 };
 
 /* sprite frame (data_0x37A4 MObjSub textures) */
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2F7C[1032] = {
-	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x2F7C.tex.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dStageLastFile2_Tex_0x7ECA[1032] = {
+	#include <StageLastFile2/Tex_0x7ECA.tex.inc.c>
 };
 
 u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3384[1036] = {
@@ -3792,10 +3796,10 @@ u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3384[1036] = {
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3384_tail[1] = { (void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x381C };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3794[4] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2F7C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2B74,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x276C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x2364,
+	(void *)dStageLastFile2_Tex_0x7ECA,
+	(void *)dStageLastFile2_Tex_0x7AC2,
+	(void *)dStageLastFile2_Tex_0x76BA,
+	(void *)dStageLastFile2_Tex_0x72B2,
 };
 
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x37A4[1] = {
@@ -4242,14 +4246,16 @@ AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4048[1] = {
 };
 PAD(8);
 
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054[1024] = {
-	#include <StageLastFile2/dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054.tex.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dStageLastFile2_Tex_0x8FA2[1024] = {
+	#include <StageLastFile2/Tex_0x8FA2.tex.inc.c>
 };
 PAD(8);
 
 /* texture (data_0x48B8 MObjSub sprite frame) */
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C[1028] = {
-	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x445C.tex.inc.c>
+/* @tex fmt=IA8 dim=32x32 */
+u8 dStageLastFile2_Tex_0x93AA[1028] = {
+	#include <StageLastFile2/Tex_0x93AA.tex.inc.c>
 };
 MObjSub **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C_tbl[8] = {
 	(MObjSub **)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4C84,
@@ -4263,43 +4269,43 @@ MObjSub **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C_tbl[8] = {
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4880[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4888[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4890[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4898[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48A0[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48A8[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B0[2] = {
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(void *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(void *)dStageLastFile2_Tex_0x93AA,
+	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
 u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8[3] = {
-	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x445C,
-	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4054,
+	(u32)dStageLastFile2_Tex_0x93AA,
+	(u32)dStageLastFile2_Tex_0x8FA2,
 	aobjEvent32End(),
 };
 

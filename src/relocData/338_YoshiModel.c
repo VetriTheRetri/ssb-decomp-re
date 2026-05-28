@@ -4739,6 +4739,7 @@ u16 dYoshiModel_palette_0x9628[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9628 */
 u8 dYoshiModel_Tex_0x9650[136] = {
 	#include <YoshiModel/Tex_0x9650.tex.inc.c>
 };
@@ -4748,6 +4749,7 @@ u16 dYoshiModel_palette_0x96D8[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x96D8 */
 u8 dYoshiModel_Tex_0x9700[136] = {
 	#include <YoshiModel/Tex_0x9700.tex.inc.c>
 };
@@ -4757,6 +4759,7 @@ u16 dYoshiModel_palette_0x9788[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9788 */
 u8 dYoshiModel_Tex_0x97B0[136] = {
 	#include <YoshiModel/Tex_0x97B0.tex.inc.c>
 };
@@ -4766,6 +4769,7 @@ u16 dYoshiModel_palette_0x9838[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9838 */
 u8 dYoshiModel_Tex_0x9860[136] = {
 	#include <YoshiModel/Tex_0x9860.tex.inc.c>
 };
@@ -4775,6 +4779,7 @@ u16 dYoshiModel_palette_0x98E8[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x98E8 */
 u8 dYoshiModel_Tex_0x9910[136] = {
 	#include <YoshiModel/Tex_0x9910.tex.inc.c>
 };
@@ -4784,6 +4789,7 @@ u16 dYoshiModel_palette_0x9998[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9998 */
 u8 dYoshiModel_Tex_0x99C0[136] = {
 	#include <YoshiModel/Tex_0x99C0.tex.inc.c>
 };
@@ -4793,6 +4799,7 @@ u16 dYoshiModel_palette_0x9A48[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9A48 */
 u8 dYoshiModel_Tex_0x9A70[136] = {
 	#include <YoshiModel/Tex_0x9A70.tex.inc.c>
 };
@@ -4802,6 +4809,7 @@ u16 dYoshiModel_palette_0x9AF8[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9AF8 */
 u8 dYoshiModel_Tex_0x9B20[136] = {
 	#include <YoshiModel/Tex_0x9B20.tex.inc.c>
 };
@@ -4811,6 +4819,7 @@ u16 dYoshiModel_palette_0x9BA8[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dYoshiModel_palette_0x9BA8 */
 u8 dYoshiModel_Tex_0x9BD0[136] = {
 	#include <YoshiModel/Tex_0x9BD0.tex.inc.c>
 };
@@ -4905,6 +4914,7 @@ u8 dYoshiModel_Tex_0x9FF8[40] = {
 	#include <YoshiModel/Tex_0x9FF8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=64x64 lut=dYoshiModel_Tex_0x9FF8 */
 u8 dYoshiModel_Tex_0xA020[2048] = {
 	#include <YoshiModel/Tex_0xA020.tex.inc.c>
 };

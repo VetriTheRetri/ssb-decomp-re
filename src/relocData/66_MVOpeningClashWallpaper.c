@@ -1361,20 +1361,20 @@ AObjEvent32 *dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint[1] = {
 };
 
 u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[] = {
-	    0x07000000,
-	    0x00000000,
-	    0x0700000D,
-	    0x00000000,
-	    0x15000001,
-	    0x3F800000,
-	    0x15000001,
-	    0x40000000,
-	    0x15000001,
-	    0x40400000,
-	    0x15000001,
-	    0x40800000,
-	    0x15000001,
-	    0x40A00000,
+	aobjEvent32SetValBlock(0x200, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x200, 13),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40400000,  /* 3.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40800000,  /* 4.0f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40A00000,  /* 5.0f */
 	aobjEvent32SetValAfterBlock(0x200, 1),
 	    0x40C00000,
 	aobjEvent32SetValAfterBlock(0x200, 1),

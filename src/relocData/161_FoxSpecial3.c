@@ -153,12 +153,14 @@ PAD(8);
 /* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Lut_0x08B8_palette */
 /* Three sequential textures previously combined into one 184-byte
  * Tex_0x08E0 with byte-offset arithmetic references at +0x48 and +0x70. */
+/* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Lut_0x08B8_palette */
 u8 dFoxSpecial3_Tex_0x08E0[72] = {
 	#include <FoxSpecial3/Tex_0x08E0.tex.inc.c>
 };
 u8 dFoxSpecial3_Tex_0x0928[40] = {
 	#include <FoxSpecial3/Tex_0x0928.tex.inc.c>
 };
+/* @tex fmt=CI4 dim=16x8 lut=dFoxSpecial3_Tex_0x0928 */
 u8 dFoxSpecial3_Tex_0x0950[72] = {
 	#include <FoxSpecial3/Tex_0x0950.tex.inc.c>
 };

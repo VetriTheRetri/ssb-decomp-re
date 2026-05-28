@@ -73,6 +73,7 @@ extern u8 dEFCommonEffects1_CommonSpark_Tex_0xC178[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x0008[2048] = {
 	#include <EFCommonEffects1/Tex_0x0008.tex.inc.c>
 };
@@ -80,6 +81,7 @@ u8 dEFCommonEffects1_Tex_0x0008[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x0810 (was gap+0x810, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x0810[2048] = {
 	#include <EFCommonEffects1/Tex_0x0810.tex.inc.c>
 };
@@ -87,6 +89,7 @@ u8 dEFCommonEffects1_Tex_0x0810[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x1018 (was gap+0x1018, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x1018[2048] = {
 	#include <EFCommonEffects1/Tex_0x1018.tex.inc.c>
 };
@@ -94,6 +97,7 @@ u8 dEFCommonEffects1_Tex_0x1018[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x1820 (was gap+0x1820, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x1820[2048] = {
 	#include <EFCommonEffects1/Tex_0x1820.tex.inc.c>
 };
@@ -101,6 +105,7 @@ u8 dEFCommonEffects1_Tex_0x1820[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x2028 (was gap+0x2028, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x2028[2048] = {
 	#include <EFCommonEffects1/Tex_0x2028.tex.inc.c>
 };
@@ -108,6 +113,7 @@ u8 dEFCommonEffects1_Tex_0x2028[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x2830 (was gap+0x2830, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x2830[2048] = {
 	#include <EFCommonEffects1/Tex_0x2830.tex.inc.c>
 };
@@ -115,6 +121,7 @@ u8 dEFCommonEffects1_Tex_0x2830[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x3038 (was gap+0x3038, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x3038[2048] = {
 	#include <EFCommonEffects1/Tex_0x3038.tex.inc.c>
 };
@@ -122,6 +129,7 @@ u8 dEFCommonEffects1_Tex_0x3038[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x3840 (was gap+0x3840, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x3840[2048] = {
 	#include <EFCommonEffects1/Tex_0x3840.tex.inc.c>
 };
@@ -129,6 +137,7 @@ u8 dEFCommonEffects1_Tex_0x3840[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x4048 (was gap+0x4048, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x4048[2048] = {
 	#include <EFCommonEffects1/Tex_0x4048.tex.inc.c>
 };
@@ -136,6 +145,7 @@ u8 dEFCommonEffects1_Tex_0x4048[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x4850 (was gap+0x4850, 2056 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x4850[2048] = {
 	#include <EFCommonEffects1/Tex_0x4850.tex.inc.c>
 };
@@ -143,6 +153,7 @@ u8 dEFCommonEffects1_Tex_0x4850[2048] = {
 PAD(8);
 
 /* gap sub-block @ 0x5058 (was gap+0x5058, 2052 bytes) */
+/* @tex fmt=IA16 dim=32x32 */
 u8 dEFCommonEffects1_Tex_0x5058[2048] = {
 	#include <EFCommonEffects1/Tex_0x5058.tex.inc.c>
 };

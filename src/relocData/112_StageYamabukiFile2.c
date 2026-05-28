@@ -40,6 +40,7 @@ u16 dStageYamabukiFile2_Lut_0x0438_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0460 (US=2104 bytes) — US position (pair02) */
+/* @tex fmt=CI4 dim=64x32 lut=dStageYamabukiFile2_Lut_0x0438_palette */
 u8 dStageYamabukiFile2_Tex_0x0460[2104] = {
 	#include <StageYamabukiFile2/Tex_0x0460.tex.inc.c>
 };
@@ -211,6 +212,7 @@ u16 dStageYamabukiFile2_Lut_0x0438_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x0460 (JP=1032 bytes) — JP position (pair02, after pair17) */
+/* @tex fmt=CI4 dim=64x32 lut=dStageYamabukiFile2_Lut_0x0438_palette */
 u8 dStageYamabukiFile2_Tex_0x0460[1032] = {
 	#include <StageYamabukiFile2/Tex_0x0460.tex.inc.c>
 };
@@ -392,12 +394,15 @@ u8 dStageYamabukiFile2_Tex_0x28F0[264] = {
 };
 
 /* sprite frames indexed by the Layer1 MObjSubs */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dStageYamabukiFile2_Tex_0x29F8[1032] = {
 	#include <StageYamabukiFile2/Tex_0x29F8.tex.inc.c>
 };
+/* @tex fmt=IA8 dim=32x32 */
 u8 dStageYamabukiFile2_Tex_0x2E00[1032] = {
 	#include <StageYamabukiFile2/Tex_0x2E00.tex.inc.c>
 };
+/* @tex fmt=IA8 dim=32x32 */
 u8 dStageYamabukiFile2_Tex_0x3208[1032] = {
 	#include <StageYamabukiFile2/Tex_0x3208.tex.inc.c>
 };
@@ -2032,22 +2037,22 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x88[16] = {
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=40x40 */
+/* @tex fmt=CI4 dim=16x121 */
 u8 dStageYamabukiFile2_Tex_0x8878[968] = {
 	#include <StageYamabukiFile2/Tex_0x8878.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x40 */
+/* @tex fmt=CI4 dim=16x121 */
 u8 dStageYamabukiFile2_Tex_0x8C40[968] = {
 	#include <StageYamabukiFile2/Tex_0x8C40.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x40 */
+/* @tex fmt=CI4 dim=16x121 */
 u8 dStageYamabukiFile2_Tex_0x9008[968] = {
 	#include <StageYamabukiFile2/Tex_0x9008.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x40 */
+/* @tex fmt=CI4 dim=16x121 */
 u8 dStageYamabukiFile2_Tex_0x93D0[968] = {
 	#include <StageYamabukiFile2/Tex_0x93D0.tex.inc.c>
 };
@@ -2643,32 +2648,32 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x1AA8[16] = {
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=40x64 */
+/* @tex fmt=CI4 dim=16x193 */
 u8 dStageYamabukiFile2_Tex_0xA298[1544] = {
 	#include <StageYamabukiFile2/Tex_0xA298.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x64 */
+/* @tex fmt=CI4 dim=16x193 */
 u8 dStageYamabukiFile2_Tex_0xA8A0[1544] = {
 	#include <StageYamabukiFile2/Tex_0xA8A0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x64 */
+/* @tex fmt=CI4 dim=16x193 */
 u8 dStageYamabukiFile2_Tex_0xAEA8[1544] = {
 	#include <StageYamabukiFile2/Tex_0xAEA8.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x64 */
+/* @tex fmt=CI4 dim=16x193 */
 u8 dStageYamabukiFile2_Tex_0xB4B0[1544] = {
 	#include <StageYamabukiFile2/Tex_0xB4B0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x64 */
+/* @tex fmt=CI4 dim=16x193 */
 u8 dStageYamabukiFile2_Tex_0xBAB8[1544] = {
 	#include <StageYamabukiFile2/Tex_0xBAB8.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x64 */
+/* @tex fmt=CI4 dim=16x193 */
 u8 dStageYamabukiFile2_Tex_0xC0C0[1544] = {
 	#include <StageYamabukiFile2/Tex_0xC0C0.tex.inc.c>
 };
@@ -2873,27 +2878,27 @@ u16 dStageYamabukiFile2_gap_0x87C8_sub_0x43A0[16] = {
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=40x48 */
+/* @tex fmt=CI4 dim=16x145 */
 u8 dStageYamabukiFile2_Tex_0xCB90[1160] = {
 	#include <StageYamabukiFile2/Tex_0xCB90.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x48 */
+/* @tex fmt=CI4 dim=16x145 */
 u8 dStageYamabukiFile2_Tex_0xD018[1160] = {
 	#include <StageYamabukiFile2/Tex_0xD018.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x48 */
+/* @tex fmt=CI4 dim=16x145 */
 u8 dStageYamabukiFile2_Tex_0xD4A0[1160] = {
 	#include <StageYamabukiFile2/Tex_0xD4A0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x48 */
+/* @tex fmt=CI4 dim=16x145 */
 u8 dStageYamabukiFile2_Tex_0xD928[1160] = {
 	#include <StageYamabukiFile2/Tex_0xD928.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x48 */
+/* @tex fmt=CI4 dim=16x145 */
 u8 dStageYamabukiFile2_Tex_0xDDB0[1160] = {
 	#include <StageYamabukiFile2/Tex_0xDDB0.tex.inc.c>
 };

@@ -5917,6 +5917,7 @@ u16 dCaptainModel_palette_0xBCB8[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 */
 u8 dCaptainModel_Tex_0xBCE0[136] = {
 	#include <CaptainModel/Tex_0xBCE0.tex.inc.c>
 };
@@ -5938,6 +5939,7 @@ u8 dCaptainModel_Tex_0xBDB8[136] = {
 	#include <CaptainModel/Tex_0xBDB8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x8 */
 u8 dCaptainModel_Tex_0xBE40[72] = {
 	#include <CaptainModel/Tex_0xBE40.tex.inc.c>
 };
@@ -5962,6 +5964,7 @@ u8 dCaptainModel_Tex_0xBF28[72] = {
 	#include <CaptainModel/Tex_0xBF28.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x16 */
 u8 dCaptainModel_Tex_0xBF70[136] = {
 	#include <CaptainModel/Tex_0xBF70.tex.inc.c>
 };

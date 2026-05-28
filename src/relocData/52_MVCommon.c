@@ -185,6 +185,7 @@ PAD(8);
 
 /* Texture data @ 0x0F48 (272 bytes) */
 /* u8: dMVCommon_Tex_0x0F48 (136 u8) */
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_Lut_0x0030_palette */
 u8 dMVCommon_Tex_0x0F48[136] = {
 	#include <MVCommon/Tex_0x0F48.tex.inc.c>
 };
@@ -1446,6 +1447,7 @@ u16 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_palette_0x0008[1
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_palette_0x0008 */
 u8 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Tex_0x0030[0x40] = {
 	#include <MVCommon/RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Tex_0x0030.tex.inc.c>
 };
@@ -1656,12 +1658,14 @@ u16 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x0034[16] = {
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x32 lut=dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x000C */
 u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x005C[0x200] = {
 	#include <MVCommon/RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x005C.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x32 lut=dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x0034 */
 u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x0264[0x100] = {
 	#include <MVCommon/RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x0264.tex.inc.c>
 };
@@ -2400,6 +2404,7 @@ u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954[69] = {
  * padding before the trailing texture. */
 PAD(20);
 
+/* @tex fmt=RGBA16 dim=16x1 */
 u8 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Tex_0x0014[0x20] = {
 	#include <MVCommon/RoomPencilsAnimJoint_AnimJoint_data_post_Tex_0x0014.tex.inc.c>
 };
@@ -2759,18 +2764,21 @@ u16 dMVCommon_RoomLamp_palette_0xC358[16] = {
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_RoomLamp_palette_0xC308 */
 u8 dMVCommon_RoomLamp_Tex_0xC380[0x80] = {
 	#include <MVCommon/Tex_0xC380.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomLamp_palette_0xC330 */
 u8 dMVCommon_RoomLamp_Tex_0xC408[0x40] = {
 	#include <MVCommon/Tex_0xC408.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x16 lut=dMVCommon_RoomLamp_palette_0xC358 */
 u8 dMVCommon_RoomLamp_Tex_0xC450[0x100] = {
 	#include <MVCommon/Tex_0xC450.tex.inc.c>
 };
@@ -3102,34 +3110,40 @@ u32 dMVCommon_RoomTissuesAnimJoint_AnimJoint[297] = {
  * as raw bytes pending reloc-chain analysis. */
 PAD(16);
 
+/* @tex fmt=I8 dim=64x20 */
 u8 dMVCommon_RoomTissues_Tex_0xCD38[0x500] = {
 	#include <MVCommon/Tex_0xCD38.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=RGBA32 dim=128x85 */
 u8 dMVCommon_RoomTissues_Tex_0xD240[0xAA08] = {
 	#include <MVCommon/Tex_0xD240.tex.inc.c>
 };
 
+/* @tex fmt=I8 dim=64x64 */
 u8 dMVCommon_RoomTissues_Tex_0x17C48[0x1000] = {
 	#include <MVCommon/Tex_0x17C48.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=I8 dim=64x64 */
 u8 dMVCommon_RoomTissues_Tex_0x18C50[0x1000] = {
 	#include <MVCommon/Tex_0x18C50.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=I8 dim=64x64 */
 u8 dMVCommon_RoomTissues_Tex_0x19C58[0x1000] = {
 	#include <MVCommon/Tex_0x19C58.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=I8 dim=64x64 */
 u8 dMVCommon_RoomTissues_Tex_0x1AC60[0x1000] = {
 	#include <MVCommon/Tex_0x1AC60.tex.inc.c>
 };
@@ -3337,6 +3351,7 @@ PAD(16);
  * 1024 bytes = 512 IA16 texels starting here). The original _at_0x34 +
  * _at_0x34_post split was a splitTrailingZeroPad artifact; the runtime
  * sees one contiguous texture, so combine into a single Tex block. */
+/* @tex fmt=IA16 dim=32x16 */
 u8 dMVCommon_RoomLogo_Tex_0x1C568[0x400] = {
 	#include <MVCommon/RoomLogo_Tex_0x1C568.tex.inc.c>
 };
@@ -3425,12 +3440,14 @@ u32 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[37] = {
 
 PAD(12);
 
+/* @tex fmt=RGBA32 dim=8x8 */
 u8 dMVCommon_RoomSnap_Tex_0x1CB98[0x100] = {
 	#include <MVCommon/Tex_0x1CB98.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=RGBA32 dim=32x32 */
 u8 dMVCommon_RoomSnap_Tex_0x1CCA0[0x1000] = {
 	#include <MVCommon/Tex_0x1CCA0.tex.inc.c>
 };
@@ -3915,6 +3932,7 @@ u16 dMVCommon_RoomBossShadow_palette_0x1FAA0[16] = {
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x32 lut=dMVCommon_RoomBossShadow_palette_0x1FA78 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FAC8[0x100] = {
 	#include <MVCommon/Tex_0x1FAC8.tex.inc.c>
 };
@@ -3933,78 +3951,91 @@ u8 dMVCommon_RoomBossShadow_Tex_0x1FC18[0x40] = {
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_RoomBossShadow_palette_0x1FA28 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FC60[0x80] = {
 	#include <MVCommon/Tex_0x1FC60.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA28 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FCE8[0x40] = {
 	#include <MVCommon/Tex_0x1FCE8.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA28 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FD30[0x40] = {
 	#include <MVCommon/Tex_0x1FD30.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA28 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FD78[0x40] = {
 	#include <MVCommon/Tex_0x1FD78.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA28 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FDC0[0x40] = {
 	#include <MVCommon/Tex_0x1FDC0.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x24 lut=dMVCommon_RoomBossShadow_palette_0x1F9C0 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FE08[0x180] = {
 	#include <MVCommon/Tex_0x1FE08.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x24 lut=dMVCommon_RoomBossShadow_palette_0x1F9E8 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FF90[0xC0] = {
 	#include <MVCommon/Tex_0x1FF90.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA10 */
 u8 dMVCommon_RoomBossShadow_Tex_0x20058[0x40] = {
 	#include <MVCommon/Tex_0x20058.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x24 lut=dMVCommon_RoomBossShadow_palette_0x1FA28 */
 u8 dMVCommon_RoomBossShadow_Tex_0x200A0[0xC0] = {
 	#include <MVCommon/Tex_0x200A0.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x32 lut=dMVCommon_RoomBossShadow_palette_0x1FA50 */
 u8 dMVCommon_RoomBossShadow_Tex_0x20168[0x200] = {
 	#include <MVCommon/Tex_0x20168.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA50 */
 u8 dMVCommon_RoomBossShadow_Tex_0x20370[0x40] = {
 	#include <MVCommon/Tex_0x20370.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dMVCommon_RoomBossShadow_palette_0x1FA78 */
 u8 dMVCommon_RoomBossShadow_Tex_0x203B8[0x40] = {
 	#include <MVCommon/Tex_0x203B8.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dMVCommon_RoomBossShadow_palette_0x1FAA0 */
 u8 dMVCommon_RoomBossShadow_Tex_0x20400[0x80] = {
 	#include <MVCommon/Tex_0x20400.tex.inc.c>
 };
@@ -4601,12 +4632,14 @@ AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x88[3] =
  * as raw bytes pending reloc-chain analysis. */
 PAD(8);
 
+/* @tex fmt=I8 dim=32x32 */
 u8 dMVCommon_RoomDeskGround_Tex_0x22688[0x400] = {
 	#include <MVCommon/Tex_0x22688.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=I8 dim=16x32 */
 u8 dMVCommon_RoomDeskGround_Tex_0x22A90[0x200] = {
 	#include <MVCommon/Tex_0x22A90.tex.inc.c>
 };
@@ -4753,6 +4786,7 @@ AObjEvent32 *dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x48[3] = 
  * as raw bytes pending reloc-chain analysis. */
 PAD(16);
 
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dMVCommon_RoomSpotlight_Tex_0x22F78[0x804] = {
 	#include <MVCommon/RoomSpotlight_Tex_0x22F78.tex.inc.c>
 };
@@ -4761,6 +4795,7 @@ u8 dMVCommon_RoomSpotlight_Tex_0x22F78[0x804] = {
  * as raw bytes pending reloc-chain analysis. */
 PAD(4);
 
+/* @tex fmt=IA8 dim=32x64 */
 u8 dMVCommon_RoomSpotlight_Tex_0x23780[0x800] = {
 	#include <MVCommon/RoomSpotlight_Tex_0x23780.tex.inc.c>
 };
@@ -4800,6 +4835,7 @@ DObjDLLink dMVCommon_RoomOutside_DisplayList[] = {
 
 PAD(16);
 
+/* @tex fmt=I8 dim=32x32 */
 u8 dMVCommon_RoomOutside_DisplayList_Tex_0x0028[0x400] = {
 	#include <MVCommon/RoomOutside_DisplayList_Tex_0x0028.tex.inc.c>
 };

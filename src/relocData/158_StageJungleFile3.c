@@ -18,6 +18,7 @@ u16 dStageJungleFile3_LUT_0x0008[16] = {
 PAD(8);
 
 /* @ 0x0030 */
+/* @tex fmt=CI4 dim=64x64 lut=dStageJungleFile3_LUT_0x0008 */
 u8 dStageJungleFile3_Tex_0x0030[2048] = {
 	#include <StageJungleFile3/Tex_0x0030.tex.inc.c>
 };

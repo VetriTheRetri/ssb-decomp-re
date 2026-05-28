@@ -28,6 +28,7 @@ u8 dStageInishieFile2_Tex_0x0050[128] = {
 PAD(8);
 
 /* Texture data @ 0x00D8 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageInishieFile2_Lut_0x3710_palette */
 u8 dStageInishieFile2_Tex_0x00D8[512] = {
 	#include <StageInishieFile2/Tex_0x00D8.tex.inc.c>
 };
@@ -35,14 +36,31 @@ u8 dStageInishieFile2_Tex_0x00D8[512] = {
 PAD(8);
 
 /* Texture data @ 0x02E0 (3440 bytes) */
-u8 dStageInishieFile2_Tex_0x02E0[3440] = {
+/* @tex fmt=CI4 dim=16x8 lut=dStageInishieFile2_Lut_0x3710_palette */
+u8 dStageInishieFile2_Tex_0x02E0[72] = {
 	#include <StageInishieFile2/Tex_0x02E0.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x328[136] = {
+	#include <StageInishieFile2/Tex_0x328.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x3B0[1176] = {
+	#include <StageInishieFile2/Tex_0x3B0.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x848[2056] = {
+	#include <StageInishieFile2/Tex_0x848.tex.inc.c>
 };
 
 /* Texture data @ 0x1050 (528 bytes) */
 /* @tex fmt=CI4 dim=32x16 lut=dStageInishieFile2_Lut_0x3648_palette */
-u8 dStageInishieFile2_Tex_0x1050[528] = {
+u8 dStageInishieFile2_Tex_0x1050[264] = {
 	#include <StageInishieFile2/Tex_0x1050.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x1158[264] = {
+	#include <StageInishieFile2/Tex_0x1158.tex.inc.c>
 };
 
 /* Texture data @ 0x1260 (136 bytes) */
@@ -53,42 +71,54 @@ u8 dStageInishieFile2_Tex_0x1260[136] = {
 
 /* Sprite-frame texture pool @ 0x12E8 (3040 bytes) — 8 CI4 frames of
  * varying size; the Layer0MObj sprite-frame lists index them. */
+/* @tex fmt=CI4 dim=32x16 lut=dStageInishieFile2_Lut_0x3648_palette */
 u8 dStageInishieFile2_Tex_0x12E8[0x108] = {
 	#include <StageInishieFile2/Tex_0x12E8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=24x34 */
 u8 dStageInishieFile2_Tex_0x13F0[0x198] = {
 	#include <StageInishieFile2/Tex_0x13F0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=24x34 */
 u8 dStageInishieFile2_Tex_0x1588[0x198] = {
 	#include <StageInishieFile2/Tex_0x1588.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x48 */
 u8 dStageInishieFile2_Tex_0x1720[0x188] = {
 	#include <StageInishieFile2/Tex_0x1720.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x48 */
 u8 dStageInishieFile2_Tex_0x18A8[0x188] = {
 	#include <StageInishieFile2/Tex_0x18A8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x48 */
 u8 dStageInishieFile2_Tex_0x1A30[0x188] = {
 	#include <StageInishieFile2/Tex_0x1A30.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x49 */
 u8 dStageInishieFile2_Tex_0x1BB8[0x188] = {
 	#include <StageInishieFile2/Tex_0x1BB8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x49 */
 u8 dStageInishieFile2_Tex_0x1D40[0x188] = {
 	#include <StageInishieFile2/Tex_0x1D40.tex.inc.c>
 };
 
 /* Texture data @ 0x1EC8 (3312 bytes) */
 /* @tex fmt=CI4 dim=64x51 lut=dStageInishieFile2_Lut_0x3698_palette */
-u8 dStageInishieFile2_Tex_0x1EC8[3312] = {
+u8 dStageInishieFile2_Tex_0x1EC8[1640] = {
 	#include <StageInishieFile2/Tex_0x1EC8.tex.inc.c>
+};
+
+u8 dStageInishieFile2_Tex_0x2530[1672] = {
+	#include <StageInishieFile2/Tex_0x2530.tex.inc.c>
 };
 
 /* Texture data @ 0x2BB8 (1160 bytes) */

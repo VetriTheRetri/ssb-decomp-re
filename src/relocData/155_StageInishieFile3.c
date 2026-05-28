@@ -17,6 +17,7 @@ extern u32 dStageInishieFile3_AnimJoint_0x13B8[];
 
 PAD(8);
 /* @ 0x0008 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dStageInishieFile3_Tex_0x0008[64] = {
 	#include <StageInishieFile3/Tex_0x0008.tex.inc.c>
 };
@@ -93,11 +94,13 @@ DObjDesc dStageInishieFile3_DObjDesc_0x0380[6] = {
 
 PAD(16);
 /* @ 0x0498 */
+/* @tex fmt=CI4 dim=16x2 */
 u8 dStageInishieFile3_Tex_0x0498[24] = {
 	#include <StageInishieFile3/Tex_0x0498.tex.inc.c>
 };
 
 /* @ 0x04B0 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dStageInishieFile3_Tex_0x04B0[64] = {
 	#include <StageInishieFile3/Tex_0x04B0.tex.inc.c>
 };
@@ -133,16 +136,19 @@ u32 dStageInishieFile3_AnimJoint_0x0734[4] = {
 
 PAD(20);
 /* @ 0x0758 */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dStageInishieFile3_Tex_0x0758[264] = {
 	#include <StageInishieFile3/Tex_0x0758.tex.inc.c>
 };
 
 /* @ 0x0860 */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dStageInishieFile3_Tex_0x0860[264] = {
 	#include <StageInishieFile3/Tex_0x0860.tex.inc.c>
 };
 
 /* @ 0x0968 */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dStageInishieFile3_Tex_0x0968[256] = {
 	#include <StageInishieFile3/Tex_0x0968.tex.inc.c>
 };
@@ -336,11 +342,13 @@ AObjEvent32 *dStageInishieFile3_mobjlink_0x0E34[5] = {
 };
 
 /* @ 0x0E48 */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dStageInishieFile3_Tex_0x0E48[264] = {
 	#include <StageInishieFile3/Tex_0x0E48.tex.inc.c>
 };
 
 /* @ 0x0F50 */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dStageInishieFile3_Tex_0x0F50[64] = {
 	#include <StageInishieFile3/Tex_0x0F50.tex.inc.c>
 };

@@ -212,6 +212,7 @@ u16 dStageJungleFile2_Lut_0x5728_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x5750 (520 bytes) */
+/* @tex fmt=CI4 dim=32x32 lut=dStageJungleFile2_Lut_0x5728_palette */
 u8 dStageJungleFile2_Tex_0x5750[520] = {
 	#include <StageJungleFile2/Tex_0x5750.tex.inc.c>
 };

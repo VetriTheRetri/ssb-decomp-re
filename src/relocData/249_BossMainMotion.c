@@ -303,21 +303,13 @@ u32 dBossMainMotion_0x078C[] = {
 	ftMotionCommandEnd(),
 };
 
+/* ftMotionCommand script (24 bytes, ends with End() at +0x14). */
 u32 dBossMainMotion_0x0790[] = {
 	0x000A0000,
-};
-
-u32 dBossMainMotion_0x0794[] = {
 	0xFFF6000A,
 	0x00285A40,
-};
-
-u32 dBossMainMotion_0x079C[] = {
 	0x1901400A,
 	0x0140093C,
-};
-
-u32 dBossMainMotion_0x07A4[] = {
 	ftMotionCommandEnd(),
 };
 
@@ -346,21 +338,13 @@ u32 dBossMainMotion_0x07C0[] = {
 	ftMotionCommandEnd(),
 };
 
+/* ftMotionCommand script (24 bytes, ends with End() at +0x14). */
 u32 dBossMainMotion_0x07C4[] = {
 	0x000A0000,
-};
-
-u32 dBossMainMotion_0x07C8[] = {
 	0xFFF6000A,
 	0x00285A40,
-};
-
-u32 dBossMainMotion_0x07D0[] = {
 	0x1901400A,
 	0x0140093C,
-};
-
-u32 dBossMainMotion_0x07D8[] = {
 	ftMotionCommandEnd(),
 };
 

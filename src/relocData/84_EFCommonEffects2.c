@@ -63,14 +63,14 @@ extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A68[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A90[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AB8[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AE0[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x5B08[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x5D10[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x5F18[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6120[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6328[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6530[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6738[];
-extern u8 dEFCommonEffects2_DeadExplode3_Tex_0x6940[];
+extern u8 dEFCommonEffects2_Tex_0x5B08[];
+extern u8 dEFCommonEffects2_Tex_0x5D10[];
+extern u8 dEFCommonEffects2_Tex_0x5F18[];
+extern u8 dEFCommonEffects2_Tex_0x6120[];
+extern u8 dEFCommonEffects2_Tex_0x6328[];
+extern u8 dEFCommonEffects2_Tex_0x6530[];
+extern u8 dEFCommonEffects2_Tex_0x6738[];
+extern u8 dEFCommonEffects2_Tex_0x6940[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28B8[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x28F0[];
 extern u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2960[];
@@ -395,11 +395,11 @@ AObjEvent32 *dEFCommonEffects2_FireSparkAnimJoint_AnimJoint[2] = {
 };
 
 u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8[] = {
-	    0x15D00000,
-	    0xC2B40000,
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x3A0, 0),
+	    0xC2B40000,  /* -90.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
 	aobjEvent32SetValAfterBlock(0x3A0, 4),
 	    0x35700000,
 	    0x3F333336,
@@ -2021,51 +2021,51 @@ PAD(8);
 /* 8 CI4 sprite-frame textures (32x32, 512 B each) @ 0x5B08..0x6B3F,
  * separated by PAD(8). NessPKFlashDObjDesc's 8 chain-pointer slots at
  * +0x8..+0x24 target these in reverse order (newest frame first). */
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x5B08[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x5B08.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x5B08[512] = {
+	#include <EFCommonEffects2/Tex_0x5B08.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x5D10[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x5D10.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x5D10[512] = {
+	#include <EFCommonEffects2/Tex_0x5D10.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x5F18[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x5F18.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x5F18[512] = {
+	#include <EFCommonEffects2/Tex_0x5F18.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x6120[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x6120.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x6120[512] = {
+	#include <EFCommonEffects2/Tex_0x6120.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x6328[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x6328.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x6328[512] = {
+	#include <EFCommonEffects2/Tex_0x6328.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x6530[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x6530.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x6530[512] = {
+	#include <EFCommonEffects2/Tex_0x6530.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x6738[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x6738.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x6738[512] = {
+	#include <EFCommonEffects2/Tex_0x6738.tex.inc.c>
 };
 PAD(8);
 
-/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects2_DeadExplode3_palette_0x5AE0 */
-u8 dEFCommonEffects2_DeadExplode3_Tex_0x6940[512] = {
-	#include <EFCommonEffects2/DeadExplode3_Tex_0x6940.tex.inc.c>
+/* @tex fmt=CI4 dim=32x32 */
+u8 dEFCommonEffects2_Tex_0x6940[512] = {
+	#include <EFCommonEffects2/Tex_0x6940.tex.inc.c>
 };
 
 /* NessPKFlashDObjDesc was MIS-TYPED — actually a MObjSub wrapper @ 0x6B40.
@@ -2082,14 +2082,14 @@ void *dEFCommonEffects2_NessPKFlashMObjSub_head[1] = {
 /* Sprite-frame pointer table @ 0x6B48 — 8 chain ptrs to the CI4 32×32
  * sprite frames in DeadExplode3 trail (newest frame first). */
 void *dEFCommonEffects2_NessPKFlashMObjSub[8] = {
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6940,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6738,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6530,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6328,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x6120,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x5F18,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x5D10,
-	(void *)dEFCommonEffects2_DeadExplode3_Tex_0x5B08,
+	(void *)dEFCommonEffects2_Tex_0x6940,
+	(void *)dEFCommonEffects2_Tex_0x6738,
+	(void *)dEFCommonEffects2_Tex_0x6530,
+	(void *)dEFCommonEffects2_Tex_0x6328,
+	(void *)dEFCommonEffects2_Tex_0x6120,
+	(void *)dEFCommonEffects2_Tex_0x5F18,
+	(void *)dEFCommonEffects2_Tex_0x5D10,
+	(void *)dEFCommonEffects2_Tex_0x5B08,
 };
 
 /* Real MObjSub @ 0x6B68 (120 B, ends at 0x6BE0 — absorbs the former

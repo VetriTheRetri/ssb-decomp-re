@@ -277,6 +277,7 @@ u16 dStagePupupuImages_Lut_0x2F18_palette[16] = {
 PAD(8);
 
 /* Texture: 0x2F40 (128 bytes) */
+/* @tex fmt=CI4 dim=4x16 */
 u8 dStagePupupuImages_Tex_0x2F40[128] = {
 	#include <StagePupupuImages/Tex_0x2F40.tex.inc.c>
 };

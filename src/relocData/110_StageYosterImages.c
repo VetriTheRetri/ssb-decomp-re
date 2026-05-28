@@ -25,6 +25,7 @@ u16 dStageYosterImages_Lut_0x0030_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0058 (64 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dStageYosterImages_Tex_0x0058[64] = {
 	#include <StageYosterImages/Tex_0x0058.tex.inc.c>
 };
@@ -32,6 +33,7 @@ u8 dStageYosterImages_Tex_0x0058[64] = {
 PAD(8);
 
 /* Texture: 0x00A0 (128 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dStageYosterImages_Tex_0x00A0[128] = {
 	#include <StageYosterImages/Tex_0x00A0.tex.inc.c>
 };
@@ -88,6 +90,7 @@ u16 dStageYosterImages_Lut_0x0218_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0240 (128 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dStageYosterImages_Tex_0x0240[128] = {
 	#include <StageYosterImages/Tex_0x0240.tex.inc.c>
 };
@@ -95,6 +98,7 @@ u8 dStageYosterImages_Tex_0x0240[128] = {
 PAD(8);
 
 /* Texture: 0x02C8 (600 bytes) */
+/* @tex fmt=CI4 dim=8x22 */
 u8 dStageYosterImages_Tex_0x02C8[600] = {
 	#include <StageYosterImages/Tex_0x02C8.tex.inc.c>
 };
@@ -123,6 +127,7 @@ u8 dStageYosterImages_Tex_0x0658[256] = {
 PAD(8);
 
 /* Texture: 0x0760 (768 bytes) */
+/* @tex fmt=I4 dim=8x48 */
 u8 dStageYosterImages_Tex_0x0760[768] = {
 	#include <StageYosterImages/Tex_0x0760.tex.inc.c>
 };
@@ -130,6 +135,7 @@ u8 dStageYosterImages_Tex_0x0760[768] = {
 PAD(8);
 
 /* Texture: 0x0A68 (352 bytes) */
+/* @tex fmt=CI4 dim=8x22 */
 u8 dStageYosterImages_Tex_0x0A68[352] = {
 	#include <StageYosterImages/Tex_0x0A68.tex.inc.c>
 };
@@ -137,6 +143,7 @@ u8 dStageYosterImages_Tex_0x0A68[352] = {
 PAD(8);
 
 /* Texture: 0x0BD0 (64 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dStageYosterImages_Tex_0x0BD0[64] = {
 	#include <StageYosterImages/Tex_0x0BD0.tex.inc.c>
 };
@@ -144,6 +151,7 @@ u8 dStageYosterImages_Tex_0x0BD0[64] = {
 PAD(8);
 
 /* Texture: 0x0C18 (256 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dStageYosterImages_Tex_0x0C18[256] = {
 	#include <StageYosterImages/Tex_0x0C18.tex.inc.c>
 };
@@ -151,6 +159,7 @@ u8 dStageYosterImages_Tex_0x0C18[256] = {
 PAD(8);
 
 /* Texture: 0x0D20 (384 bytes) */
+/* @tex fmt=CI4 dim=8x8 */
 u8 dStageYosterImages_Tex_0x0D20[384] = {
 	#include <StageYosterImages/Tex_0x0D20.tex.inc.c>
 };
@@ -158,6 +167,7 @@ u8 dStageYosterImages_Tex_0x0D20[384] = {
 PAD(8);
 
 /* Texture: 0x0EA8 (384 bytes) */
+/* @tex fmt=CI4 dim=4x48 */
 u8 dStageYosterImages_Tex_0x0EA8[384] = {
 	#include <StageYosterImages/Tex_0x0EA8.tex.inc.c>
 };
@@ -165,6 +175,7 @@ u8 dStageYosterImages_Tex_0x0EA8[384] = {
 PAD(8);
 
 /* Texture: 0x1030 (16896 bytes) */
+/* @tex fmt=CI4 dim=480x16 */
 u8 dStageYosterImages_Tex_0x1030[16896] = {
 	#include <StageYosterImages/Tex_0x1030.tex.inc.c>
 };

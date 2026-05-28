@@ -458,30 +458,35 @@ u16 dEFCommonEffects3_MBallRays_palette_0x0990[16] = {
 
 PAD(8);
 
+/* @tex fmt=I4 dim=16x16 */
 u8 dEFCommonEffects3_MBallRays_Tex_0x09B8[0x80] = {
 	#include <EFCommonEffects3/Tex_0x09B8.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x24 lut=dEFCommonEffects3_MBallRays_palette_0x0918 */
 u8 dEFCommonEffects3_MBallRays_Tex_0x0A40[0x180] = {
 	#include <EFCommonEffects3/Tex_0x0A40.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x32 lut=dEFCommonEffects3_MBallRays_palette_0x0940 */
 u8 dEFCommonEffects3_MBallRays_Tex_0x0BC8[0x200] = {
 	#include <EFCommonEffects3/Tex_0x0BC8.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x16 lut=dEFCommonEffects3_MBallRays_palette_0x0968 */
 u8 dEFCommonEffects3_MBallRays_Tex_0x0DD0[0x80] = {
 	#include <EFCommonEffects3/Tex_0x0DD0.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI4 dim=16x8 lut=dEFCommonEffects3_MBallRays_palette_0x0990 */
 u8 dEFCommonEffects3_MBallRays_Tex_0x0E58[0x40] = {
 	#include <EFCommonEffects3/Tex_0x0E58.tex.inc.c>
 };

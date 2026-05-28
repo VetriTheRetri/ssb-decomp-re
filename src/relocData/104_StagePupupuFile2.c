@@ -753,20 +753,20 @@ PAD(8);
 
 /* @ 0x2D60 — MObj sprite-frame texture (CI4 32x24, per MObjSub_0x3208). */
 /* @tex fmt=CI4 dim=32x24 */
-u8 dStagePupupuFile2_Layer3Anim_Tex_0x2D60[392] = {
-	#include <StagePupupuFile2/Layer3Anim_Tex_0x2D60.tex.inc.c>
+u8 dStagePupupuFile2_Tex_0x2D5C[392] = {
+	#include <StagePupupuFile2/Tex_0x2D5C.tex.inc.c>
 };
 
 /* @ 0x2EE8 — MObj sprite-frame texture (CI4 32x24, per MObjSub_0x3208). */
 /* @tex fmt=CI4 dim=32x24 */
-u8 dStagePupupuFile2_Layer3Anim_Tex_0x2EE8[392] = {
-	#include <StagePupupuFile2/Layer3Anim_Tex_0x2EE8.tex.inc.c>
+u8 dStagePupupuFile2_Tex_0x2EE4[392] = {
+	#include <StagePupupuFile2/Tex_0x2EE4.tex.inc.c>
 };
 
 /* @ 0x3070 — MObj sprite-frame texture (CI4 32x24, per MObjSub_0x3208). */
 /* @tex fmt=CI4 dim=32x24 */
-u8 dStagePupupuFile2_Layer3Anim_Tex_0x3070[388] = {
-	#include <StagePupupuFile2/Layer3Anim_Tex_0x3070.tex.inc.c>
+u8 dStagePupupuFile2_Tex_0x306C[388] = {
+	#include <StagePupupuFile2/Tex_0x306C.tex.inc.c>
 };
 
 /* @ 0x31F4 — MObjSub-list pointer. */
@@ -777,9 +777,9 @@ MObjSub **dStagePupupuFile2_Layer3Anim_mobjlink_0x31F4[1] = {
 
 /* @ 0x31F8 — MObjSub sprite-frame texture table (3 entries + NULL). */
 u8 *dStagePupupuFile2_Layer3Anim_spritelink_0x31F8[4] = {
-	dStagePupupuFile2_Layer3Anim_Tex_0x3070,
-	dStagePupupuFile2_Layer3Anim_Tex_0x2EE8,
-	dStagePupupuFile2_Layer3Anim_Tex_0x2D60,
+	dStagePupupuFile2_Tex_0x306C,
+	dStagePupupuFile2_Tex_0x2EE4,
+	dStagePupupuFile2_Tex_0x2D5C,
 	NULL,
 };
 
@@ -1217,6 +1217,7 @@ u16 dStagePupupuFile2_Layer3Anim_Lut_0x3968_palette[16] = {
 PAD(8);
 
 /* @ 0x3990, 960 bytes - CI texture for Layer3Anim_DL_0x3D90. */
+/* @tex fmt=CI4 dim=32x60 lut=dStagePupupuFile2_Layer3Anim_Lut_0x3968_palette */
 u8 dStagePupupuFile2_Layer3Anim_Tex_0x3990[960] = {
 	#include <StagePupupuFile2/Layer3Anim_Tex_0x3990.tex.inc.c>
 };

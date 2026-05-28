@@ -2387,7 +2387,7 @@ u16 dFoxModel_Lut_0x70A8_palette[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x70D0 (was gap+0x1698, 520 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dFoxModel_Lut_0x70A8_palette */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dFoxModel_Tex_0x70D0[520] = {
 	#include <FoxModel/Tex_0x70D0.tex.inc.c>
 };
@@ -2402,7 +2402,7 @@ PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x72F8[2] = { End, End }`;
 		  * no relocations reference it. */
 
 /* gap sub-block @ 0x7300 (was gap+0x8, 520 bytes) */
-/* @tex fmt=CI4 dim=32x32 lut=dFoxModel_Lut_0x72D8_palette */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dFoxModel_Tex_0x7300[520] = {
 	#include <FoxModel/Tex_0x7300.tex.inc.c>
 };
@@ -2445,7 +2445,7 @@ u8 dFoxModel_Tex_0x75D0[304] = {
 	#include <FoxModel/Tex_0x75D0.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x16 lut=dFoxModel_Lut_0x7808_palette */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dFoxModel_Tex_0x7700[264] = {
 	#include <FoxModel/Tex_0x7700.tex.inc.c>
 };
@@ -2459,7 +2459,7 @@ u16 dFoxModel_Lut_0x7808_palette[16] = {
 PAD(8);  /* was 8 zero bytes typed as `u32 gap_0x7828[2] = { End, End }`. */
 
 /* gap sub-block @ 0x7830 (was gap+0x8, 264 bytes) */
-/* @tex fmt=CI4 dim=32x16 lut=dFoxModel_Lut_0x7808_palette */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dFoxModel_Tex_0x7830[264] = {
 	#include <FoxModel/Tex_0x7830.tex.inc.c>
 };

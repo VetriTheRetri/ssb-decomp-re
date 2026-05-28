@@ -281,5 +281,3 @@ u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28[] = {
 	aobjEvent32SetFlags(0x002, 0),
 	aobjEvent32End(),
 };
-
-PAD(8);

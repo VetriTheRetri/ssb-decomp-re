@@ -46,7 +46,7 @@ u16 *dMarioSpecial3_palettes_0x00DC[3] = {
 /* @ 0x00E8, 120 bytes: MObjSub describing the CI4 texture rendering setup. */
 MObjSub dMarioSpecial3_MObjSub_0x00E8 = {
 	0x0000,                                            /* pad00 */
-	0x02, 0x02,                                        /* fmt (CI), siz (16b) */
+	G_IM_FMT_CI, G_IM_SIZ_16b,                                        /* fmt (CI), siz (16b) */
 	(void **)0x00000000,                               /* sprites */
 	0x0020, 0x0000, 0x0010, 0x0010,                    /* unk08, unk0A, unk0C, unk0E */
 	0,                                                 /* unk10 */
@@ -55,7 +55,7 @@ MObjSub dMarioSpecial3_MObjSub_0x00E8 = {
 	0.0f, 1.0f,                                        /* unk24, unk28 */
 	(void **)dMarioSpecial3_palettes_0x00DC,           /* palettes (chain-rewritten) */
 	0x0004,                                            /* flags (MOBJ_FLAG_PALETTE) */
-	0x02, 0x00,                                        /* block_fmt (CI), block_siz (4b) */
+	G_IM_FMT_CI, G_IM_SIZ_4b,                                        /* block_fmt (CI), block_siz (4b) */
 	0x0010,                                            /* block_dxt */
 	0x0010, 0x0010, 0x0010,                            /* unk36, unk38, unk3A */
 	0.0f, 0.0f,                                        /* scrollu, scrollv */

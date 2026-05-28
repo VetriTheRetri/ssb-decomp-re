@@ -645,7 +645,7 @@ MObjSub dMVOpeningClashWallpaper_gap_0x30C8_sub_0xA0[1] = {
 		0.0f, 1.0f,                                   /* unk24, unk28 */
 		(void**)dMVOpeningClashWallpaper_LLPalettes,  /* palettes */
 		0x0004,                                       /* flags */
-		0x02, 0x00,                                   /* block_fmt, block_siz */
+		G_IM_FMT_CI, G_IM_SIZ_4b,                                   /* block_fmt, block_siz */
 		0x00A0,                                       /* block_dxt */
 		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
 		0.0f, 0.0f,                                   /* scrollu, scrollv */
@@ -979,7 +979,7 @@ MObjSub dMVOpeningClashWallpaper_gap_0x3758_sub_0xA0[1] = {
 		0.0f, 1.0f,                                   /* unk24, unk28 */
 		(void**)dMVOpeningClashWallpaper_LRPalettes,  /* palettes */
 		0x0004,                                       /* flags */
-		0x02, 0x00,                                   /* block_fmt, block_siz */
+		G_IM_FMT_CI, G_IM_SIZ_4b,                                   /* block_fmt, block_siz */
 		0x00A0,                                       /* block_dxt */
 		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
 		0.0f, 0.0f,                                   /* scrollu, scrollv */
@@ -1311,7 +1311,7 @@ MObjSub dMVOpeningClashWallpaper_gap_0x3DE8_sub_0xA0[1] = {
 		0.0f, 1.0f,                                   /* unk24, unk28 */
 		(void**)dMVOpeningClashWallpaper_ULPalettes,  /* palettes */
 		0x0004,                                       /* flags */
-		0x02, 0x00,                                   /* block_fmt, block_siz */
+		G_IM_FMT_CI, G_IM_SIZ_4b,                                   /* block_fmt, block_siz */
 		0x00A0,                                       /* block_dxt */
 		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
 		0.0f, 0.0f,                                   /* scrollu, scrollv */
@@ -1650,7 +1650,7 @@ MObjSub dMVOpeningClashWallpaper_gap_0x4488_sub_0xA0[1] = {
 		0.0f, 1.0f,                                   /* unk24, unk28 */
 		(void**)dMVOpeningClashWallpaper_URPalettes,  /* palettes */
 		0x0004,                                       /* flags */
-		0x02, 0x00,                                   /* block_fmt, block_siz */
+		G_IM_FMT_CI, G_IM_SIZ_4b,                                   /* block_fmt, block_siz */
 		0x00A0,                                       /* block_dxt */
 		0x0078, 0x00A0, 0x0078,                       /* unk36, unk38, unk3A */
 		0.0f, 0.0f,                                   /* scrollu, scrollv */

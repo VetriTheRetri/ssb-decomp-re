@@ -3561,7 +3561,7 @@ PAD(4);
 MObjSub dStageJungleFile2_gap_0xD1B4_sub_0x209C[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageJungleFile2_gap_0xD1B4_sub_0x2084,
 		0x0020, 0x0000, 0x0030, 0x0040,
 		0,
@@ -3570,7 +3570,7 @@ MObjSub dStageJungleFile2_gap_0xD1B4_sub_0x209C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0030,
 		0x0040, 0x0030, 0x0040,
 		0.0f, 0.0f,

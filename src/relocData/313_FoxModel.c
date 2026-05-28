@@ -115,7 +115,7 @@ PAD(4);
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x40[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x002D, 0x0005, 0x0020, 0x0020,
 		0,
@@ -124,7 +124,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x40[1] = {
 		0.15000000596046448f, 0.699999988079071f,
 		(void**)dFoxModel_Joint_0x0060_post_sub_0xC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.15000000596046448f, 0.1809999942779541f,
@@ -145,7 +145,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x40[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0xB8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -154,7 +154,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0xB8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -175,7 +175,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0xB8[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x130[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -184,7 +184,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x130[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -205,7 +205,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x130[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x1A8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -214,7 +214,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x1A8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -235,7 +235,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x1A8[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x220[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -244,7 +244,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x220[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -265,7 +265,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x220[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x298[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dFoxModel_Joint_0x0060_post_sub_0x1C,
 		0x0072, 0x000B, 0x0040, 0x0020,
 		0,
@@ -274,7 +274,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x298[1] = {
 		0.1599999964237213f, 0.6800000071525574f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0040, 0x0020,
 		0.1599999964237213f, 0.3919999897480011f,
@@ -295,7 +295,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x298[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x310[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dFoxModel_Joint_0x0060_post_sub_0x24,
 		0x00D5, 0x0014, 0x0020, 0x0010,
 		0,
@@ -304,7 +304,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x310[1] = {
 		0.609499990940094f, 0.4129999876022339f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.609499990940094f, 0.7577499747276306f,
@@ -325,7 +325,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x310[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x388[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -334,7 +334,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x388[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -355,7 +355,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x388[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x400[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -364,7 +364,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x400[1] = {
 		0.0f, 1.0f,
 		(void**)dFoxModel_Joint_0x0060_post_sub_0x2C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -385,7 +385,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x400[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x478[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -394,7 +394,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x478[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -415,7 +415,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x478[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x4F0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -424,7 +424,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x4F0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -445,7 +445,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x4F0[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x568[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -454,7 +454,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x568[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -475,7 +475,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x568[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x5E0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -484,7 +484,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x5E0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -505,7 +505,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x5E0[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x658[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -514,7 +514,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x658[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -535,7 +535,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x658[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x6D0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -544,7 +544,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x6D0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -565,7 +565,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x6D0[1] = {
 MObjSub dFoxModel_Joint_0x0060_post_sub_0x748[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -574,7 +574,7 @@ MObjSub dFoxModel_Joint_0x0060_post_sub_0x748[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1184,7 +1184,7 @@ void *dFoxModel_gap_0x2E60_sub_0x35C[5] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x370[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1193,7 +1193,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x370[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1214,7 +1214,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x370[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x3E8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x002D, 0x0005, 0x0020, 0x0020,
 		0,
@@ -1223,7 +1223,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x3E8[1] = {
 		0.15000000596046448f, 0.699999988079071f,
 		(void**)dFoxModel_gap_0x2E60_sub_0x33C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.15000000596046448f, 0.07500000298023224f,
@@ -1244,7 +1244,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x3E8[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x460[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1253,7 +1253,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x460[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1274,7 +1274,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x460[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x4D8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1283,7 +1283,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x4D8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1304,7 +1304,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x4D8[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x550[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1313,7 +1313,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x550[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1334,7 +1334,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x550[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x5C8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dFoxModel_gap_0x2E60_sub_0x34C,
 		0x007B, 0x000B, 0x0040, 0x0020,
 		0,
@@ -1343,7 +1343,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x5C8[1] = {
 		0.1599999964237213f, 0.6800000071525574f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0040, 0x0020,
 		0.1599999964237213f, 0.3919999897480011f,
@@ -1364,7 +1364,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x5C8[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x640[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dFoxModel_gap_0x2E60_sub_0x354,
 		0x00D5, 0x0014, 0x0020, 0x0010,
 		0,
@@ -1373,7 +1373,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x640[1] = {
 		0.609499990940094f, 0.4129999876022339f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.609499990940094f, 0.7577000260353088f,
@@ -1394,7 +1394,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x640[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x6B8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1403,7 +1403,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x6B8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1424,7 +1424,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x6B8[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x730[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0005, 0x0020, 0x0020,
 		0,
@@ -1433,7 +1433,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x730[1] = {
 		0.0f, 1.0f,
 		(void**)dFoxModel_gap_0x2E60_sub_0x35C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.052000001072883606f,
@@ -1454,7 +1454,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x730[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x7A8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1463,7 +1463,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x7A8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1484,7 +1484,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x7A8[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x820[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1493,7 +1493,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x820[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1514,7 +1514,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x820[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x898[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1523,7 +1523,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x898[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1544,7 +1544,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x898[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x910[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1553,7 +1553,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x910[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1574,7 +1574,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x910[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0x988[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1583,7 +1583,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x988[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1604,7 +1604,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0x988[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0xA00[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1613,7 +1613,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0xA00[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1634,7 +1634,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0xA00[1] = {
 MObjSub dFoxModel_gap_0x2E60_sub_0xA78[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1643,7 +1643,7 @@ MObjSub dFoxModel_gap_0x2E60_sub_0xA78[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2602,5 +2602,3 @@ Sprite dFoxModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
-
-PAD(4);

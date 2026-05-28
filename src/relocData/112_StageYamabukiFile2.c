@@ -758,7 +758,7 @@ PAD(4);
 MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub_real[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageYamabukiFile2_Layer1MObj_MObjSub_sub_0x24,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -767,7 +767,7 @@ MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub_real[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x00A1,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -788,7 +788,7 @@ MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub_real[1] = {
 MObjSub dStageYamabukiFile2_gap_0x52D8_sub_0x40[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageYamabukiFile2_Layer1MObj_MObjSub_sub_0x30,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -797,7 +797,7 @@ MObjSub dStageYamabukiFile2_gap_0x52D8_sub_0x40[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x00A1,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -2066,7 +2066,7 @@ void *dStageYamabukiFile2_gap_0x87C8_sub_0xFD0[4] = {
 MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0xFE0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageYamabukiFile2_gap_0x87C8_sub_0xFD0,
 		0x0020, 0x0000, 0x0028, 0x0028,
 		0,
@@ -2075,7 +2075,7 @@ MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0xFE0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0028,
 		0x0028, 0x0028, 0x0028,
 		0.0f, 0.0f,
@@ -2689,7 +2689,7 @@ void *dStageYamabukiFile2_gap_0x87C8_sub_0x3F00[6] = {
 MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0x3F18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageYamabukiFile2_gap_0x87C8_sub_0x3F00,
 		0x0020, 0x0000, 0x0028, 0x0040,
 		0,
@@ -2698,7 +2698,7 @@ MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0x3F18[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0028,
 		0x0040, 0x0028, 0x0040,
 		0.0f, 0.0f,
@@ -2914,7 +2914,7 @@ PAD(4);
 MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0x5A88[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageYamabukiFile2_gap_0x87C8_sub_0x5A70,
 		0x0020, 0x0000, 0x0028, 0x0030,
 		0,
@@ -2923,7 +2923,7 @@ MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0x5A88[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0028,
 		0x0030, 0x0028, 0x0030,
 		0.0f, 0.0f,
@@ -3171,7 +3171,7 @@ void *dStageYamabukiFile2_gap_0x87C8_sub_0x74D0[4] = {
 MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0x74E0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageYamabukiFile2_gap_0x87C8_sub_0x74D0,
 		0x0020, 0x0000, 0x0030, 0x0038,
 		0,
@@ -3180,7 +3180,7 @@ MObjSub dStageYamabukiFile2_gap_0x87C8_sub_0x74E0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0030,
 		0x0038, 0x0030, 0x0038,
 		0.0f, 0.0f,

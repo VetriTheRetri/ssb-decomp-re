@@ -383,7 +383,7 @@ u16 *dMVOpeningRunCrash_gap_0x2B20_sub_0xD4[27] = {
 MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x140[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -392,7 +392,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x140[1] = {
 		0.0f, 1.0f,
 		(void**)((u8*)dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub + 0x14),
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -413,7 +413,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x140[1] = {
 MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x1B8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -422,7 +422,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x1B8[1] = {
 		0.0f, 1.0f,
 		(void**)dMVOpeningRunCrash_gap_0x2B20_sub_0x4,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -443,7 +443,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x1B8[1] = {
 MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x230[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -452,7 +452,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x230[1] = {
 		0.0f, 1.0f,
 		(void**)dMVOpeningRunCrash_gap_0x2B20_sub_0x6C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -473,7 +473,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x230[1] = {
 MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x2A8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -482,7 +482,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x2A8[1] = {
 		0.0f, 1.0f,
 		(void**)dMVOpeningRunCrash_gap_0x2B20_sub_0xD4,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -843,6 +843,3 @@ u32 dMVOpeningRunCrash_MatAnimJoint_0x3AA0[] = {
 	(u32)((u8*)dMVOpeningRunCrash_MatAnimJoint_0x3700 + 0x2B4),
 	aobjEvent32End(),
 };
-
-PAD(8);
-

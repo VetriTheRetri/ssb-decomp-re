@@ -696,5 +696,3 @@ DObjDesc dStageYamabukiFile3_DObjDesc_0x2A50[3] = {
 	{ 1, (void *)dStageYamabukiFile3_DLLink_0x2A38, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(12);

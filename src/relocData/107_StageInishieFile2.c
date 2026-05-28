@@ -248,7 +248,7 @@ PAD(4);
 MObjSub dStageInishieFile2_Layer0MObj_MObjSub_real[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x28,
 		0x0020, 0x0000, 0x0020, 0x0030,
 		0,
@@ -257,7 +257,7 @@ MObjSub dStageInishieFile2_Layer0MObj_MObjSub_real[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0030, 0x0020, 0x0030,
 		0.0f, 0.0f,
@@ -278,7 +278,7 @@ MObjSub dStageInishieFile2_Layer0MObj_MObjSub_real[1] = {
 MObjSub dStageInishieFile2_gap_0x37A8_sub_0x50[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x34,
 		0x0020, 0x0000, 0x0018, 0x0018,
 		0,
@@ -287,7 +287,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0x50[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0018,
 		0x0018, 0x0018, 0x0018,
 		0.0f, 0.0f,
@@ -308,7 +308,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0x50[1] = {
 MObjSub dStageInishieFile2_gap_0x37A8_sub_0xC8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x3C,
 		0x0020, 0x0000, 0x0018, 0x0019,
 		0,
@@ -317,7 +317,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0xC8[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0018,
 		0x0019, 0x0018, 0x0019,
 		0.0f, 0.0f,
@@ -338,7 +338,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0xC8[1] = {
 MObjSub dStageInishieFile2_gap_0x37A8_sub_0x140[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageInishieFile2_Layer0MObj_MObjSub_sub_0x44,
 		0x0020, 0x0000, 0x0018, 0x0019,
 		0,
@@ -347,7 +347,7 @@ MObjSub dStageInishieFile2_gap_0x37A8_sub_0x140[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0018,
 		0x0019, 0x0018, 0x0019,
 		0.0f, 0.0f,
@@ -1546,5 +1546,3 @@ DObjDesc dStageInishieFile2_Layer3DObj[] = {
 	{ 1, (void*)dStageInishieFile2_DL_0x6A30, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(12);

@@ -175,5 +175,3 @@ PAD(8);
 u8 dBonus1CommonImages1_Tex_0x0A28[64] = {
 	#include <Bonus1CommonImages1/Tex_0x0A28.tex.inc.c>
 };
-
-PAD(8);

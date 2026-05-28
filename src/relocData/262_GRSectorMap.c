@@ -149,5 +149,3 @@ WPAttributes dGRSectorMap_ArwingLaser3D_WeaponAttributes = {
     0,  /* unused_0x2F_b7   :  1 */
     10,  /* knockback_base   : 10 */
 };
-PAD(12);
-

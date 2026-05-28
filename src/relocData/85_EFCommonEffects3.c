@@ -131,7 +131,7 @@ MObjSub dEFCommonEffects3_gap_0x0180_sub_0x10[1] = {
 MObjSub dEFCommonEffects3_gap_0x0180_sub_0x88[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0047, 0x0001, 0x0010, 0x0010,
 		0,
@@ -140,7 +140,7 @@ MObjSub dEFCommonEffects3_gap_0x0180_sub_0x88[1] = {
 		0.007329999934881926f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.007329999934881926f, 0.2785930037498474f,
@@ -161,7 +161,7 @@ MObjSub dEFCommonEffects3_gap_0x0180_sub_0x88[1] = {
 MObjSub dEFCommonEffects3_gap_0x0180_sub_0x100[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x004A, 0x0000, 0x0010, 0x0010,
 		0,
@@ -170,7 +170,7 @@ MObjSub dEFCommonEffects3_gap_0x0180_sub_0x100[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.0f, 0.2858000099658966f,
@@ -865,7 +865,7 @@ MObjSub dEFCommonEffects3_ItemGetSwirl_MObjSub_real[1] = {
 MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x18[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -874,7 +874,7 @@ MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x18[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -895,7 +895,7 @@ MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x18[1] = {
 MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x90[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -904,7 +904,7 @@ MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x90[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -925,7 +925,7 @@ MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x90[1] = {
 MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x108[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -934,7 +934,7 @@ MObjSub dEFCommonEffects3_gap_0x2D20_sub_0x108[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -1249,6 +1249,3 @@ u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
 	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC),
 	aobjEvent32End(),
 };
-
-PAD(4);
-

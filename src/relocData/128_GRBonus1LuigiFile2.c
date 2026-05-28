@@ -440,6 +440,3 @@ u32 dGRBonus1LuigiFile2_Layer1Anim_AnimJoint_data_0x2FC[7] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1LuigiFile2_Layer1Anim_AnimJoint_data_0x2FC,
 };
-
-PAD(8);
-

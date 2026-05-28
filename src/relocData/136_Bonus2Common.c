@@ -94,7 +94,7 @@ MObjSub dBonus2Common_PlatformSmall_MObjSub_real[1] = {
 MObjSub dBonus2Common_gap_0x3798_sub_0x10[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0032, 0x0032,
 		0,
@@ -103,7 +103,7 @@ MObjSub dBonus2Common_gap_0x3798_sub_0x10[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0032,
 		0x0032, 0x0032, 0x0032,
 		0.0f, 0.0f,
@@ -361,7 +361,7 @@ MObjSub dBonus2Common_PlatformMedium_MObjSub_real[1] = {
 MObjSub dBonus2Common_gap_0x3FE8_sub_0x10[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0032, 0x0032,
 		0,
@@ -370,7 +370,7 @@ MObjSub dBonus2Common_gap_0x3FE8_sub_0x10[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0032,
 		0x0032, 0x0032, 0x0032,
 		0.0f, 0.0f,
@@ -620,7 +620,7 @@ MObjSub dBonus2Common_PlatformLarge_MObjSub_real[1] = {
 MObjSub dBonus2Common_gap_0x4818_sub_0x10[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0032, 0x0032,
 		0,
@@ -629,7 +629,7 @@ MObjSub dBonus2Common_gap_0x4818_sub_0x10[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0032,
 		0x0032, 0x0032, 0x0032,
 		0.0f, 0.0f,

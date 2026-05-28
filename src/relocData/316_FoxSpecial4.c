@@ -19,4 +19,3 @@ Gfx dFoxSpecial4_ReflectorDL_DisplayList[9] = {
 };
 
 /* @ 0x88: 8 bytes of trailing zero pad. */
-PAD(8);

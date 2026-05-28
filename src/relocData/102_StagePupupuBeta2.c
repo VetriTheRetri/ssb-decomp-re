@@ -571,5 +571,3 @@ u32 dStagePupupuBeta2_data_0x28C0_body[11] = {
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dStagePupupuBeta2_data_0x28C0_body,
 };
-
-PAD(8);

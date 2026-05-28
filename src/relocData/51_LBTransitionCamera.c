@@ -282,6 +282,3 @@ u32 dLBTransitionCamera_AnimJoint_0x4268[] = {
 	    0xBDAF5FEE,  /* -0.08563219010829926f */
 	aobjEvent32End(),
 };
-
-PAD(4);
-

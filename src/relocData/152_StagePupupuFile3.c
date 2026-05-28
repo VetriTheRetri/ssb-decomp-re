@@ -2270,5 +2270,3 @@ u32 dStagePupupuFile3_AnimJoint_0x36CC[12] = {
 	    0x432C8000,  /* 172.5f */
 	aobjEvent32End(),
 };
-
-PAD(4);

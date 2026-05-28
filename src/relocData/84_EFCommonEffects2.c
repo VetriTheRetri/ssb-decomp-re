@@ -197,7 +197,7 @@ MObjSub dEFCommonEffects2_ShockSmallMObjSub_MObjSub_real[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -530,7 +530,7 @@ MObjSub dEFCommonEffects2_CatchSwirlMObjSub_real[1] = {
 MObjSub dEFCommonEffects2_gap_0x2310_sub_0x38[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -539,7 +539,7 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0x38[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -560,7 +560,7 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0x38[1] = {
 MObjSub dEFCommonEffects2_gap_0x2310_sub_0xB0[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -569,7 +569,7 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0xB0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -590,7 +590,7 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0xB0[1] = {
 MObjSub dEFCommonEffects2_gap_0x2310_sub_0x128[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -599,7 +599,7 @@ MObjSub dEFCommonEffects2_gap_0x2310_sub_0x128[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -1006,7 +1006,7 @@ MObjSub dEFCommonEffects2_ReflectBreakMObjSub_real[1] = {
 MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0x38[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -1015,7 +1015,7 @@ MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0x38[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x1200,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1036,7 +1036,7 @@ MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0x38[1] = {
 MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0xB0[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -1045,7 +1045,7 @@ MObjSub dEFCommonEffects2_gap_0x2FD0_sub_0xB0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x1200,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1396,7 +1396,7 @@ MObjSub dEFCommonEffects2_DeadExplodeDefaultMObjSub_real[1] = {
 MObjSub dEFCommonEffects2_gap_0x4F34_sub_0x5C[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0040,
 		0,
@@ -1405,7 +1405,7 @@ MObjSub dEFCommonEffects2_gap_0x4F34_sub_0x5C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0040, 0x0020, 0x0040,
 		0.0f, 0.0f,
@@ -1426,7 +1426,7 @@ MObjSub dEFCommonEffects2_gap_0x4F34_sub_0x5C[1] = {
 MObjSub dEFCommonEffects2_gap_0x4F34_sub_0xD4[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0040, 0x0000, 0x0060, 0x0020,
 		1,
@@ -1435,7 +1435,7 @@ MObjSub dEFCommonEffects2_gap_0x4F34_sub_0xD4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0060, 0x0020,
 		0.0f, 0.0f,
@@ -2248,6 +2248,3 @@ u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[] = {
 	(u32)(dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28),
 	aobjEvent32End(),
 };
-
-PAD(4);
-

@@ -2062,5 +2062,3 @@ SYInterpDesc dGRBonus2PurinFile2_Layer1Anim_AnimJoint_0x13FC[1] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus2PurinFile2_Layer1Anim_AnimJoint_0x1414,
 };
-PAD(12);
-

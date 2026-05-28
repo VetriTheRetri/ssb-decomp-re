@@ -3984,7 +3984,7 @@ void *dStageSectorFile2_Layer1Anim_sprites_0x28C8[2] = {
 MObjSub dStageSectorFile2_Layer1Anim_MObjSub_0x28D0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void **)dStageSectorFile2_Layer1Anim_sprites_0x28C8,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -3993,7 +3993,7 @@ MObjSub dStageSectorFile2_Layer1Anim_MObjSub_0x28D0[1] = {
 		0.0f, 1.0f,
 		(void **)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,

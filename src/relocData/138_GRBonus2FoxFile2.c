@@ -260,7 +260,7 @@ void *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20[6] = {
 MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dGRBonus2FoxFile2_Layer1MObj_sprites_A,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -269,7 +269,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -290,7 +290,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x38[1] = {
 MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dGRBonus2FoxFile2_Layer1MObj_sprites_B,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -299,7 +299,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -320,7 +320,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB0[1] = {
 MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x128[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -329,7 +329,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x128[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -350,7 +350,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x128[1] = {
 MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1A0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20,
 		0x0020, 0x0000, 0x0020, 0x0010,
 		0,
@@ -359,7 +359,7 @@ MObjSub dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1A0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0020, 0x0010,
 		0.0f, 0.0f,
@@ -14555,5 +14555,3 @@ u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xCA2C[402] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xCA2C,
 };
-PAD(12);
-

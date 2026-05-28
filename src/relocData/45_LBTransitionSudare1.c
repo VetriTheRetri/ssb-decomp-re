@@ -251,6 +251,3 @@ u32 dLBTransitionSudare1_AnimJoint_0x77F4[] = {
 	    0xC5228000,  /* -2600.0f */
 	aobjEvent32End(),
 };
-
-PAD(4);
-

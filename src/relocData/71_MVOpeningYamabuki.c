@@ -2500,4 +2500,3 @@ Sprite dMVOpeningYamabuki_WallpaperSprite = {
 };
 
 /* Trailing 4-byte pad @ 0x3EE9C..0x3EEA0. */
-PAD(4);

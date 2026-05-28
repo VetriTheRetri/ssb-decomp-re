@@ -420,7 +420,7 @@ u8 *dStagePupupuFile2_gap_0x1D00_sub_0x26C[3] = {
 MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x278[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStagePupupuFile2_gap_0x1D00_sub_0x260,
 		0x0020, 0x0180, 0x0080, 0x0080,
 		0,
@@ -429,7 +429,7 @@ MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x278[1] = {
 		0.006599999964237213f, 2.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0080, 0x0080,
 		0.006599999964237213f, 0.0f,
@@ -450,7 +450,7 @@ MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x278[1] = {
 MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x2F0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStagePupupuFile2_gap_0x1D00_sub_0x26C,
 		0x0020, 0x0040, 0x0020, 0x0040,
 		0,
@@ -459,7 +459,7 @@ MObjSub dStagePupupuFile2_gap_0x1D00_sub_0x2F0[1] = {
 		0.006599999964237213f, 1.25f,
 		(void**)0x00000000,
 		0x006B,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0040,
 		0.006599999964237213f, 0.0f,
@@ -787,7 +787,7 @@ u8 *dStagePupupuFile2_Layer3Anim_spritelink_0x31F8[4] = {
 MObjSub dStagePupupuFile2_Layer3Anim_MObjSub_0x3208[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStagePupupuFile2_Layer3Anim_spritelink_0x31F8,
 		0x0020, 0x0000, 0x0020, 0x0018,
 		0,
@@ -796,7 +796,7 @@ MObjSub dStagePupupuFile2_Layer3Anim_MObjSub_0x3208[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0020, 0x0018,
 		0.0f, 0.0f,
@@ -1567,5 +1567,3 @@ u32 dStagePupupuFile2_Layer3Anim_MatAnim_0x4088[215] = {
 };
 
 /* @ 0x43E4, 12 bytes - trailing zero padding. */
-PAD(12);
-

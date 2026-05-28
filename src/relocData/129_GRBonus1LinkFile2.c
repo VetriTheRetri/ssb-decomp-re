@@ -675,5 +675,3 @@ u32 dGRBonus1LinkFile2_Layer1YakumonoAnimJoint_0x2AC[] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1LinkFile2_Layer1YakumonoAnimJoint_0x2AC,
 };
-
-PAD(8);

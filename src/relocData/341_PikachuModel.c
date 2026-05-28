@@ -272,7 +272,7 @@ u16 *dPikachuModel_Joint_0x0040_post_palettes_0x114[5] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x128[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x009E, 0x000A, 0x0020, 0x0008,
 		1,
@@ -281,7 +281,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x128[1] = {
 		0.29865700006484985f, 0.4026859998703003f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x2C,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0008, 0x0020, 0x0008,
 		0.29865700006484985f, 0.49424299597740173f,
@@ -301,7 +301,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x128[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x1A0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -310,7 +310,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x1A0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -330,7 +330,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x1A0[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x218[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -339,7 +339,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x218[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -359,7 +359,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x218[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x290[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dPikachuModel_Joint_0x0040_post_sprites_0x40,
 		0x007B, 0x0007, 0x0040, 0x0010,
 		0,
@@ -368,7 +368,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x290[1] = {
 		0.10249999910593033f, 0.7950000166893005f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x60,
 		0x3005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.10249999910593033f, 0.4959999918937683f,
@@ -388,7 +388,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x290[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x308[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dPikachuModel_Joint_0x0040_post_sprites_0x74,
 		0x00DC, 0x0027, 0x0040, 0x0010,
 		1,
@@ -397,7 +397,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x308[1] = {
 		0.6025999784469604f, 0.28999999165534973f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x9C,
 		0x3205,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.6025999784469604f, 0.48750001192092896f,
@@ -417,7 +417,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x308[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x380[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -426,7 +426,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x380[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -446,7 +446,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x380[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x3F8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x003A, 0x0000, 0x000C, 0x0001,
 		0,
@@ -455,7 +455,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x3F8[1] = {
 		0.0f, 0.550000011920929f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xB0,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x000C,
 		0x0001, 0x000C, 0x0001,
 		0.0f, 0.0f,
@@ -475,7 +475,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x3F8[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x470[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x003A, 0x0001, 0x000C, 0x0001,
 		0,
@@ -484,7 +484,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x470[1] = {
 		0.0f, 0.550000011920929f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xC4,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x000C,
 		0x0001, 0x000C, 0x0001,
 		0.0f, 0.07999999821186066f,
@@ -504,7 +504,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x470[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x4E8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -513,7 +513,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x4E8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -533,7 +533,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x4E8[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x560[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -542,7 +542,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x560[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -562,7 +562,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x560[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x5D8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x009E, 0x000A, 0x0020, 0x0008,
 		1,
@@ -571,7 +571,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x5D8[1] = {
 		0.29865700006484985f, 0.4026859998703003f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xD8,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0008, 0x0020, 0x0008,
 		0.29865700006484985f, 0.1920360028743744f,
@@ -591,7 +591,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x5D8[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x650[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -600,7 +600,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x650[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -620,7 +620,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x650[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x6C8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -629,7 +629,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x6C8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -649,7 +649,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x6C8[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x740[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -658,7 +658,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x740[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -678,7 +678,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x740[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x7B8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -687,7 +687,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x7B8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -707,7 +707,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x7B8[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x830[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -716,7 +716,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x830[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -736,7 +736,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x830[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x8A8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -745,7 +745,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x8A8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -765,7 +765,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x8A8[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x920[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0008, 0x0010, 0x0001,
 		0,
@@ -774,7 +774,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x920[1] = {
 		0.438493013381958f, 3.6990139484405518f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xEC,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0001, 0x0010, 0x0001,
 		0.438493013381958f, 0.0f,
@@ -794,7 +794,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x920[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0x998[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0003, 0x0010, 0x0001,
 		0,
@@ -803,7 +803,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x998[1] = {
 		-0.177839994430542f, 2.3716800212860107f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x100,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0001, 0x0010, 0x0001,
 		-0.177839994430542f, 0.0f,
@@ -823,7 +823,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x998[1] = {
 MObjSub dPikachuModel_Joint_0x0040_post_sub_0xA10[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0009, 0x0010, 0x0001,
 		0,
@@ -832,7 +832,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0xA10[1] = {
 		-0.527999997138977f, 1.559999942779541f,
 		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x114,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0001, 0x0010, 0x0001,
 		-0.527999997138977f, 0.0203000009059906f,
@@ -2030,7 +2030,7 @@ u16 *dPikachuModel_gap_0x2B78_sub_0xA0C[5] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xA20[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x009E, 0x000A, 0x0020, 0x0008,
 		1,
@@ -2039,7 +2039,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xA20[1] = {
 		0.30025699734687805f, 0.4026859998703003f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x924,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0008, 0x0020, 0x0008,
 		0.30025699734687805f, 0.49424299597740173f,
@@ -2060,7 +2060,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xA20[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xA98[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2069,7 +2069,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xA98[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2090,7 +2090,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xA98[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xB10[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2099,7 +2099,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xB10[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2120,7 +2120,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xB10[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xB88[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x938,
 		0x0076, 0x0007, 0x0040, 0x0010,
 		0,
@@ -2129,7 +2129,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xB88[1] = {
 		0.10499999672174454f, 0.7900000214576721f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x958,
 		0x3005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.10499999672174454f, 0.5049999952316284f,
@@ -2150,7 +2150,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xB88[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xC00[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x96C,
 		0x00DC, 0x0027, 0x0040, 0x0010,
 		1,
@@ -2159,7 +2159,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xC00[1] = {
 		0.6025999784469604f, 0.28999999165534973f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x994,
 		0x3005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.6025999784469604f, 0.48750001192092896f,
@@ -2180,7 +2180,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xC00[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xC78[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2189,7 +2189,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xC78[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2210,7 +2210,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xC78[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xCF0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x003A, 0x0003, 0x000C, 0x0001,
 		0,
@@ -2219,7 +2219,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xCF0[1] = {
 		0.20160000026226044f, 0.550000011920929f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x9A8,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x000C,
 		0x0001, 0x000C, 0x0001,
 		0.20160000026226044f, 0.0f,
@@ -2240,7 +2240,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xCF0[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xD68[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x003A, 0x0003, 0x000C, 0x0001,
 		0,
@@ -2249,7 +2249,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xD68[1] = {
 		0.20160000026226044f, 0.550000011920929f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x9BC,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x000C,
 		0x0001, 0x000C, 0x0001,
 		0.20160000026226044f, 0.07999999821186066f,
@@ -2270,7 +2270,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xD68[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xDE0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2279,7 +2279,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xDE0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2300,7 +2300,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xDE0[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xE58[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2309,7 +2309,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xE58[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2330,7 +2330,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xE58[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xED0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x009E, 0x000A, 0x0020, 0x0008,
 		1,
@@ -2339,7 +2339,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xED0[1] = {
 		0.30025699734687805f, 0.4026859998703003f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x9D0,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0008, 0x0020, 0x0008,
 		0.30025699734687805f, 0.1920360028743744f,
@@ -2360,7 +2360,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xED0[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xF48[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2369,7 +2369,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xF48[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2390,7 +2390,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xF48[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0xFC0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2399,7 +2399,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xFC0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2420,7 +2420,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0xFC0[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x1038[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2429,7 +2429,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1038[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2450,7 +2450,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1038[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x10B0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2459,7 +2459,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x10B0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2480,7 +2480,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x10B0[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x1128[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2489,7 +2489,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1128[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2510,7 +2510,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1128[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x11A0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2519,7 +2519,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x11A0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2540,7 +2540,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x11A0[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x1218[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0008, 0x0010, 0x0001,
 		0,
@@ -2549,7 +2549,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1218[1] = {
 		0.4400930106639862f, 3.6990139484405518f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x9E4,
 		0x3204,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0001, 0x0010, 0x0001,
 		0.4400930106639862f, 0.0f,
@@ -2570,7 +2570,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1218[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x1290[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0003, 0x0010, 0x0001,
 		0,
@@ -2579,7 +2579,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1290[1] = {
 		-0.1762399971485138f, 2.3716800212860107f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0x9F8,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0001, 0x0010, 0x0001,
 		-0.1762399971485138f, 0.0f,
@@ -2600,7 +2600,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1290[1] = {
 MObjSub dPikachuModel_gap_0x2B78_sub_0x1308[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0009, 0x0010, 0x0001,
 		0,
@@ -2609,7 +2609,7 @@ MObjSub dPikachuModel_gap_0x2B78_sub_0x1308[1] = {
 		-0.5264000296592712f, 1.559999942779541f,
 		(void**)dPikachuModel_gap_0x2B78_sub_0xA0C,
 		0x3004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0001, 0x0010, 0x0001,
 		-0.5264000296592712f, 0.0203000009059906f,
@@ -3699,7 +3699,7 @@ u16 *dPikachuModel_gap_0x59B8_sub_0x89C[3] = {
 MObjSub dPikachuModel_gap_0x59B8_sub_0x8A8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0040, 0x0002, 0x0020, 0x0020,
 		1,
@@ -3708,7 +3708,7 @@ MObjSub dPikachuModel_gap_0x59B8_sub_0x8A8[1] = {
 		-0.03759999945759773f, 1.0f,
 		(void**)dPikachuModel_gap_0x59B8_sub_0x89C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0020, 0x0020,
 		-0.03759999945759773f, 0.0f,
@@ -3729,7 +3729,7 @@ MObjSub dPikachuModel_gap_0x59B8_sub_0x8A8[1] = {
 MObjSub dPikachuModel_gap_0x59B8_sub_0x920[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -3738,7 +3738,7 @@ MObjSub dPikachuModel_gap_0x59B8_sub_0x920[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -4379,5 +4379,3 @@ Sprite dPikachuModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
-
-PAD(4);

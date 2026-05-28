@@ -266,6 +266,3 @@ u32 dLBTransitionCurtain_AnimJoint_0x7E34[] = {
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	aobjEvent32End(),
 };
-
-PAD(12);
-

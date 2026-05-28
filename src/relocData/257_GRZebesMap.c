@@ -74,5 +74,3 @@ MPGroundData dGRZebesMap_MapHeader_0x0014 =
 /* GRAttackColl @ 0xBC — acid-hazard hit params; read by grzebes.c via
  * llGRZebesMapAcidGRAttackColl. 8 B trailing pad. */
 GRAttackColl dGRZebesMap_Acid_GRAttackColl = { 0, 16, 80, 130, 0, 30, 1 };
-PAD(8);
-

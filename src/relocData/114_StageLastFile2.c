@@ -530,7 +530,7 @@ void *dStageLastFile2_gap_0x20F0_sub_0x2FC[19] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x348[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -539,7 +539,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x348[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_Layer1MObj_MObjSub_sub_0x14,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -560,7 +560,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x348[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x3C0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -569,7 +569,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x3C0[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_Layer1MObj_MObjSub_sub_0x5C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -590,7 +590,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x3C0[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x438[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -599,7 +599,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x438[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x2C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -620,7 +620,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x438[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x4B0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -629,7 +629,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x4B0[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x74,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -650,7 +650,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x4B0[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x528[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -659,7 +659,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x528[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0xBC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -680,7 +680,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x528[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x5A0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -689,7 +689,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x5A0[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x104,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -710,7 +710,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x5A0[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x618[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -719,7 +719,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x618[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x14C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -740,7 +740,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x618[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x690[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -749,7 +749,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x690[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x194,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -770,7 +770,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x690[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x708[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -779,7 +779,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x708[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x1DC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -800,7 +800,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x708[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x780[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -809,7 +809,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x780[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x224,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -830,7 +830,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x780[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x7F8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -839,7 +839,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x7F8[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x26C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -860,7 +860,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x7F8[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x870[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -869,7 +869,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x870[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x2B4,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -890,7 +890,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x870[1] = {
 MObjSub dStageLastFile2_gap_0x20F0_sub_0x8E8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -899,7 +899,7 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x8E8[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_gap_0x20F0_sub_0x2FC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -3801,7 +3801,7 @@ void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3794[4] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x37A4[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3794,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -3810,7 +3810,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x37A4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -4306,7 +4306,7 @@ u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8[3] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48C4[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4880,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4315,7 +4315,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48C4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4335,7 +4335,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48C4[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x493C[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4888,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4344,7 +4344,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x493C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4364,7 +4364,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x493C[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x49B4[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4890,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4373,7 +4373,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x49B4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4393,7 +4393,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x49B4[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4A2C[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4898,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4402,7 +4402,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4A2C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4422,7 +4422,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4A2C[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4AA4[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48A0,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4431,7 +4431,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4AA4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4451,7 +4451,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4AA4[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4B1C[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48A8,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4460,7 +4460,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4B1C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4480,7 +4480,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4B1C[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4B94[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B0,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4489,7 +4489,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4B94[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -4509,7 +4509,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4B94[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4C0C[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8,
 		0x0020, 0x0040, 0x00A0, 0x0040,
 		0,
@@ -4518,7 +4518,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4C0C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x006B,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x00A0, 0x0040,
 		0.0f, 0.0f,
@@ -5879,7 +5879,7 @@ MObjSub **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x751C_tail[2] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x852C[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0080, 0x0040, 0x0080,
 		0,
@@ -5888,7 +5888,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x852C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0040,
 		0x0040, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -5908,7 +5908,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x852C[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x85A4[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0080, 0x0040, 0x0080,
 		0,
@@ -5917,7 +5917,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x85A4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0040,
 		0x0040, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -6253,7 +6253,7 @@ void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB930[19] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB97C[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -6262,7 +6262,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB97C[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB858,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -6282,7 +6282,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB97C[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB9F4[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -6291,7 +6291,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB9F4[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB8A0,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -6311,7 +6311,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB9F4[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBA6C[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -6320,7 +6320,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBA6C[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB8E8,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -6340,7 +6340,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBA6C[1] = {
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBAE4[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x00A0, 0x0078,
 		0,
@@ -6349,7 +6349,7 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBAE4[1] = {
 		0.0f, 1.0f,
 		(void**)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB930,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
 		0x0078, 0x00A0, 0x0078,
 		0.0f, 0.0f,
@@ -6758,4 +6758,3 @@ u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xD994[27] = {
 	    0xBF860A92,  /* -1.0471975803375244f */
 	aobjEvent32End(),
 };
-PAD(12);

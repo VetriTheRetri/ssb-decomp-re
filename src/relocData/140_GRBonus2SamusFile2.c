@@ -748,5 +748,3 @@ u32 dGRBonus2SamusFile2_Layer1Anim_AnimJoint_0x54C[7] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus2SamusFile2_Layer1Anim_AnimJoint_0x54C,
 };
-PAD(8);
-

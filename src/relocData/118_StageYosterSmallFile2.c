@@ -2321,6 +2321,3 @@ DObjDesc dStageYosterSmallFile2_Layer3DObj[] = {
 	{ 1, (void*)dStageYosterSmallFile2_DL_0x4268, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(8);
-

@@ -374,5 +374,3 @@ WPAttributes dGRYamabukiMap_FushigibanaRazor_WeaponAttributes = {
     0,  /* unused_0x2F_b7   :  1 */
     30,  /* knockback_base   : 10 */
 };
-PAD(4);
-

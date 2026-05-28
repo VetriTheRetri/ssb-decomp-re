@@ -37,6 +37,3 @@ DObjDesc dFTManagerCommon_Shield[] = {
 	{ 1, (void*)dFTManagerCommon_DLLink_0x02F0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(12);
-

@@ -1086,6 +1086,173 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
     check_role(palettes_target, palettes_ln, "palettes", "u16")
 
 
+_TEX_ANNOTATION_RE = re.compile(
+    r"@tex\b[^*]*\bfmt\s*=\s*(?P<fmt>[A-Za-z0-9_]+)[^*]*\bdim\s*=\s*"
+    r"(?P<w>\d+)\s*x\s*(?P<h>\d+)"
+)
+
+# Recognise both convention forms for sprite-set / textured blocks.
+_TEX_NAME_RE = re.compile(r"(?:^|_)Tex(?:_0x[0-9A-Fa-f]+|$|_)")
+
+
+def _decl_has_tex_annotation(decl, lines):
+    """Return True if a `/* @tex fmt=... dim=WxH */` annotation sits in
+    the comment block immediately preceding `decl`. The annotation may
+    span multiple lines or share a line with the decl head."""
+    # Search up to 6 lines of leading comments / blank lines.
+    start = max(0, decl.start_line - 7)
+    end = decl.start_line  # 1-based — slice end-exclusive
+    blob = "\n".join(lines[start:end])
+    return bool(_TEX_ANNOTATION_RE.search(blob))
+
+
+def check_tex_preview_annotation(decl, path, diags, lines):
+    """R016 — texture blocks need `@tex fmt=… dim=WxH` annotation so the
+    PNG previewer can render them. Two derivation paths exist (walk the
+    DLs in the expanded view, or read the owning MObjSub's `block_fmt` /
+    `block_siz` / `unk38` / `unk3A` fields and apply across its sprites
+    array), both implemented by `tools/annotateTexBlocks.py` and
+    `tools/annotateMObjSubSprites.py`. The validator just flags the
+    missing annotation; run the annotators to fix.
+
+    Scope: any `u8 X[N]` decl whose include uses a tex-format extension
+    (`.tex.inc.c`, `.i4.inc.c`, `.ci4.inc.c`, …) or whose symbol name
+    matches the `Tex_0xNNNN` convention. Untyped `.data.inc.c` and
+    palette blocks are out of scope."""
+    if decl.is_pointer or decl.ctype != "u8":
+        return
+    tex_exts = (".tex.inc.c", ".i4.inc.c", ".i4c.inc.c", ".ci4.inc.c",
+                ".ci8.inc.c", ".ia8.inc.c", ".rgba16.inc.c", ".rgba32.inc.c")
+    has_tex_include = any(ext in tex_exts for _ln, ext, _raw in decl.includes)
+    looks_like_tex = bool(_TEX_NAME_RE.search(decl.name))
+    if not (has_tex_include or looks_like_tex):
+        return
+    if _decl_has_tex_annotation(decl, lines):
+        return
+    diags.append(Diag(
+        path, decl.start_line, "R016", "warn",
+        f"texture '{decl.name}' (u8[{decl.size}]) has no "
+        f"`@tex fmt=… dim=WxH` annotation above the decl — the PNG "
+        f"previewer falls back to dimension-guessing. Run "
+        f"`tools/annotateTexBlocks.py` (walks the DL to derive "
+        f"fmt/dim/LUT) and/or `tools/annotateMObjSubSprites.py` "
+        f"(applies the owning MObjSub's block_fmt/dim across the "
+        f"sprites array, propagating palettes too) to fix"))
+
+
+_MOBJSUB_FMT_LINE_RE = re.compile(
+    r"^\s*(?P<f>[A-Za-z_][A-Za-z_0-9]*|\d+|0x[0-9A-Fa-f]+)\s*,\s*"
+    r"(?P<s>[A-Za-z_][A-Za-z_0-9]*|\d+|0x[0-9A-Fa-f]+)\s*,?\s*$"
+)
+
+
+def _value_lines(decl):
+    """Return [(line_no, stripped)] for body lines that hold initializer
+    values — stripping comments, the opening `{`, includes, and blank
+    lines. Used by check_mobjsub_format_constants to walk the MObjSub
+    initializer field-by-field."""
+    out = []
+    for ln, txt in decl.body:
+        s = _strip_comments(txt).strip()
+        if not s or s.startswith("#"):
+            continue
+        # Drop a leading `{` (the per-element opener for array bodies)
+        # and trailing `},` / `}`.
+        s = s.lstrip("{").rstrip(",").rstrip().rstrip("}").rstrip(",").strip()
+        if not s:
+            continue
+        out.append((ln, s))
+    return out
+
+
+def check_mobjsub_format_constants(decl, path, diags):
+    r"""R015 — MObjSub `fmt`/`siz` and `block_fmt`/`block_siz` fields must
+    use the `G_IM_FMT_*` / `G_IM_SIZ_*` macros, not raw integers.
+
+    The MObjSub initializer body is positional:
+      [0] pad00 (u16)
+      [1] fmt, siz                  ← line 2 — typically `G_IM_FMT_X, G_IM_SIZ_Y`
+      [2] sprites (void**)
+      [3] unk08,0A,0C,0E (4x u16)
+      [4] unk10 (s32)
+      [5] trau, trav (2x f32)
+      [6] scau, scav (2x f32)
+      [7] unk24, unk28 (2x f32)
+      [8] palettes (void**)
+      [9] flags (u16)
+      [10] block_fmt, block_siz     ← line 11 — typically `G_IM_FMT_X, G_IM_SIZ_Y`
+      ... rest
+
+    Lines [1] and [10] should match `^G_IM_FMT_\w+, G_IM_SIZ_\w+$`. If
+    they hold bare digits / hex (e.g. `3, 2`), flag with the suggested
+    macro names. Hand-typed MObjSubs sometimes go in as raw ints when
+    decoded from a binary walk."""
+    if decl.ctype != "MObjSub" or decl.is_pointer:
+        return
+    vals = _value_lines(decl)
+    # Skip array-of-MObjSub: check each element's first ~12 value-lines.
+    # `MObjSub X[1] = { { ... } };` has the same flat order as the single
+    # form once `{` and `}` are stripped.
+    if len(vals) < 11:
+        return
+    for idx, label in ((1, "fmt/siz"), (10, "block_fmt/block_siz")):
+        if idx >= len(vals):
+            continue
+        ln, text = vals[idx]
+        m = _MOBJSUB_FMT_LINE_RE.match(text)
+        if not m:
+            continue
+        f_tok = m.group("f")
+        s_tok = m.group("s")
+        f_is_macro = f_tok.startswith("G_IM_FMT_")
+        s_is_macro = s_tok.startswith("G_IM_SIZ_")
+        if f_is_macro and s_is_macro:
+            continue
+        # Resolve raw → macro name suggestion.
+        fmt_map = {0: "G_IM_FMT_RGBA", 1: "G_IM_FMT_YUV", 2: "G_IM_FMT_CI",
+                   3: "G_IM_FMT_IA",   4: "G_IM_FMT_I"}
+        siz_map = {0: "G_IM_SIZ_4b", 1: "G_IM_SIZ_8b",
+                   2: "G_IM_SIZ_16b", 3: "G_IM_SIZ_32b"}
+        try:
+            f_int = int(f_tok, 0)
+            s_int = int(s_tok, 0)
+        except ValueError:
+            continue
+        f_name = fmt_map.get(f_int, f"<unknown fmt {f_int}>")
+        s_name = siz_map.get(s_int, f"<unknown siz {s_int}>")
+        diags.append(Diag(
+            path, ln, "R015", "warn",
+            f"MObjSub '{decl.name}' {label} uses raw `{f_tok}, {s_tok}` "
+            f"— replace with `{f_name}, {s_name}` so the format/size are "
+            f"readable and grep-able"))
+
+
+def check_trailing_pad(c_path, lines, diags):
+    """R017 — files must not end with a `PAD(N);` macro. Object alignment
+    is governed by the linker / next-section start; trailing PAD bytes
+    inflate the .data section and aren't byte-relevant. If the final
+    block is a PAD, drop it."""
+    # Walk backward, skipping blank lines and comments.
+    i = len(lines) - 1
+    while i >= 0:
+        s = lines[i].strip()
+        if not s:
+            i -= 1
+            continue
+        if s.startswith("/*") or s.startswith("//") or s.startswith("*"):
+            i -= 1
+            continue
+        # Match the PAD macro.
+        m = _PAD_RE.match(lines[i])
+        if m:
+            diags.append(Diag(
+                c_path, i + 1, "R017", "warn",
+                f"file ends with `PAD({m.group('n')});` — trailing pads "
+                f"should be removed (the build alignment handles tail "
+                f"padding automatically)"))
+        return
+
+
 def check_include_type_match(decl, path, diags):
     """R007 — type vs include-extension agreement."""
     if not decl.has_include():
@@ -1382,10 +1549,16 @@ def validate(c_path, enabled_rules):
             check_aobjevent32_undecoded_opcode(d, c_path, diags)
         if "R014" in enabled_rules:
             check_binary_data_inline(d, c_path, diags)
+        if "R015" in enabled_rules:
+            check_mobjsub_format_constants(d, c_path, diags)
+        if "R016" in enabled_rules:
+            check_tex_preview_annotation(d, c_path, diags, lines)
     if "R012" in enabled_rules:
         decls_by_name = {d.name: d for d in decls}
         for d in decls:
             check_mobjsub_pointer_array_types(d, c_path, diags, decls_by_name)
+    if "R017" in enabled_rules:
+        check_trailing_pad(c_path, lines, diags)
     if "R003" in enabled_rules or "R004" in enabled_rules:
         type_by_sym = {d.name: d.ctype for d in decls}
         type_by_sym.update(externs)  # extern type also helps
@@ -1407,7 +1580,8 @@ def validate(c_path, enabled_rules):
 
 
 ALL_RULES = ["R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008",
-             "R009", "R010", "R011", "R012", "R013", "R014"]
+             "R009", "R010", "R011", "R012", "R013", "R014", "R015", "R016",
+             "R017"]
 
 
 def main():
@@ -1430,6 +1604,9 @@ def main():
             "  R012  MObjSub.sprites/.palettes target has wrong-typed entries\n"
             "  R013  Undecoded opcode word in an AObjEvent32 script\n"
             "  R014  Vtx block inlines literal data instead of using a `.vtx.inc.c` include\n"
+            "  R015  MObjSub fmt/siz fields use raw ints instead of G_IM_FMT_*/G_IM_SIZ_*\n"
+            "  R016  Texture block missing `@tex fmt=… dim=WxH` annotation for previewer\n"
+            "  R017  File ends with a trailing PAD(N);\n"
         ),
     )
     ap.add_argument("targets", nargs="+",

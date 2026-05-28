@@ -480,5 +480,3 @@ u32 dStageInishieFile3_AnimJoint_0x13B8[20] = {
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 };
-
-PAD(8);

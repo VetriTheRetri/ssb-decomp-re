@@ -95,5 +95,3 @@ WPAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes = {
     10,  /* knockback_base   : 10 */
 #endif
 };
-
-PAD(8);  /* trail to 16-byte file alignment (2 * sizeof(WPAttributes) = 104, +8 = 112) */

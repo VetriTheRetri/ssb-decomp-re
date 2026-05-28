@@ -119,4 +119,3 @@ DObjDesc dStagePupupuBeta1_DObjDesc_0x1910[3] = {
 };
 
 /* @ 0x1994, 12 bytes pad */
-PAD(12);

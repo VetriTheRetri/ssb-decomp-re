@@ -836,5 +836,3 @@ u32 dFoxSpecial2_EntryArwingR_AnimJoint_0xB98[] = {
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 };
-
-PAD(4);

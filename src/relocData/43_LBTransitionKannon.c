@@ -82,6 +82,3 @@ u32 dLBTransitionKannon_AnimJoint_0x1FE0[] = {
 	    0xBE0700FD,  /* -0.13183970749378204f */
 	aobjEvent32End(),
 };
-
-PAD(12);
-

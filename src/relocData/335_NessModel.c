@@ -176,7 +176,7 @@ void *dNessModel_Joint_0x0040_post_palset_0x90[4] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0xA0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0024, 0x0003, 0x0020, 0x0020,
 		0,
@@ -185,7 +185,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0xA0[1] = {
 		0.065700002014637f, 0.8686000108718872f,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x2C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.065700002014637f, 0.08100000023841858f,
@@ -205,7 +205,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0xA0[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x118[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0024, 0x0003, 0x0020, 0x0020,
 		0,
@@ -214,7 +214,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x118[1] = {
 		0.065700002014637f, 0.8686000108718872f,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x3C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.065700002014637f, 0.08100000023841858f,
@@ -234,7 +234,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x118[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x190[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -243,7 +243,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x190[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -263,7 +263,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x190[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x208[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -272,7 +272,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x208[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x4C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -292,7 +292,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x208[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x280[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x5C,
 		0x003E, 0x0011, 0x0040, 0x0020,
 		0,
@@ -301,7 +301,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x280[1] = {
 		0.2591100037097931f, 0.7457789778709412f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0040, 0x0020,
 		0.2591100037097931f, 0.40198400616645813f,
@@ -321,7 +321,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x280[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x2F8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -330,7 +330,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x2F8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -350,7 +350,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x2F8[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x370[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -359,7 +359,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x370[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -379,7 +379,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x370[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x3E8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -388,7 +388,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x3E8[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x70,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -408,7 +408,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x3E8[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x460[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0008,
 		0,
@@ -417,7 +417,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x460[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x80,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0008,
 		0.0f, 0.0f,
@@ -437,7 +437,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x460[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x4D8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -446,7 +446,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x4D8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -466,7 +466,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x4D8[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x550[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0008,
 		0,
@@ -475,7 +475,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x550[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_Joint_0x0040_post_palset_0x90,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0008,
 		0.0f, 0.0f,
@@ -495,7 +495,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x550[1] = {
 MObjSub dNessModel_Joint_0x0040_post_sub_0x5C8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -504,7 +504,7 @@ MObjSub dNessModel_Joint_0x0040_post_sub_0x5C8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1135,7 +1135,7 @@ u16 *dNessModel_gap_0x2C04_sub_0x2DC[4] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x2EC[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0024, 0x0003, 0x0020, 0x0020,
 		0,
@@ -1144,7 +1144,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x2EC[1] = {
 		0.065700002014637f, 0.8686000108718872f,
 		(void**)dNessModel_gap_0x2C04_sub_0x278,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.065700002014637f, 0.08100000023841858f,
@@ -1165,7 +1165,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x2EC[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x364[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0024, 0x0003, 0x0020, 0x0020,
 		0,
@@ -1174,7 +1174,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x364[1] = {
 		0.065700002014637f, 0.8686000108718872f,
 		(void**)dNessModel_gap_0x2C04_sub_0x288,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.065700002014637f, 0.08100000023841858f,
@@ -1195,7 +1195,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x364[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x3DC[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1204,7 +1204,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x3DC[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1225,7 +1225,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x3DC[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x454[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -1234,7 +1234,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x454[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_gap_0x2C04_sub_0x298,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -1255,7 +1255,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x454[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x4CC[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dNessModel_gap_0x2C04_sub_0x2A8,
 		0x003E, 0x0011, 0x0040, 0x0020,
 		0,
@@ -1264,7 +1264,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x4CC[1] = {
 		0.2591100037097931f, 0.7457789778709412f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0040, 0x0020,
 		0.2591100037097931f, 0.40198400616645813f,
@@ -1285,7 +1285,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x4CC[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x544[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1294,7 +1294,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x544[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1315,7 +1315,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x544[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x5BC[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1324,7 +1324,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x5BC[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1345,7 +1345,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x5BC[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x634[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0008, 0x0010,
 		0,
@@ -1354,7 +1354,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x634[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_gap_0x2C04_sub_0x2BC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0010,
 		0.0f, 0.0f,
@@ -1375,7 +1375,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x634[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x6AC[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0047, 0x0000, 0x0008, 0x0008,
 		0,
@@ -1384,7 +1384,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x6AC[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_gap_0x2C04_sub_0x2CC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0008,
 		0.0f, 0.05999999865889549f,
@@ -1405,7 +1405,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x6AC[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x724[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1414,7 +1414,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x724[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1435,7 +1435,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x724[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x79C[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0047, 0x0000, 0x0008, 0x0008,
 		0,
@@ -1444,7 +1444,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x79C[1] = {
 		0.0f, 1.0f,
 		(void**)dNessModel_gap_0x2C04_sub_0x2DC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0008, 0x0008, 0x0008,
 		0.0f, 0.05999999865889549f,
@@ -1465,7 +1465,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x79C[1] = {
 MObjSub dNessModel_gap_0x2C04_sub_0x814[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1474,7 +1474,7 @@ MObjSub dNessModel_gap_0x2C04_sub_0x814[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2204,7 +2204,7 @@ u8 *dNessModel_gap_0x553C_sub_0x25C4[4] = {
 MObjSub dNessModel_gap_0x553C_sub_0x25D4[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dNessModel_gap_0x553C_sub_0x25C4,
 		0x0020, 0x0000, 0x0040, 0x0040,
 		0,
@@ -2213,7 +2213,7 @@ MObjSub dNessModel_gap_0x553C_sub_0x25D4[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0040, 0x0040,
 		0.0f, 0.0f,
@@ -2354,7 +2354,7 @@ u8 *dNessModel_gap_0x553C_sub_0x3490[3] = {
 MObjSub dNessModel_gap_0x553C_sub_0x349C[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dNessModel_gap_0x553C_sub_0x3490,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -2363,7 +2363,7 @@ MObjSub dNessModel_gap_0x553C_sub_0x349C[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -2992,5 +2992,3 @@ Sprite dNessModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
-
-PAD(4);

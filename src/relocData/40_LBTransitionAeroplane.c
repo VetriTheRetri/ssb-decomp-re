@@ -594,6 +594,3 @@ u32 dLBTransitionAeroplane_AnimJoint_0xB9A8[] = {
 	    0x3FAC0508,  /* 1.3439035415649414f */
 	aobjEvent32End(),
 };
-
-PAD(12);
-

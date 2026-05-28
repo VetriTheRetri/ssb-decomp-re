@@ -207,7 +207,7 @@ MObjSub **dStageMetalFile2_Layer0MObj_MObjSub[2] = {
 MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -216,7 +216,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real0[1] = {
 		0.0008089999901130795f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -237,7 +237,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real0[1] = {
 MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real1[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -246,7 +246,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real1[1] = {
 		0.019998999312520027f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -267,7 +267,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real1[1] = {
 MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real2[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -276,7 +276,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real2[1] = {
 		0.0032099999953061342f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -297,7 +297,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real2[1] = {
 MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real3[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -306,7 +306,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real3[1] = {
 		9.999999747378752e-05f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -327,7 +327,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real3[1] = {
 MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real4[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -336,7 +336,7 @@ MObjSub dStageMetalFile2_Layer0MObj_MObjSub_real4[1] = {
 		0.0008089999901130795f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -674,7 +674,7 @@ void *dStageMetalFile2_gap_0x1E48_sub_0x48[16] = {
 MObjSub dStageMetalFile2_gap_0x1E48_sub_0x88[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x000F, 0x0001,
 		0,
@@ -683,7 +683,7 @@ MObjSub dStageMetalFile2_gap_0x1E48_sub_0x88[1] = {
 		0.0f, 1.0f,
 		(void**)dStageMetalFile2_gap_0x1E48_sub_0x48,
 		0x0004,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -704,7 +704,7 @@ MObjSub dStageMetalFile2_gap_0x1E48_sub_0x88[1] = {
 MObjSub dStageMetalFile2_gap_0x1E48_sub_0x100[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -713,7 +713,7 @@ MObjSub dStageMetalFile2_gap_0x1E48_sub_0x100[1] = {
 		0.01015700027346611f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1138,7 +1138,7 @@ MObjSub **dStageMetalFile2_Layer3MObj_MObjSub[2] = {
 MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -1147,7 +1147,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real0[1] = {
 		0.004556000232696533f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1168,7 +1168,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real0[1] = {
 MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real1[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -1177,7 +1177,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real1[1] = {
 		9.999999747378752e-05f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1198,7 +1198,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real1[1] = {
 MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real2[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -1207,7 +1207,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real2[1] = {
 		9.999999747378752e-05f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1228,7 +1228,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real2[1] = {
 MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real3[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x009F, 0x004F,
 		2,
@@ -1237,7 +1237,7 @@ MObjSub dStageMetalFile2_Layer3MObj_MObjSub_real3[1] = {
 		9.999999747378752e-05f, 1.0f,
 		(void**)0x00000000,
 		0x0020,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,

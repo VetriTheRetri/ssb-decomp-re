@@ -167,5 +167,3 @@ ITAttributes dGRInishieMap_Pakkun_ItemAttributes[1] = {{
 	100,  /* vel */
 	0,  /* spin */
 }};
-PAD(8);
-

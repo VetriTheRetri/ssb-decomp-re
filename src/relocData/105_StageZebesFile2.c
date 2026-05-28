@@ -503,7 +503,7 @@ u16 *dStageZebesFile2_gap_0x2BC0_sub_0xC8[4] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0xD8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -512,7 +512,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0xD8[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_Layer1MObj_MObjSub_at_0x70,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -533,7 +533,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0xD8[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x150[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0100, 0x0020,
 		0,
@@ -542,7 +542,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x150[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x4,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0100, 0x0020,
 		0.0f, 0.0f,
@@ -563,7 +563,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x150[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x1C8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0080, 0x0020,
 		0,
@@ -572,7 +572,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x1C8[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x14,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0080, 0x0020,
 		0.0f, 0.0f,
@@ -593,7 +593,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x1C8[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x240[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0060, 0x0020,
 		0,
@@ -602,7 +602,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x240[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x24,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0060, 0x0020,
 		0.0f, 0.0f,
@@ -623,7 +623,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x240[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x2B8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0060, 0x0020,
 		0,
@@ -632,7 +632,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x2B8[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x2C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0060, 0x0020,
 		0.0f, 0.0f,
@@ -653,7 +653,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x2B8[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x330[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -662,7 +662,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x330[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x3C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -683,7 +683,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x330[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x3A8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0040,
 		0,
@@ -692,7 +692,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x3A8[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x4C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0040, 0x0040, 0x0040,
 		0.0f, 0.0f,
@@ -713,7 +713,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x3A8[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x420[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0040,
 		0,
@@ -722,7 +722,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x420[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x54,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0040, 0x0040, 0x0040,
 		0.0f, 0.0f,
@@ -743,7 +743,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x420[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x498[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0010,
 		0,
@@ -752,7 +752,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x498[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x5C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.0f, 0.0f,
@@ -773,7 +773,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x498[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x510[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0010,
 		0,
@@ -782,7 +782,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x510[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x68,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.0f, 0.0f,
@@ -803,7 +803,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x510[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x588[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0010,
 		0,
@@ -812,7 +812,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x588[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x74,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0010, 0x0040, 0x0010,
 		0.0f, 0.0f,
@@ -833,7 +833,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x588[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x600[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -842,7 +842,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x600[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x80,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -863,7 +863,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x600[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x678[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -872,7 +872,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x678[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x8C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -893,7 +893,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x678[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x6F0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -902,7 +902,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x6F0[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0x98,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -923,7 +923,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x6F0[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x768[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -932,7 +932,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x768[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0xA4,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -953,7 +953,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x768[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x7E0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -962,7 +962,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x7E0[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0xB0,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -983,7 +983,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x7E0[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x858[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -992,7 +992,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x858[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0xBC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -1013,7 +1013,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x858[1] = {
 MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x8D0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0040, 0x0020,
 		0,
@@ -1022,7 +1022,7 @@ MObjSub dStageZebesFile2_gap_0x2BC0_sub_0x8D0[1] = {
 		0.0f, 1.0f,
 		(void**)dStageZebesFile2_gap_0x2BC0_sub_0xC8,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0020, 0x0040, 0x0020,
 		0.0f, 0.0f,
@@ -7961,7 +7961,7 @@ void *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6818[2] = {
 MObjSub dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6820[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6818,
 		0x0020, 0x0000, 0x0020, 0x0040,
 		0,
@@ -7970,7 +7970,7 @@ MObjSub dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6820[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0040, 0x0020, 0x0040,
 		0.0f, 0.0f,
@@ -8228,7 +8228,7 @@ void *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xC00[6] = {
 MObjSub dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xC18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xC00,
 		0x0020, 0x0000, 0x0020, 0x0018,
 		0,
@@ -8237,7 +8237,7 @@ MObjSub dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xC18[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0020, 0x0018,
 		0.0f, 0.0f,

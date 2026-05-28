@@ -400,6 +400,3 @@ u32 dGRBonus1DonkeyFile2_Layer1Anim_AnimJoint_data_0x2AC[8] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1DonkeyFile2_Layer1Anim_AnimJoint_data_0x2AC,
 };
-
-PAD(4);
-

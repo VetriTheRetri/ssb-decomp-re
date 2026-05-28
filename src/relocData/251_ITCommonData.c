@@ -1877,6 +1877,3 @@ ITAttributes dITCommonData_GBumper_ItemAttributes[1] = {{
 	100,  /* vel_scale */
 	0,  /* spin_speed */
 }};
-
-PAD(8);
-

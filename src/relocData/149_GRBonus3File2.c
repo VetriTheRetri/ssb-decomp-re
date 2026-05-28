@@ -345,7 +345,7 @@ void *dGRBonus3File2_Layer1MObj_MObjSub[12] = {
 MObjSub dGRBonus3File2_Layer1MObj_real[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -354,7 +354,7 @@ MObjSub dGRBonus3File2_Layer1MObj_real[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -376,7 +376,7 @@ MObjSub dGRBonus3File2_Layer1MObj_real[1] = {
 MObjSub dGRBonus3File2_gap_0x3718_sub_0x30[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -385,7 +385,7 @@ MObjSub dGRBonus3File2_gap_0x3718_sub_0x30[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x04, 0x01,
+		G_IM_FMT_I, G_IM_SIZ_8b,
 		0x0010,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -406,7 +406,7 @@ MObjSub dGRBonus3File2_gap_0x3718_sub_0x30[1] = {
 MObjSub dGRBonus3File2_gap_0x3718_sub_0xA8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0010, 0x0010,
 		0,
@@ -415,7 +415,7 @@ MObjSub dGRBonus3File2_gap_0x3718_sub_0xA8[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x3000,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.0f, 0.0f,
@@ -1072,5 +1072,3 @@ u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[] = {
 	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828),
 	aobjEvent32End(),
 };
-
-PAD(8);

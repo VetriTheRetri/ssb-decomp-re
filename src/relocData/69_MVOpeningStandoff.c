@@ -204,7 +204,7 @@ u32 dMVOpeningStandoff_gap_0x61B8_sub_0x20[6] = {
 MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x38[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x34),
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
@@ -213,7 +213,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x38[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0040,
 		0x0080, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -234,7 +234,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x38[1] = {
 MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0xB0[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x48),
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
@@ -243,7 +243,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0xB0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0040,
 		0x0080, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -264,7 +264,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0xB0[1] = {
 MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x128[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x5C),
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
@@ -273,7 +273,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x128[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0040,
 		0x0080, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -294,7 +294,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x128[1] = {
 MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x1A0[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x70),
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
@@ -303,7 +303,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x1A0[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0040,
 		0x0080, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -324,7 +324,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x1A0[1] = {
 MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x218[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)dMVOpeningStandoff_gap_0x61B8_sub_0xC,
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
@@ -333,7 +333,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x218[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x00A1,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0040,
 		0x0080, 0x0040, 0x0080,
 		0.0f, 0.0f,
@@ -354,7 +354,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x218[1] = {
 MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x290[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)dMVOpeningStandoff_gap_0x61B8_sub_0x20,
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
@@ -363,7 +363,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x290[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0040,
 		0x0080, 0x0040, 0x0080,
 		0.0f, 0.0f,

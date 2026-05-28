@@ -447,6 +447,3 @@ u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8[11] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8,
 };
-
-PAD(12);
-

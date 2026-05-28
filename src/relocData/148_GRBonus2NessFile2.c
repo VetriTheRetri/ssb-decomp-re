@@ -858,5 +858,3 @@ u32 dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x2BC[7] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x2BC,
 };
-PAD(8);
-

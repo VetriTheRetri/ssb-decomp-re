@@ -289,6 +289,3 @@ u32 dLBTransitionCheck_AnimJoint_0x41A4[] = {
 	    0xC0490FDB,  /* -3.1415927410125732f */
 	aobjEvent32End(),
 };
-
-PAD(12);
-

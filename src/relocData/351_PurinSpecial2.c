@@ -104,7 +104,7 @@ MObjSub dPurinSpecial2_SingMObjSub_MObjSub_real[1] = {
 MObjSub dPurinSpecial2_gap_0x1C98_sub_0x18[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -113,7 +113,7 @@ MObjSub dPurinSpecial2_gap_0x1C98_sub_0x18[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -134,7 +134,7 @@ MObjSub dPurinSpecial2_gap_0x1C98_sub_0x18[1] = {
 MObjSub dPurinSpecial2_gap_0x1C98_sub_0x90[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -143,7 +143,7 @@ MObjSub dPurinSpecial2_gap_0x1C98_sub_0x90[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -164,7 +164,7 @@ MObjSub dPurinSpecial2_gap_0x1C98_sub_0x90[1] = {
 MObjSub dPurinSpecial2_gap_0x1C98_sub_0x108[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -173,7 +173,7 @@ MObjSub dPurinSpecial2_gap_0x1C98_sub_0x108[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1173,5 +1173,3 @@ u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[] = {
 	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC),
 	aobjEvent32End(),
 };
-
-PAD(4);

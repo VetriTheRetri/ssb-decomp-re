@@ -189,5 +189,3 @@ u32 dStageJungleFile3_AnimJoint_0x0BF8[57] = {
 	aobjEvent32Wait(2),
 	aobjEvent32End(),
 };
-
-PAD(4);

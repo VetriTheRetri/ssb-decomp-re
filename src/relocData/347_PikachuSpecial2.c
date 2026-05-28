@@ -258,7 +258,7 @@ u8 *dPikachuSpecial2_ThunderShockMObjSub_MObjSub_sprites[2] = {
 MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub_real[1] = {
 	{
 		0x0000,
-		3, 2,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dPikachuSpecial2_ThunderShockMObjSub_MObjSub_sprites,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -267,7 +267,7 @@ MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub_real[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x00A1,
-		3, 1,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -699,5 +699,3 @@ AObjEvent32 *dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[] = 
 	(AObjEvent32 *)dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B20,
 	NULL,
 };
-
-PAD(4);

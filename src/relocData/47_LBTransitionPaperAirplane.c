@@ -46,6 +46,3 @@ u32 dLBTransitionPaperAirplane_AnimJoint_0x1024[] = {
 	    0xBD9F06F2,  /* -0.07764996588230133f */
 	aobjEvent32End(),
 };
-
-PAD(8);
-

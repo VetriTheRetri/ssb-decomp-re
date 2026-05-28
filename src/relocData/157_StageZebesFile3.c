@@ -294,4 +294,3 @@ AObjEvent32 *dStageZebesFile3_mobjlink_0x0DC0[2] = {
 	(AObjEvent32 *)dStageZebesFile3_AnimJoint_0x0BD8,
 	NULL,
 };
-PAD(8);

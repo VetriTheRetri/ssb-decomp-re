@@ -2667,7 +2667,7 @@ MObjSub dMNTitle_SlashMObjSub_Real1[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0001,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0010,
 		0x0040, 0x0020, 0x0040,
 		0.0f, 0.0f,
@@ -2697,7 +2697,7 @@ MObjSub dMNTitle_SlashMObjSub_Real2[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x0003,
-		0x03, 0x01,
+		G_IM_FMT_IA, G_IM_SIZ_8b,
 		0x0010,
 		0x0040, 0x0020, 0x0040,
 		0.0f, 0.0f,
@@ -2860,5 +2860,3 @@ u32 dMNTitle_FireAnimJoint_AnimJoint_0x29088[] = {
 	aobjEvent32Cmd16(0x021, 165),
 	aobjEvent32End(),
 };
-
-PAD(12);

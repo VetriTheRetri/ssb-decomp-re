@@ -378,5 +378,3 @@ DObjDesc dBossModel_DObjDescs_0x2CB8[3] = {
 	{ 1,  (void *)dBossModel_gap_0x2850_sub_0x350, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(4);

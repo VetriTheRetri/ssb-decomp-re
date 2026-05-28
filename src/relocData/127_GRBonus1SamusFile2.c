@@ -392,5 +392,3 @@ u32 dGRBonus1SamusFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
 };
 
 /* 8 B pad — end of file. */
-PAD(8);
-

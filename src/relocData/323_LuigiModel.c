@@ -172,7 +172,7 @@ u16 *dLuigiModel_Joint_0x0080_post_sub_0x10[4] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0040, 0x0000, 0x0040, 0x0018,
 		1,
@@ -181,7 +181,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x0[1] = {
 		0.0f, 1.0f,
 		(void**)dLuigiModel_Joint_0x0060_post_sub_0x4,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0040, 0x0018,
 		0.0f, 0.15199999511241913f,
@@ -202,7 +202,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x78[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -211,7 +211,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x78[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -232,7 +232,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x78[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0xF0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -241,7 +241,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0xF0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -266,7 +266,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0xF0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x168[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -275,7 +275,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x168[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -300,7 +300,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x168[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x1E0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dLuigiModel_Joint_0x0060_post_sub_0x14,
 		0x006A, 0x000D, 0x0040, 0x0020,
 		1,
@@ -309,7 +309,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x1E0[1] = {
 		0.20000000298023224f, 0.6000000238418579f,
 		(void**)dLuigiModel_Joint_0x0080_post_sub_0x8,
 		0x3005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0040, 0x0020,
 		0.20000000298023224f, 0.328000009059906f,
@@ -330,7 +330,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x1E0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x258[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x006A, 0x000B, 0x0020, 0x0018,
 		0,
@@ -339,7 +339,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x258[1] = {
 		0.32499998807907104f, 0.3499999940395355f,
 		(void**)dLuigiModel_Joint_0x0080_post_sub_0x10,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0020, 0x0018,
 		0.32499998807907104f, 0.057999998331069946f,
@@ -360,7 +360,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x258[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x2D0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -369,7 +369,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x2D0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -394,7 +394,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x2D0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x348[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -403,7 +403,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x348[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -424,7 +424,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x348[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x3C0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -433,7 +433,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x3C0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -454,7 +454,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x3C0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x438[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -463,7 +463,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x438[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -484,7 +484,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x438[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x4B0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -493,7 +493,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x4B0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -514,7 +514,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x4B0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x528[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -523,7 +523,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x528[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -548,7 +548,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x528[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x5A0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -557,7 +557,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x5A0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -582,7 +582,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x5A0[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x618[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -591,7 +591,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x618[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -616,7 +616,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x618[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x690[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -625,7 +625,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x690[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -650,7 +650,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x690[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x708[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -659,7 +659,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x708[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -684,7 +684,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x708[1] = {
 MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x780[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -693,7 +693,7 @@ MObjSub dLuigiModel_Joint_0x00A0_post_sub_0x780[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1370,7 +1370,7 @@ u32 dLuigiModel_gap_0x28E0_sub_0x430[4] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x440[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0040, 0x0000, 0x0040, 0x0018,
 		1,
@@ -1379,7 +1379,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x440[1] = {
 		0.0f, 1.0f,
 		(void**)dLuigiModel_gap_0x28E0_sub_0x404,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0040, 0x0018,
 		0.0f, 0.15199999511241913f,
@@ -1400,7 +1400,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x440[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x4B8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1409,7 +1409,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x4B8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1430,7 +1430,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x4B8[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x530[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1439,7 +1439,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x530[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1464,7 +1464,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x530[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x5A8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1473,7 +1473,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x5A8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1498,7 +1498,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x5A8[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x620[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dLuigiModel_gap_0x28E0_sub_0x414,
 		0x006A, 0x0017, 0x0040, 0x0020,
 		0,
@@ -1507,7 +1507,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x620[1] = {
 		0.3499999940395355f, 0.30000001192092896f,
 		(void**)dLuigiModel_gap_0x28E0_sub_0x428,
 		0x3005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0040, 0x0020,
 		0.3499999940395355f, 0.38999998569488525f,
@@ -1528,7 +1528,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x620[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x698[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x006A, 0x000B, 0x0020, 0x0018,
 		0,
@@ -1537,7 +1537,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x698[1] = {
 		0.32499998807907104f, 0.3499999940395355f,
 		(void**)dLuigiModel_gap_0x28E0_sub_0x430,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0020, 0x0018,
 		0.32499998807907104f, 0.07880000025033951f,
@@ -1558,7 +1558,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x698[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x710[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1567,7 +1567,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x710[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1592,7 +1592,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x710[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x788[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1601,7 +1601,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x788[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1622,7 +1622,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x788[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x800[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1631,7 +1631,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x800[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1652,7 +1652,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x800[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x878[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1661,7 +1661,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x878[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1682,7 +1682,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x878[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x8F0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1691,7 +1691,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x8F0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1712,7 +1712,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x8F0[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x968[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1721,7 +1721,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x968[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1746,7 +1746,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x968[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0x9E0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1755,7 +1755,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x9E0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1780,7 +1780,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0x9E0[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0xA58[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1789,7 +1789,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xA58[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1814,7 +1814,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xA58[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0xAD0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1823,7 +1823,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xAD0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1848,7 +1848,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xAD0[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0xB48[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1857,7 +1857,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xB48[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1882,7 +1882,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xB48[1] = {
 MObjSub dLuigiModel_gap_0x28E0_sub_0xBC0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1891,7 +1891,7 @@ MObjSub dLuigiModel_gap_0x28E0_sub_0xBC0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2623,7 +2623,7 @@ MObjSub **dLuigiModel_gap_0x4E8C_sub_0x534_post[2] = {
 MObjSub dLuigiModel_gap_0x4E8C_sub_0x5DC[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2632,7 +2632,7 @@ MObjSub dLuigiModel_gap_0x4E8C_sub_0x5DC[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2703,7 +2703,7 @@ MObjSub **dLuigiModel_gap_0x4E8C_sub_0x7C4_post[2] = {
 MObjSub dLuigiModel_gap_0x4E8C_sub_0x84C[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2712,7 +2712,7 @@ MObjSub dLuigiModel_gap_0x4E8C_sub_0x84C[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2785,7 +2785,7 @@ MObjSub **dLuigiModel_gap_0x4E8C_sub_0xA84_post[2] = {
 MObjSub dLuigiModel_gap_0x4E8C_sub_0xB2C[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2794,7 +2794,7 @@ MObjSub dLuigiModel_gap_0x4E8C_sub_0xB2C[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2869,7 +2869,7 @@ MObjSub **dLuigiModel_gap_0x4E8C_sub_0xD14_post[2] = {
 MObjSub dLuigiModel_gap_0x4E8C_sub_0xD9C[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -2878,7 +2878,7 @@ MObjSub dLuigiModel_gap_0x4E8C_sub_0xD9C[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -3277,5 +3277,3 @@ Sprite dLuigiModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
-
-PAD(4);

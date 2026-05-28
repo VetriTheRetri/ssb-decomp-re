@@ -149,7 +149,7 @@ u16 *dPurinModel_Joint_0x0100_post[4] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x10[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)((u8*)dPurinModel_Joint_0x0060_post + 0x8),
 		0x004E, 0x0008, 0x0020, 0x0020,
 		0,
@@ -158,7 +158,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x10[1] = {
 		0.24688799679279327f, 0.43902501463890076f,
 		(void**)((u8*)dPurinModel_Joint_0x0080_post + 0x8),
 		0x0005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.24688799679279327f, 0.22193999588489532f,
@@ -178,7 +178,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x10[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x88[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)((u8*)dPurinModel_Joint_0x0080_post + 0x1C),
 		0x004E, 0x0008, 0x0020, 0x0020,
 		0,
@@ -187,7 +187,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x88[1] = {
 		0.24690000712871552f, 0.4390000104904175f,
 		(void**)((u8*)dPurinModel_Joint_0x00A0_post + 0x1C),
 		0x0005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.24690000712871552f, 0.22190000116825104f,
@@ -207,7 +207,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x88[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x100[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x00F6, 0x0007, 0x0010, 0x0010,
 		0,
@@ -216,7 +216,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x100[1] = {
 		0.4350000023841858f, 0.12999999523162842f,
 		(void**)((u8*)dPurinModel_Joint_0x00C0_post + 0x10),
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.4350000023841858f, 0.5270000100135803f,
@@ -236,7 +236,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x100[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x178[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -245,7 +245,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x178[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -265,7 +265,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x178[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x1F0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -274,7 +274,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x1F0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -294,7 +294,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x1F0[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x268[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0010, 0x0010,
 		0,
@@ -303,7 +303,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x268[1] = {
 		0.0f, 1.0f,
 		(void**)((u8*)dPurinModel_Joint_0x00E0_post + 0x4),
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.0f, 0.0f,
@@ -323,7 +323,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x268[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x2E0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -332,7 +332,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x2E0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -352,7 +352,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x2E0[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x358[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -361,7 +361,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x358[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -381,7 +381,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x358[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x3D0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -390,7 +390,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x3D0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -410,7 +410,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x3D0[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x448[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0020, 0x0000, 0x0010, 0x0010,
 		0,
@@ -419,7 +419,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x448[1] = {
 		0.0f, 1.0f,
 		(void**)((u8*)dPurinModel_Joint_0x00E0_post + 0x18),
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.0f, 0.0f,
@@ -439,7 +439,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x448[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x4C0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -448,7 +448,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x4C0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -468,7 +468,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x4C0[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x538[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -477,7 +477,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x538[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -497,7 +497,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x538[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x5B0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -506,7 +506,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x5B0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -526,7 +526,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x5B0[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x628[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -535,7 +535,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x628[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -555,7 +555,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x628[1] = {
 MObjSub dPurinModel_Joint_0x0100_post_sub_0x6A0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -564,7 +564,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x6A0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1247,7 +1247,7 @@ u16 *dPurinModel_gap_0x24F8_sub_0x4B0[6] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x4C8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dPurinModel_gap_0x24F8_sub_0x420,
 		0x004E, 0x0008, 0x0020, 0x0020,
 		0,
@@ -1256,7 +1256,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x4C8[1] = {
 		0.24688799679279327f, 0.43902501463890076f,
 		(void**)dPurinModel_gap_0x24F8_sub_0x440,
 		0x0005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.24688799679279327f, 0.22193999588489532f,
@@ -1277,7 +1277,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x4C8[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x540[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dPurinModel_gap_0x24F8_sub_0x454,
 		0x004E, 0x0008, 0x0020, 0x0020,
 		0,
@@ -1286,7 +1286,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x540[1] = {
 		0.24688799679279327f, 0.43902501463890076f,
 		(void**)dPurinModel_gap_0x24F8_sub_0x474,
 		0x0005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.24688799679279327f, 0.22193999588489532f,
@@ -1307,7 +1307,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x540[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x5B8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x00F6, 0x0007, 0x0010, 0x0010,
 		0,
@@ -1316,7 +1316,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x5B8[1] = {
 		0.4350000023841858f, 0.12999999523162842f,
 		(void**)dPurinModel_gap_0x24F8_sub_0x488,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.4350000023841858f, 0.5270000100135803f,
@@ -1337,7 +1337,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x5B8[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x630[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0080, 0x000B, 0x0010, 0x0010,
 		0,
@@ -1346,7 +1346,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x630[1] = {
 		0.6650000214576721f, 0.3100000023841858f,
 		(void**)dPurinModel_gap_0x24F8_sub_0x49C,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.6650000214576721f, 0.003000000026077032f,
@@ -1367,7 +1367,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x630[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x6A8[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0080, 0x000B, 0x0010, 0x0010,
 		0,
@@ -1376,7 +1376,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x6A8[1] = {
 		0.6650000214576721f, 0.3100000023841858f,
 		(void**)dPurinModel_gap_0x24F8_sub_0x4B0,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.6650000214576721f, 0.003000000026077032f,
@@ -1397,7 +1397,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x6A8[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x720[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1406,7 +1406,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x720[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1427,7 +1427,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x720[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x798[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1436,7 +1436,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x798[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1457,7 +1457,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x798[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x810[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1466,7 +1466,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x810[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1487,7 +1487,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x810[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x888[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1496,7 +1496,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x888[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1517,7 +1517,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x888[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x900[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1526,7 +1526,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x900[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1547,7 +1547,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x900[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x978[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1556,7 +1556,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x978[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1577,7 +1577,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x978[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0x9F0[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1586,7 +1586,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x9F0[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1607,7 +1607,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0x9F0[1] = {
 MObjSub dPurinModel_gap_0x24F8_sub_0xA68[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -1616,7 +1616,7 @@ MObjSub dPurinModel_gap_0x24F8_sub_0xA68[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0200,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -2169,7 +2169,7 @@ u16 *dPurinModel_gap_0x459C_sub_0x334[4] = {
 MObjSub dPurinModel_gap_0x459C_sub_0x344[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x004D, 0x0007, 0x0010, 0x0010,
 		0,
@@ -2178,7 +2178,7 @@ MObjSub dPurinModel_gap_0x459C_sub_0x344[1] = {
 		0.41999998688697815f, 0.41280001401901245f,
 		(void**)dPurinModel_gap_0x459C_sub_0x328,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.41999998688697815f, 0.13086099922657013f,
@@ -2199,7 +2199,7 @@ MObjSub dPurinModel_gap_0x459C_sub_0x344[1] = {
 MObjSub dPurinModel_gap_0x459C_sub_0x3BC[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x004D, 0x0007, 0x0010, 0x0010,
 		0,
@@ -2208,7 +2208,7 @@ MObjSub dPurinModel_gap_0x459C_sub_0x3BC[1] = {
 		0.41999998688697815f, 0.41280001401901245f,
 		(void**)dPurinModel_gap_0x459C_sub_0x334,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.41999998688697815f, 0.13086099922657013f,
@@ -2701,5 +2701,3 @@ Sprite dPurinModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
-
-PAD(4);

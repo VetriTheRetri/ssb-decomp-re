@@ -931,5 +931,3 @@ u32 dGRBonus2KirbyFile2_Layer1Anim_AnimJoint_0x58C[43] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus2KirbyFile2_Layer1Anim_AnimJoint_0x58C,
 };
-PAD(8);
-

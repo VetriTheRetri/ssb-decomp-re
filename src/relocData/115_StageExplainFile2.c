@@ -159,6 +159,3 @@ DObjDesc dStageExplainFile2_Layer3DObj[] = {
 	{ 1, (void*)dStageExplainFile2_DL_0x0C20, { 0.0f, 0.0f, -49.396202087402344f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(12);
-

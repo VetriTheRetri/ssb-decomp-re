@@ -74,5 +74,3 @@ MPGroundData dGRHyruleMap_MapHeader_0x0014 =
 FTThrowHitDesc dGRHyruleMap_TwisterThrow_HitDesc = { 2, 14, 90, 60, 0, 115, 0 };
 
 /* 8 B trailing pad — end of file. */
-PAD(8);
-

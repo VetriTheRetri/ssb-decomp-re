@@ -22,7 +22,7 @@ MObjSub dFTEmblemModels_Mario_MObjSub[3] = {
 	/* [0] @ 0x0 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		(void**)((u8*)dFTEmblemModels_Mario_MObjSubPtrArray + 0x8),
 		0x0000, 0x0002, 0x0000, 0x0000,
 		0,
@@ -31,7 +31,7 @@ MObjSub dFTEmblemModels_Mario_MObjSub[3] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x3000, 0x0002,
 		0.0f, 0.0f,
@@ -222,7 +222,7 @@ MObjSub dFTEmblemModels_Donkey_MObjSub[2] = {
 	/* [0] @ 0xB00 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		(void**)((u8*)dFTEmblemModels_Donkey_MObjSubPtrArray + 0x8),
 		0x0000, 0x0002, 0x0000, 0x0000,
 		0,
@@ -231,7 +231,7 @@ MObjSub dFTEmblemModels_Donkey_MObjSub[2] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x3000, 0x0002,
 		0.0f, 0.0f,
@@ -563,7 +563,7 @@ MObjSub dFTEmblemModels_Zelda_MObjSub[3] = {
 	/* [0] @ 0x22B0 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		(void**)((u8*)dFTEmblemModels_Zelda_MObjSubPtrArray + 0x8),
 		0x0000, 0x0002, 0x0000, 0x0000,
 		0,
@@ -572,7 +572,7 @@ MObjSub dFTEmblemModels_Zelda_MObjSub[3] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x3000, 0x0002,
 		0.0f, 0.0f,
@@ -1042,7 +1042,7 @@ MObjSub dFTEmblemModels_PMonsters_MObjSub[2] = {
 	/* [0] @ 0x3F40 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		(void**)((u8*)dFTEmblemModels_PMonsters_MObjSubPtrArray + 0x8),
 		0x0000, 0x0002, 0x0000, 0x0000,
 		0,
@@ -1051,7 +1051,7 @@ MObjSub dFTEmblemModels_PMonsters_MObjSub[2] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x3000, 0x0002,
 		0.0f, 0.0f,
@@ -1279,5 +1279,3 @@ u32 dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[] = {
 	(u32)(dFTEmblemModels_Mother_MatAnimJoint_0x5A8C),
 	aobjEvent32End(),
 };
-
-PAD(4);

@@ -30,7 +30,7 @@ MObjSub **dNessSpecial3_gap_0x0000[2] = {
 MObjSub dNessSpecial3_gap_0x0000_sub_0x8[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -39,7 +39,7 @@ MObjSub dNessSpecial3_gap_0x0000_sub_0x8[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -60,7 +60,7 @@ MObjSub dNessSpecial3_gap_0x0000_sub_0x8[1] = {
 MObjSub dNessSpecial3_gap_0x0000_sub_0x80[1] = {
 	{
 		0x0000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
 		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
@@ -69,7 +69,7 @@ MObjSub dNessSpecial3_gap_0x0000_sub_0x80[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x3000,
-		0x00, 0x02,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -308,6 +308,3 @@ u32 dNessSpecial3_PKFireDL_script_b[18] = {
 	(u32)dNessSpecial3_PKFireDL_script_b,
 	aobjEvent32End(),
 };
-
-PAD(4);
-

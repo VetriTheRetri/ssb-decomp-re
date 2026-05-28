@@ -491,6 +491,3 @@ u32 dGRBonus1FoxFile2_Layer1Anim_AnimJoint_data_0x2FC[10] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1FoxFile2_Layer1Anim_AnimJoint_data_0x2FC,
 };
-
-PAD(12);
-

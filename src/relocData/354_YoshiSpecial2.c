@@ -241,5 +241,3 @@ u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[] = {
 	(u32)(dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784),
 	aobjEvent32End(),
 };
-
-PAD(4);

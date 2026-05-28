@@ -56,4 +56,3 @@ DObjDesc dITBonus1Object_DObjDesc[3] = {
 };
 
 /* @ 0x117C, 4 bytes (raw gap) */
-PAD(4);

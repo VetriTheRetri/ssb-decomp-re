@@ -60,6 +60,3 @@ u32 dLBTransitionRotScale_AnimJoint_0x1024[] = {
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	aobjEvent32End(),
 };
-
-PAD(8);
-

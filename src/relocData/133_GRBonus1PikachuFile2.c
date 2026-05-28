@@ -455,5 +455,3 @@ u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
 };
 
 /* 8 B pad — trailing zeros at end of file. */
-PAD(8);
-

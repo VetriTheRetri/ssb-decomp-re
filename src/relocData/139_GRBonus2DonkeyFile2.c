@@ -547,6 +547,3 @@ u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3580[] = {
 	(u32)(dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint_0x3580),
 	aobjEvent32End(),
 };
-
-PAD(8);
-

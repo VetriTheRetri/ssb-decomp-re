@@ -131,4 +131,3 @@ u32 dLinkSpecial3_BoomerangDL_post_anim_script[7] = {
 };
 
 /* @ 0x6E8: 8 bytes of trailing zero padding. */
-PAD(8);

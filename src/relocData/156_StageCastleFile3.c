@@ -42,4 +42,3 @@ u32 dStageCastleFile3_AnimJoint_0x0004[12] = {
 
 /* Trailing 12 bytes of zero padding — section-aligned tail in the
  * baserom binary; not part of any reachable structure. */
-PAD(12);

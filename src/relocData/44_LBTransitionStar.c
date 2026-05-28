@@ -52,6 +52,3 @@ u32 dLBTransitionStar_AnimJoint_0x24DC[] = {
 	    0xBFC90FDB,  /* -1.5707963705062866f */
 	aobjEvent32End(),
 };
-
-PAD(8);
-

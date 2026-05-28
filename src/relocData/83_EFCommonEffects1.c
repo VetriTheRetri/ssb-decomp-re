@@ -172,7 +172,7 @@ u8 *dEFCommonEffects1_gap_0x0000_sub_0x585C[11] = {
 MObjSub dEFCommonEffects1_gap_0x0000_sub_0x5888[1] = {
 	{
 		0x0000,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dEFCommonEffects1_gap_0x0000_sub_0x585C,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -181,7 +181,7 @@ MObjSub dEFCommonEffects1_gap_0x0000_sub_0x5888[1] = {
 		0.0f, 1.0f,
 		(void**)0x00000000,
 		0x00A1,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1243,7 +1243,7 @@ void *dEFCommonEffects1_DamageFlyMDust_MObjSub[7] = {
 MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub_real[1] = {
 	{
 		0x0010,
-		0x03, 0x02,
+		G_IM_FMT_IA, G_IM_SIZ_16b,
 		(void**)dEFCommonEffects1_DamageFlyMDust_MObjSub,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -1252,7 +1252,7 @@ MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub_real[1] = {
 		0.0f, 0.0f,
 		(void**)0x00000000,
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
@@ -1554,6 +1554,3 @@ u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[] = {
 	    0x3DA8BF0C,  /* 0.08239564299583435f */
 	aobjEvent32End(),
 };
-
-PAD(8);
-

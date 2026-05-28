@@ -1048,4 +1048,3 @@ u32 dStageCastleFile2_gap_0x3684_sub_0xD40[84] = {
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 };
-PAD(12);

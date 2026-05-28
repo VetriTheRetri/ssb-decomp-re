@@ -125,5 +125,3 @@ u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint_0x858[] = {
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };
-
-PAD(12);

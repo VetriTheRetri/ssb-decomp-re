@@ -300,6 +300,3 @@ Sprite dMMarioModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
-
-PAD(4);
-

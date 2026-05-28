@@ -275,5 +275,3 @@ u32 dIFCommonObject_AnimJoint_0x3F98[] = {
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dIFCommonObject_AnimJoint_0x3F98),
 };
-
-PAD(12);

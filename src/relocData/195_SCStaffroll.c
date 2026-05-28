@@ -3316,5 +3316,3 @@ DObjDesc dSCStaffroll_DObjDesc_0x78C0[] = {
 	{ 1, (void*)dSCStaffroll_AnimJoint_DL_0x7880, { 110.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(12);

@@ -287,7 +287,7 @@ u32 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x10[2] = {
 MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		NULL,
 		0x0080, 0x0007, 0x0010, 0x0010,
 		0,
@@ -296,7 +296,7 @@ MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x18[1] = {
 		0.3804999887943268f, 0.24899999797344208f,
 		(void**)dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x8,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0010, 0x0010,
 		0.3804999887943268f, -0.12200000137090683f,
@@ -317,7 +317,7 @@ MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x18[1] = {
 MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x90[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		NULL,
 		0x005E, 0x0005, 0x0010, 0x0010,
 		0,
@@ -326,7 +326,7 @@ MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x90[1] = {
 		0.29670000076293945f, 0.4065999984741211f,
 		(void**)dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x10,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0008,
 		0x0010, 0x0010, 0x0010,
 		0.29670000076293945f, 0.3400000035762787f,
@@ -714,7 +714,7 @@ u32 dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230_sub_0x8[6] = {
 MObjSub dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230_sub_0x20[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230_sub_0x8,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -723,7 +723,7 @@ MObjSub dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230_sub_0x20[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1007,7 +1007,7 @@ u32 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0xC[3] = {
 MObjSub dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0x18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		NULL,
 		0x0020, 0x0001, 0x0020, 0x0020,
 		0,
@@ -1016,7 +1016,7 @@ MObjSub dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0x18[1] = {
 		0.012500000186264515f, 1.0f,
 		(void**)dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0xC,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0020, 0x0020,
 		0.012500000186264515f, -0.02500000037252903f,
@@ -1261,7 +1261,7 @@ u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x18[2] = {
 MObjSub dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x20[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x8,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -1270,7 +1270,7 @@ MObjSub dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x20[1] = {
 		0.0f, 1.0f,
 		(void**)dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x18,
 		0x0005,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1537,7 +1537,7 @@ u32 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x8[2] = {
 MObjSub dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x10[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		NULL,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -1546,7 +1546,7 @@ MObjSub dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x10[1] = {
 		0.0f, 1.0f,
 		(void**)dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x8,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -1620,7 +1620,7 @@ u32 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x364[2] = {
 MObjSub dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x36C[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		NULL,
 		0x0020, 0x0000, 0x0030, 0x0020,
 		0,
@@ -1629,7 +1629,7 @@ MObjSub dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x36C[1] = {
 		0.0f, 1.0f,
 		(void**)dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x364,
 		0x0004,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0030,
 		0x0020, 0x0030, 0x0020,
 		0.0f, 0.0f,
@@ -1816,7 +1816,7 @@ u32 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x10[8] = {
 MObjSub dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x30[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x10,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -1825,7 +1825,7 @@ MObjSub dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x30[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,
@@ -2315,7 +2315,7 @@ u32 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x8[4] = {
 MObjSub dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x8,
 		0x0020, 0x0000, 0x0010, 0x0010,
 		0,
@@ -2324,7 +2324,7 @@ MObjSub dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x18[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0010, 0x0010, 0x0010,
 		0.0f, 0.0f,
@@ -2486,7 +2486,7 @@ u32 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0xC[3] = {
 MObjSub dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0x18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0xC,
 		0x0020, 0x0000, 0x0020, 0x0018,
 		0,
@@ -2495,7 +2495,7 @@ MObjSub dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0x18[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0018, 0x0020, 0x0018,
 		0.0f, 0.0f,
@@ -2812,7 +2812,7 @@ u32 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x8[2] = {
 MObjSub dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x10[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x8,
 		0x0020, 0x0000, 0x0040, 0x0038,
 		0,
@@ -2821,7 +2821,7 @@ MObjSub dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x10[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x00A1,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0040,
 		0x0038, 0x0040, 0x0038,
 		0.0f, 0.0f,
@@ -2983,7 +2983,7 @@ u32 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0xC[3] = {
 MObjSub dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0x18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0xC,
 		0x0020, 0x0000, 0x0018, 0x0020,
 		0,
@@ -2992,7 +2992,7 @@ MObjSub dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0x18[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0018,
 		0x0020, 0x0018, 0x0020,
 		0.0f, 0.0f,
@@ -3264,7 +3264,7 @@ u32 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0xC[3] = {
 MObjSub dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0x18[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0xC,
 		0x0020, 0x0000, 0x0018, 0x0020,
 		0,
@@ -3273,7 +3273,7 @@ MObjSub dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0x18[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0018,
 		0x0020, 0x0018, 0x0020,
 		0.0f, 0.0f,
@@ -3578,7 +3578,7 @@ u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x18[4] = {
 MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x28[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xC,
 		0x0020, 0x0000, 0x0018, 0x0018,
 		0,
@@ -3587,7 +3587,7 @@ MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x28[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0018,
 		0x0018, 0x0018, 0x0018,
 		0.0f, 0.0f,
@@ -3608,7 +3608,7 @@ MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x28[1] = {
 MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xA0[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x18,
 		0x0020, 0x0000, 0x0010, 0x0018,
 		0,
@@ -3617,7 +3617,7 @@ MObjSub dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xA0[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
 		0x0018, 0x0010, 0x0018,
 		0.0f, 0.0f,
@@ -4092,7 +4092,7 @@ u32 dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0_sub_0x8[6] = {
 MObjSub dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0_sub_0x20[1] = {
 	{
 		0x0000,
-		0x02, 0x02,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
 		(void**)dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0_sub_0x8,
 		0x0035, 0x0007, 0x0020, 0x0020,
 		0,
@@ -4101,7 +4101,7 @@ MObjSub dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0_sub_0x20[1] = {
 		0.20000000298023224f, 0.6000000238418579f,
 		NULL,
 		0x0001,
-		0x02, 0x00,
+		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.20000000298023224f, 0.30160000920295715f,
@@ -4441,7 +4441,7 @@ u32 dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x8[4] = {
 MObjSub dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x18[1] = {
 	{
 		0x0000,
-		0x04, 0x02,
+		G_IM_FMT_I, G_IM_SIZ_16b,
 		(void**)dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x8,
 		0x0020, 0x0000, 0x0020, 0x0020,
 		0,
@@ -4450,7 +4450,7 @@ MObjSub dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x18[1] = {
 		0.0f, 1.0f,
 		NULL,
 		0x3201,
-		0x04, 0x00,
+		G_IM_FMT_I, G_IM_SIZ_4b,
 		0x0020,
 		0x0020, 0x0020, 0x0020,
 		0.0f, 0.0f,

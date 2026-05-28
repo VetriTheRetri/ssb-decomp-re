@@ -1277,6 +1277,3 @@ u32 dLBTransitionBlock_AnimJoint_0x5F64[] = {
 	    0xC4548000,  /* -850.0f */
 	aobjEvent32End(),
 };
-
-PAD(4);
-

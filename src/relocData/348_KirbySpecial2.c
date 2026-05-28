@@ -498,5 +498,3 @@ DObjDesc dKirbySpecial2_CutterDraw[] = {
 	{ 1, (void*)dKirbySpecial2_Joint_0x27A0_DisplayList, { 0.0f, 150.0f, 52.5f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-
-PAD(4);

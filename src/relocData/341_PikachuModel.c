@@ -11,7 +11,18 @@ extern u16 dPikachuModel_palette_0x74E8[];
 extern u16 dPikachuModel_palette_0x7510[];
 extern u16 dPikachuModel_palette_0x7538[];
 extern u16 dPikachuModel_palette_0x80D0[];
-extern u8 dPikachuModel_Joint_0x0040_post[];
+extern void *dPikachuModel_Joint_0x0040_post[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x2C[];
+extern u8 *dPikachuModel_Joint_0x0040_post_sprites_0x40[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x60[];
+extern u8 *dPikachuModel_Joint_0x0040_post_sprites_0x74[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x9C[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0xB0[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0xC4[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0xD8[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0xEC[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x100[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x114[];
 extern MObjSub dPikachuModel_Joint_0x0040_post_sub_0x128[];
 extern MObjSub dPikachuModel_Joint_0x0040_post_sub_0x1A0[];
 extern MObjSub dPikachuModel_Joint_0x0040_post_sub_0x218[];
@@ -73,7 +84,7 @@ extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x1400[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13E0[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13B0[];
 extern MObjSub *dPikachuModel_gap_0x2B78_sub_0x13C8[];
-extern u32 dPikachuModel_gap_0x59B8_sub_0xB94[];
+extern u16 *dPikachuModel_gap_0x59B8_sub_0xB94[];
 /* MObjSub-dispatch table at file 0x0000 (64 bytes, 16 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
  * trailing-index cells inside dPikachuModel_Joint_0x0040_post. The original splitter
@@ -98,13 +109,163 @@ MObjSub **dPikachuModel_gap_0x0000[16] = {
 	NULL,  /* +0x3C */
 };
 
-/* Raw data from file offset 0x40 to 0x168 (296 bytes).
- * Holds palette/sprite tables. The 20 MObjSubs (0x78 bytes
- * each, file offsets 0x168..0xAC8) and
- * 16 MObjSub* trailing-index cells (0xAC8..0xB58)
- * have been split out below. */
-u8 dPikachuModel_Joint_0x0040_post[296] = {
-	#include <PikachuModel/Joint_0x0040_post.data.inc.c>
+/* Sprite/palette pointer tables @ file 0x40..0x168 (296 bytes, 74 slots).
+ * 1 dispatch-head sub-array + 2 sprite-pointer sub-arrays + 9 palette-
+ * pointer sub-arrays, each consumed by one MObjSub field (.sprites at
+ * +0x4, .palettes at +0x2C). The 20 MObjSubs themselves live at file
+ * offsets 0x168..0xAC8, and 16 MObjSub* trailing-index cells follow at
+ * 0xAC8..0xB58. */
+extern u16 dPikachuModel_palette_0x80D0[];
+extern u16 dPikachuModel_palette_0x7538[];
+extern u16 dPikachuModel_gap_0x59B8_sub_0x1970[];
+extern u16 dPikachuModel_palette_0x7398[];
+extern u16 dPikachuModel_palette_0x7438[];
+extern u16 dPikachuModel_palette_0x73C0[];
+extern u16 dPikachuModel_palette_0x73E8[];
+extern u16 dPikachuModel_palette_0x7410[];
+extern u16 dPikachuModel_palette_0x7570[];
+extern u16 dPikachuModel_palette_0x7598[];
+extern u16 dPikachuModel_palette_0x75C0[];
+extern u16 dPikachuModel_palette_0x75E8[];
+extern u16 dPikachuModel_palette_0x7610[];
+extern u16 dPikachuModel_palette_0x7740[];
+extern u16 dPikachuModel_palette_0x7768[];
+extern u16 dPikachuModel_palette_0x7790[];
+extern u16 dPikachuModel_palette_0x7B70[];
+extern u16 dPikachuModel_palette_0x7CA0[];
+extern u16 dPikachuModel_palette_0x7CC8[];
+extern u16 dPikachuModel_palette_0x7CF0[];
+extern u16 dPikachuModel_palette_0x8108[];
+extern u16 dPikachuModel_palette_0x8130[];
+extern u16 dPikachuModel_palette_0x8158[];
+extern u8 dPikachuModel_Tex_0x7638[];
+extern u8 dPikachuModel_Tex_0x7808[];
+extern u8 dPikachuModel_Tex_0x7938[];
+extern u8 dPikachuModel_Tex_0x7A68[];
+extern u16 dPikachuModel_palette_0x77B8[];
+extern u8 dPikachuModel_Tex_0x7B98[];
+extern u16 dPikachuModel_palette_0x7D18[];
+extern u8 dPikachuModel_Tex_0x7D68[];
+extern u8 dPikachuModel_Tex_0x7E98[];
+extern u8 dPikachuModel_Tex_0x7FC8[];
+extern u8 dPikachuModel_Tex_0x81D0[];
+extern u16 dPikachuModel_palette_0x8180[];
+extern u8 dPikachuModel_Tex_0x8300[];
+
+/* +0x00..+0x2B (11 slots) — MObjSub-list dispatch heads + leading NULL */
+void *dPikachuModel_Joint_0x0040_post[11] = {
+	NULL,
+	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAE0,    /* slot 1 (+0x4) */
+	NULL,
+	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAE8,    /* slot 3 (+0xC) */
+	NULL,
+	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAF0,    /* slot 5 (+0x14) */
+	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAF8,    /* slot 6 (+0x18) */
+	NULL,
+	(void *)dPikachuModel_Joint_0x0040_post_sub_0xB00,    /* slot 8 (+0x20) */
+	(void *)dPikachuModel_Joint_0x0040_post_sub_0xB08,    /* slot 9 (+0x24) */
+	NULL,
+};
+
+/* +0x2C..+0x3F (5 slots) — sub_0x128.palettes target */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0x2C[5] = {
+	dPikachuModel_gap_0x59B8_sub_0x1970,
+	dPikachuModel_palette_0x7398,
+	dPikachuModel_palette_0x73C0,
+	dPikachuModel_palette_0x73E8,
+	dPikachuModel_palette_0x7410,
+};
+
+/* +0x40..+0x5F (8 slots) — sub_0x290.sprites target */
+u8 *dPikachuModel_Joint_0x0040_post_sprites_0x40[8] = {
+	dPikachuModel_Tex_0x7638,
+	NULL, NULL, NULL, NULL,
+	dPikachuModel_Tex_0x7A68,
+	dPikachuModel_Tex_0x7938,
+	dPikachuModel_Tex_0x7808,
+};
+
+/* +0x60..+0x73 (5 slots) — sub_0x290.palettes target */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0x60[5] = {
+	dPikachuModel_palette_0x7610,
+	dPikachuModel_palette_0x7740,
+	dPikachuModel_palette_0x7768,
+	dPikachuModel_palette_0x7790,
+	dPikachuModel_palette_0x77B8,   /* palette frame */
+};
+
+/* +0x74..+0x9B (10 slots) — sub_0x308.sprites target */
+u8 *dPikachuModel_Joint_0x0040_post_sprites_0x74[10] = {
+	dPikachuModel_Tex_0x7B98,
+	NULL, NULL, NULL, NULL,
+	dPikachuModel_Tex_0x8300,
+	dPikachuModel_Tex_0x7FC8,
+	dPikachuModel_Tex_0x81D0,
+	dPikachuModel_Tex_0x7E98,
+	dPikachuModel_Tex_0x7D68,
+};
+
+/* +0x9C..+0xAF (5 slots) — sub_0x308.palettes target */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0x9C[5] = {
+	dPikachuModel_palette_0x7B70,
+	dPikachuModel_palette_0x7CA0,
+	dPikachuModel_palette_0x7CC8,
+	dPikachuModel_palette_0x7CF0,
+	dPikachuModel_palette_0x7D18,   /* palette frame */
+};
+
+/* +0xB0..+0xC3 (5 slots) — sub_0x3F8.palettes target */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0xB0[5] = {
+	dPikachuModel_palette_0x7538,
+	dPikachuModel_palette_0x7570,
+	dPikachuModel_palette_0x7598,
+	dPikachuModel_palette_0x75C0,
+	dPikachuModel_palette_0x75E8,
+};
+
+/* +0xC4..+0xD7 (5 slots) — sub_0x470.palettes target (same set as +0xB0) */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0xC4[5] = {
+	dPikachuModel_palette_0x7538,
+	dPikachuModel_palette_0x7570,
+	dPikachuModel_palette_0x7598,
+	dPikachuModel_palette_0x75C0,
+	dPikachuModel_palette_0x75E8,
+};
+
+/* +0xD8..+0xEB (5 slots) — sub_0x5D8.palettes target (same set as +0x2C) */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0xD8[5] = {
+	dPikachuModel_gap_0x59B8_sub_0x1970,
+	dPikachuModel_palette_0x7398,
+	dPikachuModel_palette_0x73C0,
+	dPikachuModel_palette_0x73E8,
+	dPikachuModel_palette_0x7410,
+};
+
+/* +0xEC..+0xFF (5 slots) — sub_0x920.palettes target */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0xEC[5] = {
+	dPikachuModel_palette_0x80D0,
+	dPikachuModel_palette_0x8108,
+	dPikachuModel_palette_0x8130,
+	dPikachuModel_palette_0x8158,
+	dPikachuModel_palette_0x8180,   /* palette frame */
+};
+
+/* +0x100..+0x113 (5 slots) — sub_0x998.palettes target (same as +0xEC) */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0x100[5] = {
+	dPikachuModel_palette_0x80D0,
+	dPikachuModel_palette_0x8108,
+	dPikachuModel_palette_0x8130,
+	dPikachuModel_palette_0x8158,
+	dPikachuModel_palette_0x8180,
+};
+
+/* +0x114..+0x127 (5 slots) — sub_0xA10.palettes target (same as +0xEC) */
+u16 *dPikachuModel_Joint_0x0040_post_palettes_0x114[5] = {
+	dPikachuModel_palette_0x80D0,
+	dPikachuModel_palette_0x8108,
+	dPikachuModel_palette_0x8130,
+	dPikachuModel_palette_0x8158,
+	dPikachuModel_palette_0x8180,
 };
 
 /* MObjSub @ 0x168 */
@@ -118,7 +279,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x128[1] = {
 		0.29865700006484985f, 0.49424299597740173f,
 		0.4026859998703003f, 0.32351401448249817f,
 		0.29865700006484985f, 0.4026859998703003f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x2C),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x2C,
 		0x3004,
 		0x02, 0x00,
 		0x0010,
@@ -199,13 +360,13 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x290[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x40),
+		(void**)dPikachuModel_Joint_0x0040_post_sprites_0x40,
 		0x007B, 0x0007, 0x0040, 0x0010,
 		0,
 		0.10249999910593033f, 0.4959999918937683f,
 		0.7950000166893005f, 0.25999999046325684f,
 		0.10249999910593033f, 0.7950000166893005f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x60),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x60,
 		0x3005,
 		0x02, 0x00,
 		0x0020,
@@ -228,13 +389,13 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x308[1] = {
 	{
 		0x0000,
 		0x02, 0x02,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x74),
+		(void**)dPikachuModel_Joint_0x0040_post_sprites_0x74,
 		0x00DC, 0x0027, 0x0040, 0x0010,
 		1,
 		0.6025999784469604f, 0.48750001192092896f,
 		0.28999999165534973f, 0.25f,
 		0.6025999784469604f, 0.28999999165534973f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x9C),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x9C,
 		0x3205,
 		0x02, 0x00,
 		0x0020,
@@ -292,7 +453,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x3F8[1] = {
 		0.0f, 0.0f,
 		0.550000011920929f, 1.0f,
 		0.0f, 0.550000011920929f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0xB0),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xB0,
 		0x3004,
 		0x02, 0x00,
 		0x000C,
@@ -321,7 +482,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x470[1] = {
 		0.0f, 0.07999999821186066f,
 		0.550000011920929f, 1.0f,
 		0.0f, 0.550000011920929f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0xC4),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xC4,
 		0x3004,
 		0x02, 0x00,
 		0x000C,
@@ -408,7 +569,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x5D8[1] = {
 		0.29865700006484985f, 0.1920360028743744f,
 		0.4026859998703003f, 0.2879270017147064f,
 		0.29865700006484985f, 0.4026859998703003f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0xD8),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xD8,
 		0x3004,
 		0x02, 0x00,
 		0x0010,
@@ -611,7 +772,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x920[1] = {
 		0.438493013381958f, 0.0f,
 		3.6990139484405518f, 1.0f,
 		0.438493013381958f, 3.6990139484405518f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0xEC),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0xEC,
 		0x3004,
 		0x02, 0x00,
 		0x0010,
@@ -640,7 +801,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0x998[1] = {
 		-0.177839994430542f, 0.0f,
 		2.3716800212860107f, 1.0f,
 		-0.177839994430542f, 2.3716800212860107f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x100),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x100,
 		0x3004,
 		0x02, 0x00,
 		0x0010,
@@ -669,7 +830,7 @@ MObjSub dPikachuModel_Joint_0x0040_post_sub_0xA10[1] = {
 		-0.527999997138977f, 0.0203000009059906f,
 		1.559999942779541f, 1.0074000358581543f,
 		-0.527999997138977f, 1.559999942779541f,
-		(void**)((u8*)dPikachuModel_Joint_0x0040_post + 0x114),
+		(void**)dPikachuModel_Joint_0x0040_post_palettes_0x114,
 		0x3004,
 		0x02, 0x00,
 		0x0010,
@@ -944,7 +1105,9 @@ Gfx dPikachuModel_Joint_0x24C0_DisplayList[50] = {
 	#include <PikachuModel/Joint_0x24C0.dl.inc.c>
 };
 
-/* DObjDesc: JointTree @ 0x2650 (30 entries) */
+/* DObjDesc: JointTree @ 0x2650 (28 entries, 0x4D0 bytes — array proper.
+ * Immediately followed by JointTree_post (22-slot AObjEvent32** per-joint
+ * dispatch table) spanning up to gap_0x2B78. */
 DObjDesc dPikachuModel_JointTree[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dPikachuModel_Joint_0x18B8_DisplayList, { 0.0f, -53.765953063964844f, -29.27102279663086f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -974,14 +1137,58 @@ DObjDesc dPikachuModel_JointTree[] = {
 	{ 2, (void*)dPikachuModel_Joint_0x24C0_DisplayList, { 0.0f, -45.0f, -90.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void *)dPikachuModel_gap_0x2B78_sub_0x864, { 1.974566023152508e-32f, 0.0f, 0.0f }, { 1.984195819811238e-32f, 1.993825616469968e-32f, 2.0130850628506343e-32f }, { 0.0f, 2.022715153382952e-32f, 2.0516042494855544e-32f } },
-	{ 0, (void*)0x00000000, { 2.0612340461442844e-32f, 2.0804934925249506e-32f, 0.0f }, { 2.0901232891836807e-32f, 2.109382735564347e-32f, 0.0f }, { 2.128642181945013e-32f, 0.0f, 2.138271978603743e-32f } },
+};
+
+/* AObjEvent32 ** dispatch table @ file 0x2B20 (88 bytes, 22 slots).
+ * Lives immediately after JointTree; references AObjEvent32 * scripts
+ * in the gap_0x2B78 region. */
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x864[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x868[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x86C[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x870[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x874[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x880[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x884[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x888[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x88C[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x890[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x894[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x898[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x89C[];
+AObjEvent32 **dPikachuModel_JointTree_post[22] = {
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x864,  /* slot 1  (+0x4) */
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x868,  /* slot 2  (+0x8) */
+	NULL, NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x86C,  /* slot 5  (+0x14) */
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x870,  /* slot 6  (+0x18) */
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x874,  /* slot 7  (+0x1C) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x880,  /* slot 9  (+0x24) */
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x884,  /* slot 10 (+0x28) */
+	NULL, NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x888,  /* slot 13 (+0x34) */
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x88C,  /* slot 14 (+0x38) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x890,  /* slot 16 (+0x40) */
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x894,  /* slot 17 (+0x44) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x898,  /* slot 19 (+0x4C) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x89C,  /* slot 21 (+0x54) */
 };
 
 /* Raw data from file offset 0x2B78 to 0x3F88 (5136 bytes) */
-/* gap sub-block @ 0x2B78 (was gap+0x0, 20 bytes) */
-u8 dPikachuModel_gap_0x2B78[20] = {
-	#include <PikachuModel/gap_0x2B78.data.inc.c>
+/* AObjEvent32** dispatch table @ 0x2B78 (5 slots, 3 non-NULL) */
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x8A0[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x8A4[];
+extern AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x8A8[];
+AObjEvent32 **dPikachuModel_gap_0x2B78[5] = {
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x8A0,
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x8A4,
+	(AObjEvent32 **)dPikachuModel_gap_0x2B78_sub_0x8A8,
+	NULL,
 };
 
 /* gap sub-block @ 0x2B8C (was gap+0x14, 112 bytes) */
@@ -1673,12 +1880,12 @@ AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x8A4[1] = {
 	(AObjEvent32 *)dPikachuModel_gap_0x2B78_sub_0x600,
 };
 
-/* gap sub-block @ 0x3420 (was gap+0x8A8, 16 bytes) */
-u32 dPikachuModel_gap_0x2B78_sub_0x8A8[4] = {
-	(u32)dPikachuModel_gap_0x2B78_sub_0x714,
-	(u32)dPikachuModel_gap_0x2B78_sub_0x784,
-	(u32)dPikachuModel_gap_0x2B78_sub_0x7F4,
-	aobjEvent32End(),
+/* AObjEvent32* dispatch array @ 0x3420 (4 entries, NULL-terminated) */
+AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x8A8[4] = {
+	(AObjEvent32 *)dPikachuModel_gap_0x2B78_sub_0x714,
+	(AObjEvent32 *)dPikachuModel_gap_0x2B78_sub_0x784,
+	(AObjEvent32 *)dPikachuModel_gap_0x2B78_sub_0x7F4,
+	NULL,
 };
 
 /* gap sub-block @ 0x3430 (was gap+0x8B8, 108 bytes) */
@@ -1713,101 +1920,110 @@ MObjSub *dPikachuModel_gap_0x2B78_sub_0x8B8[27] = {
 };
 
 /* u32 pointer array @ 0x349C (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x924[5] = {
-	0x0D281CCA,
-	0x0D291CE6,
-	0x0D2A1CF0,
-	0x0D2B1CFA,
-	0x0D2C1D04,
+u16 *dPikachuModel_gap_0x2B78_sub_0x924[5] = {
+	dPikachuModel_gap_0x59B8_sub_0x1970,
+	dPikachuModel_palette_0x7398,
+	dPikachuModel_palette_0x73C0,
+	dPikachuModel_palette_0x73E8,
+	dPikachuModel_palette_0x7410,
 };
 
-/* u32 pointer array @ 0x34B0 (8 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x938[8] = {
-	0x0D311D8E,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x0D321E9A,
-	0x0D331E4E,
-	0x0D341E02,
+/* Sprite pointer array @ 0x34B0 (8 entries) — MObjSub.sprites target */
+u8 *dPikachuModel_gap_0x2B78_sub_0x938[8] = {
+	dPikachuModel_Tex_0x7638,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	dPikachuModel_Tex_0x7A68,
+	dPikachuModel_Tex_0x7938,
+	dPikachuModel_Tex_0x7808,
 };
 
 /* u32 pointer array @ 0x34D0 (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x958[5] = {
-	0x0D351D84,
-	0x0D361DD0,
-	0x0D371DDA,
-	0x0D381DE4,
-	0x0D391DEE,
+u16 *dPikachuModel_gap_0x2B78_sub_0x958[5] = {
+	dPikachuModel_palette_0x7610,
+	dPikachuModel_palette_0x7740,
+	dPikachuModel_palette_0x7768,
+	dPikachuModel_palette_0x7790,
+	dPikachuModel_palette_0x77B8,
 };
 
-/* gap sub-block @ 0x34E4 (was gap+0x96C, 40 bytes) */
-u8 dPikachuModel_gap_0x2B78_sub_0x96C[40] = {
-	#include <PikachuModel/gap_0x2B78_sub_0x96C.data.inc.c>
+/* Sprite pointer array @ 0x34E4 (10 entries) — MObjSub.sprites target */
+u8 *dPikachuModel_gap_0x2B78_sub_0x96C[10] = {
+	dPikachuModel_Tex_0x7B98,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	dPikachuModel_Tex_0x8300,
+	dPikachuModel_Tex_0x7FC8,
+	dPikachuModel_Tex_0x81D0,
+	dPikachuModel_Tex_0x7E98,
+	dPikachuModel_Tex_0x7D68,
 };
 
 /* u32 pointer array @ 0x350C (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x994[5] = {
-	0x0D441EDC,
-	0x0D451F28,
-	0x0D461F32,
-	0x0D471F3C,
-	0x0D481F46,
+u16 *dPikachuModel_gap_0x2B78_sub_0x994[5] = {
+	dPikachuModel_palette_0x7B70,
+	dPikachuModel_palette_0x7CA0,
+	dPikachuModel_palette_0x7CC8,
+	dPikachuModel_palette_0x7CF0,
+	dPikachuModel_palette_0x7D18,
 };
 
 /* u32 pointer array @ 0x3520 (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x9A8[5] = {
-	0x0D491D4E,
-	0x0D4A1D5C,
-	0x0D4B1D66,
-	0x0D4C1D70,
-	0x0D4D1D7A,
+u16 *dPikachuModel_gap_0x2B78_sub_0x9A8[5] = {
+	dPikachuModel_palette_0x7538,
+	dPikachuModel_palette_0x7570,
+	dPikachuModel_palette_0x7598,
+	dPikachuModel_palette_0x75C0,
+	dPikachuModel_palette_0x75E8,
 };
 
 /* u32 pointer array @ 0x3534 (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x9BC[5] = {
-	0x0D4E1D4E,
-	0x0D4F1D5C,
-	0x0D501D66,
-	0x0D511D70,
-	0x0D521D7A,
+u16 *dPikachuModel_gap_0x2B78_sub_0x9BC[5] = {
+	dPikachuModel_palette_0x7538,
+	dPikachuModel_palette_0x7570,
+	dPikachuModel_palette_0x7598,
+	dPikachuModel_palette_0x75C0,
+	dPikachuModel_palette_0x75E8,
 };
 
 /* u32 pointer array @ 0x3548 (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x9D0[5] = {
-	0x0D531CCA,
-	0x0D541CE6,
-	0x0D551CF0,
-	0x0D561CFA,
-	0x0D571D04,
+u16 *dPikachuModel_gap_0x2B78_sub_0x9D0[5] = {
+	dPikachuModel_gap_0x59B8_sub_0x1970,
+	dPikachuModel_palette_0x7398,
+	dPikachuModel_palette_0x73C0,
+	dPikachuModel_palette_0x73E8,
+	dPikachuModel_palette_0x7410,
 };
 
 /* u32 pointer array @ 0x355C (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x9E4[5] = {
-	0x0D582034,
-	0x0D592042,
-	0x0D5A204C,
-	0x0D5B2056,
-	0x0D5C2060,
+u16 *dPikachuModel_gap_0x2B78_sub_0x9E4[5] = {
+	dPikachuModel_palette_0x80D0,
+	dPikachuModel_palette_0x8108,
+	dPikachuModel_palette_0x8130,
+	dPikachuModel_palette_0x8158,
+	dPikachuModel_palette_0x8180,
 };
 
 /* u32 pointer array @ 0x3570 (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0x9F8[5] = {
-	0x0D5D2034,
-	0x0D5E2042,
-	0x0D5F204C,
-	0x0D602056,
-	0x0D612060,
+u16 *dPikachuModel_gap_0x2B78_sub_0x9F8[5] = {
+	dPikachuModel_palette_0x80D0,
+	dPikachuModel_palette_0x8108,
+	dPikachuModel_palette_0x8130,
+	dPikachuModel_palette_0x8158,
+	dPikachuModel_palette_0x8180,
 };
 
 /* u32 pointer array @ 0x3584 (5 entries) */
-u32 dPikachuModel_gap_0x2B78_sub_0xA0C[5] = {
-	0x0D622034,
-	0x0D632042,
-	0x0D64204C,
-	0x0D652056,
-	0x0D712060,
+u16 *dPikachuModel_gap_0x2B78_sub_0xA0C[5] = {
+	dPikachuModel_palette_0x80D0,
+	dPikachuModel_palette_0x8108,
+	dPikachuModel_palette_0x8130,
+	dPikachuModel_palette_0x8158,
+	dPikachuModel_palette_0x8180,
 };
 
 /* MObjSub @ 0x3598 */
@@ -2695,7 +2911,9 @@ Gfx dPikachuModel_Joint_0x52E0_DisplayList[54] = {
 	#include <PikachuModel/Joint_0x52E0.dl.inc.c>
 };
 
-/* DObjDesc: JointTree_0x5490 @ 0x5490 (30 entries) */
+/* DObjDesc: JointTree_0x5490 @ 0x5490 (28 entries, 0x4D0 bytes — array
+ * proper. Immediately followed by JointTree_0x5490_post (22-slot
+ * AObjEvent32** per-joint dispatch table) spanning up to gap_0x59B8. */
 DObjDesc dPikachuModel_JointTree_0x5490[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)dPikachuModel_Joint_0x48F8_DisplayList, { 0.0f, -53.765953063964844f, -29.27102279663086f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -2725,14 +2943,58 @@ DObjDesc dPikachuModel_JointTree_0x5490[] = {
 	{ 2, (void*)dPikachuModel_Joint_0x52E0_DisplayList, { 0.0f, -45.0f, -90.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, -150.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void *)dPikachuModel_gap_0x59B8_sub_0x83C, { 1.7859966201194423e-25f, 0.0f, 0.0f }, { 1.7940746790484219e-25f, 1.8021527379774015e-25f, 1.8183087325758442e-25f }, { 0.0f, 1.8263870380238567e-25f, 1.8506209682917626e-25f } },
-	{ 0, (void*)0x00000000, { 1.8586990272207422e-25f, 1.874855021819185e-25f, 0.0f }, { 1.8829330807481646e-25f, 1.8990890753466074e-25f, 0.0f }, { 1.9152450699450501e-25f, 0.0f, 1.9233231288740297e-25f } },
+};
+
+/* AObjEvent32 ** dispatch table @ file 0x5960 (88 bytes, 22 slots).
+ * Lives immediately after JointTree_0x5490; references AObjEvent32 *
+ * scripts in the gap_0x59B8 region. */
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x83C[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x840[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x844[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x848[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x84C[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x858[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x85C[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x860[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x864[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x868[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x86C[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x870[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x874[];
+AObjEvent32 **dPikachuModel_JointTree_0x5490_post[22] = {
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x83C,  /* slot 1  (+0x4) */
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x840,  /* slot 2  (+0x8) */
+	NULL, NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x844,  /* slot 5  (+0x14) */
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x848,  /* slot 6  (+0x18) */
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x84C,  /* slot 7  (+0x1C) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x858,  /* slot 9  (+0x24) */
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x85C,  /* slot 10 (+0x28) */
+	NULL, NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x860,  /* slot 13 (+0x34) */
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x864,  /* slot 14 (+0x38) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x868,  /* slot 16 (+0x40) */
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x86C,  /* slot 17 (+0x44) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x870,  /* slot 19 (+0x4C) */
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x874,  /* slot 21 (+0x54) */
 };
 
 /* Raw data from file offset 0x59B8 to 0x7350 (6552 bytes) */
-/* gap sub-block @ 0x59B8 (was gap+0x0, 20 bytes) */
-u8 dPikachuModel_gap_0x59B8[20] = {
-	#include <PikachuModel/gap_0x59B8.data.inc.c>
+/* AObjEvent32** dispatch table @ 0x59B8 (5 slots, 3 non-NULL) */
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x878[];
+extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x87C[];
+extern AObjEvent32 **dPikachuModel_gap_0x59B8_sub_0x880[];
+AObjEvent32 **dPikachuModel_gap_0x59B8[5] = {
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x878,
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x87C,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x880,
+	NULL,
 };
 
 /* gap sub-block @ 0x59CC (was gap+0x14, 108 bytes) */
@@ -3414,16 +3676,23 @@ AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x87C[1] = {
 	(AObjEvent32 *)dPikachuModel_gap_0x59B8_sub_0x5DC,
 };
 
-/* gap sub-block @ 0x6238 (was gap+0x880, 28 bytes) */
-u8 dPikachuModel_gap_0x59B8_sub_0x880[28] = {
-	#include <PikachuModel/gap_0x59B8_sub_0x880.data.inc.c>
+/* AObjEvent32** dispatch table @ 0x6238 (7 slots) */
+extern MObjSub *dPikachuModel_gap_0x59B8_sub_0x998[];
+AObjEvent32 **dPikachuModel_gap_0x59B8_sub_0x880[7] = {
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x764,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x7D0,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x998,
 };
 
-/* u32 pointer array @ 0x6254 (3 entries) */
-u32 dPikachuModel_gap_0x59B8_sub_0x89C[3] = {
-	0x18961D0E,
-	0x18971D3A,
-	0x18A31D44,
+/* Palette pointer array @ 0x6254 (3 entries) — sub_0x8A8.palettes target */
+u16 *dPikachuModel_gap_0x59B8_sub_0x89C[3] = {
+	dPikachuModel_palette_0x7438,
+	dPikachuModel_palette_0x74E8,
+	dPikachuModel_palette_0x7510,
 };
 
 /* MObjSub @ 0x6260 */
@@ -3524,13 +3793,13 @@ u16 dPikachuModel_gap_0x59B8_sub_0xB74[16] = {
 	#include <PikachuModel/gap_0x59B8_sub_0xB74.palette.inc.c>
 };
 
-/* gap sub-block @ 0x654C (was gap+0xB94, 20 bytes) */
-u32 dPikachuModel_gap_0x59B8_sub_0xB94[5] = {
-	(u32)dPikachuModel_gap_0x59B8_sub_0xB4C,
-	(u32)dPikachuModel_gap_0x59B8_sub_0xB74,
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
+/* Palette pointer array @ 0x654C (5 entries, last 3 NULL) */
+u16 *dPikachuModel_gap_0x59B8_sub_0xB94[5] = {
+	dPikachuModel_gap_0x59B8_sub_0xB4C,
+	dPikachuModel_gap_0x59B8_sub_0xB74,
+	NULL,
+	NULL,
+	NULL,
 };
 
 /* gap sub-block @ 0x6560 (was gap+0xBA8, 144 bytes) */
@@ -3661,13 +3930,8 @@ Gfx dPikachuModel_gap_0x59B8_sub_0x1908[11] = {
 	#include <PikachuModel/gap_0x59B8_sub_0x1908.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x7318 (16 bytes) */
-u32 dPikachuModel_gap_0x59B8_sub_0x1908_post[4] = {
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-	aobjEvent32End(),
-};
+/* 16 trailing zero bytes after the DL — padding, not a script. */
+PAD(16);
 
 /* gap sub-block @ 0x7328 (was gap+0x1970, 40 bytes) */
 u16 dPikachuModel_gap_0x59B8_sub_0x1970[16] = {
@@ -3682,25 +3946,30 @@ u8 dPikachuModel_Tex_0x7350[72] = {
 	#include <PikachuModel/Tex_0x7350.tex.inc.c>
 };
 
-u8 dPikachuModel_Tex_0x7398[40] = {
-	#include <PikachuModel/Tex_0x7398.tex.inc.c>
+u16 dPikachuModel_palette_0x7398[16] = {
+	#include <PikachuModel/palette_0x7398.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x73C0[40] = {
-	#include <PikachuModel/Tex_0x73C0.tex.inc.c>
+u16 dPikachuModel_palette_0x73C0[16] = {
+	#include <PikachuModel/palette_0x73C0.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x73E8[40] = {
-	#include <PikachuModel/Tex_0x73E8.tex.inc.c>
+u16 dPikachuModel_palette_0x73E8[16] = {
+	#include <PikachuModel/palette_0x73E8.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7410[40] = {
-	#include <PikachuModel/Tex_0x7410.tex.inc.c>
+u16 dPikachuModel_palette_0x7410[16] = {
+	#include <PikachuModel/palette_0x7410.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7438[40] = {
-	#include <PikachuModel/Tex_0x7438.tex.inc.c>
+u16 dPikachuModel_palette_0x7438[16] = {
+	#include <PikachuModel/palette_0x7438.palette.inc.c>
 };
+PAD(8);
 
 u8 dPikachuModel_Tex_0x7460[136] = {
 	#include <PikachuModel/Tex_0x7460.tex.inc.c>
@@ -3728,46 +3997,59 @@ u8 dPikachuModel_Tex_0x7560[16] = {
 	#include <PikachuModel/Tex_0x7560.tex.inc.c>
 };
 
-u8 dPikachuModel_Tex_0x7570[40] = {
-	#include <PikachuModel/Tex_0x7570.tex.inc.c>
+u16 dPikachuModel_palette_0x7570[16] = {
+	#include <PikachuModel/palette_0x7570.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7598[40] = {
-	#include <PikachuModel/Tex_0x7598.tex.inc.c>
+u16 dPikachuModel_palette_0x7598[16] = {
+	#include <PikachuModel/palette_0x7598.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x75C0[40] = {
-	#include <PikachuModel/Tex_0x75C0.tex.inc.c>
+u16 dPikachuModel_palette_0x75C0[16] = {
+	#include <PikachuModel/palette_0x75C0.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x75E8[40] = {
-	#include <PikachuModel/Tex_0x75E8.tex.inc.c>
+u16 dPikachuModel_palette_0x75E8[16] = {
+	#include <PikachuModel/palette_0x75E8.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7610[40] = {
-	#include <PikachuModel/Tex_0x7610.tex.inc.c>
+u16 dPikachuModel_palette_0x7610[16] = {
+	#include <PikachuModel/palette_0x7610.palette.inc.c>
 };
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x16 */
 u8 dPikachuModel_Tex_0x7638[264] = {
 	#include <PikachuModel/Tex_0x7638.tex.inc.c>
 };
 
-u8 dPikachuModel_Tex_0x7740[40] = {
-	#include <PikachuModel/Tex_0x7740.tex.inc.c>
+u16 dPikachuModel_palette_0x7740[16] = {
+	#include <PikachuModel/palette_0x7740.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7768[40] = {
-	#include <PikachuModel/Tex_0x7768.tex.inc.c>
+u16 dPikachuModel_palette_0x7768[16] = {
+	#include <PikachuModel/palette_0x7768.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7790[40] = {
-	#include <PikachuModel/Tex_0x7790.tex.inc.c>
+u16 dPikachuModel_palette_0x7790[16] = {
+	#include <PikachuModel/palette_0x7790.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x77B8[80] = {
-	#include <PikachuModel/Tex_0x77B8.tex.inc.c>
+u16 dPikachuModel_palette_0x77B8[16] = {
+	#include <PikachuModel/palette_0x77B8.palette.inc.c>
 };
+PAD(8);
+u16 dPikachuModel_palette_0x77E0[16] = {
+	#include <PikachuModel/palette_0x77E0.palette.inc.c>
+};
+PAD(8);
 
 /* @tex fmt=CI4 dim=32x16 */
 u8 dPikachuModel_Tex_0x7808[304] = {
@@ -3784,29 +4066,38 @@ u8 dPikachuModel_Tex_0x7A68[264] = {
 	#include <PikachuModel/Tex_0x7A68.tex.inc.c>
 };
 
-u8 dPikachuModel_Tex_0x7B70[40] = {
-	#include <PikachuModel/Tex_0x7B70.tex.inc.c>
+u16 dPikachuModel_palette_0x7B70[16] = {
+	#include <PikachuModel/palette_0x7B70.palette.inc.c>
 };
+PAD(8);
 
 u8 dPikachuModel_Tex_0x7B98[264] = {
 	#include <PikachuModel/Tex_0x7B98.tex.inc.c>
 };
 
-u8 dPikachuModel_Tex_0x7CA0[40] = {
-	#include <PikachuModel/Tex_0x7CA0.tex.inc.c>
+u16 dPikachuModel_palette_0x7CA0[16] = {
+	#include <PikachuModel/palette_0x7CA0.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7CC8[40] = {
-	#include <PikachuModel/Tex_0x7CC8.tex.inc.c>
+u16 dPikachuModel_palette_0x7CC8[16] = {
+	#include <PikachuModel/palette_0x7CC8.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7CF0[40] = {
-	#include <PikachuModel/Tex_0x7CF0.tex.inc.c>
+u16 dPikachuModel_palette_0x7CF0[16] = {
+	#include <PikachuModel/palette_0x7CF0.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x7D18[80] = {
-	#include <PikachuModel/Tex_0x7D18.tex.inc.c>
+u16 dPikachuModel_palette_0x7D18[16] = {
+	#include <PikachuModel/palette_0x7D18.palette.inc.c>
 };
+PAD(8);
+u16 dPikachuModel_palette_0x7D40[16] = {
+	#include <PikachuModel/palette_0x7D40.palette.inc.c>
+};
+PAD(8);
 
 u8 dPikachuModel_Tex_0x7D68[304] = {
 	#include <PikachuModel/Tex_0x7D68.tex.inc.c>
@@ -3831,21 +4122,29 @@ u8 dPikachuModel_Tex_0x80F8[16] = {
 	#include <PikachuModel/Tex_0x80F8.tex.inc.c>
 };
 
-u8 dPikachuModel_Tex_0x8108[40] = {
-	#include <PikachuModel/Tex_0x8108.tex.inc.c>
+u16 dPikachuModel_palette_0x8108[16] = {
+	#include <PikachuModel/palette_0x8108.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x8130[40] = {
-	#include <PikachuModel/Tex_0x8130.tex.inc.c>
+u16 dPikachuModel_palette_0x8130[16] = {
+	#include <PikachuModel/palette_0x8130.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x8158[40] = {
-	#include <PikachuModel/Tex_0x8158.tex.inc.c>
+u16 dPikachuModel_palette_0x8158[16] = {
+	#include <PikachuModel/palette_0x8158.palette.inc.c>
 };
+PAD(8);
 
-u8 dPikachuModel_Tex_0x8180[80] = {
-	#include <PikachuModel/Tex_0x8180.tex.inc.c>
+u16 dPikachuModel_palette_0x8180[16] = {
+	#include <PikachuModel/palette_0x8180.palette.inc.c>
 };
+PAD(8);
+u16 dPikachuModel_palette_0x81A8[16] = {
+	#include <PikachuModel/palette_0x81A8.palette.inc.c>
+};
+PAD(8);
 
 u8 dPikachuModel_Tex_0x81D0[304] = {
 	#include <PikachuModel/Tex_0x81D0.tex.inc.c>
@@ -3938,18 +4237,26 @@ Gfx dPikachuModel_DL_0x94F8[23] = {
 	#include <PikachuModel/DL_0x94F8.dl.inc.c>
 };
 
-/* DObjDesc: ThunderTrailDObjDesc @ 0x95B0 (3 entries) */
-DObjDesc dPikachuModel_ThunderTrailDObjDesc[] = {
-	{ 1, (void*)dPikachuModel_DL_0x94F8, { 5.605193857299268e-45f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.60133705331478e-43f, 3.879131357713549e-37f } },
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 9.219703116178701e-41f, 1.2196040875706727e-37f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x00000000, { 1.401298464324817e-45f, 2.387866953589904e-38f, 5.348614539027114e-37f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 3.60133705331478e-43f } },
+/* @ 0x95B0 — was decoded as `DObjDesc[3]` but actually a DObjDLLink
+ * dispatch (16B) + 8B pad + 512B IA16 texture (32×16) for the
+ * ThunderTrail effect's secondary DL. The texture spans both this
+ * block AND the entire `gap_0x9634` region that physically follows:
+ * gap_0x9634_sub_0x1D4 (Gfx DL) does gsDPSetTextureImage(IA16) →
+ * ThunderTrail_tex + gsDPLoadBlock(lrs=255, siz=16b) loads 256 texels
+ * = 512 bytes, then gsDPSetTileSize(lrs=0x7C, lrt=0x3C) renders the
+ * 32×16 region. Originally split into ThunderTrail_tex[108] +
+ * gap_0x9634[404] = 512 due to the +0x18 chain landing inside. */
+DObjDLLink dPikachuModel_ThunderTrailDObjDesc[2] = {
+	{ 1, dPikachuModel_DL_0x94F8 },
+	{ 4, NULL },
+};
+PAD(8);
+/* @tex fmt=IA dim=32x16 siz=16b */
+u8 dPikachuModel_ThunderTrail_tex[512] = {
+	#include <PikachuModel/ThunderTrail_tex.tex.inc.c>
 };
 
 /* Raw data from file offset 0x9634 to 0x98D8 (676 bytes) */
-/* gap sub-block @ 0x9634 (was gap+0x0, 404 bytes) */
-u8 dPikachuModel_gap_0x9634[404] = {
-	#include <PikachuModel/gap_0x9634.data.inc.c>
-};
 
 /* gap sub-block @ 0x97C8 (was gap+0x194, 64 bytes) */
 Vtx dPikachuModel_gap_0x9634_sub_0x194[4] = {
@@ -3961,10 +4268,12 @@ Gfx dPikachuModel_gap_0x9634_sub_0x1D4[23] = {
 	#include <PikachuModel/gap_0x9634_sub_0x1D4.dl.inc.c>
 };
 
-/* Raw tail after DL @ 0x98C0 (24 bytes) */
-u8 dPikachuModel_gap_0x9634_sub_0x1D4_post[24] = {
-	#include <PikachuModel/gap_0x9634_sub_0x1D4_post.data.inc.c>
+/* DObjDLLink dispatch @ 0x98C0 (2 entries + 8B trailing pad) */
+DObjDLLink dPikachuModel_gap_0x9634_sub_0x1D4_post[2] = {
+	{ 1, dPikachuModel_gap_0x9634_sub_0x1D4 },
+	{ 4, NULL },
 };
+PAD(8);
 
 /* Texture data for sprite Stock */
 /* Split out from .sprite.c so the palette blocks can sit at

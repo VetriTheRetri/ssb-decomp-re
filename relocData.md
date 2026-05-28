@@ -29,57 +29,13 @@ bytes — every file compiles from C source.
 
 ### Per-file completion %
 
-Overall: **2089 / 2132** files at 100% (98.39% of bytes typed; 275,404 / 17,082,000 bytes still untyped across 43 files).
+Overall: **2132 / 2132** files at 100% (100.00% of bytes typed; 0 / 17,082,000 bytes still untyped across 0 files).
 
 Updated: regenerate with `python3 tools/computeRelocCompletion.py --format section --show-non-100 --sort pct`.
 
 Definition: a block is *untyped* when it includes a `.data.inc.c` whose body is flat hex bytes (no nested `{...}` initializers). `.data.inc.c` files structured by a local `typedef struct` count as typed. Spritelist-driven files are 100% by construction. Sizes come from the `.data` section of the compiled US `.o`.
 
-| FID | Name | Size (B) | Untyped (B) | Untyped blocks | Complete |
-|----:|---|---:|---:|---:|---:|
-| 252 | SCExplainMain | 6096 | 6096 | 5 | 0.00% |
-| 153 | StageSectorFile3 | 7680 | 7664 | 2 | 0.21% |
-| 138 | GRBonus2FoxFile2 | 68624 | 53840 | 2 | 21.54% |
-| 114 | StageLastFile2 | 76128 | 57464 | 21 | 24.52% |
-| 52 | MVCommon | 149280 | 81580 | 21 | 45.35% |
-| 347 | PikachuSpecial2 | 7008 | 2104 | 5 | 69.98% |
-| 111 | StageYosterFile2 | 47408 | 13676 | 31 | 71.15% |
-| 107 | StageInishieFile2 | 27792 | 6164 | 11 | 77.82% |
-| 336 | NessSpecial3 | 2976 | 656 | 7 | 77.96% |
-| 112 | StageYamabukiFile2 | 66160 | 12036 | 30 | 81.81% |
-| 102 | StagePupupuBeta2 | 10496 | 1412 | 4 | 86.55% |
-| 113 | StageHyruleFile2 | 26768 | 3336 | 2 | 87.54% |
-| 297 | MarioSpecial3 | 656 | 80 | 2 | 87.80% |
-| 342 | PikachuSpecial3 | 9104 | 1072 | 11 | 88.22% |
-| 115 | StageExplainFile2 | 3680 | 408 | 2 | 88.91% |
-| 353 | LinkSpecial2 | 6672 | 712 | 6 | 89.33% |
-| 335 | NessModel | 50112 | 4340 | 11 | 91.34% |
-| 106 | StageCastleFile2 | 17696 | 1416 | 7 | 92.00% |
-| 136 | Bonus2Common | 25392 | 1804 | 4 | 92.90% |
-| 316 | FoxSpecial4 | 144 | 8 | 1 | 94.44% |
-| 161 | FoxSpecial3 | 12160 | 604 | 2 | 95.03% |
-| 118 | StageYosterSmallFile2 | 17744 | 816 | 8 | 95.40% |
-| 195 | SCStaffroll | 31056 | 1340 | 76 | 95.69% |
-| 167 | MNTitle | 168096 | 6632 | 11 | 96.05% |
-| 145 | GRBonus2KirbyFile2 | 15568 | 572 | 1 | 96.33% |
-| 149 | GRBonus3File2 | 26768 | 848 | 11 | 96.83% |
-| 108 | StageJungleFile2 | 62944 | 1752 | 6 | 97.22% |
-| 325 | LinkSpecial3 | 1776 | 48 | 1 | 97.30% |
-| 116 | StageBattlefieldFile2 | 17328 | 444 | 6 | 97.44% |
-| 109 | StageSectorFile2 | 47120 | 1028 | 12 | 97.82% |
-| 341 | PikachuModel | 39984 | 832 | 7 | 97.92% |
-| 117 | StageMetalFile2 | 16320 | 308 | 4 | 98.11% |
-| 328 | KirbyModel | 120864 | 1680 | 12 | 98.61% |
-| 332 | CaptainModel | 51344 | 680 | 3 | 98.68% |
-| 142 | GRBonus2LinkFile2 | 18768 | 224 | 1 | 98.81% |
-| 344 | BossModel | 11584 | 136 | 1 | 98.83% |
-| 338 | YoshiModel | 44256 | 432 | 4 | 99.02% |
-| 146 | GRBonus2PikachuFile2 | 18672 | 160 | 1 | 99.14% |
-| 135 | GRBonus1NessFile2 | 12496 | 76 | 2 | 99.39% |
-| 198 | SCExplainGraphics | 122976 | 636 | 4 | 99.48% |
-| 144 | GRBonus2CaptainFile2 | 20368 | 96 | 1 | 99.53% |
-| 330 | PurinModel | 32224 | 84 | 2 | 99.74% |
-| 320 | SamusModel | 58704 | 108 | 2 | 99.82% |
+All files are now at 100% typed. Re-running the tool with `--show-non-100` returns an empty table.
 
 ### Per-region divergence (JP build)
 

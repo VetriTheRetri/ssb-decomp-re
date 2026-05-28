@@ -617,36 +617,70 @@ u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint_0x1258[] = {
 PAD(12);
 
 /* Raw data from file offset 0x12F0 to 0x1A10 (1824 bytes) */
-/* Pointer-table split fallback: chain-pointer table at the
- * head of the array, followed by raw data containing every
- * referenced (and orphan) script. The data block is dumped
- * as one u8[] include; fixRelocChain rewrites the table
- * entries to chain-encoded form per the .reloc. */
+/* MatAnimJoint structure for the SpinAttack effect:
+ *   head AObjEvent32 **[2] (8B) — entry [1] → inner _data_at_0x3C
+ *   _data (60B) — primary AObjEvent32 SetExtValBlock script (color cycle)
+ *   _data_at_0x3C AObjEvent32 *[5] (20B) — inner mobj table, slot[0] → _data
+ *   _data_at_0x50 (40B) — CI4 palette (16 u16) + PAD(8)
+ *   _data_at_0x78 (264B) — IA16 16x8 texture (256B) + PAD(8)
+ *   Tex_0x1478 (512B) — CI4 32x32 texture (loaded RGBA16)
+ *   _data_at_0x380 / 0x3C0 — 2x Vtx[4] (already typed)
+ *   _data_at_0x400 / 0x4F0 — 2x Gfx DL (already typed)
+ *   _data_at_0x5C0 (16B) — DObjDLLink[2] (already typed)
+ *   _data_at_0x5D0 (16B) — DObjDLLink[2] start of MAT struct
+ *   _data_at_0x5E0 (176B) — DObjDesc[4]
+ *   _data_at_0x690 (20B) — AObjEvent32 *[5] inner table for _data_at_0x6A4
+ *   _data_at_0x6A4 (116B) — secondary AObjEvent32 script (SetAnim loop) */
 extern u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[];
-AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[2] = {
+extern AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C[];
+
+AObjEvent32 **dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)((u8*)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data + 0x3C),
+	(AObjEvent32 **)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C,
 };
 
-/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data (15 u32) */
+/* Primary MAT-anim script @ +0x8 — cycles an external value (SYColorPack)
+ * across keyframes at frames 0/12/1/17/24/11/35 (block durations). */
 u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data[15] = {
-	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data.data.inc.c>
+	aobjEvent32SetExtValBlock(0x001, 0),
+	    0xFFFF6000,  /* SYColorPack(255,255,96,0) */
+	aobjEvent32SetExtValBlock(0x001, 12),
+	    0xFFFF60CC,
+	aobjEvent32SetExtValBlock(0x001, 1),
+	    0xFFFF6033,
+	aobjEvent32SetExtValBlock(0x001, 17),
+	    0xFFFF6033,
+	aobjEvent32SetExtValBlock(0x001, 24),
+	    0xFFFF60B3,
+	aobjEvent32SetExtValBlock(0x001, 11),
+	    0xFFFF6000,
+	aobjEvent32SetExtValBlock(0x001, 35),
+	    0xFFFF6000,
+	aobjEvent32End(),
 };
 
-/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C (5 u32) */
-u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C[5] = {
-	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C.data.inc.c>
+/* Inner per-mobj table @ +0x3C — entry [0] points back to the script. */
+AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C[5] = {
+	(AObjEvent32 *)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data,
+	NULL, NULL, NULL, NULL,
 };
 
-/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50 (10 u32) */
-u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50[10] = {
-	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50.data.inc.c>
+/* CI4 palette @ +0x50 (16 entries, loaded by DL_at_0x400 via
+ * gsDPSetTextureImage(RGBA, 16b) + gsDPLoadTLUTCmd(5, 15)). */
+u16 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50[16] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50.palette.inc.c>
 };
 
-/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78 (66 u32) */
-u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78[66] = {
-	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78.data.inc.c>
+PAD(8);
+
+/* IA16 texture @ +0x78 (16x8, 256B + 8B PAD). Loaded by DL_at_0x4F0
+ * via gsDPSetTextureImage(IA, 16b) + gsDPLoadBlock(127, 1024). */
+/* @tex fmt=IA16 dim=16x8 */
+u8 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78[256] = {
+	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78.tex.inc.c>
 };
+
+PAD(8);
 
 /* CI4 32×32 texel block — referenced by DL_at_0x400 via SetTextureImage
  * (CI 16b) + LoadBlock (255,1024) + SetTile (4b, masks 5/5). */
@@ -684,12 +718,49 @@ DObjDLLink dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5C0[] = {
 	{ 4, NULL },
 };
 
-/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0 (53 u32) */
-u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0[53] = {
-	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0.data.inc.c>
+/* DObjDLLink @ +0x5D0 — referenced by DObjDesc[2].dl below. */
+extern u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4[];
+
+DObjDLLink dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0[] = {
+	{ 1, dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x4F0 },
+	{ 4, NULL },
 };
 
-/* u32: dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4 (29 u32) */
-u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4[29] = {
-	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4.data.inc.c>
+/* DObjDesc[4] @ +0x5E0 — scene-graph entries for the SpinAttack effect.
+ * [0]=root (no dl), [1]=DL_at_0x5C0 attachment, [2]=MAT-anim attachment
+ * (dl points back to the DObjDLLink at _data_at_0x5D0), [3]=sentinel. */
+DObjDesc dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5E0[] = {
+	{ 0, (void*)0x00000000, { -69.79082489013672f, 341.6388244628906f, 113.81939697265625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5C0, { 30.0f, 90.0f, 15.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5D0, { 15.0f, 81.0000228881836f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.5799989700317383f, 1.5799989700317383f, 1.5799989700317383f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* Inner per-mobj table @ +0x690 — slot [4] → _data_at_0x6A4 script. */
+AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x690[5] = {
+	NULL, NULL, NULL, NULL,
+	(AObjEvent32 *)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4,
+};
+
+/* Secondary MAT-anim script @ +0x6A4 — SetVal0Rate/SetValAfterBlock pairs
+ * driving 3-axis float tracks, then SetAnim loop-back. */
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4[28] = {
+	aobjEvent32SetVal0Rate(0x004, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfterBlock(0x380, 0),
+	    0x3FCA3D6C, 0x3FCA3D6C, 0x3FCA3D6C,
+	aobjEvent32SetVal0Rate(0x004, 3),
+	    0x3F490FDB,  /* pi/4 */
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3ECC6901, 0x3ECC6901, 0x3ECC6901,
+	aobjEvent32SetValAfterBlock(0x380, 2),
+	    0x3FCA3D6C, 0x3FCA3D6C, 0x3FCA3D6C,
+	aobjEvent32SetVal0Rate(0x004, 3),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3ECC6901, 0x3ECC6901, 0x3ECC6901,
+	aobjEvent32SetValAfterBlock(0x380, 2),
+	    0x3FCA3D6C, 0x3FCA3D6C, 0x3FCA3D6C,
+	aobjEvent32SetAnim(0x000, 0),
+	    (u32)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x6A4,
 };

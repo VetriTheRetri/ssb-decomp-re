@@ -1,1724 +1,3015 @@
-/* Figatree motion data for relocData file 334 (CaptainShieldPose) */
+/* relocData file 334 (CaptainShieldPose) — DObjDLLink[]+DObjDesc[]+per-direction(AObjEvent32 *[]+scripts) */
 /* File size: 10976 bytes (0x2AE0) */
 
 #include "relocdata_types.h"
-
-extern u16 dCaptainShieldPose_script1_0[];
-extern u16 dCaptainShieldPose_script1_1[];
-extern u16 dCaptainShieldPose_script1_2[];
-extern u16 dCaptainShieldPose_script1_3[];
-extern u16 dCaptainShieldPose_script1_4[];
-extern u16 dCaptainShieldPose_script1_5[];
-extern u16 dCaptainShieldPose_script1_6[];
-extern u16 dCaptainShieldPose_script1_7[];
-extern u16 dCaptainShieldPose_script1_8[];
-extern u16 dCaptainShieldPose_script1_9[];
-extern u16 dCaptainShieldPose_script1_10[];
-extern u16 dCaptainShieldPose_script1_11[];
-extern u16 dCaptainShieldPose_script1_12[];
-extern u16 dCaptainShieldPose_script1_13[];
-extern u16 dCaptainShieldPose_script1_14[];
-extern u16 dCaptainShieldPose_script1_15[];
-extern u16 dCaptainShieldPose_script2_0[];
-extern u16 dCaptainShieldPose_script2_1[];
-extern u16 dCaptainShieldPose_script2_2[];
-extern u16 dCaptainShieldPose_script2_3[];
-extern u16 dCaptainShieldPose_script2_4[];
-extern u16 dCaptainShieldPose_script2_5[];
-extern u16 dCaptainShieldPose_script2_6[];
-extern u16 dCaptainShieldPose_script2_7[];
-extern u16 dCaptainShieldPose_script2_8[];
-extern u16 dCaptainShieldPose_script2_9[];
-extern u16 dCaptainShieldPose_script2_10[];
-extern u16 dCaptainShieldPose_script2_11[];
-extern u16 dCaptainShieldPose_script2_12[];
-extern u16 dCaptainShieldPose_script2_13[];
-extern u16 dCaptainShieldPose_script2_14[];
-extern u16 dCaptainShieldPose_script2_15[];
-extern u16 dCaptainShieldPose_script3_0[];
-extern u16 dCaptainShieldPose_script3_1[];
-extern u16 dCaptainShieldPose_script3_2[];
-extern u16 dCaptainShieldPose_script3_3[];
-extern u16 dCaptainShieldPose_script3_4[];
-extern u16 dCaptainShieldPose_script3_5[];
-extern u16 dCaptainShieldPose_script3_6[];
-extern u16 dCaptainShieldPose_script3_7[];
-extern u16 dCaptainShieldPose_script3_8[];
-extern u16 dCaptainShieldPose_script3_9[];
-extern u16 dCaptainShieldPose_script3_10[];
-extern u16 dCaptainShieldPose_script3_11[];
-extern u16 dCaptainShieldPose_script3_12[];
-extern u16 dCaptainShieldPose_script3_13[];
-extern u16 dCaptainShieldPose_script3_14[];
-extern u16 dCaptainShieldPose_script3_15[];
-extern u16 dCaptainShieldPose_script4_0[];
-extern u16 dCaptainShieldPose_script4_1[];
-extern u16 dCaptainShieldPose_script4_2[];
-extern u16 dCaptainShieldPose_script4_3[];
-extern u16 dCaptainShieldPose_script4_4[];
-extern u16 dCaptainShieldPose_script4_5[];
-extern u16 dCaptainShieldPose_script4_6[];
-extern u16 dCaptainShieldPose_script4_7[];
-extern u16 dCaptainShieldPose_script4_8[];
-extern u16 dCaptainShieldPose_script4_9[];
-extern u16 dCaptainShieldPose_script4_10[];
-extern u16 dCaptainShieldPose_script4_11[];
-extern u16 dCaptainShieldPose_script4_12[];
-extern u16 dCaptainShieldPose_script4_13[];
-extern u16 dCaptainShieldPose_script4_14[];
-extern u16 dCaptainShieldPose_script4_15[];
-extern u16 dCaptainShieldPose_script5_0[];
-extern u16 dCaptainShieldPose_script5_1[];
-extern u16 dCaptainShieldPose_script5_2[];
-extern u16 dCaptainShieldPose_script5_3[];
-extern u16 dCaptainShieldPose_script5_4[];
-extern u16 dCaptainShieldPose_script5_5[];
-extern u16 dCaptainShieldPose_script5_6[];
-extern u16 dCaptainShieldPose_script5_7[];
-extern u16 dCaptainShieldPose_script5_8[];
-extern u16 dCaptainShieldPose_script5_9[];
-extern u16 dCaptainShieldPose_script5_10[];
-extern u16 dCaptainShieldPose_script5_11[];
-extern u16 dCaptainShieldPose_script5_12[];
-extern u16 dCaptainShieldPose_script5_13[];
-extern u16 dCaptainShieldPose_script5_14[];
-extern u16 dCaptainShieldPose_script5_15[];
-extern u16 dCaptainShieldPose_script6_0[];
-extern u16 dCaptainShieldPose_script6_1[];
-extern u16 dCaptainShieldPose_script6_2[];
-extern u16 dCaptainShieldPose_script6_3[];
-extern u16 dCaptainShieldPose_script6_4[];
-extern u16 dCaptainShieldPose_script6_5[];
-extern u16 dCaptainShieldPose_script6_6[];
-extern u16 dCaptainShieldPose_script6_7[];
-extern u16 dCaptainShieldPose_script6_8[];
-extern u16 dCaptainShieldPose_script6_9[];
-extern u16 dCaptainShieldPose_script6_10[];
-extern u16 dCaptainShieldPose_script6_11[];
-extern u16 dCaptainShieldPose_script6_12[];
-extern u16 dCaptainShieldPose_script6_13[];
-extern u16 dCaptainShieldPose_script6_14[];
-extern u16 dCaptainShieldPose_script6_15[];
-extern u16 dCaptainShieldPose_script7_0[];
-extern u16 dCaptainShieldPose_script7_1[];
-extern u16 dCaptainShieldPose_script7_2[];
-extern u16 dCaptainShieldPose_script7_3[];
-extern u16 dCaptainShieldPose_script7_4[];
-extern u16 dCaptainShieldPose_script7_5[];
-extern u16 dCaptainShieldPose_script7_6[];
-extern u16 dCaptainShieldPose_script7_7[];
-extern u16 dCaptainShieldPose_script7_8[];
-extern u16 dCaptainShieldPose_script7_9[];
-extern u16 dCaptainShieldPose_script7_10[];
-extern u16 dCaptainShieldPose_script7_11[];
-extern u16 dCaptainShieldPose_script7_12[];
-extern u16 dCaptainShieldPose_script7_13[];
-extern u16 dCaptainShieldPose_script7_14[];
-extern u16 dCaptainShieldPose_script7_15[];
-extern u16 dCaptainShieldPose_script8_0[];
-extern u16 dCaptainShieldPose_script8_1[];
-extern u16 dCaptainShieldPose_script8_2[];
-extern u16 dCaptainShieldPose_script8_3[];
-extern u16 dCaptainShieldPose_script8_4[];
-extern u16 dCaptainShieldPose_script8_5[];
-extern u16 dCaptainShieldPose_script8_6[];
-extern u16 dCaptainShieldPose_script8_7[];
-extern u16 dCaptainShieldPose_script8_8[];
-extern u16 dCaptainShieldPose_script8_9[];
-extern u16 dCaptainShieldPose_script8_10[];
-extern u16 dCaptainShieldPose_script8_11[];
-extern u16 dCaptainShieldPose_script8_12[];
-extern u16 dCaptainShieldPose_script8_13[];
-extern u16 dCaptainShieldPose_script8_14[];
-extern u16 dCaptainShieldPose_script8_15[];
-
-/* Data region at word 0x0000 (309 words) */
-u32 dCaptainShieldPose_data0[309] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x3F800000, 0x3F800000, 0x3F800000, 0x00000001, 0x00000000, 0x3DD1183B, 0x43B8361B, 0x4271342E,
-	0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000002, 0x00000000,
-	0x3F87EF9E, 0xC199DD2F, 0x40140831, 0x00000000, 0x3E570A3D, 0x00000000, 0x3F800000, 0x3F800000,
-	0x3F800000, 0x00000003, 0x00000000, 0x00000000, 0xC0FF89D0, 0x413FA772, 0x3EBBED0F, 0xBE34C2F8,
-	0xBC716B12, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000004, 0x00000000, 0x42C60000, 0x42B2F957,
-	0xC1C793AB, 0xBFC90FD8, 0x00000000, 0xBFC90FD8, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000005,
-	0x00000000, 0x00000000, 0x00000000, 0xB6EAE18B, 0x3F3B430F, 0x3EF126E9, 0xBF6BC2DB, 0x3F800000,
-	0x3F800000, 0x3F800000, 0x00000006, 0x00000000, 0x42F467E3, 0x368637BD, 0x37F34507, 0x00000000,
-	0x00000000, 0xBFDDEA46, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000007, 0x00000000, 0x42D41FF6,
-	0x3A858FF7, 0x37B02928, 0x40B2C48F, 0xBD824EDF, 0xBF2C4AD8, 0x3F800000, 0x3F800000, 0x3F800000,
-	0x00000004, 0x00000000, 0x00000000, 0x42B40000, 0xC1D80000, 0x00000000, 0x00000000, 0x00000000,
-	0x3F800000, 0x3F800000, 0x3F800000, 0x00000005, 0x00000000, 0x00000000, 0x41F00000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000004, 0x00000000,
-	0xC2C60000, 0x42B2F966, 0xC1C79581, 0xBFC90FD8, 0x00000000, 0xBFC90FD8, 0x3F800000, 0x3F800000,
-	0x3F800000, 0x00000005, 0x00000000, 0x00000000, 0x00000000, 0xB7B02928, 0xC0A2CBD5, 0xC02B4F8B,
-	0xC092ED03, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000006, 0x00000000, 0x42F46875, 0xB68637BD,
-	0xB7F34507, 0x00000000, 0x00000000, 0xBFE37197, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000007,
-	0x00000000, 0x42D41FBE, 0x00000000, 0x00000000, 0x3FA32275, 0x3F1BC19C, 0x4027F5AE, 0x3F800000,
-	0x3F800000, 0x3F800000, 0x00000008, 0x00000000, 0x41ABB852, 0x4145B646, 0x411955E1, 0x404059D5,
-	0xBFFAC1FD, 0x3E6EA78B, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000003, 0x00000000, 0xC23F02F7,
-	0xC25269D2, 0xC19F3F53, 0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x3F800000,
-	0x00000003, 0x00000000, 0x42049A70, 0xC2983FFB, 0xC1844CFC, 0xBFC90FD8, 0x00000000, 0xBFC90FD8,
-	0x3F800000, 0x3F800000, 0x3F800000, 0x00000004, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x3EBBCC4B, 0x3E585E3E, 0xBF911C54, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000005, 0x00000000,
-	0x4320E636, 0x368637BD, 0xB60637BD, 0x00000000, 0x00000000, 0x3F9F14F5, 0x3F800000, 0x3F800000,
-	0x3F800000, 0x00000006, 0x00000000, 0x433EA8F8, 0x3FAB9618, 0x3FD76588, 0x00000000, 0x00000000,
-	0xBFC90FD8, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000007, 0x00000000, 0xB68637BD, 0xB7F34507,
-	0xB68637BD, 0xC05B098D, 0x404E7FBB, 0xC048A145, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000003,
-	0x00000000, 0xC204999A, 0xC2984000, 0xC1844FDF, 0xBFC90FD8, 0x00000000, 0xBFC90FD8, 0x3F800000,
-	0x3F800000, 0x3F800000, 0x00000004, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x3F21F490,
-	0x3EA95183, 0x3E2A5658, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000005, 0x00000000, 0x4320E638,
-	0x368637BD, 0x00000000, 0x00000000, 0x00000000, 0x3F879B80, 0x3F800000, 0x3F800000, 0x3F800000,
-	0x00000006, 0x00000000, 0x433EA8F0, 0x3FAB9629, 0x3FD76577, 0x00000000, 0x00000000, 0xBFC90FD8,
-	0x3F800000, 0x3F800000, 0x3F800000, 0x00000007, 0x00000000, 0xB60637BD, 0xB86F1349, 0xB60637BD,
-	0x3EE8BC17, 0x3ECE2974, 0xBF2F4C5E, 0x3F800000, 0x3F800000, 0x3F800000, 0x00000001, 0x00000000,
-	0x00000000, 0x43960000, 0x42F00000, 0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000,
-	0x3F800000, 0x00000012, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-};
-
-/* Pointer array at word 0x0135 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs0[26] = {
-	(u32)dCaptainShieldPose_script1_0, /* [0] intern -> 0x014F */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script1_1, /* [2] intern -> 0x0158 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script1_2, /* [4] intern -> 0x0174 */
-	(u32)dCaptainShieldPose_script1_3, /* [5] intern -> 0x018A */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script1_4, /* [8] intern -> 0x0197 */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script1_5, /* [10] intern -> 0x01A7 */
-	(u32)dCaptainShieldPose_script1_6, /* [11] intern -> 0x01BD */
-	(u32)dCaptainShieldPose_script1_7, /* [12] intern -> 0x01CA */
-	(u32)dCaptainShieldPose_script1_8, /* [13] intern -> 0x01DA */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script1_9, /* [16] intern -> 0x01E4 */
-	(u32)dCaptainShieldPose_script1_10, /* [17] intern -> 0x01FA */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script1_11, /* [19] intern -> 0x0207 */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script1_12, /* [21] intern -> 0x021D */
-	(u32)dCaptainShieldPose_script1_13, /* [22] intern -> 0x0233 */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script1_14, /* [24] intern -> 0x0240 */
-	(u32)dCaptainShieldPose_script1_15, /* [25] intern -> 0x0256 */
-};
-
-/* Script at word 0x014F (18 u16s) */
-u16 dCaptainShieldPose_script1_0[18] = {
-	ftAnimBlock0(FT_ANIM_TRAX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x42A8, 0x0000, 0x3EDC, 0x9DD4, 0x1418, 0x0000, 0x3DD1, 0x1874, 0x43B8, 0x361B, 0x1020, 0x002D, 0x42A8, 0x0000, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0158 (56 u16s) */
-u16 dCaptainShieldPose_script1_1[56] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -18238, -17505, -23584, -16634, 2706,
-	0xBAE6, /* unknown opcode 23 */
-	0xFD1C, /* unknown opcode 31 */
-	0xBD56, /* unknown opcode 23 */
-	ftAnimSetFlags(FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ),
-	0xBAAC, /* unknown opcode 23 */
-	0xDA03, /* unknown opcode 27 */
-	0xC0ED, /* unknown opcode 24 */
-	0x8C8C, /* unknown opcode 17 */
-	0xBDF0, /* unknown opcode 23 */
-	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAZ, 49407), -30256, 15892, -21178, 16533, -11085, -16913, -21350, 3073, 90, -16590, -18238, -17719,
-	ftAnimSetFlagsT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAY, 2618),
-	0x802D, /* unknown opcode 16 */
-	ftAnimEnd(),
-	0x0000, 0xBB30, 0x2E14, 0xBDB2, 0xB8C2, 0x3ACB, 0x587A, 0xC0CE, 0x6667, 0xB8C1, 0xF7D3, 0x0000, 0x0000, 0x3D14, 0x7424, 0x4019, 0x9999, 0xBDCF, 0x9074, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0174 (44 u16s) */
-u16 dCaptainShieldPose_script1_2[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 21845), -18084, -420, 15894, 8961, -17912, -32624,
-	0xBF80, /* unknown opcode 23 */
-	0x6731, 14759, /* SetTranslateInterp */
-	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY, 2563), -32724, 16097, 13, -17875, 7241, 15861, 457, 14888, -17929, -16509, -26851, -17776,
-	ftAnimSetValRate(FT_ANIM_ROTY | FT_ANIM_TRAY | FT_ANIM_SCAZ), 2563, -32767, 16096, -21773, -17878, 13403,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ), 30035, 14905, -15029, -16509, -17490, -17774, 17519, 0,
-	ftAnimEnd(),
-};
-
-/* Script at word 0x018A (26 u16s) */
-u16 dCaptainShieldPose_script1_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFC7, 0xB97F, 0x3A4C, 0xD4F3, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFC7, 0x9941, 0xBB77, 0xD635, 0x0A02, 0x0001, 0xBFC8, 0x1A1B, 0xBB80, 0xDA72, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0197 (32 u16s) */
-u16 dCaptainShieldPose_script1_4[32] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimEnd(),
-	0x0000, 0xBB44, 0x9BA3, 0x0000, 0x0000, 0xBB53, 0x244E, 0x0000, 0x0000, 0x3A52, 0x82C9, 0x0C03, 0x805A, 0xBE99, 0x9997, 0xBB03, 0xAEBA, 0xBEA4, 0xF45C, 0xBB86, 0x4752, 0x3DA4, 0x762C, 0x3A8C, 0xE0A7, 0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x01A7 (44 u16s) */
-u16 dCaptainShieldPose_script1_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC09E, /* unknown opcode 24 */
-	ftAnimBlock(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX, 15078),
-	0x622B, -16340, /* SetTranslateInterp */
-	0xF7BC, /* unknown opcode 30 */
-	0xBB2A, /* unknown opcode 23 */
-	ftAnimLoop(0x69F9, -16239),
-	ftAnimLoop(0x6D4C, 14620),
-	0x61AA, 2563, /* SetTranslateInterp */
-	0x802C, /* unknown opcode 16 */
-	0xC09A, /* unknown opcode 24 */
-	0x9565, /* unknown opcode 18 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY), -1290, -16336, 21225, -17928, 30479, -16234,
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ),
-	0xBBAC, /* unknown opcode 23 */
-	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 2563, -32767, -16230, 32384, 15159, 10148, -16336, 23121, -17939, 5605, -16234, 14564, -17492, -23071, 0, 0,
-};
-
-/* Script at word 0x01BD (26 u16s) */
-u16 dCaptainShieldPose_script1_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBF9C, 0x9E71, 0xBC3B, 0x01F6, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFC1, 0x7793, 0xBB9E, 0xC26F, 0x0A02, 0x0001, 0xBFC2, 0x1765, 0xBB9F, 0xD1DE, 0x0000, 0x0000,
-};
-
-/* Script at word 0x01CA (32 u16s) */
-u16 dCaptainShieldPose_script1_7[32] = {
-	ftAnimBlock(FT_ANIM_SCAZ, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 29906, -19007, -24501, 16173, -31581, -18627,
-	0x0267, /* End */
-	0x0602, 0x0000, 0x4013, 0xBB94, 0x0802, 0x005A, 0x4012, 0x7A8C, 0x0C01, 0x805A, 0x3FD7, 0x6CE7, 0xB517, 0x2F72, 0x3F1B, 0x77CD, 0x3899, 0x9D65, 0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x01DA (20 u16s) */
-u16 dCaptainShieldPose_script1_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x000A, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x01E4 (44 u16s) */
-u16 dCaptainShieldPose_script1_9[44] = {
-	0x0A03, 0x8000, 0x3EBC, 0x7E0E, 0xB984, 0xD646, 0x3E58, 0x9F91, 0xB82C, 0xB7C1, 0xBF91, 0x3F88, 0x3942, 0x3861, 0x0A03, 0x802C,
-	0x3EBC, 0x7D4C, 0x373D, 0x9CD1, 0x3E58, 0x9F50, 0x35F7, 0xF9F4, 0xBF91, 0x3F64, 0xB709, 0x646F, 0x0A03, 0x8001, 0x3EBC, 0x7E0C,
-	0x36C0, 0x2037, 0x3E58, 0x9F97, 0x358E, 0xFA35, 0xBF91, 0x3F8A, 0xB697, 0xE9D9, 0x0000, 0x0000,
-};
-
-/* Script at word 0x01FA (26 u16s) */
-u16 dCaptainShieldPose_script1_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F9D, 0xA75B, 0x3B07, 0xCB9C, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F9D, 0xA8E7, 0xB8C1, 0x3E2C, 0x0A02, 0x0001, 0x3F9D, 0xA75D, 0xB844, 0x9809, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0207 (44 u16s) */
-u16 dCaptainShieldPose_script1_11[44] = {
-	0x0A03, 0x8000, 0xC05B, 0x23BA, 0x399A, 0xFC39, 0x404E, 0x8513, 0xB870, 0x2845, 0xC047, 0xD889, 0xBB14, 0x8B83, 0x0A03, 0x802C,
-	0xC05B, 0x239E, 0xB75D, 0x2B0A, 0x404E, 0x850E, 0x3632, 0xB8C2, 0xC047, 0xD961, 0x38D3, 0x64F0, 0x0A03, 0x8001, 0xC05B, 0x23BA,
-	0xB6DF, 0x66F3, 0x404E, 0x8514, 0x35B2, 0xB8C2, 0xC047, 0xD888, 0x3858, 0xB339, 0x0000, 0x0000,
-};
-
-/* Script at word 0x021D (44 u16s) */
-u16 dCaptainShieldPose_script1_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 38985), 13989, 20814, 15998, -27138,
-	0xBAC6, /* unknown opcode 23 */
-	0x0045, /* End */
-	0x3E99, 0xC26B, 0x3B22, 0x6C2B, 0x0A03, 0x802C, 0x3F21, 0x9849, 0xB456, 0x7750, 0x3E7E, 0x8D07, 0x388C, 0x88AF, 0x3E99, 0xC9C6, 0xB8E6, 0xA9A7, 0x0C03, 0x0001, 0x3E7E, 0x95F4, 0x380E, 0xD676, 0x3E99, 0xC26F, 0xB86A, 0xD9FC, 0x1000, 0x8001, 0x3F21, 0x9849, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0233 (26 u16s) */
-u16 dCaptainShieldPose_script1_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F61, 0xB9F7, 0xBB67, 0x55AD, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F61, 0xB4BC, 0x3924, 0x06AB, 0x0A02, 0x0001, 0x3F61, 0xB9F1, 0x38A6, 0x9300, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0240 (44 u16s) */
-u16 dCaptainShieldPose_script1_14[44] = {
-	0x0A03, 0x8000, 0x3EF5, 0x8A03, 0x39CB, 0x1F15, 0x3EDF, 0x04A2, 0x3A07, 0xCB9C, 0xBF26, 0xB5EB, 0x3A55, 0x8A81, 0x0A03, 0x802C,
-	0x3EF5, 0x8B2E, 0xB790, 0x8365, 0x3EDF, 0x0636, 0xB7C1, 0xF0E4, 0xBF26, 0xB4B3, 0xB817, 0x3720, 0x0A03, 0x8001, 0x3EF5, 0x8A01,
-	0xB716, 0xCBE4, 0x3EDF, 0x04A5, 0xB748, 0x80E0, 0xBF26, 0xB5EA, 0xB79B, 0x43B5, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0256 (22 u16s) */
-u16 dCaptainShieldPose_script1_15[22] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x4396, 0x0000, 0x4343, 0x0000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x43C3, 0x0000, 0x431D, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x0261 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs1[26] = {
-	(u32)dCaptainShieldPose_script2_0, /* [0] intern -> 0x027B */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script2_1, /* [2] intern -> 0x0286 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script2_2, /* [4] intern -> 0x02A6 */
-	(u32)dCaptainShieldPose_script2_3, /* [5] intern -> 0x02BC */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script2_4, /* [8] intern -> 0x02C9 */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script2_5, /* [10] intern -> 0x02DA */
-	(u32)dCaptainShieldPose_script2_6, /* [11] intern -> 0x02F0 */
-	(u32)dCaptainShieldPose_script2_7, /* [12] intern -> 0x02FD */
-	(u32)dCaptainShieldPose_script2_8, /* [13] intern -> 0x030F */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script2_9, /* [16] intern -> 0x0319 */
-	(u32)dCaptainShieldPose_script2_10, /* [17] intern -> 0x032F */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script2_11, /* [19] intern -> 0x033C */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script2_12, /* [21] intern -> 0x0352 */
-	(u32)dCaptainShieldPose_script2_13, /* [22] intern -> 0x0368 */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script2_14, /* [24] intern -> 0x0375 */
-	(u32)dCaptainShieldPose_script2_15, /* [25] intern -> 0x038B */
-};
-
-/* Script at word 0x027B (22 u16s) */
-u16 dCaptainShieldPose_script2_0[22] = {
-	ftAnimSetValBlock(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY), 0, 17336, 13851,
-	ftAnimSetVal0Rate(FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY), 0, 5128, 0, 15825,
-	ftAnimSetVal(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY), 2608, 45, 17336, 13851,
-	ftAnimSetTargetRateBlock(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 0, 17064, 0, -17016, -30581, 0,
-	ftAnimEnd(),
-};
-
-/* Script at word 0x0286 (64 u16s) */
-u16 dCaptainShieldPose_script2_1[64] = {
-	ftAnimBlock(FT_ANIM_SCAY, 0),
-	0xBF06, /* unknown opcode 23 */
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAY),
-	0xBAE6, /* unknown opcode 23 */
-	0xFD1C, /* unknown opcode 31 */
-	ftAnimBlock(FT_ANIM_SCAZ, 90),
-	0xBF32, /* unknown opcode 23 */
-	0xB8C2, /* unknown opcode 23 */
-	0xBAC9, /* unknown opcode 23 */
-	ftAnimSetFlagsT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAY, 6145),
-	0x002D, /* End */
-	0x0A3A, 0x8000, 0x0000, 0x0000, 0xBB30, 0x2E14, 0xBDB2, 0xB8C2, 0x3ACB, 0x587A, 0xC0CE, 0x6667, 0xB8C1, 0xF7D3, 0x0000, 0x0000, 0x3D14, 0x7424, 0x4019, 0x9999, 0xBDCF, 0x9074, 0x0C28, 0x805A, 0xBE32, 0xB8C2, 0xBB0A, 0xC5F2, 0xC110, 0x0000, 0xBD54, 0x0E8B, 0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x0C10, 0x0087, 0x3FC0, 0x0000, 0xBB18, 0x5607, 0x0A02, 0x002D, 0x3DB2, 0xB8C2, 0x3BA9, 0x67CA, 0x0000, 0x0000,
-};
-
-/* Script at word 0x02A6 (44 u16s) */
-u16 dCaptainShieldPose_script2_2[44] = {
-	0x0A03, 0x8000, 0x3EE0, 0xAAF3, 0xBA1A, 0xFE74, 0x3DF6, 0x7559, 0x3A53, 0xA1D0, 0xBF83, 0xBBAF, 0xBA8C, 0x04E0, 0x0A03, 0x802C,
-	0x3EE4, 0x51C6, 0xBA79, 0xA4A6, 0x3E80, 0x3EDA, 0x3B95, 0x3AE2, 0xBF8F, 0xDE18, 0xBBB9, 0x170A, 0x0A03, 0x8001, 0x3EE3, 0xC9E1,
-	0xBA87, 0xE42E, 0x3E82, 0x9089, 0x3B94, 0x6BAE, 0xBF90, 0x9A66, 0xBBBC, 0x4DB7, 0x0000, 0x0000,
-};
-
-/* Script at word 0x02BC (26 u16s) */
-u16 dCaptainShieldPose_script2_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFC8, 0x1A1A, 0xBB8E, 0xCEA5, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFF0, 0x3E41, 0xBB27, 0xC510, 0x0A02, 0x0001, 0xBFF0, 0x8A7A, 0xBB18, 0x721F, 0x0000, 0x0000,
-};
-
-/* Script at word 0x02C9 (34 u16s) */
-u16 dCaptainShieldPose_script2_4[34] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimEnd(),
-	0x0000, 0xBB44, 0x9BA3, 0x0000, 0x0000, 0xBB53, 0x244E, 0x0000, 0x0000, 0x3A52, 0x82C9, 0x0C03, 0x805A, 0xBE99, 0x9997, 0xBB03, 0xAEBA, 0xBEA4, 0xF45C, 0xBB86, 0x4752, 0x3DA4, 0x762C, 0x3A8C, 0xE0A7, 0x1803, 0x802D, 0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x02DA (44 u16s) */
-u16 dCaptainShieldPose_script2_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC09A, /* unknown opcode 24 */
-	0x7E80, /* unknown opcode 15 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY, 51326), -16336, 23121, -17961, -27324, -16234, 14564,
-	0xBBAD, /* unknown opcode 23 */
-	_FT_ANIM_CMD(11, FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAZ, 0),
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	0xC095, /* unknown opcode 24 */
-	0xFC90, /* unknown opcode 31 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY, 5605), -16339, 32252, 15106, 30939, -16226, 1822,
-	0xBBA7, /* unknown opcode 23 */
-	0xBE5C, /* unknown opcode 23 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	0xC095, /* unknown opcode 24 */
-	0xDEE8, /* unknown opcode 27 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY, 17043), -16339, 23882, 15106, -14580, -16226, 12480,
-	0xBBA6, /* unknown opcode 23 */
-	0x8599, /* unknown opcode 16 */
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x02F0 (26 u16s) */
-u16 dCaptainShieldPose_script2_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFC2, 0x1765, 0xBBAA, 0x3E69, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFD4, 0xF4A9, 0xB8B7, 0x0CD5, 0x0A02, 0x0001, 0xBFD4, 0xF43C, 0x3758, 0xB339, 0x0000, 0x0000,
-};
-
-/* Script at word 0x02FD (36 u16s) */
-u16 dCaptainShieldPose_script2_7[36] = {
-	0x0602, /* End */
-	0x0000, 0x4013, 0xBB94, 0x0A01, 0x8000, 0x3FD0, 0x74D2, 0xB5C1, 0xA04B, 0x3F2D, 0x84A3, 0xB73D, 0x0267, 0x0802, 0x005A, 0x4012, 0x7A8C, 0x1802, 0x002D, 0x0C01, 0x805A, 0x3FD7, 0x6CE7, 0xB517, 0x2F72, 0x3F1B, 0x77CD, 0x3899, 0x9D65, 0x1801, 0x802D, 0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x030F (20 u16s) */
-u16 dCaptainShieldPose_script2_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x0037, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0319 (44 u16s) */
-u16 dCaptainShieldPose_script2_9[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), 32268, -19078, 13789, 15960, -24681, -19322, 2706,
-	0xBF91, /* unknown opcode 23 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 13654, 30544, 2563, -32724, 16060, 30948,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI, 32671), 15960, -25109, 14024,
-	0xC85E, /* unknown opcode 25 */
-	0xBF91, /* unknown opcode 23 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), -18462, 12758, 2563, -32767, 16060, 32268,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAX, 2512), 15960, -24681,
-	ftAnimSetTargetRateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 59477), -16495, 16266, -18449, 2641, 0, 0,
-};
-
-/* Script at word 0x032F (26 u16s) */
-u16 dCaptainShieldPose_script2_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F9D, 0xA75C, 0x36F1, 0x463A, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F9D, 0xB1E0, 0xB9A0, 0xE26C, 0x0A02, 0x0001, 0x3F9D, 0xA75C, 0xB9A8, 0x3FEF, 0x0000, 0x0000,
-};
-
-/* Script at word 0x033C (44 u16s) */
-u16 dCaptainShieldPose_script2_11[44] = {
-	0x0A03, 0x8000, 0xC05B, 0x23BA, 0x358E, 0xFA35, 0x404E, 0x8514, 0xB50E, 0xFA35, 0xC047, 0xD887, 0xB70E, 0xFA35, 0x0A03, 0x802C,
-	0xC05B, 0x22FA, 0xB837, 0x3094, 0x404E, 0x84EE, 0x370E, 0xFA35, 0xC047, 0xDE48, 0x39AF, 0xDC00, 0x0A03, 0x8001, 0xC05B, 0x23BA,
-	0xB840, 0x2037, 0x404E, 0x8514, 0x3717, 0xE9D9, 0xC047, 0xD887, 0x39B8, 0x2ACA, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0352 (44 u16s) */
-u16 dCaptainShieldPose_script2_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 38984), 13198, -1483, 15998, -27142,
-	0xB6B4, /* unknown opcode 22 */
-	0x65B1, 16025, /* SetTranslateInterp */
-	0xC26C, /* unknown opcode 24 */
-	ftAnimSetTargetRateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 7925), 2563, -32724, 16161, -26537, -19177,
-	0xE9D9, /* unknown opcode 29 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ), 22726, 14697, -20260, 16025, -2905, -17985, -17489, 2563,
-	0x8001, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 38985), -19114, 30544, 15998, -27148,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX), -17691, 16025, -15761, -17976, -7379,
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x0368 (26 u16s) */
-u16 dCaptainShieldPose_script2_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F61, 0xB9F5, 0xB754, 0x3B66, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F61, 0x963D, 0x3A08, 0x585A, 0x0A02, 0x0001, 0x3F61, 0xB9F1, 0x3A0E, 0xCD86, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0375 (44 u16s) */
-u16 dCaptainShieldPose_script2_14[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 35331), 13773, -30803, 16095, 1189, 13809, 17978, -16602,
-	0xB5EB, /* unknown opcode 22 */
-	ftAnimSetTargetRateBlock(FT_ANIM_ROTY | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ), -26615, 2563, -32724, 16117,
-	0x91EB, /* unknown opcode 18 */
-	0xB870, /* unknown opcode 23 */
-	_FT_ANIM_CMD(11, FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ, 1), 16095,
-	ftAnimBlock(FT_ANIM_ROTY | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 47264),
-	0xD08C, /* unknown opcode 26 */
-	0xBF26, /* unknown opcode 23 */
-	0xADB1, /* unknown opcode 21 */
-	0xB8FA, /* unknown opcode 23 */
-	0xB2F7, /* unknown opcode 22 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 35329), -18307, 18493, 16095, 1189, -18264, 2641, -16602,
-	0xB5EA, /* unknown opcode 22 */
-	0xB903, /* unknown opcode 23 */
-	0x872C, /* unknown opcode 16 */
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x038B (20 u16s) */
-u16 dCaptainShieldPose_script2_15[20] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x43C3, 0x0000, 0x431D, 0x8000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x43E8, 0x8000, 0x42F0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x0395 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs2[26] = {
-	(u32)dCaptainShieldPose_script3_0, /* [0] intern -> 0x03AF */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script3_1, /* [2] intern -> 0x03BC */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script3_2, /* [4] intern -> 0x03DC */
-	(u32)dCaptainShieldPose_script3_3, /* [5] intern -> 0x03F2 */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script3_4, /* [8] intern -> 0x03FF */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script3_5, /* [10] intern -> 0x040E */
-	(u32)dCaptainShieldPose_script3_6, /* [11] intern -> 0x0424 */
-	(u32)dCaptainShieldPose_script3_7, /* [12] intern -> 0x0431 */
-	(u32)dCaptainShieldPose_script3_8, /* [13] intern -> 0x0440 */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script3_9, /* [16] intern -> 0x044A */
-	(u32)dCaptainShieldPose_script3_10, /* [17] intern -> 0x0460 */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script3_11, /* [19] intern -> 0x046D */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script3_12, /* [21] intern -> 0x0483 */
-	(u32)dCaptainShieldPose_script3_13, /* [22] intern -> 0x0499 */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script3_14, /* [24] intern -> 0x04A6 */
-	(u32)dCaptainShieldPose_script3_15, /* [25] intern -> 0x04BC */
-};
-
-/* Script at word 0x03AF (26 u16s) */
-u16 dCaptainShieldPose_script3_0[26] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x43B8, 0x361B, 0x3770, 0x0000, 0x42A8, 0x0000, 0xBD88, 0x888B, 0x1408, 0x0000, 0x3DD1, 0x1874, 0x0C20, 0x002D, 0x429C, 0x0000, 0xBE08, 0x8885, 0x1010, 0x002D, 0x43B8, 0x3646, 0x0000, 0x0000,
-};
-
-/* Script at word 0x03BC (64 u16s) */
-u16 dCaptainShieldPose_script3_1[64] = {
-	ftAnimBlock0(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY),
-	0x8000, /* unknown opcode 16 */
-	ftAnimEnd(),
-	0x0000, 0xBB30, 0x2E14, 0xC0CE, 0x6667, 0xB8C1, 0xF7D3, 0x0000, 0x0000, 0x3D14, 0x7424, 0x4019, 0x9999, 0xBDCF, 0x9074, 0x0C28, 0x805A, 0xBE32, 0xB8C2, 0xBB0A, 0xC5F2, 0xC110, 0x0000, 0xBD54, 0x0E8B, 0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x1828, 0x802D, 0x0C10, 0x0087, 0x3FC0, 0x0000, 0xBB18, 0x5607, 0x1810, 0x002D, 0x0A03, 0x0000, 0xBF32, 0xB8C2, 0xBAC9, 0x722F, 0x3DB2, 0xB8C2, 0x3BA9, 0x67CA, 0x0A03, 0x002D, 0xBF49, 0x0FDB, 0xBADD, 0x2092, 0x3E86, 0x0A92, 0x3B3E, 0xA2F1, 0x0000, 0x0000,
-};
-
-/* Script at word 0x03DC (44 u16s) */
-u16 dCaptainShieldPose_script3_2[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 51683), -17778, 9150, 16002, -28537, 15253, -6353,
-	0xBF90, /* unknown opcode 23 */
-	0x9A65, /* unknown opcode 19 */
-	0xBBBF, /* unknown opcode 23 */
-	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), 2563, -32724, 16104, 8824,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY), -6967, 16113, -24989, 15159, -13495, -16477,
-	0x82AF, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAY, 56070), 2563, -32767, 16105, 8162,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY, 27358), 16115, 466, 15153, -18471, -16477, 22729, 15015,
-	0x9A9E, /* unknown opcode 19 */
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x03F2 (26 u16s) */
-u16 dCaptainShieldPose_script3_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFF0, 0x8A7C, 0xBAF6, 0x4415, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFDF, 0xF393, 0x3B3F, 0xF14D, 0x0A02, 0x0001, 0xBFDF, 0x97DF, 0x3B37, 0x686E, 0x0000, 0x0000,
-};
-
-/* Script at word 0x03FF (30 u16s) */
-u16 dCaptainShieldPose_script3_4[30] = {
-	0x0A03, 0x8000, 0xBE99, 0x9997, 0xBB03, 0xAEBA, 0xBEA4, 0xF45C, 0xBB86, 0x4752, 0x3DA4, 0x762C, 0x3A8C, 0xE0A7, 0x0A03, 0x802D,
-	0xBE8A, 0xE248, 0x3B01, 0x6301, 0xBF0D, 0x9F38, 0xBB93, 0x5EC1, 0x3E14, 0x94F1, 0xB9AF, 0x1C4C, 0x0000, 0x0000,
-};
-
-/* Script at word 0x040E (44 u16s) */
-u16 dCaptainShieldPose_script3_5[44] = {
-	0x0A03, 0x8000, 0xC095, 0xDEE8, 0x3B71, 0x463A, 0xC02D, 0x5D4A, 0x3B00, 0x988A, 0xC09E, 0x30C0, 0xBBA8, 0x1C30, 0x0A03, 0x802C,
-	0xC091, 0x68CD, 0x392E, 0x886E, 0xC02B, 0xA94E, 0xBA49, 0xF831, 0xC0A4, 0x18E9, 0x3AA7, 0xB0F4, 0x0A03, 0x8001, 0xC091, 0x6864,
-	0x3851, 0xFF7E, 0xC02B, 0xB689, 0xBA53, 0xAC6D, 0xC0A4, 0x0C8E, 0x3AC5, 0xB5FE, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0424 (26 u16s) */
-u16 dCaptainShieldPose_script3_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFD4, 0xF43C, 0x3964, 0x6DBF, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFCE, 0x5271, 0xBB37, 0xA4BF, 0x0A02, 0x0001, 0xBFCE, 0xB57B, 0xBB46, 0x13D1, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0431 (30 u16s) */
-u16 dCaptainShieldPose_script3_7[30] = {
-	ftAnimBlock(FT_ANIM_SCAZ, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 27879), -19177, 12146, 16155, 30669, 14489, -25243, 4098, 0,
-	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_TRAI), 31372, 2563,
-	0x802D, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlock(FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 29268, -17426, -32036, 16176, 3251, -18646,
-	0xE5FF, /* unknown opcode 28 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_TRAI, 48020), -17916, 21183,
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x0440 (20 u16s) */
-u16 dCaptainShieldPose_script3_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x0064, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x044A (44 u16s) */
-u16 dCaptainShieldPose_script3_9[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), 32270, 14387, -19719, 15960, -24687, 14047, -2579,
-	0xBF91, /* unknown opcode 23 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTZ | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -18433, -13405, 2563, -32724, 16062,
-	ftAnimLoop(0x6DC4, 14528),
-	ftAnimSetFlags(FT_ANIM_ROTY | FT_ANIM_TRAX | FT_ANIM_TRAZ),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ), -1174, 13894, -11278, -16495, -32524,
-	0xB808, /* unknown opcode 23 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ, 2563), -32767, 16062, 31152, 14526, -13147, 15960, -984,
-	ftAnimSetTargetRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 58447), -16495, -32257, -18427, 31639, 0, 0,
-};
-
-/* Script at word 0x0460 (26 u16s) */
-u16 dCaptainShieldPose_script3_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F9D, 0xA75B, 0xB9B8, 0x070C, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F99, 0xC402, 0xBA3D, 0xE44F, 0x0A02, 0x0001, 0x3F99, 0xAC7F, 0xBA3C, 0x13A1, 0x0000, 0x0000,
-};
-
-/* Script at word 0x046D (44 u16s) */
-u16 dCaptainShieldPose_script3_11[44] = {
-	0x0A03, 0x8000, 0xC05B, 0x23BA, 0xB850, 0xE18A, 0x404E, 0x8513, 0x3725, 0x514E, 0xC047, 0xD889, 0x39C9, 0x0FDB, 0x0A03, 0x802C,
-	0xC05B, 0x6939, 0xB8D0, 0x528F, 0x404E, 0x9299, 0x37A1, 0xF770, 0xC045, 0xC360, 0x3A47, 0x988A, 0x0A03, 0x8001, 0xC05B, 0x6AD7,
-	0xB8CE, 0xA5A1, 0x404E, 0x92E9, 0x379E, 0x9D93, 0xC045, 0xB707, 0x3A45, 0x923F, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0483 (44 u16s) */
-u16 dCaptainShieldPose_script3_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 38984), -19078, 13789, 15998, -27142,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAZ | FT_ANIM_SCAX, 36787), 16025, -15764, -17957,
-	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAZ, 2563), -32724, 16161, -26345, 13832, 18043, 16010, 6735, 14844, -3811, 16008, 1517, -17841, 29195, 2563,
-	0x8001, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 39222), 13818, 13789, 16010, 22749,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX), 14361, 16007, -24755, -17843, 16431, 0, 0,
-};
-
-/* Script at word 0x0499 (26 u16s) */
-u16 dCaptainShieldPose_script3_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F61, 0xB9F5, 0x3A1B, 0xDBA0, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F6E, 0x1CEC, 0x3A8E, 0x477D, 0x0A02, 0x0001, 0x3F6E, 0x6345, 0x3A8C, 0xB321, 0x0000, 0x0000,
-};
-
-/* Script at word 0x04A6 (44 u16s) */
-u16 dCaptainShieldPose_script3_14[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 35331), -18296, -1741, 16095, 1189, -18249, -7347, -16602,
-	0xB5EB, /* unknown opcode 22 */
-	0xB90F, /* unknown opcode 23 */
-	ftAnimSetValAfterT(FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY, 2563), -32724, 16114, -24384, -18162,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_SCAY, 16091), 9859, -18116, 5025,
-	0xBF29, /* unknown opcode 23 */
-	ftAnimLoop(0x6E69, -18066),
-	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX, 2563), -32767, 16114, -28896, -18163, 1482, 16091, 3907, -18118, 1126, -16599, 32031, -18069, 22295, 0,
-	ftAnimEnd(),
-};
-
-/* Script at word 0x04BC (26 u16s) */
-u16 dCaptainShieldPose_script3_15[26] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x43E8, 0x8000, 0x42F0, 0x0000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x43C3, 0x0000, 0x42A5, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x04C9 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs3[26] = {
-	(u32)dCaptainShieldPose_script4_0, /* [0] intern -> 0x04E3 */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script4_1, /* [2] intern -> 0x04F0 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script4_2, /* [4] intern -> 0x050F */
-	(u32)dCaptainShieldPose_script4_3, /* [5] intern -> 0x0525 */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script4_4, /* [8] intern -> 0x0532 */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script4_5, /* [10] intern -> 0x0541 */
-	(u32)dCaptainShieldPose_script4_6, /* [11] intern -> 0x0557 */
-	(u32)dCaptainShieldPose_script4_7, /* [12] intern -> 0x0564 */
-	(u32)dCaptainShieldPose_script4_8, /* [13] intern -> 0x0573 */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script4_9, /* [16] intern -> 0x057D */
-	(u32)dCaptainShieldPose_script4_10, /* [17] intern -> 0x0593 */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script4_11, /* [19] intern -> 0x05A0 */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script4_12, /* [21] intern -> 0x05B6 */
-	(u32)dCaptainShieldPose_script4_13, /* [22] intern -> 0x05CC */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script4_14, /* [24] intern -> 0x05D9 */
-	(u32)dCaptainShieldPose_script4_15, /* [25] intern -> 0x05EF */
-};
-
-/* Script at word 0x04E3 (26 u16s) */
-u16 dCaptainShieldPose_script4_0[26] = {
-	ftAnimSetValBlock(FT_ANIM_TRAI | FT_ANIM_SCAY), 0, 17336,
-	ftAnimSetTargetRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ), 3104, 0, 17052, 0, -16888,
-	0x8885, /* unknown opcode 17 */
-	ftAnimSetValBlock(FT_ANIM_ROTZ | FT_ANIM_SCAZ), 0, 15825,
-	ftAnimSetVal(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY), 3088, 45, 17336, 13851,
-	0xBE40, /* unknown opcode 23 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAY, 4128), 45, 17040, 0, 0, 0,
-};
-
-/* Script at word 0x04F0 (62 u16s) */
-u16 dCaptainShieldPose_script4_1[62] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_SCAY),
-	ftAnimEnd(),
-	0x0000, 0x0000, 0x3D14, 0x7424, 0x0C10, 0x0087, 0x3FC0, 0x0000, 0xBB18, 0x5607, 0x1810, 0x005A, 0x0A2B, 0x8000, 0xBE32, 0xB8C2, 0xBB0A, 0xC5F2, 0xBF49, 0x0FDB, 0xBADD, 0x2092, 0x3E86, 0x0A92, 0x3B3E, 0xA2F1, 0xC110, 0x0000, 0xBD54, 0x0E8B, 0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x0C02, 0x802D, 0xBE86, 0x0A92, 0xBA3D, 0x4943, 0x3EB2, 0xB8C2, 0x3A94, 0xFDDD, 0x0C08, 0x0087, 0xC1C0, 0x0000, 0xBBE9, 0xFB5A, 0x1220, 0x00E1, 0x4095, 0xD4B3, 0x1001, 0x002D, 0xBF5F, 0x66F3, 0x0000, 0x0000,
-};
-
-/* Script at word 0x050F (44 u16s) */
-u16 dCaptainShieldPose_script4_2[44] = {
-	0x0A03, 0x8000, 0x3EE9, 0x1FE8, 0x3B0D, 0x1955, 0x3EF3, 0x01CC, 0x3B29, 0x363C, 0xBFA3, 0x58C7, 0x3ADA, 0x0B42, 0x0A03, 0x802C,
-	0x3F2E, 0xE912, 0x3B91, 0x7F8F, 0x3EFF, 0xA08A, 0xBA9D, 0x52F0, 0xBF82, 0xD75C, 0x3BA3, 0x0B9F, 0x0A03, 0x8001, 0x3F30, 0x058B,
-	0x3B8E, 0x3C51, 0x3EFF, 0x011C, 0xBA9F, 0x6E74, 0xBF82, 0x37AE, 0x3B9F, 0xAE20, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0525 (26 u16s) */
-u16 dCaptainShieldPose_script4_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFDF, 0x97E0, 0x3B29, 0x95BD, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFD5, 0x42D5, 0x3AAF, 0xE72C, 0x0A02, 0x0001, 0xBFD5, 0x1894, 0x3AA9, 0x0487, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0532 (30 u16s) */
-u16 dCaptainShieldPose_script4_4[30] = {
-	0x0A03, 0x8000, 0xBE8A, 0xE248, 0x3B01, 0x6301, 0xBF0D, 0x9F38, 0xBB93, 0x5EC1, 0x3E14, 0x94F1, 0xB9AF, 0x1C4C, 0x0A03, 0x802D,
-	0xBDFA, 0x7FEB, 0x3B78, 0x118F, 0xBF3A, 0x18CE, 0xBAFA, 0x73C4, 0x3D4D, 0xCC73, 0xBAF0, 0x316E, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0541 (44 u16s) */
-u16 dCaptainShieldPose_script4_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC091, /* unknown opcode 24 */
-	ftAnimLoop(0x6864, -18098),
-	0xA5A1, /* unknown opcode 20 */
-	0xC02B, /* unknown opcode 24 */
-	0xB689, /* unknown opcode 22 */
-	0xBA68, /* unknown opcode 23 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAZ, 49316), 3214, 15106, -1998, 2563, -32724, -16234,
-	0x8B55, /* unknown opcode 17 */
-	0xBB8D, /* unknown opcode 23 */
-	0x8BD4, /* unknown opcode 17 */
-	0xC032, /* unknown opcode 24 */
-	0xCA12, /* unknown opcode 25 */
-	0xBB74, /* unknown opcode 23 */
-	0x8E37, /* unknown opcode 17 */
-	0xC098, /* unknown opcode 24 */
-	0xA995, /* unknown opcode 21 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY), -32406, 2563, -32767, -16234, -20979, -17526, -8137, -16333,
-	0x071B, /* End */
-	0xBB74, 0x2773, 0xC098, 0x6C28, 0x3BF5, 0xB51C, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0557 (26 u16s) */
-u16 dCaptainShieldPose_script4_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFCE, 0xB579, 0xBB66, 0x504C, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFFA, 0x3F8A, 0xBBBD, 0xE5FC, 0x0A02, 0x0001, 0xBFFA, 0xF8E9, 0xBBB9, 0x5F15, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0564 (30 u16s) */
-u16 dCaptainShieldPose_script4_7[30] = {
-	0x0A03, 0x8000, 0x3FD0, 0x7254, 0xBBEE, 0x82DC, 0x3F30, 0x0CB3, 0xB72A, 0xE5FF, 0x4013, 0xBB94, 0xBA04, 0x52BF, 0x0C01, 0x802D,
-	0x3F83, 0x92E5, 0x34CB, 0x587A, 0x3E88, 0x029A, 0xB84E, 0x752C, 0x1002, 0x002D, 0x3FE3, 0x4493, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0573 (20 u16s) */
-u16 dCaptainShieldPose_script4_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x0091, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x057D (44 u16s) */
-u16 dCaptainShieldPose_script4_9[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), 31152, 14528, 26548, 15960, -986, -18727, -11987, -16495,
-	0x81FE, /* unknown opcode 16 */
-	0xB6DA, /* unknown opcode 22 */
-	0xEF21, /* unknown opcode 29 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	ftAnimSetVal0RateBlock(FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), -24173, 14237, 14369, 15960,
-	ftAnimSetFlagsT(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAX, 14797),
-	ftAnimSetValAfterBlockT(0, 49041),
-	ftAnimSetFlags(FT_ANIM_ROTX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ),
-	0xBA8C, /* unknown opcode 23 */
-	0xDD93, /* unknown opcode 27 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	ftAnimSetVal0RateBlock(FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), -23668, 14204, 29125, 15960,
-	0xDCE9, /* unknown opcode 27 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX, 11332), -16495, -25695, -17773, 31478, 0, 0,
-};
-
-/* Script at word 0x0593 (26 u16s) */
-u16 dCaptainShieldPose_script4_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F99, 0xAC7F, 0xBA47, 0xE007, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F95, 0x4476, 0x3AC3, 0x7C50, 0x0A02, 0x0001, 0x3F95, 0x78C5, 0x3AD1, 0x3AE6, 0x0000, 0x0000,
-};
-
-/* Script at word 0x05A0 (44 u16s) */
-u16 dCaptainShieldPose_script4_11[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC05B, /* unknown opcode 24 */
-	ftAnimLoop(0x6AD7, -18236),
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_SCAX, 16462),
-	0x92EA, /* unknown opcode 18 */
-	ftAnimSetTargetRateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 25002, -16315, -18680, 14922, 20878, 2563, -32724,
-	0xC05B, /* unknown opcode 24 */
-	0xAECD, /* unknown opcode 21 */
-	0xB987, /* unknown opcode 23 */
-	0xDB3F, /* unknown opcode 27 */
-	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAY), -24427, 14325, -16884, -16317,
-	0x8611, /* unknown opcode 16 */
-	0xB9B5, /* unknown opcode 23 */
-	0xA764, /* unknown opcode 20 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	0xC05B, /* unknown opcode 24 */
-	0xB32B, /* unknown opcode 22 */
-	0xB98B, /* unknown opcode 23 */
-	0xC416, /* unknown opcode 24 */
-	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAY), -24301, 14330, 13789, -16317,
-	0x8C95, /* unknown opcode 17 */
-	0xB9D0, /* unknown opcode 23 */
-	ftAnimSetFlags(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x05B6 (44 u16s) */
-u16 dCaptainShieldPose_script4_12[44] = {
-	0x0A03, 0x8000, 0x3F21, 0x9939, 0x3754, 0x3B66, 0x3E8A, 0x58E0, 0x39F6, 0xEBA3, 0x3E87, 0x9F4C, 0xBA4B, 0xF7C9, 0x0A03, 0x802C,
-	0x3F21, 0xC4D9, 0xB9E6, 0x7882, 0x3E94, 0xD41A, 0x39FC, 0xFA0C, 0x3E6C, 0xAE57, 0xBA15, 0x51C9, 0x0A03, 0x8001, 0x3F21, 0xA6AB,
-	0xB9F1, 0x72E7, 0x3E95, 0x1361, 0x39FD, 0x1B8F, 0x3E6C, 0x1B73, 0xBA12, 0xE42B, 0x0000, 0x0000,
-};
-
-/* Script at word 0x05CC (26 u16s) */
-u16 dCaptainShieldPose_script4_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F6E, 0x6347, 0x3A88, 0x3D8B, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F79, 0xBC25, 0x3AF0, 0x3C60, 0x0A02, 0x0001, 0x3F7A, 0x36B9, 0x3AF5, 0x285D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x05D9 (44 u16s) */
-u16 dCaptainShieldPose_script4_14[44] = {
-	0x0A03, 0x8000, 0x3EF2, 0x8F1E, 0xB913, 0xD453, 0x3EDB, 0x0F3E, 0xB941, 0xD615, 0xBF29, 0x7D1E, 0xB953, 0x76CF, 0x0A03, 0x802C,
-	0x3EEF, 0x4C99, 0x394E, 0x2885, 0x3ED6, 0xCAF5, 0x3955, 0xCD86, 0xBF2B, 0x9168, 0xBA81, 0x5C04, 0x0A03, 0x8001, 0x3EEF, 0x6873,
-	0x395E, 0xCF0A, 0x3ED6, 0xE81A, 0x3969, 0x2D0E, 0xBF2B, 0xD480, 0xBA86, 0x308C, 0x0000, 0x0000,
-};
-
-/* Script at word 0x05EF (20 u16s) */
-u16 dCaptainShieldPose_script4_15[20] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x43C3, 0x0000, 0x42A5, 0x0000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x4396, 0x0000, 0x4234, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x05F9 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs4[26] = {
-	(u32)dCaptainShieldPose_script5_0, /* [0] intern -> 0x0613 */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script5_1, /* [2] intern -> 0x0620 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script5_2, /* [4] intern -> 0x063E */
-	(u32)dCaptainShieldPose_script5_3, /* [5] intern -> 0x0654 */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script5_4, /* [8] intern -> 0x0661 */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script5_5, /* [10] intern -> 0x0670 */
-	(u32)dCaptainShieldPose_script5_6, /* [11] intern -> 0x0686 */
-	(u32)dCaptainShieldPose_script5_7, /* [12] intern -> 0x0693 */
-	(u32)dCaptainShieldPose_script5_8, /* [13] intern -> 0x06A3 */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script5_9, /* [16] intern -> 0x06AD */
-	(u32)dCaptainShieldPose_script5_10, /* [17] intern -> 0x06C3 */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script5_11, /* [19] intern -> 0x06D0 */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script5_12, /* [21] intern -> 0x06E6 */
-	(u32)dCaptainShieldPose_script5_13, /* [22] intern -> 0x06FC */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script5_14, /* [24] intern -> 0x0709 */
-	(u32)dCaptainShieldPose_script5_15, /* [25] intern -> 0x071F */
-};
-
-/* Script at word 0x0613 (26 u16s) */
-u16 dCaptainShieldPose_script5_0[26] = {
-	ftAnimSetValBlock(FT_ANIM_TRAX | FT_ANIM_SCAY), 0, 17040,
-	ftAnimEnd(),
-	0x0C10, 0x0000, 0x43B8, 0x361B, 0xBE40, 0x426B, 0x1408, 0x0000, 0x3DD1, 0x1874, 0x0A30, 0x002D, 0x43AF, 0xC35A, 0xBED8, 0x4680, 0x429C, 0x0000, 0x3E08, 0x8885, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0620 (60 u16s) */
-u16 dCaptainShieldPose_script5_1[60] = {
-	ftAnimBlock0(FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAY),
-	ftAnimEnd(),
-	0xC110, 0x0000, 0xBD54, 0x0E8B, 0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x0C08, 0x0087, 0xC1C0, 0x0000, 0xBBE9, 0xFB5A, 0x1808, 0x002D, 0x1220, 0x00E1, 0x4095, 0xD4B3, 0x1820, 0x002D, 0x0C12, 0x8000, 0xBE86, 0x0A92, 0xBA3D, 0x4943, 0x3EB2, 0xB8C2, 0x3A94, 0xFDDD, 0x3FC0, 0x0000, 0xBB18, 0x5607, 0x1401, 0x0000, 0xBF5F, 0x66F3, 0x0C10, 0x805A, 0xBE32, 0xB8C2, 0x3B00, 0x3549, 0xC040, 0x0000, 0xBD57, 0xD977, 0x0A02, 0x002D, 0x3EB2, 0xB8C2, 0xBA57, 0xB55C, 0x0000, 0x0000,
-};
-
-/* Script at word 0x063E (44 u16s) */
-u16 dCaptainShieldPose_script5_2[44] = {
-	0x0A03, 0x8000, 0x3F30, 0x058B, 0x3B89, 0x41CF, 0x3EFF, 0x011A, 0xBAA8, 0xFDD3, 0xBF82, 0x37AD, 0x3B9B, 0x989B, 0x0A03, 0x802C,
-	0x3F51, 0xAED7, 0x3B2C, 0x3A16, 0x3EBF, 0x6EF1, 0xBB5A, 0x18F1, 0xBF52, 0x8437, 0x3B89, 0xFAF3, 0x0A03, 0x8001, 0x3F52, 0x5BD9,
-	0x3B2D, 0x017A, 0x3EBD, 0xBCF8, 0xBB58, 0xFCF1, 0xBF51, 0x7108, 0x3B89, 0x97D1, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0654 (26 u16s) */
-u16 dCaptainShieldPose_script5_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFD5, 0x1895, 0x3A97, 0xB43B, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFD5, 0xA869, 0x3A8F, 0x55CE, 0x0A02, 0x0001, 0xBFD5, 0x818A, 0x3A9B, 0x7DCC, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0661 (30 u16s) */
-u16 dCaptainShieldPose_script5_4[30] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xBDFA, /* unknown opcode 23 */
-	0x7FEB, /* unknown opcode 15 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY), 4495, -16582, 6350, -17670, 29636, 15693,
-	0xCC73, /* unknown opcode 25 */
-	0xBAF0, /* unknown opcode 23 */
-	ftAnimSetTargetRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX), 2563, -32723, 15758, 10308, 15015, -20554,
-	0xBF39, /* unknown opcode 23 */
-	0xA592, /* unknown opcode 20 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX, 6629), -17246, 28292, 14968, -9679, 0,
-	ftAnimEnd(),
-};
-
-/* Script at word 0x0670 (44 u16s) */
-u16 dCaptainShieldPose_script5_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC096, /* unknown opcode 24 */
-	0xAE0D, /* unknown opcode 21 */
-	0xBB87, /* unknown opcode 23 */
-	0xD6C7, /* unknown opcode 26 */
-	0xC033, /* unknown opcode 24 */
-	0x071B, /* End */
-	0xBB78, 0x8476, 0xC098, 0x6C28, 0x3BED, 0x116D, 0x0A03, 0x802C, 0xC09B, 0xFE84, 0xBB5E, 0x20C9, 0xC041, 0x19EC, 0xBB83, 0x300B, 0xC091, 0x13B0, 0x3B6B, 0x0232, 0x0A03, 0x8001, 0xC09C, 0x1A35, 0xBB5D, 0x8466, 0xC041, 0x5A46, 0xBB80, 0xB595, 0xC090, 0xF67A, 0x3B69, 0xAA29, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0686 (26 u16s) */
-u16 dCaptainShieldPose_script5_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFFA, 0xF8E9, 0xBBB4, 0x4310, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xC007, 0x9F6C, 0xBA43, 0x2E20, 0x0A02, 0x0001, 0xC007, 0xAA52, 0xBA2E, 0x5BC0, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0693 (32 u16s) */
-u16 dCaptainShieldPose_script5_7[32] = {
-	ftAnimBlock(FT_ANIM_SCAZ, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 37605), 13515, 22650, 16008, 666, -18354,
-	ftAnimSetFlags(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAZ),
-	ftAnimSetValBlock(FT_ANIM_ROTX), 0,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 17555), 3075, -32633, 16336, 29840, 13894, 3849, 16173,
-	0xC809, /* unknown opcode 25 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ), -16998, 16403, -17516, 14816, 27079,
-	0x0400, /* End */
-	0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x06A3 (20 u16s) */
-u16 dCaptainShieldPose_script5_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x00BE, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x06AD (44 u16s) */
-u16 dCaptainShieldPose_script5_9[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), -23668, 14081, 966, 15960,
-	0xDCE9, /* unknown opcode 27 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX), 4333, -16495, -25695, -17761, -1516, 2563,
-	0x802C, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 20774), -18404, 20427, 15998, -21633, 14965, -1443, -16482, 12743,
-	0xBB20, /* unknown opcode 23 */
-	ftAnimSetValAfterT(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY, 2563), -32767, 16063, 19600, -18414, -16562,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ, 41068), 14964, -4822, -16482, -32373, -17633, -30683, 0, 0,
-};
-
-/* Script at word 0x06C3 (26 u16s) */
-u16 dCaptainShieldPose_script5_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F95, 0x78C5, 0x3AEB, 0xD8AA, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3FAB, 0x5EE1, 0x3B86, 0xA15E, 0x0A02, 0x0001, 0x3FAB, 0xE45F, 0x3B85, 0x7DD3, 0x0000, 0x0000,
-};
-
-/* Script at word 0x06D0 (44 u16s) */
-u16 dCaptainShieldPose_script5_11[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC05B, /* unknown opcode 24 */
-	0xB32B, /* unknown opcode 22 */
-	0xB993, /* unknown opcode 23 */
-	0xB984, /* unknown opcode 23 */
-	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAY), -24301, 14337, -27968, -16317,
-	0x8C95, /* unknown opcode 17 */
-	0xBA02, /* unknown opcode 23 */
-	0xF832, /* unknown opcode 31 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	0xC05D, /* unknown opcode 24 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 47645),
-	ftAnimSetValAfter(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY), 16462, -15822, 14459, 21457, -16313,
-	0xCAA4, /* unknown opcode 25 */
-	0xBAC3, /* unknown opcode 23 */
-	0x94E3, /* unknown opcode 18 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	0xC05D, /* unknown opcode 24 */
-	ftAnimSetVal(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAZ), -17891, 28095, 16462,
-	0xC32E, /* unknown opcode 24 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY), 29125, -16313, -7494, -17728, -20687,
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x06E6 (44 u16s) */
-u16 dCaptainShieldPose_script5_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 42667), -17917, 30029, 16021, 4964,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX, 64923), 15980, 7023, -17907, 14922, 2563, -32724, 16151,
-	ftAnimSetTargetRateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAZ, 47748), 31692, 16029,
-	0xF6AC, /* unknown opcode 30 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX), -30151, 15969, -798, -18102, 9439,
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -3529, -17789, -10915, 16030, 10411, 14791,
-	0xFAD5, /* unknown opcode 31 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ, 51244), -18094, -10763, 0, 0,
-};
-
-/* Script at word 0x06FC (26 u16s) */
-u16 dCaptainShieldPose_script5_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F7A, 0x36BA, 0x3AFE, 0x0621, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F8B, 0x9AE2, 0x3B35, 0xC233, 0x0A02, 0x0001, 0x3F8B, 0xF5B0, 0x3B35, 0x9C39, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0709 (44 u16s) */
-u16 dCaptainShieldPose_script5_14[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 26741), 14719, -22556, 16086, -6121, 14727, -31142, -16597, -11134,
-	0xBA8F, /* unknown opcode 23 */
-	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ), 2563, -32724, 16124, -8048, 14895, -31520, 16101,
-	0xAE98, /* unknown opcode 21 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY), -10468, -16576, -24917, -17659, 9621,
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 14247), 14894, 12049, 16102, 3131, 14907, 17946, -16575, 9030,
-	0xBB04, /* unknown opcode 23 */
-	0x9B13, /* unknown opcode 19 */
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x071F (20 u16s) */
-u16 dCaptainShieldPose_script5_15[20] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x4396, 0x0000, 0x4234, 0x0000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x4377, 0x8000, 0x42A5, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x0729 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs5[26] = {
-	(u32)dCaptainShieldPose_script6_0, /* [0] intern -> 0x0743 */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script6_1, /* [2] intern -> 0x0750 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script6_2, /* [4] intern -> 0x0773 */
-	(u32)dCaptainShieldPose_script6_3, /* [5] intern -> 0x0789 */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script6_4, /* [8] intern -> 0x0796 */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script6_5, /* [10] intern -> 0x07A5 */
-	(u32)dCaptainShieldPose_script6_6, /* [11] intern -> 0x07BB */
-	(u32)dCaptainShieldPose_script6_7, /* [12] intern -> 0x07C8 */
-	(u32)dCaptainShieldPose_script6_8, /* [13] intern -> 0x07D9 */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script6_9, /* [16] intern -> 0x07E3 */
-	(u32)dCaptainShieldPose_script6_10, /* [17] intern -> 0x07F9 */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script6_11, /* [19] intern -> 0x0806 */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script6_12, /* [21] intern -> 0x081C */
-	(u32)dCaptainShieldPose_script6_13, /* [22] intern -> 0x0832 */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script6_14, /* [24] intern -> 0x083F */
-	(u32)dCaptainShieldPose_script6_15, /* [25] intern -> 0x0855 */
-};
-
-/* Script at word 0x0743 (26 u16s) */
-u16 dCaptainShieldPose_script6_0[26] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x43AF, 0xC35A, 0xBED8, 0x4680, 0x429C, 0x0000, 0x3E08, 0x8885, 0x1408, 0x0000, 0x3DD1, 0x1874, 0x0A30, 0x002D, 0x43A5, 0x33E9, 0xB760, 0x0000, 0x42A8, 0x0000, 0x3D88, 0x888B, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0750 (70 u16s) */
-u16 dCaptainShieldPose_script6_1[70] = {
-	ftAnimBlock0(FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAY),
-	ftAnimEnd(),
-	0xC110, 0x0000, 0xBD54, 0x0E8B, 0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x0C08, 0x0087, 0xC1C0, 0x0000, 0xBBE9, 0xFB5A, 0x1808, 0x005A, 0x1220, 0x00E1, 0x4095, 0xD4B3, 0x1820, 0x005A, 0x0A10, 0x8000, 0xBE86, 0x0A92, 0xBA3D, 0x4943, 0x3FC0, 0x0000, 0xBB18, 0x5607, 0x0C10, 0x805A, 0xBE32, 0xB8C2, 0x3B00, 0x3549, 0xC040, 0x0000, 0xBD57, 0xD977, 0x1810, 0x802D, 0x0C02, 0x0000, 0x3EB2, 0xB8C2, 0xBA57, 0xB55C, 0x1001, 0x0000, 0xBF5F, 0x66F3, 0x0C02, 0x005A, 0x3E32, 0xB8C2, 0xBB6A, 0x863A, 0x0A01, 0x002D, 0xBF49, 0x0FDB, 0x3B3B, 0x2B13, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0773 (44 u16s) */
-u16 dCaptainShieldPose_script6_2[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), 23511, 15147, -6433, 16061, -17157, -17579,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_SCAY), -16559, 28938, 15239,
-	0x8D0E, /* unknown opcode 17 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -30386, -17859, 2972, 16022, 18212, -17825, -28886, -16585,
-	0x8214, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAY, 5195), 2563, -32767, 16222, 22269, -17847, 17785,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 55038), -17824, 19726, -16585, 19408, 14937,
-	ftAnimBlock(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAZ, 0),
-	ftAnimEnd(),
-};
-
-/* Script at word 0x0789 (26 u16s) */
-u16 dCaptainShieldPose_script6_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFD5, 0x818A, 0x3AB2, 0x6CCE, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFC4, 0xE85A, 0x3B20, 0xACCE, 0x0A02, 0x0001, 0xBFC4, 0x9A24, 0x3B1C, 0x6A9A, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0796 (30 u16s) */
-u16 dCaptainShieldPose_script6_4[30] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ), 10308, 15015, -20554, -16583, -23150, 14713,
-	ftAnimSetValT(FT_ANIM_ROTY | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX, 48290), 28292, 14968, -9679, 2563, -32723,
-	0xBBEB, /* unknown opcode 23 */
-	ftAnimBlock0(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAZ),
-	0xBA5D, /* unknown opcode 23 */
-	0x6464, -16588, /* SetTranslateInterp */
-	0x9F9C, /* unknown opcode 19 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY), -14916, 15882, -4142, 15073, 5924, 0,
-	ftAnimEnd(),
-};
-
-/* Script at word 0x07A5 (44 u16s) */
-u16 dCaptainShieldPose_script6_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC09C, /* unknown opcode 24 */
-	ftAnimSetValT(FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY, 47965), 6443, -16319, 23110, -17538,
-	ftAnimSetTargetRateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_SCAX | FT_ANIM_SCAZ), -16240, -2438, 15207, 14498,
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	0xC0A0, /* unknown opcode 24 */
-	0xA8DD, /* unknown opcode 21 */
-	0xBB01, /* unknown opcode 23 */
-	_FT_ANIM_CMD(11, FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ, 1), 49224,
-	0xEAC3, /* unknown opcode 29 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAY), -21765, -16244, -13538, 15086, -28242, 2563,
-	0x8001, /* unknown opcode 16 */
-	0xC0A0, /* unknown opcode 24 */
-	0xB878, /* unknown opcode 23 */
-	0xBAF9, /* unknown opcode 23 */
-	0xB8C2, /* unknown opcode 23 */
-	0xC048, /* unknown opcode 24 */
-	0xD48A, /* unknown opcode 26 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY, 51068), -16244, -17237, 15079, 12210,
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x07BB (26 u16s) */
-u16 dCaptainShieldPose_script6_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xC007, 0xAA52, 0xBA3D, 0x93E2, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xC00A, 0x7B7B, 0x3B8D, 0x801A, 0x0A02, 0x0001, 0xC00A, 0x30A2, 0x3B95, 0xB267, 0x0000, 0x0000,
-};
-
-/* Script at word 0x07C8 (34 u16s) */
-u16 dCaptainShieldPose_script6_7[34] = {
-	ftAnimSetValBlock(FT_ANIM_ROTX), 0,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 17555), 2561, -32768, 16259, -27931, 13515, 22650, 16008,
-	0x029A, /* End */
-	0xB84E, 0x752C, 0x0C03, 0x8087, 0x3FD0, 0x7490, 0x3646, 0x0F09, 0x3F2D, 0xC809, 0x38BA, 0xBD9A, 0x4013, 0xBB94, 0x39E0, 0x69C7, 0x1803, 0x802D, 0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x07D9 (20 u16s) */
-u16 dCaptainShieldPose_script6_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x00EB, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x07E3 (44 u16s) */
-u16 dCaptainShieldPose_script6_9[44] = {
-	0x0A03, 0x8000, 0x3EBF, 0x4C90, 0xB802, 0x6937, 0x3E7F, 0xA06C, 0x3A7A, 0xF3C1, 0xBF9E, 0x818B, 0xBB23, 0x326F, 0x0A03, 0x802C,
-	0x3EBF, 0x8BFE, 0xB833, 0x35DD, 0x3E97, 0xDFB2, 0x3898, 0x0D97, 0xBFAD, 0x7F61, 0xB945, 0x5CA1, 0x0A03, 0x8001, 0x3EBF, 0x85CF,
-	0xB845, 0xFD7B, 0x3E97, 0xE2BB, 0x37C2, 0x14A3, 0xBFAD, 0x81BD, 0xB897, 0x1361, 0x0000, 0x0000,
-};
-
-/* Script at word 0x07F9 (26 u16s) */
-u16 dCaptainShieldPose_script6_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3FAB, 0xE45F, 0x3B87, 0x89B4, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3FC3, 0xBDC5, 0x3A28, 0xFB97, 0x0A02, 0x0001, 0x3FC3, 0xCD96, 0x39FD, 0x129F, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0806 (44 u16s) */
-u16 dCaptainShieldPose_script6_11[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC05D, /* unknown opcode 24 */
-	ftAnimSetVal(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAZ), -17886, -8250, 16462,
-	0xC32E, /* unknown opcode 24 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAZ, 52905), -16313, -7494,
-	0xBAC0, /* unknown opcode 23 */
-	0xFF9E, /* unknown opcode 31 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	0xC05F, /* unknown opcode 24 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAZ, 46972), 29125, 16462, -687, -18912, -9860,
-	0xC04B, /* unknown opcode 24 */
-	0xBEE5, /* unknown opcode 23 */
-	0xB9E8, /* unknown opcode 23 */
-	0x7A54, /* unknown opcode 15 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	0xC05F, /* unknown opcode 24 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAZ, 14296), -19655, 16462, -716, -18712, 22166, -16309,
-	0xC592, /* unknown opcode 24 */
-	0xB9D5, /* unknown opcode 23 */
-	0xA0D9, /* unknown opcode 20 */
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x081C (44 u16s) */
-u16 dCaptainShieldPose_script6_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -3530, -17786, -14790, 16030, 10413, 14801,
-	0xD747, /* unknown opcode 26 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ, 51239), -18068, 1369, 2563, -32724,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -12607, -18327, 11534, 16038, 8261,
-	0xB927, /* unknown opcode 23 */
-	0xA38D, /* unknown opcode 20 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ, 1580), 14776, 10954, 2563, -32767, 16138, -12760,
-	0xB719, /* unknown opcode 22 */
-	0x07CD, /* End */
-	0x3EA6, 0x08C0, 0xB93C, 0x2581, 0x3E5B, 0x66A2, 0x39C0, 0xEB83, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0832 (26 u16s) */
-u16 dCaptainShieldPose_script6_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F8B, 0xF5B2, 0x3B3B, 0x57F9, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F9C, 0x982B, 0xB942, 0x6DFF, 0x0A02, 0x0001, 0x3F9C, 0x8D85, 0xB9AA, 0x581A, 0x0000, 0x0000,
-};
-
-/* Script at word 0x083F (44 u16s) */
-u16 dCaptainShieldPose_script6_14[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 14253), 14897, 21329, 16102, 3128, 14910, 6637, -16575, 9029,
-	0xBB07, /* unknown opcode 23 */
-	0xED1E, /* unknown opcode 29 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32812),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -5010, 14583, 9085, 16119, 31445,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_SCAX, 49264), -16550, 839, -18176,
-	0xF1E6, /* unknown opcode 30 */
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -3536, 14520, 15530, 16119, -30781,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAY | FT_ANIM_TRAZ), -9409, -16550, 1276, -18470, 24615,
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x0855 (24 u16s) */
-u16 dCaptainShieldPose_script6_15[24] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x4377, 0x8000, 0x42A5, 0x0000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x4343, 0x0000, 0x42F0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x0861 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs6[26] = {
-	(u32)dCaptainShieldPose_script7_0, /* [0] intern -> 0x087B */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script7_1, /* [2] intern -> 0x0888 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script7_2, /* [4] intern -> 0x08A7 */
-	(u32)dCaptainShieldPose_script7_3, /* [5] intern -> 0x08BD */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script7_4, /* [8] intern -> 0x08CA */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script7_5, /* [10] intern -> 0x08D9 */
-	(u32)dCaptainShieldPose_script7_6, /* [11] intern -> 0x08EF */
-	(u32)dCaptainShieldPose_script7_7, /* [12] intern -> 0x08FC */
-	(u32)dCaptainShieldPose_script7_8, /* [13] intern -> 0x090D */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script7_9, /* [16] intern -> 0x0917 */
-	(u32)dCaptainShieldPose_script7_10, /* [17] intern -> 0x092D */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script7_11, /* [19] intern -> 0x093A */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script7_12, /* [21] intern -> 0x0950 */
-	(u32)dCaptainShieldPose_script7_13, /* [22] intern -> 0x0966 */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script7_14, /* [24] intern -> 0x0973 */
-	(u32)dCaptainShieldPose_script7_15, /* [25] intern -> 0x0989 */
-};
-
-/* Script at word 0x087B (26 u16s) */
-u16 dCaptainShieldPose_script7_0[26] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x43A5, 0x33E9, 0xB760, 0x0000, 0x42A8, 0x0000, 0x3D88, 0x888B, 0x1408, 0x0000, 0x3DD1, 0x1874, 0x0C10, 0x002D, 0x43AF, 0xC333, 0x3ED8, 0x4680, 0x1020, 0x002D, 0x42A8, 0x0000, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0888 (62 u16s) */
-u16 dCaptainShieldPose_script7_1[62] = {
-	ftAnimBlock0(FT_ANIM_TRAX | FT_ANIM_SCAY),
-	ftAnimEnd(),
-	0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x1220, 0x00E1, 0x4095, 0xD4B3, 0x1820, 0x0087, 0x0A02, 0x0000, 0x3EB2, 0xB8C2, 0xBA57, 0xB55C, 0x0C02, 0x005A, 0x3E32, 0xB8C2, 0xBB6A, 0x863A, 0x1802, 0x002D, 0x0A19, 0x8000, 0xBE32, 0xB8C2, 0x3B00, 0x3549, 0xBF49, 0x0FDB, 0x3B3B, 0x2B13, 0xC1C0, 0x0000, 0xBBE9, 0xFB5A, 0xC040, 0x0000, 0xBD57, 0xD977, 0x1218, 0x005A, 0xC0ED, 0x8C8C, 0xC0FF, 0x89D0, 0x0A01, 0x802D, 0x0000, 0x0000, 0x3B90, 0xD6BB, 0xBF32, 0xB8C2, 0x3B30, 0x119B, 0x0000, 0x0000,
-};
-
-/* Script at word 0x08A7 (44 u16s) */
-u16 dCaptainShieldPose_script7_2[44] = {
-	0x0A03, 0x8000, 0x3F5E, 0x56FD, 0xBA75, 0xFC99, 0x3E95, 0xD700, 0xBA55, 0x8191, 0xBF37, 0x4BD1, 0x3A37, 0xB69F, 0x0A03, 0x802C,
-	0x3F2E, 0xAF02, 0xBBC2, 0xC909, 0x3E85, 0x86F3, 0xBB11, 0x1EA9, 0xBF51, 0xC96C, 0xBB85, 0xC863, 0x0A03, 0x8001, 0x3F2D, 0x288B,
-	0xBBC3, 0x3B87, 0x3E84, 0x5CEE, 0xBB15, 0x027A, 0xBF52, 0xD5AE, 0xBB86, 0x20E9, 0x0000, 0x0000,
-};
-
-/* Script at word 0x08BD (26 u16s) */
-u16 dCaptainShieldPose_script7_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFC4, 0x9A23, 0x3B1A, 0xD63E, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFB8, 0x1A53, 0x3A6A, 0xB1C5, 0x0A02, 0x0001, 0xBFB7, 0xFDF5, 0x3A62, 0xF66E, 0x0000, 0x0000,
-};
-
-/* Script at word 0x08CA (30 u16s) */
-u16 dCaptainShieldPose_script7_4[30] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xBBEB, /* unknown opcode 23 */
-	ftAnimBlock0(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAZ),
-	0xBA5D, /* unknown opcode 23 */
-	0x6464, -16588, /* SetTranslateInterp */
-	0x9F9C, /* unknown opcode 19 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY), -14916, 15882, -4142, 15073, 5924, 2563,
-	0x802D, /* unknown opcode 16 */
-	0xBBD8, /* unknown opcode 23 */
-	ftAnimSetValRateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAZ), 14503, 9668, -16616, 30416, 15360, 29056, 15881, -2442, -17723, -26281,
-	ftAnimEnd(),
-	0x0000,
-};
-
-/* Script at word 0x08D9 (44 u16s) */
-u16 dCaptainShieldPose_script7_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC0A0, /* unknown opcode 24 */
-	0xB878, /* unknown opcode 23 */
-	0xBAE7, /* unknown opcode 23 */
-	0xA3DE, /* unknown opcode 20 */
-	0xC048, /* unknown opcode 24 */
-	0xD48A, /* unknown opcode 26 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY), 21393, -16244, -17237, 15064, 32155, 2563,
-	0x802C, /* unknown opcode 16 */
-	0xC0A0, /* unknown opcode 24 */
-	ftAnimSetValAfter(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY), 15046, -20429, -16325, 18489, 15294, -27730,
-	0xC08D, /* unknown opcode 24 */
-	0xA01C, /* unknown opcode 20 */
-	0xBB2B, /* unknown opcode 23 */
-	0x065B, /* End */
-	0x0A03, 0x8001, 0xC0A0, 0x46BB, 0x3AC8, 0x03C5, 0xC03A, 0xE961, 0x3BBD, 0xAEB1, 0xC08D, 0xB5BD, 0xBB2D, 0x082E, 0x0000, 0x0000,
-};
-
-/* Script at word 0x08EF (26 u16s) */
-u16 dCaptainShieldPose_script7_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xC00A, 0x30A2, 0x3BA2, 0xB436, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFDB, 0x7AE6, 0x3C6D, 0x6A3B, 0x0A02, 0x0001, 0xBFD9, 0x9D70, 0x3C6E, 0xBB02, 0x0000, 0x0000,
-};
-
-/* Script at word 0x08FC (34 u16s) */
-u16 dCaptainShieldPose_script7_7[34] = {
-	ftAnimSetValBlock(FT_ANIM_ROTX), 0,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 17555), 2561, -32768, 16259, -27931, 13515, 22650, 16008,
-	0x029A, /* End */
-	0xB84E, 0x752C, 0x0C03, 0x8087, 0x3FD0, 0x7490, 0x3646, 0x0F09, 0x3F2D, 0xC809, 0x38BA, 0xBD9A, 0x4013, 0xBB94, 0x39E0, 0x69C7, 0x1803, 0x805A, 0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x090D (20 u16s) */
-u16 dCaptainShieldPose_script7_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x0118, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0917 (44 u16s) */
-u16 dCaptainShieldPose_script7_9[44] = {
-	0x0A03, 0x8000, 0x3EBF, 0x85CF, 0xB86E, 0x5797, 0x3E97, 0xE2BB, 0xB8A3, 0xD9FD, 0xBFAD, 0x81BC, 0x392D, 0xF973, 0x0A03, 0x802C,
-	0x3EBD, 0x2905, 0xB871, 0xD534, 0x3E7F, 0x5D93, 0xBA81, 0x1175, 0xBF9E, 0x7207, 0x3B29, 0xD8C2, 0x0A03, 0x8001, 0x3EBD, 0x21A4,
-	0xB86C, 0x1BAF, 0x3E7E, 0x6249, 0xBA7B, 0x4AE2, 0xBF9E, 0x1F45, 0x3B25, 0x84AF, 0x0000, 0x0000,
-};
-
-/* Script at word 0x092D (26 u16s) */
-u16 dCaptainShieldPose_script7_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3FC3, 0xCD94, 0x391E, 0xE510, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3FB0, 0x266D, 0xBB67, 0x60D9, 0x0A02, 0x0001, 0x3FAF, 0xB5D6, 0xBB61, 0x2EB0, 0x0000, 0x0000,
-};
-
-/* Script at word 0x093A (44 u16s) */
-u16 dCaptainShieldPose_script7_11[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC05F, /* unknown opcode 24 */
-	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAZ), 14566, 6830, 16462, -716, -18552, 18043,
-	0xC04B, /* unknown opcode 24 */
-	0xC592, /* unknown opcode 24 */
-	0xB9AF, /* unknown opcode 23 */
-	_FT_ANIM_CMD(11, FT_ANIM_ROTY | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 1), 2563,
-	0x802C, /* unknown opcode 16 */
-	0xC05C, /* unknown opcode 24 */
-	0xD194, /* unknown opcode 26 */
-	ftAnimSetVal0RateBlock(FT_ANIM_TRAY | FT_ANIM_SCAY), -27550, 16462,
-	0xB55C, /* unknown opcode 22 */
-	0xB8AE, /* unknown opcode 23 */
-	0x886E, /* unknown opcode 17 */
-	0xC04A, /* unknown opcode 24 */
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAY | FT_ANIM_SCAY), 17655, 2563, -32767, -16292,
-	0xC5DE, /* unknown opcode 24 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY, 24809), 16462, -19447, -18263, 14885, -16310,
-	0x0240, /* End */
-	0x3A40, 0x2037, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0950 (44 u16s) */
-u16 dCaptainShieldPose_script7_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -12760, 14516, 12307, 16038, 2243,
-	0xB965, /* unknown opcode 23 */
-	0xDC20, /* unknown opcode 27 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_SCAY | FT_ANIM_SCAZ, 26268), 14802, -30208, 2563, -32724, 16151, 5155,
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ | FT_ANIM_TRAZ | FT_ANIM_SCAY, 38579), 16020, -26200, -17816,
-	ftAnimLoop(0x6E0C, 16002),
-	0x03F6, /* End */
-	0x3A84, 0x2346, 0x0A03, 0x8001, 0x3F17, 0x5729, 0x3A86, 0x0A92, 0x3E94, 0x276D, 0xBA64, 0x7472, 0x3E82, 0x861D, 0x3A82, 0x26C1, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0966 (26 u16s) */
-u16 dCaptainShieldPose_script7_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F9C, 0x8D87, 0xBA20, 0x0304, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F86, 0xC821, 0xBB82, 0xEFD1, 0x0A02, 0x0001, 0x3F86, 0x480A, 0xBB80, 0x16F7, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0973 (44 u16s) */
-u16 dCaptainShieldPose_script7_14[44] = {
-	0x0A03, 0x8000, 0x3F06, 0xF231, 0x37D8, 0x6BBC, 0x3EF7, 0x87C3, 0x3819, 0x07CD, 0xBF5A, 0x04F9, 0x3935, 0x2A49, 0x0A03, 0x802C,
-	0x3F00, 0x2F93, 0xBA12, 0x4233, 0x3EE9, 0xF3AD, 0xBA13, 0xEAAA, 0xBF3F, 0xAA03, 0x3B19, 0xD5E3, 0x0A03, 0x8001, 0x3F00, 0x0C0E,
-	0xBA0E, 0x141B, 0x3EE9, 0xABE3, 0xBA0F, 0x945B, 0xBF3F, 0x13DD, 0x3B16, 0x2693, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0989 (24 u16s) */
-u16 dCaptainShieldPose_script7_15[24] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x4343, 0x0000, 0x42F0, 0x0000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x4377, 0x8000, 0x431D, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Pointer array at word 0x0995 (26 slots, 16 intern) */
-u32 dCaptainShieldPose_ptrs7[26] = {
-	(u32)dCaptainShieldPose_script8_0, /* [0] intern -> 0x09AF */
-	0x00000000, /* [1] NULL */
-	(u32)dCaptainShieldPose_script8_1, /* [2] intern -> 0x09B8 */
-	0x00000000, /* [3] NULL */
-	(u32)dCaptainShieldPose_script8_2, /* [4] intern -> 0x09D5 */
-	(u32)dCaptainShieldPose_script8_3, /* [5] intern -> 0x09EB */
-	0x00000000, /* [6] NULL */
-	0x00000000, /* [7] NULL */
-	(u32)dCaptainShieldPose_script8_4, /* [8] intern -> 0x09F8 */
-	0x00000000, /* [9] NULL */
-	(u32)dCaptainShieldPose_script8_5, /* [10] intern -> 0x0A04 */
-	(u32)dCaptainShieldPose_script8_6, /* [11] intern -> 0x0A1A */
-	(u32)dCaptainShieldPose_script8_7, /* [12] intern -> 0x0A27 */
-	(u32)dCaptainShieldPose_script8_8, /* [13] intern -> 0x0A33 */
-	0x00000000, /* [14] NULL */
-	0x00000000, /* [15] NULL */
-	(u32)dCaptainShieldPose_script8_9, /* [16] intern -> 0x0A3D */
-	(u32)dCaptainShieldPose_script8_10, /* [17] intern -> 0x0A53 */
-	0x00000000, /* [18] NULL */
-	(u32)dCaptainShieldPose_script8_11, /* [19] intern -> 0x0A60 */
-	0x00000000, /* [20] NULL */
-	(u32)dCaptainShieldPose_script8_12, /* [21] intern -> 0x0A76 */
-	(u32)dCaptainShieldPose_script8_13, /* [22] intern -> 0x0A8C */
-	0x00000000, /* [23] NULL */
-	(u32)dCaptainShieldPose_script8_14, /* [24] intern -> 0x0A99 */
-	(u32)dCaptainShieldPose_script8_15, /* [25] intern -> 0x0AAF */
-};
-
-/* Script at word 0x09AF (18 u16s) */
-u16 dCaptainShieldPose_script8_0[18] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x43AF, 0xC333, 0x3ED8, 0x4680, 0x1428, 0x0000, 0x3DD1, 0x1874, 0x42A8, 0x0000, 0x1010, 0x002D, 0x43B8, 0x361B, 0x0000, 0x0000,
-};
-
-/* Script at word 0x09B8 (58 u16s) */
-u16 dCaptainShieldPose_script8_1[58] = {
-	ftAnimBlock0(FT_ANIM_TRAX | FT_ANIM_SCAY),
-	ftAnimEnd(),
-	0xC110, 0x0000, 0xBDB6, 0xFEC6, 0x1220, 0x00E1, 0x4095, 0xD4B3, 0x1820, 0x00B4, 0x0A18, 0x0000, 0xC1C0, 0x0000, 0xBBE9, 0xFB5A, 0xC040, 0x0000, 0xBD57, 0xD977, 0x1218, 0x005A, 0xC0ED, 0x8C8C, 0xC0FF, 0x89D0, 0x1818, 0x002D, 0x0A03, 0x8000, 0x0000, 0x0000, 0x3B90, 0xD6BB, 0xBF32, 0xB8C2, 0x3B30, 0x119B, 0x3E32, 0xB8C2, 0xBB6A, 0x863A, 0x0C01, 0x002D, 0xBF06, 0x0A92, 0x3B5E, 0xD039, 0x1002, 0x802D, 0x3E32, 0xB8C2, 0xBD56, 0x7750, 0x0000, 0x0000,
-};
-
-/* Script at word 0x09D5 (44 u16s) */
-u16 dCaptainShieldPose_script8_2[44] = {
-	0x0A03, 0x8000, 0x3F2D, 0x288B, 0xBBC3, 0xF4F3, 0x3E84, 0x5CEE, 0xBB24, 0x12F4, 0xBF52, 0xD5AE, 0xBB83, 0x2333, 0x0A03, 0x802C,
-	0x3EF0, 0xCB16, 0x3A56, 0xFF96, 0x3E13, 0xAE90, 0x3B10, 0xAAA1, 0xBF80, 0x36EB, 0xBADE, 0xE324, 0x0A03, 0x8001, 0x3EF1, 0x5554,
-	0x3A8A, 0x3D22, 0x3E16, 0x2305, 0x3B1D, 0x1D52, 0xBF80, 0x6732, 0xBAC1, 0x1CAA, 0x0000, 0x0000,
-};
-
-/* Script at word 0x09EB (26 u16s) */
-u16 dCaptainShieldPose_script8_3[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFB7, 0xFDF6, 0x39BC, 0x2581, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBFC8, 0x2B5F, 0x3B54, 0xEE20, 0x0A02, 0x0001, 0xBFC7, 0xB97F, 0x3B63, 0xC1BA, 0x0000, 0x0000,
-};
-
-/* Script at word 0x09F8 (24 u16s) */
-u16 dCaptainShieldPose_script8_4[24] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xBBD8, /* unknown opcode 23 */
-	ftAnimSetValRateBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAZ), 14503, 9668, -16616, 30416, 15360, 29056, 15881, -2442, -17723, -26281,
-	ftAnimSetValBlockT(FT_ANIM_ROTX, 32813), 0,
-	ftAnimEnd(),
-	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A04 (44 u16s) */
-u16 dCaptainShieldPose_script8_5[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC0A0, /* unknown opcode 24 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 15050), 2576, -16326, -5791, 15297, 2190, -16243, -19011,
-	0xBB2D, /* unknown opcode 23 */
-	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY), 2563, -32724, -16226, 2652, 14771,
-	0xD6B6, /* unknown opcode 26 */
-	0xC02C, /* unknown opcode 24 */
-	0xD3CE, /* unknown opcode 26 */
-	0xBAFB, /* unknown opcode 23 */
-	ftAnimSetValBlock(FT_ANIM_ROTY | FT_ANIM_TRAY | FT_ANIM_SCAX | FT_ANIM_SCAZ), -16239, 26404, -17819, -2321,
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32769),
-	0xC09E, /* unknown opcode 24 */
-	ftAnimBlock(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX, 14728),
-	0xD574, /* unknown opcode 26 */
-	0xC02C, /* unknown opcode 24 */
-	0xF7BC, /* unknown opcode 30 */
-	0xBB0F, /* unknown opcode 23 */
-	0xBA55, /* unknown opcode 23 */
-	0xC091, /* unknown opcode 24 */
-	ftAnimLoop(0x6D4C, -17851),
-	0x0344, /* End */
-	0x0000, 0x0000,
-};
-
-/* Script at word 0x0A1A (26 u16s) */
-u16 dCaptainShieldPose_script8_6[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0xBFD9, 0x9D70, 0x3C71, 0x42E0, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0xBF9C, 0x69E7, 0xBA96, 0xE6B3, 0x0A02, 0x0001, 0xBF9C, 0x9E72, 0xBAD2, 0x2C2C, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A27 (24 u16s) */
-u16 dCaptainShieldPose_script8_7[24] = {
-	0x0A03, 0x8000, 0x3FD0, 0x7490, 0x3646, 0x0F09, 0x3F2D, 0xC809, 0x38BA, 0xBD9A, 0x4013, 0xBB94, 0x39E0, 0x69C7, 0x1003, 0x802D,
-	0x3FD0, 0x74D2, 0x3F2D, 0x84A3, 0x4013, 0xBB94, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A33 (20 u16s) */
-u16 dCaptainShieldPose_script8_8[20] = {
-	ftAnimSetValBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAZ, 32768), 16448, 22999, -16390, -15877, 15982,
-	0xA77E, /* unknown opcode 20 */
-	ftAnimSetVal0RateT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAZ | FT_ANIM_SCAX, 47186), 16709, -18874, 16665, 21985, 6144,
-	0x0145, /* End */
-	0x0400, 0x002D, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A3D (44 u16s) */
-u16 dCaptainShieldPose_script8_9[44] = {
-	0x0A03, 0x8000, 0x3EBD, 0x21A4, 0xB867, 0x38A2, 0x3E7E, 0x6243, 0xBA77, 0x9330, 0xBF9E, 0x1F44, 0x3B23, 0x615A, 0x0A03, 0x802C,
-	0x3EBC, 0x7E18, 0xB53B, 0xA865, 0x3E58, 0xA866, 0xB88B, 0xE35D, 0xBF91, 0x42A1, 0x3944, 0x508C, 0x0A03, 0x8001, 0x3EBC, 0x7E0E,
-	0xB4A0, 0xD97C, 0x3E58, 0x9F95, 0xB80D, 0x17A9, 0xBF91, 0x3F8A, 0x38C5, 0xFD7B, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A53 (26 u16s) */
-u16 dCaptainShieldPose_script8_10[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3FAF, 0xB5D4, 0xBB5E, 0x1A14, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F9D, 0xABD6, 0xB98E, 0x08EF, 0x0A02, 0x0001, 0x3F9D, 0xA75C, 0xB90F, 0x41B2, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A60 (44 u16s) */
-u16 dCaptainShieldPose_script8_11[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	0xC05C, /* unknown opcode 24 */
-	0xC5DE, /* unknown opcode 24 */
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAX | FT_ANIM_SCAY), 15530, 16462, -19447, -18265,
-	0x8D36, /* unknown opcode 17 */
-	0xC04A, /* unknown opcode 24 */
-	0x0240, /* End */
-	0x3A3D, 0x1FB6, 0x0A03, 0x802C, 0xC05B, 0x2414, 0x3832, 0xB8C2, 0x404E, 0x851E, 0xB6A0, 0xD97C, 0xC047, 0xD921, 0x3896, 0x8466, 0x0A03, 0x8001, 0xC05B, 0x23BA, 0x37B4, 0xF4AB, 0x404E, 0x8513, 0xB632, 0xB8C2, 0xC047, 0xD887, 0x381A, 0x25C1, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A76 (44 u16s) */
-u16 dCaptainShieldPose_script8_12[44] = {
-	ftAnimBlock(FT_ANIM_ROTX | FT_ANIM_SCAY, 32768),
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_TRAI | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 22314), 14980, 17108, 16020, 10091, -17820, 28667,
-	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ), -31197, 14978, 24791, 2563,
-	0x802C, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_TRAX | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ, 38363), 14489, 1997, 15998, -24161,
-	0xB8B7, /* unknown opcode 23 */
-	0x8579, /* unknown opcode 16 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ | FT_ANIM_TRAI | FT_ANIM_TRAZ | FT_ANIM_SCAY | FT_ANIM_SCAZ, 48147), 14535, 29900, 2563, -32767, 16161,
-	0x9848, /* unknown opcode 19 */
-	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ | FT_ANIM_TRAI, 17333), 15998, -27142, -18374,
-	ftAnimSetValAfterT(FT_ANIM_ROTX | FT_ANIM_TRAI | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAZ, 16025), -15764, 14411, 10245, 0, 0,
-};
-
-/* Script at word 0x0A8C (26 u16s) */
-u16 dCaptainShieldPose_script8_13[26] = {
-	ftAnimBlock0(FT_ANIM_ROTX | FT_ANIM_SCAZ),
-	ftAnimEnd(),
-	0x3F86, 0x4807, 0xBB7E, 0x59E7, 0x1401, 0x8000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0A02, 0x002C, 0x3F61, 0xC517, 0xB9AF, 0x6C4D, 0x0A02, 0x0001, 0x3F61, 0xB9F5, 0xB932, 0x17E9, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0A99 (44 u16s) */
-u16 dCaptainShieldPose_script8_14[44] = {
-	0x0A03, 0x8000, 0x3F00, 0x0C10, 0xBA0B, 0x92F0, 0x3EE9, 0xABE3, 0xBA0C, 0xED36, 0xBF3F, 0x13DA, 0x3B14, 0x8FFB, 0x0A03, 0x802C,
-	0x3EF5, 0x8C72, 0xB81A, 0xD87A, 0x3EDF, 0x071B, 0xB81B, 0x1FF7, 0xBF26, 0xBC15, 0x3942, 0x91BE, 0x0A03, 0x8001, 0x3EF5, 0x8A03,
-	0xB79B, 0xD2B0, 0x3EDF, 0x04A5, 0xB79D, 0x7F9F, 0xBF26, 0xB5EB, 0x38C5, 0x4AC2, 0x0000, 0x0000,
-};
-
-/* Script at word 0x0AAF (18 u16s) */
-u16 dCaptainShieldPose_script8_15[18] = {
-	ftAnimBlock0(FT_ANIM_TRAI | FT_ANIM_TRAX),
-	ftAnimEnd(),
-	0x4377, 0x8000, 0x431D, 0x8000, 0x1608, 0x0000, 0x0000, 0x0000, 0x0630, 0x002D, 0x4396, 0x0000, 0x4343, 0x0000, 0x0000, 0x0000,
+#include <sys/objdef.h>
+
+/* Forward decls for scripts. */
+extern u32 dCaptainShieldPose_script1_0[];
+extern u32 dCaptainShieldPose_script1_1[];
+extern u32 dCaptainShieldPose_script1_2[];
+extern u32 dCaptainShieldPose_script1_3[];
+extern u32 dCaptainShieldPose_script1_4[];
+extern u32 dCaptainShieldPose_script1_5[];
+extern u32 dCaptainShieldPose_script1_6[];
+extern u32 dCaptainShieldPose_script1_7[];
+extern u32 dCaptainShieldPose_script1_8[];
+extern u32 dCaptainShieldPose_script1_9[];
+extern u32 dCaptainShieldPose_script1_10[];
+extern u32 dCaptainShieldPose_script1_11[];
+extern u32 dCaptainShieldPose_script1_12[];
+extern u32 dCaptainShieldPose_script1_13[];
+extern u32 dCaptainShieldPose_script1_14[];
+extern u32 dCaptainShieldPose_script1_15[];
+extern u32 dCaptainShieldPose_script2_0[];
+extern u32 dCaptainShieldPose_script2_1[];
+extern u32 dCaptainShieldPose_script2_2[];
+extern u32 dCaptainShieldPose_script2_3[];
+extern u32 dCaptainShieldPose_script2_4[];
+extern u32 dCaptainShieldPose_script2_5[];
+extern u32 dCaptainShieldPose_script2_6[];
+extern u32 dCaptainShieldPose_script2_7[];
+extern u32 dCaptainShieldPose_script2_8[];
+extern u32 dCaptainShieldPose_script2_9[];
+extern u32 dCaptainShieldPose_script2_10[];
+extern u32 dCaptainShieldPose_script2_11[];
+extern u32 dCaptainShieldPose_script2_12[];
+extern u32 dCaptainShieldPose_script2_13[];
+extern u32 dCaptainShieldPose_script2_14[];
+extern u32 dCaptainShieldPose_script2_15[];
+extern u32 dCaptainShieldPose_script3_0[];
+extern u32 dCaptainShieldPose_script3_1[];
+extern u32 dCaptainShieldPose_script3_2[];
+extern u32 dCaptainShieldPose_script3_3[];
+extern u32 dCaptainShieldPose_script3_4[];
+extern u32 dCaptainShieldPose_script3_5[];
+extern u32 dCaptainShieldPose_script3_6[];
+extern u32 dCaptainShieldPose_script3_7[];
+extern u32 dCaptainShieldPose_script3_8[];
+extern u32 dCaptainShieldPose_script3_9[];
+extern u32 dCaptainShieldPose_script3_10[];
+extern u32 dCaptainShieldPose_script3_11[];
+extern u32 dCaptainShieldPose_script3_12[];
+extern u32 dCaptainShieldPose_script3_13[];
+extern u32 dCaptainShieldPose_script3_14[];
+extern u32 dCaptainShieldPose_script3_15[];
+extern u32 dCaptainShieldPose_script4_0[];
+extern u32 dCaptainShieldPose_script4_1[];
+extern u32 dCaptainShieldPose_script4_2[];
+extern u32 dCaptainShieldPose_script4_3[];
+extern u32 dCaptainShieldPose_script4_4[];
+extern u32 dCaptainShieldPose_script4_5[];
+extern u32 dCaptainShieldPose_script4_6[];
+extern u32 dCaptainShieldPose_script4_7[];
+extern u32 dCaptainShieldPose_script4_8[];
+extern u32 dCaptainShieldPose_script4_9[];
+extern u32 dCaptainShieldPose_script4_10[];
+extern u32 dCaptainShieldPose_script4_11[];
+extern u32 dCaptainShieldPose_script4_12[];
+extern u32 dCaptainShieldPose_script4_13[];
+extern u32 dCaptainShieldPose_script4_14[];
+extern u32 dCaptainShieldPose_script4_15[];
+extern u32 dCaptainShieldPose_script5_0[];
+extern u32 dCaptainShieldPose_script5_1[];
+extern u32 dCaptainShieldPose_script5_2[];
+extern u32 dCaptainShieldPose_script5_3[];
+extern u32 dCaptainShieldPose_script5_4[];
+extern u32 dCaptainShieldPose_script5_5[];
+extern u32 dCaptainShieldPose_script5_6[];
+extern u32 dCaptainShieldPose_script5_7[];
+extern u32 dCaptainShieldPose_script5_8[];
+extern u32 dCaptainShieldPose_script5_9[];
+extern u32 dCaptainShieldPose_script5_10[];
+extern u32 dCaptainShieldPose_script5_11[];
+extern u32 dCaptainShieldPose_script5_12[];
+extern u32 dCaptainShieldPose_script5_13[];
+extern u32 dCaptainShieldPose_script5_14[];
+extern u32 dCaptainShieldPose_script5_15[];
+extern u32 dCaptainShieldPose_script6_0[];
+extern u32 dCaptainShieldPose_script6_1[];
+extern u32 dCaptainShieldPose_script6_2[];
+extern u32 dCaptainShieldPose_script6_3[];
+extern u32 dCaptainShieldPose_script6_4[];
+extern u32 dCaptainShieldPose_script6_5[];
+extern u32 dCaptainShieldPose_script6_6[];
+extern u32 dCaptainShieldPose_script6_7[];
+extern u32 dCaptainShieldPose_script6_8[];
+extern u32 dCaptainShieldPose_script6_9[];
+extern u32 dCaptainShieldPose_script6_10[];
+extern u32 dCaptainShieldPose_script6_11[];
+extern u32 dCaptainShieldPose_script6_12[];
+extern u32 dCaptainShieldPose_script6_13[];
+extern u32 dCaptainShieldPose_script6_14[];
+extern u32 dCaptainShieldPose_script6_15[];
+extern u32 dCaptainShieldPose_script7_0[];
+extern u32 dCaptainShieldPose_script7_1[];
+extern u32 dCaptainShieldPose_script7_2[];
+extern u32 dCaptainShieldPose_script7_3[];
+extern u32 dCaptainShieldPose_script7_4[];
+extern u32 dCaptainShieldPose_script7_5[];
+extern u32 dCaptainShieldPose_script7_6[];
+extern u32 dCaptainShieldPose_script7_7[];
+extern u32 dCaptainShieldPose_script7_8[];
+extern u32 dCaptainShieldPose_script7_9[];
+extern u32 dCaptainShieldPose_script7_10[];
+extern u32 dCaptainShieldPose_script7_11[];
+extern u32 dCaptainShieldPose_script7_12[];
+extern u32 dCaptainShieldPose_script7_13[];
+extern u32 dCaptainShieldPose_script7_14[];
+extern u32 dCaptainShieldPose_script7_15[];
+extern u32 dCaptainShieldPose_script8_0[];
+extern u32 dCaptainShieldPose_script8_1[];
+extern u32 dCaptainShieldPose_script8_2[];
+extern u32 dCaptainShieldPose_script8_3[];
+extern u32 dCaptainShieldPose_script8_4[];
+extern u32 dCaptainShieldPose_script8_5[];
+extern u32 dCaptainShieldPose_script8_6[];
+extern u32 dCaptainShieldPose_script8_7[];
+extern u32 dCaptainShieldPose_script8_8[];
+extern u32 dCaptainShieldPose_script8_9[];
+extern u32 dCaptainShieldPose_script8_10[];
+extern u32 dCaptainShieldPose_script8_11[];
+extern u32 dCaptainShieldPose_script8_12[];
+extern u32 dCaptainShieldPose_script8_13[];
+extern u32 dCaptainShieldPose_script8_14[];
+extern u32 dCaptainShieldPose_script8_15[];
+
+DObjDesc dCaptainShieldPose_data0[28] = {
+	{   0, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{   1, (void *)0x00000000, { 0.102097f, 3.684227e+02f, 60.3009567f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{   2, (void *)0x00000000, { 1.062f, -19.233f, 2.313f }, { 0.0f, 0.21f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{   3, (void *)0x00000000, { 0.0f, -7.985573e+00f, 1.197838e+01f }, { 0.367043f, -0.176525f, -0.014735f }, { 1.0f, 1.0f, 1.0f } },
+	{   4, (void *)0x00000000, { 99.0f, 8.948699e+01f, -24.9471035f }, { -1.570796e+00f, 0.0f, -1.570796e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   5, (void *)0x00000000, { 0.0f, 0.0f, -7e-06f }, { 0.731492f, 0.471f, -0.920942f }, { 1.0f, 1.0f, 1.0f } },
+	{   6, (void *)0x00000000, { 1.222029e+02f, 4e-06f, 2.9e-05f }, { 0.0f, 0.0f, -1.733712e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   7, (void *)0x00000000, { 106.062424f, 0.001019f, 2.1e-05f }, { 5.586494e+00f, -0.063627f, -0.673017f }, { 1.0f, 1.0f, 1.0f } },
+	{   4, (void *)0x00000000, { 0.0f, 90.0f, -27.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{   5, (void *)0x00000000, { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{   4, (void *)0x00000000, { -99.0f, 8.948711e+01f, -24.948f }, { -1.570796e+00f, 0.0f, -1.570796e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   5, (void *)0x00000000, { 0.0f, 0.0f, -2.1e-05f }, { -5.087382e+00f, -2.67673f, -4.591432e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   6, (void *)0x00000000, { 122.204018f, -4e-06f, -2.9e-05f }, { 0.0f, 0.0f, -1.776904e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   7, (void *)0x00000000, { 106.062f, 0.0f, 0.0f }, { 1.274489e+00f, 0.608423f, 2.62437f }, { 1.0f, 1.0f, 1.0f } },
+	{   8, (void *)0x00000000, { 21.465f, 12.357f, 9.583467e+00f }, { 3.005483e+00f, -1.959045e+00f, 0.233061f }, { 1.0f, 1.0f, 1.0f } },
+	{   3, (void *)0x00000000, { -47.7528954f, -5.260334e+01f, -1.990592e+01f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{   3, (void *)0x00000000, { 33.1508179f, -7.612496e+01f, -1.653759e+01f }, { -1.570796e+00f, 0.0f, -1.570796e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   4, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.366793f, 0.211297f, -1.133677e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   5, (void *)0x00000000, { 160.899261f, 4e-06f, -2e-06f }, { 0.0f, 0.0f, 1.242827e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   6, (void *)0x00000000, { 190.660034f, 1.340518e+00f, 1.682786e+00f }, { 0.0f, 0.0f, -1.570796e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   7, (void *)0x00000000, { -4e-06f, -2.9e-05f, -4e-06f }, { -3.422458e+00f, 3.226546e+00f, -3.134843e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   3, (void *)0x00000000, { -33.15f, -76.125f, -16.539f }, { -1.570796e+00f, 0.0f, -1.570796e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   4, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.632638f, 0.3307f, 0.166345f }, { 1.0f, 1.0f, 1.0f } },
+	{   5, (void *)0x00000000, { 160.899292f, 4e-06f, 0.0f }, { 0.0f, 0.0f, 1.059433e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   6, (void *)0x00000000, { 190.659912f, 1.34052f, 1.682784e+00f }, { 0.0f, 0.0f, -1.570796e+00f }, { 1.0f, 1.0f, 1.0f } },
+	{   7, (void *)0x00000000, { -2e-06f, -5.7e-05f, -2e-06f }, { 0.45456f, 0.40266f, -0.684759f }, { 1.0f, 1.0f, 1.0f } },
+	{   1, (void *)0x00000000, { 0.0f, 300.0f, 120.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* AObjEvent32 *data0_end[27] */
+AObjEvent32 *dCaptainShieldPose_data0_end[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_2,
+	(AObjEvent32 *)dCaptainShieldPose_script1_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_5,
+	(AObjEvent32 *)dCaptainShieldPose_script1_6,
+	(AObjEvent32 *)dCaptainShieldPose_script1_7,
+	(AObjEvent32 *)dCaptainShieldPose_script1_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_9,
+	(AObjEvent32 *)dCaptainShieldPose_script1_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_12,
+	(AObjEvent32 *)dCaptainShieldPose_script1_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script1_14,
+	(AObjEvent32 *)dCaptainShieldPose_script1_15,
+};
+
+u32 dCaptainShieldPose_script1_0[9] = {
+	aobjEvent32SetValRate(0x040, 0),
+	    0x42A80000,  /* 84.0f */
+	    0x3EDC9DD4,  /* 0.43089163303375244f */
+	aobjEvent32SetValAfterBlock(0x030, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	    0x43B8361B,  /* 368.4226989746094f */
+	aobjEvent32SetVal0RateBlock(0x040, 45),
+	    0x42A80000,  /* 84.0f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_1[28] = {
+	aobjEvent32SetValRateBlock(0x077, 0),
+	    0x3E32B8C2,  /* 0.1745329201221466f */
+	    0xBB9FA3E0,  /* -0.004871830344200134f */
+	    0xBF060A92,  /* -0.5235987901687622f */
+	    0xBAE6FD1C,  /* -0.001762303989380598f */
+	    0xBD567750,  /* -0.05235987901687622f */
+	    0xBAACDA03,  /* -0.001318753114901483f */
+	    0xC0ED8C8C,  /* -7.423406600952148f */
+	    0xBDF02CAF,  /* -0.11727272719144821f */
+	    0xC0FF89D0,  /* -7.985572814941406f */
+	    0x3E14AD46,  /* 0.1451922357082367f */
+	    0x4095D4B3,  /* 4.682214260101318f */
+	    0xBDEFAC9A,  /* -0.11702843010425568f */
+	aobjEvent32SetValRate(0x002, 90),
+	    0xBF32B8C2,  /* -0.6981316804885864f */
+	    0xBAC9722F,  /* -0.0015369112370535731f */
+	aobjEvent32SetValRateBlock(0x075, 45),
+	    0x00000000,  /* 0.0f */
+	    0xBB302E14,  /* -0.002688293345272541f */
+	    0xBDB2B8C2,  /* -0.0872664600610733f */
+	    0x3ACB587A,  /* 0.00155140389688313f */
+	    0xC0CE6667,  /* -6.450000286102295f */
+	    0xB8C1F7D3,  /* -9.249118011211976e-05f */
+	    0x00000000,  /* 0.0f */
+	    0x3D147424,  /* 0.03624357283115387f */
+	    0x40199999,  /* 2.3999998569488525f */
+	    0xBDCF9074,  /* -0.10134974122047424f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EF15555,  /* 0.4713541567325592f */
+	    0xB95CFE5C,  /* -0.00021075591212138534f */
+	    0x3E162301,  /* 0.14661790430545807f */
+	    0xBA088090,  /* -0.000520714558660984f */
+	    0xBF806731,  /* -1.003149151802063f */
+	    0x39A72AEB,  /* 0.00031884698546491563f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EE1000D,  /* 0.43945351243019104f */
+	    0xBA2D1C49,  /* -0.0006603641086257994f */
+	    0x3DF501C9,  /* 0.1196323111653328f */
+	    0x3A28B9F7,  /* 0.0006436402327381074f */
+	    0xBF83971D,  /* -1.028049111366272f */
+	    0xBA902C44,  /* -0.0010999520309269428f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EE0AAF3,  /* 0.4388042390346527f */
+	    0xBA2A345B,  /* -0.0006492786924354732f */
+	    0x3DF67553,  /* 0.12034096568822861f */
+	    0x3A39C54B,  /* 0.0007086588884703815f */
+	    0xBF83BBAE,  /* -1.0291650295257568f */
+	    0xBA92446F,  /* -0.001115931081585586f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFC7B97F,  /* -1.560348391532898f */
+	    0x3A4CD4F3,  /* 0.0007813714328221977f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFC79941,  /* -1.5593644380569458f */
+	    0xBB77D635,  /* -0.0037816886324435472f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFC81A1B,  /* -1.5632966756820679f */
+	    0xBB80DA72,  /* -0.003932290710508823f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_4[16] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x00000000,  /* 0.0f */
+	    0xBB449BA3,  /* -0.002999999327585101f */
+	    0x00000000,  /* 0.0f */
+	    0xBB53244E,  /* -0.003221768420189619f */
+	    0x00000000,  /* 0.0f */
+	    0x3A5282C9,  /* 0.0008030352764762938f */
+	aobjEvent32SetValRate(0x007, 90),
+	    0xBE999997,  /* -0.2999999225139618f */
+	    0xBB03AEBA,  /* -0.0020093158818781376f */
+	    0xBEA4F45C,  /* -0.32217681407928467f */
+	    0xBB864752,  /* -0.004097857512533665f */
+	    0x3DA4762C,  /* 0.08030351996421814f */
+	    0x3A8CE0A7,  /* 0.0010748103959485888f */
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC09E0839,  /* -4.938503742218018f */
+	    0x3AE6622B,  /* 0.0017576863756403327f */
+	    0xC02CF7BC,  /* -2.702620506286621f */
+	    0xBB2A69F9,  /* -0.002600310603156686f */
+	    0xC0916D4C,  /* -4.544591903686523f */
+	    0x391C61AA,  /* 0.00014913702034391463f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC09A9565,  /* -4.8307366371154785f */
+	    0x3B36FAF6,  /* 0.0027920580469071865f */
+	    0xC03052E9,  /* -2.7550604343414307f */
+	    0xB9F8770F,  /* -0.0004739095165859908f */
+	    0xC0960DBA,  /* -4.689175605773926f */
+	    0xBBAC2F7A,  /* -0.005254683084785938f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC09A7E80,  /* -4.82794189453125f */
+	    0x3B3727A4,  /* 0.0027947211638092995f */
+	    0xC0305A51,  /* -2.7555124759674072f */
+	    0xB9ED15E5,  /* -0.0004522047529462725f */
+	    0xC09638E4,  /* -4.69444465637207f */
+	    0xBBACA5E1,  /* -0.005268797744065523f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBF9C9E71,  /* -1.2235852479934692f */
+	    0xBC3B01F6,  /* -0.011414041742682457f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFC17793,  /* -1.511461615562439f */
+	    0xBB9EC26F,  /* -0.004844955634325743f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFC21765,  /* -1.5163389444351196f */
+	    0xBB9FD1DE,  /* -0.004877313040196896f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_7[16] = {
+	aobjEvent32SetValRate(0x003, 0),
+	    0x3FD074D2,  /* 1.6285650730133057f */
+	    0xB5C1A04B,  /* -1.4426271945922053e-06f */
+	    0x3F2D84A3,  /* 0.6778051257133484f */
+	    0xB73D0267,  /* -1.1265837201790418e-05f */
+	aobjEvent32SetValBlock(0x004, 0),
+	    0x4013BB94,  /* 2.308323860168457f */
+	aobjEvent32SetVal(0x004, 90),
+	    0x40127A8C,  /* 2.288729667663574f */
+	aobjEvent32SetValRate(0x003, 90),
+	    0x3FD76CE7,  /* 1.6830109357833862f */
+	    0xB5172F72,  /* -5.632092552332324e-07f */
+	    0x3F1B77CD,  /* 0.6072967648506165f */
+	    0x38999D65,  /* 7.324925536522642e-05f */
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 10),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBC7E0E,  /* 0.3681492209434509f */
+	    0xB984D646,  /* -0.00025336648104712367f */
+	    0x3E589F91,  /* 0.21154619753360748f */
+	    0xB82CB7C1,  /* -4.117912976653315e-05f */
+	    0xBF913F88,  /* -1.134751319885254f */
+	    0x39423861,  /* 0.00018522284517530352f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBC7D4C,  /* 0.3681434392929077f */
+	    0x373D9CD1,  /* 1.1301789527351502e-05f */
+	    0x3E589F50,  /* 0.21154522895812988f */
+	    0x35F7F9F4,  /* 1.8475680008123163e-06f */
+	    0xBF913F64,  /* -1.13474702835083f */
+	    0xB709646F,  /* -8.1892203525058e-06f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBC7E0C,  /* 0.36814916133880615f */
+	    0x36C02037,  /* 5.725796199840261e-06f */
+	    0x3E589F97,  /* 0.21154628694057465f */
+	    0x358EFA35,  /* 1.0652644277797663e-06f */
+	    0xBF913F8A,  /* -1.134751558303833f */
+	    0xB697E9D9,  /* -4.52737413070281e-06f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F9DA75B,  /* 1.2316697835922241f */
+	    0x3B07CB9C,  /* 0.0020720725879073143f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F9DA8E7,  /* 1.2317169904708862f */
+	    0xB8C13E2C,  /* -9.214537567459047e-05f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F9DA75D,  /* 1.2316700220108032f */
+	    0xB8449809,  /* -4.6871635277057067e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05B23BA,  /* -3.424055576324463f */
+	    0x399AFC39,  /* 0.00029561089468188584f */
+	    0x404E8513,  /* 3.226872205734253f */
+	    0xB8702845,  /* -5.725796290789731e-05f */
+	    0xC047D889,  /* -3.122591257095337f */
+	    0xBB148B83,  /* -0.002266616327688098f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05B239E,  /* -3.424048900604248f */
+	    0xB75D2B0A,  /* -1.3182647307985462e-05f */
+	    0x404E850E,  /* 3.2268710136413574f */
+	    0x3632B8C2,  /* 2.663161012605997e-06f */
+	    0xC047D961,  /* -3.122642755508423f */
+	    0x38D364F0,  /* 0.00010080065112560987f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05B23BA,  /* -3.424055576324463f */
+	    0xB6DF66F3,  /* -6.6579027588886674e-06f */
+	    0x404E8514,  /* 3.226872444152832f */
+	    0x35B2B8C2,  /* 1.3315805063029984e-06f */
+	    0xC047D888,  /* -3.122591018676758f */
+	    0x3858B339,  /* 5.1665327191585675e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F219849,  /* 0.6312299370765686f */
+	    0x36A5514E,  /* 4.9268483053310774e-06f */
+	    0x3E7E95FE,  /* 0.24861904978752136f */
+	    0xBAC60045,  /* -0.001510628149844706f */
+	    0x3E99C26B,  /* 0.300311416387558f */
+	    0x3B226C2B,  /* 0.0024783711414784193f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F219849,  /* 0.6312299370765686f */
+	    0xB4567750,  /* -1.9973708731413353e-07f */
+	    0x3E7E8D07,  /* 0.24858485162258148f */
+	    0x388C88AF,  /* 6.701179518131539e-05f */
+	    0x3E99C9C6,  /* 0.300367534160614f */
+	    0xB8E6A9A7,  /* -0.00010998854850186035f */
+	aobjEvent32SetValRate(0x006, 1),
+	    0x3E7E95F4,  /* 0.24861890077590942f */
+	    0x380ED676,  /* 3.4055170544888824e-05f */
+	    0x3E99C26F,  /* 0.30031153559684753f */
+	    0xB86AD9FC,  /* -5.599296127911657e-05f */
+	aobjEvent32SetVal0RateBlock(0x001, 1),
+	    0x3F219849,  /* 0.6312299370765686f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F61B9F7,  /* 0.881743848323822f */
+	    0xBB6755AD,  /* -0.0035298869479447603f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F61B4BC,  /* 0.8816640377044678f */
+	    0x392406AB,  /* 0.00015642742800991982f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F61B9F1,  /* 0.8817434906959534f */
+	    0x38A69300,  /* 7.94287770986557e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EF58A03,  /* 0.47956857085227966f */
+	    0x39CB1F15,  /* 0.00038742335163988173f */
+	    0x3EDF04A2,  /* 0.4355822205543518f */
+	    0x3A07CB9C,  /* 0.0005180181469768286f */
+	    0xBF26B5EB,  /* -0.6512133479118347f */
+	    0x3A558A81,  /* 0.0008145943866111338f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EF58B2E,  /* 0.4795774817466736f */
+	    0xB7908365,  /* -1.7227323041879572e-05f */
+	    0x3EDF0636,  /* 0.43559426069259644f */
+	    0xB7C1F0E4,  /* -2.3119566321838647e-05f */
+	    0xBF26B4B3,  /* -0.6511947512626648f */
+	    0xB8173720,  /* -3.6052544601261616e-05f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EF58A01,  /* 0.4795685112476349f */
+	    0xB716CBE4,  /* -8.988168701762334e-06f */
+	    0x3EDF04A5,  /* 0.43558230996131897f */
+	    0xB74880E0,  /* -1.1950935004279017e-05f */
+	    0xBF26B5EA,  /* -0.6512132883071899f */
+	    0xB79B43B5,  /* -1.8508968423702754e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script1_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+		    0x43960000,  /* 300.0f */
+		    0x43430000,  /* 195.0f */
+		aobjEvent32SetValAfter(0x010, 0),
+		    0x00000000,  /* 0.0f */
+		aobjEvent32SetValBlock(0x060, 45),
+		    0x43C30000,  /* 390.0f */
+		    0x431D8000,  /* 157.5f */
+		aobjEvent32End(),
+};
+PAD(4);
+
+/* AObjEvent32 *shield_anim_joint_1[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_1[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_2,
+	(AObjEvent32 *)dCaptainShieldPose_script2_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_5,
+	(AObjEvent32 *)dCaptainShieldPose_script2_6,
+	(AObjEvent32 *)dCaptainShieldPose_script2_7,
+	(AObjEvent32 *)dCaptainShieldPose_script2_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_9,
+	(AObjEvent32 *)dCaptainShieldPose_script2_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_12,
+	(AObjEvent32 *)dCaptainShieldPose_script2_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script2_14,
+	(AObjEvent32 *)dCaptainShieldPose_script2_15,
+};
+
+u32 dCaptainShieldPose_script2_0[11] = {
+	aobjEvent32SetVal0Rate(0x060, 0),
+	    0x43B8361B,  /* 368.4226989746094f */
+	    0x42A80000,  /* 84.0f */
+	aobjEvent32SetValAfterBlock(0x010, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	aobjEvent32SetValRateBlock(0x060, 45),
+	    0x43B8361B,  /* 368.4226989746094f */
+	    0x37700000,  /* 1.430511474609375e-05f */
+	    0x42A80000,  /* 84.0f */
+	    0xBD88888B,  /* -0.06666668504476547f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_1[32] = {
+	aobjEvent32SetValRateBlock(0x002, 0),
+	    0xBF060A92,  /* -0.5235987901687622f */
+	    0xBAE6FD1C,  /* -0.001762303989380598f */
+	aobjEvent32SetValRate(0x002, 90),
+	    0xBF32B8C2,  /* -0.6981316804885864f */
+	    0xBAC9722F,  /* -0.0015369112370535731f */
+	aobjEvent32Cmd12(0x002, 45),
+	aobjEvent32SetValRateBlock(0x075, 0),
+	    0x00000000,  /* 0.0f */
+	    0xBB302E14,  /* -0.002688293345272541f */
+	    0xBDB2B8C2,  /* -0.0872664600610733f */
+	    0x3ACB587A,  /* 0.00155140389688313f */
+	    0xC0CE6667,  /* -6.450000286102295f */
+	    0xB8C1F7D3,  /* -9.249118011211976e-05f */
+	    0x00000000,  /* 0.0f */
+	    0x3D147424,  /* 0.03624357283115387f */
+	    0x40199999,  /* 2.3999998569488525f */
+	    0xBDCF9074,  /* -0.10134974122047424f */
+	aobjEvent32SetValRate(0x051, 90),
+	    0xBE32B8C2,  /* -0.1745329201221466f */
+	    0xBB0AC5F2,  /* -0.002117511350661516f */
+	    0xC1100000,  /* -9.0f */
+	    0xBD540E8B,  /* -0.051771681755781174f */
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32SetValRate(0x020, 135),
+	    0x3FC00000,  /* 1.5f */
+	    0xBB185607,  /* -0.002324463566765189f */
+	aobjEvent32SetValRateBlock(0x004, 45),
+	    0x3DB2B8C2,  /* 0.0872664600610733f */
+	    0x3BA967CA,  /* 0.005169843323528767f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EE0AAF3,  /* 0.4388042390346527f */
+	    0xBA1AFE74,  /* -0.0005912550259381533f */
+	    0x3DF67559,  /* 0.12034101039171219f */
+	    0x3A53A1D0,  /* 0.0008073123171925545f */
+	    0xBF83BBAF,  /* -1.0291651487350464f */
+	    0xBA8C04E0,  /* -0.00106826052069664f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EE451C6,  /* 0.445936381816864f */
+	    0xBA79A4A6,  /* -0.0009523130720481277f */
+	    0x3E803EDA,  /* 0.250479519367218f */
+	    0x3B953AE2,  /* 0.004554138518869877f */
+	    0xBF8FDE18,  /* -1.1239652633666992f */
+	    0xBBB9170A,  /* -0.005648498423397541f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EE3C9E1,  /* 0.4448995888233185f */
+	    0xBA87E42E,  /* -0.0010367685463279486f */
+	    0x3E829089,  /* 0.2550089657306671f */
+	    0x3B946BAE,  /* 0.004529437981545925f */
+	    0xBF909A66,  /* -1.1297118663787842f */
+	    0xBBBC4DB7,  /* -0.0057465690188109875f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFC81A1A,  /* -1.5632965564727783f */
+	    0xBB8ECEA5,  /* -0.004358130041509867f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFF03E41,  /* -1.8768998384475708f */
+	    0xBB27C510,  /* -0.0025599636137485504f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFF08A7A,  /* -1.8792259693145752f */
+	    0xBB18721F,  /* -0.002326138084754348f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_4[17] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x00000000,  /* 0.0f */
+	    0xBB449BA3,  /* -0.002999999327585101f */
+	    0x00000000,  /* 0.0f */
+	    0xBB53244E,  /* -0.003221768420189619f */
+	    0x00000000,  /* 0.0f */
+	    0x3A5282C9,  /* 0.0008030352764762938f */
+	aobjEvent32SetValRate(0x007, 90),
+	    0xBE999997,  /* -0.2999999225139618f */
+	    0xBB03AEBA,  /* -0.0020093158818781376f */
+	    0xBEA4F45C,  /* -0.32217681407928467f */
+	    0xBB864752,  /* -0.004097857512533665f */
+	    0x3DA4762C,  /* 0.08030351996421814f */
+	    0x3A8CE0A7,  /* 0.0010748103959485888f */
+	aobjEvent32Cmd12(0x007, 45),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC09A7E80,  /* -4.82794189453125f */
+	    0x3B37C87E,  /* 0.0028043086640536785f */
+	    0xC0305A51,  /* -2.7555124759674072f */
+	    0xB9D79544,  /* -0.0004111920716241002f */
+	    0xC09638E4,  /* -4.69444465637207f */
+	    0xBBAD5D12,  /* -0.005290635861456394f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC095FC90,  /* -4.687080383300781f */
+	    0x3B6D15E5,  /* 0.00361763802357018f */
+	    0xC02D7DFC,  /* -2.7108144760131836f */
+	    0x3B0278DB,  /* 0.001990846125409007f */
+	    0xC09E071E,  /* -4.938368797302246f */
+	    0xBBA7BE5C,  /* -0.005119128152728081f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC095DEE8,  /* -4.683460235595703f */
+	    0x3B6D4293,  /* 0.003620301140472293f */
+	    0xC02D5D4A,  /* -2.7088189125061035f */
+	    0x3B02C70C,  /* 0.0019955066964030266f */
+	    0xC09E30C0,  /* -4.943450927734375f */
+	    0xBBA68599,  /* -0.005081844050437212f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFC21765,  /* -1.5163389444351196f */
+	    0xBBAA3E69,  /* -0.005195428151637316f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFD4F4A9,  /* -1.663716435432434f */
+	    0xB8B70CD5,  /* -8.728510147193447e-05f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFD4F43C,  /* -1.663703441619873f */
+	    0x3758B339,  /* 1.2916331797896419e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_7[18] = {
+	aobjEvent32SetValBlock(0x004, 0),
+	    0x4013BB94,  /* 2.308323860168457f */
+	aobjEvent32SetValRateBlock(0x003, 0),
+	    0x3FD074D2,  /* 1.6285650730133057f */
+	    0xB5C1A04B,  /* -1.4426271945922053e-06f */
+	    0x3F2D84A3,  /* 0.6778051257133484f */
+	    0xB73D0267,  /* -1.1265837201790418e-05f */
+	aobjEvent32SetVal(0x004, 90),
+	    0x40127A8C,  /* 2.288729667663574f */
+	aobjEvent32Cmd12(0x004, 45),
+	aobjEvent32SetValRate(0x003, 90),
+	    0x3FD76CE7,  /* 1.6830109357833862f */
+	    0xB5172F72,  /* -5.632092552332324e-07f */
+	    0x3F1B77CD,  /* 0.6072967648506165f */
+	    0x38999D65,  /* 7.324925536522642e-05f */
+	aobjEvent32Cmd12(0x003, 45),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 55),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBC7E0C,  /* 0.36814916133880615f */
+	    0xB57A35DD,  /* -9.321063885181502e-07f */
+	    0x3E589F97,  /* 0.21154628694057465f */
+	    0xB4860A92,  /* -2.496713591426669e-07f */
+	    0xBF913F8A,  /* -1.134751558303833f */
+	    0x35567750,  /* 7.989483492565341e-07f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBC78E4,  /* 0.3681098222732544f */
+	    0x381D7F9F,  /* 3.7550573324551806e-05f */
+	    0x3E589DEB,  /* 0.21153990924358368f */
+	    0x36C8C85E,  /* 5.983790288155433e-06f */
+	    0xBF913E9A,  /* -1.1347229480743408f */
+	    0xB7E231D6,  /* -2.6964506105287e-05f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBC7E0C,  /* 0.36814916133880615f */
+	    0x382509D0,  /* 3.934820415452123e-05f */
+	    0x3E589F97,  /* 0.21154628694057465f */
+	    0x36D5E855,  /* 6.374941676767776e-06f */
+	    0xBF913F8A,  /* -1.134751558303833f */
+	    0xB7EF0A51,  /* -2.8495824153651483e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F9DA75C,  /* 1.2316699028015137f */
+	    0x36F1463A,  /* 7.190535143308807e-06f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F9DB1E0,  /* 1.2319908142089844f */
+	    0xB9A0E26C,  /* -0.0003068627556785941f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F9DA75C,  /* 1.2316699028015137f */
+	    0xB9A83FEF,  /* -0.00032091091270558536f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05B23BA,  /* -3.424055576324463f */
+	    0x358EFA35,  /* 1.0652644277797663e-06f */
+	    0x404E8514,  /* 3.226872444152832f */
+	    0xB50EFA35,  /* -5.326322138898831e-07f */
+	    0xC047D887,  /* -3.1225907802581787f */
+	    0xB70EFA35,  /* -8.52211542223813e-06f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05B22FA,  /* -3.4240097999572754f */
+	    0xB8373094,  /* -4.367584188003093e-05f */
+	    0x404E84EE,  /* 3.226863384246826f */
+	    0x370EFA35,  /* 8.52211542223813e-06f */
+	    0xC047DE48,  /* -3.1229419708251953f */
+	    0x39AFDC00,  /* 0.00033542513847351074f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05B23BA,  /* -3.424055576324463f */
+	    0xB8402037,  /* -4.5806369598722085e-05f */
+	    0x404E8514,  /* 3.226872444152832f */
+	    0x3717E9D9,  /* 9.05474826140562e-06f */
+	    0xC047D887,  /* -3.1225907802581787f */
+	    0x39B82ACA,  /* 0.00035127095179632306f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F219848,  /* 0.6312298774719238f */
+	    0x338EFA35,  /* 6.657902673623539e-08f */
+	    0x3E7E95FA,  /* 0.2486189901828766f */
+	    0xB6B465B1,  /* -5.3762564675707836e-06f */
+	    0x3E99C26C,  /* 0.30031144618988037f */
+	    0x37151EF5,  /* 8.888299817044754e-06f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F219857,  /* 0.6312307715415955f */
+	    0xB517E9D9,  /* -5.659217663378513e-07f */
+	    0x3E7E58C6,  /* 0.24838551878929138f */
+	    0x3969B0DC,  /* 0.0002228649682365358f */
+	    0x3E99F4A7,  /* 0.30069467425346375f */
+	    0xB9BFBBAF,  /* -0.0003657019406091422f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F219849,  /* 0.6312299370765686f */
+	    0xB5567750,  /* -7.989483492565341e-07f */
+	    0x3E7E95F4,  /* 0.24861890077590942f */
+	    0x3974BAE5,  /* 0.0002333927695872262f */
+	    0x3E99C26F,  /* 0.30031153559684753f */
+	    0xB9C8E32D,  /* -0.00038316231803037226f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F61B9F5,  /* 0.8817437291145325f */
+	    0xB7543B66,  /* -1.2650014468817972e-05f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F61963D,  /* 0.8811987042427063f */
+	    0x3A08585A,  /* 0.0005201153689995408f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F61B9F1,  /* 0.8817434906959534f */
+	    0x3A0ECD86,  /* 0.0005447495495900512f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EF58A03,  /* 0.47956857085227966f */
+	    0x35CD87AD,  /* 1.5313177073039697e-06f */
+	    0x3EDF04A5,  /* 0.43558230996131897f */
+	    0x35F1463A,  /* 1.7976337858272018e-06f */
+	    0xBF26B5EB,  /* -0.6512133479118347f */
+	    0x36449809,  /* 2.9294772048160667e-06f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EF591EB,  /* 0.47962889075279236f */
+	    0xB8705DE3,  /* -5.730789780500345e-05f */
+	    0x3EDF0F25,  /* 0.4356624186038971f */
+	    0xB8A0D08C,  /* -7.668239413760602e-05f */
+	    0xBF26ADB1,  /* -0.6510878205299377f */
+	    0xB8FAB2F7,  /* -0.00011954263754887506f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EF58A01,  /* 0.4795685112476349f */
+	    0xB87D483D,  /* -6.038717765477486e-05f */
+	    0x3EDF04A5,  /* 0.43558230996131897f */
+	    0xB8A80A51,  /* -8.012785838218406e-05f */
+	    0xBF26B5EA,  /* -0.6512132883071899f */
+	    0xB903872C,  /* -0.00012543488992378116f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script2_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+	    0x43C30000,  /* 390.0f */
+	    0x431D8000,  /* 157.5f */
+	aobjEvent32SetValAfter(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x060, 45),
+	    0x43E88000,  /* 465.0f */
+	    0x42F00000,  /* 120.0f */
+	aobjEvent32End(),
+};
+
+/* AObjEvent32 *shield_anim_joint_2[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_2[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_2,
+	(AObjEvent32 *)dCaptainShieldPose_script3_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_5,
+	(AObjEvent32 *)dCaptainShieldPose_script3_6,
+	(AObjEvent32 *)dCaptainShieldPose_script3_7,
+	(AObjEvent32 *)dCaptainShieldPose_script3_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_9,
+	(AObjEvent32 *)dCaptainShieldPose_script3_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_12,
+	(AObjEvent32 *)dCaptainShieldPose_script3_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script3_14,
+	(AObjEvent32 *)dCaptainShieldPose_script3_15,
+};
+
+u32 dCaptainShieldPose_script3_0[13] = {
+	aobjEvent32SetValRate(0x060, 0),
+	    0x43B8361B,  /* 368.4226989746094f */
+	    0x37700000,  /* 1.430511474609375e-05f */
+	    0x42A80000,  /* 84.0f */
+	    0xBD88888B,  /* -0.06666668504476547f */
+	aobjEvent32SetValAfterBlock(0x010, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	aobjEvent32SetValRate(0x040, 45),
+	    0x429C0000,  /* 78.0f */
+	    0xBE088885,  /* -0.13333328068256378f */
+	aobjEvent32SetVal0RateBlock(0x020, 45),
+	    0x43B83646,  /* 368.42401123046875f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_1[32] = {
+	aobjEvent32SetValRateBlock(0x071, 0),
+	    0x00000000,  /* 0.0f */
+	    0xBB302E14,  /* -0.002688293345272541f */
+	    0xC0CE6667,  /* -6.450000286102295f */
+	    0xB8C1F7D3,  /* -9.249118011211976e-05f */
+	    0x00000000,  /* 0.0f */
+	    0x3D147424,  /* 0.03624357283115387f */
+	    0x40199999,  /* 2.3999998569488525f */
+	    0xBDCF9074,  /* -0.10134974122047424f */
+	aobjEvent32SetValRate(0x051, 90),
+	    0xBE32B8C2,  /* -0.1745329201221466f */
+	    0xBB0AC5F2,  /* -0.002117511350661516f */
+	    0xC1100000,  /* -9.0f */
+	    0xBD540E8B,  /* -0.051771681755781174f */
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32Cmd12(0x051, 45),
+	aobjEvent32SetValRate(0x020, 135),
+	    0x3FC00000,  /* 1.5f */
+	    0xBB185607,  /* -0.002324463566765189f */
+	aobjEvent32Cmd12(0x020, 45),
+	aobjEvent32SetValRateBlock(0x006, 0),
+	    0xBF32B8C2,  /* -0.6981316804885864f */
+	    0xBAC9722F,  /* -0.0015369112370535731f */
+	    0x3DB2B8C2,  /* 0.0872664600610733f */
+	    0x3BA967CA,  /* 0.005169843323528767f */
+	aobjEvent32SetValRateBlock(0x006, 45),
+	    0xBF490FDB,  /* -0.7853981852531433f */
+	    0xBADD2092,  /* -0.001687066862359643f */
+	    0x3E860A92,  /* 0.2617993950843811f */
+	    0x3B3EA2F1,  /* 0.002908881986513734f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EE3C9E3,  /* 0.44489964842796326f */
+	    0xBA8E23BE,  /* -0.0010844392236322165f */
+	    0x3E829087,  /* 0.25500890612602234f */
+	    0x3B95E72F,  /* 0.004574678372591734f */
+	    0xBF909A65,  /* -1.1297117471694946f */
+	    0xBBBF560A,  /* -0.00583911407738924f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EE82278,  /* 0.453387975692749f */
+	    0x3AF4E4C9,  /* 0.0018683905946090817f */
+	    0x3EF19E63,  /* 0.4719115197658539f */
+	    0x3B37CB49,  /* 0.002804475137963891f */
+	    0xBFA382AF,  /* -1.2774256467819214f */
+	    0x3A93DB06,  /* 0.0011280484031885862f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EE91FE2,  /* 0.45532137155532837f */
+	    0x3AFD6ADE,  /* 0.0019334217067807913f */
+	    0x3EF301D2,  /* 0.47462326288223267f */
+	    0x3B31B7D9,  /* 0.0027117638383060694f */
+	    0xBFA358C9,  /* -1.2761470079421997f */
+	    0x3AA79A9E,  /* 0.0012787168379873037f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFF08A7C,  /* -1.8792262077331543f */
+	    0xBAF64415,  /* -0.0018788600573316216f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFDFF393,  /* -1.749620795249939f */
+	    0x3B3FF14D,  /* 0.0029288113582879305f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFDF97DF,  /* -1.7468222379684448f */
+	    0x3B37686E,  /* 0.0027985828928649426f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_4[15] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xBE999997,  /* -0.2999999225139618f */
+	    0xBB03AEBA,  /* -0.0020093158818781376f */
+	    0xBEA4F45C,  /* -0.32217681407928467f */
+	    0xBB864752,  /* -0.004097857512533665f */
+	    0x3DA4762C,  /* 0.08030351996421814f */
+	    0x3A8CE0A7,  /* 0.0010748103959485888f */
+	aobjEvent32SetValRateBlock(0x007, 45),
+	    0xBE8AE248,  /* -0.2712576389312744f */
+	    0x3B016301,  /* 0.0019742848817259073f */
+	    0xBF0D9F38,  /* -0.5532107353210449f */
+	    0xBB935EC1,  /* -0.004497379530221224f */
+	    0x3E1494F1,  /* 0.14509941637516022f */
+	    0xB9AF1C4C,  /* -0.0003339968388900161f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC095DEE8,  /* -4.683460235595703f */
+	    0x3B71463A,  /* 0.0036815539933741093f */
+	    0xC02D5D4A,  /* -2.7088189125061035f */
+	    0x3B00988A,  /* 0.0019622170366346836f */
+	    0xC09E30C0,  /* -4.943450927734375f */
+	    0xBBA81C30,  /* -0.005130313336849213f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC09168CD,  /* -4.544043064117432f */
+	    0x392E886E,  /* 0.00016644757124595344f */
+	    0xC02BA94E,  /* -2.68220853805542f */
+	    0xBA49F831,  /* -0.000770452490542084f */
+	    0xC0A418E9,  /* -5.128040790557861f */
+	    0x3AA7B0F4,  /* 0.0012793825007975101f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC0916864,  /* -4.54399299621582f */
+	    0x3851FF7E,  /* 5.00674286740832e-05f */
+	    0xC02BB689,  /* -2.683016061782837f */
+	    0xBA53AC6D,  /* -0.0008074704674072564f */
+	    0xC0A40C8E,  /* -5.126532554626465f */
+	    0x3AC5B5FE,  /* 0.001508414512500167f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFD4F43C,  /* -1.663703441619873f */
+	    0x39646DBF,  /* 0.00021784658019896597f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFCE5271,  /* -1.6118909120559692f */
+	    0xBB37A4BF,  /* -0.002802178030833602f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFCEB57B,  /* -1.6149133443832397f */
+	    0xBB4613D1,  /* -0.003022421384230256f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_7[15] = {
+	aobjEvent32SetValRate(0x003, 0),
+	    0x3FD76CE7,  /* 1.6830109357833862f */
+	    0xB5172F72,  /* -5.632092552332324e-07f */
+	    0x3F1B77CD,  /* 0.6072967648506165f */
+	    0x38999D65,  /* 7.324925536522642e-05f */
+	aobjEvent32SetVal0RateBlock(0x004, 0),
+	    0x40127A8C,  /* 2.288729667663574f */
+	aobjEvent32SetValRateBlock(0x007, 45),
+	    0x3FD07254,  /* 1.6284890174865723f */
+	    0xBBEE82DC,  /* -0.007278783246874809f */
+	    0x3F300CB3,  /* 0.6876937747001648f */
+	    0xB72AE5FF,  /* -1.0186339750362094e-05f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	    0xBA0452BF,  /* -0.00050477305194363f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 100),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBC7E0E,  /* 0.3681492209434509f */
+	    0x3833B2F9,  /* 4.284360693418421e-05f */
+	    0x3E589F91,  /* 0.21154619753360748f */
+	    0x36DFF5ED,  /* 6.674547421425814e-06f */
+	    0xBF913F88,  /* -1.134751319885254f */
+	    0xB7FFCBA3,  /* -3.0493194572045468e-05f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBE6DC4,  /* 0.37193119525909424f */
+	    0x38C070A4,  /* 9.17625438887626e-05f */
+	    0x3E58FB6A,  /* 0.21189656853675842f */
+	    0x3646D3F2,  /* 2.962766757264035e-06f */
+	    0xBF9180F4,  /* -1.1367478370666504f */
+	    0xB808467B,  /* -3.2490566809428856e-05f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBE79B0,  /* 0.3720221519470215f */
+	    0x38BECCA5,  /* 9.09802402020432e-05f */
+	    0x3E58FC28,  /* 0.21189939975738525f */
+	    0x363DE44F,  /* 2.8296087748458376e-06f */
+	    0xBF9181FF,  /* -1.1367796659469604f */
+	    0xB8057B97,  /* -3.182477303198539e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F9DA75B,  /* 1.2316697835922241f */
+	    0xB9B8070C,  /* -0.00035100465174764395f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F99C402,  /* 1.201294183731079f */
+	    0xBA3DE44F,  /* -0.0007243798463605344f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F99AC7F,  /* 1.200576663017273f */
+	    0xBA3C13A1,  /* -0.0007174555794335902f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05B23BA,  /* -3.424055576324463f */
+	    0xB850E18A,  /* -4.980111407348886e-05f */
+	    0x404E8513,  /* 3.226872205734253f */
+	    0x3725514E,  /* 9.853696610662155e-06f */
+	    0xC047D889,  /* -3.122591257095337f */
+	    0x39C90FDB,  /* 0.0003834952076431364f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05B6939,  /* -3.428297281265259f */
+	    0xB8D0528F,  /* -9.933590627042577e-05f */
+	    0x404E9299,  /* 3.2276976108551025f */
+	    0x37A1F770,  /* 1.930791768245399e-05f */
+	    0xC045C360,  /* -3.0900497436523438f */
+	    0x3A47988A,  /* 0.0007613977650180459f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05B6AD7,  /* -3.428395986557007f */
+	    0xB8CEA5A1,  /* -9.853696246864274e-05f */
+	    0x404E92E9,  /* 3.2277166843414307f */
+	    0x379E9D93,  /* 1.8908443962573074e-05f */
+	    0xC045B707,  /* -3.0892961025238037f */
+	    0x3A45923F,  /* 0.0007536745979450643f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F219848,  /* 0.6312298774719238f */
+	    0xB57A35DD,  /* -9.321063885181502e-07f */
+	    0x3E7E95FA,  /* 0.2486189901828766f */
+	    0x39858FB3,  /* 0.00025474801077507436f */
+	    0x3E99C26C,  /* 0.30031144618988037f */
+	    0xB9DB24BF,  /* -0.000417983130319044f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F219917,  /* 0.6312422156333923f */
+	    0x3608467B,  /* 2.0306604255893035e-06f */
+	    0x3E8A1A4F,  /* 0.26973196864128113f */
+	    0x39FCF11D,  /* 0.0004824482894036919f */
+	    0x3E8805ED,  /* 0.26567021012306213f */
+	    0xBA4F720B,  /* -0.0007913417066447437f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F219936,  /* 0.6312440633773804f */
+	    0x35FA35DD,  /* 1.8642127770363004e-06f */
+	    0x3E8A58DD,  /* 0.2702092230319977f */
+	    0x39FA3819,  /* 0.00047725511831231415f */
+	    0x3E879F4D,  /* 0.2648872435092926f */
+	    0xBA4D402F,  /* -0.0007829693495295942f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F61B9F5,  /* 0.8817437291145325f */
+	    0x3A1BDBA0,  /* 0.0005945507436990738f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F6E1CEC,  /* 0.930128812789917f */
+	    0x3A8E477D,  /* 0.0010855045402422547f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F6E6345,  /* 0.931202232837677f */
+	    0x3A8CB321,  /* 0.0010734536917880177f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EF58A03,  /* 0.47956857085227966f */
+	    0xB888F933,  /* -6.531402323162183e-05f */
+	    0x3EDF04A5,  /* 0.43558230996131897f */
+	    0xB8B7E34D,  /* -8.76845806487836e-05f */
+	    0xBF26B5EB,  /* -0.6512133479118347f */
+	    0xB90F5391,  /* -0.0001366867363685742f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EF2A0C0,  /* 0.47388267517089844f */
+	    0xB90E3A15,  /* -0.0001356381253572181f */
+	    0x3EDB2683,  /* 0.4280281960964203f */
+	    0xB93C13A1,  /* -0.00017936389485839754f */
+	    0xBF296E69,  /* -0.6618409752845764f */
+	    0xB96E21FB,  /* -0.00022710107441525906f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EF28F20,  /* 0.47374820709228516f */
+	    0xB90D05CA,  /* -0.0001344896445516497f */
+	    0x3EDB0F43,  /* 0.4278508126735687f */
+	    0xB93A0466,  /* -0.00017739980830810964f */
+	    0xBF297D1F,  /* -0.6620654463768005f */
+	    0xB96B5717,  /* -0.0002244378993054852f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script3_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+		    0x43E88000,  /* 465.0f */
+		    0x42F00000,  /* 120.0f */
+		aobjEvent32SetValAfter(0x010, 0),
+		    0x00000000,  /* 0.0f */
+		aobjEvent32SetValBlock(0x060, 45),
+		    0x43C30000,  /* 390.0f */
+		    0x42A50000,  /* 82.5f */
+		aobjEvent32End(),
+};
+PAD(12);
+
+/* AObjEvent32 *shield_anim_joint_3[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_3[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_2,
+	(AObjEvent32 *)dCaptainShieldPose_script4_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_5,
+	(AObjEvent32 *)dCaptainShieldPose_script4_6,
+	(AObjEvent32 *)dCaptainShieldPose_script4_7,
+	(AObjEvent32 *)dCaptainShieldPose_script4_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_9,
+	(AObjEvent32 *)dCaptainShieldPose_script4_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_12,
+	(AObjEvent32 *)dCaptainShieldPose_script4_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script4_14,
+	(AObjEvent32 *)dCaptainShieldPose_script4_15,
+};
+
+u32 dCaptainShieldPose_script4_0[13] = {
+	aobjEvent32SetVal0Rate(0x020, 0),
+	    0x43B83646,  /* 368.42401123046875f */
+	aobjEvent32SetValRate(0x040, 0),
+	    0x429C0000,  /* 78.0f */
+	    0xBE088885,  /* -0.13333328068256378f */
+	aobjEvent32SetValAfterBlock(0x010, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	aobjEvent32SetValRate(0x020, 45),
+	    0x43B8361B,  /* 368.4226989746094f */
+	    0xBE40426B,  /* -0.187753364443779f */
+	aobjEvent32SetVal0RateBlock(0x040, 45),
+	    0x42900000,  /* 72.0f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_1[31] = {
+	aobjEvent32SetValRateBlock(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3D147424,  /* 0.03624357283115387f */
+	aobjEvent32SetValRate(0x020, 135),
+	    0x3FC00000,  /* 1.5f */
+	    0xBB185607,  /* -0.002324463566765189f */
+	aobjEvent32Cmd12(0x020, 90),
+	aobjEvent32SetValRateBlock(0x057, 0),
+	    0xBE32B8C2,  /* -0.1745329201221466f */
+	    0xBB0AC5F2,  /* -0.002117511350661516f */
+	    0xBF490FDB,  /* -0.7853981852531433f */
+	    0xBADD2092,  /* -0.001687066862359643f */
+	    0x3E860A92,  /* 0.2617993950843811f */
+	    0x3B3EA2F1,  /* 0.002908881986513734f */
+	    0xC1100000,  /* -9.0f */
+	    0xBD540E8B,  /* -0.051771681755781174f */
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32SetValRate(0x005, 45),
+	    0xBE860A92,  /* -0.2617993950843811f */
+	    0xBA3D4943,  /* -0.0007220694678835571f */
+	    0x3EB2B8C2,  /* 0.3490658402442932f */
+	    0x3A94FDDD,  /* 0.0011367161059752107f */
+	aobjEvent32SetValRate(0x010, 135),
+	    0xC1C00000,  /* -24.0f */
+	    0xBBE9FB5A,  /* -0.007140559144318104f */
+	aobjEvent32SetVal0Rate(0x040, 225),
+	    0x4095D4B3,  /* 4.682214260101318f */
+	aobjEvent32SetVal0RateBlock(0x002, 45),
+	    0xBF5F66F3,  /* -0.8726646304130554f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EE91FE8,  /* 0.4553215503692627f */
+	    0x3B0D1955,  /* 0.0021529991645365953f */
+	    0x3EF301CC,  /* 0.47462308406829834f */
+	    0x3B29363C,  /* 0.0025819679722189903f */
+	    0xBFA358C7,  /* -1.2761467695236206f */
+	    0x3ADA0B42,  /* 0.0016635435167700052f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F2EE912,  /* 0.6832438707351685f */
+	    0x3B917F8F,  /* 0.004440254997462034f */
+	    0x3EFFA08A,  /* 0.4992716908454895f */
+	    0xBA9D52F0,  /* -0.0012002866715192795f */
+	    0xBF82D75C,  /* -1.0221972465515137f */
+	    0x3BA30B9F,  /* 0.0049757505767047405f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F30058B,  /* 0.6875845789909363f */
+	    0x3B8E3C51,  /* 0.004340686369687319f */
+	    0x3EFF011C,  /* 0.4980553388595581f */
+	    0xBA9F6E74,  /* -0.0012163654901087284f */
+	    0xBF8237AE,  /* -1.0173242092132568f */
+	    0x3B9FAE20,  /* 0.00487305223941803f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFDF97E0,  /* -1.7468223571777344f */
+	    0x3B2995BD,  /* 0.002587660448625684f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFD542D5,  /* -1.6661020517349243f */
+	    0x3AAFE72C,  /* 0.001342033501714468f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFD51894,  /* -1.6648125648498535f */
+	    0x3AA90487,  /* 0.0012895026011392474f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_4[15] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xBE8AE248,  /* -0.2712576389312744f */
+	    0x3B016301,  /* 0.0019742848817259073f */
+	    0xBF0D9F38,  /* -0.5532107353210449f */
+	    0xBB935EC1,  /* -0.004497379530221224f */
+	    0x3E1494F1,  /* 0.14509941637516022f */
+	    0xB9AF1C4C,  /* -0.0003339968388900161f */
+	aobjEvent32SetValRateBlock(0x007, 45),
+	    0xBDFA7FEB,  /* -0.12231429666280746f */
+	    0x3B78118F,  /* 0.003785226261243224f */
+	    0xBF3A18CE,  /* -0.7269409894943237f */
+	    0xBAFA73C4,  /* -0.001910798717290163f */
+	    0x3D4DCC73,  /* 0.0502438060939312f */
+	    0xBAF0316E,  /* -0.001832527806982398f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC0916864,  /* -4.54399299621582f */
+	    0xB94EA5A1,  /* -0.00019707392493728548f */
+	    0xC02BB689,  /* -2.683016061782837f */
+	    0xBA6844B7,  /* -0.0008860336965881288f */
+	    0xC0A40C8E,  /* -5.126532554626465f */
+	    0x3B02F832,  /* 0.0019984361715614796f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC0968B55,  /* -4.704508304595947f */
+	    0xBB8D8BD4,  /* -0.004319647327065468f */
+	    0xC032CA12,  /* -2.793583393096924f */
+	    0xBB748E37,  /* -0.0037316211964935064f */
+	    0xC098A995,  /* -4.770700931549072f */
+	    0x3BFC816A,  /* 0.007705857045948505f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC096AE0D,  /* -4.708746433258057f */
+	    0xBB8AE037,  /* -0.004238154273480177f */
+	    0xC033071B,  /* -2.7973086833953857f */
+	    0xBB742773,  /* -0.0037254958879202604f */
+	    0xC0986C28,  /* -4.763202667236328f */
+	    0x3BF5B51C,  /* 0.007498396560549736f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFCEB579,  /* -1.6149131059646606f */
+	    0xBB66504C,  /* -0.003514307551085949f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFFA3F8A,  /* -1.955064058303833f */
+	    0xBBBDE5FC,  /* -0.0057952385395765305f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFFAF8E9,  /* -1.9607211351394653f */
+	    0xBBB95F15,  /* -0.005657086614519358f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_7[15] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3FD07254,  /* 1.6284890174865723f */
+	    0xBBEE82DC,  /* -0.007278783246874809f */
+	    0x3F300CB3,  /* 0.6876937747001648f */
+	    0xB72AE5FF,  /* -1.0186339750362094e-05f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	    0xBA0452BF,  /* -0.00050477305194363f */
+	aobjEvent32SetValRate(0x003, 45),
+	    0x3F8392E5,  /* 1.0279203653335571f */
+	    0x34CB587A,  /* 3.7876071701248293e-07f */
+	    0x3E88029A,  /* 0.2656448483467102f */
+	    0xB84E752C,  /* -4.92233521072194e-05f */
+	aobjEvent32SetVal0RateBlock(0x004, 45),
+	    0x3FE34493,  /* 1.775530219078064f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 145),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBE79B0,  /* 0.3720221519470215f */
+	    0x38C067B4,  /* 9.174589649774134e-05f */
+	    0x3E58FC26,  /* 0.21189936995506287f */
+	    0xB6D9D12D,  /* -6.491455224022502e-06f */
+	    0xBF9181FE,  /* -1.136779546737671f */
+	    0xB6DAEF21,  /* -6.524744549096795e-06f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EC0A193,  /* 0.37623271346092224f */
+	    0x379D3821,  /* 1.8741995518212207e-05f */
+	    0x3E587153,  /* 0.21136979758739471f */
+	    0x39CD4801,  /* 0.00039154294063337147f */
+	    0xBF9176C2,  /* -1.1364367008209229f */
+	    0xBA8CDD93,  /* -0.0010747186606749892f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EC0A38C,  /* 0.376247763633728f */
+	    0x377C71C5,  /* 1.5046859516587574e-05f */
+	    0x3E58DCE9,  /* 0.21178020536899567f */
+	    0x39D72C44,  /* 0.0004104097606614232f */
+	    0xBF919BA1,  /* -1.1375619173049927f */
+	    0xBA937AF6,  /* -0.0011251855175942183f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F99AC7F,  /* 1.200576663017273f */
+	    0xBA47E007,  /* -0.0007624630234204233f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F954476,  /* 1.166151762008667f */
+	    0x3AC37C50,  /* 0.0014914367347955704f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F9578C5,  /* 1.1677480936050415f */
+	    0x3AD13AE6,  /* 0.0015962987672537565f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05B6AD7,  /* -3.428395986557007f */
+	    0xB8C4090F,  /* -9.347695595351979e-05f */
+	    0x404E92EA,  /* 3.2277169227600098f */
+	    0x379C61AA,  /* 1.864212754298933e-05f */
+	    0xC045B708,  /* -3.089296340942383f */
+	    0x3A4A518E,  /* 0.0007717841072008014f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05BAECD,  /* -3.432543992996216f */
+	    0xB987DB3F,  /* -0.0002591255761217326f */
+	    0x404EA095,  /* 3.228551149368286f */
+	    0x37F5BE0C,  /* 2.929477341240272e-05f */
+	    0xC0438611,  /* -3.0550577640533447f */
+	    0xB9B5A764,  /* -0.00034647725988179445f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05BB32B,  /* -3.4328105449676514f */
+	    0xB98BC416,  /* -0.0002665824140422046f */
+	    0x404EA113,  /* 3.228581190109253f */
+	    0x37FA35DD,  /* 2.9827404432580806e-05f */
+	    0xC0438C95,  /* -3.055455446243286f */
+	    0xB9D0764E,  /* -0.00039760995423421264f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F219939,  /* 0.6312442421913147f */
+	    0x37543B66,  /* 1.2650014468817972e-05f */
+	    0x3E8A58E0,  /* 0.27020931243896484f */
+	    0x39F6EBA3,  /* 0.00047096339403651655f */
+	    0x3E879F4C,  /* 0.2648872137069702f */
+	    0xBA4BF7C9,  /* -0.000778075831476599f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F21C4D9,  /* 0.6319099068641663f */
+	    0xB9E67882,  /* -0.00043958803871646523f */
+	    0x3E94D41A,  /* 0.2906807065010071f */
+	    0x39FCFA0C,  /* 0.00048251484986394644f */
+	    0x3E6CAE57,  /* 0.23113380372524261f */
+	    0xBA1551C9,  /* -0.0005696085863746703f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F21A6AB,  /* 0.6314494013786316f */
+	    0xB9F172E7,  /* -0.0004605271096806973f */
+	    0x3E951361,  /* 0.29116347432136536f */
+	    0x39FD1B8F,  /* 0.00048276453162543476f */
+	    0x3E6C1B73,  /* 0.23057346045970917f */
+	    0xBA12E42B,  /* -0.0005603457684628665f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F6E6347,  /* 0.9312023520469666f */
+	    0x3A883D8B,  /* 0.0010394317796453834f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F79BC25,  /* 0.9755271077156067f */
+	    0x3AF03C60,  /* 0.001832854002714157f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F7A36B9,  /* 0.9773975014686584f */
+	    0x3AF5285D,  /* 0.0018704045796766877f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EF28F1E,  /* 0.4737481474876404f */
+	    0xB913D453,  /* -0.00014098109386395663f */
+	    0x3EDB0F3E,  /* 0.4278506636619568f */
+	    0xB941D615,  /* -0.0001848566607804969f */
+	    0xBF297D1E,  /* -0.6620653867721558f */
+	    0xB95376CF,  /* -0.00020166787726338953f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EEF4C99,  /* 0.4673812687397003f */
+	    0x394E2885,  /* 0.00019660785619635135f */
+	    0x3ED6CAF5,  /* 0.4195171892642975f */
+	    0x3955CD86,  /* 0.00020389826386235654f */
+	    0xBF2B9168,  /* -0.6701874732971191f */
+	    0xBA815C04,  /* -0.0009869341738522053f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EEF6873,  /* 0.4675937592983246f */
+	    0x395ECF0A,  /* 0.0002124869788531214f */
+	    0x3ED6E81A,  /* 0.4197395443916321f */
+	    0x39692D0E,  /* 0.00022237395751290023f */
+	    0xBF2BD480,  /* -0.6712112426757812f */
+	    0xBA86308C,  /* -0.0010237856768071651f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script4_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+	    0x43C30000,  /* 390.0f */
+	    0x42A50000,  /* 82.5f */
+	aobjEvent32SetValAfter(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x060, 45),
+	    0x43960000,  /* 300.0f */
+	    0x42340000,  /* 45.0f */
+	aobjEvent32End(),
+};
+
+/* AObjEvent32 *shield_anim_joint_4[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_4[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_2,
+	(AObjEvent32 *)dCaptainShieldPose_script5_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_5,
+	(AObjEvent32 *)dCaptainShieldPose_script5_6,
+	(AObjEvent32 *)dCaptainShieldPose_script5_7,
+	(AObjEvent32 *)dCaptainShieldPose_script5_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_9,
+	(AObjEvent32 *)dCaptainShieldPose_script5_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_12,
+	(AObjEvent32 *)dCaptainShieldPose_script5_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script5_14,
+	(AObjEvent32 *)dCaptainShieldPose_script5_15,
+};
+
+u32 dCaptainShieldPose_script5_0[13] = {
+	aobjEvent32SetVal0Rate(0x040, 0),
+	    0x42900000,  /* 72.0f */
+	aobjEvent32SetValRate(0x020, 0),
+	    0x43B8361B,  /* 368.4226989746094f */
+	    0xBE40426B,  /* -0.187753364443779f */
+	aobjEvent32SetValAfterBlock(0x010, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	aobjEvent32SetValRateBlock(0x060, 45),
+	    0x43AFC35A,  /* 351.52618408203125f */
+	    0xBED84680,  /* -0.4224128723144531f */
+	    0x429C0000,  /* 78.0f */
+	    0x3E088885,  /* 0.13333328068256378f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_1[30] = {
+	aobjEvent32SetValRateBlock(0x050, 0),
+	    0xC1100000,  /* -9.0f */
+	    0xBD540E8B,  /* -0.051771681755781174f */
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32SetValRate(0x010, 135),
+	    0xC1C00000,  /* -24.0f */
+	    0xBBE9FB5A,  /* -0.007140559144318104f */
+	aobjEvent32Cmd12(0x010, 45),
+	aobjEvent32SetVal0Rate(0x040, 225),
+	    0x4095D4B3,  /* 4.682214260101318f */
+	aobjEvent32Cmd12(0x040, 45),
+	aobjEvent32SetValRate(0x025, 0),
+	    0xBE860A92,  /* -0.2617993950843811f */
+	    0xBA3D4943,  /* -0.0007220694678835571f */
+	    0x3EB2B8C2,  /* 0.3490658402442932f */
+	    0x3A94FDDD,  /* 0.0011367161059752107f */
+	    0x3FC00000,  /* 1.5f */
+	    0xBB185607,  /* -0.002324463566765189f */
+	aobjEvent32SetValAfterBlock(0x002, 0),
+	    0xBF5F66F3,  /* -0.8726646304130554f */
+	aobjEvent32SetValRate(0x021, 90),
+	    0xBE32B8C2,  /* -0.1745329201221466f */
+	    0x3B003549,  /* 0.0019563010428100824f */
+	    0xC0400000,  /* -3.0f */
+	    0xBD57D977,  /* -0.05269762501120567f */
+	aobjEvent32SetValRateBlock(0x004, 45),
+	    0x3EB2B8C2,  /* 0.3490658402442932f */
+	    0xBA57B55C,  /* -0.0008228623773902655f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F30058B,  /* 0.6875845789909363f */
+	    0x3B8941CF,  /* 0.0041887531988322735f */
+	    0x3EFF011A,  /* 0.49805527925491333f */
+	    0xBAA8FDD3,  /* -0.0012893028324469924f */
+	    0xBF8237AD,  /* -1.0173240900039673f */
+	    0x3B9B989B,  /* 0.0047484165988862514f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F51AED7,  /* 0.8190740942955017f */
+	    0x3B2C3A16,  /* 0.002627973910421133f */
+	    0x3EBF6EF1,  /* 0.37389329075813293f */
+	    0xBB5A18F1,  /* -0.00332790263928473f */
+	    0xBF528437,  /* -0.8223299384117126f */
+	    0x3B89FAF3,  /* 0.004210823681205511f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F525BD9,  /* 0.8217139840126038f */
+	    0x3B2D017A,  /* 0.002639858517795801f */
+	    0x3EBDBCF8,  /* 0.37058234214782715f */
+	    0xBB58FCF1,  /* -0.003310974920168519f */
+	    0xBF517108,  /* -0.8181309700012207f */
+	    0x3B8997D1,  /* 0.004199006129056215f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFD51895,  /* -1.664812684059143f */
+	    0x3A97B43B,  /* 0.001157409860752523f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFD5A869,  /* -1.6692019701004028f */
+	    0x3A8F55CE,  /* 0.0010935605969280005f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFD5818A,  /* -1.668015718460083f */
+	    0x3A9B7DCC,  /* 0.0011863051913678646f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_4[15] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xBDFA7FEB,  /* -0.12231429666280746f */
+	    0x3B78118F,  /* 0.003785226261243224f */
+	    0xBF3A18CE,  /* -0.7269409894943237f */
+	    0xBAFA73C4,  /* -0.001910798717290163f */
+	    0x3D4DCC73,  /* 0.0502438060939312f */
+	    0xBAF0316E,  /* -0.001832527806982398f */
+	aobjEvent32SetValRateBlock(0x007, 45),
+	    0x3D8E2844,  /* 0.06941273808479309f */
+	    0x3AA7AFB6,  /* 0.0012793454807251692f */
+	    0xBF39A592,  /* -0.7251826524734497f */
+	    0x397919E5,  /* 0.0002375613694312051f */
+	    0xBCA26E84,  /* -0.019828088581562042f */
+	    0x3A78DA31,  /* 0.0009492962271906435f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC096AE0D,  /* -4.708746433258057f */
+	    0xBB87D6C7,  /* -0.004145476501435041f */
+	    0xC033071B,  /* -2.7973086833953857f */
+	    0xBB788476,  /* -0.0037920749746263027f */
+	    0xC0986C28,  /* -4.763202667236328f */
+	    0x3BED116D,  /* 0.00723474333062768f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC09BFE84,  /* -4.874818801879883f */
+	    0xBB5E20C9,  /* -0.003389405319467187f */
+	    0xC04119EC,  /* -3.017207145690918f */
+	    0xBB83300B,  /* -0.004003529902547598f */
+	    0xC09113B0,  /* -4.533653259277344f */
+	    0x3B6B0232,  /* 0.0035859462805092335f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC09C1A35,  /* -4.878199100494385f */
+	    0xBB5D8466,  /* -0.0033800839446485043f */
+	    0xC0415A46,  /* -3.021134853363037f */
+	    0xBB80B595,  /* -0.0039278962649405f */
+	    0xC090F67A,  /* -4.530087471008301f */
+	    0x3B69AA29,  /* 0.003565440187230706f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFFAF8E9,  /* -1.9607211351394653f */
+	    0xBBB44310,  /* -0.005501158535480499f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xC0079F6C,  /* -2.119105339050293f */
+	    0xBA432E20,  /* -0.0007445532828569412f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xC007AA52,  /* -2.1197705268859863f */
+	    0xBA2E5BC0,  /* -0.0006651245057582855f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_7[16] = {
+	aobjEvent32SetValRate(0x003, 0),
+	    0x3F8392E5,  /* 1.0279203653335571f */
+	    0x34CB587A,  /* 3.7876071701248293e-07f */
+	    0x3E88029A,  /* 0.2656448483467102f */
+	    0xB84E752C,  /* -4.92233521072194e-05f */
+	aobjEvent32SetVal0RateBlock(0x004, 0),
+	    0x3FE34493,  /* 1.775530219078064f */
+	aobjEvent32SetValRate(0x007, 135),
+	    0x3FD07490,  /* 1.6285572052001953f */
+	    0x36460F09,  /* 2.951305077658617e-06f */
+	    0x3F2DC809,  /* 0.678833544254303f */
+	    0x38BABD9A,  /* 8.904487185645849e-05f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	    0x39E069C7,  /* 0.0004280341963749379f */
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 190),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EC0A38C,  /* 0.376247763633728f */
+	    0x370103C6,  /* 7.689877747907303e-06f */
+	    0x3E58DCE9,  /* 0.21178020536899567f */
+	    0x39EA10ED,  /* 0.00044644568697549403f */
+	    0xBF919BA1,  /* -1.1375619173049927f */
+	    0xBA9FFA14,  /* -0.0012205266393721104f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBF5126,  /* 0.373665988445282f */
+	    0xB81C4FCB,  /* -3.726761133293621e-05f */
+	    0x3E7EAB7F,  /* 0.2487010806798935f */
+	    0x3A75FA5D,  /* 0.0009383315336890519f */
+	    0xBF9E31C7,  /* -1.2358940839767456f */
+	    0xBB205371,  /* -0.0024463797453790903f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBF4C90,  /* 0.37363100051879883f */
+	    0xB812BF4E,  /* -3.4987278922926635e-05f */
+	    0x3E7FA06C,  /* 0.24963539838790894f */
+	    0x3A74ED2A,  /* 0.0009343201527372003f */
+	    0xBF9E818B,  /* -1.2383283376693726f */
+	    0xBB1F8825,  /* -0.0024342623073607683f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F9578C5,  /* 1.1677480936050415f */
+	    0x3AEBD8AA,  /* 0.0017993648070842028f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3FAB5EE1,  /* 1.338832974433899f */
+	    0x3B86A15E,  /* 0.004108591936528683f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3FABE45F,  /* 1.3429068326950073f */
+	    0x3B857DD3,  /* 0.00407383730635047f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05BB32B,  /* -3.4328105449676514f */
+	    0xB993B984,  /* -0.0002817624481394887f */
+	    0x404EA113,  /* 3.228581190109253f */
+	    0x380192C0,  /* 3.0892668291926384e-05f */
+	    0xC0438C95,  /* -3.055455446243286f */
+	    0xBA02F832,  /* -0.0004996090428903699f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05D0EAF,  /* -3.4540212154388428f */
+	    0xBA1D52F0,  /* -0.0006001433357596397f */
+	    0x404EC232,  /* 3.230602741241455f */
+	    0x387B53D1,  /* 5.9921123465755954e-05f */
+	    0xC047CAA4,  /* -3.1217432022094727f */
+	    0xBAC394E3,  /* -0.0014921691035851836f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05D1886,  /* -3.4546217918395996f */
+	    0xBA1D6DBF,  /* -0.0006005428149364889f */
+	    0x404EC32E,  /* 3.2306628227233887f */
+	    0x387C71C5,  /* 6.0187438066350296e-05f */
+	    0xC047E2BA,  /* -3.123213291168213f */
+	    0xBAC0AF31,  /* -0.0014700648607686162f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F21A6AB,  /* 0.6314494013786316f */
+	    0xBA03754D,  /* -0.0005014732596464455f */
+	    0x3E951364,  /* 0.2911635637283325f */
+	    0x39FBFD9B,  /* 0.00048063401482068f */
+	    0x3E6C1B6F,  /* 0.2305734008550644f */
+	    0xBA0D3A4A,  /* -0.0005387408891692758f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F173421,  /* 0.5906391739845276f */
+	    0xBA847BCC,  /* -0.0010107695125043392f */
+	    0x3E9DF6AC,  /* 0.3085225820541382f */
+	    0x39C68A39,  /* 0.0003786848683375865f */
+	    0x3E61FCE2,  /* 0.2206912338733673f */
+	    0xB94A24DF,  /* -0.00019277956744190305f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F16F237,  /* 0.5896334052085876f */
+	    0xBA83D55D,  /* -0.001005809404887259f */
+	    0x3E9E28AB,  /* 0.3089040219783783f */
+	    0x39C7FAD5,  /* 0.00038143122219480574f */
+	    0x3E61C82C,  /* 0.22049015760421753f */
+	    0xB952D5F5,  /* -0.00020106865849811584f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F7A36BA,  /* 0.9773975610733032f */
+	    0x3AFE0621,  /* 0.0019380488665774465f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F8B9AE2,  /* 1.0906641483306885f */
+	    0x3B35C233,  /* 0.002773415995761752f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F8BF5B0,  /* 1.093435287475586f */
+	    0x3B359C39,  /* 0.002771152416244149f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EEF6875,  /* 0.46759381890296936f */
+	    0x397FA7E4,  /* 0.00024381239200010896f */
+	    0x3ED6E817,  /* 0.4197394549846649f */
+	    0x3987865A,  /* 0.0002584930625744164f */
+	    0xBF2BD482,  /* -0.6712113618850708f */
+	    0xBA8F55CE,  /* -0.0010935605969280005f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EFCE090,  /* 0.49390077590942383f */
+	    0x3A2F84E0,  /* 0.0006695520132780075f */
+	    0x3EE5AE98,  /* 0.44859766960144043f */
+	    0x3A3CD71C,  /* 0.0007203684654086828f */
+	    0xBF409EAB,  /* -0.7524210810661316f */
+	    0xBB052595,  /* -0.002031659008935094f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EFD37A7,  /* 0.4945652186870575f */
+	    0x3A2E2F11,  /* 0.0006644586683250964f */
+	    0x3EE60C3B,  /* 0.4493120610713959f */
+	    0x3A3B461A,  /* 0.0007143929833546281f */
+	    0xBF412346,  /* -0.7544444799423218f */
+	    0xBB049B13,  /* -0.002023403299972415f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script5_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+	    0x43960000,  /* 300.0f */
+	    0x42340000,  /* 45.0f */
+	aobjEvent32SetValAfter(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x060, 45),
+	    0x43778000,  /* 247.5f */
+	    0x42A50000,  /* 82.5f */
+	aobjEvent32End(),
+};
+
+/* AObjEvent32 *shield_anim_joint_5[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_5[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_2,
+	(AObjEvent32 *)dCaptainShieldPose_script6_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_5,
+	(AObjEvent32 *)dCaptainShieldPose_script6_6,
+	(AObjEvent32 *)dCaptainShieldPose_script6_7,
+	(AObjEvent32 *)dCaptainShieldPose_script6_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_9,
+	(AObjEvent32 *)dCaptainShieldPose_script6_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_12,
+	(AObjEvent32 *)dCaptainShieldPose_script6_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script6_14,
+	(AObjEvent32 *)dCaptainShieldPose_script6_15,
+};
+
+u32 dCaptainShieldPose_script6_0[13] = {
+	aobjEvent32SetValRate(0x060, 0),
+	    0x43AFC35A,  /* 351.52618408203125f */
+	    0xBED84680,  /* -0.4224128723144531f */
+	    0x429C0000,  /* 78.0f */
+	    0x3E088885,  /* 0.13333328068256378f */
+	aobjEvent32SetValAfterBlock(0x010, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	aobjEvent32SetValRateBlock(0x060, 45),
+	    0x43A533E9,  /* 330.4055480957031f */
+	    0xB7600000,  /* -1.33514404296875e-05f */
+	    0x42A80000,  /* 84.0f */
+	    0x3D88888B,  /* 0.06666668504476547f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_1[35] = {
+	aobjEvent32SetValRateBlock(0x050, 0),
+	    0xC1100000,  /* -9.0f */
+	    0xBD540E8B,  /* -0.051771681755781174f */
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32SetValRate(0x010, 135),
+	    0xC1C00000,  /* -24.0f */
+	    0xBBE9FB5A,  /* -0.007140559144318104f */
+	aobjEvent32Cmd12(0x010, 90),
+	aobjEvent32SetVal0Rate(0x040, 225),
+	    0x4095D4B3,  /* 4.682214260101318f */
+	aobjEvent32Cmd12(0x040, 90),
+	aobjEvent32SetValRateBlock(0x021, 0),
+	    0xBE860A92,  /* -0.2617993950843811f */
+	    0xBA3D4943,  /* -0.0007220694678835571f */
+	    0x3FC00000,  /* 1.5f */
+	    0xBB185607,  /* -0.002324463566765189f */
+	aobjEvent32SetValRate(0x021, 90),
+	    0xBE32B8C2,  /* -0.1745329201221466f */
+	    0x3B003549,  /* 0.0019563010428100824f */
+	    0xC0400000,  /* -3.0f */
+	    0xBD57D977,  /* -0.05269762501120567f */
+	aobjEvent32Cmd12(0x021, 45),
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3EB2B8C2,  /* 0.3490658402442932f */
+	    0xBA57B55C,  /* -0.0008228623773902655f */
+	aobjEvent32SetVal0RateBlock(0x002, 0),
+	    0xBF5F66F3,  /* -0.8726646304130554f */
+	aobjEvent32SetValRate(0x004, 90),
+	    0x3E32B8C2,  /* 0.1745329201221466f */
+	    0xBB6A863A,  /* -0.0035785571672022343f */
+	aobjEvent32SetValRateBlock(0x002, 45),
+	    0xBF490FDB,  /* -0.7853981852531433f */
+	    0x3B3B2B13,  /* 0.0028559609781950712f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F525BD7,  /* 0.8217138648033142f */
+	    0x3B2BE6DF,  /* 0.0026230139192193747f */
+	    0x3EBDBCFB,  /* 0.3705824315547943f */
+	    0xBB553A14,  /* -0.0032535837963223457f */
+	    0xBF51710A,  /* -0.8181310892105103f */
+	    0x3B878D0E,  /* 0.0041366880759596825f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F5E894E,  /* 0.869282603263855f */
+	    0xBA3D0B9C,  /* -0.0007211507763713598f */
+	    0x3E964724,  /* 0.2935115098953247f */
+	    0xBA5F8F2A,  /* -0.0008528108010068536f */
+	    0xBF378214,  /* -0.7168285846710205f */
+	    0x3A5F144B,  /* 0.0008509798790328205f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F5E56FD,  /* 0.8685148358345032f */
+	    0xBA494579,  /* -0.000767789373639971f */
+	    0x3E95D6FE,  /* 0.292655885219574f */
+	    0xBA604D0E,  /* -0.0008556403918191791f */
+	    0xBF374BD0,  /* -0.7160005569458008f */
+	    0x3A590C95,  /* 0.0008279767935164273f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFD5818A,  /* -1.668015718460083f */
+	    0x3AB26CCE,  /* 0.0013612748589366674f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFC4E85A,  /* -1.5383408069610596f */
+	    0x3B20ACCE,  /* 0.00245170621201396f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFC49A24,  /* -1.5359539985656738f */
+	    0x3B1C6A9A,  /* 0.002386725042015314f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_4[15] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3D8E2844,  /* 0.06941273808479309f */
+	    0x3AA7AFB6,  /* 0.0012793454807251692f */
+	    0xBF39A592,  /* -0.7251826524734497f */
+	    0x397919E5,  /* 0.0002375613694312051f */
+	    0xBCA26E84,  /* -0.019828088581562042f */
+	    0x3A78DA31,  /* 0.0009492962271906435f */
+	aobjEvent32SetValRateBlock(0x007, 45),
+	    0xBBEB0D1C,  /* -0.007173193618655205f */
+	    0xBA5D6464,  /* -0.0008445440325886011f */
+	    0xBF349F9C,  /* -0.7055604457855225f */
+	    0x3ABCC5BC,  /* 0.0014402191154658794f */
+	    0x3E0AEFD2,  /* 0.13568046689033508f */
+	    0x3AE11724,  /* 0.0017173034138977528f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC09C1A35,  /* -4.878199100494385f */
+	    0xBB5D192B,  /* -0.003373692510649562f */
+	    0xC0415A46,  /* -3.021134853363037f */
+	    0xBB7E350C,  /* -0.0038788942620158195f */
+	    0xC090F67A,  /* -4.530087471008301f */
+	    0x3B6738A2,  /* 0.003528155852109194f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC0A0A8DD,  /* -5.020613193511963f */
+	    0xBB0158AB,  /* -0.001973668811842799f */
+	    0xC048EAC3,  /* -3.139328718185425f */
+	    0x3A9EAAFB,  /* 0.0012105399509891868f */
+	    0xC08CCB1E,  /* -4.399794578552246f */
+	    0x3AEE91AE,  /* 0.0018201374914497137f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC0A0B878,  /* -5.022518157958984f */
+	    0xBAF9B8C2,  /* -0.0019052254501730204f */
+	    0xC048D48A,  /* -3.137972354888916f */
+	    0x3AB1C77C,  /* 0.001356347929686308f */
+	    0xC08CBCAB,  /* -4.398030757904053f */
+	    0x3AE72FB2,  /* 0.0017638115677982569f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xC007AA52,  /* -2.1197705268859863f */
+	    0xBA3D93E2,  /* -0.000723181408829987f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xC00A7B7B,  /* -2.1637866497039795f */
+	    0x3B8D801A,  /* 0.00431824941188097f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xC00A30A2,  /* -2.1592183113098145f */
+	    0x3B95B267,  /* 0.004568386357277632f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_7[17] = {
+	aobjEvent32SetVal0RateBlock(0x004, 0),
+	    0x3FE34493,  /* 1.775530219078064f */
+	aobjEvent32SetValRateBlock(0x003, 0),
+	    0x3F8392E5,  /* 1.0279203653335571f */
+	    0x34CB587A,  /* 3.7876071701248293e-07f */
+	    0x3E88029A,  /* 0.2656448483467102f */
+	    0xB84E752C,  /* -4.92233521072194e-05f */
+	aobjEvent32SetValRate(0x007, 135),
+	    0x3FD07490,  /* 1.6285572052001953f */
+	    0x36460F09,  /* 2.951305077658617e-06f */
+	    0x3F2DC809,  /* 0.678833544254303f */
+	    0x38BABD9A,  /* 8.904487185645849e-05f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	    0x39E069C7,  /* 0.0004280341963749379f */
+	aobjEvent32Cmd12(0x007, 45),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 235),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBF4C90,  /* 0.37363100051879883f */
+	    0xB8026937,  /* -3.109240424237214e-05f */
+	    0x3E7FA06C,  /* 0.24963539838790894f */
+	    0x3A7AF3C1,  /* 0.0009573065326549113f */
+	    0xBF9E818B,  /* -1.2383283376693726f */
+	    0xBB23326F,  /* -0.002490188693627715f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBF8BFE,  /* 0.3741149306297302f */
+	    0xB83335DD,  /* -4.2727089748950675e-05f */
+	    0x3E97DFB2,  /* 0.29662853479385376f */
+	    0x38980D97,  /* 7.250456110341474e-05f */
+	    0xBFAD7F61,  /* -1.3554497957229614f */
+	    0xB9455CA1,  /* -0.0001882189098978415f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBF85CF,  /* 0.3740677535533905f */
+	    0xB845FD7B,  /* -4.72045321657788e-05f */
+	    0x3E97E2BB,  /* 0.296651691198349f */
+	    0x37C214A3,  /* 2.3136211893870495e-05f */
+	    0xBFAD81BD,  /* -1.35552179813385f */
+	    0xB8971361,  /* -7.203850691439584e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3FABE45F,  /* 1.3429068326950073f */
+	    0x3B8789B4,  /* 0.004136288538575172f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3FC3BDC5,  /* 1.5292288064956665f */
+	    0x3A28FB97,  /* 0.0006446181214414537f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3FC3CD96,  /* 1.5297114849090576f */
+	    0x39FD129F,  /* 0.00048269794206134975f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05D1886,  /* -3.4546217918395996f */
+	    0xBA22DFC6,  /* -0.0006213154410943389f */
+	    0x404EC32E,  /* 3.2306628227233887f */
+	    0x3883CEA9,  /* 6.285060226218775e-05f */
+	    0xC047E2BA,  /* -3.123213291168213f */
+	    0xBAC0FF9E,  /* -0.001472461735829711f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05F458B,  /* -3.488619565963745f */
+	    0xB77C71C5,  /* -1.5046859516587574e-05f */
+	    0x404EFD51,  /* 3.2342112064361572f */
+	    0xB620D97C,  /* -2.3968450477696024e-06f */
+	    0xC04BBEE5,  /* -3.1835262775421143f */
+	    0xB9E87A54,  /* -0.00044341629836708307f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05F451F,  /* -3.488593816757202f */
+	    0x37D8B339,  /* 2.5832663595792837e-05f */
+	    0x404EFD34,  /* 3.2342042922973633f */
+	    0xB6E85696,  /* -6.924218723725062e-06f */
+	    0xC04BC592,  /* -3.183933734893799f */
+	    0xB9D5A0D9,  /* -0.0004074636672157794f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F16F236,  /* 0.5896333456039429f */
+	    0xBA86C63A,  /* -0.0010282464791089296f */
+	    0x3E9E28AD,  /* 0.30890408158302307f */
+	    0x39D1D747,  /* 0.00040023980545811355f */
+	    0x3E61C827,  /* 0.22049008309841156f */
+	    0xB96C0559,  /* -0.00022508706024382263f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F0ACEC1,  /* 0.5422173142433167f */
+	    0xB8692D0E,  /* -5.559348937822506e-05f */
+	    0x3EA62045,  /* 0.32446494698524475f */
+	    0xB927A38D,  /* -0.00015987288497854024f */
+	    0x3E5B062C,  /* 0.21389073133468628f */
+	    0x39B82ACA,  /* 0.00035127095179632306f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F0ACE28,  /* 0.542208194732666f */
+	    0xB71907CD,  /* -9.121326911554206e-06f */
+	    0x3EA608C0,  /* 0.32428550720214844f */
+	    0xB93C2581,  /* -0.00017943048442248255f */
+	    0x3E5B66A2,  /* 0.21425870060920715f */
+	    0x39C0EB83,  /* 0.00036796563654206693f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F8BF5B2,  /* 1.093435525894165f */
+	    0x3B3B57F9,  /* 0.002858637133613229f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F9C982B,  /* 1.2233937978744507f */
+	    0xB9426DFF,  /* -0.00018542258476372808f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F9C8D85,  /* 1.2230688333511353f */
+	    0xB9AA581A,  /* -0.00032490567537024617f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EFD37AD,  /* 0.4945653975009918f */
+	    0x3A315351,  /* 0.0006764429272152483f */
+	    0x3EE60C38,  /* 0.4493119716644287f */
+	    0x3A3E19ED,  /* 0.0007251788047142327f */
+	    0xBF412345,  /* -0.754444420337677f */
+	    0xBB07ED1E,  /* -0.002074069809168577f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F06EC6E,  /* 0.5270451307296753f */
+	    0x38F7237D,  /* 0.00011784488015109673f */
+	    0x3EF77AD5,  /* 0.4833590090274811f */
+	    0x3907C070,  /* 0.00012946291826665401f */
+	    0xBF5A0347,  /* -0.8516125082969666f */
+	    0xB900F1E6,  /* -0.00012297145440243185f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F06F230,  /* 0.5271329879760742f */
+	    0x38B83CAA,  /* 8.785103273112327e-05f */
+	    0x3EF787C3,  /* 0.48345765471458435f */
+	    0x38CEDB3F,  /* 9.863683226285502e-05f */
+	    0xBF5A04FC,  /* -0.8516385555267334f */
+	    0xB7DA6027,  /* -2.6032399546238594e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script6_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+		    0x43778000,  /* 247.5f */
+		    0x42A50000,  /* 82.5f */
+		aobjEvent32SetValAfter(0x010, 0),
+		    0x00000000,  /* 0.0f */
+		aobjEvent32SetValBlock(0x060, 45),
+		    0x43430000,  /* 195.0f */
+		    0x42F00000,  /* 120.0f */
+		aobjEvent32End(),
+};
+PAD(8);
+
+/* AObjEvent32 *shield_anim_joint_6[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_6[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_2,
+	(AObjEvent32 *)dCaptainShieldPose_script7_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_5,
+	(AObjEvent32 *)dCaptainShieldPose_script7_6,
+	(AObjEvent32 *)dCaptainShieldPose_script7_7,
+	(AObjEvent32 *)dCaptainShieldPose_script7_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_9,
+	(AObjEvent32 *)dCaptainShieldPose_script7_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_12,
+	(AObjEvent32 *)dCaptainShieldPose_script7_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script7_14,
+	(AObjEvent32 *)dCaptainShieldPose_script7_15,
+};
+
+u32 dCaptainShieldPose_script7_0[13] = {
+	aobjEvent32SetValRate(0x060, 0),
+	    0x43A533E9,  /* 330.4055480957031f */
+	    0xB7600000,  /* -1.33514404296875e-05f */
+	    0x42A80000,  /* 84.0f */
+	    0x3D88888B,  /* 0.06666668504476547f */
+	aobjEvent32SetValAfterBlock(0x010, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	aobjEvent32SetValRate(0x020, 45),
+	    0x43AFC333,  /* 351.5249938964844f */
+	    0x3ED84680,  /* 0.4224128723144531f */
+	aobjEvent32SetVal0RateBlock(0x040, 45),
+	    0x42A80000,  /* 84.0f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_1[31] = {
+	aobjEvent32SetValRateBlock(0x040, 0),
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32SetVal0Rate(0x040, 225),
+	    0x4095D4B3,  /* 4.682214260101318f */
+	aobjEvent32Cmd12(0x040, 135),
+	aobjEvent32SetValRateBlock(0x004, 0),
+	    0x3EB2B8C2,  /* 0.3490658402442932f */
+	    0xBA57B55C,  /* -0.0008228623773902655f */
+	aobjEvent32SetValRate(0x004, 90),
+	    0x3E32B8C2,  /* 0.1745329201221466f */
+	    0xBB6A863A,  /* -0.0035785571672022343f */
+	aobjEvent32Cmd12(0x004, 45),
+	aobjEvent32SetValRateBlock(0x033, 0),
+	    0xBE32B8C2,  /* -0.1745329201221466f */
+	    0x3B003549,  /* 0.0019563010428100824f */
+	    0xBF490FDB,  /* -0.7853981852531433f */
+	    0x3B3B2B13,  /* 0.0028559609781950712f */
+	    0xC1C00000,  /* -24.0f */
+	    0xBBE9FB5A,  /* -0.007140559144318104f */
+	    0xC0400000,  /* -3.0f */
+	    0xBD57D977,  /* -0.05269762501120567f */
+	aobjEvent32SetVal0Rate(0x030, 90),
+	    0xC0ED8C8C,  /* -7.423406600952148f */
+	    0xC0FF89D0,  /* -7.985572814941406f */
+	aobjEvent32SetValRateBlock(0x003, 45),
+	    0x00000000,  /* 0.0f */
+	    0x3B90D6BB,  /* 0.004420129116624594f */
+	    0xBF32B8C2,  /* -0.6981316804885864f */
+	    0x3B30119B,  /* 0.002686596242710948f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F5E56FD,  /* 0.8685148358345032f */
+	    0xBA75FC99,  /* -0.0009383648284710944f */
+	    0x3E95D700,  /* 0.29265594482421875f */
+	    0xBA558191,  /* -0.0008144612074829638f */
+	    0xBF374BD1,  /* -0.7160006165504456f */
+	    0x3A37B69F,  /* 0.0007008108659647405f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F2EAF02,  /* 0.682357907295227f */
+	    0xBBC2C909,  /* -0.005944375414401293f */
+	    0x3E8586F3,  /* 0.2607952058315277f */
+	    0xBB111EA9,  /* -0.0022143519017845392f */
+	    0xBF51C96C,  /* -0.8194797039031982f */
+	    0xBB85C863,  /* -0.0040827258490026f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F2D288B,  /* 0.6763998866081238f */
+	    0xBBC33B87,  /* -0.005958023946732283f */
+	    0x3E845CEE,  /* 0.25852149724960327f */
+	    0xBB15027A,  /* -0.0022737071849405766f */
+	    0xBF52D5AE,  /* -0.8235729932785034f */
+	    0xBB8620E9,  /* -0.004093278665095568f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFC49A23,  /* -1.5359538793563843f */
+	    0x3B1AD63E,  /* 0.00236262334510684f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFB81A53,  /* -1.4383033514022827f */
+	    0x3A6AB1C5,  /* 0.000895288132596761f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFB7FDF5,  /* -1.437437653541565f */
+	    0x3A62F66E,  /* 0.000865793670527637f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_4[15] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xBBEB0D1C,  /* -0.007173193618655205f */
+	    0xBA5D6464,  /* -0.0008445440325886011f */
+	    0xBF349F9C,  /* -0.7055604457855225f */
+	    0x3ABCC5BC,  /* 0.0014402191154658794f */
+	    0x3E0AEFD2,  /* 0.13568046689033508f */
+	    0x3AE11724,  /* 0.0017173034138977528f */
+	aobjEvent32SetValRateBlock(0x007, 45),
+	    0xBBD8252C,  /* -0.0065962281078100204f */
+	    0x38A725C4,  /* 7.97021493781358e-05f */
+	    0xBF1876D0,  /* -0.5955629348754883f */
+	    0x3C007180,  /* 0.007839560508728027f */
+	    0x3E09F676,  /* 0.13472923636436462f */
+	    0xBAC59957,  /* -0.0015075606061145663f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC0A0B878,  /* -5.022518157958984f */
+	    0xBAE7A3DE,  /* -0.00176727375946939f */
+	    0xC048D48A,  /* -3.137972354888916f */
+	    0x3AD65391,  /* 0.0016351809026673436f */
+	    0xC08CBCAB,  /* -4.398030757904053f */
+	    0x3AD87D9B,  /* 0.001651692553423345f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC0A0533C,  /* -5.010160446166992f */
+	    0x3AC6B033,  /* 0.0015158712631091475f */
+	    0xC03B4839,  /* -2.926283121109009f */
+	    0x3BBE93AE,  /* 0.005815944634377956f */
+	    0xC08DA01C,  /* -4.42579460144043f */
+	    0xBB2B065B,  /* -0.002609631745144725f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC0A046BB,  /* -5.008634090423584f */
+	    0x3AC803C5,  /* 0.001525991247035563f */
+	    0xC03AE961,  /* -2.920494318008423f */
+	    0x3BBDAEB1,  /* 0.005788647104054689f */
+	    0xC08DB5BD,  /* -4.4284348487854f */
+	    0xBB2D082E,  /* -0.002640258055180311f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xC00A30A2,  /* -2.1592183113098145f */
+	    0x3BA2B436,  /* 0.004965330474078655f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFDB7AE6,  /* -1.7146880626678467f */
+	    0x3C6D6A3B,  /* 0.014490659348666668f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFD99D70,  /* -1.7001171112060547f */
+	    0x3C6EBB02,  /* 0.014570953324437141f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_7[17] = {
+	aobjEvent32SetVal0RateBlock(0x004, 0),
+	    0x3FE34493,  /* 1.775530219078064f */
+	aobjEvent32SetValRateBlock(0x003, 0),
+	    0x3F8392E5,  /* 1.0279203653335571f */
+	    0x34CB587A,  /* 3.7876071701248293e-07f */
+	    0x3E88029A,  /* 0.2656448483467102f */
+	    0xB84E752C,  /* -4.92233521072194e-05f */
+	aobjEvent32SetValRate(0x007, 135),
+	    0x3FD07490,  /* 1.6285572052001953f */
+	    0x36460F09,  /* 2.951305077658617e-06f */
+	    0x3F2DC809,  /* 0.678833544254303f */
+	    0x38BABD9A,  /* 8.904487185645849e-05f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	    0x39E069C7,  /* 0.0004280341963749379f */
+	aobjEvent32Cmd12(0x007, 90),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 280),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBF85CF,  /* 0.3740677535533905f */
+	    0xB86E5797,  /* -5.682519622496329e-05f */
+	    0x3E97E2BB,  /* 0.296651691198349f */
+	    0xB8A3D9FD,  /* -7.813049160176888e-05f */
+	    0xBFAD81BC,  /* -1.3555216789245605f */
+	    0x392DF973,  /* 0.00016591492749284953f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBD2905,  /* 0.3694535791873932f */
+	    0xB871D534,  /* -5.765743844676763e-05f */
+	    0x3E7F5D93,  /* 0.24938039481639862f */
+	    0xBA811175,  /* -0.0009847121546044946f */
+	    0xBF9E7207,  /* -1.2378548383712769f */
+	    0x3B29D8C2,  /* 0.0025916551239788532f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBD21A4,  /* 0.36939728260040283f */
+	    0xB86C1BAF,  /* -5.629256702377461e-05f */
+	    0x3E7E6249,  /* 0.2484218031167984f */
+	    0xBA7B4AE2,  /* -0.0009586048545315862f */
+	    0xBF9E1F45,  /* -1.235329270362854f */
+	    0x3B2584AF,  /* 0.002525608753785491f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3FC3CD94,  /* 1.5297112464904785f */
+	    0x391EE510,  /* 0.00015153386630117893f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3FB0266D,  /* 1.376172661781311f */
+	    0xBB6760D9,  /* -0.0035305528435856104f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3FAFB5D6,  /* 1.3727366924285889f */
+	    0xBB612EB0,  /* -0.003436010330915451f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05F451E,  /* -3.488593578338623f */
+	    0x38E61AAE,  /* 0.00010972224117722362f */
+	    0x404EFD34,  /* 3.2342042922973633f */
+	    0xB788467B,  /* -1.6245283404714428e-05f */
+	    0xC04BC592,  /* -3.183933734893799f */
+	    0xB9AF5EE5,  /* -0.00033449303009547293f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05CD194,  /* -3.450291633605957f */
+	    0x3A409462,  /* 0.000734632951207459f */
+	    0x404EB55C,  /* 3.2298192977905273f */
+	    0xB8AE886E,  /* -8.322378562297672e-05f */
+	    0xC04A0E42,  /* -3.1571202278137207f */
+	    0x3A4644F7,  /* 0.0007563377148471773f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05CC5DE,  /* -3.4495768547058105f */
+	    0x3A3B60E9,  /* 0.0007147924625314772f */
+	    0x404EB409,  /* 3.229738473892212f */
+	    0xB8A93A25,  /* -8.069378236541525e-05f */
+	    0xC04A0240,  /* -3.1563873291015625f */
+	    0x3A402037,  /* 0.0007329019135795534f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F0ACE28,  /* 0.542208194732666f */
+	    0x38B43013,  /* 8.592023368692026e-05f */
+	    0x3EA608C3,  /* 0.3242855966091156f */
+	    0xB965DC20,  /* -0.00021921144798398018f */
+	    0x3E5B669C,  /* 0.21425861120224f */
+	    0x39D28A00,  /* 0.0004015713930130005f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F171423,  /* 0.5901510119438171f */
+	    0x3A8996B3,  /* 0.0010497182374820113f */
+	    0x3E9499A8,  /* 0.2902348041534424f */
+	    0xBA686E0C,  /* -0.0008866495918482542f */
+	    0x3E8203F6,  /* 0.2539364695549011f */
+	    0x3A842346,  /* 0.0010081313084810972f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F175729,  /* 0.5911737084388733f */
+	    0x3A860A92,  /* 0.0010226538870483637f */
+	    0x3E94276D,  /* 0.289363294839859f */
+	    0xBA647472,  /* -0.0008714861469343305f */
+	    0x3E82861D,  /* 0.25492945313453674f */
+	    0x3A8226C1,  /* 0.000992976245470345f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F9C8D87,  /* 1.2230690717697144f */
+	    0xBA200304,  /* -0.0006103964988142252f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F86C821,  /* 1.0529824495315552f */
+	    0xBB82EFD1,  /* -0.003995873499661684f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F86480A,  /* 1.0490734577178955f */
+	    0xBB8016F7,  /* -0.003908987622708082f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F06F231,  /* 0.527133047580719f */
+	    0x37D86BBC,  /* 2.5799374270718545e-05f */
+	    0x3EF787C3,  /* 0.48345765471458435f */
+	    0x381907CD,  /* 3.6485307646216825e-05f */
+	    0xBF5A04F9,  /* -0.8516383767127991f */
+	    0x39352A49,  /* 0.00017277257575187832f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F002F93,  /* 0.5007259249687195f */
+	    0xBA124233,  /* -0.0005579322460107505f */
+	    0x3EE9F3AD,  /* 0.4569372236728668f */
+	    0xBA13EAAA,  /* -0.0005642572650685906f */
+	    0xBF3FAA03,  /* -0.7486879229545593f */
+	    0x3B19D5E3,  /* 0.0023473433684557676f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F000C0E,  /* 0.5001839399337769f */
+	    0xBA0E141B,  /* -0.0005419866065494716f */
+	    0x3EE9ABE3,  /* 0.45638951659202576f */
+	    0xBA0F945B,  /* -0.0005477123777382076f */
+	    0xBF3F13DD,  /* -0.7463968396186829f */
+	    0x3B162693,  /* 0.002291117561981082f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script7_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+		    0x43430000,  /* 195.0f */
+		    0x42F00000,  /* 120.0f */
+		aobjEvent32SetValAfter(0x010, 0),
+		    0x00000000,  /* 0.0f */
+		aobjEvent32SetValBlock(0x060, 45),
+		    0x43778000,  /* 247.5f */
+		    0x431D8000,  /* 157.5f */
+		aobjEvent32End(),
+};
+PAD(8);
+
+/* AObjEvent32 *shield_anim_joint_7[27] */
+AObjEvent32 *dCaptainShieldPose_shield_anim_joint_7[27] = {
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_0,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_1,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_2,
+	(AObjEvent32 *)dCaptainShieldPose_script8_3,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_4,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_5,
+	(AObjEvent32 *)dCaptainShieldPose_script8_6,
+	(AObjEvent32 *)dCaptainShieldPose_script8_7,
+	(AObjEvent32 *)dCaptainShieldPose_script8_8,
+	NULL,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_9,
+	(AObjEvent32 *)dCaptainShieldPose_script8_10,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_11,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_12,
+	(AObjEvent32 *)dCaptainShieldPose_script8_13,
+	NULL,
+	(AObjEvent32 *)dCaptainShieldPose_script8_14,
+	(AObjEvent32 *)dCaptainShieldPose_script8_15,
+};
+
+u32 dCaptainShieldPose_script8_0[9] = {
+	aobjEvent32SetValRate(0x020, 0),
+	    0x43AFC333,  /* 351.5249938964844f */
+	    0x3ED84680,  /* 0.4224128723144531f */
+	aobjEvent32SetValAfterBlock(0x050, 0),
+	    0x3DD11874,  /* 0.10209742188453674f */
+	    0x42A80000,  /* 84.0f */
+	aobjEvent32SetVal0RateBlock(0x020, 45),
+	    0x43B8361B,  /* 368.4226989746094f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_1[29] = {
+	aobjEvent32SetValRateBlock(0x040, 0),
+	    0xC1100000,  /* -9.0f */
+	    0xBDB6FEC6,  /* -0.08935312926769257f */
+	aobjEvent32SetVal0Rate(0x040, 225),
+	    0x4095D4B3,  /* 4.682214260101318f */
+	aobjEvent32Cmd12(0x040, 180),
+	aobjEvent32SetValRateBlock(0x030, 0),
+	    0xC1C00000,  /* -24.0f */
+	    0xBBE9FB5A,  /* -0.007140559144318104f */
+	    0xC0400000,  /* -3.0f */
+	    0xBD57D977,  /* -0.05269762501120567f */
+	aobjEvent32SetVal0Rate(0x030, 90),
+	    0xC0ED8C8C,  /* -7.423406600952148f */
+	    0xC0FF89D0,  /* -7.985572814941406f */
+	aobjEvent32Cmd12(0x030, 45),
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x00000000,  /* 0.0f */
+	    0x3B90D6BB,  /* 0.004420129116624594f */
+	    0xBF32B8C2,  /* -0.6981316804885864f */
+	    0x3B30119B,  /* 0.002686596242710948f */
+	    0x3E32B8C2,  /* 0.1745329201221466f */
+	    0xBB6A863A,  /* -0.0035785571672022343f */
+	aobjEvent32SetValRate(0x002, 45),
+	    0xBF060A92,  /* -0.5235987901687622f */
+	    0x3B5ED039,  /* 0.0033998622093349695f */
+	aobjEvent32SetVal0RateBlock(0x005, 45),
+	    0x3E32B8C2,  /* 0.1745329201221466f */
+	    0xBD567750,  /* -0.05235987901687622f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_2[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F2D288B,  /* 0.6763998866081238f */
+	    0xBBC3F4F3,  /* -0.005980127956718206f */
+	    0x3E845CEE,  /* 0.25852149724960327f */
+	    0xBB2412F4,  /* -0.0025035711005330086f */
+	    0xBF52D5AE,  /* -0.8235729932785034f */
+	    0xBB832333,  /* -0.00400199880823493f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EF0CB16,  /* 0.4702994227409363f */
+	    0x3A56FF96,  /* 0.0008201537420973182f */
+	    0x3E13AE90,  /* 0.14422059059143066f */
+	    0x3B10AAA1,  /* 0.0022074359003454447f */
+	    0xBF8036EB,  /* -1.0016759634017944f */
+	    0xBADEE324,  /* -0.0017004949040710926f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EF15554,  /* 0.4713541269302368f */
+	    0x3A8A3D22,  /* 0.0010546783450990915f */
+	    0x3E162305,  /* 0.14661796391010284f */
+	    0x3B1D1D52,  /* 0.002397377509623766f */
+	    0xBF806732,  /* -1.0031492710113525f */
+	    0xBAC11CAA,  /* -0.001473327400162816f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_3[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFB7FDF6,  /* -1.4374377727508545f */
+	    0x39BC2581,  /* 0.0003588609688449651f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBFC82B5F,  /* -1.5638235807418823f */
+	    0x3B54EE20,  /* 0.00324905663728714f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBFC7B97F,  /* -1.560348391532898f */
+	    0x3B63C1BA,  /* 0.00347529212012887f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_4[12] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xBBD8252C,  /* -0.0065962281078100204f */
+	    0x38A725C4,  /* 7.97021493781358e-05f */
+	    0xBF1876D0,  /* -0.5955629348754883f */
+	    0x3C007180,  /* 0.007839560508728027f */
+	    0x3E09F676,  /* 0.13472923636436462f */
+	    0xBAC59957,  /* -0.0015075606061145663f */
+	aobjEvent32SetVal0RateBlock(0x007, 45),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_5[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC0A046BB,  /* -5.008634090423584f */
+	    0x3ACA0A10,  /* 0.0015414375811815262f */
+	    0xC03AE961,  /* -2.920494318008423f */
+	    0x3BC1088E,  /* 0.005890912376344204f */
+	    0xC08DB5BD,  /* -4.4284348487854f */
+	    0xBB2D4B32,  /* -0.002644252497702837f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC09E0A5C,  /* -4.938764572143555f */
+	    0x39B3D6B6,  /* 0.0003430151264183223f */
+	    0xC02CD3CE,  /* -2.700427532196045f */
+	    0xBAFB1544,  /* -0.0019156117923557758f */
+	    0xC0916724,  /* -4.543840408325195f */
+	    0xBA65F6EF,  /* -0.0008772452711127698f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC09E0839,  /* -4.938503742218018f */
+	    0x3988D574,  /* 0.00026098976377397776f */
+	    0xC02CF7BC,  /* -2.702620506286621f */
+	    0xBB0FBA55,  /* -0.0021931130904704332f */
+	    0xC0916D4C,  /* -4.544591903686523f */
+	    0xBA450344,  /* -0.0007515440229326487f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_6[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0xBFD99D70,  /* -1.7001171112060547f */
+	    0x3C7142E0,  /* 0.014725416898727417f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0xBF9C69E7,  /* -1.2219818830490112f */
+	    0xBA96E6B3,  /* -0.001151284552179277f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0xBF9C9E72,  /* -1.2235853672027588f */
+	    0xBAD22C2C,  /* -0.001603489276021719f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_7[12] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3FD07490,  /* 1.6285572052001953f */
+	    0x36460F09,  /* 2.951305077658617e-06f */
+	    0x3F2DC809,  /* 0.678833544254303f */
+	    0x38BABD9A,  /* 8.904487185645849e-05f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	    0x39E069C7,  /* 0.0004280341963749379f */
+	aobjEvent32SetVal0RateBlock(0x007, 45),
+	    0x3FD074D2,  /* 1.6285650730133057f */
+	    0x3F2D84A3,  /* 0.6778051257133484f */
+	    0x4013BB94,  /* 2.308323860168457f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_8[10] = {
+	aobjEvent32SetValAfterBlock(0x077, 0),
+	    0x404059D7,  /* 3.005483388900757f */
+	    0xBFFAC1FB,  /* -1.9590448141098022f */
+	    0x3E6EA77E,  /* 0.2330608069896698f */
+	    0x41ABB852,  /* 21.46500015258789f */
+	    0x4145B646,  /* 12.357000350952148f */
+	    0x411955E1,  /* 9.583466529846191f */
+	aobjEvent32Cmd12(0x000, 325),
+	aobjEvent32Wait(45),
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_9[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3EBD21A4,  /* 0.36939728260040283f */
+	    0xB86738A2,  /* -5.512743518920615e-05f */
+	    0x3E7E6243,  /* 0.24842171370983124f */
+	    0xBA779330,  /* -0.0009444234892725945f */
+	    0xBF9E1F44,  /* -1.2353291511535645f */
+	    0x3B23615A,  /* 0.0024929852224886417f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EBC7E18,  /* 0.3681495189666748f */
+	    0xB53BA865,  /* -6.990797487560485e-07f */
+	    0x3E58A866,  /* 0.21157988905906677f */
+	    0xB88BE35D,  /* -6.670386210316792e-05f */
+	    0xBF9142A1,  /* -1.1348458528518677f */
+	    0x3944508C,  /* 0.00018722022650763392f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EBC7E0E,  /* 0.3681492209434509f */
+	    0xB4A0D97C,  /* -2.996056309712003e-07f */
+	    0x3E589F95,  /* 0.21154625713825226f */
+	    0xB80D17A9,  /* -3.363905489095487e-05f */
+	    0xBF913F8A,  /* -1.134751558303833f */
+	    0x38C5FD7B,  /* 9.44090643315576e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_10[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3FAFB5D4,  /* 1.3727364540100098f */
+	    0xBB5E1A14,  /* -0.0033890055492520332f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F9DABD6,  /* 1.2318065166473389f */
+	    0xB98E08EF,  /* -0.00027091006631962955f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F9DA75C,  /* 1.2316699028015137f */
+	    0xB90F41B2,  /* -0.00013662016135640442f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_11[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0xC05CC5DE,  /* -3.4495768547058105f */
+	    0x3A383CAA,  /* 0.0007028082618489861f */
+	    0x404EB409,  /* 3.229738473892212f */
+	    0xB8A78D36,  /* -7.98948312876746e-05f */
+	    0xC04A0240,  /* -3.1563873291015625f */
+	    0x3A3D1FB6,  /* 0.0007214503129944205f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0xC05B2414,  /* -3.424077033996582f */
+	    0x3832B8C2,  /* 4.261057620169595e-05f */
+	    0x404E851E,  /* 3.226874828338623f */
+	    0xB6A0D97C,  /* -4.793690095539205e-06f */
+	    0xC047D921,  /* -3.1226274967193604f */
+	    0x38968466,  /* 7.177218503784388e-05f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0xC05B23BA,  /* -3.424055576324463f */
+	    0x37B4F4AB,  /* 2.157160452043172e-05f */
+	    0x404E8513,  /* 3.226872205734253f */
+	    0xB632B8C2,  /* -2.663161012605997e-06f */
+	    0xC047D887,  /* -3.1225907802581787f */
+	    0x381A25C1,  /* 3.6751622246811166e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_12[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F17572A,  /* 0.5911737680435181f */
+	    0x3A8442D4,  /* 0.0010090717114508152f */
+	    0x3E94276B,  /* 0.28936323523521423f */
+	    0xBA646FFB,  /* -0.0008714196155779064f */
+	    0x3E828623,  /* 0.25492963194847107f */
+	    0x3A8260D7,  /* 0.0009947073413059115f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3F2195DB,  /* 0.6311928629875183f */
+	    0x389907CD,  /* 7.297061529243365e-05f */
+	    0x3E7EA19F,  /* 0.24866341054439545f */
+	    0xB8B78579,  /* -8.750981214689091e-05f */
+	    0x3E99BC13,  /* 0.30026301741600037f */
+	    0x38C774CC,  /* 9.510814561508596e-05f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3F219848,  /* 0.6312298774719238f */
+	    0x381B43B5,  /* 3.701793684740551e-05f */
+	    0x3E7E95FA,  /* 0.2486189901828766f */
+	    0xB83A54D3,  /* -4.442485442268662e-05f */
+	    0x3E99C26C,  /* 0.30031144618988037f */
+	    0x384B2805,  /* 4.843624265049584e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_13[13] = {
+	aobjEvent32SetValRate(0x004, 0),
+	    0x3F864807,  /* 1.0490731000900269f */
+	    0xBB7E59E7,  /* -0.003881091019138694f */
+	aobjEvent32SetValAfterBlock(0x003, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x004, 44),
+	    0x3F61C517,  /* 0.8819136023521423f */
+	    0xB9AF6C4D,  /* -0.00033459291444160044f */
+	aobjEvent32SetValRateBlock(0x004, 1),
+	    0x3F61B9F5,  /* 0.8817437291145325f */
+	    0xB93217E9,  /* -0.00016984310059342533f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_14[22] = {
+	aobjEvent32SetValRateBlock(0x007, 0),
+	    0x3F000C10,  /* 0.5001840591430664f */
+	    0xBA0B92F0,  /* -0.000532432459294796f */
+	    0x3EE9ABE3,  /* 0.45638951659202576f */
+	    0xBA0CED36,  /* -0.0005375923356041312f */
+	    0xBF3F13DA,  /* -0.7463966608047485f */
+	    0x3B148FFB,  /* 0.002266882685944438f */
+	aobjEvent32SetValRateBlock(0x007, 44),
+	    0x3EF58C72,  /* 0.4795871376991272f */
+	    0xB81AD87A,  /* -3.6918070691172034e-05f */
+	    0x3EDF071B,  /* 0.4356010854244232f */
+	    0xB81B1FF7,  /* -3.698464934132062e-05f */
+	    0xBF26BC15,  /* -0.6513074040412903f */
+	    0x394291BE,  /* 0.00018555574933998287f */
+	aobjEvent32SetValRateBlock(0x007, 1),
+	    0x3EF58A03,  /* 0.47956857085227966f */
+	    0xB79BD2B0,  /* -1.8575548892840743e-05f */
+	    0x3EDF04A5,  /* 0.43558230996131897f */
+	    0xB79D7F9F,  /* -1.8775286662275903e-05f */
+	    0xBF26B5EB,  /* -0.6512133479118347f */
+	    0x38C54AC2,  /* 9.407616744283587e-05f */
+	aobjEvent32End(),
+};
+
+u32 dCaptainShieldPose_script8_15[9] = {
+	aobjEvent32SetVal(0x060, 0),
+	    0x43778000,  /* 247.5f */
+	    0x431D8000,  /* 157.5f */
+	aobjEvent32SetValAfter(0x010, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x060, 45),
+	    0x43960000,  /* 300.0f */
+	    0x43430000,  /* 195.0f */
+	aobjEvent32End(),
 };
+

@@ -9,15 +9,15 @@ intern dNLuigiMain_attr+0x29C dNLuigiMain_setup_parts
 intern dNLuigiMain_attr+0x2A0 dNLuigiMain_animlock
 intern dNLuigiMain_attr+0x2D0 dNLuigiMain_hiddenparts
 intern dNLuigiMain_attr+0x2D4 dNLuigiMain_commonparts_container
-extern dNLuigiMain_attr+0x2D8 dMarioShieldPose_script0_14+0x10 # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2DC dMarioShieldPose_ptrs1+0x1EC # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2E0 dMarioShieldPose_script2_15+0x2C # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2E4 dMarioShieldPose_script3_15+0x30 # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2E8 dMarioShieldPose_script4_15+0x38 # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2EC dMarioShieldPose_script5_15+0x30 # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2F0 dMarioShieldPose_script6_15+0x2C # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2F4 dMarioShieldPose_script7_15+0x34 # -> file 298 (MarioShieldPose)
-extern dNLuigiMain_attr+0x2F8 dMarioShieldPose_script8_15+0x30 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2D8 dMarioShieldPose_dMarioShieldPose_data0 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2DC dMarioShieldPose_dMarioShieldPose_data0_end # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2E0 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_1 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2E4 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_2 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2E8 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_3 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2EC dMarioShieldPose_dMarioShieldPose_script5_15+0x18 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2F0 dMarioShieldPose_dMarioShieldPose_script6_15+0x20 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2F4 dMarioShieldPose_dMarioShieldPose_script7_15+0x28 # -> file 298 (MarioShieldPose)
+extern dNLuigiMain_attr+0x2F8 dMarioShieldPose_dMarioShieldPose_script8_15+0x28 # -> file 298 (MarioShieldPose)
 intern dNLuigiMain_attr+0x328 dNLuigiMain_modelparts_container
 intern dNLuigiMain_attr+0x330 dNLuigiMain_textureparts_container
 intern dNLuigiMain_attr+0x338 dNLuigiMain_thrown_status

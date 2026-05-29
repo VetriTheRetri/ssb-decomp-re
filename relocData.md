@@ -1272,6 +1272,128 @@ The remaining work splits into three buckets:
    to the IDO `s32:8` second-bitfield-run static-init bug. All 6
    `ITAttackEvent[4]` arrays are also typed with decoded fields.
 
+## Validator status
+
+Run `python3 tools/validateRelocFile.py src/relocData/*.c` to scan the whole
+corpus against the structural / typing rules listed in
+[tools/validateRelocFile.py](tools/validateRelocFile.py).
+
+### Corpus totals
+
+| Rule | Hits | Files | What it flags |
+|---|---:|---:|---|
+| R001 | 0 | 0 | AObjEvent32 script termination (missing/late `End()`) |
+| R002 | 0 | 0 | AObjEvent32 script has >1 `aobjEvent32End()` |
+| R003 | 0 | 0 | Reloc chain pointer hardcoded as raw hex `0xXXXXYYYY` |
+| **R004** | **1,777** | **167** | Reloc chain target isn't a bare block symbol (uses `+0xN` arithmetic) |
+| R005 | 1 | 1 | Inline raw-hex dump that should be a `.data.inc.c` include |
+| R006 | 0 | 0 | Palette block isn't `u16[16]+PAD(8)` or `u16[20]` |
+| R007 | 0 | 0 | Include extension doesn't match the C type |
+| R008 | 0 | 0 | `.reloc` references a symbol not declared in the `.c` |
+| **R009** | **1,020** | **49** | Chain pointer lands inside an untyped `.data.inc.c` blob |
+| R010 | 1 | 1 | Untyped `.data.inc.c` blob (tracked for typing) |
+| R011 | 0 | 0 | DObjDesc / DObjDLLink array missing terminating sentinel |
+| R012 | 0 | 0 | MObjSub.sprites/.palettes target has wrong-typed entries |
+| R013 | 0 | 0 | Undecoded opcode word in an AObjEvent32 script |
+| R014 | 0 | 0 | Vtx block inlines literal data instead of `.vtx.inc.c` |
+| R015 | 3 | 3 | MObjSub fmt/siz fields use raw ints instead of `G_IM_FMT_*` / `G_IM_SIZ_*` |
+| **R016** | **548** | **48** | Texture block missing `@tex fmt=… dim=WxH` annotation for previewer |
+| R017 | 0 | 0 | File ends with a trailing `PAD(N);` |
+
+The three rules in **bold** dominate the remaining noise. Everything else is
+≤ 3 hits in ≤ 3 files.
+
+### R009 by file (top 15 of 49)
+
+Chain pointers landing inside untyped `.data.inc.c` blobs. The whole
+ShieldPose category (~1,500 hits across 10 files) was cleared in a recent
+pass that restructured each fighter's ShieldPose into Ness-layout
+`DObjDLLink[]+DObjDesc[N]+per-direction(AObjEvent32 *[N-1]+scripts)`.
+Remaining hits cluster in:
+
+| File | Hits |
+|---|---:|
+| 86_ITCommonObject | 89 |
+| 228_KirbyMainMotion | 77 |
+| 216_SamusMainMotion | 75 |
+| 242_PikachuMainMotion | 66 |
+| 238_NessMainMotion | 65 |
+| 208_FoxMainMotion | 61 |
+| 235_CaptainMainMotion | 60 |
+| 232_PurinMainMotion | 60 |
+| 246_YoshiMainMotion | 59 |
+| 220_LuigiMainMotion | 57 |
+| 212_DonkeyMainMotion | 57 |
+| 202_MarioMainMotion | 57 |
+| 224_LinkMainMotion | 56 |
+| 1014_FTSamusAnimRollB | 20 |
+| 1013_FTSamusAnimRollF | 20 |
+
+The 14 `*MainMotion` files account for ~872 hits — applying the same
+combine-at-`ftMotionCommandEnd()` work that cleared 235/249 corpus-wide
+would clear most of these. `86_ITCommonObject`'s 89 hits are in
+`_mobjsubs_gap_*` parents that need typing as `MObjSub *[N]`.
+
+### R016 by file (top 10 of 48)
+
+Tex blocks without `@tex fmt=… dim=WxH` annotations. The remaining hits
+are in UI/staffroll/explain-graphics files where the texture's binding
+lives in `src/*.c` engine code (e.g. `scStaffrollInitNameAndJobDisplayLists`),
+not in any expanded relocData DL — neither `annotateTexBlocks.py` (DL walk)
+nor `annotateTexBlocksExtern.py` (cross-file `.reloc` chain walk) reaches
+these. Manual annotation from inspecting the loader code is the next step.
+
+| File | Hits |
+|---|---:|
+| 195_SCStaffroll | 134 |
+| 198_SCExplainGraphics | 119 |
+| 11_SC1PIntro | 47 |
+| 324_LinkModel | 44 |
+| 320_SamusModel | 30 |
+| 167_MNTitle | 29 |
+| 103_StagePupupuImages | 12 |
+| 335_NessModel | 11 |
+| 330_PurinModel | 11 |
+| 332_CaptainModel | 8 |
+
+### R004 by file (top 10 of 167)
+
+Reloc chain targets using `<symbol>+0xN` byte arithmetic instead of a
+bare block symbol. R004 is "warn" severity — these still encode correctly
+at link time, but indicate the target offset would be cleaner if the
+parent block were split so each chain landing has its own first-class
+symbol.
+
+| File | Hits |
+|---|---:|
+| 254_SC1PTrainingMode.reloc | 116 |
+| 251_ITCommonData.reloc | 68 |
+| 215_GDonkeyMain.reloc | 64 |
+| 71_MVOpeningYamabuki.c | 57 |
+| 167_MNTitle.reloc | 53 |
+| 71_MVOpeningYamabuki.reloc | 52 |
+| 73_MVOpeningSector.reloc | 47 |
+| 11_SC1PIntro.reloc | 44 |
+| 67_MVOpeningYoster.c | 36 |
+| 310_NLinkModel.reloc | 36 |
+
+### Regenerating these stats
+
+```bash
+# Summary by rule
+python3 tools/validateRelocFile.py --quiet src/relocData/*.c 2>&1 \
+    | awk -F'[][]' '{print $2}' | sort | uniq -c
+
+# Per-rule by-file breakdown
+python3 tools/validateRelocFile.py --rules R009 --quiet src/relocData/*.c 2>&1 \
+    | awk -F: '{print $1}' | sort | uniq -c | sort -rn
+
+# R009 grouped by parent block (most useful for plan-of-attack)
+python3 tools/validateRelocFile.py --rules R009 --by-parent --top 30 src/relocData/*.c
+```
+
+---
+
 ### Quick reference
 
 ```bash

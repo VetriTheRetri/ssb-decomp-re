@@ -1,7 +1,7 @@
 # Relocation metadata for file 239
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNessMain_file_handles dNessMainMotion_0x0024 # -> file 238 (NessMainMotion)
+extern dNessMain_file_handles dNessMainMotion_EggLay_0x0024 # -> file 238 (NessMainMotion)
 extern dNessMain_file_handles+0x4 dNessSpecial2_PsychicMagnetDObjDesc # -> file 352 (NessSpecial2)
 extern dNessMain_file_handles+0x8 dNessSpecial1_PKFire_WeaponAttributes # -> file 240 (NessSpecial1)
 extern dNessMain_PKThunderWeaponAttributes dNessModel_DObjDesc_0x7C98 # -> file 335 (NessModel)

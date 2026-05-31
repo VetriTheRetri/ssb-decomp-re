@@ -4,7 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u32 dMarioMainMotion_0x0024[];
+extern u32 dMarioMainMotion_Wait_0x0024[];
 extern DObjDesc dMarioModel_JointTree[];
 extern DObjDesc dMarioModel_JointTree_0x4590[];
 extern Gfx dMarioModel_Joint_0x18D8_DisplayList[];
@@ -39,7 +39,7 @@ extern DObjDesc dMarioSpecial2_EntryDokanDObjDesc[];
 /* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dMarioMain_pre+0x0) */
 u32 dMarioMain_file_handles[3] = {
 
-	(u32)&dMarioMainMotion_0x0024, /* extern -> 0x0024 */
+	(u32)&dMarioMainMotion_Wait_0x0024, /* extern -> 0x0024 */
 	(u32)&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
 	(u32)&dMarioSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
 };

@@ -1,7 +1,7 @@
 # Relocation metadata for file 233
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dPurinMain_file_handles dPurinMainMotion_0x0034 # -> file 232 (PurinMainMotion)
+extern dPurinMain_file_handles dPurinMainMotion_EggLay_0x0034 # -> file 232 (PurinMainMotion)
 extern dPurinMain_file_handles+0x4 dPurinSpecial2_SingDObjDesc # -> file 351 (PurinSpecial2)
 extern dPurinMain_accesspart+0x4 dPurinModel_gap_0x459C_sub_0x4C4 # -> file 330 (PurinModel)
 extern dPurinMain_accesspart+0x8 dPurinModel_gap_0x459C_sub_0x434 # -> file 330 (PurinModel)
@@ -41,14 +41,14 @@ intern dPurinMain_attr+0x2A0 dPurinMain_animlock
 intern dPurinMain_attr+0x2D0 dPurinMain_hiddenparts
 intern dPurinMain_attr+0x2D4 dPurinMain_commonparts_container
 extern dPurinMain_attr+0x2D8 dPurinShieldPose_data0 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2DC dPurinShieldPose_ptrs0 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2E0 dPurinShieldPose_ptrs1 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2E4 dPurinShieldPose_ptrs2 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2E8 dPurinShieldPose_ptrs3 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2EC dPurinShieldPose_ptrs4 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2F0 dPurinShieldPose_ptrs5 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2F4 dPurinShieldPose_ptrs6 # -> file 331 (PurinShieldPose)
-extern dPurinMain_attr+0x2F8 dPurinShieldPose_ptrs7 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2DC dPurinShieldPose_data0_end # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2E0 dPurinShieldPose_shield_anim_joint_1 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2E4 dPurinShieldPose_shield_anim_joint_2 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2E8 dPurinShieldPose_shield_anim_joint_3 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2EC dPurinShieldPose_shield_anim_joint_4 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2F0 dPurinShieldPose_shield_anim_joint_5 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2F4 dPurinShieldPose_shield_anim_joint_6 # -> file 331 (PurinShieldPose)
+extern dPurinMain_attr+0x2F8 dPurinShieldPose_shield_anim_joint_7 # -> file 331 (PurinShieldPose)
 intern dPurinMain_attr+0x328 dPurinMain_modelparts_container
 intern dPurinMain_attr+0x32C dPurinMain_accesspart
 intern dPurinMain_attr+0x330 dPurinMain_textureparts_container

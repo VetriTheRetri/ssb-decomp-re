@@ -1284,14 +1284,14 @@ corpus against the structural / typing rules listed in
 |---|---:|---:|---|
 | R001 | 0 | 0 | AObjEvent32 script termination (missing/late `End()`) |
 | R002 | 0 | 0 | AObjEvent32 script has >1 `aobjEvent32End()` |
-| R003 | 0 | 0 | Reloc chain pointer hardcoded as raw hex `0xXXXXYYYY` |
-| **R004** | **1,777** | **167** | Reloc chain target isn't a bare block symbol (uses `+0xN` arithmetic) |
+| R003 | 8 | 8 | Reloc chain pointer hardcoded as raw hex `0xXXXXYYYY` |
+| **R004** | **1,751** | **165** | Reloc chain target isn't a bare block symbol (uses `+0xN` arithmetic) |
 | R005 | 1 | 1 | Inline raw-hex dump that should be a `.data.inc.c` include |
 | R006 | 0 | 0 | Palette block isn't `u16[16]+PAD(8)` or `u16[20]` |
 | R007 | 0 | 0 | Include extension doesn't match the C type |
 | R008 | 0 | 0 | `.reloc` references a symbol not declared in the `.c` |
 | **R009** | **1,020** | **49** | Chain pointer lands inside an untyped `.data.inc.c` blob |
-| R010 | 1 | 1 | Untyped `.data.inc.c` blob (tracked for typing) |
+| R010 | 0 | 0 | Untyped `.data.inc.c` blob (tracked for typing) |
 | R011 | 0 | 0 | DObjDesc / DObjDLLink array missing terminating sentinel |
 | R012 | 0 | 0 | MObjSub.sprites/.palettes target has wrong-typed entries |
 | R013 | 0 | 0 | Undecoded opcode word in an AObjEvent32 script |
@@ -1301,7 +1301,26 @@ corpus against the structural / typing rules listed in
 | R017 | 0 | 0 | File ends with a trailing `PAD(N);` |
 
 The three rules in **bold** dominate the remaining noise. Everything else is
-≤ 3 hits in ≤ 3 files.
+≤ 8 hits in ≤ 8 files. The 8 R003 errors are all cross-file extern chains
+targeting `FTCommonMoveset` (file 201) or restructured ShieldPose files
+where the target is encoded as a raw byte offset rather than a
+sym+offset — semantically correct, but the validator wants a symbolic
+target name.
+
+### MainMotion files: anim-keyed script names
+
+All 12 fighter `*MainMotion.c` files (202 Mario, 205 MMario, 208 Fox,
+212 Donkey, 216 Samus, 220 Luigi, 224 Link, 228 Kirby, 232 Purin, 235
+Captain, 238 Ness, 242 Pikachu) now name their `ftMotionCommand` scripts
+after the `llFT<Char>Anim<Name>FileID` they're referenced from in
+[src/ft/ftdata.c](src/ft/ftdata.c) (pattern
+`d<Char>MainMotion_<AnimName>_0x<HEX>`). Clone characters fall back to
+their parent's FileID prefix: **MMario / Luigi → Mario**, **Purin →
+Kirby**. The trailing offset suffix is what `tools/genMotionDescOffsets.py`
+uses to anchor each symbol to its byte position. Captain additionally
+got the leading 108 bytes (0x0000–0x006C) collapsed into a single
+`Vec2h dCaptainMainMotion_SpecialHiVec2h[27]` (one entry per `FTKind`
+for the Falcon-Dive capture position lookup).
 
 ### R009 by file (top 15 of 49)
 
@@ -1329,9 +1348,12 @@ Remaining hits cluster in:
 | 1014_FTSamusAnimRollB | 20 |
 | 1013_FTSamusAnimRollF | 20 |
 
-The 14 `*MainMotion` files account for ~872 hits — applying the same
-combine-at-`ftMotionCommandEnd()` work that cleared 235/249 corpus-wide
-would clear most of these. `86_ITCommonObject`'s 89 hits are in
+All 12 fighter MainMotion files now account for ~823 R009 hits —
+they're the per-script chain targets (`ftMotionCommandGoto`,
+`ftMotionCommandSubroutine`, etc.) landing inside `u32 d<X>_<Name>_0x<HEX>[]`
+script arrays that the validator counts as untyped because the type
+declaration is `u32` rather than a typed `ftMotionCommand[]`. A typedef
+pass would clear most of these. `86_ITCommonObject`'s 89 hits are in
 `_mobjsubs_gap_*` parents that need typing as `MObjSub *[N]`.
 
 ### R016 by file (top 10 of 48)
@@ -1356,7 +1378,7 @@ these. Manual annotation from inspecting the loader code is the next step.
 | 330_PurinModel | 11 |
 | 332_CaptainModel | 8 |
 
-### R004 by file (top 10 of 167)
+### R004 by file (top 10 of 165)
 
 Reloc chain targets using `<symbol>+0xN` byte arithmetic instead of a
 bare block symbol. R004 is "warn" severity — these still encode correctly

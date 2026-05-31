@@ -7,11 +7,12 @@
 #include <gm/gmdef.h>
 #include <gm/gmsound.h>
 #include <ef/efdef.h>
-u32 dBossMainMotion_0x0000[] = {
+#include <wp/wptypes.h>
+ftMotionCommand dBossMainMotion_Default[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0004[] = {
+ftMotionCommand dBossMainMotion_Slap[] = {
 	ftMotionCommandWait(30),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 16, 1, 0, 750, 0, 0, -280, 361, 90, 0, 3, 1, 2, 6, 70),
 	ftMotionPlayFGM(nSYAudioFGMBladeSwing4),
@@ -20,7 +21,7 @@ u32 dBossMainMotion_0x0004[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x002C[] = {
+ftMotionCommand dBossMainMotion_Shoo[] = {
 	ftMotionCommandWait(30),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 12, 1, 0, 500, 0, 0, 0, 361, 100, 0, 3, 1, 2, 1, 16),
 	ftMotionCommandMakeAttackColl(1, 0, 20, 12, 1, 0, 500, 0, -500, 0, 361, 100, 0, 3, 1, 2, 1, 16),
@@ -30,7 +31,7 @@ u32 dBossMainMotion_0x002C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0068[] = {
+ftMotionCommand dBossMainMotion_Launch[] = {
 	ftMotionCommandWaitAsync(26),
 	ftMotionCommandWaitAsync(50),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialHiStart),
@@ -48,7 +49,7 @@ u32 dBossMainMotion_0x0068[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x00EC[] = {
+ftMotionCommand dBossMainMotion_Fly[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkupunch, 0),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient1),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 16, 1, 0, 800, 0, 0, 0, 90, 100, 0, 3, 20, 2, 1, 30),
@@ -59,7 +60,7 @@ u32 dBossMainMotion_0x00EC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0148[] = {
+ftMotionCommand dBossMainMotion_Landing[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkuhikouki, 30),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient2),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 12, 1, 0, 700, 0, 300, -105, 361, 100, 0, 3, 10, 2, 1, 16),
@@ -70,18 +71,18 @@ u32 dBossMainMotion_0x0148[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0198[] = {
+ftMotionCommand dBossMainMotion_WalkStart[] = {
 	ftMotionCommandWaitAsync(13),
 	ftMotionPlayFGM(nSYAudioFGMSamusSpecialHi),
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x01A4[] = {
+ftMotionCommand dBossMainMotion_Walk[] = {
 	ftMotionCommandWaitAsync(13),
 	ftMotionCommandEffect(19, nEFKindDustDashSmall, 0, 300, 0, 0, 0, 0, 0),
 };
 
-u32 dBossMainMotion_0x01B8[] = {
+ftMotionCommand dBossMainMotion_0x01B8[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 19, 8, 1, 0, 350, 170, 0, 0, -60, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 8, 1, 0, 350, 170, 0, 0, -60, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 20, 6, 1, 0, 500, 0, 300, -105, -40, 100, 80, 3, 1, 1, 1, 0),
@@ -104,7 +105,7 @@ u32 dBossMainMotion_0x01B8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x02A4[] = {
+ftMotionCommand dBossMainMotion_Flick[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 15, 6, 1, 0, 350, 170, 0, 0, -60, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 19, 6, 1, 0, 350, 170, 0, 0, -60, 100, 80, 3, 1, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 20, 6, 1, 0, 500, 0, 300, -105, -40, 100, 80, 3, 1, 1, 1, 0),
@@ -124,17 +125,17 @@ u32 dBossMainMotion_0x02A4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x035C[] = {
+ftMotionCommand dBossMainMotion_ChargeStart1[] = {
 	ftMotionCommandEffect(12, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMPikachuElectric4),
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0374[] = {
+ftMotionCommand dBossMainMotion_ChargeStart2[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuElectric4),
 };
 
-u32 dBossMainMotion_0x0378[] = {
+ftMotionCommand dBossMainMotion_0x0378[] = {
 	ftMotionCommandEffect(20, nEFKindDustExpandLarge, 0, 0, 0, 0, 500, 500, 500),
 	ftMotionCommandWait(2),
 	ftMotionCommandWait(2),
@@ -152,14 +153,14 @@ u32 dBossMainMotion_0x0378[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x03EC[] = {
+ftMotionCommand dBossMainMotion_Punch1[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 20, 8, 1, 0, 400, 0, 0, 0, -90, 100, 200, 3, 1, 2, 1, 0),
 	ftMotionCommandEffect(12, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMBladeSwing4),
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0418[] = {
+ftMotionCommand dBossMainMotion_PointStart[] = {
 	ftMotionPlayFGM(nSYAudioFGMBombHeiWalkStart),
 	ftMotionCommandLoopBegin(22),
 	ftMotionCommandEffect(15, nEFKindSparkleWhiteScale, 0, 180, 0, 0, 0, 0, 0),
@@ -168,7 +169,7 @@ u32 dBossMainMotion_0x0418[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x043C[] = {
+ftMotionCommand dBossMainMotion_Poke[] = {
 	ftMotionCommandWaitAsync(26),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 8, 1, 0, 600, 200, 0, 0, 100, 100, 60, 3, 26, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 20, 6, 1, 0, 500, 0, 0, 0, -40, 100, 80, 3, 1, 1, 1, 0),
@@ -186,10 +187,10 @@ u32 dBossMainMotion_0x043C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x04D0[] = {
+ftMotionCommand dBossMainMotion_Point[] = {
 	ftMotionCommandEffect(15, nEFKindPsionic, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(16),
-	ftMotionCommandGoto(dBossMainMotion_0x04D0),
+	ftMotionCommandGoto(dBossMainMotion_Point),
 	ftMotionCommandWaitAsync(30),
 	ftMotionCommandMakeAttackColl(2, 0, 20, 4, 1, 0, 500, 0, 300, -105, -95, 100, 200, 3, 1, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(3, 0, 20, 4, 1, 0, 500, 0, -100, -105, -95, 100, 200, 3, 1, 2, 1, 0),
@@ -219,7 +220,7 @@ u32 dBossMainMotion_0x04D0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x05EC[] = {
+ftMotionCommand dBossMainMotion_Punch2[] = {
 	ftMotionCommandWaitAsync(29),
 	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMCatch),
@@ -241,7 +242,7 @@ u32 dBossMainMotion_0x05EC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0694[] = {
+ftMotionCommand dBossMainMotion_GunDraw[] = {
 	ftMotionCommandWaitAsync(25),
 	ftMotionCommandEffect(15, nEFKindSparkleWhiteScale, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(19, nEFKindSparkleWhiteScale, 0, 220, 0, 0, 0, 0, 0),
@@ -249,7 +250,7 @@ u32 dBossMainMotion_0x0694[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x06C0[] = {
+ftMotionCommand dBossMainMotion_GunShoot[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterBossYubideppou3, 0),
 	ftMotionCommandEffect(15, nEFKindSparkleWhite, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(19, nEFKindSparkleWhite, 0, 220, 0, 0, 0, 0, 0),
@@ -263,11 +264,11 @@ u32 dBossMainMotion_0x06C0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0728[] = {
+ftMotionCommand dBossMainMotion_GunAim[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterBossYubideppou2, 0),
 };
 
-u32 dBossMainMotion_0x072C[] = {
+ftMotionCommand dBossMainMotion_0x072C[] = {
 	ftMotionCommandEffect(-1, nEFKindQuakeMag0, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopBegin(8),
 	ftMotionCommandEffect(15, nEFKindSparkleWhiteScale, 0, 380, 0, 0, 220, 220, 220),
@@ -276,83 +277,73 @@ u32 dBossMainMotion_0x072C[] = {
 	ftMotionCommandWait(1),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dBossMainMotion_0x072C),
-	0x01EA0B2E,
 };
 
-u32 dBossMainMotion_0x0778[] = {
+/* llBossMainMotionBulletNormalWeaponAttributes (52 bytes at offset 0x774) */
+WPAttributes dBossMainMotion_0x0774 = {
+	(void *)0x01EA0B2E,  /* data — JP overwrites via reloc chain */
+	NULL,                /* p_mobjsubs */
+	NULL,                /* anim_joints */
+	NULL,                /* p_matanim_joints */
+	{ { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+	10, 0, -10, 10,      /* map_coll top/center/bottom/width */
+	40,                  /* size              : 16 */
+	361,                 /* angle             : 10 */
+	100,                 /* knockback_scale   : 10 */
+	5,                   /* damage            :  8 */
+	0,                   /* element           :  4 */
+	10,                  /* knockback_weight  : 10 */
+	1,                   /* shield_damage     :  8 */
+	1,                   /* attack_count      :  2 */
+	0,                   /* can_setoff        :  1 */
+	1,                   /* sfx               : 10 */
+	1,                   /* priority          :  3 */
+	0,                   /* can_rehit_item    :  1 */
+	0,                   /* can_rehit_fighter :  1 */
+	1,                   /* can_hop           :  1 */
+	1,                   /* can_reflect       :  1 */
+	1,                   /* can_absorb        :  1 */
+	1,                   /* can_shield        :  1 */
+	0,                   /* unused_0x2F_b6    :  1 */
+	0,                   /* unused_0x2F_b7    :  1 */
+	0,                   /* knockback_base    : 10 */
+};
+
+/* llBossMainMotionBulletHardWeaponAttributes (52 bytes at offset 0x7A8) */
+WPAttributes dBossMainMotion_0x07A8 = {
+	(void *)0xFFFF0B2E,  /* data — JP overwrites via reloc chain */
+	NULL,                /* p_mobjsubs */
+	NULL,                /* anim_joints */
+	NULL,                /* p_matanim_joints */
+	{ { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+	10, 0, -10, 10,      /* map_coll top/center/bottom/width */
+	40,                  /* size              : 16 */
+	361,                 /* angle             : 10 */
+	100,                 /* knockback_scale   : 10 */
+	5,                   /* damage            :  8 */
+	0,                   /* element           :  4 */
+	10,                  /* knockback_weight  : 10 */
+	1,                   /* shield_damage     :  8 */
+	1,                   /* attack_count      :  2 */
+	0,                   /* can_setoff        :  1 */
+	1,                   /* sfx               : 10 */
+	1,                   /* priority          :  3 */
+	0,                   /* can_rehit_item    :  1 */
+	0,                   /* can_rehit_fighter :  1 */
+	1,                   /* can_hop           :  1 */
+	1,                   /* can_reflect       :  1 */
+	1,                   /* can_absorb        :  1 */
+	1,                   /* can_shield        :  1 */
+	0,                   /* unused_0x2F_b6    :  1 */
+	0,                   /* unused_0x2F_b7    :  1 */
+	0,                   /* knockback_base    : 10 */
+};
+
+ftMotionCommand dBossMainMotion_SlamStart[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x077C[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x0780[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x0784[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x0788[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x078C[] = {
-	ftMotionCommandEnd(),
-};
-
-/* ftMotionCommand script (24 bytes, ends with End() at +0x14). */
-u32 dBossMainMotion_0x0790[] = {
-	0x000A0000,
-	0xFFF6000A,
-	0x00285A40,
-	0x1901400A,
-	0x0140093C,
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07A8[] = {
-	0xFFFF0B2E,
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07B0[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07B4[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07B8[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07BC[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07C0[] = {
-	ftMotionCommandEnd(),
-};
-
-/* ftMotionCommand script (24 bytes, ends with End() at +0x14). */
-u32 dBossMainMotion_0x07C4[] = {
-	0x000A0000,
-	0xFFF6000A,
-	0x00285A40,
-	0x1901400A,
-	0x0140093C,
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07DC[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dBossMainMotion_0x07E0[] = {
+ftMotionCommand dBossMainMotion_Punch3[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkupunch, 0),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient1),
 	ftMotionCommandMakeAttackColl(0, 1, 20, 16, 1, 0, 800, 0, 300, -105, 100, 100, 0, 3, 20, 2, 1, 40),
@@ -362,7 +353,7 @@ u32 dBossMainMotion_0x07E0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0828[] = {
+ftMotionCommand dBossMainMotion_PunchEnd[] = {
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
@@ -370,7 +361,7 @@ u32 dBossMainMotion_0x0828[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0860[] = {
+ftMotionCommand dBossMainMotion_0x0860[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialLwLanding),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient1),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 1, 1, 0, 800, 0, 300, -105, -90, 100, 220, 3, 1, 1, 6, 0),
@@ -391,18 +382,18 @@ u32 dBossMainMotion_0x0860[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dBossMainMotion_0x0924[] = {
+ftMotionCommand dBossMainMotion_DyingStart[] = {
 	ftMotionCommandEffect(20, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 400, 400, 400),
 	ftMotionCommandEffect(20, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 400, 400, 400),
 	ftMotionCommandWait(1),
-	ftMotionCommandGoto(dBossMainMotion_0x0924),
+	ftMotionCommandGoto(dBossMainMotion_DyingStart),
 };
 
-u32 dBossMainMotion_0x0950[] = {
+ftMotionCommand dBossMainMotion_Dying[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterDonkeySpecialNEnd, 0),
 	ftMotionCommandEffect(20, nEFKindSparkleWhiteMultiExplode, 0, 0, 0, 0, 300, 300, 300),
 	ftMotionCommandWait(1),
-	ftMotionCommandGoto(dBossMainMotion_0x0950),
+	ftMotionCommandGoto(dBossMainMotion_Dying),
 	ftMotionCommandWaitAsync(120),
 	ftMotionPlayFGM(nSYAudioVoiceBossAppear),
 	ftMotionCommandWaitAsync(410),

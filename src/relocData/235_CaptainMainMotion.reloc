@@ -1,63 +1,63 @@
 # Relocation metadata for file 235
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dCaptainMainMotion_0x00A4+0x3C dCaptainMainMotion_0x00A4
-intern dCaptainMainMotion_0x025C+0x4 dCaptainMainMotion_0x0254
-intern dCaptainMainMotion_0x0268+0x4 dCaptainMainMotion_0x0254
-extern dCaptainMainMotion_0x0268+0xC dCaptainMainMotion_0x0740+0x18  # -> file 201 (FTCommonMoveset)
-intern dCaptainMainMotion_0x02E8+0x4 dCaptainMainMotion_0x02AC
-intern dCaptainMainMotion_0x0328+0x4 dCaptainMainMotion_0x0310
-intern dCaptainMainMotion_0x0330+0x8 dCaptainMainMotion_0x02F0
-intern dCaptainMainMotion_0x0340+0x4 dCaptainMainMotion_0x0330
-intern dCaptainMainMotion_0x0340+0xC dCaptainMainMotion_0x0330
-intern dCaptainMainMotion_0x0340+0x14 dCaptainMainMotion_0x0330
-intern dCaptainMainMotion_0x04D0+0x4 dCaptainMainMotion_0x0490
-intern dCaptainMainMotion_0x0760+0xC dCaptainMainMotion_0x0740
-intern dCaptainMainMotion_0x07D4+0xC dCaptainMainMotion_0x07B0
-intern dCaptainMainMotion_0x0848+0x8 dCaptainMainMotion_0x082C
-intern dCaptainMainMotion_0x08AC+0x8 dCaptainMainMotion_0x088C
-intern dCaptainMainMotion_0x0908+0xC dCaptainMainMotion_0x08F8
-intern dCaptainMainMotion_0x0928+0xC dCaptainMainMotion_0x0918
-extern dCaptainMainMotion_0x0928+0x24 dCaptainMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0964+0x1C dCaptainMainMotion_0x0064  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x09A0+0x20 dCaptainMainMotion_0x00A4+0x24  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x09E0+0x10 dCaptainMainMotion_0x0114+0x18  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0A10+0xC dCaptainMainMotion_0x01A0  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0A2C+0x14 dCaptainMainMotion_0x01EC+0x8  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0A58+0x20 dCaptainMainMotion_0x023C+0xC  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0A90+0xC dCaptainMainMotion_0x02AC+0x4  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0AB4+0xC dCaptainMainMotion_0x0310+0x14  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0AD0+0x14 dCaptainMainMotion_0x0340+0x38  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0AFC+0x14 dCaptainMainMotion_0x0340+0x8C  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0B28+0xC dCaptainMainMotion_0x03DC+0x54  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0B4C+0x10 dCaptainMainMotion_0x0490+0x4  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0B6C+0x18 dCaptainMainMotion_0x04D0+0x28  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0BA4+0x20 dCaptainMainMotion_0x055C  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0BDC+0x10 dCaptainMainMotion_0x05A8+0x18  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0C24+0xC dCaptainMainMotion_0x0630+0x4  # -> file 201 (FTCommonMoveset)
-intern dCaptainMainMotion_0x0C24+0x1C dCaptainMainMotion_0x0C24
+intern dCaptainMainMotion_Run+0x3C dCaptainMainMotion_Run
+intern dCaptainMainMotion_Damage_0x025C+0x4 dCaptainMainMotion_0x0254
+intern dCaptainMainMotion_Damage_0x0268+0x4 dCaptainMainMotion_0x0254
+extern dCaptainMainMotion_Damage_0x0268+0xC dCaptainMainMotion_ItemThrowSmashB_0x0740+0x18  # -> file 201 (FTCommonMoveset)
+intern dCaptainMainMotion_StunLandU+0x4 dCaptainMainMotion_StunLandD
+intern dCaptainMainMotion_StunStartU+0x4 dCaptainMainMotion_StunStartD
+intern dCaptainMainMotion_DownForwardD+0x8 dCaptainMainMotion_0x02F0
+intern dCaptainMainMotion_DownForwardU+0x4 dCaptainMainMotion_DownForwardD
+intern dCaptainMainMotion_DownForwardU+0xC dCaptainMainMotion_DownForwardD
+intern dCaptainMainMotion_DownForwardU+0x14 dCaptainMainMotion_DownForwardD
+intern dCaptainMainMotion_TechB+0x4 dCaptainMainMotion_TechF
+intern dCaptainMainMotion_ItemThrowSmashB_0x0760+0xC dCaptainMainMotion_ItemThrowSmashB_0x0740
+intern dCaptainMainMotion_ItemThrowSmashB_0x07D4+0xC dCaptainMainMotion_ItemThrowSmashB_0x07B0
+intern dCaptainMainMotion_ItemThrowAirSmashB_0x0848+0x8 dCaptainMainMotion_ItemThrowAirSmashB_0x082C
+intern dCaptainMainMotion_ItemThrowAirSmashB_0x08AC+0x8 dCaptainMainMotion_ItemThrowAirSmashB_0x088C
+intern dCaptainMainMotion_HeavyItemThrowSmashB_0x0908+0xC dCaptainMainMotion_HeavyItemThrowSmashB_0x08F8
+intern dCaptainMainMotion_HeavyItemThrowSmashB_0x0928+0xC dCaptainMainMotion_HeavyItemThrowSmashB_0x0918
+extern dCaptainMainMotion_HeavyItemThrowSmashB_0x0928+0x24 dCaptainMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_SwordSwing3+0x1C dCaptainMainMotion_0x0064  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_SwordSwing4+0x20 dCaptainMainMotion_Run+0x24  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_SwordSwingDash+0x10 dCaptainMainMotion_TurnRun+0x18  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_BatSwing1+0xC dCaptainMainMotion_JumpAerial  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_BatSwing3+0x14 dCaptainMainMotion_LandingAirX_0x01EC+0x8  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_BatSwing4+0x20 dCaptainMainMotion_LandingAirX_0x023C+0xC  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_BatSwingDash+0xC dCaptainMainMotion_StunLandD+0x4  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_HarisenSwing1+0xC dCaptainMainMotion_StunStartD+0x14  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_HarisenSwing3+0x14 dCaptainMainMotion_DownForwardU+0x38  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_HarisenSwing4+0x14 dCaptainMainMotion_DownForwardU+0x8C  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_HarisenSwingDash+0xC dCaptainMainMotion_DownAttackU+0x54  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_StarRodSwing1+0x10 dCaptainMainMotion_TechF+0x4  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_StarRodSwing3+0x18 dCaptainMainMotion_TechB+0x28  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_StarRodSwing4+0x20 dCaptainMainMotion_CliffWait  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_StarRodSwingDash+0x10 dCaptainMainMotion_CliffAttackQuick2+0x18  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_Hammer+0xC dCaptainMainMotion_CliffAttackSlow2+0x4  # -> file 201 (FTCommonMoveset)
+intern dCaptainMainMotion_Hammer+0x1C dCaptainMainMotion_Hammer
 intern dCaptainMainMotion_0x0C44+0x34 dCaptainMainMotion_0x0C44
-intern dCaptainMainMotion_0x0C44+0x54 dCaptainMainMotion_0x0C44
-intern dCaptainMainMotion_0x0C44+0x5C dCaptainMainMotion_0x0C44
-intern dCaptainMainMotion_0x0CD0+0x2C dCaptainMainMotion_0x0CD0
-intern dCaptainMainMotion_0x0D00+0x24 dCaptainMainMotion_0x0D00
-intern dCaptainMainMotion_0x0D60+0x4 dCaptainMainMotion_0x0D28
-intern dCaptainMainMotion_0x0DDC+0x4 dCaptainMainMotion_0x0DA4
-intern dCaptainMainMotion_0x0E88+0x8 dCaptainMainMotion_0x0E50
-extern dCaptainMainMotion_0x0F18+0x4 dCaptainMainMotion_0x06A4+0x8  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0F24+0x4 dCaptainMainMotion_0x06A4+0x20  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_0x0F30+0x4 dCaptainMainMotion_0x06C8+0x4  # -> file 201 (FTCommonMoveset)
-intern dCaptainMainMotion_0x0F3C+0x4 dCaptainMainMotion_0x0254
-extern dCaptainMainMotion_0x0F3C+0xC dCaptainMainMotion_0x06D0+0x20  # -> file 201 (FTCommonMoveset)
-intern dCaptainMainMotion_0x0F50+0x4 dCaptainMainMotion_0x0254
-extern dCaptainMainMotion_0x0F50+0xC dCaptainMainMotion_0x0704+0x8  # -> file 201 (FTCommonMoveset)
-intern dCaptainMainMotion_0x10A4+0xC dCaptainMainMotion_0x1068
-intern dCaptainMainMotion_0x10A4+0x1C dCaptainMainMotion_0x1068
-intern dCaptainMainMotion_0x10A4+0x2C dCaptainMainMotion_0x1068
-intern dCaptainMainMotion_0x10A4+0x3C dCaptainMainMotion_0x1068
-intern dCaptainMainMotion_0x10A4+0x4C dCaptainMainMotion_0x1068
-intern dCaptainMainMotion_0x10A4+0x5C dCaptainMainMotion_0x10A4
-intern dCaptainMainMotion_0x18EC+0x4 dCaptainMainMotion_0x18D4
-intern dCaptainMainMotion_0x18FC+0x4 dCaptainMainMotion_0x18F4
-intern dCaptainMainMotion_0x1C10+0x4 dCaptainMainMotion_0x1AB4
-intern dCaptainMainMotion_0x1C8C+0x4 dCaptainMainMotion_0x1C54
+intern dCaptainMainMotion_ShieldBreak+0x1C dCaptainMainMotion_0x0C44
+intern dCaptainMainMotion_Damaged_0x0C9C+0x4 dCaptainMainMotion_0x0C44
+intern dCaptainMainMotion_Sleep_0x0CD0+0x2C dCaptainMainMotion_Sleep_0x0CD0
+intern dCaptainMainMotion_Sleep_0x0D00+0x24 dCaptainMainMotion_Sleep_0x0D00
+intern dCaptainMainMotion_Catch+0x4 dCaptainMainMotion_0x0D28
+intern dCaptainMainMotion_ThrowF+0x4 dCaptainMainMotion_0x0DA4
+intern dCaptainMainMotion_ThrowB+0x8 dCaptainMainMotion_0x0E50
+extern dCaptainMainMotion_Damaged_0x0F18+0x4 dCaptainMainMotion_CliffEscapeQuick2+0x8  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_Damaged_0x0F24+0x4 dCaptainMainMotion_CliffEscapeQuick2+0x20  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_EggLay_0x0F30+0x4 dCaptainMainMotion_CliffEscapeSlow1+0x4  # -> file 201 (FTCommonMoveset)
+intern dCaptainMainMotion_FalconDivePulled+0x4 dCaptainMainMotion_0x0254
+extern dCaptainMainMotion_FalconDivePulled+0xC dCaptainMainMotion_CliffEscapeSlow2+0x20  # -> file 201 (FTCommonMoveset)
+intern dCaptainMainMotion_Damaged_0x0F50+0x4 dCaptainMainMotion_0x0254
+extern dCaptainMainMotion_Damaged_0x0F50+0xC dCaptainMainMotion_HeavyItemPickup+0x8  # -> file 201 (FTCommonMoveset)
+intern dCaptainMainMotion_JabLoop+0xC dCaptainMainMotion_0x1068
+intern dCaptainMainMotion_JabLoop+0x1C dCaptainMainMotion_0x1068
+intern dCaptainMainMotion_JabLoop+0x2C dCaptainMainMotion_0x1068
+intern dCaptainMainMotion_JabLoop+0x3C dCaptainMainMotion_0x1068
+intern dCaptainMainMotion_JabLoop+0x4C dCaptainMainMotion_0x1068
+intern dCaptainMainMotion_JabLoop+0x5C dCaptainMainMotion_JabLoop
+intern dCaptainMainMotion_AppearAir+0x4 dCaptainMainMotion_Appear
+intern dCaptainMainMotion_BlueFalcon1+0x4 dCaptainMainMotion_BlueFalcon2
+intern dCaptainMainMotion_DownSpecialAir+0x4 dCaptainMainMotion_DownSpecial
+intern dCaptainMainMotion_FalconDive+0x4 dCaptainMainMotion_0x1C54

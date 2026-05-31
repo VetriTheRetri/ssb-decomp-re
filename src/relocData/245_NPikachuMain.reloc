@@ -1,7 +1,7 @@
 # Relocation metadata for file 245
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNPikachuMain_file_handles dPikachuMainMotion_0x0010 # -> file 242 (PikachuMainMotion)
+extern dNPikachuMain_file_handles dPikachuMainMotion_Idle_0x0010 # -> file 242 (PikachuMainMotion)
 extern dNPikachuMain_file_handles+0x4 dPikachuSpecial2_UnkDObjDesc # -> file 347 (PikachuSpecial2)
 extern dNPikachuMain_commonparts_container dNPikachuModel_JointTree # -> file 307 (NPikachuModel)
 extern dNPikachuMain_commonparts_container+0x10 dNPikachuModel_JointTree # -> file 307 (NPikachuModel)
@@ -11,14 +11,14 @@ intern dNPikachuMain_attr+0x2A0 dNPikachuMain_animlock
 intern dNPikachuMain_attr+0x2D0 dNPikachuMain_hiddenparts
 intern dNPikachuMain_attr+0x2D4 dNPikachuMain_commonparts_container
 extern dNPikachuMain_attr+0x2D8 dPikachuShieldPose_data0 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2DC dPikachuShieldPose_ptrs0 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2E0 dPikachuShieldPose_ptrs1 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2E4 dPikachuShieldPose_ptrs2 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2E8 dPikachuShieldPose_ptrs3 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2EC dPikachuShieldPose_ptrs4 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2F0 dPikachuShieldPose_ptrs5 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2F4 dPikachuShieldPose_ptrs6 # -> file 343 (PikachuShieldPose)
-extern dNPikachuMain_attr+0x2F8 dPikachuShieldPose_ptrs7 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2DC dPikachuShieldPose_data0_end # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2E0 dPikachuShieldPose_shield_anim_joint_1 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2E4 dPikachuShieldPose_shield_anim_joint_2 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2E8 dPikachuShieldPose_shield_anim_joint_3 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2EC dPikachuShieldPose_shield_anim_joint_4 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2F0 dPikachuShieldPose_shield_anim_joint_5 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2F4 dPikachuShieldPose_shield_anim_joint_6 # -> file 343 (PikachuShieldPose)
+extern dNPikachuMain_attr+0x2F8 dPikachuShieldPose_shield_anim_joint_7 # -> file 343 (PikachuShieldPose)
 intern dNPikachuMain_attr+0x328 dNPikachuMain_modelparts_container
 intern dNPikachuMain_attr+0x330 dNPikachuMain_textureparts_container
 intern dNPikachuMain_attr+0x338 dNPikachuMain_thrown_status

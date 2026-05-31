@@ -31,9 +31,37 @@ DEFAULT_OUT = os.path.join(PROJECT_DIR, "include", "ft", "motiondesc_offsets.h")
 # whatever follows the underscore — usually `0x0024` from the auto-converter
 # but may be a hand-renamed identifier.
 ARRAY_RE = re.compile(
-    r"^u32\s+(d\w+?)_(\w+)\s*\[[^\]]*\]\s*=\s*\{",
+    r"^(?:u32|ftMotionCommand)\s+(d\w+?)_(\w+)\s*\[([^\]]*)\]\s*=\s*\{",
     re.MULTILINE,
 )
+
+# Decls that aren't ftMotionCommand scripts but DO take up bytes in the
+# file between scripts (so the cursor must advance past them). Maps the
+# C type name to bytes-per-element.
+TYPED_ELEMENT_SIZES = {
+    "FTThrowHitDesc": 28,    # 7 × s32
+    "FTSpecialColl":  36,    # kind + joint + Vec3f offset + Vec3f size + damage_resist
+    "WPAttributes":   52,    # 4 ptrs + Vec3h[2] + 4 s16 + 4 packed bitfield words
+    "FTKirbyCopy":    12,    # u16 + s16 + f32 + s32 (KirbyMainMotion only)
+}
+# Match any of the above as either scalar (no []) or array (with []).
+NON_SCRIPT_DECL_RE = re.compile(
+    r"^(" + "|".join(TYPED_ELEMENT_SIZES.keys()) + r")\s+(d\w+?)_(\w+)\s*(\[[^\]]*\])?\s*=\s*\{",
+    re.MULTILINE,
+)
+
+
+def parse_array_length(decl):
+    """Return number of elements from a `[...]` declaration or 1 if no brackets."""
+    if not decl:
+        return 1
+    inner = decl.strip()[1:-1].strip()
+    if not inner:
+        return None  # `[]` — must count braces
+    try:
+        return int(inner, 0)
+    except ValueError:
+        return None
 
 # File-name patterns we care about. Each entry: (filename glob suffix,
 # section comment shown in the header).
@@ -61,7 +89,7 @@ def find_motion_files():
     return out
 
 
-def parse_arrays(path, base):
+def parse_arrays(path, base, keep_jp=True):
     """Find every `u32 d{base}_<label>[]` declaration and compute its byte
     offset within the file by walking declarations in source order.
 
@@ -74,49 +102,80 @@ def parse_arrays(path, base):
 
     # Strip C comments so they don't confuse the brace counter.
     text_nocomments = strip_c_comments(text)
+    # Drop the inactive branch of any outer #if/#else block so we don't
+    # double-count when a decl appears in both branches with the same name.
+    text_nocomments = strip_alternate_branches(text_nocomments, keep_jp=keep_jp)
 
     decls = []  # (full_symbol, byte_offset, declared_byte_size)
 
-    # Walk all matches in source order, computing the byte length of each
-    # array body so we can chain offsets when labels are hand-renamed.
-    pos = 0
-    cursor_byte = 0
+    # Find ALL relevant decls (scripts + typed non-script structs between
+    # them) in source order, so we can chain the cursor through both kinds.
+    # Each match dict: {pos, kind, base, label, body, body_size, decl_size}.
+    events = []
     for m in ARRAY_RE.finditer(text_nocomments):
-        if not m.group(1).endswith(base) and m.group(1) != f"d{base}":
-            continue
-        # Be strict: only `d{base}_<label>` (not other arrays that happen
-        # to share a prefix).
         if m.group(1) != f"d{base}":
             continue
+        body, body_end = extract_brace_body(text_nocomments, m.end() - 1)
+        # If the decl is `[N]` (explicit length), use that as the canonical
+        # word count when the body is opaque (e.g. raw `#include …`) — body
+        # counting only works for `ftMotionCommand` macros, not `u32` blobs.
+        decl_len = parse_array_length("[" + m.group(3) + "]")
+        body_has_include = "#include" in body
+        events.append({
+            "pos": m.start(),
+            "kind": "script",
+            "label": m.group(2),
+            "body": body,
+            "decl_len": decl_len,
+            "body_has_include": body_has_include,
+        })
+    for m in NON_SCRIPT_DECL_RE.finditer(text_nocomments):
+        if m.group(2) != f"d{base}":
+            continue
+        body, body_end = extract_brace_body(text_nocomments, m.end() - 1)
+        elem_size = TYPED_ELEMENT_SIZES[m.group(1)]
+        n_elems = parse_array_length(m.group(4))
+        if n_elems is None:
+            # Count top-level brace-pairs in body
+            n_elems = body.count("{") if "{" in body else 1
+        events.append({
+            "pos": m.start(),
+            "kind": "non_script",
+            "label": m.group(3),
+            "body_size": n_elems * elem_size,
+            "type": m.group(1),
+        })
+    events.sort(key=lambda e: e["pos"])
 
-        sym = f"{m.group(1)}_{m.group(2)}"
-
-        # If the label is `0x<HEX>`, trust it as the byte offset.
-        label = m.group(2)
-        hex_match = re.match(r"^0x([0-9A-Fa-f]+)$", label)
-        if hex_match:
+    cursor_byte = 0
+    for e in events:
+        label = e["label"]
+        # The `_0xNNNN` suffix on a symbol is the US byte offset (that's the
+        # naming convention these files adopt). It's a reliable anchor for
+        # US, but NOT for JP — in JP the same C decl can land at a different
+        # offset (e.g. when a preceding block has #if-divergent size). So
+        # only trust the hex suffix for US; cursor-walk for JP.
+        hex_match = re.match(r"^0x([0-9A-Fa-f]+)$", label) or re.search(r"_0x([0-9A-Fa-f]+)$", label)
+        if hex_match and not keep_jp:
             byte_off = int(hex_match.group(1), 16)
         else:
-            # Use the running cursor — this assumes the file declares
-            # arrays in physical order, which the auto-converter does.
             byte_off = cursor_byte
 
-        # Measure body length by counting top-level u32 entries between {}
-        body_start = m.end()
-        body, body_end = extract_brace_body(text_nocomments, body_start - 1)
-        # Count comma-separated top-level items in `body`. Each is a u32 (4 bytes)
-        # but a single ftMotionCommand* macro can expand to multiple words.
-        # For our purposes, what matters is *advancing the cursor*. The
-        # easiest accurate measure is to count u32-sized macro calls. We
-        # approximate by counting commas at depth 0 in `body` plus 1.
-        word_count = count_top_level_items(body)
-        byte_size = word_count * 4
-        # Multi-word ftMotionCommand macros (Effect, MakeAttackColl, etc.)
-        # expand to >1 word. We can't easily distinguish them here, so we
-        # rely on the `0x<HEX>` label form for accuracy. For files where
-        # *all* labels are `0x<HEX>`, the cursor isn't even consulted.
+        if e["kind"] == "script":
+            # `u32 sym[N] = { #include ... }` blocks are opaque to the macro
+            # counter — trust the declared length. Pure ftMotionCommand bodies
+            # always have countable macros.
+            if e.get("body_has_include") and e.get("decl_len"):
+                word_count = e["decl_len"]
+            else:
+                word_count = count_words_in_body(e["body"], keep_jp=keep_jp)
+            byte_size = word_count * 4
+            sym = f"d{base}_{label}"
+            decls.append((sym, byte_off, byte_size))
+        else:
+            byte_size = e["body_size"]
+            # Non-script decls aren't emitted to the header, but advance cursor.
 
-        decls.append((sym, byte_off, byte_size))
         cursor_byte = byte_off + byte_size
 
     return decls
@@ -172,6 +231,117 @@ def count_top_level_items(body):
     return count
 
 
+# ftMotionCommand macros that expand to MORE than 1 word. The `count_top_level_items`
+# function treats each comma-separated entry as a single word, but these macros
+# emit multiple words at compile time, so we have to add their extra word counts
+# back in to compute the correct byte size of a script body.
+MULTI_WORD_MACROS = {
+    # 4-word macros
+    "ftMotionCommandEffect": 4,
+    "ftMotionCommandEffectItemHold": 4,
+    # 5-word macros
+    "ftMotionCommandMakeAttackColl": 5,
+    "ftMotionCommandMakeAttackCollScaled": 5,
+    # 2-word macros (S1 + S2 chain word)
+    "ftMotionCommandGoto": 2,
+    "ftMotionCommandSubroutine": 2,
+    "ftMotionCommandSetParallelScript": 2,
+    "ftMotionCommandSetThrow": 2,
+    "ftMotionCommandSetDamageThrown": 2,
+    # SetDamageCollPartID expands to S1+S2+S3+S4 = 4 words
+    "ftMotionCommandSetDamageCollPartID": 4,
+    # SetAttackCollOffset expands to S1+S2 = 2 words
+    "ftMotionCommandSetAttackCollOffset": 2,
+}
+
+_MACRO_NAME_RE = re.compile(r"\b(ftMotion(?:Command|Play)\w+?)\s*\(")
+
+
+def strip_alternate_branches(body, keep_jp=True):
+    """Drop the #else..#endif branch of each #if defined(REGION_JP) block,
+    keeping either the JP branch (default) or the US branch.
+
+    Handles both `#if ... #else ... #endif` and `#if ... #endif` (no else).
+    """
+    # Process iteratively to handle nested or sequential #if blocks.
+    out = []
+    i = 0
+    while i < len(body):
+        m = re.search(r"#if\s+([^\n]*)\n", body[i:])
+        if not m:
+            out.append(body[i:])
+            break
+        out.append(body[i:i + m.start()])
+        cond = m.group(1)
+        depth_start = i + m.end()
+        # Find matching #endif with the same depth
+        depth = 1
+        else_pos = None
+        cur = depth_start
+        while cur < len(body):
+            nm = re.search(r"#(if|else|endif)\b[^\n]*", body[cur:])
+            if not nm:
+                break
+            directive = nm.group(1)
+            absolute_pos = cur + nm.start()
+            if directive == "if":
+                depth += 1
+            elif directive == "else" and depth == 1:
+                else_pos = absolute_pos
+            elif directive == "endif":
+                depth -= 1
+                if depth == 0:
+                    endif_pos = absolute_pos
+                    endif_end = cur + nm.end()
+                    # Determine "JP-branch active?" by parsing condition.
+                    # Handle both `defined(REGION_JP)` (JP-only) and
+                    # `!defined(REGION_JP)` (US-only).
+                    if "!defined(REGION_JP)" in cond.replace(" ", ""):
+                        is_jp = False
+                    elif "REGION_JP" in cond:
+                        is_jp = True
+                    else:
+                        is_jp = False
+                    if (keep_jp == is_jp):
+                        # Keep the if-body
+                        kept = body[depth_start:(else_pos if else_pos else endif_pos)]
+                    else:
+                        # Keep the else-body
+                        if else_pos:
+                            else_body_start = body.find("\n", else_pos) + 1
+                            kept = body[else_body_start:endif_pos]
+                        else:
+                            kept = ""
+                    out.append(kept)
+                    i = endif_end
+                    break
+            cur = cur + nm.end()
+        else:
+            # No matching endif found; keep rest as-is
+            out.append(body[i:])
+            break
+        if depth != 0:
+            out.append(body[i:])
+            break
+    return "".join(out)
+
+
+def count_words_in_body(body, keep_jp=True):
+    """Count total u32 WORDS in a script body. Uses count_top_level_items
+    for entry count, then adds extra words for multi-word macros.
+
+    Strips the alternate branch of any preprocessor #if/#else so the count
+    matches the actual byte size (only one branch is emitted per compile)."""
+    body = strip_alternate_branches(body, keep_jp=keep_jp)
+    n_items = count_top_level_items(body)
+    extra = 0
+    for m in _MACRO_NAME_RE.finditer(body):
+        name = m.group(1)
+        if name in MULTI_WORD_MACROS:
+            extra += MULTI_WORD_MACROS[name] - 1   # already counted as 1
+    return n_items + extra
+
+
 def emit_header(motion_files, out_path):
     lines = []
     lines.append("/*")
@@ -188,14 +358,39 @@ def emit_header(motion_files, out_path):
 
     total = 0
     for fid, base, path in motion_files:
-        decls = parse_arrays(path, base)
-        if not decls:
+        decls_jp = parse_arrays(path, base, keep_jp=True)
+        decls_us = parse_arrays(path, base, keep_jp=False)
+        # Build dict for each version
+        jp_offs = {sym: off for sym, off, _ in decls_jp}
+        us_offs = {sym: off for sym, off, _ in decls_us}
+        all_syms = list(jp_offs.keys())
+        for s in us_offs:
+            if s not in jp_offs:
+                all_syms.append(s)
+        if not all_syms:
             continue
         lines.append(f"/* {base} (file {fid}) */")
-        for sym, byte_off, _ in decls:
-            lines.append(f"#define {sym} 0x{byte_off:08X}")
+        for sym in all_syms:
+            jp = jp_offs.get(sym)
+            us = us_offs.get(sym)
+            if jp is None:
+                lines.append(f"#if !defined(REGION_JP)")
+                lines.append(f"#define {sym} 0x{us:08X}")
+                lines.append(f"#endif")
+            elif us is None:
+                lines.append(f"#if defined(REGION_JP)")
+                lines.append(f"#define {sym} 0x{jp:08X}")
+                lines.append(f"#endif")
+            elif jp == us:
+                lines.append(f"#define {sym} 0x{jp:08X}")
+            else:
+                lines.append(f"#if defined(REGION_JP)")
+                lines.append(f"#define {sym} 0x{jp:08X}")
+                lines.append(f"#else")
+                lines.append(f"#define {sym} 0x{us:08X}")
+                lines.append(f"#endif")
+            total += 1
         lines.append("")
-        total += len(decls)
 
     lines.append("#endif /* FT_MOTIONDESC_OFFSETS_H */")
     lines.append("")

@@ -1,7 +1,7 @@
 # Relocation metadata for file 241
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNNessMain_file_handles dNessMainMotion_0x0024 # -> file 238 (NessMainMotion)
+extern dNNessMain_file_handles dNessMainMotion_EggLay_0x0024 # -> file 238 (NessMainMotion)
 extern dNNessMain_modelparts_desc_0x054 dNNessModel_DL_0x34C0 # -> file 312 (NNessModel)
 extern dNNessMain_modelparts_desc_0x054+0x14 dNNessModel_DL_0x34C0 # -> file 312 (NNessModel)
 extern dNNessMain_modelparts_desc_0x07C dNNessModel_gap_0x3210_sub_0x30 # -> file 312 (NNessModel)
@@ -17,13 +17,13 @@ intern dNNessMain_attr+0x2D0 dNNessMain_hiddenparts
 intern dNNessMain_attr+0x2D4 dNNessMain_commonparts_container
 extern dNNessMain_attr+0x2D8 dNessShieldPose_data0 # -> file 337 (NessShieldPose)
 extern dNNessMain_attr+0x2DC dNessShieldPose_data0_end # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2E0 dNessShieldPose_script1_20+0x38 # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2E4 dNessShieldPose_script2_20+0x34 # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2E8 dNessShieldPose_script3_20+0x34 # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2EC dNessShieldPose_script4_20+0x34 # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2F0 dNessShieldPose_script5_20+0x3C # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2F4 dNessShieldPose_script6_20+0x38 # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2F8 dNessShieldPose_script7_20+0x3C # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2E0 dNessShieldPose_shield_anim_joint_1 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2E4 dNessShieldPose_shield_anim_joint_2 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2E8 dNessShieldPose_shield_anim_joint_3 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2EC dNessShieldPose_shield_anim_joint_4 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2F0 dNessShieldPose_shield_anim_joint_5 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2F4 dNessShieldPose_shield_anim_joint_6 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2F8 dNessShieldPose_shield_anim_joint_7 # -> file 337 (NessShieldPose)
 intern dNNessMain_attr+0x328 dNNessMain_modelparts_container
 intern dNNessMain_attr+0x330 dNNessMain_textureparts_container
 intern dNNessMain_attr+0x338 dNNessMain_thrown_status

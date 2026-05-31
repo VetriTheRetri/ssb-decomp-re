@@ -7,13 +7,13 @@
 extern DObjDesc dNNessModel_JointTree[];
 extern u8 dNNessModel_gap_0x3210_sub_0x2B0[];
 extern u8 dNNessModel_gap_0x3210_sub_0x30[];
-extern u32 dNessMainMotion_0x0024[];
+extern u32 dNessMainMotion_EggLay_0x0024[];
 
 /* Pre-attributes data (188 words, 0x02F0 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNNessMain_pre+0x0) */
 u32 dNNessMain_file_handles[1] = {
 
-	(u32)&dNessMainMotion_0x0024, /* extern -> 0x0024 */
+	(u32)&dNessMainMotion_EggLay_0x0024, /* extern -> 0x0024 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNNessMain_pre+0x4) */

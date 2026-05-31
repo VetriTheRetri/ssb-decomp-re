@@ -1,7 +1,7 @@
 # Relocation metadata for file 207
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNMarioMain_file_handles dMarioMainMotion_0x0024 # -> file 202 (MarioMainMotion)
+extern dNMarioMain_file_handles dMarioMainMotion_Wait_0x0024 # -> file 202 (MarioMainMotion)
 extern dNMarioMain_commonparts_container dNMarioModel_JointTree # -> file 301 (NMarioModel)
 extern dNMarioMain_commonparts_container+0x10 dNMarioModel_JointTree # -> file 301 (NMarioModel)
 extern dNMarioMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
@@ -9,15 +9,15 @@ intern dNMarioMain_attr+0x29C dNMarioMain_setup_parts
 intern dNMarioMain_attr+0x2A0 dNMarioMain_animlock
 intern dNMarioMain_attr+0x2D0 dNMarioMain_hiddenparts
 intern dNMarioMain_attr+0x2D4 dNMarioMain_commonparts_container
-extern dNMarioMain_attr+0x2D8 dMarioShieldPose_dMarioShieldPose_data0 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2DC dMarioShieldPose_dMarioShieldPose_data0_end # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2E0 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_1 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2E4 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_2 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2E8 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_3 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2EC dMarioShieldPose_dMarioShieldPose_script5_15+0x18 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2F0 dMarioShieldPose_dMarioShieldPose_script6_15+0x20 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2F4 dMarioShieldPose_dMarioShieldPose_script7_15+0x28 # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2F8 dMarioShieldPose_dMarioShieldPose_script8_15+0x28 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2D8 dMarioShieldPose_data0 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2DC dMarioShieldPose_data0_end # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2E0 dMarioShieldPose_shield_anim_joint_1 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2E4 dMarioShieldPose_shield_anim_joint_2 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2E8 dMarioShieldPose_shield_anim_joint_3 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2EC dMarioShieldPose_shield_anim_joint_4 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2F0 dMarioShieldPose_shield_anim_joint_5 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2F4 dMarioShieldPose_shield_anim_joint_6 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2F8 dMarioShieldPose_shield_anim_joint_7 # -> file 298 (MarioShieldPose)
 intern dNMarioMain_attr+0x328 dNMarioMain_modelparts_container
 intern dNMarioMain_attr+0x330 dNMarioMain_textureparts_container
 intern dNMarioMain_attr+0x338 dNMarioMain_thrown_status

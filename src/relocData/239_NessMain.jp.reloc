@@ -19,7 +19,7 @@ intern dNessMain_attr+0x338 dNessMain_thrown_status
 intern dNessMain_attr+0x340 dNessMain_sprites
 intern dNessMain_attr+0x344 dNessMain_skeleton
 
-extern dNessMain_file_handles dNessMainMotion_0x0024  # -> file 213 (NessMainMotion)
+extern dNessMain_file_handles dNessMainMotion_EggLay_0x0024  # -> file 213 (NessMainMotion)
 extern dNessMain_file_handles+0x4 dNessSpecial2_PsychicMagnetDObjDesc  # -> file 327 (NessSpecial2)
 extern dNessMain_file_handles+0x8 dNessSpecial1_PKFire_WeaponAttributes  # -> file 215 (NessSpecial1)
 extern dNessMain_PKThunderWeaponAttributes dNessModel_DObjDesc_0x7C98  # -> file 310 (NessModel)

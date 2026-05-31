@@ -6,28 +6,53 @@
 #include <ft/fttypes.h>
 #include <gm/gmdef.h>
 
+
 #include <ef/efdef.h>
-u32 dDonkeyMainMotion_0x0000[] = {
+
+extern u32 dFTCommonMoveset_SwordSwing1[];
+extern u32 dFTCommonMoveset_SwordSwing3[];
+extern u32 dFTCommonMoveset_SwordSwing4[];
+extern u32 dFTCommonMoveset_SwordSwingDash[];
+extern u32 dFTCommonMoveset_BatSwing1[];
+extern u32 dFTCommonMoveset_BatSwing3[];
+extern u32 dFTCommonMoveset_BatSwing4[];
+extern u32 dFTCommonMoveset_BatSwingDash[];
+extern u32 dFTCommonMoveset_HarisenSwing1[];
+extern u32 dFTCommonMoveset_HarisenSwing3[];
+extern u32 dFTCommonMoveset_HarisenSwing4[];
+extern u32 dFTCommonMoveset_HarisenSwingDash[];
+extern u32 dFTCommonMoveset_StarRodSwing1[];
+extern u32 dFTCommonMoveset_StarRodSwing3[];
+extern u32 dFTCommonMoveset_StarRodSwing4[];
+extern u32 dFTCommonMoveset_StarRodSwingDash[];
+extern u32 dFTCommonMoveset_FireFlowerShoot[];
+extern u32 dFTCommonMoveset_DamageBumpHit[];
+extern u32 dFTCommonMoveset_DamageRumble[];
+extern u32 dFTCommonMoveset_DamageFlameBurst[];
+extern u32 dFTCommonMoveset_DamageSparkleDelay[];
+extern u32 dFTCommonMoveset_DamageSparkle[];
+extern void *dFTCommonMoveset_DamageScript[2][nFTKindEnumCount];
+ftMotionCommand dDonkeyMainMotion_EggLay_0x0000[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0008[] = {
+ftMotionCommand dDonkeyMainMotion_Walk1[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0010[] = {
+ftMotionCommand dDonkeyMainMotion_Walk2[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0018[] = {
+ftMotionCommand dDonkeyMainMotion_Walk3[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0020[] = {
+ftMotionCommand dDonkeyMainMotion_Dash[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyDash),
 	ftMotionCommandLoopBegin(2),
@@ -37,25 +62,28 @@ u32 dDonkeyMainMotion_0x0020[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0048[] = {
+ftMotionCommand dDonkeyMainMotion_Run[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 50, 0, 0, 0),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0048),
+	ftMotionCommandGoto(dDonkeyMainMotion_Run),
+};
+
+ftMotionCommand dDonkeyMainMotion_RunBrake[] = {
 	ftMotionPlayFGM(nSYAudioFGMGroundBrakeGrind),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0084[] = {
+ftMotionCommand dDonkeyMainMotion_Turn[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWait(2),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0094[] = {
+ftMotionCommand dDonkeyMainMotion_TurnRun[] = {
 	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 100, 0, 0, 0),
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetFlag1(1),
@@ -64,20 +92,20 @@ u32 dDonkeyMainMotion_0x0094[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x00C4[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirX_0x00C4[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x00D4[] = {
+ftMotionCommand dDonkeyMainMotion_Jump[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyPurinJump),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x00EC[] = {
+ftMotionCommand dDonkeyMainMotion_JumpAerial[] = {
 	ftMotionPlayFGM(nSYAudioFGMUnkGrind2),
 	ftMotionCommandLoopBegin(2),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 100, 100, 100),
@@ -86,26 +114,26 @@ u32 dDonkeyMainMotion_0x00EC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0110[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirX_0x0110[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyLanding),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x012C[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirX_0x012C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyLanding),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0148[] = {
+ftMotionCommand dDonkeyMainMotion_ShieldDrop_0x0148[] = {
 	ftMotionPlayFGM(nSYAudioFGMCharacterUnkZip1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0150[] = {
+ftMotionCommand dDonkeyMainMotion_ShieldDrop_0x0150[] = {
 	ftMotionPlayFGM(nSYAudioFGMCharacterUnkZip1),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(2),
@@ -113,61 +141,61 @@ u32 dDonkeyMainMotion_0x0150[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0164[] = {
+ftMotionCommand dDonkeyMainMotion_0x0164[] = {
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandReturn(),
 };
 
-u32 dDonkeyMainMotion_0x016C[] = {
+ftMotionCommand dDonkeyMainMotion_Damage_0x016C[] = {
 	ftMotionCommandSubroutine(dDonkeyMainMotion_0x0164),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0178[] = {
+ftMotionCommand dDonkeyMainMotion_Damage_0x0178[] = {
 	ftMotionCommandSubroutine(dDonkeyMainMotion_0x0164),
-	ftMotionCommandSetDamageThrown(0x0758), /* extern */
+	ftMotionCommandSetDamageThrown((u32)dFTCommonMoveset_DamageScript), /* extern */
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x018C[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirX_0x018C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyLanding),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x01A8[] = {
+ftMotionCommand dDonkeyMainMotion_Crouch[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x01B8[] = {
+ftMotionCommand dDonkeyMainMotion_CrouchIdle[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x01C0[] = {
+ftMotionCommand dDonkeyMainMotion_CrouchEnd[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x01D0[] = {
+ftMotionCommand dDonkeyMainMotion_EnterPipe[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x01DC[] = {
+ftMotionCommand dDonkeyMainMotion_ExitPipe[] = {
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x01E8[] = {
+ftMotionCommand dDonkeyMainMotion_StunLandD[] = {
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
@@ -180,11 +208,11 @@ u32 dDonkeyMainMotion_0x01E8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0228[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x01E8),
+ftMotionCommand dDonkeyMainMotion_StunLandU[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_StunLandD),
 };
 
-u32 dDonkeyMainMotion_0x0230[] = {
+ftMotionCommand dDonkeyMainMotion_0x0230[] = {
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
@@ -192,7 +220,7 @@ u32 dDonkeyMainMotion_0x0230[] = {
 	ftMotionCommandReturn(),
 };
 
-u32 dDonkeyMainMotion_0x0250[] = {
+ftMotionCommand dDonkeyMainMotion_StunStartD[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(24),
 	ftMotionCommandSetHitStatusAll(1),
@@ -201,20 +229,23 @@ u32 dDonkeyMainMotion_0x0250[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0268[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0250),
+ftMotionCommand dDonkeyMainMotion_StunStartU[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_StunStartD),
 };
 
-u32 dDonkeyMainMotion_0x0270[] = {
+ftMotionCommand dDonkeyMainMotion_DownForwardD[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandSubroutine(dDonkeyMainMotion_0x0230),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0280[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0270),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0270),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0270),
+ftMotionCommand dDonkeyMainMotion_DownForwardU[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_DownForwardD),
+	ftMotionCommandGoto(dDonkeyMainMotion_DownForwardD),
+	ftMotionCommandGoto(dDonkeyMainMotion_DownForwardD),
+};
+
+ftMotionCommand dDonkeyMainMotion_DownAttackD[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetModelPartID(16, 1),
@@ -232,7 +263,7 @@ u32 dDonkeyMainMotion_0x0280[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0320[] = {
+ftMotionCommand dDonkeyMainMotion_DownAttackU[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
@@ -249,7 +280,7 @@ u32 dDonkeyMainMotion_0x0320[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x03A4[] = {
+ftMotionCommand dDonkeyMainMotion_Tech[] = {
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandEffect(0, nEFKindFlashLarge, 0, 0, 0, 0, 0, 0, 0),
@@ -262,7 +293,7 @@ u32 dDonkeyMainMotion_0x03A4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x03E4[] = {
+ftMotionCommand dDonkeyMainMotion_TechF[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandEffect(0, nEFKindFlashLarge, 0, 0, 0, 0, 0, 0, 0),
@@ -276,8 +307,11 @@ u32 dDonkeyMainMotion_0x03E4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0428[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x03E4),
+ftMotionCommand dDonkeyMainMotion_TechB[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_TechF),
+};
+
+ftMotionCommand dDonkeyMainMotion_RollF[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
@@ -289,7 +323,7 @@ u32 dDonkeyMainMotion_0x0428[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0460[] = {
+ftMotionCommand dDonkeyMainMotion_RollB[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, nEFKindDustHeavy, 0, 0, 0, 0, 0, 0, 0),
@@ -300,14 +334,14 @@ u32 dDonkeyMainMotion_0x0460[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x048C[] = {
+ftMotionCommand dDonkeyMainMotion_CliffCatch[] = {
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionPlayFGM(nSYAudioFGMCatch),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x049C[] = {
+ftMotionCommand dDonkeyMainMotion_CliffWait[] = {
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(60),
@@ -315,42 +349,42 @@ u32 dDonkeyMainMotion_0x049C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04B0[] = {
+ftMotionCommand dDonkeyMainMotion_CliffQuick[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04B8[] = {
+ftMotionCommand dDonkeyMainMotion_CliffClimbQuick1[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04C0[] = {
+ftMotionCommand dDonkeyMainMotion_CliffClimbQuick2[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04C8[] = {
+ftMotionCommand dDonkeyMainMotion_CliffSlow[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04D0[] = {
+ftMotionCommand dDonkeyMainMotion_CliffClimbSlow1[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04D8[] = {
+ftMotionCommand dDonkeyMainMotion_CliffClimbSlow2[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04E0[] = {
+ftMotionCommand dDonkeyMainMotion_CliffAttackQuick1[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x04E8[] = {
+ftMotionCommand dDonkeyMainMotion_CliffAttackQuick2[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -367,7 +401,7 @@ u32 dDonkeyMainMotion_0x04E8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0548[] = {
+ftMotionCommand dDonkeyMainMotion_CliffAttackSlow1[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -387,16 +421,16 @@ u32 dDonkeyMainMotion_0x0548[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x05B4[] = {
+ftMotionCommand dDonkeyMainMotion_CliffAttackSlow2[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x05B8[] = {
+ftMotionCommand dDonkeyMainMotion_CliffEscapeQuick1[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x05C0[] = {
+ftMotionCommand dDonkeyMainMotion_CliffEscapeQuick2[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -405,12 +439,12 @@ u32 dDonkeyMainMotion_0x05C0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x05E4[] = {
+ftMotionCommand dDonkeyMainMotion_CliffEscapeSlow1[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x05EC[] = {
+ftMotionCommand dDonkeyMainMotion_CliffEscapeSlow2[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -419,28 +453,28 @@ u32 dDonkeyMainMotion_0x05EC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0610[] = {
+ftMotionCommand dDonkeyMainMotion_LightItemPickup[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0620[] = {
+ftMotionCommand dDonkeyMainMotion_HeavyItemPickup[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0630[] = {
+ftMotionCommand dDonkeyMainMotion_ItemDrop[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0640[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowDash[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 0, 0, 0, 0),
@@ -448,7 +482,7 @@ u32 dDonkeyMainMotion_0x0640[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0660[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashB_0x0660[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
@@ -456,10 +490,13 @@ u32 dDonkeyMainMotion_0x0660[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0680[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashB_0x0680[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetFlag3(6),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0660),
+	ftMotionCommandGoto(dDonkeyMainMotion_ItemThrowSmashB_0x0660),
+};
+
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashU_0x0690[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
@@ -467,7 +504,7 @@ u32 dDonkeyMainMotion_0x0680[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x06B0[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashD_0x06B0[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
@@ -475,7 +512,7 @@ u32 dDonkeyMainMotion_0x06B0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x06D0[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashB_0x06D0[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(8),
@@ -485,11 +522,14 @@ u32 dDonkeyMainMotion_0x06D0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x06F8[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashB_0x06F8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandSetFlag3(6),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x06D0),
+	ftMotionCommandGoto(dDonkeyMainMotion_ItemThrowSmashB_0x06D0),
+};
+
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashU_0x070C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(9),
@@ -499,7 +539,7 @@ u32 dDonkeyMainMotion_0x06F8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0734[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowSmashD_0x0734[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(4),
@@ -509,30 +549,33 @@ u32 dDonkeyMainMotion_0x0734[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x075C[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashB_0x075C[] = {
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0778[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashB_0x0778[] = {
 	ftMotionCommandSetFlag3(4),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x075C),
+	ftMotionCommandGoto(dDonkeyMainMotion_ItemThrowAirSmashB_0x075C),
+};
+
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashU_0x0784[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x07A0[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashF_0x07A0[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x07BC[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashB_0x07BC[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
@@ -541,10 +584,13 @@ u32 dDonkeyMainMotion_0x07BC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x07E0[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashB_0x07E0[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandSetFlag3(4),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x07BC),
+	ftMotionCommandGoto(dDonkeyMainMotion_ItemThrowAirSmashB_0x07BC),
+};
+
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashU_0x07F0[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
@@ -553,7 +599,7 @@ u32 dDonkeyMainMotion_0x07E0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0814[] = {
+ftMotionCommand dDonkeyMainMotion_ItemThrowAirSmashF_0x0814[] = {
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
@@ -562,20 +608,20 @@ u32 dDonkeyMainMotion_0x0814[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0838[] = {
+ftMotionCommand dDonkeyMainMotion_CargoAirThrow_0x0838[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0848[] = {
+ftMotionCommand dDonkeyMainMotion_CargoAirThrow_0x0848[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetFlag3(10),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0838),
+	ftMotionCommandGoto(dDonkeyMainMotion_CargoAirThrow_0x0838),
 };
 
-u32 dDonkeyMainMotion_0x0858[] = {
+ftMotionCommand dDonkeyMainMotion_CargoAirThrow_0x0858[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(19),
@@ -586,15 +632,18 @@ u32 dDonkeyMainMotion_0x0858[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0878[] = {
+ftMotionCommand dDonkeyMainMotion_CargoAirThrow_0x0878[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetFlag3(6),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0858),
+	ftMotionCommandGoto(dDonkeyMainMotion_CargoAirThrow_0x0858),
+};
+
+ftMotionCommand dDonkeyMainMotion_SwordSwing1[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSubroutine(0x0000), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_SwordSwing1), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandWait(2),
@@ -602,11 +651,11 @@ u32 dDonkeyMainMotion_0x0878[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x08B4[] = {
+ftMotionCommand dDonkeyMainMotion_SwordSwing3[] = {
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSubroutine(0x0064), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_SwordSwing3), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(5),
@@ -614,14 +663,14 @@ u32 dDonkeyMainMotion_0x08B4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x08DC[] = {
+ftMotionCommand dDonkeyMainMotion_SwordSwing4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSubroutine(0x00C8), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_SwordSwing4), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
@@ -629,12 +678,12 @@ u32 dDonkeyMainMotion_0x08DC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0910[] = {
+ftMotionCommand dDonkeyMainMotion_SwordSwingDash[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x012C), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_SwordSwingDash), /* extern */
 	ftMotionCommandWait(2),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandWait(20),
@@ -644,40 +693,40 @@ u32 dDonkeyMainMotion_0x0910[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0944[] = {
+ftMotionCommand dDonkeyMainMotion_BatSwing1[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSubroutine(0x01A0), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_BatSwing1), /* extern */
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0960[] = {
+ftMotionCommand dDonkeyMainMotion_BatSwing3[] = {
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSubroutine(0x01F4), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_BatSwing3), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0978[] = {
+ftMotionCommand dDonkeyMainMotion_BatSwing4[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandSetColAnim(nGMColAnimFighterBat, 40),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSubroutine(0x0248), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_BatSwing4), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x09A4[] = {
+ftMotionCommand dDonkeyMainMotion_BatSwingDash[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x02B0), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_BatSwingDash), /* extern */
 	ftMotionCommandWait(22),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(46),
@@ -685,37 +734,37 @@ u32 dDonkeyMainMotion_0x09A4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x09C8[] = {
+ftMotionCommand dDonkeyMainMotion_HarisenSwing1[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSubroutine(0x0324), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_HarisenSwing1), /* extern */
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x09E4[] = {
+ftMotionCommand dDonkeyMainMotion_HarisenSwing3[] = {
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSubroutine(0x0378), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_HarisenSwing3), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x09FC[] = {
+ftMotionCommand dDonkeyMainMotion_HarisenSwing4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSubroutine(0x03CC), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_HarisenSwing4), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0A1C[] = {
+ftMotionCommand dDonkeyMainMotion_HarisenSwingDash[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x0430), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_HarisenSwingDash), /* extern */
 	ftMotionCommandWait(22),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(46),
@@ -723,20 +772,20 @@ u32 dDonkeyMainMotion_0x0A1C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0A40[] = {
+ftMotionCommand dDonkeyMainMotion_StarRodSwing1[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 8),
 	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSubroutine(0x0494), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_StarRodSwing1), /* extern */
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0A60[] = {
+ftMotionCommand dDonkeyMainMotion_StarRodSwing3[] = {
 	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 13),
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSubroutine(0x04F8), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_StarRodSwing3), /* extern */
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWait(3),
@@ -744,13 +793,13 @@ u32 dDonkeyMainMotion_0x0A60[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0A84[] = {
+ftMotionCommand dDonkeyMainMotion_StarRodSwing4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 24),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSubroutine(0x055C), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_StarRodSwing4), /* extern */
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetFlag0(2),
 	ftMotionCommandWait(3),
@@ -758,11 +807,11 @@ u32 dDonkeyMainMotion_0x0A84[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0AB4[] = {
+ftMotionCommand dDonkeyMainMotion_StarRodSwingDash[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 22),
 	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x05C0), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_StarRodSwingDash), /* extern */
 	ftMotionCommandWait(22),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(46),
@@ -770,14 +819,14 @@ u32 dDonkeyMainMotion_0x0AB4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0ADC[] = {
+ftMotionCommand dDonkeyMainMotion_FireFlowerShoot_0x0ADC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0AEC[] = {
+ftMotionCommand dDonkeyMainMotion_FireFlowerShoot_0x0AEC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetModelPartID(12, 2),
@@ -785,17 +834,17 @@ u32 dDonkeyMainMotion_0x0AEC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0B00[] = {
+ftMotionCommand dDonkeyMainMotion_Hammer[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetModelPartID(12, 1),
-	ftMotionCommandSubroutine(0x0634), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_FireFlowerShoot), /* extern */
 	ftMotionCommandWait(16),
 	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0B00),
+	ftMotionCommandGoto(dDonkeyMainMotion_Hammer),
 };
 
-u32 dDonkeyMainMotion_0x0B24[] = {
+ftMotionCommand dDonkeyMainMotion_0x0B24[] = {
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 200, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
@@ -803,22 +852,31 @@ u32 dDonkeyMainMotion_0x0B24[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dDonkeyMainMotion_0x0B24),
+};
+
+ftMotionCommand dDonkeyMainMotion_ShieldBreak[] = {
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dDonkeyMainMotion_0x0B24),
+};
+
+ftMotionCommand dDonkeyMainMotion_Damaged_0x0B88[] = {
 	ftMotionCommandGoto(dDonkeyMainMotion_0x0B24),
+};
+
+ftMotionCommand dDonkeyMainMotion_StunLandD_0x0B90[] = {
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0BB4[] = {
+ftMotionCommand dDonkeyMainMotion_StunStart[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0BBC[] = {
+ftMotionCommand dDonkeyMainMotion_Sleep_0x0BBC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayVoice(nSYAudioVoiceDonkeyFuraFura),
 	ftMotionCommandSetModelPartID(12, 1),
@@ -826,16 +884,16 @@ u32 dDonkeyMainMotion_0x0BBC[] = {
 	ftMotionCommandEffect(0, nEFKindFuraSparkle, 0, 0, 180, 0, 380, 380, 200),
 	ftMotionCommandWait(10),
 	ftMotionCommandLoopEnd(),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0BBC),
+	ftMotionCommandGoto(dDonkeyMainMotion_Sleep_0x0BBC),
 };
 
-u32 dDonkeyMainMotion_0x0BEC[] = {
+ftMotionCommand dDonkeyMainMotion_Sleep_0x0BEC[] = {
 	ftMotionPlayInterruptableVoice(nSYAudioVoiceDonkeyFuraSleep),
 	ftMotionCommandSetModelPartID(12, 1),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(0, nEFKindMusicNote, 0, 0, 150, 0, 300, 300, 300),
 	ftMotionCommandWait(10),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x0BEC),
+	ftMotionCommandGoto(dDonkeyMainMotion_Sleep_0x0BEC),
 };
 
 FTThrowHitDesc dDonkeyMainMotion_0x0C14[] = {
@@ -843,7 +901,7 @@ FTThrowHitDesc dDonkeyMainMotion_0x0C14[] = {
 	{ -1, 2, 361, 100, 0, 0, 0 },
 };
 
-u32 dDonkeyMainMotion_0x0C4C[] = {
+ftMotionCommand dDonkeyMainMotion_Catch[] = {
 	ftMotionCommandSetThrow((u32)dDonkeyMainMotion_0x0C14),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
@@ -855,7 +913,7 @@ u32 dDonkeyMainMotion_0x0C4C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0C94[] = {
+ftMotionCommand dDonkeyMainMotion_ThrowF[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandEffect(29, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
@@ -874,7 +932,7 @@ FTThrowHitDesc dDonkeyMainMotion_0x0CF0[] = {
 	{ -1, 2, 361, 100, 0, 0, 0 },
 };
 
-u32 dDonkeyMainMotion_0x0D28[] = {
+ftMotionCommand dDonkeyMainMotion_CargoAirThrow_0x0D28[] = {
 	ftMotionCommandSetThrow((u32)dDonkeyMainMotion_0x0CF0),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
@@ -896,7 +954,7 @@ FTThrowHitDesc dDonkeyMainMotion_0x0D88[] = {
 	{ -1, 9, 361, 100, 0, 0, 0 },
 };
 
-u32 dDonkeyMainMotion_0x0DC0[] = {
+ftMotionCommand dDonkeyMainMotion_ThrowB[] = {
 	ftMotionCommandSetThrow((u32)dDonkeyMainMotion_0x0D88),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
@@ -912,34 +970,34 @@ u32 dDonkeyMainMotion_0x0DC0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0E1C[] = {
-	ftMotionCommandSubroutine(0x06AC), /* extern */
+ftMotionCommand dDonkeyMainMotion_Damaged_0x0E1C[] = {
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageBumpHit), /* extern */
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0E28[] = {
-	ftMotionCommandSubroutine(0x06C4), /* extern */
+ftMotionCommand dDonkeyMainMotion_Damaged_0x0E28[] = {
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageRumble), /* extern */
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0E34[] = {
-	ftMotionCommandSubroutine(0x06CC), /* extern */
+ftMotionCommand dDonkeyMainMotion_EggLay_0x0E34[] = {
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageFlameBurst), /* extern */
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0E40[] = {
+ftMotionCommand dDonkeyMainMotion_Damaged_0x0E40[] = {
 	ftMotionCommandSubroutine(dDonkeyMainMotion_0x0164),
-	ftMotionCommandSubroutine(0x06F0), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkleDelay), /* extern */
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0E54[] = {
+ftMotionCommand dDonkeyMainMotion_FalconDivePulled[] = {
 	ftMotionCommandSubroutine(dDonkeyMainMotion_0x0164),
-	ftMotionCommandSubroutine(0x070C), /* extern */
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle), /* extern */
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0E68[] = {
+ftMotionCommand dDonkeyMainMotion_Taunt[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionPlayVoice(nSYAudioVoiceDonkeyAppeal),
@@ -956,7 +1014,7 @@ u32 dDonkeyMainMotion_0x0E68[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0EA0[] = {
+ftMotionCommand dDonkeyMainMotion_Jab1[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandMakeAttackColl(0, 0, 9, 4, 1, 0, 280, 140, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
@@ -969,7 +1027,7 @@ u32 dDonkeyMainMotion_0x0EA0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0EE8[] = {
+ftMotionCommand dDonkeyMainMotion_Jab2[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 4, 1, 0, 280, 140, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
@@ -980,7 +1038,7 @@ u32 dDonkeyMainMotion_0x0EE8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0F28[] = {
+ftMotionCommand dDonkeyMainMotion_DashAttack[] = {
 	ftMotionCommandSetSlopeContour(2),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandMakeAttackColl(0, 0, 21, 12, 1, 0, 290, 90, 0, 0, 100, 100, 120, 3, 1, 2, 1, 0),
@@ -993,7 +1051,7 @@ u32 dDonkeyMainMotion_0x0F28[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0F7C[] = {
+ftMotionCommand dDonkeyMainMotion_FTiltHigh[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 13, 1, 0, 240, 80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 0),
@@ -1005,7 +1063,7 @@ u32 dDonkeyMainMotion_0x0F7C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x0FD0[] = {
+ftMotionCommand dDonkeyMainMotion_FTilt[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 12, 1, 0, 240, 80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 0),
@@ -1017,7 +1075,7 @@ u32 dDonkeyMainMotion_0x0FD0[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1024[] = {
+ftMotionCommand dDonkeyMainMotion_FTiltLow[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 11, 1, 0, 240, 80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 0),
@@ -1029,7 +1087,7 @@ u32 dDonkeyMainMotion_0x1024[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1078[] = {
+ftMotionCommand dDonkeyMainMotion_UTilt[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(10, 1),
 	ftMotionCommandSetModelPartID(12, 2),
@@ -1044,7 +1102,7 @@ u32 dDonkeyMainMotion_0x1078[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x10C8[] = {
+ftMotionCommand dDonkeyMainMotion_DTilt[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetModelPartID(16, 1),
@@ -1057,7 +1115,7 @@ u32 dDonkeyMainMotion_0x10C8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1110[] = {
+ftMotionCommand dDonkeyMainMotion_FSmashHigh[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(16, 1),
 	ftMotionCommandWaitAsync(6),
@@ -1075,7 +1133,7 @@ u32 dDonkeyMainMotion_0x1110[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1194[] = {
+ftMotionCommand dDonkeyMainMotion_FSmashMidHigh[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(16, 1),
 	ftMotionCommandWaitAsync(6),
@@ -1093,7 +1151,7 @@ u32 dDonkeyMainMotion_0x1194[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1218[] = {
+ftMotionCommand dDonkeyMainMotion_FSmash[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(16, 1),
 	ftMotionCommandWaitAsync(6),
@@ -1111,7 +1169,7 @@ u32 dDonkeyMainMotion_0x1218[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x129C[] = {
+ftMotionCommand dDonkeyMainMotion_FSmashMidLow[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(16, 1),
 	ftMotionCommandWaitAsync(6),
@@ -1129,7 +1187,7 @@ u32 dDonkeyMainMotion_0x129C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1320[] = {
+ftMotionCommand dDonkeyMainMotion_FSmashLow[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(16, 1),
 	ftMotionCommandWaitAsync(6),
@@ -1147,7 +1205,7 @@ u32 dDonkeyMainMotion_0x1320[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x13A4[] = {
+ftMotionCommand dDonkeyMainMotion_USmash[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandHideItem(0),
 	ftMotionCommandSetModelPartID(16, 1),
@@ -1175,7 +1233,7 @@ u32 dDonkeyMainMotion_0x13A4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1458[] = {
+ftMotionCommand dDonkeyMainMotion_DSmash[] = {
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetModelPartID(16, 1),
@@ -1198,7 +1256,7 @@ u32 dDonkeyMainMotion_0x1458[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x150C[] = {
+ftMotionCommand dDonkeyMainMotion_AttackAirN[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetFlag1(50),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 15, 1, 0, 200, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 0),
@@ -1215,7 +1273,7 @@ u32 dDonkeyMainMotion_0x150C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x15A4[] = {
+ftMotionCommand dDonkeyMainMotion_AttackAirF[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 16, 1, 0, 240, 220, 0, 0, -70, 100, 0, 3, 0, 2, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 14, 16, 1, 0, 160, 80, 0, 0, 361, 100, 0, 3, 1, 2, 0, 20),
@@ -1230,14 +1288,14 @@ u32 dDonkeyMainMotion_0x15A4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1604[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirF[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyLanding),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1620[] = {
+ftMotionCommand dDonkeyMainMotion_AttackAirB[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetFlag1(1),
 #if defined(REGION_JP)
@@ -1257,14 +1315,14 @@ u32 dDonkeyMainMotion_0x1620[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1690[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirB[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyLanding),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x16AC[] = {
+ftMotionCommand dDonkeyMainMotion_AttackAirU[] = {
 	ftMotionCommandSetModelPartID(10, 1),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandSetFlag1(20),
@@ -1278,7 +1336,7 @@ u32 dDonkeyMainMotion_0x16AC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x16F8[] = {
+ftMotionCommand dDonkeyMainMotion_AttackAirD[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetFlag1(20),
 #if defined(REGION_JP)
@@ -1308,14 +1366,14 @@ u32 dDonkeyMainMotion_0x16F8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1788[] = {
+ftMotionCommand dDonkeyMainMotion_LandingAirX_0x1788[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyLanding),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x17A4[] = {
+ftMotionCommand dDonkeyMainMotion_Appear1[] = {
 	ftMotionCommandWaitAsync(56),
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 250, 0, 0, 0, 0),
@@ -1326,19 +1384,22 @@ u32 dDonkeyMainMotion_0x17A4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x17DC[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x17A4),
+ftMotionCommand dDonkeyMainMotion_Appear2[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_Appear1),
+};
+
+ftMotionCommand dDonkeyMainMotion_GiantPunchGroundLoopStart[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x17FC[] = {
+ftMotionCommand dDonkeyMainMotion_GiantPunchAirLoopStart[] = {
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1810[] = {
+ftMotionCommand dDonkeyMainMotion_GiantPunchGroundLoop[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHi, 0),
@@ -1347,20 +1408,20 @@ u32 dDonkeyMainMotion_0x1810[] = {
 	ftMotionPlayFGM(nSYAudioFGMDonkeyCharge),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 90, -180, 0, 90, 0),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x1810),
+	ftMotionCommandGoto(dDonkeyMainMotion_GiantPunchGroundLoop),
 };
 
-u32 dDonkeyMainMotion_0x1844[] = {
+ftMotionCommand dDonkeyMainMotion_GiantPunchAirLoop[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHi, 0),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyCharge),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x1844),
+	ftMotionCommandGoto(dDonkeyMainMotion_GiantPunchAirLoop),
 };
 
-u32 dDonkeyMainMotion_0x1864[] = {
+ftMotionCommand dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x1864[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi, 4),
@@ -1376,11 +1437,11 @@ u32 dDonkeyMainMotion_0x1864[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x18C4[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x1864),
+ftMotionCommand dDonkeyMainMotion_GiantPunchAirFullyChargedPunch_0x18C4[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x1864),
 };
 
-u32 dDonkeyMainMotion_0x18CC[] = {
+ftMotionCommand dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x18CC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi, 16),
 	ftMotionCommandWait(9),
@@ -1407,8 +1468,11 @@ u32 dDonkeyMainMotion_0x18CC[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x197C[] = {
-	ftMotionCommandGoto(dDonkeyMainMotion_0x18CC),
+ftMotionCommand dDonkeyMainMotion_GiantPunchAirFullyChargedPunch_0x197C[] = {
+	ftMotionCommandGoto(dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x18CC),
+};
+
+ftMotionCommand dDonkeyMainMotion_SpinningKongGround[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeySpin),
@@ -1429,7 +1493,7 @@ u32 dDonkeyMainMotion_0x197C[] = {
 	ftMotionCommandSetHitStatusPartAll(1),
 };
 
-u32 dDonkeyMainMotion_0x1A34[] = {
+ftMotionCommand dDonkeyMainMotion_0x1A34[] = {
 	ftMotionCommandLoopBegin(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeySpin),
 	ftMotionCommandMakeAttackColl(0, 1, 8, 3, 1, 0, 140, 200, 0, 0, 361, 100, 0, 3, 1, 0, 0, 0),
@@ -1442,7 +1506,7 @@ u32 dDonkeyMainMotion_0x1A34[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1A8C[] = {
+ftMotionCommand dDonkeyMainMotion_SpinningKongAir[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(3),
 	ftMotionPlayFGM(nSYAudioFGMDonkeySpin),
@@ -1464,6 +1528,9 @@ u32 dDonkeyMainMotion_0x1A8C[] = {
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandSetHitStatusPartAll(1),
 	ftMotionCommandGoto(dDonkeyMainMotion_0x1A34),
+};
+
+ftMotionCommand dDonkeyMainMotion_HandSlapStart[] = {
 	ftMotionCommandHideItem(0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandSetModelPartID(16, 1),
@@ -1472,7 +1539,7 @@ u32 dDonkeyMainMotion_0x1A8C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1B64[] = {
+ftMotionCommand dDonkeyMainMotion_HandSlapLoop[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandSetModelPartID(16, 1),
@@ -1523,31 +1590,31 @@ u32 dDonkeyMainMotion_0x1B64[] = {
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dDonkeyMainMotion_0x1B64),
+	ftMotionCommandGoto(dDonkeyMainMotion_HandSlapLoop),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1CA8[] = {
+ftMotionCommand dDonkeyMainMotion_HandSlapEnd[] = {
 	ftMotionCommandHideItem(0),
 	ftMotionCommandSetModelPartID(16, 1),
 	ftMotionCommandSetModelPartID(10, 1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1CB8[] = {
+ftMotionCommand dDonkeyMainMotion_CargoTurn[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1CC4[] = {
+ftMotionCommand dDonkeyMainMotion_0x1CC4[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1CC8[] = {
+ftMotionCommand dDonkeyMainMotion_0x1CC8[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dDonkeyMainMotion_0x1CCC[] = {
+ftMotionCommand dDonkeyMainMotion_0x1CCC[] = {
 	ftMotionCommandEnd(),
 };

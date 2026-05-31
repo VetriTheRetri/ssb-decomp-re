@@ -15,7 +15,7 @@ intern dPikachuMain_attr+0x338 dPikachuMain_thrown_status
 intern dPikachuMain_attr+0x340 dPikachuMain_sprites
 intern dPikachuMain_attr+0x344 dPikachuMain_skeleton
 
-extern dPikachuMain_file_handles dPikachuMainMotion_0x0010  # -> file 217 (PikachuMainMotion)
+extern dPikachuMain_file_handles dPikachuMainMotion_Idle_0x0010  # -> file 217 (PikachuMainMotion)
 extern dPikachuMain_file_handles+0x4 dPikachuSpecial2_UnkDObjDesc  # -> file 322 (PikachuSpecial2)
 extern dPikachuMain_file_handles+0x8 dPikachuSpecial1_ThunderJoltAir_WeaponAttributes  # -> file 219 (PikachuSpecial1)
 extern dPikachuMain_file_handles+0xC dPikachuModel_ThunderTrailDObjDesc  # -> file 316 (PikachuModel)
@@ -54,11 +54,11 @@ extern dPikachuMain_skeleton_dls+0xA8 dPikachuModel_gap_0x59B8_sub_0x1548  # -> 
 extern dPikachuMain_skeleton_dls+0xB0 dPikachuModel_gap_0x59B8_sub_0x1658  # -> file 316 (PikachuModel)
 extern dPikachuMain_skeleton_dls+0xC0 dPikachuModel_DL_0x70D0  # -> file 316 (PikachuModel)
 extern dPikachuMain_attr+0x2D8 dPikachuShieldPose_data0  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2DC dPikachuShieldPose_ptrs0  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2E0 dPikachuShieldPose_ptrs1  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2E4 dPikachuShieldPose_ptrs2  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2E8 dPikachuShieldPose_ptrs3  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2EC dPikachuShieldPose_ptrs4  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2F0 dPikachuShieldPose_ptrs5  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2F4 dPikachuShieldPose_ptrs6  # -> file 318 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2F8 dPikachuShieldPose_ptrs7  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2DC dPikachuShieldPose_data0_end  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2E0 dPikachuShieldPose_shield_anim_joint_1  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2E4 dPikachuShieldPose_shield_anim_joint_2  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2E8 dPikachuShieldPose_shield_anim_joint_3  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2EC dPikachuShieldPose_shield_anim_joint_4  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2F0 dPikachuShieldPose_shield_anim_joint_5  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2F4 dPikachuShieldPose_shield_anim_joint_6  # -> file 318 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2F8 dPikachuShieldPose_shield_anim_joint_7  # -> file 318 (PikachuShieldPose)

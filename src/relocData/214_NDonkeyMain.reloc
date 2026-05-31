@@ -1,7 +1,7 @@
 # Relocation metadata for file 214
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNDonkeyMain_file_handles dDonkeyMainMotion_0x0000 # -> file 212 (DonkeyMainMotion)
+extern dNDonkeyMain_file_handles dDonkeyMainMotion_EggLay_0x0000 # -> file 212 (DonkeyMainMotion)
 extern dNDonkeyMain_commonparts_container dNDonkeyModel_JointTree # -> file 308 (NDonkeyModel)
 extern dNDonkeyMain_commonparts_container+0x10 dNDonkeyModel_JointTree # -> file 308 (NDonkeyModel)
 extern dNDonkeyMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
@@ -9,15 +9,15 @@ intern dNDonkeyMain_attr+0x29C dNDonkeyMain_setup_parts
 intern dNDonkeyMain_attr+0x2A0 dNDonkeyMain_animlock
 intern dNDonkeyMain_attr+0x2D0 dNDonkeyMain_hiddenparts
 intern dNDonkeyMain_attr+0x2D4 dNDonkeyMain_commonparts_container
-extern dNDonkeyMain_attr+0x2D8 dDonkeyShieldPose_script0_16+0x10 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2DC dDonkeyShieldPose_ptrs0+0x474 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2E0 dDonkeyShieldPose_script1_14+0x30 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2E4 dDonkeyShieldPose_script2_14+0x30 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2E8 dDonkeyShieldPose_script3_14+0x38 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2EC dDonkeyShieldPose_script4_14+0x30 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2F0 dDonkeyShieldPose_script5_14+0x30 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2F4 dDonkeyShieldPose_script6_14+0x30 # -> file 318 (DonkeyShieldPose)
-extern dNDonkeyMain_attr+0x2F8 dDonkeyShieldPose_script7_14+0x2C # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2D8 dDonkeyShieldPose_data0 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2DC dDonkeyShieldPose_data0_end # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2E0 dDonkeyShieldPose_shield_anim_joint_1 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2E4 dDonkeyShieldPose_shield_anim_joint_2 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2E8 dDonkeyShieldPose_shield_anim_joint_3 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2EC dDonkeyShieldPose_shield_anim_joint_4 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2F0 dDonkeyShieldPose_shield_anim_joint_5 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2F4 dDonkeyShieldPose_shield_anim_joint_6 # -> file 318 (DonkeyShieldPose)
+extern dNDonkeyMain_attr+0x2F8 dDonkeyShieldPose_shield_anim_joint_7 # -> file 318 (DonkeyShieldPose)
 intern dNDonkeyMain_attr+0x328 dNDonkeyMain_modelparts_container
 intern dNDonkeyMain_attr+0x338 dNDonkeyMain_thrown_status
 intern dNDonkeyMain_attr+0x340 dNDonkeyMain_sprites

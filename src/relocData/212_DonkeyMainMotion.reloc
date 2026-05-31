@@ -1,60 +1,60 @@
 # Relocation metadata for file 212
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dDonkeyMainMotion_0x0048+0x20 dDonkeyMainMotion_0x0048
-intern dDonkeyMainMotion_0x016C+0x4 dDonkeyMainMotion_0x0164
-intern dDonkeyMainMotion_0x0178+0x4 dDonkeyMainMotion_0x0164
-extern dDonkeyMainMotion_0x0178+0xC dDonkeyMainMotion_0x0734+0x24  # -> file 201 (FTCommonMoveset)
-intern dDonkeyMainMotion_0x0228+0x4 dDonkeyMainMotion_0x01E8
-intern dDonkeyMainMotion_0x0268+0x4 dDonkeyMainMotion_0x0250
-intern dDonkeyMainMotion_0x0270+0x8 dDonkeyMainMotion_0x0230
-intern dDonkeyMainMotion_0x0280+0x4 dDonkeyMainMotion_0x0270
-intern dDonkeyMainMotion_0x0280+0xC dDonkeyMainMotion_0x0270
-intern dDonkeyMainMotion_0x0280+0x14 dDonkeyMainMotion_0x0270
-intern dDonkeyMainMotion_0x0428+0x4 dDonkeyMainMotion_0x03E4
-intern dDonkeyMainMotion_0x0680+0xC dDonkeyMainMotion_0x0660
-intern dDonkeyMainMotion_0x06F8+0x10 dDonkeyMainMotion_0x06D0
-intern dDonkeyMainMotion_0x0778+0x8 dDonkeyMainMotion_0x075C
-intern dDonkeyMainMotion_0x07E0+0xC dDonkeyMainMotion_0x07BC
-intern dDonkeyMainMotion_0x0848+0xC dDonkeyMainMotion_0x0838
-intern dDonkeyMainMotion_0x0878+0xC dDonkeyMainMotion_0x0858
-extern dDonkeyMainMotion_0x0878+0x24 dDonkeyMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x08B4+0x10 dDonkeyMainMotion_0x0048+0x1C  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x08DC+0x1C dDonkeyMainMotion_0x00C4+0x4  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0910+0x14 dDonkeyMainMotion_0x012C  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0944+0xC dDonkeyMainMotion_0x018C+0x14  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0960+0x8 dDonkeyMainMotion_0x01E8+0xC  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0978+0x1C dDonkeyMainMotion_0x0230+0x18  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x09A4+0xC dDonkeyMainMotion_0x0280+0x30  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x09C8+0xC dDonkeyMainMotion_0x0320+0x4  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x09E4+0x8 dDonkeyMainMotion_0x0320+0x58  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x09FC+0x10 dDonkeyMainMotion_0x03A4+0x28  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0A1C+0xC dDonkeyMainMotion_0x0428+0x8  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0A40+0x10 dDonkeyMainMotion_0x048C+0x8  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0A60+0xC dDonkeyMainMotion_0x04E8+0x10  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0A84+0x18 dDonkeyMainMotion_0x0548+0x14  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0AB4+0x10 dDonkeyMainMotion_0x05C0  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0B00+0x10 dDonkeyMainMotion_0x0630+0x4  # -> file 201 (FTCommonMoveset)
-intern dDonkeyMainMotion_0x0B00+0x20 dDonkeyMainMotion_0x0B00
+intern dDonkeyMainMotion_Run+0x20 dDonkeyMainMotion_Run
+intern dDonkeyMainMotion_Damage_0x016C+0x4 dDonkeyMainMotion_0x0164
+intern dDonkeyMainMotion_Damage_0x0178+0x4 dDonkeyMainMotion_0x0164
+extern dDonkeyMainMotion_Damage_0x0178+0xC dDonkeyMainMotion_ItemThrowSmashD_0x0734+0x24  # -> file 201 (FTCommonMoveset)
+intern dDonkeyMainMotion_StunLandU+0x4 dDonkeyMainMotion_StunLandD
+intern dDonkeyMainMotion_StunStartU+0x4 dDonkeyMainMotion_StunStartD
+intern dDonkeyMainMotion_DownForwardD+0x8 dDonkeyMainMotion_0x0230
+intern dDonkeyMainMotion_DownForwardU+0x4 dDonkeyMainMotion_DownForwardD
+intern dDonkeyMainMotion_DownForwardU+0xC dDonkeyMainMotion_DownForwardD
+intern dDonkeyMainMotion_DownForwardU+0x14 dDonkeyMainMotion_DownForwardD
+intern dDonkeyMainMotion_TechB+0x4 dDonkeyMainMotion_TechF
+intern dDonkeyMainMotion_ItemThrowSmashB_0x0680+0xC dDonkeyMainMotion_ItemThrowSmashB_0x0660
+intern dDonkeyMainMotion_ItemThrowSmashB_0x06F8+0x10 dDonkeyMainMotion_ItemThrowSmashB_0x06D0
+intern dDonkeyMainMotion_ItemThrowAirSmashB_0x0778+0x8 dDonkeyMainMotion_ItemThrowAirSmashB_0x075C
+intern dDonkeyMainMotion_ItemThrowAirSmashB_0x07E0+0xC dDonkeyMainMotion_ItemThrowAirSmashB_0x07BC
+intern dDonkeyMainMotion_CargoAirThrow_0x0848+0xC dDonkeyMainMotion_CargoAirThrow_0x0838
+intern dDonkeyMainMotion_CargoAirThrow_0x0878+0xC dDonkeyMainMotion_CargoAirThrow_0x0858
+extern dDonkeyMainMotion_CargoAirThrow_0x0878+0x24 dDonkeyMainMotion_EggLay_0x0000  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_SwordSwing3+0x10 dDonkeyMainMotion_Run+0x1C  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_SwordSwing4+0x1C dDonkeyMainMotion_LandingAirX_0x00C4+0x4  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_SwordSwingDash+0x14 dDonkeyMainMotion_LandingAirX_0x012C  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_BatSwing1+0xC dDonkeyMainMotion_LandingAirX_0x018C+0x14  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_BatSwing3+0x8 dDonkeyMainMotion_StunLandD+0xC  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_BatSwing4+0x1C dDonkeyMainMotion_0x0230+0x18  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_BatSwingDash+0xC dDonkeyMainMotion_DownForwardU+0x30  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_HarisenSwing1+0xC dDonkeyMainMotion_DownAttackU+0x4  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_HarisenSwing3+0x8 dDonkeyMainMotion_DownAttackU+0x58  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_HarisenSwing4+0x10 dDonkeyMainMotion_Tech+0x28  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_HarisenSwingDash+0xC dDonkeyMainMotion_TechB+0x8  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_StarRodSwing1+0x10 dDonkeyMainMotion_CliffCatch+0x8  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_StarRodSwing3+0xC dDonkeyMainMotion_CliffAttackQuick2+0x10  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_StarRodSwing4+0x18 dDonkeyMainMotion_CliffAttackSlow1+0x14  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_StarRodSwingDash+0x10 dDonkeyMainMotion_CliffEscapeQuick2  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_Hammer+0x10 dDonkeyMainMotion_ItemDrop+0x4  # -> file 201 (FTCommonMoveset)
+intern dDonkeyMainMotion_Hammer+0x20 dDonkeyMainMotion_Hammer
 intern dDonkeyMainMotion_0x0B24+0x40 dDonkeyMainMotion_0x0B24
-intern dDonkeyMainMotion_0x0B24+0x60 dDonkeyMainMotion_0x0B24
-intern dDonkeyMainMotion_0x0B24+0x68 dDonkeyMainMotion_0x0B24
-intern dDonkeyMainMotion_0x0BBC+0x2C dDonkeyMainMotion_0x0BBC
-intern dDonkeyMainMotion_0x0BEC+0x24 dDonkeyMainMotion_0x0BEC
-intern dDonkeyMainMotion_0x0C4C+0x4 dDonkeyMainMotion_0x0C14
-intern dDonkeyMainMotion_0x0D28+0x4 dDonkeyMainMotion_0x0CF0
-intern dDonkeyMainMotion_0x0DC0+0x4 dDonkeyMainMotion_0x0D88
-extern dDonkeyMainMotion_0x0E1C+0x4 dDonkeyMainMotion_0x0680+0x2C  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0E28+0x4 dDonkeyMainMotion_0x06B0+0x14  # -> file 201 (FTCommonMoveset)
-extern dDonkeyMainMotion_0x0E34+0x4 dDonkeyMainMotion_0x06B0+0x1C  # -> file 201 (FTCommonMoveset)
-intern dDonkeyMainMotion_0x0E40+0x4 dDonkeyMainMotion_0x0164
-extern dDonkeyMainMotion_0x0E40+0xC dDonkeyMainMotion_0x06D0+0x20  # -> file 201 (FTCommonMoveset)
-intern dDonkeyMainMotion_0x0E54+0x4 dDonkeyMainMotion_0x0164
-extern dDonkeyMainMotion_0x0E54+0xC dDonkeyMainMotion_0x06F8+0x14  # -> file 201 (FTCommonMoveset)
-intern dDonkeyMainMotion_0x17DC+0x4 dDonkeyMainMotion_0x17A4
-intern dDonkeyMainMotion_0x1810+0x30 dDonkeyMainMotion_0x1810
-intern dDonkeyMainMotion_0x1844+0x1C dDonkeyMainMotion_0x1844
-intern dDonkeyMainMotion_0x18C4+0x4 dDonkeyMainMotion_0x1864
-intern dDonkeyMainMotion_0x197C+0x4 dDonkeyMainMotion_0x18CC
-intern dDonkeyMainMotion_0x1A8C+0xBC dDonkeyMainMotion_0x1A34
-intern dDonkeyMainMotion_0x1B64+0x13C dDonkeyMainMotion_0x1B64
+intern dDonkeyMainMotion_ShieldBreak+0x1C dDonkeyMainMotion_0x0B24
+intern dDonkeyMainMotion_Damaged_0x0B88+0x4 dDonkeyMainMotion_0x0B24
+intern dDonkeyMainMotion_Sleep_0x0BBC+0x2C dDonkeyMainMotion_Sleep_0x0BBC
+intern dDonkeyMainMotion_Sleep_0x0BEC+0x24 dDonkeyMainMotion_Sleep_0x0BEC
+intern dDonkeyMainMotion_Catch+0x4 dDonkeyMainMotion_0x0C14
+intern dDonkeyMainMotion_CargoAirThrow_0x0D28+0x4 dDonkeyMainMotion_0x0CF0
+intern dDonkeyMainMotion_ThrowB+0x4 dDonkeyMainMotion_0x0D88
+extern dDonkeyMainMotion_Damaged_0x0E1C+0x4 dDonkeyMainMotion_ItemThrowSmashB_0x0680+0x2C  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_Damaged_0x0E28+0x4 dDonkeyMainMotion_ItemThrowSmashD_0x06B0+0x14  # -> file 201 (FTCommonMoveset)
+extern dDonkeyMainMotion_EggLay_0x0E34+0x4 dDonkeyMainMotion_ItemThrowSmashD_0x06B0+0x1C  # -> file 201 (FTCommonMoveset)
+intern dDonkeyMainMotion_Damaged_0x0E40+0x4 dDonkeyMainMotion_0x0164
+extern dDonkeyMainMotion_Damaged_0x0E40+0xC dDonkeyMainMotion_ItemThrowSmashB_0x06D0+0x20  # -> file 201 (FTCommonMoveset)
+intern dDonkeyMainMotion_FalconDivePulled+0x4 dDonkeyMainMotion_0x0164
+extern dDonkeyMainMotion_FalconDivePulled+0xC dDonkeyMainMotion_ItemThrowSmashB_0x06F8+0x14  # -> file 201 (FTCommonMoveset)
+intern dDonkeyMainMotion_Appear2+0x4 dDonkeyMainMotion_Appear1
+intern dDonkeyMainMotion_GiantPunchGroundLoop+0x30 dDonkeyMainMotion_GiantPunchGroundLoop
+intern dDonkeyMainMotion_GiantPunchAirLoop+0x1C dDonkeyMainMotion_GiantPunchAirLoop
+intern dDonkeyMainMotion_GiantPunchAirFullyChargedPunch_0x18C4+0x4 dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x1864
+intern dDonkeyMainMotion_GiantPunchAirFullyChargedPunch_0x197C+0x4 dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x18CC
+intern dDonkeyMainMotion_SpinningKongAir+0xBC dDonkeyMainMotion_0x1A34
+intern dDonkeyMainMotion_HandSlapLoop+0x13C dDonkeyMainMotion_HandSlapLoop

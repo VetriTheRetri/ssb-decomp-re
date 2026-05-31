@@ -2,60 +2,60 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels resolved via src/relocData/224_LinkMainMotion.reloc .o symbol table
 
-intern dLinkMainMotion_0x0014+0x8 dLinkMainMotion_0x0000
-intern dLinkMainMotion_0x0014+0x14 dLinkMainMotion_0x0000
-intern dLinkMainMotion_0x0014+0x20 dLinkMainMotion_0x0000
-intern dLinkMainMotion_0x0014+0x2C dLinkMainMotion_0x0014
-intern dLinkMainMotion_0x007C+0x38 dLinkMainMotion_0x007C
-intern dLinkMainMotion_0x01D8+0x4 dLinkMainMotion_0x01CC
-intern dLinkMainMotion_0x01E4+0x4 dLinkMainMotion_0x01CC
-intern dLinkMainMotion_0x0288+0x4 dLinkMainMotion_0x0244
-intern dLinkMainMotion_0x02C8+0x4 dLinkMainMotion_0x02B0
-intern dLinkMainMotion_0x02D0+0x8 dLinkMainMotion_0x0290
-intern dLinkMainMotion_0x02E0+0x4 dLinkMainMotion_0x02D0
-intern dLinkMainMotion_0x02E0+0xC dLinkMainMotion_0x02D0
-intern dLinkMainMotion_0x02E0+0x14 dLinkMainMotion_0x02D0
-intern dLinkMainMotion_0x0514+0x4 dLinkMainMotion_0x04D8
-intern dLinkMainMotion_0x0804+0xC dLinkMainMotion_0x07D8
-intern dLinkMainMotion_0x089C+0xC dLinkMainMotion_0x086C
-intern dLinkMainMotion_0x0934+0x8 dLinkMainMotion_0x090C
-intern dLinkMainMotion_0x09BC+0x8 dLinkMainMotion_0x0990
-intern dLinkMainMotion_0x0A3C+0xC dLinkMainMotion_0x0A20
-intern dLinkMainMotion_0x0A68+0xC dLinkMainMotion_0x0A4C
-intern dLinkMainMotion_0x0D38+0x24 dLinkMainMotion_0x0D38
-intern dLinkMainMotion_0x0D68+0x28 dLinkMainMotion_0x0D38+0x28
-intern dLinkMainMotion_0x0D68+0x54 dLinkMainMotion_0x0D38+0x28
-intern dLinkMainMotion_0x0D68+0x5C dLinkMainMotion_0x0D38+0x28
-intern dLinkMainMotion_0x0E00+0x28 dLinkMainMotion_0x0DF8
-intern dLinkMainMotion_0x0E34+0x1C dLinkMainMotion_0x0E00+0x2C
-intern dLinkMainMotion_0x0E5C+0x34 dLinkMainMotion_0x0E34+0x20
-intern dLinkMainMotion_0x0F34+0x34 dLinkMainMotion_0x0F18+0x14
-intern dLinkMainMotion_0x1008+0x34 dLinkMainMotion_0x0F6C+0x94
-intern dLinkMainMotion_0x1108+0x8 dLinkMainMotion_0x01CC
-intern dLinkMainMotion_0x1114+0x10 dLinkMainMotion_0x01CC
-intern dLinkMainMotion_0x12B0+0x180 dLinkMainMotion_0x12A8
-intern dLinkMainMotion_0x1CC0+0x28 dLinkMainMotion_0x1CA8+0x10
+intern dLinkMainMotion_EggLay_0x0014+0x8 dLinkMainMotion_0x0000
+intern dLinkMainMotion_EggLay_0x0014+0x14 dLinkMainMotion_0x0000
+intern dLinkMainMotion_EggLay_0x0014+0x20 dLinkMainMotion_0x0000
+intern dLinkMainMotion_EggLay_0x0014+0x2C dLinkMainMotion_EggLay_0x0014
+intern dLinkMainMotion_Run+0x38 dLinkMainMotion_Run
+intern dLinkMainMotion_Damage_0x01D8+0x4 dLinkMainMotion_0x01CC
+intern dLinkMainMotion_Damage_0x01E4+0x4 dLinkMainMotion_0x01CC
+intern dLinkMainMotion_StunLandU+0x4 dLinkMainMotion_StunLandD
+intern dLinkMainMotion_StunStartU+0x4 dLinkMainMotion_StunStartD
+intern dLinkMainMotion_DownForwardD+0x8 dLinkMainMotion_0x0290
+intern dLinkMainMotion_DownForwardU+0x4 dLinkMainMotion_DownForwardD
+intern dLinkMainMotion_DownForwardU+0xC dLinkMainMotion_DownForwardD
+intern dLinkMainMotion_DownForwardU+0x14 dLinkMainMotion_DownForwardD
+intern dLinkMainMotion_TechB+0x4 dLinkMainMotion_TechF
+intern dLinkMainMotion_ItemThrowSmashB_0x0804+0xC dLinkMainMotion_ItemThrowSmashB_0x07D8
+intern dLinkMainMotion_ItemThrowSmashB_0x089C+0xC dLinkMainMotion_ItemThrowSmashB_0x086C
+intern dLinkMainMotion_ItemThrowAirSmashB_0x0934+0x8 dLinkMainMotion_ItemThrowAirSmashB_0x090C
+intern dLinkMainMotion_ItemThrowAirSmashB_0x09BC+0x8 dLinkMainMotion_ItemThrowAirSmashB_0x0990
+intern dLinkMainMotion_HeavyItemThrowSmashB_0x0A3C+0xC dLinkMainMotion_HeavyItemThrowSmashB_0x0A20
+intern dLinkMainMotion_HeavyItemThrowSmashB_0x0A68+0xC dLinkMainMotion_HeavyItemThrowSmashB_0x0A4C
+intern dLinkMainMotion_Hammer+0x24 dLinkMainMotion_Hammer
+intern dLinkMainMotion_0x0D68+0x28 dLinkMainMotion_Hammer+0x28
+intern dLinkMainMotion_0x0D68+0x54 dLinkMainMotion_Hammer+0x28
+intern dLinkMainMotion_0x0D68+0x5C dLinkMainMotion_Hammer+0x28
+intern dLinkMainMotion_Sleep_0x0E00+0x28 dLinkMainMotion_Sleep_0x0DF8
+intern dLinkMainMotion_Sleep_0x0E34+0x1C dLinkMainMotion_Sleep_0x0E00+0x2C
+intern dLinkMainMotion_0x0E5C+0x34 dLinkMainMotion_Sleep_0x0E34+0x20
+intern dLinkMainMotion_0x0F34+0x34 dLinkMainMotion_CatchPull+0x14
+intern dLinkMainMotion_0x1008+0x34 dLinkMainMotion_ThrowF+0x94
+intern dLinkMainMotion_EggLay_0x1108+0x8 dLinkMainMotion_0x01CC
+intern dLinkMainMotion_FalconDivePulled+0x10 dLinkMainMotion_0x01CC
+intern dLinkMainMotion_JabLoop_0x12B0+0x180 dLinkMainMotion_JabLoop_0x12A8
+intern dLinkMainMotion_Appear1+0x28 dLinkMainMotion_LandingAirX_0x1CA8+0x10
 
-extern dLinkMainMotion_0x01E4+0xC dLinkMainMotion_0x073C+0x1C  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0A68+0x24 dLinkMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0AA4+0x14 dLinkMainMotion_0x0054+0x10  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0AD0+0x1C dLinkMainMotion_0x007C+0x4C  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0B0C+0x1C dLinkMainMotion_0x0128+0x4  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0B48+0xC dLinkMainMotion_0x0188+0x18  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0B64+0xC dLinkMainMotion_0x01E4+0x10  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0B80+0x1C dLinkMainMotion_0x0244+0x4  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0BB4+0x14 dLinkMainMotion_0x02B0  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0BE0+0xC dLinkMainMotion_0x02E0+0x44  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0BFC+0xC dLinkMainMotion_0x02E0+0x98  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0C18+0x18 dLinkMainMotion_0x03CC  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0C48+0x8 dLinkMainMotion_0x03CC+0x64  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0C68+0x10 dLinkMainMotion_0x03CC+0xC8  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0C88+0x10 dLinkMainMotion_0x04D8+0x20  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0CB0+0x18 dLinkMainMotion_0x0558+0x4  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0CE8+0x18 dLinkMainMotion_0x05BC+0x4  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x0D38+0x14 dLinkMainMotion_0x0604+0x30  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x1040+0xAC dLinkMainMotion_0x0688+0x24  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x10F0+0x8 dLinkMainMotion_0x0688+0x3C  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x10FC+0x8 dLinkMainMotion_0x0688+0x44  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x1114+0x4 dLinkMainMotion_0x0688+0x68  # -> file 201 (FTCommonMoveset)
-extern dLinkMainMotion_0x1128+0x4 dLinkMainMotion_0x0708+0x4  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_Damage_0x01E4+0xC dLinkMainMotion_CliffEscapeSlow2+0x1C  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_HeavyItemThrowSmashB_0x0A68+0x24 dLinkMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_SwordSwing3+0x14 dLinkMainMotion_Dash+0x10  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_SwordSwing4+0x1C dLinkMainMotion_Run+0x4C  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_SwordSwingDash+0x1C dLinkMainMotion_Jump+0x4  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_BatSwing1+0xC dLinkMainMotion_LandingAirX_0x0188+0x18
+extern dLinkMainMotion_BatSwing3+0xC dLinkMainMotion_Damage_0x01E4+0x10  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_BatSwing4+0x1C dLinkMainMotion_StunLandD+0x4  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_BatSwingDash+0x14 dLinkMainMotion_StunStartD  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_HarisenSwing1+0xC dLinkMainMotion_DownForwardU+0x44
+extern dLinkMainMotion_HarisenSwing3+0xC dLinkMainMotion_DownForwardU+0x98  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_HarisenSwing4+0x18 dLinkMainMotion_DownAttackU  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_HarisenSwingDash+0x8 dLinkMainMotion_DownAttackU+0x64  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_StarRodSwing1+0x10 dLinkMainMotion_DownAttackU+0xC8
+extern dLinkMainMotion_StarRodSwing3+0x10 dLinkMainMotion_TechF+0x20  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_StarRodSwing4+0x18 dLinkMainMotion_RollB+0x4  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_StarRodSwingDash+0x18 dLinkMainMotion_CliffQuick+0x4  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_Hammer+0x14 dLinkMainMotion_CliffAttackQuick2+0x30  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_ThrowB+0xAC dLinkMainMotion_CliffAttackSlow2+0x24  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_Damaged_0x10F0+0x8 dLinkMainMotion_CliffAttackSlow2+0x3C  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_Damaged_0x10FC+0x8 dLinkMainMotion_CliffAttackSlow2+0x44  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_FalconDivePulled+0x4 dLinkMainMotion_CliffAttackSlow2+0x68  # -> file 201 (FTCommonMoveset)
+extern dLinkMainMotion_Damaged_0x1128+0x4 dLinkMainMotion_CliffEscapeQuick1+0x4  # -> file 201 (FTCommonMoveset)

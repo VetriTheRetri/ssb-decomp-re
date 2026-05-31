@@ -5,22 +5,26 @@
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
 #include <ef/efdef.h>
-u32 dMMarioMainMotion_0x0000[] = {
+ftMotionCommand dMMarioMainMotion_Walk2[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandWaitAsync(40),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dMMarioMainMotion_0x0000),
+	ftMotionCommandGoto(dMMarioMainMotion_Walk2),
 };
 
-u32 dMMarioMainMotion_0x001C[] = {
+ftMotionCommand dMMarioMainMotion_Walk3[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandWaitAsync(30),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dMMarioMainMotion_0x001C),
+	ftMotionCommandGoto(dMMarioMainMotion_Walk3),
+};
+
+/* Dash anim — was dMMarioMainMotion_Walk3 + 0x1C. */
+ftMotionCommand dMMarioMainMotion_Dash[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandLoopBegin(2),
@@ -30,7 +34,7 @@ u32 dMMarioMainMotion_0x001C[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x0060[] = {
+ftMotionCommand dMMarioMainMotion_Run[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
@@ -38,49 +42,53 @@ u32 dMMarioMainMotion_0x0060[] = {
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dMMarioMainMotion_0x0060),
+	ftMotionCommandGoto(dMMarioMainMotion_Run),
+};
+
+/* LandingAirX tail — was dMMarioMainMotion_Run + 0x3C. */
+ftMotionCommand dMMarioMainMotion_LandingAirXTail[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x00B8[] = {
+ftMotionCommand dMMarioMainMotion_LandingAirX_0x00B8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x00D4[] = {
+ftMotionCommand dMMarioMainMotion_LandingAirX_0x00D4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x00F0[] = {
+ftMotionCommand dMMarioMainMotion_LandingAirF[] = {
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x0108[] = {
+ftMotionCommand dMMarioMainMotion_LandingAirB[] = {
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x0120[] = {
+ftMotionCommand dMMarioMainMotion_JumpB[] = {
 	ftMotionPlayFGM(nSYAudioFGMMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x0138[] = {
+ftMotionCommand dMMarioMainMotion_JumpAerial[] = {
 	ftMotionCommandEnd(),
 };
 
-u32 dMMarioMainMotion_0x013C[] = {
+ftMotionCommand dMMarioMainMotion_0x013C[] = {
 	ftMotionCommandEnd(),
 };

@@ -4,14 +4,14 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u32 dKirbyMainMotion_0x0154[];
+extern u32 dKirbyMainMotion_EggLay_0x0154[];
 extern DObjDesc dNKirbyModel_JointTree[];
 
 /* Pre-attributes data (176 words, 0x02C0 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNKirbyMain_pre+0x0) */
 u32 dNKirbyMain_file_handles[1] = {
 
-	(u32)&dKirbyMainMotion_0x0154, /* extern -> 0x0154 */
+	(u32)&dKirbyMainMotion_EggLay_0x0154, /* extern -> 0x0154 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNKirbyMain_pre+0x4) */

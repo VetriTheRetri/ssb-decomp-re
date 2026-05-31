@@ -1,62 +1,62 @@
 # Relocation metadata for file 246
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dYoshiMainMotion_0x0034+0x4 dYoshiMainMotion_0x0000
-intern dYoshiMainMotion_0x0034+0x10 dYoshiMainMotion_0x0000
-intern dYoshiMainMotion_0x0034+0x1C dYoshiMainMotion_0x0000
-intern dYoshiMainMotion_0x0034+0x28 dYoshiMainMotion_0x0034
-intern dYoshiMainMotion_0x0084+0x3C dYoshiMainMotion_0x0084
-intern dYoshiMainMotion_0x01EC+0x4 dYoshiMainMotion_0x01E0
-intern dYoshiMainMotion_0x01F8+0x4 dYoshiMainMotion_0x01E0
-extern dYoshiMainMotion_0x01F8+0xC dYoshiMainMotion_0x0748+0x10  # -> file 201 (FTCommonMoveset)
-intern dYoshiMainMotion_0x0284+0x4 dYoshiMainMotion_0x0240
-intern dYoshiMainMotion_0x02C4+0x4 dYoshiMainMotion_0x02AC
-intern dYoshiMainMotion_0x02CC+0x8 dYoshiMainMotion_0x028C
-intern dYoshiMainMotion_0x02DC+0x4 dYoshiMainMotion_0x02CC
-intern dYoshiMainMotion_0x02DC+0xC dYoshiMainMotion_0x02CC
-intern dYoshiMainMotion_0x02DC+0x14 dYoshiMainMotion_0x02CC
-intern dYoshiMainMotion_0x046C+0x4 dYoshiMainMotion_0x0424
-intern dYoshiMainMotion_0x0704+0x8 dYoshiMainMotion_0x06E8
-intern dYoshiMainMotion_0x0768+0x8 dYoshiMainMotion_0x0748
-intern dYoshiMainMotion_0x07D0+0x8 dYoshiMainMotion_0x07B4
-intern dYoshiMainMotion_0x083C+0x10 dYoshiMainMotion_0x0814
-intern dYoshiMainMotion_0x08AC+0x8 dYoshiMainMotion_0x08A0
-intern dYoshiMainMotion_0x08CC+0x10 dYoshiMainMotion_0x08B8
-extern dYoshiMainMotion_0x08CC+0x28 dYoshiMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0914+0x14 dYoshiMainMotion_0x0034+0x30  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0948+0x20 dYoshiMainMotion_0x0084+0x44  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0988+0x14 dYoshiMainMotion_0x012C  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x09BC+0xC dYoshiMainMotion_0x01A0  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x09E0+0xC dYoshiMainMotion_0x01EC+0x8  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A04+0x20 dYoshiMainMotion_0x0240+0x8  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A3C+0xC dYoshiMainMotion_0x02AC+0x4  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A60+0xC dYoshiMainMotion_0x02DC+0x48  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0A84+0xC dYoshiMainMotion_0x02DC+0x9C  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0AA8+0x14 dYoshiMainMotion_0x037C+0x50  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0AD4+0xC dYoshiMainMotion_0x0424+0xC  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0AF8+0x10 dYoshiMainMotion_0x046C+0x28  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0B20+0x10 dYoshiMainMotion_0x04C0+0x38  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0B50+0x1C dYoshiMainMotion_0x055C  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0B8C+0x10 dYoshiMainMotion_0x056C+0x54  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0BE4+0x14 dYoshiMainMotion_0x05E0+0x54  # -> file 201 (FTCommonMoveset)
-intern dYoshiMainMotion_0x0BE4+0x24 dYoshiMainMotion_0x0BE4
+intern dYoshiMainMotion_EggLay_0x0034+0x4 dYoshiMainMotion_0x0000
+intern dYoshiMainMotion_EggLay_0x0034+0x10 dYoshiMainMotion_0x0000
+intern dYoshiMainMotion_EggLay_0x0034+0x1C dYoshiMainMotion_0x0000
+intern dYoshiMainMotion_EggLay_0x0034+0x28 dYoshiMainMotion_EggLay_0x0034
+intern dYoshiMainMotion_Run+0x3C dYoshiMainMotion_Run
+intern dYoshiMainMotion_Damage_0x01EC+0x4 dYoshiMainMotion_0x01E0
+intern dYoshiMainMotion_Damage_0x01F8+0x4 dYoshiMainMotion_0x01E0
+extern dYoshiMainMotion_Damage_0x01F8+0xC dYoshiMainMotion_ItemThrowSmashB_0x0748+0x10  # -> file 201 (FTCommonMoveset)
+intern dYoshiMainMotion_StunLandU+0x4 dYoshiMainMotion_StunLandD
+intern dYoshiMainMotion_StunStartU+0x4 dYoshiMainMotion_StunStartD
+intern dYoshiMainMotion_DownForwardD+0x8 dYoshiMainMotion_0x028C
+intern dYoshiMainMotion_DownForwardU+0x4 dYoshiMainMotion_DownForwardD
+intern dYoshiMainMotion_DownForwardU+0xC dYoshiMainMotion_DownForwardD
+intern dYoshiMainMotion_DownForwardU+0x14 dYoshiMainMotion_DownForwardD
+intern dYoshiMainMotion_TechB+0x4 dYoshiMainMotion_TechF
+intern dYoshiMainMotion_ItemThrowSmashB_0x0704+0x8 dYoshiMainMotion_ItemThrowSmashB_0x06E8
+intern dYoshiMainMotion_ItemThrowSmashB_0x0768+0x8 dYoshiMainMotion_ItemThrowSmashB_0x0748
+intern dYoshiMainMotion_ItemThrowAirSmashB_0x07D0+0x8 dYoshiMainMotion_ItemThrowAirSmashB_0x07B4
+intern dYoshiMainMotion_ItemThrowAirSmashB_0x083C+0x10 dYoshiMainMotion_ItemThrowAirSmashB_0x0814
+intern dYoshiMainMotion_HeavyItemThrowSmashB_0x08AC+0x8 dYoshiMainMotion_HeavyItemThrowSmashB_0x08A0
+intern dYoshiMainMotion_HeavyItemThrowSmashB_0x08CC+0x10 dYoshiMainMotion_HeavyItemThrowSmashB_0x08B8
+extern dYoshiMainMotion_HeavyItemThrowSmashB_0x08CC+0x28 dYoshiMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_SwordSwing3+0x14 dYoshiMainMotion_EggLay_0x0034+0x30  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_SwordSwing4+0x20 dYoshiMainMotion_Run+0x44  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_SwordSwingDash+0x14 dYoshiMainMotion_LandingAirX_0x012C  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_BatSwing1+0xC dYoshiMainMotion_LandingAirX_0x01A0  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_BatSwing3+0xC dYoshiMainMotion_Damage_0x01EC+0x8  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_BatSwing4+0x20 dYoshiMainMotion_StunLandD+0x8  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_BatSwingDash+0xC dYoshiMainMotion_StunStartD+0x4  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_HarisenSwing1+0xC dYoshiMainMotion_DownForwardU+0x48  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_HarisenSwing3+0xC dYoshiMainMotion_DownForwardU+0x9C  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_HarisenSwing4+0x14 dYoshiMainMotion_DownAttackU+0x50  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_HarisenSwingDash+0xC dYoshiMainMotion_TechF+0xC  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_StarRodSwing1+0x10 dYoshiMainMotion_TechB+0x28  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_StarRodSwing3+0x10 dYoshiMainMotion_RollB+0x38  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_StarRodSwing4+0x1C dYoshiMainMotion_CliffClimbSlow2  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_StarRodSwingDash+0x10 dYoshiMainMotion_CliffAttackQuick2+0x54  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_Hammer+0x14 dYoshiMainMotion_CliffAttackSlow2+0x54  # -> file 201 (FTCommonMoveset)
+intern dYoshiMainMotion_Hammer+0x24 dYoshiMainMotion_Hammer
 intern dYoshiMainMotion_0x0C0C+0x30 dYoshiMainMotion_0x0C0C
-intern dYoshiMainMotion_0x0C0C+0x58 dYoshiMainMotion_0x0C0C
-intern dYoshiMainMotion_0x0C0C+0x60 dYoshiMainMotion_0x0C0C
-intern dYoshiMainMotion_0x0C9C+0x30 dYoshiMainMotion_0x0C9C
-intern dYoshiMainMotion_0x0CD0+0x28 dYoshiMainMotion_0x0CD0
-intern dYoshiMainMotion_0x0D34+0x4 dYoshiMainMotion_0x0CFC
-intern dYoshiMainMotion_0x0DC8+0x4 dYoshiMainMotion_0x0D90
-intern dYoshiMainMotion_0x0E64+0x4 dYoshiMainMotion_0x0E2C
-extern dYoshiMainMotion_0x0EC8+0x4 dYoshiMainMotion_0x06A8+0x4  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0ED4+0x4 dYoshiMainMotion_0x06C0+0x4  # -> file 201 (FTCommonMoveset)
-extern dYoshiMainMotion_0x0EE0+0x4 dYoshiMainMotion_0x06CC  # -> file 201 (FTCommonMoveset)
-intern dYoshiMainMotion_0x0EEC+0x4 dYoshiMainMotion_0x01E0
-extern dYoshiMainMotion_0x0EEC+0xC dYoshiMainMotion_0x06E8+0x8  # -> file 201 (FTCommonMoveset)
-intern dYoshiMainMotion_0x0F00+0x4 dYoshiMainMotion_0x01E0
-extern dYoshiMainMotion_0x0F00+0xC dYoshiMainMotion_0x0704+0x8  # -> file 201 (FTCommonMoveset)
-intern dYoshiMainMotion_0x11C8+0x4 dYoshiMainMotion_0x1164
-intern dYoshiMainMotion_0x11C8+0xC dYoshiMainMotion_0x1164
-intern dYoshiMainMotion_0x11C8+0x14 dYoshiMainMotion_0x1164
-intern dYoshiMainMotion_0x15C4+0x4 dYoshiMainMotion_0x159C
-intern dYoshiMainMotion_0x1730+0x4 dYoshiMainMotion_0x16F8
+intern dYoshiMainMotion_ShieldBreak+0x24 dYoshiMainMotion_0x0C0C
+intern dYoshiMainMotion_Damaged_0x0C68+0x4 dYoshiMainMotion_0x0C0C
+intern dYoshiMainMotion_Sleep_0x0C9C+0x30 dYoshiMainMotion_Sleep_0x0C9C
+intern dYoshiMainMotion_Sleep_0x0CD0+0x28 dYoshiMainMotion_Sleep_0x0CD0
+intern dYoshiMainMotion_Catch+0x4 dYoshiMainMotion_0x0CFC
+intern dYoshiMainMotion_ThrowF+0x4 dYoshiMainMotion_0x0D90
+intern dYoshiMainMotion_ThrowB+0x4 dYoshiMainMotion_0x0E2C
+extern dYoshiMainMotion_Damaged_0x0EC8+0x4 dYoshiMainMotion_LightItemPickup+0x4  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_Damaged_0x0ED4+0x4 dYoshiMainMotion_ItemDrop+0x4  # -> file 201 (FTCommonMoveset)
+extern dYoshiMainMotion_EggLay_0x0EE0+0x4 dYoshiMainMotion_ItemThrowDash  # -> file 201 (FTCommonMoveset)
+intern dYoshiMainMotion_FalconDivePulled+0x4 dYoshiMainMotion_0x01E0
+extern dYoshiMainMotion_FalconDivePulled+0xC dYoshiMainMotion_ItemThrowSmashB_0x06E8+0x8  # -> file 201 (FTCommonMoveset)
+intern dYoshiMainMotion_Damaged_0x0F00+0x4 dYoshiMainMotion_0x01E0
+extern dYoshiMainMotion_Damaged_0x0F00+0xC dYoshiMainMotion_ItemThrowSmashB_0x0704+0x8  # -> file 201 (FTCommonMoveset)
+intern dYoshiMainMotion_FSmashHigh+0x4 dYoshiMainMotion_0x1164
+intern dYoshiMainMotion_FSmashHigh+0xC dYoshiMainMotion_0x1164
+intern dYoshiMainMotion_FSmashHigh+0x14 dYoshiMainMotion_0x1164
+intern dYoshiMainMotion_Appear2+0x4 dYoshiMainMotion_Appear1
+intern dYoshiMainMotion_EggLay_0x1730+0x4 dYoshiMainMotion_0x16F8

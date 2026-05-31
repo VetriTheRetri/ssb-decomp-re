@@ -4,7 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u32 dSamusMainMotion_0x0084[];
+extern u32 dSamusMainMotion_EggLay_0x0084[];
 extern DObjDesc dSamusModel_JointTree[];
 extern DObjDesc dSamusModel_JointTree_0x69D0[];
 extern Gfx dSamusModel_Joint_0x20C8_DisplayList[];
@@ -67,7 +67,7 @@ extern DObjDesc dSamusSpecial2_GrappleBeamDObjDesc[];
 /* @ 0x0000, 64 bytes: FTAttributes.file_handles target (was dSamusMain_pre+0x0) */
 u32 dSamusMain_file_handles[16] = {
 
-	(u32)&dSamusMainMotion_0x0084, /* extern -> 0x0084 */
+	(u32)&dSamusMainMotion_EggLay_0x0084, /* extern -> 0x0084 */
 	(u32)&dSamusSpecial2_GrappleBeamDObjDesc, /* extern -> 0x0380 */
 	(u32)&dSamusSpecial1_ChargeShot_WeaponAttributes, /* extern -> 0x0000 */
 	(u32)((u8*)dSamusModel_Tex_0xD618 + 0xAC0), /* extern -> 0xE0D8 */

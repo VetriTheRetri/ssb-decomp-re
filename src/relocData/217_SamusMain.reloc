@@ -1,7 +1,7 @@
 # Relocation metadata for file 217
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dSamusMain_file_handles dSamusMainMotion_0x0084 # -> file 216 (SamusMainMotion)
+extern dSamusMain_file_handles dSamusMainMotion_EggLay_0x0084 # -> file 216 (SamusMainMotion)
 extern dSamusMain_file_handles+0x4 dSamusSpecial2_GrappleBeamDObjDesc # -> file 349 (SamusSpecial2)
 extern dSamusMain_file_handles+0x8 dSamusSpecial1_ChargeShot_WeaponAttributes # -> file 218 (SamusSpecial1)
 extern dSamusMain_file_handles+0xC dSamusModel_Tex_0xD618+0xAC0 # -> file 320 (SamusModel)
@@ -96,15 +96,15 @@ intern dSamusMain_attr+0x29C dSamusMain_setup_parts
 intern dSamusMain_attr+0x2A0 dSamusMain_animlock
 intern dSamusMain_attr+0x2D0 dSamusMain_hiddenparts
 intern dSamusMain_attr+0x2D4 dSamusMain_commonparts_container
-extern dSamusMain_attr+0x2D8 dSamusShieldPose_script0_14+0x10 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2DC dSamusShieldPose_ptrs1+0x2C4 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2E0 dSamusShieldPose_script2_14+0x34 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2E4 dSamusShieldPose_script3_14+0x38 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2E8 dSamusShieldPose_script4_14+0x2C # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2EC dSamusShieldPose_script5_14+0x34 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2F0 dSamusShieldPose_script6_14+0x38 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2F4 dSamusShieldPose_script7_14+0x38 # -> file 322 (SamusShieldPose)
-extern dSamusMain_attr+0x2F8 dSamusShieldPose_script8_14+0x38 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2D8 dSamusShieldPose_data0 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2DC dSamusShieldPose_data0_end # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2E0 dSamusShieldPose_shield_anim_joint_1 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2E4 dSamusShieldPose_shield_anim_joint_2 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2E8 dSamusShieldPose_shield_anim_joint_3 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2EC dSamusShieldPose_shield_anim_joint_4 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2F0 dSamusShieldPose_shield_anim_joint_5 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2F4 dSamusShieldPose_shield_anim_joint_6 # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2F8 dSamusShieldPose_shield_anim_joint_7 # -> file 322 (SamusShieldPose)
 intern dSamusMain_attr+0x328 dSamusMain_modelparts_container
 intern dSamusMain_attr+0x338 dSamusMain_thrown_status
 intern dSamusMain_attr+0x340 dSamusMain_sprites

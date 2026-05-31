@@ -1,7 +1,7 @@
 # Relocation metadata for file 250
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dBossMain_file_handles dBossMainMotion_0x0000 # -> file 249 (BossMainMotion)
+extern dBossMain_file_handles dBossMainMotion_Default # -> file 249 (BossMainMotion)
 extern dBossMain_commonparts_container dBossModel_JointTree # -> file 344 (BossModel)
 extern dBossMain_commonparts_container+0x10 dBossModel_JointTree # -> file 344 (BossModel)
 extern dBossMain_stock_luts dMasterHandIcon_Stock_tex+0x88 # -> file 345 (MasterHandIcon)

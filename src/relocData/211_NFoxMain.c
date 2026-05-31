@@ -4,7 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u32 dFoxMainMotion_0x0000[];
+extern u32 dFoxMainMotion_EggLay_0x0000[];
 extern u32 dFoxShieldPose_ptrs1[];
 extern u16 dFoxShieldPose_script0_17[];
 extern u16 dFoxShieldPose_script2_17[];
@@ -20,7 +20,7 @@ extern DObjDesc dNFoxModel_JointTree[];
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNFoxMain_pre+0x0) */
 u32 dNFoxMain_file_handles[1] = {
 
-	(u32)&dFoxMainMotion_0x0000, /* extern -> 0x0000 */
+	(u32)&dFoxMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNFoxMain_pre+0x4) */

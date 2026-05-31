@@ -43,14 +43,14 @@ extern u8 dFoxShieldPose_script5_17[];
 extern u8 dFoxShieldPose_script6_17[];
 extern u8 dFoxShieldPose_script7_17[];
 extern u8 dFoxShieldPose_script8_17[];
-extern u8 dFoxMainMotion_0x0000[];
+extern u8 dFoxMainMotion_EggLay_0x0000[];
 extern u8 dFoxSpecial2_Reflector[];
 extern u8 dFoxSpecial3_EntryArwing[];
 extern WPAttributes dFoxSpecial1_Blaster_WeaponAttributes;
 
 /* @ 0x0000, 16 bytes: sibling-file handles fixed up by fixRelocChain. */
 void *dFoxMain_file_handles[4] = {
-	&dFoxMainMotion_0x0000,                /* -> FoxMainMotion (208) */
+	&dFoxMainMotion_EggLay_0x0000,                /* -> FoxMainMotion (208) */
 	&dFoxSpecial2_Reflector,               /* -> FoxSpecial2 (346) */
 	&dFoxSpecial3_EntryArwing,             /* -> FoxSpecial3 (161) */
 	&dFoxSpecial1_Blaster_WeaponAttributes,/* -> FoxSpecial1 (210) */

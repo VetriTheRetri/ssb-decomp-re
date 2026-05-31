@@ -5,7 +5,7 @@
 #include <ft/fttypes.h>
 #include <wp/wptypes.h>
 
-extern u32 dNessMainMotion_0x0024[];
+extern u32 dNessMainMotion_EggLay_0x0024[];
 extern DObjDesc dNessModel_JointTree[];
 extern DObjDesc dNessModel_JointTree_0x4FE8[];
 extern MObjSub **dNessModel_JointVerts_Vtx[];
@@ -64,7 +64,7 @@ extern WPAttributes dNessSpecial1_PKFire_WeaponAttributes;
 /* @ 0x0000, 12 bytes: 3 cross-file handle pointers (chain-rewritten). */
 void *dNessMain_file_handles[3] = {
 
-	(void *)&dNessMainMotion_0x0024,
+	(void *)&dNessMainMotion_EggLay_0x0024,
 	(void *)&dNessSpecial2_PsychicMagnetDObjDesc,
 	(void *)&dNessSpecial1_PKFire_WeaponAttributes,
 };

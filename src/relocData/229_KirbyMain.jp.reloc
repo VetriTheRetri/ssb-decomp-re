@@ -21,7 +21,7 @@ intern dKirbyMain_attr+0x338 dKirbyMain_thrown_status
 intern dKirbyMain_attr+0x340 dKirbyMain_sprites
 intern dKirbyMain_attr+0x344 dKirbyMain_skeleton
 
-extern dKirbyMain_file_handles dKirbyMainMotion_0x0154  # -> file 203 (KirbyMainMotion)
+extern dKirbyMain_file_handles dKirbyMainMotion_EggLay_0x0154  # -> file 203 (KirbyMainMotion)
 extern dKirbyMain_file_handles+0x4 dKirbySpecial2_VulcanJab  # -> file 323 (KirbySpecial2)
 extern dKirbyMain_file_handles+0x8 dKirbyModel_gap_0x1A2FC_sub_0x308C  # -> file 303 (KirbyModel)
 extern dKirbyMain_file_handles+0x10 dKirbyModel_gap_0x1A2FC_sub_0x3114  # -> file 303 (KirbyModel)
@@ -157,11 +157,11 @@ extern dKirbyMain_sub_0x724+0x60 dKirbyModel_Joint_0x2AF8_DisplayList  # -> file
 extern dKirbyMain_sub_0x724+0xA0 dKirbyModel_Joint_0x2B80_DisplayList  # -> file 303 (KirbyModel)
 extern dKirbyMain_sub_0x724+0xC8 dKirbyModel_Joint_0x2C28_DisplayList  # -> file 303 (KirbyModel)
 extern dKirbyMain_attr+0x2D8 dKirbyShieldPose_data0  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2DC dKirbyShieldPose_ptrs0  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2E0 dKirbyShieldPose_ptrs1  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2E4 dKirbyShieldPose_ptrs2  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2E8 dKirbyShieldPose_ptrs3  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2EC dKirbyShieldPose_ptrs4  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2F0 dKirbyShieldPose_ptrs5  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2F4 dKirbyShieldPose_ptrs6  # -> file 304 (KirbyShieldPose)
-extern dKirbyMain_attr+0x2F8 dKirbyShieldPose_ptrs7  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2DC dKirbyShieldPose_data0_end  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2E0 dKirbyShieldPose_shield_anim_joint_1  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2E4 dKirbyShieldPose_shield_anim_joint_2  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2E8 dKirbyShieldPose_shield_anim_joint_3  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2EC dKirbyShieldPose_shield_anim_joint_4  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2F0 dKirbyShieldPose_shield_anim_joint_5  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2F4 dKirbyShieldPose_shield_anim_joint_6  # -> file 304 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2F8 dKirbyShieldPose_shield_anim_joint_7  # -> file 304 (KirbyShieldPose)

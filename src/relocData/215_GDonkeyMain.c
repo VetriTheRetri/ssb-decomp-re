@@ -4,7 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u32 dDonkeyMainMotion_0x0000[];
+extern u32 dDonkeyMainMotion_EggLay_0x0000[];
 extern DObjDesc dDonkeyModel_JointTree[];
 extern DObjDesc dDonkeyModel_JointTree_0x6EC0[];
 extern Gfx dDonkeyModel_Joint_0x2760_DisplayList[];
@@ -57,7 +57,7 @@ extern DObjDesc dDonkeySpecial2_EntryTaruDObjDesc[];
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dGDonkeyMain_pre+0x0) */
 u32 dGDonkeyMain_file_handles[2] = {
 
-	(u32)&dDonkeyMainMotion_0x0000, /* extern -> 0x0000 */
+	(u32)&dDonkeyMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
 	(u32)&dDonkeySpecial2_EntryTaruDObjDesc, /* extern -> 0x07C8 */
 };
 

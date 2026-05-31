@@ -24,7 +24,7 @@ intern dLinkMain_attr+0x338 dLinkMain_thrown_status
 intern dLinkMain_attr+0x340 dLinkMain_sprites
 intern dLinkMain_attr+0x344 dLinkMain_skeleton
 
-extern dLinkMain_file_handles dLinkMainMotion_0x0014  # -> file 199 (LinkMainMotion)
+extern dLinkMain_file_handles dLinkMainMotion_EggLay_0x0014  # -> file 199 (LinkMainMotion)
 extern dLinkMain_file_handles+0x4 dLinkSpecial2_EntryWaveDObjDesc  # -> file 328 (LinkSpecial2)
 extern dLinkMain_file_handles+0x8 dLinkSpecial1_Boomerang_WeaponAttributes  # -> file 201 (LinkSpecial1)
 extern dLinkMain_file_handles+0xC dLinkMain_attr+0x11200
@@ -109,11 +109,11 @@ extern dLinkMain_skeleton_dls+0xD8 dLinkModel_gap_0x9DA8_sub_0xF38  # -> file 29
 extern dLinkMain_skeleton_dls+0xE0 dLinkModel_gap_0x9DA8_sub_0x1048  # -> file 299 (LinkModel)
 extern dLinkMain_skeleton_dls+0xF0 dLinkModel_gap_0x9DA8_sub_0x10F8  # -> file 299 (LinkModel)
 extern dLinkMain_attr+0x2D8 dLinkShieldPose_data0  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2DC dLinkShieldPose_ptrs0  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2E0 dLinkShieldPose_ptrs1  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2E4 dLinkShieldPose_ptrs2  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2E8 dLinkShieldPose_ptrs3  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2EC dLinkShieldPose_ptrs4  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2F0 dLinkShieldPose_ptrs5  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2F4 dLinkShieldPose_ptrs6  # -> file 302 (LinkShieldPose)
-extern dLinkMain_attr+0x2F8 dLinkShieldPose_ptrs7  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2DC dLinkShieldPose_data0_end  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2E0 dLinkShieldPose_shield_anim_joint_1  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2E4 dLinkShieldPose_shield_anim_joint_2  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2E8 dLinkShieldPose_shield_anim_joint_3  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2EC dLinkShieldPose_shield_anim_joint_4  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2F0 dLinkShieldPose_shield_anim_joint_5  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2F4 dLinkShieldPose_shield_anim_joint_6  # -> file 302 (LinkShieldPose)
+extern dLinkMain_attr+0x2F8 dLinkShieldPose_shield_anim_joint_7  # -> file 302 (LinkShieldPose)

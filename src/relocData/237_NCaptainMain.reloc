@@ -1,7 +1,7 @@
 # Relocation metadata for file 237
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNCaptainMain_file_handles dCaptainMainMotion_0x006C # -> file 235 (CaptainMainMotion)
+extern dNCaptainMain_file_handles dCaptainMainMotion_EggLay_0x006C # -> file 235 (CaptainMainMotion)
 extern dNCaptainMain_commonparts_container dNCaptainModel_JointTree # -> file 311 (NCaptainModel)
 extern dNCaptainMain_commonparts_container+0x10 dNCaptainModel_JointTree # -> file 311 (NCaptainModel)
 extern dNCaptainMain_sprites+0x8 dMasterHandIcon_FTEmblem # -> file 345 (MasterHandIcon)
@@ -10,14 +10,14 @@ intern dNCaptainMain_attr+0x2A0 dNCaptainMain_animlock
 intern dNCaptainMain_attr+0x2D0 dNCaptainMain_hiddenparts
 intern dNCaptainMain_attr+0x2D4 dNCaptainMain_commonparts_container
 extern dNCaptainMain_attr+0x2D8 dCaptainShieldPose_data0 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2DC dCaptainShieldPose_data0+0x4D0 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2E0 dCaptainShieldPose_script1_15+0x28 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2E4 dCaptainShieldPose_script2_15+0x24 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2E8 dCaptainShieldPose_script3_15+0x30 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2EC dCaptainShieldPose_script4_15+0x24 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2F0 dCaptainShieldPose_script5_15+0x24 # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2F4 dCaptainShieldPose_script6_15+0x2C # -> file 334 (CaptainShieldPose)
-extern dNCaptainMain_attr+0x2F8 dCaptainShieldPose_script7_15+0x2C # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2DC dCaptainShieldPose_data0_end # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2E0 dCaptainShieldPose_shield_anim_joint_1 # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2E4 dCaptainShieldPose_shield_anim_joint_2 # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2E8 dCaptainShieldPose_shield_anim_joint_3 # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2EC dCaptainShieldPose_shield_anim_joint_4 # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2F0 dCaptainShieldPose_shield_anim_joint_5 # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2F4 dCaptainShieldPose_shield_anim_joint_6 # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2F8 dCaptainShieldPose_shield_anim_joint_7 # -> file 334 (CaptainShieldPose)
 intern dNCaptainMain_attr+0x328 dNCaptainMain_modelparts_container
 intern dNCaptainMain_attr+0x330 dNCaptainMain_textureparts_container
 intern dNCaptainMain_attr+0x338 dNCaptainMain_thrown_status

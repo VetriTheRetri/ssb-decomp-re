@@ -4,10 +4,10 @@
 
 intern dBossMainMotion_0x01B8+0xE4 dBossMainMotion_0x01B8
 intern dBossMainMotion_0x0378+0x1C dBossMainMotion_0x0378
-intern dBossMainMotion_0x04D0+0x18 dBossMainMotion_0x04D0
+intern dBossMainMotion_Point+0x18 dBossMainMotion_Point
 intern dBossMainMotion_0x072C+0x44 dBossMainMotion_0x072C
-intern dBossMainMotion_0x0924+0x28 dBossMainMotion_0x0924
-intern dBossMainMotion_0x0950+0x1C dBossMainMotion_0x0950
+intern dBossMainMotion_DyingStart+0x28 dBossMainMotion_DyingStart
+intern dBossMainMotion_Dying+0x1C dBossMainMotion_Dying
 
-extern dBossMainMotion_0x072C+0x48 dBossMainMotion_0x0950+0x2368
-extern dBossMainMotion_0x07A8 dBossMainMotion_0x0950+0x2368
+extern dBossMainMotion_0x0774 dBossMainMotion_Dying+0x2368
+extern dBossMainMotion_0x07A8 dBossMainMotion_Dying+0x2368

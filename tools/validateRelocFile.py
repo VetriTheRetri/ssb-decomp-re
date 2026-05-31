@@ -111,12 +111,15 @@ class Decl:
         self.body = []           # list of (line_no, stripped_text)
         self.includes = []       # list of (line_no, ext, raw_line)
 
-    def macro_lines(self):
-        """Return [(line_no, text)] for body lines holding an aobjEvent32 macro
-        call (not the substring inside a comment)."""
+    def macro_lines(self, prefix="aobjEvent32"):
+        """Return [(line_no, text)] for body lines holding a macro call
+        whose name contains `prefix` (case-sensitive, comment-stripped).
+        Default `aobjEvent32` picks up AObjEvent32 scripts; pass
+        `ftMotion` to pick up `ftMotionCommand*()` / `ftMotionPlay*()`
+        macros for ftMotionCommand scripts."""
         out = []
         for ln, txt in self.body:
-            if _strip_comments(txt).find("aobjEvent32") != -1:
+            if _strip_comments(txt).find(prefix) != -1:
                 out.append((ln, txt))
         return out
 
@@ -391,6 +394,135 @@ _LINE_COMMENT_RE = re.compile(r"//.*$")
 def _strip_comments(text):
     """Strip C `/* */` and `//` comments from a single line."""
     return _LINE_COMMENT_RE.sub("", _BLOCK_COMMENT_RE.sub("", text))
+
+
+def is_ftmotion_script(decl):
+    """A decl is a ftMotionCommand script iff its declared type is
+    `ftMotionCommand` (the corpus-wide typedef from src/ft/ftdef.h)."""
+    return decl.ctype == "ftMotionCommand" and not decl.is_pointer
+
+
+_FTMOTION_TERMINATORS = (
+    "ftMotionCommandEnd",
+    "ftMotionCommandGoto",
+    "ftMotionCommandGotoS1",
+    "ftMotionCommandReturn",
+    "ftMotionCommandSubroutine",
+    "ftMotionCommandSubroutineS1",
+    "ftMotionCommandPauseScript",
+)
+
+
+def check_ftmotion_raw_hex(decl, path, diags):
+    """R018 — raw hex literal inside an `ftMotionCommand` script body.
+    Every word of a script should be the result of an `ftMotionCommand*()`
+    or `ftMotionPlay*()` macro (multi-word macros include their payload
+    args in the macro expansion). A bare `0xHHHHHHHH,` line means either
+    an undecoded opcode or a multi-word macro that was split into pieces
+    and lost its tail — both worth surfacing for cleanup."""
+    if not is_ftmotion_script(decl):
+        return
+    for ln, txt in decl.body:
+        if not _OPCODE_RAW_HEX_RE.match(txt):
+            continue
+        raw = txt.strip().rstrip(",").strip()
+        diags.append(Diag(
+            path, ln, "R018", "warn",
+            f"raw hex `{raw}` inside ftMotionCommand script "
+            f"'{decl.name}' — decode the opcode (or fold into the "
+            f"preceding multi-word macro's args)"
+        ))
+
+
+def check_ftmotion_termination(decl, path, diags):
+    """R019 — last macro of an `ftMotionCommand` script must be a flow
+    terminator: `ftMotionCommandEnd()`, `ftMotionCommandGoto(…)`,
+    `ftMotionCommandReturn()`, `ftMotionCommandSubroutine(…)`, or
+    `ftMotionCommandPauseScript()`. Anything else means execution falls
+    through past the script body into adjacent bytes — usually a sign
+    the block holds more than one logical script and needs splitting."""
+    if not is_ftmotion_script(decl):
+        return
+    macros = decl.macro_lines("ftMotion")
+    if not macros:
+        return
+    last_ln, last_txt = macros[-1]
+    if not any(t + "(" in last_txt for t in _FTMOTION_TERMINATORS):
+        diags.append(Diag(
+            path, last_ln, "R019", "warn",
+            f"ftMotionCommand script '{decl.name}' doesn't end with a "
+            f"flow-terminator macro (End/Goto/Return/Subroutine/PauseScript) "
+            f"— last macro is `{last_txt.strip().rstrip(',').strip()}`; "
+            f"consider splitting after the last terminator"
+        ))
+
+
+def check_ftmotion_terminator_not_last(decl, path, diags):
+    """R020 — an `ftMotionCommand` script contains a hard terminator
+    (`End`/`Goto`/`Return`) followed by more macros that are NOT
+    themselves another terminator. After a hard terminator the script
+    engine never falls through to the next word — it halts (End) or
+    transfers control unconditionally (Goto/Return). A mid-decl hard
+    terminator with non-terminator code after it almost always means
+    the extractor merged two adjacent scripts into one body — the
+    trailing code is a *separate* script reached via `<sym>+N` from
+    elsewhere (e.g. `dFoo_0x1A34 + 5` for the script at +0x14, or
+    `dFoo_0x18DC + 0x8` for the FireFoxGround sub-script). Split the
+    decl at every such terminator so each piece gets its own bare
+    block symbol; the `+N` offset references become clean symbol refs.
+
+    `Subroutine`/`PauseScript` are NOT terminators here — they yield
+    control briefly and the script resumes after them.
+
+    **Dispatch-table / loop-body exemption:** a Goto followed by
+    another Goto (or by an End that itself terminates a dispatch table)
+    is the well-known 4-entry dispatch pattern (`Goto×N, End`) and is
+    intentional, not flagged. Same for `Goto(self)`-style loop bodies
+    where the only thing after the back-Goto is a fall-through End.
+
+    The *last* macro in the body is exempt (that's the script's own
+    legitimate terminator, flagged by R019 if missing)."""
+    if not is_ftmotion_script(decl):
+        return
+    macros = decl.macro_lines("ftMotion")
+    if len(macros) < 2:
+        return
+    def is_hard_term(txt):
+        return any(("ftMotionCommandEnd(" in txt,
+                    "ftMotionCommandGoto(" in txt,
+                    "ftMotionCommandGotoS1(" in txt,
+                    "ftMotionCommandReturn(" in txt))
+    last_idx = len(macros) - 1
+    for i in range(last_idx):
+        _, txt_i = macros[i]
+        if not is_hard_term(txt_i):
+            continue
+        # Trailing macros, in order; skip the rule if the very next
+        # macro is also a hard terminator (dispatch tables / loop
+        # tails). If the trail contains a non-terminator macro,
+        # something separate starts after this terminator.
+        _, next_txt = macros[i + 1]
+        if is_hard_term(next_txt):
+            continue
+        # All later macros also being terminators would be a dispatch
+        # table tail; this branch already has at least one non-term.
+        # Any non-terminator after a hard terminator = split candidate.
+        non_term_present = any(
+            not is_hard_term(t) for _, t in macros[i + 1:]
+        )
+        if not non_term_present:
+            continue
+        term = txt_i.strip().rstrip(",").strip()
+        ln = macros[i][0]
+        diags.append(Diag(
+            path, ln, "R020", "warn",
+            f"ftMotionCommand script '{decl.name}' has an internal "
+            f"hard terminator `{term}` followed by non-terminator "
+            f"macros — split the script after this terminator into a "
+            f"separate decl so the trailing entry point gets its own "
+            f"block symbol (referring to `{decl.name}+N` for the "
+            f"trailing script is a code smell)"
+        ))
 
 
 def is_aobjevent32_script(decl):
@@ -1553,6 +1685,12 @@ def validate(c_path, enabled_rules):
             check_mobjsub_format_constants(d, c_path, diags)
         if "R016" in enabled_rules:
             check_tex_preview_annotation(d, c_path, diags, lines)
+        if "R018" in enabled_rules:
+            check_ftmotion_raw_hex(d, c_path, diags)
+        if "R019" in enabled_rules:
+            check_ftmotion_termination(d, c_path, diags)
+        if "R020" in enabled_rules:
+            check_ftmotion_terminator_not_last(d, c_path, diags)
     if "R012" in enabled_rules:
         decls_by_name = {d.name: d for d in decls}
         for d in decls:
@@ -1581,7 +1719,7 @@ def validate(c_path, enabled_rules):
 
 ALL_RULES = ["R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008",
              "R009", "R010", "R011", "R012", "R013", "R014", "R015", "R016",
-             "R017"]
+             "R017", "R018", "R019", "R020"]
 
 
 def main():
@@ -1607,6 +1745,9 @@ def main():
             "  R015  MObjSub fmt/siz fields use raw ints instead of G_IM_FMT_*/G_IM_SIZ_*\n"
             "  R016  Texture block missing `@tex fmt=… dim=WxH` annotation for previewer\n"
             "  R017  File ends with a trailing PAD(N);\n"
+            "  R018  Raw hex inside an `ftMotionCommand` script body\n"
+            "  R019  ftMotionCommand script doesn't end with End/Goto/Return\n"
+            "  R020  ftMotionCommand script has a hard terminator (End/Goto/Return) followed by non-terminator macros (split the script)\n"
         ),
     )
     ap.add_argument("targets", nargs="+",

@@ -4,14 +4,14 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u32 dLinkMainMotion_0x0014[];
+extern u32 dLinkMainMotion_EggLay_0x0014[];
 extern DObjDesc dNLinkModel_JointTree[];
 
 /* Pre-attributes data (182 words, 0x02D8 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNLinkMain_pre+0x0) */
 u32 dNLinkMain_file_handles[1] = {
 
-	(u32)&dLinkMainMotion_0x0014, /* extern -> 0x0014 */
+	(u32)&dLinkMainMotion_EggLay_0x0014, /* extern -> 0x0014 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNLinkMain_pre+0x4) */

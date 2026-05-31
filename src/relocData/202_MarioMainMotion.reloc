@@ -1,60 +1,60 @@
 # Relocation metadata for file 202
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dMarioMainMotion_0x0024+0x8 dMarioMainMotion_0x0000
-intern dMarioMainMotion_0x0024+0x14 dMarioMainMotion_0x0000
-intern dMarioMainMotion_0x0024+0x20 dMarioMainMotion_0x0000
-intern dMarioMainMotion_0x0024+0x2C dMarioMainMotion_0x0024
-intern dMarioMainMotion_0x007C+0x38 dMarioMainMotion_0x007C
-intern dMarioMainMotion_0x01B8+0x4 dMarioMainMotion_0x01B0
-intern dMarioMainMotion_0x01C4+0x4 dMarioMainMotion_0x01B0
-extern dMarioMainMotion_0x01C4+0xC dMarioMainMotion_0x073C+0x1C  # -> file 201 (FTCommonMoveset)
-intern dMarioMainMotion_0x024C+0x4 dMarioMainMotion_0x020C
-intern dMarioMainMotion_0x028C+0x4 dMarioMainMotion_0x0274
-intern dMarioMainMotion_0x0294+0x8 dMarioMainMotion_0x0254
-intern dMarioMainMotion_0x02A4+0x4 dMarioMainMotion_0x0294
-intern dMarioMainMotion_0x02A4+0xC dMarioMainMotion_0x0294
-intern dMarioMainMotion_0x02A4+0x14 dMarioMainMotion_0x0294
-intern dMarioMainMotion_0x03FC+0x4 dMarioMainMotion_0x03BC
-intern dMarioMainMotion_0x0670+0x8 dMarioMainMotion_0x0654
-intern dMarioMainMotion_0x06D4+0x8 dMarioMainMotion_0x06B4
-intern dMarioMainMotion_0x073C+0x8 dMarioMainMotion_0x0720
-intern dMarioMainMotion_0x07A0+0x8 dMarioMainMotion_0x0780
-intern dMarioMainMotion_0x07F8+0x8 dMarioMainMotion_0x07EC
-intern dMarioMainMotion_0x0810+0x8 dMarioMainMotion_0x0804
-extern dMarioMainMotion_0x0810+0x1C dMarioMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0844+0x14 dMarioMainMotion_0x0024+0x40  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0878+0x18 dMarioMainMotion_0x007C+0x4C  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x08B0+0x14 dMarioMainMotion_0x0120+0xC  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x08DC+0x8 dMarioMainMotion_0x019C+0x4  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x08F4+0xC dMarioMainMotion_0x01F4  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0918+0x20 dMarioMainMotion_0x020C+0x3C  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0950+0xC dMarioMainMotion_0x02A4+0xC  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x096C+0x8 dMarioMainMotion_0x0324  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0984+0xC dMarioMainMotion_0x0324+0x54  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x09A8+0x10 dMarioMainMotion_0x03BC+0x10  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x09D0+0xC dMarioMainMotion_0x03FC+0x34  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x09EC+0xC dMarioMainMotion_0x0488+0xC  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0A08+0x10 dMarioMainMotion_0x04DC+0x1C  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0A38+0x18 dMarioMainMotion_0x0550+0xC  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0A6C+0x10 dMarioMainMotion_0x05BC+0x4  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0AAC+0x10 dMarioMainMotion_0x062C+0x8  # -> file 201 (FTCommonMoveset)
-intern dMarioMainMotion_0x0AAC+0x20 dMarioMainMotion_0x0AAC
+intern dMarioMainMotion_Wait_0x0024+0x8 dMarioMainMotion_0x0000
+intern dMarioMainMotion_Wait_0x0024+0x14 dMarioMainMotion_0x0000
+intern dMarioMainMotion_Wait_0x0024+0x20 dMarioMainMotion_0x0000
+intern dMarioMainMotion_Wait_0x0024+0x2C dMarioMainMotion_Wait_0x0024
+intern dMarioMainMotion_Run+0x38 dMarioMainMotion_Run
+intern dMarioMainMotion_Damage_0x01B8+0x4 dMarioMainMotion_0x01B0
+intern dMarioMainMotion_Damage_0x01C4+0x4 dMarioMainMotion_0x01B0
+extern dMarioMainMotion_Damage_0x01C4+0xC dMarioMainMotion_ItemThrowAirSmashU_0x0748+0x10  # -> file 201 (FTCommonMoveset)
+intern dMarioMainMotion_StunLandU+0x4 dMarioMainMotion_DownBounceD
+intern dMarioMainMotion_StunStartU+0x4 dMarioMainMotion_DownStandD_0x0274
+intern dMarioMainMotion_DownForwardD+0x8 dMarioMainMotion_0x0254
+intern dMarioMainMotion_DownForwardU+0x4 dMarioMainMotion_DownForwardD
+intern dMarioMainMotion_DownForwardU+0xC dMarioMainMotion_DownForwardD
+intern dMarioMainMotion_DownForwardU+0x14 dMarioMainMotion_DownForwardD
+intern dMarioMainMotion_TechB+0x4 dMarioMainMotion_TechF
+intern dMarioMainMotion_ItemThrowSmashB_0x0670+0x8 dMarioMainMotion_ItemThrowSmashB_0x0654
+intern dMarioMainMotion_ItemThrowSmashB_0x06D4+0x8 dMarioMainMotion_ItemThrowSmashB_0x06B4
+intern dMarioMainMotion_ItemThrowAirSmashB_0x073C+0x8 dMarioMainMotion_ItemThrowAirSmashB_0x0720
+intern dMarioMainMotion_ItemThrowAirSmashB_0x07A0+0x8 dMarioMainMotion_ItemThrowAirSmashB_0x0780
+intern dMarioMainMotion_HeavyItemThrowSmashB_0x07F8+0x8 dMarioMainMotion_HeavyItemThrowSmashB_0x07EC
+intern dMarioMainMotion_HeavyItemThrowSmashB_0x0810+0x8 dMarioMainMotion_HeavyItemThrowSmashB_0x0804
+extern dMarioMainMotion_SwordSwing1+0x10 dMarioMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_SwordSwing3+0x14 dMarioMainMotion_Dash+0x10  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_SwordSwing4+0x18 dMarioMainMotion_RunBrake+0x10  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_SwordSwingDash+0x14 dMarioMainMotion_Jump+0xC  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_BatSwing1+0x8 dMarioMainMotion_ShieldDrop_0x019C+0x4  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_BatSwing3+0xC dMarioMainMotion_EnterPipe  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_BatSwing4+0x20 dMarioMainMotion_DownBounceD+0x3C  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_BatSwingDash+0xC dMarioMainMotion_DownForwardU+0xC  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_HarisenSwing1+0x8 dMarioMainMotion_DownAttackU  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_HarisenSwing3+0xC dMarioMainMotion_DownAttackU+0x54  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_HarisenSwing4+0x10 dMarioMainMotion_TechF+0x10  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_HarisenSwingDash+0xC dMarioMainMotion_RollF+0x2C  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_StarRodSwing1+0xC dMarioMainMotion_CliffWait+0xC  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_StarRodSwing3+0x10 dMarioMainMotion_CliffAttackQuick2+0x1C  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_StarRodSwing4+0x18 dMarioMainMotion_CliffAttackSlow2+0xC  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_StarRodSwingDash+0x10 dMarioMainMotion_CliffEscapeQuick1+0x4  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_Hammer+0x10 dMarioMainMotion_ItemDrop+0x8  # -> file 201 (FTCommonMoveset)
+intern dMarioMainMotion_Hammer+0x20 dMarioMainMotion_Hammer
 intern dMarioMainMotion_0x0AD0+0x30 dMarioMainMotion_0x0AD0
-intern dMarioMainMotion_0x0AD0+0x54 dMarioMainMotion_0x0AD0
-intern dMarioMainMotion_0x0AD0+0x5C dMarioMainMotion_0x0AD0
-intern dMarioMainMotion_0x0B5C+0x2C dMarioMainMotion_0x0B5C
-intern dMarioMainMotion_0x0B8C+0x24 dMarioMainMotion_0x0B8C
-intern dMarioMainMotion_0x0BEC+0x4 dMarioMainMotion_0x0BB4
-intern dMarioMainMotion_0x0C68+0x4 dMarioMainMotion_0x0C30
-intern dMarioMainMotion_0x0CFC+0x4 dMarioMainMotion_0x0CC4
-extern dMarioMainMotion_0x0DB0+0x4 dMarioMainMotion_0x0698+0x14  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0DBC+0x4 dMarioMainMotion_0x06B4+0x10  # -> file 201 (FTCommonMoveset)
-extern dMarioMainMotion_0x0DC8+0x4 dMarioMainMotion_0x06B4+0x18  # -> file 201 (FTCommonMoveset)
-intern dMarioMainMotion_0x0DD4+0x4 dMarioMainMotion_0x01B0
-extern dMarioMainMotion_0x0DD4+0xC dMarioMainMotion_0x06D4+0x1C  # -> file 201 (FTCommonMoveset)
-intern dMarioMainMotion_0x0DE8+0x4 dMarioMainMotion_0x01B0
-extern dMarioMainMotion_0x0DE8+0xC dMarioMainMotion_0x0700+0xC  # -> file 201 (FTCommonMoveset)
-intern dMarioMainMotion_0x166C+0x4 dMarioMainMotion_0x1658
-intern dMarioMainMotion_0x16B4+0x14 dMarioMainMotion_0x1688
-intern dMarioMainMotion_0x17A8+0x4 dMarioMainMotion_0x16CC
+intern dMarioMainMotion_ShieldBreak+0x20 dMarioMainMotion_0x0AD0
+intern dMarioMainMotion_Damaged_0x0B28+0x4 dMarioMainMotion_0x0AD0
+intern dMarioMainMotion_Sleep_0x0B5C+0x2C dMarioMainMotion_Sleep_0x0B5C
+intern dMarioMainMotion_Sleep_0x0B8C+0x24 dMarioMainMotion_Sleep_0x0B8C
+intern dMarioMainMotion_Catch+0x4 dMarioMainMotion_0x0BB4
+intern dMarioMainMotion_ThrowF+0x4 dMarioMainMotion_0x0C30
+intern dMarioMainMotion_ThrowB+0x4 dMarioMainMotion_0x0CC4
+extern dMarioMainMotion_Damaged_0x0DB0+0x4 dMarioMainMotion_ItemThrowSmashD_0x0698+0x14  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_Damaged_0x0DBC+0x4 dMarioMainMotion_ItemThrowSmashB_0x06B4+0x10  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_Wait_0x0DC8+0x4 dMarioMainMotion_ItemThrowSmashB_0x06B4+0x18  # -> file 201 (FTCommonMoveset)
+intern dMarioMainMotion_FalconDivePulled+0x4 dMarioMainMotion_0x01B0
+extern dMarioMainMotion_FalconDivePulled+0xC dMarioMainMotion_ItemThrowSmashB_0x06D4+0x1C  # -> file 201 (FTCommonMoveset)
+intern dMarioMainMotion_Damaged_0x0DE8+0x4 dMarioMainMotion_0x01B0
+extern dMarioMainMotion_Damaged_0x0DE8+0xC dMarioMainMotion_ItemThrowSmashD_0x0700+0xC  # -> file 201 (FTCommonMoveset)
+intern dMarioMainMotion_Appear2+0x4 dMarioMainMotion_Appear1
+intern dMarioMainMotion_FireballAir+0x14 dMarioMainMotion_0x1688
+intern dMarioMainMotion_SuperJumpPunchAir_0x17A8+0x4 dMarioMainMotion_SuperJumpPunchAir_0x16CC

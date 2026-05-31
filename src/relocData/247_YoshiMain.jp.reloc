@@ -15,7 +15,7 @@ intern dYoshiMain_attr+0x338 dYoshiMain_thrown_status
 intern dYoshiMain_attr+0x340 dYoshiMain_sprites
 intern dYoshiMain_attr+0x344 dYoshiMain_skeleton
 
-extern dYoshiMain_file_handles dYoshiMainMotion_0x0034  # -> file 221 (YoshiMainMotion)
+extern dYoshiMain_file_handles dYoshiMainMotion_EggLay_0x0034  # -> file 221 (YoshiMainMotion)
 extern dYoshiMain_file_handles+0x4 dYoshiSpecial2_gap_0x0530  # -> file 329 (YoshiSpecial2)
 extern dYoshiMain_file_handles+0x8 dYoshiSpecial3_EggLay  # -> file 314 (YoshiSpecial3)
 extern dYoshiMain_file_handles+0xC dYoshiModel_gap_0xA860  # -> file 313 (YoshiModel)
@@ -64,11 +64,11 @@ extern dYoshiMain_skeleton_dls+0xB8 dYoshiModel_gap_0x6E70_sub_0x2050  # -> file
 extern dYoshiMain_skeleton_dls+0xC0 dYoshiModel_gap_0x6E70_sub_0x2160  # -> file 313 (YoshiModel)
 extern dYoshiMain_skeleton_dls+0xD0 dYoshiModel_DL_0x9090  # -> file 313 (YoshiModel)
 extern dYoshiMain_attr+0x2D8 dYoshiShieldPose_data0  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2DC dYoshiShieldPose_data0+0x500  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2E0 dYoshiShieldPose_script1_20+0x28  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2E4 dYoshiShieldPose_script2_20+0x28  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2E8 dYoshiShieldPose_script3_20+0x28  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2EC dYoshiShieldPose_script4_20+0x28  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2F0 dYoshiShieldPose_script5_20+0x28  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2F4 dYoshiShieldPose_script6_20+0x28  # -> file 315 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2F8 dYoshiShieldPose_script7_20+0x28  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2DC dYoshiShieldPose_data0_end  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E0 dYoshiShieldPose_shield_anim_joint_1  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E4 dYoshiShieldPose_shield_anim_joint_2  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E8 dYoshiShieldPose_shield_anim_joint_3  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2EC dYoshiShieldPose_shield_anim_joint_4  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F0 dYoshiShieldPose_shield_anim_joint_5  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F4 dYoshiShieldPose_shield_anim_joint_6  # -> file 315 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F8 dYoshiShieldPose_shield_anim_joint_7  # -> file 315 (YoshiShieldPose)

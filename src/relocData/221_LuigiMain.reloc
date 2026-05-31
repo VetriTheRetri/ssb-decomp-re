@@ -1,7 +1,7 @@
 # Relocation metadata for file 221
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dLuigiMain_file_handles dLuigiMainMotion_0x0024 # -> file 220 (LuigiMainMotion)
+extern dLuigiMain_file_handles dLuigiMainMotion_EggLay_0x0024 # -> file 220 (LuigiMainMotion)
 extern dLuigiMain_file_handles+0x4 dMarioSpecial2_EntryDokanDObjDesc # -> file 356 (MarioSpecial2)
 extern dLuigiMain_file_handles+0x8 dLuigiSpecial1_Fireball_WeaponAttributes # -> file 222 (LuigiSpecial1)
 extern dLuigiMain_modelparts_desc_0x05C dLuigiModel_Joint_0x1AB0_DisplayList # -> file 323 (LuigiModel)
@@ -62,15 +62,15 @@ intern dLuigiMain_attr+0x29C dLuigiMain_setup_parts
 intern dLuigiMain_attr+0x2A0 dLuigiMain_animlock
 intern dLuigiMain_attr+0x2D0 dLuigiMain_hiddenparts
 intern dLuigiMain_attr+0x2D4 dLuigiMain_commonparts_container
-extern dLuigiMain_attr+0x2D8 dMarioShieldPose_dMarioShieldPose_data0 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2DC dMarioShieldPose_dMarioShieldPose_data0_end # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2E0 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_1 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2E4 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_2 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2E8 dMarioShieldPose_dMarioShieldPose_shield_anim_joint_3 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2EC dMarioShieldPose_dMarioShieldPose_script5_15+0x18 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2F0 dMarioShieldPose_dMarioShieldPose_script6_15+0x20 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2F4 dMarioShieldPose_dMarioShieldPose_script7_15+0x28 # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2F8 dMarioShieldPose_dMarioShieldPose_script8_15+0x28 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2D8 dMarioShieldPose_data0 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2DC dMarioShieldPose_data0_end # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2E0 dMarioShieldPose_shield_anim_joint_1 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2E4 dMarioShieldPose_shield_anim_joint_2 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2E8 dMarioShieldPose_shield_anim_joint_3 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2EC dMarioShieldPose_shield_anim_joint_4 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2F0 dMarioShieldPose_shield_anim_joint_5 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2F4 dMarioShieldPose_shield_anim_joint_6 # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2F8 dMarioShieldPose_shield_anim_joint_7 # -> file 298 (MarioShieldPose)
 intern dLuigiMain_attr+0x324 dLuigiMain_translate_scales
 intern dLuigiMain_attr+0x328 dLuigiMain_modelparts_container
 intern dLuigiMain_attr+0x330 dLuigiMain_textureparts_container

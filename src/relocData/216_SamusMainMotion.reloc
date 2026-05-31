@@ -1,77 +1,77 @@
 # Relocation metadata for file 216
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dSamusMainMotion_0x00CC+0x38 dSamusMainMotion_0x00CC
-extern dSamusMainMotion_0x0204+0x4 dSamusMainMotion_0x0750+0x8  # -> file 201 (FTCommonMoveset)
-intern dSamusMainMotion_0x0294+0x4 dSamusMainMotion_0x0258
-intern dSamusMainMotion_0x02D4+0x4 dSamusMainMotion_0x02BC
-intern dSamusMainMotion_0x02DC+0x8 dSamusMainMotion_0x029C
-intern dSamusMainMotion_0x02EC+0x4 dSamusMainMotion_0x02DC
-intern dSamusMainMotion_0x02EC+0xC dSamusMainMotion_0x02DC
-intern dSamusMainMotion_0x02EC+0x14 dSamusMainMotion_0x02DC
-intern dSamusMainMotion_0x047C+0x4 dSamusMainMotion_0x043C
+intern dSamusMainMotion_Run+0x38 dSamusMainMotion_Run
+extern dSamusMainMotion_Damage+0x4 dSamusMainMotion_ItemThrowSmashB_0x0750+0x8  # -> file 201 (FTCommonMoveset)
+intern dSamusMainMotion_StunLandU+0x4 dSamusMainMotion_StunLandD
+intern dSamusMainMotion_StunStartU+0x4 dSamusMainMotion_StunStartD
+intern dSamusMainMotion_DownForwardD+0x8 dSamusMainMotion_0x029C
+intern dSamusMainMotion_DownForwardU+0x4 dSamusMainMotion_DownForwardD
+intern dSamusMainMotion_DownForwardU+0xC dSamusMainMotion_DownForwardD
+intern dSamusMainMotion_DownForwardU+0x14 dSamusMainMotion_DownForwardD
+intern dSamusMainMotion_TechB+0x4 dSamusMainMotion_TechF
 intern dSamusMainMotion_0x0484+0x8 dSamusMainMotion_0x0000
 intern dSamusMainMotion_0x0484+0x18 dSamusMainMotion_0x0044
 intern dSamusMainMotion_0x0484+0x38 dSamusMainMotion_0x005C
 intern dSamusMainMotion_0x0484+0x44 dSamusMainMotion_0x0074
-intern dSamusMainMotion_0x04D0+0x4 dSamusMainMotion_0x0484
-intern dSamusMainMotion_0x04F4+0x4 dSamusMainMotion_0x0484
-intern dSamusMainMotion_0x0654+0x20 dSamusMainMotion_0x0000
-intern dSamusMainMotion_0x0654+0x2C dSamusMainMotion_0x0044
-intern dSamusMainMotion_0x0654+0x40 dSamusMainMotion_0x005C
-intern dSamusMainMotion_0x0654+0x4C dSamusMainMotion_0x0074
-intern dSamusMainMotion_0x06B0+0x20 dSamusMainMotion_0x0000
-intern dSamusMainMotion_0x06B0+0x2C dSamusMainMotion_0x0044
-intern dSamusMainMotion_0x06B0+0x40 dSamusMainMotion_0x005C
-intern dSamusMainMotion_0x06B0+0x4C dSamusMainMotion_0x0074
-intern dSamusMainMotion_0x0770+0xC dSamusMainMotion_0x0750
-intern dSamusMainMotion_0x07E4+0xC dSamusMainMotion_0x07C0
-intern dSamusMainMotion_0x0858+0x8 dSamusMainMotion_0x083C
-intern dSamusMainMotion_0x08BC+0x8 dSamusMainMotion_0x089C
-intern dSamusMainMotion_0x0918+0xC dSamusMainMotion_0x0908
-intern dSamusMainMotion_0x093C+0x10 dSamusMainMotion_0x0928
-extern dSamusMainMotion_0x093C+0x28 dSamusMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x097C+0x18 dSamusMainMotion_0x005C+0x8  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x09B0+0x1C dSamusMainMotion_0x00A4+0x24  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x09E8+0x18 dSamusMainMotion_0x0124+0x8  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0A20+0x8 dSamusMainMotion_0x018C+0x14  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0A38+0x10 dSamusMainMotion_0x01F0+0x4  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0A5C+0x18 dSamusMainMotion_0x0240+0x8  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0A8C+0x10 dSamusMainMotion_0x029C+0x14  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0AB4+0x8 dSamusMainMotion_0x02EC+0x38  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0ACC+0x10 dSamusMainMotion_0x02EC+0x8C  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0AF0+0xC dSamusMainMotion_0x0388+0x44  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0B14+0x10 dSamusMainMotion_0x0400+0x30  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0B3C+0xC dSamusMainMotion_0x0484+0x10  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0B58+0x14 dSamusMainMotion_0x04F4+0x4  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0B88+0x14 dSamusMainMotion_0x055C  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0BBC+0x18 dSamusMainMotion_0x0564+0x5C  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0C0C+0xC dSamusMainMotion_0x05E0+0x54  # -> file 201 (FTCommonMoveset)
-intern dSamusMainMotion_0x0C0C+0x1C dSamusMainMotion_0x0C0C
+intern dSamusMainMotion_RollF+0x4 dSamusMainMotion_0x0484
+intern dSamusMainMotion_RollB+0x4 dSamusMainMotion_0x0484
+intern dSamusMainMotion_CliffEscapeQuick2+0x20 dSamusMainMotion_0x0000
+intern dSamusMainMotion_CliffEscapeQuick2+0x2C dSamusMainMotion_0x0044
+intern dSamusMainMotion_CliffEscapeQuick2+0x40 dSamusMainMotion_0x005C
+intern dSamusMainMotion_CliffEscapeQuick2+0x4C dSamusMainMotion_0x0074
+intern dSamusMainMotion_CliffEscapeSlow2+0x20 dSamusMainMotion_0x0000
+intern dSamusMainMotion_CliffEscapeSlow2+0x2C dSamusMainMotion_0x0044
+intern dSamusMainMotion_CliffEscapeSlow2+0x40 dSamusMainMotion_0x005C
+intern dSamusMainMotion_CliffEscapeSlow2+0x4C dSamusMainMotion_0x0074
+intern dSamusMainMotion_ItemThrowSmashB_0x0770+0xC dSamusMainMotion_ItemThrowSmashB_0x0750
+intern dSamusMainMotion_ItemThrowSmashB_0x07E4+0xC dSamusMainMotion_ItemThrowSmashB_0x07C0
+intern dSamusMainMotion_ItemThrowAirSmashB_0x0858+0x8 dSamusMainMotion_ItemThrowAirSmashB_0x083C
+intern dSamusMainMotion_ItemThrowAirSmashB_0x08BC+0x8 dSamusMainMotion_ItemThrowAirSmashB_0x089C
+intern dSamusMainMotion_HeavyItemThrowSmashB_0x0918+0xC dSamusMainMotion_HeavyItemThrowSmashB_0x0908
+intern dSamusMainMotion_HeavyItemThrowSmashB_0x093C+0x10 dSamusMainMotion_HeavyItemThrowSmashB_0x0928
+extern dSamusMainMotion_HeavyItemThrowSmashB_0x093C+0x28 dSamusMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_SwordSwing3+0x18 dSamusMainMotion_0x005C+0x8  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_SwordSwing4+0x1C dSamusMainMotion_Dash+0x24  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_SwordSwingDash+0x18 dSamusMainMotion_Turn+0x8  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_BatSwing1+0x8 dSamusMainMotion_JumpAerial+0x14  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_BatSwing3+0x10 dSamusMainMotion_ShieldDrop_0x01F0+0x4  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_BatSwing4+0x18 dSamusMainMotion_EnterPipe+0x8  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_BatSwingDash+0x10 dSamusMainMotion_0x029C+0x14  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_HarisenSwing1+0x8 dSamusMainMotion_DownForwardU+0x38  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_HarisenSwing3+0x10 dSamusMainMotion_DownForwardU+0x8C  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_HarisenSwing4+0xC dSamusMainMotion_DownAttackU+0x44  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_HarisenSwingDash+0x10 dSamusMainMotion_Tech+0x30  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_StarRodSwing1+0xC dSamusMainMotion_0x0484+0x10  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_StarRodSwing3+0x14 dSamusMainMotion_RollB+0x4  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_StarRodSwing4+0x14 dSamusMainMotion_CliffAttackQuick1  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_StarRodSwingDash+0x18 dSamusMainMotion_CliffAttackQuick2+0x5C  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_Hammer+0xC dSamusMainMotion_CliffAttackSlow2+0x54  # -> file 201 (FTCommonMoveset)
+intern dSamusMainMotion_Hammer+0x1C dSamusMainMotion_Hammer
 intern dSamusMainMotion_0x0C2C+0x30 dSamusMainMotion_0x0C2C
-intern dSamusMainMotion_0x0C2C+0x50 dSamusMainMotion_0x0C2C
-intern dSamusMainMotion_0x0C2C+0x58 dSamusMainMotion_0x0C2C
+intern dSamusMainMotion_ShieldBreak+0x1C dSamusMainMotion_0x0C2C
+intern dSamusMainMotion_Damaged_0x0C80+0x4 dSamusMainMotion_0x0C2C
 intern dSamusMainMotion_0x0CB8+0x30 dSamusMainMotion_0x0CB8
 intern dSamusMainMotion_0x0CF4+0x18 dSamusMainMotion_0x0CF4
-intern dSamusMainMotion_0x0D6C+0x8 dSamusMainMotion_0x0D34
-intern dSamusMainMotion_0x0D6C+0x10 dSamusMainMotion_0x0D10
-intern dSamusMainMotion_0x0E0C+0xC dSamusMainMotion_0x0D10
-intern dSamusMainMotion_0x0E58+0x4 dSamusMainMotion_0x0E20
-intern dSamusMainMotion_0x0E58+0xC dSamusMainMotion_0x0D10
-intern dSamusMainMotion_0x0EF0+0x4 dSamusMainMotion_0x0EB8
-intern dSamusMainMotion_0x0EF0+0xC dSamusMainMotion_0x0D10
-extern dSamusMainMotion_0x0F50+0x4 dSamusMainMotion_0x06A8+0x4  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0F5C+0x4 dSamusMainMotion_0x06B0+0x14  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0F68+0x4 dSamusMainMotion_0x06B0+0x1C  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0F74+0x4 dSamusMainMotion_0x06B0+0x40  # -> file 201 (FTCommonMoveset)
-extern dSamusMainMotion_0x0F80+0x4 dSamusMainMotion_0x0704+0x8  # -> file 201 (FTCommonMoveset)
-intern dSamusMainMotion_0x1AE0+0x4 dSamusMainMotion_0x1ACC
-intern dSamusMainMotion_0x1C8C+0x98 dSamusMainMotion_0x1C68
+intern dSamusMainMotion_Catch+0x8 dSamusMainMotion_0x0D34
+intern dSamusMainMotion_Catch+0x10 dSamusMainMotion_0x0D10
+intern dSamusMainMotion_CatchPull+0xC dSamusMainMotion_0x0D10
+intern dSamusMainMotion_ThrowF+0x4 dSamusMainMotion_0x0E20
+intern dSamusMainMotion_ThrowF+0xC dSamusMainMotion_0x0D10
+intern dSamusMainMotion_ThrowB+0x4 dSamusMainMotion_0x0EB8
+intern dSamusMainMotion_ThrowB+0xC dSamusMainMotion_0x0D10
+extern dSamusMainMotion_Damaged_0x0F50+0x4 dSamusMainMotion_CliffEscapeSlow1+0x4  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_Damaged_0x0F5C+0x4 dSamusMainMotion_CliffEscapeSlow2+0x14  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_EggLay_0x0F68+0x4 dSamusMainMotion_CliffEscapeSlow2+0x1C  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_FalconDivePulled+0x4 dSamusMainMotion_CliffEscapeSlow2+0x40  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_Damaged_0x0F80+0x4 dSamusMainMotion_LightItemPickup+0x8  # -> file 201 (FTCommonMoveset)
+intern dSamusMainMotion_Appear2+0x4 dSamusMainMotion_Appear1
+intern dSamusMainMotion_ScrewAttackAir+0x98 dSamusMainMotion_0x1C68
 intern dSamusMainMotion_0x1D88+0x1C dSamusMainMotion_0x1D88
-intern dSamusMainMotion_0x1E10+0x18 dSamusMainMotion_0x0000
-intern dSamusMainMotion_0x1E10+0x38 dSamusMainMotion_0x0044
-intern dSamusMainMotion_0x1E10+0x48 dSamusMainMotion_0x005C
-intern dSamusMainMotion_0x1E10+0x54 dSamusMainMotion_0x0074
+intern dSamusMainMotion_Bomb+0x18 dSamusMainMotion_0x0000
+intern dSamusMainMotion_Bomb+0x38 dSamusMainMotion_0x0044
+intern dSamusMainMotion_Bomb+0x48 dSamusMainMotion_0x005C
+intern dSamusMainMotion_Bomb+0x54 dSamusMainMotion_0x0074
 intern dSamusMainMotion_0x1E6C+0x18 dSamusMainMotion_0x0000
 intern dSamusMainMotion_0x1E6C+0x30 dSamusMainMotion_0x0044
 intern dSamusMainMotion_0x1E6C+0x3C dSamusMainMotion_0x005C

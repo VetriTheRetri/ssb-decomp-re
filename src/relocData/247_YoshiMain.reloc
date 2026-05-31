@@ -1,7 +1,7 @@
 # Relocation metadata for file 247
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dYoshiMain_file_handles dYoshiMainMotion_0x0034 # -> file 246 (YoshiMainMotion)
+extern dYoshiMain_file_handles dYoshiMainMotion_EggLay_0x0034 # -> file 246 (YoshiMainMotion)
 extern dYoshiMain_file_handles+0x4 dYoshiSpecial2_gap_0x0530 # -> file 354 (YoshiSpecial2)
 extern dYoshiMain_file_handles+0x8 dYoshiSpecial3_EggLay # -> file 339 (YoshiSpecial3)
 extern dYoshiMain_file_handles+0xC dYoshiModel_gap_0xA860 # -> file 338 (YoshiModel)
@@ -57,14 +57,14 @@ intern dYoshiMain_attr+0x2A0 dYoshiMain_animlock
 intern dYoshiMain_attr+0x2D0 dYoshiMain_hiddenparts
 intern dYoshiMain_attr+0x2D4 dYoshiMain_commonparts_container
 extern dYoshiMain_attr+0x2D8 dYoshiShieldPose_data0 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2DC dYoshiShieldPose_data0+0x500 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2E0 dYoshiShieldPose_script1_20+0x28 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2E4 dYoshiShieldPose_script2_20+0x28 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2E8 dYoshiShieldPose_script3_20+0x28 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2EC dYoshiShieldPose_script4_20+0x28 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2F0 dYoshiShieldPose_script5_20+0x28 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2F4 dYoshiShieldPose_script6_20+0x28 # -> file 340 (YoshiShieldPose)
-extern dYoshiMain_attr+0x2F8 dYoshiShieldPose_script7_20+0x28 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2DC dYoshiShieldPose_data0_end # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E0 dYoshiShieldPose_shield_anim_joint_1 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E4 dYoshiShieldPose_shield_anim_joint_2 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E8 dYoshiShieldPose_shield_anim_joint_3 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2EC dYoshiShieldPose_shield_anim_joint_4 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F0 dYoshiShieldPose_shield_anim_joint_5 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F4 dYoshiShieldPose_shield_anim_joint_6 # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F8 dYoshiShieldPose_shield_anim_joint_7 # -> file 340 (YoshiShieldPose)
 intern dYoshiMain_attr+0x328 dYoshiMain_modelparts_container
 intern dYoshiMain_attr+0x330 dYoshiMain_textureparts_container
 intern dYoshiMain_attr+0x338 dYoshiMain_thrown_status

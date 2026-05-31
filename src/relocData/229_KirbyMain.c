@@ -5,7 +5,7 @@
 #include <ft/fttypes.h>
 
 extern Gfx dFoxUnknown_DL[];
-extern u32 dKirbyMainMotion_0x0154[];
+extern u32 dKirbyMainMotion_EggLay_0x0154[];
 extern DObjDesc dKirbyModel_JointTree[];
 extern DObjDesc dKirbyModel_JointTree_0x2CD0[];
 extern Vtx dKirbyModel_JointVerts_Vtx[];
@@ -133,7 +133,7 @@ extern Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[];
 /* @ 0x0000, 60 bytes: FTAttributes.file_handles target (was dKirbyMain_pre+0x0) */
 u32 dKirbyMain_file_handles[15] = {
 
-	(u32)&dKirbyMainMotion_0x0154, /* extern -> 0x0154 */
+	(u32)&dKirbyMainMotion_EggLay_0x0154, /* extern -> 0x0154 */
 	(u32)&dKirbySpecial2_VulcanJab, /* extern -> 0x0B20 */
 	(u32)&dKirbyModel_gap_0x1A2FC_sub_0x308C, /* extern -> 0x1D388 */
 	0x00000000,

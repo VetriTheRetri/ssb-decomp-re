@@ -124,6 +124,12 @@
 // WARNING: Only advances 4 bytes at a time
 #define ftMotionEventCastAdvance(event, type) ((type*)(event)->p_script++)
 
+/* `ftMotionCommand` is the per-word type of every `ftMotionCommand*()` /
+ * `ftMotionPlay*()` macro in this file. Script arrays in `src/relocData/
+ * *MainMotion.c` should be declared as `ftMotionCommand foo[] = { ... };`
+ * so the validator and reader can tell scripts apart from `u32[]` blobs. */
+typedef u32 ftMotionCommand;
+
 #define ftMotionCommandEnd() GC_FIELDSET(nFTMotionEventEnd, 26, 6)
 
 #define ftMotionCommandWait(frames) (GC_FIELDSET(nFTMotionEventSyncWait, 26, 6) | GC_FIELDSET(frames, 0, 26))

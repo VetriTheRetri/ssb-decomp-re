@@ -5,7 +5,7 @@
 #include <ft/fttypes.h>
 
 extern Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[];
-extern u32 dLinkMainMotion_0x0014[];
+extern u32 dLinkMainMotion_EggLay_0x0014[];
 extern DObjDesc dLinkModel_JointTree[];
 extern DObjDesc dLinkModel_JointTree_0x74B0[];
 extern Gfx dLinkModel_Joint_0x2630_DisplayList[];
@@ -64,7 +64,7 @@ extern DObjDesc dLinkSpecial2_SpinAttackDObjDesc[];
 /* @ 0x0000, 192 bytes: FTAttributes.file_handles target (was dLinkMain_pre+0x0) */
 u32 dLinkMain_file_handles[48] = {
 
-	(u32)&dLinkMainMotion_0x0014, /* extern -> 0x0014 */
+	(u32)&dLinkMainMotion_EggLay_0x0014, /* extern -> 0x0014 */
 	(u32)&dLinkSpecial2_EntryWaveDObjDesc, /* extern -> 0x03F8 */
 	(u32)&dLinkSpecial1_Boomerang_WeaponAttributes, /* extern -> 0x0000 */
 	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x35D0), /* extern -> 0x11908 */

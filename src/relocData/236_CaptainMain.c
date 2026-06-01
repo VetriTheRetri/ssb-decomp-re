@@ -2,6 +2,17 @@
 /* File size: 2000 bytes (0x7D0) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dCaptainShieldPose_data0[];
+extern u8 dCaptainShieldPose_data0_end[];
+extern u8 dCaptainShieldPose_shield_anim_joint_1[];
+extern u8 dCaptainShieldPose_shield_anim_joint_2[];
+extern u8 dCaptainShieldPose_shield_anim_joint_3[];
+extern u8 dCaptainShieldPose_shield_anim_joint_4[];
+extern u8 dCaptainShieldPose_shield_anim_joint_5[];
+extern u8 dCaptainShieldPose_shield_anim_joint_6[];
+extern u8 dCaptainShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dCaptainModel_JointTree[];
@@ -35,7 +46,7 @@ extern u8 dCaptainModel_gap_0x7DD0_sub_0x2078[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x2100[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x223C[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x22C0[];
-extern u8 dCaptainModel_gap_0x7DD0_sub_0x2390[];
+extern u8 dCaptainModel_DL_0xA160[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x25C0[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x27B0[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x28C0[];
@@ -44,7 +55,7 @@ extern u8 dCaptainModel_gap_0x7DD0_sub_0x2B30[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x2C30[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x2D50[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x2E60[];
-extern u8 dCaptainModel_gap_0x7DD0_sub_0x2F40[];
+extern u8 dCaptainModel_DL_0xAD10[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x694[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x6B4[];
 extern u8 dCaptainModel_gap_0x7DD0_sub_0x808[];
@@ -211,7 +222,7 @@ FTSprites dCaptainMain_sprites = {
 FTSkeleton dCaptainMain_skeleton_dls[26] = {
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x22C0 }, 0 },
-	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2390 }, 0 },
+	{ { (Gfx*)&dCaptainModel_DL_0xA160 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x28C0 }, 0 },
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x27B0 }, 0 },
@@ -228,12 +239,12 @@ FTSkeleton dCaptainMain_skeleton_dls[26] = {
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2D50 }, 0 },
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2E60 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2F40 }, 0 },
+	{ { (Gfx*)&dCaptainModel_DL_0xAD10 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2D50 }, 0 },
 	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2E60 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2F40 }, 0 },
+	{ { (Gfx*)&dCaptainModel_DL_0xAD10 }, 0 },
 	{ { NULL }, 0 },
 };
 
@@ -361,8 +372,8 @@ FTAttributes dCaptainMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dCaptainMain_hiddenparts, /* hiddenparts */
 	&dCaptainMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dCaptainShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dCaptainShieldPose_data0_end, (void *)&dCaptainShieldPose_shield_anim_joint_1, (void *)&dCaptainShieldPose_shield_anim_joint_2, (void *)&dCaptainShieldPose_shield_anim_joint_3, (void *)&dCaptainShieldPose_shield_anim_joint_4, (void *)&dCaptainShieldPose_shield_anim_joint_5, (void *)&dCaptainShieldPose_shield_anim_joint_6, (void *)&dCaptainShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	176.271f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

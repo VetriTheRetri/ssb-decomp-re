@@ -6,6 +6,26 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStageYamabukiFile3_LUT_0x0008[];
+extern u16 dStageYamabukiFile3_LUT_0x0438[];
+extern u16 dStageYamabukiFile3_LUT_0x0A48[];
+extern u16 dStageYamabukiFile3_LUT_0x1020[];
+extern u16 dStageYamabukiFile3_LUT_0x1B50[];
+extern u16 dStageYamabukiFile3_LUT_0x2478[];
+extern u8 dStageYamabukiFile3_Tex_0x0030[];
+extern u8 dStageYamabukiFile3_Tex_0x0460[];
+extern u8 dStageYamabukiFile3_Tex_0x0A70[];
+extern u8 dStageYamabukiFile3_Tex_0x24A0[];
+extern u8 dStageYamabukiFile3_Tex_0x27A8[];
+extern Vtx dStageYamabukiFile3_Vtx_0x0230[];
+extern Vtx dStageYamabukiFile3_Vtx_0x0660[];
+extern Vtx dStageYamabukiFile3_Vtx_0x0D70[];
+extern Vtx dStageYamabukiFile3_Vtx_0x1860[];
+extern Vtx dStageYamabukiFile3_Vtx_0x2210[];
+extern Vtx dStageYamabukiFile3_Vtx_0x2828[];
+extern Vtx dStageYamabukiFile3_Vtx_0x2868[];
+
 extern u32 dStageYamabukiFile3_AnimJoint_0x03F8[];
 extern u32 dStageYamabukiFile3_AnimJoint_0x0828[];
 extern u32 dStageYamabukiFile3_AnimJoint_0x0F38[];

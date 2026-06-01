@@ -16,6 +16,11 @@
 
 #include "relocdata_types.h"
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dFoxUnknown_Tex[];
+extern Vtx dFoxUnknown_Vtx[];
+extern u16 dFoxUnknown_palette[];
 PAD(8);
 
 /* @ 0x0008, 32 bytes — 16-color RGBA5551 palette */

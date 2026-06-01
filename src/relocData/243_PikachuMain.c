@@ -2,6 +2,17 @@
 /* File size: 1904 bytes (0x770) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dPikachuShieldPose_data0[];
+extern u8 dPikachuShieldPose_data0_end[];
+extern u8 dPikachuShieldPose_shield_anim_joint_1[];
+extern u8 dPikachuShieldPose_shield_anim_joint_2[];
+extern u8 dPikachuShieldPose_shield_anim_joint_3[];
+extern u8 dPikachuShieldPose_shield_anim_joint_4[];
+extern u8 dPikachuShieldPose_shield_anim_joint_5[];
+extern u8 dPikachuShieldPose_shield_anim_joint_6[];
+extern u8 dPikachuShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dPikachuModel_JointTree[];
@@ -10,19 +21,19 @@ extern DObjDesc dPikachuModel_ThunderTrailDObjDesc[];
 extern MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub;
 extern u8 dPikachuModel_gap_0x0000[];
 extern u8 dPikachuModel_gap_0x2B78_sub_0x8B8[];
-extern u8 dPikachuModel_gap_0x59B8_sub_0x1128[];
+extern u8 dPikachuModel_DL_0x6AE0[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x1338[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x1438[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x1548[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x1658[];
-extern u8 dPikachuModel_gap_0x59B8_sub_0x1718[];
+extern u8 dPikachuModel_DL_0x70D0[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x1868[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x1908[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0x998[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0xA38[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0xB94[];
 extern u8 dPikachuModel_gap_0x59B8_sub_0xC38[];
-extern u8 dPikachuModel_gap_0x59B8_sub_0xD88[];
+extern u8 dPikachuModel_DL_0x6740[];
 extern u8 dPikachuModel_gap_0x9950_sub_0x30[];
 extern u8 dPikachuModel_gap_0x9950_sub_0x58[];
 extern u8 dPikachuModel_gap_0x9950_sub_0x8[];
@@ -196,12 +207,12 @@ FTSprites dPikachuMain_sprites = {
 FTSkeleton dPikachuMain_skeleton_dls[27] = {
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0xC38 }, 0 },
-	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0xD88 }, 0 },
+	{ { (Gfx*)&dPikachuModel_DL_0x6740 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1438 }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1338 }, 0 },
-	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1128 }, 0 },
+	{ { (Gfx*)&dPikachuModel_DL_0x6AE0 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1868 }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1908 }, 0 },
@@ -213,12 +224,12 @@ FTSkeleton dPikachuMain_skeleton_dls[27] = {
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1548 }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1658 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1718 }, 0 },
+	{ { (Gfx*)&dPikachuModel_DL_0x70D0 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1548 }, 0 },
 	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1658 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1718 }, 0 },
+	{ { (Gfx*)&dPikachuModel_DL_0x70D0 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
 };
@@ -327,8 +338,8 @@ FTAttributes dPikachuMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dPikachuMain_hiddenparts, /* hiddenparts */
 	&dPikachuMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dPikachuShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dPikachuShieldPose_data0_end, (void *)&dPikachuShieldPose_shield_anim_joint_1, (void *)&dPikachuShieldPose_shield_anim_joint_2, (void *)&dPikachuShieldPose_shield_anim_joint_3, (void *)&dPikachuShieldPose_shield_anim_joint_4, (void *)&dPikachuShieldPose_shield_anim_joint_5, (void *)&dPikachuShieldPose_shield_anim_joint_6, (void *)&dPikachuShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	79.671f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

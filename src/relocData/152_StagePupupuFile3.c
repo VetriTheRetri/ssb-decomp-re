@@ -6,6 +6,35 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStagePupupuFile3_DL_0x15B0[];
+extern Gfx dStagePupupuFile3_DL_0x2880[];
+extern Gfx dStagePupupuFile3_DL_0x2F00[];
+extern u16 dStagePupupuFile3_LUT_0x0008[];
+extern u16 dStagePupupuFile3_LUT_0x0438[];
+extern u16 dStagePupupuFile3_LUT_0x0868[];
+extern u16 dStagePupupuFile3_LUT_0x0998[];
+extern u16 dStagePupupuFile3_LUT_0x0E58[];
+extern u8 dStagePupupuFile3_Tex_0x0030[];
+extern u8 dStagePupupuFile3_Tex_0x0460[];
+extern u8 dStagePupupuFile3_Tex_0x0890[];
+extern u8 dStagePupupuFile3_Tex_0x0E80[];
+extern Vtx dStagePupupuFile3_Vtx_0x0F98[];
+extern Vtx dStagePupupuFile3_Vtx_0x1458[];
+extern Vtx dStagePupupuFile3_Vtx_0x1498[];
+extern Vtx dStagePupupuFile3_Vtx_0x14D8[];
+extern Vtx dStagePupupuFile3_Vtx_0x1518[];
+extern Vtx dStagePupupuFile3_Vtx_0x2790[];
+extern Vtx dStagePupupuFile3_Vtx_0x27C0[];
+extern Vtx dStagePupupuFile3_Vtx_0x27E0[];
+extern Vtx dStagePupupuFile3_Vtx_0x2810[];
+extern Vtx dStagePupupuFile3_Vtx_0x2DC0[];
+extern Vtx dStagePupupuFile3_Vtx_0x2DF0[];
+extern Vtx dStagePupupuFile3_Vtx_0x2E10[];
+extern Vtx dStagePupupuFile3_Vtx_0x2E40[];
+extern Vtx dStagePupupuFile3_Vtx_0x2E60[];
+extern Vtx dStagePupupuFile3_Vtx_0x2E90[];
+
 extern MObjSub *dStagePupupuFile3_mobjsub_0x0F90[];
 extern u32 dStagePupupuFile3_AnimJoint_0x11AC[];
 extern u32 dStagePupupuFile3_AnimJoint_0x11C0[];
@@ -18,7 +47,6 @@ extern u32 dStagePupupuFile3_AnimJoint_0x12D0[];
 extern u32 dStagePupupuFile3_AnimJoint_0x133C[];
 extern u32 dStagePupupuFile3_AnimJoint_0x1358[];
 extern MObjSub *dStagePupupuFile3_mobjsub_0x1450[];
-extern Gfx dStagePupupuFile3_DL_0x15B0[];
 extern u32 dStagePupupuFile3_AnimJoint_0x18C8[];
 extern u32 dStagePupupuFile3_AnimJoint_0x18DC[];
 extern u32 dStagePupupuFile3_AnimJoint_0x191C[];
@@ -65,14 +93,12 @@ extern u32 dStagePupupuFile3_AnimJoint_0x2600[];
 extern u32 dStagePupupuFile3_AnimJoint_0x267C[];
 extern u32 dStagePupupuFile3_AnimJoint_0x26F8[];
 extern AObjEvent32 *dStagePupupuFile3_mobjlink_0x2780[];
-extern Gfx dStagePupupuFile3_DL_0x2880[];
 extern u32 dStagePupupuFile3_AnimJoint_0x2BFC[];
 extern u32 dStagePupupuFile3_AnimJoint_0x2C4C[];
 extern u32 dStagePupupuFile3_AnimJoint_0x2C9C[];
 extern u32 dStagePupupuFile3_AnimJoint_0x2CEC[];
 extern u32 dStagePupupuFile3_AnimJoint_0x2D3C[];
 extern u32 dStagePupupuFile3_AnimJoint_0x2D8C[];
-extern Gfx dStagePupupuFile3_DL_0x2F00[];
 extern u32 dStagePupupuFile3_AnimJoint_0x3408[];
 extern u32 dStagePupupuFile3_AnimJoint_0x3478[];
 extern u32 dStagePupupuFile3_AnimJoint_0x34D8[];

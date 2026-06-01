@@ -8,6 +8,23 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls for the orphan AObjEvent32 scripts (defined later) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0740_Vtx[];
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0940_Vtx[];
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0960_Vtx[];
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0B20_Vtx[];
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0D00_Vtx[];
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0D20_Vtx[];
+extern Vtx dMVOpeningRoomTransition_Vtx_0x0EE0_Vtx[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_Vtx[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x1A0[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x3A0[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x3B0[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x3C0[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x520[];
+extern Vtx dMVOpeningRoomTransition_gap_0x0000_sub_0x550[];
+extern Vtx dMVOpeningRoomTransition_gap_0x00B0_Vtx[];
 extern u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x84[];
 extern u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[];
 

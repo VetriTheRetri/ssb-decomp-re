@@ -8,9 +8,53 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dCaptainSpecial2_Joint_0x5C60_post[];
+extern u16 dCaptainSpecial2_Lut_0x0030_palette[];
+extern u8 dCaptainSpecial2_Tex_0x0C48[];
+extern u8 dCaptainSpecial2_Tex_0x1450[];
+extern u8 dCaptainSpecial2_Tex_0x1C58[];
+extern u8 dCaptainSpecial2_Tex_0x2460[];
+extern u8 dCaptainSpecial2_Tex_0x2C68[];
+extern u8 dCaptainSpecial2_Tex_0x2E70[];
+extern u8 dCaptainSpecial2_Tex_0x3078[];
+extern u8 dCaptainSpecial2_Tex_0x3480[];
+extern u8 dCaptainSpecial2_Tex_0x3C88[];
+extern u8 dCaptainSpecial2_Tex_0x3E90[];
+extern Vtx dCaptainSpecial2_Vtx_0x09F0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x3ED0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4050_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x40F0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4130_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4310_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4430_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4490_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4530_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x45F0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x46F0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4770_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x47B0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x49A0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x49D0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4BB0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4D90_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x4F70_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x5160_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x5350_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x5490_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x54D0_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x5510_Vtx[];
+extern Vtx dCaptainSpecial2_Vtx_0x5550_Vtx[];
+extern u8 dCaptainSpecial2__6518__AnimJoint[];
+extern u32 dCaptainSpecial2__6598__AnimJoint[];
+extern MObjSub *dCaptainSpecial2_gap_0x09D8_sub_0x10[];
 extern u8 dCaptainSpecial2_gap_0x09D8[];
 
-extern MObjSub *dCaptainSpecial2_gap_0x09D8_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes), split into
  * leading PAD + TLUT + trailing PAD. The 32 middle bytes are a 16-color
@@ -47,10 +91,14 @@ u8 dCaptainSpecial2_Tex_0x4E0[1152] = {
 
 /* MObjSub-list head @ 0x960 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dCaptainSpecial2_FalconKickMObjSub_MObjSub_real below). */
-MObjSub **dCaptainSpecial2_FalconKickMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x960 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u8 dCaptainSpecial2_FalconKickMObjSub_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <CaptainSpecial2/FalconKickMObjSub_MObjSub.data.inc.c>
 };
+
+u32 dCaptainSpecial2_data_0x0964[1] = { (u32)dCaptainSpecial2_gap_0x09D8_sub_0x10 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
 void *dCaptainSpecial2_FalconKickMObjSub_MObjSub_sprites[2] = {
@@ -524,7 +572,7 @@ PAD(4);
  * three AObjEvent32 scripts (sub_0x30 / sub_0x244 / sub_0x2C4). */
 extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x30[133];
 extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32];
-extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[21];
+extern u8 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[];
 
 AObjEvent32 *dCaptainSpecial2__6200__AnimJoint[12] = {
 	NULL,
@@ -714,67 +762,24 @@ u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32] = {
 	aobjEvent32End(),
 };
 
-/* Sub-script @ +0x2C4 (21 words / 84 bytes) */
-u32 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[21] = {
-	aobjEvent32SetVal(0x001, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfter(0x006, 0),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 35),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValRateBlock(0x001, 5),
-	    0xBF9C61AA,  /* -1.2217304706573486f */
-	    0x39C4776B,  /* 0.0003747300652321428f */
-	aobjEvent32SetValRateBlock(0x001, 20),
-	    0xBF9C61AA,  /* -1.2217304706573486f */
-	    0xB99B91B6,  /* -0.0002967246691696346f */
-	aobjEvent32SetVal0RateBlock(0x001, 10),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 50),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
-	0x00000000,
-	0x00000000,
-	(u32)0x6518,
+/* TODO: data.inc.c — block at 0x64C4 was u32[21]; contains 1 embedded chain pointer(s) split out below */
+u8 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[80] = {
+	/* TODO: data.inc.c */
+	#include <CaptainSpecial2/_6200__AnimJoint_sub_0x2C4.data.inc.c>
 };
 
+u32 dCaptainSpecial2_data_0x6514[1] = { (u32)dCaptainSpecial2__6518__AnimJoint };
 
-/* Raw data from file offset 0x6518 to 0x6598 (128 bytes) */
-u32 dCaptainSpecial2__6518__AnimJoint[32] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValRateBlock(0x380, 1),
-	    0x3F19999A,  /* 0.6000000238418579f */
-	    0x3DFFFFDF,  /* 0.1249997541308403f */
-	    0x3F19999A,  /* 0.6000000238418579f */
-	    0x3DFFFFDF,  /* 0.1249997541308403f */
-	    0x3F19999A,  /* 0.6000000238418579f */
-	    0x3DFFFFDF,  /* 0.1249997541308403f */
-	aobjEvent32SetVal0RateBlock(0x380, 1),
-	    0x3F9FFFFC,  /* 1.2499995231628418f */
-	    0x3F9FFFFC,  /* 1.2499995231628418f */
-	    0x3F9FFFFC,  /* 1.2499995231628418f */
-	aobjEvent32SetValRateBlock(0x380, 1),
-	    0x3F19999A,  /* 0.6000000238418579f */
-	    0xBDFFFFDF,  /* -0.1249997541308403f */
-	    0x3F19999A,  /* 0.6000000238418579f */
-	    0xBDFFFFDF,  /* -0.1249997541308403f */
-	    0x3F19999A,  /* 0.6000000238418579f */
-	    0xBDFFFFDF,  /* -0.1249997541308403f */
-	aobjEvent32SetVal0RateBlock(0x380, 1),
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)dCaptainSpecial2__6518__AnimJoint,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)0x6598,
+
+
+/* TODO: data.inc.c — block at 0x6518 was u32[32]; contains 1 embedded chain pointer(s) split out below */
+u8 dCaptainSpecial2__6518__AnimJoint[124] = {
+	/* TODO: data.inc.c */
+	#include <CaptainSpecial2/_6518__AnimJoint.data.inc.c>
 };
+
+u32 dCaptainSpecial2_data_0x6594[1] = { (u32)dCaptainSpecial2__6598__AnimJoint };
+
 
 /* Raw data from file offset 0x6598 to 0x65E0 (72 bytes) */
 u32 dCaptainSpecial2__6598__AnimJoint[18] = {

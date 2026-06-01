@@ -7,6 +7,16 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dFoxSpecial2_Lut3_0x0008[];
+extern u8 dFoxSpecial2_Tex_0x0018[];
+extern Vtx dFoxSpecial2_Vtx_0x0098_Vtx[];
+extern u8 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[];
+
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0018 (16 bytes) */
@@ -177,65 +187,20 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[];
 
 AObjEvent32 *dFoxSpecial2_ReflectorLoop_AnimJoint[2] = {
 	NULL,
 	(AObjEvent32 *)dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8,
 };
 
-u32 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[] = {
-	aobjEvent32SetVal(0x380, 0),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32SetValAfter(0x070, 0),
-	    0x00000000,
-	    0x43700000,
-	    0x00000000,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3ECCCCC7,
-	    0x3ECCCCC7,
-	    0x3ECCCCC7,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3ECCCCC7,
-	    0x3ECCCCC7,
-	    0x3ECCCCC7,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3F4CCCCA,
-	    0x3F4CCCCA,
-	    0x3F4CCCCA,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3F4CCCCA,
-	    0x3F4CCCCA,
-	    0x3F4CCCCA,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3E4CCCCD,
-	    0x3E4CCCCD,
-	    0x3E4CCCCD,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3E4CCCCD,
-	    0x3E4CCCCD,
-	    0x3E4CCCCD,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3F19999A,
-	    0x3F19999A,
-	    0x3F19999A,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3F19999A,
-	    0x3F19999A,
-	    0x3F19999A,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32SetValBlock(0x380, 1),
-	    0x3F800000,
-	    0x3F800000,
-	    0x3F800000,
-	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32End(),
+/* TODO: data.inc.c — block at 0x4C8 was u32[]; contains 1 embedded chain pointer(s) split out below */
+u8 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[196] = {
+	/* TODO: data.inc.c */
+	#include <FoxSpecial2/ReflectorLoop_AnimJoint_0x4C8.data.inc.c>
 };
+
+u32 dFoxSpecial2_data_0x058C[1] = { (u32)dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8 };
+
 
 /* Raw data from file offset 0x0590 to 0x09E0 (1104 bytes) */
 /* Script-table split: leading chain-pointer table at the

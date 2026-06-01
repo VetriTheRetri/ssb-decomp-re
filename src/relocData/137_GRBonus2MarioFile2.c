@@ -9,6 +9,55 @@
 
 /* Raw data from file offset 0x0000 to 0x09D0 (2512 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus2MarioFile2_DL_0x2930[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x480[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x4C0[];
+extern Gfx dGRBonus2MarioFile2_gap_0x0000_sub_0x500[];
+extern Gfx dGRBonus2MarioFile2_gap_0x0000_sub_0x700[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x108[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x11B8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x12B8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x13C8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x1518[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x16D8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x18D8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x1958[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x19B8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x1AF8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x1C38[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x1C8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x1D78[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x308[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x508[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x588[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x6C8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x8B8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0x9F8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0xBF8[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0xC38[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0xE38[];
+extern Vtx dGRBonus2MarioFile2_gap_0x0AD8_sub_0xFB8[];
 Vtx dGRBonus2MarioFile2_gap_0x0000[4] = {
 	#include <GRBonus2MarioFile2/gap_0x0000.vtx.inc.c>
 };

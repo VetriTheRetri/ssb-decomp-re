@@ -9,6 +9,58 @@
 
 /* Raw data from file offset 0x0000 to 0x0C80 (3200 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus1LinkFile2_DL_0x0480[];
+extern Gfx dGRBonus1LinkFile2_DL_0x1E10[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x440[];
+extern Gfx dGRBonus1LinkFile2_gap_0x0000_sub_0x580[];
+extern Gfx dGRBonus1LinkFile2_gap_0x0000_sub_0x780[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x80[];
+extern Gfx dGRBonus1LinkFile2_gap_0x0000_sub_0x980[];
+extern Gfx dGRBonus1LinkFile2_gap_0x0000_sub_0xA80[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x144[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x284[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x2C4[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x3E4[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x4[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x484[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x4E4[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x624[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x824[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x864[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0x9A4[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xA64[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xAE4[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xB64[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xC24[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xD64[];
+extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xDE4[];
+extern MPVertexData dGRBonus1LinkFile2_gap_0x2454[];
+extern u16 dGRBonus1LinkFile2_gap_0x2454_sub_0x108[];
+extern MPVertexLinks dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4[];
+extern u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x234[];
+extern u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x26C[];
 Vtx dGRBonus1LinkFile2_gap_0x0000[4] = {
 	#include <GRBonus1LinkFile2/gap_0x0000.vtx.inc.c>
 };
@@ -556,15 +608,32 @@ u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x26C[32] = {
  * JP: u16+u16 prefix that's actually the spilled tail of sub_0x26C's mapobj[4].pos.y
  * + alignment pad, followed by the standard 28-byte struct. Pointer fields are
  * chain-rewritten by fixRelocChain at link time per the .reloc / .jp.reloc. */
-u8 dGRBonus1LinkFile2_MPGeometryData_0x26E0[32] = {
-#if defined(REGION_JP)
-	0xF0, 0xC8, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x09, 0xBB, 0x09, 0x15, 0x09, 0xBC, 0x09, 0x57,
-	0x09, 0xBD, 0x09, 0x7E, 0x09, 0xBF, 0x09, 0xA3, 0x00, 0x05, 0x00, 0x00, 0x09, 0xC1, 0x09, 0xB1,
-#else
-	0x00, 0x03, 0x00, 0x00, 0x09, 0xBA, 0x09, 0x15, 0x09, 0xBB, 0x09, 0x57, 0x09, 0xBC, 0x09, 0x7E,
-	0x09, 0xBE, 0x09, 0xA2, 0x00, 0x05, 0x00, 0x00, 0x09, 0xC1, 0x09, 0xB0, 0x00, 0x00, 0x00, 0x00,
-#endif
+/* TODO: data.inc.c — block at 0x26E0 was u8[32]; contains 5 embedded chain pointer(s) split out below */
+u8 dGRBonus1LinkFile2_MPGeometryData_0x26E0[4] = {
+	/* TODO: data.inc.c */
+	#include <GRBonus1LinkFile2/MPGeometryData_0x26E0.data.inc.c>
 };
+
+u32 dGRBonus1LinkFile2_data_0x26E4[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454 };
+
+u32 dGRBonus1LinkFile2_data_0x26E8[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x108 };
+
+u32 dGRBonus1LinkFile2_data_0x26EC[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4 };
+
+u32 dGRBonus1LinkFile2_data_0x26F0[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x234 };
+
+u8 dGRBonus1LinkFile2_data_0x26F4[4] = {
+	/* TODO: data.inc.c */
+	#include <GRBonus1LinkFile2/data_0x26F4.data.inc.c>
+};
+
+u32 dGRBonus1LinkFile2_data_0x26F8[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x26C };
+
+u8 dGRBonus1LinkFile2_data_0x26FC[4] = {
+	/* TODO: data.inc.c */
+	#include <GRBonus1LinkFile2/data_0x26FC.data.inc.c>
+};
+
 /* The 736-byte block at file 0x2700..0x29E0 was previously typed as one
  * decoded `u32 Layer1Anim_AnimJoint[184]` array, but most of it isn't an
  * AObjEvent32 stream — it's actually FOUR distinct things packed together:

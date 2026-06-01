@@ -6,7 +6,115 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern MObjSub *dYoshiModel_Joint_0x0060_post[];
+extern u8 *dYoshiModel_Joint_0x0060_post_sprites[];
+extern u16 dYoshiModel_Lut_0x9EC8_palette[];
+extern u8 dYoshiModel_Tex_0x9518[];
+extern u8 dYoshiModel_Tex_0x9BD0[];
+extern u8 dYoshiModel_Tex_0x9D70[];
+extern u8 dYoshiModel_Tex_0x9E80[];
+extern u8 dYoshiModel_Tex_0x9EF0[];
+extern u8 dYoshiModel_Tex_0x9FF8[];
+extern u8 dYoshiModel_Tex_0xA020[];
+extern u8 dYoshiModel_Tex_0xA820[];
+extern Vtx dYoshiModel_Vtx_0x0E90_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x0EE0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x0F20_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x0F80_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1000_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1020_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1050_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x10E0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1100_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1150_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1230_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x13F0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1450_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x14B0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1630_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1670_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x16E0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1710_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1780_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x17F0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1820_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1890_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x18B0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x18C0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x18D0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x18F0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1900_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x19E0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1AE0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1B40_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1CA0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1D80_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1E80_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x1EE0_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4D98_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4DF8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4E78_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4E88_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4EE8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4F18_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4F68_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x4FF8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5138_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5198_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x51F8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5228_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x52E8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5338_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5378_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x53C8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5418_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5458_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x54A8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x54D8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x54F8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5508_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x55A8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5668_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x56E8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x57C8_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5868_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x5928_Vtx[];
+extern Vtx dYoshiModel_Vtx_0x59A8_Vtx[];
+extern MObjSub *dYoshiModel_gap_0x0000_sub_0x18[];
+extern MObjSub *dYoshiModel_gap_0x0000_sub_0x8[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x13D0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x15A0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x15F0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1720[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1780[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1870[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1A00[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1C30[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1D40[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1E50[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1F00[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x1FB0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x20C0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x21D0[];
 extern Vtx dYoshiModel_gap_0x6E70_sub_0x2280[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x2330[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x2490[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0x9C0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xA50[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xB80[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xBE0[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xC40[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xE40[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xE60[];
+extern Vtx dYoshiModel_gap_0x6E70_sub_0xE90[];
+extern u8 dYoshiModel_Tex_0x9700[];
+extern u16 dYoshiModel_palette_0x9BA8[];
 extern Gfx dYoshiModel_DL_0x9140[];
 extern u16 dYoshiModel_palette_0x9C58[];
 extern u16 dYoshiModel_palette_0x9C80[];
@@ -52,7 +160,7 @@ extern MObjSub dYoshiModel_gap_0x6E70_sub_0x840[];
 extern MObjSub dYoshiModel_gap_0x6E70_sub_0x8B8[];
 extern MObjSub dYoshiModel_gap_0x6E70_sub_0x930[];
 extern u32 dYoshiModel_gap_0x6E70_sub_0xDC[];
-extern void *dYoshiModel_Joint_0x0080_post[];
+extern u32 dYoshiModel_Joint_0x0080_post[];
 extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x28[];
 extern void *dYoshiModel_Joint_0x0080_post_sprites_0x60[];
 extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x98[];
@@ -103,7 +211,6 @@ extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDE8[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDF0[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xDF8[];
 extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xE04[];
-extern u8 dYoshiModel_Tex_0x9518[];
 extern u16 dYoshiModel_palette_0x9560[];
 extern u16 dYoshiModel_palette_0x9588[];
 extern u16 dYoshiModel_palette_0x95B0[];
@@ -112,7 +219,6 @@ extern u16 dYoshiModel_palette_0x9600[];
 extern u16 dYoshiModel_palette_0x9628[];
 extern u8 dYoshiModel_Tex_0x9650[];
 extern u16 dYoshiModel_palette_0x96D8[];
-extern u8 dYoshiModel_Tex_0x9700[];
 extern u16 dYoshiModel_palette_0x9788[];
 extern u8 dYoshiModel_Tex_0x97B0[];
 extern u16 dYoshiModel_palette_0x9838[];
@@ -125,8 +231,6 @@ extern u16 dYoshiModel_palette_0x9A48[];
 extern u8 dYoshiModel_Tex_0x9A70[];
 extern u16 dYoshiModel_palette_0x9AF8[];
 extern u8 dYoshiModel_Tex_0x9B20[];
-extern u16 dYoshiModel_palette_0x9BA8[];
-extern u8 dYoshiModel_Tex_0x9BD0[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x13FC[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1408[];
 extern MObjSub *dYoshiModel_gap_0x38F4_sub_0x1428[];
@@ -276,18 +380,14 @@ extern u16 dYoshiModel_palette_0x9E58[];
 /* +0x00..+0x27 (10 slots) — Yoshi face sprite frames A (8 textures
  * + 2 trailing NULL). No MObjSub references this directly; preserved
  * for byte identity. Slot 0 is also the post-block chain head. */
-void *dYoshiModel_Joint_0x0080_post[10] = {
-	NULL,
-	(void *)dYoshiModel_Tex_0x97B0,
-	(void *)dYoshiModel_Tex_0x9650,
-	(void *)dYoshiModel_Tex_0x9860,
-	(void *)dYoshiModel_Tex_0x9910,
-	(void *)dYoshiModel_Tex_0x99C0,
-	(void *)dYoshiModel_Tex_0x9B20,
-	(void *)dYoshiModel_Tex_0x9A70,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x80 was void[10]; contains 1 embedded chain pointer(s) split out below */
+u32 dYoshiModel_Joint_0x0080_post[1] = { (u32)dYoshiModel_Tex_0x9700 };
+
+u8 dYoshiModel_data_0x0084[36] = {
+	/* TODO: data.inc.c */
+	#include <YoshiModel/data_0x0084.data.inc.c>
 };
+
 
 /* +0x28..+0x5F (14 slots) — sub_0x1A8.palettes target.
  * 14 palette frames (each u16[16]+PAD(8) at 0x9560..0x9BA8, formerly
@@ -2296,22 +2396,14 @@ u8 *dYoshiModel_gap_0x38F4_sub_0x7AC[14] = {
 
 /* Palette pointer array @ 0x40D8 (14 entries) — MObjSub.palettes target.
  * Slot 0 NULL, 13 palette frames. */
-u16 *dYoshiModel_gap_0x38F4_sub_0x7E4[14] = {
-	NULL,
-	dYoshiModel_palette_0x9560,
-	dYoshiModel_palette_0x9588,
-	dYoshiModel_palette_0x95B0,
-	dYoshiModel_palette_0x96D8,
-	dYoshiModel_palette_0x9788,
-	dYoshiModel_palette_0x9628,
-	dYoshiModel_palette_0x9838,
-	dYoshiModel_palette_0x98E8,
-	dYoshiModel_palette_0x9998,
-	dYoshiModel_palette_0x9AF8,
-	dYoshiModel_palette_0x9A48,
-	dYoshiModel_palette_0x95D8,
-	dYoshiModel_palette_0x9600,
+/* TODO: data.inc.c — block at 0x40D8 was u16[14]; contains 1 embedded chain pointer(s) split out below */
+u32 dYoshiModel_gap_0x38F4_sub_0x7E4[1] = { (u32)dYoshiModel_palette_0x9BA8 };
+
+u8 dYoshiModel_data_0x40DC[52] = {
+	/* TODO: data.inc.c */
+	#include <YoshiModel/data_0x40DC.data.inc.c>
 };
+
 
 /* Sprite pointer array @ 0x4110 (14 entries) — MObjSub.sprites target.
  * Same Yoshi face texture set as sub_0x7AC (slot 10/11 reordered). */
@@ -2334,22 +2426,14 @@ u8 *dYoshiModel_gap_0x38F4_sub_0x81C[14] = {
 
 /* Palette pointer array @ 0x4148 (14 entries) — MObjSub.palettes target.
  * Slot 0 NULL, 13 palette frames (same as sub_0x7E4). */
-u16 *dYoshiModel_gap_0x38F4_sub_0x854[14] = {
-	NULL,
-	dYoshiModel_palette_0x9560,
-	dYoshiModel_palette_0x9588,
-	dYoshiModel_palette_0x95B0,
-	dYoshiModel_palette_0x96D8,
-	dYoshiModel_palette_0x9788,
-	dYoshiModel_palette_0x9628,
-	dYoshiModel_palette_0x9838,
-	dYoshiModel_palette_0x98E8,
-	dYoshiModel_palette_0x9998,
-	dYoshiModel_palette_0x9AF8,
-	dYoshiModel_palette_0x9A48,
-	dYoshiModel_palette_0x95D8,
-	dYoshiModel_palette_0x9600,
+/* TODO: data.inc.c — block at 0x4148 was u16[14]; contains 1 embedded chain pointer(s) split out below */
+u32 dYoshiModel_gap_0x38F4_sub_0x854[1] = { (u32)dYoshiModel_palette_0x9BA8 };
+
+u8 dYoshiModel_data_0x414C[52] = {
+	/* TODO: data.inc.c */
+	#include <YoshiModel/data_0x414C.data.inc.c>
 };
+
 
 /* Palette pointer array @ 0x4180 (6 entries) — MObjSub.palettes target */
 extern u16 dYoshiModel_gap_0x6E70_sub_0x2680[];

@@ -6,6 +6,23 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dPikachuSpecial3_Lut_0x1C70_palette[];
+extern u8 dPikachuSpecial3_Tex_0x0030[];
+extern Vtx dPikachuSpecial3_Vtx_0x2130_Vtx[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x1380[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x13B0[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x13E0[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x1400[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x1430[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x1460[];
+extern Vtx dPikachuSpecial3_gap_0x0000_sub_0x230[];
+extern u16 dPikachuSpecial3_gap_0x0000_sub_0x8[];
 extern MObjSub *dPikachuSpecial3_gap_0x2118_sub_0x10[];
 
 extern u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint_0x1A40[];
@@ -752,10 +769,14 @@ u8 dPikachuSpecial3_Tex_0x1EA0[512] = {
 
 /* MObjSub-list head @ 0x20a0 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real below). */
-MObjSub **dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x20A0 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u8 dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <PikachuSpecial3/ThunderJoltMObjSub_MObjSub.data.inc.c>
 };
+
+u32 dPikachuSpecial3_data_0x20A4[1] = { (u32)dPikachuSpecial3_gap_0x2118_sub_0x10 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
 void *dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_sprites[2] = {

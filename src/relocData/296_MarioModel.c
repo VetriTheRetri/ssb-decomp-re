@@ -6,6 +6,55 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 *dMarioModel_Joint_0x0040_post_sub_0x38[];
+extern u8 dMarioModel_Tex_0x65F0[];
+extern Vtx dMarioModel_Vtx_0x0798_Vtx[];
+extern Vtx dMarioModel_Vtx_0x0928_Vtx[];
+extern Vtx dMarioModel_Vtx_0x09B8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x09F8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1058_Vtx[];
+extern Vtx dMarioModel_Vtx_0x10E8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1148_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1248_Vtx[];
+extern Vtx dMarioModel_Vtx_0x12F8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1358_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1458_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1508_Vtx[];
+extern Vtx dMarioModel_Vtx_0x1568_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3188_Vtx[];
+extern Vtx dMarioModel_Vtx_0x32F8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3368_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3398_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3878_Vtx[];
+extern Vtx dMarioModel_Vtx_0x38E8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3918_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3A18_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3A78_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3AA8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3B48_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3BA8_Vtx[];
+extern Vtx dMarioModel_Vtx_0x3BD8_Vtx[];
+extern MObjSub **dMarioModel_gap_0x0000[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x1040[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x12C0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x13D0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x14E0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x15E0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x16E0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x17F0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x1900[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x19E0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x340[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x570[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x730[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0x960[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0xB20[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0xC10[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0xD70[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0xDD0[];
+extern Vtx dMarioModel_gap_0x4A60_sub_0xFD0[];
 extern AObjEvent32 *dMarioModel_gap_0x26D0_sub_0x2F4[];
 extern AObjEvent32 *dMarioModel_gap_0x4A60_sub_0x314[];
 
@@ -56,7 +105,6 @@ extern MObjSub *dMarioModel_Joint_0x0040_post_sub_0x750[];
 
 /* Forward decls — palette frames split out of Tex_0x65F0 (defined later
  * at file offsets 0x6BD8/0x6C00/0x6C28/0x6C50) referenced by gap_0x26D0_sub_0x3A8. */
-extern u8 dMarioModel_Tex_0x65F0[];
 extern u8 dMarioModel_Tex_0x67A0[];
 extern u8 dMarioModel_Tex_0x69D0[];
 extern u8 dMarioModel_Tex_0x6C78[];

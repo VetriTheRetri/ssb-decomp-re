@@ -8,6 +8,15 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: gap_0x0000 @ 0x0 (16 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dLBTransitionSudare2_DL_0x1E08[];
+extern Vtx dLBTransitionSudare2_Vtx_0x0100_Vtx[];
+extern Vtx dLBTransitionSudare2_Vtx_0x1B30_Vtx[];
+extern Vtx dLBTransitionSudare2_Vtx_0x1BE0_Vtx[];
+extern Vtx dLBTransitionSudare2_Vtx_0x1C80_Vtx[];
+extern Vtx dLBTransitionSudare2_Vtx_0x1D20_Vtx[];
+extern Vtx dLBTransitionSudare2_gap_0x0000[];
 Vtx dLBTransitionSudare2_gap_0x0000[16] = {
 	#include <LBTransitionSudare2/gap_0x0000.vtx.inc.c>
 };

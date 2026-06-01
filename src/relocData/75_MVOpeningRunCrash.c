@@ -7,6 +7,14 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMVOpeningRunCrash_DL_0x2FE8[];
+extern Gfx dMVOpeningRunCrash_DL_0x3450[];
+extern u8 dMVOpeningRunCrash_Tex_0x0528[];
+extern Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x340[];
+extern Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x380[];
+extern Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x400[];
+
 extern void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
 
 extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3714[];

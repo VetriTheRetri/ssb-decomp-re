@@ -9,6 +9,10 @@
 
 /* Raw data from file offset 0x0000 to 0x0F98 (3992 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dLBTransitionRotScale_gap_0x0000[];
+extern Vtx dLBTransitionRotScale_gap_0x0000_sub_0x40[];
 Vtx dLBTransitionRotScale_gap_0x0000[4] = {
 	#include <LBTransitionRotScale/gap_0x0000.vtx.inc.c>
 };

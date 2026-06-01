@@ -6,6 +6,159 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStageYamabukiFile2_DL_0x4620[];
+extern Gfx dStageYamabukiFile2_DL_0x5E78[];
+extern Gfx dStageYamabukiFile2_DL_0x68F0[];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x91C[8];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x99C[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x9DC[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xA1C[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xA9C[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xADC[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xB1C[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xB5C[8];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xBDC[8];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xC5C[8];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xCDC[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xD1C[5];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xD6C[5];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xDBC[6];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xE1C[5];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xE6C[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xEAC[4];
+extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xEEC[6];
+extern u16 dStageYamabukiFile2_Lut_0x0008_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0438_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0C98_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0D08_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0D78_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0E28_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0ED8_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x0F88_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1038_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1168_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1218_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1348_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x13F8_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1828_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1898_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1AC8_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x1B78_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x21D8_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x2288_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x2338_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x2568_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x2798_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x28C8_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x3610_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x3840_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x38F0_palette[];
+extern u16 dStageYamabukiFile2_Lut_0x3B20_palette[];
+extern u8 dStageYamabukiFile2_Tex_0x0030[];
+extern u8 dStageYamabukiFile2_Tex_0x0460[];
+extern u8 dStageYamabukiFile2_Tex_0x0CC0[];
+extern u8 dStageYamabukiFile2_Tex_0x0D30[];
+extern u8 dStageYamabukiFile2_Tex_0x0DA0[];
+extern u8 dStageYamabukiFile2_Tex_0x0E50[];
+extern u8 dStageYamabukiFile2_Tex_0x0F00[];
+extern u8 dStageYamabukiFile2_Tex_0x0FB0[];
+extern u8 dStageYamabukiFile2_Tex_0x1060[];
+extern u8 dStageYamabukiFile2_Tex_0x1190[];
+extern u8 dStageYamabukiFile2_Tex_0x1240[];
+extern u8 dStageYamabukiFile2_Tex_0x1370[];
+extern u8 dStageYamabukiFile2_Tex_0x1420[];
+extern u8 dStageYamabukiFile2_Tex_0x1850[];
+extern u8 dStageYamabukiFile2_Tex_0x18C0[];
+extern u8 dStageYamabukiFile2_Tex_0x1AF0[];
+extern u8 dStageYamabukiFile2_Tex_0x1BA0[];
+extern u8 dStageYamabukiFile2_Tex_0x2200[];
+extern u8 dStageYamabukiFile2_Tex_0x22B0[];
+extern u8 dStageYamabukiFile2_Tex_0x2360[];
+extern u8 dStageYamabukiFile2_Tex_0x2590[];
+extern u8 dStageYamabukiFile2_Tex_0x27C0[];
+extern u8 dStageYamabukiFile2_Tex_0x28F0[];
+extern u8 dStageYamabukiFile2_Tex_0x3638[];
+extern u8 dStageYamabukiFile2_Tex_0x3868[];
+extern u8 dStageYamabukiFile2_Tex_0x3918[];
+extern u8 dStageYamabukiFile2_Tex_0x3B48[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3BC8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3C08_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3C48_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3C88_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3CC8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3D08_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3D68_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3DC8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3E28_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3E68_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3E98_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3EC8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3EF8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3F38_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3F78_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3FB8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x3FF8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4038_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4078_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x40D8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4138_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4198_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x41D8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4298_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x42D8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4318_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4358_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4398_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x43D8_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4418_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4498_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4518_Vtx[];
+extern Vtx dStageYamabukiFile2_Vtx_0x4598_Vtx[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x128[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x188[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x1C8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x278[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x2B8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x2F8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x418[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x458[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x578[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x638[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x6B8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x6F8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x738[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x7B8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x7F8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x838[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x8B8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x8F8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x938[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x978[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0x9B8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0xA38[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0xA78[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0xAD8[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0xB18[];
+extern Vtx dStageYamabukiFile2_gap_0x52D8_sub_0xC8[];
+extern Vtx dStageYamabukiFile2_gap_0x87C8_sub_0x1060[];
+extern u16 dStageYamabukiFile2_gap_0x87C8_sub_0x1AA8[];
+extern Vtx dStageYamabukiFile2_gap_0x87C8_sub_0x3F98[];
+extern u16 dStageYamabukiFile2_gap_0x87C8_sub_0x43A0[];
+extern Vtx dStageYamabukiFile2_gap_0x87C8_sub_0x5B08[];
+extern u16 dStageYamabukiFile2_gap_0x87C8_sub_0x5F88[];
+extern Vtx dStageYamabukiFile2_gap_0x87C8_sub_0x7560[];
+extern u16 dStageYamabukiFile2_gap_0x87C8_sub_0x88[];
+extern MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x1058[];
+extern MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x3F90[];
+extern MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x5B00[];
+extern MObjSub *dStageYamabukiFile2_gap_0x87C8_sub_0x7558[];
 extern u32 dStageYamabukiFile2_Layer0Anim_AnimJoint_0x51DC[];
 
 extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[];
@@ -1303,25 +1456,6 @@ extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[289];
 extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x484[289];
 extern AObjEvent32 * dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x908[1];
 extern AObjEvent32 * dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x90C[1];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x91C[8];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x99C[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x9DC[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xA1C[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xA9C[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xADC[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xB1C[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xB5C[8];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xBDC[8];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xC5C[8];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xCDC[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xD1C[5];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xD6C[5];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xDBC[6];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xE1C[5];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xE6C[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xEAC[4];
-extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xEEC[6];
 extern Gfx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0xF4C[227];
 extern Gfx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x1664[14];
 
@@ -2052,10 +2186,14 @@ u8 dStageYamabukiFile2_Tex_0x9008[968] = {
 	#include <StageYamabukiFile2/Tex_0x9008.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x121 */
-u8 dStageYamabukiFile2_Tex_0x93D0[968] = {
-	#include <StageYamabukiFile2/Tex_0x93D0.tex.inc.c>
+/* TODO: data.inc.c — block at 0x93D0 was u8[968]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYamabukiFile2_Tex_0x93D0[964] = {
+	/* TODO: data.inc.c */
+	#include <StageYamabukiFile2/Tex_0x93D0.data.inc.c>
 };
+
+u32 dStageYamabukiFile2_data_0x9794[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x1058 };
+
 
 /* u32 pointer array @ 0x9798 (4 entries) */
 void *dStageYamabukiFile2_gap_0x87C8_sub_0xFD0[4] = {
@@ -2673,10 +2811,14 @@ u8 dStageYamabukiFile2_Tex_0xBAB8[1544] = {
 	#include <StageYamabukiFile2/Tex_0xBAB8.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x193 */
-u8 dStageYamabukiFile2_Tex_0xC0C0[1544] = {
-	#include <StageYamabukiFile2/Tex_0xC0C0.tex.inc.c>
+/* TODO: data.inc.c — block at 0xC0C0 was u8[1544]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYamabukiFile2_Tex_0xC0C0[1540] = {
+	/* TODO: data.inc.c */
+	#include <StageYamabukiFile2/Tex_0xC0C0.data.inc.c>
 };
+
+u32 dStageYamabukiFile2_data_0xC6C4[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x3F90 };
+
 
 /* u32 pointer array @ 0xC6C8 (6 entries) */
 void *dStageYamabukiFile2_gap_0x87C8_sub_0x3F00[6] = {
@@ -2898,10 +3040,14 @@ u8 dStageYamabukiFile2_Tex_0xD928[1160] = {
 	#include <StageYamabukiFile2/Tex_0xD928.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x145 */
-u8 dStageYamabukiFile2_Tex_0xDDB0[1160] = {
-	#include <StageYamabukiFile2/Tex_0xDDB0.tex.inc.c>
+/* TODO: data.inc.c — block at 0xDDB0 was u8[1160]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYamabukiFile2_Tex_0xDDB0[1156] = {
+	/* TODO: data.inc.c */
+	#include <StageYamabukiFile2/Tex_0xDDB0.data.inc.c>
 };
+
+u32 dStageYamabukiFile2_data_0xE234[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x5B00 };
+
 
 /* u32 pointer array @ 0xE238 (6 entries) */
 void *dStageYamabukiFile2_gap_0x87C8_sub_0x5A70[5] = {
@@ -3157,10 +3303,14 @@ u8 dStageYamabukiFile2_Tex_0xF208[1352] = {
 	#include <StageYamabukiFile2/Tex_0xF208.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=48x56 */
-u8 dStageYamabukiFile2_Tex_0xF750[1352] = {
-	#include <StageYamabukiFile2/Tex_0xF750.tex.inc.c>
+/* TODO: data.inc.c — block at 0xF750 was u8[1352]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYamabukiFile2_Tex_0xF750[1348] = {
+	/* TODO: data.inc.c */
+	#include <StageYamabukiFile2/Tex_0xF750.data.inc.c>
 };
+
+u32 dStageYamabukiFile2_data_0xFC94[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x7558 };
+
 
 /* u32 pointer array @ 0xFC98 (4 entries) */
 void *dStageYamabukiFile2_gap_0x87C8_sub_0x74D0[4] = {

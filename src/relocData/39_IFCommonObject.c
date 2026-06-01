@@ -16,6 +16,10 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Shared Vtx pool referenced by every DL below. 223 vertices @ 16 B. */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dIFCommonObject_DL_0x0E38[];
+extern Vtx dIFCommonObject_Vtx_pool[];
 Vtx dIFCommonObject_Vtx_pool[223] = {
 	#include <IFCommonObject/Vtx_pool.vtx.inc.c>
 };

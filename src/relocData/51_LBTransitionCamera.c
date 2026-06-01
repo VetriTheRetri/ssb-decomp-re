@@ -8,6 +8,28 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: gap_0x0000 @ 0x0 (9 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dLBTransitionCamera_DL_0x1828[];
+extern Vtx dLBTransitionCamera_Vtx_0x0090_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x00C0_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x00F0_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0120_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0150_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0180_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x01B0_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x01E0_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0210_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0360_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0630_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0670_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0910_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0BF0_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0EC0_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x0F00_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x1190_Vtx[];
+extern Vtx dLBTransitionCamera_Vtx_0x1470_Vtx[];
+extern Vtx dLBTransitionCamera_gap_0x0000[];
 Vtx dLBTransitionCamera_gap_0x0000[9] = {
 	#include <LBTransitionCamera/gap_0x0000.vtx.inc.c>
 };

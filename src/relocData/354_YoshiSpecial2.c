@@ -8,6 +8,15 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0460 (1120 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dYoshiSpecial2_gap_0x0000_sub_0x30[];
+extern Vtx dYoshiSpecial2_gap_0x04D8_sub_0x18[];
+extern MObjSub *dYoshiSpecial2_gap_0x04D8_sub_0x10[];
 /* 48-byte leading region split into PAD + TLUT + PAD — the 32 middle
  * bytes are a 16-color RGBA5551 palette sitting just before the
  * gap_0x0000_sub_0x30 palette pool; no chain entry references it. */
@@ -41,9 +50,9 @@ u8 dYoshiSpecial2_Tex_0x260[512] = {
 
 /* MObjSub-list head @ 0x460 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dYoshiSpecial2_EntryEggMObjSub_MObjSub_real below). */
-MObjSub **dYoshiSpecial2_EntryEggMObjSub_MObjSub[1] = {
-	NULL,
-};
+/* TODO: data.inc.c — block at 0x460 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dYoshiSpecial2_EntryEggMObjSub_MObjSub[1] = { (u32)dYoshiSpecial2_gap_0x04D8_sub_0x10 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
 void *dYoshiSpecial2_EntryEggMObjSub_MObjSub_sprites[3] = {

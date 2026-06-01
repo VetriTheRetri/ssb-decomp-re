@@ -8,6 +8,32 @@
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dNNessModel_Vtx_0x01F0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x03A0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x04F0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x0580_Vtx[];
+extern Vtx dNNessModel_Vtx_0x0770_Vtx[];
+extern Vtx dNNessModel_Vtx_0x07E0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x09C0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x0BC0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x0DA0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x0EC0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x0F20_Vtx[];
+extern Vtx dNNessModel_Vtx_0x1070_Vtx[];
+extern Vtx dNNessModel_Vtx_0x1100_Vtx[];
+extern Vtx dNNessModel_Vtx_0x12F0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x1360_Vtx[];
+extern Vtx dNNessModel_Vtx_0x14B0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x16B0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x1860_Vtx[];
+extern Vtx dNNessModel_Vtx_0x19B0_Vtx[];
+extern Vtx dNNessModel_Vtx_0x1BB0_Vtx[];
+extern Vtx dNNessModel_gap_0x0000[];
+extern Vtx dNNessModel_gap_0x3210[];
+extern Vtx dNNessModel_gap_0x3210_sub_0x130[];
+extern Vtx dNNessModel_gap_0x3210_sub_0x1F0[];
 /* Placeholder wrapper: the description slot collapsed to
  * zero vertices because an extras block starts at the
  * same offset. No C declaration is emitted so IDO CFE

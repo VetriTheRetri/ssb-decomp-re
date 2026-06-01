@@ -7,6 +7,15 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dGRBonus3File3_LUT_0x0218[];
+extern u8 dGRBonus3File3_Tex_0x0240[];
+extern u8 dGRBonus3File3_Tex_0x02C8[];
+extern Vtx dGRBonus3File3_Vtx_0x0348[];
+extern Vtx dGRBonus3File3_Vtx_0x0388[];
+extern Vtx dGRBonus3File3_Vtx_0x0508[];
+extern Vtx dGRBonus3File3_Vtx_0x0840[];
+
 extern u32 dGRBonus3File3_AnimJoint_0x0124[11];
 extern u32 dGRBonus3File3_AnimJoint_0x0150[15];
 extern u32 dGRBonus3File3_AnimJoint_0x018C[15];

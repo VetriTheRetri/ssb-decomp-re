@@ -8,6 +8,24 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dFTEmblemModels_Donkey_Vtx[];
+extern Vtx dFTEmblemModels_FZero_Vtx[];
+extern Vtx dFTEmblemModels_Fox_Vtx[];
+extern Vtx dFTEmblemModels_Kirby_Vtx[];
+extern Vtx dFTEmblemModels_Mario_Vtx[];
+extern Vtx dFTEmblemModels_Metroid_Vtx[];
+extern Vtx dFTEmblemModels_Mother_Vtx[];
+extern Vtx dFTEmblemModels_PMonsters_Vtx[];
+extern Vtx dFTEmblemModels_Yoshi_Vtx[];
+extern Vtx dFTEmblemModels_Zelda_Vtx[];
+extern u8 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[];
+extern u8 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[];
 extern void *dFTEmblemModels_gap_0x14E8[];
 extern void *dFTEmblemModels_gap_0x19B8[];
 extern void *dFTEmblemModels_gap_0x2708[];
@@ -307,8 +325,6 @@ DObjDesc dFTEmblemModels_Donkey[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[];
-extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[];
 extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[];
 
 AObjEvent32 *dFTEmblemModels_Donkey_MatAnimJoint[2] = {
@@ -316,53 +332,34 @@ AObjEvent32 *dFTEmblemModels_Donkey_MatAnimJoint[2] = {
 	(AObjEvent32 *)dFTEmblemModels_Donkey_MatAnimJoint_0x1464,
 };
 
-u32 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[] = {
-	aobjEvent32SetExtValAfterBlock(0x018, 0),
-	    0xB3191900,
-	    0x26262600,
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00199900,
-	    0x26262600,
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0xFFB30000,
-	    0x26262600,
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00991900,
-	    0x26262600,
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0x66666600,
-	    0x00000000,
-	aobjEvent32Wait(2),
-	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32Wait(1269),
+/* TODO: data.inc.c — block at 0x13D4 was u32[]; contains 1 embedded chain pointer(s) split out below */
+u8 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[68] = {
+	/* TODO: data.inc.c */
+	#include <FTEmblemModels/Donkey_MatAnimJoint_0x13D4.data.inc.c>
 };
 
-u32 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[] = {
-	aobjEvent32SetExtValAfterBlock(0x018, 0),
-	    0xB3191900,
-	    0x26262600,
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00199900,
-	    0x26262600,
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0xFFB30000,
-	    0x26262600,
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00991900,
-	    0x26262600,
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0x66666600,
-	    0x00000000,
-	aobjEvent32Wait(2),
-	aobjEvent32SetAnim(0x000, 0),
-	aobjEvent32Wait(1287),
+u32 dFTEmblemModels_data_0x1418[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x13D4 };
+
+
+/* TODO: data.inc.c — block at 0x141C was u32[]; contains 1 embedded chain pointer(s) split out below */
+u8 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[68] = {
+	/* TODO: data.inc.c */
+	#include <FTEmblemModels/Donkey_MatAnimJoint_0x141C.data.inc.c>
 };
 
-u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[] = {
-	aobjEvent32Wait(1269),
-	aobjEvent32Wait(1287),
-	aobjEvent32End(),
+u32 dFTEmblemModels_data_0x1460[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x141C };
+
+
+/* TODO: data.inc.c — block at 0x1464 was u32[]; contains 2 embedded chain pointer(s) split out below */
+u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x13D4 };
+
+u32 dFTEmblemModels_data_0x1468[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x141C };
+
+u8 dFTEmblemModels_data_0x146C[4] = {
+	/* TODO: data.inc.c */
+	#include <FTEmblemModels/data_0x146C.data.inc.c>
 };
+
 
 /* MObjSub: Metroid @ 0x1470 */
 MObjSub dFTEmblemModels_Metroid_MObjSub[1] = {

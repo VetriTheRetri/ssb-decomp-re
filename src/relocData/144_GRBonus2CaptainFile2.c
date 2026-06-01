@@ -9,6 +9,75 @@
 
 /* Raw data from file offset 0x0000 to 0x0EA0 (3744 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
+extern Gfx dGRBonus2CaptainFile2_DL_0x3530[];
+extern Vtx dGRBonus2CaptainFile2_Vtx_0x1090[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x440[];
+extern Gfx dGRBonus2CaptainFile2_gap_0x0000_sub_0x580[];
+extern Gfx dGRBonus2CaptainFile2_gap_0x0000_sub_0x680[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1060[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x10E0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x11E0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x120[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1260[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x13C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1540[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x15C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1640[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x16C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1740[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x18C0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1900[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1940[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x19B0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1A30[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1AC0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1B00[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1B60[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1BC0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1C80[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1D80[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1DE0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1E0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1E60[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1EA0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x1FF0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x20B0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x2170[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x21D0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x22F0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x2A0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x320[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x4A0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x60[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x6A0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x7A0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x860[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0x960[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0xB60[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0xCE0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0xDE0[];
+extern Vtx dGRBonus2CaptainFile2_gap_0x10B0_sub_0xEE0[];
 Vtx dGRBonus2CaptainFile2_gap_0x0000[4] = {
 	#include <GRBonus2CaptainFile2/gap_0x0000.vtx.inc.c>
 };

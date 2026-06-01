@@ -7,6 +7,20 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dMVOpeningClashWallpaper_Tex_0x0AD0[];
+extern Vtx dMVOpeningClashWallpaper_gap_0x30C8_sub_0x120[];
+extern Vtx dMVOpeningClashWallpaper_gap_0x3758_sub_0x120[];
+extern Vtx dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x120[];
+extern Vtx dMVOpeningClashWallpaper_gap_0x3DE8_sub_0x160[];
+extern Vtx dMVOpeningClashWallpaper_gap_0x4488_sub_0x120[];
+extern Vtx dMVOpeningClashWallpaper_gap_0x4488_sub_0x160[];
+extern u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[];
+
 /* Forward decls — each corner's MObjSub-list head is defined later in the
  * file (alongside the corner's real MObjSub data) but is referenced from the
  * LL/LR/UL/UR pointer-table heads above. */
@@ -1353,7 +1367,6 @@ Gfx dMVOpeningClashWallpaper_ULDisplayList_DisplayList[55] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[];
 extern u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[];
 
 AObjEvent32 *dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint[1] = {
@@ -1519,11 +1532,14 @@ u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[] = {
-	aobjEvent32SetVal0RateBlock(0x200, 4193),
-	    0x00000000,
-	aobjEvent32End(),
+/* TODO: data.inc.c — block at 0x43F4 was u32[]; contains 1 embedded chain pointer(s) split out below */
+u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[1] = { (u32)dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184 };
+
+u8 dMVOpeningClashWallpaper_data_0x43F8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningClashWallpaper/data_0x43F8.data.inc.c>
 };
+
 
 /* Raw data from file offset 0x4400 to 0x4410 (16 bytes) */
 /* Script-table split: leading chain-pointer table at the

@@ -21,6 +21,55 @@
 
 /* ──────────────── Pre-region: texture pool + 7 display lists ──────────── */
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMVOpeningYamabuki_DL_0x08AB8[];
+extern Gfx dMVOpeningYamabuki_LegsAnimJoint_DL_0x054C[];
+extern u8 dMVOpeningYamabuki_LegsAnimJoint_Tex_0x0014[];
+extern Vtx dMVOpeningYamabuki_LegsAnimJoint_Vtx_0x0414[];
+extern Vtx dMVOpeningYamabuki_LegsAnimJoint_Vtx_0x0454[];
+extern Vtx dMVOpeningYamabuki_LegsAnimJoint_Vtx_0x0494[];
+extern u8 dMVOpeningYamabuki_LegsShadowAnimJoint_Tex_0x0010[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0C18[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0E18[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0E68[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0EB8[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0F88[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0FA8[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x0FC8[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x10E8[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x1108[];
+extern Vtx dMVOpeningYamabuki_LegsShadowAnimJoint_Vtx_0x1128[];
+extern u8 dMVOpeningYamabuki_Tex_0x0810[];
+extern u8 dMVOpeningYamabuki_Tex_0x1818[];
+extern u8 dMVOpeningYamabuki_Tex_0x2820[];
+extern u8 dMVOpeningYamabuki_Tex_0x3828[];
+extern u8 dMVOpeningYamabuki_Tex_0x4830[];
+extern u8 dMVOpeningYamabuki_Tex_0x5838[];
+extern u8 dMVOpeningYamabuki_Tex_0x6840[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7840[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x79E0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7B60[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7B80[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7C00[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7C80[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7D20[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7DD0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7EE0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x7FE0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8060[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8190[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8210[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x82F0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8470[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8490[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8510[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8590[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8620[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x86D0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x87E0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x88E0[];
+extern Vtx dMVOpeningYamabuki_Vtx_0x8960[];
 /* Shared texture / palette / Vtx pool referenced by the 7 DLs below
  * (35,472 B). Each DL at 0x08A90.. pulls data out of this region via
  * SETTIMG / LOADTLUT / VTX commands. */

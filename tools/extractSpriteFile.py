@@ -517,6 +517,19 @@ def emit_master_c(bin_data, layout, sprites, names, prefix, subdir_name):
 
         if block["kind"] == "sprite":
             s = sp["sprite"]
+            # LUT slot (+0x20 in Sprite): chain-encoded pointer to the
+            # palette region of d<Name>_tex when palette_off is present.
+            tex_start = None
+            if sp["pixel_offs"]:
+                tex_start = min((o for o in sp["pixel_offs"] if o is not None), default=None)
+            if sp["palette_off"] is not None and tex_start is not None:
+                delta = sp["palette_off"] - tex_start
+                if delta == 0:
+                    lut_expr = f"(int*){d_name}_tex"
+                else:
+                    lut_expr = f"(int*)({d_name}_tex + 0x{delta:X})"
+            else:
+                lut_expr = "(int*)0"
             lines.append(f"/* Sprite: {name} ({s['width']}x{s['height']} "
                           f"{fmt_siz_suffix(s['bmfmt'], s['bmsiz'])}) */")
             lines.append(f"Sprite {d_name} = {{")
@@ -529,12 +542,12 @@ def emit_master_c(bin_data, layout, sprites, names, prefix, subdir_name):
             lines.append(f"\t{s['zdepth']},")
             lines.append(f"\t{s['red']}, {s['green']}, {s['blue']}, {s['alpha']},")
             lines.append(f"\t{s['start_tlut']}, {s['n_tlut']},")
-            lines.append(f"\t(int*)0,")
+            lines.append(f"\t{lut_expr},")
             lines.append(f"\t{s['istart']}, {s['istep']},")
             lines.append(f"\t{s['nbitmaps']}, {s['ndisplist']},")
             lines.append(f"\t{s['bmheight']}, {s['bmHreal']},")
             lines.append(f"\t{s['bmfmt']}, {s['bmsiz']},")
-            lines.append(f"\t(Bitmap*)0,")
+            lines.append(f"\t{d_name}_bitmaps,")
             lines.append(f"\t(Gfx*)0,")
             lines.append(f"\t(Gfx*)0,")
             lines.append(f"\t{s['frac_s']}, {s['frac_t']},")

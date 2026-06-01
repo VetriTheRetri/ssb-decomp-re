@@ -7,6 +7,41 @@
 #include "relocdata_types.h"
 
 /* Vtx: JointVerts @ 0x0 (32 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dBossModel_JointVerts_Vtx[];
+extern u8 dBossModel_Tex_0x2880[];
+extern Vtx dBossModel_Vtx_0x0200_Vtx[];
+extern Vtx dBossModel_Vtx_0x0210_Vtx[];
+extern Vtx dBossModel_Vtx_0x0370_Vtx[];
+extern Vtx dBossModel_Vtx_0x0570_Vtx[];
+extern Vtx dBossModel_Vtx_0x0590_Vtx[];
+extern Vtx dBossModel_Vtx_0x05C0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0620_Vtx[];
+extern Vtx dBossModel_Vtx_0x0680_Vtx[];
+extern Vtx dBossModel_Vtx_0x06E0_Vtx[];
+extern Vtx dBossModel_Vtx_0x07B0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0810_Vtx[];
+extern Vtx dBossModel_Vtx_0x0870_Vtx[];
+extern Vtx dBossModel_Vtx_0x0940_Vtx[];
+extern Vtx dBossModel_Vtx_0x09A0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0A00_Vtx[];
+extern Vtx dBossModel_Vtx_0x0AD0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0C20_Vtx[];
+extern Vtx dBossModel_Vtx_0x0C30_Vtx[];
+extern Vtx dBossModel_Vtx_0x0C40_Vtx[];
+extern Vtx dBossModel_Vtx_0x0C50_Vtx[];
+extern Vtx dBossModel_Vtx_0x0C90_Vtx[];
+extern Vtx dBossModel_Vtx_0x0CA0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0CB0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0CC0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0D20_Vtx[];
+extern Vtx dBossModel_Vtx_0x0D80_Vtx[];
+extern Vtx dBossModel_Vtx_0x0E50_Vtx[];
+extern Vtx dBossModel_Vtx_0x0EB0_Vtx[];
+extern Vtx dBossModel_Vtx_0x0F10_Vtx[];
+extern Vtx dBossModel_gap_0x2850_sub_0x230[];
+extern u16 dBossModel_gap_0x2850_sub_0x8[];
 Vtx dBossModel_JointVerts_Vtx[32] = {
 	#include <BossModel/JointVerts.vtx.inc.c>
 };

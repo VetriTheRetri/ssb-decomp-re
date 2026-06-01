@@ -9,6 +9,43 @@
 
 /* Raw data from file offset 0x0000 to 0x0A60 (2656 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus1PikachuFile2_DL_0x2030[];
+extern Vtx dGRBonus1PikachuFile2_Vtx_0x0BA0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x10B0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x10F0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x12E0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x1C0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x2C0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x3C0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x510[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x610[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x750[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x7D0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0x990[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0xAB0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0xBF0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0xDF0[];
+extern Vtx dGRBonus1PikachuFile2_gap_0x0BC0_sub_0xEB0[];
 Vtx dGRBonus1PikachuFile2_gap_0x0000[4] = {
 	#include <GRBonus1PikachuFile2/gap_0x0000.vtx.inc.c>
 };

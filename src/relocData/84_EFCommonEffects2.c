@@ -6,6 +6,28 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[];
+extern Gfx dEFCommonEffects2_DL_0x5240[];
+extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AE0[];
+extern Vtx dEFCommonEffects2_FireSparkVtx_Vtx[];
+extern u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[];
+extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[];
+extern u8 dEFCommonEffects2_ReflectBreak_Tex_0x3658[];
+extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3858[];
+extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3898[];
+extern u8 dEFCommonEffects2_Shadow_TextureImage[];
+extern u16 dEFCommonEffects2_ShockSmall_palette_0x1660[];
+extern Vtx dEFCommonEffects2_gap_0x14A0_sub_0x20[];
+extern Vtx dEFCommonEffects2_gap_0x2310_sub_0x1C0[];
+extern Vtx dEFCommonEffects2_gap_0x2FD0_sub_0x140[];
+extern Vtx dEFCommonEffects2_gap_0x2FD0_sub_0x180[];
+extern Vtx dEFCommonEffects2_gap_0x2FD0_sub_0x1C0[];
+extern Vtx dEFCommonEffects2_gap_0x4F34_sub_0x164[];
+extern Vtx dEFCommonEffects2_gap_0x4F34_sub_0x1A4[];
+extern Vtx dEFCommonEffects2_gap_0x4F34_sub_0x1E4[];
+extern Vtx dEFCommonEffects2_gap_0x6B6C_sub_0x7C[];
 extern MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
 extern MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x154[];
 extern MObjSub *dEFCommonEffects2_gap_0x4F34_sub_0x15C[];
@@ -36,17 +58,11 @@ extern u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint_data[];
 extern u16 dEFCommonEffects2_ShockSmall_palette_0x15E8[];
 extern u16 dEFCommonEffects2_ShockSmall_palette_0x1610[];
 extern u16 dEFCommonEffects2_ShockSmall_palette_0x1638[];
-extern u16 dEFCommonEffects2_ShockSmall_palette_0x1660[];
 extern u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint_0x20D8[];
 
 extern u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[];
-extern u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[];
 
-extern u8 dEFCommonEffects2_ReflectBreak_Tex_0x3658[];
-extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3858[];
-extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3898[];
 extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x38D8[];
-extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[];
 extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3958[];
 extern DObjDLLink dEFCommonEffects2_ReflectBreak_DLLink_0x3988[];
 extern DObjDLLink dEFCommonEffects2_ReflectBreak_DLLink_0x3998[];
@@ -62,7 +78,6 @@ extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A40[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A68[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5A90[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AB8[];
-extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AE0[];
 extern u8 dEFCommonEffects2_Tex_0x5B08[];
 extern u8 dEFCommonEffects2_Tex_0x5D10[];
 extern u8 dEFCommonEffects2_Tex_0x5F18[];
@@ -85,7 +100,6 @@ extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B58[];
 extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B5C[];
 extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B60[];
 extern AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B64[];
-extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[];
 extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x34B4[];
 extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x3518[];
 extern u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint_0x355C[];

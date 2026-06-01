@@ -8,6 +8,9 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: data_0x0000 @ 0x0 (307 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dLBTransitionStar_data_0x0000[];
 Vtx dLBTransitionStar_data_0x0000[307] = {
 	#include <LBTransitionStar/data_0x0000.vtx.inc.c>
 };

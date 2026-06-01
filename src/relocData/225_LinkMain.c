@@ -2,6 +2,17 @@
 /* File size: 2640 bytes (0xA50) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dLinkShieldPose_data0[];
+extern u8 dLinkShieldPose_data0_end[];
+extern u8 dLinkShieldPose_shield_anim_joint_1[];
+extern u8 dLinkShieldPose_shield_anim_joint_2[];
+extern u8 dLinkShieldPose_shield_anim_joint_3[];
+extern u8 dLinkShieldPose_shield_anim_joint_4[];
+extern u8 dLinkShieldPose_shield_anim_joint_5[];
+extern u8 dLinkShieldPose_shield_anim_joint_6[];
+extern u8 dLinkShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[];
@@ -10,7 +21,7 @@ extern DObjDesc dLinkModel_JointTree[];
 extern DObjDesc dLinkModel_JointTree_0x74B0[];
 extern Gfx dLinkModel_Joint_0x2630_DisplayList[];
 extern Gfx dLinkModel_Joint_0x2C88_DisplayList[];
-extern Gfx dLinkModel_Joint_0x2E08_DisplayList[];
+extern u8 dLinkModel_Joint_0x2E08_DisplayList[];
 extern Gfx dLinkModel_Joint_0x2EF0_DisplayList[];
 extern Gfx dLinkModel_Joint_0x3398_DisplayList[];
 extern Gfx dLinkModel_Joint_0x6370_DisplayList[];
@@ -42,18 +53,18 @@ extern u8 dLinkModel_gap_0x8110_sub_0x5C0[];
 extern u8 dLinkModel_gap_0x8110_sub_0xB0[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0x1048[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0x10F8[];
-extern u8 dLinkModel_gap_0x9DA8_sub_0x12B8[];
+extern u8 dLinkModel_DL_0xB060[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0x1378[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0x358[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0x618[];
-extern u8 dLinkModel_gap_0x9DA8_sub_0x6E8[];
+extern u8 dLinkModel_DL_0xA490[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0x958[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0xB58[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0xC68[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0xCC[];
-extern u8 dLinkModel_gap_0x9DA8_sub_0xD48[];
+extern u8 dLinkModel_DL_0xAAF0[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0xD8[];
-extern u8 dLinkModel_gap_0x9DA8_sub_0xE28[];
+extern u8 dLinkModel_DL_0xABD0[];
 extern u8 dLinkModel_gap_0x9DA8_sub_0xF38[];
 extern u16 dLinkModel_palette_0x11CA0[];
 extern WPAttributes dLinkSpecial1_Boomerang_WeaponAttributes;
@@ -353,16 +364,16 @@ FTSprites dLinkMain_sprites = {
 FTSkeleton dLinkMain_skeleton_dls[32] = {
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x618 }, 0 },
-	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x6E8 }, 0 },
+	{ { (Gfx*)&dLinkModel_DL_0xA490 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xC68 }, 0 },
 	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xB58 }, 0 },
-	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xD48 }, 0 },
-	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x12B8 }, 0 },
+	{ { (Gfx*)&dLinkModel_DL_0xAAF0 }, 0 },
+	{ { (Gfx*)&dLinkModel_DL_0xB060 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xC68 }, 0 },
 	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xB58 }, 0 },
-	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xE28 }, 0 },
+	{ { (Gfx*)&dLinkModel_DL_0xABD0 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
@@ -501,8 +512,8 @@ FTAttributes dLinkMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dLinkMain_hiddenparts, /* hiddenparts */
 	&dLinkMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dLinkShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dLinkShieldPose_data0_end, (void *)&dLinkShieldPose_shield_anim_joint_1, (void *)&dLinkShieldPose_shield_anim_joint_2, (void *)&dLinkShieldPose_shield_anim_joint_3, (void *)&dLinkShieldPose_shield_anim_joint_4, (void *)&dLinkShieldPose_shield_anim_joint_5, (void *)&dLinkShieldPose_shield_anim_joint_6, (void *)&dLinkShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
 	92.628f, /* joint_rfoot_rotate */
 	25, /* joint_lfoot_id */

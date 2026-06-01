@@ -10,6 +10,45 @@
 
 /* ═══════════════════ LUT PALETTES (10x CI4, 16 colors each) ═══════════════════ */
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStageBattlefieldFile2_Lut_0x0008_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x0030_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x0058_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x0080_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x00A8_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x00D0_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x00F8_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x0120_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x0148_palette[];
+extern u16 dStageBattlefieldFile2_Lut_0x0170_palette[];
+extern u8 dStageBattlefieldFile2_Tex_0x0198[];
+extern u8 dStageBattlefieldFile2_Tex_0x09A0[];
+extern u8 dStageBattlefieldFile2_Tex_0x11A8[];
+extern u8 dStageBattlefieldFile2_Tex_0x19B0[];
+extern u8 dStageBattlefieldFile2_Tex_0x1BB8[];
+extern u8 dStageBattlefieldFile2_Tex_0x1FC0[];
+extern u8 dStageBattlefieldFile2_Tex_0x21C8[];
+extern u8 dStageBattlefieldFile2_Tex_0x23D0[];
+extern u8 dStageBattlefieldFile2_Tex_0x25D8[];
+extern u8 dStageBattlefieldFile2_Tex_0x27E0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x2BE0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x2D60[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x2F20[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x30A0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3120[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x31E0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x32B0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x32F0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3370[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x33B0[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3430[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3530[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3570[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3670[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3700[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3900[];
+extern Vtx dStageBattlefieldFile2_Vtx_0x3910[];
 PAD(8);
 
 /* @ 0x0008, 32 bytes — LUT palette (16 RGBA5551) */

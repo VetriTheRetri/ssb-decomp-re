@@ -8,6 +8,21 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dLinkSpecial2_Lut_0x0008_palette[];
+extern u16 dLinkSpecial2_Lut_0x0488_palette[];
+extern Vtx dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x380[];
+extern Vtx dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x3C0[];
+extern u16 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x50[];
+extern u8 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x78[];
+extern u8 dLinkSpecial2_Tex_0x0030[];
+extern u8 dLinkSpecial2_Tex_0x04B0[];
+extern u8 dLinkSpecial2_Tex_0x0C38[];
+extern u8 dLinkSpecial2_Tex_0x1478[];
+extern Vtx dLinkSpecial2_Vtx_0x01B8_Vtx[];
+extern Vtx dLinkSpecial2_Vtx_0x0578_Vtx[];
+extern Vtx dLinkSpecial2_Vtx_0x10C0_Vtx[];
 extern MObjSub *dLinkSpecial2_gap_0x01B0[];
 extern MObjSub *dLinkSpecial2_gap_0x0570[];
 extern MObjSub *dLinkSpecial2_gap_0x10B8[];

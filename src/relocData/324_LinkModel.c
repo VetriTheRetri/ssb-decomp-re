@@ -6,6 +6,214 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dLinkModel_Lut_0xB188_palette[];
+extern u16 dLinkModel_Lut_0xB280_palette[];
+extern u16 dLinkModel_Lut_0xB5E8_palette[];
+extern u16 dLinkModel_Lut_0xC6C0_palette[];
+extern u16 dLinkModel_Lut_0xCA48_palette[];
+extern u16 dLinkModel_Lut_0xD870_palette[];
+extern u16 dLinkModel_Lut_0xD920_palette[];
+extern u16 dLinkModel_Lut_0xD9D0_palette[];
+extern u16 dLinkModel_Lut_0xDC00_palette[];
+extern u16 dLinkModel_Lut_0xDD30_palette[];
+extern u16 dLinkModel_Lut_0xDD58_palette[];
+extern u16 dLinkModel_Lut_0xDE88_palette[];
+extern u8 dLinkModel_Tex_0xB1B0[];
+extern u8 dLinkModel_Tex_0xB1F8[];
+extern u8 dLinkModel_Tex_0xB2A8[];
+extern u8 dLinkModel_Tex_0xB430[];
+extern u8 dLinkModel_Tex_0xB4E0[];
+extern u8 dLinkModel_Tex_0xB610[];
+extern u8 dLinkModel_Tex_0xC8F0[];
+extern u8 dLinkModel_Tex_0xC978[];
+extern u8 dLinkModel_Tex_0xCA00[];
+extern u8 dLinkModel_Tex_0xCA70[];
+extern u8 dLinkModel_Tex_0xCAF8[];
+extern u8 dLinkModel_Tex_0xCB80[];
+extern u8 dLinkModel_Tex_0xCC88[];
+extern u8 dLinkModel_Tex_0xCD10[];
+extern u8 dLinkModel_Tex_0xCF18[];
+extern u8 dLinkModel_Tex_0xCFF0[];
+extern u8 dLinkModel_Tex_0xD148[];
+extern u8 dLinkModel_Tex_0xD660[];
+extern u8 dLinkModel_Tex_0xD768[];
+extern u8 dLinkModel_Tex_0xD898[];
+extern u8 dLinkModel_Tex_0xD948[];
+extern u8 dLinkModel_Tex_0xD9F8[];
+extern u8 dLinkModel_Tex_0xDC28[];
+extern u8 dLinkModel_Tex_0xDD80[];
+extern u8 dLinkModel_Tex_0xDEB0[];
+extern u8 dLinkModel_Tex_0xE338[];
+extern Vtx dLinkModel_Vtx_0x05B8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0668_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0718_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0828_Vtx[];
+extern Vtx dLinkModel_Vtx_0x08C8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0948_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0988_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0A58_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0B18_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0B98_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0C08_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0C58_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0CA8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0E68_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0EA8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0F18_Vtx[];
+extern Vtx dLinkModel_Vtx_0x0FE8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x10A8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1128_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1258_Vtx[];
+extern Vtx dLinkModel_Vtx_0x12B8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1388_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1468_Vtx[];
+extern Vtx dLinkModel_Vtx_0x14B8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x15C8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1778_Vtx[];
+extern Vtx dLinkModel_Vtx_0x17F8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1858_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1888_Vtx[];
+extern Vtx dLinkModel_Vtx_0x18A8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1908_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1978_Vtx[];
+extern Vtx dLinkModel_Vtx_0x19A8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1A08_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1A78_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1B38_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1BC8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1C38_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1CF8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x48F8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4978_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4A28_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4AC8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4B08_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4B38_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4B68_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4C38_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4C78_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4CD8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4D78_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4E18_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4E68_Vtx[];
+extern Vtx dLinkModel_Vtx_0x4EC8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5088_Vtx[];
+extern Vtx dLinkModel_Vtx_0x50B8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x50F8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x51B8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5228_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5268_Vtx[];
+extern Vtx dLinkModel_Vtx_0x52E8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5448_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5498_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5538_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5578_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5608_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5798_Vtx[];
+extern Vtx dLinkModel_Vtx_0x57C8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5828_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5888_Vtx[];
+extern Vtx dLinkModel_Vtx_0x58B8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x58E8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x58F8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5958_Vtx[];
+extern Vtx dLinkModel_Vtx_0x59F8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5A38_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5A98_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5B28_Vtx[];
+extern Vtx dLinkModel_Vtx_0x7D00_Vtx[];
+extern Vtx dLinkModel_Vtx_0x7D40_Vtx[];
+extern Vtx dLinkModel_Vtx_0x7D80_Vtx[];
+extern Vtx dLinkModel_Vtx_0x86D8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8798_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8908_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8968_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8AE8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8AF8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8BD8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8C38_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8CB8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8D08_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8D48_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8DE8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8E78_Vtx[];
+extern Vtx dLinkModel_Vtx_0x8FF8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x9178_Vtx[];
+extern Vtx dLinkModel_Vtx_0x92D8_Vtx[];
+extern MObjSub **dLinkModel_gap_0x0000[];
+extern Vtx dLinkModel_gap_0x8110[];
+extern Vtx dLinkModel_gap_0x8110_sub_0x200[];
+extern Vtx dLinkModel_gap_0x8110_sub_0x230[];
+extern Vtx dLinkModel_gap_0x8110_sub_0x40[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x10B8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x1158[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x11F8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x128[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x1318[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x198[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x1F8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x278[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x2D8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x598[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x688[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x7C8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x838[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0x8F8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xAB8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xBC8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xCD8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xDB8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xE8[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xE98[];
+extern Vtx dLinkModel_gap_0x9DA8_sub_0xFA8[];
+extern u16 dLinkModel_Lut_0xB4B8_palette[];
+extern u8 dLinkModel_Tex_0x100A8[];
+extern u8 dLinkModel_Tex_0x110B0[];
+extern u8 dLinkModel_Tex_0x11128[];
+extern u8 dLinkModel_Tex_0x111A0[];
+extern u8 dLinkModel_Tex_0x11218[];
+extern u8 dLinkModel_Tex_0x11290[];
+extern u8 dLinkModel_Tex_0x11308[];
+extern u8 dLinkModel_Tex_0x11380[];
+extern u8 dLinkModel_Tex_0x113F8[];
+extern u8 dLinkModel_Tex_0x11470[];
+extern u32 dLinkModel_Tex_0x114E8[];
+extern u8 dLinkModel_Tex_0x11510[];
+extern u8 dLinkModel_Tex_0x11530[];
+extern u8 dLinkModel_Tex_0x11540[];
+extern u8 dLinkModel_Tex_0x11550[];
+extern u8 dLinkModel_Tex_0x11560[];
+extern u8 dLinkModel_Tex_0x11570[];
+extern u8 dLinkModel_Tex_0x11590[];
+extern u8 dLinkModel_Tex_0x115B0[];
+extern u8 dLinkModel_Tex_0x115D0[];
+extern u8 dLinkModel_Tex_0x115F0[];
+extern u8 dLinkModel_Tex_0x11610[];
+extern u8 dLinkModel_Tex_0x11650[];
+extern u8 dLinkModel_Tex_0x11680[];
+extern u8 dLinkModel_Tex_0x118F8[];
+extern u8 dLinkModel_Tex_0x11998[];
+extern u8 dLinkModel_Tex_0x11A48[];
+extern u8 dLinkModel_Tex_0x11A7C[];
+extern u8 dLinkModel_Tex_0x11AB0[];
+extern u8 dLinkModel_Tex_0x11AE4[];
+extern u8 dLinkModel_Tex_0x11B18[];
+extern u8 dLinkModel_Tex_0x11B4C[];
+extern u8 dLinkModel_Tex_0x11B80[];
+extern u8 dLinkModel_Tex_0x11BB4[];
+extern u8 dLinkModel_Tex_0x11BE8[];
+extern u32 dLinkModel_Tex_0x11C1C[];
+extern Vtx dLinkModel_Vtx_0x11A8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11F8_Vtx[];
+extern Vtx dLinkModel_Vtx_0x1328_Vtx[];
+extern Vtx dLinkModel_Vtx_0x5398_Vtx[];
+extern Vtx dLinkModel_Vtx_0x53E8_Vtx[];
 extern u8 dLinkModel_Joint_0x0040_post[];
 extern u16 dLinkModel_palette_0xCFA0[];
 extern u16 dLinkModel_palette_0xCFC8[];
@@ -34,16 +242,12 @@ extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x568[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x570[];
 extern u16 dLinkModel_gap_0x40EC_sub_0x1C8[];
 extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
-extern Vtx dLinkModel_gap_0x9DA8_sub_0x1158[];
 extern Gfx dLinkModel_DL_0xAF40[];
-extern u8 dLinkModel_Tex_0xB610[];
 extern u8 dLinkModel_Tex_0xBAA0[];
 extern u8 dLinkModel_Tex_0xC0B0[];
 extern u8 dLinkModel_Tex_0xC6E8[];
-extern u8 dLinkModel_Tex_0xD148[];
 extern u8 dLinkModel_Tex_0xD250[];
 extern u8 dLinkModel_Tex_0xD458[];
-extern u16 dLinkModel_Lut_0xC6C0_palette[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x228[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x22C[];
 extern AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x230[];
@@ -754,32 +958,85 @@ Gfx dLinkModel_Joint_0x2998_DisplayList[60] = {
 	#include <LinkModel/Joint_0x2998.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x2B78 @ 0x2B78 (272 bytes, 34 cmds) */
-Gfx dLinkModel_Joint_0x2B78_DisplayList[
+/* TODO: data.inc.c — block at 0x2B78 was Gfx[
 #if defined(REGION_JP)
 36
 #else
 34
 #endif
-] = {
-	#include <LinkModel/Joint_0x2B78.dl.inc.c>
+]; contains 4 embedded chain pointer(s) split out below */
+u8 dLinkModel_Joint_0x2B78_DisplayList[100] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Joint_0x2B78_DisplayList.data.inc.c>
 };
+
+u32 dLinkModel_data_0x2BDC[1] = { (u32)dLinkModel_Lut_0xB4B8_palette };
+
+u8 dLinkModel_data_0x2BE0[44] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2BE0.data.inc.c>
+};
+
+u32 dLinkModel_data_0x2C0C[1] = { (u32)dLinkModel_Tex_0xC978 };
+
+u8 dLinkModel_data_0x2C10[28] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2C10.data.inc.c>
+};
+
+u32 dLinkModel_data_0x2C2C[1] = { (u32)dLinkModel_Vtx_0x11A8_Vtx };
+
+u8 dLinkModel_data_0x2C30[52] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2C30.data.inc.c>
+};
+
+u32 dLinkModel_data_0x2C64[1] = { (u32)dLinkModel_Vtx_0x11F8_Vtx };
+
+u8 dLinkModel_data_0x2C68[32] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2C68.data.inc.c>
+};
+
 
 /* DisplayList: Joint_0x2C88 @ 0x2C88 (384 bytes, 48 cmds) */
 Gfx dLinkModel_Joint_0x2C88_DisplayList[48] = {
 	#include <LinkModel/Joint_0x2C88.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x2E08 @ 0x2E08 (232 bytes, 29 cmds) */
-Gfx dLinkModel_Joint_0x2E08_DisplayList[
+/* TODO: data.inc.c — block at 0x2E08 was Gfx[
 #if defined(REGION_JP)
 25
 #else
 29
 #endif
-] = {
-	#include <LinkModel/Joint_0x2E08.dl.inc.c>
+]; contains 3 embedded chain pointer(s) split out below */
+u8 dLinkModel_Joint_0x2E08_DisplayList[92] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Joint_0x2E08_DisplayList.data.inc.c>
 };
+
+u32 dLinkModel_data_0x2E64[1] = { (u32)dLinkModel_Lut_0xDD30_palette };
+
+u8 dLinkModel_data_0x2E68[44] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2E68.data.inc.c>
+};
+
+u32 dLinkModel_data_0x2E94[1] = { (u32)dLinkModel_Tex_0xD768 };
+
+u8 dLinkModel_data_0x2E98[28] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2E98.data.inc.c>
+};
+
+u32 dLinkModel_data_0x2EB4[1] = { (u32)dLinkModel_Vtx_0x1328_Vtx };
+
+u8 dLinkModel_data_0x2EB8[56] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x2EB8.data.inc.c>
+};
+
 
 /* DisplayList: Joint_0x2EF0 @ 0x2EF0 (1192 bytes, 149 cmds) */
 Gfx dLinkModel_Joint_0x2EF0_DisplayList[149] = {
@@ -1773,16 +2030,46 @@ Gfx dLinkModel_Joint_0x66C8_DisplayList[47] = {
 	#include <LinkModel/Joint_0x66C8.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x6840 @ 0x6840 (272 bytes, 34 cmds) */
-Gfx dLinkModel_Joint_0x6840_DisplayList[
+/* TODO: data.inc.c — block at 0x6840 was Gfx[
 #if defined(REGION_JP)
 36
 #else
 34
 #endif
-] = {
-	#include <LinkModel/Joint_0x6840.dl.inc.c>
+]; contains 4 embedded chain pointer(s) split out below */
+u8 dLinkModel_Joint_0x6840_DisplayList[100] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Joint_0x6840_DisplayList.data.inc.c>
 };
+
+u32 dLinkModel_data_0x68A4[1] = { (u32)dLinkModel_Lut_0xB4B8_palette };
+
+u8 dLinkModel_data_0x68A8[44] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x68A8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x68D4[1] = { (u32)dLinkModel_Tex_0xC978 };
+
+u8 dLinkModel_data_0x68D8[28] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x68D8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x68F4[1] = { (u32)dLinkModel_Vtx_0x5398_Vtx };
+
+u8 dLinkModel_data_0x68F8[52] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x68F8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x692C[1] = { (u32)dLinkModel_Vtx_0x53E8_Vtx };
+
+u8 dLinkModel_data_0x6930[32] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x6930.data.inc.c>
+};
+
 
 /* DisplayList: Joint_0x6950 @ 0x6950 (224 bytes, 28 cmds) */
 Gfx dLinkModel_Joint_0x6950_DisplayList[28] = {
@@ -3279,9 +3566,14 @@ u8 dLinkModel_Tex_0xE338[7536] = {
 	#include <LinkModel/Tex_0xE338.tex.inc.c>
 };
 
-u8 dLinkModel_Tex_0x100A8[4104] = {
-	#include <LinkModel/Tex_0x100A8.tex.inc.c>
+/* TODO: data.inc.c — block at 0x100A8 was u8[4104]; contains 1 embedded chain pointer(s) split out below */
+u8 dLinkModel_Tex_0x100A8[4100] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Tex_0x100A8.data.inc.c>
 };
+
+u32 dLinkModel_data_0x110AC[1] = { (u32)dLinkModel_Tex_0x114E8 };
+
 
 u8 dLinkModel_Tex_0x110B0[120] = {
 	#include <LinkModel/Tex_0x110B0.tex.inc.c>
@@ -3319,9 +3611,30 @@ u8 dLinkModel_Tex_0x11470[120] = {
 	#include <LinkModel/Tex_0x11470.tex.inc.c>
 };
 
-u8 dLinkModel_Tex_0x114E8[40] = {
-	#include <LinkModel/Tex_0x114E8.tex.inc.c>
+/* TODO: data.inc.c — block at 0x114E8 was u8[40]; contains 9 embedded chain pointer(s) split out below */
+u32 dLinkModel_Tex_0x114E8[1] = { (u32)dLinkModel_Tex_0x110B0 };
+
+u32 dLinkModel_data_0x114EC[1] = { (u32)dLinkModel_Tex_0x11128 };
+
+u32 dLinkModel_data_0x114F0[1] = { (u32)dLinkModel_Tex_0x111A0 };
+
+u32 dLinkModel_data_0x114F4[1] = { (u32)dLinkModel_Tex_0x11218 };
+
+u32 dLinkModel_data_0x114F8[1] = { (u32)dLinkModel_Tex_0x11290 };
+
+u32 dLinkModel_data_0x114FC[1] = { (u32)dLinkModel_Tex_0x11308 };
+
+u32 dLinkModel_data_0x11500[1] = { (u32)dLinkModel_Tex_0x11380 };
+
+u32 dLinkModel_data_0x11504[1] = { (u32)dLinkModel_Tex_0x113F8 };
+
+u32 dLinkModel_data_0x11508[1] = { (u32)dLinkModel_Tex_0x11470 };
+
+u8 dLinkModel_data_0x1150C[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x1150C.data.inc.c>
 };
+
 
 u8 dLinkModel_Tex_0x11510[32] = {
 	#include <LinkModel/Tex_0x11510.tex.inc.c>
@@ -3371,17 +3684,233 @@ u8 dLinkModel_Tex_0x11650[48] = {
 	#include <LinkModel/Tex_0x11650.tex.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11680[632] = {
-	#include <LinkModel/Tex_0x11680.tex.inc.c>
+/* TODO: data.inc.c — block at 0x11680 was u8[632]; contains 27 embedded chain pointer(s) split out below */
+u8 dLinkModel_Tex_0x11680[76] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Tex_0x11680.data.inc.c>
 };
 
-u8 dLinkModel_Tex_0x118F8[160] = {
-	#include <LinkModel/Tex_0x118F8.tex.inc.c>
+u32 dLinkModel_data_0x116CC[1] = { (u32)dLinkModel_Tex_0x100A8 };
+
+u8 dLinkModel_data_0x116D0[44] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x116D0.data.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11998[176] = {
-	#include <LinkModel/Tex_0x11998.tex.inc.c>
+u32 dLinkModel_data_0x116FC[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11700[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11700.data.inc.c>
 };
+
+u32 dLinkModel_data_0x11724[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11728[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11728.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1172C[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x11730[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11730.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11734[1] = { (u32)dLinkModel_Tex_0x11560 };
+
+u8 dLinkModel_data_0x11738[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11738.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1175C[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11760[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11760.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11764[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x11768[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11768.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1176C[1] = { (u32)dLinkModel_Tex_0x11570 };
+
+u8 dLinkModel_data_0x11770[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11770.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11794[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11798[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11798.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1179C[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x117A0[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x117A0.data.inc.c>
+};
+
+u32 dLinkModel_data_0x117A4[1] = { (u32)dLinkModel_Tex_0x11590 };
+
+u8 dLinkModel_data_0x117A8[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x117A8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x117CC[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x117D0[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x117D0.data.inc.c>
+};
+
+u32 dLinkModel_data_0x117D4[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x117D8[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x117D8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x117DC[1] = { (u32)dLinkModel_Tex_0x115B0 };
+
+u8 dLinkModel_data_0x117E0[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x117E0.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11804[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11808[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11808.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1180C[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x11810[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11810.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11814[1] = { (u32)dLinkModel_Tex_0x115D0 };
+
+u8 dLinkModel_data_0x11818[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11818.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1183C[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11840[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11840.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11844[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x11848[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11848.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1184C[1] = { (u32)dLinkModel_Tex_0x115F0 };
+
+u8 dLinkModel_data_0x11850[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11850.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11874[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x11878[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11878.data.inc.c>
+};
+
+u32 dLinkModel_data_0x1187C[1] = { (u32)dLinkModel_Tex_0x11540 };
+
+u8 dLinkModel_data_0x11880[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11880.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11884[1] = { (u32)dLinkModel_Tex_0x11610 };
+
+u8 dLinkModel_data_0x11888[36] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11888.data.inc.c>
+};
+
+u32 dLinkModel_data_0x118AC[1] = { (u32)dLinkModel_Tex_0x11510 };
+
+u8 dLinkModel_data_0x118B0[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x118B0.data.inc.c>
+};
+
+u32 dLinkModel_data_0x118B4[1] = { (u32)dLinkModel_Tex_0x11530 };
+
+u8 dLinkModel_data_0x118B8[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x118B8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x118BC[1] = { (u32)dLinkModel_Tex_0x11550 };
+
+u8 dLinkModel_data_0x118C0[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x118C0.data.inc.c>
+};
+
+u32 dLinkModel_data_0x118C4[1] = { (u32)dLinkModel_Tex_0x11650 };
+
+u8 dLinkModel_data_0x118C8[48] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x118C8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x118F8 was u8[160]; contains 3 embedded chain pointer(s) split out below */
+u8 dLinkModel_Tex_0x118F8[4] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Tex_0x118F8.data.inc.c>
+};
+
+u32 dLinkModel_data_0x118FC[1] = { (u32)dLinkModel_Tex_0x11680 };
+
+u8 dLinkModel_data_0x11900[56] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11900.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11938[1] = { (u32)dLinkModel_Tex_0x118F8 };
+
+u8 dLinkModel_data_0x1193C[88] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x1193C.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11994[1] = { (u32)dLinkModel_Tex_0x11998 };
+
+
+/* TODO: data.inc.c — block at 0x11998 was u8[176]; contains 1 embedded chain pointer(s) split out below */
+u8 dLinkModel_Tex_0x11998[172] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/Tex_0x11998.data.inc.c>
+};
+
+u32 dLinkModel_data_0x11A44[1] = { (u32)dLinkModel_Tex_0x11C1C };
+
 
 u8 dLinkModel_Tex_0x11A48[52] = {
 	#include <LinkModel/Tex_0x11A48.tex.inc.c>
@@ -3419,9 +3948,30 @@ u8 dLinkModel_Tex_0x11BE8[52] = {
 	#include <LinkModel/Tex_0x11BE8.tex.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11C1C[44] = {
-	#include <LinkModel/Tex_0x11C1C.tex.inc.c>
+/* TODO: data.inc.c — block at 0x11C1C was u8[44]; contains 9 embedded chain pointer(s) split out below */
+u32 dLinkModel_Tex_0x11C1C[1] = { (u32)dLinkModel_Tex_0x11A48 };
+
+u32 dLinkModel_data_0x11C20[1] = { (u32)dLinkModel_Tex_0x11A7C };
+
+u32 dLinkModel_data_0x11C24[1] = { (u32)dLinkModel_Tex_0x11AB0 };
+
+u32 dLinkModel_data_0x11C28[1] = { (u32)dLinkModel_Tex_0x11AE4 };
+
+u32 dLinkModel_data_0x11C2C[1] = { (u32)dLinkModel_Tex_0x11B18 };
+
+u32 dLinkModel_data_0x11C30[1] = { (u32)dLinkModel_Tex_0x11B4C };
+
+u32 dLinkModel_data_0x11C34[1] = { (u32)dLinkModel_Tex_0x11B80 };
+
+u32 dLinkModel_data_0x11C38[1] = { (u32)dLinkModel_Tex_0x11BB4 };
+
+u32 dLinkModel_data_0x11C3C[1] = { (u32)dLinkModel_Tex_0x11BE8 };
+
+u8 dLinkModel_data_0x11C40[8] = {
+	/* TODO: data.inc.c */
+	#include <LinkModel/data_0x11C40.data.inc.c>
 };
+
 
 /* Texture data for sprite Stock */
 /* Split out from .sprite.c so the palette blocks can sit at

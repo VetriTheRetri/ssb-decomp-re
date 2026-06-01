@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dFoxSpecial4_JointVerts_Vtx[];
 /* Vtx: JointVerts @ 0x0 (4 vertices) — absorbs old gap_0x0030 and the 8 bytes
  * the extractor had at the head of ReflectorDL. */
 Vtx dFoxSpecial4_JointVerts_Vtx[4] = {

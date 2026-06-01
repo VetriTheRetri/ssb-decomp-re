@@ -17,7 +17,7 @@ extern MObjSub dGRBonus3File2_Layer1MObj_MObjSub[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[];
 extern u32 dGRBonus3File2_MPGeometryData_0x65A8[];
 extern u32 dGRBonus3File2_gap_0x0000[];
-extern u32 dGRBonus3File3_AnimJoint_0x0788[];
+extern u32 dGRBonus3File3_DObjDesc_0x0788[];
 MPGroundData dGRBonus3Map_gap_0x0000 =
 {
     /* gr_desc[4] */
@@ -67,7 +67,7 @@ MPGroundData dGRBonus3Map_gap_0x0000 =
 
 /* ITAttributes @ 0xA8 */
 ITAttributes dGRBonus3Map_TaruBomb_ItemAttributes[1] = {{
-	(void *)dGRBonus3File3_AnimJoint_0x0788,  /* data */
+	(void *)dGRBonus3File3_DObjDesc_0x0788,  /* data */
 	NULL,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */

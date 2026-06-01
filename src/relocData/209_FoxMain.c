@@ -18,15 +18,15 @@ extern u8 dFoxModel_gap_0x5A38_sub_0x10D8[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x11D8[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x12F8[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x13A8[];
-extern u8 dFoxModel_gap_0x5A38_sub_0x1458[];
+extern u8 dFoxModel_DL_0x6E90[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x15E8[];
-extern u8 dFoxModel_gap_0x5A38_sub_0x398[];
+extern u8 dFoxModel_DL_0x5DD0[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x4A8[];
-extern u8 dFoxModel_gap_0x5A38_sub_0x5F8[];
+extern u8 dFoxModel_DL_0x6030[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x708[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x808[];
 extern u8 dFoxModel_gap_0x5A38_sub_0x8E8[];
-extern u8 dFoxModel_gap_0x5A38_sub_0xC78[];
+extern u8 dFoxModel_DL_0x66B0[];
 extern u8 dFoxModel_gap_0x5A38_sub_0xED8[];
 extern u8 dFoxModel_gap_0x5A38_sub_0xFE8[];
 extern u8 dFoxModel_gap_0x7BA0_sub_0x30[];
@@ -81,7 +81,7 @@ FTHiddenPart dFoxMain_hiddenparts[4] = {
 FTModelPart dFoxMain_modelparts_desc_0x060[4] = {
 	{ (Gfx*)&dFoxModel_Joint_0x1DF8_DisplayList, NULL, NULL, NULL, 0 },
 	{ (Gfx*)&dFoxModel_Joint_0x4B20_DisplayList, NULL, NULL, NULL, 0 },
-	{ (Gfx*)&dFoxModel_gap_0x5A38_sub_0x5F8, NULL, NULL, NULL, 0 },
+	{ (Gfx*)&dFoxModel_DL_0x6030, NULL, NULL, NULL, 0 },
 	{ (Gfx*)&dFoxModel_gap_0x5A38_sub_0x708, NULL, NULL, NULL, 0 },
 };
 
@@ -89,7 +89,7 @@ FTModelPart dFoxMain_modelparts_desc_0x060[4] = {
 FTModelPart dFoxMain_modelparts_desc_0x0B0[4] = {
 	{ (Gfx*)&dFoxModel_Joint_0x2318_DisplayList, NULL, NULL, NULL, 0 },
 	{ (Gfx*)&dFoxModel_Joint_0x4FC0_DisplayList, NULL, NULL, NULL, 0 },
-	{ (Gfx*)&dFoxModel_gap_0x5A38_sub_0x398, NULL, NULL, NULL, 0 },
+	{ (Gfx*)&dFoxModel_DL_0x5DD0, NULL, NULL, NULL, 0 },
 	{ (Gfx*)&dFoxModel_gap_0x5A38_sub_0x4A8, NULL, NULL, NULL, 0 },
 };
 
@@ -209,7 +209,7 @@ FTSkeleton dFoxMain_skeleton_dls[27] = {
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0xED8 }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x10D8 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0xC78 }, 0 },
+	{ { (Gfx*)&dFoxModel_DL_0x66B0 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0xFE8 }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0xED8 }, 0 },
@@ -219,12 +219,12 @@ FTSkeleton dFoxMain_skeleton_dls[27] = {
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x12F8 }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x13A8 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x1458 }, 0 },
+	{ { (Gfx*)&dFoxModel_DL_0x6E90 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x12F8 }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x13A8 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x1458 }, 0 },
+	{ { (Gfx*)&dFoxModel_DL_0x6E90 }, 0 },
 	{ { (Gfx*)&dFoxModel_gap_0x5A38_sub_0x15E8 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },

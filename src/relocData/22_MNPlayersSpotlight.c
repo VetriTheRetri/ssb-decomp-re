@@ -7,6 +7,10 @@
 #include "relocdata_types.h"
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dMNPlayersSpotlight_Tex_0x0008[];
+extern Vtx dMNPlayersSpotlight_gap_0x0480_sub_0x10[];
 extern MObjSub *dMNPlayersSpotlight_gap_0x0480_sub_0x8[];
 
 PAD(8);

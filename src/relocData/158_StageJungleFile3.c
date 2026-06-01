@@ -6,6 +6,13 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStageJungleFile3_DL_0x0910[];
+extern u16 dStageJungleFile3_LUT_0x0008[];
+extern u8 dStageJungleFile3_Tex_0x0030[];
+extern Vtx dStageJungleFile3_Vtx_0x0830[];
+extern Vtx dStageJungleFile3_Vtx_0x0860[];
+
 extern u32 dStageJungleFile3_AnimJoint_0x0B28[];
 extern u32 dStageJungleFile3_AnimJoint_0x0B68[];
 extern u32 dStageJungleFile3_AnimJoint_0x0BF8[];

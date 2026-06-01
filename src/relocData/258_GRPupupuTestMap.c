@@ -13,7 +13,7 @@ extern u32 dStagePupupuFile2_gap_0x0898[];
 extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];
 extern u32 dStagePupupuFile2_gap_0x1D00[];
 extern u32 dStagePupupuFile2_Layer1Anim_AnimJoint[];
-extern u32 dStagePupupuFile2_gap_0x22D0[];
+extern u32 dStagePupupuFile2_DL_0x22D0[];
 extern u32 dStagePupupuFile2_gap_0x2810[];
 extern u32 dStagePupupuFile2_Layer3Anim_AnimJoint[];
 extern u32 dStagePupupuFile2_MPGeometryData_0x2094[];
@@ -27,7 +27,7 @@ MPGroundData dGRPupupuTestMap_header =
     {
         { dStagePupupuFile2_gap_0x0898, dStagePupupuFile2_Layer0Anim_AnimJoint, NULL, NULL },
         { dStagePupupuFile2_gap_0x1D00, dStagePupupuFile2_Layer1Anim_AnimJoint, NULL, NULL },
-        { dStagePupupuFile2_gap_0x22D0, NULL, NULL, NULL },
+        { dStagePupupuFile2_DL_0x22D0, NULL, NULL, NULL },
         { dStagePupupuFile2_gap_0x2810, dStagePupupuFile2_Layer3Anim_AnimJoint, NULL, NULL },
     },
     dStagePupupuFile2_MPGeometryData_0x2094,  /* map_geometry */

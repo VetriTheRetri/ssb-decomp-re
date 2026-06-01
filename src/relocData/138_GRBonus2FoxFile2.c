@@ -8,6 +8,55 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 #include <sys/interp.h>  // SYInterpDesc
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0168_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0630_palette[];
+extern u8 dBonus1CommonImages2_Tex_0x0030[];
+extern u8 dBonus1CommonImages2_Tex_0x00E0[];
+extern u16 dBonus1CommonImages2_Tex_0x0588[];
+extern u8 dBonus1CommonImages2_Tex_0x05A8[];
+extern u8 dBonus1CommonImages2_Tex_0x0658[];
+extern u16 dBonus1CommonImages2_Tex_0x06E0[];
+extern u8 dBonus1CommonImages2_Tex_0x06F0[];
+extern Gfx dGRBonus2FoxFile2_DL_0x1D10[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1028[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1068[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x1168[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x238[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x378[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x438[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x478[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x638[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x6F8[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x778[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x838[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0x938[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0xB38[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0xC38[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0xD18[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0xF08[];
+extern Vtx dGRBonus2FoxFile2_gap_0x0AD8_sub_0xFA8[];
+
 extern void *dGRBonus2FoxFile2_Layer1MObj_sprites_A[6];
 extern void *dGRBonus2FoxFile2_Layer1MObj_sprites_B[6];
 extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x218[2];

@@ -6,6 +6,11 @@
 
 #include "relocdata_types.h"
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dLinkBoomerangModel_Lut3_0x0008[];
+extern u8 dLinkBoomerangModel_Tex_0x0018[];
+extern Vtx dLinkBoomerangModel_Vtx_0x0058_Vtx[];
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0018 (16 bytes) */

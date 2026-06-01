@@ -10,6 +10,65 @@
 
 /* Raw data from file offset 0x0000 to 0x0990 (2448 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages1_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0288_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x06B0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x07D0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0A00_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x0030[];
+extern u8 dBonus1CommonImages1_Tex_0x02B0[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0510[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x06D8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
+extern u8 dBonus1CommonImages1_Tex_0x07F8[];
+extern u8 dBonus1CommonImages1_Tex_0x0A28[];
+extern Gfx dGRBonus2LuigiFile2_DL_0x22F0[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x480[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1028[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x11F8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1228[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x12D8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1418[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1558[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1698[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x17B8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x328[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x528[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x628[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x828[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0x868[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0xA68[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0xAE8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0xCE8[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0xD68[];
+extern Vtx dGRBonus2LuigiFile2_gap_0x0A98_sub_0xE28[];
 Vtx dGRBonus2LuigiFile2_gap_0x0000[4] = {
 	#include <GRBonus2LuigiFile2/gap_0x0000.vtx.inc.c>
 };

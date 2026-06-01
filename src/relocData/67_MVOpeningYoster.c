@@ -7,6 +7,132 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMVOpeningYoster_DL_0x8120[];
+extern Gfx dMVOpeningYoster_DL_0x94B8[];
+extern Gfx dMVOpeningYoster_DL_0xB1A8[];
+extern Gfx dMVOpeningYoster_DL_0xB518[];
+extern u16 dMVOpeningYoster_Lut255_0x0008[];
+extern u16 dMVOpeningYoster_Lut255_0x0210[];
+extern u16 dMVOpeningYoster_Lut255_0x0418[];
+extern u16 dMVOpeningYoster_Lut255_0x0620[];
+extern u8 dMVOpeningYoster_Tex_0x0828[];
+extern u8 dMVOpeningYoster_Tex_0x1830[];
+extern u8 dMVOpeningYoster_Tex_0x2038[];
+extern u8 dMVOpeningYoster_Tex_0x2840[];
+extern u8 dMVOpeningYoster_Tex_0x3048[];
+extern u8 dMVOpeningYoster_Tex_0x3850[];
+extern u8 dMVOpeningYoster_Tex_0x4858[];
+extern u8 dMVOpeningYoster_Tex_0x5860[];
+extern u8 dMVOpeningYoster_Tex_0x6868[];
+extern u8 dMVOpeningYoster_Tex_0xA540[];
+extern u8 dMVOpeningYoster_Tex_0xA568[];
+extern u8 dMVOpeningYoster_Tex_0xA6F0[];
+extern u8 dMVOpeningYoster_Tex_0xA8F8[];
+extern u8 dMVOpeningYoster_Tex_0xAB00[];
+extern Vtx dMVOpeningYoster_Vtx_0x7868_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7908_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7948_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7B48_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7B58_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7B68_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7BB8_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7BC8_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7BE8_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7C28_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7C68_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7CC8_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7D08_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7D48_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7F48_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x7FC8_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x8008_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x8048_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0x8088_Vtx[];
+extern Vtx dMVOpeningYoster_Vtx_0xAFE0_Vtx[];
+extern u16 dMVOpeningYoster_gap_0xA4C0_sub_0x30[];
+extern u16 dMVOpeningYoster_gap_0xA4C0_sub_0x58[];
+extern u16 dMVOpeningYoster_gap_0xA4C0_sub_0x8[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0x940[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0x980[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0x9C0[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xA00[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xA40[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xA80[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xAC0[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xAF0[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xB30[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xB90[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xBF0[];
+extern Vtx dMVOpeningYoster_gap_0xA4C0_sub_0xC50[];
+extern Gfx dMVOpeningYoster_DL_0x80C8[];
+extern Gfx dMVOpeningYoster_DL_0x81C8[];
+extern Gfx dMVOpeningYoster_DL_0x8248[];
+extern Gfx dMVOpeningYoster_DL_0x82D0[];
+extern Gfx dMVOpeningYoster_DL_0x8330[];
+extern Gfx dMVOpeningYoster_DL_0x8398[];
+extern Gfx dMVOpeningYoster_DL_0x8418[];
+extern Gfx dMVOpeningYoster_DL_0x84A0[];
+extern Gfx dMVOpeningYoster_DL_0x8500[];
+extern Gfx dMVOpeningYoster_DL_0x8568[];
+extern Gfx dMVOpeningYoster_DL_0x85E8[];
+extern Gfx dMVOpeningYoster_DL_0x8670[];
+extern Gfx dMVOpeningYoster_DL_0x86E0[];
+extern Gfx dMVOpeningYoster_DL_0x8758[];
+extern Gfx dMVOpeningYoster_DL_0x87D8[];
+extern Gfx dMVOpeningYoster_DL_0x8860[];
+extern Gfx dMVOpeningYoster_DL_0x88C0[];
+extern Gfx dMVOpeningYoster_DL_0x8A30[];
+extern Gfx dMVOpeningYoster_DL_0x8AD8[];
+extern Gfx dMVOpeningYoster_DL_0x8B98[];
+extern Gfx dMVOpeningYoster_DL_0x8C60[];
+extern Gfx dMVOpeningYoster_DL_0x8D10[];
+extern Gfx dMVOpeningYoster_DL_0x8DC8[];
+extern Gfx dMVOpeningYoster_DL_0x8E48[];
+extern Gfx dMVOpeningYoster_DL_0x8ED0[];
+extern Gfx dMVOpeningYoster_DL_0x8F30[];
+extern Gfx dMVOpeningYoster_DL_0x8FA0[];
+extern Gfx dMVOpeningYoster_DL_0x9020[];
+extern Gfx dMVOpeningYoster_DL_0x90A8[];
+extern Gfx dMVOpeningYoster_DL_0x9108[];
+extern Gfx dMVOpeningYoster_DL_0x9170[];
+extern Gfx dMVOpeningYoster_DL_0x91F8[];
+extern Gfx dMVOpeningYoster_DL_0x9280[];
+extern Gfx dMVOpeningYoster_DL_0x92E0[];
+extern Gfx dMVOpeningYoster_DL_0x9440[];
+extern Gfx dMVOpeningYoster_DL_0x9530[];
+extern Gfx dMVOpeningYoster_DL_0xB150[];
+extern Gfx dMVOpeningYoster_DL_0xB228[];
+extern Gfx dMVOpeningYoster_DL_0xB248[];
+extern Gfx dMVOpeningYoster_DL_0xB268[];
+extern Gfx dMVOpeningYoster_DL_0xB288[];
+extern Gfx dMVOpeningYoster_DL_0xB2A8[];
+extern Gfx dMVOpeningYoster_DL_0xB330[];
+extern Gfx dMVOpeningYoster_DL_0xB3B8[];
+extern Gfx dMVOpeningYoster_DL_0xB3D8[];
+extern Gfx dMVOpeningYoster_DL_0xB400[];
+extern Gfx dMVOpeningYoster_DL_0xB420[];
+extern Gfx dMVOpeningYoster_DL_0xB440[];
+extern Gfx dMVOpeningYoster_DL_0xB460[];
+extern Gfx dMVOpeningYoster_DL_0xB480[];
+extern Gfx dMVOpeningYoster_DL_0xB4D0[];
+extern Gfx dMVOpeningYoster_DL_0xB598[];
+extern Gfx dMVOpeningYoster_DL_0xB5D0[];
+extern Gfx dMVOpeningYoster_DL_0xB608[];
+extern Gfx dMVOpeningYoster_DL_0xB690[];
+extern Gfx dMVOpeningYoster_DL_0xB6B0[];
+extern Gfx dMVOpeningYoster_DL_0xB6D0[];
+extern Gfx dMVOpeningYoster_DL_0xB6F0[];
+extern Gfx dMVOpeningYoster_DL_0xB710[];
+extern Gfx dMVOpeningYoster_DL_0xB730[];
+extern Gfx dMVOpeningYoster_DL_0xB750[];
+extern Gfx dMVOpeningYoster_DL_0xB770[];
+extern Gfx dMVOpeningYoster_DL_0xB790[];
+
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0210 (520 bytes) */
@@ -371,185 +497,509 @@ Gfx dMVOpeningYoster_DL_0x9530[19] = {
 	#include <MVOpeningYoster/DL_0x9530.dl.inc.c>
 };
 
-/* Vtx: Vtx_0x95C8 @ 0x95C8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x95C8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x95C8.vtx.inc.c>
+/* TODO: data.inc.c — block at 0x95C8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x95C8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x95C8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x95D8 @ 0x95D8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x95D8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x95D8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x95CC[1] = { (u32)dMVOpeningYoster_DL_0x9440 };
+
+u8 dMVOpeningYoster_data_0x95D0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x95D0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x95E8 @ 0x95E8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x95E8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x95E8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x95D8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x95D8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x95D8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x95F8 @ 0x95F8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x95F8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x95F8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x95DC[1] = { (u32)dMVOpeningYoster_DL_0x9530 };
+
+u8 dMVOpeningYoster_data_0x95E0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x95E0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9608 @ 0x9608 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9608_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9608.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x95E8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x95E8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x95E8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9618 @ 0x9618 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9618_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9618.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x95EC[1] = { (u32)dMVOpeningYoster_DL_0x80C8 };
+
+u8 dMVOpeningYoster_data_0x95F0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x95F0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9628 @ 0x9628 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9628_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9628.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x95F8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x95F8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x95F8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9638 @ 0x9638 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9638_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9638.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x95FC[1] = { (u32)dMVOpeningYoster_DL_0x81C8 };
+
+u8 dMVOpeningYoster_data_0x9600[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9600.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9648 @ 0x9648 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9648_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9648.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9608 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9608_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9608_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9658 @ 0x9658 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9658_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9658.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x960C[1] = { (u32)dMVOpeningYoster_DL_0x8248 };
+
+u8 dMVOpeningYoster_data_0x9610[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9610.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9668 @ 0x9668 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9668_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9668.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9618 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9618_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9618_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9678 @ 0x9678 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9678_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9678.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x961C[1] = { (u32)dMVOpeningYoster_DL_0x82D0 };
+
+u8 dMVOpeningYoster_data_0x9620[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9620.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9688 @ 0x9688 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9688_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9688.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9628 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9628_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9628_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9698 @ 0x9698 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9698_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9698.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x962C[1] = { (u32)dMVOpeningYoster_DL_0x8330 };
+
+u8 dMVOpeningYoster_data_0x9630[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9630.data.inc.c>
 };
 
-/* Vtx: Vtx_0x96A8 @ 0x96A8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x96A8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x96A8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9638 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9638_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9638_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x96B8 @ 0x96B8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x96B8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x96B8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x963C[1] = { (u32)dMVOpeningYoster_DL_0x8398 };
+
+u8 dMVOpeningYoster_data_0x9640[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9640.data.inc.c>
 };
 
-/* Vtx: Vtx_0x96C8 @ 0x96C8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x96C8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x96C8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9648 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9648_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9648_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x96D8 @ 0x96D8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x96D8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x96D8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x964C[1] = { (u32)dMVOpeningYoster_DL_0x8418 };
+
+u8 dMVOpeningYoster_data_0x9650[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9650.data.inc.c>
 };
 
-/* Vtx: Vtx_0x96E8 @ 0x96E8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x96E8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x96E8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9658 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9658_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9658_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x96F8 @ 0x96F8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x96F8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x96F8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x965C[1] = { (u32)dMVOpeningYoster_DL_0x84A0 };
+
+u8 dMVOpeningYoster_data_0x9660[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9660.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9708 @ 0x9708 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9708_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9708.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9668 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9668_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9668_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9718 @ 0x9718 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9718_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9718.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x966C[1] = { (u32)dMVOpeningYoster_DL_0x8500 };
+
+u8 dMVOpeningYoster_data_0x9670[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9670.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9728 @ 0x9728 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9728_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9728.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9678 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9678_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9678_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9738 @ 0x9738 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9738_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9738.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x967C[1] = { (u32)dMVOpeningYoster_DL_0x8568 };
+
+u8 dMVOpeningYoster_data_0x9680[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9680.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9748 @ 0x9748 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9748_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9748.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9688 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9688_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9688_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9758 @ 0x9758 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9758_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9758.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x968C[1] = { (u32)dMVOpeningYoster_DL_0x85E8 };
+
+u8 dMVOpeningYoster_data_0x9690[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9690.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9768 @ 0x9768 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9768_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9768.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x9698 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9698_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9698_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9778 @ 0x9778 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9778_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9778.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x969C[1] = { (u32)dMVOpeningYoster_DL_0x8670 };
+
+u8 dMVOpeningYoster_data_0x96A0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x96A0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9788 @ 0x9788 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9788_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9788.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x96A8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x96A8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x96A8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x9798 @ 0x9798 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x9798_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x9798.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x96AC[1] = { (u32)dMVOpeningYoster_DL_0x86E0 };
+
+u8 dMVOpeningYoster_data_0x96B0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x96B0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x97A8 @ 0x97A8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x97A8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x97A8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x96B8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x96B8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x96B8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x97B8 @ 0x97B8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x97B8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x97B8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x96BC[1] = { (u32)dMVOpeningYoster_DL_0x8758 };
+
+u8 dMVOpeningYoster_data_0x96C0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x96C0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x97C8 @ 0x97C8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x97C8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x97C8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x96C8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x96C8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x96C8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x97D8 @ 0x97D8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x97D8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x97D8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x96CC[1] = { (u32)dMVOpeningYoster_DL_0x87D8 };
+
+u8 dMVOpeningYoster_data_0x96D0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x96D0.data.inc.c>
 };
 
-/* Vtx: Vtx_0x97E8 @ 0x97E8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x97E8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x97E8.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x96D8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x96D8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x96D8_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x97F8 @ 0x97F8 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0x97F8_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0x97F8.vtx.inc.c>
+u32 dMVOpeningYoster_data_0x96DC[1] = { (u32)dMVOpeningYoster_DL_0x8860 };
+
+u8 dMVOpeningYoster_data_0x96E0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x96E0.data.inc.c>
 };
+
+
+/* TODO: data.inc.c — block at 0x96E8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x96E8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x96E8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x96EC[1] = { (u32)dMVOpeningYoster_DL_0x88C0 };
+
+u8 dMVOpeningYoster_data_0x96F0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x96F0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x96F8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x96F8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x96F8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x96FC[1] = { (u32)dMVOpeningYoster_DL_0x8A30 };
+
+u8 dMVOpeningYoster_data_0x9700[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9700.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9708 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9708_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9708_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x970C[1] = { (u32)dMVOpeningYoster_DL_0x8AD8 };
+
+u8 dMVOpeningYoster_data_0x9710[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9710.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9718 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9718_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9718_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x971C[1] = { (u32)dMVOpeningYoster_DL_0x8B98 };
+
+u8 dMVOpeningYoster_data_0x9720[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9720.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9728 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9728_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9728_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x972C[1] = { (u32)dMVOpeningYoster_DL_0x8C60 };
+
+u8 dMVOpeningYoster_data_0x9730[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9730.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9738 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9738_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9738_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x973C[1] = { (u32)dMVOpeningYoster_DL_0x8D10 };
+
+u8 dMVOpeningYoster_data_0x9740[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9740.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9748 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9748_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9748_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x974C[1] = { (u32)dMVOpeningYoster_DL_0x8DC8 };
+
+u8 dMVOpeningYoster_data_0x9750[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9750.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9758 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9758_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9758_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x975C[1] = { (u32)dMVOpeningYoster_DL_0x8E48 };
+
+u8 dMVOpeningYoster_data_0x9760[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9760.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9768 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9768_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9768_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x976C[1] = { (u32)dMVOpeningYoster_DL_0x8ED0 };
+
+u8 dMVOpeningYoster_data_0x9770[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9770.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9778 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9778_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9778_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x977C[1] = { (u32)dMVOpeningYoster_DL_0x8F30 };
+
+u8 dMVOpeningYoster_data_0x9780[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9780.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9788 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9788_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9788_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x978C[1] = { (u32)dMVOpeningYoster_DL_0x8FA0 };
+
+u8 dMVOpeningYoster_data_0x9790[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9790.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x9798 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x9798_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x9798_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x979C[1] = { (u32)dMVOpeningYoster_DL_0x9020 };
+
+u8 dMVOpeningYoster_data_0x97A0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x97A0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x97A8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x97A8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x97A8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x97AC[1] = { (u32)dMVOpeningYoster_DL_0x90A8 };
+
+u8 dMVOpeningYoster_data_0x97B0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x97B0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x97B8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x97B8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x97B8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x97BC[1] = { (u32)dMVOpeningYoster_DL_0x9108 };
+
+u8 dMVOpeningYoster_data_0x97C0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x97C0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x97C8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x97C8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x97C8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x97CC[1] = { (u32)dMVOpeningYoster_DL_0x9170 };
+
+u8 dMVOpeningYoster_data_0x97D0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x97D0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x97D8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x97D8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x97D8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x97DC[1] = { (u32)dMVOpeningYoster_DL_0x91F8 };
+
+u8 dMVOpeningYoster_data_0x97E0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x97E0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x97E8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x97E8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x97E8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x97EC[1] = { (u32)dMVOpeningYoster_DL_0x9280 };
+
+u8 dMVOpeningYoster_data_0x97F0[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x97F0.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x97F8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0x97F8_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0x97F8_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0x97FC[1] = { (u32)dMVOpeningYoster_DL_0x92E0 };
+
+u8 dMVOpeningYoster_data_0x9800[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0x9800.data.inc.c>
+};
+
 
 /* DObjDesc: Nest @ 0x9808 (74 entries) */
 DObjDesc dMVOpeningYoster_Nest[] = {
@@ -890,140 +1340,383 @@ Gfx dMVOpeningYoster_DL_0xB790[10] = {
 	#include <MVOpeningYoster/DL_0xB790.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xB7E0 @ 0xB7E0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB7E0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB7E0.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xB7E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB7E0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB7E0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB7F0 @ 0xB7F0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB7F0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB7F0.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB7E4[1] = { (u32)dMVOpeningYoster_DL_0xB4D0 };
+
+u8 dMVOpeningYoster_data_0xB7E8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB7E8.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB800 @ 0xB800 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB800_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB800.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB7F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB7F0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB7F0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB810 @ 0xB810 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB810_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB810.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB7F4[1] = { (u32)dMVOpeningYoster_DL_0xB598 };
+
+u8 dMVOpeningYoster_data_0xB7F8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB7F8.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB820 @ 0xB820 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB820_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB820.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB800 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB800_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB800_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB830 @ 0xB830 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB830_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB830.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB804[1] = { (u32)dMVOpeningYoster_DL_0xB5D0 };
+
+u8 dMVOpeningYoster_data_0xB808[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB808.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB840 @ 0xB840 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB840_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB840.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB810 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB810_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB810_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB850 @ 0xB850 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB850_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB850.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB814[1] = { (u32)dMVOpeningYoster_DL_0xB608 };
+
+u8 dMVOpeningYoster_data_0xB818[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB818.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB860 @ 0xB860 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB860_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB860.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB820 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB820_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB820_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB870 @ 0xB870 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB870_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB870.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB824[1] = { (u32)dMVOpeningYoster_DL_0xB690 };
+
+u8 dMVOpeningYoster_data_0xB828[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB828.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB880 @ 0xB880 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB880_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB880.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB830 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB830_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB830_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB890 @ 0xB890 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB890_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB890.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB834[1] = { (u32)dMVOpeningYoster_DL_0xB6B0 };
+
+u8 dMVOpeningYoster_data_0xB838[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB838.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB8A0 @ 0xB8A0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB8A0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB8A0.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB840 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB840_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB840_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB8B0 @ 0xB8B0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB8B0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB8B0.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB844[1] = { (u32)dMVOpeningYoster_DL_0xB6D0 };
+
+u8 dMVOpeningYoster_data_0xB848[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB848.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB8C0 @ 0xB8C0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB8C0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB8C0.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB850 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB850_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB850_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB8D0 @ 0xB8D0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB8D0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB8D0.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB854[1] = { (u32)dMVOpeningYoster_DL_0xB6F0 };
+
+u8 dMVOpeningYoster_data_0xB858[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB858.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB8E0 @ 0xB8E0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB8E0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB8E0.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB860 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB860_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB860_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB8F0 @ 0xB8F0 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB8F0_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB8F0.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB864[1] = { (u32)dMVOpeningYoster_DL_0xB710 };
+
+u8 dMVOpeningYoster_data_0xB868[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB868.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB900 @ 0xB900 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB900_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB900.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB870 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB870_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB870_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB910 @ 0xB910 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB910_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB910.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB874[1] = { (u32)dMVOpeningYoster_DL_0xB730 };
+
+u8 dMVOpeningYoster_data_0xB878[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB878.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB920 @ 0xB920 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB920_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB920.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB880 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB880_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB880_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB930 @ 0xB930 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB930_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB930.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB884[1] = { (u32)dMVOpeningYoster_DL_0xB750 };
+
+u8 dMVOpeningYoster_data_0xB888[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB888.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB940 @ 0xB940 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB940_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB940.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB890 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB890_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB890_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB950 @ 0xB950 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB950_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB950.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB894[1] = { (u32)dMVOpeningYoster_DL_0xB770 };
+
+u8 dMVOpeningYoster_data_0xB898[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB898.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB960 @ 0xB960 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB960_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB960.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB8A0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB8A0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB8A0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB970 @ 0xB970 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB970_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB970.vtx.inc.c>
+u32 dMVOpeningYoster_data_0xB8A4[1] = { (u32)dMVOpeningYoster_DL_0xB790 };
+
+u8 dMVOpeningYoster_data_0xB8A8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB8A8.data.inc.c>
 };
 
-/* Vtx: Vtx_0xB980 @ 0xB980 (1 vertices) */
-Vtx dMVOpeningYoster_Vtx_0xB980_Vtx[1] = {
-	#include <MVOpeningYoster/Vtx_0xB980.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xB8B0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB8B0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB8B0_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningYoster_data_0xB8B4[1] = { (u32)dMVOpeningYoster_DL_0xB150 };
+
+u8 dMVOpeningYoster_data_0xB8B8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB8B8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB8C0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB8C0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB8C0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB8C4[1] = { (u32)dMVOpeningYoster_DL_0xB228 };
+
+u8 dMVOpeningYoster_data_0xB8C8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB8C8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB8D0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB8D0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB8D0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB8D4[1] = { (u32)dMVOpeningYoster_DL_0xB248 };
+
+u8 dMVOpeningYoster_data_0xB8D8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB8D8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB8E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB8E0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB8E0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB8E4[1] = { (u32)dMVOpeningYoster_DL_0xB268 };
+
+u8 dMVOpeningYoster_data_0xB8E8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB8E8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB8F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB8F0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB8F0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB8F4[1] = { (u32)dMVOpeningYoster_DL_0xB288 };
+
+u8 dMVOpeningYoster_data_0xB8F8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB8F8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB900 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB900_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB900_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB904[1] = { (u32)dMVOpeningYoster_DL_0xB2A8 };
+
+u8 dMVOpeningYoster_data_0xB908[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB908.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB910 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB910_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB910_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB914[1] = { (u32)dMVOpeningYoster_DL_0xB330 };
+
+u8 dMVOpeningYoster_data_0xB918[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB918.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB920 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB920_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB920_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB924[1] = { (u32)dMVOpeningYoster_DL_0xB3B8 };
+
+u8 dMVOpeningYoster_data_0xB928[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB928.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB930 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB930_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB930_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB934[1] = { (u32)dMVOpeningYoster_DL_0xB3D8 };
+
+u8 dMVOpeningYoster_data_0xB938[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB938.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB940 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB940_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB940_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB944[1] = { (u32)dMVOpeningYoster_DL_0xB400 };
+
+u8 dMVOpeningYoster_data_0xB948[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB948.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB950 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB950_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB950_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB954[1] = { (u32)dMVOpeningYoster_DL_0xB420 };
+
+u8 dMVOpeningYoster_data_0xB958[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB958.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB960 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB960_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB960_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB964[1] = { (u32)dMVOpeningYoster_DL_0xB440 };
+
+u8 dMVOpeningYoster_data_0xB968[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB968.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB970 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB970_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB970_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB974[1] = { (u32)dMVOpeningYoster_DL_0xB460 };
+
+u8 dMVOpeningYoster_data_0xB978[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB978.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xB980 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningYoster_Vtx_0xB980_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/Vtx_0xB980_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningYoster_data_0xB984[1] = { (u32)dMVOpeningYoster_DL_0xB480 };
+
+u8 dMVOpeningYoster_data_0xB988[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningYoster/data_0xB988.data.inc.c>
+};
+
 
 /* DObjDesc: GroundDObjDesc @ 0xB990 (34 entries, terminated by { 18, ... }
  * sentinel at +0x5D8 = 0xBF68; the 28 trailing entries — formerly mis-labeled

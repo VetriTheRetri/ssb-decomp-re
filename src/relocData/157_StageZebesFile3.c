@@ -9,6 +9,10 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStageZebesFile3_LUT_0x0080[];
+extern Vtx dStageZebesFile3_Vtx_0x0958[];
+
 extern u32 dStageZebesFile3_AnimJoint_0x0B98[];
 extern u32 dStageZebesFile3_AnimJoint_0x0BD8[];
 extern AObjEvent32 *dStageZebesFile3_mobjlink_0x0DC0[];

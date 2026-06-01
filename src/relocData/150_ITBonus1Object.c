@@ -25,6 +25,10 @@
 
 #include "relocdata_types.h"
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dITBonus1Object_Vtx[];
+extern u8 dITBonus1Object_data[];
 PAD(8);
 
 /* @ 0x0008, 4096 bytes — score curves + RGBA32 image data */

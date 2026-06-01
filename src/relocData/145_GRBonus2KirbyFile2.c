@@ -10,6 +10,62 @@
 
 /* Raw data from file offset 0x0000 to 0x0A20 (2592 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages4_Lut_0x01F8_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0328_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0458_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0588_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x07B8_palette[];
+extern u8 dBonus1CommonImages4_Tex_0x0220[];
+extern u8 dBonus1CommonImages4_Tex_0x0350[];
+extern u8 dBonus1CommonImages4_Tex_0x05B0[];
+extern u8 dBonus1CommonImages4_Tex_0x07E0[];
+extern u16 dBonus1CommonImages4_Tex_0x0AB8[];
+extern u8 dBonus1CommonImages4_Tex_0x0AC8[];
+extern Gfx dGRBonus2KirbyFile2_DL_0x0480[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x102C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x10C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x122C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x125C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x130C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x139C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x157C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x18C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x20C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x3EC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x4AC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x4C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x5AC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x6AC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x72C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x7EC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0x9EC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xB6C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xBEC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xCEC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xE6C[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xEEC[];
+extern Vtx dGRBonus2KirbyFile2_gap_0x0B54_sub_0xFAC[];
 Vtx dGRBonus2KirbyFile2_gap_0x0000[4] = {
 	#include <GRBonus2KirbyFile2/gap_0x0000.vtx.inc.c>
 };

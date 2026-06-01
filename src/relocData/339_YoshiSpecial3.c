@@ -7,6 +7,11 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dYoshiSpecial3_Lut_0x0008_palette[];
+extern u8 dYoshiSpecial3_Tex_0x0030[];
+extern Vtx dYoshiSpecial3_Vtx_0x0830_Vtx[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */

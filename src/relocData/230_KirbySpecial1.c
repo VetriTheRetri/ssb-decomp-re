@@ -22,7 +22,7 @@ extern WPAttributes dFoxSpecial1_Blaster_WeaponAttributes;
 extern WPAttributes dSamusSpecial1_ChargeShot_WeaponAttributes;
 extern WPAttributes dLinkSpecial1_Boomerang_WeaponAttributes;
 extern WPAttributes dPikachuSpecial1_ThunderJoltAir_WeaponAttributes;
-extern u8 dCaptainSpecial3_gap_0x0760[];
+extern u8 dCaptainSpecial3_DL_0x0760[];
 extern WPAttributes dNessSpecial1_PKFire_WeaponAttributes;
 extern WPAttributes dLuigiSpecial1_Fireball_WeaponAttributes;
 extern u8 dYoshiSpecial3_EggLay[];
@@ -33,7 +33,7 @@ void *dKirbySpecial1[9] = {
 	&dSamusSpecial1_ChargeShot_WeaponAttributes,           /* -> file 218 (SamusSpecial1) */
 	&dLinkSpecial1_Boomerang_WeaponAttributes,             /* -> file 226 (LinkSpecial1) */
 	&dPikachuSpecial1_ThunderJoltAir_WeaponAttributes,     /* -> file 244 (PikachuSpecial1) */
-	dCaptainSpecial3_gap_0x0760,                           /* -> file 333 (CaptainSpecial3) @ 0x760 */
+	dCaptainSpecial3_DL_0x0760,                           /* -> file 333 (CaptainSpecial3) @ 0x760 */
 	&dNessSpecial1_PKFire_WeaponAttributes,                /* -> file 240 (NessSpecial1) */
 	&dLuigiSpecial1_Fireball_WeaponAttributes,             /* -> file 222 (LuigiSpecial1) */
 	dYoshiSpecial3_EggLay,                                 /* -> file 339 (YoshiSpecial3) @ 0x960 */

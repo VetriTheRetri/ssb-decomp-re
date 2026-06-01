@@ -7,6 +7,29 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dKirbySpecial2_Joint_0x09B0_post[];
+extern u16 dKirbySpecial2_Lut_0x0BB8_palette[];
+extern u16 dKirbySpecial2_Lut_0x2538_palette[];
+extern u8 dKirbySpecial2_Tex_0x0008[];
+extern u8 dKirbySpecial2_Tex_0x0090[];
+extern u8 dKirbySpecial2_Tex_0x0BE0[];
+extern u8 dKirbySpecial2_Tex_0x14B8[];
+extern u8 dKirbySpecial2_Tex_0x2560[];
+extern Vtx dKirbySpecial2_Vtx_0x0890_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x0970_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x0C20_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x0C50_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x0EB0_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x0FB0_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x10B0_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x1CB8_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x1F10_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x1FD0_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x2090_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x2150_Vtx[];
+extern Vtx dKirbySpecial2_Vtx_0x2760_Vtx[];
+
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0090 (136 bytes) */

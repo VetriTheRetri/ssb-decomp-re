@@ -19,6 +19,23 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dMVOpeningClashFighters_Tex_0x0008[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0808_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0A08_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0A18_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0B58_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0BF8_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0C08_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0C88_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0C98_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0D98_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0DE8_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0E78_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0EF8_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0F38_Vtx[];
+extern Vtx dMVOpeningClashFighters_Vtx_0x0F78_Vtx[];
+
 PAD(8);
 
 /* RGBA16 texture @ 0x0008 (32x32, 2048 bytes) */

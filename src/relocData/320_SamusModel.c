@@ -6,6 +6,133 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dSamusModel_Lut_0xC3E0_palette[];
+extern u16 dSamusModel_Lut_0xD4F0_palette[];
+extern u8 dSamusModel_Tex_0xB2B0[];
+extern u8 dSamusModel_Tex_0xB508[];
+extern u8 dSamusModel_Tex_0xB800[];
+extern u8 dSamusModel_Tex_0xBAD0[];
+extern u8 dSamusModel_Tex_0xBDA0[];
+extern u8 dSamusModel_Tex_0xBFD0[];
+extern u8 dSamusModel_Tex_0xC1D8[];
+extern u8 dSamusModel_Tex_0xC408[];
+extern u8 dSamusModel_Tex_0xC610[];
+extern u8 dSamusModel_Tex_0xC8E0[];
+extern u8 dSamusModel_Tex_0xC968[];
+extern u8 dSamusModel_Tex_0xC9D8[];
+extern u8 dSamusModel_Tex_0xCCA8[];
+extern u8 dSamusModel_Tex_0xCED8[];
+extern u8 dSamusModel_Tex_0xD0E0[];
+extern u8 dSamusModel_Tex_0xD2E8[];
+extern u8 dSamusModel_Tex_0xD518[];
+extern u8 dSamusModel_Tex_0xD618[];
+extern u8 dSamusModel_Tex_0xD7D0[];
+extern u8 dSamusModel_Tex_0xDAA0[];
+extern u8 dSamusModel_Tex_0xDCD0[];
+extern u8 dSamusModel_Tex_0xDCF8[];
+extern u8 dSamusModel_Tex_0xDD50[];
+extern u8 dSamusModel_Tex_0xDD78[];
+extern u8 dSamusModel_Tex_0xDDE0[];
+extern Vtx dSamusModel_Vtx_0x0CF8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x0ED8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x0F58_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1058_Vtx[];
+extern Vtx dSamusModel_Vtx_0x10E8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1198_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1278_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1348_Vtx[];
+extern Vtx dSamusModel_Vtx_0x13D8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x14B8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x15D8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1628_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1688_Vtx[];
+extern Vtx dSamusModel_Vtx_0x16E8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x17B8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1848_Vtx[];
+extern Vtx dSamusModel_Vtx_0x18D8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1918_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1958_Vtx[];
+extern Vtx dSamusModel_Vtx_0x19F8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1A88_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1AB8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1BA8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1C38_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1CD8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1D98_Vtx[];
+extern Vtx dSamusModel_Vtx_0x1E88_Vtx[];
+extern Vtx dSamusModel_Vtx_0x4CF8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x4D98_Vtx[];
+extern Vtx dSamusModel_Vtx_0x4E28_Vtx[];
+extern Vtx dSamusModel_Vtx_0x4E88_Vtx[];
+extern Vtx dSamusModel_Vtx_0x4F48_Vtx[];
+extern Vtx dSamusModel_Vtx_0x4FC8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5058_Vtx[];
+extern Vtx dSamusModel_Vtx_0x50B8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5128_Vtx[];
+extern Vtx dSamusModel_Vtx_0x51A8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x51F8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5258_Vtx[];
+extern Vtx dSamusModel_Vtx_0x52A8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5338_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5398_Vtx[];
+extern Vtx dSamusModel_Vtx_0x53F8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5468_Vtx[];
+extern Vtx dSamusModel_Vtx_0x54C8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5568_Vtx[];
+extern Vtx dSamusModel_Vtx_0x55E8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5658_Vtx[];
+extern Vtx dSamusModel_Vtx_0x56B8_Vtx[];
+extern Vtx dSamusModel_Vtx_0x5758_Vtx[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1054[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1064[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1084[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1494[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1694[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x199C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x19DC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1A1C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1D3C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x1D7C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x20EC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x212C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x237C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x246C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x273C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x27AC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x27DC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x283C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x28DC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x290C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x29DC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2A4C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2BAC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2C2C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2C5C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2E0C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2E3C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x2F7C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x30BC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x317C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x32FC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x343C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x60C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0x6DC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0xAEC[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0xB6C[];
+extern Vtx dSamusModel_gap_0x6FD4_sub_0xE54[];
+extern u8 dSamusModel_Tex_0xDF38[];
+extern u8 dSamusModel_Tex_0xDF60[];
+extern u8 dSamusModel_Tex_0xDF88[];
+extern u32 dSamusModel_Tex_0xE00C[];
+extern u8 dSamusModel_Tex_0xE018[];
+extern u32 dSamusModel_Tex_0xE090[];
+extern u8 dSamusModel_Tex_0xE098[];
 extern u32 dSamusModel_gap_0x3B24_sub_0x360[];
 extern u16 dSamusModel_palette_0xB4B8[];
 extern u16 dSamusModel_palette_0xB4E0[];
@@ -5028,25 +5155,69 @@ u8 dSamusModel_Tex_0xDF60[40] = {
 	#include <SamusModel/Tex_0xDF60.tex.inc.c>
 };
 
-u8 dSamusModel_Tex_0xDF88[132] = {
-	#include <SamusModel/Tex_0xDF88.tex.inc.c>
+/* TODO: data.inc.c — block at 0xDF88 was u8[132]; contains 1 embedded chain pointer(s) split out below */
+u8 dSamusModel_Tex_0xDF88[128] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/Tex_0xDF88.data.inc.c>
 };
 
-u8 dSamusModel_Tex_0xE00C[12] = {
-	#include <SamusModel/Tex_0xE00C.tex.inc.c>
+u32 dSamusModel_data_0xE008[1] = { (u32)dSamusModel_Tex_0xE090 };
+
+
+/* TODO: data.inc.c — block at 0xE00C was u8[12]; contains 2 embedded chain pointer(s) split out below */
+u32 dSamusModel_Tex_0xE00C[1] = { (u32)dSamusModel_Tex_0xDF60 };
+
+u32 dSamusModel_data_0xE010[1] = { (u32)dSamusModel_Tex_0xDF38 };
+
+u8 dSamusModel_data_0xE014[4] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/data_0xE014.data.inc.c>
 };
 
-u8 dSamusModel_Tex_0xE018[120] = {
-	#include <SamusModel/Tex_0xE018.tex.inc.c>
+
+/* TODO: data.inc.c — block at 0xE018 was u8[120]; contains 1 embedded chain pointer(s) split out below */
+u8 dSamusModel_Tex_0xE018[44] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/Tex_0xE018.data.inc.c>
 };
 
-u8 dSamusModel_Tex_0xE090[8] = {
-	#include <SamusModel/Tex_0xE090.tex.inc.c>
+u32 dSamusModel_data_0xE044[1] = { (u32)dSamusModel_Tex_0xE00C };
+
+u8 dSamusModel_data_0xE048[72] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/data_0xE048.data.inc.c>
 };
 
-u8 dSamusModel_Tex_0xE098[304] = {
-	#include <SamusModel/Tex_0xE098.tex.inc.c>
+
+/* TODO: data.inc.c — block at 0xE090 was u8[8]; contains 1 embedded chain pointer(s) split out below */
+u32 dSamusModel_Tex_0xE090[1] = { (u32)dSamusModel_Tex_0xE018 };
+
+u8 dSamusModel_data_0xE094[4] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/data_0xE094.data.inc.c>
 };
+
+
+/* TODO: data.inc.c — block at 0xE098 was u8[304]; contains 2 embedded chain pointer(s) split out below */
+u8 dSamusModel_Tex_0xE098[196] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/Tex_0xE098.data.inc.c>
+};
+
+u32 dSamusModel_data_0xE15C[1] = { (u32)dSamusModel_Tex_0xDF88 };
+
+u8 dSamusModel_data_0xE160[36] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/data_0xE160.data.inc.c>
+};
+
+u32 dSamusModel_data_0xE184[1] = { (u32)dSamusModel_Tex_0xE098 };
+
+u8 dSamusModel_data_0xE188[64] = {
+	/* TODO: data.inc.c */
+	#include <SamusModel/data_0xE188.data.inc.c>
+};
+
 
 
 

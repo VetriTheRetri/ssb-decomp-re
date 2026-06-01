@@ -16,6 +16,60 @@
 #include "relocdata_types.h"
 
 /* @ 0x0000, 112 bytes — Vtx[7] */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStagePupupuBeta2_DL_0x0398[];
+extern Gfx dStagePupupuBeta2_DL_0x25F0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0000[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0070[];
+extern Vtx dStagePupupuBeta2_Vtx_0x00B0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x00F0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0130[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0170[];
+extern Vtx dStagePupupuBeta2_Vtx_0x01B0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x01F0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0230[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0270[];
+extern Vtx dStagePupupuBeta2_Vtx_0x02B0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x02F0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0B90[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0C10[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0CE0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0DE0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x0F90[];
+extern Vtx dStagePupupuBeta2_Vtx_0x1030[];
+extern Vtx dStagePupupuBeta2_Vtx_0x12C0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x1400[];
+extern Vtx dStagePupupuBeta2_Vtx_0x14C0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x2150[];
+extern Vtx dStagePupupuBeta2_Vtx_0x2360[];
+extern Vtx dStagePupupuBeta2_Vtx_0x23A0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x23E0[];
+extern Vtx dStagePupupuBeta2_Vtx_0x24C0[];
+extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0898_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0AC8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0CF8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1128_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x11D8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1A08_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x22E8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2398_palette[];
+extern u8 dStagePupupuBetaImages_Tex_0x0030[];
+extern u8 dStagePupupuBetaImages_Tex_0x0260[];
+extern u8 dStagePupupuBetaImages_Tex_0x0490[];
+extern u8 dStagePupupuBetaImages_Tex_0x08C0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0AF0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0D20[];
+extern u8 dStagePupupuBetaImages_Tex_0x1150[];
+extern u8 dStagePupupuBetaImages_Tex_0x1200[];
+extern u8 dStagePupupuBetaImages_Tex_0x1A30[];
+extern u8 dStagePupupuBetaImages_Tex_0x2260[];
+extern u8 dStagePupupuBetaImages_Tex_0x2310[];
+extern u8 dStagePupupuBetaImages_Tex_0x23C0[];
 Vtx dStagePupupuBeta2_Vtx_0x0000[7] = {
 	#include <StagePupupuBeta2/Vtx_0x0000.vtx.inc.c>
 };

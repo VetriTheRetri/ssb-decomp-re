@@ -6,16 +6,53 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-extern u32 dMVOpeningStandoff_gap_0x61B8[];
 
-extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dMVOpeningStandoff_Lut_0x0008_palette[];
+extern u16 dMVOpeningStandoff_Lut_0x0030_palette[];
+extern u16 dMVOpeningStandoff_Lut_0x0058_palette[];
+extern u8 dMVOpeningStandoff_Tex_0x0080[];
+extern u8 dMVOpeningStandoff_Tex_0x0888[];
+extern u8 dMVOpeningStandoff_Tex_0x1090[];
+extern Vtx dMVOpeningStandoff_Vtx_0x1290_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x1490_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x15D0_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x1790_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x18F0_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x1990_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x1A00_Vtx[];
+extern Vtx dMVOpeningStandoff_Vtx_0x1A90_Vtx[];
+extern Vtx dMVOpeningStandoff_gap_0x61B8_sub_0x338[];
+extern Vtx dMVOpeningStandoff_gap_0x61B8_sub_0x378[];
+extern Gfx dMVOpeningStandoff_DL_0x6570[];
+extern Gfx dMVOpeningStandoff_DL_0x6608[];
+extern Gfx dMVOpeningStandoff_DL_0x66A0[];
+extern Gfx dMVOpeningStandoff_DL_0x6738[];
+extern Gfx dMVOpeningStandoff_DL_0x67D0[];
+extern Gfx dMVOpeningStandoff_DL_0x6858[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4[];
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[];
+extern u8 dMVOpeningStandoff_Tex_0x2128[];
+extern u8 dMVOpeningStandoff_Tex_0x3130[];
+extern u8 dMVOpeningStandoff_Tex_0x4138[];
+extern u8 dMVOpeningStandoff_Tex_0x5140[];
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x308[];
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x310[];
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x318[];
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x320[];
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x330[];
+extern u32 dMVOpeningStandoff_gap_0x61B8[];
+
+extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
+
 extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
 
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[];
@@ -27,10 +64,6 @@ extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7060[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x70CC[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x7144[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x71B0[];
-extern u8 dMVOpeningStandoff_Tex_0x2128[];
-extern u8 dMVOpeningStandoff_Tex_0x3130[];
-extern u8 dMVOpeningStandoff_Tex_0x4138[];
-extern u8 dMVOpeningStandoff_Tex_0x5140[];
 
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
@@ -456,35 +489,89 @@ Gfx dMVOpeningStandoff_DL_0x6858[19] = {
 	#include <MVOpeningStandoff/DL_0x6858.dl.inc.c>
 };
 
-/* Vtx: Vtx_0x68F0 @ 0x68F0 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x68F0_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x68F0.vtx.inc.c>
+/* TODO: data.inc.c — block at 0x68F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningStandoff_Vtx_0x68F0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/Vtx_0x68F0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x6900 @ 0x6900 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x6900_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x6900.vtx.inc.c>
+u32 dMVOpeningStandoff_data_0x68F4[1] = { (u32)dMVOpeningStandoff_DL_0x6570 };
+
+u8 dMVOpeningStandoff_data_0x68F8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x68F8.data.inc.c>
 };
 
-/* Vtx: Vtx_0x6910 @ 0x6910 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x6910_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x6910.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x6900 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningStandoff_Vtx_0x6900_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/Vtx_0x6900_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x6920 @ 0x6920 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x6920_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x6920.vtx.inc.c>
+u32 dMVOpeningStandoff_data_0x6904[1] = { (u32)dMVOpeningStandoff_DL_0x6608 };
+
+u8 dMVOpeningStandoff_data_0x6908[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x6908.data.inc.c>
 };
 
-/* Vtx: Vtx_0x6930 @ 0x6930 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x6930_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x6930.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0x6910 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningStandoff_Vtx_0x6910_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/Vtx_0x6910_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0x6940 @ 0x6940 (1 vertices) */
-Vtx dMVOpeningStandoff_Vtx_0x6940_Vtx[1] = {
-	#include <MVOpeningStandoff/Vtx_0x6940.vtx.inc.c>
+u32 dMVOpeningStandoff_data_0x6914[1] = { (u32)dMVOpeningStandoff_DL_0x66A0 };
+
+u8 dMVOpeningStandoff_data_0x6918[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x6918.data.inc.c>
 };
+
+
+/* TODO: data.inc.c — block at 0x6920 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningStandoff_Vtx_0x6920_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/Vtx_0x6920_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningStandoff_data_0x6924[1] = { (u32)dMVOpeningStandoff_DL_0x6738 };
+
+u8 dMVOpeningStandoff_data_0x6928[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x6928.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x6930 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningStandoff_Vtx_0x6930_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/Vtx_0x6930_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningStandoff_data_0x6934[1] = { (u32)dMVOpeningStandoff_DL_0x67D0 };
+
+u8 dMVOpeningStandoff_data_0x6938[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x6938.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0x6940 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningStandoff_Vtx_0x6940_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/Vtx_0x6940_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningStandoff_data_0x6944[1] = { (u32)dMVOpeningStandoff_DL_0x6858 };
+
+u8 dMVOpeningStandoff_data_0x6948[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x6948.data.inc.c>
+};
+
 
 /* DObjDesc: LightningDObjDesc @ 0x6950 (14 entries) */
 DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
@@ -635,15 +722,24 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[] = {
 /* Consolidated SetInterp opcode stream — the 6 joint-table entries
  * that referenced offsets 0x6D44..0x6D58 each enter this stream at a
  * different word and walk forward until they hit End at byte +0x18. */
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[7] = {
-	aobjEvent32SetInterp(6907, 0x2A4),
-	aobjEvent32SetInterp(6921, 0x2A6),
-	aobjEvent32SetInterp(6933, 0x2A8),
-	aobjEvent32SetInterp(6947, 0x2AA),
-	aobjEvent32SetInterp(6961, 0x2AC),
-	aobjEvent32SetInterp(6979, 0x2B4),
-	aobjEvent32End(),
+/* TODO: data.inc.c — block at 0x6D44 was u32[7]; contains 6 embedded chain pointer(s) split out below */
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC };
+
+u32 dMVOpeningStandoff_data_0x6D48[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24 };
+
+u32 dMVOpeningStandoff_data_0x6D4C[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54 };
+
+u32 dMVOpeningStandoff_data_0x6D50[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C };
+
+u32 dMVOpeningStandoff_data_0x6D54[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4 };
+
+u32 dMVOpeningStandoff_data_0x6D58[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C };
+
+u8 dMVOpeningStandoff_data_0x6D5C[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningStandoff/data_0x6D5C.data.inc.c>
 };
+
 
 /* Raw data from file offset 0x6D60 to 0x7250 (1264 bytes) */
 /* Script-table split: leading chain-pointer table at the

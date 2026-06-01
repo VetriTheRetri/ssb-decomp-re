@@ -9,6 +9,41 @@
 
 /* Raw data from file offset 0x0000 to 0x0950 (2384 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus1SamusFile2_DL_0x14C0[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x440[];
+extern Gfx dGRBonus1SamusFile2_gap_0x0000_sub_0x580[];
+extern Gfx dGRBonus1SamusFile2_gap_0x0000_sub_0x680[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x148[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x288[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x388[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x508[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x588[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x608[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x788[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x8[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x808[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x848[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x888[];
+extern Vtx dGRBonus1SamusFile2_gap_0x0A58_sub_0x9C8[];
 Vtx dGRBonus1SamusFile2_gap_0x0000[4] = {
 	#include <GRBonus1SamusFile2/gap_0x0000.vtx.inc.c>
 };

@@ -4,14 +4,17 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern ftMotionCommand dBossMainMotion_Default[];
+extern u32 dMasterHandIcon_FTEmblem[];
+extern u32 dMasterHandIcon_Stock[];
+extern u8 dMasterHandIcon_Stock_tex[];
+
 extern DObjDesc dBossModel_JointTree[];
 
-/* Pre-attributes data (58 words, 0x00E8 bytes) */
-/* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dBossMain_pre+0x0) */
-u32 dBossMain_file_handles[1] = {
+/* TODO: data.inc.c — block at 0x0 was u32[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dBossMain_file_handles[1] = { (u32)dBossMainMotion_Default };
 
-	0x002E0000, /* extern -> 0x0000 */
-};
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dBossMain_pre+0x4) */
 u32 dBossMain_animlock[2] = {
@@ -50,10 +53,9 @@ FTCommonPartContainer dBossMain_commonparts_container = {
 	},
 };
 
-/* @ 0x00D8, 4 bytes: FTAttributes.sub_0x0D8 target (was dBossMain_pre+0xD8) */
-int *dBossMain_stock_luts[1] = {
-	(int*)0x00370024,
-};
+/* TODO: data.inc.c — block at 0xD8 was int[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dBossMain_stock_luts[1] = { (u32)(u8 *)dMasterHandIcon_Stock_tex + 0x88 };
+
 
 /* @ 0x00DC, 12 bytes: FTAttributes.sprites target (was dBossMain_pre+0xDC) */
 FTSprites dBossMain_sprites = {

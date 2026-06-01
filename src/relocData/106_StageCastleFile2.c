@@ -7,6 +7,88 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStageCastleFile2_DL_0x11D8[];
+extern Gfx dStageCastleFile2_DL_0x2288[];
+extern Gfx dStageCastleFile2_DL_0x3F80[];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1A0[5];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1F0[4];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x230[3];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x260[3];
+extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x2D8[30];
+extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0xE0[12];
+extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0x60[8];
+extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0xE0[12];
+extern u16 dStageCastleFile2_Lut_0x0008_palette[];
+extern u16 dStageCastleFile2_Lut_0x0238_palette[];
+extern u16 dStageCastleFile2_Lut_0x0260_palette[];
+extern u16 dStageCastleFile2_Lut_0x0288_palette[];
+extern u16 dStageCastleFile2_Lut_0x02B0_palette[];
+extern u16 dStageCastleFile2_Lut_0x02D8_palette[];
+extern u16 dStageCastleFile2_Lut_0x0300_palette[];
+extern u16 dStageCastleFile2_Lut_0x0458_palette[];
+extern u16 dStageCastleFile2_Lut_0x0610_palette[];
+extern u16 dStageCastleFile2_Lut_0x0870_palette[];
+extern u8 dStageCastleFile2_Tex_0x0030[];
+extern u8 dStageCastleFile2_Tex_0x0328[];
+extern u8 dStageCastleFile2_Tex_0x0370[];
+extern u8 dStageCastleFile2_Tex_0x0388[];
+extern u8 dStageCastleFile2_Tex_0x0410[];
+extern u8 dStageCastleFile2_Tex_0x0480[];
+extern u8 dStageCastleFile2_Tex_0x0548[];
+extern u8 dStageCastleFile2_Tex_0x0638[];
+extern u8 dStageCastleFile2_Tex_0x06C0[];
+extern u8 dStageCastleFile2_Tex_0x0748[];
+extern u8 dStageCastleFile2_Tex_0x0790[];
+extern u8 dStageCastleFile2_Tex_0x07B8[];
+extern u8 dStageCastleFile2_Tex_0x0800[];
+extern u8 dStageCastleFile2_Tex_0x0828[];
+extern u8 dStageCastleFile2_Tex_0x0898[];
+extern u8 dStageCastleFile2_Tex_0x0920[];
+extern u8 dStageCastleFile2_Tex_0x0AA8[];
+extern u8 dStageCastleFile2_Tex_0x0AC0[];
+extern u8 dStageCastleFile2_Tex_0x0B48[];
+extern u8 dStageCastleFile2_Tex_0x0B90[];
+extern u8 dStageCastleFile2_Tex_0x3710[];
+extern u8 dStageCastleFile2_Tex_0x3B98[];
+extern u8 dStageCastleFile2_Tex_0x3DA0[];
+extern Vtx dStageCastleFile2_Vtx_0x0D90_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0DC0_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0E00_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0E30_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0EB0_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0F40_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0F80_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x0FE0_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x1020_Vtx[];
+extern Vtx dStageCastleFile2_Vtx_0x1150_Vtx[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x198[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x218[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x2B8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x3B8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x3F8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x438[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x4B8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x538[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x5B8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x5F8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x638[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x678[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x6B8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x6F8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x778[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x7F8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x888[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x8C8[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0x958[];
+extern Vtx dStageCastleFile2_gap_0x18A8_sub_0xE8[];
+extern u16 dStageCastleFile2_gap_0x3684_sub_0x14[];
+extern u16 dStageCastleFile2_gap_0x3684_sub_0x3C[];
+extern u16 dStageCastleFile2_gap_0x3684_sub_0x64[];
+extern Vtx dStageCastleFile2_gap_0x3684_sub_0x7DC[];
+extern Vtx dStageCastleFile2_gap_0x3684_sub_0x81C[];
+extern Vtx dStageCastleFile2_gap_0x3684_sub_0x85C[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -566,13 +648,7 @@ PAD(12);
 extern u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x14[20];
 extern u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x64[14];
 extern u32 dStageCastleFile2_Layer1Anim_AnimJoint_0x9C[14];
-extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0xE0[12];
-extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1A0[5];
-extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1F0[4];
-extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x230[3];
-extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x260[3];
 extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x290[9];
-extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x2D8[30];
 extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x3C8[26];
 
 AObjEvent32 *dStageCastleFile2_Layer1Anim_AnimJoint[5] = {
@@ -686,8 +762,6 @@ PAD(8);
 /* Raw data from file offset 0x32D0 to 0x3600 (816 bytes) */
 /* Split AnimJoint blob: forward decls for sub-scripts. */
 extern u32 dStageCastleFile2_Layer2Anim_AnimJoint_0xC[20];
-extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0x60[8];
-extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0xE0[12];
 extern Gfx dStageCastleFile2_Layer2Anim_AnimJoint_0x1A0[50];
 
 AObjEvent32 *dStageCastleFile2_Layer2Anim_AnimJoint[3] = {

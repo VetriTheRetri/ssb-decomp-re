@@ -6,6 +6,235 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dKirbyModel_DL_0x1D2D8[];
+extern u8 dKirbyModel_Tex_0x1A8A0[];
+extern u8 dKirbyModel_Tex_0x1A9D0[];
+extern u8 dKirbyModel_Tex_0x1AA80[];
+extern u8 dKirbyModel_Tex_0x1AAF0[];
+extern u8 dKirbyModel_Tex_0x1AD20[];
+extern u8 dKirbyModel_Tex_0x1B000[];
+extern u8 dKirbyModel_Tex_0x1B0B0[];
+extern u8 dKirbyModel_Tex_0x1B3E0[];
+extern u8 dKirbyModel_Tex_0x1B4D0[];
+extern u8 dKirbyModel_Tex_0x1B540[];
+extern u8 dKirbyModel_Tex_0x1B5B0[];
+extern u8 dKirbyModel_Tex_0x1B620[];
+extern u8 dKirbyModel_Tex_0x1B750[];
+extern u8 dKirbyModel_Tex_0x1B880[];
+extern u8 dKirbyModel_Tex_0x1B9B0[];
+extern u8 dKirbyModel_Tex_0x1BAE0[];
+extern u8 dKirbyModel_Tex_0x1BB90[];
+extern u8 dKirbyModel_Tex_0x1BDC0[];
+extern u8 dKirbyModel_Tex_0x1BE30[];
+extern u8 dKirbyModel_Tex_0x1BEE0[];
+extern u8 dKirbyModel_Tex_0x1BF50[];
+extern u8 dKirbyModel_Tex_0x1C3D0[];
+extern u8 dKirbyModel_Tex_0x1D188[];
+extern u8 dKirbyModel_Tex_0x9848[];
+extern u8 dKirbyModel_Tex_0x9948[];
+extern u8 dKirbyModel_Tex_0x9A48[];
+extern u8 dKirbyModel_Tex_0x9AD8[];
+extern Vtx dKirbyModel_Vtx_0x04B0_Vtx[];
+extern Vtx dKirbyModel_Vtx_0x191F8_Vtx[];
+extern Vtx dKirbyModel_Vtx_0x20E0_Vtx[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x10BC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x11AC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x121C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x128C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x12FC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x142C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x155C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x168C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x17BC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x186C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1A9C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1B0C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1BBC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1C2C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x2E6C[];
+extern Vtx dKirbyModel_gap_0x1A2FC_sub_0x2ECC[];
+extern Vtx dKirbyModel_gap_0x1A2FC_sub_0x4[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x57C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x6AC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x75C[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x7CC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x9FC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0xCDC[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0xD8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x101EC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x101FC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1022C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1023C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x103CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1042C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x104EC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x10BCC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x10D3C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x10ECC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x10F2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x10FEC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1165C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1185C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1186C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x118AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x11A3C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x11B6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x121AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1231C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x124AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x125DC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x12AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x12B8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x13B2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x14644[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x14794[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1A9C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1C2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1E2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1E3C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1E6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1E8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1E9C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1EBC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x1ECC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x200C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x273C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x286C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x2A6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x2A7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x309C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x320C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x340C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x341C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x343C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x344C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x345C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x34AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x36AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x36FC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x375C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x37AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x37CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x39C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x3E2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x3F5C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x411C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x431C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x433C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x492C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4B2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4B3C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4B5C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4B7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4B8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4D1C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4D7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4DDC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x4E2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x503C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x507C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x508C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x57DC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x58EC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x5A5C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x5AAC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x5B6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x5B9C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x60C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x633C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x64BC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x664C[];
+extern u16 dKirbyModel_gap_0x31CC_sub_0x6CFC[];
+extern Gfx dKirbyModel_gap_0x31CC_sub_0x6D24[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x72CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x739C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x74AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x74DC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x75AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x767C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x76EC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x7F6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x80FC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x82FC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x833C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x834C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x836C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x84AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x8CCC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x8E5C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x8EC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x8FCC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x90CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x974C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x992C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x99CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x9ADC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x9C1C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x9D7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x9F7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x9F8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0x9FBC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xA78C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xA8CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xAA0C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xAB6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xAD6C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xAD7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xAE8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xAEBC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xB65C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xB77C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xB90C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xB9DC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xBA7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xBB9C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xC62C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xC6CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xC7DC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xC8DC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xC97C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xCA2C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xCB9C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xD38C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xD52C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xD6BC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xD7EC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xDF0C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xDFFC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xE18C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xE2AC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xE97C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xEB7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xEB8C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xEBBC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xEBCC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xED5C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xEDBC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xEE7C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xF55C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xF6CC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xF85C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xF8BC[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xF97C[];
+extern Vtx dKirbyModel_gap_0x31CC_sub_0xFFEC[];
+extern MObjSub *dKirbyModel_Joint_0x0020_post_sub_0x450[];
+extern MObjSub *dKirbyModel_Joint_0x0020_post_sub_0x45C[];
+extern MObjSub *dKirbyModel_Joint_0x0020_post_sub_0x464[];
+extern u8 dKirbyModel_Tex_0x1ADD0[];
+extern u8 dKirbyModel_Tex_0x1C1A0[];
+extern u8 dKirbyModel_Tex_0x1C6A0[];
+extern u8 dKirbyModel_Tex_0x1C8D0[];
+extern u8 dKirbyModel_Tex_0x1CB00[];
+extern u8 dKirbyModel_Tex_0x1CD30[];
+extern u8 dKirbyModel_Tex_0x1CF60[];
+extern AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2FC[];
+extern AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x300[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x20AC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x22DC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x2304[];
@@ -200,14 +429,7 @@ extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1DDC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1E04[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1E2C[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1E54[];
-extern u8 dKirbyModel_Tex_0x1C1A0[];
-extern u8 dKirbyModel_Tex_0x1C6A0[];
-extern u8 dKirbyModel_Tex_0x1C8D0[];
-extern u8 dKirbyModel_Tex_0x1CB00[];
-extern u8 dKirbyModel_Tex_0x1CD30[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x2C3C[];
-extern u8 dKirbyModel_Tex_0x1CF60[];
-extern u8 dKirbyModel_Tex_0x1ADD0[];
 extern AObjEvent32 * dKirbyModel_gap_0x1970_sub_0x2B8[];
 extern AObjEvent32 * dKirbyModel_gap_0x1970_sub_0x2BC[];
 extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x15FEC[];
@@ -217,10 +439,23 @@ extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16008[];
 extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16010[];
 extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16018[];
 extern MObjSub * dKirbyModel_gap_0x31CC_sub_0x16020[];
-/* Vtx: JointVerts @ 0x0 (2 vertices) */
-Vtx dKirbyModel_JointVerts_Vtx[2] = {
-	#include <KirbyModel/JointVerts.vtx.inc.c>
+/* TODO: data.inc.c — block at 0x0 was Vtx[2]; contains 3 embedded chain pointer(s) split out below */
+u8 dKirbyModel_JointVerts_Vtx[8] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/JointVerts_Vtx.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x0008[1] = { (u32)dKirbyModel_Joint_0x0020_post_sub_0x450 };
+
+u8 dKirbyModel_data_0x000C[12] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x000C.data.inc.c>
+};
+
+u32 dKirbyModel_data_0x0018[1] = { (u32)dKirbyModel_Joint_0x0020_post_sub_0x45C };
+
+u32 dKirbyModel_data_0x001C[1] = { (u32)dKirbyModel_Joint_0x0020_post_sub_0x464 };
+
 
 /* Raw data from file offset 0x20 to 0xB0 (144 bytes).
  * Holds palette/sprite tables. The 8 MObjSubs (0x78 bytes
@@ -907,10 +1142,26 @@ MObjSub *dKirbyModel_gap_0x1970_sub_0x2C0[27] = {
 	NULL,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x1970_sub_0x32C[22] = {
-	#include <KirbyModel/gap_0x1970_sub_0x32C.palette.inc.c>
+/* TODO: data.inc.c — block at 0x1C9C was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x1970_sub_0x32C[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x1CA0[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x1CA0.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x1CB0[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x1CB4[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x1CB8[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x1CBC[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x1CC0[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x1CC4[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x1CC8 (6 entries) */
 u16 *dKirbyModel_gap_0x1970_sub_0x358[6] = {
@@ -1302,18 +1553,27 @@ AObjEvent32 **dKirbyModel_gap_0x31A0[11] = {
  * at per-joint script arrays for the second skeleton. */
 extern AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2F4[];
 extern AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2F8[];
-extern AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2FC[];
-extern AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x300[];
 
-AObjEvent32 **dKirbyModel_gap_0x31CC[16] = {
-	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x2F4,    /* +0x00 */
-	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x2F8,    /* +0x04 */
-	NULL, NULL, NULL, NULL, NULL, NULL,
-	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x2FC,    /* +0x24 */
-	NULL, NULL, NULL, NULL,
-	(AObjEvent32 **)dKirbyModel_gap_0x31CC_sub_0x300,    /* +0x38 */
-	NULL, NULL,
+/* TODO: data.inc.c — block at 0x31CC was AObjEvent32[16]; contains 2 embedded chain pointer(s) split out below */
+u8 dKirbyModel_gap_0x31CC[36] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/gap_0x31CC.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x31F0[1] = { (u32)dKirbyModel_gap_0x31CC_sub_0x2FC };
+
+u8 dKirbyModel_data_0x31F4[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x31F4.data.inc.c>
+};
+
+u32 dKirbyModel_data_0x3204[1] = { (u32)dKirbyModel_gap_0x31CC_sub_0x300 };
+
+u8 dKirbyModel_data_0x3208[4] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x3208.data.inc.c>
+};
+
 
 /* gap sub-block @ 0x320C (was gap+0x40, 184 bytes) */
 u32 dKirbyModel_gap_0x31CC_sub_0x40[46] = {
@@ -2050,10 +2310,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x1944[5] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x1A8C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x1958[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x1958.palette.inc.c>
+/* TODO: data.inc.c — block at 0x4B24 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x1958[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x4B28[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x4B28.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x4B38[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x4B3C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x4B40[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x4B44[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x4B48[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x4B4C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x4B50 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x1984[6] = {
@@ -2267,10 +2543,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x25EC[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x272C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x25F8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x25F8.palette.inc.c>
+/* TODO: data.inc.c — block at 0x57C4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x25F8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x57C8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x57C8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x57D8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x57DC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x57E0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x57E4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x57E8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x57EC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x57F0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x2624[6] = {
@@ -2460,10 +2752,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x2FCC[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x3094,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x2FD8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x2FD8.palette.inc.c>
+/* TODO: data.inc.c — block at 0x61A4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x2FD8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x61A8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x61A8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x61B8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x61BC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x61C0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x61C4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x61C8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x61CC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x61D0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x3004[6] = {
@@ -2636,10 +2944,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x3D60[2] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x3E24,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x3D68[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x3D68.palette.inc.c>
+/* TODO: data.inc.c — block at 0x6F34 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x3D68[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x6F38[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x6F38.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x6F48[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x6F4C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x6F50[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x6F54[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x6F58[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x6F5C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x6F60 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x3D94[6] = {
@@ -2778,10 +3102,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x47E0[2] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x491C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x47E8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x47E8.palette.inc.c>
+/* TODO: data.inc.c — block at 0x79B4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x47E8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x79B8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x79B8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x79C8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x79CC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x79D0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x79D4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x79D8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x79DC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x79E0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x4814[6] = {
@@ -3010,10 +3350,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x568C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x57CC,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x5698[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x5698.palette.inc.c>
+/* TODO: data.inc.c — block at 0x8864 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x5698[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x8868[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x8868.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x8878[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x887C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x8880[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x8884[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x8888[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x888C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x8890 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x56C4[6] = {
@@ -3197,10 +3553,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x61E8[4] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x632C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x61F8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x61F8.palette.inc.c>
+/* TODO: data.inc.c — block at 0x93C4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x61F8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x93C8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x93C8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x93D8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x93DC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x93E0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x93E4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x93E8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x93EC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x93F0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x6224[6] = {
@@ -3414,10 +3786,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x717C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x72BC,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x7188[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x7188.palette.inc.c>
+/* TODO: data.inc.c — block at 0xA354 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x7188[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0xA358[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0xA358.data.inc.c>
 };
+
+u32 dKirbyModel_data_0xA368[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0xA36C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0xA370[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0xA374[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0xA378[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0xA37C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0xA380 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x71B4[6] = {
@@ -3622,10 +4010,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x7E1C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x7F5C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x7E28[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x7E28.palette.inc.c>
+/* TODO: data.inc.c — block at 0xAFF4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x7E28[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0xAFF8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0xAFF8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0xB008[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0xB00C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0xB010[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0xB014[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0xB018[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0xB01C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0xB020 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x7E54[6] = {
@@ -3832,10 +4236,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x8B7C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x8CBC,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x8B88[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x8B88.palette.inc.c>
+/* TODO: data.inc.c — block at 0xBD54 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x8B88[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0xBD58[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0xBD58.data.inc.c>
 };
+
+u32 dKirbyModel_data_0xBD68[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0xBD6C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0xBD70[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0xBD74[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0xBD78[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0xBD7C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0xBD80 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x8BB4[6] = {
@@ -4027,10 +4447,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x95FC[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x973C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x9608[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x9608.palette.inc.c>
+/* TODO: data.inc.c — block at 0xC7D4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x9608[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0xC7D8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0xC7D8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0xC7E8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0xC7EC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0xC7F0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0xC7F4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0xC7F8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0xC7FC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0xC800 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x9634[6] = {
@@ -4454,10 +4890,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xB508[4] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xB64C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xB518[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xB518.palette.inc.c>
+/* TODO: data.inc.c — block at 0xE6E4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xB518[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0xE6E8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0xE6E8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0xE6F8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0xE6FC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0xE700[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0xE704[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0xE708[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0xE70C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0xE710 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xB544[6] = {
@@ -4649,10 +5101,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xC4DC[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xC61C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xC4E8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xC4E8.palette.inc.c>
+/* TODO: data.inc.c — block at 0xF6B4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xC4E8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0xF6B8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0xF6B8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0xF6C8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0xF6CC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0xF6D0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0xF6D4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0xF6D8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0xF6DC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0xF6E0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xC514[6] = {
@@ -4857,10 +5325,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xD23C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xD37C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xD248[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xD248.palette.inc.c>
+/* TODO: data.inc.c — block at 0x10414 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xD248[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x10418[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x10418.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x10428[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x1042C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x10430[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x10434[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x10438[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x1043C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x10440 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xD274[6] = {
@@ -5042,10 +5526,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xDDBC[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xDEFC,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xDDC8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xDDC8.palette.inc.c>
+/* TODO: data.inc.c — block at 0x10F94 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xDDC8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x10F98[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x10F98.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x10FA8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x10FAC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x10FB0[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x10FB4[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x10FB8[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x10FBC[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x10FC0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xDDF4[6] = {
@@ -5227,10 +5727,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xE82C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xE96C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xE838[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xE838.palette.inc.c>
+/* TODO: data.inc.c — block at 0x11A04 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xE838[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x11A08[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x11A08.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x11A18[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x11A1C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x11A20[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x11A24[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x11A28[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x11A2C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x11A30 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xE864[6] = {
@@ -5440,10 +5956,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xF40C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xF54C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xF418[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xF418.palette.inc.c>
+/* TODO: data.inc.c — block at 0x125E4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xF418[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x125E8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x125E8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x125F8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x125FC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x12600[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x12604[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x12608[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x1260C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x12610 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xF444[6] = {
@@ -5640,10 +6172,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0xFE9C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0xFFDC,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0xFEA8[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0xFEA8.palette.inc.c>
+/* TODO: data.inc.c — block at 0x13074 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0xFEA8[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x13078[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x13078.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x13088[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x1308C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x13090[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x13094[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x13098[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x1309C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x130A0 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0xFED4[6] = {
@@ -5853,10 +6401,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x10A7C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x10BBC,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x10A88[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x10A88.palette.inc.c>
+/* TODO: data.inc.c — block at 0x13C54 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x10A88[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x13C58[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x13C58.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x13C68[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x13C6C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x13C70[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x13C74[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x13C78[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x13C7C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x13C80 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x10AB4[6] = {
@@ -6053,10 +6617,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x1150C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x1164C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x11518[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x11518.palette.inc.c>
+/* TODO: data.inc.c — block at 0x146E4 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x11518[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x146E8[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x146E8.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x146F8[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x146FC[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x14700[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x14704[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x14708[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x1470C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x14710 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x11544[6] = {
@@ -6250,10 +6830,26 @@ AObjEvent32 *dKirbyModel_gap_0x31CC_sub_0x1205C[3] = {
 	(AObjEvent32 *)dKirbyModel_gap_0x31CC_sub_0x1219C,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x12068[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x12068.palette.inc.c>
+/* TODO: data.inc.c — block at 0x15234 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x12068[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x15238[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x15238.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x15248[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x1524C[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x15250[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x15254[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x15258[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x1525C[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x15260 (6 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x12094[6] = {
@@ -6816,10 +7412,26 @@ MObjSub **dKirbyModel_gap_0x31CC_sub_0x15894_post[24] = {
 	(MObjSub **)dKirbyModel_gap_0x31CC_sub_0x16020,
 };
 
-/* palette @ retyped from u8[44] to u16[22] */
-u16 dKirbyModel_gap_0x31CC_sub_0x15BEC[22] = {
-	#include <KirbyModel/gap_0x31CC_sub_0x15BEC.palette.inc.c>
+/* TODO: data.inc.c — block at 0x18DB8 was u16[22]; contains 7 embedded chain pointer(s) split out below */
+u32 dKirbyModel_gap_0x31CC_sub_0x15BEC[1] = { (u32)dKirbyModel_Tex_0x1CF60 };
+
+u8 dKirbyModel_data_0x18DBC[16] = {
+	/* TODO: data.inc.c */
+	#include <KirbyModel/data_0x18DBC.data.inc.c>
 };
+
+u32 dKirbyModel_data_0x18DCC[1] = { (u32)dKirbyModel_Tex_0x1CB00 };
+
+u32 dKirbyModel_data_0x18DD0[1] = { (u32)dKirbyModel_Tex_0x1C1A0 };
+
+u32 dKirbyModel_data_0x18DD4[1] = { (u32)dKirbyModel_Tex_0x1C8D0 };
+
+u32 dKirbyModel_data_0x18DD8[1] = { (u32)dKirbyModel_Tex_0x1C6A0 };
+
+u32 dKirbyModel_data_0x18DDC[1] = { (u32)dKirbyModel_Tex_0x1CD30 };
+
+u32 dKirbyModel_data_0x18DE0[1] = { (u32)dKirbyModel_Tex_0x1ADD0 };
+
 
 /* u32 pointer array @ 0x18DE4 (5 entries) */
 u16 *dKirbyModel_gap_0x31CC_sub_0x15C18[5] = {

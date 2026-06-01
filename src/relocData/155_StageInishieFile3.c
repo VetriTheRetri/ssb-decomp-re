@@ -6,7 +6,29 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStageInishieFile2_Lut_0x35D0_palette[];
+extern u16 dStageInishieFile2_Lut_0x35F8_palette[];
+extern u16 dStageInishieFile2_Lut_0x3620_palette[];
+extern u16 dStageInishieFile2_Lut_0x3710_palette[];
 extern Gfx dStageInishieFile3_DL_0x0258[];
+extern u8 dStageInishieFile3_Tex_0x0008[];
+extern u8 dStageInishieFile3_Tex_0x0498[];
+extern u8 dStageInishieFile3_Tex_0x04B0[];
+extern u8 dStageInishieFile3_Tex_0x0E48[];
+extern u8 dStageInishieFile3_Tex_0x0F50[];
+extern Vtx dStageInishieFile3_Vtx_0x0048[];
+extern Vtx dStageInishieFile3_Vtx_0x00C8[];
+extern Vtx dStageInishieFile3_Vtx_0x0108[];
+extern Vtx dStageInishieFile3_Vtx_0x0148[];
+extern Vtx dStageInishieFile3_Vtx_0x0168[];
+extern Vtx dStageInishieFile3_Vtx_0x01A8[];
+extern Vtx dStageInishieFile3_Vtx_0x04F0[];
+extern Vtx dStageInishieFile3_Vtx_0x05B0[];
+extern Vtx dStageInishieFile3_Vtx_0x0B00[];
+extern Vtx dStageInishieFile3_Vtx_0x0F90[];
+extern Vtx dStageInishieFile3_Vtx_0x1090[];
+
 extern u32 dStageInishieFile3_AnimJoint_0x0734[];
 extern MObjSub *dStageInishieFile3_mobjsub_0x0AF8[];
 extern u32 dStageInishieFile3_AnimJoint_0x0CC8[];

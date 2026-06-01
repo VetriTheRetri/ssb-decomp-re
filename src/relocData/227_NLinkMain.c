@@ -2,6 +2,17 @@
 /* File size: 1568 bytes (0x620) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dLinkShieldPose_data0[];
+extern u8 dLinkShieldPose_data0_end[];
+extern u8 dLinkShieldPose_shield_anim_joint_1[];
+extern u8 dLinkShieldPose_shield_anim_joint_2[];
+extern u8 dLinkShieldPose_shield_anim_joint_3[];
+extern u8 dLinkShieldPose_shield_anim_joint_4[];
+extern u8 dLinkShieldPose_shield_anim_joint_5[];
+extern u8 dLinkShieldPose_shield_anim_joint_6[];
+extern u8 dLinkShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern u32 dLinkMainMotion_EggLay_0x0014[];
@@ -224,8 +235,8 @@ FTAttributes dNLinkMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNLinkMain_hiddenparts, /* hiddenparts */
 	&dNLinkMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dLinkShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dLinkShieldPose_data0_end, (void *)&dLinkShieldPose_shield_anim_joint_1, (void *)&dLinkShieldPose_shield_anim_joint_2, (void *)&dLinkShieldPose_shield_anim_joint_3, (void *)&dLinkShieldPose_shield_anim_joint_4, (void *)&dLinkShieldPose_shield_anim_joint_5, (void *)&dLinkShieldPose_shield_anim_joint_6, (void *)&dLinkShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
 	92.628f, /* joint_rfoot_rotate */
 	25, /* joint_lfoot_id */

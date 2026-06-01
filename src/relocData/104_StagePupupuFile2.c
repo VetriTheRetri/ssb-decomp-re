@@ -9,6 +9,67 @@
 
 /* Raw data from file offset 0x0000 to 0x0898 (2200 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStagePupupuFile2_DL_0x0708[];
+extern Gfx dStagePupupuFile2_Layer0Anim_AnimJoint[];
+extern Gfx dStagePupupuFile2_Layer0Anim_DL_0x18E0[];
+extern Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8[];
+extern Gfx dStagePupupuFile2_Layer3Anim_DL_0x29B8[];
+extern Gfx dStagePupupuFile2_Layer3Anim_DL_0x2A68[];
+extern u16 dStagePupupuFile2_Layer3Anim_Lut_0x2D38_palette[];
+extern u16 dStagePupupuFile2_Layer3Anim_Lut_0x3968_palette[];
+extern u8 dStagePupupuFile2_Layer3Anim_Tex_0x3990[];
+extern Vtx dStagePupupuFile2_Layer3Anim_Vtx_0x3288[];
+extern Vtx dStagePupupuFile2_Layer3Anim_Vtx_0x3D50[];
+extern Vtx dStagePupupuFile2_Vtx_0x13D0[];
+extern Vtx dStagePupupuFile2_Vtx_0x1550[];
+extern Vtx dStagePupupuFile2_Vtx_0x1710[];
+extern Vtx dStagePupupuFile2_Vtx_0x1740[];
+extern Vtx dStagePupupuFile2_Vtx_0x17A0[];
+extern Vtx dStagePupupuFile2_Vtx_0x1820[];
+extern Vtx dStagePupupuFile2_Vtx_0x18A0[];
+extern Vtx dStagePupupuFile2_Vtx_0x2078[];
+extern Vtx dStagePupupuFile2_Vtx_0x20E8[];
+extern Vtx dStagePupupuFile2_Vtx_0x2168[];
+extern Vtx dStagePupupuFile2_Vtx_0x2710[];
+extern Vtx dStagePupupuFile2_Vtx_0x2750[];
+extern Vtx dStagePupupuFile2_Vtx_0x2790[];
+extern Vtx dStagePupupuFile2_Vtx_0x2890[];
+extern Vtx dStagePupupuFile2_gap_0x0000[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x120[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x170[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x1E0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x210[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x240[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x280[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x310[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x360[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x3A0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x3E0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x40[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x430[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x480[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x4C0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x4F0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x520[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x550[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x580[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x5B0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x5E0[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x660[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x690[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0x80[];
+extern Vtx dStagePupupuFile2_gap_0x0000_sub_0xD0[];
+extern u16 dStagePupupuImages_Lut_0x2678_palette[];
+extern u16 dStagePupupuImages_Lut_0x2DB8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2E68_palette[];
+extern u16 dStagePupupuImages_Lut_0x2F18_palette[];
+extern u8 dStagePupupuImages_Tex_0x26A0[];
+extern u8 dStagePupupuImages_Tex_0x2DE0[];
+extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u8 dStagePupupuImages_Tex_0x2F40[];
 Vtx dStagePupupuFile2_gap_0x0000[4] = {
 	#include <StagePupupuFile2/gap_0x0000.vtx.inc.c>
 };

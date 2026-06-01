@@ -8,6 +8,42 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (14 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dLBTransitionBlock_DL_0x1A38[];
+extern Vtx dLBTransitionBlock_Vtx_0x0000_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x00E0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x02A0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0380_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0460_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x04D0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0540_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0620_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0690_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0770_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x07E0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0990_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0A70_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0B50_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0C70_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0D10_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0D80_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0DF0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0F00_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x0F90_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1070_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x10B0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1150_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1240_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1300_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x13E0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1470_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x14C0_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1670_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1750_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1830_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1910_Vtx[];
+extern Vtx dLBTransitionBlock_Vtx_0x1980_Vtx[];
 Vtx dLBTransitionBlock_Vtx_0x0000_Vtx[14] = {
 	#include <LBTransitionBlock/Vtx_0x0000.vtx.inc.c>
 };

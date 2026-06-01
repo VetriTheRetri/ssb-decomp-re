@@ -6,6 +6,22 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dEFCommonEffects1_DamageFlyMDust_Vtx[];
+extern u8 dEFCommonEffects1_DamageSlash_Tex_0x7980[];
+extern u16 dEFCommonEffects1_DamageSlash_palette_0x7958[];
+extern u8 dEFCommonEffects1_ImpactWave_Tex_0x7E00[];
+extern Vtx dEFCommonEffects1_ImpactWave_Vtx_0x7E40[];
+extern u16 dEFCommonEffects1_ImpactWave_palette_0x7DE8[];
+extern Vtx dEFCommonEffects1_gap_0x0000_sub_0x5908[];
+extern u16 dEFCommonEffects1_gap_0x0000_sub_0x5C18[];
+extern u16 dEFCommonEffects1_gap_0x0000_sub_0x5D58[];
+extern Vtx dEFCommonEffects1_gap_0x7458_sub_0x108[];
+extern Vtx dEFCommonEffects1_gap_0x7458_sub_0xC8[];
+extern Vtx dEFCommonEffects1_gap_0x7AF8_sub_0x10[];
+extern Vtx dEFCommonEffects1_gap_0x8F38_sub_0x28[];
+extern u16 dEFCommonEffects1_palette_0x8068[];
 extern u8 dEFCommonEffects1_gap_0x7458[];
 extern Gfx dEFCommonEffects1_gap_0x0000_sub_0x5948[];
 extern u32 dEFCommonEffects1_gap_0x0000_sub_0x59D4[];
@@ -32,9 +48,6 @@ extern u32 dEFCommonEffects1_ImpactWave_AnimJoint_0x7D44[];
 
 extern u32 dEFCommonEffects1_ImpactWave_AnimJoint_0x7DA4[];
 extern AObjEvent32 *dEFCommonEffects1_ImpactWave_MatAnimJoint_ptrs_0x7DD0[];
-extern u16 dEFCommonEffects1_ImpactWave_palette_0x7DE8[];
-extern u8 dEFCommonEffects1_ImpactWave_Tex_0x7E00[];
-extern Vtx dEFCommonEffects1_ImpactWave_Vtx_0x7E40[];
 extern u32 dEFCommonEffects1_FlyOrbs_AnimJoint_data[];
 extern u32 dEFCommonEffects1_CommonSpark_AnimJoint_0x9054[];
 

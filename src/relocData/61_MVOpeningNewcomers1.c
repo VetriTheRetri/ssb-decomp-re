@@ -8,6 +8,16 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward externs for AnimJointPtr blocks (defined later in this file) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dMVOpeningNewcomers1_Tex_0x0008[];
+extern u8 dMVOpeningNewcomers1_Tex_0x1CEF8[];
+extern u8 dMVOpeningNewcomers1_Tex_0x20528[];
+extern u8 dMVOpeningNewcomers1_Tex_0x5EB8[];
+extern Vtx dMVOpeningNewcomers1_Vtx_0x1C4B8_Vtx[];
+extern Vtx dMVOpeningNewcomers1_Vtx_0x20308_Vtx[];
+extern Vtx dMVOpeningNewcomers1_Vtx_0x28AE8_Vtx[];
+extern Vtx dMVOpeningNewcomers1_Vtx_0x5B28_Vtx[];
 extern u32 dMVOpeningNewcomers1_Purin_AnimJoint[];
 extern u32 dMVOpeningNewcomers1_Luigi_AnimJoint[];
 

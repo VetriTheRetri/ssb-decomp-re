@@ -6,9 +6,58 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern void *dLuigiModel_Joint_0x0060_post[];
+extern u8 *dLuigiModel_Joint_0x0060_post_sub_0x14[];
+extern u8 dLuigiModel_Tex_0x6D38[];
+extern Vtx dLuigiModel_Vtx_0x0910_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x0A90_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x0B40_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x0BA0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x1200_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x12B0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x1310_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x1410_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x14C0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x1520_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x1620_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x16D0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x1730_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3590_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x36A0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3710_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3740_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3C20_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3C90_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3CC0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3DC0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3E20_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3E50_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3EF0_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3F50_Vtx[];
+extern Vtx dLuigiModel_Vtx_0x3F80_Vtx[];
+extern MObjSub **dLuigiModel_gap_0x0000[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x10B4[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1114[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1314[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1384[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1604[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1714[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1824[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1924[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1A24[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1B34[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1C44[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1D24[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x3C4[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x6A4[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0x914[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0xBF4[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0xE64[];
+extern Vtx dLuigiModel_gap_0x4E8C_sub_0xF54[];
 extern u32 dLuigiModel_gap_0x28E0_sub_0x304[];
 extern u32 dLuigiModel_gap_0x28E0_sub_0x32C[];
-extern Vtx dLuigiModel_gap_0x4E8C_sub_0x1D24[];
 extern Gfx dLuigiModel_DL_0x6C20[];
 extern u32 dLuigiModel_gap_0x4E8C_sub_0x328[];
 extern AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x37C[];
@@ -58,7 +107,6 @@ extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC94[];
 extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC48[];
 extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC74[];
 extern MObjSub *dLuigiModel_gap_0x28E0_sub_0xC58[];
-extern u8 dLuigiModel_Tex_0x6D38[];
 extern u8 dLuigiModel_Tex_0x6EE8[];
 extern u8 dLuigiModel_Tex_0x7118[];
 extern u16 dLuigiModel_palette_0x7320[];

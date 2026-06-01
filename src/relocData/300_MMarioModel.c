@@ -6,6 +6,31 @@
 
 #include "relocdata_types.h"
 /* Vtx: JointVerts @ 0x0 (20 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dMMarioModel_JointVerts_Vtx[];
+extern u16 dMMarioModel_Lut256_0x2288[];
+extern u8 dMMarioModel_Tex_0x2490[];
+extern Vtx dMMarioModel_Vtx_0x0140_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x01D0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0210_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0310_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0510_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0520_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0540_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0560_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0570_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0590_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x05A0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0710_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x07A0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x07E0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x08E0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0990_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x09F0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0AA0_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0B50_Vtx[];
+extern Vtx dMMarioModel_Vtx_0x0BB0_Vtx[];
 Vtx dMMarioModel_JointVerts_Vtx[20] = {
 	#include <MMarioModel/JointVerts.vtx.inc.c>
 };

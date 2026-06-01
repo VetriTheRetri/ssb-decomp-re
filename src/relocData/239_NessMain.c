@@ -2,6 +2,17 @@
 /* File size: 2320 bytes (0x910) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dNessShieldPose_data0[];
+extern u8 dNessShieldPose_data0_end[];
+extern u8 dNessShieldPose_shield_anim_joint_1[];
+extern u8 dNessShieldPose_shield_anim_joint_2[];
+extern u8 dNessShieldPose_shield_anim_joint_3[];
+extern u8 dNessShieldPose_shield_anim_joint_4[];
+extern u8 dNessShieldPose_shield_anim_joint_5[];
+extern u8 dNessShieldPose_shield_anim_joint_6[];
+extern u8 dNessShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 #include <wp/wptypes.h>
 
@@ -34,24 +45,24 @@ extern Sprite dNessModel_FTEmblem;
 extern u8 dNessModel_gap_0x2C04_sub_0x1E8[];
 extern u8 dNessModel_gap_0x2C04_sub_0x20C[];
 extern u8 dNessModel_gap_0x2C04_sub_0x8A4[];
-extern u8 dNessModel_gap_0x553C_sub_0x1224[];
-extern u8 dNessModel_gap_0x553C_sub_0x14A4[];
-extern u8 dNessModel_gap_0x553C_sub_0x1614[];
+extern u8 dNessModel_DL_0x6760[];
+extern u8 dNessModel_DL_0x69E0[];
+extern u8 dNessModel_DL_0x6B50[];
 extern u8 dNessModel_gap_0x553C_sub_0x1854[];
 extern u8 dNessModel_gap_0x553C_sub_0x1F0[];
 extern u8 dNessModel_gap_0x553C_sub_0x25BC[];
 extern DObjDesc dNessModel_DObjDesc_0x7C98[3];
 extern u8 dNessModel_gap_0x553C_sub_0x27E4[];
 extern u8 dNessModel_gap_0x553C_sub_0x2834[];
-extern u8 dNessModel_gap_0x553C_sub_0x314[];
+extern u8 dNessModel_DL_0x5850[];
 extern u8 dNessModel_gap_0x553C_sub_0x348C[];
 extern DObjDLLink dNessModel_DLLink_0x8B40[2];
 extern u8 dNessModel_gap_0x553C_sub_0x464[];
-extern u8 dNessModel_gap_0x553C_sub_0x5E4[];
+extern u8 dNessModel_DL_0x5B20[];
 extern u8 dNessModel_gap_0x553C_sub_0x734[];
-extern u8 dNessModel_gap_0x553C_sub_0x874[];
+extern u8 dNessModel_DL_0x5DB0[];
 extern u8 dNessModel_gap_0x553C_sub_0x984[];
-extern u8 dNessModel_gap_0x553C_sub_0xAC4[];
+extern u8 dNessModel_DL_0x6000[];
 extern u8 dNessModel_gap_0x553C_sub_0xBD4[];
 extern u8 dNessModel_gap_0xC100_sub_0x30[];
 extern u8 dNessModel_gap_0xC100_sub_0x58[];
@@ -156,17 +167,17 @@ FTHiddenPart dNessMain_hiddenparts[4] = {
 FTModelPart dNessMain_modelparts_desc_0x0C4[4] = {
 	{ (Gfx*)&dNessModel_Joint_0x1B88_DisplayList, (MObjSub**)&dNessModel_Joint_0x0040_post_sub_0x658, (AObjEvent32**)&dNessModel_gap_0x2C04_sub_0x1E8, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_Joint_0x44E8_DisplayList, (MObjSub**)&dNessModel_gap_0x2C04_sub_0x8A4, (AObjEvent32**)&dNessModel_gap_0x553C_sub_0x1F0, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1224, NULL, NULL, NULL, 0x40 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1224, NULL, NULL, NULL, 0x40 },
+	{ (Gfx*)&dNessModel_DL_0x6760, NULL, NULL, NULL, 0x40 },
+	{ (Gfx*)&dNessModel_DL_0x6760, NULL, NULL, NULL, 0x40 },
 };
 
 /* @ 0x0114, 120 bytes: FTAttributes.sub_0x114 target (was dNessMain_pre+0x114) */
 FTModelPart dNessMain_modelparts_desc_0x114[6] = {
 	{ (Gfx*)&dNessModel_Joint_0x1AF8_DisplayList, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_Joint_0x4470_DisplayList, NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x5E4, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x5B20, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x734, NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0xAC4, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x6000, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0xBD4, NULL, NULL, NULL, 0x00 },
 };
 
@@ -174,24 +185,24 @@ FTModelPart dNessMain_modelparts_desc_0x114[6] = {
 FTModelPart dNessMain_modelparts_desc_0x18C[6] = {
 	{ (Gfx*)&dNessModel_Joint_0x20E8_DisplayList, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_Joint_0x4A70_DisplayList, NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x314, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x5850, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x464, NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x874, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x5DB0, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x984, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0204, 80 bytes: FTAttributes.sub_0x204 target (was dNessMain_pre+0x204) */
 FTModelPart dNessMain_modelparts_desc_0x204[4] = {
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1614, NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1614, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x6B50, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x6B50, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1854, NULL, NULL, NULL, 0x00 },
 	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x1854, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0254, 40 bytes: FTAttributes.sub_0x254 target (was dNessMain_pre+0x254) */
 FTModelPart dNessMain_modelparts_desc_0x254[2] = {
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x14A4, NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)&dNessModel_gap_0x553C_sub_0x14A4, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x69E0, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dNessModel_DL_0x69E0, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x027C, 108 bytes: FTAttributes.modelparts_container target (was dNessMain_pre+0x27C) */
@@ -422,8 +433,8 @@ FTAttributes dNessMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNessMain_hiddenparts, /* hiddenparts */
 	&dNessMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dNessShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dNessShieldPose_data0_end, (void *)&dNessShieldPose_shield_anim_joint_1, (void *)&dNessShieldPose_shield_anim_joint_2, (void *)&dNessShieldPose_shield_anim_joint_3, (void *)&dNessShieldPose_shield_anim_joint_4, (void *)&dNessShieldPose_shield_anim_joint_5, (void *)&dNessShieldPose_shield_anim_joint_6, (void *)&dNessShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	60.891f, /* joint_rfoot_rotate */
 	18, /* joint_lfoot_id */

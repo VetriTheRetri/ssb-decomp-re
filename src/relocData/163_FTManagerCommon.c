@@ -7,6 +7,10 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0300 (768 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dFTManagerCommon_Tex_0x0008[];
+extern Vtx dFTManagerCommon_gap_0x0000_sub_0x208[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 512 bytes) */

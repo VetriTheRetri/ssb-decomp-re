@@ -6,6 +6,115 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStageYosterFile2_DL_0x05A8[];
+extern Gfx dStageYosterFile2_DL_0x58F8[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x1058[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x10D8[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x1118[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x828[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xA28[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xB28[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xD28[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xD68[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xDA8[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xDE8[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xE68[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xEE8[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xF68[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xFA8[];
+extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0xFE8[];
+extern Vtx dStageYosterFile2_MPGeometryData_0x5188_trailing_Vtx_0xC[];
+extern Vtx dStageYosterFile2_MPGeometryData_0x5188_trailing_Vtx_0xCC[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x120[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x160[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x1E0[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x260[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x330[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x370[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x3B0[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x3F0[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x430[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x460[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x490[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0x4A0[];
+extern Vtx dStageYosterFile2_gap_0x0078_sub_0xE0[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x144[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x184[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x1F4[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x234[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x274[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x2F4[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x374[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x4[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x44[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0x84[];
+extern Vtx dStageYosterFile2_gap_0x54CC_sub_0xC4[];
+extern Vtx dStageYosterFile2_gap_0x5CE8_sub_0x19C8[];
+extern u16 dStageYosterFile2_gap_0x5CE8_sub_0x1EC0[];
+extern Vtx dStageYosterFile2_gap_0x5CE8_sub_0x2710[];
+extern Vtx dStageYosterFile2_gap_0x5CE8_sub_0x2960[];
+extern u16 dStageYosterFile2_gap_0x5CE8_sub_0x3080[];
+extern Vtx dStageYosterFile2_gap_0x5CE8_sub_0x38D0[];
+extern u16 dStageYosterFile2_gap_0x5CE8_sub_0x3F40[];
+extern Vtx dStageYosterFile2_gap_0x5CE8_sub_0x4790[];
+extern u16 dStageYosterFile2_gap_0x5CE8_sub_0x4DF0[];
+extern Vtx dStageYosterFile2_gap_0x5CE8_sub_0x5640[];
+extern u16 dStageYosterFile2_gap_0x5CE8_sub_0xD8[];
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0128_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
+extern MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x19C0[];
+extern MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x2708[];
+extern MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x38C8[];
+extern MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x4788[];
+extern MObjSub *dStageYosterFile2_gap_0x5CE8_sub_0x5638[];
+extern u8 dStageYosterImages_Tex_0x0550[];
+extern u8 dStageYosterImages_Tex_0x0658[];
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0128_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
 extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x1198[];
 extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11B0[];
 extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x11C8[];
@@ -40,9 +149,16 @@ MObjSub **dStageYosterFile2_Layer0MObj_MObjSub[18] = {
 	(MObjSub **)dStageYosterFile2_gap_0x0078_sub_0xD8,
 };
 
-/* @ 0x48 / 0x50 — sprite (texture) pointer arrays -> file 110 */
-void *dStageYosterFile2_Layer0MObj_0x48[2] = { NULL, NULL };
-void *dStageYosterFile2_Layer0MObj_0x50[2] = { NULL, NULL };
+/* TODO: data.inc.c — block at 0x48 was void[2]; contains 2 embedded chain pointer(s) split out below */
+u32 dStageYosterFile2_Layer0MObj_0x48[1] = { (u32)dStageYosterImages_Tex_0x0550 };
+
+u32 dStageYosterFile2_data_0x004C[1] = { (u32)dStageYosterImages_Tex_0x0658 };
+
+/* TODO: data.inc.c — block at 0x50 was void[2]; contains 2 embedded chain pointer(s) split out below */
+u32 dStageYosterFile2_Layer0MObj_0x50[1] = { (u32)dStageYosterImages_Tex_0x0550 };
+
+u32 dStageYosterFile2_data_0x0054[1] = { (u32)dStageYosterImages_Tex_0x0658 };
+
 
 /* @ 0x58 — MObjSub */
 MObjSub dStageYosterFile2_Layer0MObj_0x58[1] = {
@@ -3675,10 +3791,14 @@ u8 dStageYosterFile2_Tex_0x6E08[1032] = {
 	#include <StageYosterFile2/Tex_0x6E08.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x64 */
-u8 dStageYosterFile2_Tex_0x7210[1032] = {
-	#include <StageYosterFile2/Tex_0x7210.tex.inc.c>
+/* TODO: data.inc.c — block at 0x7210 was u8[1032]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYosterFile2_Tex_0x7210[1028] = {
+	/* TODO: data.inc.c */
+	#include <StageYosterFile2/Tex_0x7210.data.inc.c>
 };
+
+u32 dStageYosterFile2_data_0x7614[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x19C0 };
+
 
 /* u32 pointer array @ 0x7618 (6 entries) */
 void *dStageYosterFile2_gap_0x5CE8_sub_0x1930[6] = {
@@ -3978,10 +4098,14 @@ u8 dStageYosterFile2_Tex_0x7E58[648] = {
 	#include <StageYosterFile2/Tex_0x7E58.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x40 */
-u8 dStageYosterFile2_Tex_0x80E0[648] = {
-	#include <StageYosterFile2/Tex_0x80E0.tex.inc.c>
+/* TODO: data.inc.c — block at 0x80E0 was u8[648]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYosterFile2_Tex_0x80E0[644] = {
+	/* TODO: data.inc.c */
+	#include <StageYosterFile2/Tex_0x80E0.data.inc.c>
 };
+
+u32 dStageYosterFile2_data_0x8364[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x2708 };
+
 
 /* u32 pointer array @ 0x8368 (4 entries) */
 void *dStageYosterFile2_gap_0x5CE8_sub_0x2680[4] = {
@@ -4476,10 +4600,14 @@ u8 dStageYosterFile2_Tex_0x9018[648] = {
 	#include <StageYosterFile2/Tex_0x9018.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x40 */
-u8 dStageYosterFile2_Tex_0x92A0[648] = {
-	#include <StageYosterFile2/Tex_0x92A0.tex.inc.c>
+/* TODO: data.inc.c — block at 0x92A0 was u8[648]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYosterFile2_Tex_0x92A0[644] = {
+	/* TODO: data.inc.c */
+	#include <StageYosterFile2/Tex_0x92A0.data.inc.c>
 };
+
+u32 dStageYosterFile2_data_0x9524[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x38C8 };
+
 
 /* u32 pointer array @ 0x9528 (4 entries) */
 void *dStageYosterFile2_gap_0x5CE8_sub_0x3840[4] = {
@@ -4857,10 +4985,14 @@ u8 dStageYosterFile2_Tex_0x9ED8[648] = {
 	#include <StageYosterFile2/Tex_0x9ED8.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x40 */
-u8 dStageYosterFile2_Tex_0xA160[648] = {
-	#include <StageYosterFile2/Tex_0xA160.tex.inc.c>
+/* TODO: data.inc.c — block at 0xA160 was u8[648]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYosterFile2_Tex_0xA160[644] = {
+	/* TODO: data.inc.c */
+	#include <StageYosterFile2/Tex_0xA160.data.inc.c>
 };
+
+u32 dStageYosterFile2_data_0xA3E4[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x4788 };
+
 
 /* u32 pointer array @ 0xA3E8 (4 entries) */
 void *dStageYosterFile2_gap_0x5CE8_sub_0x4700[4] = {
@@ -5236,10 +5368,14 @@ u8 dStageYosterFile2_Tex_0xAD88[648] = {
 	#include <StageYosterFile2/Tex_0xAD88.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=32x40 */
-u8 dStageYosterFile2_Tex_0xB010[648] = {
-	#include <StageYosterFile2/Tex_0xB010.tex.inc.c>
+/* TODO: data.inc.c — block at 0xB010 was u8[648]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageYosterFile2_Tex_0xB010[644] = {
+	/* TODO: data.inc.c */
+	#include <StageYosterFile2/Tex_0xB010.data.inc.c>
 };
+
+u32 dStageYosterFile2_data_0xB294[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x5638 };
+
 
 /* u32 pointer array @ 0xB298 (4 entries) */
 void *dStageYosterFile2_gap_0x5CE8_sub_0x55B0[4] = {

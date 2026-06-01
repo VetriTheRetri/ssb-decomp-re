@@ -7,6 +7,388 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMVOpeningSector_DL_0x6000[];
+extern u16 dMVOpeningSector_Lut_0x0008_palette[];
+extern u16 dMVOpeningSector_Lut_0x0030_palette[];
+extern u16 dMVOpeningSector_Lut_0x0058_palette[];
+extern u16 dMVOpeningSector_Lut_0x0080_palette[];
+extern u16 dMVOpeningSector_Lut_0x00A8_palette[];
+extern u16 dMVOpeningSector_Lut_0x00D0_palette[];
+extern u16 dMVOpeningSector_Lut_0x00F8_palette[];
+extern u16 dMVOpeningSector_Lut_0x0120_palette[];
+extern u16 dMVOpeningSector_Lut_0x0148_palette[];
+extern u16 dMVOpeningSector_Lut_0x0170_palette[];
+extern u16 dMVOpeningSector_Lut_0x0198_palette[];
+extern u8 dMVOpeningSector_Tex_0x01C0[];
+extern u8 dMVOpeningSector_Tex_0x03C8[];
+extern u8 dMVOpeningSector_Tex_0x05D0[];
+extern u8 dMVOpeningSector_Tex_0x0618[];
+extern u8 dMVOpeningSector_Tex_0x0820[];
+extern u8 dMVOpeningSector_Tex_0x0928[];
+extern u8 dMVOpeningSector_Tex_0x0A30[];
+extern u8 dMVOpeningSector_Tex_0x1038[];
+extern u8 dMVOpeningSector_Tex_0x1340[];
+extern u8 dMVOpeningSector_Tex_0x1548[];
+extern u8 dMVOpeningSector_Tex_0x19D0[];
+extern u8 dMVOpeningSector_Tex_0x1E58[];
+extern u8 dMVOpeningSector_Tex_0x2060[];
+extern Vtx dMVOpeningSector_Vtx_0x20E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2110_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2140_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2170_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x21A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x21D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2200_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2230_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2260_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2290_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x22C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x22F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2320_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2350_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2380_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x23B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x23E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2410_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2440_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2470_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x24A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x24D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2500_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2530_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2560_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2590_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x25C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x25F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2620_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2650_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2680_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x26B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x26E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2710_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2740_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2770_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x27A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x27D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2800_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2830_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2860_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2890_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x28C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x28F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2920_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2950_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2980_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x29B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x29E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2A10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2A40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2A70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2AA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2AD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2B00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2B30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2B60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2B90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2BC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2BF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2C20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2C50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2C80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2CB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2CE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2D10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2D40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2D70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2DA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2DD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2E00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2E30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2E60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2E90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2EC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2EF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2F20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2F50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2F80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2FB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x2FE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3010_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3040_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3070_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x30A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x30D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3100_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3130_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3160_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3190_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x31C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x31F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3220_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3250_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3280_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x32B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x32E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3310_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3340_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3370_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x33A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x33D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3400_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3430_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3460_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3490_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x34C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x34F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3520_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3550_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3580_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x35B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x35E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3610_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3640_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3670_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x36A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x36D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3700_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3730_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3760_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3790_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x37C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x37F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3820_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3850_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3880_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x38B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x38E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3910_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3940_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3970_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x39A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x39D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3A00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3A30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3A60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3A90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3AC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3AF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3B20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3B50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3B80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3BB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3BE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3C10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3C40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3C70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3CA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3CD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3D00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3D30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3D60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3D90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3DC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3DF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3E20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3E50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3E80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3EB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3EE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3F10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3F40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3F70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3FA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x3FD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4000_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4030_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4060_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4090_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x40C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x40F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4120_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4150_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4180_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x41B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x41E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4210_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4240_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4270_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x42A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x42D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4300_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4330_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4360_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4390_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x43C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x43F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4420_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4450_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4480_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x44B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x44E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4510_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4540_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4570_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x45A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x45D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4600_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4630_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4660_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4690_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x46C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x46F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4720_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4750_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4780_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x47B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x47E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4810_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4840_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4870_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x48A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x48D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4900_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4930_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4960_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4990_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x49C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x49F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4A20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4A50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4A80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4AB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4AE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4B10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4B40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4B70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4BA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4BD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4C00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4C30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4C60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4C90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4CC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4CF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4D20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4D50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4D80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4DB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4DE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4E10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4E40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4E70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4EA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4ED0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4F00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4F30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4F60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4F90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4FC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x4FF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5020_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5050_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5080_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x50B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x50E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5110_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5140_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5170_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x51A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x51D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5200_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5230_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5260_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5290_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x52C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x52F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5320_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5350_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5380_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x53B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x53E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5410_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5440_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5470_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x54A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x54D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5500_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5530_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5560_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5590_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x55C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x55F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5620_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5650_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5680_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x56B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x56E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5710_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5740_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5770_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x57A0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x57D0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5800_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5830_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5860_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5890_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x58C0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x58F0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5920_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5950_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5980_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x59B0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x59E0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5A10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5A40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5A70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5AA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5AD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5B00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5B30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5B60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5B90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5BC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5BF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5C20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5C50_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5C80_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5CB0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5CE0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5D10_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5D40_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5D70_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5DA0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5DD0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5E00_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5E30_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5E60_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5E90_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5EC0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5EF0_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5F20_Vtx[];
+extern Vtx dMVOpeningSector_Vtx_0x5F50_Vtx[];
+extern Gfx dMVOpeningSector_DL_0xD110[];
+extern Gfx dMVOpeningSector_DL_0xD1E0[];
+extern Gfx dMVOpeningSector_DL_0xD2B0[];
+extern Gfx dMVOpeningSector_DL_0xD380[];
+extern Gfx dMVOpeningSector_DL_0xD450[];
+extern Gfx dMVOpeningSector_DL_0xD520[];
+extern Gfx dMVOpeningSector_DL_0xD5F0[];
+extern Gfx dMVOpeningSector_DL_0xD6C0[];
+extern u8 dMVOpeningSector_Vtx_0xD1D0_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD2A0_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD370_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD440_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD510_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD5E0_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD6B0_Vtx[];
+extern u8 dMVOpeningSector_Vtx_0xD780_Vtx[];
+extern Gfx dMVOpeningSector_gap_0x5F80_sub_0x7100[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -1874,125 +2256,278 @@ Gfx dMVOpeningSector_DL_0xD110[24] = {
 	#include <MVOpeningSector/DL_0xD110.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD1D0 @ 0xD1D0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD1D0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD1D0.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD1D0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD1D0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD1D0_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD1D4[1] = { (u32)dMVOpeningSector_DL_0xD110 };
+
+u8 dMVOpeningSector_data_0xD1D8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD1D8.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD1E0 (was gap+0x7260, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD1E0[24] = {
 	#include <MVOpeningSector/DL_0xD1E0.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD2A0 @ 0xD2A0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD2A0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD2A0.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD2A0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD2A0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD2A0_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD2A4[1] = { (u32)dMVOpeningSector_DL_0xD1E0 };
+
+u8 dMVOpeningSector_data_0xD2A8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD2A8.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD2B0 (was gap+0x7330, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD2B0[24] = {
 	#include <MVOpeningSector/DL_0xD2B0.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD370 @ 0xD370 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD370_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD370.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD370 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD370_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD370_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD374[1] = { (u32)dMVOpeningSector_DL_0xD2B0 };
+
+u8 dMVOpeningSector_data_0xD378[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD378.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD380 (was gap+0x7400, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD380[24] = {
 	#include <MVOpeningSector/DL_0xD380.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD440 @ 0xD440 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD440_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD440.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD440 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD440_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD440_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD444[1] = { (u32)dMVOpeningSector_DL_0xD380 };
+
+u8 dMVOpeningSector_data_0xD448[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD448.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD450 (was gap+0x74D0, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD450[24] = {
 	#include <MVOpeningSector/DL_0xD450.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD510 @ 0xD510 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD510_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD510.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD510 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD510_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD510_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD514[1] = { (u32)dMVOpeningSector_DL_0xD450 };
+
+u8 dMVOpeningSector_data_0xD518[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD518.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD520 (was gap+0x75A0, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD520[24] = {
 	#include <MVOpeningSector/DL_0xD520.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD5E0 @ 0xD5E0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD5E0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD5E0.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD5E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD5E0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD5E0_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD5E4[1] = { (u32)dMVOpeningSector_DL_0xD520 };
+
+u8 dMVOpeningSector_data_0xD5E8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD5E8.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD5F0 (was gap+0x7670, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD5F0[24] = {
 	#include <MVOpeningSector/DL_0xD5F0.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD6B0 @ 0xD6B0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD6B0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD6B0.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD6B0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD6B0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD6B0_Vtx.data.inc.c>
 };
+
+u32 dMVOpeningSector_data_0xD6B4[1] = { (u32)dMVOpeningSector_DL_0xD5F0 };
+
+u8 dMVOpeningSector_data_0xD6B8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD6B8.data.inc.c>
+};
+
 
 /* gap sub-block @ 0xD6C0 (was gap+0x7740, 192 bytes) */
 Gfx dMVOpeningSector_DL_0xD6C0[24] = {
 	#include <MVOpeningSector/DL_0xD6C0.dl.inc.c>
 };
 
-/* Vtx: Vtx_0xD780 @ 0xD780 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD780_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD780.vtx.inc.c>
+/* TODO: data.inc.c — block at 0xD780 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD780_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD780_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD790 @ 0xD790 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD790_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD790.vtx.inc.c>
+u32 dMVOpeningSector_data_0xD784[1] = { (u32)dMVOpeningSector_DL_0xD6C0 };
+
+u8 dMVOpeningSector_data_0xD788[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD788.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD7A0 @ 0xD7A0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD7A0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD7A0.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xD790 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD790_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD790_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD7B0 @ 0xD7B0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD7B0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD7B0.vtx.inc.c>
+u32 dMVOpeningSector_data_0xD794[1] = { (u32)dMVOpeningSector_gap_0x5F80_sub_0x7100 };
+
+u8 dMVOpeningSector_data_0xD798[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD798.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD7C0 @ 0xD7C0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD7C0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD7C0.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xD7A0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD7A0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD7A0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD7D0 @ 0xD7D0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD7D0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD7D0.vtx.inc.c>
+u32 dMVOpeningSector_data_0xD7A4[1] = { (u32)dMVOpeningSector_Vtx_0xD1D0_Vtx };
+
+u8 dMVOpeningSector_data_0xD7A8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD7A8.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD7E0 @ 0xD7E0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD7E0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD7E0.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xD7B0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD7B0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD7B0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD7F0 @ 0xD7F0 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD7F0_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD7F0.vtx.inc.c>
+u32 dMVOpeningSector_data_0xD7B4[1] = { (u32)dMVOpeningSector_Vtx_0xD2A0_Vtx };
+
+u8 dMVOpeningSector_data_0xD7B8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD7B8.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD800 @ 0xD800 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD800_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD800.vtx.inc.c>
+
+/* TODO: data.inc.c — block at 0xD7C0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD7C0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD7C0_Vtx.data.inc.c>
 };
 
-/* Vtx: Vtx_0xD810 @ 0xD810 (1 vertices) */
-Vtx dMVOpeningSector_Vtx_0xD810_Vtx[1] = {
-	#include <MVOpeningSector/Vtx_0xD810.vtx.inc.c>
+u32 dMVOpeningSector_data_0xD7C4[1] = { (u32)dMVOpeningSector_Vtx_0xD370_Vtx };
+
+u8 dMVOpeningSector_data_0xD7C8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD7C8.data.inc.c>
 };
+
+
+/* TODO: data.inc.c — block at 0xD7D0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD7D0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD7D0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningSector_data_0xD7D4[1] = { (u32)dMVOpeningSector_Vtx_0xD440_Vtx };
+
+u8 dMVOpeningSector_data_0xD7D8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD7D8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xD7E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD7E0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD7E0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningSector_data_0xD7E4[1] = { (u32)dMVOpeningSector_Vtx_0xD510_Vtx };
+
+u8 dMVOpeningSector_data_0xD7E8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD7E8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xD7F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD7F0_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD7F0_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningSector_data_0xD7F4[1] = { (u32)dMVOpeningSector_Vtx_0xD5E0_Vtx };
+
+u8 dMVOpeningSector_data_0xD7F8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD7F8.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xD800 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD800_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD800_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningSector_data_0xD804[1] = { (u32)dMVOpeningSector_Vtx_0xD6B0_Vtx };
+
+u8 dMVOpeningSector_data_0xD808[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD808.data.inc.c>
+};
+
+
+/* TODO: data.inc.c — block at 0xD810 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningSector_Vtx_0xD810_Vtx[4] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/Vtx_0xD810_Vtx.data.inc.c>
+};
+
+u32 dMVOpeningSector_data_0xD814[1] = { (u32)dMVOpeningSector_Vtx_0xD780_Vtx };
+
+u8 dMVOpeningSector_data_0xD818[8] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningSector/data_0xD818.data.inc.c>
+};
+
 
 /* DObjDesc: GreatFoxDObjDesc @ 0xD820 (11 entries) */
 DObjDesc dMVOpeningSector_GreatFoxDObjDesc[] = {

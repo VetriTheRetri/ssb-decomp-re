@@ -6,9 +6,27 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dPurinSpecial2_Joint_0x1F38_post[];
+extern u8 dPurinSpecial2_Tex_0x0008[];
+extern u8 dPurinSpecial2_Tex_0x0810[];
+extern u8 dPurinSpecial2_Tex_0x1018[];
+extern u8 dPurinSpecial2_Tex_0x1820[];
+extern Vtx dPurinSpecial2_Vtx_0x1E38_Vtx[];
+extern Vtx dPurinSpecial2_Vtx_0x1E78_Vtx[];
+extern Vtx dPurinSpecial2_Vtx_0x1EB8_Vtx[];
+extern Vtx dPurinSpecial2_Vtx_0x1EF8_Vtx[];
+extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[];
+extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x188[];
+extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x190[];
+extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x198[];
 extern u8 dPurinSpecial2_gap_0x1C98[];
 
-extern MObjSub *dPurinSpecial2_gap_0x1C98_sub_0x180[];
 
 extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2288[];
 extern u32 dPurinSpecial2_SingAnimJoint_AnimJoint_0x2854[];
@@ -59,14 +77,25 @@ u8 dPurinSpecial2_Tex_0x1820[1024] = {
 
 /* MObjSub-list head @ 0x1c20 — 6-entry MObjSub** array.
  * The real MObjSub data starts at +0x18 (dPurinSpecial2_SingMObjSub_MObjSub_real below). */
-MObjSub **dPurinSpecial2_SingMObjSub_MObjSub[6] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x1C20 was MObjSub[6]; contains 4 embedded chain pointer(s) split out below */
+u8 dPurinSpecial2_SingMObjSub_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <PurinSpecial2/SingMObjSub_MObjSub.data.inc.c>
 };
+
+u32 dPurinSpecial2_data_0x1C24[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x180 };
+
+u8 dPurinSpecial2_data_0x1C28[4] = {
+	/* TODO: data.inc.c */
+	#include <PurinSpecial2/data_0x1C28.data.inc.c>
+};
+
+u32 dPurinSpecial2_data_0x1C2C[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x188 };
+
+u32 dPurinSpecial2_data_0x1C30[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x190 };
+
+u32 dPurinSpecial2_data_0x1C34[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x198 };
+
 
 /* The real MObjSub @ +0x18 (was folded into the prior
  * MObjSub-typed declaration). */

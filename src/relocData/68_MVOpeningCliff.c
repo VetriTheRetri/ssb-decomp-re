@@ -7,6 +7,48 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMVOpeningCliff_DL_0x30B8[];
+extern u16 dMVOpeningCliff_Lut12_0x0008[];
+extern u16 dMVOpeningCliff_Lut12_0x0028[];
+extern u16 dMVOpeningCliff_Lut13_0x0048[];
+extern u16 dMVOpeningCliff_Lut13_0x0098[];
+extern u16 dMVOpeningCliff_Lut15_0x0070[];
+extern u8 dMVOpeningCliff_Tex_0x00C0[];
+extern u8 dMVOpeningCliff_Tex_0x08C8[];
+extern u8 dMVOpeningCliff_Tex_0x10D0[];
+extern u8 dMVOpeningCliff_Tex_0x18D8[];
+extern u8 dMVOpeningCliff_Tex_0x20E0[];
+extern u8 dMVOpeningCliff_Tex_0x38D0[];
+extern u8 dMVOpeningCliff_Tex_0x40D8[];
+extern u8 dMVOpeningCliff_Tex_0x48E0[];
+extern u8 dMVOpeningCliff_Tex_0x5968[];
+extern Vtx dMVOpeningCliff_Vtx_0x22E0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x24E0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x24F0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x2620_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x26F0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x2780_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x27E0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x2880_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x28B0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x29A0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x29B0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x2BB0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x2D70_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x2ED0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x3000_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x50E0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x5210_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x52A0_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x5410_Vtx[];
+extern Vtx dMVOpeningCliff_Vtx_0x5490_Vtx[];
+extern Vtx dMVOpeningCliff_gap_0x3850_sub_0x2C18[];
+extern Vtx dMVOpeningCliff_gap_0x3850_sub_0x2D58[];
+extern u16 dMVOpeningCliff_gap_0x3850_sub_0x30[];
+extern u16 dMVOpeningCliff_gap_0x3850_sub_0x58[];
+extern u16 dMVOpeningCliff_gap_0x3850_sub_0x8[];
+
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0028 (32 bytes) */

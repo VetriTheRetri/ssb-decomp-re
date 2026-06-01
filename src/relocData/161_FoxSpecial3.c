@@ -7,6 +7,77 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dFoxSpecial3_Joint_0x1FA0_post[];
+extern Gfx dFoxSpecial3_Joint_0x2920_post[];
+extern u16 dFoxSpecial3_Lut_0x0008_palette[];
+extern u16 dFoxSpecial3_Lut_0x00B8_palette[];
+extern u16 dFoxSpecial3_Lut_0x0168_palette[];
+extern u16 dFoxSpecial3_Lut_0x01D8_palette[];
+extern u16 dFoxSpecial3_Lut_0x0308_palette[];
+extern u16 dFoxSpecial3_Lut_0x0538_palette[];
+extern u16 dFoxSpecial3_Lut_0x0668_palette[];
+extern u16 dFoxSpecial3_Lut_0x0798_palette[];
+extern u16 dFoxSpecial3_Lut_0x0808_palette[];
+extern u16 dFoxSpecial3_Lut_0x08B8_palette[];
+extern u16 dFoxSpecial3_Lut_0x0998_palette[];
+extern u16 dFoxSpecial3_Lut_0x0AC8_palette[];
+extern u16 dFoxSpecial3_Lut_0x0BF8_palette[];
+extern u16 dFoxSpecial3_Lut_0x0E28_palette[];
+extern u16 dFoxSpecial3_Lut_0x1058_palette[];
+extern u16 dFoxSpecial3_Lut_0x1178_palette[];
+extern u8 dFoxSpecial3_Tex_0x0030[];
+extern u8 dFoxSpecial3_Tex_0x00E0[];
+extern u8 dFoxSpecial3_Tex_0x0190[];
+extern u8 dFoxSpecial3_Tex_0x0200[];
+extern u8 dFoxSpecial3_Tex_0x0330[];
+extern u8 dFoxSpecial3_Tex_0x0560[];
+extern u8 dFoxSpecial3_Tex_0x0690[];
+extern u8 dFoxSpecial3_Tex_0x07C0[];
+extern u8 dFoxSpecial3_Tex_0x0830[];
+extern u8 dFoxSpecial3_Tex_0x08E0[];
+extern u8 dFoxSpecial3_Tex_0x0928[];
+extern u8 dFoxSpecial3_Tex_0x0950[];
+extern u8 dFoxSpecial3_Tex_0x09C0[];
+extern u8 dFoxSpecial3_Tex_0x0AF0[];
+extern u8 dFoxSpecial3_Tex_0x0C20[];
+extern u8 dFoxSpecial3_Tex_0x0E50[];
+extern u8 dFoxSpecial3_Tex_0x1080[];
+extern u8 dFoxSpecial3_Tex_0x11A0[];
+extern Vtx dFoxSpecial3_Vtx_0x11E0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1220_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1260_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x12C0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x14A0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1680_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x16C0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x17A0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1830_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1870_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x18C0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1930_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1980_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x19E0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1A40_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1AA0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1B00_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1B40_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1D80_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1DE0_Vtx[];
+extern Vtx dFoxSpecial3_Vtx_0x1EC0_Vtx[];
+extern Vtx dFoxSpecial3_gap_0x1B80[];
+extern Vtx dFoxSpecial3_gap_0x1E60[];
+extern Vtx dFoxSpecial3_gap_0x1F00[];
+extern Vtx dFoxSpecial3_gap_0x1F00_sub_0x40[];
+extern Vtx dFoxSpecial3_gap_0x1F00_sub_0x60[];
+extern u8 dStageSectorFile2_Tex_0x19F8[];
+extern u32 dFoxSpecial3__2EB4__AnimJoint[];
+extern u8 dStageSectorFile2_Tex_0x19F8[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -493,30 +564,19 @@ DObjDesc dFoxSpecial3_EntryArwing[13] = {
 /* 8-byte trailer past the DObjDesc sentinel — a 4-byte pad followed by
  * a chain pointer to the AnimJoint script at __2E74__AnimJoint. */
 PAD(4);
-extern u32 dFoxSpecial3__2E74__AnimJoint[];
+extern u8 dFoxSpecial3__2E74__AnimJoint[];
 AObjEvent32 *dFoxSpecial3_EntryArwing_post[1] = {
 	(AObjEvent32 *)dFoxSpecial3__2E74__AnimJoint,
 };
 
-/* Raw data from file offset 0x2E74 to 0x2EB4 (64 bytes) */
-u32 dFoxSpecial3__2E74__AnimJoint[16] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetVal0RateBlock(0x380, 3),
-	    0x3F570A40,  /* 0.8400001525878906f */
-	    0x3F570A40,  /* 0.8400001525878906f */
-	    0x3F59999C,  /* 0.8500001430511475f */
-	aobjEvent32SetVal0RateBlock(0x380, 3),
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetAnim(0x000, 0),
-	(u32)dFoxSpecial3__2E74__AnimJoint,
-	aobjEvent32End(),
-	(u32)0x2EB4,
+/* TODO: data.inc.c — block at 0x2E74 was u32[16]; contains 1 embedded chain pointer(s) split out below */
+u8 dFoxSpecial3__2E74__AnimJoint[60] = {
+	/* TODO: data.inc.c */
+	#include <FoxSpecial3/_2E74__AnimJoint.data.inc.c>
 };
+
+u32 dFoxSpecial3_data_0x2EB0[1] = { (u32)dFoxSpecial3__2EB4__AnimJoint };
+
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */
 u32 dFoxSpecial3__2EB4__AnimJoint[50] = {

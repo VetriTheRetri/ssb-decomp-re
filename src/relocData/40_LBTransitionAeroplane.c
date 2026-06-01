@@ -8,6 +8,60 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (7 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dLBTransitionAeroplane_DL_0x3D40[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x0000_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x0070_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x00A0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x05C0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x05F0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x0B80_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x0BB0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x0BF0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x0F20_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1090_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1140_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1170_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x11B0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x11E0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x14E0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1510_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1650_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1680_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1700_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1AD0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1B00_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1EA0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1ED0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x1FC0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x20E0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2160_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2220_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x23C0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2440_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2500_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x26A0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2890_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x28C0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x28F0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2920_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2950_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2C90_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2E80_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2EB0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2EE0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2F10_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x2F40_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3280_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x34A0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x34D0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3500_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3530_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3560_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3690_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3AA0_Vtx[];
+extern Vtx dLBTransitionAeroplane_Vtx_0x3BC0_Vtx[];
 Vtx dLBTransitionAeroplane_Vtx_0x0000_Vtx[7] = {
 	#include <LBTransitionAeroplane/Vtx_0x0000.vtx.inc.c>
 };

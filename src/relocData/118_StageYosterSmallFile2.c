@@ -8,6 +8,72 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx pool @ 0x0000 (4 vertices) — referenced by DL_0x0410 gsSPVertex */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
+extern Gfx dStageYosterSmallFile2_DL_0x0410[];
+extern Gfx dStageYosterSmallFile2_DL_0x4158[];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1C50[8];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1CD0[16];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1DD0[7];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1E40[4];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1E80[4];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1EC0[16];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1FC0[32];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x21C0[4];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2200[32];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2400[4];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2440[4];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2480[8];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2500[8];
+extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2580[8];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0000_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0040_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0080_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0100_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0180_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x01A0_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x01F0_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0250_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0290_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x02D0_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0310_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0350_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x0380_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x03B0_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x3A10_Vtx[];
+extern Vtx dStageYosterSmallFile2_Vtx_0x3AD0_Vtx[];
+extern Vtx dStageYosterSmallFile2_gap_0x01B0_sub_0x10[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x144[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x184[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x1F4[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x234[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x274[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x2F4[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x374[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x4[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x44[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0x84[];
+extern Vtx dStageYosterSmallFile2_gap_0x3D2C_sub_0xC4[];
 Vtx dStageYosterSmallFile2_Vtx_0x0000_Vtx[4] = {
 	#include <StageYosterSmallFile2/Vtx_0x0000.vtx.inc.c>
 };
@@ -203,20 +269,6 @@ extern u32 dStageYosterSmallFile2_Layer0Anim_AnimJoint_0xF34[170];
 extern u32 dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x11DC[251];
 extern u32 dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x15C8[245];
 extern u32 dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x199C[170];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1C50[8];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1CD0[16];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1DD0[7];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1E40[4];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1E80[4];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1EC0[16];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1FC0[32];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x21C0[4];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2200[32];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2400[4];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2440[4];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2480[8];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2500[8];
-extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2580[8];
 extern Gfx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x2600[154];
 
 AObjEvent32 *dStageYosterSmallFile2_Layer0Anim_AnimJoint[14] = {

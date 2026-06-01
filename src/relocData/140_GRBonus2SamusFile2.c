@@ -10,6 +10,47 @@
 
 /* Raw data from file offset 0x0000 to 0x0720 (1824 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0168_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0630_palette[];
+extern u8 dBonus1CommonImages2_Tex_0x0030[];
+extern u8 dBonus1CommonImages2_Tex_0x00E0[];
+extern u8 dBonus1CommonImages2_Tex_0x0190[];
+extern u16 dBonus1CommonImages2_Tex_0x0588[];
+extern u8 dBonus1CommonImages2_Tex_0x05A8[];
+extern u8 dBonus1CommonImages2_Tex_0x0658[];
+extern u16 dBonus1CommonImages2_Tex_0x06E0[];
+extern u8 dBonus1CommonImages2_Tex_0x06F0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2SamusFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x280[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x2C0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x3E0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x520[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x5A0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x7A0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x7E0[];
+extern Vtx dGRBonus2SamusFile2_gap_0x07D0_sub_0x80[];
 Vtx dGRBonus2SamusFile2_gap_0x0000[4] = {
 	#include <GRBonus2SamusFile2/gap_0x0000.vtx.inc.c>
 };

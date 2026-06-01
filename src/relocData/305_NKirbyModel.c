@@ -8,6 +8,25 @@
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dNKirbyModel_Vtx_0x0200_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x03C0_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x05A0_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0780_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0960_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0B50_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0B80_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0D40_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0F30_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x0F60_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x1120_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x1310_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x14F0_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x1520_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x1700_Vtx[];
+extern Vtx dNKirbyModel_Vtx_0x18F0_Vtx[];
+extern Vtx dNKirbyModel_gap_0x0000[];
 /* Placeholder wrapper: the description slot collapsed to
  * zero vertices because an extras block starts at the
  * same offset. No C declaration is emitted so IDO CFE

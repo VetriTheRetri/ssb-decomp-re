@@ -2,6 +2,17 @@
 /* File size: 1904 bytes (0x770) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dMarioShieldPose_data0[];
+extern u8 dMarioShieldPose_data0_end[];
+extern u8 dMarioShieldPose_shield_anim_joint_1[];
+extern u8 dMarioShieldPose_shield_anim_joint_2[];
+extern u8 dMarioShieldPose_shield_anim_joint_3[];
+extern u8 dMarioShieldPose_shield_anim_joint_4[];
+extern u8 dMarioShieldPose_shield_anim_joint_5[];
+extern u8 dMarioShieldPose_shield_anim_joint_6[];
+extern u8 dMarioShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern u32 dMarioMainMotion_Wait_0x0024[];
@@ -13,14 +24,14 @@ extern Gfx dMarioModel_Joint_0x3E60_DisplayList[];
 extern Gfx dMarioModel_Joint_0x4278_DisplayList[];
 extern u8 dMarioModel_gap_0x0000[];
 extern u8 dMarioModel_gap_0x26D0_sub_0x320[];
-extern u8 dMarioModel_gap_0x4A60_sub_0x10A0[];
+extern u8 dMarioModel_DL_0x5B00[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x1360[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x1470[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x1560[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x1660[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x1780[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x1890[];
-extern u8 dMarioModel_gap_0x4A60_sub_0x1970[];
+extern u8 dMarioModel_DL_0x63D0[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x4B0[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x690[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x8A0[];
@@ -184,7 +195,7 @@ FTSkeleton dMarioMain_skeleton_dls[25] = {
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1360 }, 0 },
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1560 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x10A0 }, 0 },
+	{ { (Gfx*)&dMarioModel_DL_0x5B00 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1470 }, 0 },
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1360 }, 0 },
@@ -194,12 +205,12 @@ FTSkeleton dMarioMain_skeleton_dls[25] = {
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1780 }, 0 },
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1890 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1970 }, 0 },
+	{ { (Gfx*)&dMarioModel_DL_0x63D0 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1780 }, 0 },
 	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1890 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dMarioModel_gap_0x4A60_sub_0x1970 }, 0 },
+	{ { (Gfx*)&dMarioModel_DL_0x63D0 }, 0 },
 	{ { NULL }, 0 },
 };
 
@@ -315,8 +326,8 @@ FTAttributes dMarioMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dMarioMain_hiddenparts, /* hiddenparts */
 	&dMarioMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dMarioShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dMarioShieldPose_data0_end, (void *)&dMarioShieldPose_shield_anim_joint_1, (void *)&dMarioShieldPose_shield_anim_joint_2, (void *)&dMarioShieldPose_shield_anim_joint_3, (void *)&dMarioShieldPose_shield_anim_joint_4, (void *)&dMarioShieldPose_shield_anim_joint_5, (void *)&dMarioShieldPose_shield_anim_joint_6, (void *)&dMarioShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
 	60.891f, /* joint_rfoot_rotate */
 	18, /* joint_lfoot_id */

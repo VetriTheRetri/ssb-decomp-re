@@ -8,6 +8,20 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x5028 (20520 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dSCExplainGraphics_SpecialMoveRGB_palette[];
+extern u8 dSCExplainGraphics_SpecialMoveRGB_tex[];
+extern Vtx dSCExplainGraphics_SpecialMoveRGB_vtx[];
+extern Vtx dSCExplainGraphics_gap_0x50A0_sub_0x28[];
+extern Vtx dSCExplainGraphics_gap_0x50A0_sub_0x68[];
+extern Vtx dSCExplainGraphics_gap_0x5B10_sub_0x18[];
+extern MObjSub *dSCExplainGraphics_gap_0x50A0_sub_0x20[];
+extern MObjSub *dSCExplainGraphics_gap_0x5B10_sub_0x10[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
@@ -42,10 +56,14 @@ u8 dSCExplainGraphics_Tex_0x4028[4096] = {
 
 /* MObjSub-list head @ 0x5028 — 8-entry MObjSub** array.
  * The real MObjSub data starts at +0x20 (dSCExplainGraphics_StickMObjSub_MObjSub_real below). */
-MObjSub **dSCExplainGraphics_StickMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x5028 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u32 dSCExplainGraphics_StickMObjSub_MObjSub[1] = { (u32)dSCExplainGraphics_gap_0x50A0_sub_0x20 };
+
+u8 dSCExplainGraphics_data_0x502C[4] = {
+	/* TODO: data.inc.c */
+	#include <SCExplainGraphics/data_0x502C.data.inc.c>
 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
 void *dSCExplainGraphics_StickMObjSub_MObjSub_sprites[6] = {
@@ -294,9 +312,9 @@ u8 dSCExplainGraphics_Tex_0x5898[512] = {
 
 /* MObjSub-list head @ 0x5a98 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dSCExplainGraphics_TapSparkMObjSub_MObjSub_real below). */
-MObjSub **dSCExplainGraphics_TapSparkMObjSub_MObjSub[1] = {
-	NULL,
-};
+/* TODO: data.inc.c — block at 0x5A98 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dSCExplainGraphics_TapSparkMObjSub_MObjSub[1] = { (u32)dSCExplainGraphics_gap_0x5B10_sub_0x10 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
 void *dSCExplainGraphics_TapSparkMObjSub_MObjSub_sprites[3] = {

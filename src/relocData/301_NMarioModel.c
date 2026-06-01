@@ -8,6 +8,30 @@
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dNMarioModel_Vtx_0x01F0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x03A0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x04F0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x0580_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x0770_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x07E0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x09C0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x0BC0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x0DA0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x0FA0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1000_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1060_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1150_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x11E0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x13D0_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1440_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1500_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1560_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1760_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1820_Vtx[];
+extern Vtx dNMarioModel_Vtx_0x1880_Vtx[];
+extern Vtx dNMarioModel_gap_0x0000[];
 /* Placeholder wrapper: the description slot collapsed to
  * zero vertices because an extras block starts at the
  * same offset. No C declaration is emitted so IDO CFE

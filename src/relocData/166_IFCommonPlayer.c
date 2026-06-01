@@ -8,6 +8,10 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dIFCommonPlayer_Magnify_Vtx[];
+extern Vtx dIFCommonPlayer_gap_0x0000[];
 Vtx dIFCommonPlayer_gap_0x0000[3] = {
 	#include <IFCommonPlayer/gap_0x0000.vtx.inc.c>
 };

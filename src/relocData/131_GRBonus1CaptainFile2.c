@@ -9,6 +9,40 @@
 
 /* Raw data from file offset 0x0000 to 0x0840 (2112 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus1CaptainFile2_DL_0x1420[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x440[];
+extern Gfx dGRBonus1CaptainFile2_gap_0x0000_sub_0x580[];
+extern Gfx dGRBonus1CaptainFile2_gap_0x0000_sub_0x680[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x204[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x284[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x4[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x404[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x544[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x6C4[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x804[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x8C4[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x964[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0x9E4[];
+extern Vtx dGRBonus1CaptainFile2_gap_0x091C_sub_0xA64[];
 Vtx dGRBonus1CaptainFile2_gap_0x0000[4] = {
 	#include <GRBonus1CaptainFile2/gap_0x0000.vtx.inc.c>
 };

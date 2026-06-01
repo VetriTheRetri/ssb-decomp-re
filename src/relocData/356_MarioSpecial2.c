@@ -7,6 +7,16 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMarioSpecial2_Joint_0x03C0_DisplayList[];
+extern u16 dMarioSpecial2_Lut_0x0008_palette[];
+extern u16 dMarioSpecial2_Lut_0x0030_palette[];
+extern u8 dMarioSpecial2_Tex_0x0058[];
+extern u8 dMarioSpecial2_Tex_0x00A0[];
+extern Vtx dMarioSpecial2_Vtx_0x0120_Vtx[];
+extern Vtx dMarioSpecial2_Vtx_0x01E0_Vtx[];
+extern Vtx dMarioSpecial2_Vtx_0x0300_Vtx[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */

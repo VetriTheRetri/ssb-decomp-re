@@ -13,7 +13,7 @@ extern DObjDesc dStageMetalFile2_Layer1DObj[];
 extern MObjSub dStageMetalFile2_Layer1MObj_MObjSub[];
 extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[];
 extern DObjDesc dStageMetalFile2_Layer2DObj[];
-extern MObjSub dStageMetalFile2_Layer2MObj_MObjSub[];
+extern u8 dStageMetalFile2_Layer2MObj_MObjSub[];
 extern u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[];
 extern DObjDesc dStageMetalFile2_Layer3DObj[];
 extern MObjSub dStageMetalFile2_Layer3MObj_MObjSub[];

@@ -9,6 +9,40 @@
 
 /* Raw data from file offset 0x0000 to 0x0950 (2384 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus1PurinFile2_DL_0x1A80[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x1C8[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x308[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x448[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x508[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x708[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x7D8[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x8[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x898[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0x998[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0xB98[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0xCD8[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0xD58[];
+extern Vtx dGRBonus1PurinFile2_gap_0x0A58_sub_0xE98[];
 Vtx dGRBonus1PurinFile2_gap_0x0000[4] = {
 	#include <GRBonus1PurinFile2/gap_0x0000.vtx.inc.c>
 };

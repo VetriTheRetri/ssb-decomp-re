@@ -2,16 +2,28 @@
 /* File size: 1520 bytes (0x5F0) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern ftMotionCommand dCaptainMainMotion_EggLay_0x006C[];
+extern u32 dMasterHandIcon_FTEmblem[];
+extern u8 dCaptainShieldPose_data0[];
+extern u8 dCaptainShieldPose_data0_end[];
+extern u8 dCaptainShieldPose_shield_anim_joint_1[];
+extern u8 dCaptainShieldPose_shield_anim_joint_2[];
+extern u8 dCaptainShieldPose_shield_anim_joint_3[];
+extern u8 dCaptainShieldPose_shield_anim_joint_4[];
+extern u8 dCaptainShieldPose_shield_anim_joint_5[];
+extern u8 dCaptainShieldPose_shield_anim_joint_6[];
+extern u8 dCaptainShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dNCaptainModel_JointTree[];
 
-/* Pre-attributes data (167 words, 0x029C bytes) */
-/* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNCaptainMain_pre+0x0) */
-u32 dNCaptainMain_file_handles[1] = {
+/* TODO: data.inc.c — block at 0x0 was u32[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dNCaptainMain_file_handles[1] = { (u32)dCaptainMainMotion_EggLay_0x006C };
 
-	0x0030001B, /* extern -> 0x006C */
-};
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNCaptainMain_pre+0x4) */
 u32 dNCaptainMain_animlock[2] = {
@@ -215,8 +227,8 @@ FTAttributes dNCaptainMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNCaptainMain_hiddenparts, /* hiddenparts */
 	&dNCaptainMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dCaptainShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dCaptainShieldPose_data0_end, (void *)&dCaptainShieldPose_shield_anim_joint_1, (void *)&dCaptainShieldPose_shield_anim_joint_2, (void *)&dCaptainShieldPose_shield_anim_joint_3, (void *)&dCaptainShieldPose_shield_anim_joint_4, (void *)&dCaptainShieldPose_shield_anim_joint_5, (void *)&dCaptainShieldPose_shield_anim_joint_6, (void *)&dCaptainShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	176.271f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

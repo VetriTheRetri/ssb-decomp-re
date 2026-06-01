@@ -9,6 +9,63 @@
 
 /* Raw data from file offset 0x0000 to 0x0938 (2360 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages4_Lut_0x01D0_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0458_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0588_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x07B8_palette[];
+extern u8 dBonus1CommonImages4_Tex_0x0008[];
+extern u8 dBonus1CommonImages4_Tex_0x0480[];
+extern u8 dBonus1CommonImages4_Tex_0x05B0[];
+extern u8 dBonus1CommonImages4_Tex_0x07E0[];
+extern u8 dBonus1CommonImages4_Tex_0x09E8[];
+extern u8 dBonus1CommonImages4_Tex_0x0A70[];
+extern u16 dBonus1CommonImages4_Tex_0x0AB8[];
+extern u8 dBonus1CommonImages4_Tex_0x0AC8[];
+extern Gfx dGRBonus2LinkFile2_DL_0x0610[];
+extern Gfx dGRBonus2LinkFile2_DL_0x2E38[];
+extern Vtx dGRBonus2LinkFile2_Vtx_0xB80[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x4C0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1000[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1080[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1280[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1460[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1620[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1660[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x16C0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x18C0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x18D0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x19B0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1BB0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1C30[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1E0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1E30[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1EB0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1F30[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1F70[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x1FF0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2070[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x20B0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x2170[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x21F0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x260[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x460[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x560[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x650[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x850[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x950[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0x9D0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0xAC0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0xCC0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0xE0[];
+extern Vtx dGRBonus2LinkFile2_gap_0x0BA0_sub_0xEC0[];
 Vtx dGRBonus2LinkFile2_gap_0x0000[4] = {
 	#include <GRBonus2LinkFile2/gap_0x0000.vtx.inc.c>
 };

@@ -9,6 +9,39 @@
 
 /* Raw data from file offset 0x0000 to 0x0848 (2120 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus2DonkeyFile2_DL_0x0578[];
+extern Gfx dGRBonus2DonkeyFile2_DL_0x24D0[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0000[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0000_sub_0x440[];
+extern Gfx dGRBonus2DonkeyFile2_gap_0x0000_sub_0x4C0[];
+extern Gfx dGRBonus2DonkeyFile2_gap_0x0000_sub_0x598[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1004[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x11E4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x12E4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1444[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x15A4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x16C4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x18C4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1904[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x244[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x344[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x454[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x554[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x614[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x794[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x994[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xAD4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xC4[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xC64[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xE64[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xE74[];
+extern Vtx dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xEF4[];
 Vtx dGRBonus2DonkeyFile2_gap_0x0000[4] = {
 	#include <GRBonus2DonkeyFile2/gap_0x0000.vtx.inc.c>
 };

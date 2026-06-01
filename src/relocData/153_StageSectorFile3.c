@@ -21,6 +21,10 @@
 #include <sys/interp.h>  // SYInterpDesc
 #include <gr/grvars.h>   // GRSectorDesc
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dFoxSpecial3_Tex_0x1080[];
+extern Vtx dStageSectorFile3_Sub_0x1BF0[6];
+
 /* Forward declarations — required for chain pointers that reference
  * sub-blocks defined later in the file. */
 extern GRSectorDesc dStageSectorFile3_Arwing0SectorDesc;
@@ -129,7 +133,6 @@ extern u32 dStageSectorFile3_Sub_0x1B34[17];
 extern AObjEvent32 *dStageSectorFile3_Sub_0x1B78[3];
 extern u32 dStageSectorFile3_Sub_0x1B84[24];
 extern AObjEvent32 *dStageSectorFile3_Sub_0x1BE4[3];
-extern Vtx dStageSectorFile3_Sub_0x1BF0[6];
 extern Gfx dStageSectorFile3_AnimJoint_0x1C50[27];
 extern AObjEvent32 *dStageSectorFile3_Sub_0x1D28[3];
 extern u32 dStageSectorFile3_Sub_0x1D34[5];

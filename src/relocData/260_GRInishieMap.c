@@ -12,10 +12,10 @@
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageInishieFile2_Tex_0x02E0[];
 extern u8 dStageInishieFile2_Tex_0x12E8[];
-extern u32 dStageInishieFile3_AnimJoint_0x0A68[];
-extern u32 dStageInishieFile3_AnimJoint_0x0C30[];
-extern u32 dStageInishieFile3_AnimJoint_0x11F8[];
-extern u32 dStageInishieFile3_AnimJoint_0x13B0[];
+extern u32 dStageInishieFile3_mobjlink_0x0A68[];
+extern u32 dStageInishieFile3_DObjDesc_0x0C30[];
+extern u32 dStageInishieFile3_DObjDesc_0x11F8[];
+extern u32 dStageInishieFile3_mobjlink_0x13B0[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -90,9 +90,9 @@ GRAttackColl dGRInishieMap_PowerBlock_GRAttackColl = { 1, 20, 90, 130, 0, 30, 0 
 
 /* ITAttributes @ 0xD8 */
 ITAttributes dGRInishieMap_PowerBlock_ItemAttributes[1] = {{
-	(void *)dStageInishieFile3_AnimJoint_0x11F8,  /* data */
+	(void *)dStageInishieFile3_DObjDesc_0x11F8,  /* data */
 	NULL,  /* p_mobjsubs */
-	(void *)dStageInishieFile3_AnimJoint_0x13B0,  /* anim_joints */
+	(void *)dStageInishieFile3_mobjlink_0x13B0,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -130,8 +130,8 @@ ITAttributes dGRInishieMap_PowerBlock_ItemAttributes[1] = {{
 
 /* ITAttributes @ 0x120 */
 ITAttributes dGRInishieMap_Pakkun_ItemAttributes[1] = {{
-	(void *)dStageInishieFile3_AnimJoint_0x0C30,  /* data */
-	(void *)dStageInishieFile3_AnimJoint_0x0A68,  /* p_mobjsubs */
+	(void *)dStageInishieFile3_DObjDesc_0x0C30,  /* data */
+	(void *)dStageInishieFile3_mobjlink_0x0A68,  /* p_mobjsubs */
 	NULL,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */

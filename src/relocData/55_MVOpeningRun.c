@@ -7,7 +7,12 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
-extern u32 dMVOpeningRun_Mario_AnimJoint[];
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dMVOpeningRun_Donkey_AnimJoint[];
+extern u8 dMVOpeningRun_Fox_AnimJoint[];
+extern u32 dMVOpeningRun_Samus_AnimJoint[];
+
+extern u8 dMVOpeningRun_Mario_AnimJoint[];
 extern u32 dMVOpeningRun_Link_AnimJoint[];
 extern u32 dMVOpeningRun_Yoshi_AnimJoint[];
 extern u32 dMVOpeningRun_Kirby_AnimJoint[];
@@ -19,113 +24,32 @@ extern u32 dMVOpeningRun_Pikachu_AnimJoint[];
  * through every chain pointer in this file. */
 AObjEvent32 *dMVOpeningRun_chain_head[1] = { (AObjEvent32 *)dMVOpeningRun_Mario_AnimJoint };
 
-/* Raw data from file offset 0x0004 to 0x00B4 (176 bytes) */
-u32 dMVOpeningRun_Mario_AnimJoint[44] = {
-	aobjEvent32SetValRateBlock(0x040, 0),
-	    0xC48711A8,  /* -1080.5517578125f */
-	    0x428D3F9B,  /* 70.62422943115234f */
-	aobjEvent32SetValRate(0x040, 30),
-	    0x428AE259,  /* 69.44208526611328f */
-	    0xBFA38C2A,  /* -1.2777149677276611f */
-	aobjEvent32Cmd12(0x040, 25),
-	aobjEvent32SetVal0Rate(0x010, 0),
-	    0xC4320682,  /* -712.1016845703125f */
-	aobjEvent32SetValAfterBlock(0x020, 0),
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0Rate(0x010, 40),
-	    0xC4320682,  /* -712.1016845703125f */
-	aobjEvent32Wait(5),
-	aobjEvent32SetValRateBlock(0x040, 35),
-	    0xC34F44CF,  /* -207.26878356933594f */
-	    0x400469F8,  /* 2.068967819213867f */
-	aobjEvent32SetValRate(0x010, 25),
-	    0xC4320682,  /* -712.1016845703125f */
-	    0xBE4311A0,  /* -0.19049692153930664f */
-	aobjEvent32SetValRateBlock(0x040, 15),
-	    0x432CE3F6,  /* 172.89047241210938f */
-	    0x4202B7E1,  /* 32.679569244384766f */
-	aobjEvent32SetValRate(0x040, 30),
-	    0x449DE9F8,  /* 1263.3115234375f */
-	    0x412241E6,  /* 10.141088485717773f */
-	aobjEvent32Wait(10),
-	aobjEvent32SetValRateBlock(0x010, 15),
-	    0xC433EE2E,  /* -719.7215576171875f */
-	    0xBEA70C17,  /* -0.3262641131877899f */
-	aobjEvent32SetValRate(0x010, 10),
-	    0xC4341088,  /* -720.25830078125f */
-	    0xBD07B404,  /* -0.03313066065311432f */
-	aobjEvent32Wait(5),
-	aobjEvent32SetVal0Rate(0x040, 95),
-	    0x44B410DA,  /* 1440.526611328125f */
-	aobjEvent32Wait(5),
-	aobjEvent32SetValRateBlock(0x010, 5),
-	    0xC4340DFC,  /* -720.218505859375f */
-	    0xC0E6F653,  /* -7.217568874359131f */
-	aobjEvent32SetVal0RateBlock(0x010, 85),
-	    0xC4AB3ADD,  /* -1369.8394775390625f */
-	aobjEvent32End(),
-	(u32)0x00B4,
+/* TODO: data.inc.c — block at 0x4 was u32[44]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningRun_Mario_AnimJoint[172] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningRun/Mario_AnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x00B4 to 0x0124 (112 bytes) */
-u32 dMVOpeningRun_Fox_AnimJoint[28] = {
-	aobjEvent32SetValBlock(0x070, 0),
-	    0x44751C80,  /* 980.4453125f */
-	    0x42B73E9A,  /* 91.62226867675781f */
-	    0xC479C117,  /* -999.0170288085938f */
-	aobjEvent32SetValBlock(0x070, 122),
-	    0x44751C80,  /* 980.4453125f */
-	    0x42B73E9A,  /* 91.62226867675781f */
-	    0xC479C117,  /* -999.0170288085938f */
-	aobjEvent32SetTargetRate(0x010, 0),
-	    0xC0917851,  /* -4.5459370613098145f */
-	aobjEvent32SetValRate(0x010, 36),
-	    0x44B054C1,  /* 1410.6485595703125f */
-	    0xC07FA10E,  /* -3.9942049980163574f */
-	aobjEvent32SetTargetRate(0x040, 0),
-	    0x421608A0,  /* 37.5084228515625f */
-	aobjEvent32SetValRate(0x040, 39),
-	    0xC264E819,  /* -57.22665786743164f */
-	    0x3FFA8422,  /* 1.9571573734283447f */
-	aobjEvent32SetVal0RateBlock(0x020, 36),
-	    0x434B36BA,  /* 203.21377563476562f */
-	aobjEvent32SetVal0Rate(0x030, 22),
-	    0x443B3204,  /* 748.781494140625f */
-	    0x42B73E9A,  /* 91.62226867675781f */
-	aobjEvent32Wait(3),
-	aobjEvent32SetVal0RateBlock(0x040, 19),
-	    0xC2869203,  /* -67.2851791381836f */
-	aobjEvent32End(),
-	(u32)0x0124,
+u32 dMVOpeningRun_data_0x00B0[1] = { (u32)dMVOpeningRun_Fox_AnimJoint };
+
+
+/* TODO: data.inc.c — block at 0xB4 was u32[28]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningRun_Fox_AnimJoint[108] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningRun/Fox_AnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x0124 to 0x0184 (96 bytes) */
-u32 dMVOpeningRun_Donkey_AnimJoint[24] = {
-	aobjEvent32SetVal(0x050, 0),
-	    0xC4231C23,
-	    0xC4DC5A37,
-	aobjEvent32SetValAfter(0x020, 0),
-	    0x00000000,
-	aobjEvent32SetVal(0x010, 135),
-	    0xC4231C23,
-	aobjEvent32SetValBlock(0x040, 115),
-	    0xC4DC5A37,
-	aobjEvent32SetTargetRate(0x040, 0),
-	    0x4286A12D,
-	aobjEvent32SetValRate(0x040, 30),
-	    0x42C5B9EB,
-	    0x419F6247,
-	aobjEvent32Wait(20),
-	aobjEvent32SetValRateBlock(0x010, 10),
-	    0xC4231C23,
-	    0xC07FBE6B,
-	aobjEvent32SetVal0RateBlock(0x050, 35),
-	    0xC450109D,
-	    0x43F2F0A9,
-	    0x00000000,
-	    0x00000000,
-	aobjEvent32End(),
+u32 dMVOpeningRun_data_0x0120[1] = { (u32)dMVOpeningRun_Donkey_AnimJoint };
+
+
+/* TODO: data.inc.c — block at 0x124 was u32[24]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVOpeningRun_Donkey_AnimJoint[92] = {
+	/* TODO: data.inc.c */
+	#include <MVOpeningRun/Donkey_AnimJoint.data.inc.c>
 };
+
+u32 dMVOpeningRun_data_0x0180[1] = { (u32)dMVOpeningRun_Samus_AnimJoint };
+
 
 /* Raw data from file offset 0x0184 to 0x0220 (156 bytes) */
 u32 dMVOpeningRun_Samus_AnimJoint[39] = {

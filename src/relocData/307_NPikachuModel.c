@@ -8,6 +8,29 @@
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dNPikachuModel_Vtx_0x01F0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x02C0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0360_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0400_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0550_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x05B0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0700_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0860_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x09A0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0AC0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0C10_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0C70_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0E50_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0F10_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x0FD0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x10D0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x12B0_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x1370_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x1430_Vtx[];
+extern Vtx dNPikachuModel_Vtx_0x1550_Vtx[];
+extern Vtx dNPikachuModel_gap_0x0000[];
 /* Placeholder wrapper: the description slot collapsed to
  * zero vertices because an extras block starts at the
  * same offset. No C declaration is emitted so IDO CFE

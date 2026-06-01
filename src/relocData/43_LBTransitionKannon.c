@@ -8,6 +8,12 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (90 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dLBTransitionKannon_DL_0x0B88[];
+extern Vtx dLBTransitionKannon_Vtx_0x0000_Vtx[];
+extern Vtx dLBTransitionKannon_Vtx_0x05A0_Vtx[];
+extern Vtx dLBTransitionKannon_Vtx_0x05E0_Vtx[];
 Vtx dLBTransitionKannon_Vtx_0x0000_Vtx[90] = {
 	#include <LBTransitionKannon/Vtx_0x0000.vtx.inc.c>
 };

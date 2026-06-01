@@ -7,6 +7,16 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dNessSpecial3_PKFireDL_post[];
+extern u8 dNessSpecial3_Tex_0x02A8[];
+extern u8 dNessSpecial3_Tex_0x0330[];
+extern Vtx dNessSpecial3_Vtx_0x0730_Vtx[];
+extern Vtx dNessSpecial3_Vtx_0x07B0_Vtx[];
+extern Vtx dNessSpecial3_Vtx_0x0830_Vtx[];
+extern Vtx dNessSpecial3_gap_0x0000_sub_0x108[];
+extern Vtx dNessSpecial3_gap_0x0000_sub_0x138[];
+
 extern MObjSub *dNessSpecial3_gap_0x0000_sub_0xF8[];
 extern AObjEvent32 *dNessSpecial3_gap_0x0000_sub_0x294[];
 extern u32 dNessSpecial3_gap_0x0000_sub_0x1E4[];

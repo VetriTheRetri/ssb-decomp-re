@@ -8,13 +8,62 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dStageMetalFile2_Tex_0x0008[];
+extern u8 dStageMetalFile2_Tex_0x0050[];
+extern u8 dStageMetalFile2_Tex_0x0258[];
+extern u8 dStageMetalFile2_Tex_0x0310[];
+extern u8 dStageMetalFile2_Tex_0x0718[];
+extern u8 dStageMetalFile2_Tex_0x0760[];
+extern u8 dStageMetalFile2_Tex_0x07A8[];
+extern u8 dStageMetalFile2_Tex_0x09C8[];
+extern Vtx dStageMetalFile2_gap_0x0EA8[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x110[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x2F0[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x410[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x5F0[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x650[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x800[];
+extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0xD0[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x188[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x368[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x3C8[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x408[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x508[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x648[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x688[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x6C8[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x708[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x848[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x908[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x988[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0x9C8[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0xA48[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0xA88[];
+extern Vtx dStageMetalFile2_gap_0x1E48_sub_0xAC8[];
+extern Vtx dStageMetalFile2_gap_0x3298_sub_0x10[];
+extern Vtx dStageMetalFile2_gap_0x374C_sub_0x284[];
+extern Vtx dStageMetalFile2_gap_0x374C_sub_0x314[];
+extern Vtx dStageMetalFile2_gap_0x374C_sub_0x4[];
+extern Vtx dStageMetalFile2_gap_0x374C_sub_0x94[];
+extern u16 dStageMetalFile2_palette_0x0B48[];
+extern u16 dStageMetalFile2_palette_0x0B70[];
+extern u16 dStageMetalFile2_palette_0x0B98[];
+extern u16 dStageMetalFile2_palette_0x0BC0[];
+extern u16 dStageMetalFile2_palette_0x0BE8[];
+extern u16 dStageMetalFile2_palette_0x0C10[];
+extern MObjSub *dStageMetalFile2_gap_0x3298_sub_0x8[];
 extern u8 dStageMetalFile2_gap_0x1E48[];
 extern u8 dStageMetalFile2_gap_0x3298[];
 
 PAD(8);
 
 extern MObjSub *dStageMetalFile2_gap_0x1E48_sub_0x178[];
-extern MObjSub *dStageMetalFile2_gap_0x3298_sub_0x8[];
 
 /* Texture data @ 0x0008 (3112 bytes) */
 u8 dStageMetalFile2_Tex_0x0008[0x40] = {
@@ -1023,10 +1072,14 @@ PAD(8);
 
 /* MObjSub-list head @ 0x3220 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dStageMetalFile2_Layer2MObj_MObjSub_real below). */
-MObjSub **dStageMetalFile2_Layer2MObj_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x3220 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageMetalFile2_Layer2MObj_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <StageMetalFile2/Layer2MObj_MObjSub.data.inc.c>
 };
+
+u32 dStageMetalFile2_data_0x3224[1] = { (u32)dStageMetalFile2_gap_0x3298_sub_0x8 };
+
 
 /* The real MObjSub @ +0x8 (was folded into the prior
  * MObjSub-typed declaration). */

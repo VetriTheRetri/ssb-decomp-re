@@ -6,6 +6,86 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dPurinModel_Lut_0x6948_palette[];
+extern u8 dPurinModel_Tex_0x67D0[];
+extern u8 dPurinModel_Tex_0x6970[];
+extern u8 dPurinModel_Tex_0x7650[];
+extern u8 dPurinModel_Tex_0x76D8[];
+extern u8 dPurinModel_Tex_0x7980[];
+extern Vtx dPurinModel_Vtx_0x0870_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0910_Vtx[];
+extern Vtx dPurinModel_Vtx_0x09B0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0A00_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0C00_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0C50_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0D30_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0D50_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0D70_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0E40_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0E60_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0E70_Vtx[];
+extern Vtx dPurinModel_Vtx_0x0FD0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1000_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1080_Vtx[];
+extern Vtx dPurinModel_Vtx_0x10B0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1130_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1200_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1260_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1320_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1380_Vtx[];
+extern Vtx dPurinModel_Vtx_0x1470_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3028_Vtx[];
+extern Vtx dPurinModel_Vtx_0x30C8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3168_Vtx[];
+extern Vtx dPurinModel_Vtx_0x31B8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x31E8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3218_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3418_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3468_Vtx[];
+extern Vtx dPurinModel_Vtx_0x34C8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3518_Vtx[];
+extern Vtx dPurinModel_Vtx_0x35E8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3678_Vtx[];
+extern Vtx dPurinModel_Vtx_0x36D8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x36E8_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3708_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3748_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3778_Vtx[];
+extern Vtx dPurinModel_Vtx_0x3808_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4BF0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4C50_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4E50_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4E90_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4EA0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4EB0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4FC0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x4FD0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x50C0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x50F0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x5180_Vtx[];
+extern Vtx dPurinModel_Vtx_0x5200_Vtx[];
+extern Vtx dPurinModel_Vtx_0x52C0_Vtx[];
+extern Vtx dPurinModel_Vtx_0x5350_Vtx[];
+extern Vtx dPurinModel_Vtx_0x5420_Vtx[];
+extern Vtx dPurinModel_gap_0x459C_sub_0x444[];
+extern Vtx dPurinModel_gap_0x459C_sub_0x484[];
+extern Vtx dPurinModel_gap_0x6028_sub_0x1A8[];
+extern Vtx dPurinModel_gap_0x6028_sub_0x3A8[];
+extern Vtx dPurinModel_gap_0x6028_sub_0x3F8[];
+extern Vtx dPurinModel_gap_0x6028_sub_0x418[];
+extern Vtx dPurinModel_gap_0x6028_sub_0x58[];
+extern Vtx dPurinModel_gap_0x6028_sub_0x8[];
+extern MObjSub *dPurinModel_Joint_0x0100_post_sub_0x718[];
+extern MObjSub *dPurinModel_Joint_0x0100_post_sub_0x740[];
+extern MObjSub *dPurinModel_Joint_0x0100_post_sub_0x748[];
+extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A4[];
+extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A8[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB28[];
 extern u16 dPurinModel_palette_0x7588[];
 extern u16 dPurinModel_palette_0x75B0[];
@@ -21,8 +101,6 @@ extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB08[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xAE0[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB00[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB18[];
-extern u16 dPurinModel_Lut_0x6948_palette[];
-extern u8 dPurinModel_Tex_0x6970[];
 extern u8 dPurinModel_Tex_0x69F8[];
 extern u8 dPurinModel_Tex_0x6A20[];
 extern u8 dPurinModel_Tex_0x6A48[];
@@ -43,10 +121,23 @@ extern MObjSub * dPurinModel_Joint_0x0100_post_sub_0x760[];
 extern AObjEvent32 * dPurinModel_gap_0x459C_sub_0x310[];
 extern AObjEvent32 *dPurinModel_gap_0x459C_sub_0x314[];
 extern u16 *dPurinModel_gap_0x459C_sub_0x648[];
-/* Vtx: JointVerts @ 0x0 (2 vertices) */
-Vtx dPurinModel_JointVerts_Vtx[2] = {
-	#include <PurinModel/JointVerts.vtx.inc.c>
+/* TODO: data.inc.c — block at 0x0 was Vtx[2]; contains 3 embedded chain pointer(s) split out below */
+u8 dPurinModel_JointVerts_Vtx[8] = {
+	/* TODO: data.inc.c */
+	#include <PurinModel/JointVerts_Vtx.data.inc.c>
 };
+
+u32 dPurinModel_data_0x0008[1] = { (u32)dPurinModel_Joint_0x0100_post_sub_0x718 };
+
+u8 dPurinModel_data_0x000C[12] = {
+	/* TODO: data.inc.c */
+	#include <PurinModel/data_0x000C.data.inc.c>
+};
+
+u32 dPurinModel_data_0x0018[1] = { (u32)dPurinModel_Joint_0x0100_post_sub_0x740 };
+
+u32 dPurinModel_data_0x001C[1] = { (u32)dPurinModel_Joint_0x0100_post_sub_0x748 };
+
 
 /* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
 MObjSub **dPurinModel_Joint_0x0020_post[8] = {
@@ -818,18 +909,27 @@ AObjEvent32 **dPurinModel_gap_0x24CC[11] = {
 /* Master dispatch @ 0x24F8 — 16 slots of `AObjEvent32 **` */
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x39C[];
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A0[];
-extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A4[];
-extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A8[];
 
-AObjEvent32 **dPurinModel_gap_0x24F8[16] = {
-	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x39C,    /* +0x00 */
-	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A0,    /* +0x04 */
-	NULL, NULL, NULL, NULL, NULL, NULL,
-	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A4,    /* +0x24 */
-	NULL, NULL, NULL, NULL,
-	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A8,    /* +0x38 */
-	NULL, NULL,
+/* TODO: data.inc.c — block at 0x24F8 was AObjEvent32[16]; contains 2 embedded chain pointer(s) split out below */
+u8 dPurinModel_gap_0x24F8[36] = {
+	/* TODO: data.inc.c */
+	#include <PurinModel/gap_0x24F8.data.inc.c>
 };
+
+u32 dPurinModel_data_0x251C[1] = { (u32)dPurinModel_gap_0x24F8_sub_0x3A4 };
+
+u8 dPurinModel_data_0x2520[16] = {
+	/* TODO: data.inc.c */
+	#include <PurinModel/data_0x2520.data.inc.c>
+};
+
+u32 dPurinModel_data_0x2530[1] = { (u32)dPurinModel_gap_0x24F8_sub_0x3A8 };
+
+u8 dPurinModel_data_0x2534[4] = {
+	/* TODO: data.inc.c */
+	#include <PurinModel/data_0x2534.data.inc.c>
+};
+
 
 /* gap sub-block @ 0x2538 (was gap+0x40, 92 bytes) */
 u32 dPurinModel_gap_0x24F8_sub_0x40[23] = {

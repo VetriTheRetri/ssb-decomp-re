@@ -8,9 +8,16 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dNessSpecial2_Vtx_0x08A0_Vtx[];
+extern MObjSub *dNessSpecial2_gap_0x0888_sub_0x10[];
 extern u8 dNessSpecial2_gap_0x0888[];
 
-extern MObjSub *dNessSpecial2_gap_0x0888_sub_0x10[];
 
 /* Raw data from file offset 0x0000 to 0x0810 (2064 bytes) */
 PAD(8);
@@ -29,10 +36,14 @@ u8 dNessSpecial2_Tex_0x410[1024] = {
 
 /* MObjSub-list head @ 0x810 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real below). */
-MObjSub **dNessSpecial2_PsychicMagnetMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x810 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u8 dNessSpecial2_PsychicMagnetMObjSub_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <NessSpecial2/PsychicMagnetMObjSub_MObjSub.data.inc.c>
 };
+
+u32 dNessSpecial2_data_0x0814[1] = { (u32)dNessSpecial2_gap_0x0888_sub_0x10 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
 void *dNessSpecial2_PsychicMagnetMObjSub_MObjSub_sprites[2] = {

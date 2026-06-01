@@ -9,6 +9,43 @@
 
 /* Raw data from file offset 0x0000 to 0x0A60 (2656 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dGRBonus1FoxFile2_DL_0x1B70[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x440[];
+extern Gfx dGRBonus1FoxFile2_gap_0x0000_sub_0x580[];
+extern Gfx dGRBonus1FoxFile2_gap_0x0000_sub_0x680[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x20C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x28C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x38C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x50C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x70C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x78C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x88C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0x8CC[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0xA0C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0xB4C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0xC[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0xC0C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0xD6C[];
+extern Vtx dGRBonus1FoxFile2_gap_0x0B94_sub_0xE2C[];
 Vtx dGRBonus1FoxFile2_gap_0x0000[4] = {
 	#include <GRBonus1FoxFile2/gap_0x0000.vtx.inc.c>
 };

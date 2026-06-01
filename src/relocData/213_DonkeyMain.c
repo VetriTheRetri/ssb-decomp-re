@@ -2,6 +2,22 @@
 /* File size: 2032 bytes (0x7F0) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dDkIcon_FTEmblem[];
+extern u32 dDkIcon_Stock[];
+extern u8 dDkIcon_Stock_tex[];
+extern u8 dDonkeyShieldPose_data0[];
+extern u8 dDonkeyShieldPose_data0_end[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_1[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_2[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_3[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_4[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_5[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_6[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern u32 dDonkeyMainMotion_EggLay_0x0000[];
@@ -41,13 +57,13 @@ extern u8 dDonkeyModel_gap_0x7390_sub_0x3F80[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x4280[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x44D0[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x45E0[];
-extern u8 dDonkeyModel_gap_0x7390_sub_0x4700[];
-extern u8 dDonkeyModel_gap_0x7390_sub_0x4840[];
+extern u8 dDonkeyModel_DL_0xBA90[];
+extern u8 dDonkeyModel_DL_0xBBD0[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x4970[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x4A4[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x4A8[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x4A80[];
-extern u8 dDonkeyModel_gap_0x7390_sub_0x4B80[];
+extern u8 dDonkeyModel_DL_0xBF10[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x4C4[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x570[];
 extern u8 dDonkeyModel_gap_0x7390_sub_0x658[];
@@ -192,14 +208,17 @@ FTThrownStatus dDonkeyMain_thrown_status[54] = {
 	{                          -1, nFTCommonStatusThrownCommon },
 };
 
-/* @ 0x03A8, 20 bytes: FTAttributes.sub_0x3A8 target (was dDonkeyMain_pre+0x3A8) */
-int *dDonkeyMain_stock_luts[5] = {
-	(int*)0x00EB0018,
-	(int*)0x00EC0022,
-	(int*)0x00ED002C,
-	(int*)0x00EE0036,
-	(int*)0x00EF0040,
-};
+/* TODO: data.inc.c — block at 0x3A8 was int[5]; contains 5 embedded chain pointer(s) split out below */
+u32 dDonkeyMain_stock_luts[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x58 };
+
+u32 dDonkeyMain_data_0x03AC[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x80 };
+
+u32 dDonkeyMain_data_0x03B0[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xA8 };
+
+u32 dDonkeyMain_data_0x03B4[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xD0 };
+
+u32 dDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xF8 };
+
 
 /* @ 0x03BC, 12 bytes: FTAttributes.sprites target (was dDonkeyMain_pre+0x3BC) */
 FTSprites dDonkeyMain_sprites = {
@@ -216,25 +235,25 @@ FTSkeleton dDonkeyMain_skeleton_dls[26] = {
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x45E0 }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x44D0 }, 0 },
-	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4700 }, 0 },
+	{ { (Gfx*)&dDonkeyModel_DL_0xBA90 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4280 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x45E0 }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x44D0 }, 0 },
-	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4840 }, 0 },
+	{ { (Gfx*)&dDonkeyModel_DL_0xBBD0 }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4970 }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4A80 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4B80 }, 0 },
+	{ { (Gfx*)&dDonkeyModel_DL_0xBF10 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4970 }, 0 },
 	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4A80 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dDonkeyModel_gap_0x7390_sub_0x4B80 }, 0 },
+	{ { (Gfx*)&dDonkeyModel_DL_0xBF10 }, 0 },
 	{ { NULL }, 0 },
 };
 
@@ -346,8 +365,8 @@ FTAttributes dDonkeyMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dDonkeyMain_hiddenparts, /* hiddenparts */
 	&dDonkeyMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dDonkeyShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dDonkeyShieldPose_data0_end, (void *)&dDonkeyShieldPose_shield_anim_joint_1, (void *)&dDonkeyShieldPose_shield_anim_joint_2, (void *)&dDonkeyShieldPose_shield_anim_joint_3, (void *)&dDonkeyShieldPose_shield_anim_joint_4, (void *)&dDonkeyShieldPose_shield_anim_joint_5, (void *)&dDonkeyShieldPose_shield_anim_joint_6, (void *)&dDonkeyShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	152.787f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

@@ -8,6 +8,169 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x4[];
+extern u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0x34[];
+extern Vtx dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xB4[];
+extern u16 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xC[];
+extern u16 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_LUT[];
+extern u8 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Tex[];
+extern Vtx dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Vtx[];
+extern Vtx dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x98[];
+extern Gfx dITCommonObject_Gfx_0x0440[];
+extern Gfx dITCommonObject_Gfx_0x1C48[];
+extern Gfx dITCommonObject_Gfx_0x4578[];
+extern Gfx dITCommonObject_Gfx_0x4A18[];
+extern Gfx dITCommonObject_Gfx_0xF8A8[];
+extern u16 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14[];
+extern Vtx dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x23C[];
+extern Gfx dITCommonObject_LGunAmmo_Weapon_data[];
+extern Vtx dITCommonObject_LGun_Item_data_remainder_sub_0x94[];
+extern u16 dITCommonObject_LUT_0x0008[];
+extern u16 dITCommonObject_LUT_0x0030[];
+extern u16 dITCommonObject_LUT_0x0058[];
+extern u16 dITCommonObject_LUT_0x0758[];
+extern u16 dITCommonObject_LUT_0x0B48[];
+extern u16 dITCommonObject_LUT_0x10158[];
+extern u16 dITCommonObject_LUT_0x10698[];
+extern u16 dITCommonObject_LUT_0x11A68[];
+extern u16 dITCommonObject_LUT_0x124C8[];
+extern u16 dITCommonObject_LUT_0x19D8[];
+extern u16 dITCommonObject_LUT_0x1A20[];
+extern u16 dITCommonObject_LUT_0x1EB8[];
+extern u16 dITCommonObject_LUT_0x22C8[];
+extern u16 dITCommonObject_LUT_0x27E8[];
+extern u16 dITCommonObject_LUT_0x3608[];
+extern u16 dITCommonObject_LUT_0x3630[];
+extern u16 dITCommonObject_LUT_0x3A88[];
+extern u16 dITCommonObject_LUT_0x4798[];
+extern u16 dITCommonObject_LUT_0x47C0[];
+extern u16 dITCommonObject_LUT_0x6098[];
+extern u16 dITCommonObject_LUT_0x60C0[];
+extern u16 dITCommonObject_LUT_0x69E8[];
+extern u16 dITCommonObject_LUT_0x6A10[];
+extern u16 dITCommonObject_LUT_0x7D90[];
+extern u16 dITCommonObject_LUT_0x7DB8[];
+extern u16 dITCommonObject_LUT_0x98E8[];
+extern u16 dITCommonObject_LUT_0xA818[];
+extern u16 dITCommonObject_LUT_0xAC88[];
+extern u16 dITCommonObject_LUT_0xB210[];
+extern u16 dITCommonObject_LUT_0xB968[];
+extern u16 dITCommonObject_LUT_0xBD58[];
+extern u16 dITCommonObject_LUT_0xC1C8[];
+extern u16 dITCommonObject_LUT_0xC5E0[];
+extern u16 dITCommonObject_LUT_0xD738[];
+extern u16 dITCommonObject_LUT_0xE688[];
+extern u16 dITCommonObject_LUT_0xEF38[];
+extern u16 dITCommonObject_LUT_0xEFB0[];
+extern u16 dITCommonObject_LUT_0xFCB8[];
+extern Vtx dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3EC[];
+extern u16 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x14[];
+extern Vtx dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4_sub_0x33C[];
+extern Vtx dITCommonObject_StarRod_Item_data_remainder_sub_0x808[];
+extern Vtx dITCommonObject_Starmie_Item_data_remainder_sub_0x5B4[];
+extern u8 dITCommonObject_Tex_0x0080[];
+extern u8 dITCommonObject_Tex_0x0108[];
+extern u8 dITCommonObject_Tex_0x0190[];
+extern u8 dITCommonObject_Tex_0x0780[];
+extern u8 dITCommonObject_Tex_0x0B70[];
+extern u8 dITCommonObject_Tex_0x0D78[];
+extern u8 dITCommonObject_Tex_0x10180[];
+extern u8 dITCommonObject_Tex_0x11458[];
+extern u8 dITCommonObject_Tex_0x11A90[];
+extern u8 dITCommonObject_Tex_0x12000[];
+extern u8 dITCommonObject_Tex_0x1238[];
+extern u8 dITCommonObject_Tex_0x124F0[];
+extern u8 dITCommonObject_Tex_0x1668[];
+extern u8 dITCommonObject_Tex_0x1A68[];
+extern u8 dITCommonObject_Tex_0x1AB0[];
+extern u8 dITCommonObject_Tex_0x1EE0[];
+extern u8 dITCommonObject_Tex_0x22F0[];
+extern u8 dITCommonObject_Tex_0x3658[];
+extern u8 dITCommonObject_Tex_0x36E0[];
+extern u8 dITCommonObject_Tex_0x3AF0[];
+extern u8 dITCommonObject_Tex_0x3B38[];
+extern u8 dITCommonObject_Tex_0x3B80[];
+extern u8 dITCommonObject_Tex_0x3FE8[];
+extern u8 dITCommonObject_Tex_0x47E8[];
+extern u8 dITCommonObject_Tex_0x4870[];
+extern u8 dITCommonObject_Tex_0x4C18[];
+extern u8 dITCommonObject_Tex_0x60E8[];
+extern u8 dITCommonObject_Tex_0x62F0[];
+extern u8 dITCommonObject_Tex_0x6A38[];
+extern u8 dITCommonObject_Tex_0x6C40[];
+extern u8 dITCommonObject_Tex_0x7288[];
+extern u8 dITCommonObject_Tex_0x7728[];
+extern u8 dITCommonObject_Tex_0x8E20[];
+extern u8 dITCommonObject_Tex_0x9910[];
+extern u8 dITCommonObject_Tex_0xA200[];
+extern u8 dITCommonObject_Tex_0xACB0[];
+extern u8 dITCommonObject_Tex_0xB990[];
+extern u8 dITCommonObject_Tex_0xBD80[];
+extern u8 dITCommonObject_Tex_0xC1F0[];
+extern u8 dITCommonObject_Tex_0xE6B0[];
+extern u8 dITCommonObject_Tex_0xEB20[];
+extern u8 dITCommonObject_Tex_0xFCE0[];
+extern Vtx dITCommonObject_Vtx_0x0210[];
+extern Vtx dITCommonObject_Vtx_0x02F0[];
+extern Vtx dITCommonObject_Vtx_0x03A0[];
+extern Vtx dITCommonObject_Vtx_0x0980[];
+extern Vtx dITCommonObject_Vtx_0x0F78[];
+extern Vtx dITCommonObject_Vtx_0x0FB8[];
+extern Vtx dITCommonObject_Vtx_0x10380[];
+extern Vtx dITCommonObject_Vtx_0x11180[];
+extern Vtx dITCommonObject_Vtx_0x11E10[];
+extern Vtx dITCommonObject_Vtx_0x126F0[];
+extern Vtx dITCommonObject_Vtx_0x13D0[];
+extern Vtx dITCommonObject_Vtx_0x1400[];
+extern Vtx dITCommonObject_Vtx_0x16E8[];
+extern Vtx dITCommonObject_Vtx_0x1798[];
+extern Vtx dITCommonObject_Vtx_0x1AF0[];
+extern Vtx dITCommonObject_Vtx_0x1B20[];
+extern Vtx dITCommonObject_Vtx_0x1BB0[];
+extern Vtx dITCommonObject_Vtx_0x1F20[];
+extern Vtx dITCommonObject_Vtx_0x23B0[];
+extern Vtx dITCommonObject_Vtx_0x2470[];
+extern Vtx dITCommonObject_Vtx_0x32D0[];
+extern Vtx dITCommonObject_Vtx_0x3720[];
+extern Vtx dITCommonObject_Vtx_0x3760[];
+extern Vtx dITCommonObject_Vtx_0x3BC0[];
+extern Vtx dITCommonObject_Vtx_0x3C00[];
+extern Vtx dITCommonObject_Vtx_0x3CC0[];
+extern Vtx dITCommonObject_Vtx_0x4420[];
+extern Vtx dITCommonObject_Vtx_0x44E0[];
+extern Vtx dITCommonObject_Vtx_0x48F0[];
+extern Vtx dITCommonObject_Vtx_0x4970[];
+extern Vtx dITCommonObject_Vtx_0x5E80[];
+extern Vtx dITCommonObject_Vtx_0x64F0[];
+extern Vtx dITCommonObject_Vtx_0x65D0[];
+extern Vtx dITCommonObject_Vtx_0x6E40[];
+extern Vtx dITCommonObject_Vtx_0x6EE0[];
+extern Vtx dITCommonObject_Vtx_0x7518[];
+extern Vtx dITCommonObject_Vtx_0x91D0[];
+extern Vtx dITCommonObject_Vtx_0x9210[];
+extern Vtx dITCommonObject_Vtx_0xA010[];
+extern Vtx dITCommonObject_Vtx_0xAA68[];
+extern Vtx dITCommonObject_Vtx_0xB030[];
+extern Vtx dITCommonObject_Vtx_0xB5D8[];
+extern Vtx dITCommonObject_Vtx_0xBB90[];
+extern Vtx dITCommonObject_Vtx_0xC000[];
+extern Vtx dITCommonObject_Vtx_0xC3F0[];
+extern Vtx dITCommonObject_Vtx_0xD4A0[];
+extern Vtx dITCommonObject_Vtx_0xDE08[];
+extern Vtx dITCommonObject_Vtx_0xE378[];
+extern Vtx dITCommonObject_Vtx_0xE930[];
+extern Vtx dITCommonObject_Vtx_0xF7E8[];
+extern Vtx dITCommonObject_Vtx_0xF828[];
+extern Vtx dITCommonObject_Vtx_0xFEE0[];
+extern u16 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x14[];
+extern Vtx dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4_sub_0x43C[];
+extern MObjSub *dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3E4[];
 extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFA9C[];
 extern u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[];
 extern AObjEvent32 *dITCommonObject_Star_Item_matanimjoints_0x1658[];
@@ -57,7 +220,7 @@ extern u32 dITCommonObject_Spear_Item_data_remainder_sub_0x14[];
 
 extern u32 dITCommonObject_DogasSmog_Weapon_animjoints_0x13198[];
 extern u16 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[];
-extern u8 dITCommonObject_LGunAmmo_Weapon_data_post_0x68[];
+extern u8 dITCommonObject_LGunAmmo_data_0x41B8[];
 extern u16 dITCommonObject_StarRod_Weapon_data_post_0x70[];
 extern u16 dITCommonObject_StarRod_Weapon_data_post_0x98[];
 extern u8 dITCommonObject_Tex_0x55C8[];
@@ -998,7 +1161,7 @@ u32 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388[3] = {
 
 /* u32 pointer array @ 0x4394 (3 entries) */
 u32 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388_sub_0xC[3] = {
-	(u32)&dITCommonObject_LGunAmmo_Weapon_data_post_0x68,
+	(u32)&dITCommonObject_LGunAmmo_data_0x41B8,
 	(u32)&dITCommonObject_LGunAmmo_Weapon_data_post_0x40,
 	0x00000000,
 };
@@ -1604,11 +1767,14 @@ u16 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34[16] = {
 
 PAD(8);
 
-/* gap sub-block @ 0x7728 (was gap+0x5C, 776 bytes) */
-/* @tex fmt=CI4 dim=32x48 */
-u8 dITCommonObject_Tex_0x7728[776] = {
-	#include <ITCommonObject/Tex_0x7728.tex.inc.c>
+/* TODO: data.inc.c — block at 0x7728 was u8[776]; contains 1 embedded chain pointer(s) split out below */
+u8 dITCommonObject_Tex_0x7728[772] = {
+	/* TODO: data.inc.c */
+	#include <ITCommonObject/Tex_0x7728.data.inc.c>
 };
+
+u32 dITCommonObject_data_0x7A2C[1] = { (u32)dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3E4 };
+
 
 /* u32 pointer array @ 0x7A30 (2 entries) */
 u32 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x364[2] = {

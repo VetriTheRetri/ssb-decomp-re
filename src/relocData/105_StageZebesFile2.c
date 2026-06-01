@@ -6,6 +6,89 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dStageZebesFile2_DL_0x48D0[];
+extern Gfx dStageZebesFile2_DL_0x5840[];
+extern Gfx dStageZebesFile2_Layer1MatAnim_DL_0xDC60[];
+extern u16 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x2A8[];
+extern Vtx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xC98[];
+extern Vtx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xCC8[];
+extern u16 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BB0[];
+extern u16 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BD8[];
+extern u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6410[];
+extern Vtx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x68A0[];
+extern Vtx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x68E0[];
+extern u8 dStageZebesFile2_Tex_0x04E0[];
+extern u8 dStageZebesFile2_Tex_0x05E8[];
+extern u8 dStageZebesFile2_Tex_0x06F0[];
+extern u8 dStageZebesFile2_Tex_0x08F8[];
+extern u8 dStageZebesFile2_Tex_0x0D00[];
+extern u8 dStageZebesFile2_Tex_0x0E08[];
+extern u8 dStageZebesFile2_Tex_0x0F10[];
+extern u8 dStageZebesFile2_Tex_0x1718[];
+extern u8 dStageZebesFile2_Tex_0x1920[];
+extern u8 dStageZebesFile2_Tex_0x1B28[];
+extern u8 dStageZebesFile2_Tex_0x1F30[];
+extern u8 dStageZebesFile2_Tex_0x2138[];
+extern u8 dStageZebesFile2_Tex_0x2540[];
+extern u8 dStageZebesFile2_Tex_0x2748[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0x120[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0x1C0[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0x238[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0x300[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0x328[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0x3A0[];
+extern u16 dStageZebesFile2_gap_0x0000_sub_0xF8[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1010[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x11F0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x12F0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1330[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1370[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x13C0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1400[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1450[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1490[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1680[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x16D0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1770[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x17A0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x17C0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x17F0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1840[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1880[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1900[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1930[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1960[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x19A0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1A10[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1A50[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1A90[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1AD0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1B10[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1B50[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1B90[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1BD0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1C00[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1C90[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x1CC0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0x9B0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xA30[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xB50[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xB90[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xC10[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xD90[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xDD0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xE10[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xE90[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xED0[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xF50[];
+extern Vtx dStageZebesFile2_gap_0x2BC0_sub_0xF90[];
+extern MObjSub *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6898[];
 extern u16 *dStageZebesFile2_gap_0x2BC0[];
 
 extern MObjSub *dStageZebesFile2_gap_0x2BC0_sub_0x948[];
@@ -25,7 +108,6 @@ extern u32 dStageZebesFile2_Layer1Anim_AnimJoint_0x6374[];
 extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data[];
 extern Gfx dStageZebesFile2_Layer1MatAnim_DL_0xCDA0[];
 extern DObjDesc dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68[];
-extern Gfx dStageZebesFile2_Layer1MatAnim_DL_0xDC60[];
 extern Gfx dStageZebesFile2_Layer1MatAnim_DL_0xDD98[];
 extern Gfx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928[];
 extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x110[];
@@ -7941,11 +8023,14 @@ u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008[1032] = {
 	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008.tex.inc.c>
 };
 
-/* @ 0xC890 — CI4 texture (32x64) + 8 byte pad — loaded by DL_0xCDA0. */
-/* @tex fmt=CI4 dim=32x64 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BD8 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6410[1032] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6410.tex.inc.c>
+/* TODO: data.inc.c — block at 0xC890 was u8[1032]; contains 1 embedded chain pointer(s) split out below */
+u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6410[1028] = {
+	/* TODO: data.inc.c */
+	#include <StageZebesFile2/Layer1MatAnim_MatAnimJoint_data_at_0x6410.data.inc.c>
 };
+
+u32 dStageZebesFile2_data_0xCC94[1] = { (u32)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6898 };
+
 
 /* @ 0xCC98 — 2 texture pointers (CI4 textures _at_0x6008 / _at_0x5C00). */
 void *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6818[2] = {

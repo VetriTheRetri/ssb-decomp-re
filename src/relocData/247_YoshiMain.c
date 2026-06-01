@@ -2,6 +2,17 @@
 /* File size: 2000 bytes (0x7D0) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dYoshiShieldPose_data0[];
+extern u8 dYoshiShieldPose_data0_end[];
+extern u8 dYoshiShieldPose_shield_anim_joint_1[];
+extern u8 dYoshiShieldPose_shield_anim_joint_2[];
+extern u8 dYoshiShieldPose_shield_anim_joint_3[];
+extern u8 dYoshiShieldPose_shield_anim_joint_4[];
+extern u8 dYoshiShieldPose_shield_anim_joint_5[];
+extern u8 dYoshiShieldPose_shield_anim_joint_6[];
+extern u8 dYoshiShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern u8 dITCommonObject_StarRod_Weapon_data[];
@@ -16,17 +27,17 @@ extern u8 dYoshiModel_gap_0x38F4_sub_0x1410[];
 extern u8 dYoshiModel_gap_0x38F4_sub_0x6E8[];
 extern u8 dYoshiModel_gap_0x38F4_sub_0x73C[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x13BC[];
-extern u8 dYoshiModel_gap_0x6E70_sub_0x1490[];
+extern u8 dYoshiModel_DL_0x8300[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x1620[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x1A40[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x1CD0[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x1DE0[];
-extern u8 dYoshiModel_gap_0x6E70_sub_0x1EA0[];
-extern u8 dYoshiModel_gap_0x6E70_sub_0x1F50[];
+extern u8 dYoshiModel_DL_0x8D10[];
+extern u8 dYoshiModel_DL_0x8DC0[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x2050[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x2160[];
-extern u8 dYoshiModel_gap_0x6E70_sub_0x2220[];
-extern u8 dYoshiModel_gap_0x6E70_sub_0x23B0[];
+extern u8 dYoshiModel_DL_0x9090[];
+extern u8 dYoshiModel_DL_0x9220[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x24E0[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x6A4[];
 extern u8 dYoshiModel_gap_0x6E70_sub_0x9A8[];
@@ -215,7 +226,7 @@ FTSprites dYoshiMain_sprites = {
 /* @ 0x0390, 224 bytes: FTAttributes.sub_0x390 target (was dYoshiMain_pre+0x390) */
 FTSkeleton dYoshiMain_skeleton_dls[28] = {
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1490 }, 0 },
+	{ { (Gfx*)&dYoshiModel_DL_0x8300 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1620 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1A40 }, 0 },
 	{ { NULL }, 0 },
@@ -223,24 +234,24 @@ FTSkeleton dYoshiMain_skeleton_dls[28] = {
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1DE0 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1CD0 }, 0 },
-	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1EA0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_DL_0x8D10 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1DE0 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1CD0 }, 0 },
-	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1F50 }, 0 },
+	{ { (Gfx*)&dYoshiModel_DL_0x8DC0 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x23B0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_DL_0x9220 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x24E0 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2050 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2160 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2220 }, 0 },
+	{ { (Gfx*)&dYoshiModel_DL_0x9090 }, 0 },
 	{ { NULL }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2050 }, 0 },
 	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2160 }, 0 },
 	{ { NULL }, 0 },
-	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2220 }, 0 },
+	{ { (Gfx*)&dYoshiModel_DL_0x9090 }, 0 },
 	{ { NULL }, 0 },
 };
 
@@ -364,8 +375,8 @@ FTAttributes dYoshiMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dYoshiMain_hiddenparts, /* hiddenparts */
 	&dYoshiMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dYoshiShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dYoshiShieldPose_data0_end, (void *)&dYoshiShieldPose_shield_anim_joint_1, (void *)&dYoshiShieldPose_shield_anim_joint_2, (void *)&dYoshiShieldPose_shield_anim_joint_3, (void *)&dYoshiShieldPose_shield_anim_joint_4, (void *)&dYoshiShieldPose_shield_anim_joint_5, (void *)&dYoshiShieldPose_shield_anim_joint_6, (void *)&dYoshiShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	26, /* joint_rfoot_id */
 	82.602f, /* joint_rfoot_rotate */
 	21, /* joint_lfoot_id */

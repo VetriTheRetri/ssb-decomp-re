@@ -6,6 +6,11 @@
 
 #include "relocdata_types.h"
 
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dSamusSpecial3_JointVerts_Vtx[];
+extern u16 dSamusSpecial3_Lut_0x0008_palette[];
+extern u8 dSamusSpecial3_Tex_0x0030[];
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */

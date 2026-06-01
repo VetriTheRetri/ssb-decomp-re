@@ -9,6 +9,12 @@
 #include <sys/interp.h>  // SYInterpDesc
 
 /* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dSCStaffroll_AnimJoint_0x7358[1024];
+extern Vtx dSCStaffroll_AnimJoint_0x7758[4];
+extern Vtx dSCStaffroll_AnimJoint_0x7798[4];
+extern Gfx dSCStaffroll_AnimJoint_DL_0x7860[4];
 Gfx dSCStaffroll_unusedSpriteDL_0x0000[1] = {
 	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x0000.dl.inc.c>
 };
@@ -3217,11 +3223,7 @@ extern f32 dSCStaffroll_Quartics_0x72A0[25];
 extern SYInterpDesc dSCStaffroll_Interpolation_0x7304[1];
 extern u32 dSCStaffroll_AnimJoint_Setup_0x731C[7];
 extern u32 dSCStaffroll_AnimJoint_0x7338[5];
-extern u8 dSCStaffroll_AnimJoint_0x7358[1024];
-extern Vtx dSCStaffroll_AnimJoint_0x7758[4];
-extern Vtx dSCStaffroll_AnimJoint_0x7798[4];
 extern Gfx dSCStaffroll_AnimJoint_DL_0x77D8[17];
-extern Gfx dSCStaffroll_AnimJoint_DL_0x7860[4];
 extern Gfx dSCStaffroll_AnimJoint_DL_0x7880[8];
 
 void *dSCStaffroll_StaffrollHeader[3] = {

@@ -2,6 +2,17 @@
 /* File size: 1552 bytes (0x610) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dKirbyShieldPose_data0[];
+extern u8 dKirbyShieldPose_data0_end[];
+extern u8 dKirbyShieldPose_shield_anim_joint_1[];
+extern u8 dKirbyShieldPose_shield_anim_joint_2[];
+extern u8 dKirbyShieldPose_shield_anim_joint_3[];
+extern u8 dKirbyShieldPose_shield_anim_joint_4[];
+extern u8 dKirbyShieldPose_shield_anim_joint_5[];
+extern u8 dKirbyShieldPose_shield_anim_joint_6[];
+extern u8 dKirbyShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern u32 dKirbyMainMotion_EggLay_0x0154[];
@@ -218,8 +229,8 @@ FTAttributes dNKirbyMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNKirbyMain_hiddenparts, /* hiddenparts */
 	&dNKirbyMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dKirbyShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dKirbyShieldPose_data0_end, (void *)&dKirbyShieldPose_shield_anim_joint_1, (void *)&dKirbyShieldPose_shield_anim_joint_2, (void *)&dKirbyShieldPose_shield_anim_joint_3, (void *)&dKirbyShieldPose_shield_anim_joint_4, (void *)&dKirbyShieldPose_shield_anim_joint_5, (void *)&dKirbyShieldPose_shield_anim_joint_6, (void *)&dKirbyShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	25, /* joint_rfoot_id */
 	61.848f, /* joint_rfoot_rotate */
 	20, /* joint_lfoot_id */

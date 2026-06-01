@@ -8,6 +8,14 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dPikachuSpecial2_Lut_0x0008_palette[];
+extern u16 dPikachuSpecial2_Lut_0x0968_palette[];
+extern u8 dPikachuSpecial2_Tex_0x11A0[];
+extern Vtx dPikachuSpecial2_Vtx_0x06D8_Vtx[];
+extern Vtx dPikachuSpecial2_Vtx_0x1438_Vtx[];
+extern Vtx dPikachuSpecial2_Vtx_0x1478_Vtx[];
 extern u8 dPikachuSpecial2_gap_0x06B8[];
 
 PAD(8);

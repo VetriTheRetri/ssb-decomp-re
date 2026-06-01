@@ -2,6 +2,17 @@
 /* File size: 1520 bytes (0x5F0) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dPikachuShieldPose_data0[];
+extern u8 dPikachuShieldPose_data0_end[];
+extern u8 dPikachuShieldPose_shield_anim_joint_1[];
+extern u8 dPikachuShieldPose_shield_anim_joint_2[];
+extern u8 dPikachuShieldPose_shield_anim_joint_3[];
+extern u8 dPikachuShieldPose_shield_anim_joint_4[];
+extern u8 dPikachuShieldPose_shield_anim_joint_5[];
+extern u8 dPikachuShieldPose_shield_anim_joint_6[];
+extern u8 dPikachuShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dNPikachuModel_JointTree[];
@@ -222,8 +233,8 @@ FTAttributes dNPikachuMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNPikachuMain_hiddenparts, /* hiddenparts */
 	&dNPikachuMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dPikachuShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dPikachuShieldPose_data0_end, (void *)&dPikachuShieldPose_shield_anim_joint_1, (void *)&dPikachuShieldPose_shield_anim_joint_2, (void *)&dPikachuShieldPose_shield_anim_joint_3, (void *)&dPikachuShieldPose_shield_anim_joint_4, (void *)&dPikachuShieldPose_shield_anim_joint_5, (void *)&dPikachuShieldPose_shield_anim_joint_6, (void *)&dPikachuShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	79.671f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

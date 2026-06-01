@@ -8,13 +8,74 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x144[];
+extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x1C4[];
+extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x244[];
+extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x254[];
+extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x284[];
+extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x2B4[];
+extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x444[];
+extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x48C[];
+extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x4EC[];
+extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x84[];
+extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x144[];
+extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x1C4[];
+extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x244[];
+extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x254[];
+extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x284[];
+extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x2B4[];
+extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x444[];
+extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x48C[];
+extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x4EC[];
+extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x84[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x124[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x1A4[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x224[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x234[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x264[];
+extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x294[];
+extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x444[];
+extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x48C[];
+extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x4EC[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x64[];
+extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0xA4[];
+extern u8 dBonus2Common_Tex_0x0008[];
+extern u8 dBonus2Common_Tex_0x1010[];
+extern u8 dBonus2Common_Tex_0x1818[];
+extern u8 dBonus2Common_Tex_0x2020[];
+extern u8 dBonus2Common_Tex_0x2C30[];
+extern Vtx dBonus2Common_gap_0x3798_sub_0x158[];
+extern Vtx dBonus2Common_gap_0x3798_sub_0x1D8[];
+extern Vtx dBonus2Common_gap_0x3798_sub_0x258[];
+extern Vtx dBonus2Common_gap_0x3798_sub_0x298[];
+extern Vtx dBonus2Common_gap_0x3798_sub_0x98[];
+extern Vtx dBonus2Common_gap_0x3798_sub_0xD8[];
+extern Vtx dBonus2Common_gap_0x3FE8_sub_0x158[];
+extern Vtx dBonus2Common_gap_0x3FE8_sub_0x1D8[];
+extern Vtx dBonus2Common_gap_0x3FE8_sub_0x258[];
+extern Vtx dBonus2Common_gap_0x3FE8_sub_0x298[];
+extern Vtx dBonus2Common_gap_0x3FE8_sub_0x98[];
+extern Vtx dBonus2Common_gap_0x4818_sub_0x158[];
+extern Vtx dBonus2Common_gap_0x4818_sub_0x1D8[];
+extern Vtx dBonus2Common_gap_0x4818_sub_0x258[];
+extern Vtx dBonus2Common_gap_0x4818_sub_0x298[];
+extern Vtx dBonus2Common_gap_0x4818_sub_0x98[];
+extern MObjSub *dBonus2Common_gap_0x3798_sub_0x88[2];
+extern void *dBonus2Common_gap_0x3798_sub_0x90[];
+extern MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[2];
+extern void *dBonus2Common_gap_0x3FE8_sub_0x90[];
+extern MObjSub *dBonus2Common_gap_0x4818_sub_0x88[2];
+extern void *dBonus2Common_gap_0x4818_sub_0x90[];
 extern u8 dBonus2Common_gap_0x3798[];
 extern u8 dBonus2Common_gap_0x3FE8[];
 extern u8 dBonus2Common_gap_0x4818[];
 
-extern MObjSub *dBonus2Common_gap_0x3798_sub_0x88[2];
-extern MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[2];
-extern MObjSub *dBonus2Common_gap_0x4818_sub_0x88[2];
 
 /* Raw data from file offset 0x0000 to 0x3720 (14112 bytes) */
 PAD(8);
@@ -51,12 +112,21 @@ u8 dBonus2Common_Tex_0x2C30[2800] = {
 
 /* MObjSub-list head @ 0x3720 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformSmall_MObjSub_real below). */
-MObjSub **dBonus2Common_PlatformSmall_MObjSub[4] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x3720 was MObjSub[4]; contains 2 embedded chain pointer(s) split out below */
+u8 dBonus2Common_PlatformSmall_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <Bonus2Common/PlatformSmall_MObjSub.data.inc.c>
 };
+
+u32 dBonus2Common_data_0x3724[1] = { (u32)dBonus2Common_gap_0x3798_sub_0x88 };
+
+u32 dBonus2Common_data_0x3728[1] = { (u32)dBonus2Common_gap_0x3798_sub_0x90 };
+
+u8 dBonus2Common_data_0x372C[4] = {
+	/* TODO: data.inc.c */
+	#include <Bonus2Common/data_0x372C.data.inc.c>
+};
+
 
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -318,12 +388,21 @@ PAD(8);
 
 /* MObjSub-list head @ 0x3f70 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformMedium_MObjSub_real below). */
-MObjSub **dBonus2Common_PlatformMedium_MObjSub[4] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x3F70 was MObjSub[4]; contains 2 embedded chain pointer(s) split out below */
+u8 dBonus2Common_PlatformMedium_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <Bonus2Common/PlatformMedium_MObjSub.data.inc.c>
 };
+
+u32 dBonus2Common_data_0x3F74[1] = { (u32)dBonus2Common_gap_0x3FE8_sub_0x88 };
+
+u32 dBonus2Common_data_0x3F78[1] = { (u32)dBonus2Common_gap_0x3FE8_sub_0x90 };
+
+u8 dBonus2Common_data_0x3F7C[4] = {
+	/* TODO: data.inc.c */
+	#include <Bonus2Common/data_0x3F7C.data.inc.c>
+};
+
 
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -577,12 +656,21 @@ PAD(8);
 
 /* MObjSub-list head @ 0x47a0 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformLarge_MObjSub_real below). */
-MObjSub **dBonus2Common_PlatformLarge_MObjSub[4] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x47A0 was MObjSub[4]; contains 2 embedded chain pointer(s) split out below */
+u8 dBonus2Common_PlatformLarge_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <Bonus2Common/PlatformLarge_MObjSub.data.inc.c>
 };
+
+u32 dBonus2Common_data_0x47A4[1] = { (u32)dBonus2Common_gap_0x4818_sub_0x88 };
+
+u32 dBonus2Common_data_0x47A8[1] = { (u32)dBonus2Common_gap_0x4818_sub_0x90 };
+
+u8 dBonus2Common_data_0x47AC[4] = {
+	/* TODO: data.inc.c */
+	#include <Bonus2Common/data_0x47AC.data.inc.c>
+};
+
 
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */

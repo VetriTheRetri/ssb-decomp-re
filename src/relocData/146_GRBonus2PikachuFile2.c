@@ -10,6 +10,58 @@
 
 /* Raw data from file offset 0x0000 to 0x0D58 (3416 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages3_Lut_0x0298_palette[];
+extern u8 dBonus1CommonImages3_Tex_0x0078[];
+extern u8 dBonus1CommonImages3_Tex_0x0100[];
+extern u16 dBonus1CommonImages3_Tex_0x02C0[];
+extern Gfx dGRBonus2PikachuFile2_DL_0x2E50[];
+extern Vtx dGRBonus2PikachuFile2_Vtx_0x0EF0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x110[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x150[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x190[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x1D0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x210[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x250[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x290[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x2D0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x310[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x350[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x390[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x3D0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x410[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x450[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x490[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x4D0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x510[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0000_sub_0xD0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1130[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1270[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x13B0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x14F0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x160[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1630[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1770[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x18B0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x19F0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1B30[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1C70[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1DB0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x360[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x4E0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x6D0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x8B0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0x9B0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0xA0[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0xB60[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0xD20[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0xF00[];
+extern Vtx dGRBonus2PikachuFile2_gap_0x0F10_sub_0xFF0[];
 Vtx dGRBonus2PikachuFile2_gap_0x0000[4] = {
 	#include <GRBonus2PikachuFile2/gap_0x0000.vtx.inc.c>
 };

@@ -10,6 +10,48 @@
 
 /* Raw data from file offset 0x0000 to 0x0D40 (3392 bytes) */
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages3_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages3_Lut_0x0298_palette[];
+extern u8 dBonus1CommonImages3_Tex_0x0030[];
+extern u8 dBonus1CommonImages3_Tex_0x0078[];
+extern u8 dBonus1CommonImages3_Tex_0x0188[];
+extern u8 dBonus1CommonImages3_Tex_0x02D0[];
+extern Gfx dGRBonus2YoshiFile2_DL_0x1DD0[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x480[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x4C0[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x500[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x104[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x244[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x384[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x4[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x484[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x664[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x7C4[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0x9A4[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xA24[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xB64[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xC64[];
+extern Vtx dGRBonus2YoshiFile2_gap_0x0ECC_sub_0xD64[];
 Vtx dGRBonus2YoshiFile2_gap_0x0000[4] = {
 	#include <GRBonus2YoshiFile2/gap_0x0000.vtx.inc.c>
 };

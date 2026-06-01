@@ -8,6 +8,15 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0690 (1680 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dCaptainSpecial3_gap_0x0000_sub_0x58[];
+extern Vtx dCaptainSpecial3_gap_0x0708_sub_0x18[];
+extern MObjSub *dCaptainSpecial3_gap_0x0708_sub_0x10[];
 /* Three 16-colour CI4 palettes — one per FalconPunch sprite frame
  * (Tex_0x80 / Tex_0x288 / Tex_0x490). Each palette is preceded by
  * PAD(8); DL_0x0760 loads sub_0x58 as a TLUT. */
@@ -50,9 +59,9 @@ u8 dCaptainSpecial3_Tex_0x490[512] = {
 
 /* MObjSub-list head @ 0x690 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dCaptainSpecial3_FalconPunchMObjSub_MObjSub_real below). */
-MObjSub **dCaptainSpecial3_FalconPunchMObjSub_MObjSub[1] = {
-	NULL,
-};
+/* TODO: data.inc.c — block at 0x690 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dCaptainSpecial3_FalconPunchMObjSub_MObjSub[1] = { (u32)dCaptainSpecial3_gap_0x0708_sub_0x10 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
 void *dCaptainSpecial3_FalconPunchMObjSub_MObjSub_sprites[3] = {

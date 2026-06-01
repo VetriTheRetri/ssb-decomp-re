@@ -8,6 +8,25 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (24 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dLBTransitionCheck_DL_0x16C8[];
+extern Vtx dLBTransitionCheck_Vtx_0x0000_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0180_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0300_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0480_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0600_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0780_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0900_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0A80_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0C00_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0D40_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x0EA0_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x1000_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x1140_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x1280_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x13E0_Vtx[];
+extern Vtx dLBTransitionCheck_Vtx_0x1540_Vtx[];
 Vtx dLBTransitionCheck_Vtx_0x0000_Vtx[24] = {
 	#include <LBTransitionCheck/Vtx_0x0000.vtx.inc.c>
 };

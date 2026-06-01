@@ -4,6 +4,12 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern FTModelPart dGDonkeyMain_modelparts_desc_0x058[];
+extern FTModelPart dGDonkeyMain_modelparts_desc_0x0A8[];
+extern FTModelPart dGDonkeyMain_modelparts_desc_0x120[];
+extern FTThrownStatus dGDonkeyMain_thrown_status[];
+
 extern u32 dDonkeyMainMotion_EggLay_0x0000[];
 extern DObjDesc dDonkeyModel_JointTree[];
 extern DObjDesc dDonkeyModel_JointTree_0x6EC0[];
@@ -182,14 +188,17 @@ FTThrownStatus dGDonkeyMain_thrown_status[54] = {
 	{                          -1, nFTCommonStatusThrownCommon },
 };
 
-/* @ 0x03A8, 20 bytes: FTAttributes.sub_0x3A8 target (was dGDonkeyMain_pre+0x3A8) */
-int *dGDonkeyMain_stock_luts[5] = {
-	(int*)0x00EB0018,
-	(int*)0x00EC0022,
-	(int*)0x00ED002C,
-	(int*)0x00EE0036,
-	(int*)0x00EF0040,
-};
+/* TODO: data.inc.c — block at 0x3A8 was int[5]; contains 5 embedded chain pointer(s) split out below */
+u32 dGDonkeyMain_stock_luts[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x058 + 0x8 };
+
+u32 dGDonkeyMain_data_0x03AC[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x058 + 0x30 };
+
+u32 dGDonkeyMain_data_0x03B0[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A8 + 0x8 };
+
+u32 dGDonkeyMain_data_0x03B4[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A8 + 0x30 };
+
+u32 dGDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A8 + 0x58 };
+
 
 /* @ 0x03BC, 12 bytes: FTAttributes.sprites target (was dGDonkeyMain_pre+0x3BC) */
 FTSprites dGDonkeyMain_sprites = {
@@ -295,8 +304,8 @@ FTAttributes dGDonkeyMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dGDonkeyMain_hiddenparts, /* hiddenparts */
 	&dGDonkeyMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)((u8 *)&dGDonkeyMain_modelparts_desc_0x0A8 + 0x68), /* dobj_lookup */
+	{ (void *)((u8 *)&dGDonkeyMain_attr + 0x218), (void *)((u8 *)&dGDonkeyMain_attr + 0x638), (void *)((u8 *)&dGDonkeyMain_attr + 0xA68), (void *)((u8 *)&dGDonkeyMain_attr + 0xE98), (void *)((u8 *)&dGDonkeyMain_attr + 0x12C8), (void *)((u8 *)&dGDonkeyMain_attr + 0x16E8), (void *)((u8 *)&dGDonkeyMain_attr + 0x1B08), (void *)((u8 *)&dGDonkeyMain_attr + 0x1F18) }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	152.787f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

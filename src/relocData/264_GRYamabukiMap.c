@@ -14,19 +14,19 @@ extern u8 dStageYamabukiFile2_Tex_0x28F0[];
 extern u8 dStageYamabukiFile2_Tex_0x1BA0[];
 extern u8 dStageYamabukiFile2_Tex_0x2360[];
 extern u8 dStageYamabukiFile2_Tex_0x0460[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x0360[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x03F0[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x0790[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x0820[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x0EA0[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x0F30[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x17D0[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x1990[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x1A20[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x2180[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x2340[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x23D0[];
-extern u32 dStageYamabukiFile3_AnimJoint_0x2A50[];
+extern u32 dStageYamabukiFile3_DObjDesc_0x0360[];
+extern u32 dStageYamabukiFile3_mobjlink_0x03F0[];
+extern u32 dStageYamabukiFile3_DObjDesc_0x0790[];
+extern u32 dStageYamabukiFile3_mobjlink_0x0820[];
+extern u32 dStageYamabukiFile3_DObjDesc_0x0EA0[];
+extern u32 dStageYamabukiFile3_mobjlink_0x0F30[];
+extern u32 dStageYamabukiFile3_mobjlink_0x17D0[];
+extern u32 dStageYamabukiFile3_DObjDesc_0x1990[];
+extern u32 dStageYamabukiFile3_mobjlink_0x1A20[];
+extern u32 dStageYamabukiFile3_mobjlink_0x2180[];
+extern u32 dStageYamabukiFile3_DObjDesc_0x2340[];
+extern u32 dStageYamabukiFile3_mobjlink_0x23D0[];
+extern u32 dStageYamabukiFile3_DObjDesc_0x2A50[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -97,9 +97,9 @@ MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
 
 /* ITAttributes @ 0xBC */
 ITAttributes dGRYamabukiMap_GLucky_ItemAttributes[1] = {{
-	(void *)dStageYamabukiFile3_AnimJoint_0x0360,  /* data */
+	(void *)dStageYamabukiFile3_DObjDesc_0x0360,  /* data */
 	NULL,  /* p_mobjsubs */
-	(void *)dStageYamabukiFile3_AnimJoint_0x03F0,  /* anim_joints */
+	(void *)dStageYamabukiFile3_mobjlink_0x03F0,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -137,9 +137,9 @@ ITAttributes dGRYamabukiMap_GLucky_ItemAttributes[1] = {{
 
 /* ITAttributes @ 0x104 */
 ITAttributes dGRYamabukiMap_Marumine_ItemAttributes[1] = {{
-	(void *)dStageYamabukiFile3_AnimJoint_0x0790,  /* data */
+	(void *)dStageYamabukiFile3_DObjDesc_0x0790,  /* data */
 	NULL,  /* p_mobjsubs */
-	(void *)dStageYamabukiFile3_AnimJoint_0x0820,  /* anim_joints */
+	(void *)dStageYamabukiFile3_mobjlink_0x0820,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -185,9 +185,9 @@ ITAttackEvent dGRYamabukiMap_Marumine_AttackEvents[4] = {
 
 /* ITAttributes @ 0x16C */
 ITAttributes dGRYamabukiMap_Porygon_ItemAttributes[1] = {{
-	(void *)dStageYamabukiFile3_AnimJoint_0x0EA0,  /* data */
+	(void *)dStageYamabukiFile3_DObjDesc_0x0EA0,  /* data */
 	NULL,  /* p_mobjsubs */
-	(void *)dStageYamabukiFile3_AnimJoint_0x0F30,  /* anim_joints */
+	(void *)dStageYamabukiFile3_mobjlink_0x0F30,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -231,9 +231,9 @@ ITMonsterEvent dGRYamabukiMap_Porygon_HitParties[2] = {
 
 /* ITAttributes @ 0x1FC */
 ITAttributes dGRYamabukiMap_Hitokage_ItemAttributes[1] = {{
-	(void *)dStageYamabukiFile3_AnimJoint_0x1990,  /* data */
-	(void *)dStageYamabukiFile3_AnimJoint_0x17D0,  /* p_mobjsubs */
-	(void *)dStageYamabukiFile3_AnimJoint_0x1A20,  /* anim_joints */
+	(void *)dStageYamabukiFile3_DObjDesc_0x1990,  /* data */
+	(void *)dStageYamabukiFile3_mobjlink_0x17D0,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_mobjlink_0x1A20,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -301,9 +301,9 @@ WPAttributes dGRYamabukiMap_HitokageFlame_WeaponAttributes = {
 
 /* ITAttributes @ 0x278 */
 ITAttributes dGRYamabukiMap_Fushigibana_ItemAttributes[1] = {{
-	(void *)dStageYamabukiFile3_AnimJoint_0x2340,  /* data */
-	(void *)dStageYamabukiFile3_AnimJoint_0x2180,  /* p_mobjsubs */
-	(void *)dStageYamabukiFile3_AnimJoint_0x23D0,  /* anim_joints */
+	(void *)dStageYamabukiFile3_DObjDesc_0x2340,  /* data */
+	(void *)dStageYamabukiFile3_mobjlink_0x2180,  /* p_mobjsubs */
+	(void *)dStageYamabukiFile3_mobjlink_0x23D0,  /* anim_joints */
 	NULL,  /* p_matanim_joints */
 	0, 1, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
 	0, 0, 0,  /* attack_offset0 x/y/z */
@@ -347,7 +347,7 @@ ITMonsterEvent dGRYamabukiMap_Fushigibana_HitParties[2] = {
 
 /* WPAttributes @ 0x308 */
 WPAttributes dGRYamabukiMap_FushigibanaRazor_WeaponAttributes = {
-    (void *)dStageYamabukiFile3_AnimJoint_0x2A50,  /* data */
+    (void *)dStageYamabukiFile3_DObjDesc_0x2A50,  /* data */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */

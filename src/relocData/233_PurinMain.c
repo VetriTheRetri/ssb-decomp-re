@@ -2,11 +2,22 @@
 /* File size: 1984 bytes (0x7C0) */
 
 #include "relocdata_types.h"
+
+/* Step 3 forward decls auto-added by migrateStructShadows.py */
+extern u8 dPurinShieldPose_data0[];
+extern u8 dPurinShieldPose_data0_end[];
+extern u8 dPurinShieldPose_shield_anim_joint_1[];
+extern u8 dPurinShieldPose_shield_anim_joint_2[];
+extern u8 dPurinShieldPose_shield_anim_joint_3[];
+extern u8 dPurinShieldPose_shield_anim_joint_4[];
+extern u8 dPurinShieldPose_shield_anim_joint_5[];
+extern u8 dPurinShieldPose_shield_anim_joint_6[];
+extern u8 dPurinShieldPose_shield_anim_joint_7[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dPurinModel_JointTree[];
 extern DObjDesc dPurinModel_JointTree_0x40A0[];
-extern Vtx dPurinModel_JointVerts_Vtx[];
+extern u8 dPurinModel_JointVerts_Vtx[];
 extern Gfx dPurinModel_Joint_0x3D10_DisplayList[];
 extern Gfx dPurinModel_Joint_0x3D90_DisplayList[];
 extern Gfx dPurinModel_Joint_0x3E38_DisplayList[];
@@ -357,8 +368,8 @@ FTAttributes dPurinMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dPurinMain_hiddenparts, /* hiddenparts */
 	&dPurinMain_commonparts_container, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(void *)&dPurinShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dPurinShieldPose_data0_end, (void *)&dPurinShieldPose_shield_anim_joint_1, (void *)&dPurinShieldPose_shield_anim_joint_2, (void *)&dPurinShieldPose_shield_anim_joint_3, (void *)&dPurinShieldPose_shield_anim_joint_4, (void *)&dPurinShieldPose_shield_anim_joint_5, (void *)&dPurinShieldPose_shield_anim_joint_6, (void *)&dPurinShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	61.848f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

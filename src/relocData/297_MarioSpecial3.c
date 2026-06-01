@@ -4,7 +4,10 @@
 #include "relocdata_types.h"
 #include <sys/objtypes.h>
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Vtx dMarioSpecial3_JointVerts_Vtx[];
+extern u8 dMarioSpecial3_Tex_0x0058[];
+
 extern u16 dMarioSpecial3_palette_0x0008[];
 extern u16 dMarioSpecial3_palette_0x0030[];
 extern u16 *dMarioSpecial3_palettes_0x00DC[];

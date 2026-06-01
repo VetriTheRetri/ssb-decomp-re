@@ -8,6 +8,9 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (90 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dLBTransitionPaperAirplane_Vtx_0x0000_Vtx[];
 Vtx dLBTransitionPaperAirplane_Vtx_0x0000_Vtx[90] = {
 	#include <LBTransitionPaperAirplane/Vtx_0x0000.vtx.inc.c>
 };

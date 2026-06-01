@@ -9,6 +9,9 @@
 
 /* Raw data from file offset 0x0000 to 0x0F98 (3992 bytes) */
 /* Vtx: Vtx_0x0000_Vtx @ 0x0 (90 vertices) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Vtx dLBTransitionGakubuthi_Vtx_0x0000_Vtx[];
 Vtx dLBTransitionGakubuthi_Vtx_0x0000_Vtx[90] = {
 	#include <LBTransitionGakubuthi/Vtx_0x0000.vtx.inc.c>
 };

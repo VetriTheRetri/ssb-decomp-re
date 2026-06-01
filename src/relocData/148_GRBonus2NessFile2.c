@@ -9,6 +9,80 @@
 
 /* Raw data from file offset 0x0000 to 0x0B70 (2928 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages4_Lut_0x01D0_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0458_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x0588_palette[];
+extern u16 dBonus1CommonImages4_Lut_0x07B8_palette[];
+extern u8 dBonus1CommonImages4_Tex_0x05B0[];
+extern u8 dBonus1CommonImages4_Tex_0x07E0[];
+extern u8 dBonus1CommonImages4_Tex_0x09E8[];
+extern u8 dBonus1CommonImages4_Tex_0x0A70[];
+extern u16 dBonus1CommonImages4_Tex_0x0AB8[];
+extern u8 dBonus1CommonImages4_Tex_0x0AC8[];
+extern Gfx dGRBonus2NessFile2_DL_0x0480[];
+extern Gfx dGRBonus2NessFile2_DL_0x2640[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x100[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x140[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x180[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x1C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x200[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x240[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x280[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x2C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x300[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x340[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x380[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x3C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x40[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x400[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x440[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0x80[];
+extern Vtx dGRBonus2NessFile2_gap_0x0000_sub_0xC0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x100[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1060[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1120[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x11C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1260[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x12C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1300[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x13E0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x140[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1420[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1460[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x14E0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1520[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x15A0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1620[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1660[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x16E0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1720[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1740[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1780[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1800[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1840[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x18C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1900[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x1C0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x200[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x280[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x300[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x460[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x4E0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x5A0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x6E0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x7E0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x80[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x860[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0x960[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xA20[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xBA0[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xD00[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xD80[];
+extern Vtx dGRBonus2NessFile2_gap_0x0CD0_sub_0xF60[];
 Vtx dGRBonus2NessFile2_gap_0x0000[4] = {
 	#include <GRBonus2NessFile2/gap_0x0000.vtx.inc.c>
 };

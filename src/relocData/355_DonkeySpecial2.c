@@ -7,6 +7,14 @@
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dDonkeySpecial2_Lut_0x0008_palette[];
+extern u16 dDonkeySpecial2_Lut_0x0030_palette[];
+extern u8 dDonkeySpecial2_Tex_0x0058[];
+extern u8 dDonkeySpecial2_Tex_0x0260[];
+extern Vtx dDonkeySpecial2_Vtx_0x0460_Vtx[];
+extern Vtx dDonkeySpecial2_Vtx_0x0500_Vtx[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */

@@ -1092,7 +1092,9 @@ $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/reloc
 	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
 	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
 	$$(V)cp assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
-	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
+	$$(V)if [ "$$(AUTO_RELOC)" = "1" ] && ! grep -qx "$(1)" assets/$(VERSION)/auto_reloc_bad.txt 2>/dev/null; then \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION); \
+	elif [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi
 
@@ -1101,7 +1103,9 @@ $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/
 	@mkdir -p $$(@D)
 	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
 	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
-	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
+	$$(V)if [ "$$(AUTO_RELOC)" = "1" ] && ! grep -qx "$(1)" assets/$(VERSION)/auto_reloc_bad.txt 2>/dev/null; then \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION); \
+	elif [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi
 endef

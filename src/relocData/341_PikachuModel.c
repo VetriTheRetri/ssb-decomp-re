@@ -6,13 +6,86 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dPikachuModel_Joint_0x0040_post[];
+extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x2C[];
+extern u8 dPikachuModel_Tex_0x7350[];
+extern u8 dPikachuModel_Tex_0x7460[];
+extern u8 dPikachuModel_Tex_0x7560[];
+extern u8 dPikachuModel_Tex_0x80F8[];
+extern u8 dPikachuModel_ThunderTrail_tex[];
+extern Vtx dPikachuModel_Vtx_0x0B58_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x0D58_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x0D68_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x0DE8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x0E78_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x0EB8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1028_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1108_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x11B8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x12A8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1398_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1428_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1468_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1558_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1598_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x15F8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x16E8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1728_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1788_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x17D8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x1838_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x3F88_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x40F8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4108_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4188_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x41E8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4208_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x42D8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x43B8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4488_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x44C8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4508_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4568_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4588_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4628_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4658_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x46A8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4748_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4778_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x47C8_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x4828_Vtx[];
+extern Vtx dPikachuModel_Vtx_0x48A8_Vtx[];
+extern MObjSub **dPikachuModel_gap_0x0000[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x12E8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x1398[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x14A8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x15B8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x16C8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x1778[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x1828[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x18C8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x9A8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0x9E8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0xBA8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0xCA8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0xEA8[];
+extern Vtx dPikachuModel_gap_0x59B8_sub_0xF78[];
+extern Vtx dPikachuModel_gap_0x9498_sub_0x20[];
+extern Vtx dPikachuModel_gap_0x9634_sub_0x194[];
+extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAD8[];
+extern u32 dPikachuModel_gap_0x59B8_sub_0x6E4[];
+extern MObjSub *dPikachuModel_gap_0x9498_sub_0x18[];
 extern u32 dPikachuModel_gap_0x2B78_sub_0x714[];
 extern u16 dPikachuModel_palette_0x74E8[];
 extern u16 dPikachuModel_palette_0x7510[];
 extern u16 dPikachuModel_palette_0x7538[];
 extern u16 dPikachuModel_palette_0x80D0[];
-extern void *dPikachuModel_Joint_0x0040_post[];
-extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x2C[];
 extern u8 *dPikachuModel_Joint_0x0040_post_sprites_0x40[];
 extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x60[];
 extern u8 *dPikachuModel_Joint_0x0040_post_sprites_0x74[];
@@ -52,7 +125,6 @@ extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAB8[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAC0[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAC8[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAD0[];
-extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAD8[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAE0[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAE8[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xAF0[];
@@ -61,7 +133,6 @@ extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xB00[];
 extern MObjSub *dPikachuModel_Joint_0x0040_post_sub_0xB08[];
 extern u32 dPikachuModel_gap_0x2B78_sub_0x784[];
 extern u32 dPikachuModel_gap_0x2B78_sub_0x7F4[];
-extern Vtx dPikachuModel_gap_0x59B8_sub_0x1778[];
 extern Gfx dPikachuModel_DL_0x7180[];
 extern u16 dPikachuModel_gap_0x59B8_sub_0xB4C[];
 extern u16 dPikachuModel_gap_0x59B8_sub_0xB74[];
@@ -152,20 +223,14 @@ extern u8 dPikachuModel_Tex_0x81D0[];
 extern u16 dPikachuModel_palette_0x8180[];
 extern u8 dPikachuModel_Tex_0x8300[];
 
-/* +0x00..+0x2B (11 slots) — MObjSub-list dispatch heads + leading NULL */
-void *dPikachuModel_Joint_0x0040_post[11] = {
-	NULL,
-	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAE0,    /* slot 1 (+0x4) */
-	NULL,
-	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAE8,    /* slot 3 (+0xC) */
-	NULL,
-	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAF0,    /* slot 5 (+0x14) */
-	(void *)dPikachuModel_Joint_0x0040_post_sub_0xAF8,    /* slot 6 (+0x18) */
-	NULL,
-	(void *)dPikachuModel_Joint_0x0040_post_sub_0xB00,    /* slot 8 (+0x20) */
-	(void *)dPikachuModel_Joint_0x0040_post_sub_0xB08,    /* slot 9 (+0x24) */
-	NULL,
+/* TODO: data.inc.c — block at 0x40 was void[11]; contains 1 embedded chain pointer(s) split out below */
+u32 dPikachuModel_Joint_0x0040_post[1] = { (u32)dPikachuModel_Joint_0x0040_post_sub_0xAD8 };
+
+u8 dPikachuModel_data_0x0044[40] = {
+	/* TODO: data.inc.c */
+	#include <PikachuModel/data_0x0044.data.inc.c>
 };
+
 
 /* +0x2C..+0x3F (5 slots) — sub_0x128.palettes target */
 u16 *dPikachuModel_Joint_0x0040_post_palettes_0x2C[5] = {
@@ -2988,7 +3053,7 @@ AObjEvent32 **dPikachuModel_JointTree_0x5490_post[22] = {
 /* AObjEvent32** dispatch table @ 0x59B8 (5 slots, 3 non-NULL) */
 extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x878[];
 extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x87C[];
-extern AObjEvent32 **dPikachuModel_gap_0x59B8_sub_0x880[];
+extern u32 dPikachuModel_gap_0x59B8_sub_0x880[];
 AObjEvent32 **dPikachuModel_gap_0x59B8[5] = {
 	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x878,
 	NULL,
@@ -3678,15 +3743,14 @@ AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x87C[1] = {
 
 /* AObjEvent32** dispatch table @ 0x6238 (7 slots) */
 extern MObjSub *dPikachuModel_gap_0x59B8_sub_0x998[];
-AObjEvent32 **dPikachuModel_gap_0x59B8_sub_0x880[7] = {
-	NULL,
-	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x764,
-	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x7D0,
-	NULL,
-	NULL,
-	NULL,
-	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x998,
+/* TODO: data.inc.c — block at 0x6238 was AObjEvent32[7]; contains 1 embedded chain pointer(s) split out below */
+u32 dPikachuModel_gap_0x59B8_sub_0x880[1] = { (u32)dPikachuModel_gap_0x59B8_sub_0x6E4 };
+
+u8 dPikachuModel_data_0x623C[24] = {
+	/* TODO: data.inc.c */
+	#include <PikachuModel/data_0x623C.data.inc.c>
 };
+
 
 /* Palette pointer array @ 0x6254 (3 entries) — sub_0x8A8.palettes target */
 u16 *dPikachuModel_gap_0x59B8_sub_0x89C[3] = {
@@ -4178,9 +4242,9 @@ u8 dPikachuModel_Tex_0x9020[1024] = {
 
 /* MObjSub-list head @ 0x9420 — 6-entry MObjSub** array.
  * The real MObjSub data starts at +0x18 (dPikachuModel_ThunderTrailMObjSub_MObjSub_real below). */
-MObjSub **dPikachuModel_ThunderTrailMObjSub_MObjSub[1] = {
-	NULL,
-};
+/* TODO: data.inc.c — block at 0x9420 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
+u32 dPikachuModel_ThunderTrailMObjSub_MObjSub[1] = { (u32)dPikachuModel_gap_0x9498_sub_0x18 };
+
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
 void *dPikachuModel_ThunderTrailMObjSub_MObjSub_sprites[5] = {

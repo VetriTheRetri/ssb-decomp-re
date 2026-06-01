@@ -6,11 +6,261 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dMVCommon_DL_0x1C018[];
+extern Gfx dMVCommon_DL_0x21740[];
+extern Gfx dMVCommon_DL_0x22160[];
+extern u16 dMVCommon_Lut213_0x03B8[];
+extern u16 dMVCommon_Lut227_0x01E8[];
+extern u16 dMVCommon_Lut_0x0008_palette[];
+extern u16 dMVCommon_Lut_0x0030_palette[];
+extern u16 dMVCommon_Lut_0x0080_palette[];
+extern u16 dMVCommon_Lut_0x00A8_palette[];
+extern u16 dMVCommon_Lut_0x00D0_palette[];
+extern u16 dMVCommon_Lut_0x00F8_palette[];
+extern u16 dMVCommon_Lut_0x0120_palette[];
+extern u16 dMVCommon_Lut_0x0148_palette[];
+extern u16 dMVCommon_Lut_0x0170_palette[];
+extern u16 dMVCommon_Lut_0x0198_palette[];
+extern u16 dMVCommon_Lut_0x01C0_palette[];
+extern u16 dMVCommon_Lut_0x0598_palette[];
+extern u16 dMVCommon_Lut_0x05C0_palette[];
+extern u16 dMVCommon_Lut_0x05E8_palette[];
+extern u16 dMVCommon_Lut_0x0610_palette[];
+extern u8 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Tex_0x0030[];
+extern Vtx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Vtx_0x0070[];
+extern Vtx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Vtx_0x00B0[];
+extern Vtx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Vtx_0x02A0[];
+extern u16 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_palette_0x0008[];
+extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x051C[];
+extern u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x005C[];
+extern u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x0264[];
+extern Vtx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Vtx_0x0364[];
+extern Vtx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Vtx_0x0454[];
+extern Vtx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Vtx_0x0494[];
+extern u16 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x000C[];
+extern u16 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_palette_0x0034[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FAC8[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FBD0[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FC18[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FC60[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FCE8[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FD30[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FD78[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FDC0[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FE08[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x1FF90[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x20058[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x200A0[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x20168[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x20370[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x203B8[];
+extern u8 dMVCommon_RoomBossShadow_Tex_0x20400[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1F998[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1F9C0[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1F9E8[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1FA10[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1FA28[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1FA50[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1FA78[];
+extern u16 dMVCommon_RoomBossShadow_palette_0x1FAA0[];
+extern Vtx dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[32];
+extern Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F5B0[];
+extern Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F600[];
+extern Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F610[];
+extern Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F6D0[];
+extern Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F770[];
+extern Vtx dMVCommon_RoomCloseUpEffectGround_Vtx_0x1F780[];
+extern u8 dMVCommon_RoomDeskGround_Tex_0x22688[];
+extern u8 dMVCommon_RoomDeskGround_Tex_0x22A90[];
+extern u8 dMVCommon_RoomHaze_Tex_0x0268[];
+extern u8 dMVCommon_RoomHaze_Tex_0x0370[];
+extern u8 dMVCommon_RoomHaze_Tex_0x0478[];
+extern Vtx dMVCommon_RoomHaze_Vtx_0x0878[];
+extern Vtx dMVCommon_RoomHaze_Vtx_0x08F8[];
+extern Vtx dMVCommon_RoomHaze_Vtx_0x0938[];
+extern Vtx dMVCommon_RoomHaze_Vtx_0x09F8[];
+extern Vtx dMVCommon_RoomHaze_Vtx_0x0A38[];
+extern u16 dMVCommon_RoomHaze_palette_0x0020[];
+extern u16 dMVCommon_RoomHaze_palette_0x0038[];
+extern u16 dMVCommon_RoomHaze_palette_0x0060[];
+extern Gfx dMVCommon_RoomHaze_post[];
+extern u8 dMVCommon_RoomLamp_Tex_0xC380[];
+extern u8 dMVCommon_RoomLamp_Tex_0xC408[];
+extern u8 dMVCommon_RoomLamp_Tex_0xC450[];
+extern Vtx dMVCommon_RoomLamp_Vtx_0xC550[];
+extern Vtx dMVCommon_RoomLamp_Vtx_0xC590[];
+extern Vtx dMVCommon_RoomLamp_Vtx_0xC5D0[];
+extern u16 dMVCommon_RoomLamp_palette_0xC308[];
+extern u16 dMVCommon_RoomLamp_palette_0xC330[];
+extern u16 dMVCommon_RoomLamp_palette_0xC358[];
+extern Vtx dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434[];
+extern u8 dMVCommon_RoomLogo_Tex_0x1C568[];
+extern u8 dMVCommon_RoomOutside_DisplayList_Tex_0x0028[];
+extern Vtx dMVCommon_RoomOutside_DisplayList_Vtx_0x0428[];
+extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x029C[];
+extern u8 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Tex_0x0014[];
+extern Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0034[];
+extern Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0104[];
+extern Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0144[];
+extern Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0184[];
+extern u8 dMVCommon_RoomSnap_Tex_0x1CB98[];
+extern u8 dMVCommon_RoomSnap_Tex_0x1CCA0[];
+extern Vtx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x106C[];
+extern Vtx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x10FC[];
+extern Vtx dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x113C[];
+extern u8 dMVCommon_RoomSpotlight_Tex_0x22F78[];
+extern u8 dMVCommon_RoomSpotlight_Tex_0x23780[];
+extern u8 dMVCommon_RoomTissues_Tex_0x17C48[];
+extern u8 dMVCommon_RoomTissues_Tex_0x18C50[];
+extern u8 dMVCommon_RoomTissues_Tex_0x19C58[];
+extern u8 dMVCommon_RoomTissues_Tex_0x1AC60[];
+extern u8 dMVCommon_RoomTissues_Tex_0xCD38[];
+extern u8 dMVCommon_RoomTissues_Tex_0xD240[];
+extern u8 dMVCommon_Tex_0x0638[];
+extern u8 dMVCommon_Tex_0x0740[];
+extern u8 dMVCommon_Tex_0x0F48[];
+extern u8 dMVCommon_Tex_0x0F48_at_0x88[];
+extern u8 dMVCommon_Tex_0x1058[];
+extern u8 dMVCommon_Tex_0x10E0[];
+extern u8 dMVCommon_Tex_0x1128[];
+extern u8 dMVCommon_Tex_0x1230[];
+extern u8 dMVCommon_Tex_0x1338[];
+extern u8 dMVCommon_Tex_0x1440[];
+extern u8 dMVCommon_Tex_0x14C8[];
+extern u8 dMVCommon_Tex_0x16D0[];
+extern u8 dMVCommon_Tex_0x18D8[];
+extern u8 dMVCommon_Tex_0x1960[];
+extern u8 dMVCommon_Tex_0x19E8[];
+extern u8 dMVCommon_Tex_0x21F0[];
+extern u8 dMVCommon_Tex_0x2E00[];
+extern u8 dMVCommon_Tex_0x2E88[];
+extern u8 dMVCommon_Tex_0x2EE8[];
+extern u8 dMVCommon_Tex_0x30F0[];
+extern u8 dMVCommon_Tex_0x32F8[];
+extern u8 dMVCommon_Tex_0x8EB0[];
+extern u16 dMVCommon_gap_0x0050_sub_0x8[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x10[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x110[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x130[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x150[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x170[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x190[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x1B0[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x1F0[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x230[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x270[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x2B0[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x50[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x60[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x80[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0x90[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0xB0[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0xD0[];
+extern Vtx dMVCommon_gap_0x1BCD8_sub_0xF0[];
+extern Vtx dMVCommon_gap_0x1DD18_sub_0x18[];
+extern Vtx dMVCommon_gap_0x1DD18_sub_0x58[];
+extern Vtx dMVCommon_gap_0x1F170_sub_0x10[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x1050[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x1070[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x10A0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x10D0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x10F0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x1170[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x11B0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x2A0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x320[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x360[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x3A0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x4C0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x540[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x580[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x600[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x680[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x720[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x7C0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0x940[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xA20[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xA60[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xAB0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xAF0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xB70[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xBB0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xCB0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xD10[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xE10[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xE50[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xE90[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xED0[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xF10[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xF90[];
+extern Vtx dMVCommon_gap_0x204F8_sub_0xFD0[];
+extern Vtx dMVCommon_gap_0x22D08_sub_0x90[];
+extern Vtx dMVCommon_gap_0x22D08_sub_0xD0[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1028[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1068[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x10A8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x10E8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1168[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x11A8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x11E8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1228[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1268[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1328[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x13A8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x14B8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x14F8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1568[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x15A8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x15E8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1628[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x1668[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x3D8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x418[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x518[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x5D8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x608[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x6E8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x7A8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x7D8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x918[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x988[];
+extern Vtx dMVCommon_gap_0x4370_sub_0x9D8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xA88[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xAC8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xB08[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xB48[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xB88[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xC08[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xC48[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xC88[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xD08[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xD88[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xDC8[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xE08[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xE48[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xF08[];
+extern Vtx dMVCommon_gap_0x4370_sub_0xFE8[];
+extern Vtx dMVCommon_gap_0x8E7C_sub_0x834[];
+extern u16 dMVCommon_gap_0x8E7C_sub_0xC[];
+extern MObjSub *dMVCommon_gap_0x1BCD8_sub_0x8[];
+extern MObjSub *dMVCommon_gap_0x1DD18_sub_0x10[];
+extern MObjSub *dMVCommon_gap_0x1F170_sub_0x8[];
+extern MObjSub *dMVCommon_gap_0x204F8_sub_0x278[];
+extern MObjSub *dMVCommon_gap_0x204F8_sub_0x280[];
+extern MObjSub *dMVCommon_gap_0x204F8_sub_0x290[];
+extern MObjSub *dMVCommon_gap_0x22D08_sub_0x80[];
+extern MObjSub *dMVCommon_gap_0x4370_sub_0x3A0[];
+extern MObjSub *dMVCommon_gap_0x4370_sub_0x3A8[];
+extern MObjSub *dMVCommon_gap_0x4370_sub_0x3B0[];
 extern u8 dMVCommon_gap_0x1DD18[];
 extern u8 dMVCommon_gap_0x1F170[];
 
-extern MObjSub *dMVCommon_gap_0x1DD18_sub_0x10[];
-extern MObjSub *dMVCommon_gap_0x1F170_sub_0x8[];
 
 extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data[];
 extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x14[];
@@ -3150,10 +3400,14 @@ u8 dMVCommon_RoomTissues_Tex_0x1AC60[0x1000] = {
 
 /* MObjSub-list head @ 0x1bc60 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dMVCommon_RoomLogoMObjSub_MObjSub_real below). */
-MObjSub **dMVCommon_RoomLogoMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x1BC60 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u32 dMVCommon_RoomLogoMObjSub_MObjSub[1] = { (u32)dMVCommon_gap_0x1BCD8_sub_0x8 };
+
+u8 dMVCommon_data_0x1BC64[4] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/data_0x1BC64.data.inc.c>
 };
+
 
 /* The real MObjSub @ +0x8 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -3454,12 +3708,19 @@ u8 dMVCommon_RoomSnap_Tex_0x1CCA0[0x1000] = {
 
 /* MObjSub-list head @ 0x1dca0 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real below). */
-MObjSub **dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub[4] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x1DCA0 was MObjSub[4]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/RoomCloseUpEffectAirMObjSub_MObjSub.data.inc.c>
 };
+
+u32 dMVCommon_data_0x1DCA4[1] = { (u32)dMVCommon_gap_0x1DD18_sub_0x10 };
+
+u8 dMVCommon_data_0x1DCA8[8] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/data_0x1DCA8.data.inc.c>
+};
+
 
 /* The real MObjSub @ +0x10 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -3661,10 +3922,14 @@ u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_Tex_0xDC[0x1000] = {
 
 /* MObjSub-list head @ 0x1f0f8 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real below). */
-MObjSub **dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x1F0F8 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u8 dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub[4] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/RoomCloseUpEffectGroundMObjSub_MObjSub.data.inc.c>
 };
+
+u32 dMVCommon_data_0x1F0FC[1] = { (u32)dMVCommon_gap_0x1F170_sub_0x8 };
+
 
 /* The real MObjSub @ +0x8 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -3763,7 +4028,6 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
 extern u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x18[24];
-extern Vtx dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data_0x78[32];
 
 AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint[2] = {
 	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data,
@@ -4042,16 +4306,28 @@ u8 dMVCommon_RoomBossShadow_Tex_0x20400[0x80] = {
 
 /* MObjSub-list head @ 0x20480 — 8-entry MObjSub** array.
  * The real MObjSub data starts at +0x20 (dMVCommon_RoomDeskGroundMObjSub_MObjSub_real below). */
-MObjSub **dMVCommon_RoomDeskGroundMObjSub_MObjSub[8] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x20480 was MObjSub[8]; contains 3 embedded chain pointer(s) split out below */
+u32 dMVCommon_RoomDeskGroundMObjSub_MObjSub[1] = { (u32)dMVCommon_gap_0x204F8_sub_0x278 };
+
+u8 dMVCommon_data_0x20484[4] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/data_0x20484.data.inc.c>
 };
+
+u32 dMVCommon_data_0x20488[1] = { (u32)dMVCommon_gap_0x204F8_sub_0x280 };
+
+u8 dMVCommon_data_0x2048C[4] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/data_0x2048C.data.inc.c>
+};
+
+u32 dMVCommon_data_0x20490[1] = { (u32)dMVCommon_gap_0x204F8_sub_0x290 };
+
+u8 dMVCommon_data_0x20494[12] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/data_0x20494.data.inc.c>
+};
+
 
 /* The real MObjSub @ +0x20 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -4646,10 +4922,14 @@ u8 dMVCommon_RoomDeskGround_Tex_0x22A90[0x200] = {
 
 /* MObjSub-list head @ 0x22c90 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dMVCommon_RoomSpotlightMObjSub_MObjSub_real below). */
-MObjSub **dMVCommon_RoomSpotlightMObjSub_MObjSub[2] = {
-	NULL,
-	NULL,
+/* TODO: data.inc.c — block at 0x22C90 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
+u32 dMVCommon_RoomSpotlightMObjSub_MObjSub[1] = { (u32)dMVCommon_gap_0x22D08_sub_0x80 };
+
+u8 dMVCommon_data_0x22C94[4] = {
+	/* TODO: data.inc.c */
+	#include <MVCommon/data_0x22C94.data.inc.c>
 };
+
 
 /* The real MObjSub @ +0x8 (was folded into the prior
  * MObjSub-typed declaration). */

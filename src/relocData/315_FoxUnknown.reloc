@@ -1,8 +1,0 @@
-# Relocation metadata for file 315 (FoxUnknown)
-# Four intern chain entries — Gfx DL pointers into the local palette,
-# texture, and Vtx arrays.
-
-intern dFoxUnknown_DL+0x5C dFoxUnknown_palette
-intern dFoxUnknown_DL+0x8C dFoxUnknown_Tex
-intern dFoxUnknown_DL+0xAC dFoxUnknown_Vtx
-intern dFoxUnknown_DL+0xF4 dFoxUnknown_Vtx+0x200

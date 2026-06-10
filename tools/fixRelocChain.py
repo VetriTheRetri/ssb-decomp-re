@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 """
-Rebuild relocation chains in a compiled relocData binary using symbolic labels.
+Rebuild relocation chains in a compiled relocData binary from the .o's
+relocation records.
 
-Two modes:
-    1. .reloc-driven (legacy): reads <reloc_path> for symbolic ptr/target
-       label pairs and resolves them via the .o's symbol table.
-    2. .o-driven (--auto): walks the .o's R_MIPS_32 entries in .rel.data,
-       classifies each by symbol class (defined locally => intern,
-       undefined => extern), reads in-place addends from .data, and
-       resolves extern symbols via a lazily-built global symbol index
-       across every reloc .o under build/<version>/.
+Walks the .o's R_MIPS_32 entries in .rel.data, reads in-place addends
+from .data, resolves extern symbols via the global symbol index
+(--sym-index, or a scan of every reloc .o under build/<version>/), and
+classifies intern vs extern per slot by walking the original baserom
+binary's two chains. After patching, the output must byte-match the
+original extracted binary or the tool exits nonzero with diagnostics.
 
 Usage:
-    fixRelocChain.py <binary_path> <reloc_path> <object_path> [--file-id N]
-    fixRelocChain.py <binary_path> <object_path> --auto [--file-id N]
+    fixRelocChain.py <binary_path> <object_path> [--file-id N]
+                     [--version us|jp] [--sym-index PATH]
 """
 
 import os
@@ -395,149 +394,6 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
     return intern, extern, unresolved, diagnostics
 
 
-_extern_symbol_cache = {}  # {(version, file_id): {sym_name: offset}}
-_name_to_fid_cache = {}    # {version: {file_name: file_id}}
-
-
-def _load_name_to_fid(version):
-    """Build a {target_name: fid} map by parsing relocFileDescriptions.<v>.txt.
-    Used to translate a US fid (from a shared `# -> file NNN (Name)` comment)
-    to the corresponding JP fid (since fids differ between versions but
-    target names match)."""
-    if version in _name_to_fid_cache:
-        return _name_to_fid_cache[version]
-    path = os.path.join(PROJECT_DIR, 'tools', f'relocFileDescriptions.{version}.txt')
-    m = {}
-    if os.path.exists(path):
-        for ln in open(path):
-            x = re.match(r'^-(\d+):\s*(.+)\s*$', ln)
-            if x:
-                m[x.group(2).strip()] = int(x.group(1))
-    _name_to_fid_cache[version] = m
-    return m
-
-
-def _load_extern_symbols(file_id, version):
-    """Load and cache the symbol table for another relocData file's .o so
-    cross-file extern labels can resolve to byte offsets in the target."""
-    key = (version, file_id)
-    if key in _extern_symbol_cache:
-        return _extern_symbol_cache[key]
-    o_path = os.path.join(PROJECT_DIR, 'build', version, 'src', 'relocData',
-                           '.build', f'{file_id}.o')
-    if not os.path.exists(o_path):
-        _extern_symbol_cache[key] = None
-        return None
-    syms = read_symbol_table(o_path)
-    _extern_symbol_cache[key] = syms
-    return syms
-
-
-def resolve_label(label, symbols, extern_file_id=None, version=None):
-    """Resolve a label like 'varname+0x34' to a byte offset.
-
-    Supports:
-        varname         -> symbols[varname]
-        varname+0x34    -> symbols[varname] + 0x34
-        0x1234          -> 0x1234  (raw hex fallback)
-
-    If `extern_file_id` is given (from a `# -> file NNN` comment on an extern
-    line) and the label isn't found in `symbols`, falls back to the symbol
-    table of `<build>/<version>/src/relocData/.build/<extern_file_id>.o`.
-    The result is then a byte offset within THAT file's binary, which is
-    exactly what the chain encoder needs for a cross-file pointer.
-    """
-    # Raw hex offset (backwards compat)
-    if re.match(r'^0x[0-9a-fA-F]+$', label):
-        return int(label, 16)
-
-    # label+offset
-    m = re.match(r'^(.+)\+0x([0-9a-fA-F]+)$', label)
-    if m:
-        name = m.group(1)
-        rel_offset = int(m.group(2), 16)
-        if name in symbols:
-            return symbols[name] + rel_offset
-        # Cross-file fallback for externs.
-        if extern_file_id is not None and version is not None:
-            ext = _load_extern_symbols(extern_file_id, version)
-            if ext is not None and name in ext:
-                return ext[name] + rel_offset
-        print(f"Error: symbol '{name}' not found in object file", file=sys.stderr)
-        sys.exit(1)
-
-    # plain label
-    if label in symbols:
-        return symbols[label]
-    if extern_file_id is not None and version is not None:
-        ext = _load_extern_symbols(extern_file_id, version)
-        if ext is not None and label in ext:
-            return ext[label]
-
-    print(f"Error: cannot resolve label '{label}'", file=sys.stderr)
-    sys.exit(1)
-
-
-def parse_reloc_metadata(reloc_path, symbols, version=None):
-    """Parse .reloc file, resolving labels to byte offsets.
-
-    Returns (intern_entries, extern_entries) where each is a list of
-    (ptr_byte_offset, target_byte_offset).
-
-    Inline `# -> file NNN (Name)` comments on extern lines are used to
-    locate the target file's `.o` for cross-file symbol resolution. The
-    comment is purely metadata for readability — the only thing the parser
-    needs from it is the integer file ID.
-    """
-    intern_entries = []
-    extern_entries = []
-
-    extern_hint_re = re.compile(r'#\s*->\s*file\s+(\d+)(?:\s*\(([^)]+)\))?')
-    name_to_fid = _load_name_to_fid(version) if version else {}
-
-    with open(reloc_path) as f:
-        for line in f:
-            extern_fid = None
-            # Pull out the file-id and (optional) name hint from the inline
-            # comment. The fid in the comment is whatever version's reloc
-            # generator wrote; for shared US/JP relocs it's the US fid. If
-            # the comment carries a name and the current version's fid for
-            # that name differs from the literal fid, prefer the name lookup
-            # (so JP builds reading a US-flavored shared reloc still work).
-            m = extern_hint_re.search(line)
-            if m:
-                literal_fid = int(m.group(1))
-                hint_name = m.group(2)
-                if hint_name and hint_name in name_to_fid:
-                    extern_fid = name_to_fid[hint_name]
-                else:
-                    extern_fid = literal_fid
-            # Strip inline comments for parsing.
-            hash_idx = line.find('#')
-            if hash_idx >= 0:
-                line = line[:hash_idx]
-            line = line.strip()
-            if not line:
-                continue
-            parts = line.split()
-            if len(parts) != 3:
-                continue
-
-            chain_type, ptr_label, target_label = parts
-            # ptr_label is always in this file's binary; target_label may
-            # cross to another file when chain_type == 'extern'.
-            ptr_off = resolve_label(ptr_label, symbols)
-            tgt_fid = extern_fid if chain_type == 'extern' else None
-            target_off = resolve_label(target_label, symbols, tgt_fid, version)
-
-            if chain_type == 'intern':
-                intern_entries.append((ptr_off, target_off))
-            elif chain_type == 'extern':
-                extern_entries.append((ptr_off, target_off))
-
-    return intern_entries, extern_entries
-
-
 def build_chain(data, entries):
     """Rebuild a relocation chain in the binary data.
 
@@ -560,28 +416,19 @@ def build_chain(data, entries):
     return entries[0][0] // 4
 
 
-def fixup_binary(binary_path, reloc_path, obj_path, file_id=None, version=None,
-                 auto=False):
-    """Patch relocation chains.
+def fixup_binary(binary_path, obj_path, file_id=None, version=None):
+    """Patch relocation chains derived from the .o's relocation records,
+    then verify the result byte-for-byte against the original binary."""
 
-    If auto=True, derive entries from the .o's .rel.data instead of from
-    reloc_path (which may be None).
-    """
-
-    diagnostics = []
-    if auto:
-        intern_entries, extern_entries, unresolved, diagnostics = \
-            derive_entries_from_obj(obj_path, version, strict=False, fid=file_id)
-        if unresolved:
-            print(f"  WARNING: {len(unresolved)} dangling extern(s) "
-                  f"skipped in {os.path.basename(obj_path)}:", file=sys.stderr)
-            for off, sym in unresolved[:5]:
-                print(f"    .data+0x{off:X} -> {sym}", file=sys.stderr)
-            if len(unresolved) > 5:
-                print(f"    ... and {len(unresolved)-5} more", file=sys.stderr)
-    else:
-        symbols = read_symbol_table(obj_path)
-        intern_entries, extern_entries = parse_reloc_metadata(reloc_path, symbols, version)
+    intern_entries, extern_entries, unresolved, diagnostics = \
+        derive_entries_from_obj(obj_path, version, strict=False, fid=file_id)
+    if unresolved:
+        print(f"  WARNING: {len(unresolved)} dangling extern(s) "
+              f"skipped in {os.path.basename(obj_path)}:", file=sys.stderr)
+        for off, sym in unresolved[:5]:
+            print(f"    .data+0x{off:X} -> {sym}", file=sys.stderr)
+        if len(unresolved) > 5:
+            print(f"    ... and {len(unresolved)-5} more", file=sys.stderr)
 
     with open(binary_path, 'rb') as f:
         data = bytearray(f.read())
@@ -598,7 +445,7 @@ def fixup_binary(binary_path, reloc_path, obj_path, file_id=None, version=None,
     # build here, with chain diagnostics for triage. The original may
     # carry trailing bytes (extern fid table) beyond the .data extract,
     # so only the patched length is compared.
-    if auto and file_id is not None and version is not None:
+    if file_id is not None and version is not None:
         orig = _baserom_data(version, file_id)
         if orig is not None and len(orig) >= len(data):
             if orig[:len(data)] != bytes(data):
@@ -640,18 +487,17 @@ def fixup_binary(binary_path, reloc_path, obj_path, file_id=None, version=None,
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Rebuild relocation chains using symbolic labels")
+    parser = argparse.ArgumentParser(
+        description="Rebuild relocation chains from the .o's relocations")
     parser.add_argument("binary_path", help="Compiled binary (.vpk0.bin or .bin)")
-    parser.add_argument("reloc_path", nargs='?', default=None,
-                        help="Relocation metadata file (.reloc); omit with --auto")
-    parser.add_argument("obj_path", help="Compiled object file (.o) for symbol resolution")
-    parser.add_argument("--file-id", type=int, default=None, help="File ID for CSV update")
+    parser.add_argument("obj_path", help="Compiled object file (.o)")
+    parser.add_argument("--file-id", type=int, default=None,
+                        help="File ID (selects the baserom chain info row)")
     parser.add_argument("--version", default="us", choices=("us", "jp"),
                         help="Selects assets/<v>/relocData.csv")
     parser.add_argument("--auto", action="store_true",
-                        help="Derive chain entries from the .o's .rel.data "
-                             "instead of reading reloc_path. The reloc_path "
-                             "argument is ignored when set.")
+                        help="Accepted for compatibility; chain derivation is "
+                             "always .o-driven.")
     parser.add_argument("--sym-index", default=None,
                         help="Path to the global symbol index file generated "
                              "by genRelocSymIndex.py; avoids rescanning every "
@@ -661,11 +507,8 @@ def main():
     if args.sym_index:
         set_sym_index_path(args.sym_index)
 
-    if not args.auto and args.reloc_path is None:
-        parser.error("reloc_path is required unless --auto is given")
-
-    fixup_binary(args.binary_path, args.reloc_path, args.obj_path,
-                 args.file_id, args.version, auto=args.auto)
+    fixup_binary(args.binary_path, args.obj_path,
+                 args.file_id, args.version)
 
 
 if __name__ == "__main__":

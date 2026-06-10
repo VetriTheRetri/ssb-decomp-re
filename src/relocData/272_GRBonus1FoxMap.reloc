@@ -1,8 +1,0 @@
-# Relocation metadata for file 272
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dGRBonus1FoxMap_header dGRBonus1FoxMap_pad+0x9B8  # -> file 125 (GRBonus1FoxFile2)
-extern dGRBonus1FoxMap_header+0x10 dGRBonus1FoxMap_pad+0x1FC0  # -> file 125 (GRBonus1FoxFile2)
-extern dGRBonus1FoxMap_header+0x14 dGRBonus1FoxMap_pad+0x2388  # -> file 125 (GRBonus1FoxFile2)
-extern dGRBonus1FoxMap_header+0x40 dGRBonus1FoxMap_pad+0x2364  # -> file 125 (GRBonus1FoxFile2)
-extern dGRBonus1FoxMap_header+0x48 dGRBonus1FoxMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

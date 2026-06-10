@@ -1,3 +1,0 @@
-# Relocation metadata for file 59
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table

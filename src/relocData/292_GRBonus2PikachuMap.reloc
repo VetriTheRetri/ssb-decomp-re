@@ -1,8 +1,0 @@
-# Relocation metadata for file 292
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dGRBonus2PikachuMap_header dGRBonus2PikachuMap_pad+0xCB0  # -> file 146 (GRBonus2PikachuFile2)
-extern dGRBonus2PikachuMap_header+0x10 dGRBonus2PikachuMap_pad+0x35E8  # -> file 146 (GRBonus2PikachuFile2)
-extern dGRBonus2PikachuMap_header+0x14 dGRBonus2PikachuMap_pad+0x4178  # -> file 146 (GRBonus2PikachuFile2)
-extern dGRBonus2PikachuMap_header+0x40 dGRBonus2PikachuMap_pad+0x415C  # -> file 146 (GRBonus2PikachuFile2)
-extern dGRBonus2PikachuMap_header+0x48 dGRBonus2PikachuMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

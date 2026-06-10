@@ -1,9 +1,0 @@
-# Relocation metadata for file 268 (JP binary walk)
-# Format: <type> <ptr_label> <target_label>
-# Labels resolved via src/relocData/268_GRZakoMap.reloc .o symbol table
-
-intern dGRZakoMap_header+0x84 dGRZakoMap_item_weights
-
-extern dGRZakoMap_header+0x10 dGRZakoMap_pad+0x40B4
-extern dGRZakoMap_header+0x40 dGRZakoMap_pad+0x42CC
-extern dGRZakoMap_header+0x48 dGRZakoMap_pad+0x26BCC

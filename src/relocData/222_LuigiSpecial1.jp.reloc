@@ -1,7 +1,0 @@
-# Relocation metadata for file 222 (JP binary walk)
-# Format: <type> <ptr_label> <target_label>
-# Labels resolved via src/relocData/222_LuigiSpecial1.reloc .o symbol table
-
-
-extern dLuigiSpecial1_Fireball_WeaponAttributes dLuigiSpecial1_Fireball_WeaponAttributes+0x1A8
-extern dLuigiSpecial1_Fireball_WeaponAttributes+0x4 dLuigiSpecial1_Fireball_WeaponAttributes+0xD8

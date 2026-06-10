@@ -1,5 +1,0 @@
-# Relocation metadata for file 222
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dLuigiSpecial1_Fireball_WeaponAttributes dLuigiSpecial1_Fireball_WeaponAttributes+0x1A8  # -> file 297 (MarioSpecial3)
-extern dLuigiSpecial1_Fireball_WeaponAttributes+0x4 dLuigiSpecial1_Fireball_WeaponAttributes+0xD8  # -> file 297 (MarioSpecial3)

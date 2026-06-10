@@ -1,8 +1,0 @@
-# Relocation metadata for file 240
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dNessSpecial1_PKFire_WeaponAttributes dNessSpecial1_PKFire_ItemAttributes+0x134  # -> file 336 (NessSpecial3)
-extern dNessSpecial1_PKFire_WeaponAttributes+0x4 dNessSpecial1_PKFire_WeaponAttributes  # -> file 336 (NessSpecial3)
-extern dNessSpecial1_PKFire_WeaponAttributes+0xC dNessSpecial1_PKFire_ItemAttributes+0x1AC  # -> file 336 (NessSpecial3)
-extern dNessSpecial1_PKFire_ItemAttributes dNessSpecial1_PKFire_ItemAttributes+0x9D4  # -> file 336 (NessSpecial3)
-extern dNessSpecial1_PKFire_ItemAttributes+0x8 dNessSpecial1_PKFire_ItemAttributes+0xABC  # -> file 336 (NessSpecial3)

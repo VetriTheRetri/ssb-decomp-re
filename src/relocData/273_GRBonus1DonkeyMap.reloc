@@ -1,8 +1,0 @@
-# Relocation metadata for file 273
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dGRBonus1DonkeyMap_header dGRBonus1DonkeyMap_pad+0x798  # -> file 126 (GRBonus1DonkeyFile2)
-extern dGRBonus1DonkeyMap_header+0x10 dGRBonus1DonkeyMap_pad+0x1E78  # -> file 126 (GRBonus1DonkeyFile2)
-extern dGRBonus1DonkeyMap_header+0x14 dGRBonus1DonkeyMap_pad+0x2138  # -> file 126 (GRBonus1DonkeyFile2)
-extern dGRBonus1DonkeyMap_header+0x40 dGRBonus1DonkeyMap_pad+0x2110  # -> file 126 (GRBonus1DonkeyFile2)
-extern dGRBonus1DonkeyMap_header+0x48 dGRBonus1DonkeyMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

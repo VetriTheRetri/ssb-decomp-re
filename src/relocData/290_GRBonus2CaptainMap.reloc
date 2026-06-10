@@ -1,8 +1,0 @@
-# Relocation metadata for file 290
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dGRBonus2CaptainMap_header dGRBonus2CaptainMap_pad+0xDF8  # -> file 144 (GRBonus2CaptainFile2)
-extern dGRBonus2CaptainMap_header+0x10 dGRBonus2CaptainMap_pad+0x40F0  # -> file 144 (GRBonus2CaptainFile2)
-extern dGRBonus2CaptainMap_header+0x14 dGRBonus2CaptainMap_pad+0x4B18  # -> file 144 (GRBonus2CaptainFile2)
-extern dGRBonus2CaptainMap_header+0x40 dGRBonus2CaptainMap_pad+0x4AFC  # -> file 144 (GRBonus2CaptainFile2)
-extern dGRBonus2CaptainMap_header+0x48 dGRBonus2CaptainMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

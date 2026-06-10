@@ -1,8 +1,0 @@
-# Relocation metadata for file 274
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dGRBonus1SamusMap_header dGRBonus1SamusMap_pad+0x8A8  # -> file 127 (GRBonus1SamusFile2)
-extern dGRBonus1SamusMap_header+0x10 dGRBonus1SamusMap_pad+0x17C0  # -> file 127 (GRBonus1SamusFile2)
-extern dGRBonus1SamusMap_header+0x14 dGRBonus1SamusMap_pad+0x1A48  # -> file 127 (GRBonus1SamusFile2)
-extern dGRBonus1SamusMap_header+0x40 dGRBonus1SamusMap_pad+0x1A2C  # -> file 127 (GRBonus1SamusFile2)
-extern dGRBonus1SamusMap_header+0x48 dGRBonus1SamusMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

@@ -1,8 +1,0 @@
-# Relocation metadata for file 279
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-extern dGRBonus1KirbyMap_header dGRBonus1KirbyMap_pad+0x9B8  # -> file 132 (GRBonus1KirbyFile2)
-extern dGRBonus1KirbyMap_header+0x10 dGRBonus1KirbyMap_pad+0x20A8  # -> file 132 (GRBonus1KirbyFile2)
-extern dGRBonus1KirbyMap_header+0x14 dGRBonus1KirbyMap_pad+0x2428  # -> file 132 (GRBonus1KirbyFile2)
-extern dGRBonus1KirbyMap_header+0x40 dGRBonus1KirbyMap_pad+0x2404  # -> file 132 (GRBonus1KirbyFile2)
-extern dGRBonus1KirbyMap_header+0x48 dGRBonus1KirbyMap_pad+0x26BE0  # -> file 119 (Bonus1CommonBackground)

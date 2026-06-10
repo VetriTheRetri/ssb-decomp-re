@@ -923,7 +923,6 @@ endif
 # relocData C-to-binary rules
 # Source structure:
 #   src/relocData/<id>_<Name>.manifest        - block manifest (committed)
-#   src/relocData/<id>_<Name>.reloc           - relocation metadata (committed)
 #   src/relocData/<Name>/<block>.sprite.c     - sprite struct definitions (committed)
 #   src/relocData/<Name>/<block>.data.c       - raw data arrays (committed)
 #   src/relocData/<Name>/<block>.dobjdesc.c   - DObjDesc arrays (committed)
@@ -989,7 +988,7 @@ RELOC_C_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
 # Subfolder name: prefer the version-specific RELOC_NAME (set by reloc_names mk),
 # fall back to stripping the literal "<fid>_" prefix from the source basename, or
 # finally "file_<fid>" if neither is available.
-# RELOC_BASENAME drives .reloc lookup and subfolder fallback — never use the
+# RELOC_BASENAME drives the subfolder fallback — never use the
 # version-specific override here (its .jp/.us suffix would break the basename).
 RELOC_BASENAME_$(1) := $$(basename $$(notdir $$(or $$(RELOC_MANIFEST_$(1)),$$(RELOC_LIST_$(1)),$$(RELOC_C_$(1)))))
 RELOC_SUB_$(1) := $$(or $$(RELOC_NAME_$(1)),$$(patsubst $(1)_%,%,$$(RELOC_BASENAME_$(1))),file_$(1))
@@ -1022,12 +1021,11 @@ else ifneq ($$(RELOC_MANIFEST_$(1)),)
 	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_MANIFEST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData
 else ifneq ($$(RELOC_LIST_$(1)),)
   # .spritelist is a marker — actual layout/names come from walking the ROM
-  # binary's reloc chain via tools/extractSpriteFile.py. The master .c, its
-  # companion .reloc, and every texture/palette .inc.c under the sprite
-  # subdir get regenerated whenever the spritelist file changes or the
-  # extract stamp advances. No hand-maintained .sprite.c wrappers needed.
+  # binary's reloc chain via tools/extractSpriteFile.py. The master .c and
+  # every texture/palette .inc.c under the sprite subdir get regenerated
+  # whenever the spritelist file changes or the extract stamp advances.
+  # No hand-maintained .sprite.c wrappers needed.
   RELOC_MASTER_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).c
-  RELOC_AUTO_RELOC_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).reloc
 
   # Order-only dependency on the extract stamp so relocSpriteTool.py /
   # extractRelocInc.py run first (they write inc.c files based on the
@@ -1035,7 +1033,7 @@ else ifneq ($$(RELOC_LIST_$(1)),)
   # overwrites those files with the binary-walked version — the two paths
   # produce byte-identical content for well-behaved sprites, but the
   # ordering makes sure our bytes are the ones that land on disk.
-  $$(RELOC_MASTER_$(1)) $$(RELOC_AUTO_RELOC_$(1)): $$(RELOC_LIST_$(1)) tools/extractSpriteFile.py tools/relocFileDescriptions.$(VERSION).txt assets/$(VERSION)/relocData/$(1).vpk0.bin | $$(RELOC_STAMP_$(1))
+  $$(RELOC_MASTER_$(1)): $$(RELOC_LIST_$(1)) tools/extractSpriteFile.py tools/relocFileDescriptions.$(VERSION).txt assets/$(VERSION)/relocData/$(1).vpk0.bin | $$(RELOC_STAMP_$(1))
 	$$(call print_3,Auto-extracting sprite file:,assets/$(VERSION)/relocData/$(1).vpk0.bin,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(PYTHON) tools/extractSpriteFile.py $(1) $$(RELOC_MASTER_$(1)) --version $(VERSION)
@@ -1117,10 +1115,11 @@ endif
 # src/relocData/<name>.c only re-expand the file that actually changed.
 all: $(RELOC_EXPAND_STAMPS)
 
-# verify-reloc: compare generated binaries against originals (run after make)
+# verify-reloc: rebuild every fid's chains offline and byte-compare against
+# the original binaries (run after make)
 .PHONY: verify-reloc
 verify-reloc:
-	@$(PYTHON) tools/verifyRelocOffsets.py --version $(VERSION) $(RELOC_C_FILES)
+	@$(PYTHON) tools/verifyAutoReloc.py --version $(VERSION)
 
 # reloc-expand-<fid>: generate the human-readable expanded .c + texture PNGs
 # for one relocData file. Depends on the compiled .o because the expander uses

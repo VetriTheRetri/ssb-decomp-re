@@ -1,8 +1,0 @@
-# Relocation metadata for file 326 (JP binary walk)
-# Format: <type> <ptr_label> <target_label>
-# Labels resolved via src/relocData/326_LinkBoomerangModel.reloc .o symbol table
-
-intern dLinkBoomerangModel_Joint_0x00F8_DisplayList+0x3C dLinkBoomerangModel_Lut3_0x0008
-intern dLinkBoomerangModel_Joint_0x00F8_DisplayList+0x6C dLinkBoomerangModel_Tex_0x0018
-intern dLinkBoomerangModel_Joint_0x00F8_DisplayList+0x94 dLinkBoomerangModel_Vtx_0x0058_Vtx
-

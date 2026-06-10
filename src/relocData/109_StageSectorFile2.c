@@ -4198,9 +4198,9 @@ u32 dStageSectorFile2_Layer1Anim_AnimJoint_0x2C88[8] = {
 	aobjEvent32End(),
 };
 
-AObjEvent32 *dStageSectorFile2_Layer1Anim_sub_0x2CA8[4] = {
+AObjEvent32 **dStageSectorFile2_Layer1Anim_sub_0x2CA8[4] = {
 	NULL, NULL, NULL,
-	(AObjEvent32 *)dStageSectorFile2_Layer1Anim_sub_0x2CD4,
+	dStageSectorFile2_Layer1Anim_sub_0x2CD4,
 };
 
 u32 dStageSectorFile2_Layer1Anim_AnimJoint_0x2CB8[7] = {

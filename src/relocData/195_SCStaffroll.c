@@ -3216,7 +3216,7 @@ Sprite dSCStaffroll_TextBoxBracketRight = {
 	0, 0,
 };
 
-/* StaffrollHeader @ 0x721C — 3 pointer slots: NULL + SYInterpDesc + AnimJoint setup script. */
+/* StaffrollHeader @ 0x721C — 3 pointer slots: NULL + AnimJoint setup script + AnimJoint script. */
 extern Vec3f dSCStaffroll_Points_0x7228[8];
 extern f32 dSCStaffroll_Keyframes_0x7288[6];
 extern f32 dSCStaffroll_Quartics_0x72A0[25];
@@ -3228,7 +3228,7 @@ extern Gfx dSCStaffroll_AnimJoint_DL_0x7880[8];
 
 void *dSCStaffroll_StaffrollHeader[3] = {
 	NULL,
-	(void *)dSCStaffroll_Interpolation_0x7304,
+	(void *)dSCStaffroll_AnimJoint_Setup_0x731C,
 	(void *)dSCStaffroll_AnimJoint_0x7338,
 };
 

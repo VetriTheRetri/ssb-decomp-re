@@ -12,7 +12,6 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u32 dPikachuModel_Joint_0x0040_post[];
 extern u16 *dPikachuModel_Joint_0x0040_post_palettes_0x2C[];
 extern u8 dPikachuModel_Tex_0x7350[];
 extern u8 dPikachuModel_Tex_0x7460[];
@@ -161,7 +160,7 @@ extern u16 *dPikachuModel_gap_0x59B8_sub_0xB94[];
  * trailing-index cells inside dPikachuModel_Joint_0x0040_post. The original splitter
  * sliced this region into 4 fragments (see git history); the
  * .reloc relationships only make sense as one continuous table. */
-MObjSub **dPikachuModel_gap_0x0000[16] = {
+MObjSub **dPikachuModel_gap_0x0000[27] = {
 	NULL,  /* +0x00 */
 	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xA88,  /* +0x04 */
 	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xA90,  /* +0x08 */
@@ -178,6 +177,17 @@ MObjSub **dPikachuModel_gap_0x0000[16] = {
 	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAC8,  /* +0x34 */
 	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAD0,  /* +0x38 */
 	NULL,  /* +0x3C */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAD8,   /* +0x40 */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAE0,   /* +0x44 (was data_0x0044) */
+	NULL,  /* +0x48 */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAE8,   /* +0x4C */
+	NULL,  /* +0x50 */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAF0,   /* +0x54 */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xAF8,   /* +0x58 */
+	NULL,  /* +0x5C */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xB00,   /* +0x60 */
+	(MObjSub **)&dPikachuModel_Joint_0x0040_post_sub_0xB08,   /* +0x64 */
+	NULL,  /* +0x68 */
 };
 
 /* Sprite/palette pointer tables @ file 0x40..0x168 (296 bytes, 74 slots).
@@ -222,14 +232,6 @@ extern u8 dPikachuModel_Tex_0x7FC8[];
 extern u8 dPikachuModel_Tex_0x81D0[];
 extern u16 dPikachuModel_palette_0x8180[];
 extern u8 dPikachuModel_Tex_0x8300[];
-
-/* TODO: data.inc.c — block at 0x40 was void[11]; contains 1 embedded chain pointer(s) split out below */
-u32 dPikachuModel_Joint_0x0040_post[1] = { (u32)dPikachuModel_Joint_0x0040_post_sub_0xAD8 };
-
-u8 dPikachuModel_data_0x0044[40] = {
-	/* TODO: data.inc.c */
-	#include <PikachuModel/data_0x0044.data.inc.c>
-};
 
 
 /* +0x2C..+0x3F (5 slots) — sub_0x128.palettes target */
@@ -1954,33 +1956,33 @@ AObjEvent32 *dPikachuModel_gap_0x2B78_sub_0x8A8[4] = {
 };
 
 /* gap sub-block @ 0x3430 (was gap+0x8B8, 108 bytes) */
-MObjSub *dPikachuModel_gap_0x2B78_sub_0x8B8[27] = {
+MObjSub **dPikachuModel_gap_0x2B78_sub_0x8B8[27] = {
 	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1380,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1388,
-	NULL,
-	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1390,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1398,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13A0,
-	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13B0,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13B8,
+	dPikachuModel_gap_0x2B78_sub_0x1380,
+	dPikachuModel_gap_0x2B78_sub_0x1388,
 	NULL,
 	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13C0,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13C8,
+	dPikachuModel_gap_0x2B78_sub_0x1390,
+	dPikachuModel_gap_0x2B78_sub_0x1398,
+	dPikachuModel_gap_0x2B78_sub_0x13A0,
 	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13D0,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13D8,
+	dPikachuModel_gap_0x2B78_sub_0x13B0,
+	dPikachuModel_gap_0x2B78_sub_0x13B8,
 	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13E0,
 	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13E8,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13F0,
+	dPikachuModel_gap_0x2B78_sub_0x13C0,
+	dPikachuModel_gap_0x2B78_sub_0x13C8,
 	NULL,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x13F8,
-	(MObjSub *)dPikachuModel_gap_0x2B78_sub_0x1400,
+	dPikachuModel_gap_0x2B78_sub_0x13D0,
+	dPikachuModel_gap_0x2B78_sub_0x13D8,
+	NULL,
+	dPikachuModel_gap_0x2B78_sub_0x13E0,
+	NULL,
+	dPikachuModel_gap_0x2B78_sub_0x13E8,
+	dPikachuModel_gap_0x2B78_sub_0x13F0,
+	NULL,
+	dPikachuModel_gap_0x2B78_sub_0x13F8,
+	dPikachuModel_gap_0x2B78_sub_0x1400,
 	NULL,
 };
 
@@ -3053,7 +3055,7 @@ AObjEvent32 **dPikachuModel_JointTree_0x5490_post[22] = {
 /* AObjEvent32** dispatch table @ 0x59B8 (5 slots, 3 non-NULL) */
 extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x878[];
 extern AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x87C[];
-extern u32 dPikachuModel_gap_0x59B8_sub_0x880[];
+extern u32* dPikachuModel_gap_0x59B8_sub_0x880[];
 AObjEvent32 **dPikachuModel_gap_0x59B8[5] = {
 	(AObjEvent32 **)dPikachuModel_gap_0x59B8_sub_0x878,
 	NULL,
@@ -3741,14 +3743,18 @@ AObjEvent32 *dPikachuModel_gap_0x59B8_sub_0x87C[1] = {
 	(AObjEvent32 *)dPikachuModel_gap_0x59B8_sub_0x5DC,
 };
 
-/* AObjEvent32** dispatch table @ 0x6238 (7 slots) */
+/* AObjEvent32** dispatch table @ 0x6238 (7 slots) — combined from
+ * sub_0x880[1] + data_0x623C[6 slots]. Last entry points at a
+ * MObjSub*[] table (cast across pointer types). */
 extern MObjSub *dPikachuModel_gap_0x59B8_sub_0x998[];
-/* TODO: data.inc.c — block at 0x6238 was AObjEvent32[7]; contains 1 embedded chain pointer(s) split out below */
-u32 dPikachuModel_gap_0x59B8_sub_0x880[1] = { (u32)dPikachuModel_gap_0x59B8_sub_0x6E4 };
-
-u8 dPikachuModel_data_0x623C[24] = {
-	/* TODO: data.inc.c */
-	#include <PikachuModel/data_0x623C.data.inc.c>
+u32 *dPikachuModel_gap_0x59B8_sub_0x880[7] = {
+	dPikachuModel_gap_0x59B8_sub_0x6E4,
+	dPikachuModel_gap_0x59B8_sub_0x764,
+	dPikachuModel_gap_0x59B8_sub_0x7D0,
+	NULL,
+	NULL,
+	NULL,
+	(u32 *)dPikachuModel_gap_0x59B8_sub_0x998,
 };
 
 
@@ -4242,8 +4248,7 @@ u8 dPikachuModel_Tex_0x9020[1024] = {
 
 /* MObjSub-list head @ 0x9420 — 6-entry MObjSub** array.
  * The real MObjSub data starts at +0x18 (dPikachuModel_ThunderTrailMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x9420 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dPikachuModel_ThunderTrailMObjSub_MObjSub[1] = { (u32)dPikachuModel_gap_0x9498_sub_0x18 };
+MObjSub ** dPikachuModel_ThunderTrailMObjSub_MObjSub[1] = { dPikachuModel_gap_0x9498_sub_0x18 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */

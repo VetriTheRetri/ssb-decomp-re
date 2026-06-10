@@ -59,8 +59,7 @@ u8 dCaptainSpecial3_Tex_0x490[512] = {
 
 /* MObjSub-list head @ 0x690 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dCaptainSpecial3_FalconPunchMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x690 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dCaptainSpecial3_FalconPunchMObjSub_MObjSub[1] = { (u32)dCaptainSpecial3_gap_0x0708_sub_0x10 };
+MObjSub ** dCaptainSpecial3_FalconPunchMObjSub_MObjSub[1] = { dCaptainSpecial3_gap_0x0708_sub_0x10 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
@@ -123,7 +122,7 @@ Gfx dCaptainSpecial3_DL_0x0760[26] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[];
-extern u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[];
+extern u32* dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[];
 
 AObjEvent32 *dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C,
@@ -146,6 +145,4 @@ u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834[] = {
 	(u32)(dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834),
 };
 
-u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[] = {
-	(u32)(dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834),
-};
+u32 * dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x86C[] = { dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint_0x834 };

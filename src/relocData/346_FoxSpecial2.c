@@ -15,7 +15,7 @@
 extern u16 dFoxSpecial2_Lut3_0x0008[];
 extern u8 dFoxSpecial2_Tex_0x0018[];
 extern Vtx dFoxSpecial2_Vtx_0x0098_Vtx[];
-extern u8 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[];
+extern u32 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[];
 
 PAD(8);
 
@@ -193,13 +193,59 @@ AObjEvent32 *dFoxSpecial2_ReflectorLoop_AnimJoint[2] = {
 	(AObjEvent32 *)dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8,
 };
 
-/* TODO: data.inc.c — block at 0x4C8 was u32[]; contains 1 embedded chain pointer(s) split out below */
-u8 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[196] = {
-	/* TODO: data.inc.c */
-	#include <FoxSpecial2/ReflectorLoop_AnimJoint_0x4C8.data.inc.c>
+u32 dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8[49] = {
+	aobjEvent32SetVal(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValAfter(0x70, 0),
+	    0x00000000,  /* 0.0f */
+	    0x43700000,  /* 240.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3ECCCCC7,  /* 0.39999982714653015f */
+	    0x3ECCCCC7,  /* 0.39999982714653015f */
+	    0x3ECCCCC7,  /* 0.39999982714653015f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3ECCCCC7,  /* 0.39999982714653015f */
+	    0x3ECCCCC7,  /* 0.39999982714653015f */
+	    0x3ECCCCC7,  /* 0.39999982714653015f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F4CCCCA,  /* 0.7999998331069946f */
+	    0x3F4CCCCA,  /* 0.7999998331069946f */
+	    0x3F4CCCCA,  /* 0.7999998331069946f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F4CCCCA,  /* 0.7999998331069946f */
+	    0x3F4CCCCA,  /* 0.7999998331069946f */
+	    0x3F4CCCCA,  /* 0.7999998331069946f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3E4CCCCD,  /* 0.20000000298023224f */
+	    0x3E4CCCCD,  /* 0.20000000298023224f */
+	    0x3E4CCCCD,  /* 0.20000000298023224f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3E4CCCCD,  /* 0.20000000298023224f */
+	    0x3E4CCCCD,  /* 0.20000000298023224f */
+	    0x3E4CCCCD,  /* 0.20000000298023224f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x0, 0x0),
 };
 
-u32 dFoxSpecial2_data_0x058C[1] = { (u32)dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8 };
+AObjEvent32 *dFoxSpecial2_data_0x058C[1] = { (AObjEvent32 *)dFoxSpecial2_ReflectorLoop_AnimJoint_0x4C8};
 
 
 /* Raw data from file offset 0x0590 to 0x09E0 (1104 bytes) */

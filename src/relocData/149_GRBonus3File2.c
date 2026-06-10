@@ -90,7 +90,7 @@ extern Vtx dGRBonus3File2_gap_0x3718_sub_0xFD8[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[];
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[];
+extern u32* dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[];
 
 
@@ -1144,9 +1144,7 @@ u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[] = {
 	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828),
 };
 
-u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[] = {
-	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600),
-};
+u32 * dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[] = { dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600 };
 
 u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[] = {
 	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0),

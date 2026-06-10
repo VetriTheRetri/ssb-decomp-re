@@ -32,6 +32,32 @@ Reports any of:
         should be a macro, not raw hex
   R014  Vtx block holds inline literal data instead of a `.vtx.inc.c`
         include
+  R021  Pointer table under-typed by one level of indirection. A decl
+        `T *X[N]` whose every non-NULL entry casts a symbol Y, and Y is
+        itself a `T *[]` (or T[] for `void *`) — X should be `T **`
+        instead of `T *`. Specifically catches:
+          void  *X[]  whose entries target `MObjSub Y[]`  → `MObjSub *`
+          MObjSub  *X[]  whose entries target `MObjSub *Y[]` → `MObjSub **`
+          AObjEvent32 *X[] whose entries target `AObjEvent32 *Y[]` → `AObjEvent32 **`
+  R022  Untyped `.data.inc.c` blob whose bytes carry the MObjSub
+        signature `0x00022205` at file-offset 0x4C (the `unk4C` field
+        of the `MObjSub` struct, which is constant across nearly every
+        MObjSub instance in the game). The block is almost certainly
+        a mistyped `MObjSub[N]` waiting to be retyped. Walks the .o's
+        .data section so the check works against either u8/u16/u32
+        untyped blocks regardless of the array element type.
+  R023  `u32 X[N]` whose every non-NULL entry is a `(u32)dSym` cast
+        and every target `dSym` is a typed array — X is a pointer
+        table mistyped as raw `u32`. Reports the inferred type
+        (e.g., `u8 *` for textures, `Gfx *` for DLs, `MObjSub **` for
+        MObjSub-pointer arrays). This is the broader sibling of R021,
+        which only catches the T*→T** case.
+  R024  `Gfx X[N]` block whose `.dl.inc.c` doesn't end with
+        `gsSPEndDisplayList()` (the `0xDF000000 0x00000000` terminator).
+        99% of DLs end this way; the exception is `gsSPBranchList()`
+        (a tail-branch into another DL — accepted). An unterminated DL
+        means the next adjacent block continues the DL and the two
+        should be merged into a single Gfx[N].
 
 Usage:
     tools/validateRelocFile.py <fid_or_path> [<fid_or_path> ...]
@@ -66,7 +92,7 @@ _DECL_HEAD_RE = re.compile(
     r"[A-Za-z_][A-Za-z_0-9]*)\b"
     r"(?P<stars>(?:\s*\*+)?)\s*"
     r"(?P<name>d[A-Za-z_][A-Za-z_0-9]*)\s*"
-    r"(?:\[(?P<size>[^\]]*)\])?\s*=\s*\{"
+    r"(?:\[(?P<size>[^\]]*)\](?:\[[^\]]*\])*)?\s*=\s*\{"
 )
 
 # Same shape but allows the body-opening `{` to live on a later line:
@@ -77,7 +103,7 @@ _DECL_HEAD_SPLIT_RE = re.compile(
     r"[A-Za-z_][A-Za-z_0-9]*)\b"
     r"(?P<stars>(?:\s*\*+)?)\s*"
     r"(?P<name>d[A-Za-z_][A-Za-z_0-9]*)\s*"
-    r"(?:\[(?P<size>[^\]]*)\])?\s*=\s*$"
+    r"(?:\[(?P<size>[^\]]*)\](?:\[[^\]]*\])*)?\s*=\s*$"
 )
 
 _EXTERN_DECL_RE = re.compile(
@@ -85,7 +111,7 @@ _EXTERN_DECL_RE = re.compile(
     r"[A-Za-z_][A-Za-z_0-9]*)\b"
     r"(?P<stars>(?:\s*\*+)?)\s*"
     r"(?P<name>d[A-Za-z_][A-Za-z_0-9]*)\s*"
-    r"(?:\[(?P<size>[^\]]*)\])?\s*;"
+    r"(?:\[(?P<size>[^\]]*)\](?:\[[^\]]*\])*)?\s*;"
 )
 
 _PAD_RE = re.compile(r"^\s*PAD\s*\(\s*(?P<n>\d+)\s*\)\s*;")
@@ -805,7 +831,10 @@ def check_chain_pointer_raw_hex(decl, path, diags):
                 ))
 
 
-def check_chain_pointer_target_form(decl, path, diags, script_syms):
+def check_chain_pointer_target_form(decl, path, diags, script_syms,
+                                     mobjsub_array_syms=None,
+                                     typed_ptr_array_syms=None,
+                                     script_sizes=None):
     """R004 (C-source half) — `((u8*)blockname + 0xN)` byte-offset
     arithmetic and `&blockname[N]` indexing in pointer slots.
 
@@ -837,10 +866,21 @@ def check_chain_pointer_target_form(decl, path, diags, script_syms):
         if "NULL" in txt:
             continue
         m = _OFFSET_REF_RE.search(txt)
-        if m and m.group("sym") not in script_syms:
+        if m:
+            sym = m.group("sym")
+            off = int(m.group("off"), 16)
+            # `((u8*)script + N)` is exempt ONLY when N is within the
+            # script's own body. Past-the-end offsets are reaching into
+            # sibling data and must use the sibling's symbol — the
+            # script_syms exemption was meant for mid-script entry
+            # points only.
+            if sym in script_syms:
+                body_size = (script_sizes or {}).get(sym, 0)
+                if off < body_size:
+                    continue
             diags.append(Diag(
                 path, ln, "R004", "warn",
-                f"'{decl.name}' slot uses `((u8*){m.group('sym')} + "
+                f"'{decl.name}' slot uses `((u8*){sym} + "
                 f"0x{m.group('off')})` byte-offset arithmetic — replace "
                 f"with the matching block symbol (or split the parent "
                 f"if no symbol exists at that offset)"
@@ -851,6 +891,20 @@ def check_chain_pointer_target_form(decl, path, diags, script_syms):
         m = _INDEX_REF_RE.search(txt)
         if m:
             if m.group("sym") in script_syms:
+                continue
+            # `&X[N]` is legitimate when X is a typed struct array like
+            # `MObjSub X[]` — the N indexes a real array element, not
+            # byte-offset arithmetic into a single struct.
+            if mobjsub_array_syms and m.group("sym") in mobjsub_array_syms:
+                continue
+            # Same reasoning extends to any typed pointer array `T *X[]`
+            # (T != void): each element is a 4-byte pointer slot, so
+            # `&X[N]` is a real element address — for example, a
+            # MatAnimJoint table indexing a joint-pointer table at the
+            # head of an AnimJoint block. `void *X[]` is excluded since
+            # an untyped pointer array is exactly the "fused
+            # masquerading" case R004 is meant to catch.
+            if typed_ptr_array_syms and m.group("sym") in typed_ptr_array_syms:
                 continue
             diags.append(Diag(
                 path, ln, "R004", "warn",
@@ -960,6 +1014,105 @@ def check_untyped_data_blob(decl, path, diags):
             f"'{decl.name}' ({decl.ctype}[{decl.size}]) is an untyped "
             f"`.data.inc.c` blob — type it (Vtx/Gfx/texture/palette/"
             f"struct) or confirm as genuine raw data"))
+
+
+_DL_INCLUDE_PATH_RE = re.compile(
+    r"#include\s+<(?P<path>[^>]+\.dl\.inc\.c)\s*>"
+)
+
+
+def _dl_inc_terminator_ok(c_path, raw_include_line):
+    """Return (ok, last_macro_text) for a `.dl.inc.c` include. Resolves
+    the include path against `build/<v>/src/relocData/` and reads the
+    file; checks that the last non-blank, non-comment macro line is
+    `gsSPEndDisplayList(` or `gsSPBranchList(` (both validly terminate
+    a DL — End halts, BranchList tail-branches). Returns (None, None)
+    if the file cannot be located (so the check is skipped silently
+    rather than producing noise on pre-extract checkouts)."""
+    m = _DL_INCLUDE_PATH_RE.search(raw_include_line)
+    if not m:
+        return None, None
+    inc_rel = m.group("path").strip()
+    # Try each version's build dir.
+    bases = [
+        os.path.join(PROJECT_DIR, "build", "us", "src", "relocData"),
+        os.path.join(PROJECT_DIR, "build", "jp", "src", "relocData"),
+    ]
+    file_path = None
+    for base in bases:
+        cand = os.path.join(base, inc_rel)
+        if os.path.exists(cand):
+            file_path = cand
+            break
+    if file_path is None:
+        return None, None
+    try:
+        with open(file_path) as f:
+            body = f.read()
+    except OSError:
+        return None, None
+    # Walk lines backward to find the last meaningful macro line.
+    for ln in reversed(body.split("\n")):
+        s = ln.strip()
+        if not s:
+            continue
+        if s.startswith("/*") or s.startswith("//") or s.startswith("*"):
+            continue
+        # Strip trailing comma and inline comment.
+        s = re.sub(r"/\*.*?\*/", "", s).strip().rstrip(",").strip()
+        if not s:
+            continue
+        # Accept macro form: gsSPEndDisplayList(...) or gsSPBranchList(...)
+        if s.startswith("gsSPEndDisplayList") or s.startswith("gsSPBranchList"):
+            return True, s
+        # Accept raw-bytes form: any of these end a DL —
+        #   { { 0xDF000000, 0x00000000 } }     (Gfx struct, end)
+        #   0xDF000000, 0x00000000             (paired words, end)
+        #   { { 0xDE......, ......  } }        (Gfx struct, branch list)
+        #   0xDE......                         (raw branch-list word)
+        # gsSPEndDisplayList is opcode 0xDF; gsSPBranchList is 0xDE with
+        # the LSB of byte 1 set (e.g. 0xDE010000) — we accept any 0xDE
+        # high byte since the next 0xDE form (gsSPDisplayList) is
+        # actually a sub-DL call, not a terminator. Both share the byte
+        # opcode space but gsSPDisplayList doesn't end the DL — it
+        # pushes a sub-DL and continues. To be safe we only treat 0xDE
+        # as a terminator if the second word starts with `0x00000000`
+        # (gsSPBranchList convention has no payload) — otherwise it's
+        # a sub-DL call.
+        if re.match(r"0xDF000000", s, re.I):
+            return True, s
+        # Match a paired-word terminator like "0xDF000000, 0x00000000"
+        if re.match(r"\{?\s*\{?\s*0xDF000000\s*,\s*0x00000000\s*\}?\s*\}?", s, re.I):
+            return True, s
+        return False, s
+    return None, None
+
+
+def check_dl_termination(decl, c_path, diags):
+    """R024 — `Gfx X[N]` block's `.dl.inc.c` payload must end with a DL
+    terminator (`gsSPEndDisplayList()` or `gsSPBranchList(...)`). An
+    unterminated DL means the next adjacent block continues this one
+    and the two should be merged into a single `Gfx[N]`. Silently
+    skipped if the include file isn't on disk yet."""
+    if decl.ctype != "Gfx" or decl.is_pointer:
+        return
+    dl_incs = [(ln, raw) for ln, ext, raw in decl.includes
+               if ext == ".dl.inc.c"]
+    if not dl_incs:
+        return
+    # Check the LAST include — DLs whose body spans multiple includes
+    # are rare, but the terminator should live in the last one.
+    _ln, raw = dl_incs[-1]
+    ok, last = _dl_inc_terminator_ok(c_path, raw)
+    if ok is False:
+        diags.append(Diag(
+            c_path, decl.start_line, "R024", "warn",
+            f"Gfx '{decl.name}' ({decl.size} cmds) doesn't end with "
+            f"`gsSPEndDisplayList()` — last macro is `{last}`. "
+            f"DLs should terminate with `0xDF000000 0x00000000`; "
+            f"the trailing adjacent block likely continues this DL "
+            f"and the two should be merged into one Gfx[N]"
+        ))
 
 
 def check_palette_format(decl, path, diags, lines):
@@ -1359,6 +1512,249 @@ def check_mobjsub_format_constants(decl, path, diags):
             f"readable and grep-able"))
 
 
+def _collect_pointer_targets(decl):
+    """Walk a pointer-array decl's body, returning a list of target
+    symbol names (None for NULL/0 entries). Returns None if any entry
+    isn't a recognized form (raw hex, opcode macro, etc.). Used by
+    R021 — accepts `(T *)dSym`, `(T *)(dSym)`, `(T *)&dSym[N]`, and
+    bare `dSym` / `&dSym[N]` forms."""
+    targets = []
+    for ln, txt in decl.body:
+        s = txt.strip().rstrip(",").strip()
+        if not s or s.startswith("/*") or s.startswith("//"):
+            continue
+        if s == "NULL" or s == "0":
+            targets.append(None); continue
+        # (T *)dSym | (T *)(dSym) | (T *)&dSym[N] | (T *)((u8*)dSym + N)
+        m = re.match(
+            r"^\((?:void|MObjSub|AObjEvent32|u32|u16|u8|Gfx|Vtx)\s*\*+\)\s*"
+            r"(?:\(\s*\(u8\s*\*\)\s*[^)]*\)|"   # (u8*) cast variant — disqualify
+            r"\(?\s*&?\s*(d[A-Za-z_][A-Za-z_0-9]*)"
+            r"(?:\s*\[[^\]]*\])?\s*\)?\s*)$", s)
+        if m and m.group(1):
+            targets.append(m.group(1)); continue
+        # Bare dSym (array-decay)
+        m = re.match(r"^&?\s*(d[A-Za-z_][A-Za-z_0-9]*)"
+                      r"(?:\s*\[[^\]]*\])?\s*$", s)
+        if m:
+            targets.append(m.group(1)); continue
+        return None  # non-cast entry — bail
+    return targets
+
+
+def _decl_stars(decl, lines):
+    """Count `*` in the decl's head line (between type keyword and name).
+    `MObjSub  *X[]` → 1, `AObjEvent32 **X[]` → 2, `MObjSub X[]` → 0."""
+    head = lines[decl.start_line - 1]
+    # Slice between type keyword and decl name. Cheaper: count `*` that
+    # precede the decl's name occurrence on that line.
+    idx = head.find(decl.name)
+    if idx < 0:
+        return 1 if decl.is_pointer else 0
+    return head[:idx].count("*")
+
+
+def check_pointer_indirection_undertyped(decl, path, diags,
+                                          decls_by_name, lines,
+                                          script_syms=None):
+    """R021 — Pointer-table decl `T *X[]` whose every non-NULL entry
+    casts a symbol Y, and Y is itself a typed array of `T *[]` (or, for
+    `void *X[]`, `T[]`) — the C type misses one level of indirection.
+
+    Catches four concrete shapes:
+      void  *X[]  whose entries target `MObjSub Y[]`            → MObjSub *
+      MObjSub *X[]  whose entries target `MObjSub *Y[]`         → MObjSub **
+      AObjEvent32 *X[] whose entries target `AObjEvent32 *Y[]`  → AObjEvent32 **
+      u32 *X[]   whose entries target `u32 Y[]` AObjEvent32     → AObjEvent32 *
+                 script bodies (script_syms-based detection;
+                 same indirection level, just the right pointee
+                 type — same pattern as MVOpeningClashWallpaper
+                 LL/LR/UL/UR sub-tables)
+
+    Skips bodies with non-cast entries (raw hex, opcode macros) and
+    decls whose body holds an `#include` (typed-include arrays)."""
+    if not decl.is_pointer:
+        return
+    if decl.includes:
+        return
+    stars = _decl_stars(decl, lines)
+    decl_type = f"{decl.ctype} {'*' * stars}".strip()
+    # Special case: `u32 *X[]` of AObjEvent32-script pointers should be
+    # `AObjEvent32 *X[]`. Same indirection level, just the right pointee
+    # type. Reported only when every non-NULL target is in script_syms.
+    if decl_type == "u32 *" and script_syms:
+        targets = _collect_pointer_targets(decl)
+        if targets is None:
+            return  # non-cast entry — skip
+        non_null = [t for t in targets if t]
+        if non_null and all(t in script_syms for t in non_null):
+            diags.append(Diag(
+                path, decl.start_line, "R021", "warn",
+                f"'{decl.name}' is typed `u32 *` but its entries target "
+                f"AObjEvent32-script `u32[]` bodies — retype as "
+                f"`AObjEvent32 *` (same indirection level, correct "
+                f"pointee type)"))
+        return
+    if decl_type == "void *":
+        expected_target = ("MObjSub", 0)
+        new_type = "MObjSub *"
+    elif decl_type == "MObjSub *":
+        expected_target = ("MObjSub", 1)
+        new_type = "MObjSub **"
+    elif decl_type == "AObjEvent32 *":
+        expected_target = ("AObjEvent32", 1)
+        new_type = "AObjEvent32 **"
+    else:
+        return
+    targets = _collect_pointer_targets(decl)
+    if targets is None:
+        return
+    non_null = [t for t in targets if t]
+    if not non_null:
+        return
+    for t in non_null:
+        td = decls_by_name.get(t)
+        if td is None:
+            return
+        td_stars = _decl_stars(td, lines)
+        if (td.ctype, td_stars) != expected_target:
+            return
+    diags.append(Diag(
+        path, decl.start_line, "R021", "warn",
+        f"'{decl.name}' is typed `{decl_type}` but its entries target "
+        f"`{expected_target[0]}{' *' * expected_target[1]}[]` arrays "
+        f"— retype as `{new_type}` (one extra level of indirection)"))
+
+
+_U32_PTR_CAST_RE = re.compile(r"^\(u32\)\(?\s*&?\s*(d[A-Za-z_][A-Za-z_0-9]*)"
+                                r"(?:\s*\[[^\]]*\])?\s*\)?$")
+
+
+def check_u32_pointer_table_undertyped(decl, path, diags, decls_by_name,
+                                          lines):
+    """R023 — `u32 X[N]` whose every non-NULL entry is `(u32)dSym` and
+    every target `dSym` is itself a typed array. The decl should be a
+    typed pointer table instead of raw `u32`. Reports the inferred
+    pointer type (`u8 *` for textures, `Gfx *` for DLs,
+    `MObjSub **` when targets are themselves `MObjSub *[]`, etc.).
+
+    Sentinels accepted as NULL: bare `NULL`, `0`, and
+    `aobjEvent32End()` (= 0x00000000) — the last appears at the tail
+    of End-terminated u32 pointer-tables (an AObjEvent32 chain
+    convention where the trailing zero word doubles as a NULL ptr)."""
+    if decl.ctype != "u32" or decl.is_pointer:
+        return
+    if decl.includes:
+        return
+    targets = []
+    for ln, txt in decl.body:
+        s = txt.strip().rstrip(",").strip()
+        if not s or s.startswith("/*") or s.startswith("//"):
+            continue
+        if s == "NULL" or s == "0" or s == "aobjEvent32End()":
+            targets.append(None); continue
+        m = _U32_PTR_CAST_RE.match(s)
+        if not m:
+            return  # non-cast entry — not a uniform pointer table
+        targets.append(m.group(1))
+    non_null = [t for t in targets if t]
+    if not non_null:
+        return
+    target_types = set()
+    for t in non_null:
+        td = decls_by_name.get(t)
+        if td is None:
+            return
+        td_stars = _decl_stars(td, lines)
+        target_types.add((td.ctype, td_stars))
+    if len(target_types) != 1:
+        return  # mixed targets — leave alone
+    (tt, ts) = target_types.pop()
+    new_type = f"{tt} {'*' * (ts + 1)}"
+    diags.append(Diag(
+        path, decl.start_line, "R023", "warn",
+        f"'{decl.name}' is typed `u32[]` but its entries are `(u32)dSym` "
+        f"casts targeting `{tt}{' *' * ts}[]` arrays — retype as "
+        f"`{new_type.strip()}`"))
+
+
+_MOBJSUB_SIZE = 0x78  # 120
+# Empirical unk4C values across all typed MObjSubs in the corpus. The
+# canonical value is 0x00022205 (74% of MObjSubs); the rest are minor
+# variants that all share the low-byte/mid-byte pattern. 0x00000000 is
+# DELIBERATELY EXCLUDED — entries with unk4C=0 turned out to be
+# mistyped (see EFCommonEffects1 / MVCommon revert to u8 .data.inc.c).
+_MOBJSUB_SIGS = frozenset(bytes.fromhex(h) for h in (
+    "00022205",  # canonical (574 entries)
+    "00002005",  # 97 entries
+    "00002205",  # 63 entries
+    "00002001",  # 23 entries
+    "00062205",  # 10 entries
+    "00002004",  #  2 entries
+    "000E2205",  #  1 entry
+))
+
+
+def _read_inc_bytes(inc_path_root):
+    """Read raw bytes from `build/us/src/relocData/<inc_path>.data.inc.c`,
+    parsing comma-separated `0xNN` hex tokens. Returns None if missing."""
+    full = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData",
+                         inc_path_root + ".data.inc.c")
+    if not os.path.isfile(full):
+        return None
+    with open(full) as f:
+        text = f.read()
+    hexes = re.findall(r"0x([0-9A-Fa-f]{2})", text)
+    if not hexes:
+        return b""
+    return bytes(int(h, 16) for h in hexes)
+
+
+def check_mobjsub_signature_in_untyped(decl, path, diags):
+    """R022 — Untyped u8/u16/u32 `.data.inc.c` blob whose raw bytes
+    contain a recognized MObjSub `unk4C` signature at a position
+    consistent with a MObjSub-stride layout (offset ≡ 0x4C mod 0x78,
+    within a block whose size is a multiple of 0x78). Strong signal
+    that the parent block is a mistyped `MObjSub[N]`.
+
+    `unk4C = 0x00000000` is DELIBERATELY NOT a recognized signature —
+    blocks where unk4C is all-zero turned out to be mistyped on closer
+    inspection (e.g. `dEFCommonEffects1_CommonSpark_MObjSub`,
+    `dMVCommon_RoomBackgroundMObjSub_MObjSub`)."""
+    if decl.is_pointer:
+        return
+    if decl.ctype not in ("u8", "u16", "u32"):
+        return
+    if not decl.includes:
+        return
+    for ln, ext, _raw in decl.includes:
+        if ext != ".data.inc.c":
+            continue
+        m = re.search(r"#include\s+<([^>]+)\.data\.inc\.c\s*>", _raw)
+        if not m:
+            continue
+        b = _read_inc_bytes(m.group(1))
+        if b is None or len(b) < _MOBJSUB_SIZE:
+            continue
+        if len(b) % _MOBJSUB_SIZE != 0:
+            continue
+        bad = []
+        for k in range(len(b) // _MOBJSUB_SIZE):
+            off = k * _MOBJSUB_SIZE + 0x4C
+            sig = b[off:off + 4]
+            if sig in _MOBJSUB_SIGS:
+                bad.append((k, sig.hex().upper()))
+        if bad:
+            sigs_seen = sorted({s for _, s in bad})
+            diags.append(Diag(
+                path, decl.start_line, "R022", "warn",
+                f"untyped '{decl.name}' ({decl.ctype}[{decl.size}]) carries "
+                f"MObjSub.unk4C signature(s) {sigs_seen} at MObjSub-stride "
+                f"offsets {[hex(k * _MOBJSUB_SIZE + 0x4C) for k, _ in bad]} "
+                f"— likely a mistyped `MObjSub[{len(b) // _MOBJSUB_SIZE}]`"
+            ))
+
+
 def check_trailing_pad(c_path, lines, diags):
     """R017 — files must not end with a `PAD(N);` macro. Object alignment
     is governed by the linker / next-section start; trailing PAD bytes
@@ -1421,6 +1817,7 @@ _TYPED_ELEMENT_SIZES = {
     "DObjDesc": 44,
     "MObjSub": 120,
     "AObjEvent32": 4,  # AObjEvent32 is u32-sized command words
+    "Vec2h": 4,        # paired s16 (x,y)
 }
 
 
@@ -1658,6 +2055,28 @@ def validate(c_path, enabled_rules):
     # arrays with aobjEvent32 macros). Used by R004 to skip mid-script
     # entry-point references.
     script_syms = {d.name for d in decls if is_aobjevent32_script(d)}
+    # For R004's mid-script exemption: byte size of each script's
+    # declared body. A `((u8*)script + N)` ref past this size is
+    # reaching into sibling data and is NOT a legitimate mid-script
+    # entry point — flag it.
+    script_sizes = {
+        d.name: (d.size * 4) for d in decls
+        if d.name in script_syms and d.size > 0
+    }
+    # Pre-compute set of decl names that are MObjSub arrays. `&X[N]` is
+    # legitimate when X is a MObjSub[] (the N is an element index, not
+    # byte arithmetic). R004 skips those.
+    mobjsub_array_syms = {
+        d.name for d in decls
+        if d.ctype == "MObjSub" and not d.is_pointer and d.size > 0
+    }
+    # Pre-compute set of typed pointer-array decls — `T *X[]` where
+    # T != void. `&X[N]` against one of these is a legitimate element
+    # address, same as for MObjSub[] arrays.
+    typed_ptr_array_syms = {
+        d.name for d in decls
+        if d.is_pointer and d.ctype != "void" and d.size > 0
+    }
 
     diags = []
     for d in decls:
@@ -1666,7 +2085,10 @@ def validate(c_path, enabled_rules):
         if "R003" in enabled_rules:
             check_chain_pointer_raw_hex(d, c_path, diags)
         if "R004" in enabled_rules:
-            check_chain_pointer_target_form(d, c_path, diags, script_syms)
+            check_chain_pointer_target_form(d, c_path, diags, script_syms,
+                                             mobjsub_array_syms,
+                                             typed_ptr_array_syms,
+                                             script_sizes)
         if "R005" in enabled_rules:
             check_raw_hex_chunks(d, c_path, diags, lines)
         if "R006" in enabled_rules:
@@ -1691,10 +2113,26 @@ def validate(c_path, enabled_rules):
             check_ftmotion_termination(d, c_path, diags)
         if "R020" in enabled_rules:
             check_ftmotion_terminator_not_last(d, c_path, diags)
-    if "R012" in enabled_rules:
+        if "R022" in enabled_rules:
+            check_mobjsub_signature_in_untyped(d, c_path, diags)
+    if ("R012" in enabled_rules or "R021" in enabled_rules
+            or "R023" in enabled_rules):
         decls_by_name = {d.name: d for d in decls}
+        if "R012" in enabled_rules:
+            for d in decls:
+                check_mobjsub_pointer_array_types(d, c_path, diags, decls_by_name)
+        if "R021" in enabled_rules:
+            for d in decls:
+                check_pointer_indirection_undertyped(d, c_path, diags,
+                                                      decls_by_name, lines,
+                                                      script_syms)
+        if "R023" in enabled_rules:
+            for d in decls:
+                check_u32_pointer_table_undertyped(d, c_path, diags,
+                                                    decls_by_name, lines)
+    if "R024" in enabled_rules:
         for d in decls:
-            check_mobjsub_pointer_array_types(d, c_path, diags, decls_by_name)
+            check_dl_termination(d, c_path, diags)
     if "R017" in enabled_rules:
         check_trailing_pad(c_path, lines, diags)
     if "R003" in enabled_rules or "R004" in enabled_rules:
@@ -1717,7 +2155,8 @@ def validate(c_path, enabled_rules):
     return diags
 
 
-ALL_RULES = ["R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008",
+ALL_RULES = ["R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008", "R021", "R022",
+             "R023", "R024",
              "R009", "R010", "R011", "R012", "R013", "R014", "R015", "R016",
              "R017", "R018", "R019", "R020"]
 
@@ -1748,6 +2187,7 @@ def main():
             "  R018  Raw hex inside an `ftMotionCommand` script body\n"
             "  R019  ftMotionCommand script doesn't end with End/Goto/Return\n"
             "  R020  ftMotionCommand script has a hard terminator (End/Goto/Return) followed by non-terminator macros (split the script)\n"
+            "  R024  Gfx DL doesn't end with gsSPEndDisplayList() / gsSPBranchList() — adjacent block likely continues it\n"
         ),
     )
     ap.add_argument("targets", nargs="+",

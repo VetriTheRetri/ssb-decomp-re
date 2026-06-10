@@ -132,7 +132,7 @@ extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3290[];
 extern u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[];
 
 extern u32 dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data[];
-extern AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint[];
+extern AObjEvent32 **dStageYosterFile2_Layer0MatAnim_MatAnimJoint[];
 
 extern MObjSub *dStageYosterFile2_Layer0MObj_0x148[2];
 extern MObjSub *dStageYosterFile2_gap_0x0078_sub_0xD8[2];
@@ -149,15 +149,13 @@ MObjSub **dStageYosterFile2_Layer0MObj_MObjSub[18] = {
 	(MObjSub **)dStageYosterFile2_gap_0x0078_sub_0xD8,
 };
 
-/* TODO: data.inc.c — block at 0x48 was void[2]; contains 2 embedded chain pointer(s) split out below */
-u32 dStageYosterFile2_Layer0MObj_0x48[1] = { (u32)dStageYosterImages_Tex_0x0550 };
+u8 * dStageYosterFile2_Layer0MObj_0x48[1] = { dStageYosterImages_Tex_0x0550 };
 
-u32 dStageYosterFile2_data_0x004C[1] = { (u32)dStageYosterImages_Tex_0x0658 };
+u8 * dStageYosterFile2_data_0x004C[1] = { dStageYosterImages_Tex_0x0658 };
 
-/* TODO: data.inc.c — block at 0x50 was void[2]; contains 2 embedded chain pointer(s) split out below */
-u32 dStageYosterFile2_Layer0MObj_0x50[1] = { (u32)dStageYosterImages_Tex_0x0550 };
+u8 * dStageYosterFile2_Layer0MObj_0x50[1] = { dStageYosterImages_Tex_0x0550 };
 
-u32 dStageYosterFile2_data_0x0054[1] = { (u32)dStageYosterImages_Tex_0x0658 };
+u8 * dStageYosterFile2_data_0x0054[1] = { dStageYosterImages_Tex_0x0658 };
 
 
 /* @ 0x58 — MObjSub */
@@ -2908,7 +2906,7 @@ u32 dStageYosterFile2_Layer0Anim_AnimJoint_0x3334[] = {
  * entries to chain-encoded form per the .reloc. */
 extern AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x820[1];
 extern AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x824[1];
-AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint[18] = {
+AObjEvent32 **dStageYosterFile2_Layer0MatAnim_MatAnimJoint[18] = {
 	NULL,
 	NULL,
 	NULL,
@@ -2924,9 +2922,9 @@ AObjEvent32 *dStageYosterFile2_Layer0MatAnim_MatAnimJoint[18] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x820,
+	dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x820,
 	NULL,
-	(AObjEvent32 *)dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x824,
+	dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x824,
 };
 
 u32 dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data[260] = {
@@ -3791,13 +3789,14 @@ u8 dStageYosterFile2_Tex_0x6E08[1032] = {
 	#include <StageYosterFile2/Tex_0x6E08.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x7210 was u8[1032]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYosterFile2_Tex_0x7210[1028] = {
-	/* TODO: data.inc.c */
-	#include <StageYosterFile2/Tex_0x7210.data.inc.c>
+/* @tex fmt=CI4 dim=32x64 */
+u8 dStageYosterFile2_Tex_0x7210[0x400] = {
+	#include <StageYosterFile2/Tex_0x7210.tex.inc.c>
 };
 
-u32 dStageYosterFile2_data_0x7614[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x19C0 };
+PAD(4);
+
+MObjSub ** dStageYosterFile2_data_0x7614[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x19C0 };
 
 
 /* u32 pointer array @ 0x7618 (6 entries) */
@@ -3935,8 +3934,8 @@ u32 dStageYosterFile2_gap_0x5CE8_sub_0x1B90[51] = {
 	aobjEvent32End(),
 };
 PAD(16);
-AObjEvent32 *dStageYosterFile2_gap_0x5CE8_sub_0x1C6C[1] = {
-	(AObjEvent32 *)dStageYosterFile2_gap_0x5CE8_sub_0x1E60,
+AObjEvent32 **dStageYosterFile2_gap_0x5CE8_sub_0x1C6C[1] = {
+	dStageYosterFile2_gap_0x5CE8_sub_0x1E60,
 };
 
 /* gap sub-block @ 0x7958 (was gap+0x1C70, 496 bytes) */
@@ -4098,13 +4097,14 @@ u8 dStageYosterFile2_Tex_0x7E58[648] = {
 	#include <StageYosterFile2/Tex_0x7E58.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x80E0 was u8[648]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYosterFile2_Tex_0x80E0[644] = {
-	/* TODO: data.inc.c */
-	#include <StageYosterFile2/Tex_0x80E0.data.inc.c>
+/* @tex fmt=CI4 dim=32x40 */
+u8 dStageYosterFile2_Tex_0x80E0[0x280] = {
+	#include <StageYosterFile2/Tex_0x80E0.tex.inc.c>
 };
 
-u32 dStageYosterFile2_data_0x8364[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x2708 };
+PAD(4);
+
+MObjSub ** dStageYosterFile2_data_0x8364[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x2708 };
 
 
 /* u32 pointer array @ 0x8368 (4 entries) */
@@ -4322,7 +4322,7 @@ u32 dStageYosterFile2_gap_0x5CE8_sub_0x2BD4[28] = {
 	aobjEvent32End(),
 };
 PAD(8);
-AObjEvent32 *dStageYosterFile2_gap_0x5CE8_sub_0x2C4C[1] = { (AObjEvent32 *)dStageYosterFile2_gap_0x5CE8_sub_0x301C };
+AObjEvent32 **dStageYosterFile2_gap_0x5CE8_sub_0x2C4C[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x301C};
 
 /* gap sub-block @ 0x8938 (was gap+0x2C50, 972 bytes) */
 u32 dStageYosterFile2_gap_0x5CE8_sub_0x2C50[243] = {
@@ -4600,13 +4600,14 @@ u8 dStageYosterFile2_Tex_0x9018[648] = {
 	#include <StageYosterFile2/Tex_0x9018.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x92A0 was u8[648]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYosterFile2_Tex_0x92A0[644] = {
-	/* TODO: data.inc.c */
-	#include <StageYosterFile2/Tex_0x92A0.data.inc.c>
+/* @tex fmt=CI4 dim=32x40 */
+u8 dStageYosterFile2_Tex_0x92A0[0x280] = {
+	#include <StageYosterFile2/Tex_0x92A0.tex.inc.c>
 };
 
-u32 dStageYosterFile2_data_0x9524[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x38C8 };
+PAD(4);
+
+MObjSub ** dStageYosterFile2_data_0x9524[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x38C8 };
 
 
 /* u32 pointer array @ 0x9528 (4 entries) */
@@ -4706,7 +4707,7 @@ u32 dStageYosterFile2_gap_0x5CE8_sub_0x3A90[27] = {
 	aobjEvent32End(),
 };
 PAD(16);
-AObjEvent32 *dStageYosterFile2_gap_0x5CE8_sub_0x3B0C[1] = { (AObjEvent32 *)dStageYosterFile2_gap_0x5CE8_sub_0x3EE0 };
+AObjEvent32 **dStageYosterFile2_gap_0x5CE8_sub_0x3B0C[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x3EE0};
 
 /* gap sub-block @ 0x97F8 (was gap+0x3B10, 976 bytes) */
 u32 dStageYosterFile2_gap_0x5CE8_sub_0x3B10[244] = {
@@ -4985,13 +4986,14 @@ u8 dStageYosterFile2_Tex_0x9ED8[648] = {
 	#include <StageYosterFile2/Tex_0x9ED8.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xA160 was u8[648]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYosterFile2_Tex_0xA160[644] = {
-	/* TODO: data.inc.c */
-	#include <StageYosterFile2/Tex_0xA160.data.inc.c>
+/* @tex fmt=CI4 dim=32x40 */
+u8 dStageYosterFile2_Tex_0xA160[0x280] = {
+	#include <StageYosterFile2/Tex_0xA160.tex.inc.c>
 };
 
-u32 dStageYosterFile2_data_0xA3E4[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x4788 };
+PAD(4);
+
+MObjSub ** dStageYosterFile2_data_0xA3E4[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x4788 };
 
 
 /* u32 pointer array @ 0xA3E8 (4 entries) */
@@ -5089,7 +5091,7 @@ u32 dStageYosterFile2_gap_0x5CE8_sub_0x4950[25] = {
 	aobjEvent32End(),
 };
 PAD(8);
-AObjEvent32 *dStageYosterFile2_gap_0x5CE8_sub_0x49BC[1] = { (AObjEvent32 *)dStageYosterFile2_gap_0x5CE8_sub_0x4D90 };
+AObjEvent32 **dStageYosterFile2_gap_0x5CE8_sub_0x49BC[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x4D90};
 
 /* gap sub-block @ 0xA6A8 (was gap+0x49C0, 976 bytes) */
 u32 dStageYosterFile2_gap_0x5CE8_sub_0x49C0[244] = {
@@ -5368,13 +5370,14 @@ u8 dStageYosterFile2_Tex_0xAD88[648] = {
 	#include <StageYosterFile2/Tex_0xAD88.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xB010 was u8[648]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYosterFile2_Tex_0xB010[644] = {
-	/* TODO: data.inc.c */
-	#include <StageYosterFile2/Tex_0xB010.data.inc.c>
+/* @tex fmt=CI4 dim=32x40 */
+u8 dStageYosterFile2_Tex_0xB010[0x280] = {
+	#include <StageYosterFile2/Tex_0xB010.tex.inc.c>
 };
 
-u32 dStageYosterFile2_data_0xB294[1] = { (u32)dStageYosterFile2_gap_0x5CE8_sub_0x5638 };
+PAD(4);
+
+MObjSub ** dStageYosterFile2_data_0xB294[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x5638 };
 
 
 /* u32 pointer array @ 0xB298 (4 entries) */
@@ -5472,7 +5475,7 @@ u32 dStageYosterFile2_gap_0x5CE8_sub_0x5800[25] = {
 	aobjEvent32End(),
 };
 PAD(8);
-AObjEvent32 *dStageYosterFile2_gap_0x5CE8_sub_0x586C[1] = { (AObjEvent32 *)dStageYosterFile2_gap_0x5CE8_sub_0x5C40 };
+AObjEvent32 **dStageYosterFile2_gap_0x5CE8_sub_0x586C[1] = { dStageYosterFile2_gap_0x5CE8_sub_0x5C40};
 
 /* gap sub-block @ 0xB558 (was gap+0x5870, 976 bytes) */
 u32 dStageYosterFile2_gap_0x5CE8_sub_0x5870[244] = {

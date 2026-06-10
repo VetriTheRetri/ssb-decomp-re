@@ -165,7 +165,7 @@ extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6ED4[];
 extern u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[];
 
 extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data[289];
-extern AObjEvent32 *dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9];
+extern AObjEvent32 **dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9];
 
 PAD(8);
 
@@ -1439,15 +1439,17 @@ u32 dStageYamabukiFile2_Layer1Anim_AnimJoint_0x6F8C[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9] = {
+extern AObjEvent32 * dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x908[];
+extern AObjEvent32 * dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x90C[];
+AObjEvent32 **dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[9] = {
 	NULL,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data + 0x908),
+	dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x908,
 	NULL,
-	(AObjEvent32 *)((u8*)dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data + 0x90C),
+	dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x90C,
 	NULL,
 };
 
@@ -2186,13 +2188,14 @@ u8 dStageYamabukiFile2_Tex_0x9008[968] = {
 	#include <StageYamabukiFile2/Tex_0x9008.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x93D0 was u8[968]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYamabukiFile2_Tex_0x93D0[964] = {
-	/* TODO: data.inc.c */
-	#include <StageYamabukiFile2/Tex_0x93D0.data.inc.c>
+/* @tex fmt=CI4 dim=48x40 */
+u8 dStageYamabukiFile2_Tex_0x93D0[0x3C0] = {
+	#include <StageYamabukiFile2/Tex_0x93D0.tex.inc.c>
 };
 
-u32 dStageYamabukiFile2_data_0x9794[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x1058 };
+PAD(4);
+
+MObjSub ** dStageYamabukiFile2_data_0x9794[1] = { dStageYamabukiFile2_gap_0x87C8_sub_0x1058 };
 
 
 /* u32 pointer array @ 0x9798 (4 entries) */
@@ -2514,8 +2517,8 @@ u32 dStageYamabukiFile2_gap_0x87C8_sub_0x1220[246] = {
 	aobjEvent32End(),
 };
 PAD(4);
-AObjEvent32 *dStageYamabukiFile2_gap_0x87C8_sub_0x1220_loop[1] = {
-	(AObjEvent32 *)dStageYamabukiFile2_gap_0x87C8_sub_0x19D0,
+AObjEvent32 **dStageYamabukiFile2_gap_0x87C8_sub_0x1220_loop[1] = {
+	dStageYamabukiFile2_gap_0x87C8_sub_0x19D0,
 };
 
 /* gap sub-block @ 0x9DC8 (was gap+0x1600, 976 bytes) */
@@ -2811,13 +2814,12 @@ u8 dStageYamabukiFile2_Tex_0xBAB8[1544] = {
 	#include <StageYamabukiFile2/Tex_0xBAB8.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xC0C0 was u8[1544]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYamabukiFile2_Tex_0xC0C0[1540] = {
-	/* TODO: data.inc.c */
-	#include <StageYamabukiFile2/Tex_0xC0C0.data.inc.c>
+/* @tex fmt=CI4 dim=40x77 */
+u8 dStageYamabukiFile2_Tex_0xC0C0[0x604] = {
+	#include <StageYamabukiFile2/Tex_0xC0C0.tex.inc.c>
 };
 
-u32 dStageYamabukiFile2_data_0xC6C4[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x3F90 };
+MObjSub ** dStageYamabukiFile2_data_0xC6C4[1] = { dStageYamabukiFile2_gap_0x87C8_sub_0x3F90 };
 
 
 /* u32 pointer array @ 0xC6C8 (6 entries) */
@@ -2942,8 +2944,8 @@ u32 dStageYamabukiFile2_gap_0x87C8_sub_0x4160[45] = {
 	aobjEvent32End(),
 };
 PAD(8);
-AObjEvent32 *dStageYamabukiFile2_gap_0x87C8_sub_0x4160_loop[1] = {
-	(AObjEvent32 *)dStageYamabukiFile2_gap_0x87C8_sub_0x42F0,
+AObjEvent32 **dStageYamabukiFile2_gap_0x87C8_sub_0x4160_loop[1] = {
+	dStageYamabukiFile2_gap_0x87C8_sub_0x42F0,
 };
 
 /* gap sub-block @ 0xC9E8 (was gap+0x4220, 208 bytes) */
@@ -3040,13 +3042,14 @@ u8 dStageYamabukiFile2_Tex_0xD928[1160] = {
 	#include <StageYamabukiFile2/Tex_0xD928.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xDDB0 was u8[1160]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYamabukiFile2_Tex_0xDDB0[1156] = {
-	/* TODO: data.inc.c */
-	#include <StageYamabukiFile2/Tex_0xDDB0.data.inc.c>
+/* @tex fmt=CI4 dim=48x48 */
+u8 dStageYamabukiFile2_Tex_0xDDB0[0x480] = {
+	#include <StageYamabukiFile2/Tex_0xDDB0.tex.inc.c>
 };
 
-u32 dStageYamabukiFile2_data_0xE234[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x5B00 };
+PAD(4);
+
+MObjSub ** dStageYamabukiFile2_data_0xE234[1] = { dStageYamabukiFile2_gap_0x87C8_sub_0x5B00 };
 
 
 /* u32 pointer array @ 0xE238 (6 entries) */
@@ -3199,8 +3202,8 @@ u32 dStageYamabukiFile2_gap_0x87C8_sub_0x5CD0[73] = {
 	aobjEvent32End(),
 };
 PAD(8);
-AObjEvent32 *dStageYamabukiFile2_gap_0x87C8_sub_0x5CD0_loop[1] = {
-	(AObjEvent32 *)dStageYamabukiFile2_gap_0x87C8_sub_0x5F04,
+AObjEvent32 **dStageYamabukiFile2_gap_0x87C8_sub_0x5CD0_loop[1] = {
+	dStageYamabukiFile2_gap_0x87C8_sub_0x5F04,
 };
 
 /* gap sub-block @ 0xE5C8 (was gap+0x5E00, 260 bytes) */
@@ -3303,13 +3306,14 @@ u8 dStageYamabukiFile2_Tex_0xF208[1352] = {
 	#include <StageYamabukiFile2/Tex_0xF208.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xF750 was u8[1352]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageYamabukiFile2_Tex_0xF750[1348] = {
-	/* TODO: data.inc.c */
-	#include <StageYamabukiFile2/Tex_0xF750.data.inc.c>
+/* @tex fmt=CI4 dim=48x56 */
+u8 dStageYamabukiFile2_Tex_0xF750[0x540] = {
+	#include <StageYamabukiFile2/Tex_0xF750.tex.inc.c>
 };
 
-u32 dStageYamabukiFile2_data_0xFC94[1] = { (u32)dStageYamabukiFile2_gap_0x87C8_sub_0x7558 };
+PAD(4);
+
+MObjSub ** dStageYamabukiFile2_data_0xFC94[1] = { dStageYamabukiFile2_gap_0x87C8_sub_0x7558 };
 
 
 /* u32 pointer array @ 0xFC98 (4 entries) */
@@ -3442,8 +3446,8 @@ u32 dStageYamabukiFile2_gap_0x87C8_sub_0x7720[57] = {
 	aobjEvent32End(),
 };
 PAD(8);
-AObjEvent32 *dStageYamabukiFile2_gap_0x87C8_sub_0x7720_loop[1] = {
-	(AObjEvent32 *)dStageYamabukiFile2_gap_0x87C8_sub_0x7AA0,
+AObjEvent32 **dStageYamabukiFile2_gap_0x87C8_sub_0x7720_loop[1] = {
+	dStageYamabukiFile2_gap_0x87C8_sub_0x7AA0,
 };
 
 /* gap sub-block @ 0xFFD8 (was gap+0x7810, 656 bytes) */

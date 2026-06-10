@@ -55,7 +55,7 @@ extern u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[];
 extern u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint_0xCAE4[];
 
 extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[];
-extern u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[];
+extern AObjEvent32 *dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[];
 
 extern u32 dEFCommonEffects1_QuakeMag0_AnimJoint_0xCBC4[];
 
@@ -66,7 +66,7 @@ extern u32 dEFCommonEffects1_QuakeMag2_AnimJoint_0xCCF4[];
 extern u32 dEFCommonEffects1_QuakeMag3_AnimJoint_0xCDC4[];
 
 extern AObjEvent32 *dEFCommonEffects1_FlyOrbs_AnimJoint[];
-extern AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[];
+extern AObjEvent32 **dEFCommonEffects1_CommonSpark_MatAnimJoint[];
 
 extern MObjSub *dEFCommonEffects1_gap_0xC9F0_sub_0x20[];
 extern void *dEFCommonEffects1_DamageFlyMDust_MObjSub_head[];
@@ -705,10 +705,10 @@ PAD(8);
  * The triple-indirect AObjEvent32**[]-of-AObjEvent32*[]-of-script pattern:
  * MatAnimJoint entries point to single-element AObjEvent32 * arrays, each
  * of which points to the actual script. */
-AObjEvent32 *dEFCommonEffects1_DamageSlash_MatAnimJoint[3] = {
+AObjEvent32 **dEFCommonEffects1_DamageSlash_MatAnimJoint[3] = {
 	NULL,
-	(AObjEvent32 *)dEFCommonEffects1_DamageSlash_MatAnimJoint_ptrs_0x7948,
-	(AObjEvent32 *)dEFCommonEffects1_DamageSlash_MatAnimJoint_ptrs_0x794C,
+	dEFCommonEffects1_DamageSlash_MatAnimJoint_ptrs_0x7948,
+	dEFCommonEffects1_DamageSlash_MatAnimJoint_ptrs_0x794C,
 };
 
 /* Script 1 @ 0x786C: 28 words / 0x70 bytes. ScaXYZ ramp. */
@@ -896,8 +896,8 @@ PAD(4);
 /* MatAnimJoint is a single AObjEvent32** slot pointing to ptrs_0x7DD0
  * which then points to the actual script @ 0x7DA4. The rest of the
  * 0x7DA0..0x7E80 region is texture/palette/Vtx data for DL_0x7E80. */
-AObjEvent32 *dEFCommonEffects1_ImpactWave_MatAnimJoint[1] = {
-	(AObjEvent32 *)dEFCommonEffects1_ImpactWave_MatAnimJoint_ptrs_0x7DD0,
+AObjEvent32 **dEFCommonEffects1_ImpactWave_MatAnimJoint[1] = {
+	dEFCommonEffects1_ImpactWave_MatAnimJoint_ptrs_0x7DD0,
 };
 
 /* Script @ 0x7DA4: 11 words / 0x2C bytes. Material UV/anim ramp. */
@@ -1052,23 +1052,35 @@ u8 dEFCommonEffects1_Tex_0x8CC0[512] = {
 	#include <EFCommonEffects1/Tex_0x8CC0.tex.inc.c>
 };
 
-/* MObjSub: CommonSpark @ 0x8EC0 */
+/* 8-entry sprite pool — chain pointers at +0x0..+0x1C in the
+ * original 120-byte block. Slot 0 → palette-table head
+ * (gap_0x8F38_sub_0x20); slots 1..7 → Tex_0x{8CC0,8AB8,88B0,86A8,
+ * 84A0,8298,8090}. */
+u8 *dEFCommonEffects1_CommonSpark_sprites[8] = {
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+};
+
+/* Real MObjSub — 120 bytes (88-byte body decoded into struct fields
+ * + 32 trailing zeros from the original PAD). The `sprites` chain
+ * pointer at struct offset +0x4 resolves to `&CommonSpark_sprites[1]`
+ * = `Tex_0x8CC0`; the runtime walks forward from there through the
+ * 7 valid sprite slots. */
 MObjSub dEFCommonEffects1_CommonSpark_MObjSub[1] = {
 	{
-		0x23B1,
-		0x23, 0xD6,
-		(void**)dEFCommonEffects1_Tex_0x8CC0,
-		0x23B3, 0x22AE, 0x23B4, 0x222C,
-		599073194,
-		1.974652175731488e-17f, 1.9854726907604168e-17f,
-		2.0071352275142005e-17f, 3.680622520426278e-40f,
-		2.321704238970359e-17f, 2.938735877055719e-39f,
-		(void**)0x00200020,
+		0x0004,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		(void **)&dEFCommonEffects1_CommonSpark_sprites[1],
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 0.0f,
+		(void **)0x00000000,
 		0x0000,
 		G_IM_FMT_RGBA, G_IM_SIZ_4b,
 		0x0000,
 		0x0000, 0x0000, 0x0000,
-		1.0f, 1.0f,
+		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0x00000000,
 		{ { 0x00, 0x00, 0x00, 0x00 } },
@@ -1082,13 +1094,9 @@ MObjSub dEFCommonEffects1_CommonSpark_MObjSub[1] = {
 	}
 };
 
-/* Raw data from file offset 0x8F38 to 0x8FA0 (104 bytes) */
-/* gap sub-block @ 0x8F38 (was gap+0x0, 32 bytes) */
-PAD(32);
-
 /* gap sub-block @ 0x8F58 (was gap+0x20, 8 bytes) */
-void *dEFCommonEffects1_gap_0x8F38_sub_0x20[2] = {
-	(void *)((u8*)dEFCommonEffects1_CommonSpark_MObjSub + 0x20),
+MObjSub *dEFCommonEffects1_gap_0x8F38_sub_0x20[2] = {
+	dEFCommonEffects1_CommonSpark_MObjSub,
 	NULL,
 };
 
@@ -1153,8 +1161,8 @@ PAD(4);
  *   0x9F58 (8):    PAD(8)   [wait — recompute]
  *   ... 7 textures total spaced 2056 B apart, no trailing PAD after last
  */
-AObjEvent32 *dEFCommonEffects1_CommonSpark_MatAnimJoint[1] = {
-	(AObjEvent32 *)dEFCommonEffects1_CommonSpark_MatAnimJoint_ptrs_0x9130,
+AObjEvent32 **dEFCommonEffects1_CommonSpark_MatAnimJoint[1] = {
+	dEFCommonEffects1_CommonSpark_MatAnimJoint_ptrs_0x9130,
 };
 
 u32 dEFCommonEffects1_CommonSpark_MatAnimJoint_data[27] = {
@@ -1356,8 +1364,8 @@ PAD(8);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[1] = {
-	(AObjEvent32 *)dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0,
+AObjEvent32 **dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[1] = {
+	dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0,
 };
 
 u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[] = {
@@ -1390,9 +1398,9 @@ u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44[] = {
 	aobjEvent32End(),
 };
 
-u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[] = {
-	(u32)(dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44),
-	aobjEvent32End(),
+AObjEvent32 *dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCBB0[2] = {
+	(AObjEvent32 *)dEFCommonEffects1_DamageFlyMDust_MatAnimJoint_0xCB44,
+	NULL,
 };
 
 PAD(8);

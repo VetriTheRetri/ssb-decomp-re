@@ -615,15 +615,15 @@ extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_
 extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x130[];
 extern AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x134[];
 
-AObjEvent32 *dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
+AObjEvent32 **dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[8] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x120,
-	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x124,
-	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x128,
-	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x12C,
-	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x130,
-	(AObjEvent32 *)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x134,
+	dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x120,
+	dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x124,
+	dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x128,
+	dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x12C,
+	dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x130,
+	dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint_data_at_0x134,
 };
 
 /* Continuous AObjEvent32 script stream — 6 sub-scripts separated by SetAnim
@@ -767,15 +767,10 @@ u8 dPikachuSpecial3_Tex_0x1EA0[512] = {
 	#include <PikachuSpecial3/Tex_0x1EA0.tex.inc.c>
 };
 
-/* MObjSub-list head @ 0x20a0 — 4-entry MObjSub** array.
- * The real MObjSub data starts at +0x10 (dPikachuSpecial3_ThunderJoltMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x20A0 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u8 dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <PikachuSpecial3/ThunderJoltMObjSub_MObjSub.data.inc.c>
+MObjSub **dPikachuSpecial3_ThunderJoltMObjSub_MObjSub[2] = {
+	NULL,
+	dPikachuSpecial3_gap_0x2118_sub_0x10,
 };
-
-u32 dPikachuSpecial3_data_0x20A4[1] = { (u32)dPikachuSpecial3_gap_0x2118_sub_0x10 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -903,7 +898,7 @@ u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358[] = {
 	(u32)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
 };
 
-AObjEvent32* dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[] = {
+AObjEvent32 * dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2388[] = {
 	(AObjEvent32*)(dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint_0x2358),
 	NULL,
 };

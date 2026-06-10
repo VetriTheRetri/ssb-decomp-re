@@ -19,7 +19,7 @@ intern dCaptainMainMotion_ItemThrowAirSmashB_0x08AC+0x8 dCaptainMainMotion_ItemT
 intern dCaptainMainMotion_HeavyItemThrowSmashB_0x0908+0xC dCaptainMainMotion_HeavyItemThrowSmashB_0x08F8
 intern dCaptainMainMotion_HeavyItemThrowSmashB_0x0928+0xC dCaptainMainMotion_HeavyItemThrowSmashB_0x0918
 extern dCaptainMainMotion_HeavyItemThrowSmashB_0x0928+0x24 dCaptainMainMotion_0x0000  # -> file 201 (FTCommonMoveset)
-extern dCaptainMainMotion_SwordSwing3+0x1C dCaptainMainMotion_0x0064  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_SwordSwing3+0x1C dCaptainMainMotion_0x0000+0x64  # -> file 201 (FTCommonMoveset)
 extern dCaptainMainMotion_SwordSwing4+0x20 dCaptainMainMotion_Run+0x24  # -> file 201 (FTCommonMoveset)
 extern dCaptainMainMotion_SwordSwingDash+0x10 dCaptainMainMotion_TurnRun+0x18  # -> file 201 (FTCommonMoveset)
 extern dCaptainMainMotion_BatSwing1+0xC dCaptainMainMotion_JumpAerial  # -> file 201 (FTCommonMoveset)

@@ -119,14 +119,17 @@ u8 dStageInishieFile2_Tex_0x02E0[72] = {
 	#include <StageInishieFile2/Tex_0x02E0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x16 lut=dStageInishieFile2_Lut_0x3620_palette */
 u8 dStageInishieFile2_Tex_0x328[136] = {
 	#include <StageInishieFile2/Tex_0x328.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x73 lut=dStageInishieFile2_Lut_0x35F8_palette */
 u8 dStageInishieFile2_Tex_0x3B0[1176] = {
 	#include <StageInishieFile2/Tex_0x3B0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=64x64 lut=dStageInishieFile2_Lut_0x35F8_palette */
 u8 dStageInishieFile2_Tex_0x848[2056] = {
 	#include <StageInishieFile2/Tex_0x848.tex.inc.c>
 };
@@ -137,6 +140,7 @@ u8 dStageInishieFile2_Tex_0x1050[264] = {
 	#include <StageInishieFile2/Tex_0x1050.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x32 lut=dStageInishieFile2_Lut_0x3670_palette */
 u8 dStageInishieFile2_Tex_0x1158[264] = {
 	#include <StageInishieFile2/Tex_0x1158.tex.inc.c>
 };
@@ -195,6 +199,7 @@ u8 dStageInishieFile2_Tex_0x1EC8[1640] = {
 	#include <StageInishieFile2/Tex_0x1EC8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x104 lut=dStageInishieFile2_gap_0x36B8_sub_0x8 */
 u8 dStageInishieFile2_Tex_0x2530[1672] = {
 	#include <StageInishieFile2/Tex_0x2530.tex.inc.c>
 };

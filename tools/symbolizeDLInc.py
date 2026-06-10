@@ -40,8 +40,25 @@ _POINTER_MACROS = {
 }
 
 
-def _find_master_c(fid):
+def _find_master_c(fid, version='us'):
     src = os.path.join(PROJECT_DIR, 'src', 'relocData')
+    # For JP, look up by manifest name FIRST (the JP fid often disagrees with
+    # the US fid prefix in the filename — e.g. JP fid 299 = US fid 324 = LinkModel).
+    if version == 'jp':
+        manifest = os.path.join(PROJECT_DIR, 'tools', 'relocFileDescriptions.jp.txt')
+        if os.path.exists(manifest):
+            name = None
+            with open(manifest) as fh:
+                for line in fh:
+                    line = line.strip()
+                    if line.startswith(f'-{fid:03d}: ') or line.startswith(f'-{fid}: '):
+                        name = line.split(': ', 1)[1].strip()
+                        break
+            if name:
+                for f in os.listdir(src):
+                    if f.endswith(f'_{name}.c'):
+                        return os.path.join(src, f)
+    # Fall back to direct fid-prefix match (works when src and JP fids align).
     for f in os.listdir(src):
         if f.startswith(f'{fid}_') and f.endswith('.c'):
             return os.path.join(src, f)
@@ -49,12 +66,39 @@ def _find_master_c(fid):
     return None
 
 
-def _find_reloc(fid):
+def _find_reloc(fid, version='us'):
     src = os.path.join(PROJECT_DIR, 'src', 'relocData')
+    # Try direct fid match first (works when src filename uses this version's fid)
     for f in os.listdir(src):
         if (f.startswith(f'{fid}_') and f.endswith('.reloc')
                 and '.jp.reloc' not in f and '.us.reloc' not in f):
+            base = f[:-len('.reloc')]
+            # For JP, prefer .jp.reloc override if present
+            if version == 'jp':
+                jp_path = os.path.join(src, base + '.jp.reloc')
+                if os.path.exists(jp_path):
+                    return jp_path
             return os.path.join(src, f)
+    # JP fallback: map JP fid → name via manifest, then find <us_fid>_<name>.reloc
+    if version == 'jp':
+        manifest = os.path.join(PROJECT_DIR, 'tools', 'relocFileDescriptions.jp.txt')
+        if os.path.exists(manifest):
+            name = None
+            with open(manifest) as fh:
+                for line in fh:
+                    line = line.strip()
+                    if line.startswith(f'-{fid:03d}: ') or line.startswith(f'-{fid}: '):
+                        name = line.split(': ', 1)[1].strip()
+                        break
+            if name:
+                # Look for any *_<name>.reloc
+                for f in os.listdir(src):
+                    if f.endswith(f'_{name}.reloc') and '.jp.reloc' not in f and '.us.reloc' not in f:
+                        base = f[:-len('.reloc')]
+                        jp_path = os.path.join(src, base + '.jp.reloc')
+                        if os.path.exists(jp_path):
+                            return jp_path
+                        return os.path.join(src, f)
     return None
 
 
@@ -350,11 +394,11 @@ def _add_externs_to_master(master_path, needed):
 
 
 def symbolize_fid(fid, version, dry_run=False):
-    master = _find_master_c(fid)
+    master = _find_master_c(fid, version)
     if not master:
         print(f'fid={fid}: no master .c in src/relocData; skipping (spritelist or other)', file=sys.stderr)
         return 0
-    rf = _find_reloc(fid)
+    rf = _find_reloc(fid, version)
     if not rf:
         print(f'fid={fid}: no .reloc; nothing to symbolize')
         return 0

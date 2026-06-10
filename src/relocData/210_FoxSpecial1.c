@@ -19,7 +19,7 @@
 extern Gfx dFoxSpecial4_ReflectorDL_DisplayList[];  /* file 316 */
 
 WPAttributes dFoxSpecial1_Blaster_WeaponAttributes = {
-    (void *)&dFoxSpecial4_ReflectorDL_DisplayList[1],  /* data (316+0x40) */
+    (void *)dFoxSpecial4_ReflectorDL_DisplayList,  /* data (316+0x40 = symbol start) */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */

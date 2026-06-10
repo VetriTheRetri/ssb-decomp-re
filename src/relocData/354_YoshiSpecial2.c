@@ -50,8 +50,7 @@ u8 dYoshiSpecial2_Tex_0x260[512] = {
 
 /* MObjSub-list head @ 0x460 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dYoshiSpecial2_EntryEggMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x460 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dYoshiSpecial2_EntryEggMObjSub_MObjSub[1] = { (u32)dYoshiSpecial2_gap_0x04D8_sub_0x10 };
+MObjSub ** dYoshiSpecial2_EntryEggMObjSub_MObjSub[1] = { dYoshiSpecial2_gap_0x04D8_sub_0x10 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */

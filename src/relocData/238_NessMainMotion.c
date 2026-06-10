@@ -1415,7 +1415,7 @@ ftMotionCommand dNessMainMotion_DKTAAir[] = {
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
-	ftMotionCommandGoto(0x05AD057A),
+	ftMotionCommandGoto(dNessMainMotion_PKThunderStartGround1),
 };
 #else
 ftMotionCommand dNessMainMotion_DKTAAir[] = {
@@ -1440,9 +1440,9 @@ ftMotionCommand dNessMainMotion_DKTAAir[] = {
  * Not a pure ftMotionCommand script — typed as u32 to suppress R018. */
 #if defined(REGION_JP)
 u32 dNessMainMotion_PKThunder[] = {
-	ftMotionCommandGoto(dNessMainMotion_PKThunderStartGround1),
 	ftMotionCommandGoto(dNessMainMotion_PKThunderStartGround2),
 	ftMotionCommandGoto(dNessMainMotion_PKThunderEnd),
+	ftMotionCommandGoto(dNessMainMotion_DKTAAir),
 	ftMotionCommandEnd(),
 	0x00000001,
 	ftMotionCommandEnd(),
@@ -1607,7 +1607,7 @@ ftMotionCommand dNessMainMotion_HealingDownB_0x1728[] = {
 
 #if defined(REGION_JP)
 ftMotionCommand dNessMainMotion_DownSpecial[] = {
-	ftMotionCommandGoto(0x05E305BC),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dNessMainMotion_0x16E8 + 0x8)),
 };
 #else
 ftMotionCommand dNessMainMotion_DownSpecial[] = {
@@ -1618,9 +1618,9 @@ ftMotionCommand dNessMainMotion_DownSpecial[] = {
 
 #if defined(REGION_JP)
 ftMotionCommand dNessMainMotion_DownSpecialStartAir[] = {
-	ftMotionCommandGoto(dNessMainMotion_DownBStartGround),
-	ftMotionCommandGoto(dNessMainMotion_HealingDownB_0x1718),
-	ftMotionCommandGoto(dNessMainMotion_HealingDownB_0x1728),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dNessMainMotion_DownBStartGround + 0x18)),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dNessMainMotion_HealingDownB_0x1718 + 0x8)),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dNessMainMotion_HealingDownB_0x1728 + 0x50)),
 };
 #else
 ftMotionCommand dNessMainMotion_DownSpecialStartAir[] = {

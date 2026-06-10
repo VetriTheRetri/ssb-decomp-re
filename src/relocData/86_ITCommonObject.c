@@ -212,7 +212,7 @@ extern u32 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540_sub_0x90[];
 extern u32 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0_sub_0x90[];
 extern AObjEvent32 * dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x78[];
 extern u32 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248_sub_0x34[];
-extern u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4[];
+extern u32* dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4[];
 extern AObjEvent32 * dITCommonObject_Spear_Item_data_remainder_sub_0x2F4[];
 extern u32 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14[];
 extern u32 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14[];
@@ -435,16 +435,10 @@ u32 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8[2] = {
 };
 
 /* u32 pointer array @ 0x12C0 (2 entries) */
-u32 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x8[2] = {
-	(u32)&dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34,
-	(u32)&dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0xC,
-};
+u16 * dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x8[2] = { dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34, dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0xC };
 
 /* u32 pointer array @ 0x12C8 (2 entries) */
-u32 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x10[2] = {
-	(u32)&dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34,
-	(u32)&dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0xC,
-};
+u16 * dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x10[2] = { dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0x34, dITCommonObject_Heart_Item_data_remainder_gap_0x11DC_sub_0xC };
 
 /* MObjSub @ 0x12D0 */
 MObjSub dITCommonObject_Star_Item_mobjsubs_gap_0x12B8_sub_0x18[1] = {
@@ -1236,10 +1230,10 @@ DObjDesc dITCommonObject_FFlower_Item_data_DObjDesc[4] = {
 };
 
 /* @ 0x04760, 12 bytes — FFlower item matanim joint table (per-MObj AObjEvent32** entries) */
-AObjEvent32 *dITCommonObject_FFlower_Item_matanimjoints[3] = {
+AObjEvent32 **dITCommonObject_FFlower_Item_matanimjoints[3] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_FFlower_Item_matanimjoints_0x4788,
+	dITCommonObject_FFlower_Item_matanimjoints_0x4788,
 };
 
 /* @ 0x0476C, 28 bytes — AObjEvent32 matanim script */
@@ -1407,18 +1401,10 @@ u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0[2] = {
 };
 
 /* u32 pointer array @ 0x5DE8 (4 entries) */
-u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x8[4] = {
-	(u32)&dITCommonObject_Tex_0x5BE0,
-	(u32)&dITCommonObject_Tex_0x59D8,
-	(u32)&dITCommonObject_Tex_0x57D0,
-	(u32)&dITCommonObject_Tex_0x55C8,
-};
+u8 * dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x8[4] = { dITCommonObject_Tex_0x5BE0, dITCommonObject_Tex_0x59D8, dITCommonObject_Tex_0x57D0, dITCommonObject_Tex_0x55C8 };
 
 /* u32 pointer array @ 0x5DF8 (2 entries) */
-u32 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x18[2] = {
-	(u32)&dITCommonObject_StarRod_Weapon_data_post_0x98,
-	(u32)&dITCommonObject_StarRod_Weapon_data_post_0x70,
-};
+u16 * dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x18[2] = { dITCommonObject_StarRod_Weapon_data_post_0x98, dITCommonObject_StarRod_Weapon_data_post_0x70 };
 
 /* MObjSub @ 0x5E00 */
 MObjSub dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0_sub_0x20[1] = {
@@ -1494,11 +1480,11 @@ u32 dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC[8] = {
 };
 
 /* AObjEvent32* array trailing the script */
-AObjEvent32 *dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC_post[4] = {
+AObjEvent32 **dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0xC_post[4] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x78,
+	dITCommonObject_GShell_Item_data_remainder_gap_0x600C_sub_0x78,
 };
 
 /* gap sub-block @ 0x6048 (was gap+0x3C, 60 bytes) */
@@ -1691,10 +1677,7 @@ u32 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488[2] = {
 };
 
 /* u32 pointer array @ 0x7490 (2 entries) */
-u32 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x8[2] = {
-	(u32)&dITCommonObject_Taru_Item_data_remainder_sub_0x34,
-	(u32)&dITCommonObject_Taru_Item_data_remainder_sub_0xC,
-};
+u16 * dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x8[2] = { dITCommonObject_Taru_Item_data_remainder_sub_0x34, dITCommonObject_Taru_Item_data_remainder_sub_0xC };
 
 /* MObjSub @ 0x7498 */
 MObjSub dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488_sub_0x10[1] = {
@@ -1767,20 +1750,18 @@ u16 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34[16] = {
 
 PAD(8);
 
-/* TODO: data.inc.c — block at 0x7728 was u8[776]; contains 1 embedded chain pointer(s) split out below */
-u8 dITCommonObject_Tex_0x7728[772] = {
-	/* TODO: data.inc.c */
-	#include <ITCommonObject/Tex_0x7728.data.inc.c>
+/* @tex fmt=CI4 dim=48x32 lut=dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34 */
+u8 dITCommonObject_Tex_0x7728[0x300] = {
+	#include <ITCommonObject/Tex_0x7728.tex.inc.c>
 };
 
-u32 dITCommonObject_data_0x7A2C[1] = { (u32)dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3E4 };
+PAD(4);
+
+MObjSub ** dITCommonObject_data_0x7A2C[1] = { dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x3E4 };
 
 
 /* u32 pointer array @ 0x7A30 (2 entries) */
-u32 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x364[2] = {
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34,
-	(u32)&dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0xC,
-};
+u16 * dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x364[2] = { dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x34, dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0xC };
 
 /* MObjSub @ 0x7A38 */
 MObjSub dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC_sub_0x36C[1] = {
@@ -1967,16 +1948,7 @@ u32 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120[4] = {
 };
 
 /* u32 pointer array @ 0x9130 (8 entries) */
-u32 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x10[8] = {
-	(u32)&dITCommonObject_Tex_0x8C18,
-	(u32)&dITCommonObject_Tex_0x8A10,
-	(u32)&dITCommonObject_Tex_0x8808,
-	(u32)&dITCommonObject_Tex_0x8600,
-	(u32)&dITCommonObject_Tex_0x83F8,
-	(u32)&dITCommonObject_Tex_0x81F0,
-	(u32)&dITCommonObject_Tex_0x7FE8,
-	(u32)&dITCommonObject_Tex_0x7DE0,
-};
+u8 * dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x10[8] = { dITCommonObject_Tex_0x8C18, dITCommonObject_Tex_0x8A10, dITCommonObject_Tex_0x8808, dITCommonObject_Tex_0x8600, dITCommonObject_Tex_0x83F8, dITCommonObject_Tex_0x81F0, dITCommonObject_Tex_0x7FE8, dITCommonObject_Tex_0x7DE0 };
 
 /* MObjSub @ 0x9150 */
 MObjSub dITCommonObject_MBall_Item_mobjsubs_gap_0x9120_sub_0x30[1] = {
@@ -2045,12 +2017,12 @@ DObjDesc dITCommonObject_MBall_Item_data_DObjDesc[5] = {
 
 /* @ 0x950C, 988 bytes (raw gap) */
 /* gap sub-block @ 0x950C (was gap+0x0, 20 bytes) */
-AObjEvent32 *dITCommonObject_MBall_Item_data_remainder_gap_0x950C[5] = {
+AObjEvent32 **dITCommonObject_MBall_Item_data_remainder_gap_0x950C[5] = {
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4,
+	dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0xC4,
 };
 
 /* gap sub-block @ 0x9520 (was gap+0x14, 176 bytes) */
@@ -2282,19 +2254,16 @@ u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x244[44] = {
 };
 
 /* gap sub-block @ 0x9800 (was gap+0x2F4, 32 bytes) */
-u32 dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4[2] = {
-	(u32)dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x244,
-	aobjEvent32End(),
-};
+u32 * dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4[2] = { dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x244, NULL };
 
 /* AObjEvent32* array trailing the script */
-AObjEvent32 *dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4_post[6] = {
+AObjEvent32 **dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x2F4_post[6] = {
 	NULL,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x3C4,
+	dITCommonObject_MBall_Item_data_remainder_gap_0x950C_sub_0x3C4,
 };
 
 /* gap sub-block @ 0x9820 (was gap+0x314, 176 bytes) */
@@ -2792,12 +2761,12 @@ u32 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14[75] = {
 };
 
 /* AObjEvent32* array trailing the script */
-AObjEvent32 *dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14_post[5] = {
+AObjEvent32 **dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x14_post[5] = {
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x1A4,
+	dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8_sub_0x1A4,
 };
 
 /* gap sub-block @ 0xB90C (was gap+0x154, 80 bytes) */
@@ -2969,10 +2938,7 @@ u32 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410[2] = {
 };
 
 /* u32 pointer array @ 0xD418 (2 entries) */
-u32 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x8[2] = {
-	(u32)&dITCommonObject_Tex_0xCD10,
-	(u32)&dITCommonObject_Tex_0xC608,
-};
+u8 * dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x8[2] = { dITCommonObject_Tex_0xCD10, dITCommonObject_Tex_0xC608 };
 
 /* MObjSub @ 0xD420 */
 MObjSub dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410_sub_0x10[1] = {
@@ -3053,8 +3019,8 @@ u32 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14[11] = {
 };
 
 /* AObjEvent32* array trailing the script */
-AObjEvent32 *dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14_post[1] = {
-	(AObjEvent32 *)dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x8C,
+AObjEvent32 **dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x14_post[1] = {
+	dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644_sub_0x8C,
 };
 
 /* gap sub-block @ 0xD688 (was gap+0x44, 72 bytes) */
@@ -3139,11 +3105,7 @@ u32 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70[3] = {
 };
 
 /* u32 pointer array @ 0xDD7C (3 entries) */
-u32 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0xC[3] = {
-	(u32)&dITCommonObject_Tex_0xDB70,
-	(u32)&dITCommonObject_Tex_0xD968,
-	(u32)&dITCommonObject_Tex_0xD760,
-};
+u8 * dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0xC[3] = { dITCommonObject_Tex_0xDB70, dITCommonObject_Tex_0xD968, dITCommonObject_Tex_0xD760 };
 
 /* MObjSub @ 0xDD88 */
 MObjSub dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70_sub_0x18[1] = {
@@ -3287,10 +3249,10 @@ u32 dITCommonObject_Spear_Item_data_remainder_sub_0x14[73] = {
 };
 
 /* AObjEvent32* array trailing the script */
-AObjEvent32 *dITCommonObject_Spear_Item_data_remainder_sub_0x14_post[3] = {
+AObjEvent32 **dITCommonObject_Spear_Item_data_remainder_sub_0x14_post[3] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_Spear_Item_data_remainder_sub_0x2F4,
+	dITCommonObject_Spear_Item_data_remainder_sub_0x2F4,
 };
 
 /* gap sub-block @ 0xE12C (was gap+0x144, 432 bytes) */
@@ -3420,11 +3382,7 @@ u32 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0[3] = {
 };
 
 /* u32 pointer array @ 0xE2EC (3 entries) */
-u32 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0xC[3] = {
-	(u32)&dITCommonObject_Tex_0xDB70,
-	(u32)&dITCommonObject_Tex_0xD968,
-	(u32)&dITCommonObject_Tex_0xD760,
-};
+u8 * dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0xC[3] = { dITCommonObject_Tex_0xDB70, dITCommonObject_Tex_0xD968, dITCommonObject_Tex_0xD760 };
 
 /* MObjSub @ 0xE2F8 */
 MObjSub dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0_sub_0x18[1] = {
@@ -3484,10 +3442,10 @@ DObjDesc dITCommonObject_SpearSwarm_Weapon_data_DObjDesc[4] = {
 PAD(8);
 
 /* @ 0x0E560, 12 bytes — SpearSwarm weapon matanim joint table (per-MObj AObjEvent32** entries) */
-AObjEvent32 *dITCommonObject_SpearSwarm_Weapon_matanimjoints[3] = {
+AObjEvent32 **dITCommonObject_SpearSwarm_Weapon_matanimjoints[3] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE67C,
+	dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE67C,
 };
 
 /* @ 0x0E56C, 272 bytes — AObjEvent32 matanim script */
@@ -3726,11 +3684,7 @@ u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0[3] = {
 };
 
 /* u32 pointer array @ 0xF6CC (3 entries) */
-u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xC[3] = {
-	(u32)&dITCommonObject_Tex_0xF540,
-	(u32)&dITCommonObject_Tex_0xF3B8,
-	(u32)&dITCommonObject_Tex_0xF230,
-};
+u8 * dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0xC[3] = { dITCommonObject_Tex_0xF540, dITCommonObject_Tex_0xF3B8, dITCommonObject_Tex_0xF230 };
 
 /* u32 pointer array @ 0xF6D8 (4 entries) */
 u32 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0_sub_0x18[4] = {
@@ -3918,10 +3872,10 @@ u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[] = {
 };
 
 /* @ 0x0FB70, 12 bytes — KamexHydro weapon matanim joint table (per-MObj AObjEvent32** entries) */
-AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints[3] = {
+AObjEvent32 **dITCommonObject_KamexHydro_Weapon_matanimjoints[3] = {
 	NULL,
-	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C,
-	(AObjEvent32 *)&dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[1],
+	dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C,
+	&dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[1],
 };
 
 /* @ 0x0FB7C, 144 bytes — AObjEvent32 matanim script */

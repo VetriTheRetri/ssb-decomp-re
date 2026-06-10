@@ -477,7 +477,7 @@ extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C18[];
 extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C7C[];
 extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1CD8[];
 extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44[];
-extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[];
+extern u32* dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[];
 
 AObjEvent32 *dStageMetalFile2_Layer0MatAnim_MatAnimJoint[2] = {
 	NULL,
@@ -630,14 +630,7 @@ u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44[] = {
 	(u32)(dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44),
 };
 
-u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[] = {
-	(u32)(dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1BA8),
-	(u32)(dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C18),
-	(u32)(dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C7C),
-	(u32)(dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1CD8),
-	(u32)(dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44),
-	aobjEvent32End(),
-};
+u32 * dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1DB4[] = { dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1BA8, dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C18, dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1C7C, dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1CD8, dStageMetalFile2_Layer0MatAnim_MatAnimJoint_0x1D44, NULL };
 
 PAD(4);
 
@@ -953,7 +946,7 @@ PAD(12);
 extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3098[];
 extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3124[];
 extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0[];
-extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[];
+extern u32* dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[];
 
 AObjEvent32 *dStageMetalFile2_Layer1MatAnim_MatAnimJoint[2] = {
 	NULL,
@@ -1061,24 +1054,16 @@ u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0[] = {
 	(u32)(dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0),
 };
 
-u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[] = {
-	(u32)(dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3098),
-	(u32)(dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3124),
-	(u32)(dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0),
-	aobjEvent32End(),
-};
+u32 * dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3208[] = { dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3098, dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x3124, dStageMetalFile2_Layer1MatAnim_MatAnimJoint_0x31B0, NULL };
 
 PAD(8);
 
 /* MObjSub-list head @ 0x3220 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dStageMetalFile2_Layer2MObj_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x3220 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageMetalFile2_Layer2MObj_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <StageMetalFile2/Layer2MObj_MObjSub.data.inc.c>
+MObjSub **dStageMetalFile2_Layer2MObj_MObjSub[2] = {
+	NULL,
+	dStageMetalFile2_gap_0x3298_sub_0x8,
 };
-
-u32 dStageMetalFile2_data_0x3224[1] = { (u32)dStageMetalFile2_gap_0x3298_sub_0x8 };
 
 
 /* The real MObjSub @ +0x8 (was folded into the prior
@@ -1144,7 +1129,7 @@ PAD(4);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8[];
-extern u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[];
+extern u32* dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[];
 
 AObjEvent32 *dStageMetalFile2_Layer2MatAnim_MatAnimJoint[2] = {
 	NULL,
@@ -1172,10 +1157,7 @@ u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8[] = {
 	(u32)(dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8),
 };
 
-u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[] = {
-	(u32)(dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8),
-	aobjEvent32End(),
-};
+u32 * dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x3540[] = { dStageMetalFile2_Layer2MatAnim_MatAnimJoint_0x34F8, NULL };
 
 PAD(8);
 
@@ -1363,7 +1345,7 @@ extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3E68[];
 extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3EC8[];
 extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F10[];
 extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58[];
-extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0[];
+extern u32* dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0[];
 
 AObjEvent32 *dStageMetalFile2_Layer3MatAnim_MatAnimJoint[2] = {
 	NULL,
@@ -1464,10 +1446,5 @@ u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58[] = {
 	(u32)(dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58),
 };
 
-u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0[] = {
-	(u32)(dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3E68),
-	(u32)(dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3EC8),
-	(u32)(dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F10),
-	(u32)(dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58),
-};
+u32 * dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3FB0[] = { dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3E68, dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3EC8, dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F10, dStageMetalFile2_Layer3MatAnim_MatAnimJoint_0x3F58 };
 

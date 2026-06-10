@@ -15,8 +15,11 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dGRBonus1LinkFile2_DL_0x0480[];
-extern Gfx dGRBonus1LinkFile2_DL_0x1E10[];
 extern Vtx dGRBonus1LinkFile2_gap_0x0000[];
 extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x100[];
 extern Vtx dGRBonus1LinkFile2_gap_0x0000_sub_0x140[];
@@ -56,6 +59,7 @@ extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xB64[];
 extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xC24[];
 extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xD64[];
 extern Vtx dGRBonus1LinkFile2_gap_0x0E0C_sub_0xDE4[];
+extern Gfx dGRBonus1LinkFile2_DL_0x1E10[];
 extern MPVertexData dGRBonus1LinkFile2_gap_0x2454[];
 extern u16 dGRBonus1LinkFile2_gap_0x2454_sub_0x108[];
 extern MPVertexLinks dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4[];
@@ -608,31 +612,35 @@ u8 dGRBonus1LinkFile2_gap_0x2454_sub_0x26C[32] = {
  * JP: u16+u16 prefix that's actually the spilled tail of sub_0x26C's mapobj[4].pos.y
  * + alignment pad, followed by the standard 28-byte struct. Pointer fields are
  * chain-rewritten by fixRelocChain at link time per the .reloc / .jp.reloc. */
-/* TODO: data.inc.c — block at 0x26E0 was u8[32]; contains 5 embedded chain pointer(s) split out below */
-u8 dGRBonus1LinkFile2_MPGeometryData_0x26E0[4] = {
-	/* TODO: data.inc.c */
-	#include <GRBonus1LinkFile2/MPGeometryData_0x26E0.data.inc.c>
-};
+#if defined(REGION_JP)
+/* JP MPGeometryData_0x26E0 layout is shifted +4 vs US: the 4-byte spill into
+ * MPGeometryData_0x26E0[0..4) pushes every pointer slot down by 4. Pointers
+ * land at +0x8/+0xC/+0x10/+0x14/+0x1C; +0x4 and +0x18 carry the leading u16
+ * of MPGeometryData (yakumono count etc.) packed against zero pads. The
+ * +0x14 and +0x1C targets each land 4 bytes inside their sub-block target
+ * (the extra spill from JP's 2-byte tail in sub_0x26C / sub_0x234). */
+u32 dGRBonus1LinkFile2_MPGeometryData_0x26E0[1] = { 0xF0C80000 };
+u32 dGRBonus1LinkFile2_data_0x26E4[1] = { 0x00030000 };
+MPVertexData * dGRBonus1LinkFile2_data_0x26E8[1] = { dGRBonus1LinkFile2_gap_0x2454 };
+u16 * dGRBonus1LinkFile2_data_0x26EC[1] = { dGRBonus1LinkFile2_gap_0x2454_sub_0x108 };
+MPVertexLinks * dGRBonus1LinkFile2_data_0x26F0[1] = { dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4 };
+u32 dGRBonus1LinkFile2_data_0x26F4[1] = { (u32)((u8 *)dGRBonus1LinkFile2_gap_0x2454_sub_0x234 + 0x4) };
+u32 dGRBonus1LinkFile2_data_0x26F8[1] = { 0x00050000 };
+u32 dGRBonus1LinkFile2_data_0x26FC[1] = { (u32)((u8 *)dGRBonus1LinkFile2_gap_0x2454_sub_0x26C + 0x4) };
+#else
+u32 dGRBonus1LinkFile2_MPGeometryData_0x26E0[1] = { 0x00030000 };
+MPVertexData * dGRBonus1LinkFile2_data_0x26E4[1] = { dGRBonus1LinkFile2_gap_0x2454 };
 
-u32 dGRBonus1LinkFile2_data_0x26E4[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454 };
+u16 * dGRBonus1LinkFile2_data_0x26E8[1] = { dGRBonus1LinkFile2_gap_0x2454_sub_0x108 };
 
-u32 dGRBonus1LinkFile2_data_0x26E8[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x108 };
+MPVertexLinks * dGRBonus1LinkFile2_data_0x26EC[1] = { dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4 };
 
-u32 dGRBonus1LinkFile2_data_0x26EC[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x1A4 };
+u8 * dGRBonus1LinkFile2_data_0x26F0[1] = { dGRBonus1LinkFile2_gap_0x2454_sub_0x234 };
 
-u32 dGRBonus1LinkFile2_data_0x26F0[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x234 };
+u32 dGRBonus1LinkFile2_data_0x26F4[1] = { 0x00050000 };
 
-u8 dGRBonus1LinkFile2_data_0x26F4[4] = {
-	/* TODO: data.inc.c */
-	#include <GRBonus1LinkFile2/data_0x26F4.data.inc.c>
-};
-
-u32 dGRBonus1LinkFile2_data_0x26F8[1] = { (u32)dGRBonus1LinkFile2_gap_0x2454_sub_0x26C };
-
-u8 dGRBonus1LinkFile2_data_0x26FC[4] = {
-	/* TODO: data.inc.c */
-	#include <GRBonus1LinkFile2/data_0x26FC.data.inc.c>
-};
+u8 *dGRBonus1LinkFile2_data_0x26F8[2] = {  dGRBonus1LinkFile2_gap_0x2454_sub_0x26C, NULL };
+#endif
 
 /* The 736-byte block at file 0x2700..0x29E0 was previously typed as one
  * decoded `u32 Layer1Anim_AnimJoint[184]` array, but most of it isn't an

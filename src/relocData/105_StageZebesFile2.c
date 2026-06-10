@@ -2000,35 +2000,35 @@ PAD(8);
  * Semantically these targets are AObjEvent32 ** (arrays of script
  * pointers); the (AObjEvent32 *) cast just gives the slot the right
  * pointer size for the chain rewriter. */
-AObjEvent32 *dStageZebesFile2_Layer1MatAnim_MatAnimJoint[28] = {
+AObjEvent32 **dStageZebesFile2_Layer1MatAnim_MatAnimJoint[28] = {
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B38,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B44,
-	NULL,
-	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B50,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B54,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B38,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B44,
 	NULL,
 	NULL,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B50,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B54,
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B58,
 	NULL,
 	NULL,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B58,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B5C,
+	NULL,
+	NULL,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B5C,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B60,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B60,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B64,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5B64,
 };
 
 /* @ 0x6480: MatAnim scripts (0x6480-0xBFB8) + matlinks (0xBFB8-0xC000) +
@@ -8023,13 +8023,14 @@ u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008[1032] = {
 	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xC890 was u8[1032]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6410[1028] = {
-	/* TODO: data.inc.c */
-	#include <StageZebesFile2/Layer1MatAnim_MatAnimJoint_data_at_0x6410.data.inc.c>
+/* @tex fmt=CI4 dim=32x64 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BD8 */
+u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6410[0x400] = {
+	#include <StageZebesFile2/Layer1MatAnim_MatAnimJoint_data_at_0x6410.tex.inc.c>
 };
 
-u32 dStageZebesFile2_data_0xCC94[1] = { (u32)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6898 };
+PAD(4);
+
+MObjSub ** dStageZebesFile2_data_0xCC94[1] = { dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6898 };
 
 
 /* @ 0xCC98 — 2 texture pointers (CI4 textures _at_0x6008 / _at_0x5C00). */
@@ -8168,11 +8169,11 @@ u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xD4[27] = {
 };
 
 /* @ 0xD028 — AObjEvent32 *[4] joint table (slot 3 is _at_0x1CC). */
-AObjEvent32 *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x140[4] = {
+AObjEvent32 **dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x140[4] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1CC,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1CC,
 };
 
 /* u32: dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x150 (31 u32) */
@@ -8417,12 +8418,12 @@ u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x110[19] = {
 };
 
 /* @ 0xDF04 — AObjEvent32 *[5] joint table (slot 4 is _at_0x1AC). */
-AObjEvent32 *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x15C[5] = {
+AObjEvent32 **dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x15C[5] = {
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x1AC,
+	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x1AC,
 };
 
 /* u32: dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928_at_0x170 (15 u32) */

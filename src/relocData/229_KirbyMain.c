@@ -19,7 +19,7 @@ extern Gfx dFoxUnknown_DL[];
 extern u32 dKirbyMainMotion_EggLay_0x0154[];
 extern DObjDesc dKirbyModel_JointTree[];
 extern DObjDesc dKirbyModel_JointTree_0x2CD0[];
-extern u8 dKirbyModel_JointVerts_Vtx[];
+extern MObjSub **dKirbyModel_JointVerts_Vtx[];
 extern Gfx dKirbyModel_Joint_0x0DB0_DisplayList[];
 extern Gfx dKirbyModel_Joint_0x198F8_DisplayList[];
 extern Gfx dKirbyModel_Joint_0x19B38_DisplayList[];

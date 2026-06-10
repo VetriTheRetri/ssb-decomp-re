@@ -1147,33 +1147,33 @@ AObjEvent32 *dNessModel_gap_0x2C04_sub_0x204[2] = {
 };
 
 /* gap sub-block @ 0x2E10 (was gap+0x20C, 108 bytes) */
-MObjSub *dNessModel_gap_0x2C04_sub_0x20C[27] = {
+MObjSub **dNessModel_gap_0x2C04_sub_0x20C[27] = {
 	NULL,
 	NULL,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x88C,
+	dNessModel_gap_0x2C04_sub_0x88C,
 	NULL,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x89C,
-	NULL,
-	NULL,
-	NULL,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x8A4,
-	NULL,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x8B4,
+	dNessModel_gap_0x2C04_sub_0x89C,
 	NULL,
 	NULL,
 	NULL,
+	dNessModel_gap_0x2C04_sub_0x8A4,
+	NULL,
+	dNessModel_gap_0x2C04_sub_0x8B4,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x8BC,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x8C4,
+	NULL,
+	NULL,
+	NULL,
+	dNessModel_gap_0x2C04_sub_0x8BC,
+	dNessModel_gap_0x2C04_sub_0x8C4,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x8CC,
-	(MObjSub *)dNessModel_gap_0x2C04_sub_0x8D4,
+	dNessModel_gap_0x2C04_sub_0x8CC,
+	dNessModel_gap_0x2C04_sub_0x8D4,
 	NULL,
 };
 
@@ -2289,9 +2289,9 @@ u8 dNessModel_Tex_0x76F8[1024] = {
 };
 
 /* gap sub-block @ 0x7AF8 (was gap+0x25BC, 8 bytes) */
-MObjSub *dNessModel_gap_0x553C_sub_0x25BC[2] = {
+MObjSub **dNessModel_gap_0x553C_sub_0x25BC[2] = {
 	NULL,
-	(MObjSub *)dNessModel_gap_0x553C_sub_0x264C,
+	dNessModel_gap_0x553C_sub_0x264C,
 };
 
 /* Sprite pointer array @ 0x7B00 — 3 IA8 textures + NULL terminator, used
@@ -2395,9 +2395,9 @@ u32 dNessModel_gap_0x553C_sub_0x27EC[18] = {
 };
 
 /* gap sub-block @ 0x7D70 (was gap+0x2834, 8 bytes) */
-AObjEvent32 *dNessModel_gap_0x553C_sub_0x2834[2] = {
+AObjEvent32 **dNessModel_gap_0x553C_sub_0x2834[2] = {
 	NULL,
-	(AObjEvent32 *)dNessModel_gap_0x553C_sub_0x2864,
+	dNessModel_gap_0x553C_sub_0x2864,
 };
 
 /* gap sub-block @ 0x7D78 (was gap+0x283C, 40 bytes) — AObjEvent32 script */
@@ -2441,8 +2441,8 @@ u8 dNessModel_Tex_0x85C8[1024] = {
 };
 
 /* gap sub-block @ 0x89C8 (was gap+0x348C, 4 bytes) */
-MObjSub *dNessModel_gap_0x553C_sub_0x348C[1] = {
-	(MObjSub *)dNessModel_gap_0x553C_sub_0x3514,
+MObjSub **dNessModel_gap_0x553C_sub_0x348C[1] = {
+	dNessModel_gap_0x553C_sub_0x3514,
 };
 
 /* Sprite pointer array @ 0x89CC — 3 IA8 textures, used as MObjSub.sprites
@@ -2704,10 +2704,10 @@ u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[] = {
  * an inner `AObjEvent32 *[1]` array (so the dereferenced value is itself
  * a script ptr — matching the AObjEvent32 *** layout that
  * gcAddMatAnimJointAll walks). */
-AObjEvent32 *dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint[3] = {
+AObjEvent32 **dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint[3] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_inner_0x9C5C,
+	dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_inner_0x9C5C,
 };
 
 /* The MAT anim script @ 0x9BBC. 19 SetValAfterBlock(0x001, …) entries

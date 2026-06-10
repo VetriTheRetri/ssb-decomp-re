@@ -89,7 +89,7 @@ extern Vtx dStageLastFile2_gap_0x20F0_sub_0xE68[];
 extern Vtx dStageLastFile2_gap_0x20F0_sub_0xF58[];
 extern void *dStageLastFile2_gap_0x20F0[11];
 
-extern void *dStageLastFile2_gap_0x20F0_sub_0x960[6];
+extern MObjSub *dStageLastFile2_gap_0x20F0_sub_0x960[6];
 
 extern u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[];
 
@@ -307,7 +307,7 @@ u8 dStageLastFile2_Tex_0x1878[2048] = {
  * fields that real MObjSubs use as floats/colors. Kept as raw u8
  * pending a structural retype. The .reloc still patches every
  * slot the runtime walks, so semantics match the original. */
-extern void *dStageLastFile2_gap_0x20F0_sub_0x960[6];
+extern MObjSub *dStageLastFile2_gap_0x20F0_sub_0x960[6];
 extern MObjSub *dStageLastFile2_gap_0x20F0_sub_0x978[6];
 extern MObjSub *dStageLastFile2_gap_0x20F0_sub_0x990[3];
 extern MObjSub *dStageLastFile2_gap_0x20F0_sub_0x99C[3];
@@ -999,12 +999,12 @@ MObjSub dStageLastFile2_gap_0x20F0_sub_0x8E8[1] = {
 
 /* gap sub-block @ 0x2A50 (was gap+0x960, 24 bytes) */
 /* MObjSub.sprites pointer table @ +0x2A50 (6 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dStageLastFile2_gap_0x20F0_sub_0x960[6] = {
-	(void *)dStageLastFile2_gap_0x20F0_sub_0x348,
-	(void *)dStageLastFile2_gap_0x20F0_sub_0x3C0,
-	(void *)dStageLastFile2_gap_0x20F0_sub_0x438,
-	(void *)dStageLastFile2_gap_0x20F0_sub_0x4B0,
-	(void *)dStageLastFile2_gap_0x20F0_sub_0x528,
+MObjSub *dStageLastFile2_gap_0x20F0_sub_0x960[6] = {
+	dStageLastFile2_gap_0x20F0_sub_0x348,
+	dStageLastFile2_gap_0x20F0_sub_0x3C0,
+	dStageLastFile2_gap_0x20F0_sub_0x438,
+	dStageLastFile2_gap_0x20F0_sub_0x4B0,
+	dStageLastFile2_gap_0x20F0_sub_0x528,
 	NULL,
 };
 
@@ -1430,7 +1430,7 @@ extern DObjDesc dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8E2C_dobj[5];
 extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8E2C_aobj[5];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F2C[10];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54[6];
-extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54_aobj[2];
+extern AObjEvent32 **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54_aobj[2];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F7C[12];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8FAC[8];
 extern AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8FCC[1];
@@ -1471,7 +1471,7 @@ extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBE7C[47];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBFF4[47];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4[6];
 extern DObjDesc dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4_dobj[10];
-extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4_aobj[9];
+extern AObjEvent32 **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4_aobj[9];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC4F0[22];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC548[22];
 extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC5A0[22];
@@ -6082,9 +6082,9 @@ u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54[6] = {
 	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54,
 };
 PAD(8);
-AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54_aobj[2] = {
-	(AObjEvent32 *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8FCC,
-	(AObjEvent32 *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8FD0,
+AObjEvent32 **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F54_aobj[2] = {
+	dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8FCC,
+	dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8FD0,
 };
 
 u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8F7C[12] = {
@@ -6497,16 +6497,16 @@ DObjDesc dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4_dobj[10] = {
 	{ 2, (void*)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4_aobj[9] = {
+AObjEvent32 **dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC2E4_aobj[9] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC650,
+	dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC650,
 	NULL,
-	(AObjEvent32 *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC654,
+	dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC654,
 	NULL,
-	(AObjEvent32 *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC658,
+	dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC658,
 	NULL,
-	(AObjEvent32 *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC65C,
+	dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC65C,
 };
 
 u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC4F0[22] = {

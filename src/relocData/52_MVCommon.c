@@ -271,9 +271,23 @@ extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x64[];
 extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x78[];
 extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[];
 extern u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[];
+extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x04D4[];
+extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x05B4[];
+extern Gfx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_DL_0x03A0[];
 extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[];
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x860[];
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954[];
+extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x0244[];
+extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x031C[];
+extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x035C[];
 extern u32 dMVCommon_RoomLampAnimJoint_AnimJoint_data[];
 extern u32 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data[];
+extern DObjDLLink dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x484_tail[];
+extern AObjEvent32 *dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x1C[];
+extern AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x78[];
+extern AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x7C[];
+extern AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x88[];
+extern AObjEvent32 *dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x48[];
 extern u32 dMVCommon_RoomSnapAnimJoint_AnimJoint_data[];
 extern u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1DFE4[];
 extern AObjEvent32 *dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint_0x1E008[];
@@ -283,7 +297,7 @@ extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0xC[];
 extern u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_data_at_0x60[];
 extern u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_Tex_0xDC[];
 extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[];
-extern u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[];
+extern AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[];
 
 extern u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint_data[];
 extern u32 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data[];
@@ -291,7 +305,7 @@ extern u32 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data[];
 extern AObjEvent32 **dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[];
 extern AObjEvent32 *dMVCommon_RoomBooksAnimJoint_AnimJoint[];
 extern AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[];
-extern AObjEvent32 *dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[];
+extern AObjEvent32 **dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[];
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 PAD(8);
@@ -569,59 +583,48 @@ u8 dMVCommon_Tex_0x32F8[4096] = {
 	#include <MVCommon/Tex_0x32F8.tex.inc.c>
 };
 
-/* MObjSub: RoomBackgroundMObjSub @ 0x42F8 */
-MObjSub dMVCommon_RoomBackgroundMObjSub_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x0000, 0x0000,
-		0,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		(void**)0x00000000,
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x0000, 0x0000,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x10D211C4,
-		{ { 0x10, 0xD3, 0x11, 0xC6 } },
-		0x10, 0xE7, { 0x11, 0xC8 },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0, 0,
-		0, 0,
-	}
-};
-
-/* Raw data from file offset 0x4370 to 0x7E98 (15144 bytes) */
-/* Leading 44 zero bytes + 5-entry MObjSub** table at offset 0x2C
- * (NULL slot at index 2) + trailing 24 zero bytes. User hypothesised
- * MObjSub but the 0x78-byte layout doesn't fit — chain pointers at
- * +0x2C/0x30/0x38/0x3C look like a palettes-style MObjSub pointer
- * table. */
-PAD(44);
-
+extern MObjSub *dMVCommon_gap_0x4370_sub_0x3A0[];
+extern MObjSub *dMVCommon_gap_0x4370_sub_0x3A8[];
+extern MObjSub *dMVCommon_gap_0x4370_sub_0x3B0[];
 extern MObjSub *dMVCommon_gap_0x4370_sub_0x3B8[];
 extern MObjSub *dMVCommon_gap_0x4370_sub_0x3C0[];
 extern MObjSub *dMVCommon_gap_0x4370_sub_0x3C8[];
 extern MObjSub *dMVCommon_gap_0x4370_sub_0x3D0[];
 
-/* MObjSub **[5] @ 0x4370+0x2C. */
-MObjSub **dMVCommon_gap_0x4370_palettes[5] = {
-	(MObjSub **)dMVCommon_gap_0x4370_sub_0x3B8,
-	(MObjSub **)dMVCommon_gap_0x4370_sub_0x3C0,
-	NULL,
-	(MObjSub **)dMVCommon_gap_0x4370_sub_0x3C8,
-	(MObjSub **)dMVCommon_gap_0x4370_sub_0x3D0,
+/* @ 0x42F8 — MObjSub **[52] palettes-style table.
+ *
+ * Originally split as [RoomBackgroundMObjSub_MObjSub u8[120]] +
+ * [PAD(44)] + [gap_0x4370_palettes MObjSub**[5]] + [PAD(24)] = 208
+ * contiguous bytes. Every .reloc chain pointer in this range targets
+ * a `MObjSub *[2]` array (sub_0x3A0..sub_0x3D0), so each slot in the
+ * containing block is a `MObjSub **` — merge into one symbol.
+ *
+ * Slot indices (4 bytes each):
+ *   [0..18]  NULL
+ *   [19..21] → sub_0x3A0 / sub_0x3A8 / sub_0x3B0
+ *   [22..40] NULL
+ *   [41,42]  → sub_0x3B8 / sub_0x3C0
+ *   [43]     NULL
+ *   [44,45]  → sub_0x3C8 / sub_0x3D0
+ *   [46..51] NULL
+ */
+MObjSub **dMVCommon_RoomBackgroundMObjSub_MObjSub[52] = {
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,         /* [ 0..7]  */
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,         /* [ 8..15] */
+	NULL, NULL, NULL,                                       /* [16..18] */
+	dMVCommon_gap_0x4370_sub_0x3A0,                         /* [19] */
+	dMVCommon_gap_0x4370_sub_0x3A8,                         /* [20] */
+	dMVCommon_gap_0x4370_sub_0x3B0,                         /* [21] */
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,         /* [22..29] */
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,         /* [30..37] */
+	NULL, NULL, NULL,                                       /* [38..40] */
+	dMVCommon_gap_0x4370_sub_0x3B8,                         /* [41] */
+	dMVCommon_gap_0x4370_sub_0x3C0,                         /* [42] */
+	NULL,                                                   /* [43] */
+	dMVCommon_gap_0x4370_sub_0x3C8,                         /* [44] */
+	dMVCommon_gap_0x4370_sub_0x3D0,                         /* [45] */
+	NULL, NULL, NULL, NULL, NULL, NULL,                     /* [46..51] */
 };
-
-PAD(24);
 
 /* MObjSub @ 0x43C8 */
 MObjSub dMVCommon_gap_0x4370_sub_0x58[1] = {
@@ -1721,7 +1724,7 @@ Gfx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_DL_0x03A0[43] = 
 /* DObjDesc: RoomDesk @ 0x8DF8 (3 entries) */
 DObjDesc dMVCommon_RoomDesk[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint + 0x518), { 554.3527221679688f, 1828.836181640625f, -4022.0712890625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_DL_0x03A0, { 554.3527221679688f, 1828.836181640625f, -4022.0712890625f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1754,15 +1757,15 @@ Gfx dMVCommon_DL_0x97B0[41] = {
  * Vtx + 2 small Gfx DLs (header @ +0x0, body @ +0xAF8), formerly miscalled
  * "RoomHaze_DisplayList". Split into typed sub-blocks. */
 
-/* 12-byte header: opaque flag (0x00000001) + chain pointer to DL_0x97B0
- * at +0x4 + opaque flag (0x00000004) at +0x8. Not standard Gfx opcodes
- * (byte 0 is 0x00 not 0xDE), so kept as raw u32[3]. */
-u32 dMVCommon_RoomHaze_DLHeader[3] = {
-	0x00000001,
-	(u32)dMVCommon_DL_0x97B0,
-	0x00000004,
+/* 16-byte DObjDLLink[2]: { 1, dMVCommon_DL_0x97B0 }, { 4, NULL } —
+ * absorbs the first 4 bytes of the following PAD as the terminator's
+ * NULL Gfx*. Same `{ id, dl }, { 4, NULL }` shape as the DLLink_*
+ * tables elsewhere in this file. */
+DObjDLLink dMVCommon_RoomHaze_DLHeader[2] = {
+	{ 1, dMVCommon_DL_0x97B0 },
+	{ 4, NULL },
 };
-PAD(20);
+PAD(16);
 
 u16 dMVCommon_RoomHaze_palette_0x0020[8] = {
 	#include <MVCommon/RoomHaze_palette_0x0020.palette.inc.c>
@@ -1950,9 +1953,9 @@ Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x064C[10] = {
 
 /* DObjDesc: RoomPencilsDObjDesc @ 0xAEB8 (4 entries) */
 DObjDesc dMVCommon_RoomPencilsDObjDesc[] = {
-	{ 0, (void*)((u8*)dMVCommon_RoomBooksAnimJoint_AnimJoint + 0x540), { -133.4717559814453f, 2319.420166015625f, -4021.470703125f }, { 0.00022499999613501132f, -3.6075429916381836f, 0.001069999998435378f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomBooksAnimJoint_AnimJoint + 0x620), { -80.6264877319336f, -218.60069274902344f, 9.970550537109375f }, { -0.15897700190544128f, -0.025805000215768814f, -0.3202660083770752f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomBooksAnimJoint_AnimJoint + 0x6B8), { 20.549697875976562f, -155.91201782226562f, -53.9044189453125f }, { 0.35129401087760925f, -0.002859999891370535f, 0.5984709858894348f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0, (void*)dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x04D4, { -133.4717559814453f, 2319.420166015625f, -4021.470703125f }, { 0.00022499999613501132f, -3.6075429916381836f, 0.001069999998435378f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x05B4, { -80.6264877319336f, -218.60069274902344f, 9.970550537109375f }, { -0.15897700190544128f, -0.025805000215768814f, -0.3202660083770752f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x064C, { 20.549697875976562f, -155.91201782226562f, -53.9044189453125f }, { 0.35129401087760925f, -0.002859999891370535f, 0.5984709858894348f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1966,8 +1969,8 @@ PAD(8);
  * entries to chain-encoded form per the .reloc. */
 AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[3] = {
 	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data,
-	(AObjEvent32 *)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data + 0x860),
-	(AObjEvent32 *)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data + 0x954),
+	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x860,
+	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954,
 };
 
 /* Split AnimJoint blob: forward decls for sub-scripts. */
@@ -2694,9 +2697,9 @@ Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x035C[16] = {
 /* DObjDesc: RoomLampDObjDesc @ 0xBDC0 (5 entries) */
 DObjDesc dMVCommon_RoomLampDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 1772.6121826171875f, 3386.60498046875f, -4259.7841796875f }, { 9.999999974752427e-07f, 0.0139979999512434f, -9.999999974752427e-07f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint + 0xCB8), { 332.2461242675781f, -1119.63916015625f, -402.0698547363281f }, { 0.0f, 0.8999999761581421f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint + 0xD90), { 550.4309692382812f, -1130.4405517578125f, -677.0164794921875f }, { -0.7708160281181335f, 0.5225570201873779f, -1.0961140394210815f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomPencilsAnimJoint_AnimJoint + 0xDD0), { 27.59868621826172f, -102.3028564453125f, -18.170928955078125f }, { -0.0377810001373291f, 0.8994330167770386f, -0.04823800176382065f }, { 1.0f, 0.9999930262565613f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x0244, { 332.2461242675781f, -1119.63916015625f, -402.0698547363281f }, { 0.0f, 0.8999999761581421f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x031C, { 550.4309692382812f, -1130.4405517578125f, -677.0164794921875f }, { -0.7708160281181335f, 0.5225570201873779f, -1.0961140394210815f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x035C, { 27.59868621826172f, -102.3028564453125f, -18.170928955078125f }, { -0.0377810001373291f, 0.8994330167770386f, -0.04823800176382065f }, { 1.0f, 0.9999930262565613f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -3053,7 +3056,7 @@ Gfx dMVCommon_RoomTissuesDisplayList_DisplayList[61] = {
 PAD(8);
 
 extern u32 dMVCommon_RoomTissuesAnimJoint_AnimJoint[];
-u32 dMVCommon_RoomTissues_AnimJointPtr[1] = { (u32)dMVCommon_RoomTissuesAnimJoint_AnimJoint };
+u32 * dMVCommon_RoomTissues_AnimJointPtr[1] = { dMVCommon_RoomTissuesAnimJoint_AnimJoint };
 
 /* Raw data from file offset 0xC884 to 0x1BC60 (62428 bytes) */
 u32 dMVCommon_RoomTissuesAnimJoint_AnimJoint[297] = {
@@ -3398,14 +3401,11 @@ u8 dMVCommon_RoomTissues_Tex_0x1AC60[0x1000] = {
 	#include <MVCommon/Tex_0x1AC60.tex.inc.c>
 };
 
-/* MObjSub-list head @ 0x1bc60 — 2-entry MObjSub** array.
- * The real MObjSub data starts at +0x8 (dMVCommon_RoomLogoMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x1BC60 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u32 dMVCommon_RoomLogoMObjSub_MObjSub[1] = { (u32)dMVCommon_gap_0x1BCD8_sub_0x8 };
-
-u8 dMVCommon_data_0x1BC64[4] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/data_0x1BC64.data.inc.c>
+/* MObjSub-list head @ 0x1BC60 — 2-entry MObjSub** array.
+ * Absorbs the former data_0x1BC64 zero block as the NULL terminator. */
+MObjSub **dMVCommon_RoomLogoMObjSub_MObjSub[2] = {
+	dMVCommon_gap_0x1BCD8_sub_0x8,
+	NULL,
 };
 
 
@@ -3577,8 +3577,8 @@ DObjDesc dMVCommon_RoomLogoDObjDesc[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[2] = {
-	(AObjEvent32 *)((u8*)dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data + 0x1C),
+AObjEvent32 **dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[2] = {
+	dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x1C,
 	NULL,
 };
 
@@ -3635,7 +3635,7 @@ DObjDLLink dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x484_tail[] = {
 /* DObjDesc: RoomSnapDObjDesc @ 0x1CA68 (3 entries) */
 DObjDesc dMVCommon_RoomSnapDObjDesc[] = {
 	{ 0, (void*)0x00000000, { -0.0035409999545663595f, 2792.46533203125f, -1.883239984512329f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint + 0x52C), { 65.25997161865234f, 760.6396484375f, 1680.64599609375f }, { 0.001395000028423965f, 0.2819969952106476f, 6.288197994232178f }, { 0.4499729871749878f, 0.4499729871749878f, 0.4499729871749878f } },
+	{ 1, (void*)dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x484_tail, { 65.25997161865234f, 760.6396484375f, 1680.64599609375f }, { 0.001395000028423965f, 0.2819969952106476f, 6.288197994232178f }, { 0.4499729871749878f, 0.4499729871749878f, 0.4499729871749878f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -3708,17 +3708,11 @@ u8 dMVCommon_RoomSnap_Tex_0x1CCA0[0x1000] = {
 
 /* MObjSub-list head @ 0x1dca0 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x1DCA0 was MObjSub[4]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/RoomCloseUpEffectAirMObjSub_MObjSub.data.inc.c>
-};
-
-u32 dMVCommon_data_0x1DCA4[1] = { (u32)dMVCommon_gap_0x1DD18_sub_0x10 };
-
-u8 dMVCommon_data_0x1DCA8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/data_0x1DCA8.data.inc.c>
+MObjSub **dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub[4] = {
+	NULL,
+	dMVCommon_gap_0x1DD18_sub_0x10,
+	NULL,
+	NULL,
 };
 
 
@@ -3922,13 +3916,10 @@ u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint_Tex_0xDC[0x1000] = {
 
 /* MObjSub-list head @ 0x1f0f8 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x1F0F8 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/RoomCloseUpEffectGroundMObjSub_MObjSub.data.inc.c>
+MObjSub **dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub[2] = {
+	NULL,
+	dMVCommon_gap_0x1F170_sub_0x8,
 };
-
-u32 dMVCommon_data_0x1F0FC[1] = { (u32)dMVCommon_gap_0x1F170_sub_0x8 };
 
 
 /* The real MObjSub @ +0x8 (was folded into the prior
@@ -3997,9 +3988,9 @@ DObjDesc dMVCommon_RoomCloseUpEffectGroundDObjDesc[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328,
+	dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328,
 };
 
 u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[] = {
@@ -4016,9 +4007,9 @@ u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[] = {
-	(u32)(dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC),
-	aobjEvent32End(),
+AObjEvent32 *dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F328[2] = {
+	(AObjEvent32 *)dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint_0x1F2FC,
+	NULL,
 };
 
 /* Raw data from file offset 0x1F330 to 0x1F790 (1120 bytes) */
@@ -4114,7 +4105,7 @@ DObjDLLink dMVCommon_RoomBossShadowDLLink[] = {
 };
 
 extern u32 dMVCommon_RoomBossShadowAnimJoint_AnimJoint[];
-u32 dMVCommon_RoomBossShadow_AnimJointPtr[1] = { (u32)dMVCommon_RoomBossShadowAnimJoint_AnimJoint };
+u32 * dMVCommon_RoomBossShadow_AnimJointPtr[1] = { dMVCommon_RoomBossShadowAnimJoint_AnimJoint };
 
 /* Raw data from file offset 0x1F924 to 0x20480 (2908 bytes) */
 u32 dMVCommon_RoomBossShadowAnimJoint_AnimJoint[24] = {
@@ -4203,12 +4194,18 @@ u8 dMVCommon_RoomBossShadow_Tex_0x1FAC8[0x100] = {
 
 PAD(8);
 
+/* @tex fmt=CI8 dim=8x8 — 64-byte CI palette-indexed buffer.
+ * The DL's SetTileSize (96x16) is the runtime tile clamp, not the
+ * static buffer dim; the buffer is uploaded as 2048-byte LoadBlock
+ * runs from a different pointer at runtime. */
+/* @tex fmt=CI8 dim=8x8 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FBD0[0x40] = {
 	#include <MVCommon/Tex_0x1FBD0.tex.inc.c>
 };
 
 PAD(8);
 
+/* @tex fmt=CI8 dim=8x8 */
 u8 dMVCommon_RoomBossShadow_Tex_0x1FC18[0x40] = {
 	#include <MVCommon/Tex_0x1FC18.tex.inc.c>
 };
@@ -4306,28 +4303,11 @@ u8 dMVCommon_RoomBossShadow_Tex_0x20400[0x80] = {
 
 /* MObjSub-list head @ 0x20480 — 8-entry MObjSub** array.
  * The real MObjSub data starts at +0x20 (dMVCommon_RoomDeskGroundMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x20480 was MObjSub[8]; contains 3 embedded chain pointer(s) split out below */
-u32 dMVCommon_RoomDeskGroundMObjSub_MObjSub[1] = { (u32)dMVCommon_gap_0x204F8_sub_0x278 };
-
-u8 dMVCommon_data_0x20484[4] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/data_0x20484.data.inc.c>
+MObjSub **dMVCommon_RoomDeskGroundMObjSub_MObjSub[8] = {
+	dMVCommon_gap_0x204F8_sub_0x278, NULL,
+	dMVCommon_gap_0x204F8_sub_0x280, NULL,
+	dMVCommon_gap_0x204F8_sub_0x290, NULL, NULL, NULL
 };
-
-u32 dMVCommon_data_0x20488[1] = { (u32)dMVCommon_gap_0x204F8_sub_0x280 };
-
-u8 dMVCommon_data_0x2048C[4] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/data_0x2048C.data.inc.c>
-};
-
-u32 dMVCommon_data_0x20490[1] = { (u32)dMVCommon_gap_0x204F8_sub_0x290 };
-
-u8 dMVCommon_data_0x20494[12] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/data_0x20494.data.inc.c>
-};
-
 
 /* The real MObjSub @ +0x20 (was folded into the prior
  * MObjSub-typed declaration). */
@@ -4829,12 +4809,12 @@ DObjDesc dMVCommon_RoomDeskGroundDObjDesc[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint[8] = {
-	(AObjEvent32 *)((u8*)dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data + 0x78),
+AObjEvent32 **dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint[8] = {
+	dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x78,
 	NULL,
-	(AObjEvent32 *)((u8*)dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data + 0x7C),
+	dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x7C,
 	NULL,
-	(AObjEvent32 *)((u8*)dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data + 0x88),
+	dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint_data_at_0x88,
 	NULL,
 	NULL,
 	NULL,
@@ -4922,13 +4902,7 @@ u8 dMVCommon_RoomDeskGround_Tex_0x22A90[0x200] = {
 
 /* MObjSub-list head @ 0x22c90 — 2-entry MObjSub** array.
  * The real MObjSub data starts at +0x8 (dMVCommon_RoomSpotlightMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x22C90 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u32 dMVCommon_RoomSpotlightMObjSub_MObjSub[1] = { (u32)dMVCommon_gap_0x22D08_sub_0x80 };
-
-u8 dMVCommon_data_0x22C94[4] = {
-	/* TODO: data.inc.c */
-	#include <MVCommon/data_0x22C94.data.inc.c>
-};
+MObjSub **dMVCommon_RoomSpotlightMObjSub_MObjSub[2] = {  dMVCommon_gap_0x22D08_sub_0x80, NULL };
 
 
 /* The real MObjSub @ +0x8 (was folded into the prior
@@ -5028,8 +5002,8 @@ DObjDLLink dMVCommon_RoomSpotlightDLLink[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)((u8*)dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data + 0x48),
+AObjEvent32 **dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint[1] = {
+	dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data_at_0x48,
 };
 
 u32 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint_data[9] = {

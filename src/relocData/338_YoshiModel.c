@@ -160,7 +160,7 @@ extern MObjSub dYoshiModel_gap_0x6E70_sub_0x840[];
 extern MObjSub dYoshiModel_gap_0x6E70_sub_0x8B8[];
 extern MObjSub dYoshiModel_gap_0x6E70_sub_0x930[];
 extern u32 dYoshiModel_gap_0x6E70_sub_0xDC[];
-extern u32 dYoshiModel_Joint_0x0080_post[];
+extern u8 *dYoshiModel_Joint_0x0080_post[];
 extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x28[];
 extern void *dYoshiModel_Joint_0x0080_post_sprites_0x60[];
 extern u16 *dYoshiModel_Joint_0x0080_post_palettes_0x98[];
@@ -380,12 +380,19 @@ extern u16 dYoshiModel_palette_0x9E58[];
 /* +0x00..+0x27 (10 slots) — Yoshi face sprite frames A (8 textures
  * + 2 trailing NULL). No MObjSub references this directly; preserved
  * for byte identity. Slot 0 is also the post-block chain head. */
-/* TODO: data.inc.c — block at 0x80 was void[10]; contains 1 embedded chain pointer(s) split out below */
-u32 dYoshiModel_Joint_0x0080_post[1] = { (u32)dYoshiModel_Tex_0x9700 };
-
-u8 dYoshiModel_data_0x0084[36] = {
-	/* TODO: data.inc.c */
-	#include <YoshiModel/data_0x0084.data.inc.c>
+/* Yoshi face sprite frames A — 8 textures + 2 trailing NULL.
+ * Combined back from Joint_0x0080_post[1] + data_0x0084[9 ptrs]. */
+u8 *dYoshiModel_Joint_0x0080_post[10] = {
+	dYoshiModel_Tex_0x9700,
+	dYoshiModel_Tex_0x97B0,
+	dYoshiModel_Tex_0x9650,
+	dYoshiModel_Tex_0x9860,
+	dYoshiModel_Tex_0x9910,
+	dYoshiModel_Tex_0x99C0,
+	dYoshiModel_Tex_0x9B20,
+	dYoshiModel_Tex_0x9A70,
+	NULL,
+	NULL,
 };
 
 
@@ -2343,34 +2350,34 @@ AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x738[1] = {
 };
 
 /* gap sub-block @ 0x4030 (was gap+0x73C, 112 bytes) */
-MObjSub *dYoshiModel_gap_0x38F4_sub_0x73C[28] = {
+MObjSub **dYoshiModel_gap_0x38F4_sub_0x73C[28] = {
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x13FC,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1408,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1410,
+	dYoshiModel_gap_0x38F4_sub_0x13FC,
+	dYoshiModel_gap_0x38F4_sub_0x1408,
+	dYoshiModel_gap_0x38F4_sub_0x1410,
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1428,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1430,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1438,
+	dYoshiModel_gap_0x38F4_sub_0x1428,
+	dYoshiModel_gap_0x38F4_sub_0x1430,
+	dYoshiModel_gap_0x38F4_sub_0x1438,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1440,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1448,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1450,
+	dYoshiModel_gap_0x38F4_sub_0x1440,
+	dYoshiModel_gap_0x38F4_sub_0x1448,
+	dYoshiModel_gap_0x38F4_sub_0x1450,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1458,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1460,
+	dYoshiModel_gap_0x38F4_sub_0x1458,
+	dYoshiModel_gap_0x38F4_sub_0x1460,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1468,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1470,
+	dYoshiModel_gap_0x38F4_sub_0x1468,
+	dYoshiModel_gap_0x38F4_sub_0x1470,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x147C,
+	dYoshiModel_gap_0x38F4_sub_0x147C,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1484,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x148C,
+	dYoshiModel_gap_0x38F4_sub_0x1484,
+	dYoshiModel_gap_0x38F4_sub_0x148C,
 	NULL,
-	(MObjSub *)dYoshiModel_gap_0x38F4_sub_0x1498,
+	dYoshiModel_gap_0x38F4_sub_0x1498,
 	NULL,
 };
 
@@ -2395,13 +2402,22 @@ u8 *dYoshiModel_gap_0x38F4_sub_0x7AC[14] = {
 };
 
 /* Palette pointer array @ 0x40D8 (14 entries) — MObjSub.palettes target.
- * Slot 0 NULL, 13 palette frames. */
-/* TODO: data.inc.c — block at 0x40D8 was u16[14]; contains 1 embedded chain pointer(s) split out below */
-u32 dYoshiModel_gap_0x38F4_sub_0x7E4[1] = { (u32)dYoshiModel_palette_0x9BA8 };
-
-u8 dYoshiModel_data_0x40DC[52] = {
-	/* TODO: data.inc.c */
-	#include <YoshiModel/data_0x40DC.data.inc.c>
+ * Combined from gap_0x38F4_sub_0x7E4[1] + data_0x40DC[13 ptrs]. */
+u16 *dYoshiModel_gap_0x38F4_sub_0x7E4[14] = {
+	dYoshiModel_palette_0x9BA8,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x96D8,
+	dYoshiModel_palette_0x9788,
+	dYoshiModel_palette_0x9628,
+	dYoshiModel_palette_0x9838,
+	dYoshiModel_palette_0x98E8,
+	dYoshiModel_palette_0x9998,
+	dYoshiModel_palette_0x9AF8,
+	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
 };
 
 
@@ -2425,13 +2441,23 @@ u8 *dYoshiModel_gap_0x38F4_sub_0x81C[14] = {
 };
 
 /* Palette pointer array @ 0x4148 (14 entries) — MObjSub.palettes target.
- * Slot 0 NULL, 13 palette frames (same as sub_0x7E4). */
-/* TODO: data.inc.c — block at 0x4148 was u16[14]; contains 1 embedded chain pointer(s) split out below */
-u32 dYoshiModel_gap_0x38F4_sub_0x854[1] = { (u32)dYoshiModel_palette_0x9BA8 };
-
-u8 dYoshiModel_data_0x414C[52] = {
-	/* TODO: data.inc.c */
-	#include <YoshiModel/data_0x414C.data.inc.c>
+ * Combined from gap_0x38F4_sub_0x854[1] + data_0x414C[13 ptrs] (same
+ * content as sub_0x7E4). */
+u16 *dYoshiModel_gap_0x38F4_sub_0x854[14] = {
+	dYoshiModel_palette_0x9BA8,
+	dYoshiModel_palette_0x9560,
+	dYoshiModel_palette_0x9588,
+	dYoshiModel_palette_0x95B0,
+	dYoshiModel_palette_0x96D8,
+	dYoshiModel_palette_0x9788,
+	dYoshiModel_palette_0x9628,
+	dYoshiModel_palette_0x9838,
+	dYoshiModel_palette_0x98E8,
+	dYoshiModel_palette_0x9998,
+	dYoshiModel_palette_0x9AF8,
+	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x95D8,
+	dYoshiModel_palette_0x9600,
 };
 
 

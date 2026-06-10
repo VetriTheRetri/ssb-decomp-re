@@ -174,31 +174,31 @@ extern Vtx dLinkModel_gap_0x9DA8_sub_0xE98[];
 extern Vtx dLinkModel_gap_0x9DA8_sub_0xFA8[];
 extern u16 dLinkModel_Lut_0xB4B8_palette[];
 extern u8 dLinkModel_Tex_0x100A8[];
-extern u8 dLinkModel_Tex_0x110B0[];
-extern u8 dLinkModel_Tex_0x11128[];
-extern u8 dLinkModel_Tex_0x111A0[];
-extern u8 dLinkModel_Tex_0x11218[];
-extern u8 dLinkModel_Tex_0x11290[];
-extern u8 dLinkModel_Tex_0x11308[];
-extern u8 dLinkModel_Tex_0x11380[];
-extern u8 dLinkModel_Tex_0x113F8[];
-extern u8 dLinkModel_Tex_0x11470[];
-extern u32 dLinkModel_Tex_0x114E8[];
-extern u8 dLinkModel_Tex_0x11510[];
-extern u8 dLinkModel_Tex_0x11530[];
-extern u8 dLinkModel_Tex_0x11540[];
-extern u8 dLinkModel_Tex_0x11550[];
-extern u8 dLinkModel_Tex_0x11560[];
-extern u8 dLinkModel_Tex_0x11570[];
-extern u8 dLinkModel_Tex_0x11590[];
-extern u8 dLinkModel_Tex_0x115B0[];
-extern u8 dLinkModel_Tex_0x115D0[];
-extern u8 dLinkModel_Tex_0x115F0[];
-extern u8 dLinkModel_Tex_0x11610[];
-extern u8 dLinkModel_Tex_0x11650[];
-extern u8 dLinkModel_Tex_0x11680[];
-extern u8 dLinkModel_Tex_0x118F8[];
-extern u8 dLinkModel_Tex_0x11998[];
+extern MObjSub dLinkModel_Tex_0x110B0[];
+extern MObjSub dLinkModel_Tex_0x11128[];
+extern MObjSub dLinkModel_Tex_0x111A0[];
+extern MObjSub dLinkModel_Tex_0x11218[];
+extern MObjSub dLinkModel_Tex_0x11290[];
+extern MObjSub dLinkModel_Tex_0x11308[];
+extern MObjSub dLinkModel_Tex_0x11380[];
+extern MObjSub dLinkModel_Tex_0x113F8[];
+extern MObjSub dLinkModel_Tex_0x11470[];
+extern MObjSub *dLinkModel_Tex_0x114E8[];
+extern Vtx dLinkModel_Vtx_0x11510_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11530_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11540_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11550_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11560_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11570_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11590_Vtx[];
+extern Vtx dLinkModel_Vtx_0x115B0_Vtx[];
+extern Vtx dLinkModel_Vtx_0x115D0_Vtx[];
+extern Vtx dLinkModel_Vtx_0x115F0_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11610_Vtx[];
+extern Vtx dLinkModel_Vtx_0x11650_Vtx[];
+extern Gfx dLinkModel_Tex_0x11680[];
+extern DObjDLLink dLinkModel_Tex_0x118F8[2];
+extern u32 dLinkModel_Tex_0x11998[];
 extern u8 dLinkModel_Tex_0x11A48[];
 extern u8 dLinkModel_Tex_0x11A7C[];
 extern u8 dLinkModel_Tex_0x11AB0[];
@@ -208,7 +208,7 @@ extern u8 dLinkModel_Tex_0x11B4C[];
 extern u8 dLinkModel_Tex_0x11B80[];
 extern u8 dLinkModel_Tex_0x11BB4[];
 extern u8 dLinkModel_Tex_0x11BE8[];
-extern u32 dLinkModel_Tex_0x11C1C[];
+extern u8 *dLinkModel_Tex_0x11C1C[9];
 extern Vtx dLinkModel_Vtx_0x11A8_Vtx[];
 extern Vtx dLinkModel_Vtx_0x11F8_Vtx[];
 extern Vtx dLinkModel_Vtx_0x1328_Vtx[];
@@ -240,7 +240,11 @@ extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x550[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x560[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x568[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x570[];
+#if defined(REGION_JP)
+extern u32 dLinkModel_gap_0x40EC_sub_0x1C8[];
+#else
 extern u16 dLinkModel_gap_0x40EC_sub_0x1C8[];
+#endif
 extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
 extern Gfx dLinkModel_DL_0xAF40[];
 extern u8 dLinkModel_Tex_0xBAA0[];
@@ -273,10 +277,26 @@ extern AObjEvent32 *dLinkModel_gap_0x9DA8_sub_0xCC[];
 extern AObjEvent32 *dLinkModel_gap_0x9DA8_sub_0xD8[];
 extern u32 dLinkModel_gap_0x40EC_sub_0x104[];
 extern u32 dLinkModel_gap_0x40EC_sub_0x130[];
+#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x404[];
+#else
+extern MObjSub dLinkModel_gap_0x40EC_sub_0x404[];
+#endif
+#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x47C[];
+#else
+extern MObjSub dLinkModel_gap_0x40EC_sub_0x47C[];
+#endif
+#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x4F4[];
+#else
+extern MObjSub dLinkModel_gap_0x40EC_sub_0x4F4[];
+#endif
+#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x56C[];
+#else
+extern MObjSub dLinkModel_gap_0x40EC_sub_0x56C[];
+#endif
 extern u32 dLinkModel_gap_0x40EC_sub_0xA4[];
 extern u32 dLinkModel_gap_0x40EC_sub_0xDC[];
 extern u32 dLinkModel_gap_0x7AE0_sub_0x70[];
@@ -295,7 +315,11 @@ extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7DC[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x804[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[];
+#if defined(REGION_JP)
+extern Vtx dLinkModel_gap_0x40EC_sub_0x7FC[1];
+#else
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[];
+#endif
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[];
 /* MObjSub-dispatch table at file 0x0000 (128 bytes, 32 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
@@ -303,6 +327,7 @@ extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[];
  * 4, 9, 19, 20, 22, 27 thread to sub_0x530..0x570. The original splitter
  * sliced this region into 3 fragments (gap_0x0000[16] + the first half
  * of Joint_0x0040_post[128]); they're really one 32-slot table. */
+
 MObjSub **dLinkModel_gap_0x0000[32] = {
 	NULL,  /* +0x00 */
 	(MObjSub **)&dLinkModel_Joint_0x0040_post_sub_0x530,  /* +0x04 */
@@ -409,6 +434,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x80[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x138 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0xF8[1] = {
 	{
@@ -438,6 +464,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0xF8[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x1B0 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x170[1] = {
 	{
@@ -467,6 +494,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x170[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x228 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x1E8[1] = {
 	{
@@ -496,6 +524,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x1E8[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x2A0 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x260[1] = {
 	{
@@ -525,6 +554,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x260[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x318 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x2D8[1] = {
 	{
@@ -554,6 +584,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x2D8[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x390 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x350[1] = {
 	{
@@ -583,6 +614,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x350[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x408 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x3C8[1] = {
 	{
@@ -612,6 +644,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x3C8[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x480 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x440[1] = {
 	{
@@ -641,6 +674,7 @@ MObjSub dLinkModel_Joint_0x0040_post_sub_0x440[1] = {
 		0, 0,
 	}
 };
+
 /* MObjSub @ 0x4F8 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x4B8[1] = {
 	{
@@ -677,32 +711,39 @@ MObjSub *dLinkModel_Joint_0x0040_post_sub_0x530[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x4B8,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x538[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x350,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x540[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x80,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x548[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0xF8,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x550[4] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x1E8,
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x260,
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x2D8,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x560[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x170,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x568[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x3C8,
 	NULL,
 };
+
 MObjSub *dLinkModel_Joint_0x0040_post_sub_0x570[2] = {
 	(MObjSub *)dLinkModel_Joint_0x0040_post_sub_0x440,
 	NULL,
@@ -958,85 +999,20 @@ Gfx dLinkModel_Joint_0x2998_DisplayList[60] = {
 	#include <LinkModel/Joint_0x2998.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x2B78 was Gfx[
-#if defined(REGION_JP)
-36
-#else
-34
-#endif
-]; contains 4 embedded chain pointer(s) split out below */
-u8 dLinkModel_Joint_0x2B78_DisplayList[100] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Joint_0x2B78_DisplayList.data.inc.c>
+/* Absorbed DL: dLinkModel_Joint_0x2B78_DisplayList @ 0x2B78 (272 bytes, 34 cmds) */
+Gfx dLinkModel_Joint_0x2B78_DisplayList[34] = {
+	#include <LinkModel/Joint_0x2B78_DisplayList.dl.inc.c>
 };
-
-u32 dLinkModel_data_0x2BDC[1] = { (u32)dLinkModel_Lut_0xB4B8_palette };
-
-u8 dLinkModel_data_0x2BE0[44] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2BE0.data.inc.c>
-};
-
-u32 dLinkModel_data_0x2C0C[1] = { (u32)dLinkModel_Tex_0xC978 };
-
-u8 dLinkModel_data_0x2C10[28] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2C10.data.inc.c>
-};
-
-u32 dLinkModel_data_0x2C2C[1] = { (u32)dLinkModel_Vtx_0x11A8_Vtx };
-
-u8 dLinkModel_data_0x2C30[52] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2C30.data.inc.c>
-};
-
-u32 dLinkModel_data_0x2C64[1] = { (u32)dLinkModel_Vtx_0x11F8_Vtx };
-
-u8 dLinkModel_data_0x2C68[32] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2C68.data.inc.c>
-};
-
 
 /* DisplayList: Joint_0x2C88 @ 0x2C88 (384 bytes, 48 cmds) */
 Gfx dLinkModel_Joint_0x2C88_DisplayList[48] = {
 	#include <LinkModel/Joint_0x2C88.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x2E08 was Gfx[
-#if defined(REGION_JP)
-25
-#else
-29
-#endif
-]; contains 3 embedded chain pointer(s) split out below */
-u8 dLinkModel_Joint_0x2E08_DisplayList[92] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Joint_0x2E08_DisplayList.data.inc.c>
+/* Absorbed DL: dLinkModel_Joint_0x2E08_DisplayList @ 0x2E08 (232 bytes, 29 cmds) */
+Gfx dLinkModel_Joint_0x2E08_DisplayList[29] = {
+	#include <LinkModel/Joint_0x2E08_DisplayList.dl.inc.c>
 };
-
-u32 dLinkModel_data_0x2E64[1] = { (u32)dLinkModel_Lut_0xDD30_palette };
-
-u8 dLinkModel_data_0x2E68[44] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2E68.data.inc.c>
-};
-
-u32 dLinkModel_data_0x2E94[1] = { (u32)dLinkModel_Tex_0xD768 };
-
-u8 dLinkModel_data_0x2E98[28] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2E98.data.inc.c>
-};
-
-u32 dLinkModel_data_0x2EB4[1] = { (u32)dLinkModel_Vtx_0x1328_Vtx };
-
-u8 dLinkModel_data_0x2EB8[56] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x2EB8.data.inc.c>
-};
-
 
 /* DisplayList: Joint_0x2EF0 @ 0x2EF0 (1192 bytes, 149 cmds) */
 Gfx dLinkModel_Joint_0x2EF0_DisplayList[149] = {
@@ -1073,6 +1049,52 @@ Gfx dLinkModel_Joint_0x38E0_DisplayList[32] = {
 	#include <LinkModel/Joint_0x38E0.dl.inc.c>
 };
 
+#if defined(REGION_JP)
+/* DisplayList: Joint_0x39E0 @ 0x39E0 (264 bytes, 33 cmds) */
+Gfx dLinkModel_Joint_0x39E0_DisplayList[31] = {
+	#include <LinkModel/Joint_0x39E0.dl.inc.c>
+};
+
+/* DObjDesc: JointTree @ 0x3AE8 (35 entries) */
+/* JointTree: DObjDesc[33] @ 0x3AD8 (1452 bytes).  Same struct/values
+ * as US (the chain rewriter applies JP-specific `dl` chain encodings
+ * via .jp.reloc; non-chain fields are identical). */
+DObjDesc dLinkModel_JointTree[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLinkModel_Joint_0x1D88_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dLinkModel_Joint_0x1F40_DisplayList, { 0.0f, 32.691650390625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { 60.0f, 75.308334350585938f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x21E8_DisplayList, { 8.6000000010244548e-05f, -1.9999999949504854e-06f, 0.0f }, { -0.55290400981903076f, -1.5755679607391357f, 0.56199097633361816f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dLinkModel_Joint_0x2358_DisplayList, { 63.191135406494141f, 0.0f, 8.6000000010244548e-05f }, { 0.0f, 0.0f, -0.013819999992847443f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x2508_DisplayList, { 56.543998718261719f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dLinkModel_Joint_0x2630_DisplayList, { 23.999977111816406f, 1.9999999949504854e-06f, 0.0f }, { 1.570796012878418f, 0.0034910000395029783f, 0.017452999949455261f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { -59.999996185302734f, 75.308334350585938f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x2828_DisplayList, { -2.9000000722589903e-05f, 0.0f, 1.4000000192027073e-05f }, { 1.1626830101013184f, 1.5810270309448242f, -5.1122632026672363f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dLinkModel_Joint_0x2998_DisplayList, { 63.57135009765625f, 4.9999998736893758e-06f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x2B78_DisplayList, { 56.061000823974609f, -0.096932999789714813f, -0.024519000202417374f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)0x00000000, { 20.998748779296875f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8, (void*)0x00000000, { 19.709985733032227f, 201.77963256835938f, -353.64199829101562f }, { 1.5626180171966553f, -0.0040859999135136604f, 1.5543869733810425f }, { 1.0f, 1.0f, 1.0f } },
+	{ 8, (void*)0x00000000, { 19.709985733032227f, 201.77963256835938f, -353.64199829101562f }, { 1.5626180171966553f, -0.0040859999135136604f, 1.5543869733810425f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dLinkModel_Joint_0x2C88_DisplayList, { 20.998748779296875f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { 57.000015258789062f, 108.00914001464844f, -43.957038879394531f }, { 0.0f, 0.0f, -0.51999998092651367f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { -14.430379867553711f, -0.48251199722290039f, -35.877933502197266f }, { 0.0f, 3.1415929794311523f, -0.5f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dLinkModel_Joint_0x2E08_DisplayList, { 0.0f, 90.537185668945312f, -14.139384269714355f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x2EF0_DisplayList, { 1.4000000192027073e-05f, 19.5f, 0.3516240119934082f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dLinkModel_Joint_0x3398_DisplayList, { -1.7000000298139639e-05f, 86.811988830566406f, 5.5317649841308594f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 0.9999849796295166f, 0.9999849796295166f } },
+	{ 2, (void*)0x00000000, { 21.0f, -32.335380554199219f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dLinkModel_Joint_0x34A0_DisplayList, { 0.0f, -1.9999999949504854e-06f, -3.9999999899009708e-06f }, { 0.0f, 0.0f, 0.010476999916136265f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x35B8_DisplayList, { 91.703468322753906f, 3.9999999899009708e-06f, 1.9999999949504854e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)0x00000000, { 100.32065582275391f, 1.4249839782714844f, 2.4349501132965088f }, { 0.0f, -9.9999999747524271e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x36B8_DisplayList, { 3.1999999919207767e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.0928870439529419f, -0.045224998146295547f, 0.030510999262332916f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)0x00000000, { -21.0f, -32.335380554199219f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dLinkModel_Joint_0x37C0_DisplayList, { 0.0f, 0.0f, -3.9999999899009708e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010591999627649784f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x38E0_DisplayList, { 91.703521728515625f, 4.9999998736893758e-06f, -4.9999998736893758e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.9999999747524271e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x39E0_DisplayList, { 4.9999998736893758e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.99249100685119629f, 0.28143799304962158f, 0.030757000669836998f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+#else
 /* DisplayList: Joint_0x39E0 @ 0x39E0 (264 bytes, 33 cmds) */
 Gfx dLinkModel_Joint_0x39E0_DisplayList[33] = {
 	#include <LinkModel/Joint_0x39E0.dl.inc.c>
@@ -1084,13 +1106,8 @@ DObjDesc dLinkModel_JointTree[] = {
 	{ 1, (void*)dLinkModel_Joint_0x1D88_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dLinkModel_Joint_0x1F40_DisplayList, { 0.0f, 32.691650390625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 60.0f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-#if defined(REGION_JP)
-	{ 4, (void*)dLinkModel_Joint_0x21E8_DisplayList, { 8.600000001024455e-05f, -1.9999999949504854e-06f, 0.0f }, { -0.5529040098190308f, -1.5755679607391357f, 0.5619909763336182f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)dLinkModel_Joint_0x2358_DisplayList, { 63.19113540649414f, 0.0f, 8.600000001024455e-05f }, { 0.0f, 0.0f, -0.013819999992847443f }, { 1.0f, 1.0f, 1.0f } },
-#else
 	{ 4, (void*)dLinkModel_Joint_0x21E8_DisplayList, { 8.600000001024455e-05f, -1.9999999949504854e-06f, 0.0f }, { -0.5539600253105164f, -1.5755679607391357f, 0.5630530118942261f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)dLinkModel_Joint_0x2358_DisplayList, { 63.19113540649414f, 0.0f, 8.600000001024455e-05f }, { 0.0f, 0.0f, -0.013810999691486359f }, { 1.0f, 1.0f, 1.0f } },
-#endif
 	{ 6, (void*)dLinkModel_Joint_0x2508_DisplayList, { 56.54399871826172f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 7, (void*)dLinkModel_Joint_0x2630_DisplayList, { 23.999977111816406f, 1.9999999949504854e-06f, 0.0f }, { 1.570796012878418f, 0.0034910000395029783f, 0.01745299994945526f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -59.999996185302734f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
@@ -1112,20 +1129,19 @@ DObjDesc dLinkModel_JointTree[] = {
 	{ 5, (void*)0x00000000, { 100.3206558227539f, 1.4249839782714844f, 2.434950113296509f }, { 0.0f, -9.999999974752427e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)dLinkModel_Joint_0x36B8_DisplayList, { 3.199999991920777e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.092887043952942f, -0.04522499814629555f, 0.030510999262332916f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-#if defined(REGION_JP)
-	{ 3, (void*)dLinkModel_Joint_0x37C0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010591999627649784f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x38E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)dLinkModel_Joint_0x39E0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.030757000669836998f }, { 1.0f, 1.0f, 1.0f } },
-#else
 	{ 3, (void*)dLinkModel_Joint_0x37C0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010595000348985195f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dLinkModel_Joint_0x38E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.01143100019544363f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)dLinkModel_Joint_0x39E0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.03075999952852726f }, { 1.0f, 1.0f, 1.0f } },
-#endif
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+#endif
+
+#if defined(REGION_JP)
+/* 16-byte zero pad between JointTree (ends 0x4084) and JointTree_post (0x4094). */
+PAD(16);
+#endif /* REGION_JP */
 
 /* Sparse AObjEvent32 ** dispatch table @ 0x4094 (was JointTree+0x5AC, 84 bytes,
  * 21 slots). Chain pointers thread through slots 4, 5, 7, 12 to the
@@ -1154,6 +1170,29 @@ AObjEvent32 **dLinkModel_JointTree_post[21] = {
 	NULL,
 };
 
+#if defined(REGION_JP)
+/* Raw data from file offset 0x40E8 to 0x48F8 (2064 bytes).
+ * gap_0x40EC was extended 4 bytes earlier (now starts at 0x40E8) so its
+ * 14 u32 slots match the surrounding anim-script-style arrays. The
+ * symbol name "gap_0x40EC" is preserved for chain-order stability. */
+/* gap sparse pointer table @ 0x40E8 (was 52-byte u8, now 56-byte 14 u32 slots) */
+/* Primary AObjEvent32 ** dispatch table @ gap_0x40EC (40 bytes, 10 slots).
+ * Chain ptrs at slots [0] and [5] thread into the 3-entry sub_0x238
+ * sub-table; bytes 0x28..end of the original gap_0x40EC blob were the
+ * head of script_0x28 and are now in that script's symbol. */
+AObjEvent32 **dLinkModel_gap_0x40EC[10] = {
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x238,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x238[1],
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+#else
 /* Raw data from file offset 0x40E8 to 0x48F8 (2064 bytes).
  * gap_0x40EC was extended 4 bytes earlier (now starts at 0x40E8) so its
  * 14 u32 slots match the surrounding anim-script-style arrays. The
@@ -1175,6 +1214,7 @@ AObjEvent32 **dLinkModel_gap_0x40EC[14] = {
 	NULL,
 	NULL,
 };
+#endif
 
 /* gap sub-block @ 0x4120 (was gap+0x34, 56 bytes) */
 u32 dLinkModel_gap_0x40EC_sub_0x34[14] = {
@@ -1295,6 +1335,35 @@ u32 dLinkModel_gap_0x40EC_sub_0x168[14] = {
 	aobjEvent32End(),
 };
 
+#if defined(REGION_JP)
+/* AObjEvent32 script @ gap_0x40EC+0x194 (40b, spans old sub_* boundary). */
+u32 dLinkModel_gap_0x40EC_sub_0x1A0[10] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40400000,  /* 3f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
+};
+
+/* AObjEvent32 script @ gap_0x40EC+0x1BC (40b, spans old sub_* boundary). */
+u32 dLinkModel_gap_0x40EC_sub_0x1C8[10] = {
+	aobjEvent32SetValAfterBlock(0x200, 0),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x3F800000,  /* 1f */
+	aobjEvent32SetValAfterBlock(0x200, 1),
+	    0x40000000,  /* 2f */
+	aobjEvent32SetValAfter(0x200, 1),
+	    0x40400000,  /* 3f */
+	aobjEvent32Wait(98),
+	aobjEvent32End(),
+};
+#else
 /* gap sub-block @ 0x428C (was gap+0x1A0, 40 bytes) */
 u16 dLinkModel_gap_0x40EC_sub_0x1A0[20] = {
 	#include <LinkModel/gap_0x40EC_sub_0x1A0.palette.inc.c>
@@ -1304,6 +1373,7 @@ u16 dLinkModel_gap_0x40EC_sub_0x1A0[20] = {
 u16 dLinkModel_gap_0x40EC_sub_0x1C8[20] = {
 	#include <LinkModel/gap_0x40EC_sub_0x1C8.palette.inc.c>
 };
+#endif
 
 /* gap sub-block @ 0x42DC (was gap+0x1F0, 56 bytes) */
 u32 dLinkModel_gap_0x40EC_sub_0x1F0[14] = {
@@ -1322,6 +1392,18 @@ u32 dLinkModel_gap_0x40EC_sub_0x1F0[14] = {
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
+
+#if defined(REGION_JP)
+/* Secondary AObjEvent32 * pointer table @ 0x4304 (16b, 4 entries).
+ * Targets are interior offsets of various scripts. Chain rewriter
+ * overwrites with runtime pointers. */
+AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x21C[4] = {
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x1F0,
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x168,
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x34,
+	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x6C,
+};
+#endif /* REGION_JP */
 
 /* gap sub-block @ 0x4314 (was gap+0x228, 4 bytes) */
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x228[1] = {
@@ -1368,20 +1450,19 @@ u16 *dLinkModel_gap_0x40EC_sub_0x24C[2] = {
 	NULL,
 };
 
+#if defined(REGION_JP)
 /* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
-MObjSub *dLinkModel_gap_0x40EC_sub_0x254[32] = {
+MObjSub **dLinkModel_gap_0x40EC_sub_0x254[32] = {
 	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7C4,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7CC,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7C4,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7CC,
 	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7D4,
-	NULL,
-	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7D4,
 	NULL,
 	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7DC,
 	NULL,
 	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7DC,
 	NULL,
 	NULL,
 	NULL,
@@ -1389,10 +1470,48 @@ MObjSub *dLinkModel_gap_0x40EC_sub_0x254[32] = {
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7E4,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7F4,
 	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x7FC,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7E4,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7F4,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7FC,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL /* was sub_0x804; baserom slot NULL in JP */,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+#else
+/* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
+MObjSub **dLinkModel_gap_0x40EC_sub_0x254[32] = {
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7C4,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7CC,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7D4,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7DC,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7E4,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7F4,
+	NULL,
+	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7FC,
 	NULL,
 	NULL,
 	NULL,
@@ -1403,6 +1522,7 @@ MObjSub *dLinkModel_gap_0x40EC_sub_0x254[32] = {
 	NULL,
 	NULL,
 };
+#endif
 
 /* u32 pointer array @ 0x43C0 (3 entries) */
 u8 *dLinkModel_gap_0x40EC_sub_0x2D4[3] = {
@@ -1431,15 +1551,299 @@ u16 *dLinkModel_gap_0x40EC_sub_0x2F0[4] = {
 	(u16 *)dLinkModel_palette_0xD120,
 };
 
+#if !defined(REGION_JP)
 /* u32 pointer array @ 0x43EC (5 entries) */
-u16 *dLinkModel_gap_0x40EC_sub_0x300[5] = {
+u16 *dLinkModel_gap_0x40EC_sub_0x300[4] = {
 	(u16 *)dLinkModel_palette_0xCFC8,
 	(u16 *)dLinkModel_palette_0xCFA0,
 	(u16 *)dLinkModel_palette_0xD0F8,
 	(u16 *)dLinkModel_palette_0xD120,
-	NULL,
+};
+#endif /* !REGION_JP */
+
+PAD(4); /* trailing NULL slot of the palette pointer table */
+
+#if defined(REGION_JP)
+/* MObjSub @ 0x4400 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x314[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x0000, 0x0010, 0x0010,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		NULL,
+		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0010, 0x0010, 0x0010,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{{0x00, 0x00, 0x00, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		0, 0,
+		0, 0,
+	},
 };
 
+/* MObjSub @ 0x4478 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x38C[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x0000, 0x0010, 0x0010,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		NULL,
+		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0010, 0x0010, 0x0010,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{{0x00, 0x00, 0x00, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x44F0 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x404[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x000C, 0x0010, 0x0010,
+		0,
+		0.010633f, -0.407898f,
+		1.543634f, 1.700495f,
+		0.010633f, 1.543634f,
+		NULL,
+		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0010, 0x0010, 0x0010,
+		0.010633f, -0.407898f,
+		0.010633f, 0.0f,
+		0x00022205,
+		{{0x00, 0x00, 0x00, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x4568 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x47C[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		(void **)&dLinkModel_gap_0x40EC_sub_0x254[28],
+		0x004D, 0x0005, 0x0040, 0x0020,
+		0,
+		0.065241f, 0.083571f,
+		0.869519f, 0.412059f,
+		0.065241f, 0.869519f,
+		NULL,
+		0x0001, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0020,
+		0x0020, 0x0040, 0x0020,
+		0.065241f, 0.083571f,
+		0.065241f, 0.0f,
+		0x00022205,
+		{{0xFF, 0xFF, 0xFF, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0xFF, 0xFF, 0xFF, 0x00}},
+		{{0x80, 0x80, 0x80, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x45E0 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x4F4[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		(void **)&dLinkModel_gap_0x40EC_sub_0x254[31],
+		0x0085, 0x000B, 0x0020, 0x0020,
+		0,
+		0.336602f, 0.652562f,
+		0.326796f, 0.238876f,
+		0.336602f, 0.326796f,
+		(void **)&dLinkModel_gap_0x40EC_sub_0x2D4[1],
+		0x0005, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0020,
+		0x0020, 0x0020, 0x0020,
+		0.336602f, 0.652562f,
+		0.336602f, 0.0f,
+		0x00022205,
+		{{0xFF, 0xFF, 0xFF, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0xFF, 0xFF, 0xFF, 0x00}},
+		{{0x80, 0x80, 0x80, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x4658 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x56C[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x000F, 0x0010, 0x0010,
+		0,
+		-0.88675f, -0.304372f,
+		2.0823f, 1.269544f,
+		-0.88675f, 2.0823f,
+		NULL,
+		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0010, 0x0010, 0x0010,
+		-0.88675f, -0.304372f,
+		-0.88675f, 0.0f,
+		0x00022205,
+		{{0x00, 0x00, 0x00, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x46D0 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x5E4[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0023, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0492f,
+		1.0f, 0.9016f,
+		0.0f, 1.0f,
+		NULL,
+		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0492f,
+		0.0f, 0.0f,
+		0x00022205,
+		{{0x00, 0x00, 0x00, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x4748 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x65C[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void **)dLinkModel_gap_0x40EC_sub_0x2E0,
+		0x0004, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{{0xFF, 0xFF, 0xFF, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0xFF, 0xFF, 0xFF, 0x00}},
+		{{0x4C, 0x4C, 0x4C, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x47C0 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x6D4[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x0000, 0x0020, 0x0020,
+		0,
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f,
+		(void **)dLinkModel_gap_0x40EC_sub_0x2F0,
+		0x0004, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
+		0x0020, 0x0020, 0x0020,
+		0.0f, 0.0f,
+		0.0f, 0.0f,
+		0x00022205,
+		{{0xFF, 0xFF, 0xFF, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0xFF, 0xFF, 0xFF, 0x00}},
+		{{0x4C, 0x4C, 0x4C, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+
+/* MObjSub @ 0x4838 */
+MObjSub dLinkModel_gap_0x40EC_sub_0x74C[1] = {
+	{
+		0,
+		G_IM_FMT_CI, G_IM_SIZ_16b,
+		NULL,
+		0x0020, 0x001C, 0x0040, 0x0020,
+		0,
+		-0.42718f, 0.031513f,
+		1.854359f, 1.024974f,
+		-0.42718f, 1.854359f,
+		NULL,
+		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0020,
+		0x0020, 0x0040, 0x0020,
+		-0.42718f, 0.031513f,
+		-0.42718f, 0.0f,
+		0x00022205,
+		{{0x00, 0x00, 0x00, 0xFF}},
+		0x00, 0x00, {0x00, 0x00},
+		{{0x00, 0x00, 0x00, 0xFF}},
+		{{0x00, 0x00, 0x00, 0x08}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		{{0x00, 0x33, 0x66, 0x00}},
+		0, 0,
+		0, 0,
+	},
+};
+#else
 /* MObjSub @ 0x4400 */
 MObjSub dLinkModel_gap_0x40EC_sub_0x314[1] = {
 	{
@@ -1739,6 +2143,19 @@ MObjSub dLinkModel_gap_0x40EC_sub_0x74C[1] = {
 		0, 0,
 	}
 };
+#endif
+
+#if defined(REGION_JP)
+/* MObjSub * pointer pairs @ 0x48A0 (16 bytes). Two chain ptrs each
+ * followed by NULL — fills the gap between the last MObjSub (ends
+ * 0x48A0) and the trailing sub_0x7C4 pointer cluster at 0x48B0. */
+MObjSub *dLinkModel_gap_0x40EC_sub_0x7B4[4] = {
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x74C,
+	NULL,
+	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x5E4,
+	NULL,
+};
+#endif /* REGION_JP */
 
 /* gap sub-block @ 0x48B0 (was gap+0x7C4, 8 bytes) */
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[2] = {
@@ -1778,17 +2195,28 @@ MObjSub *dLinkModel_gap_0x40EC_sub_0x7F4[2] = {
 	NULL,
 };
 
+#if defined(REGION_JP)
+/* Single Vtx @ 0x48E8 (was split into sub_0x7FC + sub_0x804). Loaded by
+ * gsSPVertex from Joint_0x5B68_DisplayList+0x88; the 8-vtx load continues
+ * into the adjacent Vtx_0x48F8_Vtx array. */
+Vtx dLinkModel_gap_0x40EC_sub_0x7FC[1] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7FC.vtx.inc.c>
+};
+#else
 /* gap sub-block @ 0x48E8 (was gap+0x7FC, 8 bytes) */
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x65C,
 	NULL,
 };
+#endif
 
+#if !defined(REGION_JP)
 /* gap sub-block @ 0x48F0 (was gap+0x804, 8 bytes) */
 MObjSub *dLinkModel_gap_0x40EC_sub_0x804[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x6D4,
 	NULL,
 };
+#endif /* !REGION_JP */
 
 /* Vtx: Vtx_0x48F8 @ 0x48F8 (8 vertices) */
 Vtx dLinkModel_Vtx_0x48F8_Vtx[8] = {
@@ -2030,46 +2458,10 @@ Gfx dLinkModel_Joint_0x66C8_DisplayList[47] = {
 	#include <LinkModel/Joint_0x66C8.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x6840 was Gfx[
-#if defined(REGION_JP)
-36
-#else
-34
-#endif
-]; contains 4 embedded chain pointer(s) split out below */
-u8 dLinkModel_Joint_0x6840_DisplayList[100] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Joint_0x6840_DisplayList.data.inc.c>
+/* Absorbed DL: dLinkModel_Joint_0x6840_DisplayList @ 0x6840 (272 bytes, 34 cmds) */
+Gfx dLinkModel_Joint_0x6840_DisplayList[34] = {
+	#include <LinkModel/Joint_0x6840_DisplayList.dl.inc.c>
 };
-
-u32 dLinkModel_data_0x68A4[1] = { (u32)dLinkModel_Lut_0xB4B8_palette };
-
-u8 dLinkModel_data_0x68A8[44] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x68A8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x68D4[1] = { (u32)dLinkModel_Tex_0xC978 };
-
-u8 dLinkModel_data_0x68D8[28] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x68D8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x68F4[1] = { (u32)dLinkModel_Vtx_0x5398_Vtx };
-
-u8 dLinkModel_data_0x68F8[52] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x68F8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x692C[1] = { (u32)dLinkModel_Vtx_0x53E8_Vtx };
-
-u8 dLinkModel_data_0x6930[32] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x6930.data.inc.c>
-};
-
 
 /* DisplayList: Joint_0x6950 @ 0x6950 (224 bytes, 28 cmds) */
 Gfx dLinkModel_Joint_0x6950_DisplayList[28] = {
@@ -2116,6 +2508,7 @@ Gfx dLinkModel_Joint_0x73D0_DisplayList[28] = {
 	#include <LinkModel/Joint_0x73D0.dl.inc.c>
 };
 
+#if defined(REGION_JP)
 /* DObjDesc: JointTree_0x74B0 @ 0x74B0 (36 entries) */
 DObjDesc dLinkModel_JointTree_0x74B0[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -2145,22 +2538,51 @@ DObjDesc dLinkModel_JointTree_0x74B0[] = {
 	{ 5, (void*)0x00000000, { 100.3206558227539f, 1.4249839782714844f, 2.434950113296509f }, { 0.0f, -9.999999974752427e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)dLinkModel_Joint_0x70F0_DisplayList, { 3.199999991920777e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.0903019905090332f, -0.24377299845218658f, 0.030633000656962395f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-#if defined(REGION_JP)
 	{ 3, (void*)dLinkModel_Joint_0x71D0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010595000348985195f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dLinkModel_Joint_0x72E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.01143100019544363f }, { 1.0f, 1.0f, 1.0f } },
-#else
-	{ 3, (void*)dLinkModel_Joint_0x71D0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.0011449999874457717f, 0.010587000288069248f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x72E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.011446000076830387f }, { 1.0f, 1.0f, 1.0f } },
-#endif
 	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
-#if defined(REGION_JP)
 	{ 6, (void*)dLinkModel_Joint_0x73D0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.03075999952852726f }, { 1.0f, 1.0f, 1.0f } },
-#else
-	{ 6, (void*)dLinkModel_Joint_0x73D0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.030751999467611313f }, { 1.0f, 1.0f, 1.0f } },
-#endif
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
+#else
+/* DObjDesc: JointTree_0x74B0 @ 0x74B0 (36 entries) */
+DObjDesc dLinkModel_JointTree_0x74B0[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dLinkModel_Joint_0x5B68_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dLinkModel_Joint_0x5D08_DisplayList, { 0.0f, 32.691650390625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { 59.999996185302734f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x5F78_DisplayList, { 8.600000001024455e-05f, 2.9000000722589903e-05f, -3.999999989900971e-06f }, { -0.5529909729957581f, -1.5755549669265747f, 0.5621039867401123f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dLinkModel_Joint_0x60E8_DisplayList, { 63.19112014770508f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.0138330003246665f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x6250_DisplayList, { 56.54338455200195f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dLinkModel_Joint_0x6370_DisplayList, { 24.00067901611328f, 0.0007130000158213079f, 0.0009730000165291131f }, { 1.570796012878418f, 0.0034910000395029783f, 0.01745299994945526f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { -60.00000762939453f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x6550_DisplayList, { 2.9000000722589903e-05f, -1.4000000192027073e-05f, 2.099999983329326e-05f }, { 1.161007046699524f, 1.5810149908065796f, 1.1703959703445435f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dLinkModel_Joint_0x66C8_DisplayList, { 63.57130813598633f, 0.0f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x6840_DisplayList, { 56.0606575012207f, -0.09752299636602402f, -0.024605000391602516f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)0x00000000, { 20.99929428100586f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 0.9999989867210388f, 0.9999989867210388f, 0.9999989867210388f } },
+	{ 8, (void*)0x00000000, { 18.8219051361084f, 201.90914916992188f, -353.6216125488281f }, { 1.5614269971847534f, -0.003831000067293644f, 1.5614240169525146f }, { 1.0000009536743164f, 1.0000009536743164f, 1.0000009536743164f } },
+	{ 8, (void*)0x00000000, { 18.8219051361084f, 201.90914916992188f, -353.6216125488281f }, { 1.5614269971847534f, -0.003831000067293644f, 1.5614240169525146f }, { 1.0000009536743164f, 1.0000009536743164f, 1.0000009536743164f } },
+	{ 7, (void*)0x00000000, { 20.999279022216797f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 0.9999989867210388f, 0.9999989867210388f, 0.9999989867210388f } },
+	{ 3, (void*)0x00000000, { 57.00001525878906f, 108.00914001464844f, -43.95703887939453f }, { 0.0f, 0.0f, -0.5199999809265137f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)0x00000000, { -14.430379867553711f, -0.4825119972229004f, -35.877933502197266f }, { 0.0f, 3.1415929794311523f, -0.5f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dLinkModel_Joint_0x6950_DisplayList, { 0.0f, 90.53718566894531f, -14.139384269714355f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x6A30_DisplayList, { 1.4000000192027073e-05f, 19.50007438659668f, 0.3515619933605194f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dLinkModel_Joint_0x6E08_DisplayList, { -1.700000029813964e-05f, 86.81250762939453f, 5.531731128692627f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 0.9999859929084778f, 0.9999859929084778f } },
+	{ 2, (void*)0x00000000, { 21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dLinkModel_Joint_0x6EF0_DisplayList, { 0.0f, -1.9999999949504854e-06f, -3.999999989900971e-06f }, { 0.20031699538230896f, 0.001142999972216785f, 0.010591999627649784f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x7000_DisplayList, { 91.7034683227539f, 3.999999989900971e-06f, 1.9999999949504854e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)0x00000000, { 100.3206558227539f, 1.4249839782714844f, 2.434950113296509f }, { 0.0f, -9.999999974752427e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x70F0_DisplayList, { 3.199999991920777e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.0903019905090332f, -0.24377299845218658f, 0.030633000656962395f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)0x00000000, { -21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dLinkModel_Joint_0x71D0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.0011449999874457717f, 0.010587000288069248f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLinkModel_Joint_0x72E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.011446000076830387f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dLinkModel_Joint_0x73D0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.030751999467611313f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+#endif
 
 /* Sparse AObjEvent32 ** dispatch table @ 0x7A5C (was JointTree_0x74B0+0x5AC,
  * 132 bytes, 33 slots). Chain pointers thread through slots 2, 3, 5, 10,
@@ -3112,61 +3534,62 @@ PAD(8);
 u8 dLinkModel_Tex_0xB610[128] = {
 	#include <LinkModel/Tex_0xB610.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_B610_80_jp[8] = { 0x11, 0x11, 0x11, 0x7A, 0x22, 0x52, 0x2D, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=64x32 */
 u8 dLinkModel_Tex_0xB698[1024] = {
 	#include <LinkModel/Tex_0xB698.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_B698_400_jp[8] = { 0x22, 0x22, 0x22, 0x5A, 0x7A, 0x55, 0x2D, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=32x32 */
 u8 dLinkModel_Tex_0xBAA0[512] = {
 	#include <LinkModel/Tex_0xBAA0.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_BAA0_200_jp[8] = { 0xDD, 0xDD, 0xD7, 0x11, 0x75, 0x52, 0x22, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=64x32 */
 u8 dLinkModel_Tex_0xBCA8[1024] = {
 	#include <LinkModel/Tex_0xBCA8.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_BCA8_400_jp[8] = { 0x11, 0x11, 0x11, 0x75, 0x55, 0x55, 0x2D, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=32x32 */
 u8 dLinkModel_Tex_0xC0B0[512] = {
 	#include <LinkModel/Tex_0xC0B0.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_C0B0_200_jp[8] = { 0x88, 0x88, 0x27, 0x7A, 0x22, 0x52, 0x2D, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=64x32 */
 u8 dLinkModel_Tex_0xC2B8[1024] = {
 	#include <LinkModel/Tex_0xC2B8.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_C2B8_400_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xD2, 0x7B, 0x88 };
 #else
@@ -3176,16 +3599,16 @@ PAD(8);
 /* JP-side palette frame at file 0xC650 (40 bytes = 20 colors), referenced
  * via Palettes_0x0094 and several DL bindings. */
 
-
 /* Palette: Lut_0xC6C0 @ 0xC6C0 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xC6C0_palette[16] = {
 	#include <LinkModel/Lut_0xC6C0.palette.inc.c>
 };
 
-/* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
 #if defined(REGION_JP)
+/* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
 static u8 dLinkModel_gap_0xC6E0_jp_pad[8] = { 0x99, 0x99, 0xE8, 0x8C, 0x7A, 0x55, 0x2D, 0xDD };
 #else
+/* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
 PAD(8);
 #endif
 
@@ -3299,18 +3722,17 @@ PAD(8);
 u8 dLinkModel_Tex_0xCF18[128] = {
 	#include <LinkModel/Tex_0xCF18.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_CF18_80_jp[8] = { 0x44, 0x46, 0x66, 0x77, 0x76, 0x8C, 0xDB, 0x86 };
 #else
 PAD(8);
 #endif
 
-
-
-
 u16 dLinkModel_palette_0xCFA0[16] = {
 	#include <LinkModel/palette_0xCFA0.palette.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_CFA0_20_jp[8] = { 0x44, 0x67, 0x78, 0x76, 0x64, 0x44, 0x46, 0x87 };
 #else
@@ -3320,6 +3742,7 @@ PAD(8);
 u16 dLinkModel_palette_0xCFC8[16] = {
 	#include <LinkModel/palette_0xCFC8.palette.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_CFC8_20_jp[8] = { 0x8A, 0xBB, 0xBA, 0x86, 0x44, 0x46, 0x7A, 0xBB };
 #else
@@ -3331,18 +3754,17 @@ PAD(8);
 u8 dLinkModel_Tex_0xCFF0[256] = {
 	#include <LinkModel/Tex_0xCFF0.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_CFF0_100_jp[8] = { 0x44, 0x46, 0x66, 0x77, 0x76, 0x8C, 0xDB, 0x86 };
 #else
 PAD(8);
 #endif
 
-
-
-
 u16 dLinkModel_palette_0xD0F8[16] = {
 	#include <LinkModel/palette_0xD0F8.palette.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_D0F8_20_jp[8] = { 0x44, 0x67, 0x78, 0x76, 0x64, 0x44, 0x46, 0x87 };
 #else
@@ -3352,6 +3774,7 @@ PAD(8);
 u16 dLinkModel_palette_0xD120[16] = {
 	#include <LinkModel/palette_0xD120.palette.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_D120_20_jp[8] = { 0x8A, 0xBB, 0xBA, 0x86, 0x44, 0x46, 0x7A, 0xBB };
 #else
@@ -3365,34 +3788,34 @@ PAD(8);
 u8 dLinkModel_Tex_0xD148[256] = {
 	#include <LinkModel/Tex_0xD148.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_D148_100_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xC6C0_palette */
 u8 dLinkModel_Tex_0xD250[512] = {
 	#include <LinkModel/Tex_0xD250.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_D250_200_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
 #else
 PAD(8);
 #endif
 
-
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xC6C0_palette */
 u8 dLinkModel_Tex_0xD458[512] = {
 	#include <LinkModel/Tex_0xD458.tex.inc.c>
 };
+
 #if defined(REGION_JP)
 static u8 _pad_D458_200_jp[8] = { 0xFF, 0xFF, 0xFE, 0xA8, 0x74, 0x32, 0x23, 0x34 };
 #else
 PAD(8);
 #endif
-
 
 /* Texture data @ 0xD660 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
@@ -3566,351 +3989,392 @@ u8 dLinkModel_Tex_0xE338[7536] = {
 	#include <LinkModel/Tex_0xE338.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x100A8 was u8[4104]; contains 1 embedded chain pointer(s) split out below */
-u8 dLinkModel_Tex_0x100A8[4100] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Tex_0x100A8.data.inc.c>
+/* @tex fmt=IA8 dim=64x64 */
+u8 dLinkModel_Tex_0x100A8[4096] = {
+	#include <LinkModel/Tex_0x100A8.tex.inc.c>
 };
 
-u32 dLinkModel_data_0x110AC[1] = { (u32)dLinkModel_Tex_0x114E8 };
+PAD(4); /* zero tail after the 64x64 IA8 texture */
 
+MObjSub **dLinkModel_data_0x110AC[1] = { dLinkModel_Tex_0x114E8 };
 
-u8 dLinkModel_Tex_0x110B0[120] = {
-	#include <LinkModel/Tex_0x110B0.tex.inc.c>
+MObjSub dLinkModel_Tex_0x110B0[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0xD8, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x74, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x11128[120] = {
-	#include <LinkModel/Tex_0x11128.tex.inc.c>
+MObjSub dLinkModel_Tex_0x11128[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0xB0, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x75, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x111A0[120] = {
-	#include <LinkModel/Tex_0x111A0.tex.inc.c>
+MObjSub dLinkModel_Tex_0x111A0[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0xA3, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x6E, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x11218[120] = {
-	#include <LinkModel/Tex_0x11218.tex.inc.c>
+MObjSub dLinkModel_Tex_0x11218[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0x99, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x66, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x11290[120] = {
-	#include <LinkModel/Tex_0x11290.tex.inc.c>
+MObjSub dLinkModel_Tex_0x11290[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0x97, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x61, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x11308[120] = {
-	#include <LinkModel/Tex_0x11308.tex.inc.c>
+MObjSub dLinkModel_Tex_0x11308[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0x8B, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x5A, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x11380[120] = {
-	#include <LinkModel/Tex_0x11380.tex.inc.c>
+MObjSub dLinkModel_Tex_0x11380[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0x8B, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x52, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x113F8[120] = {
-	#include <LinkModel/Tex_0x113F8.tex.inc.c>
+MObjSub dLinkModel_Tex_0x113F8[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0x7E, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x4B, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u8 dLinkModel_Tex_0x11470[120] = {
-	#include <LinkModel/Tex_0x11470.tex.inc.c>
+MObjSub dLinkModel_Tex_0x11470[1] = {
+	{
+		0,                              /* pad00   */
+		G_IM_FMT_IA, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0040, 0x0040, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10   */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		NULL,                               /* palettes */
+		0x0200, G_IM_FMT_IA, G_IM_SIZ_8b, 0x0040,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0040, 0x0040, 0x0040,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002205,                          /* unk4C  */
+		{{0xFF, 0xFF, 0x71, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0xFF, 0x42, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x08}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-/* TODO: data.inc.c — block at 0x114E8 was u8[40]; contains 9 embedded chain pointer(s) split out below */
-u32 dLinkModel_Tex_0x114E8[1] = { (u32)dLinkModel_Tex_0x110B0 };
-
-u32 dLinkModel_data_0x114EC[1] = { (u32)dLinkModel_Tex_0x11128 };
-
-u32 dLinkModel_data_0x114F0[1] = { (u32)dLinkModel_Tex_0x111A0 };
-
-u32 dLinkModel_data_0x114F4[1] = { (u32)dLinkModel_Tex_0x11218 };
-
-u32 dLinkModel_data_0x114F8[1] = { (u32)dLinkModel_Tex_0x11290 };
-
-u32 dLinkModel_data_0x114FC[1] = { (u32)dLinkModel_Tex_0x11308 };
-
-u32 dLinkModel_data_0x11500[1] = { (u32)dLinkModel_Tex_0x11380 };
-
-u32 dLinkModel_data_0x11504[1] = { (u32)dLinkModel_Tex_0x113F8 };
-
-u32 dLinkModel_data_0x11508[1] = { (u32)dLinkModel_Tex_0x11470 };
-
-u8 dLinkModel_data_0x1150C[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x1150C.data.inc.c>
+MObjSub *dLinkModel_Tex_0x114E8[9] = {
+	dLinkModel_Tex_0x110B0,
+	dLinkModel_Tex_0x11128,
+	dLinkModel_Tex_0x111A0,
+	dLinkModel_Tex_0x11218,
+	dLinkModel_Tex_0x11290,
+	dLinkModel_Tex_0x11308,
+	dLinkModel_Tex_0x11380,
+	dLinkModel_Tex_0x113F8,
+	dLinkModel_Tex_0x11470,
 };
 
+PAD(4); /* data_0x1150C: zero padding before Vtx_0x11510 */
 
-u8 dLinkModel_Tex_0x11510[32] = {
-	#include <LinkModel/Tex_0x11510.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11510_Vtx[2] = {
+	#include <LinkModel/Vtx_0x11510_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11530[16] = {
-	#include <LinkModel/Tex_0x11530.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11530_Vtx[1] = {
+	#include <LinkModel/Vtx_0x11530_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11540[16] = {
-	#include <LinkModel/Tex_0x11540.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11540_Vtx[1] = {
+	#include <LinkModel/Vtx_0x11540_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11550[16] = {
-	#include <LinkModel/Tex_0x11550.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11550_Vtx[1] = {
+	#include <LinkModel/Vtx_0x11550_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11560[16] = {
-	#include <LinkModel/Tex_0x11560.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11560_Vtx[1] = {
+	#include <LinkModel/Vtx_0x11560_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11570[32] = {
-	#include <LinkModel/Tex_0x11570.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11570_Vtx[2] = {
+	#include <LinkModel/Vtx_0x11570_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11590[32] = {
-	#include <LinkModel/Tex_0x11590.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11590_Vtx[2] = {
+	#include <LinkModel/Vtx_0x11590_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x115B0[32] = {
-	#include <LinkModel/Tex_0x115B0.tex.inc.c>
+Vtx dLinkModel_Vtx_0x115B0_Vtx[2] = {
+	#include <LinkModel/Vtx_0x115B0_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x115D0[32] = {
-	#include <LinkModel/Tex_0x115D0.tex.inc.c>
+Vtx dLinkModel_Vtx_0x115D0_Vtx[2] = {
+	#include <LinkModel/Vtx_0x115D0_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x115F0[32] = {
-	#include <LinkModel/Tex_0x115F0.tex.inc.c>
+Vtx dLinkModel_Vtx_0x115F0_Vtx[2] = {
+	#include <LinkModel/Vtx_0x115F0_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11610[64] = {
-	#include <LinkModel/Tex_0x11610.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11610_Vtx[4] = {
+	#include <LinkModel/Vtx_0x11610_Vtx.vtx.inc.c>
 };
 
-u8 dLinkModel_Tex_0x11650[48] = {
-	#include <LinkModel/Tex_0x11650.tex.inc.c>
+Vtx dLinkModel_Vtx_0x11650_Vtx[3] = {
+	#include <LinkModel/Vtx_0x11650_Vtx.vtx.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x11680 was u8[632]; contains 27 embedded chain pointer(s) split out below */
-u8 dLinkModel_Tex_0x11680[76] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Tex_0x11680.data.inc.c>
+/* Absorbed DL: dLinkModel_Tex_0x11680 @ 0x11680 (632 bytes, 79 cmds) */
+Gfx dLinkModel_Tex_0x11680[79] = {
+	#include <LinkModel/Tex_0x11680.dl.inc.c>
 };
 
-u32 dLinkModel_data_0x116CC[1] = { (u32)dLinkModel_Tex_0x100A8 };
-
-u8 dLinkModel_data_0x116D0[44] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x116D0.data.inc.c>
+/* DObj display-list link table @ 0x118F8 (16 bytes). {list_id, Gfx*}
+ * pairs terminated by {4, NULL}. */
+DObjDLLink dLinkModel_Tex_0x118F8[2] = {
+	{ 1, (Gfx *)dLinkModel_Tex_0x11680 },
+	{ 4, NULL },
 };
 
-u32 dLinkModel_data_0x116FC[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x11700[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11700.data.inc.c>
+/* DObjDesc scene-graph entries @ 0x11908 (3 entries). Entry 1's dl
+ * references the DObjDLLink table above. */
+DObjDesc dLinkModel_DObjDesc_0x11908[3] = {
+	{ 0, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dLinkModel_Tex_0x118F8, { 0.0f, 247.5f, 0.0f }, { 3.14159298f, -6.47358513f, 0.00999999978f }, { 2.04962707f, 1.0f, 2.04962707f } },
+	{ 18, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-u32 dLinkModel_data_0x11724[1] = { (u32)dLinkModel_Tex_0x11510 };
+PAD(8); /* zero pad before the AObjEvent32 script pointer at 0x11994 */
 
-u8 dLinkModel_data_0x11728[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11728.data.inc.c>
-};
+AObjEvent32 *dLinkModel_data_0x11994[1] = { (AObjEvent32 *)dLinkModel_Tex_0x11998 };
 
-u32 dLinkModel_data_0x1172C[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x11730[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11730.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11734[1] = { (u32)dLinkModel_Tex_0x11560 };
-
-u8 dLinkModel_data_0x11738[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11738.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1175C[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x11760[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11760.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11764[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x11768[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11768.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1176C[1] = { (u32)dLinkModel_Tex_0x11570 };
-
-u8 dLinkModel_data_0x11770[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11770.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11794[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x11798[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11798.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1179C[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x117A0[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x117A0.data.inc.c>
-};
-
-u32 dLinkModel_data_0x117A4[1] = { (u32)dLinkModel_Tex_0x11590 };
-
-u8 dLinkModel_data_0x117A8[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x117A8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x117CC[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x117D0[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x117D0.data.inc.c>
-};
-
-u32 dLinkModel_data_0x117D4[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x117D8[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x117D8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x117DC[1] = { (u32)dLinkModel_Tex_0x115B0 };
-
-u8 dLinkModel_data_0x117E0[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x117E0.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11804[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x11808[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11808.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1180C[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x11810[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11810.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11814[1] = { (u32)dLinkModel_Tex_0x115D0 };
-
-u8 dLinkModel_data_0x11818[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11818.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1183C[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x11840[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11840.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11844[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x11848[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11848.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1184C[1] = { (u32)dLinkModel_Tex_0x115F0 };
-
-u8 dLinkModel_data_0x11850[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11850.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11874[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x11878[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11878.data.inc.c>
-};
-
-u32 dLinkModel_data_0x1187C[1] = { (u32)dLinkModel_Tex_0x11540 };
-
-u8 dLinkModel_data_0x11880[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11880.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11884[1] = { (u32)dLinkModel_Tex_0x11610 };
-
-u8 dLinkModel_data_0x11888[36] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11888.data.inc.c>
-};
-
-u32 dLinkModel_data_0x118AC[1] = { (u32)dLinkModel_Tex_0x11510 };
-
-u8 dLinkModel_data_0x118B0[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x118B0.data.inc.c>
-};
-
-u32 dLinkModel_data_0x118B4[1] = { (u32)dLinkModel_Tex_0x11530 };
-
-u8 dLinkModel_data_0x118B8[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x118B8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x118BC[1] = { (u32)dLinkModel_Tex_0x11550 };
-
-u8 dLinkModel_data_0x118C0[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x118C0.data.inc.c>
-};
-
-u32 dLinkModel_data_0x118C4[1] = { (u32)dLinkModel_Tex_0x11650 };
-
-u8 dLinkModel_data_0x118C8[48] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x118C8.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x118F8 was u8[160]; contains 3 embedded chain pointer(s) split out below */
-u8 dLinkModel_Tex_0x118F8[4] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Tex_0x118F8.data.inc.c>
-};
-
-u32 dLinkModel_data_0x118FC[1] = { (u32)dLinkModel_Tex_0x11680 };
-
-u8 dLinkModel_data_0x11900[56] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11900.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11938[1] = { (u32)dLinkModel_Tex_0x118F8 };
-
-u8 dLinkModel_data_0x1193C[88] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x1193C.data.inc.c>
-};
-
-u32 dLinkModel_data_0x11994[1] = { (u32)dLinkModel_Tex_0x11998 };
-
-
-/* TODO: data.inc.c — block at 0x11998 was u8[176]; contains 1 embedded chain pointer(s) split out below */
-u8 dLinkModel_Tex_0x11998[172] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/Tex_0x11998.data.inc.c>
+/* AObjEvent32 material-animation script @ 0x11998 (172 bytes, 42 cmds + 4-byte zero pad).  Walks cleanly to a single `aobjEvent32End()` at +0xA4; trailing word is alignment slack. */
+u32 dLinkModel_Tex_0x11998[43] = {
+	aobjEvent32SetVal(0x2, 0),
+	    0x00000000,  /* 0f */
+	aobjEvent32SetValAfter(0x170, 0),
+	    0x00000000,  /* 0f */
+	    0x43778000,  /* 247.5f */
+	    0x00000000,  /* 0f */
+	    0x3F800000,  /* 1f */
+	aobjEvent32SetVal0Rate(0x280, 0),
+	    0x3F800000,  /* 1f */
+	    0x3F800000,  /* 1f */
+	aobjEvent32SetFlags(0x2, 0x0),
+	aobjEvent32SetValRate(0x280, 7),
+	    0x3FA66666,  /* 1.3f */
+	    0x3DA3D70B,  /* 0.08000001f */
+	    0x3FA66666,  /* 1.3f */
+	    0x3DA3D70B,  /* 0.08000001f */
+	aobjEvent32SetValBlock(0x2, 7),
+	    0xC0490FDB,  /* -3.141593f */
+	aobjEvent32SetFlags(0x0, 0x0),
+	aobjEvent32SetVal(0x2, 33),
+	    0xC196CBE4,  /* -18.84956f */
+	aobjEvent32SetValRateBlock(0x280, 23),
+	    0x4059999A,  /* 3.4f */
+	    0xBC14F207,  /* -0.009090907f */
+	    0x4059999A,  /* 3.4f */
+	    0xBC14F207,  /* -0.009090907f */
+	aobjEvent32SetValRateBlock(0x280, 10),
+	    0x3F800000,  /* 1f */
+	    0x39916047,  /* 0.0002772829f */
+	    0x3F800000,  /* 1f */
+	    0x39916047,  /* 0.0002772829f */
+	aobjEvent32SetFlags(0x2, 0x0),
+	aobjEvent32SetTargetRate(0x282, 0),
+	    0xBE8E47D6,  /* -0.2778918f */
+	    0xB9431483,  /* -0.0001860429f */
+	    0xB9431483,  /* -0.0001860429f */
+	aobjEvent32SetVal0Rate(0x280, 60),
+	    0x3F800000,  /* 1f */
+	    0x3F800000,  /* 1f */
+	aobjEvent32SetValBlock(0x2, 60),
+	    0xC21DEADA,  /* -39.47935f */
+	aobjEvent32End(),
+	0x00000000,                              /* trailing pad */
 };
 
 u32 dLinkModel_data_0x11A44[1] = { (u32)dLinkModel_Tex_0x11C1C };
-
 
 u8 dLinkModel_Tex_0x11A48[52] = {
 	#include <LinkModel/Tex_0x11A48.tex.inc.c>
@@ -3948,30 +4412,21 @@ u8 dLinkModel_Tex_0x11BE8[52] = {
 	#include <LinkModel/Tex_0x11BE8.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x11C1C was u8[44]; contains 9 embedded chain pointer(s) split out below */
-u32 dLinkModel_Tex_0x11C1C[1] = { (u32)dLinkModel_Tex_0x11A48 };
-
-u32 dLinkModel_data_0x11C20[1] = { (u32)dLinkModel_Tex_0x11A7C };
-
-u32 dLinkModel_data_0x11C24[1] = { (u32)dLinkModel_Tex_0x11AB0 };
-
-u32 dLinkModel_data_0x11C28[1] = { (u32)dLinkModel_Tex_0x11AE4 };
-
-u32 dLinkModel_data_0x11C2C[1] = { (u32)dLinkModel_Tex_0x11B18 };
-
-u32 dLinkModel_data_0x11C30[1] = { (u32)dLinkModel_Tex_0x11B4C };
-
-u32 dLinkModel_data_0x11C34[1] = { (u32)dLinkModel_Tex_0x11B80 };
-
-u32 dLinkModel_data_0x11C38[1] = { (u32)dLinkModel_Tex_0x11BB4 };
-
-u32 dLinkModel_data_0x11C3C[1] = { (u32)dLinkModel_Tex_0x11BE8 };
-
-u8 dLinkModel_data_0x11C40[8] = {
-	/* TODO: data.inc.c */
-	#include <LinkModel/data_0x11C40.data.inc.c>
+/* Sprite-set pointer table @ 0x11C1C (9 entries → the 52-byte CI sprite
+ * frames Tex_0x11A48..Tex_0x11BE8, swapped by the MObjSub sprite-anim). */
+u8 *dLinkModel_Tex_0x11C1C[9] = {
+	(u8 *)dLinkModel_Tex_0x11A48,
+	(u8 *)dLinkModel_Tex_0x11A7C,
+	(u8 *)dLinkModel_Tex_0x11AB0,
+	(u8 *)dLinkModel_Tex_0x11AE4,
+	(u8 *)dLinkModel_Tex_0x11B18,
+	(u8 *)dLinkModel_Tex_0x11B4C,
+	(u8 *)dLinkModel_Tex_0x11B80,
+	(u8 *)dLinkModel_Tex_0x11BB4,
+	(u8 *)dLinkModel_Tex_0x11BE8,
 };
 
+PAD(8); /* data_0x11C40: alignment padding */
 
 /* Texture data for sprite Stock */
 /* Split out from .sprite.c so the palette blocks can sit at
@@ -3998,11 +4453,13 @@ u16 dLinkModel_gap_0x11CC0[4] = {
 u16 dLinkModel_gap_0x11CC0_sub_0x8[16] = {
 	#include <LinkModel/gap_0x11CC0_sub_0x8.palette.inc.c>
 };
+
 PAD(8);
 
 u16 dLinkModel_gap_0x11CC0_sub_0x30[16] = {
 	#include <LinkModel/gap_0x11CC0_sub_0x30.palette.inc.c>
 };
+
 PAD(8);
 
 u16 dLinkModel_gap_0x11CC0_sub_0x58[16] = {
@@ -4072,3 +4529,4 @@ Sprite dLinkModel_FTEmblem = {
 	(Gfx*)0x00000000,
 	0, 0,
 };
+

@@ -21,8 +21,7 @@ extern u8 dCaptainShieldPose_shield_anim_joint_7[];
 
 extern DObjDesc dNCaptainModel_JointTree[];
 
-/* TODO: data.inc.c — block at 0x0 was u32[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dNCaptainMain_file_handles[1] = { (u32)dCaptainMainMotion_EggLay_0x006C };
+ftMotionCommand * dNCaptainMain_file_handles[1] = { dCaptainMainMotion_EggLay_0x006C };
 
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNCaptainMain_pre+0x4) */

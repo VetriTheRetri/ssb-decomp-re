@@ -40,7 +40,7 @@ u8 dSamusSpecial2_Tex_0x110[256] = {
  * The real MObjSub data starts at +0x10 (dSamusSpecial2_GrappleBeamMObjSub_MObjSub_real below). */
 MObjSub **dSamusSpecial2_GrappleBeamMObjSub_MObjSub[2] = {
 	NULL,
-	NULL,
+	(MObjSub **)dSamusSpecial2_gap_0x0288_sub_0x10,
 };
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -149,10 +149,9 @@ u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[] = {
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32SetAnim(0x000, 0),
+	(u32)dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418,
 	aobjEvent32End(),
 };
-
-PAD(4);
 
 /* Raw data from file offset 0x0480 to 0x04C8 (72 bytes).
  * Split into header[2] + main script + loop-back ptr + trailing zeros
@@ -160,9 +159,9 @@ PAD(4);
 extern AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop[1];
 extern u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data[12];
 
-AObjEvent32 *dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop,
+	dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_loop,
 };
 
 /* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(0x001, *), then

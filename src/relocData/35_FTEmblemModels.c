@@ -24,98 +24,105 @@ extern Vtx dFTEmblemModels_Mother_Vtx[];
 extern Vtx dFTEmblemModels_PMonsters_Vtx[];
 extern Vtx dFTEmblemModels_Yoshi_Vtx[];
 extern Vtx dFTEmblemModels_Zelda_Vtx[];
-extern u8 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[];
-extern u8 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[];
-extern void *dFTEmblemModels_gap_0x14E8[];
-extern void *dFTEmblemModels_gap_0x19B8[];
-extern void *dFTEmblemModels_gap_0x2708[];
-extern void *dFTEmblemModels_gap_0x3068[];
-extern void *dFTEmblemModels_gap_0x3978[];
-extern void *dFTEmblemModels_gap_0x48B8[];
+extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[];
+extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[];
+extern MObjSub *dFTEmblemModels_gap_0x14E8[];
+extern MObjSub *dFTEmblemModels_gap_0x19B8[];
+extern MObjSub *dFTEmblemModels_gap_0x2708[];
+extern MObjSub *dFTEmblemModels_gap_0x3068[];
+extern MObjSub *dFTEmblemModels_gap_0x3978[];
+extern MObjSub *dFTEmblemModels_gap_0x48B8[];
 
 extern MObjSub *dFTEmblemModels_Mario_MObjSubPtrArray[];
 
 /* MObjSub array: Mario @ 0x0 (3 entries) */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Mario_MObjSub block. */
+MObjSub **dFTEmblemModels_Mario_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_Mario_MObjSubPtrArray,
+};
+
+/* MObjSub array: Mario (3 entries) */
 MObjSub dFTEmblemModels_Mario_MObjSub[3] = {
-	/* [0] @ 0x0 */
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_Mario_MObjSubPtrArray + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
-	/* [1] @ 0x78 */
+	/* [1] @ 0x80 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
-		0x0000, 0x0002, 0x0000, 0x0000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
-	/* [2] @ 0xF0 */
+	/* [2] @ 0xF8 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
-		0x0000, 0x0002, 0x0000, 0x0000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
 };
@@ -124,12 +131,11 @@ MObjSub dFTEmblemModels_Mario_MObjSub[3] = {
  * 3× per-MObjSub pointers (each pointing to MObjSub[i]+0x8),
  * trailing NULL terminator). fixRelocChain.py rewrites the non-NULL
  * entries to chain-encoded form per the .reloc metadata. */
-MObjSub *dFTEmblemModels_Mario_MObjSubPtrArray[] = {
-	NULL,
-	NULL,
-	(MObjSub *)((u8 *)dFTEmblemModels_Mario_MObjSub + 0x08),
-	(MObjSub *)((u8 *)dFTEmblemModels_Mario_MObjSub + 0x80),
-	(MObjSub *)((u8 *)dFTEmblemModels_Mario_MObjSub + 0xF8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_Mario_MObjSubPtrArray[4] = {
+	&dFTEmblemModels_Mario_MObjSub[0],
+	&dFTEmblemModels_Mario_MObjSub[1],
+	&dFTEmblemModels_Mario_MObjSub[2],
 	NULL,
 };
 
@@ -157,11 +163,11 @@ DObjDesc dFTEmblemModels_Mario[] = {
 extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xA1C[];
 extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xA64[];
 extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xAAC[];
-extern u32 dFTEmblemModels_Mario_MatAnimJoint_0xAF4[];
+extern AObjEvent32 * dFTEmblemModels_Mario_MatAnimJoint_0xAF4[];
 
-AObjEvent32 *dFTEmblemModels_Mario_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Mario_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Mario_MatAnimJoint_0xAF4,
+	dFTEmblemModels_Mario_MatAnimJoint_0xAF4,
 };
 
 u32 dFTEmblemModels_Mario_MatAnimJoint_0xA1C[] = {
@@ -227,78 +233,84 @@ u32 dFTEmblemModels_Mario_MatAnimJoint_0xAAC[] = {
 	(u32)(dFTEmblemModels_Mario_MatAnimJoint_0xAAC),
 };
 
-u32 dFTEmblemModels_Mario_MatAnimJoint_0xAF4[] = {
-	(u32)(dFTEmblemModels_Mario_MatAnimJoint_0xA1C),
-	(u32)(dFTEmblemModels_Mario_MatAnimJoint_0xA64),
-	(u32)(dFTEmblemModels_Mario_MatAnimJoint_0xAAC),
+AObjEvent32 *dFTEmblemModels_Mario_MatAnimJoint_0xAF4[] = {
+	(AObjEvent32 *)dFTEmblemModels_Mario_MatAnimJoint_0xA1C,
+	(AObjEvent32 *)dFTEmblemModels_Mario_MatAnimJoint_0xA64,
+	(AObjEvent32 *)dFTEmblemModels_Mario_MatAnimJoint_0xAAC,
 };
 
 extern MObjSub *dFTEmblemModels_Donkey_MObjSubPtrArray[];
 
 /* MObjSub array: Donkey @ 0xB00 (2 entries) */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Donkey_MObjSub block. */
+MObjSub **dFTEmblemModels_Donkey_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_Donkey_MObjSubPtrArray,
+};
+
+/* MObjSub array: Donkey (2 entries) */
 MObjSub dFTEmblemModels_Donkey_MObjSub[2] = {
-	/* [0] @ 0xB00 */
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_Donkey_MObjSubPtrArray + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
-	/* [1] @ 0xB78 */
+	/* [1] @ 0x80 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
-		0x0000, 0x0002, 0x0000, 0x0000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
 };
 
 /* MObjSub pointer array @ 0xBF0 — see Mario_MObjSubPtrArray for layout notes. */
-MObjSub *dFTEmblemModels_Donkey_MObjSubPtrArray[] = {
-	NULL,
-	NULL,
-	(MObjSub *)((u8 *)dFTEmblemModels_Donkey_MObjSub + 0x08),
-	(MObjSub *)((u8 *)dFTEmblemModels_Donkey_MObjSub + 0x80),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_Donkey_MObjSubPtrArray[3] = {
+	&dFTEmblemModels_Donkey_MObjSub[0],
+	&dFTEmblemModels_Donkey_MObjSub[1],
 	NULL,
 };
 
@@ -325,78 +337,109 @@ DObjDesc dFTEmblemModels_Donkey[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[];
+extern AObjEvent32 * dFTEmblemModels_Donkey_MatAnimJoint_0x1464[];
 
-AObjEvent32 *dFTEmblemModels_Donkey_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Donkey_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Donkey_MatAnimJoint_0x1464,
+	dFTEmblemModels_Donkey_MatAnimJoint_0x1464,
 };
 
-/* TODO: data.inc.c — block at 0x13D4 was u32[]; contains 1 embedded chain pointer(s) split out below */
-u8 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[68] = {
-	/* TODO: data.inc.c */
-	#include <FTEmblemModels/Donkey_MatAnimJoint_0x13D4.data.inc.c>
+u32 dFTEmblemModels_Donkey_MatAnimJoint_0x13D4[17] = {
+	aobjEvent32SetExtValAfterBlock(0x18, 0),
+	    0xB3191900,  /* -3.5645825846586376e-08f */
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfterBlock(0x18, 1),
+	    0x00199900,  /* 2.3507734622004547e-39f */
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfterBlock(0x18, 1),
+	    0xFFB30000,
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfterBlock(0x18, 1),
+	    0x00991900,  /* 1.4059799222344334e-38f */
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfter(0x18, 1),
+	    0x66666600,  /* 2.720064647388842e+23f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(2),
+	aobjEvent32SetAnim(0x0, 0x0),
 };
 
-u32 dFTEmblemModels_data_0x1418[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x13D4 };
+AObjEvent32 *dFTEmblemModels_data_0x1418[1] = { (AObjEvent32 *)dFTEmblemModels_Donkey_MatAnimJoint_0x13D4};
 
 
-/* TODO: data.inc.c — block at 0x141C was u32[]; contains 1 embedded chain pointer(s) split out below */
-u8 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[68] = {
-	/* TODO: data.inc.c */
-	#include <FTEmblemModels/Donkey_MatAnimJoint_0x141C.data.inc.c>
+u32 dFTEmblemModels_Donkey_MatAnimJoint_0x141C[17] = {
+	aobjEvent32SetExtValAfterBlock(0x18, 0),
+	    0xB3191900,  /* -3.5645825846586376e-08f */
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfterBlock(0x18, 1),
+	    0x00199900,  /* 2.3507734622004547e-39f */
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfterBlock(0x18, 1),
+	    0xFFB30000,
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfterBlock(0x18, 1),
+	    0x00991900,  /* 1.4059799222344334e-38f */
+	    0x26262600,  /* 5.764431900562306e-16f */
+	aobjEvent32SetExtValAfter(0x18, 1),
+	    0x66666600,  /* 2.720064647388842e+23f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32Wait(2),
+	aobjEvent32SetAnim(0x0, 0x0),
 };
 
-u32 dFTEmblemModels_data_0x1460[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x141C };
+AObjEvent32 *dFTEmblemModels_data_0x1460[1] = { (AObjEvent32 *)dFTEmblemModels_Donkey_MatAnimJoint_0x141C};
 
 
-/* TODO: data.inc.c — block at 0x1464 was u32[]; contains 2 embedded chain pointer(s) split out below */
-u32 dFTEmblemModels_Donkey_MatAnimJoint_0x1464[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x13D4 };
-
-u32 dFTEmblemModels_data_0x1468[1] = { (u32)dFTEmblemModels_Donkey_MatAnimJoint_0x141C };
-
-u8 dFTEmblemModels_data_0x146C[4] = {
-	/* TODO: data.inc.c */
-	#include <FTEmblemModels/data_0x146C.data.inc.c>
+AObjEvent32 *dFTEmblemModels_Donkey_MatAnimJoint_0x1464[3] = {
+	(AObjEvent32 *)dFTEmblemModels_Donkey_MatAnimJoint_0x13D4,
+	(AObjEvent32 *)dFTEmblemModels_Donkey_MatAnimJoint_0x141C,
+	NULL,
 };
 
 
 /* MObjSub: Metroid @ 0x1470 */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Metroid_MObjSub block. */
+MObjSub **dFTEmblemModels_Metroid_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_gap_0x14E8,
+};
+
+/* MObjSub array: Metroid (1 entries) */
 MObjSub dFTEmblemModels_Metroid_MObjSub[1] = {
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_gap_0x14E8 + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
 		0, 0,
-	}
+		0, 0,
+	},
 };
 
 /* Raw data from file offset 0x14E8 to 0x14F8 (16 bytes) */
 /* MObjSub.sprites pointer table @ +0x14E8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dFTEmblemModels_gap_0x14E8[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dFTEmblemModels_Metroid_MObjSub + 0x8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_gap_0x14E8[2] = {
+	&dFTEmblemModels_Metroid_MObjSub[0],
 	NULL,
 };
 
@@ -422,11 +465,11 @@ DObjDesc dFTEmblemModels_Metroid[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_Metroid_MatAnimJoint_0x18EC[];
-extern u32 dFTEmblemModels_Metroid_MatAnimJoint_0x1934[];
+extern AObjEvent32 * dFTEmblemModels_Metroid_MatAnimJoint_0x1934[];
 
-AObjEvent32 *dFTEmblemModels_Metroid_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Metroid_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Metroid_MatAnimJoint_0x1934,
+	dFTEmblemModels_Metroid_MatAnimJoint_0x1934,
 };
 
 u32 dFTEmblemModels_Metroid_MatAnimJoint_0x18EC[] = {
@@ -450,49 +493,56 @@ u32 dFTEmblemModels_Metroid_MatAnimJoint_0x18EC[] = {
 	(u32)(dFTEmblemModels_Metroid_MatAnimJoint_0x18EC),
 };
 
-u32 dFTEmblemModels_Metroid_MatAnimJoint_0x1934[] = {
-	(u32)(dFTEmblemModels_Metroid_MatAnimJoint_0x18EC),
-	aobjEvent32End(),
+AObjEvent32 *dFTEmblemModels_Metroid_MatAnimJoint_0x1934[] = {
+	(AObjEvent32 *)dFTEmblemModels_Metroid_MatAnimJoint_0x18EC,
+	NULL,
 };
 
 PAD(4);
 
 /* MObjSub: Fox @ 0x1940 */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Fox_MObjSub block. */
+MObjSub **dFTEmblemModels_Fox_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_gap_0x19B8,
+};
+
+/* MObjSub array: Fox (1 entries) */
 MObjSub dFTEmblemModels_Fox_MObjSub[1] = {
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_gap_0x19B8 + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
 		0, 0,
-	}
+		0, 0,
+	},
 };
 
 /* Raw data from file offset 0x19B8 to 0x19C8 (16 bytes) */
 /* MObjSub.sprites pointer table @ +0x19B8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dFTEmblemModels_gap_0x19B8[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dFTEmblemModels_Fox_MObjSub + 0x8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_gap_0x19B8[2] = {
+	&dFTEmblemModels_Fox_MObjSub[0],
 	NULL,
 };
 
@@ -518,11 +568,11 @@ DObjDesc dFTEmblemModels_Fox[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_Fox_MatAnimJoint_0x225C[];
-extern u32 dFTEmblemModels_Fox_MatAnimJoint_0x22A4[];
+extern AObjEvent32 * dFTEmblemModels_Fox_MatAnimJoint_0x22A4[];
 
-AObjEvent32 *dFTEmblemModels_Fox_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Fox_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Fox_MatAnimJoint_0x22A4,
+	dFTEmblemModels_Fox_MatAnimJoint_0x22A4,
 };
 
 u32 dFTEmblemModels_Fox_MatAnimJoint_0x225C[] = {
@@ -546,9 +596,9 @@ u32 dFTEmblemModels_Fox_MatAnimJoint_0x225C[] = {
 	(u32)(dFTEmblemModels_Fox_MatAnimJoint_0x225C),
 };
 
-u32 dFTEmblemModels_Fox_MatAnimJoint_0x22A4[] = {
-	(u32)(dFTEmblemModels_Fox_MatAnimJoint_0x225C),
-	aobjEvent32End(),
+AObjEvent32 *dFTEmblemModels_Fox_MatAnimJoint_0x22A4[] = {
+	(AObjEvent32 *)dFTEmblemModels_Fox_MatAnimJoint_0x225C,
+	NULL,
 };
 
 PAD(4);
@@ -556,97 +606,103 @@ PAD(4);
 extern MObjSub *dFTEmblemModels_Zelda_MObjSubPtrArray[];
 
 /* MObjSub array: Zelda @ 0x22B0 (3 entries) */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Zelda_MObjSub block. */
+MObjSub **dFTEmblemModels_Zelda_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_Zelda_MObjSubPtrArray,
+};
+
+/* MObjSub array: Zelda (3 entries) */
 MObjSub dFTEmblemModels_Zelda_MObjSub[3] = {
-	/* [0] @ 0x22B0 */
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_Zelda_MObjSubPtrArray + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
-	/* [1] @ 0x2328 */
+	/* [1] @ 0x80 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
-		0x0000, 0x0002, 0x0000, 0x0000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
-	/* [2] @ 0x23A0 */
+	/* [2] @ 0xF8 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
-		0x0000, 0x0002, 0x0000, 0x0000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
 };
 
 /* MObjSub pointer array @ 0x2418 — see Mario_MObjSubPtrArray for layout notes. */
-MObjSub *dFTEmblemModels_Zelda_MObjSubPtrArray[] = {
-	NULL,
-	NULL,
-	(MObjSub *)((u8 *)dFTEmblemModels_Zelda_MObjSub + 0x08),
-	(MObjSub *)((u8 *)dFTEmblemModels_Zelda_MObjSub + 0x80),
-	(MObjSub *)((u8 *)dFTEmblemModels_Zelda_MObjSub + 0xF8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_Zelda_MObjSubPtrArray[4] = {
+	&dFTEmblemModels_Zelda_MObjSub[0],
+	&dFTEmblemModels_Zelda_MObjSub[1],
+	&dFTEmblemModels_Zelda_MObjSub[2],
 	NULL,
 };
 
@@ -674,11 +730,11 @@ DObjDesc dFTEmblemModels_Zelda[] = {
 extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25AC[];
 extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25F4[];
 extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x263C[];
-extern u32 dFTEmblemModels_Zelda_MatAnimJoint_0x2684[];
+extern AObjEvent32 * dFTEmblemModels_Zelda_MatAnimJoint_0x2684[];
 
-AObjEvent32 *dFTEmblemModels_Zelda_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Zelda_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Zelda_MatAnimJoint_0x2684,
+	dFTEmblemModels_Zelda_MatAnimJoint_0x2684,
 };
 
 u32 dFTEmblemModels_Zelda_MatAnimJoint_0x25AC[] = {
@@ -744,48 +800,55 @@ u32 dFTEmblemModels_Zelda_MatAnimJoint_0x263C[] = {
 	(u32)(dFTEmblemModels_Zelda_MatAnimJoint_0x263C),
 };
 
-u32 dFTEmblemModels_Zelda_MatAnimJoint_0x2684[] = {
-	(u32)(dFTEmblemModels_Zelda_MatAnimJoint_0x25AC),
-	(u32)(dFTEmblemModels_Zelda_MatAnimJoint_0x25F4),
-	(u32)(dFTEmblemModels_Zelda_MatAnimJoint_0x263C),
+AObjEvent32 *dFTEmblemModels_Zelda_MatAnimJoint_0x2684[] = {
+	(AObjEvent32 *)dFTEmblemModels_Zelda_MatAnimJoint_0x25AC,
+	(AObjEvent32 *)dFTEmblemModels_Zelda_MatAnimJoint_0x25F4,
+	(AObjEvent32 *)dFTEmblemModels_Zelda_MatAnimJoint_0x263C,
 };
 
 /* MObjSub: Yoshi @ 0x2690 */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Yoshi_MObjSub block. */
+MObjSub **dFTEmblemModels_Yoshi_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_gap_0x2708,
+};
+
+/* MObjSub array: Yoshi (1 entries) */
 MObjSub dFTEmblemModels_Yoshi_MObjSub[1] = {
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_gap_0x2708 + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
 		0, 0,
-	}
+		0, 0,
+	},
 };
 
 /* Raw data from file offset 0x2708 to 0x2718 (16 bytes) */
 /* MObjSub.sprites pointer table @ +0x2708 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dFTEmblemModels_gap_0x2708[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dFTEmblemModels_Yoshi_MObjSub + 0x8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_gap_0x2708[2] = {
+	&dFTEmblemModels_Yoshi_MObjSub[0],
 	NULL,
 };
 
@@ -811,11 +874,11 @@ DObjDesc dFTEmblemModels_Yoshi[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C[];
-extern u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4[];
+extern AObjEvent32 * dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4[];
 
-AObjEvent32 *dFTEmblemModels_Yoshi_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Yoshi_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4,
+	dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4,
 };
 
 u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C[] = {
@@ -839,49 +902,56 @@ u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C[] = {
 	(u32)(dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C),
 };
 
-u32 dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4[] = {
-	(u32)(dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C),
-	aobjEvent32End(),
+AObjEvent32 *dFTEmblemModels_Yoshi_MatAnimJoint_0x2FE4[] = {
+	(AObjEvent32 *)dFTEmblemModels_Yoshi_MatAnimJoint_0x2F9C,
+	NULL,
 };
 
 PAD(4);
 
 /* MObjSub: FZero @ 0x2FF0 */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_FZero_MObjSub block. */
+MObjSub **dFTEmblemModels_FZero_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_gap_0x3068,
+};
+
+/* MObjSub array: FZero (1 entries) */
 MObjSub dFTEmblemModels_FZero_MObjSub[1] = {
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_gap_0x3068 + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
 		0, 0,
-	}
+		0, 0,
+	},
 };
 
 /* Raw data from file offset 0x3068 to 0x3078 (16 bytes) */
 /* MObjSub.sprites pointer table @ +0x3068 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dFTEmblemModels_gap_0x3068[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dFTEmblemModels_FZero_MObjSub + 0x8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_gap_0x3068[2] = {
+	&dFTEmblemModels_FZero_MObjSub[0],
 	NULL,
 };
 
@@ -907,11 +977,11 @@ DObjDesc dFTEmblemModels_FZero[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_FZero_MatAnimJoint_0x38B4[];
-extern u32 dFTEmblemModels_FZero_MatAnimJoint_0x38FC[];
+extern AObjEvent32 * dFTEmblemModels_FZero_MatAnimJoint_0x38FC[];
 
-AObjEvent32 *dFTEmblemModels_FZero_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_FZero_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_FZero_MatAnimJoint_0x38FC,
+	dFTEmblemModels_FZero_MatAnimJoint_0x38FC,
 };
 
 u32 dFTEmblemModels_FZero_MatAnimJoint_0x38B4[] = {
@@ -935,46 +1005,53 @@ u32 dFTEmblemModels_FZero_MatAnimJoint_0x38B4[] = {
 	(u32)(dFTEmblemModels_FZero_MatAnimJoint_0x38B4),
 };
 
-u32 dFTEmblemModels_FZero_MatAnimJoint_0x38FC[] = {
-	(u32)(dFTEmblemModels_FZero_MatAnimJoint_0x38B4),
+AObjEvent32 *dFTEmblemModels_FZero_MatAnimJoint_0x38FC[] = {
+	(AObjEvent32 *)dFTEmblemModels_FZero_MatAnimJoint_0x38B4,
 };
 
 /* MObjSub: Kirby @ 0x3900 */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Kirby_MObjSub block. */
+MObjSub **dFTEmblemModels_Kirby_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_gap_0x3978,
+};
+
+/* MObjSub array: Kirby (1 entries) */
 MObjSub dFTEmblemModels_Kirby_MObjSub[1] = {
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_gap_0x3978 + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
 		0, 0,
-	}
+		0, 0,
+	},
 };
 
 /* Raw data from file offset 0x3978 to 0x3988 (16 bytes) */
 /* MObjSub.sprites pointer table @ +0x3978 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dFTEmblemModels_gap_0x3978[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dFTEmblemModels_Kirby_MObjSub + 0x8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_gap_0x3978[2] = {
+	&dFTEmblemModels_Kirby_MObjSub[0],
 	NULL,
 };
 
@@ -1000,11 +1077,11 @@ DObjDesc dFTEmblemModels_Kirby[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4[];
-extern u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C[];
+extern AObjEvent32 * dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C[];
 
-AObjEvent32 *dFTEmblemModels_Kirby_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Kirby_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C,
+	dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C,
 };
 
 u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4[] = {
@@ -1028,76 +1105,82 @@ u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4[] = {
 	(u32)(dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4),
 };
 
-u32 dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C[] = {
-	(u32)(dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4),
+AObjEvent32 *dFTEmblemModels_Kirby_MatAnimJoint_0x3F3C[] = {
+	(AObjEvent32 *)dFTEmblemModels_Kirby_MatAnimJoint_0x3EF4,
 };
 
 extern MObjSub *dFTEmblemModels_PMonsters_MObjSubPtrArray[];
 
 /* MObjSub array: PMonsters @ 0x3F40 (2 entries) */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_PMonsters_MObjSub block. */
+MObjSub **dFTEmblemModels_PMonsters_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_PMonsters_MObjSubPtrArray,
+};
+
+/* MObjSub array: PMonsters (2 entries) */
 MObjSub dFTEmblemModels_PMonsters_MObjSub[2] = {
-	/* [0] @ 0x3F40 */
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_PMonsters_MObjSubPtrArray + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
-	/* [1] @ 0x3FB8 */
+	/* [1] @ 0x80 */
 	{
 		0x0000,
-		0x00, 0x00,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		(void**)0x00000000,
-		0x0000, 0x0002, 0x0000, 0x0000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		0x00, 0x00,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0, 0,
 		0, 0,
 	},
 };
 
 /* MObjSub pointer array @ 0x4030 — see Mario_MObjSubPtrArray for layout notes. */
-MObjSub *dFTEmblemModels_PMonsters_MObjSubPtrArray[] = {
-	NULL,
-	NULL,
-	(MObjSub *)((u8 *)dFTEmblemModels_PMonsters_MObjSub + 0x08),
-	(MObjSub *)((u8 *)dFTEmblemModels_PMonsters_MObjSub + 0x80),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_PMonsters_MObjSubPtrArray[3] = {
+	&dFTEmblemModels_PMonsters_MObjSub[0],
+	&dFTEmblemModels_PMonsters_MObjSub[1],
 	NULL,
 };
 
@@ -1126,11 +1209,11 @@ DObjDesc dFTEmblemModels_PMonsters[] = {
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x479C[];
 extern u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4[];
-extern u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x482C[];
+extern AObjEvent32 * dFTEmblemModels_PMonsters_MatAnimJoint_0x482C[];
 
-AObjEvent32 *dFTEmblemModels_PMonsters_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_PMonsters_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_PMonsters_MatAnimJoint_0x482C,
+	dFTEmblemModels_PMonsters_MatAnimJoint_0x482C,
 };
 
 u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x479C[] = {
@@ -1175,50 +1258,57 @@ u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4[] = {
 	(u32)(dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4),
 };
 
-u32 dFTEmblemModels_PMonsters_MatAnimJoint_0x482C[] = {
-	(u32)(dFTEmblemModels_PMonsters_MatAnimJoint_0x479C),
-	(u32)(dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4),
-	aobjEvent32End(),
+AObjEvent32 *dFTEmblemModels_PMonsters_MatAnimJoint_0x482C[] = {
+	(AObjEvent32 *)dFTEmblemModels_PMonsters_MatAnimJoint_0x479C,
+	(AObjEvent32 *)dFTEmblemModels_PMonsters_MatAnimJoint_0x47E4,
+	NULL,
 };
 
 PAD(8);
 
 /* MObjSub: Mother @ 0x4840 */
+/* Leading 2-entry pointer array — the first 8 bytes of the original dFTEmblemModels_Mother_MObjSub block. */
+MObjSub **dFTEmblemModels_Mother_MObjSub_pre[2] = {
+	NULL,
+	dFTEmblemModels_gap_0x48B8,
+};
+
+/* MObjSub array: Mother (1 entries) */
 MObjSub dFTEmblemModels_Mother_MObjSub[1] = {
+	/* [0] @ 0x8 */
 	{
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)((u8*)dFTEmblemModels_gap_0x48B8 + 0x8),
-		0x0000, 0x0002, 0x0000, 0x0000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
+		(void**)0x00000000,
+		0x0000, 0x0000, 0x0000, 0x0000,
 		0,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
 		(void**)0x00000000,
+		0x3000,
+		G_IM_FMT_RGBA, G_IM_SIZ_16b,
 		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		0x0000,
-		0x0000, 0x3000, 0x0002,
+		0x0000, 0x0000, 0x0000,
 		0.0f, 0.0f,
 		0.0f, 0.0f,
-		0x00000000,
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		0x00, 0x02, { 0x22, 0x05 },
+		0x00022205,
 		{ { 0xFF, 0xFF, 0xFF, 0xFF } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
+		0x00, 0x00, { 0x00, 0x00 },
 		{ { 0x00, 0x00, 0x00, 0xFF } },
 		{ { 0x00, 0x00, 0x00, 0x08 } },
-		1717986816, 0,
+		{ { 0x66, 0x66, 0x66, 0x00 } },
+		{ { 0x00, 0x00, 0x00, 0x00 } },
 		0, 0,
-	}
+		0, 0,
+	},
 };
 
 /* Raw data from file offset 0x48B8 to 0x48C8 (16 bytes) */
 /* MObjSub.sprites pointer table @ +0x48B8 (4 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dFTEmblemModels_gap_0x48B8[4] = {
-	NULL,
-	NULL,
-	(void *)((u8 *)&dFTEmblemModels_Mother_MObjSub + 0x8),
+/* MObjSub pointer array — see *_pre block for the leading 2-entry intra-block ptrs. */
+MObjSub *dFTEmblemModels_gap_0x48B8[2] = {
+	&dFTEmblemModels_Mother_MObjSub[0],
 	NULL,
 };
 
@@ -1244,11 +1334,11 @@ DObjDesc dFTEmblemModels_Mother[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dFTEmblemModels_Mother_MatAnimJoint_0x5A8C[];
-extern u32 dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[];
+extern AObjEvent32 * dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[];
 
-AObjEvent32 *dFTEmblemModels_Mother_MatAnimJoint[2] = {
+AObjEvent32 **dFTEmblemModels_Mother_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dFTEmblemModels_Mother_MatAnimJoint_0x5AD4,
+	dFTEmblemModels_Mother_MatAnimJoint_0x5AD4,
 };
 
 u32 dFTEmblemModels_Mother_MatAnimJoint_0x5A8C[] = {
@@ -1272,7 +1362,7 @@ u32 dFTEmblemModels_Mother_MatAnimJoint_0x5A8C[] = {
 	(u32)(dFTEmblemModels_Mother_MatAnimJoint_0x5A8C),
 };
 
-u32 dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[] = {
-	(u32)(dFTEmblemModels_Mother_MatAnimJoint_0x5A8C),
-	aobjEvent32End(),
+AObjEvent32 *dFTEmblemModels_Mother_MatAnimJoint_0x5AD4[] = {
+	(AObjEvent32 *)dFTEmblemModels_Mother_MatAnimJoint_0x5A8C,
+	NULL,
 };

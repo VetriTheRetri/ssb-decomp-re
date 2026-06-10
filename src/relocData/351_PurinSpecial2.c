@@ -38,10 +38,10 @@ extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88[];
 extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4[];
 extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60[];
 extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[];
-extern u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[];
+extern u32* dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[];
+extern u32* dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[];
+extern u32* dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[];
+extern u32* dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[];
 
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
@@ -75,26 +75,13 @@ u8 dPurinSpecial2_Tex_0x1820[1024] = {
 	#include <PurinSpecial2/Tex_0x1820.tex.inc.c>
 };
 
-/* MObjSub-list head @ 0x1c20 — 6-entry MObjSub** array.
- * The real MObjSub data starts at +0x18 (dPurinSpecial2_SingMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x1C20 was MObjSub[6]; contains 4 embedded chain pointer(s) split out below */
-u8 dPurinSpecial2_SingMObjSub_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <PurinSpecial2/SingMObjSub_MObjSub.data.inc.c>
+MObjSub **dPurinSpecial2_SingMObjSub_MObjSub[6] = {
+	NULL,
+	dPurinSpecial2_gap_0x1C98_sub_0x180, NULL,
+	dPurinSpecial2_gap_0x1C98_sub_0x188,
+	dPurinSpecial2_gap_0x1C98_sub_0x190,
+	dPurinSpecial2_gap_0x1C98_sub_0x198,
 };
-
-u32 dPurinSpecial2_data_0x1C24[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x180 };
-
-u8 dPurinSpecial2_data_0x1C28[4] = {
-	/* TODO: data.inc.c */
-	#include <PurinSpecial2/data_0x1C28.data.inc.c>
-};
-
-u32 dPurinSpecial2_data_0x1C2C[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x188 };
-
-u32 dPurinSpecial2_data_0x1C30[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x190 };
-
-u32 dPurinSpecial2_data_0x1C34[1] = { (u32)dPurinSpecial2_gap_0x1C98_sub_0x198 };
 
 
 /* The real MObjSub @ +0x18 (was folded into the prior
@@ -1186,19 +1173,10 @@ u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC[] = {
 	aobjEvent32End(),
 };
 
-u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[] = {
-	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88),
-};
+u32 * dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F38[] = { dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2D88 };
 
-u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[] = {
-	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4),
-};
+u32 * dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F3C[] = { dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2DF4 };
 
-u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[] = {
-	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60),
-};
+u32 * dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F40[] = { dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2E60 };
 
-u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[] = {
-	(u32)(dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC),
-	aobjEvent32End(),
-};
+u32 * dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[] = { dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2ECC, NULL };

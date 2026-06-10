@@ -1414,29 +1414,29 @@ AObjEvent32 *dLuigiModel_gap_0x28E0_sub_0x394[3] = {
 };
 
 /* gap sub-block @ 0x2C80 (was gap+0x3A0, 100 bytes) */
-MObjSub *dLuigiModel_gap_0x28E0_sub_0x3A0[25] = {
+MObjSub **dLuigiModel_gap_0x28E0_sub_0x3A0[25] = {
 	NULL,
 	NULL,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC38,
+	dLuigiModel_gap_0x28E0_sub_0xC38,
 	NULL,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC40,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC48,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC50,
+	dLuigiModel_gap_0x28E0_sub_0xC40,
+	dLuigiModel_gap_0x28E0_sub_0xC48,
+	dLuigiModel_gap_0x28E0_sub_0xC50,
 	NULL,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC58,
+	dLuigiModel_gap_0x28E0_sub_0xC58,
 	NULL,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC74,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC7C,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC84,
-	NULL,
-	NULL,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC8C,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC94,
+	dLuigiModel_gap_0x28E0_sub_0xC74,
+	dLuigiModel_gap_0x28E0_sub_0xC7C,
+	dLuigiModel_gap_0x28E0_sub_0xC84,
 	NULL,
 	NULL,
+	dLuigiModel_gap_0x28E0_sub_0xC8C,
+	dLuigiModel_gap_0x28E0_sub_0xC94,
 	NULL,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xC9C,
-	(MObjSub *)dLuigiModel_gap_0x28E0_sub_0xCA4,
+	NULL,
+	NULL,
+	dLuigiModel_gap_0x28E0_sub_0xC9C,
+	dLuigiModel_gap_0x28E0_sub_0xCA4,
 	NULL,
 	NULL,
 	NULL,
@@ -1460,18 +1460,10 @@ u32 dLuigiModel_gap_0x28E0_sub_0x414[5] = {
 };
 
 /* u32 pointer array @ 0x2D08 (2 entries) — palettes for gap_0x28E0_sub_0x620. */
-u32 dLuigiModel_gap_0x28E0_sub_0x428[2] = {
-	(u32)dLuigiModel_palette_0x79A8,
-	(u32)dLuigiModel_palette_0x7548,
-};
+u16 * dLuigiModel_gap_0x28E0_sub_0x428[2] = { dLuigiModel_palette_0x79A8, dLuigiModel_palette_0x7548 };
 
 /* u32 pointer array @ 0x2D10 (4 entries) — palettes for an MObjSub. */
-u32 dLuigiModel_gap_0x28E0_sub_0x430[4] = {
-	(u32)dLuigiModel_palette_0x7398,
-	(u32)dLuigiModel_palette_0x7320,
-	(u32)dLuigiModel_palette_0x7348,
-	(u32)dLuigiModel_palette_0x7370,
-};
+u16 * dLuigiModel_gap_0x28E0_sub_0x430[4] = { dLuigiModel_palette_0x7398, dLuigiModel_palette_0x7320, dLuigiModel_palette_0x7348, dLuigiModel_palette_0x7370 };
 
 /* MObjSub @ 0x2D20 */
 MObjSub dLuigiModel_gap_0x28E0_sub_0x440[1] = {

@@ -21,8 +21,7 @@ extern u8 dPurinShieldPose_shield_anim_joint_7[];
 
 extern DObjDesc dNPurinModel_JointTree[];
 
-/* TODO: data.inc.c — block at 0x0 was u32[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dNPurinMain_file_handles[1] = { (u32)dPurinMainMotion_EggLay_0x0034 };
+ftMotionCommand * dNPurinMain_file_handles[1] = { dPurinMainMotion_EggLay_0x0034 };
 
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNPurinMain_pre+0x4) */

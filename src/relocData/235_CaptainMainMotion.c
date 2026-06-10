@@ -32,49 +32,38 @@ extern u32 dFTCommonMoveset_DamageFlameBurst[];
 extern u32 dFTCommonMoveset_DamageSparkleDelay[];
 extern u32 dFTCommonMoveset_DamageSparkle[];
 extern void *dFTCommonMoveset_DamageScript[2][nFTKindEnumCount];
-/* Captain-specific config table (52 bytes, paired s16 values).
- * Referenced from FTCommonMoveset (file 201) at gap_0x0928+0x24.
- * NOT an ftMotionCommand script — typed as u32 to suppress script validation. */
-u32 dCaptainMainMotion_0x0000[] = {
-	0x001E0046,
-	0x00280028,
-	0x006400FA,
-	0x005000D2,
-	0x001E0046,
-	0x006400A0,
-	0x0000006E,
-	0x005000D2,
-	0x00140064,
-	0xFFF60050,
-	0x00140064,
-	0x001E0046,
-	0x00000000,
-};
-
-/* Captain config table (32 bytes, paired s16 values). */
-u32 dCaptainMainMotion_0x0034[] = {
-	0x001E0046,
-	0x001E0046,
-	0x00280028,
-	0x00780104,
-	0x005000D2,
-	0x001E0046,
-	0x006400A0,
-	0x00000000,
-};
-
-/* Parameter table (16 bytes, 4 u32 — preceding the externally-referenced
- * dCaptainMainMotion_0x0064 fragment). */
-u32 dCaptainMainMotion_0x0054[4] = {
-	#include <CaptainMainMotion/dCaptainMainMotion_0x0054.data.inc.c>
-};
-
-u32 dCaptainMainMotion_0x0064[] = {
-	0x00320096,
-};
-
-u32 dCaptainMainMotion_0x0068[] = {
-	0x006400FA,
+/* Captain FightSpecialHi (Falcon Dive) capture-grab offsets per victim FTKind.
+ * Loaded by ftCommonCaptureCaptainUpdatePositions (via llCaptainMainMotionSpecialHiVec2h
+ * at offset 0x0); indexed by capture_fp->fkind. 27 entries covering all FTKinds
+ * (playable, boss, MMario, N-series, GDonkey). */
+Vec2h dCaptainMainMotion_0x0000[nFTKindEnumCount] = {
+	{ 0x001E, 0x0046 }, /* Mario   */
+	{ 0x0028, 0x0028 }, /* Fox     */
+	{ 0x0064, 0x00FA }, /* Donkey  */
+	{ 0x0050, 0x00D2 }, /* Samus   */
+	{ 0x001E, 0x0046 }, /* Luigi   */
+	{ 0x0064, 0x00A0 }, /* Link    */
+	{ 0x0000, 0x006E }, /* Yoshi   */
+	{ 0x0050, 0x00D2 }, /* Captain */
+	{ 0x0014, 0x0064 }, /* Kirby   */
+	{ -0x000A, 0x0050 }, /* Pikachu */
+	{ 0x0014, 0x0064 }, /* Purin   */
+	{ 0x001E, 0x0046 }, /* Ness    */
+	{ 0x0000, 0x0000 }, /* Boss    */
+	{ 0x001E, 0x0046 }, /* MMario  */
+	{ 0x001E, 0x0046 }, /* NMario  */
+	{ 0x0028, 0x0028 }, /* NFox    */
+	{ 0x0078, 0x0104 }, /* NDonkey */
+	{ 0x0050, 0x00D2 }, /* NSamus  */
+	{ 0x001E, 0x0046 }, /* NLuigi  */
+	{ 0x0064, 0x00A0 }, /* NLink   */
+	{ 0x0000, 0x0000 }, /* NYoshi  */
+	{ 0x0050, 0x00D2 }, /* NCaptain*/
+	{ 0x0014, 0x0064 }, /* NKirby  */
+	{ -0x000A, 0x0050 }, /* NPikachu*/
+	{ 0x0014, 0x0064 }, /* NPurin  */
+	{ 0x0032, 0x0096 }, /* NNess   */
+	{ 0x0064, 0x00FA }, /* GDonkey */
 };
 
 ftMotionCommand dCaptainMainMotion_EggLay_0x006C[] = {

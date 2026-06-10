@@ -564,18 +564,32 @@ DObjDesc dFoxSpecial3_EntryArwing[13] = {
 /* 8-byte trailer past the DObjDesc sentinel — a 4-byte pad followed by
  * a chain pointer to the AnimJoint script at __2E74__AnimJoint. */
 PAD(4);
-extern u8 dFoxSpecial3__2E74__AnimJoint[];
+extern u32 dFoxSpecial3__2E74__AnimJoint[];
 AObjEvent32 *dFoxSpecial3_EntryArwing_post[1] = {
 	(AObjEvent32 *)dFoxSpecial3__2E74__AnimJoint,
 };
 
-/* TODO: data.inc.c — block at 0x2E74 was u32[16]; contains 1 embedded chain pointer(s) split out below */
-u8 dFoxSpecial3__2E74__AnimJoint[60] = {
-	/* TODO: data.inc.c */
-	#include <FoxSpecial3/_2E74__AnimJoint.data.inc.c>
+u32 dFoxSpecial3__2E74__AnimJoint[15] = {
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetVal0RateBlock(0x380, 3),
+	    0x3F570A40,  /* 0.8400001525878906f */
+	    0x3F570A40,  /* 0.8400001525878906f */
+	    0x3F59999C,  /* 0.8500001430511475f */
+	aobjEvent32SetVal0RateBlock(0x380, 3),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dFoxSpecial3__2E74__AnimJoint,
+	aobjEvent32End(),
 };
 
-u32 dFoxSpecial3_data_0x2EB0[1] = { (u32)dFoxSpecial3__2EB4__AnimJoint };
+AObjEvent32 *dFoxSpecial3__2E74__AnimJoint_chain[1] = {
+	(AObjEvent32 *)dFoxSpecial3__2EB4__AnimJoint,
+};
 
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */

@@ -187,7 +187,12 @@ def _detect_version():
 # regex only needs to lock on to the opening tokens.
 _TOP_DECL_RE = re.compile(
     r"^(?P<static>\s*(?:static\s+)?(?:const\s+)?)"
-    r"(?P<type>\w+)\s+"
+    r"(?P<type>\w+)"
+    # Require either a `*` (pointer decl, no whitespace needed between
+    # type and asterisk) or at least one whitespace before the name.
+    # Without this, `\w+` would greedily eat across a missing
+    # delimiter — e.g. `u16dXYZ` would be parsed as a single token.
+    r"(?:(?=\*)|\s+)"
     r"(?P<ptr>\*+\s*)?"
     r"(?P<name>\w+)"
     r"(?:\s*\[\s*(?P<count>0[xX][0-9A-Fa-f]+|\d*)\s*\])?",

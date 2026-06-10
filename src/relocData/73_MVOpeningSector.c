@@ -379,14 +379,14 @@ extern Gfx dMVOpeningSector_DL_0xD450[];
 extern Gfx dMVOpeningSector_DL_0xD520[];
 extern Gfx dMVOpeningSector_DL_0xD5F0[];
 extern Gfx dMVOpeningSector_DL_0xD6C0[];
-extern u8 dMVOpeningSector_Vtx_0xD1D0_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD2A0_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD370_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD440_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD510_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD5E0_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD6B0_Vtx[];
-extern u8 dMVOpeningSector_Vtx_0xD780_Vtx[];
+extern Gfx dMVOpeningSector_DLCall_0xD1D0[];
+extern Gfx dMVOpeningSector_DLCall_0xD2A0[];
+extern Gfx dMVOpeningSector_DLCall_0xD370[];
+extern Gfx dMVOpeningSector_DLCall_0xD440[];
+extern Gfx dMVOpeningSector_DLCall_0xD510[];
+extern Gfx dMVOpeningSector_DLCall_0xD5E0[];
+extern Gfx dMVOpeningSector_DLCall_0xD6B0[];
+extern Gfx dMVOpeningSector_DLCall_0xD780[];
 extern Gfx dMVOpeningSector_gap_0x5F80_sub_0x7100[];
 
 PAD(8);
@@ -2256,17 +2256,10 @@ Gfx dMVOpeningSector_DL_0xD110[24] = {
 	#include <MVOpeningSector/DL_0xD110.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD1D0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD1D0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD1D0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD1D4[1] = { (u32)dMVOpeningSector_DL_0xD110 };
-
-u8 dMVOpeningSector_data_0xD1D8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD1D8.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD1D0[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD110),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2275,17 +2268,10 @@ Gfx dMVOpeningSector_DL_0xD1E0[24] = {
 	#include <MVOpeningSector/DL_0xD1E0.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD2A0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD2A0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD2A0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD2A4[1] = { (u32)dMVOpeningSector_DL_0xD1E0 };
-
-u8 dMVOpeningSector_data_0xD2A8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD2A8.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD2A0[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD1E0),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2294,17 +2280,10 @@ Gfx dMVOpeningSector_DL_0xD2B0[24] = {
 	#include <MVOpeningSector/DL_0xD2B0.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD370 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD370_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD370_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD374[1] = { (u32)dMVOpeningSector_DL_0xD2B0 };
-
-u8 dMVOpeningSector_data_0xD378[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD378.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD370[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD2B0),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2313,17 +2292,10 @@ Gfx dMVOpeningSector_DL_0xD380[24] = {
 	#include <MVOpeningSector/DL_0xD380.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD440 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD440_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD440_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD444[1] = { (u32)dMVOpeningSector_DL_0xD380 };
-
-u8 dMVOpeningSector_data_0xD448[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD448.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD440[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD380),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2332,17 +2304,10 @@ Gfx dMVOpeningSector_DL_0xD450[24] = {
 	#include <MVOpeningSector/DL_0xD450.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD510 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD510_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD510_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD514[1] = { (u32)dMVOpeningSector_DL_0xD450 };
-
-u8 dMVOpeningSector_data_0xD518[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD518.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD510[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD450),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2351,17 +2316,10 @@ Gfx dMVOpeningSector_DL_0xD520[24] = {
 	#include <MVOpeningSector/DL_0xD520.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD5E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD5E0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD5E0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD5E4[1] = { (u32)dMVOpeningSector_DL_0xD520 };
-
-u8 dMVOpeningSector_data_0xD5E8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD5E8.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD5E0[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD520),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2370,17 +2328,10 @@ Gfx dMVOpeningSector_DL_0xD5F0[24] = {
 	#include <MVOpeningSector/DL_0xD5F0.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD6B0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD6B0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD6B0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD6B4[1] = { (u32)dMVOpeningSector_DL_0xD5F0 };
-
-u8 dMVOpeningSector_data_0xD6B8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD6B8.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD6B0[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD5F0),
+	gsSPEndDisplayList(),
 };
 
 
@@ -2389,158 +2340,79 @@ Gfx dMVOpeningSector_DL_0xD6C0[24] = {
 	#include <MVOpeningSector/DL_0xD6C0.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xD780 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD780_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD780_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD784[1] = { (u32)dMVOpeningSector_DL_0xD6C0 };
-
-u8 dMVOpeningSector_data_0xD788[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD788.data.inc.c>
+/* gsSPDisplayList + gsSPEndDisplayList inline */
+Gfx dMVOpeningSector_DLCall_0xD780[2] = {
+	gsSPDisplayList(dMVOpeningSector_DL_0xD6C0),
+	gsSPEndDisplayList(),
 };
 
 
-/* TODO: data.inc.c — block at 0xD790 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD790_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD790_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD794[1] = { (u32)dMVOpeningSector_gap_0x5F80_sub_0x7100 };
-
-u8 dMVOpeningSector_data_0xD798[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD798.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD790[2] = {
+	{ 0, dMVOpeningSector_gap_0x5F80_sub_0x7100 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD7A0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD7A0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD7A0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD7A4[1] = { (u32)dMVOpeningSector_Vtx_0xD1D0_Vtx };
-
-u8 dMVOpeningSector_data_0xD7A8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD7A8.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD7A0[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD1D0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD7B0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD7B0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD7B0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD7B4[1] = { (u32)dMVOpeningSector_Vtx_0xD2A0_Vtx };
-
-u8 dMVOpeningSector_data_0xD7B8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD7B8.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD7B0[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD2A0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD7C0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD7C0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD7C0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD7C4[1] = { (u32)dMVOpeningSector_Vtx_0xD370_Vtx };
-
-u8 dMVOpeningSector_data_0xD7C8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD7C8.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD7C0[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD370 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD7D0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD7D0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD7D0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD7D4[1] = { (u32)dMVOpeningSector_Vtx_0xD440_Vtx };
-
-u8 dMVOpeningSector_data_0xD7D8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD7D8.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD7D0[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD440 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD7E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD7E0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD7E0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD7E4[1] = { (u32)dMVOpeningSector_Vtx_0xD510_Vtx };
-
-u8 dMVOpeningSector_data_0xD7E8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD7E8.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD7E0[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD510 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD7F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD7F0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD7F0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD7F4[1] = { (u32)dMVOpeningSector_Vtx_0xD5E0_Vtx };
-
-u8 dMVOpeningSector_data_0xD7F8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD7F8.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD7F0[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD5E0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD800 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD800_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD800_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD804[1] = { (u32)dMVOpeningSector_Vtx_0xD6B0_Vtx };
-
-u8 dMVOpeningSector_data_0xD808[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD808.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD800[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD6B0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xD810 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningSector_Vtx_0xD810_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/Vtx_0xD810_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningSector_data_0xD814[1] = { (u32)dMVOpeningSector_Vtx_0xD780_Vtx };
-
-u8 dMVOpeningSector_data_0xD818[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningSector/data_0xD818.data.inc.c>
+DObjDLLink dMVOpeningSector_DLLink_0xD810[2] = {
+	{ 1, dMVOpeningSector_DLCall_0xD780 },
+	{ 4, NULL },
 };
 
 
 /* DObjDesc: GreatFoxDObjDesc @ 0xD820 (11 entries) */
 DObjDesc dMVOpeningSector_GreatFoxDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7810), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7820), { -3106.987548828125f, 1182.884033203125f, -651.5912475585938f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
-	{ 2, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7830), { -3126.51513671875f, -1398.65234375f, -579.3447265625f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
-	{ 2, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7840), { 0.0002519999979995191f, 213.42897033691406f, -4962.00537109375f }, { 0.0f, 1.570796012878418f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7850), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7860), { -838.15576171875f, -100.0f, -2775.02783203125f }, { 0.0f, 1.570796012878418f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7870), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7880), { 3106.987548828125f, 1182.884033203125f, -651.5905151367188f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
-	{ 2, (void*)((u8*)dMVOpeningSector_gap_0x5F80 + 0x7890), { 3126.51513671875f, -1398.65234375f, -579.3439331054688f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 1, (void*)dMVOpeningSector_DLLink_0xD790, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningSector_DLLink_0xD7A0, { -3106.987548828125f, 1182.884033203125f, -651.5912475585938f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 2, (void*)dMVOpeningSector_DLLink_0xD7B0, { -3126.51513671875f, -1398.65234375f, -579.3447265625f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 2, (void*)dMVOpeningSector_DLLink_0xD7C0, { 0.0002519999979995191f, 213.42897033691406f, -4962.00537109375f }, { 0.0f, 1.570796012878418f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningSector_DLLink_0xD7D0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningSector_DLLink_0xD7E0, { -838.15576171875f, -100.0f, -2775.02783203125f }, { 0.0f, 1.570796012878418f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningSector_DLLink_0xD7F0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningSector_DLLink_0xD800, { 3106.987548828125f, 1182.884033203125f, -651.5905151367188f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
+	{ 2, (void*)dMVOpeningSector_DLLink_0xD810, { 3126.51513671875f, -1398.65234375f, -579.3439331054688f }, { 0.0f, 1.570796012878418f, 0.0f }, { 9.999999747378752e-06f, 9.999999747378752e-06f, 9.999999747378752e-06f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -4776,60 +4648,297 @@ PAD(8);
 
 Gfx dMVOpeningSector_Cockpit_dl[] = { gsSPEndDisplayList() };
 
-/* Texture: Cockpit (320x287 rgba16, 48 tiles) */
-u8 dMVOpeningSector_Cockpit_tex[] = {
-    #include <MVOpeningSector/Cockpit.rgba16.inc.c>
+/* 48-tile Cockpit texture — split for per-tile symbols */
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile00_Tex_0x00000[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile00_Tex_0x00000.tex.inc.c>
 };
 
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile01_Tex_0x00F08[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile01_Tex_0x00F08.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile02_Tex_0x01E10[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile02_Tex_0x01E10.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile03_Tex_0x02D18[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile03_Tex_0x02D18.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile04_Tex_0x03C20[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile04_Tex_0x03C20.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile05_Tex_0x04B28[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile05_Tex_0x04B28.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile06_Tex_0x05A30[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile06_Tex_0x05A30.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile07_Tex_0x06938[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile07_Tex_0x06938.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile08_Tex_0x07840[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile08_Tex_0x07840.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile09_Tex_0x08748[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile09_Tex_0x08748.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile10_Tex_0x09650[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile10_Tex_0x09650.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile11_Tex_0x0A558[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile11_Tex_0x0A558.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile12_Tex_0x0B460[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile12_Tex_0x0B460.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile13_Tex_0x0C368[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile13_Tex_0x0C368.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile14_Tex_0x0D270[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile14_Tex_0x0D270.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile15_Tex_0x0E178[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile15_Tex_0x0E178.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile16_Tex_0x0F080[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile16_Tex_0x0F080.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile17_Tex_0x0FF88[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile17_Tex_0x0FF88.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile18_Tex_0x10E90[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile18_Tex_0x10E90.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile19_Tex_0x11D98[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile19_Tex_0x11D98.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile20_Tex_0x12CA0[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile20_Tex_0x12CA0.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile21_Tex_0x13BA8[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile21_Tex_0x13BA8.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile22_Tex_0x14AB0[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile22_Tex_0x14AB0.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile23_Tex_0x159B8[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile23_Tex_0x159B8.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile24_Tex_0x168C0[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile24_Tex_0x168C0.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile25_Tex_0x177C8[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile25_Tex_0x177C8.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile26_Tex_0x186D0[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile26_Tex_0x186D0.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile27_Tex_0x195D8[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile27_Tex_0x195D8.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile28_Tex_0x1A4E0[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile28_Tex_0x1A4E0.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile29_Tex_0x1B3E8[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile29_Tex_0x1B3E8.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile30_Tex_0x1C2F0[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile30_Tex_0x1C2F0.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile31_Tex_0x1D1F8[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile31_Tex_0x1D1F8.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile32_Tex_0x1E100[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile32_Tex_0x1E100.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile33_Tex_0x1F008[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile33_Tex_0x1F008.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile34_Tex_0x1FF10[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile34_Tex_0x1FF10.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile35_Tex_0x20E18[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile35_Tex_0x20E18.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile36_Tex_0x21D20[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile36_Tex_0x21D20.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile37_Tex_0x22C28[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile37_Tex_0x22C28.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile38_Tex_0x23B30[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile38_Tex_0x23B30.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile39_Tex_0x24A38[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile39_Tex_0x24A38.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile40_Tex_0x25940[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile40_Tex_0x25940.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile41_Tex_0x26848[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile41_Tex_0x26848.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile42_Tex_0x27750[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile42_Tex_0x27750.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile43_Tex_0x28658[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile43_Tex_0x28658.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile44_Tex_0x29560[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile44_Tex_0x29560.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile45_Tex_0x2A468[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile45_Tex_0x2A468.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x6 */
+u8 dMVOpeningSector_Cockpit_tile46_Tex_0x2B370[0xF08] = {
+	#include <MVOpeningSector/Cockpit_tile46_Tex_0x2B370.tex.inc.c>
+};
+
+/* @tex fmt=RGBA16 dim=320x5 */
+u8 dMVOpeningSector_Cockpit_tile47_Tex_0x2C278[0xC80] = {
+	#include <MVOpeningSector/Cockpit_tile47_Tex_0x2C278.tex.inc.c>
+};
+
+
 Bitmap dMVOpeningSector_Cockpit_bitmaps[] = {
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xF08, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1E10, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x2D18, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x3C20, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x4B28, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x5A30, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x6938, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x7840, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x8748, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x9650, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xA558, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xB460, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xC368, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xD270, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xE178, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xF080, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0xFF88, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x10E90, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x11D98, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x12CA0, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x13BA8, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x14AB0, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x159B8, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x168C0, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x177C8, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x186D0, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x195D8, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1A4E0, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1B3E8, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1C2F0, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1D1F8, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1E100, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1F008, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x1FF10, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x20E18, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x21D20, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x22C28, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x23B30, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x24A38, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x25940, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x26848, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x27750, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x28658, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x29560, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x2A468, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x2B370, 6, 0 },
-	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tex + 0x2C278, 5, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile00_Tex_0x00000, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile01_Tex_0x00F08, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile02_Tex_0x01E10, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile03_Tex_0x02D18, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile04_Tex_0x03C20, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile05_Tex_0x04B28, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile06_Tex_0x05A30, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile07_Tex_0x06938, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile08_Tex_0x07840, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile09_Tex_0x08748, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile10_Tex_0x09650, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile11_Tex_0x0A558, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile12_Tex_0x0B460, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile13_Tex_0x0C368, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile14_Tex_0x0D270, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile15_Tex_0x0E178, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile16_Tex_0x0F080, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile17_Tex_0x0FF88, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile18_Tex_0x10E90, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile19_Tex_0x11D98, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile20_Tex_0x12CA0, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile21_Tex_0x13BA8, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile22_Tex_0x14AB0, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile23_Tex_0x159B8, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile24_Tex_0x168C0, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile25_Tex_0x177C8, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile26_Tex_0x186D0, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile27_Tex_0x195D8, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile28_Tex_0x1A4E0, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile29_Tex_0x1B3E8, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile30_Tex_0x1C2F0, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile31_Tex_0x1D1F8, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile32_Tex_0x1E100, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile33_Tex_0x1F008, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile34_Tex_0x1FF10, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile35_Tex_0x20E18, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile36_Tex_0x21D20, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile37_Tex_0x22C28, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile38_Tex_0x23B30, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile39_Tex_0x24A38, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile40_Tex_0x25940, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile41_Tex_0x26848, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile42_Tex_0x27750, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile43_Tex_0x28658, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile44_Tex_0x29560, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile45_Tex_0x2A468, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile46_Tex_0x2B370, 6, 0 },
+	{ 320, 320, 0, 0, dMVOpeningSector_Cockpit_tile47_Tex_0x2C278, 5, 0 },
 };
 
 /* Sprite: Cockpit (320x240 rgba16) */

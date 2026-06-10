@@ -10,15 +10,15 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u8 dStageJungleFile2_DL_0x93B0[];
-extern u8 dStageJungleFile2_DL_0xCCE8[];
+extern Gfx dStageJungleFile2_DL_0x93B0[];
+extern Gfx dStageJungleFile2_DL_0xCCE8[];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x27E0[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2820[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2860[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28A0[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28E0[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2920[4];
-extern u8 dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[];
 extern u16 dStageJungleFile2_Lut_0x0008_palette[];
 extern u16 dStageJungleFile2_Lut_0x0438_palette[];
 extern u16 dStageJungleFile2_Lut_0x0668_palette[];
@@ -119,7 +119,7 @@ extern Vtx dStageJungleFile2_gap_0xC888_sub_0xC8[];
 extern MObjSub *dStageJungleFile2_gap_0xD1B4_sub_0x2114[];
 extern Vtx dStageJungleFile2_gap_0xD1B4_sub_0x211C[];
 extern u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[];
-extern u8 dStageJungleFile2_DL_0x7ED8[];
+extern Gfx dStageJungleFile2_DL_0x7ED8[];
 
 PAD(8);
 
@@ -186,7 +186,7 @@ u16 dStageJungleFile2_Lut_0x12C8_palette[16] = {
 
 PAD(8);
 
-/* Texture data @ 0x12F0 (2056 bytes) */
+/* @tex fmt=RGBA16 dim=32x32 — 2048-byte body + 8-byte pad/header */
 u8 dStageJungleFile2_Tex_0x12F0[2056] = {
 	#include <StageJungleFile2/Tex_0x12F0.tex.inc.c>
 };
@@ -584,766 +584,99 @@ Vtx dStageJungleFile2_Vtx_0x7E50_Vtx[4] = {
 	#include <StageJungleFile2/Vtx_0x7E50.vtx.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x7E90 was Gfx[9]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x7E90[60] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x7E90.data.inc.c>
+Gfx dStageJungleFile2_DL_0x7E90[9] = {
+	#include <StageJungleFile2/DL_0x7E90.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7ECC[1] = { (u32)dStageJungleFile2_DL_0x7ED8 };
 
-u8 dStageJungleFile2_data_0x7ED0[8] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7ED0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x7ED8[64] = {
+	#include <StageJungleFile2/DL_0x7ED8.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0x7ED8 was Gfx[64]; contains 15 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x7ED8[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x7ED8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x80D8[42] = {
+	#include <StageJungleFile2/DL_0x80D8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7F0C[1] = { (u32)dStageJungleFile2_Lut_0x5CB8_palette };
 
-u8 dStageJungleFile2_data_0x7F10[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7F10.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8228[18] = {
+	#include <StageJungleFile2/DL_0x8228.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7F34[1] = { (u32)dStageJungleFile2_Tex_0x5CE0 };
 
-u8 dStageJungleFile2_data_0x7F38[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7F38.data.inc.c>
+Gfx dStageJungleFile2_DL_0x82B8[4] = {
+	#include <StageJungleFile2/DL_0x82B8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7F54[1] = { (u32)dStageJungleFile2_Vtx_0x7540_Vtx };
 
-u8 dStageJungleFile2_data_0x7F58[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7F58.data.inc.c>
+Gfx dStageJungleFile2_DL_0x82D8[12] = {
+	#include <StageJungleFile2/DL_0x82D8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7F74[1] = { (u32)dStageJungleFile2_Vtx_0x7580_Vtx };
 
-u8 dStageJungleFile2_data_0x7F78[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7F78.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8338[14] = {
+	#include <StageJungleFile2/DL_0x8338.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7F94[1] = { (u32)dStageJungleFile2_Vtx_0x75C0_Vtx };
 
-u8 dStageJungleFile2_data_0x7F98[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7F98.data.inc.c>
+Gfx dStageJungleFile2_DL_0x83A8[14] = {
+	#include <StageJungleFile2/DL_0x83A8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7FAC[1] = { (u32)dStageJungleFile2_Lut_0x64E8_palette };
 
-u8 dStageJungleFile2_data_0x7FB0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7FB0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8418[20] = {
+	#include <StageJungleFile2/DL_0x8418.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7FCC[1] = { (u32)dStageJungleFile2_Tex_0x6510 };
 
-u8 dStageJungleFile2_data_0x7FD0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7FD0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x84B8[18] = {
+	#include <StageJungleFile2/DL_0x84B8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x7FEC[1] = { (u32)dStageJungleFile2_Vtx_0x7600_Vtx };
 
-u8 dStageJungleFile2_data_0x7FF0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x7FF0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8548[4] = {
+	#include <StageJungleFile2/DL_0x8548.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x800C[1] = { (u32)dStageJungleFile2_Vtx_0x7640_Vtx };
 
-u8 dStageJungleFile2_data_0x8010[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8010.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8568[19] = {
+	#include <StageJungleFile2/DL_0x8568.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x802C[1] = { (u32)dStageJungleFile2_Vtx_0x7680_Vtx };
 
-u8 dStageJungleFile2_data_0x8030[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8030.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8600[7] = {
+	#include <StageJungleFile2/DL_0x8600.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x8044[1] = { (u32)dStageJungleFile2_Lut_0x6D18_palette };
 
-u8 dStageJungleFile2_data_0x8048[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8048.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8064[1] = { (u32)dStageJungleFile2_Tex_0x6D40 };
-
-u8 dStageJungleFile2_data_0x8068[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8068.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8084[1] = { (u32)dStageJungleFile2_Vtx_0x76C0_Vtx };
-
-u8 dStageJungleFile2_data_0x8088[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8088.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x80A4[1] = { (u32)dStageJungleFile2_Vtx_0x7700_Vtx };
-
-u8 dStageJungleFile2_data_0x80A8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x80A8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x80C4[1] = { (u32)dStageJungleFile2_Vtx_0x7740_Vtx };
-
-u8 dStageJungleFile2_data_0x80C8[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x80C8.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x80D8 was Gfx[42]; contains 9 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x80D8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x80D8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x80FC[1] = { (u32)dStageJungleFile2_Lut_0x3E98_palette };
-
-u8 dStageJungleFile2_data_0x8100[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8100.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8124[1] = { (u32)dStageJungleFile2_Tex_0x3EC0 };
-
-u8 dStageJungleFile2_data_0x8128[44] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8128.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8154[1] = { (u32)dStageJungleFile2_Vtx_0x7780_Vtx };
-
-u8 dStageJungleFile2_data_0x8158[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8158.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x816C[1] = { (u32)dStageJungleFile2_Lut_0x4EF8_palette };
-
-u8 dStageJungleFile2_data_0x8170[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8170.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8194[1] = { (u32)dStageJungleFile2_Tex_0x4F20 };
-
-u8 dStageJungleFile2_data_0x8198[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8198.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x81B4[1] = { (u32)dStageJungleFile2_Vtx_0x77C0_Vtx };
-
-u8 dStageJungleFile2_data_0x81B8[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x81B8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x81CC[1] = { (u32)dStageJungleFile2_Lut_0x3E98_palette };
-
-u8 dStageJungleFile2_data_0x81D0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x81D0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x81F4[1] = { (u32)dStageJungleFile2_Tex_0x3EC0 };
-
-u8 dStageJungleFile2_data_0x81F8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x81F8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8214[1] = { (u32)dStageJungleFile2_Vtx_0x7800_Vtx };
-
-u8 dStageJungleFile2_data_0x8218[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8218.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8228 was Gfx[18]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8228[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8228.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x825C[1] = { (u32)dStageJungleFile2_Lut_0x0008_palette };
-
-u8 dStageJungleFile2_data_0x8260[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8260.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8284[1] = { (u32)dStageJungleFile2_Tex_0x0030 };
-
-u8 dStageJungleFile2_data_0x8288[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8288.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x82A4[1] = { (u32)dStageJungleFile2_Vtx_0x7840_Vtx };
-
-u8 dStageJungleFile2_data_0x82A8[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x82A8.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x82B8 was Gfx[4]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x82B8[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x82B8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x82C4[1] = { (u32)dStageJungleFile2_Vtx_0x7880_Vtx };
-
-u8 dStageJungleFile2_data_0x82C8[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x82C8.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x82D8 was Gfx[12]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x82D8[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x82D8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x82E4[1] = { (u32)dStageJungleFile2_Lut_0x0668_palette };
-
-u8 dStageJungleFile2_data_0x82E8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x82E8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8304[1] = { (u32)dStageJungleFile2_Tex_0x0690 };
-
-u8 dStageJungleFile2_data_0x8308[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8308.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8324[1] = { (u32)dStageJungleFile2_Vtx_0x78C0_Vtx };
-
-u8 dStageJungleFile2_data_0x8328[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8328.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8338 was Gfx[14]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8338[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8338.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8354[1] = { (u32)dStageJungleFile2_Lut_0x2328_palette };
-
-u8 dStageJungleFile2_data_0x8358[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8358.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8374[1] = { (u32)dStageJungleFile2_Tex_0x2350 };
-
-u8 dStageJungleFile2_data_0x8378[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8378.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8394[1] = { (u32)dStageJungleFile2_Vtx_0x7900_Vtx };
-
-u8 dStageJungleFile2_data_0x8398[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8398.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x83A8 was Gfx[14]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x83A8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x83A8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x83C4[1] = { (u32)dStageJungleFile2_Lut_0x0008_palette };
-
-u8 dStageJungleFile2_data_0x83C8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x83C8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x83E4[1] = { (u32)dStageJungleFile2_Tex_0x0030 };
-
-u8 dStageJungleFile2_data_0x83E8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x83E8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8404[1] = { (u32)dStageJungleFile2_Vtx_0x7940_Vtx };
-
-u8 dStageJungleFile2_data_0x8408[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8408.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8418 was Gfx[20]; contains 4 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8418[44] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8418.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8444[1] = { (u32)dStageJungleFile2_Lut_0x4EF8_palette };
-
-u8 dStageJungleFile2_data_0x8448[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8448.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8464[1] = { (u32)dStageJungleFile2_Tex_0x4F20 };
-
-u8 dStageJungleFile2_data_0x8468[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8468.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x848C[1] = { (u32)dStageJungleFile2_Vtx_0x7980_Vtx };
-
-u8 dStageJungleFile2_data_0x8490[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8490.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x84A4[1] = { (u32)dStageJungleFile2_Vtx_0x79C0_Vtx };
-
-u8 dStageJungleFile2_data_0x84A8[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x84A8.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x84B8 was Gfx[18]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x84B8[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x84B8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x84EC[1] = { (u32)dStageJungleFile2_Lut_0x3DE8_palette };
-
-u8 dStageJungleFile2_data_0x84F0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x84F0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8514[1] = { (u32)dStageJungleFile2_Tex_0x3E10 };
-
-u8 dStageJungleFile2_data_0x8518[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8518.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8534[1] = { (u32)dStageJungleFile2_Vtx_0x7A00_Vtx };
-
-u8 dStageJungleFile2_data_0x8538[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8538.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8548 was Gfx[4]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8548[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8548.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8554[1] = { (u32)dStageJungleFile2_Vtx_0x7A00_Vtx };
-
-u8 dStageJungleFile2_data_0x8558[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8558.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8568 was Gfx[19]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8568[44] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8568.data.inc.c>
-};
 
-u32 dStageJungleFile2_data_0x8594[1] = { (u32)dStageJungleFile2_Lut_0x2B58_palette };
 
-u8 dStageJungleFile2_data_0x8598[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8598.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8638[53] = {
+	#include <StageJungleFile2/DL_0x8638.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x85BC[1] = { (u32)dStageJungleFile2_Tex_0x2B80 };
 
-u8 dStageJungleFile2_data_0x85C0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x85C0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x87E0[48] = {
+	#include <StageJungleFile2/DL_0x87E0.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x85DC[1] = { (u32)dStageJungleFile2_Vtx_0x7A40_Vtx };
 
-u8 dStageJungleFile2_data_0x85E0[32] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x85E0.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8960[21] = {
+	#include <StageJungleFile2/DL_0x8960.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0x8600 was Gfx[7]; contains 2 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8600[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8600.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x860C[1] = { (u32)(u8 *)dStageJungleFile2_Vtx_0x7A40_Vtx + 0x30 };
-
-u8 dStageJungleFile2_data_0x8610[4] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8610.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8614[1] = { (u32)dStageJungleFile2_Vtx_0x7AB0_Vtx };
-
-u8 dStageJungleFile2_data_0x8618[32] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8618.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8638 was Gfx[53]; contains 13 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8638[44] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8638.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8664[1] = { (u32)dStageJungleFile2_Lut_0x35B8_palette };
-
-u8 dStageJungleFile2_data_0x8668[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8668.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x868C[1] = { (u32)dStageJungleFile2_Tex_0x35E0 };
-
-u8 dStageJungleFile2_data_0x8690[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8690.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x86AC[1] = { (u32)dStageJungleFile2_Vtx_0x7B10_Vtx };
-
-u8 dStageJungleFile2_data_0x86B0[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x86B0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x86C4[1] = { (u32)dStageJungleFile2_Lut_0x2D88_palette };
-
-u8 dStageJungleFile2_data_0x86C8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x86C8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x86E4[1] = { (u32)dStageJungleFile2_Tex_0x2DB0 };
-
-u8 dStageJungleFile2_data_0x86E8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x86E8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8704[1] = { (u32)dStageJungleFile2_Vtx_0x7B50_Vtx };
-
-u8 dStageJungleFile2_data_0x8708[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8708.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x871C[1] = { (u32)dStageJungleFile2_Vtx_0x7B90_Vtx };
-
-u8 dStageJungleFile2_data_0x8720[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8720.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8734[1] = { (u32)dStageJungleFile2_Lut_0x35B8_palette };
-
-u8 dStageJungleFile2_data_0x8738[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8738.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8754[1] = { (u32)dStageJungleFile2_Tex_0x35E0 };
-
-u8 dStageJungleFile2_data_0x8758[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8758.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8774[1] = { (u32)dStageJungleFile2_Vtx_0x7BD0_Vtx };
-
-u8 dStageJungleFile2_data_0x8778[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8778.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x878C[1] = { (u32)dStageJungleFile2_Lut_0x2D88_palette };
-
-u8 dStageJungleFile2_data_0x8790[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8790.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x87AC[1] = { (u32)dStageJungleFile2_Tex_0x2DB0 };
-
-u8 dStageJungleFile2_data_0x87B0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x87B0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x87CC[1] = { (u32)dStageJungleFile2_Vtx_0x7C10_Vtx };
-
-u8 dStageJungleFile2_data_0x87D0[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x87D0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x87E0 was Gfx[48]; contains 13 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x87E0[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x87E0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x87EC[1] = { (u32)dStageJungleFile2_Lut_0x35B8_palette };
-
-u8 dStageJungleFile2_data_0x87F0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x87F0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x880C[1] = { (u32)dStageJungleFile2_Tex_0x35E0 };
-
-u8 dStageJungleFile2_data_0x8810[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8810.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x882C[1] = { (u32)dStageJungleFile2_Vtx_0x7C50_Vtx };
-
-u8 dStageJungleFile2_data_0x8830[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8830.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8844[1] = { (u32)dStageJungleFile2_Lut_0x2D88_palette };
-
-u8 dStageJungleFile2_data_0x8848[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8848.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8864[1] = { (u32)dStageJungleFile2_Tex_0x2DB0 };
-
-u8 dStageJungleFile2_data_0x8868[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8868.data.inc.c>
-};
 
-u32 dStageJungleFile2_data_0x8884[1] = { (u32)dStageJungleFile2_Vtx_0x7C90_Vtx };
 
-u8 dStageJungleFile2_data_0x8888[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8888.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8A08[9] = {
+	#include <StageJungleFile2/DL_0x8A08.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x889C[1] = { (u32)dStageJungleFile2_Vtx_0x7CD0_Vtx };
 
-u8 dStageJungleFile2_data_0x88A0[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x88A0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x88B4[1] = { (u32)dStageJungleFile2_Lut_0x35B8_palette };
-
-u8 dStageJungleFile2_data_0x88B8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x88B8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x88D4[1] = { (u32)dStageJungleFile2_Tex_0x35E0 };
-
-u8 dStageJungleFile2_data_0x88D8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x88D8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x88F4[1] = { (u32)dStageJungleFile2_Vtx_0x7D10_Vtx };
-
-u8 dStageJungleFile2_data_0x88F8[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x88F8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x890C[1] = { (u32)dStageJungleFile2_Lut_0x2D88_palette };
-
-u8 dStageJungleFile2_data_0x8910[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8910.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x892C[1] = { (u32)dStageJungleFile2_Tex_0x2DB0 };
-
-u8 dStageJungleFile2_data_0x8930[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8930.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x894C[1] = { (u32)dStageJungleFile2_Vtx_0x7D50_Vtx };
-
-u8 dStageJungleFile2_data_0x8950[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8950.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8960 was Gfx[21]; contains 6 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8960[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8960.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x897C[1] = { (u32)dStageJungleFile2_Lut_0x0438_palette };
-
-u8 dStageJungleFile2_data_0x8980[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8980.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x89A4[1] = { (u32)dStageJungleFile2_Tex_0x0460 };
-
-u8 dStageJungleFile2_data_0x89A8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x89A8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x89CC[1] = { (u32)dStageJungleFile2_Vtx_0x7D90_Vtx };
-
-u8 dStageJungleFile2_data_0x89D0[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x89D0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x89DC[1] = { (u32)dStageJungleFile2_Vtx_0x7D90_Vtx };
-
-u8 dStageJungleFile2_data_0x89E0[4] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x89E0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x89E4[1] = { (u32)dStageJungleFile2_Vtx_0x7DD0_Vtx };
-
-u8 dStageJungleFile2_data_0x89E8[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x89E8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x89F4[1] = { (u32)dStageJungleFile2_Vtx_0x7DD0_Vtx };
-
-u8 dStageJungleFile2_data_0x89F8[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x89F8.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8A08 was Gfx[9]; contains 4 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8A08[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8A08.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8A14[1] = { (u32)dStageJungleFile2_Vtx_0x7D90_Vtx };
-
-u8 dStageJungleFile2_data_0x8A18[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8A18.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8A24[1] = { (u32)dStageJungleFile2_Vtx_0x7D90_Vtx };
-
-u8 dStageJungleFile2_data_0x8A28[4] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8A28.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8A2C[1] = { (u32)dStageJungleFile2_Vtx_0x7DD0_Vtx };
-
-u8 dStageJungleFile2_data_0x8A30[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8A30.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8A3C[1] = { (u32)dStageJungleFile2_Vtx_0x7DD0_Vtx };
-
-u8 dStageJungleFile2_data_0x8A40[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8A40.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x8A50 was Gfx[25]; contains 4 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x8A50[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x8A50.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8A74[1] = { (u32)dStageJungleFile2_Lut_0x0A98_palette };
-
-u8 dStageJungleFile2_data_0x8A78[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8A78.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8A9C[1] = { (u32)dStageJungleFile2_Tex_0x0AC0 };
-
-u8 dStageJungleFile2_data_0x8AA0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8AA0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x8ABC[1] = { (u32)dStageJungleFile2_Vtx_0x7E10_Vtx };
-
-u8 dStageJungleFile2_data_0x8AC0[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8AC0.data.inc.c>
-};
 
-u32 dStageJungleFile2_data_0x8AD4[1] = { (u32)dStageJungleFile2_Vtx_0x7E50_Vtx };
 
-u8 dStageJungleFile2_data_0x8AD8[64] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x8AD8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x8A50[25] = {
+	#include <StageJungleFile2/DL_0x8A50.dl.inc.c>
 };
 
 
@@ -1409,242 +742,28 @@ Vtx dStageJungleFile2_gap_0x8B9C_sub_0x704[12] = {
 	#include <StageJungleFile2/gap_0x8B9C_sub_0x704.vtx.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x9360 was Gfx[10]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x9360[68] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x9360.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x93A4[1] = { (u32)dStageJungleFile2_DL_0x93B0 };
-
-u8 dStageJungleFile2_data_0x93A8[8] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x93A8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x9360[10] = {
+	#include <StageJungleFile2/DL_0x9360.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0x93B0 was Gfx[35]; contains 6 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x93B0[44] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x93B0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x93DC[1] = { (u32)dStageJungleFile2_Lut_0x5958_palette };
-
-u8 dStageJungleFile2_data_0x93E0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x93E0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9404[1] = { (u32)dStageJungleFile2_Tex_0x5980 };
-
-u8 dStageJungleFile2_data_0x9408[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9408.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9424[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x2C4 };
-
-u8 dStageJungleFile2_data_0x9428[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9428.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x945C[1] = { (u32)dStageJungleFile2_Lut_0x46C8_palette };
-
-u8 dStageJungleFile2_data_0x9460[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9460.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9484[1] = { (u32)dStageJungleFile2_Tex_0x46F0 };
-
-u8 dStageJungleFile2_data_0x9488[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9488.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x94A4[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x344 };
-
-u8 dStageJungleFile2_data_0x94A8[32] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x94A8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x93B0[35] = {
+	#include <StageJungleFile2/DL_0x93B0.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0x94C8 was Gfx[34]; contains 6 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x94C8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x94C8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x94E4[1] = { (u32)dStageJungleFile2_Lut_0x5958_palette };
-
-u8 dStageJungleFile2_data_0x94E8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x94E8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x950C[1] = { (u32)dStageJungleFile2_Tex_0x5980 };
-
-u8 dStageJungleFile2_data_0x9510[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9510.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9534[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x2C4 };
-
-u8 dStageJungleFile2_data_0x9538[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9538.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x956C[1] = { (u32)dStageJungleFile2_Lut_0x46C8_palette };
-
-u8 dStageJungleFile2_data_0x9570[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9570.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9594[1] = { (u32)dStageJungleFile2_Tex_0x46F0 };
-
-u8 dStageJungleFile2_data_0x9598[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9598.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x95B4[1] = { (u32)(u8 *)dStageJungleFile2_gap_0x8B9C_sub_0x344 + 0xB0 };
-
-u8 dStageJungleFile2_data_0x95B8[32] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x95B8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x94C8[34] = {
+	#include <StageJungleFile2/DL_0x94C8.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0x95D8 was Gfx[84]; contains 17 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0x95D8[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0x95D8.data.inc.c>
+Gfx dStageJungleFile2_DL_0x95D8[84] = {
+	#include <StageJungleFile2/DL_0x95D8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0x95EC[1] = { (u32)dStageJungleFile2_Lut_0x0A98_palette };
 
-u8 dStageJungleFile2_data_0x95F0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x95F0.data.inc.c>
-};
 
-u32 dStageJungleFile2_data_0x9614[1] = { (u32)dStageJungleFile2_Tex_0x0AC0 };
 
-u8 dStageJungleFile2_data_0x9618[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9618.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9634[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x4B4 };
-
-u8 dStageJungleFile2_data_0x9638[44] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9638.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9664[1] = { (u32)dStageJungleFile2_Lut_0x5B88_palette };
-
-u8 dStageJungleFile2_data_0x9668[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9668.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x968C[1] = { (u32)dStageJungleFile2_Tex_0x5BB0 };
-
-u8 dStageJungleFile2_data_0x9690[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9690.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x96B4[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x534 };
-
-u8 dStageJungleFile2_data_0x96B8[60] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x96B8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x96F4[1] = { (u32)dStageJungleFile2_Lut_0x5958_palette };
-
-u8 dStageJungleFile2_data_0x96F8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x96F8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9714[1] = { (u32)dStageJungleFile2_Tex_0x5980 };
-
-u8 dStageJungleFile2_data_0x9718[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9718.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9734[1] = { (u32)(u8 *)dStageJungleFile2_gap_0x8B9C_sub_0x534 + 0x30 };
-
-u8 dStageJungleFile2_data_0x9738[4] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9738.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x973C[1] = { (u32)(u8 *)dStageJungleFile2_gap_0x8B9C_sub_0x534 + 0xA0 };
-
-u8 dStageJungleFile2_data_0x9740[4] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9740.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9744[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x634 };
-
-u8 dStageJungleFile2_data_0x9748[60] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9748.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9784[1] = { (u32)dStageJungleFile2_Lut_0x3E98_palette };
-
-u8 dStageJungleFile2_data_0x9788[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9788.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x97AC[1] = { (u32)dStageJungleFile2_Tex_0x3EC0 };
-
-u8 dStageJungleFile2_data_0x97B0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x97B0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x97CC[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x684 };
-
-u8 dStageJungleFile2_data_0x97D0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x97D0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x97EC[1] = { (u32)dStageJungleFile2_Lut_0x4EF8_palette };
-
-u8 dStageJungleFile2_data_0x97F0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x97F0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9814[1] = { (u32)dStageJungleFile2_Tex_0x4F20 };
-
-u8 dStageJungleFile2_data_0x9818[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9818.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0x9834[1] = { (u32)dStageJungleFile2_gap_0x8B9C_sub_0x704 };
-
-u8 dStageJungleFile2_data_0x9838[64] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0x9838.data.inc.c>
-};
 
 
 /* DObjDesc: Layer1DObj @ 0x9878 (5 entries) */
@@ -1750,8 +869,8 @@ PAD(8);
 /* Split AnimJoint blob: forward decls for sub-scripts. */
 extern u32 dStageJungleFile2_Layer1Anim_AnimJoint_0x10[1274];
 extern u32 dStageJungleFile2_Layer1Anim_AnimJoint_0x13F8[1274];
-extern u8 dStageJungleFile2_Layer1Anim_AnimJoint_0x2960[];
-extern u8 dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8[];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2960[];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8[];
 
 AObjEvent32 *dStageJungleFile2_Layer1Anim_AnimJoint[4] = {
 	NULL,
@@ -4338,158 +3457,25 @@ Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2920[4] = {
 	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2920.vtx.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xC480 was Gfx[9]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_Layer1Anim_AnimJoint_0x2960[60] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2960.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC4BC[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8 };
-
-u8 dStageJungleFile2_data_0xC4C0[8] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC4C0.data.inc.c>
+Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2960[9] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2960.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xC4C8 was Gfx[74]; contains 15 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x29A8.data.inc.c>
-};
 
-u32 dStageJungleFile2_data_0xC4FC[1] = { (u32)dStageJungleFile2_Lut_0x46C8_palette };
 
-u8 dStageJungleFile2_data_0xC500[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC500.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC524[1] = { (u32)dStageJungleFile2_Tex_0x46F0 };
-
-u8 dStageJungleFile2_data_0xC528[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC528.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC544[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x27E0 };
-
-u8 dStageJungleFile2_data_0xC548[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC548.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC56C[1] = { (u32)dStageJungleFile2_Lut_0x3E98_palette };
-
-u8 dStageJungleFile2_data_0xC570[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC570.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC594[1] = { (u32)dStageJungleFile2_Tex_0x3EC0 };
-
-u8 dStageJungleFile2_data_0xC598[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC598.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC5B4[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x2820 };
-
-u8 dStageJungleFile2_data_0xC5B8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC5B8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC5DC[1] = { (u32)dStageJungleFile2_Lut_0x46C8_palette };
-
-u8 dStageJungleFile2_data_0xC5E0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC5E0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC604[1] = { (u32)dStageJungleFile2_Tex_0x46F0 };
-
-u8 dStageJungleFile2_data_0xC608[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC608.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC624[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x2860 };
-
-u8 dStageJungleFile2_data_0xC628[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC628.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC64C[1] = { (u32)dStageJungleFile2_Lut_0x3E98_palette };
-
-u8 dStageJungleFile2_data_0xC650[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC650.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC674[1] = { (u32)dStageJungleFile2_Tex_0x3EC0 };
-
-u8 dStageJungleFile2_data_0xC678[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC678.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC694[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x28A0 };
-
-u8 dStageJungleFile2_data_0xC698[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC698.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC6BC[1] = { (u32)dStageJungleFile2_Lut_0x46C8_palette };
-
-u8 dStageJungleFile2_data_0xC6C0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC6C0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC6E4[1] = { (u32)dStageJungleFile2_Tex_0x46F0 };
-
-u8 dStageJungleFile2_data_0xC6E8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC6E8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC704[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x28E0 };
-
-u8 dStageJungleFile2_data_0xC708[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC708.data.inc.c>
+Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[74] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x29A8.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xC718 was Gfx[24]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8[52] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2BF8.data.inc.c>
+
+
+Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x2BF8[24] = {
+	#include <StageJungleFile2/Layer1Anim_AnimJoint_0x2BF8.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0xC74C[1] = { (u32)dStageJungleFile2_Lut_0x5728_palette };
 
-u8 dStageJungleFile2_data_0xC750[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC750.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC774[1] = { (u32)dStageJungleFile2_Tex_0x5750 };
-
-u8 dStageJungleFile2_data_0xC778[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC778.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xC794[1] = { (u32)dStageJungleFile2_Layer1Anim_AnimJoint_0x2920 };
-
-u8 dStageJungleFile2_data_0xC798[64] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xC798.data.inc.c>
-};
 
 
 /* DObjDesc: Layer2DObj @ 0xC7D8 (4 entries) */
@@ -4573,283 +3559,48 @@ Vtx dStageJungleFile2_gap_0xC888_sub_0x348[12] = {
 	#include <StageJungleFile2/gap_0xC888_sub_0x348.vtx.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xCC90 was Gfx[11]; contains 1 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCC90[76] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCC90.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCCDC[1] = { (u32)dStageJungleFile2_DL_0xCCE8 };
-
-u8 dStageJungleFile2_data_0xCCE0[8] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCCE0.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCC90[11] = {
+	#include <StageJungleFile2/DL_0xCC90.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xCCE8 was Gfx[16]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCCE8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCCE8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCD0C[1] = { (u32)dStageJungleFile2_Lut_0x0008_palette };
-
-u8 dStageJungleFile2_data_0xCD10[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCD10.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCD34[1] = { (u32)dStageJungleFile2_Tex_0x0030 };
-
-u8 dStageJungleFile2_data_0xCD38[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCD38.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCD54[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x8 };
-
-u8 dStageJungleFile2_data_0xCD58[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCD58.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCCE8[16] = {
+	#include <StageJungleFile2/DL_0xCCE8.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xCD68 was Gfx[14]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCD68[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCD68.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCD84[1] = { (u32)dStageJungleFile2_Lut_0x1AF8_palette };
-
-u8 dStageJungleFile2_data_0xCD88[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCD88.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCDA4[1] = { (u32)dStageJungleFile2_Tex_0x1B20 };
-
-u8 dStageJungleFile2_data_0xCDA8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCDA8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCDC4[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x48 };
-
-u8 dStageJungleFile2_data_0xCDC8[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCDC8.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCD68[14] = {
+	#include <StageJungleFile2/DL_0xCD68.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xCDD8 was Gfx[31]; contains 7 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCDD8[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCDD8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCDF4[1] = { (u32)dStageJungleFile2_Lut_0x0438_palette };
-
-u8 dStageJungleFile2_data_0xCDF8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCDF8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCE1C[1] = { (u32)dStageJungleFile2_Tex_0x0460 };
-
-u8 dStageJungleFile2_data_0xCE20[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCE20.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCE44[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x88 };
-
-u8 dStageJungleFile2_data_0xCE48[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCE48.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCE64[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0xC8 };
-
-u8 dStageJungleFile2_data_0xCE68[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCE68.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCE7C[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x108 };
-
-u8 dStageJungleFile2_data_0xCE80[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCE80.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCE9C[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x148 };
-
-u8 dStageJungleFile2_data_0xCEA0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCEA0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCEBC[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x188 };
-
-u8 dStageJungleFile2_data_0xCEC0[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCEC0.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCDD8[31] = {
+	#include <StageJungleFile2/DL_0xCDD8.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xCED0 was Gfx[16]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCED0[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCED0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCEF4[1] = { (u32)dStageJungleFile2_Lut_0x0668_palette };
-
-u8 dStageJungleFile2_data_0xCEF8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCEF8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCF1C[1] = { (u32)dStageJungleFile2_Tex_0x0690 };
-
-u8 dStageJungleFile2_data_0xCF20[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCF20.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCF3C[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x1C8 };
-
-u8 dStageJungleFile2_data_0xCF40[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCF40.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCED0[16] = {
+	#include <StageJungleFile2/DL_0xCED0.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xCF50 was Gfx[14]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCF50[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCF50.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCF6C[1] = { (u32)dStageJungleFile2_Lut_0x2328_palette };
-
-u8 dStageJungleFile2_data_0xCF70[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCF70.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCF8C[1] = { (u32)dStageJungleFile2_Tex_0x2350 };
-
-u8 dStageJungleFile2_data_0xCF90[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCF90.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCFAC[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x208 };
-
-u8 dStageJungleFile2_data_0xCFB0[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCFB0.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCF50[14] = {
+	#include <StageJungleFile2/DL_0xCF50.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xCFC0 was Gfx[12]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xCFC0[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xCFC0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCFCC[1] = { (u32)dStageJungleFile2_Lut_0x1AF8_palette };
-
-u8 dStageJungleFile2_data_0xCFD0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCFD0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xCFEC[1] = { (u32)dStageJungleFile2_Tex_0x1B20 };
-
-u8 dStageJungleFile2_data_0xCFF0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xCFF0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD00C[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x248 };
-
-u8 dStageJungleFile2_data_0xD010[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD010.data.inc.c>
+Gfx dStageJungleFile2_DL_0xCFC0[12] = {
+	#include <StageJungleFile2/DL_0xCFC0.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xD020 was Gfx[12]; contains 3 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xD020[12] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xD020.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD02C[1] = { (u32)dStageJungleFile2_Lut_0x12C8_palette };
-
-u8 dStageJungleFile2_data_0xD030[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD030.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD04C[1] = { (u32)dStageJungleFile2_Tex_0x12F0 };
-
-u8 dStageJungleFile2_data_0xD050[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD050.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD06C[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x288 };
-
-u8 dStageJungleFile2_data_0xD070[16] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD070.data.inc.c>
+Gfx dStageJungleFile2_DL_0xD020[12] = {
+	#include <StageJungleFile2/DL_0xD020.dl.inc.c>
 };
 
 
-/* TODO: data.inc.c — block at 0xD080 was Gfx[33]; contains 5 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_DL_0xD080[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/DL_0xD080.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD0A4[1] = { (u32)dStageJungleFile2_Lut_0x0A98_palette };
-
-u8 dStageJungleFile2_data_0xD0A8[36] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD0A8.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD0CC[1] = { (u32)dStageJungleFile2_Tex_0x0AC0 };
-
-u8 dStageJungleFile2_data_0xD0D0[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD0D0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD0EC[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x2C8 };
-
-u8 dStageJungleFile2_data_0xD0F0[20] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD0F0.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD104[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x308 };
-
-u8 dStageJungleFile2_data_0xD108[28] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD108.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xD124[1] = { (u32)dStageJungleFile2_gap_0xC888_sub_0x348 };
-
-u8 dStageJungleFile2_data_0xD128[96] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xD128.data.inc.c>
+Gfx dStageJungleFile2_DL_0xD080[33] = {
+	#include <StageJungleFile2/DL_0xD080.dl.inc.c>
 };
 
 
@@ -4917,23 +3668,16 @@ u8 dStageJungleFile2_Tex_0xE628[1544] = {
 	#include <StageJungleFile2/Tex_0xE628.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xEC30 was u8[1544]; contains 1 embedded chain pointer(s) split out below */
+/* @tex fmt=CI4 dim=48x64 */
 u8 dStageJungleFile2_Tex_0xEC30[1540] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/Tex_0xEC30.data.inc.c>
+	#include <StageJungleFile2/Tex_0xEC30.tex.inc.c>
 };
 
-u32 dStageJungleFile2_data_0xF234[1] = { (u32)dStageJungleFile2_gap_0xD1B4_sub_0x2114 };
+MObjSub ** dStageJungleFile2_data_0xF234[1] = { dStageJungleFile2_gap_0xD1B4_sub_0x2114 };
 
 
 /* u32 pointer array @ 0xF238 (6 entries) */
-u32 dStageJungleFile2_gap_0xD1B4_sub_0x2084[5] = {
-	(u32)&dStageJungleFile2_Tex_0xEC30,
-	(u32)&dStageJungleFile2_Tex_0xE628,
-	(u32)&dStageJungleFile2_Tex_0xE020,
-	(u32)&dStageJungleFile2_Tex_0xDA18,
-	(u32)&dStageJungleFile2_Tex_0xD410,
-};
+u8 * dStageJungleFile2_gap_0xD1B4_sub_0x2084[5] = { dStageJungleFile2_Tex_0xEC30, dStageJungleFile2_Tex_0xE628, dStageJungleFile2_Tex_0xE020, dStageJungleFile2_Tex_0xDA18, dStageJungleFile2_Tex_0xD410 };
 PAD(4);
 
 /* MObjSub @ 0xF250 */
@@ -4977,25 +3721,11 @@ Vtx dStageJungleFile2_gap_0xD1B4_sub_0x211C[4] = {
 	#include <StageJungleFile2/gap_0xD1B4_sub_0x211C.vtx.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xF310 was Gfx[30]; contains 2 embedded chain pointer(s) split out below */
-u8 dStageJungleFile2_gap_0xD1B4_sub_0x215C[84] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C.data.inc.c>
+Gfx dStageJungleFile2_gap_0xD1B4_sub_0x215C[30] = {
+	#include <StageJungleFile2/gap_0xD1B4_sub_0x215C.dl.inc.c>
 };
 
-u32 dStageJungleFile2_data_0xF364[1] = { (u32)dStageJungleFile2_gap_0xD1B4_sub_0x234 };
 
-u8 dStageJungleFile2_data_0xF368[84] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xF368.data.inc.c>
-};
-
-u32 dStageJungleFile2_data_0xF3BC[1] = { (u32)dStageJungleFile2_gap_0xD1B4_sub_0x211C };
-
-u8 dStageJungleFile2_data_0xF3C0[64] = {
-	/* TODO: data.inc.c */
-	#include <StageJungleFile2/data_0xF3C0.data.inc.c>
-};
 
 
 /* DObjDesc[3] @ 0xF400 — entry 2 is the { 18, ... } sentinel. */

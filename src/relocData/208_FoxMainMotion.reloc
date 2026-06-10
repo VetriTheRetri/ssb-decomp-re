@@ -29,7 +29,7 @@ extern dFoxMainMotion_BatSwingDash+0xC dFoxMainMotion_DownAttackD+0x24  # -> fil
 extern dFoxMainMotion_HarisenSwing1+0xC dFoxMainMotion_DownAttackU+0x14  # -> file 201 (FTCommonMoveset)
 extern dFoxMainMotion_HarisenSwing3+0x10 dFoxMainMotion_DownAttackU+0x68  # -> file 201 (FTCommonMoveset)
 extern dFoxMainMotion_HarisenSwing4+0xC dFoxMainMotion_Tech+0x38  # -> file 201 (FTCommonMoveset)
-extern dFoxMainMotion_HarisenSwingDash+0xC dFoxMainMotion_TechB+0x20  # -> file 201 (FTCommonMoveset)
+extern dFoxMainMotion_HarisenSwingDash+0xC dFoxMainMotion_TechB_0x418+0x18  # -> file 201 (FTCommonMoveset)
 extern dFoxMainMotion_StarRodSwing1+0x10 dFoxMainMotion_CliffWait+0x10  # -> file 201 (FTCommonMoveset)
 extern dFoxMainMotion_StarRodSwing3+0x14 dFoxMainMotion_CliffAttackQuick2+0x20  # -> file 201 (FTCommonMoveset)
 extern dFoxMainMotion_StarRodSwing4+0x18 dFoxMainMotion_CliffAttackSlow2+0xC  # -> file 201 (FTCommonMoveset)

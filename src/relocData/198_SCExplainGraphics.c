@@ -56,13 +56,7 @@ u8 dSCExplainGraphics_Tex_0x4028[4096] = {
 
 /* MObjSub-list head @ 0x5028 — 8-entry MObjSub** array.
  * The real MObjSub data starts at +0x20 (dSCExplainGraphics_StickMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x5028 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u32 dSCExplainGraphics_StickMObjSub_MObjSub[1] = { (u32)dSCExplainGraphics_gap_0x50A0_sub_0x20 };
-
-u8 dSCExplainGraphics_data_0x502C[4] = {
-	/* TODO: data.inc.c */
-	#include <SCExplainGraphics/data_0x502C.data.inc.c>
-};
+MObjSub **dSCExplainGraphics_StickMObjSub_MObjSub[2] = {  dSCExplainGraphics_gap_0x50A0_sub_0x20, NULL };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -162,7 +156,7 @@ extern u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[];
 extern u8 dSCExplainGraphics_Tex_0x5488[];
 extern u8 dSCExplainGraphics_Tex_0x5690[];
 extern u8 dSCExplainGraphics_Tex_0x5898[];
-extern u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[];
+extern u32* dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[];
 
 AObjEvent32 *dSCExplainGraphics_StickNeutral_MatAnimJoint[2] = {
 	(AObjEvent32 *)dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0,
@@ -178,10 +172,7 @@ u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[] = {
 	aobjEvent32End(),
 };
 
-u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[] = {
-	(u32)(dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398),
-	aobjEvent32End(),
-};
+u32 * dSCExplainGraphics_StickNeutral_MatAnimJoint_0x53B0[] = { dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398, NULL };
 
 PAD(8);
 
@@ -190,7 +181,7 @@ PAD(8);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8[];
-extern u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[];
+extern u32* dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[];
 
 AObjEvent32 *dSCExplainGraphics_StickHoldUp_MatAnimJoint[2] = {
 	(AObjEvent32 *)dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0,
@@ -206,10 +197,7 @@ u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8[] = {
 	aobjEvent32End(),
 };
 
-u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[] = {
-	(u32)(dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8),
-	aobjEvent32End(),
-};
+u32 * dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53E0[] = { dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8, NULL };
 
 PAD(8);
 
@@ -218,7 +206,7 @@ PAD(8);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8[];
-extern u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[];
+extern u32* dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[];
 
 AObjEvent32 *dSCExplainGraphics_StickTapUp_MatAnimJoint[2] = {
 	(AObjEvent32 *)dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C,
@@ -241,16 +229,14 @@ u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8[] = {
 	(u32)(dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8),
 };
 
-u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[] = {
-	(u32)(dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8),
-};
+u32 * dSCExplainGraphics_StickTapUp_MatAnimJoint_0x542C[] = { dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8 };
 
 /* Raw data from file offset 0x5430 to 0x5450 (32 bytes) */
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438[];
-extern u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[];
+extern u32* dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[];
 
 AObjEvent32 *dSCExplainGraphics_StickHoldForward_MatAnimJoint[2] = {
 	(AObjEvent32 *)dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448,
@@ -264,16 +250,13 @@ u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438[] = {
 	aobjEvent32End(),
 };
 
-u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[] = {
-	(u32)(dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438),
-	aobjEvent32End(),
-};
+u32 * dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5448[] = { dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438, NULL };
 
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458[];
-extern u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[];
+extern u32* dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[];
 
 AObjEvent32 *dSCExplainGraphics_StickTapForward_MatAnimJoint[2] = {
 	(AObjEvent32 *)dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C,
@@ -292,9 +275,7 @@ u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458[] = {
 	(u32)(dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458),
 };
 
-u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[] = {
-	(u32)(dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458),
-};
+u32 * dSCExplainGraphics_StickTapForward_MatAnimJoint_0x547C[] = { dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458 };
 
 PAD(8);
 /* @tex fmt=I4 dim=32x32 */
@@ -312,8 +293,7 @@ u8 dSCExplainGraphics_Tex_0x5898[512] = {
 
 /* MObjSub-list head @ 0x5a98 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dSCExplainGraphics_TapSparkMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x5A98 was MObjSub[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dSCExplainGraphics_TapSparkMObjSub_MObjSub[1] = { (u32)dSCExplainGraphics_gap_0x5B10_sub_0x10 };
+MObjSub ** dSCExplainGraphics_TapSparkMObjSub_MObjSub[1] = { dSCExplainGraphics_gap_0x5B10_sub_0x10 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x4). */
@@ -385,7 +365,7 @@ PAD(8);
  * resources referenced by SpecialMoveRGB's display list
  * (palette/texture order differs between US and JP). */
 extern u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24[];
-extern u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44[];
+extern u32* dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44[];
 
 AObjEvent32 *dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint[1] = {
 	(AObjEvent32 *)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44,
@@ -402,9 +382,7 @@ u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24[] = {
 	aobjEvent32End(),
 };
 
-u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44[] = {
-	(u32)(dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24),
-};
+u32 * dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C44[] = { dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24 };
 
 PAD(16);
 

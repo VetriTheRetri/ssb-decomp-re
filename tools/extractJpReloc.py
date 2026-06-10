@@ -47,8 +47,7 @@ SRC_DIR = os.path.join(PROJECT_DIR, 'src', 'relocData')
 BUILD_DIR = os.path.join(PROJECT_DIR, 'build', 'jp', 'src', 'relocData')
 
 IDO = os.path.join(PROJECT_DIR, 'tools/ido-recomp/7.1/cc')
-INCLUDES = ['-Iinclude', '-Isrc', '-Isrc/relocData', '-Ibuild/src',
-            '-Ibuild/src/relocData']
+INCLUDES = ['-Iinclude', '-Isrc', '-Isrc/relocData']
 CFLAGS = ['-c', '-G', '0', '-non_shared', '-Xfullwarn', '-Xcpluscomm',
           '-Wab,-r4300_mul', '-woff', '649,838,712,516,624,568,763',
           '-O2', '-mips2']
@@ -155,7 +154,9 @@ def compile_for_symbols(us_fid, region='us'):
     region_def = '-DREGION_JP' if region == 'jp' else '-DREGION_US'
     defines = ['-DF3DEX_GBI_2', '-D_MIPS_SZLONG=32', '-DNDEBUG', '-DN_MICRO',
                '-D_FINALROM', region_def]
-    subprocess.run([IDO] + CFLAGS + INCLUDES + defines +
+    # Version-specific include path for build/<v>/src/relocData inc.c files.
+    ver_inc = [f'-Ibuild/{region}/src', f'-Ibuild/{region}/src/relocData']
+    subprocess.run([IDO] + CFLAGS + INCLUDES + ver_inc + defines +
                    ['-o', obj_path, c_path],
                    cwd=PROJECT_DIR, check=True, capture_output=True)
     return obj_path, c_path

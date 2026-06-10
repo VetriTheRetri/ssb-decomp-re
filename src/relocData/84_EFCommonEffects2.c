@@ -112,23 +112,23 @@ extern u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint_0x568C[];
 extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5810[];
 extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x582C[];
 extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[];
-extern u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[];
+extern u32* dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[];
+extern u32* dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[];
+extern u32* dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[];
 
 extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x5880[];
 extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x589C[];
 extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[];
-extern u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[];
+extern u32* dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[];
+extern u32* dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[];
+extern u32* dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[];
 
 extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x58F0[];
 extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x590C[];
 extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[];
-extern u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[];
+extern u32* dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[];
+extern u32* dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[];
+extern u32* dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[];
 
 extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[];
 extern u32 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint_0x6D98[];
@@ -880,13 +880,13 @@ u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint_0x2A40[] = {
  *   [0]=NULL, [1]=NULL, [2..5]=ptrs to 4 identical scripts.
  * The triple-indirect MObj->ptrs->script pattern resolves to
  * AObjEvent32 *[1] arrays at consecutive 4-byte offsets. */
-AObjEvent32 *dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[6] = {
+AObjEvent32 **dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[6] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B58,
-	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B5C,
-	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B60,
-	(AObjEvent32 *)dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B64,
+	dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B58,
+	dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B5C,
+	dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B60,
+	dEFCommonEffects2_CatchSwirlMatAnimJoint_ptrs_0x2B64,
 };
 
 /* Script @ 0x2AC8: 9 words / 0x24 bytes. Material color ramp. */
@@ -1814,17 +1814,11 @@ u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848[] = {
 	aobjEvent32End(),
 };
 
-u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[] = {
-	(u32)(dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5810),
-};
+u32 * dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5864[] = { dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5810 };
 
-u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[] = {
-	(u32)(dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x582C),
-};
+u32 * dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5868[] = { dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x582C };
 
-u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[] = {
-	(u32)(dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848),
-};
+u32 * dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x586C[] = { dEFCommonEffects2_DeadExplode2_MatAnimJoint_0x5848 };
 
 /* Raw data from file offset 0x5870 to 0x58E0 (112 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -1867,17 +1861,11 @@ u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8[] = {
 	aobjEvent32End(),
 };
 
-u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[] = {
-	(u32)(dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x5880),
-};
+u32 * dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D4[] = { dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x5880 };
 
-u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[] = {
-	(u32)(dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x589C),
-};
+u32 * dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58D8[] = { dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x589C };
 
-u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[] = {
-	(u32)(dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8),
-};
+u32 * dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58DC[] = { dEFCommonEffects2_DeadExplode4_MatAnimJoint_0x58B8 };
 
 /* Raw data from file offset 0x58E0 to 0x5950 (112 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -1920,17 +1908,11 @@ u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928[] = {
 	aobjEvent32End(),
 };
 
-u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[] = {
-	(u32)(dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x58F0),
-};
+u32 * dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5944[] = { dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x58F0 };
 
-u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[] = {
-	(u32)(dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x590C),
-};
+u32 * dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5948[] = { dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x590C };
 
-u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[] = {
-	(u32)(dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928),
-};
+u32 * dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x594C[] = { dEFCommonEffects2_DeadExplode1_MatAnimJoint_0x5928 };
 
 /* Raw data from file offset 0x5950 to 0x6B40 (4592 bytes) */
 /* Pointer-table split fallback: chain-pointer table at the

@@ -699,10 +699,10 @@ Gfx dMVOpeningClashWallpaper_LLDisplayList_DisplayList[54] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C[];
-extern u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC[];
+extern AObjEvent32 *dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC[];
 
-AObjEvent32 *dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC,
+AObjEvent32 **dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint[1] = {
+	dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC,
 };
 
 u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C[] = {
@@ -864,9 +864,7 @@ u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC[] = {
-	(u32)(dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C),
-};
+AObjEvent32 *dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x36CC[] = { (AObjEvent32 *)dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint_0x345C };
 
 /* Raw data from file offset 0x36D0 to 0x36E0 (16 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -1031,10 +1029,10 @@ Gfx dMVOpeningClashWallpaper_LRDisplayList_DisplayList[54] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC[];
-extern u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C[];
+extern AObjEvent32 *dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C[];
 
-AObjEvent32 *dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C,
+AObjEvent32 **dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint[1] = {
+	dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C,
 };
 
 u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC[] = {
@@ -1196,9 +1194,7 @@ u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C[] = {
-	(u32)(dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC),
-};
+AObjEvent32 *dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3D5C[] = { (AObjEvent32 *)dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint_0x3AEC };
 
 /* Raw data from file offset 0x3D60 to 0x3D70 (16 bytes) */
 /* Script-table split: leading chain-pointer table at the
@@ -1367,10 +1363,10 @@ Gfx dMVOpeningClashWallpaper_ULDisplayList_DisplayList[55] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-extern u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[];
+extern AObjEvent32 *dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[];
 
-AObjEvent32 *dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4,
+AObjEvent32 **dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint[1] = {
+	dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4,
 };
 
 u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[] = {
@@ -1532,13 +1528,7 @@ u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184[] = {
 	aobjEvent32End(),
 };
 
-/* TODO: data.inc.c — block at 0x43F4 was u32[]; contains 1 embedded chain pointer(s) split out below */
-u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[1] = { (u32)dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184 };
-
-u8 dMVOpeningClashWallpaper_data_0x43F8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningClashWallpaper/data_0x43F8.data.inc.c>
-};
+AObjEvent32 *dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x43F4[3] = { (AObjEvent32 *)dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint_0x4184, NULL, NULL };
 
 
 /* Raw data from file offset 0x4400 to 0x4410 (16 bytes) */
@@ -1709,10 +1699,10 @@ Gfx dMVOpeningClashWallpaper_URDisplayList_DisplayList[55] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824[];
-extern u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94[];
+extern AObjEvent32 *dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94[];
 
-AObjEvent32 *dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94,
+AObjEvent32 **dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint[1] = {
+	dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94,
 };
 
 u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824[] = {
@@ -1874,9 +1864,9 @@ u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94[] = {
-	(u32)(dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824),
-	aobjEvent32End(),
+AObjEvent32 *dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4A94[2] = {
+	(AObjEvent32 *)dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint_0x4824,
+	NULL,
 };
 
 PAD(4);

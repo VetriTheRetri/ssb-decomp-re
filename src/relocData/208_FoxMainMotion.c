@@ -312,6 +312,9 @@ ftMotionCommand dFoxMainMotion_TechF[] = {
 
 ftMotionCommand dFoxMainMotion_TechB[] = {
 	ftMotionCommandGoto(dFoxMainMotion_TechF),
+};
+
+ftMotionCommand dFoxMainMotion_TechB_0x418[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(0, nEFKindDustHeavyReverse, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMEscape),
@@ -1479,7 +1482,7 @@ ftMotionCommand dFoxMainMotion_FireFoxStartAerialBody[] = {
  * auto-decoder mis-attributed to the next script. ftdata.c JP confirms the
  * real ReadyingFireFoxAir entry is at 0x18BC+0x20 = 0x18DC. */
 ftMotionCommand dFoxMainMotion_ReadyingFireFoxGround[] = {
-	ftMotionCommandSetParallelScript(dFoxMainMotion_FireFoxStartAerial + 2),
+	ftMotionCommandSetParallelScript(dFoxMainMotion_FireFoxStartAerialBody),
 	ftMotionCommandLoopBegin(2),
 	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(11),
@@ -1493,7 +1496,7 @@ ftMotionCommand dFoxMainMotion_ReadyingFireFoxGround[] = {
 };
 #else
 ftMotionCommand dFoxMainMotion_ReadyingFireFoxGround[] = {
-	ftMotionCommandSetParallelScript(dFoxMainMotion_FireFoxStartAerial + 2),
+	ftMotionCommandSetParallelScript(dFoxMainMotion_FireFoxStartAerialBody),
 	ftMotionCommandLoopBegin(4),
 	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(11),

@@ -67,11 +67,11 @@ extern Vtx dBonus2Common_gap_0x4818_sub_0x258[];
 extern Vtx dBonus2Common_gap_0x4818_sub_0x298[];
 extern Vtx dBonus2Common_gap_0x4818_sub_0x98[];
 extern MObjSub *dBonus2Common_gap_0x3798_sub_0x88[2];
-extern void *dBonus2Common_gap_0x3798_sub_0x90[];
+extern MObjSub *dBonus2Common_gap_0x3798_sub_0x90[];
 extern MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[2];
-extern void *dBonus2Common_gap_0x3FE8_sub_0x90[];
+extern MObjSub *dBonus2Common_gap_0x3FE8_sub_0x90[];
 extern MObjSub *dBonus2Common_gap_0x4818_sub_0x88[2];
-extern void *dBonus2Common_gap_0x4818_sub_0x90[];
+extern MObjSub *dBonus2Common_gap_0x4818_sub_0x90[];
 extern u8 dBonus2Common_gap_0x3798[];
 extern u8 dBonus2Common_gap_0x3FE8[];
 extern u8 dBonus2Common_gap_0x4818[];
@@ -112,19 +112,11 @@ u8 dBonus2Common_Tex_0x2C30[2800] = {
 
 /* MObjSub-list head @ 0x3720 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformSmall_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x3720 was MObjSub[4]; contains 2 embedded chain pointer(s) split out below */
-u8 dBonus2Common_PlatformSmall_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <Bonus2Common/PlatformSmall_MObjSub.data.inc.c>
-};
-
-u32 dBonus2Common_data_0x3724[1] = { (u32)dBonus2Common_gap_0x3798_sub_0x88 };
-
-u32 dBonus2Common_data_0x3728[1] = { (u32)dBonus2Common_gap_0x3798_sub_0x90 };
-
-u8 dBonus2Common_data_0x372C[4] = {
-	/* TODO: data.inc.c */
-	#include <Bonus2Common/data_0x372C.data.inc.c>
+MObjSub **dBonus2Common_PlatformSmall_MObjSub[4] = {
+	NULL,
+	dBonus2Common_gap_0x3798_sub_0x88,
+	dBonus2Common_gap_0x3798_sub_0x90,
+	NULL,
 };
 
 
@@ -200,8 +192,8 @@ MObjSub *dBonus2Common_gap_0x3798_sub_0x88[2] = {
 
 /* Pointer table @ 0x3828 — referenced by a chain pointer at MObjSub+0x8
  * (a void** field absent from the current MObjSub struct). NULL-terminated. */
-void *dBonus2Common_gap_0x3798_sub_0x90[2] = {
-	(void *)dBonus2Common_gap_0x3798_sub_0x10,
+MObjSub *dBonus2Common_gap_0x3798_sub_0x90[2] = {
+	dBonus2Common_gap_0x3798_sub_0x10,
 	NULL,
 };
 
@@ -340,8 +332,8 @@ PAD(8);
  * scripts. Forward decls so the table can reference them. */
 extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C[];
 extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34[];
-extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[];
-extern u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[];
+extern u32* dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[];
+extern u32* dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[];
 
 AObjEvent32 *dBonus2Common_PlatformSmall_MatAnimJoint[3] = {
 	NULL,
@@ -375,32 +367,19 @@ u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34[] = {
 	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34),
 };
 
-u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[] = {
-	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C),
-};
+u32 * dBonus2Common_PlatformSmall_MatAnimJoint_0x3F5C[] = { dBonus2Common_PlatformSmall_MatAnimJoint_0x3F0C };
 
-u32 dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[] = {
-	(u32)(dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34),
-	aobjEvent32End(),
-};
+u32 * dBonus2Common_PlatformSmall_MatAnimJoint_0x3F60[] = { dBonus2Common_PlatformSmall_MatAnimJoint_0x3F34, NULL };
 
 PAD(8);
 
 /* MObjSub-list head @ 0x3f70 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformMedium_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x3F70 was MObjSub[4]; contains 2 embedded chain pointer(s) split out below */
-u8 dBonus2Common_PlatformMedium_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <Bonus2Common/PlatformMedium_MObjSub.data.inc.c>
-};
-
-u32 dBonus2Common_data_0x3F74[1] = { (u32)dBonus2Common_gap_0x3FE8_sub_0x88 };
-
-u32 dBonus2Common_data_0x3F78[1] = { (u32)dBonus2Common_gap_0x3FE8_sub_0x90 };
-
-u8 dBonus2Common_data_0x3F7C[4] = {
-	/* TODO: data.inc.c */
-	#include <Bonus2Common/data_0x3F7C.data.inc.c>
+MObjSub **dBonus2Common_PlatformMedium_MObjSub[4] = {
+	NULL,
+	dBonus2Common_gap_0x3FE8_sub_0x88,
+	dBonus2Common_gap_0x3FE8_sub_0x90,
+	NULL,
 };
 
 
@@ -473,8 +452,8 @@ MObjSub *dBonus2Common_gap_0x3FE8_sub_0x88[2] = {
 };
 
 /* Pointer table @ 0x4078 — see PlatformSmall version for notes. */
-void *dBonus2Common_gap_0x3FE8_sub_0x90[2] = {
-	(void *)dBonus2Common_gap_0x3FE8_sub_0x10,
+MObjSub *dBonus2Common_gap_0x3FE8_sub_0x90[2] = {
+	dBonus2Common_gap_0x3FE8_sub_0x10,
 	NULL,
 };
 
@@ -608,8 +587,8 @@ PAD(8);
  * scripts. Forward decls so the table can reference them. */
 extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x473C[];
 extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4764[];
-extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[];
-extern u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[];
+extern u32* dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[];
+extern u32* dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[];
 
 AObjEvent32 *dBonus2Common_PlatformMedium_MatAnimJoint[3] = {
 	NULL,
@@ -643,32 +622,19 @@ u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4764[] = {
 	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x4764),
 };
 
-u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[] = {
-	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x473C),
-};
+u32 * dBonus2Common_PlatformMedium_MatAnimJoint_0x478C[] = { dBonus2Common_PlatformMedium_MatAnimJoint_0x473C };
 
-u32 dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[] = {
-	(u32)(dBonus2Common_PlatformMedium_MatAnimJoint_0x4764),
-	aobjEvent32End(),
-};
+u32 * dBonus2Common_PlatformMedium_MatAnimJoint_0x4790[] = { dBonus2Common_PlatformMedium_MatAnimJoint_0x4764, NULL };
 
 PAD(8);
 
 /* MObjSub-list head @ 0x47a0 — 4-entry MObjSub** array.
  * The real MObjSub data starts at +0x10 (dBonus2Common_PlatformLarge_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x47A0 was MObjSub[4]; contains 2 embedded chain pointer(s) split out below */
-u8 dBonus2Common_PlatformLarge_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <Bonus2Common/PlatformLarge_MObjSub.data.inc.c>
-};
-
-u32 dBonus2Common_data_0x47A4[1] = { (u32)dBonus2Common_gap_0x4818_sub_0x88 };
-
-u32 dBonus2Common_data_0x47A8[1] = { (u32)dBonus2Common_gap_0x4818_sub_0x90 };
-
-u8 dBonus2Common_data_0x47AC[4] = {
-	/* TODO: data.inc.c */
-	#include <Bonus2Common/data_0x47AC.data.inc.c>
+MObjSub **dBonus2Common_PlatformLarge_MObjSub[4] = {
+	NULL,
+	dBonus2Common_gap_0x4818_sub_0x88,
+	dBonus2Common_gap_0x4818_sub_0x90,
+	NULL,
 };
 
 
@@ -741,8 +707,8 @@ MObjSub *dBonus2Common_gap_0x4818_sub_0x88[2] = {
 };
 
 /* Pointer table @ 0x48A8 — see PlatformSmall version for notes. */
-void *dBonus2Common_gap_0x4818_sub_0x90[2] = {
-	(void *)dBonus2Common_gap_0x4818_sub_0x10,
+MObjSub *dBonus2Common_gap_0x4818_sub_0x90[2] = {
+	dBonus2Common_gap_0x4818_sub_0x10,
 	NULL,
 };
 

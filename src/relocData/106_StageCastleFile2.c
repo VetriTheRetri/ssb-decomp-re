@@ -227,6 +227,7 @@ u8 dStageCastleFile2_Tex_0x0748[72] = {
 };
 
 /* Texture data @ 0x0790 (40 bytes) */
+/* @tex fmt=CI4 dim=16x4 lut=dStageCastleFile2_Lut_0x0610_palette */
 u8 dStageCastleFile2_Tex_0x0790[32] = {
 	#include <StageCastleFile2/Tex_0x0790.tex.inc.c>
 };

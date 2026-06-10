@@ -497,507 +497,219 @@ Gfx dMVOpeningYoster_DL_0x9530[19] = {
 	#include <MVOpeningYoster/DL_0x9530.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x95C8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x95C8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x95C8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x95C8[2] = {
+	{ 1, dMVOpeningYoster_DL_0x9440 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x95CC[1] = { (u32)dMVOpeningYoster_DL_0x9440 };
 
-u8 dMVOpeningYoster_data_0x95D0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x95D0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x95D8[2] = {
+	{ 1, dMVOpeningYoster_DL_0x9530 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x95D8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x95D8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x95D8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x95E8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x80C8 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x95DC[1] = { (u32)dMVOpeningYoster_DL_0x9530 };
 
-u8 dMVOpeningYoster_data_0x95E0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x95E0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x95F8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x81C8 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x95E8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x95E8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x95E8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9608[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8248 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x95EC[1] = { (u32)dMVOpeningYoster_DL_0x80C8 };
 
-u8 dMVOpeningYoster_data_0x95F0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x95F0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9618[2] = {
+	{ 0, dMVOpeningYoster_DL_0x82D0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x95F8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x95F8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x95F8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9628[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8330 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x95FC[1] = { (u32)dMVOpeningYoster_DL_0x81C8 };
 
-u8 dMVOpeningYoster_data_0x9600[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9600.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9638[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8398 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9608 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9608_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9608_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9648[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8418 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x960C[1] = { (u32)dMVOpeningYoster_DL_0x8248 };
 
-u8 dMVOpeningYoster_data_0x9610[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9610.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9658[2] = {
+	{ 0, dMVOpeningYoster_DL_0x84A0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9618 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9618_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9618_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9668[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8500 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x961C[1] = { (u32)dMVOpeningYoster_DL_0x82D0 };
 
-u8 dMVOpeningYoster_data_0x9620[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9620.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9678[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8568 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9628 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9628_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9628_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9688[2] = {
+	{ 0, dMVOpeningYoster_DL_0x85E8 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x962C[1] = { (u32)dMVOpeningYoster_DL_0x8330 };
 
-u8 dMVOpeningYoster_data_0x9630[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9630.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9698[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8670 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9638 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9638_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9638_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x96A8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x86E0 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x963C[1] = { (u32)dMVOpeningYoster_DL_0x8398 };
 
-u8 dMVOpeningYoster_data_0x9640[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9640.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x96B8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8758 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9648 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9648_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9648_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x96C8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x87D8 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x964C[1] = { (u32)dMVOpeningYoster_DL_0x8418 };
 
-u8 dMVOpeningYoster_data_0x9650[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9650.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x96D8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8860 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9658 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9658_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9658_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x96E8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x88C0 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x965C[1] = { (u32)dMVOpeningYoster_DL_0x84A0 };
 
-u8 dMVOpeningYoster_data_0x9660[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9660.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x96F8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8A30 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9668 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9668_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9668_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9708[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8AD8 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x966C[1] = { (u32)dMVOpeningYoster_DL_0x8500 };
 
-u8 dMVOpeningYoster_data_0x9670[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9670.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9718[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8B98 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9678 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9678_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9678_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9728[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8C60 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x967C[1] = { (u32)dMVOpeningYoster_DL_0x8568 };
 
-u8 dMVOpeningYoster_data_0x9680[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9680.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9738[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8D10 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9688 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9688_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9688_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9748[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8DC8 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x968C[1] = { (u32)dMVOpeningYoster_DL_0x85E8 };
 
-u8 dMVOpeningYoster_data_0x9690[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9690.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9758[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8E48 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x9698 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9698_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9698_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9768[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8ED0 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x969C[1] = { (u32)dMVOpeningYoster_DL_0x8670 };
 
-u8 dMVOpeningYoster_data_0x96A0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x96A0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9778[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8F30 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x96A8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x96A8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x96A8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9788[2] = {
+	{ 0, dMVOpeningYoster_DL_0x8FA0 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x96AC[1] = { (u32)dMVOpeningYoster_DL_0x86E0 };
 
-u8 dMVOpeningYoster_data_0x96B0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x96B0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x9798[2] = {
+	{ 0, dMVOpeningYoster_DL_0x9020 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x96B8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x96B8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x96B8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x97A8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x90A8 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x96BC[1] = { (u32)dMVOpeningYoster_DL_0x8758 };
 
-u8 dMVOpeningYoster_data_0x96C0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x96C0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x97B8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x9108 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x96C8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x96C8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x96C8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x97C8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x9170 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x96CC[1] = { (u32)dMVOpeningYoster_DL_0x87D8 };
 
-u8 dMVOpeningYoster_data_0x96D0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x96D0.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x97D8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x91F8 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0x96D8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x96D8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x96D8_Vtx.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x97E8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x9280 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningYoster_data_0x96DC[1] = { (u32)dMVOpeningYoster_DL_0x8860 };
 
-u8 dMVOpeningYoster_data_0x96E0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x96E0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x96E8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x96E8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x96E8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x96EC[1] = { (u32)dMVOpeningYoster_DL_0x88C0 };
-
-u8 dMVOpeningYoster_data_0x96F0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x96F0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x96F8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x96F8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x96F8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x96FC[1] = { (u32)dMVOpeningYoster_DL_0x8A30 };
-
-u8 dMVOpeningYoster_data_0x9700[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9700.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9708 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9708_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9708_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x970C[1] = { (u32)dMVOpeningYoster_DL_0x8AD8 };
-
-u8 dMVOpeningYoster_data_0x9710[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9710.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9718 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9718_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9718_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x971C[1] = { (u32)dMVOpeningYoster_DL_0x8B98 };
-
-u8 dMVOpeningYoster_data_0x9720[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9720.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9728 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9728_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9728_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x972C[1] = { (u32)dMVOpeningYoster_DL_0x8C60 };
-
-u8 dMVOpeningYoster_data_0x9730[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9730.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9738 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9738_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9738_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x973C[1] = { (u32)dMVOpeningYoster_DL_0x8D10 };
-
-u8 dMVOpeningYoster_data_0x9740[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9740.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9748 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9748_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9748_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x974C[1] = { (u32)dMVOpeningYoster_DL_0x8DC8 };
-
-u8 dMVOpeningYoster_data_0x9750[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9750.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9758 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9758_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9758_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x975C[1] = { (u32)dMVOpeningYoster_DL_0x8E48 };
-
-u8 dMVOpeningYoster_data_0x9760[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9760.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9768 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9768_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9768_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x976C[1] = { (u32)dMVOpeningYoster_DL_0x8ED0 };
-
-u8 dMVOpeningYoster_data_0x9770[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9770.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9778 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9778_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9778_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x977C[1] = { (u32)dMVOpeningYoster_DL_0x8F30 };
-
-u8 dMVOpeningYoster_data_0x9780[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9780.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9788 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9788_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9788_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x978C[1] = { (u32)dMVOpeningYoster_DL_0x8FA0 };
-
-u8 dMVOpeningYoster_data_0x9790[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9790.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x9798 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x9798_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x9798_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x979C[1] = { (u32)dMVOpeningYoster_DL_0x9020 };
-
-u8 dMVOpeningYoster_data_0x97A0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x97A0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x97A8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x97A8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x97A8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x97AC[1] = { (u32)dMVOpeningYoster_DL_0x90A8 };
-
-u8 dMVOpeningYoster_data_0x97B0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x97B0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x97B8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x97B8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x97B8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x97BC[1] = { (u32)dMVOpeningYoster_DL_0x9108 };
-
-u8 dMVOpeningYoster_data_0x97C0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x97C0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x97C8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x97C8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x97C8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x97CC[1] = { (u32)dMVOpeningYoster_DL_0x9170 };
-
-u8 dMVOpeningYoster_data_0x97D0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x97D0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x97D8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x97D8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x97D8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x97DC[1] = { (u32)dMVOpeningYoster_DL_0x91F8 };
-
-u8 dMVOpeningYoster_data_0x97E0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x97E0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x97E8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x97E8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x97E8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x97EC[1] = { (u32)dMVOpeningYoster_DL_0x9280 };
-
-u8 dMVOpeningYoster_data_0x97F0[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x97F0.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x97F8 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0x97F8_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0x97F8_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0x97FC[1] = { (u32)dMVOpeningYoster_DL_0x92E0 };
-
-u8 dMVOpeningYoster_data_0x9800[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0x9800.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0x97F8[2] = {
+	{ 0, dMVOpeningYoster_DL_0x92E0 },
+	{ 4, NULL },
 };
 
 
@@ -1005,77 +717,77 @@ u8 dMVOpeningYoster_data_0x9800[8] = {
 DObjDesc dMVOpeningYoster_Nest[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1500), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1510), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0x95C8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0x95D8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 94.20000457763672f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.583920955657959f, 1.0f, 1.583920955657959f } },
 	{ 2, (void*)0x00000000, { 0.0f, 26.160005569458008f, 0.0f }, { 0.0f, -0.43633198738098145f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -95.42998504638672f, -24.599990844726562f, 87.05723571777344f }, { 0.0f, -0.6100000143051147f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1520), { 1.9999999949504854e-06f, 0.0f, 7.000000096013537e-06f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x95E8, { 1.9999999949504854e-06f, 0.0f, 7.000000096013537e-06f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { 1.9999999949504854e-06f, 0.0f, 60.00000762939453f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1530), { 3.999999989900971e-06f, 1.4000000192027073e-05f, -9.999999747378752e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x95F8, { 3.999999989900971e-06f, 1.4000000192027073e-05f, -9.999999747378752e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { -1.8000000636675395e-05f, 0.0f, 59.99995803833008f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1540), { 1.8000000636675395e-05f, 1.4000000192027073e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x9608, { 1.8000000636675395e-05f, 1.4000000192027073e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { 7.500000356230885e-05f, 0.0f, 59.999969482421875f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1550), { 3.899999865097925e-05f, -1.4000000192027073e-05f, -1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x9618, { 3.899999865097925e-05f, -1.4000000192027073e-05f, -1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 95.43000030517578f, -24.599990844726562f, -87.05699157714844f }, { 0.0f, 2.531593084335327f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1560), { -7.000000096013537e-06f, 7.000000096013537e-06f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x9628, { -7.000000096013537e-06f, 7.000000096013537e-06f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -7.000000096013537e-06f, 7.000000096013537e-06f, 60.000030517578125f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1570), { 7.000000096013537e-06f, -1.4000000192027073e-05f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x9638, { 7.000000096013537e-06f, -1.4000000192027073e-05f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { 3.999999989900971e-06f, 0.0f, 59.99998474121094f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1580), { -3.600000127335079e-05f, 0.0f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x9648, { -3.600000127335079e-05f, 0.0f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -6.399999983841553e-05f, 2.9000000722589903e-05f, 59.99995803833008f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1590), { 1.8000000636675395e-05f, 1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x9658, { 1.8000000636675395e-05f, 1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -95.43000793457031f, -24.599990844726562f, -87.0570068359375f }, { 0.0f, -2.531593084335327f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x15A0), { -1.9999999949504854e-06f, 0.0f, -5.700000110664405e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x9668, { -1.9999999949504854e-06f, 0.0f, -5.700000110664405e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -9.000000318337698e-06f, 0.0f, 60.0f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 0.9999989867210388f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x15B0), { 1.5999999959603883e-05f, 0.0f, -9.999999747378752e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x9678, { 1.5999999959603883e-05f, 0.0f, -9.999999747378752e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { 4.999999873689376e-06f, 0.0f, 59.99995803833008f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x15C0), { -1.9999999949504854e-06f, 2.9000000722589903e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x9688, { -1.9999999949504854e-06f, 2.9000000722589903e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -1.9999999949504854e-06f, -2.9000000722589903e-05f, 59.99992752075195f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x15D0), { 2.099999983329326e-05f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x9698, { 2.099999983329326e-05f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 95.42902374267578f, -24.599990844726562f, 87.0572280883789f }, { 0.0f, 0.6100000143051147f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x15E0), { -3.999999989900971e-06f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x96A8, { -3.999999989900971e-06f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -1.1000000085914508e-05f, 0.0f, 59.99998474121094f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x15F0), { 2.9000000722589903e-05f, -2.9000000722589903e-05f, -0.0001289999927394092f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x96B8, { 2.9000000722589903e-05f, -2.9000000722589903e-05f, -0.0001289999927394092f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { 3.999999989900971e-06f, 0.0f, 59.999916076660156f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1600), { -1.8000000636675395e-05f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x96C8, { -1.8000000636675395e-05f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -1.8000000636675395e-05f, 0.0f, 60.000030517578125f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1610), { 1.4000000192027073e-05f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1620), { 9.999999974752427e-07f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x96D8, { 1.4000000192027073e-05f, -1.4000000192027073e-05f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningYoster_DLLink_0x96E8, { 9.999999974752427e-07f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.43633198738098145f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 95.43001556396484f, -24.599998474121094f, -87.0570068359375f }, { 0.0f, 2.531593084335327f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1630), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x96F8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -7.000000096013537e-06f, 0.0f, 60.00001525878906f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1640), { 1.8000000636675395e-05f, 0.0f, -8.600000001024455e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x9708, { 1.8000000636675395e-05f, 0.0f, -8.600000001024455e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { -3.999999989900971e-06f, 0.0f, 59.99995803833008f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1650), { -1.1000000085914508e-05f, -1.4000000192027073e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x9718, { -1.1000000085914508e-05f, -1.4000000192027073e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -2.499999936844688e-05f, -1.4000000192027073e-05f, 59.99998474121094f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1660), { 1.1000000085914508e-05f, -1.4000000192027073e-05f, 2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x9728, { 1.1000000085914508e-05f, -1.4000000192027073e-05f, 2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -95.43000793457031f, -24.599998474121094f, -87.0570068359375f }, { 0.0f, -2.531593084335327f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1670), { -4.999999873689376e-06f, 0.0f, 7.000000096013537e-06f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x9738, { -4.999999873689376e-06f, 0.0f, 7.000000096013537e-06f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -1.2999999853491317e-05f, 0.0f, 60.00000762939453f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1680), { 7.000000096013537e-06f, 0.0f, -8.600000001024455e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x9748, { 7.000000096013537e-06f, 0.0f, -8.600000001024455e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { -7.000000096013537e-06f, -1.4000000192027073e-05f, 59.999969482421875f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1690), { 9.000000318337698e-06f, 1.4000000192027073e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x9758, { 9.000000318337698e-06f, 1.4000000192027073e-05f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -1.9999999494757503e-05f, -1.4000000192027073e-05f, 59.999969482421875f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x16A0), { 2.300000051036477e-05f, -1.4000000192027073e-05f, 2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x9768, { 2.300000051036477e-05f, -1.4000000192027073e-05f, 2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 95.42901611328125f, -24.599998474121094f, 87.0572280883789f }, { 0.0f, 0.6100000143051147f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x16B0), { 3.999999989900971e-06f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x9778, { 3.999999989900971e-06f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { 7.000000096013537e-06f, 0.0f, 60.00004196166992f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x16C0), { 3.999999989900971e-06f, 1.4000000192027073e-05f, -8.600000001024455e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x9788, { 3.999999989900971e-06f, 1.4000000192027073e-05f, -8.600000001024455e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { -2.499999936844688e-05f, 0.0f, 59.99998474121094f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x16D0), { -1.8000000636675395e-05f, 1.4000000192027073e-05f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x9798, { -1.8000000636675395e-05f, 1.4000000192027073e-05f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -2.499999936844688e-05f, -1.4000000192027073e-05f, 59.99998474121094f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x16E0), { 4.3000000005122274e-05f, 0.0f, 7.200000254670158e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x97A8, { 4.3000000005122274e-05f, 0.0f, 7.200000254670158e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -95.43001556396484f, -24.599998474121094f, 87.0572509765625f }, { 0.0f, -0.6100000143051147f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x16F0), { -1.9999999949504854e-06f, 0.0f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYoster_DLLink_0x97B8, { -1.9999999949504854e-06f, 0.0f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)0x00000000, { -4.999999873689376e-06f, 0.0f, 60.00001525878906f }, { 0.34906598925590515f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1700), { 1.9999999494757503e-05f, 0.0f, -7.200000254670158e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYoster_DLLink_0x97C8, { 1.9999999494757503e-05f, 0.0f, -7.200000254670158e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)0x00000000, { -9.000000318337698e-06f, -2.9000000722589903e-05f, 59.999969482421875f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1710), { -1.9999999494757503e-05f, 0.0f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, (void*)dMVOpeningYoster_DLLink_0x97D8, { -1.9999999494757503e-05f, 0.0f, -4.3000000005122274e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)0x00000000, { -3.400000059627928e-05f, -1.4000000192027073e-05f, 59.99998474121094f }, { 0.17453299462795258f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1720), { 1.2999999853491317e-05f, 1.4000000192027073e-05f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVOpeningYoster_DL_0x80C8 + 0x1730), { 9.999999974752427e-07f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYoster_DLLink_0x97E8, { 1.2999999853491317e-05f, 1.4000000192027073e-05f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningYoster_DLLink_0x97F8, { 9.999999974752427e-07f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -1340,381 +1052,165 @@ Gfx dMVOpeningYoster_DL_0xB790[10] = {
 	#include <MVOpeningYoster/DL_0xB790.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xB7E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB7E0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB7E0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB7E4[1] = { (u32)dMVOpeningYoster_DL_0xB4D0 };
-
-u8 dMVOpeningYoster_data_0xB7E8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB7E8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB7E0[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB4D0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB7F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB7F0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB7F0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB7F4[1] = { (u32)dMVOpeningYoster_DL_0xB598 };
-
-u8 dMVOpeningYoster_data_0xB7F8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB7F8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB7F0[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB598 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB800 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB800_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB800_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB804[1] = { (u32)dMVOpeningYoster_DL_0xB5D0 };
-
-u8 dMVOpeningYoster_data_0xB808[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB808.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB800[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB5D0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB810 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB810_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB810_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB814[1] = { (u32)dMVOpeningYoster_DL_0xB608 };
-
-u8 dMVOpeningYoster_data_0xB818[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB818.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB810[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB608 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB820 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB820_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB820_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB824[1] = { (u32)dMVOpeningYoster_DL_0xB690 };
-
-u8 dMVOpeningYoster_data_0xB828[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB828.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB820[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB690 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB830 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB830_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB830_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB834[1] = { (u32)dMVOpeningYoster_DL_0xB6B0 };
-
-u8 dMVOpeningYoster_data_0xB838[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB838.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB830[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB6B0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB840 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB840_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB840_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB844[1] = { (u32)dMVOpeningYoster_DL_0xB6D0 };
-
-u8 dMVOpeningYoster_data_0xB848[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB848.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB840[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB6D0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB850 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB850_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB850_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB854[1] = { (u32)dMVOpeningYoster_DL_0xB6F0 };
-
-u8 dMVOpeningYoster_data_0xB858[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB858.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB850[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB6F0 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB860 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB860_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB860_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB864[1] = { (u32)dMVOpeningYoster_DL_0xB710 };
-
-u8 dMVOpeningYoster_data_0xB868[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB868.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB860[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB710 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB870 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB870_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB870_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB874[1] = { (u32)dMVOpeningYoster_DL_0xB730 };
-
-u8 dMVOpeningYoster_data_0xB878[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB878.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB870[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB730 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB880 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB880_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB880_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB884[1] = { (u32)dMVOpeningYoster_DL_0xB750 };
-
-u8 dMVOpeningYoster_data_0xB888[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB888.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB880[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB750 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB890 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB890_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB890_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB894[1] = { (u32)dMVOpeningYoster_DL_0xB770 };
-
-u8 dMVOpeningYoster_data_0xB898[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB898.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB890[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB770 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB8A0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB8A0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB8A0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB8A4[1] = { (u32)dMVOpeningYoster_DL_0xB790 };
-
-u8 dMVOpeningYoster_data_0xB8A8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB8A8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB8A0[2] = {
+	{ 1, dMVOpeningYoster_DL_0xB790 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB8B0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB8B0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB8B0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB8B4[1] = { (u32)dMVOpeningYoster_DL_0xB150 };
-
-u8 dMVOpeningYoster_data_0xB8B8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB8B8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB8B0[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB150 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB8C0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB8C0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB8C0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB8C4[1] = { (u32)dMVOpeningYoster_DL_0xB228 };
-
-u8 dMVOpeningYoster_data_0xB8C8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB8C8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB8C0[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB228 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB8D0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB8D0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB8D0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB8D4[1] = { (u32)dMVOpeningYoster_DL_0xB248 };
-
-u8 dMVOpeningYoster_data_0xB8D8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB8D8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB8D0[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB248 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB8E0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB8E0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB8E0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB8E4[1] = { (u32)dMVOpeningYoster_DL_0xB268 };
-
-u8 dMVOpeningYoster_data_0xB8E8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB8E8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB8E0[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB268 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB8F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB8F0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB8F0_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB8F4[1] = { (u32)dMVOpeningYoster_DL_0xB288 };
-
-u8 dMVOpeningYoster_data_0xB8F8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB8F8.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB8F0[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB288 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB900 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB900_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB900_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB904[1] = { (u32)dMVOpeningYoster_DL_0xB2A8 };
-
-u8 dMVOpeningYoster_data_0xB908[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB908.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB900[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB2A8 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB910 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB910_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB910_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB914[1] = { (u32)dMVOpeningYoster_DL_0xB330 };
-
-u8 dMVOpeningYoster_data_0xB918[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB918.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB910[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB330 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB920 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB920_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB920_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB924[1] = { (u32)dMVOpeningYoster_DL_0xB3B8 };
-
-u8 dMVOpeningYoster_data_0xB928[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB928.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB920[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB3B8 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB930 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB930_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB930_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB934[1] = { (u32)dMVOpeningYoster_DL_0xB3D8 };
-
-u8 dMVOpeningYoster_data_0xB938[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB938.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB930[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB3D8 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB940 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB940_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB940_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB944[1] = { (u32)dMVOpeningYoster_DL_0xB400 };
-
-u8 dMVOpeningYoster_data_0xB948[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB948.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB940[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB400 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB950 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB950_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB950_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB954[1] = { (u32)dMVOpeningYoster_DL_0xB420 };
-
-u8 dMVOpeningYoster_data_0xB958[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB958.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB950[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB420 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB960 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB960_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB960_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB964[1] = { (u32)dMVOpeningYoster_DL_0xB440 };
-
-u8 dMVOpeningYoster_data_0xB968[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB968.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB960[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB440 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB970 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB970_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB970_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB974[1] = { (u32)dMVOpeningYoster_DL_0xB460 };
-
-u8 dMVOpeningYoster_data_0xB978[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB978.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB970[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB460 },
+	{ 4, NULL },
 };
 
 
-/* TODO: data.inc.c — block at 0xB980 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningYoster_Vtx_0xB980_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/Vtx_0xB980_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningYoster_data_0xB984[1] = { (u32)dMVOpeningYoster_DL_0xB480 };
-
-u8 dMVOpeningYoster_data_0xB988[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningYoster/data_0xB988.data.inc.c>
+DObjDLLink dMVOpeningYoster_DLLink_0xB980[2] = {
+	{ 0, dMVOpeningYoster_DL_0xB480 },
+	{ 4, NULL },
 };
 
 
@@ -1725,38 +1221,38 @@ u8 dMVOpeningYoster_data_0xB988[8] = {
 DObjDesc dMVOpeningYoster_GroundDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 160.8000030517578f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB7E0_Vtx, { 699.8402709960938f, 707.1599731445312f, -639.0f }, { 0.0f, 0.0f, 6.350001811981201f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB7F0_Vtx, { -542.4000244140625f, 707.1599731445312f, -639.0f }, { 0.0f, 0.0f, -3.1415929794311523f }, { 0.9094399809837341f, 0.9094399809837341f, 0.9094399809837341f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB800_Vtx, { -379.8000183105469f, 839.7599487304688f, -753.5999145507812f }, { 0.0f, 0.0f, 1.3962630033493042f }, { 0.6299999952316284f, 0.6299999952316284f, 0.6299999952316284f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB7E0, { 699.8402709960938f, 707.1599731445312f, -639.0f }, { 0.0f, 0.0f, 6.350001811981201f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB7F0, { -542.4000244140625f, 707.1599731445312f, -639.0f }, { 0.0f, 0.0f, -3.1415929794311523f }, { 0.9094399809837341f, 0.9094399809837341f, 0.9094399809837341f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB800, { -379.8000183105469f, 839.7599487304688f, -753.5999145507812f }, { 0.0f, 0.0f, 1.3962630033493042f }, { 0.6299999952316284f, 0.6299999952316284f, 0.6299999952316284f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	/* +0x108 (file 0xBA98): continuation — nest scene-graph subtree. */
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB810_Vtx, { 729.0f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB820_Vtx, { -729.00018f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB830_Vtx, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB840_Vtx, { 361.79999f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB850_Vtx, { 0.0f, -68.40001f, 459.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB810, { 729.0f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB820, { -729.00018f, -68.40001f, 314.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB830, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB840, { 361.79999f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB850, { 0.0f, -68.40001f, 459.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, NULL, { 0.0f, 0.0f, -772.79999f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB860_Vtx, { 729.0f, -68.40001f, 458.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB870_Vtx, { -729.00018f, -68.40001f, 461.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB880_Vtx, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB890_Vtx, { 361.79999f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8A0_Vtx, { 0.0f, -68.40001f, 291.00009f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB860, { 729.0f, -68.40001f, 458.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB870, { -729.00018f, -68.40001f, 461.99997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB880, { -361.80002f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB890, { 361.79999f, -68.40001f, 387.00006f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB8A0, { 0.0f, -68.40001f, 291.00009f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8B0_Vtx, { 0.0f, 138.00003f, 127.80f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8C0_Vtx, { 94.200005f, 138.00003f, 65.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8D0_Vtx, { -128.99997f, 138.00003f, 65.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8E0_Vtx, { -166.80003f, 138.00003f, -23.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 0x8002, (void*)dMVOpeningYoster_Vtx_0xB8F0_Vtx, { 188.39996f, 138.00003f, 21.59997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB8B0, { 0.0f, 138.00003f, 127.80f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB8C0, { 94.200005f, 138.00003f, 65.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB8D0, { -128.99997f, 138.00003f, 65.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB8E0, { -166.80003f, 138.00003f, -23.40f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 0x8002, (void*)dMVOpeningYoster_DLLink_0xB8F0, { 188.39996f, 138.00003f, 21.59997f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, NULL, { -25.504009f, 253.83424f, 192.27606f }, { 0.0f, 0.0f, 0.0f }, { 0.6515430f, 0.6515430f, 0.6593470f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB900_Vtx, { 138.69005f, 693.59979f, -933.60f }, { 0.0f, 0.0f, -0.3599740f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB910_Vtx, { -37.519169f, 147.69641f, -837.20978f }, { 0.0f, 0.0f, 2.96706f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB920_Vtx, { 549.36182f, 273.03436f, -837.20990f }, { 0.0f, 0.0f, 3.9269910f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB930_Vtx, { -338.76218f, 374.98813f, -837.20990f }, { 0.0f, 0.0f, 2.356194f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB940_Vtx, { 651.48694f, 693.42999f, -837.21008f }, { 0.0f, 0.0f, 4.712389f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB950_Vtx, { -362.85461f, 693.42999f, -837.20996f }, { 0.0f, 0.0f, 1.570796f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB960_Vtx, { 549.36182f, 1073.30652f, -837.21021f }, { 0.0f, 0.0f, 5.497787f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB970_Vtx, { -368.00711f, 1077.53918f, -837.21014f }, { 0.0f, 0.0f, 0.785398f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dMVOpeningYoster_Vtx_0xB980_Vtx, { 72.570915f, 1201.42542f, -837.21021f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB900, { 138.69005f, 693.59979f, -933.60f }, { 0.0f, 0.0f, -0.3599740f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB910, { -37.519169f, 147.69641f, -837.20978f }, { 0.0f, 0.0f, 2.96706f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB920, { 549.36182f, 273.03436f, -837.20990f }, { 0.0f, 0.0f, 3.9269910f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB930, { -338.76218f, 374.98813f, -837.20990f }, { 0.0f, 0.0f, 2.356194f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB940, { 651.48694f, 693.42999f, -837.21008f }, { 0.0f, 0.0f, 4.712389f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB950, { -362.85461f, 693.42999f, -837.20996f }, { 0.0f, 0.0f, 1.570796f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB960, { 549.36182f, 1073.30652f, -837.21021f }, { 0.0f, 0.0f, 5.497787f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB970, { -368.00711f, 1077.53918f, -837.21014f }, { 0.0f, 0.0f, 0.785398f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYoster_DLLink_0xB980, { 72.570915f, 1201.42542f, -837.21021f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
 PAD(8);

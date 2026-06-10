@@ -43,6 +43,7 @@ TYPED_ELEMENT_SIZES = {
     "FTSpecialColl":  36,    # kind + joint + Vec3f offset + Vec3f size + damage_resist
     "WPAttributes":   52,    # 4 ptrs + Vec3h[2] + 4 s16 + 4 packed bitfield words
     "FTKirbyCopy":    12,    # u16 + s16 + f32 + s32 (KirbyMainMotion only)
+    "Vec2h":          4,     # 2 × s16 (CaptainMainMotion capture-grab offsets)
 }
 # Match any of the above as either scalar (no []) or array (with []).
 NON_SCRIPT_DECL_RE = re.compile(

@@ -121,53 +121,33 @@ extern MObjSub * dPurinModel_Joint_0x0100_post_sub_0x760[];
 extern AObjEvent32 * dPurinModel_gap_0x459C_sub_0x310[];
 extern AObjEvent32 *dPurinModel_gap_0x459C_sub_0x314[];
 extern u16 *dPurinModel_gap_0x459C_sub_0x648[];
-/* TODO: data.inc.c — block at 0x0 was Vtx[2]; contains 3 embedded chain pointer(s) split out below */
-u8 dPurinModel_JointVerts_Vtx[8] = {
-	/* TODO: data.inc.c */
-	#include <PurinModel/JointVerts_Vtx.data.inc.c>
-};
-
-u32 dPurinModel_data_0x0008[1] = { (u32)dPurinModel_Joint_0x0100_post_sub_0x718 };
-
-u8 dPurinModel_data_0x000C[12] = {
-	/* TODO: data.inc.c */
-	#include <PurinModel/data_0x000C.data.inc.c>
-};
-
-u32 dPurinModel_data_0x0018[1] = { (u32)dPurinModel_Joint_0x0100_post_sub_0x740 };
-
-u32 dPurinModel_data_0x001C[1] = { (u32)dPurinModel_Joint_0x0100_post_sub_0x748 };
-
-
-/* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
-MObjSub **dPurinModel_Joint_0x0020_post[8] = {
-	NULL,
-	NULL,
+/* Joint-tree MObjSub** chain — 26 slots spanning file 0..0x67. Combined
+ * from JointVerts_Vtx (2 leading NULLs) + data_0x0008/0x0018/0x001C +
+ * Joint_0x0020_post + Joint_0x0040_post + first 2 slots of
+ * Joint_0x0060_post. Splitting these out as separate decls forced
+ * mid-array byte-offset arithmetic in the MObjSubs below; merging lets
+ * the sprite pool (Joint_0x0060_post textures) start at a clean bare
+ * symbol at file 0x68. */
+extern MObjSub *dPurinModel_Joint_0x0100_post_sub_0x768[];
+MObjSub **dPurinModel_JointVerts_Vtx[26] = {
+	NULL, NULL,
+	dPurinModel_Joint_0x0100_post_sub_0x718, NULL, NULL, NULL,
+	dPurinModel_Joint_0x0100_post_sub_0x740,
+	dPurinModel_Joint_0x0100_post_sub_0x748,
+	NULL, NULL,
 	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x750,
 	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x758,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-};
-
-/* Raw data from file offset 0x0040 to 0x0060 (32 bytes) */
-MObjSub **dPurinModel_Joint_0x0040_post[8] = {
-	NULL,
-	NULL,
-	NULL,
+	NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL,
 	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x760,
-	NULL,
-	NULL,
-	NULL,
+	NULL, NULL, NULL, NULL,
+	(MObjSub **)dPurinModel_Joint_0x0100_post_sub_0x768,
 	NULL,
 };
 
-/* void pointer array @ 0x60 (8 entries) — sprite set for joint 0x60 */
-extern MObjSub *dPurinModel_Joint_0x0100_post_sub_0x768[];
-void *dPurinModel_Joint_0x0060_post[8] = {
-	dPurinModel_Joint_0x0100_post_sub_0x768,
-	NULL,
+/* void pointer array @ 0x68 (6 entries) — sprite set for joint 0x60,
+ * absorbing what used to be `Joint_0x0060_post + 0x8`. */
+void *dPurinModel_Joint_0x0060_post[6] = {
 	dPurinModel_Tex_0x7380,
 	NULL,
 	NULL,
@@ -241,7 +221,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x10[1] = {
 	{
 		0x0000,
 		G_IM_FMT_CI, G_IM_SIZ_16b,
-		(void**)((u8*)dPurinModel_Joint_0x0060_post + 0x8),
+		(void**)dPurinModel_Joint_0x0060_post,
 		0x004E, 0x0008, 0x0020, 0x0020,
 		0,
 		0.24688799679279327f, 0.22193999588489532f,
@@ -910,25 +890,21 @@ AObjEvent32 **dPurinModel_gap_0x24CC[11] = {
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x39C[];
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A0[];
 
-/* TODO: data.inc.c — block at 0x24F8 was AObjEvent32[16]; contains 2 embedded chain pointer(s) split out below */
-u8 dPurinModel_gap_0x24F8[36] = {
-	/* TODO: data.inc.c */
-	#include <PurinModel/gap_0x24F8.data.inc.c>
+u32 dPurinModel_gap_0x24F8[9] = {
+	aobjEvent32SetVal(0x27E, 2597),
+	    0x09470A26,  /* 2.3958525455696615e-33f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
 };
 
-u32 dPurinModel_data_0x251C[1] = { (u32)dPurinModel_gap_0x24F8_sub_0x3A4 };
+AObjEvent32 **dPurinModel_data_0x251C[5] = {  (AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A4, NULL, NULL, NULL, NULL };
 
-u8 dPurinModel_data_0x2520[16] = {
-	/* TODO: data.inc.c */
-	#include <PurinModel/data_0x2520.data.inc.c>
-};
-
-u32 dPurinModel_data_0x2530[1] = { (u32)dPurinModel_gap_0x24F8_sub_0x3A8 };
-
-u8 dPurinModel_data_0x2534[4] = {
-	/* TODO: data.inc.c */
-	#include <PurinModel/data_0x2534.data.inc.c>
-};
+AObjEvent32 **dPurinModel_data_0x2530[2] = {  (AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A8, NULL };
 
 
 /* gap sub-block @ 0x2538 (was gap+0x40, 92 bytes) */
@@ -1244,32 +1220,32 @@ AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A8[4] = {
 };
 
 /* gap sub-block @ 0x28B0 (was gap+0x3B8, 104 bytes) */
-MObjSub *dPurinModel_gap_0x24F8_sub_0x3B8[26] = {
+MObjSub **dPurinModel_gap_0x24F8_sub_0x3B8[26] = {
 	NULL,
 	NULL,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xAE0,
-	NULL,
-	NULL,
-	NULL,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB00,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB08,
-	NULL,
-	NULL,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB10,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB18,
+	dPurinModel_gap_0x24F8_sub_0xAE0,
 	NULL,
 	NULL,
 	NULL,
+	dPurinModel_gap_0x24F8_sub_0xB00,
+	dPurinModel_gap_0x24F8_sub_0xB08,
+	NULL,
+	NULL,
+	dPurinModel_gap_0x24F8_sub_0xB10,
+	dPurinModel_gap_0x24F8_sub_0xB18,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB20,
+	NULL,
+	NULL,
+	NULL,
+	dPurinModel_gap_0x24F8_sub_0xB20,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dPurinModel_gap_0x24F8_sub_0xB28,
+	dPurinModel_gap_0x24F8_sub_0xB28,
 	NULL,
 };
 

@@ -17,7 +17,7 @@ extern u8 dPurinShieldPose_shield_anim_joint_7[];
 
 extern DObjDesc dPurinModel_JointTree[];
 extern DObjDesc dPurinModel_JointTree_0x40A0[];
-extern u8 dPurinModel_JointVerts_Vtx[];
+extern MObjSub **dPurinModel_JointVerts_Vtx[];
 extern Gfx dPurinModel_Joint_0x3D10_DisplayList[];
 extern Gfx dPurinModel_Joint_0x3D90_DisplayList[];
 extern Gfx dPurinModel_Joint_0x3E38_DisplayList[];

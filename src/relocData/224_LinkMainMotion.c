@@ -984,11 +984,11 @@ u32 dLinkMainMotion_Hammer[] = {
 	0xA0A00000,
 	0xA05FFFFF,
 	0x88000000,
-	ftMotionCommandWait(3867021),
+	(u32)dFTCommonMoveset_FireFlowerShoot,  /* extern chain ptr (was raw hex Wait) */
 	ftMotionCommandWait(16),
 	ftMotionCommandClearAttackCollAll(),
 	0x90000000,
-	0x0364034E,
+	(u32)dLinkMainMotion_Hammer,            /* intern chain ptr to self (was raw 0x0364034E) */
 	0x98007C00,
 	ftMotionCommandEnd(),
 #else
@@ -1091,7 +1091,7 @@ ftMotionCommand dLinkMainMotion_Sleep_0x0E00[] = {
 	ftMotionCommandWait(10),
 	ftMotionCommandLoopEnd(),
 #if defined(REGION_JP)
-	ftMotionCommandGoto((void*)0x0394037E),
+	ftMotionCommandGoto(dLinkMainMotion_Sleep_0x0DF8),
 	ftMotionPlayInterruptableVoice(nSYAudioVoiceLinkFuraSleep),
 	ftMotionCommandSetTexturePartID(2),
 #else
@@ -1108,7 +1108,7 @@ u32 dLinkMainMotion_Sleep_0x0E34[] = {
 	0x010400C8,
 	ftMotionCommandWait(10),
 	0x90000000,
-	0x03A4038B,
+	(u32)((u8 *)dLinkMainMotion_Sleep_0x0E00 + 0x2C),  /* intern chain (was raw hex) */
 	0xFFFFFFFF,
 	0x00000006,
 #else
@@ -1124,7 +1124,7 @@ u32 dLinkMainMotion_Sleep_0x0E34[] = {
 #if defined(REGION_JP)
 FTThrowHitDesc dLinkMainMotion_0x0E5C[] = {
 	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0xFFFFFFFF, 0x00000006 },
-	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0x30000000, 0x03DA0395 },
+	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0x30000000, (s32)((u8 *)dLinkMainMotion_Sleep_0x0E34 + 0x20) },
 };
 #else
 FTThrowHitDesc dLinkMainMotion_0x0E5C[] = {
@@ -1193,7 +1193,7 @@ u32 dLinkMainMotion_CatchPull[] = {
 #if defined(REGION_JP)
 FTThrowHitDesc dLinkMainMotion_0x0F34[] = {
 	{ 0x0000002D, 0x00000046, 0x00000000, 0x00000050, 0x00000000, 0xFFFFFFFF, 0x00000006 },
-	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0x30000000, 0x040F03CB },
+	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0x30000000, (s32)((u8 *)dLinkMainMotion_CatchPull + 0x14) },
 };
 #else
 FTThrowHitDesc dLinkMainMotion_0x0F34[] = {
@@ -1271,7 +1271,7 @@ u32 dLinkMainMotion_ThrowF[] = {
 #if defined(REGION_JP)
 FTThrowHitDesc dLinkMainMotion_0x1008[] = {
 	{ 0x0000002D, 0x00000046, 0x00000000, 0x00000046, 0x00000000, 0xFFFFFFFF, 0x00000008 },
-	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0x30000000, 0x04440400 },
+	{ 0x00000169, 0x00000064, 0x00000000, 0x00000000, 0x00000000, 0x30000000, (s32)((u8 *)dLinkMainMotion_ThrowF + 0x94) },
 };
 #else
 FTThrowHitDesc dLinkMainMotion_0x1008[] = {
@@ -1362,29 +1362,27 @@ ftMotionCommand dLinkMainMotion_EggLay_0x1108[] = {
 };
 
 ftMotionCommand dLinkMainMotion_FalconDivePulled[] = {
-	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 #if defined(REGION_JP)
-#else
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkleDelay), /* extern */
-#endif
 	ftMotionCommandEnd(),
-#if defined(REGION_JP)
-	ftMotionCommandSubroutine((void*)0x050C0073),
+	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 #else
+	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkleDelay), /* extern */
+	ftMotionCommandEnd(),
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Damaged_0x1128[] = {
-	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 #if defined(REGION_JP)
-#else
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle), /* extern */
-#endif
 	ftMotionCommandEnd(),
-#if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(12),
 #else
+	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
+	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle), /* extern */
+	ftMotionCommandEnd(),
 #endif
 };
 
@@ -1603,7 +1601,7 @@ u32 dLinkMainMotion_JabLoop_0x12B0[] = {
 	ftMotionCommandWait(2),
 	0xCC03FFFF,
 	0x90000000,
-	ftMotionCommandWait(54133930),
+	(u32)dLinkMainMotion_JabLoop_0x12A8,  /* intern chain (was raw hex Wait) */
 	ftMotionCommandEnd(),
 	ftMotionCommandSetSlopeContour(3),
 	0x98587C00,
@@ -2284,7 +2282,7 @@ ftMotionCommand dLinkMainMotion_Appear1[] = {
 	ftMotionPlayFGM(nSYAudioFGMBladeDraw),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-	ftMotionCommandGoto((void*)0xFFFF072E),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dLinkMainMotion_LandingAirX_0x1CA8 + 0x10)),
 #else
 #endif
 };

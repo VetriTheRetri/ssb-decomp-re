@@ -49,11 +49,16 @@ extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x310[];
 extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x318[];
 extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x320[];
 extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x330[];
-extern u32 dMVOpeningStandoff_gap_0x61B8[];
+extern u8 *dMVOpeningStandoff_gap_0x61B8[];
 
 extern MObjSub *dMVOpeningStandoff_gap_0x61B8_sub_0x328[];
 
-extern u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
+extern AObjEvent32 *dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[];
+extern AObjEvent32 *dMVOpeningStandoff_data_0x6D48[];
+extern AObjEvent32 *dMVOpeningStandoff_data_0x6D4C[];
+extern AObjEvent32 *dMVOpeningStandoff_data_0x6D50[];
+extern AObjEvent32 *dMVOpeningStandoff_data_0x6D54[];
+extern AObjEvent32 *dMVOpeningStandoff_data_0x6D58[];
 
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6D94[];
 extern u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint_0x6E1C[];
@@ -175,62 +180,80 @@ u8 dMVOpeningStandoff_Tex_0x5140[4096] = {
 	#include <MVOpeningStandoff/Tex_0x5140.tex.inc.c>
 };
 
-/* MObjSub: LightningMObjSub @ 0x6140 */
-MObjSub dMVOpeningStandoff_LightningMObjSub_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)0x00000000,
-		0x0000, 0x0000, 0x1854, 0x1930,
-		408361266,
-		0.0f, 0.0f,
-		2.79300700000659e-24f, 2.8317814856504657e-24f,
-		0.0f, 0.0f,
-		(void**)(dMVOpeningStandoff_gap_0x61B8_sub_0x328),
-		0x185D,
-		0x19, 0x3A,
-		0x185F,
-		0x1450, 0x0000, 0x0000,
-		2.895955320290195e-24f, 2.908677674539147e-24f,
-		2.9214000287880987e-24f, 2.9478564513969484e-24f,
-		0x00000000,
-		{ { 0x18, 0x65, 0x10, 0x4E } },
-		0x18, 0x66, { 0x0C, 0x4C },
-		{ { 0x18, 0x67, 0x08, 0x4A } },
-		{ { 0x18, 0x69, 0x14, 0x50 } },
-		{ { 0x00, 0x00, 0x00, 0x00 } },
-		{ { 0x18, 0x6A, 0x10, 0x4E } },
-		409668684, 409733194,
-		409867344, 0,
-	}
+/* void *[30] @ 0x6140 — sparse pointer table (120 bytes). Originally
+ * mis-typed as MObjSub: 19 chain-pointer slots from +0xC to +0x70 were
+ * baked as raw chain-hex floats/ints across the struct fields. Only
+ * +0x2C (palettes) was already a pointer expression; the rest now are. */
+void *dMVOpeningStandoff_LightningMObjSub_MObjSub[13] = {
+	NULL, NULL, NULL,
+	dMVOpeningStandoff_gap_0x61B8_sub_0x308,
+	dMVOpeningStandoff_gap_0x61B8_sub_0x310,
+	NULL, NULL,
+	dMVOpeningStandoff_gap_0x61B8_sub_0x318,
+	dMVOpeningStandoff_gap_0x61B8_sub_0x320,
+	NULL, NULL,
+	dMVOpeningStandoff_gap_0x61B8_sub_0x328,
+	dMVOpeningStandoff_gap_0x61B8_sub_0x330,
+};
+
+/* Four inline sprite pools — each is the entry point for one
+ * MObjSub.palettes. They overlap by content (identical 5-entry
+ * shape) but each MObjSub walks from its own start offset. */
+u8 *dMVOpeningStandoff_LightningMObjSub_sprites0_0x34[5] = {
+	dMVOpeningStandoff_Tex_0x5140,
+	NULL,
+	dMVOpeningStandoff_Tex_0x4138,
+	dMVOpeningStandoff_Tex_0x3130,
+	dMVOpeningStandoff_Tex_0x2128,
+};
+
+u8 *dMVOpeningStandoff_LightningMObjSub_sprites1_0x48[5] = {
+	dMVOpeningStandoff_Tex_0x5140,
+	NULL,
+	dMVOpeningStandoff_Tex_0x4138,
+	dMVOpeningStandoff_Tex_0x3130,
+	dMVOpeningStandoff_Tex_0x2128,
+};
+
+u8 *dMVOpeningStandoff_LightningMObjSub_sprites2_0x5C[5] = {
+	dMVOpeningStandoff_Tex_0x5140,
+	NULL,
+	dMVOpeningStandoff_Tex_0x4138,
+	dMVOpeningStandoff_Tex_0x3130,
+	dMVOpeningStandoff_Tex_0x2128,
+};
+
+u8 *dMVOpeningStandoff_LightningMObjSub_sprites3_0x70[2] = {
+	dMVOpeningStandoff_Tex_0x5140,
+	NULL,
 };
 
 /* Three Tex pointers — referenced by `gap_0x61B8_sub_0xC` and various
  * MObjSub.sprites slots elsewhere. Chain pointers; fixRelocChain
  * patches the bytes at link time. */
-u32 dMVOpeningStandoff_gap_0x61B8[3] = {
-	(u32)&dMVOpeningStandoff_Tex_0x4138,
-	(u32)&dMVOpeningStandoff_Tex_0x3130,
-	(u32)&dMVOpeningStandoff_Tex_0x2128,
+u8 *dMVOpeningStandoff_gap_0x61B8[3] = {
+	dMVOpeningStandoff_Tex_0x4138,
+	dMVOpeningStandoff_Tex_0x3130,
+	dMVOpeningStandoff_Tex_0x2128,
 };
 
-/* u32 pointer array @ 0x61C4 (5 entries) */
-u32 dMVOpeningStandoff_gap_0x61B8_sub_0xC[5] = {
-	(u32)&dMVOpeningStandoff_Tex_0x5140,
-	0x00000000,
-	(u32)&dMVOpeningStandoff_Tex_0x4138,
-	(u32)&dMVOpeningStandoff_Tex_0x3130,
-	(u32)&dMVOpeningStandoff_Tex_0x2128,
+/* u8 *X[5] pointer array @ 0x61C4 (5-entry sprite pool) */
+u8 *dMVOpeningStandoff_gap_0x61B8_sub_0xC[5] = {
+	dMVOpeningStandoff_Tex_0x5140,
+	NULL,
+	dMVOpeningStandoff_Tex_0x4138,
+	dMVOpeningStandoff_Tex_0x3130,
+	dMVOpeningStandoff_Tex_0x2128,
 };
 
-/* u32 pointer array @ 0x61D8 (6 entries) */
-u32 dMVOpeningStandoff_gap_0x61B8_sub_0x20[6] = {
-	(u32)&dMVOpeningStandoff_Tex_0x5140,
-	0x00000000,
-	(u32)&dMVOpeningStandoff_Tex_0x4138,
-	(u32)&dMVOpeningStandoff_Tex_0x3130,
-	(u32)&dMVOpeningStandoff_Tex_0x2128,
-	0x00000000,
+/* u8 *X[6] pointer array @ 0x61D8 (6-entry sprite pool) */
+u8 *dMVOpeningStandoff_gap_0x61B8_sub_0x20[6] = {
+	dMVOpeningStandoff_Tex_0x5140,
+	NULL,
+	dMVOpeningStandoff_Tex_0x4138,
+	dMVOpeningStandoff_Tex_0x3130,
+	dMVOpeningStandoff_Tex_0x2128,
+	NULL,
 };
 
 /* MObjSub @ 0x61F0 */
@@ -238,7 +261,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x38[1] = {
 	{
 		0x0000,
 		G_IM_FMT_I, G_IM_SIZ_16b,
-		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x34),
+		(void**)dMVOpeningStandoff_LightningMObjSub_sprites0_0x34,
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
 		0.0f, 0.0f,
@@ -268,7 +291,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0xB0[1] = {
 	{
 		0x0000,
 		G_IM_FMT_I, G_IM_SIZ_16b,
-		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x48),
+		(void**)dMVOpeningStandoff_LightningMObjSub_sprites1_0x48,
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
 		0.0f, 0.0f,
@@ -298,7 +321,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x128[1] = {
 	{
 		0x0000,
 		G_IM_FMT_I, G_IM_SIZ_16b,
-		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x5C),
+		(void**)dMVOpeningStandoff_LightningMObjSub_sprites2_0x5C,
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
 		0.0f, 0.0f,
@@ -328,7 +351,7 @@ MObjSub dMVOpeningStandoff_gap_0x61B8_sub_0x1A0[1] = {
 	{
 		0x0000,
 		G_IM_FMT_I, G_IM_SIZ_16b,
-		(void**)((u8*)dMVOpeningStandoff_LightningMObjSub_MObjSub + 0x70),
+		(void**)dMVOpeningStandoff_LightningMObjSub_sprites3_0x70,
 		0x0020, 0x0000, 0x0040, 0x0080,
 		0,
 		0.0f, 0.0f,
@@ -489,87 +512,39 @@ Gfx dMVOpeningStandoff_DL_0x6858[19] = {
 	#include <MVOpeningStandoff/DL_0x6858.dl.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0x68F0 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningStandoff_Vtx_0x68F0_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/Vtx_0x68F0_Vtx.data.inc.c>
+/* 6× DObjDLLink[2] — `{ id=1, Gfx* }` followed by `{ 4, NULL }`
+ * terminator. Each was previously split into 3 untyped sub-blobs
+ * (Vtx_0xNNN0_Vtx + data_0xNNN4 + data_0xNNN8). Merged so the chain
+ * pointer at +0x4 has a clean DLLink symbol and LightningDObjDesc
+ * can reference each by bare name. */
+DObjDLLink dMVOpeningStandoff_DLLink_0x68F0[2] = {
+	{ 1, dMVOpeningStandoff_DL_0x6570 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningStandoff_data_0x68F4[1] = { (u32)dMVOpeningStandoff_DL_0x6570 };
-
-u8 dMVOpeningStandoff_data_0x68F8[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x68F8.data.inc.c>
+DObjDLLink dMVOpeningStandoff_DLLink_0x6900[2] = {
+	{ 1, dMVOpeningStandoff_DL_0x6608 },
+	{ 4, NULL },
 };
 
-
-/* TODO: data.inc.c — block at 0x6900 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningStandoff_Vtx_0x6900_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/Vtx_0x6900_Vtx.data.inc.c>
+DObjDLLink dMVOpeningStandoff_DLLink_0x6910[2] = {
+	{ 1, dMVOpeningStandoff_DL_0x66A0 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningStandoff_data_0x6904[1] = { (u32)dMVOpeningStandoff_DL_0x6608 };
-
-u8 dMVOpeningStandoff_data_0x6908[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x6908.data.inc.c>
+DObjDLLink dMVOpeningStandoff_DLLink_0x6920[2] = {
+	{ 1, dMVOpeningStandoff_DL_0x6738 },
+	{ 4, NULL },
 };
 
-
-/* TODO: data.inc.c — block at 0x6910 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningStandoff_Vtx_0x6910_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/Vtx_0x6910_Vtx.data.inc.c>
+DObjDLLink dMVOpeningStandoff_DLLink_0x6930[2] = {
+	{ 1, dMVOpeningStandoff_DL_0x67D0 },
+	{ 4, NULL },
 };
 
-u32 dMVOpeningStandoff_data_0x6914[1] = { (u32)dMVOpeningStandoff_DL_0x66A0 };
-
-u8 dMVOpeningStandoff_data_0x6918[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x6918.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x6920 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningStandoff_Vtx_0x6920_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/Vtx_0x6920_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningStandoff_data_0x6924[1] = { (u32)dMVOpeningStandoff_DL_0x6738 };
-
-u8 dMVOpeningStandoff_data_0x6928[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x6928.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x6930 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningStandoff_Vtx_0x6930_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/Vtx_0x6930_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningStandoff_data_0x6934[1] = { (u32)dMVOpeningStandoff_DL_0x67D0 };
-
-u8 dMVOpeningStandoff_data_0x6938[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x6938.data.inc.c>
-};
-
-
-/* TODO: data.inc.c — block at 0x6940 was Vtx[1]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningStandoff_Vtx_0x6940_Vtx[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/Vtx_0x6940_Vtx.data.inc.c>
-};
-
-u32 dMVOpeningStandoff_data_0x6944[1] = { (u32)dMVOpeningStandoff_DL_0x6858 };
-
-u8 dMVOpeningStandoff_data_0x6948[8] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x6948.data.inc.c>
+DObjDLLink dMVOpeningStandoff_DLLink_0x6940[2] = {
+	{ 1, dMVOpeningStandoff_DL_0x6858 },
+	{ 4, NULL },
 };
 
 
@@ -578,16 +553,16 @@ DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -6660.990234375f, 6960.31884765625f, 1707.0179443359375f }, { 0.0f, 2.1540000438690186f, 0.0f }, { 12.284400939941406f, 12.284400939941406f, 12.284400939941406f } },
-	{ 3, (void*)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x738), { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x748), { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningStandoff_DLLink_0x68F0, { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningStandoff_DLLink_0x6900, { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -1148.34423828125f, 6119.240234375f, -5615.26123046875f }, { 0.0f, -0.07675500214099884f, 0.0f }, { 12.284400939941406f, 12.284400939941406f, 12.284400939941406f } },
-	{ 3, (void*)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x758), { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.8180000185966492f, 0.8180000185966492f, 0.8180000185966492f } },
-	{ 3, (void*)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x768), { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.8180000185966492f, 0.8180000185966492f, 0.8180000185966492f } },
+	{ 3, (void*)dMVOpeningStandoff_DLLink_0x6910, { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.8180000185966492f, 0.8180000185966492f, 0.8180000185966492f } },
+	{ 3, (void*)dMVOpeningStandoff_DLLink_0x6920, { 0.0f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.8180000185966492f, 0.8180000185966492f, 0.8180000185966492f } },
 	{ 1, (void*)0x00000000, { 0.0f, -2327.17822265625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 6840.69091796875f, 9287.05859375f, -3070.6103515625f }, { 0.0f, -1.5599989891052246f, 0.0f }, { 123.1999740600586f, 60.162986755371094f, 60.162986755371094f } },
-	{ 3, (void*)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x778), { 2.9000000722589903e-05f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x788), { 2.9000000722589903e-05f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningStandoff_DLLink_0x6930, { 2.9000000722589903e-05f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, (void*)dMVOpeningStandoff_DLLink_0x6940, { 2.9000000722589903e-05f, 30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -599,20 +574,20 @@ DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
  * SetInterp opcode stream (6 SetInterps + End). Each entry plays a
  * different suffix of the stream — the runtime walks opcodes until
  * it hits End at offset 0x18. */
-AObjEvent32 *dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[13] = {
+AObjEvent32 **dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[13] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44,
-	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x4),
+	dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44,
+	dMVOpeningStandoff_data_0x6D48,
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x8),
-	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0xC),
+	dMVOpeningStandoff_data_0x6D4C,
+	dMVOpeningStandoff_data_0x6D50,
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x10),
-	(AObjEvent32 *)((u8*)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44 + 0x14),
+	dMVOpeningStandoff_data_0x6D54,
+	dMVOpeningStandoff_data_0x6D58,
 };
 
 u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC[] = {
@@ -721,24 +696,21 @@ u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C[] = {
 
 /* Consolidated SetInterp opcode stream — the 6 joint-table entries
  * that referenced offsets 0x6D44..0x6D58 each enter this stream at a
- * different word and walk forward until they hit End at byte +0x18. */
-/* TODO: data.inc.c — block at 0x6D44 was u32[7]; contains 6 embedded chain pointer(s) split out below */
-u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC };
+ * different word and walk forward until they hit End at byte +0x18.
+ * Each sub-table is `AObjEvent32 *[]` (single-entry pointer to a
+ * script body), and the parent MatAnimJoint table indirects through
+ * them as `AObjEvent32 **[]`. */
+AObjEvent32 *dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D44[1] = { (AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6BEC };
 
-u32 dMVOpeningStandoff_data_0x6D48[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24 };
+AObjEvent32 *dMVOpeningStandoff_data_0x6D48[1] = { (AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C24 };
 
-u32 dMVOpeningStandoff_data_0x6D4C[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54 };
+AObjEvent32 *dMVOpeningStandoff_data_0x6D4C[1] = { (AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C54 };
 
-u32 dMVOpeningStandoff_data_0x6D50[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C };
+AObjEvent32 *dMVOpeningStandoff_data_0x6D50[1] = { (AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6C8C };
 
-u32 dMVOpeningStandoff_data_0x6D54[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4 };
+AObjEvent32 *dMVOpeningStandoff_data_0x6D54[1] = { (AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6CC4 };
 
-u32 dMVOpeningStandoff_data_0x6D58[1] = { (u32)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C };
-
-u8 dMVOpeningStandoff_data_0x6D5C[4] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningStandoff/data_0x6D5C.data.inc.c>
-};
+AObjEvent32 *dMVOpeningStandoff_data_0x6D58[2] = { (AObjEvent32 *)dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint_0x6D0C, NULL };
 
 
 /* Raw data from file offset 0x6D60 to 0x7250 (1264 bytes) */

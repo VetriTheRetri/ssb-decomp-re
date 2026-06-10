@@ -129,10 +129,11 @@ extern Vtx dSamusModel_gap_0x6FD4_sub_0xE54[];
 extern u8 dSamusModel_Tex_0xDF38[];
 extern u8 dSamusModel_Tex_0xDF60[];
 extern u8 dSamusModel_Tex_0xDF88[];
-extern u32 dSamusModel_Tex_0xE00C[];
-extern u8 dSamusModel_Tex_0xE018[];
-extern u32 dSamusModel_Tex_0xE090[];
-extern u8 dSamusModel_Tex_0xE098[];
+extern void *dSamusModel_Tex_0xE00C[3];
+extern MObjSub dSamusModel_Tex_0xE018[];
+extern MObjSub *dSamusModel_Tex_0xE090[2];
+extern Vtx dSamusModel_Vtx_0xE098_Vtx[4];
+extern Gfx dSamusModel_DL_0xE0D8[];
 extern u32 dSamusModel_gap_0x3B24_sub_0x360[];
 extern u16 dSamusModel_palette_0xB4B8[];
 extern u16 dSamusModel_palette_0xB4E0[];
@@ -1950,21 +1951,19 @@ AObjEvent32 *dSamusModel_gap_0x3B24_sub_0x4D4[2] = {
 };
 
 /* gap sub-block @ 0x4000 (was gap+0x4DC, 132 bytes) */
-MObjSub *dSamusModel_gap_0x3B24_sub_0x4DC[33] = {
+MObjSub **dSamusModel_gap_0x3B24_sub_0x4DC[33] = {
 	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x1144,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x1150,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x1144,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x1150,
 	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x1160,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x116C,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x1174,
-	NULL,
-	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x117C,
-	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x118C,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x1160,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x116C,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x1174,
 	NULL,
 	NULL,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x117C,
+	NULL,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x118C,
 	NULL,
 	NULL,
 	NULL,
@@ -1974,15 +1973,17 @@ MObjSub *dSamusModel_gap_0x3B24_sub_0x4DC[33] = {
 	NULL,
 	NULL,
 	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x1198,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x11A4,
 	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x11AC,
 	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x11B4,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x11C0,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x1198,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x11A4,
 	NULL,
-	(MObjSub *)dSamusModel_gap_0x3B24_sub_0x11C8,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x11AC,
+	NULL,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x11B4,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x11C0,
+	NULL,
+	(MObjSub **)dSamusModel_gap_0x3B24_sub_0x11C8,
 	NULL,
 };
 
@@ -5083,6 +5084,7 @@ u8 dSamusModel_Tex_0xD7A8[40] = {
 	#include <SamusModel/Tex_0xD7A8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xD7D0[520] = {
 	#include <SamusModel/Tex_0xD7D0.tex.inc.c>
 };
@@ -5107,6 +5109,7 @@ u8 dSamusModel_Tex_0xDA78[40] = {
 	#include <SamusModel/Tex_0xDA78.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xDAA0[520] = {
 	#include <SamusModel/Tex_0xDAA0.tex.inc.c>
 };
@@ -5119,6 +5122,7 @@ u8 dSamusModel_Tex_0xDCD0[40] = {
 	#include <SamusModel/Tex_0xDCD0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x10 lut=dSamusModel_Tex_0xDCD0 */
 u8 dSamusModel_Tex_0xDCF8[88] = {
 	#include <SamusModel/Tex_0xDCF8.tex.inc.c>
 };
@@ -5127,6 +5131,7 @@ u8 dSamusModel_Tex_0xDD50[40] = {
 	#include <SamusModel/Tex_0xDD50.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x12 lut=dSamusModel_Tex_0xDD50 */
 u8 dSamusModel_Tex_0xDD78[104] = {
 	#include <SamusModel/Tex_0xDD78.tex.inc.c>
 };
@@ -5135,14 +5140,17 @@ u8 dSamusModel_Tex_0xDDE0[40] = {
 	#include <SamusModel/Tex_0xDDE0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x14 */
 u8 dSamusModel_Tex_0xDE08[112] = {
 	#include <SamusModel/Tex_0xDE08.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x14 */
 u8 dSamusModel_Tex_0xDE78[112] = {
 	#include <SamusModel/Tex_0xDE78.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=16x10 */
 u8 dSamusModel_Tex_0xDEE8[80] = {
 	#include <SamusModel/Tex_0xDEE8.tex.inc.c>
 };
@@ -5155,68 +5163,73 @@ u8 dSamusModel_Tex_0xDF60[40] = {
 	#include <SamusModel/Tex_0xDF60.tex.inc.c>
 };
 
-/* TODO: data.inc.c — block at 0xDF88 was u8[132]; contains 1 embedded chain pointer(s) split out below */
+/* @tex fmt=CI4 dim=16x16 */
 u8 dSamusModel_Tex_0xDF88[128] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/Tex_0xDF88.data.inc.c>
+	#include <SamusModel/Tex_0xDF88.tex.inc.c>
 };
 
-u32 dSamusModel_data_0xE008[1] = { (u32)dSamusModel_Tex_0xE090 };
+MObjSub **dSamusModel_data_0xE008[1] = { dSamusModel_Tex_0xE090 };
 
 
-/* TODO: data.inc.c — block at 0xE00C was u8[12]; contains 2 embedded chain pointer(s) split out below */
-u32 dSamusModel_Tex_0xE00C[1] = { (u32)dSamusModel_Tex_0xDF60 };
-
-u32 dSamusModel_data_0xE010[1] = { (u32)dSamusModel_Tex_0xDF38 };
-
-u8 dSamusModel_data_0xE014[4] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/data_0xE014.data.inc.c>
+/* Palette pointer array @ 0xE00C — consumed by MObjSub Tex_0xE018's
+ * palettes field.  Trailing NULL absorbs what used to be PAD(4). */
+void *dSamusModel_Tex_0xE00C[3] = {
+	dSamusModel_Tex_0xDF60,
+	dSamusModel_Tex_0xDF38,
+	NULL,
 };
 
 
-/* TODO: data.inc.c — block at 0xE018 was u8[120]; contains 1 embedded chain pointer(s) split out below */
-u8 dSamusModel_Tex_0xE018[44] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/Tex_0xE018.data.inc.c>
+/* Absorbed MObjSub @ 0xE018 (120 bytes — was split into Tex_0xE018[44] +
+ * u32 data_0xE044 palettes-chain + u8 data_0xE048[72]). */
+MObjSub dSamusModel_Tex_0xE018[1] = {
+	{
+		0,                              /* pad00 */
+		G_IM_FMT_CI, G_IM_SIZ_16b,                            /* fmt, siz */
+		NULL,                                /* sprites */
+		0x0020, 0x0000, 0x0010, 0x0010, /* unk08, unk0A, unk0C, unk0E */
+		0,                              /* unk10 */
+		0.0f, 0.0f,                       /* trau, trav */
+		1.0f, 1.0f,                       /* scau, scav */
+		0.0f, 1.0f,                       /* unk24, unk28 */
+		(void **)dSamusModel_Tex_0xE00C,            /* palettes (chain-rewritten) */
+		0x0004, 2, 0, 0x0008,           /* flags, block_fmt, block_siz, block_dxt */
+		0x0010, 0x0010, 0x0010,               /* unk36, unk38, unk3A */
+		0.0f, 0.0f,                       /* scrollu, scrollv */
+		0.0f, 0.0f,                       /* unk44, unk48 */
+		0x00002005,                          /* unk4C */
+		{{0xFF, 0xFF, 0xFF, 0xFF}},                       /* primcolor */
+		0x00, 0x00, {0x00, 0x00},                /* prim_l, prim_m, prim_pad */
+		{{0x00, 0x00, 0x00, 0xFF}},                       /* envcolor */
+		{{0x00, 0x00, 0x00, 0x00}},                     /* blendcolor */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light1color */
+		{{0xFF, 0xFF, 0xFF, 0x00}},                    /* light2color */
+		0, 0,                  /* unk68, unk6C */
+		0, 0,                  /* unk70, unk74 */
+	},
 };
 
-u32 dSamusModel_data_0xE044[1] = { (u32)dSamusModel_Tex_0xE00C };
 
-u8 dSamusModel_data_0xE048[72] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/data_0xE048.data.inc.c>
+/* Single-pointer table @ 0xE090 → MObjSub Tex_0xE018 (trailing NULL
+ * absorbs what used to be data_0xE094 raw zeros). */
+MObjSub *dSamusModel_Tex_0xE090[2] = {
+	dSamusModel_Tex_0xE018,
+	NULL,
+};
+/* Vtx + Gfx DL composite @ 0xE098 (304 bytes total).  The first 64 bytes
+ * are a 4-vertex quad (forming the Stock/HUD textured quad), and the DL
+ * at 0xE0D8 binds them via gsSPVertex (chain ptr at +0xEC inside the DL
+ * targets Vtx_0xE098_Vtx).  The DL ends with gsSPEndDisplayList() at
+ * 0xE0D8+0xD8; the trailing 16 bytes are zero padding before Stock_tex. */
+Vtx dSamusModel_Vtx_0xE098_Vtx[4] = {
+	#include <SamusModel/Vtx_0xE098_Vtx.vtx.inc.c>
 };
 
-
-/* TODO: data.inc.c — block at 0xE090 was u8[8]; contains 1 embedded chain pointer(s) split out below */
-u32 dSamusModel_Tex_0xE090[1] = { (u32)dSamusModel_Tex_0xE018 };
-
-u8 dSamusModel_data_0xE094[4] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/data_0xE094.data.inc.c>
+Gfx dSamusModel_DL_0xE0D8[28] = {
+	#include <SamusModel/DL_0xE0D8.dl.inc.c>
 };
 
-
-/* TODO: data.inc.c — block at 0xE098 was u8[304]; contains 2 embedded chain pointer(s) split out below */
-u8 dSamusModel_Tex_0xE098[196] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/Tex_0xE098.data.inc.c>
-};
-
-u32 dSamusModel_data_0xE15C[1] = { (u32)dSamusModel_Tex_0xDF88 };
-
-u8 dSamusModel_data_0xE160[36] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/data_0xE160.data.inc.c>
-};
-
-u32 dSamusModel_data_0xE184[1] = { (u32)dSamusModel_Tex_0xE098 };
-
-u8 dSamusModel_data_0xE188[64] = {
-	/* TODO: data.inc.c */
-	#include <SamusModel/data_0xE188.data.inc.c>
-};
+PAD(16); /* trailing zero pad before Stock_tex */
 
 
 

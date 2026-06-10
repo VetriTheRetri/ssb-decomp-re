@@ -34,15 +34,10 @@ u8 dNessSpecial2_Tex_0x410[1024] = {
 	#include <NessSpecial2/Tex_0x410.tex.inc.c>
 };
 
-/* MObjSub-list head @ 0x810 — 4-entry MObjSub** array.
- * The real MObjSub data starts at +0x10 (dNessSpecial2_PsychicMagnetMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x810 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u8 dNessSpecial2_PsychicMagnetMObjSub_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <NessSpecial2/PsychicMagnetMObjSub_MObjSub.data.inc.c>
+MObjSub **dNessSpecial2_PsychicMagnetMObjSub_MObjSub[2] = {
+	NULL,
+	dNessSpecial2_gap_0x0888_sub_0x10,
 };
-
-u32 dNessSpecial2_data_0x0814[1] = { (u32)dNessSpecial2_gap_0x0888_sub_0x10 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -173,9 +168,9 @@ u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38[] = {
 extern AObjEvent32 *dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_loop[1];
 extern u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data[12];
 
-AObjEvent32 *dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_loop,
+	dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_loop,
 };
 
 /* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(1, *) pairs,

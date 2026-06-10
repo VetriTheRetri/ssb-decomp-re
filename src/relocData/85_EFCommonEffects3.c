@@ -113,12 +113,12 @@ extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
+extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
+extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
+extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
 
-extern AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[];
+extern AObjEvent32 **dEFCommonEffects3_MBallRays_MatAnimJoint[];
 
 /* Raw data from file offset 0x0000 to 0x0108 (264 bytes) */
 PAD(8);
@@ -435,11 +435,11 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dEFCommonEffects3_MBallRays_MatAnimJoint[4] = {
+AObjEvent32 **dEFCommonEffects3_MBallRays_MatAnimJoint[4] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dEFCommonEffects3_MBallRays_MatAnimJoint_ptrs_0x900,
-	(AObjEvent32 *)dEFCommonEffects3_MBallRays_MatAnimJoint_ptrs_0x908,
+	dEFCommonEffects3_MBallRays_MatAnimJoint_ptrs_0x900,
+	dEFCommonEffects3_MBallRays_MatAnimJoint_ptrs_0x908,
 };
 
 /* Script 0 @ 0x870 — material color/alpha ramp. */
@@ -1315,17 +1315,11 @@ u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[] = {
 	aobjEvent32End(),
 };
 
-u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[] = {
-	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8),
-};
+u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8 };
 
-u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = {
-	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4),
-};
+u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4 };
 
-u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = {
-	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0),
-};
+u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0 };
 
 u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
 	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC),

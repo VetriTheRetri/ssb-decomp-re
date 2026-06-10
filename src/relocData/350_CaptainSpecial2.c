@@ -50,7 +50,7 @@ extern Vtx dCaptainSpecial2_Vtx_0x5490_Vtx[];
 extern Vtx dCaptainSpecial2_Vtx_0x54D0_Vtx[];
 extern Vtx dCaptainSpecial2_Vtx_0x5510_Vtx[];
 extern Vtx dCaptainSpecial2_Vtx_0x5550_Vtx[];
-extern u8 dCaptainSpecial2__6518__AnimJoint[];
+extern u32 dCaptainSpecial2__6518__AnimJoint[];
 extern u32 dCaptainSpecial2__6598__AnimJoint[];
 extern MObjSub *dCaptainSpecial2_gap_0x09D8_sub_0x10[];
 extern u8 dCaptainSpecial2_gap_0x09D8[];
@@ -89,15 +89,10 @@ u8 dCaptainSpecial2_Tex_0x4E0[1152] = {
 	#include <CaptainSpecial2/Tex_0x4E0.tex.inc.c>
 };
 
-/* MObjSub-list head @ 0x960 — 4-entry MObjSub** array.
- * The real MObjSub data starts at +0x10 (dCaptainSpecial2_FalconKickMObjSub_MObjSub_real below). */
-/* TODO: data.inc.c — block at 0x960 was MObjSub[2]; contains 1 embedded chain pointer(s) split out below */
-u8 dCaptainSpecial2_FalconKickMObjSub_MObjSub[4] = {
-	/* TODO: data.inc.c */
-	#include <CaptainSpecial2/FalconKickMObjSub_MObjSub.data.inc.c>
+MObjSub **dCaptainSpecial2_FalconKickMObjSub_MObjSub[2] = {
+	NULL,
+	dCaptainSpecial2_gap_0x09D8_sub_0x10,
 };
-
-u32 dCaptainSpecial2_data_0x0964[1] = { (u32)dCaptainSpecial2_gap_0x09D8_sub_0x10 };
 
 
 /* Texture-pointer sprites array (was MObjSub**[] tail starting at +0x8). */
@@ -209,7 +204,7 @@ u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint_0xB98[] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08[];
-extern u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[];
+extern u32* dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[];
 
 AObjEvent32 *dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
@@ -232,10 +227,7 @@ u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08[] = {
 	(u32)(dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08),
 };
 
-u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[] = {
-	(u32)(dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08),
-	aobjEvent32End(),
-};
+u32 * dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC3C[] = { dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint_0xC08, NULL };
 
 PAD(4);
 
@@ -572,7 +564,7 @@ PAD(4);
  * three AObjEvent32 scripts (sub_0x30 / sub_0x244 / sub_0x2C4). */
 extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x30[133];
 extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32];
-extern u8 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[];
+extern u32 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[];
 
 AObjEvent32 *dCaptainSpecial2__6200__AnimJoint[12] = {
 	NULL,
@@ -762,23 +754,65 @@ u32 dCaptainSpecial2__6200__AnimJoint_sub_0x244[32] = {
 	aobjEvent32End(),
 };
 
-/* TODO: data.inc.c — block at 0x64C4 was u32[21]; contains 1 embedded chain pointer(s) split out below */
-u8 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[80] = {
-	/* TODO: data.inc.c */
-	#include <CaptainSpecial2/_6200__AnimJoint_sub_0x2C4.data.inc.c>
+u32 dCaptainSpecial2__6200__AnimJoint_sub_0x2C4[18] = {
+	aobjEvent32SetVal(0x001, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValAfter(0x006, 0),
+	    0x00000000,  /* 0.0f */
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 35),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x001, 5),
+	    0xBF9C61AA,  /* -1.2217304706573486f */
+	    0x39C4776B,  /* 0.0003747300652321428f */
+	aobjEvent32SetValRateBlock(0x001, 20),
+	    0xBF9C61AA,  /* -1.2217304706573486f */
+	    0xB99B91B6,  /* -0.0002967246691696346f */
+	aobjEvent32SetVal0RateBlock(0x001, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValBlock(0x001, 50),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
 };
+PAD(8);
 
-u32 dCaptainSpecial2_data_0x6514[1] = { (u32)dCaptainSpecial2__6518__AnimJoint };
+u8 * dCaptainSpecial2_data_0x6514[1] = { dCaptainSpecial2__6518__AnimJoint };
 
 
-
-/* TODO: data.inc.c — block at 0x6518 was u32[32]; contains 1 embedded chain pointer(s) split out below */
-u8 dCaptainSpecial2__6518__AnimJoint[124] = {
-	/* TODO: data.inc.c */
-	#include <CaptainSpecial2/_6518__AnimJoint.data.inc.c>
+u32 dCaptainSpecial2__6518__AnimJoint[29] = {
+	aobjEvent32SetVal0RateBlock(0x380, 0),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetValRateBlock(0x380, 1),
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3DFFFFDF,  /* 0.1249997541308403f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3DFFFFDF,  /* 0.1249997541308403f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0x3DFFFFDF,  /* 0.1249997541308403f */
+	aobjEvent32SetVal0RateBlock(0x380, 1),
+	    0x3F9FFFFC,  /* 1.2499995231628418f */
+	    0x3F9FFFFC,  /* 1.2499995231628418f */
+	    0x3F9FFFFC,  /* 1.2499995231628418f */
+	aobjEvent32SetValRateBlock(0x380, 1),
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0xBDFFFFDF,  /* -0.1249997541308403f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0xBDFFFFDF,  /* -0.1249997541308403f */
+	    0x3F19999A,  /* 0.6000000238418579f */
+	    0xBDFFFFDF,  /* -0.1249997541308403f */
+	aobjEvent32SetVal0RateBlock(0x380, 1),
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	    0x3F800000,  /* 1.0f */
+	aobjEvent32SetAnim(0x000, 0),
+	(u32)dCaptainSpecial2__6518__AnimJoint,
+	aobjEvent32End(),
 };
+PAD(8);
 
-u32 dCaptainSpecial2_data_0x6594[1] = { (u32)dCaptainSpecial2__6598__AnimJoint };
+u32 * dCaptainSpecial2_data_0x6594[1] = { dCaptainSpecial2__6598__AnimJoint };
 
 
 /* Raw data from file offset 0x6598 to 0x65E0 (72 bytes) */

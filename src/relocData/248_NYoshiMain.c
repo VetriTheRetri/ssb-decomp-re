@@ -21,8 +21,7 @@ extern u8 dYoshiShieldPose_shield_anim_joint_7[];
 
 extern DObjDesc dNYoshiModel_JointTree[];
 
-/* TODO: data.inc.c — block at 0x0 was u32[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dNYoshiMain_file_handles[1] = { (u32)dYoshiMainMotion_EggLay_0x0034 };
+ftMotionCommand * dNYoshiMain_file_handles[1] = { dYoshiMainMotion_EggLay_0x0034 };
 
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNYoshiMain_pre+0x4) */

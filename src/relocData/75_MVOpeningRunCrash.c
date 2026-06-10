@@ -15,7 +15,10 @@ extern Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x340[];
 extern Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x380[];
 extern Vtx dMVOpeningRunCrash_gap_0x2B20_sub_0x400[];
 
-extern void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
+extern MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[];
+extern MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x328[];
+extern MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x330[];
+extern MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x338[];
 
 extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3714[];
 extern u32 dMVOpeningRunCrash_MatAnimJoint_0x37F4[];
@@ -260,34 +263,40 @@ u8 dMVOpeningRunCrash_Tex_0x0528[9600] = {
 	#include <MVOpeningRunCrash/Tex_0x0528.tex.inc.c>
 };
 
-/* MObjSub: - @ 0x2AA8 */
-MObjSub dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub[1] = {
-	{
-		0x0000,
-		G_IM_FMT_RGBA, G_IM_SIZ_4b,
-		(void**)(dMVOpeningRunCrash_gap_0x2B20_sub_0x320),
-		0x0AAD, 0x0B92, 0x0AAE, 0x0B94,
-		179243926,
-		1.6948653708348004e-32f, 1.704493551188798e-32f,
-		1.7141217315427957e-32f, 1.7237499118967934e-32f,
-		1.733378092250791e-32f, 1.7430062726047887e-32f,
-		(void**)(dMVOpeningRunCrash_gap_0x0000_sub_0x410),
-		0x0AB7,
-		0x00, 0xFA,
-		0x0AB8,
-		0x00F0, 0x0AB9, 0x00E6,
-		1.791147174374777e-32f, 1.8007753547287746e-32f,
-		1.8104035350827723e-32f, 1.82003171543677e-32f,
-		0x0ABE00B4,
-		{ { 0x0A, 0xBF, 0x00, 0xAA } },
-		0x0A, 0xC0, { 0x00, 0xA0 },
-		{ { 0x0A, 0xC1, 0x00, 0x96 } },
-		{ { 0x0A, 0xC2, 0x00, 0x8C } },
-		{ { 0x0A, 0xC3, 0x00, 0x82 } },
-		{ { 0x0A, 0xC4, 0x00, 0x78 } },
-		180682862, 180748388,
-		180813914, 180879440,
-	}
+/* void *[30] @ 0x2AA8 — sparse pointer table (120 bytes). Originally
+ * mis-typed as MObjSub; 29 chain pointers from +0x4 to +0x74 (every
+ * 4-byte slot) baked as raw chain-hex across struct fields. */
+void *dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub[30] = {
+	NULL,
+	dMVOpeningRunCrash_gap_0x2B20_sub_0x320,
+	dMVOpeningRunCrash_gap_0x2B20_sub_0x328,
+	dMVOpeningRunCrash_gap_0x2B20_sub_0x330,
+	dMVOpeningRunCrash_gap_0x2B20_sub_0x338,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x500,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4D8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x4B0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x488,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x460,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x438,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x410,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3E8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x3C0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x398,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x370,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x348,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x320,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2F8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2D0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x2A8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x280,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x258,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x230,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x208,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1E0,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x1B8,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x190,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x168,
+	dMVOpeningRunCrash_gap_0x0000_sub_0x140,
 };
 
 /* Raw data from file offset 0x2B20 to 0x35F8 (2776 bytes) */
@@ -509,8 +518,8 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x2A8[1] = {
 
 /* gap sub-block @ 0x2E40 (was gap+0x320, 8 bytes) */
 /* MObjSub.sprites pointer table @ +0x2E40 (2 ptrs) — each entry is a void* texture-data pointer fed to gDPSetTextureImage. */
-void *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[2] = {
-	(void *)dMVOpeningRunCrash_gap_0x2B20_sub_0x140,
+MObjSub *dMVOpeningRunCrash_gap_0x2B20_sub_0x320[2] = {
+	dMVOpeningRunCrash_gap_0x2B20_sub_0x140,
 	NULL,
 };
 

@@ -12,8 +12,7 @@ extern u8 dMasterHandIcon_Stock_tex[];
 
 extern DObjDesc dBossModel_JointTree[];
 
-/* TODO: data.inc.c — block at 0x0 was u32[1]; contains 1 embedded chain pointer(s) split out below */
-u32 dBossMain_file_handles[1] = { (u32)dBossMainMotion_Default };
+ftMotionCommand * dBossMain_file_handles[1] = { dBossMainMotion_Default };
 
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dBossMain_pre+0x4) */
@@ -53,13 +52,12 @@ FTCommonPartContainer dBossMain_commonparts_container = {
 	},
 };
 
-/* TODO: data.inc.c — block at 0xD8 was int[1]; contains 1 embedded chain pointer(s) split out below */
 u32 dBossMain_stock_luts[1] = { (u32)(u8 *)dMasterHandIcon_Stock_tex + 0x88 };
 
 
 /* @ 0x00DC, 12 bytes: FTAttributes.sprites target (was dBossMain_pre+0xDC) */
 FTSprites dBossMain_sprites = {
-	(Sprite*)0x00390030, /* stock_sprite */
+	(Sprite*)dMasterHandIcon_Stock, /* stock_sprite */
 	(int**)dBossMain_stock_luts, /* stock_luts */
 	(Sprite*)0xFFFF00AE, /* emblem */
 };

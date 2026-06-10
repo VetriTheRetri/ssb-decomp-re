@@ -177,9 +177,9 @@ PAD(8);
 extern u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_0x8[];
 extern AObjEvent32 *dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_inner_0x50[];
 
-AObjEvent32 *dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_inner_0x50,
+	dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint_inner_0x50,
 };
 
 /* The MAT anim script @ 0x908. Sets value tracks (likely material
@@ -611,11 +611,11 @@ PAD(4);
 extern u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[];
 extern AObjEvent32 *dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC[];
 
-AObjEvent32 *dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[4] = {
+AObjEvent32 **dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[4] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC,
+	dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1ABC,
 };
 
 u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint_0x1A90[] = {
@@ -644,11 +644,11 @@ extern u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[];
 extern AObjEvent32 *dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04[];
 extern AObjEvent32 *dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint_0x1B54[];
 
-AObjEvent32 *dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[4] = {
+AObjEvent32 **dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[4] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04,
+	dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1B04,
 };
 
 u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint_0x1AD0[] = {

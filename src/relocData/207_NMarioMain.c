@@ -17,6 +17,7 @@ extern u8 dMarioShieldPose_shield_anim_joint_7[];
 
 extern u32 dMarioMainMotion_Wait_0x0024[];
 extern DObjDesc dNMarioModel_JointTree[];
+extern u32 dMasterHandIcon_FTEmblem[];
 
 /* Pre-attributes data (166 words, 0x0298 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNMarioMain_pre+0x0) */
@@ -127,7 +128,7 @@ FTThrownStatus dNMarioMain_thrown_status[54] = {
 FTSprites dNMarioMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x015C00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNMarioMain_attr = {

@@ -8,11 +8,11 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u8 dMVOpeningRun_Donkey_AnimJoint[];
-extern u8 dMVOpeningRun_Fox_AnimJoint[];
+extern u32 dMVOpeningRun_Donkey_AnimJoint[22];
+extern u32 dMVOpeningRun_Fox_AnimJoint[];
 extern u32 dMVOpeningRun_Samus_AnimJoint[];
 
-extern u8 dMVOpeningRun_Mario_AnimJoint[];
+extern u32 dMVOpeningRun_Mario_AnimJoint[];
 extern u32 dMVOpeningRun_Link_AnimJoint[];
 extern u32 dMVOpeningRun_Yoshi_AnimJoint[];
 extern u32 dMVOpeningRun_Kirby_AnimJoint[];
@@ -24,31 +24,124 @@ extern u32 dMVOpeningRun_Pikachu_AnimJoint[];
  * through every chain pointer in this file. */
 AObjEvent32 *dMVOpeningRun_chain_head[1] = { (AObjEvent32 *)dMVOpeningRun_Mario_AnimJoint };
 
-/* TODO: data.inc.c — block at 0x4 was u32[44]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningRun_Mario_AnimJoint[172] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningRun/Mario_AnimJoint.data.inc.c>
+u32 dMVOpeningRun_Mario_AnimJoint[43] = {
+	aobjEvent32SetValRateBlock(0x040, 0),
+	    0xC48711A8,  /* -1080.5517578125f */
+	    0x428D3F9B,  /* 70.62422943115234f */
+	aobjEvent32SetValRate(0x040, 30),
+	    0x428AE259,  /* 69.44208526611328f */
+	    0xBFA38C2A,  /* -1.2777149677276611f */
+	aobjEvent32Cmd12(0x040, 25),
+	aobjEvent32SetVal0Rate(0x010, 0),
+	    0xC4320682,  /* -712.1016845703125f */
+	aobjEvent32SetValAfterBlock(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal0Rate(0x010, 40),
+	    0xC4320682,  /* -712.1016845703125f */
+	aobjEvent32Wait(5),
+	aobjEvent32SetValRateBlock(0x040, 35),
+	    0xC34F44CF,  /* -207.26878356933594f */
+	    0x400469F8,  /* 2.068967819213867f */
+	aobjEvent32SetValRate(0x010, 25),
+	    0xC4320682,  /* -712.1016845703125f */
+	    0xBE4311A0,  /* -0.19049692153930664f */
+	aobjEvent32SetValRateBlock(0x040, 15),
+	    0x432CE3F6,  /* 172.89047241210938f */
+	    0x4202B7E1,  /* 32.679569244384766f */
+	aobjEvent32SetValRate(0x040, 30),
+	    0x449DE9F8,  /* 1263.3115234375f */
+	    0x412241E6,  /* 10.141088485717773f */
+	aobjEvent32Wait(10),
+	aobjEvent32SetValRateBlock(0x010, 15),
+	    0xC433EE2E,  /* -719.7215576171875f */
+	    0xBEA70C17,  /* -0.3262641131877899f */
+	aobjEvent32SetValRate(0x010, 10),
+	    0xC4341088,  /* -720.25830078125f */
+	    0xBD07B404,  /* -0.03313066065311432f */
+	aobjEvent32Wait(5),
+	aobjEvent32SetVal0Rate(0x040, 95),
+	    0x44B410DA,  /* 1440.526611328125f */
+	aobjEvent32Wait(5),
+	aobjEvent32SetValRateBlock(0x010, 5),
+	    0xC4340DFC,  /* -720.218505859375f */
+	    0xC0E6F653,  /* -7.217568874359131f */
+	aobjEvent32SetVal0RateBlock(0x010, 85),
+	    0xC4AB3ADD,  /* -1369.8394775390625f */
+	aobjEvent32End(),
 };
 
-u32 dMVOpeningRun_data_0x00B0[1] = { (u32)dMVOpeningRun_Fox_AnimJoint };
-
-
-/* TODO: data.inc.c — block at 0xB4 was u32[28]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningRun_Fox_AnimJoint[108] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningRun/Fox_AnimJoint.data.inc.c>
+/* Chain-pointer slot @ 0x00B0 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Mario_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Fox_AnimJoint,
 };
 
-u32 dMVOpeningRun_data_0x0120[1] = { (u32)dMVOpeningRun_Donkey_AnimJoint };
 
-
-/* TODO: data.inc.c — block at 0x124 was u32[24]; contains 1 embedded chain pointer(s) split out below */
-u8 dMVOpeningRun_Donkey_AnimJoint[92] = {
-	/* TODO: data.inc.c */
-	#include <MVOpeningRun/Donkey_AnimJoint.data.inc.c>
+u32 dMVOpeningRun_Fox_AnimJoint[27] = {
+	aobjEvent32SetValBlock(0x070, 0),
+	    0x44751C80,  /* 980.4453125f */
+	    0x42B73E9A,  /* 91.62226867675781f */
+	    0xC479C117,  /* -999.0170288085938f */
+	aobjEvent32SetValBlock(0x070, 122),
+	    0x44751C80,  /* 980.4453125f */
+	    0x42B73E9A,  /* 91.62226867675781f */
+	    0xC479C117,  /* -999.0170288085938f */
+	aobjEvent32SetTargetRate(0x010, 0),
+	    0xC0917851,  /* -4.5459370613098145f */
+	aobjEvent32SetValRate(0x010, 36),
+	    0x44B054C1,  /* 1410.6485595703125f */
+	    0xC07FA10E,  /* -3.9942049980163574f */
+	aobjEvent32SetTargetRate(0x040, 0),
+	    0x421608A0,  /* 37.5084228515625f */
+	aobjEvent32SetValRate(0x040, 39),
+	    0xC264E819,  /* -57.22665786743164f */
+	    0x3FFA8422,  /* 1.9571573734283447f */
+	aobjEvent32SetVal0RateBlock(0x020, 36),
+	    0x434B36BA,  /* 203.21377563476562f */
+	aobjEvent32SetVal0Rate(0x030, 22),
+	    0x443B3204,  /* 748.781494140625f */
+	    0x42B73E9A,  /* 91.62226867675781f */
+	aobjEvent32Wait(3),
+	aobjEvent32SetVal0RateBlock(0x040, 19),
+	    0xC2869203,  /* -67.2851791381836f */
+	aobjEvent32End(),
 };
 
-u32 dMVOpeningRun_data_0x0180[1] = { (u32)dMVOpeningRun_Samus_AnimJoint };
+/* Chain-pointer slot @ 0x0120 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Fox_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Donkey_AnimJoint,
+};
+
+
+u32 dMVOpeningRun_Donkey_AnimJoint[22] = {
+	aobjEvent32SetVal(0x050, 0),
+	    0xC4231C23,  /* -652.4396362304688f */
+	    0xC4DC5A37,  /* -1762.8192138671875f */
+	aobjEvent32SetValAfter(0x020, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetVal(0x010, 135),
+	    0xC4231C23,  /* -652.4396362304688f */
+	aobjEvent32SetValBlock(0x040, 115),
+	    0xC4DC5A37,  /* -1762.8192138671875f */
+	aobjEvent32SetTargetRate(0x040, 0),
+	    0x4286A12D,  /* 67.3147964477539f */
+	aobjEvent32SetValRate(0x040, 30),
+	    0x42C5B9EB,  /* 98.86312103271484f */
+	    0x419F6247,  /* 19.92298698425293f */
+	aobjEvent32Wait(20),
+	aobjEvent32SetValRateBlock(0x010, 10),
+	    0xC4231C23,  /* -652.4396362304688f */
+	    0xC07FBE6B,  /* -3.995997190475464f */
+	aobjEvent32SetVal0RateBlock(0x050, 35),
+	    0xC450109D,  /* -832.2595825195312f */
+	    0x43F2F0A9,  /* 485.8801574707031f */
+	aobjEvent32End(),
+};
+PAD(4);
+
+/* Chain-pointer slot @ 0x0180 — points to the next AnimJoint in the chain. */
+AObjEvent32 *dMVOpeningRun_Donkey_AnimJoint_chain[1] = {
+	(AObjEvent32 *)dMVOpeningRun_Samus_AnimJoint,
+};
 
 
 /* Raw data from file offset 0x0184 to 0x0220 (156 bytes) */
@@ -312,13 +405,54 @@ u32 dMVOpeningRun_Pikachu_AnimJoint[38] = {
 
 PAD(12);
 
-/* Texture data for sprite Wallpaper */
-/* Split out from .sprite.c so the palette blocks can sit at
-   their original physical position between the texture and
-   the bitmap array. */
-/* Texture: Wallpaper (160x130 ci8, 11 tiles) */
-u8 dMVOpeningRun_Wallpaper_tex[] = {
-    #include <MVOpeningRun/Wallpaper.ci8.inc.c>
+/* Texture data for sprite Wallpaper — 11 vertical tiles,
+ * each 160x12 CI8 (1928 bytes incl. 8-byte alignment pad)
+ * except tile 10 which is 160x10 CI8 (1608 bytes). The
+ * bitmap array below points at each tile via its symbol so
+ * the pointers stay symbolic across symbol shuffles. */
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile00_Tex_0x0000[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile00_Tex_0x0000.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile01_Tex_0x0788[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile01_Tex_0x0788.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile02_Tex_0x0F10[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile02_Tex_0x0F10.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile03_Tex_0x1698[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile03_Tex_0x1698.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile04_Tex_0x1E20[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile04_Tex_0x1E20.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile05_Tex_0x25A8[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile05_Tex_0x25A8.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile06_Tex_0x2D30[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile06_Tex_0x2D30.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile07_Tex_0x34B8[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile07_Tex_0x34B8.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile08_Tex_0x3C40[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile08_Tex_0x3C40.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x12 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile09_Tex_0x43C8[0x788] = {
+	#include <MVOpeningRun/Wallpaper_tile09_Tex_0x43C8.tex.inc.c>
+};
+/* @tex fmt=CI8 dim=160x10 lut=dMVOpeningRun_palette_0x56C0 */
+u8 dMVOpeningRun_Wallpaper_tile10_Tex_0x4B50[0x648] = {
+	#include <MVOpeningRun/Wallpaper_tile10_Tex_0x4B50.tex.inc.c>
 };
 
 /* Palette: @ 0x56C0 (152 colors RGBA5551, used by the CI8 wallpaper).
@@ -332,17 +466,17 @@ u16 dMVOpeningRun_palette_0x56C0[152] = {
 /* Sprite: Wallpaper (160x120 ci8) */
 
 Bitmap dMVOpeningRun_Wallpaper_bitmaps[] = {
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x788, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0xF10, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x1698, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x1E20, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x25A8, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x2D30, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x34B8, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x3C40, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x43C8, 12, 0 },
-	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tex + 0x4B50, 10, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile00_Tex_0x0000, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile01_Tex_0x0788, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile02_Tex_0x0F10, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile03_Tex_0x1698, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile04_Tex_0x1E20, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile05_Tex_0x25A8, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile06_Tex_0x2D30, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile07_Tex_0x34B8, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile08_Tex_0x3C40, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile09_Tex_0x43C8, 12, 0 },
+	{ 160, 160, 0, 0, dMVOpeningRun_Wallpaper_tile10_Tex_0x4B50, 10, 0 },
 };
 
 Sprite dMVOpeningRun_Wallpaper = {

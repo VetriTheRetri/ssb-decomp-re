@@ -208,7 +208,6 @@ FTThrownStatus dDonkeyMain_thrown_status[54] = {
 	{                          -1, nFTCommonStatusThrownCommon },
 };
 
-/* TODO: data.inc.c — block at 0x3A8 was int[5]; contains 5 embedded chain pointer(s) split out below */
 u32 dDonkeyMain_stock_luts[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x58 };
 
 u32 dDonkeyMain_data_0x03AC[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x80 };

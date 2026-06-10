@@ -10,14 +10,6 @@
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x48C[];
 extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x48C[];
 extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x48C[];

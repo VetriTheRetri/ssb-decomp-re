@@ -8,14 +8,6 @@
 #include <sys/objdef.h>
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dKirbyModel_DL_0x1D2D8[];
 extern u8 dKirbyModel_Tex_0x1A9D0[];
 extern u8 dKirbyModel_Tex_0x1AA80[];
@@ -62,6 +54,10 @@ extern u16 dKirbyModel_gap_0x1A2FC_sub_0xD8C[];
 extern u16 dYoshiModel_Lut_0x9EC8_palette[];
 extern u8 dYoshiModel_Tex_0x9EF0[];
 extern u8 dKirbyModel_Tex_0x1A8A0[];
+extern u16 dYoshiModel_Lut_0x9EC8_palette[];
+extern u8 dYoshiModel_Tex_0x9EF0[];
+extern u16 dYoshiModel_Lut_0x9EC8_palette[];
+extern u8 dYoshiModel_Tex_0x9EF0[];
 extern u16 dYoshiModel_Lut_0x9EC8_palette[];
 extern u8 dYoshiModel_Tex_0x9EF0[];
 extern u8 dKirbyModel_Tex_0x1D188[];

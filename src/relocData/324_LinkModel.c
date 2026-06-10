@@ -8,14 +8,6 @@
 #include <sys/objdef.h>
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dLinkModel_Lut_0xB188_palette[];
 extern u8 dLinkModel_Tex_0xB1F8[];
 extern u8 dLinkModel_Tex_0xB2A8[];
@@ -62,6 +54,14 @@ extern u16 dLinkModel_Lut_0xDE88_palette[];
 extern u8 dLinkModel_Tex_0xB1B0[];
 extern u8 dLinkModel_Tex_0xB610[];
 extern u8 dLinkModel_Tex_0xD148[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern u16 dMarioSecondaryImage_Tex_0x0008[];
 extern u8 dMarioSecondaryImage_Tex_0x0018[];
 extern u16 dMarioSecondaryImage_Tex_0x0060[];

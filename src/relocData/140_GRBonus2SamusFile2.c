@@ -12,10 +12,30 @@
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0168_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0630_palette[];
+extern u8 dBonus1CommonImages2_Tex_0x0030[];
+extern u8 dBonus1CommonImages2_Tex_0x00E0[];
+extern u8 dBonus1CommonImages2_Tex_0x0190[];
+extern u16 dBonus1CommonImages2_Tex_0x0588[];
+extern u8 dBonus1CommonImages2_Tex_0x05A8[];
+extern u8 dBonus1CommonImages2_Tex_0x0658[];
+extern u16 dBonus1CommonImages2_Tex_0x06E0[];
+extern u8 dBonus1CommonImages2_Tex_0x06F0[];
+extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0168_palette[];
+extern u16 dBonus1CommonImages2_Lut_0x0630_palette[];
+extern u8 dBonus1CommonImages2_Tex_0x0030[];
+extern u8 dBonus1CommonImages2_Tex_0x00E0[];
+extern u8 dBonus1CommonImages2_Tex_0x0190[];
+extern u16 dBonus1CommonImages2_Tex_0x0588[];
+extern u8 dBonus1CommonImages2_Tex_0x05A8[];
+extern u8 dBonus1CommonImages2_Tex_0x0658[];
+extern u16 dBonus1CommonImages2_Tex_0x06E0[];
+extern u8 dBonus1CommonImages2_Tex_0x06F0[];
 extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
 extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
 extern u16 dBonus1CommonImages2_Lut_0x0168_palette[];

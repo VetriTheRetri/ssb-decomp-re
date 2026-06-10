@@ -12,10 +12,6 @@
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dBonus1CommonImages1_Lut_0x0008_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x0288_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
@@ -35,6 +31,42 @@ extern u8 dBonus1CommonImages1_Tex_0x0748[];
 extern u8 dBonus1CommonImages1_Tex_0x07F8[];
 extern u8 dBonus1CommonImages1_Tex_0x0A28[];
 extern Gfx dGRBonus2LuigiFile2_DL_0x22F0[];
+extern u16 dBonus1CommonImages1_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0288_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x06B0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x07D0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0A00_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x0030[];
+extern u8 dBonus1CommonImages1_Tex_0x02B0[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0510[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x06D8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
+extern u8 dBonus1CommonImages1_Tex_0x07F8[];
+extern u8 dBonus1CommonImages1_Tex_0x0A28[];
+extern u16 dBonus1CommonImages1_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0288_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x06B0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x07D0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0A00_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x0030[];
+extern u8 dBonus1CommonImages1_Tex_0x02B0[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0510[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x06D8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
+extern u8 dBonus1CommonImages1_Tex_0x07F8[];
+extern u8 dBonus1CommonImages1_Tex_0x0A28[];
 extern u16 dBonus1CommonImages1_Lut_0x0008_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x0288_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];

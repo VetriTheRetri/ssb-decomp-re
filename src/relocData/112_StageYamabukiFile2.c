@@ -8,14 +8,6 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageYamabukiFile2_DL_0x4620[];
 extern Gfx dStageYamabukiFile2_DL_0x68F0[];
 extern Gfx dStageYamabukiFile2_DL_0x5E78[];

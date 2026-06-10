@@ -10,14 +10,6 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dITCommonObject_Gfx_0x1C48[];
 extern Gfx dITCommonObject_Gfx_0x4578[];
 extern Gfx dITCommonObject_Gfx_0x4A18[];

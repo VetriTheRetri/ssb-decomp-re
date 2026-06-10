@@ -8,9 +8,9 @@
 /* Vtx: JointVerts @ 0x0 (20 vertices) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern Vtx dMMarioModel_JointVerts_Vtx[];
-extern u16 dMMarioModel_Lut256_0x2288[];
 extern u8 dMMarioModel_Tex_0x2490[];
+extern u16 dMMarioModel_Lut256_0x2288[];
+extern Vtx dMMarioModel_JointVerts_Vtx[];
 extern Vtx dMMarioModel_Vtx_0x0140_Vtx[];
 extern Vtx dMMarioModel_Vtx_0x01D0_Vtx[];
 extern Vtx dMMarioModel_Vtx_0x0210_Vtx[];

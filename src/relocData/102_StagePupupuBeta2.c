@@ -18,10 +18,6 @@
 /* @ 0x0000, 112 bytes — Vtx[7] */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStagePupupuBeta2_DL_0x0398[];
 extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
 extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
@@ -48,6 +44,54 @@ extern u8 dStagePupupuBetaImages_Tex_0x2260[];
 extern u8 dStagePupupuBetaImages_Tex_0x2310[];
 extern u8 dStagePupupuBetaImages_Tex_0x23C0[];
 extern Gfx dStagePupupuBeta2_DL_0x25F0[];
+extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0898_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0AC8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0CF8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1128_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x11D8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1A08_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x22E8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2398_palette[];
+extern u8 dStagePupupuBetaImages_Tex_0x0030[];
+extern u8 dStagePupupuBetaImages_Tex_0x0260[];
+extern u8 dStagePupupuBetaImages_Tex_0x0490[];
+extern u8 dStagePupupuBetaImages_Tex_0x08C0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0AF0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0D20[];
+extern u8 dStagePupupuBetaImages_Tex_0x1150[];
+extern u8 dStagePupupuBetaImages_Tex_0x1200[];
+extern u8 dStagePupupuBetaImages_Tex_0x1A30[];
+extern u8 dStagePupupuBetaImages_Tex_0x2260[];
+extern u8 dStagePupupuBetaImages_Tex_0x2310[];
+extern u8 dStagePupupuBetaImages_Tex_0x23C0[];
+extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0898_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0AC8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0CF8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1128_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x11D8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1A08_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x22E8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2398_palette[];
+extern u8 dStagePupupuBetaImages_Tex_0x0030[];
+extern u8 dStagePupupuBetaImages_Tex_0x0260[];
+extern u8 dStagePupupuBetaImages_Tex_0x0490[];
+extern u8 dStagePupupuBetaImages_Tex_0x08C0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0AF0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0D20[];
+extern u8 dStagePupupuBetaImages_Tex_0x1150[];
+extern u8 dStagePupupuBetaImages_Tex_0x1200[];
+extern u8 dStagePupupuBetaImages_Tex_0x1A30[];
+extern u8 dStagePupupuBetaImages_Tex_0x2260[];
+extern u8 dStagePupupuBetaImages_Tex_0x2310[];
+extern u8 dStagePupupuBetaImages_Tex_0x23C0[];
 extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
 extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
 extern u16 dStagePupupuBetaImages_Lut_0x0468_palette[];

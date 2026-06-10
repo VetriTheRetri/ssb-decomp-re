@@ -10,6 +10,10 @@
 
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dNCommonTexture_Tex[];
+extern u16 dNCommonTexture_palette[];
+extern u8 dNCommonTexture_Tex[];
+extern u16 dNCommonTexture_palette[];
 extern Vtx dNYoshiModel_Vtx_0x01E0_Vtx[];
 extern Vtx dNYoshiModel_Vtx_0x0270_Vtx[];
 extern Vtx dNYoshiModel_Vtx_0x0390_Vtx[];

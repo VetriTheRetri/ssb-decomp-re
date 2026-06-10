@@ -8,10 +8,6 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageLastFile2_DL_0x40A8[];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4E24[12];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8B8C[38];

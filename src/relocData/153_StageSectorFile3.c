@@ -22,10 +22,8 @@
 #include <gr/grvars.h>   // GRSectorDesc
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dFoxSpecial3_Tex_0x1080[];
+extern u8 dFoxSpecial3_Tex_0x1080[];
 extern u8 dFoxSpecial3_Tex_0x1080[];
 extern u8 dFoxSpecial3_Tex_0x1080[];
 extern u8 dFoxSpecial3_Tex_0x1080[];

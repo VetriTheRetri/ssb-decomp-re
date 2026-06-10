@@ -11,10 +11,6 @@
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x03F0_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];
@@ -29,6 +25,32 @@ extern u16 dBonus1CommonImages1_Tex_0x0598[];
 extern u8 dBonus1CommonImages1_Tex_0x05A8[];
 extern u8 dBonus1CommonImages1_Tex_0x0748[];
 extern Gfx dGRBonus2MarioFile2_DL_0x2930[];
+extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x03F0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x0078[];
+extern u8 dBonus1CommonImages1_Tex_0x0240[];
+extern u8 dBonus1CommonImages1_Tex_0x02F8[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0418[];
+extern u8 dBonus1CommonImages1_Tex_0x0510[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
+extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x03F0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x0078[];
+extern u8 dBonus1CommonImages1_Tex_0x0240[];
+extern u8 dBonus1CommonImages1_Tex_0x02F8[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0418[];
+extern u8 dBonus1CommonImages1_Tex_0x0510[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
 extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x03F0_palette[];
 extern u16 dBonus1CommonImages1_Lut_0x04E8_palette[];

@@ -8,14 +8,6 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dMVCommon_DL_0x1C018[];
 extern Gfx dMVCommon_DL_0x22160[];
 extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x051C[];

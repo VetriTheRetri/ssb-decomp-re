@@ -8,10 +8,6 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u8 dMarioModel_Tex_0x65F0[];
 extern u8 dMarioModel_Tex_0x6C78[];
 extern u16 dMarioSecondaryImage_Tex_0x0008[];
@@ -19,6 +15,14 @@ extern u8 dMarioSecondaryImage_Tex_0x0018[];
 extern u16 dMarioSecondaryImage_Tex_0x0060[];
 extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern u16 dMarioModel_Lut_0x6F70_palette[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern u16 dMarioSecondaryImage_Tex_0x0008[];
 extern u8 dMarioSecondaryImage_Tex_0x0018[];
 extern u16 dMarioSecondaryImage_Tex_0x0060[];

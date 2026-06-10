@@ -8,14 +8,6 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dMVOpeningYoster_DL_0x8120[];
 extern Gfx dMVOpeningYoster_DL_0xB1A8[];
 extern Gfx dMVOpeningYoster_DL_0xB518[];

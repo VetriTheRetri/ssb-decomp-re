@@ -8,12 +8,10 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dFoxSpecial3_Joint_0x1FA0_post[];
+extern u8 dStageSectorFile2_Tex_0x19F8[];
 extern Gfx dFoxSpecial3_Joint_0x2920_post[];
+extern u8 dStageSectorFile2_Tex_0x19F8[];
 extern u16 dFoxSpecial3_Lut_0x0008_palette[];
 extern u16 dFoxSpecial3_Lut_0x00B8_palette[];
 extern u16 dFoxSpecial3_Lut_0x0168_palette[];

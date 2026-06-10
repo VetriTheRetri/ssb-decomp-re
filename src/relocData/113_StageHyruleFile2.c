@@ -8,10 +8,6 @@
 
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageHyruleFile2_DL_0x3AA0[];
 extern Gfx dStageHyruleFile2_DL_0x5070[];
 extern Gfx dStageHyruleFile2_DL_0x658[];

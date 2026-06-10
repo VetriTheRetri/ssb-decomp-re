@@ -9,6 +9,57 @@
 #include "relocdata_types.h"
 
 /* @ 0x0000, 80 bytes — Vtx[5] */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0898_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0AC8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0CF8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1128_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x11D8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1A08_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x22E8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2398_palette[];
+extern u8 dStagePupupuBetaImages_Tex_0x0030[];
+extern u8 dStagePupupuBetaImages_Tex_0x0260[];
+extern u8 dStagePupupuBetaImages_Tex_0x0490[];
+extern u8 dStagePupupuBetaImages_Tex_0x08C0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0AF0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0D20[];
+extern u8 dStagePupupuBetaImages_Tex_0x1150[];
+extern u8 dStagePupupuBetaImages_Tex_0x1200[];
+extern u8 dStagePupupuBetaImages_Tex_0x1A30[];
+extern u8 dStagePupupuBetaImages_Tex_0x2260[];
+extern u8 dStagePupupuBetaImages_Tex_0x2310[];
+extern u8 dStagePupupuBetaImages_Tex_0x23C0[];
+extern Gfx dStagePupupuBeta1_DL_0x0378[];
+extern u16 dStagePupupuBetaImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0898_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0AC8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x0CF8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1128_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x11D8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x1A08_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2238_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x22E8_palette[];
+extern u16 dStagePupupuBetaImages_Lut_0x2398_palette[];
+extern u8 dStagePupupuBetaImages_Tex_0x0030[];
+extern u8 dStagePupupuBetaImages_Tex_0x0260[];
+extern u8 dStagePupupuBetaImages_Tex_0x0490[];
+extern u8 dStagePupupuBetaImages_Tex_0x08C0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0AF0[];
+extern u8 dStagePupupuBetaImages_Tex_0x0D20[];
+extern u8 dStagePupupuBetaImages_Tex_0x1150[];
+extern u8 dStagePupupuBetaImages_Tex_0x1200[];
+extern u8 dStagePupupuBetaImages_Tex_0x1A30[];
+extern u8 dStagePupupuBetaImages_Tex_0x2260[];
+extern u8 dStagePupupuBetaImages_Tex_0x2310[];
+extern u8 dStagePupupuBetaImages_Tex_0x23C0[];
 Vtx dStagePupupuBeta1_Vtx_0x0000[5] = {
 	#include <StagePupupuBeta1/Vtx_0x0000.vtx.inc.c>
 };
@@ -108,13 +159,10 @@ Gfx dStagePupupuBeta1_DL_0x1258[215] = {
 	#include <StagePupupuBeta1/DL_0x1258.dl.inc.c>
 };
 
-/* @ 0x1910, 132 bytes — DObjDesc[3].
- * The middle entry's `p_dobjs` is a chain-encoded pointer that
- * fixRelocChain rewrites at load time; held inline as the raw
- * placeholder since this fid currently has no .reloc file. */
+/* @ 0x1910, 132 bytes — DObjDesc[3]. */
 DObjDesc dStagePupupuBeta1_DObjDesc_0x1910[3] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)0xFFFF0588, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8 *)dStagePupupuBeta1_DL_0x1258 + 0x3C8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 

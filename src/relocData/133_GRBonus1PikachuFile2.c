@@ -11,10 +11,6 @@
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
-
-/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dBonus1CommonImages3_Lut_0x0008_palette[];
 extern u16 dBonus1CommonImages3_Lut_0x0298_palette[];
 extern u8 dBonus1CommonImages3_Tex_0x0030[];
@@ -24,6 +20,22 @@ extern u8 dBonus1CommonImages3_Tex_0x0210[];
 extern u16 dBonus1CommonImages3_Tex_0x02C0[];
 extern u8 dBonus1CommonImages3_Tex_0x02D0[];
 extern Gfx dGRBonus1PikachuFile2_DL_0x2030[];
+extern u16 dBonus1CommonImages3_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages3_Lut_0x0298_palette[];
+extern u8 dBonus1CommonImages3_Tex_0x0030[];
+extern u8 dBonus1CommonImages3_Tex_0x0078[];
+extern u8 dBonus1CommonImages3_Tex_0x0100[];
+extern u8 dBonus1CommonImages3_Tex_0x0210[];
+extern u16 dBonus1CommonImages3_Tex_0x02C0[];
+extern u8 dBonus1CommonImages3_Tex_0x02D0[];
+extern u16 dBonus1CommonImages3_Lut_0x0008_palette[];
+extern u16 dBonus1CommonImages3_Lut_0x0298_palette[];
+extern u8 dBonus1CommonImages3_Tex_0x0030[];
+extern u8 dBonus1CommonImages3_Tex_0x0078[];
+extern u8 dBonus1CommonImages3_Tex_0x0100[];
+extern u8 dBonus1CommonImages3_Tex_0x0210[];
+extern u16 dBonus1CommonImages3_Tex_0x02C0[];
+extern u8 dBonus1CommonImages3_Tex_0x02D0[];
 extern u16 dBonus1CommonImages3_Lut_0x0008_palette[];
 extern u16 dBonus1CommonImages3_Lut_0x0298_palette[];
 extern u8 dBonus1CommonImages3_Tex_0x0030[];

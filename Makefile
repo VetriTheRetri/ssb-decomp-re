@@ -172,15 +172,14 @@ RELOC_NAMES_MK := $(BUILD_DIR)/reloc_names.$(VERSION).mk
 $(shell mkdir -p $(BUILD_DIR) && python3 tools/genRelocNamesMk.py tools/relocFileDescriptions.$(VERSION).txt > $(RELOC_NAMES_MK))
 include $(RELOC_NAMES_MK)
 
-# Cross-file extern deps: each fid's vpk0.bin needs the .o files of every
-# fid it references via `extern X # -> file NNN` in its .reloc, so
-# fixRelocChain.py can resolve cross-file labels under -j parallel build.
-# Only needed when compiling relocData from C; otherwise the included file's
-# first target declaration would hijack make's default goal.
+# Cross-file extern resolution: fixRelocChain.py resolves extern chain
+# targets through a global symbol index materialized AFTER every relocData
+# .o has compiled (two-stage ordering; see RELOC_SYM_INDEX below). This
+# replaces the old per-fid order-only deps generated from `# -> file NNN`
+# annotations in .reloc files.
 ifeq ($(RELOC_DATA),1)
-RELOC_EXTERN_DEPS_MK := $(BUILD_DIR)/reloc_extern_deps.$(VERSION).mk
-$(shell python3 tools/genRelocExternDepsMk.py $(VERSION) > $(RELOC_EXTERN_DEPS_MK))
-include $(RELOC_EXTERN_DEPS_MK)
+RELOC_SYM_INDEX := $(BUILD_DIR)/relocSymIndex.txt
+RELOC_SYM_STAMP := $(BUILD_DIR)/src/relocData/.build/.symindex.stamp
 endif
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
@@ -1086,31 +1085,50 @@ RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
 # .data's LMA past it before merging both sections into a single blob. When
 # .text is empty (the common case — pure data files), the LMA shift is 0 and
 # the output is identical to the old .data-only extraction.
-$$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
+$$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o $$(RELOC_SYM_INDEX)
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
 	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
 	$$(V)cp assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
 	$$(V)if [ "$$(AUTO_RELOC)" = "1" ] && ! grep -qx "$(1)" assets/$(VERSION)/auto_reloc_bad.txt 2>/dev/null; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION); \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION) --sym-index $$(RELOC_SYM_INDEX); \
 	elif [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi
 
-$$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
+$$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o $$(RELOC_SYM_INDEX)
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
 	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
 	$$(V)if [ "$$(AUTO_RELOC)" = "1" ] && ! grep -qx "$(1)" assets/$(VERSION)/auto_reloc_bad.txt 2>/dev/null; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION); \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION) --sym-index $$(RELOC_SYM_INDEX); \
 	elif [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
 	fi
 endef
 
 $(foreach f,$(RELOC_C_FILES),$(eval $(call RELOC_C_RULE,$(f))))
+
+# Two-stage ordering for chain fixing: every per-fid .bin/.vpk0.bin rule
+# above depends on $(RELOC_SYM_INDEX), which is only produced once ALL
+# relocData .o files have compiled. This guarantees fixRelocChain.py can
+# resolve cross-file extern symbols regardless of -j scheduling. The stamp
+# re-runs whenever any .o recompiles; the index file's mtime only advances
+# when its content (the symbol layout) actually changes, so chain-fix
+# steps re-run exactly when some symbol moved.
+ifeq ($(RELOC_DATA),1)
+RELOC_ALL_OBJS := $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.build/$(f).o)
+
+$(RELOC_SYM_STAMP): $(RELOC_ALL_OBJS) tools/genRelocSymIndex.py
+	$(call print_2,Generating relocData symbol index:,$(RELOC_SYM_INDEX),$(BLUE))
+	$(V)$(PYTHON) tools/genRelocSymIndex.py --version $(VERSION) -o $(RELOC_SYM_INDEX).tmp
+	$(V)if cmp -s $(RELOC_SYM_INDEX).tmp $(RELOC_SYM_INDEX) 2>/dev/null; then rm -f $(RELOC_SYM_INDEX).tmp; else mv $(RELOC_SYM_INDEX).tmp $(RELOC_SYM_INDEX); fi
+	@touch $@
+
+$(RELOC_SYM_INDEX): $(RELOC_SYM_STAMP) ;
+endif
 
 # Expanded views are regenerated as a post-compile side-effect of `make all`.
 # Each stamp depends on its .o, so incremental edits to a hand-written

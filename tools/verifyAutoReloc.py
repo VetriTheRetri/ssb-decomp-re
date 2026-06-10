@@ -28,7 +28,7 @@ def _md5(path):
     return h.hexdigest()
 
 
-def _check_file(version, fid):
+def _check_file(version, fid, sym_index=None):
     o = os.path.join(PROJECT_DIR, 'build', version, 'src', 'relocData', '.build', f'{fid}.o')
     if not os.path.exists(o):
         return (fid, 'no_o', '')
@@ -60,10 +60,11 @@ def _check_file(version, fid):
              '--only-section=.text', '--only-section=.data',
              o, scratch], check=True, capture_output=True)
         # Run fixRelocChain --auto
-        r = subprocess.run(
-            ['python3', os.path.join(PROJECT_DIR, 'tools', 'fixRelocChain.py'),
-             scratch, o, '--auto', '--file-id', str(fid), '--version', version],
-            capture_output=True, text=True)
+        cmd = ['python3', os.path.join(PROJECT_DIR, 'tools', 'fixRelocChain.py'),
+               scratch, o, '--auto', '--file-id', str(fid), '--version', version]
+        if sym_index:
+            cmd += ['--sym-index', sym_index]
+        r = subprocess.run(cmd, capture_output=True, text=True)
         if r.returncode != 0:
             return (fid, 'auto_fail', r.stderr.strip().splitlines()[-1] if r.stderr else '')
         m1 = _md5(scratch)
@@ -111,9 +112,18 @@ def main():
         if args.limit:
             fids = fids[:args.limit]
 
+    # Materialize the global symbol index once so each fixRelocChain
+    # subprocess reads it instead of nm-scanning every .o.
+    sym_index = os.path.join(PROJECT_DIR, 'build', args.version, 'relocSymIndex.txt')
+    r = subprocess.run(
+        ['python3', os.path.join(PROJECT_DIR, 'tools', 'genRelocSymIndex.py'),
+         '--version', args.version, '-o', sym_index])
+    if r.returncode != 0:
+        sym_index = None
+
     results = []
     with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as ex:
-        futs = [ex.submit(_check_file, args.version, fid) for fid in fids]
+        futs = [ex.submit(_check_file, args.version, fid, sym_index) for fid in fids]
         for fu in concurrent.futures.as_completed(futs):
             results.append(fu.result())
 
@@ -143,12 +153,14 @@ def main():
             print(f'  fid={fid:5d}  {msg}')
 
     # Dump full list of mismatch+auto_fail fids to a file so cleanup steps
-    # can target them.
-    out = os.path.join(PROJECT_DIR, 'build', args.version, 'auto_reloc_bad.txt')
-    bad = sorted([fid for fid,_ in by_status.get('mismatch', []) + by_status.get('auto_fail', [])])
-    with open(out, 'w') as f:
-        for fid in bad: f.write(f'{fid}\n')
-    print(f'\nBad-fid list -> {out}')
+    # can target them. Only on full-corpus runs — a --fid/--limit run would
+    # clobber the complete list with a partial one.
+    if args.fid is None and not args.limit:
+        out = os.path.join(PROJECT_DIR, 'build', args.version, 'auto_reloc_bad.txt')
+        bad = sorted([fid for fid,_ in by_status.get('mismatch', []) + by_status.get('auto_fail', [])])
+        with open(out, 'w') as f:
+            for fid in bad: f.write(f'{fid}\n')
+        print(f'\nBad-fid list -> {out}')
 
 
 if __name__ == '__main__':

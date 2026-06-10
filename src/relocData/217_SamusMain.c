@@ -4,6 +4,12 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dSamusModel_DL_0xE0D8[];
+extern u32 dSamusModel_FTEmblem[];
+extern u32 dSamusModel_Stock[];
+extern MObjSub **dSamusModel_data_0xE008[];
 extern u8 dSamusShieldPose_data0[];
 extern u8 dSamusShieldPose_data0_end[];
 extern u8 dSamusShieldPose_shield_anim_joint_1[];
@@ -84,8 +90,8 @@ u32 dSamusMain_file_handles[16] = {
 	(u32)&dSamusMainMotion_EggLay_0x0084, /* extern -> 0x0084 */
 	(u32)&dSamusSpecial2_GrappleBeamDObjDesc, /* extern -> 0x0380 */
 	(u32)&dSamusSpecial1_ChargeShot_WeaponAttributes, /* extern -> 0x0000 */
-	(u32)((u8*)dSamusModel_Tex_0xD618 + 0xAC0), /* extern -> 0xE0D8 */
-	(u32)((u8*)dSamusModel_Tex_0xD618 + 0x9F0), /* extern -> 0xE008 */
+	(u32)dSamusModel_DL_0xE0D8, /* extern -> 0xE0D8 */
+	(u32)dSamusModel_data_0xE008, /* extern -> 0xE008 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -253,9 +259,9 @@ int *dSamusMain_stock_luts[5] = {
 
 /* @ 0x04F0, 12 bytes: FTAttributes.sprites target (was dSamusMain_pre+0x4F0) */
 FTSprites dSamusMain_sprites = {
-	(Sprite*)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x30), /* stock_sprite */
+	(Sprite*)dSamusModel_Stock, /* stock_sprite */
 	(int**)dSamusMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x248), /* emblem */
+	(Sprite*)dSamusModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x04FC, 264 bytes: FTAttributes.sub_0x4FC target (was dSamusMain_pre+0x4FC) */

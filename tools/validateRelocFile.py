@@ -460,13 +460,18 @@ def check_ftmotion_raw_hex(decl, path, diags):
         ))
 
 
-def check_ftmotion_termination(decl, path, diags):
+def check_ftmotion_termination(decl, path, diags, next_decl=None):
     """R019 — last macro of an `ftMotionCommand` script must be a flow
     terminator: `ftMotionCommandEnd()`, `ftMotionCommandGoto(…)`,
     `ftMotionCommandReturn()`, `ftMotionCommandSubroutine(…)`, or
-    `ftMotionCommandPauseScript()`. Anything else means execution falls
-    through past the script body into adjacent bytes — usually a sign
-    the block holds more than one logical script and needs splitting."""
+    `ftMotionCommandPauseScript()`.
+
+    A non-terminator ending is fine when the IMMEDIATELY FOLLOWING decl
+    is another ftMotionCommand script: execution falls through into the
+    next entry point, which is real engine behavior (shared script
+    tails). Only flag when there's nothing valid to fall into (end of
+    file, or a non-script block next) — that indicates a mis-typed or
+    mis-split body."""
     if not is_ftmotion_script(decl):
         return
     macros = decl.macro_lines("ftMotion")
@@ -474,6 +479,8 @@ def check_ftmotion_termination(decl, path, diags):
         return
     last_ln, last_txt = macros[-1]
     if not any(t + "(" in last_txt for t in _FTMOTION_TERMINATORS):
+        if next_decl is not None and is_ftmotion_script(next_decl):
+            return  # legitimate fall-through into the next script
         diags.append(Diag(
             path, last_ln, "R019", "warn",
             f"ftMotionCommand script '{decl.name}' doesn't end with a "
@@ -483,7 +490,7 @@ def check_ftmotion_termination(decl, path, diags):
         ))
 
 
-def check_ftmotion_terminator_not_last(decl, path, diags):
+def check_ftmotion_terminator_not_last(decl, path, diags, lines=None):
     """R020 — an `ftMotionCommand` script contains a hard terminator
     (`End`/`Goto`/`Return`) followed by more macros that are NOT
     themselves another terminator. After a hard terminator the script
@@ -508,6 +515,13 @@ def check_ftmotion_terminator_not_last(decl, path, diags):
 
     The *last* macro in the body is exempt (that's the script's own
     legitimate terminator, flagged by R019 if missing)."""
+    if lines is not None and decl.end_line:
+        body = "\n".join(lines[decl.start_line - 1:decl.end_line])
+        if "#if" in body:
+            # Version-divergent script run: the two regions pack different
+            # entries at different offsets, so per-piece symbols can't be
+            # shared. Keep as one block.
+            return
     if not is_ftmotion_script(decl):
         return
     macros = decl.macro_lines("ftMotion")
@@ -1084,6 +1098,10 @@ def _dl_inc_terminator_ok(c_path, raw_include_line):
         # Match a paired-word terminator like "0xDF000000, 0x00000000"
         if re.match(r"\{?\s*\{?\s*0xDF000000\s*,\s*0x00000000\s*\}?\s*\}?", s, re.I):
             return True, s
+        # F3DEX1-era end-DL opcode (0xB8) — some files carry legacy
+        # microcode fragments (e.g. SCStaffroll's unused sprite DLs).
+        if re.match(r"\{?\s*\{?\s*0xB8000000\s*,\s*0x00000000\s*\}?\s*\}?", s, re.I):
+            return True, s
         return False, s
     return None, None
 
@@ -1264,10 +1282,12 @@ def check_dobj_sentinel(decl, path, diags):
 
 _MOBJ_SPRITES_PALETTES_RE = re.compile(
     r"\(void\*\*\)\s*&?\s*([A-Za-z_][A-Za-z_0-9]*|0x[0-9A-Fa-f]+)"
+    r"(?:\[(\d+)\])?"
 )
 
 
-def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
+def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name,
+                                      palette_tables=frozenset()):
     """R012 — MObjSub.sprites / .palettes targets a `void *[N]` array
     whose entries must be u8 textures (for sprites) or u16 palettes
     (for palettes).
@@ -1288,11 +1308,11 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
     refs = []
     for _ln, txt in decl.body:
         for m in _MOBJ_SPRITES_PALETTES_RE.finditer(txt):
-            refs.append((_ln, m.group(1)))
+            refs.append((_ln, m.group(1), int(m.group(2)) if m.group(2) else 0))
     if len(refs) < 2:
         return
-    sprites_ln, sprites_target = refs[0]
-    palettes_ln, palettes_target = refs[1]
+    sprites_ln, sprites_target, sprites_base = refs[0]
+    palettes_ln, palettes_target, palettes_base = refs[1]
 
     def entries_of(name):
         d = decls_by_name.get(name)
@@ -1314,7 +1334,8 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
                 out.append((ln, sm.group(1)))
         return out
 
-    def check_role(target_sym, target_ln, field, expected_ctype):
+    def check_role(target_sym, target_ln, field, expected_ctype, base=0,
+                   stop=None):
         if target_sym.startswith("0x"):
             return
         target_decl = decls_by_name.get(target_sym)
@@ -1333,6 +1354,8 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
         # an MObjSub-dispatch table, not a texture/palette array).
         if (target_decl.is_pointer and target_decl.ctype != "void"
                 and target_decl.ctype != expected_ctype):
+            if field == "sprites" and target_decl.ctype == "u16":
+                return  # palette-swap set referenced through .sprites
             diags.append(Diag(
                 path, target_ln, "R012", "warn",
                 f"'{decl.name}'.{field} points at '{target_sym}' which "
@@ -1345,10 +1368,44 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
         entries = entries_of(target_sym)
         if entries is None:
             return
+        # `&table[N]` sub-range refs: only entries from index N (up to the
+        # other field's base, when both point into the SAME table) carry
+        # this field's expected type — mixed sprite/palette tables are
+        # common in model files.
+        if base or stop is not None:
+            kept = []
+            idx = -1
+            d2 = decls_by_name.get(target_sym)
+            body_syms = entries
+            # entries_of skips NULLs, so recompute indexes over raw body.
+            idxed = []
+            i = 0
+            for ln2, txt2 in (d2.body if d2 is not None else []):
+                s2 = _strip_comments(txt2).strip().rstrip(",").strip()
+                if not s2 or s2 == "};":
+                    continue
+                if s2 != "NULL":
+                    m2 = re.match(r"^(?:\(.+?\))?\s*&?\s*([A-Za-z_]\w*)", s2)
+                    if m2:
+                        idxed.append((i, ln2, m2.group(1)))
+                i += 1
+            entries = [(ln2, sym2) for (i2, ln2, sym2) in idxed
+                       if i2 >= base and (stop is None or i2 < stop)]
+        # Palette-swap heuristic at entry level: a "sprites" table whose
+        # resolvable entries are mostly u16 palettes is a palette-swap
+        # animation set; per-entry complaints add no signal there.
+        if field == "sprites":
+            kinds = [decls_by_name[s].ctype for _l, s in entries
+                     if s in decls_by_name]
+            if kinds and sum(1 for k in kinds if k == "u16") * 2 >= len(kinds):
+                return
         for ln, sym in entries:
             entry_decl = decls_by_name.get(sym)
             if entry_decl is None:
                 continue
+            if (expected_ctype == "u8"
+                    and ("palette" in sym or "_Lut_" in sym)):
+                continue  # palette member of a mixed swap set
             actual = entry_decl.ctype
             ok = (actual == expected_ctype)
             # Allow palette-typed (`u16`) blocks in palettes arrays. Allow
@@ -1367,8 +1424,16 @@ def check_mobjsub_pointer_array_types(decl, path, diags, decls_by_name):
                 f"textures; palettes arrays should hold u16 palettes)"
             ))
 
-    check_role(sprites_target, sprites_ln, "sprites", "u8")
-    check_role(palettes_target, palettes_ln, "palettes", "u16")
+    same = sprites_target == palettes_target
+    lo, hi = sorted((sprites_base, palettes_base))
+    # Palette-swap animations: a sprites field pointing at a table that is
+    # ALSO referenced as palettes (by any MObjSub) legitimately holds u16
+    # palette frames — the anim swaps palettes, not pixel data.
+    if sprites_target not in palette_tables:
+        check_role(sprites_target, sprites_ln, "sprites", "u8", sprites_base,
+                   hi if (same and sprites_base == lo) else None)
+    check_role(palettes_target, palettes_ln, "palettes", "u16", palettes_base,
+               hi if (same and palettes_base == lo) else None)
 
 
 _TEX_ANNOTATION_RE = re.compile(
@@ -1389,6 +1454,26 @@ def _decl_has_tex_annotation(decl, lines):
     end = decl.start_line  # 1-based — slice end-exclusive
     blob = "\n".join(lines[start:end])
     return bool(_TEX_ANNOTATION_RE.search(blob))
+
+
+_BITMAP_OWNED_CACHE = {}
+
+
+def _bitmap_owned_names(path, lines):
+    """Names referenced from any `Bitmap X[] = { ... };` initializer in the
+    file. Sprite/Bitmap-owned textures carry their fmt/dims in the Sprite
+    struct and are previewed by the sprite pipeline — they don't need an
+    `@tex` annotation."""
+    cached = _BITMAP_OWNED_CACHE.get(path)
+    if cached is not None:
+        return cached
+    text = "\n".join(lines)
+    names = set()
+    for m in re.finditer(r"\bBitmap\s+\w+\s*\[[^\]]*\]\s*=\s*\{(.*?)\};",
+                         text, re.DOTALL):
+        names.update(re.findall(r"[A-Za-z_]\w+", m.group(1)))
+    _BITMAP_OWNED_CACHE[path] = names
+    return names
 
 
 def check_tex_preview_annotation(decl, path, diags, lines):
@@ -1412,7 +1497,14 @@ def check_tex_preview_annotation(decl, path, diags, lines):
     looks_like_tex = bool(_TEX_NAME_RE.search(decl.name))
     if not (has_tex_include or looks_like_tex):
         return
+    # Pad fragments split off texture blocks (e.g. `Tex_0xNNNN_jp_pad`)
+    # and blocks too small to be a meaningful texture aren't previewable
+    # images — no annotation needed.
+    if decl.name.endswith('_pad') or (decl.size or 0) < 16:
+        return
     if _decl_has_tex_annotation(decl, lines):
+        return
+    if decl.name in _bitmap_owned_names(path, lines):
         return
     diags.append(Diag(
         path, decl.start_line, "R016", "warn",
@@ -2079,6 +2171,9 @@ def validate(c_path, enabled_rules):
     }
 
     diags = []
+    decl_after = {}
+    for i, d in enumerate(decls):
+        decl_after[d.name] = decls[i + 1] if i + 1 < len(decls) else None
     for d in decls:
         if "R001" in enabled_rules or "R002" in enabled_rules:
             check_aobjevent32_termination(d, c_path, diags)
@@ -2110,17 +2205,50 @@ def validate(c_path, enabled_rules):
         if "R018" in enabled_rules:
             check_ftmotion_raw_hex(d, c_path, diags)
         if "R019" in enabled_rules:
-            check_ftmotion_termination(d, c_path, diags)
+            check_ftmotion_termination(d, c_path, diags,
+                                        decl_after.get(d.name))
         if "R020" in enabled_rules:
-            check_ftmotion_terminator_not_last(d, c_path, diags)
+            check_ftmotion_terminator_not_last(d, c_path, diags, lines)
         if "R022" in enabled_rules:
             check_mobjsub_signature_in_untyped(d, c_path, diags)
+    # R004/R019/R020 hits inside `#if defined(REGION_*)` regions are
+    # exempt: the data is version-divergent — offsets and successor
+    # blocks differ per version, so split symbols can't be shared and
+    # fall-through analysis is meaningless across an #else boundary.
+    if any(dg.rule in ("R004", "R019", "R020") for dg in diags):
+        guarded = set()
+        depth = 0
+        for i, ln in enumerate(lines, 1):
+            s = ln.strip()
+            if s.startswith("#if"):
+                depth += 1
+            elif s.startswith("#endif"):
+                depth = max(0, depth - 1)
+            elif depth > 0:
+                guarded.add(i)
+            if s.startswith(("#if", "#else", "#elif")):
+                guarded.add(i)
+        diags = [dg for dg in diags
+                 if not (dg.rule in ("R004", "R019", "R020")
+                         and dg.line in guarded)]
+
     if ("R012" in enabled_rules or "R021" in enabled_rules
             or "R023" in enabled_rules):
         decls_by_name = {d.name: d for d in decls}
         if "R012" in enabled_rules:
+            palette_tables = set()
             for d in decls:
-                check_mobjsub_pointer_array_types(d, c_path, diags, decls_by_name)
+                if d.ctype != "MObjSub":
+                    continue
+                refs12 = []
+                for _ln12, txt12 in d.body:
+                    for m12 in _MOBJ_SPRITES_PALETTES_RE.finditer(txt12):
+                        refs12.append(m12.group(1))
+                if len(refs12) >= 2:
+                    palette_tables.add(refs12[1])
+            for d in decls:
+                check_mobjsub_pointer_array_types(d, c_path, diags, decls_by_name,
+                                                  palette_tables)
         if "R021" in enabled_rules:
             for d in decls:
                 check_pointer_indirection_undertyped(d, c_path, diags,

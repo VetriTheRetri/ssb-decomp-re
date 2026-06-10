@@ -4,6 +4,13 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dCaptainModel_FTEmblem[];
+extern MObjSub *dCaptainModel_Joint_0x0080_post_sub_0x118C[];
+extern MObjSub *dCaptainModel_Joint_0x0080_post_sub_0x11C8[];
+extern u32 dCaptainModel_Stock[];
+extern Gfx dCaptainSpecial3_DL_0x0760[];
 extern u8 dCaptainShieldPose_data0[];
 extern u8 dCaptainShieldPose_data0_end[];
 extern u8 dCaptainShieldPose_shield_anim_joint_1[];
@@ -79,7 +86,7 @@ extern u8 dCaptainSpecial3_gap_0x0708_sub_0x18[];
 u32 dCaptainMain_file_handles[3] = {
 
 	0x0001001B, /* extern -> 0x006C */
-	(u32)((u8*)dCaptainSpecial3_gap_0x0708_sub_0x18 + 0x40), /* extern -> 0x0760 */
+	(u32)dCaptainSpecial3_DL_0x0760, /* extern -> 0x0760 */
 	(u32)&dCaptainSpecial2_FalconKickDObjDesc, /* extern -> 0x0B08 */
 };
 
@@ -105,7 +112,7 @@ FTHiddenPart dCaptainMain_hiddenparts[4] = {
 
 /* @ 0x005C, 120 bytes: FTAttributes.sub_0x05C target (was dCaptainMain_pre+0x5C) */
 FTModelPart dCaptainMain_modelparts_desc_0x05C[6] = {
-	{ (Gfx*)&dCaptainModel_Joint_0x2A98_DisplayList, (MObjSub**)((u8*)dCaptainModel_Joint_0x0080_post + 0x118C), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x784, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_Joint_0x2A98_DisplayList, (MObjSub**)dCaptainModel_Joint_0x0080_post_sub_0x118C, (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x784, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_Joint_0x6AF0_DisplayList, (MObjSub**)&dCaptainModel_gap_0x40B0_sub_0x17A4, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x694, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x16D8, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x15B8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x18E4, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x1A30, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x1988, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x1B7C, NULL, 0x00 },
@@ -115,7 +122,7 @@ FTModelPart dCaptainMain_modelparts_desc_0x05C[6] = {
 
 /* @ 0x00D4, 120 bytes: FTAttributes.sub_0x0D4 target (was dCaptainMain_pre+0xD4) */
 FTModelPart dCaptainMain_modelparts_desc_0x0D4[6] = {
-	{ (Gfx*)&dCaptainModel_Joint_0x3308_DisplayList, (MObjSub**)((u8*)dCaptainModel_Joint_0x0080_post + 0x11C8), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x7B0, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_Joint_0x3308_DisplayList, (MObjSub**)dCaptainModel_Joint_0x0080_post_sub_0x11C8, (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x7B0, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_Joint_0x7148_DisplayList, (MObjSub**)&dCaptainModel_gap_0x40B0_sub_0x17D4, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x6B4, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x928, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x808, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0xB34, NULL, 0x00 },
 	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0xC80, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0xBD8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0xDCC, NULL, 0x00 },
@@ -213,9 +220,9 @@ int *dCaptainMain_stock_luts[6] = {
 
 /* @ 0x03A0, 12 bytes: FTAttributes.sprites target (was dCaptainMain_pre+0x3A0) */
 FTSprites dCaptainMain_sprites = {
-	(Sprite*)((u8*)dCaptainModel_gap_0xC5D0_sub_0xA8 + 0x30), /* stock_sprite */
+	(Sprite*)dCaptainModel_Stock, /* stock_sprite */
 	(int**)dCaptainMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dCaptainModel_gap_0xC5D0_sub_0xA8 + 0x1D0), /* emblem */
+	(Sprite*)dCaptainModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x03AC, 208 bytes: FTAttributes.sub_0x3AC target (was dCaptainMain_pre+0x3AC) */

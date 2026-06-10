@@ -59,6 +59,9 @@ ftMotionCommand dFoxMainMotion_Run[] = {
 	ftMotionPlayFGM(nSYAudioFGMFoxFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dFoxMainMotion_0x0060[] = {
 	ftMotionCommandGoto(dFoxMainMotion_Run),
 };
 
@@ -861,13 +864,22 @@ ftMotionCommand dFoxMainMotion_AttackSomething_0x0B34[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dFoxMainMotion_AttackSomething_0x0B34),
+};
+
+ftMotionCommand dFoxMainMotion_0x0B68[] = {
 	ftMotionPlayVoice(nSYAudioVoiceFoxDamage),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dFoxMainMotion_AttackSomething_0x0B34),
+};
+
+ftMotionCommand dFoxMainMotion_0x0B98[] = {
 	ftMotionCommandGoto(dFoxMainMotion_AttackSomething_0x0B34),
+};
+
+ftMotionCommand dFoxMainMotion_0x0BA0[] = {
 	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
@@ -1525,6 +1537,9 @@ ftMotionCommand dFoxMainMotion_FireFoxGround[] = {
 	ftMotionCommandEffect(6, nEFKindSparkleWhite, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dFoxMainMotion_0x1928[] = {
 	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dFoxMainMotion_FireFoxGround + 0x44)),                         /* back-Goto to internal LoopBegin (word 17) */
 };
 
@@ -1552,6 +1567,9 @@ ftMotionCommand dFoxMainMotion_FireFoxGround[] = {
 	ftMotionCommandEffect(6, nEFKindSparkleWhite, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dFoxMainMotion_0x1928[] = {
 	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dFoxMainMotion_FireFoxGround + 0x44)),
 };
 
@@ -1635,9 +1653,21 @@ ftMotionCommand dFoxMainMotion_Shine[] = {
 /* Special-move dispatch table — 4 Gotos + End + PAD; identical bytes US/JP. */
 ftMotionCommand dFoxMainMotion_SpecialDispatch[] = {
 	ftMotionCommandGoto(dFoxMainMotion_ShineStart),
+};
+
+ftMotionCommand dFoxMainMotion_0x1A80[] = {
 	ftMotionCommandGoto(dFoxMainMotion_SwitchDirectionShine),
+};
+
+ftMotionCommand dFoxMainMotion_0x1A88[] = {
 	ftMotionCommandGoto(dFoxMainMotion_Reflecting),
+};
+
+ftMotionCommand dFoxMainMotion_0x1A90[] = {
 	ftMotionCommandGoto(dFoxMainMotion_Shine),
+};
+
+ftMotionCommand dFoxMainMotion_0x1A98[] = {
 	ftMotionCommandEnd(),
 };
 

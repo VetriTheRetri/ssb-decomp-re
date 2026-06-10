@@ -444,6 +444,7 @@ PAD(8);
 #endif
 
 /* Texture data @ 0x1BA0 (US=1592, JP=520 bytes) */
+/* @tex fmt=CI4 dim=4x64 lut=dStageYamabukiFile2_Lut_0x1B78_palette */
 u8 dStageYamabukiFile2_Tex_0x1BA0[
 #if defined(REGION_JP)
 	520
@@ -2810,7 +2811,7 @@ u8 dStageYamabukiFile2_Tex_0xBAB8[1544] = {
 	#include <StageYamabukiFile2/Tex_0xBAB8.tex.inc.c>
 };
 
-/* @tex fmt=CI4 dim=40x77 */
+/* @tex fmt=CI4 dim=8x385 */
 u8 dStageYamabukiFile2_Tex_0xC0C0[0x604] = {
 	#include <StageYamabukiFile2/Tex_0xC0C0.tex.inc.c>
 };

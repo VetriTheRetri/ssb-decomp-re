@@ -73,6 +73,9 @@ ftMotionCommand dMarioMainMotion_Run[] = {
 	ftMotionPlayFGM(nSYAudioFGMMarioFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dMarioMainMotion_0x00B0[] = {
 	ftMotionCommandGoto(dMarioMainMotion_Run),
 };
 
@@ -228,7 +231,13 @@ ftMotionCommand dMarioMainMotion_DownForwardD[] = {
 
 ftMotionCommand dMarioMainMotion_DownForwardU[] = {
 	ftMotionCommandGoto(dMarioMainMotion_DownForwardD),
+};
+
+ftMotionCommand dMarioMainMotion_0x02AC[] = {
 	ftMotionCommandGoto(dMarioMainMotion_DownForwardD),
+};
+
+ftMotionCommand dMarioMainMotion_0x02B4[] = {
 	ftMotionCommandGoto(dMarioMainMotion_DownForwardD),
 };
 
@@ -1387,6 +1396,9 @@ ftMotionCommand dMarioMainMotion_SuperJumpPunchAir_0x16CC[] = {
 
 ftMotionCommand dMarioMainMotion_SuperJumpPunchAir_0x17A8[] = {
 	ftMotionCommandGoto(dMarioMainMotion_SuperJumpPunchAir_0x16CC),
+};
+
+ftMotionCommand dMarioMainMotion_0x17B0[] = {
 	ftMotionCommandEnd(),
 };
 

@@ -4,6 +4,12 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dKirbyModel_FTEmblem[];
+extern MObjSub *dKirbyModel_Joint_0x0020_post_sub_0x450[];
+extern u32 dKirbyModel_Stock[];
+extern AObjEvent32 **dKirbyModel_gap_0x31A0[];
 extern u8 dKirbyShieldPose_data0[];
 extern u8 dKirbyShieldPose_data0_end[];
 extern u8 dKirbyShieldPose_shield_anim_joint_1[];
@@ -191,7 +197,7 @@ FTHiddenPart dKirbyMain_hiddenparts[8] = {
 
 /* @ 0x00CC, 600 bytes: FTAttributes.sub_0x0CC target (was dKirbyMain_pre+0xCC) */
 FTModelPart dKirbyMain_modelparts_desc_0x0CC[30] = {
-	{ (Gfx*)&dKirbyModel_Joint_0x0DB0_DisplayList, (MObjSub**)((u8*)dKirbyModel_JointVerts_Vtx + 0x470), (AObjEvent32**)&dKirbyModel_gap_0x1970_sub_0x2A0, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_Joint_0x0DB0_DisplayList, (MObjSub**)dKirbyModel_Joint_0x0020_post_sub_0x450, (AObjEvent32**)&dKirbyModel_gap_0x1970_sub_0x2A0, NULL, 0x00 },
 	{ (Gfx*)&dKirbyModel_Joint_0x27B0_DisplayList, (MObjSub**)&dKirbyModel_gap_0x1970_sub_0x730, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x2E4, NULL, 0x00 },
 	{ (Gfx*)&dKirbyModel_DL_0x3E78, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x8DC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1194, NULL, 0x00 },
 	{ (Gfx*)&dKirbyModel_DL_0x4728, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x129C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1940, NULL, 0x00 },
@@ -269,7 +275,7 @@ FTTexturePart dKirbyMain_textureparts_container = { 0x06, { 0x00, 0x00 } };
 FTCommonPartContainer dKirbyMain_commonparts_container = {
 	{
 		{ (DObjDesc*)&dKirbyModel_JointTree, (MObjSub***)&dKirbyModel_JointVerts_Vtx, (AObjEvent32***)((u8*)dKirbyModel_JointTree + 0x4D8), 0x00 },
-		{ (DObjDesc*)&dKirbyModel_JointTree_0x2CD0, (MObjSub***)&dKirbyModel_gap_0x1970_sub_0x2C0, (AObjEvent32***)((u8*)dKirbyModel_JointTree_0x2CD0 + 0x4D0), 0x00 },
+		{ (DObjDesc*)&dKirbyModel_JointTree_0x2CD0, (MObjSub***)&dKirbyModel_gap_0x1970_sub_0x2C0, (AObjEvent32***)dKirbyModel_gap_0x31A0, 0x00 },
 	},
 };
 
@@ -342,9 +348,9 @@ int *dKirbyMain_stock_luts[5] = {
 
 /* @ 0x0640, 12 bytes: FTAttributes.sprites target (was dKirbyMain_pre+0x640) */
 FTSprites dKirbyMain_sprites = {
-	(Sprite*)((u8*)dKirbyModel_gap_0x1D530_sub_0x80 + 0x30), /* stock_sprite */
+	(Sprite*)dKirbyModel_Stock, /* stock_sprite */
 	(int**)dKirbyMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dKirbyModel_gap_0x1D530_sub_0x80 + 0x228), /* emblem */
+	(Sprite*)dKirbyModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x064C, 216 bytes: FTAttributes.sub_0x64C target (was dKirbyMain_pre+0x64C) */

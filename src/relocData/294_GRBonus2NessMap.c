@@ -5,6 +5,9 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern DObjDesc dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x200[];
 extern Sprite dBonus1CommonBackground_0x26c88[];
 extern DObjDesc dGRBonus2NessFile2_Layer0DObj[];
 extern DObjDesc dGRBonus2NessFile2_Layer1DObj[];
@@ -43,7 +46,7 @@ MPGroundData dGRBonus2NessMap_header =
     9600,  /* map_bound_right */
     -9600,  /* map_bound_left */
     nSYAudioBGM1PBonusStage,  /* bgm_id */
-    (void *)((u8 *)dGRBonus2NessFile2_Layer1Anim_AnimJoint + 0x200),  /* map_nodes */
+    (void *)dGRBonus2NessFile2_Layer1Anim_AnimJoint_0x200,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */
     7000,  /* camera_bound_team_top */

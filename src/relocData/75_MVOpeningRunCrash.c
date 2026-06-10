@@ -24,10 +24,10 @@ extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3714[];
 extern u32 dMVOpeningRunCrash_MatAnimJoint_0x37F4[];
 extern u32 dMVOpeningRunCrash_MatAnimJoint_0x38D4[];
 extern u32 dMVOpeningRunCrash_MatAnimJoint_0x39B4[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A94[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A98[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3A9C[];
-extern u32 dMVOpeningRunCrash_MatAnimJoint_0x3AA0[];
+extern AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3A94[];
+extern AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3A98[];
+extern AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3A9C[];
+extern AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3AA0[];
 
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
@@ -589,10 +589,10 @@ Gfx dMVOpeningRunCrash_DL_0x35C8[6] = {
 /* DObjDesc: - @ 0x35F8 (6 entries) */
 DObjDesc dMVOpeningRunCrash_DObjDesc_0x35F8[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x480), { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x640), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x7B8), { 0.0f, 0.0f, 0.0f }, { 3.1415929794311523f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0xAA8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningRunCrash_DL_0x2FA0, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningRunCrash_DL_0x3160, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningRunCrash_DL_0x32D8, { 0.0f, 0.0f, 0.0f }, { 3.1415929794311523f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningRunCrash_DL_0x35C8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
@@ -844,19 +844,19 @@ u32 dMVOpeningRunCrash_MatAnimJoint_0x39B4[] = {
 	aobjEvent32End(),
 };
 
-u32 dMVOpeningRunCrash_MatAnimJoint_0x3A94[] = {
-	(u32)((u8*)dMVOpeningRunCrash_MatAnimJoint_0x3700 + 0x14),
+AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3A94[] = {
+	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x3714,
 };
 
-u32 dMVOpeningRunCrash_MatAnimJoint_0x3A98[] = {
-	(u32)((u8*)dMVOpeningRunCrash_MatAnimJoint_0x3700 + 0xF4),
+AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3A98[] = {
+	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x37F4,
 };
 
-u32 dMVOpeningRunCrash_MatAnimJoint_0x3A9C[] = {
-	(u32)((u8*)dMVOpeningRunCrash_MatAnimJoint_0x3700 + 0x1D4),
+AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3A9C[] = {
+	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x38D4,
 };
 
-u32 dMVOpeningRunCrash_MatAnimJoint_0x3AA0[] = {
-	(u32)((u8*)dMVOpeningRunCrash_MatAnimJoint_0x3700 + 0x2B4),
-	aobjEvent32End(),
+AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3AA0[] = {
+	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x39B4,
+	NULL,
 };

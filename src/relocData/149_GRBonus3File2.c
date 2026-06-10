@@ -12,14 +12,14 @@ extern Gfx dGRBonus3File2_DL_0x2EF0[];
 extern Gfx dGRBonus3File2_DL_0x5F80[];
 extern Gfx dGRBonus3File2_DL_0x5430[];
 extern u8 dGRBonus3File2_Tex_0x0030[];
-extern u8 dGRBonus3File2_Tex_0x00E0[];
-extern u8 dGRBonus3File2_Tex_0x0190[];
-extern u8 dGRBonus3File2_Tex_0x0240[];
-extern u8 dGRBonus3File2_Tex_0x02F0[];
+extern u16 dGRBonus3File2_palette_0x00E0[];
+extern u16 dGRBonus3File2_palette_0x0190[];
+extern u16 dGRBonus3File2_palette_0x0240[];
+extern u16 dGRBonus3File2_palette_0x02F0[];
 extern u8 dGRBonus3File2_Tex_0x0398[];
 extern u8 dGRBonus3File2_Tex_0x0430[];
 extern u8 dGRBonus3File2_Tex_0x04B8[];
-extern u8 dGRBonus3File2_Tex_0x06E0[];
+extern u16 dGRBonus3File2_palette_0x06E0[];
 extern u8 dGRBonus3File2_Tex_0x0790[];
 extern u8 dGRBonus3File2_Tex_0x07E0[];
 extern u8 dGRBonus3File2_Tex_0x0A10[];
@@ -91,7 +91,7 @@ extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[];
 extern u32* dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[];
-extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[];
+extern AObjEvent32 *dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[];
 
 
 /* Raw data from file offset 0x0000 to 0x3490 (13456 bytes) */
@@ -116,9 +116,11 @@ u16 dGRBonus3File2_gap_0x0000_sub_0xB8[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x00E0 (was gap+0xE0, 136 bytes) */
-u8 dGRBonus3File2_Tex_0x00E0[136] = {
-	#include <GRBonus3File2/Tex_0x00E0.tex.inc.c>
+u16 dGRBonus3File2_palette_0x00E0[64] = {
+	#include <GRBonus3File2/palette_0x00E0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0168 (was gap+0x168, 40 bytes) */
 u16 dGRBonus3File2_gap_0x0000_sub_0x168[16] = {
@@ -127,9 +129,11 @@ u16 dGRBonus3File2_gap_0x0000_sub_0x168[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x0190 (was gap+0x190, 136 bytes) */
-u8 dGRBonus3File2_Tex_0x0190[136] = {
-	#include <GRBonus3File2/Tex_0x0190.tex.inc.c>
+u16 dGRBonus3File2_palette_0x0190[64] = {
+	#include <GRBonus3File2/palette_0x0190.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0218 (was gap+0x218, 40 bytes) */
 u16 dGRBonus3File2_gap_0x0000_sub_0x218[16] = {
@@ -138,9 +142,11 @@ u16 dGRBonus3File2_gap_0x0000_sub_0x218[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x0240 (was gap+0x240, 136 bytes) */
-u8 dGRBonus3File2_Tex_0x0240[136] = {
-	#include <GRBonus3File2/Tex_0x0240.tex.inc.c>
+u16 dGRBonus3File2_palette_0x0240[64] = {
+	#include <GRBonus3File2/palette_0x0240.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x02C8 (was gap+0x2C8, 40 bytes) */
 u16 dGRBonus3File2_gap_0x0000_sub_0x2C8[16] = {
@@ -149,9 +155,11 @@ u16 dGRBonus3File2_gap_0x0000_sub_0x2C8[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x02F0 (was gap+0x2F0, 136 bytes) */
-u8 dGRBonus3File2_Tex_0x02F0[136] = {
-	#include <GRBonus3File2/Tex_0x02F0.tex.inc.c>
+u16 dGRBonus3File2_palette_0x02F0[64] = {
+	#include <GRBonus3File2/palette_0x02F0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0378 (was gap+0x378, 32 bytes) */
 u16 dGRBonus3File2_gap_0x0000_sub_0x378[16] = {
@@ -187,9 +195,11 @@ u16 dGRBonus3File2_gap_0x0000_sub_0x6C0[16] = {
 };
 
 /* gap sub-block @ 0x06E0 (was gap+0x6E0, 136 bytes) */
-u8 dGRBonus3File2_Tex_0x06E0[136] = {
-	#include <GRBonus3File2/Tex_0x06E0.tex.inc.c>
+u16 dGRBonus3File2_palette_0x06E0[64] = {
+	#include <GRBonus3File2/palette_0x06E0.palette.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x0768 (was gap+0x768, 40 bytes) */
 u16 dGRBonus3File2_gap_0x0000_sub_0x768[16] = {
@@ -1146,8 +1156,8 @@ u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[] = {
 
 u32 * dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6878[] = { dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600 };
 
-u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[] = {
-	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0),
-	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828),
-	aobjEvent32End(),
+AObjEvent32 *dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x687C[] = {
+	(AObjEvent32 *)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0),
+	(AObjEvent32 *)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828),
+	NULL,
 };

@@ -1573,6 +1573,7 @@ u16 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xC[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x6830 (was gap+0x34, 128 bytes) */
+/* @tex fmt=CI4 dim=4x16 lut=dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xC */
 u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0x34[128] = {
 	#include <ITCommonObject/gap_0x67FC_sub_0x34.tex.inc.c>
 };
@@ -4705,6 +4706,7 @@ u16 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_LUT[16] = {
 PAD(8);
 
 /* @ 0x13280, 512 bytes — texture image */
+/* @tex fmt=CI4 dim=8x32 lut=dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_LUT */
 u8 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Tex[512] = {
 	#include <ITCommonObject/DogasSmog_Weapon_matanimjoints_trailing_Tex.tex.inc.c>
 };

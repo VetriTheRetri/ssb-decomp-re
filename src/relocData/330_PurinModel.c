@@ -97,16 +97,17 @@ extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB08[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xAE0[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB00[];
 extern MObjSub *dPurinModel_gap_0x24F8_sub_0xB18[];
-extern u8 dPurinModel_Tex_0x69F8[];
-extern u8 dPurinModel_Tex_0x6A20[];
-extern u8 dPurinModel_Tex_0x6A48[];
-extern u8 dPurinModel_Tex_0x6A98[];
-extern u8 dPurinModel_Tex_0x6AC0[];
+extern u16 dPurinModel_palette_0x69F8[];
+extern u16 dPurinModel_palette_0x6A20[];
+extern u16 dPurinModel_palette_0x6A48[];
+extern u16 dPurinModel_palette_0x6A98[];
+extern /* @tex fmt=CI4 dim=32x35 */
+u8 dPurinModel_Tex_0x6AC0[];
 extern u8 dPurinModel_Tex_0x6CF0[];
 extern u8 dPurinModel_Tex_0x6F20[];
 extern u8 dPurinModel_Tex_0x7150[];
-extern u8 dPurinModel_Tex_0x7358[];
-extern u8 dPurinModel_Tex_0x7380[];
+extern u16 dPurinModel_palette_0x7358[];
+extern u16 dPurinModel_palette_0x7380[];
 extern u16 dPurinModel_gap_0x6028_sub_0x880[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8A8[];
 extern u16 dPurinModel_gap_0x6028_sub_0x8D0[];
@@ -144,7 +145,7 @@ MObjSub **dPurinModel_JointVerts_Vtx[26] = {
 /* void pointer array @ 0x68 (6 entries) — sprite set for joint 0x60,
  * absorbing what used to be `Joint_0x0060_post + 0x8`. */
 void *dPurinModel_Joint_0x0060_post[6] = {
-	dPurinModel_Tex_0x7380,
+	dPurinModel_palette_0x7380,
 	NULL,
 	NULL,
 	NULL,
@@ -156,12 +157,12 @@ void *dPurinModel_Joint_0x0060_post[6] = {
 void *dPurinModel_Joint_0x0080_post[8] = {
 	dPurinModel_Tex_0x6F20,
 	NULL,
-	dPurinModel_Tex_0x7358,
-	dPurinModel_Tex_0x69F8,
-	dPurinModel_Tex_0x6A20,
-	dPurinModel_Tex_0x6A48,
-	dPurinModel_Tex_0x6A98,
-	dPurinModel_Tex_0x7380,
+	dPurinModel_palette_0x7358,
+	dPurinModel_palette_0x69F8,
+	dPurinModel_palette_0x6A20,
+	dPurinModel_palette_0x6A48,
+	dPurinModel_palette_0x6A98,
+	dPurinModel_palette_0x7380,
 };
 
 /* void pointer array @ 0xA0 (8 entries) — sprite set for joint 0xA0 */
@@ -173,15 +174,15 @@ void *dPurinModel_Joint_0x00A0_post[8] = {
 	dPurinModel_Tex_0x6CF0,
 	dPurinModel_Tex_0x7150,
 	NULL,
-	dPurinModel_Tex_0x7358,
+	dPurinModel_palette_0x7358,
 };
 
 /* void pointer array @ 0xC0 (8 entries) — sprite+palette set for joint 0xC0 */
 void *dPurinModel_Joint_0x00C0_post[8] = {
-	dPurinModel_Tex_0x69F8,
-	dPurinModel_Tex_0x6A20,
-	dPurinModel_Tex_0x6A48,
-	dPurinModel_Tex_0x6A98,
+	dPurinModel_palette_0x69F8,
+	dPurinModel_palette_0x6A20,
+	dPurinModel_palette_0x6A48,
+	dPurinModel_palette_0x6A98,
 	dPurinModel_palette_0x7628,
 	dPurinModel_palette_0x7588,
 	dPurinModel_palette_0x75B0,
@@ -223,7 +224,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x10[1] = {
 		0.24688799679279327f, 0.22193999588489532f,
 		0.43902501463890076f, 0.4073210060596466f,
 		0.24688799679279327f, 0.43902501463890076f,
-		(void**)((u8*)dPurinModel_Joint_0x0080_post + 0x8),
+		(void**)&dPurinModel_Joint_0x0080_post[2],
 		0x0005,
 		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
@@ -246,13 +247,13 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x88[1] = {
 	{
 		0x0000,
 		G_IM_FMT_CI, G_IM_SIZ_16b,
-		(void**)((u8*)dPurinModel_Joint_0x0080_post + 0x1C),
+		(void**)&dPurinModel_Joint_0x0080_post[7],
 		0x004E, 0x0008, 0x0020, 0x0020,
 		0,
 		0.24690000712871552f, 0.22190000116825104f,
 		0.4390000104904175f, 0.4072999954223633f,
 		0.24690000712871552f, 0.4390000104904175f,
-		(void**)((u8*)dPurinModel_Joint_0x00A0_post + 0x1C),
+		(void**)&dPurinModel_Joint_0x00A0_post[7],
 		0x0005,
 		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0020,
@@ -281,7 +282,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x100[1] = {
 		0.4350000023841858f, 0.5270000100135803f,
 		0.12999999523162842f, 0.12999999523162842f,
 		0.4350000023841858f, 0.12999999523162842f,
-		(void**)((u8*)dPurinModel_Joint_0x00C0_post + 0x10),
+		(void**)&dPurinModel_Joint_0x00C0_post[4],
 		0x0004,
 		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
@@ -368,7 +369,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x268[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dPurinModel_Joint_0x00E0_post + 0x4),
+		(void**)&dPurinModel_Joint_0x00E0_post[1],
 		0x0004,
 		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
@@ -484,7 +485,7 @@ MObjSub dPurinModel_Joint_0x0100_post_sub_0x448[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dPurinModel_Joint_0x00E0_post + 0x18),
+		(void**)&dPurinModel_Joint_0x00E0_post[6],
 		0x0004,
 		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x0010,
@@ -886,16 +887,16 @@ AObjEvent32 **dPurinModel_gap_0x24CC[11] = {
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x39C[];
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A0[];
 
-u32 dPurinModel_gap_0x24F8[9] = {
-	(u32)dPurinModel_gap_0x24F8_sub_0x39C,
-	(u32)dPurinModel_gap_0x24F8_sub_0x3A0,
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32End(),
+AObjEvent32 **dPurinModel_gap_0x24F8[9] = {
+	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x39C,
+	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 AObjEvent32 **dPurinModel_data_0x251C[5] = {  (AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x3A4, NULL, NULL, NULL, NULL };
@@ -1247,7 +1248,7 @@ MObjSub **dPurinModel_gap_0x24F8_sub_0x3B8[26] = {
 
 /* u32 pointer array @ 0x2918 (8 entries) */
 u8 *dPurinModel_gap_0x24F8_sub_0x420[8] = {
-	dPurinModel_Tex_0x7380,
+	dPurinModel_palette_0x7380,
 	NULL,
 	NULL,
 	NULL,
@@ -1259,16 +1260,16 @@ u8 *dPurinModel_gap_0x24F8_sub_0x420[8] = {
 
 /* u32 pointer array @ 0x2938 (5 entries) */
 u16 *dPurinModel_gap_0x24F8_sub_0x440[5] = {
-	(u16 *)dPurinModel_Tex_0x7358,
-	(u16 *)dPurinModel_Tex_0x69F8,
-	(u16 *)dPurinModel_Tex_0x6A20,
-	(u16 *)dPurinModel_Tex_0x6A48,
-	(u16 *)dPurinModel_Tex_0x6A98,
+	dPurinModel_palette_0x7358,
+	dPurinModel_palette_0x69F8,
+	dPurinModel_palette_0x6A20,
+	dPurinModel_palette_0x6A48,
+	dPurinModel_palette_0x6A98,
 };
 
 /* u32 pointer array @ 0x294C (8 entries) */
 u8 *dPurinModel_gap_0x24F8_sub_0x454[8] = {
-	dPurinModel_Tex_0x7380,
+	dPurinModel_palette_0x7380,
 	NULL,
 	NULL,
 	NULL,
@@ -1280,11 +1281,11 @@ u8 *dPurinModel_gap_0x24F8_sub_0x454[8] = {
 
 /* u32 pointer array @ 0x296C (5 entries) */
 u16 *dPurinModel_gap_0x24F8_sub_0x474[5] = {
-	(u16 *)dPurinModel_Tex_0x7358,
-	(u16 *)dPurinModel_Tex_0x69F8,
-	(u16 *)dPurinModel_Tex_0x6A20,
-	(u16 *)dPurinModel_Tex_0x6A48,
-	(u16 *)dPurinModel_Tex_0x6A98,
+	dPurinModel_palette_0x7358,
+	dPurinModel_palette_0x69F8,
+	dPurinModel_palette_0x6A20,
+	dPurinModel_palette_0x6A48,
+	dPurinModel_palette_0x6A98,
 };
 
 /* u32 pointer array @ 0x2980 (5 entries) */
@@ -2585,20 +2586,20 @@ u8 dPurinModel_Tex_0x6970[136] = {
 	#include <PurinModel/Tex_0x6970.tex.inc.c>
 };
 
-u8 dPurinModel_Tex_0x69F8[40] = {
-	#include <PurinModel/Tex_0x69F8.tex.inc.c>
+u16 dPurinModel_palette_0x69F8[20] = {
+	#include <PurinModel/palette_0x69F8.palette.inc.c>
 };
 
-u8 dPurinModel_Tex_0x6A20[40] = {
-	#include <PurinModel/Tex_0x6A20.tex.inc.c>
+u16 dPurinModel_palette_0x6A20[20] = {
+	#include <PurinModel/palette_0x6A20.palette.inc.c>
 };
 
-u8 dPurinModel_Tex_0x6A48[80] = {
-	#include <PurinModel/Tex_0x6A48.tex.inc.c>
+u16 dPurinModel_palette_0x6A48[40] = {
+	#include <PurinModel/palette_0x6A48.palette.inc.c>
 };
 
-u8 dPurinModel_Tex_0x6A98[40] = {
-	#include <PurinModel/Tex_0x6A98.tex.inc.c>
+u16 dPurinModel_palette_0x6A98[20] = {
+	#include <PurinModel/palette_0x6A98.palette.inc.c>
 };
 
 u8 dPurinModel_Tex_0x6AC0[560] = {
@@ -2617,12 +2618,12 @@ u8 dPurinModel_Tex_0x7150[520] = {
 	#include <PurinModel/Tex_0x7150.tex.inc.c>
 };
 
-u8 dPurinModel_Tex_0x7358[40] = {
-	#include <PurinModel/Tex_0x7358.tex.inc.c>
+u16 dPurinModel_palette_0x7358[20] = {
+	#include <PurinModel/palette_0x7358.palette.inc.c>
 };
 
-u8 dPurinModel_Tex_0x7380[520] = {
-	#include <PurinModel/Tex_0x7380.tex.inc.c>
+u16 dPurinModel_palette_0x7380[260] = {
+	#include <PurinModel/palette_0x7380.palette.inc.c>
 };
 
 

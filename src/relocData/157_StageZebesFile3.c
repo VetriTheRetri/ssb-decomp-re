@@ -45,28 +45,28 @@ u16 dStageZebesFile3_LUT_0x0080[16] = {
 PAD(8);
 
 /* @ 0x00A8 — sprite-frame texture */
-/* @tex fmt=CI4 dim=32x32 lut=dStageZebesFile3_LUT_0x0008 */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dStageZebesFile3_Tex_0x00A8[512] = {
 	#include <StageZebesFile3/Tex_0x00A8.tex.inc.c>
 };
 PAD(8);
 
 /* @ 0x02B0 — sprite-frame texture */
-/* @tex fmt=CI4 dim=32x32 lut=dStageZebesFile3_LUT_0x0030 */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dStageZebesFile3_Tex_0x02B0[512] = {
 	#include <StageZebesFile3/Tex_0x02B0.tex.inc.c>
 };
 PAD(8);
 
 /* @ 0x04B8 — sprite-frame texture */
-/* @tex fmt=CI4 dim=32x32 lut=dStageZebesFile3_LUT_0x0058 */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dStageZebesFile3_Tex_0x04B8[512] = {
 	#include <StageZebesFile3/Tex_0x04B8.tex.inc.c>
 };
 PAD(8);
 
 /* @ 0x06C0 — sprite-frame texture */
-/* @tex fmt=CI4 dim=32x32 lut=dStageZebesFile3_LUT_0x0080 */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dStageZebesFile3_Tex_0x06C0[512] = {
 	#include <StageZebesFile3/Tex_0x06C0.tex.inc.c>
 };

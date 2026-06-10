@@ -8,6 +8,12 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x668[];
+extern AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x66C[];
+extern AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x670[];
+extern AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x674[];
 extern Gfx dStageInishieFile2_DL_0x3F78[];
 extern Gfx dStageInishieFile2_DL_0x46E0[];
 extern Vtx dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x678[10];
@@ -915,15 +921,15 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dStageInishieFile2_Layer0MatAnim_MatAnimJoint[10] = {
+AObjEvent32 **dStageInishieFile2_Layer0MatAnim_MatAnimJoint[10] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data + 0x668),
-	(AObjEvent32 *)((u8*)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data + 0x66C),
+	(AObjEvent32 **)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x668,
+	(AObjEvent32 **)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x66C,
 	NULL,
-	(AObjEvent32 *)((u8*)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data + 0x670),
+	(AObjEvent32 **)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x670,
 	NULL,
-	(AObjEvent32 *)((u8*)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data + 0x674),
+	(AObjEvent32 **)dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data_0x674,
 	NULL,
 	NULL,
 };

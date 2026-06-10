@@ -1459,11 +1459,11 @@ MObjSub **dLuigiModel_gap_0x28E0_sub_0x3A0[25] = {
 };
 
 /* u32 pointer array @ 0x2CE4 (4 entries) */
-u32 dLuigiModel_gap_0x28E0_sub_0x404[4] = {
-	(u32)&dLuigiModel_palette_0x6D10,
-	(u32)&dLuigiModel_palette_0x6C98,
-	(u32)&dLuigiModel_palette_0x6CC0,
-	(u32)&dLuigiModel_palette_0x6CE8,
+u16 * dLuigiModel_gap_0x28E0_sub_0x404[4] = {
+	(u16 *)&dLuigiModel_palette_0x6D10,
+	(u16 *)&dLuigiModel_palette_0x6C98,
+	(u16 *)&dLuigiModel_palette_0x6CC0,
+	(u16 *)&dLuigiModel_palette_0x6CE8,
 };
 
 /* u32 pointer array @ 0x2CF4 (5 entries) */

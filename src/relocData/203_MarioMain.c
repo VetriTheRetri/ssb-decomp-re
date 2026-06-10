@@ -4,6 +4,12 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dMarioModel_FTEmblem[];
+extern AObjEvent32 **dMarioModel_JointTree_0x4590_post[];
+extern AObjEvent32 **dMarioModel_JointTree_post[];
+extern u32 dMarioModel_Stock[];
 extern u8 dMarioShieldPose_data0[];
 extern u8 dMarioShieldPose_data0_end[];
 extern u8 dMarioShieldPose_shield_anim_joint_1[];
@@ -106,8 +112,8 @@ FTTexturePart dMarioMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 /* @ 0x0164, 32 bytes: FTAttributes.commonparts_container target (was dMarioMain_pre+0x164) */
 FTCommonPartContainer dMarioMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dMarioModel_JointTree, (MObjSub***)&dMarioModel_gap_0x0000, (AObjEvent32***)((u8*)dMarioModel_JointTree + 0x480), 0x00 },
-		{ (DObjDesc*)&dMarioModel_JointTree_0x4590, (MObjSub***)&dMarioModel_gap_0x26D0_sub_0x320, (AObjEvent32***)((u8*)dMarioModel_JointTree_0x4590 + 0x480), 0x00 },
+		{ (DObjDesc*)&dMarioModel_JointTree, (MObjSub***)&dMarioModel_gap_0x0000, (AObjEvent32***)dMarioModel_JointTree_post, 0x00 },
+		{ (DObjDesc*)&dMarioModel_JointTree_0x4590, (MObjSub***)&dMarioModel_gap_0x26D0_sub_0x320, (AObjEvent32***)dMarioModel_JointTree_0x4590_post, 0x00 },
 	},
 };
 
@@ -180,9 +186,9 @@ int *dMarioMain_stock_luts[5] = {
 
 /* @ 0x0348, 12 bytes: FTAttributes.sprites target (was dMarioMain_pre+0x348) */
 FTSprites dMarioMain_sprites = {
-	(Sprite*)((u8*)dMarioModel_gap_0x7220_sub_0x80 + 0x30), /* stock_sprite */
+	(Sprite*)dMarioModel_Stock, /* stock_sprite */
 	(int**)dMarioMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dMarioModel_gap_0x7220_sub_0x80 + 0x228), /* emblem */
+	(Sprite*)dMarioModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x0354, 200 bytes: FTAttributes.sub_0x354 target (was dMarioMain_pre+0x354) */

@@ -4,6 +4,18 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern AObjEvent32 **dFoxModel_JointTree_0x5510_post[];
+extern AObjEvent32 **dFoxModel_JointTree_post[];
+extern DObjDesc dFoxShieldPose_data0[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_1[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_2[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_3[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_4[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_5[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_6[];
+extern AObjEvent32 *dFoxShieldPose_shield_anim_joint_7[];
+
 extern Sprite dFoxModel_FTEmblem;
 extern DObjDesc dFoxModel_JointTree[];
 extern DObjDesc dFoxModel_JointTree_0x5510[];
@@ -122,8 +134,8 @@ FTTexturePartContainer dFoxMain_textureparts_container = {
 /* @ 0x019C, 32 bytes: FTAttributes.commonparts_container target */
 FTCommonPartContainer dFoxMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dFoxModel_JointTree, (MObjSub***)&dFoxModel_gap_0x0000, (AObjEvent32***)((u8*)dFoxModel_JointTree + 0x4D8), 0 },
-		{ (DObjDesc*)&dFoxModel_JointTree_0x5510, (MObjSub***)&dFoxModel_gap_0x2E60_sub_0x2D0, (AObjEvent32***)((u8*)dFoxModel_JointTree_0x5510 + 0x4D0), 0 },
+		{ (DObjDesc*)&dFoxModel_JointTree, (MObjSub***)&dFoxModel_gap_0x0000, (AObjEvent32***)dFoxModel_JointTree_post, 0 },
+		{ (DObjDesc*)&dFoxModel_JointTree_0x5510, (MObjSub***)&dFoxModel_gap_0x2E60_sub_0x2D0, (AObjEvent32***)dFoxModel_JointTree_0x5510_post, 0 },
 	},
 };
 
@@ -337,16 +349,16 @@ FTAttributes dFoxMain_attr = {
 	0, /* unused_0x2CC */
 	dFoxMain_hiddenparts, /* hiddenparts */
 	&dFoxMain_commonparts_container, /* commonparts_container */
-	(DObjDesc*)((u8*)dFoxShieldPose_script0_17 + 0x10), /* dobj_lookup */
+	(DObjDesc*)dFoxShieldPose_data0, /* dobj_lookup */
 	{
 		(AObjEvent32**)dFoxShieldPose_data0_end,
-		(AObjEvent32**)((u8*)dFoxShieldPose_script2_17 + 0x2C),
-		(AObjEvent32**)((u8*)dFoxShieldPose_script3_17 + 0x30),
-		(AObjEvent32**)((u8*)dFoxShieldPose_script4_17 + 0x2C),
-		(AObjEvent32**)((u8*)dFoxShieldPose_script5_17 + 0x2C),
-		(AObjEvent32**)((u8*)dFoxShieldPose_script6_17 + 0x30),
-		(AObjEvent32**)((u8*)dFoxShieldPose_script7_17 + 0x34),
-		(AObjEvent32**)((u8*)dFoxShieldPose_script8_17 + 0x38),
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_1,
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_2,
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_3,
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_4,
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_5,
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_6,
+		(AObjEvent32**)dFoxShieldPose_shield_anim_joint_7,
 	}, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
 	89.754f, /* joint_rfoot_rotate */

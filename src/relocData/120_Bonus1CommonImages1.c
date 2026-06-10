@@ -26,6 +26,7 @@ u8 dBonus1CommonImages1_Tex_0x0030[64] = {
 PAD(8);
 
 /* Texture: 0x0078 (448 bytes) */
+/* @tex fmt=RGBA16 dim=16x14 */
 u8 dBonus1CommonImages1_Tex_0x0078[448] = {
 	#include <Bonus1CommonImages1/Tex_0x0078.tex.inc.c>
 };
@@ -33,6 +34,7 @@ u8 dBonus1CommonImages1_Tex_0x0078[448] = {
 PAD(8);
 
 /* Texture: 0x0240 (64 bytes) */
+/* @tex fmt=I4 dim=4x8 */
 u8 dBonus1CommonImages1_Tex_0x0240[64] = {
 	#include <Bonus1CommonImages1/Tex_0x0240.tex.inc.c>
 };
@@ -55,6 +57,7 @@ u8 dBonus1CommonImages1_Tex_0x02B0[64] = {
 PAD(8);
 
 /* Texture: 0x02F8 (128 bytes) */
+/* @tex fmt=CI4 dim=4x8 lut=dBonus1CommonImages1_Lut_0x04E8_palette */
 u8 dBonus1CommonImages1_Tex_0x02F8[128] = {
 	#include <Bonus1CommonImages1/Tex_0x02F8.tex.inc.c>
 };
@@ -84,6 +87,7 @@ u16 dBonus1CommonImages1_Lut_0x03F0_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0418 (64 bytes) */
+/* @tex fmt=CI4 dim=4x8 lut=dBonus1CommonImages1_Lut_0x03F0_palette */
 u8 dBonus1CommonImages1_Tex_0x0418[64] = {
 	#include <Bonus1CommonImages1/Tex_0x0418.tex.inc.c>
 };
@@ -91,6 +95,7 @@ u8 dBonus1CommonImages1_Tex_0x0418[64] = {
 PAD(8);
 
 /* Texture: 0x0460 (128 bytes) */
+/* @tex fmt=CI4 dim=4x8 lut=dBonus1CommonImages1_Lut_0x04E8_palette */
 u8 dBonus1CommonImages1_Tex_0x0460[128] = {
 	#include <Bonus1CommonImages1/Tex_0x0460.tex.inc.c>
 };
@@ -120,6 +125,7 @@ u16 dBonus1CommonImages1_Tex_0x0598[4] = {
 PAD(8);
 
 /* Texture: 0x05A8 (256 bytes) */
+/* @tex fmt=CI4 dim=8x16 lut=dBonus1CommonImages1_Tex_0x0598 */
 u8 dBonus1CommonImages1_Tex_0x05A8[256] = {
 	#include <Bonus1CommonImages1/Tex_0x05A8.tex.inc.c>
 };

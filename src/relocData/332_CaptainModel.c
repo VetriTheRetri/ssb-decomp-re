@@ -10,14 +10,14 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u8 dCaptainModel_Tex_0xAF30[];
 extern u8 dCaptainModel_Tex_0xAF78[];
-extern u8 dCaptainModel_Tex_0xB270[];
+extern u16 dCaptainModel_palette_0xB270[];
 extern u8 dCaptainModel_Tex_0xB518[];
 extern u8 dCaptainModel_Tex_0xB5D8[];
-extern u8 dCaptainModel_Tex_0xBBB0[];
+extern u16 dCaptainModel_palette_0xBBB0[];
 extern u8 dCaptainModel_Tex_0xBCE0[];
 extern u8 dCaptainModel_Tex_0xBDB8[];
 extern u8 dCaptainModel_Tex_0xBE40[];
-extern u8 dCaptainModel_Tex_0xBF28[];
+extern u16 dCaptainModel_palette_0xBF28[];
 extern u8 dCaptainModel_Tex_0xBF70[];
 extern u8 dCaptainModel_Tex_0xBFF8[];
 extern u8 dCaptainModel_Tex_0xC048[];
@@ -170,9 +170,9 @@ extern u16 dCaptainModel_palette_0xBCB8[];
 extern u16 dCaptainModel_palette_0xBD68[];
 extern u16 dCaptainModel_palette_0xBD90[];
 extern u8 dCaptainModel_Tex_0xBE88[];
-extern u8 dCaptainModel_Tex_0xBEB0[];
-extern u8 dCaptainModel_Tex_0xBED8[];
-extern u8 dCaptainModel_Tex_0xBF00[];
+extern u16 dCaptainModel_palette_0xBEB0[];
+extern u16 dCaptainModel_palette_0xBED8[];
+extern u16 dCaptainModel_palette_0xBF00[];
 extern u16 dCaptainModel_gap_0x7DD0_sub_0x3098[];
 extern u16 dCaptainModel_gap_0x7DD0_sub_0x30C0[];
 extern u16 dCaptainModel_gap_0x7DD0_sub_0x30E8[];
@@ -4755,10 +4755,10 @@ u16 *dCaptainModel_gap_0x7DD0_sub_0x6E4[6] = {
 
 /* u32 pointer array @ 0x84CC (7 entries) */
 u16 *dCaptainModel_gap_0x7DD0_sub_0x6FC[7] = {
-	(u16 *)dCaptainModel_Tex_0xBF00,
+	dCaptainModel_palette_0xBF00,
 	(u16 *)dCaptainModel_Tex_0xBE88,
-	(u16 *)dCaptainModel_Tex_0xBEB0,
-	(u16 *)dCaptainModel_Tex_0xBED8,
+	dCaptainModel_palette_0xBEB0,
+	dCaptainModel_palette_0xBED8,
 	(u16 *)dCaptainModel_palette_0xB6D8,
 	(u16 *)dCaptainModel_palette_0xB700,
 	NULL,
@@ -5237,10 +5237,10 @@ u16 *dCaptainModel_gap_0x7DD0_sub_0x1494[6] = {
 
 /* u32 pointer array @ 0x927C (7 entries) */
 u16 *dCaptainModel_gap_0x7DD0_sub_0x14AC[7] = {
-	(u16 *)dCaptainModel_Tex_0xBF00,
+	dCaptainModel_palette_0xBF00,
 	(u16 *)dCaptainModel_Tex_0xBE88,
-	(u16 *)dCaptainModel_Tex_0xBEB0,
-	(u16 *)dCaptainModel_Tex_0xBED8,
+	dCaptainModel_palette_0xBEB0,
+	dCaptainModel_palette_0xBED8,
 	(u16 *)dCaptainModel_palette_0xB6D8,
 	(u16 *)dCaptainModel_palette_0xB700,
 	NULL,
@@ -5924,8 +5924,8 @@ u16 dCaptainModel_palette_0xB248[16] = {
 PAD(8);
 
 /* Texture: 0xB270 (CI4 — trailing 0xA0 bytes split as palette frames) */
-u8 dCaptainModel_Tex_0xB270[520] = {
-	#include <CaptainModel/Tex_0xB270.tex.inc.c>
+u16 dCaptainModel_palette_0xB270[260] = {
+	#include <CaptainModel/palette_0xB270.palette.inc.c>
 };
 
 u16 dCaptainModel_palette_0xB478[16] = {
@@ -6033,8 +6033,8 @@ u16 dCaptainModel_gap_0xB978_sub_0x210[16] = {
 PAD(8);
 
 /* Texture data @ 0xBBB0 (520 bytes) */
-u8 dCaptainModel_Tex_0xBBB0[264] = {
-	#include <CaptainModel/Tex_0xBBB0.tex.inc.c>
+u16 dCaptainModel_palette_0xBBB0[132] = {
+	#include <CaptainModel/palette_0xBBB0.palette.inc.c>
 };
 
 u16 dCaptainModel_palette_0xBCB8[16] = {
@@ -6073,20 +6073,20 @@ u8 dCaptainModel_Tex_0xBE88[40] = {
 	#include <CaptainModel/Tex_0xBE88.tex.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xBEB0[40] = {
-	#include <CaptainModel/Tex_0xBEB0.tex.inc.c>
+u16 dCaptainModel_palette_0xBEB0[20] = {
+	#include <CaptainModel/palette_0xBEB0.palette.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xBED8[40] = {
-	#include <CaptainModel/Tex_0xBED8.tex.inc.c>
+u16 dCaptainModel_palette_0xBED8[20] = {
+	#include <CaptainModel/palette_0xBED8.palette.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xBF00[40] = {
-	#include <CaptainModel/Tex_0xBF00.tex.inc.c>
+u16 dCaptainModel_palette_0xBF00[20] = {
+	#include <CaptainModel/palette_0xBF00.palette.inc.c>
 };
 
-u8 dCaptainModel_Tex_0xBF28[72] = {
-	#include <CaptainModel/Tex_0xBF28.tex.inc.c>
+u16 dCaptainModel_palette_0xBF28[36] = {
+	#include <CaptainModel/palette_0xBF28.palette.inc.c>
 };
 
 /* @tex fmt=CI4 dim=16x16 */

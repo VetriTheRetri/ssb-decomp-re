@@ -8,6 +8,9 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern AObjEvent32 *dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data_trail[];
 extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[];
 extern Gfx dEFCommonEffects2_DL_0x5240[];
 extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[];
@@ -134,7 +137,7 @@ extern u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint_data[];
 extern u32 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint_0x6D98[];
 
 extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[];
-extern u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[];
+extern AObjEvent32 *dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[];
 extern u8 dEFCommonEffects2_Tex_0x1688[];
 extern u8 dEFCommonEffects2_Tex_0x1890[];
 extern u8 dEFCommonEffects2_Tex_0x1A98[];
@@ -147,6 +150,7 @@ extern u8 dEFCommonEffects2_Tex_0x1CA0[];
 PAD(8);
 
 /* gap sub-block @ 0x0008 (was gap+0x8, 1032 bytes) */
+/* @tex fmt=IA16 dim=16x32 */
 u8 dEFCommonEffects2_Tex_0x0008[1024] = {
 	#include <EFCommonEffects2/Tex_0x0008.tex.inc.c>
 };
@@ -154,6 +158,7 @@ u8 dEFCommonEffects2_Tex_0x0008[1024] = {
 PAD(8);
 
 /* gap sub-block @ 0x0410 (was gap+0x410, 1032 bytes) */
+/* @tex fmt=IA16 dim=16x32 */
 u8 dEFCommonEffects2_Tex_0x0410[1024] = {
 	#include <EFCommonEffects2/Tex_0x0410.tex.inc.c>
 };
@@ -161,6 +166,7 @@ u8 dEFCommonEffects2_Tex_0x0410[1024] = {
 PAD(8);
 
 /* gap sub-block @ 0x0818 (was gap+0x818, 1032 bytes) */
+/* @tex fmt=IA16 dim=16x32 */
 u8 dEFCommonEffects2_Tex_0x0818[1024] = {
 	#include <EFCommonEffects2/Tex_0x0818.tex.inc.c>
 };
@@ -168,6 +174,7 @@ u8 dEFCommonEffects2_Tex_0x0818[1024] = {
 PAD(8);
 
 /* gap sub-block @ 0x0C20 (was gap+0xC20, 1032 bytes) */
+/* @tex fmt=IA16 dim=16x32 */
 u8 dEFCommonEffects2_Tex_0x0C20[1024] = {
 	#include <EFCommonEffects2/Tex_0x0C20.tex.inc.c>
 };
@@ -456,9 +463,9 @@ PAD(4);
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)((u8*)dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data + 0x2C),
+	(AObjEvent32 **)dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data_trail,
 };
 
 u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint_data[11] = {
@@ -1355,6 +1362,8 @@ Gfx dEFCommonEffects2_ReflectBreak_DL_end_0x3A60[1] = {
 };
 
 /* Raw data from file offset 0x3A68 to 0x4F08 (5280 bytes) */
+/* Multi-frame IA16 shadow pool (a DL loads +0xCA0 as IA16).
+ * @tex fmt=IA16 dim=16x165 */
 u8 dEFCommonEffects2_Shadow_TextureImage[5280] = {
 	#include <EFCommonEffects2/Shadow_TextureImage.tex.inc.c>
 };
@@ -2197,9 +2206,9 @@ PAD(12);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint[2] = {
+AObjEvent32 **dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
-	(AObjEvent32 *)dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4,
+	(AObjEvent32 **)dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4,
 };
 
 u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[] = {
@@ -2240,7 +2249,7 @@ u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28[] = {
 	aobjEvent32End(),
 };
 
-u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[] = {
-	(u32)(dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28),
-	aobjEvent32End(),
+AObjEvent32 *dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6EB4[] = {
+	(AObjEvent32 *)(dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint_0x6E28),
+	NULL,
 };

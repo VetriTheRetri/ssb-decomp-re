@@ -4,6 +4,13 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dYoshiModel_FTEmblem[];
+extern MObjSub *dYoshiModel_Joint_0x0080_post_sub_0xD7C[];
+extern u32 dYoshiModel_Stock[];
+extern Gfx dYoshiModel_gap_0xA860[];
+extern Gfx dYoshiSpecial2_gap_0x0530[];
 extern u8 dYoshiShieldPose_data0[];
 extern u8 dYoshiShieldPose_data0_end[];
 extern u8 dYoshiShieldPose_shield_anim_joint_1[];
@@ -56,9 +63,9 @@ extern DObjDesc dYoshiSpecial3_EggLay[];
 u32 dYoshiMain_file_handles[29] = {
 
 	0x0001000D, /* extern -> 0x0034 */
-	(u32)((u8*)dYoshiSpecial2_gap_0x04D8_sub_0x18 + 0x40), /* extern -> 0x0530 */
+	(u32)dYoshiSpecial2_gap_0x0530, /* extern -> 0x0530 */
 	(u32)&dYoshiSpecial3_EggLay, /* extern -> 0x0960 */
-	(u32)((u8*)dYoshiModel_Tex_0x9EF0 + 0x970), /* extern -> 0xA860 */
+	(u32)dYoshiModel_gap_0xA860, /* extern -> 0xA860 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -117,7 +124,7 @@ FTHiddenPart dYoshiMain_hiddenparts[5] = {
 
 /* @ 0x00D4, 80 bytes: FTAttributes.sub_0x0D4 target (was dYoshiMain_pre+0xD4) */
 FTModelPart dYoshiMain_modelparts_desc_0x0D4[4] = {
-	{ (Gfx*)&dYoshiModel_Joint_0x2398_DisplayList, (MObjSub**)((u8*)dYoshiModel_gap_0x0000_sub_0x18 + 0xDE4), (AObjEvent32**)&dYoshiModel_gap_0x38F4_sub_0x6E8, NULL, 0x00 },
+	{ (Gfx*)&dYoshiModel_Joint_0x2398_DisplayList, (MObjSub**)dYoshiModel_Joint_0x0080_post_sub_0xD7C, (AObjEvent32**)&dYoshiModel_gap_0x38F4_sub_0x6E8, NULL, 0x00 },
 	{ (Gfx*)&dYoshiModel_Joint_0x5CF8_DisplayList, (MObjSub**)&dYoshiModel_gap_0x38F4_sub_0x1410, (AObjEvent32**)&dYoshiModel_gap_0x6E70_sub_0x6A4, NULL, 0x00 },
 	{ (Gfx*)&dYoshiModel_gap_0x6E70_sub_0xEA0, (MObjSub**)&dYoshiModel_gap_0x6E70_sub_0x9A8, (AObjEvent32**)&dYoshiModel_gap_0x6E70_sub_0x13BC, NULL, 0x00 },
 	{ (Gfx*)&dYoshiModel_gap_0x6E70_sub_0xEA0, (MObjSub**)&dYoshiModel_gap_0x6E70_sub_0x9A8, (AObjEvent32**)&dYoshiModel_gap_0x6E70_sub_0x13BC, NULL, 0x00 },
@@ -218,9 +225,9 @@ int *dYoshiMain_stock_luts[6] = {
 
 /* @ 0x0384, 12 bytes: FTAttributes.sprites target (was dYoshiMain_pre+0x384) */
 FTSprites dYoshiMain_sprites = {
-	(Sprite*)((u8*)dYoshiModel_gap_0xA9D0_sub_0xA8 + 0x30), /* stock_sprite */
+	(Sprite*)dYoshiModel_Stock, /* stock_sprite */
 	(int**)dYoshiMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dYoshiModel_gap_0xA9D0_sub_0xA8 + 0x220), /* emblem */
+	(Sprite*)dYoshiModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x0390, 224 bytes: FTAttributes.sub_0x390 target (was dYoshiMain_pre+0x390) */

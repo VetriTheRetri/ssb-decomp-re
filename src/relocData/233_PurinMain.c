@@ -4,6 +4,10 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dPurinModel_FTEmblem[];
+extern u32 dPurinModel_Stock[];
 extern u8 dPurinShieldPose_data0[];
 extern u8 dPurinShieldPose_data0_end[];
 extern u8 dPurinShieldPose_shield_anim_joint_1[];
@@ -173,9 +177,9 @@ int *dPurinMain_stock_luts[5] = {
 
 /* @ 0x02BC, 12 bytes: FTAttributes.sprites target (was dPurinMain_pre+0x2BC) */
 FTSprites dPurinMain_sprites = {
-	(Sprite*)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x30), /* stock_sprite */
+	(Sprite*)dPurinModel_Stock, /* stock_sprite */
 	(int**)dPurinMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x218), /* emblem */
+	(Sprite*)dPurinModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x02C8, 208 bytes: FTAttributes.sub_0x2C8 target (was dPurinMain_pre+0x2C8) */

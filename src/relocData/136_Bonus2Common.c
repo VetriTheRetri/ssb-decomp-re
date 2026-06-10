@@ -933,16 +933,19 @@ Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x4EC[17] = {
 	#include <Bonus2Common/PlatformLarge_MatAnimJoint_data_0x4EC.dl.inc.c>
 };
 
-Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x574[2] = {
-	#include <Bonus2Common/PlatformLarge_MatAnimJoint_data_0x574.dl.inc.c>
+DObjDLLink dBonus2Common_PlatformLarge_MatAnimJoint_data_0x574[] = {
+	{ 0, dBonus2Common_PlatformLarge_MatAnimJoint_data_0x294 },
+	{ 4, NULL },
 };
 
-Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x584[2] = {
-	#include <Bonus2Common/PlatformLarge_MatAnimJoint_data_0x584.dl.inc.c>
+DObjDLLink dBonus2Common_PlatformLarge_MatAnimJoint_data_0x584[] = {
+	{ 1, dBonus2Common_PlatformLarge_MatAnimJoint_data_0x444 },
+	{ 4, NULL },
 };
 
-Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x594[2] = {
-	#include <Bonus2Common/PlatformLarge_MatAnimJoint_data_0x594.dl.inc.c>
+DObjDLLink dBonus2Common_PlatformLarge_MatAnimJoint_data_0x594[] = {
+	{ 1, dBonus2Common_PlatformLarge_MatAnimJoint_data_0x4EC },
+	{ 4, NULL },
 };
 
 /* DObjDesc: BoardedPlatformSmall @ 0x5520 (4 entries) */
@@ -1046,16 +1049,19 @@ Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x4EC[17] = {
 	#include <Bonus2Common/BoardedPlatformSmall_AnimJoint_data_0x4EC.dl.inc.c>
 };
 
-Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x574[2] = {
-	#include <Bonus2Common/BoardedPlatformSmall_AnimJoint_data_0x574.dl.inc.c>
+DObjDLLink dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x574[] = {
+	{ 0, dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x2B4 },
+	{ 4, NULL },
 };
 
-Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x584[2] = {
-	#include <Bonus2Common/BoardedPlatformSmall_AnimJoint_data_0x584.dl.inc.c>
+DObjDLLink dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x584[] = {
+	{ 1, dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x444 },
+	{ 4, NULL },
 };
 
-Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x594[2] = {
-	#include <Bonus2Common/BoardedPlatformSmall_AnimJoint_data_0x594.dl.inc.c>
+DObjDLLink dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x594[] = {
+	{ 1, dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x4EC },
+	{ 4, NULL },
 };
 
 /* DObjDesc: BoardedPlatformMedium @ 0x5B80 (4 entries) */
@@ -1159,16 +1165,19 @@ Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x4EC[17] = {
 	#include <Bonus2Common/BoardedPlatformMedium_AnimJoint_data_0x4EC.dl.inc.c>
 };
 
-Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x574[2] = {
-	#include <Bonus2Common/BoardedPlatformMedium_AnimJoint_data_0x574.dl.inc.c>
+DObjDLLink dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x574[] = {
+	{ 0, dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x2B4 },
+	{ 4, NULL },
 };
 
-Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x584[2] = {
-	#include <Bonus2Common/BoardedPlatformMedium_AnimJoint_data_0x584.dl.inc.c>
+DObjDLLink dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x584[] = {
+	{ 1, dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x444 },
+	{ 4, NULL },
 };
 
-Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x594[2] = {
-	#include <Bonus2Common/BoardedPlatformMedium_AnimJoint_data_0x594.dl.inc.c>
+DObjDLLink dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x594[] = {
+	{ 1, dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x4EC },
+	{ 4, NULL },
 };
 
 /* DObjDesc: BoardedPlatformLarge @ 0x61E0 (4 entries) */

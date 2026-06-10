@@ -22,282 +22,338 @@ Gfx dSCStaffroll_unusedSpriteDL_0x0000[1] = {
 };
 
 /* Raw data from file offset 0x0008 to 0x0178 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobAUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobAUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0178 to 0x0218 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobALower_Image[160] = {
 	#include <SCStaffroll/NameAndJobALower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0218 to 0x02D8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobBUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobBUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x02D8 to 0x0398 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobBLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobBLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0398 to 0x0458 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobCUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobCUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0458 to 0x04F8 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobCLower_Image[160] = {
 	#include <SCStaffroll/NameAndJobCLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x04F8 to 0x0668 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobDUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobDUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0668 to 0x0728 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobDLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobDLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0728 to 0x07E8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobEUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobEUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x07E8 to 0x0888 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobELower_Image[160] = {
 	#include <SCStaffroll/NameAndJobELower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0888 to 0x0948 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobFUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobFUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0948 to 0x0A08 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobFLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobFLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0A08 to 0x0B78 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobGUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobGUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0B78 to 0x0C38 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobGLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobGLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0C38 to 0x0DA8 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobHUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobHUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0DA8 to 0x0E68 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobHLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobHLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0E68 to 0x0F28 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobIUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobIUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0F28 to 0x0FE8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobILower_Image[192] = {
 	#include <SCStaffroll/NameAndJobILower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x0FE8 to 0x10A8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobJUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobJUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x10A8 to 0x1188 (224 bytes) */
+/* @tex fmt=I4 dim=16x28 */
 u8 dSCStaffroll_NameAndJobJLower_Image[224] = {
 	#include <SCStaffroll/NameAndJobJLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1188 to 0x12F8 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobKUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobKUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x12F8 to 0x13B8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobKLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobKLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x13B8 to 0x1478 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobLUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobLUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1478 to 0x1538 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobLLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobLLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1538 to 0x16A8 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobMUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobMUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x16A8 to 0x17D8 (304 bytes) */
+/* @tex fmt=I4 dim=32x19 */
 u8 dSCStaffroll_NameAndJobMLower_Image[304] = {
 	#include <SCStaffroll/NameAndJobMLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x17D8 to 0x1948 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobNUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobNUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1948 to 0x19E8 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobNLower_Image[160] = {
 	#include <SCStaffroll/NameAndJobNLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x19E8 to 0x1B58 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobOUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobOUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1B58 to 0x1C88 (304 bytes) */
+/* @tex fmt=I4 dim=32x19 */
 u8 dSCStaffroll_NameAndJobOLower_Image[304] = {
 	#include <SCStaffroll/NameAndJobOLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1C88 to 0x1D48 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobPUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobPUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1D48 to 0x1E08 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobPLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobPLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1E08 to 0x1F78 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobQUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobQUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x1F78 to 0x2038 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobQLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobQLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2038 to 0x20F8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobRUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobRUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x20F8 to 0x2198 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobRLower_Image[160] = {
 	#include <SCStaffroll/NameAndJobRLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2198 to 0x2258 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobSUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobSUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2258 to 0x22F8 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobSLower_Image[160] = {
 	#include <SCStaffroll/NameAndJobSLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x22F8 to 0x23B8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobTUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobTUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x23B8 to 0x2478 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobTLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobTLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2478 to 0x2538 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobUUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobUUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2538 to 0x25D8 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobULower_Image[160] = {
 	#include <SCStaffroll/NameAndJobULower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x25D8 to 0x2748 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobVUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobVUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2748 to 0x27E8 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobVLower_Image[160] = {
 	#include <SCStaffroll/NameAndJobVLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x27E8 to 0x2958 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobWUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobWUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2958 to 0x2A88 (304 bytes) */
+/* @tex fmt=I4 dim=32x19 */
 u8 dSCStaffroll_NameAndJobWLower_Image[304] = {
 	#include <SCStaffroll/NameAndJobWLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2A88 to 0x2BF8 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobXUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobXUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2BF8 to 0x2C98 (160 bytes) */
+/* @tex fmt=I4 dim=16x20 */
 u8 dSCStaffroll_NameAndJobXLower_Image[160] = {
 	#include <SCStaffroll/NameAndJobXLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2C98 to 0x2D58 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobYUpper_Image[192] = {
 	#include <SCStaffroll/NameAndJobYUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2D58 to 0x2E18 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJobYLower_Image[192] = {
 	#include <SCStaffroll/NameAndJobYLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2E18 to 0x2F88 (368 bytes) */
+/* @tex fmt=I4 dim=32x23 */
 u8 dSCStaffroll_NameAndJobZUpper_Image[368] = {
 	#include <SCStaffroll/NameAndJobZUpper_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x2F88 to 0x3018 (144 bytes) */
+/* @tex fmt=I4 dim=16x18 */
 u8 dSCStaffroll_NameAndJobZLower_Image[144] = {
 	#include <SCStaffroll/NameAndJobZLower_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x3018 to 0x3078 (96 bytes) */
+/* @tex fmt=I4 dim=16x12 */
 u8 dSCStaffroll_NameAndJobComma_Image[96] = {
 	#include <SCStaffroll/NameAndJobComma_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x3078 to 0x30B8 (64 bytes) */
+/* @tex fmt=I4 dim=16x8 */
 u8 dSCStaffroll_NameAndJobPeriod_Image[64] = {
 	#include <SCStaffroll/NameAndJobPeriod_Image.tex.inc.c>
 };
 
 /* Raw data from file offset 0x30B8 to 0x3118 (96 bytes) */
+/* @tex fmt=I4 dim=16x12 */
 u8 dSCStaffroll_NameAndJobApostrophe_Image[96] = {
 	#include <SCStaffroll/NameAndJobApostrophe_Image.tex.inc.c>
 };
 
 #if !defined(REGION_JP)
 /* Raw data from file offset 0x3118 to 0x31D8 (192 bytes) */
+/* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJob4_Image[192] = {
 	#include <SCStaffroll/NameAndJob4_Image.tex.inc.c>
 };
@@ -3290,6 +3346,7 @@ u32 dSCStaffroll_AnimJoint_0x7338[5] = {
 };
 PAD(12);
 
+/* @tex fmt=IA8 dim=16x32 */
 u8 dSCStaffroll_AnimJoint_0x7358[1024] = {
 	#include <SCStaffroll/AnimJoint_0x7358.tex.inc.c>
 };

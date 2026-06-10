@@ -4598,6 +4598,9 @@ u32 dLinkModel_Tex_0x11998[43] = {
 
 u32 dLinkModel_data_0x11A44[1] = { (u32)dLinkModel_Tex_0x11C1C };
 
+/* Inferred: 26 RGBA5551 texels (eye/mouth frame strip; values like
+ * 0xFFFF/0xD800 are colors, swapped by the sprite-anim at 0x11A44).
+ * @tex fmt=RGBA16 dim=13x2 */
 u8 dLinkModel_Tex_0x11A48[52] = {
 	#include <LinkModel/Tex_0x11A48.tex.inc.c>
 };
@@ -4606,6 +4609,9 @@ u8 dLinkModel_Tex_0x11A7C[52] = {
 	#include <LinkModel/Tex_0x11A7C.tex.inc.c>
 };
 
+/* Inferred: 26 RGBA5551 texels (eye/mouth frame strip; values like
+ * 0xFFFF/0xD800 are colors, swapped by the sprite-anim at 0x11A44).
+ * @tex fmt=RGBA16 dim=13x2 */
 u8 dLinkModel_Tex_0x11AB0[52] = {
 	#include <LinkModel/Tex_0x11AB0.tex.inc.c>
 };
@@ -4614,6 +4620,9 @@ u8 dLinkModel_Tex_0x11AE4[52] = {
 	#include <LinkModel/Tex_0x11AE4.tex.inc.c>
 };
 
+/* Inferred: 26 RGBA5551 texels (eye/mouth frame strip; values like
+ * 0xFFFF/0xD800 are colors, swapped by the sprite-anim at 0x11A44).
+ * @tex fmt=RGBA16 dim=13x2 */
 u8 dLinkModel_Tex_0x11B18[52] = {
 	#include <LinkModel/Tex_0x11B18.tex.inc.c>
 };
@@ -4622,6 +4631,9 @@ u8 dLinkModel_Tex_0x11B4C[52] = {
 	#include <LinkModel/Tex_0x11B4C.tex.inc.c>
 };
 
+/* Inferred: 26 RGBA5551 texels (eye/mouth frame strip; values like
+ * 0xFFFF/0xD800 are colors, swapped by the sprite-anim at 0x11A44).
+ * @tex fmt=RGBA16 dim=13x2 */
 u8 dLinkModel_Tex_0x11B80[52] = {
 	#include <LinkModel/Tex_0x11B80.tex.inc.c>
 };
@@ -4630,6 +4642,9 @@ u8 dLinkModel_Tex_0x11BB4[52] = {
 	#include <LinkModel/Tex_0x11BB4.tex.inc.c>
 };
 
+/* Inferred: 26 RGBA5551 texels (eye/mouth frame strip; values like
+ * 0xFFFF/0xD800 are colors, swapped by the sprite-anim at 0x11A44).
+ * @tex fmt=RGBA16 dim=13x2 */
 u8 dLinkModel_Tex_0x11BE8[52] = {
 	#include <LinkModel/Tex_0x11BE8.tex.inc.c>
 };

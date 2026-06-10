@@ -38,7 +38,7 @@ extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25F24[];
 extern u32 dMNTitle_SlashMat_AnimJoint_0x25F74[];
 extern u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[];
 extern u32* dMNTitle_SlashMat_AnimJoint_0x26010[];
-extern u32 dMNTitle_SlashMat_AnimJoint_0x26014[];
+extern u32 * dMNTitle_SlashMat_AnimJoint_0x26014[];
 
 extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x2902C[];
 extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x29038[];
@@ -2452,9 +2452,9 @@ u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[] = {
 
 u32 * dMNTitle_SlashMat_AnimJoint_0x26010[] = { dMNTitle_SlashMat_AnimJoint_0x25F74 };
 
-u32 dMNTitle_SlashMat_AnimJoint_0x26014[] = {
-	(u32)(dMNTitle_SlashMat_AnimJoint_0x25FB4),
-	aobjEvent32End(),
+u32 * dMNTitle_SlashMat_AnimJoint_0x26014[] = {
+	(u32 *)(dMNTitle_SlashMat_AnimJoint_0x25FB4),
+	NULL,
 };
 
 PAD(4);

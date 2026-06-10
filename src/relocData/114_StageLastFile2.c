@@ -8,6 +8,12 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x1084[];
+extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x1098[];
+extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x10AC[];
+extern AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x10B4[];
 extern Gfx dStageLastFile2_DL_0x40A8[];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4E24[12];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8B8C[38];
@@ -1300,12 +1306,12 @@ u32 dStageLastFile2_Layer1Anim_AnimJoint_0x4F24[] = {
  * referenced (and orphan) script. The data block is dumped
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
-AObjEvent32 *dStageLastFile2_Layer1MatAnim_MatAnimJoint[5] = {
+AObjEvent32 **dStageLastFile2_Layer1MatAnim_MatAnimJoint[5] = {
 	NULL,
-	(AObjEvent32 *)((u8*)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data + 0x1084),
-	(AObjEvent32 *)((u8*)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data + 0x1098),
-	(AObjEvent32 *)((u8*)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data + 0x10AC),
-	(AObjEvent32 *)((u8*)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data + 0x10B4),
+	(AObjEvent32 **)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x1084,
+	(AObjEvent32 **)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x1098,
+	(AObjEvent32 **)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x10AC,
+	(AObjEvent32 **)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x10B4,
 };
 
 /* Split AnimJoint blob: forward decls for sub-scripts. */
@@ -1358,7 +1364,7 @@ extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4898[2];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48A0[2];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48A8[2];
 extern void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B0[2];
-extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8[3];
+extern u8 *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8[3];
 extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48C4[1];
 extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x493C[1];
 extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x49B4[1];
@@ -1462,10 +1468,10 @@ extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB97C[1];
 extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB9F4[1];
 extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBA6C[1];
 extern MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBAE4[1];
-extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB5C[2];
-extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB64[2];
-extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB6C[2];
-extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB74[2];
+extern MObjSub *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB5C[2];
+extern MObjSub *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB64[2];
+extern MObjSub *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB6C[2];
+extern MObjSub *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB74[2];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBCBC[9];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBE7C[47];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBFF4[47];
@@ -4349,10 +4355,10 @@ void *dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B0[2] = {
 	(void *)dStageLastFile2_Tex_0x8FA2,
 };
 
-u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8[3] = {
-	(u32)dStageLastFile2_Tex_0x93AA,
-	(u32)dStageLastFile2_Tex_0x8FA2,
-	aobjEvent32End(),
+u8 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48B8[3] = {
+	(u8 *)dStageLastFile2_Tex_0x93AA,
+	(u8 *)dStageLastFile2_Tex_0x8FA2,
+	NULL,
 };
 
 MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x48C4[1] = {
@@ -5915,11 +5921,13 @@ AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x64FC[1] = {
 };
 PAD(20);
 
+/* @tex fmt=I8 dim=32x64 */
 u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x6514[4096] = {
 	#include <StageLastFile2/dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x6514.tex.inc.c>
 };
 PAD(8);
 
+/* @tex fmt=I8 dim=32x64 */
 u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x751C[4104] = {
 	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x751C.tex.inc.c>
 };
@@ -6418,24 +6426,24 @@ MObjSub dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBAE4[1] = {
 	}
 };
 
-u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB5C[2] = {
-	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB97C,
-	aobjEvent32End(),
+MObjSub * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB5C[2] = {
+	(MObjSub *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB97C,
+	NULL,
 };
 
-u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB64[2] = {
-	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB9F4,
-	aobjEvent32End(),
+MObjSub * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB64[2] = {
+	(MObjSub *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xB9F4,
+	NULL,
 };
 
-u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB6C[2] = {
-	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBA6C,
-	aobjEvent32End(),
+MObjSub * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB6C[2] = {
+	(MObjSub *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBA6C,
+	NULL,
 };
 
-u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB74[2] = {
-	(u32)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBAE4,
-	aobjEvent32End(),
+MObjSub * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB74[2] = {
+	(MObjSub *)dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBAE4,
+	NULL,
 };
 
 Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB7C[2] = {
@@ -6754,6 +6762,7 @@ AObjEvent32 * dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC7FC[1] = {
 };
 PAD(20);
 
+/* @tex fmt=IA16 dim=32x64 */
 u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC814[4096] = {
 	#include <StageLastFile2/dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC814.tex.inc.c>
 };

@@ -123,7 +123,7 @@ extern Vtx dSamusModel_gap_0x6FD4_sub_0xAEC[];
 extern Vtx dSamusModel_gap_0x6FD4_sub_0xB6C[];
 extern Vtx dSamusModel_gap_0x6FD4_sub_0xE54[];
 extern u8 dSamusModel_Tex_0xDF38[];
-extern u8 dSamusModel_Tex_0xDF60[];
+extern u16 dSamusModel_palette_0xDF60[];
 extern u8 dSamusModel_Tex_0xDF88[];
 extern void *dSamusModel_Tex_0xE00C[3];
 extern MObjSub dSamusModel_Tex_0xE018[];
@@ -166,14 +166,14 @@ extern u16 dSamusModel_palette_0xD5A0[];
 extern u16 dSamusModel_palette_0xD5C8[];
 extern u16 dSamusModel_palette_0xD5F0[];
 extern u8 dSamusModel_Tex_0xD730[];
-extern u8 dSamusModel_Tex_0xD758[];
-extern u8 dSamusModel_Tex_0xD780[];
-extern u8 dSamusModel_Tex_0xD7A8[];
+extern u16 dSamusModel_palette_0xD758[];
+extern u16 dSamusModel_palette_0xD780[];
+extern u16 dSamusModel_palette_0xD7A8[];
 extern u8 dSamusModel_Tex_0xD9D8[];
-extern u8 dSamusModel_Tex_0xDA00[];
-extern u8 dSamusModel_Tex_0xDA28[];
-extern u8 dSamusModel_Tex_0xDA50[];
-extern u8 dSamusModel_Tex_0xDA78[];
+extern u16 dSamusModel_palette_0xDA00[];
+extern u16 dSamusModel_palette_0xDA28[];
+extern u16 dSamusModel_palette_0xDA50[];
+extern u16 dSamusModel_palette_0xDA78[];
 extern u8 dSamusModel_Tex_0xDCA8[];
 extern u8 dSamusModel_Tex_0xDE08[];
 extern u8 dSamusModel_Tex_0xDE78[];
@@ -3916,9 +3916,9 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0xDB0[4] = {
 u16 *dSamusModel_gap_0x6FD4_sub_0xDC0[5] = {
 	(u16 *)dSamusModel_Tex_0xDCA8,
 	(u16 *)dSamusModel_Tex_0xD730,
-	(u16 *)dSamusModel_Tex_0xD758,
-	(u16 *)dSamusModel_Tex_0xD780,
-	(u16 *)dSamusModel_Tex_0xD7A8,
+	dSamusModel_palette_0xD758,
+	dSamusModel_palette_0xD780,
+	dSamusModel_palette_0xD7A8,
 };
 
 /* MObjSub @ 0x7DA8 */
@@ -4015,11 +4015,11 @@ AObjEvent32 *dSamusModel_gap_0x6FD4_sub_0x13F0[4] = {
 
 /* u32 pointer array @ 0x83D4 (5 entries) */
 u16 *dSamusModel_gap_0x6FD4_sub_0x1400[5] = {
-	(u16 *)dSamusModel_Tex_0xDA78,
+	dSamusModel_palette_0xDA78,
 	(u16 *)dSamusModel_Tex_0xD9D8,
-	(u16 *)dSamusModel_Tex_0xDA00,
-	(u16 *)dSamusModel_Tex_0xDA28,
-	(u16 *)dSamusModel_Tex_0xDA50,
+	dSamusModel_palette_0xDA00,
+	dSamusModel_palette_0xDA28,
+	dSamusModel_palette_0xDA50,
 };
 
 /* MObjSub @ 0x83E8 */
@@ -5068,16 +5068,16 @@ u8 dSamusModel_Tex_0xD730[40] = {
 	#include <SamusModel/Tex_0xD730.tex.inc.c>
 };
 
-u8 dSamusModel_Tex_0xD758[40] = {
-	#include <SamusModel/Tex_0xD758.tex.inc.c>
+u16 dSamusModel_palette_0xD758[20] = {
+	#include <SamusModel/palette_0xD758.palette.inc.c>
 };
 
-u8 dSamusModel_Tex_0xD780[40] = {
-	#include <SamusModel/Tex_0xD780.tex.inc.c>
+u16 dSamusModel_palette_0xD780[20] = {
+	#include <SamusModel/palette_0xD780.palette.inc.c>
 };
 
-u8 dSamusModel_Tex_0xD7A8[40] = {
-	#include <SamusModel/Tex_0xD7A8.tex.inc.c>
+u16 dSamusModel_palette_0xD7A8[20] = {
+	#include <SamusModel/palette_0xD7A8.palette.inc.c>
 };
 
 /* @tex fmt=CI4 dim=32x32 */
@@ -5089,20 +5089,20 @@ u8 dSamusModel_Tex_0xD9D8[40] = {
 	#include <SamusModel/Tex_0xD9D8.tex.inc.c>
 };
 
-u8 dSamusModel_Tex_0xDA00[40] = {
-	#include <SamusModel/Tex_0xDA00.tex.inc.c>
+u16 dSamusModel_palette_0xDA00[20] = {
+	#include <SamusModel/palette_0xDA00.palette.inc.c>
 };
 
-u8 dSamusModel_Tex_0xDA28[40] = {
-	#include <SamusModel/Tex_0xDA28.tex.inc.c>
+u16 dSamusModel_palette_0xDA28[20] = {
+	#include <SamusModel/palette_0xDA28.palette.inc.c>
 };
 
-u8 dSamusModel_Tex_0xDA50[40] = {
-	#include <SamusModel/Tex_0xDA50.tex.inc.c>
+u16 dSamusModel_palette_0xDA50[20] = {
+	#include <SamusModel/palette_0xDA50.palette.inc.c>
 };
 
-u8 dSamusModel_Tex_0xDA78[40] = {
-	#include <SamusModel/Tex_0xDA78.tex.inc.c>
+u16 dSamusModel_palette_0xDA78[20] = {
+	#include <SamusModel/palette_0xDA78.palette.inc.c>
 };
 
 /* @tex fmt=CI4 dim=32x32 */
@@ -5114,6 +5114,7 @@ u8 dSamusModel_Tex_0xDCA8[40] = {
 	#include <SamusModel/Tex_0xDCA8.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=4x10 lut=dSamusModel_Tex_0xDD50 */
 u8 dSamusModel_Tex_0xDCD0[40] = {
 	#include <SamusModel/Tex_0xDCD0.tex.inc.c>
 };
@@ -5155,8 +5156,8 @@ u8 dSamusModel_Tex_0xDF38[40] = {
 	#include <SamusModel/Tex_0xDF38.tex.inc.c>
 };
 
-u8 dSamusModel_Tex_0xDF60[40] = {
-	#include <SamusModel/Tex_0xDF60.tex.inc.c>
+u16 dSamusModel_palette_0xDF60[20] = {
+	#include <SamusModel/palette_0xDF60.palette.inc.c>
 };
 
 /* @tex fmt=CI4 dim=16x16 */
@@ -5170,7 +5171,7 @@ MObjSub **dSamusModel_data_0xE008[1] = { dSamusModel_Tex_0xE090 };
 /* Palette pointer array @ 0xE00C — consumed by MObjSub Tex_0xE018's
  * palettes field.  Trailing NULL absorbs what used to be PAD(4). */
 void *dSamusModel_Tex_0xE00C[3] = {
-	dSamusModel_Tex_0xDF60,
+	(u8 *)dSamusModel_palette_0xDF60,
 	dSamusModel_Tex_0xDF38,
 	NULL,
 };

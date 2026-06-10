@@ -4,6 +4,12 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern DObjDesc dLinkModel_DObjDesc_0x11908[];
+extern u32 dLinkModel_FTEmblem[];
+extern u32 dLinkModel_Stock[];
+extern DObjDesc dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5E0[];
 extern u8 dLinkShieldPose_data0[];
 extern u8 dLinkShieldPose_data0_end[];
 extern u8 dLinkShieldPose_shield_anim_joint_1[];
@@ -88,7 +94,7 @@ u32 dLinkMain_file_handles[48] = {
 	(u32)&dLinkMainMotion_EggLay_0x0014, /* extern -> 0x0014 */
 	(u32)&dLinkSpecial2_EntryWaveDObjDesc, /* extern -> 0x03F8 */
 	(u32)&dLinkSpecial1_Boomerang_WeaponAttributes, /* extern -> 0x0000 */
-	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x35D0), /* extern -> 0x11908 */
+	(u32)dLinkModel_DObjDesc_0x11908, /* extern -> 0x11908 */
 	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x2D70), /* extern -> 0x110A8 */
 	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x3658), /* extern -> 0x11990 */
 	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x3708), /* extern -> 0x11A40 */
@@ -105,7 +111,7 @@ u32 dLinkMain_file_handles[48] = {
 	0x01A10184,
 #endif
 	0x07800000,
-	(u32)((u8*)dLinkSpecial2_SpinAttackDObjDesc + 0x718), /* extern -> 0x18D8 */
+	(u32)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5E0, /* extern -> 0x18D8 */
 	0x00000000,
 	(u32)((u8*)dLinkSpecial2_SpinAttackDObjDesc + 0x7D0), /* extern -> 0x1990 */
 	0x00000000,
@@ -407,9 +413,9 @@ int *dLinkMain_stock_luts[4] = {
 
 /* @ 0x05F0, 12 bytes: FTAttributes.sprites target (was dLinkMain_pre+0x5F0) */
 FTSprites dLinkMain_sprites = {
-	(Sprite*)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x30), /* stock_sprite */
+	(Sprite*)dLinkModel_Stock, /* stock_sprite */
 	(int**)dLinkMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x210), /* emblem */
+	(Sprite*)dLinkModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x05FC, 256 bytes: FTAttributes.sub_0x5FC target (was dLinkMain_pre+0x5FC) */

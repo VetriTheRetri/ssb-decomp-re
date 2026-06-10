@@ -101,6 +101,9 @@ ftMotionCommand dCaptainMainMotion_Run[] = {
 	ftMotionPlayFGM(nSYAudioFGMCaptainFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dCaptainMainMotion_0x00E0[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_Run),
 };
 
@@ -305,7 +308,13 @@ ftMotionCommand dCaptainMainMotion_DownForwardD[] = {
 
 ftMotionCommand dCaptainMainMotion_DownForwardU[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_DownForwardD),
+};
+
+ftMotionCommand dCaptainMainMotion_0x0348[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_DownForwardD),
+};
+
+ftMotionCommand dCaptainMainMotion_0x0350[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_DownForwardD),
 };
 
@@ -1153,6 +1162,9 @@ ftMotionCommand dCaptainMainMotion_JabLoop[] = {
 	ftMotionCommandSubroutine(dCaptainMainMotion_0x1068),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dCaptainMainMotion_0x1100[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_JabLoop),
 };
 

@@ -14,11 +14,13 @@ extern u16 dMarioSecondaryImage_Tex_0x0060[];
 extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern u16 dNessModel_Lut_0xB9F0_palette[];
 extern u16 dNessModel_Lut_0xC060_palette[16];
-extern u8 dNessModel_Tex_0xAB20[];
-extern u8 dNessModel_Tex_0xAC28[];
+extern /* @tex fmt=CI4 dim=24x22 */
+u8 dNessModel_Tex_0xAB20[];
+extern u16 dNessModel_palette_0xAC28[];
 extern u8 dNessModel_Tex_0xAC50[];
 extern u8 dNessModel_Tex_0xAD00[];
-extern u8 dNessModel_Tex_0xAE30[];
+extern /* @tex fmt=CI4 dim=32x16 */
+u8 dNessModel_Tex_0xAE30[];
 extern u8 dNessModel_Tex_0xAF38[];
 extern u8 dNessModel_Tex_0xB9A8[];
 extern u8 dNessModel_Tex_0xBA18[];
@@ -131,11 +133,11 @@ extern u16 dNessModel_palette_0xACD8[16];
 extern u16 dNessModel_palette_0xAE08[16];
 extern u16 dNessModel_palette_0xBD98[16];
 extern u16 dNessModel_palette_0xBDC0[16];
-extern u8 dNessModel_Tex_0xAF80[520];
-extern u8 dNessModel_Tex_0xB188[520];
-extern u8 dNessModel_Tex_0xB390[520];
-extern u8 dNessModel_Tex_0xB598[520];
-extern u8 dNessModel_Tex_0xB7A0[520];
+extern u16 dNessModel_palette_0xAF80[];
+extern u16 dNessModel_palette_0xB188[];
+extern u16 dNessModel_palette_0xB390[];
+extern u16 dNessModel_palette_0xB598[];
+extern u16 dNessModel_palette_0xB7A0[];
 extern Gfx dNessModel_DL_0x8A98[21];
 extern void *dNessModel_PKThunderWaveMObjSub_sprites_table[6];
 extern MObjSub dNessModel_PKThunderWaveMObjSub_MObjSub[1];
@@ -260,11 +262,11 @@ void *dNessModel_Joint_0x0040_post_palset_0x4C[4] = {
 
 /* palette/sprite set @ +0x5C (5 entries) */
 void *dNessModel_Joint_0x0040_post_palset_0x5C[5] = {
-	dNessModel_Tex_0xB7A0,
-	dNessModel_Tex_0xAF80,
-	dNessModel_Tex_0xB188,
-	dNessModel_Tex_0xB598,
-	dNessModel_Tex_0xB390,
+	dNessModel_palette_0xB7A0,
+	dNessModel_palette_0xAF80,
+	dNessModel_palette_0xB188,
+	dNessModel_palette_0xB598,
+	dNessModel_palette_0xB390,
 };
 
 /* palette/sprite set @ +0x70 (4 entries) */
@@ -1218,12 +1220,12 @@ u16 *dNessModel_gap_0x2C04_sub_0x298[4] = {
 };
 
 /* u32 pointer array @ 0x2EAC (5 entries) */
-u8 *dNessModel_gap_0x2C04_sub_0x2A8[5] = {
-	dNessModel_Tex_0xB7A0,
-	dNessModel_Tex_0xAF80,
-	dNessModel_Tex_0xB188,
-	dNessModel_Tex_0xB598,
-	dNessModel_Tex_0xB390,
+u16 *dNessModel_gap_0x2C04_sub_0x2A8[5] = {
+	dNessModel_palette_0xB7A0,
+	dNessModel_palette_0xAF80,
+	dNessModel_palette_0xB188,
+	dNessModel_palette_0xB598,
+	dNessModel_palette_0xB390,
 };
 
 /* u32 pointer array @ 0x2EC0 (4 entries) */
@@ -2884,11 +2886,11 @@ u8 dNessModel_Tex_0xAB20[264] = {
 	#include <NessModel/Tex_0xAB20.tex.inc.c>
 };
 
-u8 dNessModel_Tex_0xAC28[40] = {
-	#include <NessModel/Tex_0xAC28.tex.inc.c>
+u16 dNessModel_palette_0xAC28[20] = {
+	#include <NessModel/palette_0xAC28.palette.inc.c>
 };
 
-/* @tex fmt=CI4 dim=16x16 lut=dNessModel_Tex_0xAC28 */
+/* @tex fmt=CI4 dim=16x16 lut=dNessModel_palette_0xAC28 */
 u8 dNessModel_Tex_0xAC50[136] = {
 	#include <NessModel/Tex_0xAC50.tex.inc.c>
 };
@@ -2923,24 +2925,24 @@ u8 dNessModel_Tex_0xAF38[72] = {
 	#include <NessModel/Tex_0xAF38.tex.inc.c>
 };
 
-u8 dNessModel_Tex_0xAF80[520] = {
-	#include <NessModel/Tex_0xAF80.tex.inc.c>
+u16 dNessModel_palette_0xAF80[260] = {
+	#include <NessModel/palette_0xAF80.palette.inc.c>
 };
 
-u8 dNessModel_Tex_0xB188[520] = {
-	#include <NessModel/Tex_0xB188.tex.inc.c>
+u16 dNessModel_palette_0xB188[260] = {
+	#include <NessModel/palette_0xB188.palette.inc.c>
 };
 
-u8 dNessModel_Tex_0xB390[520] = {
-	#include <NessModel/Tex_0xB390.tex.inc.c>
+u16 dNessModel_palette_0xB390[260] = {
+	#include <NessModel/palette_0xB390.palette.inc.c>
 };
 
-u8 dNessModel_Tex_0xB598[520] = {
-	#include <NessModel/Tex_0xB598.tex.inc.c>
+u16 dNessModel_palette_0xB598[260] = {
+	#include <NessModel/palette_0xB598.palette.inc.c>
 };
 
-u8 dNessModel_Tex_0xB7A0[520] = {
-	#include <NessModel/Tex_0xB7A0.tex.inc.c>
+u16 dNessModel_palette_0xB7A0[260] = {
+	#include <NessModel/palette_0xB7A0.palette.inc.c>
 };
 
 

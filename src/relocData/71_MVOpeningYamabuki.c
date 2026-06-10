@@ -1683,9 +1683,9 @@ DObjDLLink dMVOpeningYamabuki_LegsAnimJoint_DLLink_0x05EC[2] = {
 
 DObjDesc dMVOpeningYamabuki_LegsShadowDObjDesc[5] = {
 	{ 0, NULL, { 26.818335f, -29.66133f, -670.0845f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsAnimJoint + 0x19C0), { 1285.9763f, 0.989575f, -366.32028f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsAnimJoint + 0x19D0), { 1645.5571f, 0.989575f, -673.21893f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsAnimJoint + 0x19E0), { 1523.6108f, 0.989575f, -519.7696f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningYamabuki_LegsAnimJoint_DLLink_0x05CC, { 1285.9763f, 0.989575f, -366.32028f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningYamabuki_LegsAnimJoint_DLLink_0x05DC, { 1645.5571f, 0.989575f, -673.21893f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dMVOpeningYamabuki_LegsAnimJoint_DLLink_0x05EC, { 1523.6108f, 0.989575f, -519.7696f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
 PAD(4);
@@ -1864,8 +1864,8 @@ DObjDLLink dMVOpeningYamabuki_LegsShadowAnimJoint_DLLink_0x1538[2] = {
 
 DObjDesc dMVOpeningYamabuki_MBallDObjDesc[5] = {
 	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, -0.27f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsShadowAnimJoint + 0x1630), { 0.0f, 15.111347f, 103.71317f }, { 0.0f, 0.3f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8*)dMVOpeningYamabuki_LegsShadowAnimJoint + 0x1640), { -2.1e-05f, 125.51372f, 2.9e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.022218f, 1.022218f, 1.022218f } },
+	{ 1, (void*)dMVOpeningYamabuki_LegsShadowAnimJoint_DLLink_0x1528, { 0.0f, 15.111347f, 103.71317f }, { 0.0f, 0.3f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)dMVOpeningYamabuki_LegsShadowAnimJoint_DLLink_0x1538, { -2.1e-05f, 125.51372f, 2.9e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.022218f, 1.022218f, 1.022218f } },
 	{ 3, NULL, { -76.396164f, 161.02469f, -26.60802f }, { 0.738324f, 0.491944f, 0.149688f }, { 0.978265f, 0.978265f, 0.978265f } },
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
@@ -2460,8 +2460,216 @@ Gfx dMVOpeningYamabuki_Wallpaper_dl[] = { gsSPEndDisplayList() };
  * RGBA16 tiles packed at 0xF08 byte stride each (8 B of slack per tile
  * from the N64 LOADBLOCK 64-bit alignment). Each `Bitmap.buf` in the
  * array below gets chain-patched to point at `tex_tiles[i * 0xF08]`. */
-u8 dMVOpeningYamabuki_Wallpaper_tex_tiles[0x317A0] = {
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles[3848] = {
 	#include <MVOpeningYamabuki/Wallpaper_tex_tiles.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x0F08[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x0F08.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1E10[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1E10.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2D18[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2D18.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x3C20[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x3C20.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x4B28[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x4B28.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x5A30[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x5A30.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x6938[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x6938.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x7840[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x7840.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x8748[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x8748.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x9650[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x9650.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xA558[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xA558.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xB460[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xB460.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xC368[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xC368.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xD270[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xD270.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xE178[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xE178.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xF080[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xF080.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0xFF88[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0xFF88.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x10E90[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x10E90.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x11D98[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x11D98.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x12CA0[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x12CA0.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x13BA8[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x13BA8.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x14AB0[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x14AB0.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x159B8[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x159B8.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x168C0[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x168C0.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x177C8[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x177C8.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x186D0[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x186D0.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x195D8[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x195D8.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1A4E0[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1A4E0.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1B3E8[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1B3E8.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1C2F0[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1C2F0.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1D1F8[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1D1F8.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1E100[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1E100.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1F008[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1F008.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1FF10[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1FF10.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x20E18[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x20E18.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x21D20[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x21D20.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x22C28[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x22C28.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x23B30[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x23B30.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x24A38[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x24A38.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x25940[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x25940.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x26848[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x26848.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x27750[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x27750.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x28658[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x28658.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x29560[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x29560.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2A468[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2A468.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2B370[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2B370.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2C278[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2C278.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2D180[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2D180.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2E088[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2E088.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2EF90[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2EF90.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2FE98[3848] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2FE98.tex.inc.c>
+};
+
+u8 dMVOpeningYamabuki_Wallpaper_tex_tiles_0x30DA0[2560] = {
+	#include <MVOpeningYamabuki/dMVOpeningYamabuki_Wallpaper_tex_tiles_0x30DA0.tex.inc.c>
 };
 
 /* 53-entry Bitmap array. Each `.buf` points at the matching tile inside
@@ -2470,58 +2678,58 @@ u8 dMVOpeningYamabuki_Wallpaper_tex_tiles[0x317A0] = {
 
 Bitmap dMVOpeningYamabuki_Wallpaper_bitmaps[53] = {
 	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles, 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xF08), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1E10), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2D18), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x3C20), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x4B28), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x5A30), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x6938), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x7840), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x8748), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x9650), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xA558), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xB460), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xC368), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xD270), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xE178), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xF080), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xFF88), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x10E90), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x11D98), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x12CA0), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x13BA8), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x14AB0), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x159B8), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x168C0), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x177C8), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x186D0), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x195D8), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1A4E0), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1B3E8), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1C2F0), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1D1F8), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1E100), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1F008), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1FF10), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x20E18), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x21D20), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x22C28), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x23B30), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x24A38), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x25940), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x26848), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x27750), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x28658), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x29560), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2A468), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2B370), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2C278), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2D180), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2E088), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2EF90), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2FE98), 6, 0 },
-	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x30DA0), 4, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x0F08, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1E10, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2D18, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x3C20, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x4B28, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x5A30, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x6938, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x7840, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x8748, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x9650, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xA558, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xB460, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xC368, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xD270, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xE178, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xF080, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0xFF88, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x10E90, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x11D98, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x12CA0, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x13BA8, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x14AB0, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x159B8, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x168C0, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x177C8, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x186D0, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x195D8, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1A4E0, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1B3E8, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1C2F0, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1D1F8, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1E100, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1F008, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x1FF10, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x20E18, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x21D20, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x22C28, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x23B30, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x24A38, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x25940, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x26848, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x27750, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x28658, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x29560, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2A468, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2B370, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2C278, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2D180, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2E088, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2EF90, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x2FE98, 6, 0 },
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles_0x30DA0, 4, 0 },
 };
 
 /* `llMVOpeningYamabukiWallpaperSprite` — the 320×264 RGBA16 background

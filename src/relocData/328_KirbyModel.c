@@ -3617,26 +3617,26 @@ Vtx dKirbyModel_gap_0x31CC_sub_0x664C[3] = {
 
 /* gap sub-block @ 0x9848 (was gap+0x667C, 256 bytes) */
 /* @tex */
-u8 dKirbyModel_Tex_0x9848[256] = {
-	#include <KirbyModel/Tex_0x9848.tex.inc.c>
+Vtx dKirbyModel_Vtx_0x9848[16] = {
+	#include <KirbyModel/Vtx_0x9848.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9948 (was gap+0x677C, 256 bytes) */
 /* @tex */
-u8 dKirbyModel_Tex_0x9948[256] = {
-	#include <KirbyModel/Tex_0x9948.tex.inc.c>
+Vtx dKirbyModel_Vtx_0x9948[16] = {
+	#include <KirbyModel/Vtx_0x9948.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9A48 (was gap+0x687C, 144 bytes) */
 /* @tex */
-u8 dKirbyModel_Tex_0x9A48[144] = {
-	#include <KirbyModel/Tex_0x9A48.tex.inc.c>
+Vtx dKirbyModel_Vtx_0x9A48[9] = {
+	#include <KirbyModel/Vtx_0x9A48.vtx.inc.c>
 };
 
 /* gap sub-block @ 0x9AD8 (was gap+0x690C, 480 bytes) */
 /* @tex */
-u8 dKirbyModel_Tex_0x9AD8[480] = {
-	#include <KirbyModel/Tex_0x9AD8.tex.inc.c>
+Vtx dKirbyModel_Vtx_0x9AD8[30] = {
+	#include <KirbyModel/Vtx_0x9AD8.vtx.inc.c>
 };
 
 /* Gfx DL: gap_0x31CC_sub_0x6AEC @ 0x9CB8 (66 cmds) */

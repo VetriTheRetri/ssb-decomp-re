@@ -116,7 +116,7 @@ extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[];
 extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
 extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
 extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
-extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
+extern u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
 
 extern AObjEvent32 **dEFCommonEffects3_MBallRays_MatAnimJoint[];
 
@@ -1321,7 +1321,7 @@ u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = { dEFCommonEffects3
 
 u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0 };
 
-u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
-	(u32)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC),
-	aobjEvent32End(),
+u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
+	(u32 *)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC),
+	NULL,
 };

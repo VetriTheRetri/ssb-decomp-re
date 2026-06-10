@@ -9,6 +9,12 @@
 #include <sys/interp.h>  // SYInterpDesc
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern void *dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C0[];
+extern void *dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C4[];
+extern void *dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C8[];
+extern void *dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5CC[];
 extern u16 dBonus1CommonImages2_Lut_0x0008_palette[];
 extern u16 dBonus1CommonImages2_Lut_0x00B8_palette[];
 extern u16 dBonus1CommonImages2_Lut_0x0168_palette[];
@@ -110,11 +116,11 @@ extern MObjSub *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x230[2];
 
 /* Cross-file references resolved by fixRelocChain.py — file 121 (Bonus1CommonImages2) */
 extern u8 dBonus1CommonImages2_Tex_0x0190[];
-extern u8 dBonus1CommonImages2_Tex_0x0240[];
-extern u8 dBonus1CommonImages2_Tex_0x02F0[];
-extern u8 dBonus1CommonImages2_Tex_0x03A0[];
-extern u8 dBonus1CommonImages2_Tex_0x0450[];
-extern u8 dBonus1CommonImages2_Tex_0x0500[];
+extern u16 dBonus1CommonImages2_palette_0x0240[];
+extern u16 dBonus1CommonImages2_palette_0x02F0[];
+extern u16 dBonus1CommonImages2_palette_0x03A0[];
+extern u16 dBonus1CommonImages2_palette_0x0450[];
+extern u16 dBonus1CommonImages2_palette_0x0500[];
 
 extern u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint_data[7];
 extern Vec3f dGRBonus2FoxFile2_Layer1Anim_AnimJoint_data_0x1C[12];
@@ -308,11 +314,11 @@ void *dGRBonus2FoxFile2_Layer1MObj_data[20] = {
  * (originally Layer1MObj_MObjSub+0x50). */
 void *dGRBonus2FoxFile2_Layer1MObj_sprites_A[6] = {
 	dBonus1CommonImages2_Tex_0x0190,
-	dBonus1CommonImages2_Tex_0x0240,
-	dBonus1CommonImages2_Tex_0x02F0,
-	dBonus1CommonImages2_Tex_0x03A0,
-	dBonus1CommonImages2_Tex_0x0450,
-	dBonus1CommonImages2_Tex_0x0500,
+	dBonus1CommonImages2_palette_0x0240,
+	dBonus1CommonImages2_palette_0x02F0,
+	dBonus1CommonImages2_palette_0x03A0,
+	dBonus1CommonImages2_palette_0x0450,
+	dBonus1CommonImages2_palette_0x0500,
 };
 
 /* Sprite array referenced by gap_0x0AD8_sub_0xB0.sprites
@@ -320,33 +326,33 @@ void *dGRBonus2FoxFile2_Layer1MObj_sprites_A[6] = {
  * old `gap_0x0AD8` symbol — absorbed here). */
 void *dGRBonus2FoxFile2_Layer1MObj_sprites_B[6] = {
 	dBonus1CommonImages2_Tex_0x0190,
-	dBonus1CommonImages2_Tex_0x0240,
-	dBonus1CommonImages2_Tex_0x02F0,
-	dBonus1CommonImages2_Tex_0x03A0,
-	dBonus1CommonImages2_Tex_0x0450,
-	dBonus1CommonImages2_Tex_0x0500,
+	dBonus1CommonImages2_palette_0x0240,
+	dBonus1CommonImages2_palette_0x02F0,
+	dBonus1CommonImages2_palette_0x03A0,
+	dBonus1CommonImages2_palette_0x0450,
+	dBonus1CommonImages2_palette_0x0500,
 };
 
 /* Raw data from file offset 0x0AD8 to 0x2998 (7872 bytes) */
 /* sprite array referenced by gap_0x0AD8_sub_0x128.sprites */
 void *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x8[6] = {
 	dBonus1CommonImages2_Tex_0x0190,
-	dBonus1CommonImages2_Tex_0x0240,
-	dBonus1CommonImages2_Tex_0x02F0,
-	dBonus1CommonImages2_Tex_0x03A0,
-	dBonus1CommonImages2_Tex_0x0450,
-	dBonus1CommonImages2_Tex_0x0500,
+	dBonus1CommonImages2_palette_0x0240,
+	dBonus1CommonImages2_palette_0x02F0,
+	dBonus1CommonImages2_palette_0x03A0,
+	dBonus1CommonImages2_palette_0x0450,
+	dBonus1CommonImages2_palette_0x0500,
 };
 
 /* sprite array referenced by gap_0x0AD8_sub_0x1A0.sprites — same
  * shape as sub_0x8. */
 void *dGRBonus2FoxFile2_gap_0x0AD8_sub_0x20[6] = {
 	dBonus1CommonImages2_Tex_0x0190,
-	dBonus1CommonImages2_Tex_0x0240,
-	dBonus1CommonImages2_Tex_0x02F0,
-	dBonus1CommonImages2_Tex_0x03A0,
-	dBonus1CommonImages2_Tex_0x0450,
-	dBonus1CommonImages2_Tex_0x0500,
+	dBonus1CommonImages2_palette_0x0240,
+	dBonus1CommonImages2_palette_0x02F0,
+	dBonus1CommonImages2_palette_0x03A0,
+	dBonus1CommonImages2_palette_0x0450,
+	dBonus1CommonImages2_palette_0x0500,
 };
 
 /* MObjSub @ 0xB10 */
@@ -1463,15 +1469,15 @@ AObjEvent32 *dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint[20] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data + 0xA5C0),
+	(AObjEvent32 *)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C0,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 *)((u8*)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data + 0xA5C4),
-	(AObjEvent32 *)((u8*)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data + 0xA5C8),
-	(AObjEvent32 *)((u8*)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data + 0xA5CC),
+	(AObjEvent32 *)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C4,
+	(AObjEvent32 *)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5C8,
+	(AObjEvent32 *)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5CC,
 };
 
 /* Split AnimJoint blob: forward decls for sub-scripts. */

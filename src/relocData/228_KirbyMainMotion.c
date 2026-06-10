@@ -197,6 +197,9 @@ ftMotionCommand dKirbyMainMotion_Run[] = {
 	ftMotionPlayFGM(nSYAudioFGMKirbyFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x01EC[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_Run),
 };
 
@@ -317,12 +320,12 @@ ftMotionCommand dKirbyMainMotion_0x0380[] = {
 };
 
 ftMotionCommand dKirbyMainMotion_Damage_0x0388[] = {
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_ShieldDrop_0x036C + 0x14)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x0380),
 	ftMotionCommandEnd(),
 };
 
 ftMotionCommand dKirbyMainMotion_Damage_0x0394[] = {
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_ShieldDrop_0x036C + 0x14)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x0380),
 	ftMotionCommandSetDamageThrown((u32)dFTCommonMoveset_DamageScript) /* extern */,
 	ftMotionCommandEnd(),
 };
@@ -398,13 +401,19 @@ ftMotionCommand dKirbyMainMotion_StunStartU[] = {
 
 ftMotionCommand dKirbyMainMotion_DownForwardD[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_StunLandU + 0x8)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x0430),
 	ftMotionCommandEnd(),
 };
 
 ftMotionCommand dKirbyMainMotion_DownForwardU[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_DownForwardD),
+};
+
+ftMotionCommand dKirbyMainMotion_0x0488[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_DownForwardD),
+};
+
+ftMotionCommand dKirbyMainMotion_0x0490[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_DownForwardD),
 };
 
@@ -1039,11 +1048,11 @@ ftMotionCommand dKirbyMainMotion_ShieldBreak[] = {
 	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyDeadUp),
 	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dKirbyMainMotion_Hammer + 0x24)),
+	ftMotionCommandGoto((ftMotionCommand *)dKirbyMainMotion_0x0D68),
 };
 
 ftMotionCommand dKirbyMainMotion_Damaged_0x0DC0[] = {
-	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dKirbyMainMotion_Hammer + 0x24)),
+	ftMotionCommandGoto((ftMotionCommand *)dKirbyMainMotion_0x0D68),
 };
 
 ftMotionCommand dKirbyMainMotion_StunLandD_0x0DC8[] = {
@@ -1242,6 +1251,9 @@ u32 dKirbyMainMotion_Damage_0x1088[] = {
 #if defined(REGION_JP)
 ftMotionCommand dKirbyMainMotion_EggLay_0x1094[] = {
 	ftMotionCommandSubroutineS2((u8 *)dKirbyMainMotion_CliffAttackQuick2 + 0xC),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1098[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x109C[] = {
@@ -1257,6 +1269,9 @@ ftMotionCommand dKirbyMainMotion_EggLay_0x1094[] = {
 #if defined(REGION_JP)
 ftMotionCommand dKirbyMainMotion_FalconDivePulled[] = {
 	ftMotionCommandSubroutineS2(dKirbyMainMotion_0x0380),
+};
+
+ftMotionCommand dKirbyMainMotion_0x10A4[] = {
 	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_CliffAttackQuick2 + 0x28)),
 	ftMotionCommandEnd(),
 };
@@ -1265,7 +1280,7 @@ ftMotionCommand dKirbyMainMotion_0x10B0[] = {
 };
 #else
 ftMotionCommand dKirbyMainMotion_FalconDivePulled[] = {
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_ShieldDrop_0x036C + 0x14)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x0380),
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkleDelay) /* extern */,
 	ftMotionCommandEnd(),
 };
@@ -1281,7 +1296,7 @@ ftMotionCommand dKirbyMainMotion_Damaged_0x10B4[] = {
 };
 #else
 ftMotionCommand dKirbyMainMotion_Damaged_0x10B4[] = {
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_ShieldDrop_0x036C + 0x14)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x0380),
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle) /* extern */,
 	ftMotionCommandEnd(),
 };
@@ -1385,7 +1400,7 @@ ftMotionCommand dKirbyMainMotion_0x1178[] = {
 	ftMotionCommandReturn(),
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetFlag2(1),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_Jab2 + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1158),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetFlag2(2),
 };
@@ -1402,24 +1417,30 @@ u32 dKirbyMainMotion_0x1170[] = {
 
 #if defined(REGION_JP)
 ftMotionCommand dKirbyMainMotion_JabLoop[] = {
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_Jab2 + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1158),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSetFlag2(3),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_Jab2 + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1158),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag2(4),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_Jab2 + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1158),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetFlag2(5),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_Jab2 + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1158),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_Jab2 + 0x30)),
+};
+
+ftMotionCommand dKirbyMainMotion_0x11F4[] = {
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1158),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dKirbyMainMotion_0x1170 + 0x20)),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1208[] = {
 	ftMotionCommandHideItem(32505856),
 	ftMotionCommandStopLoopSFX(55050240),
 	ftMotionCommandStopLoopSFX(60162048),
@@ -1455,9 +1476,15 @@ ftMotionCommand dKirbyMainMotion_JabLoop[] = {
 	ftMotionCommandSubroutine(dKirbyMainMotion_0x1170),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1210[] = {
 	ftMotionCommandSubroutine(dKirbyMainMotion_0x1170),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandGoto(dKirbyMainMotion_JabLoop),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1224[] = {
 	ftMotionCommandHideItem(32505856),
 	ftMotionCommandStopLoopSFX(55050240),
 	ftMotionCommandStopLoopSFX(60162048),
@@ -2183,7 +2210,7 @@ ftMotionCommand dKirbyMainMotion_DKStaringGround[] = {
 	ftMotionCommandEnd(),
 };
 ftMotionCommand dKirbyMainMotion_0x1958[] = {
-	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dKirbyMainMotion_LandingAirX_0x18F4 + 0x30)),
+	ftMotionCommandGoto((ftMotionCommand *)dKirbyMainMotion_0x1924),
 	ftMotionCommandHideItem(0),
 	ftMotionCommandMakeRumble(20, 7),
 	ftMotionCommandWaitAsync(2),
@@ -2472,6 +2499,9 @@ ftMotionCommand dKirbyMainMotion_StoneGround_0x1BB4[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 22, 1, 0, 400, 0, 0, 0, 50, 78, 0, 3, 0, 2, 1, 70),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1BD0[] = {
 	ftMotionCommandEnd(),
 };
 ftMotionCommand dKirbyMainMotion_0x1BD4[] = {
@@ -2486,6 +2516,9 @@ ftMotionCommand dKirbyMainMotion_StoneGround_0x1BB4[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 20, 1, 0, 400, 0, 0, 0, 50, 70, 0, 3, 0, 2, 1, 70),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1BE8[] = {
 	ftMotionCommandEnd(),
 };
 #endif
@@ -2543,7 +2576,7 @@ ftMotionCommand dKirbyMainMotion_0x1C58[] = {
 	ftMotionCommandReturn(),
 	ftMotionCommandPlayLoopSFXStoreInfo(nSYAudioFGMKirbySpecialNStart),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_StoneCancel + 0x18)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1C58),
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x1C7C[] = {
@@ -2557,6 +2590,9 @@ ftMotionCommand dKirbyMainMotion_StoneCancel[] = {
 	ftMotionCommandEffect(0, 77, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1C70[] = {
 	ftMotionCommandSetModelPartID(6, 1),
 	ftMotionCommandSetModelPartID(7, 0),
 	ftMotionCommandSetModelPartID(19, 0),
@@ -2601,7 +2637,7 @@ u32 dKirbyMainMotion_0x1CB4[] = {
 u32 dKirbyMainMotion_InhaleStartGround[] = {
 	ftMotionCommandPlayLoopSFXStoreInfo(nSYAudioFGMKirbySpecialNStart),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_StoneCancel + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1C70),
 	ftMotionCommandEnd(),
 };
 
@@ -2623,7 +2659,7 @@ ftMotionCommand dKirbyMainMotion_0x1CD8[] = {
 };
 u32 dKirbyMainMotion_0x1CF0[] = {
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_StoneCancel + 0x18)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1C58),
 	0x9BF88000,  /* opc=38 truncated */
 	ftMotionCommandEnd(),
 };
@@ -2666,7 +2702,7 @@ ftMotionCommand dKirbyMainMotion_0x1D2C[] = {
 #else
 ftMotionCommand dKirbyMainMotion_InhaleSpit[] = {
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_StoneCancel + 0x30)),
+	ftMotionCommandSubroutine((ftMotionCommand *)dKirbyMainMotion_0x1C70),
 	ftMotionCommandEffect(127, nEFKindQuakeMag0, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMKirbySpecialNThrow),
 	ftMotionCommandMakeRumble(0, 9),
@@ -2831,6 +2867,9 @@ ftMotionCommand dKirbyMainMotion_0x1E48[] = {
 ftMotionCommand dKirbyMainMotion_LaserGround[] = {
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, -200, 0, 0, 0),
 	ftMotionCommandGoto(dKirbyMainMotion_0x1DD8),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1E18[] = {
 	ftMotionCommandHideItem(0),
 	ftMotionCommandSetModelPartID(17, 0),
 	ftMotionCommandWaitAsync(25),
@@ -2910,7 +2949,13 @@ ftMotionCommand dKirbyMainMotion_ChargeStartAir[] = {
 ftMotionCommand dKirbyMainMotion_ChargePunchGround[] = {
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 90, -180, 0, 90, 0),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dKirbyMainMotion_Charge + 0x14)),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1EE4[] = {
+	ftMotionCommandGoto((ftMotionCommand *)dKirbyMainMotion_0x1EB8),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1EEC[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetColAnim(48, 0),
 	ftMotionCommandSetTexturePartID(5),
@@ -2928,13 +2973,16 @@ ftMotionCommand dKirbyMainMotion_ChargePunchGround[] = {
 	ftMotionPlayFGM(nSYAudioFGMDonkeyCharge),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 90, -180, 0, 90, 0),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x1F04[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_ChargePunchGround),
 };
 #endif
 
 #if defined(REGION_JP)
 u32 dKirbyMainMotion_ChargePunchAir[] = {
-	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dKirbyMainMotion_ChargePunchGround + 0x1C)),
+	ftMotionCommandGoto((ftMotionCommand *)dKirbyMainMotion_0x1EEC),
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetColAnim(49, 4),
@@ -3080,6 +3128,9 @@ ftMotionCommand dKirbyMainMotion_0x2058[] = {
 #else
 ftMotionCommand dKirbyMainMotion_ChargePunchAirFull_0x203C[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_ChargePunchGroundFull_0x1F8C),
+};
+
+ftMotionCommand dKirbyMainMotion_0x2044[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -240, 0, 0, 0),
 	ftMotionCommandWait(13),
@@ -3119,6 +3170,9 @@ ftMotionCommand dKirbyMainMotion_Charging[] = {
 #if defined(REGION_JP)
 ftMotionCommand dKirbyMainMotion_0x20A0[] = {
 	ftMotionCommandGoto((ftMotionCommand *)dKirbyMainMotion_Charging),
+};
+
+ftMotionCommand dKirbyMainMotion_0x20A8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetColAnim(47, 0),
 	ftMotionCommandSetFlag0(1),
@@ -3140,7 +3194,13 @@ ftMotionCommand dKirbyMainMotion_0x20A0[] = {
 	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dKirbyMainMotion_0x20B8[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_0x20A0),
+};
+
+ftMotionCommand dKirbyMainMotion_0x20C0[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart, 0),
 	ftMotionCommandSetFlag0(1),
@@ -3384,7 +3444,7 @@ ftMotionCommand dKirbyMainMotion_0x2268[] = {
 	ftMotionCommandEnd(),
 };
 ftMotionCommand dKirbyMainMotion_0x2274[] = {
-	ftMotionCommandSetParallelScript((u32)((u8 *)dKirbyMainMotion_EggThrowGround + 0x24)),
+	ftMotionCommandSetParallelScript((u32)dKirbyMainMotion_0x2250),
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetColAnim(50, 0),
@@ -3429,7 +3489,7 @@ ftMotionCommand dKirbyMainMotion_FalconPunchGround[] = {
 	ftMotionCommandEnd(),
 };
 u32 dKirbyMainMotion_0x2330[] = {
-	ftMotionCommandSetParallelScript((u32)((u8 *)dKirbyMainMotion_EggThrowGround + 0x24)),
+	ftMotionCommandSetParallelScript((u32)dKirbyMainMotion_0x2250),
 	ftMotionCommandSetColAnim(50, 0),
 	ftMotionPlayVoice(nSYAudioVoiceKirbyCopyCaptainSpecialNFalcon),
 	0x98005800,  /* opc=38 truncated */

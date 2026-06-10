@@ -4,6 +4,11 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dLuigiModel_FTEmblem[];
+extern AObjEvent32 **dLuigiModel_JointTree_0x49E8_post[];
+extern u32 dLuigiModel_Stock[];
 extern u8 dMarioShieldPose_data0[];
 extern u8 dMarioShieldPose_data0_end[];
 extern u8 dMarioShieldPose_shield_anim_joint_1[];
@@ -123,7 +128,7 @@ FTTexturePart dLuigiMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 FTCommonPartContainer dLuigiMain_commonparts_container = {
 	{
 		{ (DObjDesc*)&dLuigiModel_JointTree, (MObjSub***)&dLuigiModel_gap_0x0000, (AObjEvent32***)((u8*)dLuigiModel_JointTree + 0x480), 0x00 },
-		{ (DObjDesc*)&dLuigiModel_JointTree_0x49E8, (MObjSub***)&dLuigiModel_gap_0x28E0_sub_0x3A0, (AObjEvent32***)((u8*)dLuigiModel_JointTree_0x49E8 + 0x478), 0x00 },
+		{ (DObjDesc*)&dLuigiModel_JointTree_0x49E8, (MObjSub***)&dLuigiModel_gap_0x28E0_sub_0x3A0, (AObjEvent32***)dLuigiModel_JointTree_0x49E8_post, 0x00 },
 	},
 };
 
@@ -233,9 +238,9 @@ int *dLuigiMain_stock_luts[4] = {
 
 /* @ 0x04A0, 12 bytes: FTAttributes.sprites target (was dLuigiMain_pre+0x4A0) */
 FTSprites dLuigiMain_sprites = {
-	(Sprite*)((u8*)dLuigiModel_gap_0x7C50_sub_0x68 + 0x20), /* stock_sprite */
+	(Sprite*)dLuigiModel_Stock, /* stock_sprite */
 	(int**)dLuigiMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dLuigiModel_gap_0x7C50_sub_0x68 + 0x210), /* emblem */
+	(Sprite*)dLuigiModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x04AC, 200 bytes: FTAttributes.sub_0x4AC target (was dLuigiMain_pre+0x4AC) */

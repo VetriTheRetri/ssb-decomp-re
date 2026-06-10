@@ -65,6 +65,7 @@ u16 dStagePupupuBetaImages_Lut_0x0898_palette[16] = {
 PAD(8);
 
 /* @ 0x08C0, CI4 32×32 (512 bytes) */
+/* @tex fmt=CI4 dim=4x16 lut=dStagePupupuBetaImages_Lut_0x0898_palette */
 u8 dStagePupupuBetaImages_Tex_0x08C0[512] = {
 	#include <StagePupupuBetaImages/Tex_0x08C0.tex.inc.c>
 };

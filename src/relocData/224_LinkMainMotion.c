@@ -79,6 +79,9 @@ ftMotionCommand dLinkMainMotion_Run[] = {
 	ftMotionPlayFGM(nSYAudioFGMLinkFoot),
 	ftMotionCommandEffect(0, nEFKindDustLight, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
+};
+
+ftMotionCommand dLinkMainMotion_0x00B0[] = {
 	ftMotionCommandGoto(dLinkMainMotion_Run),
 };
 
@@ -264,7 +267,13 @@ ftMotionCommand dLinkMainMotion_DownForwardD[] = {
 
 ftMotionCommand dLinkMainMotion_DownForwardU[] = {
 	ftMotionCommandGoto(dLinkMainMotion_DownForwardD),
+};
+
+ftMotionCommand dLinkMainMotion_0x02E8[] = {
 	ftMotionCommandGoto(dLinkMainMotion_DownForwardD),
+};
+
+ftMotionCommand dLinkMainMotion_0x02F0[] = {
 	ftMotionCommandGoto(dLinkMainMotion_DownForwardD),
 };
 

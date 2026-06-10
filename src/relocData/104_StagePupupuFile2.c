@@ -42,10 +42,10 @@ extern u8 dStagePupupuImages_Tex_0x1AB0[];
 extern u8 dStagePupupuImages_Tex_0x2270[];
 extern u8 dStagePupupuImages_Tex_0x26A0[];
 extern u8 dStagePupupuImages_Tex_0x28D0[];
-extern u8 dStagePupupuImages_Tex_0x2B00[];
+extern u16 dStagePupupuImages_palette_0x2B00[];
 extern u8 dStagePupupuImages_Tex_0x2BB0[];
-extern u8 dStagePupupuImages_Tex_0x2DE0[];
-extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u16 dStagePupupuImages_palette_0x2DE0[];
+extern u16 dStagePupupuImages_palette_0x2E90[];
 extern u8 dStagePupupuImages_Tex_0x2F40[];
 extern Gfx dStagePupupuFile2_Layer3Anim_DL_0x29B8[];
 extern u16 dStagePupupuImages_Lut_0x0008_palette[];
@@ -78,10 +78,10 @@ extern u8 dStagePupupuImages_Tex_0x1AB0[];
 extern u8 dStagePupupuImages_Tex_0x2270[];
 extern u8 dStagePupupuImages_Tex_0x26A0[];
 extern u8 dStagePupupuImages_Tex_0x28D0[];
-extern u8 dStagePupupuImages_Tex_0x2B00[];
+extern u16 dStagePupupuImages_palette_0x2B00[];
 extern u8 dStagePupupuImages_Tex_0x2BB0[];
-extern u8 dStagePupupuImages_Tex_0x2DE0[];
-extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u16 dStagePupupuImages_palette_0x2DE0[];
+extern u16 dStagePupupuImages_palette_0x2E90[];
 extern u8 dStagePupupuImages_Tex_0x2F40[];
 extern u16 dStagePupupuImages_Lut_0x0008_palette[];
 extern u16 dStagePupupuImages_Lut_0x0238_palette[];
@@ -113,10 +113,10 @@ extern u8 dStagePupupuImages_Tex_0x1AB0[];
 extern u8 dStagePupupuImages_Tex_0x2270[];
 extern u8 dStagePupupuImages_Tex_0x26A0[];
 extern u8 dStagePupupuImages_Tex_0x28D0[];
-extern u8 dStagePupupuImages_Tex_0x2B00[];
+extern u16 dStagePupupuImages_palette_0x2B00[];
 extern u8 dStagePupupuImages_Tex_0x2BB0[];
-extern u8 dStagePupupuImages_Tex_0x2DE0[];
-extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u16 dStagePupupuImages_palette_0x2DE0[];
+extern u16 dStagePupupuImages_palette_0x2E90[];
 extern u8 dStagePupupuImages_Tex_0x2F40[];
 extern u16 dStagePupupuImages_Lut_0x0008_palette[];
 extern u16 dStagePupupuImages_Lut_0x0238_palette[];
@@ -148,10 +148,10 @@ extern u8 dStagePupupuImages_Tex_0x1AB0[];
 extern u8 dStagePupupuImages_Tex_0x2270[];
 extern u8 dStagePupupuImages_Tex_0x26A0[];
 extern u8 dStagePupupuImages_Tex_0x28D0[];
-extern u8 dStagePupupuImages_Tex_0x2B00[];
+extern u16 dStagePupupuImages_palette_0x2B00[];
 extern u8 dStagePupupuImages_Tex_0x2BB0[];
-extern u8 dStagePupupuImages_Tex_0x2DE0[];
-extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u16 dStagePupupuImages_palette_0x2DE0[];
+extern u16 dStagePupupuImages_palette_0x2E90[];
 extern u8 dStagePupupuImages_Tex_0x2F40[];
 extern Gfx dStagePupupuFile2_Layer0Anim_AnimJoint[];
 extern Gfx dStagePupupuFile2_Layer0Anim_DL_0x18E0[];
@@ -207,8 +207,8 @@ extern u16 dStagePupupuImages_Lut_0x2DB8_palette[];
 extern u16 dStagePupupuImages_Lut_0x2E68_palette[];
 extern u16 dStagePupupuImages_Lut_0x2F18_palette[];
 extern u8 dStagePupupuImages_Tex_0x26A0[];
-extern u8 dStagePupupuImages_Tex_0x2DE0[];
-extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u16 dStagePupupuImages_palette_0x2DE0[];
+extern u16 dStagePupupuImages_palette_0x2E90[];
 extern u8 dStagePupupuImages_Tex_0x2F40[];
 Vtx dStagePupupuFile2_gap_0x0000[4] = {
 	#include <StagePupupuFile2/gap_0x0000.vtx.inc.c>
@@ -601,20 +601,20 @@ MObjSub **dStagePupupuFile2_gap_0x1D00_sub_0x250[4] = {
 
 /* @ 0x1F60 — MObjSub texture-pointer array (3 entries); each slot is an
  * extern reloc-chain pointer into file 103 (StagePupupuImages). */
-extern u8 dStagePupupuImages_Tex_0x1BE0[];
-extern u8 dStagePupupuImages_Tex_0x1E10[];
-extern u8 dStagePupupuImages_Tex_0x2040[];
+extern u16 dStagePupupuImages_palette_0x1BE0[];
+extern u16 dStagePupupuImages_palette_0x1E10[];
+extern u16 dStagePupupuImages_palette_0x2040[];
 u8 *dStagePupupuFile2_gap_0x1D00_sub_0x260[3] = {
-	dStagePupupuImages_Tex_0x1BE0,
-	dStagePupupuImages_Tex_0x1E10,
-	dStagePupupuImages_Tex_0x2040,
+	dStagePupupuImages_palette_0x1BE0,
+	dStagePupupuImages_palette_0x1E10,
+	dStagePupupuImages_palette_0x2040,
 };
 
 /* @ 0x1F6C — MObjSub texture-pointer array (3 entries -> file 103). */
 u8 *dStagePupupuFile2_gap_0x1D00_sub_0x26C[3] = {
-	dStagePupupuImages_Tex_0x1BE0,
-	dStagePupupuImages_Tex_0x1E10,
-	dStagePupupuImages_Tex_0x1E10,
+	dStagePupupuImages_palette_0x1BE0,
+	dStagePupupuImages_palette_0x1E10,
+	dStagePupupuImages_palette_0x1E10,
 };
 
 /* MObjSub @ 0x1F78 */

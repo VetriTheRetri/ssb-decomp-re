@@ -18,12 +18,15 @@
 #include <wp/wptypes.h>
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern MObjSub **dMarioSpecial3_mobjsubs_ptr_0x00D8[];
 extern Vtx dMarioSpecial3_JointVerts_Vtx[];        /* file 297 */
 extern u8  dMarioSpecial3_Tex_0x0058[];            /* file 297 */
 
 WPAttributes dMarioSpecial1_Fireball_WeaponAttributes = {
     (void *)&dMarioSpecial3_JointVerts_Vtx[4],                   /* data (297+0x1A8) */
-    (MObjSub ***)((u8 *)dMarioSpecial3_Tex_0x0058 + 0x80),       /* p_mobjsubs (297+0xD8) */
+    (MObjSub ***)dMarioSpecial3_mobjsubs_ptr_0x00D8,       /* p_mobjsubs (297+0xD8) */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */

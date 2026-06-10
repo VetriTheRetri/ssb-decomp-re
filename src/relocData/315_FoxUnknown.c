@@ -31,6 +31,7 @@ u16 dFoxUnknown_palette[16] = {
 PAD(8);
 
 /* @ 0x0030, 256 bytes — CI4 texture (32×16) */
+/* @tex fmt=CI4 dim=4x32 lut=dFoxUnknown_palette */
 u8 dFoxUnknown_Tex[0x100] = {
 	#include <FoxUnknown/Tex.tex.inc.c>
 };

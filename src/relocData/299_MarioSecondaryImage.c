@@ -18,6 +18,7 @@ u16 dMarioSecondaryImage_Tex_0x0008[4] = {
 PAD(8);
 
 /* Texture: 0x0018 (64 bytes) */
+/* @tex fmt=CI4 dim=4x8 lut=dMarioSecondaryImage_Tex_0x0008 */
 u8 dMarioSecondaryImage_Tex_0x0018[64] = {
 	#include <MarioSecondaryImage/Tex_0x0018.tex.inc.c>
 };
@@ -32,6 +33,7 @@ u16 dMarioSecondaryImage_Tex_0x0060[8] = {
 PAD(8);
 
 /* Texture: 0x0078 (72 bytes) */
+/* @tex fmt=CI4 dim=4x8 lut=dMarioSecondaryImage_Tex_0x0060 */
 u8 dMarioSecondaryImage_Tex_0x0078[72] = {
 	#include <MarioSecondaryImage/Tex_0x0078.tex.inc.c>
 };

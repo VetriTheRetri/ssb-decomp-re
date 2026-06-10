@@ -5,6 +5,9 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern DObjDesc dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5D0[];
 extern Sprite dBonus1CommonBackground_0x26c88[];
 extern DObjDesc dGRBonus2FoxFile2_Layer0DObj[];
 extern DObjDesc dGRBonus2FoxFile2_Layer1DObj[];
@@ -45,7 +48,7 @@ MPGroundData dGRBonus2FoxMap_header =
     9600,  /* map_bound_right */
     -9600,  /* map_bound_left */
     nSYAudioBGM1PBonusStage,  /* bgm_id */
-    (void *)((u8 *)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint + 0xA620),  /* map_nodes */
+    (void *)dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint_data_0xA5D0,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */
     7000,  /* camera_bound_team_top */

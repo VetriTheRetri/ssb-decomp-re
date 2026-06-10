@@ -24,6 +24,7 @@ u16 dNCommonTexture_palette[16] = {
 PAD(8);
 
 /* @ 0x0030, 512 bytes — CI4 texture (32×32) */
+/* @tex fmt=CI4 dim=8x32 lut=dNCommonTexture_palette */
 u8 dNCommonTexture_Tex[0x200] = {
 	#include <NCommonTexture/Tex.tex.inc.c>
 };

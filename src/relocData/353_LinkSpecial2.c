@@ -432,7 +432,7 @@ u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint_0xB68[10] = {
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98[];
-extern u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[];
+extern u32 * dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[];
 
 AObjEvent32 *dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
@@ -460,9 +460,9 @@ u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98[] = {
 	(u32)(dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98),
 };
 
-u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[] = {
-	(u32)(dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98),
-	aobjEvent32End(),
+u32 * dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xBE0[] = {
+	(u32 *)(dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint_0xB98),
+	NULL,
 };
 
 PAD(8);
@@ -472,7 +472,7 @@ PAD(8);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8[];
-extern u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[];
+extern u32 * dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[];
 
 AObjEvent32 *dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[2] = {
 	NULL,
@@ -495,9 +495,9 @@ u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8[] = {
 	(u32)(dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8),
 };
 
-u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[] = {
-	(u32)(dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8),
-	aobjEvent32End(),
+u32 * dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xC2C[] = {
+	(u32 *)(dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint_0xBF8),
+	NULL,
 };
 
 PAD(4);

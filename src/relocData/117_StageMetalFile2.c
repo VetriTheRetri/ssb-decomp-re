@@ -14,14 +14,14 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u8 dStageMetalFile2_Tex_0x0008[];
-extern u8 dStageMetalFile2_Tex_0x0050[];
-extern u8 dStageMetalFile2_Tex_0x0258[];
-extern u8 dStageMetalFile2_Tex_0x0310[];
-extern u8 dStageMetalFile2_Tex_0x0718[];
-extern u8 dStageMetalFile2_Tex_0x0760[];
-extern u8 dStageMetalFile2_Tex_0x07A8[];
-extern u8 dStageMetalFile2_Tex_0x09C8[];
+extern u16 dStageMetalFile2_palette_0x0008[];
+extern u16 dStageMetalFile2_palette_0x0050[];
+extern u16 dStageMetalFile2_palette_0x0258[];
+extern u16 dStageMetalFile2_palette_0x0310[];
+extern u16 dStageMetalFile2_palette_0x0718[];
+extern u16 dStageMetalFile2_palette_0x0760[];
+extern u16 dStageMetalFile2_palette_0x07A8[];
+extern u16 dStageMetalFile2_palette_0x09C8[];
 extern Vtx dStageMetalFile2_gap_0x0EA8[];
 extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x110[];
 extern Vtx dStageMetalFile2_gap_0x0EA8_sub_0x2F0[];
@@ -66,44 +66,44 @@ PAD(8);
 extern MObjSub *dStageMetalFile2_gap_0x1E48_sub_0x178[];
 
 /* Texture data @ 0x0008 (3112 bytes) */
-u8 dStageMetalFile2_Tex_0x0008[0x40] = {
-	#include <StageMetalFile2/Tex_0x0008.tex.inc.c>
+u16 dStageMetalFile2_palette_0x0008[32] = {
+	#include <StageMetalFile2/palette_0x0008.palette.inc.c>
 };
 
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x0050[0x200] = {
-	#include <StageMetalFile2/Tex_0x0050.tex.inc.c>
+u16 dStageMetalFile2_palette_0x0050[256] = {
+	#include <StageMetalFile2/palette_0x0050.palette.inc.c>
 };
 
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x0258[0xB0] = {
-	#include <StageMetalFile2/Tex_0x0258.tex.inc.c>
+u16 dStageMetalFile2_palette_0x0258[88] = {
+	#include <StageMetalFile2/palette_0x0258.palette.inc.c>
 };
 
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x0310[0x400] = {
-	#include <StageMetalFile2/Tex_0x0310.tex.inc.c>
+u16 dStageMetalFile2_palette_0x0310[512] = {
+	#include <StageMetalFile2/palette_0x0310.palette.inc.c>
 };
 
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x0718[0x40] = {
-	#include <StageMetalFile2/Tex_0x0718.tex.inc.c>
+u16 dStageMetalFile2_palette_0x0718[32] = {
+	#include <StageMetalFile2/palette_0x0718.palette.inc.c>
 };
 
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x0760[0x40] = {
-	#include <StageMetalFile2/Tex_0x0760.tex.inc.c>
+u16 dStageMetalFile2_palette_0x0760[32] = {
+	#include <StageMetalFile2/palette_0x0760.palette.inc.c>
 };
 
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x07A8[0x200] = {
-	#include <StageMetalFile2/Tex_0x07A8.tex.inc.c>
+u16 dStageMetalFile2_palette_0x07A8[256] = {
+	#include <StageMetalFile2/palette_0x07A8.palette.inc.c>
 };
 
 PAD(8);
@@ -114,8 +114,8 @@ u16 dStageMetalFile2_palette_0x09B0[8] = {
 };
 PAD(8);
 
-u8 dStageMetalFile2_Tex_0x09C8[0x10] = {
-	#include <StageMetalFile2/Tex_0x09C8.tex.inc.c>
+u16 dStageMetalFile2_palette_0x09C8[8] = {
+	#include <StageMetalFile2/palette_0x09C8.palette.inc.c>
 };
 
 PAD(8);

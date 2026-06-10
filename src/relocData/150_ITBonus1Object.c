@@ -32,6 +32,7 @@ extern u8 dITBonus1Object_data[];
 PAD(8);
 
 /* @ 0x0008, 4096 bytes — score curves + RGBA32 image data */
+/* @tex fmt=RGBA32 dim=32x32 */
 u8 dITBonus1Object_data[0x1000] = {
 	#include <ITBonus1Object/data.tex.inc.c>
 };

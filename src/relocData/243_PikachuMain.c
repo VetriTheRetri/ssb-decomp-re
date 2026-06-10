@@ -4,6 +4,12 @@
 #include "relocdata_types.h"
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u32 dPikachuModel_FTEmblem[];
+extern AObjEvent32 **dPikachuModel_JointTree_0x5490_post[];
+extern AObjEvent32 **dPikachuModel_JointTree_post[];
+extern u32 dPikachuModel_Stock[];
 extern u8 dPikachuShieldPose_data0[];
 extern u8 dPikachuShieldPose_data0_end[];
 extern u8 dPikachuShieldPose_shield_anim_joint_1[];
@@ -126,8 +132,8 @@ FTTexturePartContainer dPikachuMain_textureparts_container = {
 /* @ 0x0148, 32 bytes: FTAttributes.commonparts_container target (was dPikachuMain_pre+0x148) */
 FTCommonPartContainer dPikachuMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dPikachuModel_JointTree, (MObjSub***)&dPikachuModel_gap_0x0000, (AObjEvent32***)((u8*)dPikachuModel_JointTree + 0x4D0), 0x00 },
-		{ (DObjDesc*)&dPikachuModel_JointTree_0x5490, (MObjSub***)&dPikachuModel_gap_0x2B78_sub_0x8B8, (AObjEvent32***)((u8*)dPikachuModel_JointTree_0x5490 + 0x4D0), 0x00 },
+		{ (DObjDesc*)&dPikachuModel_JointTree, (MObjSub***)&dPikachuModel_gap_0x0000, (AObjEvent32***)dPikachuModel_JointTree_post, 0x00 },
+		{ (DObjDesc*)&dPikachuModel_JointTree_0x5490, (MObjSub***)&dPikachuModel_gap_0x2B78_sub_0x8B8, (AObjEvent32***)dPikachuModel_JointTree_0x5490_post, 0x00 },
 	},
 };
 
@@ -200,9 +206,9 @@ int *dPikachuMain_stock_luts[5] = {
 
 /* @ 0x032C, 12 bytes: FTAttributes.sprites target (was dPikachuMain_pre+0x32C) */
 FTSprites dPikachuMain_sprites = {
-	(Sprite*)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x30), /* stock_sprite */
+	(Sprite*)dPikachuModel_Stock, /* stock_sprite */
 	(int**)dPikachuMain_stock_luts, /* stock_luts */
-	(Sprite*)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x218), /* emblem */
+	(Sprite*)dPikachuModel_FTEmblem, /* emblem */
 };
 
 /* @ 0x0338, 216 bytes: FTAttributes.sub_0x338 target (was dPikachuMain_pre+0x338) */

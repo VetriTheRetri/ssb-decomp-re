@@ -8008,15 +8008,15 @@ u16 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BD8[20] = {
 };
 
 /* @ 0xC080 — CI4 texture (32x64) + 8 byte pad. */
-/* @tex fmt=CI4 dim=32x64 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BB0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5C00[1032] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5C00.tex.inc.c>
+/* @tex fmt=CI4 dim=32x64 */
+u8 dStageZebesFile2_Tex_0xC080[1032] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xC080.tex.inc.c>
 };
 
 /* @ 0xC488 — CI4 texture (32x64) + 8 byte pad. */
-/* @tex fmt=CI4 dim=32x64 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BD8 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008[1032] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008.tex.inc.c>
+/* @tex fmt=CI4 dim=32x64 */
+u8 dStageZebesFile2_Tex_0xC488[1032] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xC488.tex.inc.c>
 };
 
 /* @tex fmt=CI4 dim=32x64 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5BD8 */
@@ -8031,8 +8031,8 @@ MObjSub ** dStageZebesFile2_data_0xCC94[1] = { dStageZebesFile2_Layer1MatAnim_Ma
 
 /* @ 0xCC98 — 2 texture pointers (CI4 textures _at_0x6008 / _at_0x5C00). */
 void *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6818[2] = {
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x6008,
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_at_0x5C00,
+	dStageZebesFile2_Tex_0xC488,
+	dStageZebesFile2_Tex_0xC080,
 };
 
 /* @ 0xCCA0 — MObjSub for the CI4 32x64 sprite-set at _at_0x6818
@@ -8250,40 +8250,40 @@ u16 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x2A8[20] = {
 };
 
 /* @ 0xD1B8 — CI4 32x24 sprite frame 5 (384 bytes texel + 8 byte pad). */
-/* @tex fmt=CI4 dim=32x24 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1E0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x2D0[392] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x2D0.tex.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStageZebesFile2_Tex_0xD1B8[392] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xD1B8.tex.inc.c>
 };
 
 /* @ 0xD340 — CI4 32x24 sprite frame 4 (384 bytes texel + 8 byte pad). */
-/* @tex fmt=CI4 dim=32x24 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1E0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x458[392] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x458.tex.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStageZebesFile2_Tex_0xD340[392] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xD340.tex.inc.c>
 };
 
 /* @ 0xD4C8 — CI4 32x24 sprite frame 3 (384 bytes texel + 8 byte pad). */
-/* @tex fmt=CI4 dim=32x24 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1E0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x5E0[392] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x5E0.tex.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStageZebesFile2_Tex_0xD4C8[392] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xD4C8.tex.inc.c>
 };
 
 /* @ 0xD650 — CI4 32x24 sprite frame 2 (384 bytes texel + 8 byte pad). */
-/* @tex fmt=CI4 dim=32x24 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1E0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x768[392] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x768.tex.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStageZebesFile2_Tex_0xD650[392] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xD650.tex.inc.c>
 };
 
 /* @ 0xD7D8 — CI4 32x24 sprite frame 1 (384 bytes texel + 8 byte pad). */
-/* @tex fmt=CI4 dim=32x24 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1E0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x8F0[392] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x8F0.tex.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStageZebesFile2_Tex_0xD7D8[392] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xD7D8.tex.inc.c>
 };
 
 /* @ 0xD960 — CI4 32x24 sprite frame 0 (384 bytes texel + 4 byte pad;
  * the last 4 pad bytes were split off as _at_0xBFC[1]). */
-/* @tex fmt=CI4 dim=32x24 lut=dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x1E0 */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xA78[388] = {
-	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xA78.tex.inc.c>
+/* @tex fmt=CI4 dim=32x24 */
+u8 dStageZebesFile2_Tex_0xD960[388] = {
+	#include <StageZebesFile2/dStageZebesFile2_Tex_0xD960.tex.inc.c>
 };
 
 /* @ 0xDAE4 — MObjSub **[1] holder pointing to the MObjSub *[2] at _at_0xC90. */
@@ -8293,12 +8293,12 @@ MObjSub **dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xBFC[1] = 
 
 /* @ 0xDAE8 — sprite-set pointer table (6 entries → frame data blocks). */
 void *dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xC00[6] = {
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xA78,
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x8F0,
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x768,
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x5E0,
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x458,
-	dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0x2D0,
+	dStageZebesFile2_Tex_0xD960,
+	dStageZebesFile2_Tex_0xD7D8,
+	dStageZebesFile2_Tex_0xD650,
+	dStageZebesFile2_Tex_0xD4C8,
+	dStageZebesFile2_Tex_0xD340,
+	dStageZebesFile2_Tex_0xD1B8,
 };
 
 /* @ 0xDB00 — MObjSub for the 6-frame CI4 32x24 sprite-set at _at_0xC00.

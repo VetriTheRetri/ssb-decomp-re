@@ -48,6 +48,7 @@ u16 dBonus1CommonImages2_Lut_0x0168_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0190 (168 bytes) */
+/* @tex fmt=CI4 dim=4x16 lut=dBonus1CommonImages2_Lut_0x0168_palette */
 u8 dBonus1CommonImages2_Tex_0x0190[168] = {
 	#include <Bonus1CommonImages2/Tex_0x0190.tex.inc.c>
 };
@@ -55,36 +56,36 @@ u8 dBonus1CommonImages2_Tex_0x0190[168] = {
 PAD(8);
 
 /* Texture: 0x0240 (168 bytes) */
-u8 dBonus1CommonImages2_Tex_0x0240[168] = {
-	#include <Bonus1CommonImages2/Tex_0x0240.tex.inc.c>
+u16 dBonus1CommonImages2_palette_0x0240[84] = {
+	#include <Bonus1CommonImages2/palette_0x0240.palette.inc.c>
 };
 
 PAD(8);
 
 /* Texture: 0x02F0 (168 bytes) */
-u8 dBonus1CommonImages2_Tex_0x02F0[168] = {
-	#include <Bonus1CommonImages2/Tex_0x02F0.tex.inc.c>
+u16 dBonus1CommonImages2_palette_0x02F0[84] = {
+	#include <Bonus1CommonImages2/palette_0x02F0.palette.inc.c>
 };
 
 PAD(8);
 
 /* Texture: 0x03A0 (168 bytes) */
-u8 dBonus1CommonImages2_Tex_0x03A0[168] = {
-	#include <Bonus1CommonImages2/Tex_0x03A0.tex.inc.c>
+u16 dBonus1CommonImages2_palette_0x03A0[84] = {
+	#include <Bonus1CommonImages2/palette_0x03A0.palette.inc.c>
 };
 
 PAD(8);
 
 /* Texture: 0x0450 (168 bytes) */
-u8 dBonus1CommonImages2_Tex_0x0450[168] = {
-	#include <Bonus1CommonImages2/Tex_0x0450.tex.inc.c>
+u16 dBonus1CommonImages2_palette_0x0450[84] = {
+	#include <Bonus1CommonImages2/palette_0x0450.palette.inc.c>
 };
 
 PAD(8);
 
 /* Texture: 0x0500 (128 bytes) */
-u8 dBonus1CommonImages2_Tex_0x0500[128] = {
-	#include <Bonus1CommonImages2/Tex_0x0500.tex.inc.c>
+u16 dBonus1CommonImages2_palette_0x0500[64] = {
+	#include <Bonus1CommonImages2/palette_0x0500.palette.inc.c>
 };
 
 PAD(8);
@@ -97,6 +98,7 @@ u16 dBonus1CommonImages2_Tex_0x0588[12] = {
 PAD(8);
 
 /* Texture: 0x05A8 (128 bytes) */
+/* @tex fmt=CI4 dim=4x16 lut=dBonus1CommonImages2_Tex_0x0588 */
 u8 dBonus1CommonImages2_Tex_0x05A8[128] = {
 	#include <Bonus1CommonImages2/Tex_0x05A8.tex.inc.c>
 };
@@ -111,6 +113,7 @@ u16 dBonus1CommonImages2_Lut_0x0630_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0658 (128 bytes) */
+/* @tex fmt=CI4 dim=4x16 lut=dBonus1CommonImages2_Lut_0x0630_palette */
 u8 dBonus1CommonImages2_Tex_0x0658[128] = {
 	#include <Bonus1CommonImages2/Tex_0x0658.tex.inc.c>
 };

@@ -1063,21 +1063,6 @@ $$(BUILD_DIR)/src/relocData/.build/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE
 	@mkdir -p $$(@D)
 	$$(V)$$(IDO7) $$(CCFLAGS) $$(OPTFLAGS) -Isrc/relocData -I$$(BUILD_DIR)/src/relocData -o $$@ $$<
 
-# .reloc file path. Four sources, in priority order:
-#   1. Version-specific .c override (raw blob, no reloc fixing).
-#   2. Spritelist-driven auto-extract (.reloc lives in build/, generated
-#      alongside the master .c by extractSpriteFile.py).
-#   3. Version-specific .reloc override (`*.jp.reloc` / `*.us.reloc`),
-#      used when the shared .c compiles fine for both versions but the
-#      extern target offsets / chain structure differ. Falls through
-#      to the shared .reloc when no override exists.
-#   4. Shared manifest or hand-written master .reloc.
-RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
-                     $$(if $$(RELOC_AUTO_RELOC_$(1)),$$(RELOC_AUTO_RELOC_$(1)),\
-                        $$(firstword \
-                          $$(wildcard src/relocData/$$(RELOC_BASENAME_$(1)).$(VERSION).reloc) \
-                          src/relocData/$$(RELOC_BASENAME_$(1)).reloc)))
-
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;
 # uncompressed files (ID >= 499) go directly to .bin.
@@ -1096,22 +1081,14 @@ $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/reloc
 	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
 	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
 	$$(V)cp assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
-	$$(V)if [ "$$(AUTO_RELOC)" = "1" ] && ! grep -qx "$(1)" assets/$(VERSION)/auto_reloc_bad.txt 2>/dev/null; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION) --sym-index $$(RELOC_SYM_INDEX); \
-	elif [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
-	fi
+	$$(V)$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION) --sym-index $$(RELOC_SYM_INDEX)
 
 $$(BUILD_DIR)/assets/$(VERSION)/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o $$(RELOC_SYM_INDEX)
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)TEXTSZ=$$$$($$(OBJDUMP) -h $$< | awk '$$$$2==".text"{print "0x"$$$$3}') ; \
 	    $$(OBJCOPY) --change-section-lma .data=$$$${TEXTSZ:-0} -O binary --only-section=.text --only-section=.data $$< $$@
-	$$(V)if [ "$$(AUTO_RELOC)" = "1" ] && ! grep -qx "$(1)" assets/$(VERSION)/auto_reloc_bad.txt 2>/dev/null; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION) --sym-index $$(RELOC_SYM_INDEX); \
-	elif [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
-		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1) --version $(VERSION); \
-	fi
+	$$(V)$$(PYTHON) tools/fixRelocChain.py $$@ $$< --auto --file-id $(1) --version $(VERSION) --sym-index $$(RELOC_SYM_INDEX)
 endef
 
 $(foreach f,$(RELOC_C_FILES),$(eval $(call RELOC_C_RULE,$(f))))

@@ -281,61 +281,34 @@ def _resolve_in_target(target_byte, target_nm):
 
 
 def build_extern_map(fid, current_nm):
-    """Parse src/relocData/<fid>_<name>.reloc and return a dict mapping each
-    extern pointer's byte position in the CURRENT file to a formatted
-    replacement string (a cross-file symbol reference). Requires the
-    companion extern annotations `# -> file N (Name)` produced by
-    tools/annotateExternRelocFids.py. Unannotated extern lines are skipped
-    (the arg stays as literal hex for those positions)."""
-    c_path, _ = find_c_file(fid)
-    if c_path is None:
+    """Map each cross-file pointer slot's byte position in the CURRENT file
+    to a formatted replacement string (a cross-file symbol reference).
+
+    Derived from the compiled .o's relocation records: every R_MIPS_32
+    against an UNDEFINED symbol is a cross-file pointer; its in-place
+    addend gives the offset within the target symbol. No .reloc metadata
+    involved."""
+    o_path = os.path.join(BUILD_OBJ_DIR, f"{fid}.o")
+    if not os.path.exists(o_path):
         return {}
-    reloc_path = c_path[:-2] + ".reloc"
-    if not os.path.exists(reloc_path):
-        return {}
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fixRelocChain as frc
+
+    defined, _undefined = frc.read_symbol_classes(o_path)
+    relocs = frc.read_elf_relocs(o_path)
+    data = frc._read_data_section(o_path)
 
     out = {}
-    label_re = re.compile(r"^(\w+)(?:\+0x([0-9A-Fa-f]+))?$")
-    annot_re = re.compile(r"->\s*file\s+(\d+)\s*\(([^)]+)\)")
-    with open(reloc_path) as f:
-        for ln in f:
-            raw_line = ln.rstrip("\n")
-            comment = None
-            if "#" in raw_line:
-                code, comment = raw_line.split("#", 1)
-            else:
-                code = raw_line
-            code = code.strip()
-            if not code:
-                continue
-            parts = code.split()
-            if len(parts) != 3 or parts[0] != "extern":
-                continue
-            ptr_label, target_label = parts[1], parts[2]
-            m_t = re.fullmatch(r"0x([0-9A-Fa-f]+)", target_label)
-            if not m_t:
-                continue
-            target_byte = int(m_t.group(1), 16)
-            if comment is None:
-                continue
-            m_a = annot_re.search(comment)
-            if not m_a:
-                continue
-            target_fid = int(m_a.group(1))
-            # Resolve current ptr_label -> current-file byte offset
-            m_l = label_re.match(ptr_label)
-            if not m_l:
-                continue
-            base = m_l.group(1)
-            extra = int(m_l.group(2), 16) if m_l.group(2) else 0
-            if base not in current_nm:
-                continue
-            ptr_byte = current_nm[base] + extra
-            target_nm = _target_nm(target_fid)
-            sym_ref = _resolve_in_target(target_byte, target_nm)
-            if sym_ref is None:
-                continue
-            out[ptr_byte] = sym_ref
+    for off, sym in relocs:
+        if sym in defined:
+            continue
+        addend = 0
+        if off + 4 <= len(data):
+            addend = int.from_bytes(data[off:off + 4], "big")
+        if addend:
+            out[off] = f"((u8*){sym} + 0x{addend:X})"
+        else:
+            out[off] = sym
     return out
 
 

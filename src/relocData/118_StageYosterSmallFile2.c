@@ -10,6 +10,10 @@
 /* Vtx pool @ 0x0000 (4 vertices) — referenced by DL_0x0410 gsSPVertex */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dStageYosterImages_Lut_0x0008_palette[];
 extern u16 dStageYosterImages_Lut_0x0030_palette[];
 extern u16 dStageYosterImages_Lut_0x0150_palette[];
@@ -32,6 +36,46 @@ extern u8 dStageYosterImages_Tex_0x0EA8[];
 extern u8 dStageYosterImages_Tex_0x1030[];
 extern Gfx dStageYosterSmallFile2_DL_0x0410[];
 extern Gfx dStageYosterSmallFile2_DL_0x4158[];
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
 extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1C50[8];
 extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1CD0[16];
 extern Vtx dStageYosterSmallFile2_Layer0Anim_AnimJoint_0x1DD0[7];

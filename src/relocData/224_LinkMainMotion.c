@@ -1017,7 +1017,7 @@ u32 dLinkMainMotion_0x0D68[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	0x90000000,
-	0x036F0358,
+	(u32)((u8 *)dLinkMainMotion_Hammer + 0x28),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	0x9BF88800,
@@ -1028,9 +1028,9 @@ u32 dLinkMainMotion_0x0D68[] = {
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	0x90000000,
-	0x03710358,
+	(u32)((u8 *)dLinkMainMotion_Hammer + 0x28),
 	0x90000000,
-	0x038A0358,
+	(u32)((u8 *)dLinkMainMotion_Hammer + 0x28),
 	ftMotionCommandEnd(),
 	0x9BF88000,
 	ftMotionCommandEnd(),
@@ -1320,7 +1320,7 @@ ftMotionCommand dLinkMainMotion_ThrowB[] = {
 	ftMotionCommandSetModelPartID(19, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-	ftMotionCommandSubroutine((void*)0x043E01AB),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x24)),
 #else
 #endif
 };
@@ -1332,7 +1332,7 @@ ftMotionCommand dLinkMainMotion_Damaged_0x10F0[] = {
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-	ftMotionCommandSubroutine((void*)0x044101B1),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x3C)),
 #else
 #endif
 };
@@ -1344,7 +1344,7 @@ ftMotionCommand dLinkMainMotion_Damaged_0x10FC[] = {
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-	ftMotionCommandSubroutine((void*)0x044601B3),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x44)),
 #else
 #endif
 };
@@ -1356,7 +1356,7 @@ ftMotionCommand dLinkMainMotion_EggLay_0x1108[] = {
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-	ftMotionCommandSubroutine((void*)0x04490073),
+	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 #else
 #endif
 };

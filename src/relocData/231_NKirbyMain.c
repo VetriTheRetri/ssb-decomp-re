@@ -13,6 +13,7 @@ extern u8 dKirbyShieldPose_shield_anim_joint_4[];
 extern u8 dKirbyShieldPose_shield_anim_joint_5[];
 extern u8 dKirbyShieldPose_shield_anim_joint_6[];
 extern u8 dKirbyShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
 #include <ft/fttypes.h>
 
 extern u32 dKirbyMainMotion_EggLay_0x0154[];
@@ -129,7 +130,7 @@ FTThrownStatus dNKirbyMain_thrown_status[54] = {
 FTSprites dNKirbyMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x016600AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNKirbyMain_attr = {

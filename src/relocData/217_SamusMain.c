@@ -13,6 +13,9 @@ extern u8 dSamusShieldPose_shield_anim_joint_4[];
 extern u8 dSamusShieldPose_shield_anim_joint_5[];
 extern u8 dSamusShieldPose_shield_anim_joint_6[];
 extern u8 dSamusShieldPose_shield_anim_joint_7[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC34[];
+extern MObjSub *dSamusModel_Joint_0x0040_post_sub_0xC58[];
+extern u32 dSamusModel_gap_0x0000[];
 #include <ft/fttypes.h>
 
 extern u32 dSamusMainMotion_EggLay_0x0084[];
@@ -127,7 +130,7 @@ FTHiddenPart dSamusMain_hiddenparts[13] = {
 
 /* @ 0x0120, 120 bytes: FTAttributes.sub_0x120 target (was dSamusMain_pre+0x120) */
 FTModelPart dSamusMain_modelparts_desc_0x120[6] = {
-	{ (Gfx*)&dSamusModel_Joint_0x20C8_DisplayList, (MObjSub**)0x004A031D, (AObjEvent32**)&dSamusModel_gap_0x3B24_sub_0x488, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_Joint_0x20C8_DisplayList, (MObjSub**)dSamusModel_Joint_0x0040_post_sub_0xC34, (AObjEvent32**)&dSamusModel_gap_0x3B24_sub_0x488, NULL, 0x00 },
 	{ (Gfx*)&dSamusModel_Joint_0x5960_DisplayList, (MObjSub**)&dSamusModel_gap_0x3B24_sub_0x1150, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x488, NULL, 0x00 },
 	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1184, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0xE4C, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x13F0, NULL, 0x00 },
 	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1184, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0xE4C, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x13F0, NULL, 0x00 },
@@ -137,7 +140,7 @@ FTModelPart dSamusMain_modelparts_desc_0x120[6] = {
 
 /* @ 0x0198, 80 bytes: FTAttributes.sub_0x198 target (was dSamusMain_pre+0x198) */
 FTModelPart dSamusMain_modelparts_desc_0x198[4] = {
-	{ (Gfx*)&dSamusModel_Joint_0x2608_DisplayList, (MObjSub**)0x00680326, (AObjEvent32**)&dSamusModel_gap_0x3B24_sub_0x4A0, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_Joint_0x2608_DisplayList, (MObjSub**)dSamusModel_Joint_0x0040_post_sub_0xC58, (AObjEvent32**)&dSamusModel_gap_0x3B24_sub_0x4A0, NULL, 0x00 },
 	{ (Gfx*)&dSamusModel_Joint_0x5E00_DisplayList, (MObjSub**)&dSamusModel_gap_0x3B24_sub_0x1174, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x4A0, NULL, 0x00 },
 	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x79C, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x5FC, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x9B0, NULL, 0x00 },
 	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0xBEC, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0xADC, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0xDB0, NULL, 0x00 },
@@ -176,7 +179,7 @@ FTModelPartDesc *dSamusMain_modelparts_container[33] = {
 /* @ 0x030C, 32 bytes: FTAttributes.commonparts_container target (was dSamusMain_pre+0x30C) */
 FTCommonPartContainer dSamusMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dSamusModel_JointTree, (MObjSub***)0x00C50000, (AObjEvent32***)((u8*)dSamusModel_JointTree + 0x5E0), 0x00 },
+		{ (DObjDesc*)&dSamusModel_JointTree, (MObjSub***)dSamusModel_gap_0x0000, (AObjEvent32***)((u8*)dSamusModel_JointTree + 0x5E0), 0x00 },
 		{ (DObjDesc*)&dSamusModel_JointTree_0x69D0, (MObjSub***)&dSamusModel_gap_0x3B24_sub_0x4DC, (AObjEvent32***)((u8*)dSamusModel_JointTree_0x69D0 + 0x5E0), 0x00 },
 	},
 };

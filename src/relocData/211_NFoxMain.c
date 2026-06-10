@@ -15,6 +15,8 @@ extern u16 dFoxShieldPose_script6_17[];
 extern u16 dFoxShieldPose_script7_17[];
 extern u16 dFoxShieldPose_script8_17[];
 extern DObjDesc dNFoxModel_JointTree[];
+extern u32 dMasterHandIcon_FTEmblem[];
+extern u32 dFoxShieldPose_data0_end[];
 
 /* Pre-attributes data (169 words, 0x02A4 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNFoxMain_pre+0x0) */
@@ -130,7 +132,7 @@ FTThrownStatus dNFoxMain_thrown_status[54] = {
 FTSprites dNFoxMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x015F00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNFoxMain_attr = {
@@ -232,7 +234,7 @@ FTAttributes dNFoxMain_attr = {
 	&dNFoxMain_commonparts_container, /* commonparts_container */
 	(DObjDesc*)((u8*)dFoxShieldPose_script0_17 + 0x10), /* dobj_lookup */
 	{
-		(AObjEvent32**)((u8*)dFoxShieldPose_ptrs1 + 0x23C),
+		(AObjEvent32**)dFoxShieldPose_data0_end,
 		(AObjEvent32**)((u8*)dFoxShieldPose_script2_17 + 0x2C),
 		(AObjEvent32**)((u8*)dFoxShieldPose_script3_17 + 0x30),
 		(AObjEvent32**)((u8*)dFoxShieldPose_script4_17 + 0x2C),

@@ -9,6 +9,8 @@ extern FTModelPart dGDonkeyMain_modelparts_desc_0x058[];
 extern FTModelPart dGDonkeyMain_modelparts_desc_0x0A8[];
 extern FTModelPart dGDonkeyMain_modelparts_desc_0x120[];
 extern FTThrownStatus dGDonkeyMain_thrown_status[];
+extern u32 dDkIcon_Stock[];
+extern u32 dDkIcon_FTEmblem[];
 
 extern u32 dDonkeyMainMotion_EggLay_0x0000[];
 extern DObjDesc dDonkeyModel_JointTree[];
@@ -201,9 +203,9 @@ u32 dGDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A
 
 /* @ 0x03BC, 12 bytes: FTAttributes.sprites target (was dGDonkeyMain_pre+0x3BC) */
 FTSprites dGDonkeyMain_sprites = {
-	(Sprite*)0x00F1004C, /* stock_sprite */
+	(Sprite*)dDkIcon_Stock, /* stock_sprite */
 	(int**)dGDonkeyMain_stock_luts, /* stock_luts */
-	(Sprite*)0x01A800BE, /* emblem */
+	(Sprite*)dDkIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dGDonkeyMain_attr = {

@@ -131,7 +131,7 @@ FTThrownStatus dNPurinMain_thrown_status[54] = {
 FTSprites dNPurinMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x015E00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNPurinMain_attr = {

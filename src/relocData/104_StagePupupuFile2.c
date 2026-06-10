@@ -11,11 +11,85 @@
 /* Vtx: gap_0x0000 @ 0x0 (4 vertices) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStagePupupuFile2_DL_0x0708[];
+extern u16 dStagePupupuImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuImages_Lut_0x0518_palette[];
+extern u16 dStagePupupuImages_Lut_0x05C8_palette[];
+extern u16 dStagePupupuImages_Lut_0x0DF8_palette[];
+extern u16 dStagePupupuImages_Lut_0x1628_palette[];
+extern u16 dStagePupupuImages_Lut_0x1858_palette[];
+extern u16 dStagePupupuImages_Lut_0x1A88_palette[];
+extern u16 dStagePupupuImages_Lut_0x1BB8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2248_palette[];
+extern u16 dStagePupupuImages_Lut_0x2678_palette[];
+extern u16 dStagePupupuImages_Lut_0x28A8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2AD8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2B88_palette[];
+extern u16 dStagePupupuImages_Lut_0x2DB8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2E68_palette[];
+extern u16 dStagePupupuImages_Lut_0x2F18_palette[];
+extern u8 dStagePupupuImages_Tex_0x0030[];
+extern u8 dStagePupupuImages_Tex_0x0260[];
+extern u8 dStagePupupuImages_Tex_0x0490[];
+extern u8 dStagePupupuImages_Tex_0x0540[];
+extern u8 dStagePupupuImages_Tex_0x05F0[];
+extern u8 dStagePupupuImages_Tex_0x0E20[];
+extern u8 dStagePupupuImages_Tex_0x1650[];
+extern u8 dStagePupupuImages_Tex_0x1880[];
+extern u8 dStagePupupuImages_Tex_0x1AB0[];
+extern u8 dStagePupupuImages_Tex_0x2270[];
+extern u8 dStagePupupuImages_Tex_0x26A0[];
+extern u8 dStagePupupuImages_Tex_0x28D0[];
+extern u8 dStagePupupuImages_Tex_0x2B00[];
+extern u8 dStagePupupuImages_Tex_0x2BB0[];
+extern u8 dStagePupupuImages_Tex_0x2DE0[];
+extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u8 dStagePupupuImages_Tex_0x2F40[];
+extern Gfx dStagePupupuFile2_Layer3Anim_DL_0x29B8[];
+extern u16 dStagePupupuImages_Lut_0x0008_palette[];
+extern u16 dStagePupupuImages_Lut_0x0238_palette[];
+extern u16 dStagePupupuImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuImages_Lut_0x0518_palette[];
+extern u16 dStagePupupuImages_Lut_0x05C8_palette[];
+extern u16 dStagePupupuImages_Lut_0x0DF8_palette[];
+extern u16 dStagePupupuImages_Lut_0x1628_palette[];
+extern u16 dStagePupupuImages_Lut_0x1858_palette[];
+extern u16 dStagePupupuImages_Lut_0x1A88_palette[];
+extern u16 dStagePupupuImages_Lut_0x1BB8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2248_palette[];
+extern u16 dStagePupupuImages_Lut_0x2678_palette[];
+extern u16 dStagePupupuImages_Lut_0x28A8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2AD8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2B88_palette[];
+extern u16 dStagePupupuImages_Lut_0x2DB8_palette[];
+extern u16 dStagePupupuImages_Lut_0x2E68_palette[];
+extern u16 dStagePupupuImages_Lut_0x2F18_palette[];
+extern u8 dStagePupupuImages_Tex_0x0030[];
+extern u8 dStagePupupuImages_Tex_0x0260[];
+extern u8 dStagePupupuImages_Tex_0x0490[];
+extern u8 dStagePupupuImages_Tex_0x0540[];
+extern u8 dStagePupupuImages_Tex_0x05F0[];
+extern u8 dStagePupupuImages_Tex_0x0E20[];
+extern u8 dStagePupupuImages_Tex_0x1650[];
+extern u8 dStagePupupuImages_Tex_0x1880[];
+extern u8 dStagePupupuImages_Tex_0x1AB0[];
+extern u8 dStagePupupuImages_Tex_0x2270[];
+extern u8 dStagePupupuImages_Tex_0x26A0[];
+extern u8 dStagePupupuImages_Tex_0x28D0[];
+extern u8 dStagePupupuImages_Tex_0x2B00[];
+extern u8 dStagePupupuImages_Tex_0x2BB0[];
+extern u8 dStagePupupuImages_Tex_0x2DE0[];
+extern u8 dStagePupupuImages_Tex_0x2E90[];
+extern u8 dStagePupupuImages_Tex_0x2F40[];
 extern Gfx dStagePupupuFile2_Layer0Anim_AnimJoint[];
 extern Gfx dStagePupupuFile2_Layer0Anim_DL_0x18E0[];
 extern Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8[];
-extern Gfx dStagePupupuFile2_Layer3Anim_DL_0x29B8[];
 extern Gfx dStagePupupuFile2_Layer3Anim_DL_0x2A68[];
 extern u16 dStagePupupuFile2_Layer3Anim_Lut_0x2D38_palette[];
 extern u16 dStagePupupuFile2_Layer3Anim_Lut_0x3968_palette[];

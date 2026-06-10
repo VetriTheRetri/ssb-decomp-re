@@ -12,9 +12,16 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dMVCommon_DL_0x1C018[];
-extern Gfx dMVCommon_DL_0x21740[];
 extern Gfx dMVCommon_DL_0x22160[];
+extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x051C[];
+extern Gfx dMVCommon_RoomHaze_post[];
+extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x029C[];
+extern Gfx dMVCommon_DL_0x21740[];
 extern u16 dMVCommon_Lut213_0x03B8[];
 extern u16 dMVCommon_Lut227_0x01E8[];
 extern u16 dMVCommon_Lut_0x0008_palette[];
@@ -37,7 +44,6 @@ extern Vtx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Vtx_0x007
 extern Vtx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Vtx_0x00B0[];
 extern Vtx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_Vtx_0x02A0[];
 extern u16 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_palette_0x0008[];
-extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x051C[];
 extern u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x005C[];
 extern u8 dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Tex_0x0264[];
 extern Vtx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_Vtx_0x0364[];
@@ -89,7 +95,6 @@ extern Vtx dMVCommon_RoomHaze_Vtx_0x0A38[];
 extern u16 dMVCommon_RoomHaze_palette_0x0020[];
 extern u16 dMVCommon_RoomHaze_palette_0x0038[];
 extern u16 dMVCommon_RoomHaze_palette_0x0060[];
-extern Gfx dMVCommon_RoomHaze_post[];
 extern u8 dMVCommon_RoomLamp_Tex_0xC380[];
 extern u8 dMVCommon_RoomLamp_Tex_0xC408[];
 extern u8 dMVCommon_RoomLamp_Tex_0xC450[];
@@ -103,7 +108,6 @@ extern Vtx dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint_data_at_0x434[];
 extern u8 dMVCommon_RoomLogo_Tex_0x1C568[];
 extern u8 dMVCommon_RoomOutside_DisplayList_Tex_0x0028[];
 extern Vtx dMVCommon_RoomOutside_DisplayList_Vtx_0x0428[];
-extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x029C[];
 extern u8 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Tex_0x0014[];
 extern Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0034[];
 extern Vtx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_Vtx_0x0104[];
@@ -274,7 +278,6 @@ extern u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[];
 extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x04D4[];
 extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x05B4[];
 extern Gfx dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_post_DL_0x03A0[];
-extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data[];
 extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x860[];
 extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954[];
 extern Gfx dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_post_DL_0x0244[];
@@ -307,6 +310,7 @@ extern AObjEvent32 *dMVCommon_RoomBooksAnimJoint_AnimJoint[];
 extern AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[];
 extern AObjEvent32 **dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[];
 
+extern u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x0[];
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 PAD(8);
 
@@ -1968,7 +1972,7 @@ PAD(8);
  * as one u8[] include; fixRelocChain rewrites the table
  * entries to chain-encoded form per the .reloc. */
 AObjEvent32 *dMVCommon_RoomPencilsAnimJoint_AnimJoint[3] = {
-	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data,
+	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x0,
 	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x860,
 	(AObjEvent32 *)dMVCommon_RoomPencilsAnimJoint_AnimJoint_data_0x954,
 };

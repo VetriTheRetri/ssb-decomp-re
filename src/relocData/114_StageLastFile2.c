@@ -8,13 +8,20 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageLastFile2_DL_0x40A8[];
+extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4E24[12];
+extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8B8C[38];
+extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBD04[47];
+extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x38FC[10];
 extern Gfx dStageLastFile2_DL_0x4BB8[];
 extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3384[1036];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3824[3];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3854[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x3874[4];
-extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x38FC[10];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4CC4[4];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4D04[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4D24[2];
@@ -23,7 +30,6 @@ extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4D64[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4D84[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4DA4[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4DC4[2];
-extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x4E24[12];
 extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x6514[4096];
 extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x751C[4104];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x862C[32];
@@ -32,7 +38,6 @@ extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x883C[32];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8A3C[1];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8A4C[8];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8ACC[8];
-extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8B8C[38];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x8CBC[38];
 extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x92B4[9608];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBB7C[2];
@@ -41,7 +46,6 @@ extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBBBC[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBBDC[2];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBBFC[4];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBC3C[8];
-extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xBD04[47];
 extern Gfx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC16C[47];
 extern u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xC814[4096];
 extern Vtx dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0xD814[4];

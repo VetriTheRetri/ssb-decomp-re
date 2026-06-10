@@ -8,14 +8,18 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageCastleFile2_DL_0x11D8[];
-extern Gfx dStageCastleFile2_DL_0x2288[];
 extern Gfx dStageCastleFile2_DL_0x3F80[];
+extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x2D8[30];
+extern Gfx dStageCastleFile2_DL_0x2288[];
 extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1A0[5];
 extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x1F0[4];
 extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x230[3];
 extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0x260[3];
-extern Gfx dStageCastleFile2_Layer1Anim_AnimJoint_0x2D8[30];
 extern Vtx dStageCastleFile2_Layer1Anim_AnimJoint_0xE0[12];
 extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0x60[8];
 extern Vtx dStageCastleFile2_Layer2Anim_AnimJoint_0xE0[12];

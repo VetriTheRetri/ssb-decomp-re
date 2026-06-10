@@ -6,6 +6,7 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStageYosterFile3[];
+extern u32 dStageYosterFile3_DObjDesc_0x0100[];
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageYoshi_sprite_0x26C88[];
@@ -17,7 +18,6 @@ extern DObjDesc dStageYosterFile2_Layer1DObj[];
 extern DObjDesc dStageYosterFile2_Layer2DObj[];
 extern DObjDesc dStageYosterFile2_Layer3DObj[];
 extern u32 dStageYosterFile2_MPGeometryData_0x5188[];
-extern u32 dStageYosterFile2_gap_0x0078[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 #if defined(REGION_JP)
@@ -59,7 +59,7 @@ MPGroundData dGRYosterMap_header =
     10500,  /* map_bound_right */
     -7800,  /* map_bound_left */
     nSYAudioBGMYoster,  /* bgm_id */
-    (void *)((u8 *)dStageYosterFile2_gap_0x0078 + 0x88),  /* map_nodes */
+    (void *)dStageYosterFile3_DObjDesc_0x0100,  /* map_nodes */
     &dGRYosterMap_item_weights,  /* item_weights */
     -2500,  /* alt_warning */
     4300,  /* camera_bound_team_top */

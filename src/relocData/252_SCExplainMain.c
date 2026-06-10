@@ -39,6 +39,8 @@ extern Sprite dSCExplainGraphics_JPText19;
 extern Sprite dSCExplainGraphics_JPText20;
 extern Sprite dSCExplainGraphics_JPText21;
 extern Sprite dSCExplainGraphics_JPText22;
+extern u8 dSCExplainGraphics_JPText3_tex[];
+extern u8 dSCExplainGraphics_JPText4_tex[];
 /* Phase entries 20–21 chain-target raw texture bytes (no Sprite head) */
 extern u8 dSCExplainGraphics_JPText6_tex[];
 extern u8 dSCExplainGraphics_JPText7_tex[];
@@ -2774,7 +2776,7 @@ SCExplainPhase dSCExplainMain_ExplainPhase_0x1404[22] = {
 	{
 		180, 0, 20, 11,
 #if defined(REGION_JP)
-		(Sprite *)(dSCExplainGraphics_JPText6_tex + 0xF8),
+		&dSCExplainGraphics_JPText5,
 #else
 		&dSCExplainGraphics_StartFighting,
 #endif
@@ -2790,7 +2792,7 @@ SCExplainPhase dSCExplainMain_ExplainPhase_0x1404[22] = {
 	{
 		280, 0, 20, 11,
 #if defined(REGION_JP)
-		(Sprite *)(dSCExplainGraphics_JPText7_tex + 0x164),
+		&dSCExplainGraphics_JPText6,
 #else
 		&dSCExplainGraphics_PlayerCount,
 #endif

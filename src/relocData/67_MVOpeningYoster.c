@@ -12,10 +12,14 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dMVOpeningYoster_DL_0x8120[];
-extern Gfx dMVOpeningYoster_DL_0x94B8[];
 extern Gfx dMVOpeningYoster_DL_0xB1A8[];
 extern Gfx dMVOpeningYoster_DL_0xB518[];
+extern Gfx dMVOpeningYoster_DL_0x94B8[];
 extern u16 dMVOpeningYoster_Lut255_0x0008[];
 extern u16 dMVOpeningYoster_Lut255_0x0210[];
 extern u16 dMVOpeningYoster_Lut255_0x0418[];

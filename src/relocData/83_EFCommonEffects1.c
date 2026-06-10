@@ -32,6 +32,7 @@ extern u16 dEFCommonEffects1_palette_0x5BA0[];
 extern u16 dEFCommonEffects1_palette_0x5BC8[];
 extern u16 dEFCommonEffects1_palette_0x5BF0[];
 extern MObjSub *dEFCommonEffects1_gap_0x0000_sub_0x5900[];
+extern MObjSub *dEFCommonEffects1_gap_0x8F38_sub_0x20[];
 
 extern MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xB8[];
 extern MObjSub *dEFCommonEffects1_gap_0x7458_sub_0xC0[];
@@ -1057,7 +1058,14 @@ u8 dEFCommonEffects1_Tex_0x8CC0[512] = {
  * (gap_0x8F38_sub_0x20); slots 1..7 → Tex_0x{8CC0,8AB8,88B0,86A8,
  * 84A0,8298,8090}. */
 u8 *dEFCommonEffects1_CommonSpark_sprites[8] = {
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	(u8 *)dEFCommonEffects1_gap_0x8F38_sub_0x20,
+	dEFCommonEffects1_Tex_0x8CC0,
+	dEFCommonEffects1_Tex_0x8AB8,
+	dEFCommonEffects1_Tex_0x88B0,
+	dEFCommonEffects1_Tex_0x86A8,
+	dEFCommonEffects1_Tex_0x84A0,
+	dEFCommonEffects1_Tex_0x8298,
+	dEFCommonEffects1_Tex_0x8090,
 };
 
 /* Real MObjSub — 120 bytes (88-byte body decoded into struct fields

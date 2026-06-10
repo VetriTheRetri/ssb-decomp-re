@@ -13,6 +13,7 @@ extern u8 dNessShieldPose_shield_anim_joint_4[];
 extern u8 dNessShieldPose_shield_anim_joint_5[];
 extern u8 dNessShieldPose_shield_anim_joint_6[];
 extern u8 dNessShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dNNessModel_JointTree[];
@@ -141,7 +142,7 @@ FTThrownStatus dNNessMain_thrown_status[54] = {
 FTSprites dNNessMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x017200AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNNessMain_attr = {

@@ -20,11 +20,15 @@
 extern u8 dPikachuSpecial3_gap_0x0000[];                         /* file 342 */
 extern u8 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[];    /* file 342 */
 extern u8 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[]; /* file 342 */
+extern u32 dPikachuSpecial3_gap_0x0000_sub_0x270[];
+extern u32 dPikachuSpecial3_gap_0x0000_sub_0x360[];
+extern u32 dPikachuSpecial3_gap_0x0000_sub_0x1888[];
+extern u32 dPikachuSpecial3_gap_0x0000_sub_0x1018[];
 
 WPAttributes dPikachuSpecial1_ThunderJoltAir_WeaponAttributes = {
-    (void *)(dPikachuSpecial3_gap_0x0000 + 0x270),                  /* data (342+0x270) */
+    (void *)dPikachuSpecial3_gap_0x0000_sub_0x270,                  /* data (342+0x270) */
     NULL,  /* p_mobjsubs */
-    (AObjEvent32 **)(dPikachuSpecial3_gap_0x0000 + 0x360),          /* anim_joints (342+0x360) */
+    (AObjEvent32 **)dPikachuSpecial3_gap_0x0000_sub_0x360,          /* anim_joints (342+0x360) */
     NULL,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     50, 0, -50, 50,  /* map_coll top/center/bottom/width */
@@ -60,8 +64,8 @@ WPAttributes dPikachuSpecial1_ThunderJoltAir_WeaponAttributes = {
 };
 
 WPAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes = {
-    (void *)(dPikachuSpecial3_gap_0x0000 + 0x1888),                       /* data (342+0x1888) */
-    (MObjSub ***)(dPikachuSpecial3_gap_0x0000 + 0x1018),                  /* p_mobjsubs (342+0x1018) */
+    (void *)dPikachuSpecial3_gap_0x0000_sub_0x1888,                       /* data (342+0x1888) */
+    (MObjSub ***)dPikachuSpecial3_gap_0x0000_sub_0x1018,                  /* p_mobjsubs (342+0x1018) */
     (AObjEvent32 **)dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint,     /* anim_joints (342+0x1A20) */
     (AObjEvent32 ***)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint, /* p_matanim_joints (342+0x1AE0) */
     { { 0, 100, 0 }, { 0, 0, 0 } },  /* attack_offsets */

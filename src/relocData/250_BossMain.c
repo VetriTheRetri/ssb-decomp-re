@@ -59,7 +59,7 @@ u32 dBossMain_stock_luts[1] = { (u32)(u8 *)dMasterHandIcon_Stock_tex + 0x88 };
 FTSprites dBossMain_sprites = {
 	(Sprite*)dMasterHandIcon_Stock, /* stock_sprite */
 	(int**)dBossMain_stock_luts, /* stock_luts */
-	(Sprite*)0xFFFF00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dBossMain_attr = {

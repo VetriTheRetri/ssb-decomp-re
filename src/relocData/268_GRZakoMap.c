@@ -6,7 +6,8 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageBattlefieldBackground_0x26c88[];
-extern u8 dStageBattlefieldFile2[];
+extern u32 dStageBattlefieldFile2_DObjDesc_0x4170[];
+extern u32 dStageBattlefieldFile2_data_0x4388[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 #if defined(REGION_JP)
@@ -20,11 +21,11 @@ MPGroundData dGRZakoMap_header =
     /* gr_desc[4] */
     {
         { NULL, NULL, NULL, NULL },
-        { ((u8 *)dStageBattlefieldFile2 + 0x4170), NULL, NULL, NULL },
+        { ((u8 *)dStageBattlefieldFile2_DObjDesc_0x4170), NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    ((u8 *)dStageBattlefieldFile2 + 0x4388),  /* map_geometry */
+    ((u8 *)dStageBattlefieldFile2_data_0x4388),  /* map_geometry */
     0,  /* layer_mask */
     (Sprite *)dStageBattlefieldBackground_0x26c88,  /* wallpaper */
     { 0x41, 0x00, 0x69 },  /* fog_color */

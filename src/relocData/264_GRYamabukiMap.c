@@ -27,6 +27,7 @@ extern u32 dStageYamabukiFile3_mobjlink_0x2180[];
 extern u32 dStageYamabukiFile3_DObjDesc_0x2340[];
 extern u32 dStageYamabukiFile3_mobjlink_0x23D0[];
 extern u32 dStageYamabukiFile3_DObjDesc_0x2A50[];
+extern u32 dStageYamabukiFile4[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -47,7 +48,6 @@ extern MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub[];
 extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[];
 extern DObjDesc dStageYamabukiFile2_Layer3DObj[];
 extern u32 dStageYamabukiFile2_MPGeometryData_0x6E8C[];
-extern u32 dStageYamabukiFile2_gap_0x0000[];
 MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
 {
     /* gr_desc[4] */
@@ -80,7 +80,7 @@ MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
     10000,  /* map_bound_right */
     -10000,  /* map_bound_left */
     nSYAudioBGMYamabuki,  /* bgm_id */
-    (void *)((u8 *)dStageYamabukiFile2_gap_0x0000 + 0x8A0),  /* map_nodes */
+    (void *)((u8 *)dStageYamabukiFile4 + 0x8A0),  /* map_nodes */
     &dGRYamabukiMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     5000,  /* camera_bound_team_top */

@@ -8,9 +8,22 @@
 #include <sys/objdef.h>
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dLuigiModel_Tex_0x73C0[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u8 dLuigiModel_Tex_0x6D38[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern void *dLuigiModel_Joint_0x0060_post[];
 extern u8 *dLuigiModel_Joint_0x0060_post_sub_0x14[];
-extern u8 dLuigiModel_Tex_0x6D38[];
 extern Vtx dLuigiModel_Vtx_0x0910_Vtx[];
 extern Vtx dLuigiModel_Vtx_0x0A90_Vtx[];
 extern Vtx dLuigiModel_Vtx_0x0B40_Vtx[];
@@ -113,7 +126,6 @@ extern u16 dLuigiModel_palette_0x7320[];
 extern u16 dLuigiModel_palette_0x7348[];
 extern u16 dLuigiModel_palette_0x7370[];
 extern u16 dLuigiModel_palette_0x7398[];
-extern u8 dLuigiModel_Tex_0x73C0[];
 extern u16 dLuigiModel_palette_0x7548[];
 extern u8 dLuigiModel_Tex_0x7570[];
 extern u8 dLuigiModel_Tex_0x77A0[];

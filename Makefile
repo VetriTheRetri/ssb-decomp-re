@@ -1,5 +1,10 @@
 MAKEFLAGS += --no-builtin-rules
 
+# Failed recipes must not leave half-written targets with fresh timestamps
+# (e.g. fixRelocChain's byte-compare gate fails AFTER objcopy wrote the
+# extract); otherwise the next make run treats the poisoned file as current.
+.DELETE_ON_ERROR:
+
 SHELL = /bin/bash
 .SHELLFLAGS = -o pipefail -c
 

@@ -6,10 +6,10 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStagePupupuBeta1[];
+extern Gfx dStagePupupuBeta1_DL_0x0870[];
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dStagePupupuFile2_gap_0x0000[];
-extern u8 dStagePupupuFile2_gap_0x0898[];
 extern u8 dStagePupupuFile2_Layer0Anim_AnimJoint[];
 extern Sprite dStageDreamLand_sprite_0x26C88[];
 
@@ -20,7 +20,7 @@ MPGroundData dGRPupupuSmallMap_header =
 {
     /* gr_desc[4] */
     {
-        { (void *)((u8 *)dStagePupupuFile2_gap_0x0000 + 0x870), (void *)((u8 *)dStagePupupuFile2_gap_0x0898 + 0x118), NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_gap_0x0000 + 0x870), (void *)((u8 *)dStagePupupuBeta1_DL_0x0870 + 0x140), NULL, NULL },
         { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x888), NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0xF40), NULL, NULL, NULL },

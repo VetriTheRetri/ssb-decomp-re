@@ -42,7 +42,7 @@ extern u32 dStageSectorFile2_Layer0Anim_AnimJoint[];
 extern DObjDesc dStageSectorFile2_Layer1DObj[];
 extern u32 dStageSectorFile2_Layer1Anim_AnimJoint[];
 extern u32 dStageSectorFile2_MPGeometryData_0x8AD8[];
-extern u32 dStageSectorFile2_gap_0x0000[];
+extern u32 dStageSectorFile3_Arwing0SectorDesc[];
 MPGroundData dGRSectorMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
@@ -75,7 +75,7 @@ MPGroundData dGRSectorMap_MapHeader_0x0014 =
     14000,  /* map_bound_right */
     -14000,  /* map_bound_left */
     nSYAudioBGMSector,  /* bgm_id */
-    dStageSectorFile2_gap_0x0000,  /* map_nodes */
+    dStageSectorFile3_Arwing0SectorDesc,  /* map_nodes */
     (MPItemWeights *)dGRSectorMap_Arwing0_AnimJoint,  /* item_weights */
     -2300,  /* alt_warning */
     7000,  /* camera_bound_team_top */

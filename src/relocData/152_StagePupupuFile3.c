@@ -7,9 +7,13 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStagePupupuFile3_DL_0x15B0[];
-extern Gfx dStagePupupuFile3_DL_0x2880[];
 extern Gfx dStagePupupuFile3_DL_0x2F00[];
+extern Gfx dStagePupupuFile3_DL_0x2880[];
 extern u16 dStagePupupuFile3_LUT_0x0008[];
 extern u16 dStagePupupuFile3_LUT_0x0438[];
 extern u16 dStagePupupuFile3_LUT_0x0868[];

@@ -13,6 +13,8 @@ extern u8 dPikachuShieldPose_shield_anim_joint_4[];
 extern u8 dPikachuShieldPose_shield_anim_joint_5[];
 extern u8 dPikachuShieldPose_shield_anim_joint_6[];
 extern u8 dPikachuShieldPose_shield_anim_joint_7[];
+extern u32 dPikachuMainMotion_Idle_0x0010[];
+extern u32 dPikachuSpecial1_ThunderJoltAir_WeaponAttributes[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dPikachuModel_JointTree[];
@@ -45,9 +47,9 @@ extern DObjDesc dPikachuSpecial2_UnkDObjDesc[];
 /* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dPikachuMain_pre+0x0) */
 u32 dPikachuMain_file_handles[29] = {
 
-	0x00010004, /* extern -> 0x0010 */
+	(u32)&dPikachuMainMotion_Idle_0x0010, /* extern -> 0x0010 */
 	(u32)&dPikachuSpecial2_UnkDObjDesc, /* extern -> 0x0800 */
-	0x00030000, /* extern -> 0x0000 */
+	(u32)&dPikachuSpecial1_ThunderJoltAir_WeaponAttributes, /* extern -> 0x0000 */
 	(u32)&dPikachuModel_ThunderTrailDObjDesc, /* extern -> 0x95B0 */
 	(u32)&dPikachuModel_ThunderTrailMObjSub_MObjSub, /* extern -> 0x9420 */
 	0x00000000,

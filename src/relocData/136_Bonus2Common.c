@@ -14,6 +14,13 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x48C[];
+extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x48C[];
+extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x48C[];
 extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x144[];
 extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x1C4[];
 extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x244[];
@@ -21,7 +28,6 @@ extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x254[];
 extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x284[];
 extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x2B4[];
 extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x444[];
-extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x48C[];
 extern Gfx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x4EC[];
 extern Vtx dBonus2Common_BoardedPlatformMedium_AnimJoint_data_0x84[];
 extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x144[];
@@ -31,7 +37,6 @@ extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x254[];
 extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x284[];
 extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x2B4[];
 extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x444[];
-extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x48C[];
 extern Gfx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x4EC[];
 extern Vtx dBonus2Common_BoardedPlatformSmall_AnimJoint_data_0x84[];
 extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x124[];
@@ -41,7 +46,6 @@ extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x234[];
 extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x264[];
 extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x294[];
 extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x444[];
-extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x48C[];
 extern Gfx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x4EC[];
 extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0x64[];
 extern Vtx dBonus2Common_PlatformLarge_MatAnimJoint_data_0xA4[];

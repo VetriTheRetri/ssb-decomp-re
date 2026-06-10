@@ -16,7 +16,7 @@ extern DObjDesc dGRBonus3File2_Layer1DObj[];
 extern MObjSub dGRBonus3File2_Layer1MObj_MObjSub[];
 extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[];
 extern u32 dGRBonus3File2_MPGeometryData_0x65A8[];
-extern u32 dGRBonus3File2_gap_0x0000[];
+extern u32 dGRBonus3File3_DObjDesc_0x0000[];
 extern u32 dGRBonus3File3_DObjDesc_0x0788[];
 MPGroundData dGRBonus3Map_gap_0x0000 =
 {
@@ -50,7 +50,7 @@ MPGroundData dGRBonus3Map_gap_0x0000 =
     8000,  /* map_bound_right */
     -8000,  /* map_bound_left */
     nSYAudioBGM1PBonusStage,  /* bgm_id */
-    dGRBonus3File2_gap_0x0000,  /* map_nodes */
+    dGRBonus3File3_DObjDesc_0x0000,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */
     7500,  /* camera_bound_team_top */

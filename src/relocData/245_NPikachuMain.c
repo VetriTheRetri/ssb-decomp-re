@@ -13,6 +13,8 @@ extern u8 dPikachuShieldPose_shield_anim_joint_4[];
 extern u8 dPikachuShieldPose_shield_anim_joint_5[];
 extern u8 dPikachuShieldPose_shield_anim_joint_6[];
 extern u8 dPikachuShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
+extern u32 dPikachuMainMotion_Idle_0x0010[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dNPikachuModel_JointTree[];
@@ -22,7 +24,7 @@ extern DObjDesc dPikachuSpecial2_UnkDObjDesc[];
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dNPikachuMain_pre+0x0) */
 u32 dNPikachuMain_file_handles[2] = {
 
-	0x00010004, /* extern -> 0x0010 */
+	(u32)&dPikachuMainMotion_Idle_0x0010, /* extern -> 0x0010 */
 	(u32)&dPikachuSpecial2_UnkDObjDesc, /* extern -> 0x0800 */
 };
 
@@ -133,7 +135,7 @@ FTThrownStatus dNPikachuMain_thrown_status[54] = {
 FTSprites dNPikachuMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x016000AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNPikachuMain_attr = {

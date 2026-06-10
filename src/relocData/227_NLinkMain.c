@@ -13,6 +13,7 @@ extern u8 dLinkShieldPose_shield_anim_joint_4[];
 extern u8 dLinkShieldPose_shield_anim_joint_5[];
 extern u8 dLinkShieldPose_shield_anim_joint_6[];
 extern u8 dLinkShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
 #include <ft/fttypes.h>
 
 extern u32 dLinkMainMotion_EggLay_0x0014[];
@@ -135,7 +136,7 @@ FTThrownStatus dNLinkMain_thrown_status[54] = {
 FTSprites dNLinkMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x016C00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNLinkMain_attr = {

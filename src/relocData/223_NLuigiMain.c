@@ -13,6 +13,7 @@ extern u8 dMarioShieldPose_shield_anim_joint_4[];
 extern u8 dMarioShieldPose_shield_anim_joint_5[];
 extern u8 dMarioShieldPose_shield_anim_joint_6[];
 extern u8 dMarioShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
 #include <ft/fttypes.h>
 
 extern u32 dLuigiMainMotion_EggLay_0x0024[];
@@ -127,7 +128,7 @@ FTThrownStatus dNLuigiMain_thrown_status[54] = {
 FTSprites dNLuigiMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x015C00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNLuigiMain_attr = {

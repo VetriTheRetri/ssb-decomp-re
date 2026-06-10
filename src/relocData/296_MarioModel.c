@@ -8,8 +8,22 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u8 *dMarioModel_Joint_0x0040_post_sub_0x38[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u8 dMarioModel_Tex_0x65F0[];
+extern u8 dMarioModel_Tex_0x6C78[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 dMarioModel_Lut_0x6F70_palette[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u8 *dMarioModel_Joint_0x0040_post_sub_0x38[];
 extern Vtx dMarioModel_Vtx_0x0798_Vtx[];
 extern Vtx dMarioModel_Vtx_0x0928_Vtx[];
 extern Vtx dMarioModel_Vtx_0x09B8_Vtx[];
@@ -107,7 +121,6 @@ extern MObjSub *dMarioModel_Joint_0x0040_post_sub_0x750[];
  * at file offsets 0x6BD8/0x6C00/0x6C28/0x6C50) referenced by gap_0x26D0_sub_0x3A8. */
 extern u8 dMarioModel_Tex_0x67A0[];
 extern u8 dMarioModel_Tex_0x69D0[];
-extern u8 dMarioModel_Tex_0x6C78[];
 extern u8 dMarioModel_Tex_0x6D68[];
 extern u8 dMarioModel_Tex_0x6F98[];
 extern u16 dMarioModel_palette_0x6BD8[];

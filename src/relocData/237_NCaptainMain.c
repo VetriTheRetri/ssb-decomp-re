@@ -126,7 +126,7 @@ FTThrownStatus dNCaptainMain_thrown_status[54] = {
 FTSprites dNCaptainMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x015D00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNCaptainMain_attr = {

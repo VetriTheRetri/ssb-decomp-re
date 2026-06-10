@@ -12,12 +12,16 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dPurinModel_Lut_0x6948_palette[];
-extern u8 dPurinModel_Tex_0x67D0[];
 extern u8 dPurinModel_Tex_0x6970[];
 extern u8 dPurinModel_Tex_0x7650[];
 extern u8 dPurinModel_Tex_0x76D8[];
 extern u8 dPurinModel_Tex_0x7980[];
+extern u8 dPurinModel_Tex_0x67D0[];
 extern Vtx dPurinModel_Vtx_0x0870_Vtx[];
 extern Vtx dPurinModel_Vtx_0x0910_Vtx[];
 extern Vtx dPurinModel_Vtx_0x09B0_Vtx[];
@@ -891,8 +895,8 @@ extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x39C[];
 extern AObjEvent32 *dPurinModel_gap_0x24F8_sub_0x3A0[];
 
 u32 dPurinModel_gap_0x24F8[9] = {
-	aobjEvent32SetVal(0x27E, 2597),
-	    0x09470A26,  /* 2.3958525455696615e-33f */
+	(u32)dPurinModel_gap_0x24F8_sub_0x39C,
+	(u32)dPurinModel_gap_0x24F8_sub_0x3A0,
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */

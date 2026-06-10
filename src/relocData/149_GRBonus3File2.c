@@ -8,9 +8,13 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dGRBonus3File2_DL_0x2EF0[];
-extern Gfx dGRBonus3File2_DL_0x5430[];
 extern Gfx dGRBonus3File2_DL_0x5F80[];
+extern Gfx dGRBonus3File2_DL_0x5430[];
 extern u8 dGRBonus3File2_Tex_0x0030[];
 extern u8 dGRBonus3File2_Tex_0x00E0[];
 extern u8 dGRBonus3File2_Tex_0x0190[];

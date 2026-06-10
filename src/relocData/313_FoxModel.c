@@ -8,13 +8,25 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u16 *dFoxModel_Joint_0x0060_post_sub_0xC[];
-extern u16 dFoxModel_Lut_0x72D8_palette[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dFoxModel_Lut_0x7508_palette[];
 extern u16 dFoxModel_Lut_0x7808_palette[];
 extern u8 dFoxModel_Tex_0x75D0[];
 extern u8 dFoxModel_Tex_0x79D8[];
 extern u8 dFoxModel_Tex_0x7AE0[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 dFoxModel_Lut_0x72D8_palette[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 *dFoxModel_Joint_0x0060_post_sub_0xC[];
 extern Vtx dFoxModel_Vtx_0x0890_Vtx[];
 extern Vtx dFoxModel_Vtx_0x0910_Vtx[];
 extern Vtx dFoxModel_Vtx_0x09A0_Vtx[];

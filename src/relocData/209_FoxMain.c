@@ -47,6 +47,7 @@ extern u8 dFoxMainMotion_EggLay_0x0000[];
 extern u8 dFoxSpecial2_Reflector[];
 extern u8 dFoxSpecial3_EntryArwing[];
 extern WPAttributes dFoxSpecial1_Blaster_WeaponAttributes;
+extern u32 dFoxShieldPose_data0_end[];
 
 /* @ 0x0000, 16 bytes: sibling-file handles fixed up by fixRelocChain. */
 void *dFoxMain_file_handles[4] = {
@@ -338,7 +339,7 @@ FTAttributes dFoxMain_attr = {
 	&dFoxMain_commonparts_container, /* commonparts_container */
 	(DObjDesc*)((u8*)dFoxShieldPose_script0_17 + 0x10), /* dobj_lookup */
 	{
-		(AObjEvent32**)((u8*)dFoxShieldPose_ptrs1 + 0x23C),
+		(AObjEvent32**)dFoxShieldPose_data0_end,
 		(AObjEvent32**)((u8*)dFoxShieldPose_script2_17 + 0x2C),
 		(AObjEvent32**)((u8*)dFoxShieldPose_script3_17 + 0x30),
 		(AObjEvent32**)((u8*)dFoxShieldPose_script4_17 + 0x2C),

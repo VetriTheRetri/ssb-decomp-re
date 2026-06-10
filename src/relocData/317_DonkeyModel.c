@@ -8,8 +8,11 @@
 #include <sys/objdef.h>
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u16 *dDonkeyModel_Joint_0x0060_post_sub_0x8[];
-extern u16 dDonkeyModel_Lut_0xD490_palette[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u8 dDonkeyModel_Tex_0xC0F8[];
 extern u8 dDonkeyModel_Tex_0xC378[];
 extern u8 dDonkeyModel_Tex_0xCA78[];
 extern u8 dDonkeyModel_Tex_0xCCD0[];
@@ -19,6 +22,19 @@ extern u8 dDonkeyModel_Tex_0xCF88[];
 extern u8 dDonkeyModel_Tex_0xD200[];
 extern u8 dDonkeyModel_Tex_0xD288[];
 extern u8 dDonkeyModel_Tex_0xD4B8[];
+extern u16 dDonkeyModel_palette_0xC5F0[];
+extern u16 dDonkeyModel_palette_0xC848[];
+extern u16 dDonkeyModel_palette_0xD150[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 dDonkeyModel_Lut_0xD490_palette[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 *dDonkeyModel_Joint_0x0060_post_sub_0x8[];
 extern Vtx dDonkeyModel_Vtx_0x0F98_Vtx[];
 extern Vtx dDonkeyModel_Vtx_0x0FD8_Vtx[];
 extern Vtx dDonkeyModel_Vtx_0x1008_Vtx[];
@@ -112,10 +128,6 @@ extern Vtx dDonkeyModel_gap_0x7390_sub_0x578[];
 extern Vtx dDonkeyModel_gap_0x7390_sub_0x858[];
 extern Vtx dDonkeyModel_gap_0x7390_sub_0xAC8[];
 extern Vtx dDonkeyModel_gap_0x7390_sub_0xDA8[];
-extern u16 dDonkeyModel_palette_0xC5F0[];
-extern u16 dDonkeyModel_palette_0xC848[];
-extern u16 dDonkeyModel_palette_0xD150[];
-extern u8 dDonkeyModel_Tex_0xC0F8[];
 extern u16 *dDonkeyModel_Joint_0x0080_post_sub_0x10[];
 extern u16 *dDonkeyModel_Joint_0x0080_post_sub_0x24[];
 extern u16 *dDonkeyModel_Joint_0x0080_post_sub_0x38[];

@@ -23,6 +23,10 @@
 
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dMVOpeningYamabuki_DL_0x08AB8[];
 extern Gfx dMVOpeningYamabuki_LegsAnimJoint_DL_0x054C[];
 extern u8 dMVOpeningYamabuki_LegsAnimJoint_Tex_0x0014[];

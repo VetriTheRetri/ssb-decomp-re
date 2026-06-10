@@ -11,10 +11,12 @@
 /* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dSCStaffroll_AnimJoint_DL_0x7860[4];
 extern u8 dSCStaffroll_AnimJoint_0x7358[1024];
 extern Vtx dSCStaffroll_AnimJoint_0x7758[4];
 extern Vtx dSCStaffroll_AnimJoint_0x7798[4];
-extern Gfx dSCStaffroll_AnimJoint_DL_0x7860[4];
 Gfx dSCStaffroll_unusedSpriteDL_0x0000[1] = {
 	#include <SCStaffroll/dSCStaffroll_unusedSpriteDL_0x0000.dl.inc.c>
 };

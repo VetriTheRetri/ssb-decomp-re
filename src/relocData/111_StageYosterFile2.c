@@ -12,8 +12,54 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageYosterFile2_DL_0x05A8[];
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0128_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
 extern Gfx dStageYosterFile2_DL_0x58F8[];
+extern u16 dStageYosterImages_Lut_0x0008_palette[];
+extern u16 dStageYosterImages_Lut_0x0030_palette[];
+extern u16 dStageYosterImages_Lut_0x0128_palette[];
+extern u16 dStageYosterImages_Lut_0x0150_palette[];
+extern u16 dStageYosterImages_Lut_0x0178_palette[];
+extern u16 dStageYosterImages_Lut_0x01A0_palette[];
+extern u16 dStageYosterImages_Lut_0x01C8_palette[];
+extern u16 dStageYosterImages_Lut_0x01F0_palette[];
+extern u16 dStageYosterImages_Lut_0x0218_palette[];
+extern u16 dStageYosterImages_Lut_0x0528_palette[];
+extern u8 dStageYosterImages_Tex_0x0058[];
+extern u8 dStageYosterImages_Tex_0x00A0[];
+extern u8 dStageYosterImages_Tex_0x0240[];
+extern u8 dStageYosterImages_Tex_0x02C8[];
+extern u8 dStageYosterImages_Tex_0x0760[];
+extern u8 dStageYosterImages_Tex_0x0A68[];
+extern u8 dStageYosterImages_Tex_0x0BD0[];
+extern u8 dStageYosterImages_Tex_0x0C18[];
+extern u8 dStageYosterImages_Tex_0x0D20[];
+extern u8 dStageYosterImages_Tex_0x0EA8[];
+extern u8 dStageYosterImages_Tex_0x1030[];
 extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x1058[];
 extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x10D8[];
 extern Vtx dStageYosterFile2_Layer0MatAnim_MatAnimJoint_data_sub_0x1118[];

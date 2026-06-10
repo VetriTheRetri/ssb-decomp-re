@@ -8,12 +8,16 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[];
 extern Gfx dEFCommonEffects2_DL_0x5240[];
+extern u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_Tex_0x2B78[];
 extern u16 dEFCommonEffects2_DeadExplode3_palette_0x5AE0[];
 extern Vtx dEFCommonEffects2_FireSparkVtx_Vtx[];
 extern u8 dEFCommonEffects2_FireSpark_Tex_0x21B8[];
-extern Gfx dEFCommonEffects2_ReflectBreak_DL_0x3938[];
 extern u8 dEFCommonEffects2_ReflectBreak_Tex_0x3658[];
 extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3858[];
 extern Vtx dEFCommonEffects2_ReflectBreak_Vtx_0x3898[];

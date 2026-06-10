@@ -12,14 +12,26 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern MObjSub *dYoshiModel_Joint_0x0060_post[];
-extern u8 *dYoshiModel_Joint_0x0060_post_sprites[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern u16 dYoshiModel_Lut_0x9EC8_palette[];
 extern u8 dYoshiModel_Tex_0x9518[];
 extern u8 dYoshiModel_Tex_0x9BD0[];
 extern u8 dYoshiModel_Tex_0x9D70[];
 extern u8 dYoshiModel_Tex_0x9E80[];
 extern u8 dYoshiModel_Tex_0x9EF0[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern MObjSub *dYoshiModel_Joint_0x0060_post[];
+extern u8 *dYoshiModel_Joint_0x0060_post_sprites[];
 extern u8 dYoshiModel_Tex_0x9FF8[];
 extern u8 dYoshiModel_Tex_0xA020[];
 extern u8 dYoshiModel_Tex_0xA820[];
@@ -2442,7 +2454,8 @@ u8 *dYoshiModel_gap_0x38F4_sub_0x81C[14] = {
 
 /* Palette pointer array @ 0x4148 (14 entries) — MObjSub.palettes target.
  * Combined from gap_0x38F4_sub_0x854[1] + data_0x414C[13 ptrs] (same
- * content as sub_0x7E4). */
+ * content as sub_0x7E4 except slots 10/11, which are in 0x9A48/0x9AF8
+ * order here). */
 u16 *dYoshiModel_gap_0x38F4_sub_0x854[14] = {
 	dYoshiModel_palette_0x9BA8,
 	dYoshiModel_palette_0x9560,
@@ -2454,8 +2467,8 @@ u16 *dYoshiModel_gap_0x38F4_sub_0x854[14] = {
 	dYoshiModel_palette_0x9838,
 	dYoshiModel_palette_0x98E8,
 	dYoshiModel_palette_0x9998,
-	dYoshiModel_palette_0x9AF8,
 	dYoshiModel_palette_0x9A48,
+	dYoshiModel_palette_0x9AF8,
 	dYoshiModel_palette_0x95D8,
 	dYoshiModel_palette_0x9600,
 };

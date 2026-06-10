@@ -12,8 +12,11 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dKirbyModel_DL_0x1D2D8[];
-extern u8 dKirbyModel_Tex_0x1A8A0[];
 extern u8 dKirbyModel_Tex_0x1A9D0[];
 extern u8 dKirbyModel_Tex_0x1AA80[];
 extern u8 dKirbyModel_Tex_0x1AAF0[];
@@ -35,14 +38,6 @@ extern u8 dKirbyModel_Tex_0x1BE30[];
 extern u8 dKirbyModel_Tex_0x1BEE0[];
 extern u8 dKirbyModel_Tex_0x1BF50[];
 extern u8 dKirbyModel_Tex_0x1C3D0[];
-extern u8 dKirbyModel_Tex_0x1D188[];
-extern u8 dKirbyModel_Tex_0x9848[];
-extern u8 dKirbyModel_Tex_0x9948[];
-extern u8 dKirbyModel_Tex_0x9A48[];
-extern u8 dKirbyModel_Tex_0x9AD8[];
-extern Vtx dKirbyModel_Vtx_0x04B0_Vtx[];
-extern Vtx dKirbyModel_Vtx_0x191F8_Vtx[];
-extern Vtx dKirbyModel_Vtx_0x20E0_Vtx[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x10BC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x11AC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x121C[];
@@ -57,9 +52,6 @@ extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1A9C[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1B0C[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1BBC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x1C2C[];
-extern u16 dKirbyModel_gap_0x1A2FC_sub_0x2E6C[];
-extern Vtx dKirbyModel_gap_0x1A2FC_sub_0x2ECC[];
-extern Vtx dKirbyModel_gap_0x1A2FC_sub_0x4[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x57C[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x6AC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x75C[];
@@ -67,6 +59,22 @@ extern u16 dKirbyModel_gap_0x1A2FC_sub_0x7CC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0x9FC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0xCDC[];
 extern u16 dKirbyModel_gap_0x1A2FC_sub_0xD8C[];
+extern u16 dYoshiModel_Lut_0x9EC8_palette[];
+extern u8 dYoshiModel_Tex_0x9EF0[];
+extern u8 dKirbyModel_Tex_0x1A8A0[];
+extern u16 dYoshiModel_Lut_0x9EC8_palette[];
+extern u8 dYoshiModel_Tex_0x9EF0[];
+extern u8 dKirbyModel_Tex_0x1D188[];
+extern u8 dKirbyModel_Tex_0x9848[];
+extern u8 dKirbyModel_Tex_0x9948[];
+extern u8 dKirbyModel_Tex_0x9A48[];
+extern u8 dKirbyModel_Tex_0x9AD8[];
+extern Vtx dKirbyModel_Vtx_0x04B0_Vtx[];
+extern Vtx dKirbyModel_Vtx_0x191F8_Vtx[];
+extern Vtx dKirbyModel_Vtx_0x20E0_Vtx[];
+extern u16 dKirbyModel_gap_0x1A2FC_sub_0x2E6C[];
+extern Vtx dKirbyModel_gap_0x1A2FC_sub_0x2ECC[];
+extern Vtx dKirbyModel_gap_0x1A2FC_sub_0x4[];
 extern Vtx dKirbyModel_gap_0x31CC_sub_0x101EC[];
 extern Vtx dKirbyModel_gap_0x31CC_sub_0x101FC[];
 extern Vtx dKirbyModel_gap_0x31CC_sub_0x1022C[];

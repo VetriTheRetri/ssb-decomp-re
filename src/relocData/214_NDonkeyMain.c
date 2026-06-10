@@ -13,6 +13,7 @@ extern u8 dDonkeyShieldPose_shield_anim_joint_4[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_5[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_6[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
 #include <ft/fttypes.h>
 
 extern u32 dDonkeyMainMotion_EggLay_0x0000[];
@@ -124,7 +125,7 @@ FTThrownStatus dNDonkeyMain_thrown_status[54] = {
 FTSprites dNDonkeyMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x015C00AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNDonkeyMain_attr = {

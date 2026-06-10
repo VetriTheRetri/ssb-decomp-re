@@ -13,6 +13,8 @@ extern u8 dMarioShieldPose_shield_anim_joint_4[];
 extern u8 dMarioShieldPose_shield_anim_joint_5[];
 extern u8 dMarioShieldPose_shield_anim_joint_6[];
 extern u8 dMarioShieldPose_shield_anim_joint_7[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x810[];
+extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x844[];
 #include <ft/fttypes.h>
 
 extern u32 dLuigiMainMotion_EggLay_0x0024[];
@@ -91,7 +93,7 @@ FTHiddenPart dLuigiMain_hiddenparts[4] = {
 
 /* @ 0x005C, 80 bytes: FTAttributes.sub_0x05C target (was dLuigiMain_pre+0x5C) */
 FTModelPart dLuigiMain_modelparts_desc_0x05C[4] = {
-	{ (Gfx*)&dLuigiModel_Joint_0x1AB0_DisplayList, (MObjSub**)((u8*)dLuigiModel_gap_0x0000_sub_0x18 + 0x898), (AObjEvent32**)&dLuigiModel_gap_0x28E0_sub_0x360, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_Joint_0x1AB0_DisplayList, (MObjSub**)dLuigiModel_Joint_0x00A0_post_sub_0x810, (AObjEvent32**)&dLuigiModel_gap_0x28E0_sub_0x360, NULL, 0x00 },
 	{ (Gfx*)&dLuigiModel_Joint_0x4248_DisplayList, (MObjSub**)&dLuigiModel_gap_0x28E0_sub_0xC50, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x384, NULL, 0x00 },
 	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0xA84, NULL, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0xBF0, NULL, 0x00 },
 	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0xD14, (MObjSub**)&dLuigiModel_gap_0x4E8C_sub_0xE14, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0xE60, NULL, 0x00 },
@@ -99,7 +101,7 @@ FTModelPart dLuigiMain_modelparts_desc_0x05C[4] = {
 
 /* @ 0x00AC, 80 bytes: FTAttributes.sub_0x0AC target (was dLuigiMain_pre+0xAC) */
 FTModelPart dLuigiMain_modelparts_desc_0x0AC[4] = {
-	{ (Gfx*)&dLuigiModel_Joint_0x1FC0_DisplayList, (MObjSub**)((u8*)dLuigiModel_gap_0x0000_sub_0x18 + 0x8CC), (AObjEvent32**)&dLuigiModel_gap_0x28E0_sub_0x384, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_Joint_0x1FC0_DisplayList, (MObjSub**)dLuigiModel_Joint_0x00A0_post_sub_0x844, (AObjEvent32**)&dLuigiModel_gap_0x28E0_sub_0x384, NULL, 0x00 },
 	{ (Gfx*)&dLuigiModel_Joint_0x46B8_DisplayList, (MObjSub**)&dLuigiModel_gap_0x28E0_sub_0xC84, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x3A8, NULL, 0x00 },
 	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x534, (MObjSub**)&dLuigiModel_gap_0x4E8C_sub_0x654, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x6A0, NULL, 0x00 },
 	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x7C4, (MObjSub**)&dLuigiModel_gap_0x4E8C_sub_0x8C4, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x910, NULL, 0x00 },

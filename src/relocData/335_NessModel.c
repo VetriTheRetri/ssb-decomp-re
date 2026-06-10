@@ -8,12 +8,16 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern MObjSub **dNessModel_JointVerts_Vtx[];
-extern void *dNessModel_Joint_0x0040_post[];
-extern void *dNessModel_Joint_0x0040_post_palset_0x2C[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
 extern u16 dNessModel_Lut_0xB9F0_palette[];
 extern u16 dNessModel_Lut_0xC060_palette[16];
-extern u8 dNessModel_Tex_0x8B58[];
 extern u8 dNessModel_Tex_0xAB20[];
 extern u8 dNessModel_Tex_0xAC28[];
 extern u8 dNessModel_Tex_0xAC50[];
@@ -28,6 +32,14 @@ extern u8 dNessModel_Tex_0xBD50[];
 extern u8 dNessModel_Tex_0xBDE8[];
 extern u8 dNessModel_Tex_0xBE30[];
 extern u8 dNessModel_Tex_0xBE58[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern MObjSub **dNessModel_JointVerts_Vtx[];
+extern void *dNessModel_Joint_0x0040_post[];
+extern void *dNessModel_Joint_0x0040_post_palset_0x2C[];
+extern u8 dNessModel_Tex_0x8B58[];
 extern Vtx dNessModel_Vtx_0x06D0_Vtx[];
 extern Vtx dNessModel_Vtx_0x07A0_Vtx[];
 extern Vtx dNessModel_Vtx_0x0830_Vtx[];

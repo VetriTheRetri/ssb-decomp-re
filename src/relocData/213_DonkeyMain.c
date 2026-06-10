@@ -221,9 +221,9 @@ u32 dDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xF8 };
 
 /* @ 0x03BC, 12 bytes: FTAttributes.sprites target (was dDonkeyMain_pre+0x3BC) */
 FTSprites dDonkeyMain_sprites = {
-	(Sprite*)0x00F1004C, /* stock_sprite */
+	(Sprite*)dDkIcon_Stock, /* stock_sprite */
 	(int**)dDonkeyMain_stock_luts, /* stock_luts */
-	(Sprite*)0x00F400BE, /* emblem */
+	(Sprite*)dDkIcon_FTEmblem, /* emblem */
 };
 
 /* @ 0x03C8, 208 bytes: FTAttributes.sub_0x3C8 target (was dDonkeyMain_pre+0x3C8) */

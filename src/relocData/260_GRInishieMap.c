@@ -16,6 +16,8 @@ extern u32 dStageInishieFile3_mobjlink_0x0A68[];
 extern u32 dStageInishieFile3_DObjDesc_0x0C30[];
 extern u32 dStageInishieFile3_DObjDesc_0x11F8[];
 extern u32 dStageInishieFile3_mobjlink_0x13B0[];
+extern Gfx dStageInishieFile3_DL_0x05F0[];
+extern u16 dStageInishieFile2_Lut_0x3710_palette[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -30,18 +32,16 @@ MPItemWeights dGRInishieMap_item_weights = { { 0x50, 0x28, 0x78, 0x00, 0x0A, 0x0
 extern Sprite dStageInishieBackground_0x26c88[];
 extern DObjDesc dStageInishieFile2_Layer0DObj[];
 extern u32 dStageInishieFile2_Layer0Anim_AnimJoint[];
-extern MObjSub dStageInishieFile2_Layer0MObj_MObjSub[];
 extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint[];
 extern DObjDesc dStageInishieFile2_Layer1DObj[];
 extern DObjDesc dStageInishieFile2_Layer2DObj[];
 extern DObjDesc dStageInishieFile2_Layer3DObj[];
 extern u32 dStageInishieFile2_MPGeometryData_0x6698[];
-extern u32 dStageInishieFile2_gap_0x0000[];
 MPGroundData dGRInishieMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
-        { dStageInishieFile2_Layer0DObj, dStageInishieFile2_Layer0Anim_AnimJoint, dStageInishieFile2_Layer0MObj_MObjSub, dStageInishieFile2_Layer0MatAnim_MatAnimJoint },
+        { dStageInishieFile2_Layer0DObj, dStageInishieFile2_Layer0Anim_AnimJoint, (MObjSub *)((u8 *)dStageInishieFile2_Lut_0x3710_palette + 0x20), dStageInishieFile2_Layer0MatAnim_MatAnimJoint },
         { dStageInishieFile2_Layer1DObj, NULL, NULL, NULL },
         { dStageInishieFile2_Layer2DObj, NULL, NULL, NULL },
         { dStageInishieFile2_Layer3DObj, NULL, NULL, NULL },
@@ -69,7 +69,7 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
     7400,  /* map_bound_right */
     -7400,  /* map_bound_left */
     nSYAudioBGMInishie,  /* bgm_id */
-    (void *)((u8 *)dStageInishieFile2_gap_0x0000 + 0x5F0),  /* map_nodes */
+    (void *)dStageInishieFile3_DL_0x05F0,  /* map_nodes */
     &dGRInishieMap_item_weights,  /* item_weights */
     -2200,  /* alt_warning */
     3000,  /* camera_bound_team_top */

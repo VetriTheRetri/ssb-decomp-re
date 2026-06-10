@@ -14,6 +14,15 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern Gfx dITCommonObject_Gfx_0x1C48[];
+extern Gfx dITCommonObject_Gfx_0x4578[];
+extern Gfx dITCommonObject_Gfx_0x4A18[];
+extern Gfx dITCommonObject_Gfx_0xF8A8[];
+extern Gfx dITCommonObject_Gfx_0x0440[];
 extern Vtx dITCommonObject_BombHei_Item_data_remainder_gap_0x347C_sub_0x4[];
 extern u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0x34[];
 extern Vtx dITCommonObject_Box_Item_data_remainder_gap_0x67FC_sub_0xB4[];
@@ -22,11 +31,6 @@ extern u16 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_LUT[];
 extern u8 dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Tex[];
 extern Vtx dITCommonObject_DogasSmog_Weapon_matanimjoints_trailing_Vtx[];
 extern Vtx dITCommonObject_DogasSmog_Weapon_mobjsubs_sub_0x98[];
-extern Gfx dITCommonObject_Gfx_0x0440[];
-extern Gfx dITCommonObject_Gfx_0x1C48[];
-extern Gfx dITCommonObject_Gfx_0x4578[];
-extern Gfx dITCommonObject_Gfx_0x4A18[];
-extern Gfx dITCommonObject_Gfx_0xF8A8[];
 extern u16 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x14[];
 extern Vtx dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4_sub_0x23C[];
 extern Gfx dITCommonObject_LGunAmmo_Weapon_data[];

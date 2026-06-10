@@ -13,6 +13,8 @@ extern u8 dLinkShieldPose_shield_anim_joint_4[];
 extern u8 dLinkShieldPose_shield_anim_joint_5[];
 extern u8 dLinkShieldPose_shield_anim_joint_6[];
 extern u8 dLinkShieldPose_shield_anim_joint_7[];
+extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x550[];
+extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x560[];
 #include <ft/fttypes.h>
 
 extern Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[];
@@ -277,10 +279,10 @@ FTModelPart dLinkMain_modelparts_desc_0x298[4] = {
 FTModelPart dLinkMain_modelparts_desc_0x2E8[4] = {
 #if defined(REGION_JP)
 	/* JP layout shifts these targets by -0x10 (Joint_0x2EF0 -> data_0x2EB8+0x28, sub_0x238 -> sub_0x228, sub_0x7E4 -> sub_0x7D4). */
-	{ (Gfx*)((u8 *)dLinkModel_data_0x2EB8 + 0x28), (MObjSub**)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x578), (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x228, NULL, 0x00 },
+	{ (Gfx*)((u8 *)dLinkModel_Joint_0x2E08_DisplayList + 0xD8), (MObjSub**)dLinkModel_Joint_0x0040_post_sub_0x550, (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x228, NULL, 0x00 },
 	{ (Gfx*)&dLinkModel_Joint_0x6A30_DisplayList, (MObjSub**)&dLinkModel_gap_0x40EC_sub_0x7D4, (AObjEvent32**)&dLinkModel_gap_0x7AE0_sub_0x204, NULL, 0x00 },
 #else
-	{ (Gfx*)&dLinkModel_Joint_0x2EF0_DisplayList, (MObjSub**)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x578), (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x238, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x2EF0_DisplayList, (MObjSub**)dLinkModel_Joint_0x0040_post_sub_0x550, (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x238, NULL, 0x00 },
 	{ (Gfx*)&dLinkModel_Joint_0x6A30_DisplayList, (MObjSub**)&dLinkModel_gap_0x40EC_sub_0x7E4, (AObjEvent32**)&dLinkModel_gap_0x7AE0_sub_0x204, NULL, 0x00 },
 #endif
 	{ (Gfx*)&dLinkModel_Joint_0x94F0_DisplayList, (MObjSub**)&dLinkModel_gap_0x8110_sub_0x5B0, (AObjEvent32**)&dLinkModel_gap_0x9DA8_sub_0xCC, NULL, 0x00 },
@@ -290,10 +292,10 @@ FTModelPart dLinkMain_modelparts_desc_0x2E8[4] = {
 /* @ 0x0338, 80 bytes: FTAttributes.sub_0x338 target (was dLinkMain_pre+0x338) */
 FTModelPart dLinkMain_modelparts_desc_0x338[4] = {
 #if defined(REGION_JP)
-	{ (Gfx*)((u8 *)dLinkModel_Joint_0x2EF0_DisplayList + 0x498), (MObjSub**)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x588), (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x234, NULL, 0x00 },
+	{ (Gfx*)((u8 *)dLinkModel_Joint_0x2EF0_DisplayList + 0x498), (MObjSub**)dLinkModel_Joint_0x0040_post_sub_0x560, (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x234, NULL, 0x00 },
 	{ (Gfx*)&dLinkModel_Joint_0x6E08_DisplayList, (MObjSub**)&dLinkModel_gap_0x40EC_sub_0x7E4, (AObjEvent32**)&dLinkModel_gap_0x7AE0_sub_0x210, NULL, 0x00 },
 #else
-	{ (Gfx*)&dLinkModel_Joint_0x3398_DisplayList, (MObjSub**)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x588), (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x244, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x3398_DisplayList, (MObjSub**)dLinkModel_Joint_0x0040_post_sub_0x560, (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x244, NULL, 0x00 },
 	{ (Gfx*)&dLinkModel_Joint_0x6E08_DisplayList, (MObjSub**)&dLinkModel_gap_0x40EC_sub_0x7F4, (AObjEvent32**)&dLinkModel_gap_0x7AE0_sub_0x210, NULL, 0x00 },
 #endif
 	{ (Gfx*)&dLinkModel_Joint_0x9B98_DisplayList, (MObjSub**)&dLinkModel_gap_0x8110_sub_0x5C0, (AObjEvent32**)&dLinkModel_gap_0x9DA8_sub_0xD8, NULL, 0x00 },
@@ -324,7 +326,7 @@ FTTexturePartContainer dLinkMain_textureparts_container = {
  * byte 0x3AD8 in JP vs 0x3AE8 in US; the surrounding offsets follow). */
 FTCommonPartContainer dLinkMain_commonparts_container = {
 	{
-		{ (DObjDesc*)((u8*)dLinkModel_Joint_0x39E0_DisplayList + 0xF8), (MObjSub***)&dLinkModel_gap_0x0000, (AObjEvent32***)((u8*)dLinkModel_JointTree + 0x5A8), 0x00 },
+		{ (DObjDesc*)((u8*)dLinkModel_Joint_0x39E0_DisplayList + 0xF8), (MObjSub***)&dLinkModel_gap_0x0000, (AObjEvent32***)((u8*)dLinkModel_JointTree + 0x5B8), 0x00 },
 		{ (DObjDesc*)&dLinkModel_JointTree_0x74B0, (MObjSub***)&dLinkModel_gap_0x40EC_sub_0x244, (AObjEvent32***)((u8*)dLinkModel_JointTree_0x74B0 + 0x5B0), 0x00 },
 	},
 };

@@ -7,11 +7,23 @@
 #include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dStageInishieFile2_Lut_0x35D0_palette[];
 extern u16 dStageInishieFile2_Lut_0x35F8_palette[];
 extern u16 dStageInishieFile2_Lut_0x3620_palette[];
 extern u16 dStageInishieFile2_Lut_0x3710_palette[];
 extern Gfx dStageInishieFile3_DL_0x0258[];
+extern u16 dStageInishieFile2_Lut_0x35D0_palette[];
+extern u16 dStageInishieFile2_Lut_0x35F8_palette[];
+extern u16 dStageInishieFile2_Lut_0x3620_palette[];
+extern u16 dStageInishieFile2_Lut_0x3710_palette[];
+extern u16 dStageInishieFile2_Lut_0x35D0_palette[];
+extern u16 dStageInishieFile2_Lut_0x35F8_palette[];
+extern u16 dStageInishieFile2_Lut_0x3620_palette[];
+extern u16 dStageInishieFile2_Lut_0x3710_palette[];
 extern u8 dStageInishieFile3_Tex_0x0008[];
 extern u8 dStageInishieFile3_Tex_0x0498[];
 extern u8 dStageInishieFile3_Tex_0x04B0[];

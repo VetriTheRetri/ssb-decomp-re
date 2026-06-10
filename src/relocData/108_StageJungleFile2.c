@@ -10,15 +10,20 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageJungleFile2_DL_0x93B0[];
 extern Gfx dStageJungleFile2_DL_0xCCE8[];
+extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[];
+extern Gfx dStageJungleFile2_DL_0x7ED8[];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x27E0[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2820[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2860[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28A0[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x28E0[4];
 extern Vtx dStageJungleFile2_Layer1Anim_AnimJoint_0x2920[4];
-extern Gfx dStageJungleFile2_Layer1Anim_AnimJoint_0x29A8[];
 extern u16 dStageJungleFile2_Lut_0x0008_palette[];
 extern u16 dStageJungleFile2_Lut_0x0438_palette[];
 extern u16 dStageJungleFile2_Lut_0x0668_palette[];
@@ -119,7 +124,6 @@ extern Vtx dStageJungleFile2_gap_0xC888_sub_0xC8[];
 extern MObjSub *dStageJungleFile2_gap_0xD1B4_sub_0x2114[];
 extern Vtx dStageJungleFile2_gap_0xD1B4_sub_0x211C[];
 extern u16 dStageJungleFile2_gap_0xD1B4_sub_0x234[];
-extern Gfx dStageJungleFile2_DL_0x7ED8[];
 
 PAD(8);
 

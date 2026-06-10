@@ -165,12 +165,12 @@ ftMotionCommand dNessMainMotion_ShieldDrop_0x01C8[] = {
 };
 
 ftMotionCommand dNessMainMotion_ClashingDuringPKTA_0x01E4[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_ShieldDrop_0x01C8 + 5),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dNessMainMotion_ShieldDrop_0x01C8 + 0x14)),
 	ftMotionCommandEnd(),
 };
 
 ftMotionCommand dNessMainMotion_Damage[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_ShieldDrop_0x01C8 + 5),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dNessMainMotion_ShieldDrop_0x01C8 + 0x14)),
 	ftMotionCommandSetDamageThrown((u32)dFTCommonMoveset_DamageScript) /* extern */,
 	ftMotionCommandEnd(),
 };
@@ -231,7 +231,7 @@ ftMotionCommand dNessMainMotion_StunStartU[] = {
 
 ftMotionCommand dNessMainMotion_DownForwardD[] = {
 	ftMotionPlayFGM(nSYAudioFGMEscape),
-	ftMotionCommandSubroutine(dNessMainMotion_StunLandU + 2),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dNessMainMotion_StunLandU + 0x8)),
 	ftMotionCommandEnd(),
 };
 
@@ -965,13 +965,13 @@ ftMotionCommand dNessMainMotion_EggLay_0x0E3C[] = {
 };
 
 ftMotionCommand dNessMainMotion_FalconDivePulled[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_ShieldDrop_0x01C8 + 5),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dNessMainMotion_ShieldDrop_0x01C8 + 0x14)),
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkleDelay) /* extern */,
 	ftMotionCommandEnd(),
 };
 
 ftMotionCommand dNessMainMotion_ClashingDuringPKTA_0x0E5C[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_ShieldDrop_0x01C8 + 5),
+	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dNessMainMotion_ShieldDrop_0x01C8 + 0x14)),
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle) /* extern */,
 	ftMotionCommandEnd(),
 };

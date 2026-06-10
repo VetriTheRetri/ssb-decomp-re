@@ -9,6 +9,7 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u16 dStageJungleFile2_Lut_0x0A98_palette[];
+extern u32 dStageJungleFile3_DObjDesc_0x0A98[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -27,7 +28,6 @@ extern u32 dStageJungleFile2_Layer1Anim_AnimJoint[];
 extern DObjDesc dStageJungleFile2_Layer2DObj[];
 extern DObjDesc dStageJungleFile2_Layer3DObj[];
 extern u32 dStageJungleFile2_MPGeometryData_0x9AFC[];
-extern u32 dStageJungleFile2_gap_0x0000[];
 MPGroundData dGRJungleMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
@@ -60,7 +60,7 @@ MPGroundData dGRJungleMap_MapHeader_0x0014 =
     8100,  /* map_bound_right */
     -8100,  /* map_bound_left */
     nSYAudioBGMJungle,  /* bgm_id */
-    (void *)((u8 *)dStageJungleFile2_gap_0x0000 + 0xA98),  /* map_nodes */
+    (void *)dStageJungleFile3_DObjDesc_0x0A98,  /* map_nodes */
     &dGRJungleMap_item_weights,  /* item_weights */
     -1900,  /* alt_warning */
     4000,  /* camera_bound_team_top */

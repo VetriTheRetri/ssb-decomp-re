@@ -25,6 +25,7 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dNessSpecial3_gap_0x0000[];  /* file 336 */
+extern DObjDesc dNessSpecial3_PKFireDL_DObjDescs[];
 
 WPAttributes dNessSpecial1_PKFire_WeaponAttributes = {
     (void *)(dNessSpecial3_gap_0x0000 + 0x168),                    /* data (336+0x168) */
@@ -63,9 +64,17 @@ WPAttributes dNessSpecial1_PKFire_WeaponAttributes = {
     40,  /* knockback_base   : 10 */
 };
 
-u8 dNessSpecial1_PKFire_ItemAttributes[76] = {
-    0x00, 0x0F, 0x02, 0x82, 0x00, 0x00, 0x00, 0x00,
-    0xFF, 0xFF, 0x02, 0xBC, 0x00, 0x00, 0x00, 0x00,
+/* First 16 bytes are two pointer slots (DObjDesc table + anim ptrs in
+ * NessSpecial3) with NULL padding; split out so the chain pointers are
+ * real C pointer expressions. */
+void *dNessSpecial1_PKFire_ItemAttributes[4] = {
+    (void *)dNessSpecial3_PKFireDL_DObjDescs,
+    NULL,
+    (void *)((u8 *)dNessSpecial3_PKFireDL_DObjDescs + 0xE8),
+    NULL,
+};
+
+u8 dNessSpecial1_PKFire_ItemAttributes_0x10[60] = {
     0x98, 0x00, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00,
     0x00, 0x00, 0x01, 0x5E, 0x00, 0x00, 0x00, 0x00,
     0x00, 0xC8, 0x00, 0x00, 0x00, 0xC8, 0x01, 0x90,

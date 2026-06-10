@@ -13,6 +13,7 @@ extern u8 dSamusShieldPose_shield_anim_joint_4[];
 extern u8 dSamusShieldPose_shield_anim_joint_5[];
 extern u8 dSamusShieldPose_shield_anim_joint_6[];
 extern u8 dSamusShieldPose_shield_anim_joint_7[];
+extern u32 dMasterHandIcon_FTEmblem[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dNSamusModel_JointTree[];
@@ -147,7 +148,7 @@ FTThrownStatus dNSamusMain_thrown_status[54] = {
 FTSprites dNSamusMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x01A500AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNSamusMain_attr = {

@@ -8,9 +8,10 @@
 #include <sys/objdef.h>
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
-extern void *dCaptainModel_Joint_0x0060_post[];
-extern void *dCaptainModel_Joint_0x0060_post_palset_0x8[];
-extern u16 dCaptainModel_Lut_0xB958_palette[];
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u8 dCaptainModel_Tex_0xAF30[];
 extern u8 dCaptainModel_Tex_0xAF78[];
 extern u8 dCaptainModel_Tex_0xB270[];
@@ -30,6 +31,17 @@ extern u8 dCaptainModel_Tex_0xC230[];
 extern u8 dCaptainModel_Tex_0xC358[];
 extern u8 dCaptainModel_Tex_0xC420[];
 extern u8 dCaptainModel_Tex_0xC508[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern u16 dCaptainModel_Lut_0xB958_palette[];
+extern u16 dMarioSecondaryImage_Tex_0x0008[];
+extern u8 dMarioSecondaryImage_Tex_0x0018[];
+extern u16 dMarioSecondaryImage_Tex_0x0060[];
+extern u8 dMarioSecondaryImage_Tex_0x0078[];
+extern void *dCaptainModel_Joint_0x0060_post[];
+extern void *dCaptainModel_Joint_0x0060_post_palset_0x8[];
 extern Vtx dCaptainModel_Vtx_0x1298_Vtx[];
 extern Vtx dCaptainModel_Vtx_0x1328_Vtx[];
 extern Vtx dCaptainModel_Vtx_0x13D8_Vtx[];

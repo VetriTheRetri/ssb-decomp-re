@@ -9,7 +9,7 @@ extern Sprite dBonus1CommonBackground_0x26c88[];
 extern DObjDesc dGRBonus2FoxFile2_Layer0DObj[];
 extern DObjDesc dGRBonus2FoxFile2_Layer1DObj[];
 extern u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint[];
-extern MObjSub dGRBonus2FoxFile2_Layer1MObj_MObjSub[];
+extern MObjSub dGRBonus2FoxFile2_Layer1MObj_data[];
 extern u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint[];
 extern u32 dGRBonus2FoxFile2_MPGeometryData_0x3214[];
 
@@ -18,7 +18,7 @@ MPGroundData dGRBonus2FoxMap_header =
     /* gr_desc[4] */
     {
         { dGRBonus2FoxFile2_Layer0DObj, NULL, NULL, NULL },
-        { dGRBonus2FoxFile2_Layer1DObj, dGRBonus2FoxFile2_Layer1Anim_AnimJoint, dGRBonus2FoxFile2_Layer1MObj_MObjSub, dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint },
+        { dGRBonus2FoxFile2_Layer1DObj, dGRBonus2FoxFile2_Layer1Anim_AnimJoint, dGRBonus2FoxFile2_Layer1MObj_data, dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },

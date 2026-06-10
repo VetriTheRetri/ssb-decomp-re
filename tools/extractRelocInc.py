@@ -884,12 +884,248 @@ def emit_typedef_struct(data, start, total_size, path, fields, struct_size):
     write_lines(path, lines)
 
 
-def _emit_dl_raw(data, start, size, path):
+# ---------------------------------------------------------------------------
+# Chain-pointer symbolization
+#
+# The original binary's intern/extern relocation chains tell us exactly which
+# 32-bit words are pointers. When emitting Gfx blocks we substitute those
+# words with symbolic C expressions (`(Vtx *)dFoo_Vtx_0x798`, ...) so IDO
+# emits an R_MIPS_32 record for each slot and `fixRelocChain.py --auto` can
+# rebuild the chains without any .reloc metadata.
+#
+# Intern chain targets resolve within this file's own block layout. Extern
+# chain targets resolve via the trailing u16 file-id table the engine reads
+# after the file's data (see lbRelocLoadAndRelocFile): one fid per extern
+# entry, in chain order, recoverable from the raw .vpk0/.bin container at
+# compressedSize*4.
+# ---------------------------------------------------------------------------
+
+_CHAIN_CSV_CACHE = None
+_LAYOUT_CACHE = {}
+
+
+def _csv_chain_info(resolved_fid):
+    """(intern_start_word, extern_start_word, compressed_words) or None."""
+    global _CHAIN_CSV_CACHE
+    if _CHAIN_CSV_CACHE is None:
+        rows = []
+        csv_path = os.path.join(os.path.dirname(ASSET_DIR), "relocData.csv")
+        if os.path.exists(csv_path):
+            with open(csv_path) as f:
+                next(f)
+                for line in f:
+                    parts = [p.strip() for p in line.split(',')]
+                    if len(parts) >= 6:
+                        try:
+                            rows.append((int(parts[2], 16), int(parts[4], 16),
+                                         int(parts[3], 16)))
+                        except ValueError:
+                            rows.append(None)
+        _CHAIN_CSV_CACHE = rows
+    if 0 <= resolved_fid < len(_CHAIN_CSV_CACHE):
+        return _CHAIN_CSV_CACHE[resolved_fid]
+    return None
+
+
+def _walk_chain_ordered(data, start_word):
+    """Walk one relocation chain; ordered [(byte_off, target_word)]."""
+    out = []
+    cur = start_word
+    seen = set()
+    while cur != 0xFFFF:
+        off = cur * 4
+        if off + 4 > len(data) or off in seen:
+            break
+        seen.add(off)
+        word = struct.unpack('>I', data[off:off + 4])[0]
+        out.append((off, word & 0xFFFF))
+        nxt = (word >> 16) & 0xFFFF
+        if nxt == cur:
+            break
+        cur = nxt
+    return out
+
+
+def _extern_fid_seq(resolved_fid, comp_words, count):
+    """The trailing u16 file-id table for the extern chain, in chain order.
+
+    Lives in the raw container (after the compressed stream for .vpk0
+    files; after the data for uncompressed .bin files)."""
+    if count == 0:
+        return []
+    for ext in (".vpk0", ".bin"):
+        p = os.path.join(ASSET_DIR, f"{resolved_fid}{ext}")
+        if os.path.exists(p):
+            with open(p, 'rb') as f:
+                raw = f.read()
+            table_off = comp_words * 4
+            if table_off + 2 * count > len(raw):
+                return None
+            return list(struct.unpack(f'>{count}H',
+                                      raw[table_off:table_off + 2 * count]))
+    return None
+
+
+def _master_for_any_fid(version_fid):
+    """Master .c path for any version-local fid: committed inline master,
+    falling back to the spritelist-generated master under build/."""
+    m = inline_master_for(version_fid)
+    if m:
+        return m
+    import glob
+    name = _name_for_fid(version_fid, _detect_version() or "us")
+    if name:
+        cands = glob.glob(os.path.join(BUILD_RELOC, f"*_{name}.c"))
+        if cands:
+            return cands[0]
+    cands = glob.glob(os.path.join(BUILD_RELOC, f"{version_fid}_*.c"))
+    return cands[0] if cands else None
+
+
+def _layout_for_fid(version_fid, strict=False):
+    """Sorted [(offset, name, size)] block layout for a fid, derived
+    statically from its master .c. Cached; None when unavailable.
+
+    The walk only sizes declarations parse_master_c understands; masters
+    containing opaque decl types (e.g. ftMotionCommand scripts) yield
+    silently-shifted offsets. With strict=True (cross-file target
+    lookups, where extraction provides no correctness feedback) the
+    walked total must land within alignment slack of the actual binary
+    size — anything else returns None so chain slots targeting that fid
+    stay as raw words instead of being symbolized wrongly. The current
+    fid's own layout is exempt: its inc.c extraction uses the same walk,
+    so a drifted walk would already produce non-matching bytes."""
+    key = (version_fid, strict)
+    if key in _LAYOUT_CACHE:
+        return _LAYOUT_CACHE[key]
+    layout = None
+    master = _master_for_any_fid(version_fid)
+    if master and os.path.exists(master):
+        try:
+            entries = parse_master_c(master)
+            layout = []
+            offset = 0
+            for kind, payload in entries:
+                if kind == 'pad':
+                    offset += payload
+                    continue
+                if offset % 4 != 0:
+                    offset += 4 - (offset % 4)
+                layout.append((offset, payload['name'], payload['size']))
+                offset += payload['size']
+            if strict:
+                binp = bin_path(version_fid)
+                bin_size = os.path.getsize(binp) if binp else None
+                if bin_size is None or offset > bin_size or bin_size - offset > 64:
+                    layout = None
+        except (SystemExit, Exception):
+            layout = None
+    _LAYOUT_CACHE[key] = layout
+    return layout
+
+
+def _sym_for_offset(layout, byte_off):
+    """(symbol, delta) for the block enclosing byte_off, or None."""
+    import bisect
+    starts = [b[0] for b in layout]
+    i = bisect.bisect_right(starts, byte_off) - 1
+    if i < 0:
+        return None
+    off, name, size = layout[i]
+    if byte_off >= off + max(size, 4):
+        return None
+    return (name, byte_off - off)
+
+
+def build_chain_slots(fid, data):
+    """{slot_byte_off: (symbol, delta)} for every chain-encoded pointer in
+    this file, resolved symbolically. Slots whose target can't be resolved
+    are omitted (they stay as raw words). Returns {} when chain metadata
+    isn't available."""
+    resolved = _resolve_fid_for_version(fid)
+    info = _csv_chain_info(resolved)
+    if info is None:
+        return {}
+    intern_start, extern_start, comp_words = info
+    slots = {}
+    own_layout = _layout_for_fid(fid)
+    if own_layout:
+        for off, tword in _walk_chain_ordered(data, intern_start):
+            r = _sym_for_offset(own_layout, tword * 4)
+            if r:
+                slots[off] = r
+    ext_entries = _walk_chain_ordered(data, extern_start)
+    if ext_entries:
+        fid_seq = _extern_fid_seq(resolved, comp_words, len(ext_entries))
+        if fid_seq:
+            for (off, tword), tfid in zip(ext_entries, fid_seq):
+                lay = _layout_for_fid(tfid, strict=True)
+                if lay is None:
+                    continue
+                r = _sym_for_offset(lay, tword * 4)
+                if r:
+                    slots[off] = r
+    return slots
+
+
+# F3DEX2 macros whose last meaningful argument is a pointer, with the cast
+# the substituted expression should carry. None = no cast (the macro arg is
+# already a bare pointer, e.g. gsDPSetTextureImage's img).
+_POINTER_MACRO_CASTS = {
+    'gsSPDisplayList': ('Gfx *', 0),
+    'gsSPBranchList': ('Gfx *', 0),
+    'gsSPVertex': ('Vtx *', 0),
+    'gsSPMatrix': ('Mtx *', 0),
+    'gsSPViewport': ('Vp *', 0),
+    'gsSPLight': ('Light *', 0),
+    'gsSPLookAt': ('LookAt *', 0),
+    'gsDPSetTextureImage': (None, 3),
+}
+
+_MACRO_LINE_RE = re.compile(r'^(\s*)(gs[A-Za-z][A-Za-z0-9_]*)\((.*)\)(\s*,?\s*)$')
+
+
+def _ptr_expr(sym, delta, cast):
+    if cast == 'u32':
+        return f"(u32){sym}" if delta == 0 else f"(u32)((u8 *){sym} + 0x{delta:X})"
+    if cast is None:
+        return sym if delta == 0 else f"((u8 *){sym} + 0x{delta:X})"
+    return f"({cast}){sym}" if delta == 0 else f"({cast})((u8 *){sym} + 0x{delta:X})"
+
+
+def _split_macro_args(s):
+    args = []
+    depth = 0
+    start = 0
+    for i, c in enumerate(s):
+        if c in '([':
+            depth += 1
+        elif c in ')]':
+            depth -= 1
+        elif c == ',' and depth == 0:
+            args.append((s[start:i], start, i))
+            start = i + 1
+    if s[start:].strip():
+        args.append((s[start:], start, len(s)))
+    return args
+
+
+def _raw_cmd_line(data, cmd_off, chain_slots):
+    """One Gfx command as `{ { w0, w1 } },` with symbolized words."""
+    w0, w1 = struct.unpack('>II', data[cmd_off:cmd_off + 8])
+    s0 = chain_slots.get(cmd_off)
+    s1 = chain_slots.get(cmd_off + 4)
+    e0 = _ptr_expr(s0[0], s0[1], 'u32') if s0 else f"0x{w0:08X}"
+    e1 = _ptr_expr(s1[0], s1[1], 'u32') if s1 else f"0x{w1:08X}"
+    return f"\t{{ {{ {e0}, {e1} }} }},"
+
+
+def _emit_dl_raw(data, start, size, path, chain_slots=None):
     """Emit a DL inc.c as raw `{ { w0, w1 } },` word pairs."""
+    chain_slots = chain_slots or {}
     lines = []
     for i in range(0, size, 8):
-        w0, w1 = struct.unpack('>II', data[start + i:start + i + 8])
-        lines.append(f"\t{{ {{ 0x{w0:08X}, 0x{w1:08X} }} }},")
+        lines.append(_raw_cmd_line(data, start + i, chain_slots))
     write_lines(path, lines)
 
 
@@ -909,17 +1145,60 @@ def _dl_is_pygfxd_safe(data, start, size):
     return True
 
 
-def emit_dl(data, start, size, path):
+def _symbolize_dl_body(body, data, start, chain_slots):
+    """Substitute chain-pointer args in a pygfxd macro body.
+
+    pygfxd output here is guaranteed 1 line = 1 command (the caller falls
+    back to the raw emitter otherwise), so command N's words live at
+    start + N*8. Lines whose macro we can't substitute into are replaced
+    with the raw `{ { w0, w1 } },` form of that single command."""
+    lines = body.split('\n')
+    out = []
+    cmd_idx = 0
+    for line in lines:
+        if not line.strip():
+            out.append(line)
+            continue
+        cmd_off = start + cmd_idx * 8
+        cmd_idx += 1
+        s0 = chain_slots.get(cmd_off)
+        s1 = chain_slots.get(cmd_off + 4)
+        if not s0 and not s1:
+            out.append(line)
+            continue
+        m = _MACRO_LINE_RE.match(line)
+        if m and not s0 and m.group(2) in _POINTER_MACRO_CASTS:
+            cast, arg_idx = _POINTER_MACRO_CASTS[m.group(2)]
+            parts = _split_macro_args(m.group(3))
+            if arg_idx < len(parts):
+                arg_text, a_s, a_e = parts[arg_idx]
+                hex_m = re.search(r'0x[0-9a-fA-F]+', arg_text)
+                if hex_m:
+                    expr = _ptr_expr(s1[0], s1[1], cast)
+                    new_arg = (arg_text[:hex_m.start()] + expr
+                               + arg_text[hex_m.end():])
+                    new_args = m.group(3)[:a_s] + new_arg + m.group(3)[a_e:]
+                    out.append(f"{m.group(1)}{m.group(2)}({new_args}){m.group(4)}")
+                    continue
+        # Unknown macro / w0 slot / no hex literal: raw form for this command.
+        out.append(_raw_cmd_line(data, cmd_off, chain_slots))
+    return '\n'.join(out)
+
+
+def emit_dl(data, start, size, path, chain_slots=None):
     """Disassemble an F3DEX2 DL region into readable `gsSP* / gsDP*`
     macro calls using pygfxd, falling back to raw `{ { w0, w1 } }` word
     pairs for blocks that contain command patterns pygfxd can't
     roundtrip (or when pygfxd isn't available).
 
-    For macro output, chain-encoded pointer arguments (SPVertex / SETTIMG
-    / etc.) stay as literal hex — they still get patched to a real
-    address at link time by fixRelocChain.
+    Chain-encoded pointer arguments (SPVertex / SETTIMG / etc.) are
+    substituted with symbolic expressions from `chain_slots` so the
+    compiler emits a relocation for each pointer slot and the chains can
+    be rebuilt without .reloc metadata. Slots not covered by chain_slots
+    stay as literal hex.
     """
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    chain_slots = chain_slots or {}
 
     if _HAS_PYGFXD and _dl_is_pygfxd_safe(data, start, size):
         dl_bytes = data[start:start + size]
@@ -945,11 +1224,13 @@ def emit_dl(data, start, size, path):
         decoded_cmds = body.count(',\n')
         expected_cmds = size // 8
         if decoded_cmds >= expected_cmds:
+            if chain_slots:
+                body = _symbolize_dl_body(body, data, start, chain_slots)
             with open(path, 'w') as f:
                 f.write(body)
             return
 
-    _emit_dl_raw(data, start, size, path)
+    _emit_dl_raw(data, start, size, path, chain_slots)
 
 
 def process_fid(fid):
@@ -1069,6 +1350,10 @@ def _process_inline(fid, master_path):
     if offset > len(data):
         return 0
 
+    # Resolve every chain-encoded pointer slot to a symbolic expression so
+    # Gfx emission below can substitute them (see build_chain_slots).
+    chain_slots = build_chain_slots(fid, data)
+
     # Second pass: write each block's inc.c into build/. Route by declared
     # C type — an inc.c included into `u32 X[N]` needs u32-hex values, not
     # u8 bytes, or IDO rejects it with "Too many initial values".
@@ -1084,7 +1369,7 @@ def _process_inline(fid, master_path):
             count = size // 16
             emit_vtx(data, off, count, inc_full)
         elif decl_type == 'Gfx':
-            emit_dl(data, off, size, inc_full)
+            emit_dl(data, off, size, inc_full, chain_slots=chain_slots)
         elif decl_type == 'u16':
             emit_u16(data, off, size, inc_full)
         elif decl_type == 'u32':

@@ -12,9 +12,13 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern Gfx dStageYamabukiFile2_DL_0x4620[];
-extern Gfx dStageYamabukiFile2_DL_0x5E78[];
 extern Gfx dStageYamabukiFile2_DL_0x68F0[];
+extern Gfx dStageYamabukiFile2_DL_0x5E78[];
 extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x91C[8];
 extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x99C[4];
 extern Vtx dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint_data_0x9DC[4];

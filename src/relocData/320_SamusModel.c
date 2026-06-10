@@ -12,8 +12,11 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u16 dSamusModel_Lut_0xC3E0_palette[];
-extern u16 dSamusModel_Lut_0xD4F0_palette[];
 extern u8 dSamusModel_Tex_0xB2B0[];
 extern u8 dSamusModel_Tex_0xB508[];
 extern u8 dSamusModel_Tex_0xB800[];
@@ -39,6 +42,7 @@ extern u8 dSamusModel_Tex_0xDCF8[];
 extern u8 dSamusModel_Tex_0xDD50[];
 extern u8 dSamusModel_Tex_0xDD78[];
 extern u8 dSamusModel_Tex_0xDDE0[];
+extern u16 dSamusModel_Lut_0xD4F0_palette[];
 extern Vtx dSamusModel_Vtx_0x0CF8_Vtx[];
 extern Vtx dSamusModel_Vtx_0x0ED8_Vtx[];
 extern Vtx dSamusModel_Vtx_0x0F58_Vtx[];

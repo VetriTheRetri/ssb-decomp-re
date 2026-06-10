@@ -132,7 +132,7 @@ FTThrownStatus dNYoshiMain_thrown_status[54] = {
 FTSprites dNYoshiMain_sprites = {
 	NULL, /* stock_sprite */
 	NULL, /* stock_luts */
-	(Sprite*)0x016400AE, /* emblem */
+	(Sprite*)dMasterHandIcon_FTEmblem, /* emblem */
 };
 
 FTAttributes dNYoshiMain_attr = {

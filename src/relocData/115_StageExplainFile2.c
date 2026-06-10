@@ -10,6 +10,38 @@
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dStagePupupuImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuImages_Lut_0x0518_palette[];
+extern u16 dStagePupupuImages_Lut_0x1858_palette[];
+extern u16 dStagePupupuImages_Lut_0x1A88_palette[];
+extern u16 dStagePupupuImages_Lut_0x2248_palette[];
+extern u16 dStagePupupuImages_Lut_0x2678_palette[];
+extern u16 dStagePupupuImages_Lut_0x28A8_palette[];
+extern u8 dStagePupupuImages_Tex_0x0490[];
+extern u8 dStagePupupuImages_Tex_0x0540[];
+extern u8 dStagePupupuImages_Tex_0x1880[];
+extern u8 dStagePupupuImages_Tex_0x1AB0[];
+extern u8 dStagePupupuImages_Tex_0x2270[];
+extern u8 dStagePupupuImages_Tex_0x26A0[];
+extern u8 dStagePupupuImages_Tex_0x28D0[];
+extern u16 dStagePupupuImages_Lut_0x0468_palette[];
+extern u16 dStagePupupuImages_Lut_0x0518_palette[];
+extern u16 dStagePupupuImages_Lut_0x1858_palette[];
+extern u16 dStagePupupuImages_Lut_0x1A88_palette[];
+extern u16 dStagePupupuImages_Lut_0x2248_palette[];
+extern u16 dStagePupupuImages_Lut_0x2678_palette[];
+extern u16 dStagePupupuImages_Lut_0x28A8_palette[];
+extern u8 dStagePupupuImages_Tex_0x0490[];
+extern u8 dStagePupupuImages_Tex_0x0540[];
+extern u8 dStagePupupuImages_Tex_0x1880[];
+extern u8 dStagePupupuImages_Tex_0x1AB0[];
+extern u8 dStagePupupuImages_Tex_0x2270[];
+extern u8 dStagePupupuImages_Tex_0x26A0[];
+extern u8 dStagePupupuImages_Tex_0x28D0[];
 extern Vtx dStageExplainFile2_MPGeometryData_0x0854_trailing[];
 extern Vtx dStageExplainFile2_gap_0x0000[];
 extern Vtx dStageExplainFile2_gap_0x018C_sub_0x144[];

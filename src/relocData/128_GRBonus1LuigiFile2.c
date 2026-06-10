@@ -11,7 +11,27 @@
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+
+/* Forward decls auto-added/hoisted by hoistExterns.py */
+extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x06B0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x06D8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
 extern Gfx dGRBonus1LuigiFile2_DL_0x17E8[];
+extern u16 dBonus1CommonImages1_Lut_0x0380_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x06B0_palette[];
+extern u16 dBonus1CommonImages1_Lut_0x0720_palette[];
+extern u8 dBonus1CommonImages1_Tex_0x03A8[];
+extern u16 dBonus1CommonImages1_Tex_0x0598[];
+extern u8 dBonus1CommonImages1_Tex_0x05A8[];
+extern u8 dBonus1CommonImages1_Tex_0x06D8[];
+extern u8 dBonus1CommonImages1_Tex_0x0748[];
 extern Vtx dGRBonus1LuigiFile2_gap_0x0000[];
 extern Vtx dGRBonus1LuigiFile2_gap_0x0000_sub_0x100[];
 extern Vtx dGRBonus1LuigiFile2_gap_0x0000_sub_0x140[];

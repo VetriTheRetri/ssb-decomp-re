@@ -17,7 +17,6 @@ extern DObjDesc dStageCastleFile2_Layer2DObj[];
 extern u32 dStageCastleFile2_Layer2Anim_AnimJoint[];
 extern DObjDesc dStageCastleFile2_Layer3DObj[];
 extern u32 dStageCastleFile2_MPGeometryData_0x2D58[];
-extern u32 dStageCastleFile2_gap_0x0000[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 #if defined(REGION_JP)
@@ -58,7 +57,7 @@ MPGroundData dGRCastleMap_header =
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
     nSYAudioBGMCastle,  /* bgm_id */
-    dStageCastleFile2_gap_0x0000,  /* map_nodes */
+    dStageCastleFile3_AnimJointRoot,  /* map_nodes */
     &dGRCastleMap_item_weights,  /* item_weights */
     -1900,  /* alt_warning */
     4800,  /* camera_bound_team_top */

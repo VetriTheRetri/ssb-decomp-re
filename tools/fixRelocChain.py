@@ -219,6 +219,24 @@ def _build_global_sym_index(version):
 
 
 _baserom_chain_cache = {}  # {(version, fid): (intern_set, extern_set)}
+_baserom_data_cache = {}   # {(version, fid): bytes or None}
+
+
+def _baserom_data(version, fid):
+    """The original extracted (decompressed) binary for fid, or None."""
+    key = (version, fid)
+    if key in _baserom_data_cache:
+        return _baserom_data_cache[key]
+    bin_dir = os.path.join(PROJECT_DIR, 'assets', version, 'relocData')
+    data = None
+    for ext in ('vpk0.bin', 'bin'):
+        p = os.path.join(bin_dir, f'{fid}.{ext}')
+        if os.path.exists(p):
+            with open(p, 'rb') as f:
+                data = f.read()
+            break
+    _baserom_data_cache[key] = data
+    return data
 
 
 def _walk_baserom_chains(version, fid):
@@ -313,6 +331,7 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
         intern_set, extern_set = _walk_baserom_chains(version, fid)
 
     intern, extern, unresolved = [], [], []
+    extra = []
     extern_index = None
 
     for off, sym in relocs:
@@ -339,12 +358,11 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
             elif off in extern_set:
                 extern.append((off, target_off))
             else:
-                # .o has a reloc the baserom doesn't put on either chain;
-                # default to symbol-class heuristic.
-                if sym in defined:
-                    intern.append((off, target_off))
-                else:
-                    extern.append((off, target_off))
+                # .o has a reloc at a slot the baserom doesn't put on
+                # either chain: the C source holds a pointer expression
+                # where the original had a plain word. Skipping it would
+                # silently diverge, so collect for the completeness check.
+                extra.append((off, sym))
         else:
             # Fallback: classify by symbol class
             if sym in defined:
@@ -352,7 +370,29 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
             else:
                 extern.append((off, target_off))
 
-    return intern, extern, unresolved
+    # Completeness diagnostics against the baserom chains:
+    #   missing — slot is chained in the baserom but the .o has no reloc
+    #             record there. Tolerated when the in-place word already
+    #             equals the baserom's chain encoding (raw pre-encoded
+    #             words in committed sources); reported otherwise.
+    #   extra   — reloc record at a slot on neither baserom chain.
+    # These are surfaced by fixup_binary's post-patch byte compare; we
+    # only collect human-readable hints here.
+    diagnostics = []
+    if intern_set is not None and extern_set is not None:
+        reloc_offs = {off for off, _ in relocs}
+        orig = _baserom_data(version, fid)
+        for off in sorted((intern_set | extern_set) - reloc_offs):
+            if orig is not None and off + 4 <= len(orig) and off + 4 <= len(data) \
+                    and orig[off:off + 4] == data[off:off + 4]:
+                continue  # raw word already carries the correct chain encoding
+            diagnostics.append(f"  missing: .data+0x{off:X} is chain-encoded in "
+                               f"the baserom but has no relocation in the .o")
+        for off, sym in extra:
+            diagnostics.append(f"  extra: .data+0x{off:X} ({sym}) has a relocation "
+                               f"but is on neither baserom chain")
+
+    return intern, extern, unresolved, diagnostics
 
 
 _extern_symbol_cache = {}  # {(version, file_id): {sym_name: offset}}
@@ -528,9 +568,10 @@ def fixup_binary(binary_path, reloc_path, obj_path, file_id=None, version=None,
     reloc_path (which may be None).
     """
 
+    diagnostics = []
     if auto:
-        intern_entries, extern_entries, unresolved = derive_entries_from_obj(
-            obj_path, version, strict=False, fid=file_id)
+        intern_entries, extern_entries, unresolved, diagnostics = \
+            derive_entries_from_obj(obj_path, version, strict=False, fid=file_id)
         if unresolved:
             print(f"  WARNING: {len(unresolved)} dangling extern(s) "
                   f"skipped in {os.path.basename(obj_path)}:", file=sys.stderr)
@@ -550,6 +591,31 @@ def fixup_binary(binary_path, reloc_path, obj_path, file_id=None, version=None,
 
     with open(binary_path, 'wb') as f:
         f.write(data)
+
+    # The hard gate for --auto: the patched output must be byte-identical
+    # to the original extracted binary. Any divergence (mis-typed slot,
+    # wrong pointer expression, stale symbol, missing reloc) fails the
+    # build here, with chain diagnostics for triage. The original may
+    # carry trailing bytes (extern fid table) beyond the .data extract,
+    # so only the patched length is compared.
+    if auto and file_id is not None and version is not None:
+        orig = _baserom_data(version, file_id)
+        if orig is not None and len(orig) >= len(data):
+            if orig[:len(data)] != bytes(data):
+                first = next((i for i in range(min(len(orig), len(data)))
+                              if orig[i] != data[i]), None)
+                print(f"Error: {binary_path} differs from the original binary "
+                      f"after --auto chain rebuild (first diff @0x{first:X})",
+                      file=sys.stderr)
+                for p in diagnostics[:20]:
+                    print(p, file=sys.stderr)
+                if len(diagnostics) > 20:
+                    print(f"  ... and {len(diagnostics) - 20} more", file=sys.stderr)
+                sys.exit(1)
+        elif orig is not None:
+            print(f"Error: {binary_path} is larger than the original binary "
+                  f"({len(data)} vs {len(orig)})", file=sys.stderr)
+            sys.exit(1)
 
     print(f"Patched {binary_path}:")
     print(f"  {len(intern_entries)} internal relocations (start word: 0x{intern_start:04X})")

@@ -1525,7 +1525,7 @@ ftMotionCommand dFoxMainMotion_FireFoxGround[] = {
 	ftMotionCommandEffect(6, nEFKindSparkleWhite, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dFoxMainMotion_FireFoxGround + 17),                         /* back-Goto to internal LoopBegin (word 17) */
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dFoxMainMotion_FireFoxGround + 0x44)),                         /* back-Goto to internal LoopBegin (word 17) */
 };
 
 ftMotionCommand dFoxMainMotion_FireFoxAir[] = {
@@ -1535,7 +1535,7 @@ ftMotionCommand dFoxMainMotion_FireFoxAir[] = {
 	ftMotionCommandEffect(0, nEFKindQuakeMag0, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialHiFly),
-	ftMotionCommandGoto(dFoxMainMotion_FireFoxGround + 17),                         /* loops back into FireFoxGround LoopBegin */
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dFoxMainMotion_FireFoxGround + 0x44)),                         /* loops back into FireFoxGround LoopBegin */
 };
 #else
 /* US FireFoxGround/Air: damage=16, angle=80, kbs=60, kbb=60. */
@@ -1552,7 +1552,7 @@ ftMotionCommand dFoxMainMotion_FireFoxGround[] = {
 	ftMotionCommandEffect(6, nEFKindSparkleWhite, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dFoxMainMotion_FireFoxGround + 17),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dFoxMainMotion_FireFoxGround + 0x44)),
 };
 
 ftMotionCommand dFoxMainMotion_FireFoxAir[] = {
@@ -1562,7 +1562,7 @@ ftMotionCommand dFoxMainMotion_FireFoxAir[] = {
 	ftMotionCommandEffect(0, nEFKindQuakeMag0, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteMultiExplode, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialHiFly),
-	ftMotionCommandGoto(dFoxMainMotion_FireFoxGround + 17),
+	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dFoxMainMotion_FireFoxGround + 0x44)),
 };
 #endif
 

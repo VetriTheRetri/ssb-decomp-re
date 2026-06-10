@@ -9,14 +9,14 @@ extern u8 dStagePupupuBeta2[];
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageDreamLand_sprite_0x26C88[];
-extern u32 dStagePupupuFile2_gap_0x0898[];
+extern u32 dStagePupupuBeta2_DObjDesc_0x0898[];
 extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];
-extern u32 dStagePupupuFile2_gap_0x1D00[];
-extern u32 dStagePupupuFile2_Layer1Anim_AnimJoint[];
+extern u32 dStagePupupuBeta2_DObjDesc_0x1D00[];
+extern u32 dStagePupupuBeta2_DObjDesc_0x1D00_AnimJoint[];
 extern u32 dStagePupupuFile2_DL_0x22D0[];
-extern u32 dStagePupupuFile2_gap_0x2810[];
-extern u32 dStagePupupuFile2_Layer3Anim_AnimJoint[];
-extern u32 dStagePupupuFile2_MPGeometryData_0x2094[];
+extern u32 dStagePupupuBeta2_DObjDesc_0x2810[];
+extern u32 dStagePupupuBeta2_DObjDesc_0x2810_AnimJoint[];
+extern u32 dStagePupupuBeta2_MPGeometryData_0x2094[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 MPItemWeights dGRPupupuTestMap_item_weights = { { 0x46, 0x28, 0x78, 0x00, 0x0A, 0x07, 0x06, 0x0A, 0x05, 0x0A, 0x0A, 0x08, 0x0A, 0x07, 0x0A, 0x0A, 0x0A, 0x05, 0x05, 0x12 } };
@@ -25,12 +25,12 @@ MPGroundData dGRPupupuTestMap_header =
 {
     /* gr_desc[4] */
     {
-        { dStagePupupuFile2_gap_0x0898, dStagePupupuFile2_Layer0Anim_AnimJoint, NULL, NULL },
-        { dStagePupupuFile2_gap_0x1D00, dStagePupupuFile2_Layer1Anim_AnimJoint, NULL, NULL },
+        { dStagePupupuBeta2_DObjDesc_0x0898, dStagePupupuFile2_Layer0Anim_AnimJoint, NULL, NULL },
+        { dStagePupupuBeta2_DObjDesc_0x1D00, dStagePupupuBeta2_DObjDesc_0x1D00_AnimJoint, NULL, NULL },
         { dStagePupupuFile2_DL_0x22D0, NULL, NULL, NULL },
-        { dStagePupupuFile2_gap_0x2810, dStagePupupuFile2_Layer3Anim_AnimJoint, NULL, NULL },
+        { dStagePupupuBeta2_DObjDesc_0x2810, dStagePupupuBeta2_DObjDesc_0x2810_AnimJoint, NULL, NULL },
     },
-    dStagePupupuFile2_MPGeometryData_0x2094,  /* map_geometry */
+    dStagePupupuBeta2_MPGeometryData_0x2094,  /* map_geometry */
     0,  /* layer_mask */
     dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */

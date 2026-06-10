@@ -17,11 +17,13 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dLinkSpecial3_BoomerangDL_post[];  /* file 325 */
+extern DObjDesc dLinkSpecial3_BoomerangDL_post_DObjDesc[];
+extern AObjEvent32 *dLinkSpecial3_BoomerangDL_post_anim_ptrs[];
 
 WPAttributes dLinkSpecial1_Boomerang_WeaponAttributes = {
-    (void *)(dLinkSpecial3_BoomerangDL_post + 0x1B8),                /* data (325+0x610) */
+    (void *)dLinkSpecial3_BoomerangDL_post_DObjDesc,                /* data (325+0x610) */
     NULL,  /* p_mobjsubs */
-    (AObjEvent32 **)(dLinkSpecial3_BoomerangDL_post + 0x268),        /* anim_joints (325+0x6C0) */
+    (AObjEvent32 **)dLinkSpecial3_BoomerangDL_post_anim_ptrs,        /* anim_joints (325+0x6C0) */
     NULL,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     150, 0, -150, 150,  /* map_coll top/center/bottom/width */

@@ -22,7 +22,11 @@ MPGroundData dGRBonus1LinkMap_header =
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
+#if defined(REGION_JP)
+    (void *)((u8 *)dGRBonus1LinkFile2_MPGeometryData_0x26E0 + 0x4),  /* map_geometry */
+#else
     dGRBonus1LinkFile2_MPGeometryData_0x26E0,  /* map_geometry */
+#endif
     1,  /* layer_mask */
     (Sprite *)dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */

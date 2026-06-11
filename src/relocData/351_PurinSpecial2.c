@@ -48,6 +48,7 @@ extern u32* dPurinSpecial2_SingMatAnimJoint_MatAnimJoint_0x2F44[];
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0810 (2056 bytes) */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dPurinSpecial2_Tex_0x0008[2048] = {
 	#include <PurinSpecial2/Tex_0x0008.tex.inc.c>
 };
@@ -55,6 +56,7 @@ u8 dPurinSpecial2_Tex_0x0008[2048] = {
 PAD(8);
 
 /* Raw data from file offset 0x0810 to 0x1018 (2056 bytes) */
+/* @tex fmt=RGBA16 dim=32x32 */
 u8 dPurinSpecial2_Tex_0x0810[2048] = {
 	#include <PurinSpecial2/Tex_0x0810.tex.inc.c>
 };

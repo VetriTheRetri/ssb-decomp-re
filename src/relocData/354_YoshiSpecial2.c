@@ -224,10 +224,10 @@ PAD(4);
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
 extern u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784[];
-extern u32 * dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[];
+extern AObjEvent32 *dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[];
 
-AObjEvent32 *dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[1] = {
-	(AObjEvent32 *)dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4,
+AObjEvent32 **dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[1] = {
+	dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4,
 };
 
 u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784[] = {
@@ -245,7 +245,7 @@ u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784[] = {
 	aobjEvent32End(),
 };
 
-u32 * dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[] = {
-	(u32 *)(dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784),
+AObjEvent32 *dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x7B4[] = {
+	(AObjEvent32 *)dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint_0x784,
 	NULL,
 };

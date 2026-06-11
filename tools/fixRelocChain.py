@@ -305,6 +305,66 @@ def _walk_baserom_chains(version, fid):
     return result
 
 
+def _extern_fid_expectations(version, fid):
+    """{slot_byte_off: expected_target_fid} from the original container.
+
+    The runtime resolves each extern-chain slot's target file by consuming
+    one u16 from the trailing fid table per slot, in chain-walk order
+    (ascending slot offset). The chain word itself only stores the target
+    OFFSET, so a C source referencing the wrong file's symbol at a
+    numerically-equal offset still byte-matches — this table is the only
+    record of which file each slot must target."""
+    import csv as _csv
+    csv_path = os.path.join(PROJECT_DIR, 'assets', version, 'relocData.csv')
+    if not os.path.exists(csv_path):
+        return None
+    extern_start = comp_words = None
+    with open(csv_path) as f:
+        reader = _csv.reader(f)
+        next(reader)
+        for i, row in enumerate(reader):
+            if i == fid and len(row) >= 6:
+                try:
+                    comp_words = int(row[3].strip(), 16)
+                    extern_start = int(row[4].strip(), 16)
+                except ValueError:
+                    pass
+                break
+    if extern_start is None or extern_start == 0xFFFF:
+        return None if extern_start is None else {}
+    data = _baserom_data(version, fid)
+    if data is None:
+        return None
+    # Ordered walk of the original extern chain (over decompressed data).
+    order = []
+    cur, seen = extern_start, set()
+    while cur != 0xFFFF and cur not in seen:
+        seen.add(cur)
+        byte_off = cur * 4
+        if byte_off + 4 > len(data):
+            break
+        order.append(byte_off)
+        cur = (struct.unpack('>I', data[byte_off:byte_off + 4])[0] >> 16) & 0xFFFF
+    if not order:
+        return {}
+    # Trailing u16 table lives in the RAW container past the stream.
+    bin_dir = os.path.join(PROJECT_DIR, 'assets', version, 'relocData')
+    raw = None
+    for ext in ('vpk0', 'bin'):
+        p = os.path.join(bin_dir, f'{fid}.{ext}')
+        if os.path.exists(p):
+            with open(p, 'rb') as f:
+                raw = f.read()
+            break
+    if raw is None or comp_words is None:
+        return None
+    table_off = comp_words * 4
+    if table_off + 2 * len(order) > len(raw):
+        return None
+    fids = struct.unpack(f'>{len(order)}H', raw[table_off:table_off + 2 * len(order)])
+    return dict(zip(order, fids))
+
+
 def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
     """Build (intern_entries, extern_entries) from the .o's .rel.data.
 
@@ -332,12 +392,14 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
     intern, extern, unresolved = [], [], []
     extra = []
     extern_index = None
+    claims = {}  # {slot_off: (resolved_target_fid, sym)}
 
     for off, sym in relocs:
         addend = struct.unpack_from('>I', data, off)[0] if off + 4 <= len(data) else 0
         # Resolve target byte address
         if sym in defined:
             target_off = defined[sym] + addend
+            claims[off] = (fid, sym)
         else:
             if extern_index is None:
                 extern_index = _build_global_sym_index(version)
@@ -350,6 +412,7 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
                 continue
             _fid, sym_off = extern_index[sym]
             target_off = sym_off + addend
+            claims[off] = (_fid, sym)
         # Determine chain class
         if intern_set is not None and extern_set is not None:
             if off in intern_set:
@@ -391,7 +454,22 @@ def derive_entries_from_obj(obj_path, version, strict=True, fid=None):
             diagnostics.append(f"  extra: .data+0x{off:X} ({sym}) has a relocation "
                                f"but is on neither baserom chain")
 
-    return intern, extern, unresolved, diagnostics
+    # Wrong-file detection: the chain word only encodes the target OFFSET;
+    # the target FILE comes from the original trailing fid table. A symbol
+    # from the wrong file at a numerically-equal offset byte-matches, so
+    # check every extern slot's resolved fid against the table explicitly.
+    fid_mismatches = []
+    if fid is not None and version is not None:
+        expect = _extern_fid_expectations(version, fid)
+        if expect:
+            for off, want_fid in expect.items():
+                got = claims.get(off)
+                if got is not None and got[0] is not None and got[0] != want_fid:
+                    fid_mismatches.append(
+                        f"  .data+0x{off:X}: '{got[1]}' resolves to file {got[0]}, "
+                        f"but the original fid table targets file {want_fid}")
+
+    return intern, extern, unresolved, diagnostics, fid_mismatches, claims
 
 
 def build_chain(data, entries):
@@ -420,8 +498,14 @@ def fixup_binary(binary_path, obj_path, file_id=None, version=None):
     """Patch relocation chains derived from the .o's relocation records,
     then verify the result byte-for-byte against the original binary."""
 
-    intern_entries, extern_entries, unresolved, diagnostics = \
+    intern_entries, extern_entries, unresolved, diagnostics, fid_mismatches, claims = \
         derive_entries_from_obj(obj_path, version, strict=False, fid=file_id)
+    if fid_mismatches:
+        print(f"Error: {os.path.basename(obj_path)}: extern slot(s) reference "
+              f"the wrong file (offset matches, file id does not):", file=sys.stderr)
+        for m in fid_mismatches:
+            print(m, file=sys.stderr)
+        sys.exit(1)
     if unresolved:
         print(f"  WARNING: {len(unresolved)} dangling extern(s) "
               f"skipped in {os.path.basename(obj_path)}:", file=sys.stderr)
@@ -463,6 +547,31 @@ def fixup_binary(binary_path, obj_path, file_id=None, version=None):
             print(f"Error: {binary_path} is larger than the original binary "
                   f"({len(data)} vs {len(orig)})", file=sys.stderr)
             sys.exit(1)
+
+    # Emit the extern fid table sidecar (<binary>.extfids): one u16 per
+    # extern-chain slot in chain order, derived from the .o's relocation
+    # records. relocData.py's compress step BUILDS the trailing fid table
+    # in the container from this instead of replaying the baserom's bytes
+    # (the excess file then only supplies non-semantic compressor tail
+    # noise and padding).
+    if file_id is not None and version is not None:
+        expect = _extern_fid_expectations(version, file_id)
+        if expect is not None:
+            vals = []
+            for off, orig_fid in expect.items():  # insertion order = chain order
+                got = claims.get(off)
+                if got is not None and got[0] is not None:
+                    vals.append(got[0])
+                else:
+                    # Raw chain-encoded word with no relocation record — the
+                    # source carries no fid claim, so fall back to the
+                    # original table (the slot's bytes were already verified).
+                    print(f"  WARNING: extern slot .data+0x{off:X} has no "
+                          f"relocation record; fid table entry falls back to "
+                          f"the baserom value ({orig_fid})", file=sys.stderr)
+                    vals.append(orig_fid)
+            with open(binary_path + '.extfids', 'wb') as f:
+                f.write(struct.pack(f'>{len(vals)}H', *vals) if vals else b'')
 
     print(f"Patched {binary_path}:")
     print(f"  {len(intern_entries)} internal relocations (start word: 0x{intern_start:04X})")

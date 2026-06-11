@@ -173,6 +173,7 @@ extern AObjEvent32 *dITCommonObject_Star_Item_matanimjoints_0x1658[];
 extern AObjEvent32 *dITCommonObject_FFlower_Item_matanimjoints_0x4788[];
 extern AObjEvent32 *dITCommonObject_SpearSwarm_Weapon_matanimjoints_0xE67C[];
 extern AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[];
+extern AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFCA0[];
 extern u32 dITCommonObject_Dogas_Item_data_remainder_sub_0xC[];
 extern u32 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0_sub_0xC[];
 extern u32 dITCommonObject_Pippi_Item_data_remainder_sub_0x8[];
@@ -1123,6 +1124,7 @@ u16 dITCommonObject_LGunAmmo_Weapon_data_post_0x40[16] = {
 PAD(8);
 /* @ 0x41B8, 72 bytes — CI texture (paired with the _post_0x40
  * palette by the FFlower_…_sub_0xC image descriptor) */
+/* @tex fmt=CI4 dim=16x8 lut=dITCommonObject_LGunAmmo_Weapon_data_post_0x40 */
 u8 dITCommonObject_LGunAmmo_data_0x41B8[0x48] = {
 	#include <ITCommonObject/data_0x41B8.tex.inc.c>
 };
@@ -3872,7 +3874,7 @@ u32 dITCommonObject_KamexHydro_Weapon_animjoints_0xFB4C[] = {
 AObjEvent32 **dITCommonObject_KamexHydro_Weapon_matanimjoints[3] = {
 	NULL,
 	dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C,
-	&dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[1],
+	dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFCA0,
 };
 
 /* @ 0x0FB7C, 144 bytes — AObjEvent32 matanim script */
@@ -3956,8 +3958,11 @@ u32 dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC0C[36] = {
 };
 
 /* @ 0x0FC9C, 8 bytes — KamexHydro weapon matanim joint table (per-track AObjEvent32* entries) */
-AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[2] = {
+AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC9C[1] = {
 	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFC0C,
+};
+
+AObjEvent32 *dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFCA0[1] = {
 	(AObjEvent32 *)dITCommonObject_KamexHydro_Weapon_matanimjoints_0xFB7C,
 };
 

@@ -2,6 +2,8 @@
 /* File size: US 9648 bytes (0x25B0) / JP 9632 bytes (0x25A0) */
 
 #include "relocdata_types.h"
+extern ftMotionCommand dFTCommonMoveset_DamageSparkleDelay[];
+extern ftMotionCommand dFTCommonMoveset_DamageSparkle[];
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
 #include <ft/ftchar/ftkirby/ftkirby.h>
@@ -91,7 +93,7 @@ extern ftMotionCommand dKirbyMainMotion_ChargeStartAir[];
 extern ftMotionCommand dKirbyMainMotion_ChargePunchGround[];
 extern u32 dKirbyMainMotion_ChargePunchAir[];
 extern u32 dKirbyMainMotion_ChargePunchGroundFull_0x1F24[];
-extern u32 dKirbyMainMotion_ChargePunchAirFull_0x1F84[];
+extern ftMotionCommand dKirbyMainMotion_ChargePunchAirFull_0x1F84[];
 extern ftMotionCommand dKirbyMainMotion_ChargePunchGroundFull_0x1F8C[];
 extern ftMotionCommand dKirbyMainMotion_ChargePunchAirFull_0x203C[];
 extern ftMotionCommand dKirbyMainMotion_Charg[];
@@ -1250,7 +1252,12 @@ u32 dKirbyMainMotion_Damage_0x1088[] = {
 
 #if defined(REGION_JP)
 ftMotionCommand dKirbyMainMotion_EggLay_0x1094[] = {
+#if defined(REGION_JP)
+	/* JP shares the damage sub-scripts via FTCommonMoveset */
+	ftMotionCommandSubroutineS2(dFTCommonMoveset_DamageSparkleDelay),
+#else
 	ftMotionCommandSubroutineS2((u8 *)dKirbyMainMotion_CliffAttackQuick2 + 0xC),
+#endif
 };
 
 ftMotionCommand dKirbyMainMotion_0x1098[] = {
@@ -1272,7 +1279,11 @@ ftMotionCommand dKirbyMainMotion_FalconDivePulled[] = {
 };
 
 ftMotionCommand dKirbyMainMotion_0x10A4[] = {
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(dFTCommonMoveset_DamageSparkle),
+#else
 	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dKirbyMainMotion_CliffAttackQuick2 + 0x28)),
+#endif
 	ftMotionCommandEnd(),
 };
 ftMotionCommand dKirbyMainMotion_0x10B0[] = {
@@ -1478,13 +1489,13 @@ ftMotionCommand dKirbyMainMotion_JabLoop[] = {
 	ftMotionCommandPauseScript(),
 };
 
-ftMotionCommand dKirbyMainMotion_0x1210[] = {
+ftMotionCommand dKirbyMainMotion_0x120C[] = {
 	ftMotionCommandSubroutine(dKirbyMainMotion_0x1170),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandGoto(dKirbyMainMotion_JabLoop),
 };
 
-ftMotionCommand dKirbyMainMotion_0x1224[] = {
+ftMotionCommand dKirbyMainMotion_0x1220[] = {
 	ftMotionCommandHideItem(32505856),
 	ftMotionCommandStopLoopSFX(55050240),
 	ftMotionCommandStopLoopSFX(60162048),
@@ -2975,7 +2986,7 @@ ftMotionCommand dKirbyMainMotion_ChargePunchGround[] = {
 	ftMotionCommandPauseScript(),
 };
 
-ftMotionCommand dKirbyMainMotion_0x1F04[] = {
+ftMotionCommand dKirbyMainMotion_0x1EFC[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_ChargePunchGround),
 };
 #endif
@@ -3043,12 +3054,14 @@ u32 dKirbyMainMotion_ChargePunchGroundFull_0x1F24[] = {
 #endif
 
 #if defined(REGION_JP)
-u32 dKirbyMainMotion_ChargePunchAirFull_0x1F84[] = {
-	0x0C01E490,  /* opc=3 truncated */
-	0x01180000,
+ftMotionCommand dKirbyMainMotion_ChargePunchAirFull_0x1F84[] = {
+	/* JP: head fragment of a MakeAttackColl (opc 3) that straddles the
+	 * 0x1F84 block boundary in JP's divergent stream — raw words kept,
+	 * matching the dKirbyMainMotion_0x1F90 convention. */
+	0x0C01E490, 0x01180000,
 };
 #else
-u32 dKirbyMainMotion_ChargePunchAirFull_0x1F84[] = {
+ftMotionCommand dKirbyMainMotion_ChargePunchAirFull_0x1F84[] = {
 	ftMotionCommandGoto(dKirbyMainMotion_ChargePunchGroundFull_0x1F24),
 };
 #endif

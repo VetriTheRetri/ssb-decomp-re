@@ -392,11 +392,13 @@ u16 dSCExplainGraphics_SpecialMoveRGB_palette[16] = {
 	#include <SCExplainGraphics/SpecialMoveRGB_palette.palette.inc.c>
 };
 PAD(8);
+/* @tex fmt=CI4 dim=16x48 lut=dSCExplainGraphics_SpecialMoveRGB_palette */
 u8 dSCExplainGraphics_SpecialMoveRGB_tex[384] = {
 	#include <SCExplainGraphics/SpecialMoveRGB_tex.tex.inc.c>
 };
 #else
 /* US: texture (392B) → palette (32B) */
+/* @tex fmt=CI4 dim=16x48 lut=dSCExplainGraphics_SpecialMoveRGB_palette */
 u8 dSCExplainGraphics_SpecialMoveRGB_tex[392] = {
 	#include <SCExplainGraphics/SpecialMoveRGB_tex.tex.inc.c>
 };

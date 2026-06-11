@@ -845,6 +845,22 @@ def check_chain_pointer_raw_hex(decl, path, diags):
                 ))
 
 
+
+_WHOLE_TEXT_CACHE = {}
+
+
+def _whole_text_of(path):
+    t = _WHOLE_TEXT_CACHE.get(path)
+    if t is None:
+        try:
+            with open(path) as f:
+                t = f.read()
+        except OSError:
+            t = ""
+        _WHOLE_TEXT_CACHE[path] = t
+    return t
+
+
 def check_chain_pointer_target_form(decl, path, diags, script_syms,
                                      mobjsub_array_syms=None,
                                      typed_ptr_array_syms=None,
@@ -906,19 +922,29 @@ def check_chain_pointer_target_form(decl, path, diags, script_syms,
         if m:
             if m.group("sym") in script_syms:
                 continue
-            # `&X[N]` is legitimate when X is a typed struct array like
-            # `MObjSub X[]` — the N indexes a real array element, not
-            # byte-offset arithmetic into a single struct.
+            # `&X[N]` / `&X[N].field` is legitimate when X is a typed
+            # struct array like `MObjSub X[]` — N indexes a real array
+            # element (and .field a real member), not byte-offset
+            # arithmetic into fused data.
             if mobjsub_array_syms and m.group("sym") in mobjsub_array_syms:
                 continue
-            # Same reasoning extends to any typed pointer array `T *X[]`
-            # (T != void): each element is a 4-byte pointer slot, so
-            # `&X[N]` is a real element address — for example, a
-            # MatAnimJoint table indexing a joint-pointer table at the
-            # head of an AnimJoint block. `void *X[]` is excluded since
-            # an untyped pointer array is exactly the "fused
-            # masquerading" case R004 is meant to catch.
-            if typed_ptr_array_syms and m.group("sym") in typed_ptr_array_syms:
+            # `&X[N].field` member access into a struct array addresses a
+            # real field; bare `&X[N]` into ANY homogeneous pointer/data
+            # array almost always means the block boundary is wrong (the
+            # entries before N are padding or separate data) — the block
+            # should be split/rebased so the ref is a bare symbol.
+            after = txt[m.end():m.end() + 2]
+            is_member = after.startswith(".")
+            if is_member and typed_ptr_array_syms and m.group("sym") in typed_ptr_array_syms:
+                continue
+            # Cross-file struct arrays: an `extern DObjDesc X[];`-style
+            # decl types the target as a real struct array, so `&X[N]`
+            # (with or without a trailing member access) addresses a
+            # genuine element/field, not fused data.
+            if re.search(r"^extern\s+(?:DObjDesc|MObjSub|DObjDLLink|Vtx|Gfx|"
+                         r"FTModelPart|FTModelPartDesc|Sprite|Bitmap)\s+"
+                         + re.escape(m.group("sym")) + r"\s*\[",
+                         _whole_text_of(path), re.M):
                 continue
             diags.append(Diag(
                 path, ln, "R004", "warn",
@@ -1014,7 +1040,7 @@ def check_binary_data_inline(decl, path, diags):
     ))
 
 
-def check_untyped_data_blob(decl, path, diags):
+def check_untyped_data_blob(decl, path, diags, lines=None):
     """R010 — a u8/u16/u32 block backed by a raw `.data.inc.c` include.
     The extractor couldn't classify it; tracked so untyped blobs stay
     visible until typed (Vtx/Gfx/texture/palette/struct) or confirmed as
@@ -1023,6 +1049,12 @@ def check_untyped_data_blob(decl, path, diags):
     if decl.is_pointer or decl.ctype not in ("u8", "u16", "u32"):
         return
     if any(ext == ".data.inc.c" for _ln, ext, _raw in decl.includes):
+        # `/* @raw-data */` in the leading comment confirms the block as
+        # genuine raw data (same lookback convention as @tex/@dl-prefix).
+        if lines:
+            start = max(0, decl.start_line - 7)
+            if "@raw-data" in "\n".join(lines[start:decl.start_line]):
+                return
         diags.append(Diag(
             path, decl.start_line, "R010", "warn",
             f"'{decl.name}' ({decl.ctype}[{decl.size}]) is an untyped "
@@ -1106,7 +1138,22 @@ def _dl_inc_terminator_ok(c_path, raw_include_line):
     return None, None
 
 
-def check_dl_termination(decl, c_path, diags):
+
+_DL_PREFIX_RE = re.compile(r"@dl-prefix")
+_DL_PREFIX_FILE_CACHE = {}
+
+
+def _decl_has_dl_prefix_annotation(decl, lines):
+    """True if an `@dl-prefix` marker sits in the comment block right
+    above the decl (same lookback convention as `@tex`)."""
+    if not lines:
+        return False
+    start = max(0, decl.start_line - 7)
+    blob = "\n".join(lines[start:decl.start_line])
+    return bool(_DL_PREFIX_RE.search(blob))
+
+
+def check_dl_termination(decl, c_path, diags, lines=None):
     """R024 — `Gfx X[N]` block's `.dl.inc.c` payload must end with a DL
     terminator (`gsSPEndDisplayList()` or `gsSPBranchList(...)`). An
     unterminated DL means the next adjacent block continues this one
@@ -1117,6 +1164,12 @@ def check_dl_termination(decl, c_path, diags):
     dl_incs = [(ln, raw) for ln, ext, raw in decl.includes
                if ext == ".dl.inc.c"]
     if not dl_incs:
+        return
+    # `/* @dl-prefix */` marks an intentionally unterminated DL: the
+    # engine runs it as a setup/prefix fragment (DObjDLLink list_ids with
+    # the 0x4000 bit execute a prefix DL and continue with the joint's
+    # main DL; matanim setup fragments work the same way).
+    if _decl_has_dl_prefix_annotation(decl, lines):
         return
     # Check the LAST include — DLs whose body spans multiple includes
     # are rare, but the terminator should live in the last one.
@@ -2191,7 +2244,7 @@ def validate(c_path, enabled_rules):
         if "R007" in enabled_rules:
             check_include_type_match(d, c_path, diags)
         if "R010" in enabled_rules:
-            check_untyped_data_blob(d, c_path, diags)
+            check_untyped_data_blob(d, c_path, diags, lines)
         if "R011" in enabled_rules:
             check_dobj_sentinel(d, c_path, diags)
         if "R013" in enabled_rules:
@@ -2260,7 +2313,7 @@ def validate(c_path, enabled_rules):
                                                     decls_by_name, lines)
     if "R024" in enabled_rules:
         for d in decls:
-            check_dl_termination(d, c_path, diags)
+            check_dl_termination(d, c_path, diags, lines)
     if "R017" in enabled_rules:
         check_trailing_pad(c_path, lines, diags)
     if "R003" in enabled_rules or "R004" in enabled_rules:

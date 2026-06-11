@@ -51,6 +51,7 @@ Gfx dStageJungleFile3_DL_0x0A08[2] = {
 };
 
 /* @ 0x0A18 */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageJungleFile3_DL_0x0A18[16] = {
 	#include <StageJungleFile3/DL_0x0A18.dl.inc.c>
 };

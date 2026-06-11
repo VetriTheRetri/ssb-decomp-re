@@ -113,6 +113,7 @@ u16 dStageYosterImages_Lut_0x0528_palette[16] = {
 PAD(8);
 
 /* Texture: 0x0550 (256 bytes) */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dStageYosterImages_Tex_0x0550[256] = {
 	#include <StageYosterImages/Tex_0x0550.tex.inc.c>
 };
@@ -120,6 +121,7 @@ u8 dStageYosterImages_Tex_0x0550[256] = {
 PAD(8);
 
 /* Texture: 0x0658 (256 bytes) */
+/* @tex fmt=CI4 dim=32x16 */
 u8 dStageYosterImages_Tex_0x0658[256] = {
 	#include <StageYosterImages/Tex_0x0658.tex.inc.c>
 };

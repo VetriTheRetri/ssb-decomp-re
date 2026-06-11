@@ -2550,14 +2550,14 @@ DObjDLLink dNessModel_gap_0x9050[2] = {
 };
 PAD(8);
 
-/* @tex */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dNessModel_Tex_0x9068[1024] = {
 	#include <NessModel/Tex_0x9068.tex.inc.c>
 };
 PAD(8);
 
 /* gap sub-block @ 0x9470 (was gap+0x420, 1024 bytes) */
-/* @tex */
+/* @tex fmt=IA8 dim=32x32 */
 u8 dNessModel_Tex_0x9470[1024] = {
 	#include <NessModel/Tex_0x9470.tex.inc.c>
 };
@@ -2882,6 +2882,7 @@ u16 dNessModel_palette_0xAAF8[16] = {
 PAD(8);
 
 /* Texture: 0xAB20 (CI4 — trailing 0x28 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=16x32 lut=dNessModel_Lut_0xC060_palette */
 u8 dNessModel_Tex_0xAB20[264] = {
 	#include <NessModel/Tex_0xAB20.tex.inc.c>
 };
@@ -2913,6 +2914,7 @@ u16 dNessModel_palette_0xAE08[16] = {
 PAD(8);
 
 /* Texture data @ 0xAE30 (264 bytes) */
+/* @tex fmt=CI4 dim=16x32 */
 u8 dNessModel_Tex_0xAE30[256] = {
 	#include <NessModel/Tex_0xAE30.tex.inc.c>
 };

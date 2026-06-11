@@ -111,6 +111,7 @@ Gfx dLinkSpecial3_BoomerangDL_post_DL_0x580[2] = {
  * gsSPEndDisplayList terminator. Nothing references this address from
  * the .reloc, so it's likely a fragment kept for engine reuse rather
  * than executed via the normal DL chain. */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dLinkSpecial3_BoomerangDL_post_DL_0x590[16] = {
 	#include <LinkSpecial3/BoomerangDL_post_DL_0x590.dl.inc.c>
 };

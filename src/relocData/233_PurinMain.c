@@ -2,6 +2,7 @@
 /* File size: 1984 bytes (0x7C0) */
 
 #include "relocdata_types.h"
+extern u32 dPurinMainMotion_EggLay_0x0034[];
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
 
@@ -17,6 +18,8 @@ extern u8 dPurinShieldPose_shield_anim_joint_4[];
 extern u8 dPurinShieldPose_shield_anim_joint_5[];
 extern u8 dPurinShieldPose_shield_anim_joint_6[];
 extern u8 dPurinShieldPose_shield_anim_joint_7[];
+extern AObjEvent32 **dPurinModel_gap_0x24D0[];
+extern AObjEvent32 **dPurinModel_gap_0x4550[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dPurinModel_JointTree[];
@@ -51,7 +54,7 @@ extern DObjDesc dPurinSpecial2_SingDObjDesc[];
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dPurinMain_pre+0x0) */
 u32 dPurinMain_file_handles[2] = {
 
-	0x0001000D, /* extern -> 0x0034 */
+	(u32)&dPurinMainMotion_EggLay_0x0034, /* extern */
 	(u32)&dPurinSpecial2_SingDObjDesc, /* extern -> 0x2130 */
 };
 
@@ -103,8 +106,8 @@ FTTexturePartContainer dPurinMain_textureparts_container = {
 /* @ 0x00D8, 32 bytes: FTAttributes.commonparts_container target (was dPurinMain_pre+0xD8) */
 FTCommonPartContainer dPurinMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dPurinModel_JointTree, (MObjSub***)&dPurinModel_JointVerts_Vtx, (AObjEvent32***)((u8*)dPurinModel_JointTree + 0x4A8), 0x00 },
-		{ (DObjDesc*)&dPurinModel_JointTree_0x40A0, (MObjSub***)&dPurinModel_gap_0x24F8_sub_0x3B8, (AObjEvent32***)((u8*)dPurinModel_JointTree_0x40A0 + 0x4B0), 0x00 },
+		{ (DObjDesc*)&dPurinModel_JointTree, (MObjSub***)&dPurinModel_JointVerts_Vtx, (AObjEvent32***)dPurinModel_gap_0x24D0, 0x00 },
+		{ (DObjDesc*)&dPurinModel_JointTree_0x40A0, (MObjSub***)&dPurinModel_gap_0x24F8_sub_0x3B8, (AObjEvent32***)dPurinModel_gap_0x4550, 0x00 },
 	},
 };
 

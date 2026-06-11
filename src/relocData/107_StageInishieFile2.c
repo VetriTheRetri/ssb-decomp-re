@@ -99,6 +99,7 @@ extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint_data[38];
 PAD(8);
 
 /* Texture data @ 0x0008 (72 bytes) */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dStageInishieFile2_Tex_0x0008[72] = {
 	#include <StageInishieFile2/Tex_0x0008.tex.inc.c>
 };
@@ -243,6 +244,7 @@ u8 dStageInishieFile2_Tex_0x3518[32] = {
 PAD(8);
 
 /* Texture data @ 0x3540 (72 bytes) */
+/* @tex fmt=CI4 dim=16x8 */
 u8 dStageInishieFile2_Tex_0x3540[64] = {
 	#include <StageInishieFile2/Tex_0x3540.tex.inc.c>
 };
@@ -250,6 +252,7 @@ u8 dStageInishieFile2_Tex_0x3540[64] = {
 PAD(8);
 
 /* Texture data @ 0x3588 (72 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dStageInishieFile2_Lut_0x35D0_palette */
 u8 dStageInishieFile2_Tex_0x3588[64] = {
 	#include <StageInishieFile2/Tex_0x3588.tex.inc.c>
 };
@@ -324,8 +327,9 @@ extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1B8[2];
 extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1C0[2];
 extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1C8[2];
 extern MObjSub *dStageInishieFile2_gap_0x37A8_sub_0x1D0[2];
-PAD(8);
-MObjSub **dStageInishieFile2_Layer0MObj_MObjSub[8] = {
+MObjSub **dStageInishieFile2_Layer0MObj_MObjSub[10] = {
+	NULL,
+	NULL,
 	(MObjSub **)dStageInishieFile2_gap_0x37A8_sub_0x1B8,
 	(MObjSub **)dStageInishieFile2_gap_0x37A8_sub_0x1C0,
 	NULL,

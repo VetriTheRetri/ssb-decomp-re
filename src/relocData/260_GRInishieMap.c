@@ -17,7 +17,7 @@ extern u32 dStageInishieFile3_DObjDesc_0x0C30[];
 extern u32 dStageInishieFile3_DObjDesc_0x11F8[];
 extern u32 dStageInishieFile3_mobjlink_0x13B0[];
 extern Gfx dStageInishieFile3_DL_0x05F0[];
-extern u16 dStageInishieFile2_Lut_0x3710_palette[];
+extern MObjSub **dStageInishieFile2_Layer0MObj_MObjSub[];
 
 /* Item-randomizer weights — referenced by header.item_weights */
 #if defined(REGION_JP)
@@ -41,7 +41,7 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
-        { dStageInishieFile2_Layer0DObj, dStageInishieFile2_Layer0Anim_AnimJoint, (MObjSub *)((u8 *)dStageInishieFile2_Lut_0x3710_palette + 0x20), dStageInishieFile2_Layer0MatAnim_MatAnimJoint },
+        { dStageInishieFile2_Layer0DObj, dStageInishieFile2_Layer0Anim_AnimJoint, (MObjSub *)dStageInishieFile2_Layer0MObj_MObjSub, dStageInishieFile2_Layer0MatAnim_MatAnimJoint },
         { dStageInishieFile2_Layer1DObj, NULL, NULL, NULL },
         { dStageInishieFile2_Layer2DObj, NULL, NULL, NULL },
         { dStageInishieFile2_Layer3DObj, NULL, NULL, NULL },

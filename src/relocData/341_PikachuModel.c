@@ -4154,6 +4154,7 @@ u16 dPikachuModel_palette_0x7B70[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x16 lut=dPikachuModel_palette_0x7B70 */
 u8 dPikachuModel_Tex_0x7B98[264] = {
 	#include <PikachuModel/Tex_0x7B98.tex.inc.c>
 };
@@ -4182,14 +4183,17 @@ u16 dPikachuModel_palette_0x7D40[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI4 dim=32x19 lut=dPikachuModel_palette_0x7D40 */
 u8 dPikachuModel_Tex_0x7D68[304] = {
 	#include <PikachuModel/Tex_0x7D68.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x19 lut=dPikachuModel_palette_0x7D40 */
 u8 dPikachuModel_Tex_0x7E98[304] = {
 	#include <PikachuModel/Tex_0x7E98.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x16 lut=dPikachuModel_palette_0x7D40 */
 u8 dPikachuModel_Tex_0x7FC8[264] = {
 	#include <PikachuModel/Tex_0x7FC8.tex.inc.c>
 };

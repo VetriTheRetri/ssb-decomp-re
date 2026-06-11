@@ -101,8 +101,7 @@ extern u16 dPurinModel_palette_0x69F8[];
 extern u16 dPurinModel_palette_0x6A20[];
 extern u16 dPurinModel_palette_0x6A48[];
 extern u16 dPurinModel_palette_0x6A98[];
-extern /* @tex fmt=CI4 dim=32x35 */
-u8 dPurinModel_Tex_0x6AC0[];
+extern u8 dPurinModel_Tex_0x6AC0[];
 extern u8 dPurinModel_Tex_0x6CF0[];
 extern u8 dPurinModel_Tex_0x6F20[];
 extern u8 dPurinModel_Tex_0x7150[];
@@ -873,8 +872,10 @@ DObjDesc dPurinModel_JointTree[] = {
 /* Per-joint dispatch table @ 0x24CC — 11 slots holding chain-encoded
  * `AObjEvent32 **` pointers. Originally rolled into JointTree as a
  * 28th DObjDesc entry. */
-AObjEvent32 **dPurinModel_gap_0x24CC[11] = {
-	NULL, NULL, NULL,
+PAD(4);
+
+AObjEvent32 **dPurinModel_gap_0x24D0[10] = {
+	NULL, NULL,
 	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x370,    /* +0xC */
 	NULL, NULL, NULL,
 	(AObjEvent32 **)dPurinModel_gap_0x24F8_sub_0x394,    /* +0x1C */
@@ -1922,8 +1923,10 @@ DObjDesc dPurinModel_JointTree_0x40A0[] = {
 /* Per-joint dispatch table @ 0x4544 — 22 slots holding chain-encoded
  * `AObjEvent32 **` pointers. Originally rolled into JointTree_0x40A0
  * as 28th and 29th DObjDesc entries. */
-AObjEvent32 **dPurinModel_gap_0x4544[22] = {
-	NULL, NULL, NULL, NULL, NULL,
+PAD(12);
+
+AObjEvent32 **dPurinModel_gap_0x4550[19] = {
+	NULL, NULL,
 	(AObjEvent32 **)dPurinModel_gap_0x459C_sub_0x2E4,    /* +0x14 */
 	NULL, NULL, NULL,
 	(AObjEvent32 **)dPurinModel_gap_0x459C_sub_0x300,    /* +0x24 */
@@ -2602,18 +2605,22 @@ u16 dPurinModel_palette_0x6A98[20] = {
 	#include <PurinModel/palette_0x6A98.palette.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x35 lut=dPurinModel_palette_0x6A98 */
 u8 dPurinModel_Tex_0x6AC0[560] = {
 	#include <PurinModel/Tex_0x6AC0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x35 lut=dPurinModel_palette_0x6A98 */
 u8 dPurinModel_Tex_0x6CF0[560] = {
 	#include <PurinModel/Tex_0x6CF0.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x35 lut=dPurinModel_palette_0x6A98 */
 u8 dPurinModel_Tex_0x6F20[560] = {
 	#include <PurinModel/Tex_0x6F20.tex.inc.c>
 };
 
+/* @tex fmt=CI4 dim=32x32 lut=dPurinModel_palette_0x6A98 */
 u8 dPurinModel_Tex_0x7150[520] = {
 	#include <PurinModel/Tex_0x7150.tex.inc.c>
 };

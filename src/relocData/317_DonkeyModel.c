@@ -1678,8 +1678,9 @@ DObjDesc dDonkeyModel_JointTree[] = {
  * the gap_0x3E78 region below. (Originally rolled into JointTree as a
  * 28th DObjDesc entry; the bytes there are chain-encoded pointers in
  * what the extractor interpreted as float fields.) */
-AObjEvent32 **dDonkeyModel_gap_0x3E4C[11] = {
-	NULL,
+PAD(4);
+
+AObjEvent32 **dDonkeyModel_gap_0x3E50[10] = {
 	NULL,
 	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5BC,
 	(AObjEvent32 **)dDonkeyModel_gap_0x3E78_sub_0x5C4,
@@ -3409,10 +3410,9 @@ DObjDesc dDonkeyModel_JointTree_0x6EC0[] = {
  * `AObjEvent32 **` pointers to the per-joint script arrays that live
  * in the gap_0x7390 region below. (Originally rolled into
  * JointTree_0x6EC0 as a 28th DObjDesc entry.) */
-AObjEvent32 **dDonkeyModel_gap_0x7364[11] = {
-	NULL,
-	NULL,
-	NULL,
+PAD(12);
+
+AObjEvent32 **dDonkeyModel_gap_0x7370[8] = {
 	NULL,
 	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x48C,
 	(AObjEvent32 **)dDonkeyModel_gap_0x7390_sub_0x494,

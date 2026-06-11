@@ -26,6 +26,7 @@
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern u8 dNessSpecial3_gap_0x0000[];  /* file 336 */
 extern DObjDesc dNessSpecial3_PKFireDL_DObjDescs[];
+extern AObjEvent32 *dNessSpecial3_PKFireDL_script_ptrs[];
 
 WPAttributes dNessSpecial1_PKFire_WeaponAttributes = {
     (void *)(dNessSpecial3_gap_0x0000 + 0x168),                    /* data (336+0x168) */
@@ -64,37 +65,51 @@ WPAttributes dNessSpecial1_PKFire_WeaponAttributes = {
     40,  /* knockback_base   : 10 */
 };
 
-/* First 16 bytes are two pointer slots (DObjDesc table + anim ptrs in
- * NessSpecial3) with NULL padding; split out so the chain pointers are
- * real C pointer expressions. */
-void *dNessSpecial1_PKFire_ItemAttributes[4] = {
-    (void *)dNessSpecial3_PKFireDL_DObjDescs,
-    NULL,
-    (void *)((u8 *)dNessSpecial3_PKFireDL_DObjDescs + 0xE8),
-    NULL,
-};
-
-u8 dNessSpecial1_PKFire_ItemAttributes_0x10[60] = {
-    0x98, 0x00, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00,
-    0x00, 0x00, 0x01, 0x5E, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0xC8, 0x00, 0x00, 0x00, 0xC8, 0x01, 0x90,
-    0x00, 0xC8, 0x01, 0x90, 0x00, 0xC8, 0x00, 0x00,
+ITAttributes dNessSpecial1_PKFire_ItemAttributes[1] = {{
+    (void *)dNessSpecial3_PKFireDL_DObjDescs,             /* data */
+    NULL,                                                 /* p_mobjsubs */
+    (AObjEvent32 **)dNessSpecial3_PKFireDL_script_ptrs,   /* anim_joints */
+    NULL,                                                 /* p_matanim_joints */
+    1, 0, 0, 1, 1,  /* xlu,dobjs,colanim,hitlag,weight */
+    0, 100, 0,  /* attack_offset0 x/y/z */
+    0, 350, 0,  /* attack_offset1 x/y/z */
+    { 0, 200, 0 },  /* damage_coll_offset */
+    { 200, 400, 200 },  /* damage_coll_size */
+    400, 200, 0, 100,  /* map_coll top/center/bottom/width */
+    200,  /* size */
 #if defined(REGION_JP)
-    0x00, 0x64, 0x00, 0xC8, 0x14, 0x81, 0xE0, 0x21,
+    82,  /* angle */
+    30,  /* ks */
+    2,  /* dmg */
 #else
-    0x00, 0x64, 0x00, 0xC8, 0x11, 0x80, 0xA0, 0x31,
+    70,  /* angle */
+    10,  /* ks */
+    3,  /* dmg */
 #endif
-    0x00, 0x00, 0x20, 0x36, 0x39,
+    1,  /* elem */
+    0,  /* kw */
+    0,  /* sd */
+    2,  /* ac */
+    0,  /* cso */
+    nSYAudioFGMBurnM,  /* hit_sfx */
+    1,  /* pri */
+    1,  /* cri */
+    1,  /* crf */
+    0,  /* hop */
+    0,  /* refl */
+    1,  /* shield */
 #if defined(REGION_JP)
-    0x06, 0x58,
+    25,  /* kb */
 #else
-    0x01, 0x18,
+    4,  /* kb */
 #endif
-    0x40,
-#if defined(REGION_JP)
-    0x0D, 0x43, 0x50, 0xD4, 0x32, 0x00, 0x00, 0x00,
-#else
-    0x0E, 0x43, 0x90, 0xE4, 0x32, 0x00, 0x00, 0x00,
-#endif
-    0x00, 0x00, 0x00, 0x00,
-};
+    6,  /* type */
+    1,  /* hitstatus */
+    0,  /* b6 */
+    0,  /* b7 */
+    nSYAudioFGMItemThrow,  /* drop */
+    nSYAudioFGMItemThrow,  /* throw */
+    nSYAudioFGMItemThrow,  /* smash */
+    100,  /* vel */
+    0,  /* spin */
+}};

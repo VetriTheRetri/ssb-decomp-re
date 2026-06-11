@@ -288,9 +288,11 @@ Vtx dMVOpeningCliff_Vtx_0x5490_Vtx[26] = {
 };
 
 /* Orphan DL @ 0x5630 (103 cmds, references Tex_0x38D0/40D8/48E0, palettes sub_0x8/30/58, Vtx_0x50E0/5210/52A0/5410/5490) */
-Gfx dMVOpeningCliff_DL_0x5630[103] = {
+Gfx dMVOpeningCliff_DL_0x5630[102] = {
 	#include <MVOpeningCliff/DL_0x5630.dl.inc.c>
 };
+
+PAD(8);
 
 /* gap sub-block @ 0x5968 (was gap+0x2118, 2816 bytes) */
 /* @tex fmt=RGBA16 dim=44x32 */

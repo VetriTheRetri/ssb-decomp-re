@@ -8353,6 +8353,7 @@ Vtx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xCC8[3] = {
 /* @ 0xDBE0 — unterminated Gfx fragment (16 commands of SetOtherMode_L/H +
  * SetCombineMode setup; same shape as _0x7928 prefix). Dispatched via a
  * DObjDesc entry with list_id 0x4001. No PipeSync header / EndDL terminator. */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xCF8[16] = {
 	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x6A68_at_0xCF8.dl.inc.c>
 };
@@ -8370,6 +8371,7 @@ Gfx dStageZebesFile2_Layer1MatAnim_DL_0xDD98[2] = {
 /* @ 0xDDA8 — unterminated Gfx fragment (16 commands of SetOtherMode_L/H +
  * SetCombineMode setup). Called via the DObjDesc[1] below (list_id=0x4001
  * encodes "execute this prefix DL"). No PipeSync header / EndDL terminator. */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928[16] = {
 	#include <StageZebesFile2/dStageZebesFile2_Layer1MatAnim_MatAnimJoint_data_0x7928.dl.inc.c>
 };

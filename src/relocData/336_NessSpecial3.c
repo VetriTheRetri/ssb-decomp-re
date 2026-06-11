@@ -262,11 +262,15 @@ DObjDesc dNessSpecial3_PKFireDL_DObjDescs[5] = {
 	{ 18,     (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xAE4: 20 bytes of zero padding between the DObjDesc array and the script-pointer table. */
-PAD(20);
+/* @ 0xAE4: 12 bytes of zero padding after the DObjDesc array. */
+PAD(12);
 
-/* @ 0xAF8: AObjEvent32* pointer table — entries are the two scripts below. */
-AObjEvent32 *dNessSpecial3_PKFireDL_script_ptrs[2] = {
+/* @ 0xAF0: AObjEvent32* pointer table (2 leading NULL slots; entries are
+ * the two scripts below). NessSpecial1's ITAttributes.anim_joints points
+ * here. */
+AObjEvent32 *dNessSpecial3_PKFireDL_script_ptrs[4] = {
+	NULL,
+	NULL,
 	(AObjEvent32 *)dNessSpecial3_PKFireDL_script_a,
 	(AObjEvent32 *)dNessSpecial3_PKFireDL_script_b,
 };

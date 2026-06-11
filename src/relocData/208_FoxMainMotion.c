@@ -875,11 +875,11 @@ ftMotionCommand dFoxMainMotion_0x0B68[] = {
 	ftMotionCommandGoto(dFoxMainMotion_AttackSomething_0x0B34),
 };
 
-ftMotionCommand dFoxMainMotion_0x0B98[] = {
+ftMotionCommand dFoxMainMotion_0x0B90[] = {
 	ftMotionCommandGoto(dFoxMainMotion_AttackSomething_0x0B34),
 };
 
-ftMotionCommand dFoxMainMotion_0x0BA0[] = {
+ftMotionCommand dFoxMainMotion_0x0B98[] = {
 	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),

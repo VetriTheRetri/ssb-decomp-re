@@ -268,8 +268,8 @@ DObjDesc dStagePupupuBeta2_DObjDesc_0x0898[7] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x09CC, 452 bytes — animation/material driver record: 12-byte
- * header, 4-entry chain-pointer table at +0xC, four 104-byte
+/* @ 0x09CC, 452 bytes — animation/material driver record: 4-byte
+ * header, 6-entry anim_joints table at +0x4 (2 static NULLs), four 104-byte
  * AObjEvent32-like sub-scripts (each starts with op=8
  * SetVal0RateBlock(0x184, 0) and has a self-back-ref chain at +0x64),
  * plus an 8-byte trailer. */
@@ -278,10 +278,14 @@ extern u32 dStagePupupuBeta2_data_0x09CC_sub_0x84[26];
 extern u32 dStagePupupuBeta2_data_0x09CC_sub_0xEC[26];
 extern u32 dStagePupupuBeta2_data_0x09CC_sub_0x154[26];
 
-PAD(12);
+PAD(4);
 
-/* Chain-pointer table @ +0xC — 4 entries pointing to the sub-scripts. */
-AObjEvent32 *dStagePupupuBeta2_data_0x09CC_ptrs[4] = {
+/* AObjEvent32 *[6] @ 0x09D0 — anim_joints table for DObjDesc_0x0898
+ * (GRPupupuTestMap.gr_desc[0][1] targets it). [0]/[1] static; [2]–[5]
+ * drive the four animated joints via the sub-scripts. */
+AObjEvent32 *dStagePupupuBeta2_DObjDesc_0x0898_AnimJoint[6] = {
+	NULL,
+	NULL,
 	(AObjEvent32 *)dStagePupupuBeta2_data_0x09CC_sub_0x1C,
 	(AObjEvent32 *)dStagePupupuBeta2_data_0x09CC_sub_0x84,
 	(AObjEvent32 *)dStagePupupuBeta2_data_0x09CC_sub_0xEC,

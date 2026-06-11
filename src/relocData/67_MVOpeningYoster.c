@@ -191,11 +191,13 @@ u8 dMVOpeningYoster_Tex_0x3850[4104] = {
 };
 
 /* Texture data @ 0x4858 (4104 bytes) */
+/* @tex fmt=RGBA32 dim=32x32 */
 u8 dMVOpeningYoster_Tex_0x4858[4104] = {
 	#include <MVOpeningYoster/Tex_0x4858.tex.inc.c>
 };
 
 /* Texture data @ 0x5860 (4104 bytes) */
+/* @tex fmt=RGBA32 dim=32x32 */
 u8 dMVOpeningYoster_Tex_0x5860[4096] = {
 	#include <MVOpeningYoster/Tex_0x5860.tex.inc.c>
 };
@@ -203,6 +205,7 @@ u8 dMVOpeningYoster_Tex_0x5860[4096] = {
 PAD(8);
 
 /* Texture data @ 0x6868 (4096 bytes) */
+/* @tex fmt=RGBA32 dim=32x32 */
 u8 dMVOpeningYoster_Tex_0x6868[4096] = {
 	#include <MVOpeningYoster/Tex_0x6868.tex.inc.c>
 };

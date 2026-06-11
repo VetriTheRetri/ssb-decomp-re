@@ -10,7 +10,19 @@ extern FTModelPart dGDonkeyMain_modelparts_desc_0x0A8[];
 extern FTModelPart dGDonkeyMain_modelparts_desc_0x120[];
 extern FTThrownStatus dGDonkeyMain_thrown_status[];
 extern u32 dDkIcon_Stock[];
+extern u8 dDkIcon_Stock_tex[];
 extern u32 dDkIcon_FTEmblem[];
+extern AObjEvent32 **dDonkeyModel_gap_0x3E50[];
+extern AObjEvent32 **dDonkeyModel_gap_0x7370[];
+extern u8 dDonkeyShieldPose_data0[];
+extern u8 dDonkeyShieldPose_data0_end[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_1[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_2[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_3[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_4[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_5[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_6[];
+extern u8 dDonkeyShieldPose_shield_anim_joint_7[];
 
 extern u32 dDonkeyMainMotion_EggLay_0x0000[];
 extern DObjDesc dDonkeyModel_JointTree[];
@@ -127,8 +139,8 @@ FTModelPartDesc *dGDonkeyMain_modelparts_container[26] = {
 /* @ 0x01D8, 32 bytes: FTAttributes.commonparts_container target (was dGDonkeyMain_pre+0x1D8) */
 FTCommonPartContainer dGDonkeyMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dDonkeyModel_JointTree, (MObjSub***)&dDonkeyModel_gap_0x0000, (AObjEvent32***)((u8*)dDonkeyModel_JointTree + 0x4A8), 0x00 },
-		{ (DObjDesc*)&dDonkeyModel_JointTree_0x6EC0, (MObjSub***)&dDonkeyModel_gap_0x3E78_sub_0x628, (AObjEvent32***)((u8*)dDonkeyModel_JointTree_0x6EC0 + 0x4B0), 0x00 },
+		{ (DObjDesc*)&dDonkeyModel_JointTree, (MObjSub***)&dDonkeyModel_gap_0x0000, (AObjEvent32***)dDonkeyModel_gap_0x3E50, 0x00 },
+		{ (DObjDesc*)&dDonkeyModel_JointTree_0x6EC0, (MObjSub***)&dDonkeyModel_gap_0x3E78_sub_0x628, (AObjEvent32***)dDonkeyModel_gap_0x7370, 0x00 },
 	},
 };
 
@@ -190,15 +202,15 @@ FTThrownStatus dGDonkeyMain_thrown_status[54] = {
 	{                          -1, nFTCommonStatusThrownCommon },
 };
 
-u32 dGDonkeyMain_stock_luts[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x058 + 0x8 };
+u32 dGDonkeyMain_stock_luts[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x58 };
 
-u32 dGDonkeyMain_data_0x03AC[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x058 + 0x30 };
+u32 dGDonkeyMain_data_0x03AC[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x80 };
 
-u32 dGDonkeyMain_data_0x03B0[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A8 + 0x8 };
+u32 dGDonkeyMain_data_0x03B0[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xA8 };
 
-u32 dGDonkeyMain_data_0x03B4[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A8 + 0x30 };
+u32 dGDonkeyMain_data_0x03B4[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xD0 };
 
-u32 dGDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dGDonkeyMain_modelparts_desc_0x0A8 + 0x58 };
+u32 dGDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xF8 };
 
 
 /* @ 0x03BC, 12 bytes: FTAttributes.sprites target (was dGDonkeyMain_pre+0x3BC) */
@@ -305,8 +317,8 @@ FTAttributes dGDonkeyMain_attr = {
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dGDonkeyMain_hiddenparts, /* hiddenparts */
 	&dGDonkeyMain_commonparts_container, /* commonparts_container */
-	(void *)((u8 *)&dGDonkeyMain_modelparts_desc_0x0A8 + 0x68), /* dobj_lookup */
-	{ (void *)((u8 *)&dGDonkeyMain_attr + 0x218), (void *)((u8 *)&dGDonkeyMain_attr + 0x638), (void *)((u8 *)&dGDonkeyMain_attr + 0xA68), (void *)((u8 *)&dGDonkeyMain_attr + 0xE98), (void *)((u8 *)&dGDonkeyMain_attr + 0x12C8), (void *)((u8 *)&dGDonkeyMain_attr + 0x16E8), (void *)((u8 *)&dGDonkeyMain_attr + 0x1B08), (void *)((u8 *)&dGDonkeyMain_attr + 0x1F18) }, /* shield_anim_joints */
+	(void *)&dDonkeyShieldPose_data0, /* dobj_lookup */
+	{ (void *)&dDonkeyShieldPose_data0_end, (void *)&dDonkeyShieldPose_shield_anim_joint_1, (void *)&dDonkeyShieldPose_shield_anim_joint_2, (void *)&dDonkeyShieldPose_shield_anim_joint_3, (void *)&dDonkeyShieldPose_shield_anim_joint_4, (void *)&dDonkeyShieldPose_shield_anim_joint_5, (void *)&dDonkeyShieldPose_shield_anim_joint_6, (void *)&dDonkeyShieldPose_shield_anim_joint_7 }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	152.787f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */

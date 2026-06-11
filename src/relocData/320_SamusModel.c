@@ -1464,9 +1464,9 @@ DObjDesc dSamusModel_JointTree[] = {
 /* Per-joint dispatch table @ 0x3AF8 — 11 slots holding chain-encoded
  * `AObjEvent32 **` pointers to per-joint script arrays. Originally
  * rolled into JointTree as a 35th DObjDesc entry. */
-AObjEvent32 **dSamusModel_gap_0x3AF8[11] = {
-	NULL,
-	NULL,
+PAD(8);
+
+AObjEvent32 **dSamusModel_gap_0x3B00[9] = {
 	NULL,
 	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x480,
 	(AObjEvent32 **)dSamusModel_gap_0x3B24_sub_0x488,
@@ -3146,9 +3146,9 @@ DObjDesc dSamusModel_JointTree_0x69D0[] = {
 /* Per-joint dispatch table @ 0x6FA8 — 11 slots holding chain-encoded
  * `AObjEvent32 **` pointers for the second skeleton. Originally rolled
  * into JointTree_0x69D0 as a 35th DObjDesc entry. */
-AObjEvent32 **dSamusModel_gap_0x6FA8[11] = {
-	NULL,
-	NULL,
+PAD(8);
+
+AObjEvent32 **dSamusModel_gap_0x6FB0[9] = {
 	NULL,
 	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x480,
 	(AObjEvent32 **)dSamusModel_gap_0x6FD4_sub_0x488,
@@ -4880,6 +4880,7 @@ u16 dSamusModel_palette_0xBD78[16] = {
 PAD(8);
 
 /* Texture: 0xBDA0 (CI4 — trailing 0x28 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xBDA0[520] = {
 	#include <SamusModel/Tex_0xBDA0.tex.inc.c>
 };
@@ -4996,6 +4997,7 @@ u16 dSamusModel_palette_0xCC80[16] = {
 PAD(8);
 
 /* Texture: 0xCCA8 (CI4 — trailing 0x28 bytes split as palette frames) */
+/* @tex fmt=CI4 dim=32x32 */
 u8 dSamusModel_Tex_0xCCA8[520] = {
 	#include <SamusModel/Tex_0xCCA8.tex.inc.c>
 };

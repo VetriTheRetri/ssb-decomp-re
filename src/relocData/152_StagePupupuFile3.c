@@ -117,6 +117,7 @@ u16 dStagePupupuFile3_LUT_0x0008[16] = {
 PAD(8);
 
 /* @ 0x0030 */
+/* @tex fmt=CI4 dim=64x32 lut=dStagePupupuFile3_LUT_0x0008 */
 u8 dStagePupupuFile3_Tex_0x0030[1032] = {
 	#include <StagePupupuFile3/Tex_0x0030.tex.inc.c>
 };
@@ -128,6 +129,7 @@ u16 dStagePupupuFile3_LUT_0x0438[16] = {
 PAD(8);
 
 /* @ 0x0460 */
+/* @tex fmt=CI4 dim=64x32 lut=dStagePupupuFile3_LUT_0x0438 */
 u8 dStagePupupuFile3_Tex_0x0460[1032] = {
 	#include <StagePupupuFile3/Tex_0x0460.tex.inc.c>
 };
@@ -139,6 +141,7 @@ u16 dStagePupupuFile3_LUT_0x0868[16] = {
 PAD(8);
 
 /* @ 0x0890 */
+/* @tex fmt=CI4 dim=16x32 lut=dStagePupupuFile3_LUT_0x0868 */
 u8 dStagePupupuFile3_Tex_0x0890[264] = {
 	#include <StagePupupuFile3/Tex_0x0890.tex.inc.c>
 };

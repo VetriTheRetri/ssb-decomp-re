@@ -2,6 +2,13 @@
 
 #include "relocdata_types.h"
 
+extern u16 dStageYamabukiFile2_Lut_0x1898_palette[];
+extern u8 dStageYamabukiFile2_Tex_0x18C0[];
+#if defined(REGION_JP)
+extern u16 dStageYamabukiFile2_Lut_0x1038_jp_palette[];
+extern u8 dStageYamabukiFile2_Tex_0x1060_jp[];
+#endif
+
 u32 dStageYamabukiFile4[] = {
 	0xFFFE000B,
 	0x00000000,
@@ -233,9 +240,9 @@ u32 dStageYamabukiFile4[] = {
 	0x00094250,
 	0xFD100000,
 #if defined(REGION_JP)
-	0x00F1040E,
+	(u32)dStageYamabukiFile2_Lut_0x1038_jp_palette,
 #else
-	0x00F10626,
+	(u32)dStageYamabukiFile2_Lut_0x1898_palette,
 #endif
 	0xE6000000,
 	0x00000000,
@@ -249,9 +256,9 @@ u32 dStageYamabukiFile4[] = {
 	0x0007C07C,
 	0xFD500000,
 #if defined(REGION_JP)
-	0x011D0418,
+	(u32)dStageYamabukiFile2_Tex_0x1060_jp,
 #else
-	0x011D0630,
+	(u32)dStageYamabukiFile2_Tex_0x18C0,
 #endif
 	0xE6000000,
 	0x00000000,
@@ -297,9 +304,9 @@ u32 dStageYamabukiFile4[] = {
 	0x00094250,
 	0xFD100000,
 #if defined(REGION_JP)
-	0x0129040E,
+	(u32)dStageYamabukiFile2_Lut_0x1038_jp_palette,
 #else
-	0x01290626,
+	(u32)dStageYamabukiFile2_Lut_0x1898_palette,
 #endif
 	0xE6000000,
 	0x00000000,
@@ -313,9 +320,9 @@ u32 dStageYamabukiFile4[] = {
 	0x0007C07C,
 	0xFD500000,
 #if defined(REGION_JP)
-	0x01510418,
+	(u32)dStageYamabukiFile2_Tex_0x1060_jp,
 #else
-	0x01510630,
+	(u32)dStageYamabukiFile2_Tex_0x18C0,
 #endif
 	0xE6000000,
 	0x00000000,
@@ -357,9 +364,9 @@ u32 dStageYamabukiFile4[] = {
 	0x00094250,
 	0xFD100000,
 #if defined(REGION_JP)
-	0x015D040E,
+	(u32)dStageYamabukiFile2_Lut_0x1038_jp_palette,
 #else
-	0x015D0626,
+	(u32)dStageYamabukiFile2_Lut_0x1898_palette,
 #endif
 	0xE6000000,
 	0x00000000,
@@ -373,9 +380,9 @@ u32 dStageYamabukiFile4[] = {
 	0x0007C07C,
 	0xFD500000,
 #if defined(REGION_JP)
-	0xFFFF0418,
+	(u32)dStageYamabukiFile2_Tex_0x1060_jp,
 #else
-	0xFFFF0630,
+	(u32)dStageYamabukiFile2_Tex_0x18C0,
 #endif
 	0xE6000000,
 	0x00000000,
@@ -579,129 +586,12 @@ u32 dStageYamabukiFile4[] = {
 	0x02340214,
 	0x00000004,
 	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x00000001,
-	0x023F0218,
-	0x44804BC1,
-	0x43C18807,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x00000001,
-	0x024A021C,
-	0x44804BC1,
-	0x43C30000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x00000001,
-	0x02550220,
-	0x44804BC1,
-	0x43C18807,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x00000001,
-	0x026D0224,
-	0x444A8000,
-	0x43D6EB89,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x3F800000,
-	0x3F800000,
-	0x3F800000,
-	0x00000012,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x026E0271,
-	0x026F0277,
-	0x0270027D,
-	0x02890283,
-	0x10200000,
-	0x00000000,
-	0x0A20000A,
-	0x43A50000,
-	0x3F97F144,
-	0x00000000,
-	0x10100000,
-	0x43C30000,
-	0x0A10000A,
-	0xC1F00000,
-	0xBFC1619D,
-	0x00000000,
-	0x10200000,
-	0x00000000,
-	0x0A20000A,
-	0xC3A50000,
-	0xBF97F144,
-	0x00000000,
-	0x1E008004,
-	0x1E000006,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x028A028D,
-	0x028B0293,
-	0x028C0299,
-	0xFFFF029F,
-	0x0A200000,
-	0x43A50000,
-	0xBF97F144,
-	0x1020000A,
-	0x00000000,
-	0x00000000,
-	0x0A100000,
-	0xC1F00000,
-	0x3FC1619D,
-	0x1010000A,
-	0x43C30000,
-	0x00000000,
-	0x0A200000,
-	0xC3A50000,
-	0x3F97F144,
-	0x1020000A,
-	0x00000000,
-	0x00000000,
-	0x04000007,
-	0x1E008003,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+};
+
+/* Runtime-referenced sub-block @ 0x8A0 (GRYamabukiMap.ItemHead points here). */
+/* @raw-data — tail of the File4 raw blob (no structure identified);
+ * runtime-referenced at its head by GRYamabukiMap.ItemHead. */
+u32 dStageYamabukiFile4_0x8A0[124] = {
+	#include <StageYamabukiFile4/data_0x8A0.data.inc.c>
 };
 

@@ -2,6 +2,7 @@
 /* File size: 2000 bytes (0x7D0) */
 
 #include "relocdata_types.h"
+extern u32 dCaptainMainMotion_EggLay_0x006C[];
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
 
@@ -20,6 +21,8 @@ extern u8 dCaptainShieldPose_shield_anim_joint_4[];
 extern u8 dCaptainShieldPose_shield_anim_joint_5[];
 extern u8 dCaptainShieldPose_shield_anim_joint_6[];
 extern u8 dCaptainShieldPose_shield_anim_joint_7[];
+extern AObjEvent32 **dCaptainModel_gap_0x4090[];
+extern AObjEvent32 **dCaptainModel_gap_0x7DB0[];
 #include <ft/fttypes.h>
 
 extern DObjDesc dCaptainModel_JointTree[];
@@ -85,7 +88,7 @@ extern u8 dCaptainSpecial3_gap_0x0708_sub_0x18[];
 /* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dCaptainMain_pre+0x0) */
 u32 dCaptainMain_file_handles[3] = {
 
-	0x0001001B, /* extern -> 0x006C */
+	(u32)&dCaptainMainMotion_EggLay_0x006C, /* extern */
 	(u32)dCaptainSpecial3_DL_0x0760, /* extern -> 0x0760 */
 	(u32)&dCaptainSpecial2_FalconKickDObjDesc, /* extern -> 0x0B08 */
 };
@@ -145,8 +148,8 @@ FTTexturePart dCaptainMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 /* @ 0x01B8, 32 bytes: FTAttributes.commonparts_container target (was dCaptainMain_pre+0x1B8) */
 FTCommonPartContainer dCaptainMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dCaptainModel_JointTree, (MObjSub***)&dCaptainModel_gap_0x0000, (AObjEvent32***)((u8*)dCaptainModel_JointTree + 0x4B0), 0x00 },
-		{ (DObjDesc*)&dCaptainModel_JointTree_0x7900, (MObjSub***)&dCaptainModel_gap_0x40B0_sub_0x7E0, (AObjEvent32***)((u8*)dCaptainModel_JointTree_0x7900 + 0x4B0), 0x00 },
+		{ (DObjDesc*)&dCaptainModel_JointTree, (MObjSub***)&dCaptainModel_gap_0x0000, (AObjEvent32***)dCaptainModel_gap_0x4090, 0x00 },
+		{ (DObjDesc*)&dCaptainModel_JointTree_0x7900, (MObjSub***)&dCaptainModel_gap_0x40B0_sub_0x7E0, (AObjEvent32***)dCaptainModel_gap_0x7DB0, 0x00 },
 	},
 };
 

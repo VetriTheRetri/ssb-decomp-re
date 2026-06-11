@@ -234,6 +234,7 @@ u16 dStageHyruleFile2_Lut_0x2788_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x27B0 (136 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dStageHyruleFile2_Lut_0x2788_palette */
 u8 dStageHyruleFile2_Tex_0x27B0[128] = {
 	#include <StageHyruleFile2/Tex_0x27B0.tex.inc.c>
 };

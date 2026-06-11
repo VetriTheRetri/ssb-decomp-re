@@ -37,8 +37,8 @@ extern u32 dMNTitle_SlashAnimJoint_AnimJoint_0x25F24[];
 
 extern u32 dMNTitle_SlashMat_AnimJoint_0x25F74[];
 extern u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[];
-extern u32* dMNTitle_SlashMat_AnimJoint_0x26010[];
-extern u32 * dMNTitle_SlashMat_AnimJoint_0x26014[];
+extern AObjEvent32 *dMNTitle_SlashMat_AnimJoint_0x26010[];
+extern AObjEvent32 *dMNTitle_SlashMat_AnimJoint_0x26014[];
 
 extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x2902C[];
 extern u32 dMNTitle_FireAnimJoint_AnimJoint_0x29038[];
@@ -2397,12 +2397,12 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dMNTitle_SlashMat_AnimJoint[5] = {
+AObjEvent32 **dMNTitle_SlashMat_AnimJoint[5] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dMNTitle_SlashMat_AnimJoint_0x26010,
+	dMNTitle_SlashMat_AnimJoint_0x26010,
 	NULL,
-	(AObjEvent32 *)dMNTitle_SlashMat_AnimJoint_0x26014,
+	dMNTitle_SlashMat_AnimJoint_0x26014,
 };
 
 u32 dMNTitle_SlashMat_AnimJoint_0x25F74[] = {
@@ -2450,10 +2450,10 @@ u32 dMNTitle_SlashMat_AnimJoint_0x25FB4[] = {
 	aobjEvent32End(),
 };
 
-u32 * dMNTitle_SlashMat_AnimJoint_0x26010[] = { dMNTitle_SlashMat_AnimJoint_0x25F74 };
+AObjEvent32 *dMNTitle_SlashMat_AnimJoint_0x26010[] = { (AObjEvent32 *)dMNTitle_SlashMat_AnimJoint_0x25F74 };
 
-u32 * dMNTitle_SlashMat_AnimJoint_0x26014[] = {
-	(u32 *)(dMNTitle_SlashMat_AnimJoint_0x25FB4),
+AObjEvent32 *dMNTitle_SlashMat_AnimJoint_0x26014[] = {
+	(AObjEvent32 *)dMNTitle_SlashMat_AnimJoint_0x25FB4,
 	NULL,
 };
 

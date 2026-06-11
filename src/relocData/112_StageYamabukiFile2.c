@@ -360,10 +360,27 @@ u16 dStageYamabukiFile2_Lut_0x0438_palette[16] = {
 
 PAD(8);
 
-/* Texture data @ 0x0460 (JP=1032 bytes) — JP position (pair02, after pair17) */
-/* @tex fmt=CI4 dim=64x32 lut=dStageYamabukiFile2_Lut_0x0438_palette */
-u8 dStageYamabukiFile2_Tex_0x0460[1032] = {
+/* Texture data @ 0x0460 (JP, 72 bytes) — JP position (pair02, after pair17).
+ * StageYamabukiFile4's overlay DL references the palette + texture that
+ * follow, so they are split out as their own blocks. */
+/* @tex fmt=CI4 dim=16x8 lut=dStageYamabukiFile2_Lut_0x0438_palette */
+u8 dStageYamabukiFile2_Tex_0x0460[72] = {
 	#include <StageYamabukiFile2/Tex_0x0460.tex.inc.c>
+};
+
+/* Palette @ JP 0x1038 (20 colors RGBA5551) — File4 DL gsDPLoadTLUT target
+ * (US equivalent: Lut_0x1898_palette; _jp suffix avoids the US-offset
+ * Lut_0x1038_palette block's name). */
+u16 dStageYamabukiFile2_Lut_0x1038_jp_palette[20] = {
+	#include <StageYamabukiFile2/Lut_0x1038_jp.palette.inc.c>
+};
+
+/* Texture @ JP 0x1060 (920 bytes) — File4 DL gsDPSetTextureImage target
+ * (US equivalent: Tex_0x18C0; _jp suffix avoids the US-offset
+ * Tex_0x1060 block's name). */
+/* @tex fmt=CI4 dim=32x32 lut=dStageYamabukiFile2_Lut_0x1038_jp_palette */
+u8 dStageYamabukiFile2_Tex_0x1060_jp[920] = {
+	#include <StageYamabukiFile2/Tex_0x1060_jp.tex.inc.c>
 };
 #endif
 

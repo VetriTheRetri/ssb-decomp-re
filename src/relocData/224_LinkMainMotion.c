@@ -2,6 +2,9 @@
 /* File size: 7920 bytes (0x1EF0) */
 
 #include "relocdata_types.h"
+extern ftMotionCommand dFTCommonMoveset_DamageBumpHit[];
+extern ftMotionCommand dFTCommonMoveset_DamageRumble[];
+extern ftMotionCommand dFTCommonMoveset_DamageFlameBurst[];
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
 #include <gm/gmdef.h>
@@ -1329,7 +1332,12 @@ ftMotionCommand dLinkMainMotion_ThrowB[] = {
 	ftMotionCommandSetModelPartID(19, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
+#if defined(REGION_JP)
+	/* JP shares the damage sub-scripts via FTCommonMoveset */
+	ftMotionCommandSubroutine(dFTCommonMoveset_DamageBumpHit),
+#else
 	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x24)),
+#endif
 #else
 #endif
 };
@@ -1341,7 +1349,11 @@ ftMotionCommand dLinkMainMotion_Damaged_0x10F0[] = {
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(dFTCommonMoveset_DamageRumble),
+#else
 	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x3C)),
+#endif
 #else
 #endif
 };
@@ -1353,7 +1365,11 @@ ftMotionCommand dLinkMainMotion_Damaged_0x10FC[] = {
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(dFTCommonMoveset_DamageFlameBurst),
+#else
 	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x44)),
+#endif
 #else
 #endif
 };

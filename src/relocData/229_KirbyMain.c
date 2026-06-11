@@ -19,6 +19,7 @@ extern u8 dKirbyShieldPose_shield_anim_joint_4[];
 extern u8 dKirbyShieldPose_shield_anim_joint_5[];
 extern u8 dKirbyShieldPose_shield_anim_joint_6[];
 extern u8 dKirbyShieldPose_shield_anim_joint_7[];
+extern AObjEvent32 **dKirbyModel_gap_0x1920[];
 #include <ft/fttypes.h>
 
 extern Gfx dFoxUnknown_DL[];
@@ -274,7 +275,7 @@ FTTexturePart dKirbyMain_textureparts_container = { 0x06, { 0x00, 0x00 } };
 /* @ 0x045C, 32 bytes: FTAttributes.commonparts_container target (was dKirbyMain_pre+0x45C) */
 FTCommonPartContainer dKirbyMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dKirbyModel_JointTree, (MObjSub***)&dKirbyModel_JointVerts_Vtx, (AObjEvent32***)((u8*)dKirbyModel_JointTree + 0x4D8), 0x00 },
+		{ (DObjDesc*)&dKirbyModel_JointTree, (MObjSub***)&dKirbyModel_JointVerts_Vtx, (AObjEvent32***)dKirbyModel_gap_0x1920, 0x00 },
 		{ (DObjDesc*)&dKirbyModel_JointTree_0x2CD0, (MObjSub***)&dKirbyModel_gap_0x1970_sub_0x2C0, (AObjEvent32***)dKirbyModel_gap_0x31A0, 0x00 },
 	},
 };

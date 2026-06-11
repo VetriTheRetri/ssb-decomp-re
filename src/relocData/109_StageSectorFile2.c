@@ -174,6 +174,7 @@ u16 dStageSectorFile2_Lut_0x0998_palette[16] = {
 PAD(8);
 
 /* Texture data @ 0x09C0 (2056 bytes) */
+/* @tex fmt=CI4 dim=64x64 lut=dStageSectorFile2_Lut_0x0998_palette */
 u8 dStageSectorFile2_Tex_0x09C0[2048] = {
 	#include <StageSectorFile2/Tex_0x09C0.tex.inc.c>
 };
@@ -4151,6 +4152,7 @@ Vtx dStageSectorFile2_Layer1Anim_Vtx_0x2980[3] = {
 };
 
 /* @ 0x29B0 within Layer1Anim_AnimJoint (blob+0xCE8) */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageSectorFile2_Layer1Anim_DL_0x29B0[16] = {
 	#include <StageSectorFile2/Layer1Anim_DL_0x29B0.dl.inc.c>
 };
@@ -4166,6 +4168,7 @@ Gfx dStageSectorFile2_Layer1Anim_DL_0x2B68[2] = {
 };
 
 /* @ 0x2B78 within Layer1Anim_AnimJoint (blob+0xEB0) */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageSectorFile2_Layer1Anim_DL_0x2B78[16] = {
 	#include <StageSectorFile2/Layer1Anim_DL_0x2B78.dl.inc.c>
 };

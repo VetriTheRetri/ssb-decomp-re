@@ -4216,7 +4216,8 @@ u8 dLinkModel_Tex_0x100A8[4096] = {
 	#include <LinkModel/Tex_0x100A8.tex.inc.c>
 };
 
-PAD(4); /* zero tail after the 64x64 IA8 texture */
+/* Runtime-patched file-handle slot (LinkMain.file_handles targets it). */
+void *dLinkModel_data_0x110A8[1] = { NULL };
 
 MObjSub **dLinkModel_data_0x110AC[1] = { dLinkModel_Tex_0x114E8 };
 
@@ -4545,12 +4546,16 @@ DObjDesc dLinkModel_DObjDesc_0x11908[3] = {
 	{ 18, (void *)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-PAD(8); /* zero pad before the AObjEvent32 script pointer at 0x11994 */
+PAD(4);
+
+/* Runtime-patched file-handle slot (LinkMain.file_handles targets it). */
+void *dLinkModel_data_0x11990[1] = { NULL };
 
 AObjEvent32 *dLinkModel_data_0x11994[1] = { (AObjEvent32 *)dLinkModel_Tex_0x11998 };
 
-/* AObjEvent32 material-animation script @ 0x11998 (172 bytes, 42 cmds + 4-byte zero pad).  Walks cleanly to a single `aobjEvent32End()` at +0xA4; trailing word is alignment slack. */
-u32 dLinkModel_Tex_0x11998[43] = {
+/* AObjEvent32 material-animation script @ 0x11998 (168 bytes, 42 cmds).
+ * Walks cleanly to a single `aobjEvent32End()` at +0xA4. */
+u32 dLinkModel_Tex_0x11998[42] = {
 	aobjEvent32SetVal(0x2, 0),
 	    0x00000000,  /* 0f */
 	aobjEvent32SetValAfter(0x170, 0),
@@ -4593,8 +4598,10 @@ u32 dLinkModel_Tex_0x11998[43] = {
 	aobjEvent32SetValBlock(0x2, 60),
 	    0xC21DEADA,  /* -39.47935f */
 	aobjEvent32End(),
-	0x00000000,                              /* trailing pad */
 };
+
+/* Runtime-patched file-handle slot (LinkMain.file_handles targets it). */
+void *dLinkModel_data_0x11A40[1] = { NULL };
 
 u32 dLinkModel_data_0x11A44[1] = { (u32)dLinkModel_Tex_0x11C1C };
 

@@ -134,6 +134,39 @@ def compressFile(inputBinaryPath, outputVpk0Path, version=None):
 		with open(outputVpk0Path, 'ab') as outputFile:
 			outputFile.write(targetVpk0Excess)
 
+	# Build the trailing extern fid table from the .extfids sidecar that
+	# fixRelocChain.py derived from the .o's relocation records, instead of
+	# trusting the bytes replayed from the excess file. The runtime reads
+	# one u16 per extern-chain slot at compressedSize*4; the excess file
+	# then only contributes non-semantic compressor tail noise + padding.
+	# A mismatch against the replayed bytes means a source ref targets the
+	# wrong FILE (offset-only chain words can't catch that) — hard error.
+	sidecarPath = inputBinaryPath + '.extfids'
+	if os.path.exists(sidecarPath):
+		with open(sidecarPath, 'rb') as f:
+			table = f.read()
+		if table:
+			fileId = int(targetFileNameNoExt)
+			with open(relocCsvPath(version or "us"), 'r') as f:
+				rows = f.read().split('\n')[1:]
+			compWords = eval(rows[fileId].split(', ')[3])
+			tableOff = compWords * 4
+			with open(outputVpk0Path, 'r+b') as outputFile:
+				outputFile.seek(0, 2)
+				if outputFile.tell() < tableOff + len(table):
+					sys.stderr.write(f"Error: {outputVpk0Path}: container too small for "
+									 f"extern fid table at 0x{tableOff:X}\n")
+					sys.exit(1)
+				outputFile.seek(tableOff)
+				replayed = outputFile.read(len(table))
+				if replayed != table:
+					sys.stderr.write(f"Error: {outputVpk0Path}: derived extern fid table "
+									 f"differs from the baserom's (a source ref targets the "
+									 f"wrong file). derived={table.hex()} baserom={replayed.hex()}\n")
+					sys.exit(1)
+				outputFile.seek(tableOff)
+				outputFile.write(table)
+
 def makeBin(overrideDir=None, version="us"):
 
 	extractedFilesPath = assetsDir(version)

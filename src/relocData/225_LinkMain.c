@@ -7,6 +7,7 @@
 
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 extern DObjDesc dLinkModel_DObjDesc_0x11908[];
+extern void *dLinkModel_data_0x11990[];
 extern u32 dLinkModel_FTEmblem[];
 extern u32 dLinkModel_Stock[];
 extern DObjDesc dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5E0[];
@@ -21,6 +22,9 @@ extern u8 dLinkShieldPose_shield_anim_joint_6[];
 extern u8 dLinkShieldPose_shield_anim_joint_7[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x550[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x560[];
+extern void *dLinkModel_data_0x110A8[];
+extern void *dLinkModel_data_0x11A40[];
+extern AObjEvent32 *dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x698[];
 #include <ft/fttypes.h>
 
 extern Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[];
@@ -95,9 +99,9 @@ u32 dLinkMain_file_handles[48] = {
 	(u32)&dLinkSpecial2_EntryWaveDObjDesc, /* extern -> 0x03F8 */
 	(u32)&dLinkSpecial1_Boomerang_WeaponAttributes, /* extern -> 0x0000 */
 	(u32)dLinkModel_DObjDesc_0x11908, /* extern -> 0x11908 */
-	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x2D70), /* extern -> 0x110A8 */
-	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x3658), /* extern -> 0x11990 */
-	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x3708), /* extern -> 0x11A40 */
+	(u32)dLinkModel_data_0x110A8, /* extern -> 0x110A8 */
+	(u32)dLinkModel_data_0x11990, /* extern -> 0x11990 */
+	(u32)dLinkModel_data_0x11A40, /* extern -> 0x11A40 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -113,7 +117,7 @@ u32 dLinkMain_file_handles[48] = {
 	0x07800000,
 	(u32)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x5E0, /* extern -> 0x18D8 */
 	0x00000000,
-	(u32)((u8*)dLinkSpecial2_SpinAttackDObjDesc + 0x7D0), /* extern -> 0x1990 */
+	(u32)dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint_data_at_0x698, /* extern -> 0x1990 */
 	0x00000000,
 	0xB8000000,
 	0x00000000,

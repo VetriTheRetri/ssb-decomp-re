@@ -266,6 +266,12 @@ extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x50[];
 extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x64[];
 extern u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x78[];
 extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x90[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x94[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x98[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x9C[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA0[];
+extern AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA4[];
 extern u32 dMVCommon_RoomBooksAnimJoint_AnimJoint_data[];
 extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x04D4[];
 extern Gfx dMVCommon_RoomBooksAnimJoint_AnimJoint_data_post_DL_0x05B4[];
@@ -1584,9 +1590,9 @@ AObjEvent32 **dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[51] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[0],
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[1],
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[2],
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C,
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x90,
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x94,
 	NULL,
 	NULL,
 	NULL,
@@ -1606,11 +1612,11 @@ AObjEvent32 **dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[51] = {
 	NULL,
 	NULL,
 	NULL,
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[3],
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[4],
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x98,
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x9C,
 	NULL,
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[5],
-	(AObjEvent32 **)&dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[6],
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA0,
+	(AObjEvent32 **)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA4,
 	NULL,
 	NULL,
 	NULL,
@@ -1675,14 +1681,35 @@ u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x78[5] = {
 };
 
 /* AObjEvent32 *[8] pointer table @ _data+0x8C, NULL-terminated. */
-AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[8] = {
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x8C[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x90[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x14,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x94[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x28,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x98[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x3C,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x9C[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x50,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA0[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x64,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA4[1] = {
 	(AObjEvent32 *)dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0x78,
+};
+
+AObjEvent32 *dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint_data_at_0xA8[1] = {
 	NULL,
 };
 

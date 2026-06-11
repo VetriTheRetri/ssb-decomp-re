@@ -25,6 +25,7 @@ u16 dFoxSpecial2_Lut3_0x0008[8] = {
 };
 
 /* Raw data from file offset 0x0018 to 0x0098 (128 bytes) */
+/* @tex fmt=CI4 dim=16x16 lut=dFoxSpecial2_Lut3_0x0008 */
 u8 dFoxSpecial2_Tex_0x0018[128] = {
 	#include <FoxSpecial2/Tex_0x0018.tex.inc.c>
 };

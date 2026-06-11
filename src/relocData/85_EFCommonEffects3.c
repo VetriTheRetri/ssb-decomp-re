@@ -113,10 +113,10 @@ extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0[];
 extern u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[];
-extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
-extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
-extern u32* dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
-extern u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
+extern AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[];
+extern AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[];
+extern AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[];
+extern AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[];
 
 extern AObjEvent32 **dEFCommonEffects3_MBallRays_MatAnimJoint[];
 
@@ -785,6 +785,7 @@ Vtx dEFCommonEffects3_MBallRays_Vtx_0x1858[3] = {
 /* Setup prologue (file 0x1888 = trail_post+0xF70, 128 B = 16 cmds) that
  * runs by fall-through into the main DL at file 0x1908. No internal
  * gsSPEndDisplayList — execution flows directly into DL_0x1908. */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dEFCommonEffects3_MBallRays_DL_0x1888[16] = {
 	#include <EFCommonEffects3/MBallRays_DL_0x1888.dl.inc.c>
 };
@@ -1266,13 +1267,13 @@ PAD(4);
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[6] = {
+AObjEvent32 **dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[6] = {
 	NULL,
 	NULL,
-	(AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518,
-	(AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C,
-	(AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520,
-	(AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524,
+	dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518,
+	dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C,
+	dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520,
+	dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524,
 };
 
 u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8[] = {
@@ -1315,13 +1316,13 @@ u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC[] = {
 	aobjEvent32End(),
 };
 
-u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8 };
+AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3518[] = { (AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34A8 };
 
-u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4 };
+AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x351C[] = { (AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34C4 };
 
-u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = { dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0 };
+AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3520[] = { (AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34E0 };
 
-u32 * dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
-	(u32 *)(dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC),
+AObjEvent32 *dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x3524[] = {
+	(AObjEvent32 *)dEFCommonEffects3_ItemGetSwirl_MatAnimJoint_0x34FC,
 	NULL,
 };

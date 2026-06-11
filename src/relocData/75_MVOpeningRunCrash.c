@@ -259,19 +259,23 @@ u16 dMVOpeningRunCrash_gap_0x0000_sub_0x500[16] = {
 PAD(8);
 
 /* gap sub-block @ 0x0528 (was gap+0x528, 9600 bytes) */
+/* @tex fmt=CI8 dim=80x120 */
 u8 dMVOpeningRunCrash_Tex_0x0528[9600] = {
 	#include <MVOpeningRunCrash/Tex_0x0528.tex.inc.c>
 };
 
-/* void *[30] @ 0x2AA8 — sparse pointer table (120 bytes). Originally
- * mis-typed as MObjSub; 29 chain pointers from +0x4 to +0x74 (every
- * 4-byte slot) baked as raw chain-hex across struct fields. */
-void *dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub[30] = {
+/* MObjSub-set dispatch table @ 0x2AA8 (5 entries; was the head of a
+ * fused void *[30] mis-typed as MObjSub). */
+MObjSub **dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub[5] = {
 	NULL,
 	dMVOpeningRunCrash_gap_0x2B20_sub_0x320,
 	dMVOpeningRunCrash_gap_0x2B20_sub_0x328,
 	dMVOpeningRunCrash_gap_0x2B20_sub_0x330,
 	dMVOpeningRunCrash_gap_0x2B20_sub_0x338,
+};
+
+/* Palette-frame pointer array @ 0x2ABC (25 u16[16] frames, reverse order). */
+u16 *dMVOpeningRunCrash_palettes_0x2ABC[25] = {
 	dMVOpeningRunCrash_gap_0x0000_sub_0x500,
 	dMVOpeningRunCrash_gap_0x0000_sub_0x4D8,
 	dMVOpeningRunCrash_gap_0x0000_sub_0x4B0,
@@ -407,7 +411,7 @@ MObjSub dMVOpeningRunCrash_gap_0x2B20_sub_0x140[1] = {
 		0.0f, 0.0f,
 		1.0f, 1.0f,
 		0.0f, 1.0f,
-		(void**)((u8*)dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub + 0x14),
+		(void**)dMVOpeningRunCrash_palettes_0x2ABC,
 		0x0004,
 		G_IM_FMT_CI, G_IM_SIZ_4b,
 		0x00A0,
@@ -600,12 +604,12 @@ DObjDesc dMVOpeningRunCrash_DObjDesc_0x35F8[] = {
 /* Script-table split: leading chain-pointer table at the
  * start of the AnimJoint, followed by per-joint AObjEvent32
  * scripts. Forward decls so the table can reference them. */
-AObjEvent32 *dMVOpeningRunCrash_MatAnimJoint_0x3700[5] = {
+AObjEvent32 **dMVOpeningRunCrash_MatAnimJoint_0x3700[5] = {
 	NULL,
-	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x3A94,
-	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x3A98,
-	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x3A9C,
-	(AObjEvent32 *)dMVOpeningRunCrash_MatAnimJoint_0x3AA0,
+	dMVOpeningRunCrash_MatAnimJoint_0x3A94,
+	dMVOpeningRunCrash_MatAnimJoint_0x3A98,
+	dMVOpeningRunCrash_MatAnimJoint_0x3A9C,
+	dMVOpeningRunCrash_MatAnimJoint_0x3AA0,
 };
 
 u32 dMVOpeningRunCrash_MatAnimJoint_0x3714[] = {

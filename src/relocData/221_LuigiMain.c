@@ -20,6 +20,7 @@ extern u8 dMarioShieldPose_shield_anim_joint_6[];
 extern u8 dMarioShieldPose_shield_anim_joint_7[];
 extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x810[];
 extern MObjSub *dLuigiModel_Joint_0x00A0_post_sub_0x844[];
+extern AObjEvent32 **dLuigiModel_JointTree_post[];
 #include <ft/fttypes.h>
 
 extern u32 dLuigiMainMotion_EggLay_0x0024[];
@@ -127,7 +128,7 @@ FTTexturePart dLuigiMain_textureparts_container = { 0x0C, { 0x00, 0x00 } };
 /* @ 0x0164, 32 bytes: FTAttributes.commonparts_container target (was dLuigiMain_pre+0x164) */
 FTCommonPartContainer dLuigiMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dLuigiModel_JointTree, (MObjSub***)&dLuigiModel_gap_0x0000, (AObjEvent32***)((u8*)dLuigiModel_JointTree + 0x480), 0x00 },
+		{ (DObjDesc*)&dLuigiModel_JointTree, (MObjSub***)&dLuigiModel_gap_0x0000, (AObjEvent32***)dLuigiModel_JointTree_post, 0x00 },
 		{ (DObjDesc*)&dLuigiModel_JointTree_0x49E8, (MObjSub***)&dLuigiModel_gap_0x28E0_sub_0x3A0, (AObjEvent32***)dLuigiModel_JointTree_0x49E8_post, 0x00 },
 	},
 };

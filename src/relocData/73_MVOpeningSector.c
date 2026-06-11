@@ -2237,6 +2237,7 @@ Vtx dMVOpeningSector_Vtx_0x5F50_Vtx[3] = {
 /* 16 Gfx commands of geometry-mode + othermode setup. The symbol is
  * also used as a base for `+0xN` arithmetic into the larger
  * 30880-byte data region that follows it. */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dMVOpeningSector_gap_0x5F80[16] = {
 	#include <MVOpeningSector/gap_0x5F80.dl.inc.c>
 };
@@ -2247,6 +2248,7 @@ Gfx dMVOpeningSector_DL_0x6000[3600] = {
 };
 
 /* Gfx DL continuation @ 0x7100 (was u8[144]). */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dMVOpeningSector_gap_0x5F80_sub_0x7100[18] = {
 	#include <MVOpeningSector/gap_0x5F80_sub_0x7100.dl.inc.c>
 };

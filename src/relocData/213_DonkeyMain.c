@@ -18,6 +18,8 @@ extern u8 dDonkeyShieldPose_shield_anim_joint_4[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_5[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_6[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_7[];
+extern AObjEvent32 **dDonkeyModel_gap_0x3E50[];
+extern AObjEvent32 **dDonkeyModel_gap_0x7370[];
 #include <ft/fttypes.h>
 
 extern u32 dDonkeyMainMotion_EggLay_0x0000[];
@@ -145,8 +147,8 @@ FTModelPartDesc *dDonkeyMain_modelparts_container[26] = {
 /* @ 0x01D8, 32 bytes: FTAttributes.commonparts_container target (was dDonkeyMain_pre+0x1D8) */
 FTCommonPartContainer dDonkeyMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dDonkeyModel_JointTree, (MObjSub***)&dDonkeyModel_gap_0x0000, (AObjEvent32***)((u8*)dDonkeyModel_JointTree + 0x4A8), 0x00 },
-		{ (DObjDesc*)&dDonkeyModel_JointTree_0x6EC0, (MObjSub***)&dDonkeyModel_gap_0x3E78_sub_0x628, (AObjEvent32***)((u8*)dDonkeyModel_JointTree_0x6EC0 + 0x4B0), 0x00 },
+		{ (DObjDesc*)&dDonkeyModel_JointTree, (MObjSub***)&dDonkeyModel_gap_0x0000, (AObjEvent32***)dDonkeyModel_gap_0x3E50, 0x00 },
+		{ (DObjDesc*)&dDonkeyModel_JointTree_0x6EC0, (MObjSub***)&dDonkeyModel_gap_0x3E78_sub_0x628, (AObjEvent32***)dDonkeyModel_gap_0x7370, 0x00 },
 	},
 };
 

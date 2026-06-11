@@ -102,6 +102,7 @@ Gfx dIFCommonPlayer_Arrows_EmptyDL[1] = {
 };
 
 /* Raw data from file offset 0x02C8 to 0x03D0 (264 bytes) */
+/* @tex fmt=IA8 dim=16x16 */
 u8 dIFCommonPlayer_MagnifyFrame_Image[264] = {
 	#include <IFCommonPlayer/MagnifyFrame_Image.tex.inc.c>
 };

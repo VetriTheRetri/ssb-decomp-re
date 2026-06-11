@@ -860,8 +860,10 @@ DObjDesc dKirbyModel_JointTree[] = {
 /* Per-joint dispatch table @ 0x1918 — 22 slots holding chain-encoded
  * `AObjEvent32 **` pointers. Originally rolled into JointTree as 29th
  * and 30th DObjDesc entries. */
-AObjEvent32 **dKirbyModel_gap_0x1918[22] = {
-	NULL, NULL, NULL, NULL,
+PAD(8);
+
+AObjEvent32 **dKirbyModel_gap_0x1920[20] = {
+	NULL, NULL,
 	(AObjEvent32 **)dKirbyModel_gap_0x1970_sub_0x2A0,    /* +0x10 */
 	NULL, NULL, NULL,
 	(AObjEvent32 **)dKirbyModel_gap_0x1970_sub_0x2A8,    /* +0x20 */
@@ -3640,6 +3642,7 @@ Vtx dKirbyModel_Vtx_0x9AD8[30] = {
 };
 
 /* Gfx DL: gap_0x31CC_sub_0x6AEC @ 0x9CB8 (66 cmds) */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dKirbyModel_gap_0x31CC_sub_0x6AEC[66] = {
 	#include <KirbyModel/gap_0x31CC_sub_0x6AEC.dl.inc.c>
 };

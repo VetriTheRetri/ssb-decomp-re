@@ -2,6 +2,7 @@
 /* File size: 2000 bytes (0x7D0) */
 
 #include "relocdata_types.h"
+extern u32 dYoshiMainMotion_EggLay_0x0034[];
 
 /* Step 3 forward decls auto-added by migrateStructShadows.py */
 
@@ -20,6 +21,8 @@ extern u8 dYoshiShieldPose_shield_anim_joint_4[];
 extern u8 dYoshiShieldPose_shield_anim_joint_5[];
 extern u8 dYoshiShieldPose_shield_anim_joint_6[];
 extern u8 dYoshiShieldPose_shield_anim_joint_7[];
+extern AObjEvent32 **dYoshiModel_JointTree_post[];
+extern AObjEvent32 **dYoshiModel_JointTree_0x6948_post[];
 #include <ft/fttypes.h>
 
 extern u8 dITCommonObject_StarRod_Weapon_data[];
@@ -62,7 +65,7 @@ extern DObjDesc dYoshiSpecial3_EggLay[];
 /* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dYoshiMain_pre+0x0) */
 u32 dYoshiMain_file_handles[29] = {
 
-	0x0001000D, /* extern -> 0x0034 */
+	(u32)&dYoshiMainMotion_EggLay_0x0034, /* extern */
 	(u32)dYoshiSpecial2_gap_0x0530, /* extern -> 0x0530 */
 	(u32)&dYoshiSpecial3_EggLay, /* extern -> 0x0960 */
 	(u32)dYoshiModel_gap_0xA860, /* extern -> 0xA860 */
@@ -150,8 +153,8 @@ FTTexturePartContainer dYoshiMain_textureparts_container = {
 /* @ 0x019C, 32 bytes: FTAttributes.commonparts_container target (was dYoshiMain_pre+0x19C) */
 FTCommonPartContainer dYoshiMain_commonparts_container = {
 	{
-		{ (DObjDesc*)&dYoshiModel_JointTree, (MObjSub***)&dYoshiModel_gap_0x0000, (AObjEvent32***)((u8*)dYoshiModel_JointTree + 0x500), 0x01 },
-		{ (DObjDesc*)&dYoshiModel_JointTree_0x6948, (MObjSub***)&dYoshiModel_gap_0x38F4_sub_0x73C, (AObjEvent32***)((u8*)dYoshiModel_JointTree_0x6948 + 0x508), 0x01 },
+		{ (DObjDesc*)&dYoshiModel_JointTree, (MObjSub***)&dYoshiModel_gap_0x0000, (AObjEvent32***)dYoshiModel_JointTree_post, 0x01 },
+		{ (DObjDesc*)&dYoshiModel_JointTree_0x6948, (MObjSub***)&dYoshiModel_gap_0x38F4_sub_0x73C, (AObjEvent32***)dYoshiModel_JointTree_0x6948_post, 0x01 },
 	},
 };
 

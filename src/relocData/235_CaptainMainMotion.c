@@ -103,7 +103,7 @@ ftMotionCommand dCaptainMainMotion_Run[] = {
 	ftMotionCommandPauseScript(),
 };
 
-ftMotionCommand dCaptainMainMotion_0x00E0[] = {
+ftMotionCommand dCaptainMainMotion_0x00DC[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_Run),
 };
 
@@ -1164,7 +1164,7 @@ ftMotionCommand dCaptainMainMotion_JabLoop[] = {
 	ftMotionCommandPauseScript(),
 };
 
-ftMotionCommand dCaptainMainMotion_0x1100[] = {
+ftMotionCommand dCaptainMainMotion_0x10FC[] = {
 	ftMotionCommandGoto(dCaptainMainMotion_JabLoop),
 };
 

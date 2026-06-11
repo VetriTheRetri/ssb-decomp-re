@@ -2576,6 +2576,7 @@ PAD(8);
 /* Texture data @ 0x6C78 (240 bytes — CI4). Original 760-byte chunk was
  * split: 240 bytes referenced by Joint DLs at +0x0, then a separate
  * Tex_0x6D68 sprite frame referenced by gap_0x26D0_sub_0x398[1]. */
+/* @tex fmt=CI4 dim=16x24 */
 u8 dMarioModel_Tex_0x6C78[240] = {
 	#include <MarioModel/Tex_0x6C78.tex.inc.c>
 };

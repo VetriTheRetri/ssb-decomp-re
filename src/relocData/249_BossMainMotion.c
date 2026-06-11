@@ -2,6 +2,7 @@
 /* File size: 2480 bytes (0x9B0) */
 
 #include "relocdata_types.h"
+extern u8 dBossModel_DObjDescs_0x2CB8[];
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
 #include <gm/gmdef.h>
@@ -140,6 +141,9 @@ ftMotionCommand dBossMainMotion_0x0378[] = {
 	ftMotionCommandWait(2),
 	ftMotionCommandWait(2),
 	ftMotionCommandGoto(dBossMainMotion_0x0378),
+};
+
+ftMotionCommand dBossMainMotion_0x0398[] = {
 	ftMotionCommandEffect(0, nEFKindQuakeMag2, 0, 0, 0, 0, 300, 300, 300),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMDonkeySlap1),
@@ -191,6 +195,9 @@ ftMotionCommand dBossMainMotion_Point[] = {
 	ftMotionCommandEffect(15, nEFKindPsionic, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(16),
 	ftMotionCommandGoto(dBossMainMotion_Point),
+};
+
+ftMotionCommand dBossMainMotion_0x04EC[] = {
 	ftMotionCommandWaitAsync(30),
 	ftMotionCommandMakeAttackColl(2, 0, 20, 4, 1, 0, 500, 0, 300, -105, -95, 100, 200, 3, 1, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(3, 0, 20, 4, 1, 0, 500, 0, -100, -105, -95, 100, 200, 3, 1, 2, 1, 0),
@@ -281,7 +288,7 @@ ftMotionCommand dBossMainMotion_0x072C[] = {
 
 /* llBossMainMotionBulletNormalWeaponAttributes (52 bytes at offset 0x774) */
 WPAttributes dBossMainMotion_0x0774 = {
-	(void *)0x01EA0B2E,  /* data — JP overwrites via reloc chain */
+	(void *)dBossModel_DObjDescs_0x2CB8,  /* data */
 	NULL,                /* p_mobjsubs */
 	NULL,                /* anim_joints */
 	NULL,                /* p_matanim_joints */
@@ -311,7 +318,7 @@ WPAttributes dBossMainMotion_0x0774 = {
 
 /* llBossMainMotionBulletHardWeaponAttributes (52 bytes at offset 0x7A8) */
 WPAttributes dBossMainMotion_0x07A8 = {
-	(void *)0xFFFF0B2E,  /* data — JP overwrites via reloc chain */
+	(void *)dBossModel_DObjDescs_0x2CB8,  /* data */
 	NULL,                /* p_mobjsubs */
 	NULL,                /* anim_joints */
 	NULL,                /* p_matanim_joints */
@@ -394,6 +401,9 @@ ftMotionCommand dBossMainMotion_Dying[] = {
 	ftMotionCommandEffect(20, nEFKindSparkleWhiteMultiExplode, 0, 0, 0, 0, 300, 300, 300),
 	ftMotionCommandWait(1),
 	ftMotionCommandGoto(dBossMainMotion_Dying),
+};
+
+ftMotionCommand dBossMainMotion_0x0970[] = {
 	ftMotionCommandWaitAsync(120),
 	ftMotionPlayFGM(nSYAudioVoiceBossAppear),
 	ftMotionCommandWaitAsync(410),

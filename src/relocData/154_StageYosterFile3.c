@@ -22,11 +22,13 @@ extern u32 dStageYosterFile3_AnimJoint_0x0694[];
 extern AObjEvent32 *dStageYosterFile3_mobjlink_0x06A8[];
 
 /* @ 0x0000 — render-setup DL fragment */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageYosterFile3_DL_0x0000[16] = {
 	#include <StageYosterFile3/DL_0x0000.dl.inc.c>
 };
 
 /* @ 0x0080 — render-setup DL fragment */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStageYosterFile3_DL_0x0080[16] = {
 	#include <StageYosterFile3/DL_0x0080.dl.inc.c>
 };

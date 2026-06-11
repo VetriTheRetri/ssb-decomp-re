@@ -1699,8 +1699,10 @@ extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x714[];
 extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x718[];
 extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x71C[];
 extern AObjEvent32 *dYoshiModel_gap_0x38F4_sub_0x720[];
-AObjEvent32 **dYoshiModel_JointTree_post[22] = {
-	NULL, NULL,
+PAD(4);
+
+AObjEvent32 **dYoshiModel_JointTree_post[21] = {
+	NULL,
 	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6D4,   /* slot 2  (+0x8) */
 	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6E4,   /* slot 3  (+0xC) */
 	(AObjEvent32 **)dYoshiModel_gap_0x38F4_sub_0x6E8,   /* slot 4  (+0x10) */
@@ -3647,8 +3649,10 @@ DObjDesc dYoshiModel_JointTree_0x6948[] = {
 extern AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x698[];
 extern AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x6A0[];
 extern AObjEvent32 *dYoshiModel_gap_0x6E70_sub_0x6B8[];
-AObjEvent32 **dYoshiModel_JointTree_0x6948_post[11] = {
-	NULL, NULL, NULL, NULL,
+PAD(12);
+
+AObjEvent32 **dYoshiModel_JointTree_0x6948_post[8] = {
+	NULL,
 	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x698,   /* slot 4  (+0x10) */
 	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6A0,   /* slot 5  (+0x14) */
 	(AObjEvent32 **)dYoshiModel_gap_0x6E70_sub_0x6A4,   /* slot 6  (+0x18) */

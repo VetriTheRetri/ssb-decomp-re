@@ -358,6 +358,7 @@ Gfx dStagePupupuFile2_DL_0x0950[6] = {
 };
 
 /* Gfx DL: gap_0x0898_sub_0xE8 @ 0x980 (10 cmds) */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStagePupupuFile2_gap_0x0898_sub_0xE8[10] = {
 	#include <StagePupupuFile2/gap_0x0898_sub_0xE8.dl.inc.c>
 };
@@ -711,6 +712,7 @@ Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8[28] = {
 
 /* @ 0x22C8 — Gfx[1] sub-DL (gsDPPipeSync; flows into DL_0x22D0).
  * Split out so DObjDesc dl pointers resolve to a clean symbol. */
+/* @dl-prefix: no EndDL by design — engine-run setup/prefix fragment */
 Gfx dStagePupupuFile2_Layer1Anim_DL_0x21E8_sub_0xE0[1] = {
 	#include <StagePupupuFile2/Layer1Anim_DL_0x21E8_sub_0xE0.dl.inc.c>
 };

@@ -1069,8 +1069,10 @@ DObjDesc dLuigiModel_JointTree[] = {
  * `gap_0x28E0[5]` AObjEvent32* table (slots 22..26). All 12 chain pointers
  * are declared in the .reloc so fixRelocChain rebuilds the chain encoding.
  * Same shape as MarioModel's JointTree_post / LuigiModel's JointTree_0x49E8_post. */
-AObjEvent32 **dLuigiModel_JointTree_post[27] = {
-	NULL, NULL, NULL, NULL,
+PAD(8);
+
+AObjEvent32 **dLuigiModel_JointTree_post[25] = {
+	NULL, NULL,
 	dLuigiModel_gap_0x28E0_sub_0x354,                    /* +0x10, slot 4 */
 	NULL,
 	dLuigiModel_gap_0x28E0_sub_0x358,                    /* +0x18, slot 6 */

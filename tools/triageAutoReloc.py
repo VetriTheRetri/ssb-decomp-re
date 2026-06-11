@@ -66,7 +66,7 @@ def triage_fid(version, fid):
         return {'fid': fid, 'error': 'no baserom chain info'}
     chained = i_set | e_set
 
-    intern, extern, unres, _diags = frc.derive_entries_from_obj(o, version, strict=False, fid=fid)
+    intern, extern, unres, _diags, _fidmm, _claims = frc.derive_entries_from_obj(o, version, strict=False, fid=fid)
     auto = {off: tgt for off, tgt in intern + extern}
     reloc_offs = set(auto)
 

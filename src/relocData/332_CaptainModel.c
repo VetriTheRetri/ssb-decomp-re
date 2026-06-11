@@ -1918,8 +1918,10 @@ DObjDesc dCaptainModel_JointTree[] = {
 /* Per-joint dispatch table @ 0x4084 — 11 slots holding chain-encoded
  * `AObjEvent32 **` pointers. Originally rolled into JointTree as a
  * 28th DObjDesc entry. */
-AObjEvent32 **dCaptainModel_gap_0x4084[11] = {
-	NULL, NULL, NULL, NULL,
+PAD(12);
+
+AObjEvent32 **dCaptainModel_gap_0x4090[8] = {
+	NULL,
 	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x760,    /* +0x10 */
 	(AObjEvent32 **)dCaptainModel_gap_0x40B0_sub_0x768,    /* +0x14 */
 	NULL,
@@ -4097,8 +4099,10 @@ DObjDesc dCaptainModel_JointTree_0x7900[] = {
 };
 
 /* Per-joint dispatch table @ 0x7DA4 — 11 slots */
-AObjEvent32 **dCaptainModel_gap_0x7DA4[11] = {
-	NULL, NULL, NULL, NULL,
+PAD(12);
+
+AObjEvent32 **dCaptainModel_gap_0x7DB0[8] = {
+	NULL,
 	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x670,    /* +0x10 */
 	(AObjEvent32 **)dCaptainModel_gap_0x7DD0_sub_0x678,    /* +0x14 */
 	NULL,

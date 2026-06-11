@@ -6220,6 +6220,7 @@ u16 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x928C[16] = {
 };
 PAD(8);
 
+/* @tex fmt=CI8 dim=80x120 */
 u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint_data_0x92B4[9608] = {
 	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint_data_0x92B4.tex.inc.c>
 };

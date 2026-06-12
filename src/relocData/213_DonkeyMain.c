@@ -8,7 +8,11 @@
 /* Forward decls auto-added/hoisted by hoistExterns.py */
 extern u32 dDkIcon_FTEmblem[];
 extern u32 dDkIcon_Stock[];
-extern u8 dDkIcon_Stock_tex[];
+extern u16 dDkIcon_Stock_lut0[];
+extern u16 dDkIcon_Stock_lut1[];
+extern u16 dDkIcon_Stock_lut2[];
+extern u16 dDkIcon_Stock_lut3[];
+extern u16 dDkIcon_Stock_lut4[];
 extern u8 dDonkeyShieldPose_data0[];
 extern u8 dDonkeyShieldPose_data0_end[];
 extern u8 dDonkeyShieldPose_shield_anim_joint_1[];
@@ -210,15 +214,15 @@ FTThrownStatus dDonkeyMain_thrown_status[54] = {
 	{                          -1, nFTCommonStatusThrownCommon },
 };
 
-u32 dDonkeyMain_stock_luts[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x58 };
+u32 dDonkeyMain_stock_luts[1] = { (u32)dDkIcon_Stock_lut0 };
 
-u32 dDonkeyMain_data_0x03AC[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0x80 };
+u32 dDonkeyMain_data_0x03AC[1] = { (u32)dDkIcon_Stock_lut1 };
 
-u32 dDonkeyMain_data_0x03B0[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xA8 };
+u32 dDonkeyMain_data_0x03B0[1] = { (u32)dDkIcon_Stock_lut2 };
 
-u32 dDonkeyMain_data_0x03B4[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xD0 };
+u32 dDonkeyMain_data_0x03B4[1] = { (u32)dDkIcon_Stock_lut3 };
 
-u32 dDonkeyMain_data_0x03B8[1] = { (u32)(u8 *)dDkIcon_Stock_tex + 0xF8 };
+u32 dDonkeyMain_data_0x03B8[1] = { (u32)dDkIcon_Stock_lut4 };
 
 
 /* @ 0x03BC, 12 bytes: FTAttributes.sprites target (was dDonkeyMain_pre+0x3BC) */

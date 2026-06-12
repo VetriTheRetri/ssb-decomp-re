@@ -8,7 +8,7 @@
 extern ftMotionCommand dBossMainMotion_Default[];
 extern u32 dMasterHandIcon_FTEmblem[];
 extern u32 dMasterHandIcon_Stock[];
-extern u8 dMasterHandIcon_Stock_tex[];
+extern u16 dMasterHandIcon_Stock_lut[];
 
 extern DObjDesc dBossModel_JointTree[];
 
@@ -52,7 +52,7 @@ FTCommonPartContainer dBossMain_commonparts_container = {
 	},
 };
 
-u32 dBossMain_stock_luts[1] = { (u32)(u8 *)dMasterHandIcon_Stock_tex + 0x88 };
+u32 dBossMain_stock_luts[1] = { (u32)dMasterHandIcon_Stock_lut };
 
 
 /* @ 0x00DC, 12 bytes: FTAttributes.sprites target (was dBossMain_pre+0xDC) */

@@ -1,597 +1,190 @@
-/* relocData file 160: StageYamabukiFile4 — raw blob with 6 per-region word tweaks. */
+/* relocData file 160: StageYamabukiFile4 — Saffron City scrolling-sky
+ * overlay: Vtx pool + layered DLs (texture/palette images live in
+ * StageYamabukiFile2), DObjDLLink records, and the DObjDesc scroll-node
+ * tree GRYamabukiMap.map_nodes points at. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
+/* Image symbols referenced by the DL includes (per-version: the
+ * extractor symbolizes the chain words against each version's
+ * StageYamabukiFile2 layout). */
 extern u16 dStageYamabukiFile2_Lut_0x1898_palette[];
 extern u8 dStageYamabukiFile2_Tex_0x18C0[];
-#if defined(REGION_JP)
 extern u16 dStageYamabukiFile2_Lut_0x1038_jp_palette[];
 extern u8 dStageYamabukiFile2_Tex_0x1060_jp[];
-#endif
 
-u32 dStageYamabukiFile4[] = {
-	0xFFFE000B,
-	0x00000000,
-	0x02000200,
-	0xEEEEEEFF,
-	0xFFFEFE7A,
-	0x01490000,
-	0x04000000,
-	0xFFFFFFFF,
-	0xFFFE019C,
-	0x01490000,
-	0x04000400,
-	0xEEEEEEFF,
-	0xFFFE019C,
-	0x00000000,
-	0x02000400,
-	0xEEEEEEFF,
-	0xFFFE000B,
-	0x00000000,
-	0x02000200,
-	0xEEEEEEFF,
-	0xFFFE019C,
-	0x01490000,
-	0x04000400,
-	0xEEEEEEFF,
-	0xFFFE000B,
-	0x00000000,
-	0x02000200,
-	0xFFFFFFFF,
-	0xFFFEFE7A,
-	0xFEB70000,
-	0x00000000,
-	0xFFFFFFFF,
-	0xFFFEFE7A,
-	0x01490000,
-	0x04000000,
-	0xFFFFFFFF,
-	0xFFFE019C,
-	0xFEB70000,
-	0x00000400,
-	0xEEEEEEFF,
-	0xFFFEFE7A,
-	0xFEB70000,
-	0x00000000,
-	0xFFFFFFFF,
-	0xFFFE000B,
-	0x00000000,
-	0x02000200,
-	0xFFFFFFFF,
-	0xFFFE019C,
-	0x00000000,
-	0x02000400,
-	0xEEEEEEFF,
-	0xFFFE019C,
-	0xFEB70000,
-	0x00000400,
-	0xEEEEEEFF,
-	0xFFFE000B,
-	0x00000000,
-	0x02000200,
-	0xFFFFFFFF,
-	0x00D80167,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFA1E,
-	0xFF2801B6,
-	0xFEA00000,
-	0x00000000,
-	0xFFFFFF00,
-	0xFF2801B6,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D80167,
-	0x01350000,
-	0x00000000,
-	0xFFFFFA1E,
-	0x00D80167,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFA1E,
-	0xFF2801B6,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0xFF28FE5B,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D8FE5B,
-	0x01350000,
-	0x00000000,
-	0xFFFFFAB4,
-	0x00D80167,
-	0x01350000,
-	0x00000000,
-	0xFFFFFA1E,
-	0xFF28FE5B,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0xFF28FE5B,
-	0xFEA00000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D8FE5B,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFAB4,
-	0x00D8FE5B,
-	0x01350000,
-	0x00000000,
-	0xFFFFFAB4,
-	0xFF28FE5B,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D8FE5B,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFAB4,
-	0xFF28FE5B,
-	0xFEA00000,
-	0x00000000,
-	0xFFFFFF00,
-	0xFF2801B6,
-	0xFEA00000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D80167,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFA1E,
-	0x00D80167,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFA1E,
-	0x00D8FE5B,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFAB4,
-	0xFF28FE5B,
-	0xFEA00000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D80167,
-	0x01350000,
-	0x00000000,
-	0xFFFFFA1E,
-	0xFF2801B6,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0xFF28FE5B,
-	0x01600000,
-	0x00000000,
-	0xFFFFFF00,
-	0x00D80167,
-	0x01350000,
-	0x00000000,
-	0xFFFFFF1E,
-	0x00D8FE5B,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFFB4,
-	0x00D80167,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFF1E,
-	0x00D80167,
-	0x01350000,
-	0x00000000,
-	0xFFFFFF1E,
-	0x00D8FE5B,
-	0x01350000,
-	0x00000000,
-	0xFFFFFFB4,
-	0x00D8FE5B,
-	0xFECB0000,
-	0x00000000,
-	0xFFFFFFB4,
-	0xD9C0F9FA,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00220405,
-	0xE3000800,
-	0x00800000,
-	0xE3000A01,
-	0x00000000,
-	0xE3000C00,
-	0x00080000,
-	0xE3000D01,
-	0x00000000,
-	0xE3000F00,
-	0x00000000,
-	0xE3001001,
-	0x00000000,
-	0xE3001201,
-	0x00002000,
-	0xE3001402,
-	0x00000C00,
-	0xE3001700,
-	0x00000000,
-	0xE3001801,
-	0x00000000,
-	0xE3001A01,
-	0x00000030,
-	0xE2001E01,
-	0x00000000,
-	0xE2001D00,
-	0x00000000,
-	0xE200001C,
-	0x00552078,
-	0xE7000000,
-	0x00000000,
-	0xD9FDFFFF,
-	0x00000000,
-	0xE3001001,
-	0x00008000,
-	0xFC121824,
-	0xFF33FFFF,
-	0xE8000000,
-	0x00000000,
-	0xF5000100,
-	0x05000000,
-	0xF5500000,
-	0x07014050,
-	0xF5400400,
-	0x00094250,
-	0xFD100000,
-#if defined(REGION_JP)
-	(u32)dStageYamabukiFile2_Lut_0x1038_jp_palette,
-#else
-	(u32)dStageYamabukiFile2_Lut_0x1898_palette,
-#endif
-	0xE6000000,
-	0x00000000,
-	0xF0000000,
-	0x0503C000,
-	0xE7000000,
-	0x00000000,
-	0xD7000002,
-	0xFFFFFFFF,
-	0xF2000000,
-	0x0007C07C,
-	0xFD500000,
-#if defined(REGION_JP)
-	(u32)dStageYamabukiFile2_Tex_0x1060_jp,
-#else
-	(u32)dStageYamabukiFile2_Tex_0x18C0,
-#endif
-	0xE6000000,
-	0x00000000,
-	0xF3000000,
-	0x070FF400,
-	0xE7000000,
-	0x00000000,
-	0x01003006,
-	0x00FD0000,
-	0x05000204,
-	0x00000000,
-	0x01003006,
-	0x0109000C,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00020000,
-	0xE3001001,
-	0x00000000,
-	0xDF000000,
-	0x00000000,
-	0xDE000000,
-	0x013100D4,
-	0xDF000000,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FDFFFF,
-	0x00000000,
-	0xE3001001,
-	0x00008000,
-	0xFC121824,
-	0xFF33FFFF,
-	0xE8000000,
-	0x00000000,
-	0xF5000100,
-	0x05000000,
-	0xF5500000,
-	0x07014050,
-	0xF5400400,
-	0x00094250,
-	0xFD100000,
-#if defined(REGION_JP)
-	(u32)dStageYamabukiFile2_Lut_0x1038_jp_palette,
-#else
-	(u32)dStageYamabukiFile2_Lut_0x1898_palette,
-#endif
-	0xE6000000,
-	0x00000000,
-	0xF0000000,
-	0x0503C000,
-	0xE7000000,
-	0x00000000,
-	0xD7000002,
-	0xFFFFFFFF,
-	0xF2000000,
-	0x0007C07C,
-	0xFD500000,
-#if defined(REGION_JP)
-	(u32)dStageYamabukiFile2_Tex_0x1060_jp,
-#else
-	(u32)dStageYamabukiFile2_Tex_0x18C0,
-#endif
-	0xE6000000,
-	0x00000000,
-	0xF3000000,
-	0x070FF400,
-	0xE7000000,
-	0x00000000,
-	0x01003006,
-	0x013D0018,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00020000,
-	0xE3001001,
-	0x00000000,
-	0xDF000000,
-	0x00000000,
-	0xDE000000,
-	0x0165010C,
-	0xDF000000,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FDFFFF,
-	0x00000000,
-	0xE3001001,
-	0x00008000,
-	0xFC121824,
-	0xFF33FFFF,
-	0xE8000000,
-	0x00000000,
-	0xF5000100,
-	0x05000000,
-	0xF5500000,
-	0x07014050,
-	0xF5400400,
-	0x00094250,
-	0xFD100000,
-#if defined(REGION_JP)
-	(u32)dStageYamabukiFile2_Lut_0x1038_jp_palette,
-#else
-	(u32)dStageYamabukiFile2_Lut_0x1898_palette,
-#endif
-	0xE6000000,
-	0x00000000,
-	0xF0000000,
-	0x0503C000,
-	0xE7000000,
-	0x00000000,
-	0xD7000002,
-	0xFFFFFFFF,
-	0xF2000000,
-	0x0007C07C,
-	0xFD500000,
-#if defined(REGION_JP)
-	(u32)dStageYamabukiFile2_Tex_0x1060_jp,
-#else
-	(u32)dStageYamabukiFile2_Tex_0x18C0,
-#endif
-	0xE6000000,
-	0x00000000,
-	0xF3000000,
-	0x070FF400,
-	0xE7000000,
-	0x00000000,
-	0x01003006,
-	0x01690024,
-	0x05000204,
-	0x00000000,
-	0x01003006,
-	0x01750030,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00020000,
-	0xE3001001,
-	0x00000000,
-	0xDF000000,
-	0x00000000,
-	0xDE000000,
-	0x01A90140,
-	0xDF000000,
-	0x00000000,
-	0xD9C0F9FA,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00220405,
-	0xE3000800,
-	0x00800000,
-	0xE3000A01,
-	0x00000000,
-	0xE3000C00,
-	0x00080000,
-	0xE3000D01,
-	0x00000000,
-	0xE3000F00,
-	0x00000000,
-	0xE3001001,
-	0x00000000,
-	0xE3001201,
-	0x00002000,
-	0xE3001402,
-	0x00000C00,
-	0xE3001700,
-	0x00000000,
-	0xE3001801,
-	0x00000000,
-	0xE3001A01,
-	0x00000030,
-	0xE2001E01,
-	0x00000000,
-	0xE2001D00,
-	0x00000000,
-	0xE200001C,
-	0x005049D8,
-	0xE7000000,
-	0x00000000,
-	0xD9FDFFFF,
-	0x00000000,
-	0xE2001E01,
-	0x00000001,
-	0xFCFFFFFF,
-	0xFFFE793C,
-	0xF9000000,
-	0x00000008,
-	0xD7000000,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x01AD003C,
-	0x05000204,
-	0x00000000,
-	0x01003006,
-	0x01B90048,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x01C50054,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x01C90060,
-	0x05000204,
-	0x00000000,
-	0x01003006,
-	0x01D5006C,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x01E10078,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x01ED0084,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x01F90090,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x0205009C,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFBFF,
-	0x00000000,
-	0x01003006,
-	0x021500A8,
-	0x05000204,
-	0x00000000,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00000400,
-	0xE7000000,
-	0x00000000,
-	0xD9FFFFFF,
-	0x00020000,
-	0xE2001E01,
-	0x00000000,
-	0xDF000000,
-	0x00000000,
-	0xDE000000,
-	0x02190198,
-	0xDF000000,
-	0x00000000,
-	0x00000000,
-	0x021D0108,
-	0x00000004,
-	0x00000000,
-	0x00000000,
-	0x0221013C,
-	0x00000004,
-	0x00000000,
-	0x00000000,
-	0x02250174,
-	0x00000004,
-	0x00000000,
-	0x00000001,
-	0x02340214,
-	0x00000004,
-	0x00000000,
+/* Forward decls: scripts follow their pointer tables. */
+extern u32 dStageYamabukiFile4_data_0x09C4[];
+extern u32 dStageYamabukiFile4_data_0x09DC[];
+extern u32 dStageYamabukiFile4_data_0x09F4[];
+extern u32 dStageYamabukiFile4_data_0x0A0C[];
+extern u32 dStageYamabukiFile4_data_0x0A34[];
+extern u32 dStageYamabukiFile4_data_0x0A4C[];
+extern u32 dStageYamabukiFile4_data_0x0A64[];
+extern u32 dStageYamabukiFile4_data_0x0A7C[];
+
+Vtx dStageYamabukiFile4_Vtx_0x0000[45] = {
+	#include <StageYamabukiFile4/Vtx_0x0000.vtx.inc.c>
 };
 
-/* Runtime-referenced sub-block @ 0x8A0 (GRYamabukiMap.ItemHead points here). */
-/* @raw-data — tail of the File4 raw blob (no structure identified);
- * runtime-referenced at its head by GRYamabukiMap.ItemHead. */
-u32 dStageYamabukiFile4_0x8A0[124] = {
-	#include <StageYamabukiFile4/data_0x8A0.data.inc.c>
+/* @dl-prefix: engine-run prefix; falls through into the next DL. */
+Gfx dStageYamabukiFile4_DL_0x02D0[16] = {
+	#include <StageYamabukiFile4/DL_0x02D0.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x0350[26] = {
+	#include <StageYamabukiFile4/DL_0x0350.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x0420[2] = {
+	#include <StageYamabukiFile4/DL_0x0420.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x0430[24] = {
+	#include <StageYamabukiFile4/DL_0x0430.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x04F0[2] = {
+	#include <StageYamabukiFile4/DL_0x04F0.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x0500[26] = {
+	#include <StageYamabukiFile4/DL_0x0500.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x05D0[2] = {
+	#include <StageYamabukiFile4/DL_0x05D0.dl.inc.c>
+};
+
+/* @dl-prefix: engine-run prefix; falls through into the next DL. */
+Gfx dStageYamabukiFile4_DL_0x05E0[16] = {
+	#include <StageYamabukiFile4/DL_0x05E0.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x0660[62] = {
+	#include <StageYamabukiFile4/DL_0x0660.dl.inc.c>
+};
+
+Gfx dStageYamabukiFile4_DL_0x0850[2] = {
+	#include <StageYamabukiFile4/DL_0x0850.dl.inc.c>
+};
+
+DObjDLLink dStageYamabukiFile4_DLLink_0x0860[2] = {
+	{ 0, dStageYamabukiFile4_DL_0x0420 },
+	{ 4, NULL },
+};
+
+DObjDLLink dStageYamabukiFile4_DLLink_0x0870[2] = {
+	{ 0, dStageYamabukiFile4_DL_0x04F0 },
+	{ 4, NULL },
+};
+
+DObjDLLink dStageYamabukiFile4_DLLink_0x0880[2] = {
+	{ 0, dStageYamabukiFile4_DL_0x05D0 },
+	{ 4, NULL },
+};
+
+DObjDLLink dStageYamabukiFile4_DLLink_0x0890[2] = {
+	{ 1, dStageYamabukiFile4_DL_0x0850 },
+	{ 4, NULL },
+};
+
+/* @ 0x08A0 — scroll-node scene tree (GRYamabukiMap.map_nodes targets it). */
+DObjDesc dStageYamabukiFile4_DObjDesc_0x08A0[6] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStageYamabukiFile4_DLLink_0x0860, { 1026.3673095703125f, 387.0627136230469f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStageYamabukiFile4_DLLink_0x0870, { 1026.3673095703125f, 390.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStageYamabukiFile4_DLLink_0x0880, { 1026.3673095703125f, 387.0627136230469f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void *)dStageYamabukiFile4_DLLink_0x0890, { 810.0f, 429.8401184082031f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+PAD(8);
+
+/* AObjEvent32 *[5] @ 0x09B0 — anim_joints for DObjDesc_0x08A0. */
+AObjEvent32 *dStageYamabukiFile4_DObjDesc_0x08A0_AnimJoint[5] = {
+	NULL,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x09C4,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x09DC,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x09F4,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x0A0C,
+};
+
+u32 dStageYamabukiFile4_data_0x09C4[6] = {
+	aobjEvent32SetVal0RateBlock(0x040, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x040, 10),
+	    0x43A50000,  /* 330.0f */
+	    0x3F97F144,  /* 1.1870503425598145f */
+	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile4_data_0x09DC[6] = {
+	aobjEvent32SetVal0RateBlock(0x020, 0),
+	    0x43C30000,  /* 390.0f */
+	aobjEvent32SetValRateBlock(0x020, 10),
+	    0xC1F00000,  /* -30.0f */
+	    0xBFC1619D,  /* -1.5107914209365845f */
+	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile4_data_0x09F4[6] = {
+	aobjEvent32SetVal0RateBlock(0x040, 0),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32SetValRateBlock(0x040, 10),
+	    0xC3A50000,  /* -330.0f */
+	    0xBF97F144,  /* -1.1870503425598145f */
+	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile4_data_0x0A0C[3] = {
+	aobjEvent32SetFlags(0x001, 4),
+	aobjEvent32SetFlags(0x000, 6),
+	aobjEvent32End(),
+};
+
+PAD(8);
+
+/* AObjEvent32 *[5] @ 0x0A20 — second anim_joints bank. */
+AObjEvent32 *dStageYamabukiFile4_DObjDesc_0x08A0_AnimJoint2[5] = {
+	NULL,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x0A34,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x0A4C,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x0A64,
+	(AObjEvent32 *)dStageYamabukiFile4_data_0x0A7C,
+};
+
+u32 dStageYamabukiFile4_data_0x0A34[6] = {
+	aobjEvent32SetValRateBlock(0x040, 0),
+	    0x43A50000,  /* 330.0f */
+	    0xBF97F144,  /* -1.1870503425598145f */
+	aobjEvent32SetVal0RateBlock(0x040, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile4_data_0x0A4C[6] = {
+	aobjEvent32SetValRateBlock(0x020, 0),
+	    0xC1F00000,  /* -30.0f */
+	    0x3FC1619D,  /* 1.5107914209365845f */
+	aobjEvent32SetVal0RateBlock(0x020, 10),
+	    0x43C30000,  /* 390.0f */
+	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile4_data_0x0A64[6] = {
+	aobjEvent32SetValRateBlock(0x040, 0),
+	    0xC3A50000,  /* -330.0f */
+	    0x3F97F144,  /* 1.1870503425598145f */
+	aobjEvent32SetVal0RateBlock(0x040, 10),
+	    0x00000000,  /* 0.0f */
+	aobjEvent32End(),
+};
+
+u32 dStageYamabukiFile4_data_0x0A7C[3] = {
+	aobjEvent32Wait(7),
+	aobjEvent32SetFlags(0x001, 3),
+	aobjEvent32End(),
 };
 

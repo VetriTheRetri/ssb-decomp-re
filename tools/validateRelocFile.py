@@ -665,6 +665,14 @@ _INDEX_REF_RE = re.compile(
     r"&\s*(?P<sym>d[A-Za-z_][A-Za-z_0-9]*)\s*\[\s*0?x?[0-9A-Fa-f]+\s*\]"
 )
 
+# `(u32)(u8 *)blockname + 0xN` — the unparenthesized cast-then-add form
+# (common in u32[1] pointer-word slots). Same R004 class as
+# `((u8*)blockname + 0xN)`.
+_OFFSET_REF_U32_RE = re.compile(
+    r"\(\s*u32\s*\)\s*\(\s*u8\s*\*\s*\)\s*&?\s*"
+    r"(?P<sym>d[A-Za-z_][A-Za-z_0-9]*)\s*\+\s*0x(?P<off>[0-9A-Fa-f]+)"
+)
+
 # `0x[0-9A-Fa-f]+,` payload inside an aobjEvent32 script *and* the only
 # decoded content the line carries — used to spot the SetAnim/Jump
 # loopback word being raw hex.
@@ -864,7 +872,7 @@ def _whole_text_of(path):
 def check_chain_pointer_target_form(decl, path, diags, script_syms,
                                      mobjsub_array_syms=None,
                                      typed_ptr_array_syms=None,
-                                     script_sizes=None):
+                                     script_sizes=None, lines=None):
     """R004 (C-source half) — `((u8*)blockname + 0xN)` byte-offset
     arithmetic and `&blockname[N]` indexing in pointer slots.
 
@@ -892,10 +900,17 @@ def check_chain_pointer_target_form(decl, path, diags, script_syms,
     entry points are legitimate (the runtime walks opcodes from any
     starting offset until it hits End)."""
     is_ptr_arr = is_pointer_array(decl)
-    for ln, txt in decl.body:
+    body = decl.body
+    if not body and lines is not None:
+        # Single-line decls (`u32 X[1] = { expr };`) parse with an empty
+        # body — scan the declaration line itself so offset arithmetic
+        # in one-slot pointer words isn't invisible to this rule.
+        body = [(k + 1, lines[k]) for k in
+                range(decl.start_line - 1, min(decl.end_line + 1, len(lines)))]
+    for ln, txt in body:
         if "NULL" in txt:
             continue
-        m = _OFFSET_REF_RE.search(txt)
+        m = _OFFSET_REF_RE.search(txt) or _OFFSET_REF_U32_RE.search(txt)
         if m:
             sym = m.group("sym")
             off = int(m.group("off"), 16)
@@ -977,10 +992,16 @@ def check_raw_hex_chunks(decl, path, diags, lines):
             return
     # Check raw source lines (including stripped `#` lines) for
     # preprocessor block markers — body member list excludes them.
+    # Small region-tweaked inline blocks are intentional and exempt,
+    # but a LARGE all-hex array doesn't stop being a raw dump just
+    # because a few words carry guards (StageYamabukiFile4 was a
+    # ~600-line raw blob hidden by 6 guarded words).
+    has_pp = False
     for k in range(decl.start_line, decl.end_line):
         raw = lines[k] if k < len(lines) else ""
         if raw.lstrip().startswith("#"):
-            return
+            has_pp = True
+            break
     # If every meaningful body line is a hex literal (or terminator), the
     # block is an inline raw-hex dump. `(u32)0xNNNN,` is a decode
     # artifact (Jump-payload form) — count as hex too.
@@ -1000,6 +1021,17 @@ def check_raw_hex_chunks(decl, path, diags, lines):
         else:
             has_other = True
             break
+    if has_pp and hex_count < 8:
+        return
+    if has_other and hex_count >= 64:
+        diags.append(Diag(
+            path, decl.start_line, "R005", "warn",
+            f"'{decl.name}' ({decl.ctype}[{decl.size}]) is dominated by "
+            f"raw hex ({hex_count} literal words) — the block is a raw "
+            f"dump with a few resolved pointers; decode/type it (or split "
+            f"out the typed parts)"
+        ))
+        return
     if has_hex and not has_other and hex_count >= 2:
         diags.append(Diag(
             path, decl.start_line, "R005", "warn",
@@ -2236,7 +2268,7 @@ def validate(c_path, enabled_rules):
             check_chain_pointer_target_form(d, c_path, diags, script_syms,
                                              mobjsub_array_syms,
                                              typed_ptr_array_syms,
-                                             script_sizes)
+                                             script_sizes, lines)
         if "R005" in enabled_rules:
             check_raw_hex_chunks(d, c_path, diags, lines)
         if "R006" in enabled_rules:

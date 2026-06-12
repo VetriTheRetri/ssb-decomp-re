@@ -418,32 +418,32 @@ AObjEvent32 *dGRBonus1PurinFile2_Layer1Anim_AnimJoint[4] = {
 };
 
 u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x10[15] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0xC5960000,  /* -4800.0f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC5834000,  /* -4200.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC4E10000,  /* -1800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC5960000,  /* -4800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC4E10000,  /* -1800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC5960000,  /* -4800.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x10,
 };
 
 u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x4C[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0xC544E000,  /* -3150.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0xC56A6000,  /* -3750.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0x44834000,  /* 1050.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0xC544E000,  /* -3150.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x4C,
@@ -483,32 +483,32 @@ AObjEvent32 *dGRBonus1PurinFile2_Layer1Anim_AnimJoint_ptrs_0x290[11] = {
 };
 
 u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2BC[15] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0xC5960000,  /* -4800.0f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC56A6000,  /* -3750.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC4E10000,  /* -1800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC5960000,  /* -4800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC4E10000,  /* -1800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 75),
 	    0xC5960000,  /* -4800.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2BC,
 };
 
 u32 dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0xC528C000,  /* -2700.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0xC56A6000,  /* -3750.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0x44BB8000,  /* 1500.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0xC528C000,  /* -2700.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PurinFile2_Layer1Anim_AnimJoint_data_0x2F8,

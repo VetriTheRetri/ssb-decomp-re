@@ -3327,9 +3327,9 @@ SYInterpDesc dSCStaffroll_Interpolation_0x7304[1] = {
 u32 dSCStaffroll_AnimJoint_Setup_0x731C[7] = {
 	aobjEvent32SetInterp(0, 0x008),
 	(u32)dSCStaffroll_Interpolation_0x7304,
-	aobjEvent32SetValBlock(0x008, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAI, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x008, 99),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAI, 99),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32End(),
 };
@@ -3338,9 +3338,9 @@ u32 dSCStaffroll_AnimJoint_Setup_0x731C[7] = {
 /* AnimJoint scene-block @ 0x7338 (1416 bytes) — header + script + 2 data
  * regions + 3 Gfx DLs. Chain pointers between sub-blocks resolved via .reloc. */
 u32 dSCStaffroll_AnimJoint_0x7338[5] = {
-	aobjEvent32SetValBlock(0x004, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTZ, 0),
 	    0xBE427301,  /* -0.190f */
-	aobjEvent32SetValBlock(0x004, 99),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTZ, 99),
 	    0x3ED67750,  /* 0.4189f */
 	aobjEvent32End(),
 };

@@ -509,32 +509,32 @@ AObjEvent32 *dGRBonus1YoshiFile2_Layer1Anim_AnimJoint[4] = {
 };
 
 u32 dGRBonus1YoshiFile2_Layer1Anim_AnimJoint_data_0x10[11] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0x44834000,  /* 1050.0f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC557A000,  /* -3450.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 150),
 	    0x4557A000,  /* 3450.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 150),
 	    0x44834000,  /* 1050.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1YoshiFile2_Layer1Anim_AnimJoint_data_0x10,
 };
 
 u32 dGRBonus1YoshiFile2_Layer1Anim_AnimJoint_data_0x3C[15] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0x443B8000,  /* 750.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x45034000,  /* 2100.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 75),
 	    0xC43B8000,  /* -750.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 75),
 	    0x443B8000,  /* 750.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 75),
 	    0xC43B8000,  /* -750.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 75),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 75),
 	    0x443B8000,  /* 750.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1YoshiFile2_Layer1Anim_AnimJoint_data_0x3C,
@@ -574,7 +574,7 @@ AObjEvent32 *dGRBonus1YoshiFile2_Layer1Anim_AnimJoint_ptrs_0x290[11] = {
 };
 
 u32 dGRBonus1YoshiFile2_Layer1Anim_AnimJoint_data_0x2BC[5] = {
-	aobjEvent32SetValAfter(0x010, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX, 0),
 	    0x45834000,  /* 4200.0f */
 	aobjEvent32Wait(300),
 	aobjEvent32SetAnim(0x000, 0),

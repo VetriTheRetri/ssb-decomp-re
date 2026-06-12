@@ -508,14 +508,14 @@ AObjEvent32 *dGRBonus1KirbyFile2_Layer1Anim_AnimJoint[3] = {
 
 /* AObjEvent32 script 1 (loops via SetAnim). */
 u32 dGRBonus1KirbyFile2_Layer1Anim_AnimJoint_data[11] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0xC4CE4000,  /* -1650.0f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC5834000,  /* -4200.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 150),
 	    0x43E10000,  /* 450.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 150),
 	    0xC4CE4000,  /* -1650.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1KirbyFile2_Layer1Anim_AnimJoint_data,
@@ -557,14 +557,14 @@ AObjEvent32 *dGRBonus1KirbyFile2_Layer1Anim_AnimJoint_ptrs_0x25C[8] = {
 
 /* AObjEvent32 script 2 (loops via SetAnim). */
 u32 dGRBonus1KirbyFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0xC4CE4006,  /* -1650.000732421875f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC56A6000,  /* -3750.0f */
 	    0x41F3E93A,  /* 30.488880157470703f */
-	aobjEvent32SetVal0RateBlock(0x010, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 150),
 	    0x43E0FFEA,  /* 449.99932861328125f */
-	aobjEvent32SetVal0RateBlock(0x010, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 150),
 	    0xC4CE4006,  /* -1650.000732421875f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1KirbyFile2_Layer1Anim_AnimJoint_data_0x27C,

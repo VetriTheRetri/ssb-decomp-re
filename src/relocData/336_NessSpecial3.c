@@ -127,54 +127,54 @@ AObjEvent32 **dNessSpecial3_gap_0x0000_sub_0x1E0[1] = {
 
 /* @ 0x01E4, 88 bytes: AObjEvent32 script (material anim joint). */
 u32 dNessSpecial3_gap_0x0000_sub_0x1E4[22] = {
-	aobjEvent32SetExtValBlock(0x018, 0),
-	    0xFFFF0000,  /* nanf */
-	    0xFFFF0000,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 6),
-	    0xFFFF2600,  /* nanf */
-	    0xFFFF2600,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 5),
-	    0xFFFFF300,  /* nanf */
-	    0xFFFFF300,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 1),
-	    0xFFFFF300,  /* nanf */
-	    0xFFFFF300,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 9),
-	    0xFFFF2600,  /* nanf */
-	    0xFFFF2600,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 10),
-	    0xFFFF0000,  /* nanf */
-	    0xFFFF0000,  /* nanf */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 6),
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 5),
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 9),
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 10),
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
 	aobjEvent32End(),
 };
 
 /* @ 0x023C, 88 bytes: AObjEvent32 script (material anim joint) — same payload
  * as sub_0x1E4. */
 u32 dNessSpecial3_gap_0x0000_sub_0x23C[22] = {
-	aobjEvent32SetExtValBlock(0x018, 0),
-	    0xFFFF0000,  /* nanf */
-	    0xFFFF0000,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 6),
-	    0xFFFF2600,  /* nanf */
-	    0xFFFF2600,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 5),
-	    0xFFFFF300,  /* nanf */
-	    0xFFFFF300,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 1),
-	    0xFFFFF300,  /* nanf */
-	    0xFFFFF300,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 9),
-	    0xFFFF2600,  /* nanf */
-	    0xFFFF2600,  /* nanf */
-	aobjEvent32SetExtValBlock(0x018, 10),
-	    0xFFFF0000,  /* nanf */
-	    0xFFFF0000,  /* nanf */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 6),
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 5),
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	    0xFFFFF300,  /* RGBA(255, 255, 243, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 9),
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	    0xFFFF2600,  /* RGBA(255, 255, 38, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 10),
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
+	    0xFFFF0000,  /* RGBA(255, 255, 0, 0) */
 	aobjEvent32End(),
 };
 
@@ -277,22 +277,22 @@ AObjEvent32 *dNessSpecial3_PKFireDL_script_ptrs[4] = {
 
 /* @ 0xB00: AObjEvent32 script_a (84 bytes / 21 u32) — referenced by script_ptrs[0]. */
 u32 dNessSpecial3_PKFireDL_script_a[21] = {
-	aobjEvent32SetValAfter(0x005, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTX | AOBJ_FLAG_ROTZ, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0Rate(0x380, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x002, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTY, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal(0x002, 8),
+	aobjEvent32SetVal(AOBJ_FLAG_ROTY, 8),
 	    0x40C90FDB,  /* 6.2831854820251465f */
-	aobjEvent32SetVal0RateBlock(0x380, 4),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 4),
 	    0x3FA00000,  /* 1.25f */
 	    0x3F4CCCCD,  /* 0.800000011920929f */
 	    0x3FA00000,  /* 1.25f */
-	aobjEvent32SetVal0RateBlock(0x380, 4),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 4),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
@@ -303,19 +303,19 @@ u32 dNessSpecial3_PKFireDL_script_a[21] = {
 /* @ 0xB54: AObjEvent32 script_b (72 bytes / 18 u32) — referenced by script_ptrs[1].
  * Script ends with SetAnim loopback + 1 End; trailing 4 bytes are PAD. */
 u32 dNessSpecial3_PKFireDL_script_b[18] = {
-	aobjEvent32SetValBlock(0x180, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F4CCCCD,  /* 0.800000011920929f */
-	aobjEvent32SetValBlock(0x180, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3F4CCCCD,  /* 0.800000011920929f */
 	    0x3F99999A,  /* 1.2000000476837158f */
-	aobjEvent32SetValBlock(0x180, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3F800000,  /* 1.0f */
 	    0x3F4CCCCD,  /* 0.800000011920929f */
-	aobjEvent32SetValBlock(0x180, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3F4CCCCD,  /* 0.800000011920929f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x180, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3F800000,  /* 1.0f */
 	    0x3F4CCCCD,  /* 0.800000011920929f */
 	aobjEvent32SetAnim(0x000, 0),

@@ -699,14 +699,14 @@ AObjEvent32 *dGRBonus1LinkFile2_Layer1Anim_AnimJoint[4] = {
 
 /* Loops the X position of Layer1DObj joint 1 (the 1783, -1950 platform). */
 u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint_0x10[] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0x44960000,  /* 1200.0f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC4F3C000,  /* -1950.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 90),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 90),
 	    0x44E10000,  /* 1800.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 90),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 90),
 	    0x44960000,  /* 1200.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1LinkFile2_Layer1Anim_AnimJoint_0x10,
@@ -714,14 +714,14 @@ u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint_0x10[] = {
 
 /* Loops the X position of Layer1DObj joint 2 (the 1500, 733 platform). */
 u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint_0x3C[] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0x43160000,  /* 150.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x44BB8000,  /* 1500.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 90),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 90),
 	    0x443B8000,  /* 750.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 90),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 90),
 	    0x43160000,  /* 150.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1LinkFile2_Layer1Anim_AnimJoint_0x3C,
@@ -772,14 +772,14 @@ AObjEvent32 *dGRBonus1LinkFile2_Layer1YakumonoAnimJoint[11] = {
 
 /* Loops the X position of yakumono[1]. */
 u32 dGRBonus1LinkFile2_Layer1YakumonoAnimJoint_0x2AC[] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0x44160000,  /* 600.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x44BB8000,  /* 1500.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 90),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 90),
 	    0x44960000,  /* 1200.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 90),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 90),
 	    0x44160000,  /* 600.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1LinkFile2_Layer1YakumonoAnimJoint_0x2AC,

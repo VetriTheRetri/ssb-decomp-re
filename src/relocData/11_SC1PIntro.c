@@ -1334,7 +1334,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6C80 to 0x6CB0 (48 bytes) */
 u32 dSC1PIntro_FighterMarioCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC3F523C0,
 	    0x438E33DA,
 	    0x436D8261,
@@ -1351,7 +1351,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6CB0 to 0x6CE0 (48 bytes) */
 u32 dSC1PIntro_FighterFoxCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC4FB9666,
 	    0x4426190C,
 	    0x43886CB3,
@@ -1368,7 +1368,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6CE0 to 0x6D10 (48 bytes) */
 u32 dSC1PIntro_FighterDonkeyCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC481AC0C,
 	    0x42AC052A,
 	    0x431E31BA,
@@ -1385,7 +1385,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6D10 to 0x6D40 (48 bytes) */
 u32 dSC1PIntro_FighterSamusCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC45249AA,
 	    0x43E39E70,
 	    0x3FCAFF48,
@@ -1402,7 +1402,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6D40 to 0x6D70 (48 bytes) */
 u32 dSC1PIntro_FighterLuigiCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC5839063,
 	    0x443AE3D5,
 	    0x42D91A13,
@@ -1419,7 +1419,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6D70 to 0x6DA0 (48 bytes) */
 u32 dSC1PIntro_FighterLinkCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC41A41A6,
 	    0x4363FDE6,
 	    0x428FA2FC,
@@ -1436,7 +1436,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6DA0 to 0x6DD0 (48 bytes) */
 u32 dSC1PIntro_FighterYoshiCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC4713F6B,
 	    0x43BF83E0,
 	    0x431F8912,
@@ -1453,7 +1453,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6DD0 to 0x6E00 (48 bytes) */
 u32 dSC1PIntro_FighterCaptainCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC529BA15,
 	    0x43ABC000,
 	    0x42495C29,
@@ -1470,7 +1470,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6E00 to 0x6E30 (48 bytes) */
 u32 dSC1PIntro_FighterKirbyCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC49B4E7A,
 	    0xC3ED778F,
 	    0x43022DAE,
@@ -1487,7 +1487,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6E30 to 0x6E60 (48 bytes) */
 u32 dSC1PIntro_FighterPikachuCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC517AAA1,
 	    0x43F9C97A,
 	    0x42730E85,
@@ -1504,7 +1504,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6E60 to 0x6E90 (48 bytes) */
 u32 dSC1PIntro_FighterPurinCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC4ECC4C7,
 	    0x43486773,
 	    0x43395E24,
@@ -1521,7 +1521,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6E90 to 0x6EC0 (48 bytes) */
 u32 dSC1PIntro_FighterNessCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0xC4408381,
 	    0x4343E74F,
 	    0x43749F08,
@@ -1538,7 +1538,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6EC0 to 0x6EF0 (48 bytes) */
 u32 dSC1PIntro_StageKirbyCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x454AAE36,
 	    0x44948F16,
 	    0xC3443CD7,
@@ -1555,7 +1555,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6EF0 to 0x6F20 (48 bytes) */
 u32 dSC1PIntro_StageYoshiCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x4509FB6D,
 	    0x43C706D7,
 	    0x4451F546,
@@ -1572,7 +1572,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6F20 to 0x6F50 (48 bytes) */
 u32 dSC1PIntro_StageBossCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x4514BFD1,
 	    0x44712570,
 	    0x445E67CB,
@@ -1589,7 +1589,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6F50 to 0x6F80 (48 bytes) */
 u32 dSC1PIntro_StageSamusCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x444BB14C,
 	    0x441998E4,
 	    0x4377E69D,
@@ -1606,7 +1606,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6F80 to 0x6FB0 (48 bytes) */
 u32 dSC1PIntro_StageFoxCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x44795109,
 	    0x43F6D70C,
 	    0x4365E164,
@@ -1623,7 +1623,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6FB0 to 0x6FE0 (48 bytes) */
 u32 dSC1PIntro_StagePikachuCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x44681DE4,
 	    0x44359805,
 	    0x43956F47,
@@ -1640,7 +1640,7 @@ PAD(4);
 
 /* Raw data from file offset 0x6FE0 to 0x7010 (48 bytes) */
 u32 dSC1PIntro_StageLinkCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x4486A0F4,
 	    0xC2C405F2,
 	    0x4326F7F1,
@@ -1657,7 +1657,7 @@ PAD(4);
 
 /* Raw data from file offset 0x7010 to 0x7040 (48 bytes) */
 u32 dSC1PIntro_StageDonkeyCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x449C504B,
 	    0x431F0749,
 	    0x43CE391E,
@@ -1674,7 +1674,7 @@ PAD(4);
 
 /* Raw data from file offset 0x7040 to 0x7070 (48 bytes) */
 u32 dSC1PIntro_StageMarioCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x4483CB33,
 	    0x43CA7C29,
 	    0x4378E86B,
@@ -1691,7 +1691,7 @@ PAD(4);
 
 /* Raw data from file offset 0x7070 to 0x70A0 (48 bytes) */
 u32 dSC1PIntro_StageMMarioCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x448251F0,
 	    0x43A0C538,
 	    0x43868FE8,
@@ -1708,7 +1708,7 @@ PAD(4);
 
 /* Raw data from file offset 0x70A0 to 0x70D8 (56 bytes) */
 u32 dSC1PIntro_StageZakoCam_AnimJoint[11] = {
-	aobjEvent32SetValAfter(0x377, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ | AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ, 0),
 	    0x4501DBFD,
 	    0x4450910F,
 	    0x44570692,

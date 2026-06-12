@@ -125,27 +125,27 @@ AObjEvent32 *dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[2] = {
 };
 
 u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint_0x418[] = {
-	aobjEvent32SetValAfter(0x007, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTXYZ, 0),
 	    0x00000000,
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x380, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3ECB3681,
 	    0x3ECB3681,
 	    0x3ECB3681,
-	aobjEvent32SetValAfter(0x004, 6),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTZ, 6),
 	    0x3F490FDB,
-	aobjEvent32SetVal(0x200, 12),
+	aobjEvent32SetVal(AOBJ_FLAG_SCAZ, 12),
 	    0x3F800000,
-	aobjEvent32SetValBlock(0x180, 6),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 6),
 	    0x3F800000,
 	    0x3F800000,
-	aobjEvent32SetValBlock(0x180, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 0),
 	    0x3ECB367A,
 	    0x3ECB367A,
-	aobjEvent32SetValAfter(0x004, 6),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTZ, 6),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x180, 6),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 6),
 	    0x3F800000,
 	    0x3F800000,
 	aobjEvent32SetAnim(0x000, 0),
@@ -167,15 +167,15 @@ AObjEvent32 **dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[2] = {
 /* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(0x001, *), then
  * SetAnim with a chain-encoded back-pointer to data start. */
 u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data[12] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 4),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 4),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 4),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 4),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint_data),
@@ -260,29 +260,29 @@ AObjEvent32 *dSamusSpecial2_EntryPointAnimJoint_AnimJoint[2] = {
 };
 
 u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint_0xC28[] = {
-	aobjEvent32SetVal(0x380, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfter(0x070, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAXYZ, 0),
 	    0x00000000,  /* 0.0f */
 	    0x43D98000,  /* 435.0f */
 	    0xC3A50000,  /* -330.0f */
 	aobjEvent32SetFlags(0x000, 0),
-	aobjEvent32SetVal(0x280, 109),
+	aobjEvent32SetVal(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAZ, 109),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x100, 1),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAY, 1),
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
-	aobjEvent32SetValBlock(0x100, 10),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAY, 10),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x100, 98),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAY, 98),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x380, 10),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 10),
 	    0x3F800000,  /* 1.0f */
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x380, 1),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 1),
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
 	    0x3727C5AC,  /* 9.999999747378752e-06f */

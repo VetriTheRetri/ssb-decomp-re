@@ -10,6 +10,11 @@ are rewritten. The dispatch follows the runtime's logic in
 src/sys/objanim.c — each opcode declares how many additional words it
 consumes from the stream.
 
+After decoding, the symbolize pass (tools/symbolizeAObjFlags.py) runs on
+the file automatically: SetVal*/SetExt* flag masks become AOBJ_*FLAG_*
+OR-expressions where the script's context (joint / material / camera) can
+be inferred, and SetExt color payload words get `/* RGBA(...) */` comments.
+
 Run as:
     tools/decodeAObjEvent32.py <file_id>     # rewrite one file
     tools/decodeAObjEvent32.py --all         # every file with anim arrays
@@ -19,6 +24,10 @@ import argparse
 import os
 import re
 import struct
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from symbolizeAObjFlags import process_file as symbolize_file
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
@@ -431,6 +440,11 @@ def process_file(file_id, dry=False, target_syms=None):
     with open(c_path, "w") as f:
         f.write(new_text)
     print(f"fid {file_id} ({target_name}): rewrote {changes} anim arrays as macro calls")
+    sym_changed, _, unknown = symbolize_file(c_path, False)
+    if sym_changed:
+        print(f"fid {file_id}: symbolized flags on {sym_changed} lines"
+              + (f" ({len(unknown)} scripts left numeric — unknown context)"
+                 if unknown else ""))
     return True
 
 

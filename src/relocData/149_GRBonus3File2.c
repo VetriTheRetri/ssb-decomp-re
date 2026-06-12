@@ -988,168 +988,168 @@ AObjEvent32 *dGRBonus3File2_Layer1MatAnim_MatAnimJoint[12] = {
 };
 
 u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600[] = {
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF47,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 4),
-	    0xFFFFFF69,  /* nanf */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF47,  /* RGBA(255, 255, 255, 71) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 4),
+	    0xFFFFFF69,  /* RGBA(255, 255, 255, 105) */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6600),
 };
 
 u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0[] = {
-	aobjEvent32SetExtValBlock(0x001, 0),
-	    0xFFFFA366,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 60),
-	    0xFFFFA300,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 60),
-	    0xFFFFA366,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 1),
-	    0xFFFFA364,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 59),
-	    0xFFFFA300,  /* nanf */
-	aobjEvent32SetExtValBlock(0x001, 60),
-	    0xFFFFA366,  /* nanf */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFFFFA366,  /* RGBA(255, 255, 163, 102) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 60),
+	    0xFFFFA300,  /* RGBA(255, 255, 163, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 60),
+	    0xFFFFA366,  /* RGBA(255, 255, 163, 102) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFFFA364,  /* RGBA(255, 255, 163, 100) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 59),
+	    0xFFFFA300,  /* RGBA(255, 255, 163, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_PRIMCOLOR, 60),
+	    0xFFFFA366,  /* RGBA(255, 255, 163, 102) */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x67F0),
 };
 
 u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828[] = {
-	aobjEvent32SetExtValBlock(0x018, 0),
-	    0xB3B3B300,  /* -8.367896953132004e-08f */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValBlock(0x018, 60),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValBlock(0x018, 60),
-	    0xB3B3B300,  /* -8.367896953132004e-08f */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValBlock(0x018, 1),
-	    0xB0B0B000,  /* -1.285570760956034e-09f */
-	    0x7D7D7D00,  /* 2.1058982502556286e+37f */
-	aobjEvent32SetExtValBlock(0x018, 59),
-	    0x00000000,  /* 0.0f */
-	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValBlock(0x018, 60),
-	    0xB3B3B300,  /* -8.367896953132004e-08f */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xB3B3B300,  /* RGBA(179, 179, 179, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 60),
+	    0x00000000,  /* RGBA(0, 0, 0, 0) */
+	    0x00000000,  /* RGBA(0, 0, 0, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 60),
+	    0xB3B3B300,  /* RGBA(179, 179, 179, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xB0B0B000,  /* RGBA(176, 176, 176, 0) */
+	    0x7D7D7D00,  /* RGBA(125, 125, 125, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 59),
+	    0x00000000,  /* RGBA(0, 0, 0, 0) */
+	    0x00000000,  /* RGBA(0, 0, 0, 0) */
+	aobjEvent32SetExtValBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 60),
+	    0xB3B3B300,  /* RGBA(179, 179, 179, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dGRBonus3File2_Layer1MatAnim_MatAnimJoint_0x6828),
 };

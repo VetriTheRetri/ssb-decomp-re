@@ -568,15 +568,15 @@ AObjEvent32 *dFoxSpecial3_EntryArwing_post[1] = {
 };
 
 u32 dFoxSpecial3__2E74__AnimJoint[15] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetVal0RateBlock(0x380, 3),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F570A40,  /* 0.8400001525878906f */
 	    0x3F570A40,  /* 0.8400001525878906f */
 	    0x3F59999C,  /* 0.8500001430511475f */
-	aobjEvent32SetVal0RateBlock(0x380, 3),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
@@ -592,49 +592,49 @@ AObjEvent32 *dFoxSpecial3__2E74__AnimJoint_chain[1] = {
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */
 u32 dFoxSpecial3__2EB4__AnimJoint[50] = {
-	aobjEvent32SetValBlock(0x380, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F800000,
 	    0x3F800000,
 	    0x3F800000,
-	aobjEvent32SetValBlock(0x380, 1),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 1),
 	    0x3FC911F1,
 	    0x3FC911F1,
 	    0x3FCB76B4,
-	aobjEvent32SetValBlock(0x380, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 2),
 	    0x3F570A3D,
 	    0x3F570A3D,
 	    0x3F59999A,
-	aobjEvent32SetValBlock(0x380, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 2),
 	    0x3FB9999A,
 	    0x3FB9999A,
 	    0x3FB9999A,
-	aobjEvent32SetValBlock(0x380, 3),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F570A3D,
 	    0x3F570A3D,
 	    0x3F59999A,
-	aobjEvent32SetValBlock(0x380, 3),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F873C60,
 	    0x3F873C60,
 	    0x3F873C60,
-	aobjEvent32SetTargetRate(0x380, 0),
+	aobjEvent32SetTargetRate(AOBJ_FLAG_SCAXYZ, 0),
 	    0xBE09E117,
 	    0xBE1A2A2E,
 	    0xBE0F4EC7,
-	aobjEvent32SetValRateBlock(0x380, 8),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_SCAXYZ, 8),
 	    0x3F000000,
 	    0xBC63F461,
 	    0x3F000000,
 	    0xBC63F461,
 	    0x3F000000,
 	    0xBC63F461,
-	aobjEvent32SetValRateBlock(0x380, 32),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_SCAXYZ, 32),
 	    0x3F000003,
 	    0x3C47CE0C,
 	    0x3F000003,
 	    0x3C47CE0C,
 	    0x3F000003,
 	    0x3C47CE0C,
-	aobjEvent32SetValRateBlock(0x380, 9),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_SCAXYZ, 9),
 	    0x3F800000,
 	    0x3CE81B4A,
 	    0x3F800000,

@@ -1272,31 +1272,31 @@ AObjEvent32 **dPikachuModel_gap_0x2B78[5] = {
 
 /* gap sub-block @ 0x2B8C (was gap+0x14, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x14[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x14,
@@ -1304,26 +1304,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x14[28] = {
 
 /* gap sub-block @ 0x2BFC (was gap+0x84, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x84[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x84,
@@ -1331,26 +1331,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x84[23] = {
 
 /* gap sub-block @ 0x2C58 (was gap+0xE0, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0xE0[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0xE0,
@@ -1358,45 +1358,45 @@ u32 dPikachuModel_gap_0x2B78_sub_0xE0[23] = {
 
 /* gap sub-block @ 0x2CB4 (was gap+0x13C, 172 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x13C[43] = {
-	aobjEvent32SetValAfter(0x200, 0),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetVal(0x001, 50),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetVal(AOBJ_MATFLAG_TEXID, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(47),
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40A00000,  /* 5.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40C00000,  /* 6.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40E00000,  /* 7.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 1),
 	    0x40E00000,  /* 7.0f */
 	aobjEvent32Wait(46),
 	aobjEvent32SetAnim(0x000, 0),
@@ -1405,52 +1405,52 @@ u32 dPikachuModel_gap_0x2B78_sub_0x13C[43] = {
 
 /* gap sub-block @ 0x2D60 (was gap+0x1E8, 200 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x1E8[50] = {
-	aobjEvent32SetValAfter(0x200, 0),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0x684C10FF,  /* 3.8547051403882666e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetVal(0x001, 50),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x684C10FF,  /* RGBA(104, 76, 16, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetVal(AOBJ_MATFLAG_TEXID, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xBD6B29FF,  /* -0.057413097470998764f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xBD6B29FF,  /* RGBA(189, 107, 41, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xB8F0FFFF,  /* -0.00011491774785099551f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xB8F0FFFF,  /* RGBA(184, 240, 255, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xA5FF10FF,  /* -4.424696563851328e-16f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xA5FF10FF,  /* RGBA(165, 255, 16, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(47),
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40A00000,  /* 5.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40C00000,  /* 6.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40E00000,  /* 7.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x41000000,  /* 8.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 1),
 	    0x41100000,  /* 9.0f */
 	aobjEvent32Wait(45),
 	aobjEvent32SetAnim(0x000, 0),
@@ -1459,26 +1459,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x1E8[50] = {
 
 /* gap sub-block @ 0x2E28 (was gap+0x2B0, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x2B0[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x2B0,
@@ -1486,31 +1486,31 @@ u32 dPikachuModel_gap_0x2B78_sub_0x2B0[23] = {
 
 /* gap sub-block @ 0x2E84 (was gap+0x30C, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x30C[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x30C,
@@ -1518,31 +1518,31 @@ u32 dPikachuModel_gap_0x2B78_sub_0x30C[28] = {
 
 /* gap sub-block @ 0x2EF4 (was gap+0x37C, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x37C[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x37C,
@@ -1550,26 +1550,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x37C[28] = {
 
 /* gap sub-block @ 0x2F64 (was gap+0x3EC, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x3EC[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x3EC,
@@ -1577,26 +1577,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x3EC[23] = {
 
 /* gap sub-block @ 0x2FC0 (was gap+0x448, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x448[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x448,
@@ -1604,31 +1604,31 @@ u32 dPikachuModel_gap_0x2B78_sub_0x448[23] = {
 
 /* gap sub-block @ 0x301C (was gap+0x4A4, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x4A4[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x4A4,
@@ -1636,26 +1636,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x4A4[28] = {
 
 /* gap sub-block @ 0x308C (was gap+0x514, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x514[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x514,
@@ -1663,26 +1663,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x514[23] = {
 
 /* gap sub-block @ 0x30E8 (was gap+0x570, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x570[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x570,
@@ -1690,16 +1690,16 @@ u32 dPikachuModel_gap_0x2B78_sub_0x570[23] = {
 
 /* gap sub-block @ 0x3144 (was gap+0x5CC, 52 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x5CC[13] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFFD933FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFD933FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFFD933FF,  /* nanf */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x5CC,
@@ -1707,26 +1707,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x5CC[13] = {
 
 /* gap sub-block @ 0x3178 (was gap+0x600, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x600[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x600,
@@ -1734,26 +1734,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x600[23] = {
 
 /* gap sub-block @ 0x31D4 (was gap+0x65C, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x65C[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x65C,
@@ -1761,26 +1761,26 @@ u32 dPikachuModel_gap_0x2B78_sub_0x65C[23] = {
 
 /* gap sub-block @ 0x3230 (was gap+0x6B8, 92 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x6B8[23] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x6B8,
@@ -1788,31 +1788,31 @@ u32 dPikachuModel_gap_0x2B78_sub_0x6B8[23] = {
 
 /* gap sub-block @ 0x328C (was gap+0x714, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x714[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x714,
@@ -1820,31 +1820,31 @@ u32 dPikachuModel_gap_0x2B78_sub_0x714[28] = {
 
 /* gap sub-block @ 0x32FC (was gap+0x784, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x784[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x784,
@@ -1852,31 +1852,31 @@ u32 dPikachuModel_gap_0x2B78_sub_0x784[28] = {
 
 /* gap sub-block @ 0x336C (was gap+0x7F4, 112 bytes) */
 u32 dPikachuModel_gap_0x2B78_sub_0x7F4[28] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dPikachuModel_gap_0x2B78_sub_0x7F4,
@@ -3078,128 +3078,128 @@ AObjEvent32 **dPikachuModel_gap_0x59B8[5] = {
 
 /* gap sub-block @ 0x59CC (was gap+0x14, 108 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x14[27] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5A38 (was gap+0x80, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x80[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5A90 (was gap+0xD8, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0xD8[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5AE8 (was gap+0x130, 168 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x130[42] = {
-	aobjEvent32SetValAfter(0x200, 0),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetVal(0x001, 50),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetVal(AOBJ_MATFLAG_TEXID, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(47),
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40A00000,  /* 5.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40C00000,  /* 6.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40E00000,  /* 7.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 1),
 	    0x40E00000,  /* 7.0f */
 	aobjEvent32Wait(46),
 	aobjEvent32End(),
@@ -3207,47 +3207,47 @@ u32 dPikachuModel_gap_0x59B8_sub_0x130[42] = {
 
 /* gap sub-block @ 0x5B90 (was gap+0x1D8, 176 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x1D8[44] = {
-	aobjEvent32SetValAfter(0x200, 0),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetVal(0x001, 50),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetVal(AOBJ_MATFLAG_TEXID, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(47),
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40A00000,  /* 5.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40C00000,  /* 6.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40E00000,  /* 7.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x41000000,  /* 8.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 1),
 	    0x41100000,  /* 9.0f */
 	aobjEvent32Wait(45),
 	aobjEvent32End(),
@@ -3255,425 +3255,425 @@ u32 dPikachuModel_gap_0x59B8_sub_0x1D8[44] = {
 
 /* gap sub-block @ 0x5C40 (was gap+0x288, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x288[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5C98 (was gap+0x2E0, 108 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x2E0[27] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5D04 (was gap+0x34C, 108 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x34C[27] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5D70 (was gap+0x3B8, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x3B8[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5DC8 (was gap+0x410, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x410[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5E20 (was gap+0x468, 108 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x468[27] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5E8C (was gap+0x4D4, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x4D4[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5EE4 (was gap+0x52C, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x52C[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5F3C (was gap+0x584, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x584[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5F94 (was gap+0x5DC, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x5DC[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x5FEC (was gap+0x634, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x634[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x6044 (was gap+0x68C, 88 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x68C[22] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfterBlock(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x609C (was gap+0x6E4, 128 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x6E4[32] = {
-	aobjEvent32SetExtValAfter(0x019, 0),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xC8C828FF,  /* -409927.96875f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xC8C828FF,  /* RGBA(200, 200, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xE8A828FF,  /* -6.352910508572228e+24f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xE8A828FF,  /* RGBA(232, 168, 40, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xFFD933FF,  /* nanf */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFD933FF,  /* RGBA(255, 217, 51, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x019, 1),
-	    0xA5FF10FF,  /* -4.424696563851328e-16f */
-	    0xFFFFFF00,  /* nanf */
-	    0x80808000,  /* -1.180086125630187e-38f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xA5FF10FF,  /* RGBA(165, 255, 16, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x80808000,  /* RGBA(128, 128, 128, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x611C (was gap+0x764, 108 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x764[27] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x6188 (was gap+0x7D0, 108 bytes) */
 u32 dPikachuModel_gap_0x59B8_sub_0x7D0[27] = {
-	aobjEvent32SetExtValAfter(0x018, 0),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0xFFFFFF00,  /* nanf */
-	    0xCCCCCC00,  /* -107372544.0f */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0xCCCCCC00,  /* RGBA(204, 204, 204, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };

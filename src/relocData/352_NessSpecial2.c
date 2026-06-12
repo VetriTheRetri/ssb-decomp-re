@@ -122,39 +122,39 @@ AObjEvent32 *dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint[2] = {
 };
 
 u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint_0xA38[] = {
-	aobjEvent32SetValAfter(0x380, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAXYZ, 0),
 	    0x40000000,  /* 2.0f */
 	    0x40000000,  /* 2.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x004, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal(0x004, 18),
+	aobjEvent32SetVal(AOBJ_FLAG_ROTZ, 18),
 	    0x40C90FDB,  /* 6.2831854820251465f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x400D6042,  /* 2.2090001106262207f */
 	    0x400D6042,  /* 2.2090001106262207f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3FEE147C,  /* 1.8600001335144043f */
 	    0x3FEE147C,  /* 1.8600001335144043f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x40133333,  /* 2.299999952316284f */
 	    0x40133333,  /* 2.299999952316284f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3FF9999A,  /* 1.9500000476837158f */
 	    0x3FF9999A,  /* 1.9500000476837158f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x400C8B44,  /* 2.196000099182129f */
 	    0x400C8B44,  /* 2.196000099182129f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x40000000,  /* 2.0f */
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x400D6042,  /* 2.2090001106262207f */
 	    0x400D6042,  /* 2.2090001106262207f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x3FEE147C,  /* 1.8600001335144043f */
 	    0x3FEE147C,  /* 1.8600001335144043f */
-	aobjEvent32SetValAfterBlock(0x180, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY, 2),
 	    0x40133333,  /* 2.299999952316284f */
 	    0x40133333,  /* 2.299999952316284f */
 	aobjEvent32SetAnim(0x000, 0),
@@ -176,15 +176,15 @@ AObjEvent32 **dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[2] = {
 /* Main script @ +0x08 (48 bytes) — 5x SetValAfterBlock(1, *) pairs,
  * SetAnim, then a chain-encoded back-pointer to data start. */
 u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data[12] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 6),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 6),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 3),
 	    0xB0800000,
-	aobjEvent32SetValAfterBlock(0x001, 6),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 6),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 3),
 	    0x32C00000,
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint_data),    /* chain back to data start */

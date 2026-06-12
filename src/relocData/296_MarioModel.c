@@ -949,15 +949,15 @@ AObjEvent32 **dMarioModel_JointTree_post[25] = {
 
 /* gap sub-block @ 0x26E4 (was gap+0x14, 48 bytes) — AObjEvent32 anim script */
 u32 dMarioModel_gap_0x26D0_sub_0x14[12] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
@@ -965,206 +965,206 @@ u32 dMarioModel_gap_0x26D0_sub_0x14[12] = {
 
 /* AObjEvent32 anim/matanim scripts pointed to by sub_0x2DC..0x308 cells. */
 u32 dMarioModel_gap_0x26D0_sub_0x44[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x74[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0xA4[12] = {
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 50),
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(48),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0xD4[12] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x104[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x7B2108FF,  /* 8.361422566823776e+35f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x7B2108FF,  /* RGBA(123, 33, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x134[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x164[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x194[17] = {
-	aobjEvent32SetExtValAfterBlock(0x018, 0),
-	    0x83271400,  /* -4.909984802087e-37f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00530000,  /* 7.62234618111327e-39f */
-	    0x000F0000,  /* 1.3775324423698682e-39f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00278700,  /* 3.630013225088723e-39f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x36120800,  /* 2.1760351955890656e-06f */
-	    0x17070000,  /* 4.362085261510107e-25f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0x50004600,  /* 8608284672.0f */
-	    0x24001C00,  /* 2.7779292538152034e-17f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0x83271400,  /* RGBA(131, 39, 20, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00530000,  /* RGBA(0, 83, 0, 0) */
+	    0x000F0000,  /* RGBA(0, 15, 0, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00278700,  /* RGBA(0, 39, 135, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x36120800,  /* RGBA(54, 18, 8, 0) */
+	    0x17070000,  /* RGBA(23, 7, 0, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x50004600,  /* RGBA(80, 0, 70, 0) */
+	    0x24001C00,  /* RGBA(36, 0, 28, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x1D8[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x208[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x238[17] = {
-	aobjEvent32SetExtValAfterBlock(0x018, 0),
-	    0x83271400,  /* -4.909984802087e-37f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00530000,  /* 7.62234618111327e-39f */
-	    0x000F0000,  /* 1.3775324423698682e-39f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00278700,  /* 3.630013225088723e-39f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x36120800,  /* 2.1760351955890656e-06f */
-	    0x17070000,  /* 4.362085261510107e-25f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0x50004600,  /* 8608284672.0f */
-	    0x24001C00,  /* 2.7779292538152034e-17f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0x83271400,  /* RGBA(131, 39, 20, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00530000,  /* RGBA(0, 83, 0, 0) */
+	    0x000F0000,  /* RGBA(0, 15, 0, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00278700,  /* RGBA(0, 39, 135, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x36120800,  /* RGBA(54, 18, 8, 0) */
+	    0x17070000,  /* RGBA(23, 7, 0, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x50004600,  /* RGBA(80, 0, 70, 0) */
+	    0x24001C00,  /* RGBA(36, 0, 28, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x27C[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x26D0_sub_0x2AC[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
@@ -2031,229 +2031,229 @@ AObjEvent32 **dMarioModel_JointTree_0x4590_post[25] = {
 
 /* AObjEvent32 anim/matanim scripts pointed to by sub_0x2FC..0x32C cells. */
 u32 dMarioModel_gap_0x4A60_sub_0x14[12] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x44[14] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	    0xFFFFFF00,  /* nanf */
-	    0x4C4C4C00,  /* 53555200.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x4C4C4C00,  /* RGBA(76, 76, 76, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x7C[14] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	    0xFFFFFF00,  /* nanf */
-	    0x4C4C4C00,  /* 53555200.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x4C4C4C00,  /* RGBA(76, 76, 76, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0xB4[12] = {
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 50),
+	aobjEvent32SetValBlock(AOBJ_MATFLAG_TEXID, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(48),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0xE4[12] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_PALETTEID, 1),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x114[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x7B2108FF,  /* 8.361422566823776e+35f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x7B2108FF,  /* RGBA(123, 33, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x144[14] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	    0xFFFFFF00,  /* nanf */
-	    0x4C4C4C00,  /* 53555200.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x4C4C4C00,  /* RGBA(76, 76, 76, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x17C[14] = {
-	aobjEvent32SetExtValAfterBlock(0x019, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	    0xFFFFFF00,  /* nanf */
-	    0x4C4C4C00,  /* 53555200.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFE700FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xF7E78CFF,  /* -9.392814959746075e+33f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x5242FFFF,  /* 209379639296.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00CE00FF,  /* 1.8918469539654592e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR | AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	    0xFFFFFF00,  /* RGBA(255, 255, 255, 0) */
+	    0x4C4C4C00,  /* RGBA(76, 76, 76, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFE700FF,  /* RGBA(255, 231, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xF7E78CFF,  /* RGBA(247, 231, 140, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x5242FFFF,  /* RGBA(82, 66, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00CE00FF,  /* RGBA(0, 206, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x1B4[17] = {
-	aobjEvent32SetExtValAfterBlock(0x018, 0),
-	    0x83271400,  /* -4.909984802087e-37f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00530000,  /* 7.62234618111327e-39f */
-	    0x000F0000,  /* 1.3775324423698682e-39f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00278700,  /* 3.630013225088723e-39f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x36120800,  /* 2.1760351955890656e-06f */
-	    0x17070000,  /* 4.362085261510107e-25f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0x50004600,  /* 8608284672.0f */
-	    0x24001C00,  /* 2.7779292538152034e-17f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0x83271400,  /* RGBA(131, 39, 20, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00530000,  /* RGBA(0, 83, 0, 0) */
+	    0x000F0000,  /* RGBA(0, 15, 0, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00278700,  /* RGBA(0, 39, 135, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x36120800,  /* RGBA(54, 18, 8, 0) */
+	    0x17070000,  /* RGBA(23, 7, 0, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x50004600,  /* RGBA(80, 0, 70, 0) */
+	    0x24001C00,  /* RGBA(36, 0, 28, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x1F8[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x228[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x258[17] = {
-	aobjEvent32SetExtValAfterBlock(0x018, 0),
-	    0x83271400,  /* -4.909984802087e-37f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00530000,  /* 7.62234618111327e-39f */
-	    0x000F0000,  /* 1.3775324423698682e-39f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x00278700,  /* 3.630013225088723e-39f */
-	    0x240F1100,  /* 3.102258169318875e-17f */
-	aobjEvent32SetExtValAfterBlock(0x018, 1),
-	    0x36120800,  /* 2.1760351955890656e-06f */
-	    0x17070000,  /* 4.362085261510107e-25f */
-	aobjEvent32SetExtValAfter(0x018, 1),
-	    0x50004600,  /* 8608284672.0f */
-	    0x24001C00,  /* 2.7779292538152034e-17f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 0),
+	    0x83271400,  /* RGBA(131, 39, 20, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00530000,  /* RGBA(0, 83, 0, 0) */
+	    0x000F0000,  /* RGBA(0, 15, 0, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x00278700,  /* RGBA(0, 39, 135, 0) */
+	    0x240F1100,  /* RGBA(36, 15, 17, 0) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x36120800,  /* RGBA(54, 18, 8, 0) */
+	    0x17070000,  /* RGBA(23, 7, 0, 0) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_LIGHT1COLOR | AOBJ_EXTFLAG_LIGHT2COLOR, 1),
+	    0x50004600,  /* RGBA(80, 0, 70, 0) */
+	    0x24001C00,  /* RGBA(36, 0, 28, 0) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x29C[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };
 
 u32 dMarioModel_gap_0x4A60_sub_0x2CC[12] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x0000F7FF,  /* 8.896423560458966e-41f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xBD009CFF,  /* -0.03139972314238548f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x521008FF,  /* 154656555008.0f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xEF0018FF,  /* -3.964429968025605e+28f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xEF6300FF,  /* -7.025430143289846e+28f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x0000F7FF,  /* RGBA(0, 0, 247, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xBD009CFF,  /* RGBA(189, 0, 156, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x521008FF,  /* RGBA(82, 16, 8, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF0018FF,  /* RGBA(239, 0, 24, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xEF6300FF,  /* RGBA(239, 99, 0, 255) */
 	aobjEvent32Wait(97),
 	aobjEvent32End(),
 };

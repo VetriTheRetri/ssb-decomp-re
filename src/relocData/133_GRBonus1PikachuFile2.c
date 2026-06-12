@@ -466,14 +466,14 @@ AObjEvent32 *dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[3] = {
 
 /* AObjEvent32 script (loops via SetAnim back to its own head). */
 u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0xC4834000,  /* -1050.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x44CE4000,  /* 1650.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 60),
 	    0xC4A8C000,  /* -1350.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 60),
 	    0xC4834000,  /* -1050.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data,
@@ -510,14 +510,14 @@ AObjEvent32 *dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_ptrs_0x254[10] = {
 
 /* Second AObjEvent32 script. */
 u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0xC4160000,  /* -600.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x44CE4000,  /* 1650.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 60),
 	    0xC4610000,  /* -900.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 60),
 	    0xC4160000,  /* -600.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1PikachuFile2_Layer1Anim_AnimJoint_data_0x27C,

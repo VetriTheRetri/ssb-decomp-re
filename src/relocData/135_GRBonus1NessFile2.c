@@ -568,14 +568,14 @@ AObjEvent32 *dGRBonus1NessFile2_Layer1Anim_AnimJoint[3] = {
 
 /* AObjEvent32 script 1 (loops via SetAnim). */
 u32 dGRBonus1NessFile2_Layer1Anim_AnimJoint_data[11] = {
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAX, 0),
 	    0xC57D2000,  /* -4050.0f */
-	aobjEvent32SetValAfterBlock(0x060, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ, 0),
 	    0xC4834000,  /* -1050.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 60),
 	    0xC557A000,  /* -3450.0f */
-	aobjEvent32SetVal0RateBlock(0x010, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAX, 60),
 	    0xC57D2000,  /* -4050.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1NessFile2_Layer1Anim_AnimJoint_data,
@@ -614,14 +614,14 @@ AObjEvent32 *dGRBonus1NessFile2_Layer1Anim_AnimJoint_ptrs_0x268[5] = {
 
 /* AObjEvent32 script 2 (loops via SetAnim). */
 u32 dGRBonus1NessFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0xC5034000,  /* -2100.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x45A8C000,  /* 5400.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 60),
 	    0xC4BB8000,  /* -1500.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 60),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 60),
 	    0xC5034000,  /* -2100.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1NessFile2_Layer1Anim_AnimJoint_data_0x27C,

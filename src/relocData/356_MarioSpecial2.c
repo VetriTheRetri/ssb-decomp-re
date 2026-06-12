@@ -104,30 +104,30 @@ u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6CC[] = {
 };
 
 u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint_0x6D8[] = {
-	aobjEvent32SetVal(0x120, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY | AOBJ_FLAG_SCAY, 0),
 	    0x41674408,  /* 14.454109191894531f */
 	    0x3727C5AC,  /* 9.999999747378752e-06f */
-	aobjEvent32SetValAfter(0x2D0, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ | AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x120, 7),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_SCAY, 7),
 	    0x41674408,  /* 14.454109191894531f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetVal(0x100, 86),
+	aobjEvent32SetVal(AOBJ_FLAG_SCAY, 86),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValBlock(0x020, 18),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 18),
 	    0x43A08006,  /* 321.00018310546875f */
-	aobjEvent32SetValBlock(0x020, 50),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 50),
 	    0x43A08006,  /* 321.00018310546875f */
-	aobjEvent32SetValBlock(0x020, 18),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 18),
 	    0x41674410,  /* 14.454116821289062f */
-	aobjEvent32SetVal(0x020, 27),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY, 27),
 	    0x41674410,  /* 14.454116821289062f */
-	aobjEvent32SetValBlock(0x100, 7),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAY, 7),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x100, 20),
+	aobjEvent32SetValBlock(AOBJ_FLAG_SCAY, 20),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };

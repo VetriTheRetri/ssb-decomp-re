@@ -135,9 +135,9 @@ AObjEvent32 *dLinkSpecial3_BoomerangDL_post_anim_ptrs[3] = {
 
 /* @ 0x6CC, 28 bytes: AObjEvent32 script — SetValBlock pair + SetAnim loopback. */
 u32 dLinkSpecial3_BoomerangDL_post_anim_script[7] = {
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTX, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 6),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTX, 6),
 	    0x40C90FDB,  /* 6.2831854820251465f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dLinkSpecial3_BoomerangDL_post_anim_script,

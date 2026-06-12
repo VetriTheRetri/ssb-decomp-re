@@ -107,16 +107,16 @@ AObjEvent32 *dIFCommonObject_AnimJoint[9] = {
 
 /* Script 1 (joint with DL_0x0DF0): idle Y-drop bob. */
 u32 dIFCommonObject_AnimJoint_0x3D9C[] = {
-	aobjEvent32SetVal(0x020, 0),  /* TraY */
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY, 0),  /* TraY */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfter(0x050, 0),  /* TraX|TraZ */
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),  /* TraX|TraZ */
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x020, 31),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 31),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x020, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 16),
 	    0xC3960000,  /* -300.0f */
-	aobjEvent32SetValBlock(0x020, 80),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 80),
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dIFCommonObject_AnimJoint_0x3D9C),
@@ -124,21 +124,21 @@ u32 dIFCommonObject_AnimJoint_0x3D9C[] = {
 
 /* Script 2 (joint with DL_0x10F8): idle bob + RotZ pi/2. */
 u32 dIFCommonObject_AnimJoint_0x3DD0[] = {
-	aobjEvent32SetVal(0x024, 0),  /* RotZ|TraY */
+	aobjEvent32SetVal(AOBJ_FLAG_ROTZ | AOBJ_FLAG_TRAY, 0),  /* RotZ|TraY */
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValAfter(0x053, 0),  /* RotX|RotY|TraX|TraZ */
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTX | AOBJ_FLAG_ROTY | AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),  /* RotX|RotY|TraX|TraZ */
 	    0x00000000,
 	    0x00000000,
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x024, 39),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTZ | AOBJ_FLAG_TRAY, 39),
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x024, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTZ | AOBJ_FLAG_TRAY, 16),
 	    0x3FC90FDB,  /* 1.5707963705062866f (pi/2) */
 	    0xC3960000,  /* -300.0f */
-	aobjEvent32SetValBlock(0x024, 72),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTZ | AOBJ_FLAG_TRAY, 72),
 	    0x3FC90FDB,
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
@@ -148,28 +148,28 @@ u32 dIFCommonObject_AnimJoint_0x3DD0[] = {
 /* Script 3 (joint with DL_0x1B60): idle bob + uniform scale-down to
  * 0.5x while dropping. */
 u32 dIFCommonObject_AnimJoint_0x3E1C[] = {
-	aobjEvent32SetVal(0x3A0, 0),  /* TraY|ScaX|ScaY|ScaZ */
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY | AOBJ_FLAG_SCAXYZ, 0),  /* TraY|ScaX|ScaY|ScaZ */
 	    0x00000000,
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,
 	    0x3F800000,
-	aobjEvent32SetValAfter(0x050, 0),  /* TraX|TraZ */
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),  /* TraX|TraZ */
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetVal(0x380, 47),  /* ScaX|ScaY|ScaZ */
+	aobjEvent32SetVal(AOBJ_FLAG_SCAXYZ, 47),  /* ScaX|ScaY|ScaZ */
 	    0x3F800000,
 	    0x3F800000,
 	    0x3F800000,
-	aobjEvent32SetValBlock(0x020, 31),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 31),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 16),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x3A0, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_SCAXYZ, 16),
 	    0xC3960000,
 	    0x3F000000,  /* 0.5f */
 	    0x3F000000,
 	    0x3F000000,
-	aobjEvent32SetValBlock(0x3A0, 64),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY | AOBJ_FLAG_SCAXYZ, 64),
 	    0xC3960000,
 	    0x3F000000,
 	    0x3F000000,
@@ -180,18 +180,18 @@ u32 dIFCommonObject_AnimJoint_0x3E1C[] = {
 
 /* Script 4 (joint with DL_0x25B8): idle bob. */
 u32 dIFCommonObject_AnimJoint_0x3E8C[] = {
-	aobjEvent32SetVal(0x020, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY, 0),
 	    0x00000000,
-	aobjEvent32SetValAfter(0x050, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 31),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 31),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 24),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 24),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 16),
 	    0xC3960000,
-	aobjEvent32SetValBlock(0x020, 56),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 56),
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dIFCommonObject_AnimJoint_0x3E8C),
@@ -199,24 +199,24 @@ u32 dIFCommonObject_AnimJoint_0x3E8C[] = {
 
 /* Script 5 (joint with DL_0x2838): idle bob + RotY pi. */
 u32 dIFCommonObject_AnimJoint_0x3EC8[] = {
-	aobjEvent32SetVal(0x022, 0),  /* RotY|TraY */
+	aobjEvent32SetVal(AOBJ_FLAG_ROTY | AOBJ_FLAG_TRAY, 0),  /* RotY|TraY */
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValAfter(0x055, 0),  /* RotX|RotZ|TraX|TraZ */
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTX | AOBJ_FLAG_ROTZ | AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),  /* RotX|RotZ|TraX|TraZ */
 	    0x00000000,
 	    0x00000000,
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetVal(0x002, 63),  /* RotY */
+	aobjEvent32SetVal(AOBJ_FLAG_ROTY, 63),  /* RotY */
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 31),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 31),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 32),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 32),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x022, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTY | AOBJ_FLAG_TRAY, 16),
 	    0x40490FDB,  /* 3.1415927410125732f (pi) */
 	    0xC3960000,
-	aobjEvent32SetValBlock(0x022, 48),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTY | AOBJ_FLAG_TRAY, 48),
 	    0x40490FDB,
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
@@ -225,18 +225,18 @@ u32 dIFCommonObject_AnimJoint_0x3EC8[] = {
 
 /* Script 6 (joint with DL_0x2EC8): idle bob. */
 u32 dIFCommonObject_AnimJoint_0x3F20[] = {
-	aobjEvent32SetVal(0x020, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY, 0),
 	    0x00000000,
-	aobjEvent32SetValAfter(0x050, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 63),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 63),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 8),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 8),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 16),
 	    0xC3960000,
-	aobjEvent32SetValBlock(0x020, 40),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 40),
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dIFCommonObject_AnimJoint_0x3F20),
@@ -244,18 +244,18 @@ u32 dIFCommonObject_AnimJoint_0x3F20[] = {
 
 /* Script 7 (joint with DL_0x3560): idle bob. */
 u32 dIFCommonObject_AnimJoint_0x3F5C[] = {
-	aobjEvent32SetVal(0x020, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY, 0),
 	    0x00000000,
-	aobjEvent32SetValAfter(0x050, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 31),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 31),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 48),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 48),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 16),
 	    0xC3960000,
-	aobjEvent32SetValBlock(0x020, 32),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 32),
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dIFCommonObject_AnimJoint_0x3F5C),
@@ -263,18 +263,18 @@ u32 dIFCommonObject_AnimJoint_0x3F5C[] = {
 
 /* Script 8 (joint with DL_0x3840): idle bob. */
 u32 dIFCommonObject_AnimJoint_0x3F98[] = {
-	aobjEvent32SetVal(0x020, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAY, 0),
 	    0x00000000,
-	aobjEvent32SetValAfter(0x050, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 39),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 39),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 48),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 48),
 	    0x00000000,
-	aobjEvent32SetValBlock(0x020, 16),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 16),
 	    0xC3960000,
-	aobjEvent32SetValBlock(0x020, 24),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAY, 24),
 	    0xC3960000,
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)(dIFCommonObject_AnimJoint_0x3F98),

@@ -412,14 +412,14 @@ AObjEvent32 *dGRBonus1MarioFile2_Layer1Anim_AnimJoint[3] = {
 
 /* AObjEvent32 script 1 (loops via SetAnim). */
 u32 dGRBonus1MarioFile2_Layer1Anim_AnimJoint_data[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0x44BB8000,  /* 1500.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x4528C000,  /* 2700.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0x454E4000,  /* 3300.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0x44BB8000,  /* 1500.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1MarioFile2_Layer1Anim_AnimJoint_data,
@@ -463,14 +463,14 @@ AObjEvent32 *dGRBonus1MarioFile2_Layer1Anim_AnimJoint_ptrs_0x254[10] = {
 
 /* AObjEvent32 script 2 (loops via SetAnim). */
 u32 dGRBonus1MarioFile2_Layer1Anim_AnimJoint_data_0x27C[11] = {
-	aobjEvent32SetVal0Rate(0x020, 0),
+	aobjEvent32SetVal0Rate(AOBJ_FLAG_TRAY, 0),
 	    0x45034000,  /* 2100.0f */
-	aobjEvent32SetValAfterBlock(0x050, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAZ, 0),
 	    0x4528C000,  /* 2700.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0x4573C000,  /* 3900.0f */
-	aobjEvent32SetVal0RateBlock(0x020, 150),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 150),
 	    0x45034000,  /* 2100.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dGRBonus1MarioFile2_Layer1Anim_AnimJoint_data_0x27C,

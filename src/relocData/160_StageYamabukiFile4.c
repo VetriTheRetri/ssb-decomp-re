@@ -112,27 +112,27 @@ AObjEvent32 *dStageYamabukiFile4_DObjDesc_0x08A0_AnimJoint[5] = {
 };
 
 u32 dStageYamabukiFile4_data_0x09C4[6] = {
-	aobjEvent32SetVal0RateBlock(0x040, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValRateBlock(0x040, 10),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAZ, 10),
 	    0x43A50000,  /* 330.0f */
 	    0x3F97F144,  /* 1.1870503425598145f */
 	aobjEvent32End(),
 };
 
 u32 dStageYamabukiFile4_data_0x09DC[6] = {
-	aobjEvent32SetVal0RateBlock(0x020, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 0),
 	    0x43C30000,  /* 390.0f */
-	aobjEvent32SetValRateBlock(0x020, 10),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAY, 10),
 	    0xC1F00000,  /* -30.0f */
 	    0xBFC1619D,  /* -1.5107914209365845f */
 	aobjEvent32End(),
 };
 
 u32 dStageYamabukiFile4_data_0x09F4[6] = {
-	aobjEvent32SetVal0RateBlock(0x040, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValRateBlock(0x040, 10),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAZ, 10),
 	    0xC3A50000,  /* -330.0f */
 	    0xBF97F144,  /* -1.1870503425598145f */
 	aobjEvent32End(),
@@ -156,28 +156,28 @@ AObjEvent32 *dStageYamabukiFile4_DObjDesc_0x08A0_AnimJoint2[5] = {
 };
 
 u32 dStageYamabukiFile4_data_0x0A34[6] = {
-	aobjEvent32SetValRateBlock(0x040, 0),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAZ, 0),
 	    0x43A50000,  /* 330.0f */
 	    0xBF97F144,  /* -1.1870503425598145f */
-	aobjEvent32SetVal0RateBlock(0x040, 10),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAZ, 10),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };
 
 u32 dStageYamabukiFile4_data_0x0A4C[6] = {
-	aobjEvent32SetValRateBlock(0x020, 0),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAY, 0),
 	    0xC1F00000,  /* -30.0f */
 	    0x3FC1619D,  /* 1.5107914209365845f */
-	aobjEvent32SetVal0RateBlock(0x020, 10),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAY, 10),
 	    0x43C30000,  /* 390.0f */
 	aobjEvent32End(),
 };
 
 u32 dStageYamabukiFile4_data_0x0A64[6] = {
-	aobjEvent32SetValRateBlock(0x040, 0),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAZ, 0),
 	    0xC3A50000,  /* -330.0f */
 	    0x3F97F144,  /* 1.1870503425598145f */
-	aobjEvent32SetVal0RateBlock(0x040, 10),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_TRAZ, 10),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32End(),
 };

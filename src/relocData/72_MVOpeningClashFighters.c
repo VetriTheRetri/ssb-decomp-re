@@ -132,19 +132,19 @@ PAD(12);
 
 /* CamAnimJoint @ 0x1440 (64 bytes) */
 u32 dMVOpeningClashFighters_CamAnimJoint[15] = {
-	aobjEvent32SetValAfter(0x266, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0x43520000,  /* 210.0f */
 	    0x00000000,  /* 0.0f */
 	    0x43520000,  /* 210.0f */
 	    0x00000000,  /* 0.0f */
 	    0x41838232,  /* 16.43857192993164f */
-	aobjEvent32SetVal0Rate(0x010, 0),
+	aobjEvent32SetVal0Rate(AOBJ_CAMFLAG_ATX, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetValBlock(AOBJ_CAMFLAG_EYEX, 0),
 	    0xC5672ED2,  /* -3698.92626953125f */
-	aobjEvent32SetVal0Rate(0x010, 170),
+	aobjEvent32SetVal0Rate(AOBJ_CAMFLAG_ATX, 170),
 	    0x44D1A001,  /* 1677.0001220703125f */
-	aobjEvent32SetValBlock(0x001, 170),
+	aobjEvent32SetValBlock(AOBJ_CAMFLAG_EYEX, 170),
 	    0xC525C869,  /* -2652.525634765625f */
 	aobjEvent32End(),
 };

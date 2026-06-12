@@ -10,7 +10,7 @@
 
 /* CamAnimJoint MarioCamAnimJoint @ 0x0000 (48 bytes) */
 u32 dMVOpeningCommon_MarioCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0x43E0BD64,  /* 449.4796142578125f */
 	    0x438342D8,  /* 262.522216796875f */
 	    0x4458B992,  /* 866.8995361328125f */
@@ -26,7 +26,7 @@ PAD(8);
 
 /* CamAnimJoint DonkeyCamAnimJoint @ 0x0030 (48 bytes) */
 u32 dMVOpeningCommon_DonkeyCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0xC38F6F05,  /* -286.8673400878906f */
 	    0x438C0EC1,  /* 280.1152648925781f */
 	    0x4413780A,  /* 589.8756103515625f */
@@ -42,7 +42,7 @@ PAD(8);
 
 /* CamAnimJoint SamusCamAnimJoint @ 0x0060 (48 bytes) */
 u32 dMVOpeningCommon_SamusCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0xC28799D0,  /* -67.8004150390625f */
 	    0x4441B511,  /* 774.8291625976562f */
 	    0x4573CE72,  /* 3900.90283203125f */
@@ -58,7 +58,7 @@ PAD(8);
 
 /* CamAnimJoint FoxCamAnimJoint @ 0x0090 (48 bytes) */
 u32 dMVOpeningCommon_FoxCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0xC3811EC5,  /* -258.2403869628906f */
 	    0x438F11EA,  /* 286.13995361328125f */
 	    0x43D9B474,  /* 435.4097900390625f */
@@ -74,7 +74,7 @@ PAD(8);
 
 /* CamAnimJoint LinkCamAnimJoint @ 0x00C0 (48 bytes) */
 u32 dMVOpeningCommon_LinkCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0x423C3D48,  /* 47.059844970703125f */
 	    0x43586FB6,  /* 216.43637084960938f */
 	    0x442E044F,  /* 696.0673217773438f */
@@ -90,7 +90,7 @@ PAD(8);
 
 /* CamAnimJoint YoshiCamAnimJoint @ 0x00F0 (48 bytes) */
 u32 dMVOpeningCommon_YoshiCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0xC1200D56,  /* -10.003255844116211f */
 	    0x43802D80,  /* 256.35546875f */
 	    0x44C44629,  /* 1570.1925048828125f */
@@ -106,7 +106,7 @@ PAD(8);
 
 /* CamAnimJoint PikachuCamAnimJoint @ 0x0120 (48 bytes) */
 u32 dMVOpeningCommon_PikachuCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0x437D518E,  /* 253.31857299804688f */
 	    0x4424FFA4,  /* 659.994384765625f */
 	    0x45260092,  /* 2656.03564453125f */
@@ -122,7 +122,7 @@ PAD(8);
 
 /* CamAnimJoint KirbyCamAnimJoint @ 0x0150 (48 bytes) */
 u32 dMVOpeningCommon_KirbyCamAnimJoint[10] = {
-	aobjEvent32SetValAfter(0x277, 0),
+	aobjEvent32SetValAfter(AOBJ_CAMFLAG_EYEX | AOBJ_CAMFLAG_EYEY | AOBJ_CAMFLAG_EYEZ | AOBJ_CAMFLAG_ATX | AOBJ_CAMFLAG_ATY | AOBJ_CAMFLAG_ATZ | AOBJ_CAMFLAG_FOVY, 0),
 	    0x41989603,  /* 19.0732479095459f */
 	    0x43E524A6,  /* 458.28631591796875f */
 	    0x44ACD3C2,  /* 1382.617431640625f */

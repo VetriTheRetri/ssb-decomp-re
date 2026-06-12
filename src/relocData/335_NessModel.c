@@ -942,13 +942,13 @@ void *dNessModel_gap_0x2B80[27] = {
  * were halves of the same script. `gap_0x2C04_sub_0x1D8[0]` chain-points
  * to this symbol. */
 u32 dNessModel_script_0x2BEC[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -959,13 +959,13 @@ u32 dNessModel_script_0x2BEC[10] = {
  * mistyped as a palette (u16[20]) because the byte layout coincidentally
  * matches 16 LUT colors + 4 trailing zeros. */
 u32 dNessModel_gap_0x2C04_sub_0x10[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -974,27 +974,27 @@ u32 dNessModel_gap_0x2C04_sub_0x10[10] = {
 /* AObjEvent32 script @ 0x2C3C — Ext-color ramp (track 0x001) cycling
  * four RGBA8 packed colors then Wait(98) + End. Was mistyped as palette. */
 u32 dNessModel_gap_0x2C04_sub_0x38[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,  /* -1.5022252390726089e-31f raw / RGBA: 8C42FFFF */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,  /* RGBA: 393939FF */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,  /* RGBA: CE4A84FF */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,  /* RGBA: FF7300FF */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* AObjEvent32 script @ 0x2C64 — duplicate of sub_0x10 (PaletteID ramp). */
 u32 dNessModel_gap_0x2C04_sub_0x60[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1002,17 +1002,17 @@ u32 dNessModel_gap_0x2C04_sub_0x60[10] = {
 
 /* gap sub-block @ 0x2C8C (was gap+0x88, 56 bytes) */
 u32 dNessModel_gap_0x2C04_sub_0x88[14] = {
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTX, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 50),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTX, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_ROTX, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_ROTX, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_ROTX, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTX, 1),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(47),
 	aobjEvent32End(),
@@ -1020,41 +1020,41 @@ u32 dNessModel_gap_0x2C04_sub_0x88[14] = {
 
 /* gap sub-block @ 0x2CC4 (was gap+0xC0, 40 bytes) */
 u32 dNessModel_gap_0x2C04_sub_0xC0[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFCE00FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x0000FFFF,  /* 9.183409485952689e-41f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00BD00FF,  /* 1.7357266104968742e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFCE00FF,  /* RGBA(255, 206, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x0000FFFF,  /* RGBA(0, 0, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00BD00FF,  /* RGBA(0, 189, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x2CEC (was gap+0xE8, 40 bytes) */
 u32 dNessModel_gap_0x2C04_sub_0xE8[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,  /* -1.5022252390726089e-31f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,  /* 0.0001766458008205518f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,  /* -849428416.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,  /* -3.230075749901835e+38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* AObjEvent32 script @ 0x2D14 — duplicate of sub_0x10 (PaletteID ramp). */
 u32 dNessModel_gap_0x2C04_sub_0x110[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1062,13 +1062,13 @@ u32 dNessModel_gap_0x2C04_sub_0x110[10] = {
 
 /* AObjEvent32 script @ 0x2D3C — duplicate of sub_0x10 (PaletteID ramp). */
 u32 dNessModel_gap_0x2C04_sub_0x138[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1076,27 +1076,27 @@ u32 dNessModel_gap_0x2C04_sub_0x138[10] = {
 
 /* AObjEvent32 script @ 0x2D64 — duplicate of sub_0x38 (Ext-color ramp). */
 u32 dNessModel_gap_0x2C04_sub_0x160[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,  /* RGBA: 8C42FFFF */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,  /* RGBA: 393939FF */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,  /* RGBA: CE4A84FF */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,  /* RGBA: FF7300FF */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* AObjEvent32 script @ 0x2D8C — duplicate of sub_0x10 (PaletteID ramp). */
 u32 dNessModel_gap_0x2C04_sub_0x188[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1104,14 +1104,14 @@ u32 dNessModel_gap_0x2C04_sub_0x188[10] = {
 
 /* AObjEvent32 script @ 0x2DB4 — duplicate of sub_0x38 (Ext-color ramp). */
 u32 dNessModel_gap_0x2C04_sub_0x1B0[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,  /* RGBA: 8C42FFFF */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,  /* RGBA: 393939FF */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,  /* RGBA: CE4A84FF */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,  /* RGBA: FF7300FF */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
@@ -1914,13 +1914,13 @@ void *dNessModel_gap_0x54B8[29] = {
  * DObjDesc tail) + `gap_0x553C` (the 6-word tail). gap_0x553C_sub_0x1E0[0]
  * chain-points to this symbol. */
 u32 dNessModel_script_0x552C[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1929,13 +1929,13 @@ u32 dNessModel_script_0x552C[10] = {
 /* AObjEvent32 script @ 0x5554 — PaletteID ramp (track 0x200) — mistyped
  * as palette previously (40 bytes matches LUT layout). */
 u32 dNessModel_gap_0x553C_sub_0x18[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1943,27 +1943,27 @@ u32 dNessModel_gap_0x553C_sub_0x18[10] = {
 
 /* AObjEvent32 script @ 0x557C — Ext-color ramp (track 0x001). */
 u32 dNessModel_gap_0x553C_sub_0x40[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* AObjEvent32 script @ 0x55A4 — duplicate of sub_0x18 (PaletteID ramp). */
 u32 dNessModel_gap_0x553C_sub_0x68[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -1971,17 +1971,17 @@ u32 dNessModel_gap_0x553C_sub_0x68[10] = {
 
 /* gap sub-block @ 0x55CC (was gap+0x90, 56 bytes) */
 u32 dNessModel_gap_0x553C_sub_0x90[14] = {
-	aobjEvent32SetValBlock(0x001, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTX, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x001, 50),
+	aobjEvent32SetValBlock(AOBJ_FLAG_ROTX, 50),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_ROTX, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_ROTX, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_ROTX, 1),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x001, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_ROTX, 1),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(47),
 	aobjEvent32End(),
@@ -1989,41 +1989,41 @@ u32 dNessModel_gap_0x553C_sub_0x90[14] = {
 
 /* gap sub-block @ 0x5604 (was gap+0xC8, 40 bytes) */
 u32 dNessModel_gap_0x553C_sub_0xC8[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0xFF0000FF,  /* -1.7014635547491816e+38f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xFFCE00FF,  /* nanf */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x0000FFFF,  /* 9.183409485952689e-41f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0x00BD00FF,  /* 1.7357266104968742e-38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0xFF0000FF,  /* RGBA(255, 0, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFFCE00FF,  /* RGBA(255, 206, 0, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x0000FFFF,  /* RGBA(0, 0, 255, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x00BD00FF,  /* RGBA(0, 189, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* gap sub-block @ 0x562C (was gap+0xF0, 40 bytes) */
 u32 dNessModel_gap_0x553C_sub_0xF0[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,  /* -1.5022252390726089e-31f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,  /* 0.0001766458008205518f */
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,  /* -849428416.0f */
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,  /* -3.230075749901835e+38f */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* AObjEvent32 script @ 0x5654 — duplicate of sub_0x18 (PaletteID ramp). */
 u32 dNessModel_gap_0x553C_sub_0x118[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -2031,13 +2031,13 @@ u32 dNessModel_gap_0x553C_sub_0x118[10] = {
 
 /* AObjEvent32 script @ 0x567C — duplicate of sub_0x18 (PaletteID ramp). */
 u32 dNessModel_gap_0x553C_sub_0x140[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -2045,27 +2045,27 @@ u32 dNessModel_gap_0x553C_sub_0x140[10] = {
 
 /* AObjEvent32 script @ 0x56A4 — duplicate of sub_0x40 (Ext-color ramp). */
 u32 dNessModel_gap_0x553C_sub_0x168[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
 
 /* AObjEvent32 script @ 0x56CC — duplicate of sub_0x18 (PaletteID ramp). */
 u32 dNessModel_gap_0x553C_sub_0x190[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAZ, 1),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x200, 1),
+	aobjEvent32SetValAfter(AOBJ_FLAG_SCAZ, 1),
 	    0x40400000,  /* 3.0f */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
@@ -2073,14 +2073,14 @@ u32 dNessModel_gap_0x553C_sub_0x190[10] = {
 
 /* AObjEvent32 script @ 0x56F4 — duplicate of sub_0x40 (Ext-color ramp). */
 u32 dNessModel_gap_0x553C_sub_0x1B8[10] = {
-	aobjEvent32SetExtValAfterBlock(0x001, 0),
-	    0x8C42FFFF,
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0x393939FF,
-	aobjEvent32SetExtValAfterBlock(0x001, 1),
-	    0xCE4A84FF,
-	aobjEvent32SetExtValAfter(0x001, 1),
-	    0xFF7300FF,
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 0),
+	    0x8C42FFFF,  /* RGBA(140, 66, 255, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0x393939FF,  /* RGBA(57, 57, 57, 255) */
+	aobjEvent32SetExtValAfterBlock(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xCE4A84FF,  /* RGBA(206, 74, 132, 255) */
+	aobjEvent32SetExtValAfter(AOBJ_EXTFLAG_PRIMCOLOR, 1),
+	    0xFF7300FF,  /* RGBA(255, 115, 0, 255) */
 	aobjEvent32Wait(98),
 	aobjEvent32End(),
 };
@@ -2392,19 +2392,19 @@ AObjEvent32 *dNessModel_gap_0x553C_sub_0x27E4[2] = {
 
 /* gap sub-block @ 0x7D28 (was gap+0x27EC, 72 bytes) — AObjEvent32 script */
 u32 dNessModel_gap_0x553C_sub_0x27EC[18] = {
-	aobjEvent32SetValAfterBlock(0x380, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F99999A,  /* 1.2000000476837158f */
 	    0x3F99999A,  /* 1.2000000476837158f */
 	    0x3F99999A,  /* 1.2000000476837158f */
-	aobjEvent32SetValAfterBlock(0x380, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 1),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x380, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 2),
 	    0x3F414F2A,  /* 0.7551141977310181f */
 	    0x3F414F2A,  /* 0.7551141977310181f */
 	    0x3F414F2A,  /* 0.7551141977310181f */
-	aobjEvent32SetValAfterBlock(0x380, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 1),
 	    0x3F99999A,  /* 1.2000000476837158f */
 	    0x3F99999A,  /* 1.2000000476837158f */
 	    0x3F99999A,  /* 1.2000000476837158f */
@@ -2420,13 +2420,13 @@ AObjEvent32 **dNessModel_gap_0x553C_sub_0x2834[2] = {
 
 /* gap sub-block @ 0x7D78 (was gap+0x283C, 40 bytes) — AObjEvent32 script */
 u32 dNessModel_gap_0x553C_sub_0x283C[10] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 1),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 1),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x40000000,  /* 2.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dNessModel_gap_0x553C_sub_0x283C,
@@ -2651,58 +2651,58 @@ AObjEvent32 *dNessModel_PKThunderWaveAnimJoint_AnimJoint[3] = {
 };
 
 u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint_0x9ACC[] = {
-	aobjEvent32SetValAfterBlock(0x3F0, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_TRAXYZ | AOBJ_FLAG_SCAXYZ, 0),
 	    0xC2FF0000,  /* -127.5f */
 	    0x43340000,  /* 180.0f */
 	    0x42AE0000,  /* 87.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A4,  /* 1.4800000190734863f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A4,  /* 1.4800000190734863f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A4,  /* 1.4800000190734863f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A2,  /* 1.4799997806549072f */
 	    0x3FBD70A4,  /* 1.4800000190734863f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
 	    0x3F58BAB6,  /* 0.8465989828109741f */
-	aobjEvent32SetValAfterBlock(0x380, 3),
+	aobjEvent32SetValAfterBlock(AOBJ_FLAG_SCAXYZ, 3),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
@@ -2733,43 +2733,43 @@ AObjEvent32 **dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint[3] = {
  * then loop. Track bit 0 = nGCAnimTrackTextureIDCurrent — i.e. swaps
  * the active texture id (blinking effect for the PKThunder wave). */
 u32 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_0x9BBC[40] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	    (u32)dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint_0x9BBC,

@@ -48,11 +48,11 @@ AObjEvent32 *dMVOpeningRoomTransition_gap_0x0080_AnimJointPtr[1] = {
 /* Orphan AObjEvent32 script for model #1 @ 0x0084 (9 words + 8-byte trailing PAD).
  * Same opcode shape as Outline_AnimJoint: 2 × SetVal0RateBlock(ScaXYZ) + End. */
 u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x84[9] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetVal0RateBlock(0x380, 40),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 40),
 	    0x42100000,  /* 36.0f */
 	    0x42100000,  /* 36.0f */
 	    0x42100000,  /* 36.0f */
@@ -76,11 +76,11 @@ AObjEvent32 *dMVOpeningRoomTransition_gap_0x0170_AnimJointPtr[1] = {
 
 /* Orphan AObjEvent32 script for model #2 @ 0x0174 (identical content to sub_0x84). */
 u32 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[9] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetVal0RateBlock(0x380, 40),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 40),
 	    0x42100000,  /* 36.0f */
 	    0x42100000,  /* 36.0f */
 	    0x42100000,  /* 36.0f */
@@ -137,11 +137,11 @@ AObjEvent32 *dMVOpeningRoomTransition_Overlay_AnimJoint_ptr[1] = {
  * `u32 [523]` which lumped 7 trailing Vtx arrays into the same block; those
  * are now split out below. The Outline DL references them via .reloc. */
 u32 dMVOpeningRoomTransition_Overlay_AnimJoint[9] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
-	aobjEvent32SetVal0RateBlock(0x380, 40),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 40),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
@@ -198,11 +198,11 @@ AObjEvent32 *dMVOpeningRoomTransition_Outline_AnimJoint_ptr[1] = {
 
 /* Raw data from file offset 0x11C4 to 0x11F0 (44 bytes) */
 u32 dMVOpeningRoomTransition_Outline_AnimJoint[9] = {
-	aobjEvent32SetVal0RateBlock(0x380, 0),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 0),
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
 	    0x3D4CCCCD,  /* 0.05000000074505806f */
-	aobjEvent32SetVal0RateBlock(0x380, 40),
+	aobjEvent32SetVal0RateBlock(AOBJ_FLAG_SCAXYZ, 40),
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */
 	    0x3F800000,  /* 1.0f */

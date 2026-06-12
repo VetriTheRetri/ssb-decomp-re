@@ -84,24 +84,24 @@ AObjEvent32 *dLBTransitionSudare2_AnimJoint_0x3F50[3] = {
 };
 
 u32 dLBTransitionSudare2_AnimJoint_0x3F5C[] = {
-	aobjEvent32SetVal(0x030, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfter(0x040, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x030, 64),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 64),
 	    0x45548000,  /* 3400.0f */
 	    0x451C4000,  /* 2500.0f */
 	aobjEvent32End(),
 };
 
 u32 dLBTransitionSudare2_AnimJoint_0x3F80[] = {
-	aobjEvent32SetVal(0x030, 0),
+	aobjEvent32SetVal(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0x00000000,  /* 0.0f */
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfter(0x040, 0),
+	aobjEvent32SetValAfter(AOBJ_FLAG_TRAZ, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x030, 64),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 64),
 	    0xC5548000,  /* -3400.0f */
 	    0xC51C4000,  /* -2500.0f */
 	aobjEvent32End(),

@@ -164,9 +164,9 @@ AObjEvent32 *dSCExplainGraphics_StickNeutral_MatAnimJoint[2] = {
 };
 
 u32 dSCExplainGraphics_StickNeutral_MatAnimJoint_0x5398[] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfter(0x001, 20),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 20),
 	    0x3F800000,  /* 1.0f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
@@ -189,9 +189,9 @@ AObjEvent32 *dSCExplainGraphics_StickHoldUp_MatAnimJoint[2] = {
 };
 
 u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint_0x53C8[] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x001, 10),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 10),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
@@ -214,15 +214,15 @@ AObjEvent32 *dSCExplainGraphics_StickTapUp_MatAnimJoint[2] = {
 };
 
 u32 dSCExplainGraphics_StickTapUp_MatAnimJoint_0x53F8[] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfter(0x001, 20),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 20),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32Cmd12(0x001, 10),
+	aobjEvent32Cmd12(AOBJ_MATFLAG_TEXID, 10),
 	aobjEvent32Wait(10),
-	aobjEvent32SetValAfterBlock(0x001, 5),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 5),
 	    0x40000000,  /* 2.0f */
-	aobjEvent32SetValAfter(0x001, 10),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 10),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32Wait(9),
 	aobjEvent32SetAnim(0x000, 0),
@@ -244,7 +244,7 @@ AObjEvent32 *dSCExplainGraphics_StickHoldForward_MatAnimJoint[2] = {
 };
 
 u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint_0x5438[] = {
-	aobjEvent32SetValAfter(0x001, 0),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 0),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(1),
 	aobjEvent32End(),
@@ -264,11 +264,11 @@ AObjEvent32 *dSCExplainGraphics_StickTapForward_MatAnimJoint[2] = {
 };
 
 u32 dSCExplainGraphics_StickTapForward_MatAnimJoint_0x5458[] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 10),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 10),
 	    0x40400000,  /* 3.0f */
-	aobjEvent32SetValAfter(0x001, 5),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 5),
 	    0x40800000,  /* 4.0f */
 	aobjEvent32Wait(15),
 	aobjEvent32SetAnim(0x000, 0),
@@ -372,11 +372,11 @@ AObjEvent32 *dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint[1] = {
 };
 
 u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint_0x5C24[] = {
-	aobjEvent32SetValAfterBlock(0x001, 0),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValAfterBlock(0x001, 2),
+	aobjEvent32SetValAfterBlock(AOBJ_MATFLAG_TEXID, 2),
 	    0x3F800000,  /* 1.0f */
-	aobjEvent32SetValAfter(0x001, 3),
+	aobjEvent32SetValAfter(AOBJ_MATFLAG_TEXID, 3),
 	    0x40000000,  /* 2.0f */
 	aobjEvent32Wait(6),
 	aobjEvent32End(),

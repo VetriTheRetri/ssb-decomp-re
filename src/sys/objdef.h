@@ -362,6 +362,56 @@ typedef enum AObjTrackKind
 #define AOBJ_FLAG_SCAY   AOBJ_JOINT_BIT(nGCAnimTrackScaY)
 #define AOBJ_FLAG_SCAZ   AOBJ_JOINT_BIT(nGCAnimTrackScaZ)
 
+/* Whole-axis-group shorthands for the joint flags above. */
+#define AOBJ_FLAG_ROTXYZ (AOBJ_FLAG_ROTX | AOBJ_FLAG_ROTY | AOBJ_FLAG_ROTZ)
+#define AOBJ_FLAG_TRAXYZ (AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY | AOBJ_FLAG_TRAZ)
+#define AOBJ_FLAG_SCAXYZ (AOBJ_FLAG_SCAX | AOBJ_FLAG_SCAY | AOBJ_FLAG_SCAZ)
+
+/* Material-track flag bits — for MatAnimJoint scripts, parsed by
+ * gcParseMObjMatAnimJoint(). The same SetVal* commands address a different
+ * track window there: flag bit N drives track nGCAnimTrackMaterialStart + N
+ * (gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart)). Which window a
+ * script uses is decided by the runtime list it's registered on (DObj
+ * anim_joint vs MObj matanim_joint), not by anything in the script itself. */
+#define AOBJ_MAT_BIT(track) (1u << ((track) - nGCAnimTrackMaterialStart))
+#define AOBJ_MATFLAG_TEXID      AOBJ_MAT_BIT(nGCAnimTrackTextureIDCurrent) /* mobj->texture_id_curr */
+#define AOBJ_MATFLAG_TRAU       AOBJ_MAT_BIT(nGCAnimTrackTraU)
+#define AOBJ_MATFLAG_TRAV       AOBJ_MAT_BIT(nGCAnimTrackTraV)
+#define AOBJ_MATFLAG_SCAU       AOBJ_MAT_BIT(nGCAnimTrackScaU)
+#define AOBJ_MATFLAG_SCAV       AOBJ_MAT_BIT(nGCAnimTrackScaV)
+#define AOBJ_MATFLAG_TEXIDNEXT  AOBJ_MAT_BIT(nGCAnimTrackTextureIDNext)    /* mobj->texture_id_next */
+#define AOBJ_MATFLAG_SCRU       AOBJ_MAT_BIT(nGCAnimTrackScrU)
+#define AOBJ_MATFLAG_SCRV       AOBJ_MAT_BIT(nGCAnimTrackScrV)
+#define AOBJ_MATFLAG_LFRAC      AOBJ_MAT_BIT(nGCAnimTrackSetLFrac)
+#define AOBJ_MATFLAG_PALETTEID  AOBJ_MAT_BIT(nGCAnimTrackPaletteID)        /* mobj->palette_id */
+
+/* Material color flag bits — for the SetExtVal* commands. These exist only
+ * in the MObj material parser (neither the DObj joint nor the CObj camera
+ * parser handles SetExt*), so a script using them is always a material
+ * script. Flag bit N drives track nGCAnimTrackMaterialSubStart + N, and
+ * each payload word is a packed RGBA SYColorPack color, NOT an f32. */
+#define AOBJ_EXT_BIT(track) (1u << ((track) - nGCAnimTrackMaterialSubStart))
+#define AOBJ_EXTFLAG_PRIMCOLOR   AOBJ_EXT_BIT(nGCAnimTrackPrimColor)   /* mobj->sub.primcolor */
+#define AOBJ_EXTFLAG_ENVCOLOR    AOBJ_EXT_BIT(nGCAnimTrackEnvColor)    /* mobj->sub.envcolor */
+#define AOBJ_EXTFLAG_BLENDCOLOR  AOBJ_EXT_BIT(nGCAnimTrackBlendColor)  /* mobj->sub.blendcolor */
+#define AOBJ_EXTFLAG_LIGHT1COLOR AOBJ_EXT_BIT(nGCAnimTrackLight1Color) /* mobj->sub.light1color */
+#define AOBJ_EXTFLAG_LIGHT2COLOR AOBJ_EXT_BIT(nGCAnimTrackLight2Color) /* mobj->sub.light2color */
+
+/* Camera-track flag bits — for CamAnimJoint scripts, parsed by
+ * gcParseCObjCamAnimJoint(): flag bit N drives track
+ * nGCAnimTrackCameraStart + N (gcAddAObjForCamera(cobj, i + start)). */
+#define AOBJ_CAM_BIT(track) (1u << ((track) - nGCAnimTrackCameraStart))
+#define AOBJ_CAMFLAG_EYEX  AOBJ_CAM_BIT(nGCAnimTrackEyeX)
+#define AOBJ_CAMFLAG_EYEY  AOBJ_CAM_BIT(nGCAnimTrackEyeY)
+#define AOBJ_CAMFLAG_EYEZ  AOBJ_CAM_BIT(nGCAnimTrackEyeZ)
+#define AOBJ_CAMFLAG_EYEI  AOBJ_CAM_BIT(nGCAnimTrackEyeI)
+#define AOBJ_CAMFLAG_ATX   AOBJ_CAM_BIT(nGCAnimTrackAtX)
+#define AOBJ_CAMFLAG_ATY   AOBJ_CAM_BIT(nGCAnimTrackAtY)
+#define AOBJ_CAMFLAG_ATZ   AOBJ_CAM_BIT(nGCAnimTrackAtZ)
+#define AOBJ_CAMFLAG_ATI   AOBJ_CAM_BIT(nGCAnimTrackAtI)
+#define AOBJ_CAMFLAG_UPX   AOBJ_CAM_BIT(nGCAnimTrackUpX)
+#define AOBJ_CAMFLAG_FOVY  AOBJ_CAM_BIT(nGCAnimTrackFovY)
+
 typedef enum GCStatus
 {
     nGCStatusSystem,

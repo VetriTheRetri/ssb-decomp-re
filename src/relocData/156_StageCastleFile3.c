@@ -26,15 +26,15 @@ AObjEvent32 *dStageCastleFile3_AnimJointRoot[1] = {
  * SetValBlock×5 ramp on track 4 (TraX) animating the platform sweep,
  * then SetAnim loopback to script start. */
 u32 dStageCastleFile3_AnimJoint_0x0004[12] = {
-	aobjEvent32SetValBlock(0x010, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX, 0),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x010, 599),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX, 599),
 	    0xC4834000,  /* -1050.0f */
-	aobjEvent32SetValBlock(0x010, 1200),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX, 1200),
 	    0x44834000,  /* 1050.0f */
-	aobjEvent32SetValBlock(0x010, 600),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX, 600),
 	    0x00000000,  /* 0.0f */
-	aobjEvent32SetValBlock(0x010, 2400),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX, 2400),
 	    0x00000000,  /* 0.0f */
 	aobjEvent32SetAnim(0x000, 0),
 	(u32)dStageCastleFile3_AnimJoint_0x0004,

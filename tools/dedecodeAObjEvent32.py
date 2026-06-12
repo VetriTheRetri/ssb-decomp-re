@@ -27,6 +27,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from aobjflags import parse_flags_expr
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 
@@ -76,8 +79,9 @@ MACRO_CALL_RE = re.compile(
 
 
 def _parse_int(s):
-    s = s.strip()
-    return int(s, 0)
+    # Handles plain integers plus symbolic AOBJ_*FLAG_* names and
+    # `A | B` OR-expressions of them (tools/symbolizeAObjFlags.py output).
+    return parse_flags_expr(s.strip())
 
 
 def encode(name, args_str):

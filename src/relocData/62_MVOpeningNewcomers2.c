@@ -53,25 +53,25 @@ AObjEvent32 *dMVOpeningNewcomers2_CaptainShow_AnimJointPtr[1] = { (AObjEvent32 *
 /* Raw data from file offset 0x1C9D4 to 0x2A448 (55924 bytes) */
 /* AObjEvent32 script for Captain (referenced by CaptainShow_post+0x18) @ 0x1C9D4 (22 words, 88 bytes) */
 u32 dMVOpeningNewcomers2_Captain_AnimJoint[22] = {
-	aobjEvent32SetValRateBlock(0x030, 0),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0x444741EE,  /* 797.0301513671875f */
 	    0xC308DE95,  /* -136.8694610595703f */
 	    0xC3D8011E,  /* -432.00872802734375f */
 	    0x42C7954F,  /* 99.79161834716797f */
-	aobjEvent32SetValRateBlock(0x030, 8),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 8),
 	    0x4345AC0D,  /* 197.6720733642578f */
 	    0xC14020E5,  /* -12.008030891418457f */
 	    0x42A65692,  /* 83.16908264160156f */
 	    0x40920B7F,  /* 4.563903331756592f */
-	aobjEvent32SetTargetRate(0x030, 0),
+	aobjEvent32SetTargetRate(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0xC0EEFB53,  /* -7.468179225921631f */
 	    0x3E8C8D56,  /* 0.2745158076286316f */
-	aobjEvent32SetValRateBlock(0x030, 25),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 25),
 	    0x42D22CEC,  /* 105.08773803710938f */
 	    0xBFF7C364,  /* -1.93565034866333f */
 	    0x4267930A,  /* 57.893592834472656f */
 	    0xC0024C33,  /* -2.035900831222534f */
-	aobjEvent32SetValBlock(0x030, 7),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 7),
 	    0x42D22CEC,  /* 105.08773803710938f */
 	    0x4267930A,  /* 57.893592834472656f */
 	aobjEvent32End(),
@@ -109,29 +109,29 @@ AObjEvent32 *dMVOpeningNewcomers2_NessShow_AnimJointPtr[1] = { (AObjEvent32 *)dM
 /* Raw data from file offset 0x2A864 to 0x355C0 (44380 bytes) */
 /* AObjEvent32 script for Ness (referenced by NessShow_post+0x18) @ 0x2A864 (26 words, 104 bytes) */
 u32 dMVOpeningNewcomers2_Ness_AnimJoint[26] = {
-	aobjEvent32SetValBlock(0x030, 0),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0xC4887D1B,  /* -1091.9095458984375f */
 	    0x427B9602,  /* 62.89649200439453f */
-	aobjEvent32SetValBlock(0x030, 6),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 6),
 	    0xC4887D1B,  /* -1091.9095458984375f */
 	    0x427B9602,  /* 62.89649200439453f */
-	aobjEvent32SetTargetRate(0x030, 0),
+	aobjEvent32SetTargetRate(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0x42B99C07,  /* 92.80474090576172f */
 	    0x429D02F7,  /* 78.50579071044922f */
-	aobjEvent32SetValRateBlock(0x030, 8),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 8),
 	    0xC3FE3DD8,  /* -508.483154296875f */
 	    0x416D26FE,  /* 14.822019577026367f */
 	    0x43B9AC89,  /* 371.3479309082031f */
 	    0x40997694,  /* 4.795724868774414f */
-	aobjEvent32SetTargetRate(0x030, 0),
+	aobjEvent32SetTargetRate(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 0),
 	    0x40D7C1BC,  /* 6.742399215698242f */
 	    0x3EC313E6,  /* 0.3810111880302429f */
-	aobjEvent32SetValRateBlock(0x030, 24),
+	aobjEvent32SetValRateBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 24),
 	    0xC3DFACBB,  /* -447.3494567871094f */
 	    0x3F21663D,  /* 0.6304662823677063f */
 	    0x43B01579,  /* 352.1677551269531f */
 	    0xBFBF928D,  /* -1.4966598749160767f */
-	aobjEvent32SetValBlock(0x030, 2),
+	aobjEvent32SetValBlock(AOBJ_FLAG_TRAX | AOBJ_FLAG_TRAY, 2),
 	    0xC3DFACBB,  /* -447.3494567871094f */
 	    0x43B01579,  /* 352.1677551269531f */
 	aobjEvent32End(),

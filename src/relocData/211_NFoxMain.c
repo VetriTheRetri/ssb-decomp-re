@@ -30,9 +30,9 @@ extern u32 dFoxShieldPose_data0_end[];
 
 /* Pre-attributes data (169 words, 0x02A4 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNFoxMain_pre+0x0) */
-u32 dNFoxMain_file_handles[1] = {
+u32 *dNFoxMain_file_handles[1] = {
 
-	(u32)&dFoxMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
+	(u32 *)&dFoxMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNFoxMain_pre+0x4) */

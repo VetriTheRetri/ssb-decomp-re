@@ -823,11 +823,7 @@ ftMotionCommand dMarioMainMotion_0x0AD0[] = {
 };
 
 ftMotionCommand dMarioMainMotion_ShieldBreak[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionPlayVoice(nSYAudioVoiceMarioDamage),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetHitStatusAll(3),
@@ -839,11 +835,7 @@ ftMotionCommand dMarioMainMotion_Damaged_0x0B28[] = {
 };
 
 ftMotionCommand dMarioMainMotion_StunLandU_0x0B30[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -905,11 +897,7 @@ ftMotionCommand dMarioMainMotion_ThrowF[] = {
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 280, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -933,11 +921,7 @@ ftMotionCommand dMarioMainMotion_ThrowB[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandWaitAsync(10),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 260, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioDownBounce),
 	ftMotionCommandWait(8),
@@ -952,11 +936,7 @@ ftMotionCommand dMarioMainMotion_ThrowB[] = {
 	ftMotionCommandWaitAsync(45),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, -280, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, 150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandClearAttackCollAll(),

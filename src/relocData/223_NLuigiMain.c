@@ -21,9 +21,9 @@ extern DObjDesc dNMarioModel_JointTree[];
 
 /* Pre-attributes data (166 words, 0x0298 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNLuigiMain_pre+0x0) */
-u32 dNLuigiMain_file_handles[1] = {
+u32 *dNLuigiMain_file_handles[1] = {
 
-	(u32)&dLuigiMainMotion_EggLay_0x0024, /* extern -> 0x0024 */
+	(u32 *)&dLuigiMainMotion_EggLay_0x0024, /* extern -> 0x0024 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNLuigiMain_pre+0x4) */

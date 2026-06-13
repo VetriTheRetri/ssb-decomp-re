@@ -25,31 +25,31 @@ extern u16 dFTSamusAnimRollF_script0_1[];
 extern u16 dFTSamusAnimRollF_script0_2[];
 
 /* Pointer array at word 0x0000 (24 slots, 17 intern) */
-u32 dFTSamusAnimRollF_ptrs0[24] = {
-	(u32)dFTSamusAnimRollF_script1_0, /* [0] intern -> 0x004C */
-	(u32)dFTSamusAnimRollF_script1_1, /* [1] intern -> 0x0059 */
-	(u32)dFTSamusAnimRollF_script1_2, /* [2] intern -> 0x006C */
-	(u32)dFTSamusAnimRollF_script1_3, /* [3] intern -> 0x0081 */
-	0x00000000, /* [4] NULL */
-	(u32)dFTSamusAnimRollF_script1_4, /* [5] intern -> 0x00D4 */
-	(u32)dFTSamusAnimRollF_script1_5, /* [6] intern -> 0x00F8 */
-	(u32)dFTSamusAnimRollF_script1_6, /* [7] intern -> 0x0108 */
-	(u32)dFTSamusAnimRollF_script1_7, /* [8] intern -> 0x011E */
-	(u32)dFTSamusAnimRollF_script1_8, /* [9] intern -> 0x0123 */
-	0x00000000, /* [10] NULL */
-	0x00000000, /* [11] NULL */
-	(u32)dFTSamusAnimRollF_script1_9, /* [12] intern -> 0x0128 */
-	(u32)dFTSamusAnimRollF_script1_10, /* [13] intern -> 0x015B */
-	0x00000000, /* [14] NULL */
-	(u32)dFTSamusAnimRollF_script1_11, /* [15] intern -> 0x0177 */
-	(u32)dFTSamusAnimRollF_script1_12, /* [16] intern -> 0x01BE */
-	0x00000000, /* [17] NULL */
-	(u32)dFTSamusAnimRollF_script1_13, /* [18] intern -> 0x01CE */
-	0x00000000, /* [19] NULL */
-	(u32)dFTSamusAnimRollF_script1_14, /* [20] intern -> 0x01FF */
-	(u32)dFTSamusAnimRollF_script1_15, /* [21] intern -> 0x023E */
-	0x00000000, /* [22] NULL */
-	(u32)dFTSamusAnimRollF_script1_16, /* [23] intern -> 0x0258 */
+u16 *dFTSamusAnimRollF_ptrs0[24] = {
+	dFTSamusAnimRollF_script1_0, /* [0] intern -> 0x004C */
+	dFTSamusAnimRollF_script1_1, /* [1] intern -> 0x0059 */
+	dFTSamusAnimRollF_script1_2, /* [2] intern -> 0x006C */
+	dFTSamusAnimRollF_script1_3, /* [3] intern -> 0x0081 */
+	NULL, /* [4] NULL */
+	dFTSamusAnimRollF_script1_4, /* [5] intern -> 0x00D4 */
+	dFTSamusAnimRollF_script1_5, /* [6] intern -> 0x00F8 */
+	dFTSamusAnimRollF_script1_6, /* [7] intern -> 0x0108 */
+	dFTSamusAnimRollF_script1_7, /* [8] intern -> 0x011E */
+	dFTSamusAnimRollF_script1_8, /* [9] intern -> 0x0123 */
+	NULL, /* [10] NULL */
+	NULL, /* [11] NULL */
+	dFTSamusAnimRollF_script1_9, /* [12] intern -> 0x0128 */
+	dFTSamusAnimRollF_script1_10, /* [13] intern -> 0x015B */
+	NULL, /* [14] NULL */
+	dFTSamusAnimRollF_script1_11, /* [15] intern -> 0x0177 */
+	dFTSamusAnimRollF_script1_12, /* [16] intern -> 0x01BE */
+	NULL, /* [17] NULL */
+	dFTSamusAnimRollF_script1_13, /* [18] intern -> 0x01CE */
+	NULL, /* [19] NULL */
+	dFTSamusAnimRollF_script1_14, /* [20] intern -> 0x01FF */
+	dFTSamusAnimRollF_script1_15, /* [21] intern -> 0x023E */
+	NULL, /* [22] NULL */
+	dFTSamusAnimRollF_script1_16, /* [23] intern -> 0x0258 */
 };
 
 /* Script at word 0x0018 (42 u16s) */

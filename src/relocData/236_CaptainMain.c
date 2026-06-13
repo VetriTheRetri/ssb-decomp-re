@@ -86,11 +86,11 @@ extern u8 dCaptainSpecial3_gap_0x0708_sub_0x18[];
 
 /* Pre-attributes data (290 words, 0x0488 bytes) */
 /* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dCaptainMain_pre+0x0) */
-u32 dCaptainMain_file_handles[3] = {
+void *dCaptainMain_file_handles[3] = {
 
-	(u32)&dCaptainMainMotion_EggLay_0x006C, /* extern */
-	(u32)dCaptainSpecial3_DL_0x0760, /* extern -> 0x0760 */
-	(u32)&dCaptainSpecial2_FalconKickDObjDesc, /* extern -> 0x0B08 */
+	&dCaptainMainMotion_EggLay_0x006C, /* extern */
+	dCaptainSpecial3_DL_0x0760, /* extern -> 0x0760 */
+	&dCaptainSpecial2_FalconKickDObjDesc, /* extern -> 0x0B08 */
 };
 
 /* @ 0x000C, 8 bytes: FTAttributes.animlock target (was dCaptainMain_pre+0xC) */

@@ -87,10 +87,10 @@ extern DObjDesc dDonkeySpecial2_EntryTaruDObjDesc[];
 
 /* Pre-attributes data (297 words, 0x04A4 bytes) */
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dDonkeyMain_pre+0x0) */
-u32 dDonkeyMain_file_handles[2] = {
+void *dDonkeyMain_file_handles[2] = {
 
-	(u32)&dDonkeyMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
-	(u32)&dDonkeySpecial2_EntryTaruDObjDesc, /* extern -> 0x07C8 */
+	&dDonkeyMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
+	&dDonkeySpecial2_EntryTaruDObjDesc, /* extern -> 0x07C8 */
 };
 
 /* @ 0x0008, 8 bytes: FTAttributes.animlock target (was dDonkeyMain_pre+0x8) */

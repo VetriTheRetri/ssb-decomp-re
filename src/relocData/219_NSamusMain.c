@@ -24,9 +24,9 @@ extern u32 dSamusMainMotion_EggLay_0x0084[];
 
 /* Pre-attributes data (239 words, 0x03BC bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNSamusMain_pre+0x0) */
-u32 dNSamusMain_file_handles[1] = {
+u32 *dNSamusMain_file_handles[1] = {
 
-	(u32)&dSamusMainMotion_EggLay_0x0084, /* extern -> 0x0084 */
+	(u32 *)&dSamusMainMotion_EggLay_0x0084, /* extern -> 0x0084 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNSamusMain_pre+0x4) */

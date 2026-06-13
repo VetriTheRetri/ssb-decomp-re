@@ -21,9 +21,9 @@ extern DObjDesc dNDonkeyModel_JointTree[];
 
 /* Pre-attributes data (166 words, 0x0298 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNDonkeyMain_pre+0x0) */
-u32 dNDonkeyMain_file_handles[1] = {
+u32 *dNDonkeyMain_file_handles[1] = {
 
-	(u32)&dDonkeyMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
+	(u32 *)&dDonkeyMainMotion_EggLay_0x0000, /* extern -> 0x0000 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNDonkeyMain_pre+0x4) */

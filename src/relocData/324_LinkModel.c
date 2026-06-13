@@ -1714,7 +1714,7 @@ u16 *dLinkModel_gap_0x40EC_sub_0x2F0[4] = {
 };
 #endif
 
-#if !defined(REGION_JP)
+#if defined(REGION_US)
 /* u32 pointer array @ 0x43EC (5 entries) */
 u16 *dLinkModel_gap_0x40EC_sub_0x300[4] = {
 	(u16 *)dLinkModel_palette_0xCFC8,
@@ -2417,7 +2417,7 @@ MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[2] = {
 };
 #endif
 
-#if !defined(REGION_JP)
+#if defined(REGION_US)
 /* gap sub-block @ 0x48F0 (was gap+0x804, 8 bytes) */
 MObjSub *dLinkModel_gap_0x40EC_sub_0x804[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x6D4,

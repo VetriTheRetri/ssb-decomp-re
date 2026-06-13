@@ -52,10 +52,10 @@ extern DObjDesc dPurinSpecial2_SingDObjDesc[];
 
 /* Pre-attributes data (285 words, 0x0474 bytes) */
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dPurinMain_pre+0x0) */
-u32 dPurinMain_file_handles[2] = {
+void *dPurinMain_file_handles[2] = {
 
-	(u32)&dPurinMainMotion_EggLay_0x0034, /* extern */
-	(u32)&dPurinSpecial2_SingDObjDesc, /* extern -> 0x2130 */
+	&dPurinMainMotion_EggLay_0x0034, /* extern */
+	&dPurinSpecial2_SingDObjDesc, /* extern -> 0x2130 */
 };
 
 /* @ 0x0008, 8 bytes: FTAttributes.animlock target (was dPurinMain_pre+0x8) */

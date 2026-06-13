@@ -294,11 +294,7 @@ ftMotionCommand dLinkMainMotion_DownAttackD[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(1),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
@@ -311,11 +307,7 @@ ftMotionCommand dLinkMainMotion_DownAttackD[] = {
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 };
 
@@ -332,11 +324,7 @@ ftMotionCommand dLinkMainMotion_DownAttackU[] = {
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(1),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
@@ -349,11 +337,7 @@ ftMotionCommand dLinkMainMotion_DownAttackU[] = {
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 };
 
@@ -480,11 +464,7 @@ ftMotionCommand dLinkMainMotion_CliffAttackQuick2[] = {
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 };
 
@@ -510,11 +490,7 @@ ftMotionCommand dLinkMainMotion_CliffAttackSlow2[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 };
 
@@ -780,11 +756,7 @@ ftMotionCommand dLinkMainMotion_SwordSwing1[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 };
 
@@ -990,30 +962,21 @@ ftMotionCommand dLinkMainMotion_FireFlowerShoot_0x0D28[] = {
 };
 
 u32 dLinkMainMotion_Hammer[] = {
-#if defined(REGION_JP)
-	0xC4000007,
-	ftMotionCommandSetSlopeContour(4),
-	0xA0A00000,
-	0xA05FFFFF,
-	0x88000000,
-	(u32)dFTCommonMoveset_FireFlowerShoot,  /* extern chain ptr (was raw hex Wait) */
-	ftMotionCommandWait(16),
-	ftMotionCommandClearAttackCollAll(),
-	0x90000000,
-	(u32)dLinkMainMotion_Hammer,            /* intern chain ptr to self (was raw 0x0364034E) */
-	0x98007C00,
-	ftMotionCommandEnd(),
-#else
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetModelPartID(20, 0),
 	ftMotionCommandSetModelPartID(11, -1),
+#if defined(REGION_US)
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
+#endif
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_FireFlowerShoot), /* extern */
 	ftMotionCommandWait(16),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandGoto(dLinkMainMotion_Hammer),
+#if defined(REGION_JP)
+	0x98007C00,
+	ftMotionCommandEnd(),
 #endif
 };
 
@@ -1021,46 +984,34 @@ u32 dLinkMainMotion_0x0D68[] = {
 #if defined(REGION_JP)
 	0x007800C8,
 	0x00C800C8,
-	ftMotionCommandLoopBegin(3),
-	0x98002800,
-	ftMotionCommandEnd(),
-	0x007800C8,
-	0x00C800C8,
-	ftMotionCommandWait(4),
-	ftMotionCommandLoopEnd(),
-	0x90000000,
-	(u32)((u8 *)dLinkMainMotion_Hammer + 0x28),
-	ftMotionCommandSetTexturePartID(1),
-	ftMotionCommandSetTexturePartID(1048577),
-	0x9BF88800,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandSetTexturePartID(1),
-	ftMotionCommandSetTexturePartID(1048577),
-	0x90000000,
-	(u32)((u8 *)dLinkMainMotion_Hammer + 0x28),
-	0x90000000,
-	(u32)((u8 *)dLinkMainMotion_Hammer + 0x28),
-	ftMotionCommandEnd(),
-	0x9BF88000,
-	ftMotionCommandEnd(),
 #else
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 120, 200, 200, 200),
+#endif
 	ftMotionCommandLoopBegin(3),
 	ftMotionCommandEffect(0, nEFKindShockSmall, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
+#if defined(REGION_JP)
+	ftMotionCommandGoto((u32)((u8 *)dLinkMainMotion_Hammer + 0x28)),
+#else
 	ftMotionCommandGoto(dLinkMainMotion_0x0D68),
+#endif
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
+#if defined(REGION_JP)
+	ftMotionCommandGoto((u32)((u8 *)dLinkMainMotion_Hammer + 0x28)),
+	ftMotionCommandGoto((u32)((u8 *)dLinkMainMotion_Hammer + 0x28)),
+#else
 	ftMotionCommandGoto(dLinkMainMotion_0x0D68),
 	ftMotionCommandGoto(dLinkMainMotion_0x0D68),
+#endif
+	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	ftMotionCommandEffectS1(-1, nEFKindQuakeMag0, 0), /* command continues in the next block */
 	ftMotionCommandEnd(),
 #endif
 };
@@ -1077,7 +1028,6 @@ ftMotionCommand dLinkMainMotion_StunLand[] = {
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
-#else
 #endif
 };
 
@@ -1091,8 +1041,7 @@ ftMotionCommand dLinkMainMotion_Sleep_0x0DF8[] = {
 };
 
 ftMotionCommand dLinkMainMotion_Sleep_0x0E00[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayVoice(nSYAudioVoiceLinkFuraFura),
 #endif
@@ -1112,23 +1061,18 @@ ftMotionCommand dLinkMainMotion_Sleep_0x0E00[] = {
 };
 
 u32 dLinkMainMotion_Sleep_0x0E34[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetSlopeContour(3),
-	0x98016800,
-	0x00000082,
-	0x000000C8,
-	0x010400C8,
-	ftMotionCommandWait(10),
-	0x90000000,
-	(u32)((u8 *)dLinkMainMotion_Sleep_0x0E00 + 0x2C),  /* intern chain (was raw hex) */
-	0xFFFFFFFF,
-	0x00000006,
-#else
+#if defined(REGION_US)
 	ftMotionPlayInterruptableVoice(nSYAudioVoiceLinkFuraSleep),
 	ftMotionCommandSetTexturePartID(2),
+#endif
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(0, nEFKindMusicNote, 0, 0, 130, 0, 200, 260, 200),
 	ftMotionCommandWait(10),
+#if defined(REGION_JP)
+	ftMotionCommandGoto((u32)((u8 *)dLinkMainMotion_Sleep_0x0E00 + 0x2C)),
+	0xFFFFFFFF,
+	0x00000006,
+#else
 	ftMotionCommandGoto(dLinkMainMotion_Sleep_0x0E34),
 #endif
 };
@@ -1146,18 +1090,13 @@ FTThrowHitDesc dLinkMainMotion_0x0E5C[] = {
 #endif
 
 ftMotionCommand dLinkMainMotion_Catch[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetThrow((u32)dLinkMainMotion_0x0E5C),
 #endif
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetModelPartID(21, 0),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(19, 524287),
-#else
 	ftMotionCommandSetModelPartID(19, -1),
-#endif
 	ftMotionCommandSetModelPartID(16, 0),
 	ftMotionCommandSetModelPartID(17, 0),
 	ftMotionCommandSetModelPartID(18, 0),
@@ -1178,27 +1117,22 @@ ftMotionCommand dLinkMainMotion_Catch[] = {
 #if defined(REGION_JP)
 	ftMotionPlayFGM(nSYAudioFGMCatch),
 	ftMotionCommandSetModelPartID(21, 0),
-#else
 #endif
 };
 
 u32 dLinkMainMotion_CatchPull[] = {
-#if defined(REGION_JP)
-	0xA09FFFFF,
-	0xA0800000,
-	0xA0880000,
-	0xA0900000,
-	ftMotionCommandEnd(),
-	0x00000034,
-	0x0000000E,
-#else
+#if defined(REGION_US)
 	ftMotionPlayFGM(nSYAudioFGMCatch),
 	ftMotionCommandSetModelPartID(21, 0),
+#endif
 	ftMotionCommandSetModelPartID(19, -1),
 	ftMotionCommandSetModelPartID(16, 0),
 	ftMotionCommandSetModelPartID(17, 0),
 	ftMotionCommandSetModelPartID(18, 0),
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	0x00000034,
+	0x0000000E,
 #endif
 };
 
@@ -1215,48 +1149,9 @@ FTThrowHitDesc dLinkMainMotion_0x0F34[] = {
 #endif
 
 u32 dLinkMainMotion_ThrowF[] = {
-#if defined(REGION_JP)
-	0xA0A80000,
-	0xA09FFFFF,
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandWaitAsync(12),
-	0x0C040100,
-	0x00F00082,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(38076419),
-	0x00220A00,
-	0x0C840100,
-	0x00C80000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(38076419),
-	0x00220A00,
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionPlayFGM(30),
-	0x98787C00,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	0x98004C00,
-	ftMotionCommandEnd(),
-	0xFF6A0000,
-	ftMotionCommandEnd(),
-	0x9BF88400,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandWait(8),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag2(1),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWaitAsync(30),
-	0xA0AFFFFF,
-	0xA0980000,
-	ftMotionCommandEnd(),
-	0x00000034,
-	0x00000010,
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetThrow((u32)dLinkMainMotion_0x0F34),
+#endif
 	ftMotionCommandSetModelPartID(21, 0),
 	ftMotionCommandSetModelPartID(19, -1),
 	ftMotionCommandWaitAsync(4),
@@ -1277,6 +1172,9 @@ u32 dLinkMainMotion_ThrowF[] = {
 	ftMotionCommandSetModelPartID(21, -1),
 	ftMotionCommandSetModelPartID(19, 0),
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	0x00000034,
+	0x00000010,
 #endif
 };
 
@@ -1293,16 +1191,11 @@ FTThrowHitDesc dLinkMainMotion_0x1008[] = {
 #endif
 
 ftMotionCommand dLinkMainMotion_ThrowB[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetThrow((u32)dLinkMainMotion_0x1008),
 #endif
 	ftMotionCommandSetModelPartID(21, 0),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(19, 524287),
-#else
 	ftMotionCommandSetModelPartID(19, -1),
-#endif
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetHitStatusAll(2),
@@ -1314,75 +1207,47 @@ ftMotionCommand dLinkMainMotion_ThrowB[] = {
 	ftMotionCommandEffect(35, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetFlag2(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWaitAsync(30),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(21, 524287),
-#else
 	ftMotionCommandSetModelPartID(21, -1),
-#endif
 	ftMotionCommandSetModelPartID(19, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-#if defined(REGION_JP)
-	/* JP shares the damage sub-scripts via FTCommonMoveset */
 	ftMotionCommandSubroutine(dFTCommonMoveset_DamageBumpHit),
-#else
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x24)),
-#endif
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Damaged_0x10F0[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageBumpHit), /* extern */
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-#if defined(REGION_JP)
 	ftMotionCommandSubroutine(dFTCommonMoveset_DamageRumble),
-#else
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x3C)),
-#endif
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Damaged_0x10FC[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageRumble), /* extern */
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
-#if defined(REGION_JP)
 	ftMotionCommandSubroutine(dFTCommonMoveset_DamageFlameBurst),
-#else
-	ftMotionCommandSubroutine((ftMotionCommand *)((u8 *)dLinkMainMotion_CliffAttackSlow2 + 0x44)),
-#endif
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_EggLay_0x1108[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageFlameBurst), /* extern */
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
-#else
 #endif
 };
 
@@ -1399,21 +1264,19 @@ ftMotionCommand dLinkMainMotion_FalconDivePulled[] = {
 };
 
 ftMotionCommand dLinkMainMotion_Damaged_0x1128[] = {
-#if defined(REGION_JP)
+#if defined(REGION_US)
+	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
+#endif
 	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle), /* extern */
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(12),
-#else
-	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
-	ftMotionCommandSubroutine((u32)dFTCommonMoveset_DamageSparkle), /* extern */
-	ftMotionCommandEnd(),
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Taunt[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(12),
 #endif
@@ -1426,13 +1289,11 @@ ftMotionCommand dLinkMainMotion_Taunt[] = {
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Jab1[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
 #endif
@@ -1447,22 +1308,16 @@ ftMotionCommand dLinkMainMotion_Jab1[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWaitAsync(12),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Jab2[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
 #endif
@@ -1475,24 +1330,18 @@ ftMotionCommand dLinkMainMotion_Jab2[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWaitAsync(14),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Jab3[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(5),
 #endif
@@ -1506,16 +1355,11 @@ ftMotionCommand dLinkMainMotion_Jab3[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
-#else
 #endif
 };
 
@@ -1529,110 +1373,10 @@ ftMotionCommand dLinkMainMotion_JabLoop_0x12A8[] = {
 };
 
 u32 dLinkMainMotion_JabLoop_0x12B0[] = {
-#if defined(REGION_JP)
-	0xCC000000,
-	ftMotionCommandWaitAsync(3),
-	0x0C016033,
-	0x00DC0000,
-	0x0000010E,
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	0x0C814033,
-	0x00A00000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	ftMotionCommandPlayFGMStoreInfo(250),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandWait(2),
-	0xCC03FFFF,
-	ftMotionCommandWaitAsync(9),
-	0xCC000000,
-	ftMotionCommandWaitAsync(10),
-	0x0C016033,
-	0x00DC0000,
-	0x0000010E,
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	0x0C814033,
-	0x00A00000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	ftMotionCommandPlayFGMStoreInfo(250),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandWait(2),
-	0xCC03FFFF,
-	ftMotionCommandWaitAsync(16),
-	0xCC000000,
-	ftMotionCommandWaitAsync(17),
-	0x0C016033,
-	0x00DC0000,
-	0x0000010E,
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	0x0C814033,
-	0x00A00000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	ftMotionCommandPlayFGMStoreInfo(250),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandWait(2),
-	0xCC03FFFF,
-	ftMotionCommandWaitAsync(23),
-	0xCC000000,
-	ftMotionCommandWaitAsync(24),
-	0x0C016033,
-	0x00DC0000,
-	0x0000010E,
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	0x0C814033,
-	0x00A00000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	ftMotionCommandPlayFGMStoreInfo(250),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandWait(2),
-	0xCC03FFFF,
-	ftMotionCommandWaitAsync(30),
-	0xCC000000,
-	ftMotionCommandWaitAsync(31),
-	0x0C016033,
-	0x00DC0000,
-	0x0000010E,
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	0x0C814033,
-	0x00A00000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(37953539),
-	0x002A0400,
-	ftMotionCommandPlayFGMStoreInfo(250),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandPauseScript(),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandWait(2),
-	0xCC03FFFF,
-	0x90000000,
-	(u32)dLinkMainMotion_JabLoop_0x12A8,  /* intern chain (was raw hex Wait) */
-	ftMotionCommandEnd(),
-	ftMotionCommandSetSlopeContour(3),
-	0x98587C00,
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(2),
+#endif
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandMakeAttackColl(0, 0, 11, 1, 1, 3, 220, 0, 0, 270, 361, 50, 0, 3, 0, 1, 5, 8),
@@ -1688,23 +1432,31 @@ u32 dLinkMainMotion_JabLoop_0x12B0[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetAfterImage(0, -1),
+#if defined(REGION_JP)
+	ftMotionCommandGoto((u32)dLinkMainMotion_JabLoop_0x12A8),
+#else
 	ftMotionCommandGoto(dLinkMainMotion_JabLoop_0x12B0),
+#endif
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	ftMotionCommandSetSlopeContour(3),
+	0x98587C00,
 #endif
 };
 
 u32 dLinkMainMotion_JabLoopEnd[] = {
 #if defined(REGION_JP)
 	0x003C0000,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandSetSlopeContour(3),
-	0x98587C00,
 #else
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 60, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	ftMotionCommandEnd(),
+	ftMotionCommandEnd(),
+	ftMotionCommandSetSlopeContour(3),
+	ftMotionCommandEffectS1(11, nEFKindSparkleWhiteScale, 0), /* command continues in the next block */
 #endif
 };
 
@@ -1713,48 +1465,10 @@ u32 dLinkMainMotion_DashAttack[] = {
 	ftMotionCommandEnd(),
 	0x00B4005A,
 	0x005A005A,
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(7),
-	0xCC000000,
-	ftMotionCommandWaitAsync(8),
-	0x0C0161D3,
-	0x00DC0000,
-	0x000000BE,
-	ftMotionCommandSetFlag1(38158339),
-	0x004A0000,
-	0x0C814213,
-	0x00B40000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(38158339),
-	0x004A0500,
-	0x98004C00,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandPlayFGMStoreInfo(248),
-	ftMotionCommandWait(4),
-	0x0C016153,
-	0x00DC0000,
-	0x000000BE,
-	ftMotionCommandSetFlag1(38158339),
-	0x004A0000,
-	0x0C814173,
-	0x00B40000,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetFlag1(38158339),
-	0x004A0280,
-	ftMotionCommandWait(22),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWait(2),
-	0xCC03FFFF,
-	ftMotionCommandEnd(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(14),
 #else
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(11, nEFKindSparkleWhiteScale, 0, 0, 0, 180, 90, 90, 90),
+#endif
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(7),
@@ -1773,12 +1487,14 @@ u32 dLinkMainMotion_DashAttack[] = {
 	ftMotionCommandWait(2),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	ftMotionCommandSetSlopeContour(3),
+	ftMotionCommandWaitAsync(14),
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_FTilt[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(14),
 #endif
@@ -1794,22 +1510,16 @@ ftMotionCommand dLinkMainMotion_FTilt[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(7),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_UTilt[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(7),
 #endif
@@ -1827,22 +1537,16 @@ ftMotionCommand dLinkMainMotion_UTilt[] = {
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 60, -360, 0, 0, 0),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_DTilt[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
 #endif
@@ -1857,24 +1561,18 @@ ftMotionCommand dLinkMainMotion_DTilt[] = {
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(6),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandSetSlopeContour(3),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_FSmash[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandSetSlopeContour(3),
 #endif
@@ -1897,24 +1595,18 @@ ftMotionCommand dLinkMainMotion_FSmash[] = {
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWaitAsync(37),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(10),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_USmash[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(10),
 #endif
@@ -1942,11 +1634,7 @@ ftMotionCommand dLinkMainMotion_USmash[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(1),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
@@ -1963,11 +1651,7 @@ ftMotionCommand dLinkMainMotion_USmash[] = {
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWait(1),
@@ -1980,22 +1664,16 @@ ftMotionCommand dLinkMainMotion_USmash[] = {
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_DSmash[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
 #endif
@@ -2016,11 +1694,7 @@ ftMotionCommand dLinkMainMotion_DSmash[] = {
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetAfterImage(0, 0),
 	ftMotionCommandWaitAsync(21),
@@ -2036,24 +1710,18 @@ ftMotionCommand dLinkMainMotion_DSmash[] = {
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWaitAsync(42),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetFlag1(50),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_AttackAirN[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetFlag1(50),
 #endif
@@ -2072,13 +1740,11 @@ ftMotionCommand dLinkMainMotion_AttackAirN[] = {
 #if defined(REGION_JP)
 	ftMotionCommandSetFlag1(50),
 	ftMotionCommandWaitAsync(14),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_AttackAirF[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetFlag1(50),
 	ftMotionCommandWaitAsync(14),
 #endif
@@ -2096,16 +1762,11 @@ ftMotionCommand dLinkMainMotion_AttackAirF[] = {
 	ftMotionCommandSetFlag1(0),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
 	ftMotionCommandEnd(),
-#else
 #endif
 };
 
@@ -2120,8 +1781,7 @@ ftMotionCommand dLinkMainMotion_AttackAirB_0x1AB0[] = {
 };
 
 ftMotionCommand dLinkMainMotion_AttackAirB_0x1AB8[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetFlag1(50),
 	ftMotionCommandWaitAsync(6),
 #endif
@@ -2144,13 +1804,11 @@ ftMotionCommand dLinkMainMotion_AttackAirB_0x1AB8[] = {
 #if defined(REGION_JP)
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetAfterImage(0, 0),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_AttackAirU[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetAfterImage(0, 0),
 #endif
@@ -2167,24 +1825,18 @@ ftMotionCommand dLinkMainMotion_AttackAirU[] = {
 	ftMotionCommandWait(44),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(8),
 	ftMotionCommandSetFlag1(0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetAfterImage(0, 0),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_AttackAirD[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetAfterImage(0, 0),
 #endif
@@ -2201,21 +1853,13 @@ ftMotionCommand dLinkMainMotion_AttackAirD[] = {
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMBladeSwing4),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSetModelPartID(21, 0),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(19, 524287),
-#else
 	ftMotionCommandSetModelPartID(19, -1),
-#endif
 	ftMotionCommandHideItem(0),
 	ftMotionCommandWaitAsync(65),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetFlag1(0),
 	ftMotionCommandWait(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetAfterImage(0, 262143),
-#else
 	ftMotionCommandSetAfterImage(0, -1),
-#endif
 	ftMotionCommandWait(12),
 	ftMotionCommandResetModelPartAll(),
 	ftMotionCommandHideItem(1),
@@ -2223,36 +1867,14 @@ ftMotionCommand dLinkMainMotion_AttackAirD[] = {
 #if defined(REGION_JP)
 	ftMotionCommandHideItem(0),
 	ftMotionCommandMakeRumble(0, 9),
-#else
 #endif
 };
 
 u32 dLinkMainMotion_LandingAirD[] = {
-#if defined(REGION_JP)
-	0xA0A80000,
-	0xA09FFFFF,
-	ftMotionPlayFGM(281),
-	0x9BF88400,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	0x98007C00,
-	0x003C0000,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	0x98005800,
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandEnd(),
-	ftMotionCommandWaitAsync(40),
-	ftMotionCommandResetModelPartAll(),
-	ftMotionCommandHideItem(1),
-	ftMotionCommandEnd(),
-	ftMotionPlayFGM(72),
-	0x98003400,
-#else
+#if defined(REGION_US)
 	ftMotionCommandHideItem(0),
 	ftMotionCommandMakeRumble(0, 9),
+#endif
 	ftMotionCommandSetModelPartID(21, 0),
 	ftMotionCommandSetModelPartID(19, -1),
 	ftMotionPlayFGM(nSYAudioFGMLinkDeadSlam),
@@ -2263,12 +1885,14 @@ u32 dLinkMainMotion_LandingAirD[] = {
 	ftMotionCommandResetModelPartAll(),
 	ftMotionCommandHideItem(1),
 	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
+	0x98003400,
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_LandingAirX_0x1CA8[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionPlayFGM(nSYAudioFGMLinkLanding),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 #endif
@@ -2279,60 +1903,45 @@ ftMotionCommand dLinkMainMotion_LandingAirX_0x1CA8[] = {
 	ftMotionCommandEnd(),
 	ftMotionCommandWaitAsync(30),
 	ftMotionCommandMakeRumble(60, 7),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Appear1[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandWaitAsync(30),
 	ftMotionCommandMakeRumble(60, 7),
 #endif
 	ftMotionPlayFGM(nSYAudioFGMLinkAppear),
 	ftMotionCommandSetModelPartID(20, 0),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(11, 524287),
-#else
 	ftMotionCommandSetModelPartID(11, -1),
-#endif
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandWaitAsync(87),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(20, 524287),
-#else
 	ftMotionCommandSetModelPartID(20, -1),
-#endif
 	ftMotionCommandSetModelPartID(11, 0),
 	ftMotionPlayFGM(nSYAudioFGMBladeDraw),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandGoto((ftMotionCommand *)((u8 *)dLinkMainMotion_LandingAirX_0x1CA8 + 0x10)),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Appear2[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandGoto(dLinkMainMotion_Appear1),
 #endif
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetModelPartID(21, 0),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_Bomb[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(19, 524287),
-#else
+#if defined(REGION_US)
 	ftMotionCommandWaitAsync(28),
 	ftMotionCommandSetModelPartID(21, 0),
-	ftMotionCommandSetModelPartID(19, -1),
 #endif
+	ftMotionCommandSetModelPartID(19, -1),
 	ftMotionCommandWaitAsync(29),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialLwGet),
@@ -2343,84 +1952,56 @@ ftMotionCommand dLinkMainMotion_Bomb[] = {
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
-#else
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_MissingBoomerang_0x1D2C[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(11, 524287),
-#else
+#if defined(REGION_US)
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSetModelPartID(11, -1),
 #endif
+	ftMotionCommandSetModelPartID(11, -1),
 	ftMotionCommandSetModelPartID(20, 0),
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetModelPartID(11, 1),
 	ftMotionCommandWaitAsync(26),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(11, 524287),
-#else
 	ftMotionCommandSetModelPartID(11, -1),
-#endif
 	ftMotionPlayVoice(nSYAudioVoiceLinkSmash1),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(10, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWaitAsync(38),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(20, 524287),
-#else
 	ftMotionCommandSetModelPartID(20, -1),
-#endif
 	ftMotionCommandSetModelPartID(11, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSetModelPartID(11, 524287),
-#else
+	ftMotionCommandSetModelPartID(11, -1),
 #endif
 };
 
 ftMotionCommand dLinkMainMotion_MissingBoomerang_0x1D88[] = {
-#if defined(REGION_JP)
-#else
+#if defined(REGION_US)
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSetModelPartID(11, -1),
 #endif
 	ftMotionCommandSetModelPartID(20, 0),
 	ftMotionCommandWaitAsync(38),
-#if defined(REGION_JP)
-	ftMotionCommandSetModelPartID(20, 524287),
-#else
 	ftMotionCommandSetModelPartID(20, -1),
-#endif
 	ftMotionCommandSetModelPartID(11, 0),
 	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialNGet),
-#else
 #endif
 };
 
 u32 dLinkMainMotion_CatchingBoomerang[] = {
-#if defined(REGION_JP)
-	0xA05FFFFF,
-	0xA0A00000,
-	0xA0580001,
-	ftMotionCommandWaitAsync(12),
-	0xA0A7FFFF,
-	0xA05FFFFF,
-	0xA0580000,
-	ftMotionCommandEnd(),
-	0x98003400,
-	ftMotionCommandEnd(),
-#else
+#if defined(REGION_US)
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialNGet),
+#endif
 	ftMotionCommandSetModelPartID(11, -1),
 	ftMotionCommandSetModelPartID(20, 0),
 	ftMotionCommandSetModelPartID(11, 1),
@@ -2428,6 +2009,9 @@ u32 dLinkMainMotion_CatchingBoomerang[] = {
 	ftMotionCommandSetModelPartID(20, -1),
 	ftMotionCommandSetModelPartID(11, -1),
 	ftMotionCommandSetModelPartID(11, 0),
+	ftMotionCommandEnd(),
+#if defined(REGION_JP)
+	0x98003400,
 	ftMotionCommandEnd(),
 #endif
 };
@@ -2441,7 +2025,11 @@ ftMotionCommand dLinkMainMotion_UpSpecial[] = {
 #endif
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialHi),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSpecialHi),
+#if defined(REGION_JP)
+	ftMotionCommandSetColAnim(44, 50),
+#else
 	ftMotionCommandSetColAnim(nGMColAnimFighterSamusSpecialNEnd, 50),
+#endif
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(30, 7),
 	ftMotionCommandSetFlag2(13),
@@ -2476,7 +2064,6 @@ ftMotionCommand dLinkMainMotion_UpSpecial[] = {
 #if defined(REGION_JP)
 	ftMotionCommandEnd(),
 	ftMotionCommandEnd(),
-#else
 #endif
 };
 

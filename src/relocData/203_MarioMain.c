@@ -54,11 +54,11 @@ extern DObjDesc dMarioSpecial2_EntryDokanDObjDesc[];
 
 /* Pre-attributes data (266 words, 0x0428 bytes) */
 /* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dMarioMain_pre+0x0) */
-u32 dMarioMain_file_handles[3] = {
+void *dMarioMain_file_handles[3] = {
 
-	(u32)&dMarioMainMotion_Wait_0x0024, /* extern -> 0x0024 */
-	(u32)&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
-	(u32)&dMarioSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
+	&dMarioMainMotion_Wait_0x0024, /* extern -> 0x0024 */
+	&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
+	&dMarioSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
 };
 
 /* @ 0x000C, 8 bytes: FTAttributes.animlock target (was dMarioMain_pre+0xC) */

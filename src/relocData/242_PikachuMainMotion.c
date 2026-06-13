@@ -1408,7 +1408,7 @@ ftMotionCommand dPikachuMainMotion_UpSpecialEnd_0x1710[] = {
 	ftMotionPlayFGM(nSYAudioFGMPikachuElectric1),
 	ftMotionPlayVoice(nSYAudioVoicePikachuSpecialHi),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 0, 60, 60, 60),
-#if !defined(REGION_JP)
+#if defined(REGION_US)
 	ftMotionCommandSetColAnim(nGMColAnimFighterPikachuSpecialHi, 0),
 #endif
 	ftMotionCommandEnd(),

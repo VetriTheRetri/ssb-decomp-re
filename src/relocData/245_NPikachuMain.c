@@ -22,10 +22,10 @@ extern DObjDesc dPikachuSpecial2_UnkDObjDesc[];
 
 /* Pre-attributes data (170 words, 0x02A8 bytes) */
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dNPikachuMain_pre+0x0) */
-u32 dNPikachuMain_file_handles[2] = {
+void *dNPikachuMain_file_handles[2] = {
 
-	(u32)&dPikachuMainMotion_Idle_0x0010, /* extern -> 0x0010 */
-	(u32)&dPikachuSpecial2_UnkDObjDesc, /* extern -> 0x0800 */
+	&dPikachuMainMotion_Idle_0x0010, /* extern -> 0x0010 */
+	&dPikachuSpecial2_UnkDObjDesc, /* extern -> 0x0800 */
 };
 
 /* @ 0x0008, 8 bytes: FTAttributes.animlock target (was dNPikachuMain_pre+0x8) */

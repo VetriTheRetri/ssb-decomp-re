@@ -906,11 +906,7 @@ ftMotionCommand dSamusMainMotion_0x0C2C[] = {
 };
 
 ftMotionCommand dSamusMainMotion_ShieldBreak[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionPlayVoice(nSYAudioVoiceSamusDamage),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
@@ -921,11 +917,7 @@ ftMotionCommand dSamusMainMotion_Damaged_0x0C80[] = {
 };
 
 ftMotionCommand dSamusMainMotion_StunLandD_0x0C88[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -1022,11 +1014,7 @@ ftMotionCommand dSamusMainMotion_ThrowF[] = {
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 280, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -1047,11 +1035,7 @@ ftMotionCommand dSamusMainMotion_ThrowB[] = {
 	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 200, 280, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandSetFlag2(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
@@ -1313,11 +1297,7 @@ ftMotionCommand dSamusMainMotion_USmash[] = {
 #endif
 	ftMotionCommandEffect(16, nEFKindSparkleWhite, 0, 300, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMFireShoot1),
 #if defined(REGION_JP)
@@ -1334,11 +1314,7 @@ ftMotionCommand dSamusMainMotion_USmash[] = {
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, nEFKindSparkleWhite, 0, 300, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMFireShoot1),
 #if defined(REGION_JP)
@@ -1355,11 +1331,7 @@ ftMotionCommand dSamusMainMotion_USmash[] = {
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, nEFKindSparkleWhite, 0, 300, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMFireShoot1),
 #if defined(REGION_JP)
@@ -1376,11 +1348,7 @@ ftMotionCommand dSamusMainMotion_USmash[] = {
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, nEFKindSparkleWhite, 0, 300, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMFireShoot1),
 #if defined(REGION_JP)
@@ -1398,11 +1366,7 @@ ftMotionCommand dSamusMainMotion_USmash[] = {
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, nEFKindSparkleWhite, 0, 300, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -180, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindFireSpark, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMFireShoot1),
 	ftMotionCommandWait(2),

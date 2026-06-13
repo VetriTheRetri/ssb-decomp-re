@@ -884,11 +884,7 @@ ftMotionCommand dYoshiMainMotion_0x0C0C[] = {
 };
 
 ftMotionCommand dYoshiMainMotion_ShieldBreak[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionPlayVoice(nSYAudioVoiceYoshiDamage),
 	ftMotionCommandSetTexturePartID(7),
 	ftMotionCommandSetTexturePartID(1048583),
@@ -901,11 +897,7 @@ ftMotionCommand dYoshiMainMotion_Damaged_0x0C68[] = {
 };
 
 ftMotionCommand dYoshiMainMotion_StunLandD_0x0C70[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -978,11 +970,7 @@ ftMotionCommand dYoshiMainMotion_ThrowF[] = {
 	ftMotionPlayFGM(nSYAudioFGMFireShoot1),
 	ftMotionCommandEffect(17, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetModelPartID(7, 0),
 	ftMotionCommandWaitAsync(12),
@@ -1005,11 +993,7 @@ ftMotionCommand dYoshiMainMotion_ThrowB[] = {
 	ftMotionPlayFGM(nSYAudioFGMFireShoot1),
 	ftMotionCommandEffect(31, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandSetFlag2(2),
 	ftMotionCommandSetModelPartID(7, 0),
 	ftMotionCommandWaitAsync(12),

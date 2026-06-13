@@ -1450,11 +1450,7 @@ ftMotionCommand dDonkeyMainMotion_GiantPunchGroundFullyChargedPunch_0x18CC[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 14, 36, 1, 0, 280, 0, 0, 0, 361, 100, 0, 3, 12, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 14, 36, 1, 0, 340, 290, 0, 0, 361, 100, 0, 3, 12, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 36, 1, 0, 50, 0, 0, 0, 361, 100, 0, 3, 12, 2, 1, 0),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindDustDashLarge, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionCommandEffect(16, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 200, 200, 0),
 	ftMotionPlayFGM(nSYAudioFGMBossUnk1),
@@ -1546,45 +1542,23 @@ ftMotionCommand dDonkeyMainMotion_HandSlapLoop[] = {
 	ftMotionCommandSetModelPartID(10, 1),
 	ftMotionCommandHideItem(0),
 	ftMotionCommandWaitAsync(16),
-#if defined(REGION_JP)
-	ftMotionCommandMakeAttackColl(0, 0, 0, 10, 0, 0, 400, 0, 0, -500, 90, 100, 150, 2, 252, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 0, 10, 0, 0, 400, 0, 0, -100, 90, 100, 150, 2, 252, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(2, 0, 0, 10, 0, 0, 400, 0, 0, 300, 90, 100, 150, 2, 252, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(3, 0, 0, 10, 0, 0, 400, 0, 0, 700, 90, 100, 150, 2, 252, 2, 1, 0),
-#else
 	ftMotionCommandMakeAttackColl(0, 0, 0, 10, 0, 0, 400, 0, 0, -500, 90, 100, 150, 2, -4, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 10, 0, 0, 400, 0, 0, -100, 90, 100, 150, 2, -4, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 10, 0, 0, 400, 0, 0, 300, 90, 100, 150, 2, -4, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 10, 0, 0, 400, 0, 0, 700, 90, 100, 150, 2, -4, 2, 1, 0),
-#endif
 	ftMotionPlayFGM(nSYAudioFGMBossSlam),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(8),
-#if defined(REGION_JP)
-	ftMotionCommandMakeAttackColl(0, 0, 0, 10, 0, 0, 400, 0, 0, -500, 90, 100, 150, 2, 252, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 0, 10, 0, 0, 400, 0, 0, -100, 90, 100, 150, 2, 252, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(2, 0, 0, 10, 0, 0, 400, 0, 0, 300, 90, 100, 150, 2, 252, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(3, 0, 0, 10, 0, 0, 400, 0, 0, 700, 90, 100, 150, 2, 252, 2, 1, 0),
-#else
 	ftMotionCommandMakeAttackColl(0, 0, 0, 10, 0, 0, 400, 0, 0, -500, 90, 100, 150, 2, -4, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 10, 0, 0, 400, 0, 0, -100, 90, 100, 150, 2, -4, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 10, 0, 0, 400, 0, 0, 300, 90, 100, 150, 2, -4, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 10, 0, 0, 400, 0, 0, 700, 90, 100, 150, 2, -4, 2, 1, 0),
-#endif
 	ftMotionPlayFGM(nSYAudioFGMBossSlam),
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindImpactWave, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(2),

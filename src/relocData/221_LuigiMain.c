@@ -70,11 +70,11 @@ extern DObjDesc dMarioSpecial2_EntryDokanDObjDesc[];
 
 /* Pre-attributes data (352 words, 0x0580 bytes) */
 /* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dLuigiMain_pre+0x0) */
-u32 dLuigiMain_file_handles[3] = {
+void *dLuigiMain_file_handles[3] = {
 
-	(u32)&dLuigiMainMotion_EggLay_0x0024, /* extern -> 0x0024 */
-	(u32)&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
-	(u32)&dLuigiSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
+	&dLuigiMainMotion_EggLay_0x0024, /* extern -> 0x0024 */
+	&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
+	&dLuigiSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
 };
 
 /* @ 0x000C, 8 bytes: FTAttributes.animlock target (was dLuigiMain_pre+0xC) */

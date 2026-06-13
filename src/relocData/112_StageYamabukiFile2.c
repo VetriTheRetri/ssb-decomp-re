@@ -180,7 +180,7 @@ u8 dStageYamabukiFile2_Tex_0x0030[1024] = {
 
 PAD(8);
 
-#if !defined(REGION_JP)
+#if defined(REGION_US)
 /* Palette: Lut_0x0438 @ 0x438 (16 colors RGBA5551) — US position (pair02) */
 u16 dStageYamabukiFile2_Lut_0x0438_palette[16] = {
 	#include <StageYamabukiFile2/Lut_0x0438.palette.inc.c>

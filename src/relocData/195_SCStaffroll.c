@@ -351,7 +351,7 @@ u8 dSCStaffroll_NameAndJobApostrophe_Image[96] = {
 	#include <SCStaffroll/NameAndJobApostrophe_Image.tex.inc.c>
 };
 
-#if !defined(REGION_JP)
+#if defined(REGION_US)
 /* Raw data from file offset 0x3118 to 0x31D8 (192 bytes) */
 /* @tex fmt=I4 dim=16x24 */
 u8 dSCStaffroll_NameAndJob4_Image[192] = {

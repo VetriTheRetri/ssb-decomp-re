@@ -899,11 +899,7 @@ ftMotionCommand dPurinMainMotion_0x0BE4[] = {
 };
 
 ftMotionCommand dPurinMainMotion_ShieldBreak[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag2, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionPlayVoice(nSYAudioVoicePurinDeadUp),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dPurinMainMotion_0x0BE4),
@@ -914,11 +910,7 @@ ftMotionCommand dPurinMainMotion_Damaged_0x0C3C[] = {
 };
 
 ftMotionCommand dPurinMainMotion_StunLandD_0x0C44[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(127, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandEffect(-1, nEFKindQuakeMag1, 0, 0, 0, 0, 0, 0, 0),
-#endif
 	ftMotionCommandEffect(0, nEFKindDustHeavyDouble, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };

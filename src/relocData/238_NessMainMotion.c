@@ -1020,12 +1020,9 @@ ftMotionCommand dNessMainMotion_Jab2[] = {
 	ftMotionCommandWaitAsync(3),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 16, 2, 1, 0, 180, 16, 0, 0, 70, 50, 0, 3, 0, 1, 0, 8),
-#else
-	ftMotionCommandMakeAttackColl(0, 0, 16, 2, 1, 0, 180, 16, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
-#endif
-#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(1, 0, 15, 2, 1, 0, 180, 0, 0, 0, 70, 50, 0, 3, 0, 1, 0, 8),
 #else
+	ftMotionCommandMakeAttackColl(0, 0, 16, 2, 1, 0, 180, 16, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 2, 1, 0, 180, 0, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
 #endif
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingS),
@@ -1101,12 +1098,9 @@ ftMotionCommand dNessMainMotion_UTilt[] = {
 	ftMotionCommandSetHitStatusPartID(12, 3),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 10, 8, 1, 0, 370, 0, 0, 0, 96, 40, 0, 3, 0, 1, 0, 70),
-#else
-	ftMotionCommandMakeAttackColl(0, 0, 10, 7, 1, 0, 370, 0, 0, 0, 100, 40, 0, 3, 0, 1, 0, 80),
-#endif
-#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(1, 0, 16, 8, 1, 0, 370, 0, 0, 0, 96, 40, 0, 3, 0, 1, 0, 70),
 #else
+	ftMotionCommandMakeAttackColl(0, 0, 10, 7, 1, 0, 370, 0, 0, 0, 100, 40, 0, 3, 0, 1, 0, 80),
 	ftMotionCommandMakeAttackColl(1, 0, 16, 7, 1, 0, 370, 0, 0, 0, 100, 40, 0, 3, 0, 1, 0, 80),
 #endif
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
@@ -1153,12 +1147,9 @@ ftMotionCommand dNessMainMotion_FSmash[] = {
 	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 17, 20, 1, 0, 200, 0, 280, 0, 361, 67, 0, 3, 0, 2, 7, 70),
-#else
-	ftMotionCommandMakeAttackColl(0, 0, 17, 18, 1, 0, 200, 0, 280, 0, 361, 65, 0, 3, 0, 2, 7, 70),
-#endif
-#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(1, 0, 17, 20, 1, 0, 180, 0, 60, 0, 361, 67, 0, 3, 0, 2, 7, 70),
 #else
+	ftMotionCommandMakeAttackColl(0, 0, 17, 18, 1, 0, 200, 0, 280, 0, 361, 65, 0, 3, 0, 2, 7, 70),
 	ftMotionCommandMakeAttackColl(1, 0, 17, 18, 1, 0, 180, 0, 60, 0, 361, 65, 0, 3, 0, 2, 7, 70),
 #endif
 	ftMotionCommandWait(4),
@@ -1422,7 +1413,7 @@ ftMotionCommand dNessMainMotion_DKTAAir[] = {
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 35, 1, 2, 400, 0, 100, 0, 361, 100, 0, 3, 0, 2, 4, 50),
 	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialHiJibaku, 0),
+	ftMotionCommandSetColAnim(65, 0),
 	ftMotionPlayVoice(nSYAudioVoiceNessDamage),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialNPunch),
 	ftMotionPlayFGM(nSYAudioVoicePublicGaspM),
@@ -1464,11 +1455,11 @@ u32 dNessMainMotion_PKThunder[] = {
 	ftMotionCommandEnd(),
 	0x00000001,
 	ftMotionCommandEnd(),
-	0x43960000,
-	0x43430000,
+	ftMotionCommandStopLoopSFX(60162048),
+	ftMotionCommandStopLoopSFX(54722560),
 	ftMotionCommandEnd(),
-	0x43C80000,
-	0x43C80000,
+	ftMotionCommandStopLoopSFX(63438848),
+	ftMotionCommandStopLoopSFX(63438848),
 };
 #else
 u32 dNessMainMotion_PKThunder[] = {
@@ -1490,137 +1481,65 @@ ftMotionCommand dNessMainMotion_0x16E8[] = {
 	ftMotionCommandStopLoopSFX(63438848),
 #else
 	ftMotionCommandStopLoopSFX(64421888),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandEnd(),
-#else
+	ftMotionCommandStopLoopSFX(64421888),
 	ftMotionCommandStopLoopSFX(64421888),
 #endif
+	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandMakeRumble(0, 9),
-#else
-	ftMotionCommandStopLoopSFX(64421888),
-#endif
-#if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
-#else
-	ftMotionCommandEnd(),
 #endif
 };
 
 ftMotionCommand dNessMainMotion_DownBStartGround[] = {
-#if defined(REGION_JP)
-	ftMotionCommandEffect(0, nEFKindRipple, 0, 0, 120, 0, 0, 0, 0),
-#else
+#if defined(REGION_US)
 	ftMotionCommandMakeRumble(0, 9),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandPlayLoopSFXStoreInfo(nSYAudioFGMNessSpecialLwStart),
-#else
 	ftMotionCommandSetSlopeContour(3),
 #endif
-#if defined(REGION_JP)
-	ftMotionCommandEnd(),
-#else
 	ftMotionCommandEffect(0, nEFKindRipple, 0, 0, 120, 0, 0, 0, 0),
-#endif
+	ftMotionCommandPlayLoopSFXStoreInfo(nSYAudioFGMNessSpecialLwStart),
+	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
-#else
-	ftMotionCommandPlayLoopSFXStoreInfo(nSYAudioFGMNessSpecialLwStart),
-#endif
-#if defined(REGION_JP)
 	ftMotionCommandSetTexturePartID(2),
-#else
-	ftMotionCommandEnd(),
 #endif
 };
 
 ftMotionCommand dNessMainMotion_HealingDownB_0x1718[] = {
 #if defined(REGION_JP)
-	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialLwHold, 0),
+	ftMotionCommandSetColAnim(62, 0),
 #else
 	ftMotionCommandSetSlopeContour(3),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandEnd(),
-#else
 	ftMotionCommandSetTexturePartID(2),
+	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialLwHold, 0),
 #endif
+	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandMakeRumble(0, 10),
-#else
-	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialLwHold, 0),
-#endif
-#if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
-#else
-	ftMotionCommandEnd(),
 #endif
 };
 
 ftMotionCommand dNessMainMotion_HealingDownB_0x1728[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(nSYAudioFGMCharacterUnk1),
-#else
+#if defined(REGION_US)
 	ftMotionCommandMakeRumble(0, 10),
-#endif
-#if defined(REGION_JP)
-	ftMotionPlayFGM(nSYAudioVoicePublicAbsorb),
-#else
 	ftMotionCommandSetSlopeContour(3),
 #endif
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialLwHit, 0),
-#else
 	ftMotionPlayFGM(nSYAudioFGMCharacterUnk1),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -120, 0, 0, 0),
-#else
 	ftMotionPlayFGM(nSYAudioVoicePublicAbsorb),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandEffect(8, nEFKindDamageFlyMDustReverse, 0, 0, 0, 0, 0, 0, 0),
-#else
 	ftMotionCommandSetColAnim(nGMColAnimFighterNessSpecialLwHit, 0),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandLoopBegin(14),
-#else
 	ftMotionCommandEffect(0, nEFKindDustDashSmall, 0, 0, 0, -120, 0, 0, 0),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 200, 200, 200),
-#else
 	ftMotionCommandEffect(8, nEFKindDamageFlyMDustReverse, 0, 0, 0, 0, 0, 0, 0),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandWait(1),
-#else
 	ftMotionCommandLoopBegin(14),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandLoopEnd(),
-#else
 	ftMotionCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 200, 200, 200),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandSetFlag1(1),
-#else
 	ftMotionCommandWait(1),
-#endif
-#if defined(REGION_JP)
-	ftMotionCommandEnd(),
-#else
 	ftMotionCommandLoopEnd(),
-#endif
+	ftMotionCommandSetFlag1(1),
+	ftMotionCommandEnd(),
 #if defined(REGION_JP)
 	ftMotionCommandSetSlopeContour(3),
-#else
-	ftMotionCommandSetFlag1(1),
-#endif
 	ftMotionCommandEnd(),
+#endif
 };
 
 #if defined(REGION_JP)

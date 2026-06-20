@@ -664,9 +664,25 @@ include/reloc_data.$(VERSION).h symbols/reloc_data_symbols.$(VERSION).txt &: \
 # reference instead of using a raw byte offset.
 RELOC_MOTION_SOURCES := $(wildcard src/relocData/*MainMotion.c src/relocData/*SubMotion.c)
 
-include/ft/motiondesc_offsets.h: tools/genMotionDescOffsets.py $(RELOC_MOTION_SOURCES)
-	$(call print_2,Generating motion-desc offset header from:,$<,$(BLUE))
+# motiondesc_offsets.h is committed. Its block offsets come from the compiled
+# relocData .o symbol tables (via relocSymIndex.txt), NOT the `_0xNNNN` name
+# suffix — so renaming/splitting motion blocks just works. Only RELOC_DATA=1
+# (which builds the .o index) regenerates it; RELOC_DATA=0 uses the committed
+# header. After changing motion sources, build both versions RELOC_DATA=1 and
+# commit the regenerated header.
+ifeq ($(RELOC_DATA),1)
+# Offsets come from the .o-derived symbol index, not the source text, so the
+# index (not RELOC_MOTION_SOURCES) is the dependency — editing a motion .c
+# only changes offsets once it recompiles and the index updates.
+include/ft/motiondesc_offsets.h: tools/genMotionDescOffsets.py $(RELOC_SYM_INDEX)
+	$(call print_2,Generating motion-desc offset header from:,$(RELOC_SYM_INDEX),$(BLUE))
 	$(V)$(PYTHON) tools/genMotionDescOffsets.py $@
+endif
+
+# ftdata.c is the only consumer of the motion-desc offsets. Depend on the
+# header explicitly so it's regenerated (RELOC_DATA=1) and ftdata.o waits
+# for it even on a clean build where the .d dependency isn't recorded yet.
+$(BUILD_DIR)/src/ft/ftdata.o: include/ft/motiondesc_offsets.h
 
 # Staff roll specific. The encoded/metadata files are version-specific content
 # generated from the .$(VERSION).txt sources; we put them under $(BUILD_DIR)/

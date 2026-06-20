@@ -219,11 +219,15 @@ def compute_palette_c_size(palette_c_path):
     """
     with open(palette_c_path) as f:
         content = f.read()
-    if not re.search(r'u16\s+\w+\s*\[\s*16\s*\]\s*=\s*\{', content):
-        print(f"Warning: {palette_c_path} doesn't look like a 16-color palette",
+    # Accept any palette length `u16 X[N]` (N colors = N*2 bytes). 16 is the
+    # common CI4 case, but region-specific palettes can be other sizes
+    # (e.g. a JP-only `..._jp_palette[20]`).
+    m = re.search(r'u16\s+\w+\s*\[\s*(\d+)\s*\]\s*=\s*\{', content)
+    if not m:
+        print(f"Warning: {palette_c_path} doesn't look like a u16[N] palette",
               file=sys.stderr)
         sys.exit(1)
-    return 32
+    return int(m.group(1)) * 2
 
 
 def compute_mobjsub_c_size(mobjsub_c_path):

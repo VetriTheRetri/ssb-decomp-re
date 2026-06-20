@@ -402,22 +402,26 @@ def _virtual_block_text(body_open, body_close, decl_text, type_):
 
 
 def _strip_inactive_region_branches(text, version):
-    """Blank out the inactive half of `#if defined(REGION_JP) / #else /
-    #endif` guards in `text`, keeping byte offsets stable so downstream
+    """Blank out the inactive half of `#if defined(REGION_US|JP) / #else /
+    #endif` guards in `text` — and bare US-only / JP-only `#if ... #endif`
+    blocks (no `#else`) — keeping byte offsets stable so downstream
     position-based slicing keeps working. Each stripped character is
     replaced with a space (newlines preserved) so lines/columns line up
-    with the original. Handles simple, non-nested REGION_JP guards —
-    the only form used by relocData masters."""
+    with the original. Handles simple, non-nested REGION_US / REGION_JP
+    guards — the only forms used by relocData masters.
+
+    Both region kinds must be handled: a file with a bare
+    `#if defined(REGION_US) ... #endif` block would otherwise leave that
+    US-only data in a JP extraction, overshooting the (smaller) JP binary."""
 
     def blank(s):
         return "".join(c if c == "\n" else " " for c in s)
 
-    want_jp = (version == "jp")
     out = []
     pos = 0
-    # Match both `#if defined(REGION_JP)` and `#if !defined(REGION_JP)`
+    # Match `#if [!]defined(REGION_US)` and `#if [!]defined(REGION_JP)`.
     if_re = re.compile(
-        r"^[ \t]*#if\s+(!?\s*defined\s*\(\s*REGION_JP\s*\))[^\n]*\n",
+        r"^[ \t]*#if\s+(!?)\s*defined\s*\(\s*REGION_(US|JP)\s*\)[^\n]*\n",
         re.MULTILINE)
     else_re = re.compile(r"^[ \t]*#else\b[^\n]*\n", re.MULTILINE)
     endif_re = re.compile(r"^[ \t]*#endif\b[^\n]*\n", re.MULTILINE)
@@ -429,27 +433,25 @@ def _strip_inactive_region_branches(text, version):
             break
         out.append(text[pos:m_if.start()])
         out.append(blank(m_if.group(0)))
-        # Check if negated: `!defined(REGION_JP)` flips the sense
-        is_negated = m_if.group(1).startswith("!")
-        first_is_jp = not is_negated  # #if defined → first branch is JP
-        jp_start = m_if.end()
-        m_end = endif_re.search(text, jp_start)
+        negated = (m_if.group(1) == "!")
+        region = m_if.group(2).lower()  # the region named in the `#if`
+        # Does the FIRST branch apply to the version we're extracting?
+        first_active = (region == version) != negated
+        body_start = m_if.end()
+        m_end = endif_re.search(text, body_start)
         if m_end is None:
-            out.append(text[jp_start:])
+            out.append(text[body_start:])
             break
-        m_else = else_re.search(text, jp_start, m_end.start())
+        m_else = else_re.search(text, body_start, m_end.start())
         if m_else is not None:
-            first_body = text[jp_start:m_else.start()]
+            first_body = text[body_start:m_else.start()]
             second_body = text[m_else.end():m_end.start()]
-            jp_body = first_body if first_is_jp else second_body
-            us_body = second_body if first_is_jp else first_body
-            out.append(first_body if (want_jp == first_is_jp) else blank(first_body))
+            out.append(first_body if first_active else blank(first_body))
             out.append(blank(m_else.group(0)))
-            out.append(second_body if (want_jp != first_is_jp) else blank(second_body))
+            out.append(second_body if not first_active else blank(second_body))
         else:
-            first_body = text[jp_start:m_end.start()]
-            keep = (want_jp == first_is_jp)
-            out.append(first_body if keep else blank(first_body))
+            first_body = text[body_start:m_end.start()]
+            out.append(first_body if first_active else blank(first_body))
         out.append(blank(m_end.group(0)))
         pos = m_end.end()
     return "".join(out)
@@ -812,12 +814,14 @@ def emit_vtx(data, start, count, path):
     write_lines(path, lines)
 
 
-def emit_palette(data, start, path):
-    colors = struct.unpack('>16H', data[start:start + 32])
-    lines = [
-        "\t" + ", ".join(f"0x{c:04X}" for c in colors[0:8]) + ",",
-        "\t" + ", ".join(f"0x{c:04X}" for c in colors[8:16]) + ",",
-    ]
+def emit_palette(data, start, path, size=32):
+    """Emit `size` bytes as u16 RGBA5551 colors, 8 per line. `size` defaults
+    to 32 (the common 16-color CI4 case) but any N-color palette is handled."""
+    ncolors = size // 2
+    colors = struct.unpack(f'>{ncolors}H', data[start:start + size])
+    lines = []
+    for i in range(0, ncolors, 8):
+        lines.append("\t" + ", ".join(f"0x{c:04X}" for c in colors[i:i + 8]) + ",")
     write_lines(path, lines)
 
 
@@ -1286,7 +1290,7 @@ def _process_manifest(fid, manifest):
             count = size // 16
             emit_vtx(data, off, count, inc_path)
         elif payload.endswith('.palette.c'):
-            emit_palette(data, off, inc_path)
+            emit_palette(data, off, inc_path, size)
         elif payload.endswith('.dl.c'):
             emit_dl(data, off, size, inc_path)
         elif payload.endswith('.data.c'):
@@ -1379,7 +1383,7 @@ def _process_inline(fid, master_path):
                                 payload['typedef_fields'],
                                 payload['typedef_size'])
         elif inc_path_rel.endswith('.palette.inc.c'):
-            emit_palette(data, off, inc_full)
+            emit_palette(data, off, inc_full, size)
         else:
             emit_tex(data, off, size, inc_full)
             # Tex_*.tex.inc.c blocks: emit PNG preview if a DL referenced this

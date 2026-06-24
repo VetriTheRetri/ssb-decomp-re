@@ -2257,11 +2257,6 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 	vel->z = (dst[0][2] * x) + (dst[1][2] * y) + (dst[2][2] * z);
 }
 
-#ifdef NON_MATCHING
-/* 
- * NONMATCHING: move $a0, $s0 and move $a1, $s1 order swap around sLBParticleGeneratorFuncDefault
- */
-
 // 0x800D2C4C
 void lbParticleGeneratorFuncRun(GObj *gobj)
 {
@@ -2523,7 +2518,6 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
                 break;
                         
             default:
-                // OK seriously this order swap is ridiculous
                 if (sLBParticleGeneratorFuncDefault != NULL)
                 {
                     sLBParticleGeneratorFuncDefault(gn, &vel);
@@ -2580,9 +2574,6 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
         gn = gn->next;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorFuncRun.s")
-#endif /* NON_MATCHING */
 
 // 0x800D353C
 LBGenerator* lbParticleGetGenerator(void)

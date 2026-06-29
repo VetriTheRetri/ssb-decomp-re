@@ -341,7 +341,7 @@ FTMotionDesc dFTMarioMotionDescs[] =
     { &llFTMarioAnimSuperJumpPunchAirFileID, dMarioMainMotion_SuperJumpPunchAir_0x16CC, FTANIM_FLAG_XROTN_JOINT },
     { &llFTMarioAnimSuperJumpPunchAirFileID, dMarioMainMotion_SuperJumpPunchAir_0x17A8, FTANIM_FLAG_XROTN_JOINT },
     { &llFTMarioAnimMarioTornadoGroundFileID, dMarioMainMotion_MarioTornadoGround, FTANIM_FLAG_NONE },
-    &llFTMarioAnimMarioTornadoAirFileID, 0x00001884, 0x00000000
+    { &llFTMarioAnimMarioTornadoAirFileID, dMarioMainMotion_0x1884, FTANIM_FLAG_NONE },
 };
 
 // 0x80117810
@@ -587,7 +587,7 @@ FTMotionDesc dFTMMarioMotionDescs[] =
 	{ &llFTMarioAnimSuperJumpPunchAirFileID, dMarioMainMotion_SuperJumpPunchAir_0x16CC, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTMarioAnimSuperJumpPunchAirFileID, dMarioMainMotion_SuperJumpPunchAir_0x17A8, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTMarioAnimMarioTornadoGroundFileID, dMarioMainMotion_MarioTornadoGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTMarioAnimMarioTornadoAirFileID, 0x00001884, 0x00000010
+	{ &llFTMarioAnimMarioTornadoAirFileID, dMarioMainMotion_0x1884, FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 // 0x80118220
@@ -833,7 +833,7 @@ FTMotionDesc dFTNMarioMotionDescs[] =
     { &llFTMarioAnimSuperJumpPunchAirFileID, dMarioMainMotion_SuperJumpPunchAir_0x16CC, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTMarioAnimSuperJumpPunchAirFileID, dMarioMainMotion_SuperJumpPunchAir_0x17A8, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTMarioAnimMarioTornadoGroundFileID, dMarioMainMotion_MarioTornadoGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    &llFTMarioAnimMarioTornadoAirFileID, 0x00001884, 0x00000010
+    { &llFTMarioAnimMarioTornadoAirFileID, dMarioMainMotion_0x1884, FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 FTData dFTNMarioData =
@@ -1079,7 +1079,6 @@ FTMotionDesc dFTFoxMotionDescs[] =
     { &llFTFoxAnimFireFoxStartGroundFileID, dFoxMainMotion_FireFoxStartGround, FTANIM_FLAG_NONE },
     { &llFTFoxAnimFireFoxStartAerialFileID, dFoxMainMotion_FireFoxStartAerial, FTANIM_FLAG_XROTN_JOINT },
     { &llFTFoxAnimReadyingFireFoxGroundFileID, dFoxMainMotion_ReadyingFireFoxGround, FTANIM_FLAG_NONE },
-#if defined(REGION_US)
     { &llFTFoxAnimReadyingFireFoxAirFileID, dFoxMainMotion_ReadyingFireFoxAir, FTANIM_FLAG_XROTN_JOINT },
     { &llFTFoxAnimFireFoxGroundFileID, dFoxMainMotion_FireFoxGround, FTANIM_FLAG_NONE },
     { &llFTFoxAnimFireFoxAirFileID, dFoxMainMotion_FireFoxAir, FTANIM_FLAG_XROTN_JOINT },
@@ -1093,23 +1092,7 @@ FTMotionDesc dFTFoxMotionDescs[] =
     { &llFTFoxAnimShireStartAirFileID, dFoxMainMotion_ShineStart, FTANIM_FLAG_NONE },
     { &llFTFoxAnimSwitchDirectionShineAirFileID, dFoxMainMotion_SwitchDirectionShine, FTANIM_FLAG_NONE },
     { &llFTFoxAnimUnknownFileID, dFoxMainMotion_Reflecting, FTANIM_FLAG_NONE },
-    &llFTFoxAnimShineAirEndFileID, 0x00001A68, 0x00000000
-#else
-    { &llFTFoxAnimReadyingFireFoxAirFileID, dFoxMainMotion_ReadyingFireFoxAir, FTANIM_FLAG_XROTN_JOINT },
-    { &llFTFoxAnimFireFoxGroundFileID, dFoxMainMotion_FireFoxGround, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimFireFoxAirFileID, dFoxMainMotion_FireFoxAir, FTANIM_FLAG_XROTN_JOINT },
-    { &llFTFoxAnimFireFoxEndGroundFileID, dFoxMainMotion_FireFoxEndGround, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimFireFoxEndAirFileID, dFoxMainMotion_FireFoxEndAir, FTANIM_FLAG_XROTN_JOINT },
-    { &llFTFoxAnimLandingWhileFireFoxAirFileID, dFoxMainMotion_LandingWhileFireFoxAir, FTANIM_FLAG_XROTN_JOINT },
-    { &llFTFoxAnimShineStartFileID, dFoxMainMotion_ShineStart, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimSwitchDirectionShineFileID, dFoxMainMotion_SwitchDirectionShine, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimReflectingFileID, dFoxMainMotion_Reflecting, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimShineFileID, dFoxMainMotion_Shine, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimShireStartAirFileID, dFoxMainMotion_ShineStart, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimSwitchDirectionShineAirFileID, dFoxMainMotion_SwitchDirectionShine, FTANIM_FLAG_NONE },
-    { &llFTFoxAnimUnknownFileID, dFoxMainMotion_Reflecting, FTANIM_FLAG_NONE },
-    &llFTFoxAnimShineAirEndFileID, 0x00001A88, 0x00000000
-#endif
+    { &llFTFoxAnimShineAirEndFileID, dFoxMainMotion_Shine, FTANIM_FLAG_NONE },
 };
 
 FTData dFTFoxData =
@@ -1355,7 +1338,6 @@ FTMotionDesc dFTNFoxMotionDescs[] =
     { &llFTFoxAnimFireFoxStartGroundFileID, dFoxMainMotion_FireFoxStartGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTFoxAnimFireFoxStartAerialFileID, dFoxMainMotion_FireFoxStartAerial, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTFoxAnimReadyingFireFoxGroundFileID, dFoxMainMotion_ReadyingFireFoxGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
-#if defined(REGION_US)
     { &llFTFoxAnimReadyingFireFoxAirFileID, dFoxMainMotion_ReadyingFireFoxAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTFoxAnimFireFoxGroundFileID, dFoxMainMotion_FireFoxGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTFoxAnimFireFoxAirFileID, dFoxMainMotion_FireFoxAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
@@ -1369,23 +1351,7 @@ FTMotionDesc dFTNFoxMotionDescs[] =
     { &llFTFoxAnimShireStartAirFileID, dFoxMainMotion_ShineStart, FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTFoxAnimSwitchDirectionShineAirFileID, dFoxMainMotion_SwitchDirectionShine, FTANIM_FLAG_SUBMOTION_SCRIPT },
     { &llFTFoxAnimUnknownFileID, dFoxMainMotion_Reflecting, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    &llFTFoxAnimShineAirEndFileID, 0x00001A68, 0x00000010
-#else
-    { &llFTFoxAnimReadyingFireFoxAirFileID, dFoxMainMotion_ReadyingFireFoxAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimFireFoxGroundFileID, dFoxMainMotion_FireFoxGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimFireFoxAirFileID, dFoxMainMotion_FireFoxAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimFireFoxEndGroundFileID, dFoxMainMotion_FireFoxEndGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimFireFoxEndAirFileID, dFoxMainMotion_FireFoxEndAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimLandingWhileFireFoxAirFileID, dFoxMainMotion_LandingWhileFireFoxAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimShineStartFileID, dFoxMainMotion_ShineStart, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimSwitchDirectionShineFileID, dFoxMainMotion_SwitchDirectionShine, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimReflectingFileID, dFoxMainMotion_Reflecting, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimShineFileID, dFoxMainMotion_Shine, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimShireStartAirFileID, dFoxMainMotion_ShineStart, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimSwitchDirectionShineAirFileID, dFoxMainMotion_SwitchDirectionShine, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    { &llFTFoxAnimUnknownFileID, dFoxMainMotion_Reflecting, FTANIM_FLAG_SUBMOTION_SCRIPT },
-    &llFTFoxAnimShineAirEndFileID, 0x00001A88, 0x00000010
-#endif
+    { &llFTFoxAnimShineAirEndFileID, dFoxMainMotion_Shine, FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 FTData dFTNFoxData =
@@ -1646,7 +1612,7 @@ FTMotionDesc dFTDonkeyMotionDescs[] =
 	{ &llFTDonkeyAnimCargoLandingFileID, 0x80000000, 0x10000000 },
 	{ &llFTDonkeyAnimCargoLandingFileID, 0x80000000, 0x10000000 },
 	{ &llFTDonkeyAnimCargoAirThrowFileID, dDonkeyMainMotion_CargoAirThrow_0x0D28, 0x10000000 },
-	&llFTDonkeyAnimCargoAirThrowFileID, 0x00000D28, 0x10000000
+	{ &llFTDonkeyAnimCargoAirThrowFileID, dDonkeyMainMotion_CargoAirThrow_0x0D28, 0x10000000 },
 };
 
 FTData dFTDonkeyData =
@@ -1907,7 +1873,7 @@ FTMotionDesc dFTNDonkeyMotionDescs[] =
 	{ &llFTDonkeyAnimCargoLandingFileID, 0x80000000, 0x10000000 },
 	{ &llFTDonkeyAnimCargoLandingFileID, 0x80000000, 0x10000000 },
 	{ &llFTDonkeyAnimCargoAirThrowFileID, dDonkeyMainMotion_CargoAirThrow_0x0D28, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
-	&llFTDonkeyAnimCargoAirThrowFileID, 0x00000D28, 0x10000010
+	{ &llFTDonkeyAnimCargoAirThrowFileID, dDonkeyMainMotion_CargoAirThrow_0x0D28, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
 };
 
 FTData dFTNDonkeyData =
@@ -2168,7 +2134,7 @@ FTMotionDesc dFTGDonkeyMotionDescs[] =
     { &llFTDonkeyAnimCargoLandingFileID, 0x80000000, 0x10000000 },
     { &llFTDonkeyAnimCargoLandingFileID, 0x80000000, 0x10000000 },
     { &llFTDonkeyAnimCargoAirThrowFileID, dDonkeyMainMotion_CargoAirThrow_0x0D28, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
-    &llFTDonkeyAnimCargoAirThrowFileID, 0x00000D28, 0x10000010
+    { &llFTDonkeyAnimCargoAirThrowFileID, dDonkeyMainMotion_CargoAirThrow_0x0D28, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
 };
 
 FTData dFTGDonkeyData =
@@ -2415,7 +2381,7 @@ FTMotionDesc dFTSamusMotionDescs[] =
 	{ &llFTSamusAnimScrewAttackGroundFileID, dSamusMainMotion_ScrewAttackGround, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTSamusAnimScrewAttackAirFileID, dSamusMainMotion_ScrewAttackAir, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTSamusAnimBombFileID, dSamusMainMotion_Bomb, FTANIM_FLAG_NONE },
-	&llFTSamusAnimBombAirFileID, 0x00001E6C, 0x00000000
+	{ &llFTSamusAnimBombAirFileID, dSamusMainMotion_0x1E6C, FTANIM_FLAG_NONE },
 };
 
 FTData dFTSamusData =
@@ -2659,7 +2625,7 @@ FTMotionDesc dFTNSamusMotionDescs[] =
 	{ &llFTSamusAnimScrewAttackGroundFileID, dSamusMainMotion_ScrewAttackGround, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTSamusAnimScrewAttackAirFileID, dSamusMainMotion_ScrewAttackAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTSamusAnimBombFileID, dSamusMainMotion_Bomb, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTSamusAnimBombAirFileID, 0x00001E6C, 0x00000010
+	{ &llFTSamusAnimBombAirFileID, dSamusMainMotion_0x1E6C, FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 FTData dFTNSamusData =
@@ -2901,7 +2867,7 @@ FTMotionDesc dFTLuigiMotionDescs[] =
 	{ &llFTMarioAnimSuperJumpPunchAirFileID, dLuigiMainMotion_SuperJumpPunchGround, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTMarioAnimSuperJumpPunchAirFileID, dLuigiMainMotion_SuperJumpPunchAir, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTMarioAnimMarioTornadoGroundFileID, dLuigiMainMotion_MarioTornadoGround, FTANIM_FLAG_NONE },
-	&llFTMarioAnimMarioTornadoAirFileID, 0x00001958, 0x00000000
+	{ &llFTMarioAnimMarioTornadoAirFileID, dLuigiMainMotion_0x1958, FTANIM_FLAG_NONE },
 };
 
 FTData dFTLuigiData =
@@ -3145,7 +3111,7 @@ FTMotionDesc dFTNLuigiMotionDescs[] =
 	{ &llFTMarioAnimSuperJumpPunchAirFileID, dLuigiMainMotion_SuperJumpPunchGround, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTMarioAnimSuperJumpPunchAirFileID, dLuigiMainMotion_SuperJumpPunchAir, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTMarioAnimMarioTornadoGroundFileID, dLuigiMainMotion_MarioTornadoGround, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTMarioAnimMarioTornadoAirFileID, 0x00001958, 0x00000010
+	{ &llFTMarioAnimMarioTornadoAirFileID, dLuigiMainMotion_0x1958, FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 FTData dFTNLuigiData =
@@ -3324,9 +3290,8 @@ FTMotionDesc dFTLinkMotionDescs[] =
 	{ &llFTLinkAnimShieldOffFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_YROTN_JOINT },
 	{ &llFTLinkAnimRollFFileID, dLinkMainMotion_RollF, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTLinkAnimRollBFileID, dLinkMainMotion_RollB, FTANIM_FLAG_XROTN_JOINT },
-#if defined(REGION_US)
-	{ &llFTLinkAnimShieldBreakFileID, dLinkMainMotion_0x0D68 + 0x34, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_0x0D68 + 0x60, FTANIM_FLAG_NONE },
+	{ &llFTLinkAnimShieldBreakFileID, dLinkMainMotion_ShieldBreak, FTANIM_FLAG_NONE },
+	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_0x0DC8, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimStunLandDFileID, dLinkMainMotion_StunLand, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimStunLandUFileID, dLinkMainMotion_StunLand, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimStunStartDFileID, dLinkMainMotion_Sleep_0x0DF8, FTANIM_FLAG_NONE },
@@ -3337,34 +3302,12 @@ FTMotionDesc dFTLinkMotionDescs[] =
 	{ &llFTLinkAnimCatchPullFileID, dLinkMainMotion_CatchPull, 0x1C000000 },
 	{ &llFTLinkAnimThrowFFileID, dLinkMainMotion_ThrowF, 0x10000000 },
 	{ &llFTLinkAnimThrowBFileID, dLinkMainMotion_ThrowB, 0x10000000 },
-#else
-	{ &llFTLinkAnimShieldBreakFileID, dLinkMainMotion_0x0D68 + 0x2C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_0x0D68 + 0x58, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimStunLandDFileID, dLinkMainMotion_0x0D68 + 0x64, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimStunLandUFileID, dLinkMainMotion_0x0D68 + 0x64, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimStunStartDFileID, dLinkMainMotion_StunLand + 0x1C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimStunStartUFileID, dLinkMainMotion_StunLand + 0x1C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimSleepFileID, dLinkMainMotion_Sleep_0x0DF8, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimSleepFileID, dLinkMainMotion_Sleep_0x0E00 + 0x2C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimCatchFileID, dLinkMainMotion_Sleep_0x0E34 + 0x58, 0x1C000000 },
-	{ &llFTLinkAnimCatchPullFileID, dLinkMainMotion_Catch + 0x7C, 0x1C000000 },
-	{ &llFTLinkAnimThrowFFileID, dLinkMainMotion_CatchPull + 0x4C, 0x10000000 },
-	{ &llFTLinkAnimThrowBFileID, dLinkMainMotion_ThrowF + 0xCC, 0x10000000 },
-#endif
 	{ &llFTLinkAnimEggLayPulledFileID, dLinkMainMotion_Damage_0x01D8, FTANIM_FLAG_TRANSN_JOINT },
-#if defined(REGION_US)
 	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_Damaged_0x10F0, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_Damaged_0x10FC, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimEggLayFileID, dLinkMainMotion_EggLay_0x1108, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimFalconDivePulledFileID, dLinkMainMotion_FalconDivePulled, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_Damaged_0x1128, FTANIM_FLAG_NONE },
-#else
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_ThrowB + 0xA8, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_Damaged_0x10F0 + 0x4, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimEggLayFileID, dLinkMainMotion_Damaged_0x10FC + 0x4, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimFalconDivePulledFileID, dLinkMainMotion_EggLay_0x1108 + 0x4, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_FalconDivePulled + 0xC, FTANIM_FLAG_NONE },
-#endif
 	{ &llFTLinkAnimThrownDKPulledFileID, dLinkMainMotion_Damage_0x01D8, FTANIM_FLAG_TRANSN_JOINT },
 	{ &llFTLinkAnimThrownMarioBrosFileID, dLinkMainMotion_Damage_0x01D8, FTANIM_FLAG_TRANSN_JOINT },
 	{ &llFTLinkAnimThrownFoxFStartFileID, dLinkMainMotion_Damage_0x01D8, FTANIM_FLAG_TRANSN_JOINT },
@@ -3373,7 +3316,6 @@ FTMotionDesc dFTLinkMotionDescs[] =
 	{ &llFTLinkAnimThrown2FileID, dLinkMainMotion_Damage_0x01D8, FTANIM_FLAG_TRANSN_JOINT },
 	0x00000000, 0x80000000, 0x80000000,
 	0x00000000, 0x80000000, 0x80000000,
-#if defined(REGION_US)
 	{ &llFTLinkAnimTauntFileID, dLinkMainMotion_Taunt, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimJab1FileID, dLinkMainMotion_Jab1, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimJab2FileID, dLinkMainMotion_Jab2, FTANIM_FLAG_NONE },
@@ -3421,57 +3363,7 @@ FTMotionDesc dFTLinkMotionDescs[] =
 	{ &llFTLinkAnimCatchingBoomerangAirFileID, dLinkMainMotion_CatchingBoomerang, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimMissingBoomerangAirFileID, dLinkMainMotion_MissingBoomerang_0x1D88, FTANIM_FLAG_NONE },
 	{ &llFTLinkAnimBombFileID, dLinkMainMotion_Bomb, FTANIM_FLAG_NONE },
-	&llFTLinkAnimBombAirFileID, 0x00001CF8, 0x00000000
-#else
-	{ &llFTLinkAnimTauntFileID, dLinkMainMotion_Damaged_0x1128 + 0xC, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimJab1FileID, dLinkMainMotion_Taunt + 0x30, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimJab2FileID, dLinkMainMotion_Jab1 + 0x60, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimDashAttackFileID, dLinkMainMotion_JabLoopEnd + 0x10, FTANIM_FLAG_XROTN_JOINT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimFTiltFileID, dLinkMainMotion_DashAttack + 0xA0, FTANIM_FLAG_NONE },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimUTiltFileID, dLinkMainMotion_FTilt + 0x70, FTANIM_FLAG_NONE },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimDTiltFileID, dLinkMainMotion_UTilt + 0x58, FTANIM_FLAG_NONE },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimFSmashFileID, dLinkMainMotion_DTilt + 0x68, FTANIM_FLAG_NONE },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimUSmashFileID, dLinkMainMotion_FSmash + 0xD4, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimDSmashFileID, dLinkMainMotion_USmash + 0x16C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimAttackAirNFileID, dLinkMainMotion_DSmash + 0xE4, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimAttackAirFFileID, dLinkMainMotion_AttackAirN + 0x90, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimAttackAirBFileID, dLinkMainMotion_AttackAirB_0x1AB0, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimAttackAirUFileID, dLinkMainMotion_AttackAirB_0x1AB8 + 0xAC, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimAttackAirDFileID, dLinkMainMotion_AttackAirU + 0x60, FTANIM_FLAG_NONE },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimLandingAirFFileID, dLinkMainMotion_AttackAirF + 0x8C, FTANIM_FLAG_NONE },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimLandingAirDFileID, dLinkMainMotion_AttackAirD + 0x78, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimLandingAirXFileID, dLinkMainMotion_LandingAirD + 0x4C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimJab3FileID, dLinkMainMotion_Jab2 + 0x60, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimJabLoopStartFileID, dLinkMainMotion_Jab3 + 0x5C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimJabLoopFileID, dLinkMainMotion_JabLoop_0x12A8, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimJabLoopEndFileID, dLinkMainMotion_JabLoop_0x12B0 + 0x188, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimAppear1FileID, dLinkMainMotion_LandingAirX_0x1CA8 + 0x10, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_ANIMJOINT },
-	{ &llFTLinkAnimAppear2FileID, dLinkMainMotion_Appear1 + 0x24, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_ANIMJOINT },
-	{ &llFTLinkAnimUpSpecialGroundFileID, dLinkMainMotion_CatchingBoomerang + 0x20, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimUpSpecialEndGroundFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimUpSpecialAirFileID, dLinkMainMotion_CatchingBoomerang + 0x20, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimMissingBoomerangFileID, dLinkMainMotion_Bomb + 0x2C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimCatchingBoomerangFileID, dLinkMainMotion_MissingBoomerang_0x1D88 + 0x14, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimMissingBoomerangFileID, dLinkMainMotion_MissingBoomerang_0x1D2C + 0x54, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimMissingBoomerangAirFileID, dLinkMainMotion_Bomb + 0x2C, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimCatchingBoomerangAirFileID, dLinkMainMotion_MissingBoomerang_0x1D88 + 0x14, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimMissingBoomerangAirFileID, dLinkMainMotion_MissingBoomerang_0x1D2C + 0x54, FTANIM_FLAG_NONE },
-	{ &llFTLinkAnimBombFileID, dLinkMainMotion_Appear2 + 0x4, FTANIM_FLAG_NONE },
-	&llFTLinkAnimBombAirFileID, 0x00001CF0, 0x00000000
-#endif
+	{ &llFTLinkAnimBombAirFileID, dLinkMainMotion_Bomb, FTANIM_FLAG_NONE },
 };
 
 FTData dFTLinkData =
@@ -3650,9 +3542,8 @@ FTMotionDesc dFTNLinkMotionDescs[] =
 	{ &llFTLinkAnimShieldOffFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_YROTN_JOINT },
 	{ &llFTLinkAnimRollFFileID, dLinkMainMotion_RollF, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTLinkAnimRollBFileID, dLinkMainMotion_RollB, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-#if defined(REGION_US)
-	{ &llFTLinkAnimShieldBreakFileID, dLinkMainMotion_0x0D68 + 0x34, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_0x0D68 + 0x60, FTANIM_FLAG_SUBMOTION_SCRIPT },
+	{ &llFTLinkAnimShieldBreakFileID, dLinkMainMotion_ShieldBreak, FTANIM_FLAG_SUBMOTION_SCRIPT },
+	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_0x0DC8, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTLinkAnimStunLandDFileID, dLinkMainMotion_StunLand, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTLinkAnimStunLandUFileID, dLinkMainMotion_StunLand, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTLinkAnimStunStartDFileID, dLinkMainMotion_Sleep_0x0DF8, FTANIM_FLAG_SUBMOTION_SCRIPT },
@@ -3724,83 +3615,7 @@ FTMotionDesc dFTNLinkMotionDescs[] =
 	{ &llFTLinkAnimCatchingBoomerangAirFileID, dLinkMainMotion_CatchingBoomerang, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTLinkAnimMissingBoomerangAirFileID, dLinkMainMotion_MissingBoomerang_0x1D88, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTLinkAnimBombFileID, dLinkMainMotion_Bomb, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTLinkAnimBombAirFileID, 0x00001CF8, 0x00000010
-#else
-	{ &llFTLinkAnimShieldBreakFileID, dLinkMainMotion_0x0D68 + 0x2C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_0x0D68 + 0x58, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimStunLandDFileID, dLinkMainMotion_0x0D68 + 0x64, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimStunLandUFileID, dLinkMainMotion_0x0D68 + 0x64, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimStunStartDFileID, dLinkMainMotion_StunLand + 0x1C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimStunStartUFileID, dLinkMainMotion_StunLand + 0x1C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimSleepFileID, dLinkMainMotion_Sleep_0x0DF8, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimSleepFileID, dLinkMainMotion_Sleep_0x0E00 + 0x2C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimCatchFileID, dLinkMainMotion_Sleep_0x0E34 + 0x58, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x1C000000 },
-	{ &llFTLinkAnimCatchPullFileID, dLinkMainMotion_Catch + 0x7C, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x1C000000 },
-	{ &llFTLinkAnimThrowFFileID, dLinkMainMotion_CatchPull + 0x4C, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
-	{ &llFTLinkAnimThrowBFileID, dLinkMainMotion_ThrowF + 0xCC, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
-	{ &llFTLinkAnimEggLayPulledFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_ThrowB + 0xA8, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_Damaged_0x10F0 + 0x4, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimEggLayFileID, dLinkMainMotion_Damaged_0x10FC + 0x4, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimFalconDivePulledFileID, dLinkMainMotion_EggLay_0x1108 + 0x4, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimDamagedFileID, dLinkMainMotion_FalconDivePulled + 0xC, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimThrownDKPulledFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimThrownMarioBrosFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimThrownFoxFStartFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimThrownDKFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimThrown1FileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimThrown2FileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	0x00000000, 0x80000000, 0x80000000,
-	0x00000000, 0x80000000, 0x80000000,
-	{ &llFTLinkAnimTauntFileID, dLinkMainMotion_Damaged_0x1128 + 0xC, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimJab1FileID, dLinkMainMotion_Taunt + 0x30, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimJab2FileID, dLinkMainMotion_Jab1 + 0x60, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimDashAttackFileID, dLinkMainMotion_JabLoopEnd + 0x10, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimFTiltFileID, dLinkMainMotion_DashAttack + 0xA0, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimUTiltFileID, dLinkMainMotion_FTilt + 0x70, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimDTiltFileID, dLinkMainMotion_UTilt + 0x58, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimFSmashFileID, dLinkMainMotion_DTilt + 0x68, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimUSmashFileID, dLinkMainMotion_FSmash + 0xD4, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimDSmashFileID, dLinkMainMotion_USmash + 0x16C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimAttackAirNFileID, dLinkMainMotion_DSmash + 0xE4, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimAttackAirFFileID, dLinkMainMotion_AttackAirN + 0x90, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimAttackAirBFileID, dLinkMainMotion_AttackAirB_0x1AB0, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimAttackAirUFileID, dLinkMainMotion_AttackAirB_0x1AB8 + 0xAC, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimAttackAirDFileID, dLinkMainMotion_AttackAirU + 0x60, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimLandingAirFFileID, dLinkMainMotion_AttackAirF + 0x8C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ 0x00000000, 0x80000000, 0x00000000 },
-	{ &llFTLinkAnimLandingAirDFileID, dLinkMainMotion_AttackAirD + 0x78, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimLandingAirXFileID, dLinkMainMotion_LandingAirD + 0x4C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimJab3FileID, dLinkMainMotion_Jab2 + 0x60, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimJabLoopStartFileID, dLinkMainMotion_Jab3 + 0x5C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimJabLoopFileID, dLinkMainMotion_JabLoop_0x12A8, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimJabLoopEndFileID, dLinkMainMotion_JabLoop_0x12B0 + 0x188, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimAppear1FileID, dLinkMainMotion_LandingAirX_0x1CA8 + 0x10, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMJOINT },
-	{ &llFTLinkAnimAppear2FileID, dLinkMainMotion_Appear1 + 0x24, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMJOINT },
-	{ &llFTLinkAnimUpSpecialGroundFileID, dLinkMainMotion_CatchingBoomerang + 0x20, FTANIM_FLAG_TRANSN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimUpSpecialEndGroundFileID, 0x80000000, FTANIM_FLAG_TRANSN_JOINT },
-	{ &llFTLinkAnimUpSpecialAirFileID, dLinkMainMotion_CatchingBoomerang + 0x20, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimMissingBoomerangFileID, dLinkMainMotion_Bomb + 0x2C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimCatchingBoomerangFileID, dLinkMainMotion_MissingBoomerang_0x1D88 + 0x14, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimMissingBoomerangFileID, dLinkMainMotion_MissingBoomerang_0x1D2C + 0x54, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimMissingBoomerangAirFileID, dLinkMainMotion_Bomb + 0x2C, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimCatchingBoomerangAirFileID, dLinkMainMotion_MissingBoomerang_0x1D88 + 0x14, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimMissingBoomerangAirFileID, dLinkMainMotion_MissingBoomerang_0x1D2C + 0x54, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	{ &llFTLinkAnimBombFileID, dLinkMainMotion_Appear2 + 0x4, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTLinkAnimBombAirFileID, 0x00001CF0, 0x00000010
-#endif
+	{ &llFTLinkAnimBombAirFileID, dLinkMainMotion_Bomb, FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 FTData dFTNLinkData =
@@ -4048,7 +3863,7 @@ FTMotionDesc dFTYoshiMotionDescs[] =
 	{ &llFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowingFileID, dYoshiMainMotion_EggLayGrabbedSomeoneComingInAndSwallowing, FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
 	{ &llFTYoshiAnimEggLayAirGrabOutFileID, dYoshiMainMotion_EggLay_0x1730, FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
 	{ &llFTYoshiAnimEggLayAirGrabOutFileID, dYoshiMainMotion_EggLay_0x1760, FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
-	&llFTYoshiAnimEggLayAirGrabInFileID, 0x00001774, 0x18000001
+	{ &llFTYoshiAnimEggLayAirGrabInFileID, dYoshiMainMotion_EggLayGrabbedSomeoneComingInAndSwallowing, FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
 };
 
 FTData dFTYoshiData =
@@ -4296,7 +4111,7 @@ FTMotionDesc dFTNYoshiMotionDescs[] =
 	{ &llFTYoshiAnimEggLayGrabbedSomeoneComingInAndSwallowingFileID, dYoshiMainMotion_EggLayGrabbedSomeoneComingInAndSwallowing, FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
 	{ &llFTYoshiAnimEggLayAirGrabOutFileID, dYoshiMainMotion_EggLay_0x1730, FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
 	{ &llFTYoshiAnimEggLayAirGrabOutFileID, dYoshiMainMotion_EggLay_0x1760, FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
-	&llFTYoshiAnimEggLayAirGrabInFileID, 0x00001774, 0x18000011
+	{ &llFTYoshiAnimEggLayAirGrabInFileID, dYoshiMainMotion_EggLayGrabbedSomeoneComingInAndSwallowing, FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMLOCKS | 0x18000000 },
 };
 
 FTData dFTNYoshiData =
@@ -4550,7 +4365,7 @@ FTMotionDesc dFTCaptainMotionDescs[] =
 	{ &llFTCaptainAnimFalconDiveFileID, dCaptainMainMotion_FalconDive, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTCaptainAnimCatchingEnemyWhileDivingFileID, dCaptainMainMotion_CatchingEnemyWhileDiving, 0x10000000 },
 	{ &llFTCaptainAnimFalconDiveEnd1FileID, dCaptainMainMotion_FalconDiveEnd1, FTANIM_FLAG_XROTN_JOINT },
-	&llFTCaptainAnimFalconDiveEnd2FileID, 0x00001C8C, 0x40000000
+	{ &llFTCaptainAnimFalconDiveEnd2FileID, dCaptainMainMotion_FalconDive, FTANIM_FLAG_XROTN_JOINT },
 };
 
 FTData dFTCaptainData =
@@ -4802,7 +4617,7 @@ FTMotionDesc dFTNCaptainMotionDescs[] =
 	{ &llFTCaptainAnimFalconDiveFileID, dCaptainMainMotion_FalconDive, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTCaptainAnimCatchingEnemyWhileDivingFileID, dCaptainMainMotion_CatchingEnemyWhileDiving, FTANIM_FLAG_SUBMOTION_SCRIPT | 0x10000000 },
 	{ &llFTCaptainAnimFalconDiveEnd1FileID, dCaptainMainMotion_FalconDiveEnd1, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTCaptainAnimFalconDiveEnd2FileID, 0x00001C8C, 0x40000010
+	{ &llFTCaptainAnimFalconDiveEnd2FileID, dCaptainMainMotion_FalconDive, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_SUBMOTION_SCRIPT },
 };
 
 FTData dFTNCaptainData =
@@ -6148,7 +5963,7 @@ FTMotionDesc dFTPurinMotionDescs[] =
 	{ &llFTPurinAnimPoundGroundFileID, dPurinMainMotion_PoundGround, FTANIM_FLAG_XROTN_JOINT },
 	{ &llFTPurinAnimPoundAirFileID, dPurinMainMotion_PoundGround, FTANIM_FLAG_NONE },
 	{ &llFTPurinAnimSingAirFileID, dPurinMainMotion_SingAir, FTANIM_FLAG_NONE },
-	&llFTPurinAnimRestAirFileID, 0x000016F4, 0x00000000
+	{ &llFTPurinAnimRestAirFileID, dPurinMainMotion_0x16F4, FTANIM_FLAG_NONE },
 };
 
 FTData dFTPurinData =
@@ -6658,7 +6473,7 @@ FTMotionDesc dFTNessMotionDescs[] =
 	{ &llFTNessAnimDownSpecialStartAirFileID, dNessMainMotion_DownSpecialStartAir, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x8, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x10, FTANIM_FLAG_NONE },
-	&llFTNessAnimDownSpecialEndAirFileID, 0x000017A0, 0x00000000
+	{ &llFTNessAnimDownSpecialEndAirFileID, dNessMainMotion_0x17A0, FTANIM_FLAG_NONE },
 #else
 	{ &llFTNessAnimPKThunderStartAirFileID, dNessMainMotion_DKTAAir + 0x4C, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimPKThunderAirFileID, dNessMainMotion_PKThunder, FTANIM_FLAG_NONE },
@@ -6672,7 +6487,7 @@ FTMotionDesc dFTNessMotionDescs[] =
 	{ &llFTNessAnimDownSpecialStartAirFileID, dNessMainMotion_DownSpecial, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x8, FTANIM_FLAG_NONE },
-	&llFTNessAnimDownSpecialEndAirFileID, 0x00001798, 0x00000000
+	{ &llFTNessAnimDownSpecialEndAirFileID, dNessMainMotion_0x1798, FTANIM_FLAG_NONE },
 #endif
 };
 
@@ -6934,7 +6749,7 @@ FTMotionDesc dFTNNessMotionDescs[] =
 	{ &llFTNessAnimDownSpecialStartAirFileID, dNessMainMotion_DownSpecialStartAir, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x8, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x10, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTNessAnimDownSpecialEndAirFileID, 0x000017A0, 0x00000010
+	{ &llFTNessAnimDownSpecialEndAirFileID, dNessMainMotion_0x17A0, FTANIM_FLAG_SUBMOTION_SCRIPT },
 #else
 	{ &llFTNessAnimPKThunderStartAirFileID, dNessMainMotion_DKTAAir + 0x4C, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTNessAnimPKThunderAirFileID, dNessMainMotion_PKThunder, FTANIM_FLAG_SUBMOTION_SCRIPT },
@@ -6948,7 +6763,7 @@ FTMotionDesc dFTNNessMotionDescs[] =
 	{ &llFTNessAnimDownSpecialStartAirFileID, dNessMainMotion_DownSpecial, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir, FTANIM_FLAG_SUBMOTION_SCRIPT },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x8, FTANIM_FLAG_SUBMOTION_SCRIPT },
-	&llFTNessAnimDownSpecialEndAirFileID, 0x00001798, 0x00000010
+	{ &llFTNessAnimDownSpecialEndAirFileID, dNessMainMotion_0x1798, FTANIM_FLAG_SUBMOTION_SCRIPT },
 #endif
 };
 
@@ -7214,7 +7029,7 @@ FTMotionDesc dFTBossMotionDescs[] =
 	{ &llFTBossAnimDyingStartFileID, dBossMainMotion_DyingStart, FTANIM_FLAG_TRANSN_JOINT },
 	{ &llFTBossAnimDyingFileID, dBossMainMotion_Dying, FTANIM_FLAG_TRANSN_JOINT },
 	{ &llFTBossAnimUnknown6FileID, dBossMainMotion_DyingStart, FTANIM_FLAG_TRANSN_JOINT },
-	&llFTBossAnimAppearFileID, 0x00000970, 0x40000008
+	{ &llFTBossAnimAppearFileID, dBossMainMotion_0x0970, FTANIM_FLAG_XROTN_JOINT | FTANIM_FLAG_ANIMJOINT },
 };
 
 FTData dFTBossData =

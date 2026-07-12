@@ -976,50 +976,236 @@
 #define dLinkMainMotion_FireFlowerShoot_0x0D18 0x00000D18
 #define dLinkMainMotion_FireFlowerShoot_0x0D28 0x00000D28
 #define dLinkMainMotion_Hammer 0x00000D38
+#if defined(REGION_JP)
+#define dLinkMainMotion_0x0D68 0x00000D60
+#else
 #define dLinkMainMotion_0x0D68 0x00000D68
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_ShieldBreak 0x00000D94
+#else
+#define dLinkMainMotion_ShieldBreak 0x00000D9C
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_0x0DC8 0x00000DC0
+#else
+#define dLinkMainMotion_0x0DC8 0x00000DC8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_StunLand 0x00000DCC
+#else
 #define dLinkMainMotion_StunLand 0x00000DD4
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Sleep_0x0DF8 0x00000DF0
+#else
 #define dLinkMainMotion_Sleep_0x0DF8 0x00000DF8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Sleep_0x0E00 0x00000DF8
+#else
 #define dLinkMainMotion_Sleep_0x0E00 0x00000E00
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Sleep_0x0E34 0x00000E2C
+#else
 #define dLinkMainMotion_Sleep_0x0E34 0x00000E34
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Catch 0x00000E8C
+#else
 #define dLinkMainMotion_Catch 0x00000E94
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_CatchPull 0x00000F10
+#else
 #define dLinkMainMotion_CatchPull 0x00000F18
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_ThrowF 0x00000F64
+#else
 #define dLinkMainMotion_ThrowF 0x00000F6C
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_ThrowB 0x00001038
+#else
 #define dLinkMainMotion_ThrowB 0x00001040
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Damaged_0x10F0 0x000010E8
+#else
 #define dLinkMainMotion_Damaged_0x10F0 0x000010F0
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Damaged_0x10FC 0x000010F4
+#else
 #define dLinkMainMotion_Damaged_0x10FC 0x000010FC
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_EggLay_0x1108 0x00001100
+#else
 #define dLinkMainMotion_EggLay_0x1108 0x00001108
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_FalconDivePulled 0x0000110C
+#else
 #define dLinkMainMotion_FalconDivePulled 0x00001114
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Damaged_0x1128 0x00001120
+#else
 #define dLinkMainMotion_Damaged_0x1128 0x00001128
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Taunt 0x00001134
+#else
 #define dLinkMainMotion_Taunt 0x0000113C
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Jab1 0x0000116C
+#else
 #define dLinkMainMotion_Jab1 0x00001174
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Jab2 0x000011D4
+#else
 #define dLinkMainMotion_Jab2 0x000011DC
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Jab3 0x0000123C
+#else
 #define dLinkMainMotion_Jab3 0x00001244
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_JabLoop_0x12A8 0x000012A0
+#else
 #define dLinkMainMotion_JabLoop_0x12A8 0x000012A8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_JabLoop_0x12B0 0x000012A8
+#else
 #define dLinkMainMotion_JabLoop_0x12B0 0x000012B0
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_JabLoopEnd 0x00001438
+#else
 #define dLinkMainMotion_JabLoopEnd 0x00001440
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_DashAttack 0x00001450
+#else
 #define dLinkMainMotion_DashAttack 0x00001458
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_FTilt 0x000014F8
+#else
 #define dLinkMainMotion_FTilt 0x00001500
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_UTilt 0x00001570
+#else
 #define dLinkMainMotion_UTilt 0x00001578
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_DTilt 0x000015D0
+#else
 #define dLinkMainMotion_DTilt 0x000015D8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_FSmash 0x00001640
+#else
 #define dLinkMainMotion_FSmash 0x00001648
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_USmash 0x0000171C
+#else
 #define dLinkMainMotion_USmash 0x00001724
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_DSmash 0x00001890
+#else
 #define dLinkMainMotion_DSmash 0x00001898
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_AttackAirN 0x0000197C
+#else
 #define dLinkMainMotion_AttackAirN 0x00001984
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_AttackAirF 0x00001A14
+#else
 #define dLinkMainMotion_AttackAirF 0x00001A1C
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_AttackAirB_0x1AB0 0x00001AA8
+#else
 #define dLinkMainMotion_AttackAirB_0x1AB0 0x00001AB0
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_AttackAirB_0x1AB8 0x00001AB0
+#else
 #define dLinkMainMotion_AttackAirB_0x1AB8 0x00001AB8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_AttackAirU 0x00001B64
+#else
 #define dLinkMainMotion_AttackAirU 0x00001B6C
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_AttackAirD 0x00001BCC
+#else
 #define dLinkMainMotion_AttackAirD 0x00001BD4
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_LandingAirD 0x00001C4C
+#else
 #define dLinkMainMotion_LandingAirD 0x00001C54
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_LandingAirX_0x1CA8 0x00001CA0
+#else
 #define dLinkMainMotion_LandingAirX_0x1CA8 0x00001CA8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Appear1 0x00001CB8
+#else
 #define dLinkMainMotion_Appear1 0x00001CC0
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Appear2 0x00001CE4
+#else
 #define dLinkMainMotion_Appear2 0x00001CEC
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_Bomb 0x00001CF0
+#else
 #define dLinkMainMotion_Bomb 0x00001CF8
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_MissingBoomerang_0x1D2C 0x00001D24
+#else
 #define dLinkMainMotion_MissingBoomerang_0x1D2C 0x00001D2C
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_MissingBoomerang_0x1D88 0x00001D80
+#else
 #define dLinkMainMotion_MissingBoomerang_0x1D88 0x00001D88
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_CatchingBoomerang 0x00001D9C
+#else
 #define dLinkMainMotion_CatchingBoomerang 0x00001DA4
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_UpSpecial 0x00001DC4
+#else
 #define dLinkMainMotion_UpSpecial 0x00001DCC
+#endif
+#if defined(REGION_JP)
+#define dLinkMainMotion_0x1EEC 0x00001EE4
+#else
 #define dLinkMainMotion_0x1EEC 0x00001EEC
+#endif
 
 /* KirbyMainMotion (file 228) */
 #define dKirbyMainMotion_0x0144 0x00000144
@@ -2043,25 +2229,33 @@
 #define dNessMainMotion_PKThunderEnd 0x00001654
 #define dNessMainMotion_DKTAAir 0x0000165C
 #if defined(REGION_JP)
-#define dNessMainMotion_0x16AC 0x000016A8
-#endif
+#define dNessMainMotion_PKThunder 0x000016A8
+#else
 #define dNessMainMotion_PKThunder 0x000016B0
-#define dNessMainMotion_0x16E8 0x000016E8
+#endif
+#if defined(REGION_JP)
+#define dNessMainMotion_DownBStartGround 0x000016F0
+#else
 #define dNessMainMotion_DownBStartGround 0x000016F8
+#endif
+#if defined(REGION_JP)
+#define dNessMainMotion_HealingDownB_0x1718 0x00001710
+#else
 #define dNessMainMotion_HealingDownB_0x1718 0x00001718
+#endif
+#if defined(REGION_JP)
+#define dNessMainMotion_HealingDownB_0x1728 0x00001720
+#else
 #define dNessMainMotion_HealingDownB_0x1728 0x00001728
+#endif
 #define dNessMainMotion_DownSpecial 0x00001780
 #define dNessMainMotion_DownSpecialStartAir 0x00001788
 #define dNessMainMotion_0x1790 0x00001790
 #define dNessMainMotion_0x1798 0x00001798
-#if !defined(REGION_JP)
+#if defined(REGION_JP)
+#define dNessMainMotion_0x17A0 0x00001798
+#else
 #define dNessMainMotion_0x17A0 0x000017A0
-#endif
-#if !defined(REGION_JP)
-#define dNessMainMotion_0x17A8 0x000017A8
-#endif
-#if !defined(REGION_JP)
-#define dNessMainMotion_0x17AC 0x000017AC
 #endif
 
 /* PikachuMainMotion (file 242) */

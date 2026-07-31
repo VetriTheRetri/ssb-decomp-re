@@ -6460,7 +6460,6 @@ FTMotionDesc dFTNessMotionDescs[] =
 	{ &llFTNessAnimPKThunderStartGround2FileID, dNessMainMotion_PKThunderStartGround2, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimPKThunderEndFileID, dNessMainMotion_PKThunderEnd, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimDKTAAirFileID, dNessMainMotion_DKTAAir, FTANIM_FLAG_NONE },
-#if defined(REGION_US)
 	{ &llFTNessAnimPKThunderStartAirFileID, dNessMainMotion_PKThunder, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimPKThunderAirFileID, dNessMainMotion_PKThunder + 0x8, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimPKThunderEndAirFileID, dNessMainMotion_PKThunder + 0x10, FTANIM_FLAG_NONE },
@@ -6474,21 +6473,6 @@ FTMotionDesc dFTNessMotionDescs[] =
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x8, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x10, FTANIM_FLAG_NONE },
 	{ &llFTNessAnimDownSpecialEndAirFileID, dNessMainMotion_0x17A0, FTANIM_FLAG_NONE },
-#else
-	{ &llFTNessAnimPKThunderStartAirFileID, dNessMainMotion_PKThunder, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimPKThunderAirFileID, dNessMainMotion_PKThunder + 0x8, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimPKThunderEndAirFileID, dNessMainMotion_PKThunder + 0x10, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimClashingDuringPKTAFileID, dNessMainMotion_PKThunder + 0x20, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimDKTAAirFileID, dNessMainMotion_PKThunder + 0x18, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimDownBStartGroundFileID, dNessMainMotion_DownBStartGround, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimHealingDownBFileID, dNessMainMotion_DownBStartGround + 0x20, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimHealingDownBFileID, dNessMainMotion_HealingDownB_0x1718 + 0x10, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimDownSpecialEndGroundFileID, dNessMainMotion_HealingDownB_0x1728 + 0x58, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimDownSpecialStartAirFileID, dNessMainMotion_DownSpecial, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimHealingAirDownBFileID, dNessMainMotion_DownSpecialStartAir + 0x8, FTANIM_FLAG_NONE },
-	{ &llFTNessAnimDownSpecialEndAirFileID, dNessMainMotion_0x1798, FTANIM_FLAG_NONE },
-#endif
 };
 
 FTData dFTNessData =

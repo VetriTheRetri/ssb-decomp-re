@@ -2248,10 +2248,26 @@
 #else
 #define dNessMainMotion_HealingDownB_0x1728 0x00001728
 #endif
+#if defined(REGION_JP)
+#define dNessMainMotion_DownSpecial 0x00001778
+#else
 #define dNessMainMotion_DownSpecial 0x00001780
+#endif
+#if defined(REGION_JP)
+#define dNessMainMotion_DownSpecialStartAir 0x00001780
+#else
 #define dNessMainMotion_DownSpecialStartAir 0x00001788
+#endif
+#if defined(REGION_JP)
+#define dNessMainMotion_0x1790 0x00001788
+#else
 #define dNessMainMotion_0x1790 0x00001790
+#endif
+#if defined(REGION_JP)
+#define dNessMainMotion_0x1798 0x00001790
+#else
 #define dNessMainMotion_0x1798 0x00001798
+#endif
 #if defined(REGION_JP)
 #define dNessMainMotion_0x17A0 0x00001798
 #else

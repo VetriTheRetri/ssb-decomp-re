@@ -424,5 +424,208 @@ void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst)
 }
 #endif
 
-// Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced. It's also non-matching in Pokémon Snap.
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/dma/unref_800036B4.s")
+// 0x800036B4
+void unref_800036B4(u16 *data, u8 *out_buf)
+{
+
+    #define VPK0_READ_USHORT(csr)  \
+        temp_value <<= 0x10;    \
+        temp_value |= *(csr++); \
+        bits_num += 0x10;
+    
+    #define VPK0_READ_USHORT2(csr)  \
+        temp_value <<= 0x10;    \
+        temp_value |= *(csr++); \
+        bits_num -= 0x10;
+    
+    #define VPK0_GET_BITS(var, n, csr) \
+        if (bits_num < n) {       \
+            VPK0_READ_USHORT(csr);   \
+        }                         \
+        bits_num -= n;             \
+        var = ((temp_value << (32 - (n + bits_num))) >> (32 - (u32) (n)));
+    
+    #define VPK0_INIT_NODE(node)         \
+        node = lengths_node;        \
+        lengths_node->left = NULL;  \
+        lengths_node->right = NULL; \
+        lengths_node->value = 0;    \
+        lengths_node++;
+    
+    uintptr_t bound;
+    SYHuffmanNode *other_var_s0;
+    SYHuffmanNode *lengths_node;
+    SYHuffmanNode sp14C[64];
+    u8 *bytecsr;
+    SYHuffmanNode *sp144;
+    SYHuffmanNode *sp140;
+    u8 *byte;
+    void *sp138;
+    s32 sp134;
+    SYHuffmanNode *spE4[20];
+    s32 i;
+    s32 var_v0;
+    SYHuffmanNode *var_s0;
+    SYHuffmanNode *current_vpk0;
+    SYHuffmanNode *sp84[20];
+    s32 new_var2;
+    s32 j;
+    SYHuffmanNode *unused2;
+    s32 other_var_v0;
+    SYHuffmanNode *current_vpk0_2;
+    s32 unused3[3];
+    s32 sp64;
+    u32 temp_value;
+    s32 bits_num;
+    u16 *csr = data;
+    s32 a1;
+
+    lengths_node = sp14C;
+    bits_num = 0;
+    temp_value = 0;
+
+    VPK0_READ_USHORT(csr);
+    VPK0_READ_USHORT2(csr);
+    VPK0_READ_USHORT(csr);
+    VPK0_READ_USHORT2(csr);
+    bound = temp_value + out_buf;
+    bytecsr = out_buf;
+
+    VPK0_GET_BITS(sp134, 8, csr);
+    
+    i = 0;
+    spE4[0] = NULL;
+    
+    data = csr;
+    while (1)
+    {
+        VPK0_GET_BITS(sp64, 1, data);
+
+        if ((sp64 == 0) || (i >= 2))
+        {
+            if (sp64 != 0)
+            {
+                VPK0_INIT_NODE(current_vpk0);
+                current_vpk0->left = spE4[i - 2];
+                current_vpk0->right = spE4[i - 1];
+                spE4[i - 2] = current_vpk0;
+                i--;
+            }
+            else
+            {
+                VPK0_INIT_NODE(current_vpk0);
+                VPK0_GET_BITS(current_vpk0->value, 8, data);
+                spE4[i] = current_vpk0;
+                i++;
+            }
+        } 
+        else break;
+    }
+
+    sp144 = spE4[0];
+    if (!new_var2); // fake
+    j = 0;
+    sp84[0] = 0;
+    
+    while (1)
+    {
+        VPK0_GET_BITS(var_v0, 1, data);
+        
+        if ((var_v0 == 0) || (j >= 2))
+        {
+            if (var_v0 != 0)
+            {
+                VPK0_INIT_NODE(current_vpk0);
+                current_vpk0->left = sp84[j - 2];
+                current_vpk0->right = sp84[j - 1];
+                sp84[j - 2] = current_vpk0;
+                j--;
+            }
+            else
+            {
+                VPK0_INIT_NODE(current_vpk0);
+                VPK0_GET_BITS(current_vpk0->value, 8, data);
+                sp84[j] = current_vpk0;
+                j++;
+            }
+        } 
+        else break;
+    }
+
+    sp140 = sp84[0];
+    while (((uintptr_t)bytecsr) < bound)
+    {
+        if (bits_num <= 0)
+        {
+            VPK0_READ_USHORT(data);
+        }
+        bits_num--;
+        
+        if (!((temp_value << (0x1F - bits_num)) >> 0x1F))
+        {
+            VPK0_GET_BITS(*(bytecsr++), 8, data);
+        }
+        else
+        {
+            if (sp134 != 0)
+            {
+                sp64 = 0;
+                
+                other_var_s0 = sp144;
+                while (other_var_s0->left != (NULL))
+                {
+                    VPK0_GET_BITS(new_var2, 1, data);
+                    other_var_s0 = (!new_var2) ? (other_var_s0->left) : (other_var_s0->right);
+                }
+
+                VPK0_GET_BITS(var_v0, other_var_s0->value, data);
+                var_v0 = (temp_value << (0x20 - (other_var_s0->value + bits_num))) >> (0x20 - (other_var_s0->value));
+                
+                if (var_v0 <= 2)
+                {
+                    sp64 = var_v0 + 1;
+                    var_s0 = sp144;
+                    while (var_s0->left != (NULL))
+                    {
+                        VPK0_GET_BITS(var_v0, 1, data);
+                        var_s0 = (!var_v0) ? (var_s0->left) : (var_s0->right);
+                    }
+
+                    VPK0_GET_BITS(var_v0, var_s0->value, data);
+                    var_v0 = (temp_value << (0x20 - (var_s0->value + bits_num))) >> (0x20 - (var_s0->value));
+                }
+                byte = (u8 *)(((bytecsr - (var_v0 * 4)) - sp64) + 8);
+            }
+            else
+            {
+                unused2 = sp144;
+                
+                while (unused2->left != (NULL))
+                {
+                    VPK0_GET_BITS(var_v0, 1, data);
+                    unused2 = (!var_v0) ? (unused2->left) : (unused2->right);
+                }
+
+                VPK0_GET_BITS(var_v0, unused2->value, data);
+                var_v0 = (temp_value << (0x20 - (unused2->value + bits_num))) >> (0x20 - (unused2->value));
+                byte = (u8 *)(bytecsr - var_v0);
+            }
+            
+            current_vpk0_2 = sp140;
+            
+            while (current_vpk0_2->left != (NULL))
+            {
+                VPK0_GET_BITS(unused2, 1, data);
+                current_vpk0_2 = (!unused2) ? (current_vpk0_2->left) : (current_vpk0_2->right);
+            }
+
+            VPK0_GET_BITS(a1, current_vpk0_2->value, data);
+            a1 = (temp_value << (0x20 - (current_vpk0_2->value + bits_num))) >> (0x20 - (current_vpk0_2->value));
+            
+            while ((a1--) > 0)
+            {
+                *(bytecsr++) = *(byte++);
+            }
+        }
+    }
+}

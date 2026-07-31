@@ -471,6 +471,7 @@ $(BUILD_DIR)/src/libultra/libc/ldiv.o: CC := $(IDO5)
 $(BUILD_DIR)/src/libultra/audio/cents2ratio.o: OPTFLAGS := -O3 -mips2
 $(BUILD_DIR)/src/libultra/audio/cents2ratio.o: CC := $(IDO5)
 $(BUILD_DIR)/src/libultra/libc/llcvt.o: OPTFLAGS := -O1 -mips3 -32
+$(BUILD_DIR)/src/libultra/sp/sprite.o: OPTFLAGS := -O2 -mips2 -acpp -Wp,-+ -DBUILD_VERSION=6
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

@@ -1,13 +1,13 @@
 {
   "measures": {
-    "fuzzy_match_percent": 97.40054,
+    "fuzzy_match_percent": 97.893486,
     "total_code": "1475232",
-    "matched_code": "1436884",
-    "matched_code_percent": 97.40054,
+    "matched_code": "1444156",
+    "matched_code_percent": 97.893486,
     "matched_data_percent": 100.0,
     "total_functions": 7165,
-    "matched_functions": 7146,
-    "matched_functions_percent": 99.734825,
+    "matched_functions": 7148,
+    "matched_functions_percent": 99.76274,
     "complete_data_percent": 100.0,
     "total_units": 656
   },
@@ -534,21 +534,21 @@
     {
       "name": "sys/dma",
       "measures": {
-        "fuzzy_match_percent": 69.94681,
+        "fuzzy_match_percent": 100.0,
         "total_code": "4512",
-        "matched_code": "3156",
-        "matched_code_percent": 69.94681,
+        "matched_code": "4512",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 14,
-        "matched_functions": 13,
-        "matched_functions_percent": 92.85714,
+        "matched_functions": 14,
+        "matched_functions_percent": 100.0,
         "total_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "4512",
-          "fuzzy_match_percent": 69.94681,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147494496"
           }
@@ -669,6 +669,7 @@
         {
           "name": "unref_800036B4",
           "size": "1356",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147497652"
           }
@@ -5637,21 +5638,21 @@
     {
       "name": "libultra/sp/sprite",
       "measures": {
-        "fuzzy_match_percent": 39.878048,
+        "fuzzy_match_percent": 100.0,
         "total_code": "9840",
-        "matched_code": "3924",
-        "matched_code_percent": 39.878048,
+        "matched_code": "9840",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 7,
-        "matched_functions": 6,
-        "matched_functions_percent": 85.71429,
+        "matched_functions": 7,
+        "matched_functions_percent": 100.0,
         "total_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "9840",
-          "fuzzy_match_percent": 39.878048,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147629184"
           }
@@ -5706,6 +5707,7 @@
         {
           "name": "drawbitmap",
           "size": "5916",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2147629240"
           }
@@ -82920,14 +82922,14 @@
       "id": "sys",
       "name": "sys",
       "measures": {
-        "fuzzy_match_percent": 93.364914,
+        "fuzzy_match_percent": 94.30408,
         "total_code": "144384",
-        "matched_code": "134804",
-        "matched_code_percent": 93.36492,
+        "matched_code": "136160",
+        "matched_code_percent": 94.30408,
         "matched_data_percent": 100.0,
         "total_functions": 571,
-        "matched_functions": 569,
-        "matched_functions_percent": 99.64974,
+        "matched_functions": 570,
+        "matched_functions_percent": 99.82487,
         "complete_data_percent": 100.0,
         "total_units": 24
       }
@@ -82936,14 +82938,14 @@
       "id": "libultra",
       "name": "libultra",
       "measures": {
-        "fuzzy_match_percent": 93.39378,
+        "fuzzy_match_percent": 100.0,
         "total_code": "89552",
-        "matched_code": "83636",
-        "matched_code_percent": 93.39378,
+        "matched_code": "89552",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 300,
-        "matched_functions": 299,
-        "matched_functions_percent": 99.666664,
+        "matched_functions": 300,
+        "matched_functions_percent": 100.0,
         "complete_data_percent": 100.0,
         "total_units": 145
       }
@@ -83259,14 +83261,14 @@
       "id": "segment_.main",
       "name": "Segment .main",
       "measures": {
-        "fuzzy_match_percent": 93.599655,
+        "fuzzy_match_percent": 96.603226,
         "total_code": "242112",
-        "matched_code": "226616",
-        "matched_code_percent": 93.59966,
+        "matched_code": "233888",
+        "matched_code_percent": 96.603226,
         "matched_data_percent": 100.0,
         "total_functions": 873,
-        "matched_functions": 870,
-        "matched_functions_percent": 99.65636,
+        "matched_functions": 872,
+        "matched_functions_percent": 99.88545,
         "complete_data_percent": 100.0,
         "total_units": 171
       }

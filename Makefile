@@ -133,6 +133,7 @@ LD_MAP    := build/$(TARGET).$(VERSION).map
 
 IDO7            := tools/ido-recomp/7.1/cc
 IDO5            := tools/ido-recomp/5.3/cc
+IDO7_CPP        := tools/ido-recomp/7.1/NCC
 AS              := $(BINUTILS_PREFIX)-as
 LD              := $(BINUTILS_PREFIX)-ld
 OBJCOPY         := $(BINUTILS_PREFIX)-objcopy
@@ -357,6 +358,8 @@ $(BUILD_DIR)/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0 -mips2
 $(BUILD_DIR)/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0 -mips2
 
 # per file flags
+$(BUILD_DIR)/src/ovl8/ovl8_11.o: CC := $(IDO7_CPP)
+$(BUILD_DIR)/src/ovl8/ovl8_11.o: STRIP_EDG_SYM := 1
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o:	OPTFLAGS := -O3 -g0 -mips2
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o: CC := $(IDO7)
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetseq.o:	OPTFLAGS := -O3 -g0 -mips2
@@ -645,6 +648,8 @@ endif
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) tools/colorizeIDO.py
 # patch object files compiled with mips3 to be able to link them
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
+# the EDG C++ frontend (NCC) emits a local UNDEFINED version symbol that modern ld rejects
+	$(if $(STRIP_EDG_SYM),$(V)$(OBJCOPY) -w --strip-symbol='__edg_version_sym_*' $@)
 
 # Per-block source files determine the offsets for converted reloc files,
 # so the symbols header depends on every manifest/spritelist/block file in

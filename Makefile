@@ -360,6 +360,8 @@ $(BUILD_DIR)/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0 -mips2
 # per file flags
 $(BUILD_DIR)/src/ovl8/ovl8_11.o: CC := $(IDO7_CPP)
 $(BUILD_DIR)/src/ovl8/ovl8_11.o: STRIP_EDG_SYM := 1
+$(BUILD_DIR)/src/ovl8/ovl8_13_2.o: CC := $(IDO7_CPP)
+$(BUILD_DIR)/src/ovl8/ovl8_13_2.o: STRIP_EDG_SYM := 1
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o:	OPTFLAGS := -O3 -g0 -mips2
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o: CC := $(IDO7)
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetseq.o:	OPTFLAGS := -O3 -g0 -mips2

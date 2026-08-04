@@ -11,7 +11,7 @@ extern dbUnknownLink D_ovl8_8038A6D0;
 
 // ovl8_2
 extern void* func_ovl8_803717A0(s32 arg0);
-extern void* func_ovl8_803717E0(dbUnknownLinkStruct* arg0, ...);
+extern void* func_ovl8_803717E0(dbUnknownLinkStruct* arg0);
 extern void func_ovl8_803717C0(dbUnknownLinkStruct* arg0);
 extern void func_ovl8_803718C4(dbUnknownLinkStruct* arg0, s32 arg1);
 
@@ -69,7 +69,7 @@ dbUnknown5* func_ovl8_8037CAF0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
             arg1 = (dbUnknownLinkStruct*) &arg0->unk_dbunk5_0x5C;
             arg2 = (dbUnknownLink*) &arg0->unk_dbunk5_0x50;
             #line 68
-            func_ovl8_803717E0(arg1, arg2);
+            func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0((void**) arg2);
             #line 75
         }

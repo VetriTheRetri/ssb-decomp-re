@@ -1373,7 +1373,26 @@ s32 func_ovl8_8037B654(s32 val, char* str)
 }
 
 // 0x8037B760
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B760.s")
+void func_ovl8_8037B760(u8* arg0, u8* arg1, s32 arg2)
+{
+	if (arg0 < arg1)
+	{
+		while (arg2--)
+		{
+			*arg0++ = *arg1++;
+		}
+	}
+	else
+	{
+		arg0 += arg2;
+		arg1 += arg2;
+
+		while (arg2--)
+		{
+			*--arg0 = *--arg1;
+		}
+	}
+}
 
 // 0x8037B7F0
 s32 func_ovl8_8037B7F0(u8 *str, s32 index)

@@ -420,8 +420,80 @@ s32 func_ovl8_803762AC(Vec3i* arg0)
 	return arg0[4].z;
 }
 
+#define guardNull(in, alt, out) ((out = (dbUnknownLinkStruct *)in), (in != NULL) ? (out = alt) : (out))
+
 // 0x803762B4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_803762B4.s")
+void func_ovl8_803762B4(dbUnknownS38 *arg0)
+{
+    dbUnknownLinkStruct *pb;
+    dbUnknownLinkStruct *pa;
+    Gfx *fr;
+    dbUnknownLinkStruct *pz;
+    Gfx *fc;
+    dbUnknownLinkStruct *pe;
+    dbUnknownLinkStruct *pc;
+    dbUnknownLinkStruct *wx;
+    dbUnknownLinkStruct *qx;
+    Gfx *gfx;
+    dbUnknownLinkStruct *pd;
+    dbUnknownLinkStruct *pf;
+
+    guardNull(arg0, arg0->unk_dbunks38_0x20, pz);
+
+    qx = (dbUnknownLinkStruct *)arg0->unk_dbunks38_0x20;
+
+
+    if (pz->bg_color.a != 0) {
+        if (qx);
+        if (qx);
+        if (qx);
+        if (qx);
+        gfx = gSYTaskmanDLHeads[0]++;
+        gDPPipeSync(gfx);
+
+        gfx = gSYTaskmanDLHeads[0]++;
+        gDPSetCycleType(gfx, G_CYC_FILL);
+        if (gfx);
+
+        fc = gSYTaskmanDLHeads[0]++; if (!arg0); gDPSetFillColor(
+            fc,
+            (
+                guardNull(arg0, arg0->unk_dbunks38_0x20, pa),
+                guardNull(arg0, arg0->unk_dbunks38_0x20, pd),
+                guardNull(arg0, arg0->unk_dbunks38_0x20, pe),
+                guardNull(arg0, arg0->unk_dbunks38_0x20, pc),
+                fr ? 0 : 0,
+                fr ? 0 : 0,
+                fr ? 0 : 0,
+                fr ? 0 : 0,
+                fr ? 0 : 0,
+                fr ? 0 : 0,
+                fr ? 0 : 0,
+                syVideoGetFillColor(
+                    ((pa->bg_color.r << 24) | (pd->bg_color.g << 16) | (pe->bg_color.b << 8) | (pc->bg_color.a))
+                )
+            )
+        );
+        if (fc);
+
+        fr = gSYTaskmanDLHeads[0];
+        gSYTaskmanDLHeads[0] = fr + 1;
+        gDPFillRectangle(
+            fr,
+            (fc ? 0 : 0, guardNull(arg0, arg0->unk_dbunks38_0x20, wx), guardNull(arg0, arg0->unk_dbunks38_0x20, pb), wx->position.x),
+            (pb->position.y),
+            (guardNull(arg0, arg0->unk_dbunks38_0x20, pf), guardNull(arg0, arg0->unk_dbunks38_0x20, pb), pb ? 0 : 0, guardNull(arg0, arg0->unk_dbunks38_0x20, pe), guardNull(arg0, arg0->unk_dbunks38_0x20, pc), guardNull(arg0, arg0->unk_dbunks38_0x20, pa),
+             pf->position.x + pb->position.w - 1),
+            (pe->position.y + pc->position.h - 1)
+        );
+        if (pb);
+
+        gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    }
+
+    func_ovl8_80375354(arg0);
+    arg0->unk_dbunks38_0x18[16].unk_dbfunc_0x4(arg0->unk_dbunks38_0x18[16].unk_dbfunc_0x0 + (u32)arg0);
+}
 
 // 0x803764C8
 sb32 func_ovl8_803764C8(dbUnknownS38 *arg0, s32 arg1) 

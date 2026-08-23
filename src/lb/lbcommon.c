@@ -2642,148 +2642,169 @@ void lbCommonPrepSObjAttr(Gfx **dls, SObj *sobj)
     dls[0] = dl;
 }
 
-#ifdef NON_MATCHING
-// 0x800CC818 - NONMATCHING: many regswaps, but appears to be equivalent
-void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
-{
-    Sprite *sprite;
-    Bitmap *bitmap;
-    f32 fheight;
-    f32 fy;
-    s32 fs = 0;
+// 0x800CC818
+void lbCommonPrepSObjDraw(Gfx** dls, SObj* sobj) {
+    Sprite* sprite;
+    Bitmap* bitmap;
+    s32 var_t1;
+    f32 temp_f12;
+    f32 temp_f14;
+    s32 h;
+    f32 temp_f24;
+    f32 temp_f2;
+    f32 var_f20;
+    s32 temp_s4;
+    s32 w;
+    s32 i;
+    s32 temp_s5;
     s32 yy;
-    s32 ft = 0;
-    s32 sx = 0x1000;
-    s32 sy = 0x400;
-    s32 x;
+    s32 temp_s1;
     s32 xx;
-    s32 n;
-    s32 unused2;
-    s32 y;
-    s32 tempy;
-    s32 tempft;
-    s32 unused[3];
-    f32 scaley;
-    f32 pos_x, pos_y;
-    
+    s32 posx;
+    s32 x;
+    s32 posy;
+    f32 sp90;
+    s32 temp_t0;
+    s32 pad[2];
+
     sprite = &sobj->sprite;
-    
-    if (sprite->scalex < 0.0001F)
+    if (sprite->scalex < 0.0001F) 
     {
         return;
     }
-    if (sprite->scaley < 0.0001F)
+    if (sprite->scaley < 0.0001F) 
     {
         return;
     }
     bitmap = sprite->bitmap;
-    
-    if (bitmap != NULL)
+    if (bitmap == NULL) 
     {
-        pos_x = sobj->pos.x;
-        x = (pos_x < 0.0F) ? (pos_x - 0.9999F) : (pos_x);
+        return;
+    }
 
-        pos_y = sobj->pos.y;
-        tempy = (sobj->pos.y < 0.0F) ? (sobj->pos.y - 0.9999F) : (sobj->pos.y);
-        
-        if ((x < sLBCommonScissorXMax) && (tempy < sLBCommonScissorYMax))
+    if (sobj->pos.x < 0.0F) 
+    {
+        posx = sobj->pos.x - 0.9999F;
+    } 
+    else 
+    {
+        // FAKE
+        posx = temp_f24 = sobj->pos.x;
+    }
+
+    if (sobj->pos.y < 0.0F) 
+    {
+        posy = sobj->pos.y - 0.9999F;
+    } 
+    else 
+    {
+        posy = sobj->pos.y;
+    }
+    if ((posx >= sLBCommonScissorXMax) || (posy >= sLBCommonScissorYMax)) 
+    {
+        return;
+    }
+
+    if (sobj->cms == 2) 
+    {
+        w = sprite->width;
+    } 
+    else 
+    {
+        w = sobj->lrs;
+    }
+    if (sobj->cmt == 2) 
+    {
+        h = sprite->bmheight;
+    } 
+    else 
+    {
+        h = sobj->lrt;
+    }
+    if (sprite->attr & 0x20) 
+    {
+        x = posy;
+        xx = (sobj->pos.x + w);
+        if (xx >= sLBCommonScissorXMin) 
         {
-            s32 tempxx = (sobj->cms == 2) ? (sprite->width) : (sobj->lrs);
-            yy = (sobj->cmt == 2) ? (sprite->bmheight) : (sobj->lrt);
-            
-            if (sprite->attr & SP_FASTCOPY)
+            xx--;
+            if (sprite->nbitmaps == 1) 
             {
-                xx = pos_x + tempxx;
-                
-                y = tempy;
-                
-                if (xx >= sLBCommonScissorXMin)
-                {
-                    xx--;
+                lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, posx, x, xx, x + h, 0, 0, 0x1000, 0x400);
+                return;
+            }
 
-                    if (sprite->nbitmaps == 1)
-                    {
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, tempy + yy, (s16)-fs, (s16)-ft, sx, sy);
-                    }
-                    else
-                    {
-                        for (n = 0; n < sprite->nbitmaps; n++, bitmap++)
-                        {
-                            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, y + yy, (s16)-fs, (s16)-ft, sx, sy);
-                            y += yy;
-                        }
-                    }
-                }
-            }
-            else
+            for (i = 0; i < sprite->nbitmaps; i++) 
             {
-                s32 n;
-                f32 scalex = sprite->scalex;
+                yy = x + h;
+                lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, posx, x, xx, yy, 0, 0, 0x1000, 0x400);
+                bitmap++;
                 
-                xx = (pos_x + (tempxx * scalex)) + 0.9999F;
-                
-                if (xx >= sLBCommonScissorXMin)
-                {
-                    f32 fpos_x = pos_x - x;
-                    f32 fpos_y = sobj->pos.y - tempy;
-                    
-                    scaley = sprite->scaley;
-                    
-                    if (sprite->nbitmaps == 1)
-                    {
-                        sx = (1024.0F / scalex) + 0.5F;
-                        fs = ((sx * fpos_x) + 16) / 32;
-                        
-                        sy = (1024.0F / scaley) + 0.5F;
-                        ft = ((sy * fpos_y) + 16) / 32;
-                        
-                        y = (sobj->pos.y + (yy * scaley)) + 0.9999F;
-                        
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                    }
-                    else
-                    {
-                        fheight = sprite->bmHreal * scaley;
-                        y = fy = sobj->pos.y + (yy * scaley);
-                        
-                        sx = (1024.0F / scalex) + 0.5F;
-                        sy = (1024.0F / scaley) + 0.5F;
-                        
-                        fs = ((sx * fpos_x) + 16) / 32;
-                        ft = ((sy * fpos_y) + 16) / 32;
-                        
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                        
-                        bitmap++;
-                        
-                        for (n = 1; n < (sprite->nbitmaps - 1); n++, bitmap++)
-                        {
-                            tempft = (sy * (fy - y));
-                            ft = (tempft + 16) / 32;
-                            
-                            tempy = y;
-                            y = fy + fheight;
-                            
-                            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                            
-                            fy += yy * scaley;
-                        }
-                        tempft = (sy * (fy - y));
-                        ft = (tempft + 16) / 32;
-                        
-                        tempy = y;
-                        y = ((bitmap->actualHeight * scaley) + fy) + 0.9999F;
-                        
-                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
-                    }
-                }
+                x = yy;
             }
+        }
+    } 
+    else 
+    {
+        s32 i;
+        temp_s5 = sobj->pos.x + (w * sprite->scalex) + 0.9999F;
+        temp_f2 = sprite->scalex;
+        if (temp_s5 >= sLBCommonScissorXMin) 
+        {
+            temp_f12 = sobj->pos.x - posx;
+            temp_f14 = sobj->pos.y - posy;
+            sp90 = sprite->scaley;
+            if (sprite->nbitmaps == 1) 
+            {
+                x = sobj->pos.y + (h * sp90) + 0.9999F;
+                temp_s1 = (1024.0F / temp_f2) + 0.5F;
+                xx = (1024.0F / sp90) + 0.5F;
+#if defined(REGION_US)
+                temp_s4 = (-(s32) (((temp_s1 * temp_f12) + 16.0F) / 32));
+                temp_t0 = (-(s32) (((xx * temp_f14) + 16.0F) / 32));
+#else
+                temp_s4 = (-(s32) (((temp_s1 * temp_f12) + 16.0F))) >> 5;
+                temp_t0 = (-(s32) (((xx * temp_f14) + 16.0F))) >> 5;
+#endif
+                lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, posx, posy, temp_s5, x, (s16)temp_s4, (s16)temp_t0, temp_s1, xx);
+                return;
+            }
+            sp90 = sprite->scaley;
+            temp_f24 = (f32) sprite->bmHreal * sp90;
+            var_f20 = sobj->pos.y + h * sp90;
+#if defined(REGION_US)
+            x = (s32) var_f20;
+#else
+            x = (s32) var_f20 + 1;
+#endif
+            temp_s1 = (s32) ((1024.0F / temp_f2) + 0.5F);
+            xx = (s32) ((1024.0F / sp90) + 0.5F);
+#if defined(REGION_US)
+            temp_s4 = (-(s32) (((temp_s1 * temp_f12) + 16.0F) / 32));
+            temp_t0 = (-(s32) (((xx * temp_f14) + 16.0F) / 32));
+#else
+            temp_s4 = (-(s32) (((temp_s1 * temp_f12) + 16.0F))) >> 5;
+            temp_t0 = (-(s32) (((xx * temp_f14) + 16.0F))) >> 5;
+#endif
+            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, posx, posy, temp_s5, x, (s16)temp_s4, (s16)temp_t0, temp_s1, xx);
+            bitmap++;
+
+            for (i = 1; i < (sprite->nbitmaps - 1); i++) 
+            {
+                var_t1 = x;
+                temp_t0 = -((s32) ((s32) (xx * (var_f20 - x)) + 16) / 32);
+                x = (s32) (var_f20 + temp_f24);
+                lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, posx, var_t1, temp_s5, x, (s16)temp_s4, (s16)temp_t0, temp_s1, xx);
+                bitmap++;
+                var_f20 += h * sp90;
+            }
+            var_t1 = x;
+            temp_t0 = -((s32) ((s32) (xx * (var_f20 - x)) + 16) / 32);
+            x = bitmap->actualHeight * sp90 + var_f20 + 0.9999F;
+            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, posx, var_t1, temp_s5, x, (s16)temp_s4, (s16)temp_t0, temp_s1, xx);
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/lbCommonPrepSObjDraw.s")
-#endif /* NON_MATCHING */
 
 // 0x800CCEAC
 void lbCommonClearExternSpriteParams(void)

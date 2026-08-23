@@ -1,13 +1,13 @@
 {
   "measures": {
-    "fuzzy_match_percent": 98.825676,
+    "fuzzy_match_percent": 98.93829,
     "total_code": "1477616",
-    "matched_code": "1460264",
-    "matched_code_percent": 98.825676,
+    "matched_code": "1461928",
+    "matched_code_percent": 98.93829,
     "matched_data_percent": 100.0,
     "total_functions": 6535,
-    "matched_functions": 6532,
-    "matched_functions_percent": 99.954094,
+    "matched_functions": 6533,
+    "matched_functions_percent": 99.96939,
     "complete_data_percent": 100.0,
     "total_units": 654
   },
@@ -13452,21 +13452,21 @@
     {
       "name": "lb/lbcommon",
       "measures": {
-        "fuzzy_match_percent": 93.020134,
+        "fuzzy_match_percent": 100.0,
         "total_code": "23840",
-        "matched_code": "22176",
-        "matched_code_percent": 93.020134,
+        "matched_code": "23840",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 70,
-        "matched_functions": 69,
-        "matched_functions_percent": 98.57143,
+        "matched_functions": 70,
+        "matched_functions_percent": 100.0,
         "total_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "23840",
-          "fuzzy_match_percent": 93.020134,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2148292608"
           }
@@ -13937,6 +13937,7 @@
         {
           "name": "lbCommonPrepSObjDraw",
           "size": "1664",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2148312868"
           }
@@ -77884,14 +77885,14 @@
       "id": "lb",
       "name": "lb",
       "measures": {
-        "fuzzy_match_percent": 83.1263,
+        "fuzzy_match_percent": 86.20231,
         "total_code": "54096",
-        "matched_code": "44968",
-        "matched_code_percent": 83.1263,
+        "matched_code": "46632",
+        "matched_code_percent": 86.20231,
         "matched_data_percent": 100.0,
         "total_functions": 151,
-        "matched_functions": 149,
-        "matched_functions_percent": 98.6755,
+        "matched_functions": 150,
+        "matched_functions_percent": 99.33775,
         "complete_data_percent": 100.0,
         "total_units": 6
       }
@@ -78178,14 +78179,14 @@
       "id": "segment_.ovl0",
       "name": "Segment .ovl0",
       "measures": {
-        "fuzzy_match_percent": 83.1263,
+        "fuzzy_match_percent": 86.20231,
         "total_code": "54096",
-        "matched_code": "44968",
-        "matched_code_percent": 83.1263,
+        "matched_code": "46632",
+        "matched_code_percent": 86.20231,
         "matched_data_percent": 100.0,
         "total_functions": 151,
-        "matched_functions": 149,
-        "matched_functions_percent": 98.6755,
+        "matched_functions": 150,
+        "matched_functions_percent": 99.33775,
         "complete_data_percent": 100.0,
         "total_units": 6
       }

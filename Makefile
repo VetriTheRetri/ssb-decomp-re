@@ -737,78 +737,40 @@ assets/%.bin: assets/%.png
 	$(call print_3,Converting Image:,$<,$@)
 	$(V)$(PYTHON) tools/image_converter.py $< $@
 
-# Debug cube Kirby face texture — 32x32 RGBA5551 baked into `dbcube.c`'s
-# .data section. Extracted from the baserom at the version-specific ROM
-# offset into both a raw .bin (gitignored asset) and a build-time .inc.c
-# (hex initializer for the `dDBCubeKirbyFaceTexture` array). The .png
-# preview sits next to the .bin so the asset is viewable without building.
-.PRECIOUS: assets/$(VERSION)/db/dbkirby.rgba16.bin assets/$(VERSION)/db/dbkirby.png
-assets/$(VERSION)/db/dbkirby.rgba16.bin assets/$(VERSION)/db/dbkirby.png &: $(BASEROM) tools/extractDbKirbyTex.py
-	$(call print_3,Extracting dbkirby texture:,$<,$@)
-	@mkdir -p assets/$(VERSION)/db
-	$(V)$(PYTHON) tools/extractDbKirbyTex.py --version $(VERSION) \
-		--baserom $(BASEROM) \
-		--bin assets/$(VERSION)/db/dbkirby.rgba16.bin \
-		--inc $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c \
-		--png assets/$(VERSION)/db/dbkirby.png
+# Raw RGBA5551 textures the original build baked into C .data sections. Each is
+# ripped from the baserom at extract time into a gitignored asset (.bin + .png
+# preview) plus a build-time .inc.c the source `#include`s, so the pixels stay
+# out of the committed tree. ROM offsets are version-specific and live in
+# tools/extractRawTex.py.
+#
+#   $(1) = source subdirectory   $(2) = texture name   $(3) = consuming object
+define RAW_TEXTURE_RULE
+.PRECIOUS: assets/$$(VERSION)/$(1)/$(2).rgba16.bin assets/$$(VERSION)/$(1)/$(2).rgba16.png
+assets/$$(VERSION)/$(1)/$(2).rgba16.bin assets/$$(VERSION)/$(1)/$(2).rgba16.png &: $$(BASEROM) tools/extractRawTex.py
+	$$(call print_3,Extracting texture:,$$<,assets/$$(VERSION)/$(1)/$(2).rgba16.bin)
+	@mkdir -p assets/$$(VERSION)/$(1)
+	$$(V)$$(PYTHON) tools/extractRawTex.py --texture $(2) --version $$(VERSION) \
+		--baserom $$(BASEROM) \
+		--bin assets/$$(VERSION)/$(1)/$(2).rgba16.bin \
+		--inc $$(BUILD_DIR)/src/$(1)/$(2).rgba16.inc.c \
+		--png assets/$$(VERSION)/$(1)/$(2).rgba16.png
 
-$(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c: assets/$(VERSION)/db/dbkirby.rgba16.bin
-	@# The grouped rule above wrote this file too — touch it so make
-	@# doesn't re-run the generator on every incremental build.
-	@test -f $@ || $(PYTHON) tools/extractDbKirbyTex.py --version $(VERSION) \
-		--baserom $(BASEROM) \
-		--bin assets/$(VERSION)/db/dbkirby.rgba16.bin \
-		--inc $@ \
-		--png assets/$(VERSION)/db/dbkirby.png
+$$(BUILD_DIR)/src/$(1)/$(2).rgba16.inc.c: assets/$$(VERSION)/$(1)/$(2).rgba16.bin
+	@# The grouped rule above wrote this file too, so only regenerate it when
+	@# it is missing -- otherwise every incremental build re-runs the extractor.
+	@test -f $$@ || $$(PYTHON) tools/extractRawTex.py --texture $(2) --version $$(VERSION) \
+		--baserom $$(BASEROM) \
+		--bin assets/$$(VERSION)/$(1)/$(2).rgba16.bin \
+		--inc $$@ \
+		--png assets/$$(VERSION)/$(1)/$(2).rgba16.png
 
-# dbcube.c `#include`s the generated inc.c, so its .o must wait for the
-# extraction step to finish.
-$(BUILD_DIR)/src/db/dbcube.o: $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c
+# The consuming .c `#include`s the generated inc.c, so its object must wait.
+$$(BUILD_DIR)/src/$(1)/$(3).o: $$(BUILD_DIR)/src/$(1)/$(2).rgba16.inc.c
+endef
 
-# ovl8_30 debug menu button icon — 16x16 RGBA5551.
-.PRECIOUS: assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
-assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png &: $(BASEROM) tools/extractOvl8ButtonTex.py
-	$(call print_3,Extracting ovl8_30 button texture:,$<,$@)
-	@mkdir -p assets/$(VERSION)/ovl8
-	$(V)$(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
-		--baserom $(BASEROM) \
-		--bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin \
-		--inc $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c \
-		--png assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
-
-$(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin
-	@# The grouped rule above wrote this file too — touch it so make
-	@# doesn't re-run the generator on every incremental build.
-	@test -f $@ || $(PYTHON) tools/extractOvl8ButtonTex.py --version $(VERSION) \
-		--baserom $(BASEROM) \
-		--bin assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.bin \
-		--inc $@ \
-		--png assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
-
-$(BUILD_DIR)/src/ovl8/ovl8_30.o: $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c
-
-# ovl8_8 debug-menu mouse cursor — 16x16 RGBA5551, baked into ovl8_8.c's .data
-# section as D_ovl8_80387CA8 (D_ovl8_80387EA8/D_ovl8_80387EB8 describe it).
-.PRECIOUS: assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png
-assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png &: $(BASEROM) tools/extractOvl8_8ArrowTex.py
-	$(call print_3,Extracting ovl8_8 cursor texture:,$<,$@)
-	@mkdir -p assets/$(VERSION)/ovl8
-	$(V)$(PYTHON) tools/extractOvl8_8ArrowTex.py --version $(VERSION) \
-		--baserom $(BASEROM) \
-		--bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin \
-		--inc $(BUILD_DIR)/src/ovl8/ovl8_8_arrow.rgba16.inc.c \
-		--png assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png
-
-$(BUILD_DIR)/src/ovl8/ovl8_8_arrow.rgba16.inc.c: assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin
-	@# The grouped rule above wrote this file too — touch it so make
-	@# doesn't re-run the generator on every incremental build.
-	@test -f $@ || $(PYTHON) tools/extractOvl8_8ArrowTex.py --version $(VERSION) \
-		--baserom $(BASEROM) \
-		--bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin \
-		--inc $@ \
-		--png assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png
-
-$(BUILD_DIR)/src/ovl8/ovl8_8.o: $(BUILD_DIR)/src/ovl8/ovl8_8_arrow.rgba16.inc.c
+$(eval $(call RAW_TEXTURE_RULE,db,dbkirby,dbcube))
+$(eval $(call RAW_TEXTURE_RULE,ovl8,ovl8_30_button,ovl8_30))
+$(eval $(call RAW_TEXTURE_RULE,ovl8,ovl8_8_arrow,ovl8_8))
 
 # Particle texture banks (.txb): each bank's images and palettes are
 # extracted from the baserom into per-frame .bin/.png (in assets/particles/)

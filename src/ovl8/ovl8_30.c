@@ -65,7 +65,7 @@ s32 D_ovl8_8038E300[2] = { 0xDF000000, 0x00000000 };
 
 // 0x8038E308 - 16x16 RGBA16 bitmap pixel data (debug menu button icon)
 // Raw bytes in assets/ovl8/ovl8_30_button.rgba16.bin; PNG preview alongside.
-// Regenerated at extract time by tools/extractOvl8ButtonTex.py.
+// Regenerated at extract time by tools/extractRawTex.py.
 u16 D_ovl8_8038E308[16 * 16] = {
 	#include <ovl8/ovl8_30_button.rgba16.inc.c>
 };

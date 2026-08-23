@@ -21,7 +21,7 @@ s32 dDBCubePad0x801321E0[/* */] = { 0, 0 };
 // 0x801321E8: 32x32 RGBA5551 face texture used by the debug Kirby cube.
 // The raw bytes live in assets/db/dbkirby.rgba16.bin (extracted from the
 // baserom at make extract time) with a .png preview next to it. The
-// .inc.c below is regenerated from the .bin by tools/extractDbKirbyTex.py
+// .inc.c below is regenerated from the .bin by tools/extractRawTex.py
 // so no texture bytes are committed to the source tree.
 u16 dDBCubeKirbyFaceTexture[32 * 32] =
 {

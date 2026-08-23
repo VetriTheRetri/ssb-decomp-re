@@ -60,7 +60,7 @@ extern Gfx D_8038EE90_1AB6E0[];
 // DATA
 s32 D_ovl8_80387CA0[] = { 0xDF000000, 0x00000000 };
 // The debug menu's 16x16 RGBA5551 mouse cursor. Extracted from the baserom
-// at build time by tools/extractOvl8_8ArrowTex.py rather than hard-coded, so
+// at build time by tools/extractRawTex.py rather than hard-coded, so
 // the pixels live in assets/ instead of the source tree. D_ovl8_80387EA8
 // (Bitmap) points here and D_ovl8_80387EB8 (Sprite) declares the format.
 u16 D_ovl8_80387CA8[16 * 16] =

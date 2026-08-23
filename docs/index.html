@@ -299,7 +299,9 @@ function render(data) {
 	const total = data.total_functions;
 	const remaining = data.functions.length;
 	const matched = total - remaining;
-	const pct = ((matched / total) * 100).toFixed(1);
+	// Two decimals: with only a handful of functions left, one decimal
+	// rounds 99.96% up to a misleading "100.0%".
+	const pct = ((matched / total) * 100).toFixed(2);
 
 	document.getElementById('matched-count').textContent = matched.toLocaleString();
 	document.getElementById('remaining-count').textContent = remaining;

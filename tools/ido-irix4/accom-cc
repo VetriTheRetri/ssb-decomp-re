@@ -1,0 +1,157 @@
+#!/bin/bash
+# accom-cc -- cc-shaped driver reproducing IDO 7.1's `-irix4` mode.
+#
+# On real IRIX, `cc -irix4` reroutes the frontend passes to
+# /usr/irix4/usr/lib and leaves the backend alone. This reproduces that
+# split with the pieces we can run on a modern host:
+#
+#   stock 7.1 acpp (native)  ->  IDO 4.1 accom (qemu-irix)  ->  stock 7.1
+#   uopt / ugen / as1 (native)
+#
+# accom is the only emulated stage, and the only one that is load-bearing:
+# the 4.x *backend* emits COFF with 16-byte-larger frames and does not
+# reproduce the ROM.
+#
+# 4.1's own acpp is not used. It hangs indefinitely under qemu-irix once a
+# real header closure is pulled in, and the 7.1 acpp is preprocessing-
+# neutral here provided the input always carries the same recorded
+# filename -- which is why the source is copied to in.c below rather than
+# preprocessed in place.
+#
+# Argument handling: -I/-D are forwarded to acpp and resolved against the
+# caller's directory before we cd into scratch. Everything else (-c, -O2,
+# -mips2, -G 0, -non_shared, -Xcpluscomm, -woff ..., -Wab,...) is accepted
+# and dropped -- the backend stages take fixed flags matching the rest of
+# the project's IDO 7.1 targets. Dropping -Xcpluscomm is not cosmetic:
+# accom is strict C89 and any // comment in the translation unit's header
+# closure is a hard error.
+
+set -euo pipefail
+
+CALLER_DIR=$(pwd)
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd)
+
+BACKEND="$REPO_ROOT/tools/ido-recomp/7.1"
+IRIX4="${IRIX4_ROOT:-$SCRIPT_DIR/ido4.1}"
+
+out=""
+src=""
+cppargs=()
+prev=""
+
+add_include() {
+	case "$1" in
+	/*) cppargs+=("-I$1") ;;
+	*) cppargs+=("-I$CALLER_DIR/$1") ;;
+	esac
+}
+
+# asm-processor passes its temp-directory include as a space-separated
+# `-I <dir>`, while the Makefile passes attached `-Iinclude` forms. Both
+# spellings have to work or the header closure silently comes up short:
+# -nostdinc means a missing -I shows up as an unresolved #include deep in
+# the closure, not as a bad-path error.
+for arg in "$@"; do
+	case "$prev" in
+	-o)
+		out="$arg"
+		prev=""
+		continue
+		;;
+	-I)
+		add_include "$arg"
+		prev=""
+		continue
+		;;
+	-D | -U)
+		cppargs+=("$prev$arg")
+		prev=""
+		continue
+		;;
+	esac
+	case "$arg" in
+	-o | -I | -D | -U) prev="$arg" ;;
+	-I?*) add_include "${arg#-I}" ;;
+	-D?* | -U?*) cppargs+=("$arg") ;;
+	*.c) src="$arg" ;;
+	*) : ;; # accepted and ignored
+	esac
+done
+
+[ -n "$src" ] || { echo "accom-cc: no input .c file" >&2; exit 1; }
+[ -n "$out" ] || { echo "accom-cc: no -o output given" >&2; exit 1; }
+case "$out" in /*) ;; *) out="$CALLER_DIR/$out" ;; esac
+case "$src" in /*) ;; *) src="$CALLER_DIR/$src" ;; esac
+
+# acpp runs in a scratch directory on a copy named in.c, so a quoted
+# #include resolved relative to "the includer's directory" would look in the
+# scratch directory instead of next to the real source. Put the source's own
+# directory on the search path so sibling headers still resolve.
+add_include "$(dirname "$src")"
+
+for t in acpp uopt ugen as1; do
+	[ -x "$BACKEND/$t" ] || {
+		echo "accom-cc: stock IDO 7.1 $t not found at $BACKEND/$t" >&2
+		echo "hint: run ./installDependencies.sh" >&2
+		exit 1
+	}
+done
+[ -x "$IRIX4/usr/lib/accom" ] && [ -x "$IRIX4/usr/bin/qemu-irix-4.0" ] || {
+	echo "accom-cc: IRIX 4 frontend not provisioned at $IRIX4" >&2
+	echo "hint: run tools/ido-irix4/provision.sh" >&2
+	exit 1
+}
+
+work=$(mktemp -d "${TMPDIR:-/tmp}/accom-cc.XXXXXX")
+# ACCOM_CC_KEEP=1 leaves the intermediates (in.i, in.B, in.O, in.G) behind and
+# prints where. Useful when a matching question turns on what the frontend
+# actually saw rather than on the source text.
+if [ -n "${ACCOM_CC_KEEP:-}" ]; then
+	echo "accom-cc: keeping intermediates in $work" >&2
+else
+	trap 'rm -rf "$work"' EXIT
+fi
+cp "$src" "$work/in.c"
+cd "$work"
+
+# The predefine set the 7.1 driver hands its frontend, recovered from
+# `tools/ido-recomp/7.1/cc -v`. `-irix4` relocates which frontend binary
+# runs, not what the driver defines, so the preprocessed text stays the
+# same one the rest of this project compiles against -- notably __sgi,
+# which include/ssb_types.h branches on. Dropped from that list: -D_CFE
+# and the cfe-only options (-Xcpluscomm, -std, -A...).
+# `-+` makes acpp strip C99 `//` comments instead of passing them through to
+# the frontend, which is C89 and would reject them. Without it every header
+# in the include closure has to be rewritten to /* */ -- 17 files of pure
+# churn. This is acpp's equivalent of the -Xcpluscomm the 7.1 driver passes
+# to cfe; the option is silent and undocumented in the usage text.
+"$BACKEND/acpp" -+ -nostdinc -undef -p \
+	-D_MIPS_FPSET=16 -D_MIPS_ISA=2 -D_ABIO32=1 -D_MIPS_SIM=_ABIO32 \
+	-D_MIPS_SZINT=32 -D_MIPS_SZLONG=32 -D_MIPS_SZPTR=32 -D__EXTENSIONS__ \
+	-DLANGUAGE_C -D_LANGUAGE_C -D__INLINE_INTRINSICS \
+	-Dsgi -D__sgi -Dunix -Dmips -Dhost_mips -D__unix -D__host_mips \
+	-D_SVR4_SOURCE -D_MODERN_C -D_SGI_SOURCE -D__DSO__ \
+	-DSYSTYPE_SVR4 -D_SYSTYPE_SVR4 -D_LONGLONG -D__mips=2 \
+	-D_MIPSEB -DMIPSEB -D__STDC__=1 \
+	"${cppargs[@]}" in.c >in.i 2>cpp.err || {
+	cat cpp.err >&2
+	exit 1
+}
+[ -s cpp.err ] && cat cpp.err >&2
+
+"$IRIX4/usr/bin/qemu-irix-4.0" -silent -L "$IRIX4" "$IRIX4/usr/lib/accom" \
+	-Xv -EB -Xg0 -O2 -Xprototypes -Xxansi -XSin.T <in.i >in.B 2>accom.err || {
+	sed -e '/^ccom:[^ ]*$/d' -e 's|^ccom:[^ ]*/accom: ||' accom.err >&2
+	exit 1
+}
+# accom prints one bare "ccom:<function>" progress line per function, but
+# it also prefixes its real diagnostics with "ccom:<path-to-accom>: " --
+# so filtering the prefix throws the errors away and leaves only their
+# orphaned source-line/caret continuation lines. Drop only the progress
+# form, and strip the noisy prefix off everything else.
+sed -e '/^ccom:[^ ]*$/d' -e 's|^ccom:[^ ]*/accom: ||' accom.err >&2 || true
+
+"$BACKEND/uopt" -G 0 -mips2 -EB -g0 -O2 in.B in.O -t in.T uo >/dev/null
+"$BACKEND/ugen" -G 0 -mips2 -EB -g0 -O2 in.O -o in.G -t in.T -temp ug >/dev/null
+"$BACKEND/as1" -t5_ll_sc_bug -elf -G 0 -p0 -mips2 -EB -g0 -O2 in.G -o "$out" -t in.T >/dev/null

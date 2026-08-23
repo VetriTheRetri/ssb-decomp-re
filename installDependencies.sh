@@ -66,6 +66,17 @@ then
 	tar xf ido-5.3-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR5}
 	rm ido-5.3-recomp-${DETECTED_OS}.tar.gz
 fi
+# IRIX 4 frontend. src/ovl8/ovl8_8.c only matches under it, so a tree without it
+# cannot produce the ROM. The package bundles its own native qemu-irix, so it
+# is x86-64 Linux only for now. Failure is reported at the end rather than
+# here, so the remaining tools still get installed.
+irix4Failed=""
+if [ "$DETECTED_OS" = "linux" ] && [ "$(uname -m)" = "x86_64" ]
+then
+	./tools/ido-irix4/provision.sh || irix4Failed="provisioning failed"
+else
+	irix4Failed="only packaged for x86-64 Linux"
+fi
 if [ ! -f "tools/vpk0cmd" ]
 then
 	[ "$DETECTED_OS" = "linux" ] && curl https://github.com/santaclose/vpk0cmd/releases/download/0.1/vpk0cmd_linux_x86_64 -L --output tools/vpk0cmd
@@ -78,6 +89,14 @@ then
 	[ "$DETECTED_OS" = "linux" ] && curl https://github.com/santaclose/halAssetTool/releases/download/0.15/halAssetTool -L --output tools/halAssetTool
 	# [ "$DETECTED_OS" = "macos" ] && curl https://github.com/santaclose/halAssetTool/releases/download/0.14/halAssetTool_macos_arm64 -L --output tools/halAssetTool
 	chmod +x tools/halAssetTool
+fi
+
+if [ -n "$irix4Failed" ]
+then
+	printf "${RED}IRIX 4 frontend unavailable (${irix4Failed}).\n"
+	printf "src/ovl8/ovl8_8.c cannot be compiled without it, so the build will not\n"
+	printf "produce a matching ROM. See tools/ido-irix4/README.md.${ENDCOLOR}\n"
+	exit 1
 fi
 
 printf "${GREEN}All requirements satisfied${ENDCOLOR}\n"

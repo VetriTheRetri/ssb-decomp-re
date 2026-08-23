@@ -134,6 +134,7 @@ LD_MAP    := build/$(TARGET).$(VERSION).map
 IDO7            := tools/ido-recomp/7.1/cc
 IDO5            := tools/ido-recomp/5.3/cc
 IDO7_CPP        := tools/ido-recomp/7.1/NCC
+IDO7_IRIX4      := tools/ido-irix4/accom-cc
 AS              := $(BINUTILS_PREFIX)-as
 LD              := $(BINUTILS_PREFIX)-ld
 OBJCOPY         := $(BINUTILS_PREFIX)-objcopy
@@ -370,6 +371,10 @@ $(BUILD_DIR)/src/ovl8/ovl8_17.o: CC := $(IDO7_CPP)
 $(BUILD_DIR)/src/ovl8/ovl8_17.o: STRIP_EDG_SYM := 1
 $(BUILD_DIR)/src/ovl8/ovl8_31.o: CC := $(IDO7_CPP)
 $(BUILD_DIR)/src/ovl8/ovl8_31.o: STRIP_EDG_SYM := 1
+$(BUILD_DIR)/src/ovl8/ovl8_8.o: CC := $(IDO7_IRIX4)
+$(BUILD_DIR)/src/ovl8/ovl8_8.o: CCFLAGS += -DIDO_IRIX4_C89=1
+$(BUILD_DIR)/src/ovl8/ovl8_8_2.o: CC := $(IDO7_CPP)
+$(BUILD_DIR)/src/ovl8/ovl8_8_2.o: STRIP_EDG_SYM := 1
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o:	OPTFLAGS := -O3 -g0 -mips2
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetvol.o: CC := $(IDO7)
 $(BUILD_DIR)/src/libultra/n_audio/n_cspsetseq.o:	OPTFLAGS := -O3 -g0 -mips2
@@ -781,6 +786,29 @@ $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c: assets/$(VERSION)/ovl8/ovl8_3
 		--png assets/$(VERSION)/ovl8/ovl8_30_button.rgba16.png
 
 $(BUILD_DIR)/src/ovl8/ovl8_30.o: $(BUILD_DIR)/src/ovl8/ovl8_30_button.rgba16.inc.c
+
+# ovl8_8 debug-menu mouse cursor — 16x16 RGBA5551, baked into ovl8_8.c's .data
+# section as D_ovl8_80387CA8 (D_ovl8_80387EA8/D_ovl8_80387EB8 describe it).
+.PRECIOUS: assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png
+assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png &: $(BASEROM) tools/extractOvl8_8ArrowTex.py
+	$(call print_3,Extracting ovl8_8 cursor texture:,$<,$@)
+	@mkdir -p assets/$(VERSION)/ovl8
+	$(V)$(PYTHON) tools/extractOvl8_8ArrowTex.py --version $(VERSION) \
+		--baserom $(BASEROM) \
+		--bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin \
+		--inc $(BUILD_DIR)/src/ovl8/ovl8_8_arrow.rgba16.inc.c \
+		--png assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png
+
+$(BUILD_DIR)/src/ovl8/ovl8_8_arrow.rgba16.inc.c: assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin
+	@# The grouped rule above wrote this file too — touch it so make
+	@# doesn't re-run the generator on every incremental build.
+	@test -f $@ || $(PYTHON) tools/extractOvl8_8ArrowTex.py --version $(VERSION) \
+		--baserom $(BASEROM) \
+		--bin assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.bin \
+		--inc $@ \
+		--png assets/$(VERSION)/ovl8/ovl8_8_arrow.rgba16.png
+
+$(BUILD_DIR)/src/ovl8/ovl8_8.o: $(BUILD_DIR)/src/ovl8/ovl8_8_arrow.rgba16.inc.c
 
 # Particle texture banks (.txb): each bank's images and palettes are
 # extracted from the baserom into per-frame .bin/.png (in assets/particles/)

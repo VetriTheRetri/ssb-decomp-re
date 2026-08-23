@@ -1,4 +1,6 @@
-#include <sys/objman.h>
+// ovl8_8, piece 1 of 2 -- built with the IDO 7.1 IRIX 4.1 `accom` frontend
+// (decomp.me compiler `ido7.1_irix4`, flags `-O2 -mips2 -Wp,-+`).
+
 #include <sys/develop.h>
 #include <db/debug.h>
 
@@ -57,41 +59,17 @@ extern Gfx D_8038EE90_1AB6E0[];
 
 // DATA
 s32 D_ovl8_80387CA0[] = { 0xDF000000, 0x00000000 };
-s32 D_ovl8_80387CA8[]  =
+// The debug menu's 16x16 RGBA5551 mouse cursor. Extracted from the baserom
+// at build time by tools/extractOvl8_8ArrowTex.py rather than hard-coded, so
+// the pixels live in assets/ instead of the source tree. D_ovl8_80387EA8
+// (Bitmap) points here and D_ovl8_80387EB8 (Sprite) declares the format.
+u16 D_ovl8_80387CA8[16 * 16] =
 {
-	0xFC00FC00, 0xFC00FFFF, 0xFFFFFC40, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0xFC00FC00, 0x0001FFFF,
-	0xFC40FC00, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FFFF, 0x00010001, 0xFFFFFC40,
-	0xFC00FC00, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0x0001FFFF, 0x00010001,
-	0xFC00FC00, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FFFF, 0x00010001, 0x00010001,
-	0xFFFFFC40, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0x00010001, 0x00010001,
-	0xFC00FC00, 0x0001FFFF, 0xFC40FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FFFF, 0x00010001, 0x00010001,
-	0x00010001, 0xFFFFFC40, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0x00010001, 0x00010001,
-	0x0001FFFF, 0x00010001, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FFFF, 0x00010001, 0x00010001,
-	0x00010001, 0x00010001, 0xFFFFFC40, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0x00010001, 0x00010001,
-	0xFFFFFFFF, 0x0001FFFF, 0xFC40FC00, 0xFFFFFFFF,
-	0xFC00FC00, 0xFC00FFFF, 0x00010001, 0xFFFF0001,
-	0x0001FFFF, 0xFC40FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0xFC00FFFF, 0x0001FFFF,
-	0xFFFFFC40, 0x00010001, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FFFF, 0xFFFFFC40, 0xFC00FFFF,
-	0x00010001, 0xFFFFFC40, 0xFC00FC00, 0xFC00FC00,
-	0xFC00FFFF, 0xFC40FC00, 0xFC00FC00, 0xFC00FC00,
-	0x0001FFFF, 0xFFFF0001, 0xFC40FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFFFF0001, 0x0001FFFF, 0xFC40FC00, 0xFC00FC00,
-	0xFC00FC00, 0xFC00FC00, 0xFC00FC00, 0xFC00FC00,
-	0xFFFFFFFF, 0xFC40FFFF, 0xFC40FC00, 0xFC00FC00
+	#include <ovl8/ovl8_8_arrow.rgba16.inc.c>
 };
+// Line numbers in this file are load-bearing scheduler inputs and the include
+// above is 31 lines shorter than the array it replaces, so re-anchor here.
+#line 97
 
 Bitmap D_ovl8_80387EA8 =
 {
@@ -165,33 +143,34 @@ extern DBMenu D_ovl8_80389F68;
 // 0x80376B60
 void func_ovl8_80376B60(s32 arg0, u8* arg1, u32* arg2)
 {
-	switch (arg0)
-	{
-	case 1:
+	if (arg0 == 1) goto c1;
+	if (arg0 == 2) goto c2;
+	if (arg0 != 3) return;
+	goto c3;
+	c1:
 		*arg2 = (u32) arg1;
 		return;
-	case 2:
+	c2:
 		*arg2 = ((u32)arg1[0] << 8) & 0xF800;
 		*arg2 |= (((u32)arg1[1] * 8) & 0x7C0);
 		*arg2 |= (((u32)arg1[2] >> 2) & 0x3E);
 		*arg2 |= arg1[3] ? 1 : 0;
 		return;
-	case 3:
+	c3:
 		*arg2 = ((u32)arg1[0] << 24) & 0xFF000000;
 		*arg2 |= (((u32)arg1[1] << 16) & 0xFF0000);
 		*arg2 |= (((u32)arg1[2] << 8) & 0xFF00);
 		*arg2 |= (((u32)arg1[3] << 0) & 0xFF);
 		return;
-	}
 }
 
 // 0x80376C40
 void func_ovl8_80376C40(s32 arg0, u32 arg1, u8* arg2)
 {
 	u32 var_v0;
-	switch (arg0)
-	{
-	case 2:
+	if (arg0 != 2)
+	{ if (arg0 != 3) { return; } goto c3; }
+	c2:;
 		arg2[0] = (u32) (((f32) ((arg1 >> 0xB) & 0x1F) / 31.0) * 255.0);
 		arg2[1] = (u32) (((f32) ((arg1 >> 6) & 0x1F) / 31.0) * 255.0);
 		arg2[2] = (u32) (((f32) ((arg1 >> 1) & 0x1F) / 31.0) * 255.0);
@@ -201,13 +180,13 @@ void func_ovl8_80376C40(s32 arg0, u32 arg1, u8* arg2)
 			var_v0 = 0;
 		arg2[3] = var_v0;
 		return;
-	case 3:
+	c3:
 		arg2[0] = (arg1 >> 24) & 0xFF;
 		arg2[1] = (arg1 >> 16) & 0xFF;
 		arg2[2] = (arg1 >> 8) & 0xFF;
 		arg2[3] = (arg1 >> 0) & 0xFF;
 		return;
-	}
+
 }
 
 // 0x80376EE0
@@ -310,7 +289,7 @@ void stringConcat(char* target, char* source)
 void func_ovl8_80377108(char *dest, int value, int count)
 { 
     char * pos; 
-    pos = count--;
+    pos = (char *)count--;
     if(pos != 0){
         pos--;
         do {
@@ -324,7 +303,7 @@ void func_ovl8_80377108(char *dest, int value, int count)
 // 0x80377134
 void func_ovl8_80377134(u8* arg0, s32 arg1)
 {
-	func_ovl8_80376B60(arg1, arg0, &D_ovl8_80389F64);
+	func_ovl8_80376B60(arg1, arg0, (u32*)&D_ovl8_80389F64);
 }
 
 // 0x80377168
@@ -416,14 +395,265 @@ void func_ovl8_80377374(DBMenuPosition *arg0)
 }
 
 // 0x803773CC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
+void func_ovl8_803773CC(Bitmap* bmp, s16 bmsiz, DBMenuPosition* rect)
+{
+    s16 width;
+    s16 y;
+    s16 x;
+    s32 mode;
+    s32 row;
+    s32 is_odd;
+    u8 color_u8;
+    u8 read_u8;
+    u8 tmp_u8;
+    u16 color_u16;
+    u16 read_u16;
+    u16 tmp_u16;
+    u32 color_u32;
+    u32 read_u32;
+    u32 tmp_u32;
+
+    width = bmp->width_img;
+
+    switch (bmsiz)
+    {
+    case G_IM_SIZ_8b:
+        for (y = 0; y < rect->h; y++)
+        {
+            for (x = 0; x < rect->w; x++)
+            {
+                mode = D_ovl8_80389F60;
+
+                if (mode == 4)
+                {
+                    row = rect->y + y;
+                    is_odd = row & 1;
+                    color_u8 = (u8)D_ovl8_80389F5C; }
+                else
+                {
+                    row = rect->y + y;
+                    is_odd = row & 1;
+
+                    if (is_odd)
+                    {
+                        if ((rect->x + x) & 4)
+                        {
+                            tmp_u8 = ((u8*)bmp->buf)[(row * width) + rect->x + x - 4];
+                        }
+                        else
+                        {
+                            tmp_u8 = ((u8*)bmp->buf)[(row * width) + rect->x + x + 4];
+                        }
+                        read_u8 = tmp_u8;
+                    }
+                    else
+                    {
+                        read_u8 = ((u8*)bmp->buf)[(row * width) + rect->x + x];
+                    }
+
+                    color_u8 = read_u8;
+                    if (D_ovl8_80389F60 != 2)
+                    {
+                        if (D_ovl8_80389F60 != 1)
+                        {
+                            goto blend_end8;
+                        }
+                        goto blend_xor8;
+                    }
+                    color_u8 = read_u8 | D_ovl8_80389F5C;
+                    goto blend_end8;
+                    blend_xor8:
+                    color_u8 = read_u8 ^ D_ovl8_80389F5C;
+                    blend_end8:
+                    ;
+
+                }
+
+                if (is_odd)
+                {
+                    if ((rect->x + x) & 4)
+                    {
+                        ((u8*)bmp->buf)[(row * width) + rect->x + x - 4] = color_u8;
+                        ((u8*)bmp->buf)[((rect->y + y) * width) + rect->x + x - 4] = color_u8;
+                        ((u8*)bmp->buf)[((rect->y + y) * width) + rect->x + x - 4] = color_u8;
+                    }
+                    else
+                    {
+                        ((u8*)bmp->buf)[(row * width) + rect->x + x + 4] = color_u8;
+                        ((u8*)bmp->buf)[((rect->y + y) * width) + rect->x + x + 4] = color_u8;
+                    }
+                }
+                else
+                {
+                    ((u8*)bmp->buf)[(row * width) + rect->x + x] = color_u8;
+                }
+            }
+        }
+        break;
+
+
+    case G_IM_SIZ_4b:
+        break;
+
+    case G_IM_SIZ_16b:
+        for (y = 0; y < rect->h; y++)
+        {
+            for (x = 0; x < rect->w; x++)
+            {
+                mode = D_ovl8_80389F60;
+
+                if (mode == 4)
+                {
+                    row = rect->y + y;
+                    is_odd = row & 1;
+                    color_u16 = (u16)D_ovl8_80389F5C; }
+                else
+                {
+                    row = rect->y + y;
+                    is_odd = row & 1;
+
+                    if (is_odd)
+                    {
+                        if ((rect->x + x) & 2)
+                        {
+                            tmp_u16 = ((u16*)bmp->buf + (row * width) + rect->x + x)[-2];
+                        }
+                        else
+                        {
+                            tmp_u16 = ((u16*)bmp->buf + (row * width) + rect->x + x)[2];
+                        }
+                        read_u16 = tmp_u16;
+                    }
+                    else
+                    {
+                        read_u16 = ((u16*)bmp->buf + (row * width) + rect->x + x)[0];
+                    }
+
+                    color_u16 = read_u16;
+                    if (D_ovl8_80389F60 != 2)
+                    {
+                        if (D_ovl8_80389F60 != 1)
+                        {
+                            goto blend_end16;
+                        }
+                        goto blend_xor16;
+                    }
+                    color_u16 = read_u16 | D_ovl8_80389F5C;
+                    goto blend_end16;
+                    blend_xor16:
+                    color_u16 = read_u16 ^ D_ovl8_80389F5C;
+                    blend_end16:
+                    ;
+
+                }
+
+                if (is_odd)
+                {
+                    if ((rect->x + x) & 2)
+                    {
+                        ((u16*)bmp->buf + (row * width) + rect->x + x)[-2] = color_u16;
+                        ((u16*)bmp->buf + ((rect->y + y) * width) + rect->x + x)[-2] = color_u16;
+                        ((u16*)bmp->buf + ((rect->y + y) * width) + rect->x + x)[-2] = color_u16;
+                    }
+                    else
+                    {
+                        ((u16*)bmp->buf + (row * width) + rect->x + x)[2] = color_u16;
+                        ((u16*)bmp->buf + ((rect->y + y) * width) + rect->x + x)[2] = color_u16;
+                    }
+                }
+                else
+                {
+                    ((u16*)bmp->buf + (row * width) + rect->x + x)[0] = color_u16;
+                }
+            }
+        }
+        break;
+
+
+    case G_IM_SIZ_32b:
+        for (y = 0; y < rect->h; y++)
+        {
+            for (x = 0; x < rect->w; x++)
+            {
+                mode = D_ovl8_80389F60;
+
+                if (mode == 4)
+                {
+                    row = rect->y + y;
+                    is_odd = row & 1;
+                    color_u32 = D_ovl8_80389F5C; }
+                else
+                {
+                    row = rect->y + y;
+                    is_odd = row & 1;
+
+                    if (is_odd)
+                    {
+                        if ((rect->x + x) & 2)
+                        {
+                            tmp_u32 = ((u32*)bmp->buf + (row * width) + rect->x + x)[-2];
+                        }
+                        else
+                        {
+                            tmp_u32 = ((u32*)bmp->buf + (row * width) + rect->x + x)[2];
+                        }
+                        read_u32 = tmp_u32;
+                    }
+                    else
+                    {
+                        read_u32 = ((u32*)bmp->buf + (row * width) + rect->x + x)[0];
+                    }
+
+                    color_u32 = read_u32;
+                    if (D_ovl8_80389F60 != 2)
+                    {
+                        if (D_ovl8_80389F60 != 1)
+                        {
+                            goto blend_end32;
+                        }
+                        goto blend_xor32;
+                    }
+                    color_u32 = read_u32 | D_ovl8_80389F5C;
+                    goto blend_end32;
+                    blend_xor32:
+                    color_u32 = read_u32 ^ D_ovl8_80389F5C;
+                    blend_end32:
+                    ;
+
+                }
+
+                if (is_odd)
+                {
+                    if ((rect->x + x) & 2)
+                    {
+                        ((u32*)bmp->buf + (row * width) + rect->x + x)[-2] = color_u32;
+                        ((u32*)bmp->buf + ((rect->y + y) * width) + rect->x + x)[-2] = color_u32;
+                        ((u32*)bmp->buf + ((rect->y + y) * width) + rect->x + x)[-2] = color_u32;
+                    }
+                    else
+                    {
+                        ((u32*)bmp->buf + (row * width) + rect->x + x)[2] = color_u32;
+                        ((u32*)bmp->buf + ((rect->y + y) * width) + rect->x + x)[2] = color_u32;
+                    }
+                }
+                else
+                {
+                    ((u32*)bmp->buf + (row * width) + rect->x + x)[0] = color_u32;
+                }
+            }
+        }
+        break;
+
+
+    }
+}
 
 // 0x80377AEC
 void func_ovl8_80377AEC(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
-	func_ovl8_80376B60(arg0->bmsiz, arg2, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0->bmsiz, arg2, (u32*)&D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
-	func_ovl8_80377B40(arg0, arg1);
+	func_ovl8_80377B40(arg0, (s16*)arg1);
 }
 
 // 0x80377B40
@@ -448,7 +678,7 @@ void func_ovl8_80377B40(Sprite *arg0, s16 *arg1)
     sp80.arr[0] = sp80.arr[1] = 0;
     sp80.arr[2]  = arg0->width;
     sp80.arr[3]  = arg0->height;
-    func_ovl8_8037A67C(arg1, &sp80, &sp90);
+    func_ovl8_8037A67C((s16*)arg1, (s16*)&sp80, (s16*)&sp90);
     
     if (func_ovl8_8037AA5C(&sp90) == 0) 
     {
@@ -480,11 +710,11 @@ void func_ovl8_80377B40(Sprite *arg0, s16 *arg1)
                 sp88.arr[1] = y;
                 sp88.arr[2] = actualWidth;
                 sp88.arr[3] = actualHeight;
-                if (func_ovl8_8037A67C(&sp88, &sp90, &sp80) != 0) 
+                if (func_ovl8_8037A67C((s16*)&sp88, (s16*)&sp90, (s16*)&sp80) != 0) 
                 {
-                    sp80.arr[0] %= actualWidth;
-                    sp80.arr[1] %= actualHeight;
-                    func_ovl8_803773CC(arg0->bitmap + ((rows + i) * sp6C) + j + cols, arg0->bmsiz, &sp80);
+                    sp80.arr[0] = sp80.arr[0] % actualWidth;
+                    sp80.arr[1] = sp80.arr[1] % actualHeight;
+                    func_ovl8_803773CC(arg0->bitmap + ((rows + i) * sp6C) + j + cols, arg0->bmsiz, (DBMenuPosition*)&sp80);
                 }
             }
         }
@@ -494,7 +724,7 @@ void func_ovl8_80377B40(Sprite *arg0, s16 *arg1)
 // 0x80377EFC
 void func_ovl8_80377EFC(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
-	func_ovl8_80376B60(arg0->bmsiz, arg2, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0->bmsiz, arg2, (u32*)&D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
 	func_ovl8_80377F50(arg0, arg1);
 }
@@ -507,15 +737,15 @@ void func_ovl8_80377F50(Sprite* arg0, db4Shorts* arg1)
 	sp18.arr[0] = arg1->arr[0];
 	sp18.arr[1] = arg1->arr[1];
 	sp18.arr[2] = sp18.arr[3] = 1;
-	func_ovl8_80377B40(arg0, &sp18);
+	func_ovl8_80377B40(arg0, (s16*)&sp18);
 }
 
 // 0x80377F90
 void func_ovl8_80377F90(char* arg0, db4Shorts* arg1, s32 arg2, u8* arg3, s32 arg4)
 {
-	func_ovl8_80376B60(arg0[0x31], arg3, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0[0x31], arg3, (u32*)&D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg4;
-	func_ovl8_80377FE4(arg0, arg1, arg2);
+	func_ovl8_80377FE4((Sprite*)arg0, arg1, (db4Shorts*)arg2);
 }
 
 // 0x80377FE4
@@ -526,11 +756,11 @@ void func_ovl8_80377FE4(Sprite* arg0, db4Shorts* arg1, db4Shorts* arg2)
 	db4Shorts sp3C;
 	db4Shorts sp34;
 
-	func_ovl8_8037AA88(arg1->arr[0], arg1->arr[1], arg2->arr[0], arg2->arr[1], &sp3C);
+	func_ovl8_8037AA88(arg1->arr[0], arg1->arr[1], arg2->arr[0], arg2->arr[1], (dbUnknown7*)&sp3C);
 
 	do
 	{
-		temp_s0 = func_ovl8_8037ABDC(&sp34, &sp3C);
+		temp_s0 = func_ovl8_8037ABDC((Vec2h*)&sp34, (UiLineStepper*)&sp3C);
 		func_ovl8_80377F50(arg0, &sp34);
 	}
 	while (temp_s0 > 0);
@@ -539,9 +769,9 @@ void func_ovl8_80377FE4(Sprite* arg0, db4Shorts* arg1, db4Shorts* arg2)
 // 0x80378064
 void func_ovl8_80378064(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
-	func_ovl8_80376B60(arg0->bmsiz, arg2, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0->bmsiz, arg2, (u32*)&D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
-	func_ovl8_803780B8(arg0, arg1);
+	func_ovl8_803780B8(arg0, (DBMenuPosition*)arg1);
 }
 
 // 0x803780B8
@@ -553,35 +783,732 @@ void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 	sp20.y = arg1->y;
 	sp20.w = arg1->w;
 	sp20.h = 1;
-	func_ovl8_80377B40(arg0, &sp20);
+	func_ovl8_80377B40(arg0, (s16*)&sp20);
 
 	sp20.x = arg1->x;
 	sp20.y = arg1->y + arg1->h - 1;
 	sp20.w = arg1->w;
 	sp20.h = 1;
-	func_ovl8_80377B40(arg0, &sp20);
+	func_ovl8_80377B40(arg0, (s16*)&sp20);
 
 	sp20.x = arg1->x;
 	sp20.y = arg1->y;
 	sp20.w = 1;
 	sp20.h = arg1->h;
-	func_ovl8_80377B40(arg0, &sp20);
+	func_ovl8_80377B40(arg0, (s16*)&sp20);
 
 	sp20.x = arg1->x + arg1->w - 1;
 	sp20.y = arg1->y;
 	sp20.w = 1;
 	sp20.h = arg1->h;
-	func_ovl8_80377B40(arg0, &sp20);
+	func_ovl8_80377B40(arg0, (s16*)&sp20);
 }
 
 // 0x803781A4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803781A4.s")
+void func_ovl8_803781A4(u32 bmsiz, Bitmap* src_bmp, Bitmap* dst_bmp, DBMenuPosition* src_rect, DBMenuPosition* dst_rect)
+{
+    s16 src_width;
+    s16 dst_width;
+    s32 rect_width;
+    s32 rect_height;
+    s32 y;
+    s32 x;
+    s32 src_row_offset;
+    s32 dst_row_offset;
+    s32 src_is_odd_line;
+    s32 dst_is_odd_line;
+    u8* src_pixel_ptr_u8;
+    u8* dst_pixel_ptr_u8;
+    u8 pixel_u8;
+    u8 pixel_u8_2;
+    u16* src_pixel_ptr_u16;
+    u16* dst_pixel_ptr_u16;
+    u16 pixel_u16;
+    u16 pixel_u16_2;
+    s32* src_pixel_ptr_u32;
+    s32* dst_pixel_ptr_u32;
+    s32 pixel_u32;
+    s32 pixel_u32_2;
+    s32 src_pixel_offset;
+    s32 dst_pixel_offset;
+
+    rect_width = src_rect->w;
+    rect_height = src_rect->h;
+    src_width = src_bmp->width_img;
+    dst_width = dst_bmp->width_img;
+
+    switch (bmsiz)
+    {
+    case G_IM_SIZ_8b:
+        for (y = 0; y < rect_height; y++)
+        {
+            for (x = 0; x < rect_width; x++)
+            {
+                src_row_offset = src_rect->y + y;
+                src_is_odd_line = src_row_offset & 1;
+
+                if (src_is_odd_line)
+                {
+                    if ((src_rect->x + x) & 4)
+                    {
+                        pixel_u8_2 = ((u8*)src_bmp->buf)[(src_row_offset * src_width) + src_rect->x + x - 4];
+                    }
+                    else
+                    {
+                        pixel_u8_2 = ((u8*)src_bmp->buf)[(src_row_offset * src_width) + src_rect->x + x + 4];
+                    }
+                    pixel_u8 = pixel_u8_2;
+                }
+                else
+                {
+                    pixel_u8 = ((u8*)src_bmp->buf)[(src_row_offset * src_width) + src_rect->x + x];
+                }
+
+                dst_row_offset = dst_rect->y + y;
+                dst_is_odd_line = dst_row_offset & 1;
+
+                if (dst_is_odd_line)
+                {
+                    if ((dst_rect->x + x) & 4)
+                    {
+                        ((u8*)dst_bmp->buf)[(dst_row_offset * dst_width) + dst_rect->x + x - 4] = pixel_u8;
+                        ((u8*)dst_bmp->buf)[((dst_rect->y + y) * dst_width) + dst_rect->x + x - 4] = pixel_u8;
+                        ((u8*)dst_bmp->buf)[((dst_rect->y + y) * dst_width) + dst_rect->x + x - 4] = pixel_u8;
+                    }
+                    else
+                    {
+                        ((u8*)dst_bmp->buf)[(dst_row_offset * dst_width) + dst_rect->x + x + 4] = pixel_u8;
+                        ((u8*)dst_bmp->buf)[((dst_rect->y + y) * dst_width) + dst_rect->x + x + 4] = pixel_u8;
+                    }
+                }
+                else
+                {
+                    ((u8*)dst_bmp->buf)[(dst_row_offset * dst_width) + dst_rect->x + x] = pixel_u8;
+                }
+            }
+        }
+        break;
+
+    case G_IM_SIZ_4b:
+        break;
+
+    case G_IM_SIZ_16b:
+        for (y = 0; y < rect_height; y++)
+        {
+            for (x = 0; x < rect_width; x++)
+            {
+                src_row_offset = src_rect->y + y;
+                src_is_odd_line = src_row_offset & 1;
+
+                if (src_is_odd_line)
+                {
+                    if ((src_rect->x + x) & 2)
+                    {
+                        pixel_u16_2 = ((u16*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[-2];
+                    }
+                    else
+                    {
+                        pixel_u16_2 = ((u16*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[2];
+                    }
+                    pixel_u16 = pixel_u16_2;
+                }
+                else
+                {
+                    pixel_u16 = ((u16*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[0];
+                }
+
+                dst_row_offset = dst_rect->y + y;
+                dst_is_odd_line = dst_row_offset & 1;
+
+                if (dst_is_odd_line)
+                {
+                    if ((dst_rect->x + x) & 2)
+                    {
+                        ((u16*)dst_bmp->buf + (dst_row_offset * dst_width) + dst_rect->x + x)[-2] = pixel_u16;
+                        ((u16*)dst_bmp->buf + ((dst_rect->y + y) * dst_width) + dst_rect->x + x)[-2] = pixel_u16;
+                        ((u16*)dst_bmp->buf + ((dst_rect->y + y) * dst_width) + dst_rect->x + x)[-2] = pixel_u16;
+                    }
+                    else
+                    {
+                        ((u16*)dst_bmp->buf + (dst_row_offset * dst_width) + dst_rect->x + x)[2] = pixel_u16;
+                        ((u16*)dst_bmp->buf + ((dst_rect->y + y) * dst_width) + dst_rect->x + x)[2] = pixel_u16;
+                    }
+                }
+                else
+                {
+                    ((u16*)dst_bmp->buf + (dst_row_offset * dst_width) + dst_rect->x + x)[0] = pixel_u16;
+                }
+            }
+        }
+        break;
+
+    case G_IM_SIZ_32b:
+        for (y = 0; y < rect_height; y++)
+        {
+            for (x = 0; x < rect_width; x++)
+            {
+                src_row_offset = src_rect->y + y;
+                src_is_odd_line = src_row_offset & 1;
+
+                if (src_is_odd_line)
+                {
+                    if ((src_rect->x + x) & 2)
+                    {
+                        pixel_u32_2 = ((s32*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[-2];
+                    }
+                    else
+                    {
+                        pixel_u32_2 = ((s32*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[2];
+                    }
+                    pixel_u32 = pixel_u32_2;
+                }
+                else
+                {
+                    pixel_u32 = ((s32*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[0];
+                }
+
+                dst_row_offset = dst_rect->y + y;
+                dst_is_odd_line = dst_row_offset & 1;
+
+                if (dst_is_odd_line)
+                {
+                    if ((dst_rect->x + x) & 2)
+                    {
+                        ((s32*)dst_bmp->buf + (dst_row_offset * dst_width) + dst_rect->x + x)[-2] = pixel_u32;
+                        ((s32*)dst_bmp->buf + ((dst_rect->y + y) * dst_width) + dst_rect->x + x)[-2] = pixel_u32;
+                        ((s32*)dst_bmp->buf + ((dst_rect->y + y) * dst_width) + dst_rect->x + x)[-2] = pixel_u32;
+                    }
+                    else
+                    {
+                        ((s32*)dst_bmp->buf + (dst_row_offset * dst_width) + dst_rect->x + x)[2] = pixel_u32;
+                        ((s32*)dst_bmp->buf + ((dst_rect->y + y) * dst_width) + dst_rect->x + x)[2] = pixel_u32;
+                    }
+                }
+                else
+                {
+                    ((s32*)dst_bmp->buf + (dst_row_offset * dst_width) + dst_rect->x + x)[0] = pixel_u32;
+                }
+            }
+        }
+        break;
+
+    }
+}
 
 // 0x803787C0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803787C0.s")
+void func_ovl8_803787C0(Sprite* src_sprite, Sprite* dst_sprite, DBMenuPosition* src_rect, Vec2h* dst_rect) 
+{
+    DBMenuPosition final_rec_dst;
+    DBMenuPosition final_rec_src;
+    DBMenuPosition clipped_rect;
+    DBMenuPosition bounds_dst;
+    DBMenuPosition bounds_src;
+    s32 src_bitmap_width;
+    s32 dst_y_iter;
+    s32 num_dst_bitmaps_x;
+    s32 num_dst_bitmaps_y;
+    s32 dst_bitmaps_per_row;
+    s32 dst_bitmap_width;
+    s32 dst_bitmap_height;
+    s32 dst_bitmap_x;
+    s32 dst_bitmap_y;
+    s32 src_bitmap_height;
+    s32 src_y_iter;
+    s32 num_src_bitmaps_x;
+    s32 num_src_bitmaps_y;
+    s32 src_bitmaps_per_row;
+    s32 dst_x_iter;
+    s32 src_x_iter;
+    s32 src_bitmap_x_start;
+    s32 src_bitmap_y_start;
+    Bitmap* bitmap;
+    Bitmap* bitmap2;
+    Vec2h dst_offset;
+    
+    // Copy destination position
+    dst_offset = *dst_rect;
+    
+    // Copy source rect
+    bounds_src = *src_rect;
+    
+    // Set up source sprite bounds
+    clipped_rect.x = clipped_rect.y = 0;
+    clipped_rect.w = src_sprite->width;
+    clipped_rect.h = src_sprite->height;
+    
+    // Clip source rect to sprite bounds
+    func_ovl8_8037A67C((s16*)src_rect, (s16*)&clipped_rect, (s16*)&bounds_src);
+    
+    // Adjust destination position based on clipping
+    dst_offset.x = (dst_offset.x + bounds_src.x) - src_rect->x;
+    dst_offset.y = (dst_offset.y + bounds_src.y) - src_rect->y;
+    
+    // Check if source rect is valid
+    if (func_ovl8_8037AA5C(&bounds_src) == 0) 
+    {
+        // Set up destination sprite bounds
+        clipped_rect.x = clipped_rect.y = 0;
+        clipped_rect.w = dst_sprite->width;
+        clipped_rect.h = dst_sprite->height;
+        
+        // Set up destination rect
+        bounds_dst.x = dst_offset.x;
+        bounds_dst.y = dst_offset.y;
+        bounds_dst.w = bounds_src.w;
+        bounds_dst.h = bounds_src.h;
+        
+        // Clip destination to sprite bounds
+        func_ovl8_8037A67C((s16*)&clipped_rect, (s16*)&bounds_dst, (s16*)&final_rec_dst);
+        
+        // Calculate final offsets
+        dst_offset.x = (dst_offset.x + final_rec_dst.x) - bounds_dst.x,
+        dst_offset.y = (dst_offset.y + final_rec_dst.y) - bounds_dst.y;
+        
+        // Calculate adjusted source rect
+        final_rec_dst.x = dst_offset.x - dst_rect->x;
+        final_rec_dst.y = dst_offset.y - dst_rect->y;
+        
+        // Check if final rect is valid
+        if (func_ovl8_8037AA5C(&final_rec_dst) == 0) 
+        {
+            bounds_dst = final_rec_dst;
+            bounds_dst.x = dst_offset.x;
+            bounds_dst.y = dst_offset.y;
+            
+            // Get bitmap arrays from sprites
+            dst_bitmap_width = dst_sprite->bitmap->width;      // Individual bitmap width
+            dst_bitmap_height = dst_sprite->bitmap->actualHeight;  // Individual bitmap height
+            
+            src_bitmap_width = src_sprite->bitmap->width;
+            src_bitmap_height = src_sprite->bitmap->actualHeight;
+            
+            // Calculate which destination bitmap to start at
+            dst_bitmap_x = dst_offset.x / dst_bitmap_width;
+            dst_bitmap_y = dst_offset.y / dst_bitmap_height;
+            
+            // Calculate bitmaps per row for destination
+            dst_bitmaps_per_row = dst_sprite->width / dst_bitmap_width + (((dst_sprite->width % dst_bitmap_width) != 0) ? 1 : 0);
+            
+            // Calculate which source bitmap to start at
+            src_bitmap_x_start = bounds_src.x / src_bitmap_width;
+            src_bitmap_y_start = bounds_src.y / src_bitmap_height;
+            
+            // Calculate bitmaps per row for source
+            src_bitmaps_per_row = src_sprite->width / src_bitmap_width + (((src_sprite->width % src_bitmap_width) != 0) ? 1 : 0);
+            
+            // Calculate number of destination bitmaps to cover (X)
+            num_dst_bitmaps_x = (bounds_dst.w / dst_bitmap_width) + 1 + (((bounds_dst.w % dst_bitmap_width) != 0) ? 1 : 0);
+            
+            // Calculate number of destination bitmaps to cover (Y)
+            num_dst_bitmaps_y = (bounds_dst.h / dst_bitmap_height) + 1 + (((bounds_dst.h % dst_bitmap_height) != 0) ? 1 : 0);
+            
+            // Calculate number of source bitmaps to cover (X)
+            num_src_bitmaps_x = (bounds_dst.w / src_bitmap_width) + 1 + (((bounds_dst.w % src_bitmap_width) != 0) ? 1 : 0);
+            
+            // Calculate number of source bitmaps to cover (Y)
+            num_src_bitmaps_y = (bounds_dst.h / src_bitmap_height) + 1 + (((bounds_dst.h % src_bitmap_height) != 0) ? 1 : 0);
+            
+            // Loop through destination bitmap grid
+            for (dst_y_iter = 0; dst_y_iter < num_dst_bitmaps_y; dst_y_iter++) 
+            {   
+                for (dst_x_iter = 0; dst_x_iter < num_dst_bitmaps_x; dst_x_iter++) 
+                {
+                    // Calculate destination bitmap rect in sprite coordinates
+                    final_rec_dst.x = (dst_bitmap_x + dst_x_iter) * dst_bitmap_width;
+                    final_rec_dst.y = (dst_bitmap_y + dst_y_iter) * dst_bitmap_height;
+                    final_rec_dst.w = dst_bitmap_width;
+                    final_rec_dst.h = dst_bitmap_height;
+                    
+                    // Loop through source bitmap grid
+                    for (src_y_iter = 0; src_y_iter < num_src_bitmaps_y; src_y_iter++) 
+                    {
+                        for (src_x_iter = 0; src_x_iter < num_src_bitmaps_x; src_x_iter++)
+                        {
+                            // Calculate source bitmap rect
+                            final_rec_src.x = (((src_bitmap_x_start + src_x_iter) * src_bitmap_width) + dst_offset.x) - bounds_src.x;
+                            final_rec_src.y = (((src_bitmap_y_start + src_y_iter) * src_bitmap_height) + dst_offset.y) - bounds_src.y;
+                            final_rec_src.w = src_bitmap_width;
+                            final_rec_src.h = src_bitmap_height;
 
+                            // Check if bitmaps overlap and blit
+                            if ((func_ovl8_8037A67C((s16*)&final_rec_dst, (s16*)&bounds_dst, (s16*)&clipped_rect) != 0)) {
+                                if ((func_ovl8_8037A67C((s16*)&clipped_rect, (s16*)&final_rec_src, (s16*)&clipped_rect) != 0))
+                                {
+                                    // Calculate offset within source bitmap
+                                    final_rec_src.x = ((clipped_rect.x - dst_offset.x) + bounds_src.x) % src_bitmap_width;
+                                    final_rec_src.y = ((clipped_rect.y - dst_offset.y) + bounds_src.y) % src_bitmap_height;
+                                    final_rec_src.w = clipped_rect.w;
+                                    final_rec_src.h = clipped_rect.h;
+                                    clipped_rect.x = clipped_rect.x % dst_bitmap_width;
+                                    clipped_rect.y = clipped_rect.y % dst_bitmap_height;
+        
+                                    // Blit between the two bitmaps
+                                    // bitmap array is indexed: [y * bitmaps_per_row + x]
+                                    bitmap = src_sprite->bitmap + ((src_bitmap_y_start + src_y_iter) * src_bitmaps_per_row) + src_x_iter + src_bitmap_x_start;
+                                    bitmap2 = dst_sprite->bitmap + ((dst_bitmap_y + dst_y_iter) * dst_bitmaps_per_row) + dst_x_iter + dst_bitmap_x;
+        
+                                    func_ovl8_803781A4(
+                                        src_sprite->bmsiz,
+                                        bitmap,
+                                        bitmap2,
+                                        &final_rec_src,
+                                        &clipped_rect
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#line 1160
 // 0x80379070
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379070.s")
+void func_ovl8_80379070(u8* arg0, s32 arg1, Bitmap* arg2, s16 arg3, DBMenuPosition* arg4)
+{
+    s16 temp_v0;
+    s16 var_a0;
+    s16 var_a1;
+    s32 temp_t0;
+    s32 mode;
+    s32 var_t2a;
+    s32 var_t2b;
+    s32 var_t2c;
+    s32 src_byte;
+    s32 src_half;
+    s32 src_word;
+    s32 dest_byte;
+    s32 dest_byte2;
+    s32 dest_half;
+    s32 dest_half2;
+    s32 dest_word;
+    s32 dest_word2;
+    u8* pixel_addr;
+    s32 c16;
+    s32 c8;
+    s32 c2;
+    s32 c1;
+    u16* pixel_addr16;
+    s32* pixel_addr32;
+    u8* var_v18;
+    u8* var_v116;
+    u8* var_v132;
+    u8* var_v1b8;
+    u8* var_v1b16;
+    u8* var_v1b32;
+
+    c16 = 0x10;
+    c8 = 8;
+    c2 = 2;
+    c1 = 1;
+    temp_v0 = arg2->width_img;
+
+    switch (arg3)
+    {
+    case 0:
+        break;
+    case 1:
+        var_v18 = arg0;
+        for (var_a1 = 0; var_a1 < (s32)arg4->h; var_a1++)
+        {
+            for (var_a0 = 0; var_a0 < (s32)arg4->w; var_a0++)
+            {
+                mode = D_ovl8_80389F60; var_v1b8 = var_v18; var_v18 += 1; src_byte = *var_v1b8; if (!var_v1b8);
+
+                if (mode == 4)
+                {
+                    temp_t0 = arg4->y + var_a1;
+                    if (!var_v1b8);
+                    pixel_addr = ((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0);
+#line 1081
+                    var_t2a = src_byte & 0xFF;
+#line 1077
+                }
+                else
+                {
+                    temp_t0 = arg4->y + var_a1;
+                    if (temp_t0 & 1)
+                    {
+                        if ((arg4->x + var_a0) & 4)
+                        {
+                            pixel_addr = ((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0);
+                            dest_byte2 = pixel_addr[-4];
+                        }
+                        else
+                        {
+                            pixel_addr = ((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0);
+                            dest_byte2 = pixel_addr[4];
+                        }
+                        dest_byte = dest_byte2 & 0xFF;
+                    }
+                    else
+                    {
+                        pixel_addr = ((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0);
+                        dest_byte = *pixel_addr;
+                    }
+                    var_t2a = dest_byte & 0xFF;
+
+                if (c16 != mode) goto t0_1;
+                goto blend_k1;
+                t0_1:
+                ;
+                if (c8 == mode) goto blend_nz1;
+                if (c2 == mode) goto blend_o1;
+                if (c1 != mode) goto t3_1;
+                goto blend_x1;
+                t3_1:
+                ;
+                goto blended1;
+                blend_k1:
+                if (src_byte != D_ovl8_80389F64)
+                {
+                    var_t2a = src_byte & 0xFF;
+                }
+                goto blended1;
+                blend_nz1:
+                if (src_byte != 0)
+                {
+                    var_t2a = src_byte & 0xFF;
+                }
+                goto blended1;
+                blend_o1:
+                if (1)
+                {
+                    var_t2a = (dest_byte | src_byte) & 0xFF;
+                }
+                goto blended1;
+                blend_x1:
+                var_t2a = (dest_byte ^ src_byte) & 0xFF;
+                blended1:
+                ;
+                }
+
+                if (temp_t0 & 1)
+                {
+                    if ((arg4->x + var_a0) & 4)
+                    {
+                        pixel_addr[-4] = var_t2a;
+                        (((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 + arg4->x + var_a0))[-4] = var_t2a;
+                        (((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 + arg4->x + var_a0))[-4] = var_t2a;
+                    }
+                    else
+                    {
+                        pixel_addr[4] = var_t2a;
+                        (((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 + arg4->x + var_a0))[4] = var_t2a;
+                    }
+                }
+                else
+                {
+                    *pixel_addr = var_t2a;
+                }
+            }
+            var_v18 += (arg1 - (s32)arg4->w) * 1;
+        }
+        break;
+    case 2:
+        var_v116 = arg0;
+        for (var_a1 = 0; var_a1 < (s32)arg4->h; var_a1++)
+        {
+            for (var_a0 = 0; var_a0 < (s32)arg4->w; var_a0++)
+            {
+                mode = D_ovl8_80389F60; var_v1b16 = var_v116; var_v116 += 2; src_half = *(u16*)var_v1b16;
+
+                if (mode == 4)
+                {
+                    temp_t0 = arg4->y + var_a1;
+                    if (!var_v1b16);
+                    pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+#line 1176
+                    var_t2b = src_half & 0xFFFF;
+#line 1172
+                }
+                else
+                {
+                    temp_t0 = arg4->y + var_a1;
+                    if (temp_t0 & 1)
+                    {
+                        if ((arg4->x + var_a0) & 2)
+                        {
+                            pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                            dest_half2 = pixel_addr16[-2];
+                        }
+                        else
+                        {
+                            pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                            dest_half2 = pixel_addr16[2];
+                        }
+                        dest_half = dest_half2 & 0xFFFF;
+                    }
+                    else
+                    {
+                        pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                        dest_half = *pixel_addr16;
+                    }
+                    var_t2b = dest_half & 0xFFFF;
+
+                if (c16 != mode) goto t0_2;
+                goto blend_k2;
+                t0_2:
+                ;
+                if (c8 == mode) goto blend_nz2;
+                if (c2 == mode) goto blend_o2;
+                if (c1 != mode) goto t3_2;
+                goto blend_x2;
+                t3_2:
+                ;
+                goto blended2;
+                blend_k2:
+                if (src_half != D_ovl8_80389F64)
+                {
+                    var_t2b = src_half & 0xFFFF;
+                }
+                goto blended2;
+                blend_nz2:
+                if (src_half != 0)
+                {
+                    var_t2b = src_half & 0xFFFF;
+                }
+                goto blended2;
+                blend_o2:
+                if (1)
+                {
+                    var_t2b = (dest_half | src_half) & 0xFFFF;
+                }
+                goto blended2;
+                blend_x2:
+                var_t2b = (dest_half ^ src_half) & 0xFFFF;
+                blended2:
+                ;
+                }
+
+                if (temp_t0 & 1)
+                {
+                    if ((arg4->x + var_a0) & 2)
+                    {
+                        pixel_addr16[-2] = var_t2b;
+                        ((u16*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[-2] = var_t2b;
+                        ((u16*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[-2] = var_t2b;
+                    }
+                    else
+                    {
+                        pixel_addr16[2] = var_t2b;
+                        ((u16*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[2] = var_t2b;
+                    }
+                }
+                else
+                {
+                    *pixel_addr16 = var_t2b;
+                }
+            }
+            var_v116 += (arg1 - (s32)arg4->w) * 2;
+        }
+        break;
+    case 3:
+        var_v132 = arg0;
+        for (var_a1 = 0; var_a1 < (s32)arg4->h; var_a1++)
+        {
+            for (var_a0 = 0; var_a0 < (s32)arg4->w; var_a0++)
+            {
+                mode = D_ovl8_80389F60; var_v1b32 = var_v132; var_v132 += 4; src_word = *(s32*)var_v1b32;
+
+                if (mode == 4)
+                {
+                    temp_t0 = arg4->y + var_a1;
+                    if (!var_v1b32);
+                    pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+#line 1271
+                    var_t2c = src_word;
+#line 1267
+                }
+                else
+                {
+                    temp_t0 = arg4->y + var_a1;
+                    if (temp_t0 & 1)
+                    {
+                        if ((arg4->x + var_a0) & 2)
+                        {
+                            pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                            dest_word2 = pixel_addr32[-2];
+                        }
+                        else
+                        {
+                            pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                            dest_word2 = pixel_addr32[2];
+                        }
+                        dest_word = dest_word2;
+                    }
+                    else
+                    {
+                        pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                        dest_word = *pixel_addr32;
+                    }
+                    var_t2c = dest_word + 0;
+
+                if (c16 != mode) goto t0_3;
+                goto blend_k3;
+                t0_3:
+                ;
+                if (c8 == mode) goto blend_nz3;
+                if (c2 == mode) goto blend_o3;
+                if (c1 != mode) goto t3_3;
+                goto blend_x3;
+                t3_3:
+                ;
+                goto blended3;
+                blend_k3:
+                if (src_word != D_ovl8_80389F64)
+                {
+                    var_t2c = src_word;
+                }
+                goto blended3;
+                blend_nz3:
+                if (src_word != 0)
+                {
+                    var_t2c = src_word;
+                }
+                goto blended3;
+                blend_o3:
+                if (1)
+                {
+                    var_t2c = dest_word | src_word;
+                }
+                goto blended3;
+                blend_x3:
+                var_t2c = dest_word ^ src_word;
+                if (dest_word);
+                if (dest_word);
+                if (dest_word);
+                blended3:
+                ;
+                }
+
+                if (temp_t0 & 1)
+                {
+                    if ((arg4->x + var_a0) & 2)
+                    {
+                        pixel_addr32[-2] = var_t2c;
+                        ((s32*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[-2] = var_t2c;
+                        ((s32*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[-2] = var_t2c;
+                    }
+                    else
+                    {
+                        pixel_addr32[2] = var_t2c;
+                        ((s32*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[2] = var_t2c;
+                    }
+                }
+                else
+                {
+                    *pixel_addr32 = var_t2c;
+                }
+                if (src_word);
+            }
+            var_v132 += (arg1 - (s32)arg4->w) * 4;
+        }
+        break;
+    }
+}
 
 // 0x803798A0
 void func_ovl8_803798A0(Sprite* sprite, u8* dst, s32 dst_w, s32 dst_h, s16* pos, s32 arg5)
@@ -607,29 +1534,29 @@ void func_ovl8_803798A0(Sprite* sprite, u8* dst, s32 dst_w, s32 dst_h, s16* pos,
 	u8* dst_ptr;
 
 	D_ovl8_80389F60 = arg5;
-
-	sp6C = sp6C = (sprite->bmsiz == 1) ? 1 : (sprite->bmsiz == 2) ? 2 : 4;
+	pad = ((sprite->bmsiz == 1) ? 1 : (sprite->bmsiz == 2) ? 2 : 4);
+	if (&sp6C); sp6C = pad;
 
 	spB0.x = pos[0];
 	spB0.y = pos[1];
-	spB0.w = dst_w;
 	spB0.h = dst_h;
+	spB0.w = dst_w;
 
 	sp98.x = sp98.y = 0;
 	sp98.w = sprite->width;
 	sp98.h = sprite->height;
 
-	func_ovl8_8037A67C(&spB0, &sp98, &spA8);
+	func_ovl8_8037A67C((s16*)&spB0, (s16*)&sp98, (s16*)&spA8);
 
 	if (func_ovl8_8037AA5C(&spA8) == 0)
 	{
-		func_ovl8_8037A67C(&spA8, &D_ovl8_80389F68, &spA8);
+		func_ovl8_8037A67C((s16*)&spA8, (s16*)&D_ovl8_80389F68, (s16*)&spA8);
 
 		if (func_ovl8_8037AA5C(&spA8) == 0)
 		{
 			dst_ptr = dst;
-            s7 = (spA8.x - spB0.x);
-            dst_ptr += (((spA8.y - spB0.y) * dst_w + s7) * sp6C);
+            if (!pad); s7 = (spA8.x - spB0.x);
+            dst_ptr += (((spA8.y - spB0.y) * dst_w + s7) * pad);
 
 			s3 = sprite->bitmap->width;
 			s6 = sprite->bitmap->actualHeight;
@@ -637,13 +1564,14 @@ void func_ovl8_803798A0(Sprite* sprite, u8* dst, s32 dst_w, s32 dst_h, s16* pos,
 			sp78 = spA8.x / s3;
 			sp74 = spA8.y / s6;
 
-			sp84 = (sprite->width / s3) + (sprite->width % s3 ? 1 : 0) + (0, 0);
-			sp8C = (spA8.w / s3) + (spA8.w % s3 ? 1 : 0) + (0, 1);
-			sp88 = (spA8.h / s6) + (spA8.h % s6 ? 1 : 0) + (0, 1);
+			sp84 = (sprite->width / s3) + (pad = (sprite->width % s3 ? 1 : 0));
+			sp8C = (spA8.w / s3) + (pad = (spA8.w % s3 ? 1 : 0)) + 1;
+			sp88 = (spA8.h / s6) + (pad = (spA8.h % s6 ? 1 : 0)) + 1;
 
 			for (i = 0; i < sp88; i++)
 			{
 				s1 = dst_ptr;
+				if (sp8C);
 
 				for (j = 0; j < sp8C; j++)
 				{
@@ -652,10 +1580,10 @@ void func_ovl8_803798A0(Sprite* sprite, u8* dst, s32 dst_w, s32 dst_h, s16* pos,
 					spA0.w = s3;
 					spA0.h = s6;
 
-					if (func_ovl8_8037A67C(&spA0, &spA8, &sp98) != 0)
+					if (func_ovl8_8037A67C((s16*)&spA0, (s16*)&spA8, (s16*)&sp98) != 0)
 					{
-						sp98.x %= s3;
-						sp98.y %= s6;
+						sp98.x = sp98.x % s3;
+						sp98.y = sp98.y % s6;
 
 						func_ovl8_80379070(
 							s1,
@@ -678,100 +1606,207 @@ void func_ovl8_803798A0(Sprite* sprite, u8* dst, s32 dst_w, s32 dst_h, s16* pos,
 }
 
 // 0x80379D74
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379D74.s")
+/* func_ovl8_80379D74 - SSB64 US, src/ovl8/ovl8_8.c
+ * Built with the accom-hybrid pipeline:
+ *   IDO 4.1 acpp + accom  ->  IDO 7.1 uopt + ugen + as1
+ * Strict C89 (accom): no // comments, all declarations at the top of the block.
+ */
+void func_ovl8_80379D74(u8* dst_buf, s32 dst_width, Bitmap* src_bmp, s16 bmsiz, DBMenuPosition* src_rect)
+{
+    s16 src_width;
+    s16 x;
+    s16 y;
+    s32 src_row_offset;
+    s32 src_is_odd_line;
+    u8* var_v1;
+    u8* qq;
+    u8 pixel_u8;
+    u8 pixel_u8_2;
+    u16 pixel_u16;
+    u16 pixel_u16_2;
+    s32 pixel_u32;
+    s32 pixel_u32_2;
 
+    src_width = src_bmp->width_img;
+
+    switch (bmsiz)
+    {
+        case G_IM_SIZ_8b:
+            var_v1 = dst_buf;
+            for (y = 0; y < src_rect->h; y++)
+            {
+                for (x = 0; x < src_rect->w; x++)
+                {
+                    src_row_offset = src_rect->y + y;
+                    src_is_odd_line = src_row_offset & 1;
+
+                    if (src_is_odd_line)
+                    {
+                        if ((src_rect->x + x) & 4)
+                        {
+                            pixel_u8_2 = ((u8*)src_bmp->buf)[(src_row_offset * src_width) + src_rect->x + x - 4];
+                        }
+                        else
+                        {
+                            pixel_u8_2 = ((u8*)src_bmp->buf)[(src_row_offset * src_width) + src_rect->x + x + 4];
+                        }
+                        pixel_u8 = pixel_u8_2;
+                    }
+                    else
+                    {
+                        pixel_u8 = ((u8*)src_bmp->buf)[(src_row_offset * src_width) + src_rect->x + x];
+                    }
+
+                    qq = var_v1;
+                    var_v1 += 1;
+                    *(u8*)qq = pixel_u8;
+                }
+                var_v1 += (dst_width - src_rect->w) * 1;
+            }
+            break;
+
+        case G_IM_SIZ_4b:
+            break;
+
+        case G_IM_SIZ_16b:
+            var_v1 = dst_buf;
+            for (y = 0; y < src_rect->h; y++)
+            {
+                for (x = 0; x < src_rect->w; x++)
+                {
+                    src_row_offset = src_rect->y + y;
+                    src_is_odd_line = src_row_offset & 1;
+
+                    if (src_is_odd_line)
+                    {
+                        if ((src_rect->x + x) & 2)
+                        {
+                            pixel_u16_2 = ((u16*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[-2];
+                        }
+                        else
+                        {
+                            pixel_u16_2 = ((u16*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[2];
+                        }
+                        pixel_u16 = pixel_u16_2;
+                    }
+                    else
+                    {
+                        pixel_u16 = ((u16*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[0];
+                    }
+
+                    qq = var_v1;
+                    var_v1 += 2;
+                    *(u16*)qq = pixel_u16;
+                }
+                var_v1 += (dst_width - src_rect->w) * 2;
+            }
+            break;
+
+        case G_IM_SIZ_32b:
+            var_v1 = dst_buf;
+            for (y = 0; y < src_rect->h; y++)
+            {
+                for (x = 0; x < src_rect->w; x++)
+                {
+                    src_row_offset = src_rect->y + y;
+                    src_is_odd_line = src_row_offset & 1;
+
+                    if (src_is_odd_line)
+                    {
+                        if ((src_rect->x + x) & 2)
+                        {
+                            pixel_u32_2 = ((s32*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[-2];
+                        }
+                        else
+                        {
+                            pixel_u32_2 = ((s32*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[2];
+                        }
+                        qq = (u8*)pixel_u32_2;
+                    }
+                    else
+                    {
+                        qq = (u8*)((s32*)src_bmp->buf + (src_row_offset * src_width) + src_rect->x + x)[0];
+                    }
+
+                    pixel_u32 = (s32)qq;
+                    qq = var_v1;
+                    var_v1 += 4;
+                    *(s32*)qq = pixel_u32;
+                }
+                var_v1 += (dst_width - src_rect->w) * 4;
+            }
+            break;
+
+    }
+}
+
+// 0x8037A0FC
 // 0x8037A0FC
 void func_ovl8_8037A0FC(Sprite* sprite, DBMenuPosition* dst_rect, u8* dst_buffer) 
 {
-    DBMenuPosition spB0; // src_rect
-    DBMenuPosition spA8; // intersection
-    DBMenuPosition spA0; // tile_rect
-    DBMenuPosition sp98; // tile_clip
-    s32 s0; // tile_x
-    s32 sp90; // tile_y
-    s32 sp8C; // num_tiles_x
-    s32 sp88; // num_tiles_y
-    s32 sp84; // tiles_per_row
-    s32 s3; // bitmap_width
-    s32 s6; // bitmap_height
-    s32 sp78; // tile_x_start
-    s32 sp74; // tile_y_start
-    s32 sp70; // dst_stride
-    s32 sp6C; // bytes_per_pixel
-    u8* s1; // dst_row_ptr
+    DBMenuPosition spB0;
+    DBMenuPosition spA8;
+    DBMenuPosition spA0;
+    DBMenuPosition sp98;
+    s32 s0;
+    s32 sp90;
+    s32 sp8C;
+    s32 sp88;
+    s32 sp84;
+    s32 s3;
+    s32 s6;
+    s32 sp78;
+    s32 sp74;
+    s32 sp70;
+    s32 sp6C;
+    u8* s1;
     s32 s7;
-    Bitmap* bitmap;
-    u8* sp5C; // dst_buffer_offset
-    
-    // Copy destination rect
-    *(DBMenuPosition*)&spB0 = *dst_rect;
-    
-    // Determine bytes per pixel
-    sp6C = sp6C = (sprite->bmsiz == 1) ? 1 : (sprite->bmsiz == 2) ? 2 : 4;
+    s32 pad;
+    u8* sp5C;
 
-    // Set up sprite bounds
+
+    *(DBMenuPosition*)&spB0 = *dst_rect;
+    pad = ((sprite->bmsiz == 1) ? 1 : (sprite->bmsiz == 2) ? 2 : 4);
+    sp6C = pad;
     sp98.x = sp98.y = 0;
     sp98.w = sprite->width;
     sp98.h = sprite->height;
 
-    // Clip to sprite bounds
-    func_ovl8_8037A67C(&spB0, &sp98, &spA8);
+    func_ovl8_8037A67C((s16*)&spB0, (s16*)&sp98, (s16*)&spA8);
 
     if (func_ovl8_8037AA5C(&spA8) == 0) 
     {
-        // Calculate starting buffer offset
         sp5C = dst_buffer;
         s7 = (spA8.x - spB0.x);
-        sp5C += (((spA8.y - spB0.y) * dst_rect->w + s7) * sp6C);
+        sp5C += (((spA8.y - spB0.y) * dst_rect->w + s7) * pad);
         
         s3 = sprite->bitmap->width;
         s6 = sprite->bitmap->actualHeight;
         
-        // Calculate starting tile indices
         sp78 = spA8.x / s3;
         sp74 = spA8.y / s6;
         
-        // Calculate tiles per row
-        sp84 = (sprite->width / s3) + (sprite->width % s3 ? 1 : 0) + (0, 0);
+        sp84 = (sprite->width / s3) + (pad = (sprite->width % s3 ? 1 : 0));
+        sp8C = (spA8.w / s3) + (pad = (spA8.w % s3 ? 1 : 0)) + 1;
+        sp88 = (spA8.h / s6) + (pad = (spA8.h % s6 ? 1 : 0)) + 1;
         
-        // Calculate number of tiles to cover in X
-        sp8C = (spA8.w / s3) + (spA8.w % s3 ? 1 : 0) + (0, 1);
-        
-        // Calculate number of tiles to cover in Y
-        sp88 = (spA8.h / s6) + (spA8.h % s6 ? 1 : 0) + (0, 1);
-        
-        // Loop through tiles vertically
         for (sp90 = 0; sp90 < sp88; sp90++)
         {
             s1 = sp5C;
-            // sp70 = s7;
             
-            // Loop through tiles horizontally
             for (s0 = 0; s0 < sp8C; s0++) 
             {
-                // Set up tile rectangle in sprite space
                 spA0.x = (sp78 + s0) * s3;
                 spA0.y = (sp74 + sp90) * s6;
                 spA0.w = s3;
                 spA0.h = s6;
                 
-                // Check if tile intersects with our read region
-                if (func_ovl8_8037A67C(&spA0, &spA8, &sp98) != 0) 
+                if (func_ovl8_8037A67C((s16*)&spA0, (s16*)&spA8, (s16*)&sp98) != 0) 
                 {
-                    // Calculate offset within tile
-                    sp98.x %= s3;
-                    sp98.y %= s6;
-                    
-                    // Read from this tile's bitmap
-                    bitmap = sprite->bitmap + ((sp74 + sp90) * sp84) + (s0) + (sp78);
-                    
-                    func_ovl8_80379D74(
-                        s1, 
-                        dst_rect->w, 
-                        bitmap, 
-                        sprite->bmsiz, 
-                        &sp98
-                    );
+                    sp98.x = sp98.x % s3;
+                    sp98.y = sp98.y % s6;
+                    s7 = (s32)(sprite->bitmap + ((sp74 + sp90) * sp84) + s0 + sp78);
+                    func_ovl8_80379D74(s1, dst_rect->w, (Bitmap*)s7, sprite->bmsiz, &sp98);
 
                     sp70 = sp98.h;
                 }
@@ -794,14 +1829,14 @@ void func_ovl8_8037A5B8(Sprite* arg0, DBMenuPosition* arg1, s32 arg2)
 	sp28.x = arg1->x;
 	sp28.y = arg1->y;
 	sp28.w = sp28.h = 1;
-	func_ovl8_8037A0FC(arg0, &sp28, &sp20);
+	func_ovl8_8037A0FC(arg0, &sp28, (u8*)&sp20);
 
 	var_a1 = sp20;
 	if (arg0->bmsiz == 2)
 	{
 		var_a1 = sp20 >> 0x10;
 	}
-	func_ovl8_80376C40(arg0->bmsiz, var_a1, arg2);
+	func_ovl8_80376C40(arg0->bmsiz, var_a1, (u8*)arg2);
 }
 
 // 0x8037A62C
@@ -815,7 +1850,7 @@ void func_ovl8_8037A62C(db4Shorts* arg0, s32 arg1)
 	sp20.w = arg0->arr[2];
 	sp20.h = arg0->arr[3] - arg1;
 	sp1C.arr[0] = sp1C.arr[1] = 0;
-	func_ovl8_803787C0(arg0, arg0, &sp20, &sp1C);
+	func_ovl8_803787C0((Sprite*)arg0, (Sprite*)arg0, &sp20, (Vec2h*)&sp1C);
 }
 
 // 0x8037A67C
@@ -826,10 +1861,10 @@ s32 func_ovl8_8037A67C(s16* arg0, s16* arg1, s16* arg2)
 	s32 sp20[2];
 	s32 sp1C;
 
-	func_ovl8_8037A9F4(arg0, &sp30);
-	func_ovl8_8037A9F4(arg1, &sp28);
-	sp1C = func_ovl8_8037A6D4(&sp30, &sp28, &sp20);
-	func_ovl8_8037AA28(&sp20, arg2);
+	func_ovl8_8037A9F4((DBMenuPosition*)arg0, (DBMenuPosition*)&sp30);
+	func_ovl8_8037A9F4((DBMenuPosition*)arg1, (DBMenuPosition*)&sp28);
+	sp1C = func_ovl8_8037A6D4((db4Shorts*)&sp30, (db4Shorts*)&sp28, (db4Shorts*)&sp20);
+	func_ovl8_8037AA28((db4Shorts*)&sp20, (db4Shorts*)arg2);
 	return sp1C;
 }
 
@@ -918,10 +1953,10 @@ void func_ovl8_8037A8BC(void* arg0, void* arg1)
 	s32 sp20[2];
 	s32 sp18[2];
 
-	func_ovl8_8037A9F4(arg0, &sp20);
-	func_ovl8_8037A9F4(arg1, &sp18);
-	func_ovl8_8037A904(&sp20, &sp18);
-	func_ovl8_8037AA28(&sp18, arg1);
+	func_ovl8_8037A9F4((DBMenuPosition*)arg0, (DBMenuPosition*)&sp20);
+	func_ovl8_8037A9F4((DBMenuPosition*)arg1, (DBMenuPosition*)&sp18);
+	func_ovl8_8037A904((db4Shorts*)&sp20, (db4Shorts*)&sp18);
+	func_ovl8_8037AA28((db4Shorts*)&sp18, (db4Shorts*)arg1);
 }
 
 // 0x8037A904
@@ -954,896 +1989,3 @@ void func_ovl8_8037A904(db4Shorts* arg0, db4Shorts* arg1)
 	}
 }
 
-// 0x8037A9C0
-void func_ovl8_8037A9C0(db4Shorts* arg0, s32 arg1, s32 arg2)
-{
-	arg0->arr[0] = arg0->arr[0] + arg1;\
-	arg0->arr[2] = arg0->arr[2] + arg1;
-	arg0->arr[1] = arg0->arr[1] + arg2;\
-	arg0->arr[3] = arg0->arr[3] + arg2;
-}
-
-// 0x8037A9F4
-void func_ovl8_8037A9F4(DBMenuPosition* arg0, DBMenuPosition* arg1)
-{
-	arg1->x = arg0->x;
-	arg1->y = arg0->y;
-	arg1->w = arg0->x + arg0->w;
-	arg1->h = arg0->y + arg0->h;
-}
-
-// 0x8037AA28
-void func_ovl8_8037AA28(db4Shorts* arg0, db4Shorts* arg1)
-{
-	arg1->arr[0] = arg0->arr[0];
-	arg1->arr[1] = arg0->arr[1];
-	arg1->arr[2] = arg0->arr[2] - arg0->arr[0];
-	arg1->arr[3] = arg0->arr[3] - arg0->arr[1];
-}
-
-// 0x8037AA5C
-s32 func_ovl8_8037AA5C(DBMenuPosition* arg0)
-{
-	if (arg0->w <= 0 || arg0->h <= 0)
-	{
-		return 1;
-	}
-	return 0;
-}
-
-// 0x8037AA88
-void func_ovl8_8037AA88(s32 arg0, s32 arg1, s32 arg2, s32 arg3, dbUnknown7* arg4) {
-    s32 var_v0;
-    
-    arg4->unk0 = arg2 - arg0;
-    arg4->unk4 = arg3 - arg1;
-    arg4->unk20 = arg0;
-    arg4->unk24 = arg1;
-    var_v0 = arg4->unk0 == 0 ? 0 : (arg4->unk0 > 0 ? 1 : -1);
-    
-    arg4->unk10 = var_v0;
-    var_v0 = arg4->unk4 == 0 ? 0 : (arg4->unk4 > 0 ? 1 : -1);
-    
-    arg4->unk14 = var_v0;
-    var_v0 = arg4->unk0 < 0 ? -arg4->unk0 : arg4->unk0;
-
-    arg4->unk0 = var_v0;
-    var_v0 = arg4->unk4 < 0 ? -arg4->unk4 : arg4->unk4;
-    arg4->unk4 = var_v0;
-    
-    if (var_v0 < arg4->unk0) {
-        arg4->unk30 = arg4->unk0;
-        arg4->unk28 = ((u8*)arg4 + 0x20);
-        arg4->unk2C = ((u8*)arg4 + 0x24);
-        arg4->unk8 =  (s32*) arg4;
-        arg4->unkC = (s32*) ((u8*)arg4 + 4);
-        arg4->unk18 = ((u8*)arg4 + 0x10);
-        arg4->unk1C = (void* ) ((u8*)arg4 + 0x14);
-    } else {
-        arg4->unk30 = arg4->unk4;
-        arg4->unk28 = ((u8*)arg4 + 0x24);
-        arg4->unk2C = ((u8*)arg4 + 0x20);
-        arg4->unk8 = (s32*) ((u8*)arg4 + 4);
-        arg4->unkC = (s32) arg4;
-        arg4->unk18 = ((u8*)arg4 + 0x14);
-        arg4->unk1C = (void* ) ((u8*)arg4 + 0x10);
-    }
-    arg4->unk34 = (*arg4->unkC / 2);
-    arg4->unk38 = arg4->unk30;
-}
-
-
-// 0x8037ABDC
-s32 func_ovl8_8037ABDC(Vec2h* arg0, UiLineStepper* arg1) 
-{
-    if (arg1->error == arg1->stepsRemaining) 
-    {
-        arg0->x = arg1->currentX;
-        arg0->y = arg1->currentY;
-    } 
-    else 
-    {
-        if (arg1->totalSteps < 0) 
-        {
-            *arg1->posPrimary += *arg1->stepPrimary;
-            arg1->totalSteps += *arg1->errorAdd;
-        } 
-        else 
-        {
-            *arg1->posPrimary += *arg1->stepPrimary;
-            
-            if (arg1->currentX && arg1->currentX);
-            
-            *arg1->posSecondary += *arg1->stepSecondary;
-            
-            if (arg1->currentX && arg1->currentX);
-            
-            arg1->totalSteps += *arg1->errorAdd - *arg1->errorSub;
-        }
-        
-        arg0->x = arg1->currentX;
-        arg0->y = arg1->currentY;
-    }
-    
-    return arg1->stepsRemaining--;
-}
-
-// 0x8037ACAC
-Sprite *func_ovl8_8037ACAC(s32 width, s32 height, s32 pixel_format, s32 tile_width, s32 tile_height)
-{
-    s32 num_bitmaps;
-    s32 bytes_per_pixel;
-    u8 *pixel_data;
-    u8 *raw_alloc;
-    Bitmap *bitmap_array;
-    s32 tiles_wide;
-    s32 tiles_high;
-    s32 alignment;
-    s32 tile_width_aligned;
-    s32 tile_height_max;
-    s32 pixel_offset;
-    s32 remaining_width;
-    s32 remaining_height;
-    s32 total_pixel_bytes;
-    s32 bitmap_idx;
-    s32 actual;
-    s32 width_remainder;
-    s32 height_remainder;
-    s32 i;
-    s32 rows;
-    s32 j;
-    s32 cols;
-    Sprite *sprite;
-    s32 max_texture_size;
-
-    switch (pixel_format)
-    {
-        case 1:
-            bytes_per_pixel = 1;
-            max_texture_size = 0x800;
-            alignment = 8;
-            break;
-
-        case 2:
-            bytes_per_pixel = 2;
-            max_texture_size = 0x800;
-            alignment = 4;
-            break;
-
-        case 3:
-            bytes_per_pixel = 4;
-            max_texture_size = 0x400;
-            alignment = 4;
-            break;
-
-    }
-
-    actual = (tile_width <= width) ? (tile_width) : (width);
-    tile_width_aligned = actual;
-    actual = ((tile_width_aligned % alignment) != 0) ? (alignment) : (0);
-    tile_width_aligned = ((tile_width_aligned / alignment) * alignment) + actual;
-    tiles_wide = width / tile_width_aligned;
-    
-    width_remainder = width % tile_width_aligned;
-        
-    if (width_remainder != 0)
-    {
-        actual = (((width_remainder % alignment) != 0) ? (alignment) : (0));
-        width_remainder = ((width_remainder / alignment) * alignment) + actual;
-        if (width_remainder == 0)
-        {
-            width_remainder = alignment;
-        }
-    }
-    
-    actual = (tile_height <= height) ? (tile_height) : (height);
-    
-    tile_height_max = actual;
-    if (max_texture_size < (actual * tile_width_aligned))
-    {
-        tile_height_max = max_texture_size / tile_width_aligned;
-    }
-    
-    tiles_high = height / tile_height_max;
-    height_remainder = height % tile_height_max;
-    total_pixel_bytes = ((((((tile_width_aligned * tile_height_max) * bytes_per_pixel) * tiles_wide) * tiles_high) + (((width_remainder * tile_height_max) * tiles_high) * bytes_per_pixel)) + (((tile_width_aligned * height_remainder) * tiles_wide) * bytes_per_pixel)) + ((width_remainder * height_remainder) * bytes_per_pixel);
-    
-    cols = tiles_wide;
-    actual = ((width_remainder != 0) ? (1) : (0));
-    cols += actual;
-    rows = tiles_high;
-    actual = ((height_remainder != 0) ? (1) : (0));
-    rows += actual;
-    actual = (((((tiles_wide > 0) && (tiles_high > 0)) && (width_remainder != 0)) && (height_remainder != 0)) ? (1) : (0));
-    num_bitmaps = (cols * rows) + actual;
-    
-    raw_alloc = pixel_data = (u8 *) func_ovl8_803716D8(total_pixel_bytes + 8);
-
-    if (((uintptr_t) raw_alloc) & 7)
-    {
-        pixel_data = (raw_alloc - (((uintptr_t) raw_alloc) & 7)) + 8;
-    }
-    for (i = 0; i < total_pixel_bytes; i++) pixel_data[i] = 0xFF;
-
-    bitmap_array = (Bitmap *) func_ovl8_803716D8(num_bitmaps * 0x10);
-    remaining_height = height;
-    pixel_offset = 0;
-    bitmap_idx = 0;
-    
-    for (i = 0; i < rows; i++)
-    {
-        remaining_width = width;
-        for (j = 0; j < cols; j++)
-        {
-            if (remaining_width >= tile_width_aligned)
-            {
-                bitmap_array[bitmap_idx].width = tile_width_aligned;
-                bitmap_array[bitmap_idx].width_img = tile_width_aligned;
-            }
-            else
-            {
-                bitmap_array[bitmap_idx].width = remaining_width;
-                bitmap_array[bitmap_idx].width_img = width_remainder;
-            }
-            if (tile_height_max <= remaining_height)
-            {
-                bitmap_array[bitmap_idx].actualHeight = tile_height_max;
-            }
-            else
-            {
-                bitmap_array[bitmap_idx].actualHeight = remaining_height;
-            }
-            
-            bitmap_array[bitmap_idx].buf = (void *) (pixel_data + pixel_offset);
-            bitmap_array[bitmap_idx].s = 0;
-            bitmap_array[bitmap_idx].t = 0;
-            bitmap_array[bitmap_idx].LUToffset = 0;
-            pixel_offset += (bitmap_array[bitmap_idx].width_img * bitmap_array[bitmap_idx].actualHeight) * bytes_per_pixel;
-            remaining_width -= tile_width_aligned;
-            bitmap_idx++;
-        }
-
-        remaining_height -= tile_height_max;
-    }
-
-    sprite = (Sprite *) func_ovl8_803716D8(0x48);
-    *sprite = D_ovl8_80389F70;
-    
-    if ((pixel_format == 1) || (pixel_format == 2))
-    {
-        actual = 0x220;
-    }
-    else
-    {
-        actual = 0x201;
-    }
-    sprite->attr = actual;
-    sprite->bmsiz = pixel_format;
-    sprite->height = height;
-    sprite->nbitmaps = num_bitmaps;
-    sprite->width = width;
-    sprite->bmheight = tile_height_max;
-    sprite->bmHreal = tile_height_max;
-    sprite->ndisplist = (num_bitmaps * 12) + 24;
-    sprite->bitmap = bitmap_array;
-    sprite->rsp_dl = 0;
-    *((void **) ((actual = (u8 *) sprite) + 0x44)) = raw_alloc;
-    
-    if (pixel_format == 1)
-    {
-        sprite->bmfmt = 2;
-        sprite->nTLUT = 0x100;
-        sprite->LUT = (int *) func_ovl8_803716D8(0x200);
-    }
-
-    return sprite;
-}
-
-// 0x8037B3E4
-void func_ovl8_8037B3E4(dbUnknown3* arg0)
-{
-	dbUnknown3 *temp_a0;
-
-	func_ovl8_80371764(arg0->unk_dbunk3_0x44);
-	func_ovl8_80371764(arg0->unk_dbunk3_0x34);
-
-	temp_a0 = arg0->unk_dbunk3_0x20;
-	if (temp_a0 != NULL)
-	{
-		func_ovl8_80371764(temp_a0);
-	}
-
-	func_ovl8_80371764(arg0);
-}
-
-// 0x8037B434
-void func_ovl8_8037B434(Sprite* arg0, s32 arg1, s32 arg2, SYColorRGBA* arg3)
-{
-	dbUnknown8_SC* var_a2;
-
-	if (arg2 != 0)
-	{
-		var_a2 = &D_ovl8_8038A068;
-	}
-	else
-	{
-		var_a2 = &D_ovl8_80389FB4;
-	}
-
-	func_ovl8_8037B46C(arg0, arg1, var_a2, arg3);
-}
-
-// 0x8037B46C
-void func_ovl8_8037B46C(Sprite* arg0, DBMenuPosition* arg1, dbUnknown8_SC* arg2, s32 arg3) 
-{
-    s32 var_v0;
-    DBMenuPosition abs;
-	s32 unused;
-	db4Bytes sp44;
-    s16 temp1, temp2;
-    dbUnknown8_SC* var_s1;
-
-    for (var_s1 = arg2; var_s1->x0 != (0x7FFF, 0x7FFF); var_s1++) 
-    {
-        var_v0 = (var_s1->x0 & 0x8000) ? (arg1->w - (var_s1->x0 & 0x7FFF)) - 1 : var_s1->x0;
-        abs.x = arg1->x + var_v0;
-        
-        var_v0 = (var_s1->y0 & 0x8000) ? (arg1->h - (var_s1->y0 & 0x7FFF)) - 1 : var_s1->y0;
-        abs.y = arg1->y + var_v0;
-        
-        var_v0 = (var_s1->x1 & 0x8000) ? (arg1->w - (var_s1->x1 & 0x7FFF)) - 1 : var_s1->x1;
-        temp1 = arg1->x + var_v0;
-        
-        var_v0 = (var_s1->y1 & 0x8000) ? (arg1->h - (var_s1->y1 & 0x7FFF)) - 1 : var_s1->y1;
-        temp2 = arg1->y + var_v0;
-
-        abs.w = (temp1 - abs.x) + 1;
-        abs.h = (temp2 - abs.y) + 1;
-
-        func_ovl8_80376EE0(arg3, &sp44, var_s1->dbUnknown8_SC_0x8);
-        func_ovl8_80377AEC(arg0, &abs, &sp44, 4);
-    }
-}
-
-// 0x8037B5F8
-s32 stringToNumberSigned(char* str)
-{
-	s32 num = 0;
-	s32 sign = (str[0] == '-') ? (str++, -1) : 1;
-
-	while (str[0] != '\0')
-	{
-		num *= 10;
-		num += str++[0] - '0';
-	}
-
-	return sign * num;
-}
-
-// 0x8037B654
-s32 func_ovl8_8037B654(s32 val, char* str) 
-{
-    s32 digit;
-    s32 found_first_digit;
-    s32 index;
-    s32 place;
-    s32 remaining;
-    s32 abs = (val < 0) ? -val : val;
-    s32 ret;
-    
-    remaining = abs;
-    index = 0;
-    found_first_digit = FALSE;
-    
-    if (val < 0)
-    {
-        abs = index++,
-        str[abs] = '-';  // '-' character
-    }
-
-    place = 1000000000;
-    found_first_digit = FALSE;
-    
-    while (place != 0) 
-    {
-        digit = remaining / place;
-        
-        if ((digit != 0) || (found_first_digit != FALSE)) 
-        {   
-            abs = index--;
-            str[abs] = digit + '0';  // Convert digit to ASCII
-            index += 2;
-        }
-        if (digit != 0)
-        {
-            found_first_digit = TRUE;
-            remaining -= place * digit;
-        }
-        place /= 10;
-    }
-    if (index != 0) 
-    {
-        str[index] = '\0';  // Null terminator
-    }
-    else
-    {
-        str[0] = '0';  // '0' character
-        str[1] = '\0';     // Null terminator
-    }
-}
-
-// 0x8037B760
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B760.s")
-
-// 0x8037B7F0
-s32 func_ovl8_8037B7F0(u8 *str, s32 index)
-{
-	s32 pos = 0;
-	u8 c = str[pos];
-
-	while (str[pos] != 0)
-	{
-		if (index < pos)
-			return 0;
-
-		if (c & 0x80) // high-bit set => multi-byte char?
-		{
-			if (index == pos)
-				return 1;
-			pos++;
-			if (index == pos)
-				return 1;
-		}
-		pos++;
-		c = str[pos];
-	}
-	return 0;
-}
-
-// 0x8037B85C
-void func_ovl8_8037B85C(s32 arg0, s32* arg1, s32* arg2) 
-{
-    s32 temp_v0;
-    s32 temp_v1;
-    s32 var_a0;
-    s32 var_a1;
-    s32 var_a2;
-    s32 temp_f6;
-
-    var_a2 = (arg0 == 1) ? 0x800 : (arg0 == 2) ? 0x800 : 0x400;
-    
-    temp_f6 = sqrtf(var_a2);
-    
-    temp_v0 = *arg1;
-    temp_v1 = *arg2;
-    
-    if (var_a2 < (temp_v0 * temp_v1)) 
-    {
-        if (temp_v0 >= temp_v1) 
-        {
-            var_a0 = temp_v1;
-            var_a1 = var_a2 / temp_v1;
-        } 
-        else 
-        {
-            var_a0 = var_a2 / temp_v0;
-            var_a1 = temp_v0;
-        }
-        
-        if (temp_f6 < var_a1) 
-        {
-            var_a1 = temp_f6;
-        }
-        
-        if (temp_f6 < var_a0) 
-        {
-            var_a0 = temp_f6;
-        }
-
-        var_a1 &= ~3;
-        var_a0 &= ~3;
-        
-        *arg1 = var_a1;
-        *arg2 = var_a0;
-    }
-}
-
-// 0x8037B98C
-void func_ovl8_8037B98C(dbMenuSprite *arg0)
-{
-    dbUnkStruct *temp_v0;
-    dbUnknownLinkStruct *temp_v0_2;
-    DBMenu sp28;
-    dbMenuSprite *var_v1;
-
-    sp28 = D_ovl8_8038A11C;
-    
-    D_8038EFC0_1AB810 = arg0->unk_dbmenusprite_0x0;
-    
-    func_ovl8_80371638(D_8038EFC0_1AB810, arg0->unk_dbmenusprite_0x4);
-    func_ovl8_8037D2F0();
-    
-    temp_v0 = func_ovl8_803717A0(0x10);
-    
-    if (temp_v0 != NULL) 
-    {
-        func_ovl8_8037C3C0(temp_v0);
-        var_v1 = temp_v0;
-    } 
-    else var_v1 = NULL;
-    
-    D_8038EFC4_1AB814 = var_v1;
-    
-    func_ovl8_8037C498(D_8038EFC4_1AB814, D_8038EFC4_1AB814);
-    gcAddGObjProcess(func_ovl8_8037C510(D_8038EFC4_1AB814), func_ovl8_8037BD94, 0, 1);
-    
-    temp_v0_2 = func_ovl8_803717A0(0x68);
-    
-    if (temp_v0_2 != NULL) 
-    {
-        func_ovl8_8037CE90(temp_v0_2, &sp28);
-        var_v1 = temp_v0_2;
-    } 
-    else var_v1 = NULL;
-    
-    D_8038EFC8_1AB818 = var_v1;
-    
-    func_ovl8_8037CFD8(D_8038EFC8_1AB818, D_8038EFC8_1AB818);
-    var_v1 = D_8038EFC8_1AB818;
-    gcAddGObjProcess(var_v1->unk_dbmenusprite_0x48, func_ovl8_8037BDF4, 0, 1);
-    func_ovl8_8037D63C();
-    
-    D_8038EFCC_1AB81C = NULL;
-    
-    dbUiNodeTypeRegisterHandlers();
-}
-
-// 0x8037BAD8
-void func_ovl8_8037BAD8()
-{
-	dbFunction* temp_v0;
-
-	if (D_8038EFC4_1AB814 != NULL)
-	{
-		if (D_8038EFC4_1AB814 != NULL)
-		{
-			temp_v0 = D_8038EFC4_1AB814->db_func;
-			temp_v0[1].unk_dbfunc_0x4(temp_v0[1].unk_dbfunc_0x0 + (uintptr_t) D_8038EFC4_1AB814, 3);
-		}
-
-		D_8038EFC4_1AB814 = NULL;
-	}
-}
-
-// 0x8037BB28
-void func_ovl8_8037BB28()
-{
-	dbFunction* temp_v0;
-
-	if (D_8038EFC8_1AB818 != NULL)
-	{
-		if (D_8038EFC8_1AB818 != NULL)
-		{
-			temp_v0 = D_8038EFC8_1AB818->db_func;
-			temp_v0[1].unk_dbfunc_0x4(temp_v0[1].unk_dbfunc_0x0 + (uintptr_t) D_8038EFC8_1AB818, 3);
-		}
-
-		D_8038EFC8_1AB818 = NULL;
-	}
-}
-
-// 0x8037BB78
-void func_ovl8_8037BB78()
-{
-	s32 temp_v0;
-	s32 temp_v0_2;
-
-	while(TRUE)
-	{
-		temp_v0 = func_ovl8_8037499C(1);
-
-		if (temp_v0 != 0)
-		{
-			func_ovl8_8037488C(temp_v0);
-			continue;
-		}
-
-		break;
-	}
-
-	while (TRUE)
-	{
-		temp_v0_2 = func_ovl8_8037499C(0);
-
-		if (temp_v0_2 != 0)
-		{
-			func_ovl8_8037488C(temp_v0_2);
-			continue;
-		}
-
-		break;
-	}
-
-	func_ovl8_8037BD44(temp_v0_2);
-	func_ovl8_8037BAD8();
-	func_ovl8_8037BB28();
-	func_ovl8_8037D34C();
-}
-
-// 0x8037BBF0
-s32 func_ovl8_8037BBF0(dbUnknown8_S28* arg0, Sprite* sprite, u16 arg2, u16 arg3)
-{
-	dbTestMenu *temp_v0;
-	s32 sp20;
-	dbTestMenu *var_v1;
-
-	temp_v0 = func_ovl8_803717A0(0x7C);
-
-	if (temp_v0 != NULL)
-	{
-		func_ovl8_803759F0(temp_v0, 0, arg0, sprite);
-		var_v1 = temp_v0;
-	}
-	else
-		var_v1 = NULL;
-
-	D_8038EFCC_1AB81C = var_v1;
-	sp20 = func_ovl8_803723AC(D_8038EFCC_1AB81C, D_8038EFCC_1AB81C, sprite, func_ovl8_8037BEC8, func_ovl8_8037BF34, FALSE);
-	func_ovl8_80375B8C(D_8038EFCC_1AB81C, arg2, arg3);
-
-	if (sp20 != 0)
-	{
-		return sp20;
-	}
-
-	func_ovl8_80375C54(D_8038EFCC_1AB81C);
-
-	return 0;
-}
-
-// 0x8037BCB8
-s32 func_ovl8_8037BCB8()
-{
-	dbUnknown8_S28 sp18;
-
-	if (D_8038EFCC_1AB81C != NULL)
-		return -1;
-
-	sp18 = D_ovl8_8038A144;
-	sp18.str = 'Arow'; // 0x41726F77
-
-	return func_ovl8_8037BBF0(&sp18, &D_ovl8_80387EB8, 4, 1);
-}
-
-// 0x8037BD44
-void func_ovl8_8037BD44()
-{
-	dbFunction* temp_v0;
-
-	if (D_8038EFCC_1AB81C != NULL)
-	{
-		if (D_8038EFCC_1AB81C != NULL)
-		{
-			temp_v0 = D_8038EFCC_1AB81C->db_func;
-			temp_v0[1].unk_dbfunc_0x4(temp_v0[1].unk_dbfunc_0x0 + (uintptr_t) D_8038EFCC_1AB81C, 3);
-		}
-
-		D_8038EFCC_1AB81C = NULL;
-	}
-}
-
-// 0x8037BD94
-void* func_ovl8_8037BD94(GObj* arg0)
-{
-	void *temp_s0 = arg0->user_data.p;
-
-	while (TRUE)
-	{
-		func_ovl8_8037C4A4(temp_s0, arg0);
-		gcSleepCurrentGObjThread(1);
-	}
-
-	return temp_s0;
-}
-
-// 0x8037BDF4
-void* func_ovl8_8037BDF4(GObj* arg0)
-{
-	void *temp_s0 = arg0->user_data.p;
-
-	while (TRUE)
-	{
-		func_ovl8_8037CFAC(temp_s0);
-		gcSleepCurrentGObjThread(1);
-	}
-
-	return temp_s0;
-}
-
-// 0x8037BE34
-void func_ovl8_8037BE34(GObj* arg0)
-{
-	dbUnknown5 *temp_s0;
-	dbFunction *temp_v0;
-
-	temp_s0 = arg0->user_data.p;
-
-	while (TRUE)
-	{
-		temp_v0 = temp_s0->db_func;
-		temp_v0[8].unk_dbfunc_0x4(temp_v0[8].unk_dbfunc_0x0 + (uintptr_t)temp_s0, arg0);
-		gcSleepCurrentGObjThread(1);
-	}
-}
-
-// 0x8037BE94
-void func_ovl8_8037BE94(GObj* arg0)
-{
-	dbUnknownS38* temp_a1;
-	dbFunction* temp_v0;
-
-	temp_a1 = arg0->user_data.p;
-	temp_v0 = ((dbUnknownLinkStruct*) temp_a1->unk_dbunks38_0x20)->db_func;
-	temp_v0[11].unk_dbfunc_0x4(temp_v0[11].unk_dbfunc_0x0 + (uintptr_t)temp_a1->unk_dbunks38_0x20, temp_a1);
-}
-
-// 0x8037BEC8
-void func_ovl8_8037BEC8(GObj* arg0)
-{
-	dbTestMenu* temp_s0;
-	dbFunction* temp_v0;
-
-	temp_s0 = arg0->user_data.p;
-
-	while (TRUE)
-	{
-		temp_v0 = ((dbUnknownLinkStruct*)temp_s0->unk_dbtestmenu_0x10)->db_func;
-		temp_v0[14].unk_dbfunc_0x4(temp_v0[14].unk_dbfunc_0x0 + (uintptr_t)temp_s0->unk_dbtestmenu_0x10, arg0);
-		gcSleepCurrentGObjThread(1);
-	}
-}
-
-// 0x8037BF34
-void func_ovl8_8037BF34(GObj* arg0)
-{
-	dbTestMenu* temp_a1;
-	dbFunction* temp_v0;
-
-	temp_a1 = arg0->user_data.p;
-	temp_v0 = ((dbUnknownLinkStruct*) temp_a1->unk_dbtestmenu_0x10)->db_func;
-	temp_v0[11].unk_dbfunc_0x4(temp_v0[11].unk_dbfunc_0x0 + (uintptr_t)temp_a1->unk_dbtestmenu_0x10, temp_a1);
-}
-
-// 0x8037BF68
-s32 func_ovl8_8037BF68(s32 user_data, Sprite* sprite, void (*proc)(GObj*), void (*proc_display)(GObj*), GObj **camera_out, GObj **sprite_out, sb32 low_priority)
-{
-	GObj *camera_gobj;
-	GObj *sprite_gobj;
-
-	camera_gobj = gcMakeCameraGObj(-0x1FF, gcDefaultFuncRun, 0, 0x80000000, func_80018300, !low_priority ? 2 : 1, 0x8000000000000000ULL, 0, 1, 0, NULL, 1, 0);
-	if (camera_gobj == NULL)
-		return -1;
-
-	((CObj*)camera_gobj->obj)->flags = 8;
-	camera_gobj->camera_tag = camera_gobj;
-	if (!low_priority)
-	{
-		sprite_gobj = gcMakeGObjSPBefore(-0x1FD, NULL, 0x1F, 1);
-		if (sprite_gobj == NULL)
-			return -1;
-	}
-	else
-	{
-		sprite_gobj = gcMakeGObjSPBefore(-0x1FC, NULL, 0x1F, 2);
-		if (sprite_gobj == NULL)
-			return -1;
-	}
-	gcAddGObjDisplay(sprite_gobj, proc_display, 0x3F, 1, camera_gobj);
-	gcAddSObjForGObj(sprite_gobj, sprite);
-	gcAddGObjProcess(sprite_gobj, proc, 0, 1);
-	sprite_gobj->user_data.p = user_data;
-	*camera_out = camera_gobj;
-	*sprite_out = sprite_gobj;
-	return 0;
-}
-
-// 0x8037C0CC
-dbUnknownLinkStruct* func_ovl8_8037C0CC()
-{
-	return D_8038EFC8_1AB818;
-}
-
-// 0x8037C0D8
-void func_ovl8_8037C0D8(u16 arg0, u16 arg1, u16 arg2, u16 arg3, s16 arg4, s16 arg5)
-{
-	if (D_8038EFCC_1AB81C != NULL)
-	{
-		D_ovl8_80389F30 = arg0;
-		D_ovl8_80389F34 = arg1;
-		D_ovl8_80389F3C = arg2;
-		D_ovl8_80389F38 = arg3;
-		D_ovl8_80389F40 = arg4;
-		D_ovl8_80389F44 = arg5;
-	}
-}
-
-// 0x8037C144
-void func_ovl8_8037C144(s32 arg0)
-{
-	if (D_8038EFCC_1AB81C != NULL)
-	{
-		func_ovl8_80375D44(D_8038EFCC_1AB81C, arg0);
-	}
-}
-
-// 0x8037C174
-s32 func_ovl8_8037C174()
-{
-	if (D_8038EFCC_1AB81C == NULL)
-	{
-		return 0;
-	}
-	return func_ovl8_80375D4C(D_8038EFCC_1AB81C);
-}
-
-// 0x8037C1AC
-void func_ovl8_8037C1AC(db4Shorts *arg0)
-{
-	func_ovl8_80375D54(D_8038EFCC_1AB81C, arg0);
-}
-
-// 0x8037C1D4
-void func_ovl8_8037C1D4(u8** src, u8** dest, s32 count) 
-{
-    s32 var_a3;
-    u8* var_v0;
-    u8* var_v1;
-
-    var_v0 = *src;
-    var_v1 = *dest;
-    var_a3 = count;
-    
-    while (var_a3 > 0) 
-    {
-        u8 curr = *var_v0;
-        u32 next = *var_v0 + 1;
-        
-        if (curr & 0x80) 
-        {
-            s16 run_length = (u8)(-curr++) + 1;
-            s16 temp_t1;
-            var_v0++;
-
-            temp_t1 = run_length--;
-            
-            while (temp_t1) 
-            {
-                u8 *a2 = var_v1++;\
-                temp_t1 = run_length--;
-                *a2 = *var_v0;
-                var_a3--;
-            }
-            
-            var_v0++;
-        } 
-        else 
-        {
-            s16 run_length = curr++ + 1;
-            s16 temp_t1;
-            var_v0++;
-
-            temp_t1 = run_length--;
-            
-            while (temp_t1) 
-            {
-                u8 *a2 = var_v1++, *t2 = var_v0++;\
-                temp_t1 = run_length--;
-                *a2 = *t2;
-                var_a3--;
-            }
-        }
-    }
-    
-    *src = var_v0;
-    *dest = var_v1;
-}

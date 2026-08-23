@@ -13,6 +13,7 @@ bin
 relocAssets
 undefined*
 tools/ido-recomp/
+tools/ido-irix4/ido4.1/
 tools/vpk0cmd
 tools/halAssetTool
 .vscode/

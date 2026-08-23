@@ -203,7 +203,15 @@ struct GObj
         s32 unk_0x1C;
         GObj *unk_gobj_0x1C;
         GObjProcess *gobjproc_tail;
+#ifdef IDO_IRIX4_C89
+    /* src/ovl8/ovl8_8.c is built by the IRIX 4.1 C frontend, which is C89 and
+       cannot parse an anonymous union. That TU never touches these members, so
+       a name it will never use keeps the header parseable there while every
+       other compiler keeps the anonymous form -- no access site changes. */
+    } u_c89_unused;
+#else
     };
+#endif
     
     GObj *dl_link_next;
     GObj *dl_link_prev;
@@ -435,7 +443,15 @@ struct DObj                 // Draw Object
         DObjDLLink *dl_link;
         DObjDistDL *dist_dl;
         DObjDistDLLink *dist_dl_link;
+#ifdef IDO_IRIX4_C89
+    /* src/ovl8/ovl8_8.c is built by the IRIX 4.1 C frontend, which is C89 and
+       cannot parse an anonymous union. That TU never touches these members, so
+       a name it will never use keeps the header parseable there while every
+       other compiler keeps the anonymous form -- no access site changes. */
+    } u_c89_unused;
+#else
     };
+#endif
 
     u8 flags;
     

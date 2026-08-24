@@ -703,8 +703,7 @@ void lbParticleAddDistVelMagDObj(LBParticle *pc, DObj *dobj, f32 magnitude)
 	}
 }
 
-#ifdef NON_MATCHING
-// 0x800CEF4C - NONMATCHING: v0 VS v1 regswap in switch statement initialization + floats are a mess near the end of the function
+// 0x800CEF4C
 LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s32 bank_id)
 {
     LBParticle *current_pc;
@@ -719,15 +718,17 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
     s32 svar2;
     u8 opcode;
     f32 fvar1; // s3
-    f32 fvar2;
-    f32 unused1[2];
-    f32 sp70;
-    f32 unused2[2];
+    f32 sp7C;
+    f32 temp1, temp2;
+    f32 sp70[1];
+    f32 var_f14;
+    f32 unused2[1];
     f32 f0, f1;
     f32 sx1, sx2; // sp5C, sp58
     f32 cx1, cx2; // f16=>sp54, f12=>sp50
     u16 angle_id_2;
-    f32 sx4, cx4; 
+    f32 sx4;
+    f32 cx4[1];
     f32 sx3, cx3; // f18, f0=>sp44
     
     if (this_pc->flags & LBPARTICLE_FLAG_PAUSE)
@@ -761,8 +762,15 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                             opcode = command;
                         }
                     }
-                    // Even if you DO manage to fix the floats near the end, how do you deal with the v0 vs v1 regswap up here!?
-
+                    // FAKE
+                    // This extremely fake fake fixes a v0/v1 regswap
+                    if (opcode > LBPARTICLE_OPCODE_SETENVBLEND) goto dispatch_high;
+                    goto dispatch_low;
+                    dispatch_high:
+                    switch (opcode && opcode && opcode ? opcode : opcode)
+                    {
+                    dispatch_low:
+                    if (opcode && opcode && opcode);
                     switch (opcode)
                     {
                     case LBPARTICLE_OPCODE_SETPOS:
@@ -1125,13 +1133,14 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         
                     case LBPARTICLE_OPCODE_SETVELMAG:
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
-                        csr = lbParticleReadFloatBigEnd(csr, &fvar2);
+                        csr = lbParticleReadFloatBigEnd(csr, &sp7C);
 
-                        fvar1 += fvar2 * syUtilsRandFloat();
+                        fvar1 += sp7C * syUtilsRandFloat();
 
-                        fvar2 = sqrtf(SQUARE(this_pc->vel.x) + SQUARE(this_pc->vel.y) + SQUARE(this_pc->vel.z));
-                        
-                        fvar1 /= fvar2;
+                        temp2 = this_pc->vel.z;
+                        sp7C = sqrtf(SQUARE(this_pc->vel.x) + SQUARE(this_pc->vel.y) + SQUARE(temp2));
+
+                        fvar1 /= sp7C;
 
                         this_pc->vel.x *= fvar1;
                         this_pc->vel.y *= fvar1;
@@ -1206,7 +1215,8 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                             this_pc->envcolor_target_length = 0;
                         }
                         break;
-                        
+                    }
+                    break;
                     case LBPARTICLE_OPCODE_SETLOOP:    
                         this_pc->loop_count = *csr++;
                         this_pc->loop_ptr = (u16) ((uintptr_t)csr - (uintptr_t)this_pc->bytecode);
@@ -1350,34 +1360,31 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
 
         this_pc->vel.z += gn->generator_vars.vortex.f;
 
-        sp70 = ABSF(gn->unk_gn_0x38);
-        
-        syGetSinCosUShort(sx3, cx3, ABSF(gn->unk_gn_0x3C), angle_id_2);
-        
-        sp70 += this_pc->vel.z * (sx3 / cx3);
-        sp70 *= this_pc->vel.y;
-        
+        sp70[0] = ABSF(gn->unk_gn_0x38);
+
+        syGetSinCosUShort(sx3, f0, ABSF(gn->unk_gn_0x3C), angle_id_2);
+
+        temp2 = this_pc->vel.z;
+        sp70[0] += this_pc->vel.z * (sx3 / f0);
+        sp70[0] *= this_pc->vel.y;
+
         this_pc->vel.x += gn->gravity;
 
-        syGetSinCosUShort(sx4, cx4, this_pc->vel.x, angle_id);
-        
-        sp70 *= (1.0F / 32768.0F);
+        angle_id = SINTABLE_RAD_TO_ID(this_pc->vel.x) & 0xFFF;
+        sx3 = gSYSinTable[angle_id & 0x7FF];
+        if (angle_id & 0x800) { sx3 = -sx3; }
+        angle_id += 0x400;
+        f0 = gSYSinTable[angle_id & 0x7FF]; cx4[0] = f0; if (angle_id & 0x800) { f0 = -f0; cx4[0] = f0; }
 
-        /*
-        f32 sp6C;     // f2
-        f32 sx1, sx2; // sp5C, sp58
-        f32 cx1, cx2; // f16=>sp54, f12=>sp50 
-        f32 sx3, cx3; // f18, f0=>sp44
-        */
+        sp70[0] *= (1.0F / 32768.0F);
 
-        // Lots of trouble here...
-
-        f0 = sp70 * cx4;
-        f1 = sp70 * sx4;
-        
-        this_pc->pos.x = ((f0 * cx2) + (this_pc->vel.z * sx2)) + gn->pos.x;
-        this_pc->pos.y = ((-f0 * sx1 * sx2) + (f1 * cx1)) + (this_pc->vel.z * sx1 * cx2) + gn->pos.y;
-        this_pc->pos.z = ((-f0 * cx1 * sx2) - (f1 * sx1)) + (this_pc->vel.z * cx1 * cx2) + gn->pos.z;
+        f0 = cx4[0] * sp70[0];
+        this_pc->pos.x = ((cx4[0] * sp70[0] * cx2) + (temp2 * sx2)) + gn->pos.x;
+        f1 = sp70[0] * sx3;
+        temp1 = -f0;
+        f0 = f1;
+        this_pc->pos.y = (((((temp1 * sx1) * sx2) + (f1 * cx1)) + ((temp2 * sx1) * cx2)) + gn->pos.y);
+        this_pc->pos.z = (((((temp1 * cx1) * sx2) - (f1 * sx1)) + ((temp2 * cx1) * cx2)) + gn->pos.z);
     }
     else
     {
@@ -1408,9 +1415,6 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
     }
     return this_pc->next;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleUpdateStruct.s")
-#endif /* NON_MATCHING */
 
 // 0x800D0C74
 void lbParticleStructFuncRun(GObj *gobj)

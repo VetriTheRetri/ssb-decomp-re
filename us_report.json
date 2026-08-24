@@ -1,13 +1,13 @@
 {
   "measures": {
-    "fuzzy_match_percent": 99.49405,
+    "fuzzy_match_percent": 100.0,
     "total_code": "1475232",
-    "matched_code": "1467768",
-    "matched_code_percent": 99.49405,
+    "matched_code": "1475232",
+    "matched_code_percent": 100.0,
     "matched_data_percent": 100.0,
     "total_functions": 7165,
-    "matched_functions": 7164,
-    "matched_functions_percent": 99.98604,
+    "matched_functions": 7165,
+    "matched_functions_percent": 100.0,
     "complete_data_percent": 100.0,
     "total_units": 657
   },
@@ -14327,21 +14327,21 @@
     {
       "name": "lb/lbparticle",
       "measures": {
-        "fuzzy_match_percent": 69.06499,
+        "fuzzy_match_percent": 100.0,
         "total_code": "24128",
-        "matched_code": "16664",
-        "matched_code_percent": 69.06499,
+        "matched_code": "24128",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 41,
-        "matched_functions": 40,
-        "matched_functions_percent": 97.560974,
+        "matched_functions": 41,
+        "matched_functions_percent": 100.0,
         "total_units": 1
       },
       "sections": [
         {
           "name": ".text",
           "size": "24128",
-          "fuzzy_match_percent": 69.06499,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2148327488"
           }
@@ -14540,6 +14540,7 @@
         {
           "name": "lbParticleUpdateStruct",
           "size": "7464",
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2148331340"
           }
@@ -83049,14 +83050,14 @@
       "id": "lb",
       "name": "lb",
       "measures": {
-        "fuzzy_match_percent": 86.26325,
+        "fuzzy_match_percent": 100.0,
         "total_code": "54336",
-        "matched_code": "46872",
-        "matched_code_percent": 86.26325,
+        "matched_code": "54336",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 152,
-        "matched_functions": 151,
-        "matched_functions_percent": 99.34211,
+        "matched_functions": 152,
+        "matched_functions_percent": 100.0,
         "complete_data_percent": 100.0,
         "total_units": 6
       }
@@ -83343,14 +83344,14 @@
       "id": "segment_.ovl0",
       "name": "Segment .ovl0",
       "measures": {
-        "fuzzy_match_percent": 86.26325,
+        "fuzzy_match_percent": 100.0,
         "total_code": "54336",
-        "matched_code": "46872",
-        "matched_code_percent": 86.26325,
+        "matched_code": "54336",
+        "matched_code_percent": 100.0,
         "matched_data_percent": 100.0,
         "total_functions": 152,
-        "matched_functions": 151,
-        "matched_functions_percent": 99.34211,
+        "matched_functions": 152,
+        "matched_functions_percent": 100.0,
         "complete_data_percent": 100.0,
         "total_units": 6
       }

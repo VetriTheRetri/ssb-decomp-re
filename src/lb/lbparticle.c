@@ -763,14 +763,12 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         }
                     }
                     // FAKE
-                    // This extremely fake fake fixes a v0/v1 regswap
-                    if (opcode > LBPARTICLE_OPCODE_SETENVBLEND) goto dispatch_high;
-                    goto dispatch_low;
-                    dispatch_high:
-                    switch (opcode && opcode && opcode ? opcode : opcode)
+                    // This is pretty ugly but fixes a v0/v1 regswap
+                    if (opcode <= LBPARTICLE_OPCODE_SETENVBLEND) goto dispatch_low;
+                    switch (opcode >= LBPARTICLE_OPCODE_SETLOOP && opcode <= LBPARTICLE_OPCODE_END && opcode != 0 ? opcode : opcode)
                     {
                     dispatch_low:
-                    if (opcode && opcode && opcode);
+                    if (opcode >= LBPARTICLE_OPCODE_SETPOS);
                     switch (opcode)
                     {
                     case LBPARTICLE_OPCODE_SETPOS:

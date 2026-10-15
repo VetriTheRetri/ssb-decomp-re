@@ -378,8 +378,7 @@ FTAttributes dCaptainMain_attr = {
 	(u32*)dCaptainMain_setup_parts, /* setup_parts */
 	(u32*)dCaptainMain_animlock, /* animlock */
 	{ 12, 15, 21, 26, 9 }, /* effect_joint_ids */
-	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dCaptainMain_hiddenparts, /* hiddenparts */
 	&dCaptainMain_commonparts_container, /* commonparts_container */
 	(void *)&dCaptainShieldPose_data0, /* dobj_lookup */

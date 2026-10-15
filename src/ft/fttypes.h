@@ -948,8 +948,7 @@ struct FTAttributes
     u32 *setup_parts;                               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
     u32 *animlock;                                  // Pointer to two sets of flags marking joints that should not be animated; ignores joints 0 through 3
     s32 effect_joint_ids[5];                        // The game will cycle through these joints when applying certain particles such as electricity and flames
-    sb32 cliff_status_ga[5];                        // Bool for whether fighter is grounded or airborne during each cliff state
-    s32 unused_0x2CC;                               // ???
+    sb32 cliff_status_ga[nFTCommonCliffStatusEnumCount];  // Bool for whether fighter is grounded or airborne during each cliff state
     FTHiddenPart *hiddenparts;                      // Hidden fighter body parts?
     FTCommonPartContainer *commonparts_container;   // Base fighter body parts
     DObjDesc *dobj_lookup;                          // I don't actually know how this works at the moment

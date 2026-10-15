@@ -34,8 +34,7 @@ RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "us", "relocData")
 
 # FTAttributes pointer-field offsets within the struct (computed from
-# the struct declaration in src/ft/fttypes.h; `unused_0x2CC` pins the
-# cluster).
+# the struct declaration in src/ft/fttypes.h; final member of `cliff_status_ga` (formerly `unused_0x2CC`) pins the cluster.
 ATTR_FIELD_OFFSETS = {
     0x29C: "setup_parts",
     0x2A0: "animlock",

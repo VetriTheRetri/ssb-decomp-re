@@ -232,8 +232,7 @@ FTAttributes dNLinkMain_attr = {
 	(u32*)dNLinkMain_setup_parts, /* setup_parts */
 	(u32*)dNLinkMain_animlock, /* animlock */
 	{ 23, 14, 27, 32, 9 }, /* effect_joint_ids */
-	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dNLinkMain_hiddenparts, /* hiddenparts */
 	&dNLinkMain_commonparts_container, /* commonparts_container */
 	(void *)&dLinkShieldPose_data0, /* dobj_lookup */

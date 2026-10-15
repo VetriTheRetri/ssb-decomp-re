@@ -227,8 +227,7 @@ FTAttributes dNPurinMain_attr = {
 	(u32*)dNPurinMain_setup_parts, /* setup_parts */
 	(u32*)dNPurinMain_animlock, /* animlock */
 	{ 6, 15, 21, 26, 11 }, /* effect_joint_ids */
-	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dNPurinMain_hiddenparts, /* hiddenparts */
 	&dNPurinMain_commonparts_container, /* commonparts_container */
 	(void *)&dPurinShieldPose_data0, /* dobj_lookup */

@@ -392,18 +392,18 @@ def parse_ftattributes(data, base, raw_ptrs=False):
     lines.append(("effect_joint_ids", "{ " + ", ".join(ejs) + " }", None))
     assert off == 0x2B8
 
-    # sb32 cliff_status_ga[5]
+    # sb32 cliff_status_ga[nFTCommonCliffStatusEnumCount]
     csg = []
-    for i in range(5):
+    for i in range(6):
         val = ri32(data, base + off)
         csg.append("TRUE" if val else "FALSE")
         off += 4
     lines.append(("cliff_status_ga", "{ " + ", ".join(csg) + " }", None))
-    assert off == 0x2CC
+    assert off == 0x2D0
 
     # s32 unused_0x2CC
-    s32("unused_0x2CC")
-    assert off == 0x2D0
+    # s32("unused_0x2CC")
+    # assert off == 0x2D0
 
     ptr("hiddenparts", "FTHiddenPart *")
     ptr("commonparts_container", "FTCommonPartContainer *")

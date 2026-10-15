@@ -244,8 +244,7 @@ FTAttributes dNSamusMain_attr = {
 	(u32*)dNSamusMain_setup_parts, /* setup_parts */
 	(u32*)dNSamusMain_animlock, /* animlock */
 	{ 13, 16, 28, 33, 9 }, /* effect_joint_ids */
-	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, TRUE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dNSamusMain_hiddenparts, /* hiddenparts */
 	&dNSamusMain_commonparts_container, /* commonparts_container */
 	(void *)&dSamusShieldPose_data0, /* dobj_lookup */

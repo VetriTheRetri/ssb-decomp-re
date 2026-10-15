@@ -375,21 +375,32 @@
 
 typedef enum ftCommonCliffStatusKind
 {
-	// Quick (below 100%)
-
-	nFTCommonCliffKindClimbQuick,
-	nFTCommonCliffKindAttackQuick,
-	nFTCommonCliffKindEscapeQuick,
-
-	// Slow (above 100%)
-
-	nFTCommonCliffKindClimbSlow,
-	nFTCommonCliffKindAttackSlow,
-	nFTCommonCliffKindEscapeSlow,
-
-	nFTCommonCliffKindEnumCount
+	nFTCommonCliffStatusKindClimb,
+	nFTCommonCliffStatusKindAttack,
+	nFTCommonCliffStatusKindEscape,
+	nFTCommonCliffStatusKindEnumCount
 
 } ftCommonCliffStatusKind;
+
+typedef enum ftCommonCliffStatus
+{
+	// Quick (below 100%)
+	nFTCommonCliffStatusQuickStart,
+	nFTCommonCliffStatusClimbQuick = nFTCommonCliffStatusQuickStart,
+	nFTCommonCliffStatusAttackQuick,
+	nFTCommonCliffStatusEscapeQuick,
+	nFTCommonCliffStatusQuickEnd = nFTCommonCliffStatusEscapeQuick,
+
+	// Slow (above 100%)
+	nFTCommonCliffStatusSlowStart,
+	nFTCommonCliffStatusClimbSlow = nFTCommonCliffStatusSlowStart,
+	nFTCommonCliffStatusAttackSlow,
+	nFTCommonCliffStatusEscapeSlow,
+	nFTCommonCliffStatusSlowEnd = nFTCommonCliffStatusEscapeSlow,
+
+	nFTCommonCliffStatusEnumCount
+
+} ftCommonCliffStatus;
 
 typedef struct ftCommonDeadStatusVars
 {

@@ -38,10 +38,8 @@ RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 BUILD_OBJ_DIR = os.path.join(PROJECT_DIR, "build", "us", "src", "relocData", ".build")
 
 
-# FTAttributes pointer-field offsets (from fttypes.h layout; `unused_0x2CC`
-# pins the start of the pointer cluster). The "field_type" string is the
-# full type of the field (including the final `*`) so the replacement is a
-# direct cast.
+# FTAttributes pointer-field offsets from fttypes.h layout; final member of `cliff_status_ga` (formerly `unused_0x2CC`) pins the start of the pointer cluster.
+# The "field_type" string is the full type of the field (including the final `*`) so the replacement is a direct cast.
 ATTR_SINGLE_SLOTS = {
     0x29C: ("setup_parts",            "u32*"),
     0x2A0: ("animlock",               "u32*"),

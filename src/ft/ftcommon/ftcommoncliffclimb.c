@@ -15,15 +15,15 @@ void ftCommonCliffQuickProcUpdate(GObj *fighter_gobj)
     {
         switch (fp->status_vars.common.cliffmotion.status_id)
         {
-        case nFTCommonCliffKindClimbQuick:
+        case nFTCommonCliffStatusClimbQuick:
             ftCommonCliffClimbQuick1SetStatus(fighter_gobj);
             break;
 
-        case nFTCommonCliffKindAttackQuick:
+        case nFTCommonCliffStatusAttackQuick:
             ftCommonCliffAttackQuick1SetStatus(fighter_gobj);
             break;
 
-        case nFTCommonCliffKindEscapeQuick:
+        case nFTCommonCliffStatusEscapeQuick:
             ftCommonCliffEscapeQuick1SetStatus(fighter_gobj);
             break;
         }
@@ -39,15 +39,15 @@ void ftCommonCliffSlowProcUpdate(GObj *fighter_gobj)
     {
         switch (fp->status_vars.common.cliffmotion.status_id)
         {
-        case nFTCommonCliffKindClimbSlow:
+        case nFTCommonCliffStatusClimbSlow:
             ftCommonCliffClimbSlow1SetStatus(fighter_gobj);
             break;
 
-        case nFTCommonCliffKindAttackSlow:
+        case nFTCommonCliffStatusAttackSlow:
             ftCommonCliffAttackSlow1SetStatus(fighter_gobj);
             break;
 
-        case nFTCommonCliffKindEscapeSlow:
+        case nFTCommonCliffStatusEscapeSlow:
             ftCommonCliffEscapeSlow1SetStatus(fighter_gobj);
             break;
         }
@@ -55,22 +55,21 @@ void ftCommonCliffSlowProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80144FE8
-void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
+void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_kind)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    s32 status_id;
-    s32 status_queue;
+    s32 status_id, status_speed;
 
     if (fp->percent_damage < FTCOMMON_CLIFF_DAMAGE_HIGH)
     {
-        status_id = nFTCommonStatusCliffQuick, status_queue = nFTCommonCliffKindClimbQuick;
+        status_id = nFTCommonStatusCliffQuick, status_speed = nFTCommonCliffStatusClimbQuick;
     }
-    else status_id = nFTCommonStatusCliffSlow, status_queue = nFTCommonCliffKindClimbSlow;
+    else status_id = nFTCommonStatusCliffSlow, status_speed = nFTCommonCliffStatusClimbSlow;
 
     ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimEventsAll(fighter_gobj);
 
-    fp->status_vars.common.cliffmotion.status_id = status_input + status_queue;
+    fp->status_vars.common.cliffmotion.status_id = status_kind + status_speed;
     fp->status_vars.common.cliffmotion.cliff_id = fp->coll_data.cliff_id;
 
     fp->is_cliff_hold = TRUE;
@@ -91,7 +90,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
         {
             if (fp->status_vars.common.cliffwait.is_allow_interrupt != FALSE)
             {
-                ftCommonCliffQuickOrSlowSetStatus(fighter_gobj, 0);
+                ftCommonCliffQuickOrSlowSetStatus(fighter_gobj, nFTCommonCliffStatusKindClimb);
 
                 return TRUE;
             }

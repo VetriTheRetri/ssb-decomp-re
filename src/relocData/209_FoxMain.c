@@ -345,8 +345,7 @@ FTAttributes dFoxMain_attr = {
 	dFoxMain_setup_parts, /* setup_parts */
 	dFoxMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
-	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	dFoxMain_hiddenparts, /* hiddenparts */
 	&dFoxMain_commonparts_container, /* commonparts_container */
 	(DObjDesc*)dFoxShieldPose_data0, /* dobj_lookup */

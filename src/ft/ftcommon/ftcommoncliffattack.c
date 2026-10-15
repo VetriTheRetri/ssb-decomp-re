@@ -13,7 +13,7 @@ sb32 ftCommonCliffAttackCheckInterruptCommon(GObj *fighter_gobj)
 
     if (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b))
     {
-        ftCommonCliffQuickOrSlowSetStatus(fighter_gobj, nFTCommonCliffKindAttackQuick);
+        ftCommonCliffQuickOrSlowSetStatus(fighter_gobj, nFTCommonCliffStatusKindAttack);
 
         return TRUE;
     }

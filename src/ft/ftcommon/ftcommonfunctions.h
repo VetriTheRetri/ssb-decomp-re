@@ -304,7 +304,7 @@ sb32 ftCommonCliffWaitCheckFall(GObj* fighter_gobj);
 // CliffQuick / CliffSlow / CliffClimb
 void ftCommonCliffQuickProcUpdate(GObj* fighter_gobj);
 void ftCommonCliffSlowProcUpdate(GObj* fighter_gobj);
-void ftCommonCliffQuickOrSlowSetStatus(GObj* fighter_gobj, s32 status_input);
+void ftCommonCliffQuickOrSlowSetStatus(GObj* fighter_gobj, s32 status_kind);
 sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj* fighter_gobj);
 void ftCommonCliffClimbQuick1ProcUpdate(GObj* fighter_gobj);
 void ftCommonCliffClimbSlow1ProcUpdate(GObj* fighter_gobj);

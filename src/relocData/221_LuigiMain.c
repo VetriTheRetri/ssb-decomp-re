@@ -398,8 +398,7 @@ FTAttributes dLuigiMain_attr = {
 	(u32*)dLuigiMain_setup_parts, /* setup_parts */
 	(u32*)dLuigiMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
-	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, TRUE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dLuigiMain_hiddenparts, /* hiddenparts */
 	&dLuigiMain_commonparts_container, /* commonparts_container */
 	(void *)&dMarioShieldPose_data0, /* dobj_lookup */

@@ -155,8 +155,7 @@ FTAttributes dBossMain_attr = {
 	(u32*)dBossMain_setup_parts, /* setup_parts */
 	(u32*)dBossMain_animlock, /* animlock */
 	{ 8, 12, 16, 21, 25 }, /* effect_joint_ids */
-	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dBossMain_hiddenparts, /* hiddenparts */
 	&dBossMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */

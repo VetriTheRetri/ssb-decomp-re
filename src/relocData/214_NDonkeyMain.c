@@ -221,8 +221,7 @@ FTAttributes dNDonkeyMain_attr = {
 	(u32*)dNDonkeyMain_setup_parts, /* setup_parts */
 	(u32*)dNDonkeyMain_animlock, /* animlock */
 	{ 12, 15, 21, 26, 9 }, /* effect_joint_ids */
-	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
-	0, /* unused_0x2CC */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	(FTHiddenPart*)dNDonkeyMain_hiddenparts, /* hiddenparts */
 	&dNDonkeyMain_commonparts_container, /* commonparts_container */
 	(void *)&dDonkeyShieldPose_data0, /* dobj_lookup */

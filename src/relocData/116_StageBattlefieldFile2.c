@@ -348,8 +348,8 @@ MPVertexLinks dStageBattlefieldFile2_data_0x42CC[15] = {
 	{  26,   2 }, {  28,   2 }, {  30,   2 }, {  32,   2 }, {  34,   2 },
 };
 
-/* @ 0x4308, 20 bytes — MPLineInfo[1] (yakumono line groups; compiler
- * pads sizeof to 20 internally to align line_data, no extra PAD needed). */
+/* @ 0x4308, 20 bytes — MPLineInfo[1] (yakumono line groups; sizeof is 18,
+ * the 2 trailing bytes are alignment padding before the next symbol). */
 MPLineInfo dStageBattlefieldFile2_data_0x4308[1] = {
 	{ 1, { {   0,   4 }, {   4,   5 }, {   9,   3 }, {  12,   3 } } },
 };

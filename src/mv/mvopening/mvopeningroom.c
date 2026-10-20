@@ -192,7 +192,7 @@ void mvOpeningRoomMakeSunlight(void)
 	GObj *gobj;
 
 	sMVOpeningRoomSunlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[0], &llMVCommonRoomSunlightDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[0], &llMVCommonRoomSunlightDObjDLLink)), nGCMatrixKindTraRotRpyRSca, 0);
 	gcAddGObjDisplay(gobj, gcDrawDObjDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
@@ -212,7 +212,7 @@ void mvOpeningRoomMakeOutside(void)
 	GObj *gobj;
 
 	sMVOpeningRoomOutsideGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[0], &llMVCommonRoomOutsideDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[0], &llMVCommonRoomOutsideDObjDLLink)), nGCMatrixKindTraRotRpyRSca, 0);
 	gcAddGObjDisplay(gobj, gcDrawDObjDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
@@ -222,7 +222,7 @@ void mvOpeningRoomMakeHaze(void)
 	GObj *gobj;
 
 	sMVOpeningRoomOutsideHazeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[0], &llMVCommonRoomHazeDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[0], &llMVCommonRoomHazeDObjDLLink)), nGCMatrixKindTraRotRpyRSca, 0);
 	gcAddGObjDisplay(gobj, gcDrawDObjDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 

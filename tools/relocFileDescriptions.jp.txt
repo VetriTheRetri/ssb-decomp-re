@@ -3061,7 +3061,7 @@ MObjSub RoomBackground 0x042F8
 DObjDesc RoomBackground 0x07E98
 MatAnimJoint RoomBackground 0x08788
 DObjDesc RoomDesk 0x08DF8
-DisplayList RoomHaze 0x098F8
+DObjDLLink RoomHaze 0x098F8
 DObjDesc RoomBooks 0x0A6F8
 AnimJoint RoomBooks 0x0A7B0
 DObjDesc RoomPencils 0x0AEB8
@@ -3091,8 +3091,8 @@ MatAnimJoint RoomDeskGround 0x225CC
 MObjSub RoomSpotlight 0x22C90
 DisplayList RoomSpotlight 0x22E18
 MatAnimJoint RoomSpotlight 0x22F10
-DisplayList RoomOutside 0x24200
-DisplayList RoomSunlight 0x24708
+DObjDLLink RoomOutside 0x24200
+DObjDLLink RoomSunlight 0x24708
 
 [53]
 Sprite Samus 0x9960

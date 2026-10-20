@@ -3092,7 +3092,7 @@ MObjSub RoomBackground 0x042F8
 DObjDesc RoomBackground 0x07E98
 MatAnimJoint RoomBackground 0x08788
 DObjDesc RoomDesk 0x08DF8
-DisplayList RoomHaze 0x098F8
+DObjDLLink RoomHaze 0x098F8
 DObjDesc RoomBooks 0x0A6F8
 AnimJoint RoomBooks 0x0A7B0
 DObjDesc RoomPencils 0x0AEB8
@@ -3122,8 +3122,8 @@ MatAnimJoint RoomDeskGround 0x225CC
 MObjSub RoomSpotlight 0x22C90
 DisplayList RoomSpotlight 0x22E18
 MatAnimJoint RoomSpotlight 0x22F10
-DisplayList RoomOutside 0x24200
-DisplayList RoomSunlight 0x24708
+DObjDLLink RoomOutside 0x24200
+DObjDLLink RoomSunlight 0x24708
 
 [53]
 Sprite Samus 0x9960
@@ -5164,14 +5164,13 @@ DisplayList Joint_0x04C0 0x4C0
 DObjDesc EntryDokan 0x608
 AnimJoint EntryDokan 0x6C0
 [104]
-DObjDesc Layer0DObj 0x898
-AnimJoint Layer0Anim 0x9D0
-DObjDesc Layer1DObj 0x1D00
-MPGeometryData - 0x2094
-AnimJoint Layer1Anim 0x20B0
-DObjDesc Layer2DObj 0x22D0
-DObjDesc Layer3DObj 0x2810
-AnimJoint Layer3Anim 0x28C0
+DObjDesc Layer0DObj 0x1008
+DObjDesc Layer1DObj 0x1CE0
+MPGeometryData - 0x1F34
+MObjSub Layer2MObj 0x1F50
+DObjDesc Layer2DObj 0x2450
+MatAnimJoint Layer2MatAnim 0x2530
+DObjDesc Layer3DObj 0x2BF8
 
 [105]
 MObjSub Layer1MObj 0x2B48

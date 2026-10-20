@@ -88,7 +88,7 @@ typedef struct SYTaskGfx
     /* 0x80 */ u32 task_id;
     /* 0x84 */ s32 unk_84;
 
-} SYTaskGfx; // size = 0x84
+} SYTaskGfx; // size = 0x88
 
 typedef struct
 {

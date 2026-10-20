@@ -254,11 +254,7 @@ extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x550[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x560[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x568[];
 extern MObjSub *dLinkModel_Joint_0x0040_post_sub_0x570[];
-#if defined(REGION_JP)
-extern u32 dLinkModel_gap_0x40EC_sub_0x1C8[];
-#else
 extern u16 dLinkModel_gap_0x40EC_sub_0x1C8[];
-#endif
 extern u16 dLinkModel_gap_0x7AE0_sub_0x194[];
 extern Gfx dLinkModel_DL_0xAF40[];
 extern u8 dLinkModel_Tex_0xBAA0[];
@@ -291,26 +287,10 @@ extern AObjEvent32 *dLinkModel_gap_0x9DA8_sub_0xCC[];
 extern AObjEvent32 *dLinkModel_gap_0x9DA8_sub_0xD8[];
 extern u32 dLinkModel_gap_0x40EC_sub_0x104[];
 extern u32 dLinkModel_gap_0x40EC_sub_0x130[];
-#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x404[];
-#else
-extern MObjSub dLinkModel_gap_0x40EC_sub_0x404[];
-#endif
-#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x47C[];
-#else
-extern MObjSub dLinkModel_gap_0x40EC_sub_0x47C[];
-#endif
-#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x4F4[];
-#else
-extern MObjSub dLinkModel_gap_0x40EC_sub_0x4F4[];
-#endif
-#if defined(REGION_JP)
 extern MObjSub dLinkModel_gap_0x40EC_sub_0x56C[];
-#else
-extern MObjSub dLinkModel_gap_0x40EC_sub_0x56C[];
-#endif
 extern u32 dLinkModel_gap_0x40EC_sub_0xA4[];
 extern u32 dLinkModel_gap_0x40EC_sub_0xDC[];
 extern u32 dLinkModel_gap_0x7AE0_sub_0x70[];
@@ -329,11 +309,7 @@ extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7DC[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x804[];
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[];
-#if defined(REGION_JP)
-extern Vtx dLinkModel_gap_0x40EC_sub_0x7FC[1];
-#else
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[];
-#endif
 extern MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[];
 /* MObjSub-dispatch table at file 0x0000 (128 bytes, 32 u32 slots).
  * Sparse pointer array — chain-encoded `MObjSub **` pointers to the
@@ -384,73 +360,33 @@ MObjSub **dLinkModel_gap_0x0000[32] = {
  * both versions. */
 
 /* sprites for sub_0x1E8 @ 0x80 (3 entries) */
-#if defined(REGION_JP)
-u8 *dLinkModel_Sprites_0x0080[3] = {
-	(u8 *)dLinkModel_Tex_0xC2B8 + 0x3C0,
-	(u8 *)dLinkModel_Tex_0xBCA8 + 0x398,
-	(u8 *)dLinkModel_Tex_0xB698 + 0x398,
-};
-#else
 u8 *dLinkModel_Sprites_0x0080[3] = {
 	dLinkModel_Tex_0xC6E8,
 	dLinkModel_Tex_0xC0B0,
 	dLinkModel_Tex_0xBAA0,
 };
-#endif
 
 /* sprites for sub_0x260 @ 0x8C (2 entries) */
-#if defined(REGION_JP)
-u8 *dLinkModel_Sprites_0x008C[2] = {
-	(u8 *)dLinkModel_Tex_0xD250 + 0x198,
-	(u8 *)dLinkModel_Tex_0xD148 + 0x98,
-};
-#else
 u8 *dLinkModel_Sprites_0x008C[2] = {
 	dLinkModel_Tex_0xD458,
 	dLinkModel_Tex_0xD250,
 };
-#endif
 
 /* palettes for sub_0x260 @ 0x94 (2 entries) */
-#if defined(REGION_JP)
-u16 *dLinkModel_Palettes_0x0094[2] = {
-	(u16 *)((u8 *)dLinkModel_Tex_0xC2B8 + 0x398),
-	(u16 *)((u8 *)dLinkModel_Tex_0xC2B8 + 0x398),
-};
-#else
 u16 *dLinkModel_Palettes_0x0094[2] = {
 	dLinkModel_Lut_0xC6C0_palette,
 	dLinkModel_Lut_0xC6C0_palette,
 };
-#endif
 
 /* palettes for sub_0x3C8 @ 0x9C (4 entries) */
-#if defined(REGION_JP)
-u16 *dLinkModel_Palettes_0x009C[4] = {
-	(u16 *)((u8 *)dLinkModel_Tex_0xCF18 + 0x40),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCF18 + 0x18),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0x98),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0xC0),
-};
-#else
 u16 *dLinkModel_Palettes_0x009C[4] = {
 	dLinkModel_palette_0xCFC8,
 	dLinkModel_palette_0xCFA0,
 	dLinkModel_palette_0xD0F8,
 	dLinkModel_palette_0xD120,
 };
-#endif
 
 /* palettes for sub_0x440 @ 0xAC (4 entries + NULL terminator) */
-#if defined(REGION_JP)
-u16 *dLinkModel_Palettes_0x00AC[5] = {
-	(u16 *)((u8 *)dLinkModel_Tex_0xCF18 + 0x40),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCF18 + 0x18),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0x98),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0xC0),
-	NULL,
-};
-#else
 u16 *dLinkModel_Palettes_0x00AC[5] = {
 	dLinkModel_palette_0xCFC8,
 	dLinkModel_palette_0xCFA0,
@@ -458,7 +394,6 @@ u16 *dLinkModel_Palettes_0x00AC[5] = {
 	dLinkModel_palette_0xD120,
 	NULL,
 };
-#endif
 
 /* MObjSub @ 0xC0 */
 MObjSub dLinkModel_Joint_0x0040_post_sub_0x80[1] = {
@@ -1040,9 +975,16 @@ Gfx dLinkModel_Joint_0x2508_DisplayList[37] = {
 };
 
 /* DisplayList: Joint_0x2630 @ 0x2630 (504 bytes, 63 cmds) */
+#if defined(REGION_JP)
+/* JP: 65 commands (+2 vs US); every block through the next bracket shifts by the difference. */
+Gfx dLinkModel_Joint_0x2630_DisplayList[65] = {
+	#include <LinkModel/Joint_0x2630.dl.inc.c>
+};
+#else
 Gfx dLinkModel_Joint_0x2630_DisplayList[63] = {
 	#include <LinkModel/Joint_0x2630.dl.inc.c>
 };
+#endif
 
 /* DisplayList: Joint_0x2828 @ 0x2828 (368 bytes, 46 cmds) */
 Gfx dLinkModel_Joint_0x2828_DisplayList[46] = {
@@ -1060,9 +1002,16 @@ Gfx dLinkModel_Joint_0x2B78_DisplayList[34] = {
 };
 
 /* DisplayList: Joint_0x2C88 @ 0x2C88 (384 bytes, 48 cmds) */
+#if defined(REGION_JP)
+/* JP: 44 commands (-4 vs US); every block through the next bracket shifts by the difference. */
+Gfx dLinkModel_Joint_0x2C88_DisplayList[44] = {
+	#include <LinkModel/Joint_0x2C88.dl.inc.c>
+};
+#else
 Gfx dLinkModel_Joint_0x2C88_DisplayList[48] = {
 	#include <LinkModel/Joint_0x2C88.dl.inc.c>
 };
+#endif
 
 /* Absorbed DL: dLinkModel_Joint_0x2E08_DisplayList @ 0x2E08 (232 bytes, 29 cmds) */
 Gfx dLinkModel_Joint_0x2E08_DisplayList[29] = {
@@ -1104,56 +1053,11 @@ Gfx dLinkModel_Joint_0x38E0_DisplayList[32] = {
 	#include <LinkModel/Joint_0x38E0.dl.inc.c>
 };
 
-#if defined(REGION_JP)
-/* DisplayList: Joint_0x39E0 @ 0x39E0 (264 bytes, 33 cmds) */
-Gfx dLinkModel_Joint_0x39E0_DisplayList[31] = {
-	#include <LinkModel/Joint_0x39E0.dl.inc.c>
-};
-
-/* DObjDesc: JointTree @ 0x3AE8 (35 entries) */
-/* JointTree: DObjDesc[33] @ 0x3AD8 (1452 bytes).  Same struct/values
- * as US (the chain rewriter applies JP-specific `dl` chain encodings
- * via .jp.reloc; non-chain fields are identical). */
-DObjDesc dLinkModel_JointTree[] = {
-	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)dLinkModel_Joint_0x1D88_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)dLinkModel_Joint_0x1F40_DisplayList, { 0.0f, 32.691650390625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { 60.0f, 75.308334350585938f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x21E8_DisplayList, { 8.6000000010244548e-05f, -1.9999999949504854e-06f, 0.0f }, { -0.55290400981903076f, -1.5755679607391357f, 0.56199097633361816f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)dLinkModel_Joint_0x2358_DisplayList, { 63.191135406494141f, 0.0f, 8.6000000010244548e-05f }, { 0.0f, 0.0f, -0.013819999992847443f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)dLinkModel_Joint_0x2508_DisplayList, { 56.543998718261719f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)dLinkModel_Joint_0x2630_DisplayList, { 23.999977111816406f, 1.9999999949504854e-06f, 0.0f }, { 1.570796012878418f, 0.0034910000395029783f, 0.017452999949455261f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { -59.999996185302734f, 75.308334350585938f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8 *)dLinkModel_Joint_0x2828_DisplayList + 0x10), { -2.9000000722589903e-05f, 0.0f, 1.4000000192027073e-05f }, { 1.1626830101013184f, 1.5810270309448242f, -5.1122632026672363f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8 *)dLinkModel_Joint_0x2998_DisplayList + 0x10), { 63.57135009765625f, 4.9999998736893758e-06f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8 *)dLinkModel_Joint_0x2B78_DisplayList + 0x10), { 56.061000823974609f, -0.096932999789714813f, -0.024519000202417374f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)0x00000000, { 20.998748779296875f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 8, (void*)0x00000000, { 19.709985733032227f, 201.77963256835938f, -353.64199829101562f }, { 1.5626180171966553f, -0.0040859999135136604f, 1.5543869733810425f }, { 1.0f, 1.0f, 1.0f } },
-	{ 8, (void*)0x00000000, { 19.709985733032227f, 201.77963256835938f, -353.64199829101562f }, { 1.5626180171966553f, -0.0040859999135136604f, 1.5543869733810425f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8 *)dLinkModel_Joint_0x2C88_DisplayList + 0x10), { 20.998748779296875f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { 57.000015258789062f, 108.00914001464844f, -43.957038879394531f }, { 0.0f, 0.0f, -0.51999998092651367f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { -14.430379867553711f, -0.48251199722290039f, -35.877933502197266f }, { 0.0f, 3.1415929794311523f, -0.5f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8 *)dLinkModel_Joint_0x2C88_DisplayList + 0x170), { 0.0f, 90.537185668945312f, -14.139384269714355f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8 *)dLinkModel_Joint_0x2E08_DisplayList + 0xD8), { 1.4000000192027073e-05f, 19.5f, 0.3516240119934082f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8 *)dLinkModel_Joint_0x2EF0_DisplayList + 0x498), { -1.7000000298139639e-05f, 86.811988830566406f, 5.5317649841308594f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 0.9999849796295166f, 0.9999849796295166f } },
-	{ 2, (void*)0x00000000, { 21.0f, -32.335380554199219f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8 *)dLinkModel_Joint_0x3398_DisplayList + 0xF8), { 0.0f, -1.9999999949504854e-06f, -3.9999999899009708e-06f }, { 0.0f, 0.0f, 0.010476999916136265f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8 *)dLinkModel_Joint_0x34A0_DisplayList + 0x108), { 91.703468322753906f, 3.9999999899009708e-06f, 1.9999999949504854e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)0x00000000, { 100.32065582275391f, 1.4249839782714844f, 2.4349501132965088f }, { 0.0f, -9.9999999747524271e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8 *)dLinkModel_Joint_0x35B8_DisplayList + 0xF0), { 3.1999999919207767e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.0928870439529419f, -0.045224998146295547f, 0.030510999262332916f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)0x00000000, { -21.0f, -32.335380554199219f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)((u8 *)dLinkModel_Joint_0x36B8_DisplayList + 0xF8), { 0.0f, 0.0f, -3.9999999899009708e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010591999627649784f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8 *)dLinkModel_Joint_0x37C0_DisplayList + 0x110), { 91.703521728515625f, 4.9999998736893758e-06f, -4.9999998736893758e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.9999999747524271e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8 *)dLinkModel_Joint_0x38E0_DisplayList + 0xF0), { 4.9999998736893758e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.99249100685119629f, 0.28143799304962158f, 0.030757000669836998f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-};
-#else
-/* DisplayList: Joint_0x39E0 @ 0x39E0 (264 bytes, 33 cmds) */
+/* DisplayList: Joint_0x39E0 @ 0x39E0 (264 bytes, 33 cmds; JP same size at -0x10) */
 Gfx dLinkModel_Joint_0x39E0_DisplayList[33] = {
 	#include <LinkModel/Joint_0x39E0.dl.inc.c>
 };
+
 
 /* DObjDesc: JointTree @ 0x3AE8 (35 entries) */
 DObjDesc dLinkModel_JointTree[] = {
@@ -1161,8 +1065,16 @@ DObjDesc dLinkModel_JointTree[] = {
 	{ 1, (void*)dLinkModel_Joint_0x1D88_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dLinkModel_Joint_0x1F40_DisplayList, { 0.0f, 32.691650390625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 60.0f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 4, (void*)dLinkModel_Joint_0x21E8_DisplayList, { 8.600000001024455e-05f, -1.9999999949504854e-06f, 0.0f }, { -0.5529040098190308f, -1.5755679607391357f, 0.5619909763336182f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 4, (void*)dLinkModel_Joint_0x21E8_DisplayList, { 8.600000001024455e-05f, -1.9999999949504854e-06f, 0.0f }, { -0.5539600253105164f, -1.5755679607391357f, 0.5630530118942261f }, { 1.0f, 1.0f, 1.0f } },
+#endif
+#if defined(REGION_JP)
+	{ 5, (void*)dLinkModel_Joint_0x2358_DisplayList, { 63.19113540649414f, 0.0f, 8.600000001024455e-05f }, { 0.0f, 0.0f, -0.013819999992847443f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 5, (void*)dLinkModel_Joint_0x2358_DisplayList, { 63.19113540649414f, 0.0f, 8.600000001024455e-05f }, { 0.0f, 0.0f, -0.013810999691486359f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 6, (void*)dLinkModel_Joint_0x2508_DisplayList, { 56.54399871826172f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 7, (void*)dLinkModel_Joint_0x2630_DisplayList, { 23.999977111816406f, 1.9999999949504854e-06f, 0.0f }, { 1.570796012878418f, 0.0034910000395029783f, 0.01745299994945526f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { -59.999996185302734f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
@@ -1184,48 +1096,30 @@ DObjDesc dLinkModel_JointTree[] = {
 	{ 5, (void*)0x00000000, { 100.3206558227539f, 1.4249839782714844f, 2.434950113296509f }, { 0.0f, -9.999999974752427e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)dLinkModel_Joint_0x36B8_DisplayList, { 3.199999991920777e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.092887043952942f, -0.04522499814629555f, 0.030510999262332916f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 3, (void*)dLinkModel_Joint_0x37C0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010591999627649784f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 3, (void*)dLinkModel_Joint_0x37C0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010595000348985195f }, { 1.0f, 1.0f, 1.0f } },
+#endif
+#if defined(REGION_JP)
+	{ 4, (void*)dLinkModel_Joint_0x38E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 4, (void*)dLinkModel_Joint_0x38E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.01143100019544363f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 6, (void*)dLinkModel_Joint_0x39E0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.030757000669836998f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 6, (void*)dLinkModel_Joint_0x39E0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.03075999952852726f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-#endif
 
-#if defined(REGION_JP)
-/* 16-byte zero pad between JointTree (ends 0x4084) and JointTree_post (0x4094). */
-PAD(16);
-#endif /* REGION_JP */
 
 /* Sparse AObjEvent32 ** dispatch table @ 0x4094 (was JointTree+0x5AC, 84 bytes,
  * 21 slots). Chain pointers thread through slots 4, 5, 7, 12 to the
  * gap_0x40EC_sub_0x228..0x234 master arrays. */
-#if defined(REGION_JP)
-AObjEvent32 **dLinkModel_JointTree_post[21] = {
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x21C,
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x21C[1],
-	NULL,
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x21C[2],
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x21C[3],
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x228,
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x234,
-	NULL,
-};
-#else
 AObjEvent32 **dLinkModel_JointTree_post[21] = {
 	NULL,
 	NULL,
@@ -1249,31 +1143,7 @@ AObjEvent32 **dLinkModel_JointTree_post[21] = {
 	NULL,
 	NULL,
 };
-#endif
 
-#if defined(REGION_JP)
-/* Raw data from file offset 0x40E8 to 0x48F8 (2064 bytes).
- * gap_0x40EC was extended 4 bytes earlier (now starts at 0x40E8) so its
- * 14 u32 slots match the surrounding anim-script-style arrays. The
- * symbol name "gap_0x40EC" is preserved for chain-order stability. */
-/* gap sparse pointer table @ 0x40E8 (was 52-byte u8, now 56-byte 14 u32 slots) */
-/* Primary AObjEvent32 ** dispatch table @ gap_0x40EC (40 bytes, 10 slots).
- * Chain ptrs at slots [0] and [5] thread into the 3-entry sub_0x238
- * sub-table; bytes 0x28..end of the original gap_0x40EC blob were the
- * head of script_0x28 and are now in that script's symbol. */
-AObjEvent32 **dLinkModel_gap_0x40EC[10] = {
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x238,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(AObjEvent32 **)&dLinkModel_gap_0x40EC_sub_0x238[1],
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-};
-#else
 /* Raw data from file offset 0x40E8 to 0x48F8 (2064 bytes).
  * gap_0x40EC was extended 4 bytes earlier (now starts at 0x40E8) so its
  * 14 u32 slots match the surrounding anim-script-style arrays. The
@@ -1295,7 +1165,6 @@ AObjEvent32 **dLinkModel_gap_0x40EC[14] = {
 	NULL,
 	NULL,
 };
-#endif
 
 /* gap sub-block @ 0x4120 (was gap+0x34, 56 bytes) */
 u32 dLinkModel_gap_0x40EC_sub_0x34[14] = {
@@ -1416,35 +1285,6 @@ u32 dLinkModel_gap_0x40EC_sub_0x168[14] = {
 	aobjEvent32End(),
 };
 
-#if defined(REGION_JP)
-/* AObjEvent32 script @ gap_0x40EC+0x194 (40b, spans old sub_* boundary). */
-u32 dLinkModel_gap_0x40EC_sub_0x1A0[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
-	    0x00000000,
-	aobjEvent32SetValAfterBlock(0x200, 1),
-	    0x3F800000,  /* 1f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
-	    0x40000000,  /* 2f */
-	aobjEvent32SetValAfter(0x200, 1),
-	    0x40400000,  /* 3f */
-	aobjEvent32Wait(98),
-	aobjEvent32End(),
-};
-
-/* AObjEvent32 script @ gap_0x40EC+0x1BC (40b, spans old sub_* boundary). */
-u32 dLinkModel_gap_0x40EC_sub_0x1C8[10] = {
-	aobjEvent32SetValAfterBlock(0x200, 0),
-	    0x00000000,
-	aobjEvent32SetValAfterBlock(0x200, 1),
-	    0x3F800000,  /* 1f */
-	aobjEvent32SetValAfterBlock(0x200, 1),
-	    0x40000000,  /* 2f */
-	aobjEvent32SetValAfter(0x200, 1),
-	    0x40400000,  /* 3f */
-	aobjEvent32Wait(98),
-	aobjEvent32End(),
-};
-#else
 /* gap sub-block @ 0x428C (was gap+0x1A0, 40 bytes) */
 u16 dLinkModel_gap_0x40EC_sub_0x1A0[20] = {
 	#include <LinkModel/gap_0x40EC_sub_0x1A0.palette.inc.c>
@@ -1454,7 +1294,6 @@ u16 dLinkModel_gap_0x40EC_sub_0x1A0[20] = {
 u16 dLinkModel_gap_0x40EC_sub_0x1C8[20] = {
 	#include <LinkModel/gap_0x40EC_sub_0x1C8.palette.inc.c>
 };
-#endif
 
 /* gap sub-block @ 0x42DC (was gap+0x1F0, 56 bytes) */
 u32 dLinkModel_gap_0x40EC_sub_0x1F0[14] = {
@@ -1474,151 +1313,52 @@ u32 dLinkModel_gap_0x40EC_sub_0x1F0[14] = {
 	aobjEvent32End(),
 };
 
-#if defined(REGION_JP)
-/* Secondary AObjEvent32 * pointer table @ 0x4304 (16b, 4 entries).
- * Targets are interior offsets of various scripts. Chain rewriter
- * overwrites with runtime pointers. */
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x21C[4] = {
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x1F0,
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x168,
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x34,
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x6C,
-};
-#endif /* REGION_JP */
 
 /* gap sub-block @ 0x4314 (was gap+0x228, 4 bytes) */
-#if defined(REGION_JP)
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x228[1] = {
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0xDC,
-};
-#else
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x228[1] = {
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x1F0,
 };
-#endif
 
 /* gap sub-block @ 0x4318 (was gap+0x22C, 4 bytes) */
-#if defined(REGION_JP)
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x22C[1] = {
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x104,
-};
-#else
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x22C[1] = {
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x168,
 };
-#endif
 
 /* gap sub-block @ 0x431C (was gap+0x230, 4 bytes) */
-#if defined(REGION_JP)
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x230[1] = {
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x130,
-};
-#else
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x230[1] = {
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x34,
 };
-#endif
 
 /* gap sub-block @ 0x4320 (was gap+0x234, 4 bytes) */
-#if defined(REGION_JP)
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[1] = {
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0xA4,
-};
-#else
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x234[1] = {
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x6C,
 };
-#endif
 
 /* gap sub-block @ 0x4324 (was gap+0x238, 12 bytes) */
-#if defined(REGION_JP)
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x238[3] = {
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x1A0,
-	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x1C8,
-	NULL,
-};
-#else
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x238[3] = {
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0xDC,
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x104,
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0x130,
 };
-#endif
 
 /* gap sub-block @ 0x4330 (was gap+0x244, 4 bytes) */
-#if defined(REGION_JP)
-AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x244[1] = {
-	NULL,
-};
-#else
 AObjEvent32 *dLinkModel_gap_0x40EC_sub_0x244[1] = {
 	(AObjEvent32 *)dLinkModel_gap_0x40EC_sub_0xA4,
 };
-#endif
 
 /* gap sub-block @ 0x4334 (was gap+0x248, 4 bytes) */
-#if defined(REGION_JP)
-u16 *dLinkModel_gap_0x40EC_sub_0x248[1] = {
-	(u16 *)dLinkModel_gap_0x40EC_sub_0x7B4,
-};
-#else
 u16 *dLinkModel_gap_0x40EC_sub_0x248[1] = {
 	(u16 *)dLinkModel_gap_0x40EC_sub_0x1A0,
 };
-#endif
 
 /* gap sub-block @ 0x4338 (was gap+0x24C, 8 bytes) — chain marker
  * pointing at the palette frames at gap_0x40EC_sub_0x1C8; terminator
  * NULL. */
-#if defined(REGION_JP)
-u16 *dLinkModel_gap_0x40EC_sub_0x24C[2] = {
-	(u16 *)((u8 *)dLinkModel_gap_0x40EC_sub_0x7B4 + 0x8),
-	NULL,
-};
-#else
 u16 *dLinkModel_gap_0x40EC_sub_0x24C[2] = {
 	dLinkModel_gap_0x40EC_sub_0x1C8,
 	NULL,
 };
-#endif
 
-#if defined(REGION_JP)
-/* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
-MObjSub **dLinkModel_gap_0x40EC_sub_0x254[32] = {
-	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7C4,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7CC,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7D4,
-	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7E4,
-	NULL,
-	(MObjSub **)((u8 *)dLinkModel_gap_0x40EC_sub_0x7E4 + 0x8),
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(MObjSub **)dLinkModel_gap_0x40EC_sub_0x7F4,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	(MObjSub **)((u8 *)dLinkModel_Tex_0xC2B8 + 0x3C0),
-	(MObjSub **)((u8 *)dLinkModel_Tex_0xBCA8 + 0x398),
-	(MObjSub **)((u8 *)dLinkModel_Tex_0xB698 + 0x398),
-	(MObjSub **)((u8 *)dLinkModel_Tex_0xD250 + 0x198),
-};
-#else
 /* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
 MObjSub **dLinkModel_gap_0x40EC_sub_0x254[32] = {
 	NULL,
@@ -1654,67 +1394,34 @@ MObjSub **dLinkModel_gap_0x40EC_sub_0x254[32] = {
 	NULL,
 	NULL,
 };
-#endif
 
 /* u32 pointer array @ 0x43C0 (3 entries) */
-#if defined(REGION_JP)
-u8 *dLinkModel_gap_0x40EC_sub_0x2D4[3] = {
-	(u8 *)dLinkModel_Tex_0xD148 + 0x98,
-	(u8 *)dLinkModel_Tex_0xC2B8 + 0x398,
-	(u8 *)dLinkModel_Tex_0xC2B8 + 0x398,
-};
-#else
 u8 *dLinkModel_gap_0x40EC_sub_0x2D4[3] = {
 	dLinkModel_Tex_0xC6E8,
 	dLinkModel_Tex_0xC0B0,
 	dLinkModel_Tex_0xBAA0,
 };
-#endif
 
 /* u32 pointer array @ 0x43CC (2 entries) */
-#if defined(REGION_JP)
-u8 *dLinkModel_gap_0x40EC_sub_0x2E0[2] = {
-	(u8 *)dLinkModel_Tex_0xCF18 + 0x40,
-	(u8 *)dLinkModel_Tex_0xCF18 + 0x18,
-};
-#else
 u8 *dLinkModel_gap_0x40EC_sub_0x2E0[2] = {
 	dLinkModel_Tex_0xD458,
 	dLinkModel_Tex_0xD250,
 };
-#endif
 
 /* u32 pointer array @ 0x43D4 (2 entries) */
-#if defined(REGION_JP)
-u16 *dLinkModel_gap_0x40EC_sub_0x2E8[2] = {
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0x98),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0xC0),
-};
-#else
 u16 *dLinkModel_gap_0x40EC_sub_0x2E8[2] = {
 	(u16 *)dLinkModel_Lut_0xC6C0_palette,
 	(u16 *)dLinkModel_Lut_0xC6C0_palette,
 };
-#endif
 
 /* u32 pointer array @ 0x43DC (4 entries) */
-#if defined(REGION_JP)
-u16 *dLinkModel_gap_0x40EC_sub_0x2F0[4] = {
-	(u16 *)((u8 *)dLinkModel_Tex_0xCF18 + 0x40),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCF18 + 0x18),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0x98),
-	(u16 *)((u8 *)dLinkModel_Tex_0xCFF0 + 0xC0),
-};
-#else
 u16 *dLinkModel_gap_0x40EC_sub_0x2F0[4] = {
 	(u16 *)dLinkModel_palette_0xCFC8,
 	(u16 *)dLinkModel_palette_0xCFA0,
 	(u16 *)dLinkModel_palette_0xD0F8,
 	(u16 *)dLinkModel_palette_0xD120,
 };
-#endif
 
-#if defined(REGION_US)
 /* u32 pointer array @ 0x43EC (5 entries) */
 u16 *dLinkModel_gap_0x40EC_sub_0x300[4] = {
 	(u16 *)dLinkModel_palette_0xCFC8,
@@ -1722,291 +1429,9 @@ u16 *dLinkModel_gap_0x40EC_sub_0x300[4] = {
 	(u16 *)dLinkModel_palette_0xD0F8,
 	(u16 *)dLinkModel_palette_0xD120,
 };
-#endif /* !REGION_JP */
 
 PAD(4); /* trailing NULL slot of the palette pointer table */
 
-#if defined(REGION_JP)
-/* MObjSub @ 0x4400 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x314[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x0000, 0x0010, 0x0010,
-		0,
-		0.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		NULL,
-		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0010, 0x0010, 0x0010,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00022205,
-		{{0x00, 0x00, 0x00, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x4478 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x38C[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x0000, 0x0010, 0x0010,
-		0,
-		0.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		NULL,
-		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0010, 0x0010, 0x0010,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00022205,
-		{{0x00, 0x00, 0x00, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x44F0 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x404[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x000C, 0x0010, 0x0010,
-		0,
-		0.010633f, -0.407898f,
-		1.543634f, 1.700495f,
-		0.010633f, 1.543634f,
-		NULL,
-		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0010, 0x0010, 0x0010,
-		0.010633f, -0.407898f,
-		0.010633f, 0.0f,
-		0x00022205,
-		{{0x00, 0x00, 0x00, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x4568 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x47C[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		(void **)&dLinkModel_gap_0x40EC_sub_0x254[28],
-		0x004D, 0x0005, 0x0040, 0x0020,
-		0,
-		0.065241f, 0.083571f,
-		0.869519f, 0.412059f,
-		0.065241f, 0.869519f,
-		NULL,
-		0x0001, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0020,
-		0x0020, 0x0040, 0x0020,
-		0.065241f, 0.083571f,
-		0.065241f, 0.0f,
-		0x00022205,
-		{{0xFF, 0xFF, 0xFF, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0xFF, 0xFF, 0xFF, 0x00}},
-		{{0x80, 0x80, 0x80, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x45E0 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x4F4[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		(void **)&dLinkModel_gap_0x40EC_sub_0x254[31],
-		0x0085, 0x000B, 0x0020, 0x0020,
-		0,
-		0.336602f, 0.652562f,
-		0.326796f, 0.238876f,
-		0.336602f, 0.326796f,
-		(void **)&dLinkModel_gap_0x40EC_sub_0x2D4[1],
-		0x0005, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0020,
-		0x0020, 0x0020, 0x0020,
-		0.336602f, 0.652562f,
-		0.336602f, 0.0f,
-		0x00022205,
-		{{0xFF, 0xFF, 0xFF, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0xFF, 0xFF, 0xFF, 0x00}},
-		{{0x80, 0x80, 0x80, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x4658 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x56C[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x000F, 0x0010, 0x0010,
-		0,
-		-0.88675f, -0.304372f,
-		2.0823f, 1.269544f,
-		-0.88675f, 2.0823f,
-		NULL,
-		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0010, 0x0010, 0x0010,
-		-0.88675f, -0.304372f,
-		-0.88675f, 0.0f,
-		0x00022205,
-		{{0x00, 0x00, 0x00, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x46D0 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x5E4[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0023, 0x0000, 0x0020, 0x0020,
-		0,
-		0.0f, 0.0492f,
-		1.0f, 0.9016f,
-		0.0f, 1.0f,
-		NULL,
-		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0020, 0x0020, 0x0020,
-		0.0f, 0.0492f,
-		0.0f, 0.0f,
-		0x00022205,
-		{{0x00, 0x00, 0x00, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x4748 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x65C[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x0000, 0x0020, 0x0020,
-		0,
-		0.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		(void **)dLinkModel_gap_0x40EC_sub_0x2E0,
-		0x0004, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0020, 0x0020, 0x0020,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00022205,
-		{{0xFF, 0xFF, 0xFF, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0xFF, 0xFF, 0xFF, 0x00}},
-		{{0x4C, 0x4C, 0x4C, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x47C0 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x6D4[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x0000, 0x0020, 0x0020,
-		0,
-		0.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f,
-		(void **)dLinkModel_gap_0x40EC_sub_0x2F0,
-		0x0004, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0010,
-		0x0020, 0x0020, 0x0020,
-		0.0f, 0.0f,
-		0.0f, 0.0f,
-		0x00022205,
-		{{0xFF, 0xFF, 0xFF, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0xFF, 0xFF, 0xFF, 0x00}},
-		{{0x4C, 0x4C, 0x4C, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-
-/* MObjSub @ 0x4838 */
-MObjSub dLinkModel_gap_0x40EC_sub_0x74C[1] = {
-	{
-		0,
-		G_IM_FMT_CI, G_IM_SIZ_16b,
-		NULL,
-		0x0020, 0x001C, 0x0040, 0x0020,
-		0,
-		-0.42718f, 0.031513f,
-		1.854359f, 1.024974f,
-		-0.42718f, 1.854359f,
-		NULL,
-		0x3000, G_IM_FMT_CI, G_IM_SIZ_4b, 0x0020,
-		0x0020, 0x0040, 0x0020,
-		-0.42718f, 0.031513f,
-		-0.42718f, 0.0f,
-		0x00022205,
-		{{0x00, 0x00, 0x00, 0xFF}},
-		0x00, 0x00, {0x00, 0x00},
-		{{0x00, 0x00, 0x00, 0xFF}},
-		{{0x00, 0x00, 0x00, 0x08}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		{{0x00, 0x33, 0x66, 0x00}},
-		0, 0,
-		0, 0,
-	},
-};
-#else
 /* MObjSub @ 0x4400 */
 MObjSub dLinkModel_gap_0x40EC_sub_0x314[1] = {
 	{
@@ -2306,124 +1731,57 @@ MObjSub dLinkModel_gap_0x40EC_sub_0x74C[1] = {
 		0, 0,
 	}
 };
-#endif
 
-#if defined(REGION_JP)
-/* MObjSub * pointer pairs @ 0x48A0 (16 bytes). Two chain ptrs each
- * followed by NULL — fills the gap between the last MObjSub (ends
- * 0x48A0) and the trailing sub_0x7C4 pointer cluster at 0x48B0. */
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7B4[4] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x74C,
-	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x5E4,
-	NULL,
-};
-#endif /* REGION_JP */
 
 /* gap sub-block @ 0x48B0 (was gap+0x7C4, 8 bytes) */
-#if defined(REGION_JP)
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[2] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x314,
-	NULL,
-};
-#else
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7C4[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x74C,
 	NULL,
 };
-#endif
 
 /* gap sub-block @ 0x48B8 (was gap+0x7CC, 8 bytes) */
-#if defined(REGION_JP)
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[2] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x38C,
-	NULL,
-};
-#else
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7CC[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x5E4,
 	NULL,
 };
-#endif
 
 /* gap sub-block @ 0x48C0 (was gap+0x7D4, 8 bytes) */
-#if defined(REGION_JP)
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[2] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x47C,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x4F4,
-};
-#else
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7D4[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x314,
 	NULL,
 };
-#endif
 
 /* gap sub-block @ 0x48C8 (was gap+0x7DC, 8 bytes) */
-#if defined(REGION_JP)
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7DC[2] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x56C,
-	NULL,
-};
-#else
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7DC[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x38C,
 	NULL,
 };
-#endif
 
 /* gap sub-block @ 0x48D0 (was gap+0x7E4, 16 bytes) */
-#if defined(REGION_JP)
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7E4[4] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x404,
-	NULL,
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x65C,
-	NULL,
-};
-#else
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7E4[4] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x47C,
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x4F4,
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x56C,
 	NULL,
 };
-#endif
 
 /* gap sub-block @ 0x48E0 (was gap+0x7F4, 8 bytes) */
-#if defined(REGION_JP)
-MObjSub *dLinkModel_gap_0x40EC_sub_0x7F4[2] = {
-	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x6D4,
-	NULL,
-};
-#else
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7F4[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x404,
 	NULL,
 };
-#endif
 
-#if defined(REGION_JP)
-/* Single Vtx @ 0x48E8 (was split into sub_0x7FC + sub_0x804). Loaded by
- * gsSPVertex from Joint_0x5B68_DisplayList+0x88; the 8-vtx load continues
- * into the adjacent Vtx_0x48F8_Vtx array. */
-Vtx dLinkModel_gap_0x40EC_sub_0x7FC[1] = {
-	#include <LinkModel/gap_0x40EC_sub_0x7FC.vtx.inc.c>
-};
-#else
 /* gap sub-block @ 0x48E8 (was gap+0x7FC, 8 bytes) */
 MObjSub *dLinkModel_gap_0x40EC_sub_0x7FC[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x65C,
 	NULL,
 };
-#endif
 
-#if defined(REGION_US)
 /* gap sub-block @ 0x48F0 (was gap+0x804, 8 bytes) */
 MObjSub *dLinkModel_gap_0x40EC_sub_0x804[2] = {
 	(MObjSub *)dLinkModel_gap_0x40EC_sub_0x6D4,
 	NULL,
 };
-#endif /* !REGION_JP */
 
 /* Vtx: Vtx_0x48F8 @ 0x48F8 (8 vertices) */
 Vtx dLinkModel_Vtx_0x48F8_Vtx[8] = {
@@ -2651,9 +2009,16 @@ Gfx dLinkModel_Joint_0x6250_DisplayList[36] = {
 };
 
 /* DisplayList: Joint_0x6370 @ 0x6370 (480 bytes, 60 cmds) */
+#if defined(REGION_JP)
+/* JP: 62 commands (+2 vs US); every block through the next bracket shifts by the difference. */
+Gfx dLinkModel_Joint_0x6370_DisplayList[62] = {
+	#include <LinkModel/Joint_0x6370.dl.inc.c>
+};
+#else
 Gfx dLinkModel_Joint_0x6370_DisplayList[60] = {
 	#include <LinkModel/Joint_0x6370.dl.inc.c>
 };
+#endif
 
 /* DisplayList: Joint_0x6550 @ 0x6550 (376 bytes, 47 cmds) */
 Gfx dLinkModel_Joint_0x6550_DisplayList[47] = {
@@ -2715,44 +2080,6 @@ Gfx dLinkModel_Joint_0x73D0_DisplayList[28] = {
 	#include <LinkModel/Joint_0x73D0.dl.inc.c>
 };
 
-#if defined(REGION_JP)
-/* DObjDesc: JointTree_0x74B0 @ 0x74B0 (36 entries) */
-DObjDesc dLinkModel_JointTree_0x74B0[] = {
-	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8 *)dLinkModel_Vtx_0x5B28_Vtx + 0x30), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)((u8 *)dLinkModel_Joint_0x5B68_DisplayList + 0x190), { 0.0f, 32.691650390625f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { 59.999996185302734f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)((u8 *)dLinkModel_Joint_0x5D08_DisplayList + 0x260), { 8.600000001024455e-05f, 2.9000000722589903e-05f, -3.999999989900971e-06f }, { -0.5529909729957581f, -1.5755549669265747f, 0.5621039867401123f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)((u8 *)dLinkModel_Joint_0x5F78_DisplayList + 0x160), { 63.19112014770508f, 0.0f, 0.0f }, { 0.0f, 0.0f, -0.0138330003246665f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)((u8 *)dLinkModel_Joint_0x60E8_DisplayList + 0x158), { 56.54338455200195f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)((u8 *)dLinkModel_Joint_0x6250_DisplayList + 0x110), { 24.00067901611328f, 0.0007130000158213079f, 0.0009730000165291131f }, { 1.570796012878418f, 0.0034910000395029783f, 0.01745299994945526f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { -60.00000762939453f, 75.30833435058594f, -14.999994277954102f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x6550_DisplayList, { 2.9000000722589903e-05f, -1.4000000192027073e-05f, 2.099999983329326e-05f }, { 1.161007046699524f, 1.5810149908065796f, 1.1703959703445435f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)dLinkModel_Joint_0x66C8_DisplayList, { 63.57130813598633f, 0.0f, -2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)dLinkModel_Joint_0x6840_DisplayList, { 56.0606575012207f, -0.09752299636602402f, -0.024605000391602516f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 7, (void*)0x00000000, { 20.99929428100586f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 0.9999989867210388f, 0.9999989867210388f, 0.9999989867210388f } },
-	{ 8, (void*)0x00000000, { 18.8219051361084f, 201.90914916992188f, -353.6216125488281f }, { 1.5614269971847534f, -0.003831000067293644f, 1.5614240169525146f }, { 1.0000009536743164f, 1.0000009536743164f, 1.0000009536743164f } },
-	{ 8, (void*)0x00000000, { 18.8219051361084f, 201.90914916992188f, -353.6216125488281f }, { 1.5614269971847534f, -0.003831000067293644f, 1.5614240169525146f }, { 1.0000009536743164f, 1.0000009536743164f, 1.0000009536743164f } },
-	{ 7, (void*)0x00000000, { 20.999279022216797f, 0.0f, 3.0f }, { 3.1415929794311523f, 0.0f, -1.570796012878418f }, { 0.9999989867210388f, 0.9999989867210388f, 0.9999989867210388f } },
-	{ 3, (void*)0x00000000, { 57.00001525878906f, 108.00914001464844f, -43.95703887939453f }, { 0.0f, 0.0f, -0.5199999809265137f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)0x00000000, { -14.430379867553711f, -0.4825119972229004f, -35.877933502197266f }, { 0.0f, 3.1415929794311523f, -0.5f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)dLinkModel_Joint_0x6950_DisplayList, { 0.0f, 90.53718566894531f, -14.139384269714355f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x6A30_DisplayList, { 1.4000000192027073e-05f, 19.50007438659668f, 0.3515619933605194f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)dLinkModel_Joint_0x6E08_DisplayList, { -1.700000029813964e-05f, 86.81250762939453f, 5.531731128692627f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 0.9999859929084778f, 0.9999859929084778f } },
-	{ 2, (void*)0x00000000, { 21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)dLinkModel_Joint_0x6EF0_DisplayList, { 0.0f, -1.9999999949504854e-06f, -3.999999989900971e-06f }, { 0.20031699538230896f, 0.001142999972216785f, 0.010591999627649784f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x7000_DisplayList, { 91.7034683227539f, 3.999999989900971e-06f, 1.9999999949504854e-06f }, { 0.0f, 0.0f, 0.011435999535024166f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)0x00000000, { 100.3206558227539f, 1.4249839782714844f, 2.434950113296509f }, { 0.0f, -9.999999974752427e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)dLinkModel_Joint_0x70F0_DisplayList, { 3.199999991920777e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.0903019905090332f, -0.24377299845218658f, 0.030633000656962395f }, { 1.0f, 1.0f, 1.0f } },
-	{ 2, (void*)0x00000000, { -21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
-	{ 3, (void*)dLinkModel_Joint_0x71D0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010595000348985195f }, { 1.0f, 1.0f, 1.0f } },
-	{ 4, (void*)dLinkModel_Joint_0x72E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.01143100019544363f }, { 1.0f, 1.0f, 1.0f } },
-	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
-	{ 6, (void*)dLinkModel_Joint_0x73D0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.03075999952852726f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-};
-#else
 /* DObjDesc: JointTree_0x74B0 @ 0x74B0 (36 entries) */
 DObjDesc dLinkModel_JointTree_0x74B0[] = {
 	{ 0, (void*)0x00000000, { 0.0f, 249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -2782,14 +2109,25 @@ DObjDesc dLinkModel_JointTree_0x74B0[] = {
 	{ 5, (void*)0x00000000, { 100.3206558227539f, 1.4249839782714844f, 2.434950113296509f }, { 0.0f, -9.999999974752427e-07f, -1.6034049987792969f }, { 1.0f, 1.0f, 1.0f } },
 	{ 6, (void*)dLinkModel_Joint_0x70F0_DisplayList, { 3.199999991920777e-05f, 1.9999999949504854e-06f, 1.9999999949504854e-06f }, { 1.0903019905090332f, -0.24377299845218658f, 0.030633000656962395f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { -21.0f, -32.33538055419922f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 3, (void*)dLinkModel_Joint_0x71D0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.001142999972216785f, 0.010595000348985195f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 3, (void*)dLinkModel_Joint_0x71D0_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { -0.20031100511550903f, -0.0011449999874457717f, 0.010587000288069248f }, { 1.0f, 1.0f, 1.0f } },
+#endif
+#if defined(REGION_JP)
+	{ 4, (void*)dLinkModel_Joint_0x72E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.01143100019544363f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 4, (void*)dLinkModel_Joint_0x72E0_DisplayList, { 91.70352172851562f, 4.999999873689376e-06f, -4.999999873689376e-06f }, { 0.0f, 0.0f, 0.011446000076830387f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 5, (void*)0x00000000, { 100.14381408691406f, 1.2569559812545776f, 2.4349451065063477f }, { 0.0f, 9.999999974752427e-07f, -1.6034159660339355f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 6, (void*)dLinkModel_Joint_0x73D0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.03075999952852726f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 6, (void*)dLinkModel_Joint_0x73D0_DisplayList, { 4.999999873689376e-06f, -1.4000000192027073e-05f, 0.0f }, { -0.9924910068511963f, 0.2814379930496216f, 0.030751999467611313f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
-#endif
 
 /* Sparse AObjEvent32 ** dispatch table @ 0x7A5C (was JointTree_0x74B0+0x5AC,
  * 132 bytes, 33 slots). Chain pointers thread through slots 2, 3, 5, 10,
@@ -3104,32 +2442,17 @@ MObjSub **dLinkModel_gap_0x8110_sub_0x270_post[5] = {
 };
 
 /* u32 pointer array @ 0x84CC (3 entries) */
-#if defined(REGION_JP)
-u8 *dLinkModel_gap_0x8110_sub_0x3BC[3] = {
-	(u8 *)dLinkModel_Tex_0xC0B0 + 0x198,
-	(u8 *)dLinkModel_Tex_0xBAA0 + 0x198,
-	(u8 *)dLinkModel_Tex_0xB610 + 0x18,
-};
-#else
 u8 *dLinkModel_gap_0x8110_sub_0x3BC[3] = {
 	dLinkModel_Tex_0xC2B8,
 	dLinkModel_Tex_0xBCA8,
 	dLinkModel_Tex_0xB698,
 };
-#endif
 
 /* u32 pointer array @ 0x84D8 (2 entries) */
-#if defined(REGION_JP)
-u8 *dLinkModel_gap_0x8110_sub_0x3C8[2] = {
-	(u8 *)dLinkModel_Tex_0xD250 + 0x198,
-	(u8 *)dLinkModel_Tex_0xD148 + 0x98,
-};
-#else
 u8 *dLinkModel_gap_0x8110_sub_0x3C8[2] = {
 	dLinkModel_Tex_0xD458,
 	dLinkModel_Tex_0xD250,
 };
-#endif
 
 /* MObjSub @ 0x84E0 */
 MObjSub dLinkModel_gap_0x8110_sub_0x3D0[1] = {
@@ -3652,22 +2975,22 @@ Gfx dLinkModel_gap_0x9DA8_sub_0x1378[11] = {
 /* Raw tail after DL @ 0xB178 (16 bytes, all-zero pad) */
 PAD(16);
 
+/* JP moves this palette + texture pair to the tail of the texture area (after
+ * dLinkModel_Tex_0xE338); every texture in between sits 0x70 bytes earlier there. */
+#if defined(REGION_US)
 /* Palette: Lut_0xB188 @ 0xB188 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB188_palette[16] = {
 	#include <LinkModel/Lut_0xB188.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xB1A8[8] = { 0x00, 0x00, 0x00, 0x26, 0x88, 0x00, 0x00, 0x00 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xB1B0 (72 bytes) */
 /* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xB188_palette */
 u8 dLinkModel_Tex_0xB1B0[72] = {
 	#include <LinkModel/Tex_0xB1B0.tex.inc.c>
 };
+#endif
 
 /* Texture data @ 0xB1F8 (136 bytes) */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB280_palette */
@@ -3675,23 +2998,14 @@ u8 dLinkModel_Tex_0xB1F8[128] = {
 	#include <LinkModel/Tex_0xB1F8.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xB280_palette with extra texture data. */
-u8 dLinkModel_Lut_0xB280_palette_jp_pad[8] = { 0x00, 0x00, 0x00, 0x0D, 0xD3, 0x36, 0x77, 0x76 };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xB280 @ 0xB280 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB280_palette[16] = {
 	#include <LinkModel/Lut_0xB280.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xB2A0[8] = { 0x77, 0x63, 0x20, 0x00, 0x00, 0x07, 0x52, 0x00 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xB2A8 (392 bytes) */
 /* @tex fmt=CI4 dim=32x24 lut=dLinkModel_Lut_0xB280_palette */
@@ -3705,23 +3019,14 @@ u8 dLinkModel_Tex_0xB430[128] = {
 	#include <LinkModel/Tex_0xB430.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xB4B8_palette with extra texture data. */
-u8 dLinkModel_Lut_0xB4B8_palette_jp_pad[8] = { 0x66, 0x69, 0x91, 0x11, 0x11, 0x16, 0x66, 0x66 };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xB4B8 @ 0xB4B8 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB4B8_palette[16] = {
 	#include <LinkModel/Lut_0xB4B8.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xB4D8[8] = { 0xA3, 0x77, 0x66, 0x66, 0x66, 0x7A, 0x77, 0x77 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xB4E0 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xB4B8_palette */
@@ -3729,23 +3034,14 @@ u8 dLinkModel_Tex_0xB4E0[256] = {
 	#include <LinkModel/Tex_0xB4E0.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xB5E8_palette with extra texture data. */
-u8 dLinkModel_Lut_0xB5E8_palette_jp_pad[8] = { 0xDD, 0x25, 0x77, 0xA5, 0xAA, 0xA5, 0x2D, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xB5E8 @ 0xB5E8 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xB5E8_palette[16] = {
 	#include <LinkModel/Lut_0xB5E8.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xB608[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0x22, 0xA5, 0x2D, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xB610 (4272 bytes) — split into 13 sub-frames at offsets
  * referenced by sprite pointer arrays, palette pointers (JP only at +0x1040),
@@ -3757,66 +3053,42 @@ u8 dLinkModel_Tex_0xB610[128] = {
 	#include <LinkModel/Tex_0xB610.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_B610_80_jp[8] = { 0x11, 0x11, 0x11, 0x7A, 0x22, 0x52, 0x2D, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=64x32 */
 u8 dLinkModel_Tex_0xB698[1024] = {
 	#include <LinkModel/Tex_0xB698.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_B698_400_jp[8] = { 0x22, 0x22, 0x22, 0x5A, 0x7A, 0x55, 0x2D, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=32x32 */
 u8 dLinkModel_Tex_0xBAA0[512] = {
 	#include <LinkModel/Tex_0xBAA0.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_BAA0_200_jp[8] = { 0xDD, 0xDD, 0xD7, 0x11, 0x75, 0x52, 0x22, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=64x32 */
 u8 dLinkModel_Tex_0xBCA8[1024] = {
 	#include <LinkModel/Tex_0xBCA8.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_BCA8_400_jp[8] = { 0x11, 0x11, 0x11, 0x75, 0x55, 0x55, 0x2D, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=32x32 */
 u8 dLinkModel_Tex_0xC0B0[512] = {
 	#include <LinkModel/Tex_0xC0B0.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_C0B0_200_jp[8] = { 0x88, 0x88, 0x27, 0x7A, 0x22, 0x52, 0x2D, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=64x32 */
 u8 dLinkModel_Tex_0xC2B8[1024] = {
 	#include <LinkModel/Tex_0xC2B8.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_C2B8_400_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xD2, 0x7B, 0x88 };
-#else
 PAD(8);
-#endif
 
 /* JP-side palette frame at file 0xC650 (40 bytes = 20 colors), referenced
  * via Palettes_0x0094 and several DL bindings. */
@@ -3826,13 +3098,8 @@ u16 dLinkModel_Lut_0xC6C0_palette[16] = {
 	#include <LinkModel/Lut_0xC6C0.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-/* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
-static u8 dLinkModel_gap_0xC6E0_jp_pad[8] = { 0x99, 0x99, 0xE8, 0x8C, 0x7A, 0x55, 0x2D, 0xDD };
-#else
 /* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
 PAD(8);
-#endif
 
 /* gap sub-block @ 0xC6E8 (was gap+0x8, 520 bytes) */
 /* @tex fmt=CI4 dim=32x32 */
@@ -3846,12 +3113,7 @@ u8 dLinkModel_Tex_0xC8F0[128] = {
 	#include <LinkModel/Tex_0xC8F0.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xC978 with extra texture data. */
-u8 dLinkModel_Tex_0xC978_jp_pad[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xB4B8_palette */
 u8 dLinkModel_Tex_0xC978[128] = {
@@ -3871,11 +3133,7 @@ u16 dLinkModel_Lut_0xCA48_palette[16] = {
 	#include <LinkModel/Lut_0xCA48.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xCA68[8] = { 0x55, 0x5A, 0xC5, 0xAC, 0x15, 0xA1, 0xC5, 0xA5 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xCA70 (136 bytes) */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xCA48_palette */
@@ -3883,60 +3141,35 @@ u8 dLinkModel_Tex_0xCA70[128] = {
 	#include <LinkModel/Tex_0xCA70.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xCAF8 with extra texture data. */
-u8 dLinkModel_Tex_0xCAF8_jp_pad[8] = { 0xEE, 0xEE, 0xEE, 0xDE, 0xEE, 0xEE, 0xEE, 0xEE };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCAF8[128] = {
 	#include <LinkModel/Tex_0xCAF8.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xCB80 with extra texture data. */
-u8 dLinkModel_Tex_0xCB80_jp_pad[8] = { 0xBA, 0x86, 0x44, 0x43, 0x34, 0x8C, 0xDD, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCB80[256] = {
 	#include <LinkModel/Tex_0xCB80.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xCC88 with extra texture data. */
-u8 dLinkModel_Tex_0xCC88_jp_pad[8] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xEF, 0xFF, 0xFF };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCC88[128] = {
 	#include <LinkModel/Tex_0xCC88.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xCD10 with extra texture data. */
-u8 dLinkModel_Tex_0xCD10_jp_pad[8] = { 0xFF, 0xD8, 0xAC, 0xFF, 0xFF, 0xFC, 0xBA, 0x8D };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xCD10[512] = {
 	#include <LinkModel/Tex_0xCD10.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xCF18 with extra texture data. */
-u8 dLinkModel_Tex_0xCF18_jp_pad[8] = { 0xBB, 0x66, 0xBB, 0xBB, 0x6B, 0xBB, 0x69, 0x96 };
-#else
 PAD(8);
-#endif
 
 /* Texture: 0xCF18 (CI4) — 24 bytes texture, 88 bytes trailing palette frames
  * (reachable via JP chain pointers as palette data). */
@@ -3945,31 +3178,19 @@ u8 dLinkModel_Tex_0xCF18[128] = {
 	#include <LinkModel/Tex_0xCF18.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_CF18_80_jp[8] = { 0x44, 0x46, 0x66, 0x77, 0x76, 0x8C, 0xDB, 0x86 };
-#else
 PAD(8);
-#endif
 
 u16 dLinkModel_palette_0xCFA0[16] = {
 	#include <LinkModel/palette_0xCFA0.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_CFA0_20_jp[8] = { 0x44, 0x67, 0x78, 0x76, 0x64, 0x44, 0x46, 0x87 };
-#else
 PAD(8);
-#endif
 
 u16 dLinkModel_palette_0xCFC8[16] = {
 	#include <LinkModel/palette_0xCFC8.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_CFC8_20_jp[8] = { 0x8A, 0xBB, 0xBA, 0x86, 0x44, 0x46, 0x7A, 0xBB };
-#else
 PAD(8);
-#endif
 
 /* Texture: 0xCFF0 (CI4) — 152 bytes texture, 112 bytes trailing palette frames */
 /* @tex fmt=CI4 dim=16x32 */
@@ -3977,31 +3198,19 @@ u8 dLinkModel_Tex_0xCFF0[256] = {
 	#include <LinkModel/Tex_0xCFF0.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_CFF0_100_jp[8] = { 0x44, 0x46, 0x66, 0x77, 0x76, 0x8C, 0xDB, 0x86 };
-#else
 PAD(8);
-#endif
 
 u16 dLinkModel_palette_0xD0F8[16] = {
 	#include <LinkModel/palette_0xD0F8.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_D0F8_20_jp[8] = { 0x44, 0x67, 0x78, 0x76, 0x64, 0x44, 0x46, 0x87 };
-#else
 PAD(8);
-#endif
 
 u16 dLinkModel_palette_0xD120[16] = {
 	#include <LinkModel/palette_0xD120.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_D120_20_jp[8] = { 0x8A, 0xBB, 0xBA, 0x86, 0x44, 0x46, 0x7A, 0xBB };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xD148 (1304 bytes) — split into 6 sub-frames at offsets
  * referenced by sprite pointer arrays / DL bindings (US +0x108/+0x310;
@@ -4011,33 +3220,21 @@ u8 dLinkModel_Tex_0xD148[256] = {
 	#include <LinkModel/Tex_0xD148.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_D148_100_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xC6C0_palette */
 u8 dLinkModel_Tex_0xD250[512] = {
 	#include <LinkModel/Tex_0xD250.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_D250_200_jp[8] = { 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xC6C0_palette */
 u8 dLinkModel_Tex_0xD458[512] = {
 	#include <LinkModel/Tex_0xD458.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_D458_200_jp[8] = { 0xFF, 0xFF, 0xFE, 0xA8, 0x74, 0x32, 0x23, 0x34 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xD660 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
@@ -4045,35 +3242,21 @@ u8 dLinkModel_Tex_0xD660[256] = {
 	#include <LinkModel/Tex_0xD660.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Tex_0xD768 with extra texture data. */
-u8 dLinkModel_Tex_0xD768_jp_pad[8] = { 0xAA, 0xAB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBA, 0x99 };
-#else
 PAD(8);
-#endif
 
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD30_palette */
 u8 dLinkModel_Tex_0xD768[256] = {
 	#include <LinkModel/Tex_0xD768.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xD870_palette with extra texture data. */
-u8 dLinkModel_Lut_0xD870_palette_jp_pad[8] = { 0xBB, 0xBB, 0xBB, 0xBB, 0x22, 0xC5, 0xEE, 0xD9 };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xD870 @ 0xD870 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD870_palette[16] = {
 	#include <LinkModel/Lut_0xD870.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xD890[8] = { 0x66, 0x66, 0x66, 0x66, 0x66, 0x44, 0x8B, 0x9B };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xD898 (136 bytes) */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xD870_palette */
@@ -4081,23 +3264,14 @@ u8 dLinkModel_Tex_0xD898[128] = {
 	#include <LinkModel/Tex_0xD898.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xD920_palette with extra texture data. */
-u8 dLinkModel_Lut_0xD920_palette_jp_pad[8] = { 0xCC, 0xC3, 0xE7, 0x7F, 0xFF, 0x7E, 0xDD, 0x3C };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xD920 @ 0xD920 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD920_palette[16] = {
 	#include <LinkModel/Lut_0xD920.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xD940[8] = { 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xD948 (136 bytes) */
 /* @tex fmt=CI4 dim=16x16 lut=dLinkModel_Lut_0xD920_palette */
@@ -4105,23 +3279,14 @@ u8 dLinkModel_Tex_0xD948[128] = {
 	#include <LinkModel/Tex_0xD948.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xD9D0_palette with extra texture data. */
-u8 dLinkModel_Lut_0xD9D0_palette_jp_pad[8] = { 0x00, 0x00, 0x9C, 0x7D, 0xDD, 0x77, 0xF5, 0xCC };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xD9D0 @ 0xD9D0 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xD9D0_palette[16] = {
 	#include <LinkModel/Lut_0xD9D0.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xD9F0[8] = { 0x00, 0x00, 0x09, 0xFE, 0x11, 0xBE, 0xF9, 0x00 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xD9F8 (520 bytes) */
 /* @tex fmt=CI4 dim=32x32 lut=dLinkModel_Lut_0xD9D0_palette */
@@ -4134,11 +3299,7 @@ u16 dLinkModel_Lut_0xDC00_palette[16] = {
 	#include <LinkModel/Lut_0xDC00.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xDC20[8] = { 0x77, 0x44, 0xC9, 0x93, 0x33, 0x3B, 0x8D, 0x6F };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xDC28 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDC00_palette */
@@ -4146,34 +3307,21 @@ u8 dLinkModel_Tex_0xDC28[256] = {
 	#include <LinkModel/Tex_0xDC28.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xDD30_palette with extra texture data. */
-u8 dLinkModel_Lut_0xDD30_palette_jp_pad[8] = { 0x44, 0x44, 0x44, 0x32, 0xA7, 0x57, 0xB7, 0x87 };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xDD30 @ 0xDD30 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDD30_palette[16] = {
 	#include <LinkModel/Lut_0xDD30.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xDD50[8] = { 0x44, 0xDB, 0x75, 0xB5, 0x85, 0x95, 0xB7, 0x78 };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xDD58 @ 0xDD58 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDD58_palette[16] = {
 	#include <LinkModel/Lut_0xDD58.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xDD78[8] = { 0x44, 0xE4, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44 };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xDD80 (264 bytes) */
 /* @tex fmt=CI4 dim=16x32 lut=dLinkModel_Lut_0xDD58_palette */
@@ -4181,23 +3329,14 @@ u8 dLinkModel_Tex_0xDD80[256] = {
 	#include <LinkModel/Tex_0xDD80.tex.inc.c>
 };
 
-#if defined(REGION_JP)
-/* JP fills the gap before dLinkModel_Lut_0xDE88_palette with extra texture data. */
-u8 dLinkModel_Lut_0xDE88_palette_jp_pad[8] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-#else
 PAD(8);
-#endif
 
 /* Palette: Lut_0xDE88 @ 0xDE88 (16 colors RGBA5551) */
 u16 dLinkModel_Lut_0xDE88_palette[16] = {
 	#include <LinkModel/Lut_0xDE88.palette.inc.c>
 };
 
-#if defined(REGION_JP)
-static u8 _pad_0xDEA8[8] = { 0x71, 0x1C, 0xCC, 0xCC, 0xC1, 0x17, 0xC1, 0x1A };
-#else
 PAD(8);
-#endif
 
 /* Texture data @ 0xDEB0 (1160 bytes) */
 /* @tex fmt=CI4 dim=32x72 lut=dLinkModel_Lut_0xDE88_palette */
@@ -4205,10 +3344,31 @@ u8 dLinkModel_Tex_0xDEB0[1160] = {
 	#include <LinkModel/Tex_0xDEB0.tex.inc.c>
 };
 
-/* Texture data @ 0xE338 (14608 bytes) */
+/* Texture data @ 0xE338 (72 bytes) */
 /* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xDC00_palette */
-u8 dLinkModel_Tex_0xE338[7536] = {
+u8 dLinkModel_Tex_0xE338[72] = {
 	#include <LinkModel/Tex_0xE338.tex.inc.c>
+};
+
+#if defined(REGION_JP)
+/* JP location of the pair that US keeps at 0xB188 (the JP palette is a different ramp). */
+/* Palette: Lut_0xB188 @ 0xE310 (JP) (16 colors RGBA5551) */
+u16 dLinkModel_Lut_0xB188_palette[16] = {
+	#include <LinkModel/Lut_0xB188.palette.inc.c>
+};
+
+PAD(8);
+
+/* Texture data @ 0xE338 (JP) (72 bytes) */
+/* @tex fmt=CI4 dim=16x8 lut=dLinkModel_Lut_0xB188_palette */
+u8 dLinkModel_Tex_0xB1B0[72] = {
+	#include <LinkModel/Tex_0xB1B0.tex.inc.c>
+};
+#endif
+
+/* Texture data @ 0xE380 (7464 bytes) */
+u8 dLinkModel_Tex_0xE380[7464] = {
+	#include <LinkModel/Tex_0xE380.tex.inc.c>
 };
 
 /* @tex fmt=IA8 dim=64x64 */
